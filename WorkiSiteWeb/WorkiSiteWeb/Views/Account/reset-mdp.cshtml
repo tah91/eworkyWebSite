@@ -1,0 +1,33 @@
+﻿@model WorkiSiteWeb.Models.ResetPasswordModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Models.Account.AccountModels.ResetThePassword)</title>
+}
+
+
+    <div class="borderContainer">
+        @RazorHelpers.TitleDiv(WorkiResources.Models.Account.AccountModels.ResetThePassword, "Blue")
+
+        <div class="login-account">
+            <div class="loginDesc">
+            @WorkiResources.Views.Account.AccountString.SetMailInscription
+            </div>
+            @using (Html.BeginForm()) { 
+                @Html.AntiForgeryToken()
+                <div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.EMail) 
+                    </div>
+
+                    <input type="submit" class="btn_blue imageBtn" value="Envoyer"/>
+                </div>
+            } 
+        </div>
+    </div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Commercial" xml:space="preserve">
+    <value>Du commercial : démarchage d’hôtels, centres d’affaires, etc.</value>
+  </data>
+  <data name="CommunicationIntern" xml:space="preserve">
+    <value>En ce moment, eWorky recherche un stagiaire en communication pour effectuer un panel de tâches
+        très variées, dont :</value>
+  </data>
+  <data name="CommunityManagement" xml:space="preserve">
+    <value>Du community management (Twitter et autres réseaux sociaux)</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Un peu d’évènementiel : organisation de jeux, soirées, etc.</value>
+  </data>
+  <data name="EWProject" xml:space="preserve">
+    <value>Mais eWorky c’est aussi un projet très prometteur qui a été sélectionné par Microsoft pour faire partie
+        du programme Bizspark visant à promouvoir les PME innovantes et par l’Elysée pour participer au
+        lancement du Conseil National du Numérique en Avril 2011 et à l'e-G8 en Mai 2011 !</value>
+  </data>
+  <data name="EWSearchEveryProfil" xml:space="preserve">
+    <value>En ce moment, eWorky recherche des développeurs web C# de tout profil :</value>
+  </data>
+  <data name="EWSearchStudents" xml:space="preserve">
+    <value>Pour accompagner sa croissance, eWorky cherche de jeunes (ou moins jeunes) développeurs et
+        business developer. Alors si tu veux rejoindre un beau projet à ses débuts, si tu veux faire un bout de chemin avec nous alors postule en envoyant ton CV et ta lettre de motivation à contact@eworky.com !
+    </value>
+  </data>
+  <data name="EWSpirit" xml:space="preserve">
+    <value>L’esprit eWorky</value>
+  </data>
+  <data name="EWTeam" xml:space="preserve">
+    <value>eWorky c’est avant tout une équipe surmotivée de quatre entrepreneurs très dynamiques et trois salariés exceptionnels qui travaillent dans une
+        ambiance conviviale et stimulante. Esprit start-up et système D garantis. Satisfait ou remboursé !</value>
+  </data>
+  <data name="InternGoodUniversity" xml:space="preserve">
+    <value>Nous recherchons un stagiaire (stage ou césure &gt; 3 mois) avec un profil grande école de commerce
+        ou d’ingénieurs, ou université. Une grande autonomie, un esprit d’entreprise, beaucoup de créativité
+        et une bonne aisance aussi bien à l’oral qu’à l’écrit sont primordiaux pour cette offre. Le stagiaire
+        sera rémunéré au salaire minimum conventionné.</value>
+  </data>
+  <data name="Jobs" xml:space="preserve">
+    <value>Jobs</value>
+    <comment>JOBS</comment>
+  </data>
+  <data name="JuniorDev" xml:space="preserve">
+    <value>Développeur junior pour un stage ou une césure de plus de 3 mois, et &lt;/br&gt; ayant des connaissances en développement web. Le stagiaire sera&lt;/br&gt; rémunéré, le montant dépendra de son profil.</value>
+  </data>
+  <data name="LikeDev" xml:space="preserve">
+    <value>Tu aimes développer ? Tu es jeune, motivé, autonome et tu aimes relever des défis ? Tenté par une
+        aventure dans une start-up web ? Alors rejoins eWorky !</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>Du marketing : web-marketing (Adword),marketing viral etc.</value>
+  </data>
+  <data name="MoreThings" xml:space="preserve">
+    <value>Et bien d’autres choses !</value>
+  </data>
+  <data name="PressRelation" xml:space="preserve">
+    <value>De la relation presse : contact/réponses</value>
+  </data>
+  <data name="SearchInternShip" xml:space="preserve">
+    <value>Tu recherches un stage ? Tu aimes la communication, le marketing et le commercial ? Tu es jeune,
+        motivé, autonome et tu aimes relever des défis ? Tenté par une aventure dans une start-up web ?
+        Alors rejoins eWorky !</value>
+  </data>
+  <data name="SendUsCV" xml:space="preserve">
+    <value>Il n’y a pas une seconde à perdre, envoie ton CV et ta lettre de motivation à {0}.</value>
+  </data>
+  <data name="SeniorDev" xml:space="preserve">
+    <value>Développeur senior en free lance (auto entrepreneuriat, etc.).&lt;/br&gt; Rémunération fonction des
+            références.</value>
+  </data>
+  <data name="SoulBuisnessDev" xml:space="preserve">
+    <value>Tu as l’âme d’un « business developer » ?</value>
+  </data>
+  <data name="YouAreDev" xml:space="preserve">
+    <value>Tu es développeur ?</value>
+  </data>
+</root>

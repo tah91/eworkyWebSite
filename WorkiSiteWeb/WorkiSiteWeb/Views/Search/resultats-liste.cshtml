@@ -1,0 +1,75 @@
+﻿@model WorkiSiteWeb.Models.SearchCriteriaFormViewModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Search.SearchString.SearchResult)</title>
+    <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.Search_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.SearchResults_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.skin_css)" rel="stylesheet" type="text/css"  />
+    <link href="@Url.Content(Links.Content.rateit_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css"/>
+}
+
+@RazorHelpers.TitleDiv(WorkiResources.Views.Search.SearchString.YourSearchResult, "Green", false)
+    
+<div class="resultHeader2 float-left">
+    <span class="blue bold">@WorkiResources.Views.Search.SearchString.ResultOfSearch</span> @Model.Results.Count @WorkiResources.Views.Search.SearchString.PlaceFound
+</div>
+
+<div class="clear">
+</div>
+
+<div class="detailContent">
+    <div class="searchFormBlock float-left">
+		<div class="contentBlock">
+			@Html.Partial(MVC.Search.Views._SearchForm)
+		</div>
+    </div>
+
+    <div class="resultDiv dashedLeft float-right">
+        <div class="searchFormBlock">
+            @for (int i = 0; i < Model.PageResults.Count; ++i)
+			{ 
+				var index = Model.PagingInfo.GlobalIndex(i);
+                @Html.Partial(MVC.Search.Views._SearchResultSummary, Model.GetSingleResult(index))
+			}
+
+			<div class="pager">
+				@{
+					RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+					foreach (string key in Request.QueryString.Keys)
+					{
+						rvd[key] = Request.QueryString[key].ToString();
+					}
+				}
+				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Search.ActionNames.FullSearchResult, rvd); })
+			</div>
+        </div>    
+    </div>
+
+	<div class="clear">
+    </div>
+</div>
+
+<div class="adRow">
+    @Html.Partial(MVC.Shared.Views._DirectAccess)
+    @Html.Partial(MVC.Shared.Views._IndexGallery)
+</div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
+    <script src="@MiscHelpers.jqueryui " type="text/javascript"></script>
+    <script src="@Url.Content(Links.Scripts.jquery_rateit_min_js) " type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+    @{ ViewData["IsSearchForm"] = true; }
+    @Html.Partial(MVC.Search.Views._SelectSearchScript, Model.Criteria.LocalisationData, ViewData)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
+            workiAutocomplete.SetAutocomplete();
+        });
+    </script>
+    @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
+}

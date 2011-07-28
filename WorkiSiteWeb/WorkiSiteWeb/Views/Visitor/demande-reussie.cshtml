@@ -1,0 +1,18 @@
+﻿@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Visitor.VisitorString.eWorky)</title>
+}
+
+<div class="borderContainer">
+    @RazorHelpers.TitleDiv(WorkiResources.Views.Visitor.VisitorString.EWBetaPrivate, "Blue")
+
+    <p>
+        @WorkiResources.Views.Visitor.VisitorString.SuccessAsk
+    </p>
+</div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery" type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

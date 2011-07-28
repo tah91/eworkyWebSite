@@ -1,0 +1,262 @@
+﻿@model WorkiSiteWeb.Models.ProfilDashboardModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Model.Member.GetDisplayName())</title>
+    <link href="@Url.Content(Links.Content.Profil_css) " rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.rateit_css) " rel="stylesheet" type="text/css" />
+}
+
+<div class="profilTitle">
+	@{
+		var title = Model.IsPrivate ? WorkiResources.Views.Profile.ProfileString.MyProfile : Model.Member.GetDisplayName();
+		ViewData[Comment.DisplayRelatedLocalisation] = true;
+	}
+    @RazorHelpers.TitleDiv(title, "Blue")
+</div>
+
+<div class="detailContent">
+    <div class="profilDetailLeft blockContainer float-left">
+        <div class="profilSummary contentBlock">
+            <div class="profilAvatar borderedImg">
+                @RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+            </div>
+            <div class="profilName">
+				@{
+					var score = Model.Member.ComputeScore();
+				}
+                <h2 class="blue bold">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName</h2>
+                <span class="profilType bold">@MemberMainData.ProfileTypes[Model.Member.MemberMainData.Profile]</span><br />
+                @string.Format("eWorker {0} ({1:### ### ###} pts)", Model.Member.GetMemberScoreStatus(score), score)
+            </div>
+            <div class="profilDesc">
+                @Model.Member.MemberMainData.Description
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Facebook))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_fb linkImg" title="Profil Facebook">
+						<a href="@Model.Member.MemberMainData.Facebook" target="_blank"></a>
+					</div>
+				</div>
+			}
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Twitter))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_tw linkImg" title="Profil Twitter">
+						<a href="http://twitter.com/#!/@Model.Member.MemberMainData.Twitter" target="_blank"></a>
+					</div>
+				</div>
+			}
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Linkedin))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_in linkImg" title="Profil LinkedIn">
+						<a href="@Model.Member.MemberMainData.Linkedin" target="_blank"></a>
+					</div>
+				</div>
+			}
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Viadeo))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_viadeo linkImg" title="Profil Viadeo">
+						<a href="@Model.Member.MemberMainData.Viadeo" target="_blank"></a>
+					</div>
+				</div>
+			}
+			<div class="clear">
+			</div>
+            
+			@if (Model.IsPrivate)
+			{
+				@Html.ActionLink(WorkiResources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId))
+			}
+        </div>
+    </div>
+    @{
+		RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+		foreach (string key in Request.QueryString.Keys)
+		{
+			rvd[key] = Request.QueryString[key].ToString();
+		}
+    }
+    <div class="profilDetailRight blockContainer dashedLeft float-right">
+        <div class="profilLocalisations contentBlock">
+            <ul class="tabs">
+                <li><a href="#favoritesTab" class="bold">@WorkiResources.Views.Profile.ProfileString.Favorite</a></li>
+                <li><a href="#addedLocalisationTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MySpaces</a></li>
+            </ul>
+            <div class="tab_container">
+                <div id="favoritesTab" class="tab_content localisationsTagContainer">
+					@if(Model.FavoriteLocalisations.Count != 0)
+					{
+						ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.FavLoc;
+						@Html.Partial(MVC.Profil.Views._LocalisationTab)
+					}
+					else if (Model.IsPrivate)
+					{
+						<span class="italic">@WorkiResources.Views.Profile.ProfileString.FavoriteSpacesEmpty</span>
+					}
+                </div> 
+                <div id="addedLocalisationTab" class="tab_content localisationsTagContainer">
+					@if(Model.AddedLocalisations.Count != 0)
+					{
+						ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.AddedLoc;
+						@Html.Partial(MVC.Profil.Views._LocalisationTab)
+					}
+					else if (Model.IsPrivate)
+					{
+						<span class="italic">@Html.Raw(string.Format(WorkiResources.Views.Profile.ProfileString.AddedSpacesEmpy,Html.ActionLink(WorkiResources.Views.Home.FaqString.ClickHere,MVC.Localisation.Create())))</span>
+					}
+                </div> 
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="profilCompany contentBlock">
+            <ul class="tabs">
+                <li><a href="#companyTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyCompany</a></li>
+                <li><a href="#favPlacesTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyFavoritePlaces</a></li>
+            </ul>
+            <div class="tab_container">
+                <div id="companyTab" class="tab_content">
+					@if(!string.IsNullOrEmpty(Model.Member.MemberMainData.CompanyName))
+					{
+						@Model.Member.MemberMainData.CompanyName
+					}
+					else if (Model.IsPrivate)
+					{
+						<span class="italic">@Html.Raw(string.Format(WorkiResources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(WorkiResources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit(Model.Member.MemberId))))</span>
+					}                    
+                </div> 
+                <div id="favPlacesTab" class="tab_content">
+					@if(!string.IsNullOrEmpty(Model.Member.MemberMainData.FavoritePlaces))
+					{
+						@Model.Member.MemberMainData.FavoritePlaces
+					}
+					else if (Model.IsPrivate)
+					{
+						<span class="italic">@Html.Raw(string.Format(WorkiResources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(WorkiResources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit(Model.Member.MemberId))))</span>
+					}
+                </div> 
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+		@if (Model.IsPrivate)
+		{
+        <div class="profilComments contentBlock">
+            <ul class="tabs">
+                <li><a href="#myCommentsTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyComments</a></li>
+                <li><a href="#locCommentsTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyCommentedSpaces</a></li>
+            </ul>
+            <div class="tab_container">
+                <div id="myCommentsTab" class="tab_content">
+					@if(Model.PostedComments.Count != 0)
+					{
+						ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.PostedCom;
+						@Html.Partial(MVC.Profil.Views._CommentTab)
+					}
+					else
+					{
+						<span class="italic">@WorkiResources.Views.Profile.ProfileString.CommentsEmpy</span>
+					}					
+                </div> 
+                <div id="locCommentsTab" class="tab_content">
+					@if(Model.RelatedComments.Count != 0)
+					{
+						ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.RelCom;
+						@Html.Partial(MVC.Profil.Views._CommentTab)
+					}
+					else
+					{
+						<span class="italic">@WorkiResources.Views.Profile.ProfileString.RelCommentsEmpty</span>
+					}					
+                </div> 
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+		}
+    </div>
+    <div class="clear">
+    </div>
+</div>
+
+@section ScriptContent
+{
+	<script src="@MiscHelpers.jquery" type="text/javascript"></script>
+	@Html.Partial(MVC.Shared.Views._CufonScript)
+    @Html.Partial(MVC.Shared.Views._TabScript)
+    <script src="@Url.Content(Links.Scripts.jquery_rateit_min_js)" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            InitTab(".profilLocalisations");
+            InitTab(".profilCompany");
+            InitTab(".profilComments");
+        });
+    </script>
+	<script type="text/javascript">
+		$().ready(function () {
+			
+			function GetInt(str){
+				var intVal = parseInt(str);
+				if(isNaN(intVal))
+					return 1;
+				else
+					return intVal;
+			};
+			
+			function AjaxFill(tabId,p1,p2,p3,p4,divId) {					
+                $.ajax({
+					url: "@Url.Action(MVC.Profil.ActionNames.AjaxDashboard)",
+					data: { "id": @Model.Member.MemberId, "tabId" : tabId, "p1" : p1, "p2" : p2, "p3" : p3, "p4" : p4 },
+					success: function (data) {
+						$(divId).html(data);
+					}
+				});
+            };
+
+			$(".FavLoc").live("click", function () {
+
+				var p1 = GetInt($(this).html());
+				var p2 = GetInt($(".AddedLoc .selected").html());
+				var p3 = GetInt($(".PostedCom .selected").html());
+				var p4 = GetInt($(".RelCom .selected").html());
+
+				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.FavLoc),p1,p2,p3,p4,"#favoritesTab");
+				return false;
+			});
+			$(".AddedLoc").live("click", function () {
+
+				var p1 = GetInt($(".FavLoc .selected").html());
+				var p2 = GetInt($(this).html());
+				var p3 = GetInt($(".PostedCom .selected").html());
+				var p4 = GetInt($(".RelCom .selected").html());
+
+				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.AddedLoc),p1,p2,p3,p4,"#addedLocalisationTab");
+				return false;
+			});
+			$(".PostedCom").live("click", function () {
+
+				var p1 = GetInt($(".FavLoc .selected").html());
+				var p2 = GetInt($(".AddedLoc .selected").html());
+				var p3 = GetInt($(this).html());
+				var p4 = GetInt($(".RelCom .selected").html());
+
+				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.PostedCom),p1,p2,p3,p4,"#myCommentsTab");
+				return false;
+			});
+			$(".RelCom").live("click", function () {
+
+				var p1 = GetInt($(".FavLoc .selected").html());
+				var p2 = GetInt($(".AddedLoc .selected").html());
+				var p3 = GetInt($(".PostedCom .selected").html());
+				var p4 = GetInt($(this).html());
+
+				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.RelCom),p1,p2,p3,p4,"#locCommentsTab");
+				return false;
+			});
+		});
+</script>
+}

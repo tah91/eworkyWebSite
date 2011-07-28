@@ -1,0 +1,44 @@
+﻿@model Comment
+
+@{
+	var displayLoc = false;
+	if (ViewData.ContainsKey(Comment.DisplayRelatedLocalisation))
+	{ 
+		displayLoc = (bool)ViewData[Comment.DisplayRelatedLocalisation];
+	}
+}
+
+<div class="profilComment">
+	<div class="profilCommentHead">
+        @Html.ReadOnlyRating(Model.GetRating())
+        <span class="memberLink">
+            <span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span>
+            @if (displayLoc)
+            { 
+                <span> à propos du lieu </span>
+                <span class="boldLink blue">@Html.ActionLink(Model.Localisation.Name, MVC.Localisation.Details(Model.LocalisationID, ControllerHelpers.GetSeoTitle(Model.Localisation.Name)))</span>
+            }
+        </span>
+    </div>
+    <div class="commentAvatar borderedImg float-left">
+    @RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+    </div>
+    <div class="commentContent float-left" style=@(displayLoc ? "width:70%" : "")>
+        <p>@Html.Nl2Br(Model.Post)</p>
+        <p class="commentDate">@Model.Date.ToString("F", System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR"))</p>
+    </div>
+	@if (displayLoc)
+	{
+		<a href="@Url.Action(MVC.Localisation.Details(Model.LocalisationID, ControllerHelpers.GetSeoTitle(Model.Localisation.Name)))">
+			<div class="commentLocAvatar borderedImg float-right">
+			@RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.Localisation.GetMainPic()), Model.Localisation.Name)
+			</div>
+		</a>
+	}
+    <div class="clear">
+    </div>
+</div> 
+@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+{ 
+    @Html.ActionLink(WorkiResources.Views.Shared.SharedString.DeleteComment, MVC.Localisation.DeleteComment(Model.LocalisationID, Model.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
+}

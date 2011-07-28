@@ -1,0 +1,84 @@
+﻿@model WorkiSiteWeb.Models.Comment
+
+<div class="login-account">
+	<form id="submitpostForm">
+        <div class="commentFormRating">
+            <table>
+                @if (!Model.Localisation.IsFreeLocalisation())
+				{
+                <tr>
+                    <td>
+                        <input type="range" min="0" max="5" value="0" step="1" id="backingRating" />
+                        <div class="rateit" data-rateit-backingfld="#backingRating" id="rateItRating"></div>
+                    </td>
+                    <td>
+                        <div class=" float-left">
+                            @Html.LabelFor(model => model.Rating)
+                            @Html.HiddenFor(model => model.Rating)
+                        </div>
+                    </td>                    
+                </tr>
+				}
+				else
+				{
+                <tr>
+                    <td>
+                        <input type="range" min="0" max="5" value="0" step="1" id="backingRatingPrice" />
+                        <div class="rateit" data-rateit-backingfld="#backingRatingPrice" id="rateItRatingPrice"></div>
+                    </td>
+                    <td>
+                        <div class=" float-left">
+                            @Html.LabelFor(model => model.RatingPrice)
+                            @Html.HiddenFor(model => model.RatingPrice)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="range" min="0" max="5" value="0" step="1" id="backingRatingWifi" />
+                        <div class="rateit" data-rateit-backingfld="#backingRatingWifi" id="rateItRatingWifi"></div>
+                    </td>
+                    <td>
+                        <div class=" float-left">
+                            @Html.LabelFor(model => model.RatingWifi)
+                            @Html.HiddenFor(model => model.RatingWifi)
+                        </div>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>
+                        <input type="range" min="0" max="5" value="0" step="1" id="backingRatingDispo" />
+                        <div class="rateit" data-rateit-backingfld="#backingRatingDispo" id="rateItRatingDispo"></div>
+                    </td>
+                    <td>
+                        <div class=" float-left">
+                            @Html.LabelFor(model => model.RatingDispo)
+                            @Html.HiddenFor(model => model.RatingDispo)
+                        </div>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>
+                        <input type="range" min="0" max="5" value="0" step="1" id="backingRatingWelcome" />
+                        <div class="rateit" data-rateit-backingfld="#backingRatingWelcome" id="rateItRatingWelcome"></div>
+                    </td>
+                    <td>
+                        <div class=" float-left">
+                            @Html.LabelFor(model => model.RatingWelcome)
+                            @Html.HiddenFor(model => model.RatingWelcome)
+                        </div>
+                    </td>                    
+                </tr>
+				} 
+            </table>
+        </div>               
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Post)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Post)
+        </div>
+
+        <input type="submit" class="btn_blue imageBtn" value="Envoyer" style="margin-top:10px;"/>
+	</form>	
+</div>

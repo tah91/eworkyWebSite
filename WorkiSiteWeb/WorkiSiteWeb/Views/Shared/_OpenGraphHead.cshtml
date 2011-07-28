@@ -1,0 +1,20 @@
+﻿@model WorkiSiteWeb.Models.Localisation
+
+<meta property="og:title" content="@Model.Name" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="@Html.GetFullUrl(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = Model.ID, name = ControllerHelpers.GetSeoTitle(Model.Name) })" />
+@{
+    var imagePath = string.Empty;
+    if (!string.IsNullOrEmpty(Model.GetMainPic()))
+    {
+        imagePath = Html.GetFileFullUrl(MiscHelpers.GetUserImagePath(Model.GetMainPic()), false);
+    }
+    else
+    { 
+        imagePath = Html.GetFileFullUrl("~/content/images/worki_fb.jpg", false);
+    }
+}
+<meta property="og:image" content="@imagePath" />
+<meta property="og:site_name" content="eWorky" /> 
+<meta property="fb:admins" content="176767605710969" />
+<meta property="og:description" content="@Model.Description"/>

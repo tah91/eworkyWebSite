@@ -1,0 +1,40 @@
+﻿@model WorkiSiteWeb.Models.AdminImportViewModel 
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.Content(Links.Content.Admin_css) " rel="stylesheet" type="text/css" />
+}
+
+
+<h2>@WorkiResources.Views.Admin.AdminString.LocalisationsAdmin </h2>
+<div class="contentAdmin">
+    <div id="adminMenu">
+        @Html.Partial(MVC.Admin.Views._AdminMenu)
+    </div>
+    <div class="adminPanel">
+        @using (Html.BeginForm(MVC.Admin.ActionNames.IndexImport, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "adminForm" }))
+        {
+            @Html.AntiForgeryToken();
+            <div>
+                @Model.resultMessage
+            </div>
+            <div style="color:Red;">
+                @if (Model.localisationsAlreadyInDB != null && Model.localisationsAlreadyInDB.ToString() != "")
+                { 
+                    @Html.Raw("<b>Attention : Les lieux de travail suivant n'ont pas été ajoutés car ils existaient déjà dans la base de donnée <br /></b>" + Model.localisationsAlreadyInDB)
+                }
+            </div>
+            <div>
+                <input type="file" id="importCsv" name="importCsv"/>
+            </div>
+            <div>
+                <input type="checkbox" id="importCsvHeader" name="importCsvHeader" /> Le fichier comporte une ligne d'en-tête
+            </div>
+            <div>
+                @Html.SubmitButton("Import", WorkiResources.Views.Admin.AdminString.Update)
+            </div>
+        } 
+    <div class="clear"> </div>
+    </div>
+</div>

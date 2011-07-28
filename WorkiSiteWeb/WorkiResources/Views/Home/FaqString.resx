@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddPage" xml:space="preserve">
+    <value>page Ajout</value>
+  </data>
+  <data name="Bugs" xml:space="preserve">
+    <value>Bugs</value>
+  </data>
+  <data name="ClickEdit" xml:space="preserve">
+    <value>Vous pouvez modifier la fiche de n’importe quel lieu en cliquant sur le bouton « Editer » en bas à droite de la fiche détaillée. Afin d’éviter le vandalisme, le nombre de modifications est limité à 15 par jour.</value>
+  </data>
+  <data name="ClickHere" xml:space="preserve">
+    <value>cliquez ici</value>
+  </data>
+  <data name="CouldNotIncludePicture" xml:space="preserve">
+    <value>Je n'arrive pas à inclure des photos à la fiche du lieu que je veux ajouter</value>
+  </data>
+  <data name="EncounterBugs" xml:space="preserve">
+    <value>Si vous rencontrez un bug ou avez des problèmes de navigation sur le site, n’hésitez pas à nous le signaler en
+        envoyant un mail à support@eworky.com.</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+    <comment>FAQ</comment>
+  </data>
+  <data name="FormForSearch" xml:space="preserve">
+    <value>Le formulaire situé sur la {0} du site permet d’effectuer une recherche simple à partir du lieu et du
+        type d’emplacement recherché (espace public, café…). Une recherche plus détaillée peut être lancée à partir de
+        la {1} . Vous pourrez alors faire votre choix sur plus de critères tels que les services proposés par le
+        lieu (wifi, restauration, parking…) ou encore son prix.</value>
+  </data>
+  <data name="ForRateComment" xml:space="preserve">
+    <value>Pour commenter ou noter un lieu de travail, vous devez être connecté sur votre compte eWorky. Une fois
+        connecté, il vous suffit de vous rendre sur la fiche du lieu pour commenter et/ou noter le lieu.</value>
+  </data>
+  <data name="Glossary" xml:space="preserve">
+    <value>Lexique</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>page d’Accueil</value>
+  </data>
+  <data name="HowAddWorkplace" xml:space="preserve">
+    <value>Comment ajouter un lieu de travail ?</value>
+  </data>
+  <data name="HowCreateAccount" xml:space="preserve">
+    <value>Comment créer un compte ? Pourquoi s’inscrire ?</value>
+  </data>
+  <data name="HowEdit" xml:space="preserve">
+    <value>La fiche d'un lieu de travail contient des informations erronées, comment les corriger?</value>
+  </data>
+  <data name="HowFindWorkplace" xml:space="preserve">
+    <value>Comment trouver un lieu de travail ?</value>
+  </data>
+  <data name="HowRateComment" xml:space="preserve">
+    <value>Comment commenter et noter un lieu de travail ?</value>
+  </data>
+  <data name="HowSuggestWorkplace" xml:space="preserve">
+    <value>Comment proposer un lieu de travail à la réservation ?</value>
+  </data>
+  <data name="Inscription" xml:space="preserve">
+    <value>vous inscrire</value>
+  </data>
+  <data name="InviteFriends" xml:space="preserve">
+    <value>Comment inviter ses amis à rejoindre la communauté eWorky ?</value>
+  </data>
+  <data name="OnEWBuisnessCenter" xml:space="preserve">
+    <value>Sur eWorky, un centre d’affaires est un immeuble de bureaux tout équipé, qui loue ses locaux ou des bureaux
+        individuels pour une période généralement limitée. Les baux proposés sont plus flexibles et de plus courtes
+        durées que les baux traditionnels.</value>
+  </data>
+  <data name="OnEWBuisnessHotel" xml:space="preserve">
+    <value>Sur eWorky, un hôtel d’entreprise est un lieu hébergeant les jeunes entreprises à moindre coût et proposant
+        des services mutualisés. Les entreprises sont accompagnées dans leurs phases de création, de croissance
+        (incubateurs d’entreprises) et de maturité (pépinières d’entreprises).</value>
+  </data>
+  <data name="OnEWBuisnessLounge" xml:space="preserve">
+    <value>Sur eWorky, un salon d’affaires est une salle meublée de canapés et fauteuils, et équipée d’une connexion wifi.</value>
+  </data>
+  <data name="OnEWConferenceRoom" xml:space="preserve">
+    <value>Sur eWorky, une salle de conférence ou de séminaire est une salle dont la capacité est au moins de 20
+        personnes et pouvant aller au-delà de 1 000 personnes. Idéale pour les conférences, cocktails, réceptions,
+        séminaires, colloques, etc.</value>
+  </data>
+  <data name="OnEWCoworking" xml:space="preserve">
+    <value>Sur eWorky, un espace de coworking est un lieu de travail, rassemblant différents travailleurs indépendants.
+        Les utilisateurs d’un même espace de coworking partagent leurs locaux et forment un réseau, favorisant ainsi le
+        partage, l’ouverture et la convivialité.</value>
+  </data>
+  <data name="OnEWDigitalPublicSpace" xml:space="preserve">
+    <value>Sur eWorky, un espace publique numérique est une structure d’accueil, à but non lucratif proposant un accès
+        internet et dont l’objectif principal est l’initiation à l’informatique et aux technologies de l’information et de la
+        communication.</value>
+  </data>
+  <data name="OnEWOffice" xml:space="preserve">
+    <value>Sur eWorky, un bureau est une salle fermée avec un ou plusieurs postes de travail. Le terme « Bureaux » désigne les bureaux proposés en contrat flexible ou moyen terme, sans bail, dans un centre
+        d’affaires, une pépinière, un télécentre ou encore un incubateur.</value>
+  </data>
+  <data name="OnEWorkyMeetingRoom" xml:space="preserve">
+    <value>Sur eWorky, une salle de réunion est une salle pouvant accueillir au moins deux personnes assises. Les équipements
+        proposés (vidéoprojecteur, paperboard, micro, etc.) sont variables d’une salle à l’autre et sont précisés dans la
+        partie « Services et équipements de la salle de réunion ».</value>
+  </data>
+  <data name="OnEWPrivatePlace" xml:space="preserve">
+    <value>Sur eWorky, un lieu privé est une propriété ou un bien privé proposé à la location pour des durées variables.</value>
+  </data>
+  <data name="OnEWTelecenter" xml:space="preserve">
+    <value>Sur eWorky, un télécentre est un espace de travail destiné aux télétravailleurs, proposant des bureaux ainsi que
+        des postes de travail équipés d'outils informatiques. La location de ces espaces se fait généralement à la journée.</value>
+  </data>
+  <data name="OnEWVisioRoom" xml:space="preserve">
+    <value>Sur eWorky, une salle de visioconférence est une salle offrant tous les moyens techniques nécessaires,
+        qu’ils soient audio et vidéo, permettant à ses utilisateurs de communiquer à distance avec un ou plusieurs
+        interlocuteurs.</value>
+  </data>
+  <data name="OnEWTelework1" xml:space="preserve">
+    <value>«Le télétravail est une forme d’organisation et/ou de réalisation du travail, utilisant les technologies de l’information dans le cadre d’un contrat de travail et dans laquelle un travail, qui aurait également pu être réalisé dans les locaux de l’employeur, est effectué hors de ces locaux de façon régulière.»
+       </value>
+  </data>
+  <data name="OnEWTelework2" xml:space="preserve">
+    <value>Cette façon de concevoir et d’organiser le travail différemment concerne tous les types de travailleurs, qu’ils
+        soient sédentaires ou nomades et offre de nombreux avantages d’un point de vue économique, social,
+        environnemental et sociétal. Le télétravail est un mode de travail flexible : les salariés peuvent choisir de
+        télétravailler à temps plein, seulement quelques jours par semaine ou encore de façon ponctuelle selon leurs
+        besoins. De plus, les télétravailleurs peuvent rester à leur domicile ou bien se déplacer dans un télécentre proche
+        de chez eux, selon leurs besoins et leurs envies.</value>
+  </data>
+  <data name="OnEWWorkStation" xml:space="preserve">
+    <value>Sur eWorky, un poste de travail correspond à un espace de quelques mètres carrés doté à minima de mobilier
+        de bureau et d’une connexion internet. Un open space regroupe généralement plusieurs dizaines de postes de
+        travail.</value>
+  </data>
+  <data name="PasswordLost" xml:space="preserve">
+    <value>Si vous avez perdu votre mot de passe, {0} et votre mot de passe vous sera envoyé
+        par email.</value>
+  </data>
+  <data name="ProposeWorkplaceAfterInscription" xml:space="preserve">
+    <value>Si vous souhaitez proposer un lieu de travail ou simplement rejoindre notre communauté, vous pouvez {0}.
+        Etre inscrit sur eWorky vous permet alors d’ajouter des lieux ainsi que de noter et commenter les lieux
+        existants.</value>
+  </data>
+  <data name="ReportBug" xml:space="preserve">
+    <value>Comment signaler un bug ?</value>
+  </data>
+  <data name="RetrivePassword" xml:space="preserve">
+    <value>Comment retrouver un mot de passe perdu ?</value>
+  </data>
+  <data name="SearchPage" xml:space="preserve">
+    <value>page Recherche</value>
+  </data>
+  <data name="SuggestWorkplace" xml:space="preserve">
+    <value>La {0}  vous permet de proposer un espace de travail aux utilisateurs d’eWorky. Seuls quelques champs sont obligatoires pour pouvoir mettre votre lieu de travail à disposition sur eWorky, mais nous vous conseillons de remplir le maximum de champs pour faciliter l’accès aux informations des utilisateurs. &lt;/br&gt;
+De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa fiche, nous vous conseillons de mettre au minimum quatre photos de bonne qualité. Pour ajouter des photos, faites glisser vos images sur le champ « + ajouter vos images » ou cliquez sur ce même bouton, puis choisissez celle qui sera la photo principale du lieu.</value>
+  </data>
+  <data name="TheInscription" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="WhatIsBuisnessCenter" xml:space="preserve">
+    <value>Qu’est-ce qu’un centre d’affaires ?</value>
+  </data>
+  <data name="WhatIsBuisnessHotel" xml:space="preserve">
+    <value>Qu’est-ce qu’un hôtel d’entreprises ?</value>
+  </data>
+  <data name="WhatIsBuisnessLounge" xml:space="preserve">
+    <value>Qu’est-ce qu’un salon d’affaires ?</value>
+  </data>
+  <data name="WhatIsConferenceRoom" xml:space="preserve">
+    <value>Qu’est-ce qu’une salle de conférence ou de séminaire ?</value>
+  </data>
+  <data name="WhatIsCoworking" xml:space="preserve">
+    <value>Qu’est-ce qu’un espace de coworking ?</value>
+  </data>
+  <data name="WhatIsDigitalPublicSpace" xml:space="preserve">
+    <value>Qu’est-ce qu’un espace public numérique ?</value>
+  </data>
+  <data name="WhatIsEWorky" xml:space="preserve">
+    <value>A quoi sert eWorky ?</value>
+  </data>
+  <data name="WhatIsMeetingRoom" xml:space="preserve">
+    <value>Qu’est-ce qu’une salle de réunion ?</value>
+  </data>
+  <data name="WhatIsOffice" xml:space="preserve">
+    <value>Que sont des bureaux ?</value>
+  </data>
+  <data name="WhatIsPrivatePlace" xml:space="preserve">
+    <value>Qu’est-ce qu’un lieu privé ?</value>
+  </data>
+  <data name="WhatIsTelecenter" xml:space="preserve">
+    <value>Qu’est-ce qu’un télécentre ?</value>
+  </data>
+  <data name="WhatIsTelepresenceRoom" xml:space="preserve">
+    <value>Qu’est-ce qu’une salle de téléprésence ?</value>
+  </data>
+  <data name="WhatIsVisioRoom" xml:space="preserve">
+    <value>Qu’est-ce qu’une salle de visioconférence ?</value>
+  </data>
+  <data name="WhatIsWorkOffice" xml:space="preserve">
+    <value>Qu’est-ce qu’un poste de travail ?</value>
+  </data>
+  <data name="WhatIsWorkStation" xml:space="preserve">
+    <value>Qu’est-ce qu’un poste de travail ?</value>
+  </data>
+  <data name="WorkplaceManager" xml:space="preserve">
+    <value>Vous gérez un centre d’affaires ou un télécentre et vous souhaitez proposer une réservation de postes en ligne
+        via eWorky ? Vous pouvez prendre contact avec l’équipe d’eWorky en envoyant un mail à contact@eworky.com.</value>
+  </data>
+  <data name="YouCanFindAll" xml:space="preserve">
+    <value>Qu'il s'agisse de centres d'affaires, d'hôtels, de cafés, de télécentres ou d'immeubles de bureaux, que vous vouliez trouver, réserver, acheter, louer, vendre ou partager, eWorky vous aidera. Vous pourrez y trouver le lieu de travail qui vous convient, le noter, le réserver on-line, ajouter vos lieux de travail préférés ou encore trouver des bureaux à louer ou à acheter. En s'adaptant à votre nouvelle façon de travailler, eWorky est décidément le meilleur endroit pour travailler !</value>
+  </data>
+  <data name="YourPossiblilitiesOnForm" xml:space="preserve">
+    <value>Dans le formulaire d'ajout du lieu de travail, vous avez la possibilité de choisir des photos à joindre à la description de votre lieu de travail. Pour cela, il vous suffit de glisser vos images sur « + ajouter vos images » ou de cliquer sur ce même bouton pour choisir votre fichier, puis de cliquer sur Télécharger pour nous envoyer ce fichier. La taille de chaque image ne doit pas excéder 3 Mo et vous pouvez ajouter au maximum 10 photos. Assurez-vous que vous respectez ces limites et si le problème persiste, vous pouvez nous contacter par mail à support@eworky.com.</value>
+  </data>
+  <data name="CouldNotEditLocation" xml:space="preserve">
+    <value>Je n’arrive plus à modifier un lieu</value>
+  </data>
+  <data name="ForEditProfil" xml:space="preserve">
+    <value>Votre profil est accessible depuis n’importe quelle page du site en cliquant sur le lien « Mon profil » dans la barre  en haut à droite (vous devez être connecté). Pour éditer votre profil, cliquez sur le lien « Editer mon profil » sous votre nom à gauche sur la page de votre profil. Complétez-le au maximum pour favoriser les échanges entre eWorkers et obtenir des points supplémentaires.</value>
+  </data>
+  <data name="HowEditLocation" xml:space="preserve">
+    <value>Le nombre de modifications est limité à 15 par jour. Si vous n’arrivez plus à modifier à éditer des lieux, vérifier que vous n’avez pas dépassé la limite. Si le problème persiste, vous pouvez nous contacter par mail à support@eworky.com.</value>
+  </data>
+  <data name="HowEditProfil" xml:space="preserve">
+    <value>Comment éditer mon profil ?</value>
+  </data>
+  <data name="WhatAreThosePoint" xml:space="preserve">
+    <value>A quoi servent les points qui apparaissent sur la page de mon profil ?</value>
+  </data>
+  <data name="WhatIsTeleWork" xml:space="preserve">
+    <value>Qu'est ce que le télétravail ?</value>
+  </data>
+  <data name="WhyThereArePoint" xml:space="preserve">
+    <value>En apportant votre contribution à la communauté eWorky, vous cumulez des points qui vous permettront de participer aux jeux et concours et de profiter de réductions. Vous gagnez des points en ajoutant des lieux, en les modifiant, les commentant ou même simplement en complétant votre profil.</value>
+  </data>
+</root>

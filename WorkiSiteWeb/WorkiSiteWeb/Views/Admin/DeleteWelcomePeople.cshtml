@@ -1,0 +1,19 @@
+﻿@model Microsoft.Web.Mvc.Resources.WebApiEnabledAttribute
+
+@section HeadContent{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.Admin) </title>
+}
+
+<h2>
+    @WorkiResources.Views.Admin.AdminString.ConfirmDelete
+</h2>
+<div>
+    <p>
+        @WorkiResources.Views.Admin.AdminString.ConfirmDeleteWelcome
+    </p>
+</div>
+@using (Html.BeginForm(new { returnUrl = TempData["returnUrl"] }))
+{ 
+	@Html.AntiForgeryToken()
+    <input name="confirmButton" type="submit" value="Supprimer" />
+} 

@@ -1,0 +1,43 @@
+﻿@model WorkiSiteWeb.Models.ProfilDashboardModel
+
+@{
+	var tabId = (ProfilDashboardModel.DashboardTab)ViewData[ProfilDashboardModel.TabId];
+	var a_class = tabId.ToString();
+	List<Localisation> locs = new List<Localisation>();
+	PagingInfo pi = new PagingInfo();
+	if (tabId == ProfilDashboardModel.DashboardTab.FavLoc)
+	{
+		locs = Model.FavoriteLocalisations;
+		pi = Model.FavoriteLocalisationsPI;
+	}
+	else if (tabId == ProfilDashboardModel.DashboardTab.AddedLoc)
+	{
+		locs = Model.AddedLocalisations;
+		pi = Model.AddedLocalisationsPI;
+	}
+	
+}
+
+<ul>
+    @foreach (var loc in locs)
+	{ 
+        <li>
+            <a href="@Url.Action(MVC.Localisation.Details(loc.ID, ControllerHelpers.GetSeoTitle(loc.Name)))">
+                <div class="localisationTag float-left">
+                    <div class="localisationImgDiv borderedImg">
+					@RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(loc.GetMainPic()), loc.Name)
+                    </div>
+                    <div class="localisationImgDesc">
+                        <span class="bold">@loc.Name</span><br />
+                        @loc.City
+                    </div>                                   
+                </div>
+            </a>
+        </li>
+	}
+</ul>
+<div class="clear">
+</div>
+<div class="pager @(a_class)">
+    @Html.PageLinks(pi, null, a_class)
+</div>

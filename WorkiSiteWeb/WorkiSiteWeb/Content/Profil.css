@@ -1,0 +1,215 @@
+﻿.avatarEditor
+{
+	margin-top: 10px;
+    width: 300px;
+}
+
+.avatarContainer
+{
+    width: 280px;
+    height: 280px;
+    margin-bottom: 10px;
+}
+
+.avatarContainer img
+{
+    max-height: 280px;
+}
+
+.profilData table td:first-child
+{
+    width: 150px;
+}
+
+.profilData h3
+{
+    margin: 10px 0;
+}
+
+.profilData textarea
+{
+    width: 300px;
+}
+
+.profilData select
+{
+    width: 314px;
+}
+
+.profilData input[type="text"]
+{
+    width: 300px;
+}
+
+.profilTitle
+{
+    padding: 10px 0;
+}
+
+.profilDetailLeft
+{
+    width: 25%;
+}
+
+.profilDetailRight
+{
+    width: 66.5%;
+}
+
+.profilAvatar
+{
+    height: 250px;
+}
+
+.profilAvatar img
+{
+    max-height: 250px;
+}
+
+.profilName
+{
+    padding:10px;
+    text-align: center;
+    /*font-size:1.3em;*/
+}
+
+.profilDesc
+{
+    margin:5px 0;
+}
+
+.profilType
+{
+    color:#2c3b4c;
+}
+
+.profil_social
+{
+    margin: 5px;
+}
+
+.profil_social a
+{
+    text-decoration:none;
+}
+
+.profil_fb{ background-image:url('images/profil_social.png'); background-position: 0 0; width: 22px; height: 22px; } 
+.profil_in{ background-image:url('images/profil_social.png'); background-position: 0 -72px; width: 22px; height: 22px; } 
+.profil_tw{ background-image:url('images/profil_social.png'); background-position: 0 -144px; width: 22px; height: 22px; } 
+.profil_viadeo{ background-image:url('images/profil_social.png'); background-position: 0 -216px; width: 22px; height: 22px; }
+
+.localisationsTagContainer ul 
+{
+    margin: 0;
+    padding: 0;
+}
+
+.localisationsTagContainer ul li a 
+{
+    text-decoration:none;
+    display:block;
+}
+
+.localisationTag
+{
+    padding: 5px 10px 5px 0;
+    padding-left:0;
+    text-align:right;
+    height:200px;
+}
+
+.localisationImgDiv
+{
+    width: 190px;
+    height: 140px;
+}
+
+.localisationImgDiv img
+{
+    max-height: 140px;
+}
+
+.localisationImgDesc
+{
+    width: 190px;
+}
+
+.profilComment:first-child
+{
+    margin-top:0;
+}
+
+.profilComment
+{
+    margin: 20px 0;
+}
+
+.profilCommentHead
+{
+    /*margin-left: 75px;*/
+}
+
+.commentAvatar
+{
+    height:50px;
+    width:50px;
+    /*margin-top: 20px;*/
+    margin-right: 20px;
+}
+
+.commentAvatar img
+{
+    max-height:50px;
+}
+
+.commentLocAvatar
+{
+	margin-left: 10px;
+	width:75px;
+}
+
+.commentLocAvatar img
+{
+    max-height:70px;
+}
+
+.commentContent
+{
+    position:relative;
+    background:#f6f6f6;
+    padding: 10px;
+    width:83%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.commentContent:after {
+	content:"";
+	position:absolute;
+	border-style:solid;
+	border-color:#f6f6f6 transparent; 
+    /* reduce the damage in FF3.0 */
+    display:block; 
+    width: 0;
+    top: 10px;
+    left: -10px;
+    bottom: auto;
+    border-width: 0 0 10px 10px;
+}
+
+.commentDate
+{
+    color:#bbb;
+}
+
+/*.commentLocPic
+{
+    width:80px;
+    height:50px;
+}*/
+
+.memberLink
+{
+    vertical-align: text-bottom;
+}

@@ -1,0 +1,132 @@
+﻿@model WorkiSiteWeb.Models.Member
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(WorkiResources.Views.Profile.ProfileString.YourProfile)</title>
+}
+
+<div>
+    @RazorHelpers.TitleDiv(WorkiResources.Views.Profile.ProfileString.EditYourProfile, "Blue")
+</div>
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Member</legend>
+
+    <div class="display-label">Username</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+
+    <div class="display-label">Password</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">PasswordSalt</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PasswordSalt)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">EmailKey</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmailKey)
+    </div>
+
+    <div class="display-label">PasswordQuestion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PasswordQuestion)
+    </div>
+
+    <div class="display-label">PasswordAnswer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PasswordAnswer)
+    </div>
+
+    <div class="display-label">IsApproved</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsApproved)
+    </div>
+
+    <div class="display-label">IsLockedOut</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsLockedOut)
+    </div>
+
+    <div class="display-label">CreatedDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedDate)
+    </div>
+
+    <div class="display-label">LastActivityDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastActivityDate)
+    </div>
+
+    <div class="display-label">LastLoginDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastLoginDate)
+    </div>
+
+    <div class="display-label">LastPasswordChangedDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastPasswordChangedDate)
+    </div>
+
+    <div class="display-label">LastLockoutDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastLockoutDate)
+    </div>
+
+    <div class="display-label">FailedPasswordAttemptCount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FailedPasswordAttemptCount)
+    </div>
+
+    <div class="display-label">FailedPasswordAttemptWindowStart</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FailedPasswordAttemptWindowStart)
+    </div>
+
+    <div class="display-label">FailedPasswordAnswerAttemptCount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FailedPasswordAnswerAttemptCount)
+    </div>
+
+    <div class="display-label">FailedPasswordAnswerAttemptWindowStart</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FailedPasswordAnswerAttemptWindowStart)
+    </div>
+
+    <div class="display-label">Comment</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comment)
+    </div>
+
+    <div class="display-label">Profile</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberMainData.Profile)
+    </div>
+
+    <div class="display-label">Civility</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberMainData.Civility)
+    </div>
+
+    <div class="display-label">LastName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberMainData.LastName)
+    </div>
+
+    <div class="display-label">CompanyName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberMainData.CompanyName)
+    </div>
+</fieldset>
+

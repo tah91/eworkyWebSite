@@ -1,0 +1,21 @@
+﻿
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Models.Account.AccountModels.ChangeThePassword)</title>
+}
+
+
+    <div class="borderContainer">
+        @RazorHelpers.TitleDiv(WorkiResources.Views.Account.AccountString.EWorkyRegister, "Blue")
+
+        <p>
+        @WorkiResources.Views.Account.AccountString.ConfirmationMail
+        </p>
+    </div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

@@ -1,0 +1,18 @@
+﻿@model WorkiSiteWeb.Models.LogOnModel 
+<div class="visitorDesc">
+<p>@WorkiResources.Views.Visitor.VisitorString.SetUserMail
+</p>
+</div>
+<div class="visitorForm">
+@using (Html.BeginForm(MVC.Account.ActionNames.LogOn,MVC.Account.Name,FormMethod.Post))
+{ 
+   @Html.AntiForgeryToken()
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Login, new { placeholder = WorkiResources.Models.Account.AccountModels.Email })
+    </div>
+    <div class="editor-field">
+        @Html.PasswordFor(model => model.Password, new { placeholder = WorkiResources.Models.Account.AccountModels.Password })&nbsp;&nbsp;@Html.ActionLink(WorkiResources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
+    </div>
+    <input type="submit" class="btn_blue imageBtn" value="Connexion" name="login"/>
+} 
+</div> 

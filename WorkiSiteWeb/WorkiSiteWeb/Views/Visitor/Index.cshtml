@@ -1,0 +1,30 @@
+﻿@model WorkiSiteWeb.Models.VisitorFormViewModel
+
+@section HeadContent
+{   
+    <title>@WorkiResources.Views.Visitor.VisitorString.eWorky</title>
+    <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
+}
+
+<div class="borderContainer" style="margin-top: 40px;">
+    @RazorHelpers.TitleDiv(WorkiResources.Views.Visitor.VisitorString.EWBetaPrivate, "Blue")
+      
+    @Html.Partial(MVC.Visitor.Views._LogOnForm, Model.LogOn)
+    @Html.Partial(MVC.Visitor.Views._VisitorForm, Model.Visitor)
+</div>
+<div class="visitorBottom">
+    @WorkiResources.Views.Visitor.VisitorString.SugestBug
+    @EmailService.ContactMail
+</div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery" type="text/javascript"></script>
+    <script src="@Url.Content(Links.Scripts.jquery_placeholder_min_js)" type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+    <script type="text/javascript">
+		$(document).ready(function () {
+			$('input, textarea').placeholder();
+        });
+	</script>
+}

@@ -1,0 +1,52 @@
+﻿@model WorkiSiteWeb.Models.ChangePasswordModel
+
+@section HeadContent
+{  
+    <title>@Html.WorkiTitle(WorkiResources.Models.Account.AccountModels.ChangeThePassword)</title>
+}
+
+    <div class="borderContainer">
+     @RazorHelpers.TitleDiv(WorkiResources.Models.Account.AccountModels.ChangeThePassword, "Blue")
+        <div class="login-account">
+            <div class="loginDesc">
+            @WorkiResources.Views.Account.AccountString.NewOldPassword<br />
+            @String.Format(WorkiResources.Views.Account.AccountString.MinimumLength,ViewData["PasswordLength"] )
+            </div>
+            @using (Html.BeginForm()) { 
+                @Html.AntiForgeryToken()
+
+                <div>              
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.OldPassword) 
+                    </div>
+                    <div class="editor-field">
+                        @Html.PasswordFor(m => m.OldPassword) 
+                    </div>
+                
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.NewPassword) 
+                    </div>
+                    <div class="editor-field">
+                        @Html.PasswordFor(m => m.NewPassword) 
+                    </div>
+                
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.ConfirmPassword) 
+                    </div>
+                    <div class="editor-field">
+                        @Html.PasswordFor(m => m.ConfirmPassword) 
+                    </div>
+
+                    @Html.HiddenFor(m => m.UserName) 
+
+                    <input type="submit" class="btn_blue imageBtn" value="Modifier"/>
+                </div>
+                } 
+        </div>
+    </div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

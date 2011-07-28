@@ -1,0 +1,76 @@
+﻿@model WorkiSiteWeb.Models.AdminLocalisation
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.Content(Links.Content.Admin_css)" rel="stylesheet" type="text/css" />
+}
+
+<h2>@WorkiResources.Views.Admin.AdminString.LocalisationsAdmin </h2>
+<div class="contentAdmin">
+    <div id="adminMenu"> 
+        @Html.Partial(MVC.Admin.Views._AdminMenu)
+    </div>
+    <div class="adminPanel">
+        @using (Html.BeginForm(MVC.Admin.ActionNames.UpdateMainLocalisation, MVC.Admin.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+        {
+        @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <th>
+                    &Agrave; @WorkiResources.Views.Admin.AdminString.TheTop
+                </th>
+                <th>
+                    &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.ID
+                </th>
+                <th>
+                    &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.Name
+                </th>
+                <th>
+                    &nbsp;&nbsp;@WorkiResources.Views.Admin.AdminString.User
+                </th>
+                <th>
+                    &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.Action
+                </th>
+            </tr>
+            @foreach (var item in Model.Localisations)
+            { 
+            <tr>
+                <td align="right">
+                    @Html.CheckBox(item.ID.ToString(), Model.AdminDict[item])
+                </td>
+                <td align="right">
+                    @item.ID
+                </td>
+                <td align="right">
+                    @item.Name
+                </td>
+                <td align="right">
+                    @Html.TextBox(item.ID.ToString(), item.Member.Username)
+                </td>
+            
+                    <td align="right">
+                        &nbsp;&nbsp;
+                        @Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.Edit, MVC.Localisation.Edit(item.ID)) 
+                        &nbsp;&nbsp; | &nbsp;&nbsp;
+                        @Html.ActionLink(WorkiResources.Views.Admin.AdminString.Delete, MVC.Localisation.Delete(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                        &nbsp;&nbsp; | &nbsp;&nbsp;
+                        @Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.Details, MVC.Localisation.Details(item.ID, ControllerHelpers.GetSeoTitle(item.Name)))
+                    </td>
+             
+                </tr>
+                } 
+            </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.Index, MVC.Admin.Name, new { page = x }))
+        </div> 
+        <div>
+            @Html.SubmitButton("Update", WorkiResources.Views.Admin.AdminString.Update)
+        </div>
+        } 
+        <div class="clear">
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,42 @@
+﻿@{
+    var welcomePeopleList = ViewData[WorkiSiteWeb.Controllers.HomeController.WelcomePeopleList] as List<WelcomePeople>;
+}
+
+<div class="index_slides float-left" id="slides">
+	<div class="slides_container">
+        @foreach (var item in welcomePeopleList)
+        {
+			var localisationLink = Url.Action(MVC.Localisation.Details(item.LocalisationId, ControllerHelpers.GetSeoTitle(item.Localisation.Name)));
+			var memberLink = Url.Action(MVC.Profil.Detail(item.MemberId));
+			var age = item.Member.GetAge();
+        <div class="slide">
+            <a href="@localisationLink" title="@item.Localisation.Name" class="slide_image">
+                <img src="@MiscHelpers.GetUserImagePath(item.LocalisationPicture)" alt="@item.Localisation.Name"/>
+            </a>
+			<div class="caption">
+                <div class="caption_avatar float-left">
+					<a href="@memberLink">
+						@RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar), item.Member.MemberMainData.FirstName + " " + item.Member.MemberMainData.LastName)
+						@*<img src="@MiscHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar)" alt="@item.Member.MemberMainData.FirstName @item.Member.MemberMainData.LastName"/>*@
+					</a>
+                </div>
+                <div class="caption_text">
+                    <div class="caption_desc flot-left">
+                        <a href="@localisationLink">@string.Format("\"{0}\"",item.Description)</a>
+                    </div>
+                    <div class="caption_infos flot-left">
+                        <span class="caption_name"><a href="@memberLink">@item.Member.MemberMainData.FirstName @item.Member.MemberMainData.LastName</a></span> <br />
+						@MemberMainData.ProfileTypes[item.Member.MemberMainData.Profile]
+						@if (age.HasValue)
+						{ 
+							@string.Format(", {0} ans.", age)
+						}
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+			</div>
+        </div>
+		}
+    </div>
+</div>

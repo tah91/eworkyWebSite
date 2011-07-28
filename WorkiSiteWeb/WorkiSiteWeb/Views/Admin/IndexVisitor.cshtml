@@ -1,0 +1,84 @@
+﻿@model WorkiSiteWeb.Models.VisitorListViewModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.VisitorAdministration)</title>
+    <link href="@Url.Content(Links.Content.Admin_css) " rel="stylesheet" type="text/css" />
+}
+
+
+ <h2>@WorkiResources.Views.Admin.AdminString.VisitorAdministration</h2>
+ <div class="contentAdmin"> 
+    <div id="adminMenu"> 
+      @Html.Partial(MVC.Admin.Views._AdminMenu) 
+    </div>
+
+  <div class="adminPanel">
+        @using (Html.BeginForm(MVC.Admin.ActionNames.ChangeUserRole, MVC.Admin.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+        { 
+            @Html.AntiForgeryToken();
+        <table>
+         <thead>
+            <tr>
+                <th>
+                   &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.ID
+                </th>
+                <th>
+                   &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.EmailAddress
+                </th>
+                <th>
+                   &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.SendEmail
+                </th>
+                <th>
+                  &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.ValidationSend
+                </th>
+                <th>
+                  &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.IsRegistered
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.ListVisitor)
+        { 
+            <tr>
+                <td align="right">
+                    @item.Key.Id
+                </td>
+                <td align="right">
+                    @item.Key.Email
+                </td>
+                <td align="right">
+                @if (item.Value)
+                {  
+                    @WorkiResources.Views.Admin.AdminString.AlreadyRegistered
+                }
+                else if (item.Key.IsValid && !item.Value)
+                {  
+                   @WorkiResources.Views.Admin.AdminString.WaitInscription
+                }
+                else
+                { 
+                    @Html.ActionLink(WorkiResources.Views.Admin.AdminString.Send, MVC.Admin.SendEmail(item.Key.Email, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                } 
+                @*@Html.ActionLink("envoyer", MVC.Admin.ActionNames.SendEmail, new { email = item.Key.Email })*@
+                </td>
+                <td align="center">
+                    @Html.CheckBox("" + item.Key.Id, item.Key.IsValid, new { disabled = true })
+                </td>
+                <td align="center">
+                    @Html.CheckBox("" + item.Key.Id, item.Value, new { disabled = true })
+                </td>
+            </tr>
+        } 
+             </tbody>
+             <tfoot> </tfoot>
+        </table>
+           <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("IndexVisitor", new { page = x }))
+        </div> 
+       
+        } 
+        </div>
+    </div>
+
+

@@ -1,0 +1,19 @@
+﻿
+<ul class="adminSubMenu" >
+    <li id="localisationSubMenu"> 
+      @Html.ActionLink(WorkiResources.Views.Shared.SharedString.Workplace,MVC.Admin.Index())
+    </li>
+    <li id="userSubMenu"> 
+     @Html.ActionLink(WorkiResources.Views.Shared.SharedString.Users, MVC.Admin.IndexUser())
+    </li>
+    <li id="visitorSubMenu"> 
+     @Html.ActionLink(WorkiResources.Views.Shared.SharedString.Visitors, MVC.Admin.IndexVisitor())
+    </li>
+    <li id="welcomePeopleSubMenu"> 
+     @Html.ActionLink(WorkiResources.Views.Shared.SharedString.Welcome, MVC.Admin.IndexWelcomePeople())
+    </li>
+	<li id="importSubMenu"> 
+     @Html.ActionLink(WorkiResources.Views.Shared.SharedString.ImportLocalisations, MVC.Admin.IndexImport())
+    </li>
+</ul>
+

@@ -1,0 +1,17 @@
+﻿@model WorkiSiteWeb.Models.Localisation
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(WorkiResources.Views.Localisation.LocalisationString.DeletedWorkplace) </title>
+}
+
+
+
+<h2>@WorkiResources.Views.Localisation.LocalisationString.DeletedWorkplace</h2>
+<div>
+    <p>@WorkiResources.Views.Localisation.LocalisationString.WorkplaceWellDeleted</p>
+</div>
+<div>
+    <p>@Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.BackHome, "Index", "Home")</p>
+</div>
+

@@ -1,0 +1,14 @@
+﻿@model WorkiSiteWeb.Models.Localisation
+
+<div id="fileupload" class="borderRadius">
+    <div class="fileupload-buttonbar">
+        <label class="fileinput-button">
+            <span>@WorkiResources.Views.Localisation.LocalisationString.AddPicture</span>
+            <input type="file" name="files[]" accept="image/*"/>
+        </label>
+    </div>
+    <div class="fileupload-content">
+        <table class="files"></table>
+        <div class="fileupload-progressbar"></div>
+    </div>
+</div>

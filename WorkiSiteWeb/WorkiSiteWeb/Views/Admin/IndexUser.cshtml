@@ -1,0 +1,82 @@
+﻿@model WorkiSiteWeb.Models.UserListViewModel
+           
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.UserAdministration)</title>
+    <link href="@Url.Content(Links.Content.Admin_css) " rel="stylesheet" type="text/css" />
+}
+
+ <h2> @WorkiResources.Views.Admin.AdminString.UserAdmin</h2>
+ <div class="contentAdmin"> 
+    <div id="adminMenu"> 
+      @Html.Partial(MVC.Admin.Views._AdminMenu) 
+    </div>
+
+  <div class="adminPanel">
+        @using (Html.BeginForm(MVC.Admin.ActionNames.ChangeUserRole, MVC.Admin.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+        { 
+        @Html.AntiForgeryToken();
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                       &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.Name
+                    </th>
+                    <th>
+                       &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.EmailAddress
+                    </th>
+                    <th>
+                      &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.ManagerRole
+                    </th>
+                    <th>
+                      &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.Action
+                    </th>
+                    <th>
+                      &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.Points
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListMemberShip)
+                { 
+                    <tr>
+                        <td align="right">
+                            @item.Key.UserName
+                        </td>
+                        <td align="right">
+							@if (Model.MemberIds.ContainsKey(item.Key.Email))
+							{
+								@Html.ActionLink(item.Key.Email, MVC.Profil.Dashboard(Model.MemberIds[item.Key.Email]))
+							}
+							else
+							{
+								@item.Key.Email
+							}
+                            
+                        </td>
+                        <td align="center">
+                            @Html.CheckBox(item.Key.UserName, item.Value)
+                        </td>
+                       <td align="right">
+                            &nbsp;&nbsp;
+                            @Html.ActionLink(WorkiResources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteUser(item.Key.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                        </td>
+                        <td align="right">
+                            &nbsp;&nbsp;
+                            num Point
+                        </td>
+                    </tr>
+				} 
+            </tbody>
+            <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("IndexUser", new { page = x }))
+        </div> 
+        <div>
+            @Html.SubmitButton("Update", WorkiResources.Views.Admin.AdminString.UpdateRole)
+        </div>
+        } 
+        </div>
+    </div>
+

@@ -1,0 +1,100 @@
+﻿@model WorkiSiteWeb.Models.Contact
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(WorkiResources.Views.Home.HomeString.Contact)</title>
+    <link href="@Url.Content(Links.Content.Index_css) " rel="stylesheet" type="text/css" />
+}
+
+
+<div class="borderContainer">
+    @RazorHelpers.TitleDiv(WorkiResources.Views.Home.HomeString.ContactUs, "Blue")
+    
+    <div class="clear">
+    </div>
+    <div class="contactDiv">
+        <div class="login-account">
+            @using (Html.BeginForm()) 
+            {
+                @Html.AntiForgeryToken()
+                <table>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.LastName) 
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.LastName) 
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.FirstName)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.FirstName)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td>
+                            <div class="editor-label">
+                                @WorkiResources.Models.Contact.Contact.Email
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.EMail)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Subject)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Subject)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Message)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextAreaFor(model => model.Message)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                <input type="submit" class="btn_blue imageBtn" value="Envoyer" style="margin-top:10px;"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            } 
+        </div>
+    </div>   
+</div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery" type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

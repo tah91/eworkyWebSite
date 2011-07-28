@@ -1,0 +1,591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2462748-E1E5-415A-9299-C28B6499ABD5}</ProjectGuid>
+    <ProjectTypeGuids>{e53f8fea-eae0-44a6-8774-ffd645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WorkiSiteWeb</RootNamespace>
+    <AssemblyName>WorkiSiteWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <CodeAnalysisLogFile>bin\WorkiSiteWeb.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <AllowedReferenceRelatedFileExtensions>
+      <!-- Prevent default XML and PDB files copied to output in RELEASE. 
+			   Only *.allowedextension files will be included, which doesn't exist in my case.
+		   -->
+		  .none
+	</AllowedReferenceRelatedFileExtensions>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AzureTest|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <CodeAnalysisLogFile>bin\WorkiSiteWeb.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <PublishDatabases>true</PublishDatabases>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowedReferenceRelatedFileExtensions>
+      <!-- Prevent default XML and PDB files copied to output in RELEASE. 
+			   Only *.allowedextension files will be included, which doesn't exist in my case.
+		   -->
+		  .none
+	  </AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.DistributedCache">
+      <HintPath>..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.0\Assemblies\NET4.0\Cache\Microsoft.Web.DistributedCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Ninject, Version=2.1.0.67, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.WebPages">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CapatchaImageController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
+    <Compile Include="Controllers\VisitorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocalisationController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Capatchahelper.cs" />
+    <Compile Include="Helpers\ControllerHelpers.cs" />
+    <Compile Include="Helpers\MiscHelpers.cs" />
+    <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\CustomClass\Exceptions.cs" />
+    <Compile Include="Logging\AzureAppender.cs" />
+    <Compile Include="Logging\Log4NetLogger.cs" />
+    <Compile Include="Models\LocalisationBinder.cs" />
+    <Compile Include="Infrastructure\Email\IEmailService.cs" />
+    <Compile Include="Infrastructure\CustomClass\ActionResult.cs" />
+    <Compile Include="Infrastructure\CustomClass\MultiCultureMvcRouteHandler .cs" />
+    <Compile Include="Infrastructure\CustomClass\Attributes.cs" />
+    <Compile Include="Infrastructure\Logging\ILogger.cs" />
+    <Compile Include="Infrastructure\Membership\IFormAuthentication.cs" />
+    <Compile Include="Infrastructure\Membership\IMembershipService.cs" />
+    <Compile Include="Infrastructure\Membership\IOpenIdRelyingParty.cs" />
+    <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Infrastructure\Repository\ISearchService.cs" />
+    <Compile Include="Infrastructure\Repository\IWelcomePeopleRepository.cs" />
+    <Compile Include="Infrastructure\Repository\IRepository.cs" />
+    <Compile Include="Infrastructure\Repository\IGroupRepository.cs" />
+    <Compile Include="Infrastructure\Repository\ILocalisationRepository.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AdminModels.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Infrastructure\Repository\IVisitorRepository.cs" />
+    <Compile Include="Infrastructure\Repository\IMemberRepository.cs" />
+    <Compile Include="Models\ProfilModel.cs" />
+    <Compile Include="Models\WorkiDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkiDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\WelcomePeopleRepository.cs" />
+    <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\GroupRepository.cs" />
+    <Compile Include="Services\WorkiRoleProvider.cs" />
+    <Compile Include="Services\MemberRepository.cs" />
+    <Compile Include="Services\VisitorRepository.cs" />
+    <Compile Include="Services\WorkiMembershipProvider.cs" />
+    <Compile Include="Models\Visitor.cs" />
+    <Compile Include="Models\Localisation.cs" />
+    <Compile Include="Services\LocalisationRepository.cs" />
+    <Compile Include="Services\OpenIdRelyingPartyService.cs" />
+    <Compile Include="Models\PageInfo.cs" />
+    <Compile Include="Models\SearchCriteria.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebRole.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\WorkiDB.mdf" />
+    <Content Include="App_Data\WorkiDB_log.ldf">
+      <DependentUpon>WorkiDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\Admin.css" />
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\csv-import.png" />
+    <Content Include="Content\images\favorite.png" />
+    <Content Include="Content\images\profil_social.png" />
+    <Content Include="Content\Profil.css" />
+    <Content Include="Content\galleria\classic-loader.gif" />
+    <Content Include="Content\galleria\classic-map.png" />
+    <Content Include="Content\galleria\galleria.classic.css" />
+    <Content Include="Content\images\coworking.png" />
+    <Content Include="Content\images\favicon.png" />
+    <Content Include="Content\images\lightbox-blank.gif" />
+    <Content Include="Content\images\lightbox-btn-close.gif" />
+    <Content Include="Content\images\lightbox-btn-next.gif" />
+    <Content Include="Content\images\lightbox-btn-prev.gif" />
+    <Content Include="Content\images\lightbox-ico-loading.gif" />
+    <Content Include="Content\images\jobs_mark.jpeg" />
+    <Content Include="Content\images\pbar-ani.gif" />
+    <Content Include="Content\images\photo2.jpg" />
+    <Content Include="Content\images\photo3.jpg" />
+    <Content Include="Content\images\jobs_steve.jpg" />
+    <Content Include="Content\images\scoop.jpg" />
+    <Content Include="Content\images\serviceIcones.png" />
+    <Content Include="Content\images\visitor.jpg" />
+    <Content Include="Content\jquery.fileupload-ui.css" />
+    <Content Include="Content\Visitor.css" />
+    <Content Include="Content\CreateLocalisation.css" />
+    <Content Include="Content\icons\error.gif" />
+    <Content Include="Content\icons\exclamation.gif" />
+    <Content Include="Content\icons\info.gif" />
+    <Content Include="Content\images\ajout.jpg" />
+    <Content Include="Content\images\avail.png" />
+    <Content Include="Content\images\available.png" />
+    <Content Include="Content\images\a_la_une.png" />
+    <Content Include="Content\images\btn.png" />
+    <Content Include="Content\images\btn_logo.png" />
+    <Content Include="Content\images\btn_searchIndex.png" />
+    <Content Include="Content\images\btn_side.png" />
+    <Content Include="Content\images\btn_sprites.png" />
+    <Content Include="Content\images\comm_content.png" />
+    <Content Include="Content\images\comm_content1.png" />
+    <Content Include="Content\images\delete.gif" />
+    <Content Include="Content\images\drh.png" />
+    <Content Include="Content\images\followUs_footer.png" />
+    <Content Include="Content\images\footer.jpg" />
+    <Content Include="Content\images\google.gif" />
+    <Content Include="Content\images\iconeMap.png" />
+    <Content Include="Content\images\iconeMapold.png" />
+    <Content Include="Content\images\independant.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo2.png" />
+    <Content Include="Content\images\logo_fiche.png" />
+    <Content Include="Content\images\logo_footer.png" />
+    <Content Include="Content\images\logo_nveau.png" />
+    <Content Include="Content\images\loupe.png" />
+    <Content Include="Content\images\menu_middle.png" />
+    <Content Include="Content\images\menu_middleold.png" />
+    <Content Include="Content\images\menu_side.png" />
+    <Content Include="Content\images\menu_sideold.png" />
+    <Content Include="Content\images\next-horizontal.png" />
+    <Content Include="Content\images\next-vertical.png" />
+    <Content Include="Content\images\nomad.png" />
+    <Content Include="Content\images\openid.gif" />
+    <Content Include="Content\images\openingBack.png" />
+    <Content Include="Content\images\photo1.jpg" />
+    <Content Include="Content\images\photo4.jpg" />
+    <Content Include="Content\images\prev-horizontal.png" />
+    <Content Include="Content\images\prev-vertical.png" />
+    <Content Include="Content\images\recherche-min.png" />
+    <Content Include="Content\images\rechercher.jpg" />
+    <Content Include="Content\images\rechercher2.jpg" />
+    <Content Include="Content\images\rechercher2.png" />
+    <Content Include="Content\images\reset_search.png" />
+    <Content Include="Content\images\star.gif" />
+    <Content Include="Content\images\star.png" />
+    <Content Include="Content\images\startup.png" />
+    <Content Include="Content\images\student.png" />
+    <Content Include="Content\images\submit_add.png" />
+    <Content Include="Content\images\submit_search.png" />
+    <Content Include="Content\images\triangle_blue.png" />
+    <Content Include="Content\images\triangle_green.png" />
+    <Content Include="Content\images\triangle_grey.png" />
+    <Content Include="Content\images\triangle_orange.png" />
+    <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\images\uniformSprite.png" />
+    <Content Include="Content\images\users.jpg" />
+    <Content Include="Content\images\worker.png" />
+    <Content Include="Content\images\worki_fb.jpg" />
+    <Content Include="Content\images\worki_footer.png" />
+    <Content Include="Content\images\yahoo.gif" />
+    <Content Include="Content\Index.css" />
+    <Content Include="Content\jquery-ui-1.8.12.custom.css" />
+    <Content Include="Content\jquery.lightbox-0.5.css" />
+    <Content Include="Content\rateit.css" />
+    <Content Include="Content\Search.css" />
+    <Content Include="Content\LocalisationDetail.css" />
+    <Content Include="Content\SearchResults.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\skin.css" />
+    <Content Include="Content\uniform.default.css" />
+    <Content Include="Global.asax" />
+    <Content Include="robots.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\application.js" />
+    <Content Include="Scripts\cufon-yui.js" />
+    <Content Include="Content\galleria\galleria-1.2.4.js" />
+    <Content Include="Content\galleria\galleria-1.2.4.min.js" />
+    <Content Include="Content\galleria\galleria.classic.js" />
+    <Content Include="Content\galleria\galleria.classic.min.js" />
+    <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.12.custom.min.js" />
+    <Content Include="Scripts\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jquery.jcarousel.js" />
+    <Content Include="Scripts\jquery.jcarousel.min.js" />
+    <Content Include="Scripts\jquery.lightbox-0.5.min.js" />
+    <Content Include="Scripts\jquery.placeholder.min.js" />
+    <Content Include="Scripts\jquery.qtip-1.0.0-rc3.min.js" />
+    <Content Include="Scripts\jquery.rateit.min.js" />
+    <Content Include="Scripts\jquery.simpletip-1.3.1.min.js" />
+    <Content Include="Scripts\jquery.uniform.js" />
+    <Content Include="Scripts\jquery.uniform.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\slides.min.jquery.js" />
+    <Content Include="Scripts\Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js" />
+    <Content Include="Scripts\steinem_unicode_regular.typeface.js" />
+    <Content Include="Scripts\typeface-0.15.js" />
+    <Content Include="Scripts\WorkiMap.js" />
+    <Content Include="sitemap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\WorkiDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WorkiDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="App_Code\RazorHelpers.cshtml" />
+    <None Include="Startup\AspNetMVC3Setup.exe" />
+    <Content Include="Views\Account\inscription-reussie.cshtml" />
+    <Content Include="Views\Account\reset-mdp-reussi.cshtml" />
+    <Content Include="Views\Account\reset-mdp.cshtml" />
+    <Content Include="Views\Admin\IndexImport.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\IndexUser.cshtml" />
+    <Content Include="Views\Admin\IndexVisitor.cshtml" />
+    <Content Include="Views\Admin\supprimer-utilisateur.cshtml" />
+    <Content Include="Views\Admin\utilisateur-absent.cshtml" />
+    <Content Include="Views\Localisation\_LocalisationGalleryScript.cshtml" />
+    <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />
+    <Content Include="Views\Search\_SelectSearchScript.cshtml" />
+    <Content Include="Views\Shared\_CultureSwitchControl.cshtml" />
+    <Content Include="Views\Shared\_MainMenu.cshtml" />
+    <Content Include="Views\Visitor\demande-reussie.cshtml" />
+    <Content Include="Views\Visitor\_LogOnForm.cshtml" />
+    <Content Include="Views\Visitor\_VisitorForm.cshtml" />
+    <Content Include="Views\Visitor\Index.cshtml" />
+    <Content Include="Views\Home\cgu.cshtml" />
+    <Content Include="Views\Home\mentions-legales.cshtml" />
+    <Content Include="Views\Home\faq.cshtml" />
+    <Content Include="Views\Home\presse.cshtml" />
+    <Content Include="Views\Home\jobs.cshtml" />
+    <Content Include="Views\Search\_ServicesSelector.cshtml" />
+    <Content Include="Views\Admin\_AdminMenu.cshtml" />
+    <Content Include="Views\Shared\_CommentSummary.cshtml" />
+    <Content Include="Views\Search\_DescEntreprise.cshtml" />
+    <Content Include="Views\Search\_DescIndependant.cshtml" />
+    <Content Include="Views\Search\_DescNomade.cshtml" />
+    <Content Include="Views\Search\_DescStartUp.cshtml" />
+    <Content Include="Views\Search\_DescTeleworker.cshtml" />
+    <Content Include="Views\Search\_DescStudent.cshtml" />
+    <Content Include="Views\Home\_HomeDesc.cshtml" />
+    <Content Include="Views\Shared\_CufonScript.cshtml" />
+    <Content Include="Views\Shared\_IndexGalleryScript.cshtml" />
+    <Content Include="Views\Shared\_OpenGraphHead.cshtml" />
+    <Content Include="Views\Shared\_DirectAccess.cshtml" />
+    <Content Include="Views\Shared\_PictureContainer.cshtml" />
+    <Content Include="Views\Home\contact.cshtml" />
+    <Content Include="Views\Home\message-envoye.cshtml" />
+    <Content Include="Views\Localisation\_GalleryForm.cshtml" />
+    <Content Include="Views\Shared\_CommentForm.cshtml" />
+    <Content Include="Views\Search\_SearchForm.cshtml" />
+    <Content Include="Views\Search\_SearchResultSummary.cshtml" />
+    <Content Include="Views\Shared\_IconeServices.cshtml" />
+    <Content Include="Views\Localisation\supprimer.cshtml" />
+    <Content Include="Views\Localisation\supprimer-reussi.cshtml" />
+    <Content Include="Views\Localisation\editer.cshtml" />
+    <Content Include="Views\Localisation\Index.cshtml" />
+    <Content Include="Views\Localisation\utilisateur-invalid.cshtml" />
+    <Content Include="Views\Localisation\_LocalisationForm.cshtml" />
+    <Content Include="Views\Shared\_Map.cshtml" />
+    <Content Include="Views\Localisation\lieu-absent.cshtml" />
+    <Content Include="Views\Search\recherche-lieu-travail.cshtml" />
+    <Content Include="Views\Search\resultats-liste.cshtml" />
+    <Content Include="Views\Shared\_IndexGallery.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Account\changer-mdp.cshtml" />
+    <Content Include="Views\Account\changer-mdp-reussi.cshtml" />
+    <Content Include="Views\Account\connexion.cshtml" />
+    <Content Include="Views\Account\inscription.cshtml" />
+    <Content Include="Views\Home\a-propos.cshtml" />
+    <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnUserControl.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Views\Shared\__Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Web.AzureTest.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\_LocalisationDetail.cshtml" />
+    <Content Include="Views\Admin\IndexWelcomePeople.cshtml" />
+    <Content Include="Views\Admin\CreateWelcomePeople.cshtml" />
+    <Content Include="Views\Admin\EditWelcomePeople.cshtml" />
+    <Content Include="Views\Admin\DetailWelcomePeople.cshtml" />
+    <Content Include="Views\Home\_PeopleSlider.cshtml" />
+    <Content Include="Views\Profil\editer.cshtml" />
+    <Content Include="Views\Profil\details.cshtml" />
+    <Content Include="Views\Profil\dashboard.cshtml" />
+    <Content Include="Views\Admin\DeleteWelcomePeople.cshtml" />
+    <Content Include="Views\Shared\_TabScript.cshtml" />
+    <Content Include="Views\Profil\_LocalisationTab.cshtml" />
+    <Content Include="Views\Profil\_CommentTab.cshtml" />
+    <Content Include="Views\Shared\resultats-detail.cshtml" />
+    <Content Include="Views\Shared\_AddToFavorite.cshtml" />
+    <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
+    <Content Include="Views\Shared\_CommentFormScript.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font\STEINEMB.ttf" />
+    <Content Include="Content\font\STEINEMI.ttf" />
+    <Content Include="Content\font\STEINEMU.ttf" />
+    <None Include="Startup\installmvc.cmd" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <None Include="T4MVC.tt.settings.t4" />
+    <Content Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Azure.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorkiResources\WorkiResources.csproj">
+      <Project>{54441744-36D7-4CD6-A5B3-372A217841B0}</Project>
+      <Name>WorkiResources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Messages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7395</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/WorkiSiteWeb</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

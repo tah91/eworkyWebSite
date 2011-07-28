@@ -1,0 +1,354 @@
+﻿@model WorkiSiteWeb.Models.Localisation
+
+@helper SelectFeatures(Localisation model, LocalisationOffer offerType, bool isSearchForm)
+    {
+        if (isSearchForm)
+        {
+            switch (offerType)
+            {
+                case LocalisationOffer.FreeArea:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
+            </div>
+        </div>
+                break;
+                case LocalisationOffer.BuisnessRoom:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.SafeStorage, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Shower, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Newspaper, FeatureType.General)
+            </div>
+        </div>
+                break;
+                case LocalisationOffer.Workstation:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.ErgonomicFurniture, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Printer, FeatureType.WorkingPlace)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Computers, FeatureType.WorkingPlace)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
+            </div>
+        </div>
+                break;
+                case LocalisationOffer.SingleDesk:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Domiciliation, FeatureType.WorkingPlace)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Courier, FeatureType.WorkingPlace)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.RelaxingArea, FeatureType.WorkingPlace)
+            </div>
+        </div>
+                break;
+                case LocalisationOffer.MeetingRoom:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room2_7, FeatureType.MeetingRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room7_20, FeatureType.MeetingRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room20_plus, FeatureType.MeetingRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Audio, FeatureType.MeetingRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.VideoProj, FeatureType.MeetingRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Drinks, FeatureType.MeetingRoom)
+            </div>
+        </div>
+                break;
+                case LocalisationOffer.SeminarRoom:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room20_100, FeatureType.SeminarRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room100_250, FeatureType.SeminarRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room250_1000, FeatureType.SeminarRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room1000_plus, FeatureType.SeminarRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Welcoming, FeatureType.SeminarRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Catering, FeatureType.SeminarRoom)
+            </div>
+        </div>
+                break;
+                case LocalisationOffer.VisioRoom:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room1_4, FeatureType.VisioRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room5_10, FeatureType.VisioRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Room10_Plus, FeatureType.VisioRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Visio, FeatureType.VisioRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.VisioHD, FeatureType.VisioRoom)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Telepresence, FeatureType.VisioRoom)
+            </div>
+        </div>
+                break;
+                default:
+                break;
+            }
+        }
+        else
+        {
+            switch (offerType)
+            {
+                case LocalisationOffer.FreeArea:
+        <div id="searchOptionToReplace">                            
+            <div class="float-left searchCheckBoxs">
+                @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+           break;
+                case LocalisationOffer.BuisnessRoom:
+        <div id="searchOptionToReplace">                            
+            <div class="float-left searchCheckBoxs">
+                @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.SafeStorage, FeatureType.General)
+            </div>
+            <div class="float-left searchCheckBoxs" style="padding-left:30px;">
+                @Html.FeatureChecboxLabel(model, Feature.Shower, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.Newspaper, FeatureType.General)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+           break;
+                case LocalisationOffer.Workstation:
+        <div id="searchOptionToReplace">                            
+            <div class="float-left searchCheckBoxs">
+                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.ErgonomicFurniture, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
+            </div>
+            <div class="float-left searchCheckBoxs" style="padding-left:30px;">
+                @Html.FeatureChecboxLabel(model, Feature.Printer, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel(model, Feature.Computers, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+           break;
+                case LocalisationOffer.SingleDesk:
+        <div id="searchOptionToReplace">                            
+            <div class="float-left searchCheckBoxs">
+                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.Domiciliation, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
+            </div>
+            <div class="float-left searchCheckBoxs" style="padding-left:30px;">
+                @Html.FeatureChecboxLabel(model, Feature.Courier, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel(model, Feature.RelaxingArea, FeatureType.WorkingPlace)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+           break;
+                case LocalisationOffer.MeetingRoom:
+        <div id="searchOptionToReplace">                            
+            <div class="float-left searchCheckBoxs">
+                @Html.FeatureChecboxLabel(model, Feature.Room2_7, FeatureType.MeetingRoom)
+                @Html.FeatureChecboxLabel(model, Feature.Room7_20, FeatureType.MeetingRoom)
+                @Html.FeatureChecboxLabel(model, Feature.Room20_plus, FeatureType.MeetingRoom)
+            </div>
+            <div class="float-left searchCheckBoxs" style="padding-left:30px;">
+                @Html.FeatureChecboxLabel(model, Feature.Audio, FeatureType.MeetingRoom)
+                @Html.FeatureChecboxLabel(model, Feature.VideoProj, FeatureType.MeetingRoom)
+                @Html.FeatureChecboxLabel(model, Feature.Drinks, FeatureType.MeetingRoom)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+           break;
+                case LocalisationOffer.SeminarRoom:
+        <div id="searchOptionToReplace">                            
+            <div class="float-left searchCheckBoxs">
+                @Html.FeatureChecboxLabel(model, Feature.Room20_100, FeatureType.SeminarRoom)
+                @Html.FeatureChecboxLabel(model, Feature.Room100_250, FeatureType.SeminarRoom)
+                @Html.FeatureChecboxLabel(model, Feature.Room250_1000, FeatureType.SeminarRoom)
+            </div>
+            <div class="float-left searchCheckBoxs" style="padding-left:30px;">
+                @Html.FeatureChecboxLabel(model, Feature.Room1000_plus, FeatureType.SeminarRoom)
+                @Html.FeatureChecboxLabel(model, Feature.Welcoming, FeatureType.SeminarRoom)
+                @Html.FeatureChecboxLabel(model, Feature.Catering, FeatureType.SeminarRoom)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+           break;
+                case LocalisationOffer.VisioRoom:
+            <div id="searchOptionToReplace">                            
+                <div class="float-left searchCheckBoxs">
+                    @Html.FeatureChecboxLabel(model, Feature.Room1_4, FeatureType.VisioRoom)
+                    @Html.FeatureChecboxLabel(model, Feature.Room5_10, FeatureType.VisioRoom)
+                    @Html.FeatureChecboxLabel(model, Feature.Room10_Plus, FeatureType.VisioRoom)
+                </div>
+                <div class="float-left searchCheckBoxs" style="padding-left:30px;">
+                    @Html.FeatureChecboxLabel(model, Feature.Visio, FeatureType.VisioRoom)
+                    @Html.FeatureChecboxLabel(model, Feature.VisioHD, FeatureType.VisioRoom)
+                    @Html.FeatureChecboxLabel(model, Feature.Telepresence, FeatureType.VisioRoom)
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+               break;
+                    default:
+               break;
+            }
+        }
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        @{ bool isSearchForm = (bool)ViewData["IsSearchForm"] ; }
+        var offer0 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea, isSearchForm).ToString()))';
+        var offer1 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessRoom, isSearchForm).ToString()))';
+        var offer2 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Workstation, isSearchForm).ToString()))';
+        var offer3 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SingleDesk, isSearchForm).ToString()))';
+        var offer4 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.MeetingRoom, isSearchForm).ToString()))';
+        var offer5 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SeminarRoom, isSearchForm).ToString()))';
+        var offer6 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.VisioRoom, isSearchForm).ToString()))';
+        //show correct search pane
+        SelectSearch = function () {
+            //reset
+            var currentOffer = jQuery.trim($("#Criteria_LocalisationOffer").val());
+            var newDivContent = '';
+            switch (currentOffer) {
+                case "0":
+                    newDivContent = offer0;
+                    break;
+                case "1":
+                    newDivContent = offer1;
+                    break;
+                case "2":
+                    newDivContent = offer2;
+                    break;
+                case "3":
+                    newDivContent = offer3;
+                    break;
+                case "4":
+                    newDivContent = offer4;
+                    break;
+                case "5":
+                    newDivContent = offer5;
+                    break;
+                case "6":
+                    newDivContent = offer6;
+                    break;
+            }
+            $("#searchOptionToReplace").replaceWith(newDivContent);
+        }
+        SelectSearch();
+        $('.offerSelect').change(function () {
+            SelectSearch();
+        });
+
+        //check all types
+        $("#Criteria_Everything").click(function () {
+            var isAll = $("#Criteria_Everything:checked").val();
+            if (isAll == 'true') {
+                $("#Criteria_SpotWifi").attr('checked', false);
+                $("#Criteria_CoffeeResto").attr('checked', false);
+                $("#Criteria_Biblio").attr('checked', false);
+                $("#Criteria_PublicSpace").attr('checked', false);
+                $("#Criteria_TravelerSpace").attr('checked', false);
+                $("#Criteria_Hotel").attr('checked', false);
+                $("#Criteria_Telecentre").attr('checked', false);
+                $("#Criteria_BuisnessCenter").attr('checked', false);
+                $("#Criteria_CoworkingSpace").attr('checked', false);
+                $("#Criteria_WorkingHotel").attr('checked', false);
+                $("#Criteria_PrivateArea").attr('checked', false);
+            }
+        });
+        UnckeckEverithing = function (checkboxId) {
+            $(checkboxId).click(function () {
+                var checked = checkboxId + ':checked';
+                var isTrue = $(checked).val();
+                if (isTrue == 'true') {
+                    $("#Criteria_Everything").attr('checked', false);
+                }
+            });
+        };
+        UnckeckEverithing("#Criteria_SpotWifi");
+        UnckeckEverithing("#Criteria_CoffeeResto");
+        UnckeckEverithing("#Criteria_Biblio");
+        UnckeckEverithing("#Criteria_PublicSpace");
+        UnckeckEverithing("#Criteria_TravelerSpace");
+        UnckeckEverithing("#Criteria_Hotel");
+        UnckeckEverithing("#Criteria_Telecentre");
+        UnckeckEverithing("#Criteria_BuisnessCenter");
+        UnckeckEverithing("#Criteria_CoworkingSpace");
+        UnckeckEverithing("#Criteria_WorkingHotel");
+        UnckeckEverithing("#Criteria_PrivateArea");
+    });
+</script>

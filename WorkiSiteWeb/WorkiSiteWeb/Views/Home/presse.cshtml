@@ -1,0 +1,24 @@
+﻿@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Home.HomeString.News) </title>
+}
+
+@RazorHelpers.TitleDiv(WorkiResources.Views.Home.HomeString.News, "Blue")
+<div class="detailContent generalTextContainer">
+    <div class="contentBlock generalTextContent float-right">
+        <p>
+            @String.Format(WorkiResources.Views.Home.HomeString.SpeechForJournalists, EmailService.ContactMail)
+        </p>
+        <p>
+            @WorkiResources.Views.Home.HomeString.SoonPressKit
+        </p>
+    </div>
+    <div class="clear">
+	</div>  
+</div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

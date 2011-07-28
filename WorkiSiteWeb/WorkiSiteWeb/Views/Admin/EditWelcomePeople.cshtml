@@ -1,0 +1,95 @@
+﻿@model WorkiSiteWeb.Models.WelcomePeopleFormViewModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.Content(Links.Content.Admin_css)" rel="stylesheet" type="text/css" />
+}
+
+<div class="borderContainer">
+    @RazorHelpers.TitleDiv(WorkiResources.Views.Admin.AdminString.EditWelcomePeople, "Blue")
+    
+    <div class="contactDiv">
+        <div class="login-account">
+
+            @using (Html.BeginForm(MVC.Admin.ActionNames.EditWelcomePeople, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <table>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @WorkiResources.Models.Contact.Contact.Email
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Email)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @WorkiResources.Views.Admin.AdminString.Localisation
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.LocalisationName)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @WorkiResources.Views.Admin.AdminString.Description
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.WelcomePeople.Description)
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@WorkiResources.Views.Admin.AdminString.LocalisationPicture
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								&nbsp;&nbsp;&nbsp;<img class="welcomePeopleMaxSize" src="@MiscHelpers.GetUserImagePath(Model.WelcomePeople.LocalisationPicture)" alt="plop"/>
+							</div>
+						</td>
+					</tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                 @WorkiResources.Views.Admin.AdminString.LocalisationPicture
+                            </div>
+                        </td>
+                        <td>
+                            <input type="file" name="LocalisationPicture" accept="image/*"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                <input type="submit" value="Save" />
+                            </div>
+                        </td>
+                    </tr>               
+                </table>
+            }
+        </div>
+    </div>   
+</div>
+               
+
+<div>
+    @Html.ActionLink(@WorkiResources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexWelcomePeople())
+</div>

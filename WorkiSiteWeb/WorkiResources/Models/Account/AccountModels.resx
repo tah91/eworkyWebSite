@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivationAccount" xml:space="preserve">
+    <value>Activation de votre compte eWorky</value>
+  </data>
+  <data name="AddWorkplace" xml:space="preserve">
+    <value>Ajoutez un espace de travail</value>
+  </data>
+  <data name="AfterConnection" xml:space="preserve">
+    <value>Vous pouvez {0}</value>
+    <comment>// on a enlever le après connexion</comment>
+  </data>
+  <data name="BePartOfGroupe" xml:space="preserve">
+    <value>1.    {0} pour faire partie de la communauté.</value>
+  </data>
+  <data name="BothAdding" xml:space="preserve">
+    <value>A la fois plateforme collaborative et moteur de recherche, eWorky vous permettra de trouver un lieu de travail (café avec wifi, salle de réunion, salle de formation, etc.) qui vous convient, de le noter et d'ajouter vos lieux de travail favoris !</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>modifier votre mot de passe.</value>
+  </data>
+  <data name="Civility" xml:space="preserve">
+    <value>Civilité</value>
+  </data>
+  <data name="CommentWhatYouTest" xml:space="preserve">
+    <value>3.    Ah mais attends je le connais cet endroit ! N’hésitez pas à commenter et à noter les lieux de travail que vous avez déjà testés. C’est par là que ça se passe pour {0}.</value>
+  </data>
+  <data name="CompletYourProfil" xml:space="preserve">
+    <value>Complétez votre profil</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirmer le mot de passe</value>
+  </data>
+  <data name="ConnectionEasy" xml:space="preserve">
+    <value>Vous pourrez ensuite vous connecter facilement avec votre identifiant " {0} "</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Adresse email</value>
+  </data>
+  <data name="EWBegining" xml:space="preserve">
+    <value>Lancement d'eWorky</value>
+  </data>
+  <data name="EWFirstOnWorkplaceSearch" xml:space="preserve">
+    <value>Vous l’attendiez avec impatience ? eWorky, premier portail français du lieu de travail vous ouvre enfin ses portes !</value>
+  </data>
+  <data name="EWTeam" xml:space="preserve">
+    <value>L’équipe eWorky</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Keep in touch ! Suivez nous sur {0}, sur {1} et envoyez nous régulièrement de vos nouvelles (contact@eworky.com).</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Bonjour,</value>
+  </data>
+  <data name="HelloMember" xml:space="preserve">
+    <value>Bonjour {0}</value>
+  </data>
+  <data name="IfYouFindThePlaceToWork" xml:space="preserve">
+    <value>2.    {0} Si vous avez déniché « THE place to work » et regrettez de ne pas l’avoir découvert avant, faites en profiter la communauté !</value>
+  </data>
+  <data name="KeepInTouch" xml:space="preserve">
+    <value>4.    Tenez nous au courant ! Qu’est-ce-qui marche mal sur le site ? Qu’est-ce-qui vous manque ? Eh oui, vous êtes les tout premiers privilégiés à tester le site donc il y aura sûrement beaucoup de choses à redire (contact@eworky.com). Mais ce site est avant tout là pour vous rendre service, donc il est encore temps de nous demander de l’adapter à vos besoins particuliers, n’hésitez pas !</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Adresse de messagerie</value>
+  </data>
+  <data name="LoginForm" xml:space="preserve">
+    <value>Login : </value>
+  </data>
+  <data name="MemberAfterActivation" xml:space="preserve">
+    <value>Une fois votre compte activé, vous serez officiellement membre de la communauté eWorky ... et nous avons le plaisir de vous annoncer que vous y êtes presque !</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nouveau mot de passe</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Mot de passe actuel</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Mot de passe : </value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Mémoriser le mot de passe ?</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Réinitialisation de votre mot de passe eWorky</value>
+  </data>
+  <data name="SearhPlace" xml:space="preserve">
+    <value>rechercher un lieu</value>
+  </data>
+  <data name="SeeYouSoon" xml:space="preserve">
+    <value>A très vite,&lt;br /&gt;L’équipe eWorky</value>
+  </data>
+  <data name="ValidationInscription" xml:space="preserve">
+    <value>Pour valider votre inscription sur eWorky, il vous suffit de cliquer sur le lien suivant : {0}</value>
+  </data>
+  <data name="YourNewLogin" xml:space="preserve">
+    <value>Voici vos nouveaux identifiants :</value>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value> Twitter </value>
+  </data>
+  <data name="ChangeThePassword" xml:space="preserve">
+    <value>Modifier le mot de passe</value>
+  </data>
+  <data name="ResetThePassword" xml:space="preserve">
+    <value>Réinitialiser le mot de passe</value>
+  </data>
+  <data name="PreciseBuisnessName" xml:space="preserve">
+    <value>Veuillez preciser le nom de votre entreprise</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Nom de l'entreprise</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Décrivez-vous</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Télephone portable</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+</root>

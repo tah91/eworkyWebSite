@@ -1,0 +1,113 @@
+﻿@model WorkiSiteWeb.Models.SearchCriteriaFormViewModel
+
+<div class="serviceItem" title="Wifi gratuit">
+    <div class="linkImg" id="wifiLnk">
+    <a href="#"></a>
+    </div>
+    @Html.FeatureHidden(Model.Criteria.LocalisationData, Feature.Wifi_Free, FeatureType.General)
+</div>
+
+<div class="serviceItem" title="Restauration">
+    <div class="linkImg" id="restoLnk">
+    <a href="#"></a>
+    </div>
+    @Html.FeatureHidden(Model.Criteria.LocalisationData, Feature.Restauration, FeatureType.General)
+</div>
+
+<div class="serviceItem" title="Café">
+    <div class="linkImg" id="coffeeLnk">
+    <a href="#"></a>
+    </div>
+    @Html.FeatureHidden(Model.Criteria.LocalisationData, Feature.Coffee, FeatureType.General)
+</div>
+
+<div class="serviceItem" title="Parking">
+    <div class="linkImg" id="parkingLnk">
+    <a href="#"></a>
+    </div>
+    @Html.FeatureHidden(Model.Criteria.LocalisationData, Feature.Parking, FeatureType.General)
+</div>
+
+<div class="serviceItem" title="Adapté pour personnes à mobilité réduite">
+    <div class="linkImg" id="handicapLnk">
+    <a href="#"></a>
+    </div>
+    @Html.FeatureHidden(Model.Criteria.LocalisationData, Feature.Handicap, FeatureType.General)
+</div>
+
+<div class="clear">
+</div>
+
+<script src="@MiscHelpers.jquery " type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        function SetActiveClass(divId, active, inactive, hClass) {
+            $(divId).removeClass(inactive);
+            $(divId).addClass(active);
+            $(divId).unbind('mouseenter mouseleave');
+            $(divId).hover(
+                function () {
+                    $(this).removeClass(active);
+                    $(this).addClass(hClass);
+                },
+                function () {
+                    $(this).removeClass(hClass);
+                    $(this).addClass(active);
+                });
+        }
+        function InitState(fieldId, divId, imgName) {
+            var val = $(fieldId).val();
+            var onClass = 'serviceIcones_' + imgName + '_on';
+            var offClass = 'serviceIcones_' + imgName + '_off';
+            var hClass = 'serviceIcones_' + imgName + '_h';
+            var active = '';
+            var inactive = '';
+            if (val == "True") {
+                active = onClass;
+                inactive = offClass;
+            }
+            else {
+                active = offClass;
+                inactive = onClass;
+            }
+            SetActiveClass(divId, active, inactive, hClass);
+        }
+
+        function InitHandler(fieldId, divId, imgName) {
+            $(divId).click(function (evt) {
+                //evt.preventDefault();
+                SwitchState(fieldId, divId, imgName);
+            });
+        }
+
+        function SwitchState(fieldId, divId, imgName) {
+            var val = $(fieldId).val();
+            var onClass = 'serviceIcones_' + imgName + '_on';
+            var offClass = 'serviceIcones_' + imgName + '_off';
+            var hClass = 'serviceIcones_' + imgName + '_h';
+            var active = '';
+            var inactive = '';
+            if (val == "True") {
+                $(fieldId).val("False");
+                active = offClass;
+                inactive = onClass; 
+            }
+            else {
+                $(fieldId).val("True");
+                active = onClass;
+                inactive = offClass;
+            }
+            SetActiveClass(divId, active, inactive, hClass);
+        }
+        InitState('#Wifi_Free-General', '#wifiLnk', 'wifi');
+        InitState('#Restauration-General', '#restoLnk', 'resto');
+        InitState('#Coffee-General', '#coffeeLnk', 'coffee');
+        InitState('#Parking-General', '#parkingLnk', 'parking');
+        InitState('#Handicap-General', '#handicapLnk', 'handicap');
+        InitHandler('#Wifi_Free-General', '#wifiLnk', 'wifi');
+        InitHandler('#Restauration-General', '#restoLnk', 'resto');
+        InitHandler('#Coffee-General', '#coffeeLnk', 'coffee');
+        InitHandler('#Parking-General', '#parkingLnk', 'parking');
+        InitHandler('#Handicap-General', '#handicapLnk', 'handicap');
+    });
+</script>

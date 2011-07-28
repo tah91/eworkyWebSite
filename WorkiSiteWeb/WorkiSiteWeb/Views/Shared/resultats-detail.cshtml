@@ -1,0 +1,97 @@
+﻿@model WorkiSiteWeb.Models.SearchSingleResultViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Model.Localisation.Name)</title>
+    @Html.Partial(MVC.Shared.Views._OpenGraphHead, Model.Localisation) 
+    
+    <link href="@Url.Content(Links.Content.Search_css) " rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.SearchResults_css) " rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.LocalisationDetail_css) " rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.rateit_css) " rel="stylesheet" type="text/css" />	
+    <link href="@Url.Content(Links.Content.Profil_css) " rel="stylesheet" type="text/css"/>
+}
+
+@if (Model.FromSearch)
+{ 
+<div class="pager pagerTop float-left">
+    @{ 
+	var rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+	foreach (string key in Request.QueryString.Keys)
+	{
+		rvd[key] = Request.QueryString[key];
+	}
+    }
+    @Html.ActionLink(WorkiResources.Views.Search.SearchString.ReturnToResult, MVC.Search.ActionNames.FullSearchResult, rvd, new System.Collections.Generic.Dictionary<string, object> { { "class", "bold" } })
+</div>
+<div class="pager pagerTop float-right">
+    @Html.PageDetailLinks(Model.Index, Model.TotalItems, x => { rvd["index"] = x; return Url.Action(MVC.Search.ActionNames.FullSearchResultDetail, rvd); }, "< Fiche Précédente", "Fiche Suivante >")
+</div>
+<div class="clear">
+</div>
+}
+@Html.Partial(MVC.Shared.Views._LocalisationDetail, Model.Localisation)
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery" type="text/javascript"></script>
+	<script src="@Links.Content.galleria.galleria_1_2_4_min_js" type="text/javascript"></script>
+	<script type="text/javascript">
+		// Load the classic theme
+		Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
+
+		// Initialize Galleria
+		$('#gallery').galleria({
+			//width: 600,
+			height: 350,
+			showInfo: false
+		});
+	</script>
+	<script src="@Url.Content(Links.Scripts.jquery_rateit_min_js)" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			BindRateIt = function (name) {
+				var rateItId = '#rateIt' + name;
+				//var id = '#Comment_' + name;
+				var id = '#' + name;
+				$(rateItId).bind('rated', function (event, value) {
+					$(id).val(value);
+				});
+			}
+			BindRateIt("Rating");
+			BindRateIt("RatingPrice");
+			BindRateIt("RatingWifi");
+			BindRateIt("RatingDispo");
+			BindRateIt("RatingWelcome");
+		});
+	</script>
+	<script type="text/javascript">
+		$().ready(function () {
+			$("#favLinkAddButton").live("click", function () {
+				$.ajax({
+						url: "@Url.Action(MVC.Profil.ActionNames.AddToFavorite,MVC.Profil.Name)",
+						data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
+						success: function (data) {
+							$("#favLink").html(data);
+						}
+					});
+			});
+			$("#favLinkDelButton").live("click", function () {
+				$.ajax({
+						url: "@Url.Action(MVC.Profil.ActionNames.RemoveFromFavorite,MVC.Profil.Name)",
+						data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
+						success: function (data) {
+							$("#favLink").html(data);
+						}
+					});
+			});
+		});
+	</script>
+	<!-- Placez cette balise dans la section <head> ou juste avant la balise de fermeture </body> -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+		{ lang: 'fr' }
+	</script>
+	@Html.Partial(MVC.Shared.Views._TabScript)
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+	@Html.Partial(MVC.Shared.Views._CommentFormScript, Model.Localisation)
+}

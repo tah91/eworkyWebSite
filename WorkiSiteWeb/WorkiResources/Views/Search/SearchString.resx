@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Entrepreneur" xml:space="preserve">
+    <value>Entrepreneur</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Caractéristiques</value>
+  </data>
+  <data name="Independant" xml:space="preserve">
+    <value>Indépendant</value>
+  </data>
+  <data name="KindOfLocation" xml:space="preserve">
+    <value>Type de lieux</value>
+  </data>
+  <data name="Nomad" xml:space="preserve">
+    <value>Nomade</value>
+  </data>
+  <data name="PlaceExamples" xml:space="preserve">
+    <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, ...</value>
+  </data>
+  <data name="PlaceFound" xml:space="preserve">
+    <value>lieu(x) trouvé(s)</value>
+  </data>
+  <data name="RefineSearch" xml:space="preserve">
+    <value>Affiner votre recherche</value>
+  </data>
+  <data name="ResultOfSearch" xml:space="preserve">
+    <value>Résultat(s) de votre recherche :</value>
+  </data>
+  <data name="ResultOnMap" xml:space="preserve">
+    <value>Vos résultats sur la carte</value>
+  </data>
+  <data name="ReturnToResult" xml:space="preserve">
+    <value>Retour aux résultats</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Recherche</value>
+  </data>
+  <data name="SearchByPlaceType" xml:space="preserve">
+    <value>Rechercher par type de lieu</value>
+  </data>
+  <data name="SearchByServiceType" xml:space="preserve">
+    <value>Rechercher par type de prestation</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Résultat(s) de recherche</value>
+  </data>
+  <data name="SpeechForBuisnessman1" xml:space="preserve">
+    <value>Vous êtes une PME ? manager ou DRH d’un grand groupe ? Et vous recherchez un télécentre ou
+    centre d’affaire qui puisse accueillir vos salariés ? ou encore une salle de réunion à l’autre bout de la
+    France ?</value>
+    <comment>ascx</comment>
+  </data>
+  <data name="SpeechForBuisnessman2" xml:space="preserve">
+    <value>eWorky va vous faire gagner du temps en listant pour vous tous les centres d’affaires, télécentres ou
+    lounges d’hôtels à proximité du lieu indiqué. Vous pourrez prochainement réserver des places en
+    télécentres ou des salles de réunion directement sur notre site internet : vous pouvez pour cela dès à
+    présent nous contacter à l’adresse contact@eworky.com.</value>
+  </data>
+  <data name="SpeechForIndependent1" xml:space="preserve">
+    <value>Vous êtes autoentrepreneur ou exercez une profession libérale et vous cherchez un bureau, une
+    salle de réunion ou même un coin de table pour travailler ?</value>
+  </data>
+  <data name="SpeechForIndependent2" xml:space="preserve">
+    <value>eWorky va vous faire gagner du temps en vous trouvant « le » bureau de vos rêves. Grâce aux conseils
+    de vos confrères que vous retrouverez dans les notations et commentaires de chaque fiche de
+    résultats, vous ne pourrez plus vous tromper. Pour cela, il vous suffit d’indiquer une adresse, un type
+    de lieu et de renseigner les services souhaités dans l’onglet « Rechercher ».</value>
+  </data>
+  <data name="SpeechForIndependent3" xml:space="preserve">
+    <value>Vous pouvez aider les autres indépendants en suggérant vos propres lieux de travail favoris dans
+    l’onglet « Ajout » ainsi qu’en notant et commentant les lieux que vous avez testés.</value>
+  </data>
+  <data name="SpeechForNomad1" xml:space="preserve">
+    <value>Vous êtes souvent en déplacement et recherchez un endroit pour travailler dans une ville que vous
+    ne connaissez pas ?</value>
+  </data>
+  <data name="SpeechForNomad2" xml:space="preserve">
+    <value>eWorky est fait pour vous et peut vous aider en vous proposant les meilleurs espaces pour travailler
+    à proximité de votre destination. Que vous cherchiez un lieu gratuit et convivial (café wifi, parc ou
+    bibliothèque) ou un espace professionnel (centre d’affaires, espace voyageurs, télécentre, etc.) vous
+    trouverez votre bonheur, où que vous soyez en France (et bientôt à l’étranger) : pour cela, il vous
+    suffit d’indiquer une adresse et un type de lieu dans l’onglet « Rechercher ».</value>
+  </data>
+  <data name="SpeechForNomad3" xml:space="preserve">
+    <value>Vous pouvez aider les autres nomades en suggérant vos propres lieux de travail favoris dans
+    l’onglet « Ajout » ainsi qu’en notant et commentant les lieux que vous avez testés.</value>
+  </data>
+  <data name="SpeechForStartUp1" xml:space="preserve">
+    <value>Vous êtes entrepreneur et recherchez une adresse pour vous domicilier, des locaux pour vous
+installer, une salle de réunion pour rencontrer vos prospects ou une grande salle pour organiser des
+formations ?</value>
+  </data>
+  <data name="SpeechForStartUp2" xml:space="preserve">
+    <value>eWorky va vous donner un coup de pouce dans votre développement en vous aidant à trouver les
+lieux dont vous avez besoin, qu’il s’agisse d’incubateur, de pépinière, d’espace de coworking ou
+de bibliothèque wifi. Vous pourrez savoir quels sont les lieux favoris des autres start-up grâce aux
+notations et commentaires de chaque fiche de résultat. Pour cela, il vous suffit d’indiquer une
+adresse, un type de lieu et de renseigner les services souhaités dans l’onglet « Rechercher ».</value>
+  </data>
+  <data name="SpeechForStartUp3" xml:space="preserve">
+    <value>Vous pouvez aider les autres entrepreneurs en suggérant vos propres lieux de travail favoris dans
+l’onglet « Ajout » ainsi qu’en notant et commentant les lieux que vous avez testés.</value>
+  </data>
+  <data name="SpeechForStudent1" xml:space="preserve">
+    <value>Vous êtes étudiant et recherchez un lieu calme et gratuit pour réviser ou encore un espace convivial
+pour travailler en groupe ?</value>
+  </data>
+  <data name="SpeechForStudent2" xml:space="preserve">
+    <value>eWorky peut vous aider en vous proposant les meilleurs cafés, restaurants, bibliothèques ou parcs
+proposant un accès wifi où vous pourrez confortablement travailler : pour cela, il vous suffit
+d’indiquer une adresse et un type de lieu dans l’onglet « Rechercher ».</value>
+  </data>
+  <data name="SpeechForStudent3" xml:space="preserve">
+    <value>Vous pouvez aider les autres étudiants en suggérant vos propres lieux de révision favoris dans
+l’onglet « Ajout » ainsi qu’en notant et commentant les lieux que vous avez testés.</value>
+  </data>
+  <data name="SpeechForTeleworker1" xml:space="preserve">
+    <value>Vous êtes télétravailleur et recherchez un lieu de travail régulier ou une salle de réunion à proximité
+de votre domicile ?</value>
+  </data>
+  <data name="SpeechForTeleworker2" xml:space="preserve">
+    <value>eWorky va vous simplifier la vie en listant pour vous tous les espaces de coworking ou télécentres
+à proximité du lieu indiqué. Vous pourrez savoir quels sont les lieux favoris des autres membres
+télétravailleurs grâce aux notations et commentaires de chaque fiche de résultat. Pour cela, il
+vous suffit d’indiquer une adresse, un type de lieu et de renseigner les services souhaités dans
+l’onglet « Rechercher ».</value>
+  </data>
+  <data name="SpeechForTeleworker3" xml:space="preserve">
+    <value>Vous pouvez aider les autres télétravailleurs en suggérant vos propres lieux de télétravail
+favoris dans l’onglet « Ajout » ainsi qu’en notant et commentant les lieux que vous avez testés.</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Etudiant</value>
+  </data>
+  <data name="Workplace" xml:space="preserve">
+    <value>Lieux de travail</value>
+  </data>
+  <data name="YourSearchResult" xml:space="preserve">
+    <value>Vos résultats de recherche</value>
+  </data>
+</root>

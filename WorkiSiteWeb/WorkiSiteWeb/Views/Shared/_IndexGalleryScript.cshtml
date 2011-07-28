@@ -1,0 +1,44 @@
+﻿<script src="@Url.Content(Links.Scripts.jquery_jcarousel_min_js)" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var theCarousel = null;
+        _renderLocalisations = function (localisations) {
+            var count = 0;
+            $.each(localisations, function (i, localisation) {
+                var htmlToAdd = _getLocalisationImageHTML(localisation) + _getLocalisationLinkHTML(localisation) + _getLocalisationDescriptionHTML(localisation);
+                theCarousel.add(i + 1, htmlToAdd);
+                count++;
+            });
+            theCarousel.size(count);
+            function _getLocalisationLinkHTML(localisation) {
+                return '<div class="imageDescription"><a href=' + localisation.Url + ' class="blue">' + localisation.Name + '</a>';
+            }
+
+            function _getLocalisationDescriptionHTML(localisation) {
+                return '<p>' + localisation.TypeString + ' à ' + localisation.City + '</p></div>';
+            }
+
+            function _getLocalisationImageHTML(localisation) {
+                var _image = '<table><tr><td><img src=' + localisation.MainPic + ' alt="' + localisation.Name + '"/></table></tr></td>';
+                return '<div class="imageContainer"><div class="centerImg">' + _image + '  </div></div>';
+            }
+        }
+
+        function mycarousel_itemLoadCallback(carousel, state) {
+            // Since we get all URLs in one file, we simply add all items
+            // at once and set the size accordingly.
+            if (state != 'init')
+                return;
+            theCarousel = carousel;
+            var action = '@Html.GetUrl(MVC.Search.ActionNames.GetMainLocalisations,MVC.Search.Name)';
+            $.post(action, null, _renderLocalisations, "json");
+        };
+
+        $('#mycarousel').jcarousel({
+            //auto: 10,
+            wrap: 'circular', 
+            visible: 3,
+            itemLoadCallback: mycarousel_itemLoadCallback
+        });
+    });
+</script>

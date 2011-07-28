@@ -1,0 +1,77 @@
+﻿@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Home.CguString.TermsOfUse)</title>
+}
+
+
+@RazorHelpers.TitleDiv(WorkiResources.Views.Home.CguString.TermsOfUse, "Blue")
+<div class="detailContent generalTextContainer">
+	<div class="contentBlock generalTextContent float-right">
+        <h3 class="blue">@WorkiResources.Views.Home.CguString.VendorInformations</h3>
+        <p>@WorkiResources.Views.Home.CguString.WebSiteOfOmnicentre</p>
+        <h3 class="blue">@WorkiResources.Views.Home.CguString.CopyrightTrademarks</h3>
+        <p style="padding-bottom:0;">
+        @WorkiResources.Views.Home.CguString.SpeechCgu
+        </p>
+        <ul>
+            <li>@WorkiResources.Views.Home.CguString.UseRobots</li>
+            <li>@WorkiResources.Views.Home.CguString.FakeRevervations</li>
+            <li>@WorkiResources.Views.Home.CguString.EWorkySupportYourProduct</li>
+            <li>@WorkiResources.Views.Home.CguString.FalseInformations</li>
+            <li>@WorkiResources.Views.Home.CguString.NotLegalPublication</li>
+            <li>@WorkiResources.Views.Home.CguString.NegativeEffectForWebsite</li>
+            <li>@WorkiResources.Views.Home.CguString.NoHacking</li>
+            <li>@WorkiResources.Views.Home.CguString.SaturationOfTheSite</li>
+        </ul>
+        <br />
+        <h3 class="blue">@WorkiResources.Views.Home.CguString.AccuracyInformations</h3>
+        <p>@WorkiResources.Views.Home.CguString.GoodFaithInformation</p>
+        <h3 class="blue">@WorkiResources.Views.Home.CguString.Changes</h3>
+        <p>@WorkiResources.Views.Home.CguString.ChangesCgu</p>
+        <h3 class="blue">@WorkiResources.Views.Home.CguString.Inscription</h3>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.Inscription</h4>
+        <p>@WorkiResources.Views.Home.CguString.AllFonctionality</p>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.AcceptCGU</h4>
+        <p>@WorkiResources.Views.Home.CguString.NotForChild
+        </p>
+        <h3 class="blue">@WorkiResources.Views.Home.CguString.PersonneDatas</h3>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.Objet
+        </h4>
+        <p>@WorkiResources.Views.Home.CguString.CommintmentEWorky
+        </p>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.CollectedDatas
+        </h4>
+        <p>@WorkiResources.Views.Home.CguString.TraitedCollectedDatas
+        </p>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.AimsOfTreatment
+        </h4>
+        <p>@WorkiResources.Views.Home.CguString.MandatoryInscription
+        </p>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.ReciptionsOfDatas
+        </h4>
+        <p>@WorkiResources.Views.Home.CguString.NoUseWithoutYourConsentement
+        </p>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.SafeData
+        </h4>
+        <p>@WorkiResources.Views.Home.CguString.SafeDataForEWorky
+        </p>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.DataRetention
+        </h4>
+        <p>@WorkiResources.Views.Home.CguString.ServerDataRetention
+        </p>
+        <h4 class="blue">@WorkiResources.Views.Home.CguString.YourRight
+        </h4>
+        <p>@String.Format(WorkiResources.Views.Home.CguString.RectificationYourData, EmailService.ContactMail)
+        </p>
+		<h3 class="blue">@WorkiResources.Views.Home.CguString.ApplicalbleLaws</h3>
+        <p>@WorkiResources.Views.Home.CguString.ApplicalbleLawsValue</p>
+    </div>
+    <div class="clear">
+	</div>
+</div>
+
+@section ScriptContent
+{
+    <script src="@MiscHelpers.jquery" type="text/javascript"></script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

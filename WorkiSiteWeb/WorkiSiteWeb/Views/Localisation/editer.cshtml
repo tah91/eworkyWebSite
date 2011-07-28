@@ -1,0 +1,26 @@
+﻿@model WorkiSiteWeb.Models.LocalisationFormViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Model.Localisation.ID == 0 ? WorkiResources.Views.Localisation.LocalisationString.Add :  WorkiResources.Views.Localisation.LocalisationString.Edit)</title>
+	<link href="@Url.Content(Links.Content.LocalisationDetail_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content(Links.Content.CreateLocalisation_css)" rel="stylesheet" type="text/css" />
+	@*<link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css)  " rel="stylesheet" type="text/css" />*@
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
+    <link rel="stylesheet" href="@Url.Content(Links.Content.jquery_fileupload_ui_css)" />
+}
+
+
+<div class="addLocalisationContainer borderContainer">
+    @RazorHelpers.TitleDiv((Model.Localisation.ID == 0 ? WorkiResources.Views.Localisation.LocalisationString.Add : WorkiResources.Views.Localisation.LocalisationString.Edit), "Orange")
+
+    @Html.Partial(MVC.Localisation.Views._LocalisationForm)
+</div>
+
+@section ScriptContent
+{
+	@Html.Partial(MVC.Shared.Views._CufonScript)
+    @Html.Partial(MVC.Localisation.Views._LocalisationFormScript)
+    @Html.Partial(MVC.Localisation.Views._LocalisationGalleryScript)
+}
+

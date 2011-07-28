@@ -1,0 +1,23 @@
+﻿@model WorkiSiteWeb.Models.Localisation
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(WorkiResources.Views.Localisation.LocalisationString.ComfirmDelete+Model.Name) </title>
+}
+
+
+
+<h2>
+    @WorkiResources.Views.Localisation.LocalisationString.ComfirmDelete
+</h2>
+<div>
+    <p>@WorkiResources.Views.Localisation.LocalisationString.PleaseConfirmDelete
+    <i> @Model.Name ? </i> </p>
+</div>
+@using (Html.BeginForm(new { returnUrl = TempData["returnUrl"] }))
+{
+    @Html.AntiForgeryToken();
+    <input name="confirmButton" type="submit" value="Supprimer" />
+} 
+
+

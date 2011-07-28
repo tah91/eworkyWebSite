@@ -1,0 +1,30 @@
+﻿@model WorkiSiteWeb.Models.ProfilDashboardModel
+
+@{
+	var tabId = (ProfilDashboardModel.DashboardTab)ViewData[ProfilDashboardModel.TabId];
+	var a_class = tabId.ToString();
+	List<Comment> comments = new List<Comment>();
+	PagingInfo pi = new PagingInfo();
+	if (tabId == ProfilDashboardModel.DashboardTab.PostedCom)
+	{
+		comments = Model.PostedComments;
+		pi = Model.PostedCommentsPI;
+	}
+	else if (tabId == ProfilDashboardModel.DashboardTab.RelCom)
+	{
+		comments = Model.RelatedComments;
+		pi = Model.RelatedCommentsPI;
+	}
+}
+
+@foreach (var com in comments)
+{
+    if (com.Member == null)
+    {
+        continue;
+    }
+	@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
+}
+<div class="pager @(a_class)">
+    @Html.PageLinks(pi, null, a_class)
+</div>

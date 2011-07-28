@@ -1,0 +1,121 @@
+﻿/* Admin Page
+----------------------------------------------------------*/
+.contentAdmin 
+{
+	position:relative;
+}
+
+#adminMenu
+{
+	margin-right:10px;
+	background-color:Silver;
+    float:left;
+    width:15%;
+    padding-left:10px;
+}
+
+img.welcomePeopleMaxSize
+{
+  max-height: 300px;
+  max-width: 300px;
+  overflow: hidden;
+}
+
+ul.adminSubMenu
+{
+	padding:5px;
+}
+
+.adminSubMenu li
+{
+    margin-top:5px;
+	margin-bottom:10px;
+	color:White;
+}
+
+li#localisationSubMenu 
+{
+	list-style-image: url(images/recherche-min.png);
+}
+	
+li#userSubMenu 
+{
+	list-style-image: url(images/users.jpg);
+}	
+
+li#visitorSubMenu 
+{
+	list-style-image: url(images/visitor.jpg);
+}
+
+li#welcomePeopleSubMenu
+{
+    list-style-image: url(images/scoop.jpg);
+}
+
+li#importSubMenu
+{
+    list-style-image: url(images/csv-import.png);
+}
+
+.adminSubMenu li a
+{
+	font-size:14;
+	text-decoration:none;
+	color:White;
+}
+
+.adminSubMenu li a:hover
+{
+	text-decoration: underline; 
+	color: red;
+}
+	
+.adminPanel
+{
+	float:left;
+	width: 80%;
+}
+
+#adminForm
+{
+	width: 100%;
+	margin-left:auto;
+	padding: 5px;
+}
+
+#adminForm table
+{
+	width:100%;
+	margin-left:5px;
+    background: none repeat scroll 0 0 #E9E9F3;
+    border: 0.5em solid #E9E9F3; 
+    border-spacing: 0;
+    /* border: medium solid #6495ed; */
+    border-collapse: collapse;
+
+}
+
+#adminForm table th /* Les cellules d'en-tête */
+{
+   background-color: Silver;
+   color: white;
+   font-size: 1.1em;
+   font-family: Arial, "Arial Black", Times, "Times New Roman", serif;
+}
+
+#adminForm table td, #adminForm table th
+{
+   border: thin solid #FFE;
+}
+
+#adminForm table td
+{
+ text-align:center;
+}
+
+#adminForm table tr:hover td
+{
+	background-color:#FFF;
+	color:Blue;
+}

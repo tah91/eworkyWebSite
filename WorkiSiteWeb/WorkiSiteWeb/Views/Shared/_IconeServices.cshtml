@@ -1,0 +1,34 @@
+﻿@model WorkiSiteWeb.Models.Localisation
+
+<div class="availableServices">
+@if (Model.HasFeature(Feature.Wifi_Free, FeatureType.General))
+{
+    <div class="serviceIcones_wifi_on float-left" title="Wifi gratuit">
+    </div>
+}
+@if (Model.HasFeature(Feature.Wifi_Not_Free, FeatureType.General))
+{
+    <div class="serviceIcones_wifip_on float-left" title="Wifi payant">
+    </div>
+}
+@if (Model.HasFeature(Feature.Restauration, FeatureType.General))
+{
+    <div class="serviceIcones_resto_on float-left" title="Restauration">
+    </div>
+}
+@if (Model.HasFeature(Feature.Coffee, FeatureType.General))
+{
+    <div class="serviceIcones_coffee_on float-left" title="Café">
+    </div>
+}
+@if (Model.HasFeature(Feature.Parking, FeatureType.General))
+{
+    <div class="serviceIcones_parking_on float-left" title="Parking">
+    </div>
+}
+@if (Model.HasFeature(Feature.Handicap, FeatureType.General))
+{
+    <div class="serviceIcones_handicap_on float-left" title="Adapté pour personnes à mobilité réduite">
+    </div>
+}
+</div>

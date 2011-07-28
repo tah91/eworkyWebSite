@@ -1,0 +1,16 @@
+﻿@model WorkiSiteWeb.Models.Visitor 
+
+<div class="visitorDesc">
+<p>@WorkiResources.Views.Visitor.VisitorString.LetUsYourMail
+</p>
+</div>
+<div class="visitorForm">
+@using (Html.BeginForm())
+{ 
+    @Html.AntiForgeryToken()
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Email, new { placeholder = "E-mail" })
+    </div>
+    <input type="submit" class="btn_blue imageBtn" value="Go !" name="ok"/>
+} 
+</div>

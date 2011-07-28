@@ -1,0 +1,89 @@
+﻿@using WorkiSiteWeb.Models
+
+@helper TitleDiv(string title, string color, bool clear = true)
+{
+    <div class="titleDiv title@(color) cufonIt float-left">
+        <h2>@title</h2>
+    </div>
+	if (clear)
+	{
+	<div class="clear">
+    </div> 
+	}
+}
+
+@helper CenterImage(string src, string alt)
+{
+	if (!string.IsNullOrEmpty(src))
+	{
+	<div class="centerImg picBack">
+		<table>
+			<tr>
+				<td>
+					<img src="@src" alt="@alt"/>
+				</td>
+			</tr>
+		</table>
+	</div>	
+	}
+	else
+	{
+	<div class="picBackEmpty">
+	</div>
+	}
+}
+
+@helper FeatureTag(Feature feature)
+	{
+    @LocalisationBinder.LocalisationFeatureDict[(int)feature]
+}
+
+@helper FeatureTabContent(List<Feature> list, string id)
+	{
+		if (list != null && list.Count != 0)
+		{
+        <div id="@id" class="tab_content featureTag">
+            <ul>
+                @foreach (var item in list)
+				{
+                    <li>@FeatureTag(item)</li>
+				}        
+            </ul>
+        </div> 
+		} 
+}
+
+@helper FeatureToogle(string title, List<Feature> list)
+	{
+    <h4 class="toogle_trigger toogle_trigger_click@(list.Count==0 ? "k":"") bold blue"><span>@title</span></h4>
+		if (list.Count > 0)
+		{
+    <div class="toogle_container">
+        <div class="block featureTag">
+            <ul>
+            @foreach (var item in list)
+			{
+                <li>@FeatureTag(item)</li>
+			}
+            </ul>
+        </div> 
+    </div> 
+		}
+    <div class="clear">
+    </div>
+}
+
+@helper OpenningRow(Localisation model, DayOfWeek dayOfWeek, string displayName)
+	{
+		if (model.HasOpenningTimes(dayOfWeek))
+		{
+        <tr>
+            <td class="dayOfWeek localisationInformation">
+                @displayName 
+            </td>
+            <td>
+                @model.GetOpenningTime(dayOfWeek)
+            </td>
+        </tr> 
+		}
+}
