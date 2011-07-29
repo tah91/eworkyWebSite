@@ -10,7 +10,7 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-namespace WorkiSpecFlow.Features
+namespace WorkiSpecFlow
 {
     using TechTalk.SpecFlow;
     
