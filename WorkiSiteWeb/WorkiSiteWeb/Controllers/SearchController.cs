@@ -92,7 +92,7 @@ namespace WorkiSiteWeb.Controllers
         [ActionName("recherche-lieu-travail")]
         public virtual ActionResult FullSearch()
         {
-            var criteria = new SearchCriteria();
+			var criteria = new SearchCriteria(true);
             return View(new SearchCriteriaFormViewModel(criteria,eSearchType.ePerOffer));
         }
 
@@ -114,7 +114,6 @@ namespace WorkiSiteWeb.Controllers
         public virtual ActionResult FullSearchPerType()
         {
             var criteria = new SearchCriteria();
-			criteria.LocalisationData.LocalisationFeatures.Clear();
             return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, eSearchType.ePerType));
         }
 

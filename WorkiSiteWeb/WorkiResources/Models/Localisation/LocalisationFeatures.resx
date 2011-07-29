@@ -329,16 +329,16 @@
     <value>Régie son</value>
   </data>
   <data name="SingleMeetingRoom" xml:space="preserve">
-    <value>Salle de conférence / séminaire</value>
-  </data>
-  <data name="SingleSeminarRoom" xml:space="preserve">
-    <value>Salle de visio / téléprésence</value>
-  </data>
-  <data name="SingleSingleDesk" xml:space="preserve">
     <value>Salle de réunion / formation</value>
   </data>
-  <data name="SingleVisioRoom" xml:space="preserve">
+  <data name="SingleSeminarRoom" xml:space="preserve">
+    <value>Salle de conférence / séminaire</value>
+  </data>
+  <data name="SingleSingleDesk" xml:space="preserve">
     <value>Bureau</value>
+  </data>
+  <data name="SingleVisioRoom" xml:space="preserve">
+    <value>Salle de visio / téléprésence</value>
   </data>
   <data name="SingleWorkstation" xml:space="preserve">
     <value>Poste de travail</value>

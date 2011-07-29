@@ -592,7 +592,7 @@ namespace WorkiResources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salle de conférence / séminaire.
+        ///   Looks up a localized string similar to Salle de réunion / formation.
         /// </summary>
         public static string SingleMeetingRoom {
             get {
@@ -601,7 +601,7 @@ namespace WorkiResources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salle de visio / téléprésence.
+        ///   Looks up a localized string similar to Salle de conférence / séminaire.
         /// </summary>
         public static string SingleSeminarRoom {
             get {
@@ -610,7 +610,7 @@ namespace WorkiResources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salle de réunion / formation.
+        ///   Looks up a localized string similar to Bureau.
         /// </summary>
         public static string SingleSingleDesk {
             get {
@@ -619,7 +619,7 @@ namespace WorkiResources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bureau.
+        ///   Looks up a localized string similar to Salle de visio / téléprésence.
         /// </summary>
         public static string SingleVisioRoom {
             get {

@@ -13,11 +13,22 @@ namespace WorkiSiteWeb.Models
 
         public SearchCriteria()
         {
-            LocalisationData = new Localisation();
-            LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
-            Everything = true;
-            LocalisationOffer = -1;
+			Init();
         }
+
+		public SearchCriteria(bool wifi)
+		{
+			Init(wifi);
+		}
+
+		void Init(bool wifi=false)
+		{
+			LocalisationData = new Localisation();
+			Everything = true;
+			LocalisationOffer = -1;
+			if (wifi)
+				LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
+		}
 
         #endregion
 
