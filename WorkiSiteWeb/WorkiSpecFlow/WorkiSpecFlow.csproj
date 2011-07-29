@@ -70,89 +70,89 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccueilFeature.feature.cs">
+    <Compile Include="Features\AccueilFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AccueilFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="AccueilSteps.cs" />
-    <Compile Include="AjoutFeature.feature.cs">
+    <Compile Include="Steps\AccueilSteps.cs" />
+    <Compile Include="Features\AjoutFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AjoutFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="AjoutSteps.cs" />
-    <Compile Include="DetailsFeature.feature.cs">
+    <Compile Include="Steps\AjoutSteps.cs" />
+    <Compile Include="Features\DetailsFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DetailsFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="DetailsSteps.cs" />
-    <Compile Include="FooterFeature.feature.cs">
+    <Compile Include="Steps\DetailsSteps.cs" />
+    <Compile Include="Features\FooterFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FooterFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="FooterSteps.cs" />
-    <Compile Include="ProfileFeature.feature.cs">
+    <Compile Include="Steps\FooterSteps.cs" />
+    <Compile Include="Features\ProfileFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProfileFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="ProfileSteps.cs" />
-    <Compile Include="SearchFeature.feature.cs">
+    <Compile Include="Steps\ProfileSteps.cs" />
+    <Compile Include="Features\SearchFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SearchFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="SearchSteps.cs" />
+    <Compile Include="Steps\SearchSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VisitorFeature.feature.cs">
+    <Compile Include="Features\VisitorFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VisitorFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="VisitorSteps.cs" />
+    <Compile Include="Steps\VisitorSteps.cs" />
     <Compile Include="WebBrowser.cs" />
-    <Compile Include="WelcomePeople.feature.cs">
+    <Compile Include="Features\WelcomePeople.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WelcomePeople.feature</DependentUpon>
     </Compile>
-    <Compile Include="WelcomePeopleSteps.cs" />
+    <Compile Include="Steps\WelcomePeopleSteps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AccueilFeature.feature">
+    <None Include="Features\AccueilFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AccueilFeature.feature.cs</LastGenOutput>
     </None>
-    <None Include="AjoutFeature.feature">
+    <None Include="Features\AjoutFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AjoutFeature.feature.cs</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="DetailsFeature.feature">
+    <None Include="Features\DetailsFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DetailsFeature.feature.cs</LastGenOutput>
     </None>
-    <None Include="FooterFeature.feature">
+    <None Include="Features\FooterFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>FooterFeature.feature.cs</LastGenOutput>
     </None>
-    <None Include="ProfileFeature.feature">
+    <None Include="Features\ProfileFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ProfileFeature.feature.cs</LastGenOutput>
     </None>
-    <None Include="SearchFeature.feature">
+    <None Include="Features\SearchFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>SearchFeature.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="VisitorFeature.feature">
+    <None Include="Features\VisitorFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>VisitorFeature.feature.cs</LastGenOutput>
     </None>
-    <None Include="WelcomePeople.feature">
+    <None Include="Features\WelcomePeople.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WelcomePeople.feature.cs</LastGenOutput>
     </None>
