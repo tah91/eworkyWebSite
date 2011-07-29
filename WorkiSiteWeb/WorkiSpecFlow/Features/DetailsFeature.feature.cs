@@ -10,7 +10,7 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-namespace WorkiSpecFlow
+namespace WorkiSpecFlow.Features
 {
     using TechTalk.SpecFlow;
     
@@ -18,20 +18,20 @@ namespace WorkiSpecFlow
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.6.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Page Profil")]
-    public partial class PageProfilFeature
+    [NUnit.Framework.DescriptionAttribute("Details Localisation")]
+    public partial class DetailsLocalisationFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "ProfileFeature.feature"
+#line 1 "DetailsFeature.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Page Profil", "In order to search a working place\r\nAs a user\r\nI want to be able to view the list" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Details Localisation", "In order to search a working place\r\nAs a user\r\nI want to be able to view the list" +
                     " of localisations", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -55,45 +55,57 @@ namespace WorkiSpecFlow
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Aller sur son profil")]
-        [NUnit.Framework.CategoryAttribute("profil")]
-        public virtual void AllerSurSonProfil()
+        [NUnit.Framework.DescriptionAttribute("Je poste un commentaire")]
+        [NUnit.Framework.CategoryAttribute("Détails")]
+        public virtual void JePosteUnCommentaire()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Aller sur son profil", new string[] {
-                        "profil"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Je poste un commentaire", new string[] {
+                        "Détails"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("Je vais dans la page d\'acceuil");
+ testRunner.Given("Je vais dans la page Recherche");
 #line 9
- testRunner.When("Je clique sur mon pofil");
+  testRunner.And("Je tappe Paris dans la zone de recherche");
 #line 10
- testRunner.Then("Je dois arriver sur mon profil");
+ testRunner.When("Je clique sur rechercher");
+#line 11
+  testRunner.And("Je clique sur la fiche Le Big Ben Bar");
+#line 12
+  testRunner.And("Je met une note");
+#line 13
+  testRunner.And("Je poste un commentaire");
+#line 14
+ testRunner.Then("Je dois retrouver le commentaire");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Editer son profil")]
-        [NUnit.Framework.CategoryAttribute("profil")]
-        public virtual void EditerSonProfil()
+        [NUnit.Framework.DescriptionAttribute("Profil dans commentaire")]
+        [NUnit.Framework.CategoryAttribute("Détails")]
+        public virtual void ProfilDansCommentaire()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Editer son profil", new string[] {
-                        "profil"});
-#line 13
-this.ScenarioSetup(scenarioInfo);
-#line 14
- testRunner.Given("Je vais dans la page d\'acceuil");
-#line 15
- testRunner.When("Je clique sur mon pofil");
-#line 16
-  testRunner.And("Je clique sur Editer Profil");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Profil dans commentaire", new string[] {
+                        "Détails"});
 #line 17
-  testRunner.And("Je change quelques champs");
+this.ScenarioSetup(scenarioInfo);
 #line 18
-  testRunner.And("Je valide le formulaire du profil");
+ testRunner.Given("Je vais dans la page Recherche");
 #line 19
- testRunner.Then("Je dois avoir les modifications faites");
+  testRunner.And("Je tappe Paris dans la zone de recherche");
+#line 20
+ testRunner.When("Je clique sur rechercher");
+#line 21
+  testRunner.And("Je clique sur la fiche Le Big Ben Bar");
+#line 22
+  testRunner.And("Je met une note");
+#line 23
+  testRunner.And("Je poste un commentaire");
+#line 24
+  testRunner.And("Je clique sur le profil");
+#line 25
+ testRunner.Then("Je dois arriver sur mon profil");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
