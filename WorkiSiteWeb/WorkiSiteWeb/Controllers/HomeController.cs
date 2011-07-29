@@ -40,7 +40,6 @@ namespace WorkiSiteWeb.Controllers
 		[ActionName("index")]
 		public virtual ActionResult Index()
 		{
-			_Logger.Error("Index");
 			ViewData[LocalisationCount] = _LocalisationRepository.GetCount();
 			ViewData[WelcomePeopleList] = _WelcomePeopleRepository.GetAll();
 			return View(new SearchCriteriaFormViewModel());

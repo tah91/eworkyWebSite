@@ -57,7 +57,7 @@ namespace Logging
 			var traceListener = new DiagnosticMonitorTraceListener();
 			Trace.Listeners.Add(traceListener);
 
-			CloudStorageAccount storageAccount = CloudStorageAccount.FromConfigurationSetting(MiscHelpers.GetDataConnectionStringSetting());
+			CloudStorageAccount storageAccount = CloudStorageAccount.FromConfigurationSetting(MiscHelpers.DataConnectionString);
 
 			RoleInstanceDiagnosticManager roleInstanceDiagnosticManager = storageAccount.CreateRoleInstanceDiagnosticManager(RoleEnvironment.DeploymentId, RoleEnvironment.CurrentRoleInstance.Role.Name, RoleEnvironment.CurrentRoleInstance.Id);
 			DiagnosticMonitorConfiguration dmc = roleInstanceDiagnosticManager.GetCurrentConfiguration();

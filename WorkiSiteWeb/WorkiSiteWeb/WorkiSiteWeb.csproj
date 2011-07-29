@@ -104,7 +104,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.DistributedCache">
-      <HintPath>..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.0\Assemblies\NET4.0\Cache\Microsoft.Web.DistributedCache.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.0\Assemblies\NET4.0\Cache\Microsoft.Web.DistributedCache.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -547,6 +547,7 @@
     </Content>
     <Content Include="Web.Azure.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

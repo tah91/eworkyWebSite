@@ -37,6 +37,8 @@ namespace WorkiSiteWeb.Helpers
 		public const string AdminPass = "Admin_Pass";
 		public const string AdminMail = "admin@eworky.com";
 
+		public const string DataConnectionString = "DataConnectionString";
+
         public const int MaxLengh = 256;
 		public const string jquery = "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js";
 		public const string jqueryui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js";
@@ -166,7 +168,7 @@ namespace WorkiSiteWeb.Helpers
 			if (string.IsNullOrEmpty(containerName))
 				return null;
 			var isDevStore = bool.Parse(ConfigurationManager.AppSettings["IsDevStorage"]);
-			var blobStorageAccount = isDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(GetDataConnectionStringSetting());
+			var blobStorageAccount = isDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(MiscHelpers.DataConnectionString);
 			var blobClient = blobStorageAccount.CreateCloudBlobClient();
 			var blobContainer = blobClient.GetContainerReference(containerName);
 			blobContainer.CreateIfNotExist();
@@ -332,28 +334,5 @@ namespace WorkiSiteWeb.Helpers
             var dDistance = EarthRadius * c;
             return dDistance;
         }
-
-		public static string GetDataConnectionStringSetting()
-		{
-			
-			try
-			{
-				if (!RoleEnvironment.IsAvailable)
-					return string.Empty;
-				var isAzureDebug = bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
-				if (isAzureDebug)
-				{
-					return "DebugDataConnectionString";
-				}
-				else
-				{
-					return "DataConnectionString";
-				}				
-			}
-			catch (Exception)
-			{
-				return "DebugDataConnectionString";
-			}
-		}
     }
 }
