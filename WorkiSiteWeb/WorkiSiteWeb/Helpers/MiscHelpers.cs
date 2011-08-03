@@ -334,5 +334,20 @@ namespace WorkiSiteWeb.Helpers
             var dDistance = EarthRadius * c;
             return dDistance;
         }
+
+		public static string Nl2Br(string text)
+		{
+			var builder = new System.Text.StringBuilder();
+			if (string.IsNullOrEmpty(text))
+				return builder.ToString();
+			string[] lines = text.Split('\n');
+			for (int i = 0; i < lines.Length; i++)
+			{
+				if (i > 0)
+					builder.Append("<br/>");
+				builder.Append(HttpUtility.HtmlEncode(lines[i]));
+			}
+			return builder.ToString();
+		}
     }
 }

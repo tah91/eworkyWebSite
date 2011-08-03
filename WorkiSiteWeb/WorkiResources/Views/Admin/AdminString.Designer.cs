@@ -223,6 +223,15 @@ namespace WorkiResources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gestion des réservations.
+        /// </summary>
+        public static string IndexBooking {
+            get {
+                return ResourceManager.GetString("IndexBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gestion des entrepreneurs stars.
         /// </summary>
         public static string IndexWelcomePeople {

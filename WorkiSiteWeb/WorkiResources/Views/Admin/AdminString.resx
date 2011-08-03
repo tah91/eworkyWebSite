@@ -171,6 +171,9 @@
   <data name="ID" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="IndexBooking" xml:space="preserve">
+    <value>Gestion des réservations</value>
+  </data>
   <data name="IndexWelcomePeople" xml:space="preserve">
     <value>Gestion des entrepreneurs stars</value>
   </data>

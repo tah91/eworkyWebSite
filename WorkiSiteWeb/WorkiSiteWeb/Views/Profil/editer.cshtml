@@ -30,7 +30,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.DropDownList("Member.MemberMainData.Profile", Model.ProfileSelectTypes, new { @class = "profileSelect" })
+                            @Html.DropDownList("Member.MemberMainData.Profile", Model.ProfileSelectTypes)
                         </div>
                     </td>
                 </tr>
@@ -296,7 +296,6 @@
                 yearSuffix: ''
             };
             $.datepicker.setDefaults($.datepicker.regional['fr']);
-            $("#datepicker").datepicker();
             $(".dp").datepicker({
                 changeMonth: true,
                 changeYear: true,

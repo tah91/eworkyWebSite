@@ -77,14 +77,14 @@ li#importSubMenu
 	width: 80%;
 }
 
-#adminForm
+/*.adminPanel
 {
 	width: 100%;
 	margin-left:auto;
 	padding: 5px;
-}
+}*/
 
-#adminForm table
+.adminPanel table
 {
 	width:100%;
 	margin-left:5px;
@@ -96,7 +96,7 @@ li#importSubMenu
 
 }
 
-#adminForm table th /* Les cellules d'en-tête */
+.adminPanel table th /* Les cellules d'en-tête */
 {
    background-color: Silver;
    color: white;
@@ -104,17 +104,17 @@ li#importSubMenu
    font-family: Arial, "Arial Black", Times, "Times New Roman", serif;
 }
 
-#adminForm table td, #adminForm table th
+.adminPanel table td, .adminPanel table th
 {
    border: thin solid #FFE;
 }
 
-#adminForm table td
+.adminPanel table td
 {
  text-align:center;
 }
 
-#adminForm table tr:hover td
+.adminPanel table tr:hover td
 {
 	background-color:#FFF;
 	color:Blue;

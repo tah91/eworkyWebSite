@@ -7,9 +7,8 @@
             FormsIdentity ident = User.Identity as FormsIdentity;
             if (ident != null)
             {
-                FormsAuthenticationTicket ticket = ident.Ticket;
-                displayName = Member.GetNameFromUserData(ticket.UserData);
-				memberId = Member.GetIdFromUserData(ticket.UserData);
+				displayName = ControllerHelpers.GetIdentityDisplayName(User.Identity);
+				memberId = ControllerHelpers.GetIdentityId(User.Identity);
             }
         }
         <div>

@@ -1,12 +1,14 @@
 ﻿using System;
 using WorkiSiteWeb.Infrastructure.Email;
 using System.Net.Mail;
+using System.Configuration;
 
 namespace WorkiSiteWeb.Models
 {
     public class EmailService : IEmailService
     {
-        public const string ContactMail = "contact@eworky.com";
+        public static string ContactMail = ConfigurationManager.AppSettings["ContactMail"];
+		public static string BookingMail = ConfigurationManager.AppSettings["BookingMail"];
 
         public string LastErrorMessage
         {

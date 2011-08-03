@@ -97,6 +97,15 @@ namespace WorkiResources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Réserver.
+        /// </summary>
+        public static string BookIt {
+            get {
+                return ResourceManager.GetString("BookIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parcourir....
         /// </summary>
         public static string Browse {
@@ -174,6 +183,15 @@ namespace WorkiResources.Views.Localisation {
         public static string JoinFile {
             get {
                 return ResourceManager.GetString("JoinFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ce lieu vous intéresse ?.
+        /// </summary>
+        public static string NeedToBookPlace {
+            get {
+                return ResourceManager.GetString("NeedToBookPlace", resourceCulture);
             }
         }
         

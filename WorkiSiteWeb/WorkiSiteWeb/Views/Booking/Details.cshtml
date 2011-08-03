@@ -1,0 +1,113 @@
+﻿@model WorkiSiteWeb.Models.MemberBooking
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(WorkiResources.Views.Booking.BookingString.BookingDetails) </title>
+}
+
+
+<div class="borderContainer">
+    @RazorHelpers.TitleDiv(WorkiResources.Views.Booking.BookingString.BookingDetails, "Blue")    
+    <div class="contactDiv">
+        <div class="login-account">
+            <table>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+							@Html.LabelFor(model => model.Member.MemberMainData.FirstName)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.MemberMainData.FirstName)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Member.MemberMainData.LastName)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.MemberMainData.LastName)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Member.Email)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.Email)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Member.MemberMainData.PhoneNumber)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.MemberMainData.PhoneNumber)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Offer)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Localisation.GetOfferType(Model.Offer)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.FromDate)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@string.Format("{0:dd/MM/yyyy HH:MM}", Model.FromDate)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.ToDate)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@string.Format("{0:dd/MM/yyyy HH:MM}", Model.ToDate)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Message)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Message)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>   
+</div>

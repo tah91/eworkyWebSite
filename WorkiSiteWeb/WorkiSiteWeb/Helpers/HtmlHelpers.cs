@@ -261,20 +261,10 @@ namespace WorkiSiteWeb.Helpers
             }
         }
 
-        public static MvcHtmlString Nl2Br(this HtmlHelper htmlHelper, string text)
-        {
-            StringBuilder builder = new StringBuilder();
-            if(string.IsNullOrEmpty(text))
-                return MvcHtmlString.Create(builder.ToString());
-            string[] lines = text.Split('\n');
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (i > 0)
-                    builder.Append("<br/>");
-                builder.Append(HttpUtility.HtmlEncode(lines[i]));
-            }
-            return MvcHtmlString.Create(builder.ToString());
-        }
+		public static MvcHtmlString Nl2Br(this HtmlHelper htmlHelper, string text)
+		{
+			return MvcHtmlString.Create(MiscHelpers.Nl2Br(text));
+		}
 
         public static MvcHtmlString CreateLinkMenu(this HtmlHelper html)// Create links of the pop up menu for " rechercher" 
         {

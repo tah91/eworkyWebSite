@@ -109,4 +109,14 @@ namespace WorkiSiteWeb.Models
 	}
 
 	#endregion
+
+	#region Admin Booking
+
+	public class MemberBookingListViewModel
+	{
+		public IList<MemberBooking> MemberBooking { get; set; }
+		public PagingInfo PagingInfo { get; set; }
+	}
+
+	#endregion
 }

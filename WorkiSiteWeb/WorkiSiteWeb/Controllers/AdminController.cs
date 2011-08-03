@@ -25,6 +25,7 @@ namespace WorkiSiteWeb.Controllers
         IMemberRepository _MemberRepository;
         IVisitorRepository _VisitorRepository;
         IWelcomePeopleRepository _WelcomePeopleRepository;
+		IRepository<MemberBooking, int> _BookingRepository;
         ILogger _Logger;
         IEmailService _EmailService;
 
@@ -34,7 +35,8 @@ namespace WorkiSiteWeb.Controllers
                                 ILogger logger,
                                 IEmailService emailService,
                                 IMemberRepository memberRepository,
-                                IWelcomePeopleRepository welcomePeopleRepository)
+                                IWelcomePeopleRepository welcomePeopleRepository,
+								IRepository<MemberBooking, int> bookingRepository)
         {
             _LocalisationRepository = localisationRepository;
             _MembershipService = memberShipservice;
@@ -43,6 +45,7 @@ namespace WorkiSiteWeb.Controllers
             _EmailService = emailService;
             _MemberRepository = memberRepository;
             _WelcomePeopleRepository = welcomePeopleRepository;
+			_BookingRepository = bookingRepository;
         }
 
         public int PageSize = 25; // Will change this later
@@ -671,5 +674,31 @@ namespace WorkiSiteWeb.Controllers
         }
 
         #endregion
-    }
+
+		#region Admin Booking
+
+		/// <summary>
+		/// Prepares a web page containing a paginated list of localisations
+		/// </summary>
+		/// <param name="page">The page to display</param>
+		/// <returns>The action result.</returns>
+		public virtual ActionResult IndexBooking(int? page)
+		{
+			var pageValue = page ?? 1;
+			var bookings = _BookingRepository.Get((pageValue - 1) * PageSize, PageSize);
+			var viewModel = new MemberBookingListViewModel()
+			{
+				MemberBooking = bookings,
+				PagingInfo = new PagingInfo
+				{
+					CurrentPage = pageValue,
+					ItemsPerPage = PageSize,
+					TotalItems = _BookingRepository.GetCount()
+				}
+			};
+			return View(viewModel);
+		}
+
+		#endregion
+	}
 }

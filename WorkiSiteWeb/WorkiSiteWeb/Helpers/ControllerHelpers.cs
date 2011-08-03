@@ -11,6 +11,8 @@ using System.Configuration;
 using Microsoft.WindowsAzure.StorageClient;
 using Microsoft.WindowsAzure;
 using WorkiSiteWeb.Infrastructure.Email;
+using System.Security.Principal;
+using System.Web.Security;
 
 namespace WorkiSiteWeb.Helpers
 {
@@ -231,5 +233,33 @@ namespace WorkiSiteWeb.Helpers
             var destinationFolder = controller.Server.MapPath(userImgFolder);
             return MiscHelpers.UploadFile(postedFile, destinationFolder);
         }
+
+		/// <summary>
+		/// Get member display name from authentication data
+		/// </summary>
+		/// <param name="ident">the identity containing authentication data</param>
+		/// <returns>display name</returns>
+		public static string GetIdentityDisplayName(IIdentity ident)
+		{
+			FormsIdentity formIdent = ident as FormsIdentity;
+			if (formIdent == null)
+				return string.Empty;
+			var ticket = formIdent.Ticket;
+			return Member.GetNameFromUserData(ticket.UserData);
+		}
+
+		/// <summary>
+		/// Get member id from authentication data
+		/// </summary>
+		/// <param name="ident">the identity containing authentication data</param>
+		/// <returns>member id</returns>
+		public static int GetIdentityId(IIdentity ident)
+		{
+			FormsIdentity formIdent = ident as FormsIdentity;
+			if (formIdent == null)
+				return 0;
+			var ticket = formIdent.Ticket;
+			return Member.GetIdFromUserData(ticket.UserData);
+		}
     }
 }

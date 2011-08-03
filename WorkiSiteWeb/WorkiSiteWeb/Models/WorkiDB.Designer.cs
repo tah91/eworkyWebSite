@@ -34,6 +34,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("WorkiDBModel", "FK_MemberEdition_Localisation", "Localisation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WorkiSiteWeb.Models.Localisation), "MemberEdition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WorkiSiteWeb.Models.MemberEdition), true)]
 [assembly: EdmRelationshipAttribute("WorkiDBModel", "FK_WelcomePeople_Localisation", "Localisation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WorkiSiteWeb.Models.Localisation), "WelcomePeople", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WorkiSiteWeb.Models.WelcomePeople), true)]
 [assembly: EdmRelationshipAttribute("WorkiDBModel", "FK_WelcomePeople_Member", "Member", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WorkiSiteWeb.Models.Member), "WelcomePeople", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WorkiSiteWeb.Models.WelcomePeople), true)]
+[assembly: EdmRelationshipAttribute("WorkiDBModel", "FK_MemberBooking_Localisation", "Localisation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WorkiSiteWeb.Models.Localisation), "MemberBooking", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WorkiSiteWeb.Models.MemberBooking), true)]
+[assembly: EdmRelationshipAttribute("WorkiDBModel", "FK_MemberBooking_Member", "Member", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WorkiSiteWeb.Models.Member), "MemberBooking", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WorkiSiteWeb.Models.MemberBooking), true)]
 
 #endregion
 
@@ -324,6 +326,22 @@ namespace WorkiSiteWeb.Models
             }
         }
         private ObjectSet<WelcomePeople> _WelcomePeoples;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MemberBooking> MemberBookings
+        {
+            get
+            {
+                if ((_MemberBookings == null))
+                {
+                    _MemberBookings = base.CreateObjectSet<MemberBooking>("MemberBookings");
+                }
+                return _MemberBookings;
+            }
+        }
+        private ObjectSet<MemberBooking> _MemberBookings;
 
         #endregion
         #region AddTo Methods
@@ -446,6 +464,14 @@ namespace WorkiSiteWeb.Models
         public void AddToWelcomePeoples(WelcomePeople welcomePeople)
         {
             base.AddObject("WelcomePeoples", welcomePeople);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MemberBookings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMemberBookings(MemberBooking memberBooking)
+        {
+            base.AddObject("MemberBookings", memberBooking);
         }
 
         #endregion
@@ -1164,7 +1190,8 @@ namespace WorkiSiteWeb.Models
         /// <param name="country">Initial value of the Country property.</param>
         /// <param name="latitude">Initial value of the Latitude property.</param>
         /// <param name="longitude">Initial value of the Longitude property.</param>
-        public static Localisation CreateLocalisation(global::System.Int32 id, global::System.String name, global::System.Int32 typeValue, global::System.String adress, global::System.String postalCode, global::System.String city, global::System.String country, global::System.Double latitude, global::System.Double longitude)
+        /// <param name="bookable">Initial value of the Bookable property.</param>
+        public static Localisation CreateLocalisation(global::System.Int32 id, global::System.String name, global::System.Int32 typeValue, global::System.String adress, global::System.String postalCode, global::System.String city, global::System.String country, global::System.Double latitude, global::System.Double longitude, global::System.Boolean bookable)
         {
             Localisation localisation = new Localisation();
             localisation.ID = id;
@@ -1176,6 +1203,7 @@ namespace WorkiSiteWeb.Models
             localisation.Country = country;
             localisation.Latitude = latitude;
             localisation.Longitude = longitude;
+            localisation.Bookable = bookable;
             return localisation;
         }
 
@@ -2288,6 +2316,30 @@ namespace WorkiSiteWeb.Models
         private global::System.String _RoadAccess;
         partial void OnRoadAccessChanging(global::System.String value);
         partial void OnRoadAccessChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Bookable
+        {
+            get
+            {
+                return _Bookable;
+            }
+            set
+            {
+                OnBookableChanging(value);
+                ReportPropertyChanging("Bookable");
+                _Bookable = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Bookable");
+                OnBookableChanged();
+            }
+        }
+        private global::System.Boolean _Bookable;
+        partial void OnBookableChanging(global::System.Boolean value);
+        partial void OnBookableChanged();
 
         #endregion
     
@@ -2535,6 +2587,28 @@ namespace WorkiSiteWeb.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<WelcomePeople>("WorkiDBModel.FK_WelcomePeople_Localisation", "WelcomePeople", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("WorkiDBModel", "FK_MemberBooking_Localisation", "MemberBooking")]
+        public EntityCollection<MemberBooking> MemberBookings
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MemberBooking>("WorkiDBModel.FK_MemberBooking_Localisation", "MemberBooking");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MemberBooking>("WorkiDBModel.FK_MemberBooking_Localisation", "MemberBooking", value);
                 }
             }
         }
@@ -3895,6 +3969,397 @@ namespace WorkiSiteWeb.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<WelcomePeople>("WorkiDBModel.FK_WelcomePeople_Member", "WelcomePeople", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("WorkiDBModel", "FK_MemberBooking_Member", "MemberBooking")]
+        public EntityCollection<MemberBooking> MemberBookings
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MemberBooking>("WorkiDBModel.FK_MemberBooking_Member", "MemberBooking");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MemberBooking>("WorkiDBModel.FK_MemberBooking_Member", "MemberBooking", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="WorkiDBModel", Name="MemberBooking")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MemberBooking : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MemberBooking object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="memberId">Initial value of the MemberId property.</param>
+        /// <param name="localisationId">Initial value of the LocalisationId property.</param>
+        /// <param name="offer">Initial value of the Offer property.</param>
+        /// <param name="fromDate">Initial value of the FromDate property.</param>
+        /// <param name="toDate">Initial value of the ToDate property.</param>
+        /// <param name="handled">Initial value of the Handled property.</param>
+        /// <param name="confirmed">Initial value of the Confirmed property.</param>
+        /// <param name="price">Initial value of the Price property.</param>
+        public static MemberBooking CreateMemberBooking(global::System.Int32 id, global::System.Int32 memberId, global::System.Int32 localisationId, global::System.Int32 offer, global::System.DateTime fromDate, global::System.DateTime toDate, global::System.Boolean handled, global::System.Boolean confirmed, global::System.Int32 price)
+        {
+            MemberBooking memberBooking = new MemberBooking();
+            memberBooking.Id = id;
+            memberBooking.MemberId = memberId;
+            memberBooking.LocalisationId = localisationId;
+            memberBooking.Offer = offer;
+            memberBooking.FromDate = fromDate;
+            memberBooking.ToDate = toDate;
+            memberBooking.Handled = handled;
+            memberBooking.Confirmed = confirmed;
+            memberBooking.Price = price;
+            return memberBooking;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MemberId
+        {
+            get
+            {
+                return _MemberId;
+            }
+            set
+            {
+                if (_MemberId != value)
+                {
+                    OnMemberIdChanging(value);
+                    ReportPropertyChanging("MemberId");
+                    _MemberId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("MemberId");
+                    OnMemberIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _MemberId;
+        partial void OnMemberIdChanging(global::System.Int32 value);
+        partial void OnMemberIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LocalisationId
+        {
+            get
+            {
+                return _LocalisationId;
+            }
+            set
+            {
+                OnLocalisationIdChanging(value);
+                ReportPropertyChanging("LocalisationId");
+                _LocalisationId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LocalisationId");
+                OnLocalisationIdChanged();
+            }
+        }
+        private global::System.Int32 _LocalisationId;
+        partial void OnLocalisationIdChanging(global::System.Int32 value);
+        partial void OnLocalisationIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Offer
+        {
+            get
+            {
+                return _Offer;
+            }
+            set
+            {
+                OnOfferChanging(value);
+                ReportPropertyChanging("Offer");
+                _Offer = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Offer");
+                OnOfferChanged();
+            }
+        }
+        private global::System.Int32 _Offer;
+        partial void OnOfferChanging(global::System.Int32 value);
+        partial void OnOfferChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FromDate
+        {
+            get
+            {
+                return _FromDate;
+            }
+            set
+            {
+                OnFromDateChanging(value);
+                ReportPropertyChanging("FromDate");
+                _FromDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FromDate");
+                OnFromDateChanged();
+            }
+        }
+        private global::System.DateTime _FromDate;
+        partial void OnFromDateChanging(global::System.DateTime value);
+        partial void OnFromDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ToDate
+        {
+            get
+            {
+                return _ToDate;
+            }
+            set
+            {
+                OnToDateChanging(value);
+                ReportPropertyChanging("ToDate");
+                _ToDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ToDate");
+                OnToDateChanged();
+            }
+        }
+        private global::System.DateTime _ToDate;
+        partial void OnToDateChanging(global::System.DateTime value);
+        partial void OnToDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                OnMessageChanging(value);
+                ReportPropertyChanging("Message");
+                _Message = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Message");
+                OnMessageChanged();
+            }
+        }
+        private global::System.String _Message;
+        partial void OnMessageChanging(global::System.String value);
+        partial void OnMessageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Handled
+        {
+            get
+            {
+                return _Handled;
+            }
+            set
+            {
+                OnHandledChanging(value);
+                ReportPropertyChanging("Handled");
+                _Handled = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Handled");
+                OnHandledChanged();
+            }
+        }
+        private global::System.Boolean _Handled;
+        partial void OnHandledChanging(global::System.Boolean value);
+        partial void OnHandledChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Confirmed
+        {
+            get
+            {
+                return _Confirmed;
+            }
+            set
+            {
+                OnConfirmedChanging(value);
+                ReportPropertyChanging("Confirmed");
+                _Confirmed = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Confirmed");
+                OnConfirmedChanged();
+            }
+        }
+        private global::System.Boolean _Confirmed;
+        partial void OnConfirmedChanging(global::System.Boolean value);
+        partial void OnConfirmedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Price
+        {
+            get
+            {
+                return _Price;
+            }
+            set
+            {
+                OnPriceChanging(value);
+                ReportPropertyChanging("Price");
+                _Price = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Price");
+                OnPriceChanged();
+            }
+        }
+        private global::System.Int32 _Price;
+        partial void OnPriceChanging(global::System.Int32 value);
+        partial void OnPriceChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("WorkiDBModel", "FK_MemberBooking_Localisation", "Localisation")]
+        public Localisation Localisation
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Localisation>("WorkiDBModel.FK_MemberBooking_Localisation", "Localisation").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Localisation>("WorkiDBModel.FK_MemberBooking_Localisation", "Localisation").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Localisation> LocalisationReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Localisation>("WorkiDBModel.FK_MemberBooking_Localisation", "Localisation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Localisation>("WorkiDBModel.FK_MemberBooking_Localisation", "Localisation", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("WorkiDBModel", "FK_MemberBooking_Member", "Member")]
+        public Member Member
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Member>("WorkiDBModel.FK_MemberBooking_Member", "Member").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Member>("WorkiDBModel.FK_MemberBooking_Member", "Member").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Member> MemberReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Member>("WorkiDBModel.FK_MemberBooking_Member", "Member");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Member>("WorkiDBModel.FK_MemberBooking_Member", "Member", value);
                 }
             }
         }

@@ -117,87 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CoffeePrice" xml:space="preserve">
-    <value>Prix du café</value>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmation</value>
   </data>
-  <data name="Comments" xml:space="preserve">
-    <value>Commentaires</value>
+  <data name="FromDate" xml:space="preserve">
+    <value>Du</value>
   </data>
-  <data name="ConnectForTest" xml:space="preserve">
-    <value>Connectez-vous pour tester</value>
+  <data name="Handled" xml:space="preserve">
+    <value>Prise en charge</value>
   </data>
-  <data name="DeleteComment" xml:space="preserve">
-    <value>Effacer le commentaire</value>
+  <data name="Message" xml:space="preserve">
+    <value>Votre message</value>
   </data>
-  <data name="Error" xml:space="preserve">
-    <value>Erreur</value>
+  <data name="Offer" xml:space="preserve">
+    <value>Votre besoin</value>
   </data>
-  <data name="ErrorWhenYouAsk" xml:space="preserve">
-    <value>Désolé, une erreur s'est produite lors du traitement de votre demande.</value>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Votre numéro de téléphone</value>
   </data>
-  <data name="Hourly" xml:space="preserve">
-    <value>Horaires</value>
-    <comment>LocalisationDetails</comment>
+  <data name="Price" xml:space="preserve">
+    <value>Prix</value>
   </data>
-  <data name="KnowHouly" xml:space="preserve">
-    <value>Si vous connaissez les horaires d'ouverture de ce lieu, saisissez-les grâce au formulaire d'édition ou contactez-nous : </value>
-  </data>
-  <data name="Localisations" xml:space="preserve">
-    <value>Localisations</value>
-  </data>
-  <data name="Recommended" xml:space="preserve">
-    <value>Je vous recommande de découvrir ce lieu de travail :</value>
-  </data>
-  <data name="ShareWorkplace" xml:space="preserve">
-    <value>Partager ce lieu de travail</value>
-  </data>
-  <data name="Tweet" xml:space="preserve">
-    <value>Tweet</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Utilisateurs</value>
-  </data>
-  <data name="Visitors" xml:space="preserve">
-    <value>Visiteurs</value>
-  </data>
-  <data name="WhatEWorkyCouldDo" xml:space="preserve">
-    <value>Découvrez tout ce que eWorky peut faire pour vous</value>
-  </data>
-  <data name="Add" xml:space="preserve">
-    <value>Ajout</value>
-  </data>
-  <data name="Admin" xml:space="preserve">
-    <value>Administrateur</value>
-  </data>
-  <data name="CGU" xml:space="preserve">
-    <value>CGU</value>
-  </data>
-  <data name="CorrectThenTryAgain" xml:space="preserve">
-    <value>Oups ! Une erreur a été rencontrée. Vérifiez votre saisie et réessayez. Si le problème persiste, contactez-nous : support@eworky.com.</value>
-  </data>
-  <data name="Deconnect" xml:space="preserve">
-    <value>Déconnexion</value>
-  </data>
-  <data name="FreeInscriptionEnjoy" xml:space="preserve">
-    <value>Inscrivez-vous gratuitement et &lt;br /&gt;
-            profitez de tous nos services !</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="NewOnEWorky" xml:space="preserve">
-    <value>Nouveau sur eWorky ?</value>
-  </data>
-  <data name="Workplace" xml:space="preserve">
-    <value>lieu de travail</value>
-  </data>
-  <data name="ImportLocalisations" xml:space="preserve">
-    <value>Importer des lieux</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Profil accueil</value>
-  </data>
-  <data name="Bookings" xml:space="preserve">
-    <value>Réservations</value>
+  <data name="ToDate" xml:space="preserve">
+    <value>Au</value>
   </data>
 </root>

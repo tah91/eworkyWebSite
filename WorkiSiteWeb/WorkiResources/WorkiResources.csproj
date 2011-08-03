@@ -44,6 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Booking\Booking.Designer.cs">
+      <DependentUpon>Booking.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\Profile\Profile.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +92,11 @@
     </Compile>
     <Compile Include="Views\Admin\AdminString.Designer.cs">
       <DependentUpon>AdminString.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Booking\BookingString.Designer.cs">
+      <DependentUpon>BookingString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -152,6 +162,11 @@
       <LastGenOutput>Contact.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Booking\Booking.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Booking.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\Localisation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localisation.Designer.cs</LastGenOutput>
@@ -184,6 +199,11 @@
     <EmbeddedResource Include="Views\Admin\AdminString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Booking\BookingString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\CguString.resx">

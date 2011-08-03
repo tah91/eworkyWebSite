@@ -117,87 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CoffeePrice" xml:space="preserve">
-    <value>Prix du café</value>
+  <data name="BookIt" xml:space="preserve">
+    <value>Réserver</value>
   </data>
-  <data name="Comments" xml:space="preserve">
-    <value>Commentaires</value>
+  <data name="BackToUrl" xml:space="preserve">
+    <value>Retour</value>
   </data>
-  <data name="ConnectForTest" xml:space="preserve">
-    <value>Connectez-vous pour tester</value>
+  <data name="BookingIntro" xml:space="preserve">
+    <value>Remplir les champs pour réserver, un email vous sera envoyé</value>
   </data>
-  <data name="DeleteComment" xml:space="preserve">
-    <value>Effacer le commentaire</value>
+  <data name="BookingDetails" xml:space="preserve">
+    <value>Détails de la réservation</value>
   </data>
-  <data name="Error" xml:space="preserve">
-    <value>Erreur</value>
+  <data name="ConfirmIt" xml:space="preserve">
+    <value>Confirmer</value>
   </data>
-  <data name="ErrorWhenYouAsk" xml:space="preserve">
-    <value>Désolé, une erreur s'est produite lors du traitement de votre demande.</value>
+  <data name="HandleIt" xml:space="preserve">
+    <value>Prendre en charge</value>
   </data>
-  <data name="Hourly" xml:space="preserve">
-    <value>Horaires</value>
-    <comment>LocalisationDetails</comment>
+  <data name="BookingMailBody" xml:space="preserve">
+    <value>Nom : {0}
+Téléphone : {1}
+E-mail : {2}
+Besoin : {3}
+Début : {4}
+Fin : {5}
+Message : {6}</value>
   </data>
-  <data name="KnowHouly" xml:space="preserve">
-    <value>Si vous connaissez les horaires d'ouverture de ce lieu, saisissez-les grâce au formulaire d'édition ou contactez-nous : </value>
+  <data name="BookingMailSubject" xml:space="preserve">
+    <value>Alerte eWorky – Demande de réservation</value>
   </data>
-  <data name="Localisations" xml:space="preserve">
-    <value>Localisations</value>
+  <data name="ConfirmMailBody" xml:space="preserve">
+    <value>Bonjour,
+
+Votre réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) est confirmée. 
+Vous devrez régler la somme de {5} € directement auprès du prestataire.
+En espérant avoir satisfait votre demande,
+
+L’équipe eWorky</value>
   </data>
-  <data name="Recommended" xml:space="preserve">
-    <value>Je vous recommande de découvrir ce lieu de travail :</value>
+  <data name="ConfirmMailSubject" xml:space="preserve">
+    <value>eWorky – Votre réservation est confirmée</value>
   </data>
-  <data name="ShareWorkplace" xml:space="preserve">
-    <value>Partager ce lieu de travail</value>
+  <data name="HandleMailBody" xml:space="preserve">
+    <value>Bonjour,
+
+Votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) a été prise en charge par nos équipes. 
+Notre équipe vous recontactera sous 48 H pour vous confirmer votre réservation.
+En espérant vous revoir très vite sur www.eworky.com,
+
+L’équipe eWorky</value>
   </data>
-  <data name="Tweet" xml:space="preserve">
-    <value>Tweet</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Utilisateurs</value>
-  </data>
-  <data name="Visitors" xml:space="preserve">
-    <value>Visiteurs</value>
-  </data>
-  <data name="WhatEWorkyCouldDo" xml:space="preserve">
-    <value>Découvrez tout ce que eWorky peut faire pour vous</value>
-  </data>
-  <data name="Add" xml:space="preserve">
-    <value>Ajout</value>
-  </data>
-  <data name="Admin" xml:space="preserve">
-    <value>Administrateur</value>
-  </data>
-  <data name="CGU" xml:space="preserve">
-    <value>CGU</value>
-  </data>
-  <data name="CorrectThenTryAgain" xml:space="preserve">
-    <value>Oups ! Une erreur a été rencontrée. Vérifiez votre saisie et réessayez. Si le problème persiste, contactez-nous : support@eworky.com.</value>
-  </data>
-  <data name="Deconnect" xml:space="preserve">
-    <value>Déconnexion</value>
-  </data>
-  <data name="FreeInscriptionEnjoy" xml:space="preserve">
-    <value>Inscrivez-vous gratuitement et &lt;br /&gt;
-            profitez de tous nos services !</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="NewOnEWorky" xml:space="preserve">
-    <value>Nouveau sur eWorky ?</value>
-  </data>
-  <data name="Workplace" xml:space="preserve">
-    <value>lieu de travail</value>
-  </data>
-  <data name="ImportLocalisations" xml:space="preserve">
-    <value>Importer des lieux</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Profil accueil</value>
-  </data>
-  <data name="Bookings" xml:space="preserve">
-    <value>Réservations</value>
+  <data name="HandleMailSubject" xml:space="preserve">
+    <value>eWorky – Votre demande de réservation a été prise en compte</value>
   </data>
 </root>

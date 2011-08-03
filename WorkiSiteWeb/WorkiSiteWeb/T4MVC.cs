@@ -25,6 +25,7 @@ using T4MVC;
 public static class MVC {
     public static WorkiSiteWeb.Controllers.AccountController Account = new WorkiSiteWeb.Controllers.T4MVC_AccountController();
     public static WorkiSiteWeb.Controllers.AdminController Admin = new WorkiSiteWeb.Controllers.T4MVC_AdminController();
+    public static WorkiSiteWeb.Controllers.BookingController Booking = new WorkiSiteWeb.Controllers.T4MVC_BookingController();
     public static WorkiSiteWeb.Controllers.CaptchaImageController CaptchaImage = new WorkiSiteWeb.Controllers.T4MVC_CaptchaImageController();
     public static WorkiSiteWeb.Controllers.HomeController Home = new WorkiSiteWeb.Controllers.T4MVC_HomeController();
     public static WorkiSiteWeb.Controllers.LocalisationController Localisation = new WorkiSiteWeb.Controllers.T4MVC_LocalisationController();
@@ -338,6 +339,8 @@ namespace Links {
                       
         public static readonly string jquery_ui_1_8_11_min_js = Url("jquery-ui-1.8.11.min.js");
         public static readonly string jquery_ui_1_8_12_custom_min_js = Url("jquery-ui-1.8.12.custom.min.js");
+        public static readonly string jquery_ui_timepicker_addon_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-timepicker-addon.min.js") ? Url("jquery-ui-timepicker-addon.min.js") : Url("jquery-ui-timepicker-addon.js");
+                      
         public static readonly string jquery_fileupload_ui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.fileupload-ui.min.js") ? Url("jquery.fileupload-ui.min.js") : Url("jquery.fileupload-ui.js");
                       
         public static readonly string jquery_fileupload_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.fileupload.min.js") ? Url("jquery.fileupload.min.js") : Url("jquery.fileupload.js");
@@ -399,6 +402,7 @@ namespace Links {
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string Admin_css = Url("Admin.css");
+        public static readonly string Booking_css = Url("Booking.css");
         public static readonly string CreateLocalisation_css = Url("CreateLocalisation.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class font {
@@ -536,6 +540,7 @@ namespace Links {
     
         public static readonly string Index_css = Url("Index.css");
         public static readonly string jquery_ui_1_8_12_custom_css = Url("jquery-ui-1.8.12.custom.css");
+        public static readonly string jquery_ui_timepicker_addon_css = Url("jquery-ui-timepicker-addon.css");
         public static readonly string jquery_fileupload_ui_css = Url("jquery.fileupload-ui.css");
         public static readonly string jquery_lightbox_0_5_css = Url("jquery.lightbox-0.5.css");
         public static readonly string LocalisationDetail_css = Url("LocalisationDetail.css");
@@ -824,6 +829,11 @@ namespace WorkiSiteWeb.Controllers {
         public System.Web.Mvc.ActionResult IndexImportValidate() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexImportValidate);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult IndexBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.IndexBooking);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AdminController Actions { get { return MVC.Admin; } }
@@ -851,6 +861,7 @@ namespace WorkiSiteWeb.Controllers {
             public readonly string DeleteWelcomePeople = "supprimer-welcomePeople";
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
+            public readonly string IndexBooking = "IndexBooking";
         }
 
 
@@ -865,6 +876,7 @@ namespace WorkiSiteWeb.Controllers {
             public readonly string DetailWelcomePeople = "~/Views/Admin/DetailWelcomePeople.cshtml";
             public readonly string EditWelcomePeople = "~/Views/Admin/EditWelcomePeople.cshtml";
             public readonly string Index = "~/Views/Admin/Index.cshtml";
+            public readonly string IndexBooking = "~/Views/Admin/IndexBooking.cshtml";
             public readonly string IndexImport = "~/Views/Admin/IndexImport.cshtml";
             public readonly string IndexUser = "~/Views/Admin/IndexUser.cshtml";
             public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";
@@ -996,6 +1008,135 @@ namespace WorkiSiteWeb.Controllers {
         public override System.Web.Mvc.ActionResult IndexImport(System.Web.Mvc.FormCollection collection) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexImport);
             callInfo.RouteValueDictionary.Add("collection", collection);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult IndexBooking(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexBooking);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace WorkiSiteWeb.Controllers {
+    public partial class BookingController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected BookingController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Create() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Details() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Edit() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult HandleBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.HandleBooking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ConfirmBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public BookingController Actions { get { return MVC.Booking; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Booking";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Create = "Create";
+            public readonly string Details = "Details";
+            public readonly string Edit = "Edit";
+            public readonly string HandleBooking = "HandleBooking";
+            public readonly string ConfirmBooking = "ConfirmBooking";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Create = "~/Views/Booking/Create.cshtml";
+            public readonly string Details = "~/Views/Booking/Details.cshtml";
+            public readonly string Edit = "~/Views/Booking/Edit.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_BookingController: WorkiSiteWeb.Controllers.BookingController {
+        public T4MVC_BookingController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Create(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Create(int id, WorkiSiteWeb.Models.MemberBookingFormViewModel formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Details(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("memberId", memberId);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult HandleBooking(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.HandleBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ConfirmBooking(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 

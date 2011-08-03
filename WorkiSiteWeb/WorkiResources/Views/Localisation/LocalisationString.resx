@@ -192,4 +192,10 @@
   <data name="YouKnowContactUs" xml:space="preserve">
     <value>Si vous connaissez les coordonnées de contact de cet espace de travail, saisissez-les grâce au formulaire d'édition ou contactez-nous : contact@eworky.com.</value>
   </data>
+  <data name="BookIt" xml:space="preserve">
+    <value>Réserver</value>
+  </data>
+  <data name="NeedToBookPlace" xml:space="preserve">
+    <value>Ce lieu vous intéresse ?</value>
+  </data>
 </root>

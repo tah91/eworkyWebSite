@@ -176,6 +176,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Infrastructure\CustomClass\Exceptions.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
+    <Compile Include="Models\BookingModel.cs" />
     <Compile Include="Models\LocalisationBinder.cs" />
     <Compile Include="Infrastructure\Email\IEmailService.cs" />
     <Compile Include="Infrastructure\CustomClass\ActionResult.cs" />
@@ -217,6 +219,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkiDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Services\BookingRepository.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Services\WelcomePeopleRepository.cs" />
     <Compile Include="Services\EmailService.cs" />
@@ -245,10 +248,12 @@
       <DependentUpon>WorkiDB.mdf</DependentUpon>
     </Content>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Booking.css" />
     <Content Include="Content\images\arrow.png" />
     <Content Include="Content\images\csv-import.png" />
     <Content Include="Content\images\favorite.png" />
     <Content Include="Content\images\profil_social.png" />
+    <Content Include="Content\jquery-ui-timepicker-addon.css" />
     <Content Include="Content\Profil.css" />
     <Content Include="Content\galleria\classic-loader.gif" />
     <Content Include="Content\galleria\classic-map.png" />
@@ -373,6 +378,7 @@
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.12.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
     <Content Include="Scripts\jquery.fileupload-ui.js" />
     <Content Include="Scripts\jquery.fileupload.js" />
     <Content Include="Scripts\jquery.iframe-transport.js" />
@@ -526,6 +532,9 @@
     <Content Include="Views\Shared\_AddToFavorite.cshtml" />
     <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
     <Content Include="Views\Shared\_CommentFormScript.cshtml" />
+    <Content Include="Views\Booking\Create.cshtml" />
+    <Content Include="Views\Admin\IndexBooking.cshtml" />
+    <Content Include="Views\Booking\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -577,7 +586,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>7395</DevelopmentServerPort>
+          <DevelopmentServerPort>9069</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/WorkiSiteWeb</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

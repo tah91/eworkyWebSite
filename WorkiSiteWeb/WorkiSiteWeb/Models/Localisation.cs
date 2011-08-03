@@ -450,11 +450,17 @@ namespace WorkiSiteWeb.Models
             return feature;
         }
 
-        public static string GetOfferType(int index)
+		public static string GetOfferType(int index)
+		{
+			if (!LocalisationOfferTypes.ContainsKey(index))
+				return null;
+			return LocalisationOfferTypes[index];
+		}
+
+		public static Dictionary<int, string> GetOfferTypeDict(IEnumerable<LocalisationOffer> except)
         {
-            if (index < 0 || index >= LocalisationOfferTypes.Count)
-                return null;
-            return LocalisationOfferTypes[index];
+			var toRet = (from item in LocalisationOfferTypes where !except.Contains((LocalisationOffer)item.Key) select item).ToDictionary(k => k.Key, k => k.Value);
+			return toRet;
         }
 
         #endregion

@@ -79,6 +79,15 @@ namespace WorkiResources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Réservations.
+        /// </summary>
+        public static string Bookings {
+            get {
+                return ResourceManager.GetString("Bookings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CGU.
         /// </summary>
         public static string CGU {

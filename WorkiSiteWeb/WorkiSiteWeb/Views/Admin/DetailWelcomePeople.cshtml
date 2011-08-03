@@ -12,10 +12,6 @@
     
     <div class="contactDiv">
         <div class="login-account">
-
-        @using (Html.BeginForm(MVC.Admin.ActionNames.CreateWelcomePeople, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
             <table>
                 <tr>
                     <td>
@@ -66,7 +62,6 @@
                     </td>
                 </tr>
             </table>
-        }
         </div>
     </div>   
 </div>
