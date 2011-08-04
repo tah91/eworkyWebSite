@@ -9,25 +9,23 @@ using WorkiSiteWeb.Helpers;
 
 namespace WorkiSiteWeb.Models
 {
-    public class MemberRepository : IMemberRepository
+    public class MemberRepository : RepositoryBase<Member>, IMemberRepository
     {
         #region Private
 
         #region Complied Queries
 
-        Func<WorkiDBEntities, string, IQueryable<Member>> _GetMemberFromUserName = CompiledQuery.Compile<WorkiDBEntities, string, IQueryable<Member>>(
-            (db, username) => from members in db.Members where members.Username == username select members
-            );
+		//Func<WorkiDBEntities, string, IQueryable<Member>> _GetMemberFromUserName = CompiledQuery.Compile<WorkiDBEntities, string, IQueryable<Member>>(
+		//    (db, username) => from members in db.Members where members.Username == username select members
+		//    );
 
-        Func<WorkiDBEntities, string, IQueryable<Member>> _GetMemberFromEmail = CompiledQuery.Compile<WorkiDBEntities, string, IQueryable<Member>>(
-            (db, email) => from members in db.Members where members.Email == email select members
-            );
+		//Func<WorkiDBEntities, string, IQueryable<Member>> _GetMemberFromEmail = CompiledQuery.Compile<WorkiDBEntities, string, IQueryable<Member>>(
+		//    (db, email) => from members in db.Members where members.Email == email select members
+		//    );
 
-        Func<WorkiDBEntities, int, IQueryable<Member>> _GetMemberFromId = CompiledQuery.Compile<WorkiDBEntities, int, IQueryable<Member>>(
-            (db, id) => from members in db.Members where members.MemberId == id select members
-            );
-
-		ILogger _Logger; 
+		//Func<WorkiDBEntities, int, IQueryable<Member>> _GetMemberFromId = CompiledQuery.Compile<WorkiDBEntities, int, IQueryable<Member>>(
+		//    (db, id) => from members in db.Members where members.MemberId == id select members
+		//    );
 
         #endregion		
 
@@ -79,9 +77,8 @@ namespace WorkiSiteWeb.Models
         //WorkiDBEntities db = new WorkiDBEntities();
 
 		public MemberRepository(ILogger logger)
+			: base(logger)
 		{
-			_Logger = logger;
-
 			//initialise admin data
 			Initialise();
 		}
@@ -94,7 +91,7 @@ namespace WorkiSiteWeb.Models
         {
             using (var db = new WorkiDBEntities())
             {
-                Member m = _GetMemberFromEmail(db, email).SingleOrDefault();
+				Member m = (from members in db.Members where members.Email == email select members).SingleOrDefault();
                 return m == null ? null : m.Username;
             }
         }
@@ -114,7 +111,7 @@ namespace WorkiSiteWeb.Models
         {
             using (var db = new WorkiDBEntities())
             {
-                var member = _GetMemberFromEmail(db, username).SingleOrDefault();
+				var member = db.Members.SingleOrDefault(m => m.Email == key);
                 if (member == null)
                     return false;
                 if (string.Compare(key, member.EmailKey) == 0)
@@ -136,33 +133,13 @@ namespace WorkiSiteWeb.Models
 
         #region IRepository
 
-		public Member Get(int key)
+		public override void Delete(int key)
 		{
-			var db = new WorkiDBEntities();
-			//using (var db = new WorkiDBEntities())
+			using (var db = new WorkiDBEntities())
 			{
 				Member member = db.Members.SingleOrDefault(m => m.MemberId == key);
-
-				return member;
-			}
-		}
-
-        public void Add(Member toAdd)
-        {
-            using (var db = new WorkiDBEntities())
-            {
-                db.Members.AddObject(toAdd);
-                db.SaveChanges();
-            }
-        }
-
-        public void Delete(int key)
-        {
-            using (var db = new WorkiDBEntities())
-            {
-				Member member = db.Members.SingleOrDefault(m => m.MemberId == key);
 				if (member == null)
-                    return;
+					return;
 				var admin = db.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminUser);
 				//set member localisation to admin
 				foreach (var item in member.Localisations.ToList())
@@ -174,49 +151,10 @@ namespace WorkiSiteWeb.Models
 				{
 					item.PostUserID = admin.MemberId;
 				}
-				db.Members.DeleteObject(member);
-                db.SaveChanges();
-            }
-        }
-
-        public void Update(int id, Action<Member> actionToPerform)
-        {
-            using (var db = new WorkiDBEntities())
-            {
-				Member member = db.Members.SingleOrDefault(m => m.MemberId == id);
-                if (member != null)
-                {
-                    actionToPerform.Invoke(member);
-                    db.SaveChanges();
-                }
-            }
-        }
-
-        public IList<Member> GetAll()
-        {
-            var db = new WorkiDBEntities();
-            //using (var db = new WorkiDBEntities())
-            {
-                return db.Members.ToList();
-            }
-        }
-
-        public IList<Member> Get(int start, int pageSize)
-        {
-            var db = new WorkiDBEntities();
-            //using (var db = new WorkiDBEntities())
-            {
-				return db.Members.OrderByDescending(m => m.MemberId).Skip(start).Take(pageSize).ToList();
-            }
-        }
-
-        public int GetCount()
-        {
-            using (var db = new WorkiDBEntities())
-            {
-                return db.Members.Count();
-            }
-        }
+				db.Members.Remove(member);
+				db.SaveChanges();
+			}
+		}
 
         #endregion
     }

@@ -148,7 +148,7 @@ namespace WorkiSiteWeb.Models
                             throw new ProviderException("Cannot delete roles with users assigned to them");
                     }
 
-                    GroupRepository.DeleteRole(roleName);
+					GroupRepository.Delete(g => g.Title == roleName);
 
                     ret = true;
                 }

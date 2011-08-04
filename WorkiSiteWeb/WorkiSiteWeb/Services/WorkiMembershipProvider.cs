@@ -683,7 +683,7 @@ namespace WorkiSiteWeb.Models
 
                 totalRecords = MemberRepository.GetCount();
 
-                IList<Member> mlist = MemberRepository.Get(start,pageSize);
+				IList<Member> mlist = MemberRepository.Get(start, pageSize, m => m.MemberId);
 
                 foreach (Member m in mlist)
                     users.Add(GetUserFromMember(m));

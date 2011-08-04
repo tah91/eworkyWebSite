@@ -48,7 +48,7 @@ namespace WorkiSiteWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var fromDB = _VisitorRepository.GetVisitor(visitor.Email);
+				var fromDB = _VisitorRepository.Get(item => string.Compare(item.Email, visitor.Email, StringComparison.InvariantCultureIgnoreCase) == 0);
                 var user = _MemberRepository.GetMember(visitor.Email);
                 //already registered
                 if (user != null)

@@ -60,7 +60,7 @@ namespace WorkiSiteWeb.Controllers
         public virtual ActionResult Index(int? page)
         {
             var pageValue = page ?? 1;
-            var localisations = _LocalisationRepository.Get((pageValue - 1) * PageSize, PageSize);
+			var localisations = _LocalisationRepository.Get((pageValue - 1) * PageSize, PageSize, l => l.ID);
             var viewModel = new AdminLocalisation(localisations.ToList())
             {
                 Localisations = localisations,
@@ -264,7 +264,7 @@ namespace WorkiSiteWeb.Controllers
             else
             {
 				_MemberRepository.Delete(member.MemberId);
-				_VisitorRepository.DeleteVisitor(user.UserName);
+				_VisitorRepository.Delete(item => string.Compare(item.Email, user.UserName, StringComparison.InvariantCultureIgnoreCase) == 0);
                 return Redirect(returnUrl);
             }
         }
@@ -283,7 +283,7 @@ namespace WorkiSiteWeb.Controllers
             int pageValue = page ?? 1;
             int itemTotal = 1;
             //IQueryable<Visitor> visitors = _VisitorRepository.GetVisitors((pageValue - 1) * PageSize, PageSize);
-            var currentPage = _VisitorRepository.Get((pageValue - 1) * PageSize, PageSize);
+			var currentPage = _VisitorRepository.Get((pageValue - 1) * PageSize, PageSize, v => v.Id);
             var dict = currentPage.ToDictionary(v => v, v => _MembershipService.GetUserByMail(v.Email) != null);
             itemTotal = _VisitorRepository.GetCount();
             var viewModel = new VisitorListViewModel()
@@ -310,7 +310,7 @@ namespace WorkiSiteWeb.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult SendEmail(string email, string returnUrl)
         {
-            var visitor = _VisitorRepository.GetVisitor(email);
+			var visitor = _VisitorRepository.Get(item => string.Compare(item.Email, email, StringComparison.InvariantCultureIgnoreCase) == 0);
             if (visitor == null)
                 return RedirectToAction(MVC.Admin.IndexVisitor());
 
@@ -343,7 +343,7 @@ namespace WorkiSiteWeb.Controllers
         public virtual ActionResult IndexWelcomePeople(int? page)
         {
             int pageValue = page ?? 1;
-            var welcomPeople = _WelcomePeopleRepository.Get((pageValue - 1) * PageSize, PageSize);
+			var welcomPeople = _WelcomePeopleRepository.Get((pageValue - 1) * PageSize, PageSize, wp => wp.Id);
             var viewModel = new WelcomePeopleListViewModel()
             {
                 WelcomePeople = welcomPeople,
@@ -407,7 +407,7 @@ namespace WorkiSiteWeb.Controllers
 					var member = _MemberRepository.GetMember(formModel.Email);
 					formModel.WelcomePeople.MemberId = member.MemberId;
 					//get localisation
-					var loc = _LocalisationRepository.GetLocalisation(formModel.LocalisationName);
+					var loc = _LocalisationRepository.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
 					formModel.WelcomePeople.LocalisationId = loc.ID;
 					_WelcomePeopleRepository.Add(formModel.WelcomePeople);
 					return RedirectToAction(MVC.Admin.IndexWelcomePeople());
@@ -465,7 +465,7 @@ namespace WorkiSiteWeb.Controllers
 						var member = _MemberRepository.GetMember(formModel.Email);
 						wp.MemberId = member.MemberId;
 						//get localisation
-						var loc = _LocalisationRepository.GetLocalisation(formModel.LocalisationName);
+						var loc = _LocalisationRepository.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
 						wp.LocalisationId = loc.ID;
 
 						if (!string.IsNullOrEmpty(formModel.WelcomePeople.LocalisationPicture))
@@ -685,7 +685,7 @@ namespace WorkiSiteWeb.Controllers
 		public virtual ActionResult IndexBooking(int? page)
 		{
 			var pageValue = page ?? 1;
-			var bookings = _BookingRepository.Get((pageValue - 1) * PageSize, PageSize);
+			var bookings = _BookingRepository.Get((pageValue - 1) * PageSize, PageSize, mb => mb.Id);
 			var viewModel = new MemberBookingListViewModel()
 			{
 				MemberBooking = bookings,

@@ -11,6 +11,5 @@ namespace WorkiSiteWeb.Infrastructure.Repository
         void DeleteMembersInGroup(IEnumerable<MembersInGroup> membersInGroup);
         IList<MembersInGroup> GetAllMembersInGroups();
         IList<string> GetGroupsForUser(string username);
-		void DeleteRole(string roleName);
     }
 }
