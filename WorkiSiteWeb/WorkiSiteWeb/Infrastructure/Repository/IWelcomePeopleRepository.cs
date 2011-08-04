@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace WorkiSiteWeb.Infrastructure.Repository
 {
-    public interface IWelcomePeopleRepository : IRepository<WelcomePeople, int>
+    public interface IWelcomePeopleRepository : IRepository<WelcomePeople>
     {
 
     }

@@ -9,7 +9,7 @@ using WorkiSiteWeb.Helpers;
 
 namespace WorkiSiteWeb.Models
 {
-	public class BookingRepository : IRepository<MemberBooking, int>
+	public class BookingRepository : IRepository<MemberBooking>
     {
 		ILogger _Logger;
 

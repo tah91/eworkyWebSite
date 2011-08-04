@@ -5,11 +5,12 @@ using System.Collections.Generic;
 
 namespace WorkiSiteWeb.Infrastructure.Repository
 {
-    public interface IGroupRepository : IRepository<Group, string>
+    public interface IGroupRepository : IRepository<Group>
     {
         void AddMembersInGroup(IEnumerable<MembersInGroup> membersInGroup);
         void DeleteMembersInGroup(IEnumerable<MembersInGroup> membersInGroup);
         IList<MembersInGroup> GetAllMembersInGroups();
         IList<string> GetGroupsForUser(string username);
+		void DeleteRole(string roleName);
     }
 }

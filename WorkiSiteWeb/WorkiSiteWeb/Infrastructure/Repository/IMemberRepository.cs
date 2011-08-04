@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WorkiSiteWeb.Infrastructure.Repository
 {
-    public interface IMemberRepository : IRepository<Member, int>
+    public interface IMemberRepository : IRepository<Member>
     {
         Member GetMember(string key);
         string GetUserName(string email);

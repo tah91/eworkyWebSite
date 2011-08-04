@@ -8,15 +8,14 @@ namespace WorkiSiteWeb.Infrastructure.Repository
     /// Repository pattern
     /// </summary>
     /// <typeparam name="T">type of data in the repository</typeparam>
-    /// <typeparam name="TKey">type of key in order to get a element</typeparam>
-    public interface IRepository<T,TKey>
+    public interface IRepository<T>
     {
         /// <summary>
         /// Get element for a given key
         /// </summary>
         /// <param name="key">key</param>
         /// <returns>object instance if key is present</returns>
-        T Get(TKey key);
+        T Get(int key);
 
         /// <summary>
         /// add an element to the repository
@@ -28,14 +27,14 @@ namespace WorkiSiteWeb.Infrastructure.Repository
         /// remove an element from the repository
         /// </summary>
         /// <param name="key">key of element to remove</param>
-        void Delete(TKey key);
+        void Delete(int key);
 
         /// <summary>
         /// perform modifications on a element of the repository
         /// </summary>
         /// <param name="key">key of thye element to modify</param>
         /// <param name="actionToPerform">action to perform</param>
-        void Update(TKey key, Action<T> actionToPerform);
+        void Update(int key, Action<T> actionToPerform);
 
         /// <summary>
         /// Get all the element from repository

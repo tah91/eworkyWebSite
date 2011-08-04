@@ -18,7 +18,7 @@ namespace WorkiSiteWeb.Controllers
 
 		IMemberRepository _MemberRepository;
 		ILocalisationRepository _LocalisationRepository;
-		IRepository<MemberBooking, int> _BookingRepository;
+		IRepository<MemberBooking> _BookingRepository;
 		ILogger _Logger;
 		IEmailService _EmailService;
 
@@ -27,7 +27,7 @@ namespace WorkiSiteWeb.Controllers
 		public BookingController(	IMemberRepository memberRepository, 
 									ILogger logger, 
 									ILocalisationRepository localisationRepository,
-									IRepository<MemberBooking, int> bookingRepository,
+									IRepository<MemberBooking> bookingRepository,
 									IEmailService emailService)
 		{
 			_MemberRepository = memberRepository;

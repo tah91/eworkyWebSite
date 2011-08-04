@@ -56,7 +56,7 @@ namespace WorkiSiteWeb
 			Bind<ISearchService>()
 				.To<SearchService>();
 
-			Bind<IRepository<MemberBooking, int>>()
+			Bind<IRepository<MemberBooking>>()
 				.To<BookingRepository>();
 
 			Bind<ILogger>().

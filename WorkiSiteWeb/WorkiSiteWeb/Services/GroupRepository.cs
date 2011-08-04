@@ -14,13 +14,13 @@ namespace WorkiSiteWeb.Models
 
         #region IRepository
 
-        public Group Get(string key)
+        public Group Get(int key)
         {
             var db = new WorkiDBEntities();
             //using (var db = new WorkiDBEntities())
             {
                 Group g = (from groups in db.Groups
-                           where groups.Title == key
+                           where groups.GroupId == key
                            select groups).SingleOrDefault();
 
                 return g;
@@ -36,11 +36,11 @@ namespace WorkiSiteWeb.Models
             }
         }
 
-        public void Delete(string key)
+        public void Delete(int key)
         {
             using (var db = new WorkiDBEntities())
             {
-                Group toDelete = (from groups in db.Groups where groups.Title == key select groups).SingleOrDefault();
+                Group toDelete = (from groups in db.Groups where groups.GroupId == key select groups).SingleOrDefault();
                 if (toDelete == null)
                     return;
                 db.Groups.DeleteObject(toDelete);
@@ -48,7 +48,7 @@ namespace WorkiSiteWeb.Models
             }
         }
 
-        public void Update(string key, System.Action<Group> actionToPerform)
+        public void Update(int key, System.Action<Group> actionToPerform)
         {
             throw new System.NotImplementedException();
         }
@@ -135,6 +135,16 @@ namespace WorkiSiteWeb.Models
             }
         }
 
+		public void DeleteRole(string roleName)
+		{
+			using (var db = new WorkiDBEntities())
+			{
+				Group toDelete = (from groups in db.Groups where groups.Title == roleName select groups).SingleOrDefault();
+				if (toDelete == null)
+					return;
+				Delete(toDelete.GroupId);
+			}
+		}
 
         #endregion
 

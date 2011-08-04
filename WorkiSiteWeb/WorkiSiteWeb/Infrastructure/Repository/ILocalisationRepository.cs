@@ -7,7 +7,7 @@ using WorkiSiteWeb.Infrastructure.Logging;
 
 namespace WorkiSiteWeb.Infrastructure.Repository
 {
-    public interface ILocalisationRepository : IRepository<Localisation, int>
+    public interface ILocalisationRepository : IRepository<Localisation>
     {
         IList<Localisation> GetMainLocalisations();
         IList<Localisation> FindByLocation(float latitude, float longitude);

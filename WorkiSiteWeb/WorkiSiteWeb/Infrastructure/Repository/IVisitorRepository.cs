@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace WorkiSiteWeb.Infrastructure.Repository
 {
-    public interface IVisitorRepository : IRepository<Visitor, int>
+    public interface IVisitorRepository : IRepository<Visitor>
     {
         Visitor GetVisitor(string email);
         void ValidateVisitor(string email);
