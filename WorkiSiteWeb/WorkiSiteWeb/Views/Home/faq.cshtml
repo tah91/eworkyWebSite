@@ -3,129 +3,129 @@
     <title>@Html.WorkiTitle("FAQ") </title>
 }
 
-@RazorHelpers.TitleDiv(WorkiResources.Views.Home.FaqString.FAQ, "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.FaqString.FAQ, "Blue")
 
 <div class="detailContent generalTextContainer">
 	<div class="contentBlock generalTextContent float-right">
 
-	    <h2>@WorkiResources.Views.Home.HomeString.UsingOfEWorky
+	    <h2>@Worki.Resources.Views.Home.HomeString.UsingOfEWorky
 	    </h2>
 
-	    <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsEWorky</span></h3>
+	    <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsEWorky</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.YouCanFindAll
+			    <p>@Worki.Resources.Views.Home.FaqString.YouCanFindAll
 			    </p>
 		    </div>
 	    </div>	
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.HowFindWorkplace</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowFindWorkplace</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@Html.Raw(String.Format(WorkiResources.Views.Home.FaqString.FormForSearch,Html.ActionLink(WorkiResources.Views.Home.FaqString.HomePage,MVC.Home.Index()),Html.ActionLink(WorkiResources.Views.Home.FaqString.SearchPage, MVC.Search.FullSearch()) )) 
+			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.FormForSearch,Html.ActionLink(Worki.Resources.Views.Home.FaqString.HomePage,MVC.Home.Index()),Html.ActionLink(Worki.Resources.Views.Home.FaqString.SearchPage, MVC.Search.FullSearch()) )) 
 	            </p>
 		    </div>
 	    </div>	
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.HowAddWorkplace</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowAddWorkplace</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@Html.Raw(String.Format(WorkiResources.Views.Home.FaqString.SuggestWorkplace, Html.ActionLink(WorkiResources.Views.Home.FaqString.AddPage, MVC.Localisation.Create())))
+			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.SuggestWorkplace, Html.ActionLink(Worki.Resources.Views.Home.FaqString.AddPage, MVC.Localisation.Create())))
 	            </p>
 		    </div>
 	    </div>	
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.HowSuggestWorkplace</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowSuggestWorkplace</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.WorkplaceManager
+			    <p>@Worki.Resources.Views.Home.FaqString.WorkplaceManager
                 </p>
 		    </div>
 	    </div>	
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.HowEdit</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowEdit</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.ClickEdit
+			    <p>@Worki.Resources.Views.Home.FaqString.ClickEdit
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.HowRateComment</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowRateComment</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.ForRateComment
+			    <p>@Worki.Resources.Views.Home.FaqString.ForRateComment
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.HowEditProfil</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowEditProfil</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.ForEditProfil
+			    <p>@Worki.Resources.Views.Home.FaqString.ForEditProfil
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatAreThosePoint</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatAreThosePoint</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.WhyThereArePoint
+			    <p>@Worki.Resources.Views.Home.FaqString.WhyThereArePoint
                 </p>
 		    </div>
 	    </div>
 		<div class="clear">
 		</div>
 
-	    <h2 class="faqTitle">@WorkiResources.Views.Home.FaqString.Bugs
+	    <h2 class="faqTitle">@Worki.Resources.Views.Home.FaqString.Bugs
 	    </h2>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.ReportBug</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.ReportBug</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.EncounterBugs
+			    <p>@Worki.Resources.Views.Home.FaqString.EncounterBugs
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.CouldNotIncludePicture</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.CouldNotIncludePicture</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.YourPossiblilitiesOnForm
+			    <p>@Worki.Resources.Views.Home.FaqString.YourPossiblilitiesOnForm
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.CouldNotEditLocation</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.CouldNotEditLocation</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.HowEditLocation
+			    <p>@Worki.Resources.Views.Home.FaqString.HowEditLocation
                 </p>
 		    </div>
 	    </div>    
 		<div class="clear">
 		</div>
 
-	    <h2 class="faqTitle">@WorkiResources.Views.Home.FaqString.TheInscription
+	    <h2 class="faqTitle">@Worki.Resources.Views.Home.FaqString.TheInscription
 	    </h2>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.HowCreateAccount</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowCreateAccount</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@Html.Raw(String.Format(WorkiResources.Views.Home.FaqString.ProposeWorkplaceAfterInscription, Html.ActionLink(WorkiResources.Views.Home.FaqString.Inscription, MVC.Account.Register())))
+			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.ProposeWorkplaceAfterInscription, Html.ActionLink(Worki.Resources.Views.Home.FaqString.Inscription, MVC.Account.Register())))
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.RetrivePassword</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.RetrivePassword</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@Html.Raw(String.Format(WorkiResources.Views.Home.FaqString.PasswordLost,  Html.ActionLink(WorkiResources.Views.Home.FaqString.ClickHere,MVC.Account.ResetPassword())))
+			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.PasswordLost,  Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere,MVC.Account.ResetPassword())))
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.InviteFriends</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.InviteFriends</span></h3>
 	    <div class="toogle_container">
             <div class="block">
                 <ul>
@@ -138,120 +138,120 @@
 		<div class="clear">
 		</div>
 
-        <h2 class="faqTitle">@WorkiResources.Views.Home.FaqString.Glossary
+        <h2 class="faqTitle">@Worki.Resources.Views.Home.FaqString.Glossary
 	    </h2>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsMeetingRoom</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsMeetingRoom</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWorkyMeetingRoom
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWorkyMeetingRoom
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsTelepresenceRoom</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTelepresenceRoom</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWVisioRoom
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWVisioRoom
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsVisioRoom</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsVisioRoom</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWVisioRoom
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWVisioRoom
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsBuisnessLounge</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessLounge</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWBuisnessLounge
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessLounge
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsWorkStation</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsWorkStation</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWWorkStation
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWWorkStation
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsConferenceRoom</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsConferenceRoom</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWConferenceRoom
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWConferenceRoom
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsOffice</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsOffice</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWOffice
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWOffice
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsDigitalPublicSpace</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsDigitalPublicSpace</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWDigitalPublicSpace
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWDigitalPublicSpace
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsTelecenter</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTelecenter</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWTelecenter
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWTelecenter
                 </p>
 		    </div>
 	    </div>
 	
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsBuisnessCenter</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessCenter</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWBuisnessCenter
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessCenter
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsCoworking</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsCoworking</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWCoworking
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWCoworking
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsBuisnessHotel</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessHotel</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWBuisnessHotel
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessHotel
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsPrivatePlace</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsPrivatePlace</span></h3>
 	    <div class="toogle_container">
             <div class="block">
-			    <p>@WorkiResources.Views.Home.FaqString.OnEWPrivatePlace
+			    <p>@Worki.Resources.Views.Home.FaqString.OnEWPrivatePlace
                 </p>
 		    </div>
 	    </div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@WorkiResources.Views.Home.FaqString.WhatIsTeleWork</span></h3>
+        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTeleWork</span></h3>
 	    <div class="toogle_container">
             <div class="block">
 			    <p><span style=" font-style:italic; text-align:center; display:block;">
-                    @WorkiResources.Views.Home.FaqString.OnEWTelework1</span>
+                    @Worki.Resources.Views.Home.FaqString.OnEWTelework1</span>
 	                <br />
-	                @WorkiResources.Views.Home.FaqString.OnEWTelework2
+	                @Worki.Resources.Views.Home.FaqString.OnEWTelework2
 	            </p>
 		    </div>
 	    </div>

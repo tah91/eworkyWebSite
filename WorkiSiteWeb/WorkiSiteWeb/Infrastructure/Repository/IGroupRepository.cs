@@ -1,9 +1,9 @@
 ﻿using System;
-using WorkiSiteWeb.Models;
+using Worki.Web.Models;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace WorkiSiteWeb.Infrastructure.Repository
+namespace Worki.Web.Infrastructure.Repository
 {
     public interface IGroupRepository : IRepository<Group>
     {

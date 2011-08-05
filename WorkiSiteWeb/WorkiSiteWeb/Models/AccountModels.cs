@@ -7,11 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using WorkiSiteWeb.Helpers;
-using WorkiSiteWeb.Infrastructure;
-using WorkiSiteWeb.Infrastructure.Membership;
+using Worki.Web.Helpers;
+using Worki.Web.Infrastructure;
+using Worki.Web.Infrastructure.Membership;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
 
     #region Modèles
@@ -20,42 +20,42 @@ namespace WorkiSiteWeb.Models
     {        
         public string UserName { get; set; }
 
-        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
-        [Display(Name = "OldPassword", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
-        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "OldPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string OldPassword { get; set; }
 
-        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(WorkiResources.Validation.ValidationString))]
-        [ValidatePasswordLength(ErrorMessageResourceName = "MinLetter", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
+        [ValidatePasswordLength(ErrorMessageResourceName = "MinLetter", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
-        [Display(Name = "NewPassword", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
-        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "NewPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string NewPassword { get; set; }
 
-        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
-        [Display(Name = "ConfirmPassword", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
-        [ValidatePasswordLength(ErrorMessageResourceName = "MinLetter", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Compare("NewPassword", ErrorMessageResourceName = "TheTwoNotMatch", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [ValidatePasswordLength(ErrorMessageResourceName = "MinLetter", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Compare("NewPassword", ErrorMessageResourceName = "TheTwoNotMatch", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string ConfirmPassword { get; set; }
     }
 
     public class LogOnModel
     {
-        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "Login", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
-        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Login", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Login { get; set; }
 
-        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "Password", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
+        [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Password", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
         [DataType(DataType.Password)]
-        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Password { get; set; }
 
-        [Display(Name = "RememberMe", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
+        [Display(Name = "RememberMe", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
         public bool RememberMe { get; set; }
     }
 
@@ -90,7 +90,7 @@ namespace WorkiSiteWeb.Models
 						{
 							if (!AcceptCGU)
 							{
-								return WorkiResources.Validation.ValidationString.MustAgreeCGU;
+								return Worki.Resources.Validation.ValidationString.MustAgreeCGU;
 							}
 							else
 								return string.Empty;
@@ -111,25 +111,25 @@ namespace WorkiSiteWeb.Models
 
 		#region Member Table
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.EmailAddress)]
-        [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "Email", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Email { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [ValidatePasswordLength]
         [DataType(DataType.Password)]
-        [Display(Name = "Password", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
-        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "Password", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Password { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
-        [Display(Name = "ConfirmPassword", ResourceType = typeof(WorkiResources.Models.Account.AccountModels))]
-        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Compare("Password", ErrorMessageResourceName = "TheTwoNotMatch", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Compare("Password", ErrorMessageResourceName = "TheTwoNotMatch", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string ConfirmPassword { get; set; }
 
         #endregion
@@ -145,10 +145,10 @@ namespace WorkiSiteWeb.Models
 
     public class ResetPasswordModel
     {
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "Email", ResourceType = typeof(WorkiResources.Models.Contact.Contact))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string EMail { get; set; }
     }
 
@@ -182,9 +182,9 @@ namespace WorkiSiteWeb.Models
         public bool ValidateUser(string userName, string password)
         {
             if (String.IsNullOrEmpty(userName)) 
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "userName");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "userName");
             if (String.IsNullOrEmpty(password))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "password");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "password");
 
             return _Provider.ValidateUser(userName, password);
         }
@@ -192,11 +192,11 @@ namespace WorkiSiteWeb.Models
         public MembershipCreateStatus CreateUser(string userName, string password, string email)
         {
             if (String.IsNullOrEmpty(userName))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "userName");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "userName");
             if (String.IsNullOrEmpty(password))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "password");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "password");
             if (String.IsNullOrEmpty(email))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "email");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "email");
 
             MembershipCreateStatus status;
             _Provider.CreateUser(userName, password, email, null, null, false, null, out status);
@@ -206,11 +206,11 @@ namespace WorkiSiteWeb.Models
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
             if (String.IsNullOrEmpty(userName))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "userName");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "userName");
             if (String.IsNullOrEmpty(oldPassword))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "oldPassword");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "oldPassword");
             if (String.IsNullOrEmpty(newPassword))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "newPassword");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "newPassword");
 
             // Le ChangePassword() sous-jacent lèvera une exception plutôt
             // que de retourner false dans certains scénarios de défaillance.
@@ -232,7 +232,7 @@ namespace WorkiSiteWeb.Models
         public bool ResetPassword(string email)
         {
             if (String.IsNullOrEmpty(email))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "email");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "email");
 
             // Le ChangePassword() sous-jacent lèvera une exception plutôt
             // que de retourner false dans certains scénarios de défaillance.
@@ -240,7 +240,7 @@ namespace WorkiSiteWeb.Models
             {
                 var userName = _Provider.GetUserNameByEmail(email);
                 if (string.IsNullOrEmpty(userName))
-                    throw new ArgumentException(WorkiResources.Validation.ValidationString.MailDoNotMatch, "email");
+                    throw new ArgumentException(Worki.Resources.Validation.ValidationString.MailDoNotMatch, "email");
                 MembershipUser currentUser = _Provider.GetUser(userName, false);
                 if (currentUser == null)
                     return false;
@@ -260,7 +260,7 @@ namespace WorkiSiteWeb.Models
         public bool DeleteUser(string userName) 
         {
             if (String.IsNullOrEmpty(userName))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "userName");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "userName");
 
             // Le ChangePassword() sous-jacent lèvera une exception plutôt
             // que de retourner false dans certains scénarios de défaillance.
@@ -330,7 +330,7 @@ namespace WorkiSiteWeb.Models
         public void SignIn(string userName, string userData, bool createPersistentCookie, HttpResponseBase response)
         {
             if (String.IsNullOrEmpty(userName))
-                throw new ArgumentException(WorkiResources.Validation.ValidationString.CannotBeEmpty, "userName");
+                throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "userName");
 
             // Create the cookie that contains the forms authentication ticket
             HttpCookie authCookie = FormsAuthentication.GetAuthCookie(userName, createPersistentCookie);
@@ -366,34 +366,34 @@ namespace WorkiSiteWeb.Models
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return WorkiResources.Validation.ValidationString.UsernameExist;
+                    return Worki.Resources.Validation.ValidationString.UsernameExist;
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return WorkiResources.Validation.ValidationString.UsernameExistForThisMail;
+                    return Worki.Resources.Validation.ValidationString.UsernameExistForThisMail;
 
                 case MembershipCreateStatus.InvalidPassword:
-                    return WorkiResources.Validation.ValidationString.GivenPasswordNotValide;
+                    return Worki.Resources.Validation.ValidationString.GivenPasswordNotValide;
 
                 case MembershipCreateStatus.InvalidEmail:
-                    return WorkiResources.Validation.ValidationString.MailNotValide;
+                    return Worki.Resources.Validation.ValidationString.MailNotValide;
 
                 case MembershipCreateStatus.InvalidAnswer:
-                    return WorkiResources.Validation.ValidationString.GetBackPasswordMailNotValide;
+                    return Worki.Resources.Validation.ValidationString.GetBackPasswordMailNotValide;
 
                 case MembershipCreateStatus.InvalidQuestion:
-                    return WorkiResources.Validation.ValidationString.GetBackPasswordQuestionNotValide;
+                    return Worki.Resources.Validation.ValidationString.GetBackPasswordQuestionNotValide;
 
                 case MembershipCreateStatus.InvalidUserName:
-                    return WorkiResources.Validation.ValidationString.UsernameNotValide;
+                    return Worki.Resources.Validation.ValidationString.UsernameNotValide;
 
                 case MembershipCreateStatus.ProviderError:
-                    return WorkiResources.Validation.ValidationString.ReturnErrorTryAgain;
+                    return Worki.Resources.Validation.ValidationString.ReturnErrorTryAgain;
 
                 case MembershipCreateStatus.UserRejected:
-                    return WorkiResources.Validation.ValidationString.CreateUsernameFail;
+                    return Worki.Resources.Validation.ValidationString.CreateUsernameFail;
 
                 default:
-                    return WorkiResources.Validation.ValidationString.InknowError;
+                    return Worki.Resources.Validation.ValidationString.InknowError;
             }
         }
     }

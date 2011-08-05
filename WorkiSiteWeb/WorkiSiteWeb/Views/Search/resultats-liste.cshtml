@@ -1,8 +1,8 @@
-﻿@model WorkiSiteWeb.Models.SearchCriteriaFormViewModel
+﻿@model Worki.Web.Models.SearchCriteriaFormViewModel
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Views.Search.SearchString.SearchResult)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Search.SearchString.SearchResult)</title>
     <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.Search_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.SearchResults_css)" rel="stylesheet" type="text/css" />
@@ -11,10 +11,10 @@
     <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css"/>
 }
 
-@RazorHelpers.TitleDiv(WorkiResources.Views.Search.SearchString.YourSearchResult, "Green", false)
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.YourSearchResult, "Green", false)
     
 <div class="resultHeader2 float-left">
-    <span class="blue bold">@WorkiResources.Views.Search.SearchString.ResultOfSearch</span> @Model.Results.Count @WorkiResources.Views.Search.SearchString.PlaceFound
+    <span class="blue bold">@Worki.Resources.Views.Search.SearchString.ResultOfSearch</span> @Model.Results.Count @Worki.Resources.Views.Search.SearchString.PlaceFound
 </div>
 
 <div class="clear">

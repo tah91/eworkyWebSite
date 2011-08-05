@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Models.Contact {
+namespace Worki.Resources.Models.Contact {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Models.Contact {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Models.Contact.Contact", typeof(Contact).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Models.Contact.Contact", typeof(Contact).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

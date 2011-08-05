@@ -1,14 +1,14 @@
-﻿@model WorkiSiteWeb.Models.MemberBookingFormViewModel
+﻿@model Worki.Web.Models.MemberBookingFormViewModel
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Views.Booking.BookingString.BookIt) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.BookIt) </title>
 	<link href="@Url.Content(Links.Content.Booking_css) " rel="stylesheet" type="text/css" />
 	<link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css" />
 }
 
 <div class="borderContainer">
-    @RazorHelpers.TitleDiv(WorkiResources.Views.Booking.BookingString.BookIt, "Blue")
+    @RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookIt, "Blue")
 	<div class="bookingFormDiv">	
 		<div class="login-account">
 			@using (Html.BeginForm()) 
@@ -97,11 +97,11 @@
 							@if (Model.MemberBooking.Id != 0)
 							{
 							<div class="editor-field float-left">
-								<div class="btn_blue linkImg"><a href="@Model.ReturnUrl">@WorkiResources.Views.Booking.BookingString.BackToUrl</a></div>
+								<div class="btn_blue linkImg"><a href="@Model.ReturnUrl">@Worki.Resources.Views.Booking.BookingString.BackToUrl</a></div>
 							</div>
 							}
 							<div class="editor-field float-right">
-								<input type="submit" class="btn_blue imageBtn" value="@WorkiResources.Views.Booking.BookingString.BookIt"/>
+								<input type="submit" class="btn_blue imageBtn" value="@Worki.Resources.Views.Booking.BookingString.BookIt"/>
 							</div>
 							<div class="clear">
 							</div>

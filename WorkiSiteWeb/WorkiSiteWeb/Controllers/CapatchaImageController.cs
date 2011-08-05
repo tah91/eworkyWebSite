@@ -5,9 +5,9 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Web.Mvc;
 using System.Drawing.Text;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Helpers;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
     public partial class CaptchaImageController : Controller
     {

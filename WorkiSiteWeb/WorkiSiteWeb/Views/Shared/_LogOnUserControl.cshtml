@@ -16,11 +16,11 @@
         </div>
         <div>
             @Html.ActionLink("Mon profil", MVC.Profil.Dashboard(memberId)) | 
-            @Html.ActionLink(WorkiResources.Views.Shared.SharedString.Deconnect, MVC.Account.LogOff())
+            @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Account.LogOff())
             @if (User.IsInRole(MiscHelpers.AdminRole))
             {
                 <span> | </span>
-                @Html.ActionLink(WorkiResources.Views.Shared.SharedString.Admin, MVC.Admin.Index())
+                @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Admin, MVC.Admin.Index())
             }
         </div>
     </div>
@@ -28,15 +28,15 @@
 else
 {
     <div class="nouveau_register float-left">
-        	<h3 class="blue">@WorkiResources.Views.Shared.SharedString.NewOnEWorky</h3>
-            <p>@Html.Raw(WorkiResources.Views.Shared.SharedString.FreeInscriptionEnjoy)</p> 
+        	<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.NewOnEWorky</h3>
+            <p>@Html.Raw(Worki.Resources.Views.Shared.SharedString.FreeInscriptionEnjoy)</p> 
     </div>
     <div class="connect lengthConnexionBox">
         <div class="blue">
-            @Html.ActionLink(WorkiResources.Views.Account.AccountString.Login, MVC.Account.LogOn())
+            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())
         </div>
         <div class="float-right" style="padding-top:6px;">
-            <div class="btn_blue linkImg">@Html.ActionLink(WorkiResources.Views.Account.AccountString.Inscription, MVC.Account.Register())</div>
+            <div class="btn_blue linkImg">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</div>
 
         </div>
     </div>

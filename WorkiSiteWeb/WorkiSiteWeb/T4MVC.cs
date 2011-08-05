@@ -23,15 +23,15 @@ using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC {
-    public static WorkiSiteWeb.Controllers.AccountController Account = new WorkiSiteWeb.Controllers.T4MVC_AccountController();
-    public static WorkiSiteWeb.Controllers.AdminController Admin = new WorkiSiteWeb.Controllers.T4MVC_AdminController();
-    public static WorkiSiteWeb.Controllers.BookingController Booking = new WorkiSiteWeb.Controllers.T4MVC_BookingController();
-    public static WorkiSiteWeb.Controllers.CaptchaImageController CaptchaImage = new WorkiSiteWeb.Controllers.T4MVC_CaptchaImageController();
-    public static WorkiSiteWeb.Controllers.HomeController Home = new WorkiSiteWeb.Controllers.T4MVC_HomeController();
-    public static WorkiSiteWeb.Controllers.LocalisationController Localisation = new WorkiSiteWeb.Controllers.T4MVC_LocalisationController();
-    public static WorkiSiteWeb.Controllers.ProfilController Profil = new WorkiSiteWeb.Controllers.T4MVC_ProfilController();
-    public static WorkiSiteWeb.Controllers.SearchController Search = new WorkiSiteWeb.Controllers.T4MVC_SearchController();
-    public static WorkiSiteWeb.Controllers.VisitorController Visitor = new WorkiSiteWeb.Controllers.T4MVC_VisitorController();
+    public static Worki.Web.Controllers.AccountController Account = new Worki.Web.Controllers.T4MVC_AccountController();
+    public static Worki.Web.Controllers.AdminController Admin = new Worki.Web.Controllers.T4MVC_AdminController();
+    public static Worki.Web.Controllers.BookingController Booking = new Worki.Web.Controllers.T4MVC_BookingController();
+    public static Worki.Web.Controllers.CaptchaImageController CaptchaImage = new Worki.Web.Controllers.T4MVC_CaptchaImageController();
+    public static Worki.Web.Controllers.HomeController Home = new Worki.Web.Controllers.T4MVC_HomeController();
+    public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
+    public static Worki.Web.Controllers.ProfilController Profil = new Worki.Web.Controllers.T4MVC_ProfilController();
+    public static Worki.Web.Controllers.SearchController Search = new Worki.Web.Controllers.T4MVC_SearchController();
+    public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -614,7 +614,7 @@ static class T4MVCHelpers {
 }
 
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class AccountController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected AccountController(Dummy d) { }
@@ -676,7 +676,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_AccountController: WorkiSiteWeb.Controllers.AccountController {
+    public class T4MVC_AccountController: Worki.Web.Controllers.AccountController {
         public T4MVC_AccountController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult LogOn() {
@@ -684,7 +684,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult LogOn(WorkiSiteWeb.Models.LogOnModel model, string returnUrl) {
+        public override System.Web.Mvc.ActionResult LogOn(Worki.Web.Models.LogOnModel model, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
             callInfo.RouteValueDictionary.Add("model", model);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
@@ -701,7 +701,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Register(WorkiSiteWeb.Models.RegisterModel model, string myCaptcha, string attempt) {
+        public override System.Web.Mvc.ActionResult Register(Worki.Web.Models.RegisterModel model, string myCaptcha, string attempt) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
             callInfo.RouteValueDictionary.Add("model", model);
             callInfo.RouteValueDictionary.Add("myCaptcha", myCaptcha);
@@ -728,7 +728,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangePassword(WorkiSiteWeb.Models.ChangePasswordModel model) {
+        public override System.Web.Mvc.ActionResult ChangePassword(Worki.Web.Models.ChangePasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
@@ -739,7 +739,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ResetPassword(WorkiSiteWeb.Models.ResetPasswordModel model) {
+        public override System.Web.Mvc.ActionResult ResetPassword(Worki.Web.Models.ResetPasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResetPassword);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
@@ -758,7 +758,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class AdminController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected AdminController(Dummy d) { }
@@ -887,7 +887,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_AdminController: WorkiSiteWeb.Controllers.AdminController {
+    public class T4MVC_AdminController: Worki.Web.Controllers.AdminController {
         public T4MVC_AdminController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Index(int? page) {
@@ -923,7 +923,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DeleteUser(WorkiSiteWeb.Models.User user, string confirmButton, string returnUrl) {
+        public override System.Web.Mvc.ActionResult DeleteUser(Worki.Web.Models.User user, string confirmButton, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteUser);
             callInfo.RouteValueDictionary.Add("user", user);
             callInfo.RouteValueDictionary.Add("confirmButton", confirmButton);
@@ -961,7 +961,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateWelcomePeople(WorkiSiteWeb.Models.WelcomePeopleFormViewModel formModel) {
+        public override System.Web.Mvc.ActionResult CreateWelcomePeople(Worki.Web.Models.WelcomePeopleFormViewModel formModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateWelcomePeople);
             callInfo.RouteValueDictionary.Add("formModel", formModel);
             return callInfo;
@@ -973,7 +973,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult EditWelcomePeople(int id, WorkiSiteWeb.Models.WelcomePeopleFormViewModel formModel) {
+        public override System.Web.Mvc.ActionResult EditWelcomePeople(int id, Worki.Web.Models.WelcomePeopleFormViewModel formModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditWelcomePeople);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formModel", formModel);
@@ -987,7 +987,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DeleteWelcomePeople(WorkiSiteWeb.Models.WelcomePeople welcomePeople, string confirmButton) {
+        public override System.Web.Mvc.ActionResult DeleteWelcomePeople(Worki.Web.Models.WelcomePeople welcomePeople, string confirmButton) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteWelcomePeople);
             callInfo.RouteValueDictionary.Add("welcomePeople", welcomePeople);
             callInfo.RouteValueDictionary.Add("confirmButton", confirmButton);
@@ -1020,7 +1020,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class BookingController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected BookingController(Dummy d) { }
@@ -1084,12 +1084,11 @@ namespace WorkiSiteWeb.Controllers {
         public class ViewNames {
             public readonly string Create = "~/Views/Booking/Create.cshtml";
             public readonly string Details = "~/Views/Booking/Details.cshtml";
-            public readonly string Edit = "~/Views/Booking/Edit.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_BookingController: WorkiSiteWeb.Controllers.BookingController {
+    public class T4MVC_BookingController: Worki.Web.Controllers.BookingController {
         public T4MVC_BookingController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Create(int id, string returnUrl) {
@@ -1099,7 +1098,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Create(int id, WorkiSiteWeb.Models.MemberBookingFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Create(int id, Worki.Web.Models.MemberBookingFormViewModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formData", formData);
@@ -1143,7 +1142,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class CaptchaImageController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CaptchaImageController() { }
@@ -1182,13 +1181,13 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_CaptchaImageController: WorkiSiteWeb.Controllers.CaptchaImageController {
+    public class T4MVC_CaptchaImageController: Worki.Web.Controllers.CaptchaImageController {
         public T4MVC_CaptchaImageController() : base(Dummy.Instance) { }
 
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected HomeController(Dummy d) { }
@@ -1249,7 +1248,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_HomeController: WorkiSiteWeb.Controllers.HomeController {
+    public class T4MVC_HomeController: Worki.Web.Controllers.HomeController {
         public T4MVC_HomeController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Index() {
@@ -1262,7 +1261,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Contact(WorkiSiteWeb.Models.Contact contact) {
+        public override System.Web.Mvc.ActionResult Contact(Worki.Web.Models.Contact contact) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Contact);
             callInfo.RouteValueDictionary.Add("contact", contact);
             return callInfo;
@@ -1298,7 +1297,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangeCulture(WorkiSiteWeb.Infrastructure.Culture lang, string returnUrl) {
+        public override System.Web.Mvc.ActionResult ChangeCulture(Worki.Web.Infrastructure.Culture lang, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangeCulture);
             callInfo.RouteValueDictionary.Add("lang", lang);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
@@ -1308,7 +1307,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class LocalisationController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected LocalisationController(Dummy d) { }
@@ -1404,7 +1403,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_LocalisationController: WorkiSiteWeb.Controllers.LocalisationController {
+    public class T4MVC_LocalisationController: Worki.Web.Controllers.LocalisationController {
         public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Index(int? page) {
@@ -1431,7 +1430,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(WorkiSiteWeb.Models.Localisation localisation, int? id) {
+        public override System.Web.Mvc.ActionResult Edit(Worki.Web.Models.Localisation localisation, int? id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("localisation", localisation);
             callInfo.RouteValueDictionary.Add("id", id);
@@ -1470,7 +1469,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult PostComment(int id, WorkiSiteWeb.Models.Comment com) {
+        public override System.Web.Mvc.PartialViewResult PostComment(int id, Worki.Web.Models.Comment com) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.PostComment);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("com", com);
@@ -1488,7 +1487,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class ProfilController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected ProfilController(Dummy d) { }
@@ -1565,7 +1564,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_ProfilController: WorkiSiteWeb.Controllers.ProfilController {
+    public class T4MVC_ProfilController: Worki.Web.Controllers.ProfilController {
         public T4MVC_ProfilController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Detail(int id) {
@@ -1597,7 +1596,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, WorkiSiteWeb.Models.Member member) {
+        public override System.Web.Mvc.ActionResult Edit(int id, Worki.Web.Models.Member member) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("member", member);
@@ -1621,7 +1620,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class SearchController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected SearchController(Dummy d) { }
@@ -1708,7 +1707,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_SearchController: WorkiSiteWeb.Controllers.SearchController {
+    public class T4MVC_SearchController: Worki.Web.Controllers.SearchController {
         public T4MVC_SearchController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.JsonResult FastSearch(float latitude, float longitude) {
@@ -1752,7 +1751,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FullSearch(WorkiSiteWeb.Models.SearchCriteria criteria) {
+        public override System.Web.Mvc.ActionResult FullSearch(Worki.Web.Models.SearchCriteria criteria) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
             callInfo.RouteValueDictionary.Add("criteria", criteria);
             return callInfo;
@@ -1773,7 +1772,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 }
 
-namespace WorkiSiteWeb.Controllers {
+namespace Worki.Web.Controllers {
     public partial class VisitorController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected VisitorController(Dummy d) { }
@@ -1815,7 +1814,7 @@ namespace WorkiSiteWeb.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_VisitorController: WorkiSiteWeb.Controllers.VisitorController {
+    public class T4MVC_VisitorController: Worki.Web.Controllers.VisitorController {
         public T4MVC_VisitorController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Index() {
@@ -1823,7 +1822,7 @@ namespace WorkiSiteWeb.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Index(WorkiSiteWeb.Models.Visitor visitor) {
+        public override System.Web.Mvc.ActionResult Index(Worki.Web.Models.Visitor visitor) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             callInfo.RouteValueDictionary.Add("visitor", visitor);
             return callInfo;

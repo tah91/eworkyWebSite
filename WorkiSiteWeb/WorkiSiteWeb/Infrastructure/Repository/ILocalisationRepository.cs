@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WorkiSiteWeb.Models;
-using WorkiSiteWeb.Infrastructure.Logging;
+using Worki.Web.Models;
+using Worki.Web.Infrastructure.Logging;
 
-namespace WorkiSiteWeb.Infrastructure.Repository
+namespace Worki.Web.Infrastructure.Repository
 {
     public interface ILocalisationRepository : IRepository<Localisation>
     {

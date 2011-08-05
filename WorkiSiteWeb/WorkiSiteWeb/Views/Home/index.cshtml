@@ -1,8 +1,8 @@
-﻿@model WorkiSiteWeb.Models.SearchCriteriaFormViewModel
+﻿@model Worki.Web.Models.SearchCriteriaFormViewModel
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Views.Home.HomeString.BestWorkspace)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.BestWorkspace)</title>
     <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.skin_css)" rel="stylesheet" type="text/css"/>
     <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css)" rel="stylesheet" type="text/css"/>
@@ -17,9 +17,9 @@
     <div class="halfContainer indexSearchContainer float-right">
         <div class="indexSearchFormDiv relative">
             <h2 class="blue">
-                @string.Format("{0:### ### ###} {1}", ViewData[WorkiSiteWeb.Controllers.HomeController.LocalisationCount], WorkiResources.Views.Home.HomeString.Workspace)</h2>
+                @string.Format("{0:### ### ###} {1}", ViewData[Worki.Web.Controllers.HomeController.LocalisationCount], Worki.Resources.Views.Home.HomeString.Workspace)</h2>
             <div class="searchIndexHead steinemu darkblue">
-                <h3>@WorkiResources.Views.Home.HomeString.SearchWorkspace</h3>
+                <h3>@Worki.Resources.Views.Home.HomeString.SearchWorkspace</h3>
             </div>
             @using (Html.BeginForm(MVC.Search.ActionNames.FullSearch,MVC.Search.Name, FormMethod.Post, new { id = "searchform" }))
             {
@@ -28,7 +28,7 @@
                 <tr>
                     <td>
                         <div class="steinemu darkblue">
-                            <h3 style="font-size: 0.8em;">@WorkiResources.Views.Home.HomeString.What</h3>
+                            <h3 style="font-size: 0.8em;">@Worki.Resources.Views.Home.HomeString.What</h3>
                         </div>
                     </td>
                     <td>
@@ -41,13 +41,13 @@
                 <tr>
                     <td>
                         <div class="steinemu darkblue">
-                            <h3 style="font-size: 0.8em;">@WorkiResources.Views.Home.HomeString.Where</h3>
+                            <h3 style="font-size: 0.8em;">@Worki.Resources.Views.Home.HomeString.Where</h3>
                         </div>
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = WorkiResources.Views.Home.HomeString.ExampleLocation })
-                            @Html.ValidationMessage(WorkiResources.Views.Home.HomeString.Location, "")
+                            @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                            @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
                         </div>
                     </td>
                 </tr>
@@ -58,7 +58,7 @@
             </p>
             <div class="indexSearchIndexLinks">
                 <div class="indexSearchIndexLinksLeft float-left">
-                @Html.ActionLink(WorkiResources.Views.Home.HomeString.MoreCriterias, MVC.Search.FullSearch())
+                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Search.FullSearch())
                 </div>
                 <div class="indexSearchIndexLinksRight float-right">
                     <input type="submit" class="imageBtn" id="btn_searchIndex" value="" />
@@ -78,30 +78,30 @@
     <div class="indexActionContainer float-left">
         <div class="indexAction relative" id="recherche_index">
             <div class="cufonIt blue">
-                <h2>@WorkiResources.Views.Search.SearchString.Search</h2>
+                <h2>@Worki.Resources.Views.Search.SearchString.Search</h2>
             </div>
                 
             <h3 class="darkblue">
-                @WorkiResources.Views.Home.HomeString.FindDreamWorkspace</h3>
-            <span>@WorkiResources.Views.Home.HomeString.SearchWorkspace<br />
-                @WorkiResources.Views.Home.HomeString.GradeComment</span>
+                @Worki.Resources.Views.Home.HomeString.FindDreamWorkspace</h3>
+            <span>@Worki.Resources.Views.Home.HomeString.SearchWorkspace<br />
+                @Worki.Resources.Views.Home.HomeString.GradeComment</span>
             <br />
             <div class="bottom">
-                <div class="btn_green_roulette linkImg btn_text">@Html.ActionLink(WorkiResources.Views.Search.SearchString.Search, MVC.Search.FullSearch())</div>
+                <div class="btn_green_roulette linkImg btn_text">@Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Search.FullSearch())</div>
             </div>
         </div>
     </div>
     <div class="indexActionContainer float-right" >
         <div class="indexAction relative" id="ajout_index">
             <div class="cufonIt blue">
-                <h2>@WorkiResources.Views.Localisation.LocalisationString.Add</h2>
+                <h2>@Worki.Resources.Views.Localisation.LocalisationString.Add</h2>
             </div>
             <h3 class="darkblue">
-                @WorkiResources.Views.Home.HomeString.SubmitWorkplace</h3>
-            <span>@Html.Raw(WorkiResources.Views.Home.HomeString.ShareTips)</span>
+                @Worki.Resources.Views.Home.HomeString.SubmitWorkplace</h3>
+            <span>@Html.Raw(Worki.Resources.Views.Home.HomeString.ShareTips)</span>
             <br />
             <div class="bottom">
-                <div class="btn_orange_plus linkImg btn_text">@Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.Add, MVC.Localisation.Create())</div>
+                <div class="btn_orange_plus linkImg btn_text">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Add, MVC.Localisation.Create())</div>
             </div>
         </div>
     </div>

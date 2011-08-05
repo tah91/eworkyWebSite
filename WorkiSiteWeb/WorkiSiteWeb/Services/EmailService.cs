@@ -1,9 +1,9 @@
 ﻿using System;
-using WorkiSiteWeb.Infrastructure.Email;
+using Worki.Web.Infrastructure.Email;
 using System.Net.Mail;
 using System.Configuration;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     public class EmailService : IEmailService
     {

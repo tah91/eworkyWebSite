@@ -5,11 +5,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
-using WorkiSiteWeb.Infrastructure.Repository;
+using Worki.Web.Infrastructure.Repository;
 using Ninject;
-using WorkiSiteWeb.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Logging;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     public sealed class WorkiMembershipProvider : MembershipProvider
     {

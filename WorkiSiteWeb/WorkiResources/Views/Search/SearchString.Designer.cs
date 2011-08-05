@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Views.Search {
+namespace Worki.Resources.Views.Search {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Views.Search {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Views.Search.SearchString", typeof(SearchString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Search.SearchString", typeof(SearchString).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

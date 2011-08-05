@@ -40,5 +40,5 @@
 </div> 
 @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
 { 
-    @Html.ActionLink(WorkiResources.Views.Shared.SharedString.DeleteComment, MVC.Localisation.DeleteComment(Model.LocalisationID, Model.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
+    @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.DeleteComment, MVC.Localisation.DeleteComment(Model.LocalisationID, Model.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
 }

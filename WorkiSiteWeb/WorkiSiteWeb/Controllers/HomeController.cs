@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WorkiSiteWeb.Models;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Models;
+using Worki.Web.Helpers;
 using System.Net.Mail;
 using System.Net;
-using WorkiSiteWeb.Infrastructure.Logging;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Infrastructure;
-using WorkiSiteWeb.Infrastructure.Email;
+using Worki.Web.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Infrastructure;
+using Worki.Web.Infrastructure.Email;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
     [HandleError]
     public partial class HomeController : Controller

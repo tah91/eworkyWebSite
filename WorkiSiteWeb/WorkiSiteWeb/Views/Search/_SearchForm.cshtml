@@ -1,19 +1,19 @@
-﻿@model WorkiSiteWeb.Models.SearchCriteriaFormViewModel
+﻿@model Worki.Web.Models.SearchCriteriaFormViewModel
 
 <div class="resultsMapDiv">
-    <h3 class="blue">@WorkiResources.Views.Search.SearchString.ResultOnMap</h3>
+    <h3 class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</h3>
     <div class="mapContainer" id="resultsMap">
     </div>
 </div> 
         
 <div class="searchResultFormDiv" id="searchFormReset">
-    <h3 class="green">@WorkiResources.Views.Search.SearchString.RefineSearch</h3>
+    <h3 class="green">@Worki.Resources.Views.Search.SearchString.RefineSearch</h3>
     @using (Html.BeginForm(MVC.Search.ActionNames.FullSearch, MVC.Search.Name, FormMethod.Post, new { id = "searchform" }))
     {
         @Html.AntiForgeryToken()
         <div class="editor-field">
             @Html.TextBoxFor(model => model.Criteria.Place)
-            @Html.ValidationMessage(WorkiResources.Views.Home.HomeString.Location, "")
+            @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
         </div>
 
         <p>
@@ -21,15 +21,15 @@
             @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
         </p>
         
-        <p class="green">@WorkiResources.Views.Localisation.LocalisationFormString.Offers</p>
+        <p class="green">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</p>
         <div class="editor-field">
             @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
             @Html.ValidationMessage("LocalisationOffer", "")
         </div>
 
-        <p class="green">@WorkiResources.Views.Localisation.LocalisationFormString.Facilities</p>
+        <p class="green">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</p>
         @Html.Partial(MVC.Search.Views._ServicesSelector)
-        <p class="green">@WorkiResources.Views.Search.SearchString.KindOfLocation</p>
+        <p class="green">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
         <div class="editor-field">
         @Html.CheckBoxFor(model => model.Criteria.Everything)
         @Html.LabelFor(model => model.Criteria.Everything)
@@ -79,7 +79,7 @@
         @Html.LabelFor(model => model.Criteria.PrivateArea)
         </div>
 
-        <p class="green">@WorkiResources.Views.Localisation.LocalisationFormString.Services</p>
+        <p class="green">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</p>
         <div>
             <div id="searchOption0">
                 <div id="searchOptionToReplace">

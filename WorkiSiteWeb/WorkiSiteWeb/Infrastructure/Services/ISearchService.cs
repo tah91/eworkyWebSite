@@ -1,12 +1,12 @@
 ﻿using System;
-using WorkiSiteWeb.Models;
+using Worki.Web.Models;
 using System.Linq;
 using System.Collections.Generic;
 using System.Web;
 using System.Collections.Specialized;
 using System.Web.Routing;
 
-namespace WorkiSiteWeb.Infrastructure.Repository
+namespace Worki.Web.Infrastructure.Repository
 {
 	public interface ISearchService
 	{

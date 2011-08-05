@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Configuration.Provider;
 using System.Linq;
 using System.Web.Security;
-using WorkiSiteWeb.Infrastructure.Repository;
+using Worki.Web.Infrastructure.Repository;
 using Ninject;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     public sealed class WorkiRoleProvider : RoleProvider
     {

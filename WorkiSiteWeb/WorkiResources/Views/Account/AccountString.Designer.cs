@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Views.Account {
+namespace Worki.Resources.Views.Account {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Views.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Views.Account.AccountString", typeof(AccountString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Account.AccountString", typeof(AccountString).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

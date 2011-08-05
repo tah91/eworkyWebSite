@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
-using WorkiSiteWeb.Helpers;
-using WorkiSiteWeb.Infrastructure;
-using WorkiSiteWeb.Infrastructure.Logging;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Models;
+using Worki.Web.Helpers;
+using Worki.Web.Infrastructure;
+using Worki.Web.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Models;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
     [HandleError]
     //[ValidateOnlyOnSubmit(ButtonName="valid")]
@@ -99,7 +99,7 @@ namespace WorkiSiteWeb.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Edit(Localisation localisation, int? id)
 		{
-			var error = WorkiResources.Validation.ValidationString.ErrorWhenSave;
+			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			//to keep files state in case of error
 			TempData[PictureDataString] = new PictureDataContainer(localisation);
 			try
@@ -107,7 +107,7 @@ namespace WorkiSiteWeb.Controllers
 				var member = _MemberRepository.GetMember(User.Identity.Name);
 				if (!member.IsValidUser())
 				{
-					error = WorkiResources.Validation.ValidationString.InvalidUser;
+					error = Worki.Resources.Validation.ValidationString.InvalidUser;
 					throw new Exception(error);
 				}
 				if (ModelState.IsValid)
@@ -188,7 +188,7 @@ namespace WorkiSiteWeb.Controllers
 				catch (Exception ex)
 				{
 					_Logger.Error("Edit", ex);
-					ModelState.AddModelError("", WorkiResources.Validation.ValidationString.ErrorWhenSave);
+					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.ErrorWhenSave);
 				}
 			}
 			return Json(toRet, "text/html");
@@ -317,14 +317,14 @@ namespace WorkiSiteWeb.Controllers
 		[HandleModelStateException]
         public virtual PartialViewResult PostComment(int id,Comment com)
         {
-			var error = WorkiResources.Validation.ValidationString.ErrorWhenSave;
+			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			var localisation = _LocalisationRepository.Get(id);
 			try
 			{
 				var member = _MemberRepository.GetMember(User.Identity.Name);
 				if (!member.IsValidUser())
 				{
-					error = WorkiResources.Validation.ValidationString.InvalidUser;
+					error = Worki.Resources.Validation.ValidationString.InvalidUser;
 					throw new Exception(error);
 				}
 

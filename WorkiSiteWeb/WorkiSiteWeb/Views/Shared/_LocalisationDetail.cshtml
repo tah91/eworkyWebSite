@@ -1,4 +1,4 @@
-﻿@model WorkiSiteWeb.Models.Localisation
+﻿@model Worki.Web.Models.Localisation
 
 <div class="localisationDetail borderRadius">
     <div class="localisationDetailHead">
@@ -94,7 +94,7 @@
 					}       
                     @if (Model.LocalisationData != null && Model.LocalisationData.CoffeePrice.HasValue)
 					{
-                        <li>@WorkiResources.Views.Shared.SharedString.CoffeePrice : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.LocalisationData.CoffeePrice)</li>
+                        <li>@Worki.Resources.Views.Shared.SharedString.CoffeePrice : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.LocalisationData.CoffeePrice)</li>
 					}
                     </ul>
                 </div>
@@ -134,36 +134,36 @@
                 @if (Model.HasOffer(LocalisationOffer.MeetingRoom))
 				{
 					meetingRoomFeatures = Model.GetFeaturesOfType(FeatureType.MeetingRoom, new List<Feature> { Feature.MeetingRoom });
-                    @RazorHelpers.FeatureToogle(WorkiResources.Models.Localisation.LocalisationFeatures.MeetingRoom, meetingRoomFeatures)
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom, meetingRoomFeatures)
 				}
                 @if (Model.HasOffer(LocalisationOffer.SeminarRoom))
 				{
 					seminarRoomFeatures = Model.GetFeaturesOfType(FeatureType.SeminarRoom, new List<Feature> { Feature.SeminarRoom });
-                    @RazorHelpers.FeatureToogle(WorkiResources.Models.Localisation.LocalisationFeatures.SeminarRoom, seminarRoomFeatures)
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom, seminarRoomFeatures)
 				}
                 @if (Model.HasOffer(LocalisationOffer.VisioRoom))
 				{
 					visioRoomFeatures = Model.GetFeaturesOfType(FeatureType.VisioRoom, new List<Feature> { Feature.VisioRoom });
-                    @RazorHelpers.FeatureToogle(WorkiResources.Models.Localisation.LocalisationFeatures.VisioRoom, visioRoomFeatures)
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom, visioRoomFeatures)
 				}
                 @if (Model.HasOffer(LocalisationOffer.BuisnessRoom))
 				{
-                    @RazorHelpers.FeatureToogle(WorkiResources.Models.Localisation.LocalisationFeatures.BuisnessRoom, emptyFeature)
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom, emptyFeature)
 				}
                 @if (Model.HasOffer(LocalisationOffer.Workstation))
 				{
-                    @RazorHelpers.FeatureToogle(WorkiResources.Models.Localisation.LocalisationFeatures.Workstation, emptyFeature)
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation, emptyFeature)
 				}
                 @if (Model.HasOffer(LocalisationOffer.SingleDesk))
 				{
-                    @RazorHelpers.FeatureToogle(WorkiResources.Models.Localisation.LocalisationFeatures.SingleDesk, emptyFeature)
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesk, emptyFeature)
 				}
                 <div class="clear">
                 </div>
             </div> 
 			}
             <div class="localisationComments contentBlock">
-                <h3 class="blue">@WorkiResources.Models.Localisation.Localisation.GiveYourAdvice</h3>
+                <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
                 <div id="commentFormDiv">
                 @if (Request.IsAuthenticated)
 				{
@@ -171,7 +171,7 @@
 				}
 				else
 				{ 
-                    @Html.ActionLink(WorkiResources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl))
+                    @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl))
 				}
                 </div>
                 @{
@@ -191,12 +191,12 @@
 			@if (Model.Bookable)
 			{
 	   			<div class="contentBlock">
-					<h3 class="blue">@WorkiResources.Views.Localisation.LocalisationString.NeedToBookPlace</h3>
-					<div class="btn_blue linkImg">@Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(Model.ID, Request.Url.PathAndQuery))</div>                    
+					<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.NeedToBookPlace</h3>
+					<div class="btn_blue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(Model.ID, Request.Url.PathAndQuery))</div>                    
 				</div>
             }
             <div class="contentBlock">
-            <h3 class="blue">@WorkiResources.Views.Localisation.LocalisationFormString.Access</h3>
+            <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
                 <div class="localisationMap">
                     @Html.Partial(MVC.Shared.Views._Map)
                 </div>
@@ -205,17 +205,17 @@
 				<div class="localisationAccessDetail">
 				@if (!string.IsNullOrEmpty(Model.PublicTransportation))
 				{
-                    <span class="localisationInformation">@WorkiResources.Models.Localisation.Localisation.PublicTransportation : </span>
+                    <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
                     @Model.PublicTransportation<br />
 				}
                 @if (!string.IsNullOrEmpty(Model.RoadAccess))
 				{
-                    <span class="localisationInformation">@WorkiResources.Models.Localisation.Localisation.RoadAccess : </span>
+                    <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.RoadAccess : </span>
                     @Model.RoadAccess<br />
 				}
                 @if (!string.IsNullOrEmpty(Model.Station))
 				{
-                    <span class="localisationInformation">@WorkiResources.Models.Localisation.Localisation.Station : </span>
+                    <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.Station : </span>
                     @Model.Station<br />
 				}
 				</div>
@@ -274,7 +274,7 @@
                             @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.Price))&nbsp;&nbsp;
                         </td>
                         <td>
-                            @WorkiResources.Models.Localisation.Localisation.RatingPrice
+                            @Worki.Resources.Models.Localisation.Localisation.RatingPrice
                         </td>                    
                     </tr>
                     <tr>
@@ -282,7 +282,7 @@
                             @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.Wifi))&nbsp;&nbsp;
                         </td>
                         <td>
-                            @WorkiResources.Models.Localisation.Localisation.RatingWifi
+                            @Worki.Resources.Models.Localisation.Localisation.RatingWifi
                         </td>                    
                     </tr>
                     <tr>
@@ -290,7 +290,7 @@
                             @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.Dispo))&nbsp;&nbsp;
                         </td>
                         <td>
-                            @WorkiResources.Models.Localisation.Localisation.RatingDispo
+                            @Worki.Resources.Models.Localisation.Localisation.RatingDispo
                         </td>                    
                     </tr>
                     <tr>
@@ -298,7 +298,7 @@
                             @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.Welcome))&nbsp;&nbsp;
                         </td>
                         <td>
-                            @WorkiResources.Models.Localisation.Localisation.RatingWelcome
+                            @Worki.Resources.Models.Localisation.Localisation.RatingWelcome
                         </td>                    
                     </tr>
                     }
@@ -307,14 +307,14 @@
                     var haveAvoid = Model.GetAvoidString();
                     if (!string.IsNullOrEmpty(haveAvoid))
                     {
-						<span class="localisationInformation">@WorkiResources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
+						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
                     }
 				}
             </div>
             @if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
             {
                 <div class="localisationGeneralInfo contentBlock">
-                    <h3 class="blue">@WorkiResources.Views.Home.HomeString.Contact</h3>
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
                     @if (!Model.ContactEmpty())
                     {
                         if (!string.IsNullOrEmpty(Model.Mail))
@@ -323,7 +323,7 @@
                         }
                         if (!string.IsNullOrEmpty(Model.WebSite))
                         {
-                            <a href="@Model.WebSite" target="_blank">@WorkiResources.Models.Localisation.Localisation.WebSite</a><br />
+                            <a href="@Model.WebSite" target="_blank">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
                         }
                         if (!string.IsNullOrEmpty(Model.PhoneNumber))
                         {
@@ -338,7 +338,7 @@
                     }
                     else
                     {
-                        <span>@WorkiResources.Views.Localisation.LocalisationString.YouKnowContactUs</span>
+                        <span>@Worki.Resources.Views.Localisation.LocalisationString.YouKnowContactUs</span>
                     }
                 </div>
             }
@@ -351,18 +351,18 @@
                 else if (Model.HasOpenningTimes())
                 {
                 <table>
-                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Monday, WorkiResources.Views.Localisation.LocalisationFormString.Monday)
-                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Tuesday, WorkiResources.Views.Localisation.LocalisationFormString.Tuesday)
-                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Wednesday, WorkiResources.Views.Localisation.LocalisationFormString.Wednesday)
-                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Thursday, WorkiResources.Views.Localisation.LocalisationFormString.Thursday)
-                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Friday, WorkiResources.Views.Localisation.LocalisationFormString.Friday)
-                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Saturday, WorkiResources.Views.Localisation.LocalisationFormString.Saturday)
-                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Sunday, WorkiResources.Views.Localisation.LocalisationFormString.Sunday)
+                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Monday, Worki.Resources.Views.Localisation.LocalisationFormString.Monday)
+                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Tuesday, Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday)
+                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Wednesday, Worki.Resources.Views.Localisation.LocalisationFormString.Wednesday)
+                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Thursday, Worki.Resources.Views.Localisation.LocalisationFormString.Thursday)
+                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Friday, Worki.Resources.Views.Localisation.LocalisationFormString.Friday)
+                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Saturday, Worki.Resources.Views.Localisation.LocalisationFormString.Saturday)
+                    @RazorHelpers.OpenningRow(Model, DayOfWeek.Sunday, Worki.Resources.Views.Localisation.LocalisationFormString.Sunday)
                 </table>
                 }
                 else
                 {
-                    @WorkiResources.Views.Shared.SharedString.KnowHouly @EmailService.ContactMail
+                    @Worki.Resources.Views.Shared.SharedString.KnowHouly @EmailService.ContactMail
                 }
             </div>
         </div>
@@ -370,12 +370,12 @@
         </div>
     </div>
     <div class="editionLink float-right">
-	@Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
+	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
     </div>
 	@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
 	{
 		<div class="editionLink float-right">
-		@Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.DeletePlace, MVC.Localisation.Delete(Model.ID))
+		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Localisation.Delete(Model.ID))
 		</div>
 	}
     <div class="clear">

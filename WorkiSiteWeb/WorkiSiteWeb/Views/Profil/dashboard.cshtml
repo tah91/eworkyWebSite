@@ -1,4 +1,4 @@
-﻿@model WorkiSiteWeb.Models.ProfilDashboardModel
+﻿@model Worki.Web.Models.ProfilDashboardModel
 
 @section HeadContent
 {
@@ -9,7 +9,7 @@
 
 <div class="profilTitle">
 	@{
-		var title = Model.IsPrivate ? WorkiResources.Views.Profile.ProfileString.MyProfile : Model.Member.GetDisplayName();
+		var title = Model.IsPrivate ? Worki.Resources.Views.Profile.ProfileString.MyProfile : Model.Member.GetDisplayName();
 		ViewData[Comment.DisplayRelatedLocalisation] = true;
 	}
     @RazorHelpers.TitleDiv(title, "Blue")
@@ -69,7 +69,7 @@
             
 			@if (Model.IsPrivate)
 			{
-				@Html.ActionLink(WorkiResources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId))
+				@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId))
 			}
         </div>
     </div>
@@ -83,8 +83,8 @@
     <div class="profilDetailRight blockContainer dashedLeft float-right">
         <div class="profilLocalisations contentBlock">
             <ul class="tabs">
-                <li><a href="#favoritesTab" class="bold">@WorkiResources.Views.Profile.ProfileString.Favorite</a></li>
-                <li><a href="#addedLocalisationTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MySpaces</a></li>
+                <li><a href="#favoritesTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.Favorite</a></li>
+                <li><a href="#addedLocalisationTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MySpaces</a></li>
             </ul>
             <div class="tab_container">
                 <div id="favoritesTab" class="tab_content localisationsTagContainer">
@@ -95,7 +95,7 @@
 					}
 					else if (Model.IsPrivate)
 					{
-						<span class="italic">@WorkiResources.Views.Profile.ProfileString.FavoriteSpacesEmpty</span>
+						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.FavoriteSpacesEmpty</span>
 					}
                 </div> 
                 <div id="addedLocalisationTab" class="tab_content localisationsTagContainer">
@@ -106,7 +106,7 @@
 					}
 					else if (Model.IsPrivate)
 					{
-						<span class="italic">@Html.Raw(string.Format(WorkiResources.Views.Profile.ProfileString.AddedSpacesEmpy,Html.ActionLink(WorkiResources.Views.Home.FaqString.ClickHere,MVC.Localisation.Create())))</span>
+						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy,Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere,MVC.Localisation.Create())))</span>
 					}
                 </div> 
             </div>
@@ -115,8 +115,8 @@
         </div>
         <div class="profilCompany contentBlock">
             <ul class="tabs">
-                <li><a href="#companyTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyCompany</a></li>
-                <li><a href="#favPlacesTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyFavoritePlaces</a></li>
+                <li><a href="#companyTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyCompany</a></li>
+                <li><a href="#favPlacesTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyFavoritePlaces</a></li>
             </ul>
             <div class="tab_container">
                 <div id="companyTab" class="tab_content">
@@ -126,7 +126,7 @@
 					}
 					else if (Model.IsPrivate)
 					{
-						<span class="italic">@Html.Raw(string.Format(WorkiResources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(WorkiResources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit(Model.Member.MemberId))))</span>
+						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit(Model.Member.MemberId))))</span>
 					}                    
                 </div> 
                 <div id="favPlacesTab" class="tab_content">
@@ -136,7 +136,7 @@
 					}
 					else if (Model.IsPrivate)
 					{
-						<span class="italic">@Html.Raw(string.Format(WorkiResources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(WorkiResources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit(Model.Member.MemberId))))</span>
+						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit(Model.Member.MemberId))))</span>
 					}
                 </div> 
             </div>
@@ -147,8 +147,8 @@
 		{
         <div class="profilComments contentBlock">
             <ul class="tabs">
-                <li><a href="#myCommentsTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyComments</a></li>
-                <li><a href="#locCommentsTab" class="bold">@WorkiResources.Views.Profile.ProfileString.MyCommentedSpaces</a></li>
+                <li><a href="#myCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyComments</a></li>
+                <li><a href="#locCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyCommentedSpaces</a></li>
             </ul>
             <div class="tab_container">
                 <div id="myCommentsTab" class="tab_content">
@@ -159,7 +159,7 @@
 					}
 					else
 					{
-						<span class="italic">@WorkiResources.Views.Profile.ProfileString.CommentsEmpy</span>
+						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.CommentsEmpy</span>
 					}					
                 </div> 
                 <div id="locCommentsTab" class="tab_content">
@@ -170,7 +170,7 @@
 					}
 					else
 					{
-						<span class="italic">@WorkiResources.Views.Profile.ProfileString.RelCommentsEmpty</span>
+						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.RelCommentsEmpty</span>
 					}					
                 </div> 
             </div>

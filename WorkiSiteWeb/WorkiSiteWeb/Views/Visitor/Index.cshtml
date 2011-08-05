@@ -1,19 +1,19 @@
-﻿@model WorkiSiteWeb.Models.VisitorFormViewModel
+﻿@model Worki.Web.Models.VisitorFormViewModel
 
 @section HeadContent
 {   
-    <title>@WorkiResources.Views.Visitor.VisitorString.eWorky</title>
+    <title>@Worki.Resources.Views.Visitor.VisitorString.eWorky</title>
     <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
 }
 
 <div class="borderContainer" style="margin-top: 40px;">
-    @RazorHelpers.TitleDiv(WorkiResources.Views.Visitor.VisitorString.EWBetaPrivate, "Blue")
+    @RazorHelpers.TitleDiv(Worki.Resources.Views.Visitor.VisitorString.EWBetaPrivate, "Blue")
       
     @Html.Partial(MVC.Visitor.Views._LogOnForm, Model.LogOn)
     @Html.Partial(MVC.Visitor.Views._VisitorForm, Model.Visitor)
 </div>
 <div class="visitorBottom">
-    @WorkiResources.Views.Visitor.VisitorString.SugestBug
+    @Worki.Resources.Views.Visitor.VisitorString.SugestBug
     @EmailService.ContactMail
 </div>
 

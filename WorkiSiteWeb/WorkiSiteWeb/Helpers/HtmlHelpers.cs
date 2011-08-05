@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using WorkiSiteWeb.Models;
+using Worki.Web.Models;
 using System.Globalization;
 using System.Web.Mvc.Html;
 using System.Web;
 using System.Web.Routing;
 using System.Text.RegularExpressions;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure;
 
-namespace WorkiSiteWeb.Helpers
+namespace Worki.Web.Helpers
 {
     public static class PagingHelpers
     {

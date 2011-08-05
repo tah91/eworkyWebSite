@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
-using WorkiSiteWeb.Helpers;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Helpers;
+using Worki.Web.Infrastructure;
 using System.Runtime.Serialization;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
 	public partial class Localisation// : IDataErrorInfo
@@ -271,7 +271,7 @@ namespace WorkiSiteWeb.Models
 			if (openAM.HasValue)
 			{
 				toRet += RenderDate(openAM.Value);
-				toRet += WorkiResources.Models.Localisation.Localisation.To;
+				toRet += Worki.Resources.Models.Localisation.Localisation.To;
 				//close for lunch
 				if (closeAM.HasValue)
 				{
@@ -295,12 +295,12 @@ namespace WorkiSiteWeb.Models
 				toRet += RenderDate(openPM.Value);
 				if (closePM.HasValue)
 				{
-					toRet += WorkiResources.Models.Localisation.Localisation.To;
+					toRet += Worki.Resources.Models.Localisation.Localisation.To;
 					toRet += RenderDate(closePM.Value);
 				}
 				else
 				{
-					toRet += WorkiResources.Models.Localisation.Localisation.To;
+					toRet += Worki.Resources.Models.Localisation.Localisation.To;
 					toRet += "0:00";
 				}
 			}
@@ -354,17 +354,17 @@ namespace WorkiSiteWeb.Models
 
 		public static Dictionary<int, string> LocalisationTypes = new Dictionary<int, string>()
         {
-            { (int)LocalisationType.SpotWifi, WorkiResources.Models.Localisation.Localisation.SpotWifi},
-            { (int)LocalisationType.CoffeeResto, WorkiResources.Models.Localisation.Localisation.CoffeeResto},
-            { (int)LocalisationType.Biblio, WorkiResources.Models.Localisation.Localisation.Biblio},
-            { (int)LocalisationType.PublicSpace, WorkiResources.Models.Localisation.Localisation.PublicSpace},
-            { (int)LocalisationType.TravelerSpace, WorkiResources.Models.Localisation.Localisation.TravelerSpace},
-            { (int)LocalisationType.Hotel, WorkiResources.Models.Localisation.Localisation.Hotel},
-            { (int)LocalisationType.Telecentre, WorkiResources.Models.Localisation.Localisation.Telecentre},
-            { (int)LocalisationType.BuisnessCenter, WorkiResources.Models.Localisation.Localisation.BuisnessCenter},
-            { (int)LocalisationType.CoworkingSpace, WorkiResources.Models.Localisation.Localisation.CoworkingSpace},
-            { (int)LocalisationType.WorkingHotel, WorkiResources.Models.Localisation.Localisation.WorkingHotel},
-            { (int)LocalisationType.PrivateArea, WorkiResources.Models.Localisation.Localisation.PrivateArea}
+            { (int)LocalisationType.SpotWifi, Worki.Resources.Models.Localisation.Localisation.SpotWifi},
+            { (int)LocalisationType.CoffeeResto, Worki.Resources.Models.Localisation.Localisation.CoffeeResto},
+            { (int)LocalisationType.Biblio, Worki.Resources.Models.Localisation.Localisation.Biblio},
+            { (int)LocalisationType.PublicSpace, Worki.Resources.Models.Localisation.Localisation.PublicSpace},
+            { (int)LocalisationType.TravelerSpace, Worki.Resources.Models.Localisation.Localisation.TravelerSpace},
+            { (int)LocalisationType.Hotel, Worki.Resources.Models.Localisation.Localisation.Hotel},
+            { (int)LocalisationType.Telecentre, Worki.Resources.Models.Localisation.Localisation.Telecentre},
+            { (int)LocalisationType.BuisnessCenter, Worki.Resources.Models.Localisation.Localisation.BuisnessCenter},
+            { (int)LocalisationType.CoworkingSpace, Worki.Resources.Models.Localisation.Localisation.CoworkingSpace},
+            { (int)LocalisationType.WorkingHotel, Worki.Resources.Models.Localisation.Localisation.WorkingHotel},
+            { (int)LocalisationType.PrivateArea, Worki.Resources.Models.Localisation.Localisation.PrivateArea}
         };
 
 		public static List<int> FreeLocalisationTypes = new List<int>()
@@ -386,13 +386,13 @@ namespace WorkiSiteWeb.Models
 
 		public static Dictionary<int, string> LocalisationOfferTypes = new Dictionary<int, string>()
         {
-            { (int)LocalisationOffer.FreeArea,WorkiResources.Models.Localisation.LocalisationFeatures.FreeArea},
-            { (int)LocalisationOffer.BuisnessRoom ,WorkiResources.Models.Localisation.LocalisationFeatures.BuisnessRoom},            
-            { (int)LocalisationOffer.Workstation,WorkiResources.Models.Localisation.LocalisationFeatures.SingleWorkstation},
-            { (int)LocalisationOffer.SingleDesk,WorkiResources.Models.Localisation.LocalisationFeatures.SingleSingleDesk},
-            { (int)LocalisationOffer.MeetingRoom,WorkiResources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom },            
-            { (int)LocalisationOffer.SeminarRoom,WorkiResources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom },
-            { (int)LocalisationOffer.VisioRoom,WorkiResources.Models.Localisation.LocalisationFeatures.SingleVisioRoom}
+            { (int)LocalisationOffer.FreeArea,Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea},
+            { (int)LocalisationOffer.BuisnessRoom ,Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom},            
+            { (int)LocalisationOffer.Workstation,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation},
+            { (int)LocalisationOffer.SingleDesk,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSingleDesk},
+            { (int)LocalisationOffer.MeetingRoom,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom },            
+            { (int)LocalisationOffer.SeminarRoom,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom },
+            { (int)LocalisationOffer.VisioRoom,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom}
         };
 
 
@@ -523,54 +523,54 @@ namespace WorkiSiteWeb.Models
 	[Bind(Exclude = "Id,Createur")]
 	public class Localisation_Validation
 	{
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Display(Name = "Name", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Name", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Name { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Display(Name = "TypeValue", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "TypeValue", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int TypeValue { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Display(Name = "Adress", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Adress", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Adress { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Display(Name = "PostalCode", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "PostalCode", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string PostalCode { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Display(Name = "City", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "City", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string City { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Display(Name = "Country", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Country", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Country { get; set; }
 
-		[Display(Name = "PhoneNumber", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string PhoneNumber { get; set; }
 
-		[Display(Name = "Email", ResourceType = typeof(WorkiResources.Models.Contact.Contact))]
-		[Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+		[Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Mail { get; set; }
 
-		[StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Display(Name = "Fax", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Fax", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public string Fax { get; set; }
 
-		[Display(Name = "WebSite", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Display(Name = "WebSite", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		//[WebSite]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string WebSite { get; set; }
 
-		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Description { get; set; }
 
 		public double Latitude { get; set; }
@@ -609,16 +609,16 @@ namespace WorkiSiteWeb.Models
 
 		#endregion
 
-		[Display(Name = "PublicTransportation", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Display(Name = "PublicTransportation", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string PublicTransportation { get; set; }
 
-		[Display(Name = "Station", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Display(Name = "Station", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Station { get; set; }
 
-		[Display(Name = "RoadAccess", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Display(Name = "RoadAccess", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string RoadAccess { get; set; }
 	}
 
@@ -778,7 +778,7 @@ namespace WorkiSiteWeb.Models
 	/// <summary>
 	/// Feature type, correspond to the field FeatureId of LocalisationFeature
 	/// </summary>
-	[LocalizedEnum(ResourceType = typeof(WorkiResources.Models.Localisation.LocalisationFeatures))]
+	[LocalizedEnum(ResourceType = typeof(Worki.Resources.Models.Localisation.LocalisationFeatures))]
 	public enum Feature
 	{
 		Access24,
@@ -941,7 +941,7 @@ namespace WorkiSiteWeb.Models
 		/// </summary>
 		public void Validate(ref string error)
 		{
-			string commentError = WorkiResources.Validation.ValidationString.AlreadyRateThis;
+			string commentError = Worki.Resources.Validation.ValidationString.AlreadyRateThis;
 			if (!Localisation.IsFreeLocalisation())
 			{
 				if (Rating < 0)
@@ -964,28 +964,28 @@ namespace WorkiSiteWeb.Models
 	[Bind(Exclude = "Id,PostUserID")]
 	public class Comment_Validation
 	{
-		[Display(Name = "Post", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Display(Name = "Post", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Post { get; set; }
 
 		[Range(-1, 5)]
-		[Display(Name = "Rating", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Display(Name = "Rating", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int Rating { get; set; }
 
 		[Range(-1, 5)]
-		[Display(Name = "RatingPrice", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Display(Name = "RatingPrice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int RatingPrice { get; set; }
 
 		[Range(-1, 5)]
-		[Display(Name = "RatingWifi", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Display(Name = "RatingWifi", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int RatingWifi { get; set; }
 
 		[Range(-1, 5)]
-		[Display(Name = "RatingDispo", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Display(Name = "RatingDispo", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int RatingDispo { get; set; }
 
 		[Range(-1, 5)]
-		[Display(Name = "RatingWelcome", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Display(Name = "RatingWelcome", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int RatingWelcome { get; set; }
 	}
 
@@ -997,7 +997,7 @@ namespace WorkiSiteWeb.Models
 
 	public class LocalisationData_Validation
 	{
-		[Display(Name = "CoffeePrice", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+		[Display(Name = "CoffeePrice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int CoffeePrice { get; set; }
 	}
 }

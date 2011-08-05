@@ -7,23 +7,23 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
-using WorkiSiteWeb.Models;
-using WorkiSiteWeb.Infrastructure.Membership;
+using Worki.Web.Models;
+using Worki.Web.Infrastructure.Membership;
 /*using DotNetOpenAuth.OpenId.RelyingParty;
 using DotNetOpenAuth.OpenId;
 using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using DotNetOpenAuth.Messaging;*/
-using WorkiSiteWeb.Infrastructure.Logging;
-using WorkiSiteWeb.Helpers;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure.Logging;
+using Worki.Web.Helpers;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Infrastructure;
 using System.Configuration;
 using System.Globalization;
 using System.Net.Mail;
-using WorkiSiteWeb.Infrastructure.Email;
+using Worki.Web.Infrastructure.Email;
 using System.Text;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
     [HandleError]
     public partial class AccountController : Controller
@@ -101,7 +101,7 @@ namespace WorkiSiteWeb.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", WorkiResources.Validation.ValidationString.MailOrPasswordNotCorrect);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
                 }
             }
 
@@ -152,7 +152,7 @@ namespace WorkiSiteWeb.Controllers
 			//check capatcha
 			if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
 			{
-				ModelState.AddModelError("attempt", WorkiResources.Validation.ValidationString.VerificationLettersWrong);
+				ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
 			}
 			//check model validity
 			else if (ModelState.IsValid)
@@ -168,7 +168,7 @@ namespace WorkiSiteWeb.Controllers
 					var fromDB = _MemberRepository.GetMember(model.Email);
 					if (fromDB != null)
 					{
-						error = WorkiResources.Validation.ValidationString.UsernameExistForThisMail;
+						error = Worki.Resources.Validation.ValidationString.UsernameExistForThisMail;
 						field = "Email";
 						throw new Exception(error);
 					}
@@ -296,7 +296,7 @@ namespace WorkiSiteWeb.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", WorkiResources.Validation.ValidationString.PasswordNotValide);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.PasswordNotValide);
                 }
             }
 
@@ -344,7 +344,7 @@ namespace WorkiSiteWeb.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", WorkiResources.Validation.ValidationString.MailDoNotMatch);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailDoNotMatch);
                 }
             }
             return View(model);

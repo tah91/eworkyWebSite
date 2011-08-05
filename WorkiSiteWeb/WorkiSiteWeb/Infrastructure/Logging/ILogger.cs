@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WorkiSiteWeb.Infrastructure.Logging
+namespace Worki.Web.Infrastructure.Logging
 {
     public interface ILogger
     {

@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Helpers;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Web.Routing;
 using System.Web;
 using System;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     public class SearchService : ISearchService
 	{
@@ -215,7 +215,7 @@ namespace WorkiSiteWeb.Models
 		{
 			if (toValidate == null)
 			{
-				error = WorkiResources.Validation.ValidationString.ErrorWhenSave;
+				error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 				throw new Exception(error);
 			}
 
@@ -225,7 +225,7 @@ namespace WorkiSiteWeb.Models
 							  select loc).Count();
 			if (similarLoc > 0)
 			{
-				error = WorkiResources.Validation.ValidationString.DuplicateName;
+				error = Worki.Resources.Validation.ValidationString.DuplicateName;
 				throw new Exception(error);
 			}
 		}

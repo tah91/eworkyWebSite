@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Security;
 
-namespace WorkiSiteWeb.Infrastructure.Membership
+namespace Worki.Web.Infrastructure.Membership
 {
     // Le type de FormsAuthentication est sealed et contient des membres statiques ; par conséquent, il est difficile
     // d'effectuer un test unitaire sur du code qui appelle ses membres. L'interface et la classe d'assistance ci-dessous montrent

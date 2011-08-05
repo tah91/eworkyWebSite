@@ -1,31 +1,31 @@
-﻿@model WorkiSiteWeb.Models.WelcomePeopleListViewModel
+﻿@model Worki.Web.Models.WelcomePeopleListViewModel
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.Admin) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
     <link href="@Url.Content(Links.Content.Admin_css) " rel="stylesheet" type="text/css" />
 }
 
-<h2>@WorkiResources.Views.Admin.AdminString.IndexWelcomePeople</h2>
+<h2>@Worki.Resources.Views.Admin.AdminString.IndexWelcomePeople</h2>
 <div class="contentAdmin">
     <div id="adminMenu"> 
         @Html.Partial(MVC.Admin.Views._AdminMenu)
     </div>
     <p>
-    <h3>@Html.ActionLink(WorkiResources.Views.Admin.AdminString.CreateNewWelcomePeople, MVC.Admin.CreateWelcomePeople())</h3>
+    <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.CreateNewWelcomePeople, MVC.Admin.CreateWelcomePeople())</h3>
     </p>
     <div class="adminPanel">
         <table>
             <thead>
                 <tr>
                     <th>
-                        &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.ID
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
                     </th> 
                     <th>
-                        &nbsp;&nbsp; @WorkiResources.Models.Contact.Contact.Email
+                        &nbsp;&nbsp; @Worki.Resources.Models.Contact.Contact.Email
                     </th>
                     <th>
-                        &nbsp;&nbsp; @WorkiResources.Views.Admin.AdminString.Action
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Action
                     </th>
                 </tr>
             </thead>
@@ -40,9 +40,9 @@
                     @item.Member.Username
                 </td>
                 <td align="center">
-                    @Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.Edit, MVC.Admin.EditWelcomePeople(item.Id)) |
-                    @Html.ActionLink(WorkiResources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteWelcomePeople(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
-                    @Html.ActionLink(WorkiResources.Views.Localisation.LocalisationString.Details, MVC.Admin.DetailWelcomePeople(item.Id))
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.EditWelcomePeople(item.Id)) |
+                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteWelcomePeople(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Details, MVC.Admin.DetailWelcomePeople(item.Id))
                 </td>
             </tr>
         }

@@ -1,10 +1,10 @@
 ﻿using System;
-using WorkiSiteWeb.Models;
+using Worki.Web.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WorkiSiteWeb.Infrastructure.Repository
+namespace Worki.Web.Infrastructure.Repository
 {
 	public interface IBookingRepository : IRepository<MemberBooking>
     {

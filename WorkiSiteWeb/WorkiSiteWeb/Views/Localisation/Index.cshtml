@@ -1,8 +1,8 @@
-﻿@model WorkiSiteWeb.Models.LocalisationListViewModel
+﻿@model Worki.Web.Models.LocalisationListViewModel
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(WorkiResources.Views.Localisation.LocalisationString.Index) </title>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Localisation.LocalisationString.Index) </title>
 }
 
 
@@ -11,13 +11,13 @@
 <script src="/Scripts/jquery-1.5.2.min.js" type="text/javascript"></script>
 <script src="/Scripts/WorkiMapBis.js" type="text/javascript"></script>
 
-<h2>@WorkiResources.Views.Localisation.LocalisationString.SearchAWorkplace</h2>
+<h2>@Worki.Resources.Views.Localisation.LocalisationString.SearchAWorkplace</h2>
 
 <div id="searchBox">
     Entrer un endroit: @Html.TextBox("Location") 
     Wifi: @Html.CheckBox("Wifi") 
     <input id="search" type="submit" value="Rechercher" />
-    @Html.ActionLink(WorkiResources.Views.Home.HomeString.MoreCriterias, "FullSearch", "Search")
+    @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, "FullSearch", "Search")
 </div>
 <div>
     <div id="mapDivLeft">

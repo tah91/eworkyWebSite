@@ -1,13 +1,13 @@
 ﻿@section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Views.Home.HomeString.Imprint)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.Imprint)</title>
 }
 
-@RazorHelpers.TitleDiv(WorkiResources.Views.Home.HomeString.Imprint, "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.Imprint, "Blue")
 <div class="detailContent generalTextContainer">
 	<div class="contentBlock generalTextContent float-right">
 	    <p>
-            @Html.Raw(String.Format(WorkiResources.Views.Home.HomeString.ImprintDescription, EmailService.ContactMail))
+            @Html.Raw(String.Format(Worki.Resources.Views.Home.HomeString.ImprintDescription, EmailService.ContactMail))
         </p>
     </div>
     <div class="clear">

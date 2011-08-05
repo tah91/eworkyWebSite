@@ -1,14 +1,14 @@
-﻿@model WorkiSiteWeb.Models.Contact
+﻿@model Worki.Web.Models.Contact
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(WorkiResources.Views.Home.HomeString.Contact)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.Contact)</title>
     <link href="@Url.Content(Links.Content.Index_css) " rel="stylesheet" type="text/css" />
 }
 
 
 <div class="borderContainer">
-    @RazorHelpers.TitleDiv(WorkiResources.Views.Home.HomeString.ContactUs, "Blue")
+    @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.ContactUs, "Blue")
     <div class="contactDiv">
         <div class="login-account">
             @using (Html.BeginForm()) 
@@ -42,7 +42,7 @@
                     <tr> 
                         <td>
                             <div class="editor-label">
-                                @WorkiResources.Models.Contact.Contact.Email
+                                @Worki.Resources.Models.Contact.Contact.Email
                             </div>
                         </td>
                         <td>

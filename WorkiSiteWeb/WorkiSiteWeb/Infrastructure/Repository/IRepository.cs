@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace WorkiSiteWeb.Infrastructure.Repository
+namespace Worki.Web.Infrastructure.Repository
 {
     /// <summary>
     /// Generic interface to represent basics tasks that can be performed in a data store

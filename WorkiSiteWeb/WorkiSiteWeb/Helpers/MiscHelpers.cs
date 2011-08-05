@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WorkiSiteWeb.Models;
+using Worki.Web.Models;
 using System.IO;
 using System.Net;
 using System.Reflection;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure;
 using System.Net.Mail;
 using System.Configuration;
 using Microsoft.WindowsAzure.StorageClient;
@@ -19,7 +19,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
-namespace WorkiSiteWeb.Helpers
+namespace Worki.Web.Helpers
 {
     public static class EdmMethods
     {

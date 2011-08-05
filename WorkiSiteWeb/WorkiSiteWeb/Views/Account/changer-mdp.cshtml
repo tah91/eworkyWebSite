@@ -1,16 +1,16 @@
-﻿@model WorkiSiteWeb.Models.ChangePasswordModel
+﻿@model Worki.Web.Models.ChangePasswordModel
 
 @section HeadContent
 {  
-    <title>@Html.WorkiTitle(WorkiResources.Models.Account.AccountModels.ChangeThePassword)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Models.Account.AccountModels.ChangeThePassword)</title>
 }
 
     <div class="borderContainer">
-     @RazorHelpers.TitleDiv(WorkiResources.Models.Account.AccountModels.ChangeThePassword, "Blue")
+     @RazorHelpers.TitleDiv(Worki.Resources.Models.Account.AccountModels.ChangeThePassword, "Blue")
         <div class="login-account">
             <div class="loginDesc">
-            @WorkiResources.Views.Account.AccountString.NewOldPassword<br />
-            @String.Format(WorkiResources.Views.Account.AccountString.MinimumLength,ViewData["PasswordLength"] )
+            @Worki.Resources.Views.Account.AccountString.NewOldPassword<br />
+            @String.Format(Worki.Resources.Views.Account.AccountString.MinimumLength,ViewData["PasswordLength"] )
             </div>
             @using (Html.BeginForm()) { 
                 @Html.AntiForgeryToken()

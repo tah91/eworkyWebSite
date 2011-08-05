@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
 	public class MemberBookingFormViewModel
 	{
@@ -18,7 +18,7 @@ namespace WorkiSiteWeb.Models
 		public SelectList Offers { get; set; }
 		public string ReturnUrl { get; set; }
 
-		[Display(Name = "PhoneNumber", ResourceType = typeof(WorkiResources.Models.Booking.Booking))]
+		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public string PhoneNumber { get; set; }
 	}
 
@@ -35,16 +35,16 @@ namespace WorkiSiteWeb.Models
 	[Bind(Exclude = "Id,MemberId,LocalisationId")]
 	public class MemberBooking_Validation
 	{
-		[Display(Name = "Offer", ResourceType = typeof(WorkiResources.Models.Booking.Booking))]
+		[Display(Name = "Offer", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public int Offer { get; set; }
 
-		[Display(Name = "FromDate", ResourceType = typeof(WorkiResources.Models.Booking.Booking))]
+		[Display(Name = "FromDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public DateTime FromDate { get; set; }
 
-		[Display(Name = "ToDate", ResourceType = typeof(WorkiResources.Models.Booking.Booking))]
+		[Display(Name = "ToDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public DateTime ToDate { get; set; }
 
-		[Display(Name = "Message", ResourceType = typeof(WorkiResources.Models.Booking.Booking))]
+		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public string Message { get; set; }
 	}
 }

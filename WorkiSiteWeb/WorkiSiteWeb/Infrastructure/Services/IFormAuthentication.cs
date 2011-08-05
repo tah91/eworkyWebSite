@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace WorkiSiteWeb.Infrastructure.Membership
+namespace Worki.Web.Infrastructure.Membership
 {
     public interface IFormsAuthenticationService
     {

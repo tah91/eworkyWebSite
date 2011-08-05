@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Helpers;
 using System.Linq;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     #region Profil Enums
 
@@ -144,7 +144,7 @@ namespace WorkiSiteWeb.Models
         public string HasEditionAccess(bool adminRole)
         {
 			if (!IsValidUser())
-				return WorkiResources.Validation.ValidationString.InvalidUser;
+				return Worki.Resources.Validation.ValidationString.InvalidUser;
 
 			if (adminRole)
 				return string.Empty;
@@ -295,7 +295,7 @@ namespace WorkiSiteWeb.Models
 						{
 							if (Profile == (int)ProfileType.NotSelected)
 							{
-								return WorkiResources.Validation.ValidationString.PleaseSelectProfile;
+								return Worki.Resources.Validation.ValidationString.PleaseSelectProfile;
 							}
 							else
 								return string.Empty;
@@ -310,104 +310,104 @@ namespace WorkiSiteWeb.Models
 
         public static Dictionary<int, string> CivilityTypes = new Dictionary<int, string>()
         {
-            { (int)CivilityType.Mr,WorkiResources.Models.Localisation.Localisation.Mr},
-            { (int)CivilityType.Mme,WorkiResources.Models.Localisation.Localisation.Mme},
-            { (int)CivilityType.Mlle,WorkiResources.Models.Localisation.Localisation. Mlle},
+            { (int)CivilityType.Mr,Worki.Resources.Models.Localisation.Localisation.Mr},
+            { (int)CivilityType.Mme,Worki.Resources.Models.Localisation.Localisation.Mme},
+            { (int)CivilityType.Mlle,Worki.Resources.Models.Localisation.Localisation. Mlle},
         };
 
         public static Dictionary<int, string> ProfileTypes = new Dictionary<int, string>()
         {
-            { (int)ProfileType.LocalisationOwner,WorkiResources.Models.Profile.Profile.LocalisationOwner},
-            { (int)ProfileType.Nomad ,WorkiResources.Models.Profile.Profile.Nomad},            
-            { (int)ProfileType.Teleworker,WorkiResources.Models.Profile.Profile.Teleworker},
-            { (int)ProfileType.Independant,WorkiResources.Models.Profile.Profile.Independant},
-            { (int)ProfileType.Startup,WorkiResources.Models.Profile.Profile.Startup },            
-            { (int)ProfileType.Company,WorkiResources.Models.Profile.Profile.Company },
-            { (int)ProfileType.Student,WorkiResources.Models.Profile.Profile.Student},
-            { (int)ProfileType.PunctualUser,WorkiResources.Models.Profile.Profile.PunctualUser},
-            { (int)ProfileType.Other,WorkiResources.Models.Profile.Profile.Other },
-			{ (int)ProfileType.NotSelected,WorkiResources.Models.Profile.Profile.NotSelected }
+            { (int)ProfileType.LocalisationOwner,Worki.Resources.Models.Profile.Profile.LocalisationOwner},
+            { (int)ProfileType.Nomad ,Worki.Resources.Models.Profile.Profile.Nomad},            
+            { (int)ProfileType.Teleworker,Worki.Resources.Models.Profile.Profile.Teleworker},
+            { (int)ProfileType.Independant,Worki.Resources.Models.Profile.Profile.Independant},
+            { (int)ProfileType.Startup,Worki.Resources.Models.Profile.Profile.Startup },            
+            { (int)ProfileType.Company,Worki.Resources.Models.Profile.Profile.Company },
+            { (int)ProfileType.Student,Worki.Resources.Models.Profile.Profile.Student},
+            { (int)ProfileType.PunctualUser,Worki.Resources.Models.Profile.Profile.PunctualUser},
+            { (int)ProfileType.Other,Worki.Resources.Models.Profile.Profile.Other },
+			{ (int)ProfileType.NotSelected,Worki.Resources.Models.Profile.Profile.NotSelected }
         };
     }
 
     [Bind(Exclude = "RelationId,MemberId,Avatar")]
     public class MemberMainData_Validation
     {
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "Civility", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Civility", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
         public int Civility { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "LastName", ResourceType = typeof(WorkiResources.Models.Contact.Contact))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string LastName { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "FirstName", ResourceType = typeof(WorkiResources.Models.Contact.Contact))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "FirstName", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string FirstName { get; set; }
 
-        [Display(Name = "CompanyName", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "CompanyName", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string CompanyName { get; set; }
 
-        [Display(Name = "City", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "City", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string City { get; set; }
 
-        [Display(Name = "PostalCode", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-        [StringLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "PostalCode", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        [StringLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string PostalCode { get; set; }
 
-        [Display(Name = "Country", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "Country", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Country { get; set; }
 
-        [Display(Name = "WorkCity", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "WorkCity", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string WorkCity { get; set; }
 
-        [Display(Name = "WorkPostalCode", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-        [StringLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "WorkPostalCode", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        [StringLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string WorkPostalCode { get; set; }
 
-        [Display(Name = "WorkCountry", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "WorkCountry", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string WorkCountry { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "ProfileString", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "ProfileString", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
         public int Profile { get; set; }
 
-        [Display(Name = "BirthDate", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
+        [Display(Name = "BirthDate", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
         public DateTime? BirthDate { get; set; }
 
-        [Display(Name = "PhoneNumber", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Description", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "Description", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Description { get; set; }
 
-        [Display(Name = "FavoritePlaces", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "FavoritePlaces", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string FavoritePlaces { get; set; }
 
-        [Display(Name = "Facebook", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "Facebook", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Facebook { get; set; }
 
-        [Display(Name = "Twitter", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "Twitter", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Twitter { get; set; }
 
-        [Display(Name = "Linkedin", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "Linkedin", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Linkedin { get; set; }
 
-        [Display(Name = "Viadeo", ResourceType = typeof(WorkiResources.Models.Profile.Profile))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+        [Display(Name = "Viadeo", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Viadeo { get; set; }
     }
 

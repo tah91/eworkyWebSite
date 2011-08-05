@@ -6,7 +6,7 @@ using System.Security.Permissions;
 using System.Text;
 using System.Web.Mvc;
 
-namespace WorkiSiteWeb.Infrastructure
+namespace Worki.Web.Infrastructure
 {
 	/// <summary>
 	/// This exception that is thrown when there are model state errors.

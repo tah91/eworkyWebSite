@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WorkiSiteWeb.Models;
-using WorkiSiteWeb.Helpers;
-using WorkiSiteWeb.Infrastructure.Email;
-using WorkiSiteWeb.Infrastructure.Repository;
+using Worki.Web.Models;
+using Worki.Web.Helpers;
+using Worki.Web.Infrastructure.Email;
+using Worki.Web.Infrastructure.Repository;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
     public partial class VisitorController : Controller
     {

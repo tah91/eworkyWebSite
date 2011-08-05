@@ -1,28 +1,28 @@
 ﻿<div class="directAccess float-left borderRadius">
     @*<div class="directAccess borderRadius" style="margin:auto;">*@
     <div class="directAccessHead directAccessElem blue">
-        <h2>Accès direct</h2> <span>&nbsp;&nbsp;&nbsp;@WorkiResources.Views.Shared.SharedString.WhatEWorkyCouldDo</span>
+        <h2>Accès direct</h2> <span>&nbsp;&nbsp;&nbsp;@Worki.Resources.Views.Shared.SharedString.WhatEWorkyCouldDo</span>
     </div>
     <div class="directAccessStudent directAccessElem float-left">
-        @Html.ActionLink(WorkiResources.Models.Profile.Profile.Student, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eStudent))
+        @Html.ActionLink(Worki.Resources.Models.Profile.Profile.Student, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eStudent))
     </div>
     <div class="directAccessNomad directAccessElem float-right">
-        @Html.ActionLink(WorkiResources.Views.Search.SearchString.Nomad, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eNomade))
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.Nomad, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eNomade))
     </div>
     <div class="clear">
     </div>
     <div class="directAccessWorker directAccessElem float-left">
-        @Html.ActionLink(WorkiResources.Models.Profile.Profile.Teleworker, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eTeleworker))
+        @Html.ActionLink(Worki.Resources.Models.Profile.Profile.Teleworker, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eTeleworker))
     </div>
     <div class="directAccessStartUp directAccessElem float-right">
-        @Html.ActionLink(WorkiResources.Views.Search.SearchString.Entrepreneur, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eStartUp))
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.Entrepreneur, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eStartUp))
     </div>
     <div class="clear">
     </div>
     <div class="directAccessDrh directAccessElem float-left">
-        @Html.ActionLink(WorkiResources.Models.Profile.Profile.Company, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eEntreprise))
+        @Html.ActionLink(Worki.Resources.Models.Profile.Profile.Company, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eEntreprise))
     </div>
     <div class="directAccessIndependant directAccessElem float-right">
-        @Html.ActionLink(WorkiResources.Views.Search.SearchString.Independant, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eIndependant))
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.Independant, MVC.Search.FullSearchPerTypeSpecial((int)eDirectAccessType.eIndependant))
     </div>
 </div>

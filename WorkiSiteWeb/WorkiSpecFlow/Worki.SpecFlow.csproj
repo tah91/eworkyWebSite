@@ -8,8 +8,8 @@
     <ProjectGuid>{36357B79-2730-47BF-AA2F-45EFED00BD81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WorkiSpecFlow</RootNamespace>
-    <AssemblyName>WorkiSpecFlow</AssemblyName>
+    <RootNamespace>Worki.SpecFlow</RootNamespace>
+    <AssemblyName>Worki.SpecFlow</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

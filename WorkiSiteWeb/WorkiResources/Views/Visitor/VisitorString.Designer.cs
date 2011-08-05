@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Views.Visitor {
+namespace Worki.Resources.Views.Visitor {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Views.Visitor {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Views.Visitor.VisitorString", typeof(VisitorString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Visitor.VisitorString", typeof(VisitorString).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

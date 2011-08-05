@@ -6,21 +6,21 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Globalization;
 using System.Threading;
-using WorkiSiteWeb.Models;
-using WorkiSiteWeb.Controllers;
+using Worki.Web.Models;
+using Worki.Web.Controllers;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure;
 using Logging;
 using Ninject.Modules;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Infrastructure.Logging;
-using WorkiSiteWeb.Infrastructure.Email;
-using WorkiSiteWeb.Infrastructure.Membership;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Email;
+using Worki.Web.Infrastructure.Membership;
 using Ninject;
 using System.Web.Security;
 
-namespace WorkiSiteWeb
+namespace Worki.Web
 {
     // Remarque : pour obtenir des instructions sur l'activation du mode classique IIS6 ou IIS7, 
     // visitez http://go.microsoft.com/?LinkId=9394801
@@ -127,23 +127,23 @@ namespace WorkiSiteWeb
             //{
             //    if (!(r.RouteHandler is SingleCultureMvcRouteHandler))
             //    {
-            //        r.RouteHandler = new WorkiSiteWeb.Infrastructure.MultiCultureMvcRouteHandler();
+            //        r.RouteHandler = new Worki.Web.Infrastructure.MultiCultureMvcRouteHandler();
             //        r.Url = "{culture}/" + r.Url;
             //        Adding default culture 
             //        if (r.Defaults == null)
             //        {
             //            r.Defaults = new RouteValueDictionary();
             //        }
-            //        r.Defaults.Add("culture", WorkiSiteWeb.Infrastructure.Culture.fr.ToString());
+            //        r.Defaults.Add("culture", Worki.Web.Infrastructure.Culture.fr.ToString());
 
             //        Adding constraint for culture param
             //        if (r.Constraints == null)
             //        {
             //            r.Constraints = new RouteValueDictionary();
             //        }
-            //        r.Constraints.Add("culture", new WorkiSiteWeb.Infrastructure.CultureConstraint(WorkiSiteWeb.Infrastructure.Culture.fr.ToString(),
+            //        r.Constraints.Add("culture", new Worki.Web.Infrastructure.CultureConstraint(Worki.Web.Infrastructure.Culture.fr.ToString(),
 
-            //        WorkiSiteWeb.Infrastructure.Culture.fr.ToString()));
+            //        Worki.Web.Infrastructure.Culture.fr.ToString()));
             //    }
             //}
 

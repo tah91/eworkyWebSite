@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Models.Localisation {
+namespace Worki.Resources.Models.Localisation {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Models.Localisation {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Models.Localisation.Localisation", typeof(Localisation).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Models.Localisation.Localisation", typeof(Localisation).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

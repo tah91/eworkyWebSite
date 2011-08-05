@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Validation {
+namespace Worki.Resources.Validation {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Validation {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Validation.ValidationString", typeof(ValidationString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Validation.ValidationString", typeof(ValidationString).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

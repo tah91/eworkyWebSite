@@ -3,9 +3,9 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     public class SearchCriteria
     {
@@ -34,48 +34,48 @@ namespace WorkiSiteWeb.Models
 
         #region Properties
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-        [Display(Name = "Place", ResourceType = typeof(WorkiResources.Models.Search.SearchCriteria))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Place", ResourceType = typeof(Worki.Resources.Models.Search.SearchCriteria))]
         public string Place { get; set; }
 
         public Localisation LocalisationData { get; set; }
 
         public int LocalisationOffer { get; set; }
 
-        [Display(Name = "Everything", ResourceType = typeof(WorkiResources.Models.Search.SearchCriteria))]
+        [Display(Name = "Everything", ResourceType = typeof(Worki.Resources.Models.Search.SearchCriteria))]
         public bool Everything { get; set; }
 
-        [Display(Name = "SpotWifi", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "SpotWifi", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool SpotWifi { get; set; }
 
-        [Display(Name = "CoffeeResto", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "CoffeeResto", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool CoffeeResto { get; set; }
 
-        [Display(Name = "Biblio", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "Biblio", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool Biblio { get; set; }
 
-        [Display(Name = "PublicSpace", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "PublicSpace", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool PublicSpace { get; set; }
 
-        [Display(Name = "TravelerSpace", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "TravelerSpace", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool TravelerSpace { get; set; }
 
-        [Display(Name = "Hotel", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "Hotel", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool Hotel { get; set; }
 
-        [Display(Name = "Telecentre", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "Telecentre", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool Telecentre { get; set; }
 
-        [Display(Name = "BuisnessCenter", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "BuisnessCenter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool BuisnessCenter { get; set; }
 
-        [Display(Name = "CoworkingSpace", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "CoworkingSpace", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool CoworkingSpace { get; set; }
 
-        [Display(Name = "WorkingHotel", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "WorkingHotel", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool WorkingHotel { get; set; }
 
-        [Display(Name = "PrivateArea", ResourceType = typeof(WorkiResources.Models.Localisation.Localisation))]
+        [Display(Name = "PrivateArea", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool PrivateArea { get; set; }
 
         #endregion

@@ -7,7 +7,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WorkiSiteWeb.Infrastructure
+namespace Worki.Web.Infrastructure
 {
 	//public class PrivateBetaAttribute : AuthorizeAttribute
 	//{
@@ -119,7 +119,7 @@ namespace WorkiSiteWeb.Infrastructure
 
         public override string FormatErrorMessage(string name)
         {
-            return WorkiResources.Validation.ValidationString.WebsiteNotGoodPattern;
+            return Worki.Resources.Validation.ValidationString.WebsiteNotGoodPattern;
         }
     }
 
@@ -127,7 +127,7 @@ namespace WorkiSiteWeb.Infrastructure
     {
         public override string FormatErrorMessage(string name)
         {
-            return string.Format(WorkiResources.Validation.ValidationString.NoValideDate, name);
+            return string.Format(Worki.Resources.Validation.ValidationString.NoValideDate, name);
         }
 
         public override bool IsValid(object value)

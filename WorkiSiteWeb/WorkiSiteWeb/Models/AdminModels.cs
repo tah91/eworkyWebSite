@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
 	#region Admin Visitor
 	
@@ -101,10 +101,10 @@ namespace WorkiSiteWeb.Models
 
 		public WelcomePeople WelcomePeople { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Email { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string LocalisationName { get; set; }
 	}
 

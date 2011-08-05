@@ -7,7 +7,7 @@ using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics.Management;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Helpers;
 
 namespace Logging
 {

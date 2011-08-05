@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Threading;
 using System.Linq;
 
-namespace WorkiSiteWeb.Infrastructure 
+namespace Worki.Web.Infrastructure 
 {
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {

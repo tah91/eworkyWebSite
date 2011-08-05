@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<sc:ServiceConfiguration serviceName="WorkiAzureService" 
+<sc:ServiceConfiguration serviceName="Worki.AzureService" 
 												 xmlns:sc="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" 
 												 xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform" osFamily="1" osVersion="*">
-	<sc:Role name="WorkiSiteWeb" xdt:Locator="Match(name)">
+	<sc:Role name="Worki.Web" xdt:Locator="Match(name)">
 		<sc:ConfigurationSettings>
 			<sc:Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" 
 									value="DefaultEndpointsProtocol=https;AccountName=workitest;AccountKey=6rLVskFAZVNiQCcJDxdK1HSGkvi6mbCIZBhI7udO3iTS2qBZtBVBcNOrOKhT3iz2txsz7j+isZ99X7rJWM8NnA==" 

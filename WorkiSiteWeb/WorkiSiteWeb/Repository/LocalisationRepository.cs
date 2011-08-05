@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using WorkiSiteWeb.Infrastructure.Repository;
+using Worki.Web.Infrastructure.Repository;
 using System.Net;
 using System.Globalization;
-using WorkiSiteWeb.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Logging;
 using System;
 using System.Text;
 using System.Data.Objects;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Helpers;
 using System.Linq;
 using System.Data.Entity;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
 	public class LocalisationRepository : RepositoryBase<Localisation>, ILocalisationRepository
     {

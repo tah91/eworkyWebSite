@@ -1,4 +1,4 @@
-﻿@model WorkiSiteWeb.Models.SearchSingleResultViewModel
+﻿@model Worki.Web.Models.SearchSingleResultViewModel
 
 @section HeadContent
 {
@@ -22,7 +22,7 @@
 		rvd[key] = Request.QueryString[key];
 	}
     }
-    @Html.ActionLink(WorkiResources.Views.Search.SearchString.ReturnToResult, MVC.Search.ActionNames.FullSearchResult, rvd, new System.Collections.Generic.Dictionary<string, object> { { "class", "bold" } })
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.ReturnToResult, MVC.Search.ActionNames.FullSearchResult, rvd, new System.Collections.Generic.Dictionary<string, object> { { "class", "bold" } })
 </div>
 <div class="pager pagerTop float-right">
     @Html.PageDetailLinks(Model.Index, Model.TotalItems, x => { rvd["index"] = x; return Url.Action(MVC.Search.ActionNames.FullSearchResultDetail, rvd); }, "< Fiche Précédente", "Fiche Suivante >")

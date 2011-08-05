@@ -1,14 +1,14 @@
-﻿@model WorkiSiteWeb.Models.LogOnModel
+﻿@model Worki.Web.Models.LogOnModel
 
 @section HeadContent
 {  
-    <title>@Html.WorkiTitle(WorkiResources.Views.Account.AccountString.Login)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Account.AccountString.Login)</title>
     <link href="@Url.Content(Links.Content.Index_css) " rel="stylesheet" type="text/css" />
 }
 
 
     <div class="borderContainer">
-        @RazorHelpers.TitleDiv(WorkiResources.Views.Account.AccountString.LoginToEWorky, "Blue")
+        @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.LoginToEWorky, "Blue")
 
         <div class="login-account">
             @using (Html.BeginForm())
@@ -45,7 +45,7 @@
                                 @Html.LabelFor(m => m.Password) 
                             </td>
                             <td>
-                                @Html.PasswordFor(m => m.Password) &nbsp;&nbsp; @Html.ActionLink(WorkiResources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
+                                @Html.PasswordFor(m => m.Password) &nbsp;&nbsp; @Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
                             </td>
                         </tr>
                         <tr>
@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 <input type="submit" class="btn_blue imageBtn" value="Se connecter"/>
-                                &nbsp;&nbsp;ou @Html.ActionLink(WorkiResources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())
+                                &nbsp;&nbsp;ou @Html.ActionLink(Worki.Resources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())
                             </td>
                         </tr>
                     </table>                    

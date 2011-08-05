@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     using System;
     using System.Data.Entity;

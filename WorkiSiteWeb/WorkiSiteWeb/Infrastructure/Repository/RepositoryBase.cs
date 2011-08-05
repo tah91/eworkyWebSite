@@ -1,12 +1,12 @@
 ﻿using System;
-using WorkiSiteWeb.Models;
+using Worki.Web.Models;
 using System.Linq;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq.Expressions;
-using WorkiSiteWeb.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Logging;
 
-namespace WorkiSiteWeb.Infrastructure.Repository
+namespace Worki.Web.Infrastructure.Repository
 {
 	public abstract class RepositoryBase<T> where T : class
 	{

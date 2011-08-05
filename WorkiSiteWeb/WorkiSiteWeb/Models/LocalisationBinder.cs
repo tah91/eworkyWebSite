@@ -7,11 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel;
 using System.Reflection;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Helpers;
 using System.Collections.Generic;
-using WorkiSiteWeb.Models;
+using Worki.Web.Models;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
 	public class LocalisationBinder : IModelBinder
 	{
@@ -20,10 +20,10 @@ namespace WorkiSiteWeb.Models
 		public static Dictionary<FeatureType, string> LocalisationFeatureTypes = new Dictionary<FeatureType, string>()
         {
             { FeatureType.General, string.Empty},
-            { FeatureType.WorkingPlace, WorkiResources.Models.Localisation.Localisation.WorkingPlace},
-            { FeatureType.MeetingRoom, WorkiResources.Models.Localisation.Localisation.MeetingRoom},
-            { FeatureType.SeminarRoom, WorkiResources.Models.Localisation.Localisation.SeminarRoom},
-            { FeatureType.VisioRoom, WorkiResources.Models.Localisation.Localisation.VisioRoom}
+            { FeatureType.WorkingPlace, Worki.Resources.Models.Localisation.Localisation.WorkingPlace},
+            { FeatureType.MeetingRoom, Worki.Resources.Models.Localisation.Localisation.MeetingRoom},
+            { FeatureType.SeminarRoom, Worki.Resources.Models.Localisation.Localisation.SeminarRoom},
+            { FeatureType.VisioRoom, Worki.Resources.Models.Localisation.Localisation.VisioRoom}
         };
 
 		public static List<int> OfferTypes = new List<int>()
@@ -84,7 +84,7 @@ namespace WorkiSiteWeb.Models
 			}
 			if (bindingContext.ModelName == "localisation" && !loc.HasOffer())
 			{
-				bindingContext.ModelState.AddModelError("", WorkiResources.Validation.ValidationString.GiveMinADate);
+				bindingContext.ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.GiveMinADate);
 			}
 
 			//handle images

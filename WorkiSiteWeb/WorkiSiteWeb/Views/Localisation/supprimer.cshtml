@@ -1,17 +1,17 @@
-﻿@model WorkiSiteWeb.Models.Localisation
+﻿@model Worki.Web.Models.Localisation
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(WorkiResources.Views.Localisation.LocalisationString.ComfirmDelete+Model.Name) </title>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Localisation.LocalisationString.ComfirmDelete+Model.Name) </title>
 }
 
 
 
 <h2>
-    @WorkiResources.Views.Localisation.LocalisationString.ComfirmDelete
+    @Worki.Resources.Views.Localisation.LocalisationString.ComfirmDelete
 </h2>
 <div>
-    <p>@WorkiResources.Views.Localisation.LocalisationString.PleaseConfirmDelete
+    <p>@Worki.Resources.Views.Localisation.LocalisationString.PleaseConfirmDelete
     <i> @Model.Name ? </i> </p>
 </div>
 @using (Html.BeginForm(new { returnUrl = TempData["returnUrl"] }))

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace WorkiSiteWeb.Infrastructure
+namespace Worki.Web.Infrastructure
 {
     public class FileUploadJsonResult : JsonResult
     {

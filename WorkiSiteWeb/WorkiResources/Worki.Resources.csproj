@@ -8,8 +8,8 @@
     <ProjectGuid>{54441744-36D7-4CD6-A5B3-372A217841B0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WorkiResources</RootNamespace>
-    <AssemblyName>WorkiResources</AssemblyName>
+    <RootNamespace>Worki.Resources</RootNamespace>
+    <AssemblyName>Worki.Resources</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

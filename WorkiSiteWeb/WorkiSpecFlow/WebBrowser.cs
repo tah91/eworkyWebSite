@@ -5,7 +5,7 @@ using System.Text;
 using WatiN.Core;
 using TechTalk.SpecFlow;
 
-namespace WorkiSpecFlow
+namespace Worki.SpecFlow
 {
     public static class WebBrowser
     {

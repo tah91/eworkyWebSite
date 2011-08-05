@@ -1,21 +1,21 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using WorkiSiteWeb.Models;
-using WorkiSiteWeb.Helpers;
+using Worki.Web.Models;
+using Worki.Web.Helpers;
 using System.IO;
 using System.Reflection;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Infrastructure;
 using Microsoft.Web.Mvc;
 using System;
 using System.Linq;
 using System.Web.Security;
-using WorkiSiteWeb.Infrastructure.Membership;
-using WorkiSiteWeb.Infrastructure.Logging;
-using WorkiSiteWeb.Infrastructure.Email;
+using Worki.Web.Infrastructure.Membership;
+using Worki.Web.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Email;
 using System.Collections.Generic;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
 	[Authorize(Roles = MiscHelpers.AdminRole)]
     public partial class AdminController : Controller

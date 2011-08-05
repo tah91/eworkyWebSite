@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Web;
 using log4net;
 using log4net.Config;
-using WorkiSiteWeb.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Logging;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace Logging

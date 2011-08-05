@@ -1,14 +1,14 @@
-﻿@model WorkiSiteWeb.Models.WelcomePeople
+﻿@model Worki.Web.Models.WelcomePeople
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.Admin) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
     <link href="@Url.Content(Links.Content.Admin_css)" rel="stylesheet" type="text/css" />
 }
 
 
 <div class="borderContainer">
-    @RazorHelpers.TitleDiv(WorkiResources.Views.Admin.AdminString.DetailWelcomePeople, "Blue")
+    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.DetailWelcomePeople, "Blue")
     
     <div class="contactDiv">
         <div class="login-account">
@@ -16,7 +16,7 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                            @WorkiResources.Models.Contact.Contact.Email
+                            @Worki.Resources.Models.Contact.Contact.Email
                         </div>
                     </td>
                     <td>
@@ -28,7 +28,7 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                            @WorkiResources.Views.Admin.AdminString.Localisation
+                            @Worki.Resources.Views.Admin.AdminString.Localisation
                         </div>
                     </td>
                     <td>
@@ -40,7 +40,7 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                            @WorkiResources.Views.Admin.AdminString.Description
+                            @Worki.Resources.Views.Admin.AdminString.Description
                         </div>
                     </td>
                     <td>
@@ -52,7 +52,7 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                            @WorkiResources.Views.Admin.AdminString.LocalisationPicture
+                            @Worki.Resources.Views.Admin.AdminString.LocalisationPicture
                         </div>
                     </td>
                     <td>
@@ -67,6 +67,6 @@
 </div>
 
 <div>
-    @Html.ActionLink(@WorkiResources.Views.Admin.AdminString.Edit, MVC.Admin.EditWelcomePeople(Model.Id)) |
-    @Html.ActionLink(@WorkiResources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexWelcomePeople())
+    @Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.Edit, MVC.Admin.EditWelcomePeople(Model.Id)) |
+    @Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexWelcomePeople())
 </div>

@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 
-namespace WorkiSiteWeb.Helpers
+namespace Worki.Web.Helpers
 {
     public static class CaptchaHelper
     {

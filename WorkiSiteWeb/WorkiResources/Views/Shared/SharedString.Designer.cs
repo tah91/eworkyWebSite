@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Views.Shared {
+namespace Worki.Resources.Views.Shared {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Views.Shared {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Views.Shared.SharedString", typeof(SharedString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Shared.SharedString", typeof(SharedString).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

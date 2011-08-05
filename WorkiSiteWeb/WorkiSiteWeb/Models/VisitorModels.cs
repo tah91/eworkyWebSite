@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using WorkiSiteWeb.Infrastructure;
+using Worki.Web.Infrastructure;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
 	[MetadataType(typeof(Visitor_Validation))]
 	public partial class Visitor
@@ -30,9 +30,9 @@ namespace WorkiSiteWeb.Models
 	[Bind(Exclude = "Id")]
 	public class Visitor_Validation
 	{
-		[StringLength(100, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
-		[Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(WorkiResources.Validation.ValidationString))]
+		[StringLength(100, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Email { get; set; }
 	}
 }

@@ -1,4 +1,4 @@
-﻿@model WorkiSiteWeb.Models.LocalisationFormViewModel
+﻿@model Worki.Web.Models.LocalisationFormViewModel
            
 @using (Html.BeginForm(MVC.Localisation.ActionNames.Edit, MVC.Localisation.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "localisationEditForm" }))
 {
@@ -9,7 +9,7 @@
 
     <div class="localisationDataEdition dataEdition float-left">
         <div class="generalInfos">
-        <h3 class="blue">@WorkiResources.Views.Localisation.LocalisationFormString.GlobalInformations</h3> <span class="titleDesc">&nbsp;&nbsp;(<span class="blue">*</span>@WorkiResources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
+        <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3> <span class="titleDesc">&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
         <table class="generalInfosTable editionTable">
             <tr>
                 <td>
@@ -47,7 +47,7 @@
             <tr>
                 <td>
                     <div class="editor-label">
-                        @Html.Label(WorkiResources.Views.Localisation.LocalisationFormString.Offers)<span class="blue">*</span>
+                        @Html.Label(Worki.Resources.Views.Localisation.LocalisationFormString.Offers)<span class="blue">*</span>
                     </div>
                 </td>
                 <td id="offerContainer">
@@ -143,7 +143,7 @@
                 </td>
                 <td>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Localisation.Name, new { placeholder = WorkiResources.Views.Localisation.LocalisationFormString.PlacesExample })
+                        @Html.TextBoxFor(model => model.Localisation.Name, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.PlacesExample })
                         @Html.ValidationMessage("Name", "")
                     </div>
                 </td>
@@ -283,10 +283,10 @@
     </div>
 
 <div class="editPlace float-right borderRadius">
-    <h3 class="orange">@WorkiResources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
-    <span class="titleDesc" style="display:block">@WorkiResources.Views.Localisation.LocalisationFormString.RefineLocation</span>
+    <h3 class="orange">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
+    <span class="titleDesc" style="display:block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
     <div id="editMapDiv"></div>
-    <button class="resetPosBtn" type="button" id="resetPos">@WorkiResources.Views.Localisation.LocalisationFormString.ResetPosition</button>
+    <button class="resetPosBtn" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
 </div>
 
 <p>
@@ -299,10 +299,10 @@
 
 <div class="editAllservices dataEdition">
     <div class="freeAreaType">
-        <h3 class="blue">@WorkiResources.Models.Localisation.LocalisationFeatures.FreeArea</h3>
+        <h3 class="blue">@Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea</h3>
         <div class="serviceContainer">
             <div class="subserviceContainer float-left">
-                <h4>@WorkiResources.Views.Localisation.LocalisationFormString.AvoidPeriods</h4>
+                <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods</h4>
                 <ul>
                     <li>
                         @Html.FeatureChecboxLabel(Model.Localisation, Feature.AvoidMorning, FeatureType.General)
@@ -319,7 +319,7 @@
                 </ul>
             </div>
             <div class="subserviceContainer float-left">
-                <h4>@WorkiResources.Views.Localisation.LocalisationFormString.Tariffs</h4>
+                <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Tariffs</h4>
                 <ul>
                     <li>
                         <div class="coffeePrice editor-label">
@@ -334,10 +334,10 @@
         </div>
     </div>
 
-    <h3 class="blue">@WorkiResources.Views.Localisation.LocalisationFormString.PlaceDetails</h3>
+    <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.PlaceDetails</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.Facilities</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Handicap, FeatureType.General)
@@ -363,7 +363,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.Comfort</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Comfort</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Coffee, FeatureType.General)
@@ -396,7 +396,7 @@
     <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.WorkingPlace]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Domiciliation, FeatureType.WorkingPlace)
@@ -419,7 +419,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.UserServices</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.UserServices</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Concierge, FeatureType.WorkingPlace)
@@ -450,7 +450,7 @@
     <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.MeetingRoom]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room2_7, FeatureType.MeetingRoom)
@@ -490,7 +490,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.Services</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Services</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Drinks, FeatureType.MeetingRoom)
@@ -506,7 +506,7 @@
     <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.SeminarRoom]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room20_100, FeatureType.SeminarRoom)
@@ -523,7 +523,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.Facilities</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Scene, FeatureType.SeminarRoom)
@@ -537,7 +537,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.Services</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Services</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Welcoming, FeatureType.SeminarRoom)
@@ -565,7 +565,7 @@
     <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.VisioRoom]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room1_4, FeatureType.VisioRoom)
@@ -579,7 +579,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.ProposedTechnology</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProposedTechnology</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Visio, FeatureType.VisioRoom)
@@ -593,7 +593,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>@WorkiResources.Views.Localisation.LocalisationFormString.EquipementsServices</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.EquipementsServices</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Paperboard, FeatureType.VisioRoom)
@@ -614,7 +614,7 @@
     </div>
     </div>
 
-    <h3 class="blue">@WorkiResources.Views.Localisation.LocalisationFormString.Access</h3>
+    <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
     <table class="generalInfosTable editionTable">
         <tr>
             <td>
@@ -624,7 +624,7 @@
             </td>
             <td>
                 <div class="editor-field">
-                    @Html.TextBoxFor(model => model.Localisation.PublicTransportation, new { placeholder = WorkiResources.Views.Localisation.LocalisationFormString.SubwayExample })
+                    @Html.TextBoxFor(model => model.Localisation.PublicTransportation, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.SubwayExample })
                     @Html.ValidationMessage("PublicTransportation", "")
                 </div>
             </td>
@@ -637,7 +637,7 @@
             </td>
             <td>
                 <div class="editor-field">
-                    @Html.TextBoxFor(model => model.Localisation.Station, new { placeholder = WorkiResources.Views.Localisation.LocalisationFormString.SncfExample })
+                    @Html.TextBoxFor(model => model.Localisation.Station, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.SncfExample })
                     @Html.ValidationMessage("Station", "")
                 </div>
             </td>
@@ -650,14 +650,14 @@
             </td>
             <td>
                 <div class="editor-field">
-                    @Html.TextBoxFor(model => model.Localisation.RoadAccess, new { placeholder = WorkiResources.Views.Localisation.LocalisationFormString.RoadExample })
+                    @Html.TextBoxFor(model => model.Localisation.RoadAccess, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.RoadExample })
                     @Html.ValidationMessage("RoadAccess", "")
                 </div>
             </td>
         </tr>
     </table>
 
-    <h3 class="blue">@WorkiResources.Views.Shared.SharedString.Hourly</h3>
+    <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Hourly</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
             <ul>
@@ -677,7 +677,7 @@
         @{var frenchCulture = System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR"); }
         <tr>
             <td>
-                @WorkiResources.Views.Localisation.LocalisationFormString.Monday
+                @Worki.Resources.Views.Localisation.LocalisationFormString.Monday
             </td>
             <td>
                 <div class="editor-field" title="Entrer une heure au format hh:mm, par exemple: 9:30">
@@ -707,7 +707,7 @@
         </tr>
         <tr>
             <td>
-                @WorkiResources.Views.Localisation.LocalisationFormString.Tuesday
+                @Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday
             </td>
             <td>
                 <div class="editor-field">
@@ -736,7 +736,7 @@
         </tr>
         <tr>
             <td>
-                @WorkiResources.Views.Localisation.LocalisationFormString.Wednesday
+                @Worki.Resources.Views.Localisation.LocalisationFormString.Wednesday
             </td>
             <td>
                 <div class="editor-field">
@@ -765,7 +765,7 @@
         </tr>
         <tr>
             <td>
-                @WorkiResources.Views.Localisation.LocalisationFormString.Thursday
+                @Worki.Resources.Views.Localisation.LocalisationFormString.Thursday
             </td>
             <td>
                 <div class="editor-field">
@@ -794,7 +794,7 @@
         </tr>
         <tr>
             <td>
-                @WorkiResources.Views.Localisation.LocalisationFormString.Friday
+                @Worki.Resources.Views.Localisation.LocalisationFormString.Friday
             </td>
             <td>
                 <div class="editor-field">
@@ -823,7 +823,7 @@
         </tr>
         <tr>
             <td>
-                @WorkiResources.Views.Localisation.LocalisationFormString.Saturday
+                @Worki.Resources.Views.Localisation.LocalisationFormString.Saturday
             </td>
             <td>
                 <div class="editor-field">
@@ -852,7 +852,7 @@
         </tr>
         <tr>
             <td>
-                @WorkiResources.Views.Localisation.LocalisationFormString.Sunday
+                @Worki.Resources.Views.Localisation.LocalisationFormString.Sunday
             </td>
             <td>
                 <div class="editor-field">

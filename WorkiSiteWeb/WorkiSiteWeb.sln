@@ -1,33 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkiSiteWeb", "WorkiSiteWeb\WorkiSiteWeb.csproj", "{F2462748-E1E5-415A-9299-C28B6499ABD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worki.Web", "WorkiSiteWeb\Worki.Web.csproj", "{F2462748-E1E5-415A-9299-C28B6499ABD5}"
 EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WorkiAzureService", "WorkiAzureService\WorkiAzureService.ccproj", "{A751FC50-A160-43A0-970B-3639FA5EDDA6}"
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Worki.AzureService", "WorkiAzureService\Worki.AzureService.ccproj", "{A751FC50-A160-43A0-970B-3639FA5EDDA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkiSpecFlow", "WorkiSpecFlow\WorkiSpecFlow.csproj", "{36357B79-2730-47BF-AA2F-45EFED00BD81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worki.SpecFlow", "WorkiSpecFlow\Worki.SpecFlow.csproj", "{36357B79-2730-47BF-AA2F-45EFED00BD81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkiResources", "WorkiResources\WorkiResources.csproj", "{54441744-36D7-4CD6-A5B3-372A217841B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worki.Resources", "WorkiResources\Worki.Resources.csproj", "{54441744-36D7-4CD6-A5B3-372A217841B0}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://xps-pc:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = WorkiSiteWeb\\WorkiSiteWeb.csproj
-		SccProjectName1 = WorkiSiteWeb
-		SccLocalPath1 = WorkiSiteWeb
-		SccProjectUniqueName2 = WorkiAzureService\\WorkiAzureService.ccproj
-		SccProjectName2 = WorkiAzureService
-		SccLocalPath2 = WorkiAzureService
-		SccProjectUniqueName3 = WorkiSpecFlow\\WorkiSpecFlow.csproj
-		SccProjectName3 = WorkiSpecFlow
-		SccLocalPath3 = WorkiSpecFlow
-		SccProjectUniqueName4 = WorkiResources\\WorkiResources.csproj
-		SccProjectName4 = WorkiResources
-		SccLocalPath4 = WorkiResources
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Azure|Any CPU = Azure|Any CPU
 		AzureTest|Any CPU = AzureTest|Any CPU

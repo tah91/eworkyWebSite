@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Infrastructure.Logging;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     public class GroupRepository : RepositoryBase<Group>, IGroupRepository
     {

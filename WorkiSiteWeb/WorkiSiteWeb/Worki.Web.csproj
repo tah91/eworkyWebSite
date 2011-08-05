@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{e53f8fea-eae0-44a6-8774-ffd645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WorkiSiteWeb</RootNamespace>
-    <AssemblyName>WorkiSiteWeb</AssemblyName>
+    <RootNamespace>Worki.Web</RootNamespace>
+    <AssemblyName>Worki.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <TargetFrameworkProfile />
@@ -51,7 +51,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
-    <CodeAnalysisLogFile>bin\WorkiSiteWeb.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>bin\Worki.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
@@ -74,7 +74,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
-    <CodeAnalysisLogFile>bin\WorkiSiteWeb.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>bin\Worki.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
@@ -630,9 +630,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WorkiResources\WorkiResources.csproj">
+    <ProjectReference Include="..\WorkiResources\Worki.Resources.csproj">
       <Project>{54441744-36D7-4CD6-A5B3-372A217841B0}</Project>
-      <Name>WorkiResources</Name>
+      <Name>Worki.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -658,7 +658,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>9069</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/WorkiSiteWeb</IISUrl>
+          <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

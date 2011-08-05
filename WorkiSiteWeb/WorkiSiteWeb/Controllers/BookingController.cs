@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WorkiSiteWeb.Models;
-using WorkiSiteWeb.Helpers;
-using WorkiSiteWeb.Infrastructure.Email;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Infrastructure.Logging;
+using Worki.Web.Models;
+using Worki.Web.Helpers;
+using Worki.Web.Infrastructure.Email;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Infrastructure.Logging;
 using System.Web.Security;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
 	public partial class BookingController : Controller
 	{
@@ -77,8 +77,8 @@ namespace WorkiSiteWeb.Controllers
 				});
 
 				//send mail to team
-				var subject = WorkiResources.Views.Booking.BookingString.BookingMailSubject;
-				var content = string.Format(WorkiResources.Views.Booking.BookingString.BookingMailBody,
+				var subject = Worki.Resources.Views.Booking.BookingString.BookingMailSubject;
+				var content = string.Format(Worki.Resources.Views.Booking.BookingString.BookingMailBody,
 											string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
 											formData.PhoneNumber,
 											member.Email,
@@ -173,8 +173,8 @@ namespace WorkiSiteWeb.Controllers
 				});
 				//send email
 				var booking = _BookingRepository.Get(id);
-				var subject = WorkiResources.Views.Booking.BookingString.HandleMailSubject;
-				var content = string.Format(WorkiResources.Views.Booking.BookingString.HandleMailBody,
+				var subject = Worki.Resources.Views.Booking.BookingString.HandleMailSubject;
+				var content = string.Format(Worki.Resources.Views.Booking.BookingString.HandleMailBody,
 											Localisation.GetOfferType(booking.Offer),
 											string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
 											string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
@@ -209,8 +209,8 @@ namespace WorkiSiteWeb.Controllers
 				});
 				//send email
 				var booking = _BookingRepository.Get(id);
-				var subject = WorkiResources.Views.Booking.BookingString.ConfirmMailSubject;
-				var content = string.Format(WorkiResources.Views.Booking.BookingString.ConfirmMailBody,
+				var subject = Worki.Resources.Views.Booking.BookingString.ConfirmMailSubject;
+				var content = string.Format(Worki.Resources.Views.Booking.BookingString.ConfirmMailBody,
 											Localisation.GetOfferType(booking.Offer),
 											string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
 											string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),

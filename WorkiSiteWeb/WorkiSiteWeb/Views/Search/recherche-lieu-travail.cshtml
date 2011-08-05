@@ -1,8 +1,8 @@
-﻿@model WorkiSiteWeb.Models.SearchCriteriaFormViewModel
+﻿@model Worki.Web.Models.SearchCriteriaFormViewModel
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(WorkiResources.Views.Search.SearchString.Search)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Search.SearchString.Search)</title>
     <link href="@Url.Content(Links.Content.Index_css) " rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.skin_css) " rel="stylesheet" type="text/css"  />
     <link href="@Url.Content(Links.Content.Search_css) " rel="stylesheet" type="text/css" />
@@ -20,26 +20,26 @@
                 switch (Model.DirectAccessType)
                 {
                     case eDirectAccessType.eStudent:
-						titleName = WorkiResources.Models.Profile.Profile.Student;
+						titleName = Worki.Resources.Models.Profile.Profile.Student;
                         break;
                     case eDirectAccessType.eTeleworker:
-						titleName = WorkiResources.Models.Profile.Profile.Teleworker;
+						titleName = Worki.Resources.Models.Profile.Profile.Teleworker;
                         break;
                     case eDirectAccessType.eStartUp:
-                        titleName = WorkiResources.Views.Search.SearchString.Entrepreneur;
+                        titleName = Worki.Resources.Views.Search.SearchString.Entrepreneur;
                         break;
                     case eDirectAccessType.eNomade:
-                        titleName = WorkiResources.Views.Search.SearchString.Nomad;
+                        titleName = Worki.Resources.Views.Search.SearchString.Nomad;
                         break;
                     case eDirectAccessType.eIndependant:
-                        titleName = WorkiResources.Views.Search.SearchString.Independant;
+                        titleName = Worki.Resources.Views.Search.SearchString.Independant;
                         break;
                     case eDirectAccessType.eEntreprise:
-						titleName = WorkiResources.Models.Profile.Profile.Company;
+						titleName = Worki.Resources.Models.Profile.Profile.Company;
                         break;
                     case eDirectAccessType.eNone:
                     default:
-                        titleName = WorkiResources.Views.Search.SearchString.Search;
+                        titleName = Worki.Resources.Views.Search.SearchString.Search;
                         break;
                 }
             }
@@ -51,8 +51,8 @@
                 @Html.AntiForgeryToken()
                 <div class="localisationField">
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = WorkiResources.Views.Search.SearchString.PlaceExamples })
-                        @Html.ValidationMessage(WorkiResources.Views.Home.HomeString.Location, "")
+                        @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
+                        @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
                     </div>
 
                     <p>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="searchOptions">
                         <div id="searchOption0">
-                            <p class="green">@WorkiResources.Views.Search.SearchString.Features</p>
+                            <p class="green">@Worki.Resources.Views.Search.SearchString.Features</p>
                             <div id="searchOptionToReplace">
                             </div>
                         </div>                                       
@@ -92,7 +92,7 @@
                    {
                 <div class="searchBottom searchCriterias" style="margin-bottom:10px;">
                     <div class="localisationTypes searchOptions float-left">
-                        <p class="green">@WorkiResources.Views.Search.SearchString.KindOfLocation</p>
+                        <p class="green">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
                         <div class="float-left">
                             <div class="editor-field">
                             @Html.CheckBoxFor(model => model.Criteria.Everything)
@@ -154,11 +154,11 @@
                     <div class="changeSeachType float-left">                        
                     @if (Model.SearchType == eSearchType.ePerOffer)
                     {
-                        @Html.ActionLink(WorkiResources.Views.Search.SearchString.SearchByPlaceType, MVC.Search.FullSearchPerType())
+                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Search.FullSearchPerType())
                     }
                     else
                     {
-                        @Html.ActionLink(WorkiResources.Views.Search.SearchString.SearchByServiceType, MVC.Search.FullSearch())
+                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByServiceType, MVC.Search.FullSearch())
                     }
                     </div>
                     <div class="submitSearchContainer  float-right">

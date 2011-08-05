@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WorkiSiteWeb.Infrastructure.Email
+namespace Worki.Web.Infrastructure.Email
 {
     public interface IEmailService
     {

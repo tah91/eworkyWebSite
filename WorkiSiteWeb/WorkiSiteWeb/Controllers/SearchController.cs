@@ -4,13 +4,13 @@ using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
-using WorkiSiteWeb.Helpers;
-using WorkiSiteWeb.Infrastructure;
-using WorkiSiteWeb.Infrastructure.Logging;
-using WorkiSiteWeb.Infrastructure.Repository;
-using WorkiSiteWeb.Models;
+using Worki.Web.Helpers;
+using Worki.Web.Infrastructure;
+using Worki.Web.Infrastructure.Logging;
+using Worki.Web.Infrastructure.Repository;
+using Worki.Web.Models;
 
-namespace WorkiSiteWeb.Controllers
+namespace Worki.Web.Controllers
 {
     [HandleError]
     [ValidateOnlyIncomingValues]
@@ -180,7 +180,7 @@ namespace WorkiSiteWeb.Controllers
                 catch (Exception ex)
                 {
                     _Logger.Error("FullSearch", ex);
-                    ModelState.AddModelError("", WorkiResources.Validation.ValidationString.CheckCriterias);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
                 }
             }
             return View(new SearchCriteriaFormViewModel(criteria));

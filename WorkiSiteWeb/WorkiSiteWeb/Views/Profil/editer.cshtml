@@ -1,15 +1,15 @@
-﻿@model WorkiSiteWeb.Models.ProfilFormViewModel
+﻿@model Worki.Web.Models.ProfilFormViewModel
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(WorkiResources.Views.Profile.ProfileString.EditProfile)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Profile.ProfileString.EditProfile)</title>
     <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.Profil_css) " rel="stylesheet" type="text/css" />
 }
 
 
 <div class="borderContainer">
-    @RazorHelpers.TitleDiv(WorkiResources.Views.Profile.ProfileString.EditProfile, "Blue")
+    @RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.EditProfile, "Blue")
     @using (Html.BeginForm(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id="profilEditForm" }))
     {
         @Html.AntiForgeryToken()
@@ -20,7 +20,7 @@
             <input type="file" name="Avatar" accept="image/*"/>
         </div>
         <div class="profilData float-left">
-			<h3 class="blue">@WorkiResources.Views.Profile.ProfileString.PersonalInfo</h3>
+			<h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.PersonalInfo</h3>
             <table>
                 <tr>
                     <td>
@@ -49,7 +49,7 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                            @WorkiResources.Models.Contact.Contact.LastName<span class="blue">*</span>
+                            @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
                         </div>
                     </td>
                     <td>
@@ -61,7 +61,7 @@
                 <tr>
                     <td>
                         <div class="editor-label">
-                            @WorkiResources.Models.Contact.Contact.FirstName<span class="blue">*</span>
+                            @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
                         </div>
                     </td>
                     <td>
@@ -143,7 +143,7 @@
                     </td>
                 </tr>
 			</table>
-			<h3 class="blue">@WorkiResources.Views.Profile.ProfileString.ProfessionalInfo</h3>
+			<h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.ProfessionalInfo</h3>
 			<table>
                 <tr>
                     <td>
@@ -206,7 +206,7 @@
                     </td>
                 </tr>
 			</table>
-			<h3 class="blue">@WorkiResources.Views.Profile.ProfileString.SocialNetwork</h3>
+			<h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.SocialNetwork</h3>
 			<table>
                 <tr>
                     <td>

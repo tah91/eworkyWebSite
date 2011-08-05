@@ -1,21 +1,21 @@
-﻿@model WorkiSiteWeb.Models.RegisterModel
+﻿@model Worki.Web.Models.RegisterModel
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Views.Account.AccountString.Inscription) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Account.AccountString.Inscription) </title>
     <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css" />
 }
 
     <div class="borderContainer">
-        @RazorHelpers.TitleDiv(WorkiResources.Views.Account.AccountString.EWorkyRegister, "Blue")
+        @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.EWorkyRegister, "Blue")
 
 
         <div class="login-account">
             <div class="registerDesc float-right">
-            @WorkiResources.Views.Account.AccountString.FillInscription<br />
-            @WorkiResources.Views.Account.AccountString.QualityOfProfils<br /> 
-            @WorkiResources.Views.Account.AccountString.SocialNetworkSoon<br /><br />
-            @WorkiResources.Views.Account.AccountString.RequiredFields
+            @Worki.Resources.Views.Account.AccountString.FillInscription<br />
+            @Worki.Resources.Views.Account.AccountString.QualityOfProfils<br /> 
+            @Worki.Resources.Views.Account.AccountString.SocialNetworkSoon<br /><br />
+            @Worki.Resources.Views.Account.AccountString.RequiredFields
             </div>
             <div class="clear">
             </div>
@@ -52,7 +52,7 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @WorkiResources.Models.Contact.Contact.LastName<span class="blue">*</span>
+                                    @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
@@ -64,7 +64,7 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @WorkiResources.Models.Contact.Contact.FirstName<span class="blue">*</span>
+                                    @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
@@ -112,7 +112,7 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @WorkiResources.Views.Account.AccountString.EnterFollowingLetters
+                                    @Worki.Resources.Views.Account.AccountString.EnterFollowingLetters
                                 </div>
                             </td>
                             <td>
@@ -124,7 +124,7 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @Html.Label(WorkiResources.Views.Account.AccountString.ValidationLetter)<span class="blue">*</span>
+                                    @Html.Label(Worki.Resources.Views.Account.AccountString.ValidationLetter)<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
@@ -143,7 +143,7 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.CheckBoxFor(m => m.AcceptCGU)
-                                    @Html.Raw(String.Format(WorkiResources.Views.Account.AccountString.AgreeWithCGU,  Html.ActionLink("CGU", MVC.Home.CGU())))
+                                    @Html.Raw(String.Format(Worki.Resources.Views.Account.AccountString.AgreeWithCGU,  Html.ActionLink("CGU", MVC.Home.CGU())))
                                 </div>
                             </td>
                         </tr>

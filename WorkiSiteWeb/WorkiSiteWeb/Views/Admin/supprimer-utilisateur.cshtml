@@ -1,18 +1,18 @@
-﻿@model WorkiSiteWeb.Models.User
+﻿@model Worki.Web.Models.User
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(WorkiResources.Views.Admin.AdminString.ConfirmDelete+Model.UserName) </title>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.ConfirmDelete+Model.UserName) </title>
 }
 
 
 
     <h2>
-        @WorkiResources.Views.Admin.AdminString.ConfirmDelete
+        @Worki.Resources.Views.Admin.AdminString.ConfirmDelete
     </h2>
     <div>
         <p>
-        @WorkiResources.Views.Admin.AdminString.ConfirmDeleteUser
+        @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteUser
         <i> @Model.UserName ? </i> </p>
     </div>
     @using (Html.BeginForm(new { returnUrl = TempData["returnUrl"] }))

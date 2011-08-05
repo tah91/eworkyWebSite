@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WorkiSiteWeb.Models
+namespace Worki.Web.Models
 {
     public class PagingInfo
     {

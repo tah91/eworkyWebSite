@@ -1,17 +1,17 @@
-﻿@model WorkiSiteWeb.Models.ResetPasswordModel
+﻿@model Worki.Web.Models.ResetPasswordModel
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(WorkiResources.Models.Account.AccountModels.ResetThePassword)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Models.Account.AccountModels.ResetThePassword)</title>
 }
 
 
     <div class="borderContainer">
-        @RazorHelpers.TitleDiv(WorkiResources.Models.Account.AccountModels.ResetThePassword, "Blue")
+        @RazorHelpers.TitleDiv(Worki.Resources.Models.Account.AccountModels.ResetThePassword, "Blue")
 
         <div class="login-account">
             <div class="loginDesc">
-            @WorkiResources.Views.Account.AccountString.SetMailInscription
+            @Worki.Resources.Views.Account.AccountString.SetMailInscription
             </div>
             @using (Html.BeginForm()) { 
                 @Html.AntiForgeryToken()

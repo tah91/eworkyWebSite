@@ -6,7 +6,7 @@ using TechTalk.SpecFlow;
 using SHDocVw;
 using WatiN.Core;
 using NUnit.Framework;
-namespace WorkiSpecFlow
+namespace Worki.SpecFlow
 {
     [Binding]
     class AjoutSteps

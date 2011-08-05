@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkiResources.Models.Booking {
+namespace Worki.Resources.Models.Booking {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkiResources.Models.Booking {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkiResources.Models.Booking.Booking", typeof(Booking).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Models.Booking.Booking", typeof(Booking).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
