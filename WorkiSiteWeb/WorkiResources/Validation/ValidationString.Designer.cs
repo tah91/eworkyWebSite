@@ -214,7 +214,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champ &quot;{0} &quot; doit avoir maximum {1} caractères..
+        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit faire moins de {1} caractères..
         /// </summary>
         public static string MaxLength {
             get {
@@ -223,7 +223,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs {0} doit faire moins de {1} caractères..
+        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit faire plus de {1} caractères..
         /// </summary>
         public static string MinLength {
             get {
@@ -232,11 +232,11 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; doit comporter au moins {1} caractères..
+        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit faire entre {2} et {1} caractères..
         /// </summary>
-        public static string MinLetter {
+        public static string MinMaxLength {
             get {
-                return ResourceManager.GetString("MinLetter", resourceCulture);
+                return ResourceManager.GetString("MinMaxLength", resourceCulture);
             }
         }
         

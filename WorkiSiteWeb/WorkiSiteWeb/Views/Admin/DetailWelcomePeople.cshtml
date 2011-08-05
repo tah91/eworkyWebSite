@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.WelcomePeople
+﻿@model Worki.Data.Models.WelcomePeople
 
 @section HeadContent
 {
@@ -57,7 +57,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;<img class="welcomePeopleMaxSize" src="@MiscHelpers.GetUserImagePath(Model.LocalisationPicture)" alt="plop"/>
+                            &nbsp;&nbsp;&nbsp;<img class="welcomePeopleMaxSize" src="@ControllerHelpers.GetUserImagePath(Model.LocalisationPicture)" alt="plop"/>
                         </div>
                     </td>
                 </tr>

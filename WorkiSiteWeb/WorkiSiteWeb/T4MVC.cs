@@ -684,7 +684,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult LogOn(Worki.Web.Models.LogOnModel model, string returnUrl) {
+        public override System.Web.Mvc.ActionResult LogOn(Worki.Data.Models.LogOnModel model, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
             callInfo.RouteValueDictionary.Add("model", model);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
@@ -701,7 +701,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Register(Worki.Web.Models.RegisterModel model, string myCaptcha, string attempt) {
+        public override System.Web.Mvc.ActionResult Register(Worki.Data.Models.RegisterModel model, string myCaptcha, string attempt) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
             callInfo.RouteValueDictionary.Add("model", model);
             callInfo.RouteValueDictionary.Add("myCaptcha", myCaptcha);
@@ -728,7 +728,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangePassword(Worki.Web.Models.ChangePasswordModel model) {
+        public override System.Web.Mvc.ActionResult ChangePassword(Worki.Data.Models.ChangePasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
@@ -739,7 +739,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ResetPassword(Worki.Web.Models.ResetPasswordModel model) {
+        public override System.Web.Mvc.ActionResult ResetPassword(Worki.Data.Models.ResetPasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResetPassword);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
@@ -923,7 +923,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DeleteUser(Worki.Web.Models.User user, string confirmButton, string returnUrl) {
+        public override System.Web.Mvc.ActionResult DeleteUser(Worki.Data.Models.User user, string confirmButton, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteUser);
             callInfo.RouteValueDictionary.Add("user", user);
             callInfo.RouteValueDictionary.Add("confirmButton", confirmButton);
@@ -961,7 +961,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateWelcomePeople(Worki.Web.Models.WelcomePeopleFormViewModel formModel) {
+        public override System.Web.Mvc.ActionResult CreateWelcomePeople(Worki.Data.Models.WelcomePeopleFormViewModel formModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateWelcomePeople);
             callInfo.RouteValueDictionary.Add("formModel", formModel);
             return callInfo;
@@ -973,7 +973,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult EditWelcomePeople(int id, Worki.Web.Models.WelcomePeopleFormViewModel formModel) {
+        public override System.Web.Mvc.ActionResult EditWelcomePeople(int id, Worki.Data.Models.WelcomePeopleFormViewModel formModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditWelcomePeople);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formModel", formModel);
@@ -987,7 +987,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DeleteWelcomePeople(Worki.Web.Models.WelcomePeople welcomePeople, string confirmButton) {
+        public override System.Web.Mvc.ActionResult DeleteWelcomePeople(Worki.Data.Models.WelcomePeople welcomePeople, string confirmButton) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteWelcomePeople);
             callInfo.RouteValueDictionary.Add("welcomePeople", welcomePeople);
             callInfo.RouteValueDictionary.Add("confirmButton", confirmButton);
@@ -1098,7 +1098,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Create(int id, Worki.Web.Models.MemberBookingFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Create(int id, Worki.Data.Models.MemberBookingFormViewModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formData", formData);
@@ -1261,7 +1261,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Contact(Worki.Web.Models.Contact contact) {
+        public override System.Web.Mvc.ActionResult Contact(Worki.Data.Models.Contact contact) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Contact);
             callInfo.RouteValueDictionary.Add("contact", contact);
             return callInfo;
@@ -1297,7 +1297,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangeCulture(Worki.Web.Infrastructure.Culture lang, string returnUrl) {
+        public override System.Web.Mvc.ActionResult ChangeCulture(Worki.Infrastructure.Culture lang, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangeCulture);
             callInfo.RouteValueDictionary.Add("lang", lang);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
@@ -1430,7 +1430,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(Worki.Web.Models.Localisation localisation, int? id) {
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Localisation localisation, int? id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("localisation", localisation);
             callInfo.RouteValueDictionary.Add("id", id);
@@ -1469,7 +1469,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult PostComment(int id, Worki.Web.Models.Comment com) {
+        public override System.Web.Mvc.PartialViewResult PostComment(int id, Worki.Data.Models.Comment com) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.PostComment);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("com", com);
@@ -1596,7 +1596,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, Worki.Web.Models.Member member) {
+        public override System.Web.Mvc.ActionResult Edit(int id, Worki.Data.Models.Member member) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("member", member);
@@ -1751,7 +1751,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FullSearch(Worki.Web.Models.SearchCriteria criteria) {
+        public override System.Web.Mvc.ActionResult FullSearch(Worki.Data.Models.SearchCriteria criteria) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
             callInfo.RouteValueDictionary.Add("criteria", criteria);
             return callInfo;
@@ -1822,7 +1822,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Index(Worki.Web.Models.Visitor visitor) {
+        public override System.Web.Mvc.ActionResult Index(Worki.Data.Models.Visitor visitor) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             callInfo.RouteValueDictionary.Add("visitor", visitor);
             return callInfo;

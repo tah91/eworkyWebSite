@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.UserListViewModel
+﻿@model Worki.Data.Models.UserListViewModel
            
 @section HeadContent
 {
@@ -41,29 +41,21 @@
                 { 
                     <tr>
                         <td align="right">
-                            @item.Key.UserName
+                            @item.Key.Username
                         </td>
                         <td align="right">
-							@if (Model.MemberIds.ContainsKey(item.Key.Email))
-							{
-								@Html.ActionLink(item.Key.Email, MVC.Profil.Dashboard(Model.MemberIds[item.Key.Email]))
-							}
-							else
-							{
-								@item.Key.Email
-							}
-                            
+							@Html.ActionLink(item.Key.Email, MVC.Profil.Dashboard(item.Key.MemberId)) 
                         </td>
                         <td align="center">
-                            @Html.CheckBox(item.Key.UserName, item.Value)
+                            @Html.CheckBox(item.Key.Username, item.Value)
                         </td>
                        <td align="right">
                             &nbsp;&nbsp;
-                            @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteUser(item.Key.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                            @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteUser(item.Key.Username, ViewContext.HttpContext.Request.Url.PathAndQuery))
                         </td>
                         <td align="right">
                             &nbsp;&nbsp;
-                            num Point
+                            @item.Key.ComputeScore()
                         </td>
                     </tr>
 				} 

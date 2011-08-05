@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.Localisation
+﻿@model Worki.Data.Models.Localisation
 
 <meta property="og:title" content="@Model.Name" />
 <meta property="og:type" content="article" />
@@ -7,7 +7,7 @@
     var imagePath = string.Empty;
     if (!string.IsNullOrEmpty(Model.GetMainPic()))
     {
-        imagePath = Html.GetFileFullUrl(MiscHelpers.GetUserImagePath(Model.GetMainPic()), false);
+        imagePath = Html.GetFileFullUrl(ControllerHelpers.GetUserImagePath(Model.GetMainPic()), false);
     }
     else
     { 

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Worki.Web.Models;
+using Worki.Infrastructure.Email;
+using Worki.Data.Repository;
+using Worki.Data.Models;
 using Worki.Web.Helpers;
-using Worki.Web.Infrastructure.Email;
-using Worki.Web.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {

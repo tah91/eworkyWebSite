@@ -1,25 +1,23 @@
-﻿@model Worki.Web.Models.User
+﻿@model Worki.Data.Models.User
 
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.ConfirmDelete+Model.UserName) </title>
 }
 
-
-
-    <h2>
-        @Worki.Resources.Views.Admin.AdminString.ConfirmDelete
-    </h2>
-    <div>
-        <p>
-        @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteUser
-        <i> @Model.UserName ? </i> </p>
-    </div>
-    @using (Html.BeginForm(new { returnUrl = TempData["returnUrl"] }))
-    { 
-        @Html.AntiForgeryToken();
-        @Html.HiddenFor(model => model.UserName)
-        <input name="confirmButton" type="submit" value="Supprimer" />
-    } 
+<h2>
+    @Worki.Resources.Views.Admin.AdminString.ConfirmDelete
+</h2>
+<div>
+    <p>
+    @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteUser
+    <i> @Model.UserName ? </i> </p>
+</div>
+@using (Html.BeginForm(new { returnUrl = TempData["returnUrl"] }))
+{ 
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(model => model.UserName)
+    <input name="confirmButton" type="submit" value="Supprimer" />
+} 
 
 

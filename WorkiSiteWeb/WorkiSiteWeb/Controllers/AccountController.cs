@@ -1,27 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Web.Security;
-using Worki.Web.Models;
-using Worki.Web.Infrastructure.Membership;
+using Worki.Data.Models;
+using Worki.Infrastructure.Email;
 /*using DotNetOpenAuth.OpenId.RelyingParty;
 using DotNetOpenAuth.OpenId;
 using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using DotNetOpenAuth.Messaging;*/
-using Worki.Web.Infrastructure.Logging;
+using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
-using Worki.Web.Infrastructure.Repository;
-using Worki.Web.Infrastructure;
-using System.Configuration;
-using System.Globalization;
-using System.Net.Mail;
-using Worki.Web.Infrastructure.Email;
-using System.Text;
+using Worki.Data.Repository;
+using Worki.Memberships;
 
 namespace Worki.Web.Controllers
 {

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using Worki.Data.Models;
+using Worki.Infrastructure;
+using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
-using Worki.Web.Infrastructure;
-using Worki.Web.Infrastructure.Logging;
-using Worki.Web.Infrastructure.Repository;
-using Worki.Web.Models;
+using Worki.Services;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -170,7 +171,7 @@ namespace Worki.Web.Controllers
 					if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
 						continue;
 					var uploadedFileName = this.UploadFile(postedFile);
-					var url = MiscHelpers.GetUserImagePath(uploadedFileName);
+					var url = ControllerHelpers.GetUserImagePath(uploadedFileName);
 					var deleteUrl = urlHelper.Action(MVC.Localisation.DeleteImage(uploadedFileName));
 
 					toRet.Add(new ImageJson
@@ -222,7 +223,7 @@ namespace Worki.Web.Controllers
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 			foreach (var file in filesFromCache.Files)
             {
-                var url = MiscHelpers.GetUserImagePath(file.FileName);
+				var url = ControllerHelpers.GetUserImagePath(file.FileName);
                 var deleteUrl = urlHelper.Action(MVC.Localisation.DeleteImage(file.FileName));
                 toRet.Add(new ImageJson
                 {

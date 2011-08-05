@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.ProfilDashboardModel
+﻿@model Worki.Data.Models.ProfilDashboardModel
 
 @{
 	var tabId = (ProfilDashboardModel.DashboardTab)ViewData[ProfilDashboardModel.TabId];
@@ -25,7 +25,7 @@
             <a href="@Url.Action(MVC.Localisation.Details(loc.ID, ControllerHelpers.GetSeoTitle(loc.Name)))">
                 <div class="localisationTag float-left">
                     <div class="localisationImgDiv borderedImg">
-					@RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(loc.GetMainPic()), loc.Name)
+					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic()), loc.Name)
                     </div>
                     <div class="localisationImgDesc">
                         <span class="bold">@loc.Name</span><br />

@@ -1,9 +1,9 @@
-﻿@model Worki.Web.Models.Localisation
+﻿@model Worki.Data.Models.Localisation
 
 <div class="localisationDetail borderRadius">
     <div class="localisationDetailHead">
         <div class="localisationLogo float-left">
-		@RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.GetLogoPic()), Model.Name)
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetLogoPic()), Model.Name)
         </div>
         <div class="localisationTitle float-left">
             <div class="float-left blue bold">
@@ -71,8 +71,8 @@
                 <div id="gallery">
                     @foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
 					{
-                        <a href="@MiscHelpers.GetUserImagePath(item.FileName)">
-            	            <img title="@Model.Name" alt="@Model.Name" src="@MiscHelpers.GetUserImagePath(item.FileName)"/>
+                        <a href="@ControllerHelpers.GetUserImagePath(item.FileName)">
+            	            <img title="@Model.Name" alt="@Model.Name" src="@ControllerHelpers.GetUserImagePath(item.FileName)"/>
         	            </a>                        
 					}
                 </div>
@@ -224,12 +224,12 @@
 @*            <div class="contentBlock">
                 <h3 class="blue">Recommendé par</h3>
 				<div class="commentAvatar borderedImg float-left">
-				@RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+				@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
 				</div>
 				<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
 				@if (Model.HasFeature(Feature.LocalisationOwner, FeatureType.General))
 				{	 
-					<span>@LocalisationBinder.LocalisationFeatureDict[(int)Feature.LocalisationOwner]</span>
+					<span>@Localisation.LocalisationFeatureDict[(int)Feature.LocalisationOwner]</span>
 				}
 				<div class="clear">
 				</div>

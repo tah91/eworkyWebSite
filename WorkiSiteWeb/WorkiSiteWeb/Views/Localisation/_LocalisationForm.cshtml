@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.LocalisationFormViewModel
+﻿@model Worki.Data.Models.LocalisationFormViewModel
            
 @using (Html.BeginForm(MVC.Localisation.ActionNames.Edit, MVC.Localisation.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "localisationEditForm" }))
 {
@@ -82,7 +82,7 @@
                             </td>
                             <td>
                                 <div class="editor-label">
-                                @Html.LabelFor("Postes de travail professionnels", MiscHelpers.GetFeatureDesc(Feature.Workstation, FeatureType.WorkingPlace))
+                                @Html.LabelFor("Postes de travail professionnels", Localisation.GetFeatureDesc(Feature.Workstation, FeatureType.WorkingPlace))
                                 @*@Html.FeatureLabelFor(Feature.Workstation,FeatureType.WorkingPlace) professionnel*@
                                 </div>
                             </td>
@@ -393,7 +393,7 @@
     </div>
 
     <div class="workingPlaceFeatures">
-    <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.WorkingPlace]</h3>
+    <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.WorkingPlace]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
@@ -447,7 +447,7 @@
     </div>
 
     <div class="meetingRoomFeatures">
-    <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.MeetingRoom]</h3>
+    <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.MeetingRoom]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
@@ -503,7 +503,7 @@
     </div>
 
     <div class="seminarRoomFeatures">
-    <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.SeminarRoom]</h3>
+    <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.SeminarRoom]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
@@ -562,7 +562,7 @@
     </div>
 
     <div class="visioRoomFeatures">
-    <h3 class="blue">@LocalisationBinder.LocalisationFeatureTypes[FeatureType.VisioRoom]</h3>
+    <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.VisioRoom]</h3>
     <div class="serviceContainer">
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>

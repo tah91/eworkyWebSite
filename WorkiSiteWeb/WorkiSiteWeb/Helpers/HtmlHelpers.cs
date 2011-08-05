@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Text;
-using System.Web.Mvc;
-using Worki.Web.Models;
 using System.Globalization;
-using System.Web.Mvc.Html;
-using System.Web;
-using System.Web.Routing;
+using System.Text;
 using System.Text.RegularExpressions;
-using Worki.Web.Infrastructure;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
+using System.Web.Routing;
+using Worki.Data.Models;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Helpers
 {
@@ -122,22 +122,22 @@ namespace Worki.Web.Helpers
 
         public static MvcHtmlString FeatureLabelFor(this HtmlHelper html, Feature value, FeatureType valueType)
         {
-            return html.LabelFor(LocalisationBinder.LocalisationFeatureDict[(int)value], MiscHelpers.GetFeatureDesc(value, valueType));
+			return html.LabelFor(Localisation.LocalisationFeatureDict[(int)value], Localisation.GetFeatureDesc(value, valueType));
         }
 
         public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
         {
-            return html.CheckBox(MiscHelpers.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
+			return html.CheckBox(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
         }
 
         public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType, object htmlAttributes)
         {
-            return html.CheckBox(MiscHelpers.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType), htmlAttributes);
+			return html.CheckBox(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType), htmlAttributes);
         }
 
         public static MvcHtmlString FeatureHidden(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
         {
-            return html.Hidden(MiscHelpers.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
+			return html.Hidden(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
         }
 
         public static MvcHtmlString FeatureChecboxLabel(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)

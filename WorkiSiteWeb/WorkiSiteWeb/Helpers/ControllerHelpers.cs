@@ -1,18 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
-using Worki.Web.Models;
-using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
-using System.Configuration;
-using Microsoft.WindowsAzure.StorageClient;
-using Microsoft.WindowsAzure;
-using Worki.Web.Infrastructure.Email;
-using System.Security.Principal;
 using System.Web.Security;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.StorageClient;
+using Worki.Data.Models;
+using Worki.Infrastructure.Email;
+using Worki.Infrastructure.Helpers;
+using Worki.Service;
 
 namespace Worki.Web.Helpers
 {
@@ -231,7 +233,7 @@ namespace Worki.Web.Helpers
         {
             var userImgFolder = ConfigurationManager.AppSettings["UserImageFolder"];
             var destinationFolder = controller.Server.MapPath(userImgFolder);
-            return MiscHelpers.UploadFile(postedFile, destinationFolder);
+            return UploadFile(postedFile, destinationFolder);
         }
 
 		/// <summary>
@@ -260,6 +262,110 @@ namespace Worki.Web.Helpers
 				return 0;
 			var ticket = formIdent.Ticket;
 			return Member.GetIdFromUserData(ticket.UserData);
+		}
+
+		static CloudBlobContainer _BlobContainer = null;
+
+		public static CloudBlobContainer GetBlobContainer(string containerName)
+		{
+			if (_BlobContainer != null)
+				return _BlobContainer;
+
+			if (string.IsNullOrEmpty(containerName))
+				return null;
+			var isDevStore = bool.Parse(ConfigurationManager.AppSettings["IsDevStorage"]);
+			var blobStorageAccount = isDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(MiscHelpers.DataConnectionString);
+			var blobClient = blobStorageAccount.CreateCloudBlobClient();
+			var blobContainer = blobClient.GetContainerReference(containerName);
+			blobContainer.CreateIfNotExist();
+			BlobContainerPermissions blobPermission = new BlobContainerPermissions();
+			blobPermission.PublicAccess = BlobContainerPublicAccessType.Container;
+			blobContainer.SetPermissions(blobPermission);
+
+			_BlobContainer = blobContainer;
+			return blobContainer;
+		}
+
+		public const char PathSeparator = '/';
+		/// <summary>
+		/// Get the path of an image on a server
+		/// if on azure, get the corresponding url
+		/// </summary>
+		/// <param name="image">name of the image</param>
+		/// <returns>full path of the image</returns>
+		public static string GetUserImagePath(string image)
+		{
+			if (string.IsNullOrEmpty(image))
+				return string.Empty;
+			var isAzure = RoleEnvironment.IsAvailable;
+
+			if (isAzure)
+			{
+				var blobContainerName = ConfigurationManager.AppSettings["AzureBlobContainer"];
+				var blobContainer = GetBlobContainer(blobContainerName);
+				if (blobContainer == null)
+					return string.Empty;
+				var blob = blobContainer.GetBlobReference(image);
+				return blob.Uri.AbsoluteUri;
+			}
+			else
+			{
+				var userImgFolder = ConfigurationManager.AppSettings["UserImageFolder"];
+				return userImgFolder + PathSeparator + image;
+			}
+		}
+
+		/// <summary>
+		/// Upload file to server (file system or blob if azure)
+		/// and return the name of the file created
+		/// </summary>
+		/// <param name="file">file to upload</param>
+		/// <param name="destinationFolder">destination folder</param>
+		/// <returns>the file name</returns>
+		public static string UploadFile(HttpPostedFileBase file, string destinationFolder)
+		{
+			if (file == null)
+				return string.Empty;
+			var ext = Path.GetExtension(file.FileName);
+			var nameToSave = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.Now) + ext;
+			var path = destinationFolder + PathSeparator + nameToSave;
+			var isAzure = RoleEnvironment.IsAvailable;
+			var maxWidth = int.Parse(ConfigurationManager.AppSettings["UploadFileMaxWidth"]);
+			var qualityEncoder = Encoder.Quality;
+			var quality = 100;
+			var ratio = new EncoderParameter(qualityEncoder, quality);
+			var codecParams = new EncoderParameters(1);
+			codecParams.Param[0] = ratio;
+			var jpegCodecInfo = ImageCodecInfo.GetImageEncoders().Where(codec => codec.MimeType == "image/jpeg").First();
+			using (var fs = file.InputStream)
+			{
+				using (var bmp = MiscHelpers.Resize(fs, maxWidth, maxWidth))
+				{
+					if (isAzure)
+					{
+						var blobContainerName = ConfigurationManager.AppSettings["AzureBlobContainer"];
+						var blobContainer = GetBlobContainer(blobContainerName);
+						if (blobContainer == null)
+							return string.Empty;
+						var blob = blobContainer.GetBlobReference(nameToSave);
+
+						var ms = new MemoryStream();
+						bmp.Save(ms, jpegCodecInfo, codecParams);
+						ms.Seek(0, SeekOrigin.Begin);
+						blob.UploadFromStream(ms);
+						blob.Metadata["FileName"] = nameToSave;
+						blob.Metadata["FileExtension"] = ext;
+						blob.SetMetadata();
+						blob.Properties.ContentType = file.ContentType;
+						blob.SetProperties();
+					}
+					else
+					{
+						bmp.Save(path, jpegCodecInfo, codecParams);
+					}
+				}
+			}
+			return nameToSave;
 		}
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.SearchSingleResultViewModel
+﻿@model Worki.Data.Models.SearchSingleResultViewModel
 
 <div class="contentBlock resultItem">
     @{  RouteValueDictionary  rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
@@ -13,7 +13,7 @@
     @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))
     {
 		<a href="@ViewData["link"]">
-		@RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.Localisation.GetMainPic()), Model.Localisation.Name)
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic()), Model.Localisation.Name)
         </a>
     }
     </div>

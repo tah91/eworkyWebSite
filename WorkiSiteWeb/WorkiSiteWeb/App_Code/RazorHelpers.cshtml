@@ -1,4 +1,4 @@
-﻿@using Worki.Web.Models
+﻿@using Worki.Data.Models
 
 @helper TitleDiv(string title, string color, bool clear = true)
 {
@@ -35,7 +35,7 @@
 
 @helper FeatureTag(Feature feature)
 	{
-    @LocalisationBinder.LocalisationFeatureDict[(int)feature]
+    @Localisation.LocalisationFeatureDict[(int)feature]
 }
 
 @helper FeatureTabContent(List<Feature> list, string id)

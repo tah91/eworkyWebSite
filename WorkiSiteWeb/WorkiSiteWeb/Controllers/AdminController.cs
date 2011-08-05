@@ -1,19 +1,17 @@
-﻿using System.Web;
-using System.Web.Mvc;
-using Worki.Web.Models;
-using Worki.Web.Helpers;
-using System.IO;
-using System.Reflection;
-using Worki.Web.Infrastructure.Repository;
-using Worki.Web.Infrastructure;
-using Microsoft.Web.Mvc;
-using System;
-using System.Linq;
-using System.Web.Security;
-using Worki.Web.Infrastructure.Membership;
-using Worki.Web.Infrastructure.Logging;
-using Worki.Web.Infrastructure.Email;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web.Mvc;
+using System.Web.Security;
+using Worki.Infrastructure.Email;
+using Worki.Infrastructure.Logging;
+using Worki.Infrastructure.Repository;
+using Worki.Web.Helpers;
+using Worki.Data.Repository;
+using Worki.Infrastructure.Helpers;
+using Worki.Data.Models;
+using Worki.Memberships;
 
 namespace Worki.Web.Controllers
 {
@@ -159,22 +157,10 @@ namespace Worki.Web.Controllers
 		{
 			int pageValue = page ?? 1;
 			int itemTotal = 1;
-			MembershipUserCollection collectionMemberShip = _MembershipService.GetAllUsers((pageValue - 1), PageSize, out itemTotal);
-			var dict = new Dictionary<string, int>();
-			foreach (var item in collectionMemberShip)
-			{
-				var user = item as MembershipUser;
-				if (user == null)
-					continue;
-				var member = _MemberRepository.GetMember(user.Email);
-				if (member == null)
-					continue;
-				dict[user.Email] = member.MemberId;
-			}
+			var members = _MemberRepository.Get((pageValue - 1) * PageSize, PageSize, m => m.MemberId);
 			var viewModel = new UserListViewModel()
 			{
-				MemberIds = dict,
-				ListMemberShip = _MembershipService.ListUserMember(collectionMemberShip),
+				ListMemberShip = _MembershipService.GetAdminMapping(members),
 				PagingInfo = new PagingInfo
 				 {
 					 CurrentPage = pageValue,

@@ -190,112 +190,17 @@
     </Compile>
     <Compile Include="Helpers\Capatchahelper.cs" />
     <Compile Include="Helpers\ControllerHelpers.cs" />
-    <Compile Include="Helpers\MiscHelpers.cs" />
+    <Compile Include="Helpers\LocalisationHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
-    <Compile Include="Infrastructure\CustomClass\Exceptions.cs" />
-    <Compile Include="Infrastructure\Repository\IBookingRepository.cs" />
-    <Compile Include="Infrastructure\Repository\RepositoryBase.cs" />
-    <Compile Include="Infrastructure\Services\ISearchService.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
-    <Compile Include="Models\BookingModel.cs" />
-    <Compile Include="Models\Comment.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VisitorModels.cs" />
-    <Compile Include="Models\LocalisationModels.cs" />
-    <Compile Include="Models\FavoriteLocalisation.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Group.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LocalisationBinder.cs" />
-    <Compile Include="Infrastructure\Email\IEmailService.cs" />
-    <Compile Include="Infrastructure\CustomClass\ActionResult.cs" />
-    <Compile Include="Infrastructure\CustomClass\MultiCultureMvcRouteHandler .cs" />
-    <Compile Include="Infrastructure\CustomClass\Attributes.cs" />
-    <Compile Include="Infrastructure\Logging\ILogger.cs" />
-    <Compile Include="Infrastructure\Services\IFormAuthentication.cs" />
-    <Compile Include="Infrastructure\Services\IMembershipService.cs" />
+    <Compile Include="Membership\MembershipService.cs" />
+    <Compile Include="ModelBinder\LocalisationBinder.cs" />
+    <Compile Include="Membership\IFormAuthentication.cs" />
+    <Compile Include="Membership\IMembershipService.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
-    <Compile Include="Infrastructure\Repository\IWelcomePeopleRepository.cs" />
-    <Compile Include="Infrastructure\Repository\IRepository.cs" />
-    <Compile Include="Infrastructure\Repository\IGroupRepository.cs" />
-    <Compile Include="Infrastructure\Repository\ILocalisationRepository.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\AdminModels.cs" />
-    <Compile Include="Models\Contact.cs" />
-    <Compile Include="Infrastructure\Repository\IVisitorRepository.cs" />
-    <Compile Include="Infrastructure\Repository\IMemberRepository.cs" />
-    <Compile Include="Models\LocalisationData.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LocalisationFeature.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LocalisationFile.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MainLocalisation.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Member.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MemberBooking.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MemberEdition.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MemberMainData.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MembersInGroup.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProfilModel.cs" />
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WelcomePeople.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WorkiDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorkiDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WorkiDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WorkiDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorkiDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\BookingRepository.cs" />
-    <Compile Include="Services\SearchService.cs" />
-    <Compile Include="Repository\WelcomePeopleRepository.cs" />
-    <Compile Include="Services\EmailService.cs" />
-    <Compile Include="Repository\GroupRepository.cs" />
-    <Compile Include="Services\WorkiRoleProvider.cs" />
-    <Compile Include="Repository\MemberRepository.cs" />
-    <Compile Include="Repository\VisitorRepository.cs" />
-    <Compile Include="Services\WorkiMembershipProvider.cs" />
-    <Compile Include="Models\Visitor.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Localisation.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\LocalisationRepository.cs" />
-    <Compile Include="Services\OpenIdRelyingPartyService.cs" />
-    <Compile Include="Models\PageInfo.cs" />
-    <Compile Include="Models\SearchCriteria.cs" />
+    <Compile Include="Membership\WorkiRoleProvider.cs" />
+    <Compile Include="Membership\WorkiMembershipProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
@@ -476,19 +381,7 @@
     <Content Include="sitemap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\WorkiDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WorkiDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="App_Code\RazorHelpers.cshtml" />
-    <None Include="Models\WorkiDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WorkiDB.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Models\WorkiDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WorkiDB.cs</LastGenOutput>
-    </None>
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Views\Account\inscription-reussie.cshtml" />
     <Content Include="Views\Account\reset-mdp-reussi.cshtml" />
@@ -630,6 +523,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Worki.Data\Worki.Data.csproj">
+      <Project>{74AF8585-C459-41E3-A598-E7A170909D51}</Project>
+      <Name>Worki.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Worki.Infrastructure\Worki.Infrastructure.csproj">
+      <Project>{67ED0D23-AE7B-4488-A180-EB85A2584423}</Project>
+      <Name>Worki.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Worki.Service\Worki.Service.csproj">
+      <Project>{C717537C-CDEC-43EF-A9DE-38AAF0ADB460}</Project>
+      <Name>Worki.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkiResources\Worki.Resources.csproj">
       <Project>{54441744-36D7-4CD6-A5B3-372A217841B0}</Project>
       <Name>Worki.Resources</Name>
@@ -641,6 +546,7 @@
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

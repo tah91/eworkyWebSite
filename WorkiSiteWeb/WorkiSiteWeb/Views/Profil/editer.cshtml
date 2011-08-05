@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.ProfilFormViewModel
+﻿@model Worki.Data.Models.ProfilFormViewModel
 
 @section HeadContent
 {
@@ -15,7 +15,7 @@
         @Html.AntiForgeryToken()
         <div class="avatarEditor float-left">
             <div class="avatarContainer borderedImg">
-                @RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
             </div>
             <input type="file" name="Avatar" accept="image/*"/>
         </div>

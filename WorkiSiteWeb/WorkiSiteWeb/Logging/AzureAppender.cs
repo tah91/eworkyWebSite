@@ -8,6 +8,7 @@ using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics.Management;
 using Worki.Web.Helpers;
+using Worki.Infrastructure.Helpers;
 
 namespace Logging
 {

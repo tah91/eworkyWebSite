@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
 using Ninject;
-using Ninject.Modules;
-using Worki.Web.Infrastructure.Repository;
-using Worki.Web.Models;
-using Worki.Web.Infrastructure.Membership;
-using Worki.Web.Infrastructure.Logging;
-using Logging;
-using Worki.Web.Infrastructure.Email;
-using System.Web.Security;
 
 public class NinjectControlerFactory : DefaultControllerFactory
 {

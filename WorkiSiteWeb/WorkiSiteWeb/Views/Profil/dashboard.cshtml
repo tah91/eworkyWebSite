@@ -1,4 +1,4 @@
-﻿@model Worki.Web.Models.ProfilDashboardModel
+﻿@model Worki.Data.Models.ProfilDashboardModel
 
 @section HeadContent
 {
@@ -19,7 +19,7 @@
     <div class="profilDetailLeft blockContainer float-left">
         <div class="profilSummary contentBlock">
             <div class="profilAvatar borderedImg">
-                @RazorHelpers.CenterImage(MiscHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
             </div>
             <div class="profilName">
 				@{
