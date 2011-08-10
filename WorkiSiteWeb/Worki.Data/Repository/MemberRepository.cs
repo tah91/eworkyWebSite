@@ -116,7 +116,7 @@ namespace Worki.Data.Models
         {
             using (var db = new WorkiDBEntities())
             {
-				var member = db.Members.SingleOrDefault(m => m.Email == key);
+                var member = db.Members.SingleOrDefault(m => m.Email == username);
                 if (member == null)
                     return false;
                 if (string.Compare(key, member.EmailKey) == 0)
