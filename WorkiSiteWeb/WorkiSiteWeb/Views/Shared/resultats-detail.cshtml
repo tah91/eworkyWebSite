@@ -2,6 +2,7 @@
 
 @section HeadContent
 {
+	<meta name="Description" content="@Model.Localisation.Description"/>
 	<title>@Html.WorkiTitle(Model.Localisation.Name)</title>
     @Html.Partial(MVC.Shared.Views._OpenGraphHead, Model.Localisation) 
     

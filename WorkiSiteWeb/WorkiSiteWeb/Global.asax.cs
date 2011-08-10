@@ -15,6 +15,8 @@ using Worki.Memberships;
 using Worki.Web.ModelBinder;
 using Worki.Service;
 using Worki.Services;
+using MvcSiteMapProvider.Web;
+using Worki.SiteMap;
 
 namespace Worki.Web
 {
@@ -155,11 +157,14 @@ namespace Worki.Web
 			_kernel.Inject(Membership.Provider);
 			_kernel.Inject(Roles.Provider);
 
+			LocalisationDynamicNodeProvider.RegisterKernel(_kernel);
+
 			//Inject
 			ControllerBuilder.Current.SetControllerFactory(new NinjectControlerFactory(_kernel));
 
 			//routes
             AreaRegistration.RegisterAllAreas();
+			XmlSiteMapController.RegisterRoutes(RouteTable.Routes);
             RegisterRoutes(RouteTable.Routes);
 
 			//model binder
