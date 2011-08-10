@@ -1,5 +1,5 @@
 
 *.jpeg binary
 *.png binary
-*.mdf merge=ours
-*.ldf merge=ours
+WorkiDB.mdf merge=ours
+WorkiDB_log.LDF merge=ours
