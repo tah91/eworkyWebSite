@@ -122,6 +122,9 @@
     <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="MvcSiteMapProvider, Version=3.1.0.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Downloads\MvcSiteMapProvider 3.1.0 RC Sample Application\MvcSiteMapProvider\bin\Release\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=2.1.0.67, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Externals\Ninject.dll</HintPath>
@@ -205,6 +208,7 @@
     <Compile Include="Membership\WorkiRoleProvider.cs" />
     <Compile Include="Membership\WorkiMembershipProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteMap\LocalisationDynamicNodeProvider.cs" />
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -331,6 +335,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\skin.css" />
     <Content Include="Content\uniform.default.css" />
+    <Content Include="Mvc.sitemap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="robots.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -381,9 +388,6 @@
     <Content Include="Scripts\steinem_unicode_regular.typeface.js" />
     <Content Include="Scripts\typeface-0.15.js" />
     <Content Include="Scripts\WorkiMap.js" />
-    <Content Include="sitemap.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="App_Code\RazorHelpers.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Views\Account\inscription-reussie.cshtml" />

@@ -43,18 +43,20 @@ namespace Worki.Web.Controllers
         /// The view containing the details of a localisation
         /// </summary>
         /// <returns>The action result.</returns>
-        [ActionName("details")]
-        public virtual ActionResult Details(int id, string name)
-        {
-            var localisation = _LocalisationRepository.Get(id);
-			if (localisation == null || string.IsNullOrEmpty(name))
+		[ActionName("details")]
+		public virtual ActionResult Details(int id, string name)
+		{
+			var localisation = _LocalisationRepository.Get(id);
+			var nameToMatch = ControllerHelpers.GetSeoTitle(localisation.Name);
+
+			if (localisation == null || string.IsNullOrEmpty(name) || string.Compare(nameToMatch, name, true) != 0)
 				return View(MVC.Localisation.Views.lieu_absent);
 			else
 			{
 				var container = new SearchSingleResultViewModel { Localisation = localisation };
 				return View(MVC.Shared.Views.resultats_detail, container);
 			}
-        }
+		}
 
         /// <summary>
         /// GET action to create a new localisation

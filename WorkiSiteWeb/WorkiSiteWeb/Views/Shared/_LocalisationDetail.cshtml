@@ -188,13 +188,13 @@
             </div>
         </div>
         <div class="localisationDetailRight blockContainer float-right">
-			@if (Model.Bookable)
+			@*@if (Model.Bookable)
 			{
 	   			<div class="contentBlock">
 					<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.NeedToBookPlace</h3>
 					<div class="btn_blue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(Model.ID, Request.Url.PathAndQuery))</div>                    
 				</div>
-            }
+            }*@
             <div class="contentBlock">
             <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
                 <div class="localisationMap">
