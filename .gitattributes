@@ -1,3 +1,5 @@
 
 *.jpeg binary
 *.png binary
+*.mdf merge=ours
+*.ldf merge=ours
