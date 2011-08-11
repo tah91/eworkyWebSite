@@ -17,7 +17,6 @@ namespace Worki.Data.Models
 		IList<Localisation> FindByLocation(float latitude, float longitude);
 		IList<Localisation> FindSimilarLocalisation(float latitude, float longitude);
 		IList<Localisation> FindByCriteria(SearchCriteria criteria);
-		void GeoCode(ILogger logger, string address, out float lat, out float lg);
 		float DistanceBetween(float latitude, float longitude, int localisationId);
 		Comment GetComment(int comId);
 	}
@@ -243,56 +242,6 @@ namespace Worki.Data.Models
             {
                 return db2.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList();
             }
-        }
-
-        public void GeoCode(ILogger logger, string address, out float lat, out float lg)
-        {
-            lat = 0;
-            lg = 0;
-            if (string.IsNullOrEmpty(address))
-                return;
-            string strKey = "ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRUyfMLYGuEEhDrWo4mEQ8GYiYo8BTxOAimWDrLvSiruY1GasDiBDuCWg";
-            string sPath = "http://maps.google.com/maps/geo?q=" + address + "&output=csv&key=" + strKey;
-            string latStr = null, lgStr = null;
-            //using (var client = new WebClient())
-            //{
-            //    logger.Info("geocoding");
-            //    logger.Info(sPath);
-            //    client.DownloadStringCompleted += (s, e) =>
-            //    {
-            //        if (!e.Cancelled && e.Error == null)
-            //        {
-            //            string textString = (string)e.Result;
-            //            string[] eResult = textString.Split(',');
-            //            logger.Info("geocoded");
-            //            latStr = eResult.GetValue(2).ToString();
-            //            lgStr = eResult.GetValue(3).ToString();
-            //        }
-            //    };
-            //    client.DownloadStringAsync(new Uri(sPath));
-            //    lat = float.Parse(latStr, CultureInfo.InvariantCulture.NumberFormat);
-            //    lg = float.Parse(lgStr, CultureInfo.InvariantCulture.NumberFormat);
-            //}
-            using (var client = new WebClient())
-            {
-                try
-                {
-                    logger.Info("geocoding");
-                    logger.Info(sPath);
-                    string textString = client.DownloadString(sPath);
-                    string[] eResult = textString.Split(',');
-                    logger.Info("geocoded");
-                    latStr = eResult.GetValue(2).ToString();
-                    lgStr = eResult.GetValue(3).ToString();
-                    lat = float.Parse(latStr, CultureInfo.InvariantCulture.NumberFormat);
-                    lg = float.Parse(lgStr, CultureInfo.InvariantCulture.NumberFormat);
-                }
-                catch (WebException ex)
-                {
-                    logger.Error(ex.Message);
-                }
-            }
-
         }
 
 		public Comment GetComment(int comId)

@@ -92,8 +92,8 @@ namespace Worki.Web.Controllers
         [ActionName("recherche-lieu-travail")]
         public virtual ActionResult FullSearch()
         {
-			var criteria = new SearchCriteria(true);
-            return View(new SearchCriteriaFormViewModel(criteria,eSearchType.ePerOffer));
+            var criteria = new SearchCriteria(true);
+            return View(new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerOffer));
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Worki.Web.Controllers
         public virtual ActionResult FullSearchOffer(int offertID)// Pré selection of the list box of recherche
         {
             var criteria = new SearchCriteria { LocalisationOffer = offertID };
-            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, eSearchType.ePerOffer));
+            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerOffer));
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -114,7 +114,7 @@ namespace Worki.Web.Controllers
         public virtual ActionResult FullSearchPerType()
         {
             var criteria = new SearchCriteria();
-            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, eSearchType.ePerType));
+            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerType));
         }
 
         /// <summary>
@@ -151,10 +151,8 @@ namespace Worki.Web.Controllers
                     break;
             }
             criteria.Everything = false;
-            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, eSearchType.ePerType, directAccessType));
-        }
-
-        
+            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerType, directAccessType));
+        }        
 
         /// <summary>
         /// POST Action result to search localisations from a SearchCriteria
@@ -204,7 +202,7 @@ namespace Worki.Web.Controllers
 		{
 			var pageValue = page ?? 1;
 			//SearchCriteriaFormViewModel criteriaViewModel = null;
-			var criteriaViewModel = _SearchService.GetCurrentSearchCriteria(Request.Params);
+			var criteriaViewModel = _SearchService.GetCurrentSearchCriteria(Request);
 
 			criteriaViewModel.FillPageInfo(pageValue);
 			return View(criteriaViewModel);
@@ -220,7 +218,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearchResultDetail(int? index)
 		{
 			var itemIndex = index ?? 0;
-			var detailModel = _SearchService.GetSingleResult(Request.Params, itemIndex);
+			var detailModel = _SearchService.GetSingleResult(Request, itemIndex);
 
 			if (detailModel==null)
 				return View(MVC.Shared.Views.Error);

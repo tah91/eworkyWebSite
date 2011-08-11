@@ -1,2 +1,22 @@
 User-agent: *
+Disallow: /profil/RemoveFromFavorite
+Disallow: /profil/AjaxDashboard
+Disallow: /profil/AddToFavorite
+Disallow: /compte/
+Disallow: /lieu-de-travail/PostComment/
+Allow: /
 
+#
+# Yahoo bot is evil.
+#
+User-agent: Slurp
+Disallow: /
+
+#
+# Yahoo Pipes is for feeds not web pages.
+#
+User-agent: Yahoo Pipes 1.0
+Disallow: /
+
+
+Sitemap: /sitemap.xml

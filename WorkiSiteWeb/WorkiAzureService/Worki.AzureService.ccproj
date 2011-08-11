@@ -66,13 +66,17 @@
   <PropertyGroup>
     <ServiceConfigurationTransform>ServiceConfiguration.$(Configuration).cscfg</ServiceConfigurationTransform>
   </PropertyGroup>
-  <Target Name="TransformServiceConfiguration" BeforeTargets="CopyServiceDefinitionAndConfiguration" Condition="exists('$(ServiceConfigurationTransform)')">
+  <Target 	Name="bCorePackageComputeService" 
+			BeforeTargets="CopyServiceModel"
+			Condition="exists('$(ServiceConfigurationTransform)')">
     <!-- Generate transformed service config in the intermediate directory -->
-    <TransformXml Source="@(ServiceConfiguration)" Destination="$(IntermediateOutputPath)%(Filename)%(Extension)" Transform="$(ServiceConfigurationTransform)" />
+    <TransformXml 	Source="@(ServiceConfiguration)" 
+					Destination="$(IntermediateOutputPath)%(Filename)%(Extension)" 
+					Transform="$(ServiceConfigurationTransform)" />
     <!--Force build process to use the transformed configuration file from now on.-->
     <ItemGroup>
-      <ServiceConfiguration Remove="ServiceConfiguration.cscfg" />
-      <ServiceConfiguration Include="$(IntermediateOutputPath)ServiceConfiguration.cscfg" />
+      <SourceServiceConfiguration Remove="ServiceConfiguration.cscfg" />
+      <SourceServiceConfiguration Include="$(IntermediateOutputPath)ServiceConfiguration.cscfg" />
     </ItemGroup>
   </Target>
 </Project>

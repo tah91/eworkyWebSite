@@ -471,8 +471,9 @@ namespace Worki.Data.Models
 
 		#region Localisation Offers
 
-		public static Dictionary<int, string> LocalisationOfferTypes = new Dictionary<int, string>()
+        public static Dictionary<int, string> LocalisationOfferTypes = new Dictionary<int, string>()
         {
+            { (int)LocalisationOffer.AllOffers , Worki.Resources.Models.Localisation.LocalisationFeatures.AllOffers},
             { (int)LocalisationOffer.FreeArea,Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea},
             { (int)LocalisationOffer.BuisnessRoom ,Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom},            
             { (int)LocalisationOffer.Workstation,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation},
@@ -607,7 +608,7 @@ namespace Worki.Data.Models
 		#endregion
 	}
 
-	[Bind(Exclude = "Id,Createur")]
+	[Bind(Exclude = "Id,OwnerId")]
 	public class Localisation_Validation
 	{
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -944,6 +945,7 @@ namespace Worki.Data.Models
 	/// </summary>
 	public enum LocalisationOffer
 	{
+        AllOffers = -1,
 		FreeArea,
 		BuisnessRoom,
 		Workstation,

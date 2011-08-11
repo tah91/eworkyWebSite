@@ -216,10 +216,11 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('input:text').placeholder();
-            $('#searchform').submit(function (evt) {
-                var workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', this, evt);
-                workiGeoCoder.SearchFormSubmit();
-            });
+            //do it on server side
+//            $('#searchform').submit(function (evt) {
+//                var workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', this, evt);
+//                workiGeoCoder.SearchFormSubmit();
+//            });
             var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
             workiAutocomplete.SetAutocomplete();
         });

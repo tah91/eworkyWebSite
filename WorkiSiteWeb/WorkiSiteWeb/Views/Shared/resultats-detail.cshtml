@@ -2,10 +2,10 @@
 
 @section HeadContent
 {
+    <link rel="canonical" href="@Html.GetFullUrl(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = Model.Localisation.ID, name = ControllerHelpers.GetSeoTitle(Model.Localisation.Name) })"/>
 	<meta name="Description" content="@Model.Localisation.Description"/>
 	<title>@Html.WorkiTitle(Model.Localisation.Name)</title>
     @Html.Partial(MVC.Shared.Views._OpenGraphHead, Model.Localisation) 
-    
     <link href="@Url.Content(Links.Content.Search_css) " rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.SearchResults_css) " rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.LocalisationDetail_css) " rel="stylesheet" type="text/css" />

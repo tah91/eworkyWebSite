@@ -1,7 +1,8 @@
 ﻿@model Worki.Data.Models.SearchSingleResultViewModel
 
 <div class="contentBlock resultItem">
-    @{  RouteValueDictionary  rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+    @{  
+        RouteValueDictionary  rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
         foreach (string key in Request.QueryString.Keys)
         {
             rvd[key] = Request.QueryString[key].ToString();
@@ -17,7 +18,6 @@
         </a>
     }
     </div>
-
     <div class="itemDetailsDiv float-left relative">
         <p class="green detailLink"><span class="itemName">@Html.ActionLink(Model.Localisation.Name, MVC.Search.ActionNames.FullSearchResultDetail, rvd)</span>&nbsp; - &nbsp;@String.Format("{0:0.##} km", Model.Distance)</p>
         <span class="itemAddress">@Model.Localisation.Adress&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>

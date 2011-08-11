@@ -122,8 +122,8 @@
     <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="MvcSiteMapProvider, Version=3.1.0.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Downloads\MvcSiteMapProvider 3.1.0 RC Sample Application\MvcSiteMapProvider\bin\Release\MvcSiteMapProvider.dll</HintPath>
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\Externals\MvcSiteMapProvider.dll</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=2.1.0.67, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

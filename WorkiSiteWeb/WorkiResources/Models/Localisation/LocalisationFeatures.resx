@@ -343,4 +343,7 @@
   <data name="SingleWorkstation" xml:space="preserve">
     <value>Poste de travail</value>
   </data>
+  <data name="AllOffers" xml:space="preserve">
+    <value>Sélectionnez une offre</value>
+  </data>
 </root>

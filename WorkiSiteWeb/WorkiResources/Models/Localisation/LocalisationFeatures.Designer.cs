@@ -88,6 +88,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sélectionnez une offre.
+        /// </summary>
+        public static string AllOffers {
+            get {
+                return ResourceManager.GetString("AllOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stockage / archivage.
         /// </summary>
         public static string Archiving {

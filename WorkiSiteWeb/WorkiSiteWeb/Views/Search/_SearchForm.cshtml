@@ -98,10 +98,11 @@
 <script src="@Url.Content(Links.Scripts.WorkiMap_js)" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#searchform').submit(function (evt) {
-            var workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', this, evt);
-            workiGeoCoder.SearchFormSubmit();
-        });
+        //do it on server side
+//        $('#searchform').submit(function (evt) {
+//            var workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', this, evt);
+//            workiGeoCoder.SearchFormSubmit();
+//        });
 
         var resultsMap = new WorkiMap('resultsMap');
         resultsMap.LoadSearchMap();

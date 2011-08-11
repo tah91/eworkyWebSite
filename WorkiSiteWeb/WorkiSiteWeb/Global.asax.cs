@@ -87,6 +87,24 @@ namespace Worki.Web
 
             routes.MapRoute(
               "",
+              "recherche/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
+              new { controller = "Search", action = "Default" }
+            );
+
+            routes.MapRoute(
+              "",
+              "recherche/{action}/{lieu}/{page}/{offer-type}/{tout}/",
+              new { controller = "Search", action = "Default" }
+            );
+
+            routes.MapRoute(
+              "",
+              "recherche/{action}/{type}/",
+              new { controller = "Search", action = "Default" }
+            );
+
+            routes.MapRoute(
+              "",
               "recherche/{action}/",
               new { controller = "Search", action = "Default" }
             );

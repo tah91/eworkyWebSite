@@ -124,19 +124,20 @@ namespace Worki.Data.Models
 
         #region Ctor
 
-        void Init()
+        void Init(bool allOffers = false)
         {
             Results = new List<Localisation>();
             DistanceFromLocalisation = new Dictionary<int, double>();
             Criteria = new SearchCriteria();
-            Offers = new SelectList(Localisation.LocalisationOfferTypes, "Key", "Value", LocalisationOffer.FreeArea);
+            var offers = allOffers ? Localisation.LocalisationOfferTypes : Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.AllOffers });
+            Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
             SearchType = eSearchType.ePerOffer;
             DirectAccessType = eDirectAccessType.eNone;
         }
 
-        public SearchCriteriaFormViewModel(SearchCriteria criteria, eSearchType searchType = eSearchType.ePerOffer, eDirectAccessType directAccessType = eDirectAccessType.eNone)
+        public SearchCriteriaFormViewModel(SearchCriteria criteria, bool allOffers = false, eSearchType searchType = eSearchType.ePerOffer, eDirectAccessType directAccessType = eDirectAccessType.eNone)
         {
-            Init();
+            Init(allOffers);
             Criteria = criteria;
             SearchType = searchType;
             DirectAccessType = directAccessType;
