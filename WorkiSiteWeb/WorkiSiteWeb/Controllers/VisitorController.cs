@@ -31,7 +31,8 @@ namespace Worki.Web.Controllers
 		[HttpGet]
 		public virtual ActionResult Index()
 		{
-			return RedirectToAction(MVC.Home.Index());
+            var url = Url.ActionAbsolute(MVC.Home.Index());
+            return RedirectPermanent(url);
 			//return View(new VisitorFormViewModel());
 		}
 
