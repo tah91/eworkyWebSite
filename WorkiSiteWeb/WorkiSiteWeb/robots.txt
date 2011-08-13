@@ -19,4 +19,4 @@ User-agent: Yahoo Pipes 1.0
 Disallow: /
 
 
-Sitemap: /sitemap.xml
+Sitemap: http://www.eworky.com/sitemap.xml

@@ -51,6 +51,8 @@ namespace Worki.Web.Helpers
             title = title.ToLower();
             // remove entities
             title = Regex.Replace(title, @"&\w+;", "");
+            // remove tabs
+            title = Regex.Replace(title, @"\t", "");
             // remove anything that is not letters, numbers, dash, or space, accent letter
             title = Regex.Replace(title, @"[^a-z0-9ÁÀÂÄÉÈÊËÍÌÎÏÓÒÔÖÚÙÛÜ0Çàáâãäåòóôõöøèéêëçìíîïùúûüÿñ\-\s]", "");
             // replace spaces
