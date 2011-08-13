@@ -492,7 +492,6 @@
     <Content Include="Views\Admin\DetailWelcomePeople.cshtml" />
     <Content Include="Views\Home\_PeopleSlider.cshtml" />
     <Content Include="Views\Profil\editer.cshtml" />
-    <Content Include="Views\Profil\details.cshtml" />
     <Content Include="Views\Profil\dashboard.cshtml" />
     <Content Include="Views\Admin\DeleteWelcomePeople.cshtml" />
     <Content Include="Views\Shared\_TabScript.cshtml" />
