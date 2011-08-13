@@ -2,12 +2,6 @@ User-agent: *
 Disallow: /profil/RemoveFromFavorite
 Disallow: /profil/AjaxDashboard
 Disallow: /profil/AddToFavorite
-Disallow: /recherche/resultats-liste/
-Disallow: /recherche/resultats-liste?
-Disallow: /recherche/resultats-detail/
-Disallow: /recherche/resultats-detail?
-Disallow: /compte/
-Disallow: /compte?
 Disallow: /lieu-de-travail/PostComment/
 
 Allow: /
