@@ -41,21 +41,21 @@
                 { 
                     <tr>
                         <td align="right">
-                            @item.Key.Username
+                            @item.UserName
                         </td>
                         <td align="right">
-							@Html.ActionLink(item.Key.Email, MVC.Profil.Dashboard(item.Key.MemberId)) 
+							@Html.ActionLink(item.UserName, MVC.Profil.Dashboard(item.MemberId)) 
                         </td>
                         <td align="center">
-                            @Html.CheckBox(item.Key.Username, item.Value)
+                            @Html.CheckBox(item.UserName, item.IsAdmin)
                         </td>
                        <td align="right">
                             &nbsp;&nbsp;
-                            @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteUser(item.Key.Username, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                            @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteUser(item.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))
                         </td>
                         <td align="right">
                             &nbsp;&nbsp;
-                            @item.Key.ComputeScore()
+                            @item.Score
                         </td>
                     </tr>
 				} 

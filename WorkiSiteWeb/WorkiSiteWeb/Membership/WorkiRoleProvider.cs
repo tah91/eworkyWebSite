@@ -247,11 +247,8 @@ namespace Worki.Memberships
 
             if (RoleExists(roleName))
             {
-                int c = (from m in GroupRepository.GetAllMembersInGroups()
-                         where m.Member.Username == username &&
-                         m.Group.Title == roleName
-                         select m).Count();
-
+                var member = MemberRepository.GetMember(username);
+                int c = member.MembersInGroups.Count(mig => mig.Group.Title == roleName);
                 if (c > 0)
                     ret = true;
             }

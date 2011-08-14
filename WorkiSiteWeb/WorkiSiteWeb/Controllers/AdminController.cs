@@ -156,7 +156,6 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult IndexUser(int? page)
 		{
 			int pageValue = page ?? 1;
-			int itemTotal = 1;
 			var members = _MemberRepository.Get((pageValue - 1) * PageSize, PageSize, m => m.MemberId);
 			var viewModel = new UserListViewModel()
 			{
@@ -165,7 +164,7 @@ namespace Worki.Web.Controllers
 				 {
 					 CurrentPage = pageValue,
 					 ItemsPerPage = PageSize,
-					 TotalItems = itemTotal
+                     TotalItems = _MemberRepository.GetCount()
 				 }
 			};
 			return View(viewModel);

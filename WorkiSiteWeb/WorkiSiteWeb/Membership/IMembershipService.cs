@@ -18,7 +18,7 @@ namespace Worki.Memberships
 		bool ResetPassword(string email);
 		bool DeleteUser(string userName);
 		MembershipUserCollection GetAllUsers(int pageValue, int pageSize, out int itemTotal);
-		Dictionary<Member, bool> GetAdminMapping(IEnumerable<Member> members);
+        IEnumerable<MemberAdminModel> GetAdminMapping(IEnumerable<Member> members);
 		MembershipUser GetUser(string username);
 		string GetUserByMail(string email);
 		string GetPassword(string username, string answer);

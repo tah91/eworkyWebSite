@@ -21,9 +21,17 @@ namespace Worki.Data.Models
 		public string UserName { get; set; }
 	}
 
+    public class MemberAdminModel
+    {
+        public int MemberId { get; set; }
+        public string UserName { get; set; }
+        public bool IsAdmin { get; set; }
+        public int Score { get; set; }
+    }
+
 	public class UserListViewModel
 	{
-		public Dictionary<Member, bool> ListMemberShip { get; set; }
+        public IEnumerable<MemberAdminModel> ListMemberShip { get; set; }
 		public PagingInfo PagingInfo { get; set; }
 	}
 

@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Security;
 using Worki.Data.Models;
 using Worki.Infrastructure.Helpers;
+using System.Linq;
 
 namespace Worki.Memberships
 {
@@ -143,15 +144,19 @@ namespace Worki.Memberships
 			return _Provider.GetAllUsers(pageValue, PageSize, out itemTotal);
 		}
 
-		public Dictionary<Member, bool> GetAdminMapping(IEnumerable<Member> members)
-		{
-			var adminMapping = new Dictionary<Member, bool>();
-			foreach (var member in members)
-			{
-				adminMapping[member] = Roles.IsUserInRole(member.Username, MiscHelpers.AdminRole);
-			}
-			return adminMapping;
-		}
+        public IEnumerable<MemberAdminModel> GetAdminMapping(IEnumerable<Member> members)
+        {
+            var toRet = (from item
+                             in members
+                         select new MemberAdminModel
+                         {
+                             MemberId = item.MemberId,
+                             UserName = item.Username,
+                             IsAdmin = Roles.IsUserInRole(item.Username, MiscHelpers.AdminRole),
+                             Score = item.ComputeScore()
+                         });
+            return toRet.ToList();
+        }
 
 		public MembershipUser GetUser(string username)
 		{
