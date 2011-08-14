@@ -4,12 +4,12 @@
 {
     <meta name="robots" content="noindex">
     <title>@Html.WorkiTitle(Worki.Resources.Views.Search.SearchString.SearchResult)</title>
-    <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.Search_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.SearchResults_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.skin_css)" rel="stylesheet" type="text/css"  />
-    <link href="@Url.Content(Links.Content.rateit_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.SearchResults_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.skin_min_css)" rel="stylesheet" type="text/css"  />
+    <link href="@Url.Content(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.YourSearchResult, "Green", false)
@@ -62,7 +62,7 @@
 {
     <script src="@MiscHelpers.jquery " type="text/javascript"></script>
     <script src="@MiscHelpers.jqueryui " type="text/javascript"></script>
-    <script src="@Url.Content(Links.Scripts.jquery_rateit_js) " type="text/javascript"></script>
+    <script src="@Url.Content(Links.Scripts.jquery_rateit_min_js)" type="text/javascript"></script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
     @{ ViewData["IsSearchForm"] = true; }
     @Html.Partial(MVC.Search.Views._SelectSearchScript, Model.Criteria.LocalisationData, ViewData)

@@ -3,8 +3,8 @@
 @section HeadContent
 {
     <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.BookIt) </title>
-	<link href="@Url.Content(Links.Content.Booking_css) " rel="stylesheet" type="text/css" />
-	<link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css" />
+	<link href="@Url.Content(Links.Content.Booking_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
 <div class="borderContainer">
@@ -117,7 +117,7 @@
 {
     <script src="@MiscHelpers.jquery " type="text/javascript"></script>
     <script src="@MiscHelpers.jqueryui " type="text/javascript"></script>
-	<script src="@Url.Content(Links.Scripts.jquery_ui_timepicker_addon_js)" type="text/javascript"></script>
+	<script src="@Url.Content(Links.Scripts.jquery_ui_timepicker_addon_min_js)" type="text/javascript"></script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
     <script type="text/javascript">
     	$(document).ready(function () {

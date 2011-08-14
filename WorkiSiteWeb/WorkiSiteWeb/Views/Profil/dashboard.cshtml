@@ -3,8 +3,8 @@
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Model.Member.GetDisplayName())</title>
-    <link href="@Url.Content(Links.Content.Profil_css) " rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.rateit_css) " rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />
 }
 
 <div class="profilTitle">
@@ -188,7 +188,7 @@
 	<script src="@MiscHelpers.jquery" type="text/javascript"></script>
 	@Html.Partial(MVC.Shared.Views._CufonScript)
     @Html.Partial(MVC.Shared.Views._TabScript)
-    <script src="@Url.Content(Links.Scripts.jquery_rateit_js)" type="text/javascript"></script>
+    <script src="@Url.Content(Links.Scripts.jquery_rateit_min_js)" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             InitTab(".profilLocalisations");
