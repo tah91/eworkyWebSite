@@ -1,25 +1,408 @@
-//----------------------------------------------------------
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//----------------------------------------------------------
-// MicrosoftMvcAjax.js
+//!----------------------------------------------------------
+//! Copyright (C) Microsoft Corporation. All rights reserved.
+//!----------------------------------------------------------
+//! MicrosoftMvcAjax.js
 
-Type.registerNamespace('Sys.Mvc');Sys.Mvc.$create_AjaxOptions=function(){return {};}
-Sys.Mvc.InsertionMode=function(){};Sys.Mvc.InsertionMode.prototype = {replace:0,insertBefore:1,insertAfter:2}
-Sys.Mvc.InsertionMode.registerEnum('Sys.Mvc.InsertionMode',false);Sys.Mvc.AjaxContext=function(request,updateTarget,loadingElement,insertionMode){this.$3=request;this.$4=updateTarget;this.$1=loadingElement;this.$0=insertionMode;}
-Sys.Mvc.AjaxContext.prototype={$0:0,$1:null,$2:null,$3:null,$4:null,get_data:function(){if(this.$2){return this.$2.get_responseData();}else{return null;}},get_insertionMode:function(){return this.$0;},get_loadingElement:function(){return this.$1;},get_object:function(){var $0=this.get_response();return ($0)?$0.get_object():null;},get_response:function(){return this.$2;},set_response:function(value){this.$2=value;return value;},get_request:function(){return this.$3;},get_updateTarget:function(){return this.$4;}}
-Sys.Mvc.AsyncHyperlink=function(){}
-Sys.Mvc.AsyncHyperlink.handleClick=function(anchor,evt,ajaxOptions){evt.preventDefault();Sys.Mvc.MvcHelpers.$2(anchor.href,'post','',anchor,ajaxOptions);}
-Sys.Mvc.MvcHelpers=function(){}
-Sys.Mvc.MvcHelpers.$0=function($p0,$p1,$p2){if($p0.disabled){return null;}var $0=$p0.name;if($0){var $1=$p0.tagName.toUpperCase();var $2=encodeURIComponent($0);var $3=$p0;if($1==='INPUT'){var $4=$3.type;if($4==='submit'){return $2+'='+encodeURIComponent($3.value);}else if($4==='image'){return $2+'.x='+$p1+'&'+$2+'.y='+$p2;}}else if(($1==='BUTTON')&&($0.length)&&($3.type==='submit')){return $2+'='+encodeURIComponent($3.value);}}return null;}
-Sys.Mvc.MvcHelpers.$1=function($p0){var $0=$p0.elements;var $1=new Sys.StringBuilder();var $2=$0.length;for(var $4=0;$4<$2;$4++){var $5=$0[$4];var $6=$5.name;if(!$6||!$6.length){continue;}var $7=$5.tagName.toUpperCase();if($7==='INPUT'){var $8=$5;var $9=$8.type;if(($9==='text')||($9==='password')||($9==='hidden')||((($9==='checkbox')||($9==='radio'))&&$5.checked)){$1.append(encodeURIComponent($6));$1.append('=');$1.append(encodeURIComponent($8.value));$1.append('&');}}else if($7==='SELECT'){var $A=$5;var $B=$A.options.length;for(var $C=0;$C<$B;$C++){var $D=$A.options[$C];if($D.selected){$1.append(encodeURIComponent($6));$1.append('=');$1.append(encodeURIComponent($D.value));$1.append('&');}}}else if($7==='TEXTAREA'){$1.append(encodeURIComponent($6));$1.append('=');$1.append(encodeURIComponent(($5.value)));$1.append('&');}}var $3=$p0._additionalInput;if($3){$1.append($3);$1.append('&');}return $1.toString();}
-Sys.Mvc.MvcHelpers.$2=function($p0,$p1,$p2,$p3,$p4){if($p4.confirm){if(!confirm($p4.confirm)){return;}}if($p4.url){$p0=$p4.url;}if($p4.httpMethod){$p1=$p4.httpMethod;}if($p2.length>0&&!$p2.endsWith('&')){$p2+='&';}$p2+='X-Requested-With=XMLHttpRequest';var $0=$p1.toUpperCase();var $1=($0==='GET'||$0==='POST');if(!$1){$p2+='&';$p2+='X-HTTP-Method-Override='+$0;}var $2='';if($0==='GET'||$0==='DELETE'){if($p0.indexOf('?')>-1){if(!$p0.endsWith('&')){$p0+='&';}$p0+=$p2;}else{$p0+='?';$p0+=$p2;}}else{$2=$p2;}var $3=new Sys.Net.WebRequest();$3.set_url($p0);if($1){$3.set_httpVerb($p1);}else{$3.set_httpVerb('POST');$3.get_headers()['X-HTTP-Method-Override']=$0;}$3.set_body($2);if($p1.toUpperCase()==='PUT'){$3.get_headers()['Content-Type']='application/x-www-form-urlencoded;';}$3.get_headers()['X-Requested-With']='XMLHttpRequest';var $4=null;if($p4.updateTargetId){$4=$get($p4.updateTargetId);}var $5=null;if($p4.loadingElementId){$5=$get($p4.loadingElementId);}var $6=new Sys.Mvc.AjaxContext($3,$4,$5,$p4.insertionMode);var $7=true;if($p4.onBegin){$7=$p4.onBegin($6)!==false;}if($5){Sys.UI.DomElement.setVisible($6.get_loadingElement(),true);}if($7){$3.add_completed(Function.createDelegate(null,function($p1_0){
-Sys.Mvc.MvcHelpers.$3($3,$p4,$6);}));$3.invoke();}}
-Sys.Mvc.MvcHelpers.$3=function($p0,$p1,$p2){$p2.set_response($p0.get_executor());if($p1.onComplete&&$p1.onComplete($p2)===false){return;}var $0=$p2.get_response().get_statusCode();if(($0>=200&&$0<300)||$0===304||$0===1223){if($0!==204&&$0!==304&&$0!==1223){var $1=$p2.get_response().getResponseHeader('Content-Type');if(($1)&&($1.indexOf('application/x-javascript')!==-1)){eval($p2.get_data());}else{Sys.Mvc.MvcHelpers.updateDomElement($p2.get_updateTarget(),$p2.get_insertionMode(),$p2.get_data());}}if($p1.onSuccess){$p1.onSuccess($p2);}}else{if($p1.onFailure){$p1.onFailure($p2);}}if($p2.get_loadingElement()){Sys.UI.DomElement.setVisible($p2.get_loadingElement(),false);}}
-Sys.Mvc.MvcHelpers.updateDomElement=function(target,insertionMode,content){if(target){switch(insertionMode){case 0:target.innerHTML=content;break;case 1:if(content&&content.length>0){target.innerHTML=content+target.innerHTML.trimStart();}break;case 2:if(content&&content.length>0){target.innerHTML=target.innerHTML.trimEnd()+content;}break;}}}
-Sys.Mvc.AsyncForm=function(){}
-Sys.Mvc.AsyncForm.handleClick=function(form,evt){var $0=Sys.Mvc.MvcHelpers.$0(evt.target,evt.offsetX,evt.offsetY);form._additionalInput = $0;}
-Sys.Mvc.AsyncForm.handleSubmit=function(form,evt,ajaxOptions){evt.preventDefault();var $0=form.validationCallbacks;if($0){for(var $2=0;$2<$0.length;$2++){var $3=$0[$2];if(!$3()){return;}}}var $1=Sys.Mvc.MvcHelpers.$1(form);Sys.Mvc.MvcHelpers.$2(form.action,form.method||'post',$1,form,ajaxOptions);}
-Sys.Mvc.AjaxContext.registerClass('Sys.Mvc.AjaxContext');Sys.Mvc.AsyncHyperlink.registerClass('Sys.Mvc.AsyncHyperlink');Sys.Mvc.MvcHelpers.registerClass('Sys.Mvc.MvcHelpers');Sys.Mvc.AsyncForm.registerClass('Sys.Mvc.AsyncForm');
+Type.registerNamespace('Sys.Mvc');
+
+////////////////////////////////////////////////////////////////////////////////
+// Sys.Mvc.AjaxOptions
+
+Sys.Mvc.$create_AjaxOptions = function Sys_Mvc_AjaxOptions() { return {}; }
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Sys.Mvc.InsertionMode
+
+Sys.Mvc.InsertionMode = function() { 
+    /// <field name="replace" type="Number" integer="true" static="true">
+    /// </field>
+    /// <field name="insertBefore" type="Number" integer="true" static="true">
+    /// </field>
+    /// <field name="insertAfter" type="Number" integer="true" static="true">
+    /// </field>
+};
+Sys.Mvc.InsertionMode.prototype = {
+    replace: 0, 
+    insertBefore: 1, 
+    insertAfter: 2
+}
+Sys.Mvc.InsertionMode.registerEnum('Sys.Mvc.InsertionMode', false);
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Sys.Mvc.AjaxContext
+
+Sys.Mvc.AjaxContext = function Sys_Mvc_AjaxContext(request, updateTarget, loadingElement, insertionMode) {
+    /// <param name="request" type="Sys.Net.WebRequest">
+    /// </param>
+    /// <param name="updateTarget" type="Object" domElement="true">
+    /// </param>
+    /// <param name="loadingElement" type="Object" domElement="true">
+    /// </param>
+    /// <param name="insertionMode" type="Sys.Mvc.InsertionMode">
+    /// </param>
+    /// <field name="_insertionMode" type="Sys.Mvc.InsertionMode">
+    /// </field>
+    /// <field name="_loadingElement" type="Object" domElement="true">
+    /// </field>
+    /// <field name="_response" type="Sys.Net.WebRequestExecutor">
+    /// </field>
+    /// <field name="_request" type="Sys.Net.WebRequest">
+    /// </field>
+    /// <field name="_updateTarget" type="Object" domElement="true">
+    /// </field>
+    this._request = request;
+    this._updateTarget = updateTarget;
+    this._loadingElement = loadingElement;
+    this._insertionMode = insertionMode;
+}
+Sys.Mvc.AjaxContext.prototype = {
+    _insertionMode: 0,
+    _loadingElement: null,
+    _response: null,
+    _request: null,
+    _updateTarget: null,
+    
+    get_data: function Sys_Mvc_AjaxContext$get_data() {
+        /// <value type="String"></value>
+        if (this._response) {
+            return this._response.get_responseData();
+        }
+        else {
+            return null;
+        }
+    },
+    
+    get_insertionMode: function Sys_Mvc_AjaxContext$get_insertionMode() {
+        /// <value type="Sys.Mvc.InsertionMode"></value>
+        return this._insertionMode;
+    },
+    
+    get_loadingElement: function Sys_Mvc_AjaxContext$get_loadingElement() {
+        /// <value type="Object" domElement="true"></value>
+        return this._loadingElement;
+    },
+    
+    get_object: function Sys_Mvc_AjaxContext$get_object() {
+        /// <value type="Object"></value>
+        var executor = this.get_response();
+        return (executor) ? executor.get_object() : null;
+    },
+    
+    get_response: function Sys_Mvc_AjaxContext$get_response() {
+        /// <value type="Sys.Net.WebRequestExecutor"></value>
+        return this._response;
+    },
+    set_response: function Sys_Mvc_AjaxContext$set_response(value) {
+        /// <value type="Sys.Net.WebRequestExecutor"></value>
+        this._response = value;
+        return value;
+    },
+    
+    get_request: function Sys_Mvc_AjaxContext$get_request() {
+        /// <value type="Sys.Net.WebRequest"></value>
+        return this._request;
+    },
+    
+    get_updateTarget: function Sys_Mvc_AjaxContext$get_updateTarget() {
+        /// <value type="Object" domElement="true"></value>
+        return this._updateTarget;
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Sys.Mvc.AsyncHyperlink
+
+Sys.Mvc.AsyncHyperlink = function Sys_Mvc_AsyncHyperlink() {
+}
+Sys.Mvc.AsyncHyperlink.handleClick = function Sys_Mvc_AsyncHyperlink$handleClick(anchor, evt, ajaxOptions) {
+    /// <param name="anchor" type="Object" domElement="true">
+    /// </param>
+    /// <param name="evt" type="Sys.UI.DomEvent">
+    /// </param>
+    /// <param name="ajaxOptions" type="Sys.Mvc.AjaxOptions">
+    /// </param>
+    evt.preventDefault();
+    Sys.Mvc.MvcHelpers._asyncRequest(anchor.href, 'post', '', anchor, ajaxOptions);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Sys.Mvc.MvcHelpers
+
+Sys.Mvc.MvcHelpers = function Sys_Mvc_MvcHelpers() {
+}
+Sys.Mvc.MvcHelpers._serializeSubmitButton = function Sys_Mvc_MvcHelpers$_serializeSubmitButton(element, offsetX, offsetY) {
+    /// <param name="element" type="Object" domElement="true">
+    /// </param>
+    /// <param name="offsetX" type="Number" integer="true">
+    /// </param>
+    /// <param name="offsetY" type="Number" integer="true">
+    /// </param>
+    /// <returns type="String"></returns>
+    if (element.disabled) {
+        return null;
+    }
+    var name = element.name;
+    if (name) {
+        var tagName = element.tagName.toUpperCase();
+        var encodedName = encodeURIComponent(name);
+        var inputElement = element;
+        if (tagName === 'INPUT') {
+            var type = inputElement.type;
+            if (type === 'submit') {
+                return encodedName + '=' + encodeURIComponent(inputElement.value);
+            }
+            else if (type === 'image') {
+                return encodedName + '.x=' + offsetX + '&' + encodedName + '.y=' + offsetY;
+            }
+        }
+        else if ((tagName === 'BUTTON') && (name.length) && (inputElement.type === 'submit')) {
+            return encodedName + '=' + encodeURIComponent(inputElement.value);
+        }
+    }
+    return null;
+}
+Sys.Mvc.MvcHelpers._serializeForm = function Sys_Mvc_MvcHelpers$_serializeForm(form) {
+    /// <param name="form" type="Object" domElement="true">
+    /// </param>
+    /// <returns type="String"></returns>
+    var formElements = form.elements;
+    var formBody = new Sys.StringBuilder();
+    var count = formElements.length;
+    for (var i = 0; i < count; i++) {
+        var element = formElements[i];
+        var name = element.name;
+        if (!name || !name.length) {
+            continue;
+        }
+        var tagName = element.tagName.toUpperCase();
+        if (tagName === 'INPUT') {
+            var inputElement = element;
+            var type = inputElement.type;
+            if ((type === 'text') || (type === 'password') || (type === 'hidden') || (((type === 'checkbox') || (type === 'radio')) && element.checked)) {
+                formBody.append(encodeURIComponent(name));
+                formBody.append('=');
+                formBody.append(encodeURIComponent(inputElement.value));
+                formBody.append('&');
+            }
+        }
+        else if (tagName === 'SELECT') {
+            var selectElement = element;
+            var optionCount = selectElement.options.length;
+            for (var j = 0; j < optionCount; j++) {
+                var optionElement = selectElement.options[j];
+                if (optionElement.selected) {
+                    formBody.append(encodeURIComponent(name));
+                    formBody.append('=');
+                    formBody.append(encodeURIComponent(optionElement.value));
+                    formBody.append('&');
+                }
+            }
+        }
+        else if (tagName === 'TEXTAREA') {
+            formBody.append(encodeURIComponent(name));
+            formBody.append('=');
+            formBody.append(encodeURIComponent((element.value)));
+            formBody.append('&');
+        }
+    }
+    var additionalInput = form._additionalInput;
+    if (additionalInput) {
+        formBody.append(additionalInput);
+        formBody.append('&');
+    }
+    return formBody.toString();
+}
+Sys.Mvc.MvcHelpers._asyncRequest = function Sys_Mvc_MvcHelpers$_asyncRequest(url, verb, body, triggerElement, ajaxOptions) {
+    /// <param name="url" type="String">
+    /// </param>
+    /// <param name="verb" type="String">
+    /// </param>
+    /// <param name="body" type="String">
+    /// </param>
+    /// <param name="triggerElement" type="Object" domElement="true">
+    /// </param>
+    /// <param name="ajaxOptions" type="Sys.Mvc.AjaxOptions">
+    /// </param>
+    if (ajaxOptions.confirm) {
+        if (!confirm(ajaxOptions.confirm)) {
+            return;
+        }
+    }
+    if (ajaxOptions.url) {
+        url = ajaxOptions.url;
+    }
+    if (ajaxOptions.httpMethod) {
+        verb = ajaxOptions.httpMethod;
+    }
+    if (body.length > 0 && !body.endsWith('&')) {
+        body += '&';
+    }
+    body += 'X-Requested-With=XMLHttpRequest';
+    var upperCaseVerb = verb.toUpperCase();
+    var isGetOrPost = (upperCaseVerb === 'GET' || upperCaseVerb === 'POST');
+    if (!isGetOrPost) {
+        body += '&';
+        body += 'X-HTTP-Method-Override=' + upperCaseVerb;
+    }
+    var requestBody = '';
+    if (upperCaseVerb === 'GET' || upperCaseVerb === 'DELETE') {
+        if (url.indexOf('?') > -1) {
+            if (!url.endsWith('&')) {
+                url += '&';
+            }
+            url += body;
+        }
+        else {
+            url += '?';
+            url += body;
+        }
+    }
+    else {
+        requestBody = body;
+    }
+    var request = new Sys.Net.WebRequest();
+    request.set_url(url);
+    if (isGetOrPost) {
+        request.set_httpVerb(verb);
+    }
+    else {
+        request.set_httpVerb('POST');
+        request.get_headers()['X-HTTP-Method-Override'] = upperCaseVerb;
+    }
+    request.set_body(requestBody);
+    if (verb.toUpperCase() === 'PUT') {
+        request.get_headers()['Content-Type'] = 'application/x-www-form-urlencoded;';
+    }
+    request.get_headers()['X-Requested-With'] = 'XMLHttpRequest';
+    var updateElement = null;
+    if (ajaxOptions.updateTargetId) {
+        updateElement = $get(ajaxOptions.updateTargetId);
+    }
+    var loadingElement = null;
+    if (ajaxOptions.loadingElementId) {
+        loadingElement = $get(ajaxOptions.loadingElementId);
+    }
+    var ajaxContext = new Sys.Mvc.AjaxContext(request, updateElement, loadingElement, ajaxOptions.insertionMode);
+    var continueRequest = true;
+    if (ajaxOptions.onBegin) {
+        continueRequest = ajaxOptions.onBegin(ajaxContext) !== false;
+    }
+    if (loadingElement) {
+        Sys.UI.DomElement.setVisible(ajaxContext.get_loadingElement(), true);
+    }
+    if (continueRequest) {
+        request.add_completed(Function.createDelegate(null, function(executor) {
+            Sys.Mvc.MvcHelpers._onComplete(request, ajaxOptions, ajaxContext);
+        }));
+        request.invoke();
+    }
+}
+Sys.Mvc.MvcHelpers._onComplete = function Sys_Mvc_MvcHelpers$_onComplete(request, ajaxOptions, ajaxContext) {
+    /// <param name="request" type="Sys.Net.WebRequest">
+    /// </param>
+    /// <param name="ajaxOptions" type="Sys.Mvc.AjaxOptions">
+    /// </param>
+    /// <param name="ajaxContext" type="Sys.Mvc.AjaxContext">
+    /// </param>
+    ajaxContext.set_response(request.get_executor());
+    if (ajaxOptions.onComplete && ajaxOptions.onComplete(ajaxContext) === false) {
+        return;
+    }
+    var statusCode = ajaxContext.get_response().get_statusCode();
+    if ((statusCode >= 200 && statusCode < 300) || statusCode === 304 || statusCode === 1223) {
+        if (statusCode !== 204 && statusCode !== 304 && statusCode !== 1223) {
+            var contentType = ajaxContext.get_response().getResponseHeader('Content-Type');
+            if ((contentType) && (contentType.indexOf('application/x-javascript') !== -1)) {
+                eval(ajaxContext.get_data());
+            }
+            else {
+                Sys.Mvc.MvcHelpers.updateDomElement(ajaxContext.get_updateTarget(), ajaxContext.get_insertionMode(), ajaxContext.get_data());
+            }
+        }
+        if (ajaxOptions.onSuccess) {
+            ajaxOptions.onSuccess(ajaxContext);
+        }
+    }
+    else {
+        if (ajaxOptions.onFailure) {
+            ajaxOptions.onFailure(ajaxContext);
+        }
+    }
+    if (ajaxContext.get_loadingElement()) {
+        Sys.UI.DomElement.setVisible(ajaxContext.get_loadingElement(), false);
+    }
+}
+Sys.Mvc.MvcHelpers.updateDomElement = function Sys_Mvc_MvcHelpers$updateDomElement(target, insertionMode, content) {
+    /// <param name="target" type="Object" domElement="true">
+    /// </param>
+    /// <param name="insertionMode" type="Sys.Mvc.InsertionMode">
+    /// </param>
+    /// <param name="content" type="String">
+    /// </param>
+    if (target) {
+        switch (insertionMode) {
+            case Sys.Mvc.InsertionMode.replace:
+                target.innerHTML = content;
+                break;
+            case Sys.Mvc.InsertionMode.insertBefore:
+                if (content && content.length > 0) {
+                    target.innerHTML = content + target.innerHTML.trimStart();
+                }
+                break;
+            case Sys.Mvc.InsertionMode.insertAfter:
+                if (content && content.length > 0) {
+                    target.innerHTML = target.innerHTML.trimEnd() + content;
+                }
+                break;
+        }
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Sys.Mvc.AsyncForm
+
+Sys.Mvc.AsyncForm = function Sys_Mvc_AsyncForm() {
+}
+Sys.Mvc.AsyncForm.handleClick = function Sys_Mvc_AsyncForm$handleClick(form, evt) {
+    /// <param name="form" type="Object" domElement="true">
+    /// </param>
+    /// <param name="evt" type="Sys.UI.DomEvent">
+    /// </param>
+    var additionalInput = Sys.Mvc.MvcHelpers._serializeSubmitButton(evt.target, evt.offsetX, evt.offsetY);
+    form._additionalInput = additionalInput;
+}
+Sys.Mvc.AsyncForm.handleSubmit = function Sys_Mvc_AsyncForm$handleSubmit(form, evt, ajaxOptions) {
+    /// <param name="form" type="Object" domElement="true">
+    /// </param>
+    /// <param name="evt" type="Sys.UI.DomEvent">
+    /// </param>
+    /// <param name="ajaxOptions" type="Sys.Mvc.AjaxOptions">
+    /// </param>
+    evt.preventDefault();
+    var validationCallbacks = form.validationCallbacks;
+    if (validationCallbacks) {
+        for (var i = 0; i < validationCallbacks.length; i++) {
+            var callback = validationCallbacks[i];
+            if (!callback()) {
+                return;
+            }
+        }
+    }
+    var body = Sys.Mvc.MvcHelpers._serializeForm(form);
+    Sys.Mvc.MvcHelpers._asyncRequest(form.action, form.method || 'post', body, form, ajaxOptions);
+}
+
+
+Sys.Mvc.AjaxContext.registerClass('Sys.Mvc.AjaxContext');
+Sys.Mvc.AsyncHyperlink.registerClass('Sys.Mvc.AsyncHyperlink');
+Sys.Mvc.MvcHelpers.registerClass('Sys.Mvc.MvcHelpers');
+Sys.Mvc.AsyncForm.registerClass('Sys.Mvc.AsyncForm');
+
 // ---- Do not remove this footer ----
 // Generated using Script# v0.5.0.0 (http://projects.nikhilk.net)
 // -----------------------------------

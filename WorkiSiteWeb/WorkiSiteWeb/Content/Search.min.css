@@ -1,0 +1,41 @@
+﻿.searchFormContainer{background:#f8f8f8 url('images/rechercher2.png') no-repeat 95% bottom}
+.searchFormDiv{padding:20px}
+.searchFormDiv input[type="text"]{width:250px}
+.searchFormDiv select{width:265px}
+.searchFormTable{margin:20px 0 20px 0}
+.searchBottom{height:170px;position:relative}
+.searchOptions p{margin-top:15px;margin-bottom:5px}
+.searchCheckBoxs{width:200px}
+.submitSearchContainer{padding-right:100px}
+.changeSeachType{margin-top:6px;margin-left:30px}
+#submit_search{background-image:url('images/submit_search.png');background-position:0 0;width:114px;height:28px}
+#submit_search:hover{background-position:0 -78px}
+.serviceIcones_coffee_h{background-image:url('images/serviceIcones.png');background-position:0 0;width:28px;height:28px}
+.serviceIcones_coffee_off{background-image:url('images/serviceIcones.png');background-position:0 -78px;width:28px;height:28px}
+.serviceIcones_coffee_on{background-image:url('images/serviceIcones.png');background-position:0 -156px;width:28px;height:28px}
+.serviceIcones_handicap_h{background-image:url('images/serviceIcones.png');background-position:0 -234px;width:28px;height:28px}
+.serviceIcones_handicap_off{background-image:url('images/serviceIcones.png');background-position:0 -312px;width:28px;height:28px}
+.serviceIcones_handicap_on{background-image:url('images/serviceIcones.png');background-position:0 -390px;width:28px;height:28px}
+.serviceIcones_meeting_h{background-image:url('images/serviceIcones.png');background-position:0 -468px;width:29px;height:28px}
+.serviceIcones_meeting_off{background-image:url('images/serviceIcones.png');background-position:0 -546px;width:29px;height:28px}
+.serviceIcones_meeting_on{background-image:url('images/serviceIcones.png');background-position:0 -624px;width:29px;height:28px}
+.serviceIcones_parking_h{background-image:url('images/serviceIcones.png');background-position:0 -702px;width:28px;height:28px}
+.serviceIcones_parking_off{background-image:url('images/serviceIcones.png');background-position:0 -780px;width:28px;height:28px}
+.serviceIcones_parking_on{background-image:url('images/serviceIcones.png');background-position:0 -858px;width:28px;height:28px}
+.serviceIcones_resto_h{background-image:url('images/serviceIcones.png');background-position:0 -936px;width:28px;height:28px}
+.serviceIcones_resto_off{background-image:url('images/serviceIcones.png');background-position:0 -1014px;width:28px;height:28px}
+.serviceIcones_resto_on{background-image:url('images/serviceIcones.png');background-position:0 -1092px;width:28px;height:28px}
+.serviceIcones_secr_h{background-image:url('images/serviceIcones.png');background-position:0 -1170px;width:28px;height:28px}
+.serviceIcones_secr_off{background-image:url('images/serviceIcones.png');background-position:0 -1248px;width:28px;height:28px}
+.serviceIcones_secr_on{background-image:url('images/serviceIcones.png');background-position:0 -1326px;width:28px;height:28px}
+.serviceIcones_wifi_h{background-image:url('images/serviceIcones.png');background-position:0 -1404px;width:28px;height:28px}
+.serviceIcones_wifi_off{background-image:url('images/serviceIcones.png');background-position:0 -1482px;width:28px;height:28px}
+.serviceIcones_wifi_on{background-image:url('images/serviceIcones.png');background-position:0 -1560px;width:28px;height:28px}
+.serviceIcones_wifip_h{background-image:url('images/serviceIcones.png');background-position:0 -1638px;width:28px;height:28px}
+.serviceIcones_wifip_off{background-image:url('images/serviceIcones.png');background-position:0 -1716px;width:28px;height:28px}
+.serviceIcones_wifip_on{background-image:url('images/serviceIcones.png');background-position:0 -1794px;width:28px;height:28px}
+.serviceItem{float:left}
+.available{margin:3px}
+.available:before{margin-right:5px;content:url('images/available.png')}
+.searchDesc{background:#f8f8f8;width:48%;height:230px;padding:20px}
+.searchDesc p{margin:10px 0}

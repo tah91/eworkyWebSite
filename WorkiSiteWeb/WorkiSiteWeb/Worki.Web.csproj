@@ -222,23 +222,48 @@
       <DependentUpon>WorkiDB.mdf</DependentUpon>
     </Content>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Admin.min.css">
+      <DependentUpon>Admin.css</DependentUpon>
+    </Content>
     <Content Include="Content\Booking.css" />
+    <Content Include="Content\Booking.min.css">
+      <DependentUpon>Booking.css</DependentUpon>
+    </Content>
+    <Content Include="Content\CreateLocalisation.min.css">
+      <DependentUpon>CreateLocalisation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\galleria\galleria-1.2.4.min.js">
+      <DependentUpon>galleria-1.2.4.js</DependentUpon>
+    </Content>
+    <Content Include="Content\galleria\galleria.classic.min.js">
+      <DependentUpon>galleria.classic.js</DependentUpon>
+    </Content>
     <Content Include="Content\images\arrow.png" />
     <Content Include="Content\images\csv-import.png" />
     <Content Include="Content\images\favorite.png" />
     <Content Include="Content\images\profil_social.png" />
+    <Content Include="Content\Index.min.css">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
+    <Content Include="Content\jquery-ui-1.8.12.custom.min.css">
+      <DependentUpon>jquery-ui-1.8.12.custom.css</DependentUpon>
+    </Content>
     <Content Include="Content\jquery-ui-timepicker-addon.css" />
+    <Content Include="Content\jquery-ui-timepicker-addon.min.css">
+      <DependentUpon>jquery-ui-timepicker-addon.css</DependentUpon>
+    </Content>
+    <Content Include="Content\jquery.fileupload-ui.min.css">
+      <DependentUpon>jquery.fileupload-ui.css</DependentUpon>
+    </Content>
+    <Content Include="Content\LocalisationDetail.min.css">
+      <DependentUpon>LocalisationDetail.css</DependentUpon>
+    </Content>
     <Content Include="Content\Profil.css" />
     <Content Include="Content\galleria\classic-loader.gif" />
     <Content Include="Content\galleria\classic-map.png" />
     <Content Include="Content\galleria\galleria.classic.css" />
     <Content Include="Content\images\coworking.png" />
     <Content Include="Content\images\favicon.png" />
-    <Content Include="Content\images\lightbox-blank.gif" />
-    <Content Include="Content\images\lightbox-btn-close.gif" />
-    <Content Include="Content\images\lightbox-btn-next.gif" />
-    <Content Include="Content\images\lightbox-btn-prev.gif" />
-    <Content Include="Content\images\lightbox-ico-loading.gif" />
     <Content Include="Content\images\jobs_mark.jpeg" />
     <Content Include="Content\images\pbar-ani.gif" />
     <Content Include="Content\images\photo2.jpg" />
@@ -248,6 +273,27 @@
     <Content Include="Content\images\serviceIcones.png" />
     <Content Include="Content\images\visitor.jpg" />
     <Content Include="Content\jquery.fileupload-ui.css" />
+    <Content Include="Content\Profil.min.css">
+      <DependentUpon>Profil.css</DependentUpon>
+    </Content>
+    <Content Include="Content\rateit.min.css">
+      <DependentUpon>rateit.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Search.min.css">
+      <DependentUpon>Search.css</DependentUpon>
+    </Content>
+    <Content Include="Content\SearchResults.min.css">
+      <DependentUpon>SearchResults.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\skin.min.css">
+      <DependentUpon>skin.css</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\base\jquery-ui.min.css">
+      <DependentUpon>jquery-ui.css</DependentUpon>
+    </Content>
     <Content Include="Content\Visitor.css" />
     <Content Include="Content\CreateLocalisation.css" />
     <Content Include="Content\icons\error.gif" />
@@ -327,14 +373,15 @@
     <Content Include="Content\images\yahoo.gif" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\jquery-ui-1.8.12.custom.css" />
-    <Content Include="Content\jquery.lightbox-0.5.css" />
     <Content Include="Content\rateit.css" />
     <Content Include="Content\Search.css" />
     <Content Include="Content\LocalisationDetail.css" />
     <Content Include="Content\SearchResults.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\skin.css" />
-    <Content Include="Content\uniform.default.css" />
+    <Content Include="Content\Visitor.min.css">
+      <DependentUpon>Visitor.css</DependentUpon>
+    </Content>
     <Content Include="Mvc.sitemap">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -343,53 +390,109 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\application.js" />
+    <Content Include="Scripts\application.min.js">
+      <DependentUpon>application.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\cufon-yui.js" />
     <Content Include="Content\galleria\galleria-1.2.4.js" />
-    <Content Include="Content\galleria\galleria-1.2.4.min.js" />
     <Content Include="Content\galleria\galleria.classic.js" />
-    <Content Include="Content\galleria\galleria.classic.min.js" />
+    <Content Include="Scripts\cufon-yui.min.js">
+      <DependentUpon>cufon-yui.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\date.min.js">
+      <DependentUpon>date.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.min.js">
+      <DependentUpon>jquery-1.5.1-vsdoc.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-1.5.1.js" />
-    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js">
+      <DependentUpon>jquery-1.5.1.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
-    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
-    <Content Include="Scripts\jquery-ui-1.8.12.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js">
+      <DependentUpon>jquery-ui-1.8.11.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-ui-1.8.12.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.8.12.custom.min.js">
+      <DependentUpon>jquery-ui-1.8.12.custom.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.min.js">
+      <DependentUpon>jquery-ui-timepicker-addon.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\jquery.fileupload-ui.min.js">
+      <DependentUpon>jquery.fileupload-ui.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.fileupload.min.js">
+      <DependentUpon>jquery.fileupload.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jquery.iframe-transport.min.js">
+      <DependentUpon>jquery.iframe-transport.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.jcarousel.js" />
-    <Content Include="Scripts\jquery.jcarousel.min.js" />
-    <Content Include="Scripts\jquery.lightbox-0.5.min.js" />
-    <Content Include="Scripts\jquery.placeholder.min.js" />
-    <Content Include="Scripts\jquery.qtip-1.0.0-rc3.min.js" />
-    <Content Include="Scripts\jquery.rateit.min.js" />
-    <Content Include="Scripts\jquery.simpletip-1.3.1.min.js" />
-    <Content Include="Scripts\jquery.uniform.js" />
-    <Content Include="Scripts\jquery.uniform.min.js" />
+    <Content Include="Scripts\jquery.jcarousel.min.js">
+      <DependentUpon>jquery.jcarousel.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.placeholder.js" />
+    <Content Include="Scripts\jquery.placeholder.min.js">
+      <DependentUpon>jquery.placeholder.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.rateit.js" />
+    <Content Include="Scripts\jquery.rateit.min.js">
+      <DependentUpon>jquery.rateit.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js">
+      <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.min.js">
+      <DependentUpon>jquery.validate-vsdoc.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.min.js">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.min.js">
+      <DependentUpon>MicrosoftAjax.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.min.js">
+      <DependentUpon>MicrosoftMvcAjax.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.min.js">
+      <DependentUpon>MicrosoftMvcValidation.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\modernizr-1.7.js" />
-    <Content Include="Scripts\modernizr-1.7.min.js" />
-    <Content Include="Scripts\slides.min.jquery.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js">
+      <DependentUpon>modernizr-1.7.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\slides.jquery.js" />
+    <Content Include="Scripts\slides.jquery.min.js">
+      <DependentUpon>slides.jquery.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js" />
-    <Content Include="Scripts\steinem_unicode_regular.typeface.js" />
-    <Content Include="Scripts\typeface-0.15.js" />
+    <Content Include="Scripts\Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js">
+      <DependentUpon>Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\WorkiMap.js" />
     <Content Include="App_Code\RazorHelpers.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
+    <Content Include="Scripts\WorkiMap.min.js">
+      <DependentUpon>WorkiMap.js</DependentUpon>
+    </Content>
     <Content Include="Views\Account\inscription-reussie.cshtml" />
     <Content Include="Views\Account\reset-mdp-reussi.cshtml" />
     <Content Include="Views\Account\reset-mdp.cshtml" />
