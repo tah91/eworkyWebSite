@@ -8,6 +8,7 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using Worki.Data.Models;
 using Worki.Infrastructure.Helpers;
+using System.Configuration;
 
 namespace Worki.Web.Helpers
 {
@@ -330,6 +331,20 @@ namespace Worki.Web.Helpers
             s = s.Replace(Environment.NewLine, " ");
             s = s.Replace("'", "\\'");
             return s;
+        }
+
+        static bool _IsAzureDebug = bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
+
+        /// <summary>
+        /// Use to include script in view, get min version if in release
+        /// </summary>
+        /// <param name="scriptFileName">script file name</param>
+        /// <returns>correct version of file</returns>
+        public static string Script(this UrlHelper instance, string scriptFileName)
+        {
+            if (!_IsAzureDebug)
+                scriptFileName = scriptFileName.Replace(".js", ".min.js");
+            return instance.Content(scriptFileName);
         }
     }
 }
