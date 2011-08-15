@@ -3,7 +3,7 @@
 <div class="localisationDetail borderRadius">
     <div class="localisationDetailHead">
         <div class="localisationLogo float-left">
-		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetLogoPic()), Model.Name)
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetLogoPic(), true), Model.Name)
         </div>
         <div class="localisationTitle float-left">
             <div class="float-left blue bold">
@@ -224,7 +224,7 @@
 @*            <div class="contentBlock">
                 <h3 class="blue">Recommendé par</h3>
 				<div class="commentAvatar borderedImg float-left">
-				@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+				@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
 				</div>
 				<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
 				@if (Model.HasFeature(Feature.LocalisationOwner, FeatureType.General))

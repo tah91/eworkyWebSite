@@ -16,8 +16,7 @@
 			<div class="caption">
                 <div class="caption_avatar float-left">
 					<a href="@memberLink">
-						@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar), item.Member.MemberMainData.FirstName + " " + item.Member.MemberMainData.LastName)
-						@*<img src="@ControllerHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar)" alt="@item.Member.MemberMainData.FirstName @item.Member.MemberMainData.LastName"/>*@
+						@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar, true), item.Member.MemberMainData.FirstName + " " + item.Member.MemberMainData.LastName)
 					</a>
                 </div>
                 <div class="caption_text">

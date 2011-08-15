@@ -13,7 +13,7 @@ namespace Worki.Web.Helpers
 		public static LocalisationJson GetJson(this Localisation loc)
 		{
 			var image = loc.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
-			var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName);
+            var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName, true);
 			return new LocalisationJson
 			{
 				ID = loc.ID,

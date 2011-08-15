@@ -7,7 +7,7 @@
     var imagePath = string.Empty;
     if (!string.IsNullOrEmpty(Model.GetMainPic()))
     {
-        imagePath = Html.GetFileFullUrl(ControllerHelpers.GetUserImagePath(Model.GetMainPic()), false);
+        imagePath = Html.GetFileFullUrl(ControllerHelpers.GetUserImagePath(Model.GetMainPic(), true), false);
     }
     else
     { 

@@ -46,3 +46,5 @@ _ReSharper*/
 
 # Logs
 Logs/
+WorkiSiteWeb/WorkiSiteWeb/Users/*.*
+WorkiSiteWeb/WorkiSiteWeb/Users/thumbnail/*.*

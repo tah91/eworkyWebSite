@@ -25,7 +25,7 @@
             <a href="@Url.Action(MVC.Localisation.Details(loc.ID, ControllerHelpers.GetSeoTitle(loc.Name)))">
                 <div class="localisationTag float-left">
                     <div class="localisationImgDiv borderedImg">
-					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic()), loc.Name)
+					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic(), true), loc.Name)
                     </div>
                     <div class="localisationImgDesc">
                         <span class="bold">@loc.Name</span><br />

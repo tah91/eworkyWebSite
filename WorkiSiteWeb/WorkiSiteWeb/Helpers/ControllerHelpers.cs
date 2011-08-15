@@ -23,6 +23,33 @@ namespace Worki.Web.Helpers
     /// </summary>
     public static class ControllerHelpers
     {
+        const char _PathSeparator = '/';
+        const string Thumbnail = "thumbnail";
+        static CloudBlobContainer _BlobContainer;
+        static int _MaxWidth;
+        static int _ThumbMaxWidth;
+        static string _BlobContainerName;
+        static string _UserImgFolder;
+        static bool _IsDevStore;
+        static ImageCodecInfo _JpegCodecInfo;
+        static EncoderParameters _EncoderParameters;
+
+        static ControllerHelpers()
+        {
+            _MaxWidth = int.Parse(ConfigurationManager.AppSettings["UploadFileMaxWidth"]);
+            _ThumbMaxWidth = int.Parse(ConfigurationManager.AppSettings["ThumbFileMaxWidth"]);
+            _BlobContainerName = ConfigurationManager.AppSettings["AzureBlobContainer"];
+            _UserImgFolder = ConfigurationManager.AppSettings["UserImageFolder"];
+            _IsDevStore = bool.Parse(ConfigurationManager.AppSettings["IsDevStorage"]);
+            _JpegCodecInfo = ImageCodecInfo.GetImageEncoders().Where(codec => codec.MimeType == "image/jpeg").First();
+            var qualityEncoder = Encoder.Quality;
+            var quality = 100;
+            var ratio = new EncoderParameter(qualityEncoder, quality);
+            _EncoderParameters = new EncoderParameters(1);
+            _EncoderParameters.Param[0] = ratio;
+            _BlobContainer = GetBlobContainer();
+        }
+
         public static string GetJSDouble(double val)
         {
             var str = val.ToString();
@@ -83,7 +110,7 @@ namespace Worki.Web.Helpers
 
         public static void SendVisitorMail(this Controller controller, IEmailService emailService, Visitor visitor)
         {
-            if (controller == null || visitor==null)
+            if (controller == null || visitor == null)
                 return;
 
             var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
@@ -109,21 +136,21 @@ namespace Worki.Web.Helpers
             TagBuilder link = new TagBuilder("a");
             link.MergeAttribute("href", registerUrl);
             link.InnerHtml = Worki.Resources.Models.Account.AccountModels.CompletYourProfil;
-            line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.BePartOfGroupe,link.ToString());
+            line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.BePartOfGroupe, link.ToString());
             content += line.ToString();
 
             line = new TagBuilder("p");
             link = new TagBuilder("a");
             link.MergeAttribute("href", createUrl);
             link.InnerHtml = Worki.Resources.Models.Account.AccountModels.AddWorkplace;
-            line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.IfYouFindThePlaceToWork,link.ToString());
+            line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.IfYouFindThePlaceToWork, link.ToString());
             content += line.ToString();
 
             line = new TagBuilder("p");
             link = new TagBuilder("a");
             link.MergeAttribute("href", searchUrl);
             link.InnerHtml = Worki.Resources.Models.Account.AccountModels.SearhPlace;
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.CommentWhatYouTest,link.ToString());
+            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.CommentWhatYouTest, link.ToString());
             content += line.ToString();
 
             line = new TagBuilder("p");
@@ -134,7 +161,7 @@ namespace Worki.Web.Helpers
             link = new TagBuilder("a");
             link.MergeAttribute("href", "http://www.facebook.com/pages/eWorky/226917517335276");
             link.InnerHtml = Worki.Resources.Models.Account.AccountModels.Facebook;
-            
+
             TagBuilder link2 = new TagBuilder("a");
             link2 = new TagBuilder("a");
             link2.MergeAttribute("href", "http://twitter.com/#!/eWorky");
@@ -226,148 +253,131 @@ namespace Worki.Web.Helpers
         }
 
         /// <summary>
-        /// Upload File to destination folder
+        /// Get member display name from authentication data
         /// </summary>
-        /// <param name="controller">Controller to get the folder Path</param>
-        /// <param name="postedFile">File to upload</param>
-        /// <returns>Name of the file created on server side</returns>
-        public static string UploadFile(this Controller controller, HttpPostedFileBase postedFile)
+        /// <param name="ident">the identity containing authentication data</param>
+        /// <returns>display name</returns>
+        public static string GetIdentityDisplayName(IIdentity ident)
         {
-            var userImgFolder = ConfigurationManager.AppSettings["UserImageFolder"];
-            var destinationFolder = controller.Server.MapPath(userImgFolder);
-            return UploadFile(postedFile, destinationFolder);
+            FormsIdentity formIdent = ident as FormsIdentity;
+            if (formIdent == null)
+                return string.Empty;
+            var ticket = formIdent.Ticket;
+            return Member.GetNameFromUserData(ticket.UserData);
         }
 
-		/// <summary>
-		/// Get member display name from authentication data
-		/// </summary>
-		/// <param name="ident">the identity containing authentication data</param>
-		/// <returns>display name</returns>
-		public static string GetIdentityDisplayName(IIdentity ident)
-		{
-			FormsIdentity formIdent = ident as FormsIdentity;
-			if (formIdent == null)
-				return string.Empty;
-			var ticket = formIdent.Ticket;
-			return Member.GetNameFromUserData(ticket.UserData);
-		}
+        /// <summary>
+        /// Get member id from authentication data
+        /// </summary>
+        /// <param name="ident">the identity containing authentication data</param>
+        /// <returns>member id</returns>
+        public static int GetIdentityId(IIdentity ident)
+        {
+            FormsIdentity formIdent = ident as FormsIdentity;
+            if (formIdent == null)
+                return 0;
+            var ticket = formIdent.Ticket;
+            return Member.GetIdFromUserData(ticket.UserData);
+        }
 
-		/// <summary>
-		/// Get member id from authentication data
-		/// </summary>
-		/// <param name="ident">the identity containing authentication data</param>
-		/// <returns>member id</returns>
-		public static int GetIdentityId(IIdentity ident)
-		{
-			FormsIdentity formIdent = ident as FormsIdentity;
-			if (formIdent == null)
-				return 0;
-			var ticket = formIdent.Ticket;
-			return Member.GetIdFromUserData(ticket.UserData);
-		}
+        /// <summary>
+        /// Get the path of an image on a server
+        /// if on azure, get the corresponding url
+        /// </summary>
+        /// <param name="image">name of the image</param>
+        /// <returns>full path of the image</returns>
+        public static string GetUserImagePath(string image, bool thumb = false)
+        {
+            if (string.IsNullOrEmpty(image))
+                return string.Empty;
+            var fileName = ThumbPath(image, thumb); 
+            if (RoleEnvironment.IsAvailable)
+            {
+                var blobContainer = GetBlobContainer();
+                if (blobContainer == null)
+                    return string.Empty;
+                var blob = blobContainer.GetBlobReference(fileName);
+                return blob.Uri.AbsoluteUri;
+            }
+            else
+            {
+                return _UserImgFolder + _PathSeparator + fileName;
+            }
+        }
 
-		static CloudBlobContainer _BlobContainer = null;
+        /// <summary>
+        /// Upload file to server (file system or blob if azure)
+        /// and return the name of the file created
+        /// </summary>
+        /// <param name="postedFile">file to upload</param>
+        /// <returns>the file name</returns>
+        public static string UploadFile(this Controller controller, HttpPostedFileBase postedFile)
+        {
+            if (postedFile == null)
+                return string.Empty;
+            var ext = Path.GetExtension(postedFile.FileName);
+            var nameToSave = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.Now) + ext;
+            using (var fs = postedFile.InputStream)
+            {
+                SaveFile(controller, fs, nameToSave, ext, postedFile.ContentType);
+                SaveFile(controller, fs, nameToSave, ext, postedFile.ContentType, true);
+            }
+            return nameToSave;
+        }
 
-		public static CloudBlobContainer GetBlobContainer(string containerName)
-		{
-			if (_BlobContainer != null)
-				return _BlobContainer;
+        static CloudBlobContainer GetBlobContainer()
+        {
+            if (!RoleEnvironment.IsAvailable || _BlobContainer != null)
+                return _BlobContainer;
 
-			if (string.IsNullOrEmpty(containerName))
-				return null;
-			var isDevStore = bool.Parse(ConfigurationManager.AppSettings["IsDevStorage"]);
-			var blobStorageAccount = isDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(MiscHelpers.DataConnectionString);
-			var blobClient = blobStorageAccount.CreateCloudBlobClient();
-			var blobContainer = blobClient.GetContainerReference(containerName);
-			blobContainer.CreateIfNotExist();
-			BlobContainerPermissions blobPermission = new BlobContainerPermissions();
-			blobPermission.PublicAccess = BlobContainerPublicAccessType.Container;
-			blobContainer.SetPermissions(blobPermission);
+            if (string.IsNullOrEmpty(_BlobContainerName))
+                return null;
 
-			_BlobContainer = blobContainer;
-			return blobContainer;
-		}
+            var blobStorageAccount = _IsDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(MiscHelpers.DataConnectionString);
+            var blobClient = blobStorageAccount.CreateCloudBlobClient();
+            var blobContainer = blobClient.GetContainerReference(_BlobContainerName);
+            blobContainer.CreateIfNotExist();
+            blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Container });
 
-		public const char PathSeparator = '/';
-		/// <summary>
-		/// Get the path of an image on a server
-		/// if on azure, get the corresponding url
-		/// </summary>
-		/// <param name="image">name of the image</param>
-		/// <returns>full path of the image</returns>
-		public static string GetUserImagePath(string image)
-		{
-			if (string.IsNullOrEmpty(image))
-				return string.Empty;
-			var isAzure = RoleEnvironment.IsAvailable;
+            _BlobContainer = blobContainer;
+            return blobContainer;
+        }
 
-			if (isAzure)
-			{
-				var blobContainerName = ConfigurationManager.AppSettings["AzureBlobContainer"];
-				var blobContainer = GetBlobContainer(blobContainerName);
-				if (blobContainer == null)
-					return string.Empty;
-				var blob = blobContainer.GetBlobReference(image);
-				return blob.Uri.AbsoluteUri;
-			}
-			else
-			{
-				var userImgFolder = ConfigurationManager.AppSettings["UserImageFolder"];
-				return userImgFolder + PathSeparator + image;
-			}
-		}
+        static string ThumbPath(string path, bool thumb)
+        {
+            return thumb ? Thumbnail + _PathSeparator + path : path;
+        }
 
-		/// <summary>
-		/// Upload file to server (file system or blob if azure)
-		/// and return the name of the file created
-		/// </summary>
-		/// <param name="file">file to upload</param>
-		/// <param name="destinationFolder">destination folder</param>
-		/// <returns>the file name</returns>
-		public static string UploadFile(HttpPostedFileBase file, string destinationFolder)
-		{
-			if (file == null)
-				return string.Empty;
-			var ext = Path.GetExtension(file.FileName);
-			var nameToSave = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.Now) + ext;
-			var path = destinationFolder + PathSeparator + nameToSave;
-			var isAzure = RoleEnvironment.IsAvailable;
-			var maxWidth = int.Parse(ConfigurationManager.AppSettings["UploadFileMaxWidth"]);
-			var qualityEncoder = Encoder.Quality;
-			var quality = 100;
-			var ratio = new EncoderParameter(qualityEncoder, quality);
-			var codecParams = new EncoderParameters(1);
-			codecParams.Param[0] = ratio;
-			var jpegCodecInfo = ImageCodecInfo.GetImageEncoders().Where(codec => codec.MimeType == "image/jpeg").First();
-			using (var fs = file.InputStream)
-			{
-				using (var bmp = MiscHelpers.Resize(fs, maxWidth, maxWidth))
-				{
-					if (isAzure)
-					{
-						var blobContainerName = ConfigurationManager.AppSettings["AzureBlobContainer"];
-						var blobContainer = GetBlobContainer(blobContainerName);
-						if (blobContainer == null)
-							return string.Empty;
-						var blob = blobContainer.GetBlobReference(nameToSave);
+        static void SaveFile(Controller controller, Stream fs, string nameToSave, string ext, string contentType, bool thumb = false)
+        {
+            var width = thumb ? _ThumbMaxWidth : _MaxWidth;
+            var fileName = ThumbPath(nameToSave, thumb);
+            using (var bmp = MiscHelpers.Resize(fs, width, width))
+            {
+                if (RoleEnvironment.IsAvailable)
+                {
+                    if (GetBlobContainer() == null)
+                        return;
 
-						var ms = new MemoryStream();
-						bmp.Save(ms, jpegCodecInfo, codecParams);
-						ms.Seek(0, SeekOrigin.Begin);
-						blob.UploadFromStream(ms);
-						blob.Metadata["FileName"] = nameToSave;
-						blob.Metadata["FileExtension"] = ext;
-						blob.SetMetadata();
-						blob.Properties.ContentType = file.ContentType;
-						blob.SetProperties();
-					}
-					else
-					{
-						bmp.Save(path, jpegCodecInfo, codecParams);
-					}
-				}
-			}
-			return nameToSave;
-		}
+                    var blob = GetBlobContainer().GetBlobReference(fileName);
+
+                    var ms = new MemoryStream();
+                    bmp.Save(ms, _JpegCodecInfo, _EncoderParameters);
+                    ms.Seek(0, SeekOrigin.Begin);
+                    blob.UploadFromStream(ms);
+                    blob.Metadata["FileName"] = fileName;
+                    blob.Metadata["FileExtension"] = ext;
+                    blob.SetMetadata();
+                    blob.Properties.ContentType = contentType;
+                    blob.SetProperties();
+                }
+                else
+                {
+                    var destinationFolder = controller.Server.MapPath(_UserImgFolder);
+                    var path = destinationFolder + _PathSeparator + fileName;
+                    bmp.Save(path, _JpegCodecInfo, _EncoderParameters);
+                }
+            }
+        }
     }
 }

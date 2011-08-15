@@ -173,7 +173,7 @@ namespace Worki.Web.Controllers
 					if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
 						continue;
 					var uploadedFileName = this.UploadFile(postedFile);
-					var url = ControllerHelpers.GetUserImagePath(uploadedFileName);
+                    var url = ControllerHelpers.GetUserImagePath(uploadedFileName, true);
 					var deleteUrl = urlHelper.Action(MVC.Localisation.DeleteImage(uploadedFileName));
 
 					toRet.Add(new ImageJson
@@ -225,7 +225,7 @@ namespace Worki.Web.Controllers
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 			foreach (var file in filesFromCache.Files)
             {
-				var url = ControllerHelpers.GetUserImagePath(file.FileName);
+                var url = ControllerHelpers.GetUserImagePath(file.FileName, true);
                 var deleteUrl = urlHelper.Action(MVC.Localisation.DeleteImage(file.FileName));
                 toRet.Add(new ImageJson
                 {

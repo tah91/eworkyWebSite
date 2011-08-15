@@ -21,7 +21,7 @@
         </span>
     </div>
     <div class="commentAvatar borderedImg float-left">
-    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
     </div>
     <div class="commentContent float-left" style=@(displayLoc ? "width:70%" : "")>
         <p>@Html.Nl2Br(Model.Post)</p>
@@ -31,7 +31,7 @@
 	{
 		<a href="@Url.Action(MVC.Localisation.Details(Model.LocalisationID, ControllerHelpers.GetSeoTitle(Model.Localisation.Name)))">
 			<div class="commentLocAvatar borderedImg float-right">
-			@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic()), Model.Localisation.Name)
+			@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
 			</div>
 		</a>
 	}

@@ -14,7 +14,7 @@
     @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))
     {
 		<a href="@ViewData["link"]">
-		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic()), Model.Localisation.Name)
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
         </a>
     }
     </div>
