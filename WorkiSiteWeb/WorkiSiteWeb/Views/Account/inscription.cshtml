@@ -4,7 +4,7 @@
 {
     <meta name="robots" content="noindex">
     <title>@Html.WorkiTitle(Worki.Resources.Views.Account.AccountString.Inscription) </title>
-    <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
     <div class="borderContainer">
@@ -166,35 +166,35 @@
 
 @section ScriptContent
 {
-    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
-    <script src="@MiscHelpers.jqueryui " type="text/javascript"></script>
-    @Html.Partial(MVC.Shared.Views._CufonScript)
     <script type="text/javascript">
-    $(document).ready(function () {
-        $.datepicker.regional['fr'] = {
-            closeText: 'Fermer',
-            prevText: '&#x3c;Préc',
-            nextText: 'Suiv&#x3e;',
-            currentText: 'Courant',
-            monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin','Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-            monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun','Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
-            dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-            dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-            dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
-            weekHeader: 'Sm',
-            dateFormat: 'dd/mm/yy',
-            firstDay: 1,
-            isRTL: false,
-            showMonthAfterYear: false,
-            yearSuffix: ''
-        };
-        $.datepicker.setDefaults($.datepicker.regional['fr']);
-        $("#datepicker").datepicker();
-        $(".dp").datepicker({  
-             changeMonth: true,  
-             changeYear: true,
-             yearRange: '1911:2000'
+        head.js("@MiscHelpers.jqueryui");
+
+        head.ready(function () {
+            $.datepicker.regional['fr'] = {
+                closeText: 'Fermer',
+                prevText: '&#x3c;Préc',
+                nextText: 'Suiv&#x3e;',
+                currentText: 'Courant',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['fr']);
+            $("#datepicker").datepicker();
+            $(".dp").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1911:2000'
+            });
         });
-     });
     </script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
 }

@@ -6,11 +6,11 @@
 	<meta name="Description" content="@Model.Localisation.Description"/>
 	<title>@Html.WorkiTitle(Model.Localisation.Name)</title>
     @Html.Partial(MVC.Shared.Views._OpenGraphHead, Model.Localisation) 
-    <link href="@Url.Content(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.SearchResults_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.LocalisationDetail_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />	
-    <link href="@Url.Content(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
+    <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.SearchResults_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.LocalisationDetail_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />	
+    <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 @if (Model.FromSearch)
@@ -35,40 +35,39 @@
 
 @section ScriptContent
 {
-    <script src="@MiscHelpers.jquery" type="text/javascript"></script>
-	<script src="@Links.Content.galleria.galleria_1_2_4_js)" type="text/javascript"></script>
-	<script type="text/javascript">
-		// Load the classic theme
-		Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
+    <script type="text/javascript">
+        head.js("@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)")
+            .js("@Url.VersionedContent(Links.Scripts.jquery_rateit_js)")
+            .js("@Url.VersionedContent(Links.Scripts.tabs_js)");
 
-		// Initialize Galleria
-		$('#gallery').galleria({
-			//width: 600,
-			height: 350,
-			showInfo: false
-		});
-	</script>
-	<script src="@Url.Script(Links.Scripts.jquery_rateit_js)" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			BindRateIt = function (name) {
-				var rateItId = '#rateIt' + name;
-				//var id = '#Comment_' + name;
-				var id = '#' + name;
-				$(rateItId).bind('rated', function (event, value) {
-					$(id).val(value);
-				});
-			}
-			BindRateIt("Rating");
-			BindRateIt("RatingPrice");
-			BindRateIt("RatingWifi");
-			BindRateIt("RatingDispo");
-			BindRateIt("RatingWelcome");
-		});
-	</script>
-	<script type="text/javascript">
-		$().ready(function () {
-			$("#favLinkAddButton").live("click", function () {
+        head.ready(function () {
+            // Load the classic theme
+            Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
+
+            // Initialize Galleria
+            $('#gallery').galleria({
+                //width: 600,
+                height: 350,
+                showInfo: false
+            });
+
+            //rateit
+            BindRateIt = function (name) {
+                var rateItId = '#rateIt' + name;
+                //var id = '#Comment_' + name;
+                var id = '#' + name;
+                $(rateItId).bind('rated', function (event, value) {
+                    $(id).val(value);
+                });
+            }
+            BindRateIt("Rating");
+            BindRateIt("RatingPrice");
+            BindRateIt("RatingWifi");
+            BindRateIt("RatingDispo");
+            BindRateIt("RatingWelcome");
+
+            //favorites
+            $("#favLinkAddButton").live("click", function () {
 				$.ajax({
 						url: "@Url.Action(MVC.Profil.ActionNames.AddToFavorite,MVC.Profil.Name)",
 						data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
@@ -86,13 +85,13 @@
 						}
 					});
 			});
-		});
-	</script>
+
+        });
+    </script>
 	<!-- Placez cette balise dans la section <head> ou juste avant la balise de fermeture </body> -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
 		{ lang: 'fr' }
 	</script>
-	@Html.Partial(MVC.Shared.Views._TabScript)
     @Html.Partial(MVC.Shared.Views._CufonScript)
 	@Html.Partial(MVC.Shared.Views._CommentFormScript, Model.Localisation)
 }

@@ -11,7 +11,7 @@ namespace Worki.Web.Controllers
 {
     [HandleError]
     [CompressFilter(Order = 1)]
-    [CacheFilter(Duration = 60, Order = 2)]
+    //[CacheFilter(Duration = 60, Order = 2)]
     public partial class HomeController : Controller
     {
         ILocalisationRepository _LocalisationRepository; 

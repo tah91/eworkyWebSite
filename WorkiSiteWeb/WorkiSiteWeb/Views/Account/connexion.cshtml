@@ -4,7 +4,7 @@
 {  
     <meta name="robots" content="noindex">
     <title>@Html.WorkiTitle(Worki.Resources.Views.Account.AccountString.Login)</title>
-    <link href="@Url.Content(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
 }
 
 
@@ -66,6 +66,5 @@
 
 @section ScriptContent
 {
-    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
 }

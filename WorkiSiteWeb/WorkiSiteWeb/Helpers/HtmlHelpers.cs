@@ -9,6 +9,7 @@ using System.Web.Routing;
 using Worki.Data.Models;
 using Worki.Infrastructure.Helpers;
 using System.Configuration;
+using System.Reflection;
 
 namespace Worki.Web.Helpers
 {
@@ -336,15 +337,18 @@ namespace Worki.Web.Helpers
         static bool _IsAzureDebug = bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
 
         /// <summary>
-        /// Use to include script in view, get min version if in release
+        /// Append build dependend id at the end of css/ js file
+        /// to force ctrl f5 on each build
         /// </summary>
-        /// <param name="scriptFileName">script file name</param>
+        /// <param name="scriptFileName">file name</param>
         /// <returns>correct version of file</returns>
-        public static string Script(this UrlHelper instance, string scriptFileName)
+        public static string VersionedContent(this UrlHelper instance, string fileName)
         {
-            if (!_IsAzureDebug)
-                scriptFileName = scriptFileName.Replace(".js", ".min.js");
-            return instance.Content(scriptFileName);
+            Assembly asy = Assembly.GetExecutingAssembly();
+            var hash = string.Empty;
+            if (asy != null)
+                hash = asy.GetHashCode().ToString("x");
+            return string.Format("{0}?{1}", instance.Content(fileName), hash);
         }
     }
 }

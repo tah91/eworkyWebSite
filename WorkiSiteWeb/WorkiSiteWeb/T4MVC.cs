@@ -333,6 +333,9 @@ namespace Links {
         public static readonly string date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/date.min.js") ? Url("date.min.js") : Url("date.js");
                       
         public static readonly string date_min_js = Url("date.min.js");
+        public static readonly string head_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/head.min.js") ? Url("head.min.js") : Url("head.js");
+                      
+        public static readonly string head_min_js = Url("head.min.js");
         public static readonly string jquery_1_5_1_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.5.1-vsdoc.min.js") ? Url("jquery-1.5.1-vsdoc.min.js") : Url("jquery-1.5.1-vsdoc.js");
                       
         public static readonly string jquery_1_5_1_vsdoc_min_js = Url("jquery-1.5.1-vsdoc.min.js");
@@ -396,6 +399,9 @@ namespace Links {
         public static readonly string Steinem_Unicode_400_Steinem_700_Steinem_italic_400_font_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js") ? Url("Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js") : Url("Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js");
                       
         public static readonly string Steinem_Unicode_400_Steinem_700_Steinem_italic_400_font_min_js = Url("Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js");
+        public static readonly string tabs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tabs.min.js") ? Url("tabs.min.js") : Url("tabs.js");
+                      
+        public static readonly string tabs_min_js = Url("tabs.min.js");
         public static readonly string WorkiMap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiMap.min.js") ? Url("WorkiMap.min.js") : Url("WorkiMap.js");
                       
         public static readonly string WorkiMap_min_js = Url("WorkiMap.min.js");
@@ -1710,7 +1716,6 @@ namespace Worki.Web.Controllers {
             public readonly string _DescStartUp = "~/Views/Search/_DescStartUp.cshtml";
             public readonly string _DescStudent = "~/Views/Search/_DescStudent.cshtml";
             public readonly string _DescTeleworker = "~/Views/Search/_DescTeleworker.cshtml";
-            public readonly string _SearchForm = "~/Views/Search/_SearchForm.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Search/_SearchResultSummary.cshtml";
             public readonly string _SelectSearchScript = "~/Views/Search/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Search/_ServicesSelector.cshtml";
@@ -1875,7 +1880,6 @@ namespace T4MVC {
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";
             public readonly string _OpenGraphHead = "~/Views/Shared/_OpenGraphHead.cshtml";
             public readonly string _PictureContainer = "~/Views/Shared/_PictureContainer.cshtml";
-            public readonly string _TabScript = "~/Views/Shared/_TabScript.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
             public readonly string resultats_detail = "~/Views/Shared/resultats-detail.cshtml";
         }

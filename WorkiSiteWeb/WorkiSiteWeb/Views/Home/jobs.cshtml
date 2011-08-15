@@ -81,7 +81,8 @@
 
 @section ScriptContent
 {
-    <script src="@MiscHelpers.jquery " type="text/javascript"></script>
+    <script type="text/javascript">
+        head.js("@Url.VersionedContent(Links.Scripts.tabs_js)");
+    </script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
-	@Html.Partial(MVC.Shared.Views._TabScript)
 }

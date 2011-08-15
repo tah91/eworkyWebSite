@@ -3,11 +3,11 @@
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Model.Localisation.ID == 0 ? Worki.Resources.Views.Localisation.LocalisationString.Add :  Worki.Resources.Views.Localisation.LocalisationString.Edit)</title>
-	<link href="@Url.Content(Links.Content.LocalisationDetail_min_css)" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content(Links.Content.CreateLocalisation_min_css)" rel="stylesheet" type="text/css" />
-	@*<link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css)  " rel="stylesheet" type="text/css" />*@
+	<link href="@Url.VersionedContent(Links.Content.LocalisationDetail_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.VersionedContent(Links.Content.CreateLocalisation_min_css)" rel="stylesheet" type="text/css" />
+	@*<link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_css)  " rel="stylesheet" type="text/css" />*@
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
-    <link rel="stylesheet" href="@Url.Content(Links.Content.jquery_fileupload_ui_min_css)" />
+    <link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
 }
 
 

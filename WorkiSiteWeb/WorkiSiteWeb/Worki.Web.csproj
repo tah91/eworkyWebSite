@@ -291,6 +291,10 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\tabs.js" />
+    <Content Include="Scripts\tabs.min.js">
+      <DependentUpon>tabs.js</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\jquery-ui.min.css">
       <DependentUpon>jquery-ui.css</DependentUpon>
     </Content>
@@ -402,6 +406,10 @@
     <Content Include="Scripts\date.js" />
     <Content Include="Scripts\date.min.js">
       <DependentUpon>date.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\head.js" />
+    <Content Include="Scripts\head.min.js">
+      <DependentUpon>head.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.min.js">
@@ -535,7 +543,6 @@
     <Content Include="Views\Home\message-envoye.cshtml" />
     <Content Include="Views\Localisation\_GalleryForm.cshtml" />
     <Content Include="Views\Shared\_CommentForm.cshtml" />
-    <Content Include="Views\Search\_SearchForm.cshtml" />
     <Content Include="Views\Search\_SearchResultSummary.cshtml" />
     <Content Include="Views\Shared\_IconeServices.cshtml" />
     <Content Include="Views\Localisation\supprimer.cshtml" />
@@ -597,7 +604,6 @@
     <Content Include="Views\Profil\editer.cshtml" />
     <Content Include="Views\Profil\dashboard.cshtml" />
     <Content Include="Views\Admin\DeleteWelcomePeople.cshtml" />
-    <Content Include="Views\Shared\_TabScript.cshtml" />
     <Content Include="Views\Profil\_LocalisationTab.cshtml" />
     <Content Include="Views\Profil\_CommentTab.cshtml" />
     <Content Include="Views\Shared\resultats-detail.cshtml" />

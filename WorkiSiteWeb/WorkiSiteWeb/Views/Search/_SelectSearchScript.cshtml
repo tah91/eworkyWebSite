@@ -269,7 +269,7 @@
 }
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    head.ready(function () {
         @{ bool isSearchForm = (bool)ViewData["IsSearchForm"] ; }
         var offer0 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea, isSearchForm).ToString()))';
         var offer1 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessRoom, isSearchForm).ToString()))';
