@@ -11,7 +11,7 @@ namespace Worki.Web.Controllers
 {
     [HandleError]
     [CompressFilter(Order = 1)]
-    //[CacheFilter(Duration = 60, Order = 2)]
+    [CacheFilter(Order = 2)]
     public partial class HomeController : Controller
     {
         ILocalisationRepository _LocalisationRepository; 
@@ -28,6 +28,15 @@ namespace Worki.Web.Controllers
             this._Logger = logger;
             this._EmailService = emailService;
             this._WelcomePeopleRepository = welcomePeopleRepository;
+        }
+
+        /// <summary>
+        /// Return view of error
+        /// </summary>
+        /// <returns>View of error</returns>
+        public virtual ActionResult Error()
+        {
+            return View();
         }
 
         /// <summary>

@@ -133,7 +133,7 @@
     <value>Erreur</value>
   </data>
   <data name="ErrorWhenYouAsk" xml:space="preserve">
-    <value>Désolé, une erreur s'est produite lors du traitement de votre demande.</value>
+    <value>Désolé, une erreur s'est produite lors du traitement de votre demande. Vous pouvez retourner sur la page d'accueil : {0} ou nous contacter si le problème persiste : support@eworky.com</value>
   </data>
   <data name="Hourly" xml:space="preserve">
     <value>Horaires</value>

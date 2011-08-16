@@ -4,19 +4,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Worki.Data.Models;
+using Worki.Infrastructure;
 using Worki.Infrastructure.Email;
-/*using DotNetOpenAuth.OpenId.RelyingParty;
-using DotNetOpenAuth.OpenId;
-using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
-using DotNetOpenAuth.Messaging;*/
 using Worki.Infrastructure.Logging;
-using Worki.Web.Helpers;
-using Worki.Data.Repository;
 using Worki.Memberships;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Controllers
 {
     [HandleError]
+    [CompressFilter(Order = 1)]
+    [CacheFilter(Order = 2)]
     public partial class AccountController : Controller
     {
         public const string MemberDisplayNameString = "MemberDisplayName";

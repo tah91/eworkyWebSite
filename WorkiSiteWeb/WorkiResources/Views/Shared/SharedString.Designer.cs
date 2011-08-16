@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Désolé, une erreur s&apos;est produite lors du traitement de votre demande..
+        ///   Looks up a localized string similar to Désolé, une erreur s&apos;est produite lors du traitement de votre demande. Vous pouvez retourner sur la page d&apos;accueil : {0} ou nous contacter si le problème persiste : support@eworky.com.
         /// </summary>
         public static string ErrorWhenYouAsk {
             get {

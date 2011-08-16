@@ -12,10 +12,13 @@ using Worki.Data.Repository;
 using Worki.Infrastructure.Helpers;
 using Worki.Data.Models;
 using Worki.Memberships;
+using Worki.Infrastructure;
 
 namespace Worki.Web.Controllers
 {
 	[Authorize(Roles = MiscHelpers.AdminRole)]
+    [CompressFilter(Order = 1)]
+    [CacheFilter(Order = 2)]
     public partial class AdminController : Controller
     {
         ILocalisationRepository _LocalisationRepository;

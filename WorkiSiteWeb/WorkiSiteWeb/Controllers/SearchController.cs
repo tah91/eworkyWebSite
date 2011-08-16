@@ -13,6 +13,8 @@ using Worki.Services;
 namespace Worki.Web.Controllers
 {
     [HandleError]
+    [CompressFilter(Order = 1)]
+    [CacheFilter(Order = 2)]
     [ValidateOnlyIncomingValues]
     public partial class SearchController : Controller
     {

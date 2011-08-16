@@ -13,6 +13,8 @@ using Worki.Infrastructure.Helpers;
 namespace Worki.Web.Controllers
 {
     [HandleError]
+    [CompressFilter(Order = 1)]
+    [CacheFilter(Order = 2)]
     //[ValidateOnlyOnSubmit(ButtonName="valid")]
     public partial class LocalisationController : Controller
     {

@@ -8,9 +8,12 @@ using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Web.Helpers;
 using Worki.Service;
+using Worki.Infrastructure;
 
 namespace Worki.Web.Controllers
 {
+    [CompressFilter(Order = 1)]
+    [CacheFilter(Order = 2)]
 	public partial class BookingController : Controller
 	{
 		#region Private

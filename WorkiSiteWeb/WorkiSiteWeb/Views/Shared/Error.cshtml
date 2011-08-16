@@ -5,6 +5,6 @@
 
 
 <h2>
-    @Worki.Resources.Views.Shared.SharedString.ErrorWhenYouAsk
+    @Html.Raw(string.Format(Worki.Resources.Views.Shared.SharedString.ErrorWhenYouAsk,Html.ActionLink("www.eworky.com",MVC.Home.Index())))
 </h2>
 

@@ -6,9 +6,13 @@ using Worki.Web.Helpers;
 using Worki.Data.Repository;
 using Worki.Data.Models;
 using System.Linq;
+using Worki.Infrastructure;
 
 namespace Worki.Web.Controllers
 {
+    [HandleError]
+    [CompressFilter(Order = 1)]
+    [CacheFilter(Order = 2)]
 	public partial class ProfilController : Controller
 	{
 		#region Private
