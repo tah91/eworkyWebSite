@@ -187,72 +187,72 @@
 {
 	@Html.Partial(MVC.Shared.Views._CufonScript)
     <script type="text/javascript">
-        head.js("@Url.VersionedContent(Links.Scripts.jquery_rateit_js)")
-            .js("@Url.VersionedContent(Links.Scripts.tabs_js)");
+        head.js("@MiscHelpers.jquery", function () {
+            head.js("@Url.VersionedContent(Links.Scripts.jquery_rateit_js)")
+                .js("@Url.VersionedContent(Links.Scripts.tabs_js)", function () {
+                    InitTab(".profilLocalisations");
+                    InitTab(".profilCompany");
+                    InitTab(".profilComments");
 
-        head.ready(function () {
-            InitTab(".profilLocalisations");
-            InitTab(".profilCompany");
-            InitTab(".profilComments");
-
-            function GetInt(str){
-				var intVal = parseInt(str);
-				if(isNaN(intVal))
-					return 1;
-				else
-					return intVal;
-			};
+                    function GetInt(str){
+				        var intVal = parseInt(str);
+				        if(isNaN(intVal))
+					        return 1;
+				        else
+					        return intVal;
+			        };
 			
-			function AjaxFill(tabId,p1,p2,p3,p4,divId) {					
-                $.ajax({
-					url: "@Url.Action(MVC.Profil.ActionNames.AjaxDashboard)",
-					data: { "id": @Model.Member.MemberId, "tabId" : tabId, "p1" : p1, "p2" : p2, "p3" : p3, "p4" : p4 },
-					success: function (data) {
-						$(divId).html(data);
-					}
-				});
-            };
+			        function AjaxFill(tabId,p1,p2,p3,p4,divId) {					
+                        $.ajax({
+					        url: "@Url.Action(MVC.Profil.ActionNames.AjaxDashboard)",
+					        data: { "id": @Model.Member.MemberId, "tabId" : tabId, "p1" : p1, "p2" : p2, "p3" : p3, "p4" : p4 },
+					        success: function (data) {
+						        $(divId).html(data);
+					        }
+				        });
+                    };
 
-			$(".FavLoc").live("click", function () {
+			        $(".FavLoc").live("click", function () {
 
-				var p1 = GetInt($(this).html());
-				var p2 = GetInt($(".AddedLoc .selected").html());
-				var p3 = GetInt($(".PostedCom .selected").html());
-				var p4 = GetInt($(".RelCom .selected").html());
+				        var p1 = GetInt($(this).html());
+				        var p2 = GetInt($(".AddedLoc .selected").html());
+				        var p3 = GetInt($(".PostedCom .selected").html());
+				        var p4 = GetInt($(".RelCom .selected").html());
 
-				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.FavLoc),p1,p2,p3,p4,"#favoritesTab");
-				return false;
-			});
-			$(".AddedLoc").live("click", function () {
+				        AjaxFill(@((int)ProfilDashboardModel.DashboardTab.FavLoc),p1,p2,p3,p4,"#favoritesTab");
+				        return false;
+			        });
+			        $(".AddedLoc").live("click", function () {
 
-				var p1 = GetInt($(".FavLoc .selected").html());
-				var p2 = GetInt($(this).html());
-				var p3 = GetInt($(".PostedCom .selected").html());
-				var p4 = GetInt($(".RelCom .selected").html());
+				        var p1 = GetInt($(".FavLoc .selected").html());
+				        var p2 = GetInt($(this).html());
+				        var p3 = GetInt($(".PostedCom .selected").html());
+				        var p4 = GetInt($(".RelCom .selected").html());
 
-				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.AddedLoc),p1,p2,p3,p4,"#addedLocalisationTab");
-				return false;
-			});
-			$(".PostedCom").live("click", function () {
+				        AjaxFill(@((int)ProfilDashboardModel.DashboardTab.AddedLoc),p1,p2,p3,p4,"#addedLocalisationTab");
+				        return false;
+			        });
+			        $(".PostedCom").live("click", function () {
 
-				var p1 = GetInt($(".FavLoc .selected").html());
-				var p2 = GetInt($(".AddedLoc .selected").html());
-				var p3 = GetInt($(this).html());
-				var p4 = GetInt($(".RelCom .selected").html());
+				        var p1 = GetInt($(".FavLoc .selected").html());
+				        var p2 = GetInt($(".AddedLoc .selected").html());
+				        var p3 = GetInt($(this).html());
+				        var p4 = GetInt($(".RelCom .selected").html());
 
-				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.PostedCom),p1,p2,p3,p4,"#myCommentsTab");
-				return false;
-			});
-			$(".RelCom").live("click", function () {
+				        AjaxFill(@((int)ProfilDashboardModel.DashboardTab.PostedCom),p1,p2,p3,p4,"#myCommentsTab");
+				        return false;
+			        });
+			        $(".RelCom").live("click", function () {
 
-				var p1 = GetInt($(".FavLoc .selected").html());
-				var p2 = GetInt($(".AddedLoc .selected").html());
-				var p3 = GetInt($(".PostedCom .selected").html());
-				var p4 = GetInt($(this).html());
+				        var p1 = GetInt($(".FavLoc .selected").html());
+				        var p2 = GetInt($(".AddedLoc .selected").html());
+				        var p3 = GetInt($(".PostedCom .selected").html());
+				        var p4 = GetInt($(this).html());
 
-				AjaxFill(@((int)ProfilDashboardModel.DashboardTab.RelCom),p1,p2,p3,p4,"#locCommentsTab");
-				return false;
-			});
+				        AjaxFill(@((int)ProfilDashboardModel.DashboardTab.RelCom),p1,p2,p3,p4,"#locCommentsTab");
+				        return false;
+			        });
+            });
         });
     </script>
 }
