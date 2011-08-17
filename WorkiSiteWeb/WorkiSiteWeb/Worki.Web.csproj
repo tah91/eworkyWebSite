@@ -290,6 +290,10 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\require.min.js">
+      <DependentUpon>require.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\tabs.js" />
     <Content Include="Scripts\tabs.min.js">
       <DependentUpon>tabs.js</DependentUpon>

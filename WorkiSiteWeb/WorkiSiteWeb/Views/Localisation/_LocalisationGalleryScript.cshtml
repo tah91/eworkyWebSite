@@ -1,44 +1,45 @@
 ﻿@model Worki.Data.Models.LocalisationFormViewModel
 
 <script type="text/javascript">
-    head.js("@MiscHelpers.jquery", function () {
-        head.js("https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ", "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js")
-            .js("@Url.VersionedContent(Links.Scripts.jquery_iframe_transport_js)")
-            .js("@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)")
-            .js("@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)", function () {
-                $(function () {
-                    // Initialize the jQuery File Upload widget:
-                    $('#fileupload').fileupload({
-			            'url': '@Url.Action(MVC.Localisation.UploadFiles())',
-                        'autoUpload': 'true',
-                        'maxNumberOfFiles': 10,
-                        'maxFileSize': @MiscHelpers.MaxFileSize,
-                        'acceptFileTypes': /(\.|\/)(gif|jpe?g|png)$/i
+    require(["@MiscHelpers.jquery"], function () {
+        require(["https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ", 
+                 "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js",
+                 "@Url.VersionedContent(Links.Scripts.jquery_iframe_transport_js)",
+                 "@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)",
+                 "@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)"], function () {
+                    require.ready(function () {
+                        // Initialize the jQuery File Upload widget:
+                        $('#fileupload').fileupload({
+			                'url': '@Url.Action(MVC.Localisation.UploadFiles())',
+                            'autoUpload': 'true',
+                            'maxNumberOfFiles': 10,
+                            'maxFileSize': @MiscHelpers.MaxFileSize,
+                            'acceptFileTypes': /(\.|\/)(gif|jpe?g|png)$/i
+                        });
+
+                        _renderFiles = function (files) {
+                            var fu = $('#fileupload').data('fileupload');
+                            fu._adjustMaxNumberOfFiles(-files.length);
+                            fu._renderDownload(files)
+                                .appendTo($('#fileupload .files'))
+                                .fadeIn(function () {
+                                    // Fix for IE7 and lower:
+                                    $(this).show();
+                                });
+                            }
+
+                        // Load existing files:
+                        $.post('@Url.Action(MVC.Localisation.LoadFiles())',{ id: @Model.Localisation.ID }, _renderFiles, "json");
+
+                        // Open download dialogs via iframes,
+                        // to prevent aborting current uploads:
+                        $('#fileupload .files a:not([target^=_blank])').live('click', function (e) {
+                            e.preventDefault();
+                            $('<iframe style="display:none;"></iframe>')
+                                .prop('src', this.href)
+                                .appendTo('body');
+                        });
                     });
-
-                    _renderFiles = function (files) {
-                        var fu = $('#fileupload').data('fileupload');
-                        fu._adjustMaxNumberOfFiles(-files.length);
-                        fu._renderDownload(files)
-                            .appendTo($('#fileupload .files'))
-                            .fadeIn(function () {
-                                // Fix for IE7 and lower:
-                                $(this).show();
-                            });
-                        }
-
-                    // Load existing files:
-                    $.post('@Url.Action(MVC.Localisation.LoadFiles())',{ id: @Model.Localisation.ID }, _renderFiles, "json");
-
-                    // Open download dialogs via iframes,
-                    // to prevent aborting current uploads:
-                    $('#fileupload .files a:not([target^=_blank])').live('click', function (e) {
-                        e.preventDefault();
-                        $('<iframe style="display:none;"></iframe>')
-                            .prop('src', this.href)
-                            .appendTo('body');
-                    });
-                });
         });
     });
 </script>

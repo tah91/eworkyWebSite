@@ -187,9 +187,8 @@
 {
 	@Html.Partial(MVC.Shared.Views._CufonScript)
     <script type="text/javascript">
-        head.js("@MiscHelpers.jquery", function () {
-            head.js("@Url.VersionedContent(Links.Scripts.jquery_rateit_js)")
-                .js("@Url.VersionedContent(Links.Scripts.tabs_js)", function () {
+        require(["@MiscHelpers.jquery"], function () {
+            require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)", "@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
                     InitTab(".profilLocalisations");
                     InitTab(".profilCompany");
                     InitTab(".profilComments");

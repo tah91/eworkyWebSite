@@ -393,6 +393,9 @@ namespace Links {
         public static readonly string modernizr_1_7_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-1.7.min.js") ? Url("modernizr-1.7.min.js") : Url("modernizr-1.7.js");
                       
         public static readonly string modernizr_1_7_min_js = Url("modernizr-1.7.min.js");
+        public static readonly string require_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/require.min.js") ? Url("require.min.js") : Url("require.js");
+                      
+        public static readonly string require_min_js = Url("require.min.js");
         public static readonly string slides_jquery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/slides.jquery.min.js") ? Url("slides.jquery.min.js") : Url("slides.jquery.js");
                       
         public static readonly string slides_jquery_min_js = Url("slides.jquery.min.js");

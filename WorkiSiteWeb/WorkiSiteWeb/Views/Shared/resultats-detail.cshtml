@@ -36,8 +36,8 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-        head.js("@MiscHelpers.jquery", function() {
-            head.js("@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)", function () {
+        require(["@MiscHelpers.jquery"], function() {
+            require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
                 // Load the classic theme
                 Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
 
@@ -48,7 +48,7 @@
                     showInfo: false
                 });
             });
-            head.js("@Url.VersionedContent(Links.Scripts.jquery_rateit_js)", function () {
+            require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {
                 //rateit
                 BindRateIt = function (name) {
                     var rateItId = '#rateIt' + name;
@@ -65,7 +65,7 @@
                 BindRateIt("RatingWelcome");
             });
 
-            head.js("@Url.VersionedContent(Links.Scripts.tabs_js)");
+            require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
             
             //favorites
             $("#favLinkAddButton").live("click", function () {
@@ -86,7 +86,7 @@
 						}
 					});
 			});
-            head.js("https://apis.google.com/js/plusone.js", function () {
+            require(["https://apis.google.com/js/plusone.js"], function () {
                 { lang: 'fr' }
             });
         });
