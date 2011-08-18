@@ -36,59 +36,57 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-        require(["@MiscHelpers.jquery"], function() {
-            require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
-                // Load the classic theme
-                Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
+        require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
+            // Load the classic theme
+            Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
 
-                // Initialize Galleria
-                $('#gallery').galleria({
-                    //width: 600,
-                    height: 350,
-                    showInfo: false
+            // Initialize Galleria
+            $('#gallery').galleria({
+                //width: 600,
+                height: 350,
+                showInfo: false
+            });
+        });
+        require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {
+            //rateit
+            BindRateIt = function (name) {
+                var rateItId = '#rateIt' + name;
+                //var id = '#Comment_' + name;
+                var id = '#' + name;
+                $(rateItId).bind('rated', function (event, value) {
+                    $(id).val(value);
                 });
-            });
-            require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {
-                //rateit
-                BindRateIt = function (name) {
-                    var rateItId = '#rateIt' + name;
-                    //var id = '#Comment_' + name;
-                    var id = '#' + name;
-                    $(rateItId).bind('rated', function (event, value) {
-                        $(id).val(value);
-                    });
-                }
-                BindRateIt("Rating");
-                BindRateIt("RatingPrice");
-                BindRateIt("RatingWifi");
-                BindRateIt("RatingDispo");
-                BindRateIt("RatingWelcome");
-            });
+            }
+            BindRateIt("Rating");
+            BindRateIt("RatingPrice");
+            BindRateIt("RatingWifi");
+            BindRateIt("RatingDispo");
+            BindRateIt("RatingWelcome");
+        });
 
-            require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
             
-            //favorites
-            $("#favLinkAddButton").live("click", function () {
-				$.ajax({
-						url: "@Url.Action(MVC.Profil.ActionNames.AddToFavorite,MVC.Profil.Name)",
-						data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
-						success: function (data) {
-							$("#favLink").html(data);
-						}
-					});
-			});
-			$("#favLinkDelButton").live("click", function () {
-				$.ajax({
-						url: "@Url.Action(MVC.Profil.ActionNames.RemoveFromFavorite,MVC.Profil.Name)",
-						data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
-						success: function (data) {
-							$("#favLink").html(data);
-						}
-					});
-			});
-            require(["https://apis.google.com/js/plusone.js"], function () {
-                { lang: 'fr' }
-            });
+        //favorites
+        $("#favLinkAddButton").live("click", function () {
+			$.ajax({
+					url: "@Url.Action(MVC.Profil.ActionNames.AddToFavorite,MVC.Profil.Name)",
+					data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
+					success: function (data) {
+						$("#favLink").html(data);
+					}
+				});
+		});
+		$("#favLinkDelButton").live("click", function () {
+			$.ajax({
+					url: "@Url.Action(MVC.Profil.ActionNames.RemoveFromFavorite,MVC.Profil.Name)",
+					data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
+					success: function (data) {
+						$("#favLink").html(data);
+					}
+				});
+		});
+        require(["https://apis.google.com/js/plusone.js"], function () {
+            { lang: 'fr' }
         });
     </script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
