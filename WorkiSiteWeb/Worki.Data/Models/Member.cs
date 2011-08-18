@@ -23,6 +23,7 @@ namespace Worki.Data.Models
             this.MemberEditions = new HashSet<MemberEdition>();
             this.WelcomePeoples = new HashSet<WelcomePeople>();
             this.MemberBookings = new HashSet<MemberBooking>();
+            this.Rentals = new HashSet<Rental>();
         }
     
         // Primitive properties
@@ -58,6 +59,7 @@ namespace Worki.Data.Models
         public virtual MemberMainData MemberMainData { get; set; }
         public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
+        public virtual ICollection<Rental> Rentals { get; set; }
     
     }
 }

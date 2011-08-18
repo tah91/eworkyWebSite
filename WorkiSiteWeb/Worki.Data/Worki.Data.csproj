@@ -122,6 +122,18 @@
     </Compile>
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\ProfilModel.cs" />
+    <Compile Include="Models\Rental.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalAccess.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalFeature.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalFile.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SearchCriteria.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>

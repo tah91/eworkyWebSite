@@ -35,5 +35,9 @@ namespace Worki.Data.Models
         public DbSet<MemberMainData> MemberMainDatas { get; set; }
         public DbSet<WelcomePeople> WelcomePeoples { get; set; }
         public DbSet<MemberBooking> MemberBookings { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
+        public DbSet<RentalAccess> RentalAccesses { get; set; }
+        public DbSet<RentalFeature> RentalFeatures { get; set; }
+        public DbSet<RentalFile> RentalFiles { get; set; }
     }
 }
