@@ -124,6 +124,9 @@ namespace Worki.Data.Models
 		[Display(Name = "Charges", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Charges { get; set; }
 
+		[Display(Name = "Surface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		public int Surface { get; set; }
+
 		[Display(Name = "Energy", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Energy { get; set; }
 

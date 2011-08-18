@@ -322,6 +322,15 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surface.
+        /// </summary>
+        public static string Surface {
+            get {
+                return ResourceManager.GetString("Surface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date de mise à jour.
         /// </summary>
         public static string TimeStamp {

@@ -340,6 +340,7 @@
           <Property Name="LeaseType" Type="int" Nullable="false" />
           <Property Name="Rate" Type="int" Nullable="false" />
           <Property Name="Charges" Type="int" Nullable="false" />
+          <Property Name="Surface" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Energy" Type="int" Nullable="false" />
           <Property Name="GreenHouse" Type="int" Nullable="false" />
@@ -1386,6 +1387,7 @@
           <NavigationProperty Name="RentalAccesses" Relationship="WorkiDBModel.FK_RentalAccess_Rental" FromRole="Rental" ToRole="RentalAccess" />
           <NavigationProperty Name="RentalFeatures" Relationship="WorkiDBModel.FK_RentalFeature_Rental" FromRole="Rental" ToRole="RentalFeature" />
           <NavigationProperty Name="RentalFiles" Relationship="WorkiDBModel.FK_RentalFile_Rental" FromRole="Rental" ToRole="RentalFile" />
+          <Property Type="Int32" Name="Surface" Nullable="false" />
         </EntityType>
         <EntityType Name="RentalAccess">
           <Key>
@@ -1679,6 +1681,7 @@
           <EntitySetMapping Name="Rentals">
             <EntityTypeMapping TypeName="WorkiDBModel.Rental">
               <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="Surface" ColumnName="Surface" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
                 <ScalarProperty Name="HeatingType" ColumnName="HeatingType" />
                 <ScalarProperty Name="GreenHouse" ColumnName="GreenHouse" />

@@ -41,6 +41,7 @@ namespace Worki.Data.Models
         public int GreenHouse { get; set; }
         public int HeatingType { get; set; }
         public System.DateTime TimeStamp { get; set; }
+        public int Surface { get; set; }
     
         // Navigation properties
     
