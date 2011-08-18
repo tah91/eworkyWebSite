@@ -25,7 +25,6 @@ namespace Worki.Data.Models
     
         public int Id { get; set; }
         public int MemberId { get; set; }
-        public string Name { get; set; }
         public string Reference { get; set; }
         public int Type { get; set; }
         public string Address { get; set; }
