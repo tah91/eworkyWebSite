@@ -52,7 +52,7 @@ namespace Worki.Data.Models
         Bus
     }
 
-	public enum RentalFeature
+	public enum RentalFeatureType
 	{
 		StartUpFriendly,
 		Kitchen,

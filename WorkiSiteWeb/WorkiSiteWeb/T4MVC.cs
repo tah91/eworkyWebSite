@@ -30,6 +30,7 @@ public static class MVC {
     public static Worki.Web.Controllers.HomeController Home = new Worki.Web.Controllers.T4MVC_HomeController();
     public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
     public static Worki.Web.Controllers.ProfilController Profil = new Worki.Web.Controllers.T4MVC_ProfilController();
+    public static Worki.Web.Controllers.RentalController Rental = new Worki.Web.Controllers.T4MVC_RentalController();
     public static Worki.Web.Controllers.SearchController Search = new Worki.Web.Controllers.T4MVC_SearchController();
     public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
@@ -1642,6 +1643,72 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("locId", locId);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Controllers {
+    public partial class RentalController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RentalController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Detail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Detail);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Edit() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public RentalController Actions { get { return MVC.Rental; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Rental";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Detail = "details";
+            public readonly string Edit = "editer";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_RentalController: Worki.Web.Controllers.RentalController {
+        public T4MVC_RentalController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Detail(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Detail);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

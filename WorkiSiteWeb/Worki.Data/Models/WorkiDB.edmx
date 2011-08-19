@@ -335,6 +335,8 @@
           <Property Name="PostalCode" Type="nvarchar" Nullable="false" MaxLength="10" />
           <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
           <Property Name="AvailableDate" Type="datetime" />
           <Property Name="AvailableNow" Type="bit" Nullable="false" />
           <Property Name="LeaseType" Type="int" Nullable="false" />
@@ -1388,6 +1390,8 @@
           <NavigationProperty Name="RentalFeatures" Relationship="WorkiDBModel.FK_RentalFeature_Rental" FromRole="Rental" ToRole="RentalFeature" />
           <NavigationProperty Name="RentalFiles" Relationship="WorkiDBModel.FK_RentalFile_Rental" FromRole="Rental" ToRole="RentalFile" />
           <Property Type="Int32" Name="Surface" Nullable="false" />
+          <Property Type="Double" Name="Latitude" Nullable="false" />
+          <Property Type="Double" Name="Longitude" Nullable="false" />
         </EntityType>
         <EntityType Name="RentalAccess">
           <Key>
@@ -1681,6 +1685,8 @@
           <EntitySetMapping Name="Rentals">
             <EntityTypeMapping TypeName="WorkiDBModel.Rental">
               <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Surface" ColumnName="Surface" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
                 <ScalarProperty Name="HeatingType" ColumnName="HeatingType" />

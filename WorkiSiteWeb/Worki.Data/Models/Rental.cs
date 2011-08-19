@@ -42,6 +42,8 @@ namespace Worki.Data.Models
         public int HeatingType { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public int Surface { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     
         // Navigation properties
     

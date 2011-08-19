@@ -57,6 +57,9 @@ namespace Worki.Web
 			Bind<IRepository<MemberBooking>>()
 				.To<BookingRepository>();
 
+            Bind<IRepository<Rental>>()
+                .To<RentalRepository>();
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();
