@@ -4,6 +4,8 @@
 {
 	<title>@Html.WorkiTitle(Model.Rental.Id == 0 ? Worki.Resources.Views.Rental.RentalString.AddRental :  Worki.Resources.Views.Rental.RentalString.EditRental)</title>
 	<link href="@Url.VersionedContent(Links.Content.CreateRental_min_css)" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
+    <link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
 }
 
 @RazorHelpers.TitleDiv((Model.Rental.Id == 0 ? Worki.Resources.Views.Rental.RentalString.AddRental : Worki.Resources.Views.Rental.RentalString.EditRental), "Orange")
@@ -169,6 +171,18 @@
 			</div> 
 			<div class="contentBlock">
 				<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h2>
+				<div id="fileupload" class="borderRadius">
+					<div class="fileupload-buttonbar">
+						<label class="fileinput-button">
+							<span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
+							<input type="file" name="files[]" accept="image/*"/>
+						</label>
+					</div>
+					<div class="fileupload-content">
+						<table class="files"></table>
+						<div class="fileupload-progressbar"></div>
+					</div>
+				</div>
 			</div>
 			<div class="contentBlock">
 				<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Features</h2>
@@ -195,8 +209,7 @@
 
 @section ScriptContent
 {
-<script type="text/javascript">
-	require(["@MiscHelpers.jquery"], function () {
+	<script type="text/javascript">
 		require.ready(function () {
 			$("#addItem").click(function () {
 				$.ajax({
@@ -212,7 +225,6 @@
 				return false;
 			});
 		});
-	});
-</script>
-
+	</script>
+	@Html.Partial(MVC.Rental.Views._RentalGalleryScript)
 }

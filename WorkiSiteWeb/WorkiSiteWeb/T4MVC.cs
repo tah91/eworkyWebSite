@@ -1677,6 +1677,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult Delete() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult LoadFiles() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public RentalController Actions { get { return MVC.Rental; } }
@@ -1694,6 +1699,8 @@ namespace Worki.Web.Controllers {
             public readonly string Create = "ajouter";
             public readonly string Edit = "editer";
             public readonly string Delete = "supprimer";
+            public readonly string AddRentalAccess = "AddRentalAccess";
+            public readonly string LoadFiles = "LoadFiles";
         }
 
 
@@ -1703,6 +1710,7 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _RentalAccess = "~/Views/Rental/_RentalAccess.cshtml";
+            public readonly string _RentalGalleryScript = "~/Views/Rental/_RentalGalleryScript.cshtml";
             public readonly string details = "~/Views/Rental/details.cshtml";
             public readonly string editer = "~/Views/Rental/editer.cshtml";
             public readonly string supprimer = "~/Views/Rental/supprimer.cshtml";
@@ -1749,6 +1757,17 @@ namespace Worki.Web.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("confirm", confirm);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AddRentalAccess() {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddRentalAccess);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LoadFiles(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

@@ -1,0 +1,120 @@
+﻿@model Worki.Data.Models.RentalFormViewModel
+
+<script type="text/javascript">
+    require(["@MiscHelpers.jqueryui","https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ", 
+                "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js",
+                "@Url.VersionedContent(Links.Scripts.jquery_iframe_transport_js)",
+                "@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)",
+                "@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)"], function () {
+                require.ready(function () {
+                    // Initialize the jQuery File Upload widget:
+                    $('#fileupload').fileupload({
+			            //'url': '@Url.Action(MVC.Localisation.UploadFiles())',
+                        'autoUpload': 'true',
+                        'maxNumberOfFiles': 10,
+                        'maxFileSize': @MiscHelpers.MaxFileSize,
+                        'acceptFileTypes': /(\.|\/)(gif|jpe?g|png)$/i
+                    });
+
+                    _renderFiles = function (files) {
+                        var fu = $('#fileupload').data('fileupload');
+                        fu._adjustMaxNumberOfFiles(-files.length);
+                        fu._renderDownload(files)
+                            .appendTo($('#fileupload .files'))
+                            .fadeIn(function () {
+                                // Fix for IE7 and lower:
+                                $(this).show();
+                            });
+                        }
+
+                    // Load existing files:
+                    //$.post('@Url.Action(MVC.Rental.LoadFiles())',{ id: @Model.Rental.Id }, _renderFiles, "json");
+
+                    // Open download dialogs via iframes,
+                    // to prevent aborting current uploads:
+                    $('#fileupload .files a:not([target^=_blank])').live('click', function (e) {
+                        e.preventDefault();
+                        $('<iframe style="display:none;"></iframe>')
+                            .prop('src', this.href)
+                            .appendTo('body');
+                    });
+                });
+    });
+</script>
+<script id="template-upload" type="text/x-jquery-tmpl">
+    <tr class="template-upload{{if error}} ui-state-error{{/if}}">
+        <td class="preview"></td>
+        {{if error}}
+            <td class="error" colspan="2">Erreur:
+                {{if error === 'maxFileSize'}}  @Html.Raw(Worki.Resources.Validation.ValidationString.PictureTooBig)
+                {{else error === 'minFileSize'}} @Html.Raw(Worki.Resources.Validation.ValidationString.PictureTooSmall)
+                {{else error === 'acceptFileTypes'}} @Html.Raw(Worki.Resources.Validation.ValidationString.PictureWrongExtention)
+                {{else error === 'maxNumberOfFiles'}} @Html.Raw(Worki.Resources.Validation.ValidationString.PictureTooMuch)
+                {{else}}${error}
+                {{/if}} 
+            </td>
+        {{else}}
+            <td class="start"><button>Start</button></td>
+        {{/if}}
+        <td class="cancel"><button>Cancel</button></td>
+    </tr>
+</script>
+<script id="template-download" type="text/x-jquery-tmpl">
+    <tr class="template-download{{if error}} ui-state-error{{/if}}">
+        {{if error}}
+            <td></td>
+            <td class="error" colspan="2">Error:
+                {{if error === 1}}File exceeds upload_max_filesize (php.ini directive)
+                {{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive)
+                {{else error === 3}}File was only partially uploaded
+                {{else error === 4}}No File was uploaded
+                {{else error === 5}}Missing a temporary folder
+                {{else error === 6}}Failed to write file to disk
+                {{else error === 7}}File upload stopped by extension
+                {{else error === 'maxFileSize'}}File is too big
+                {{else error === 'minFileSize'}}File is too small
+                {{else error === 'acceptFileTypes'}}Filetype not allowed
+                {{else error === 'maxNumberOfFiles'}}Max number of files exceeded
+                {{else error === 'uploadedBytes'}}Uploaded bytes exceed file size
+                {{else error === 'emptyResult'}}Empty file upload result
+                {{else}}${error}
+                {{/if}}
+            </td>
+        {{else}}
+            <td class="preview">
+                {{if thumbnail_url}}
+                    <img src="${thumbnail_url}">
+                {{/if}}
+                <input name="@LocalisationBinder.HiddenImagePrefix${name}" type="hidden" value="@LocalisationBinder.HiddenImagePrefix${name}">
+            </td>
+            <td>
+                <div>
+                    <label for="@LocalisationBinder.IsDefaultPrefix${name}">Principal</label>
+                </div>
+                <div class="radioDiv">
+                {{if is_default}}
+                    <input checked="${is_default}" name="@LocalisationBinder.IsDefaultPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                {{else}}
+                    <input name="@LocalisationBinder.IsDefaultPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                {{/if}}
+                </div>          
+            </td>
+            <td>
+                <div>
+                    <label for="@LocalisationBinder.IsLogoPrefix${name}">Logo</label>
+                </div>
+                <div class="radioDiv">
+                {{if is_logo}}
+                    <input checked="${is_logo}" name="@LocalisationBinder.IsLogoPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                {{else}}
+                    <input name="@LocalisationBinder.IsLogoPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                {{/if}}
+                </div>            
+            </td>
+            <td colspan="2"></td>
+        {{/if}}
+        <td class="delete">
+            <button data-type="${delete_type}" data-url="${delete_url}">Delete</button>
+        </td>
+    </tr>
+</script>

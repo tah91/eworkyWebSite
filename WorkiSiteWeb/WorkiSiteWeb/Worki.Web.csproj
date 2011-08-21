@@ -626,6 +626,7 @@
     <Content Include="Views\Rental\editer.cshtml" />
     <Content Include="Views\Rental\supprimer.cshtml" />
     <Content Include="Views\Rental\_RentalAccess.cshtml" />
+    <Content Include="Views\Rental\_RentalGalleryScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -164,9 +164,24 @@ namespace Worki.Web.Controllers
 				return Redirect(returnUrl);
 		}
 
-		public PartialViewResult AddRentalAccess()
+		public virtual PartialViewResult AddRentalAccess()
 		{
 			return PartialView(MVC.Rental.Views._RentalAccess, new RentalAccess());
+		}
+
+		/// <summary>
+		/// GET action to get localisation pictures
+		/// in case of data in tempdata, get it
+		/// else if id not null, get data from database
+		/// else return empty list
+		/// return files description in json format
+		/// </summary>
+		/// <param name="id">The id of the edited localisation</param>
+		/// <returns>localisation image desc in json format</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult LoadFiles(int id)
+		{
+			return null;
 		}
 	}
 }
