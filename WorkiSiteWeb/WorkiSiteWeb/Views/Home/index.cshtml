@@ -15,7 +15,7 @@
 	@{ViewData["PicPath"] = Links.Content.images.photo1_jpg;}
     @*@Html.Partial(MVC.Shared.Views._PictureContainer, ViewData) *@
     @Html.Partial(MVC.Home.Views._PeopleSlider, ViewData)        
-
+	@Html.ActionLink("test", MVC.Rental.Create())
     <div class="halfContainer indexSearchContainer float-right">
         <div class="indexSearchFormDiv relative">
             <h2 class="blue">

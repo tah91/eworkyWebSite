@@ -129,7 +129,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of the member</param>
 		/// <returns>the form to fill</returns>
-		[HttpGet]
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		[ActionName("editer")]
 		public virtual ActionResult Edit(int id)
 		{
@@ -145,7 +145,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of the member</param>
 		/// <param name="member">member data from the form</param>
 		/// <returns>redirect to profil page if succeed</returns>
-		[HttpPost]
+		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ValidateAntiForgeryToken]
 		[ActionName("editer")]
 		public virtual ActionResult Edit(int id, Member member)

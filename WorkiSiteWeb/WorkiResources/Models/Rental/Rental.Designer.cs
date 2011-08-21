@@ -268,6 +268,15 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choisir....
+        /// </summary>
+        public static string NotDefined {
+            get {
+                return ResourceManager.GetString("NotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parking.
         /// </summary>
         public static string Parking {

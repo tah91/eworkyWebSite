@@ -117,115 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Address" xml:space="preserve">
-    <value>Adresse</value>
+  <data name="Access" xml:space="preserve">
+    <value>Accès</value>
   </data>
-  <data name="AvailableDate" xml:space="preserve">
-    <value>Date de disponibilité</value>
+  <data name="AccessLine" xml:space="preserve">
+    <value>Line</value>
   </data>
-  <data name="AvailableNow" xml:space="preserve">
-    <value>Immédiatement</value>
+  <data name="AccessStation" xml:space="preserve">
+    <value>Station</value>
   </data>
-  <data name="Charges" xml:space="preserve">
-    <value>Charges</value>
+  <data name="AccessType" xml:space="preserve">
+    <value>Type de transport</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>Ville</value>
-  </data>
-  <data name="Commercial" xml:space="preserve">
-    <value>Local commercial</value>
-  </data>
-  <data name="Country" xml:space="preserve">
-    <value>Pays</value>
+  <data name="AddRental" xml:space="preserve">
+    <value>Ajouter une annonce</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="Desk" xml:space="preserve">
-    <value>Bureaux &amp; locaux professionnels</value>
+  <data name="EditRental" xml:space="preserve">
+    <value>Editer une annonce</value>
   </data>
-  <data name="Electric" xml:space="preserve">
-    <value>Electrique</value>
+  <data name="Features" xml:space="preserve">
+    <value>Caratéristiques</value>
   </data>
-  <data name="Energy" xml:space="preserve">
-    <value>Consommation énergétique</value>
+  <data name="Images" xml:space="preserve">
+    <value>Images</value>
   </data>
-  <data name="Farm" xml:space="preserve">
-    <value>Exploitations agricoles</value>
+  <data name="Infos" xml:space="preserve">
+    <value>Informations générales</value>
   </data>
-  <data name="Franchise" xml:space="preserve">
-    <value>Gérance - franchise</value>
-  </data>
-  <data name="Gas" xml:space="preserve">
-    <value>Gaz</value>
-  </data>
-  <data name="GreenHouse" xml:space="preserve">
-    <value>Emission gaz à effet de serre</value>
-  </data>
-  <data name="Ground" xml:space="preserve">
-    <value>Local d'activité, terrain</value>
-  </data>
-  <data name="HeatingType" xml:space="preserve">
-    <value>Chauffage</value>
-  </data>
-  <data name="Kitchen" xml:space="preserve">
-    <value>Cuisine</value>
-  </data>
-  <data name="Leasehold" xml:space="preserve">
-    <value>Fonds de commerce</value>
-  </data>
-  <data name="LeaseType" xml:space="preserve">
-    <value>Type de bail</value>
-  </data>
-  <data name="LocalNetwork" xml:space="preserve">
-    <value>Réseau local préinstallé</value>
-  </data>
-  <data name="MeetingRoom" xml:space="preserve">
-    <value>Salle de réunion</value>
-  </data>
-  <data name="New" xml:space="preserve">
-    <value>Etat neuf</value>
-  </data>
-  <data name="Parking" xml:space="preserve">
-    <value>Parking</value>
-  </data>
-  <data name="PostalCode" xml:space="preserve">
-    <value>Code postal</value>
-  </data>
-  <data name="Quiet" xml:space="preserve">
-    <value>Environnement calme</value>
-  </data>
-  <data name="Rate" xml:space="preserve">
-    <value>Loyer</value>
-  </data>
-  <data name="Reference" xml:space="preserve">
-    <value>Réference</value>
-  </data>
-  <data name="StartUpFriendly" xml:space="preserve">
-    <value>Start-up friendly</value>
-  </data>
-  <data name="Surface" xml:space="preserve">
-    <value>Surface</value>
-  </data>
-  <data name="TimeStamp" xml:space="preserve">
-    <value>Date de mise à jour</value>
-  </data>
-  <data name="Toilets" xml:space="preserve">
-    <value>Toilettes</value>
-  </data>
-  <data name="Transport" xml:space="preserve">
-    <value>Accès transport en commun</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type de lieu</value>
-  </data>
-  <data name="Type_24" xml:space="preserve">
-    <value>Bail précaire 24 mois</value>
-  </data>
-  <data name="Type_369" xml:space="preserve">
-    <value>Bail 3/6/9</value>
-  </data>
-  <data name="NotDefined" xml:space="preserve">
-    <value>Choisir...</value>
+  <data name="Submit" xml:space="preserve">
+    <value>Valider</value>
   </data>
 </root>

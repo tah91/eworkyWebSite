@@ -422,6 +422,8 @@ namespace Links {
         public static readonly string Booking_min_css = Url("Booking.min.css");
         public static readonly string CreateLocalisation_css = Url("CreateLocalisation.css");
         public static readonly string CreateLocalisation_min_css = Url("CreateLocalisation.min.css");
+        public static readonly string CreateRental_css = Url("CreateRental.css");
+        public static readonly string CreateRental_min_css = Url("CreateRental.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class font {
             private const string URLPATH = "~/Content/font";
@@ -1670,6 +1672,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult Edit() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Delete() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public RentalController Actions { get { return MVC.Rental; } }
@@ -1684,7 +1691,9 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Detail = "details";
+            public readonly string Create = "ajouter";
             public readonly string Edit = "editer";
+            public readonly string Delete = "supprimer";
         }
 
 
@@ -1693,6 +1702,10 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _RentalAccess = "~/Views/Rental/_RentalAccess.cshtml";
+            public readonly string details = "~/Views/Rental/details.cshtml";
+            public readonly string editer = "~/Views/Rental/editer.cshtml";
+            public readonly string supprimer = "~/Views/Rental/supprimer.cshtml";
         }
     }
 
@@ -1706,9 +1719,36 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult Create() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult Edit(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Rental rental, int? id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("rental", rental);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Delete(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Delete(int id, string confirm, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("confirm", confirm);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 

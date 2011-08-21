@@ -54,10 +54,10 @@ namespace Worki.Web
 			Bind<ISearchService>()
 				.To<SearchService>();
 
-			Bind<IRepository<MemberBooking>>()
+			Bind<IBookingRepository>()
 				.To<BookingRepository>();
 
-            Bind<IRepository<Rental>>()
+			Bind<IRentalRepository>()
                 .To<RentalRepository>();
 
 			Bind<ILogger>().

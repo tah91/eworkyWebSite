@@ -11,8 +11,13 @@ namespace Worki.Data.Models
 {
     #region Rental Enums
 
+	/// <summary>
+	/// Describe all type of rentals
+	/// correspond to field Type
+	/// </summary>
     public enum RentalType
     {
+		NotDefined = -1,
         Desk,
         Leasehold,
         Commercial,
@@ -21,14 +26,24 @@ namespace Worki.Data.Models
         Franchise
     }
 
-    public enum LeaseType
+	/// <summary>
+	/// Describe all type of lease
+	/// correspond to field LeaseType
+	/// </summary>
+    public enum Lease
     {
+		NotDefined = -1,
         Type_24,
         Type_369
     }
 
+	/// <summary>
+	/// Diagnostic rate letters
+	/// Correspond to field Energy or GreenHouse
+	/// </summary>
 	public enum DiagnosticRate
 	{
+		NotDefined = -1,
 		A,
 		B,
         C,
@@ -38,20 +53,34 @@ namespace Worki.Data.Models
         G
 	}
 
-    public enum HeatingType
+
+	/// <summary>
+	/// Correspond to field HeatingType
+	/// </summary>
+    public enum Heating
     {
+		NotDefined = -1,
         Gas,
         Electric
     }
 
-    public enum AccessType
+	/// <summary>
+	/// Correspond to RentalAccess Type field
+	/// </summary>
+    public enum Access
     {
+		NotDefined = -1,
         Metro,
         Train,
         Tram,
         Bus
     }
 
+	/// <summary>
+	/// Describe rental features
+	/// correspond to RentalFeature FeatureId
+	/// </summary>
+	[LocalizedEnum(ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 	public enum RentalFeatureType
 	{
 		StartUpFriendly,
@@ -68,11 +97,96 @@ namespace Worki.Data.Models
 
     #region Rental
 
+	#region Equality Comparer
+
+	public class RentalFeatureEqualityComparer : IEqualityComparer<RentalFeature>
+	{
+		#region IEqualityComparer<RentalFeature> Members
+
+		public bool Equals(RentalFeature x, RentalFeature y)
+		{
+			return x.FeatureId == y.FeatureId;
+		}
+
+		public int GetHashCode(RentalFeature obj)
+		{
+			return base.GetHashCode();
+		}
+
+		#endregion
+	}
+
+	#endregion
+
     [MetadataType(typeof(Rental_Validation))]
     public partial class Rental
     {
-        
-    }
+		#region Static Fields
+
+		public static Dictionary<int, string> RentalTypes = new Dictionary<int, string>()
+        {
+			{ (int)RentalType.NotDefined,Worki.Resources.Models.Rental.Rental.NotDefined},
+            { (int)RentalType.Desk,Worki.Resources.Models.Rental.Rental.Desk},
+			{ (int)RentalType.Leasehold,Worki.Resources.Models.Rental.Rental.Leasehold},
+			{ (int)RentalType.Commercial,Worki.Resources.Models.Rental.Rental.Commercial},
+			{ (int)RentalType.Farm,Worki.Resources.Models.Rental.Rental.Farm},
+			{ (int)RentalType.Ground,Worki.Resources.Models.Rental.Rental.Ground},
+			{ (int)RentalType.Franchise,Worki.Resources.Models.Rental.Rental.Franchise}			
+        };
+
+		public static Dictionary<int, string> LeaseTypes = new Dictionary<int, string>()
+        {
+			{ (int)Lease.NotDefined,Worki.Resources.Models.Rental.Rental.NotDefined},
+            { (int)Lease.Type_24,Worki.Resources.Models.Rental.Rental.Type_24},
+			{ (int)Lease.Type_369,Worki.Resources.Models.Rental.Rental.Type_369}
+        };
+
+		public static Dictionary<int, string> DiagnosticRates = new Dictionary<int, string>()
+        {
+			{ (int)DiagnosticRate.NotDefined,Worki.Resources.Models.Rental.Rental.NotDefined},
+            { (int)DiagnosticRate.A,DiagnosticRate.A.ToString()},
+			{ (int)DiagnosticRate.B,DiagnosticRate.B.ToString()},
+			{ (int)DiagnosticRate.C,DiagnosticRate.C.ToString()},
+			{ (int)DiagnosticRate.D,DiagnosticRate.D.ToString()},
+			{ (int)DiagnosticRate.E,DiagnosticRate.E.ToString()},
+			{ (int)DiagnosticRate.F,DiagnosticRate.F.ToString()},
+			{ (int)DiagnosticRate.G,DiagnosticRate.G.ToString()}
+        };
+
+		public static Dictionary<int, string> HeatingTypes = new Dictionary<int, string>()
+        {
+			{ (int)RentalType.NotDefined,Worki.Resources.Models.Rental.Rental.NotDefined},
+            { (int)Heating.Electric,Worki.Resources.Models.Rental.Rental.Electric},
+			{ (int)Heating.Gas,Worki.Resources.Models.Rental.Rental.Gas}
+        };
+
+		public static Dictionary<int, string> AccessTypes = new Dictionary<int, string>()
+        {
+			{ (int)Access.NotDefined,Worki.Resources.Models.Rental.Rental.NotDefined},
+            { (int)Access.Metro,Access.Metro.ToString()},
+			{ (int)Access.Train,Access.Train.ToString()},
+			{ (int)Access.Tram,Access.Tram.ToString()},
+			{ (int)Access.Bus,Access.Bus.ToString()}
+        };
+
+		public static Dictionary<int, string> RentalFeatureDict = MiscHelpers.GetEnumDescriptors(typeof(RentalFeatureType));
+
+		#endregion
+
+		//public Rental()
+		//{
+		//    RentalAccesses.Add(new RentalAccess { Type = 0, Line = "33", Station = "plop" });
+		//}
+
+		#region RentalFeatures
+
+		public bool HasFeature(RentalFeatureType feature)
+		{
+			return RentalFeatures.Contains(new RentalFeature { FeatureId = (int)feature }, new RentalFeatureEqualityComparer());
+		}
+
+		#endregion
+	}
 
     [Bind(Exclude = "Id,MemberId")]
     public class Rental_Validation
@@ -138,7 +252,50 @@ namespace Worki.Data.Models
 
 		[Display(Name = "TimeStamp", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public DateTime TimeStamp { get; set; }
-    }
+	}
 
     #endregion
+
+	#region RentalFormViewModel
+
+	public class RentalFormViewModel
+	{
+		#region Properties
+
+		public Rental Rental { get; set; }
+		public SelectList RentalTypeSelect { get; private set; }
+		public SelectList LeaseTypeSelect { get; private set; }
+		public SelectList DiagnosticRateSelect { get; private set; }
+		public SelectList HeatingTypeSelect { get; private set; }
+		public SelectList AccessTypeSelect { get; private set; }
+
+		#endregion
+
+		#region Ctor
+
+		public RentalFormViewModel()
+		{
+			Init();
+			Rental = new Rental();
+		}
+
+		public RentalFormViewModel(Rental rental)
+		{
+			Init();
+			Rental = rental;
+		}
+
+		void Init()
+		{
+			RentalTypeSelect = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);
+			LeaseTypeSelect = new SelectList(Rental.LeaseTypes, "Key", "Value", Lease.NotDefined);
+			DiagnosticRateSelect = new SelectList(Rental.DiagnosticRates, "Key", "Value", DiagnosticRate.NotDefined);
+			HeatingTypeSelect = new SelectList(Rental.HeatingTypes, "Key", "Value", Heating.NotDefined);
+			AccessTypeSelect = new SelectList(Rental.AccessTypes, "Key", "Value", Access.NotDefined);
+		}
+
+		#endregion
+	}
+
+	#endregion
 }
