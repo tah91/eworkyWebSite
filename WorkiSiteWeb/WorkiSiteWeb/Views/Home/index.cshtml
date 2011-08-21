@@ -120,23 +120,21 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-        require(["@MiscHelpers.jquery"], function() {
-            require(["@Url.VersionedContent(Links.Scripts.jquery_placeholder_js)"], function () {
-                $('input:text').placeholder();
+        require(["@Url.VersionedContent(Links.Scripts.jquery_placeholder_js)"], function () {
+            $('input:text').placeholder();
+        });
+        require(["@Url.VersionedContent(Links.Scripts.slides_jquery_js)"], function () {
+            $('#slides').slides({
+                play: 8000,
+                generatePagination: false,
+                effect: 'fade'
             });
-            require(["@Url.VersionedContent(Links.Scripts.slides_jquery_js)"], function () {
-                $('#slides').slides({
-                    play: 8000,
-                    generatePagination: false,
-                    effect: 'fade'
+        });
+        require(["@MiscHelpers.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+                require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+                    var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
+                    workiAutocomplete.SetAutocomplete();
                 });
-            });
-            require(["@MiscHelpers.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
-                    require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-                        var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
-                        workiAutocomplete.SetAutocomplete();
-                    });
-            });
         });
 
         function initialize() {

@@ -296,9 +296,9 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
-    <Content Include="Scripts\require.js" />
-    <Content Include="Scripts\require.min.js">
-      <DependentUpon>require.js</DependentUpon>
+    <Content Include="Scripts\require-jquery.js" />
+    <Content Include="Scripts\require-jquery.min.js">
+      <DependentUpon>require-jquery.js</DependentUpon>
     </Content>
     <Content Include="Scripts\tabs.js" />
     <Content Include="Scripts\tabs.min.js">
