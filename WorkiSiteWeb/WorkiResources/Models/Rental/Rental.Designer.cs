@@ -241,6 +241,15 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ligne.
+        /// </summary>
+        public static string Line {
+            get {
+                return ResourceManager.GetString("Line", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réseau local préinstallé.
         /// </summary>
         public static string LocalNetwork {
@@ -322,11 +331,29 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type de transport.
+        /// </summary>
+        public static string RentalAccessType {
+            get {
+                return ResourceManager.GetString("RentalAccessType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start-up friendly.
         /// </summary>
         public static string StartUpFriendly {
             get {
                 return ResourceManager.GetString("StartUpFriendly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Station.
+        /// </summary>
+        public static string Station {
+            get {
+                return ResourceManager.GetString("Station", resourceCulture);
             }
         }
         

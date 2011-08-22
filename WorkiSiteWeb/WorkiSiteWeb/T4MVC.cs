@@ -32,6 +32,7 @@ public static class MVC {
     public static Worki.Web.Controllers.ProfilController Profil = new Worki.Web.Controllers.T4MVC_ProfilController();
     public static Worki.Web.Controllers.RentalController Rental = new Worki.Web.Controllers.T4MVC_RentalController();
     public static Worki.Web.Controllers.SearchController Search = new Worki.Web.Controllers.T4MVC_SearchController();
+    public static Worki.Web.Controllers.UploadImageController UploadImage = new Worki.Web.Controllers.T4MVC_UploadImageController();
     public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -1367,16 +1368,6 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult LoadFiles() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult DeleteImage() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteImage);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Delete() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
         }
@@ -1407,9 +1398,6 @@ namespace Worki.Web.Controllers {
             public readonly string Details = "details";
             public readonly string Create = "ajouter";
             public readonly string Edit = "editer";
-            public readonly string UploadFiles = "UploadFiles";
-            public readonly string LoadFiles = "LoadFiles";
-            public readonly string DeleteImage = "DeleteImage";
             public readonly string Delete = "supprimer";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
@@ -1466,23 +1454,6 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("localisation", localisation);
             callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult UploadFiles() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UploadFiles);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult LoadFiles(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult DeleteImage(string fileName) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteImage);
-            callInfo.RouteValueDictionary.Add("fileName", fileName);
             return callInfo;
         }
 
@@ -1677,11 +1648,6 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult Delete() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult LoadFiles() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public RentalController Actions { get { return MVC.Rental; } }
@@ -1700,7 +1666,6 @@ namespace Worki.Web.Controllers {
             public readonly string Edit = "editer";
             public readonly string Delete = "supprimer";
             public readonly string AddRentalAccess = "AddRentalAccess";
-            public readonly string LoadFiles = "LoadFiles";
         }
 
 
@@ -1762,12 +1727,6 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.PartialViewResult AddRentalAccess() {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddRentalAccess);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult LoadFiles(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -1919,6 +1878,79 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Controllers {
+    public partial class UploadImageController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected UploadImageController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult LoadFiles() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DeleteImage() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteImage);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public UploadImageController Actions { get { return MVC.UploadImage; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "UploadImage";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string UploadFiles = "UploadFiles";
+            public readonly string LoadFiles = "LoadFiles";
+            public readonly string DeleteImage = "DeleteImage";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_UploadImageController: Worki.Web.Controllers.UploadImageController {
+        public T4MVC_UploadImageController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult UploadFiles() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UploadFiles);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LoadFiles(int id, Worki.Data.Models.ProviderType type) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("type", type);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DeleteImage(string fileName) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteImage);
+            callInfo.RouteValueDictionary.Add("fileName", fileName);
             return callInfo;
         }
 

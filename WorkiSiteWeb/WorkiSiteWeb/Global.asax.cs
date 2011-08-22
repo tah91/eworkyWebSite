@@ -192,6 +192,7 @@ namespace Worki.Web
             var defaultBinder = new DefaultModelBinder();
             ModelBinders.Binders.DefaultBinder = defaultBinder;
             ModelBinders.Binders.Add(typeof(Localisation), new LocalisationBinder(defaultBinder));
+            ModelBinders.Binders.Add(typeof(Rental), new RentalBinder(defaultBinder));
 
 			//resources
 			DefaultModelBinder.ResourceClassKey = "Messages";

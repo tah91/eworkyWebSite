@@ -12,7 +12,7 @@ using Worki.Infrastructure.Helpers;
 namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
-	public partial class Localisation// : IDataErrorInfo
+	public partial class Localisation : IPictureDataProvider// : IDataErrorInfo
 	{
 		#region Data Container Ctor
 
@@ -553,6 +553,17 @@ namespace Worki.Data.Models
 
 		#endregion
 
+        #region IPictureDataProvider
+
+        public List<PictureData> GetPictureData()
+        {
+            if (LocalisationFiles != null)
+                return (from item in LocalisationFiles select new PictureData { FileName = item.FileName, IsDefault = item.IsDefault, IsLogo = item.IsLogo }).ToList();
+            return new List<PictureData>();
+        }
+
+        #endregion
+
 		#region Localisation Files
 
 		/// <summary>
@@ -606,7 +617,7 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
-	}
+}
 
 	[Bind(Exclude = "Id,OwnerId")]
 	public class Localisation_Validation
@@ -745,26 +756,6 @@ namespace Worki.Data.Models
 
 	#region Data Containers
 
-	public class PictureData
-	{
-		public string FileName { get; set; }
-		public bool IsDefault { get; set; }
-		public bool IsLogo { get; set; }
-	}
-
-	[DataContract]
-	public class PictureDataContainer
-	{
-		public PictureDataContainer(Localisation loc)
-		{
-			if (loc.LocalisationFiles != null)
-				Files = (from item in loc.LocalisationFiles select new PictureData { FileName = item.FileName, IsDefault = item.IsDefault, IsLogo = item.IsLogo }).ToList();
-		}
-
-		[DataMember]
-		public List<PictureData> Files { get; set; }
-	}
-
 	public class LocalisationJson
 	{
 		public int ID { get; set; }
@@ -777,18 +768,6 @@ namespace Worki.Data.Models
 		public string City { get; set; }
 		public string TypeString { get; set; }
 		public string Url { get; set; }
-	}
-
-	public class ImageJson
-	{
-		public string name { get; set; }
-		public int size { get; set; }
-		public string url { get; set; }
-		public string thumbnail_url { get; set; }
-		public string delete_url { get; set; }
-		public string delete_type { get; set; }
-		public string is_default { get; set; }
-		public string is_logo { get; set; }
 	}
 
 	#endregion

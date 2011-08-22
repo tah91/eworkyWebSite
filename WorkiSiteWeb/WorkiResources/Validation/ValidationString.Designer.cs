@@ -322,6 +322,15 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit être compris entre {1} et {2}..
+        /// </summary>
+        public static string Range {
+            get {
+                return ResourceManager.GetString("Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Le champ &quot;{0}&quot; est obligatoire..
         /// </summary>
         public static string Required {
@@ -336,6 +345,15 @@ namespace Worki.Resources.Validation {
         public static string ReturnErrorTryAgain {
             get {
                 return ResourceManager.GetString("ReturnErrorTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez choisir une valeur pour le champs &quot;{0}&quot;..
+        /// </summary>
+        public static string SelectOne {
+            get {
+                return ResourceManager.GetString("SelectOne", resourceCulture);
             }
         }
         

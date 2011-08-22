@@ -101,7 +101,7 @@ namespace Worki.Web.Controllers
 					if (newRental)
 					{
 						//update
-						UpdateModel(rentalToAdd);
+						UpdateModel(rentalToAdd, "Rental");
 						rentalToAdd.MemberId = member.MemberId;
 						//save
 						_RentalRepository.Add(rentalToAdd);
@@ -120,7 +120,7 @@ namespace Worki.Web.Controllers
 				_Logger.Error("Edit", ex);
 				ModelState.AddModelError("", error);
 			}
-			return View(rental);
+            return View(new RentalFormViewModel(rental));
 		}
 
 		/// <summary>
@@ -167,21 +167,6 @@ namespace Worki.Web.Controllers
 		public virtual PartialViewResult AddRentalAccess()
 		{
 			return PartialView(MVC.Rental.Views._RentalAccess, new RentalAccess());
-		}
-
-		/// <summary>
-		/// GET action to get localisation pictures
-		/// in case of data in tempdata, get it
-		/// else if id not null, get data from database
-		/// else return empty list
-		/// return files description in json format
-		/// </summary>
-		/// <param name="id">The id of the edited localisation</param>
-		/// <returns>localisation image desc in json format</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult LoadFiles(int id)
-		{
-			return null;
 		}
 	}
 }

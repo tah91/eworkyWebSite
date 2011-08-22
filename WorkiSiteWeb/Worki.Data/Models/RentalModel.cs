@@ -119,7 +119,7 @@ namespace Worki.Data.Models
 	#endregion
 
     [MetadataType(typeof(Rental_Validation))]
-    public partial class Rental
+    public partial class Rental : IPictureDataProvider
     {
 		#region Static Fields
 
@@ -173,10 +173,24 @@ namespace Worki.Data.Models
 
 		#endregion
 
-		//public Rental()
-		//{
-		//    RentalAccesses.Add(new RentalAccess { Type = 0, Line = "33", Station = "plop" });
-		//}
+        partial void OnInitialized()
+        {
+            Type = MiscHelpers.UnselectedItem;
+            LeaseType = MiscHelpers.UnselectedItem;
+            HeatingType = MiscHelpers.UnselectedItem;
+            TimeStamp = DateTime.Now;
+        }
+
+        #region IPictureDataProvider
+
+        public List<PictureData> GetPictureData()
+        {
+            if (RentalFiles != null)
+                return (from item in RentalFiles select new PictureData { FileName = item.FileName, IsDefault = item.IsDefault }).ToList();
+            return new List<PictureData>();
+        }
+
+        #endregion
 
 		#region RentalFeatures
 
@@ -191,11 +205,15 @@ namespace Worki.Data.Models
     [Bind(Exclude = "Id,MemberId")]
     public class Rental_Validation
     {
+        const int MinRange = 1;
+        const int MaxRange = 10000;
+
 		[Display(Name = "Reference", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
         [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Reference { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [SelectValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Type", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Type { get; set; }
 
@@ -230,14 +248,21 @@ namespace Worki.Data.Models
 		public bool AvailableNow { get; set; }
 
 		[Display(Name = "LeaseType", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+        [SelectValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int LeaseType { get; set; }
 
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MinRange, MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Rate", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Rate { get; set; }
 
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MinRange, MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Charges", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Charges { get; set; }
 
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MinRange, MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Surface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Surface { get; set; }
 
@@ -298,4 +323,36 @@ namespace Worki.Data.Models
 	}
 
 	#endregion
+
+    #region RentalAccess
+
+    [MetadataType(typeof(RentalAccess_Validation))]
+    public partial class RentalAccess
+    {
+        public RentalAccess()
+        {
+            Type = MiscHelpers.UnselectedItem;
+        }
+	}
+
+    [Bind(Exclude = "Id,RentalId")]
+    public class RentalAccess_Validation
+    {
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [SelectValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Type", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		public int Type { get; set; }
+
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Line", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string Line { get; set; }
+
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Station", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string Station { get; set; }
+	}
+
+    #endregion
 }

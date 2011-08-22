@@ -185,6 +185,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\UploadImageController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />

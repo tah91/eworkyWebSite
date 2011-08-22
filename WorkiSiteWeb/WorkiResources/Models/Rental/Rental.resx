@@ -228,4 +228,13 @@
   <data name="NotDefined" xml:space="preserve">
     <value>Choisir...</value>
   </data>
+  <data name="Line" xml:space="preserve">
+    <value>Ligne</value>
+  </data>
+  <data name="RentalAccessType" xml:space="preserve">
+    <value>Type de transport</value>
+  </data>
+  <data name="Station" xml:space="preserve">
+    <value>Station</value>
+  </data>
 </root>

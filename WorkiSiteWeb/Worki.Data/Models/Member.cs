@@ -24,7 +24,11 @@ namespace Worki.Data.Models
             this.WelcomePeoples = new HashSet<WelcomePeople>();
             this.MemberBookings = new HashSet<MemberBooking>();
             this.Rentals = new HashSet<Rental>();
+    		OnInitialized();
         }
+    
+    	// Custom initialisation inside constructor
+    	partial void OnInitialized();
     
         // Primitive properties
     

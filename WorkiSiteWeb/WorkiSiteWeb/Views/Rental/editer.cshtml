@@ -159,9 +159,20 @@
 							</div>
 						</td>
 					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Country)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Rental.Country)
+							</div>
+						</td>
+					</tr>
 				</table>
 				<div class="rentalAccessRows">
-					@{ViewData["AccessTypeSelect"] = Model.AccessTypeSelect;}
 					@foreach (var item in Model.Rental.RentalAccesses)
 					{
 						 @Html.Partial(MVC.Rental.Views._RentalAccess,item)

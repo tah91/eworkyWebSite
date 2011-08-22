@@ -11,11 +11,6 @@ namespace Worki.Web.ModelBinder
 	{
 		private readonly IModelBinder _Binder;
 
-		//prefixs for localisation gallery form
-		public const string HiddenImagePrefix = "HiddenImg_";
-		public const string IsDefaultPrefix = "IsDefault_";
-		public const string IsLogoPrefix = "IsLogo_";
-
 		public LocalisationBinder(IModelBinder binder)
 		{
 			_Binder = binder;
@@ -63,15 +58,15 @@ namespace Worki.Web.ModelBinder
 
 			//handle images
 			loc.LocalisationFiles.Clear();
-			var imageKeys = from item in keys where item.Contains(HiddenImagePrefix) select item;
-			var defaultName = controllerContext.HttpContext.Request.Form[IsDefaultPrefix] as string;
-			var logoName = controllerContext.HttpContext.Request.Form[IsLogoPrefix] as string;
+            var imageKeys = from item in keys where item.Contains(PictureData.HiddenImagePrefix) select item;
+            var defaultName = controllerContext.HttpContext.Request.Form[PictureData.IsDefaultPrefix] as string;
+            var logoName = controllerContext.HttpContext.Request.Form[PictureData.IsLogoPrefix] as string;
 			foreach (var key in imageKeys)
 			{
 				var value = controllerContext.HttpContext.Request.Form[key] as string;
-				if (string.IsNullOrEmpty(value) || !value.Contains(HiddenImagePrefix))
+                if (string.IsNullOrEmpty(value) || !value.Contains(PictureData.HiddenImagePrefix))
 					continue;
-				var fileName = value.Replace(HiddenImagePrefix, string.Empty);
+                var fileName = value.Replace(PictureData.HiddenImagePrefix, string.Empty);
 				loc.LocalisationFiles.Add(new LocalisationFile
 				{
 					FileName = fileName,

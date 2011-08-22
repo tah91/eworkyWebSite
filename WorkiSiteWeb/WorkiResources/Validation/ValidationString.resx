@@ -204,11 +204,17 @@
   <data name="PleaseSelectProfile" xml:space="preserve">
     <value>Vous devez sélectionner un profil.</value>
   </data>
+  <data name="Range" xml:space="preserve">
+    <value>Le champs "{0}" doit être compris entre {1} et {2}.</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>Le champ "{0}" est obligatoire.</value>
   </data>
   <data name="ReturnErrorTryAgain" xml:space="preserve">
     <value>Le fournisseur d'authentification a retourné une erreur. Vérifiez votre entrée et réessayez. Si le problème persiste, contactez votre administrateur système.</value>
+  </data>
+  <data name="SelectOne" xml:space="preserve">
+    <value>Vous devez choisir une valeur pour le champs "{0}".</value>
   </data>
   <data name="TheTwoNotMatch" xml:space="preserve">
     <value>'{0}' et '{1}' ne correspondent pas.</value>

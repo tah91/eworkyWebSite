@@ -26,6 +26,8 @@ namespace Worki.Infrastructure.Helpers
 		public const int OneMo = 1048576;
 		public const int MinRequiredPasswordLength = 6;
 
+        public const int UnselectedItem = -1;
+
         /// <summary>
         /// Get the display name of enums, from resource file
         /// </summary>

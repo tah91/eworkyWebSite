@@ -87,8 +87,6 @@ namespace Worki.Web.Controllers
             return View(new LocalisationFormViewModel(localisation));
         }
 
-        const string PictureDataString = "PictureData";
-        const string _DeleteType = "POST";
 		const string LocalisationPrefix = "Localisation";
 
         /// <summary>
@@ -106,7 +104,7 @@ namespace Worki.Web.Controllers
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			//to keep files state in case of error
-			TempData[PictureDataString] = new PictureDataContainer(localisation);
+            TempData[PictureData.PictureDataString] = new PictureDataContainer(localisation);
 			try
 			{
 				var member = _MemberRepository.GetMember(User.Identity.Name);
@@ -146,7 +144,7 @@ namespace Worki.Web.Controllers
 					{
 						m.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = idToRedirect, ModificationType = (int)EditionType.Edition });
 					});
-					TempData.Remove(PictureDataString);
+                    TempData.Remove(PictureData.PictureDataString);
 					return RedirectToAction(MVC.Localisation.ActionNames.Details, new { id = idToRedirect, name = ControllerHelpers.GetSeoTitle(localisation.Name) });
 				}
 			}
@@ -157,116 +155,6 @@ namespace Worki.Web.Controllers
 			}
 			return View(new LocalisationFormViewModel(localisation));
 		}
-
-		/// <summary>
-		/// Action method to handle the json upload of files
-		/// </summary>
-		/// <returns>json result containing uploaded data</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult UploadFiles()
-		{
-			var toRet = new List<ImageJson>();
-			var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-			foreach (string name in Request.Files)
-			{
-				try
-				{
-					var postedFile = Request.Files[name];
-					if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
-						continue;
-					var uploadedFileName = this.UploadFile(postedFile);
-                    var url = ControllerHelpers.GetUserImagePath(uploadedFileName, true);
-					var deleteUrl = urlHelper.Action(MVC.Localisation.DeleteImage(uploadedFileName));
-
-					toRet.Add(new ImageJson
-					{
-						name = uploadedFileName,
-						delete_type = _DeleteType,
-						delete_url = deleteUrl,
-						thumbnail_url = url,
-						size = postedFile.ContentLength,
-						url = url,
-						is_default = "true",
-						is_logo = null
-					});
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("Edit", ex);
-					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.ErrorWhenSave);
-				}
-			}
-			return Json(toRet, "text/html");
-		}
-
-        /// <summary>
-        /// GET action to get localisation pictures
-        /// in case of data in tempdata, get it
-        /// else if id not null, get data from database
-        /// else return empty list
-        /// return files description in json format
-        /// </summary>
-        /// <param name="id">The id of the edited localisation</param>
-        /// <returns>localisation image desc in json format</returns>
-        [AcceptVerbs(HttpVerbs.Post)]
-        public virtual ActionResult LoadFiles(int id)
-        {
-            var toRet = new List<ImageJson>();
-            //to recover files state in case of error
-            var filesFromCache = TempData[PictureDataString] as PictureDataContainer;
-			if (filesFromCache == null)
-            {
-                if (id == 0)
-                    return Json(toRet, "text/html");
-                var loc = _LocalisationRepository.Get(id);
-                if (loc == null)
-                    return Json(toRet, "text/html");
-				filesFromCache = new PictureDataContainer(loc);
-            }
-
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-			foreach (var file in filesFromCache.Files)
-            {
-                var url = ControllerHelpers.GetUserImagePath(file.FileName, true);
-                var deleteUrl = urlHelper.Action(MVC.Localisation.DeleteImage(file.FileName));
-                toRet.Add(new ImageJson
-                {
-                    name = file.FileName,
-                    delete_type = _DeleteType,
-                    delete_url = deleteUrl,
-                    thumbnail_url = url,
-                    url = url,
-                    is_default = file.IsDefault ? "true" : null,
-                    is_logo = file.IsLogo ? "true" : null
-                });
-            }
-            return Json(toRet, "text/html");
-        }
-
-        /// <summary>
-        /// Delete action to remove localisation picture
-        /// put files desc in TempData, to save it later with localisation form data
-        /// return files desc in json format
-        /// </summary>
-        /// <param name="fileName">The of the file to delete from server</param>
-        /// <returns>null</returns>
-        [AcceptVerbs(HttpVerbs.Post)]
-        public virtual ActionResult DeleteImage(string fileName)
-        {
-            //to put users in web.config
-			//var destinationFolder = Server.MapPath("/Users");
-			//var path = Path.Combine(destinationFolder, fileName);
-			//try
-			//{
-			//    //avoid deleting the file for the moment...
-			//    //System.IO.File.Delete(path);
-			//}
-			//catch (Exception ex)
-			//{
-			//    _Logger.Error(ex.Message);
-			//}
-            return null;
-        }
 
         /// <summary>
         /// GET Action result to delete a localisation

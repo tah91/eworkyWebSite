@@ -19,7 +19,11 @@ namespace Worki.Data.Models
             this.RentalAccesses = new HashSet<RentalAccess>();
             this.RentalFeatures = new HashSet<RentalFeature>();
             this.RentalFiles = new HashSet<RentalFile>();
+    		OnInitialized();
         }
+    
+    	// Custom initialisation inside constructor
+    	partial void OnInitialized();
     
         // Primitive properties
     
@@ -31,19 +35,19 @@ namespace Worki.Data.Models
         public string PostalCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public Nullable<System.DateTime> AvailableDate { get; set; }
         public bool AvailableNow { get; set; }
         public int LeaseType { get; set; }
         public int Rate { get; set; }
         public int Charges { get; set; }
+        public int Surface { get; set; }
         public string Description { get; set; }
         public int Energy { get; set; }
         public int GreenHouse { get; set; }
         public int HeatingType { get; set; }
         public System.DateTime TimeStamp { get; set; }
-        public int Surface { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
     
         // Navigation properties
     

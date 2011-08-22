@@ -1,6 +1,6 @@
 ﻿@model Worki.Data.Models.RentalAccess
 @{
-	var select = new SelectList(Rental.AccessTypes, "Key", "Value", Access.NotDefined); 
+	var select = new SelectList(Rental.AccessTypes, "Key", "Value", Model.Type); 
   }
 
 <div class="rentalAccessRow">

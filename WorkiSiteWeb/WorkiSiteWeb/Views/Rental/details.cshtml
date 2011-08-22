@@ -1,7 +1,8 @@
 ﻿@model Worki.Data.Models.Rental
 
-@{
-    ViewBag.Title = "Detail";
+@section HeadContent
+{
+
 }
 
 <h2>Detail</h2>
@@ -110,6 +111,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit",MVC.Rental.Edit(Model.Id)) |
     @Html.ActionLink("Back to List", "Index")
 </p>
