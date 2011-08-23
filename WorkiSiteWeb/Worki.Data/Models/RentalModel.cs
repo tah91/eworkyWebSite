@@ -181,6 +181,22 @@ namespace Worki.Data.Models
             TimeStamp = DateTime.Now;
         }
 
+        public string SurfaceString
+        {
+            get
+            {
+                return Surface.ToString() + " m²";
+            }
+        }
+
+        public string RateString
+        {
+            get
+            {
+                return (Rate+Charges).ToString() + " € cc";
+            }
+        }
+
         #region IPictureDataProvider
 
         public List<PictureData> GetPictureData()
@@ -188,6 +204,36 @@ namespace Worki.Data.Models
             if (RentalFiles != null)
                 return (from item in RentalFiles select new PictureData { FileName = item.FileName, IsDefault = item.IsDefault }).ToList();
             return new List<PictureData>();
+        }
+
+        public string GetMainPic()
+        {
+            var main = (from item in RentalFiles where item.IsDefault orderby item.Id select item.FileName).FirstOrDefault();
+            return main;
+        }
+
+        public string GetPic(int index)
+        {
+            var list = (from item in RentalFiles where !item.IsDefault orderby item.Id select item.FileName).ToList();
+            var count = list.Count();
+            if (count == 0 || index < 0 || index >= count)
+                return string.Empty;
+            return list[index];
+        }
+
+        public string GetLogoPic()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetDisplayName()
+        {
+            return RentalTypes[Type] + " - " + City;
+        }
+
+        public string GetDescription()
+        {
+            return Description;
         }
 
         #endregion
@@ -199,7 +245,62 @@ namespace Worki.Data.Models
 			return RentalFeatures.Contains(new RentalFeature { FeatureId = (int)feature }, new RentalFeatureEqualityComparer());
 		}
 
+        public List<RentalFeatureType> GetFeatures()
+        {
+            var toRet = new List<RentalFeatureType>();
+            return (from item in RentalFeatures select (RentalFeatureType)item.FeatureId).ToList();
+        }
+
+        public string AvailableString
+        {
+            get
+            {
+                if (AvailableNow)
+                    return string.Format("{0} : {1}", Worki.Resources.Models.Rental.Rental.Availability, Worki.Resources.Models.Rental.Rental.AvailableNow);
+                else if (AvailableDate.HasValue)
+                    return string.Format("{0} : {1:dd/MM/yyyy}", Worki.Resources.Models.Rental.Rental.Availability, AvailableDate.Value);
+                else
+                    return string.Empty;
+            }
+        }
+
+        public string EnergyString
+        {
+            get
+            {
+                if (Energy != MiscHelpers.UnselectedItem)
+                    return Worki.Resources.Models.Rental.Rental.Energy + " : " + ((DiagnosticRate)Energy).ToString();
+                else
+                    return string.Empty;
+            }
+        }
+
+        public string GreenHouseString
+        {
+            get
+            {
+                if (GreenHouse != MiscHelpers.UnselectedItem)
+                    return Worki.Resources.Models.Rental.Rental.GreenHouse + " : " + ((DiagnosticRate)GreenHouse).ToString();
+                else
+                    return string.Empty;
+            }
+        }
+
 		#endregion
+
+        #region IMapModelProvider
+
+        public MapModel GetMapModel()
+        {
+            return new MapModel
+            {
+                Latitude = Latitude,
+                Longitude = Longitude,
+                Name = GetDisplayName()
+            };
+        }
+
+        #endregion
 	}
 
     [Bind(Exclude = "Id,MemberId")]
@@ -332,6 +433,14 @@ namespace Worki.Data.Models
         public RentalAccess()
         {
             Type = MiscHelpers.UnselectedItem;
+        }
+
+        public string DisplayName
+        {
+            get
+            {
+                return string.Format("{0} ({1} {2})", Station, ((Access)Type).ToString(), Line);
+            }
         }
 	}
 

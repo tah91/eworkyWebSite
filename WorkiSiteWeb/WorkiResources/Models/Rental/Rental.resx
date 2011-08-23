@@ -124,7 +124,7 @@
     <value>Date de disponibilité</value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
-    <value>Immédiatement</value>
+    <value>Immédiate</value>
   </data>
   <data name="Charges" xml:space="preserve">
     <value>Charges</value>
@@ -236,5 +236,8 @@
   </data>
   <data name="Station" xml:space="preserve">
     <value>Station</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>Disponibilité</value>
   </data>
 </root>

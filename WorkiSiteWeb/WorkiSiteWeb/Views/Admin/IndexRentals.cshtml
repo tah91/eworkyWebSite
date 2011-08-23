@@ -1,0 +1,76 @@
+﻿@model Worki.Data.Models.RentalListViewModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+<h2>@Worki.Resources.Views.Admin.AdminString.AdminRental</h2>
+<div class="contentAdmin">
+    <div id="adminMenu"> 
+        @Html.Partial(MVC.Admin.Views._AdminMenu)
+    </div>
+    <div class="adminPanel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
+                    </th> 
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.EmailAddress
+                    </th>
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Rental.Rental.PostalCode
+                    </th>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Rental.Rental.Rate
+                    </th>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Rental.Rental.Surface
+                    </th>
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Action
+                    </th>
+                </tr>
+            </thead>
+        <tbody>
+        @foreach (var item in Model.Rentals)
+        {
+            <tr>
+                <td align="center">
+                    @Html.ActionLink(item.Id.ToString(), MVC.Rental.Detail(item.Id))
+                </td>
+                <td align="center">
+                    @Html.ActionLink(item.Member.Email,MVC.Profil.Dashboard(item.MemberId))
+                </td>
+                <td align="center">
+					@item.PostalCode
+                </td>
+				<td align="center">
+					@item.RateString
+                </td>
+                <td align="center">
+					@item.SurfaceString
+                </td>
+				<td align="center">
+                    <td align="right">
+                        &nbsp;&nbsp;
+                        @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Rental.Edit(item.Id)) 
+                        &nbsp;&nbsp; | &nbsp;&nbsp;
+                        @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Rental.Delete(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                    </td>
+                </td>
+            </tr>
+		}
+        </tbody>
+        <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.IndexRental, MVC.Admin.Name, new { page = x }))
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>

@@ -126,6 +126,9 @@
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
   </data>
+  <data name="AdminRental" xml:space="preserve">
+    <value>Administration des Locations</value>
+  </data>
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
@@ -206,6 +209,9 @@
   </data>
   <data name="Points" xml:space="preserve">
     <value>Point(s)</value>
+  </data>
+  <data name="Rentals" xml:space="preserve">
+    <value>Locations</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>envoyer</value>

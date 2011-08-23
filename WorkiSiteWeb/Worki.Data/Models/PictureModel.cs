@@ -10,6 +10,37 @@ namespace Worki.Data.Models
     public interface IPictureDataProvider
     {
         List<PictureData> GetPictureData();
+
+        /// <summary>
+        /// Get filename of default image
+        /// </summary>
+        /// <returns>the filename</returns>
+        string GetMainPic();
+
+        /// <summary>
+        /// get filename of image at an index
+        /// </summary>
+        /// <param name="index">the index</param>
+        /// <returns>the filename</returns>
+        string GetPic(int index);
+
+        /// <summary>
+        /// Get filename of logo
+        /// </summary>
+        /// <returns>the filename</returns>
+        string GetLogoPic();
+
+        /// <summary>
+        /// Get displayName of the instance
+        /// </summary>
+        /// <returns>the displayName</returns>
+        string GetDisplayName();
+
+        /// <summary>
+        /// Get description of the instance
+        /// </summary>
+        /// <returns>the description</returns>
+        string GetDescription();
     }
 
     public enum ProviderType

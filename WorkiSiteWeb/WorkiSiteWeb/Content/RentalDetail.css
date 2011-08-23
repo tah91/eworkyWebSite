@@ -1,0 +1,25 @@
+﻿.rentalDetailLeft
+{
+    width:61.5%;
+}
+
+.rentalDetailRight
+{
+    width:30%;
+}
+
+.rentalGallery
+{
+    height: 350px;
+}
+
+.rentalDesc
+{
+    margin-bottom:10px;
+}
+
+.rentalMap
+{
+    padding:2px;
+    border: 1px solid #5dafde;
+}

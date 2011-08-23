@@ -132,6 +132,9 @@
   <data name="AddRental" xml:space="preserve">
     <value>Ajouter une annonce</value>
   </data>
+  <data name="CreateAlert" xml:space="preserve">
+    <value>Créer une alerte email</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -147,7 +150,28 @@
   <data name="Infos" xml:space="preserve">
     <value>Informations générales</value>
   </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Propriétaire</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Imprimer cette annonce</value>
+  </data>
+  <data name="SaveSearch" xml:space="preserve">
+    <value>Mémoriser cette recherche</value>
+  </data>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Envoyer un email au propriétaire</value>
+  </data>
+  <data name="SendToFriend" xml:space="preserve">
+    <value>Recommander à un ami</value>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Valider</value>
+  </data>
+  <data name="UpdatedAt" xml:space="preserve">
+    <value>Annonce mise à jour le</value>
+  </data>
+  <data name="Usefull" xml:space="preserve">
+    <value>Pratique</value>
   </data>
 </root>

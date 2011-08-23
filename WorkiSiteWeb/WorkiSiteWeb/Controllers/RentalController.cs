@@ -103,13 +103,14 @@ namespace Worki.Web.Controllers
 						//update
 						UpdateModel(rentalToAdd, "Rental");
 						rentalToAdd.MemberId = member.MemberId;
+                        rentalToAdd.CreationDate = DateTime.Now;
 						//save
 						_RentalRepository.Add(rentalToAdd);
 						idToRedirect = rentalToAdd.Id;
 					}
 					else
 					{
-						_RentalRepository.Update(id.Value, r => { UpdateModel(r); });
+                        _RentalRepository.Update(id.Value, r => { UpdateModel(r); r.TimeStamp = DateTime.Now; });
 						idToRedirect = id.Value;
 					}
 					return RedirectToAction(MVC.Rental.ActionNames.Detail, new { id = idToRedirect });
@@ -163,6 +164,7 @@ namespace Worki.Web.Controllers
 			else
 				return Redirect(returnUrl);
 		}
+
 
 		public virtual PartialViewResult AddRentalAccess()
 		{

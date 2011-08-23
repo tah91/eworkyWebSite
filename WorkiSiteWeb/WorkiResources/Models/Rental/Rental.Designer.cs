@@ -70,6 +70,15 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disponibilité.
+        /// </summary>
+        public static string Availability {
+            get {
+                return ResourceManager.GetString("Availability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date de disponibilité.
         /// </summary>
         public static string AvailableDate {
@@ -79,7 +88,7 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Immédiatement.
+        ///   Looks up a localized string similar to Immédiate.
         /// </summary>
         public static string AvailableNow {
             get {

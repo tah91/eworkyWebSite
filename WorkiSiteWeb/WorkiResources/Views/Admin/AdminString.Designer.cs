@@ -88,6 +88,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administration des Locations.
+        /// </summary>
+        public static string AdminRental {
+            get {
+                return ResourceManager.GetString("AdminRental", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Age.
         /// </summary>
         public static string Age {
@@ -327,6 +336,15 @@ namespace Worki.Resources.Views.Admin {
         public static string Points {
             get {
                 return ResourceManager.GetString("Points", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations.
+        /// </summary>
+        public static string Rentals {
+            get {
+                return ResourceManager.GetString("Rentals", resourceCulture);
             }
         }
         

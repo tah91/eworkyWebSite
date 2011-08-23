@@ -75,6 +75,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\MapModel.cs" />
+    <Compile Include="Models\MetaData.cs" />
     <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Models\Rental.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>

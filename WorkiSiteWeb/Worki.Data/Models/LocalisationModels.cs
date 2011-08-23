@@ -12,7 +12,7 @@ using Worki.Infrastructure.Helpers;
 namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
-	public partial class Localisation : IPictureDataProvider// : IDataErrorInfo
+    public partial class Localisation : IPictureDataProvider, IMapModelProvider// : IDataErrorInfo
 	{
 		#region Data Container Ctor
 
@@ -562,45 +562,38 @@ namespace Worki.Data.Models
             return new List<PictureData>();
         }
 
+        public string GetMainPic()
+        {
+            var main = (from item in LocalisationFiles where item.IsDefault orderby item.ID select item.FileName).FirstOrDefault();
+            return main;
+        }
+
+        public string GetPic(int index)
+        {
+            var list = (from item in LocalisationFiles where !item.IsDefault && !item.IsLogo orderby item.ID select item.FileName).ToList();
+            var count = list.Count();
+            if (count == 0 || index < 0 || index >= count)
+                return string.Empty;
+            return list[index];
+        }
+
+        public string GetLogoPic()
+        {
+            var logo = (from item in LocalisationFiles where item.IsLogo orderby item.ID select item.FileName).FirstOrDefault();
+            return logo;
+        }
+
+        public string GetDisplayName()
+        {
+            return Name;
+        }
+
+        public string GetDescription()
+        {
+            return Description;
+        }
+
         #endregion
-
-		#region Localisation Files
-
-		/// <summary>
-		/// Get filename of default image
-		/// </summary>
-		/// <returns>the filename</returns>
-		public string GetMainPic()
-		{
-			var main = (from item in LocalisationFiles where item.IsDefault orderby item.ID select item.FileName).FirstOrDefault();
-			return main;
-		}
-
-		/// <summary>
-		/// get filename of image at an index
-		/// </summary>
-		/// <param name="index">the index</param>
-		/// <returns>the filename</returns>
-		public string GetPic(int index)
-		{
-			var list = (from item in LocalisationFiles where !item.IsDefault && !item.IsLogo orderby item.ID select item.FileName).ToList();
-			var count = list.Count();
-			if (count == 0 || index < 0 || index >= count)
-				return string.Empty;
-			return list[index];
-		}
-
-		/// <summary>
-		/// Get filename of logo
-		/// </summary>
-		/// <returns>the filename</returns>
-		public string GetLogoPic()
-		{
-			var logo = (from item in LocalisationFiles where item.IsLogo orderby item.ID select item.FileName).FirstOrDefault();
-			return logo;
-		}
-
-		#endregion
 
 		#region Localisation Edition
 
@@ -617,7 +610,21 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
-}
+
+        #region IMapModelProvider
+
+        public MapModel GetMapModel()
+        {
+            return new MapModel
+            {
+                Latitude = Latitude,
+                Longitude = Longitude,
+                Name = Name
+            };
+        }
+
+        #endregion
+    }
 
 	[Bind(Exclude = "Id,OwnerId")]
 	public class Localisation_Validation

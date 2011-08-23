@@ -106,6 +106,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Créer une alerte email.
+        /// </summary>
+        public static string CreateAlert {
+            get {
+                return ResourceManager.GetString("CreateAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description {
@@ -151,11 +160,74 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Propriétaire.
+        /// </summary>
+        public static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imprimer cette annonce.
+        /// </summary>
+        public static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mémoriser cette recherche.
+        /// </summary>
+        public static string SaveSearch {
+            get {
+                return ResourceManager.GetString("SaveSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Envoyer un email au propriétaire.
+        /// </summary>
+        public static string SendMailToOwner {
+            get {
+                return ResourceManager.GetString("SendMailToOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recommander à un ami.
+        /// </summary>
+        public static string SendToFriend {
+            get {
+                return ResourceManager.GetString("SendToFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valider.
         /// </summary>
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annonce mise à jour le.
+        /// </summary>
+        public static string UpdatedAt {
+            get {
+                return ResourceManager.GetString("UpdatedAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pratique.
+        /// </summary>
+        public static string Usefull {
+            get {
+                return ResourceManager.GetString("Usefull", resourceCulture);
             }
         }
     }

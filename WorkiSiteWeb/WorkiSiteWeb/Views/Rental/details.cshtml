@@ -2,115 +2,126 @@
 
 @section HeadContent
 {
-
+    @{
+        var metaData = Model.GetMetaData();
+        metaData.Url = Model.GetDetailFullUrl(Url);
+    }
+    @Html.Partial(MVC.Shared.Views._MetaDataHeader, metaData)
+    <link href="@Url.VersionedContent(Links.Content.RentalDetail_min_css)" rel="stylesheet" type="text/css" />
 }
 
-<h2>Detail</h2>
-
-<fieldset>
-    <legend>Rental</legend>
-
-    <div class="display-label">MemberId</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MemberId)
+<div class="rentalDetailHead">
+    <div class="rentalTitle float-left">
+        <h1>@Model.GetDisplayName()</h1>
+        @Model.Address - @Model.PostalCode @Model.City
     </div>
-
-    <div class="display-label">Reference</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Reference)
+    <div class="rentalSummary float-right">
+        <span class="rentalSummaryElem">@Model.SurfaceString</span>
+        <span class="rentalSummaryElem">@Model.RateString</span>
     </div>
-
-    <div class="display-label">Type</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Type)
+    <div class="clear">
     </div>
-
-    <div class="display-label">Address</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Address)
+    <div class="localisationShare float-right">
+    @{
+		var link = Model.GetDetailFullUrl(Url);
+    }
+        <div id="fb-root">
+        </div>
+        <script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+        <fb:like href="@link" layout="button_count" show_faces="false" font="arial" style="vertical-align: top;">
+        </fb:like>
+		<!-- Placez cette balise à l'endroit où vous souhaitez que le bouton +1 s'affiche --> 
+		<g:plusone size="medium" href="@link"></g:plusone>                       
+        <a  href="http://twitter.com/share" 
+            class="twitter-share-button"
+            data-text="@("Je vous recommande de découvrir cette annonce : " + Model.GetDisplayName())" 
+            data-count="horizontal" 
+            data-via="eWorky"
+            data-counturl="@link">
+            Tweet</a>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>               
     </div>
-
-    <div class="display-label">PostalCode</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PostalCode)
+    <div class="clear">
     </div>
-
-    <div class="display-label">City</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.City)
+</div>
+<div class="detailContent">
+    <div class="rentalDetailLeft blockContainer dashedRight float-left">
+        @if (Model.RentalFiles.Count > 0)
+		{
+        <div class="localisationGallery contentBlock">
+            <div id="gallery">
+                @foreach (var item in Model.RentalFiles.OrderBy(f => !f.IsDefault))
+				{
+                    <a href="@ControllerHelpers.GetUserImagePath(item.FileName)">
+            	        <img title="@Model.GetDisplayName()" alt="@Model.GetDisplayName()" src="@ControllerHelpers.GetUserImagePath(item.FileName)"/>
+        	        </a>                        
+				}
+            </div>
+        </div>
+		}
+        <div class="contentBlock">
+            <h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Description</h2>
+            <div class="rentalDesc">
+                @Html.Nl2Br(Model.Description)
+            </div>
+            <div class="featureTag">
+                <ul>
+                @foreach (var item in Model.GetFeatures())
+				{
+                    <li>@Rental.RentalFeatureDict[(int)item]</li>
+				}
+                <li>@Rental.LeaseTypes[Model.LeaseType]</li>
+                @if (Model.HeatingType != MiscHelpers.UnselectedItem)
+                {
+                    <li>@Rental.HeatingTypes[Model.HeatingType]</li>
+                }
+                @if (!string.IsNullOrEmpty(Model.AvailableString))
+                {
+                    <li>@Model.AvailableString</li>
+                }
+                @if (!string.IsNullOrEmpty(Model.AvailableString))
+                {
+                    <li>@Model.AvailableString</li>
+                }
+                @if (!string.IsNullOrEmpty(Model.GreenHouseString))
+                {
+                    <li>@Model.GreenHouseString</li>
+                }
+                </ul>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
     </div>
-
-    <div class="display-label">Country</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Country)
+    <div class="rentalDetailRight blockContainer float-right">
+        <div class="contentBlock">
+			<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Usefull</h2>
+            @Worki.Resources.Views.Rental.RentalString.CreateAlert<br />
+            @Worki.Resources.Views.Rental.RentalString.SaveSearch<br />
+            @Worki.Resources.Views.Rental.RentalString.Print<br />
+            @Worki.Resources.Views.Rental.RentalString.SendToFriend<br />
+		</div>
+        <div class="contentBlock">
+			<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Owner</h2>
+            @Model.Member.GetFullDisplayName()<br />
+            <span class="localisationInformation">Tel : </span>@Html.GetPhoneFormat(Model.Member.MemberMainData.PhoneNumber)<br />
+            @Worki.Resources.Views.Rental.RentalString.SendMailToOwner<br />
+            <span class="localisationInformation">@Worki.Resources.Models.Rental.Rental.Reference : </span>@Model.Reference<br />
+            <span class="localisationInformation">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@string.Format("{0:dd/MM/yyyy}",Model.TimeStamp)<br />
+		</div>
+        <div class="contentBlock">
+            <h2 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h2>
+            <div class="rentalMap">
+                @Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
+            </div>
+            @if(Model.RentalAccesses.Count>0)
+            {
+                <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
+                foreach(var item in Model.RentalAccesses)
+                {
+                    @item.DisplayName<br />
+                }
+            }
+        </div>
     </div>
-
-    <div class="display-label">AvailableDate</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AvailableDate)
-    </div>
-
-    <div class="display-label">AvailableNow</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AvailableNow)
-    </div>
-
-    <div class="display-label">LeaseType</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LeaseType)
-    </div>
-
-    <div class="display-label">Rate</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Rate)
-    </div>
-
-    <div class="display-label">Charges</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Charges)
-    </div>
-
-    <div class="display-label">Description</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">Energy</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Energy)
-    </div>
-
-    <div class="display-label">GreenHouse</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.GreenHouse)
-    </div>
-
-    <div class="display-label">HeatingType</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.HeatingType)
-    </div>
-
-    <div class="display-label">TimeStamp</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TimeStamp)
-    </div>
-
-    <div class="display-label">Surface</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Surface)
-    </div>
-
-    <div class="display-label">Latitude</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Latitude)
-    </div>
-
-    <div class="display-label">Longitude</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Longitude)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit",MVC.Rental.Edit(Model.Id)) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

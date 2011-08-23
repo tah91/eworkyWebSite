@@ -197,7 +197,7 @@
     </Compile>
     <Compile Include="Helpers\Capatchahelper.cs" />
     <Compile Include="Helpers\ControllerHelpers.cs" />
-    <Compile Include="Helpers\LocalisationHelper.cs" />
+    <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
@@ -231,6 +231,7 @@
     <Content Include="Content\Booking.min.css">
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
+    <Content Include="Content\RentalDetail.css" />
     <Content Include="Content\CreateLocalisation.min.css">
       <DependentUpon>CreateLocalisation.css</DependentUpon>
     </Content>
@@ -284,6 +285,9 @@
     </Content>
     <Content Include="Content\rateit.min.css">
       <DependentUpon>rateit.css</DependentUpon>
+    </Content>
+    <Content Include="Content\RentalDetail.min.css">
+      <DependentUpon>RentalDetail.css</DependentUpon>
     </Content>
     <Content Include="Content\Search.min.css">
       <DependentUpon>Search.css</DependentUpon>
@@ -546,7 +550,7 @@
     <Content Include="Views\Home\_HomeDesc.cshtml" />
     <Content Include="Views\Shared\_CufonScript.cshtml" />
     <Content Include="Views\Shared\_IndexGalleryScript.cshtml" />
-    <Content Include="Views\Shared\_OpenGraphHead.cshtml" />
+    <Content Include="Views\Shared\_MetaDataHeader.cshtml" />
     <Content Include="Views\Shared\_DirectAccess.cshtml" />
     <Content Include="Views\Shared\_PictureContainer.cshtml" />
     <Content Include="Views\Home\contact.cshtml" />
@@ -628,6 +632,7 @@
     <Content Include="Views\Rental\supprimer.cshtml" />
     <Content Include="Views\Rental\_RentalAccess.cshtml" />
     <Content Include="Views\Rental\_RentalGalleryScript.cshtml" />
+    <Content Include="Views\Admin\IndexRentals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -348,6 +348,7 @@
           <Property Name="GreenHouse" Type="int" Nullable="false" />
           <Property Name="HeatingType" Type="int" Nullable="false" />
           <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="RentalAccess">
           <Key>
@@ -1392,6 +1393,7 @@
           <NavigationProperty Name="RentalAccesses" Relationship="WorkiDBModel.FK_RentalAccess_Rental" FromRole="Rental" ToRole="RentalAccess" />
           <NavigationProperty Name="RentalFeatures" Relationship="WorkiDBModel.FK_RentalFeature_Rental" FromRole="Rental" ToRole="RentalFeature" />
           <NavigationProperty Name="RentalFiles" Relationship="WorkiDBModel.FK_RentalFile_Rental" FromRole="Rental" ToRole="RentalFile" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" />
         </EntityType>
         <EntityType Name="RentalAccess">
           <Key>
@@ -1685,6 +1687,7 @@
           <EntitySetMapping Name="Rentals">
             <EntityTypeMapping TypeName="WorkiDBModel.Rental">
               <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
                 <ScalarProperty Name="HeatingType" ColumnName="HeatingType" />
                 <ScalarProperty Name="GreenHouse" ColumnName="GreenHouse" />

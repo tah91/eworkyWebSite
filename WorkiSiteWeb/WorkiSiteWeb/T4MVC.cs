@@ -568,6 +568,8 @@ namespace Links {
         public static readonly string Profil_min_css = Url("Profil.min.css");
         public static readonly string rateit_css = Url("rateit.css");
         public static readonly string rateit_min_css = Url("rateit.min.css");
+        public static readonly string RentalDetail_css = Url("RentalDetail.css");
+        public static readonly string RentalDetail_min_css = Url("RentalDetail.min.css");
         public static readonly string Search_css = Url("Search.css");
         public static readonly string Search_min_css = Url("Search.min.css");
         public static readonly string SearchResults_css = Url("SearchResults.css");
@@ -861,6 +863,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult IndexBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexBooking);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult IndexRental() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AdminController Actions { get { return MVC.Admin; } }
@@ -889,6 +896,7 @@ namespace Worki.Web.Controllers {
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string IndexBooking = "IndexBooking";
+            public readonly string IndexRental = "IndexRental";
         }
 
 
@@ -1040,6 +1048,12 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult IndexBooking(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexBooking);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult IndexRental(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
@@ -2045,7 +2059,7 @@ namespace T4MVC {
             public readonly string _LogOnUserControl = "~/Views/Shared/_LogOnUserControl.cshtml";
             public readonly string _MainMenu = "~/Views/Shared/_MainMenu.cshtml";
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";
-            public readonly string _OpenGraphHead = "~/Views/Shared/_OpenGraphHead.cshtml";
+            public readonly string _MetaDataHeader = "~/Views/Shared/_MetaDataHeader.cshtml";
             public readonly string _PictureContainer = "~/Views/Shared/_PictureContainer.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
             public readonly string resultats_detail = "~/Views/Shared/resultats-detail.cshtml";
