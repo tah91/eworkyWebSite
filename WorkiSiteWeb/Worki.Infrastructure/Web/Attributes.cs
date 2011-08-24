@@ -223,7 +223,7 @@ namespace Worki.Infrastructure
 
         public CacheFilterAttribute()
         {
-            Duration = 10;
+            Duration = -1;
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
