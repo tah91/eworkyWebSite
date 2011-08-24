@@ -244,15 +244,18 @@
 					{
 						<span class="localisationInformation">Ajouté par : </span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Profil.Detail(creation.Member.MemberId))</span><br />
 						<span class="localisationInformation">le : </span>@String.Format("{0:d/M/yyyy HH:mm:ss}", creation.ModificationDate)<br />
-                    }
+					}
+					else
+					{ 
+						<span class="localisationInformation">Ajouté par : </span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
+					}
 					@if (lastEdition != null)
 					{
 						<span class="localisationInformation">Dernière édition par : </span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Profil.Detail(lastEdition.Member.MemberId))</span><br />
 						<span class="localisationInformation">le : </span>@String.Format("{0:d/M/yyyy HH:mm:ss}", lastEdition.ModificationDate)<br />
-					}
-                    
+					}                    
 				</div>
-            }
+			}
             <div class="localisationMiscRatings contentBlock">
                 <h3 class="blue">L'avis des eWorkers</h3>
                 <table>
@@ -265,7 +268,7 @@
                         </td>                    
                     </tr>
                     @if (Model.IsFreeLocalisation())
-                    {
+					{
                     <tr>
                         <td>
                             @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.Price))&nbsp;&nbsp;
@@ -298,55 +301,55 @@
                             @Worki.Resources.Models.Localisation.Localisation.RatingWelcome
                         </td>                    
                     </tr>
-                    }
+					}
                 </table>
 				@{
-                    var haveAvoid = Model.GetAvoidString();
-                    if (!string.IsNullOrEmpty(haveAvoid))
-                    {
+					var haveAvoid = Model.GetAvoidString();
+					if (!string.IsNullOrEmpty(haveAvoid))
+					{
 						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
-                    }
+					}
 				}
             </div>
             @if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
-            {
+			{
                 <div class="localisationGeneralInfo contentBlock">
                     <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
                     @if (!Model.ContactEmpty())
-                    {
-                        if (!string.IsNullOrEmpty(Model.Mail))
-                        {
+					{
+						if (!string.IsNullOrEmpty(Model.Mail))
+						{
                             @Html.Mailto(Model.Mail, Model.Mail)<br />
-                        }
-                        if (!string.IsNullOrEmpty(Model.WebSite))
-                        {
+						}
+						if (!string.IsNullOrEmpty(Model.WebSite))
+						{
                             <a href="@Model.WebSite" target="_blank">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
-                        }
-                        if (!string.IsNullOrEmpty(Model.PhoneNumber))
-                        {
+						}
+						if (!string.IsNullOrEmpty(Model.PhoneNumber))
+						{
                             <span class="localisationInformation">Tel : </span>
                             @Html.GetPhoneFormat(Model.PhoneNumber)<br />
-                        }
-                        if (!string.IsNullOrEmpty(Model.Fax))
-                        {
+						}
+						if (!string.IsNullOrEmpty(Model.Fax))
+						{
                             <span class="localisationInformation">Fax : </span>
                             @Html.GetPhoneFormat(Model.Fax)<br />
-                        }
-                    }
-                    else
-                    {
+						}
+					}
+					else
+					{
                         <span>@Worki.Resources.Views.Localisation.LocalisationString.YouKnowContactUs</span>
-                    }
+					}
                 </div>
-            }
+			}
             <div class="localisationSchedule contentBlock">
                 <h3 class="blue">Horaires</h3>
                 @if (Model.HasFeature(Feature.Access24, FeatureType.General))
-                {
+				{
                     @Html.FeatureLabelFor(Feature.Access24, FeatureType.General)
-                }
-                else if (Model.HasOpenningTimes())
-                {
+				}
+				else if (Model.HasOpenningTimes())
+				{
                 <table>
                     @RazorHelpers.OpenningRow(Model, DayOfWeek.Monday, Worki.Resources.Views.Localisation.LocalisationFormString.Monday)
                     @RazorHelpers.OpenningRow(Model, DayOfWeek.Tuesday, Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday)
@@ -356,11 +359,11 @@
                     @RazorHelpers.OpenningRow(Model, DayOfWeek.Saturday, Worki.Resources.Views.Localisation.LocalisationFormString.Saturday)
                     @RazorHelpers.OpenningRow(Model, DayOfWeek.Sunday, Worki.Resources.Views.Localisation.LocalisationFormString.Sunday)
                 </table>
-                }
-                else
-                {
+				}
+				else
+				{
                     @Worki.Resources.Views.Shared.SharedString.KnowHouly @EmailService.ContactMail
-                }
+				}
             </div>
         </div>
         <div class="clear">
@@ -370,7 +373,7 @@
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
     </div>
 	@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
-	{
+ {
 		<div class="editionLink float-right">
 		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Localisation.Delete(Model.ID))
 		</div>

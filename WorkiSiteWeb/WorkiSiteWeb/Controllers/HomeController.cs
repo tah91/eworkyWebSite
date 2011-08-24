@@ -6,6 +6,7 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
 using Worki.Service;
+using System.Linq;
 
 namespace Worki.Web.Controllers
 {
@@ -47,7 +48,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult Index()
 		{
 			ViewData[LocalisationCount] = _LocalisationRepository.GetCount();
-			ViewData[WelcomePeopleList] = _WelcomePeopleRepository.GetAll();
+			ViewData[WelcomePeopleList] = _WelcomePeopleRepository.GetAll().OrderByDescending(wp => wp.Id).ToList();
 			return View(new SearchCriteriaFormViewModel());
 		}
 
