@@ -1,9 +1,7 @@
 ﻿<script type="text/javascript">
-    require(["@MiscHelpers.jquery"], function () {
-        require(["@Url.VersionedContent(Links.Scripts.cufon_yui_js)", "@Url.VersionedContent(Links.Scripts.Steinem_Unicode_400_Steinem_700_Steinem_italic_400_font_js)"], function () {
-            require.ready(function () {
-                Cufon.replace('.cufonIt'); // Requires a selector engine for IE 6-7, see above
-            });
+    require(["@Url.VersionedContent(Links.Scripts.cufon_yui_js)", "@Url.VersionedContent(Links.Scripts.Steinem_Unicode_400_Steinem_700_Steinem_italic_400_font_js)"], function () {
+        require.ready(function () {
+            Cufon.replace('.cufonIt'); // Requires a selector engine for IE 6-7, see above
         });
     });
 </script>

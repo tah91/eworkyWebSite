@@ -20,7 +20,7 @@ namespace Worki.Infrastructure.Helpers
 		public const string DataConnectionString = "DataConnectionString";
 
         public const int MaxLengh = 256;
-		public const string jquery = "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js";
+		public const string jquery = "";//"https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js";
 		public const string jqueryui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js";
 		public const int MaxFileSize = 3145728;
 		public const int OneMo = 1048576;

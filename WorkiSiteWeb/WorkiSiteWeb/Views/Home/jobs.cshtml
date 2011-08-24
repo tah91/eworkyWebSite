@@ -82,9 +82,7 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-        require(["@MiscHelpers.jquery"], function () {
-            require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
-        });
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
     </script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
 }

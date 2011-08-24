@@ -1,276 +1,273 @@
 ﻿@model Worki.Data.Models.LocalisationFormViewModel
 
 <script type="text/javascript">
-    require(["@MiscHelpers.jquery"], function () {
-
-        require(["@Url.VersionedContent(Links.Scripts.jquery_placeholder_js)"], function () {
-            $('input, textarea').placeholder();
-        });
-
-        require(["@MiscHelpers.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
-                require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-                    //locate address on edition map, and autofill postal code and country
-		            checkIfExist = function(localisations) {
-				            var first = localisations[0];
-				            if(first==null){
-                                $("#localisationAtSamePlaceReplace").replaceWith('<div id="localisationAtSamePlaceReplace"></div>');
-					            return;
-                            }
-				            var message = 'Le lieu "'+ first.Name + '" est à la même adresse que le lieu que vous tentez d\'ajouter';
-                            $("#localisationAtSamePlaceReplace").replaceWith('<div id="localisationAtSamePlaceReplace"><div class="localisationAtSamePlace">' + message + '</div></div>');
-				            //alert(message);
-		            }
-		            GetSimilarLocalisation = function(currentLatitude,currentLongitude){
-			            @if (Model.Localisation.ID == 0)
-			            {
-				            @:var action = '@Html.GetUrl(MVC.Search.ActionNames.FindSimilarLocalisation,MVC.Search.Name)';
-				            @:$.post(action, { latitude: currentLatitude, longitude: currentLongitude }, checkIfExist, "json");
-			            }
-		            }
-		            var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, null, null ,'#Localisation_City','#Localisation_PostalCode','#Localisation_Country');
-		            var workiMap = new WorkiMap('editMapDiv','#Localisation_Latitude', '#Localisation_Longitude');
-		            var latitude = @Model.Localisation.Latitude;
-		            var longitude = @Model.Localisation.Longitude;
-		            var title = "@Model.Localisation.Name";
-		            workiMap.LoadDetailMap(latitude,longitude,title,true);
-		            FindAddress = function (evt) {
-			            var addressValue = jQuery.trim($("#Localisation_Adress").val());
-			            var postalCodeValue = jQuery.trim($("#Localisation_PostalCode").val());
-			            var cityValue = jQuery.trim($("#Localisation_City").val());
-			            if( addressValue === "" || cityValue === "" )
-				            return;
-			            var address = addressValue + ' ' + postalCodeValue + ' ' + cityValue;
-			            if (address.length < 1)
-				            return;
-				
-			            workiGeoCoder.GeocodeAddress(address, GetSimilarLocalisation);
-			            workiMap.ClearMap();
-			            workiMap.FindAddressOnMap(address);
-		            }
-
-		            $("#Localisation_Adress").blur(function (evt) {
-			            FindAddress(evt);
-		            });
-		            $("#Localisation_PostalCode").blur(function (evt) {
-			            //FindAddress(evt);
-		            });
-		            $("#Localisation_City").blur(function (evt) {
-			            FindAddress(evt);
-		            });
-
-		            $('#resetPos').click(function() {
-			            FindAddress();
-		            });
-
-		            $("#localisationEditForm").submit(function () {
-			            var lat = jQuery.trim($("#Localisation_Latitude").val());
-			            var lng = jQuery.trim($("#Localisation_Longitude").val());
-			            if(lat == "0" || lng == "0")
-				            FindAddress(null);
-
-			            var coffeePrice = $("#Localisation_LocalisationData_CoffeePrice").val();
-			            var newCoffeePrice = coffeePrice.replace(",", ".");
-                        $("#Localisation_LocalisationData_CoffeePrice").val(newCoffeePrice);
-                        return true;
-                    });
-                });
-        });
-
-        function initialize() {
-
-        }
-
-        //select freearea by default for free types
-		ResetOfferCheckBox = function () {
-            if($(".validation-summary-errors").has("ul").length)
-                return;
-			var currentType = jQuery.trim($("#Localisation_TypeValue").val());
-			if (currentType == "0" || currentType == "1" || currentType == "2" || currentType == "3") {
-                $("#FreeArea-WorkingPlace").attr('checked', true);
-                $(".freeAreaType").show();
-			}
-			else {
-				$("#FreeArea-WorkingPlace").attr('checked', false);
-                $(".freeAreaType").hide();
-			}
-		}
-        @if (Model.Localisation.ID == 0)
-        { 
-		    @:ResetOfferCheckBox();
-        }
-		$('.typeSelect').change(function () {
-			ResetOfferCheckBox();
-		});
-
-        $("#Wifi_Free-General").click(function () {
-        var isChecked = $("#Wifi_Free-General:checked").val();
-        if (isChecked == 'true') {
-            $("#Wifi_Not_Free-General").attr('checked', false);
-            }
-        });
-
-        $("#Wifi_Not_Free-General").click(function () {
-        var isChecked = $("#Wifi_Not_Free-General:checked").val();
-        if (isChecked == 'true') {
-            $("#Wifi_Free-General").attr('checked', false);
-            }
-        });
-
-		InitOpenning = function () {
-			// init
-			var acces24 = $("#Access24-General:checked").val();
-			var isLunchClose = $("#LunchClose-General:checked").val();
-
-			if (acces24 == 'true') {
-				$(".editOpenning").hide();
-				$("#lunchCloseChecked").hide();
-			}
-			else {
-				$(".editOpenning").show();
-				$("#lunchCloseChecked").show();
-			}
-
-			if (isLunchClose == 'true') {
-				$(".lunchclose").show();
-			}
-			else {
-				$(".lunchclose").hide();
-			}
-		};
-
-		InitOpenning();
-
-		// event
-		$("#Access24-General").click(function () {
-			var is24 = $("#Access24-General:checked").val();
-			if (is24 == 'true') {
-				$(".editOpenning").hide();
-				$("#lunchCloseChecked").hide();
-			}
-			else {
-				$(".editOpenning").show();
-				$("#lunchCloseChecked").show();
-			}
-		});
-
-		$("#LunchClose-General").click(function () {
-			var isLunchClose = $("#LunchClose-General:checked").val();
-			if (isLunchClose == 'true') {
-				$(".lunchclose").show();
-			}
-			else {
-				$(".lunchclose").hide();
-			}
-		});
-
-		NeedWorkingPlace = function () {
-			var buisnessRoom = $("#BuisnessRoom-WorkingPlace:checked").val();
-			var workstation = $("#Workstation-WorkingPlace:checked").val();
-			var singleDesk = $("#SingleDesk-WorkingPlace:checked").val();
-            var freeArea = $("#FreeArea-WorkingPlace:checked").val();                
-
-			if (buisnessRoom == 'true' || workstation == 'true' || singleDesk == 'true' || freeArea == 'true') {
-				$(".workingPlaceFeatures").show();
-			}
-			else {
-				$(".workingPlaceFeatures").hide();
-			}
-		};
-
-		NeedMeetingRoom = function () {
-			var meetingRoom = $("#MeetingRoom-MeetingRoom:checked").val();
-
-			if (meetingRoom == 'true') {
-				$(".meetingRoomFeatures").show();
-			}
-			else {
-				$(".meetingRoomFeatures").hide();
-			}
-		};
-
-		NeedSeminarRoom = function () {
-			var SeminarRoom = $("#SeminarRoom-SeminarRoom:checked").val();
-
-			if (SeminarRoom == 'true') {
-				$(".seminarRoomFeatures").show();
-			}
-			else {
-				$(".seminarRoomFeatures").hide();
-			}
-		};
-
-		NeedVisioRoom = function () {
-			var visioRoom = $("#VisioRoom-VisioRoom:checked").val();
-
-			if (visioRoom == 'true') {
-				$(".visioRoomFeatures").show();
-			}
-			else {
-				$(".visioRoomFeatures").hide();
-			}
-		};
-
-		InitOfferPanes = function () {
-			// init
-			NeedWorkingPlace();
-			NeedMeetingRoom();
-			NeedSeminarRoom();
-			NeedVisioRoom();                
-		};
-
-		InitOfferPanes();
-
-		// event
-		$("#BuisnessRoom-WorkingPlace").click(function () {
-			NeedWorkingPlace();
-		});
-
-		$("#Workstation-WorkingPlace").click(function () {
-			NeedWorkingPlace();
-		});
-
-		$("#SingleDesk-WorkingPlace").click(function () {
-			NeedWorkingPlace();
-		});
-
-        $("#FreeArea-WorkingPlace").click(function () {
-			NeedWorkingPlace();
-		});
-
-		$("#MeetingRoom-MeetingRoom").click(function () {
-			NeedMeetingRoom();
-		});
-
-		$("#SeminarRoom-SeminarRoom").click(function () {
-			NeedSeminarRoom();
-		});
-
-		$("#VisioRoom-VisioRoom").click(function () {
-			NeedVisioRoom();
-		});
-		
-		//auto fill opening times from monday blur
-		AutoFillFromMonday = function(ext)
-		{
-			var monValue = jQuery.trim($('#Localisation_Mon'+ext).val());
-			if(monValue === "")
-				return;
-			$('#Localisation_Tue'+ext).val(monValue);
-			$('#Localisation_Wed'+ext).val(monValue);
-			$('#Localisation_Thu'+ext).val(monValue);
-			$('#Localisation_Fri'+ext).val(monValue);
-		}
-		$('#Localisation_MonOpen').blur(function (evt) {
-			AutoFillFromMonday('Open');
-		});
-		$('#Localisation_MonClose').blur(function (evt) {
-			AutoFillFromMonday('Close');
-		});
-		$('#Localisation_MonOpen2').blur(function (evt) {
-			AutoFillFromMonday('Open2');
-		});
-		$('#Localisation_MonClose2').blur(function (evt) {
-			AutoFillFromMonday('Close2');
-		});
+    require(["@Url.VersionedContent(Links.Scripts.jquery_placeholder_js)"], function () {
+        $('input, textarea').placeholder();
     });
+
+    require(["@MiscHelpers.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+            require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+                //locate address on edition map, and autofill postal code and country
+		        checkIfExist = function(localisations) {
+				        var first = localisations[0];
+				        if(first==null){
+                            $("#localisationAtSamePlaceReplace").replaceWith('<div id="localisationAtSamePlaceReplace"></div>');
+					        return;
+                        }
+				        var message = 'Le lieu "'+ first.Name + '" est à la même adresse que le lieu que vous tentez d\'ajouter';
+                        $("#localisationAtSamePlaceReplace").replaceWith('<div id="localisationAtSamePlaceReplace"><div class="localisationAtSamePlace">' + message + '</div></div>');
+				        //alert(message);
+		        }
+		        GetSimilarLocalisation = function(currentLatitude,currentLongitude){
+			        @if (Model.Localisation.ID == 0)
+			        {
+				        @:var action = '@Html.GetUrl(MVC.Search.ActionNames.FindSimilarLocalisation,MVC.Search.Name)';
+				        @:$.post(action, { latitude: currentLatitude, longitude: currentLongitude }, checkIfExist, "json");
+			        }
+		        }
+		        var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, null, null ,'#Localisation_City','#Localisation_PostalCode','#Localisation_Country');
+		        var workiMap = new WorkiMap('editMapDiv','#Localisation_Latitude', '#Localisation_Longitude');
+		        var latitude = @Model.Localisation.Latitude;
+		        var longitude = @Model.Localisation.Longitude;
+		        var title = "@Model.Localisation.Name";
+		        workiMap.LoadDetailMap(latitude,longitude,title,true);
+		        FindAddress = function (evt) {
+			        var addressValue = jQuery.trim($("#Localisation_Adress").val());
+			        var postalCodeValue = jQuery.trim($("#Localisation_PostalCode").val());
+			        var cityValue = jQuery.trim($("#Localisation_City").val());
+			        if( addressValue === "" || cityValue === "" )
+				        return;
+			        var address = addressValue + ' ' + postalCodeValue + ' ' + cityValue;
+			        if (address.length < 1)
+				        return;
+				
+			        workiGeoCoder.GeocodeAddress(address, GetSimilarLocalisation);
+			        workiMap.ClearMap();
+			        workiMap.FindAddressOnMap(address);
+		        }
+
+		        $("#Localisation_Adress").blur(function (evt) {
+			        FindAddress(evt);
+		        });
+		        $("#Localisation_PostalCode").blur(function (evt) {
+			        //FindAddress(evt);
+		        });
+		        $("#Localisation_City").blur(function (evt) {
+			        FindAddress(evt);
+		        });
+
+		        $('#resetPos').click(function() {
+			        FindAddress();
+		        });
+
+		        $("#localisationEditForm").submit(function () {
+			        var lat = jQuery.trim($("#Localisation_Latitude").val());
+			        var lng = jQuery.trim($("#Localisation_Longitude").val());
+			        if(lat == "0" || lng == "0")
+				        FindAddress(null);
+
+			        var coffeePrice = $("#Localisation_LocalisationData_CoffeePrice").val();
+			        var newCoffeePrice = coffeePrice.replace(",", ".");
+                    $("#Localisation_LocalisationData_CoffeePrice").val(newCoffeePrice);
+                    return true;
+                });
+            });
+    });
+
+    function initialize() {
+
+    }
+
+    //select freearea by default for free types
+	ResetOfferCheckBox = function () {
+        if($(".validation-summary-errors").has("ul").length)
+            return;
+		var currentType = jQuery.trim($("#Localisation_TypeValue").val());
+		if (currentType == "0" || currentType == "1" || currentType == "2" || currentType == "3") {
+            $("#FreeArea-WorkingPlace").attr('checked', true);
+            $(".freeAreaType").show();
+		}
+		else {
+			$("#FreeArea-WorkingPlace").attr('checked', false);
+            $(".freeAreaType").hide();
+		}
+	}
+    @if (Model.Localisation.ID == 0)
+    { 
+		@:ResetOfferCheckBox();
+    }
+	$('.typeSelect').change(function () {
+		ResetOfferCheckBox();
+	});
+
+    $("#Wifi_Free-General").click(function () {
+    var isChecked = $("#Wifi_Free-General:checked").val();
+    if (isChecked == 'true') {
+        $("#Wifi_Not_Free-General").attr('checked', false);
+        }
+    });
+
+    $("#Wifi_Not_Free-General").click(function () {
+    var isChecked = $("#Wifi_Not_Free-General:checked").val();
+    if (isChecked == 'true') {
+        $("#Wifi_Free-General").attr('checked', false);
+        }
+    });
+
+	InitOpenning = function () {
+		// init
+		var acces24 = $("#Access24-General:checked").val();
+		var isLunchClose = $("#LunchClose-General:checked").val();
+
+		if (acces24 == 'true') {
+			$(".editOpenning").hide();
+			$("#lunchCloseChecked").hide();
+		}
+		else {
+			$(".editOpenning").show();
+			$("#lunchCloseChecked").show();
+		}
+
+		if (isLunchClose == 'true') {
+			$(".lunchclose").show();
+		}
+		else {
+			$(".lunchclose").hide();
+		}
+	};
+
+	InitOpenning();
+
+	// event
+	$("#Access24-General").click(function () {
+		var is24 = $("#Access24-General:checked").val();
+		if (is24 == 'true') {
+			$(".editOpenning").hide();
+			$("#lunchCloseChecked").hide();
+		}
+		else {
+			$(".editOpenning").show();
+			$("#lunchCloseChecked").show();
+		}
+	});
+
+	$("#LunchClose-General").click(function () {
+		var isLunchClose = $("#LunchClose-General:checked").val();
+		if (isLunchClose == 'true') {
+			$(".lunchclose").show();
+		}
+		else {
+			$(".lunchclose").hide();
+		}
+	});
+
+	NeedWorkingPlace = function () {
+		var buisnessRoom = $("#BuisnessRoom-WorkingPlace:checked").val();
+		var workstation = $("#Workstation-WorkingPlace:checked").val();
+		var singleDesk = $("#SingleDesk-WorkingPlace:checked").val();
+        var freeArea = $("#FreeArea-WorkingPlace:checked").val();                
+
+		if (buisnessRoom == 'true' || workstation == 'true' || singleDesk == 'true' || freeArea == 'true') {
+			$(".workingPlaceFeatures").show();
+		}
+		else {
+			$(".workingPlaceFeatures").hide();
+		}
+	};
+
+	NeedMeetingRoom = function () {
+		var meetingRoom = $("#MeetingRoom-MeetingRoom:checked").val();
+
+		if (meetingRoom == 'true') {
+			$(".meetingRoomFeatures").show();
+		}
+		else {
+			$(".meetingRoomFeatures").hide();
+		}
+	};
+
+	NeedSeminarRoom = function () {
+		var SeminarRoom = $("#SeminarRoom-SeminarRoom:checked").val();
+
+		if (SeminarRoom == 'true') {
+			$(".seminarRoomFeatures").show();
+		}
+		else {
+			$(".seminarRoomFeatures").hide();
+		}
+	};
+
+	NeedVisioRoom = function () {
+		var visioRoom = $("#VisioRoom-VisioRoom:checked").val();
+
+		if (visioRoom == 'true') {
+			$(".visioRoomFeatures").show();
+		}
+		else {
+			$(".visioRoomFeatures").hide();
+		}
+	};
+
+	InitOfferPanes = function () {
+		// init
+		NeedWorkingPlace();
+		NeedMeetingRoom();
+		NeedSeminarRoom();
+		NeedVisioRoom();                
+	};
+
+	InitOfferPanes();
+
+	// event
+	$("#BuisnessRoom-WorkingPlace").click(function () {
+		NeedWorkingPlace();
+	});
+
+	$("#Workstation-WorkingPlace").click(function () {
+		NeedWorkingPlace();
+	});
+
+	$("#SingleDesk-WorkingPlace").click(function () {
+		NeedWorkingPlace();
+	});
+
+    $("#FreeArea-WorkingPlace").click(function () {
+		NeedWorkingPlace();
+	});
+
+	$("#MeetingRoom-MeetingRoom").click(function () {
+		NeedMeetingRoom();
+	});
+
+	$("#SeminarRoom-SeminarRoom").click(function () {
+		NeedSeminarRoom();
+	});
+
+	$("#VisioRoom-VisioRoom").click(function () {
+		NeedVisioRoom();
+	});
+		
+	//auto fill opening times from monday blur
+	AutoFillFromMonday = function(ext)
+	{
+		var monValue = jQuery.trim($('#Localisation_Mon'+ext).val());
+		if(monValue === "")
+			return;
+		$('#Localisation_Tue'+ext).val(monValue);
+		$('#Localisation_Wed'+ext).val(monValue);
+		$('#Localisation_Thu'+ext).val(monValue);
+		$('#Localisation_Fri'+ext).val(monValue);
+	}
+	$('#Localisation_MonOpen').blur(function (evt) {
+		AutoFillFromMonday('Open');
+	});
+	$('#Localisation_MonClose').blur(function (evt) {
+		AutoFillFromMonday('Close');
+	});
+	$('#Localisation_MonOpen2').blur(function (evt) {
+		AutoFillFromMonday('Open2');
+	});
+	$('#Localisation_MonClose2').blur(function (evt) {
+		AutoFillFromMonday('Close2');
+	});
 </script>
