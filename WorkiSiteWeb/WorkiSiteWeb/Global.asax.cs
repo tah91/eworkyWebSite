@@ -60,6 +60,9 @@ namespace Worki.Web
 			Bind<IRentalRepository>()
                 .To<RentalRepository>();
 
+			Bind<IGeocodeService>()
+				.To<GeocodeService>();
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();

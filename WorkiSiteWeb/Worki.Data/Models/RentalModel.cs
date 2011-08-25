@@ -197,6 +197,14 @@ namespace Worki.Data.Models
             }
         }
 
+		public string FullAddress
+		{
+			get
+			{
+				return Address + " " + City + " " + PostalCode + " " + Country;
+			}
+		}
+
         #region IPictureDataProvider
 
         public List<PictureData> GetPictureData()
@@ -306,9 +314,6 @@ namespace Worki.Data.Models
     [Bind(Exclude = "Id,MemberId")]
     public class Rental_Validation
     {
-        const int MinRange = 1;
-        const int MaxRange = 10000;
-
 		[Display(Name = "Reference", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
         [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Reference { get; set; }
@@ -353,17 +358,17 @@ namespace Worki.Data.Models
 		public int LeaseType { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Range(MinRange, MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Rate", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Rate { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Range(MinRange, MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Charges", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Charges { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Range(MinRange, MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Surface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Surface { get; set; }
 
@@ -464,4 +469,31 @@ namespace Worki.Data.Models
 	}
 
     #endregion
+
+	#region RentalSearch
+
+	public class RentalSearch
+	{
+		public List<string> Places { get; set; }
+
+		[Display(Name = "Min", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public int MinRate { get; set; }
+
+		[Display(Name = "Max", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public int MinRate { get; set; }
+
+		[Display(Name = "Min", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public int MinRate { get; set; }
+
+		[Display(Name = "Max", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public int MinRate { get; set; }
+
+		public Rental RentalData { get; set; }
+	}
+
+	#endregion
 }

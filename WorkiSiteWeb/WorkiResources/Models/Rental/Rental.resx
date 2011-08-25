@@ -240,4 +240,10 @@
   <data name="Availability" xml:space="preserve">
     <value>Disponibilité</value>
   </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
 </root>

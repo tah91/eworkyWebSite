@@ -7,6 +7,7 @@ using Worki.Data.Repository;
 using Worki.Data.Models;
 using System.Linq;
 using Worki.Infrastructure;
+using Worki.Services;
 
 namespace Worki.Web.Controllers
 {
@@ -20,14 +21,16 @@ namespace Worki.Web.Controllers
 		IRentalRepository _RentalRepository;
 		IMemberRepository _MemberRepository;
 		ILogger _Logger;
+		IGeocodeService _GeocodeService;
 
 		#endregion
 
-        public RentalController(IRentalRepository rentalRepository, IMemberRepository memberRepository, ILogger logger)
+        public RentalController(IRentalRepository rentalRepository, IMemberRepository memberRepository, ILogger logger,IGeocodeService geocodeService)
 		{
             _RentalRepository = rentalRepository;
 			_MemberRepository = memberRepository;
 			_Logger = logger;
+			_GeocodeService = geocodeService;
 		}
 
 		/// <summary>
@@ -98,19 +101,29 @@ namespace Worki.Web.Controllers
 					var rentalToAdd = new Rental();
 					var idToRedirect = 0;
 					var newRental = (!id.HasValue || id.Value == 0);
+					float lat, lng;
+					_GeocodeService.GeoCode(rental.FullAddress, out lat, out lng);
 					if (newRental)
 					{
 						//update
 						UpdateModel(rentalToAdd, "Rental");
 						rentalToAdd.MemberId = member.MemberId;
                         rentalToAdd.CreationDate = DateTime.Now;
+						rentalToAdd.Latitude = lat;
+						rentalToAdd.Longitude = lng;
 						//save
 						_RentalRepository.Add(rentalToAdd);
 						idToRedirect = rentalToAdd.Id;
 					}
 					else
 					{
-                        _RentalRepository.Update(id.Value, r => { UpdateModel(r); r.TimeStamp = DateTime.Now; });
+                        _RentalRepository.Update(id.Value, r => 
+						{ 
+							UpdateModel(r);
+							r.TimeStamp = DateTime.Now;
+							r.Latitude = lat;
+							r.Longitude = lng;
+						});
 						idToRedirect = id.Value;
 					}
 					return RedirectToAction(MVC.Rental.ActionNames.Detail, new { id = idToRedirect });

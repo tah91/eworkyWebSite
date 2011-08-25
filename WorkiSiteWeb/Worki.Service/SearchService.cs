@@ -29,6 +29,7 @@ namespace Worki.Services
 
 		ILocalisationRepository _LocalisationRepository;
         ILogger _Logger;
+		IGeocodeService _GeocodeService;
 
         /// <summary>
         /// Get value corresponding to an url param key
@@ -44,40 +45,6 @@ namespace Worki.Services
             else if (request.RequestContext.RouteData.Values[key] != null)
                 return request.RequestContext.RouteData.Values[key] as string;
             else return null;
-        }
-
-        /// <summary>
-        /// Geocode address via google api
-        /// </summary>
-        /// <param name="address">address to geocode</param>
-        /// <param name="lat">place latitude</param>
-        /// <param name="lg">place longitude</param>
-        void GeoCode(string address, out float lat, out float lg)
-        {
-            lat = 0;
-            lg = 0;
-            if (string.IsNullOrEmpty(address))
-                return;
-            string strKey = "ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRUyfMLYGuEEhDrWo4mEQ8GYiYo8BTxOAimWDrLvSiruY1GasDiBDuCWg";
-            string sPath = "http://maps.google.com/maps/geo?q=" + address + "&output=csv&key=" + strKey;
-            string latStr = null, lgStr = null;
-            using (var client = new WebClient())
-            {
-                try
-                {
-                    string textString = client.DownloadString(sPath);
-                    string[] eResult = textString.Split(',');
-                    _Logger.Info("geocoded");
-                    latStr = eResult.GetValue(2).ToString();
-                    lgStr = eResult.GetValue(3).ToString();
-                    lat = float.Parse(latStr, CultureInfo.InvariantCulture.NumberFormat);
-                    lg = float.Parse(lgStr, CultureInfo.InvariantCulture.NumberFormat);
-                }
-                catch (WebException ex)
-                {
-                    _Logger.Error(ex.Message);
-                }
-            }
         }
 
         /// <summary>
@@ -107,10 +74,11 @@ namespace Worki.Services
 
 		#endregion
 
-		public SearchService(ILocalisationRepository localisationRepository, ILogger logger)
+		public SearchService(ILocalisationRepository localisationRepository, ILogger logger,IGeocodeService geocodeService)
 		{
 			_LocalisationRepository = localisationRepository;
             _Logger = logger;
+			_GeocodeService = geocodeService;
 		}
 
 		public const string CriteriaViewModelKey = "CriteriaViewModelKey";
@@ -175,7 +143,7 @@ namespace Worki.Services
                 criteria.Place = GetRequestValue(parameters, "lieu");
 
             float lat = 0, lng = 0;
-            GeoCode(criteria.Place, out lat, out lng);
+			_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
             criteria.LocalisationData.Latitude = lat;
             criteria.LocalisationData.Longitude = lng;
 
