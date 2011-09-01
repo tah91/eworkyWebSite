@@ -472,9 +472,29 @@ namespace Worki.Data.Models
 
 	#region RentalSearch
 
-	public class RentalSearch
+    public class RentalPlace
+    {
+        public string Place { get; set; }
+    }
+
+	public class RentalSearchCriteria
 	{
-		public List<string> Places { get; set; }
+        #region Ctor
+
+        public RentalSearchCriteria()
+		{
+			Init();
+            RentalData = new Rental();
+		}
+
+		void Init()
+		{
+			RentalTypeSelect = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);
+		}
+
+		#endregion
+
+        public List<RentalPlace> Places { get; set; }
 
 		[Display(Name = "Min", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -482,17 +502,19 @@ namespace Worki.Data.Models
 
 		[Display(Name = "Max", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		public int MinRate { get; set; }
+		public int MaxRate { get; set; }
 
 		[Display(Name = "Min", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		public int MinRate { get; set; }
+		public int MinSurface { get; set; }
 
 		[Display(Name = "Max", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		public int MinRate { get; set; }
+		public int MaxSurface { get; set; }
 
 		public Rental RentalData { get; set; }
+
+        public SelectList RentalTypeSelect { get; private set; }
 	}
 
 	#endregion

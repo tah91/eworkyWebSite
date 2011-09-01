@@ -183,5 +183,15 @@ namespace Worki.Web.Controllers
 		{
 			return PartialView(MVC.Rental.Views._RentalAccess, new RentalAccess());
 		}
+
+        /// <summary>
+        /// GET Action result to search rentals from a RentalSearchCriteria
+        /// </summary>
+        /// <returns>the form to fill</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult RentalSearch()
+        {
+            return View(new RentalSearchCriteria());
+        }
 	}
 }
