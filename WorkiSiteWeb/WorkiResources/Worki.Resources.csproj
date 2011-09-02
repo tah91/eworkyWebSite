@@ -107,6 +107,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Account\ConnexionString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConnexionString.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\InscriptionString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InscriptionString.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ResetMdpString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResetMdpString.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\AdminString.Designer.cs">
       <DependentUpon>AdminString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -117,10 +132,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Home\AProposString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AProposString.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\CguString.Designer.cs">
       <DependentUpon>CguString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Home\ContactString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactString.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\FaqString.Designer.cs">
       <DependentUpon>FaqString.resx</DependentUpon>
@@ -136,6 +161,16 @@
       <DependentUpon>JobString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Home\MentionLegaleString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MentionLegaleString.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\PresseString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PresseString.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Localisation\LocalisationFormString.Designer.cs">
       <DependentUpon>LocalisationFormString.resx</DependentUpon>
@@ -213,6 +248,18 @@
       <LastGenOutput>AccountString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ConnexionString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConnexionString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\InscriptionString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InscriptionString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ResetMdpString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetMdpString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\AdminString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminString.Designer.cs</LastGenOutput>
@@ -223,9 +270,17 @@
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\AProposString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AProposString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\CguString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CguString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\ContactString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\FaqString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -240,6 +295,14 @@
     <EmbeddedResource Include="Views\Home\JobString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>JobString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\MentionLegaleString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MentionLegaleString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\PresseString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PresseString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

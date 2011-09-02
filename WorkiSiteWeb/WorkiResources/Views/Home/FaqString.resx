@@ -347,4 +347,7 @@ De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa 
   <data name="WhyThereArePoint" xml:space="preserve">
     <value>En apportant votre contribution à la communauté eWorky, vous cumulez des points qui vous permettront de participer aux jeux et concours et de profiter de réductions. Vous gagnez des points en ajoutant des lieux, en les modifiant, les commentant ou même simplement en complétant votre profil.</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Toutes les réponses aux questions que vous vous posez sur eWorky.</value>
+  </data>
 </root>
