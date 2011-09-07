@@ -125,6 +125,9 @@
     <Reference Include="MvcSiteMapProvider">
       <HintPath>..\Externals\MvcSiteMapProvider.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=2.1.0.67, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Externals\Ninject.dll</HintPath>
@@ -181,6 +184,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\LocalisationController.cs" />
+    <Compile Include="Areas\Api\Rest\BasicActionResult.cs" />
+    <Compile Include="Areas\Api\Rest\JsonpResult.cs" />
+    <Compile Include="Areas\Api\Rest\ObjectFilter.cs" />
+    <Compile Include="Areas\Api\Rest\ObjectResult.cs" />
+    <Compile Include="Areas\Api\Routing\OptionsRoute.cs" />
+    <Compile Include="Areas\Api\Routing\PathDoesNotStartWith.cs" />
+    <Compile Include="Areas\Api\Routing\PathStartsWith.cs" />
+    <Compile Include="Areas\Api\Routing\RestRoutes.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
@@ -500,6 +513,7 @@
     </Content>
     <Content Include="Scripts\WorkiMap.js" />
     <Content Include="App_Code\RazorHelpers.cshtml" />
+    <Content Include="Areas\Api\Views\Web.config" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -664,7 +678,10 @@
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Api\Models\" />
+    <Folder Include="Areas\Api\Views\Shared\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
