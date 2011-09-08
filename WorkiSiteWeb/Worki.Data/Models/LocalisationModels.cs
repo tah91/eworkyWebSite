@@ -43,7 +43,7 @@ namespace Worki.Data.Models
                 address = Adress,
                 city = City,
                 rating = GetRatingAverage(RatingType.General),
-                typeString = Localisation.LocalisationTypes[TypeValue]
+                type = Localisation.LocalisationTypes[TypeValue]
             };
         }
 

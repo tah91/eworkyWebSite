@@ -11,14 +11,14 @@ using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Api.Controllers
 {
-    public partial class LocalisationApiController : Controller
+    public partial class LocalisationController : Controller
     {
         ILocalisationRepository _LocalisationRepository;
         IMemberRepository _MemberRepository;
         ILogger _Logger;
         ISearchService _SearchService;
 
-        public LocalisationApiController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService)
+        public LocalisationController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService)
         {
             _LocalisationRepository = localisationRepository;
             _MemberRepository = memberRepository;

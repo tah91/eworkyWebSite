@@ -21,10 +21,10 @@ namespace Worki.Data.Models
 		public double latitude { get; set; }
 		public double longitude { get; set; }
 		public string description { get; set; }
-		public string mainPic { get; set; }
+		public string image { get; set; }
 		public string address { get; set; }
 		public string city { get; set; }
-		public string typeString { get; set; }
+		public string type { get; set; }
 		public string url { get; set; }
         public double rating { get; set; }
 		public List<CommentJson> comments { get; set; }
@@ -49,6 +49,7 @@ namespace Worki.Data.Models
         public int id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
+		public string avatar { get; set; }
         public string companyName { get; set; }
         public string city { get; set; }
         public string profile { get; set; }

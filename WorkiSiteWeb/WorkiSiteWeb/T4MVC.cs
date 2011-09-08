@@ -41,7 +41,7 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ApiClass {
         public readonly string Name = "Api";
-        public Worki.Web.Areas.Api.Controllers.LocalisationApiController LocalisationApi = new Worki.Web.Areas.Api.Controllers.T4MVC_LocalisationApiController();
+        public Worki.Web.Areas.Api.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Api.Controllers.T4MVC_LocalisationController();
         public T4MVC.Api.SharedController Shared = new T4MVC.Api.SharedController();
     }
 }
@@ -1882,9 +1882,9 @@ namespace T4MVC {
 }
 
 namespace Worki.Web.Areas.Api.Controllers {
-    public partial class LocalisationApiController {
+    public partial class LocalisationController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected LocalisationApiController(Dummy d) { }
+        protected LocalisationController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -1897,13 +1897,18 @@ namespace Worki.Web.Areas.Api.Controllers {
         public System.Web.Mvc.ActionResult Details() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Search() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Search);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public LocalisationApiController Actions { get { return MVC.Api.LocalisationApi; } }
+        public LocalisationController Actions { get { return MVC.Api.Localisation; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "Api";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "LocalisationApi";
+        public readonly string Name = "Localisation";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1911,6 +1916,7 @@ namespace Worki.Web.Areas.Api.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Details = "Details";
+            public readonly string Search = "Search";
         }
 
 
@@ -1923,12 +1929,22 @@ namespace Worki.Web.Areas.Api.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_LocalisationApiController: Worki.Web.Areas.Api.Controllers.LocalisationApiController {
-        public T4MVC_LocalisationApiController() : base(Dummy.Instance) { }
+    public class T4MVC_LocalisationController: Worki.Web.Areas.Api.Controllers.LocalisationController {
+        public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Search(string place, int offerType, string types, string features, int maxCount) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
+            callInfo.RouteValueDictionary.Add("place", place);
+            callInfo.RouteValueDictionary.Add("offerType", offerType);
+            callInfo.RouteValueDictionary.Add("types", types);
+            callInfo.RouteValueDictionary.Add("features", features);
+            callInfo.RouteValueDictionary.Add("maxCount", maxCount);
             return callInfo;
         }
 

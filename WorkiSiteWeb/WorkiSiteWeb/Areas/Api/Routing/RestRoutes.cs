@@ -18,7 +18,8 @@ namespace Worki.Rest.Routing
                {
                    path = new PathStartsWith(apiDirectory),
                    httpMethod = new HttpMethodConstraint(new string[] { "GET" })
-               });
+               },
+			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
             routes.MapRoute(
                "API-GET",                                              // Route name
@@ -28,7 +29,8 @@ namespace Worki.Rest.Routing
                {
                    path = new PathStartsWith(apiDirectory),
                    httpMethod = new HttpMethodConstraint(new string[] { "GET" })
-               });
+			   }, 
+			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
             routes.MapRoute(
                "API-UPDATE",                                              // Route name
@@ -38,7 +40,8 @@ namespace Worki.Rest.Routing
                {
                    path = new PathStartsWith(apiDirectory),
                    httpMethod = new HttpMethodConstraint(new string[] { "PUT" })
-               });
+               },
+			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
             routes.MapRoute(
                "API-CREATE",                                              // Route name
@@ -48,7 +51,8 @@ namespace Worki.Rest.Routing
                {
                    path = new PathStartsWith(apiDirectory),
                    httpMethod = new HttpMethodConstraint(new string[] { "POST" })
-               });
+               },
+			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
             routes.MapRoute(
                "API-DELETE",                                              // Route name
@@ -58,7 +62,8 @@ namespace Worki.Rest.Routing
                {
                    path = new PathStartsWith(apiDirectory),
                    httpMethod = new HttpMethodConstraint(new string[] { "DELETE" })
-               });
+               },
+			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
 
 
@@ -66,8 +71,8 @@ namespace Worki.Rest.Routing
                 "API",                                              // Route name
                 "API/{controller}/{action}/{name}",                           // URL with parameters
                 new { },  // Parameter defaults
-                new { path = new PathStartsWith(apiDirectory), });           
-
+                new { path = new PathStartsWith(apiDirectory), },
+				new string[] { "Worki.Web.Areas.Api.Controllers" });
 
         }
 

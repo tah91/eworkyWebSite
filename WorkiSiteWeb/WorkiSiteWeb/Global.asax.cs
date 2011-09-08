@@ -17,6 +17,7 @@ using Worki.Service;
 using Worki.Services;
 using MvcSiteMapProvider.Web;
 using Worki.SiteMap;
+using Worki.Rest.Routing;
 
 namespace Worki.Web
 {
@@ -76,67 +77,78 @@ namespace Worki.Web
 			routes.MapRoute(
 				"",
 				"",
-				new { controller = "Home", action = "Index" }
+				new { controller = "Home", action = "Index" },
+				new string[] { "Worki.Web.Controllers" }
 			);
 
             routes.MapRoute(
-              "",
-              "accueil/{action}/",
-              new { controller = "Home", action = "Default" }
+				"",
+				"accueil/{action}/",
+				new { controller = "Home", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
-              "",
-              "recherche/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
-              new { controller = "Search", action = "Default" }
+				"",
+				"recherche/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
+				new { controller = "Search", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
-              "",
-              "recherche/{action}/{lieu}/{page}/{offer-type}/{tout}/",
-              new { controller = "Search", action = "Default" }
+				"",
+				"recherche/{action}/{lieu}/{page}/{offer-type}/{tout}/",
+				new { controller = "Search", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
-              "",
-              "recherche/{action}/{type}/",
-              new { controller = "Search", action = "Default" }
+				"",
+				"recherche/{action}/{type}/",
+				new { controller = "Search", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
-              "",
-              "recherche/{action}/",
-              new { controller = "Search", action = "Default" }
+				"",
+				"recherche/{action}/",
+				new { controller = "Search", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
             );
 
 			routes.MapRoute(
-			  "",
-			  "profil/{action}/{id}",
-			  new { controller = "Profil", action = "Default", id = UrlParameter.Optional }
+				"",
+				"profil/{action}/{id}",
+				new { controller = "Profil", action = "Default", id = UrlParameter.Optional },
+				new string[] { "Worki.Web.Controllers" }
 			);
 
             routes.MapRoute(
-              "",
-              "compte/{action}/{id}",
-              new { controller = "Account", action = "Default", id = UrlParameter.Optional }
+				"",
+				"compte/{action}/{id}",
+				new { controller = "Account", action = "Default", id = UrlParameter.Optional },
+				new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
                 "", // Nom d'itinéraire
                 "lieu-de-travail/details/{id}/{name}", // URL avec des paramètres
-                new { controller = "Localisation", action = "Details", id = 0, name = "" } // Paramètres par défaut
+                new { area="", controller = "Localisation", action = "Details", id = 0, name = "" }, // Paramètres par défaut
+				new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
                 "", // Nom d'itinéraire
                 "lieu-de-travail/{action}/{id}", // URL avec des paramètres
-                new { controller = "Localisation", action = "Index", id = UrlParameter.Optional } // Paramètres par défaut
+				new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+				new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
-                 "Default", // Route name
-                 "{controller}/{action}/{id}", // URL with parameters
-                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "Default", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+				new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+				new string[] { "Worki.Web.Controllers" }
             );
 
             //foreach (Route r in routes)
@@ -164,7 +176,8 @@ namespace Worki.Web
             //}
 
 
-
+			// Register REST api routes within path /api
+			RestRoutes.RegisterRoutes(routes, "/api");
         }
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());

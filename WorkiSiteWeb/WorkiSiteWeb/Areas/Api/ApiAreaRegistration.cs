@@ -17,7 +17,8 @@ namespace Worki.Web.Areas.Api
             context.MapRoute(
                 "Api_default",
                 "Api/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+				new string[] { "Worki.Web.Areas.Api.Controllers" }
             );
         }
     }

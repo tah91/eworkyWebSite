@@ -22,8 +22,10 @@ namespace Worki.Web.Helpers
             //get image
             var image = localisation.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
             var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName, true);
-            if (!string.IsNullOrEmpty(imageUrl))
-                json.mainPic = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
+			if (!string.IsNullOrEmpty(imageUrl) && VirtualPathUtility.IsAppRelative(imageUrl))
+				json.image = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
+			else
+				json.image = imageUrl;
 
             //get comments
             foreach (var item in localisation.Comments)
