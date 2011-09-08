@@ -10,22 +10,33 @@ namespace Worki.Web.Helpers
 {
     public static class LocalisationHelper
     {
-		public static LocalisationJson GetJson(this Localisation loc)
+        public static LocalisationJson GetJson(this Localisation localisation, Controller controller)
 		{
-			var image = loc.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
+            //get data from model
+            var json = localisation.GetJson();
+
+            //get url
+            var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
+            json.url = urlHelper.Action(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = json.id, name = ControllerHelpers.GetSeoTitle(json.name), area = "" }, "http");
+
+            //get image
+            var image = localisation.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
             var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName, true);
-			return new LocalisationJson
-			{
-				ID = loc.ID,
-				Latitude = loc.Latitude,
-				Longitude = loc.Longitude,
-				Name = loc.Name,
-				Description = loc.Description,
-				MainPic = imageUrl,
-				Address = loc.Adress,
-				City = loc.City,
-				TypeString = Localisation.LocalisationTypes[loc.TypeValue]
-			};
+            if (!string.IsNullOrEmpty(imageUrl))
+                json.mainPic = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
+
+            //get comments
+            foreach (var item in localisation.Comments)
+            {
+                json.comments.Add(item.GetJson());
+            }
+
+            //get fans
+            foreach (var item in localisation.FavoriteLocalisations)
+            {
+                json.fans.Add(item.Member.GetJson());
+            }
+            return json;
 		}
     }
 

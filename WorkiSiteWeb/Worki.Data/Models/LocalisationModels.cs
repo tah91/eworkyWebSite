@@ -29,22 +29,23 @@ namespace Worki.Data.Models
 
 		#endregion
 
-		#region
+        #region IJsonProvider
 
-		public LocalisationJson GetJson()
-		{
-			return new LocalisationJson
-			{
-				ID = ID,
-				Latitude = Latitude,
-				Longitude = Longitude,
-				Name = Name,
-				Description = Description,
-				Address = Adress,
-				City = City,
-				TypeString = Localisation.LocalisationTypes[TypeValue]
-			};
-		}
+        public LocalisationJson GetJson()
+        {
+            return new LocalisationJson
+            {
+                id = ID,
+                latitude = Latitude,
+                longitude = Longitude,
+                name = Name,
+                description = Description,
+                address = Adress,
+                city = City,
+                rating = GetRatingAverage(RatingType.General),
+                typeString = Localisation.LocalisationTypes[TypeValue]
+            };
+        }
 
 		#endregion
 
@@ -968,14 +969,15 @@ namespace Worki.Data.Models
 		{
 			return new CommentJson
 			{
-				ID = ID,
-				Date = Date,
-				Post = Post,
-				Rating = Rating,
-				RatingWifi = RatingWifi,
-				RatingDispo = RatingDispo,
-				RatingPrice = RatingPrice,
-				RatingWelcome = RatingWelcome
+				id = ID,
+				date = Date,
+				post = Post,
+				rating = Rating,
+				ratingWifi = RatingWifi,
+				ratingDispo = RatingDispo,
+				ratingPrice = RatingPrice,
+				ratingWelcome = RatingWelcome,
+                author = Member.GetJson()
 			};
 		}
 

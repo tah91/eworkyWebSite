@@ -313,16 +313,6 @@ public class T4MVC_PartialViewResult : System.Web.Mvc.PartialViewResult, IT4MVCA
     public string Action { get; set; }
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
-[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-public class T4MVC_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult {
-    public T4MVC_JsonResult(string area, string controller, string action): base()  {
-        this.InitMVCT4Result(area, controller, action);
-    }
-    
-    public string Controller { get; set; }
-    public string Action { get; set; }
-    public RouteValueDictionary RouteValueDictionary { get; set; }
-}
 
 
 
@@ -1669,11 +1659,6 @@ namespace Worki.Web.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.JsonResult FastSearch() {
-            return new T4MVC_JsonResult(Area, Name, ActionNames.FastSearch);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
         }
@@ -1710,7 +1695,6 @@ namespace Worki.Web.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string FastSearch = "FastSearch";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string FullSearch = "recherche-lieu-travail";
@@ -1744,13 +1728,6 @@ namespace Worki.Web.Controllers {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class T4MVC_SearchController: Worki.Web.Controllers.SearchController {
         public T4MVC_SearchController() : base(Dummy.Instance) { }
-
-        public override System.Web.Mvc.JsonResult FastSearch(float latitude, float longitude) {
-            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.FastSearch);
-            callInfo.RouteValueDictionary.Add("latitude", latitude);
-            callInfo.RouteValueDictionary.Add("longitude", longitude);
-            return callInfo;
-        }
 
         public override System.Web.Mvc.ActionResult FindSimilarLocalisation(float latitude, float longitude) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);

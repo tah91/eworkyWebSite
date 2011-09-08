@@ -43,9 +43,31 @@ namespace Worki.Data.Models
     #region Member
 
     [MetadataType(typeof(Member_Validation))]
-    public partial class Member
+    public partial class Member : IJsonProvider<MemberJson>// : IDataErrorInfo
     {
         public const char UserDataSeparator = '|';
+
+        #region IJsonProvider
+
+        public MemberJson GetJson()
+        {
+            return new MemberJson
+            {
+                id = MemberId,
+                firstName = MemberMainData.FirstName,
+                lastName = MemberMainData.LastName,
+                companyName = MemberMainData.CompanyName,
+                city = MemberMainData.City,
+                profile = MemberMainData.ProfileTypes[MemberMainData.Profile],
+                description = MemberMainData.Description,
+                twitter = MemberMainData.Twitter,
+                facebook = MemberMainData.Facebook,
+                linkedin = MemberMainData.Linkedin,
+                viadeo = MemberMainData.Viadeo
+            };
+        }
+
+        #endregion
 
         public static string GenerateKey()
         {

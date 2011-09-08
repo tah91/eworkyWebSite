@@ -10,30 +10,54 @@ namespace Worki.Data.Models
 
 	public class LocalisationJson
 	{
-		public int ID { get; set; }
-		public string Name { get; set; }
-		public double Latitude { get; set; }
-		public double Longitude { get; set; }
-		public string Description { get; set; }
-		public string MainPic { get; set; }
-		public string Address { get; set; }
-		public string City { get; set; }
-		public string TypeString { get; set; }
-		public string Url { get; set; }
-		public List<CommentJson> Comments { get; set; }
+        public LocalisationJson()
+        {
+            comments = new List<CommentJson>();
+            fans = new List<MemberJson>();
+        }
+
+		public int id { get; set; }
+		public string name { get; set; }
+		public double latitude { get; set; }
+		public double longitude { get; set; }
+		public string description { get; set; }
+		public string mainPic { get; set; }
+		public string address { get; set; }
+		public string city { get; set; }
+		public string typeString { get; set; }
+		public string url { get; set; }
+        public double rating { get; set; }
+		public List<CommentJson> comments { get; set; }
+        public List<MemberJson> fans { get; set; }
 	}
 
 	public class CommentJson
 	{
-		public int ID { get; set; }
-		public System.DateTime Date { get; set; }
-		public string Post { get; set; }
-		public int Rating { get; set; }
-		public int RatingPrice { get; set; }
-		public int RatingWifi { get; set; }
-		public int RatingDispo { get; set; }
-		public int RatingWelcome { get; set; }
+		public int id { get; set; }
+		public DateTime date { get; set; }
+        public MemberJson author { get; set; }
+		public string post { get; set; }
+		public int rating { get; set; }
+		public int ratingPrice { get; set; }
+		public int ratingWifi { get; set; }
+		public int ratingDispo { get; set; }
+		public int ratingWelcome { get; set; }
 	}
+
+    public class MemberJson
+    {
+        public int id { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string companyName { get; set; }
+        public string city { get; set; }
+        public string profile { get; set; }
+        public string description { get; set; }
+        public string twitter { get; set; }
+        public string facebook { get; set; }
+        public string linkedin { get; set; }
+        public string viadeo { get; set; }
+    }
 
 	public class ImageJson
 	{

@@ -263,26 +263,6 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         }
     }
 
-    FindLocalisationsGivenLocation = function (where) {
-        _geocoder.geocode({ 'address': where }, _callbackUpdateMapLocalisations);
-    }
-
-    _callbackUpdateMapLocalisations = function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            var center = results[0].geometry.location;
-            var action = '/Search/FastSearch';
-            $.post(action,
-           { latitude: center.lat(), longitude: center.lng() },
-           _renderLocalisations,
-           "json");
-        }
-        else {
-            //alert("Geocode was not successful for the following reason: " + status);
-            return;
-        }
-    }
-
-
     _renderLocalisations = function (localisations) {
         $("#localisationList").empty();
 

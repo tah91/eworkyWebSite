@@ -32,24 +32,6 @@ namespace Worki.Web.Controllers
         }
 
         /// <summary>
-        /// POST Action result to get localisations next to given coordinates
-        /// it returns json data
-        /// </summary>
-        /// <param name="latitude">coordinates latitude</param>
-        /// <param name="longitude">coordinates longitude</param>
-        /// <returns>list of localisations in json format</returns>
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public virtual JsonResult FastSearch(float latitude, float longitude)
-        {
-            var localisations = _LocalisationRepository.FindByLocation(latitude, longitude);
-            var jsonLocalisations = (from item 
-                                         in localisations 
-                                     select item.GetJson());
-            return Json(jsonLocalisations.ToList());
-        }
-
-        /// <summary>
         /// POST Action result to get localisations very close to given coordinates
         /// it returns json data
         /// </summary>
@@ -78,9 +60,7 @@ namespace Worki.Web.Controllers
 			var localisations = _LocalisationRepository.GetMany(item => (item.MainLocalisation != null && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
             var jsonLocalisations = localisations.Select(item =>
             {
-                var json = item.GetJson();
-                json.Url = urlHelper.Action(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = json.ID, name = ControllerHelpers.GetSeoTitle(json.Name) });
-                return json;
+                return item.GetJson(this);
             });
             return Json(jsonLocalisations.ToList());
         }
@@ -204,7 +184,8 @@ namespace Worki.Web.Controllers
 		{
 			var pageValue = page ?? 1;
 			//SearchCriteriaFormViewModel criteriaViewModel = null;
-			var criteriaViewModel = _SearchService.GetCurrentSearchCriteria(Request);
+            var criteria = _SearchService.GetCriteria(Request);
+            var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo(pageValue);
 			return View(criteriaViewModel);

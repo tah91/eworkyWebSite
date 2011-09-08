@@ -16,11 +16,12 @@ namespace Worki.Services
 {
 	public interface ISearchService
 	{
-        SearchCriteriaFormViewModel GetCurrentSearchCriteria(HttpRequestBase parameters);
+        SearchCriteriaFormViewModel FillSearchResults(SearchCriteria parameters);
         SearchCriteria GetCriteria(HttpRequestBase parameters);
 		RouteValueDictionary GetRVD(SearchCriteria criteria, int page = 1);
         SearchSingleResultViewModel GetSingleResult(HttpRequestBase parameters, int index);
 		void ValidateLocalisation(Localisation toValidate, ref string error);
+        void GeoCode(string address, out float lat, out float lg);
 	}
 
     public class SearchService : ISearchService
@@ -44,40 +45,6 @@ namespace Worki.Services
             else if (request.RequestContext.RouteData.Values[key] != null)
                 return request.RequestContext.RouteData.Values[key] as string;
             else return null;
-        }
-
-        /// <summary>
-        /// Geocode address via google api
-        /// </summary>
-        /// <param name="address">address to geocode</param>
-        /// <param name="lat">place latitude</param>
-        /// <param name="lg">place longitude</param>
-        void GeoCode(string address, out float lat, out float lg)
-        {
-            lat = 0;
-            lg = 0;
-            if (string.IsNullOrEmpty(address))
-                return;
-            string strKey = "ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRUyfMLYGuEEhDrWo4mEQ8GYiYo8BTxOAimWDrLvSiruY1GasDiBDuCWg";
-            string sPath = "http://maps.google.com/maps/geo?q=" + address + "&output=csv&key=" + strKey;
-            string latStr = null, lgStr = null;
-            using (var client = new WebClient())
-            {
-                try
-                {
-                    string textString = client.DownloadString(sPath);
-                    string[] eResult = textString.Split(',');
-                    _Logger.Info("geocoded");
-                    latStr = eResult.GetValue(2).ToString();
-                    lgStr = eResult.GetValue(3).ToString();
-                    lat = float.Parse(latStr, CultureInfo.InvariantCulture.NumberFormat);
-                    lg = float.Parse(lgStr, CultureInfo.InvariantCulture.NumberFormat);
-                }
-                catch (WebException ex)
-                {
-                    _Logger.Error(ex.Message);
-                }
-            }
         }
 
         /// <summary>
@@ -115,6 +82,40 @@ namespace Worki.Services
 
 		public const string CriteriaViewModelKey = "CriteriaViewModelKey";
 
+        /// <summary>
+        /// Geocode address via google api
+        /// </summary>
+        /// <param name="address">address to geocode</param>
+        /// <param name="lat">place latitude</param>
+        /// <param name="lg">place longitude</param>
+        public void GeoCode(string address, out float lat, out float lg)
+        {
+            lat = 0;
+            lg = 0;
+            if (string.IsNullOrEmpty(address))
+                return;
+            string strKey = "ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRUyfMLYGuEEhDrWo4mEQ8GYiYo8BTxOAimWDrLvSiruY1GasDiBDuCWg";
+            string sPath = "http://maps.google.com/maps/geo?q=" + address + "&output=csv&key=" + strKey;
+            string latStr = null, lgStr = null;
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    string textString = client.DownloadString(sPath);
+                    string[] eResult = textString.Split(',');
+                    _Logger.Info("geocoded");
+                    latStr = eResult.GetValue(2).ToString();
+                    lgStr = eResult.GetValue(3).ToString();
+                    lat = float.Parse(latStr, CultureInfo.InvariantCulture.NumberFormat);
+                    lg = float.Parse(lgStr, CultureInfo.InvariantCulture.NumberFormat);
+                }
+                catch (WebException ex)
+                {
+                    _Logger.Error(ex.Message);
+                }
+            }
+        }
+
 		/// <summary>
 		/// get a SearchCriteriaFormViewModel containing the criteria and the results of a search
 		/// if results in cache
@@ -128,12 +129,11 @@ namespace Worki.Services
 		/// <param name="session">session to look up for results</param>
 		/// <param name="parameters">parameters from which to build result of not in session</param>
 		/// <returns>a object containing the criteria and the results of a search</returns>
-        public SearchCriteriaFormViewModel GetCurrentSearchCriteria(HttpRequestBase parameters)
+        public SearchCriteriaFormViewModel FillSearchResults(SearchCriteria criteria)
 		{
 			SearchCriteriaFormViewModel criteriaViewModel = null;// session[CriteriaViewModelKey] as SearchCriteriaFormViewModel;
 			if (criteriaViewModel == null)
-			{
-				var criteria = GetCriteria(parameters);
+			{				
 				criteriaViewModel = new SearchCriteriaFormViewModel(criteria, true);
 				FillResults(criteriaViewModel);
 			}
@@ -149,7 +149,8 @@ namespace Worki.Services
 		/// <returns>result item</returns>
         public SearchSingleResultViewModel GetSingleResult(HttpRequestBase parameters, int index)
 		{
-			var criteriaViewModel = GetCurrentSearchCriteria(parameters);
+            var criteria = GetCriteria(parameters);
+            var criteriaViewModel = FillSearchResults(criteria);
 
 			if (index < 0 || index >= criteriaViewModel.Results.Count)
 				return null;
