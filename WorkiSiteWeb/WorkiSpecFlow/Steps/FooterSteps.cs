@@ -23,7 +23,8 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page mention légal")]
         public void WhenJeVaisDansLaPageMentionLegal()
         {
-            WebBrowser.Current.Link(Find.ByText("Mentions légales")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Mentions légales")).Click();
+            WebBrowser.Current.Page<AccueilPage>().Lien_MentionLegal.Click();
         }
 
         [Then(@"Je dois avoir la page mention légal")]
@@ -39,7 +40,8 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page de jobs")]
         public void WhenJeVaisDansLaPageDeJobs()
         {
-            WebBrowser.Current.Link(Find.ByText("Jobs")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Jobs")).Click();
+            WebBrowser.Current.Page<AccueilPage>().Lien_Jobs.Click();
         }
 
         [Then(@"Je dois avoir la page jobs")]
@@ -55,7 +57,8 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page presse")]
         public void WhenJeVaisDansLaPagePresse()
         {
-            WebBrowser.Current.Link(Find.ByText("Presse")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Presse")).Click();
+            WebBrowser.Current.Page<AccueilPage>().Lien_Presse.Click();
         }
 
         [Then(@"Je dois avoir la page presse")]
@@ -71,7 +74,8 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page CGU")]
         public void WhenJeVaisDansLaPageCGU()
         {
-            WebBrowser.Current.Link(Find.ByText("CGU")).Click();
+            // WebBrowser.Current.Link(Find.ByText("CGU")).Click();
+            WebBrowser.Current.Page<AccueilPage>().Lien_CGU.Click();
         }
 
         [Then(@"Je dois avoir la page CGU")]
@@ -87,7 +91,8 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page FAQ")]
         public void WhenJeVaisDansLaPageFAQ()
         {
-            WebBrowser.Current.Link(Find.ByText("FAQ")).Click();
+            // WebBrowser.Current.Link(Find.ByText("FAQ")).Click();
+            WebBrowser.Current.Page<AccueilPage>().Lien_FAQ.Click();
         }
 
         [Then(@"Je dois avoir la page FAQ")]
@@ -103,7 +108,8 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page Qui sommes nous")]
         public void WhenJeVaisDansLaPageQuiSommesNous()
         {
-            WebBrowser.Current.Link(Find.ByText("Qui sommes-nous ?")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Qui sommes-nous ?")).Click();
+            WebBrowser.Current.Page<AccueilPage>().Lien_WhoWeAre.Click();
         }
 
         [Then(@"Je dois avoir la page Qui sommes nous")]
@@ -119,7 +125,8 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page Contact")]
         public void WhenJeVaisDansLaPageContact()
         {
-            WebBrowser.Current.Link(Find.ByText("Contact")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Contact")).Click();
+            WebBrowser.Current.Page<AccueilPage>().Lien_Contact.Click();
         }
 
         [Then(@"Je dois avoir la page Contact")]
