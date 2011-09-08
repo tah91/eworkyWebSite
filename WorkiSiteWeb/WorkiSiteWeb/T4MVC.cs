@@ -41,7 +41,7 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ApiClass {
         public readonly string Name = "Api";
-        public Worki.Web.Areas.Api.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Api.Controllers.T4MVC_LocalisationController();
+        public Worki.Web.Areas.Api.Controllers.LocalisationApiController LocalisationApi = new Worki.Web.Areas.Api.Controllers.T4MVC_LocalisationApiController();
         public T4MVC.Api.SharedController Shared = new T4MVC.Api.SharedController();
     }
 }
@@ -1905,9 +1905,9 @@ namespace T4MVC {
 }
 
 namespace Worki.Web.Areas.Api.Controllers {
-    public partial class LocalisationController {
+    public partial class LocalisationApiController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected LocalisationController(Dummy d) { }
+        protected LocalisationApiController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -1922,11 +1922,11 @@ namespace Worki.Web.Areas.Api.Controllers {
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public LocalisationController Actions { get { return MVC.Api.Localisation; } }
+        public LocalisationApiController Actions { get { return MVC.Api.LocalisationApi; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "Api";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Localisation";
+        public readonly string Name = "LocalisationApi";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1946,8 +1946,8 @@ namespace Worki.Web.Areas.Api.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_LocalisationController: Worki.Web.Areas.Api.Controllers.LocalisationController {
-        public T4MVC_LocalisationController() : base(Dummy.Instance) { }
+    public class T4MVC_LocalisationApiController: Worki.Web.Areas.Api.Controllers.LocalisationApiController {
+        public T4MVC_LocalisationApiController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);

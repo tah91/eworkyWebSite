@@ -12,7 +12,7 @@ using Worki.Infrastructure.Helpers;
 namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
-	public partial class Localisation// : IDataErrorInfo
+	public partial class Localisation : IJsonProvider<LocalisationJson>// : IDataErrorInfo
 	{
 		#region Data Container Ctor
 
@@ -26,6 +26,25 @@ namespace Worki.Data.Models
 		//        LocalisationFiles.Add(item);
 		//    }
 		//}
+
+		#endregion
+
+		#region
+
+		public LocalisationJson GetJson()
+		{
+			return new LocalisationJson
+			{
+				ID = ID,
+				Latitude = Latitude,
+				Longitude = Longitude,
+				Name = Name,
+				Description = Description,
+				Address = Adress,
+				City = City,
+				TypeString = Localisation.LocalisationTypes[TypeValue]
+			};
+		}
 
 		#endregion
 
@@ -765,32 +784,6 @@ namespace Worki.Data.Models
 		public List<PictureData> Files { get; set; }
 	}
 
-	public class LocalisationJson
-	{
-		public int ID { get; set; }
-		public string Name { get; set; }
-		public double Latitude { get; set; }
-		public double Longitude { get; set; }
-		public string Description { get; set; }
-		public string MainPic { get; set; }
-		public string Address { get; set; }
-		public string City { get; set; }
-		public string TypeString { get; set; }
-		public string Url { get; set; }
-	}
-
-	public class ImageJson
-	{
-		public string name { get; set; }
-		public int size { get; set; }
-		public string url { get; set; }
-		public string thumbnail_url { get; set; }
-		public string delete_url { get; set; }
-		public string delete_type { get; set; }
-		public string is_default { get; set; }
-		public string is_logo { get; set; }
-	}
-
 	#endregion
 
 	#region Equality Comparer
@@ -958,7 +951,7 @@ namespace Worki.Data.Models
 	#endregion
 
 	[MetadataType(typeof(Comment_Validation))]
-	public partial class Comment// : IDataErrorInfo, IValidatableObject
+	public partial class Comment : IJsonProvider<CommentJson>// : IDataErrorInfo, IValidatableObject
 	{
 		public const string DisplayRelatedLocalisation = "DisplayRelatedLocalisation";
 
@@ -969,6 +962,21 @@ namespace Worki.Data.Models
 			RatingWifi = -1;
 			RatingWelcome = -1;
 			RatingDispo = -1;
+		}
+
+		public CommentJson GetJson()
+		{
+			return new CommentJson
+			{
+				ID = ID,
+				Date = Date,
+				Post = Post,
+				Rating = Rating,
+				RatingWifi = RatingWifi,
+				RatingDispo = RatingDispo,
+				RatingPrice = RatingPrice,
+				RatingWelcome = RatingWelcome
+			};
 		}
 
 		//#region IDataErrorInfo

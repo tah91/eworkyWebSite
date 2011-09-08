@@ -11,14 +11,14 @@ using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Api.Controllers
 {
-    public partial class LocalisationController : Controller
+    public partial class LocalisationApiController : Controller
     {
         ILocalisationRepository _LocalisationRepository;
         IMemberRepository _MemberRepository;
         ILogger _Logger;
         ISearchService _SearchService;
 
-        public LocalisationController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService)
+        public LocalisationApiController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService)
         {
             _LocalisationRepository = localisationRepository;
             _MemberRepository = memberRepository;
@@ -36,6 +36,15 @@ namespace Worki.Web.Areas.Api.Controllers
             var json = localisation.GetJson();
             json.Url = urlHelper.Action(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = json.ID, name = ControllerHelpers.GetSeoTitle(json.Name), area = "" }, "http");
             json.MainPic = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(json.MainPic), true);
+			json.Comments = new List<CommentJson>();
+			foreach (var item in localisation.Comments)
+			{
+				json.Comments.Add(item.GetJson());
+			}
+			//foreach (var item in localisation.FavoriteLocalisations)
+			//{
+			//    item.
+			//}
             return new ObjectResult<LocalisationJson>(json);
         }
     }
