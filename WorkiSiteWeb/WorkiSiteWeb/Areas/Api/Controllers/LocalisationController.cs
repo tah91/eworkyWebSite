@@ -51,6 +51,8 @@ namespace Worki.Web.Areas.Api.Controllers
             Handicap
         }
 
+        static char[] _arrayTrim = { '[', ']' };
+
         /// <summary>
         /// get action result to search for localisation, for given criteria
         /// </summary>
@@ -78,7 +80,7 @@ namespace Worki.Web.Areas.Api.Controllers
             {
                 try
                 {
-                    string[] typesArray = types.Split(',');
+                    string[] typesArray = types.Trim(_arrayTrim).Split(',');
                     foreach (var item in typesArray)
                     {
                         var intType = (LocalisationType)Int32.Parse(item);
@@ -135,7 +137,7 @@ namespace Worki.Web.Areas.Api.Controllers
                 try
                 {
                     var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
-                    string[] featuresArray = features.Split(',');
+                    string[] featuresArray = features.Trim(_arrayTrim).Split(',');
                     foreach (var item in featuresArray)
                     {
                         var intType = (ApiFeatures)Int32.Parse(item);
@@ -160,11 +162,10 @@ namespace Worki.Web.Areas.Api.Controllers
                                 break;
                         }
                     }
-                    criteria.Everything = false;
                 }
                 catch (Exception)
                 {
-                    return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"types\" parameter is not correctly filled");
+                    return new ObjectResult<List<LocalisationJson>>(null, 400, "The \"features\" parameter is not correctly filled");
                 }
             }
 
