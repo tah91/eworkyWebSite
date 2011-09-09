@@ -104,6 +104,11 @@ namespace Worki.SpecFlow
 
     public class AccueilPage : Page
     {
+        public Button Boutton_Connexion
+        {
+            get { return Document.Button(Find.BySelector("a[href='/compte/connexion']")); }
+        }
+
         public Button Bouton_Recherche
         {
             get { return Document.Button(Find.ById("btn_searchIndex")); }
@@ -176,7 +181,7 @@ namespace Worki.SpecFlow
 
         public Link Lien_ALaUne
         {
-            get { return Document.Link(Find.BySelector("div[class=imageDescription] a[href^='/lieu-de-travail/details/']")); }
+            get { return Document.Link(Find.BySelector("div[class='imageDescription'] a[href^='/lieu-de-travail/details/']")); }
         }
 
         public Link Lien_MentionLegal
@@ -186,7 +191,7 @@ namespace Worki.SpecFlow
 
         public Link Lien_MonProfil
         {
-            get { return Document.Link(Find.ByText("Mon Profil")); }
+            get { return Document.Link(Find.BySelector("a[href^='/profil/dashboard/']")); }
         }
 
         public Link Lien_Deconnexion

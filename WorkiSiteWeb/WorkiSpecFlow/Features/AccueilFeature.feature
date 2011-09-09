@@ -39,5 +39,4 @@ Scenario: Recherche Salon d'affaire
 @Accueil
 Scenario: Accueil a la une
 	Given Je vais dans la page d'acceuil
-	Then Je dois avoir A la une
-	
+	Then Je dois avoir A la une	

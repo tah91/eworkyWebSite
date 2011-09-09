@@ -246,10 +246,67 @@ namespace Worki.SpecFlow
         }
 
         #endregion
-    }
 
+        #region Ajout de lieu et geolocalisation
+
+        [When(@"Je remplis lieux valide")]
+        public void WhenJeRemplisLieuxValide()
+        {
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("rue jean jaurès");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Villefuif");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("94800");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
+        }
+
+        [Then(@"La position initial doit avoir changée")]
+        public void ThenLaPositionInitialDoitAvoirChangée()
+        {
+            var lat = WebBrowser.Current.Page<AjoutPage>().Latitude.GetAttributeValue("value");
+            var lon = WebBrowser.Current.Page<AjoutPage>().Longitude.GetAttributeValue("value");
+            Assert.IsFalse(double.Parse(lat).Equals(0));
+            Assert.IsFalse(double.Parse(lon).Equals(0));
+        }
+
+        #endregion
+
+        #region Présence Photo Existante
+
+        [Given(@"Je Selectionne la une")]
+        public void GivenJeSelectionneLaUne()
+        {
+            WebBrowser.Current.Page<AccueilPage>().Lien_ALaUne.Click();
+        }
+
+        [When(@"Je clique sur editer lieu")]
+        public void WhenJeCliqueSurEditerLieu()
+        {
+            WebBrowser.Current.Page<DetailPage>().Lien_Editer.Click();
+        }
+
+        [Then(@"Je dois avoir une photo presente")]
+        public void ThenJeDoisAvoirUnePhotoPresente()
+        {
+            var img = WebBrowser.Current.Page<AjoutPage>().Picture;
+
+            Assert.IsTrue(img != null);
+        }
+
+
+        #endregion
+    }
+        
     public class AjoutPage : Page
     {
+        public TextField Latitude
+        {
+            get { return Document.TextField(Find.ById("Localisation_Latitude")); }
+        }
+
+        public TextField Longitude
+        {
+            get { return Document.TextField(Find.ById("Localisation_Longitude")); }
+        }
+
         public CheckBox Check_Owner
         {
             get { return Document.CheckBox(Find.ById("LocalisationOwner-General")); }
@@ -702,6 +759,11 @@ namespace Worki.SpecFlow
         public Link Lien_Administrateur
         {
             get { return Document.Link(Find.ByText("Administrateur")); }
+        }
+
+        public Image Picture
+        {
+            get { return Document.Image(Find.BySelector("table[class='files'] img[src$='.jpg']")); }
         }
 
         /// <summary>
