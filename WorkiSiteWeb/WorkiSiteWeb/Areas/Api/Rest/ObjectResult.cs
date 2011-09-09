@@ -17,12 +17,12 @@ namespace Worki.Rest
 
         public class MetaContent
         {
-            public int StatusCode { get; set; }
-            public string Message { get; set; }
+            public int statusCode { get; set; }
+            public string message { get; set; }
         }
 
-        public MetaContent Meta { get; set; }
-        public T Response { get; set; }
+        public MetaContent meta { get; set; }
+        public T response { get; set; }
     }
 
     public class ObjectResult<T> : ActionResult
@@ -35,14 +35,14 @@ namespace Worki.Rest
 
         public ObjectResult(T data, int statusCode, string message, Type[] extraTypes = null)
         {
-            this.Data = new Output<T> { Meta = new Output<T>.MetaContent { StatusCode = statusCode, Message = message }, Response = data };
+            this.Data = new Output<T> { meta = new Output<T>.MetaContent { statusCode = statusCode, message = message }, response = data };
             if (extraTypes != null)
                 this.IncludedTypes = extraTypes;
         }
 
         public ObjectResult(T data, Type[] extraTypes = null)
         {
-            this.Data = new Output<T> { Meta = new Output<T>.MetaContent { StatusCode = Output<T>.DefaultStatus, Message = Output<T>.DefaultMessage }, Response = data };
+            this.Data = new Output<T> { meta = new Output<T>.MetaContent { statusCode = Output<T>.DefaultStatus, message = Output<T>.DefaultMessage }, response = data };
             if (extraTypes != null)
                 this.IncludedTypes = extraTypes;
         }

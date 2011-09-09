@@ -4,28 +4,28 @@
     {
         public class Result
         {
-            public bool Success { get; set; }
-            public string Message { get; set; }
-            public string Data { get; set; }
+            public bool success { get; set; }
+            public string message { get; set; }
+            public string data { get; set; }
         }
 
         public BasicActionResult()
-            : base(new Result() { Success = true })
+            : base(new Result() { success = true })
         {            
         }
 
         public BasicActionResult(bool success)
-            : base(new Result() { Success = success })
+            : base(new Result() { success = success })
         {
         }
 
         public BasicActionResult(bool success, string message) 
-            : base( new Result() { Message = message, Success = success })
+            : base( new Result() { message = message, success = success })
         {            
         }
 
         public BasicActionResult(bool success, string message, string data)
-            : base(new Result() { Message = message, Success = success, Data = data })
+            : base(new Result() { message = message, success = success, data = data })
         {
         }
     }
