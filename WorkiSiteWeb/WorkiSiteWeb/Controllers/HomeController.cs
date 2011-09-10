@@ -41,7 +41,7 @@ namespace Worki.Web.Controllers
         }
 
         /// <summary>
-        /// Prepares the home page
+        /// Prepare the home page
         /// </summary>
         /// <returns>The action result.</returns>
 		[ActionName("index")]

@@ -19,8 +19,9 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur mon pofil")]
         public void WhenJeCliqueSurMonPofil()
         {
-            WebBrowser.Current.Link(Find.ByText("Mon profil")).ClickNoWait();
-            System.Threading.Thread.Sleep(1000);
+            // WebBrowser.Current.Link(Find.ByText("Mon profil")).ClickNoWait();
+            // System.Threading.Thread.Sleep(1000);
+            WebBrowser.Current.Page<AccueilPage>().Lien_MonProfil.Click();
         }
 
         [Then(@"Je dois arriver sur mon profil")]
@@ -36,7 +37,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Editer Profil")]
         public void WhenJeCliqueSurEditerProfil()
         {
-            WebBrowser.Current.Link(Find.ByText("Editer mon profil")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Editer mon profil")).Click();
+            WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
         }
 
 
@@ -45,15 +47,16 @@ namespace Worki.SpecFlow
         {
             Random myRand = new Random();
             myStatiqueRand = myRand.Next().ToString();
-            WebBrowser.Current.TextField(Find.ById("Member_MemberMainData_Description")).TypeTextQuickly(myStatiqueRand);
+            WebBrowser.Current.Page<ProfilPage>().Description.TypeText(myStatiqueRand);
       
         }
 
         [When(@"Je valide le formulaire du profil")]
         public void WhenJeValideLeFormulaireDuProfil()
         {
-            WebBrowser.Current.Button(Find.ByValue("Valider")).ClickNoWait();
-            System.Threading.Thread.Sleep(1000);
+            // WebBrowser.Current.Button(Find.ByValue("Valider")).ClickNoWait();
+            // System.Threading.Thread.Sleep(1000);
+            WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
         }
 
         [Then(@"Je dois avoir les modifications faites")]
@@ -63,5 +66,23 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+    }
+
+    public class ProfilPage : Page
+    {
+        public Link Lien_Editer
+        {
+            get { return Document.Link(Find.BySelector("a[href^='/profil/editer/']")); }
+        }
+
+        public TextField Description
+        {
+            get { return Document.TextField(Find.ById("Member_MemberMainData_Description")); }
+        }
+
+        public Button Boutton_Valider
+        {
+            get { return Document.Button(Find.ByValue("Valider")); }
+        }        
     }
 }

@@ -244,4 +244,7 @@
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Le meilleur endroit pour travailler. Nomades, indépendants, télétravailleurs, proposez et trouvez le lieu de travail de vos rêves.</value>
+  </data>
 </root>

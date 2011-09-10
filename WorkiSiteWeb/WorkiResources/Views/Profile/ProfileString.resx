@@ -135,6 +135,9 @@
   <data name="FavoriteSpacesEmpty" xml:space="preserve">
     <value>Vous n'avez ajouté aucun espace à vos favoris. Pour ajouter un espace à vos favoris, cliquez sur le bouton eWorky+ en haut de sa fiche de description.</value>
   </data>
+  <data name="FavoriteSpacesEmptyPublic" xml:space="preserve">
+    <value>n'a pas ajouté d'espace à ses favoris.</value>
+  </data>
   <data name="InfosEmpty" xml:space="preserve">
     <value>Pour compléter votre profil, {0}.</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="MyCompany" xml:space="preserve">
     <value>Activité professionnelle</value>
+  </data>
+  <data name="MyCompanyPublic" xml:space="preserve">
+    <value>n'a pas renseigné cette information.</value>
   </data>
   <data name="MyFavoritePlaces" xml:space="preserve">
     <value>Ambiance de travail recherchée</value>

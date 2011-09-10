@@ -242,4 +242,7 @@ Toutes les photographies utilisées sur ce site Web sont présentées uniquement
   <data name="ApplicalbleLawsValue" xml:space="preserve">
     <value>Les présentes Conditions Générales d’Utilisation sont régies par la loi française. Toute difficulté relative à la validité et/ou l’application et/ou l’interprétation des présentes Conditions Générales d’Utilisation sera soumise, à défaut d’accord amiable, à la juridiction des tribunaux français à qui les parties attribuent compétence territoriale exclusive quelque soit le lieu d’utilisation du service ou le domicile du défendeur. Les lois Internationales ne sont pas applicables.</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Conditions générales d'utilisation, c'est à dire ce à quoi vous vous engagez en utilisant eWorky.</value>
+  </data>
 </root>
