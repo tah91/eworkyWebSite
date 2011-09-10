@@ -47,7 +47,7 @@ namespace Worki.SpecFlow
         {
             Random myRand = new Random();
             myStatiqueRand = myRand.Next().ToString();
-            WebBrowser.Current.Page<ProfilPage>().Description.TypeText(myStatiqueRand);
+			WebBrowser.Current.Page<ProfilPage>().DescriptionField.TypeText(myStatiqueRand);
       
         }
 
@@ -75,7 +75,7 @@ namespace Worki.SpecFlow
             get { return Document.Link(Find.BySelector("a[href^='/profil/editer/']")); }
         }
 
-        public TextField Description
+        public TextField DescriptionField
         {
             get { return Document.TextField(Find.ById("Member_MemberMainData_Description")); }
         }
