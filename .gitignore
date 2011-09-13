@@ -48,3 +48,5 @@ _ReSharper*/
 Logs/
 WorkiSiteWeb/WorkiSiteWeb/Users/*.*
 WorkiSiteWeb/WorkiSiteWeb/Users/thumbnail/*.*
+WorkiSiteWeb/Worki.Database/Sandbox/Worki.ldf
+WorkiSiteWeb/Worki.Database/Sandbox/Worki.mdf

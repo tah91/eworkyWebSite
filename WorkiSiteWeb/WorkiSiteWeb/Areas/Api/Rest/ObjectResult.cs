@@ -105,7 +105,7 @@ namespace Worki.Rest
                 };
                 using (var xmlWriter = XmlTextWriter.Create(stream, settings))
                 {
-                    var serializer = new XmlSerializer(typeof(T), IncludedTypes);
+                    var serializer = new XmlSerializer(typeof(Output<T>), IncludedTypes);
                     serializer.Serialize(xmlWriter, this.Data);
                 }
                 // NOTE: We need to cache XmlSerializer for specific type. Probably use the 
