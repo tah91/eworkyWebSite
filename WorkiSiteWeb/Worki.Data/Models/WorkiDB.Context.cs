@@ -28,7 +28,6 @@ namespace Worki.Data.Models
         public DbSet<MainLocalisation> MainLocalisations { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<MembersInGroup> MembersInGroups { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<FavoriteLocalisation> FavoriteLocalisations { get; set; }
         public DbSet<MemberEdition> MemberEditions { get; set; }
