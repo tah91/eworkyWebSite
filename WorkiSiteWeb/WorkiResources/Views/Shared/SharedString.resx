@@ -200,4 +200,7 @@
   <data name="Bookings" xml:space="preserve">
     <value>Réservations</value>
   </data>
+  <data name="Press" xml:space="preserve">
+    <value>Presse</value>
+  </data>
 </root>

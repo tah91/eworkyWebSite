@@ -52,6 +52,9 @@ namespace Worki.Web
 			Bind<IWelcomePeopleRepository>()
 				.To<WelcomePeopleRepository>();
 
+            Bind<IPressRepository>()
+                .To<PressRepository>();
+
 			Bind<ISearchService>()
 				.To<SearchService>();
 

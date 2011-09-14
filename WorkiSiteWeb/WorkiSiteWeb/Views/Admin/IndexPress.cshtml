@@ -1,0 +1,70 @@
+﻿@model Worki.Data.Models.PressListViewModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+<h2>@Worki.Resources.Views.Admin.AdminString.IndexPress</h2>
+<div class="contentAdmin">
+    <div id="adminMenu"> 
+        @Html.Partial(MVC.Admin.Views._AdminMenu)
+    </div>
+    <p>
+    <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.CreateNewPress, MVC.Admin.CreatePress())</h3>
+    </p>
+    <div class="adminPanel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
+                    </th>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Date
+                    </th>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Url
+                    </th>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Description
+                    </th>                    
+                </tr>
+            </thead>
+        <tbody>
+        @if (Model.Press != null)
+        {
+            foreach (var item in Model.Press)
+            {
+            <tr>
+                <td align="center">
+                    @item.ID
+                </td>
+                <td align="center">
+                    @String.Format("{0:dd/MM/yyyy}", item.Date)
+                </td>
+                <td align="center">
+                    <a href=@item.Url>@item.Url</a>
+                </td>
+                <td align="center">
+                    @item.Description
+                </td>
+                <td align="center">
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.EditPress(item.ID)) |
+                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeletePress(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Details, MVC.Admin.DetailPress(item.ID))
+                </td>
+            </tr>
+            }
+        }
+        </tbody>
+        <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.IndexPress, MVC.Admin.Name, new { page = x }))
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>

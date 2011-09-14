@@ -1,4 +1,4 @@
-﻿@model Microsoft.Web.Mvc.Resources.WebApiEnabledAttribute
+﻿@model Worki.Data.Models.WelcomePeople
 
 @section HeadContent{
     <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
@@ -12,8 +12,9 @@
         @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteWelcome
     </p>
 </div>
-@using (Html.BeginForm(new { returnUrl = TempData["returnUrl"] }))
+@using (Html.BeginForm(MVC.Admin.ActionNames.DeleteWelcomePeople, MVC.Admin.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
 { 
 	@Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
     <input name="confirmButton" type="submit" value="Supprimer" />
 } 
