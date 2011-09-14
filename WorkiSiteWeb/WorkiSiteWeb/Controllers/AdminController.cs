@@ -132,7 +132,7 @@ namespace Worki.Web.Controllers
                                 }
                                 else
                                 {
-                                    loc.MainLocalisation = null;
+                                    loc.MainLocalisation.Localisation = null;
                                 }
                             });
                     }
