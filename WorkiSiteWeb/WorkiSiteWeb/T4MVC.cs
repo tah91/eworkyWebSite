@@ -465,6 +465,7 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string avail_png = Url("avail.png");
             public static readonly string available_png = Url("available.png");
+            public static readonly string blog_png = Url("blog.png");
             public static readonly string btn_png = Url("btn.png");
             public static readonly string btn_logo_png = Url("btn_logo.png");
             public static readonly string btn_searchIndex_png = Url("btn_searchIndex.png");
@@ -542,6 +543,7 @@ namespace Links {
             public static readonly string uniformSprite_png = Url("uniformSprite.png");
             public static readonly string users_jpg = Url("users.jpg");
             public static readonly string visitor_jpg = Url("visitor.jpg");
+            public static readonly string vu_tele_png = Url("vu-tele.png");
             public static readonly string worker_png = Url("worker.png");
             public static readonly string worki_fb_jpg = Url("worki_fb.jpg");
             public static readonly string worki_footer_png = Url("worki_footer.png");
@@ -558,6 +560,8 @@ namespace Links {
         public static readonly string jquery_fileupload_ui_min_css = Url("jquery.fileupload-ui.min.css");
         public static readonly string LocalisationDetail_css = Url("LocalisationDetail.css");
         public static readonly string LocalisationDetail_min_css = Url("LocalisationDetail.min.css");
+        public static readonly string Press_css = Url("Press.css");
+        public static readonly string Press_min_css = Url("Press.min.css");
         public static readonly string Profil_css = Url("Profil.css");
         public static readonly string Profil_min_css = Url("Profil.min.css");
         public static readonly string rateit_css = Url("rateit.css");

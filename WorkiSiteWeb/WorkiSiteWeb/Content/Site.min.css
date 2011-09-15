@@ -176,7 +176,7 @@ li{list-style:none}
 .borderRadiusBottom{-webkit-border-bottom-left-radius:10px 10px;-webkit-border-bottom-right-radius:10px 10px;-moz-border-bottom-left-radius:10px 10px;-moz-border-bottom-right-radius:10px 10px;border-bottom-left-radius:10px 10px;border-bottom-right-radius:10px 10px}
 .generalTextContainer{padding:10px}
 .generalTextContent{width:80%;margin-top:40px;background:#f8f8f8;padding:10px}
-.generalTextContent p{padding:0 5px;padding-bottom:25px}
+.generalTextContent p{padding-bottom:25px}
 .generalTextContent li{list-style:disc;margin-bottom:10px}
 .generalTextContent h2{text-align:center;margin:10px 0}
 h2.faqTitle{margin-top:30px}

@@ -19,6 +19,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -241,6 +242,9 @@
     <Content Include="Content\Booking.min.css">
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
+    <Content Include="Content\images\blog.png" />
+    <Content Include="Content\images\vu-tele.png" />
+    <Content Include="Content\Press.css" />
     <Content Include="Content\CreateLocalisation.min.css">
       <DependentUpon>CreateLocalisation.css</DependentUpon>
     </Content>
@@ -269,6 +273,9 @@
     </Content>
     <Content Include="Content\LocalisationDetail.min.css">
       <DependentUpon>LocalisationDetail.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Press.min.css">
+      <DependentUpon>Press.css</DependentUpon>
     </Content>
     <Content Include="Content\Profil.css" />
     <Content Include="Content\galleria\classic-loader.gif" />
