@@ -19,16 +19,18 @@ namespace Worki.Web.Controllers
         ILogger _Logger;
         IEmailService _EmailService;
         IWelcomePeopleRepository _WelcomePeopleRepository;
+        IPressRepository _PressRepository;
 
         public const string LocalisationCount = "locCount";
         public const string WelcomePeopleList = "welcomePeopleList";
 
-        public HomeController(ILocalisationRepository localisationRepository, ILogger logger, IEmailService emailService, IWelcomePeopleRepository welcomePeopleRepository)
+        public HomeController(ILocalisationRepository localisationRepository, ILogger logger, IEmailService emailService, IWelcomePeopleRepository welcomePeopleRepository, IPressRepository pressRepository)
         {
             this._LocalisationRepository = localisationRepository;
             this._Logger = logger;
             this._EmailService = emailService;
             this._WelcomePeopleRepository = welcomePeopleRepository;
+            this._PressRepository = pressRepository;
         }
 
         /// <summary>
@@ -105,7 +107,9 @@ namespace Worki.Web.Controllers
         [ActionName("presse")]
         public virtual ActionResult Press()
         {
-            return View();
+            var pressList = new PressListViewModel();
+            pressList.Press = _PressRepository.GetAll().OrderByDescending(p => p.ID).ToList();
+            return View(pressList);
         }
 
         /// <summary>

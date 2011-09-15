@@ -322,6 +322,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Liste des articles répertoriés sur eWorky :.
+        /// </summary>
+        public static string ListPress {
+            get {
+                return ResourceManager.GetString("ListPress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Localisation.
         /// </summary>
         public static string Localisation {

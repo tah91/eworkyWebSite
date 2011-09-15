@@ -1,21 +1,48 @@
-﻿@section HeadContent
+﻿@model Worki.Data.Models.PressListViewModel
+           
+@section HeadContent
 {
 	<meta name="Description" content="@Worki.Resources.Views.Home.PresseString.Description"/>
     <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.News) </title>
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.News, "Blue")
+<div>
+    @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.News, "Blue")
+</div>
 <div class="detailContent generalTextContainer">
-    <div class="contentBlock generalTextContent float-right">
-        <p>
+    <div class="contentBlock generalTextContent float-right" style="margin-bottom:20px; height:80px">
+        <h3 class="blue">Description :</h3>
+        <div style="width:50%; height:50%">
             @String.Format(Worki.Resources.Views.Home.HomeString.SpeechForJournalists, EmailService.ContactMail)
-        </p>
-        <p>
-            @Worki.Resources.Views.Home.HomeString.SoonPressKit
-        </p>
+        </div>
     </div>
-    <div class="clear">
-	</div>  
+    <div style="clear:both"></div>
+    <div class="contentBlock generalTextContent float-right">
+        <div style="height:50%; width:50%; float:left">
+            @String.Format(Worki.Resources.Views.Home.PresseString.VideoDesc)
+        </div>
+        <div>
+            <iframe src="http://player.vimeo.com/video/29038745?title=0&amp;byline=0" style="width:50%; height:50%"></iframe>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div class="contentBlock generalTextContent float-right">
+        <h3 class="blue" style="margin-bottom:10px; margin-top:20px">Articles :</h3>
+        <ul>
+        @if (Model != null)
+        {
+                    foreach (var item in Model.Press)
+                    {
+                        <li style="margin-bottom:10px">                    
+                            <h3 style="margin-bottom:5px">@item.Description - @String.Format("{0:dd/MM/yyyy}", item.Date)
+                            </h3>
+                            <a class="blue" href=@item.Url>@item.Url</a>
+                        </li>
+                    }
+        }
+        </ul>
+    </div>
+    <div style="clear:both"></div>
 </div>
 
 @section ScriptContent

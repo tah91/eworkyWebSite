@@ -204,6 +204,9 @@
   <data name="Job" xml:space="preserve">
     <value>Métier</value>
   </data>
+  <data name="ListPress" xml:space="preserve">
+    <value>Liste des articles répertoriés sur eWorky :</value>
+  </data>
   <data name="Localisation" xml:space="preserve">
     <value>Localisation</value>
   </data>
