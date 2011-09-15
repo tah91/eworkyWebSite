@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\JsonModel.cs" />
     <Compile Include="Models\EdmMethods.cs" />
     <Compile Include="Models\AccountModels.cs" />

@@ -1,9 +1,20 @@
-﻿<div class="indexDesc float-left borderRadius">
-    <h2 class="blue">@Worki.Resources.Views.Home.HomeString.WelcomeToEWorky</h2>
-    <p><span class="blue">@Worki.Resources.Views.Home.HomeString.Find</span>&nbsp;&nbsp;@Worki.Resources.Views.Home.HomeString.EWorkyCouldFindWorkplace
-    </p>
-    <p><span class="blue">@Worki.Resources.Views.Home.HomeString.Share</span>&nbsp;&nbsp;@Worki.Resources.Views.Home.HomeString.JoinCommunity
-    </p>
-    <p><span class="blue">@Worki.Resources.Views.Home.HomeString.Enjoy</span>&nbsp;&nbsp;@Worki.Resources.Views.Home.HomeString.BestPlaceToWork
-    </p>
+﻿@model IEnumerable<BlogPost>
+
+<div class="blogSummary float-left" id="blog_slides">
+    <div class="blog_slides_container">
+    @foreach (var item in Model)
+    {
+        <div class="blogItem"> 
+            <span class="bold blue">@item.Title</span> (@item.PublicationDate.ToString("dd/MM/yyyy"))
+            <div class="blogContent">
+                <img  class="float-left" src="@item.Image"  alt="@item.Title"/>
+                <p>
+                    @item.Content
+                </p>
+            </div>
+            <div class="clear">
+            </div>
+        </div> 
+    }
+    </div>
 </div>

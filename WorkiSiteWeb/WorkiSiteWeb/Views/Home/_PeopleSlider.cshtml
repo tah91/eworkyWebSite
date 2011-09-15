@@ -1,10 +1,8 @@
-﻿@{
-    var welcomePeopleList = ViewData[Worki.Web.Controllers.HomeController.WelcomePeopleList] as List<WelcomePeople>;
-}
+﻿@model List<WelcomePeople>
 
 <div class="index_slides float-left" id="slides">
 	<div class="slides_container">
-        @foreach (var item in welcomePeopleList)
+        @foreach (var item in Model)
         {
 			var localisationLink = Url.Action(MVC.Localisation.Details(item.LocalisationId, ControllerHelpers.GetSeoTitle(item.Localisation.Name)));
 			var memberLink = Url.Action(MVC.Profil.Detail(item.MemberId));

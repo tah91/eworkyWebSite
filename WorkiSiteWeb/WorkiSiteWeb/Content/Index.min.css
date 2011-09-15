@@ -20,9 +20,6 @@
 #annonce_index{background-image:url('images/annonce.jpg');padding:20px}
 #ajout_index{background-position:90% 70%;background-image:url('images/ajout.jpg')}
 .adRow{margin-top:30px}
-.indexDesc{background:#f8f8f8;width:43%;padding:20px}
-.indexDesc span{font-size:1.2em;font-weight:bold}
-.indexDesc p{margin:10px 0}
 .indexGallery{width:52%}
 .imageContainer{width:130px;height:120px}
 .imageContainer img{max-height:120px}
@@ -68,3 +65,8 @@
 .slide_image img{width:100%;height:100%}
 .index_slides{width:48%;height:310px;border:10px solid #f8f8f8}
 .slides_container div.slide{width:480px;height:310px;display:block}
+.blogSummary{width:43%;height:200px;padding:20px;padding-top:50px;background:#F8F8F8 url('images/a_la_une.png') top left no-repeat;-moz-border-radius:0 10px 10px 10px;-webkit-border-radius:0 10px 10px 10px;border-radius:0 10px 10px 10px;border:2px solid gainsboro}
+.blogSummary span{font-size:1.2em}
+.blogItem{height:200px;width:440px}
+.blogItem img{padding:10px 10px 0 0;max-height:80%;max-width:50%}
+.blogItem p{padding:10px}

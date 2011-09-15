@@ -88,8 +88,6 @@ blockquote{font:bold 1.2em/1.5em 'Trebuchet MS',Tahoma,sans-serif;color:#666}
 ul,ol{margin:10px 30px;list-style-position:inside}
 ul{list-style-type:disc}
 ol{list-style-type:decimal}
-img.float-right{margin:5px 0 5px 15px;border-right:3px solid #ff9622}
-img.float-left{margin:5px 15px 5px 0;border-left:3px solid #ff9622}
 .borderContainer{border:2px solid #CCC;padding:10px;margin:10px 0 10px 0;overflow:auto}
 div.pager{text-align:right;border-top:2px solid #CCC;padding:.5em 0 0 0;margin:1em 0 0 0}
 div.pager A{font-size:1.1em;color:#666;text-decoration:none;padding:0 .4em 0 .4em;font-style:normal}

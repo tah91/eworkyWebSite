@@ -7,6 +7,9 @@ using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
 using Worki.Service;
 using System.Linq;
+using System.Net;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace Worki.Web.Controllers
 {
@@ -19,9 +22,6 @@ namespace Worki.Web.Controllers
         ILogger _Logger;
         IEmailService _EmailService;
         IWelcomePeopleRepository _WelcomePeopleRepository;
-
-        public const string LocalisationCount = "locCount";
-        public const string WelcomePeopleList = "welcomePeopleList";
 
         public HomeController(ILocalisationRepository localisationRepository, ILogger logger, IEmailService emailService, IWelcomePeopleRepository welcomePeopleRepository)
         {
@@ -40,17 +40,56 @@ namespace Worki.Web.Controllers
             return View();
         }
 
+        const string _BlogPath = "http://blog.eworky.com/api/get_recent_posts/";
+        public const string IndexViewModelContent = "IndexViewModel";
+
+        IEnumerable<BlogPost> GetBlogPosts()
+        {
+            var toRet = new List<BlogPost>();
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    string textString = client.DownloadString(_BlogPath);
+                    JObject blogJson = JObject.Parse(textString);
+                    var posts = blogJson["posts"];
+                    foreach (var item in posts)
+                    {
+                        toRet.Add(new BlogPost()
+                        {
+                            Url = (string)item["url"],
+                            Title = (string)item["title"],
+                            Content = (string)item["excerpt"],
+                            Image = item["attachments"].Count() != 0 ? (string)item["attachments"][0]["images"]["medium"]["url"] : (string)item["thumbnail"],
+                            PublicationDate = DateTime.Parse((string)item["date"])
+                        });
+                    }
+                    _Logger.Info("blog get_recent_posts ");
+                }
+                catch (WebException ex)
+                {
+                    _Logger.Error(ex.Message);
+                }
+            }
+            return toRet;
+        }
+
         /// <summary>
         /// Prepares the home page
         /// </summary>
         /// <returns>The action result.</returns>
-		[ActionName("index")]
-		public virtual ActionResult Index()
-		{
-			ViewData[LocalisationCount] = _LocalisationRepository.GetCount();
-			ViewData[WelcomePeopleList] = _WelcomePeopleRepository.GetAll().OrderByDescending(wp => wp.Id).ToList();
-			return View(new SearchCriteriaFormViewModel());
-		}
+        [ActionName("index")]
+        public virtual ActionResult Index()
+        {
+            var indexModel = new IndexViewModel()
+            {
+                LocalisationCount = _LocalisationRepository.GetCount(),
+                WelcomePeople = _WelcomePeopleRepository.GetAll().OrderByDescending(wp => wp.Id).ToList(),
+                BlogPosts = GetBlogPosts()
+            };
+            ViewData[IndexViewModelContent] = indexModel;
+            return View(new SearchCriteriaFormViewModel());
+        }
 
         /// <summary>
         /// GET action method to send a demand to contact

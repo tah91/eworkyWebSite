@@ -528,28 +528,6 @@ ol
 	list-style-type: decimal;
 }
 
-/*img
-{
-	border: 1px solid #dadada;
-	padding: 5px;
-	background: #fafafa;
-    max-height : 300px;
-    max-width : 300px
-}*/
-
-img.float-right
-{
-	margin: 5px 0px 5px 15px;
-	border-right: 3px solid #ff9622;
-}
-
-img.float-left
-{
-	margin: 5px 15px 5px 0px;
-	border-left: 3px solid #ff9622;
-}
-
-
 /* All Pages
 ----------------------------------------------------------*/
 .borderContainer

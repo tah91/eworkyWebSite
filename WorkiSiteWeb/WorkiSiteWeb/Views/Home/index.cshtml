@@ -14,12 +14,15 @@
 
 	@{ViewData["PicPath"] = Links.Content.images.photo1_jpg;}
     @*@Html.Partial(MVC.Shared.Views._PictureContainer, ViewData) *@
-    @Html.Partial(MVC.Home.Views._PeopleSlider, ViewData)        
+    @{
+        var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
+    }
+    @Html.Partial(MVC.Home.Views._PeopleSlider, indexViewModel.WelcomePeople)
 
     <div class="halfContainer indexSearchContainer float-right">
         <div class="indexSearchFormDiv relative">
             <h2 class="blue">
-                @string.Format("{0:### ### ###} {1}", ViewData[Worki.Web.Controllers.HomeController.LocalisationCount], Worki.Resources.Views.Home.HomeString.Workspace)</h2>
+                @string.Format("{0:### ### ###} {1}", indexViewModel.LocalisationCount, Worki.Resources.Views.Home.HomeString.Workspace)</h2>
             <div class="searchIndexHead steinemu darkblue">
                 <h3>@Worki.Resources.Views.Home.HomeString.SearchWorkspace</h3>
             </div>
@@ -113,7 +116,7 @@
 </div>
 
 <div class="adRow">
-    @Html.Partial(MVC.Home.Views._HomeDesc)
+    @Html.Partial(MVC.Home.Views._HomeDesc, indexViewModel.BlogPosts)
     @Html.Partial(MVC.Shared.Views._IndexGallery)
 </div>
 
@@ -128,6 +131,13 @@
                 play: 8000,
                 generatePagination: false,
                 effect: 'fade'
+            });
+
+            $('#blog_slides').slides({
+                play: 5000,
+                generatePagination: false,
+                effect: 'fade',
+                container: 'blog_slides_container'
             });
         });
         require(["@MiscHelpers.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
