@@ -123,6 +123,9 @@
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PageInfo.cs" />
+    <Compile Include="Models\Press.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProfilModel.cs" />
     <Compile Include="Models\SearchCriteria.cs" />
     <Compile Include="Models\Visitor.cs">
@@ -148,6 +151,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PressRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\GroupRepository.cs" />

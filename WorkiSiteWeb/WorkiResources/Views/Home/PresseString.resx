@@ -120,4 +120,7 @@
   <data name="Description" xml:space="preserve">
     <value>Vous trouverez ici un dossier de presse sur eWorky.</value>
   </data>
+  <data name="VideoDesc" xml:space="preserve">
+    <value>Un reportage du 19/20 national de France 3 diffusé le 10 août 2011 consacré à eWorky (eworky.com), le premier portail français de référencement des espaces de travail (wifi gratuit, coworking, télécentres, centres d'affaires, hôtels, etc.)</value>
+  </data>
 </root>

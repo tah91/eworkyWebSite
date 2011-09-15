@@ -19,6 +19,7 @@
           <EntitySet Name="MemberEdition" EntityType="WorkiDBModel.Store.MemberEdition" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MemberMainData" EntityType="WorkiDBModel.Store.MemberMainData" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MembersInGroup" EntityType="WorkiDBModel.Store.MembersInGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Press" EntityType="WorkiDBModel.Store.Press" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Visitor" EntityType="WorkiDBModel.Store.Visitor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WelcomePeople" EntityType="WorkiDBModel.Store.WelcomePeople" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Comment_Localisation" Association="WorkiDBModel.Store.FK_Comment_Localisation">
@@ -301,6 +302,15 @@
           <Property Name="RelationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MemberId" Type="int" Nullable="false" />
           <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Press">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="Visitor">
           <Key>
@@ -666,6 +676,7 @@
             <End Role="Member" EntitySet="Members" />
             <End Role="MemberBooking" EntitySet="MemberBookings" />
           </AssociationSet>
+          <EntitySet Name="Presses" EntityType="WorkiDBModel.Press" />
           </EntityContainer>
         <EntityType Name="Comment">
           <Key>
@@ -1159,6 +1170,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Press">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1360,6 +1380,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Presses">
+            <EntityTypeMapping TypeName="WorkiDBModel.Press">
+              <MappingFragment StoreEntitySet="Press">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1506,6 +1536,7 @@
           <ConnectorPoint PointX="12" PointY="9.25" />
           <ConnectorPoint PointX="12" PointY="14" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="WorkiDBModel.Press" Width="1.5" PointX="5.375" PointY="0.75" Height="1.7879850260416674" />
         </Diagram>
     </Diagrams>
   </Designer>

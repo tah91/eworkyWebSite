@@ -68,5 +68,14 @@ namespace Worki.Resources.Views.Home {
                 return ResourceManager.GetString("Description", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Un reportage du 19/20 national de France 3 diffusé le 10 août 2011 consacré à eWorky (eworky.com), le premier portail français de référencement des espaces de travail (wifi gratuit, coworking, télécentres, centres d&apos;affaires, hôtels, etc.).
+        /// </summary>
+        public static string VideoDesc {
+            get {
+                return ResourceManager.GetString("VideoDesc", resourceCulture);
+            }
+        }
     }
 }

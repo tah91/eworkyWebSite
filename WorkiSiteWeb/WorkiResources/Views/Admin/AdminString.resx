@@ -138,11 +138,17 @@
   <data name="ConfirmDelete" xml:space="preserve">
     <value>Confirmer la suppression : </value>
   </data>
+  <data name="ConfirmDeletePress" xml:space="preserve">
+    <value>Veuillez confirmer la suppression de l'article :</value>
+  </data>
   <data name="ConfirmDeleteUser" xml:space="preserve">
-    <value>Veuillez confirmer la supression de l'utilsateur :</value>
+    <value>Veuillez confirmer la suppression de l'utilisateur :</value>
   </data>
   <data name="ConfirmDeleteWelcome" xml:space="preserve">
-    <value>Veuillez confirmer la supression d'une personne de la page d'accueil :</value>
+    <value>Veuillez confirmer la suppression d'une personne de la page d'accueil :</value>
+  </data>
+  <data name="CreateNewPress" xml:space="preserve">
+    <value>Ajouter un nouvel article</value>
   </data>
   <data name="CreateNewWelcomePeople" xml:space="preserve">
     <value>Créer un nouveau profil</value>
@@ -150,17 +156,26 @@
   <data name="CreateWelcomePeople" xml:space="preserve">
     <value>Créer profil page d'accueil</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="DetailPress" xml:space="preserve">
+    <value>Détail d'un article</value>
+  </data>
   <data name="DetailWelcomePeople" xml:space="preserve">
     <value>Détail d'un personne de la page d'accueil</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editer</value>
+  </data>
+  <data name="EditPress" xml:space="preserve">
+    <value>Editer un article</value>
   </data>
   <data name="EditWelcomePeople" xml:space="preserve">
     <value>Editer une personne de la page d'accueil</value>
@@ -174,14 +189,23 @@
   <data name="IndexBooking" xml:space="preserve">
     <value>Gestion des réservations</value>
   </data>
+  <data name="IndexPress" xml:space="preserve">
+    <value>Gestion des articles</value>
+  </data>
   <data name="IndexWelcomePeople" xml:space="preserve">
     <value>Gestion des entrepreneurs stars</value>
+  </data>
+  <data name="InexistingPress" xml:space="preserve">
+    <value>Article Inexistant</value>
   </data>
   <data name="IsRegistered" xml:space="preserve">
     <value>Inscrit(e)</value>
   </data>
   <data name="Job" xml:space="preserve">
     <value>Métier</value>
+  </data>
+  <data name="ListPress" xml:space="preserve">
+    <value>Liste des articles répertoriés sur eWorky :</value>
   </data>
   <data name="Localisation" xml:space="preserve">
     <value>Localisation</value>
@@ -207,6 +231,12 @@
   <data name="Points" xml:space="preserve">
     <value>Point(s)</value>
   </data>
+  <data name="PressDeleted" xml:space="preserve">
+    <value>Nous sommes désolés, l'article séléctionné n'existe pas ou a été effacé.</value>
+  </data>
+  <data name="PressNotFound" xml:space="preserve">
+    <value>Article non trouvé</value>
+  </data>
   <data name="Send" xml:space="preserve">
     <value>envoyer</value>
   </data>
@@ -221,6 +251,9 @@
   </data>
   <data name="UpdateRole" xml:space="preserve">
     <value>Mise à jour des rôles</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Utilisateur</value>

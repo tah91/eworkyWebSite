@@ -855,6 +855,26 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult IndexBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexBooking);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult IndexPress() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.IndexPress);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DetailPress() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DetailPress);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult EditPress() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.EditPress);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DeletePress() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DeletePress);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AdminController Actions { get { return MVC.Admin; } }
@@ -883,6 +903,11 @@ namespace Worki.Web.Controllers {
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string IndexBooking = "IndexBooking";
+            public readonly string IndexPress = "IndexPress";
+            public readonly string DetailPress = "DetailPress";
+            public readonly string CreatePress = "CreatePress";
+            public readonly string EditPress = "EditPress";
+            public readonly string DeletePress = "supprimer-press";
         }
 
 
@@ -892,13 +917,19 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _AdminMenu = "~/Views/Admin/_AdminMenu.cshtml";
+            public readonly string article_inexistant = "~/Views/Admin/article-inexistant.cshtml";
+            public readonly string CreatePress = "~/Views/Admin/CreatePress.cshtml";
             public readonly string CreateWelcomePeople = "~/Views/Admin/CreateWelcomePeople.cshtml";
+            public readonly string DeletePress = "~/Views/Admin/DeletePress.cshtml";
             public readonly string DeleteWelcomePeople = "~/Views/Admin/DeleteWelcomePeople.cshtml";
+            public readonly string DetailPress = "~/Views/Admin/DetailPress.cshtml";
             public readonly string DetailWelcomePeople = "~/Views/Admin/DetailWelcomePeople.cshtml";
+            public readonly string EditPress = "~/Views/Admin/EditPress.cshtml";
             public readonly string EditWelcomePeople = "~/Views/Admin/EditWelcomePeople.cshtml";
             public readonly string Index = "~/Views/Admin/Index.cshtml";
             public readonly string IndexBooking = "~/Views/Admin/IndexBooking.cshtml";
             public readonly string IndexImport = "~/Views/Admin/IndexImport.cshtml";
+            public readonly string IndexPress = "~/Views/Admin/IndexPress.cshtml";
             public readonly string IndexUser = "~/Views/Admin/IndexUser.cshtml";
             public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";
             public readonly string IndexWelcomePeople = "~/Views/Admin/IndexWelcomePeople.cshtml";
@@ -1008,10 +1039,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DeleteWelcomePeople(Worki.Data.Models.WelcomePeople welcomePeople, string confirmButton) {
+        public override System.Web.Mvc.ActionResult DeleteWelcomePeople(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteWelcomePeople);
-            callInfo.RouteValueDictionary.Add("welcomePeople", welcomePeople);
-            callInfo.RouteValueDictionary.Add("confirmButton", confirmButton);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -1035,6 +1065,55 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult IndexBooking(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexBooking);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult IndexPress(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexPress);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DetailPress(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DetailPress);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreatePress() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreatePress);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreatePress(Worki.Data.Models.Press formModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreatePress);
+            callInfo.RouteValueDictionary.Add("formModel", formModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditPress(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditPress);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditPress(int id, Worki.Data.Models.Press formModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditPress);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formModel", formModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DeletePress(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeletePress);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DeletePress(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeletePress);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

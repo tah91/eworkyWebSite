@@ -630,6 +630,12 @@
     <Content Include="Views\Booking\Create.cshtml" />
     <Content Include="Views\Admin\IndexBooking.cshtml" />
     <Content Include="Views\Booking\Details.cshtml" />
+    <Content Include="Views\Admin\IndexPress.cshtml" />
+    <Content Include="Views\Admin\CreatePress.cshtml" />
+    <Content Include="Views\Admin\DeletePress.cshtml" />
+    <Content Include="Views\Admin\article-inexistant.cshtml" />
+    <Content Include="Views\Admin\EditPress.cshtml" />
+    <Content Include="Views\Admin\DetailPress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -1,0 +1,61 @@
+﻿@model Worki.Data.Models.Press
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+
+<div class="borderContainer">
+    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.DetailPress, "Blue")
+    
+    <div class="contactDiv">
+        <div class="login-account">
+            <table>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Date
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field"> 
+                            &nbsp;&nbsp;&nbsp;@Model.Date.ToString("dd/MM/yyyy")           
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Url
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                        
+                            &nbsp;&nbsp;&nbsp;<a href=@Model.Url>@Model.Url</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Description
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Model.Description
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>   
+</div>
+
+<div>
+    @Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.Edit, MVC.Admin.EditPress(Model.ID)) |
+    @Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexPress())
+</div>

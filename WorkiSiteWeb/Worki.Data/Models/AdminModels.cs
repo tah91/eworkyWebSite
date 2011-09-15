@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System;
 
 namespace Worki.Data.Models
 {
@@ -125,4 +126,36 @@ namespace Worki.Data.Models
 	}
 
 	#endregion
+
+    #region Admin Press
+
+    [MetadataType(typeof(Press_Validation))]
+    public partial class Press
+    {
+        public Press()
+        {
+            Date = DateTime.Now;
+        }
+    }
+
+    public class PressListViewModel
+    {
+        public IList<Press> Press { get; set; }
+        public PagingInfo PagingInfo { get; set; }
+    }
+
+    [Bind(Exclude = "Id")]
+    public class Press_Validation
+    {
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string Url { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string Description { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public DateTime Date { get; set; }
+    }
+
+    #endregion
 }

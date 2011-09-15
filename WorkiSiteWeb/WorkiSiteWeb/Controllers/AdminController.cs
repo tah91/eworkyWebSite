@@ -29,6 +29,7 @@ namespace Worki.Web.Controllers
 		IRepository<MemberBooking> _BookingRepository;
         ILogger _Logger;
         IEmailService _EmailService;
+        IPressRepository _PressRepository;
 
         public AdminController( ILocalisationRepository localisationRepository, 
                                 IMembershipService memberShipservice, 
@@ -37,7 +38,8 @@ namespace Worki.Web.Controllers
                                 IEmailService emailService,
                                 IMemberRepository memberRepository,
                                 IWelcomePeopleRepository welcomePeopleRepository,
-								IRepository<MemberBooking> bookingRepository)
+								IRepository<MemberBooking> bookingRepository,
+                                IPressRepository pressRepository)
         {
             _LocalisationRepository = localisationRepository;
             _MembershipService = memberShipservice;
@@ -47,6 +49,7 @@ namespace Worki.Web.Controllers
             _MemberRepository = memberRepository;
             _WelcomePeopleRepository = welcomePeopleRepository;
 			_BookingRepository = bookingRepository;
+            _PressRepository = pressRepository;
         }
 
         public int PageSize = 25; // Will change this later
@@ -483,15 +486,15 @@ namespace Worki.Web.Controllers
                 return View("utilisateur-absent");
             TempData["returnUrl"] = returnUrl;
              
-            return View("DeleteWelcomePeople");
+            return View(welcomePeople);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ActionName("supprimer-welcomePeople")]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult DeleteWelcomePeople(WelcomePeople welcomePeople, string confirmButton)
+        public virtual ActionResult DeleteWelcomePeople(int id)
         {
-            var profil = _WelcomePeopleRepository.Get(welcomePeople.Id);
+            var profil = _WelcomePeopleRepository.Get(id);
             if (profil == null)
                 return View("utilisateur-absent");
             else
@@ -688,5 +691,152 @@ namespace Worki.Web.Controllers
 		}
 
 		#endregion
-	}
+
+        #region Admin Press
+
+        /// <summary>
+        /// Prepares a web page containing a paginated list of the press on home page
+        /// </summary>
+        /// <param name="page">The page to display</param>
+        /// <returns>The action result.</returns>
+        public virtual ActionResult IndexPress(int? page)
+        {
+            int pageValue = page ?? 1;
+            var press = _PressRepository.Get((pageValue - 1) * PageSize, PageSize, p => p.ID);
+            var viewModel = new PressListViewModel()
+            {
+                Press = press,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = PageSize,
+                    TotalItems = _PressRepository.GetCount()
+                }
+            };
+            return View(viewModel);
+        }
+
+        /// <summary>
+        /// Prepares a web page containing the details of a Press
+        /// </summary>
+        /// <param name="page">id of the Press</param>
+        /// <returns>The action result.</returns>
+        [Authorize]
+        public virtual ActionResult DetailPress(int id)
+        {
+            var item = _PressRepository.Get(id);
+            if (item == null)
+                return RedirectToAction(MVC.Admin.IndexPress());
+            return View(item);
+        }
+
+        /// <summary>
+        /// Prepares a web page containing the form to create a new Press
+        /// </summary>
+        /// <returns>The action result.</returns>
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        public virtual ActionResult CreatePress()
+        {
+            return View(new Press());
+        }
+
+        /// <summary>
+        /// Add the press from the form to the repository, then redirect to index
+        /// </summary>
+        /// <param name="press">data from the form</param>
+        /// <returns>redirect to index</returns>
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult CreatePress(Press formModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _PressRepository.Add(formModel);
+                    return RedirectToAction(MVC.Admin.IndexPress());
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View(formModel);
+        }
+
+        /// <summary>
+        /// prepare the view to edit a press
+        /// </summary>
+        /// <param name="id">id of the press to edit</param>
+        /// <returns>the form</returns>
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        public virtual ActionResult EditPress(int id)
+        {
+            var item = _PressRepository.Get(id);
+            if (item == null)
+                return RedirectToAction(MVC.Admin.IndexPress());
+            return View(item);
+        }
+
+        /// <summary>
+        /// Apply the modifications to a press
+        /// </summary>
+        /// <param name="press">data from the form</param>
+        /// <returns>redirect to index</returns>
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult EditPress(int id, Press formModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _PressRepository.Update(id, p =>
+                    {
+                        UpdateModel(p);                        
+                    });
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+                return RedirectToAction(MVC.Admin.IndexPress());
+            }
+            return View(formModel);
+        }
+
+        /// <summary>
+        /// Prepares a web page to delete a press
+        /// </summary>
+        /// <param name="page">id of the Press</param>
+        /// <returns>The action result.</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("supprimer-press")]
+        public virtual ActionResult DeletePress(int id, string returnUrl)
+        {
+            var press = _PressRepository.Get(id);
+            if (press == null)
+                return View("press-inexistant");
+            TempData["returnUrl"] = returnUrl;
+
+            return View("DeletePress");
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ActionName("supprimer-press")]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult DeletePress(int id)
+        {            
+            var article = _PressRepository.Get(id);
+            if (article == null)
+                return View("article-inexistant");
+            else
+            {
+                _PressRepository.Delete(article.ID);
+                return RedirectToAction(MVC.Admin.IndexPress());
+            }
+        }
+
+        #endregion
+    }
 }

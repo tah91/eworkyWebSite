@@ -298,7 +298,7 @@
                     yearRange: '1911:2000'
                 });
             });
-        require(["@Url.VersionedContent(Links.Scripts.date_js)", function () {
+        require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
                 $("#profilEditForm").submit(function () {
                     var val = $("#Member_MemberMainData_BirthDate").val();
                     var date = Date.parseExact(val, "dd/MM/yyyy");
