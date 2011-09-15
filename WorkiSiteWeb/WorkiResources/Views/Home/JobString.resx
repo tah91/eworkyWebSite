@@ -194,4 +194,7 @@
   <data name="YouAreDev" xml:space="preserve">
     <value>Tu es développeur ?</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Pour accompagner sa croissance, eWorky cherche de jeunes talents près à se lancer dans l'aventure d'une start-up prometteuse.</value>
+  </data>
 </root>

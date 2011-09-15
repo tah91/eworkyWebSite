@@ -17,14 +17,16 @@ namespace Worki.SpecFlow
         [Given(@"Je tappe (.*) dans la zone de recherche")]
         public void GivenJeTappeParisDansLaZoneDeRecherche(string address)
         {
-            WebBrowser.Current.TextField(Find.ByName("Criteria.Place")).TypeText(address);
+            // WebBrowser.Current.TextField(Find.ByName("Criteria.Place")).TypeText(address);
+            WebBrowser.Current.Page<SearchPage>().Champ_Recherche.TypeText(address);
         }
 
         [When(@"Je clique sur rechercher dans la page d'acceuil")]
         public void WhenJeCliqueSurRechercherDansLaPageDAcceuil()
         {
             //TODO: implement act (action) logic
-            WebBrowser.Current.Button(Find.ById("btn_searchIndex")).Click();
+            // WebBrowser.Current.Button(Find.ById("btn_searchIndex")).Click();
+            WebBrowser.Current.Page<SearchPage>().Recherche.Click();
         }
 
         [Then(@"Il doit y avoir plus de (.*) resultats")]
@@ -57,13 +59,15 @@ namespace Worki.SpecFlow
         [Given(@"Je coche la checkbox prise de courant")]
         public void GivenJeCocheLaCheckboxPriseDeCourant()
         {
-            WebBrowser.Current.CheckBox("Outlet-General").Click();
+            // WebBrowser.Current.CheckBox("Outlet-General").Click();
+            WebBrowser.Current.Page<SearchPage>().CheckBox_OutletGeneral.Click();
         }
 
         [Given(@"Je coche l'equipement restaurant")]
         public void GivenJeCocheLEquipementRestaurant()
         {
-            WebBrowser.Current.TextField("Restauration-General").TypeTextQuickly("True");
+            // WebBrowser.Current.TextField("Restauration-General").TypeTextQuickly("True");
+            WebBrowser.Current.Page<SearchPage>().Equipment_Resto.SetAttributeValue("value", "True");
         }
          
         #endregion
@@ -79,8 +83,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur rechercher")]
         public void WhenJeCliqueSurRechercher()
         {
-            WebBrowser.Current.Button(Find.ByValue("Rechercher")).Click();
-
+            // WebBrowser.Current.Button(Find.ByValue("Rechercher")).Click();
+            WebBrowser.Current.Page<SearchPage>().Recherche.Click();
         }
 
         #endregion
@@ -90,7 +94,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Etudiant")]
         public void WhenJeCliqueSurEtudiant()
         {
-            WebBrowser.Current.Link(Find.ByText("Etudiant")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Etudiant")).Click();
+            WebBrowser.Current.Page<SearchPage>().Link_Etudiant.Click();
         }
 
         [Then(@"Je dois avoir la description Etudiant")]
@@ -106,7 +111,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Entrepreneur")]
         public void WhenJeCliqueSurEntrepreneur()
         {
-            WebBrowser.Current.Link(Find.ByText("Entrepreneur")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Entrepreneur")).Click();
+            WebBrowser.Current.Page<SearchPage>().Link_Entrepreneur.Click();
         }
 
         [Then(@"Je dois avoir la description Entrepreneur")]
@@ -122,7 +128,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur GrandCompte")]
         public void WhenJeCliqueSurGrandCompte()
         {
-            WebBrowser.Current.Link(Find.ByText("Grand compte")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Grand compte")).Click();
+            WebBrowser.Current.Page<SearchPage>().Link_GrdCompte.Click();
         }
 
         [Then(@"Je dois avoir la description GrandCompte")]
@@ -138,7 +145,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Indépendant")]
         public void WhenJeCliqueSurIndependant()
         {
-            WebBrowser.Current.Link(Find.ByText("Indépendant")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Indépendant")).Click();
+            WebBrowser.Current.Page<SearchPage>().Link_Independant.Click();
         }
 
         [Then(@"Je dois avoir la description Indépendant")]
@@ -154,7 +162,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Nomade")]
         public void WhenJeCliqueSurNomade()
         {
-            WebBrowser.Current.Link(Find.ByText("Nomade")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Nomade")).Click();
+            WebBrowser.Current.Page<SearchPage>().Link_Nomade.Click();
         }
 
         [Then(@"Je dois avoir la description Nomade")]
@@ -169,7 +178,8 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Teletravailleur")]
         public void WhenJeCliqueSurTeletravailleur()
         {
-            WebBrowser.Current.Link(Find.ByText("Télétravailleur")).Click();
+            // WebBrowser.Current.Link(Find.ByText("Télétravailleur")).Click();
+            WebBrowser.Current.Page<SearchPage>().Link_Teletravailleur.Click();
         }
 
         [Then(@"Je dois avoir la description Teletravailleur")]
@@ -179,5 +189,238 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+    }
+
+    public class SearchPage : Page
+    {
+        public Link Type_Lieu
+        {
+            get { return Document.Link(Find.ByText("Rechercher par type de lieu")); }
+        }
+
+        public Link Type_Prestation
+        {
+            get { return Document.Link(Find.ByText("Rechercher par type de prestation")); }
+        }
+
+        public TextField Champ_Recherche
+        {
+            get { return Document.TextField(Find.ById("Criteria_Place")); }
+        }
+
+        public Button Recherche
+        {
+            get { return Document.Button(Find.ByValue("Rechercher")); }
+        }
+
+        public CheckBox CheckBox_Tous
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_Everything")); }
+        }
+
+        public CheckBox CheckBox_Spot_Wifi
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_SpotWifi")); }
+        }
+
+        public CheckBox CheckBox_Cafe_Restaurant
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_CoffeeResto")); }
+        }
+
+        public CheckBox CheckBox_Biblioteque_Musee
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_Biblio")); }
+        }
+
+        public CheckBox CheckBox_Espace_Public
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_PublicSpace")); }
+        }
+
+        public CheckBox CheckBox_Voyageur
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_TravelerSpace")); }
+        }
+
+        public CheckBox CheckBox_Hotel
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_Hotel")); }
+        }
+
+        public CheckBox CheckBox_Telecentre
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_Telecentre")); }
+        }
+
+        public CheckBox CheckBox_BuisnessCenter
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_BuisnessCenter")); }
+        }
+
+        public CheckBox CheckBox_CoworkingSpace
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_CoworkingSpace")); }
+        }
+
+        public CheckBox CheckBox_WorkingHotel
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_WorkingHotel")); }
+        }
+
+        public CheckBox CheckBox_PrivateArea
+        {
+            get { return Document.CheckBox(Find.ById("Criteria_PrivateArea")); }
+        }
+
+        public CheckBox CheckBox_OutletGeneral
+        {
+            get { return Document.CheckBox(Find.ById("Outlet-General")); }
+        }
+
+        public CheckBox CheckBox_FastInternet
+        {
+            get { return Document.CheckBox(Find.ById("FastInternet-General")); }
+        }
+
+        public CheckBox CheckBox_AC
+        {
+            get { return Document.CheckBox(Find.ById("AC-General")); }
+        }
+
+        public Link Link_Etudiant
+        {
+            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/1']")); }
+        }
+
+        public Link Link_Nomade
+        {
+            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/2']")); }
+        }
+
+        public Link Link_Teletravailleur
+        {
+            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/3']")); }
+        }
+
+        public Link Link_Entrepreneur
+        {
+            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/4']")); }
+        }
+
+        public Link Link_GrdCompte
+        {
+            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/6']")); }
+        }
+
+        public Link Link_Independant
+        {
+            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/5']")); }
+        }
+
+        public TextField Equipment_Wifi
+        {
+            get { return Document.TextField(Find.ById("Wifi_Free-General")); }
+        }
+
+        public TextField Equipment_Resto
+        {
+            get { return Document.TextField(Find.ById("Restauration-General")); }
+        }
+
+        public TextField Equipment_Cafe
+        {
+            get { return Document.TextField(Find.ById("Coffee-General")); }
+        }
+
+        public TextField Equipment_Parking
+        {
+            get { return Document.TextField(Find.ById("Parking-General")); }
+        }
+
+        public TextField Equipment_Handicap
+        {
+            get { return Document.TextField(Find.ById("Handicap-General")); }
+        }
+
+        public Link Lien_AccueilHeader
+        {
+            get { return Document.Link(Find.ByText("Accueil")); }
+        }
+
+        public Link Lien_AjoutHeader
+        {
+            get { return Document.Link(Find.ByText("Ajout")); }
+        }
+
+        public Link Lien_RechercheFooter
+        {
+            get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/recherche/recherche-lieu-travail']")); }
+        }
+
+        public Link Lien_AjoutFooter
+        {
+            get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/lieu-de-travail/ajouter']")); }
+        }
+
+        public Link Lien_Contact
+        {
+            get { return Document.Link(Find.ByText("Contact")); }
+        }
+
+        public Link Lien_Blog
+        {
+            get { return Document.Link(Find.ByText("Blog")); }
+        }
+
+        public Link Lien_WhoWeAre
+        {
+            get { return Document.Link(Find.ByText("Qui sommes-nous ?")); }
+        }
+
+        public Link Lien_FAQ
+        {
+            get { return Document.Link(Find.ByText("FAQ")); }
+        }
+
+        public Link Lien_CGU
+        {
+            get { return Document.Link(Find.ByText("CGU")); }
+        }
+
+        public Link Lien_Presse
+        {
+            get { return Document.Link(Find.ByText("Presse")); }
+        }
+
+        public Link Lien_Jobs
+        {
+            get { return Document.Link(Find.ByText("Jobs")); }
+        }
+
+        public Link Lien_ALaUne
+        {
+            get { return Document.Link(Find.BySelector("div[class=imageDescription] a[href^='/lieu-de-travail/details/']")); }
+        }
+
+        public Link Lien_MentionLegal
+        {
+            get { return Document.Link(Find.ByText("Mentions légales")); }
+        }
+
+        public Link Lien_MonProfil
+        {
+            get { return Document.Link(Find.ByText("Mon Profil")); }
+        }
+
+        public Link Lien_Deconnexion
+        {
+            get { return Document.Link(Find.ByText("Déconnexion")); }
+        }
+
+        public Link Lien_Administrateur
+        {
+            get { return Document.Link(Find.ByText("Administrateur")); }
+        }
     }
 }

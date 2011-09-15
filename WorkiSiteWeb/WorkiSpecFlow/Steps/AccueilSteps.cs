@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using SHDocVw;
 using WatiN.Core;
 using NUnit.Framework;
+using Worki.Data.Models;
 namespace Worki.SpecFlow
 {
     [Binding]
@@ -22,7 +23,8 @@ namespace Worki.SpecFlow
             [When(@"Je clique sur Recherche")]
             public void WhenJeCliqueSurRecherche()
             {
-                WebBrowser.Current.Link(Find.ByText("Recherche")).Click();
+                // WebBrowser.Current.Link(Find.ByText("Recherche")).Click();
+                WebBrowser.Current.Page<AccueilPage>().Lien_RechercheHeader.Click();
             }
 
             [Then(@"Je dois arriver sur la page de recherche")]
@@ -38,7 +40,8 @@ namespace Worki.SpecFlow
             [When(@"Je clique sur Ajout")]
             public void WhenJeCliqueSurAjout()
             {
-                WebBrowser.Current.Link(Find.ByText("Ajout")).Click();
+                //WebBrowser.Current.Link(Find.ByText("Ajout")).Click();
+                WebBrowser.Current.Page<AccueilPage>().Lien_AjoutHeader.Click();
             }
 
             [Then(@"Je dois arriver sur la page de Ajout")]
@@ -54,7 +57,8 @@ namespace Worki.SpecFlow
             [When(@"Je clique sur plus de critères")]
             public void WhenJeCliqueSurPlusDeCriteres()
             {
-                WebBrowser.Current.Link(Find.ByText("Plus de critères")).Click();
+                // WebBrowser.Current.Link(Find.ByText("Plus de critères")).Click();
+                WebBrowser.Current.Page<AccueilPage>().Plus_Criteres.Click();
             }
 
         #endregion
@@ -64,7 +68,8 @@ namespace Worki.SpecFlow
             [When(@"Je clique sur Rechercher")]
             public void WhenJeCliqueSurRechercher()
             {
-                WebBrowser.Current.Button("btn_searchIndex").Click();
+                // WebBrowser.Current.Button("btn_searchIndex").Click();
+                WebBrowser.Current.Page<AccueilPage>().Bouton_Recherche.Click();
             }
 
             [Then(@"Je dois avoir un message d'erreur")]
@@ -80,7 +85,8 @@ namespace Worki.SpecFlow
             [Given(@"Je selectionne Salon d'affaire")]
             public void GivenJeSelectionneSalonDAffaire()
             {
-                WebBrowser.Current.SelectList("Criteria_LocalisationOffer").Option(Find.ByValue("1")).Select();
+                // WebBrowser.Current.SelectList("Criteria_LocalisationOffer").Option(Find.ByValue("1")).Select();
+                WebBrowser.Current.Page<AccueilPage>().Espace((int)LocalisationOffer.BuisnessRoom);
             }
 
         #endregion
@@ -94,5 +100,137 @@ namespace Worki.SpecFlow
             }
 
         #endregion
+    }
+
+    public class AccueilPage : Page
+    {
+        public Button Boutton_Connexion
+        {
+            get { return Document.Button(Find.BySelector("a[href='/compte/connexion']")); }
+        }
+
+        public Button Bouton_Recherche
+        {
+            get { return Document.Button(Find.ById("btn_searchIndex")); }
+        }
+
+        public Link Lien_RechercheHeader
+        {
+            get { return Document.Link(Find.ByText("Recherche")); }
+        }
+
+        public Link Lien_RechercheBody
+        {
+            get { return Document.Link(Find.BySelector("div[class^='bottom'] a[href^='/recherche/recherche-lieu-travail']")); }
+        }
+
+        public Link Lien_RechercheFooter
+        {
+            get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/recherche/recherche-lieu-travail']")); }
+        }
+
+        public Link Lien_AjoutHeader
+        {
+            get { return Document.Link(Find.ByText("Ajout")); }
+        }
+
+        public Link Lien_AjoutBody
+        {
+            get { return Document.Link(Find.BySelector("div[class^='bottom'] a[href^='/lieu-de-travail/ajouter']")); }
+        }
+
+        public Link Lien_AjoutFooter
+        {
+            get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/lieu-de-travail/ajouter']")); }
+        }
+
+        public Link Lien_Contact
+        {
+            get { return Document.Link(Find.ByText("Contact")); }
+        }
+
+        public Link Lien_Blog
+        {
+            get { return Document.Link(Find.ByText("Blog")); }
+        }
+
+        public Link Lien_WhoWeAre
+        {
+            get { return Document.Link(Find.ByText("Qui sommes-nous ?")); }
+        }
+
+        public Link Lien_FAQ
+        {
+            get { return Document.Link(Find.ByText("FAQ")); }
+        }
+
+        public Link Lien_CGU
+        {
+            get { return Document.Link(Find.ByText("CGU")); }
+        }
+
+        public Link Lien_Presse
+        {
+            get { return Document.Link(Find.ByText("Presse")); }
+        }
+
+        public Link Lien_Jobs
+        {
+            get { return Document.Link(Find.ByText("Jobs")); }
+        }
+
+        public Link Lien_ALaUne
+        {
+            get { return Document.Link(Find.BySelector("div[class='imageDescription'] a[href^='/lieu-de-travail/details/']")); }
+        }
+
+        public Link Lien_MentionLegal
+        {
+            get { return Document.Link(Find.ByText("Mentions légales")); }
+        }
+
+        public Link Lien_MonProfil
+        {
+            get { return Document.Link(Find.BySelector("a[href^='/profil/dashboard/']")); }
+        }
+
+        public Link Lien_Deconnexion
+        {
+            get { return Document.Link(Find.ByText("Déconnexion")); }
+        }
+
+        public Link Lien_Administrateur
+        {
+            get { return Document.Link(Find.ByText("Administrateur")); }
+        }
+
+        public Link Lien_Profil
+        {
+            get { return Document.Link(Find.BySelector("a[href^='/profil/details/']")); }
+        }
+        
+        public Link Plus_Criteres
+        {
+            get { return Document.Link(Find.ByText("Plus de critères")); }
+        }
+
+        public TextField Champ_Recherche
+        {
+            get { return Document.TextField(Find.ById("Criteria_Place")); }
+        }
+
+        public SelectList Type_Espace
+        {
+            get { return Document.SelectList(Find.ById("Criteria_LocalisationOffer")); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="space"></param>
+        public void Espace(int space)
+        {
+            Type_Espace.Option(Find.ByValue(space.ToString())).Select();
+        }
     }
 }
