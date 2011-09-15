@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.PressListViewModel
+﻿@model List<Press>
            
 @section HeadContent
 {
@@ -29,17 +29,14 @@
     <div class="contentBlock generalTextContent float-right">
         <h3 class="blue" style="margin-bottom:10px; margin-top:20px">Articles :</h3>
         <ul>
-        @if (Model != null)
-        {
-                    foreach (var item in Model.Press)
-                    {
-                        <li style="margin-bottom:10px">                    
-                            <h3 style="margin-bottom:5px">@item.Description - @String.Format("{0:dd/MM/yyyy}", item.Date)
-                            </h3>
-                            <a class="blue" href=@item.Url>@item.Url</a>
-                        </li>
-                    }
-        }
+            @foreach (var item in Model)
+            {
+                <li style="margin-bottom:10px">                    
+                    <h3 style="margin-bottom:5px">@item.Description - @String.Format("{0:dd/MM/yyyy}", item.Date)
+                    </h3>
+                    <a class="blue" href="@item.Url" target="_blank">@item.Url</a>
+                </li>
+            }
         </ul>
     </div>
     <div style="clear:both"></div>

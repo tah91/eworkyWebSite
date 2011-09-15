@@ -191,5 +191,6 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="dbo\Tables\Press.sql" />
   </ItemGroup>
 </Project>

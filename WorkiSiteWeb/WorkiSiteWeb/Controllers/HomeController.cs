@@ -146,8 +146,7 @@ namespace Worki.Web.Controllers
         [ActionName("presse")]
         public virtual ActionResult Press()
         {
-            var pressList = new PressListViewModel();
-            pressList.Press = _PressRepository.GetAll().OrderByDescending(p => p.ID).ToList();
+            var pressList = _PressRepository.GetAll().OrderByDescending(p => p.Date).ToList();
             return View(pressList);
         }
 
