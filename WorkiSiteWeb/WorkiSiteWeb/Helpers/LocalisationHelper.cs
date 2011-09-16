@@ -38,6 +38,12 @@ namespace Worki.Web.Helpers
             {
                 json.fans.Add(item.Member.GetJson());
             }
+
+			//get amenities
+			foreach (var item in localisation.LocalisationFeatures)
+			{
+				json.amenities.Add(Localisation.LocalisationFeatureDict[(int)item.FeatureID]);
+			}
             return json;
 		}
     }
