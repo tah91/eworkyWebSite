@@ -20,6 +20,7 @@ namespace Worki.Data.Models
         public System.DateTime Date { get; set; }
         public string Description { get; set; }
         public string Url { get; set; }
+        public string Title { get; set; }
     
     }
 }

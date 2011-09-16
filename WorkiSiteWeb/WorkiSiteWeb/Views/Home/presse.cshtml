@@ -19,7 +19,7 @@
                 @String.Format(Worki.Resources.Views.Home.HomeString.SpeechForJournalists, EmailService.ContactMail)
             </p>
         </div>
-        <div class="jtDiv">
+@*        <div class="jtDiv">
             <h3 class="blue">@Worki.Resources.Views.Home.PresseString.OnJT</h3>
             <div class="jtDesc float-left">
                 @Worki.Resources.Views.Home.PresseString.VideoDesc
@@ -29,15 +29,15 @@
             </div>
             <div class="clear">
             </div>
-        </div>
+        </div>*@
         <div class="pressArticles">
             <h3 class="blue">@Worki.Resources.Views.Home.PresseString.Articles</h3>
             <ul>
                 @foreach (var item in Model)
                 {
                     <li>                    
-                        <h4 class="bold">@item.Description - @String.Format("{0:dd/MM/yyyy}", item.Date)</h4>
-                        <a href="@item.Url" target="_blank">@item.Url</a>
+                        <h4 class="bold">@item.Title - @String.Format("{0:dd/MM/yyyy}", item.Date)</h4>
+                        <a href="@item.Url" target="_blank">@item.Description</a>
                     </li>
                 }
             </ul>

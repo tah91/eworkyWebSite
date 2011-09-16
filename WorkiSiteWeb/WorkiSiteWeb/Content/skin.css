@@ -1,20 +1,11 @@
 .jcarousel-skin-tango
 {
-    /*height:77%;*/
     background: #f8f8f8 url('images/a_la_une.png') top left no-repeat;
-    -moz-border-radius: 0 10px 10px 10px;
-    -webkit-border-radius: 0 10px 10px 10px;
-    border-radius: 0 10px 10px 10px;
     border: 2px solid #dcdcdc;
 }
 
 .jcarousel-skin-tango .jcarousel-container {
-    /*-moz-border-radius: 0 10px 10px 10px;
-    -webkit-border-radius: 0 10px 10px 10px;
-    border-radius: 0 10px 10px 10px;
-    border: 2px solid #dcdcdc;
-    background-color:#f8f8f8;*/
-    /*height:inherit;*/
+
 }
 
 .jcarousel-skin-tango .jcarousel-direction-rtl {

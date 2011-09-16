@@ -2,29 +2,43 @@
 
 <div class="blogSummary float-left" id="blog_slides">
     <div class="blog_slides_container">
-        <a href="@Url.Action(MVC.Home.Press())" target="_blank">
+        <a href="@Worki.Web.Controllers.HomeController.JTPath" target="_blank">
             <div class="blogItem"> 
-                <span class="bold blue">@Worki.Resources.Views.Home.PresseString.OnJT</span>
+                <div class="blogHead">
+                    <span class="bold blue">@Worki.Resources.Views.Home.PresseString.OnJT</span>
+                </div>            
                 <div class="blogContent">
-                    <img  class="float-left" src="@Links.Content.images.vu_tele_png"  alt="@Worki.Resources.Views.Home.PresseString.OnJT"/>
-                    <p>
+                    <div class="blogImg float-left">
+                        @RazorHelpers.CenterImage(Links.Content.images.vu_tele_png, Worki.Resources.Views.Home.PresseString.OnJT)
+                    </div>
+                    
+                    <div class="blogDesc">
                         @Worki.Resources.Views.Home.PresseString.VideoDesc
-                    </p>
+                    </div>
+                    <div class="clear">
+                    </div>
                 </div>
                 <div class="clear">
                 </div>
-            </div> 
+            </div>
         </a>
     @foreach (var item in Model)
     {
         <a href="@item.Url" target="_blank">
             <div class="blogItem"> 
-                <span class="bold blue">@item.Title</span> (@item.PublicationDate.ToString("dd/MM/yyyy"))
+                <div class="blogHead">
+                    <span class="bold blue">@item.Title</span> (@item.PublicationDate.ToString("dd/MM/yyyy"))
+                </div>            
                 <div class="blogContent">
-                    <img  class="float-left" src="@item.Image"  alt="@item.Title"/>
-                    <p>
+                    <div class="blogImg float-left">
+                        @RazorHelpers.CenterImage(item.Image, item.Title)
+                    </div>
+                    
+                    <div class="blogDesc">
                         @item.Content <span class="italic">... (lire la suite)</span>
-                    </p>
+                    </div>
+                    <div class="clear">
+                    </div>
                 </div>
                 <div class="clear">
                 </div>

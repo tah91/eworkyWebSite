@@ -24,7 +24,14 @@ namespace Worki.Web.Controllers
         IWelcomePeopleRepository _WelcomePeopleRepository;
         IPressRepository _PressRepository;
 
+<<<<<<< HEAD
+        public HomeController(ILocalisationRepository localisationRepository, ILogger logger, IEmailService emailService, IWelcomePeopleRepository welcomePeopleRepository)
+=======
+        public const string LocalisationCount = "locCount";
+        public const string WelcomePeopleList = "welcomePeopleList";
+
         public HomeController(ILocalisationRepository localisationRepository, ILogger logger, IEmailService emailService, IWelcomePeopleRepository welcomePeopleRepository, IPressRepository pressRepository)
+>>>>>>> origin/mikael
         {
             this._LocalisationRepository = localisationRepository;
             this._Logger = logger;
@@ -43,7 +50,6 @@ namespace Worki.Web.Controllers
         }
 
         const string _BlogPath = "http://blog.eworky.com/api/get_recent_posts/";
-        public const string JTPath = "http://vimeo.com/29038745";
         public const string IndexViewModelContent = "IndexViewModel";
 
         IEnumerable<BlogPost> GetBlogPosts()
@@ -147,7 +153,8 @@ namespace Worki.Web.Controllers
         [ActionName("presse")]
         public virtual ActionResult Press()
         {
-            var pressList = _PressRepository.GetAll().OrderByDescending(p => p.Date).ToList();
+            var pressList = new PressListViewModel();
+            pressList.Press = _PressRepository.GetAll().OrderByDescending(p => p.ID).ToList();
             return View(pressList);
         }
 

@@ -44,12 +44,24 @@
                     <tr>
                         <td>
                             <div class="editor-label">
+                                @Worki.Resources.Views.Admin.AdminString.Title
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Title)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
                                 @Worki.Resources.Views.Admin.AdminString.Description
                             </div>
                         </td>
                         <td>
                             <div class="editor-field">
-                                @Html.EditorFor(model => model.Description)
+                                @Html.TextBoxFor(model => model.Description)
                             </div>
                         </td>
                     </tr>
