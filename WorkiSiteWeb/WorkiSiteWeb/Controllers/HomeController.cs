@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Worki.Web.Controllers
 {
@@ -190,13 +191,16 @@ namespace Worki.Web.Controllers
             return View();
         }
 
-        public virtual ActionResult ChangeCulture(Culture lang, string returnUrl)
+        /// <summary>
+        /// It's just setting new culture to session dictionary
+        /// </summary>
+        /// <param name="lang"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        public virtual ActionResult ChangeCulture(string lang, string returnUrl)
         {
-            if (returnUrl.Length >= 3)
-            {
-                returnUrl = returnUrl.Substring(3);
-            }
-            return Redirect("/" + lang.ToString() + returnUrl);
+            Session["Culture"] = new CultureInfo(lang);
+            return Redirect(returnUrl);
         }
 
         //public virtual ActionResult Partners()

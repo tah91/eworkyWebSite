@@ -18,6 +18,10 @@ using Worki.Services;
 using MvcSiteMapProvider.Web;
 using Worki.SiteMap;
 using Worki.Rest.Routing;
+using System.Web;
+using System.Globalization;
+using System.Threading;
+using System;
 
 namespace Worki.Web
 {
@@ -72,6 +76,34 @@ namespace Worki.Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+            //It's important to check whether session object is ready
+            if (HttpContext.Current.Session != null)
+            {
+                CultureInfo ci = (CultureInfo)this.Session["Culture"];
+                //Checking first if there is no value in session
+                //and set default language
+                //this can happen for first user's request
+                if (ci == null)
+                {
+                    //Sets default culture to english invariant
+                    string langName = "fr";
+                    //Try to get values from Accept lang HTTP header
+                    if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
+                    {
+                        //Gets accepted list
+                        langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
+                    }
+                    ci = new CultureInfo(langName);
+                    this.Session["Culture"] = ci;
+                }
+                //Finally setting culture for each request
+                Thread.CurrentThread.CurrentUICulture = ci;
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
+            }
+        }
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -255,13 +287,5 @@ namespace Worki.Web
 				}
 			}
 		}
-        //protected void Application_AcquireRequestState(object sender, EventArgs e)
-        //{
-        //    //Create culture info object 
-        //    CultureInfo ci = new CultureInfo("fr");
-        //    System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
-        //    System.Threading.Thread.CurrentThread.CurrentCulture =
-        //    CultureInfo.CreateSpecificCulture(ci.Name);
-        //}
     }
 }
