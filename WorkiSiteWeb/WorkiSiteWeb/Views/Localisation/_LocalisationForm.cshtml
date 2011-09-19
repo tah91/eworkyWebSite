@@ -82,7 +82,7 @@
                             </td>
                             <td>
                                 <div class="editor-label">
-                                @Html.LabelFor("Postes de travail professionnels", Localisation.GetFeatureDesc(Feature.Workstation, FeatureType.WorkingPlace))
+                                @Html.LabelFor(Worki.Resources.Views.Localisation.LocalisationString.ProWorkPlace, Localisation.GetFeatureDesc(Feature.Workstation, FeatureType.WorkingPlace))
                                 @*@Html.FeatureLabelFor(Feature.Workstation,FeatureType.WorkingPlace) professionnel*@
                                 </div>
                             </td>
@@ -464,7 +464,7 @@
             </ul>
         </div>
         <div class="subserviceContainer float-left">
-            <h4>Equipements</h4>
+            <h4>@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Model.Localisation, Feature.Audio, FeatureType.MeetingRoom)
@@ -680,26 +680,26 @@
                 @Worki.Resources.Views.Localisation.LocalisationFormString.Monday
             </td>
             <td>
-                <div class="editor-field" title="Entrer une heure au format hh:mm, par exemple: 9:30">
+                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
                 @Html.TextBox("Localisation.MonOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonOpen), new { placeholder = "Ex : 9:00" })
                 @*@Html.TextBoxFor(model => model.Localisation.MonOpen)*@
                 @Html.ValidationMessage("MonOpen", "")
                 </div>
             </td>
             <td class="lunchclose">
-                <div class="editor-field" title="Entrer une heure au format hh:mm, par exemple: 19:30">
+                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
                 @Html.TextBox("Localisation.MonClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonClose2), new { placeholder = "Ex : 12:30" })
                 @Html.ValidationMessage("MonClose2", "")
                 </div>
             </td>
             <td class="lunchclose">
-                <div class="editor-field" title="Entrer une heure au format hh:mm, par exemple: 9:30">
+                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
                 @Html.TextBox("Localisation.MonOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonOpen2), new { placeholder = "Ex : 14:00" })
                 @Html.ValidationMessage("MonOpen2", "")
                 </div>
             </td>
             <td>
-                <div class="editor-field" title="Entrer une heure au format hh:mm, par exemple: 19:30">
+                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
                 @Html.TextBox("Localisation.MonClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonClose), new { placeholder = "Ex : 18:00" })
                 @Html.ValidationMessage("MonClose", "")
                 </div>

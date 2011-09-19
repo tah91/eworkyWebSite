@@ -87,7 +87,7 @@ namespace Worki.Web
                 //this can happen for first user's request
                 if (ci == null)
                 {
-                    //Sets default culture to english invariant
+                    //Sets default culture to french invariant
                     string langName = "fr";
                     //Try to get values from Accept lang HTTP header
                     if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)

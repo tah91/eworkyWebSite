@@ -15,7 +15,7 @@
             <span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span>
             @if (displayLoc)
             { 
-                <span> à propos du lieu </span>
+                <span> @Worki.Resources.Views.Localisation.LocalisationString.AboutPlace </span>
                 <span class="boldLink blue">@Html.ActionLink(Model.Localisation.Name, MVC.Localisation.Details(Model.LocalisationID, ControllerHelpers.GetSeoTitle(Model.Localisation.Name)))</span>
             }
         </span>

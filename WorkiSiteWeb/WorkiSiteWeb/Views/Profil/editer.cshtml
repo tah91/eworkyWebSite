@@ -153,7 +153,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.CompanyName, new { placeholder = "Ex : fonction, entreprise, etc." })
+                            @Html.TextBoxFor(m => m.Member.MemberMainData.CompanyName, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourCompanyFunction })
                         </div>
                     </td>
                 </tr>
@@ -216,7 +216,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Facebook, new { placeholder = "Votre page Facebook" })
+                            @Html.TextBoxFor(m => m.Member.MemberMainData.Facebook, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourFacebook })
                         </div>
                     </td>
                 </tr>
@@ -228,7 +228,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Twitter, new { placeholder = "Votre pseudo twitter" })
+                            @Html.TextBoxFor(m => m.Member.MemberMainData.Twitter, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourTwitter })
                         </div>
                     </td>
                 </tr>
@@ -240,7 +240,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Linkedin, new { placeholder = "Votre page LinkedIn" })
+                            @Html.TextBoxFor(m => m.Member.MemberMainData.Linkedin, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourLinkedIn })
                         </div>
                     </td>
                 </tr>
@@ -252,7 +252,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Viadeo, new { placeholder = "Votre page Viadeo" })
+                            @Html.TextBoxFor(m => m.Member.MemberMainData.Viadeo, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourViadeo })
                         </div>
                     </td>
                 </tr>       
@@ -295,7 +295,7 @@
                 $(".dp").datepicker({
                     changeMonth: true,
                     changeYear: true,
-                    yearRange: '1911:2000'
+                    yearRange: '1911:2020'
                 });
             });
         require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {

@@ -47,11 +47,11 @@
 			<g:plusone size="medium" href="@link"></g:plusone>                       
             <a  href="http://twitter.com/share" 
                 class="twitter-share-button"
-                data-text="@("Je vous recommande de découvrir ce lieu de travail : " + Model.Name)" 
+                data-text="@String.Format(Worki.Resources.Views.Localisation.LocalisationString.Recommendation, Model.Name)" 
                 data-count="horizontal" 
                 data-via="eWorky"
                 data-counturl="@link">
-                Tweet</a>
+                @Worki.Resources.Views.Localisation.LocalisationString.Tweet</a>
             <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  
 			<div id="favLink">
 				@Html.Partial(MVC.Shared.Views._AddToFavorite)
@@ -79,7 +79,7 @@
 				var generalFeatures = Model.GetFeaturesOfType(FeatureType.General, new List<Feature> { Feature.AvoidMorning, Feature.AvoidLunch, Feature.AvoidAfternoom, Feature.AvoidEvening, Feature.LocalisationOwner });
             }
             <div class="localisationDescription contentBlock">
-                <h3 class="blue">Description</h3>
+                <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Description</h3>
                 <div class="localisationDesc">
                     @Html.Nl2Br(Model.Description)
                 </div>
@@ -104,7 +104,7 @@
             @if (workingPlaceFeatures.Count > 0)
 			{
             <div class="localisationServices contentBlock">
-                <h3 class="blue">Services</h3>
+                <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Services</h3>
 
                 <div class="featureTag">
                     <ul>
@@ -121,7 +121,7 @@
             @if (Model.HasOffer() && Model.HasOfferExcept(LocalisationOffer.FreeArea))
 			{
             <div class="localisationOffers contentBlock">
-                <h3 class="blue">Offres</h3>
+                <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
                 @{
 				var meetingRoomFeatures = new List<Feature>();
 				var seminarRoomFeatures = new List<Feature>();
@@ -235,36 +235,36 @@
 			{
    
 	   			<div class="contentBlock">
-					<h3 class="blue">Infos Admin</h3>
+					<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
 					@{
 						var lastEdition = Model.GetLastEdition();
 						var creation = Model.GetCreation();
 					}
 					@if (creation != null)
 					{
-						<span class="localisationInformation">Ajouté par : </span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Profil.Detail(creation.Member.MemberId))</span><br />
-						<span class="localisationInformation">le : </span>@String.Format("{0:d/M/yyyy HH:mm:ss}", creation.ModificationDate)<br />
+						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Profil.Detail(creation.Member.MemberId))</span><br />
+						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", creation.ModificationDate)<br />
 					}
 					else
 					{ 
-						<span class="localisationInformation">Ajouté par : </span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
+						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
 					}
 					@if (lastEdition != null)
 					{
-						<span class="localisationInformation">Dernière édition par : </span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Profil.Detail(lastEdition.Member.MemberId))</span><br />
-						<span class="localisationInformation">le : </span>@String.Format("{0:d/M/yyyy HH:mm:ss}", lastEdition.ModificationDate)<br />
+						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Profil.Detail(lastEdition.Member.MemberId))</span><br />
+						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", lastEdition.ModificationDate)<br />
 					}                    
 				</div>
 			}
             <div class="localisationMiscRatings contentBlock">
-                <h3 class="blue">L'avis des eWorkers</h3>
+                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.EworkersOpinion</h3>
                 <table>
                     <tr>
                         <td>
                             @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.General))&nbsp;&nbsp;
                         </td>
                         <td>
-                            <span class="bold">Avis général</span>
+                            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.GeneralOpinion</span>
                         </td>                    
                     </tr>
                     @if (Model.IsFreeLocalisation())
@@ -327,12 +327,12 @@
 						}
 						if (!string.IsNullOrEmpty(Model.PhoneNumber))
 						{
-                            <span class="localisationInformation">Tel : </span>
+                            <span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
                             @Html.GetPhoneFormat(Model.PhoneNumber)<br />
 						}
 						if (!string.IsNullOrEmpty(Model.Fax))
 						{
-                            <span class="localisationInformation">Fax : </span>
+                            <span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
                             @Html.GetPhoneFormat(Model.Fax)<br />
 						}
 					}
@@ -343,7 +343,7 @@
                 </div>
 			}
             <div class="localisationSchedule contentBlock">
-                <h3 class="blue">Horaires</h3>
+                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
                 @if (Model.HasFeature(Feature.Access24, FeatureType.General))
 				{
                     @Html.FeatureLabelFor(Feature.Access24, FeatureType.General)
