@@ -350,4 +350,13 @@ De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa 
   <data name="Description" xml:space="preserve">
     <value>Toutes les réponses aux questions que vous vous posez sur eWorky.</value>
   </data>
+  <data name="ViaFacebook" xml:space="preserve">
+    <value>Via Facebook</value>
+  </data>
+  <data name="ViaTwitter" xml:space="preserve">
+    <value>Via Twitter</value>
+  </data>
+  <data name="ViaViadeo" xml:space="preserve">
+    <value>Via Viadeo</value>
+  </data>
 </root>

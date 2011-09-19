@@ -120,6 +120,9 @@
   <data name="Entrepreneur" xml:space="preserve">
     <value>Entrepreneur</value>
   </data>
+  <data name="Equipments" xml:space="preserve">
+    <value>Equipements</value>
+  </data>
   <data name="Features" xml:space="preserve">
     <value>Caractéristiques</value>
   </data>
@@ -249,6 +252,9 @@ favoris dans l’onglet « Ajout » ainsi qu’en notant et commentant les lieux
   </data>
   <data name="Student" xml:space="preserve">
     <value>Etudiant</value>
+  </data>
+  <data name="TypeOfService" xml:space="preserve">
+    <value>Type de prestation</value>
   </data>
   <data name="Workplace" xml:space="preserve">
     <value>Lieux de travail</value>

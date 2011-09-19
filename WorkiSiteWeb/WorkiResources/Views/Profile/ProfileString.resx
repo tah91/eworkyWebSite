@@ -174,7 +174,22 @@
   <data name="SocialNetwork" xml:space="preserve">
     <value>Réseaux sociaux</value>
   </data>
+  <data name="YourCompanyFunction" xml:space="preserve">
+    <value>Ex : fonction, entreprise, etc.</value>
+  </data>
+  <data name="YourFacebook" xml:space="preserve">
+    <value>Votre page Facebook</value>
+  </data>
+  <data name="YourLinkedIn" xml:space="preserve">
+    <value>Votre page LinkedIn</value>
+  </data>
   <data name="YourProfile" xml:space="preserve">
     <value>Votre profil</value>
+  </data>
+  <data name="YourTwitter" xml:space="preserve">
+    <value>Votre pseudo twitter</value>
+  </data>
+  <data name="YourViadeo" xml:space="preserve">
+    <value>Votre page Viadeo</value>
   </data>
 </root>

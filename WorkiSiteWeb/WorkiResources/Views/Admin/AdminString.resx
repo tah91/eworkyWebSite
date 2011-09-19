@@ -129,6 +129,9 @@
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
+  <data name="AlreadyAdded" xml:space="preserve">
+    <value>&lt;b&gt;Attention : Les lieux de travail suivant n'ont pas été ajoutés car ils existaient déjà dans la base de donnée &lt;br /&gt;&lt;/b&gt; {0}</value>
+  </data>
   <data name="AlreadyRegistered" xml:space="preserve">
     <value>Déjà inscrit</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Adresse électronique</value>
+  </data>
+  <data name="FileGotHeader" xml:space="preserve">
+    <value>Le fichier comporte une ligne d'en-tête</value>
   </data>
   <data name="ID" xml:space="preserve">
     <value>ID</value>

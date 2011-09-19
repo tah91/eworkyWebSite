@@ -247,4 +247,16 @@
   <data name="Description" xml:space="preserve">
     <value>Le meilleur endroit pour travailler. Nomades, indépendants, télétravailleurs, proposez et trouvez le lieu de travail de vos rêves.</value>
   </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="eWorky" xml:space="preserve">
+    <value>2011 eWorky</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
+  <data name="YearsOld" xml:space="preserve">
+    <value>, {0} ans.</value>
+  </data>
 </root>
