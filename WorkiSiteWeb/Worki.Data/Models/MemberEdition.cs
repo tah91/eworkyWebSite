@@ -18,14 +18,14 @@ namespace Worki.Data.Models
     
         public int Id { get; set; }
         public int MemberId { get; set; }
-        public System.DateTime ModificationDate { get; set; }
         public int LocalisationId { get; set; }
+        public System.DateTime ModificationDate { get; set; }
         public int ModificationType { get; set; }
     
         // Navigation properties
     
-        public virtual Member Member { get; set; }
         public virtual Localisation Localisation { get; set; }
+        public virtual Member Member { get; set; }
     
     }
 }

@@ -17,13 +17,13 @@ namespace Worki.Data.Models
         public Member()
         {
             this.Comments = new HashSet<Comment>();
-            this.Localisations = new HashSet<Localisation>();
-            this.MembersInGroups = new HashSet<MembersInGroup>();
             this.FavoriteLocalisations = new HashSet<FavoriteLocalisation>();
-            this.MemberEditions = new HashSet<MemberEdition>();
-            this.WelcomePeoples = new HashSet<WelcomePeople>();
+            this.Localisations = new HashSet<Localisation>();
             this.MemberBookings = new HashSet<MemberBooking>();
+            this.MemberEditions = new HashSet<MemberEdition>();
+            this.MembersInGroups = new HashSet<MembersInGroup>();
             this.Rentals = new HashSet<Rental>();
+            this.WelcomePeoples = new HashSet<WelcomePeople>();
     		OnInitialized();
         }
     
@@ -56,14 +56,14 @@ namespace Worki.Data.Models
         // Navigation properties
     
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Localisation> Localisations { get; set; }
-        public virtual ICollection<MembersInGroup> MembersInGroups { get; set; }
         public virtual ICollection<FavoriteLocalisation> FavoriteLocalisations { get; set; }
+        public virtual ICollection<Localisation> Localisations { get; set; }
+        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
         public virtual MemberMainData MemberMainData { get; set; }
-        public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
-        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
+        public virtual ICollection<MembersInGroup> MembersInGroups { get; set; }
         public virtual ICollection<Rental> Rentals { get; set; }
+        public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
     
     }
 }

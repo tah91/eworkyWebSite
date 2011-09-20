@@ -17,12 +17,12 @@ namespace Worki.Data.Models
         public Localisation()
         {
             this.Comments = new HashSet<Comment>();
+            this.FavoriteLocalisations = new HashSet<FavoriteLocalisation>();
             this.LocalisationFeatures = new HashSet<LocalisationFeature>();
             this.LocalisationFiles = new HashSet<LocalisationFile>();
-            this.FavoriteLocalisations = new HashSet<FavoriteLocalisation>();
+            this.MemberBookings = new HashSet<MemberBooking>();
             this.MemberEditions = new HashSet<MemberEdition>();
             this.WelcomePeoples = new HashSet<WelcomePeople>();
-            this.MemberBookings = new HashSet<MemberBooking>();
     		OnInitialized();
         }
     
@@ -46,6 +46,7 @@ namespace Worki.Data.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public Nullable<int> OwnerID { get; set; }
+        public bool Bookable { get; set; }
         public Nullable<System.DateTime> MonOpen { get; set; }
         public Nullable<System.DateTime> MonClose { get; set; }
         public Nullable<System.DateTime> MonOpen2 { get; set; }
@@ -77,20 +78,19 @@ namespace Worki.Data.Models
         public string PublicTransportation { get; set; }
         public string Station { get; set; }
         public string RoadAccess { get; set; }
-        public bool Bookable { get; set; }
     
         // Navigation properties
     
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<FavoriteLocalisation> FavoriteLocalisations { get; set; }
         public virtual Member Member { get; set; }
         public virtual LocalisationData LocalisationData { get; set; }
         public virtual ICollection<LocalisationFeature> LocalisationFeatures { get; set; }
         public virtual ICollection<LocalisationFile> LocalisationFiles { get; set; }
         public virtual MainLocalisation MainLocalisation { get; set; }
-        public virtual ICollection<FavoriteLocalisation> FavoriteLocalisations { get; set; }
+        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
         public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
-        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
     
     }
 }

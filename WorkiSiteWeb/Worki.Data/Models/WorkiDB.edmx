@@ -20,6 +20,7 @@
           <EntitySet Name="MemberMainData" EntityType="WorkiDBModel.Store.MemberMainData" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MembersInGroup" EntityType="WorkiDBModel.Store.MembersInGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Press" EntityType="WorkiDBModel.Store.Press" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rental" EntityType="WorkiDBModel.Store.Rental" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalAccess" EntityType="WorkiDBModel.Store.RentalAccess" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalFeature" EntityType="WorkiDBModel.Store.RentalFeature" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalFile" EntityType="WorkiDBModel.Store.RentalFile" store:Type="Tables" Schema="dbo" />
@@ -324,6 +325,16 @@
         </EntityType>
         <EntityType Name="Press">
           <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
@@ -378,15 +389,6 @@
           <Property Name="RentalId" Type="int" Nullable="false" />
           <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="IsDefault" Type="bit" Nullable="false" />
-        </EntityType>
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="Visitor">
           <Key>
@@ -720,6 +722,7 @@
       <Schema Namespace="WorkiDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="WorkiDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Comments" EntityType="WorkiDBModel.Comment" />
+          <EntitySet Name="FavoriteLocalisations" EntityType="WorkiDBModel.FavoriteLocalisation" />
           <EntitySet Name="Groups" EntityType="WorkiDBModel.Group" />
           <EntitySet Name="Localisations" EntityType="WorkiDBModel.Localisation" />
           <EntitySet Name="LocalisationDatas" EntityType="WorkiDBModel.LocalisationData" />
@@ -727,8 +730,17 @@
           <EntitySet Name="LocalisationFiles" EntityType="WorkiDBModel.LocalisationFile" />
           <EntitySet Name="MainLocalisations" EntityType="WorkiDBModel.MainLocalisation" />
           <EntitySet Name="Members" EntityType="WorkiDBModel.Member" />
+          <EntitySet Name="MemberBookings" EntityType="WorkiDBModel.MemberBooking" />
+          <EntitySet Name="MemberEditions" EntityType="WorkiDBModel.MemberEdition" />
+          <EntitySet Name="MemberMainDatas" EntityType="WorkiDBModel.MemberMainData" />
           <EntitySet Name="MembersInGroups" EntityType="WorkiDBModel.MembersInGroup" />
+          <EntitySet Name="Presses" EntityType="WorkiDBModel.Press" />
+          <EntitySet Name="Rentals" EntityType="WorkiDBModel.Rental" />
+          <EntitySet Name="RentalAccesses" EntityType="WorkiDBModel.RentalAccess" />
+          <EntitySet Name="RentalFeatures" EntityType="WorkiDBModel.RentalFeature" />
+          <EntitySet Name="RentalFiles" EntityType="WorkiDBModel.RentalFile" />
           <EntitySet Name="Visitors" EntityType="WorkiDBModel.Visitor" />
+          <EntitySet Name="WelcomePeoples" EntityType="WorkiDBModel.WelcomePeople" />
           <AssociationSet Name="FK_Comment_Localisation" Association="WorkiDBModel.FK_Comment_Localisation">
             <End Role="Localisation" EntitySet="Localisations" />
             <End Role="Comment" EntitySet="Comments" />
@@ -736,6 +748,14 @@
           <AssociationSet Name="FK_Comment_Member" Association="WorkiDBModel.FK_Comment_Member">
             <End Role="Member" EntitySet="Members" />
             <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteLocalisation_Localisation" Association="WorkiDBModel.FK_FavoriteLocalisation_Localisation">
+            <End Role="Localisation" EntitySet="Localisations" />
+            <End Role="FavoriteLocalisation" EntitySet="FavoriteLocalisations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteLocalisation_Member" Association="WorkiDBModel.FK_FavoriteLocalisation_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="FavoriteLocalisation" EntitySet="FavoriteLocalisations" />
           </AssociationSet>
           <AssociationSet Name="FK_MembersInGroup_Group" Association="WorkiDBModel.FK_MembersInGroup_Group">
             <End Role="Group" EntitySet="Groups" />
@@ -761,58 +781,41 @@
             <End Role="Localisation" EntitySet="Localisations" />
             <End Role="MainLocalisation" EntitySet="MainLocalisations" />
           </AssociationSet>
-          <AssociationSet Name="FK_MembersInGroup_Member" Association="WorkiDBModel.FK_MembersInGroup_Member">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="MembersInGroup" EntitySet="MembersInGroups" />
-          </AssociationSet>
-          <EntitySet Name="FavoriteLocalisations" EntityType="WorkiDBModel.FavoriteLocalisation" />
-          <AssociationSet Name="FK_FavoriteLocalisation_Localisation" Association="WorkiDBModel.FK_FavoriteLocalisation_Localisation">
+          <AssociationSet Name="FK_MemberBooking_Localisation" Association="WorkiDBModel.FK_MemberBooking_Localisation">
             <End Role="Localisation" EntitySet="Localisations" />
-            <End Role="FavoriteLocalisation" EntitySet="FavoriteLocalisations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FavoriteLocalisation_Member" Association="WorkiDBModel.FK_FavoriteLocalisation_Member">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="FavoriteLocalisation" EntitySet="FavoriteLocalisations" />
-          </AssociationSet>
-          <EntitySet Name="MemberEditions" EntityType="WorkiDBModel.MemberEdition" />
-          <AssociationSet Name="FK_MemberEdition_Member" Association="WorkiDBModel.FK_MemberEdition_Member">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="MemberEdition" EntitySet="MemberEditions" />
-          </AssociationSet>
-          <EntitySet Name="MemberMainDatas" EntityType="WorkiDBModel.MemberMainData" />
-          <AssociationSet Name="FK_MemberMainData_Member" Association="WorkiDBModel.FK_MemberMainData_Member">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="MemberMainData" EntitySet="MemberMainDatas" />
+            <End Role="MemberBooking" EntitySet="MemberBookings" />
           </AssociationSet>
           <AssociationSet Name="FK_MemberEdition_Localisation" Association="WorkiDBModel.FK_MemberEdition_Localisation">
             <End Role="Localisation" EntitySet="Localisations" />
             <End Role="MemberEdition" EntitySet="MemberEditions" />
           </AssociationSet>
-          <EntitySet Name="WelcomePeoples" EntityType="WorkiDBModel.WelcomePeople" />
           <AssociationSet Name="FK_WelcomePeople_Localisation" Association="WorkiDBModel.FK_WelcomePeople_Localisation">
             <End Role="Localisation" EntitySet="Localisations" />
             <End Role="WelcomePeople" EntitySet="WelcomePeoples" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WelcomePeople_Member" Association="WorkiDBModel.FK_WelcomePeople_Member">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="WelcomePeople" EntitySet="WelcomePeoples" />
-          </AssociationSet>
-          <EntitySet Name="MemberBookings" EntityType="WorkiDBModel.MemberBooking" />
-          <AssociationSet Name="FK_MemberBooking_Localisation" Association="WorkiDBModel.FK_MemberBooking_Localisation">
-            <End Role="Localisation" EntitySet="Localisations" />
-            <End Role="MemberBooking" EntitySet="MemberBookings" />
           </AssociationSet>
           <AssociationSet Name="FK_MemberBooking_Member" Association="WorkiDBModel.FK_MemberBooking_Member">
             <End Role="Member" EntitySet="Members" />
             <End Role="MemberBooking" EntitySet="MemberBookings" />
           </AssociationSet>
-          <EntitySet Name="Presses" EntityType="WorkiDBModel.Press" />
-          <EntitySet Name="RentalAccesses" EntityType="WorkiDBModel.RentalAccess" />
-          <EntitySet Name="RentalFeatures" EntityType="WorkiDBModel.RentalFeature" />
-          <EntitySet Name="RentalFiles" EntityType="WorkiDBModel.RentalFile" />
+          <AssociationSet Name="FK_MemberEdition_Member" Association="WorkiDBModel.FK_MemberEdition_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="MemberEdition" EntitySet="MemberEditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberMainData_Member" Association="WorkiDBModel.FK_MemberMainData_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="MemberMainData" EntitySet="MemberMainDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembersInGroup_Member" Association="WorkiDBModel.FK_MembersInGroup_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="MembersInGroup" EntitySet="MembersInGroups" />
+          </AssociationSet>
           <AssociationSet Name="FK_Rental_Member" Association="WorkiDBModel.FK_Rental_Member">
             <End Role="Member" EntitySet="Members" />
             <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WelcomePeople_Member" Association="WorkiDBModel.FK_WelcomePeople_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="WelcomePeople" EntitySet="WelcomePeoples" />
           </AssociationSet>
           <AssociationSet Name="FK_RentalAccess_Rental" Association="WorkiDBModel.FK_RentalAccess_Rental">
             <End Role="Rental" EntitySet="Rentals" />
@@ -826,7 +829,7 @@
             <End Role="Rental" EntitySet="Rentals" />
             <End Role="RentalFile" EntitySet="RentalFiles" />
           </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="ID" />
@@ -844,6 +847,17 @@
           <Property Name="RatingWelcome" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_Comment_Localisation" FromRole="Comment" ToRole="Localisation" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_Comment_Member" FromRole="Comment" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="FavoriteLocalisation">
+          <Key>
+            <PropertyRef Name="RelationId" />
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="RelationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="LocalisationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_FavoriteLocalisation_Localisation" FromRole="FavoriteLocalisation" ToRole="Localisation" />
+          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_FavoriteLocalisation_Member" FromRole="FavoriteLocalisation" ToRole="Member" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -873,6 +887,7 @@
           <Property Name="Latitude" Type="Double" Nullable="false" />
           <Property Name="Longitude" Type="Double" Nullable="false" />
           <Property Name="OwnerID" Type="Int32" />
+          <Property Name="Bookable" Type="Boolean" Nullable="false" />
           <Property Name="MonOpen" Type="DateTime" />
           <Property Name="MonClose" Type="DateTime" />
           <Property Name="MonOpen2" Type="DateTime" />
@@ -905,16 +920,15 @@
           <Property Name="Station" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="RoadAccess" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Comments" Relationship="WorkiDBModel.FK_Comment_Localisation" FromRole="Localisation" ToRole="Comment" />
+          <NavigationProperty Name="FavoriteLocalisations" Relationship="WorkiDBModel.FK_FavoriteLocalisation_Localisation" FromRole="Localisation" ToRole="FavoriteLocalisation" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_Localisation_Member" FromRole="Localisation" ToRole="Member" />
           <NavigationProperty Name="LocalisationData" Relationship="WorkiDBModel.FK_LocalisationData_Localisation" FromRole="Localisation" ToRole="LocalisationData" />
           <NavigationProperty Name="LocalisationFeatures" Relationship="WorkiDBModel.FK_LocalisationFeature_Localisation" FromRole="Localisation" ToRole="LocalisationFeature" />
           <NavigationProperty Name="LocalisationFiles" Relationship="WorkiDBModel.FK_LocalisationFile_Localisation" FromRole="Localisation" ToRole="LocalisationFile" />
           <NavigationProperty Name="MainLocalisation" Relationship="WorkiDBModel.FK_MainLocalisation_Localisation" FromRole="Localisation" ToRole="MainLocalisation" />
-          <NavigationProperty Name="FavoriteLocalisations" Relationship="WorkiDBModel.FK_FavoriteLocalisation_Localisation" FromRole="Localisation" ToRole="FavoriteLocalisation" />
+          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Localisation" FromRole="Localisation" ToRole="MemberBooking" />
           <NavigationProperty Name="MemberEditions" Relationship="WorkiDBModel.FK_MemberEdition_Localisation" FromRole="Localisation" ToRole="MemberEdition" />
           <NavigationProperty Name="WelcomePeoples" Relationship="WorkiDBModel.FK_WelcomePeople_Localisation" FromRole="Localisation" ToRole="WelcomePeople" />
-          <Property Type="Boolean" Name="Bookable" Nullable="false" />
-          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Localisation" FromRole="Localisation" ToRole="MemberBooking" />
         </EntityType>
         <EntityType Name="LocalisationData">
           <Key>
@@ -981,14 +995,73 @@
           <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Comments" Relationship="WorkiDBModel.FK_Comment_Member" FromRole="Member" ToRole="Comment" />
-          <NavigationProperty Name="Localisations" Relationship="WorkiDBModel.FK_Localisation_Member" FromRole="Member" ToRole="Localisation" />
-          <NavigationProperty Name="MembersInGroups" Relationship="WorkiDBModel.FK_MembersInGroup_Member" FromRole="Member" ToRole="MembersInGroup" />
           <NavigationProperty Name="FavoriteLocalisations" Relationship="WorkiDBModel.FK_FavoriteLocalisation_Member" FromRole="Member" ToRole="FavoriteLocalisation" />
+          <NavigationProperty Name="Localisations" Relationship="WorkiDBModel.FK_Localisation_Member" FromRole="Member" ToRole="Localisation" />
+          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="Member" ToRole="MemberBooking" />
           <NavigationProperty Name="MemberEditions" Relationship="WorkiDBModel.FK_MemberEdition_Member" FromRole="Member" ToRole="MemberEdition" />
           <NavigationProperty Name="MemberMainData" Relationship="WorkiDBModel.FK_MemberMainData_Member" FromRole="Member" ToRole="MemberMainData" />
-          <NavigationProperty Name="WelcomePeoples" Relationship="WorkiDBModel.FK_WelcomePeople_Member" FromRole="Member" ToRole="WelcomePeople" />
-          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="Member" ToRole="MemberBooking" />
+          <NavigationProperty Name="MembersInGroups" Relationship="WorkiDBModel.FK_MembersInGroup_Member" FromRole="Member" ToRole="MembersInGroup" />
           <NavigationProperty Name="Rentals" Relationship="WorkiDBModel.FK_Rental_Member" FromRole="Member" ToRole="Rental" />
+          <NavigationProperty Name="WelcomePeoples" Relationship="WorkiDBModel.FK_WelcomePeople_Member" FromRole="Member" ToRole="WelcomePeople" />
+        </EntityType>
+        <EntityType Name="MemberBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="LocalisationId" Type="Int32" Nullable="false" />
+          <Property Name="Offer" Type="Int32" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Handled" Type="Boolean" Nullable="false" />
+          <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_MemberBooking_Localisation" FromRole="MemberBooking" ToRole="Localisation" />
+          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="MemberBooking" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="MemberEdition">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="LocalisationId" Type="Int32" Nullable="false" />
+          <Property Name="ModificationDate" Type="DateTime" Nullable="false" />
+          <Property Name="ModificationType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_MemberEdition_Localisation" FromRole="MemberEdition" ToRole="Localisation" />
+          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberEdition_Member" FromRole="MemberEdition" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="MemberMainData">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="RelationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="Civility" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Avatar" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="WorkCity" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="WorkPostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="WorkCountry" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Profile" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="FavoritePlaces" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Facebook" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Twitter" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Linkedin" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Viadeo" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberMainData_Member" FromRole="MemberMainData" ToRole="Member" />
         </EntityType>
         <EntityType Name="MembersInGroup">
           <Key>
@@ -1000,6 +1073,80 @@
           <NavigationProperty Name="Group" Relationship="WorkiDBModel.FK_MembersInGroup_Group" FromRole="MembersInGroup" ToRole="Group" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MembersInGroup_Member" FromRole="MembersInGroup" ToRole="Member" />
         </EntityType>
+        <EntityType Name="Press">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="Reference" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="AvailableDate" Type="DateTime" />
+          <Property Name="AvailableNow" Type="Boolean" Nullable="false" />
+          <Property Name="LeaseType" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <Property Name="Charges" Type="Int32" Nullable="false" />
+          <Property Name="Surface" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Energy" Type="Int32" Nullable="false" />
+          <Property Name="GreenHouse" Type="Int32" Nullable="false" />
+          <Property Name="HeatingType" Type="Int32" Nullable="false" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_Rental_Member" FromRole="Rental" ToRole="Member" />
+          <NavigationProperty Name="RentalAccesses" Relationship="WorkiDBModel.FK_RentalAccess_Rental" FromRole="Rental" ToRole="RentalAccess" />
+          <NavigationProperty Name="RentalFeatures" Relationship="WorkiDBModel.FK_RentalFeature_Rental" FromRole="Rental" ToRole="RentalFeature" />
+          <NavigationProperty Name="RentalFiles" Relationship="WorkiDBModel.FK_RentalFile_Rental" FromRole="Rental" ToRole="RentalFile" />
+        </EntityType>
+        <EntityType Name="RentalAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RentalId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RentalId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Line" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Station" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Rental" Relationship="WorkiDBModel.FK_RentalAccess_Rental" FromRole="RentalAccess" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="RentalFeature">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RentalId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RentalId" Type="Int32" Nullable="false" />
+          <Property Name="FeatureId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rental" Relationship="WorkiDBModel.FK_RentalFeature_Rental" FromRole="RentalFeature" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="RentalFile">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RentalId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RentalId" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Rental" Relationship="WorkiDBModel.FK_RentalFile_Rental" FromRole="RentalFile" ToRole="Rental" />
+        </EntityType>
         <EntityType Name="Visitor">
           <Key>
             <PropertyRef Name="Id" />
@@ -1007,6 +1154,18 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="IsValid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WelcomePeople">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="LocalisationId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LocalisationPicture" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_WelcomePeople_Localisation" FromRole="WelcomePeople" ToRole="Localisation" />
+          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_WelcomePeople_Member" FromRole="WelcomePeople" ToRole="Member" />
         </EntityType>
         <Association Name="FK_Comment_Localisation">
           <End Role="Localisation" Type="WorkiDBModel.Localisation" Multiplicity="1">
@@ -1031,6 +1190,34 @@
             </Principal>
             <Dependent Role="Comment">
               <PropertyRef Name="PostUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteLocalisation_Localisation">
+          <End Role="Localisation" Type="WorkiDBModel.Localisation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FavoriteLocalisation" Type="WorkiDBModel.FavoriteLocalisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localisation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteLocalisation">
+              <PropertyRef Name="LocalisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteLocalisation_Member">
+          <End Role="Member" Type="WorkiDBModel.Member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FavoriteLocalisation" Type="WorkiDBModel.FavoriteLocalisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="FavoriteLocalisation">
+              <PropertyRef Name="MemberId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1116,6 +1303,90 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MemberBooking_Localisation">
+          <End Role="Localisation" Type="WorkiDBModel.Localisation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberBooking" Type="WorkiDBModel.MemberBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localisation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberBooking">
+              <PropertyRef Name="LocalisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEdition_Localisation">
+          <End Role="Localisation" Type="WorkiDBModel.Localisation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberEdition" Type="WorkiDBModel.MemberEdition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localisation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEdition">
+              <PropertyRef Name="LocalisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WelcomePeople_Localisation">
+          <End Role="Localisation" Type="WorkiDBModel.Localisation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WelcomePeople" Type="WorkiDBModel.WelcomePeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localisation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WelcomePeople">
+              <PropertyRef Name="LocalisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberBooking_Member">
+          <End Role="Member" Type="WorkiDBModel.Member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberBooking" Type="WorkiDBModel.MemberBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MemberBooking">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEdition_Member">
+          <End Role="Member" Type="WorkiDBModel.Member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberEdition" Type="WorkiDBModel.MemberEdition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MemberEdition">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberMainData_Member">
+          <End Role="Member" Type="WorkiDBModel.Member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberMainData" Type="WorkiDBModel.MemberMainData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MemberMainData">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MembersInGroup_Member">
           <End Role="Member" Type="WorkiDBModel.Member" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1130,263 +1401,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="FavoriteLocalisation">
-          <Key>
-            <PropertyRef Name="RelationId" />
-            <PropertyRef Name="MemberId" />
-          </Key>
-          <Property Type="Int32" Name="RelationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
-          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_FavoriteLocalisation_Localisation" FromRole="FavoriteLocalisation" ToRole="Localisation" />
-          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_FavoriteLocalisation_Member" FromRole="FavoriteLocalisation" ToRole="Member" />
-        </EntityType>
-        <Association Name="FK_FavoriteLocalisation_Localisation">
-          <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
-          <End Type="WorkiDBModel.FavoriteLocalisation" Role="FavoriteLocalisation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Localisation">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="FavoriteLocalisation">
-              <PropertyRef Name="LocalisationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FavoriteLocalisation_Member">
-          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
-          <End Type="WorkiDBModel.FavoriteLocalisation" Role="FavoriteLocalisation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Member">
-              <PropertyRef Name="MemberId" />
-            </Principal>
-            <Dependent Role="FavoriteLocalisation">
-              <PropertyRef Name="MemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="MemberEdition">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="DateTime" Name="ModificationDate" Nullable="false" />
-          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberEdition_Member" FromRole="MemberEdition" ToRole="Member" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
-          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_MemberEdition_Localisation" FromRole="MemberEdition" ToRole="Localisation" />
-          <Property Type="Int32" Name="ModificationType" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_MemberEdition_Member">
-          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberEdition" Role="MemberEdition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Member">
-              <PropertyRef Name="MemberId" />
-            </Principal>
-            <Dependent Role="MemberEdition">
-              <PropertyRef Name="MemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="MemberMainData">
-          <Key>
-            <PropertyRef Name="MemberId" />
-          </Key>
-          <Property Type="Int32" Name="RelationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="Civility" Nullable="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Avatar" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CompanyName" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PostalCode" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Country" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WorkCity" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WorkPostalCode" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WorkCountry" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Profile" Nullable="false" />
-          <Property Type="DateTime" Name="BirthDate" />
-          <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FavoritePlaces" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Facebook" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Twitter" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Linkedin" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Viadeo" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberMainData_Member" FromRole="MemberMainData" ToRole="Member" />
-        </EntityType>
-        <Association Name="FK_MemberMainData_Member">
-          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberMainData" Role="MemberMainData" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Member">
-              <PropertyRef Name="MemberId" />
-            </Principal>
-            <Dependent Role="MemberMainData">
-              <PropertyRef Name="MemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MemberEdition_Localisation">
-          <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberEdition" Role="MemberEdition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Localisation">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MemberEdition">
-              <PropertyRef Name="LocalisationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="WelcomePeople">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LocalisationPicture" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_WelcomePeople_Localisation" FromRole="WelcomePeople" ToRole="Localisation" />
-          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_WelcomePeople_Member" FromRole="WelcomePeople" ToRole="Member" />
-        </EntityType>
-        <Association Name="FK_WelcomePeople_Localisation">
-          <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
-          <End Type="WorkiDBModel.WelcomePeople" Role="WelcomePeople" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Localisation">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="WelcomePeople">
-              <PropertyRef Name="LocalisationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WelcomePeople_Member">
-          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
-          <End Type="WorkiDBModel.WelcomePeople" Role="WelcomePeople" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Member">
-              <PropertyRef Name="MemberId" />
-            </Principal>
-            <Dependent Role="WelcomePeople">
-              <PropertyRef Name="MemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="MemberBooking">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
-          <Property Type="Int32" Name="Offer" Nullable="false" />
-          <Property Type="DateTime" Name="FromDate" Nullable="false" />
-          <Property Type="DateTime" Name="ToDate" Nullable="false" />
-          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_MemberBooking_Localisation" FromRole="MemberBooking" ToRole="Localisation" />
-          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="MemberBooking" ToRole="Member" />
-          <Property Type="Boolean" Name="Handled" Nullable="false" />
-          <Property Type="Boolean" Name="Confirmed" Nullable="false" />
-          <Property Type="Int32" Name="Price" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_MemberBooking_Localisation">
-          <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Localisation">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MemberBooking">
-              <PropertyRef Name="LocalisationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MemberBooking_Member">
-          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Member">
-              <PropertyRef Name="MemberId" />
-            </Principal>
-            <Dependent Role="MemberBooking">
-              <PropertyRef Name="MemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Press">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="Date" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Url" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-          <Property Type="String" Name="City" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Country" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Latitude" Nullable="false" />
-          <Property Type="Double" Name="Longitude" Nullable="false" />
-          <Property Type="DateTime" Name="AvailableDate" />
-          <Property Type="Boolean" Name="AvailableNow" Nullable="false" />
-          <Property Type="Int32" Name="LeaseType" Nullable="false" />
-          <Property Type="Int32" Name="Rate" Nullable="false" />
-          <Property Type="Int32" Name="Charges" Nullable="false" />
-          <Property Type="Int32" Name="Surface" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Energy" Nullable="false" />
-          <Property Type="Int32" Name="GreenHouse" Nullable="false" />
-          <Property Type="Int32" Name="HeatingType" Nullable="false" />
-          <Property Type="DateTime" Name="TimeStamp" Nullable="false" />
-          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_Rental_Member" FromRole="Rental" ToRole="Member" />
-          <NavigationProperty Name="RentalAccesses" Relationship="WorkiDBModel.FK_RentalAccess_Rental" FromRole="Rental" ToRole="RentalAccess" />
-          <NavigationProperty Name="RentalFeatures" Relationship="WorkiDBModel.FK_RentalFeature_Rental" FromRole="Rental" ToRole="RentalFeature" />
-          <NavigationProperty Name="RentalFiles" Relationship="WorkiDBModel.FK_RentalFile_Rental" FromRole="Rental" ToRole="RentalFile" />
-          <Property Type="DateTime" Name="CreationDate" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RentalAccess">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="RentalId" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="RentalId" Nullable="false" />
-          <Property Type="Int32" Name="Type" Nullable="false" />
-          <Property Type="String" Name="Line" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Station" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Rental" Relationship="WorkiDBModel.FK_RentalAccess_Rental" FromRole="RentalAccess" ToRole="Rental" />
-        </EntityType>
-        <EntityType Name="RentalFeature">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="RentalId" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="RentalId" Nullable="false" />
-          <Property Type="Int32" Name="FeatureId" Nullable="false" />
-          <NavigationProperty Name="Rental" Relationship="WorkiDBModel.FK_RentalFeature_Rental" FromRole="RentalFeature" ToRole="Rental" />
-        </EntityType>
-        <EntityType Name="RentalFile">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="RentalId" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="RentalId" Nullable="false" />
-          <Property Type="String" Name="FileName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="IsDefault" Nullable="false" />
-          <NavigationProperty Name="Rental" Relationship="WorkiDBModel.FK_RentalFile_Rental" FromRole="RentalFile" ToRole="Rental" />
-        </EntityType>
         <Association Name="FK_Rental_Member">
-          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
-          <End Type="WorkiDBModel.Rental" Role="Rental" Multiplicity="*" />
+          <End Role="Member" Type="WorkiDBModel.Member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="WorkiDBModel.Rental" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Member">
               <PropertyRef Name="MemberId" />
@@ -1396,9 +1415,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WelcomePeople_Member">
+          <End Role="Member" Type="WorkiDBModel.Member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WelcomePeople" Type="WorkiDBModel.WelcomePeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="WelcomePeople">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RentalAccess_Rental">
-          <End Type="WorkiDBModel.Rental" Role="Rental" Multiplicity="1" />
-          <End Type="WorkiDBModel.RentalAccess" Role="RentalAccess" Multiplicity="*" />
+          <End Role="Rental" Type="WorkiDBModel.Rental" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalAccess" Type="WorkiDBModel.RentalAccess" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rental">
               <PropertyRef Name="Id" />
@@ -1409,8 +1444,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RentalFeature_Rental">
-          <End Type="WorkiDBModel.Rental" Role="Rental" Multiplicity="1" />
-          <End Type="WorkiDBModel.RentalFeature" Role="RentalFeature" Multiplicity="*" />
+          <End Role="Rental" Type="WorkiDBModel.Rental" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalFeature" Type="WorkiDBModel.RentalFeature" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rental">
               <PropertyRef Name="Id" />
@@ -1421,8 +1458,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RentalFile_Rental">
-          <End Type="WorkiDBModel.Rental" Role="Rental" Multiplicity="1" />
-          <End Type="WorkiDBModel.RentalFile" Role="RentalFile" Multiplicity="*" />
+          <End Role="Rental" Type="WorkiDBModel.Rental" Multiplicity="1" />
+          <End Role="RentalFile" Type="WorkiDBModel.RentalFile" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rental">
               <PropertyRef Name="Id" />
@@ -1432,7 +1469,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1450,14 +1487,18 @@
             <ScalarProperty Name="RatingDispo" ColumnName="RatingDispo" />
             <ScalarProperty Name="RatingWelcome" ColumnName="RatingWelcome" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FavoriteLocalisations"><EntityTypeMapping TypeName="WorkiDBModel.FavoriteLocalisation"><MappingFragment StoreEntitySet="FavoriteLocalisation">
+            <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+            <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+            <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Groups"><EntityTypeMapping TypeName="WorkiDBModel.Group"><MappingFragment StoreEntitySet="Group">
             <ScalarProperty Name="GroupId" ColumnName="GroupId" />
             <ScalarProperty Name="Title" ColumnName="Title" />
             <ScalarProperty Name="Description" ColumnName="Description" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Localisations"><EntityTypeMapping TypeName="WorkiDBModel.Localisation"><MappingFragment StoreEntitySet="Localisation">
-            <ScalarProperty Name="Bookable" ColumnName="Bookable" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="TypeValue" ColumnName="TypeValue" />
             <ScalarProperty Name="Adress" ColumnName="Adress" />
@@ -1472,6 +1513,7 @@
             <ScalarProperty Name="Latitude" ColumnName="Latitude" />
             <ScalarProperty Name="Longitude" ColumnName="Longitude" />
             <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+            <ScalarProperty Name="Bookable" ColumnName="Bookable" />
             <ScalarProperty Name="MonOpen" ColumnName="MonOpen" />
             <ScalarProperty Name="MonClose" ColumnName="MonClose" />
             <ScalarProperty Name="MonOpen2" ColumnName="MonOpen2" />
@@ -1548,150 +1590,116 @@
             <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
             <ScalarProperty Name="Comment" ColumnName="Comment" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MemberBookings"><EntityTypeMapping TypeName="WorkiDBModel.MemberBooking"><MappingFragment StoreEntitySet="MemberBooking">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+            <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
+            <ScalarProperty Name="Offer" ColumnName="Offer" />
+            <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+            <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+            <ScalarProperty Name="Message" ColumnName="Message" />
+            <ScalarProperty Name="Handled" ColumnName="Handled" />
+            <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MemberEditions"><EntityTypeMapping TypeName="WorkiDBModel.MemberEdition"><MappingFragment StoreEntitySet="MemberEdition">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+            <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
+            <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+            <ScalarProperty Name="ModificationType" ColumnName="ModificationType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MemberMainDatas"><EntityTypeMapping TypeName="WorkiDBModel.MemberMainData"><MappingFragment StoreEntitySet="MemberMainData">
+            <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+            <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+            <ScalarProperty Name="Civility" ColumnName="Civility" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+            <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="WorkCity" ColumnName="WorkCity" />
+            <ScalarProperty Name="WorkPostalCode" ColumnName="WorkPostalCode" />
+            <ScalarProperty Name="WorkCountry" ColumnName="WorkCountry" />
+            <ScalarProperty Name="Profile" ColumnName="Profile" />
+            <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+            <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="FavoritePlaces" ColumnName="FavoritePlaces" />
+            <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+            <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+            <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+            <ScalarProperty Name="Viadeo" ColumnName="Viadeo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="MembersInGroups"><EntityTypeMapping TypeName="WorkiDBModel.MembersInGroup"><MappingFragment StoreEntitySet="MembersInGroup">
             <ScalarProperty Name="RelationId" ColumnName="RelationId" />
             <ScalarProperty Name="MemberId" ColumnName="MemberId" />
             <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Presses"><EntityTypeMapping TypeName="WorkiDBModel.Press"><MappingFragment StoreEntitySet="Press">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Url" ColumnName="Url" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Rentals"><EntityTypeMapping TypeName="WorkiDBModel.Rental"><MappingFragment StoreEntitySet="Rental">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+            <ScalarProperty Name="Reference" ColumnName="Reference" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+            <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+            <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />
+            <ScalarProperty Name="AvailableNow" ColumnName="AvailableNow" />
+            <ScalarProperty Name="LeaseType" ColumnName="LeaseType" />
+            <ScalarProperty Name="Rate" ColumnName="Rate" />
+            <ScalarProperty Name="Charges" ColumnName="Charges" />
+            <ScalarProperty Name="Surface" ColumnName="Surface" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Energy" ColumnName="Energy" />
+            <ScalarProperty Name="GreenHouse" ColumnName="GreenHouse" />
+            <ScalarProperty Name="HeatingType" ColumnName="HeatingType" />
+            <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+            <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="RentalAccesses"><EntityTypeMapping TypeName="WorkiDBModel.RentalAccess"><MappingFragment StoreEntitySet="RentalAccess">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="RentalId" ColumnName="RentalId" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="Line" ColumnName="Line" />
+            <ScalarProperty Name="Station" ColumnName="Station" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="RentalFeatures"><EntityTypeMapping TypeName="WorkiDBModel.RentalFeature"><MappingFragment StoreEntitySet="RentalFeature">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="RentalId" ColumnName="RentalId" />
+            <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="RentalFiles"><EntityTypeMapping TypeName="WorkiDBModel.RentalFile"><MappingFragment StoreEntitySet="RentalFile">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="RentalId" ColumnName="RentalId" />
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Visitors"><EntityTypeMapping TypeName="WorkiDBModel.Visitor"><MappingFragment StoreEntitySet="Visitor">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Email" ColumnName="Email" />
             <ScalarProperty Name="IsValid" ColumnName="IsValid" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="FavoriteLocalisations">
-            <EntityTypeMapping TypeName="WorkiDBModel.FavoriteLocalisation">
-              <MappingFragment StoreEntitySet="FavoriteLocalisation">
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="RelationId" ColumnName="RelationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MemberEditions">
-            <EntityTypeMapping TypeName="WorkiDBModel.MemberEdition">
-              <MappingFragment StoreEntitySet="MemberEdition">
-                <ScalarProperty Name="ModificationType" ColumnName="ModificationType" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
-                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MemberMainDatas">
-            <EntityTypeMapping TypeName="WorkiDBModel.MemberMainData">
-              <MappingFragment StoreEntitySet="MemberMainData">
-                <ScalarProperty Name="Viadeo" ColumnName="Viadeo" />
-                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
-                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
-                <ScalarProperty Name="FavoritePlaces" ColumnName="FavoritePlaces" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Profile" ColumnName="Profile" />
-                <ScalarProperty Name="WorkCountry" ColumnName="WorkCountry" />
-                <ScalarProperty Name="WorkPostalCode" ColumnName="WorkPostalCode" />
-                <ScalarProperty Name="WorkCity" ColumnName="WorkCity" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Civility" ColumnName="Civility" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="RelationId" ColumnName="RelationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WelcomePeoples">
-            <EntityTypeMapping TypeName="WorkiDBModel.WelcomePeople">
-              <MappingFragment StoreEntitySet="WelcomePeople">
-                <ScalarProperty Name="LocalisationPicture" ColumnName="LocalisationPicture" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MemberBookings">
-            <EntityTypeMapping TypeName="WorkiDBModel.MemberBooking">
-              <MappingFragment StoreEntitySet="MemberBooking">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
-                <ScalarProperty Name="Handled" ColumnName="Handled" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="Offer" ColumnName="Offer" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Presses">
-            <EntityTypeMapping TypeName="WorkiDBModel.Press">
-              <MappingFragment StoreEntitySet="Press">
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="LeaseType" ColumnName="LeaseType" />
-                <ScalarProperty Name="AvailableNow" ColumnName="AvailableNow" />
-                <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RentalAccesses">
-            <EntityTypeMapping TypeName="WorkiDBModel.RentalAccess">
-              <MappingFragment StoreEntitySet="RentalAccess">
-                <ScalarProperty Name="Station" ColumnName="Station" />
-                <ScalarProperty Name="Line" ColumnName="Line" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="RentalId" ColumnName="RentalId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RentalFeatures">
-            <EntityTypeMapping TypeName="WorkiDBModel.RentalFeature">
-              <MappingFragment StoreEntitySet="RentalFeature">
-                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
-                <ScalarProperty Name="RentalId" ColumnName="RentalId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RentalFiles">
-            <EntityTypeMapping TypeName="WorkiDBModel.RentalFile">
-              <MappingFragment StoreEntitySet="RentalFile">
-                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="RentalId" ColumnName="RentalId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          </EntityContainerMapping>
+          <EntitySetMapping Name="WelcomePeoples"><EntityTypeMapping TypeName="WorkiDBModel.WelcomePeople"><MappingFragment StoreEntitySet="WelcomePeople">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+            <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="LocalisationPicture" ColumnName="LocalisationPicture" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -1707,159 +1715,186 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="WorkiDB">
-        <EntityTypeShape EntityType="WorkiDBModel.Comment" Width="1.5" PointX="8.25" PointY="13.25" Height="3.3263964843749978" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.Group" Width="1.5" PointX="4.75" PointY="6" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.Localisation" Width="1.5" PointX="3" PointY="9.375" Height="11.018453776041669" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.LocalisationData" Width="1.5" PointX="5.25" PointY="10" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFeature" Width="1.5" PointX="5.25" PointY="12.625" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFile" Width="1.5" PointX="5.25" PointY="15.25" Height="2.1725878906249978" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.MainLocalisation" Width="1.5" PointX="5.25" PointY="18.25" Height="1.595683593749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.Member" Width="1.5" PointX="0.75" PointY="10.125" Height="5.6340136718750031" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorkiDBModel.MembersInGroup" Width="1.5" PointX="1.5" PointY="6" Height="1.9802864583333317" IsExpanded="true" />
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="WorkiDBModel.Comment" Width="1.5" PointX="8.25" PointY="23" Height="3.326396484374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.FavoriteLocalisation" Width="1.5" PointX="8.25" PointY="27.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.Group" Width="1.5" PointX="3.75" PointY="15.125" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.Localisation" Width="1.5" PointX="3" PointY="18.625" Height="11.979960937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.LocalisationData" Width="1.5" PointX="5.25" PointY="19.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFeature" Width="1.5" PointX="5.25" PointY="22.25" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFile" Width="1.5" PointX="5.25" PointY="25" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.MainLocalisation" Width="1.5" PointX="5.25" PointY="28" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.Member" Width="1.5" PointX="0.75" PointY="21.75" Height="6.5955208333333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberBooking" Width="1.5" PointX="8.25" PointY="18" Height="3.326396484374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberEdition" Width="1.5" PointX="11.25" PointY="23.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberMainData" Width="1.5" PointX="3" PointY="34.125" Height="5.4417122395833246" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.MembersInGroup" Width="1.5" PointX="6" PointY="17" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.Press" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.Rental" Width="1.5" PointX="3" PointY="41" Height="6.0186165364583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.RentalAccess" Width="1.5" PointX="5.25" PointY="40.25" Height="2.1725878906250102" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.RentalFeature" Width="1.5" PointX="5.25" PointY="43.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.RentalFile" Width="1.5" PointX="5.25" PointY="45.75" Height="1.9802864583333388" IsExpanded="true" />
         <EntityTypeShape EntityType="WorkiDBModel.Visitor" Width="1.5" PointX="2.75" PointY="0.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkiDBModel.WelcomePeople" Width="1.5" PointX="11.25" PointY="27.5" Height="2.3648893229166674" IsExpanded="true" />
         <AssociationConnector Association="WorkiDBModel.FK_Comment_Localisation" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="14.927643229166666" />
-          <ConnectorPoint PointX="8.25" PointY="14.927643229166666" />
+          <ConnectorPoint PointX="4.5" PointY="24.615143229166666" />
+          <ConnectorPoint PointX="8.25" PointY="24.615143229166666" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Comment_Member" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.479165315477875" PointY="10.125" />
-          <ConnectorPoint PointX="1.479165315477875" PointY="9.125" />
-          <ConnectorPoint PointX="1.7916666666666667" PointY="9.125" />
-          <ConnectorPoint PointX="1.9583333333333333" PointY="9.125" />
-          <ConnectorPoint PointX="7.666666666666667" PointY="9.125" />
-          <ConnectorPoint PointX="7.833333333333333" PointY="9.125" />
-          <ConnectorPoint PointX="7.875" PointY="9.125" />
-          <ConnectorPoint PointX="7.875" PointY="14.057569614583333" />
-          <ConnectorPoint PointX="8.25" PointY="14.057569614583333" />
+          <ConnectorPoint PointX="1.5" PointY="28.345520833333332" />
+          <ConnectorPoint PointX="1.5" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="1.8229186666666666" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="1.9895853333333331" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="2.0260451666666666" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="2.1927118333333335" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="7.875" PointY="30.854960937499996" />
+          <ConnectorPoint PointX="7.875" PointY="25.502021856770831" />
+          <ConnectorPoint PointX="8.25" PointY="25.502021856770831" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_FavoriteLocalisation_Localisation" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="27.78125" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="27.78125" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="27.78125" />
+          <ConnectorPoint PointX="8.25" PointY="27.78125" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_FavoriteLocalisation_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062519999999998" PointY="28.345520833333332" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="31.104960937499996" />
+          <ConnectorPoint PointX="2.0260451666666666" PointY="31.104960937499996" />
+          <ConnectorPoint PointX="2.1927118333333335" PointY="31.104960937499996" />
+          <ConnectorPoint PointX="7.625" PointY="31.104960937499996" />
+          <ConnectorPoint PointX="7.625" PointY="28.724520229166664" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="28.724520229166664" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="28.724520229166664" />
+          <ConnectorPoint PointX="8.25" PointY="28.724520229166664" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MembersInGroup_Group" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.75" PointY="6.8939925130208337" />
-          <ConnectorPoint PointX="3" PointY="6.8939925130208337" />
+          <ConnectorPoint PointX="5.25" PointY="16.018992513020834" />
+          <ConnectorPoint PointX="6.75" PointY="16.018992513020834" />
+          <ConnectorPoint PointX="6.75" PointY="17" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Localisation_Member" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="11.746222303977188" />
-          <ConnectorPoint PointX="2.6666666666666665" PointY="11.746222303977188" />
-          <ConnectorPoint PointX="2.8333333333333335" PointY="11.746222303977188" />
-          <ConnectorPoint PointX="3" PointY="11.746222303977188" />
+          <ConnectorPoint PointX="2.25" PointY="25.047760416666666" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="25.047760416666666" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="25.047760416666666" />
+          <ConnectorPoint PointX="3" PointY="25.047760416666666" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_LocalisationData_Localisation" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.893992513020834" />
-          <ConnectorPoint PointX="5.25" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="4.5" PointY="20.643992513020834" />
+          <ConnectorPoint PointX="5.25" PointY="20.643992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_LocalisationFeature_Localisation" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="13.615143229166666" />
-          <ConnectorPoint PointX="5.25" PointY="13.615143229166666" />
+          <ConnectorPoint PointX="4.5" PointY="23.240143229166666" />
+          <ConnectorPoint PointX="5.25" PointY="23.240143229166666" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_LocalisationFile_Localisation" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="16.336293945312498" />
-          <ConnectorPoint PointX="5.25" PointY="16.336293945312498" />
+          <ConnectorPoint PointX="4.5" PointY="26.086293945312498" />
+          <ConnectorPoint PointX="5.25" PointY="26.086293945312498" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MainLocalisation_Localisation" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="19.047841796874998" />
-          <ConnectorPoint PointX="5.25" PointY="19.047841796874998" />
+          <ConnectorPoint PointX="4.5" PointY="28.797841796874998" />
+          <ConnectorPoint PointX="5.25" PointY="28.797841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Localisation" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="19.365143229166669" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="19.365143229166669" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="19.365143229166669" />
+          <ConnectorPoint PointX="8.25" PointY="19.365143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_MemberEdition_Localisation" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="21.893992513020834" />
+          <ConnectorPoint PointX="12" PointY="21.893992513020834" />
+          <ConnectorPoint PointX="12" PointY="23.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_WelcomePeople_Localisation" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="29.766337890625" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="29.766337890625" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="29.766337890625" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="29.766337890625" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="29.766337890625" />
+          <ConnectorPoint PointX="10.541666666666666" PointY="29.766337890625" />
+          <ConnectorPoint PointX="10.708333333333334" PointY="29.766337890625" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="29.766337890625" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="29.766337890625" />
+          <ConnectorPoint PointX="11.25" PointY="29.766337890625" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="21.75" />
+          <ConnectorPoint PointX="1.5" PointY="18.375" />
+          <ConnectorPoint PointX="5.75" PointY="18.375" />
+          <ConnectorPoint PointX="5.75" PointY="19.230286458333339" />
+          <ConnectorPoint PointX="7.875" PointY="19.230286458333339" />
+          <ConnectorPoint PointX="7.875" PointY="20.377021856770831" />
+          <ConnectorPoint PointX="8.25" PointY="20.377021856770831" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_MemberEdition_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062519999999998" PointY="21.75" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="21.5" />
+          <ConnectorPoint PointX="2.75" PointY="21.5" />
+          <ConnectorPoint PointX="2.75" PointY="30.979960937499996" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="30.979960937499996" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="30.979960937499996" />
+          <ConnectorPoint PointX="10.875" PointY="30.979960937499996" />
+          <ConnectorPoint PointX="10.875" PointY="24.682444661458334" />
+          <ConnectorPoint PointX="11.25" PointY="24.682444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_MemberMainData_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.0937475" PointY="28.345520833333332" />
+          <ConnectorPoint PointX="1.0937475" PointY="36.845856119791662" />
+          <ConnectorPoint PointX="2.0260451666666666" PointY="36.845856119791662" />
+          <ConnectorPoint PointX="2.1927118333333335" PointY="36.845856119791662" />
+          <ConnectorPoint PointX="3" PointY="36.845856119791662" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MembersInGroup_Member" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.875" PointY="10.125" />
-          <ConnectorPoint PointX="1.875" PointY="7.9802864583333317" />
+          <ConnectorPoint PointX="1.0937475" PointY="21.75" />
+          <ConnectorPoint PointX="1.0937475" PointY="17.6875" />
+          <ConnectorPoint PointX="6" PointY="17.6875" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.FavoriteLocalisation" Width="1.5" PointX="8.25" PointY="10" Height="1.9802864583333388" />
-        <AssociationConnector Association="WorkiDBModel.FK_FavoriteLocalisation_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="11.915385742187503" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="11.915385742187503" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="11.915385742187503" />
-          <ConnectorPoint PointX="8.25" PointY="11.915385742187503" />
+        <AssociationConnector Association="WorkiDBModel.FK_Rental_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.1093785" PointY="28.345520833333332" />
+          <ConnectorPoint PointX="2.1093785" PointY="44.009308268229162" />
+          <ConnectorPoint PointX="3" PointY="44.009308268229162" />
         </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_FavoriteLocalisation_Member" >
-          <ConnectorPoint PointX="1.0833306577389374" PointY="10.125" />
-          <ConnectorPoint PointX="1.0833306577389374" PointY="8.875" />
-          <ConnectorPoint PointX="1.7916666666666667" PointY="8.875" />
-          <ConnectorPoint PointX="1.9583333333333333" PointY="8.875" />
-          <ConnectorPoint PointX="7.75" PointY="8.875" />
-          <ConnectorPoint PointX="7.75" PointY="10.92644087109375" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="10.92644087109375" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="10.92644087109375" />
-          <ConnectorPoint PointX="8.25" PointY="10.92644087109375" />
+        <AssociationConnector Association="WorkiDBModel.FK_WelcomePeople_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.703126" PointY="28.345520833333332" />
+          <ConnectorPoint PointX="1.703126" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="1.8229186666666666" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="1.9895853333333331" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="2.0260451666666666" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="2.1927118333333335" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="10.625" PointY="30.729960937499996" />
+          <ConnectorPoint PointX="10.625" PointY="28.601916945312507" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="28.601916945312507" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="28.601916945312507" />
+          <ConnectorPoint PointX="11.25" PointY="28.601916945312507" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.MemberEdition" Width="1.5" PointX="3" PointY="28.25" Height="1.7879850260416674" />
-        <AssociationConnector Association="WorkiDBModel.FK_MemberEdition_Member" >
-          <ConnectorPoint PointX="1.2702115751284062" PointY="16.720520833333335" />
-          <ConnectorPoint PointX="1.2702115751284062" PointY="29.432444661458334" />
-          <ConnectorPoint PointX="3" PointY="29.432444661458334" />
+        <AssociationConnector Association="WorkiDBModel.FK_RentalAccess_Rental" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="41.711293945312505" />
+          <ConnectorPoint PointX="5.25" PointY="41.711293945312505" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.MemberMainData" Width="1.5" PointX="3" PointY="21.375" Height="5.4417122395833388" />
-        <AssociationConnector Association="WorkiDBModel.FK_MemberMainData_Member" >
-          <ConnectorPoint PointX="1.7913582875642031" PointY="16.720520833333335" />
-          <ConnectorPoint PointX="1.7913582875642031" PointY="24.095856119791669" />
-          <ConnectorPoint PointX="3" PointY="24.095856119791669" />
+        <AssociationConnector Association="WorkiDBModel.FK_RentalFeature_Rental" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="44.143992513020834" />
+          <ConnectorPoint PointX="5.25" PointY="44.143992513020834" />
         </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_MemberEdition_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="21.354960937499996" />
-          <ConnectorPoint PointX="4.875" PointY="21.729960937499996" />
-          <ConnectorPoint PointX="4.875" PointY="27.876152846153843" />
-          <ConnectorPoint PointX="4.5" PointY="28.251152846153843" />
+        <AssociationConnector Association="WorkiDBModel.FK_RentalFile_Rental" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="46.384308268229162" />
+          <ConnectorPoint PointX="5.25" PointY="46.384308268229162" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.WelcomePeople" Width="1.5" PointX="8.25" PointY="18" Height="2.3648893229166674" />
-        <AssociationConnector Association="WorkiDBModel.FK_WelcomePeople_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="20.136536458333332" />
-          <ConnectorPoint PointX="8.25" PointY="20.136536458333332" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_WelcomePeople_Member" >
-          <ConnectorPoint PointX="2.25" PointY="13.425155654237594" />
-          <ConnectorPoint PointX="2.6666666666666665" PointY="13.425155654237594" />
-          <ConnectorPoint PointX="2.8333333333333335" PointY="13.425155654237594" />
-          <ConnectorPoint PointX="2.984375" PointY="13.425155654237594" />
-          <ConnectorPoint PointX="2.984375" PointY="21.359375" />
-          <ConnectorPoint PointX="8.234375" PointY="21.359375" />
-          <ConnectorPoint PointX="8.234375" PointY="16.592021484374996" />
-          <ConnectorPoint PointX="9" PointY="16.592021484374996" />
-          <ConnectorPoint PointX="9" PointY="18" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.MemberBooking" Width="1.5" PointX="11.25" PointY="14" Height="2.749492187499996" />
-        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="20.859922630208331" />
-          <ConnectorPoint PointX="8.1510416666666661" PointY="20.859922630208331" />
-          <ConnectorPoint PointX="8.3177083333333339" PointY="20.859922630208331" />
-          <ConnectorPoint PointX="12" PointY="20.859922630208331" />
-          <ConnectorPoint PointX="12" PointY="17.326396484375" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Member" >
-          <ConnectorPoint PointX="2.25" PointY="15.104090243785457" />
-          <ConnectorPoint PointX="2.75" PointY="15.104090243785457" />
-          <ConnectorPoint PointX="2.75" PointY="9.25" />
-          <ConnectorPoint PointX="7.666666666666667" PointY="9.2499999999999982" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="9.25" />
-          <ConnectorPoint PointX="12" PointY="9.25" />
-          <ConnectorPoint PointX="12" PointY="14" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.Rental" Width="1.5" PointX="3" PointY="32.5" Height="5.8263151041666674" />
-        <EntityTypeShape EntityType="WorkiDBModel.RentalAccess" Width="1.5" PointX="5.25" PointY="31.75" Height="2.172587890624996" />
-        <EntityTypeShape EntityType="WorkiDBModel.RentalFeature" Width="1.5" PointX="5.25" PointY="34.625" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="WorkiDBModel.RentalFile" Width="1.5" PointX="5.25" PointY="37.125" Height="1.9802864583333246" />
-        <AssociationConnector Association="WorkiDBModel.FK_Rental_Member" >
-          <ConnectorPoint PointX="0.97885328756420309" PointY="16.720520833333335" />
-          <ConnectorPoint PointX="0.97885328756420309" PointY="35.413157552083334" />
-          <ConnectorPoint PointX="3" PointY="35.413157552083334" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_RentalAccess_Rental" >
-          <ConnectorPoint PointX="4.5" PointY="33.2112939453125" />
-          <ConnectorPoint PointX="5.25" PointY="33.2112939453125" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_RentalFeature_Rental" >
-          <ConnectorPoint PointX="4.5" PointY="35.518992513020834" />
-          <ConnectorPoint PointX="5.25" PointY="35.518992513020834" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_RentalFile_Rental" >
-          <ConnectorPoint PointX="4.5" PointY="37.725657552083334" />
-          <ConnectorPoint PointX="5.25" PointY="37.725657552083334" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.Press" Width="1.5" PointX="5.375" PointY="0.75" Height="1.7879850260416674" />
-        </Diagram>
+      </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

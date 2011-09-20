@@ -20,6 +20,7 @@ namespace Worki.Data.Models
         }
     
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<FavoriteLocalisation> FavoriteLocalisations { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Localisation> Localisations { get; set; }
         public DbSet<LocalisationData> LocalisationDatas { get; set; }
@@ -27,17 +28,16 @@ namespace Worki.Data.Models
         public DbSet<LocalisationFile> LocalisationFiles { get; set; }
         public DbSet<MainLocalisation> MainLocalisations { get; set; }
         public DbSet<Member> Members { get; set; }
-        public DbSet<MembersInGroup> MembersInGroups { get; set; }
-        public DbSet<Visitor> Visitors { get; set; }
-        public DbSet<FavoriteLocalisation> FavoriteLocalisations { get; set; }
+        public DbSet<MemberBooking> MemberBookings { get; set; }
         public DbSet<MemberEdition> MemberEditions { get; set; }
         public DbSet<MemberMainData> MemberMainDatas { get; set; }
-        public DbSet<WelcomePeople> WelcomePeoples { get; set; }
-        public DbSet<MemberBooking> MemberBookings { get; set; }
+        public DbSet<MembersInGroup> MembersInGroups { get; set; }
         public DbSet<Press> Presses { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<RentalAccess> RentalAccesses { get; set; }
         public DbSet<RentalFeature> RentalFeatures { get; set; }
         public DbSet<RentalFile> RentalFiles { get; set; }
+        public DbSet<Visitor> Visitors { get; set; }
+        public DbSet<WelcomePeople> WelcomePeoples { get; set; }
     }
 }

@@ -75,11 +75,11 @@ namespace Worki.Data.Models
         public List<PictureData> Files { get; set; }
     }
 
-    public class ImageJson
+    public class ImageJson2
     {
         const string DeleteType = "POST";
 
-        public ImageJson()
+        public ImageJson2()
         {
             delete_type = DeleteType;
         }

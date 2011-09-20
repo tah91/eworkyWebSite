@@ -885,6 +885,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult DeletePress() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.DeletePress);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult IndexRental() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AdminController Actions { get { return MVC.Admin; } }
@@ -918,6 +923,7 @@ namespace Worki.Web.Controllers {
             public readonly string CreatePress = "CreatePress";
             public readonly string EditPress = "EditPress";
             public readonly string DeletePress = "supprimer-press";
+            public readonly string IndexRental = "IndexRental";
         }
 
 
@@ -940,6 +946,7 @@ namespace Worki.Web.Controllers {
             public readonly string IndexBooking = "~/Views/Admin/IndexBooking.cshtml";
             public readonly string IndexImport = "~/Views/Admin/IndexImport.cshtml";
             public readonly string IndexPress = "~/Views/Admin/IndexPress.cshtml";
+            public readonly string IndexRental = "~/Views/Admin/IndexRental.cshtml";
             public readonly string IndexUser = "~/Views/Admin/IndexUser.cshtml";
             public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";
             public readonly string IndexWelcomePeople = "~/Views/Admin/IndexWelcomePeople.cshtml";
@@ -1124,6 +1131,12 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult DeletePress(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeletePress);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult IndexRental(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
@@ -1749,6 +1762,7 @@ namespace Worki.Web.Controllers {
             public readonly string Edit = "editer";
             public readonly string Delete = "supprimer";
             public readonly string AddRentalAccess = "AddRentalAccess";
+            public readonly string RentalSearch = "RentalSearch";
         }
 
 
@@ -1810,6 +1824,11 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.PartialViewResult AddRentalAccess() {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddRentalAccess);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult RentalSearch() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RentalSearch);
             return callInfo;
         }
 
