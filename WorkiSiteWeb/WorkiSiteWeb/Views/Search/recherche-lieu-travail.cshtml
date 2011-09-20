@@ -17,7 +17,7 @@
         <div class="searchFormDiv">
             @{
                 var titleName = "";
-                switch (Model.DirectAccessType)
+                switch (Model.Criteria.DirectAccessType)
                 {
                     case eDirectAccessType.eStudent:
 						titleName = Worki.Resources.Models.Profile.Profile.Student;
@@ -58,10 +58,12 @@
                     <p>
                         @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
                         @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+                        @Html.HiddenFor(m=>m.Criteria.SearchType)
+                        @Html.HiddenFor(m=>m.Criteria.DirectAccessType)
                     </p>
                 </div>
 
-                   if (Model.SearchType == eSearchType.ePerOffer)
+                   if (Model.Criteria.SearchType == eSearchType.ePerOffer)
                    {
                 <div class="searchBottom searchCriterias">
                     <div class="localisationTypes searchOptions float-left">
@@ -88,7 +90,7 @@
                     </div>                
                 </div>
                    }
-                   if (Model.SearchType == eSearchType.ePerType)
+                   if (Model.Criteria.SearchType == eSearchType.ePerType)
                    {
                 <div class="searchBottom searchCriterias" style="margin-bottom:10px;">
                     <div class="localisationTypes searchOptions float-left">
@@ -152,7 +154,7 @@
                    } 
                 <div>
                     <div class="changeSeachType float-left">                        
-                    @if (Model.SearchType == eSearchType.ePerOffer)
+                    @if (Model.Criteria.SearchType == eSearchType.ePerOffer)
                     {
                         @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Search.FullSearchPerType())
                     }
@@ -175,7 +177,7 @@
 
 <div class="adRow">
     @Html.Partial(MVC.Shared.Views._DirectAccess)
-    @switch (Model.DirectAccessType)
+    @switch (Model.Criteria.DirectAccessType)
     {
         case eDirectAccessType.eStudent:
             Html.RenderPartial(MVC.Search.Views._DescStudent);

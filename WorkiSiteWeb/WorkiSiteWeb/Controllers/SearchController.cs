@@ -75,7 +75,7 @@ namespace Worki.Web.Controllers
         public virtual ActionResult FullSearch()
         {
             var criteria = new SearchCriteria(true);
-            return View(new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerOffer));
+            return View(new SearchCriteriaFormViewModel(criteria, false));
         }
 
         /// <summary>
@@ -88,15 +88,15 @@ namespace Worki.Web.Controllers
         public virtual ActionResult FullSearchOffer(int offertID)// Pré selection of the list box of recherche
         {
             var criteria = new SearchCriteria { LocalisationOffer = offertID };
-            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerOffer));
+            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false));
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         [ActionName("recherche-lieu-travail-par-type")]
         public virtual ActionResult FullSearchPerType()
         {
-            var criteria = new SearchCriteria();
-            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerType));
+            var criteria = new SearchCriteria { SearchType = eSearchType.ePerType };
+            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false));
         }
 
         /// <summary>
@@ -133,7 +133,9 @@ namespace Worki.Web.Controllers
                     break;
             }
             criteria.Everything = false;
-            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false, eSearchType.ePerType, directAccessType));
+            criteria.SearchType = eSearchType.ePerType;
+            criteria.DirectAccessType = directAccessType;
+            return View(MVC.Search.Views.recherche_lieu_travail, new SearchCriteriaFormViewModel(criteria, false));
         }        
 
         /// <summary>

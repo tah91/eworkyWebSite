@@ -28,6 +28,8 @@ namespace Worki.Data.Models
 			LocalisationOffer = -1;
 			if (wifi)
 				LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
+            SearchType = eSearchType.ePerOffer;
+            DirectAccessType = eDirectAccessType.eNone;
 		}
 
         #endregion
@@ -78,6 +80,9 @@ namespace Worki.Data.Models
         [Display(Name = "PrivateArea", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool PrivateArea { get; set; }
 
+        public eSearchType SearchType { get; set; }
+        public eDirectAccessType DirectAccessType { get; set; }
+
         #endregion
     }
 
@@ -104,8 +109,6 @@ namespace Worki.Data.Models
 
         public SearchCriteria Criteria { get; private set; }
         public SelectList Offers { get; private set; }
-        public eSearchType SearchType { get; private set; }
-        public eDirectAccessType DirectAccessType { get;private set; }
         public Dictionary<int, double> DistanceFromLocalisation { get; private set; }
         public IList<Localisation> Results { get; set; }
         public PagingInfo PagingInfo { get; set; }
@@ -131,16 +134,12 @@ namespace Worki.Data.Models
             Criteria = new SearchCriteria();
             var offers = allOffers ? Localisation.LocalisationOfferTypes : Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.AllOffers });
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
-            SearchType = eSearchType.ePerOffer;
-            DirectAccessType = eDirectAccessType.eNone;
         }
 
-        public SearchCriteriaFormViewModel(SearchCriteria criteria, bool allOffers = false, eSearchType searchType = eSearchType.ePerOffer, eDirectAccessType directAccessType = eDirectAccessType.eNone)
+        public SearchCriteriaFormViewModel(SearchCriteria criteria, bool allOffers = false)
         {
             Init(allOffers);
             Criteria = criteria;
-            SearchType = searchType;
-            DirectAccessType = directAccessType;
         }
 
         public SearchCriteriaFormViewModel()
