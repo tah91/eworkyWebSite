@@ -121,8 +121,11 @@ namespace Worki.Data.Models
                 //matching address
                 var critLat = (float)criteria.LocalisationData.Latitude;
                 var critLng = (float)criteria.LocalisationData.Longitude;
-                if (!string.IsNullOrEmpty(criteria.Place))
-					localisations = (from loc in localisations where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude) < BoundDistance select loc);// as DbSet<Localisation>;
+				if (critLat != 0 && critLng != 0)
+					localisations = from loc
+										 in localisations
+									where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude) < BoundDistance
+									select loc;// as DbSet<Localisation>;
 
                 //matching type
                 if (!criteria.Everything)

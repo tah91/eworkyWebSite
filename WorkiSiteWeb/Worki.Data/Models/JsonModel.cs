@@ -14,6 +14,7 @@ namespace Worki.Data.Models
         {
             comments = new List<CommentJson>();
             fans = new List<MemberJson>();
+			amenities = new List<string>();
         }
 
 		public int id { get; set; }
@@ -27,6 +28,7 @@ namespace Worki.Data.Models
 		public string type { get; set; }
 		public string url { get; set; }
         public double rating { get; set; }
+		public List<string> amenities { get; set; }
 		public List<CommentJson> comments { get; set; }
         public List<MemberJson> fans { get; set; }
 	}
