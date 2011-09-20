@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Rental] (
+    [Id]            INT            IDENTITY (1, 1) NOT NULL,
+    [MemberId]      INT            NOT NULL,
+    [Reference]     NVARCHAR (256) CONSTRAINT [DF_Rental_Reference] DEFAULT ('') NULL,
+    [Type]          INT            CONSTRAINT [DF_Rental_Type] DEFAULT ((0)) NOT NULL,
+    [Address]       NVARCHAR (256) NOT NULL,
+    [PostalCode]    NVARCHAR (10)  NOT NULL,
+    [City]          NVARCHAR (256) NOT NULL,
+    [Country]       NVARCHAR (256) NOT NULL,
+    [Latitude]      FLOAT (53)     NOT NULL,
+    [Longitude]     FLOAT (53)     NOT NULL,
+    [AvailableDate] DATETIME       NULL,
+    [AvailableNow]  BIT            CONSTRAINT [DF_Rental_AvailableNow] DEFAULT ((0)) NOT NULL,
+    [LeaseType]     INT            CONSTRAINT [DF_Rental_LeaseType] DEFAULT ((0)) NOT NULL,
+    [Rate]          INT            CONSTRAINT [DF_Rental_Rate] DEFAULT ((0)) NOT NULL,
+    [Charges]       INT            CONSTRAINT [DF_Rental_Charges] DEFAULT ((0)) NOT NULL,
+    [Surface]       INT            NOT NULL,
+    [Description]   NVARCHAR (MAX) NOT NULL,
+    [Energy]        INT            CONSTRAINT [DF_Rental_Energy] DEFAULT ((0)) NOT NULL,
+    [GreenHouse]    INT            CONSTRAINT [DF_Rental_GreenHouse] DEFAULT ((0)) NOT NULL,
+    [HeatingType]   INT            CONSTRAINT [DF_Rental_HeatingType] DEFAULT ((0)) NOT NULL,
+    [TimeStamp]     DATETIME       NOT NULL,
+    [CreationDate]  DATETIME       NOT NULL,
+    CONSTRAINT [PK_Rental] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Rental_Member] FOREIGN KEY ([MemberId]) REFERENCES [dbo].[Member] ([MemberId]) ON DELETE CASCADE ON UPDATE NO ACTION
+);
+
