@@ -9,23 +9,42 @@ using System.Linq;
 namespace Worki.Web.Helpers
 {
     public static class ModelHelper
-    {
-		public static LocalisationJson GetJson(this Localisation loc)
+	{
+		public static LocalisationJson GetJson(this Localisation localisation, Controller controller)
 		{
-			var image = loc.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
-            var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName, true);
-			return new LocalisationJson
+			//get data from model
+			var json = localisation.GetJson();
+
+			//get url
+			var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
+			json.url = urlHelper.Action(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = json.id, name = ControllerHelpers.GetSeoTitle(json.name), area = "" }, "http");
+
+			//get image
+			var image = localisation.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
+			var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName, true);
+			if (!string.IsNullOrEmpty(imageUrl) && VirtualPathUtility.IsAppRelative(imageUrl))
+				json.image = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
+			else
+				json.image = imageUrl;
+
+			//get comments
+			foreach (var item in localisation.Comments)
 			{
-				ID = loc.ID,
-				Latitude = loc.Latitude,
-				Longitude = loc.Longitude,
-				Name = loc.Name,
-				Description = loc.Description,
-				MainPic = imageUrl,
-				Address = loc.Adress,
-				City = loc.City,
-				TypeString = Localisation.LocalisationTypes[loc.TypeValue]
-			};
+				json.comments.Add(item.GetJson());
+			}
+
+			//get fans
+			foreach (var item in localisation.FavoriteLocalisations)
+			{
+				json.fans.Add(item.Member.GetJson());
+			}
+
+			//get amenities
+			foreach (var item in localisation.LocalisationFeatures)
+			{
+				json.amenities.Add(Localisation.LocalisationFeatureDict[(int)item.FeatureID]);
+			}
+			return json;
 		}
 
         public static MetaData GetMetaData(this IPictureDataProvider provider)
