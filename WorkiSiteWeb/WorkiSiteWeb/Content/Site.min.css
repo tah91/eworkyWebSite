@@ -69,7 +69,7 @@ h5,h6{font-size:1em}
 .nouveau_register{width:200px}
 .connect{text-align:right}
 .createAccount{margin-top:10px}
-.footer{background-image:url('images/footer.jpg');background-repeat:repeat-x;height:275px;width:100%;position:relative;float:left;margin-top:10px;padding-top:100px;font-family:Verdana,Geneva,sans-serif;font-size:12px;line-height:20px}
+.footer{background-image:url('images/footer.jpg');background-repeat:repeat-x;height:275px;width:100%;position:relative;float:left;margin-top:40px;font-family:Verdana,Geneva,sans-serif;font-size:12px;line-height:20px}
 .footer a{font-family:Verdana,Geneva,sans-serif;font-size:12px;line-height:20px;text-decoration:none;color:#999;font-style:normal}
 .footer a:hover{color:White}
 .footer h1{color:#f6f6f6;font-weight:bold}

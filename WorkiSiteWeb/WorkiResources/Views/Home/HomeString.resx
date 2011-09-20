@@ -130,7 +130,7 @@
     <value>eWorky, avec ses jeux et ses lieux de travail insolites, est décidément le meilleur endroit pour travailler !</value>
   </data>
   <data name="BestWorkspace" xml:space="preserve">
-    <value>Le meilleur endroit pour travailler</value>
+    <value>Recherche de bureaux</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -245,7 +245,7 @@
     <value>Blog</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Le meilleur endroit pour travailler. Nomades, indépendants, télétravailleurs, proposez et trouvez le lieu de travail de vos rêves.</value>
+    <value>Trouvez un lieu de travail où vous voulez : bureaux à louer, centre d'affaires, espaces de coworking, café wifi, salle de réunion ou de conférence.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>

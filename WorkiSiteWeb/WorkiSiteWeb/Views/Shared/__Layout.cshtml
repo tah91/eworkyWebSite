@@ -9,7 +9,6 @@
     @RenderSection("HeadContent", true)
 	<link href="@Url.VersionedContent(Links.Content.Site_min_css)" rel="stylesheet" type="text/css" />
 	<link rel="icon" type="image/png" href="@Links.Content.images.favicon_png" />
-    @*<script src="@Url.VersionedContent(Links.Scripts.head_js)" type="text/javascript"></script>*@
     <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
     <script type="text/javascript">
 
@@ -32,7 +31,7 @@
 			<div class="logo linkImg float-left cufonIt darkblue">@Html.ActionLink(" ", MVC.Home.Index())</div>
 			<div  class="logindisplay sizeHeaderConnexion borderRadiusBottom">
 				@Html.Partial(MVC.Shared.Views._LogOnUserControl)
-				@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
+				@*@Html.Partial(MVC.Shared.Views._CultureSwitchControl)*@
 			</div>
 			<div class="clear">
 			</div>
@@ -46,17 +45,6 @@
 		</div>
 
 		<div id="main" class="clearfix">
-@*			<script src="@MiscHelpers.jquery" type="text/javascript"></script>
-			<script src="@Url.VersionedContent(Links.Scripts.MicrosoftAjax_js)" type="text/javascript"></script>
-			<script src="@Url.VersionedContent(Links.Scripts.MicrosoftMvcAjax_js)" type="text/javascript"></script>*@
-@*			<script src="@Url.VersionedContent(Links.Scripts.MicrosoftMvcValidation_js)" type="text/javascript"></script>
-            <script src="@Url.VersionedContent(Links.Scripts.jquery_validate_js)" type="text/javascript"></script>
-            <script src="@Url.VersionedContent(Links.Scripts.jquery_validate_unobtrusive_js)" type="text/javascript"></script>
-            <script src="@Url.VersionedContent(Links.Scripts.MicrosoftMvcValidation_debug_js)" type="text/javascript"></script>*@
-
-			@*@{
-                Html.EnableClientValidation(true);
-			}*@
 			@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain)
 			@*@Html.MvcSiteMap().SiteMapPath()*@
             @RenderBody()

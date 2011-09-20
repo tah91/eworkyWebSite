@@ -97,7 +97,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le meilleur endroit pour travailler.
+        ///   Looks up a localized string similar to Recherche de bureaux.
         /// </summary>
         public static string BestWorkspace {
             get {
@@ -151,7 +151,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le meilleur endroit pour travailler. Nomades, indépendants, télétravailleurs, proposez et trouvez le lieu de travail de vos rêves..
+        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : bureaux à louer, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
         /// </summary>
         public static string Description {
             get {

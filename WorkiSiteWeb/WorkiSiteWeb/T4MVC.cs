@@ -1407,7 +1407,7 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangeCulture(Worki.Infrastructure.Culture lang, string returnUrl) {
+        public override System.Web.Mvc.ActionResult ChangeCulture(string lang, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangeCulture);
             callInfo.RouteValueDictionary.Add("lang", lang);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
