@@ -22,14 +22,14 @@
             <div style="color:Red;">
                 @if (Model.localisationsAlreadyInDB != null && Model.localisationsAlreadyInDB.ToString() != "")
                 { 
-                    @Html.Raw("<b>Attention : Les lieux de travail suivant n'ont pas été ajoutés car ils existaient déjà dans la base de donnée <br /></b>" + Model.localisationsAlreadyInDB)
+                    @Html.Raw(String.Format(Worki.Resources.Views.Admin.AdminString.AlreadyAdded, Model.localisationsAlreadyInDB))
                 }
             </div>
             <div>
                 <input type="file" id="importCsv" name="importCsv"/>
             </div>
             <div>
-                <input type="checkbox" id="importCsvHeader" name="importCsvHeader" /> Le fichier comporte une ligne d'en-tête
+                <input type="checkbox" id="importCsvHeader" name="importCsvHeader" /> @Worki.Resources.Views.Admin.AdminString.FileGotHeader
             </div>
             <div>
                 @Html.SubmitButton("Import", Worki.Resources.Views.Admin.AdminString.Update)

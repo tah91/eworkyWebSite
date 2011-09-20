@@ -32,7 +32,7 @@
 			<div class="logo linkImg float-left cufonIt darkblue">@Html.ActionLink(" ", MVC.Home.Index())</div>
 			<div  class="logindisplay sizeHeaderConnexion borderRadiusBottom">
 				@Html.Partial(MVC.Shared.Views._LogOnUserControl)
-				@*@Html.Partial(MVC.Shared.Views.CultureSwitchControl)*@
+				@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
 			</div>
 			<div class="clear">
 			</div>
@@ -120,7 +120,7 @@
 		</div>
 		<div class="title2">
 			<div class="widthAuto float-left">
-			Copyright &copy; 2011 eWorky
+			@Worki.Resources.Views.Home.HomeString.Copyright &copy; @Worki.Resources.Views.Home.HomeString.eWorky
 			</div>
 		</div>
 	</div>

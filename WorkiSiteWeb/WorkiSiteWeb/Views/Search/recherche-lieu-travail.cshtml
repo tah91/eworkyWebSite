@@ -67,14 +67,14 @@
                    {
                 <div class="searchBottom searchCriterias">
                     <div class="localisationTypes searchOptions float-left">
-                        <p class="green">Type de prestation</p>
+                        <p class="green">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
                         <div class="editor-field">
                             @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
                             @Html.ValidationMessage("LocalisationOffer", "")
                         </div>
                     </div>
                     <div class="searchOptions float-left" style="padding-left:20px;">
-                        <p class="green">Equipements</p>
+                        <p class="green">@Worki.Resources.Views.Search.SearchString.Equipments</p>
                         @Html.Partial(MVC.Search.Views._ServicesSelector)
                     </div>
                     <div class="clear">

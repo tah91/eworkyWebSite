@@ -203,4 +203,28 @@
   <data name="Press" xml:space="preserve">
     <value>Presse</value>
   </data>
+  <data name="DirectAccess" xml:space="preserve">
+    <value>Accès direct</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="Principal" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="InfoAdmin" xml:space="preserve">
+    <value>Infos Admin</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Offres</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
 </root>

@@ -198,4 +198,43 @@
   <data name="NeedToBookPlace" xml:space="preserve">
     <value>Ce lieu vous intéresse ?</value>
   </data>
+  <data name="AboutPlace" xml:space="preserve">
+    <value>à propos du lieu</value>
+  </data>
+  <data name="AddBy" xml:space="preserve">
+    <value>Ajouté par : </value>
+  </data>
+  <data name="EworkersOpinion" xml:space="preserve">
+    <value>L'avis des eWorkers</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax : </value>
+  </data>
+  <data name="GeneralOpinion" xml:space="preserve">
+    <value>Avis général</value>
+  </data>
+  <data name="LastEditBy" xml:space="preserve">
+    <value>Dernière édition par : </value>
+  </data>
+  <data name="Recommendation" xml:space="preserve">
+    <value>Je vous recommande de découvrir ce lieu de travail : {0}</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Horaires</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel : </value>
+  </data>
+  <data name="TheDate" xml:space="preserve">
+    <value>le : </value>
+  </data>
+  <data name="Tweet" xml:space="preserve">
+    <value>Tweet</value>
+  </data>
+  <data name="Equipments" xml:space="preserve">
+    <value>Equipements</value>
+  </data>
+  <data name="ProWorkPlace" xml:space="preserve">
+    <value>Postes de travail professionnels</value>
+  </data>
 </root>
