@@ -199,6 +199,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\UploadImageController.cs" />
+    <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,11 +211,12 @@
     </Compile>
     <Compile Include="Helpers\Capatchahelper.cs" />
     <Compile Include="Helpers\ControllerHelpers.cs" />
-    <Compile Include="Helpers\LocalisationHelper.cs" />
+    <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
     <Compile Include="Membership\MembershipService.cs" />
+    <Compile Include="ModelBinder\RentalBinder.cs" />
     <Compile Include="ModelBinder\LocalisationBinder.cs" />
     <Compile Include="Membership\IFormAuthentication.cs" />
     <Compile Include="Membership\IMembershipService.cs" />
@@ -243,10 +246,15 @@
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
     <Content Include="Content\images\blog.png" />
+    <Content Include="Content\RentalDetail.css" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\Press.css" />
     <Content Include="Content\CreateLocalisation.min.css">
       <DependentUpon>CreateLocalisation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\CreateRental.css" />
+    <Content Include="Content\CreateRental.min.css">
+      <DependentUpon>CreateRental.css</DependentUpon>
     </Content>
     <Content Include="Content\galleria\galleria-1.2.4.min.js">
       <DependentUpon>galleria-1.2.4.js</DependentUpon>
@@ -297,6 +305,9 @@
     </Content>
     <Content Include="Content\rateit.min.css">
       <DependentUpon>rateit.css</DependentUpon>
+    </Content>
+    <Content Include="Content\RentalDetail.min.css">
+      <DependentUpon>RentalDetail.css</DependentUpon>
     </Content>
     <Content Include="Content\Search.min.css">
       <DependentUpon>Search.css</DependentUpon>
@@ -560,7 +571,7 @@
     <Content Include="Views\Home\_HomeDesc.cshtml" />
     <Content Include="Views\Shared\_CufonScript.cshtml" />
     <Content Include="Views\Shared\_IndexGalleryScript.cshtml" />
-    <Content Include="Views\Shared\_OpenGraphHead.cshtml" />
+    <Content Include="Views\Shared\_MetaDataHeader.cshtml" />
     <Content Include="Views\Shared\_DirectAccess.cshtml" />
     <Content Include="Views\Shared\_PictureContainer.cshtml" />
     <Content Include="Views\Home\contact.cshtml" />
@@ -643,6 +654,12 @@
     <Content Include="Views\Admin\article-inexistant.cshtml" />
     <Content Include="Views\Admin\EditPress.cshtml" />
     <Content Include="Views\Admin\DetailPress.cshtml" />
+    <Content Include="Views\Rental\details.cshtml" />
+    <Content Include="Views\Rental\editer.cshtml" />
+    <Content Include="Views\Rental\supprimer.cshtml" />
+    <Content Include="Views\Rental\_RentalAccess.cshtml" />
+    <Content Include="Views\Rental\_RentalGalleryScript.cshtml" />
+    <Content Include="Views\Admin\IndexRental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

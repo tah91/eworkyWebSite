@@ -26,10 +26,11 @@ namespace Worki.Web.Controllers
         IMemberRepository _MemberRepository;
         IVisitorRepository _VisitorRepository;
         IWelcomePeopleRepository _WelcomePeopleRepository;
-		IRepository<MemberBooking> _BookingRepository;
+		IBookingRepository _BookingRepository;
         ILogger _Logger;
         IEmailService _EmailService;
         IPressRepository _PressRepository;
+        IRentalRepository _RentalRepository;
 
         public AdminController( ILocalisationRepository localisationRepository, 
                                 IMembershipService memberShipservice, 
@@ -38,8 +39,9 @@ namespace Worki.Web.Controllers
                                 IEmailService emailService,
                                 IMemberRepository memberRepository,
                                 IWelcomePeopleRepository welcomePeopleRepository,
-								IRepository<MemberBooking> bookingRepository,
-                                IPressRepository pressRepository)
+                                IPressRepository pressRepository,
+								IBookingRepository bookingRepository,
+                                IRentalRepository rentalRepository)
         {
             _LocalisationRepository = localisationRepository;
             _MembershipService = memberShipservice;
@@ -50,6 +52,7 @@ namespace Worki.Web.Controllers
             _WelcomePeopleRepository = welcomePeopleRepository;
 			_BookingRepository = bookingRepository;
             _PressRepository = pressRepository;
+            _RentalRepository = rentalRepository;
         }
 
         public int PageSize = 25; // Will change this later
@@ -838,5 +841,32 @@ namespace Worki.Web.Controllers
         }
 
         #endregion
+        
+        #region Admin Rental
+
+        /// <summary>
+        /// Prepares a web page containing a paginated list of localisations
+        /// </summary>
+        /// <param name="page">The page to display</param>
+        /// <returns>The action result.</returns>
+        public virtual ActionResult IndexRental(int? page)
+        {
+            var pageValue = page ?? 1;
+            var rentals = _RentalRepository.Get((pageValue - 1) * PageSize, PageSize, r => r.Id);
+            var viewModel = new RentalListViewModel()
+            {
+                Rentals = rentals,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = PageSize,
+                    TotalItems = _RentalRepository.GetCount()
+                }
+            };
+            return View(viewModel);
+        }
+
+        #endregion
+
     }
 }

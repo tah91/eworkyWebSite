@@ -158,4 +158,15 @@ namespace Worki.Data.Models
     }
 
     #endregion
+    
+    #region Admin Rental
+
+    public class RentalListViewModel
+    {
+        public IList<Rental> Rentals { get; set; }
+        public PagingInfo PagingInfo { get; set; }
+    }
+
+    #endregion
+
 }

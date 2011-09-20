@@ -58,6 +58,16 @@ li#importSubMenu
     list-style-image: url(images/csv-import.png);
 }
 
+li#bookingsSubMenu
+{
+    list-style-image: url(images/csv-import.png);
+}
+
+li#rentalsSubMenu
+{
+    list-style-image: url(images/csv-import.png);
+}
+
 .adminSubMenu li a
 {
 	font-size:14;

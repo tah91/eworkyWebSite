@@ -10,7 +10,7 @@
                 require.ready(function () {
                     // Initialize the jQuery File Upload widget:
                     $('#fileupload').fileupload({
-			            'url': '@Url.Action(MVC.Localisation.UploadFiles())',
+			            'url': '@Url.Action(MVC.UploadImage.UploadFiles())',
                         'autoUpload': 'true',
                         'maxNumberOfFiles': 10,
                         'maxFileSize': @MiscHelpers.MaxFileSize,
@@ -29,7 +29,7 @@
                         }
 
                     // Load existing files:
-                    $.post('@Url.Action(MVC.Localisation.LoadFiles())',{ id: @Model.Localisation.ID }, _renderFiles, "json");
+                    $.post('@Url.Action(MVC.UploadImage.LoadFiles())',{ id: @Model.Localisation.ID, type: "@ProviderType.Localisation" }, _renderFiles, "json");
 
                     // Open download dialogs via iframes,
                     // to prevent aborting current uploads:
@@ -87,7 +87,7 @@
                 {{if thumbnail_url}}
                     <img src="${thumbnail_url}">
                 {{/if}}
-                <input name="@LocalisationBinder.HiddenImagePrefix${name}" type="hidden" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                <input name="@PictureData.HiddenImagePrefix${name}" type="hidden" value="@PictureData.HiddenImagePrefix${name}">
             </td>
             <td>
                 <div>
@@ -95,9 +95,9 @@
                 </div>
                 <div class="radioDiv">
                 {{if is_default}}
-                    <input checked="${is_default}" name="@LocalisationBinder.IsDefaultPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                    <input checked="${is_default}" name="@PictureData.IsDefaultPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
                 {{else}}
-                    <input name="@LocalisationBinder.IsDefaultPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                    <input name="@PictureData.IsDefaultPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
                 {{/if}}
                 </div>          
             </td>
@@ -107,9 +107,9 @@
                 </div>
                 <div class="radioDiv">
                 {{if is_logo}}
-                    <input checked="${is_logo}" name="@LocalisationBinder.IsLogoPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                    <input checked="${is_logo}" name="@PictureData.IsLogoPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
                 {{else}}
-                    <input name="@LocalisationBinder.IsLogoPrefix" type="radio" value="@LocalisationBinder.HiddenImagePrefix${name}">
+                    <input name="@PictureData.IsLogoPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
                 {{/if}}
                 </div>            
             </td>

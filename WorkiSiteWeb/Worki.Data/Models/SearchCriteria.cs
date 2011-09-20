@@ -197,7 +197,5 @@ namespace Worki.Data.Models
 		{
 			FromSearch = false;
 		}
-
-
     }
 }

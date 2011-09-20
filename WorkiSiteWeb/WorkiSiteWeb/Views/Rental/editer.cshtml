@@ -1,0 +1,241 @@
+﻿@model Worki.Data.Models.RentalFormViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Model.Rental.Id == 0 ? Worki.Resources.Views.Rental.RentalString.AddRental :  Worki.Resources.Views.Rental.RentalString.EditRental)</title>
+	<link href="@Url.VersionedContent(Links.Content.CreateRental_min_css)" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
+    <link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
+}
+
+@RazorHelpers.TitleDiv((Model.Rental.Id == 0 ? Worki.Resources.Views.Rental.RentalString.AddRental : Worki.Resources.Views.Rental.RentalString.EditRental), "Orange")
+
+@using (Html.BeginForm(MVC.Rental.ActionNames.Edit,MVC.Rental.Name, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	@Html.AntiForgeryToken()
+	<div class="detailContent">
+		<div class="blockContainer">
+			<div class="contentBlock">
+				<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Infos</h2>
+				<table class="generalInfosTable">
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Type)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m=> m.Rental.Type, Model.RentalTypeSelect)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Reference)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m=> m.Rental.Reference)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.LeaseType)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m=> m.Rental.LeaseType, Model.LeaseTypeSelect)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.AvailableNow)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-label">
+							@Html.CheckBoxFor(m => m.Rental.AvailableNow)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.AvailableDate)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Rental.AvailableDate)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Rate)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m=> m.Rental.Rate)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Charges)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m=> m.Rental.Charges)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Surface)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m=> m.Rental.Surface)
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="contentBlock">
+				<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Description</h2>
+				@Html.TextAreaFor(m=> m.Rental.Description)
+			</div> 
+			<div class="contentBlock">
+				<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Access</h2>
+				<table class="generalInfosTable">
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Address)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Rental.Address)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.PostalCode)
+							</div>
+						</td>
+						<td>
+							<div class="editor-label">
+							@Html.TextBoxFor(m => m.Rental.PostalCode)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.City)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Rental.City)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.Country)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Rental.Country)
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="rentalAccessRows">
+					@foreach (var item in Model.Rental.RentalAccesses)
+					{
+						 @Html.Partial(MVC.Rental.Views._RentalAccess,item)
+					}
+				</div>
+				@Html.ActionLink("Add another...", "AddRentalAccess", null, new { id = "addItem" })
+			</div> 
+			<div class="contentBlock">
+				<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h2>
+				<div id="fileupload" class="borderRadius">
+					<div class="fileupload-buttonbar">
+						<label class="fileinput-button">
+							<span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
+							<input type="file" name="files[]" accept="image/*"/>
+						</label>
+					</div>
+					<div class="fileupload-content">
+						<table class="files"></table>
+						<div class="fileupload-progressbar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="contentBlock">
+				<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Features</h2>
+				<ul>
+					@foreach (var feature in Rental.RentalFeatureDict)
+					 { 
+						 <li>
+							@{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
+							@Html.CheckBox(enumName,Model.Rental.HasFeature((RentalFeatureType)feature.Key))
+							@Html.LabelFor(feature.Value, enumName)
+						 </li>
+					 }
+				</ul>
+			</div> 
+			<div class="submitAddButton float-right">
+				<input  type="submit" class="btn_text btn_orange_plus_right btn_orange_plus imageBtn" value="@Worki.Resources.Views.Rental.RentalString.Submit"/>
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+	</div>
+}
+
+
+@section ScriptContent
+{
+	<script type="text/javascript">
+		require.ready(function () {
+			$("#addItem").click(function () {
+				$.ajax({
+					url: this.href,
+					cache: false,
+					success: function (html) { $(".rentalAccessRows").append(html); }
+				});
+				return false;
+			});
+
+			$("a.deleteRow").live("click", function () {
+				$(this).parents(".rentalAccessRow:first").remove();
+				return false;
+			});
+		});
+	</script>
+	@Html.Partial(MVC.Rental.Views._RentalGalleryScript)
+}

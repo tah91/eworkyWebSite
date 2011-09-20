@@ -72,7 +72,11 @@ using System.Collections.Generic;
 <#
         }
 #>
+		OnInitialized();
     }
+
+	// Custom initialisation inside constructor
+	partial void OnInitialized();
 
 <#
     }

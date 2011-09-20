@@ -135,6 +135,17 @@ namespace Worki.Data.Models
         }
 
         /// <summary>
+        /// Get full display name
+        /// </summary>
+        /// <returns>the full display name</returns>
+        public string GetFullDisplayName()
+        {
+            if (MemberMainData == null)
+                return Username;
+            return string.Format("{0} {1}", ((CivilityType)MemberMainData.Civility).ToString(), MemberMainData.LastName);
+        }
+
+        /// <summary>
         /// Max edition in 24 hours
         /// </summary>
         public const int MaxEditionCount = 15;

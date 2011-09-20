@@ -66,6 +66,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Rental\Rental.Designer.cs">
+      <DependentUpon>Rental.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\Profile\Profile.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +134,11 @@
     </Compile>
     <Compile Include="Views\Booking\BookingString.Designer.cs">
       <DependentUpon>BookingString.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Rental\RentalString.Designer.cs">
+      <DependentUpon>RentalString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -219,6 +229,11 @@
       <LastGenOutput>Booking.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Rental\Rental.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Rental.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\Localisation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localisation.Designer.cs</LastGenOutput>
@@ -268,6 +283,11 @@
     <EmbeddedResource Include="Views\Booking\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rental\RentalString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RentalString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\AProposString.resx">

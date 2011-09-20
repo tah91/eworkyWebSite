@@ -7,6 +7,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.IO.Compression;
+using System.Reflection;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Infrastructure
 {
@@ -121,6 +123,25 @@ namespace Worki.Infrastructure
         public override string FormatErrorMessage(string name)
         {
             return Worki.Resources.Validation.ValidationString.WebsiteNotGoodPattern;
+        }
+    }
+
+    public class SelectValidationAttribute : ValidationAttribute
+    {
+        public SelectValidationAttribute()
+            : base()
+        {
+
+        }
+
+        public override bool IsValid(object value)
+        {
+            if (!(value is int))
+                return false;
+            var val = (int)value;
+            if (val != MiscHelpers.UnselectedItem)
+                return true;
+            return false;
         }
     }
 

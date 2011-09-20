@@ -30,6 +30,7 @@ namespace Worki.Services
 
 		ILocalisationRepository _LocalisationRepository;
         ILogger _Logger;
+		IGeocodeService _GeocodeService;
 
         /// <summary>
         /// Get value corresponding to an url param key
@@ -74,10 +75,11 @@ namespace Worki.Services
 
 		#endregion
 
-		public SearchService(ILocalisationRepository localisationRepository, ILogger logger)
+		public SearchService(ILocalisationRepository localisationRepository, ILogger logger,IGeocodeService geocodeService)
 		{
 			_LocalisationRepository = localisationRepository;
             _Logger = logger;
+			_GeocodeService = geocodeService;
 		}
 
 		public const string CriteriaViewModelKey = "CriteriaViewModelKey";
@@ -176,7 +178,7 @@ namespace Worki.Services
                 criteria.Place = GetRequestValue(parameters, "lieu");
 
             float lat = 0, lng = 0;
-            GeoCode(criteria.Place, out lat, out lng);
+			_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
             criteria.LocalisationData.Latitude = lat;
             criteria.LocalisationData.Longitude = lng;
 

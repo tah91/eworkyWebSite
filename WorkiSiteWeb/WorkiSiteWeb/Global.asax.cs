@@ -62,8 +62,14 @@ namespace Worki.Web
 			Bind<ISearchService>()
 				.To<SearchService>();
 
-			Bind<IRepository<MemberBooking>>()
+			Bind<IBookingRepository>()
 				.To<BookingRepository>();
+
+			Bind<IRentalRepository>()
+                .To<RentalRepository>();
+
+			Bind<IGeocodeService>()
+				.To<GeocodeService>();
 
 			Bind<ILogger>().
 				To<Log4NetLogger>()
@@ -237,6 +243,7 @@ namespace Worki.Web
             var defaultBinder = new DefaultModelBinder();
             ModelBinders.Binders.DefaultBinder = defaultBinder;
             ModelBinders.Binders.Add(typeof(Localisation), new LocalisationBinder(defaultBinder));
+            ModelBinders.Binders.Add(typeof(Rental), new RentalBinder(defaultBinder));
 
 			//resources
 			DefaultModelBinder.ResourceClassKey = "Messages";

@@ -16,9 +16,9 @@
     @*@Html.Partial(MVC.Shared.Views._PictureContainer, ViewData) *@
     @{
         var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
+	@Html.ActionLink("test", MVC.Rental.Create())
     }
     @Html.Partial(MVC.Home.Views._PeopleSlider, indexViewModel.WelcomePeople)
-
     <div class="halfContainer indexSearchContainer float-right">
         <div class="indexSearchFormDiv relative">
             <h2 class="blue">

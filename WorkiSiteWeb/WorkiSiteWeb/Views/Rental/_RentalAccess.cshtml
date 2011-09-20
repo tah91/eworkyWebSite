@@ -1,0 +1,29 @@
+﻿@model Worki.Data.Models.RentalAccess
+@{
+	var select = new SelectList(Rental.AccessTypes, "Key", "Value", Model.Type); 
+  }
+
+<div class="rentalAccessRow">
+	@using (Html.BeginCollectionItem("RentalAccesses"))
+ {
+	 <div class="editor-label">
+		@Html.LabelFor(m => m.Type)
+	 </div>
+	 <div class="editor-field">
+		@Html.DropDownListFor(m => m.Type,select)
+	 </div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.Line)
+	 </div>
+	 <div class="editor-field">
+		@Html.TextBoxFor(m => m.Line)
+	 </div>
+	 	<div class="editor-label">
+		@Html.LabelFor(m => m.Station)
+	 </div>
+	 <div class="editor-field">
+		@Html.TextBoxFor(m => m.Station)
+	 </div>
+	 <a href="#" class="deleteRow">delete</a>
+ }
+</div>

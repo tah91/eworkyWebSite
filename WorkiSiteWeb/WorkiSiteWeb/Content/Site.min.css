@@ -160,7 +160,7 @@ li{list-style:none}
 .display_none{display:none}
 .titleDiv{position:relative;color:White;padding:2px 7px 3px 5px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;margin-bottom:10px}
 .titleDiv:after{content:"";position:absolute;bottom:-10px;left:10px;border-width:10px 10px 0 0;border-style:solid;display:block;width:0}
-.titleDiv h2{margin:0}
+.titleDiv h1{font-size:1.4em;margin:0}
 .titleGreen{background-color:#bbd31f}
 .titleGreen:after{border-color:#bbd31f transparent}
 .titleOrange{background-color:#f7a33a}

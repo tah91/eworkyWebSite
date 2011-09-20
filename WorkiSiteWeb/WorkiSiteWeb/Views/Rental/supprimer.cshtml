@@ -1,0 +1,118 @@
+﻿@model Worki.Data.Models.Rental
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Rental</legend>
+
+    <div class="display-label">MemberId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberId)
+    </div>
+
+    <div class="display-label">Reference</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Reference)
+    </div>
+
+    <div class="display-label">Type</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+
+    <div class="display-label">Address</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">PostalCode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostalCode)
+    </div>
+
+    <div class="display-label">City</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City)
+    </div>
+
+    <div class="display-label">Country</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Country)
+    </div>
+
+    <div class="display-label">AvailableDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AvailableDate)
+    </div>
+
+    <div class="display-label">AvailableNow</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AvailableNow)
+    </div>
+
+    <div class="display-label">LeaseType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LeaseType)
+    </div>
+
+    <div class="display-label">Rate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rate)
+    </div>
+
+    <div class="display-label">Charges</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Charges)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">Energy</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Energy)
+    </div>
+
+    <div class="display-label">GreenHouse</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GreenHouse)
+    </div>
+
+    <div class="display-label">HeatingType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HeatingType)
+    </div>
+
+    <div class="display-label">TimeStamp</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TimeStamp)
+    </div>
+
+    <div class="display-label">Surface</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Surface)
+    </div>
+
+    <div class="display-label">Latitude</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Latitude)
+    </div>
+
+    <div class="display-label">Longitude</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Longitude)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

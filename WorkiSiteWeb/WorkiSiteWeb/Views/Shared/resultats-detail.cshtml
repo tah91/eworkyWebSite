@@ -2,10 +2,11 @@
 
 @section HeadContent
 {
-    <link rel="canonical" href="@Html.GetFullUrl(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = Model.Localisation.ID, name = ControllerHelpers.GetSeoTitle(Model.Localisation.Name) })"/>
-	<meta name="Description" content="@Model.Localisation.Description"/>
-	<title>@Html.WorkiTitle(Model.Localisation.Name)</title>
-    @Html.Partial(MVC.Shared.Views._OpenGraphHead, Model.Localisation) 
+    @{
+        var metaData = Model.Localisation.GetMetaData();
+        metaData.Url = Model.Localisation.GetDetailFullUrl(Url);
+        }
+    @Html.Partial(MVC.Shared.Views._MetaDataHeader, metaData) 
     <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.SearchResults_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.LocalisationDetail_min_css)" rel="stylesheet" type="text/css" />
@@ -17,11 +18,11 @@
 { 
 <div class="pager pagerTop float-left">
     @{ 
-	var rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
-	foreach (string key in Request.QueryString.Keys)
-	{
-		rvd[key] = Request.QueryString[key];
-	}
+	    var rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+	    foreach (string key in Request.QueryString.Keys)
+	    {
+		    rvd[key] = Request.QueryString[key];
+	    }
     }
     @Html.ActionLink(Worki.Resources.Views.Search.SearchString.ReturnToResult, MVC.Search.ActionNames.FullSearchResult, rvd, new System.Collections.Generic.Dictionary<string, object> { { "class", "bold" } })
 </div>

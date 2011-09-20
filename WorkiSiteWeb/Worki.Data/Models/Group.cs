@@ -17,7 +17,11 @@ namespace Worki.Data.Models
         public Group()
         {
             this.MembersInGroups = new HashSet<MembersInGroup>();
+    		OnInitialized();
         }
+    
+    	// Custom initialisation inside constructor
+    	partial void OnInitialized();
     
         // Primitive properties
     
