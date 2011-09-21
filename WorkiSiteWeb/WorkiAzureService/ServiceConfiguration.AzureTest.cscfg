@@ -1,15 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<sc:ServiceConfiguration serviceName="Worki.AzureService" 
-												 xmlns:sc="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" 
-												 xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform" osFamily="1" osVersion="*">
-	<sc:Role name="Worki.Web" xdt:Locator="Match(name)">
-		<sc:ConfigurationSettings>
-			<sc:Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" 
-									value="DefaultEndpointsProtocol=https;AccountName=workidebug;AccountKey=kmzOdAcBuh41xCUErdsscTdh4BEBbNsMegZmPQQPBn7oMit5bghqz68jAjruKLViWz3wrNI8b9QLkCHug87Eog==" 
-									xdt:Transform="Replace" xdt:Locator="Match(name)"/>
-			<sc:Setting name="DataConnectionString" 
-									value="DefaultEndpointsProtocol=https;AccountName=workidebug;AccountKey=kmzOdAcBuh41xCUErdsscTdh4BEBbNsMegZmPQQPBn7oMit5bghqz68jAjruKLViWz3wrNI8b9QLkCHug87Eog==" 
-									xdt:Transform="Replace" xdt:Locator="Match(name)"/>
-    </sc:ConfigurationSettings>
-	</sc:Role>
-</sc:ServiceConfiguration>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Worki.AzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*">
+  <Role name="Worki.Web">
+    <Instances count="2" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=workidebug;AccountKey=kmzOdAcBuh41xCUErdsscTdh4BEBbNsMegZmPQQPBn7oMit5bghqz68jAjruKLViWz3wrNI8b9QLkCHug87Eog==" />
+      <Setting name="DataConnectionString" value="DefaultEndpointsProtocol=https;AccountName=workidebug;AccountKey=kmzOdAcBuh41xCUErdsscTdh4BEBbNsMegZmPQQPBn7oMit5bghqz68jAjruKLViWz3wrNI8b9QLkCHug87Eog==" />
+    </ConfigurationSettings>
+    <Certificates>
+    </Certificates>
+  </Role>
+</ServiceConfiguration>
