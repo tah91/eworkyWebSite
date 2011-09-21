@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>1.4.0</ProductVersion>
+    <ProductVersion>1.5.0</ProductVersion>
     <ProjectGuid>{a751fc50-a160-43a0-970b-3639fa5edda6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -53,7 +53,7 @@
   <!-- Import the target files for this project template -->
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\1.4\</CloudExtensionsDir>
+    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\1.5\</CloudExtensionsDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Azure' ">
     <OutputPath>bin\Azure\</OutputPath>
@@ -66,13 +66,9 @@
   <PropertyGroup>
     <ServiceConfigurationTransform>ServiceConfiguration.$(Configuration).cscfg</ServiceConfigurationTransform>
   </PropertyGroup>
-  <Target 	Name="bCorePackageComputeService" 
-			BeforeTargets="CopyServiceModel"
-			Condition="exists('$(ServiceConfigurationTransform)')">
+  <Target Name="bCorePackageComputeService" BeforeTargets="CopyServiceModel" Condition="exists('$(ServiceConfigurationTransform)')">
     <!-- Generate transformed service config in the intermediate directory -->
-    <TransformXml 	Source="@(ServiceConfiguration)" 
-					Destination="$(IntermediateOutputPath)%(Filename)%(Extension)" 
-					Transform="$(ServiceConfigurationTransform)" />
+    <TransformXml Source="@(ServiceConfiguration)" Destination="$(IntermediateOutputPath)%(Filename)%(Extension)" Transform="$(ServiceConfigurationTransform)" />
     <!--Force build process to use the transformed configuration file from now on.-->
     <ItemGroup>
       <SourceServiceConfiguration Remove="ServiceConfiguration.cscfg" />
