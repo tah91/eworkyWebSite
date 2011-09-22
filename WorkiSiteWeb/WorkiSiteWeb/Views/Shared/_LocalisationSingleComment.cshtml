@@ -16,7 +16,7 @@
             @if (displayLoc)
             { 
                 <span> @Worki.Resources.Views.Localisation.LocalisationString.AboutPlace </span>
-                <span class="boldLink blue">@Model.Localisation.GetDetailFullUrl(Url)</span>
+                <span class="boldLink blue"><a href="@Model.Localisation.GetDetailFullUrl(Url)">@Model.Localisation.Name</a></span>
             }
         </span>
     </div>
