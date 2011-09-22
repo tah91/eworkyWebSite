@@ -146,7 +146,7 @@ namespace Worki.Web.Controllers
 					});
                     TempData.Remove(PictureData.PictureDataString);
                     localisation.ID = idToRedirect;
-                    return RedirectToAction(localisation.GetDetailFullUrl(Url));
+                    return Redirect(localisation.GetDetailFullUrl(Url));
 				}
 			}
 			catch (Exception ex)
