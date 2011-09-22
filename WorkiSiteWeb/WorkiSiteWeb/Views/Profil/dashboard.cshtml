@@ -104,14 +104,18 @@
                 </div> 
                 <div id="addedLocalisationTab" class="tab_content localisationsTagContainer">
 					@if (Model.AddedLocalisations.Count != 0)
-     {
-         ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.AddedLoc;
-						@Html.Partial(MVC.Profil.Views._LocalisationTab)
-     }
-     else if (Model.IsPrivate)
-     {
-						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Localisation.Create())))</span>
-     }
+                     {
+                            ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.AddedLoc;
+						    @Html.Partial(MVC.Profil.Views._LocalisationTab)
+                     }
+                     else if (Model.IsPrivate)
+                     {
+						    <span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Localisation.Create())))</span>
+                     }
+                     else
+                     {
+                            <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
+                     }
                 </div> 
             </div>
             <div class="clear">
@@ -139,13 +143,17 @@
                 </div> 
                 <div id="favPlacesTab" class="tab_content">
 					@if (!string.IsNullOrEmpty(Model.Member.MemberMainData.FavoritePlaces))
-     {
+                    {
 						@Model.Member.MemberMainData.FavoritePlaces
-     }
-     else if (Model.IsPrivate)
-     {
+                    }
+                    else if (Model.IsPrivate)
+                    {
 						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit(Model.Member.MemberId))))</span>
-     }
+                    }
+                    else
+                    {
+                        <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.MyCompanyPublic</span>
+                    }
                 </div> 
             </div>
             <div class="clear">
