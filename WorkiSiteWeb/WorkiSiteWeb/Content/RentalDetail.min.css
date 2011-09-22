@@ -3,3 +3,12 @@
 .rentalGallery{height:350px}
 .rentalDesc{margin-bottom:10px}
 .rentalMap{padding:2px;border:1px solid #5dafde}
+.featureTag ul{margin:0;padding:0;}
+.featureTag li{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:3px 10px;margin:0 3px 6px 0;background-color:#EEE;float:left;}
+.red{color:#D35758;}
+.rentalSummary{height:128;width:250;margin:20px;}
+.rentalSummaryElem{background:white;color:white;background-color:#D35758;margin-right:10px;height:32;width:100;font-size:1.5em;font-family:Arial,Helvetica,Sans-Serif;font-weight:600;border-width:20px;border-color:#D35758;padding:10px;}
+.usefullBlock{color: #D35758;text-decoration:underline;margin-left:0;}
+.rentalTitlered{color: #D35758;font-size:2em;font-weight:bold;}
+.rentalTitle{margin-left:80px;margin-top:20px;}
+.underline{text-decoration:underline;}
