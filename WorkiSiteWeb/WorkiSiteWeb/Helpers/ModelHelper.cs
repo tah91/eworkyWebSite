@@ -10,6 +10,19 @@ namespace Worki.Web.Helpers
 {
     public static class ModelHelper
 	{
+        public static string AbsoluteAction(this UrlHelper url, string action, string controller, object routeValues)
+        {
+            Uri requestUrl = url.RequestContext.HttpContext.Request.Url;
+
+            string absoluteAction = string.Format("{0}://{1}{2}",
+                                                  requestUrl.Scheme,
+                                                  requestUrl.Host,
+                                                  url.Action(action, controller, routeValues));
+
+            return absoluteAction;
+        }
+
+
 		public static LocalisationJson GetJson(this Localisation localisation, Controller controller)
 		{
 			//get data from model
@@ -17,7 +30,7 @@ namespace Worki.Web.Helpers
 
 			//get url
 			var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
-			json.url = urlHelper.Action(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = json.id, name = ControllerHelpers.GetSeoTitle(json.name), area = "" }, "http");
+            json.url = urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = json.id, name = ControllerHelpers.GetSeoTitle(json.name), area = "" });
 
 			//get image
 			var image = localisation.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
@@ -53,8 +66,11 @@ namespace Worki.Web.Helpers
                 return null;
 
             var imageUrl = provider.GetMainPic();
-            var imagePath = !string.IsNullOrEmpty(imageUrl) ?   ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(ControllerHelpers.GetUserImagePath(imageUrl, true)), false) :
-                                                                ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(ControllerHelpers.GetUserImagePath(Links.Content.images.worki_fb_jpg, true)), false);
+            var imagePath = !string.IsNullOrEmpty(imageUrl) ?   ControllerHelpers.GetUserImagePath(imageUrl, true) :
+                                                                ControllerHelpers.GetUserImagePath(Links.Content.images.worki_fb_jpg, true);
+
+            if (!string.IsNullOrEmpty(imagePath) && VirtualPathUtility.IsAppRelative(imagePath))
+                imagePath = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imagePath), true);
 
             return new MetaData
             {
@@ -69,7 +85,7 @@ namespace Worki.Web.Helpers
             if (loc == null || urlHelper==null)
                 return null;
 
-            return urlHelper.Action(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = loc.ID, name = ControllerHelpers.GetSeoTitle(loc.Name) }, "http");
+            return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = loc.ID, name = ControllerHelpers.GetSeoTitle(loc.Name) });
         }
 
         public static string GetDetailFullUrl(this Rental rental, UrlHelper urlHelper)
@@ -77,7 +93,7 @@ namespace Worki.Web.Helpers
             if (rental == null || urlHelper == null)
                 return null;
 
-            return urlHelper.Action(MVC.Rental.ActionNames.Detail, MVC.Rental.Name, new { id = rental.Id }, "http");
+            return urlHelper.AbsoluteAction(MVC.Rental.ActionNames.Detail, MVC.Rental.Name, new { id = rental.Id });
         }
     }
 }

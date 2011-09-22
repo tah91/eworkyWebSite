@@ -8,7 +8,7 @@
             rvd[key] = Request.QueryString[key].ToString();
         }
         rvd["index"] = Model.Index;
-        ViewData["link"] = Html.GetUrl(MVC.Search.ActionNames.FullSearchResultDetail, MVC.Search.Name, rvd);
+        ViewData["link"] = Url.Action(MVC.Search.ActionNames.FullSearchResultDetail, MVC.Search.Name, rvd);
     }
     <div class="resultItemGallery picBack borderRadius float-left">
     @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))

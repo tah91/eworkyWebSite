@@ -214,32 +214,6 @@ namespace Worki.Web.Helpers
             return MvcHtmlString.Create(string.Format("{0}...", truncated));
         }
 
-        public static string GetUrl(this HtmlHelper html, string action, string controller, object routeValues)
-        {
-            var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
-            var url = urlHelper.Action(action, controller, routeValues);
-            return url;
-        }
-
-        public static string GetUrl(this HtmlHelper html, string action, string controller, RouteValueDictionary rvd)
-        {
-            var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
-            var url = urlHelper.Action(action, controller, rvd);
-            return url;
-        }
-
-        public static string GetUrl(this HtmlHelper html, string action, string controller)
-        {
-            return html.GetUrl(action, controller, null);
-        }
-
-        public static string GetFullUrl(this HtmlHelper html, string action, string controller, object routeValues)
-        {
-            var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
-            var url = urlHelper.Action(action, controller, routeValues, "http");
-            return url;
-        }
-
         public static string GetFileFullUrl(this HtmlHelper html, string path, bool forceHttps)
         {
             try

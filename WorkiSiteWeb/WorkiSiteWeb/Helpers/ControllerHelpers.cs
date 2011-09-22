@@ -114,9 +114,9 @@ namespace Worki.Web.Helpers
                 return;
 
             var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
-            var registerUrl = urlHelper.Action(MVC.Account.ActionNames.Register, MVC.Account.Name, new { id = visitor.Id }, "http");
-            var createUrl = urlHelper.Action(MVC.Localisation.ActionNames.Create, MVC.Localisation.Name, null, "http");
-            var searchUrl = urlHelper.Action(MVC.Search.ActionNames.FullSearch, MVC.Search.Name, null, "http");
+            var registerUrl = urlHelper.AbsoluteAction(MVC.Account.ActionNames.Register, MVC.Account.Name, new { id = visitor.Id });
+            var createUrl = urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Create, MVC.Localisation.Name, null);
+            var searchUrl = urlHelper.AbsoluteAction(MVC.Search.ActionNames.FullSearch, MVC.Search.Name, null);
 
             var subject = Worki.Resources.Models.Account.AccountModels.EWBegining;
 
@@ -182,7 +182,7 @@ namespace Worki.Web.Helpers
                 return;
 
             var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
-            var activationLink = urlHelper.Action(MVC.Account.ActionNames.Activate, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey }, "http");
+            var activationLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.Activate, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
 
             var subject = Worki.Resources.Models.Account.AccountModels.ActivationAccount;
             TagBuilder line = new TagBuilder("p");
@@ -218,7 +218,7 @@ namespace Worki.Web.Helpers
                 return;
 
             var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
-            var changePassLink = urlHelper.Action(MVC.Account.ActionNames.ChangePassword, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey }, "http");
+            var changePassLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.ChangePassword, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
 
             var subject = Worki.Resources.Models.Account.AccountModels.ResetPassword;
 

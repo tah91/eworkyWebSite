@@ -39,6 +39,7 @@
     <ServiceConfiguration Include="ServiceConfiguration.Azure.cscfg" />
     <ServiceDefinition Include="ServiceDefinition.csdef" />
     <ServiceConfiguration Include="ServiceConfiguration.AzureDev.cscfg" />
+    <ServiceConfiguration Include="ServiceConfiguration.Default.cscfg" />
     <ServiceConfiguration Include="ServiceConfiguration.AzureTest.cscfg" />
   </ItemGroup>
   <ItemGroup>

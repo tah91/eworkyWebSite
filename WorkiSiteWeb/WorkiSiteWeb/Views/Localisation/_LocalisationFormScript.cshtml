@@ -21,7 +21,7 @@
 		        GetSimilarLocalisation = function(currentLatitude,currentLongitude){
 			        @if (Model.Localisation.ID == 0)
 			        {
-				        @:var action = '@Html.GetUrl(MVC.Search.ActionNames.FindSimilarLocalisation,MVC.Search.Name)';
+				        @:var action = '@Url.Action(MVC.Search.ActionNames.FindSimilarLocalisation,MVC.Search.Name)';
 				        @:$.post(action, { latitude: currentLatitude, longitude: currentLongitude }, checkIfExist, "json");
 			        }
 		        }

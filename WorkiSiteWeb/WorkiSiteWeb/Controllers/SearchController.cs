@@ -56,7 +56,6 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult GetMainLocalisations()
         {
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 			var localisations = _LocalisationRepository.GetMany(item => (item.MainLocalisation != null && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
             var jsonLocalisations = localisations.Select(item =>
             {

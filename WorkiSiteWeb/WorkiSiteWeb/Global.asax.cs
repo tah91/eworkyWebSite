@@ -106,7 +106,7 @@ namespace Worki.Web
                 }
                 //Finally setting culture for each request
                 Thread.CurrentThread.CurrentUICulture = ci;
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
+                //Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
             }
         }
 
