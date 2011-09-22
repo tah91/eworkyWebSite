@@ -22,7 +22,7 @@
     @foreach (var loc in locs)
 	{ 
         <li>
-            <a href="@Url.Action(MVC.Localisation.Details(loc.ID, ControllerHelpers.GetSeoTitle(loc.Name)))">
+            <a href="@loc.GetDetailFullUrl(Url)">
                 <div class="localisationTag float-left">
                     <div class="localisationImgDiv borderedImg">
 					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic(), true), loc.Name)

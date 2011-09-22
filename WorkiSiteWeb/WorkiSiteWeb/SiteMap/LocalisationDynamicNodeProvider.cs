@@ -45,7 +45,8 @@ namespace Worki.SiteMap
 			{
 				DynamicNode node = new DynamicNode("Id_" + loc.ID.ToString(), loc.Name);
 				node.RouteValues.Add("id", loc.ID);
-				node.RouteValues.Add("name", ControllerHelpers.GetSeoTitle(loc.Name));
+                node.RouteValues.Add("name", ControllerHelpers.GetSeoString(loc.Name));
+                node.RouteValues.Add("type", ControllerHelpers.GetSeoString(Localisation.LocalisationTypes[loc.TypeValue]));
 
 				yield return node;
 			}

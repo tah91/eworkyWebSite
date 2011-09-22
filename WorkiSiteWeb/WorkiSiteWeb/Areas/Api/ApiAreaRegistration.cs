@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Worki.Rest.Routing;
 
 namespace Worki.Web.Areas.Api
 {
@@ -20,6 +21,9 @@ namespace Worki.Web.Areas.Api
                 new { action = "Index", id = UrlParameter.Optional },
 				new string[] { "Worki.Web.Areas.Api.Controllers" }
             );
+
+            // Register REST api routes within path /api
+            //RestRoutes.RegisterRoutes(context, "/api");
         }
     }
 }

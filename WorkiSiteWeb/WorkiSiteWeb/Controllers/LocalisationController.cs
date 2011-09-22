@@ -49,7 +49,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult Details(int id, string name)
 		{
 			var localisation = _LocalisationRepository.Get(id);
-			var nameToMatch = ControllerHelpers.GetSeoTitle(localisation.Name);
+            var nameToMatch = ControllerHelpers.GetSeoString(localisation.Name);
 
 			if (localisation == null || string.IsNullOrEmpty(name) || string.Compare(nameToMatch, name, true) != 0)
 				return View(MVC.Localisation.Views.lieu_absent);
@@ -145,7 +145,8 @@ namespace Worki.Web.Controllers
 						m.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = idToRedirect, ModificationType = (int)EditionType.Edition });
 					});
                     TempData.Remove(PictureData.PictureDataString);
-					return RedirectToAction(MVC.Localisation.ActionNames.Details, new { id = idToRedirect, name = ControllerHelpers.GetSeoTitle(localisation.Name) });
+                    localisation.ID = idToRedirect;
+                    return RedirectToAction(localisation.GetDetailFullUrl(Url));
 				}
 			}
 			catch (Exception ex)

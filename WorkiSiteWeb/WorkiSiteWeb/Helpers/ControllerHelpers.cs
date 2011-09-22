@@ -72,7 +72,7 @@ namespace Worki.Web.Helpers
             }
         }
 
-        public static string GetSeoTitle(string title)
+        public static string GetSeoString(string title)
         {
             // make it all lower case
             title = title.ToLower();

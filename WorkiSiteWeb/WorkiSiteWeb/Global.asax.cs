@@ -1,27 +1,27 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Globalization;
+using System.Threading;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Logging;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using MvcSiteMapProvider.Web;
 using Ninject;
 using Ninject.Modules;
 using Worki.Data.Models;
-using Worki.Data.Repository;
 using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
-using Worki.Infrastructure.Repository;
 using Worki.Memberships;
-using Worki.Web.ModelBinder;
 using Worki.Service;
 using Worki.Services;
-using MvcSiteMapProvider.Web;
 using Worki.SiteMap;
-using Worki.Rest.Routing;
-using System.Web;
-using System.Globalization;
-using System.Threading;
-using System;
+using Worki.Web.ModelBinder;
+using Worki.Infrastructure;
+using System.Linq;
+using Worki.Web.Helpers;
 
 namespace Worki.Web
 {
@@ -171,10 +171,20 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
             );
 
+            var localisationTypes = (from t in Localisation.LocalisationTypes.Values select ControllerHelpers.GetSeoString(t));
+
+            routes.MapRoute(
+                "", // Nom d'itinéraire
+                "{type}/{id}/{name}", // URL avec des paramètres
+                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
+                new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
             routes.MapRoute(
                 "", // Nom d'itinéraire
                 "lieu-de-travail/details/{id}/{name}", // URL avec des paramètres
-                new { area="", controller = "Localisation", action = "Details", id = 0, name = "" }, // Paramètres par défaut
+                new { area="", controller = "Localisation", action = "Details" }, // Paramètres par défaut
 				new string[] { "Worki.Web.Controllers" }
             );
 
@@ -215,10 +225,6 @@ namespace Worki.Web
             //        Worki.Infrastructure.Culture.fr.ToString()));
             //    }
             //}
-
-
-			// Register REST api routes within path /api
-			RestRoutes.RegisterRoutes(routes, "/api");
         }
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());

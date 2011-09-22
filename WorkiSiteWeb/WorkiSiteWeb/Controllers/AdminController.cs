@@ -197,6 +197,9 @@ namespace Worki.Web.Controllers
                     foreach (var username in listCollection)
                     {
                         var roleCheck = collection[username].ToLower();
+                        var member = _MemberRepository.GetMember(username);
+                        if (member == null)
+                            continue;
                         var userInRole = Roles.IsUserInRole(username, MiscHelpers.AdminRole);
                         if (roleCheck.Contains("true"))
                         {

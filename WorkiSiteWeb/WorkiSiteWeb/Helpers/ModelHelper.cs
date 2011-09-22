@@ -10,13 +10,17 @@ namespace Worki.Web.Helpers
 {
     public static class ModelHelper
 	{
+        static bool test = false;
+
         public static string AbsoluteAction(this UrlHelper url, string action, string controller, object routeValues)
         {
             Uri requestUrl = url.RequestContext.HttpContext.Request.Url;
 
+            var host = test ? requestUrl.Host : requestUrl.Authority;
+
             string absoluteAction = string.Format("{0}://{1}{2}",
                                                   requestUrl.Scheme,
-                                                  requestUrl.Host,
+                                                  host,
                                                   url.Action(action, controller, routeValues));
 
             return absoluteAction;
@@ -30,7 +34,7 @@ namespace Worki.Web.Helpers
 
 			//get url
 			var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
-            json.url = urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = json.id, name = ControllerHelpers.GetSeoTitle(json.name), area = "" });
+            json.url = localisation.GetDetailFullUrl(urlHelper);
 
 			//get image
 			var image = localisation.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
@@ -85,7 +89,9 @@ namespace Worki.Web.Helpers
             if (loc == null || urlHelper==null)
                 return null;
 
-            return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = loc.ID, name = ControllerHelpers.GetSeoTitle(loc.Name) });
+            var type = ControllerHelpers.GetSeoString(Localisation.LocalisationTypes[loc.TypeValue]);
+            var name = ControllerHelpers.GetSeoString(loc.Name);
+            return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "" });
         }
 
         public static string GetDetailFullUrl(this Rental rental, UrlHelper urlHelper)

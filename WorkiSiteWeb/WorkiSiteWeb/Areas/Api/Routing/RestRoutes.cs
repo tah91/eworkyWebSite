@@ -5,12 +5,12 @@ namespace Worki.Rest.Routing
 {
     public static class RestRoutes
     {
-        public static void RegisterRoutes(RouteCollection routes, string apiDirectory)
+        public static void RegisterRoutes(AreaRegistrationContext context, string apiDirectory)
         {
 
-            routes.Add(new OptionsRoute());
+            context.Routes.Add(new OptionsRoute());
 
-            routes.MapRoute(
+            context.MapRoute(
                "API-LIST",                                              // Route name
                "API/{controller}",                           // URL with parameters
                new { action = "List" },  // Parameter defaults
@@ -21,7 +21,7 @@ namespace Worki.Rest.Routing
                },
 			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
-            routes.MapRoute(
+            context.MapRoute(
                "API-GET",                                              // Route name
                "API/{controller}/{id}",                           // URL with parameters
                new { action = "Read" },  // Parameter defaults
@@ -32,7 +32,7 @@ namespace Worki.Rest.Routing
 			   }, 
 			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
-            routes.MapRoute(
+            context.MapRoute(
                "API-UPDATE",                                              // Route name
                "API/{controller}",                           // URL with parameters
                new { action = "Update" },  // Parameter defaults
@@ -43,7 +43,7 @@ namespace Worki.Rest.Routing
                },
 			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
-            routes.MapRoute(
+            context.MapRoute(
                "API-CREATE",                                              // Route name
                "API/{controller}",                           // URL with parameters
                new { action = "Create" },  // Parameter defaults
@@ -54,7 +54,7 @@ namespace Worki.Rest.Routing
                },
 			   new string[] { "Worki.Web.Areas.Api.Controllers" });
 
-            routes.MapRoute(
+            context.MapRoute(
                "API-DELETE",                                              // Route name
                "API/{controller}/{id}",                           // URL with parameters
                new { action = "Delete" },  // Parameter defaults
@@ -67,7 +67,7 @@ namespace Worki.Rest.Routing
 
 
 
-            routes.MapRoute(
+            context.MapRoute(
                 "API",                                              // Route name
                 "API/{controller}/{action}/{name}",                           // URL with parameters
                 new { },  // Parameter defaults

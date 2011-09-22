@@ -16,7 +16,7 @@
             @if (displayLoc)
             { 
                 <span> @Worki.Resources.Views.Localisation.LocalisationString.AboutPlace </span>
-                <span class="boldLink blue">@Html.ActionLink(Model.Localisation.Name, MVC.Localisation.Details(Model.LocalisationID, ControllerHelpers.GetSeoTitle(Model.Localisation.Name)))</span>
+                <span class="boldLink blue">@Model.Localisation.GetDetailFullUrl(Url)</span>
             }
         </span>
     </div>
@@ -29,7 +29,7 @@
     </div>
 	@if (displayLoc)
 	{
-		<a href="@Url.Action(MVC.Localisation.Details(Model.LocalisationID, ControllerHelpers.GetSeoTitle(Model.Localisation.Name)))">
+		<a href="@Model.Localisation.GetDetailFullUrl(Url)">
 			<div class="commentLocAvatar borderedImg float-right">
 			@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
 			</div>
@@ -40,5 +40,5 @@
 </div> 
 @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
 { 
-    @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.DeleteComment, MVC.Localisation.DeleteComment(Model.LocalisationID, Model.ID, Url.Action(MVC.Localisation.Details(Model.LocalisationID, ControllerHelpers.GetSeoTitle(Model.Localisation.Name)))))
+    @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.DeleteComment, MVC.Localisation.DeleteComment(Model.LocalisationID, Model.ID, Model.Localisation.GetDetailFullUrl(Url)))
 }

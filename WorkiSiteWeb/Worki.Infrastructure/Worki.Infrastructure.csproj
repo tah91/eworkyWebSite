@@ -89,6 +89,7 @@
     <Compile Include="Model\ILogger.cs" />
     <Compile Include="Model\IRepository.cs" />
     <Compile Include="Helper\MiscHelpers.cs" />
+    <Compile Include="Web\RouteConstraint.cs" />
     <Compile Include="Web\MultiCultureMvcRouteHandler .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

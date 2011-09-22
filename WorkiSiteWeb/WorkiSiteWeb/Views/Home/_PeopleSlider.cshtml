@@ -4,7 +4,7 @@
 	<div class="slides_container">
         @foreach (var item in Model)
         {
-			var localisationLink = Url.Action(MVC.Localisation.Details(item.LocalisationId, ControllerHelpers.GetSeoTitle(item.Localisation.Name)));
+			var localisationLink = item.Localisation.GetDetailFullUrl(Url);
 			var memberLink = Url.Action(MVC.Profil.Detail(item.MemberId));
 			var age = item.Member.GetAge();
         <div class="slide">
