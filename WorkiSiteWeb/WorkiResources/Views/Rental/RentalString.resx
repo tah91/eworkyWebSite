@@ -132,8 +132,17 @@
   <data name="AddRental" xml:space="preserve">
     <value>Ajouter une annonce</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse :</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ville :</value>
+  </data>
   <data name="CreateAlert" xml:space="preserve">
     <value>Créer une alerte email</value>
+  </data>
+  <data name="DateDrop" xml:space="preserve">
+    <value>Date de dépôt :</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
@@ -141,20 +150,47 @@
   <data name="EditRental" xml:space="preserve">
     <value>Editer une annonce</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email :</value>
+  </data>
   <data name="Features" xml:space="preserve">
     <value>Caratéristiques</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Prénom :</value>
   </data>
   <data name="Images" xml:space="preserve">
     <value>Images</value>
   </data>
+  <data name="InfoAdmin" xml:space="preserve">
+    <value>Infos Admin</value>
+  </data>
   <data name="Infos" xml:space="preserve">
     <value>Informations générales</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nom :</value>
   </data>
   <data name="Owner" xml:space="preserve">
     <value>Propriétaire</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>N° téléphone :</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Code Postal :</value>
+  </data>
   <data name="Print" xml:space="preserve">
     <value>Imprimer cette annonce</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>Référence annonce eWorky :</value>
+  </data>
+  <data name="Rental" xml:space="preserve">
+    <value>Annonce</value>
   </data>
   <data name="SaveSearch" xml:space="preserve">
     <value>Mémoriser cette recherche</value>
