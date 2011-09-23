@@ -1,0 +1,22 @@
+﻿@model Worki.Data.Models.Rental
+
+<div class="contentBlock resultItem">
+    <div>
+        <div class="resultItemGallery picBack borderRadius float-left rentalElementPic">
+	        @RazorHelpers.CenterImage("../../Content/images/star.png", "Image")
+            <div class="clear"></div>
+        </div>
+        <div class="float-right rentalElementDesc">
+            <span class="red bold">Bureau à louer - Paris 7ème</span><span class="red bold rentalElementMiddle">70m2</span><span class="red bold">1 900$</span>
+            <p class="rentalElementDesc2"><span class="itemAddress">@Html.TruncateAtWord("A proximité de la Place Vendôme, dans un bel immeuble ancien en pierre de taille, 210 m² de bureaux sont à louer. Les locaux sont restés dans leur style d'origine: parquets, moulures et cheminées.", 250)</span><br /></p>
+            <div class="clear"></div>
+        </div>
+    </div>
+        <div class="float-left rentalElementAcces">
+            Métro 12 - Solferino
+        </div>
+        <div class="float-right borderRadius rentalElementMoreDetail">
+            @Worki.Resources.Views.Rental.RentalString.MoreDetail
+        </div>
+    <div class="clear"></div>
+</div>

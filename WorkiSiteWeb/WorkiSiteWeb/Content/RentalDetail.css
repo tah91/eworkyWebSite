@@ -56,6 +56,89 @@
 
 .rentalTitle
 {
-    margin-left:80px;
+    margin-left:0px;
     margin-top:20px;
+}
+
+.rentalMargin
+{
+    margin-bottom:5px;
+    margin-top:15px;
+}
+
+.resultHeader2
+{
+    margin-top:10px;
+    margin-left:55px;
+    font-size:1.2em;
+    margin-bottom:10px;
+}
+
+.resultHeader2 span
+{
+    font-size:1.2em;
+}
+
+.resultDiv
+{
+    width: 72.5%;
+}
+
+.rentalSearchRightPanel
+{
+    padding:10px;
+    width:24.5%;
+}
+
+.rentalSearchLeftPanel
+{
+    margin:10px;
+}
+
+.rentalSearchLeftPanelDetail
+{
+    margin:0px;
+    padding:10px;
+    border: 1px solid #CCC;
+    background-color:White;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    box-shadow:4px 4px 10px #DDD;
+    height:400px;
+}
+
+.rentalElementPic
+{
+    width:25%;
+}
+
+.rentalElementDesc
+{
+    width:75%;
+}
+
+.rentalElementAcces
+{
+    margin-top:40px;
+}
+
+.rentalElementMoreDetail
+{
+    font-weight:900;
+    padding:5px;
+    background:white;
+    color:white;
+    background-color:#D35758;
+    margin-top:25px;
+}
+
+.rentalElementMiddle
+{
+    margin-left:150px;
+    margin-right:150px;
+}
+
+.rentalElementDesc2
+{
+    margin-top:10px;
 }

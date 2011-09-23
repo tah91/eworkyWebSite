@@ -191,7 +191,8 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult RentalSearch()
         {
-            return View(new RentalSearchCriteria());
+            //return View(new RentalSearchCriteria());
+            return View("RentalSearch");
         }
 	}
 }

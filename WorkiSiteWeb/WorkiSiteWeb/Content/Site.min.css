@@ -169,6 +169,8 @@ li{list-style:none}
 .titleOrange:after{border-color:#f7a33a transparent}
 .titleBlue{background-color:#5dafde}
 .titleBlue:after{border-color:#5DAFDE transparent}
+.titleRed{background-color:#D35758}
+.titleRed:after{border-color:#D35758 transparent}
 .titleTriangle{height:7px;width:25px;background-position:50% 0;background-repeat:no-repeat;margin-bottom:10px}
 @font-face{font-family:"Steinem";font-style:normal;font-weight:normal;src:url('font/Steinemu.ttf')}
 @font-face{font-family:"Steinem";font-style:normal;font-weight:bold;src:url('font/Steinemb.ttf')}
@@ -232,8 +234,12 @@ ul.tabs li.active,ul.tabs li.active a,html ul.tabs li.active a:hover{background:
 .tab_content{padding:10px;padding-left:0}
 .arrow_down{background-image:url('images/arrow.png');background-position:0 0;width:22px;height:22px}
 .arrow_left{background-image:url('images/arrow.png');background-position:0 -72px;width:22px;height:22px}
+.arrow_down_red{background-image:url('images/arrow_red.png');background-position:0 0;width:22px;height:22px}
+.arrow_left_red{background-image:url('images/arrow_red.png');background-position:0 -72px;width:22px;height:22px}
 .acc_trigger,.toogle_trigger{padding:0;margin-bottom:10px;margin-left:5px;background:url('images/arrow.png') no-repeat 0 -72px;height:22px;line-height:22px;float:left;width:100%}
 .acc_trigger span,.toogle_trigger span{text-decoration:none;display:block;padding:0 0 0 30px;cursor:pointer}
+.toogle_trigger_red{padding:0;margin-bottom:10px;margin-left:5px;background:url('images/arrow_red.png') no-repeat 0 -72px;height:22px;line-height:22px;float:left;width:100%}
+.toogle_trigger_red span{text-decoration:none;display:block;padding:0 0 0 30px;cursor:pointer}
 .acc_trigger span:hover,.toogle_trigger span:hover{color:gray}
 .active{background-position:0 0}
 .acc_container,.toogle_container{margin-bottom:5px;padding:0;overflow:hidden;clear:both;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
