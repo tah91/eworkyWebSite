@@ -118,138 +118,62 @@ namespace Worki.Web.Helpers
             var createUrl = urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Create, MVC.Localisation.Name, null);
             var searchUrl = urlHelper.AbsoluteAction(MVC.Search.ActionNames.FullSearch, MVC.Search.Name, null);
 
-            var subject = Worki.Resources.Models.Account.AccountModels.EWBegining;
+            //var subject = Worki.Resources.Models.Account.AccountModels.EWBegining;
 
-            TagBuilder line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.Hello;
-            var content = line.ToString();
+            //TagBuilder line = new TagBuilder("p");
+            //line.InnerHtml = Worki.Resources.Models.Account.AccountModels.Hello;
+            //var content = line.ToString();
 
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.EWFirstOnWorkplaceSearch;
-            content += line.ToString();
+            //line = new TagBuilder("p");
+            //line.InnerHtml = Worki.Resources.Models.Account.AccountModels.EWFirstOnWorkplaceSearch;
+            //content += line.ToString();
 
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.BothAdding;
-            content += line.ToString();
+            //line = new TagBuilder("p");
+            //line.InnerHtml = Worki.Resources.Models.Account.AccountModels.BothAdding;
+            //content += line.ToString();
 
-            line = new TagBuilder("p");
-            TagBuilder link = new TagBuilder("a");
-            link.MergeAttribute("href", registerUrl);
-            link.InnerHtml = Worki.Resources.Models.Account.AccountModels.CompletYourProfil;
-            line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.BePartOfGroupe, link.ToString());
-            content += line.ToString();
+            //line = new TagBuilder("p");
+            //TagBuilder link = new TagBuilder("a");
+            //link.MergeAttribute("href", registerUrl);
+            //link.InnerHtml = Worki.Resources.Models.Account.AccountModels.CompletYourProfil;
+            //line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.BePartOfGroupe, link.ToString());
+            //content += line.ToString();
 
-            line = new TagBuilder("p");
-            link = new TagBuilder("a");
-            link.MergeAttribute("href", createUrl);
-            link.InnerHtml = Worki.Resources.Models.Account.AccountModels.AddWorkplace;
-            line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.IfYouFindThePlaceToWork, link.ToString());
-            content += line.ToString();
+            //line = new TagBuilder("p");
+            //link = new TagBuilder("a");
+            //link.MergeAttribute("href", createUrl);
+            //link.InnerHtml = Worki.Resources.Models.Account.AccountModels.AddWorkplace;
+            //line.InnerHtml += String.Format(Worki.Resources.Models.Account.AccountModels.IfYouFindThePlaceToWork, link.ToString());
+            //content += line.ToString();
 
-            line = new TagBuilder("p");
-            link = new TagBuilder("a");
-            link.MergeAttribute("href", searchUrl);
-            link.InnerHtml = Worki.Resources.Models.Account.AccountModels.SearhPlace;
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.CommentWhatYouTest, link.ToString());
-            content += line.ToString();
+            //line = new TagBuilder("p");
+            //link = new TagBuilder("a");
+            //link.MergeAttribute("href", searchUrl);
+            //link.InnerHtml = Worki.Resources.Models.Account.AccountModels.SearhPlace;
+            //line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.CommentWhatYouTest, link.ToString());
+            //content += line.ToString();
 
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.KeepInTouch;
-            content += line.ToString();
+            //line = new TagBuilder("p");
+            //line.InnerHtml = Worki.Resources.Models.Account.AccountModels.KeepInTouch;
+            //content += line.ToString();
 
-            line = new TagBuilder("p");
-            link = new TagBuilder("a");
-            link.MergeAttribute("href", "http://www.facebook.com/pages/eWorky/226917517335276");
-            link.InnerHtml = Worki.Resources.Models.Account.AccountModels.Facebook;
+            //line = new TagBuilder("p");
+            //link = new TagBuilder("a");
+            //link.MergeAttribute("href", "http://www.facebook.com/pages/eWorky/226917517335276");
+            //link.InnerHtml = Worki.Resources.Models.Account.AccountModels.Facebook;
 
-            TagBuilder link2 = new TagBuilder("a");
-            link2 = new TagBuilder("a");
-            link2.MergeAttribute("href", "http://twitter.com/#!/eWorky");
-            link2.InnerHtml = Worki.Resources.Models.Account.AccountModels.Twitter;
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.FollowUs, link.ToString(), link2.ToString());
-            content += line.ToString();
+            //TagBuilder link2 = new TagBuilder("a");
+            //link2 = new TagBuilder("a");
+            //link2.MergeAttribute("href", "http://twitter.com/#!/eWorky");
+            //link2.InnerHtml = Worki.Resources.Models.Account.AccountModels.Twitter;
+            //line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.FollowUs, link.ToString(), link2.ToString());
+            //content += line.ToString();
 
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.SeeYouSoon;
-            content += line.ToString();
+            //line = new TagBuilder("p");
+            //line.InnerHtml = Worki.Resources.Models.Account.AccountModels.SeeYouSoon;
+            //content += line.ToString();
 
-            emailService.Send(EmailService.ContactMail, "eWorky Team", subject, content, true, visitor.Email);
-        }
-
-        public static void SendRegisterEmail(this Controller controller, IEmailService emailService, Member member)
-        {
-            if (controller == null || member == null)
-                return;
-
-            var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
-            var activationLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.Activate, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
-
-            var subject = Worki.Resources.Models.Account.AccountModels.ActivationAccount;
-            TagBuilder line = new TagBuilder("p");
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.HelloMember, member.MemberMainData.FirstName);
-            var content = line.ToString();
-
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.MemberAfterActivation;
-            content += line.ToString();
-
-            line = new TagBuilder("p");
-
-            TagBuilder link = new TagBuilder("a");
-            link.MergeAttribute("href", activationLink);
-            link.InnerHtml = activationLink;
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.ValidationInscription, link.ToString());
-            content += line.ToString();
-
-            line = new TagBuilder("p");
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.ConnectionEasy, member.Email);
-            content += line.ToString();
-
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.SeeYouSoon;
-            content += line.ToString();
-
-            emailService.Send(EmailService.ContactMail, "eWorky Team", subject, content, true, member.Email);
-        }
-
-        public static void SendResetPasswordEmail(this Controller controller, IEmailService emailService, Member member, string password)
-        {
-            if (controller == null || member == null)
-                return;
-
-            var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
-            var changePassLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.ChangePassword, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
-
-            var subject = Worki.Resources.Models.Account.AccountModels.ResetPassword;
-
-            TagBuilder line = new TagBuilder("p");
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.HelloMember, member.MemberMainData.FirstName);
-            var content = line.ToString();
-
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.YourNewLogin;
-            content += line.ToString();
-
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.LoginForm;
-            line.InnerHtml += member.Email;
-            line.InnerHtml += "<br />";
-            line.InnerHtml += Worki.Resources.Models.Account.AccountModels.PasswordForm;
-            line.InnerHtml += password;
-            content += line.ToString();
-
-            line = new TagBuilder("p");
-            TagBuilder link = new TagBuilder("a");
-            link.MergeAttribute("href", changePassLink);
-            link.InnerHtml = Worki.Resources.Models.Account.AccountModels.ChangePassword;
-            line.InnerHtml = String.Format(Worki.Resources.Models.Account.AccountModels.AfterConnection, link.ToString());
-            content += line.ToString();
-
-            line = new TagBuilder("p");
-            line.InnerHtml = Worki.Resources.Models.Account.AccountModels.SeeYouSoon;
-            content += line.ToString();
-
-            emailService.Send(EmailService.ContactMail, "eWorky Team", subject, content, true, member.Email);
+            //emailService.Send(EmailService.ContactMail, "eWorky Team", subject, content, true, visitor.Email);
         }
 
         /// <summary>

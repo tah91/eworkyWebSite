@@ -49,7 +49,7 @@
 					}
 					else
 					{ 
-						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.HandleIt, MVC.Booking.HandleBooking(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery))
+						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.HandleIt, MVC.Booking.HandleBooking(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))
 					}
                 </td>
 				<td align="center">
@@ -62,7 +62,7 @@
 					}
 					else
 					{ 
-						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.ConfirmIt, MVC.Booking.ConfirmBooking(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery))
+						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.ConfirmIt, MVC.Booking.ConfirmBooking(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))
 					}
                 </td>
             </tr>

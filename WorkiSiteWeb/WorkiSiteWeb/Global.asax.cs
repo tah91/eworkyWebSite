@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
@@ -12,16 +13,14 @@ using MvcSiteMapProvider.Web;
 using Ninject;
 using Ninject.Modules;
 using Worki.Data.Models;
-using Worki.Infrastructure.Email;
+using Worki.Infrastructure;
 using Worki.Infrastructure.Logging;
 using Worki.Memberships;
 using Worki.Service;
-using Worki.Services;
 using Worki.SiteMap;
-using Worki.Web.ModelBinder;
-using Worki.Infrastructure;
-using System.Linq;
 using Worki.Web.Helpers;
+using Worki.Web.ModelBinder;
+using Postal;
 
 namespace Worki.Web
 {
@@ -51,7 +50,7 @@ namespace Worki.Web
 				.To<GroupRepository>();
 
 			Bind<IEmailService>()
-				.To<EmailService>();
+                .To<Postal.EmailService>();
 
 			Bind<IWelcomePeopleRepository>()
 				.To<WelcomePeopleRepository>();

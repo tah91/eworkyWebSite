@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using Worki.Data.Models;
 using Worki.Infrastructure;
+using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
-using Worki.Services;
-using Worki.Infrastructure.Helpers;
+using Worki.Service;
 
 namespace Worki.Web.Controllers
 {

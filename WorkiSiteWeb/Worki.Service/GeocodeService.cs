@@ -7,12 +7,11 @@ using Worki.Data.Repository;
 using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Repository;
 using System.Web.Routing;
-using Worki.Service;
 using System.Web;
 using System.Net;
 using Worki.Infrastructure.Logging;
 
-namespace Worki.Services
+namespace Worki.Service
 {
 	public interface IGeocodeService
 	{

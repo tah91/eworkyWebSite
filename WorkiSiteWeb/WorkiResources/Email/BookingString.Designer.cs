@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Worki.Resources.Views.Booking {
+namespace Worki.Resources.Email {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Worki.Resources.Views.Booking {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Booking.BookingString", typeof(BookingString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Email.BookingString", typeof(BookingString).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,66 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retour.
+        ///   Looks up a localized string similar to Nom : {0}
+        ///Téléphone : {1}
+        ///E-mail : {2}
+        ///Besoin : {3}
+        ///Début : {4}
+        ///Fin : {5}
+        ///Message : {6}.
         /// </summary>
-        public static string BackToUrl {
+        public static string BookingMailBody {
             get {
-                return ResourceManager.GetString("BackToUrl", resourceCulture);
+                return ResourceManager.GetString("BookingMailBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Détails de la réservation.
+        ///   Looks up a localized string similar to Alerte eWorky – Demande de réservation.
         /// </summary>
-        public static string BookingDetails {
+        public static string BookingMailSubject {
             get {
-                return ResourceManager.GetString("BookingDetails", resourceCulture);
+                return ResourceManager.GetString("BookingMailSubject", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remplir les champs pour réserver, un email vous sera envoyé.
+        ///   Looks up a localized string similar to Votre réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) est confirmée. 
+        ///Vous devrez régler la somme de {5} € directement auprès du prestataire.
+        ///En espérant avoir satisfait votre demande,.
         /// </summary>
-        public static string BookingIntro {
+        public static string ConfirmMailBody {
             get {
-                return ResourceManager.GetString("BookingIntro", resourceCulture);
+                return ResourceManager.GetString("ConfirmMailBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Réserver.
+        ///   Looks up a localized string similar to eWorky – Votre réservation est confirmée.
         /// </summary>
-        public static string BookIt {
+        public static string ConfirmMailSubject {
             get {
-                return ResourceManager.GetString("BookIt", resourceCulture);
+                return ResourceManager.GetString("ConfirmMailSubject", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirmer.
+        ///   Looks up a localized string similar to Votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) a été prise en charge par nos équipes. 
+        ///Notre équipe vous recontactera sous 48 H pour vous confirmer votre réservation.
+        ///En espérant vous revoir très vite sur www.eworky.com,.
         /// </summary>
-        public static string ConfirmIt {
+        public static string HandleMailBody {
             get {
-                return ResourceManager.GetString("ConfirmIt", resourceCulture);
+                return ResourceManager.GetString("HandleMailBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prendre en charge.
+        ///   Looks up a localized string similar to eWorky – Votre demande de réservation a été prise en compte.
         /// </summary>
-        public static string HandleIt {
+        public static string HandleMailSubject {
             get {
-                return ResourceManager.GetString("HandleIt", resourceCulture);
+                return ResourceManager.GetString("HandleMailSubject", resourceCulture);
             }
         }
     }

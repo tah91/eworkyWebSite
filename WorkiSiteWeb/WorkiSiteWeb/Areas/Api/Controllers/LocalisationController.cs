@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Worki.Data.Models;
-using Worki.Rest;
 using Worki.Infrastructure.Logging;
-using Worki.Services;
+using Worki.Rest;
+using Worki.Service;
 using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Api.Controllers

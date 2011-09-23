@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
-using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Web.Helpers;
@@ -13,6 +12,7 @@ using Worki.Infrastructure.Helpers;
 using Worki.Data.Models;
 using Worki.Memberships;
 using Worki.Infrastructure;
+using Postal;
 
 namespace Worki.Web.Controllers
 {
@@ -313,7 +313,7 @@ namespace Worki.Web.Controllers
 
             try
             {
-                this.SendVisitorMail(_EmailService, visitor);
+                //this.SendVisitorMail(_EmailService, visitor);
             }
             catch (Exception ex)
             {

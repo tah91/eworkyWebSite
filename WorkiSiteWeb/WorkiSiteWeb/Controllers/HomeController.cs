@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using Worki.Data.Models;
 using Worki.Data.Repository;
 using Worki.Infrastructure;
-using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
 using Worki.Service;
 using System.Linq;
@@ -11,6 +10,8 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Globalization;
+using Postal;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -120,7 +121,13 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    _EmailService.Send(contact.EMail, contact.FirstName + " " + contact.LastName, contact.Subject, contact.Message, false, EmailService.ContactMail);
+                    dynamic contactMail = new Email(MiscHelpers.EmailView);
+                    contactMail.From = contact.FirstName + " " + contact.LastName + "<" + contact.EMail + ">";
+                    contactMail.To = MiscHelpers.ContactMail;
+                    contactMail.Subject = contact.Subject;
+                    contactMail.ToName = MiscHelpers.ContactDisplayName;
+                    contactMail.Content = contact.Message;
+                    contactMail.Send();
                 }
                 catch (Exception ex)
                 {

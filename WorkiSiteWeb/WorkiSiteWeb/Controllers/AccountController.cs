@@ -5,10 +5,11 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Worki.Data.Models;
 using Worki.Infrastructure;
-using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
 using Worki.Memberships;
 using Worki.Web.Helpers;
+using Postal;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -192,7 +193,18 @@ namespace Worki.Web.Controllers
 					//send mail to activate the account
 					try
 					{
-						this.SendRegisterEmail(_EmailService, member);
+                        var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                        var activationLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.Activate, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
+                        TagBuilder link = new TagBuilder("a");
+                        link.MergeAttribute("href", activationLink);
+
+                        dynamic activateMail = new Email(MiscHelpers.EmailView);
+                        activateMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+                        activateMail.To = member.Email;
+                        activateMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
+                        activateMail.ToName = member.MemberMainData.FirstName;
+                        activateMail.Content = string.Format(Worki.Resources.Email.Activation.ActivationSubject, link.ToString(), member.Email);
+                        activateMail.Send();
 					}
 					catch (Exception ex)
 					{
@@ -323,7 +335,19 @@ namespace Worki.Web.Controllers
                     var member = _MemberRepository.GetMember(model.EMail);
                     try
                     {
-                        this.SendResetPasswordEmail(_EmailService, member, _MembershipService.GetPassword(member.Email, null));
+                        var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                        var changePassLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.ChangePassword, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
+                        TagBuilder link = new TagBuilder("a");
+                        link.MergeAttribute("href", changePassLink);
+                        link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
+
+                        dynamic resetMail = new Email(MiscHelpers.EmailView);
+                        resetMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+                        resetMail.To = member.Email;
+                        resetMail.Subject = Worki.Resources.Email.ResetPassword.ResetPasswordSubject;
+                        resetMail.ToName = member.MemberMainData.FirstName;
+                        resetMail.Content = string.Format(Worki.Resources.Email.ResetPassword.ResetPasswordContent, member.Email, _MembershipService.GetPassword(member.Email, null), link.ToString());
+                        resetMail.Send();
                     }
                     catch (Exception ex)
                     {

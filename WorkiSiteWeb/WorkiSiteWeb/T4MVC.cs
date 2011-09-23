@@ -36,6 +36,7 @@ public static class MVC {
     public static Worki.Web.Controllers.SearchController Search = new Worki.Web.Controllers.T4MVC_SearchController();
     public static Worki.Web.Controllers.UploadImageController UploadImage = new Worki.Web.Controllers.T4MVC_UploadImageController();
     public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
+    public static T4MVC.EmailsController Emails = new T4MVC.EmailsController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -1248,16 +1249,18 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult HandleBooking(int id, string returnUrl) {
+        public override System.Web.Mvc.ActionResult HandleBooking(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.HandleBooking);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("memberId", memberId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ConfirmBooking(int id, string returnUrl) {
+        public override System.Web.Mvc.ActionResult ConfirmBooking(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("memberId", memberId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
@@ -2108,6 +2111,21 @@ namespace Worki.Web.Controllers {
         }
 
     }
+}
+
+namespace T4MVC {
+    public class EmailsController {
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string _ViewStart = "~/Views/Emails/_ViewStart.cshtml";
+            public readonly string Email = "~/Views/Emails/Email.cshtml";
+        }
+    }
+
 }
 
 namespace T4MVC {

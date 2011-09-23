@@ -135,40 +135,4 @@
   <data name="HandleIt" xml:space="preserve">
     <value>Prendre en charge</value>
   </data>
-  <data name="BookingMailBody" xml:space="preserve">
-    <value>Nom : {0}
-Téléphone : {1}
-E-mail : {2}
-Besoin : {3}
-Début : {4}
-Fin : {5}
-Message : {6}</value>
-  </data>
-  <data name="BookingMailSubject" xml:space="preserve">
-    <value>Alerte eWorky – Demande de réservation</value>
-  </data>
-  <data name="ConfirmMailBody" xml:space="preserve">
-    <value>Bonjour,
-
-Votre réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) est confirmée. 
-Vous devrez régler la somme de {5} € directement auprès du prestataire.
-En espérant avoir satisfait votre demande,
-
-L’équipe eWorky</value>
-  </data>
-  <data name="ConfirmMailSubject" xml:space="preserve">
-    <value>eWorky – Votre réservation est confirmée</value>
-  </data>
-  <data name="HandleMailBody" xml:space="preserve">
-    <value>Bonjour,
-
-Votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) a été prise en charge par nos équipes. 
-Notre équipe vous recontactera sous 48 H pour vous confirmer votre réservation.
-En espérant vous revoir très vite sur www.eworky.com,
-
-L’équipe eWorky</value>
-  </data>
-  <data name="HandleMailSubject" xml:space="preserve">
-    <value>eWorky – Votre demande de réservation a été prise en compte</value>
-  </data>
 </root>

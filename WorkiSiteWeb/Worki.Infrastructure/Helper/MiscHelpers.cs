@@ -12,7 +12,16 @@ namespace Worki.Infrastructure.Helpers
 {
     public static class MiscHelpers
     {
-		public const string AdminRole = "AdminRole";
+        #region Email
+
+        public const string EmailView = "Email";
+        public const string ContactDisplayName = "eWorky Team";
+        public const string ContactMail = "contact@eworky.com";
+        public const string BookingMail = "team@eworky.com";
+
+        #endregion
+
+        public const string AdminRole = "AdminRole";
 		public const string AdminUser = "Admin";
 		public const string AdminPass = "Admin_Pass";
 		public const string AdminMail = "admin@eworky.com";
@@ -146,7 +155,7 @@ namespace Worki.Infrastructure.Helpers
 			{
 				if (i > 0)
 					builder.Append("<br/>");
-				builder.Append(HttpUtility.HtmlEncode(lines[i]));
+				builder.Append(lines[i]);
 			}
 			return builder.ToString();
 		}

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Worki.Resources.Views.Booking {
+namespace Worki.Resources.Email {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Worki.Resources.Views.Booking {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class BookingString {
+    public class Activation {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal BookingString() {
+        internal Activation() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Worki.Resources.Views.Booking {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Booking.BookingString", typeof(BookingString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Email.Activation", typeof(Activation).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,24 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retour.
+        ///   Looks up a localized string similar to Une fois votre compte activé, vous serez officiellement membre de la communauté eWorky ... et nous avons le plaisir de vous annoncer que vous y êtes presque !
+        ///
+        ///Pour valider votre inscription sur eWorky, il vous suffit de cliquer sur le lien suivant : {0}
+        ///
+        ///Vous pourrez ensuite vous connecter facilement avec votre identifiant &quot; {1} &quot;.
         /// </summary>
-        public static string BackToUrl {
+        public static string ActivationContent {
             get {
-                return ResourceManager.GetString("BackToUrl", resourceCulture);
+                return ResourceManager.GetString("ActivationContent", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Détails de la réservation.
+        ///   Looks up a localized string similar to Activation de votre compte eWorky.
         /// </summary>
-        public static string BookingDetails {
+        public static string ActivationSubject {
             get {
-                return ResourceManager.GetString("BookingDetails", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remplir les champs pour réserver, un email vous sera envoyé.
-        /// </summary>
-        public static string BookingIntro {
-            get {
-                return ResourceManager.GetString("BookingIntro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Réserver.
-        /// </summary>
-        public static string BookIt {
-            get {
-                return ResourceManager.GetString("BookIt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Confirmer.
-        /// </summary>
-        public static string ConfirmIt {
-            get {
-                return ResourceManager.GetString("ConfirmIt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prendre en charge.
-        /// </summary>
-        public static string HandleIt {
-            get {
-                return ResourceManager.GetString("HandleIt", resourceCulture);
+                return ResourceManager.GetString("ActivationSubject", resourceCulture);
             }
         }
     }

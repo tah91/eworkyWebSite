@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Web.Mvc;
-using Worki.Infrastructure.Email;
 using Worki.Data.Repository;
 using Worki.Data.Models;
 using Worki.Web.Helpers;
 using Worki.Infrastructure;
+using Postal;
 
 namespace Worki.Web.Controllers
 {
@@ -61,7 +61,7 @@ namespace Worki.Web.Controllers
                 //already added and validated from admin
                 else if (fromDB != null && fromDB.IsValid)
                 {
-                    this.SendVisitorMail(_EmailService, fromDB);
+                    //this.SendVisitorMail(_EmailService, fromDB);
                 }
                 else
                 {

@@ -7,9 +7,6 @@ namespace Worki.Service
 {
     public class EmailService : IEmailService
     {
-        public const string ContactMail = "contact@eworky.com";
-		public const string BookingMail = "team@eworky.com";
-
         public string LastErrorMessage
         {
             get { throw new NotImplementedException(); }

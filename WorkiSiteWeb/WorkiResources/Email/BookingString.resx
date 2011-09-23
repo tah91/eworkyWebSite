@@ -117,107 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddWorkplace" xml:space="preserve">
-    <value>Ajoutez un espace de travail</value>
+  <data name="BookingMailBody" xml:space="preserve">
+    <value>Nom : {0}
+Téléphone : {1}
+E-mail : {2}
+Besoin : {3}
+Début : {4}
+Fin : {5}
+Message : {6}</value>
   </data>
-  <data name="AfterConnection" xml:space="preserve">
-    <value>Vous pouvez {0}</value>
-    <comment>// on a enlever le après connexion</comment>
+  <data name="BookingMailSubject" xml:space="preserve">
+    <value>Alerte eWorky – Demande de réservation</value>
   </data>
-  <data name="BePartOfGroupe" xml:space="preserve">
-    <value>1.    {0} pour faire partie de la communauté.</value>
+  <data name="ConfirmMailBody" xml:space="preserve">
+    <value>Votre réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) est confirmée. 
+Vous devrez régler la somme de {5} € directement auprès du prestataire.
+En espérant avoir satisfait votre demande,</value>
   </data>
-  <data name="BothAdding" xml:space="preserve">
-    <value>A la fois plateforme collaborative et moteur de recherche, eWorky vous permettra de trouver un lieu de travail (café avec wifi, salle de réunion, salle de formation, etc.) qui vous convient, de le noter et d'ajouter vos lieux de travail favoris !</value>
+  <data name="ConfirmMailSubject" xml:space="preserve">
+    <value>eWorky – Votre réservation est confirmée</value>
   </data>
-  <data name="Civility" xml:space="preserve">
-    <value>Civilité</value>
+  <data name="HandleMailBody" xml:space="preserve">
+    <value>Votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) a été prise en charge par nos équipes. 
+Notre équipe vous recontactera sous 48 H pour vous confirmer votre réservation.
+En espérant vous revoir très vite sur www.eworky.com,</value>
   </data>
-  <data name="CommentWhatYouTest" xml:space="preserve">
-    <value>3.    Ah mais attends je le connais cet endroit ! N’hésitez pas à commenter et à noter les lieux de travail que vous avez déjà testés. C’est par là que ça se passe pour {0}.</value>
-  </data>
-  <data name="CompletYourProfil" xml:space="preserve">
-    <value>Complétez votre profil</value>
-  </data>
-  <data name="ConfirmPassword" xml:space="preserve">
-    <value>Confirmer le mot de passe</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>Adresse email</value>
-  </data>
-  <data name="EWBegining" xml:space="preserve">
-    <value>Lancement d'eWorky</value>
-  </data>
-  <data name="EWFirstOnWorkplaceSearch" xml:space="preserve">
-    <value>Vous l’attendiez avec impatience ? eWorky, premier portail français du lieu de travail vous ouvre enfin ses portes !</value>
-  </data>
-  <data name="EWTeam" xml:space="preserve">
-    <value>L’équipe eWorky</value>
-  </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>Keep in touch ! Suivez nous sur {0}, sur {1} et envoyez nous régulièrement de vos nouvelles (contact@eworky.com).</value>
-  </data>
-  <data name="Hello" xml:space="preserve">
-    <value>Bonjour,</value>
-  </data>
-  <data name="HelloMember" xml:space="preserve">
-    <value>Bonjour {0}</value>
-  </data>
-  <data name="IfYouFindThePlaceToWork" xml:space="preserve">
-    <value>2.    {0} Si vous avez déniché « THE place to work » et regrettez de ne pas l’avoir découvert avant, faites en profiter la communauté !</value>
-  </data>
-  <data name="KeepInTouch" xml:space="preserve">
-    <value>4.    Tenez nous au courant ! Qu’est-ce-qui marche mal sur le site ? Qu’est-ce-qui vous manque ? Eh oui, vous êtes les tout premiers privilégiés à tester le site donc il y aura sûrement beaucoup de choses à redire (contact@eworky.com). Mais ce site est avant tout là pour vous rendre service, donc il est encore temps de nous demander de l’adapter à vos besoins particuliers, n’hésitez pas !</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Adresse de messagerie</value>
-  </data>
-  <data name="NewPassword" xml:space="preserve">
-    <value>Nouveau mot de passe</value>
-  </data>
-  <data name="OldPassword" xml:space="preserve">
-    <value>Mot de passe actuel</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Mot de passe</value>
-  </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Mémoriser le mot de passe ?</value>
-  </data>
-  <data name="SearhPlace" xml:space="preserve">
-    <value>rechercher un lieu</value>
-  </data>
-  <data name="YourNewLogin" xml:space="preserve">
-    <value>Voici vos nouveaux identifiants :</value>
-  </data>
-  <data name="Facebook" xml:space="preserve">
-    <value>Facebook</value>
-  </data>
-  <data name="Twitter" xml:space="preserve">
-    <value> Twitter </value>
-  </data>
-  <data name="ChangeThePassword" xml:space="preserve">
-    <value>Modifier le mot de passe</value>
-  </data>
-  <data name="ResetThePassword" xml:space="preserve">
-    <value>Réinitialiser le mot de passe</value>
-  </data>
-  <data name="PreciseBuisnessName" xml:space="preserve">
-    <value>Veuillez preciser le nom de votre entreprise</value>
-  </data>
-  <data name="BirthDate" xml:space="preserve">
-    <value>Date de naissance</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Nom de l'entreprise</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Décrivez-vous</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Télephone portable</value>
-  </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Profil</value>
+  <data name="HandleMailSubject" xml:space="preserve">
+    <value>eWorky – Votre demande de réservation a été prise en compte</value>
   </data>
 </root>

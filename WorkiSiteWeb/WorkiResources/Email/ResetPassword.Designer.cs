@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Worki.Resources.Views.Booking {
+namespace Worki.Resources.Email {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Worki.Resources.Views.Booking {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class BookingString {
+    public class ResetPassword {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal BookingString() {
+        internal ResetPassword() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Worki.Resources.Views.Booking {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Booking.BookingString", typeof(BookingString).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Email.ResetPassword", typeof(ResetPassword).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,32 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retour.
+        ///   Looks up a localized string similar to Voici vos nouveaux identifiants :
+        ///Login : {0}
+        ///Password : {1}
+        ///Vous pouvez {2}.
         /// </summary>
-        public static string BackToUrl {
+        public static string ResetPasswordContent {
             get {
-                return ResourceManager.GetString("BackToUrl", resourceCulture);
+                return ResourceManager.GetString("ResetPasswordContent", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Détails de la réservation.
+        ///   Looks up a localized string similar to modifier le mot de passe..
         /// </summary>
-        public static string BookingDetails {
+        public static string ResetPasswordLink {
             get {
-                return ResourceManager.GetString("BookingDetails", resourceCulture);
+                return ResourceManager.GetString("ResetPasswordLink", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remplir les champs pour réserver, un email vous sera envoyé.
+        ///   Looks up a localized string similar to Réinitialisation de votre mot de passe eWorky.
         /// </summary>
-        public static string BookingIntro {
+        public static string ResetPasswordSubject {
             get {
-                return ResourceManager.GetString("BookingIntro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Réserver.
-        /// </summary>
-        public static string BookIt {
-            get {
-                return ResourceManager.GetString("BookIt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Confirmer.
-        /// </summary>
-        public static string ConfirmIt {
-            get {
-                return ResourceManager.GetString("ConfirmIt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prendre en charge.
-        /// </summary>
-        public static string HandleIt {
-            get {
-                return ResourceManager.GetString("HandleIt", resourceCulture);
+                return ResourceManager.GetString("ResetPasswordSubject", resourceCulture);
             }
         }
     }
