@@ -42,7 +42,5 @@
 .localisationMap{padding:2px;border:1px solid #5dafde}
 .localisationGallery{height:350px}
 .localisationInformation{font-weight:bold}
-.featureTag ul{margin:0;padding:0}
-.featureTag li{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:3px 10px;margin:0 3px 6px 0;background-color:#EEE;float:left}
 .favoris_add{background-image:url('images/favorite.png');background-position:0 0;width:20px;height:21px;display:inline-block}
 .favoris_del{background-image:url('images/favorite.png');background-position:0 -71px;width:20px;height:21px;display:inline-block}
