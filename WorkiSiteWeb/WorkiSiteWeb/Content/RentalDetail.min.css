@@ -3,3 +3,7 @@
 .rentalGallery{height:350px}
 .rentalDesc{margin-bottom:10px}
 .rentalMap{padding:2px;border:1px solid #5dafde}
+.rentalSummary{height:128;width:250;margin:20px}
+.rentalSummaryElem{background:white;color:white;background-color:#D35758;margin-right:10px;height:32;width:100;font-size:1.5em;font-family:Arial,Helvetica,Sans-Serif;font-weight:600;border-width:20px;border-color:#D35758;padding:10px}
+.rentalTitlered{color:#D35758;font-size:2em;font-weight:bold}
+.rentalTitle{margin-left:80px;margin-top:20px}

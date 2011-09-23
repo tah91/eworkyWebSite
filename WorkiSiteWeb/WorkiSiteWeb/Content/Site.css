@@ -76,6 +76,17 @@ body
 {
 	color:#a1a1a1;
 }
+
+.red
+{
+    color:#D35758;
+}
+
+.red a
+{
+    color:#D35758;
+}
+
 /* LINKS   
 ----------------------------------------------------------*/
 a
@@ -1503,4 +1514,26 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 .boldLink a
 {
     text-decoration:none;
+}
+
+/*FEATURE TAG
+----------------------------------------------------------*/
+
+.featureTag ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+.featureTag li
+{
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 3px 10px;
+    margin: 0 3px 6px 0;
+    background-color: #EEE;
+    /*background-color: #5dafde;*/
+    float: left;
+    /*color:White;*/
 }

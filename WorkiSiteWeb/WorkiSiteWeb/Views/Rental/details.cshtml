@@ -12,15 +12,14 @@
 
 <div class="rentalDetailHead">
     <div class="rentalTitle float-left">
-        <h1>@Model.GetDisplayName()</h1>
-        @Model.Address - @Model.PostalCode @Model.City
+        <h1 class="rentalTitlered">@Model.GetDisplayName()</h1>
+        <span class="underline">@Model.Address - @Model.PostalCode @Model.City</span>
     </div>
     <div class="rentalSummary float-right">
         <span class="rentalSummaryElem">@Model.SurfaceString</span>
         <span class="rentalSummaryElem">@Model.RateString</span>
     </div>
-    <div class="clear">
-    </div>
+    <div class="clear"></div>
     <div class="localisationShare float-right">
     @{
 		var link = Model.GetDetailFullUrl(Url);
@@ -60,7 +59,7 @@
         </div>
 		}
         <div class="contentBlock">
-            <h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Description</h2>
+            <h3 class="red">@Worki.Resources.Views.Rental.RentalString.Description</h3>
             <div class="rentalDesc">
                 @Html.Nl2Br(Model.Description)
             </div>
@@ -79,10 +78,6 @@
                 {
                     <li>@Model.AvailableString</li>
                 }
-                @if (!string.IsNullOrEmpty(Model.AvailableString))
-                {
-                    <li>@Model.AvailableString</li>
-                }
                 @if (!string.IsNullOrEmpty(Model.GreenHouseString))
                 {
                     <li>@Model.GreenHouseString</li>
@@ -91,38 +86,81 @@
             </div>
             <div class="clear">
             </div>
-        </div>
+        </div>        
     </div>
     <div class="rentalDetailRight blockContainer float-right">
         <div class="contentBlock">
-			<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Usefull</h2>
-            @Worki.Resources.Views.Rental.RentalString.CreateAlert<br />
-            @Worki.Resources.Views.Rental.RentalString.SaveSearch<br />
-            @Worki.Resources.Views.Rental.RentalString.Print<br />
-            @Worki.Resources.Views.Rental.RentalString.SendToFriend<br />
+			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Usefull</h3>
+                <ul class="usefullBlock">
+                    <li>
+                        <a href="#">@Worki.Resources.Views.Rental.RentalString.CreateAlert</a><br />
+                    </li>
+                    <li>
+                        @Worki.Resources.Views.Rental.RentalString.SaveSearch<br />
+                    </li>
+                    <li>
+                        @Worki.Resources.Views.Rental.RentalString.Print<br />
+                    </li>
+                    <li>
+                        @Worki.Resources.Views.Rental.RentalString.SendToFriend<br />
+                    </li>
+                </ul>
 		</div>
         <div class="contentBlock">
-			<h2 class="blue">@Worki.Resources.Views.Rental.RentalString.Owner</h2>
+			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Owner</h3>
             @Model.Member.GetFullDisplayName()<br />
             <span class="localisationInformation">Tel : </span>@Html.GetPhoneFormat(Model.Member.MemberMainData.PhoneNumber)<br />
-            @Worki.Resources.Views.Rental.RentalString.SendMailToOwner<br />
-            <span class="localisationInformation">@Worki.Resources.Models.Rental.Rental.Reference : </span>@Model.Reference<br />
-            <span class="localisationInformation">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@string.Format("{0:dd/MM/yyyy}",Model.TimeStamp)<br />
+            <span class="underline red">@Worki.Resources.Views.Rental.RentalString.SendMailToOwner</span><br />
+            <span class="localisationInformation red">@Worki.Resources.Models.Rental.Rental.Reference : </span>@Model.Reference<br />
+            <span class="localisationInformation red">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@string.Format("{0:dd/MM/yyyy}", Model.TimeStamp)<br />
 		</div>
         <div class="contentBlock">
-            <h2 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h2>
+            <h3 class="red">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
             <div class="rentalMap">
                 @Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
             </div>
-            @if(Model.RentalAccesses.Count>0)
+            @if (Model.RentalAccesses.Count > 0)
             {
-                <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
-                foreach(var item in Model.RentalAccesses)
+                <span class="localisationInformation red">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
+                foreach (var item in Model.RentalAccesses)
                 {
                     @item.DisplayName<br />
                 }
             }
         </div>
+        @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+        {
+            <div class="contentBlock">
+                <h3 class="red marginBottom">@Worki.Resources.Views.Rental.RentalString.InfoAdmin</h3>
+                <h4 class="red">@Worki.Resources.Views.Rental.RentalString.Rental</h4>
+                    <ul class="rentalFields">
+                        @if (!string.IsNullOrEmpty(Model.CreationDate.ToString()))
+                        {
+                            <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.DateDrop </span>@string.Format("{0:d/M/yyyy}", Model.CreationDate)</li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Reference))
+                        {
+                            <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.Reference </span>@Model.Reference</li>
+                        }
+                    </ul>
+                <h4 class="red marginTop">@Worki.Resources.Views.Rental.RentalString.Place</h4>
+                    <ul class="rentalFields">
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.Address </span>@Model.Address</li>
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.PostalCode </span>@Model.PostalCode</li>
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.City </span>@Model.City</li>
+                    </ul>
+                <h4 class="red marginTop">@Worki.Resources.Views.Rental.RentalString.Owner</h4>
+                    <ul class="rentalFields">
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.LastName </span>@Model.Member.MemberMainData.LastName</li>
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.FirstName </span>@Model.Member.MemberMainData.FirstName</li>
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.PostalCode </span>@Model.Member.MemberMainData.PostalCode</li>
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.City </span>@Model.Member.MemberMainData.City</li>
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.PhoneNumber </span>@Model.Member.MemberMainData.PhoneNumber</li>
+                        <li><span class="bolder">@Worki.Resources.Views.Rental.RentalString.Email </span>@Model.Member.Email</li>
+                        <li><span class="boldLink red">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span></li>
+                    </ul>
+            </div>
+        }
     </div>
 	<div class="clear">
 	</div>
