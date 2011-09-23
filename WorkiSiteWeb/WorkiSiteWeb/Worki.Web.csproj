@@ -687,6 +687,8 @@
     </Content>
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Email.cshtml" />
+    <Content Include="Views\Rental\RentalSearch.cshtml" />
+    <Content Include="Views\Rental\_Rental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

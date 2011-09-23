@@ -129,14 +129,32 @@
   <data name="AccessType" xml:space="preserve">
     <value>Type de transport</value>
   </data>
+  <data name="AccurateSearch" xml:space="preserve">
+    <value>Affinner votre recherche</value>
+  </data>
   <data name="AddRental" xml:space="preserve">
     <value>Ajouter une annonce</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Adresse :</value>
   </data>
+  <data name="Area" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="AvailableDate" xml:space="preserve">
+    <value>Date de disponibilité</value>
+  </data>
+  <data name="BeginResultAnswer" xml:space="preserve">
+    <value>Résultat(s) de votre recherche :</value>
+  </data>
+  <data name="CheckProfile" xml:space="preserve">
+    <value>Consulter le profil :</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>Ville :</value>
+  </data>
+  <data name="ContractType" xml:space="preserve">
+    <value>Type de contrat</value>
   </data>
   <data name="CreateAlert" xml:space="preserve">
     <value>Créer une alerte email</value>
@@ -152,6 +170,9 @@
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email :</value>
+  </data>
+  <data name="EndResultAnswer" xml:space="preserve">
+    <value>annonce(s) trouvée(s)</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Caratéristiques</value>
@@ -171,6 +192,15 @@
   <data name="LastName" xml:space="preserve">
     <value>Nom :</value>
   </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Localisation</value>
+  </data>
+  <data name="MoreDetail" xml:space="preserve">
+    <value>Plus de détail</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Autres</value>
+  </data>
   <data name="Owner" xml:space="preserve">
     <value>Propriétaire</value>
   </data>
@@ -183,6 +213,9 @@
   <data name="PostalCode" xml:space="preserve">
     <value>Code Postal :</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prix</value>
+  </data>
   <data name="Print" xml:space="preserve">
     <value>Imprimer cette annonce</value>
   </data>
@@ -191,6 +224,12 @@
   </data>
   <data name="Rental" xml:space="preserve">
     <value>Annonce</value>
+  </data>
+  <data name="RentalEdit" xml:space="preserve">
+    <value>Editer l'annonce</value>
+  </data>
+  <data name="RentalSuppress" xml:space="preserve">
+    <value>Effacer l'annonce</value>
   </data>
   <data name="SaveSearch" xml:space="preserve">
     <value>Mémoriser cette recherche</value>

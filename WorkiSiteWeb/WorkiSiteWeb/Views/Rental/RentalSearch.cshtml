@@ -1,0 +1,82 @@
+﻿@model Worki.Data.Models.Rental
+
+@section HeadContent
+{
+    <link href="@Url.VersionedContent(Links.Content.RentalDetail_min_css)" rel="stylesheet" type="text/css" />
+}
+
+<div class="clearfix">
+    <div class="float-left">
+        @RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.YourSearchResult, "Red", false)
+        <span class="float-left resultHeader2">
+            <span class="bold red">@Worki.Resources.Views.Rental.RentalString.BeginResultAnswer </span>3 @Worki.Resources.Views.Rental.RentalString.EndResultAnswer
+        </span>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="detailContent">
+    <div class="resultDiv dashedRight float-left">
+        <div class="rentalSearchLeftPanel">
+            @Html.Partial(MVC.Rental.Views._Rental, Model)
+            @Html.Partial(MVC.Rental.Views._Rental, Model)
+            @Html.Partial(MVC.Rental.Views._Rental, Model)
+        </div>
+    </div>
+    <div class="float-right rentalSearchRightPanel">
+        <div class="rentalSearchLeftPanelDetail">
+			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.AccurateSearch</h3>
+
+            <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Price</span></h3>
+	        <div class="toogle_container">
+                <div class="block">
+			        <p>Endroit ou mettre les critères</p>
+		        </div>
+	        </div>
+
+            <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Area</span></h3>
+	        <div class="toogle_container">
+                <div class="block">
+			        <p>Endroit ou mettre les critères</p>
+		        </div>
+	        </div>
+
+            <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h3>
+	        <div class="toogle_container">
+                <div class="block">
+			        <p>Endroit ou mettre les critères</p>
+		        </div>
+	        </div>
+
+            <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h3>
+	        <div class="toogle_container">
+                <div class="block">
+			        <p>Endroit ou mettre les critères</p>
+		        </div>
+	        </div>
+
+            <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h3>
+	        <div class="toogle_container">
+                <div class="block">
+			        <p>Endroit ou mettre les critères</p>
+		        </div>
+	        </div>
+
+            <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Others</span></h3>
+	        <div class="toogle_container">
+                <div class="block">
+			        <p>Endroit ou mettre les critères</p>
+		        </div>
+	        </div>
+
+        </div>
+    </div>
+	<div class="clear"></div>
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
+    </script>
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}

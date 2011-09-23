@@ -97,6 +97,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Affinner votre recherche.
+        /// </summary>
+        public static string AccurateSearch {
+            get {
+                return ResourceManager.GetString("AccurateSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ajouter une annonce.
         /// </summary>
         public static string AddRental {
@@ -115,11 +124,56 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Surface.
+        /// </summary>
+        public static string Area {
+            get {
+                return ResourceManager.GetString("Area", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date de disponibilité.
+        /// </summary>
+        public static string AvailableDate {
+            get {
+                return ResourceManager.GetString("AvailableDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Résultat(s) de votre recherche :.
+        /// </summary>
+        public static string BeginResultAnswer {
+            get {
+                return ResourceManager.GetString("BeginResultAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Consulter le profil :.
+        /// </summary>
+        public static string CheckProfile {
+            get {
+                return ResourceManager.GetString("CheckProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ville :.
         /// </summary>
         public static string City {
             get {
                 return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Type de contrat.
+        /// </summary>
+        public static string ContractType {
+            get {
+                return ResourceManager.GetString("ContractType", resourceCulture);
             }
         }
         
@@ -165,6 +219,15 @@ namespace Worki.Resources.Views.Rental {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à annonce(s) trouvée(s).
+        /// </summary>
+        public static string EndResultAnswer {
+            get {
+                return ResourceManager.GetString("EndResultAnswer", resourceCulture);
             }
         }
         
@@ -223,6 +286,33 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Localisation.
+        /// </summary>
+        public static string Localisation {
+            get {
+                return ResourceManager.GetString("Localisation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Plus de détail.
+        /// </summary>
+        public static string MoreDetail {
+            get {
+                return ResourceManager.GetString("MoreDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Autres.
+        /// </summary>
+        public static string Others {
+            get {
+                return ResourceManager.GetString("Others", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Propriétaire.
         /// </summary>
         public static string Owner {
@@ -259,6 +349,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Prix.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Imprimer cette annonce.
         /// </summary>
         public static string Print {
@@ -282,6 +381,24 @@ namespace Worki.Resources.Views.Rental {
         public static string Rental {
             get {
                 return ResourceManager.GetString("Rental", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Editer l&apos;annonce.
+        /// </summary>
+        public static string RentalEdit {
+            get {
+                return ResourceManager.GetString("RentalEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Effacer l&apos;annonce.
+        /// </summary>
+        public static string RentalSuppress {
+            get {
+                return ResourceManager.GetString("RentalSuppress", resourceCulture);
             }
         }
         

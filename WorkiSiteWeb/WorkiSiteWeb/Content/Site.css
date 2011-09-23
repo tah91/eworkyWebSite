@@ -1041,6 +1041,16 @@ li
 	border-color: #5DAFDE transparent;
 }
 
+.titleRed
+{
+	background-color:#D35758;
+}
+
+.titleRed:after
+{
+    border-color: #D35758 transparent;
+}
+
 .titleTriangle
 {
 	height:7px;
@@ -1387,7 +1397,10 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 /*TABS
 ----------------------------------------------------------*/
 .arrow_down{ background-image:url('images/arrow.png'); background-position: 0 0; width: 22px; height: 22px; } 
-.arrow_left{ background-image:url('images/arrow.png'); background-position: 0 -72px; width: 22px; height: 22px; } 
+.arrow_left{ background-image:url('images/arrow.png'); background-position: 0 -72px; width: 22px; height: 22px; }
+
+.arrow_down_red{ background-image:url('images/arrow_red.png'); background-position: 0 0; width: 22px; height: 22px; } 
+.arrow_left_red{ background-image:url('images/arrow_red.png'); background-position: 0 -72px; width: 22px; height: 22px; } 
 
 .acc_trigger, .toogle_trigger
 {
@@ -1402,6 +1415,26 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 }
 
 .acc_trigger span, .toogle_trigger span
+{
+	text-decoration: none;
+	display: block;
+	padding: 0 0 0 30px;
+	cursor:pointer;
+}
+
+.toogle_trigger_red
+{
+	padding: 0;	
+	margin-bottom:10px;
+	margin-left: 5px;
+	background: url('images/arrow_red.png') no-repeat 0 -72px;
+	height: 22px;
+	line-height: 22px;
+	float: left;
+	width: 100%;
+}
+
+.toogle_trigger_red span
 {
 	text-decoration: none;
 	display: block;
