@@ -152,9 +152,9 @@
       <HintPath>Externals\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Postal, Version=0.6.3.0, Culture=neutral, PublicKeyToken=45719375b8b4d528, processorArchitecture=MSIL">
-      <HintPath>..\..\..\postal\src\Postal\bin\Debug\Postal.dll</HintPath>
+      <HintPath>..\packages\postal.0.6.3\lib\net40\Postal.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine">
+    <Reference Include="RazorEngine, Version=2.1.4039.23635, Culture=neutral, PublicKeyToken=1f722ed313f51831, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.2.1\lib\.NetFramework 4.0\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
