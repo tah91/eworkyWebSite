@@ -106,15 +106,15 @@
 					@if (Model.AddedLocalisations.Count != 0)
                     {
                         ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.AddedLoc;
-						    @Html.Partial(MVC.Profil.Views._LocalisationTab)
+						@Html.Partial(MVC.Profil.Views._LocalisationTab)
                     }
                     else if (Model.IsPrivate)
                     {
-						    <span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Localisation.Create())))</span>
+						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Localisation.Create())))</span>
                     }
                      else
                      {
-                            <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
+                        <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
                      }
                 </div> 
             </div>
