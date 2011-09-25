@@ -113,7 +113,6 @@ namespace Worki.Web.Controllers
 						rentalToAdd.Longitude = lng;
 						//save
 						rRepo.Add(rentalToAdd);
-						idToRedirect = rentalToAdd.Id;
 					}
 					else
 					{
@@ -122,10 +121,10 @@ namespace Worki.Web.Controllers
 						r.TimeStamp = DateTime.Now;
 						r.Latitude = lat;
 						r.Longitude = lng;
-						idToRedirect = id.Value;
 					}
 
 					context.Commit();
+					idToRedirect = newRental ? rentalToAdd.Id : id.Value;
 					return RedirectToAction(MVC.Rental.ActionNames.Detail, new { id = idToRedirect });
 				}
 			}

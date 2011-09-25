@@ -104,7 +104,7 @@ namespace Worki.Web.Controllers
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			//to keep files state in case of error
-            TempData[PictureData.PictureDataString] = new PictureDataContainer(localisation);
+			TempData[PictureData.PictureDataString] = new PictureDataContainer(localisation);
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
@@ -129,8 +129,8 @@ namespace Worki.Web.Controllers
 						//validate
 						_SearchService.ValidateLocalisation(localisationToAdd, ref error);
 						//save
+						localisationToAdd.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, MemberId = member.MemberId, ModificationType = (int)EditionType.Creation });
 						lRepo.Add(localisationToAdd);
-						idToRedirect = localisationToAdd.ID;
 					}
 					else
 					{
@@ -141,16 +141,15 @@ namespace Worki.Web.Controllers
 							throw new Exception(editionAccess);
 						}
 						var loc = lRepo.Get(id.Value);
-							 UpdateModel(loc, LocalisationPrefix);
-						idToRedirect = id.Value;						
+						UpdateModel(loc, LocalisationPrefix);
+						loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
 					}
-
-					member.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = idToRedirect, ModificationType = (int)EditionType.Edition });
-                    TempData.Remove(PictureData.PictureDataString);
-                    localisation.ID = idToRedirect;
-
+					TempData.Remove(PictureData.PictureDataString);
 					context.Commit();
-                    return Redirect(localisation.GetDetailFullUrl(Url));
+
+					idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
+					localisation.ID = idToRedirect;
+					return Redirect(localisation.GetDetailFullUrl(Url));
 				}
 			}
 			catch (Exception ex)
