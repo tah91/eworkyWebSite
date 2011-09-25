@@ -41,7 +41,7 @@ namespace Worki.Infrastructure.Repository
 		/// </summary>
 		/// <param name="key">key of thye element to modify</param>
 		/// <param name="actionToPerform">action to perform</param>
-		void Update(int key, Action<T> actionToPerform);
+		//void Update(int key, Action<T> actionToPerform);
 
 		/// <summary>
 		/// Get all the element from repository

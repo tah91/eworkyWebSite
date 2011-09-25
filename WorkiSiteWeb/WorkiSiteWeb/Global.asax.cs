@@ -23,6 +23,7 @@ using Worki.Web.ModelBinder;
 using Postal;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.UnitOfWork;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web
 {
@@ -233,6 +234,51 @@ namespace Worki.Web
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());
 
+		static bool _Initialized = false;
+
+		void InitialiseAdmin()
+		{
+			if (_Initialized)
+				return;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
+			{
+
+				//create roles
+				if (!Roles.RoleExists(MiscHelpers.AdminRole))
+				{
+					Roles.CreateRole(MiscHelpers.AdminRole);
+				}
+
+				//create admin
+				var user = mRepo.Get(m => m.Username == MiscHelpers.AdminUser);
+
+				//create admin
+				if (user == null)
+				{
+					MembershipCreateStatus status;
+					Membership.Provider.CreateUser(MiscHelpers.AdminUser, MiscHelpers.AdminPass, MiscHelpers.AdminMail, null, null, true, null, out status);
+					//add role
+					if (!Roles.IsUserInRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole))
+						Roles.AddUserToRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole);
+				}
+				//add member data
+				if (user.MemberMainData == null)
+				{
+					user.MemberMainData = new MemberMainData { FirstName = MiscHelpers.AdminUser, LastName = MiscHelpers.AdminUser, Civility = (int)CivilityType.Mr };
+				}
+				context.Commit();
+			}
+			catch (Exception)
+			{
+				context.Complete();
+				//_Logger.Error("Initialise", ex);
+				return;
+			}
+			_Initialized = true;
+		}
+
         protected void Application_Start()
         {
 			// Inject account repository into our custom membership & role providers.
@@ -240,8 +286,9 @@ namespace Worki.Web
 			_kernel.Inject(Roles.Provider);
 
 			LocalisationDynamicNodeProvider.RegisterKernel(_kernel);
-
 			ModelFactory.RegisterKernel(_kernel);
+
+			InitialiseAdmin();
 
 			//Inject
 			ControllerBuilder.Current.SetControllerFactory(new NinjectControlerFactory(_kernel));

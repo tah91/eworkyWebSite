@@ -29,7 +29,6 @@ namespace Worki.Data.Models
 			{
 				item.IsValid = true;
 			}
-			//db.SaveChanges();
 		}
 
 		#endregion

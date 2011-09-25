@@ -208,10 +208,7 @@ namespace Worki.Data.Models
 					return true;
 				}).Select(loc => loc.ID).ToList();
 
-			//var db2 = new WorkiDBEntities();
-			{
-				return _Context.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList();
-			}
+			return _Context.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList();
 		}
 
 		public Comment GetComment(int comId)

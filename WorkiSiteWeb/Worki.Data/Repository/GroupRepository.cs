@@ -30,7 +30,6 @@ namespace Worki.Data.Models
 			{
 				_Context.MembersInGroups.Add(item);
 			}
-			//_Context.SaveChanges();
 		}
 
 		public void DeleteMembersInGroup(IEnumerable<MembersInGroup> membersInGroup)
@@ -41,7 +40,6 @@ namespace Worki.Data.Models
 			{
 				_Context.MembersInGroups.Remove(item);
 			}
-			//_Context.SaveChanges();
 		}
 
 		public IList<MembersInGroup> GetAllMembersInGroups()

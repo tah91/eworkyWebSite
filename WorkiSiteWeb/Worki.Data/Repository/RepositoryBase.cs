@@ -26,7 +26,6 @@ namespace Worki.Data.Repository
 			{
 				var dbSet = _Context.Set<T>();
 				dbSet.Add(entity);
-				//_Context.SaveChanges();
 			}
 			catch (Exception ex)
 			{
@@ -41,7 +40,6 @@ namespace Worki.Data.Repository
 				var dbSet = _Context.Set<T>();
 				var entity = dbSet.Find(key);
 				dbSet.Remove(entity);
-				//db.SaveChanges();
 			}
 			catch (Exception ex)
 			{
@@ -59,7 +57,6 @@ namespace Worki.Data.Repository
 				{
 					dbSet.Remove(obj);
 				}
-				//db.SaveChanges();
 			}
 			catch (Exception ex)
 			{
@@ -79,27 +76,6 @@ namespace Worki.Data.Repository
 			{
 				_Logger.Error("Get", ex);
 				return null;
-			}
-		}
-
-		public virtual void Update(int key, Action<T> actionToPerform)
-		{
-			try
-			{
-				using (var db = new WorkiDBEntities())
-				{
-					var dbSet = db.Set<T>();
-					var entity = dbSet.Find(key);
-					if (entity != null)
-					{
-						actionToPerform.Invoke(entity);
-						//db.SaveChanges();
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Update", ex);
 			}
 		}
 

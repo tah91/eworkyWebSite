@@ -21,38 +21,17 @@ namespace Worki.Web.Controllers
     [CacheFilter(Order = 2)]
     public partial class AdminController : Controller
     {
-        ILocalisationRepository _LocalisationRepository;
         IMembershipService _MembershipService;
-        IMemberRepository _MemberRepository;
-        IVisitorRepository _VisitorRepository;
-        IWelcomePeopleRepository _WelcomePeopleRepository;
-		IBookingRepository _BookingRepository;
         ILogger _Logger;
         IEmailService _EmailService;
-        IPressRepository _PressRepository;
-        IRentalRepository _RentalRepository;
 
-        public AdminController( ILocalisationRepository localisationRepository, 
-                                IMembershipService memberShipservice, 
-                                IVisitorRepository visitorRepository,
+        public AdminController( IMembershipService memberShipservice, 
                                 ILogger logger,
-                                IEmailService emailService,
-                                IMemberRepository memberRepository,
-                                IWelcomePeopleRepository welcomePeopleRepository,
-                                IPressRepository pressRepository,
-								IBookingRepository bookingRepository,
-                                IRentalRepository rentalRepository)
+                                IEmailService emailService)
         {
-            _LocalisationRepository = localisationRepository;
             _MembershipService = memberShipservice;
-            _VisitorRepository = visitorRepository;
             _Logger = logger;
             _EmailService = emailService;
-            _MemberRepository = memberRepository;
-            _WelcomePeopleRepository = welcomePeopleRepository;
-			_BookingRepository = bookingRepository;
-            _PressRepository = pressRepository;
-            _RentalRepository = rentalRepository;
         }
 
         public int PageSize = 25; // Will change this later
@@ -66,8 +45,10 @@ namespace Worki.Web.Controllers
         /// <returns>The action result.</returns>
         public virtual ActionResult Index(int? page)
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
-			var localisations = _LocalisationRepository.Get((pageValue - 1) * PageSize, PageSize, l => l.ID);
+			var localisations = lRepo.Get((pageValue - 1) * PageSize, PageSize, l => l.ID);
             var viewModel = new AdminLocalisation(localisations.ToList())
             {
                 Localisations = localisations,
@@ -75,7 +56,7 @@ namespace Worki.Web.Controllers
                 {
                     CurrentPage = pageValue,
                     ItemsPerPage = PageSize,
-                    TotalItems = _LocalisationRepository.GetCount()
+					TotalItems = lRepo.GetCount()
                 }
             };
             return View(viewModel);
@@ -87,71 +68,73 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="collection">form containg the list of ids to push to "a la une"</param>
         /// <returns>Redirect to return url</returns>
-        [HttpPost] 
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult UpdateMainLocalisation(FormCollection collection, string returnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    // erase all values on the tables mainLocalisation inthe table
-                    var listCollection = collection.AllKeys;
-                    foreach (var key in listCollection)
-                    {
-                        var locId = 0;
-                        try
-                        {
-                            locId = int.Parse(key);
-                        }
-                        catch (Exception)
-                        {
-                            continue;
-                        }
-                        var value = collection[key].ToLower();
-                        //var loc = _LocalisationRepository.GetLocalisation(locId);
-                        _LocalisationRepository.Update(locId, loc =>
-                            {
-                                var values = value.Split(',');
-                                var isMain = false;
-                                var userName = string.Empty;
-                                foreach (var item in values)
-                                {
-                                    if (string.IsNullOrEmpty(item))
-                                        continue;
-                                    if (string.Compare(item, "true", StringComparison.InvariantCultureIgnoreCase) == 0)
-                                        isMain = true;
-                                    //retrieve username
-                                    if (item.Contains('@'))
-                                    {
-                                        var member = _MemberRepository.GetMember(item);
-                                        if (member == null)
-                                            throw new Exception();
-                                        loc.OwnerID = member.MemberId;
-                                    }
-                                }
-                                //case row is checked
-                                if (isMain)
-                                {
-                                    if (loc.MainLocalisation == null)
-                                        loc.MainLocalisation = new MainLocalisation { LocalisationID = locId };
-                                }
-                                else
-                                {
-                                    loc.MainLocalisation.Localisation = null;
-                                }
-                            });
-                    }
-                }
-                catch (Exception e)
-                {
-                    _Logger.Error(e.Message);
-                    ModelState.AddModelError("", e.Message);
-                }
-            }
-            // Redirection
-            return Redirect(returnUrl);
-        }
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult UpdateMainLocalisation(FormCollection collection, string returnUrl)
+		{
+			if (ModelState.IsValid)
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				try
+				{
+					// erase all values on the tables mainLocalisation inthe table
+					var listCollection = collection.AllKeys;
+					foreach (var key in listCollection)
+					{
+						var locId = 0;
+						try
+						{
+							locId = int.Parse(key);
+						}
+						catch (Exception)
+						{
+							continue;
+						}
+						var value = collection[key].ToLower();
+						var loc = lRepo.Get(locId);
+						var values = value.Split(',');
+						var isMain = false;
+						var userName = string.Empty;
+						foreach (var item in values)
+						{
+							if (string.IsNullOrEmpty(item))
+								continue;
+							if (string.Compare(item, "true", StringComparison.InvariantCultureIgnoreCase) == 0)
+								isMain = true;
+							//retrieve username
+							if (item.Contains('@'))
+							{
+								var member = mRepo.GetMember(item);
+								if (member == null)
+									throw new Exception();
+								loc.OwnerID = member.MemberId;
+							}
+						}
+						//case row is checked
+						if (isMain)
+						{
+							if (loc.MainLocalisation == null)
+								loc.MainLocalisation = new MainLocalisation { LocalisationID = locId };
+						}
+						else
+						{
+							loc.MainLocalisation.Localisation = null;
+						}
+					}
+					context.Commit();
+				}
+				catch (Exception e)
+				{
+					_Logger.Error(e.Message);
+					context.Complete();
+					ModelState.AddModelError("", e.Message);
+				}
+			}
+			// Redirection
+			return Redirect(returnUrl);
+		}
 
         #endregion 
         
@@ -164,8 +147,10 @@ namespace Worki.Web.Controllers
         /// <returns>The action result.</returns>
 		public virtual ActionResult IndexUser(int? page)
 		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			int pageValue = page ?? 1;
-			var members = _MemberRepository.Get((pageValue - 1) * PageSize, PageSize, m => m.MemberId);
+			var members = mRepo.Get((pageValue - 1) * PageSize, PageSize, m => m.MemberId);
 			var viewModel = new UserListViewModel()
 			{
 				ListMemberShip = _MembershipService.GetAdminMapping(members),
@@ -173,7 +158,7 @@ namespace Worki.Web.Controllers
 				 {
 					 CurrentPage = pageValue,
 					 ItemsPerPage = PageSize,
-                     TotalItems = _MemberRepository.GetCount()
+					 TotalItems = mRepo.GetCount()
 				 }
 			};
 			return View(viewModel);
@@ -191,13 +176,15 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 try
                 {
                     var listCollection = collection.AllKeys;
                     foreach (var username in listCollection)
                     {
                         var roleCheck = collection[username].ToLower();
-                        var member = _MemberRepository.GetMember(username);
+						var member = mRepo.GetMember(username);
                         if (member == null)
                             continue;
                         var userInRole = Roles.IsUserInRole(username, MiscHelpers.AdminRole);
@@ -255,13 +242,26 @@ namespace Worki.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult DeleteUser(User user, string confirmButton,string returnUrl)
         {
-            var member = _MemberRepository.GetMember(user.UserName);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var vRepo = ModelFactory.GetRepository<IVisitorRepository>(context);
+			var member = mRepo.GetMember(user.UserName);
 			if (member == null)
                 return View(MVC.Admin.Views.utilisateur_absent);
             else
             {
-				_MemberRepository.Delete(member.MemberId);
-				_VisitorRepository.Delete(item => string.Compare(item.Email, user.UserName, StringComparison.InvariantCultureIgnoreCase) == 0);
+				try
+				{
+					mRepo.Delete(member.MemberId);
+					vRepo.Delete(item => string.Compare(item.Email, user.UserName, StringComparison.InvariantCultureIgnoreCase) == 0);
+					context.Commit();
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("", ex);
+					context.Complete();
+				}
+
                 return Redirect(returnUrl);
             }
         }
@@ -277,12 +277,14 @@ namespace Worki.Web.Controllers
         /// <returns>The action result.</returns>
         public virtual ActionResult IndexVisitor(int? page)
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var vRepo = ModelFactory.GetRepository<IVisitorRepository>(context);
             int pageValue = page ?? 1;
             int itemTotal = 1;
             //IQueryable<Visitor> visitors = _VisitorRepository.GetVisitors((pageValue - 1) * PageSize, PageSize);
-			var currentPage = _VisitorRepository.Get((pageValue - 1) * PageSize, PageSize, v => v.Id);
+			var currentPage = vRepo.Get((pageValue - 1) * PageSize, PageSize, v => v.Id);
             var dict = currentPage.ToDictionary(v => v, v => _MembershipService.GetUserByMail(v.Email) != null);
-            itemTotal = _VisitorRepository.GetCount();
+			itemTotal = vRepo.GetCount();
             var viewModel = new VisitorListViewModel()
             {
                 ListVisitor = dict,
@@ -307,7 +309,9 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult SendEmail(string email, string returnUrl)
         {
-			var visitor = _VisitorRepository.Get(item => string.Compare(item.Email, email, StringComparison.InvariantCultureIgnoreCase) == 0);
+			var context = ModelFactory.GetUnitOfWork();
+			var vRepo = ModelFactory.GetRepository<IVisitorRepository>(context);
+			var visitor = vRepo.Get(item => string.Compare(item.Email, email, StringComparison.InvariantCultureIgnoreCase) == 0);
             if (visitor == null)
                 return RedirectToAction(MVC.Admin.IndexVisitor());
 
@@ -321,7 +325,8 @@ namespace Worki.Web.Controllers
                 return RedirectToAction(MVC.Admin.IndexVisitor());
             }
             //validate all visitors with the email
-            _VisitorRepository.ValidateVisitor(email);
+			vRepo.ValidateVisitor(email);
+			context.Commit();
             if (!string.IsNullOrEmpty(returnUrl))
                 return Redirect(returnUrl);
             else
@@ -339,8 +344,10 @@ namespace Worki.Web.Controllers
         /// <returns>The action result.</returns>
         public virtual ActionResult IndexWelcomePeople(int? page)
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
             int pageValue = page ?? 1;
-			var welcomPeople = _WelcomePeopleRepository.Get((pageValue - 1) * PageSize, PageSize, wp => wp.Id);
+			var welcomPeople = wpRepo.Get((pageValue - 1) * PageSize, PageSize, wp => wp.Id);
             var viewModel = new WelcomePeopleListViewModel()
             {
                 WelcomePeople = welcomPeople,
@@ -348,7 +355,7 @@ namespace Worki.Web.Controllers
                 {
                     CurrentPage = pageValue,
                     ItemsPerPage = PageSize,
-                    TotalItems = _WelcomePeopleRepository.GetCount()
+					TotalItems = wpRepo.GetCount()
                 }
             };
             return View(viewModel);
@@ -362,7 +369,9 @@ namespace Worki.Web.Controllers
         [Authorize]
         public virtual ActionResult DetailWelcomePeople(int id)
         {
-            var item = _WelcomePeopleRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+			var item = wpRepo.Get(id);
             if (item == null)
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             return View(item);
@@ -389,6 +398,10 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+				var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
 				try
 				{
 					//upload images and set image paths
@@ -401,16 +414,18 @@ namespace Worki.Web.Controllers
 						formModel.WelcomePeople.LocalisationPicture = uploadedFileName;
 					}
 					//get member
-					var member = _MemberRepository.GetMember(formModel.Email);
+					var member = mRepo.GetMember(formModel.Email);
 					formModel.WelcomePeople.MemberId = member.MemberId;
 					//get localisation
-					var loc = _LocalisationRepository.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
+					var loc = lRepo.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
 					formModel.WelcomePeople.LocalisationId = loc.ID;
-					_WelcomePeopleRepository.Add(formModel.WelcomePeople);
+					wpRepo.Add(formModel.WelcomePeople);
+					context.Commit();
 					return RedirectToAction(MVC.Admin.IndexWelcomePeople());
 				}
 				catch (Exception ex)
 				{
+					context.Complete();
 					ModelState.AddModelError("", ex.Message);
 				}
             }
@@ -425,7 +440,9 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get), Authorize]
         public virtual ActionResult EditWelcomePeople(int id)
         {
-            var item = _WelcomePeopleRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+			var item = wpRepo.Get(id);
             if (item == null)
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
 			return View(new WelcomePeopleFormViewModel(item));
@@ -442,6 +459,10 @@ namespace Worki.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				var context = ModelFactory.GetUnitOfWork();
+				var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 				try
 				{
 					//upload images and set image paths
@@ -455,22 +476,24 @@ namespace Worki.Web.Controllers
 						formModel.WelcomePeople.LocalisationPicture = uploadedFileName;
 					}
 
-					_WelcomePeopleRepository.Update(id, wp =>
-					{
-						UpdateModel(wp, "WelcomePeople");
-						//get member
-						var member = _MemberRepository.GetMember(formModel.Email);
-						wp.MemberId = member.MemberId;
-						//get localisation
-						var loc = _LocalisationRepository.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
-						wp.LocalisationId = loc.ID;
+					var wp = wpRepo.Get(id);
 
-						if (!string.IsNullOrEmpty(formModel.WelcomePeople.LocalisationPicture))
-							wp.LocalisationPicture = formModel.WelcomePeople.LocalisationPicture;
-					});
+					UpdateModel(wp, "WelcomePeople");
+					//get member
+					var member = mRepo.GetMember(formModel.Email);
+					wp.MemberId = member.MemberId;
+					//get localisation
+					var loc = lRepo.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
+					wp.LocalisationId = loc.ID;
+
+					if (!string.IsNullOrEmpty(formModel.WelcomePeople.LocalisationPicture))
+						wp.LocalisationPicture = formModel.WelcomePeople.LocalisationPicture;
+
+					context.Commit();
 				}
 				catch (Exception ex)
 				{
+					context.Complete();
 					ModelState.AddModelError("", ex.Message);
 				}
 				return RedirectToAction(MVC.Admin.IndexWelcomePeople());
@@ -483,29 +506,33 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="page">id of the WelcomePeople</param>
         /// <returns>The action result.</returns>
-        [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("supprimer-welcomePeople")]
-        public virtual ActionResult DeleteWelcomePeople(int id, string returnUrl)
-        {
-            var welcomePeople = _WelcomePeopleRepository.Get(id);
-            if (welcomePeople == null)
-                return View("utilisateur-absent");
-            TempData["returnUrl"] = returnUrl;
-             
-            return View(welcomePeople);
-        }
+		[AcceptVerbs(HttpVerbs.Get)]
+		[ActionName("supprimer-welcomePeople")]
+		public virtual ActionResult DeleteWelcomePeople(int id, string returnUrl)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+			var welcomePeople = wpRepo.Get(id);
+			if (welcomePeople == null)
+				return View("utilisateur-absent");
+			TempData["returnUrl"] = returnUrl;
+
+			return View(welcomePeople);
+		}
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ActionName("supprimer-welcomePeople")]
         [ValidateAntiForgeryToken]
         public virtual ActionResult DeleteWelcomePeople(int id)
         {
-            var profil = _WelcomePeopleRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+			var profil = wpRepo.Get(id);
             if (profil == null)
                 return View("utilisateur-absent");
             else
             {
-                _WelcomePeopleRepository.Delete(profil.Id);
+				wpRepo.Delete(profil.Id);
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             }
         }
@@ -545,10 +572,10 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="page">The page to display</param>
         /// <returns>The action result.</returns>
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult IndexImport(FormCollection collection)
-        {
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult IndexImport(FormCollection collection)
+		{
 			char CSV_SEPARATOR = ';';
 			string featureTrueIndicator = "Oui"; // by default, it's false. It's true only for the string
 			int nbCol = 20;
@@ -557,6 +584,9 @@ namespace Worki.Web.Controllers
 				isHeaderLine = true;
 			int nbLocalisationsAdded = 0;
 			string listLocalisationsAlreadyInDB = "";
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			foreach (string name in Request.Files)
 			{
 				try
@@ -602,7 +632,7 @@ namespace Worki.Web.Controllers
 							localisationToAdd.Longitude = longitude;
 
 							// Description in English : localisationToAdd.DescriptionEnglish = infosLocalisation[11]; ??
-							var member = _MemberRepository.GetMember(infosLocalisation[0]);
+							var member = mRepo.GetMember(infosLocalisation[0]);
 							localisationToAdd.OwnerID = member.MemberId;
 
 							if (infosLocalisation[12].Trim().ToLower() == featureTrueIndicator.ToLower())
@@ -621,7 +651,7 @@ namespace Worki.Web.Controllers
 							localisationToAdd.TypeValue = (int)LocalisationType.BuisnessCenter;
 
 							var similarLoc = (from loc
-												 in _LocalisationRepository.FindSimilarLocalisation((float)localisationToAdd.Latitude, (float)localisationToAdd.Longitude)
+												 in lRepo.FindSimilarLocalisation((float)localisationToAdd.Latitude, (float)localisationToAdd.Longitude)
 											  where string.Compare(loc.Name, localisationToAdd.Name, StringComparison.InvariantCultureIgnoreCase) == 0
 											  select loc).ToList();
 							if (similarLoc.Count > 0)
@@ -630,23 +660,18 @@ namespace Worki.Web.Controllers
 								if (similarLoc.Count() == 1)
 								{
 									var loc = similarLoc[0];
-									if(!loc.HasFeature(Feature.Wifi_Free,FeatureType.General))
+									if (!loc.HasFeature(Feature.Wifi_Free, FeatureType.General))
 									{
-										_LocalisationRepository.Update(loc.ID, l =>
-											{
-												l.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free, OfferID = (int)FeatureType.General });
-											});
+										var l = lRepo.Get(loc.ID);
+										l.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free, OfferID = (int)FeatureType.General });
 									}
 								}
 								listLocalisationsAlreadyInDB += "&bull; " + localisationToAdd.Name + "<br />";
 							}
 							else
 							{
-								_LocalisationRepository.Add(localisationToAdd);
-								_MemberRepository.Update(member.MemberId, m =>
-								{
-									m.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = localisationToAdd.ID, ModificationType = (int)EditionType.Creation });
-								});
+								lRepo.Add(localisationToAdd);
+								member.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = localisationToAdd.ID, ModificationType = (int)EditionType.Creation });
 								nbLocalisationsAdded++;
 							}
 						}
@@ -656,11 +681,13 @@ namespace Worki.Web.Controllers
 						fullCSVLine = ""; // Reinitialization because we have found the full CVS line
 
 					}
+					context.Commit();
 				}
 				catch (Exception ex)
 				{
 					_Logger.Error("Edit", ex);
 					ModelState.AddModelError("", "Une erreur a eu lieu (" + nbLocalisationsAdded + " lieux de travail ont été ajoutés) => " + ex.Message);
+					context.Complete();
 				}
 			}
 
@@ -668,7 +695,7 @@ namespace Worki.Web.Controllers
 			viewModel.resultMessage = nbLocalisationsAdded.ToString() + " localisations added.";
 			viewModel.localisationsAlreadyInDB = listLocalisationsAlreadyInDB;
 			return View(viewModel);
-        }
+		}
 
         #endregion
 
@@ -681,8 +708,10 @@ namespace Worki.Web.Controllers
 		/// <returns>The action result.</returns>
 		public virtual ActionResult IndexBooking(int? page)
 		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			var pageValue = page ?? 1;
-			var bookings = _BookingRepository.Get((pageValue - 1) * PageSize, PageSize, mb => mb.Id);
+			var bookings = bRepo.Get((pageValue - 1) * PageSize, PageSize, mb => mb.Id);
 			var viewModel = new MemberBookingListViewModel()
 			{
 				MemberBooking = bookings,
@@ -690,7 +719,7 @@ namespace Worki.Web.Controllers
 				{
 					CurrentPage = pageValue,
 					ItemsPerPage = PageSize,
-					TotalItems = _BookingRepository.GetCount()
+					TotalItems = bRepo.GetCount()
 				}
 			};
 			return View(viewModel);
@@ -707,8 +736,10 @@ namespace Worki.Web.Controllers
         /// <returns>The action result.</returns>
         public virtual ActionResult IndexPress(int? page)
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
             int pageValue = page ?? 1;
-            var press = _PressRepository.Get((pageValue - 1) * PageSize, PageSize, p => p.ID);
+			var press = pRepo.Get((pageValue - 1) * PageSize, PageSize, p => p.ID);
             var viewModel = new PressListViewModel()
             {
                 Press = press,
@@ -716,7 +747,7 @@ namespace Worki.Web.Controllers
                 {
                     CurrentPage = pageValue,
                     ItemsPerPage = PageSize,
-                    TotalItems = _PressRepository.GetCount()
+					TotalItems = pRepo.GetCount()
                 }
             };
             return View(viewModel);
@@ -730,7 +761,9 @@ namespace Worki.Web.Controllers
         [Authorize]
         public virtual ActionResult DetailPress(int id)
         {
-            var item = _PressRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
+            var item = pRepo.Get(id);
             if (item == null)
                 return RedirectToAction(MVC.Admin.IndexPress());
             return View(item);
@@ -757,13 +790,17 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+				var context = ModelFactory.GetUnitOfWork();
+				var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
                 try
                 {
-                    _PressRepository.Add(formModel);
+					pRepo.Add(formModel);
+					context.Commit();
                     return RedirectToAction(MVC.Admin.IndexPress());
                 }
                 catch (Exception ex)
                 {
+					context.Complete();
                     ModelState.AddModelError("", ex.Message);
                 }
             }
@@ -778,7 +815,9 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get), Authorize]
         public virtual ActionResult EditPress(int id)
         {
-            var item = _PressRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
+			var item = pRepo.Get(id);
             if (item == null)
                 return RedirectToAction(MVC.Admin.IndexPress());
             return View(item);
@@ -789,27 +828,29 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="press">data from the form</param>
         /// <returns>redirect to index</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult EditPress(int id, Press formModel)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _PressRepository.Update(id, p =>
-                    {
-                        UpdateModel(p);                        
-                    });
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", ex.Message);
-                }
-                return RedirectToAction(MVC.Admin.IndexPress());
-            }
-            return View(formModel);
-        }
+		[AcceptVerbs(HttpVerbs.Post), Authorize]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult EditPress(int id, Press formModel)
+		{
+			if (ModelState.IsValid)
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
+				try
+				{
+					var p = pRepo.Get(id);
+					UpdateModel(p);
+					context.Commit();
+				}
+				catch (Exception ex)
+				{
+					context.Complete();
+					ModelState.AddModelError("", ex.Message);
+				}
+				return RedirectToAction(MVC.Admin.IndexPress());
+			}
+			return View(formModel);
+		}
 
         /// <summary>
         /// Prepares a web page to delete a press
@@ -820,7 +861,9 @@ namespace Worki.Web.Controllers
         [ActionName("supprimer-press")]
         public virtual ActionResult DeletePress(int id, string returnUrl)
         {
-            var press = _PressRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
+			var press = pRepo.Get(id);
             if (press == null)
                 return View("press-inexistant");
             TempData["returnUrl"] = returnUrl;
@@ -828,20 +871,31 @@ namespace Worki.Web.Controllers
             return View("DeletePress");
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ActionName("supprimer-press")]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult DeletePress(int id)
-        {            
-            var article = _PressRepository.Get(id);
-            if (article == null)
-                return View("article-inexistant");
-            else
-            {
-                _PressRepository.Delete(article.ID);
-                return RedirectToAction(MVC.Admin.IndexPress());
-            }
-        }
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ActionName("supprimer-press")]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult DeletePress(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
+			var article = pRepo.Get(id);
+			if (article == null)
+				return View("article-inexistant");
+			else
+			{
+				try
+				{
+					pRepo.Delete(article.ID);
+					context.Commit();
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("DeletePress", ex);
+					context.Complete();
+				}
+				return RedirectToAction(MVC.Admin.IndexPress());
+			}
+		}
 
         #endregion
         
@@ -854,8 +908,10 @@ namespace Worki.Web.Controllers
         /// <returns>The action result.</returns>
         public virtual ActionResult IndexRental(int? page)
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
             var pageValue = page ?? 1;
-            var rentals = _RentalRepository.Get((pageValue - 1) * PageSize, PageSize, r => r.Id);
+			var rentals = rRepo.Get((pageValue - 1) * PageSize, PageSize, r => r.Id);
             var viewModel = new RentalListViewModel()
             {
                 Rentals = rentals,
@@ -863,7 +919,7 @@ namespace Worki.Web.Controllers
                 {
                     CurrentPage = pageValue,
                     ItemsPerPage = PageSize,
-                    TotalItems = _RentalRepository.GetCount()
+					TotalItems = rRepo.GetCount()
                 }
             };
             return View(viewModel);
