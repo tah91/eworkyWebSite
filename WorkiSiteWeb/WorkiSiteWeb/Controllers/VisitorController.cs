@@ -5,6 +5,7 @@ using Worki.Data.Models;
 using Worki.Web.Helpers;
 using Worki.Infrastructure;
 using Postal;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
@@ -13,18 +14,12 @@ namespace Worki.Web.Controllers
     [CacheFilter(Order = 2)]
     public partial class VisitorController : Controller
     {
-        IVisitorRepository _VisitorRepository;
         IEmailService _EmailService;
-        IMemberRepository _MemberRepository;
 
-        public VisitorController(   IVisitorRepository visitorRepository,
-                                    IEmailService emailService,
-                                    IMemberRepository memberRepository)
-        {
-            this._VisitorRepository = visitorRepository;
-            this._EmailService = emailService;
-            this._MemberRepository = memberRepository;
-        }
+		public VisitorController(IEmailService emailService)
+		{
+			this._EmailService = emailService;
+		}
 
         /// <summary>
         /// GET Action result to prepare the visitor page (for beta private)
@@ -48,28 +43,40 @@ namespace Worki.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Index(Visitor visitor)
         {
-            if (ModelState.IsValid)
-            {
-				var fromDB = _VisitorRepository.Get(item => string.Compare(item.Email, visitor.Email, StringComparison.InvariantCultureIgnoreCase) == 0);
-                var user = _MemberRepository.GetMember(visitor.Email);
-                //already registered
-                if (user != null)
-                {
-                    TempData["AlreadyRegistered"] = "Vous êtes déjà inscrit !";
-                    return RedirectToAction(MVC.Account.LogOn());
-                }
-                //already added and validated from admin
-                else if (fromDB != null && fromDB.IsValid)
-                {
-                    //this.SendVisitorMail(_EmailService, fromDB);
-                }
-                else
-                {
-                    _VisitorRepository.Add(visitor);
-                }
-                //visitorRepository.Save();
-                return RedirectToAction(MVC.Visitor.AskForAccountSuccess());
-            }
+			var context = ModelFactory.GetUnitOfWork();
+			var vRepo = ModelFactory.GetRepository<IVisitorRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var fromDB = vRepo.Get(item => string.Compare(item.Email, visitor.Email, StringComparison.InvariantCultureIgnoreCase) == 0);
+					var user = mRepo.GetMember(visitor.Email);
+					//already registered
+					if (user != null)
+					{
+						TempData["AlreadyRegistered"] = "Vous êtes déjà inscrit !";
+						return RedirectToAction(MVC.Account.LogOn());
+					}
+					//already added and validated from admin
+					else if (fromDB != null && fromDB.IsValid)
+					{
+						//this.SendVisitorMail(_EmailService, fromDB);
+					}
+					else
+					{
+						vRepo.Add(visitor);
+					}
+					context.Commit();
+				}
+				catch (Exception)
+				{
+					context.Complete();
+				}
+
+
+				return RedirectToAction(MVC.Visitor.AskForAccountSuccess());
+			}
             return View(new VisitorFormViewModel { Visitor = visitor });
         }
 

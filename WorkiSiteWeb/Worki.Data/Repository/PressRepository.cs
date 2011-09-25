@@ -4,6 +4,7 @@ using Worki.Infrastructure.Repository;
 using System.Collections.Generic;
 using Worki.Infrastructure.Logging;
 using Worki.Data.Repository;
+using Worki.Infrastructure.UnitOfWork;
 
 namespace Worki.Data.Models
 {
@@ -14,8 +15,8 @@ namespace Worki.Data.Models
 
     public class PressRepository : RepositoryBase<Press>, IPressRepository
     {
-        public PressRepository(ILogger logger)
-            : base(logger)
+		public PressRepository(ILogger logger, IUnitOfWork context)
+            : base(logger,context)
         {
         }
 

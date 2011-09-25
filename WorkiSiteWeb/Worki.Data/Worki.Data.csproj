@@ -190,6 +190,7 @@
     <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="Repository\VisitorRepository.cs" />
     <Compile Include="Repository\WelcomePeopleRepository.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

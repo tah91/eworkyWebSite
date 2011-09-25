@@ -5,28 +5,28 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq.Expressions;
 using Worki.Infrastructure.Logging;
+using Worki.Infrastructure.UnitOfWork;
 
 namespace Worki.Data.Repository
 {
 	public abstract class RepositoryBase<T> where T : class
 	{
 		protected ILogger _Logger;
+		protected WorkiDBEntities _Context;
 
-		public RepositoryBase(ILogger logger)
+		public RepositoryBase(ILogger logger, IUnitOfWork context)
 		{
 			_Logger = logger;
+			_Context = context as WorkiDBEntities;
 		}
 
 		public virtual void Add(T entity)
 		{
 			try
 			{
-				using (var db = new WorkiDBEntities())
-				{
-					var dbSet = db.Set<T>();
-					dbSet.Add(entity);
-					db.SaveChanges();
-				}
+				var dbSet = _Context.Set<T>();
+				dbSet.Add(entity);
+				//_Context.SaveChanges();
 			}
 			catch (Exception ex)
 			{
@@ -38,13 +38,10 @@ namespace Worki.Data.Repository
 		{
 			try
 			{
-				using (var db = new WorkiDBEntities())
-				{
-					var dbSet = db.Set<T>();
-					var entity = dbSet.Find(key);
-					dbSet.Remove(entity);
-					db.SaveChanges();
-				}
+				var dbSet = _Context.Set<T>();
+				var entity = dbSet.Find(key);
+				dbSet.Remove(entity);
+				//db.SaveChanges();
 			}
 			catch (Exception ex)
 			{
@@ -56,16 +53,13 @@ namespace Worki.Data.Repository
 		{
 			try
 			{
-				using (var db = new WorkiDBEntities())
+				var dbSet = _Context.Set<T>();
+				IEnumerable<T> toRemove = dbSet.Where<T>(where).AsEnumerable();
+				foreach (T obj in toRemove)
 				{
-					var dbSet = db.Set<T>();
-					IEnumerable<T> toRemove = dbSet.Where<T>(where).AsEnumerable();
-					foreach (T obj in toRemove)
-					{
-						dbSet.Remove(obj);
-					}
-					db.SaveChanges();
+					dbSet.Remove(obj);
 				}
+				//db.SaveChanges();
 			}
 			catch (Exception ex)
 			{
@@ -73,13 +67,11 @@ namespace Worki.Data.Repository
 			}
 		}
 
-
 		public virtual T Get(int key)
 		{
 			try
 			{
-				var db = new WorkiDBEntities();
-				var dbSet = db.Set<T>();
+				var dbSet = _Context.Set<T>();
 				var entity = dbSet.Find(key);
 				return entity;
 			}
@@ -101,7 +93,7 @@ namespace Worki.Data.Repository
 					if (entity != null)
 					{
 						actionToPerform.Invoke(entity);
-						db.SaveChanges();
+						//db.SaveChanges();
 					}
 				}
 			}
@@ -115,8 +107,7 @@ namespace Worki.Data.Repository
 		{
 			try
 			{
-				var db = new WorkiDBEntities();
-				var dbSet = db.Set<T>();
+				var dbSet = _Context.Set<T>();
 				return dbSet.ToList();
 			}
 			catch (Exception ex)
@@ -130,8 +121,7 @@ namespace Worki.Data.Repository
 		{
 			try
 			{
-				var db = new WorkiDBEntities();
-				var dbSet = db.Set<T>();
+				var dbSet = _Context.Set<T>();
 				return dbSet.OrderByDescending(keySelector).Skip(start).Take(pageSize).ToList();
 			}
 			catch (Exception ex)
@@ -145,11 +135,8 @@ namespace Worki.Data.Repository
 		{
 			try
 			{
-				using (var db = new WorkiDBEntities())
-				{
-					var dbSet = db.Set<T>();
-					return dbSet.Count();
-				}
+				var dbSet = _Context.Set<T>();
+				return dbSet.Count();
 			}
 			catch (Exception ex)
 			{
@@ -162,8 +149,7 @@ namespace Worki.Data.Repository
 		{
 			try
 			{
-				var db = new WorkiDBEntities();
-				var dbSet = db.Set<T>();
+				var dbSet = _Context.Set<T>();
 				return dbSet.Where(where).ToList();
 			}
 			catch (Exception ex)
@@ -177,8 +163,7 @@ namespace Worki.Data.Repository
 		{
 			try
 			{
-				var db = new WorkiDBEntities();
-				var dbSet = db.Set<T>();
+				var dbSet = _Context.Set<T>();
 				return dbSet.Where(where).FirstOrDefault();
 			}
 			catch (Exception ex)

@@ -4,6 +4,7 @@ using Worki.Data.Models;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Logging;
 using Worki.Service;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
@@ -14,17 +15,13 @@ namespace Worki.Web.Controllers
 	{
 		#region Private
 
-		IRentalRepository _RentalRepository;
-		IMemberRepository _MemberRepository;
 		ILogger _Logger;
 		IGeocodeService _GeocodeService;
 
 		#endregion
 
-        public RentalController(IRentalRepository rentalRepository, IMemberRepository memberRepository, ILogger logger,IGeocodeService geocodeService)
+        public RentalController(ILogger logger,IGeocodeService geocodeService)
 		{
-            _RentalRepository = rentalRepository;
-			_MemberRepository = memberRepository;
 			_Logger = logger;
 			_GeocodeService = geocodeService;
 		}
@@ -38,7 +35,9 @@ namespace Worki.Web.Controllers
 		[ActionName("details")]
 		public virtual ActionResult Detail(int id)
 		{
-			var rental = _RentalRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			var rental = rRepo.Get(id);
 			if (rental == null)
 				return View(MVC.Shared.Views.Error);
 
@@ -65,7 +64,9 @@ namespace Worki.Web.Controllers
 		[ActionName("editer")]
 		public virtual ActionResult Edit(int id)
 		{
-			var rental = _RentalRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			var rental = rRepo.Get(id);
 			if (rental == null)
 				return View(MVC.Shared.Views.Error);
 			return View(new RentalFormViewModel(rental));
@@ -84,9 +85,12 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult Edit(Rental rental, int? id)
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			try
 			{
-				var member = _MemberRepository.GetMember(User.Identity.Name);
+				var member = mRepo.GetMember(User.Identity.Name);
 				if (!member.IsValidUser())
 				{
 					error = Worki.Resources.Validation.ValidationString.InvalidUser;
@@ -104,33 +108,34 @@ namespace Worki.Web.Controllers
 						//update
 						UpdateModel(rentalToAdd, "Rental");
 						rentalToAdd.MemberId = member.MemberId;
-                        rentalToAdd.CreationDate = DateTime.Now;
+						rentalToAdd.CreationDate = DateTime.Now;
 						rentalToAdd.Latitude = lat;
 						rentalToAdd.Longitude = lng;
 						//save
-						_RentalRepository.Add(rentalToAdd);
+						rRepo.Add(rentalToAdd);
 						idToRedirect = rentalToAdd.Id;
 					}
 					else
 					{
-                        _RentalRepository.Update(id.Value, r => 
-						{ 
-							UpdateModel(r);
-							r.TimeStamp = DateTime.Now;
-							r.Latitude = lat;
-							r.Longitude = lng;
-						});
+						var r = rRepo.Get(id.Value);
+						UpdateModel(r);
+						r.TimeStamp = DateTime.Now;
+						r.Latitude = lat;
+						r.Longitude = lng;
 						idToRedirect = id.Value;
 					}
+
+					context.Commit();
 					return RedirectToAction(MVC.Rental.ActionNames.Detail, new { id = idToRedirect });
 				}
 			}
 			catch (Exception ex)
 			{
 				_Logger.Error("Edit", ex);
+				context.Complete();
 				ModelState.AddModelError("", error);
 			}
-            return View(new RentalFormViewModel(rental));
+			return View(new RentalFormViewModel(rental));
 		}
 
 		/// <summary>
@@ -143,7 +148,9 @@ namespace Worki.Web.Controllers
 		[ActionName("supprimer")]
 		public virtual ActionResult Delete(int id, string returnUrl = null)
 		{
-			var rental = _RentalRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			var rental = rRepo.Get(id);
 			if (rental == null)
 				return View(MVC.Shared.Views.Error);
 			else
@@ -162,12 +169,24 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ActionName("supprimer")]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Delete(int id,string confirm, string returnUrl)
+		public virtual ActionResult Delete(int id, string confirm, string returnUrl)
 		{
-			var rental = _RentalRepository.Get(id);
-			if (rental == null)
-				return View(MVC.Shared.Views.Error);
-			_RentalRepository.Delete(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			try
+			{
+				var rental = rRepo.Get(id);
+				if (rental == null)
+					return View(MVC.Shared.Views.Error);
+				rRepo.Delete(id);
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Delete", ex);
+				context.Complete();
+			}
+
 			if (string.IsNullOrEmpty(returnUrl))
 				return View(MVC.Localisation.Views.supprimer_reussi);
 			else

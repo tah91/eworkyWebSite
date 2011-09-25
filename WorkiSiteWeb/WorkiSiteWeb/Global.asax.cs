@@ -21,6 +21,8 @@ using Worki.SiteMap;
 using Worki.Web.Helpers;
 using Worki.Web.ModelBinder;
 using Postal;
+using Worki.Infrastructure.Repository;
+using Worki.Infrastructure.UnitOfWork;
 
 namespace Worki.Web
 {
@@ -69,6 +71,9 @@ namespace Worki.Web
 
 			Bind<IGeocodeService>()
 				.To<GeocodeService>();
+
+			Bind<IUnitOfWork>()
+				.To<WorkiDBEntities>();
 
 			Bind<ILogger>().
 				To<Log4NetLogger>()
@@ -235,6 +240,8 @@ namespace Worki.Web
 			_kernel.Inject(Roles.Provider);
 
 			LocalisationDynamicNodeProvider.RegisterKernel(_kernel);
+
+			ModelFactory.RegisterKernel(_kernel);
 
 			//Inject
 			ControllerBuilder.Current.SetControllerFactory(new NinjectControlerFactory(_kernel));

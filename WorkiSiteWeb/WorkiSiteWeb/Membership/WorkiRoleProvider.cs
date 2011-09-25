@@ -12,11 +12,6 @@ namespace Worki.Memberships
 {
     public sealed class WorkiRoleProvider : RoleProvider
     {
-		[Inject]
-		public IGroupRepository GroupRepository { get; set; }
-		[Inject]
-		public IMemberRepository MemberRepository { get; set; }
-
         /*************************************************************************
          * Initialization
          *************************************************************************/
@@ -68,7 +63,9 @@ namespace Worki.Memberships
         public override string[] GetAllRoles()
         {
             string[] roles = null;
-            roles = (from groups in GroupRepository.GetAll()
+			var context = ModelFactory.GetUnitOfWork();
+			var gRepo = ModelFactory.GetRepository<IGroupRepository>(context);
+			roles = (from groups in gRepo.GetAll()
                      select groups.Title).ToArray();
 
             return roles;
@@ -82,10 +79,11 @@ namespace Worki.Memberships
         public override string[] GetRolesForUser(string username)
         {
             string[] roles = new string[] { "" };
-
+			var context = ModelFactory.GetUnitOfWork();
+			var gRepo = ModelFactory.GetRepository<IGroupRepository>(context);
             try
             {
-                roles = GroupRepository.GetGroupsForUser(username).ToArray();
+				roles = gRepo.GetGroupsForUser(username).ToArray();
             }
             catch (Exception)
             {
@@ -116,10 +114,19 @@ namespace Worki.Memberships
             // No need to add if it already exists
             if (!RoleExists(roleName))
             {
-                Group g = new Group();
-                g.Title = roleName;
-                GroupRepository.Add(g);
-                //GroupRepository.Save();
+				var context = ModelFactory.GetUnitOfWork();
+				var gRepo = ModelFactory.GetRepository<IGroupRepository>(context);
+				try
+				{
+					Group g = new Group();
+					g.Title = roleName;
+					gRepo.Add(g);
+					context.Commit();
+				}
+				catch (Exception)
+				{
+					context.Complete();
+				}
             }
         }
 
@@ -138,11 +145,13 @@ namespace Worki.Memberships
             // You can only delete an existing role
             if (RoleExists(roleName))
             {
+				var context = ModelFactory.GetUnitOfWork();
+				var gRepo = ModelFactory.GetRepository<IGroupRepository>(context);
                 try
                 {
                     if (throwOnPopulatedRole)
                     {
-                        int[] users = (from mg in GroupRepository.GetAllMembersInGroups()
+						int[] users = (from mg in gRepo.GetAllMembersInGroups()
                                        where mg.Group.Title == roleName
                                        select mg.Member.MemberId).ToArray();
 
@@ -150,11 +159,14 @@ namespace Worki.Memberships
                             throw new ProviderException("Cannot delete roles with users assigned to them");
                     }
 
-					GroupRepository.Delete(g => g.Title == roleName);
-
+					gRepo.Delete(g => g.Title == roleName);
+					context.Commit();
                     ret = true;
                 }
-                catch { }
+                catch 
+				{
+					context.Complete();
+				}
             }
 
             return ret;
@@ -167,71 +179,93 @@ namespace Worki.Memberships
         /// <summary>
         /// Adds a collection of users to a collection of corresponding roles
         /// </summary>
-        public override void AddUsersToRoles(string[] usernames, string[] roleNames)
-        {
-            // Get the actual available roles
-            string[] allRoles = GetAllRoles();
+		public override void AddUsersToRoles(string[] usernames, string[] roleNames)
+		{
+			// Get the actual available roles
+			string[] allRoles = GetAllRoles();
 
-            // See if any of the given roles match the available roles
-            IEnumerable<string> roles = allRoles.Intersect(roleNames);
+			// See if any of the given roles match the available roles
+			IEnumerable<string> roles = allRoles.Intersect(roleNames);
 
-            // There were some roles left after removing non-existent ones
-            if (roles.Count() > 0)
-            {
-                // Cleanup duplicates first
-                RemoveUsersFromRoles(usernames, roleNames);
+			// There were some roles left after removing non-existent ones
+			if (roles.Count() > 0)
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var gRepo = ModelFactory.GetRepository<IGroupRepository>(context);
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
-                // Get the user IDs
-                List<int> mlist = (from members in MemberRepository.GetAll()
-                                   where usernames.Contains(members.Username)
-                                   select members.MemberId).ToList();
+				try
+				{
+					// Cleanup duplicates first
+					RemoveUsersFromRoles(usernames, roleNames);
 
-                // Get the group IDs
-                List<int> glist = (from groups in GroupRepository.GetAll()
-                                   where roleNames.Contains(groups.Title)
-                                   select groups.GroupId).ToList();
+					// Get the user IDs
+					List<int> mlist = (from members in mRepo.GetAll()
+									   where usernames.Contains(members.Username)
+									   select members.MemberId).ToList();
 
-                // Fresh list of user-role assignments
-                List<MembersInGroup> mglist = new List<MembersInGroup>();
-                foreach (int m in mlist)
-                {
-                    foreach (int g in glist)
-                    {
-                        MembersInGroup mg = new MembersInGroup();
-                        mg.MemberId = m;
-                        mg.GroupId = g;
-                        mglist.Add(mg);
-                    }
-                }
+					// Get the group IDs
+					List<int> glist = (from groups in gRepo.GetAll()
+									   where roleNames.Contains(groups.Title)
+									   select groups.GroupId).ToList();
 
-                GroupRepository.AddMembersInGroup(mglist);
-                //GroupRepository.Save();
-            }
-        }
+					// Fresh list of user-role assignments
+					List<MembersInGroup> mglist = new List<MembersInGroup>();
+					foreach (int m in mlist)
+					{
+						foreach (int g in glist)
+						{
+							MembersInGroup mg = new MembersInGroup();
+							mg.MemberId = m;
+							mg.GroupId = g;
+							mglist.Add(mg);
+						}
+					}
+
+					gRepo.AddMembersInGroup(mglist);
+					context.Commit();
+				}
+				catch (Exception)
+				{
+					context.Complete();
+				}
+
+			}
+		}
 
         /// <summary>
         /// Remove a collection of users from a collection of corresponding roles
         /// </summary>
-        public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
-        {
-            // Get the actual available roles
-            string[] allRoles = GetAllRoles();
+		public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
+		{
+			// Get the actual available roles
+			string[] allRoles = GetAllRoles();
 
-            // See if any of the given roles match the available roles
-            IEnumerable<string> roles = allRoles.Intersect(roleNames);
+			// See if any of the given roles match the available roles
+			IEnumerable<string> roles = allRoles.Intersect(roleNames);
 
-            // There were some roles left after removing non-existent ones
-            if (roles.Count() > 0)
-            {
-                    List<MembersInGroup> mg = (from members in GroupRepository.GetAllMembersInGroups()
-                                               where usernames.Contains(members.Member.Username) &&
-                                               roleNames.Contains(members.Group.Title)
-                                               select members).ToList();
+			// There were some roles left after removing non-existent ones
+			if (roles.Count() > 0)
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var gRepo = ModelFactory.GetRepository<IGroupRepository>(context);
 
-                    GroupRepository.DeleteMembersInGroup(mg);
-                    //GroupRepository.Save();
-            }
-        }
+				try
+				{
+					List<MembersInGroup> mg = (from members in gRepo.GetAllMembersInGroups()
+											   where usernames.Contains(members.Member.Username) &&
+											   roleNames.Contains(members.Group.Title)
+											   select members).ToList();
+
+					gRepo.DeleteMembersInGroup(mg);
+					context.Commit();
+				}
+				catch (Exception)
+				{
+					context.Complete();
+				}
+			}
+		}
 
         /*************************************************************************
          * Searching methods
@@ -247,7 +281,10 @@ namespace Worki.Memberships
 
             if (RoleExists(roleName))
             {
-                var member = MemberRepository.GetMember(username);
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+
+				var member = mRepo.GetMember(username);
                 int c = member.MembersInGroups.Count(mig => mig.Group.Title == roleName);
                 if (c > 0)
                     ret = true;

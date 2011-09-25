@@ -17,8 +17,6 @@ namespace Worki.Memberships
     {
         //cant get machine key on 1&1 hosting
         //private MachineKeySection _MachineKey;
-		[Inject]
-		public IMemberRepository MemberRepository { get; set; }
 
 		[Inject]
 		public ILogger Logger { get; set; }
@@ -27,77 +25,73 @@ namespace Worki.Memberships
          * Class initialization
          *************************************************************************/
 
-        public override void Initialize(string name, System.Collections.Specialized.NameValueCollection config)
-        {
-            if (config == null)
-                throw new ArgumentNullException("config");
+		public override void Initialize(string name, System.Collections.Specialized.NameValueCollection config)
+		{
+			if (config == null)
+				throw new ArgumentNullException("config");
 
-            if (name == null || name.Length == 0)
-                name = "WorkiMembershipProvider";
+			if (name == null || name.Length == 0)
+				name = "WorkiMembershipProvider";
 
-            if (String.IsNullOrEmpty(config["description"]))
-            {
-                config.Remove("description");
-                config.Add("description", "Worki Membership Provider");
-            }
+			if (String.IsNullOrEmpty(config["description"]))
+			{
+				config.Remove("description");
+				config.Add("description", "Worki Membership Provider");
+			}
 
-            // Initialize base class
-            base.Initialize(name, config);
+			// Initialize base class
+			base.Initialize(name, config);
 
-            _applicationName = GetConfigValue(config["applicationName"],
-                System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
+			_applicationName = GetConfigValue(config["applicationName"], System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
 
-            // This is a non-standard helper setting.
-            _providerName = GetConfigValue(config["providerName"], name);
+			// This is a non-standard helper setting.
+			_providerName = GetConfigValue(config["providerName"], name);
 
-            // Sets the default parameters for all the Membership Provider settings
+			// Sets the default parameters for all the Membership Provider settings
 
-            _requiresUniqeEmail = Convert.ToBoolean(GetConfigValue(config["requiresUniqueEmail"], "true"));
-            _requiresQuestionAndAnswer = Convert.ToBoolean(GetConfigValue(config["requiresQuestionAndAnswer"], "true"));
-            _minRequiredPasswordLength = Convert.ToInt32(GetConfigValue(config["minRequiredPasswordLength"], "5"));
-            _minRequiredNonAlphanumericCharacters = Convert.ToInt32(GetConfigValue(config["minRequiredNonAlphanumericCharacters"],
-                "0"));
-            _enablePasswordReset = Convert.ToBoolean(GetConfigValue(config["enablePasswordReset"], "true"));
-            _enablePasswordRetrieval = Convert.ToBoolean(GetConfigValue(config["enablePasswordRetrieval"], "false"));
-            _passwordAttemptWindow = Convert.ToInt32(GetConfigValue(config["passwordAttemptWindow"], "10"));
-            _passwordStrengthRegularExpression = GetConfigValue(config["passwordStrengthRegularExpression"], "");
-            _maxInvalidPasswordAttempts = Convert.ToInt32(GetConfigValue(config["maxInvalidPasswordAttempts"],
+			_requiresUniqeEmail = Convert.ToBoolean(GetConfigValue(config["requiresUniqueEmail"], "true"));
+			_requiresQuestionAndAnswer = Convert.ToBoolean(GetConfigValue(config["requiresQuestionAndAnswer"], "true"));
+			_minRequiredPasswordLength = Convert.ToInt32(GetConfigValue(config["minRequiredPasswordLength"], "5"));
+			_minRequiredNonAlphanumericCharacters = Convert.ToInt32(GetConfigValue(config["minRequiredNonAlphanumericCharacters"], "0"));
+			_enablePasswordReset = Convert.ToBoolean(GetConfigValue(config["enablePasswordReset"], "true"));
+			_enablePasswordRetrieval = Convert.ToBoolean(GetConfigValue(config["enablePasswordRetrieval"], "false"));
+			_passwordAttemptWindow = Convert.ToInt32(GetConfigValue(config["passwordAttemptWindow"], "10"));
+			_passwordStrengthRegularExpression = GetConfigValue(config["passwordStrengthRegularExpression"], "");
+			_maxInvalidPasswordAttempts = Convert.ToInt32(GetConfigValue(config["maxInvalidPasswordAttempts"], "5"));
 
-                "5"));
+			string passFormat = config["passwordFormat"];
 
-            string passFormat = config["passwordFormat"];
+			// If no format is specified, the default format will be hashed.
+			if (passFormat == null)
+				passFormat = "hashed";
 
-            // If no format is specified, the default format will be hashed.
-            if (passFormat == null)
-                passFormat = "hashed";
+			switch (passFormat.ToLower())
+			{
+				case "hashed":
+					_passwordFormat = MembershipPasswordFormat.Hashed;
+					break;
+				case "encrypted":
+					_passwordFormat = MembershipPasswordFormat.Encrypted;
+					break;
+				case "clear":
+					_passwordFormat = MembershipPasswordFormat.Clear;
+					break;
+				default:
+					throw new ProviderException("Password format '" + passFormat + "' is not supported. Check your web.config file.");
+			}
 
-            switch (passFormat.ToLower())
-            {
-                case "hashed":
-                    _passwordFormat = MembershipPasswordFormat.Hashed;
-                    break;
-                case "encrypted":
-                    _passwordFormat = MembershipPasswordFormat.Encrypted;
-                    break;
-                case "clear":
-                    _passwordFormat = MembershipPasswordFormat.Clear;
-                    break;
-                default:
-                    throw new ProviderException("Password format '" + passFormat + "' is not supported. Check your web.config file.");
-            }
+			//Configuration cfg = WebConfigurationManager.OpenWebConfiguration(
+			//    System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
 
-            //Configuration cfg = WebConfigurationManager.OpenWebConfiguration(
-            //    System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
+			//_MachineKey = (MachineKeySection)WebConfigurationManager.GetSection("system.web/machineKey");
 
-            //_MachineKey = (MachineKeySection)WebConfigurationManager.GetSection("system.web/machineKey");
+			//if (_MachineKey.ValidationKey.Contains("AutoGenerate"))
+			//    if (PasswordFormat != MembershipPasswordFormat.Clear)
+			//        throw new ProviderException("Hashed or Encrypted passwords cannot be used with auto-generated keys.");
 
-            //if (_MachineKey.ValidationKey.Contains("AutoGenerate"))
-            //    if (PasswordFormat != MembershipPasswordFormat.Clear)
-            //        throw new ProviderException("Hashed or Encrypted passwords cannot be used with auto-generated keys.");
-
-            //MembershipSection membership = (MembershipSection)WebConfigurationManager.GetSection("system.web/membership");
-            //_userIsOnlineTimeWindow = membership.UserIsOnlineTimeWindow;
-        }
+			//MembershipSection membership = (MembershipSection)WebConfigurationManager.GetSection("system.web/membership");
+			//_userIsOnlineTimeWindow = membership.UserIsOnlineTimeWindow;
+		}
 
         /*************************************************************************
          * General settings
@@ -261,18 +255,21 @@ namespace Worki.Memberships
                 m.FailedPasswordAnswerAttemptWindowStart = createdDate;
                 m.EmailKey = Member.GenerateKey();
 
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 try
                 {
-                    MemberRepository.Add(m);
+					mRepo.Add(m);
 
                     // User creation was a success
                     status = MembershipCreateStatus.Success;
-
+					context.Commit();
                     // Return the newly craeted user
                     return GetUserFromMember(m);
                 }
                 catch(Exception ex)
                 {
+					context.Complete();
                     // Something was wrong and the user was rejected
                     status = MembershipCreateStatus.UserRejected;
 					Logger.Error("CreateUser", ex);
@@ -297,13 +294,23 @@ namespace Worki.Memberships
         /// <param name="user">MembershipUser object to modify</param>
         public override void UpdateUser(MembershipUser user)
         {
-			var m = MemberRepository.GetMember(user.UserName);
-            MemberRepository.Update(m.MemberId, member =>
-            {
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
+			{
+				var member = mRepo.GetMember(user.UserName);
                 member.Comment = user.Comment;
                 member.Email = user.Email;
                 member.IsApproved = user.IsApproved;
-            });
+
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				Logger.Error("UpdateUser", ex);
+				context.Complete();
+			}
+
         }
 
         /// <summary>
@@ -314,14 +321,14 @@ namespace Worki.Memberships
         public override bool UnlockUser(string userName)
         {
             bool ret = false;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
-                var m = MemberRepository.GetMember(userName);
-                MemberRepository.Update(m.MemberId, member =>
-                {
-					member.IsLockedOut = false;
-                });
+				var member = mRepo.GetMember(userName);
+				member.IsLockedOut = false;
 
+				context.Commit();
                 // A user was found and nothing was thrown
                 ret = true;
             }
@@ -329,6 +336,7 @@ namespace Worki.Memberships
             {
                 // Couldn't find the user or there was an error
                 ret = false;
+				context.Complete();
 				Logger.Error("UnlockUser", ex);
             }
             return ret;
@@ -345,11 +353,12 @@ namespace Worki.Memberships
             // Return status defaults to false.
             // When in doubt, always say "NO".
             bool ret = false;
-
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
-				var m = MemberRepository.GetMember(username);
-                MemberRepository.Delete(m.MemberId);
+				mRepo.Delete(m =>m.Username == username);
+				context.Commit();
                 // Nothing was thrown, so go ahead and return true
                 ret = true;
             }
@@ -358,6 +367,7 @@ namespace Worki.Memberships
                 // Couldn't find the user or was not able to delete
                 ret = false;
 				Logger.Error("DeleteUser", ex);
+				context.Complete();
             }
 
             return ret;
@@ -372,64 +382,64 @@ namespace Worki.Memberships
         /// <param name="password">The login username</param>
         /// <param name="username">Login password</param>
         /// <returns>True if successful. Defaults to false.</returns>
-        public override bool ValidateUser(string username, string password)
-        {
-            // Return status defaults to false.
-            bool ret = false;
+		public override bool ValidateUser(string username, string password)
+		{
+			// Return status defaults to false.
+			bool ret = false;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
+			{
+				var m = mRepo.GetMember(username);
+				// We found a user by the username
+				if (m != null)
+				{
+					// A user cannot login if not approved or locked out
+					if ((!m.IsApproved) || m.IsLockedOut)
+					{
+						ret = false;
+					}
+					else
+					{
+						// Trigger period
+						DateTime dt = DateTime.Now;
 
-            try
-            {
-				var member = MemberRepository.GetMember(username);
-                MemberRepository.Update(member.MemberId, m =>
-                {
-                    // We found a user by the username
-                    if (m != null)
-                    {
-                        // A user cannot login if not approved or locked out
-                        if ((!m.IsApproved) || m.IsLockedOut)
-                        {
-                            ret = false;
-                        }
-                        else
-                        {
-                            // Trigger period
-                            DateTime dt = DateTime.Now;
+						// Check the given password and the one stored (and salt, if it exists)
+						if (CheckPassword(password, m.Password, m.PasswordSalt))
+						{
+							m.LastLoginDate = dt;
+							m.LastActivityDate = dt;
 
-                            // Check the given password and the one stored (and salt, if it exists)
-                            if (CheckPassword(password, m.Password, m.PasswordSalt))
-                            {
-                                m.LastLoginDate = dt;
-                                m.LastActivityDate = dt;
+							// Reset past failures
+							ResetAuthenticationFailures(ref m, dt);
 
-                                // Reset past failures
-                                ResetAuthenticationFailures(ref m, dt);
+							ret = true;
+						}
+						else
+						{
+							// The login failed... Increment the login attempt count
+							m.FailedPasswordAttemptCount = (int)m.FailedPasswordAttemptCount + 1;
 
-                                ret = true;
-                            }
-                            else
-                            {
-                                // The login failed... Increment the login attempt count
-                                m.FailedPasswordAttemptCount = (int)m.FailedPasswordAttemptCount + 1;
+							if (m.FailedPasswordAttemptCount >= MaxInvalidPasswordAttempts)
+								m.IsLockedOut = true;
 
-                                if (m.FailedPasswordAttemptCount >= MaxInvalidPasswordAttempts)
-                                    m.IsLockedOut = true;
+							m.FailedPasswordAttemptWindowStart = dt;
 
-                                m.FailedPasswordAttemptWindowStart = dt;
-
-                            }
-                        }
-                    }
-                });
-            }
-            catch(Exception ex)
-            {
-                // Nothing was thrown, so go ahead and return true
-                ret = false;
+						}
+					}
+				}
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				// Nothing was thrown, so go ahead and return true
+				ret = false;
 				Logger.Error("ValidateUser", ex);
-            }
+				context.Complete();
+			}
 
-            return ret;
-        }
+			return ret;
+		}
 
         /// <summary>
         /// Gets the current password of a user (provided it isn't hashed)
@@ -448,9 +458,11 @@ namespace Worki.Memberships
             }
             else
             {
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 try
                 {
-                    Member m = MemberRepository.GetMember(username);
+					Member m = mRepo.GetMember(username);
                     password = UnEncodePassword(m.Password);
                 }
                 catch(Exception ex)
@@ -472,44 +484,45 @@ namespace Worki.Memberships
 			// Default password is empty
 			string pass = String.Empty;
 
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			try
 			{
-				Member member = MemberRepository.GetMember(username);
-				MemberRepository.Update(member.MemberId, m =>
+				Member m = mRepo.GetMember(username);
+				// We found a user by that name
+				if (m != null)
 				{
-					// We found a user by that name
-					if (m != null)
+					// Check if the returned password answer matches
+					if (answer == m.PasswordAnswer)
 					{
-						// Check if the returned password answer matches
-						if (answer == m.PasswordAnswer)
+						// Create a new password with the minimum number of characters
+						pass = GeneratePassword(MinRequiredPasswordLength);
+
+						// If the password format is hashed, there must be a salt added
+						string salt = "";
+						if (PasswordFormat == MembershipPasswordFormat.Hashed)
 						{
-							// Create a new password with the minimum number of characters
-							pass = GeneratePassword(MinRequiredPasswordLength);
-
-							// If the password format is hashed, there must be a salt added
-							string salt = "";
-							if (PasswordFormat == MembershipPasswordFormat.Hashed)
-							{
-								salt = GenerateSalt();
-								pass = pass + salt;
-							}
-
-							m.Password = EncodePassword(pass);
-							m.PasswordSalt = salt;
-							//to change password, same process has activation link
-							m.EmailKey = Member.GenerateKey();
-
-							// Reset everyting
-							ResetAuthenticationFailures(ref m, DateTime.Now);
-
-							//MemberRepository.Save();
+							salt = GenerateSalt();
+							pass = pass + salt;
 						}
+
+						m.Password = EncodePassword(pass);
+						m.PasswordSalt = salt;
+						//to change password, same process has activation link
+						m.EmailKey = Member.GenerateKey();
+
+						// Reset everyting
+						ResetAuthenticationFailures(ref m, DateTime.Now);
+
+						//MemberRepository.Save();
 					}
-				});
+				}
+				context.Commit();
 			}
 			catch (Exception ex)
 			{
 				Logger.Error("ResetPassword", ex);
+				context.Complete();
 			}
 			return pass;
 		}
@@ -521,51 +534,53 @@ namespace Worki.Memberships
         /// <param name="oldPassword">Old password to verify owner</param>
         /// <param name="newPassword">New password</param>
         /// <returns>True if successful. Defaults to false.</returns>
-        public override bool ChangePassword(string username, string oldPassword, string newPassword)
-        {
-            if (!ValidateUser(username, oldPassword))
-                return false;
+		public override bool ChangePassword(string username, string oldPassword, string newPassword)
+		{
+			if (!ValidateUser(username, oldPassword))
+				return false;
 
-            ValidatePasswordEventArgs args = new ValidatePasswordEventArgs(username, newPassword, false);
+			ValidatePasswordEventArgs args = new ValidatePasswordEventArgs(username, newPassword, false);
 
-            OnValidatingPassword(args);
+			OnValidatingPassword(args);
 
-            if (args.Cancel)
-                if (args.FailureInformation != null)
-                    throw args.FailureInformation;
-                else
-                    throw new MembershipPasswordException("Password change has been cancelled due to a validation failure.");
+			if (args.Cancel)
+				if (args.FailureInformation != null)
+					throw args.FailureInformation;
+				else
+					throw new MembershipPasswordException("Password change has been cancelled due to a validation failure.");
 
-            bool ret = false;
-            try
-            {
-                Member member = MemberRepository.GetMember(username);
-				MemberRepository.Update(member.MemberId, m =>
-                {
-                    string salt = "";
-                    if (PasswordFormat == MembershipPasswordFormat.Hashed)
-                    {
-                        salt = GenerateSalt();
-                        newPassword = newPassword + salt;
-                    }
+			bool ret = false;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
+			{
+				Member m = mRepo.GetMember(username);
 
-                    m.Password = EncodePassword(newPassword);
-                    m.PasswordSalt = salt;
-                    m.EmailKey = null;
+				string salt = "";
+				if (PasswordFormat == MembershipPasswordFormat.Hashed)
+				{
+					salt = GenerateSalt();
+					newPassword = newPassword + salt;
+				}
 
-                    // Reset everything
-                    ResetAuthenticationFailures(ref m, DateTime.Now);
-                });
-                ret = true;
-            }
-            catch(Exception ex)
-            {
-                ret = false;
+				m.Password = EncodePassword(newPassword);
+				m.PasswordSalt = salt;
+				m.EmailKey = null;
+
+				// Reset everything
+				ResetAuthenticationFailures(ref m, DateTime.Now);
+				ret = true;
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				ret = false;
 				Logger.Error("ChangePassword", ex);
-            }
+				context.Complete();
+			}
 
-            return ret;
-        }
+			return ret;
+		}
 
         /// <summary>
         /// Change the password retreival/reset question and answer pair
@@ -575,30 +590,31 @@ namespace Worki.Memberships
         /// <param name="newPasswordQuestion">New password question</param>
         /// <param name="newPasswordAnswer">New password answer (will also be encrypted)</param>
         /// <returns>True if successful. Defaults to false.</returns>
-        public override bool ChangePasswordQuestionAndAnswer(string username, string password,
-            string newPasswordQuestion, string newPasswordAnswer)
-        {
-            if (!ValidateUser(username, password))
-                return false;
+		public override bool ChangePasswordQuestionAndAnswer(string username, string password,
+			string newPasswordQuestion, string newPasswordAnswer)
+		{
+			if (!ValidateUser(username, password))
+				return false;
 
-            bool ret = false;
-            try
-            {
-				Member m = MemberRepository.GetMember(username);
-                MemberRepository.Update(m.MemberId, member =>
-                {
-                    member.PasswordQuestion = newPasswordQuestion;
-                    member.PasswordAnswer = EncodePassword(newPasswordAnswer);
-                });
-                ret = true;
-            }
-            catch(Exception ex)
-            {
-                ret = false;
+			bool ret = false;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
+			{
+				Member member = mRepo.GetMember(username);
+				member.PasswordQuestion = newPasswordQuestion;
+				member.PasswordAnswer = EncodePassword(newPasswordAnswer);
+				ret = true;
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				ret = false;
 				Logger.Error("ChangePasswordQuestionAndAnswer", ex);
-            }
-            return ret;
-        }
+				context.Complete();
+			}
+			return ret;
+		}
 
         /*************************************************************************
          * User information retreival methods
@@ -610,10 +626,11 @@ namespace Worki.Memberships
         public override string GetUserNameByEmail(string email)
         {
             string username = String.Empty;
-
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
-                username = MemberRepository.GetUserName(email);
+				username = mRepo.GetUserName(email);
             }
             catch(Exception ex)
             {
@@ -628,9 +645,11 @@ namespace Worki.Memberships
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
             MembershipUser u = null;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
-                Member m = MemberRepository.Get(Convert.ToInt32(providerUserKey));
+				Member m = mRepo.Get(Convert.ToInt32(providerUserKey));
 
                 if (m != null)
                     u = GetUserFromMember(m);
@@ -649,10 +668,11 @@ namespace Worki.Memberships
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
             MembershipUser u = null;
-
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
-                Member m = MemberRepository.GetMember(username);
+				Member m = mRepo.GetMember(username);
 
                 if (m != null)
                     u = GetUserFromMember(m);
@@ -677,15 +697,16 @@ namespace Worki.Memberships
         {
             MembershipUserCollection users = new MembershipUserCollection();
             totalRecords = 0;
-
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
                 int start = pageSize * pageIndex;
                 int end = start + pageSize;
 
-                totalRecords = MemberRepository.GetCount();
+				totalRecords = mRepo.GetCount();
 
-				IList<Member> mlist = MemberRepository.Get(start, pageSize, m => m.MemberId);
+				IList<Member> mlist = mRepo.Get(start, pageSize, m => m.MemberId);
 
                 foreach (Member m in mlist)
                     users.Add(GetUserFromMember(m));
@@ -705,9 +726,11 @@ namespace Worki.Memberships
         public override int GetNumberOfUsersOnline()
         {
             int c = 0;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
-                c = (from members in MemberRepository.GetAll()
+				c = (from members in mRepo.GetAll()
                      where members.LastActivityDate.Add(UserIsOnlineTimeWindow) >= DateTime.Now
                      select members).Count();
             }
@@ -729,17 +752,18 @@ namespace Worki.Memberships
         {
             MembershipUserCollection users = new MembershipUserCollection();
             totalRecords = 0;
-
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
                 int start = pageSize * pageIndex;
                 int end = start + pageSize;
 
-                totalRecords = (from members in MemberRepository.GetAll()
+				totalRecords = (from members in mRepo.GetAll()
                                 where members.Email.Contains(emailToMatch)
                                 select members).Count();
 
-                List<Member> mlist = (from members in MemberRepository.GetAll()
+				List<Member> mlist = (from members in mRepo.GetAll()
                                       where members.Email.Contains(emailToMatch)
                                       select members).Skip(start).Take(pageSize).ToList();
 
@@ -764,15 +788,16 @@ namespace Worki.Memberships
         {
             MembershipUserCollection users = new MembershipUserCollection();
             totalRecords = 0;
-
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             try
             {
                 int start = pageSize * pageIndex;
                 int end = start + pageSize;
 
-                totalRecords = MemberRepository.GetCount();
+				totalRecords = mRepo.GetCount();
 
-                List<Member> mlist = (from members in MemberRepository.GetAll()
+				List<Member> mlist = (from members in mRepo.GetAll()
                                       where members.Username.Contains(usernameToMatch)
                                       select members).Skip(start).Take(pageSize).ToList();
 

@@ -10,6 +10,7 @@ using Worki.Memberships;
 using Worki.Web.Helpers;
 using Postal;
 using Worki.Infrastructure.Helpers;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
@@ -31,22 +32,16 @@ namespace Worki.Web.Controllers
         IFormsAuthenticationService _FormsService;
         IMembershipService _MembershipService;
         ILogger _Logger;
-        IVisitorRepository _VisitorRepository;
-        IMemberRepository _MemberRepository;
         IEmailService _EmailService;
 
         public AccountController(   IFormsAuthenticationService formsService, 
                                     IMembershipService membershipService,
-                                    ILogger logger, 
-                                    IVisitorRepository visitorRepository, 
-                                    IMemberRepository memberRepository,
+                                    ILogger logger,
                                     IEmailService emailService)
         {
             this._FormsService = formsService;
             this._MembershipService = membershipService;
             this._Logger = logger;
-            this._VisitorRepository = visitorRepository;
-            this._MemberRepository = memberRepository;
             this._EmailService = emailService;
         }
 
@@ -77,7 +72,9 @@ namespace Worki.Web.Controllers
             {
                 if (MembershipService.ValidateUser(model.Login, model.Password))
                 {
-                    var member = _MemberRepository.GetMember(model.Login);
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var member = mRepo.GetMember(model.Login);
                     var userData = member.GetUserData();
                     FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
                     if (!String.IsNullOrEmpty(returnUrl))
@@ -155,7 +152,9 @@ namespace Worki.Web.Controllers
 				MembershipCreateStatus createStatus = MembershipCreateStatus.UserRejected;
 				try
 				{
-					var fromDB = _MemberRepository.GetMember(model.Email);
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var fromDB = mRepo.GetMember(model.Email);
 					if (fromDB != null)
 					{
 						error = Worki.Resources.Validation.ValidationString.UsernameExistForThisMail;
@@ -171,11 +170,11 @@ namespace Worki.Web.Controllers
 					}
 
 					//add memberData
-					var created = _MemberRepository.GetMember(model.Email);
-					_MemberRepository.Update(created.MemberId, m =>
-					{
-						m.MemberMainData = model.MemberMainData;
-					});
+					context = ModelFactory.GetUnitOfWork();
+					mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var created = mRepo.GetMember(model.Email);
+					created.MemberMainData = model.MemberMainData;
+					context.Commit();
 					addMemberDataSuccess = true;
 				}
 				catch (Exception ex)
@@ -189,7 +188,9 @@ namespace Worki.Web.Controllers
 				if (createStatusSuccess && addMemberDataSuccess)
 				{
 					//add them to private beta role
-					var member = _MemberRepository.GetMember(model.Email);
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var member = mRepo.GetMember(model.Email);
 					//send mail to activate the account
 					try
 					{
@@ -241,7 +242,9 @@ namespace Worki.Web.Controllers
         [ActionName("activer")]
         public virtual ActionResult Activate(string username, string key)
         {
-            if (_MemberRepository.ActivateMember(username, key) == false)
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			if (mRepo.ActivateMember(username, key) == false)
                 return RedirectToAction(MVC.Home.Index());
             else
                 return RedirectToAction(MVC.Account.LogOn());
@@ -262,7 +265,9 @@ namespace Worki.Web.Controllers
         public virtual ActionResult ChangePassword(string username, string key)
         {
             ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
-            var member = _MemberRepository.GetMember(username);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.GetMember(username);
             //link not ok, redirect to home
             if (member == null || string.Compare(key, member.EmailKey) != 0)
                 return RedirectToAction(MVC.Home.Index());
@@ -285,7 +290,9 @@ namespace Worki.Web.Controllers
                 {
                     if (MembershipService.ValidateUser(model.UserName, model.NewPassword))
                     {
-                        var member = _MemberRepository.GetMember(model.UserName);
+						var context = ModelFactory.GetUnitOfWork();
+						var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+						var member = mRepo.GetMember(model.UserName);
                         var userData = member.GetUserData();
                         FormsService.SignIn(model.UserName, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
                         return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
@@ -332,7 +339,9 @@ namespace Worki.Web.Controllers
                 if (MembershipService.ResetPassword(model.EMail))
                 {
                     //send mail to activate the account
-                    var member = _MemberRepository.GetMember(model.EMail);
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var member = mRepo.GetMember(model.EMail);
                     try
                     {
                         var urlHelper = new UrlHelper(ControllerContext.RequestContext);

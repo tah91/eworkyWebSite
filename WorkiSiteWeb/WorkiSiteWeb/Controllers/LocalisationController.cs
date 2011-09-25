@@ -8,6 +8,7 @@ using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
 using Worki.Service;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
@@ -17,15 +18,11 @@ namespace Worki.Web.Controllers
     //[ValidateOnlyOnSubmit(ButtonName="valid")]
     public partial class LocalisationController : Controller
     {
-        ILocalisationRepository _LocalisationRepository;
-        IMemberRepository _MemberRepository;
         ILogger _Logger;
 		ISearchService _SearchService;
 
-		public LocalisationController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService)
+		public LocalisationController(ILogger logger, ISearchService searchService)
 		{
-			_LocalisationRepository = localisationRepository;
-			_MemberRepository = memberRepository;
 			_Logger = logger;
 			_SearchService = searchService;
 		}
@@ -47,7 +44,9 @@ namespace Worki.Web.Controllers
 		[ActionName("details")]
 		public virtual ActionResult Details(int id, string name)
 		{
-			var localisation = _LocalisationRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
             var nameToMatch = ControllerHelpers.GetSeoString(localisation.Name);
 
 			if (localisation == null || string.IsNullOrEmpty(name) || string.Compare(nameToMatch, name, true) != 0)
@@ -80,7 +79,9 @@ namespace Worki.Web.Controllers
         {
             if (!id.HasValue)
                 return View(MVC.Localisation.Views.lieu_absent);
-            var localisation = _LocalisationRepository.Get(id.Value);
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id.Value);
             if (localisation == null)
                 return View(MVC.Localisation.Views.lieu_absent);
             return View(new LocalisationFormViewModel(localisation));
@@ -104,9 +105,12 @@ namespace Worki.Web.Controllers
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			//to keep files state in case of error
             TempData[PictureData.PictureDataString] = new PictureDataContainer(localisation);
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			try
 			{
-				var member = _MemberRepository.GetMember(User.Identity.Name);
+				var member = mRepo.GetMember(User.Identity.Name);
 				if (!member.IsValidUser())
 				{
 					error = Worki.Resources.Validation.ValidationString.InvalidUser;
@@ -125,7 +129,7 @@ namespace Worki.Web.Controllers
 						//validate
 						_SearchService.ValidateLocalisation(localisationToAdd, ref error);
 						//save
-						_LocalisationRepository.Add(localisationToAdd);
+						lRepo.Add(localisationToAdd);
 						idToRedirect = localisationToAdd.ID;
 					}
 					else
@@ -136,21 +140,23 @@ namespace Worki.Web.Controllers
 							error = editionAccess;
 							throw new Exception(editionAccess);
 						}
-						_LocalisationRepository.Update(id.Value, loc => { UpdateModel(loc, LocalisationPrefix); });
+						var loc = lRepo.Get(id.Value);
+							 UpdateModel(loc, LocalisationPrefix);
 						idToRedirect = id.Value;						
 					}
-					_MemberRepository.Update(member.MemberId, m =>
-					{
-						m.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = idToRedirect, ModificationType = (int)EditionType.Edition });
-					});
+
+					member.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = idToRedirect, ModificationType = (int)EditionType.Edition });
                     TempData.Remove(PictureData.PictureDataString);
                     localisation.ID = idToRedirect;
+
+					context.Commit();
                     return Redirect(localisation.GetDetailFullUrl(Url));
 				}
 			}
 			catch (Exception ex)
 			{
 				_Logger.Error("Edit", ex);
+				context.Complete();
 				ModelState.AddModelError("", error);
 			}
 			return View(new LocalisationFormViewModel(localisation));
@@ -166,7 +172,9 @@ namespace Worki.Web.Controllers
         [ActionName("supprimer")]
         public virtual ActionResult Delete(int id, string returnUrl = null)
         {
-            var localisation = _LocalisationRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
             if (localisation == null)
                 return View(MVC.Localisation.Views.lieu_absent);
             else
@@ -187,10 +195,21 @@ namespace Worki.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Delete(int id, string confirmButton, string returnUrl)
         {
-            var localisation = _LocalisationRepository.Get(id);
-            if (localisation == null)
-                return View(MVC.Localisation.Views.lieu_absent);
-            _LocalisationRepository.Delete(id);
+			var context = ModelFactory.GetUnitOfWork();
+			try
+			{
+				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+				var localisation = lRepo.Get(id);
+				if (localisation == null)
+					return View(MVC.Localisation.Views.lieu_absent);
+				lRepo.Delete(id);
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Delete", ex);
+				context.Complete();
+			}
             if (string.IsNullOrEmpty(returnUrl))
                 return View(MVC.Localisation.Views.supprimer_reussi);
             else
@@ -205,16 +224,19 @@ namespace Worki.Web.Controllers
         /// <param name="id">The id of the comment's localisation</param>
         /// <param name="com">The comment data from the form</param>
         /// <returns>redirect to the return urlif ok, show errors else</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize]
-        //[ValidateAntiForgeryToken]
+		[AcceptVerbs(HttpVerbs.Post), Authorize]
+		//[ValidateAntiForgeryToken]
 		[HandleModelStateException]
-        public virtual PartialViewResult PostComment(int id,Comment com)
-        {
+		public virtual PartialViewResult PostComment(int id, Comment com)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
-			var localisation = _LocalisationRepository.Get(id);
+			var localisation = lRepo.Get(id);
 			try
 			{
-				var member = _MemberRepository.GetMember(User.Identity.Name);
+				var member = mRepo.GetMember(User.Identity.Name);
 				if (!member.IsValidUser())
 				{
 					error = Worki.Resources.Validation.ValidationString.InvalidUser;
@@ -228,14 +250,13 @@ namespace Worki.Web.Controllers
 					var comment = new Comment { LocalisationID = id, Date = System.DateTime.Now, PostUserID = member.MemberId };
 					UpdateModel(comment);
 					var comId = 0;
-					_LocalisationRepository.Update(localisation.ID, loc =>
-					{
-						loc.Comments.Add(comment);
-						comId = comment.ID;
-					});
-					var comFromDb = _LocalisationRepository.GetComment(comment.ID);
+					localisation.Comments.Add(comment);
+					comId = comment.ID;
+					var comFromDb = lRepo.GetComment(comment.ID);
 					if (comFromDb == null)
 						throw new ModelStateException(ModelState);
+
+					context.Commit();
 					return PartialView(MVC.Shared.Views._LocalisationSingleComment, comFromDb);
 				}
 				else
@@ -246,10 +267,11 @@ namespace Worki.Web.Controllers
 			catch (Exception ex)
 			{
 				_Logger.Error("PostComment", ex);
+				context.Complete();
 				ModelState.AddModelError("", error);
 				throw new ModelStateException(ModelState);
 			}
-        }
+		}
 
         /// <summary>
         /// GET Action result to delete a comment, only available for admin role
@@ -259,27 +281,29 @@ namespace Worki.Web.Controllers
         /// <param name="commentId">The id of the comment</param>
         /// <param name="returnUrl">The comment data from the form</param>
         /// <returns>redirect to the return url if ok, show errors else</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
-        public virtual ActionResult DeleteComment(int id, int commentId, string returnUrl)
-        {
-            try
-            {
-                _LocalisationRepository.Update(id, localisation =>
-                {
-                    foreach (var comment in localisation.Comments.ToList())
-                    {
-                        if (comment.ID == commentId)
-                        {
-                            localisation.Comments.Remove(comment);
-                        }
-                    }
-                });
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error(ex.Message);
-            }
-            return Redirect(returnUrl);
-        }
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+		public virtual ActionResult DeleteComment(int id, int commentId, string returnUrl)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			try
+			{
+				var localisation = lRepo.Get(id);
+				foreach (var comment in localisation.Comments.ToList())
+				{
+					if (comment.ID == commentId)
+					{
+						localisation.Comments.Remove(comment);
+					}
+				}
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error(ex.Message);
+			}
+			return Redirect(returnUrl);
+		}
     }
 }

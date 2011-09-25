@@ -9,31 +9,31 @@ using Worki.Web.Helpers;
 using Worki.Data.Models;
 using System.Collections.Generic;
 using Worki.Infrastructure.Logging;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
     public partial class UploadImageController : Controller
     {
-        ILocalisationRepository _LocalisationRepository;
-        IRentalRepository _RentalRepository;
         ILogger _Logger;
 
-        public UploadImageController(ILocalisationRepository localisationRepository, IRentalRepository rentalRepository, ILogger logger)
+        public UploadImageController(ILogger logger)
 		{
-			_LocalisationRepository = localisationRepository;
-            _RentalRepository = rentalRepository;
 			_Logger = logger;
 		}
 
         IPictureDataProvider GetProvider(ProviderType type, int id)
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
             switch(type)
             {
                 case ProviderType.Rental:
-                    return _RentalRepository.Get(id);
+					return rRepo.Get(id);
                 case ProviderType.Localisation:
                 default:
-                    return _LocalisationRepository.Get(id);
+					return lRepo.Get(id);
             }
         }
 

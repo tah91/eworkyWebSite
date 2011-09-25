@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Postal;
 using Worki.Infrastructure.Helpers;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
@@ -20,19 +21,13 @@ namespace Worki.Web.Controllers
     [CacheFilter(Order = 2)]
     public partial class HomeController : Controller
     {
-        ILocalisationRepository _LocalisationRepository; 
         ILogger _Logger;
         IEmailService _EmailService;
-        IWelcomePeopleRepository _WelcomePeopleRepository;
-        IPressRepository _PressRepository;
 
-        public HomeController(ILocalisationRepository localisationRepository, ILogger logger, IEmailService emailService, IWelcomePeopleRepository welcomePeopleRepository, IPressRepository pressRepository)
+        public HomeController(ILogger logger, IEmailService emailService)
         {
-            this._LocalisationRepository = localisationRepository;
             this._Logger = logger;
             this._EmailService = emailService;
-            this._WelcomePeopleRepository = welcomePeopleRepository;
-            this._PressRepository = pressRepository;
         }
 
         /// <summary>
@@ -86,10 +81,13 @@ namespace Worki.Web.Controllers
         [ActionName("index")]
         public virtual ActionResult Index()
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
             var indexModel = new IndexViewModel()
             {
-                LocalisationCount = _LocalisationRepository.GetCount(),
-                WelcomePeople = _WelcomePeopleRepository.GetAll().OrderByDescending(wp => wp.Id).ToList(),
+				LocalisationCount = lRepo.GetCount(),
+				WelcomePeople = wpRepo.GetAll().OrderByDescending(wp => wp.Id).ToList(),
                 BlogPosts = GetBlogPosts()
             };
             ViewData[IndexViewModelContent] = indexModel;
@@ -155,7 +153,9 @@ namespace Worki.Web.Controllers
         [ActionName("presse")]
         public virtual ActionResult Press()
         {
-            var pressList = _PressRepository.GetAll().OrderByDescending(p => p.Date).ToList();
+			var context = ModelFactory.GetUnitOfWork();
+			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
+			var pressList = pRepo.GetAll().OrderByDescending(p => p.Date).ToList();
             return View(pressList);
         }
 

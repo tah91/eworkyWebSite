@@ -1,6 +1,7 @@
 ﻿using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Repository;
+using Worki.Infrastructure.UnitOfWork;
 
 namespace Worki.Data.Models
 {
@@ -11,9 +12,9 @@ namespace Worki.Data.Models
 
     public class RentalRepository : RepositoryBase<Rental>, IRentalRepository
     {
-        public RentalRepository(ILogger logger)
-            : base(logger)
-        {
-        }
+		public RentalRepository(ILogger logger, IUnitOfWork context)
+			: base(logger, context)
+		{
+		}
     }
 }

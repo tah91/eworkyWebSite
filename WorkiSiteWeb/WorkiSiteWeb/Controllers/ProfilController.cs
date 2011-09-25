@@ -7,6 +7,7 @@ using Worki.Data.Repository;
 using Worki.Data.Models;
 using System.Linq;
 using Worki.Infrastructure;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
@@ -17,17 +18,17 @@ namespace Worki.Web.Controllers
 	{
 		#region Private
 
-		IMemberRepository _MemberRepository;
-		ILocalisationRepository _LocalisationRepository;
 		ILogger _Logger;
 
 		ProfilDashboardModel GetDashboard(Member member, bool isPrivate = false, int p1 = 1, int p2 = 1, int p3 = 1, int p4 = 1)
 		{
 			//get fav localisations
 			var favLocs = new List<Localisation>();
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			foreach (var item in member.FavoriteLocalisations.Skip((p1 - 1) * LocalisationPageSize).Take(LocalisationPageSize))
 			{
-				favLocs.Add(_LocalisationRepository.Get(item.LocalisationId));
+				favLocs.Add(lRepo.Get(item.LocalisationId));
 			}
 			//added localisations
 			var addedLoc = member.Localisations.Skip((p2 - 1) * LocalisationPageSize).Take(LocalisationPageSize).ToList();
@@ -63,11 +64,9 @@ namespace Worki.Web.Controllers
 
 		#endregion
 
-		public ProfilController(IMemberRepository memberRepository, ILogger logger, ILocalisationRepository localisationRepository)
+		public ProfilController(ILogger logger)
 		{
-			_MemberRepository = memberRepository;
 			_Logger = logger;
-			_LocalisationRepository = localisationRepository;
 		}
 
 		/// <summary>
@@ -79,7 +78,9 @@ namespace Worki.Web.Controllers
 		[ActionName("details")]
 		public virtual ActionResult Detail(int id)
 		{
-			var member = _MemberRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
 			if (member == null || member.MemberMainData == null)
 				return View(MVC.Shared.Views.Error);
 
@@ -98,7 +99,9 @@ namespace Worki.Web.Controllers
 		[ActionName("dashboard")]
 		public virtual ActionResult Dashboard(int id)
 		{
-			var member = _MemberRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
 			if (member == null || member.MemberMainData == null)
 				return View(MVC.Shared.Views.Error);
 
@@ -108,7 +111,9 @@ namespace Worki.Web.Controllers
 
 		public virtual PartialViewResult AjaxDashboard(int id, int tabId, int p1, int p2, int p3, int p4)
 		{
-			var member = _MemberRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
 			if (member == null || member.MemberMainData == null)
 				return null;
 
@@ -133,7 +138,9 @@ namespace Worki.Web.Controllers
 		[ActionName("editer")]
 		public virtual ActionResult Edit(int id)
 		{
-			var item = _MemberRepository.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var item = mRepo.Get(id);
 			if (item == null)
 				return View(MVC.Shared.Views.Error);
 			return View(new ProfilFormViewModel { Member = item });
@@ -152,6 +159,8 @@ namespace Worki.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				try
 				{
 					//upload images and set image paths
@@ -177,17 +186,18 @@ namespace Worki.Web.Controllers
 							ModelState.AddModelError("", ex.Message);
 						}
 					}
-					_MemberRepository.Update(id, m =>
-					{
-						UpdateModel(m, "Member");
-						if (!string.IsNullOrEmpty(member.MemberMainData.Avatar))
-							m.MemberMainData.Avatar = member.MemberMainData.Avatar;
-					});
+					var m = mRepo.Get(id);
+					UpdateModel(m, "Member");
+					if (!string.IsNullOrEmpty(member.MemberMainData.Avatar))
+						m.MemberMainData.Avatar = member.MemberMainData.Avatar;
+
+					context.Commit();
 					return RedirectToAction(MVC.Profil.ActionNames.Dashboard, new { id = id });
 				}
 				catch (Exception ex)
 				{
 					_Logger.Error("EditProfil", ex);
+					context.Complete();
 					ModelState.AddModelError("EditProfil", ex);
 				}
 			}
@@ -203,13 +213,23 @@ namespace Worki.Web.Controllers
 		/// <returns>Redirect to returnUrl</returns>
 		public virtual PartialViewResult AddToFavorite(string id, int locId)
 		{
-			var member = _MemberRepository.GetMember(id);
-			if (member == null)
-				return null;
-			_MemberRepository.Update(member.MemberId, m =>
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
 			{
-				m.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = locId });
-			});
+				var member = mRepo.GetMember(id);
+				if (member == null)
+					return null;
+				member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = locId });
+
+				context.Commit();
+			}
+
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("AddToFavorite", ex);
+			}
 			ViewData[ProfilDashboardModel.AddToFavorite] = false;
 			ViewData[ProfilDashboardModel.DelFavorite] = true;
 			return PartialView(MVC.Shared.Views._AddToFavorite);
@@ -224,20 +244,29 @@ namespace Worki.Web.Controllers
 		/// <returns>Redirect to returnUrl</returns>
 		public virtual PartialViewResult RemoveFromFavorite(string id, int locId)
 		{
-			var member = _MemberRepository.GetMember(id);
-			if (member == null)
-				return null;
-
-			_MemberRepository.Update(member.MemberId, m =>
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
 			{
-				foreach (var fav in m.FavoriteLocalisations.ToList())
+				var member = mRepo.GetMember(id);
+				if (member == null)
+					return null;
+
+				foreach (var fav in member.FavoriteLocalisations.ToList())
 				{
 					if (fav.LocalisationId == locId)
 					{
-						m.FavoriteLocalisations.Remove(fav);
+						member.FavoriteLocalisations.Remove(fav);
 					}
 				}
-			});
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("RemoveFromFavorite", ex);
+			}
+
 
 			ViewData[ProfilDashboardModel.AddToFavorite] = true;
 			ViewData[ProfilDashboardModel.DelFavorite] = false;

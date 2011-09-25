@@ -6,6 +6,7 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Logging;
 using Worki.Service;
 using Worki.Web.Helpers;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
@@ -15,15 +16,11 @@ namespace Worki.Web.Controllers
     [ValidateOnlyIncomingValues]
     public partial class SearchController : Controller
     {
-        IMemberRepository _MembertRepository;
-        ILocalisationRepository _LocalisationRepository;
         ILogger _Logger;
 		ISearchService _SearchService;
 
-        public SearchController(ILocalisationRepository localisationRepository,IMemberRepository memberRepository, ILogger logger,ISearchService searchService)
+        public SearchController(ILogger logger,ISearchService searchService)
         {
-            _LocalisationRepository = localisationRepository;
-            _MembertRepository = memberRepository;
             _Logger = logger;
 			_SearchService = searchService;
         }
@@ -38,7 +35,9 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult FindSimilarLocalisation(float latitude, float longitude)
         {
-            var localisations = _LocalisationRepository.FindSimilarLocalisation(latitude, longitude);
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisations = lRepo.FindSimilarLocalisation(latitude, longitude);
             var jsonLocalisations = (from item
                                          in localisations
                                      select item.GetJson());
@@ -53,7 +52,9 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult GetMainLocalisations()
         {
-			var localisations = _LocalisationRepository.GetMany(item => (item.MainLocalisation != null && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisations = lRepo.GetMany(item => (item.MainLocalisation != null && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
             var jsonLocalisations = localisations.Select(item =>
             {
                 return item.GetJson(this);

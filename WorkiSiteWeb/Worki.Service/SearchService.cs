@@ -27,7 +27,6 @@ namespace Worki.Service
 	{
 		#region private
 
-		ILocalisationRepository _LocalisationRepository;
         ILogger _Logger;
 		IGeocodeService _GeocodeService;
 
@@ -55,7 +54,9 @@ namespace Worki.Service
         /// </summary>
         void FillResults(SearchCriteriaFormViewModel criteriaViewModel)
         {
-            var results = _LocalisationRepository.FindByCriteria(criteriaViewModel.Criteria);//.ToList();
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var results = lRepo.FindByCriteria(criteriaViewModel.Criteria);//.ToList();
 
             foreach (var item in results)
             {
@@ -74,9 +75,8 @@ namespace Worki.Service
 
 		#endregion
 
-		public SearchService(ILocalisationRepository localisationRepository, ILogger logger,IGeocodeService geocodeService)
+		public SearchService(ILogger logger,IGeocodeService geocodeService)
 		{
-			_LocalisationRepository = localisationRepository;
             _Logger = logger;
 			_GeocodeService = geocodeService;
 		}
@@ -280,6 +280,8 @@ namespace Worki.Service
 		/// <param name="error">error to fill</param>
 		public void ValidateLocalisation(Localisation toValidate, ref string error)
 		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			if (toValidate == null)
 			{
 				error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
@@ -287,7 +289,7 @@ namespace Worki.Service
 			}
 
 			var similarLoc = (from loc
-								  in _LocalisationRepository.FindSimilarLocalisation((float)toValidate.Latitude, (float)toValidate.Longitude)
+								  in lRepo.FindSimilarLocalisation((float)toValidate.Latitude, (float)toValidate.Longitude)
 							  where string.Compare(loc.Name, toValidate.Name, StringComparison.InvariantCultureIgnoreCase) == 0
 							  select loc).Count();
 			if (similarLoc > 0)

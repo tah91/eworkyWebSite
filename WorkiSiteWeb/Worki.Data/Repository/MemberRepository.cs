@@ -5,6 +5,7 @@ using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Repository;
 using System.Web.Security;
+using Worki.Infrastructure.UnitOfWork;
 
 namespace Worki.Data.Models
 {
@@ -15,25 +16,9 @@ namespace Worki.Data.Models
 		bool ActivateMember(string username, string key);
 	}
 
-    public class MemberRepository : RepositoryBase<Member>, IMemberRepository
-    {
-        #region Private
-
-        #region Complied Queries
-
-		//Func<WorkiDBEntities, string, IQueryable<Member>> _GetMemberFromUserName = CompiledQuery.Compile<WorkiDBEntities, string, IQueryable<Member>>(
-		//    (db, username) => from members in db.Members where members.Username == username select members
-		//    );
-
-		//Func<WorkiDBEntities, string, IQueryable<Member>> _GetMemberFromEmail = CompiledQuery.Compile<WorkiDBEntities, string, IQueryable<Member>>(
-		//    (db, email) => from members in db.Members where members.Email == email select members
-		//    );
-
-		//Func<WorkiDBEntities, int, IQueryable<Member>> _GetMemberFromId = CompiledQuery.Compile<WorkiDBEntities, int, IQueryable<Member>>(
-		//    (db, id) => from members in db.Members where members.MemberId == id select members
-		//    );
-
-        #endregion		
+	public class MemberRepository : RepositoryBase<Member>, IMemberRepository
+	{
+		#region Private
 
 		static bool _Initialized = false;
 
@@ -81,86 +66,82 @@ namespace Worki.Data.Models
 			_Initialized = true;
 		}
 
-		public MemberRepository(ILogger logger)
-			: base(logger)
+		public MemberRepository(ILogger logger, IUnitOfWork context)
+			: base(logger, context)
 		{
 			//initialise admin data
 			Initialise();
 		}
 
-        #endregion
+		#endregion
 
-        #region IMemberRepository
+		#region IMemberRepository
 
-        public String GetUserName(string email)
-        {
-            using (var db = new WorkiDBEntities())
-            {
-				Member m = (from members in db.Members where members.Email == email select members).SingleOrDefault();
-                return m == null ? null : m.Username;
-            }
-        }
+		public String GetUserName(string email)
+		{
+			Member m = (from members in _Context.Members where members.Email == email select members).SingleOrDefault();
+			return m == null ? null : m.Username;
+		}
 
-        public Member GetMember(string key)
-        {
-            var db = new WorkiDBEntities();
-            //using (var db = new WorkiDBEntities())
-            {
-				Member member = db.Members.SingleOrDefault(m => m.Username == key);
+		public Member GetMember(string key)
+		{
+			Member member = _Context.Members.SingleOrDefault(m => m.Username == key);
 
-                return member;
-            }
-        }
+			return member;
+		}
 
-        public bool ActivateMember(string username, string key)
-        {
-            using (var db = new WorkiDBEntities())
-            {
-                var member = db.Members.SingleOrDefault(m => m.Email == username);
-                if (member == null)
-                    return false;
-                if (string.Compare(key, member.EmailKey) == 0)
-                {
-                    member.IsApproved = true;
-                    member.LastActivityDate = DateTime.Now;
-                    member.EmailKey = null;
-                    db.SaveChanges();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+		public bool ActivateMember(string username, string key)
+		{
+			var member = _Context.Members.SingleOrDefault(m => m.Email == username);
+			if (member == null)
+				return false;
+			try
+			{
+				if (string.Compare(key, member.EmailKey) == 0)
+				{
+					member.IsApproved = true;
+					member.LastActivityDate = DateTime.Now;
+					member.EmailKey = null;
+					_Context.Commit();
+					return true;
+				}
+				else
+				{
+					_Context.Complete();
+					return false;
+				}
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("ActivateMember", ex);
+				return false;
+			}			
+		}
 
-        #endregion
+		#endregion
 
-        #region IRepository
+		#region IRepository
 
 		public override void Delete(int key)
 		{
-			using (var db = new WorkiDBEntities())
+			Member member = _Context.Members.SingleOrDefault(m => m.MemberId == key);
+			if (member == null)
+				return;
+			var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminUser);
+			//set member localisation to admin
+			foreach (var item in member.Localisations.ToList())
 			{
-				Member member = db.Members.SingleOrDefault(m => m.MemberId == key);
-				if (member == null)
-					return;
-				var admin = db.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminUser);
-				//set member localisation to admin
-				foreach (var item in member.Localisations.ToList())
-				{
-					item.OwnerID = admin.MemberId;
-				}
-				//set member comment to admin
-				foreach (var item in member.Comments.ToList())
-				{
-					item.PostUserID = admin.MemberId;
-				}
-				db.Members.Remove(member);
-				db.SaveChanges();
+				item.OwnerID = admin.MemberId;
 			}
+			//set member comment to admin
+			foreach (var item in member.Comments.ToList())
+			{
+				item.PostUserID = admin.MemberId;
+			}
+			_Context.Members.Remove(member);
+			//db.SaveChanges();
 		}
 
-        #endregion
-    }
+		#endregion
+	}
 }
