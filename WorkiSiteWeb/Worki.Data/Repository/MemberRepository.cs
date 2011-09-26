@@ -71,24 +71,24 @@ namespace Worki.Data.Models
 
 		#region IRepository
 
-		public override void Delete(int key)
-		{
-			Member member = _Context.Members.SingleOrDefault(m => m.MemberId == key);
-			if (member == null)
-				return;
-			var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminUser);
-			//set member localisation to admin
-			foreach (var item in member.Localisations.ToList())
-			{
-				item.OwnerID = admin.MemberId;
-			}
-			//set member comment to admin
-			foreach (var item in member.Comments.ToList())
-			{
-				item.PostUserID = admin.MemberId;
-			}
-			_Context.Members.Remove(member);
-		}
+        public override void Delete(params object[] keys)
+        {
+            Member member = _Context.Members.SingleOrDefault(m => m.MemberId == (int)keys[0]);
+            if (member == null)
+                return;
+            var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminUser);
+            //set member localisation to admin
+            foreach (var item in member.Localisations.ToList())
+            {
+                item.OwnerID = admin.MemberId;
+            }
+            //set member comment to admin
+            foreach (var item in member.Comments.ToList())
+            {
+                item.PostUserID = admin.MemberId;
+            }
+            _Context.Members.Remove(member);
+        }
 
 		#endregion
 	}

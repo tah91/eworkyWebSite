@@ -16,7 +16,7 @@ namespace Worki.Infrastructure.Repository
 		/// </summary>
 		/// <param name="key">key</param>
 		/// <returns>object instance if key is present</returns>
-		T Get(int key);
+        T Get(params object[] keys);
 
 		/// <summary>
 		/// add an element to the repository
@@ -28,7 +28,7 @@ namespace Worki.Infrastructure.Repository
 		/// remove an element from the repository
 		/// </summary>
 		/// <param name="key">key of element to remove</param>
-		void Delete(int key);
+        void Delete(params object[] keys);
 
 		/// <summary>
 		/// remove elements from the repository that satisfy a where clause

@@ -33,12 +33,12 @@ namespace Worki.Data.Repository
 			}
 		}
 
-		public virtual void Delete(int key)
+		public virtual void Delete(params object[] keys)
 		{
 			try
 			{
 				var dbSet = _Context.Set<T>();
-				var entity = dbSet.Find(key);
+                var entity = dbSet.Find(keys);
 				dbSet.Remove(entity);
 			}
 			catch (Exception ex)
@@ -64,12 +64,12 @@ namespace Worki.Data.Repository
 			}
 		}
 
-		public virtual T Get(int key)
+        public virtual T Get(params object[] keys)
 		{
 			try
 			{
 				var dbSet = _Context.Set<T>();
-				var entity = dbSet.Find(key);
+				var entity = dbSet.Find(keys);
 				return entity;
 			}
 			catch (Exception ex)
