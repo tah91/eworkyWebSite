@@ -151,6 +151,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Veuillez confirmer la suppression de l&apos;annonce :.
+        /// </summary>
+        public static string ConfirmDeleteRental {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteRental", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Veuillez confirmer la suppression de l&apos;utilisateur :.
         /// </summary>
         public static string ConfirmDeleteUser {
@@ -430,15 +439,6 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Locations.
-        /// </summary>
-        public static string Rentals {
-            get {
-                return ResourceManager.GetString("Rentals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nous sommes désolés, l&apos;article séléctionné n&apos;existe pas ou a été effacé..
         /// </summary>
         public static string PressDeleted {
@@ -453,6 +453,15 @@ namespace Worki.Resources.Views.Admin {
         public static string PressNotFound {
             get {
                 return ResourceManager.GetString("PressNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations.
+        /// </summary>
+        public static string Rentals {
+            get {
+                return ResourceManager.GetString("Rentals", resourceCulture);
             }
         }
         
@@ -484,7 +493,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mise à jour.
+        ///   Looks up a localized string similar to Titre.
         /// </summary>
         public static string Title {
             get {

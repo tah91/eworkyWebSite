@@ -145,7 +145,7 @@ namespace Worki.Web.Controllers
 		/// <returns>the confirmation view</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		[ActionName("supprimer")]
-		public virtual ActionResult Delete(int id, string returnUrl = null)
+		public virtual ActionResult DeleteRental(int id, string returnUrl = null)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
@@ -168,7 +168,7 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ActionName("supprimer")]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Delete(int id, string confirm, string returnUrl)
+        public virtual ActionResult DeleteDeleteRental(int id, string confirm, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
@@ -186,10 +186,8 @@ namespace Worki.Web.Controllers
 				context.Complete();
 			}
 
-			if (string.IsNullOrEmpty(returnUrl))
-				return View(MVC.Localisation.Views.supprimer_reussi);
-			else
-				return Redirect(returnUrl);
+            return RedirectToAction(MVC.Admin.IndexRental());
+            //return Redirect(returnUrl);
 		}
 
 

@@ -58,7 +58,9 @@
                     &nbsp;&nbsp;
                     @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Rental.Edit(item.Id)) 
                     &nbsp;&nbsp; | &nbsp;&nbsp;
-                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Rental.Delete(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Rental.DeleteRental(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                    &nbsp;&nbsp; | &nbsp;&nbsp;
+                    @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.Detail, MVC.Rental.Detail(item.Id))
                 </td>
             </tr>
 		}

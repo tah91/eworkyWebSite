@@ -165,6 +165,9 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Détail</value>
+  </data>
   <data name="EditRental" xml:space="preserve">
     <value>Editer une annonce</value>
   </data>

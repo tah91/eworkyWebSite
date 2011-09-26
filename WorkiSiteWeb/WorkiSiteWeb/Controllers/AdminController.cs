@@ -507,7 +507,7 @@ namespace Worki.Web.Controllers
         /// <param name="page">id of the WelcomePeople</param>
         /// <returns>The action result.</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("supprimer-welcomePeople")]
+        [ActionName("DeleteWelcomePeople")]
 		public virtual ActionResult DeleteWelcomePeople(int id, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -520,8 +520,10 @@ namespace Worki.Web.Controllers
 			return View(welcomePeople);
 		}
 
+        // supprimer-welcomePeople
+
         [AcceptVerbs(HttpVerbs.Post)]
-        [ActionName("supprimer-welcomePeople")]
+        [ActionName("DeleteWelcomePeople")]
         [ValidateAntiForgeryToken]
         public virtual ActionResult DeleteWelcomePeople(int id)
         {
@@ -533,6 +535,7 @@ namespace Worki.Web.Controllers
             else
             {
 				wpRepo.Delete(profil.Id);
+                context.Commit();
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             }
         }
