@@ -151,7 +151,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : bureaux à louer, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
+        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : locaux à louer, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
         /// </summary>
         public static string Description {
             get {
