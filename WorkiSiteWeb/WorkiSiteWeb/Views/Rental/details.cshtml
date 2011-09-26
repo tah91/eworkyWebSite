@@ -156,7 +156,7 @@
 @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
  {
 	<div class="editionLink float-right">
-	    @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.RentalSuppress, MVC.Localisation.Delete(Model.Id))
+	    @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.RentalSuppress, MVC.Rental.DeleteRental(Model.Id))
 	</div>
 }
 <div class="clear"></div>

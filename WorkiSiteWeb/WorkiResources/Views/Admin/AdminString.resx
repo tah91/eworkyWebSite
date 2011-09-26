@@ -291,4 +291,7 @@
   <data name="WorkspaceNotFound" xml:space="preserve">
     <value>Lieu de travail non trouvé</value>
   </data>
+  <data name="ConfirmDeleteRental" xml:space="preserve">
+    <value>Veuillez confirmer la suppression de l'annonce :</value>
+  </data>
 </root>

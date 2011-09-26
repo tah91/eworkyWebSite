@@ -915,7 +915,7 @@ namespace Worki.Web.Controllers {
             public readonly string DetailWelcomePeople = "DetailWelcomePeople";
             public readonly string CreateWelcomePeople = "CreateWelcomePeople";
             public readonly string EditWelcomePeople = "EditWelcomePeople";
-            public readonly string DeleteWelcomePeople = "supprimer-welcomePeople";
+            public readonly string DeleteWelcomePeople = "DeleteWelcomePeople";
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string IndexBooking = "IndexBooking";
@@ -1760,8 +1760,13 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Delete() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+        public System.Web.Mvc.ActionResult DeleteRental() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteRental);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DeleteDeleteRental() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteDeleteRental);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1779,7 +1784,8 @@ namespace Worki.Web.Controllers {
             public readonly string Detail = "details";
             public readonly string Create = "ajouter";
             public readonly string Edit = "editer";
-            public readonly string Delete = "supprimer";
+            public readonly string DeleteRental = "supprimer";
+            public readonly string DeleteDeleteRental = "supprimer";
             public readonly string AddRentalAccess = "AddRentalAccess";
             public readonly string RentalSearch = "RentalSearch";
         }
@@ -1828,15 +1834,15 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Delete(int id, string returnUrl) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+        public override System.Web.Mvc.ActionResult DeleteRental(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteRental);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Delete(int id, string confirm, string returnUrl) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+        public override System.Web.Mvc.ActionResult DeleteDeleteRental(int id, string confirm, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteDeleteRental);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("confirm", confirm);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
