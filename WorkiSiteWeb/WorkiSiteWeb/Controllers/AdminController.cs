@@ -120,7 +120,8 @@ namespace Worki.Web.Controllers
 						}
 						else
 						{
-							loc.MainLocalisation.Localisation = null;
+                            if (loc.MainLocalisation != null)
+                                loc.MainLocalisation.Localisation = null;
 						}
 					}
 					context.Commit();
