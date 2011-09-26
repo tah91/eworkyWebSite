@@ -37,7 +37,7 @@
         {
             <tr>
                 <td align="center">
-                    @Html.ActionLink(item.Id.ToString(), MVC.Booking.Details(item.Id))
+                    @Html.ActionLink(item.Id.ToString(), MVC.Booking.Details(item.Id, item.MemberId))
                 </td>
                 <td align="center">
                     @Html.ActionLink(item.Member.Email,MVC.Profil.Dashboard(item.MemberId))

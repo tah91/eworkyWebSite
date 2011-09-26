@@ -47,7 +47,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBox("MemberBooking.FromDate", String.Format("{0:dd/MM/yyyy}", Model.MemberBooking.FromDate), new { @class = "dtp" })
+								@Html.TextBox("MemberBooking.FromDate", String.Format("{0:dd/MM/yyyy HH:mm}", Model.MemberBooking.FromDate), new { @class = "dtp" })
 							</div>
 						</td>
 					</tr>
@@ -59,7 +59,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBox("MemberBooking.ToDate", String.Format("{0:dd/MM/yyyy}", Model.MemberBooking.ToDate), new { @class = "dtp" })
+								@Html.TextBox("MemberBooking.ToDate", String.Format("{0:dd/MM/yyyy HH:mm}", Model.MemberBooking.ToDate), new { @class = "dtp" })
 							</div>
 						</td>
 					</tr>
@@ -149,6 +149,20 @@
 	        };
 	        $.timepicker.setDefaults($.timepicker.regional['fr']);
 	        $(".dtp").datetimepicker();
+	    });
+
+	    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
+	        $("form").submit(function () {
+	            var val = $("#MemberBooking_FromDate").val();
+	            var date = Date.parse(val, "dd/MM/yyyy HH:mm");
+	            var newVal = date.toString('MM/dd/yyyy HH:mm');
+	            $("#MemberBooking_FromDate").val(newVal);
+	            val = $("#MemberBooking_ToDate").val();
+	            date = Date.parse(val, "dd/MM/yyyy HH:mm");
+	            newVal = date.toString('MM/dd/yyyy HH:mm');
+	            $("#MemberBooking_ToDate").val(newVal);
+	            return true;
+	        });
 	    });
     </script>
     @Html.Partial(MVC.Shared.Views._CufonScript)

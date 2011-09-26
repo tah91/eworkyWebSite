@@ -106,11 +106,11 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
-		public virtual ActionResult Details(int id)
+		public virtual ActionResult Details(int id, int memberId)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
+            var booking = bRepo.Get(id, memberId);
 			return View(booking);
 		}
 
@@ -125,7 +125,7 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
+            var booking = bRepo.Get(id, memberId);
 			var member = mRepo.Get(memberId);
 			var formModel = new MemberBookingFormViewModel { PhoneNumber = member.MemberMainData.PhoneNumber, ReturnUrl = returnUrl, MemberBooking = booking };
 			return View(MVC.Booking.Views.Create, formModel);
@@ -137,7 +137,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminRole)]
-		public virtual ActionResult Edit(int id)
+		public virtual ActionResult Edit(int id, int memberId)
 		{
 			var formData = new MemberBookingFormViewModel();
 			var context = ModelFactory.GetUnitOfWork();
@@ -147,7 +147,7 @@ namespace Worki.Web.Controllers
 				UpdateModel(formData);
 				if (ModelState.IsValid)
 				{
-					var b = bRepo.Get(id);
+                    var b = bRepo.Get(id, memberId);
 					UpdateModel(b, "MemberBooking");
 					context.Commit();
 					return Redirect(formData.ReturnUrl);
@@ -177,14 +177,10 @@ namespace Worki.Web.Controllers
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
                 var m = mRepo.Get(memberId);
-                foreach (var b in m.MemberBookings.ToList())
-                {
-                    if (b.Id != id)
-                        continue;
-                    b.Handled = true;
-                }
+                var booking = bRepo.Get(id,memberId);
+                booking.Handled = true;
+
 				//send email
-				var booking = bRepo.Get(b => b.Id == id);
 
                 dynamic handleMail = new Email(MiscHelpers.EmailView);
                 handleMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.BookingMail + ">";
@@ -223,14 +219,8 @@ namespace Worki.Web.Controllers
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var m = mRepo.Get(memberId);
-				foreach (var b in m.MemberBookings.ToList())
-				{
-					if (b.Id != id)
-						continue;
-					b.Confirmed = true;
-				}
-				//send email
-				var booking = bRepo.Get(b => b.Id == id);
+                var booking = bRepo.Get(id, memberId);
+                booking.Confirmed = true;
 
 				//send email
 				dynamic confirmMail = new Email(MiscHelpers.EmailView);

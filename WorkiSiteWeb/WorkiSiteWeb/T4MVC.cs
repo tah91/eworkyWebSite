@@ -1229,9 +1229,10 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Details(int id) {
+        public override System.Web.Mvc.ActionResult Details(int id, int memberId) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("memberId", memberId);
             return callInfo;
         }
 
@@ -1243,9 +1244,10 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id) {
+        public override System.Web.Mvc.ActionResult Edit(int id, int memberId) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("memberId", memberId);
             return callInfo;
         }
 
@@ -1774,10 +1776,12 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _Rental = "~/Views/Rental/_Rental.cshtml";
             public readonly string _RentalAccess = "~/Views/Rental/_RentalAccess.cshtml";
             public readonly string _RentalGalleryScript = "~/Views/Rental/_RentalGalleryScript.cshtml";
             public readonly string details = "~/Views/Rental/details.cshtml";
             public readonly string editer = "~/Views/Rental/editer.cshtml";
+            public readonly string RentalSearch = "~/Views/Rental/RentalSearch.cshtml";
             public readonly string supprimer = "~/Views/Rental/supprimer.cshtml";
         }
     }
