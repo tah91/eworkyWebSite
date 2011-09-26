@@ -113,5 +113,14 @@ namespace Worki.Resources.Views.Booking {
                 return ResourceManager.GetString("HandleIt", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refuser.
+        /// </summary>
+        public static string RefuseIt {
+            get {
+                return ResourceManager.GetString("RefuseIt", resourceCulture);
+            }
+        }
     }
 }

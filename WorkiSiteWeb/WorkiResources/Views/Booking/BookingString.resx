@@ -135,4 +135,7 @@
   <data name="HandleIt" xml:space="preserve">
     <value>Prendre en charge</value>
   </data>
+  <data name="RefuseIt" xml:space="preserve">
+    <value>Refuser</value>
+  </data>
 </root>

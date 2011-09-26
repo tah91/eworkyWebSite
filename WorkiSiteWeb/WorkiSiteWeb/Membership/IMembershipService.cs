@@ -13,7 +13,7 @@ namespace Worki.Memberships
 	{
 		int MinPasswordLength { get; }
 		bool ValidateUser(string userName, string password);
-		MembershipCreateStatus CreateUser(string userName, string password, string email);
+		MembershipCreateStatus CreateUser(string userName, string password, string email, bool forceActivation = false);
 		bool ChangePassword(string userName, string oldPassword, string newPassword);
 		bool ResetPassword(string email);
 		bool DeleteUser(string userName);

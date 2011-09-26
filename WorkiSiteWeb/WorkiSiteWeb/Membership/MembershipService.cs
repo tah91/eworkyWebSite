@@ -43,7 +43,7 @@ namespace Worki.Memberships
 			return _Provider.ValidateUser(userName, password);
 		}
 
-		public MembershipCreateStatus CreateUser(string userName, string password, string email)
+        public MembershipCreateStatus CreateUser(string userName, string password, string email, bool forceActivation = false)
 		{
 			if (String.IsNullOrEmpty(userName))
 				throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "userName");
@@ -53,7 +53,7 @@ namespace Worki.Memberships
 				throw new ArgumentException(Worki.Resources.Validation.ValidationString.CannotBeEmpty, "email");
 
 			MembershipCreateStatus status;
-			_Provider.CreateUser(userName, password, email, null, null, false, null, out status);
+            _Provider.CreateUser(userName, password, email, null, null, forceActivation, null, out status);
 			return status;
 		}
 

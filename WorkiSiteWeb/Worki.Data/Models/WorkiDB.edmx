@@ -276,6 +276,7 @@
           <Property Name="Handled" Type="bit" Nullable="false" />
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Refused" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberEdition">
           <Key>
@@ -1021,6 +1022,7 @@
           <Property Name="Price" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_MemberBooking_Localisation" FromRole="MemberBooking" ToRole="Localisation" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="MemberBooking" ToRole="Member" />
+          <Property Type="Boolean" Name="Refused" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberEdition">
           <Key>
@@ -1591,7 +1593,8 @@
             <ScalarProperty Name="Comment" ColumnName="Comment" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="MemberBookings"><EntityTypeMapping TypeName="WorkiDBModel.MemberBooking"><MappingFragment StoreEntitySet="MemberBooking">
-            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Refused" ColumnName="Refused" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="MemberId" ColumnName="MemberId" />
             <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
             <ScalarProperty Name="Offer" ColumnName="Offer" />

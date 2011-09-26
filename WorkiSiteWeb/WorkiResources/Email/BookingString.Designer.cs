@@ -64,10 +64,11 @@ namespace Worki.Resources.Email {
         ///   Looks up a localized string similar to Nom : {0}
         ///Téléphone : {1}
         ///E-mail : {2}
-        ///Besoin : {3}
-        ///Début : {4}
-        ///Fin : {5}
-        ///Message : {6}.
+        ///Nom du lieu : {3}
+        ///Besoin : {4}
+        ///Début : {5}
+        ///Fin : {6}
+        ///Message : {7}.
         /// </summary>
         public static string BookingMailBody {
             get {
@@ -121,6 +122,51 @@ namespace Worki.Resources.Email {
         public static string HandleMailSubject {
             get {
                 return ResourceManager.GetString("HandleMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suite à votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos réservations.
+        ///
+        ///Votre login est &quot;{5}&quot; et votre mot de passe temporaire est &quot;{6}&quot;. Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {7}
+        ///
+        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {8}
+        ///
+        ///En espérant vous revoir très vite sur eworky.com,.
+        /// </summary>
+        public static string NewMemberBody {
+            get {
+                return ResourceManager.GetString("NewMemberBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eWorky – Un compte a été créé suite à votre demande de réservation.
+        /// </summary>
+        public static string NewMemberSubject {
+            get {
+                return ResourceManager.GetString("NewMemberSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L’ offre {0} du {1} à {2} dans l’établissement {3} ({4}) n’est pas disponible.
+        ///Nous sommes donc au regret de vous annoncer que votre réservation n’a pas pu aboutir.
+        ///
+        ///En espérant vous revoir très vite sur eworky.com,.
+        /// </summary>
+        public static string RefuseMailBody {
+            get {
+                return ResourceManager.GetString("RefuseMailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eWorky – Votre réservation n’a pas pu aboutir.
+        /// </summary>
+        public static string RefuseMailSubject {
+            get {
+                return ResourceManager.GetString("RefuseMailSubject", resourceCulture);
             }
         }
     }

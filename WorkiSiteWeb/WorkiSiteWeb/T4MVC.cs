@@ -1180,6 +1180,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult ConfirmBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult RefuseBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.RefuseBooking);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public BookingController Actions { get { return MVC.Booking; } }
@@ -1198,6 +1203,7 @@ namespace Worki.Web.Controllers {
             public readonly string Edit = "Edit";
             public readonly string HandleBooking = "HandleBooking";
             public readonly string ConfirmBooking = "ConfirmBooking";
+            public readonly string RefuseBooking = "RefuseBooking";
         }
 
 
@@ -1261,6 +1267,14 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult ConfirmBooking(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("memberId", memberId);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult RefuseBooking(int id, int memberId, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RefuseBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);

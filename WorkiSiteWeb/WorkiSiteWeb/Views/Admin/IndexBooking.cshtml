@@ -60,13 +60,19 @@
 					{
 						<text>OK</text>
 					}
-					else
-					{ 
+                    else if (item.Refused)
+                    {
+                        <text>KO</text>
+                    }
+                    else
+                    { 
 						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.ConfirmIt, MVC.Booking.ConfirmBooking(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))
-					}
+                        <text>&nbsp;&nbsp; | &nbsp;&nbsp;</text>
+                        @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.RefuseIt, MVC.Booking.RefuseBooking(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))                                                                                                                                                                                    
+                    }
                 </td>
             </tr>
-		}
+        }
         </tbody>
         <tfoot> </tfoot>
         </table>

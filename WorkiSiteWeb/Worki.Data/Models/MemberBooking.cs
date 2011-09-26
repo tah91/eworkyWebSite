@@ -26,6 +26,7 @@ namespace Worki.Data.Models
         public bool Handled { get; set; }
         public bool Confirmed { get; set; }
         public int Price { get; set; }
+        public bool Refused { get; set; }
     
         // Navigation properties
     
