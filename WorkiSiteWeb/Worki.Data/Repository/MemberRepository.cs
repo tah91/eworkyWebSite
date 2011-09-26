@@ -73,7 +73,8 @@ namespace Worki.Data.Models
 
         public override void Delete(params object[] keys)
         {
-            Member member = _Context.Members.SingleOrDefault(m => m.MemberId == (int)keys[0]);
+            var id = (int)keys[0];
+            Member member = _Context.Members.SingleOrDefault(m => m.MemberId == id);
             if (member == null)
                 return;
             var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminUser);

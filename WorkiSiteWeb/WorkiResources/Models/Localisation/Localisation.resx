@@ -253,4 +253,7 @@
   <data name="To" xml:space="preserve">
     <value> à </value>
   </data>
+  <data name="Bookable" xml:space="preserve">
+    <value>Proposer la réservation en ligne</value>
+  </data>
 </root>

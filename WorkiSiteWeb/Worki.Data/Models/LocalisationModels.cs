@@ -746,6 +746,9 @@ namespace Worki.Data.Models
 		[Display(Name = "RoadAccess", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		[StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string RoadAccess { get; set; }
+
+        [Display(Name = "Bookable", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public bool Bookable { get; set; }
 	}
 
 	public class LocalisationListViewModel
