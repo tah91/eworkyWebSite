@@ -198,13 +198,14 @@ namespace Worki.Web.Controllers
                         var activationLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.Activate, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
                         TagBuilder link = new TagBuilder("a");
                         link.MergeAttribute("href", activationLink);
+                        link.InnerHtml = activationLink;
 
                         dynamic activateMail = new Email(MiscHelpers.EmailView);
                         activateMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
                         activateMail.To = member.Email;
                         activateMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
                         activateMail.ToName = member.MemberMainData.FirstName;
-                        activateMail.Content = string.Format(Worki.Resources.Email.Activation.ActivationSubject, link.ToString(), member.Email);
+                        activateMail.Content = string.Format(Worki.Resources.Email.Activation.ActivationContent, link.ToString(), member.Email);
                         activateMail.Send();
 					}
 					catch (Exception ex)
