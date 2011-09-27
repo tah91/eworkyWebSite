@@ -10,6 +10,7 @@ using System.Web.Routing;
 using System.Web;
 using System.Net;
 using Worki.Infrastructure.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace Worki.Service
 {
@@ -43,20 +44,17 @@ namespace Worki.Service
 			lg = 0;
 			if (string.IsNullOrEmpty(address))
 				return;
-			string strKey = "ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRUyfMLYGuEEhDrWo4mEQ8GYiYo8BTxOAimWDrLvSiruY1GasDiBDuCWg";
-			string sPath = "http://maps.google.com/maps/geo?q=" + address + "&output=csv&key=" + strKey;
-			string latStr = null, lgStr = null;
+            string sPath = "http://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&sensor=true&region=fr";
 			using (var client = new WebClient())
 			{
 				try
 				{
 					string textString = client.DownloadString(sPath);
-					string[] eResult = textString.Split(',');
+                    JObject gmapJson = JObject.Parse(textString);
+                    var location = gmapJson["results"][0]["geometry"]["location"];
 					_Logger.Info("geocoded");
-					latStr = eResult.GetValue(2).ToString();
-					lgStr = eResult.GetValue(3).ToString();
-					lat = float.Parse(latStr, CultureInfo.InvariantCulture.NumberFormat);
-					lg = float.Parse(lgStr, CultureInfo.InvariantCulture.NumberFormat);
+                    lat = (float)location["lat"];
+                    lg = (float)location["lng"]; 
 				}
 				catch (WebException ex)
 				{
