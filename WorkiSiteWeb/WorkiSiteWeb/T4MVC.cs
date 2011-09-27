@@ -1763,11 +1763,6 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult DeleteRental() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteRental);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult DeleteDeleteRental() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteDeleteRental);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public RentalController Actions { get { return MVC.Rental; } }
@@ -1785,9 +1780,9 @@ namespace Worki.Web.Controllers {
             public readonly string Create = "ajouter";
             public readonly string Edit = "editer";
             public readonly string DeleteRental = "supprimer";
-            public readonly string DeleteDeleteRental = "supprimer";
             public readonly string AddRentalAccess = "AddRentalAccess";
             public readonly string RentalSearch = "RentalSearch";
+            public readonly string AccurateSearch = "AccurateSearch";
         }
 
 
@@ -1801,6 +1796,7 @@ namespace Worki.Web.Controllers {
             public readonly string _RentalGalleryScript = "~/Views/Rental/_RentalGalleryScript.cshtml";
             public readonly string details = "~/Views/Rental/details.cshtml";
             public readonly string editer = "~/Views/Rental/editer.cshtml";
+            public readonly string recherche_annonce = "~/Views/Rental/recherche-annonce.cshtml";
             public readonly string RentalSearch = "~/Views/Rental/RentalSearch.cshtml";
             public readonly string supprimer = "~/Views/Rental/supprimer.cshtml";
         }
@@ -1841,8 +1837,8 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DeleteDeleteRental(int id, string confirm, string returnUrl) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteDeleteRental);
+        public override System.Web.Mvc.ActionResult DeleteRental(int id, string confirm, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteRental);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("confirm", confirm);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
@@ -1856,6 +1852,11 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult RentalSearch() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RentalSearch);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AccurateSearch() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AccurateSearch);
             return callInfo;
         }
 

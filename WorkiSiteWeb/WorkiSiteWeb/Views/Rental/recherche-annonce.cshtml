@@ -1,0 +1,82 @@
+﻿@model Worki.Data.Models.RentalSearchCriteria
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Rental.RentalString.Rental)</title>
+    <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.skin_min_css)" rel="stylesheet" type="text/css"  />
+    <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
+}
+
+<div class="mainRow">
+    @{ViewData["PicPath"] = "/Content/images/photo3.jpg";}
+    @Html.Partial(MVC.Shared.Views._PictureContainer, ViewData) 
+
+    <div class="halfContainer searchFormContainer float-right">
+        <div class="searchFormDiv">
+
+            @RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.Search, "Red")
+
+            
+            @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="localisationField">
+                    <span class="editor-field">
+                        @Html.TextBoxFor(model => model.MinRate, new { style = "width:50%", placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                        @Html.Label("Où")
+                    </span>
+
+                    <p>
+                        @Html.HiddenFor(model => model.RentalData.Latitude)
+                        @Html.HiddenFor(model => model.RentalData.Longitude)
+                    </p>
+                </div>
+                
+                <div class="halfContainer float-left" style="margin-top:15px">
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.MinRate, new { style = "width:45%", placeHolder = "€" })
+                        @Html.Label("Prix minimum")
+                    </div>
+
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.MinSurface, new { style = "width:45%;margin-top:10px", placeHolder = "m²" })
+                        @Html.Label("Surface minimum")
+                    </div>
+
+                    <div>
+                        @Html.CheckBoxFor(model => model.RentalData.AvailableNow, new { style = "margin-top:20px" })
+                        @Html.Label("Disponible maintenant")
+                    </div>
+                </div>
+                
+                <div class="halfContainer float-right" style="margin-top:15px">
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.MaxRate, new { style = "width:45%", placeHolder = "€" })
+                        @Html.Label("Prix maximum")
+                    </div>
+
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.MaxSurface, new { style = "width:45%;margin-top:10px", placeHolder = "m²" })
+                        @Html.Label("Surface maximum")
+                    </div>
+
+                    <div>
+                        @Html.TextBoxFor(model => model.MaxSurface, new { style = "width:45%;margin-top:10px", placeHolder = "31/12/2011" })
+                        @Html.Label("Disponibiblité")
+                    </div>
+                </div>
+                
+                <div class="clear"></div>                
+                <div>
+                    <div class="submitSearchContainer  float-right"  style="margin-top:15px">
+                        <input type="submit" class="btn_green_check imageBtn" value="Rechercher"/>
+                    </div>
+                </div>
+            } 
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>

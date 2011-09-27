@@ -170,7 +170,7 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ActionName("supprimer")]
 		[ValidateAntiForgeryToken]
-        public virtual ActionResult DeleteDeleteRental(int id, string confirm, string returnUrl)
+        public virtual ActionResult DeleteRental(int id, string confirm, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);

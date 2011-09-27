@@ -13,7 +13,8 @@
 <div class="rentalDetailHead">
     <div class="rentalTitle float-left">
         <h1 class="rentalTitlered">@Model.GetDisplayName()</h1>
-        <span>@Html.ActionLink(Model.FullAddress, MVC.Profil.Detail(Model.Id))</span>
+        @{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Address + " " + Model.PostalCode + " " + Model.City;}
+        <span><a href="@itinLink" target="_blank">@Model.FullAddress</a></span>
     </div>
     <div class="rentalSummary float-right">
         <span class="rentalSummaryElem borderRadius">@Model.SurfaceString</span>
@@ -111,7 +112,7 @@
             </div>
             @if (Model.RentalAccesses.Count > 0)
             {
-                <span class="localisationInformation red">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
+                <span class="localisationInformation red">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span><br />
                 foreach (var item in Model.RentalAccesses)
                 {
                     @item.DisplayName<br />

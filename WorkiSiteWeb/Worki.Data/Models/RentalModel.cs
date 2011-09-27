@@ -244,6 +244,11 @@ namespace Worki.Data.Models
             return Description;
         }
 
+        public string GetRentalType()
+        {
+            return RentalTypes[Type];
+        }
+
         #endregion
 
 		#region RentalFeatures
@@ -270,6 +275,11 @@ namespace Worki.Data.Models
                 else
                     return string.Empty;
             }
+        }
+
+        public string GetRef()
+        {
+            return Worki.Resources.Views.Rental.RentalString.Ref + " " + Reference;
         }
 
         public string EnergyString

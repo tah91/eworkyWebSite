@@ -222,6 +222,9 @@
   <data name="Print" xml:space="preserve">
     <value>Imprimer cette annonce</value>
   </data>
+  <data name="Ref" xml:space="preserve">
+    <value>Référence</value>
+  </data>
   <data name="Reference" xml:space="preserve">
     <value>Référence annonce eWorky :</value>
   </data>
