@@ -376,6 +376,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Référence.
+        /// </summary>
+        public static string Ref {
+            get {
+                return ResourceManager.GetString("Ref", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Référence annonce eWorky :.
         /// </summary>
         public static string Reference {

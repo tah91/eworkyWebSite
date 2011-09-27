@@ -168,7 +168,7 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ActionName("supprimer")]
 		[ValidateAntiForgeryToken]
-        public virtual ActionResult DeleteDeleteRental(int id, string confirm, string returnUrl)
+        public virtual ActionResult DeleteRental(int id, string confirm, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
@@ -203,8 +203,18 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult RentalSearch()
         {
+            var context = ModelFactory.GetUnitOfWork();
+            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+
+            var rList = rRepo.GetAll();
             //return View(new RentalSearchCriteria());
-            return View("RentalSearch");
+            return View("RentalSearch", rList);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult AccurateSearch()
+        {
+            return View("recherche-annonce");
         }
 	}
 }

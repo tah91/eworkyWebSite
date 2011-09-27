@@ -294,4 +294,7 @@
   <data name="ConfirmDeleteRental" xml:space="preserve">
     <value>Veuillez confirmer la suppression de l'annonce :</value>
   </data>
+  <data name="CreateRental" xml:space="preserve">
+    <value>Ajouter une annonce</value>
+  </data>
 </root>

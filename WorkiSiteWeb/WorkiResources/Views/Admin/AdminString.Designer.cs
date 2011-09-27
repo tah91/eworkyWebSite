@@ -196,6 +196,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajouter une annonce.
+        /// </summary>
+        public static string CreateRental {
+            get {
+                return ResourceManager.GetString("CreateRental", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Créer profil page d&apos;accueil.
         /// </summary>
         public static string CreateWelcomePeople {

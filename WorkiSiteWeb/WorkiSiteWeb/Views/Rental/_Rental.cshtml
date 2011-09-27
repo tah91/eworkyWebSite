@@ -1,22 +1,45 @@
 ﻿@model Worki.Data.Models.Rental
 
 <div class="contentBlock resultItem">
-    <div>
-        <div class="resultItemGallery picBack borderRadius float-left rentalElementPic">
-	        @RazorHelpers.CenterImage("../../Content/images/star.png", "Image")
-            <div class="clear"></div>
+    <div class="resultItemGallery picBack borderRadius float-left">
+    @if (!string.IsNullOrEmpty(Model.GetMainPic()))
+    {
+		<a href="@ViewData["link"]">
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetMainPic(), true), Model.GetDisplayName())
+        </a>
+    }
+    </div>
+
+    <div class="itemDetailsDiv float-left relative">
+        <p class="red detailLink"><span class="itemName">@Html.ActionLink(Model.GetRef(), MVC.Rental.Detail(Model.Id))</span></p>
+        <span class="itemAddress">@Model.Address&nbsp; - &nbsp;@Model.PostalCode @Model.City</span>
+        <span class="itemType red">@Model.GetRentalType()</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Description, 120)</span><br />
+        <div class="itemLogos bottom displayTable">
+            @{var count = 0;}
+            @foreach (var access in Model.RentalAccesses.ToList())
+            {
+                if (count % 2 == 0)
+                {
+                    <span style="margin-left:5px">@access.DisplayName</span>
+                }
+                else
+                {
+                    <span style="margin-left:5px">@access.DisplayName</span><br />
+                }
+                count++;
+            }
         </div>
-        <div class="float-right rentalElementDesc">
-            <span class="red bold">Bureau à louer - Paris 7ème</span><span class="red bold rentalElementMiddle">70m2</span><span class="red bold">1 900$</span>
-            <p class="rentalElementDesc2"><span class="itemAddress">@Html.TruncateAtWord("A proximité de la Place Vendôme, dans un bel immeuble ancien en pierre de taille, 210 m² de bureaux sont à louer. Les locaux sont restés dans leur style d'origine: parquets, moulures et cheminées.", 250)</span><br /></p>
-            <div class="clear"></div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="float-right" style="width:30%; height:100%">
+        <span class="float-left red bold" style="margin-left:10px">@Model.SurfaceString</span>
+        <span class="float-right red bold" style="margin-right:10px">@Model.RateString</span>
+        <div class="clear"></div>
+        <div class="float-right borderRadius rentalElementMoreDetail">
+            @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.MoreDetail, MVC.Rental.Detail(Model.Id))
         </div>
     </div>
-        <div class="float-left rentalElementAcces">
-            Métro 12 - Solferino
-        </div>
-        <div class="float-right borderRadius rentalElementMoreDetail">
-            @Worki.Resources.Views.Rental.RentalString.MoreDetail
-        </div>
     <div class="clear"></div>
+
 </div>
