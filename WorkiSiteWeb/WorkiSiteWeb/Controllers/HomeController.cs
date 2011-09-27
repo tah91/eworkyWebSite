@@ -79,6 +79,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>The action result.</returns>
         [ActionName("index")]
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
         public virtual ActionResult Index()
         {
 			var context = ModelFactory.GetUnitOfWork();
