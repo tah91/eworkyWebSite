@@ -489,6 +489,7 @@ namespace Worki.Data.Models
 
 		void Init()
 		{
+            Results = new List<Rental>();
 			RentalTypeSelect = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);
 		}
 
@@ -515,7 +516,68 @@ namespace Worki.Data.Models
 		public Rental RentalData { get; set; }
 
         public SelectList RentalTypeSelect { get; private set; }
+
+        public IList<Rental> Results { get; set; }
+
+        public PagingInfo PagingInfo { get; set; }
+
+        public IList<Rental> PageResults
+        {
+            get
+            {
+                if (Results.Count == 0)
+                    return Results;
+                return Results.Skip((PagingInfo.CurrentPage - 1) * PagingInfo.ItemsPerPage).Take(PagingInfo.ItemsPerPage).ToList();
+            }
+        }
+
+        public const int PageSize = 5; // Will change this later
+
+        /// <summary>
+        /// fill page info from page index
+        /// </summary>
+        public void FillPageInfo(int pageValue = 1)
+        {
+            PagingInfo = new PagingInfo
+            {
+                CurrentPage = pageValue,
+                ItemsPerPage = PageSize,
+                TotalItems = Results.Count()
+            };
+        }
+
+        public RentalSearchSingleResultViewModel GetSingleResult(int index)
+        {
+            if (index < 0 || index >= Results.Count)
+                return null;
+
+            var detailModel = new RentalSearchSingleResultViewModel
+            {
+                Rental = Results[index],
+                Index = index,
+                TotalItems = PagingInfo.TotalItems,
+                FromSearch = true
+            };
+            return detailModel;
+        }
 	}
+
+    public class RentalSearchSingleResultViewModel
+    {
+        #region Properties
+
+        public bool FromSearch { get; set; }
+        public int Index { get; set; }
+        public int TotalItems { get; set; }
+        public Rental Rental { get; set; }
+
+        #endregion
+
+        public RentalSearchSingleResultViewModel()
+        {
+            FromSearch = false;
+        }
+    }
 
 	#endregion
 }

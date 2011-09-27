@@ -20,7 +20,6 @@ namespace Worki.Service
 		RouteValueDictionary GetRVD(SearchCriteria criteria, int page = 1);
         SearchSingleResultViewModel GetSingleResult(HttpRequestBase parameters, int index);
 		void ValidateLocalisation(Localisation toValidate, ref string error);
-        void GeoCode(string address, out float lat, out float lg);
 	}
 
     public class SearchService : ISearchService
@@ -29,22 +28,6 @@ namespace Worki.Service
 
         ILogger _Logger;
 		IGeocodeService _GeocodeService;
-
-        /// <summary>
-        /// Get value corresponding to an url param key
-        /// either in path or query string
-        /// </summary>
-        /// <param name="request">request to parse</param>
-        /// <param name="key">paameter key</param>
-        /// <returns>corresponding value</returns>
-        string GetRequestValue(HttpRequestBase request, string key)
-        {
-            if (request.Params[key] != null)
-                return request.Params[key];
-            else if (request.RequestContext.RouteData.Values[key] != null)
-                return request.RequestContext.RouteData.Values[key] as string;
-            else return null;
-        }
 
         /// <summary>
         /// Fill search results from criteria
@@ -82,40 +65,6 @@ namespace Worki.Service
 		}
 
 		public const string CriteriaViewModelKey = "CriteriaViewModelKey";
-
-        /// <summary>
-        /// Geocode address via google api
-        /// </summary>
-        /// <param name="address">address to geocode</param>
-        /// <param name="lat">place latitude</param>
-        /// <param name="lg">place longitude</param>
-        public void GeoCode(string address, out float lat, out float lg)
-        {
-            lat = 0;
-            lg = 0;
-            if (string.IsNullOrEmpty(address))
-                return;
-            string strKey = "ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRUyfMLYGuEEhDrWo4mEQ8GYiYo8BTxOAimWDrLvSiruY1GasDiBDuCWg";
-            string sPath = "http://maps.google.com/maps/geo?q=" + address + "&output=csv&key=" + strKey;
-            string latStr = null, lgStr = null;
-            using (var client = new WebClient())
-            {
-                try
-                {
-                    string textString = client.DownloadString(sPath);
-                    string[] eResult = textString.Split(',');
-                    _Logger.Info("geocoded");
-                    latStr = eResult.GetValue(2).ToString();
-                    lgStr = eResult.GetValue(3).ToString();
-                    lat = float.Parse(latStr, CultureInfo.InvariantCulture.NumberFormat);
-                    lg = float.Parse(lgStr, CultureInfo.InvariantCulture.NumberFormat);
-                }
-                catch (WebException ex)
-                {
-                    _Logger.Error(ex.Message);
-                }
-            }
-        }
 
 		/// <summary>
 		/// get a SearchCriteriaFormViewModel containing the criteria and the results of a search
@@ -172,49 +121,49 @@ namespace Worki.Service
         public SearchCriteria GetCriteria(HttpRequestBase parameters)
         {
             var criteria = new SearchCriteria();
+            var value = string.Empty;
 
-            if (GetRequestValue(parameters, "lieu") != null)
-                criteria.Place = GetRequestValue(parameters, "lieu");
+            if (MiscHelpers.GetRequestValue(parameters, "lieu", ref value))
+                criteria.Place = value;
 
             float lat = 0, lng = 0;
 			_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
             criteria.LocalisationData.Latitude = lat;
             criteria.LocalisationData.Longitude = lng;
 
-            if (GetRequestValue(parameters, "offer-type") != null)
-                criteria.LocalisationOffer = int.Parse(GetRequestValue(parameters, "offer-type"), CultureInfo.InvariantCulture);
+            if (MiscHelpers.GetRequestValue(parameters, "offer-type", ref value))
+                criteria.LocalisationOffer = int.Parse(value, CultureInfo.InvariantCulture);
 
-            var alltypes = GetRequestValue(parameters, "tout");
-            if (!string.IsNullOrEmpty(alltypes) && string.Compare(alltypes, Boolean.TrueString, true) == 0)
+            if (MiscHelpers.GetRequestValue(parameters, "tout", ref value) && string.Compare(value, Boolean.TrueString, true) == 0)
                 criteria.Everything = true;
             else
             {
                 criteria.Everything = false;
-                if (GetRequestValue(parameters, "spot-wifi") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "spot-wifi", ref value))
                     criteria.SpotWifi = true;
-                if (GetRequestValue(parameters, "cafe") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "cafe", ref value))
                     criteria.CoffeeResto = true;
-                if (GetRequestValue(parameters, "biblio") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "biblio", ref value))
                     criteria.Biblio = true;
-                if (GetRequestValue(parameters, "public") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "public", ref value))
                     criteria.PublicSpace = true;
-                if (GetRequestValue(parameters, "voyageur") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "voyageur", ref value))
                     criteria.TravelerSpace = true;
-                if (GetRequestValue(parameters, "hotel") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "hotel", ref value))
                     criteria.Hotel = true;
-                if (GetRequestValue(parameters, "telecentre") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "telecentre", ref value))
                     criteria.Telecentre = true;
-                if (GetRequestValue(parameters, "centre-affaire") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "centre-affaire", ref value))
                     criteria.BuisnessCenter = true;
-                if (GetRequestValue(parameters, "coworking") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "coworking", ref value))
                     criteria.CoworkingSpace = true;
-                if (GetRequestValue(parameters, "entreprise") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "entreprise", ref value))
                     criteria.WorkingHotel = true;
-                if (GetRequestValue(parameters, "prive") != null)
+                if (MiscHelpers.GetRequestValue(parameters, "prive", ref value))
                     criteria.PrivateArea = true;
             }
 
-            var keys = Localisation.GetFeatureIds(parameters.Params.AllKeys.ToList());
+            var keys = MiscHelpers.GetFeatureIds(parameters.Params.AllKeys.ToList());
             criteria.LocalisationData.LocalisationFeatures.Clear();
             var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
             foreach (var key in keys)
@@ -267,7 +216,7 @@ namespace Worki.Service
 
 			foreach (var neededFeature in criteria.LocalisationData.LocalisationFeatures)
 			{
-				var display = Localisation.FeatureToString(neededFeature.FeatureID);
+				var display = MiscHelpers.FeatureToString(neededFeature.FeatureID);
 				rvd[display] = true;
 			}
 			return rvd;

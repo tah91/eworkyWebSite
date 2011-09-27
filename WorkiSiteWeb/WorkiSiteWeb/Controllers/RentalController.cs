@@ -17,13 +17,15 @@ namespace Worki.Web.Controllers
 
 		ILogger _Logger;
 		IGeocodeService _GeocodeService;
+        IRentalSearchService _RentalSearchService;
 
 		#endregion
 
-        public RentalController(ILogger logger,IGeocodeService geocodeService)
+        public RentalController(ILogger logger, IGeocodeService geocodeService, IRentalSearchService rentalSearchService)
 		{
 			_Logger = logger;
 			_GeocodeService = geocodeService;
+            _RentalSearchService = rentalSearchService;
 		}
 
 		/// <summary>
@@ -203,8 +205,70 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult RentalSearch()
         {
-            //return View(new RentalSearchCriteria());
-            return View("RentalSearch");
+            return View(new RentalSearchCriteria());
+        }
+
+        /// <summary>
+        /// POST Action result to search rentals from a RentalSearchCriteria
+        /// it create the route data from RentalSearchCriteria and redirect to result page
+        /// </summary>
+        /// <param name="criteria">The criteria data from the form</param>
+        /// <returns>redirect to the list of results</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult RentalSearch(RentalSearchCriteria criteria)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var rvd = _RentalSearchService.GetRVD(criteria);
+                    return RedirectToAction(MVC.Search.Actions.ActionNames.FullSearchResult, rvd);
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("FullSearch", ex);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
+                }
+            }
+            return View(criteria);
+        }
+
+        /// <summary>
+        /// GET Action result to show paginated search results from a RentalSearchCriteria
+        /// build searchcriteria from url
+        /// with this, search matchings localisations in repository
+        /// and display results
+        /// </summary>
+        /// <param name="page">the page to display</param>
+        /// <returns>the list of results in the page</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("resultats-liste")]
+        public virtual ActionResult FullSearchResult(int? page)
+        {
+            var pageValue = page ?? 1;
+
+            var criteria = _RentalSearchService.GetCriteria(Request);
+            _RentalSearchService.FillSearchResults(ref criteria);
+
+            return View(criteria);
+        }
+
+        /// <summary>
+        /// GET Action result to show detailed rentals from search results
+        /// </summary>
+        /// <param name="index">the index of th rental in the list of results</param>
+        /// <returns>a view of the details of the selected rental</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("resultats-detail")]
+        public virtual ActionResult FullSearchResultDetail(int? index)
+        {
+            var itemIndex = index ?? 0;
+            var detailModel = _RentalSearchService.GetSingleResult(Request, itemIndex);
+
+            if (detailModel == null)
+                return View(MVC.Shared.Views.Error);
+            return View(MVC.Shared.Views.resultats_detail, detailModel);
         }
 	}
 }

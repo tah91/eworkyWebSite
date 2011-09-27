@@ -16,13 +16,15 @@ namespace Worki.Web.Areas.Api.Controllers
         IMemberRepository _MemberRepository;
         ILogger _Logger;
         ISearchService _SearchService;
+        IGeocodeService _GeocodeService;
 
-        public LocalisationController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService)
+        public LocalisationController(ILocalisationRepository localisationRepository, IMemberRepository memberRepository, ILogger logger, ISearchService searchService, IGeocodeService geocodeService)
         {
             _LocalisationRepository = localisationRepository;
             _MemberRepository = memberRepository;
             _Logger = logger;
             _SearchService = searchService;
+            _GeocodeService = geocodeService;
         }
 
         /// <summary>
@@ -188,7 +190,7 @@ namespace Worki.Web.Areas.Api.Controllers
 			if (latitude == 0 || longitude == 0)
 			{
 				criteria.Place = place;
-				_SearchService.GeoCode(place, out latitude, out longitude);
+                _GeocodeService.GeoCode(place, out latitude, out longitude);
 				if (latitude == 0 || longitude == 0)
 					return new ObjectResult<List<LocalisationJson>>(null, 404, "The \"place\" can not be geocoded");
 			}
