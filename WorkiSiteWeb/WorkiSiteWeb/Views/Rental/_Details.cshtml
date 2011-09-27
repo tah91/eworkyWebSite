@@ -1,0 +1,153 @@
+﻿@model Worki.Data.Models.Rental
+
+<div class="rentalDetailHead">
+    <div class="rentalTitle float-left">
+        <h1 class="rentalTitlered">@Model.GetDisplayName()</h1>
+        @{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Address + " " + Model.PostalCode + " " + Model.City;}
+        <span><a href="@itinLink" target="_blank">@Model.FullAddress</a></span>
+    </div>
+    <div class="rentalSummary float-right">
+        <span class="rentalSummaryElem borderRadius">@Model.SurfaceString</span>
+        <span class="rentalSummaryElem borderRadius">@Model.RateString</span>
+    </div>
+    <div class="clear"></div>
+    <div class="localisationShare float-right">
+    @{
+		var link = Model.GetDetailFullUrl(Url);
+    }
+        <div id="fb-root">
+        </div>
+        <script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+        <fb:like href="@link" layout="button_count" show_faces="false" font="arial" style="vertical-align: top;">
+        </fb:like>
+		<!-- Placez cette balise à l'endroit où vous souhaitez que le bouton +1 s'affiche --> 
+		<g:plusone size="medium" href="@link"></g:plusone>                       
+        <a  href="http://twitter.com/share" 
+            class="twitter-share-button"
+            data-text="@("Je vous recommande de découvrir cette annonce : " + Model.GetDisplayName())" 
+            data-count="horizontal" 
+            data-via="eWorky"
+            data-counturl="@link">
+            Tweet</a>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>               
+    </div>
+    <div class="clear">
+    </div>
+</div>
+<div class="detailContent">
+    <div class="rentalDetailLeft blockContainer dashedRight float-left">
+        @if (Model.RentalFiles.Count > 0)
+		{
+        <div class="localisationGallery contentBlock">
+            <div id="gallery">
+                @foreach (var item in Model.RentalFiles.OrderBy(f => !f.IsDefault))
+				{
+                    <a href="@ControllerHelpers.GetUserImagePath(item.FileName)">
+            	        <img title="@Model.GetDisplayName()" alt="@Model.GetDisplayName()" src="@ControllerHelpers.GetUserImagePath(item.FileName)"/>
+        	        </a>                        
+				}
+            </div>
+        </div>
+		}
+        <div class="contentBlock">
+            <h3 class="red">@Worki.Resources.Views.Rental.RentalString.Description</h3>
+            <div class="rentalDesc">
+                @Html.Nl2Br(Model.Description)
+            </div>
+            <div class="featureTag">
+                <ul>
+                @foreach (var item in Model.GetFeatures())
+				{
+                    <li>@Rental.RentalFeatureDict[(int)item]</li>
+				}
+                <li>@Rental.LeaseTypes[Model.LeaseType]</li>
+                @if (Model.HeatingType != MiscHelpers.UnselectedItem)
+                {
+                    <li>@Rental.HeatingTypes[Model.HeatingType]</li>
+                }
+                @if (!string.IsNullOrEmpty(Model.AvailableString))
+                {
+                    <li>@Model.AvailableString</li>
+                }
+                @if (!string.IsNullOrEmpty(Model.GreenHouseString))
+                {
+                    <li>@Model.GreenHouseString</li>
+                }
+                </ul>
+            </div>
+            <div class="clear">
+            </div>
+        </div>        
+    </div>
+    <div class="rentalDetailRight blockContainer float-right">
+        <div class="contentBlock">
+			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Usefull</h3>
+            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.CreateAlert</a><br />
+            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.SaveSearch</a><br />
+            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.Print</a><br />
+            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.SendToFriend</a><br />
+        </div>
+        <div class="contentBlock">
+			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Owner</h3>
+            @Model.Member.GetFullDisplayName()<br />
+            <span class="localisationInformation">Tel : </span>@Html.GetPhoneFormat(Model.Member.MemberMainData.PhoneNumber)<br />
+            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.SendMailToOwner</a><br />
+            <span class="localisationInformation red">@Worki.Resources.Models.Rental.Rental.Reference : </span>@Model.Reference<br />
+            <span class="localisationInformation red">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@string.Format("{0:dd/MM/yyyy}", Model.TimeStamp)<br />
+		</div>
+        <div class="contentBlock">
+            <h3 class="red">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
+            <div class="rentalMap">
+                @Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
+            </div>
+            @if (Model.RentalAccesses.Count > 0)
+            {
+                <span class="localisationInformation red">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span><br />
+                foreach (var item in Model.RentalAccesses)
+                {
+                    @item.DisplayName<br />
+                }
+            }
+        </div>
+        @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+        {
+            <div class="contentBlock">
+                <h3 class="red marginBottom">@Worki.Resources.Views.Rental.RentalString.InfoAdmin</h3>
+                <h4 class="red rentalMargin">@Worki.Resources.Views.Rental.RentalString.Rental</h4>
+                    @if (!string.IsNullOrEmpty(Model.CreationDate.ToString()))
+                    {
+                        <span class="bold">@Worki.Resources.Views.Rental.RentalString.DateDrop </span>@string.Format("{0:d/M/yyyy}", Model.CreationDate)<br />
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Reference))
+                    {
+                        <span class="bold">@Worki.Resources.Views.Rental.RentalString.Reference </span>@Model.Reference<br />
+                    }
+
+                <h4 class="red rentalMargin">@Worki.Resources.Views.Rental.RentalString.Place</h4>
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.Address </span>@Model.Address<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.PostalCode </span>@Model.PostalCode<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.City </span>@Model.City<br />
+
+                <h4 class="red rentalMargin">@Worki.Resources.Views.Rental.RentalString.Owner</h4>
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.LastName </span>@Model.Member.MemberMainData.LastName<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.FirstName </span>@Model.Member.MemberMainData.FirstName<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.PostalCode </span>@Model.Member.MemberMainData.PostalCode<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.City </span>@Model.Member.MemberMainData.City<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.PhoneNumber </span>@Model.Member.MemberMainData.PhoneNumber<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.Email </span>@Model.Member.Email<br />
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.CheckProfile </span><span class="boldLink red">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span>
+            </div>
+        }
+    </div>
+	<div class="clear"></div>
+</div>
+<div class="editionLink float-right">
+    @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.RentalEdit, MVC.Rental.Edit(Model.Id))
+</div>
+@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+ {
+	<div class="editionLink float-right">
+	    @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.RentalSuppress, MVC.Rental.DeleteRental(Model.Id))
+	</div>
+}
+<div class="clear"></div>

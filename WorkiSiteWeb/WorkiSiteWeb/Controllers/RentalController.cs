@@ -203,6 +203,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>the form to fill</returns>
         [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("recherche-annonces")]
         public virtual ActionResult RentalSearch()
         {
             return View(new RentalSearchCriteria());
@@ -215,6 +216,7 @@ namespace Worki.Web.Controllers
         /// <param name="criteria">The criteria data from the form</param>
         /// <returns>redirect to the list of results</returns>
         [AcceptVerbs(HttpVerbs.Post)]
+        [ActionName("recherche-annonces")]
         [ValidateAntiForgeryToken]
         public virtual ActionResult RentalSearch(RentalSearchCriteria criteria)
         {
@@ -243,7 +245,7 @@ namespace Worki.Web.Controllers
         /// <param name="page">the page to display</param>
         /// <returns>the list of results in the page</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("resultats-liste")]
+        [ActionName("resultats-annonces")]
         public virtual ActionResult FullSearchResult(int? page)
         {
             var pageValue = page ?? 1;
@@ -260,7 +262,7 @@ namespace Worki.Web.Controllers
         /// <param name="index">the index of th rental in the list of results</param>
         /// <returns>a view of the details of the selected rental</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("resultats-detail")]
+        [ActionName("resultats-annonces-detail")]
         public virtual ActionResult FullSearchResultDetail(int? index)
         {
             var itemIndex = index ?? 0;
@@ -268,7 +270,7 @@ namespace Worki.Web.Controllers
 
             if (detailModel == null)
                 return View(MVC.Shared.Views.Error);
-            return View(MVC.Shared.Views.resultats_detail, detailModel);
+            return View(MVC.Rental.Views.details, detailModel);
         }
 	}
 }

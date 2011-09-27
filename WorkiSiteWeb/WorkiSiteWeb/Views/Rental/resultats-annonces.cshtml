@@ -1,4 +1,4 @@
-﻿@model List<Rental>
+﻿@model RentalSearchCriteria
 
 @section HeadContent
 {
@@ -16,7 +16,7 @@
     <div class="detailContent">
         <div class="resultDiv dashedRight float-left">
             <div class="rentalSearchLeftPanel">
-                @foreach (var rental in Model)
+                @foreach (var rental in Model.Results)
                 {
                     @Html.Partial(MVC.Rental.Views._Rental, rental)
                 }
