@@ -228,8 +228,9 @@
 
 .localisationTitle
 {
-    padding:0 10px;
-    width: 55%;
+    /*padding:0 10px;
+    width: 55%;*/
+    width: 60%;
 }
 
 .localisationServicesContainer
