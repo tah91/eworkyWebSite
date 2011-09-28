@@ -27,7 +27,7 @@
         <a href="@item.Url" target="_blank">
             <div class="blogItem"> 
                 <div class="blogHead">
-                    <span class="bold blue">@item.Title</span> (@item.PublicationDate.ToString("dd/MM/yyyy"))
+                    <span class="bold blue">@Html.Raw(item.Title)</span> (@item.PublicationDate.ToString("dd/MM/yyyy"))
                 </div>            
                 <div class="blogContent">
                     <div class="blogImg float-left">
@@ -35,7 +35,7 @@
                     </div>
                     
                     <div class="blogDesc">
-                        @item.Content <span class="italic">... (lire la suite)</span>
+                        @Html.Raw(@item.Content) <span class="italic">... (lire la suite)</span>
                     </div>
                     <div class="clear">
                     </div>
