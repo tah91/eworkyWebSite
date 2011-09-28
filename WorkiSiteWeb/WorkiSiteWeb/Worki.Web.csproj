@@ -274,6 +274,7 @@
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
     <Content Include="Content\images\blog.png" />
+    <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\RentalDetail.css" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\Press.css" />
@@ -385,7 +386,6 @@
     <Content Include="Content\images\iconeMapold.png" />
     <Content Include="Content\images\independant.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logo_fiche.png" />
     <Content Include="Content\images\logo_footer.png" />
     <Content Include="Content\images\logo_nveau.png" />

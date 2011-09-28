@@ -323,7 +323,7 @@ page width. Or, you can specify an exact pixel width. */
 .logo
 {
 	background-position: left 50%;
-	background-image: url('images/logo2.png');
+	background-image: url('images/logo.png');
 	width: 382px;
 	height: 90px;
 	position: relative;
@@ -332,13 +332,14 @@ page width. Or, you can specify an exact pixel width. */
 	padding-top:10px;
 }
 
-.logo a
+.logo_beta
 {
-	/*text-align:right;
-	padding-top:53px;
-	font-size:1.2em;
-	height:auto;
-	font-style:italic;*/
+	background-image: url('images/logo.png');
+}
+
+.logo_nobeta
+{
+	background-image: url('images/logo_nobeta.png');
 }
 
 /*ajouter no repeat si besoin*/

@@ -496,7 +496,6 @@ namespace Links {
             public static readonly string logo_fiche_png = Url("logo_fiche.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nveau_png = Url("logo_nveau.png");
-            public static readonly string logo2_png = Url("logo2.png");
             public static readonly string loupe_png = Url("loupe.png");
             public static readonly string menu_middle_png = Url("menu_middle.png");
             public static readonly string menu_middleold_png = Url("menu_middleold.png");

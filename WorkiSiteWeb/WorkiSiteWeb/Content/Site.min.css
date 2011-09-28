@@ -57,7 +57,9 @@ h5,h6{font-size:1em}
 .linkImg a{display:block;width:100%;height:100%;text-decoration:none}
 .imageBtn{border:0;background:white}
 .imageBtn:hover{cursor:pointer}
-.logo{background-position:left 50%;background-image:url('images/logo2.png');width:382px;height:90px;position:relative;float:left;background-repeat:no-repeat;padding-top:10px}
+.logo{background-position:left 50%;background-image:url('images/logo.png');width:382px;height:90px;position:relative;float:left;background-repeat:no-repeat;padding-top:10px}
+.logo_beta{background-image:url('images/logo.png')}
+.logo_nobeta{background-image:url('images/logo_nobeta.png')}
 #btn_register{background-image:url('images/btn_register.png');background-position:0 0;width:104px;height:23px}
 #btn_register:hover{background-position:0 -73px}
 #btn_searchIndex{background-color:#F8F8F8;background-image:url('images/btn_searchIndex.png');background-position:0 0;width:133px;height:32px}
