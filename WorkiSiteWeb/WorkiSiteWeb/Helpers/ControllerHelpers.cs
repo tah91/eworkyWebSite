@@ -15,6 +15,7 @@ using Worki.Data.Models;
 using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Helpers;
 using Worki.Service;
+using Worki.Web.Singletons;
 
 namespace Worki.Web.Helpers
 {
@@ -25,12 +26,9 @@ namespace Worki.Web.Helpers
     {
         const char _PathSeparator = '/';
         const string Thumbnail = "thumbnail";
-        static CloudBlobContainer _BlobContainer;
         static int _MaxWidth;
         static int _ThumbMaxWidth;
-        static string _BlobContainerName;
         static string _UserImgFolder;
-        static bool _IsDevStore;
         static ImageCodecInfo _JpegCodecInfo;
         static EncoderParameters _EncoderParameters;
 
@@ -38,16 +36,13 @@ namespace Worki.Web.Helpers
         {
             _MaxWidth = int.Parse(ConfigurationManager.AppSettings["UploadFileMaxWidth"]);
             _ThumbMaxWidth = int.Parse(ConfigurationManager.AppSettings["ThumbFileMaxWidth"]);
-            _BlobContainerName = ConfigurationManager.AppSettings["AzureBlobContainer"];
             _UserImgFolder = ConfigurationManager.AppSettings["UserImageFolder"];
-            _IsDevStore = bool.Parse(ConfigurationManager.AppSettings["IsDevStorage"]);
             _JpegCodecInfo = ImageCodecInfo.GetImageEncoders().Where(codec => codec.MimeType == "image/jpeg").First();
             var qualityEncoder = Encoder.Quality;
             var quality = 100;
             var ratio = new EncoderParameter(qualityEncoder, quality);
             _EncoderParameters = new EncoderParameters(1);
             _EncoderParameters.Param[0] = ratio;
-            _BlobContainer = GetBlobContainer();
         }
 
         public static string GetJSDouble(double val)
@@ -217,7 +212,7 @@ namespace Worki.Web.Helpers
             var fileName = ThumbPath(image, thumb); 
             if (RoleEnvironment.IsAvailable)
             {
-                var blobContainer = GetBlobContainer();
+                var blobContainer = CloudBlobContainerSingleton.Instance.BlobContainer;
                 if (blobContainer == null)
                     return string.Empty;
                 var blob = blobContainer.GetBlobReference(fileName);
@@ -249,24 +244,6 @@ namespace Worki.Web.Helpers
             return nameToSave;
         }
 
-        static CloudBlobContainer GetBlobContainer()
-        {
-            if (!RoleEnvironment.IsAvailable || _BlobContainer != null)
-                return _BlobContainer;
-
-            if (string.IsNullOrEmpty(_BlobContainerName))
-                return null;
-
-            var blobStorageAccount = _IsDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(MiscHelpers.DataConnectionString);
-            var blobClient = blobStorageAccount.CreateCloudBlobClient();
-            var blobContainer = blobClient.GetContainerReference(_BlobContainerName);
-            blobContainer.CreateIfNotExist();
-            blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Container });
-
-            _BlobContainer = blobContainer;
-            return blobContainer;
-        }
-
         static string ThumbPath(string path, bool thumb)
         {
             return thumb ? Thumbnail + _PathSeparator + path : path;
@@ -280,10 +257,10 @@ namespace Worki.Web.Helpers
             {
                 if (RoleEnvironment.IsAvailable)
                 {
-                    if (GetBlobContainer() == null)
+                    if (CloudBlobContainerSingleton.Instance.BlobContainer == null)
                         return;
 
-                    var blob = GetBlobContainer().GetBlobReference(fileName);
+                    var blob = CloudBlobContainerSingleton.Instance.BlobContainer.GetBlobReference(fileName);
 
                     var ms = new MemoryStream();
                     bmp.Save(ms, _JpegCodecInfo, _EncoderParameters);

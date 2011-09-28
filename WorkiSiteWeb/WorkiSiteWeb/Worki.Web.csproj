@@ -127,6 +127,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Externals\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=101.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.5\Assemblies\NET4.0\Cache\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=101.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.5\Assemblies\NET4.0\Cache\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.DistributedCache, Version=101.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.5\Assemblies\NET4.0\Cache\Microsoft.Web.DistributedCache.dll</HintPath>
@@ -249,6 +255,7 @@
     <Compile Include="Membership\WorkiRoleProvider.cs" />
     <Compile Include="Membership\WorkiMembershipProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singletons\Singletons.cs" />
     <Compile Include="SiteMap\LocalisationDynamicNodeProvider.cs" />
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>

@@ -13,6 +13,8 @@ using System.Globalization;
 using Postal;
 using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Repository;
+using Microsoft.ApplicationServer.Caching;
+using Worki.Web.Singletons;
 
 namespace Worki.Web.Controllers
 {
@@ -42,10 +44,17 @@ namespace Worki.Web.Controllers
         const string _BlogPath = "http://blog.eworky.com/api/get_recent_posts/";
         public const string JTPath = "http://vimeo.com/29038745";
         public const string IndexViewModelContent = "IndexViewModel";
+        const string _BlogCacheKey = "BlogCacheKey";
+        const int _CacheDaySpan = 1;
 
         IEnumerable<BlogPost> GetBlogPosts()
         {
+            var fromCache = DataCacheSingleton.Instance.Cache.Get(_BlogCacheKey);
+            if (fromCache != null)
+                return (IEnumerable<BlogPost>)fromCache;
+
             var toRet = new List<BlogPost>();
+
             using (var client = new WebClient())
             {
                 try
@@ -71,6 +80,8 @@ namespace Worki.Web.Controllers
                     _Logger.Error(ex.Message);
                 }
             }
+            DataCacheSingleton.Instance.Cache.Add(_BlogCacheKey, toRet, new TimeSpan(_CacheDaySpan, 0, 0, 0));
+
             return toRet;
         }
 
@@ -79,18 +90,18 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>The action result.</returns>
         [ActionName("index")]
-		//[OutputCache(Duration = 3600, VaryByParam = "*")]
         public virtual ActionResult Index()
         {
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
             var indexModel = new IndexViewModel()
             {
-				LocalisationCount = lRepo.GetCount(),
-				WelcomePeople = wpRepo.GetAll().OrderByDescending(wp => wp.Id).ToList(),
+                LocalisationCount = lRepo.GetCount(),
+                WelcomePeople = wpRepo.GetAll().OrderByDescending(wp => wp.Id).ToList(),
                 BlogPosts = GetBlogPosts()
             };
+
             ViewData[IndexViewModelContent] = indexModel;
             return View(new SearchCriteriaFormViewModel());
         }
