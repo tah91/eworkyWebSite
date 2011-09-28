@@ -1794,6 +1794,7 @@ namespace Worki.Web.Controllers {
             public readonly string RentalSearch = "recherche-annonces";
             public readonly string FullSearchResult = "resultats-annonces";
             public readonly string FullSearchResultDetail = "resultats-annonces-detail";
+            public readonly string ResultSearch = "ResultSearch";
         }
 
 
@@ -1882,6 +1883,11 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ResultSearch() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResultSearch);
             return callInfo;
         }
 

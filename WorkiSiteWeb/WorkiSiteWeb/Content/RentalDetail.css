@@ -91,13 +91,19 @@
     -webkit-border-radius:4px;
     border-radius:4px;
     box-shadow:4px 4px 10px #DDD;
-    height:400px;
+    height:650px;
 }
 
 .rentalElementPic
 {
     width:25%;
 }
+
+.rentalElementPic2
+{
+    width:45%;
+}
+
 
 .rentalElementDesc
 {
@@ -117,7 +123,7 @@
     color:white;
     background-color:#D35758;
     margin-top:80px;
-    width:78px;
+    width:82px;
 }
 
 .rentalElementMiddle
@@ -138,4 +144,46 @@
     height: 135px;
     background: #f8f8f8;
     padding:10px;
+}
+
+.mainRowRental
+{
+    height:420px;
+    margin-bottom:30px;
+}
+
+.marginb5
+{
+    margin-bottom:5px;
+}
+
+.marginl5
+{
+    margin-left:5px;
+}
+
+.marginl10
+{
+    margin-left:10px;
+}
+
+.marginr10
+{
+    margin-right:10px;
+}
+
+.margint15
+{
+    margin-top:15px;
+}
+
+.width98
+{
+    width:98%;
+}
+
+.rDetailUpRight
+{
+    width:30%;
+    height:100%;
 }

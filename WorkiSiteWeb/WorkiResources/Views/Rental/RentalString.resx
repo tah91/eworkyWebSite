@@ -138,8 +138,17 @@
   <data name="Address" xml:space="preserve">
     <value>Adresse :</value>
   </data>
+  <data name="And" xml:space="preserve">
+    <value>et</value>
+  </data>
   <data name="Area" xml:space="preserve">
     <value>Surface</value>
+  </data>
+  <data name="AreaUnit" xml:space="preserve">
+    <value>(m²)</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>Disponibilité</value>
   </data>
   <data name="AvailableDate" xml:space="preserve">
     <value>Date de disponibilité</value>
@@ -147,8 +156,14 @@
   <data name="BeginResultAnswer" xml:space="preserve">
     <value>Résultat(s) de votre recherche :</value>
   </data>
+  <data name="Between" xml:space="preserve">
+    <value>Compris entre :</value>
+  </data>
   <data name="CheckProfile" xml:space="preserve">
     <value>Consulter le profil :</value>
+  </data>
+  <data name="ChooseDate" xml:space="preserve">
+    <value>Choisir une Date</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>Ville :</value>
@@ -162,11 +177,17 @@
   <data name="DateDrop" xml:space="preserve">
     <value>Date de dépôt :</value>
   </data>
+  <data name="DateExample" xml:space="preserve">
+    <value>Ex : 31/12/2011</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="Detail" xml:space="preserve">
     <value>Détail</value>
+  </data>
+  <data name="DiagnosticRate" xml:space="preserve">
+    <value>Evaluation :</value>
   </data>
   <data name="EditRental" xml:space="preserve">
     <value>Editer une annonce</value>
@@ -183,6 +204,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>Prénom :</value>
   </data>
+  <data name="HeatingType" xml:space="preserve">
+    <value>Energie :</value>
+  </data>
   <data name="Images" xml:space="preserve">
     <value>Images</value>
   </data>
@@ -195,11 +219,32 @@
   <data name="LastName" xml:space="preserve">
     <value>Nom :</value>
   </data>
+  <data name="LeaseType" xml:space="preserve">
+    <value>Type de Bail :</value>
+  </data>
   <data name="Localisation" xml:space="preserve">
     <value>Localisation</value>
   </data>
+  <data name="MaxArea" xml:space="preserve">
+    <value>Surface maximum</value>
+  </data>
+  <data name="MaxPrice" xml:space="preserve">
+    <value>Prix maximum</value>
+  </data>
+  <data name="MinArea" xml:space="preserve">
+    <value>Surface minimum</value>
+  </data>
+  <data name="MinPrice" xml:space="preserve">
+    <value>Prix minimum</value>
+  </data>
+  <data name="MoneyUnit" xml:space="preserve">
+    <value>(€ cc)</value>
+  </data>
   <data name="MoreDetail" xml:space="preserve">
     <value>Plus de détail</value>
+  </data>
+  <data name="Now" xml:space="preserve">
+    <value>Immédiatement</value>
   </data>
   <data name="Others" xml:space="preserve">
     <value>Autres</value>
@@ -236,6 +281,9 @@
   </data>
   <data name="RentalSuppress" xml:space="preserve">
     <value>Effacer l'annonce</value>
+  </data>
+  <data name="RentalType" xml:space="preserve">
+    <value>Type d'annonce</value>
   </data>
   <data name="SaveSearch" xml:space="preserve">
     <value>Mémoriser cette recherche</value>

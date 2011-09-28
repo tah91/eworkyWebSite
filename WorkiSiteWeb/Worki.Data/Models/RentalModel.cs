@@ -501,11 +501,14 @@ namespace Worki.Data.Models
 		{
             Results = new List<Rental>();
 			RentalTypeSelect = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);
+            Places = new List<RentalPlace>();
 		}
 
 		#endregion
 
         public List<RentalPlace> Places { get; set; }
+
+        public string Place { get; set; }
 
 		[Display(Name = "Min", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]

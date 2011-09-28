@@ -1,30 +1,39 @@
-﻿@model Worki.Data.Models.Rental
+﻿@model Worki.Data.Models.RentalSearchSingleResultViewModel
 
 <div class="contentBlock resultItem">
+    @{  
+        RouteValueDictionary  rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+        foreach (string key in Request.QueryString.Keys)
+        {
+            rvd[key] = Request.QueryString[key].ToString();
+        }
+        rvd["index"] = Model.Index;
+        ViewData["link"] = Url.Action(MVC.Rental.ActionNames.FullSearchResultDetail, MVC.Rental.Name, rvd);
+    }
     <div class="resultItemGallery picBack borderRadius float-left">
-    @if (!string.IsNullOrEmpty(Model.GetMainPic()))
+    @if (!string.IsNullOrEmpty(Model.Rental.GetMainPic()))
     {
 		<a href="@ViewData["link"]">
-		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetMainPic(), true), Model.GetDisplayName())
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Rental.GetMainPic(), true), Model.Rental.GetDisplayName())
         </a>
     }
     </div>
 
     <div class="itemDetailsDiv float-left relative">
-        <p class="red detailLink"><span class="itemName">@Html.ActionLink(Model.GetRef(), MVC.Rental.Detail(Model.Id))</span></p>
-        <span class="itemAddress">@Model.Address&nbsp; - &nbsp;@Model.PostalCode @Model.City</span>
-        <span class="itemType red">@Model.GetRentalType()</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Description, 120)</span><br />
+        <p class="red detailLink"><span class="itemName">@Html.ActionLink(Model.Rental.GetRef(), MVC.Rental.Detail(Model.Rental.Id))</span></p>
+        <span class="itemAddress">@Model.Rental.Address&nbsp; - &nbsp;@Model.Rental.PostalCode @Model.Rental.City</span>
+        <span class="itemType red">@Model.Rental.GetRentalType()</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Rental.Description, 120)</span><br />
         <div class="itemLogos bottom displayTable">
             @{var count = 0;}
-            @foreach (var access in Model.RentalAccesses.ToList())
+            @foreach (var access in Model.Rental.RentalAccesses.ToList())
             {
                 if (count % 2 == 0)
                 {
-                    <span style="margin-left:5px">@access.DisplayName</span>
+                    <span class="marginl5">@access.DisplayName</span>
                 }
                 else
                 {
-                    <span style="margin-left:5px">@access.DisplayName</span><br />
+                    <span class="marginl5">@access.DisplayName</span><br />
                 }
                 count++;
             }
@@ -32,12 +41,12 @@
         <div class="clear"></div>
     </div>
 
-    <div class="float-right" style="width:30%; height:100%">
-        <span class="float-left red bold" style="margin-left:10px">@Model.SurfaceString</span>
-        <span class="float-right red bold" style="margin-right:10px">@Model.RateString</span>
+    <div class="float-right rDetailUpRight">
+        <span class="float-left red bold marginl10">@Model.Rental.SurfaceString</span>
+        <span class="float-right red bold marginr10">@Model.Rental.RateString</span>
         <div class="clear"></div>
         <div class="float-right borderRadius rentalElementMoreDetail">
-            @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.MoreDetail, MVC.Rental.Detail(Model.Id))
+            @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.MoreDetail, MVC.Rental.Detail(Model.Rental.Id))
         </div>
     </div>
     <div class="clear"></div>

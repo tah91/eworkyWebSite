@@ -5,11 +5,12 @@
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Rental.RentalString.Rental)</title>
     <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.skin_min_css)" rel="stylesheet" type="text/css"  />
+    <link href="@Url.VersionedContent(Links.Content.RentalDetail_min_css)" rel="stylesheet" type="text/css"  />
     <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-<div class="mainRow">
+<div class="mainRowRental">
     @{ViewData["PicPath"] = "/Content/images/photo3.jpg";}
     @Html.Partial(MVC.Shared.Views._PictureContainer, ViewData) 
 
@@ -24,8 +25,7 @@
                 @Html.AntiForgeryToken()
                 <div class="localisationField">
                     <span class="editor-field">
-                        @Html.TextBoxFor(model => model.MinRate, new { style = "width:50%", placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
-                        @Html.Label("Où")
+                        @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
                     </span>
 
                     <p>
@@ -34,37 +34,41 @@
                     </p>
                 </div>
                 
-                <div class="halfContainer float-left" style="margin-top:15px">
+                <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.RentalType)</p>
+                <div class="editor-field">
+                    <p>@Html.DropDownList("Criteria.RentalType", Model.RentalTypeSelect)</p>
+                </div>
+                
+                <div class="halfContainer float-left margint15">
+                    <p class="red">@Html.Label(Worki.Resources.Views.Rental.RentalString.MinPrice)</p>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MinRate, new { style = "width:45%", placeHolder = "€" })
-                        @Html.Label("Prix minimum")
+                        <p>@Html.TextBoxFor(model => model.MinRate, new { @class = "rentalElementPic2", placeholder = "Ex : 100" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</p>
                     </div>
 
+                    <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.MinArea)</p>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MinSurface, new { style = "width:45%;margin-top:10px", placeHolder = "m²" })
-                        @Html.Label("Surface minimum")
+                        <p>@Html.TextBoxFor(model => model.MinSurface, new { @class = "rentalElementPic2", placeholder = "Ex : 10" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
                     </div>
 
+                    <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.Availability)</p>
                     <div>
-                        @Html.CheckBoxFor(model => model.RentalData.AvailableNow, new { style = "margin-top:20px" })
-                        @Html.Label("Disponible maintenant")
+                        <p>@Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span></p>
+                    </div>
+
+                    <div class="editor-field">
+                        <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { id = "Date", @class = "rentalElementPic2 dp", placeholder = Worki.Resources.Views.Rental.RentalString.DateExample })</p>
                     </div>
                 </div>
                 
-                <div class="halfContainer float-right" style="margin-top:15px">
+                <div class="halfContainer float-right margint15">
+                    <p class="red">@Html.Label(Worki.Resources.Views.Rental.RentalString.MaxPrice)</p>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MaxRate, new { style = "width:45%", placeHolder = "€" })
-                        @Html.Label("Prix maximum")
+                        <p>@Html.TextBoxFor(model => model.MaxRate, new { @class = "rentalElementPic2", placeholder = "Ex : 10000" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</p>
                     </div>
 
+                    <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.MaxArea)</p>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MaxSurface, new { style = "width:45%;margin-top:10px", placeHolder = "m²" })
-                        @Html.Label("Surface maximum")
-                    </div>
-
-                    <div>
-                        @Html.TextBoxFor(model => model.MaxSurface, new { style = "width:45%;margin-top:10px", placeHolder = "31/12/2011" })
-                        @Html.Label("Disponibiblité")
+                        <p>@Html.TextBoxFor(model => model.MaxSurface, new { @class = "rentalElementPic2", placeholder = "Ex : 150" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
                     </div>
                 </div>
                 
@@ -80,3 +84,54 @@
 </div>
 
 <div class="clear"></div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        require(["@MiscHelpers.jqueryui"], function () {
+            $.datepicker.regional['fr'] = {
+                closeText: 'Fermer',
+                prevText: '&#x3c;Préc',
+                nextText: 'Suiv&#x3e;',
+                currentText: 'Courant',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['fr']);
+            $(".dp").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1900:2020'
+            });
+        });
+        require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
+            $("#searchform").submit(function () {
+                var val = $("#Date").val();
+                var date = Date.parseExact(val, "dd/MM/yyyy");
+                var newVal = date.toString('MM/dd/yyyy');
+                $("#Date").val(newVal);
+                return true;
+            });
+        });
+
+        $("#RentalData_AvailableNow").click(function () {
+            if ($("#RentalData_AvailableNow:checked").val() == "false") {
+                $("#Date").hide();
+                $("#msg").replaceWith('<span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>')
+            }
+            else {
+                $("#Date").show();
+                $("#msg").replaceWith('<span id="msg">@Worki.Resources.Views.Rental.RentalString.ChooseDate</span>')
+            }
+        });
+    </script>
+}

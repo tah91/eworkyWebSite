@@ -70,6 +70,9 @@ namespace Worki.Web
 			Bind<IRentalRepository>()
                 .To<RentalRepository>();
 
+            Bind<IRentalSearchService>()
+                .To<RentalSearchService>();
+
 			Bind<IGeocodeService>()
 				.To<GeocodeService>();
 

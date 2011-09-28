@@ -40,10 +40,12 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
 			var rental = rRepo.Get(id);
-			if (rental == null)
-				return View(MVC.Shared.Views.Error);
-
-			return View(rental);
+            var rSSRVM = new RentalSearchSingleResultViewModel();
+            if (rental == null)
+                return View(MVC.Shared.Views.Error);
+            else
+                rSSRVM.Rental = rental;
+			return View(rSSRVM);
 		}
 
 		/// <summary>
@@ -218,6 +220,7 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         [ActionName("recherche-annonces")]
         [ValidateAntiForgeryToken]
+        [ValidateOnlyIncomingValues]
         public virtual ActionResult RentalSearch(RentalSearchCriteria criteria)
         {
             if (ModelState.IsValid)
@@ -225,7 +228,7 @@ namespace Worki.Web.Controllers
                 try
                 {
                     var rvd = _RentalSearchService.GetRVD(criteria);
-                    return RedirectToAction(MVC.Search.Actions.ActionNames.FullSearchResult, rvd);
+                    return RedirectToAction(MVC.Rental.Actions.ActionNames.FullSearchResult, rvd);
                 }
                 catch (Exception ex)
                 {
@@ -271,6 +274,12 @@ namespace Worki.Web.Controllers
             if (detailModel == null)
                 return View(MVC.Shared.Views.Error);
             return View(MVC.Rental.Views.details, detailModel);
+        }
+
+        [ActionName("ResultSearch")]
+        public virtual ActionResult ResultSearch()
+        {
+            return View("resultats-annonces");
         }
 	}
 }

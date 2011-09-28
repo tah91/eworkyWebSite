@@ -123,7 +123,7 @@ namespace Worki.Service
             var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
             var results = rRepo.FindByCriteria(criteria);//.ToList();
 
-            criteria.Results = results.ToList();
+            criteria.Results = results; //.ToList();
             criteria.FillPageInfo();
         }
 
