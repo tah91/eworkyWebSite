@@ -103,6 +103,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccueilFeature.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\RentalFeature.feature.cs">
+      <DependentUpon>RentalFeature.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Steps\AccueilSteps.cs" />
     <Compile Include="Features\AjoutFeature.feature.cs">
       <AutoGen>True</AutoGen>
@@ -115,6 +120,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DetailsFeature.feature</DependentUpon>
     </Compile>
+    <Compile Include="Steps\RentalSteps.cs" />
     <Compile Include="Steps\DetailsSteps.cs" />
     <Compile Include="Features\FooterFeature.feature.cs">
       <AutoGen>True</AutoGen>
@@ -159,6 +165,10 @@
       <LastGenOutput>AjoutFeature.feature.cs</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="Features\RentalFeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RentalFeature.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\DetailsFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DetailsFeature.feature.cs</LastGenOutput>
