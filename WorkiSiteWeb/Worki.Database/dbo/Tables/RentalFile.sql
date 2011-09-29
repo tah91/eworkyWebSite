@@ -4,6 +4,6 @@
     [FileName]  NVARCHAR (256) NOT NULL,
     [IsDefault] BIT            CONSTRAINT [DF_RentalFile_IsDefault] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_RentalFile] PRIMARY KEY CLUSTERED ([Id] ASC, [RentalId] ASC),
-    CONSTRAINT [FK_RentalFile_Rental] FOREIGN KEY ([RentalId]) REFERENCES [dbo].[Rental] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION
+    CONSTRAINT [FK_RentalFile_Rental] FOREIGN KEY ([RentalId]) REFERENCES [dbo].[Rental] ([Id]) ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
