@@ -295,6 +295,24 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Le lieu &quot;.
+        /// </summary>
+        public static string ThePlace1 {
+            get {
+                return ResourceManager.GetString("ThePlace1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot; est à la même adresse que le lieu que vous tentez d\&apos;ajouter.
+        /// </summary>
+        public static string ThePlace2 {
+            get {
+                return ResourceManager.GetString("ThePlace2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Jeudi.
         /// </summary>
         public static string Thursday {

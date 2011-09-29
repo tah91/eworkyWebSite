@@ -94,12 +94,18 @@
     height:650px;
 }
 
-.rentalElementPic
+input#MaxRate.res,
+input#MinRate.res,
+input#MinSurface.res,
+input#MaxSurface.res
 {
-    width:25%;
+    width:28%;
 }
 
-.rentalElementPic2
+input#MaxRate,
+input#MinRate,
+input#MinSurface,
+input#MaxSurface
 {
     width:45%;
 }

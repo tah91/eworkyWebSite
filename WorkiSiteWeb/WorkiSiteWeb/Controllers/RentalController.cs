@@ -275,11 +275,5 @@ namespace Worki.Web.Controllers
                 return View(MVC.Shared.Views.Error);
             return View(MVC.Rental.Views.details, detailModel);
         }
-
-        [ActionName("ResultSearch")]
-        public virtual ActionResult ResultSearch()
-        {
-            return View("resultats-annonces");
-        }
 	}
 }

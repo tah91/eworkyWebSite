@@ -45,8 +45,8 @@
 	            <div class="toogle_container">
                     <div class="block">
                         <p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
-			            <span>@Html.TextBoxFor(model => model.MinRate, new { @class = "rentalElementPic", placeholder = "Ex : 100" }) @Worki.Resources.Views.Rental.RentalString.And 
-                        @Html.TextBoxFor(model => model.MaxRate, new { @class = "rentalElementPic", placeholder = "Ex : 10000" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</span>
+			            <span>@Html.TextBoxFor(model => model.MinRate) @Worki.Resources.Views.Rental.RentalString.And 
+                        @Html.TextBoxFor(model => model.MaxRate) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</span>
 		            </div>
 	            </div>
 
@@ -55,8 +55,8 @@
                     <div class="block">
                         <div>
                             <p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
-                            <span>@Html.TextBoxFor(model => model.MinSurface, new { @class = "rentalElementPic", placeholder = "Ex : 10" }) @Worki.Resources.Views.Rental.RentalString.And 
-                            @Html.TextBoxFor(model => model.MaxSurface, new { @class = "rentalElementPic", placeholder = "Ex : 150" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit</span>
+                            <span>@Html.TextBoxFor(model => model.MinSurface) @Worki.Resources.Views.Rental.RentalString.And 
+                            @Html.TextBoxFor(model => model.MaxSurface) @Worki.Resources.Views.Rental.RentalString.AreaUnit</span>
                         </div>
 		            </div>
 	            </div>
@@ -150,6 +150,31 @@
                 $("#Date").val(newVal);
                 return true;
             });
+        });
+
+        function init() {
+            $("#MinRate").attr("value", null);
+            $("#MinRate").attr("placeholder", "Ex : 100");
+            $("#MinRate").attr("class", "res");
+
+            $("#MaxRate").attr("value", null);
+            $("#MaxRate").attr("placeholder", "Ex : 1000");
+            $("#MaxRate").attr("class", "res");
+
+            $("#MinSurface").attr("value", null);
+            $("#MinSurface").attr("placeholder", "Ex : 10");
+            $("#MinSurface").attr("class", "res");
+
+            $("#MaxSurface").attr("value", null);
+            $("#MaxSurface").attr("placeholder", "Ex : 100");
+            $("#MaxSurface").attr("class", "res");
+
+            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
+            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
+        };
+
+        $(document).ready(function () {
+            init();
         });
     </script>
 }

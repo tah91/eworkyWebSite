@@ -196,6 +196,12 @@
   <data name="Tariffs" xml:space="preserve">
     <value>Tarifs</value>
   </data>
+  <data name="ThePlace1" xml:space="preserve">
+    <value>Le lieu "</value>
+  </data>
+  <data name="ThePlace2" xml:space="preserve">
+    <value>" est à la même adresse que le lieu que vous tentez d\'ajouter</value>
+  </data>
   <data name="Thursday" xml:space="preserve">
     <value>Jeudi</value>
   </data>
