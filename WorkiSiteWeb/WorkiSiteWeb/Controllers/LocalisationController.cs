@@ -245,18 +245,14 @@ namespace Worki.Web.Controllers
 				if (ModelState.IsValid)
 				{
 					com.Localisation = localisation;
+                    com.PostUserID = member.MemberId;
+                    com.Date = System.DateTime.Now;
 					com.Validate(ref  error);
-					var comment = new Comment { LocalisationID = id, Date = System.DateTime.Now, PostUserID = member.MemberId };
-					UpdateModel(comment);
-					var comId = 0;
-					localisation.Comments.Add(comment);
-					comId = comment.ID;
-					var comFromDb = lRepo.GetComment(comment.ID);
-					if (comFromDb == null)
-						throw new ModelStateException(ModelState);
+
+                    localisation.Comments.Add(com);
 
 					context.Commit();
-					return PartialView(MVC.Shared.Views._LocalisationSingleComment, comFromDb);
+					return PartialView(MVC.Shared.Views._LocalisationSingleComment, com);
 				}
 				else
 				{
