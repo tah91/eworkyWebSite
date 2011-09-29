@@ -20,7 +20,11 @@ namespace Worki.Data.Models
 
         public IList<Rental> FindByCriteria(RentalSearchCriteria criteria)
         {
-            return null;
+            var context = ModelFactory.GetUnitOfWork();
+            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+            var results = rRepo.GetAll();
+
+            return results;
         }
     }
 }

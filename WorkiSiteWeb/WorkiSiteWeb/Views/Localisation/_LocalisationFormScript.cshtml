@@ -14,7 +14,8 @@
                             $("#localisationAtSamePlaceReplace").replaceWith('<div id="localisationAtSamePlaceReplace"></div>');
 					        return;
                         }
-				        var message = 'Le lieu "'+ first.Name + '" est à la même adresse que le lieu que vous tentez d\'ajouter';
+
+				        var message = '@Worki.Resources.Views.Localisation.LocalisationFormString.ThePlace1'+ first.Name + '@Worki.Resources.Views.Localisation.LocalisationFormString.ThePlace2';
                         $("#localisationAtSamePlaceReplace").replaceWith('<div id="localisationAtSamePlaceReplace"><div class="localisationAtSamePlace">' + message + '</div></div>');
 				        //alert(message);
 		        }

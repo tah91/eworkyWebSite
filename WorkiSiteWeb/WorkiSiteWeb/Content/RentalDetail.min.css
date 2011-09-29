@@ -11,11 +11,20 @@
 .resultDiv{width:72.5%}
 .rentalSearchRightPanel{padding:10px;width:24.5%}
 .rentalSearchLeftPanel{margin:10px}
-.rentalSearchLeftPanelDetail{margin:0;padding:10px;border:1px solid #CCC;background-color:White;-webkit-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD;height:400px}
-.rentalElementPic{width:25%}
+.rentalSearchLeftPanelDetail{margin:0;padding:10px;border:1px solid #CCC;background-color:White;-webkit-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD;height:650px}
+input#MaxRate.res,input#MinRate.res,input#MinSurface.res,input#MaxSurface.res{width:28%}
+input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}
 .rentalElementDesc{width:75%}
 .rentalElementAcces{margin-top:40px}
-.rentalElementMoreDetail{font-weight:900;padding:5px;background:white;color:white;background-color:#D35758;margin-top:80px;width:78px}
+.rentalElementMoreDetail{font-weight:900;padding:5px;background:white;color:white;background-color:#D35758;margin-top:80px;width:82px}
 .rentalElementMiddle{margin-left:150px;margin-right:150px}
 .rentalElementDesc2{margin-top:10px}
 .resultItem{margin-bottom:10px;overflow:auto;height:135px;background:#f8f8f8;padding:10px}
+.mainRowRental{height:420px;margin-bottom:30px}
+.marginb5{margin-bottom:5px}
+.marginl5{margin-left:5px}
+.marginl10{margin-left:10px}
+.marginr10{margin-right:10px}
+.margint15{margin-top:15px}
+.width98{width:98%}
+.rDetailUpRight{width:30%;height:100%}

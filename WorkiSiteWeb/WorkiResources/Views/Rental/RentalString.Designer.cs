@@ -124,11 +124,38 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to et.
+        /// </summary>
+        public static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Surface.
         /// </summary>
         public static string Area {
             get {
                 return ResourceManager.GetString("Area", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (m²).
+        /// </summary>
+        public static string AreaUnit {
+            get {
+                return ResourceManager.GetString("AreaUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disponibilité.
+        /// </summary>
+        public static string Availability {
+            get {
+                return ResourceManager.GetString("Availability", resourceCulture);
             }
         }
         
@@ -151,11 +178,29 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compris entre :.
+        /// </summary>
+        public static string Between {
+            get {
+                return ResourceManager.GetString("Between", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consulter le profil :.
         /// </summary>
         public static string CheckProfile {
             get {
                 return ResourceManager.GetString("CheckProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choisir une Date.
+        /// </summary>
+        public static string ChooseDate {
+            get {
+                return ResourceManager.GetString("ChooseDate", resourceCulture);
             }
         }
         
@@ -196,6 +241,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ex : 31/12/2011.
+        /// </summary>
+        public static string DateExample {
+            get {
+                return ResourceManager.GetString("DateExample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description {
@@ -210,6 +264,15 @@ namespace Worki.Resources.Views.Rental {
         public static string Detail {
             get {
                 return ResourceManager.GetString("Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation :.
+        /// </summary>
+        public static string DiagnosticRate {
+            get {
+                return ResourceManager.GetString("DiagnosticRate", resourceCulture);
             }
         }
         
@@ -259,6 +322,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Energie :.
+        /// </summary>
+        public static string HeatingType {
+            get {
+                return ResourceManager.GetString("HeatingType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Images.
         /// </summary>
         public static string Images {
@@ -295,6 +367,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type de Bail :.
+        /// </summary>
+        public static string LeaseType {
+            get {
+                return ResourceManager.GetString("LeaseType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Localisation.
         /// </summary>
         public static string Localisation {
@@ -304,11 +385,65 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surface maximum.
+        /// </summary>
+        public static string MaxArea {
+            get {
+                return ResourceManager.GetString("MaxArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prix maximum.
+        /// </summary>
+        public static string MaxPrice {
+            get {
+                return ResourceManager.GetString("MaxPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surface minimum.
+        /// </summary>
+        public static string MinArea {
+            get {
+                return ResourceManager.GetString("MinArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prix minimum.
+        /// </summary>
+        public static string MinPrice {
+            get {
+                return ResourceManager.GetString("MinPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (€ cc).
+        /// </summary>
+        public static string MoneyUnit {
+            get {
+                return ResourceManager.GetString("MoneyUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plus de détail.
         /// </summary>
         public static string MoreDetail {
             get {
                 return ResourceManager.GetString("MoreDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Immédiatement.
+        /// </summary>
+        public static string Now {
+            get {
+                return ResourceManager.GetString("Now", resourceCulture);
             }
         }
         
@@ -417,6 +552,15 @@ namespace Worki.Resources.Views.Rental {
         public static string RentalSuppress {
             get {
                 return ResourceManager.GetString("RentalSuppress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type d&apos;annonce.
+        /// </summary>
+        public static string RentalType {
+            get {
+                return ResourceManager.GetString("RentalType", resourceCulture);
             }
         }
         

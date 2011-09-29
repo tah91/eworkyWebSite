@@ -4,70 +4,106 @@
 {
     <link href="@Url.VersionedContent(Links.Content.RentalDetail_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.SearchResults_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 <div id="main" class="clearfix">
     @RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.YourSearchResult, "Red", false)
     <div class="float-left resultHeader2">
-        <span class="bold red">@Worki.Resources.Views.Rental.RentalString.BeginResultAnswer </span>@Model.Count @Worki.Resources.Views.Rental.RentalString.EndResultAnswer
+        <span class="bold red">@Worki.Resources.Views.Rental.RentalString.BeginResultAnswer </span>@Model.Results.Count @Worki.Resources.Views.Rental.RentalString.EndResultAnswer
     </div>
     <div class="clear"></div>
 
     <div class="detailContent">
         <div class="resultDiv dashedRight float-left">
             <div class="rentalSearchLeftPanel">
-                @foreach (var rental in Model.Results)
-                {
-                    @Html.Partial(MVC.Rental.Views._Rental, rental)
-                }
+                @for (int i = 0; i < Model.PageResults.Count; ++i)
+			    {
+				    var index = Model.PagingInfo.GlobalIndex(i);
+                    @Html.Partial(MVC.Rental.Views._Rental, Model.GetSingleResult(index))
+			    }
             </div>
+
+            <div class="pager">
+				@{
+					RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+					foreach (string key in Request.QueryString.Keys)
+					{
+						rvd[key] = Request.QueryString[key].ToString();
+					}
+				}
+				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Rental.ActionNames.FullSearchResult, rvd); })
+			</div>
         </div>
         <div class="float-right rentalSearchRightPanel">
             <div class="rentalSearchLeftPanelDetail">
 			    <h3 class="red">@Worki.Resources.Views.Rental.RentalString.AccurateSearch</h3>
-
+                @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
+                {
+                @Html.AntiForgeryToken()
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Price</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>Endroit ou mettre les critères</p>
+                        <p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
+			            <span>@Html.TextBoxFor(model => model.MinRate) @Worki.Resources.Views.Rental.RentalString.And 
+                        @Html.TextBoxFor(model => model.MaxRate) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</span>
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Area</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>Endroit ou mettre les critères</p>
+                        <div>
+                            <p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
+                            <span>@Html.TextBoxFor(model => model.MinSurface) @Worki.Resources.Views.Rental.RentalString.And 
+                            @Html.TextBoxFor(model => model.MaxSurface) @Worki.Resources.Views.Rental.RentalString.AreaUnit</span>
+                        </div>
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>Endroit ou mettre les critères</p>
+			            <p>@Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "width98" })</p>
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>Endroit ou mettre les critères</p>
+			            <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { id = "Date", placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })</p>
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>Endroit ou mettre les critères</p>
+                    @{var listrental = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);}
+			            <p>@Html.DropDownList("Criteria.RentalType", listrental)</p> <!--Model.RentalTypeSelect-->
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Others</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>Endroit ou mettre les critères</p>
+			            @{var listlease = new SelectList(Rental.LeaseTypes, "Key", "Value", Lease.NotDefined);}
+                        <p>@Worki.Resources.Views.Rental.RentalString.LeaseType</p>
+			            <p>@Html.DropDownList("Criteria.LeaseType", listlease)</p>
+
+                        @{var listdiag = new SelectList(Rental.DiagnosticRates, "Key", "Value", DiagnosticRate.NotDefined);}
+                        <p class="rentalElementDesc2">@Worki.Resources.Views.Rental.RentalString.DiagnosticRate</p>
+			            <p>@Html.DropDownList("Criteria.DiagnosticRate", listdiag)</p>
+
+                        @{var listheat = new SelectList(Rental.HeatingTypes, "Key", "Value", Heating.NotDefined);}
+                        <p class="rentalElementDesc2">@Worki.Resources.Views.Rental.RentalString.HeatingType</p>
+			            <p>@Html.DropDownList("Criteria.HeatingType", listheat)</p>
 		            </div>
 	            </div>
-
+                    
+                <div class="submitSearchContainer float-right margint15">
+                    <input type="submit" class="btn_green_check imageBtn" value="Rechercher"/>
+                </div>
+                }
             </div>
         </div>
 	    <div class="clear"></div>
@@ -80,4 +116,65 @@
         require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
     </script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
+    <script type="text/javascript">
+        require(["@MiscHelpers.jqueryui"], function () {
+            $.datepicker.regional['fr'] = {
+                closeText: 'Fermer',
+                prevText: '&#x3c;Préc',
+                nextText: 'Suiv&#x3e;',
+                currentText: 'Courant',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['fr']);
+            $(".dp").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1900:2020'
+            });
+        });
+        require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
+            $("#searchform").submit(function () {
+                var val = $("#Date").val();
+                var date = Date.parseExact(val, "dd/MM/yyyy");
+                var newVal = date.toString('MM/dd/yyyy');
+                $("#Date").val(newVal);
+                return true;
+            });
+        });
+
+        function init() {
+            $("#MinRate").attr("value", null);
+            $("#MinRate").attr("placeholder", "Ex : 100");
+            $("#MinRate").attr("class", "res");
+
+            $("#MaxRate").attr("value", null);
+            $("#MaxRate").attr("placeholder", "Ex : 1000");
+            $("#MaxRate").attr("class", "res");
+
+            $("#MinSurface").attr("value", null);
+            $("#MinSurface").attr("placeholder", "Ex : 10");
+            $("#MinSurface").attr("class", "res");
+
+            $("#MaxSurface").attr("value", null);
+            $("#MaxSurface").attr("placeholder", "Ex : 100");
+            $("#MaxSurface").attr("class", "res");
+
+            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
+            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
+        };
+
+        $(document).ready(function () {
+            init();
+        });
+    </script>
 }
