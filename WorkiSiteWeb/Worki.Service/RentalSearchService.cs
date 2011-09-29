@@ -128,10 +128,9 @@ namespace Worki.Service
         {
             var context = ModelFactory.GetUnitOfWork();
             var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
-            var results = rRepo.FindByCriteria(criteria);//.ToList();
+            var results = rRepo.FindByCriteria(criteria);
 
-            criteria.Results = results; //.ToList();
-            criteria.FillPageInfo();
+            criteria.Results = results;
         }
 
 		/// <summary>

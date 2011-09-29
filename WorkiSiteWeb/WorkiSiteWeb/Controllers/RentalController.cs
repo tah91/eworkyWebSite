@@ -256,6 +256,7 @@ namespace Worki.Web.Controllers
 
             var criteria = _RentalSearchService.GetCriteria(Request);
             _RentalSearchService.FillSearchResults(ref criteria);
+            criteria.FillPageInfo(pageValue);
 
             return View(criteria);
         }
