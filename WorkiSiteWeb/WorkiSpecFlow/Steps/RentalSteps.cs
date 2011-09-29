@@ -6,7 +6,6 @@ using TechTalk.SpecFlow;
 using SHDocVw;
 using WatiN.Core;
 using NUnit.Framework;
-using Worki.SpecFlow.Steps;
 
 namespace Worki.SpecFlow
 {

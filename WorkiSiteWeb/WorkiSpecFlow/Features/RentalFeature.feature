@@ -29,7 +29,7 @@ Scenario: Lancer une Recherche
 		And Tous les résultats doivent respecter les critères
 
 @Rental
-Scenario: Lancer une Recherche
+Scenario: Recherche Paris
 	Given Je vais dans la page d'acceuil
 	When Je clique sur administrateur
 		And Je clique sur recherche location
