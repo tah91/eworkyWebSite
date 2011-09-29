@@ -76,6 +76,7 @@ namespace Worki.Web.Controllers
 			return View(new RentalFormViewModel(rental));
 		}
 
+        const string _RentalPrefix = "Rental";
 		/// <summary>
 		/// POST action to edit/create a rental
 		/// create the rental if id has no value, update in database if there is an id
@@ -110,7 +111,7 @@ namespace Worki.Web.Controllers
 					if (newRental)
 					{
 						//update
-						UpdateModel(rentalToAdd, "Rental");
+                        UpdateModel(rentalToAdd, _RentalPrefix);
 						rentalToAdd.MemberId = member.MemberId;
 						rentalToAdd.CreationDate = DateTime.Now;
 						rentalToAdd.Latitude = lat;
@@ -121,7 +122,7 @@ namespace Worki.Web.Controllers
 					else
 					{
 						var r = rRepo.Get(id.Value);
-						UpdateModel(r);
+                        UpdateModel(r, _RentalPrefix);
 						r.TimeStamp = DateTime.Now;
 						r.Latitude = lat;
 						r.Longitude = lng;
