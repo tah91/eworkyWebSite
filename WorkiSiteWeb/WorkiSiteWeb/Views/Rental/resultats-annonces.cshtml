@@ -71,22 +71,31 @@
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { id = "Date", placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })</p>
+			            <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })</p>
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-                    @{var listrental = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);}
-			            <p>@Html.DropDownList("Criteria.RentalType", listrental)</p> <!--Model.RentalTypeSelect-->
+			            <p>@Html.DropDownListFor(model => model.RentalData.Type, Model.RentalTypeSelect)</p>
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Others</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            @{var listlease = new SelectList(Rental.LeaseTypes, "Key", "Value", Lease.NotDefined);}
+                        <ul>
+					    @foreach (var feature in Rental.RentalFeatureDict)
+					    { 
+						    <li>
+						        @{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
+						        @Html.CheckBox(enumName,Model.RentalData.HasFeature((RentalFeatureType)feature.Key))
+						        @Html.LabelFor(feature.Value, enumName)
+						    </li>
+					    }
+				        </ul>
+@*			            @{var listlease = new SelectList(Rental.LeaseTypes, "Key", "Value", Lease.NotDefined);}
                         <p>@Worki.Resources.Views.Rental.RentalString.LeaseType</p>
 			            <p>@Html.DropDownList("Criteria.LeaseType", listlease)</p>
 
@@ -96,7 +105,7 @@
 
                         @{var listheat = new SelectList(Rental.HeatingTypes, "Key", "Value", Heating.NotDefined);}
                         <p class="rentalElementDesc2">@Worki.Resources.Views.Rental.RentalString.HeatingType</p>
-			            <p>@Html.DropDownList("Criteria.HeatingType", listheat)</p>
+			            <p>@Html.DropDownList("Criteria.HeatingType", listheat)</p>*@
 		            </div>
 	            </div>
                     
@@ -144,33 +153,33 @@
         });
         require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
             $("#searchform").submit(function () {
-                var val = $("#Date").val();
+                var val = $("#RentalData_AvailableDate").val();
                 var date = Date.parseExact(val, "dd/MM/yyyy");
                 var newVal = date.toString('MM/dd/yyyy');
-                $("#Date").val(newVal);
+                $("#RentalData_AvailableDate").val(newVal);
                 return true;
             });
         });
 
         function init() {
-            $("#MinRate").attr("value", null);
-            $("#MinRate").attr("placeholder", "Ex : 100");
-            $("#MinRate").attr("class", "res");
+//            $("#MinRate").attr("value", null);
+//            $("#MinRate").attr("placeholder", "Ex : 100");
+//            $("#MinRate").attr("class", "res");
 
-            $("#MaxRate").attr("value", null);
-            $("#MaxRate").attr("placeholder", "Ex : 1000");
-            $("#MaxRate").attr("class", "res");
+//            $("#MaxRate").attr("value", null);
+//            $("#MaxRate").attr("placeholder", "Ex : 1000");
+//            $("#MaxRate").attr("class", "res");
 
-            $("#MinSurface").attr("value", null);
-            $("#MinSurface").attr("placeholder", "Ex : 10");
-            $("#MinSurface").attr("class", "res");
+//            $("#MinSurface").attr("value", null);
+//            $("#MinSurface").attr("placeholder", "Ex : 10");
+//            $("#MinSurface").attr("class", "res");
 
-            $("#MaxSurface").attr("value", null);
-            $("#MaxSurface").attr("placeholder", "Ex : 100");
-            $("#MaxSurface").attr("class", "res");
+//            $("#MaxSurface").attr("value", null);
+//            $("#MaxSurface").attr("placeholder", "Ex : 100");
+//            $("#MaxSurface").attr("class", "res");
 
-            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
-            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
+//            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
+//            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
         };
 
         $(document).ready(function () {

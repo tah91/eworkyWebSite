@@ -221,13 +221,13 @@ namespace Worki.Web.Controllers
         [ActionName("recherche-annonces")]
         [ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues]
-        public virtual ActionResult RentalSearch(RentalSearchCriteria criteria)
+        public virtual ActionResult RentalSearch(RentalSearchCriteria rentalSearchCriteria)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var rvd = _RentalSearchService.GetRVD(criteria);
+                    var rvd = _RentalSearchService.GetRVD(rentalSearchCriteria);
                     return RedirectToAction(MVC.Rental.Actions.ActionNames.FullSearchResult, rvd);
                 }
                 catch (Exception ex)
@@ -236,7 +236,7 @@ namespace Worki.Web.Controllers
                     ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
                 }
             }
-            return View(criteria);
+            return View(rentalSearchCriteria);
         }
 
         /// <summary>

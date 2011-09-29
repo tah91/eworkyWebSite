@@ -36,6 +36,8 @@ namespace Worki.Service
 			_GeocodeService = geocodeService;
 		}
 
+        const string _DateFormat = "dd/MM/yy";
+
         /// <summary>
         /// private method to create a SearchCriteria object from route data
         /// used to create search criteria from an url
@@ -54,10 +56,14 @@ namespace Worki.Service
                 criteria.MinSurface = int.Parse(value);
             if (MiscHelpers.GetRequestValue(parameters, "surf-max", ref value))
                 criteria.MaxSurface = int.Parse(value);
+            if (MiscHelpers.GetRequestValue(parameters, "type", ref value))
+                criteria.RentalData.Type = int.Parse(value);
 
             if (MiscHelpers.GetRequestValue(parameters, "places", ref value))
             {
                 var places = value.Split('|');
+                if (places.Count() > 0)
+                    criteria.Place = places[0];
                 foreach (var p in places)
                 {
                     criteria.Places.Add(new RentalPlace { Place = p });
@@ -66,7 +72,7 @@ namespace Worki.Service
 
             if (MiscHelpers.GetRequestValue(parameters, "avail", ref value))
             {
-                criteria.RentalData.AvailableDate = DateTime.ParseExact(value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                criteria.RentalData.AvailableDate = DateTime.ParseExact(value, _DateFormat, CultureInfo.InvariantCulture);
             }
 
             var keys = MiscHelpers.GetFeatureIds(parameters.Params.AllKeys.ToList());
@@ -91,8 +97,9 @@ namespace Worki.Service
             rvd["prix-max"] = criteria.MaxRate;
             rvd["surf-min"] = criteria.MinSurface;
             rvd["surf-max"] = criteria.MaxSurface;
+            rvd["type"] = criteria.RentalData.Type;
 
-            var places = string.Empty;
+            var places = criteria.Place;
             foreach (var item in criteria.Places)
             {
                 places += item.Place + "|";
@@ -103,7 +110,7 @@ namespace Worki.Service
                 rvd["places"] = places;
 
             if (criteria.RentalData.AvailableDate.HasValue)
-                rvd["avail"] = criteria.RentalData.AvailableDate.Value.ToString("dd/MM/yy");
+                rvd["avail"] = criteria.RentalData.AvailableDate.Value.ToString(_DateFormat);
 
             foreach (var neededFeature in criteria.RentalData.RentalFeatures)
             {

@@ -19,13 +19,12 @@
 
             @RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.Search, "Red")
 
-            
             @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="localisationField">
                     <span class="editor-field">
-                        @Html.TextBoxFor(model => model.Place)
+                        @Html.TextBoxFor(model => model.Place, new { placeholder = "plop" })
                     </span>
 
                     <p>
@@ -36,18 +35,18 @@
                 
                 <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.RentalType)</p>
                 <div class="editor-field">
-                    <p>@Html.DropDownList("Criteria.RentalType", Model.RentalTypeSelect)</p>
+                    <p>@Html.DropDownListFor(model=>model.RentalData.Type, Model.RentalTypeSelect)</p>
                 </div>
                 
                 <div class="halfContainer float-left margint15">
                     <p class="red">@Html.Label(Worki.Resources.Views.Rental.RentalString.MinPrice)</p>
                     <div class="editor-field">
-                        <p class="rentalElementPic2">@Html.TextBoxFor(model => model.MinRate) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</p>
+                        <p class="rentalElementPic2">@Html.TextBoxFor(model => model.MinRate, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</p>
                     </div>
 
                     <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.MinArea)</p>
                     <div class="editor-field">
-                        <p>@Html.TextBoxFor(model => model.MinSurface) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
+                        <p>@Html.TextBoxFor(model => model.MinSurface, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
                     </div>
 
                     <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.Availability)</p>
@@ -56,19 +55,21 @@
                     </div>
 
                     <div class="editor-field">
-                        <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { id = "Date", @class = "dp" })</p>
+                        <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { @class = "dp" })</p>
                     </div>
                 </div>
                 
                 <div class="halfContainer float-right margint15">
-                    <p class="red">@Html.Label(Worki.Resources.Views.Rental.RentalString.MaxPrice)</p>
+                    <div class="label-field red">
+                        @Html.LabelFor(model => model.MaxRate)
+                    </div>
                     <div class="editor-field">
-                        <p>@Html.TextBoxFor(model => model.MaxRate) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</p>
+                        @Html.TextBoxFor(model => model.MaxRate, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
                     </div>
 
                     <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.MaxArea)</p>
                     <div class="editor-field">
-                        <p>@Html.TextBoxFor(model => model.MaxSurface) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
+                        <p>@Html.TextBoxFor(model => model.MaxSurface, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
                     </div>
                 </div>
                 
@@ -115,42 +116,41 @@
         });
         require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
             $("#searchform").submit(function () {
-                var val = $("#Date").val();
+                var val = $("#RentalData_AvailableDate").val();
                 var date = Date.parseExact(val, "dd/MM/yyyy");
                 var newVal = date.toString('MM/dd/yyyy');
-                $("#Date").val(newVal);
+                $("#RentalData_AvailableDate").val(newVal);
                 return true;
             });
         });
 
         $("#RentalData_AvailableNow").click(function () {
             if ($("#RentalData_AvailableNow:checked").val() == "true") {
-                $("#Date").hide();
+                $("#RentalData_AvailableDate").hide();
                 $("#msg").replaceWith('<span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>')
             }
             else {
-                $("#Date").show();
+                $("#RentalData_AvailableDate").show();
                 $("#msg").replaceWith('<span id="msg">@Worki.Resources.Views.Rental.RentalString.ChooseDate</span>')
             }
         });
 
         function init() {
-            $("#RentalData_AvailableNow").attr('checked', true);
-            $("#Date").hide();
-            $("#MinRate").attr("value", null);
-            $("#MinRate").attr("placeholder", "Ex : 100");
+            $("#RentalData_AvailableDate").hide();
+//            $("#MinRate").attr("value", null);
+//            $("#MinRate").attr("placeholder", "Ex : 100");
 
-            $("#MaxRate").attr("value", null);
-            $("#MaxRate").attr("placeholder", "Ex : 10000");
+//            $("#MaxRate").attr("value", null);
+//            $("#MaxRate").attr("placeholder", "Ex : 10000");
 
-            $("#MinSurface").attr("value", null);
-            $("#MinSurface").attr("placeholder", "Ex : 10");
+//            $("#MinSurface").attr("value", null);
+//            $("#MinSurface").attr("placeholder", "Ex : 10");
 
-            $("#MaxSurface").attr("value", null);
-            $("#MaxSurface").attr("placeholder", "Ex : 100");
+//            $("#MaxSurface").attr("value", null);
+//            $("#MaxSurface").attr("placeholder", "Ex : 100");
 
-            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
-            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
+//            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
+//            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
         };
 
         $(document).ready(function () {
