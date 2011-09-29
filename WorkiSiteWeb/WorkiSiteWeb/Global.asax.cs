@@ -299,6 +299,7 @@ namespace Worki.Web
 			//routes
             AreaRegistration.RegisterAllAreas();
 			XmlSiteMapController.RegisterRoutes(RouteTable.Routes);
+            GlobalFilters.Filters.Add(new RedirectMobileDevicesToMobileAreaAttribute(), 1);
             RegisterRoutes(RouteTable.Routes);
 
 			//model binder

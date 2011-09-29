@@ -1,0 +1,94 @@
+﻿body
+{
+    width:310px;
+}
+
+.page
+{
+	width: 310px; 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#main 
+{
+    text-align:center;
+}
+
+.logo
+{
+	background-image: url('images/logoMobile.png');
+	width: 147px;
+}
+
+.resultHeader2
+{
+    margin-left:0px;
+    padding:8px;
+    font-size:80%;
+}
+
+.resultItem
+{   
+    overflow:hidden;
+    height:auto;
+    margin-bottom:30px;
+    padding:0px;
+    font-size:90%;
+}
+
+.resultItem
+{
+    text-align:left;
+}
+
+.resultItemInfos
+{
+    width:185px;
+}
+
+.resultItemGallery
+{
+    margin-top:15px;
+    width:110px;
+    height: 120px;
+}
+
+.itemName
+{
+    font-weight:bold;
+    font-size:1em;
+}
+
+.itemLogos
+{
+}
+
+.btnAround
+{
+    height:30px;
+    width: 215px;
+    letter-spacing: 1px;
+    color: #000000;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-appearance: none;
+    cursor:pointer;
+}
+
+.btnAround:hover
+{
+    background-color:#CDCDCD;
+}
+
+
+.searchFormBlock
+{
+	padding:7px 2px 7px 2px;
+}
+
+.homeList input
+{
+    background-color:#FFFFFF;
+}

@@ -1,0 +1,54 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="lieu de travail,télécentre,rechercher,trouver,centre d'affaires,bureaux,annonces,achat,vente,location,café,wifi,salle de réunion" />
+    <meta name="google-site-verification" content="YzSZASagSr9IfssrBtXQiG7sx5pBr9dBl4tRH5G-EbA" />
+    <meta name="viewport" content="width=device-width">
+    @RenderSection("HeadContent", true)
+	<link href="@Url.VersionedContent(Links.Content.Site_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Mobile_css)" rel="stylesheet" type="text/css"/>
+	<link rel="icon" type="image/png" href="@Links.Content.images.favicon_png" />
+    <script language="javascript" src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21890480-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+
+<body>
+	<div class="page">
+		<div id="header">
+			<div class="logo linkImg float-left cufonIt darkblue">@Html.ActionLink(" ", MVC.Mobile.Home.ActionNames.Index, MVC.Mobile.Home.Name)</div>
+			
+			<div class="clear">
+			</div>
+            @{
+                ViewData["controllerName"] = ViewContext.Controller.ValueProvider.GetValue("controller").RawValue;   
+            }
+		</div>
+
+		<div class="clear">
+		</div>
+
+		<div id="main" class="clearfix">
+			@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain)
+            @RenderBody()
+		</div>
+	</div>
+    @RenderSection("ScriptContent", false)
+    
+	
+</body>
+</html>

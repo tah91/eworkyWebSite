@@ -25,6 +25,8 @@ using T4MVC;
 public static class MVC {
     static readonly ApiClass s_Api = new ApiClass();
     public static ApiClass Api { get { return s_Api; } }
+    static readonly MobileClass s_Mobile = new MobileClass();
+    public static MobileClass Mobile { get { return s_Mobile; } }
     public static Worki.Web.Controllers.AccountController Account = new Worki.Web.Controllers.T4MVC_AccountController();
     public static Worki.Web.Controllers.AdminController Admin = new Worki.Web.Controllers.T4MVC_AdminController();
     public static Worki.Web.Controllers.BookingController Booking = new Worki.Web.Controllers.T4MVC_BookingController();
@@ -46,6 +48,13 @@ namespace T4MVC {
         public readonly string Name = "Api";
         public Worki.Web.Areas.Api.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Api.Controllers.T4MVC_LocalisationController();
         public T4MVC.Api.SharedController Shared = new T4MVC.Api.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class MobileClass {
+        public readonly string Name = "Mobile";
+        public Worki.Web.Areas.Mobile.Controllers.HomeController Home = new Worki.Web.Areas.Mobile.Controllers.T4MVC_HomeController();
+        public Worki.Web.Areas.Mobile.Controllers.SearchController Search = new Worki.Web.Areas.Mobile.Controllers.T4MVC_SearchController();
+        public T4MVC.Mobile.SharedController Shared = new T4MVC.Mobile.SharedController();
     }
 }
 
@@ -495,7 +504,9 @@ namespace Links {
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_fiche_png = Url("logo_fiche.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
+            public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
             public static readonly string logo_nveau_png = Url("logo_nveau.png");
+            public static readonly string logoMobile_png = Url("logoMobile.png");
             public static readonly string loupe_png = Url("loupe.png");
             public static readonly string menu_middle_png = Url("menu_middle.png");
             public static readonly string menu_middleold_png = Url("menu_middleold.png");
@@ -519,6 +530,7 @@ namespace Links {
             public static readonly string rechercher2_jpg = Url("rechercher2.jpg");
             public static readonly string rechercher2_png = Url("rechercher2.png");
             public static readonly string reset_search_png = Url("reset_search.png");
+            public static readonly string retour_png = Url("retour.png");
             public static readonly string scoop_jpg = Url("scoop.jpg");
             public static readonly string serviceIcones_png = Url("serviceIcones.png");
             public static readonly string star_gif = Url("star.gif");
@@ -564,6 +576,10 @@ namespace Links {
         public static readonly string jquery_fileupload_ui_min_css = Url("jquery.fileupload-ui.min.css");
         public static readonly string LocalisationDetail_css = Url("LocalisationDetail.css");
         public static readonly string LocalisationDetail_min_css = Url("LocalisationDetail.min.css");
+        public static readonly string Mobile_css = Url("Mobile.css");
+        public static readonly string Mobile_min_css = Url("Mobile.min.css");
+        public static readonly string MobileLocalisationDetail_css = Url("MobileLocalisationDetail.css");
+        public static readonly string MobileLocalisationDetail_min_css = Url("MobileLocalisationDetail.min.css");
         public static readonly string Press_css = Url("Press.css");
         public static readonly string Press_min_css = Url("Press.min.css");
         public static readonly string Profil_css = Url("Profil.css");
@@ -1866,9 +1882,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult RentalSearch(Worki.Data.Models.RentalSearchCriteria criteria) {
+        public override System.Web.Mvc.ActionResult RentalSearch(Worki.Data.Models.RentalSearchCriteria rentalSearchCriteria) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RentalSearch);
-            callInfo.RouteValueDictionary.Add("criteria", criteria);
+            callInfo.RouteValueDictionary.Add("rentalSearchCriteria", rentalSearchCriteria);
             return callInfo;
         }
 
@@ -2290,6 +2306,155 @@ namespace T4MVC.Api {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+        }
+    }
+
+}
+
+namespace Worki.Web.Areas.Mobile.Controllers {
+    public partial class HomeController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HomeController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected HomeController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HomeController Actions { get { return MVC.Mobile.Home; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Mobile";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Home";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string index = "~/Areas/Mobile/Views/Home/index.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_HomeController: Worki.Web.Areas.Mobile.Controllers.HomeController {
+        public T4MVC_HomeController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Mobile.Controllers {
+    public partial class SearchController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected SearchController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearch() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchResult() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchResultDetail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public SearchController Actions { get { return MVC.Mobile.Search; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Mobile";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Search";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string FullSearch = "recherche-lieu-travail";
+            public readonly string FullSearchResult = "resultats-liste";
+            public readonly string FullSearchResultDetail = "resultats-detail";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string _SearchResultSummary = "~/Areas/Mobile/Views/Search/_SearchResultSummary.cshtml";
+            public readonly string resultats_liste = "~/Areas/Mobile/Views/Search/resultats-liste.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_SearchController: Worki.Web.Areas.Mobile.Controllers.SearchController {
+        public T4MVC_SearchController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult FullSearch(Worki.Data.Models.SearchCriteria criteria) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
+            callInfo.RouteValueDictionary.Add("criteria", criteria);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchResult(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
+            callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace T4MVC.Mobile {
+    public class SharedController {
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string @__Layout = "~/Areas/Mobile/Views/Shared/__Layout.cshtml";
+            public readonly string _CommentSummary = "~/Areas/Mobile/Views/Shared/_CommentSummary.cshtml";
+            public readonly string _LocalisationDetail = "~/Areas/Mobile/Views/Shared/_LocalisationDetail.cshtml";
+            public readonly string resultats_detail = "~/Areas/Mobile/Views/Shared/resultats-detail.cshtml";
         }
     }
 

@@ -1,0 +1,35 @@
+﻿.localisationTitle
+{
+    font-size:80%;
+}
+
+
+.localisationName
+{
+    font-size:1.7em;
+}
+
+.localisationDetail
+{
+    text-align:left;
+}
+
+.localisationTitle
+{
+    width: 100%;
+}
+
+.itemCommDiv
+{
+    margin-top:5px;
+}
+
+.blockContainer
+{
+    padding:5px 1px 5px 1px;
+}
+
+.contentBlock
+{
+    padding:4px;
+}

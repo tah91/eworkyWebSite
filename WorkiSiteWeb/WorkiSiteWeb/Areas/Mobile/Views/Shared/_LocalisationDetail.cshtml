@@ -1,0 +1,149 @@
+﻿@model Worki.Data.Models.Localisation
+
+<div class="localisationDetail borderRadius">
+    <div class="localisationDetailHead">
+        
+        <div class="localisationTitle">
+            <div class="float-left blue bold">
+                <span class="localisationName">@Model.Name</span>
+            </div>
+@*            <div class="localisationServicesContainer float-left">
+                @Html.Partial(MVC.Shared.Views._IconeServices)
+            </div>*@
+            <div class="clear">
+            </div>
+            <div class="localisationSubtitle">
+                <span class="localisationCity blue">@Localisation.LocalisationTypes[Model.TypeValue]</span>&nbsp;&nbsp;
+                @{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;}
+                <a href="@itinLink" target="_blank">
+                    @Model.Adress - @Model.PostalCode @Model.City
+                </a>
+            </div>
+            <div class="itemCommDiv">
+                @Html.Partial(MVC.Mobile.Shared.Views._CommentSummary, Model)
+            </div>
+        </div>
+        
+        <div class="clear">
+        </div>
+    </div>
+    <div class="detailContent">
+        <div class="blockContainer float-left">
+           
+            @{
+				var generalFeatures = Model.GetFeaturesOfType(FeatureType.General, new List<Feature> { Feature.AvoidMorning, Feature.AvoidLunch, Feature.AvoidAfternoom, Feature.AvoidEvening, Feature.LocalisationOwner });
+            }
+            <div class="localisationDescription contentBlock">
+                <h3 class="blue">Description</h3>
+                <div class="localisationDesc">
+                    @Html.Nl2Br(Model.Description)
+                </div>
+                <div class="featureTag">
+                    <ul>
+                    @foreach (var item in generalFeatures)
+					{
+                        <li>@RazorHelpers.FeatureTag(item)</li>
+					}       
+                    @if (Model.LocalisationData != null && Model.LocalisationData.CoffeePrice.HasValue)
+					{
+                        <li>@Worki.Resources.Views.Shared.SharedString.CoffeePrice : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.LocalisationData.CoffeePrice)</li>
+					}
+                    </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            @{
+				var workingPlaceFeatures = Model.GetFeaturesOfType(FeatureType.WorkingPlace, new List<Feature> { Feature.FreeArea, Feature.SingleDesk, Feature.Workstation, Feature.BuisnessRoom });
+            }
+            @if (workingPlaceFeatures.Count > 0)
+			{
+            <div class="localisationServices contentBlock">
+                <h3 class="blue">Services</h3>
+
+                <div class="featureTag">
+                    <ul>
+                    @foreach (var item in workingPlaceFeatures)
+					{
+                        <li>@RazorHelpers.FeatureTag(item)</li>
+					}
+                    </ul>
+                </div> 
+                <div class="clear">
+                </div>
+            </div>   
+			}
+            @if (Model.HasOffer() && Model.HasOfferExcept(LocalisationOffer.FreeArea))
+			{
+            <div class="localisationOffers contentBlock">
+                <h3 class="blue">Offres</h3>
+                @{
+				var meetingRoomFeatures = new List<Feature>();
+				var seminarRoomFeatures = new List<Feature>();
+				var visioRoomFeatures = new List<Feature>();
+				var emptyFeature = new List<Feature>();
+                }
+                @if (Model.HasOffer(LocalisationOffer.MeetingRoom))
+				{
+					meetingRoomFeatures = Model.GetFeaturesOfType(FeatureType.MeetingRoom, new List<Feature> { Feature.MeetingRoom });
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom, meetingRoomFeatures)
+				}
+                @if (Model.HasOffer(LocalisationOffer.SeminarRoom))
+				{
+					seminarRoomFeatures = Model.GetFeaturesOfType(FeatureType.SeminarRoom, new List<Feature> { Feature.SeminarRoom });
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom, seminarRoomFeatures)
+				}
+                @if (Model.HasOffer(LocalisationOffer.VisioRoom))
+				{
+					visioRoomFeatures = Model.GetFeaturesOfType(FeatureType.VisioRoom, new List<Feature> { Feature.VisioRoom });
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom, visioRoomFeatures)
+				}
+                @if (Model.HasOffer(LocalisationOffer.BuisnessRoom))
+				{
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom, emptyFeature)
+				}
+                @if (Model.HasOffer(LocalisationOffer.Workstation))
+				{
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation, emptyFeature)
+				}
+                @if (Model.HasOffer(LocalisationOffer.SingleDesk))
+				{
+                    @RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesk, emptyFeature)
+				}
+                <div class="clear">
+                </div>
+            </div> 
+			}
+            <div class="localisationComments contentBlock">
+                <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
+                <div id="commentFormDiv">
+                @if (Request.IsAuthenticated)
+				{
+                    @Html.Partial(MVC.Shared.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
+				}
+				else
+				{ 
+				}
+                </div>
+                @{
+					ViewData[Comment.DisplayRelatedLocalisation] = false;
+                }
+				@foreach (var com in Model.GetOrderedComments())
+				{
+					if (com.Member == null)
+					{
+						continue;
+					}
+					@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
+				}
+            </div>
+        </div>
+     
+        <div class="clear">
+        </div>
+    </div>
+    
+	
+    <div class="clear">
+    </div>
+</div>
