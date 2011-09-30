@@ -64,6 +64,13 @@ namespace Worki.Data.Models
 
 	public class ImageJson
 	{
+		const string DeleteType = "POST";
+
+		public ImageJson()
+        {
+            delete_type = DeleteType;
+        }
+
 		public string name { get; set; }
 		public int size { get; set; }
 		public string url { get; set; }
