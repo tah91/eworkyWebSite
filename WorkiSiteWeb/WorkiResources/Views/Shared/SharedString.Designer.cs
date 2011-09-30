@@ -70,6 +70,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajouter aux favoris eWorky.
+        /// </summary>
+        public static string AddToFav {
+            get {
+                return ResourceManager.GetString("AddToFav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrateur.
         /// </summary>
         public static string Admin {
@@ -156,6 +165,15 @@ namespace Worki.Resources.Views.Shared {
         public static string DeleteComment {
             get {
                 return ResourceManager.GetString("DeleteComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retirer des favoris eWorky.
+        /// </summary>
+        public static string DelFromFav {
+            get {
+                return ResourceManager.GetString("DelFromFav", resourceCulture);
             }
         }
         
@@ -355,6 +373,15 @@ namespace Worki.Resources.Views.Shared {
         public static string Visitors {
             get {
                 return ResourceManager.GetString("Visitors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to www.eworky.com.
+        /// </summary>
+        public static string WebsiteAddress {
+            get {
+                return ResourceManager.GetString("WebsiteAddress", resourceCulture);
             }
         }
         

@@ -158,7 +158,7 @@
             </div>
         </div> 
 		}
-        <div class="localisationComments contentBlock">
+        <div class="localisationComments contentBlock noPrint">
             <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
             <div id="commentFormDiv">
             @if (Request.IsAuthenticated)
@@ -192,6 +192,7 @@
 			</div>
         }*@
         <div class="contentBlock">
+            <a class="blue" id="Print" href="javascript:window.print()">@Worki.Resources.Views.Rental.RentalString.Print</a><br />
             <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
             <div class="localisationMap">
                 @Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
@@ -368,12 +369,12 @@
     <div class="clear">
     </div>
 </div>
-<div class="editionLink float-right">
+<div class="editionLink float-right noPrint">
 @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 </div>
 @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
  {
-	<div class="editionLink float-right">
+	<div class="editionLink float-right noPrint">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Localisation.Delete(Model.ID))
 	</div>
 }

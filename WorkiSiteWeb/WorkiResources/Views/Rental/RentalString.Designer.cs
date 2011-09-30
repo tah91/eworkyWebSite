@@ -196,6 +196,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Je vous recommande de découvrir cette annonce : .
+        /// </summary>
+        public static string CheckThisOut {
+            get {
+                return ResourceManager.GetString("CheckThisOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choisir une Date.
         /// </summary>
         public static string ChooseDate {

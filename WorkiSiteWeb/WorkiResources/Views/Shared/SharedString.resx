@@ -227,4 +227,13 @@
   <data name="Services" xml:space="preserve">
     <value>Services</value>
   </data>
+  <data name="WebsiteAddress" xml:space="preserve">
+    <value>www.eworky.com</value>
+  </data>
+  <data name="AddToFav" xml:space="preserve">
+    <value>Ajouter aux favoris eWorky</value>
+  </data>
+  <data name="DelFromFav" xml:space="preserve">
+    <value>Retirer des favoris eWorky</value>
+  </data>
 </root>
