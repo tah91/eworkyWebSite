@@ -84,14 +84,14 @@
 			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Usefull</h3>
             <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.CreateAlert</a><br />
             <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.SaveSearch</a><br />
-            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.Print</a><br />
-            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.SendToFriend</a><br />
+            <a class="red" id="Print" href="javascript:window.print()">@Worki.Resources.Views.Rental.RentalString.Print</a><br />
+            @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.SendToFriend, MVC.Rental.SendMailFriend(Model.Id, Worki.Resources.Email.Common.Friend), new { @class = "red" })<br />
         </div>
         <div class="contentBlock">
 			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Owner</h3>
             @Model.Member.GetFullDisplayName()<br />
             <span class="localisationInformation">Tel : </span>@Html.GetPhoneFormat(Model.Member.MemberMainData.PhoneNumber)<br />
-            <a class="red" href="#">@Worki.Resources.Views.Rental.RentalString.SendMailToOwner</a><br />
+            @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.SendMailToOwner, MVC.Rental.SendMailOwner(Model.Id), new { @class = "red" })<br />
             <span class="localisationInformation red">@Worki.Resources.Models.Rental.Rental.Reference : </span>@Model.Reference<br />
             <span class="localisationInformation red">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@string.Format("{0:dd/MM/yyyy}", Model.TimeStamp)<br />
 		</div>

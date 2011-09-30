@@ -288,6 +288,10 @@
     <Content Include="Content\MobileLocalisationDetail.min.css">
       <DependentUpon>MobileLocalisationDetail.css</DependentUpon>
     </Content>
+    <Content Include="Content\Print.css" />
+    <Content Include="Content\Print.min.css">
+      <DependentUpon>Print.css</DependentUpon>
+    </Content>
     <Content Include="Content\RentalDetail.css" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\Press.css" />
@@ -720,6 +724,10 @@
     <Content Include="Views\Rental\_Rental.cshtml" />
     <Content Include="Views\Rental\recherche-annonces.cshtml" />
     <Content Include="Views\Rental\_Details.cshtml" />
+    <Content Include="Views\Rental\SendFriend.cshtml" />
+    <Content Include="Views\Rental\SendOwner.cshtml" />
+    <Content Include="Views\Emails\EmailOwner.cshtml" />
+    <Content Include="Views\Rental\message-envoye-success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

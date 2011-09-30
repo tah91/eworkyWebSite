@@ -20,6 +20,15 @@ namespace Worki.Data.Models
         [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string EMail { get; set; }
 
+        [Display(Name = "ToEmail", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+        public string ToEMail { get; set; }
+
+        [Display(Name = "Link", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+        public string Link { get; set; }
+
+        [Display(Name = "ToName", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
+        public string ToName { get; set; }
+
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Subject", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
         public string Subject { get; set; }

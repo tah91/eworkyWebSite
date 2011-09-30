@@ -582,6 +582,8 @@ namespace Links {
         public static readonly string MobileLocalisationDetail_min_css = Url("MobileLocalisationDetail.min.css");
         public static readonly string Press_css = Url("Press.css");
         public static readonly string Press_min_css = Url("Press.min.css");
+        public static readonly string Print_css = Url("Print.css");
+        public static readonly string Print_min_css = Url("Print.min.css");
         public static readonly string Profil_css = Url("Profil.css");
         public static readonly string Profil_min_css = Url("Profil.min.css");
         public static readonly string rateit_css = Url("rateit.css");
@@ -1788,6 +1790,21 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult FullSearchResultDetail() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SendMailOwner() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SendMailOwner);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SendMailFriend() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SendMailFriend);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SendMail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SendMail);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public RentalController Actions { get { return MVC.Rental; } }
@@ -1809,6 +1826,9 @@ namespace Worki.Web.Controllers {
             public readonly string RentalSearch = "recherche-annonces";
             public readonly string FullSearchResult = "resultats-annonces";
             public readonly string FullSearchResultDetail = "resultats-annonces-detail";
+            public readonly string SendMailOwner = "envoyer-email-propriétaire";
+            public readonly string SendMailFriend = "envoyer-email-ami";
+            public readonly string SendMail = "envoyer-email";
         }
 
 
@@ -1823,8 +1843,11 @@ namespace Worki.Web.Controllers {
             public readonly string _RentalGalleryScript = "~/Views/Rental/_RentalGalleryScript.cshtml";
             public readonly string details = "~/Views/Rental/details.cshtml";
             public readonly string editer = "~/Views/Rental/editer.cshtml";
+            public readonly string message_envoye_success = "~/Views/Rental/message-envoye-success.cshtml";
             public readonly string recherche_annonces = "~/Views/Rental/recherche-annonces.cshtml";
             public readonly string resultats_annonces = "~/Views/Rental/resultats-annonces.cshtml";
+            public readonly string SendFriend = "~/Views/Rental/SendFriend.cshtml";
+            public readonly string SendOwner = "~/Views/Rental/SendOwner.cshtml";
             public readonly string supprimer = "~/Views/Rental/supprimer.cshtml";
         }
     }
@@ -1897,6 +1920,25 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SendMailOwner(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendMailOwner);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SendMailFriend(int id, string friend) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendMailFriend);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("friend", friend);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SendMail(Worki.Data.Models.Contact contact) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendMail);
+            callInfo.RouteValueDictionary.Add("contact", contact);
             return callInfo;
         }
 
@@ -2188,6 +2230,7 @@ namespace T4MVC {
         public class ViewNames {
             public readonly string _ViewStart = "~/Views/Emails/_ViewStart.cshtml";
             public readonly string Email = "~/Views/Emails/Email.cshtml";
+            public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
         }
     }
 

@@ -304,6 +304,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre message a été envoyé avec succes!.
+        /// </summary>
+        public static string MailWellSent2 {
+            get {
+                return ResourceManager.GetString("MailWellSent2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plus de critères.
         /// </summary>
         public static string MoreCriterias {

@@ -15,6 +15,7 @@ namespace Worki.Infrastructure.Helpers
         #region Email
 
         public const string EmailView = "Email";
+        public const string EmailOwnerView = "EmailOwner";
         public const string ContactDisplayName = "eWorky Team";
         //public const string ContactMail = "t.iftikhar@hotmail.fr";
         //public const string BookingMail = "t.iftikhar@hotmail.fr";

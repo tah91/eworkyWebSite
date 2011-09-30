@@ -1,0 +1,80 @@
+﻿@model Worki.Data.Models.Contact
+
+@section HeadContent
+{
+	<meta name="Description" content="@Worki.Resources.Views.Home.ContactString.Description"/>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.Contact)</title>
+    <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.RentalDetail_min_css)" rel="stylesheet" type="text/css"  />
+}
+
+
+<div class="borderContainer">
+    @RazorHelpers.TitleDiv(Worki.Resources.Email.Common.MP, "Red")
+    <div class="contactDiv">
+        <div class="login-account">
+            @using (Html.BeginForm(MVC.Rental.ActionNames.SendMail, MVC.Rental.Name, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <table>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Worki.Resources.Email.Common.To
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.ToEMail, new { @readonly = true })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Worki.Resources.Email.Common.From
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.EMail, new { @readonly = true })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Worki.Resources.Email.Common.Message
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextAreaFor(model => model.Message)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <div>
+                                @Html.HiddenFor(m => m.LastName)
+                                @Html.HiddenFor(m => m.FirstName)
+                                @Html.HiddenFor(m => m.Subject)
+                                @Html.HiddenFor(m => m.ToName)
+                            </div>
+                            <div class="editor-field">
+                                <input type="submit" class="btn_blue imageBtn margint10" value="Envoyer"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            } 
+        </div>
+    </div>   
+</div>
+
+@section ScriptContent
+{
+    @Html.Partial(MVC.Shared.Views._CufonScript)
+}
