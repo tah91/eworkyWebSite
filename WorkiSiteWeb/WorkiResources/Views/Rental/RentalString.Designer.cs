@@ -304,6 +304,42 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ex : 150.
+        /// </summary>
+        public static string ExMaxArea {
+            get {
+                return ResourceManager.GetString("ExMaxArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 5000.
+        /// </summary>
+        public static string ExMaxRate {
+            get {
+                return ResourceManager.GetString("ExMaxRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 25.
+        /// </summary>
+        public static string ExMinArea {
+            get {
+                return ResourceManager.GetString("ExMinArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 400.
+        /// </summary>
+        public static string ExMinRate {
+            get {
+                return ResourceManager.GetString("ExMinRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caratéristiques.
         /// </summary>
         public static string Features {

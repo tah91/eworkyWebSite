@@ -417,7 +417,7 @@ namespace Worki.Data.Models
 		public RentalFormViewModel()
 		{
 			Init();
-			Rental = new Rental();
+            Rental = new Rental { AvailableNow = true };
 		}
 
 		public RentalFormViewModel(Rental rental)
@@ -511,19 +511,19 @@ namespace Worki.Data.Models
 
         public string Place { get; set; }
 
-		[Display(Name = "Min", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Display(Name = "MinRate", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MinRate { get; set; }
 
-		[Display(Name = "Max", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Display(Name = "MaxRate", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MaxRate { get; set; }
 
-		[Display(Name = "Min", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Display(Name = "MinSurface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MinSurface { get; set; }
 
-		[Display(Name = "Max", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Display(Name = "MaxSurface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MaxSurface { get; set; }
 

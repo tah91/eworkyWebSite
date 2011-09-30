@@ -45,8 +45,8 @@
 	            <div class="toogle_container">
                     <div class="block">
                         <p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
-			            <span>@Html.TextBoxFor(model => model.MinRate) @Worki.Resources.Views.Rental.RentalString.And 
-                        @Html.TextBoxFor(model => model.MaxRate) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</span>
+			            @Html.TextBoxFor(model => model.MinRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
+                        @Html.TextBoxFor(model => model.MaxRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
 		            </div>
 	            </div>
 
@@ -55,8 +55,8 @@
                     <div class="block">
                         <div>
                             <p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
-                            <span>@Html.TextBoxFor(model => model.MinSurface) @Worki.Resources.Views.Rental.RentalString.And 
-                            @Html.TextBoxFor(model => model.MaxSurface) @Worki.Resources.Views.Rental.RentalString.AreaUnit</span>
+                            @Html.TextBoxFor(model => model.MinSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
+                            @Html.TextBoxFor(model => model.MaxSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
                         </div>
 		            </div>
 	            </div>
@@ -64,28 +64,28 @@
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>@Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "width98" })</p>
+			            @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "width98" })
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })</p>
+			            @Html.TextBoxFor(model => model.RentalData.AvailableDate, new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-			            <p>@Html.DropDownListFor(model => model.RentalData.Type, Model.RentalTypeSelect)</p>
+			            @Html.DropDownListFor(model => model.RentalData.Type, Model.RentalTypeSelect)
 		            </div>
 	            </div>
 
                 <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Others</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
-                        <ul>
+                        <ul class="marginl0">
 					    @foreach (var feature in Rental.RentalFeatureDict)
 					    { 
 						    <li>
@@ -95,17 +95,6 @@
 						    </li>
 					    }
 				        </ul>
-@*			            @{var listlease = new SelectList(Rental.LeaseTypes, "Key", "Value", Lease.NotDefined);}
-                        <p>@Worki.Resources.Views.Rental.RentalString.LeaseType</p>
-			            <p>@Html.DropDownList("Criteria.LeaseType", listlease)</p>
-
-                        @{var listdiag = new SelectList(Rental.DiagnosticRates, "Key", "Value", DiagnosticRate.NotDefined);}
-                        <p class="rentalElementDesc2">@Worki.Resources.Views.Rental.RentalString.DiagnosticRate</p>
-			            <p>@Html.DropDownList("Criteria.DiagnosticRate", listdiag)</p>
-
-                        @{var listheat = new SelectList(Rental.HeatingTypes, "Key", "Value", Heating.NotDefined);}
-                        <p class="rentalElementDesc2">@Worki.Resources.Views.Rental.RentalString.HeatingType</p>
-			            <p>@Html.DropDownList("Criteria.HeatingType", listheat)</p>*@
 		            </div>
 	            </div>
                     
@@ -159,31 +148,6 @@
                 $("#RentalData_AvailableDate").val(newVal);
                 return true;
             });
-        });
-
-        function init() {
-//            $("#MinRate").attr("value", null);
-//            $("#MinRate").attr("placeholder", "Ex : 100");
-//            $("#MinRate").attr("class", "res");
-
-//            $("#MaxRate").attr("value", null);
-//            $("#MaxRate").attr("placeholder", "Ex : 1000");
-//            $("#MaxRate").attr("class", "res");
-
-//            $("#MinSurface").attr("value", null);
-//            $("#MinSurface").attr("placeholder", "Ex : 10");
-//            $("#MinSurface").attr("class", "res");
-
-//            $("#MaxSurface").attr("value", null);
-//            $("#MaxSurface").attr("placeholder", "Ex : 100");
-//            $("#MaxSurface").attr("class", "res");
-
-//            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
-//            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
-        };
-
-        $(document).ready(function () {
-            init();
         });
     </script>
 }

@@ -246,4 +246,16 @@
   <data name="Min" xml:space="preserve">
     <value>Min</value>
   </data>
+  <data name="MaxRate" xml:space="preserve">
+    <value>Prix Maximum</value>
+  </data>
+  <data name="MaxSurface" xml:space="preserve">
+    <value>Surface Maximum</value>
+  </data>
+  <data name="MinRate" xml:space="preserve">
+    <value>Prix Minimum</value>
+  </data>
+  <data name="MinSurface" xml:space="preserve">
+    <value>Surface Minimum</value>
+  </data>
 </root>
