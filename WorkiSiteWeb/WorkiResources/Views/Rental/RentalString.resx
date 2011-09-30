@@ -198,6 +198,18 @@
   <data name="EndResultAnswer" xml:space="preserve">
     <value>annonce(s) trouvée(s)</value>
   </data>
+  <data name="ExMaxArea" xml:space="preserve">
+    <value>Ex : 150</value>
+  </data>
+  <data name="ExMaxRate" xml:space="preserve">
+    <value>Ex : 5000</value>
+  </data>
+  <data name="ExMinArea" xml:space="preserve">
+    <value>Ex : 25</value>
+  </data>
+  <data name="ExMinRate" xml:space="preserve">
+    <value>Ex : 400</value>
+  </data>
   <data name="Features" xml:space="preserve">
     <value>Caratéristiques</value>
   </data>

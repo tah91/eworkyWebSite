@@ -94,10 +94,10 @@
     height:650px;
 }
 
-input#MaxRate.res,
-input#MinRate.res,
-input#MinSurface.res,
-input#MaxSurface.res
+input#MaxRate.Rsrchcol,
+input#MinRate.Rsrchcol,
+input#MinSurface.Rsrchcol,
+input#MaxSurface.Rsrchcol
 {
     width:28%;
 }
@@ -138,11 +138,6 @@ input#MaxSurface
     margin-right:150px;
 }
 
-.rentalElementDesc2
-{
-    margin-top:10px;
-}
-
 .resultItem
 {   
     margin-bottom: 10px;
@@ -173,6 +168,11 @@ input#MaxSurface
     margin-left:10px;
 }
 
+.marginl0
+{
+    margin-left:0px;
+}
+
 .marginr10
 {
     margin-right:10px;
@@ -181,6 +181,11 @@ input#MaxSurface
 .margint15
 {
     margin-top:15px;
+}
+
+.margint10
+{
+    margin-top:10px;
 }
 
 .width98

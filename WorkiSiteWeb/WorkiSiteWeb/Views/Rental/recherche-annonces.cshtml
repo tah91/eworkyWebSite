@@ -23,9 +23,12 @@
             {
                 @Html.AntiForgeryToken()
                 <div class="localisationField">
-                    <span class="editor-field">
-                        @Html.TextBoxFor(model => model.Place, new { placeholder = "plop" })
-                    </span>
+                    <div class="label-field red">
+                        @Html.LabelFor(model => model.Place)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                    </div>
 
                     <p>
                         @Html.HiddenFor(model => model.RentalData.Latitude)
@@ -33,29 +36,37 @@
                     </p>
                 </div>
                 
-                <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.RentalType)</p>
+                <div class="label-field red margint10">
+                    @Html.LabelFor(model => model.RentalData.Type)
+                </div>
                 <div class="editor-field">
-                    <p>@Html.DropDownListFor(model=>model.RentalData.Type, Model.RentalTypeSelect)</p>
+                    @Html.DropDownListFor(model => model.RentalData.Type, Model.RentalTypeSelect)
                 </div>
                 
                 <div class="halfContainer float-left margint15">
-                    <p class="red">@Html.Label(Worki.Resources.Views.Rental.RentalString.MinPrice)</p>
+                    <div class="label-field red">
+                        @Html.LabelFor(model => model.MinRate)
+                    </div>
                     <div class="editor-field">
-                        <p class="rentalElementPic2">@Html.TextBoxFor(model => model.MinRate, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit</p>
+                        @Html.TextBoxFor(model => model.MinRate, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMinRate }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
                     </div>
 
-                    <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.MinArea)</p>
+                    <div class="label-field red margint10">
+                        @Html.LabelFor(model => model.MinSurface)
+                    </div>
                     <div class="editor-field">
-                        <p>@Html.TextBoxFor(model => model.MinSurface, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
+                        @Html.TextBoxFor(model => model.MinSurface, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMinArea }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
                     </div>
 
-                    <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.Availability)</p>
+                    <div class="label-field red margint10">
+                        @Html.LabelFor(model => model.RentalData.AvailableDate)
+                    </div>
                     <div>
-                        <p>@Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span></p>
+                        @Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>
                     </div>
 
                     <div class="editor-field">
-                        <p>@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { @class = "dp" })</p>
+                        @Html.TextBoxFor(model => model.RentalData.AvailableDate, new { @class = "dp", placeholder = Worki.Resources.Views.Rental.RentalString.DateExample })
                     </div>
                 </div>
                 
@@ -64,12 +75,14 @@
                         @Html.LabelFor(model => model.MaxRate)
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MaxRate, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
+                        @Html.TextBoxFor(model => model.MaxRate, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMaxRate }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
                     </div>
 
-                    <p class="red rentalElementDesc2">@Html.Label(Worki.Resources.Views.Rental.RentalString.MaxArea)</p>
+                    <div class="label-field red margint10">
+                        @Html.LabelFor(model => model.MaxSurface)
+                    </div>
                     <div class="editor-field">
-                        <p>@Html.TextBoxFor(model => model.MaxSurface, new { placeholder = "plop" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit</p>
+                        @Html.TextBoxFor(model => model.MaxSurface, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMaxArea }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
                     </div>
                 </div>
                 
@@ -137,20 +150,6 @@
 
         function init() {
             $("#RentalData_AvailableDate").hide();
-//            $("#MinRate").attr("value", null);
-//            $("#MinRate").attr("placeholder", "Ex : 100");
-
-//            $("#MaxRate").attr("value", null);
-//            $("#MaxRate").attr("placeholder", "Ex : 10000");
-
-//            $("#MinSurface").attr("value", null);
-//            $("#MinSurface").attr("placeholder", "Ex : 10");
-
-//            $("#MaxSurface").attr("value", null);
-//            $("#MaxSurface").attr("placeholder", "Ex : 100");
-
-//            $("#Date").attr("placeholder", "@Worki.Resources.Views.Rental.RentalString.DateExample");
-//            $("#Place").attr("placeholder", "@Worki.Resources.Views.Home.HomeString.ExampleLocation");
         };
 
         $(document).ready(function () {
