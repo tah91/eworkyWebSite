@@ -15,7 +15,7 @@
             @Worki.Resources.Views.Home.HomeString.Welcome <b>@displayName</b> !
         </div>
         <div>
-            @Html.ActionLink("Mon profil", MVC.Profil.Dashboard(memberId)) | 
+            @Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.MyProfile, MVC.Profil.Dashboard(memberId)) | 
             @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Account.LogOff())
             @if (User.IsInRole(MiscHelpers.AdminRole))
             {

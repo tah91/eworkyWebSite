@@ -61,11 +61,74 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Concernant l&apos;annonce : .
+        /// </summary>
+        public static string Concern {
+            get {
+                return ResourceManager.GetString("Concern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consulter l&apos;annonce ici ==&gt;.
+        /// </summary>
+        public static string ConsultHere {
+            get {
+                return ResourceManager.GetString("ConsultHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Envoyer à un ami.
+        /// </summary>
+        public static string Friend {
+            get {
+                return ResourceManager.GetString("Friend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De :.
+        /// </summary>
+        public static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bonjour {0}.
         /// </summary>
         public static string Hello {
             get {
                 return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:9069/Rental/details/.
+        /// </summary>
+        public static string LinkToDetail {
+            get {
+                return ResourceManager.GetString("LinkToDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message :.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message Privé.
+        /// </summary>
+        public static string MP {
+            get {
+                return ResourceManager.GetString("MP", resourceCulture);
             }
         }
         
@@ -76,6 +139,15 @@ namespace Worki.Resources.Email {
         public static string SeeYouSoon {
             get {
                 return ResourceManager.GetString("SeeYouSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A :.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
     }

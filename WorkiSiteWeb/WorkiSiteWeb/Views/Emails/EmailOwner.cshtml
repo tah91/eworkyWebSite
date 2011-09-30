@@ -1,0 +1,8 @@
+﻿To: @ViewBag.To
+From: @Html.Raw(ViewBag.From)
+Subject: @Html.Raw(ViewBag.Subject)
+
+<p>@Html.Raw(MiscHelpers.Nl2Br(ViewBag.Content))
+</p>
+
+@Worki.Resources.Email.Common.ConsultHere <a href="@Html.Raw(ViewBag.Link)">@Html.Raw(ViewBag.Link)</a>

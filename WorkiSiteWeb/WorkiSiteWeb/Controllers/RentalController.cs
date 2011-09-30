@@ -5,6 +5,8 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Logging;
 using Worki.Service;
 using Worki.Infrastructure.Repository;
+using Worki.Infrastructure.Helpers;
+using Postal;
 
 namespace Worki.Web.Controllers
 {
@@ -18,14 +20,16 @@ namespace Worki.Web.Controllers
 		ILogger _Logger;
 		IGeocodeService _GeocodeService;
         IRentalSearchService _RentalSearchService;
+        IEmailService _EmailService;
 
 		#endregion
 
-        public RentalController(ILogger logger, IGeocodeService geocodeService, IRentalSearchService rentalSearchService)
+        public RentalController(ILogger logger, IGeocodeService geocodeService, IRentalSearchService rentalSearchService, IEmailService emailService)
 		{
 			_Logger = logger;
 			_GeocodeService = geocodeService;
             _RentalSearchService = rentalSearchService;
+            _EmailService = emailService;
 		}
 
 		/// <summary>
@@ -276,6 +280,119 @@ namespace Worki.Web.Controllers
             if (detailModel == null)
                 return View(MVC.Shared.Views.Error);
             return View(MVC.Rental.Views.details, detailModel);
+        }
+
+        /// <summary>
+        /// GET action method to send a demand to the rental owner
+        /// </summary>
+        /// <param name="id">id coming from the rental's detail page.</param>
+        /// <returns>The contact form to fill.</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("envoyer-email-propriétaire")]
+        public virtual ActionResult SendMailOwner(int id)
+        {
+            var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+            var rental = rRepo.Get(id);
+            if (rental == null)
+                return View(MVC.Shared.Views.Error);
+            var contact = new Contact();
+            var member = mRepo.GetMember(User.Identity.Name);
+            try
+            {
+                if (!member.IsValidUser())
+                {
+                    error = Worki.Resources.Validation.ValidationString.InvalidUser;
+                    throw new Exception(error);
+                }
+                else
+                {
+                    contact.EMail = member.Email;
+                    contact.LastName = member.MemberMainData.LastName;
+                    contact.FirstName = member.MemberMainData.FirstName;
+                    contact.ToEMail = rental.Member.Email;
+                    contact.ToName = rental.Member.MemberMainData.LastName;
+                    contact.Subject = Worki.Resources.Email.Common.Concern + rental.Reference + " - " + rental.PostalCode + " - " + rental.SurfaceString + " - " + rental.RateString;
+                    contact.Link = Worki.Resources.Email.Common.LinkToDetail + id;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("Rental", ex);
+                context.Complete();
+            }
+
+            return View("SendOwner", contact);
+        }
+
+        /// <summary>
+        /// GET action method to send a demand to a friend
+        /// </summary>
+        /// <param name="id">id coming from the rental's detail page.</param>
+        /// <param name="friend"></param>
+        /// <returns>The contact form to fill.</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("envoyer-email-ami")]
+        public virtual ActionResult SendMailFriend(int id, string friend)
+        {
+            var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+            var rental = rRepo.Get(id);
+            if (rental == null)
+                return View(MVC.Shared.Views.Error);
+            var contact = new Contact();
+            var member = mRepo.GetMember(User.Identity.Name);
+
+            if (member.IsValidUser())
+            {
+                contact.EMail = member.Email;
+                contact.LastName = member.MemberMainData.LastName;
+                contact.FirstName = member.MemberMainData.FirstName;
+                contact.Subject = Worki.Resources.Email.Common.Concern + rental.Reference + " - " + rental.PostalCode + " - " + rental.SurfaceString + " - " + rental.RateString;
+            }
+            else
+                contact.LastName = User.Identity.Name;
+
+            contact.Link = Worki.Resources.Email.Common.LinkToDetail + id;
+
+            return View("SendFriend", contact);
+        }
+
+        /// <summary>
+        /// POST action method to send a demand to contact
+        /// return message sent view
+        /// </summary>
+        /// <param name="contact">The contact data from the form</param>
+        /// <returns>message sent view if ok, the form with errors else </returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        [ActionName("envoyer-email")]
+        public virtual ActionResult SendMail(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    dynamic contactMail = new Email(MiscHelpers.EmailOwnerView);
+                    contactMail.From = contact.FirstName + " " + contact.LastName + "<" + contact.EMail + ">";
+                    contactMail.To = contact.ToEMail;
+                    contactMail.Subject = contact.Subject;
+                    contactMail.ToName = contact.ToName;
+                    contactMail.Content = contact.Message;
+                    contactMail.Link = contact.Link;
+                    contactMail.Send();
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("Rental", ex);
+                }
+                return View("message-envoye-success");
+            }
+            return View(contact);
         }
 	}
 }

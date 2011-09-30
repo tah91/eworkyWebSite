@@ -162,6 +162,9 @@
   <data name="CheckProfile" xml:space="preserve">
     <value>Consulter le profil :</value>
   </data>
+  <data name="CheckThisOut" xml:space="preserve">
+    <value>Je vous recommande de découvrir cette annonce : </value>
+  </data>
   <data name="ChooseDate" xml:space="preserve">
     <value>Choisir une Date</value>
   </data>

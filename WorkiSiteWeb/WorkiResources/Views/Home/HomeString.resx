@@ -259,4 +259,7 @@
   <data name="YearsOld" xml:space="preserve">
     <value>, {0} ans.</value>
   </data>
+  <data name="MailWellSent2" xml:space="preserve">
+    <value>Votre message a été envoyé avec succes!</value>
+  </data>
 </root>
