@@ -415,6 +415,9 @@ namespace Links {
         public static readonly string tabs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tabs.min.js") ? Url("tabs.min.js") : Url("tabs.js");
                       
         public static readonly string tabs_min_js = Url("tabs.min.js");
+        public static readonly string WorkiAutocomplete_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiAutocomplete.min.js") ? Url("WorkiAutocomplete.min.js") : Url("WorkiAutocomplete.js");
+                      
+        public static readonly string WorkiAutocomplete_min_js = Url("WorkiAutocomplete.min.js");
         public static readonly string WorkiMap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiMap.min.js") ? Url("WorkiMap.min.js") : Url("WorkiMap.js");
                       
         public static readonly string WorkiMap_min_js = Url("WorkiMap.min.js");

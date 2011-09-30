@@ -59,7 +59,7 @@ function WorkiAutoComplete(textField) {
     this.SetAutocomplete = SetAutocomplete;
 }
 
-function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt,cityField, postalCodeField, countryField) {
+function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, cityField, postalCodeField, countryField) {
     //properties
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
@@ -121,10 +121,10 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt,ci
         if (form != null) {
             $(form).trigger('submit');
         }
-//        else {
-//            //alert("La géolocalisation de votre lieu a échouée");
-//            return;
-//        }
+        //        else {
+        //            //alert("La géolocalisation de votre lieu a échouée");
+        //            return;
+        //        }
     }
 
     //public methods

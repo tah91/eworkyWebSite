@@ -26,8 +26,16 @@
                     <div class="label-field red">
                         @Html.LabelFor(model => model.Place)
                     </div>
+                    <div class="featureTag">
+                        <ul id="tagContainer">
+                            
+                        </ul>
+                    </div>
+                    <div class="clear">
+                    </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                        @*<input class="tagInput" id="Place" name="Place" placeholder="Ex : Pau, Oise, rue Rivoli Paris, 92200, ..." type="text">*@
+                        @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class="tagInput" })
                     </div>
 
                     <p>
@@ -154,6 +162,24 @@
 
         $(document).ready(function () {
             init();
+        });
+
+        $('.removeTag').live('click', function () {
+            $(this).closest('li').remove();
+        });
+
+        require(["@MiscHelpers.jqueryui","@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
+            var cityAutocomplete = new WorkiCityAutoComplete('#Place');
+            cityAutocomplete.SetAutocomplete();
+            $( "#Place" ).bind( "autocompleteselect", function(event, ui) {
+                var tagname = ui.item.value;
+                if (tagname != " ") {
+                    var newtag = $("<li class='mytag'>" + tagname + "<span class=\"removeTag\" title=\"Effacer ce lieu\"> x</span></li>");
+                    $("#tagContainer").append(newtag);
+                }
+                $(this).val("");
+                event.preventDefault();
+            });
         });
     </script>
 }

@@ -363,6 +363,7 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\WorkiAutocomplete.js" />
     <Content Include="Scripts\require-jquery.js" />
     <Content Include="Scripts\require-jquery.min.js">
       <DependentUpon>require-jquery.js</DependentUpon>
@@ -569,6 +570,9 @@
     <Content Include="Scripts\Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js" />
     <Content Include="Scripts\Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js">
       <DependentUpon>Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\WorkiAutocomplete.min.js">
+      <DependentUpon>WorkiAutocomplete.js</DependentUpon>
     </Content>
     <Content Include="Scripts\WorkiMap.js" />
     <Content Include="App_Code\RazorHelpers.cshtml" />

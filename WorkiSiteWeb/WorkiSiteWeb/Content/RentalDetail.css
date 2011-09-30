@@ -198,3 +198,26 @@ input#MaxSurface
     width:30%;
     height:100%;
 }
+
+.tagContainer
+{
+   border: 1px solid #FF7800;
+   padding:10px 0 10px 5px;
+}
+
+.tagInput
+{
+   border:none;
+}
+.mytag
+{
+   background:#FF7800;
+   color:#fff;
+   padding:5px;
+   margin-right:5px;    
+}
+
+.removeTag
+{
+    cursor:pointer;
+}
