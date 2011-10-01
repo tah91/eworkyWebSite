@@ -158,7 +158,7 @@
             </div>
         </div> 
 		}
-        <div class="localisationComments contentBlock noPrint">
+        <div class="localisationComments contentBlock">
             <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
             <div id="commentFormDiv">
             @if (Request.IsAuthenticated)
@@ -369,12 +369,12 @@
     <div class="clear">
     </div>
 </div>
-<div class="editionLink float-right noPrint">
+<div class="editionLink float-right">
 @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 </div>
 @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
  {
-	<div class="editionLink float-right noPrint">
+	<div class="editionLink float-right">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Localisation.Delete(Model.ID))
 	</div>
 }

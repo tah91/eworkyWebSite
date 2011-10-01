@@ -323,7 +323,7 @@ namespace Worki.Web.Helpers
             var hash = string.Empty;
             if (asy != null)
                 hash = asy.GetHashCode().ToString("x");
-            return string.Format("{0}?{1}", instance.Content(fileName), hash);
+            return string.Format("{0}?v={1}", instance.Content(fileName), hash);
         }
 
 		#region BeginCollectionItem

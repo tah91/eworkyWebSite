@@ -7,8 +7,7 @@
     <meta name="keywords" content="lieu de travail,télécentre,rechercher,trouver,centre d'affaires,bureaux,annonces,achat,vente,location,café,wifi,salle de réunion" />
     <meta name="google-site-verification" content="YzSZASagSr9IfssrBtXQiG7sx5pBr9dBl4tRH5G-EbA" />
     @RenderSection("HeadContent", true)
-	<link href="@Url.VersionedContent(Links.Content.Site_min_css)" rel="stylesheet" type="text/css"/> 
-    <link href="@Url.VersionedContent(Links.Content.Print_min_css)" rel="stylesheet" type="text/css" media="print" />
+	<link href="@Url.VersionedContent(Links.Content.Site_min_css)" rel="stylesheet" type="text/css"/>
 	<link rel="icon" type="image/png" href="@Links.Content.images.favicon_png" />
     <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
     <script type="text/javascript">
@@ -28,7 +27,7 @@
 
 <body>
 	<div class="page">
-		<div id="header" class="noPrint">
+		<div id="header">
 			<div class="logo logo_nobeta linkImg float-left cufonIt darkblue">@Html.ActionLink(" ", MVC.Home.Index())</div>
 			<div  class="logindisplay sizeHeaderConnexion borderRadiusBottom">
 				@Html.Partial(MVC.Shared.Views._LogOnUserControl)
@@ -51,7 +50,7 @@
             @RenderBody()
 		</div>
 	</div>
-	<div class="footer noPrint">
+	<div class="footer">
 		<div class="title">
 			<div class="float-left">
 				<div class="worki_footer">

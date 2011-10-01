@@ -288,10 +288,6 @@
     <Content Include="Content\MobileLocalisationDetail.min.css">
       <DependentUpon>MobileLocalisationDetail.css</DependentUpon>
     </Content>
-    <Content Include="Content\Print.css" />
-    <Content Include="Content\Print.min.css">
-      <DependentUpon>Print.css</DependentUpon>
-    </Content>
     <Content Include="Content\RentalDetail.css" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\Press.css" />

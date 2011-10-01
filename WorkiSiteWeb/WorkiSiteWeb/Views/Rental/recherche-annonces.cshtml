@@ -174,7 +174,7 @@
             $( "#Place" ).bind( "autocompleteselect", function(event, ui) {
                 var tagname = ui.item.value;
                 if (tagname != " ") {
-                    var newtag = $("<li class='mytag'>" + tagname + "<span class=\"removeTag\" title=\"Effacer ce lieu\"> x</span></li>");
+                    var newtag = $('<li class="mytag">' + tagname + '<span class="removeTag" title="Effacer ce lieu"> x</span></li>');
                     $("#tagContainer").append(newtag);
                 }
                 $(this).val("");
