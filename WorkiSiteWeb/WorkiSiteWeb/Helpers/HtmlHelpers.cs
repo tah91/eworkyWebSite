@@ -243,6 +243,47 @@ namespace Worki.Web.Helpers
 			return MvcHtmlString.Create(MiscHelpers.Nl2Br(text));
 		}
 
+		/*----------Add by Greg -----------
+
+		#lienMenu a
+		{
+			color: #FFFFFF;
+			font-size: 1.1em;
+			line-height: 20px;
+			text-decoration: none;  
+		}
+
+		.menuMarge
+		{
+			margin : 5px 5px;
+		}
+
+		.menuTaille
+		{
+			width : 100%;
+			height : 100%;  
+		}
+
+		#surligner li:hover
+		{ 	
+		background-color: #5E9C00;
+		}
+
+		.menuRight
+		{
+			width : 49%;
+			height : 100%;
+		}
+
+		.menuLeft
+		{
+			border-right-style: solid;
+			border-right-width: 1px;
+			border-right-color: #FFFFFF;
+			width : 50%;
+			height : 100%;
+		}*/
+
         public static MvcHtmlString CreateLinkMenu(this HtmlHelper html)// Create links of the pop up menu for " rechercher" 
         {
             var tagDiv3 = new TagBuilder("div");

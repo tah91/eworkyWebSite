@@ -8,12 +8,9 @@ body
 	height:auto;
 	height:auto;
 	font-size: .75em;
-	/*font-family:Verdana, Geneva, sans-serif;*/
 	font-family: Arial, Helvetica, Sans-Serif;
-	/*color:#a1a1a1;*/
 	color:Gray;
 	line-height:1.4;
-	/*background:blue;*/
 }
 
 /*TEXT COLORS
@@ -94,56 +91,12 @@ a
 {
 	color:Gray;
 	text-decoration: underline;
-	/*font-style:italic;*/
 }
 
 a:hover
 {
 	
 }
-
-/*----------Add by Greg -----------*/
-
-#lienMenu a
-{
-    color: #FFFFFF;
-    font-size: 1.1em;
-    line-height: 20px;
-    text-decoration: none;  
-}
-
-.menuMarge
-{
-	margin : 5px 5px;
-}
-
-.menuTaille
-{
-    width : 100%;
-    height : 100%;  
-}
-
-#surligner li:hover
-{ 	
-background-color: #5E9C00;
-}
-
-.menuRight
-{
-    width : 49%;
-    height : 100%;
-}
-
-.menuLeft
-{
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-right-color: #FFFFFF;
-    width : 50%;
-    height : 100%;
-}
-
-
 
 /* HEADINGS   
 ----------------------------------------------------------*/
@@ -185,26 +138,18 @@ h5, h6
 page width. Or, you can specify an exact pixel width. */
 .page
 {
-	/*width: 80%; 
-	max-width: 1000px; 
-	min-width: 700px; */
 	width: 1000px; 
 	margin-left: auto;
 	margin-right: auto;
 	min-height: 430px;
 }
 
+/* Helpers */
+
 .clear 
 {
 	clear:both;
 	visibility:hidden
-}
-
-.divToFill
-{
-	background: blue;
-	width: auto;
-	height: 100%;
 }
 
 .relative
@@ -239,30 +184,6 @@ page width. Or, you can specify an exact pixel width. */
 	display:inline-block;
 }
 
-*:first-child+html .lengthConnexionBox
-{
-	float: right;
-	width: 130px;
-	height:100%;
-}
-
-.lengthConnexionBox
-{
-	float: right;
-}
-
-*:first-child+html .sizeHeaderConnexion
-{
-	float: right;
-	width: 330px;
-	height:100%;
-}
-
-.sizeHeaderConnexion
-{
-	float: right;
-}
-
 .collapsed
 {
 	visibility:collapse;
@@ -294,6 +215,31 @@ page width. Or, you can specify an exact pixel width. */
 {
 	font-style:italic;
 }
+
+*:first-child+html .lengthConnexionBox
+{
+	float: right;
+	width: 130px;
+	height:100%;
+}
+
+.lengthConnexionBox
+{
+	float: right;
+}
+
+*:first-child+html .sizeHeaderConnexion
+{
+	float: right;
+	width: 330px;
+	height:100%;
+}
+
+.sizeHeaderConnexion
+{
+	float: right;
+}
+
 
 /* Button and link classes
 ----------------------------------------------------------*/
@@ -393,16 +339,6 @@ page width. Or, you can specify an exact pixel width. */
 	margin-top:10px;
 }
 
-.welcome
-{
-	
-}
-
-#main
-{
-
-}
-
 /* Footer
 ----------------------------------------------------------*/
 
@@ -415,18 +351,12 @@ page width. Or, you can specify an exact pixel width. */
 	position:relative;
 	float: left;
 	margin-top: 40px;
-	/*padding-top: 100px;*/
-	/*color: #999;*/
-	font-family:Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	line-height: 20px;
 }
 
 .footer a
 {
-	font-family:Verdana, Geneva, sans-serif;
-	font-size: 12px;
-	line-height: 20px;
 	text-decoration:none;
 	color: #999;
 	font-style:normal;
@@ -464,7 +394,7 @@ page width. Or, you can specify an exact pixel width. */
 	height:45px;
 }
 
-.title
+.footerTop
 {
 	margin:30px auto 0 auto;
 	width:1000px;
@@ -472,18 +402,13 @@ page width. Or, you can specify an exact pixel width. */
 	border-bottom:2px solid silver;
 }
 
-.title2
+.footerBottom
 {
 	margin:2px auto 0 auto;
 	width:1000px;
 }
 
-.widthAuto
-{
-	width:auto;
-}
-
-.links2 
+.footerLinks 
 {
 	padding-top:15px;
 	width: 200px;
@@ -547,7 +472,6 @@ ol
 {
 	border: 2px solid #CCCCCC;
 	padding:10px;
-	/*height: 650px;*/
 	margin: 10px 0 10px 0;
 	overflow:auto;
 }
@@ -1060,36 +984,6 @@ li
 	background-position:50% 0;
 	background-repeat:no-repeat;
 	margin-bottom:10px;
-}
-
-@font-face {
-	font-family: "Steinem";
-	font-style: normal;
-	font-weight:normal;
-	src: url('font/Steinemu.ttf');
-}
-
-@font-face {
-	font-family: "Steinem";
-	font-style: normal;
-	font-weight:bold;
-	src: url('font/Steinemb.ttf');
-}
-
-@font-face {
-	font-family: "Steinem";
-	font-style: italic;
-	font-weight:normal;
-	src: url('font/Steinemi.ttf');
-}
-
-.steinemu
-{
-	font-family:Steinem;
-	/*-webkit-text-stroke:0.05px;*/
-	font-size:15pt;
-	text-shadow: 0 0 1px rgba(0,0,0,0.01);
-	/*filter:progid:DXImageTransform.Microsoft.Blur(pixelRadius=0);*/
 }
 
 .borderRadius

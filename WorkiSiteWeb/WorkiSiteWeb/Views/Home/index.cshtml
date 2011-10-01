@@ -22,8 +22,8 @@
         <div class="indexSearchFormDiv relative">
             <h2 class="blue">
                 @string.Format("{0:### ### ###} {1}", indexViewModel.LocalisationCount, Worki.Resources.Views.Home.HomeString.Workspace)</h2>
-            <div class="searchIndexHead steinemu darkblue">
-                <h3>@Worki.Resources.Views.Home.HomeString.SearchWorkspace</h3>
+            <div class="searchIndexHead darkblue">
+                <h2>@Worki.Resources.Views.Home.HomeString.SearchWorkspace</h2>
             </div>
             @using (Html.BeginForm(MVC.Search.ActionNames.FullSearch,MVC.Search.Name, FormMethod.Post, new { id = "searchform" }))
             {
@@ -31,8 +31,8 @@
             <table class="indexFormTable">
                 <tr>
                     <td>
-                        <div class="steinemu darkblue">
-                            <h3 style="font-size: 0.8em;">@Worki.Resources.Views.Home.HomeString.What</h3>
+                        <div class="darkblue">
+                            <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
                         </div>
                     </td>
                     <td>
@@ -44,8 +44,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="steinemu darkblue">
-                            <h3 style="font-size: 0.8em;">@Worki.Resources.Views.Home.HomeString.Where</h3>
+                        <div class="darkblue">
+                            <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
                         </div>
                     </td>
                     <td>

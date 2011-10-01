@@ -23,12 +23,6 @@ body{margin:auto;height:auto;height:auto;font-size:.75em;font-family:Arial,Helve
 .red{color:#D35758}
 .red a{color:#D35758}
 a{color:Gray;text-decoration:underline}
-#lienMenu a{color:#FFF;font-size:1.1em;line-height:20px;text-decoration:none}
-.menuMarge{margin:5px 5px}
-.menuTaille{width:100%;height:100%}
-#surligner li:hover{background-color:#5E9C00}
-.menuRight{width:49%;height:100%}
-.menuLeft{border-right-style:solid;border-right-width:1px;border-right-color:#FFF;width:50%;height:100%}
 h1,h2,h3,h4,h5,h6{margin-bottom:5px}
 h1{font-size:2em}
 h2{font-size:1.5em}
@@ -37,23 +31,22 @@ h4{font-size:1.1em}
 h5,h6{font-size:1em}
 .page{width:1000px;margin-left:auto;margin-right:auto;min-height:430px}
 .clear{clear:both;visibility:hidden}
-.divToFill{background:blue;width:auto;height:100%}
 .relative{position:relative}
 .bottom{position:absolute;bottom:0}
 .halfContainer{width:50%;height:100%}
 .float-left{float:left}
 .float-right{float:right}
 .inline-block{display:inline-block}
-*:first-child+html .lengthConnexionBox{float:right;width:130px;height:100%}
-.lengthConnexionBox{float:right}
-*:first-child+html .sizeHeaderConnexion{float:right;width:330px;height:100%}
-.sizeHeaderConnexion{float:right}
 .collapsed{visibility:collapse}
 .displayTable{display:table}
 .displayTable label{vertical-align:bottom}
 .displayCell{display:table-cell;vertical-align:middle}
 .bold{font-weight:bold}
 .italic{font-style:italic}
+*:first-child+html .lengthConnexionBox{float:right;width:130px;height:100%}
+.lengthConnexionBox{float:right}
+*:first-child+html .sizeHeaderConnexion{float:right;width:330px;height:100%}
+.sizeHeaderConnexion{float:right}
 .linkImg a{display:block;width:100%;height:100%;text-decoration:none}
 .imageBtn{border:0;background:white}
 .imageBtn:hover{cursor:pointer}
@@ -73,17 +66,16 @@ h5,h6{font-size:1em}
 .nouveau_register{width:200px}
 .connect{text-align:right}
 .createAccount{margin-top:10px}
-.footer{background-image:url('images/footer.jpg');background-repeat:repeat-x;height:275px;width:100%;position:relative;float:left;margin-top:40px;font-family:Verdana,Geneva,sans-serif;font-size:12px;line-height:20px}
-.footer a{font-family:Verdana,Geneva,sans-serif;font-size:12px;line-height:20px;text-decoration:none;color:#999;font-style:normal}
+.footer{background-image:url('images/footer.jpg');background-repeat:repeat-x;height:275px;width:100%;position:relative;float:left;margin-top:40px;font-size:12px;line-height:20px}
+.footer a{text-decoration:none;color:#999;font-style:normal}
 .footer a:hover{color:White}
 .footer h1{color:#f6f6f6;font-weight:bold}
 .footer ul,ol{margin:0;list-style-position:inside}
 .worki_footer{background:url('images/worki_footer.png') no-repeat;width:141px;height:47px;padding-right:480px}
 .follow_footer{background:url('images/followUs_footer.png') no-repeat;width:249px;height:45px}
-.title{margin:30px auto 0 auto;width:1000px;height:210px;border-bottom:2px solid silver}
-.title2{margin:2px auto 0 auto;width:1000px}
-.widthAuto{width:auto}
-.links2{padding-top:15px;width:200px}
+.footerTop{margin:30px auto 0 auto;width:1000px;height:210px;border-bottom:2px solid silver}
+.footerBottom{margin:2px auto 0 auto;width:1000px}
+.footerLinks{padding-top:15px;width:200px}
 .social_logo{padding-top:20px;height:auto}
 .logo-middle{margin-left:5px}
 code,blockquote{padding:10px;text-align:left;display:block;overflow:auto;background:#fafafa;border:1px solid #f2f2f2;border-left:3px solid #ff9622}
@@ -174,10 +166,6 @@ li{list-style:none}
 .titleRed{background-color:#D35758}
 .titleRed:after{border-color:#D35758 transparent}
 .titleTriangle{height:7px;width:25px;background-position:50% 0;background-repeat:no-repeat;margin-bottom:10px}
-@font-face{font-family:"Steinem";font-style:normal;font-weight:normal;src:url('font/Steinemu.ttf')}
-@font-face{font-family:"Steinem";font-style:normal;font-weight:bold;src:url('font/Steinemb.ttf')}
-@font-face{font-family:"Steinem";font-style:italic;font-weight:normal;src:url('font/Steinemi.ttf')}
-.steinemu{font-family:Steinem;font-size:15pt;text-shadow:0 0 1px rgba(0,0,0,0.01)}
 .borderRadius{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}
 .borderRadiusBottom{-webkit-border-bottom-left-radius:10px 10px;-webkit-border-bottom-right-radius:10px 10px;-moz-border-bottom-left-radius:10px 10px;-moz-border-bottom-right-radius:10px 10px;border-bottom-left-radius:10px 10px;border-bottom-right-radius:10px 10px}
 .generalTextContainer{padding:10px}

@@ -37,7 +37,6 @@
 .directAccessDrh{width:35%;background-image:url('images/drh.png')}
 .directAccessIndependant{width:35%;background-image:url('images/independant.png')}
 .searchIndexHead{background-position:left center;background:url('images/loupe.png') no-repeat;height:27px;padding-left:50px}
-.searchIndexHead h3{font-size:1em}
 .contactDiv{padding-left:300px}
 .contactDiv input[type="text"]{width:230px}
 .contactDiv textarea{width:230px}
