@@ -283,6 +283,9 @@
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\retour.png" />
+    <Content Include="Content\LocalisationForm.min.css">
+      <DependentUpon>LocalisationForm.css</DependentUpon>
+    </Content>
     <Content Include="Content\Mobile.css" />
     <Content Include="Content\Mobile.min.css">
       <DependentUpon>Mobile.css</DependentUpon>
@@ -294,13 +297,7 @@
     <Content Include="Content\RentalDetail.css" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\Press.css" />
-    <Content Include="Content\CreateLocalisation.min.css">
-      <DependentUpon>CreateLocalisation.css</DependentUpon>
-    </Content>
-    <Content Include="Content\CreateRental.css" />
-    <Content Include="Content\CreateRental.min.css">
-      <DependentUpon>CreateRental.css</DependentUpon>
-    </Content>
+    <Content Include="Content\RentalForm.css" />
     <Content Include="Content\galleria\galleria-1.2.4.min.js">
       <DependentUpon>galleria-1.2.4.js</DependentUpon>
     </Content>
@@ -354,11 +351,11 @@
     <Content Include="Content\RentalDetail.min.css">
       <DependentUpon>RentalDetail.css</DependentUpon>
     </Content>
+    <Content Include="Content\RentalForm.min.css">
+      <DependentUpon>RentalForm.css</DependentUpon>
+    </Content>
     <Content Include="Content\Search.min.css">
       <DependentUpon>Search.css</DependentUpon>
-    </Content>
-    <Content Include="Content\SearchResults.min.css">
-      <DependentUpon>SearchResults.css</DependentUpon>
     </Content>
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
@@ -379,7 +376,7 @@
       <DependentUpon>jquery-ui.css</DependentUpon>
     </Content>
     <Content Include="Content\Visitor.css" />
-    <Content Include="Content\CreateLocalisation.css" />
+    <Content Include="Content\LocalisationForm.css" />
     <Content Include="Content\icons\error.gif" />
     <Content Include="Content\icons\exclamation.gif" />
     <Content Include="Content\icons\info.gif" />
@@ -459,7 +456,6 @@
     <Content Include="Content\rateit.css" />
     <Content Include="Content\Search.css" />
     <Content Include="Content\LocalisationDetail.css" />
-    <Content Include="Content\SearchResults.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\skin.css" />
     <Content Include="Content\Visitor.min.css">

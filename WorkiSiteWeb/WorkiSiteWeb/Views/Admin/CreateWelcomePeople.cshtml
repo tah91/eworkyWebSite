@@ -3,14 +3,12 @@
 @section HeadContent
 {
     <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.CreateWelcomePeople) </title>
-    <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
 }
 
 <div class="detailContent">
     @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.CreateWelcomePeople, "Blue")
    
     <div class="contactDiv">
-        <div class="login-account">
         @using (Html.BeginForm(MVC.Admin.ActionNames.CreateWelcomePeople, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
@@ -72,8 +70,7 @@
                 </tr>
             </table>
         }
-        </div>
-    </div>   
+    </div>
 </div>
 
 <div>

@@ -20,9 +20,9 @@
     </div>
 
     <div class="itemDetailsDiv float-left relative">
-        <p class="red detailLink"><span class="itemName">@Html.ActionLink(Model.Rental.GetRef(), MVC.Rental.Detail(Model.Rental.Id))</span></p>
+        <p class="red noUnderline"><span class="itemName">@Html.ActionLink(Model.Rental.GetRef(), MVC.Rental.Detail(Model.Rental.Id))</span></p>
         <span class="itemAddress">@Model.Rental.Address&nbsp; - &nbsp;@Model.Rental.PostalCode @Model.Rental.City</span>
-        <span class="itemType red">@Model.Rental.GetRentalType()</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Rental.Description, 120)</span><br />
+        <span class="bold red">@Model.Rental.GetRentalType()</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Rental.Description, 120)</span><br />
         <div class="itemLogos bottom">
             @{var count = 0;}
             @foreach (var access in Model.Rental.RentalAccesses.ToList())

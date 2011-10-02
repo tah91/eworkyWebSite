@@ -1,4 +1,14 @@
-﻿.avatarEditor{margin-top:10px;width:300px}
+﻿.registerDesc{width:80%;margin-bottom:15px}
+.registerForm select{width:214px}
+.registerForm table{margin-left:170px}
+.registerForm td{padding:2px}
+.registerForm td:first-child{width:200px;text-align:right}
+.loginDiv{padding-left:250px}
+.loginDiv table td{padding:3px}
+.loginDiv td:first-child{text-align:right}
+.loginDiv a{text-decoration:none;font-size:.9em;color:#5dafde}
+.loginDiv input[type="password"]{width:200px}
+.avatarEditor{margin-top:10px;width:300px}
 .avatarContainer{width:280px;height:280px;margin-bottom:10px}
 .avatarContainer img{max-height:280px}
 .profilData table td:first-child{width:150px}

@@ -4,9 +4,7 @@
 {
     <meta name="robots" content="noindex">
     <title>@Html.WorkiTitle(Worki.Resources.Views.Search.SearchString.SearchResult)</title>
-    <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.VersionedContent(Links.Content.SearchResults_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.skin_min_css)" rel="stylesheet" type="text/css"  />
     <link href="@Url.VersionedContent(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
@@ -25,7 +23,7 @@
     <div class="searchFormBlock float-left">
 		<div class="contentBlock">
 			<div class="resultsMapDiv">
-                <h3 class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</h3>
+                <span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
                 <div class="mapContainer" id="resultsMap">
                 </div>
             </div> 

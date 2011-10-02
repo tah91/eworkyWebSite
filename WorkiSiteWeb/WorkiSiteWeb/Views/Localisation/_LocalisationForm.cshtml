@@ -47,11 +47,10 @@
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.Label(Worki.Resources.Views.Localisation.LocalisationFormString.Offers)<span
-									class="blue">*</span>
+								@Html.Label(Worki.Resources.Views.Localisation.LocalisationFormString.Offers)<span class="blue">*</span>
 							</div>
 						</td>
-						<td id="offerContainer">
+						<td class="offerContainer">
 							<table>
 								<tr>
 									<td>
@@ -890,7 +889,7 @@
 		</div>
 	</div>
 	
-	<div class="submitAddButton float-right">
+	<div class="float-right">
 		<input  type="submit" class="btn_text btn_orange_plus_right btn_orange_plus imageBtn" 
 				name="valid" id="submit_add" value="@(Model.Localisation.ID == 0 ? "Ajouter" : "Valider")"/>
 	</div>

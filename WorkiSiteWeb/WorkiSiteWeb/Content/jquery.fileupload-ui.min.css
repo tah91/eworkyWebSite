@@ -16,3 +16,13 @@
 .files .size{padding:0 10px 0 0;text-align:right;white-space:nowrap}
 .ui-state-disabled .ui-state-disabled{opacity:1;filter:alpha(opacity=100)}
 .ui-state-disabled input{cursor:default}
+#fileupload{background:#F1F2F3;padding:5px}
+#fileupload .files{margin:5px 0}
+#fileupload img{max-height:50px;max-width:50px}
+#fileupload td{padding:2px}
+#fileupload td label{font-size:11px}
+#fileupload td input[type="radio"]{width:100%;padding:0;margin:0}
+#fileupload .fileupload-progressbar{width:auto}
+#fileupload .fileupload-buttonbar{background:inherit;color:inherit;font-size:inherit;border:0}
+#fileupload .fileupload-content{background:inherit;color:inherit;font-size:inherit;border:0}
+#fileupload .radioDiv{text-align:center}

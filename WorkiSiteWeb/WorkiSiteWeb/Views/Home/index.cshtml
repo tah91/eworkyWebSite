@@ -12,8 +12,6 @@
 
 <div class="mainRow">
 
-	@{ViewData["PicPath"] = Links.Content.images.photo1_jpg;}
-    @*@Html.Partial(MVC.Shared.Views._PictureContainer, ViewData) *@
     @{
         var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
     }
@@ -77,42 +75,6 @@
     <div class="clear">
     </div>
 </div>
-
-@*<div class="indexActionRow">
-    <div class="indexActionContainer float-left">
-        <div class="indexAction relative" id="recherche_index">
-            <div class="cufonIt blue">
-                <h2>@Worki.Resources.Views.Search.SearchString.Search</h2>
-            </div>
-                
-            <h3 class="darkblue">
-                @Worki.Resources.Views.Home.HomeString.FindDreamWorkspace</h3>
-            <span>@Worki.Resources.Views.Home.HomeString.SearchWorkspace<br />
-                @Worki.Resources.Views.Home.HomeString.GradeComment</span>
-            <br />
-            <div class="bottom">
-                <div class="btn_green_roulette linkImg btn_text">@Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Localisation.FullSearch())</div>
-            </div>
-        </div>
-    </div>
-    <div class="indexActionContainer float-right" >
-        <div class="indexAction relative" id="ajout_index">
-            <div class="cufonIt blue">
-                <h2>@Worki.Resources.Views.Localisation.LocalisationString.Add</h2>
-            </div>
-            <h3 class="darkblue">
-                @Worki.Resources.Views.Home.HomeString.SubmitWorkplace</h3>
-            <span>@Html.Raw(Worki.Resources.Views.Home.HomeString.ShareTips)</span>
-            <br />
-            <div class="bottom">
-                <div class="btn_orange_plus linkImg btn_text">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Add, MVC.Localisation.Create())</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="clear">
-    </div>
-</div>*@
 
 <div class="adRow">
     @Html.Partial(MVC.Home.Views._HomeDesc, indexViewModel.BlogPosts)

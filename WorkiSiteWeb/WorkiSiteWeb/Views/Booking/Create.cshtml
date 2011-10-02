@@ -12,8 +12,7 @@
 }
 <div class="detailContent">
     @RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookIt, "Blue")
-	<div class="bookingFormDiv">	
-		<div class="login-account">
+	<div class="bookingFormDiv">
 			@using (Html.BeginForm()) 
 			{ 
 				@Html.AntiForgeryToken()
@@ -158,7 +157,6 @@
 					</tr>
 				</table>
             } 
-		</div>
 	</div>
 </div>
 

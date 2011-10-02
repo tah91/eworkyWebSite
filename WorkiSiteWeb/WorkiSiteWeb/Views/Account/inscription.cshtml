@@ -5,164 +5,161 @@
     <meta name="robots" content="noindex">
 	<meta name="Description" content="@Worki.Resources.Views.Account.InscriptionString.Description"/>
     <title>@Html.WorkiTitle(Worki.Resources.Views.Account.AccountString.Inscription) </title>
+	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
     <div class="detailContent">
         @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.EWorkyRegister, "Blue")
-
-
-        <div class="login-account">
-            <div class="registerDesc float-right">
-            @Worki.Resources.Views.Account.AccountString.FillInscription<br />
-            @Worki.Resources.Views.Account.AccountString.QualityOfProfils<br /> 
-            @Worki.Resources.Views.Account.AccountString.SocialNetworkSoon<br /><br />
-            @Worki.Resources.Views.Account.AccountString.RequiredFields
-            </div>
-            <div class="clear">
-            </div>
-
-            @using (Html.BeginForm()) 
-            { 
-                @Html.AntiForgeryToken()
-                <div class="registerForm">
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.LabelFor(m => m.MemberMainData.Profile) <span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.DropDownList("MemberMainData.Profile", Model.ProfileSelectTypes)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.LabelFor(m => m.MemberMainData.Civility)<span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.DropDownList("Civility", Model.CivilitySelectTypes)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(m => m.MemberMainData.LastName)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(m => m.MemberMainData.FirstName)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.LabelFor(m => m.Email)<span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(m => m.Email)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.LabelFor(m => m.Password)<span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.PasswordFor(m => m.Password) (@ViewData["PasswordLength"]  caractères min.)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.LabelFor(m => m.ConfirmPassword)<span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.PasswordFor(m => m.ConfirmPassword)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Worki.Resources.Views.Account.AccountString.EnterFollowingLetters
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.Captcha("myCaptcha") 
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.Label(Worki.Resources.Views.Account.AccountString.ValidationLetter)<span class="blue">*</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("attempt") 
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.CheckBoxFor(m => m.AcceptCGU)
-                                    @Html.Raw(String.Format(Worki.Resources.Views.Account.AccountString.AgreeWithCGU,  Html.ActionLink("CGU", MVC.Home.CGU())))
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    <input type="submit" class="btn_blue imageBtn" value="S'inscrire"/>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>                    
-                </div>
-            } 
+        <div class="registerDesc float-right">
+        @Worki.Resources.Views.Account.AccountString.FillInscription<br />
+        @Worki.Resources.Views.Account.AccountString.QualityOfProfils<br /> 
+        @Worki.Resources.Views.Account.AccountString.SocialNetworkSoon<br /><br />
+        @Worki.Resources.Views.Account.AccountString.RequiredFields
         </div>
+        <div class="clear">
+        </div>
+
+        @using (Html.BeginForm()) 
+        { 
+            @Html.AntiForgeryToken()
+            <div class="registerForm">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(m => m.MemberMainData.Profile) <span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.DropDownList("MemberMainData.Profile", Model.ProfileSelectTypes)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(m => m.MemberMainData.Civility)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.DropDownList("Civility", Model.CivilitySelectTypes)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(m => m.MemberMainData.LastName)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(m => m.MemberMainData.FirstName)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(m => m.Email)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(m => m.Email)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(m => m.Password)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.PasswordFor(m => m.Password) (@ViewData["PasswordLength"]  caractères min.)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(m => m.ConfirmPassword)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.PasswordFor(m => m.ConfirmPassword)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Worki.Resources.Views.Account.AccountString.EnterFollowingLetters
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.Captcha("myCaptcha") 
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.Label(Worki.Resources.Views.Account.AccountString.ValidationLetter)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBox("attempt") 
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                    
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(m => m.AcceptCGU)
+                                @Html.Raw(String.Format(Worki.Resources.Views.Account.AccountString.AgreeWithCGU,  Html.ActionLink("CGU", MVC.Home.CGU())))
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                <input type="submit" class="btn_blue imageBtn" value="S'inscrire"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>                    
+            </div>
+        }
     </div>
 
 @section ScriptContent

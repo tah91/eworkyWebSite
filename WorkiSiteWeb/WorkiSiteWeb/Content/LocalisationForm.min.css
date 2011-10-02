@@ -1,0 +1,23 @@
+﻿.dataEdition td{padding:1px 5px}
+.offerContainer{padding:10px 5px}
+.localisationOwnerField{padding:0 0 10px 0}
+.localisationOwnerField input[type="checkbox"]{margin-left:10px}
+.phoneNumberRow td{padding:0;border:0}
+.phoneNumberRow input[type="text"],input[type="password"]{width:170px}
+.phoneNumberCol{padding-right:24px}
+.faxCol{padding-left:11px;padding-right:16px}
+.editOpenning td:first-child{width:72px}
+.editOpenning input[type="text"],input[type="password"]{width:50px}
+.editionTable{margin:10px 0}
+.serviceContainer{padding:5px}
+.serviceContainer label{padding-left:5px}
+.serviceContainer ul{margin:5px}
+.serviceContainer li{padding:2px}
+.subserviceContainer{padding:5px;width:220px}
+.subserviceContainer h4{font-weight:normal;color:#5dafde}
+.coffeePrice input[type="text"]{width:50px;margin-left:10px}
+.coffeePrice label{vertical-align:0}
+.editPlace{position:relative;width:21%;background:#f1f2f3;padding:10px}
+.editPlace h3{display:block}
+#editMapDiv{height:180px;margin:5px 0 5px 0}
+.localisationAtSamePlace{padding:2px;width:400px}

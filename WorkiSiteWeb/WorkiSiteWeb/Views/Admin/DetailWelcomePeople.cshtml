@@ -9,60 +9,57 @@
 
 <div class="detailContent">
     @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.DetailWelcomePeople, "Blue")
-    
     <div class="contactDiv">
-        <div class="login-account">
-            <table>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Worki.Resources.Models.Contact.Contact.Email
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.Username)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Worki.Resources.Views.Admin.AdminString.Localisation
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Localisation.Name)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Worki.Resources.Views.Admin.AdminString.Description
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Description)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Worki.Resources.Views.Admin.AdminString.LocalisationPicture
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;<img class="welcomePeopleMaxSize" src="@ControllerHelpers.GetUserImagePath(Model.LocalisationPicture)" alt="plop"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Worki.Resources.Models.Contact.Contact.Email
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.Username)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Worki.Resources.Views.Admin.AdminString.Localisation
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Localisation.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Worki.Resources.Views.Admin.AdminString.Description
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Description)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Worki.Resources.Views.Admin.AdminString.LocalisationPicture
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        &nbsp;&nbsp;&nbsp;<img class="welcomePeopleMaxSize" src="@ControllerHelpers.GetUserImagePath(Model.LocalisationPicture)" alt="plop"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>   
 </div>
 

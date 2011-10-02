@@ -3,15 +3,15 @@
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Search.SearchString.Search)</title>
-    <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.skin_min_css)" rel="stylesheet" type="text/css"  />
     <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 <div class="mainRow">
-    @{ViewData["PicPath"] = "/Content/images/photo3.jpg";}
-    @Html.Partial(MVC.Shared.Views._PictureContainer, ViewData) 
+	<div class="bigPictureContainer float-left">
+		@Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
+	</div>
 
     <div class="halfContainer searchFormContainer float-right">
         <div class="searchFormDiv">

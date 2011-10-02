@@ -264,6 +264,24 @@ td { vertical-align: top; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 
+/* Clear Float Fix */
+/* Add class clearfix to parent container for dealing with child floats */
+
+/*.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+/** html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
 /* custom helpers */
 
 .clear 
@@ -340,7 +358,7 @@ td { vertical-align: top; }
 	font-style:italic;
 }
 
-.noUnderline
+.noUnderline, .noUnderline a
 {
 	text-decoration:none;
 }

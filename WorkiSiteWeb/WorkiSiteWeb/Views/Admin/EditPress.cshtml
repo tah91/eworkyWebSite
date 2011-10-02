@@ -1,93 +1,84 @@
 ﻿@model Worki.Data.Models.Press
-
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
-    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+	<link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
-
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.EditPress, "Blue")
-    
-    <div class="contactDiv">
-        <div class="login-account">
-
-            @using (Html.BeginForm(MVC.Admin.ActionNames.EditPress, MVC.Admin.Name, null, FormMethod.Post, new { id = "DateForm" }))
-            {
-                @Html.AntiForgeryToken()
-                <table>
-                    <tr>
-                        <td>
-                            <div class="editor-label">
-                                @Worki.Resources.Views.Admin.AdminString.Date
-                            </div>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                @Html.TextBox("Date", String.Format("{0:dd/MM/yyyy}", Model.Date), new { @class = "dp" })
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="editor-label">
-                                @Worki.Resources.Views.Admin.AdminString.Url
-                            </div>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                @Html.TextBoxFor(model => model.Url)
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="editor-label">
-                                @Worki.Resources.Views.Admin.AdminString.Title
-                            </div>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                @Html.TextBoxFor(model => model.Title)
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="editor-label">
-                                @Worki.Resources.Views.Admin.AdminString.Description
-                            </div>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                @Html.TextBoxFor(model => model.Description)
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                <input type="submit" value="Save" />
-                            </div>
-                        </td>
-                    </tr>               
-                </table>
-            }
-        </div>
-    </div>   
+	@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.EditPress, "Blue")
+	<div class="contactDiv">
+		@using (Html.BeginForm(MVC.Admin.ActionNames.EditPress, MVC.Admin.Name, null, FormMethod.Post, new { id = "DateForm" }))
+        {
+			@Html.AntiForgeryToken()
+			<table>
+				<tr>
+					<td>
+						<div class="editor-label">
+							@Worki.Resources.Views.Admin.AdminString.Date
+						</div>
+					</td>
+					<td>
+						<div class="editor-field">
+							@Html.TextBox("Date", String.Format("{0:dd/MM/yyyy}", Model.Date), new { @class = "dp" })
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="editor-label">
+							@Worki.Resources.Views.Admin.AdminString.Url
+						</div>
+					</td>
+					<td>
+						<div class="editor-field">
+							@Html.TextBoxFor(model => model.Url)
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="editor-label">
+							@Worki.Resources.Views.Admin.AdminString.Title
+						</div>
+					</td>
+					<td>
+						<div class="editor-field">
+							@Html.TextBoxFor(model => model.Title)
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="editor-label">
+							@Worki.Resources.Views.Admin.AdminString.Description
+						</div>
+					</td>
+					<td>
+						<div class="editor-field">
+							@Html.TextBoxFor(model => model.Description)
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<div class="editor-field">
+							<input type="submit" value="Save" />
+						</div>
+					</td>
+				</tr>
+			</table>
+        }
+	</div>
 </div>
-               
-
 <div>
-    @Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexPress())
+	@Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexPress())
 </div>
-
 @section ScriptContent
 {
-    <script type="text/javascript">
+	<script type="text/javascript">
         require(["@MiscHelpers.jqueryui"], function () {
             $.datepicker.regional['fr'] = {
                 closeText: 'Fermer',

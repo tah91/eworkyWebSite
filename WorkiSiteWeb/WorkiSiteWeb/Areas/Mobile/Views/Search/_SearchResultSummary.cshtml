@@ -24,7 +24,7 @@
             @Html.Partial(MVC.Mobile.Shared.Views._CommentSummary, Model.Localisation)
         </div>
         <span class="itemAddress">@Model.Localisation.Adress&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>
-        <span class="itemType lightblue">@Localisation.LocalisationTypes[Model.Localisation.TypeValue]</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, 80)</span><br />
+        <span class="bold lightblue">@Localisation.LocalisationTypes[Model.Localisation.TypeValue]</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, 80)</span><br />
         <div class="itemLogos">
             @Html.Partial(MVC.Shared.Views._IconeServices, Model.Localisation)
             <div class="clear">

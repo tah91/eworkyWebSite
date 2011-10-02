@@ -1,208 +1,19 @@
 ﻿/* Results Details
 ----------------------------------------------------------*/
-.localisationAccess
-{
-    padding:20px 0 10px 0;
-}
-
 .localisationAccessDetail
 {
     margin-top:10px;
-}
-
-.mainPic
-{
-    height:80%;
-    width:98%;
-    padding: 5px 2px;
-}
-
-.mainPic img
-{
-    max-width:285px;
-    max-height:200px;
-}
-
-.smallPics
-{
-    height:19%;
-    width:100%;
-    margin: 5px 0;
-}
-
-.picDiv 
-{
-    width:31%;
-    height:100%;
-}
-
-.picDiv img
-{
-    max-width:100px;
-    max-height:45px;
-}
-
-.picDivMiddle
-{
-    margin:0 3.5% 0 3.5%;
-}
-
-
-.localisationDetailsRight h2
-{
-    margin-top:15px;
-    margin-bottom:15px;
-    font-size:2em;
-}
-
-.localisationCity
-{
-    font-weight:bold;
-    font-size:1.2em;
-}
-
-.localisationContactDetails
-{
-    
-}
-
-.localisationRatings
-{
-    padding-left:20px;
-}
-
-.localisationBold
-{
-    font-weight:bold;
-}
-
-.localisationMainDetails
-{
-    margin-bottom:20px;
-}
-
-.localisationCommDiv
-{
-    
-}
-
-.localisationDescBefore
-{
-    height:90px;
-}
-
-.localisationOpenings
-{
-    /*width:50%;*/
-}
-
-.localisationOpenings td
-{
-    /*padding:1px 5px;*/
-    vertical-align:text-top;
 }
 
 .dayOfWeek
 {
     width: 60px;
     padding-right: 20px;
-    /*text-align:right;
-    font-style:italic;*/
-}
-
-.shareLinks
-{
-    padding: 5px 0;
-}
-
-.mailPrint
-{
-    /*padding: 0 10px;*/
-}
-
-.allAvailableServices
-{
-    
-}
-
-.allAvailableServices h3
-{
-    margin-top: 10px;
-}
-
-.servicesDesc
-{
-    
-}
-
-.servicesDesc h3
-{
-    margin:10px 0;
-}
-
-.backToResults a
-{
-    text-align: left;
-}
-
-.commentsDiv
-{
-    margin-top:10px;
-}
-
-.commentHeader
-{
-    vertical-align:top;
-    margin-top:10px;
-}
-
-.commentAutor
-{
-    vertical-align:top;
-    font-weight:bold;
-}
-
-.commentContent
-{
-    padding:10px;
-    background:#f8f8f8;
 }
 
 .commentFormRating td:first-child
 {
     width:100px;
-}
-
-.detailServiceContainer
-{
-    padding-left:5px;
-}
-
-.detailServiceContainer label
-{
-    padding-left:5px;
-    vertical-align: 25%;
-}
-
-.detailServiceContainer ul
-{
-    margin: 2px;
-}
-
-.detailServiceContainer li
-{
-    /*padding:2px;*/
-}
-
-.detailSubserviceContainer
-{
-    width:220px;
-}
-
-.detailSubserviceContainer h4
-{
-    font-weight:normal;
-    color:#bbd31f;
 }
 
 .localisationDetail
@@ -228,14 +39,7 @@
 
 .localisationTitle
 {
-    /*padding:0 10px;
-    width: 55%;*/
     width: 60%;
-}
-
-.localisationServicesContainer
-{
-    margin:0 10px;
 }
 
 .localisationName
@@ -253,16 +57,9 @@
     font-size:1.2em;
 }
 
-.localisationSubtitle
-{
-	/*margin-top: 15px;*/
-}
-
 .localisationShare
 {
-	/*margin-top: 45px;*/
 	margin-top: 10px;
-    /*padding:10px 0;*/
 }
 
 #favLink
@@ -292,10 +89,108 @@
     height: 350px;
 }
 
-.localisationInformation
-{
-    font-weight:bold;
-}
-
 .favoris_add{ background-image:url('images/favorite.png'); background-position: 0 0; width: 20px; height: 21px;  display:inline-block;} 
 .favoris_del{ background-image:url('images/favorite.png'); background-position: 0 -71px; width: 20px; height: 21px; display:inline-block;} 
+
+#commentFormDiv textarea
+{
+	width:98.5%;
+}
+
+.directAccess
+{
+    width: 43%;
+    background:#f8f8f8;
+    height:270px;
+    padding:0 20px 0 20px;
+}
+
+.directAccess h2
+{
+    display:inline;
+    font-size:1.5em;
+    margin-bottom:0;
+}
+
+.directAccess a
+{
+    font-size:1.2em;
+    font-weight:bold;
+    font-style:normal;
+    text-decoration:none;
+    text-align:left;
+    padding:10px 0 0 40px;
+}
+
+.directAccessElem
+{
+    border-bottom:1px solid #5dafde;
+    padding:20px;
+    background:  no-repeat 5% center;
+}
+
+.directAccessHead
+{
+    padding-left:10px;
+}
+
+.directAccessStudent
+{
+    width: 35%;
+    background-image: url('images/student.png');
+}
+
+.directAccessNomad
+{
+    width:35%;
+    background-image: url('images/nomad.png');
+}
+
+.directAccessWorker
+{
+    width: 35%;
+    background-image: url('images/worker.png');
+}
+
+.directAccessStartUp
+{
+    width:35%;
+    background-image: url('images/startup.png');
+}
+
+.directAccessDrh
+{
+    width:35%;
+    background-image: url('images/drh.png');
+}
+
+.directAccessIndependant
+{
+    width:35%;
+    background-image: url('images/independant.png');
+}
+
+.serviceIcones_coffee_h{ background-image:url('images/serviceIcones.png'); background-position: 0 0; width: 28px; height: 28px; } 
+.serviceIcones_coffee_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -78px; width: 28px; height: 28px; } 
+.serviceIcones_coffee_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -156px; width: 28px; height: 28px; } 
+.serviceIcones_handicap_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -234px; width: 28px; height: 28px; } 
+.serviceIcones_handicap_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -312px; width: 28px; height: 28px; } 
+.serviceIcones_handicap_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -390px; width: 28px; height: 28px; } 
+.serviceIcones_meeting_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -468px; width: 29px; height: 28px; } 
+.serviceIcones_meeting_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -546px; width: 29px; height: 28px; } 
+.serviceIcones_meeting_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -624px; width: 29px; height: 28px; } 
+.serviceIcones_parking_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -702px; width: 28px; height: 28px; } 
+.serviceIcones_parking_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -780px; width: 28px; height: 28px; } 
+.serviceIcones_parking_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -858px; width: 28px; height: 28px; } 
+.serviceIcones_resto_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -936px; width: 28px; height: 28px; } 
+.serviceIcones_resto_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1014px; width: 28px; height: 28px; } 
+.serviceIcones_resto_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1092px; width: 28px; height: 28px; } 
+.serviceIcones_secr_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -1170px; width: 28px; height: 28px; } 
+.serviceIcones_secr_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1248px; width: 28px; height: 28px; } 
+.serviceIcones_secr_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1326px; width: 28px; height: 28px; } 
+.serviceIcones_wifi_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -1404px; width: 28px; height: 28px; } 
+.serviceIcones_wifi_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1482px; width: 28px; height: 28px; } 
+.serviceIcones_wifi_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1560px; width: 28px; height: 28px; } 
+.serviceIcones_wifip_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -1638px; width: 28px; height: 28px; } 
+.serviceIcones_wifip_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1716px; width: 28px; height: 28px; } 
+.serviceIcones_wifip_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1794px; width: 28px; height: 28px; }  

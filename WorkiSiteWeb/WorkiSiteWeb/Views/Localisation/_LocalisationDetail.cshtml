@@ -11,7 +11,7 @@
         <div class="clear">
         </div>
         <div class="localisationSubtitle">
-            <span class="localisationCity blue">@Localisation.LocalisationTypes[Model.TypeValue]</span>&nbsp;&nbsp;
+            <span class="localisationCity bold blue">@Localisation.LocalisationTypes[Model.TypeValue]</span>&nbsp;&nbsp;
             @{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;}
             <a href="@itinLink" target="_blank">
                 @Model.Adress - @Model.PostalCode @Model.City
@@ -202,17 +202,17 @@
 			    <div class="localisationAccessDetail">
 			    @if (!string.IsNullOrEmpty(Model.PublicTransportation))
 			    {
-                    <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
+                    <span class="bold">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
                     @Model.PublicTransportation<br />
 			    }
                 @if (!string.IsNullOrEmpty(Model.RoadAccess))
 			    {
-                    <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.RoadAccess : </span>
+                    <span class="bold">@Worki.Resources.Models.Localisation.Localisation.RoadAccess : </span>
                     @Model.RoadAccess<br />
 			    }
                 @if (!string.IsNullOrEmpty(Model.Station))
 			    {
-                    <span class="localisationInformation">@Worki.Resources.Models.Localisation.Localisation.Station : </span>
+                    <span class="bold">@Worki.Resources.Models.Localisation.Localisation.Station : </span>
                     @Model.Station<br />
 			    }
 			    </div>
@@ -242,17 +242,17 @@
 				}
 				@if (creation != null)
 				{
-						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Profil.Detail(creation.Member.MemberId))</span><br />
-						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", creation.ModificationDate)<br />
+						<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Profil.Detail(creation.Member.MemberId))</span><br />
+						<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", creation.ModificationDate)<br />
 					}
 					else
 					{ 
-						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
+						<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
 					}
 				@if (lastEdition != null)
 				{
-						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Profil.Detail(lastEdition.Member.MemberId))</span><br />
-						<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", lastEdition.ModificationDate)<br />
+						<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Profil.Detail(lastEdition.Member.MemberId))</span><br />
+						<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", lastEdition.ModificationDate)<br />
 					}                    
 			</div>
 			}
@@ -307,7 +307,7 @@
 					var haveAvoid = Model.GetAvoidString();
 					if (!string.IsNullOrEmpty(haveAvoid))
 					{
-					<span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
+					<span class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
 					}
 			}
         </div>
@@ -327,12 +327,12 @@
 						}
 						if (!string.IsNullOrEmpty(Model.PhoneNumber))
 						{
-                            <span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
+                            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
                         @Html.GetPhoneFormat(Model.PhoneNumber)<br />
 						}
 						if (!string.IsNullOrEmpty(Model.Fax))
 						{
-                            <span class="localisationInformation">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
+                            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
                         @Html.GetPhoneFormat(Model.Fax)<br />
 						}
 					}

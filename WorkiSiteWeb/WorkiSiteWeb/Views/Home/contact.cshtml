@@ -4,14 +4,11 @@
 {
 	<meta name="Description" content="@Worki.Resources.Views.Home.ContactString.Description"/>
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.Contact)</title>
-    <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
 }
-
 
 <div class="detailContent">
     @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.ContactUs, "Blue")
     <div class="contactDiv">
-        <div class="login-account">
             @using (Html.BeginForm()) 
             {
                 @Html.AntiForgeryToken()
@@ -86,8 +83,7 @@
                         </td>
                     </tr>
                 </table>
-            } 
-        </div>
+            }
     </div>   
 </div>
 

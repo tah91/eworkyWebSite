@@ -433,10 +433,6 @@ namespace Links {
         public static readonly string boilerplate_min_css = Url("boilerplate.min.css");
         public static readonly string Booking_css = Url("Booking.css");
         public static readonly string Booking_min_css = Url("Booking.min.css");
-        public static readonly string CreateLocalisation_css = Url("CreateLocalisation.css");
-        public static readonly string CreateLocalisation_min_css = Url("CreateLocalisation.min.css");
-        public static readonly string CreateRental_css = Url("CreateRental.css");
-        public static readonly string CreateRental_min_css = Url("CreateRental.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class galleria {
             private const string URLPATH = "~/Content/galleria";
@@ -570,6 +566,8 @@ namespace Links {
         public static readonly string jquery_fileupload_ui_min_css = Url("jquery.fileupload-ui.min.css");
         public static readonly string LocalisationDetail_css = Url("LocalisationDetail.css");
         public static readonly string LocalisationDetail_min_css = Url("LocalisationDetail.min.css");
+        public static readonly string LocalisationForm_css = Url("LocalisationForm.css");
+        public static readonly string LocalisationForm_min_css = Url("LocalisationForm.min.css");
         public static readonly string Mobile_css = Url("Mobile.css");
         public static readonly string Mobile_min_css = Url("Mobile.min.css");
         public static readonly string MobileLocalisationDetail_css = Url("MobileLocalisationDetail.css");
@@ -582,10 +580,10 @@ namespace Links {
         public static readonly string rateit_min_css = Url("rateit.min.css");
         public static readonly string RentalDetail_css = Url("RentalDetail.css");
         public static readonly string RentalDetail_min_css = Url("RentalDetail.min.css");
+        public static readonly string RentalForm_css = Url("RentalForm.css");
+        public static readonly string RentalForm_min_css = Url("RentalForm.min.css");
         public static readonly string Search_css = Url("Search.css");
         public static readonly string Search_min_css = Url("Search.min.css");
-        public static readonly string SearchResults_css = Url("SearchResults.css");
-        public static readonly string SearchResults_min_css = Url("SearchResults.min.css");
         public static readonly string Site_css = Url("Site.css");
         public static readonly string Site_min_css = Url("Site.min.css");
         public static readonly string skin_css = Url("skin.css");
