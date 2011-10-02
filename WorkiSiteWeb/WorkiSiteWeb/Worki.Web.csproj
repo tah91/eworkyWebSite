@@ -226,6 +226,7 @@
     <Compile Include="Areas\Api\Routing\PathDoesNotStartWith.cs" />
     <Compile Include="Areas\Api\Routing\PathStartsWith.cs" />
     <Compile Include="Areas\Api\Routing\RestRoutes.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AccountController.cs" />
     <Compile Include="Areas\Mobile\Controllers\HomeController.cs" />
     <Compile Include="Areas\Mobile\Controllers\SearchController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
@@ -585,6 +586,7 @@
     <Content Include="Areas\Mobile\Views\Shared\_LocalisationDetail.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\resultats-detail.cshtml" />
     <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Mobile\Views\Shared\_Connexion.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -688,7 +690,7 @@
     <Content Include="Views\Profil\_CommentTab.cshtml" />
     <Content Include="Views\Localisation\resultats-detail.cshtml" />
     <Content Include="Views\Shared\_AddToFavorite.cshtml" />
-    <Content Include="Views\Localisation\_LocalisationSingleComment.cshtml" />
+    <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
     <Content Include="Views\Localisation\_CommentFormScript.cshtml" />
     <Content Include="Views\Booking\Create.cshtml" />
     <Content Include="Views\Admin\IndexBooking.cshtml" />

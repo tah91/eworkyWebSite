@@ -51,6 +51,7 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class MobileClass {
         public readonly string Name = "Mobile";
+        public Worki.Web.Areas.Mobile.Controllers.AccountController Account = new Worki.Web.Areas.Mobile.Controllers.T4MVC_AccountController();
         public Worki.Web.Areas.Mobile.Controllers.HomeController Home = new Worki.Web.Areas.Mobile.Controllers.T4MVC_HomeController();
         public Worki.Web.Areas.Mobile.Controllers.SearchController Search = new Worki.Web.Areas.Mobile.Controllers.T4MVC_SearchController();
         public T4MVC.Mobile.SharedController Shared = new T4MVC.Mobile.SharedController();
@@ -1572,7 +1573,6 @@ namespace Worki.Web.Controllers {
             public readonly string _LocalisationForm = "~/Views/Localisation/_LocalisationForm.cshtml";
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
             public readonly string _LocalisationGalleryScript = "~/Views/Localisation/_LocalisationGalleryScript.cshtml";
-            public readonly string _LocalisationSingleComment = "~/Views/Localisation/_LocalisationSingleComment.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
@@ -2198,6 +2198,7 @@ namespace T4MVC {
             public readonly string _CultureSwitchControl = "~/Views/Shared/_CultureSwitchControl.cshtml";
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";
+            public readonly string _LocalisationSingleComment = "~/Views/Shared/_LocalisationSingleComment.cshtml";
             public readonly string _LogOnUserControl = "~/Views/Shared/_LogOnUserControl.cshtml";
             public readonly string _MainMenu = "~/Views/Shared/_MainMenu.cshtml";
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";
@@ -2292,6 +2293,67 @@ namespace T4MVC.Api {
         }
     }
 
+}
+
+namespace Worki.Web.Areas.Mobile.Controllers {
+    public partial class AccountController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected AccountController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult LogOn() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public AccountController Actions { get { return MVC.Mobile.Account; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Mobile";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Account";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string LogOn = "connexion";
+            public readonly string LogOff = "deconnexion";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_AccountController: Worki.Web.Areas.Mobile.Controllers.AccountController {
+        public T4MVC_AccountController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult LogOn(Worki.Data.Models.LogOnModel model, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+            callInfo.RouteValueDictionary.Add("model", model);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LogOff() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOff);
+            return callInfo;
+        }
+
+    }
 }
 
 namespace Worki.Web.Areas.Mobile.Controllers {
@@ -2436,6 +2498,7 @@ namespace T4MVC.Mobile {
         public class ViewNames {
             public readonly string @__Layout = "~/Areas/Mobile/Views/Shared/__Layout.cshtml";
             public readonly string _CommentSummary = "~/Areas/Mobile/Views/Shared/_CommentSummary.cshtml";
+            public readonly string _Connexion = "~/Areas/Mobile/Views/Shared/_Connexion.cshtml";
             public readonly string _LocalisationDetail = "~/Areas/Mobile/Views/Shared/_LocalisationDetail.cshtml";
             public readonly string resultats_detail = "~/Areas/Mobile/Views/Shared/resultats-detail.cshtml";
         }

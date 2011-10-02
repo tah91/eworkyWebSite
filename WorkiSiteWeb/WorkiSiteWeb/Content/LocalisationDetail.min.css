@@ -16,38 +16,3 @@
 .favoris_add{background-image:url('images/favorite.png');background-position:0 0;width:20px;height:21px;display:inline-block}
 .favoris_del{background-image:url('images/favorite.png');background-position:0 -71px;width:20px;height:21px;display:inline-block}
 #commentFormDiv textarea{width:98.5%}
-.directAccess{width:43%;background:#f8f8f8;height:270px;padding:0 20px 0 20px}
-.directAccess h2{display:inline;font-size:1.5em;margin-bottom:0}
-.directAccess a{font-size:1.2em;font-weight:bold;font-style:normal;text-decoration:none;text-align:left;padding:10px 0 0 40px}
-.directAccessElem{border-bottom:1px solid #5dafde;padding:20px;background:no-repeat 5% center}
-.directAccessHead{padding-left:10px}
-.directAccessStudent{width:35%;background-image:url('images/student.png')}
-.directAccessNomad{width:35%;background-image:url('images/nomad.png')}
-.directAccessWorker{width:35%;background-image:url('images/worker.png')}
-.directAccessStartUp{width:35%;background-image:url('images/startup.png')}
-.directAccessDrh{width:35%;background-image:url('images/drh.png')}
-.directAccessIndependant{width:35%;background-image:url('images/independant.png')}
-.serviceIcones_coffee_h{background-image:url('images/serviceIcones.png');background-position:0 0;width:28px;height:28px}
-.serviceIcones_coffee_off{background-image:url('images/serviceIcones.png');background-position:0 -78px;width:28px;height:28px}
-.serviceIcones_coffee_on{background-image:url('images/serviceIcones.png');background-position:0 -156px;width:28px;height:28px}
-.serviceIcones_handicap_h{background-image:url('images/serviceIcones.png');background-position:0 -234px;width:28px;height:28px}
-.serviceIcones_handicap_off{background-image:url('images/serviceIcones.png');background-position:0 -312px;width:28px;height:28px}
-.serviceIcones_handicap_on{background-image:url('images/serviceIcones.png');background-position:0 -390px;width:28px;height:28px}
-.serviceIcones_meeting_h{background-image:url('images/serviceIcones.png');background-position:0 -468px;width:29px;height:28px}
-.serviceIcones_meeting_off{background-image:url('images/serviceIcones.png');background-position:0 -546px;width:29px;height:28px}
-.serviceIcones_meeting_on{background-image:url('images/serviceIcones.png');background-position:0 -624px;width:29px;height:28px}
-.serviceIcones_parking_h{background-image:url('images/serviceIcones.png');background-position:0 -702px;width:28px;height:28px}
-.serviceIcones_parking_off{background-image:url('images/serviceIcones.png');background-position:0 -780px;width:28px;height:28px}
-.serviceIcones_parking_on{background-image:url('images/serviceIcones.png');background-position:0 -858px;width:28px;height:28px}
-.serviceIcones_resto_h{background-image:url('images/serviceIcones.png');background-position:0 -936px;width:28px;height:28px}
-.serviceIcones_resto_off{background-image:url('images/serviceIcones.png');background-position:0 -1014px;width:28px;height:28px}
-.serviceIcones_resto_on{background-image:url('images/serviceIcones.png');background-position:0 -1092px;width:28px;height:28px}
-.serviceIcones_secr_h{background-image:url('images/serviceIcones.png');background-position:0 -1170px;width:28px;height:28px}
-.serviceIcones_secr_off{background-image:url('images/serviceIcones.png');background-position:0 -1248px;width:28px;height:28px}
-.serviceIcones_secr_on{background-image:url('images/serviceIcones.png');background-position:0 -1326px;width:28px;height:28px}
-.serviceIcones_wifi_h{background-image:url('images/serviceIcones.png');background-position:0 -1404px;width:28px;height:28px}
-.serviceIcones_wifi_off{background-image:url('images/serviceIcones.png');background-position:0 -1482px;width:28px;height:28px}
-.serviceIcones_wifi_on{background-image:url('images/serviceIcones.png');background-position:0 -1560px;width:28px;height:28px}
-.serviceIcones_wifip_h{background-image:url('images/serviceIcones.png');background-position:0 -1638px;width:28px;height:28px}
-.serviceIcones_wifip_off{background-image:url('images/serviceIcones.png');background-position:0 -1716px;width:28px;height:28px}
-.serviceIcones_wifip_on{background-image:url('images/serviceIcones.png');background-position:0 -1794px;width:28px;height:28px}

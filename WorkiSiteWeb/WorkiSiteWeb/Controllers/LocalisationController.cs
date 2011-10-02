@@ -251,7 +251,7 @@ namespace Worki.Web.Controllers
                     localisation.Comments.Add(com);
 
 					context.Commit();
-					return PartialView(MVC.Localisation.Views._LocalisationSingleComment, com);
+					return PartialView(MVC.Shared.Views._LocalisationSingleComment, com);
 				}
 				else
 				{

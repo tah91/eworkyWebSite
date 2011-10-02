@@ -132,6 +132,7 @@
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetaData.cs" />
+    <Compile Include="Models\MobileIndexModel.cs" />
     <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Models\Press.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>

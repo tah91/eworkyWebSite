@@ -161,11 +161,6 @@ a
 	text-decoration: underline;
 }
 
-a:hover
-{
-	
-}
-
 /* HEADINGS   
 ----------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6
@@ -826,7 +821,7 @@ label
 	/*vertical-align:15%;*/
 }
 
-input
+input, select, textarea
 {
 	margin: 3px;
 }
@@ -998,6 +993,11 @@ table tr.row-alternate
 .generalTextContent p
 {
 	padding-bottom:25px;
+}
+
+.generalTextContent ul
+{
+	margin:10px 30px;
 }
 
 .generalTextContent li
@@ -1394,3 +1394,34 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 {
   width: 265px;
 }
+
+.mainRow
+{
+    height:330px;
+    margin-bottom:30px;
+}
+
+.serviceIcones_coffee_h{ background-image:url('images/serviceIcones.png'); background-position: 0 0; width: 28px; height: 28px; } 
+.serviceIcones_coffee_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -78px; width: 28px; height: 28px; } 
+.serviceIcones_coffee_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -156px; width: 28px; height: 28px; } 
+.serviceIcones_handicap_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -234px; width: 28px; height: 28px; } 
+.serviceIcones_handicap_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -312px; width: 28px; height: 28px; } 
+.serviceIcones_handicap_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -390px; width: 28px; height: 28px; } 
+.serviceIcones_meeting_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -468px; width: 29px; height: 28px; } 
+.serviceIcones_meeting_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -546px; width: 29px; height: 28px; } 
+.serviceIcones_meeting_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -624px; width: 29px; height: 28px; } 
+.serviceIcones_parking_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -702px; width: 28px; height: 28px; } 
+.serviceIcones_parking_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -780px; width: 28px; height: 28px; } 
+.serviceIcones_parking_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -858px; width: 28px; height: 28px; } 
+.serviceIcones_resto_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -936px; width: 28px; height: 28px; } 
+.serviceIcones_resto_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1014px; width: 28px; height: 28px; } 
+.serviceIcones_resto_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1092px; width: 28px; height: 28px; } 
+.serviceIcones_secr_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -1170px; width: 28px; height: 28px; } 
+.serviceIcones_secr_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1248px; width: 28px; height: 28px; } 
+.serviceIcones_secr_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1326px; width: 28px; height: 28px; } 
+.serviceIcones_wifi_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -1404px; width: 28px; height: 28px; } 
+.serviceIcones_wifi_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1482px; width: 28px; height: 28px; } 
+.serviceIcones_wifi_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1560px; width: 28px; height: 28px; } 
+.serviceIcones_wifip_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -1638px; width: 28px; height: 28px; } 
+.serviceIcones_wifip_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1716px; width: 28px; height: 28px; } 
+.serviceIcones_wifip_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1794px; width: 28px; height: 28px; }  

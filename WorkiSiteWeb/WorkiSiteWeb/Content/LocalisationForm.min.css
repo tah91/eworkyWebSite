@@ -2,8 +2,8 @@
 .offerContainer{padding:10px 5px}
 .localisationOwnerField{padding:0 0 10px 0}
 .localisationOwnerField input[type="checkbox"]{margin-left:10px}
-.phoneNumberRow td{padding:0;border:0}
-.phoneNumberRow input[type="text"],input[type="password"]{width:170px}
+.phoneNumberRow td{padding:0!important;border:0!important}
+.phoneNumberRow input[type="text"],input[type="password"]{width:170px!important}
 .phoneNumberCol{padding-right:24px}
 .faxCol{padding-left:11px;padding-right:16px}
 .editOpenning td:first-child{width:72px}

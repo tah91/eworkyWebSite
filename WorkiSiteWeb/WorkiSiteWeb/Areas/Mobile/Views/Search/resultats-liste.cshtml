@@ -3,9 +3,7 @@
 @section HeadContent
 {
     <title>@Html.WorkiTitle(Worki.Resources.Views.Search.SearchString.SearchResult)</title>
-    <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.Search_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.SearchResults_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.skin_css)" rel="stylesheet" type="text/css"  />
     <link href="@Url.Content(Links.Content.rateit_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css"/>
@@ -19,8 +17,6 @@
 </div>
 
 <div class="detailContent">
-    
-
     <div class="searchFormBlock">
         @for (int i = 0; i < Model.PageResults.Count; ++i)
 		{ 

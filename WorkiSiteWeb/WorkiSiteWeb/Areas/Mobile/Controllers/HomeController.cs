@@ -15,7 +15,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
         [ActionName("index")]
         public virtual ActionResult Index()
         {
-            return View(new SearchCriteriaFormViewModel());
+			return View(new MobileIndexModel());
         }
     }
 }

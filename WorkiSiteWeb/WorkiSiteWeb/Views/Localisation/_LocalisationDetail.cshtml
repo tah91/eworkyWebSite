@@ -120,7 +120,7 @@
         @if (Model.HasOffer() && Model.HasOfferExcept(LocalisationOffer.FreeArea))
 		{
         <div class="localisationOffers contentBlock">
-                <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
+            <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
             @{
 			var meetingRoomFeatures = new List<Feature>();
 			var seminarRoomFeatures = new List<Feature>();
@@ -179,7 +179,7 @@
 				{
 					continue;
 				}
-				@Html.Partial(MVC.Localisation.Views._LocalisationSingleComment, com, ViewData)
+				@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
 			}
         </div>
     </div>
@@ -304,11 +304,11 @@
 					}
             </table>
 			@{
-					var haveAvoid = Model.GetAvoidString();
-					if (!string.IsNullOrEmpty(haveAvoid))
-					{
-					<span class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
-					}
+				var haveAvoid = Model.GetAvoidString();
+				if (!string.IsNullOrEmpty(haveAvoid))
+				{
+				<span class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
+				}
 			}
         </div>
         @if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))

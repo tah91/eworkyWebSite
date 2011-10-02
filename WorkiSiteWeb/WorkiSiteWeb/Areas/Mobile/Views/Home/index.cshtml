@@ -1,8 +1,4 @@
-﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
-
-@{
-    ViewBag.Title = "index";
-}
+﻿@model Worki.Data.Models.MobileIndexModel
 
 @section HeadContent
 {
@@ -15,19 +11,72 @@
 {
     @Html.AntiForgeryToken();
     <div>
-        @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers)
+        @Html.DropDownList("Criteria.LocalisationOffer", Model.SearchCriteriaFormViewModel.Offers)
     </div>
-    <div>
-        près de
+    <div style="margin:10px;">
+        <b>près de</b>
     </div>
-    <div>
-        @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })<input type="submit" class="imageBtn" id="btn_searchIndex" value="" />
-        @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-        @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+    
+    <div class="homeList">
+        
+        <div class="detailContent">
+
+            <div style="margin:10px;">
+                <input class="btnAround" onclick="javascript:return aroundCurrentPosition();" type="submit" value="près de ma position" />
+            </div>
+            
+            
+        </div>
+        
+        <div style="margin:10px;">
+            ou
+        </div>
+
+        <div class="detailContent">
+
+
+            <div style="margin:10px;">
+                @Html.TextBoxFor(model => model.SearchCriteriaFormViewModel.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                @Html.HiddenFor(model => model.SearchCriteriaFormViewModel.Criteria.LocalisationData.Latitude)
+                @Html.HiddenFor(model => model.SearchCriteriaFormViewModel.Criteria.LocalisationData.Longitude)
+            </div>
+            <div style="margin:10px;">
+                <input type="submit" class="imageBtn" id="btn_searchIndex" value="" />
+            </div>
+            
+        </div>
+
+        
+       
     </div>
-    <div>
-        <input type="submit" value="où près de ma position" />
+    
+    
+}
+@if (!Request.IsAuthenticated)
+{       
+ @Html.Partial(MVC.Mobile.Shared.Views._Connexion, Model.LogOnModel)
+}
+else
+{
+        <div class="welcome blue">
+        @{
+    var displayName = User.Identity.Name;
+    var memberId = 0;
+    FormsIdentity ident = User.Identity as FormsIdentity;
+    if (ident != null)
+    {
+        displayName = ControllerHelpers.GetIdentityDisplayName(User.Identity);
+        memberId = ControllerHelpers.GetIdentityId(User.Identity);
+    }
+        }
+        <div>
+            Bienvenue <b>@displayName</b> !
+        </div>
+        <div>
+            @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Mobile.Account.LogOff())
+        </div>
     </div>
+
 }
 
 @section ScriptContent
@@ -45,6 +94,38 @@
         });
 
         function initialize() {
+
+        }
+
+        // Geolocalisation
+        function aroundCurrentPosition() {
+        	var gps = navigator.geolocation;
+        	if (gps) {
+        		gps.getCurrentPosition(
+                    aroundCurrentPositionGo,
+                    function (error) {
+                    	alert("Got an error, code: " + error.code + " message: "
+                        + error.message);
+                    	return false;
+                    });
+        		return false;
+        	} else {
+        		alert("Navigateur non compatible");
+        		return false;
+        	}
+
+        }
+
+        function aroundCurrentPositionGo(position) {
+        	if (position) {
+        		var lat = position.coords.latitude;
+        		var long = position.coords.longitude;
+        		$("#SearchCriteriaFormViewModel_Criteria_LocalisationData_Latitude").val(lat);
+        		$("#SearchCriteriaFormViewModel_Criteria_LocalisationData_Longitude").val(long);
+        		$("#SearchCriteriaFormViewModel_Criteria_Place").val("");
+
+        		document.forms[0].submit();
+        	}
 
         }
     </script>

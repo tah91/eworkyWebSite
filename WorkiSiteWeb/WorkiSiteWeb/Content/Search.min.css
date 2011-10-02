@@ -29,6 +29,17 @@
 .itemCommDiv{height:100%}
 .commentBgd{background:url('images/comm_content.png') no-repeat;width:215px;height:130px;padding:10px 10px 0 10px}
 .commentContainer{height:110px}
-.ratingContainer span{padding-left:10px}
+.ratingContainer span{padding-left:10px;vertical-align:25%}
 .commentText{margin:5px 0}
 .addCommLink{padding-top:2px}
+.directAccess{width:43%;background:#f8f8f8;height:270px;padding:0 20px 0 20px}
+.directAccess h2{display:inline;font-size:1.5em;margin-bottom:0}
+.directAccess a{font-size:1.2em;font-weight:bold;font-style:normal;text-decoration:none;text-align:left;padding:10px 0 0 40px}
+.directAccessElem{border-bottom:1px solid #5dafde;padding:20px;background:no-repeat 5% center}
+.directAccessHead{padding-left:10px}
+.directAccessStudent{width:35%;background-image:url('images/student.png')}
+.directAccessNomad{width:35%;background-image:url('images/nomad.png')}
+.directAccessWorker{width:35%;background-image:url('images/worker.png')}
+.directAccessStartUp{width:35%;background-image:url('images/startup.png')}
+.directAccessDrh{width:35%;background-image:url('images/drh.png')}
+.directAccessIndependant{width:35%;background-image:url('images/independant.png')}

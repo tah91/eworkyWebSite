@@ -50,11 +50,10 @@
                 </td>
             
                     <td align="right">
-                        &nbsp;&nbsp;
                         @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Localisation.Edit(item.ID)) 
-                        &nbsp;&nbsp; | &nbsp;&nbsp;
+                         | 
                         @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Localisation.Delete(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
-                        &nbsp;&nbsp; | &nbsp;&nbsp;
+                         | 
                         <a href="@item.GetDetailFullUrl(Url)">@Worki.Resources.Views.Localisation.LocalisationString.Details</a>
                     </td>
              

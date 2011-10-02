@@ -269,7 +269,6 @@ namespace Worki.Web
 			catch (Exception)
 			{
 				context.Complete();
-				//_Logger.Error("Initialise", ex);
 				return;
 			}
 			_Initialized = true;
