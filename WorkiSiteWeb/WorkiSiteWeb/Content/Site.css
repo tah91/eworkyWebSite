@@ -1,6 +1,74 @@
-﻿/* RESET
-----------------------------------------------------------*/
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+﻿/* =============================================================================
+   RESET
+   ========================================================================== */
+
+
+/*
+  style.css contains a reset, font normalization and some base styles.
+
+  credit is left where credit is due.
+  additionally, much inspiration was taken from these projects:
+    yui.yahooapis.com/2.8.1/build/base/base.css
+    camendesign.com/design/
+    praegnanz.de/weblog/htmlcssjs-kickstart
+*/
+
+/*
+  html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+  v1.4 2009-07-27 | Authors: Eric Meyer & Richard Clark
+  html5doctor.com/html-5-reset-stylesheet/
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display:block;
+}
+
+nav ul { list-style:none; }
+
+blockquote, q { quotes:none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content:""; content:none; }
+
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+
+/* tables still need cellspacing="0" in the markup */
+table { border-collapse:collapse; border-spacing:0; }
+
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+
+input, select { vertical-align:middle; }
+/* END RESET CSS */
 
 body
 {
@@ -144,125 +212,7 @@ page width. Or, you can specify an exact pixel width. */
 	min-height: 430px;
 }
 
-/* Helpers */
-
-.clear 
-{
-	clear:both;
-	visibility:hidden
-}
-
-.relative
-{
-	position:relative;
-}
-
-.bottom
-{
-	position:absolute;
-	bottom:0;
-}
-
-.halfContainer
-{
-	width: 50%;
-	height:100%;
-}
-
-.float-left
-{
-	float: left;
-}
-
-.float-right
-{
-	float: right;
-}
-
-.inline-block
-{
-	display:inline-block;
-}
-
-.collapsed
-{
-	visibility:collapse;
-}
-
-.displayTable
-{
-	display:table;
-}
-
-.displayTable label
-{
-	vertical-align:bottom;
-}
-
-
-.displayCell
-{
-	display:table-cell;
-	vertical-align:middle;
-}
-
-.bold
-{
-	font-weight:bold;
-}
-
-.italic
-{
-	font-style:italic;
-}
-
-*:first-child+html .lengthConnexionBox
-{
-	float: right;
-	width: 130px;
-	height:100%;
-}
-
-.lengthConnexionBox
-{
-	float: right;
-}
-
-*:first-child+html .sizeHeaderConnexion
-{
-	float: right;
-	width: 330px;
-	height:100%;
-}
-
-.sizeHeaderConnexion
-{
-	float: right;
-}
-
-
-/* Button and link classes
-----------------------------------------------------------*/
-.linkImg a
-{
-  display:block;
-  width:100%;
-  height:100%;
-  text-decoration:none;
-}
-
-.imageBtn
-{
-   border: none;
-   background: white;
-}
-
-.imageBtn:hover
-{
-	cursor: pointer;
-}
-
-/* Master Page
+/* Layout
 ----------------------------------------------------------*/
 
 /* Header
@@ -273,8 +223,6 @@ page width. Or, you can specify an exact pixel width. */
 	background-image: url('images/logo.png');
 	width: 382px;
 	height: 90px;
-	position: relative;
-	float: left;
 	background-repeat: no-repeat;
 	padding-top:10px;
 }
@@ -303,25 +251,13 @@ page width. Or, you can specify an exact pixel width. */
 
 .logindisplay
 {
-	background-color:#f7f7f7;
+	background-color:#f8f8f8;
 	padding:10px;
-}
-
-.logindisplay h3
-{
-	font-weight: bold;
-	font-size:1em;
-	margin-top:0;
 }
 
 .logindisplay p
 {
 	font-size:0.9em;
-}
-
-.logindisplay a:link, .logindisplay a:visited
-{
-	
 }
 
 .nouveau_register
@@ -337,6 +273,18 @@ page width. Or, you can specify an exact pixel width. */
 .createAccount
 {
 	margin-top:10px;
+}
+
+*:first-child+html .lengthConnexionBox
+{
+	width: 130px;
+	height:100%;
+}
+
+*:first-child+html .sizeHeaderConnexion
+{
+	width: 330px;
+	height:100%;
 }
 
 /* Footer
@@ -428,7 +376,7 @@ page width. Or, you can specify an exact pixel width. */
 
 /* OTHER HTML TAGS  
 ----------------------------------------------------------*/
-code, blockquote
+/*code, blockquote
 {
   padding: 10px;
   text-align: left;
@@ -464,17 +412,8 @@ ul
 ol
 {
 	list-style-type: decimal;
-}
+}*/
 
-/* All Pages
-----------------------------------------------------------*/
-.borderContainer
-{
-	border: 2px solid #CCCCCC;
-	padding:10px;
-	margin: 10px 0 10px 0;
-	overflow:auto;
-}
 
 /* Pager
 ----------------------------------------------------------*/
@@ -513,17 +452,6 @@ div.pagerTop
 	border-top: 0;
 }
 
-.actionButtons a {
-	font: .8em Arial; 
-	color: White; 
-	margin: 0 .5em 0 .5em;
-	text-decoration: none; 
-	padding: .15em 1.5em .2em 1.5em;
-	background-color: #353535; 
-	border: 1px solid black;
-}
-
-
 /* Map
 ----------------------------------------------------------*/
 .mapContainer 
@@ -537,6 +465,8 @@ div.pagerTop
 	width: 220px;*/ 
 	height: 220px;
 }
+
+span.pinTitle { color: blue; }
 
 /* Clear Float Fix */
 /* Add class clearfix to parent container for dealing with child floats */
@@ -556,9 +486,6 @@ div.pagerTop
 .clearfix {display: block;}
 /* End hide from IE-mac */
 
-span.pinTitle { color: blue; }
-
-p.pinDetails { color: green; }
 
 /* TAB MENU   
 ----------------------------------------------------------*/
@@ -790,8 +717,12 @@ textarea
 
 label
 {
-	vertical-align:15%;
-	/*vertical-align:middle;*/
+	/*vertical-align:15%;*/
+}
+
+input
+{
+	margin: 3px;
 }
 
 /* TABLE
@@ -892,16 +823,6 @@ li
 	margin-bottom:10px;
 }
 
-.editor-label label
-{
-	cursor:pointer;
-}
-
-.editor-field input,select,label
-{
-	cursor:pointer;
-}
-
 .display_none
 {
 	display: none;
@@ -988,19 +909,44 @@ li
 
 .borderRadius
 {
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 
 .borderRadiusBottom
 {
-	-webkit-border-bottom-left-radius: 10px 10px;
-	-webkit-border-bottom-right-radius: 10px 10px;
-	-moz-border-bottom-left-radius: 10px 10px;
-	-moz-border-bottom-right-radius: 10px 10px;
-	border-bottom-left-radius: 10px 10px;
-	border-bottom-right-radius: 10px 10px;
+	-webkit-border-bottom-left-radius: 4px 4px;
+	-webkit-border-bottom-right-radius: 4px 4px;
+	-moz-border-bottom-left-radius: 4px 4px;
+	-moz-border-bottom-right-radius: 4px 4px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+}
+
+.button
+{
+	overflow: visible;
+	padding: 5px 10px;
+	color: white;
+	border: 1px solid #5DAFDE;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #5dafde;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
+	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
+	background-image: -webkit-linear-gradient(top,#5DAFDE,#4787ed);
+	background-image: linear-gradient(top,#5DAFDE,#4787ed);
+	border-image: initial;
+}
+
+.button:hover
+{
+	background-color: #379ed6;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);
+	background-image: -moz-linear-gradient(top,#379ed6,#4787ed);
+	background-image: -webkit-linear-gradient(top,#379ed6,#4787ed);
+	background-image: linear-gradient(top,#379ed6,#4787ed);
 }
 
 .generalTextContainer
@@ -1372,6 +1318,7 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
     border:1px solid #CCCCCC;
     background-color: #F8F8F8;
     box-shadow: 2px -5px 10px #DDD;
+    padding:20px;
 }
 
 .blockContainer
@@ -1390,14 +1337,9 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
     border-left: 1px dashed #CCC;
 }
 
-.contentBlock:first-child
-{
-    margin:0;
-}
-
 .contentBlock
 {
-    padding:10px;
+    padding:20px;
     border:1px solid #CCCCCC;
     margin:10px 0;
     background-color: White;
@@ -1405,6 +1347,11 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	box-shadow: 4px 4px 10px #DDD;
+}
+
+.contentBlock:first-child
+{
+    margin:0;
 }
 
 .borderedImg

@@ -7,7 +7,8 @@
     <meta name="keywords" content="lieu de travail,télécentre,rechercher,trouver,centre d'affaires,bureaux,annonces,achat,vente,location,café,wifi,salle de réunion" />
     <meta name="google-site-verification" content="YzSZASagSr9IfssrBtXQiG7sx5pBr9dBl4tRH5G-EbA" />
     @RenderSection("HeadContent", true)
-	<link href="@Url.VersionedContent(Links.Content.Site_min_css)" rel="stylesheet" type="text/css"/>
+	<link href="@Url.VersionedContent(Links.Content.boilerplate_css)" rel="stylesheet" type="text/css"/>
+	<link href="@Url.VersionedContent(Links.Content.Site_css)" rel="stylesheet" type="text/css"/>
 	<link rel="icon" type="image/png" href="@Links.Content.images.favicon_png" />
     <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
     <script type="text/javascript">
@@ -28,8 +29,8 @@
 <body>
 	<div class="page">
 		<div id="header">
-			<div class="logo logo_nobeta linkImg float-left cufonIt darkblue">@Html.ActionLink(" ", MVC.Home.Index())</div>
-			<div  class="logindisplay sizeHeaderConnexion borderRadiusBottom">
+			<div class="logo logo_nobeta relative linkImg float-left cufonIt darkblue">@Html.ActionLink(" ", MVC.Home.Index())</div>
+			<div  class="logindisplay sizeHeaderConnexion borderRadiusBottom float-right">
 				@Html.Partial(MVC.Shared.Views._LogOnUserControl)
 				@*@Html.Partial(MVC.Shared.Views._CultureSwitchControl)*@
 			</div>
@@ -57,7 +58,7 @@
 				</div>
 				<div class="footerLinks float-left">
 					<ul>
-						<li>@Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Search.FullSearch())</li>
+						<li>@Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Localisation.FullSearch())</li>
 						<li>@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Add, MVC.Localisation.Create())</li>
 						<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.Contact, MVC.Home.Contact())</li>
                         <li><a href="http://blog.eworky.com" target="_blank">@Worki.Resources.Views.Home.HomeString.Blog</a></li>

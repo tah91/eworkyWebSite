@@ -32,7 +32,7 @@
         
             <div class="searchResultFormDiv" id="searchFormReset">
                 <h3 class="green">@Worki.Resources.Views.Search.SearchString.RefineSearch</h3>
-                @using (Html.BeginForm(MVC.Search.ActionNames.FullSearch, MVC.Search.Name, FormMethod.Post, new { id = "searchform" }))
+                @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
                 {
                     @Html.AntiForgeryToken()
                     <div class="editor-field">
@@ -52,7 +52,7 @@
                     </div>
 
                     <p class="green">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</p>
-                    @Html.Partial(MVC.Search.Views._ServicesSelector)
+                    @Html.Partial(MVC.Localisation.Views._ServicesSelector)
                     <p class="green">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
                     <div class="editor-field">
                     @Html.CheckBoxFor(model => model.Criteria.Everything)
@@ -124,7 +124,7 @@
             @for (int i = 0; i < Model.PageResults.Count; ++i)
 			{ 
 				var index = Model.PagingInfo.GlobalIndex(i);
-                @Html.Partial(MVC.Search.Views._SearchResultSummary, Model.GetSingleResult(index))
+                @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
 			}
 
 			<div class="pager">
@@ -135,7 +135,7 @@
 						rvd[key] = Request.QueryString[key].ToString();
 					}
 				}
-				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Search.ActionNames.FullSearchResult, rvd); })
+				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.FullSearchResult, rvd); })
 			</div>
         </div>    
     </div>
@@ -145,7 +145,7 @@
 </div>
 
 <div class="adRow">
-    @Html.Partial(MVC.Shared.Views._DirectAccess)
+    @Html.Partial(MVC.Localisation.Views._DirectAccess)
     @Html.Partial(MVC.Shared.Views._IndexGallery)
 </div>
 
@@ -193,6 +193,6 @@
     </script>
     @Html.Partial(MVC.Shared.Views._CufonScript)
     @{ ViewData["IsSearchForm"] = true; }
-    @Html.Partial(MVC.Search.Views._SelectSearchScript, Model.Criteria.LocalisationData, ViewData)
+    @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria.LocalisationData, ViewData)
     @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
 }

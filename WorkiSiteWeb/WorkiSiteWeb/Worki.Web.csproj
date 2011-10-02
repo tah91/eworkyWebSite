@@ -239,7 +239,6 @@
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalisationController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,10 +271,14 @@
     <Content Include="Content\Admin.min.css">
       <DependentUpon>Admin.css</DependentUpon>
     </Content>
+    <Content Include="Content\boilerplate.min.css">
+      <DependentUpon>boilerplate.css</DependentUpon>
+    </Content>
     <Content Include="Content\Booking.css" />
     <Content Include="Content\Booking.min.css">
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
+    <Content Include="Content\boilerplate.css" />
     <Content Include="Content\images\blog.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
@@ -601,7 +604,7 @@
     <Content Include="Views\Admin\utilisateur-absent.cshtml" />
     <Content Include="Views\Localisation\_LocalisationGalleryScript.cshtml" />
     <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />
-    <Content Include="Views\Search\_SelectSearchScript.cshtml" />
+    <Content Include="Views\Localisation\_SelectSearchScript.cshtml" />
     <Content Include="Views\Shared\_CultureSwitchControl.cshtml" />
     <Content Include="Views\Shared\_MainMenu.cshtml" />
     <Content Include="Views\Visitor\demande-reussie.cshtml" />
@@ -613,27 +616,19 @@
     <Content Include="Views\Home\faq.cshtml" />
     <Content Include="Views\Home\presse.cshtml" />
     <Content Include="Views\Home\jobs.cshtml" />
-    <Content Include="Views\Search\_ServicesSelector.cshtml" />
+    <Content Include="Views\Localisation\_ServicesSelector.cshtml" />
     <Content Include="Views\Admin\_AdminMenu.cshtml" />
-    <Content Include="Views\Shared\_CommentSummary.cshtml" />
-    <Content Include="Views\Search\_DescEntreprise.cshtml" />
-    <Content Include="Views\Search\_DescIndependant.cshtml" />
-    <Content Include="Views\Search\_DescNomade.cshtml" />
-    <Content Include="Views\Search\_DescStartUp.cshtml" />
-    <Content Include="Views\Search\_DescTeleworker.cshtml" />
-    <Content Include="Views\Search\_DescStudent.cshtml" />
     <Content Include="Views\Home\_HomeDesc.cshtml" />
     <Content Include="Views\Shared\_CufonScript.cshtml" />
     <Content Include="Views\Shared\_IndexGalleryScript.cshtml" />
     <Content Include="Views\Shared\_MetaDataHeader.cshtml" />
-    <Content Include="Views\Shared\_DirectAccess.cshtml" />
+    <Content Include="Views\Localisation\_DirectAccess.cshtml" />
     <Content Include="Views\Shared\_PictureContainer.cshtml" />
     <Content Include="Views\Home\contact.cshtml" />
     <Content Include="Views\Home\message-envoye.cshtml" />
-    <Content Include="Views\Localisation\_GalleryForm.cshtml" />
-    <Content Include="Views\Shared\_CommentForm.cshtml" />
-    <Content Include="Views\Search\_SearchResultSummary.cshtml" />
-    <Content Include="Views\Shared\_IconeServices.cshtml" />
+    <Content Include="Views\Localisation\_CommentForm.cshtml" />
+    <Content Include="Views\Localisation\_SearchResultSummary.cshtml" />
+    <Content Include="Views\Localisation\_IconeServices.cshtml" />
     <Content Include="Views\Localisation\supprimer.cshtml" />
     <Content Include="Views\Localisation\supprimer-reussi.cshtml" />
     <Content Include="Views\Localisation\editer.cshtml" />
@@ -642,8 +637,8 @@
     <Content Include="Views\Localisation\_LocalisationForm.cshtml" />
     <Content Include="Views\Shared\_Map.cshtml" />
     <Content Include="Views\Localisation\lieu-absent.cshtml" />
-    <Content Include="Views\Search\recherche-lieu-travail.cshtml" />
-    <Content Include="Views\Search\resultats-liste.cshtml" />
+    <Content Include="Views\Localisation\recherche.cshtml" />
+    <Content Include="Views\Localisation\resultats-liste.cshtml" />
     <Content Include="Views\Shared\_IndexGallery.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -684,7 +679,7 @@
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Shared\_LocalisationDetail.cshtml" />
+    <Content Include="Views\Localisation\_LocalisationDetail.cshtml" />
     <Content Include="Views\Admin\IndexWelcomePeople.cshtml" />
     <Content Include="Views\Admin\CreateWelcomePeople.cshtml" />
     <Content Include="Views\Admin\EditWelcomePeople.cshtml" />
@@ -695,10 +690,10 @@
     <Content Include="Views\Admin\DeleteWelcomePeople.cshtml" />
     <Content Include="Views\Profil\_LocalisationTab.cshtml" />
     <Content Include="Views\Profil\_CommentTab.cshtml" />
-    <Content Include="Views\Shared\resultats-detail.cshtml" />
+    <Content Include="Views\Localisation\resultats-detail.cshtml" />
     <Content Include="Views\Shared\_AddToFavorite.cshtml" />
-    <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
-    <Content Include="Views\Shared\_CommentFormScript.cshtml" />
+    <Content Include="Views\Localisation\_LocalisationSingleComment.cshtml" />
+    <Content Include="Views\Localisation\_CommentFormScript.cshtml" />
     <Content Include="Views\Booking\Create.cshtml" />
     <Content Include="Views\Admin\IndexBooking.cshtml" />
     <Content Include="Views\Booking\Details.cshtml" />
@@ -734,9 +729,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\font\STEINEMB.ttf" />
-    <Content Include="Content\font\STEINEMI.ttf" />
-    <Content Include="Content\font\STEINEMU.ttf" />
     <None Include="Startup\installmvc.cmd" />
     <None Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

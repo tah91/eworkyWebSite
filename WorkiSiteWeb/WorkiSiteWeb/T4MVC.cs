@@ -35,7 +35,6 @@ public static class MVC {
     public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
     public static Worki.Web.Controllers.ProfilController Profil = new Worki.Web.Controllers.T4MVC_ProfilController();
     public static Worki.Web.Controllers.RentalController Rental = new Worki.Web.Controllers.T4MVC_RentalController();
-    public static Worki.Web.Controllers.SearchController Search = new Worki.Web.Controllers.T4MVC_SearchController();
     public static Worki.Web.Controllers.UploadImageController UploadImage = new Worki.Web.Controllers.T4MVC_UploadImageController();
     public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
     public static T4MVC.EmailsController Emails = new T4MVC.EmailsController();
@@ -430,22 +429,14 @@ namespace Links {
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string Admin_css = Url("Admin.css");
         public static readonly string Admin_min_css = Url("Admin.min.css");
+        public static readonly string boilerplate_css = Url("boilerplate.css");
+        public static readonly string boilerplate_min_css = Url("boilerplate.min.css");
         public static readonly string Booking_css = Url("Booking.css");
         public static readonly string Booking_min_css = Url("Booking.min.css");
         public static readonly string CreateLocalisation_css = Url("CreateLocalisation.css");
         public static readonly string CreateLocalisation_min_css = Url("CreateLocalisation.min.css");
         public static readonly string CreateRental_css = Url("CreateRental.css");
         public static readonly string CreateRental_min_css = Url("CreateRental.min.css");
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class font {
-            private const string URLPATH = "~/Content/font";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string STEINEMB_ttf = Url("STEINEMB.ttf");
-            public static readonly string STEINEMI_ttf = Url("STEINEMI.ttf");
-            public static readonly string STEINEMU_ttf = Url("STEINEMU.ttf");
-        }
-    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class galleria {
             private const string URLPATH = "~/Content/galleria";
@@ -585,8 +576,6 @@ namespace Links {
         public static readonly string MobileLocalisationDetail_min_css = Url("MobileLocalisationDetail.min.css");
         public static readonly string Press_css = Url("Press.css");
         public static readonly string Press_min_css = Url("Press.min.css");
-        public static readonly string Print_css = Url("Print.css");
-        public static readonly string Print_min_css = Url("Print.min.css");
         public static readonly string Profil_css = Url("Profil.css");
         public static readonly string Profil_min_css = Url("Profil.min.css");
         public static readonly string rateit_css = Url("rateit.css");
@@ -1516,6 +1505,31 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult DeleteComment() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteComment);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchOffer() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchOffer);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchPerTypeSpecial() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerTypeSpecial);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchResult() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchResultDetail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Localisation; } }
@@ -1536,6 +1550,14 @@ namespace Worki.Web.Controllers {
             public readonly string Delete = "supprimer";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
+            public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
+            public readonly string GetMainLocalisations = "GetMainLocalisations";
+            public readonly string FullSearch = "recherche";
+            public readonly string FullSearchOffer = "recherche-lieu-travail-menu";
+            public readonly string FullSearchPerType = "recherche-par-type";
+            public readonly string FullSearchPerTypeSpecial = "recherche-special";
+            public readonly string FullSearchResult = "resultats-liste";
+            public readonly string FullSearchResultDetail = "resultats-detail";
         }
 
 
@@ -1544,13 +1566,24 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string _GalleryForm = "~/Views/Localisation/_GalleryForm.cshtml";
+            public readonly string _CommentForm = "~/Views/Localisation/_CommentForm.cshtml";
+            public readonly string _CommentFormScript = "~/Views/Localisation/_CommentFormScript.cshtml";
+            public readonly string _DirectAccess = "~/Views/Localisation/_DirectAccess.cshtml";
+            public readonly string _IconeServices = "~/Views/Localisation/_IconeServices.cshtml";
+            public readonly string _LocalisationDetail = "~/Views/Localisation/_LocalisationDetail.cshtml";
             public readonly string _LocalisationForm = "~/Views/Localisation/_LocalisationForm.cshtml";
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
             public readonly string _LocalisationGalleryScript = "~/Views/Localisation/_LocalisationGalleryScript.cshtml";
+            public readonly string _LocalisationSingleComment = "~/Views/Localisation/_LocalisationSingleComment.cshtml";
+            public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
+            public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
+            public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
             public readonly string editer = "~/Views/Localisation/editer.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
             public readonly string lieu_absent = "~/Views/Localisation/lieu-absent.cshtml";
+            public readonly string recherche = "~/Views/Localisation/recherche.cshtml";
+            public readonly string resultats_detail = "~/Views/Localisation/resultats-detail.cshtml";
+            public readonly string resultats_liste = "~/Views/Localisation/resultats-liste.cshtml";
             public readonly string supprimer_reussi = "~/Views/Localisation/supprimer-reussi.cshtml";
             public readonly string supprimer = "~/Views/Localisation/supprimer.cshtml";
             public readonly string utilisateur_invalid = "~/Views/Localisation/utilisateur-invalid.cshtml";
@@ -1619,6 +1652,58 @@ namespace Worki.Web.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("commentId", commentId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FindSimilarLocalisation(float latitude, float longitude) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
+            callInfo.RouteValueDictionary.Add("latitude", latitude);
+            callInfo.RouteValueDictionary.Add("longitude", longitude);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetMainLocalisations() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMainLocalisations);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearch() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchOffer(int offertID) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchOffer);
+            callInfo.RouteValueDictionary.Add("offertID", offertID);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchPerType() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerType);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchPerTypeSpecial(int type) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerTypeSpecial);
+            callInfo.RouteValueDictionary.Add("type", type);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearch(Worki.Data.Models.SearchCriteria criteria) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
+            callInfo.RouteValueDictionary.Add("criteria", criteria);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchResult(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
+            callInfo.RouteValueDictionary.Add("index", index);
             return callInfo;
         }
 
@@ -1949,144 +2034,6 @@ namespace Worki.Web.Controllers {
 }
 
 namespace Worki.Web.Controllers {
-    public partial class SearchController {
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected SearchController(Dummy d) { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
-            var callInfo = result.GetT4MVCResult();
-            return RedirectToRoute(callInfo.RouteValueDictionary);
-        }
-
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FullSearchOffer() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchOffer);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FullSearchPerTypeSpecial() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerTypeSpecial);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FullSearchResult() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FullSearchResultDetail() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
-        }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public SearchController Actions { get { return MVC.Search; } }
-        [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "";
-        [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Search";
-
-        static readonly ActionNamesClass s_actions = new ActionNamesClass();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionNamesClass ActionNames { get { return s_actions; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionNamesClass {
-            public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
-            public readonly string GetMainLocalisations = "GetMainLocalisations";
-            public readonly string FullSearch = "recherche-lieu-travail";
-            public readonly string FullSearchOffer = "recherche-lieu-travail-menu";
-            public readonly string FullSearchPerType = "recherche-lieu-travail-par-type";
-            public readonly string FullSearchPerTypeSpecial = "recherche-lieu-travail-special";
-            public readonly string FullSearchResult = "resultats-liste";
-            public readonly string FullSearchResultDetail = "resultats-detail";
-        }
-
-
-        static readonly ViewNames s_views = new ViewNames();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ViewNames Views { get { return s_views; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ViewNames {
-            public readonly string _DescEntreprise = "~/Views/Search/_DescEntreprise.cshtml";
-            public readonly string _DescIndependant = "~/Views/Search/_DescIndependant.cshtml";
-            public readonly string _DescNomade = "~/Views/Search/_DescNomade.cshtml";
-            public readonly string _DescStartUp = "~/Views/Search/_DescStartUp.cshtml";
-            public readonly string _DescStudent = "~/Views/Search/_DescStudent.cshtml";
-            public readonly string _DescTeleworker = "~/Views/Search/_DescTeleworker.cshtml";
-            public readonly string _SearchResultSummary = "~/Views/Search/_SearchResultSummary.cshtml";
-            public readonly string _SelectSearchScript = "~/Views/Search/_SelectSearchScript.cshtml";
-            public readonly string _ServicesSelector = "~/Views/Search/_ServicesSelector.cshtml";
-            public readonly string recherche_lieu_travail = "~/Views/Search/recherche-lieu-travail.cshtml";
-            public readonly string resultats_liste = "~/Views/Search/resultats-liste.cshtml";
-        }
-    }
-
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_SearchController: Worki.Web.Controllers.SearchController {
-        public T4MVC_SearchController() : base(Dummy.Instance) { }
-
-        public override System.Web.Mvc.ActionResult FindSimilarLocalisation(float latitude, float longitude) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
-            callInfo.RouteValueDictionary.Add("latitude", latitude);
-            callInfo.RouteValueDictionary.Add("longitude", longitude);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult GetMainLocalisations() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMainLocalisations);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearch() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchOffer(int offertID) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchOffer);
-            callInfo.RouteValueDictionary.Add("offertID", offertID);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchPerType() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerType);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchPerTypeSpecial(int type) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerTypeSpecial);
-            callInfo.RouteValueDictionary.Add("type", type);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearch(Worki.Data.Models.SearchCriteria criteria) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
-            callInfo.RouteValueDictionary.Add("criteria", criteria);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchResult(int? page) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
-            callInfo.RouteValueDictionary.Add("page", page);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
-            callInfo.RouteValueDictionary.Add("index", index);
-            return callInfo;
-        }
-
-    }
-}
-
-namespace Worki.Web.Controllers {
     public partial class UploadImageController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected UploadImageController(Dummy d) { }
@@ -2249,24 +2196,16 @@ namespace T4MVC {
         public class ViewNames {
             public readonly string @__Layout = "~/Views/Shared/__Layout.cshtml";
             public readonly string _AddToFavorite = "~/Views/Shared/_AddToFavorite.cshtml";
-            public readonly string _CommentForm = "~/Views/Shared/_CommentForm.cshtml";
-            public readonly string _CommentFormScript = "~/Views/Shared/_CommentFormScript.cshtml";
-            public readonly string _CommentSummary = "~/Views/Shared/_CommentSummary.cshtml";
             public readonly string _CufonScript = "~/Views/Shared/_CufonScript.cshtml";
             public readonly string _CultureSwitchControl = "~/Views/Shared/_CultureSwitchControl.cshtml";
-            public readonly string _DirectAccess = "~/Views/Shared/_DirectAccess.cshtml";
-            public readonly string _IconeServices = "~/Views/Shared/_IconeServices.cshtml";
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";
-            public readonly string _LocalisationDetail = "~/Views/Shared/_LocalisationDetail.cshtml";
-            public readonly string _LocalisationSingleComment = "~/Views/Shared/_LocalisationSingleComment.cshtml";
             public readonly string _LogOnUserControl = "~/Views/Shared/_LogOnUserControl.cshtml";
             public readonly string _MainMenu = "~/Views/Shared/_MainMenu.cshtml";
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";
             public readonly string _MetaDataHeader = "~/Views/Shared/_MetaDataHeader.cshtml";
             public readonly string _PictureContainer = "~/Views/Shared/_PictureContainer.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
-            public readonly string resultats_detail = "~/Views/Shared/resultats-detail.cshtml";
         }
     }
 

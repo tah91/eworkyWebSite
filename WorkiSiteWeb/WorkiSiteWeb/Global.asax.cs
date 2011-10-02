@@ -137,34 +137,6 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
-				"",
-				"recherche/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
-				new { controller = "Search", action = "Default" },
-				new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.MapRoute(
-				"",
-				"recherche/{action}/{lieu}/{page}/{offer-type}/{tout}/",
-				new { controller = "Search", action = "Default" },
-				new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.MapRoute(
-				"",
-				"recherche/{action}/{type}/",
-				new { controller = "Search", action = "Default" },
-				new string[] { "Worki.Web.Controllers" }
-            );
-
-            routes.MapRoute(
-				"",
-				"recherche/{action}/",
-				new { controller = "Search", action = "Default" },
-				new string[] { "Worki.Web.Controllers" }
-            );
-
 			routes.MapRoute(
 				"",
 				"profil/{action}/{id}",
@@ -180,6 +152,27 @@ namespace Worki.Web
             );
 
             var localisationTypes = (from t in Localisation.LocalisationTypes.Values select ControllerHelpers.GetSeoString(t));
+
+			routes.MapRoute(
+				"",
+				"lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
+				new { controller = "Localisation", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
+			);
+
+			routes.MapRoute(
+				"",
+				"lieu-de-travail/{action}/{lieu}/{page}/{offer-type}/{tout}/",
+				new { controller = "Localisation", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
+			);
+
+			routes.MapRoute(
+				"",
+				"lieu-de-travail/{action}/{type}/",
+				new { controller = "Localisation", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
+			);
 
             routes.MapRoute(
                 "", // Nom d'itinéraire

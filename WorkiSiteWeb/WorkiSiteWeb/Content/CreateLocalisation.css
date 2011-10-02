@@ -5,72 +5,15 @@
     background:url('images/ajout.jpg') no-repeat 99% 99%;
 }
 
-.addLocalisationContainer form
-{
-	margin-top:10px;
-}
-
-.galleryEdition
-{
-    /*width: 22%;
-    height:230px;*/
-    margin-right:10px;
-}
-
 .editPicBack
 {
     background:#f8f8f8;   
-}
-
-.image-thumb { 
-    position: relative;
-    /* apply background-image url inline on the element since it is part of the content */
-    /*background: transparent url() no-repeat center center;*/
-}
-
-.image-thumb a { 
-    display: none;
-    position: absolute; 
-    top: 0;  /* position in bottom right corner, assuming image is 16x16 */
-    left: 0; 
-    width: 32px; 
-    height: 32px; 
-    background: transparent url(icons/error.gif) no-repeat 0 0;
-}   
-
-.image-thumb:hover a { 
-    display: block;
 }
 
 .picInput
 {
     margin-top:10px;
     margin-bottom:10px;
-}
-
-.titleDesc
-{
-    
-}
-
-.localisationDataEdition
-{
-    
-}
-
-.localisationDataEdition table
-{
-
-}
-
-.localisationDataEdition h3
-{
-    display:inline;
-}
-
-.dataEdition label
-{
-    vertical-align:middle;
 }
 
 .dataEdition td
@@ -110,7 +53,7 @@
 
 .localisationOwnerField label
 {
-    vertical-align: 15%;
+    /*vertical-align: 15%;*/
 }
 
 .localisationOwnerField
@@ -182,11 +125,6 @@
     margin-bottom:5px;
 }
 
-.editAllservices
-{
-    margin-left:23%;
-}
-
 .editFeature .editor-label
 {
     width: 200px;
@@ -200,7 +138,6 @@
 .serviceContainer label
 {
     padding-left:5px;
-    vertical-align: 15%;
 }
 
 .serviceContainer ul
@@ -253,11 +190,6 @@
 {
     height:180px;
     margin:5px 0 5px 0;
-}
-
-.resetPosBtn
-{
-    margin:5px 0;
 }
 
 .submitAddButton

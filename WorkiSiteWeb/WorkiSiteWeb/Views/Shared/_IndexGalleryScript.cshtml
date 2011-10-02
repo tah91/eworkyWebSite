@@ -30,7 +30,7 @@
             if (state != 'init')
                 return;
             theCarousel = carousel;
-            var action = '@Url.Action(MVC.Search.ActionNames.GetMainLocalisations,MVC.Search.Name)';
+            var action = '@Url.Action(MVC.Localisation.ActionNames.GetMainLocalisations,MVC.Localisation.Name)';
             $.post(action, null, _renderCarouselLocalisations, "json");
         };
 

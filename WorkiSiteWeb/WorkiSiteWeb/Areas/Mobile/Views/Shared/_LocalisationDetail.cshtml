@@ -7,9 +7,6 @@
             <div class="float-left blue bold">
                 <span class="localisationName">@Model.Name</span>
             </div>
-@*            <div class="localisationServicesContainer float-left">
-                @Html.Partial(MVC.Shared.Views._IconeServices)
-            </div>*@
             <div class="clear">
             </div>
             <div class="localisationSubtitle">
@@ -119,7 +116,7 @@
                 <div id="commentFormDiv">
                 @if (Request.IsAuthenticated)
 				{
-                    @Html.Partial(MVC.Shared.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
+                    @Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
 				}
 				else
 				{ 
@@ -134,7 +131,7 @@
 					{
 						continue;
 					}
-					@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
+					@Html.Partial(MVC.Localisation.Views._LocalisationSingleComment, com, ViewData)
 				}
             </div>
         </div>

@@ -6,7 +6,7 @@
         rvd[key] = Request.QueryString[key].ToString();
     }
     rvd["index"] = Model.Index;
-    ViewData["link"] = Url.Action(MVC.Search.ActionNames.FullSearchResultDetail, MVC.Search.Name, rvd);
+	ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
 }
 
 <div class="resultItem">
@@ -25,7 +25,7 @@
         </div>
         <span class="itemAddress">@Model.Localisation.Adress&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>
         <span class="itemType lightblue">@Localisation.LocalisationTypes[Model.Localisation.TypeValue]</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, 80)</span><br />
-        <div class="itemLogos displayTable">
+        <div class="itemLogos">
             @Html.Partial(MVC.Shared.Views._IconeServices, Model.Localisation)
             <div class="clear">
             </div>

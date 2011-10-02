@@ -25,7 +25,7 @@
             <div class="searchIndexHead darkblue">
                 <h2>@Worki.Resources.Views.Home.HomeString.SearchWorkspace</h2>
             </div>
-            @using (Html.BeginForm(MVC.Search.ActionNames.FullSearch,MVC.Search.Name, FormMethod.Post, new { id = "searchform" }))
+            @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
             {
                 @Html.AntiForgeryToken();
             <table class="indexFormTable">
@@ -62,7 +62,7 @@
             </p>
             <div class="indexSearchIndexLinks">
                 <div class="indexSearchIndexLinksLeft float-left">
-                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Search.FullSearch())
+                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
                 </div>
                 <div class="indexSearchIndexLinksRight float-right">
                     <input type="submit" class="imageBtn" id="btn_searchIndex" value="" />
@@ -91,7 +91,7 @@
                 @Worki.Resources.Views.Home.HomeString.GradeComment</span>
             <br />
             <div class="bottom">
-                <div class="btn_green_roulette linkImg btn_text">@Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Search.FullSearch())</div>
+                <div class="btn_green_roulette linkImg btn_text">@Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Localisation.FullSearch())</div>
             </div>
         </div>
     </div>

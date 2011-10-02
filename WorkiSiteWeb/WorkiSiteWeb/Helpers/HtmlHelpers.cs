@@ -314,11 +314,11 @@ namespace Worki.Web.Helpers
                     var url = "";
                     if (index == 0)// For  "salon d'affaires" because of the ' it's doesn't working 
                     {
-                        url += html.ActionLink("Salon d affaires", MVC.Search.FullSearchOffer(++index));
+                        url += html.ActionLink("Salon d affaires", MVC.Localisation.FullSearchOffer(++index));
                     }
                     else
                     {
-                        url += html.ActionLink(item, MVC.Search.FullSearchOffer(++index));
+						url += html.ActionLink(item, MVC.Localisation.FullSearchOffer(++index));
                     }
 
                     li.InnerHtml = url.ToString();
@@ -327,7 +327,7 @@ namespace Worki.Web.Helpers
                 else
                 {
                     var li = new TagBuilder("li");
-                    var url = html.ActionLink(item, MVC.Search.FullSearchOffer(++index));
+					var url = html.ActionLink(item, MVC.Localisation.FullSearchOffer(++index));
                     li.InnerHtml = url.ToString();
                     ul2.InnerHtml += li.ToString();
                 }

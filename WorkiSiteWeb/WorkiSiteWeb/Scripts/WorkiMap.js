@@ -203,14 +203,6 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         if (dragable == true)
             _markersArray.push(marker);
 
-        //    google.maps.event.addListener(marker, 'mouseover', function () {
-        //        infowindow.open(_map, marker);
-        //    });
-
-        //    google.maps.event.addListener(marker, 'mouseout', function () {
-        //        infowindow.close();
-        //    });
-
         marker.setDraggable(dragable);
         if (dragable) {
             google.maps.event.addListener(marker, 'dragend', function () {

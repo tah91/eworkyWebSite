@@ -1,20 +1,12 @@
 ﻿.addLocalisationContainer{background:url('images/ajout.jpg') no-repeat 99% 99%}
-.addLocalisationContainer form{margin-top:10px}
-.galleryEdition{margin-right:10px}
 .editPicBack{background:#f8f8f8}
-.image-thumb{position:relative}
-.image-thumb a{display:none;position:absolute;top:0;left:0;width:32px;height:32px;background:transparent url(icons/error.gif) no-repeat 0 0}
-.image-thumb:hover a{display:block}
 .picInput{margin-top:10px;margin-bottom:10px}
-.localisationDataEdition h3{display:inline}
-.dataEdition label{vertical-align:middle}
 .dataEdition td{padding:1px 5px}
 #offerContainer{padding:10px 5px}
 .generalInfosTable{margin-top:5px}
 .generalInfosTable input[type="text"],input[type="password"]{width:400px}
 .generalInfosTable select{width:414px}
 .generalInfosTable textarea{width:400px}
-.localisationOwnerField label{vertical-align:15%}
 .localisationOwnerField{padding:0 0 10px 0}
 .localisationOwnerField input[type="checkbox"]{margin-left:10px}
 .phoneNumberRow td{padding:0;border:0}
@@ -27,10 +19,9 @@
 .editOpenning input[type="text"],input[type="password"]{width:50px}
 .editHoraire{font-style:normal}
 .editServiceHead{margin-top:5px;margin-bottom:5px}
-.editAllservices{margin-left:23%}
 .editFeature .editor-label{width:200px}
 .serviceContainer{padding:5px}
-.serviceContainer label{padding-left:5px;vertical-align:15%}
+.serviceContainer label{padding-left:5px}
 .serviceContainer ul{margin:5px}
 .serviceContainer li{padding:2px}
 .subserviceContainer{padding:5px;width:220px}
@@ -40,7 +31,6 @@
 .editPlace{position:relative;width:21%;background:#f1f2f3;padding:10px}
 .editPlace h3{display:block}
 #editMapDiv{height:180px;margin:5px 0 5px 0}
-.resetPosBtn{margin:5px 0}
 .submitAddButton{margin-right:100px}
 #fileupload{background:#F1F2F3;padding:5px}
 #fileupload .files{margin:5px 0}

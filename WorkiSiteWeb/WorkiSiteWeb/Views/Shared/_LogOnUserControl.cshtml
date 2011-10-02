@@ -28,16 +28,15 @@
 else
 {
     <div class="nouveau_register float-left">
-        	<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.NewOnEWorky</h3>
-            <p>@Html.Raw(Worki.Resources.Views.Shared.SharedString.FreeInscriptionEnjoy)</p> 
+        <span class="bold blue">@Worki.Resources.Views.Shared.SharedString.NewOnEWorky</span>
+        <p>@Html.Raw(Worki.Resources.Views.Shared.SharedString.FreeInscriptionEnjoy)</p> 
     </div>
-    <div class="connect lengthConnexionBox">
+    <div class="connect lengthConnexionBox float-right">
         <div class="blue">
             @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())
         </div>
-        <div class="float-right" style="padding-top:6px;">
+        <div>
             <div class="btn_blue linkImg">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</div>
-
         </div>
     </div>
 }

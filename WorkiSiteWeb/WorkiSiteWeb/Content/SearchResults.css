@@ -176,19 +176,9 @@
     height: 110px;
 }
 
-.ratingContainer
-{
-    /*margin-bottom:5px;*/
-}
-
 .ratingContainer span
 {
     padding-left:10px;
-}
-
-.ratingContainer a
-{
-    text-decoration:none;
 }
 
 .commentText

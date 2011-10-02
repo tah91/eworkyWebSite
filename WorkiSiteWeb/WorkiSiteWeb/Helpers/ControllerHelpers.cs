@@ -111,7 +111,7 @@ namespace Worki.Web.Helpers
             var urlHelper = new UrlHelper(controller.ControllerContext.RequestContext);
             var registerUrl = urlHelper.AbsoluteAction(MVC.Account.ActionNames.Register, MVC.Account.Name, new { id = visitor.Id });
             var createUrl = urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Create, MVC.Localisation.Name, null);
-            var searchUrl = urlHelper.AbsoluteAction(MVC.Search.ActionNames.FullSearch, MVC.Search.Name, null);
+			var searchUrl = urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, null);
 
             //var subject = Worki.Resources.Models.Account.AccountModels.EWBegining;
 

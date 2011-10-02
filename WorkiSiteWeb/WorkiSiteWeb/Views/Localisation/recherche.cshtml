@@ -46,7 +46,7 @@
             @RazorHelpers.TitleDiv(titleName, "Green")
 
             
-            @using (Html.BeginForm(MVC.Search.ActionNames.FullSearch,MVC.Search.Name, FormMethod.Post, new { id = "searchform" }))
+            @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
             { 
                 @Html.AntiForgeryToken()
                 <div class="localisationField">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="searchOptions float-left" style="padding-left:20px;">
                         <p class="green">@Worki.Resources.Views.Search.SearchString.Equipments</p>
-                        @Html.Partial(MVC.Search.Views._ServicesSelector)
+                        @Html.Partial(MVC.Localisation.Views._ServicesSelector)
                     </div>
                     <div class="clear">
                     </div>
@@ -156,11 +156,11 @@
                     <div class="changeSeachType float-left">                        
                     @if (Model.Criteria.SearchType == eSearchType.ePerOffer)
                     {
-                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Search.FullSearchPerType())
+                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Localisation.FullSearchPerType())
                     }
                     else
                     {
-                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByServiceType, MVC.Search.FullSearch())
+                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByServiceType, MVC.Localisation.FullSearch())
                     }
                     </div>
                     <div class="submitSearchContainer  float-right">
@@ -176,33 +176,52 @@
 </div>
 
 <div class="adRow">
-    @Html.Partial(MVC.Shared.Views._DirectAccess)
-    @switch (Model.Criteria.DirectAccessType)
+    @Html.Partial(MVC.Localisation.Views._DirectAccess)
+	@{
+		var title = string.Empty;
+		var desc = string.Empty;
+		switch (Model.Criteria.DirectAccessType)
+		{
+			case eDirectAccessType.eStudent:
+				title = Worki.Resources.Models.Profile.Profile.Student;
+				desc = Worki.Resources.Views.Search.SearchString.SpeechForStudent;
+				break;
+			case eDirectAccessType.eTeleworker:
+				title = Worki.Resources.Models.Profile.Profile.Teleworker;
+				desc = Worki.Resources.Views.Search.SearchString.SpeechForTeleworker;
+				break;
+			case eDirectAccessType.eStartUp:
+				title = Worki.Resources.Views.Search.SearchString.Entrepreneur;
+				desc = Worki.Resources.Views.Search.SearchString.SpeechForStartUp;
+				break;
+			case eDirectAccessType.eNomade:
+				title = @Worki.Resources.Views.Search.SearchString.Nomad;
+				desc = Worki.Resources.Views.Search.SearchString.SpeechForNomad;
+				break;
+			case eDirectAccessType.eIndependant:
+				title = Worki.Resources.Views.Search.SearchString.Independant;
+				desc = Worki.Resources.Views.Search.SearchString.SpeechForIndependent;
+				break;
+			case eDirectAccessType.eEntreprise:
+				title = Worki.Resources.Models.Profile.Profile.Company;
+				desc = Worki.Resources.Views.Search.SearchString.SpeechForBuisnessman;
+				break;
+			case eDirectAccessType.eNone:
+			default:
+				break;
+		}
+	}
+    @if (!string.IsNullOrEmpty(title) &&!string.IsNullOrEmpty(desc))
     {
-        case eDirectAccessType.eStudent:
-            Html.RenderPartial(MVC.Search.Views._DescStudent);
-            break;
-        case eDirectAccessType.eTeleworker:
-            Html.RenderPartial(MVC.Search.Views._DescTeleworker);
-            break;
-        case eDirectAccessType.eStartUp:
-            Html.RenderPartial(MVC.Search.Views._DescStartUp);
-            break;
-        case eDirectAccessType.eNomade:
-            Html.RenderPartial(MVC.Search.Views._DescNomade);
-            break;
-        case eDirectAccessType.eIndependant:
-            Html.RenderPartial(MVC.Search.Views._DescIndependant);
-            break;
-        case eDirectAccessType.eEntreprise:
-            Html.RenderPartial(MVC.Search.Views._DescEntreprise);
-            break;
-        case eDirectAccessType.eNone:
-        default:
-            Html.RenderPartial(MVC.Shared.Views._IndexGallery);
-            break;
-    } 
-        
+		<div class="searchDesc float-right borderRadius">
+			<h2 class="blue">@title</h2>
+			@Html.Raw(desc)
+		</div>
+	}
+	else
+	{
+		Html.RenderPartial(MVC.Shared.Views._IndexGallery);
+	}        
 </div>
 
 @section ScriptContent
@@ -224,7 +243,7 @@
         }
     </script>
     @{ ViewData["IsSearchForm"] = false; }
-    @Html.Partial(MVC.Search.Views._SelectSearchScript, Model.Criteria.LocalisationData, ViewData)
+    @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria.LocalisationData, ViewData)
     @Html.Partial(MVC.Shared.Views._CufonScript)
     @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
 }

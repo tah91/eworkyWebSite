@@ -1,0 +1,28 @@
+﻿<div class="directAccess float-left borderRadius">
+    @*<div class="directAccess borderRadius" style="margin:auto;">*@
+    <div class="directAccessHead directAccessElem blue">
+        <h2>@Worki.Resources.Views.Shared.SharedString.DirectAccess</h2> <span>&nbsp;&nbsp;&nbsp;@Worki.Resources.Views.Shared.SharedString.WhatEWorkyCouldDo</span>
+    </div>
+    <div class="directAccessStudent directAccessElem float-left">
+        @Html.ActionLink(Worki.Resources.Models.Profile.Profile.Student, MVC.Localisation.FullSearchPerTypeSpecial((int)eDirectAccessType.eStudent))
+    </div>
+    <div class="directAccessNomad directAccessElem float-right">
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.Nomad, MVC.Localisation.FullSearchPerTypeSpecial((int)eDirectAccessType.eNomade))
+    </div>
+    <div class="clear">
+    </div>
+    <div class="directAccessWorker directAccessElem float-left">
+        @Html.ActionLink(Worki.Resources.Models.Profile.Profile.Teleworker, MVC.Localisation.FullSearchPerTypeSpecial((int)eDirectAccessType.eTeleworker))
+    </div>
+    <div class="directAccessStartUp directAccessElem float-right">
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.Entrepreneur, MVC.Localisation.FullSearchPerTypeSpecial((int)eDirectAccessType.eStartUp))
+    </div>
+    <div class="clear">
+    </div>
+    <div class="directAccessDrh directAccessElem float-left">
+        @Html.ActionLink(Worki.Resources.Models.Profile.Profile.Company, MVC.Localisation.FullSearchPerTypeSpecial((int)eDirectAccessType.eEntreprise))
+    </div>
+    <div class="directAccessIndependant directAccessElem float-right">
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.Independant, MVC.Localisation.FullSearchPerTypeSpecial((int)eDirectAccessType.eIndependant))
+    </div>
+</div>

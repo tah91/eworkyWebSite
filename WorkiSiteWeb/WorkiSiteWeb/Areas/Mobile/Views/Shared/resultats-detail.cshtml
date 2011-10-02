@@ -25,7 +25,7 @@
 		    rvd[key] = Request.QueryString[key];
 	    }
     }
-    <img src="@Links.Content.images.retour_png" /> @Html.ActionLink(Worki.Resources.Views.Search.SearchString.ReturnToResult, MVC.Search.ActionNames.FullSearchResult, rvd, new System.Collections.Generic.Dictionary<string, object> { { "class", "bold" } })
+    <img src="@Links.Content.images.retour_png" /> @Html.ActionLink(Worki.Resources.Views.Search.SearchString.ReturnToResult, MVC.Localisation.ActionNames.FullSearchResult, rvd, new System.Collections.Generic.Dictionary<string, object> { { "class", "bold" } })
 </div>
 
 <div class="clear">
@@ -91,6 +91,5 @@
             { lang: 'fr' }
         });
     </script>
-    @Html.Partial(MVC.Shared.Views._CufonScript)
-	@Html.Partial(MVC.Shared.Views._CommentFormScript, Model.Localisation)
+	@Html.Partial(MVC.Localisation.Views._CommentFormScript, Model.Localisation)
 }
