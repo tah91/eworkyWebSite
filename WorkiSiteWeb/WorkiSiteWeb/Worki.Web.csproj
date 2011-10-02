@@ -228,7 +228,7 @@
     <Compile Include="Areas\Api\Routing\RestRoutes.cs" />
     <Compile Include="Areas\Mobile\Controllers\AccountController.cs" />
     <Compile Include="Areas\Mobile\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Mobile\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -579,12 +579,12 @@
     <Content Include="Areas\Api\Views\Web.config" />
     <Content Include="Areas\Mobile\Views\Web.config" />
     <Content Include="Areas\Mobile\Views\Home\index.cshtml" />
-    <Content Include="Areas\Mobile\Views\Search\resultats-liste.cshtml" />
-    <Content Include="Areas\Mobile\Views\Search\_SearchResultSummary.cshtml" />
+    <Content Include="Areas\Mobile\Views\Localisation\resultats-liste.cshtml" />
+    <Content Include="Areas\Mobile\Views\Localisation\_SearchResultSummary.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\__Layout.cshtml" />
-    <Content Include="Areas\Mobile\Views\Shared\_CommentSummary.cshtml" />
-    <Content Include="Areas\Mobile\Views\Shared\_LocalisationDetail.cshtml" />
-    <Content Include="Areas\Mobile\Views\Shared\resultats-detail.cshtml" />
+    <Content Include="Areas\Mobile\Views\Localisation\_CommentSummary.cshtml" />
+    <Content Include="Areas\Mobile\Views\Localisation\_LocalisationDetail.cshtml" />
+    <Content Include="Areas\Mobile\Views\Localisation\resultats-detail.cshtml" />
     <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\_Connexion.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />

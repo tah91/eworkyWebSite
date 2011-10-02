@@ -1288,7 +1288,7 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
     margin-top:5px;
 }
 
-.generalInfosTable input[type="text"], input[type="password"]
+.generalInfosTable input[type="text"], .generalInfosTable input[type="password"]
 {
     width:400px;
 }

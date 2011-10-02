@@ -9,7 +9,7 @@
     <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css) " rel="stylesheet" type="text/css"/>
 }
 
-<div class="resultHeader2 float-left">
+<div class="">
     @Worki.Resources.Views.Search.SearchString.Search <span class="blue bold">@Localisation.GetOfferType(Model.Criteria.LocalisationOffer)</span> près de <span class="blue bold">@Model.Criteria.Place</span> @Model.Results.Count @Worki.Resources.Views.Search.SearchString.PlaceFound
 </div>
 
@@ -17,11 +17,11 @@
 </div>
 
 <div class="detailContent">
-    <div class="searchFormBlock">
+    <div class="blockContainer">
         @for (int i = 0; i < Model.PageResults.Count; ++i)
 		{ 
 			var index = Model.PagingInfo.GlobalIndex(i);
-            @Html.Partial(MVC.Mobile.Search.Views._SearchResultSummary, Model.GetSingleResult(index))
+            @Html.Partial(MVC.Mobile.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
 		}
 
 		<div class="pager">

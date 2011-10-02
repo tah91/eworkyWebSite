@@ -56,7 +56,7 @@ namespace Worki.Service
                     lat = (float)location["lat"];
                     lg = (float)location["lng"]; 
 				}
-				catch (WebException ex)
+				catch (Exception ex)
 				{
 					_Logger.Error(ex.Message);
 				}

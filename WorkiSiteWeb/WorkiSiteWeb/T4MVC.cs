@@ -53,7 +53,7 @@ namespace T4MVC {
         public readonly string Name = "Mobile";
         public Worki.Web.Areas.Mobile.Controllers.AccountController Account = new Worki.Web.Areas.Mobile.Controllers.T4MVC_AccountController();
         public Worki.Web.Areas.Mobile.Controllers.HomeController Home = new Worki.Web.Areas.Mobile.Controllers.T4MVC_HomeController();
-        public Worki.Web.Areas.Mobile.Controllers.SearchController Search = new Worki.Web.Areas.Mobile.Controllers.T4MVC_SearchController();
+        public Worki.Web.Areas.Mobile.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Mobile.Controllers.T4MVC_LocalisationController();
         public T4MVC.Mobile.SharedController Shared = new T4MVC.Mobile.SharedController();
     }
 }
@@ -2409,9 +2409,9 @@ namespace Worki.Web.Areas.Mobile.Controllers {
 }
 
 namespace Worki.Web.Areas.Mobile.Controllers {
-    public partial class SearchController {
+    public partial class LocalisationController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected SearchController(Dummy d) { }
+        protected LocalisationController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -2436,18 +2436,18 @@ namespace Worki.Web.Areas.Mobile.Controllers {
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public SearchController Actions { get { return MVC.Mobile.Search; } }
+        public LocalisationController Actions { get { return MVC.Mobile.Localisation; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "Mobile";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Search";
+        public readonly string Name = "Localisation";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string FullSearch = "recherche-lieu-travail";
+            public readonly string FullSearch = "recherche";
             public readonly string FullSearchResult = "resultats-liste";
             public readonly string FullSearchResultDetail = "resultats-detail";
         }
@@ -2458,14 +2458,17 @@ namespace Worki.Web.Areas.Mobile.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string _SearchResultSummary = "~/Areas/Mobile/Views/Search/_SearchResultSummary.cshtml";
-            public readonly string resultats_liste = "~/Areas/Mobile/Views/Search/resultats-liste.cshtml";
+            public readonly string _CommentSummary = "~/Areas/Mobile/Views/Localisation/_CommentSummary.cshtml";
+            public readonly string _LocalisationDetail = "~/Areas/Mobile/Views/Localisation/_LocalisationDetail.cshtml";
+            public readonly string _SearchResultSummary = "~/Areas/Mobile/Views/Localisation/_SearchResultSummary.cshtml";
+            public readonly string resultats_detail = "~/Areas/Mobile/Views/Localisation/resultats-detail.cshtml";
+            public readonly string resultats_liste = "~/Areas/Mobile/Views/Localisation/resultats-liste.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_SearchController: Worki.Web.Areas.Mobile.Controllers.SearchController {
-        public T4MVC_SearchController() : base(Dummy.Instance) { }
+    public class T4MVC_LocalisationController: Worki.Web.Areas.Mobile.Controllers.LocalisationController {
+        public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult FullSearch(Worki.Data.Models.SearchCriteria criteria) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearch);
@@ -2497,10 +2500,7 @@ namespace T4MVC.Mobile {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string @__Layout = "~/Areas/Mobile/Views/Shared/__Layout.cshtml";
-            public readonly string _CommentSummary = "~/Areas/Mobile/Views/Shared/_CommentSummary.cshtml";
             public readonly string _Connexion = "~/Areas/Mobile/Views/Shared/_Connexion.cshtml";
-            public readonly string _LocalisationDetail = "~/Areas/Mobile/Views/Shared/_LocalisationDetail.cshtml";
-            public readonly string resultats_detail = "~/Areas/Mobile/Views/Shared/resultats-detail.cshtml";
         }
     }
 

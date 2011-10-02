@@ -1,0 +1,38 @@
+﻿@model Worki.Data.Models.SearchSingleResultViewModel
+@{  
+    RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+    foreach (string key in Request.QueryString.Keys)
+    {
+        rvd[key] = Request.QueryString[key].ToString();
+    }
+    rvd["index"] = Model.Index;
+	ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
+}
+
+<div class="contentBlock resultItem relative">
+	<div class="resultItemGallery picBack borderRadius float-left">
+		@if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))
+		{
+			<a href="@ViewData["link"]">
+				@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
+			</a>
+		}
+	</div>
+	<div class="itemDesc float-right">
+		<div class="green noUnderline">
+			<span class="bold">@Html.ActionLink(Model.Localisation.Name, MVC.Mobile.Localisation.ActionNames.FullSearchResultDetail, rvd)</span>&nbsp;-&nbsp;@String.Format("{0:0.##} km", Model.Distance)
+		</div>
+		<div class="itemCommDiv">
+			@Html.Partial(MVC.Mobile.Localisation.Views._CommentSummary, Model.Localisation)
+		</div>
+		<div>@Model.Localisation.Adress&nbsp;-&nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</div>
+		<div>
+			<span class="bold lightblue">@Localisation.LocalisationTypes[Model.Localisation.TypeValue]</span> - @Html.TruncateAtWord(Model.Localisation.Description, 80)
+		</div>
+		<div class="itemLogos">
+			@Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

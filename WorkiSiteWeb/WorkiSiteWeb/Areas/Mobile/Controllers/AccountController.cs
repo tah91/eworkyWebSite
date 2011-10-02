@@ -2,21 +2,16 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using Worki.Data.Models;
-using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Logging;
-using Worki.Web.Helpers;
-using Worki.Data.Repository;
-using Worki.Memberships;
 using Worki.Infrastructure.Repository;
+using Worki.Memberships;
 
 
 namespace Worki.Web.Areas.Mobile.Controllers
 {
 	public partial class AccountController : Controller
 	{
-
 		public const string MemberDisplayNameString = "MemberDisplayName";
 		public IFormsAuthenticationService FormsService
 		{
@@ -67,7 +62,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 					}
 					else
 					{
-						return RedirectToAction(MVC.Mobile.Home.ActionNames.Index, MVC.Mobile.Home.Name);
+						return RedirectToAction(MVC.Mobile.Home.Index());
 					}
 				}
 				else
@@ -94,7 +89,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 				cookie.Expires = DateTime.Now.AddDays(-1);
 				this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 			}
-			return RedirectToAction(MVC.Mobile.Home.ActionNames.Index, MVC.Mobile.Home.Name);
+			return RedirectToAction(MVC.Mobile.Home.Index());
 		}
 	}
 }

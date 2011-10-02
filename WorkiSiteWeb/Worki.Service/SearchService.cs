@@ -126,10 +126,19 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, "lieu", ref value))
                 criteria.Place = value;
 
-            float lat = 0, lng = 0;
-			_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
-            criteria.LocalisationData.Latitude = lat;
-            criteria.LocalisationData.Longitude = lng;
+			if (MiscHelpers.GetRequestValue(parameters, "lat", ref value))
+				criteria.LocalisationData.Latitude = float.Parse(value);
+
+			if (MiscHelpers.GetRequestValue(parameters, "lng", ref value))
+				criteria.LocalisationData.Longitude = float.Parse(value);
+
+			if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
+			{
+				float lat = 0, lng = 0;
+				_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
+				criteria.LocalisationData.Latitude = lat;
+				criteria.LocalisationData.Longitude = lng;
+			}
 
             if (MiscHelpers.GetRequestValue(parameters, "offer-type", ref value))
                 criteria.LocalisationOffer = int.Parse(value, CultureInfo.InvariantCulture);
@@ -182,6 +191,11 @@ namespace Worki.Service
 		{
 			var rvd = new RouteValueDictionary();
 			rvd["page"] = page;
+			rvd["lieu"] = criteria.Place;
+			if(criteria.LocalisationData.Latitude!=0)
+				rvd["lat"] = criteria.LocalisationData.Latitude;
+			if (criteria.LocalisationData.Longitude != 0)
+				rvd["lng"] = criteria.LocalisationData.Longitude;
 			rvd["lieu"] = criteria.Place;
 			rvd["offer-type"] = criteria.LocalisationOffer;
 

@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="itemCommDiv">
-                @Html.Partial(MVC.Mobile.Shared.Views._CommentSummary, Model)
+                @Html.Partial(MVC.Mobile.Localisation.Views._CommentSummary, Model)
             </div>
         </div>
         
@@ -25,8 +25,7 @@
         </div>
     </div>
     <div class="detailContent">
-        <div class="blockContainer float-left">
-           
+        <div class="blockContainer">
             @{
 				var generalFeatures = Model.GetFeaturesOfType(FeatureType.General, new List<Feature> { Feature.AvoidMorning, Feature.AvoidLunch, Feature.AvoidAfternoom, Feature.AvoidEvening, Feature.LocalisationOwner });
             }

@@ -1,53 +1,14 @@
 ﻿@model Worki.Data.Models.LogOnModel
-        
-        <div class="login-account detailContent">
-        
-            @Worki.Resources.Views.Account.AccountString.Login
-            @using (Html.BeginForm(MVC.Mobile.Account.ActionNames.LogOn, MVC.Mobile.Account.Name, FormMethod.Post, new { id = "connexionform" }))
-            { 
-                @Html.AntiForgeryToken()
-                <div class="loginDiv">
-                    <table>
-                        @if (ViewBag.AlreadyRegistered != null)
-                        {
-                        <tr>
-                            <td>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @ViewBag.AlreadyRegistered
-                                </div>
-                            </td>
-                        </tr>
-                        }
-                        <tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.LabelFor(m => m.Login) 
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(m => m.Login)
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.LabelFor(m => m.Password) 
-                            </td>
-                            <td>
-                                @Html.PasswordFor(m => m.Password)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="center">
-                                <center>
-                                    <input type="submit" class="btn_blue imageBtn" value="Se connecter"/>
-                                </center>
-                            </td>
-                        </tr>
-                    </table>                    
-                </div>
-            } 
-        </div>
+       
+<h3 class="blue">Connectez-vous</h3>	    
+@using (Html.BeginForm(MVC.Mobile.Account.ActionNames.LogOn, MVC.Mobile.Account.Name, FormMethod.Post, new { id = "connexionform" }))
+{ 
+    @Html.AntiForgeryToken()
+    <div class="editor-field">
+        @Html.TextBoxFor(m => m.Login, new {placeholder = Worki.Resources.Models.Account.AccountModels.Login })
+    </div>
+	<div class="editor-field">
+        @Html.PasswordFor(m => m.Password, new { placeholder = Worki.Resources.Models.Account.AccountModels.Password })
+	</div>
+    <input type="submit" class="button" value="Se connecter"/>
+}

@@ -44,7 +44,7 @@ namespace Worki.Infrastructure
                 return true;
 
             // Don't redirect non-mobile browsers
-			if (!httpContext.Request.Browser.IsMobileDevice)
+			//if (!httpContext.Request.Browser.IsMobileDevice)
 			//    return true;
 
             // Don't redirect requests for the Mobile area

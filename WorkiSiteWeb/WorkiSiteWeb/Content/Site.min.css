@@ -204,7 +204,7 @@ ul.tabs li.active,ul.tabs li.active a,html ul.tabs li.active a:hover{background:
 .featureTag ul{margin:0;padding:0}
 .featureTag li{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:3px 10px;margin:0 3px 6px 0;background-color:#EEE;float:left}
 .generalInfosTable{margin-top:5px}
-.generalInfosTable input[type="text"],input[type="password"]{width:400px}
+.generalInfosTable input[type="text"],.generalInfosTable input[type="password"]{width:400px}
 .generalInfosTable select{width:414px}
 .generalInfosTable textarea{width:400px}
 .bigPictureContainer{width:50%;height:100%}
