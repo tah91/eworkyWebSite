@@ -6,10 +6,11 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.DetailWelcomePeople, "Blue")
 
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.DetailWelcomePeople, "Blue")
-    <div class="contactDiv">
+    <div class="blockContainer">
+        <div class="contentBlock">
         <table>
             <tr>
                 <td>
@@ -60,6 +61,7 @@
                 </td>
             </tr>
         </table>
+        </div>
     </div>   
 </div>
 

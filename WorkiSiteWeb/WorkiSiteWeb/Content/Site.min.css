@@ -26,6 +26,7 @@ body{margin:auto;height:auto;height:auto;font-size:.75em;font-family:Arial,Helve
 .grey a{color:#a1a1a1}
 .red{color:#D35758}
 .red a{color:#D35758}
+::selection{background:#3297FD;color:#fff;text-shadow:none}
 a{color:Gray;text-decoration:underline}
 h1,h2,h3,h4,h5,h6{margin-bottom:5px}
 h1{font-size:2em}

@@ -153,6 +153,8 @@ body
     color:#D35758;
 }
 
+::selection { background: #3297FD; color: #fff; text-shadow: none; }
+
 /* LINKS   
 ----------------------------------------------------------*/
 a

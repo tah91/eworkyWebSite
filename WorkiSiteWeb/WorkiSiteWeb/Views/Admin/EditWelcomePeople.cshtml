@@ -6,12 +6,13 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.EditWelcomePeople, "Blue")
+
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.EditWelcomePeople, "Blue")
-    
-    <div class="contactDiv">
+    <div class="blockContainer">
             @using (Html.BeginForm(MVC.Admin.ActionNames.EditWelcomePeople, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
+                <div class="contentBlock">
                 @Html.AntiForgeryToken()
                 <table>
                     <tr>
@@ -71,17 +72,13 @@
                         <td>
                             <input type="file" name="LocalisationPicture" accept="image/*"/>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                <input type="submit" value="Save" />
-                            </div>
-                        </td>
-                    </tr>               
+                    </tr>              
                 </table>
+                </div>
+                <div class="float-right">
+                    <input type="submit" class="btn_blue imageBtn" value="Save" style="margin-top:10px;"/>
+                </div>
+                <div class="clear"></div>
             }
     </div>   
 </div>
