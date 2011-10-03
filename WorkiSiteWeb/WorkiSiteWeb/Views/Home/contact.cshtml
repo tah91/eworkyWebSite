@@ -6,11 +6,13 @@
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.Contact)</title>
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.ContactUs, "Blue")
+
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.ContactUs, "Blue")
-    <div class="contactDiv">
+    <div class="blockContainer">
             @using (Html.BeginForm()) 
             {
+                <div class="contentBlock">
                 @Html.AntiForgeryToken()
                 <table>
                     <tr>
@@ -73,16 +75,12 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                <input type="submit" class="btn_blue imageBtn" value="Envoyer" style="margin-top:10px;"/>
-                            </div>
-                        </td>
-                    </tr>
                 </table>
+                </div>
+                <div class="float-right">
+                    <input type="submit" class="btn_blue imageBtn" value="Envoyer" style="margin-top:10px;"/>
+                </div>
+                <div class="clear"></div>
             }
     </div>   
 </div>

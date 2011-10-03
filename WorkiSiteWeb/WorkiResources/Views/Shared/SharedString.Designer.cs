@@ -377,15 +377,6 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to www.eworky.com.
-        /// </summary>
-        public static string WebsiteAddress {
-            get {
-                return ResourceManager.GetString("WebsiteAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Profil accueil.
         /// </summary>
         public static string Welcome {

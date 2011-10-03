@@ -6,11 +6,13 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.CreateNewPress, "Blue") 
+
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.CreateNewPress, "Blue") 
-    <div class="contactDiv">
+    <div class="blockContainer">
         @using (Html.BeginForm(MVC.Admin.ActionNames.CreatePress, MVC.Admin.Name, null, FormMethod.Post, new { id = "DateForm" }))
         {
+            <div class="contentBlock">
             @Html.AntiForgeryToken()
             <table>
                 <tr>
@@ -61,16 +63,12 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            <input type="submit" value="Créer" />
-                        </div>
-                    </td>
-                </tr>
             </table>
+            </div>
+            <div class="float-right">
+                <input type="submit" class="btn_blue imageBtn" value="Envoyer" style="margin-top:10px;"/>
+            </div>
+            <div class="clear"></div>
         }
         </div>
 </div>

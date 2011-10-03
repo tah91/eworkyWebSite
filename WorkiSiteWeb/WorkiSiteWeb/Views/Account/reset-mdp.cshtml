@@ -7,21 +7,25 @@
     <title>@Html.WorkiTitle(Worki.Resources.Models.Account.AccountModels.ResetThePassword)</title>
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Models.Account.AccountModels.ResetThePassword, "Blue")
 
-    <div class="detailContent">
-        @RazorHelpers.TitleDiv(Worki.Resources.Models.Account.AccountModels.ResetThePassword, "Blue")
-        <div class="loginDesc">
-        @Worki.Resources.Views.Account.AccountString.SetMailInscription
-        </div>
+<div class="detailContent">
+    <div class="blockContainer">
         @using (Html.BeginForm())
-		{ 
-            @Html.AntiForgeryToken()
-            <div>
+	    {
+            <div class="contentBlock">
+                <div class="loginDesc">
+                    @Worki.Resources.Views.Account.AccountString.SetMailInscription
+                </div>
+                @Html.AntiForgeryToken()
                 <div class="editor-field">
                     @Html.TextBoxFor(m => m.EMail) 
                 </div>
-
+            </div>
+            <div class="float-right">
                 <input type="submit" class="btn_blue imageBtn" value="Envoyer"/>
             </div>
+            <div class="clear"></div>
         }
     </div>
+</div>

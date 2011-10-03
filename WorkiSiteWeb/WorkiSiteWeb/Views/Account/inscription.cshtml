@@ -9,19 +9,21 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
-    <div class="detailContent">
-        @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.EWorkyRegister, "Blue")
-        <div class="registerDesc float-right">
-        @Worki.Resources.Views.Account.AccountString.FillInscription<br />
-        @Worki.Resources.Views.Account.AccountString.QualityOfProfils<br /> 
-        @Worki.Resources.Views.Account.AccountString.SocialNetworkSoon<br /><br />
-        @Worki.Resources.Views.Account.AccountString.RequiredFields
-        </div>
-        <div class="clear">
-        </div>
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.EWorkyRegister, "Blue")
 
-        @using (Html.BeginForm()) 
-        { 
+<div class="detailContent">
+    <div class="blockContainer">
+        <div class="contentBlock">
+            <div class="registerDesc float-right">
+                @Worki.Resources.Views.Account.AccountString.FillInscription<br />
+                @Worki.Resources.Views.Account.AccountString.QualityOfProfils<br /> 
+                @Worki.Resources.Views.Account.AccountString.SocialNetworkSoon<br /><br />
+                @Worki.Resources.Views.Account.AccountString.RequiredFields
+            </div>
+            <div class="clear"></div>
+
+            @using (Html.BeginForm()) 
+            {
             @Html.AntiForgeryToken()
             <div class="registerForm">
                 <table>
@@ -159,8 +161,10 @@
                     </tr>
                 </table>                    
             </div>
-        }
+            }
+        </div>
     </div>
+</div>
 
 @section ScriptContent
 {
