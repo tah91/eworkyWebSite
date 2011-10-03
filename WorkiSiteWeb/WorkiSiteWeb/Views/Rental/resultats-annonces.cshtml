@@ -3,7 +3,7 @@
 @section HeadContent
 {
     <link href="@Url.VersionedContent(Links.Content.RentalDetail_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.VersionedContent(Links.Content.SearchResults_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
@@ -98,7 +98,7 @@
 		            </div>
 	            </div>
                     
-                <div class="submitSearchContainer float-right margint15">
+                <div class="resetSearch float-right margint15">
                     <input type="submit" class="btn_green_check imageBtn" value="Rechercher"/>
                 </div>
                 }
@@ -113,7 +113,6 @@
     <script type="text/javascript">
         require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
     </script>
-    @Html.Partial(MVC.Shared.Views._CufonScript)
     <script type="text/javascript">
         require(["@MiscHelpers.jqueryui"], function () {
             $.datepicker.regional['fr'] = {

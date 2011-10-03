@@ -27,13 +27,10 @@
             @{var count = 0;}
             @foreach (var access in Model.Rental.RentalAccesses.ToList())
             {
-                if (count % 2 == 0)
+                <span class="marginl5">@access.DisplayName</span>
+                if (count % 2 != 0)
                 {
-                    <span class="marginl5">@access.DisplayName</span>
-                }
-                else
-                {
-                    <span class="marginl5">@access.DisplayName</span><br />
+                    <br />
                 }
                 count++;
             }

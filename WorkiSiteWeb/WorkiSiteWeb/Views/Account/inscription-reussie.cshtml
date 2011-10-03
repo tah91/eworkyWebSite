@@ -6,16 +6,14 @@
     <title>@Html.WorkiTitle(Worki.Resources.Models.Account.AccountModels.ChangeThePassword)</title>
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.EWorkyRegister, "Blue")
 
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.EWorkyRegister, "Blue")
-
-    <p>
-    @Worki.Resources.Views.Account.AccountString.ConfirmationMail
-    </p>
+    <div class="blockContainer">
+        <div class="contentBlock">
+            <p>
+                @Worki.Resources.Views.Account.AccountString.ConfirmationMail
+            </p>
+        </div>
+    </div>
 </div>
-
-@section ScriptContent
-{
-    @Html.Partial(MVC.Shared.Views._CufonScript)
-}

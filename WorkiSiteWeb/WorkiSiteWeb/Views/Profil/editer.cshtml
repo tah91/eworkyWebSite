@@ -7,267 +7,270 @@
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.EditProfile, "Blue")
 
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.EditProfile, "Blue")
-    @using (Html.BeginForm(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id="profilEditForm" }))
-    {
-        @Html.AntiForgeryToken()
-        <div class="avatarEditor float-left">
-            <div class="avatarContainer borderedImg">
-                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+    <div class="blockContainer">
+        @using (Html.BeginForm(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id="profilEditForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="avatarEditor float-right">
+                <div class="avatarContainer borderedImg">
+                    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+                </div>
+                <input type="file" name="Avatar" accept="image/*"/>
             </div>
-            <input type="file" name="Avatar" accept="image/*"/>
-        </div>
-        <div class="profilData float-left">
-			<h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.PersonalInfo</h3>
-            <table>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Profile) <span class="blue">*</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.DropDownList("Member.MemberMainData.Profile", Model.ProfileSelectTypes)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Civility)<span class="blue">*</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.DropDownList("Member.MemberMainData.Civility", Model.CivilitySelectTypes)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.LastName)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.FirstName)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.BirthDate)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBox("Member.MemberMainData.BirthDate", String.Format("{0:dd/MM/yyyy}", Model.Member.MemberMainData.BirthDate), new { @class = "dp" })
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.PhoneNumber)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.PhoneNumber)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.City)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.City)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.PostalCode)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.PostalCode)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Country)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Country)
-                        </div>
-                    </td>
-                </tr>
-				<tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Description)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextAreaFor(m => m.Member.MemberMainData.Description)
-                        </div>
-                    </td>
-                </tr>
-			</table>
-			<h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.ProfessionalInfo</h3>
-			<table>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.CompanyName)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.CompanyName, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourCompanyFunction })
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.WorkCity)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.WorkCity)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.WorkPostalCode)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.WorkPostalCode)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.WorkCountry)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.WorkCountry)
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.FavoritePlaces)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextAreaFor(m => m.Member.MemberMainData.FavoritePlaces)
-                        </div>
-                    </td>
-                </tr>
-			</table>
-			<h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.SocialNetwork</h3>
-			<table>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Facebook)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Facebook, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourFacebook })
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Twitter)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Twitter, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourTwitter })
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Linkedin)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Linkedin, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourLinkedIn })
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(m => m.Member.MemberMainData.Viadeo)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Member.MemberMainData.Viadeo, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourViadeo })
-                        </div>
-                    </td>
-                </tr>       
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            <input type="submit" class="btn_blue imageBtn" value="Valider"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    }
+            <div class="profilData">
+                <div class="contentBlock">
+			        <h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.PersonalInfo</h3>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Profile) <span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.DropDownList("Member.MemberMainData.Profile", Model.ProfileSelectTypes)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Civility)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.DropDownList("Member.MemberMainData.Civility", Model.CivilitySelectTypes)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.LastName)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.FirstName)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.BirthDate)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBox("Member.MemberMainData.BirthDate", String.Format("{0:dd/MM/yyyy}", Model.Member.MemberMainData.BirthDate), new { @class = "dp" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.PhoneNumber)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.PhoneNumber)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.City)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.City)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.PostalCode)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.PostalCode)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Country)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.Country)
+                                </div>
+                            </td>
+                        </tr>
+				        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Description)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextAreaFor(m => m.Member.MemberMainData.Description)
+                                </div>
+                            </td>
+                        </tr>
+			        </table>
+                </div>
+                <div class="contentBlock">
+			        <h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.ProfessionalInfo</h3>
+			        <table>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.CompanyName)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.CompanyName, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourCompanyFunction })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.WorkCity)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.WorkCity)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.WorkPostalCode)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.WorkPostalCode)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.WorkCountry)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.WorkCountry)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.FavoritePlaces)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextAreaFor(m => m.Member.MemberMainData.FavoritePlaces)
+                                </div>
+                            </td>
+                        </tr>
+			        </table>
+                </div>
+                <div class="contentBlock">
+			        <h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.SocialNetwork</h3>
+			        <table>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Facebook)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.Facebook, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourFacebook })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Twitter)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.Twitter, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourTwitter })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Linkedin)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.Linkedin, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourLinkedIn })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Viadeo)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.Viadeo, new { placeholder = Worki.Resources.Views.Profile.ProfileString.YourViadeo })
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="float-right">
+                    <input type="submit" class="btn_blue imageBtn" value="Valider"/>
+                </div>
+            </div>
+            <div class="clear"></div>
+        }
+    </div>
 </div>
 
 @section ScriptContent
@@ -308,5 +311,4 @@
                 });
             });
     </script>
-    @Html.Partial(MVC.Shared.Views._CufonScript)
 }

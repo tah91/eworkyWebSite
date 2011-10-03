@@ -5,12 +5,13 @@
     <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.CreateWelcomePeople) </title>
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.CreateWelcomePeople, "Blue")
+
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.CreateWelcomePeople, "Blue")
-   
-    <div class="contactDiv">
+    <div class="blockContainer">
         @using (Html.BeginForm(MVC.Admin.ActionNames.CreateWelcomePeople, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+            <div class="contentBlock">
             @Html.AntiForgeryToken()
             <table>
                 <tr>
@@ -59,16 +60,12 @@
                         <input type="file" name="LocalisationPicture" accept="image/*"/>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            <input type="submit" value="Créer" />
-                        </div>
-                    </td>
-                </tr>
             </table>
+            </div>
+            <div class="float-right">
+                <input type="submit" class="btn_blue imageBtn" value="Envoyer" style="margin-top:10px;"/>
+            </div>
+            <div class="clear"></div>
         }
     </div>
 </div>

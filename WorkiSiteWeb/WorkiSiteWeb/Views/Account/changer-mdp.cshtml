@@ -6,44 +6,46 @@
     <title>@Html.WorkiTitle(Worki.Resources.Models.Account.AccountModels.ChangeThePassword)</title>
 }
 
-    <div class="detailContent">
-     @RazorHelpers.TitleDiv(Worki.Resources.Models.Account.AccountModels.ChangeThePassword, "Blue")
-        <div class="loginDesc">
-        @Worki.Resources.Views.Account.AccountString.NewOldPassword<br />
-        @String.Format(Worki.Resources.Views.Account.AccountString.MinimumLength,ViewData["PasswordLength"] )
-        </div>
+@RazorHelpers.TitleDiv(Worki.Resources.Models.Account.AccountModels.ChangeThePassword, "Blue")
+
+<div class="detailContent">
+    <div class="blockContainer">
         @using (Html.BeginForm())
-		{ 
-            @Html.AntiForgeryToken()
+	    {
+            <div class="contentBlock">
+                <div class="loginDesc">
+                    @Worki.Resources.Views.Account.AccountString.NewOldPassword<br />
+                    @String.Format(Worki.Resources.Views.Account.AccountString.MinimumLength, ViewData["PasswordLength"])
+                </div>
+                @Html.AntiForgeryToken()
            
-            <div class="editor-label">
-                @Html.LabelFor(m => m.OldPassword) 
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(m => m.OldPassword) 
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.OldPassword) 
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(m => m.OldPassword) 
+                </div>
                 
-            <div class="editor-label">
-                @Html.LabelFor(m => m.NewPassword) 
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(m => m.NewPassword) 
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.NewPassword) 
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(m => m.NewPassword) 
+                </div>
                 
-            <div class="editor-label">
-                @Html.LabelFor(m => m.ConfirmPassword) 
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(m => m.ConfirmPassword) 
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.ConfirmPassword) 
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(m => m.ConfirmPassword) 
+                </div>
 
-            @Html.HiddenFor(m => m.UserName) 
-
-            <input type="submit" class="btn_blue imageBtn" value="Modifier"/>
+                @Html.HiddenFor(m => m.UserName) 
+            </div>
+            <div class="float-right">
+                <input type="submit" class="btn_blue imageBtn" value="Modifier"/>
+            </div>
+            <div class="clear"></div>
         }
     </div>
-
-@section ScriptContent
-{
-    @Html.Partial(MVC.Shared.Views._CufonScript)
-}
+</div>

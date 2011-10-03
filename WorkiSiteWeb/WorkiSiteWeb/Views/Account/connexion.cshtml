@@ -8,61 +8,60 @@
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.LoginToEWorky, "Blue")
 
-    <div class="detailContent">
-        @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.LoginToEWorky, "Blue")
-        @using (Html.BeginForm())
-        { 
-            @Html.AntiForgeryToken()
+<div class="detailContent">
+    <div class="blockContainer">
+    @using (Html.BeginForm())
+    { 
+        @Html.AntiForgeryToken()
+        <div class="contentBlock">
             <div class="loginDiv">
-                <table>
-                    @if (ViewBag.AlreadyRegistered != null)
-                    {
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                @ViewBag.AlreadyRegistered
-                            </div>
-                        </td>
-                    </tr>
-                    }
-                    <tr>
-                        <td>
-                            <div class="editor-label">
-                                @Html.LabelFor(m => m.Login) 
-                            </div>
-                        </td>
-                        <td>
-                            <div class="editor-field">
-                                @Html.TextBoxFor(m => m.Login)
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(m => m.Password) 
-                        </td>
-                        <td>
-                            @Html.PasswordFor(m => m.Password) &nbsp;&nbsp; @Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+            <table>
+                @if (ViewBag.AlreadyRegistered != null)
+                {
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @ViewBag.AlreadyRegistered
+                        </div>
+                    </td>
+                </tr>
+                }
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(m => m.Login) 
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.Login)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Password) 
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.Password) &nbsp;&nbsp; @Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
-                        </td>
-                        <td>
-                            <input type="submit" class="btn_blue imageBtn" value="Se connecter"/>
-                            &nbsp;&nbsp;ou @Html.ActionLink(Worki.Resources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())
-                        </td>
-                    </tr>
-                </table>                    
+                    </td>
+                    <td>
+                        <input type="submit" class="btn_blue imageBtn" value="Se connecter"/>
+                        &nbsp;&nbsp;ou @Html.ActionLink(Worki.Resources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())
+                    </td>
+                </tr>
+            </table>
             </div>
-        }
+        </div>
+    }
     </div>
-
-@section ScriptContent
-{
-    @Html.Partial(MVC.Shared.Views._CufonScript)
-}
+</div>

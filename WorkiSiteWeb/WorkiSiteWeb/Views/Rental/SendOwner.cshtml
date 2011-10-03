@@ -7,12 +7,13 @@
     <link href="@Url.VersionedContent(Links.Content.RentalDetail_min_css)" rel="stylesheet" type="text/css"  />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Email.Common.MP, "Red")
 
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Email.Common.MP, "Red")
-    <div class="contactDiv">
+    <div class="blockContainer">
             @using (Html.BeginForm(MVC.Rental.ActionNames.SendMail, MVC.Rental.Name, FormMethod.Post))
             {
+                <div class="contentBlock">
                 @Html.AntiForgeryToken()
                 <table>
                     <tr>
@@ -61,17 +62,14 @@
                                 @Html.HiddenFor(m => m.Subject)
                                 @Html.HiddenFor(m => m.ToName)
                             </div>
-                            <div class="editor-field">
-                                <input type="submit" class="btn_blue imageBtn margint10" value="Envoyer"/>
-                            </div>
                         </td>
                     </tr>
                 </table>
+                </div>
+                <div class="float-right">
+                    <input type="submit" class="btn_blue imageBtn margint10" value="Envoyer"/>
+                </div>
+                <div class="clear"></div>
             } 
         </div>
 </div>
-
-@section ScriptContent
-{
-    @Html.Partial(MVC.Shared.Views._CufonScript)
-}

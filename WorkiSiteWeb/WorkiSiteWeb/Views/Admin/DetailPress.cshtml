@@ -6,50 +6,51 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.DetailPress, "Blue")
 
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.DetailPress, "Blue")
-    
-    <div class="contactDiv">
-        <table>
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Worki.Resources.Views.Admin.AdminString.Date
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field"> 
-                        &nbsp;&nbsp;&nbsp;@Model.Date.ToString("dd/MM/yyyy")           
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Worki.Resources.Views.Admin.AdminString.Url
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field">
+        <div class="blockContainer">
+            <div class="contentBlock">
+            <table>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Date
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field"> 
+                            &nbsp;&nbsp;&nbsp;@Model.Date.ToString("dd/MM/yyyy")           
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Url
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
                         
-                        &nbsp;&nbsp;&nbsp;<a href=@Model.Url>@Model.Url</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Worki.Resources.Views.Admin.AdminString.Description
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field">
-                        &nbsp;&nbsp;&nbsp;@Model.Description
-                    </div>
-                </td>
-            </tr>
-        </table>
+                            &nbsp;&nbsp;&nbsp;<a href=@Model.Url>@Model.Url</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Description
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Model.Description
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </div>
     </div>   
 </div>
 

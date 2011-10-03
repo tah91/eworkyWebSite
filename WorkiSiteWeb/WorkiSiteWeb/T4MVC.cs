@@ -2194,7 +2194,6 @@ namespace T4MVC {
         public class ViewNames {
             public readonly string @__Layout = "~/Views/Shared/__Layout.cshtml";
             public readonly string _AddToFavorite = "~/Views/Shared/_AddToFavorite.cshtml";
-            public readonly string _CufonScript = "~/Views/Shared/_CufonScript.cshtml";
             public readonly string _CultureSwitchControl = "~/Views/Shared/_CultureSwitchControl.cshtml";
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";
