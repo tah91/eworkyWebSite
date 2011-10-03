@@ -201,7 +201,7 @@ ul.tabs li.active,ul.tabs li.active a,html ul.tabs li.active a:hover{background:
 .dashedRight{border-right:1px dashed #CCC}
 .dashedLeft{border-left:1px dashed #CCC}
 .contentBlock{padding:10px;border:1px solid #CCC;margin:10px 0;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD}
-.contentBlock:first-child{margin:0}
+.contentBlock:first-child,.contentBlock:last-child{margin:0}
 .featureTag ul{margin:0;padding:0}
 .featureTag li{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:3px 10px;margin:0 3px 6px 0;background-color:#EEE;float:left}
 .generalInfosTable{margin-top:5px}

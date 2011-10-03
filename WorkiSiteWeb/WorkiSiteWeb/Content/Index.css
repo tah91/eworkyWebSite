@@ -28,12 +28,12 @@
 
 .indexSearchFormDiv select
 {
-  width: 238px;
+  width: 231px;
 }
 
 .indexSearchFormDiv input[type="text"], input[type="password"]
 {
-    width:224px;
+    width:227px;
 }
 
 .indexSearchFormDiv td

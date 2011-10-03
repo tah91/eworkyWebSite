@@ -628,7 +628,6 @@
     <Content Include="Views\Localisation\editer.cshtml" />
     <Content Include="Views\Localisation\Index.cshtml" />
     <Content Include="Views\Localisation\utilisateur-invalid.cshtml" />
-    <Content Include="Views\Localisation\_LocalisationForm.cshtml" />
     <Content Include="Views\Shared\_Map.cshtml" />
     <Content Include="Views\Localisation\lieu-absent.cshtml" />
     <Content Include="Views\Localisation\recherche.cshtml" />

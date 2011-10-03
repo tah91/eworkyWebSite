@@ -571,8 +571,6 @@ namespace Links {
         public static readonly string LocalisationForm_min_css = Url("LocalisationForm.min.css");
         public static readonly string Mobile_css = Url("Mobile.css");
         public static readonly string Mobile_min_css = Url("Mobile.min.css");
-        public static readonly string MobileLocalisationDetail_css = Url("MobileLocalisationDetail.css");
-        public static readonly string MobileLocalisationDetail_min_css = Url("MobileLocalisationDetail.min.css");
         public static readonly string Press_css = Url("Press.css");
         public static readonly string Press_min_css = Url("Press.min.css");
         public static readonly string Profil_css = Url("Profil.css");
@@ -1570,7 +1568,6 @@ namespace Worki.Web.Controllers {
             public readonly string _DirectAccess = "~/Views/Localisation/_DirectAccess.cshtml";
             public readonly string _IconeServices = "~/Views/Localisation/_IconeServices.cshtml";
             public readonly string _LocalisationDetail = "~/Views/Localisation/_LocalisationDetail.cshtml";
-            public readonly string _LocalisationForm = "~/Views/Localisation/_LocalisationForm.cshtml";
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
             public readonly string _LocalisationGalleryScript = "~/Views/Localisation/_LocalisationGalleryScript.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";

@@ -1257,7 +1257,7 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 	box-shadow: 4px 4px 10px #DDD;
 }
 
-.contentBlock:first-child
+.contentBlock:first-child, .contentBlock:last-child
 {
     margin:0;
 }
