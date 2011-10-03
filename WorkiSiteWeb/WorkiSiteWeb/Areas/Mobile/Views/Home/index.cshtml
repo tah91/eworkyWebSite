@@ -22,7 +22,7 @@
 					@Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
 				</div>
 	   			<div>
-					<button class="button" type="button" id="submitCurrentLoc">près de ma position</button>
+					<button class="button" type="button" id="submitCurrentLoc">Près de ma position</button>
 				</div>
 				<div>
 					ou près de
@@ -79,21 +79,24 @@
 
         }
 
-
-        $('#submitCurrentLoc').click(function () {
-        	if (navigator.geolocation) {
-        		navigator.geolocation.getCurrentPosition(function (position) {
-        			var latitude = position.coords.latitude;
+        require.ready(function () {
+            function successCallback(position) {
+                    var latitude = position.coords.latitude;
         			var longitude = position.coords.longitude;
         			$('#Criteria_LocalisationData_Latitude').val(latitude);
         			$('#Criteria_LocalisationData_Longitude').val(longitude);
-        			$("#Criteria_Place").val(" ");
+        			$("#Criteria_Place").val("");
         			$('#searchform').submit();
-        		});
-        	}
-        	else {
-        		return false;
-        	}
+                }
+            function errorCallback(error) {
+                    alert('Essayer de rechercher en entrant un lieu');
+                    return false;
+                }
+            $('#submitCurrentLoc').click(function () {
+        	    if (navigator.geolocation) {
+        	        navigator.geolocation.watchPosition(successCallback, errorCallback, { enableHighAccuracy: true, maximumAge: 30000, timeout: 27000 });
+                }
+            });
         });
     </script>
 }

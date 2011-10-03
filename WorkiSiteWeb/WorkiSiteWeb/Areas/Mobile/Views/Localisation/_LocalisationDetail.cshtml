@@ -2,12 +2,9 @@
 
 <div class="localisationDetail borderRadius">
     <div class="localisationDetailHead">
-        
         <div class="localisationTitle">
-            <div class="float-left blue bold">
+            <div class="blue bold">
                 <span class="localisationName">@Model.Name</span>
-            </div>
-            <div class="clear">
             </div>
             <div class="localisationSubtitle">
                 <span class="localisationCity blue">@Localisation.LocalisationTypes[Model.TypeValue]</span>&nbsp;&nbsp;
@@ -20,12 +17,24 @@
                 @Html.Partial(MVC.Mobile.Localisation.Views._CommentSummary, Model)
             </div>
         </div>
-        
         <div class="clear">
         </div>
     </div>
     <div class="detailContent">
         <div class="blockContainer">
+            @if (Model.LocalisationFiles.Count > 0)
+		    {
+            <div class="localisationGallery contentBlock">
+                <div id="gallery">
+                    @foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
+				    {
+                        <a href="@ControllerHelpers.GetUserImagePath(item.FileName, true)">
+            	            <img title="@Model.Name" alt="@Model.Name" src="@ControllerHelpers.GetUserImagePath(item.FileName, true)"/>
+        	            </a>                        
+				    }
+                </div>
+            </div>
+		    }
             @{
 				var generalFeatures = Model.GetFeaturesOfType(FeatureType.General, new List<Feature> { Feature.AvoidMorning, Feature.AvoidLunch, Feature.AvoidAfternoom, Feature.AvoidEvening, Feature.LocalisationOwner });
             }
@@ -117,9 +126,6 @@
 				{
                     @Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
 				}
-				else
-				{ 
-				}
                 </div>
                 @{
 					ViewData[Comment.DisplayRelatedLocalisation] = false;
@@ -138,8 +144,6 @@
         <div class="clear">
         </div>
     </div>
-    
-	
     <div class="clear">
     </div>
 </div>

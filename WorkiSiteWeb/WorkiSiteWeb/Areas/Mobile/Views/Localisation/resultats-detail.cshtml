@@ -8,7 +8,6 @@
     }
     @Html.Partial(MVC.Shared.Views._MetaDataHeader, metaData) 
     <link href="@Url.Content(Links.Content.LocalisationDetail_css) " rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.MobileLocalisationDetail_css) " rel="stylesheet" type="text/css" />
     <link href="@Url.Content(Links.Content.rateit_css) " rel="stylesheet" type="text/css" />	
     <link href="@Url.Content(Links.Content.Profil_css) " rel="stylesheet" type="text/css"/>
 }
@@ -42,7 +41,7 @@
                 // Initialize Galleria
                 $('#gallery').galleria({
                     //width: 600,
-                    height: 350,
+                    height: 200,
                     showInfo: false
                 });
             });

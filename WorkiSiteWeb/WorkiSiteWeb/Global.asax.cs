@@ -153,6 +153,14 @@ namespace Worki.Web
 
             var localisationTypes = (from t in Localisation.LocalisationTypes.Values select ControllerHelpers.GetSeoString(t));
 
+            routes.MapRoute(
+                "", // Nom d'itinéraire
+                "{type}/{id}/{name}", // URL avec des paramètres
+                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
+                new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
 			routes.MapRoute(
 				"",
 				"lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
@@ -167,20 +175,12 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
 			);
 
-			routes.MapRoute(
-				"",
-				"lieu-de-travail/{action}/{type}/",
-				new { controller = "Localisation", action = "Default" },
-				new string[] { "Worki.Web.Controllers" }
-			);
-
-            routes.MapRoute(
-                "", // Nom d'itinéraire
-                "{type}/{id}/{name}", // URL avec des paramètres
-                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
-                new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
-                new string[] { "Worki.Web.Controllers" }
-            );
+            //routes.MapRoute(
+            //    "",
+            //    "lieu-de-travail/{action}/{type}/",
+            //    new { controller = "Localisation", action = "Default" },
+            //    new string[] { "Worki.Web.Controllers" }
+            //);
 
             routes.MapRoute(
                 "", // Nom d'itinéraire

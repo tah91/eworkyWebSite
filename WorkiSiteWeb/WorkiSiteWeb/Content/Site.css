@@ -773,11 +773,11 @@ select
 	font-size: 12px;
 	padding: 3px;
 	color: #777;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 	outline: 0;
-	border: 2px solid #DEDFE4;
+	border: 1px solid #DEDFE4;
 }
 
 select:focus
@@ -785,20 +785,20 @@ select:focus
 	-webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
 	box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
-	border: 2px solid #5dafde;
+	border: 1px solid #5dafde;
 }
 
 input[type="text"], input[type="password"], textarea
 {
 	width:200px;
 	font-size: 12px;
-	padding: 3px 5px 5px 5px;
+	padding: 3px 1px;
 	color: #777;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 	outline: 0;
-	border: 2px solid #DEDFE4;
+	border: 1px solid #DEDFE4;
 }
 
 input[type="text"]:focus, input[type="password"]:focus, textarea:focus
@@ -806,7 +806,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus
 	-webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
 	box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
-	border: 2px solid #5dafde;
+	border: 1px solid #5dafde;
 	background-color: #d5edfb;
 }
 

@@ -22,15 +22,17 @@
 		<div class="green noUnderline">
 			<span class="bold">@Html.ActionLink(Model.Localisation.Name, MVC.Mobile.Localisation.ActionNames.FullSearchResultDetail, rvd)</span>&nbsp;-&nbsp;@String.Format("{0:0.##} km", Model.Distance)
 		</div>
-		<div class="itemCommDiv">
+		<div class="itemCommDiv float-left">
 			@Html.Partial(MVC.Mobile.Localisation.Views._CommentSummary, Model.Localisation)
 		</div>
+        <div class="itemLogos float-left">
+			@Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
+		</div>
+        <div class="clear">
+	    </div>
 		<div>@Model.Localisation.Adress&nbsp;-&nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</div>
 		<div>
-			<span class="bold lightblue">@Localisation.LocalisationTypes[Model.Localisation.TypeValue]</span> - @Html.TruncateAtWord(Model.Localisation.Description, 80)
-		</div>
-		<div class="itemLogos">
-			@Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
+			<span class="bold lightblue">@Localisation.LocalisationTypes[Model.Localisation.TypeValue]</span> - @Html.TruncateAtWord(Model.Localisation.Description, 50)
 		</div>
 	</div>
 	<div class="clear">

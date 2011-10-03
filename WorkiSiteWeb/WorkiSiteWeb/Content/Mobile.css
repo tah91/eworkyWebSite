@@ -1,6 +1,34 @@
-﻿body
+﻿/* GENERAL
+----------------------------------------------------------*/
+
+button
 {
-    /*width:310px;*/
+    margin:3px;
+}
+
+button, input[type="submit"], select
+{
+	width:100%;
+}
+
+input[type="text"], input[type="password"]
+{
+	width:100%;
+}
+
+.blockContainer
+{
+	padding:10px;
+}
+
+/* LAYOUT
+----------------------------------------------------------*/
+html,
+body 
+{
+	margin:0;
+	padding:0;
+	height:100%;
 }
 
 .page
@@ -9,18 +37,52 @@
 	width: auto;
 	margin-left: auto;
 	margin-right: auto;
+	position:relative;
+	min-height:100%;
 }
 
 #main 
 {
     text-align:center;
+	min-height:100%;
+	position:relative;
+}
+
+#wrapper 
+{
+
+}
+
+#content
+{
+	padding-bottom:20px; /* Height of the footer element */
+}
+
+.footer
+{
+	background:#2c3c4c;
+	width:100%;
+	height:20px;
+	position:absolute;
+	bottom:0;
+	left:0;
 }
 
 .logo
 {
 	background-image: url('images/logoMobile.png');
-	width: 147px;
+	width: 100px;
+	height:32px;
+	margin: 10px;
 }
+
+.headerDesc
+{
+    margin:25px 10px 0 0;
+}
+
+/* RESULT ITEM
+----------------------------------------------------------*/
 
 .resultItem
 {
@@ -29,16 +91,16 @@
     font-size:0.9em;
 }
 
-.resultItemInfos
-{
-    width:185px;
-}
-
 .resultItemGallery
 {
     margin-right:10px;
-    width:25%;
-    height: 130px;
+    width:26%;
+    height: 120px;
+}
+
+.resultItemGallery img 
+{
+    max-height: 100px;
 }
 
 .itemDesc
@@ -46,17 +108,56 @@
     width:70%;
 }
 
-button, input[type="submit"]
+.itemCommDiv
 {
-	width:210px;
+    margin: 5px 5px 0 0;
 }
 
-.blockContainer
+.itemLogos 
 {
-	padding:10px;
+    width:auto;
 }
+
+/* DETAIL
+----------------------------------------------------------*/
+
+.localisationGallery
+{
+    height: 200px;
+}
+
+.localisationDetailHead
+{
+    padding:0 10px;
+}
+
+.localisationName
+{
+    font-size:1.7em;
+}
+
+.localisationDetail
+{
+    text-align:left;
+}
+
+.localisationTitle
+{
+    font-size:80%;
+    width: 100%;
+}
+
+/* COMMENTS
+----------------------------------------------------------*/
 
 .commentContent
 {
-	width:70%;
+    margin-left:10px;
+	width:90%;
+	float:right;
+}
+
+.commentAvatar
+{
+    display:none;
 }
