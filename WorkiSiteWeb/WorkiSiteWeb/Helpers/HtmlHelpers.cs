@@ -91,24 +91,30 @@ namespace Worki.Web.Helpers
 			return MvcHtmlString.Create(result.ToString());
 		}
 
-        public static MvcHtmlString PageDetailLinks(this HtmlHelper html, int currentIndex, int itemCount, Func<int, string> pageUrl, string previous, string next)
+        public static MvcHtmlString PageDetailLinks(this HtmlHelper html, int currentIndex, int itemCount, Func<int, string> pageUrl, string previous, string next, string divClass)
         {
             StringBuilder result = new StringBuilder();
             if (currentIndex > 0)
             {
                 var previousIndex = currentIndex - 1;
+                TagBuilder div = new TagBuilder("div");
+                div.AddCssClass(divClass);
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(previousIndex));
                 tag.InnerHtml = previous;
-                result.AppendLine(tag.ToString());
+                div.InnerHtml = tag.ToString();
+                result.AppendLine(div.ToString());
             }
             if (currentIndex < itemCount - 1)
             {
                 var nextIndex = currentIndex + 1;
+                TagBuilder div = new TagBuilder("div");
+                div.AddCssClass(divClass);
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(nextIndex));
                 tag.InnerHtml = next;
-                result.AppendLine(tag.ToString());
+                div.InnerHtml = tag.ToString();
+                result.AppendLine(div.ToString());
             }
             return MvcHtmlString.Create(result.ToString());
         }

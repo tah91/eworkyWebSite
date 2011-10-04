@@ -22,7 +22,7 @@
 					@Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
 				</div>
 	   			<div>
-					<button class="button" type="button" id="submitCurrentLoc">Près de ma position</button>
+					<button class="buttonStd buttonBlue" type="button" id="submitCurrentLoc">Près de ma position</button>
 				</div>
 				<div>
 					ou près de
@@ -31,7 +31,7 @@
 					@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation }) 
 				</div>
 				<div>
-					<input class="button" type="submit" value="Go !" />
+					<input class="buttonStd buttonBlue" type="submit" value="Go !" />
 				</div>
 
 			}

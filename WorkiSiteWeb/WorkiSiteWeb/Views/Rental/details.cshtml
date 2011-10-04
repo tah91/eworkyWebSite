@@ -12,7 +12,7 @@
 
 @if (Model.FromSearch)
 { 
-<div class="pager pagerTop float-left">
+<div class="buttonStd buttonBlue linkImg float-left">
     @{ 
 	    var rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
 	    foreach (string key in Request.QueryString.Keys)
@@ -20,10 +20,10 @@
 		    rvd[key] = Request.QueryString[key];
 	    }
     }
-    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.ReturnToResult, MVC.Rental.ActionNames.FullSearchResult, rvd, new System.Collections.Generic.Dictionary<string, object> { { "class", "bold" } })
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.ReturnToResult, MVC.Rental.ActionNames.FullSearchResult, rvd)
 </div>
-<div class="pager pagerTop float-right">
-    @Html.PageDetailLinks(Model.Index, Model.TotalItems, x => { rvd["index"] = x; return Url.Action(MVC.Rental.ActionNames.FullSearchResultDetail, rvd); }, "< Fiche Précédente", "Fiche Suivante >")
+<div class="buttonStd buttonBlue linkImg float-right">
+    @Html.PageDetailLinks(Model.Index, Model.TotalItems, x => { rvd["index"] = x; return Url.Action(MVC.Rental.ActionNames.FullSearchResultDetail, rvd); }, "< Fiche Précédente", "Fiche Suivante >", "buttonStd buttonBlue linkImg inline-block")
 </div>
 <div class="clear">
 </div>

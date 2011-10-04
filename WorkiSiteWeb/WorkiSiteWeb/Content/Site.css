@@ -478,23 +478,35 @@ div.pagerTop
 /* BUTTON / LINK
 ----------------------------------------------------------*/
 
-.button
+.buttonStd
 {
 	overflow: visible;
 	padding: 5px 10px;
 	color: white;
-	border: 1px solid #5DAFDE;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	border-image: initial;
+	font-weight:bold;
+	margin: 3px;
+}
+
+.buttonStd a
+{
+	color: white;
+	text-align: center;
+}
+
+.buttonBlue
+{
+	border: 1px solid #5DAFDE;
 	background-color: #5dafde;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
 	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
 	background-image: -webkit-linear-gradient(top,#5DAFDE,#4787ed);
 	background-image: linear-gradient(top,#5DAFDE,#4787ed);
-	border-image: initial;
 }
 
-.button:hover
+.buttonBlue:hover
 {
 	background-color: #379ed6;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);
@@ -503,51 +515,56 @@ div.pagerTop
 	background-image: linear-gradient(top,#379ed6,#4787ed);
 }
 
-.btn_link
+.buttonOrange
 {
-	color:White;
-	text-decoration:none;
-	text-align:center;
-	font-style:normal;
-	font-size:15px;
+	border: 1px solid #f9af52;
+	background-color: #f9af52;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f9af52, endColorstr=#ffa619);
+	background-image: -moz-linear-gradient(top,#f9af52,#ffa619);
+	background-image: -webkit-linear-gradient(top,#f9af52,#ffa619);
+	background-image: linear-gradient(top,#f9af52,#ffa619);
 }
 
-.btn_link input[type="submit"]
+.buttonOrange:hover
 {
-	padding:0;
+	background-color: #e48000;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e48000, endColorstr=#e08400);
+	background-image: -moz-linear-gradient(top,#e48000,#e08400);
+	background-image: -webkit-linear-gradient(top,#e48000,#e08400);
+	background-image: linear-gradient(top,#e48000,#e08400);
 }
 
-.btn_link input
+.buttonGreen
 {
-	color:White;
-	text-decoration:none;
-	text-align:center;
-	font-style:normal;
-	font-size:14px;
+	border: 1px solid #bbd31f;
+	background-color: #bbd31f;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#bbd31f, endColorstr=#d4f500);
+	background-image: -moz-linear-gradient(top,#bbd31f,#d4f500);
+	background-image: -webkit-linear-gradient(top,#d9d523,#aea842);
+	background-image: linear-gradient(top,#bbd31f,#d4f500);
 }
 
-.btn_link:hover
+.buttonGreen:hover
 {
-	cursor:pointer;
+	background-color: #bde185;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#bde185, endColorstr=#a2bb54);
+	background-image: -moz-linear-gradient(top,#bde185,#a2bb54);
+	background-image: -webkit-linear-gradient(top,#bde185,#a2bb54);
+	background-image: linear-gradient(top,#bde185,#a2bb54);
 }
 
-.btn_content
-{
-	margin-top:4px;
-}
+/*.btn_blue{ background-image:url('images/btn_sprites.png'); background-position: 0 0; width: 104px; height: 23px; }
+.btn_blue:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -73px; width: 104px; height: 23px; }*/ 
+/*.btn_green_check{ background-image:url('images/btn_sprites.png'); background-position: 0 -146px; width: 128px; height: 27px; } 
+.btn_green_check:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -223px; width: 128px; height: 27px; } */
+/*.btn_green_roulette{ background-image:url('images/btn_sprites.png'); background-position: 0 -300px; width: 113px; height: 25px; } 
+.btn_green_roulette:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -375px; width: 113px; height: 25px; } */
+/*.btn_orange_plus{ background-image:url('images/btn_sprites.png'); background-position: 0 -450px; width: 113px; height: 25px; } 
+.btn_orange_plus:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -525px; width: 113px; height: 25px; } */
+/*.btn_purple_star{ background-image:url('images/btn_sprites.png'); background-position: 0 -600px; width: 113px; height: 25px; } 
+.btn_purple_star:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -675px; width: 113px; height: 25px; }*/
 
-.btn_blue{ background-image:url('images/btn_sprites.png'); background-position: 0 0; width: 104px; height: 23px; }
-.btn_blue:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -73px; width: 104px; height: 23px; } 
-.btn_green_check{ background-image:url('images/btn_sprites.png'); background-position: 0 -146px; width: 128px; height: 27px; } 
-.btn_green_check:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -223px; width: 128px; height: 27px; } 
-.btn_green_roulette{ background-image:url('images/btn_sprites.png'); background-position: 0 -300px; width: 113px; height: 25px; } 
-.btn_green_roulette:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -375px; width: 113px; height: 25px; } 
-.btn_orange_plus{ background-image:url('images/btn_sprites.png'); background-position: 0 -450px; width: 113px; height: 25px; } 
-.btn_orange_plus:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -525px; width: 113px; height: 25px; } 
-.btn_purple_star{ background-image:url('images/btn_sprites.png'); background-position: 0 -600px; width: 113px; height: 25px; } 
-.btn_purple_star:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -675px; width: 113px; height: 25px; }
-
-.btn_blue
+/*.btn_blue
 {
 	color: White;
 	font-size: 14px;
@@ -561,9 +578,9 @@ div.pagerTop
 	text-align: center;
 	padding-top: 3px;
 	font-size: 14px;
-}
+}*/
 
-.btn_text
+/*.btn_text
 {
 	color: white;
 	text-align: center;
@@ -575,24 +592,24 @@ div.pagerTop
 {
 	color: white;
 	text-align: center;
-	/*padding: 4px 0 0 7px;*/
+	padding: 4px 0 0 7px;
 	font-size: 14px;
-}
+}*/
 
-.btn_orange_plus_right
+/*.btn_orange_plus_right
 {
 	padding: 0 0 0 20px;
-}
+}*/
 
-.btn_green_check
+/*.btn_green_check
 {
 	color: white;
 	text-align: center;
 	padding-left: 20px;
 	font-size: 14px;
-}
+}*/
 
-.editionLink
+/*.editionLink
 {
     background: #DDD;
     padding: 5px;
@@ -606,7 +623,7 @@ div.pagerTop
 .editionLink a
 {
     text-decoration: none;
-}
+}*/
 
 .boldLink
 {
@@ -616,6 +633,44 @@ div.pagerTop
 .boldLink a
 {
     text-decoration:none;
+}
+
+/* MARGIN
+----------------------------------------------------------*/
+
+.marginb5
+{
+    margin-bottom:5px;
+}
+
+.marginl5
+{
+    margin-left:5px;
+}
+
+.marginl10
+{
+    margin-left:10px;
+}
+
+.marginl0
+{
+    margin-left:0px;
+}
+
+.marginr10
+{
+    margin-right:10px;
+}
+
+.margint15
+{
+    margin-top:15px;
+}
+
+.margint10
+{
+    margin-top:10px;
 }
 
 /* Map
