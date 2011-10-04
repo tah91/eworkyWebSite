@@ -444,10 +444,10 @@
                 return $();
             }
             tmpl.css('display', 'none');
-            tmpl.find('.delete button').button({
-                text: false,
-                icons: {primary: 'ui-icon-trash'}
-            });
+//            tmpl.find('.delete button').button({
+//                text: false,
+//                icons: {primary: 'ui-icon-trash'}
+//            });
             tmpl.find('a').each(this._enableDragToDesktop);
             return tmpl;
         },

@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.LocalisationFormViewModel
+﻿@model Worki.Data.Models.IPictureDataProvider
 
 <script type="text/javascript">
     require(["@MiscHelpers.jqueryui"], function () {
@@ -29,7 +29,7 @@
                         }
 
                     // Load existing files:
-                    $.post('@Url.Action(MVC.UploadImage.LoadFiles())',{ id: @Model.Localisation.ID, type: "@ProviderType.Localisation" }, _renderFiles, "json");
+                    $.post('@Url.Action(MVC.UploadImage.LoadFiles())',{ id: @Model.GetId(), type: "@ProviderType.Localisation" }, _renderFiles, "json");
 
                     // Open download dialogs via iframes,
                     // to prevent aborting current uploads:
@@ -90,18 +90,18 @@
                 <input name="@PictureData.HiddenImagePrefix${name}" type="hidden" value="@PictureData.HiddenImagePrefix${name}">
             </td>
             <td>
-                <div>
-                    <label for="@PictureData.IsDefaultPrefix${name}">@Worki.Resources.Views.Shared.SharedString.Principal</label>
-                </div>
+                <label for="@PictureData.IsDefaultPrefix${name}">@Worki.Resources.Views.Shared.SharedString.Principal</label>      
+            </td>
+            <td>
                 <div class="radioDiv">
                 {{if is_default}}
-                    <input checked="${is_default}" name="@PictureData.IsDefaultPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
+                    <input id="@PictureData.IsDefaultPrefix${name}" checked="${is_default}" name="@PictureData.IsDefaultPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
                 {{else}}
-                    <input name="@PictureData.IsDefaultPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
+                    <input id="@PictureData.IsDefaultPrefix${name}" name="@PictureData.IsDefaultPrefix" type="radio" value="@PictureData.HiddenImagePrefix${name}">
                 {{/if}}
                 </div>          
             </td>
-            <td>
+            <!--<td>
                 <div>
                     <label for="@PictureData.IsLogoPrefix${name}">@Worki.Resources.Views.Shared.SharedString.Logo</label>
                 </div>
@@ -113,10 +113,10 @@
                 {{/if}}
                 </div>            
             </td>
-            <td colspan="2"></td>
+            <td colspan="2"></td>-->
         {{/if}}
         <td class="delete">
-            <button data-type="${delete_type}" data-url="${delete_url}">@Worki.Resources.Views.Shared.SharedString.Delete</button>
+            <button title="@Worki.Resources.Views.Shared.SharedString.Delete" class="crossButton cross" data-type="${delete_type}" data-url="${delete_url}"></button>
         </td>
     </tr>
 </script>

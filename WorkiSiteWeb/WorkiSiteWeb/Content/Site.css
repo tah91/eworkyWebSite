@@ -1482,3 +1482,11 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 .serviceIcones_wifip_h{ background-image:url('images/serviceIcones.png'); background-position: 0 -1638px; width: 28px; height: 28px; } 
 .serviceIcones_wifip_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -1716px; width: 28px; height: 28px; } 
 .serviceIcones_wifip_on{ background-image:url('images/serviceIcones.png'); background-position: 0 -1794px; width: 28px; height: 28px; }  
+
+.crossButton
+{
+    margin-top: 9px;
+    border:none;
+}
+.cross{ background-image:url('images/cross.png'); background-position: 0 0;width: 12px; height: 12px; background-repeat:no-repeat; } 
+.cross:hover{ background-image:url('images/cross.png'); background-position: 0 -62px; width: 12px; height: 12px; background-repeat:no-repeat; } 

@@ -12,6 +12,12 @@ namespace Worki.Data.Models
         List<PictureData> GetPictureData();
 
         /// <summary>
+        /// Internal id of the provider
+        /// </summary>
+        /// <returns>the id</returns>
+        int GetId();
+
+        /// <summary>
         /// Get filename of default image
         /// </summary>
         /// <returns>the filename</returns>

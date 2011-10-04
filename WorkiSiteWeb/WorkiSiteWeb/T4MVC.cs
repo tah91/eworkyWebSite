@@ -469,7 +469,6 @@ namespace Links {
             public static readonly string ajout_jpg = Url("ajout.jpg");
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string avail_png = Url("avail.png");
-            public static readonly string available_png = Url("available.png");
             public static readonly string blog_png = Url("blog.png");
             public static readonly string btn_png = Url("btn.png");
             public static readonly string btn_logo_png = Url("btn_logo.png");
@@ -479,6 +478,7 @@ namespace Links {
             public static readonly string comm_content_png = Url("comm_content.png");
             public static readonly string comm_content1_png = Url("comm_content1.png");
             public static readonly string coworking_png = Url("coworking.png");
+            public static readonly string cross_png = Url("cross.png");
             public static readonly string csv_import_png = Url("csv-import.png");
             public static readonly string delete_gif = Url("delete.gif");
             public static readonly string drh_png = Url("drh.png");
@@ -496,7 +496,6 @@ namespace Links {
             public static readonly string logo_fiche_png = Url("logo_fiche.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
-            public static readonly string logo_nveau_png = Url("logo_nveau.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
             public static readonly string loupe_png = Url("loupe.png");
             public static readonly string menu_middle_png = Url("menu_middle.png");
@@ -530,10 +529,6 @@ namespace Links {
             public static readonly string student_png = Url("student.png");
             public static readonly string submit_add_png = Url("submit_add.png");
             public static readonly string submit_search_png = Url("submit_search.png");
-            public static readonly string triangle_blue_png = Url("triangle_blue.png");
-            public static readonly string triangle_green_png = Url("triangle_green.png");
-            public static readonly string triangle_grey_png = Url("triangle_grey.png");
-            public static readonly string triangle_orange_png = Url("triangle_orange.png");
             public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
             public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
             public static readonly string ui_bg_glass_55_fbf9ee_1x400_png = Url("ui-bg_glass_55_fbf9ee_1x400.png");
@@ -547,7 +542,6 @@ namespace Links {
             public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
             public static readonly string ui_icons_888888_256x240_png = Url("ui-icons_888888_256x240.png");
             public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
-            public static readonly string uniformSprite_png = Url("uniformSprite.png");
             public static readonly string users_jpg = Url("users.jpg");
             public static readonly string visitor_jpg = Url("visitor.jpg");
             public static readonly string vu_tele_png = Url("vu-tele.png");
@@ -1569,7 +1563,6 @@ namespace Worki.Web.Controllers {
             public readonly string _IconeServices = "~/Views/Localisation/_IconeServices.cshtml";
             public readonly string _LocalisationDetail = "~/Views/Localisation/_LocalisationDetail.cshtml";
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
-            public readonly string _LocalisationGalleryScript = "~/Views/Localisation/_LocalisationGalleryScript.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
@@ -2200,6 +2193,7 @@ namespace T4MVC {
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";
             public readonly string _MetaDataHeader = "~/Views/Shared/_MetaDataHeader.cshtml";
             public readonly string _PictureContainer = "~/Views/Shared/_PictureContainer.cshtml";
+            public readonly string _UploadGalleryScript = "~/Views/Shared/_UploadGalleryScript.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
         }
     }

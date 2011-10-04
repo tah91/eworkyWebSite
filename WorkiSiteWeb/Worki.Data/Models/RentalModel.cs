@@ -207,6 +207,11 @@ namespace Worki.Data.Models
 
         #region IPictureDataProvider
 
+        public int GetId()
+        {
+            return Id;
+        }
+
         public List<PictureData> GetPictureData()
         {
             if (RentalFiles != null)

@@ -282,6 +282,7 @@
     </Content>
     <Content Include="Content\boilerplate.css" />
     <Content Include="Content\images\blog.png" />
+    <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\retour.png" />
@@ -380,7 +381,6 @@
     <Content Include="Content\icons\info.gif" />
     <Content Include="Content\images\ajout.jpg" />
     <Content Include="Content\images\avail.png" />
-    <Content Include="Content\images\available.png" />
     <Content Include="Content\images\a_la_une.png" />
     <Content Include="Content\images\btn.png" />
     <Content Include="Content\images\btn_logo.png" />
@@ -400,7 +400,6 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_fiche.png" />
     <Content Include="Content\images\logo_footer.png" />
-    <Content Include="Content\images\logo_nveau.png" />
     <Content Include="Content\images\loupe.png" />
     <Content Include="Content\images\menu_middle.png" />
     <Content Include="Content\images\menu_middleold.png" />
@@ -426,10 +425,6 @@
     <Content Include="Content\images\student.png" />
     <Content Include="Content\images\submit_add.png" />
     <Content Include="Content\images\submit_search.png" />
-    <Content Include="Content\images\triangle_blue.png" />
-    <Content Include="Content\images\triangle_green.png" />
-    <Content Include="Content\images\triangle_grey.png" />
-    <Content Include="Content\images\triangle_orange.png" />
     <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -443,7 +438,6 @@
     <Content Include="Content\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\images\uniformSprite.png" />
     <Content Include="Content\images\users.jpg" />
     <Content Include="Content\images\worker.png" />
     <Content Include="Content\images\worki_fb.jpg" />
@@ -597,7 +591,7 @@
     <Content Include="Views\Admin\IndexVisitor.cshtml" />
     <Content Include="Views\Admin\supprimer-utilisateur.cshtml" />
     <Content Include="Views\Admin\utilisateur-absent.cshtml" />
-    <Content Include="Views\Localisation\_LocalisationGalleryScript.cshtml" />
+    <Content Include="Views\Shared\_UploadGalleryScript.cshtml" />
     <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />
     <Content Include="Views\Localisation\_SelectSearchScript.cshtml" />
     <Content Include="Views\Shared\_CultureSwitchControl.cshtml" />

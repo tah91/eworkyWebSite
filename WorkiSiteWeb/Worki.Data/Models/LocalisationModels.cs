@@ -525,6 +525,11 @@ namespace Worki.Data.Models
 
         #region IPictureDataProvider
 
+        public int GetId()
+        {
+            return ID;
+        }
+
         public List<PictureData> GetPictureData()
         {
             if (LocalisationFiles != null)
