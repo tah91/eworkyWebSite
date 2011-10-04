@@ -3,27 +3,27 @@
 	var select = new SelectList(Rental.AccessTypes, "Key", "Value", Model.Type); 
   }
 
-<div class="rentalAccessRow">
+<div class="rentalAccessRow margint10">
 	@using (Html.BeginCollectionItem("Rental.RentalAccesses"))
  {
-	 <div class="editor-label">
+	 <span class="editor-label marginl10">
 		@Html.LabelFor(m => m.Type)
-	 </div>
-	 <div class="editor-field">
+	 </span>
+	 <span class="editor-field">
 		@Html.DropDownListFor(m => m.Type,select)
-	 </div>
-	<div class="editor-label">
+	 </span>
+	<span class="editor-label marginl10">
 		@Html.LabelFor(m => m.Line)
-	 </div>
-	 <div class="editor-field">
+	 </span>
+	 <span class="editor-field">
 		@Html.TextBoxFor(m => m.Line)
-	 </div>
-	 	<div class="editor-label">
+	 </span>
+	 	<span class="editor-label marginl10">
 		@Html.LabelFor(m => m.Station)
-	 </div>
-	 <div class="editor-field">
+	 </span>
+	 <span class="editor-field">
 		@Html.TextBoxFor(m => m.Station)
-	 </div>
-	 <a href="#" class="deleteRow">@Worki.Resources.Views.Shared.SharedString.Delete</a>
+	 </span>
+	 <a href="#" class="deleteRow marginl10">@Worki.Resources.Views.Shared.SharedString.Delete</a>
  }
 </div>

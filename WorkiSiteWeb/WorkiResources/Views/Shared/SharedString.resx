@@ -233,4 +233,49 @@
   <data name="DelFromFav" xml:space="preserve">
     <value>Retirer des favoris eWorky</value>
   </data>
+  <data name="Adds" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Se connecter</value>
+  </data>
+  <data name="MinChar" xml:space="preserve">
+    <value>caractères min.</value>
+  </data>
+  <data name="Modify" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="NextDesc" xml:space="preserve">
+    <value>Fiche Suivante &gt;</value>
+  </data>
+  <data name="PrevDesc" xml:space="preserve">
+    <value>&lt; Fiche Précédente</value>
+  </data>
+  <data name="ReadNext" xml:space="preserve">
+    <value>lire la suite</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
+  <data name="Suppress" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="Valid" xml:space="preserve">
+    <value>Valider</value>
+  </data>
 </root>

@@ -17,7 +17,8 @@
 	<div class="detailContent">
 		<div class="blockContainer">
 			<div class="contentBlock">
-				<h2 class="red">@Worki.Resources.Views.Rental.RentalString.Infos</h2>
+				<h3 class="red inline">@Worki.Resources.Views.Rental.RentalString.Infos</h3>
+                <span>&nbsp;&nbsp;(<span class="red">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
 				<table class="generalInfosTable tableEdit">
 					<tr>
 						<td>
@@ -118,11 +119,11 @@
 				</table>
 			</div>
 			<div class="contentBlock">
-				<h2 class="red">@Worki.Resources.Views.Rental.RentalString.Description</h2>
+				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Description</h3>
 				@Html.TextAreaFor(m=> m.Rental.Description)
 			</div> 
 			<div class="contentBlock">
-				<h2 class="red">@Worki.Resources.Views.Rental.RentalString.Access</h2>
+				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Access</h3>
 				<table class="generalInfosTable tableEdit">
 					<tr>
 						<td>
@@ -179,10 +180,10 @@
 						 @Html.Partial(MVC.Rental.Views._RentalAccess,item)
 					}
 				</div>
-				@Html.ActionLink("Add another...", "AddRentalAccess", null, new { id = "addItem" })
+				@Html.ActionLink(Worki.Resources.Views.Rental.RentalString.AddAnother, "AddRentalAccess", null, new { id = "addItem" })
 			</div> 
 			<div class="contentBlock">
-				<h2 class="red">@Worki.Resources.Views.Rental.RentalString.Images</h2>
+				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Images</h3>
 				<div id="fileupload" class="borderRadius">
 					<div class="fileupload-buttonbar">
 						<label class="fileinput-button">
@@ -197,7 +198,7 @@
 				</div>
 			</div>
 			<div class="contentBlock">
-				<h2 class="red">@Worki.Resources.Views.Rental.RentalString.Features</h2>
+				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Features</h3>
 				<ul class="marginl0">
 					@foreach (var feature in Rental.RentalFeatureDict)
 					 { 

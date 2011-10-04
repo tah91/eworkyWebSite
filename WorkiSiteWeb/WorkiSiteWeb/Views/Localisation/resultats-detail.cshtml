@@ -26,7 +26,7 @@
     @Html.ActionLink(Worki.Resources.Views.Search.SearchString.ReturnToResult, MVC.Localisation.ActionNames.FullSearchResult, rvd)
 </div>
 <div class="float-right">
-    @Html.PageDetailLinks(Model.Index, Model.TotalItems, x => { rvd["index"] = x; return Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, rvd); }, "< Fiche Précédente", "Fiche Suivante >", "buttonStd buttonBlue linkImg inline-block")
+    @Html.PageDetailLinks(Model.Index, Model.TotalItems, x => { rvd["index"] = x; return Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, rvd); }, Worki.Resources.Views.Shared.SharedString.PrevDesc, Worki.Resources.Views.Shared.SharedString.NextDesc, "buttonStd buttonBlue linkImg inline-block")
 </div>
 <div class="clear">
 </div>

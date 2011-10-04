@@ -11,7 +11,7 @@
 <div class="detailContent">
 	<div class="blockContainer">
 		<div class="contentBlock">
-			<h3 class="blue">Rechercher</h3>
+			<h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.Search</h3>
 			@using (Html.BeginForm(MVC.Mobile.Localisation.ActionNames.FullSearch, MVC.Mobile.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
 			{
 				@Html.AntiForgeryToken()
@@ -22,16 +22,16 @@
 					@Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
 				</div>
 	   			<div>
-					<button class="buttonStd buttonBlue" type="button" id="submitCurrentLoc">Près de ma position</button>
+					<button class="buttonStd buttonBlue" type="button" id="submitCurrentLoc">@Worki.Resources.Views.Mobile.MobileString.NearMyPosition</button>
 				</div>
 				<div>
-					ou près de
+					@Worki.Resources.Views.Mobile.MobileString.OrNear
 				</div>
 				<div>
 					@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation }) 
 				</div>
 				<div>
-					<input class="buttonStd buttonBlue" type="submit" value="Go !" />
+					<input class="buttonStd buttonBlue" type="submit" value="@Worki.Resources.Views.Mobile.MobileString.Go" />
 				</div>
 
 			}
@@ -51,7 +51,7 @@
 				   displayName = ControllerHelpers.GetIdentityDisplayName(User.Identity);
 			   }
 				<div>
-					Bienvenue <span class="blue bold">@displayName</span> !
+					@Worki.Resources.Views.Mobile.MobileString.Welcome <span class="blue bold">@displayName</span> !
 				</div>
 				<div>
 					@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Mobile.Account.LogOff())
@@ -89,7 +89,7 @@
         			$('#searchform').submit();
                 }
             function errorCallback(error) {
-                    alert('Essayer de rechercher en entrant un lieu');
+                alert('@Worki.Resources.Views.Mobile.MobileString.AlertSearch');
                     return false;
                 }
             $('#submitCurrentLoc').click(function () {

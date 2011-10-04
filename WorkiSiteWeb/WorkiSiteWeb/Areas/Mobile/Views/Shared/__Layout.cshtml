@@ -35,7 +35,7 @@
 		<div id="header">
 			<div class="logo linkImg float-left">@Html.ActionLink(" ", MVC.Mobile.Home.ActionNames.Index, MVC.Mobile.Home.Name)</div>
 			<div class="bold blue headerDesc float-right">
-                @count lieux pour travailler
+                @count @Worki.Resources.Views.Mobile.MobileString.PlaceToWork
             </div>
 			<div class="clear">
 			</div>
@@ -50,7 +50,7 @@
 		</div>
 
         <div class="footer">
-            @Html.ActionLink("Version classique", MVC.Home.Index())
+            @Html.ActionLink(Worki.Resources.Views.Mobile.MobileString.ClassicVersion, MVC.Home.Index())
         </div>
 	</div>
     @RenderSection("ScriptContent", false)

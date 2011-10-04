@@ -17,7 +17,7 @@
 { 
     @Html.AntiForgeryToken();
     @Html.HiddenFor(model => model.UserName)
-    <input name="confirmButton" type="submit" value="Supprimer" />
+    <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
 } 
 
 

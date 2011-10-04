@@ -106,6 +106,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add another....
+        /// </summary>
+        public static string AddAnother {
+            get {
+                return ResourceManager.GetString("AddAnother", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ajouter une annonce.
         /// </summary>
         public static string AddRental {

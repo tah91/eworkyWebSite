@@ -39,7 +39,7 @@
 				var generalFeatures = Model.GetFeaturesOfType(FeatureType.General, new List<Feature> { Feature.AvoidMorning, Feature.AvoidLunch, Feature.AvoidAfternoom, Feature.AvoidEvening, Feature.LocalisationOwner });
             }
             <div class="localisationDescription contentBlock">
-                <h3 class="blue">Description</h3>
+                <h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.Description</h3>
                 <div class="localisationDesc">
                     @Html.Nl2Br(Model.Description)
                 </div>
@@ -64,7 +64,7 @@
             @if (workingPlaceFeatures.Count > 0)
 			{
             <div class="localisationServices contentBlock">
-                <h3 class="blue">Services</h3>
+                <h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.Services</h3>
 
                 <div class="featureTag">
                     <ul>
@@ -81,7 +81,7 @@
             @if (Model.HasOffer() && Model.HasOfferExcept(LocalisationOffer.FreeArea))
 			{
             <div class="localisationOffers contentBlock">
-                <h3 class="blue">Offres</h3>
+                <h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.Offers</h3>
                 @{
 				var meetingRoomFeatures = new List<Feature>();
 				var seminarRoomFeatures = new List<Feature>();

@@ -70,6 +70,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajouter.
+        /// </summary>
+        public static string Adds {
+            get {
+                return ResourceManager.GetString("Adds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ajouter aux favoris eWorky.
         /// </summary>
         public static string AddToFav {
@@ -120,6 +129,15 @@ namespace Worki.Resources.Views.Shared {
         public static string Comments {
             get {
                 return ResourceManager.GetString("Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connexion.
+        /// </summary>
+        public static string Connect {
+            get {
+                return ResourceManager.GetString("Connect", resourceCulture);
             }
         }
         
@@ -278,6 +296,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se connecter.
+        /// </summary>
+        public static string LogIn {
+            get {
+                return ResourceManager.GetString("LogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logo.
         /// </summary>
         public static string Logo {
@@ -287,11 +314,38 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to caractères min..
+        /// </summary>
+        public static string MinChar {
+            get {
+                return ResourceManager.GetString("MinChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifier.
+        /// </summary>
+        public static string Modify {
+            get {
+                return ResourceManager.GetString("Modify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nouveau sur eWorky ?.
         /// </summary>
         public static string NewOnEWorky {
             get {
                 return ResourceManager.GetString("NewOnEWorky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fiche Suivante &gt;.
+        /// </summary>
+        public static string NextDesc {
+            get {
+                return ResourceManager.GetString("NextDesc", resourceCulture);
             }
         }
         
@@ -314,6 +368,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt; Fiche Précédente.
+        /// </summary>
+        public static string PrevDesc {
+            get {
+                return ResourceManager.GetString("PrevDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Principal.
         /// </summary>
         public static string Principal {
@@ -323,11 +386,56 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to lire la suite.
+        /// </summary>
+        public static string ReadNext {
+            get {
+                return ResourceManager.GetString("ReadNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Je vous recommande de découvrir ce lieu de travail :.
         /// </summary>
         public static string Recommended {
             get {
                 return ResourceManager.GetString("Recommended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Réinitialiser.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rechercher.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Envoyer.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
             }
         }
         
@@ -350,6 +458,24 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S&apos;inscrire.
+        /// </summary>
+        public static string Subscribe {
+            get {
+                return ResourceManager.GetString("Subscribe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer.
+        /// </summary>
+        public static string Suppress {
+            get {
+                return ResourceManager.GetString("Suppress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tweet.
         /// </summary>
         public static string Tweet {
@@ -364,6 +490,15 @@ namespace Worki.Resources.Views.Shared {
         public static string Users {
             get {
                 return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valider.
+        /// </summary>
+        public static string Valid {
+            get {
+                return ResourceManager.GetString("Valid", resourceCulture);
             }
         }
         

@@ -95,7 +95,7 @@
                         </td>
                         <td>
                             <div class="editor-field">
-                                @Html.PasswordFor(m => m.Password) (@ViewData["PasswordLength"]  caractères min.)
+                                @Html.PasswordFor(m => m.Password) (@ViewData["PasswordLength"]  @Worki.Resources.Views.Shared.SharedString.MinChar)
                             </div>
                         </td>
                     </tr>
@@ -155,7 +155,7 @@
                         </td>
                         <td>
                             <div class="editor-field">
-                                <input type="submit" class="buttonStd buttonBlue" value="S'inscrire"/>
+                                <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Subscribe"/>
                             </div>
                         </td>
                     </tr>

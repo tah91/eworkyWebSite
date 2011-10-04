@@ -173,6 +173,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Mobile\MobileString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MobileString.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Rental\RentalString.Designer.cs">
       <DependentUpon>RentalString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -337,6 +342,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Mobile\MobileString.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MobileString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rental\RentalString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
