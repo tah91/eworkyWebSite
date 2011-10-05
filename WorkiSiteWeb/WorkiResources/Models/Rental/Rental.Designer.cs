@@ -88,7 +88,7 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Immédiate.
+        ///   Looks up a localized string similar to Disponibilité Immédiate.
         /// </summary>
         public static string AvailableNow {
             get {
@@ -480,6 +480,15 @@ namespace Worki.Resources.Models.Rental {
         public static string Type_369 {
             get {
                 return ResourceManager.GetString("Type_369", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type de transport.
+        /// </summary>
+        public static string TypeAccess {
+            get {
+                return ResourceManager.GetString("TypeAccess", resourceCulture);
             }
         }
     }

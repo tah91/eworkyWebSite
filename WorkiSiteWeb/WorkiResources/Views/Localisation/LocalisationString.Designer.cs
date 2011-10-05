@@ -250,7 +250,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La liste des lieux vous à été envoyée.
+        ///   Looks up a localized string similar to La liste des lieux vous a été envoyée.
         /// </summary>
         public static string ListLocSent {
             get {

@@ -6,24 +6,24 @@
 <div class="rentalAccessRow margint10">
 	@using (Html.BeginCollectionItem("Rental.RentalAccesses"))
  {
-	 <span class="editor-label marginl10">
+	 <span class="editor-label-access">
 		@Html.LabelFor(m => m.Type)
 	 </span>
-	 <span class="editor-field">
+	 <span class="editor-field marginr10">
 		@Html.DropDownListFor(m => m.Type,select)
 	 </span>
-	<span class="editor-label marginl10">
+	<span class="editor-label-access">
 		@Html.LabelFor(m => m.Line)
 	 </span>
-	 <span class="editor-field">
+	 <span class="editor-field marginr10">
 		@Html.TextBoxFor(m => m.Line)
 	 </span>
-	 	<span class="editor-label marginl10">
+	 	<span class="editor-label-access">
 		@Html.LabelFor(m => m.Station)
 	 </span>
 	 <span class="editor-field">
 		@Html.TextBoxFor(m => m.Station)
 	 </span>
-	 <a href="#" class="deleteRow marginl10">@Worki.Resources.Views.Shared.SharedString.Delete</a>
- }
+    <button class="deleteRow crossButton cross"></button>
+}
 </div>

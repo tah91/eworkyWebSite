@@ -124,7 +124,7 @@
     <value>Date de disponibilité</value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
-    <value>Immédiate</value>
+    <value>Disponibilité Immédiate</value>
   </data>
   <data name="Charges" xml:space="preserve">
     <value>Charges</value>
@@ -257,5 +257,8 @@
   </data>
   <data name="MinSurface" xml:space="preserve">
     <value>Surface Minimum</value>
+  </data>
+  <data name="TypeAccess" xml:space="preserve">
+    <value>Type de transport</value>
   </data>
 </root>
