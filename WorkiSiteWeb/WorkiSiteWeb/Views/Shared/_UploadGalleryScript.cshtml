@@ -2,11 +2,11 @@
 
 <script type="text/javascript">
     require(["@MiscHelpers.jqueryui"], function () {
-        require(["https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ", 
+        require(["https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ",
                 "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js",
                 "@Url.VersionedContent(Links.Scripts.jquery_iframe_transport_js)",
-                "@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)",
-                "@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)"], function () {
+                "@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)"], function () {
+                require(["@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)"], function () {
                 require.ready(function () {
                     // Initialize the jQuery File Upload widget:
                     $('#fileupload').fileupload({
@@ -39,6 +39,7 @@
                             .prop('src', this.href)
                             .appendTo('body');
                     });
+                });
                 });
         });
     });
