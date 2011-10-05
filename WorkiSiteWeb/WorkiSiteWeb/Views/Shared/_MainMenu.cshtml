@@ -1,4 +1,4 @@
-﻿<div id="menucontainer">
+﻿@*<div id="menucontainer">
     <ul id="menu">
     @{var controllerName = ViewData["controllerName"] as String;}
         <li> 
@@ -23,4 +23,9 @@
             </div>
         </li>
     </ul>
+</div>*@
+
+<div>
+    <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink("RECHERCHER UN ESPACE", MVC.Home.Index())</div>
+    <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink("PROPOSER UN ESPACE", MVC.Home.Index())</div>
 </div>

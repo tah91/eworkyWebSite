@@ -41,17 +41,19 @@ namespace Worki.Web.Controllers
             return View();
         }
 
-        const string _BlogPath = "http://blog.eworky.com/api/get_recent_posts/";
+        const string _BlogApiPath = "http://blog.eworky.com/api/get_recent_posts/";
+        public const string BlogUrl = "http://blog.eworky.com";
         public const string JTPath = "http://vimeo.com/29038745";
         public const string IndexViewModelContent = "IndexViewModel";
         const string _BlogCacheKey = "BlogCacheKey";
         const int _CacheDaySpan = 1;
+        const int _MaxBlogItem = 3;
 
         IEnumerable<BlogPost> GetBlogPosts()
         {
             var fromCache = DataCacheSingleton.Instance.Cache.Get(_BlogCacheKey);
-            if (fromCache != null)
-                return (IEnumerable<BlogPost>)fromCache;
+            //if (fromCache != null)
+            //    return (IEnumerable<BlogPost>)fromCache;
 
             var toRet = new List<BlogPost>();
 
@@ -59,9 +61,10 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    string textString = client.DownloadString(_BlogPath);
+                    string textString = client.DownloadString(_BlogApiPath);
                     JObject blogJson = JObject.Parse(textString);
                     var posts = blogJson["posts"];
+                    var added = 0;
                     foreach (var item in posts)
                     {
                         toRet.Add(new BlogPost()
@@ -72,6 +75,8 @@ namespace Worki.Web.Controllers
                             Image = item["attachments"].Count() != 0 ? (string)item["attachments"][0]["images"]["medium"]["url"] : (string)item["thumbnail"],
                             PublicationDate = DateTime.Parse((string)item["date"])
                         });
+                        if (++added >= _MaxBlogItem)
+                            break;
                     }
                     _Logger.Info("blog get_recent_posts ");
                 }
@@ -80,7 +85,7 @@ namespace Worki.Web.Controllers
                     _Logger.Error(ex.Message);
                 }
             }
-            DataCacheSingleton.Instance.Cache.Add(_BlogCacheKey, toRet, new TimeSpan(_CacheDaySpan, 0, 0, 0));
+            //DataCacheSingleton.Instance.Cache.Add(_BlogCacheKey, toRet, new TimeSpan(_CacheDaySpan, 0, 0, 0));
 
             return toRet;
         }

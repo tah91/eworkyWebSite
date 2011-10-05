@@ -287,6 +287,10 @@
     <Content Include="Content\boilerplate.css" />
     <Content Include="Content\images\blog.png" />
     <Content Include="Content\images\cross.png" />
+    <Content Include="Content\images\homeLogo1.png" />
+    <Content Include="Content\images\homeLogo2.png" />
+    <Content Include="Content\images\homeLogo3.png" />
+    <Content Include="Content\images\homeLogo4.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\retour.png" />

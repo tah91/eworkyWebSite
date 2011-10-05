@@ -10,75 +10,190 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-<div class="mainRow">
-
-    @{
-        var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
-    }
-    @Html.Partial(MVC.Home.Views._PeopleSlider, indexViewModel.WelcomePeople)
-    <div class="halfContainer indexSearchContainer float-right">
-        <div class="indexSearchFormDiv relative">
-            <h2 class="blue">
-                @string.Format("{0:### ### ###} {1}", indexViewModel.LocalisationCount, Worki.Resources.Views.Home.HomeString.Workspace)</h2>
-            <div class="searchIndexHead darkblue">
-                <h2>@Worki.Resources.Views.Home.HomeString.SearchWorkspace</h2>
-            </div>
-            @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
-            {
-                @Html.AntiForgeryToken();
-            <table class="indexFormTable">
-                <tr>
-                    <td>
-                        <div class="darkblue">
-                            <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers)
-                            @Html.ValidationMessage("LocalisationOffer", "")
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="darkblue">
-                            <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
-                            @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <p>
-                @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-            </p>
-            <div class="indexSearchIndexLinks">
-                <div class="indexSearchIndexLinksLeft float-left">
-                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
-                </div>
-                <div class="indexSearchIndexLinksRight float-right">
-                    <input type="submit" class="imageBtn" id="btn_searchIndex" value="" />
-                </div>
-                <div class="clear">
-                </div>
-            </div>
-            }
-        </div>
-    </div>
-
-    <div class="clear">
-    </div>
+@{
+    var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
+}
+<div class="indexHeader">
+    <h1 class="darkblue">@string.Format("Trouver le meilleur endroit pour travailler parmi {0:### ### ###} lieux", indexViewModel.LocalisationCount)</h1>
 </div>
 
-<div class="adRow">
-    @Html.Partial(MVC.Home.Views._HomeDesc, indexViewModel.BlogPosts)
-    @Html.Partial(MVC.Shared.Views._IndexGallery)
+<div class="detailContent">
+    <div class="blockContainer">
+        @Html.Partial(MVC.Home.Views._PeopleSlider, indexViewModel.WelcomePeople)
+
+        <div class="indexForms indexFormContainer float-right">
+            <ul class="tabs">
+                <li><a href="#searchTab" class="bold">Recherche</a></li>
+                <li class="backgroundOrange"><a href="#bookingTab" class="bold">Reservation</a></li>
+                <li class="backgroundRed"><a href="#locationTab" class="bold">Location</a></li>
+            </ul>
+            <div class="tab_container">
+                <div id="searchTab" class="tab_content contentBlock borderBlue">
+                    <div class="indexSearchFormDiv darkblue">
+                        @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+                        {
+                            @Html.AntiForgeryToken();
+                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+                            <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                            </div>
+                            <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
+                            <div class="editor-field">
+                                @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
+                            </div>
+
+                            <div class="indexSearchIndexLinks">
+                                <div class="indexSearchIndexLinksLeft float-left">
+                                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
+                                </div>
+                                <div class="indexSearchIndexLinksRight float-right">
+                                    <input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="Rechercher >" />
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div id="bookingTab" class="tab_content contentBlock borderOrange">
+                    <div class="indexSearchFormDiv darkblue">
+                        @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+                        {
+                            @Html.AntiForgeryToken();
+                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+                            <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
+                            <div class="editor-field">
+                                @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
+                            </div>
+                            <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                            </div>
+
+                            <div class="indexSearchIndexLinks">
+                                <div class="indexSearchIndexLinksLeft float-left">
+                                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
+                                </div>
+                                <div class="indexSearchIndexLinksRight float-right">
+                                    <input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="Rechercher >" />
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div id="locationTab" class="tab_content contentBlock borderRed">
+                    <div class="indexSearchFormDiv darkblue">
+                        @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+                        {
+                            @Html.AntiForgeryToken();
+                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+                            <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
+                            <div class="editor-field">
+                                @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
+                            </div>
+                            <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                            </div>
+
+                            <div class="indexSearchIndexLinks">
+                                <div class="indexSearchIndexLinksLeft float-left">
+                                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
+                                </div>
+                                <div class="indexSearchIndexLinksRight float-right">
+                                    <input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="Rechercher >" />
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+
+        <h2 class="index_row_margin blue">eWorky en quatre mots</h2>
+        <div class="contentBlock indexLogoContainer float-left borderBlue">
+            <div class="indexLogoImage indexLogoSearch float-left">
+            </div>
+            <div class="indexLogoDesc float-right">
+                <span class="bold blue">Recherche. </span>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking qui partagent leurs lieux de travail préférés. Les lieux indiqués en bleu sont gratuits.
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="contentBlock indexLogoContainer float-right borderRed">
+            <div class="indexLogoImage indexLogoRental float-left">
+            </div>
+            <div class="indexLogoDesc float-right">
+                <span class="bold red">Location. </span>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        <div class="contentBlock indexLogoContainer float-left borderOrange">
+            <div class="indexLogoImage indexLogoBooking float-left">
+            </div>
+            <div class="indexLogoDesc float-right">
+                <span class="bold orange">Réservation. </span>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher ! Les lieux indiqués en orange sont payants et doivent être réservés.
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="contentBlock indexLogoContainer float-right borderGreen">
+            <div class="indexLogoImage indexLogoMore float-left">
+            </div>
+            <div class="indexLogoDesc float-right">
+                <span class="bold green">Et bientôt plein d’autres fonctionnalités. </span>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+
+        <h2 class="index_row_margin blue">Blog</h2>
+        <div class="contentBlock">
+            <div class="blogDesc float-left">
+                Les dernières new sur le télétravail
+                <div class="buttonStd buttonBlue linkImg"><a href="@Worki.Web.Controllers.HomeController.BlogUrl" target="_blank">Voir le blog eWorky ></a></div>
+            </div>
+            <ul class="float-right">
+            @foreach (var item in indexViewModel.BlogPosts)
+            {
+                <li class="blogItem borderRadius noUnderline">
+                    <a href="@item.Url" target="_blank" title="@Html.Raw(item.Title)">
+                        <div class="blogDate bold float-left">
+                            @item.PublicationDate.ToString("dd/MM/yyyy")
+                        </div>
+                        <div class="blogContent float-left">
+                            <h4 class="blue">@Html.Raw(item.Title)</h4>
+                            @Html.Raw(@item.Content) ...
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </a>
+                </li>        
+            }
+            </ul>
+            <div class="clear">
+            </div>
+        </div>
+@*        <div class="adRow">
+            @Html.Partial(MVC.Home.Views._HomeDesc, indexViewModel.BlogPosts)
+            @Html.Partial(MVC.Shared.Views._IndexGallery)
+        </div>*@
+    </div>
 </div>
 
 @section ScriptContent
@@ -111,6 +226,9 @@
         function initialize() {
 
         }
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
+            InitTab(".indexForms");
+        });
     </script>
     @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
 }

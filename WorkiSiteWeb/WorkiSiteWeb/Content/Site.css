@@ -145,12 +145,12 @@ body
 
 .red
 {
-    color:#D35758;
+    color:#d25657;
 }
 
 .red a
 {
-    color:#D35758;
+    color:#d25657;
 }
 
 ::selection { background: #3297FD; color: #fff; text-shadow: none; }
@@ -214,14 +214,19 @@ page width. Or, you can specify an exact pixel width. */
 
 /* Header
 ----------------------------------------------------------*/
+.header
+{
+    margin-bottom:20px;
+}
+
 .logo
 {
-	background-position: left 50%;
 	background-image: url('images/logo.png');
-	width: 382px;
-	height: 90px;
+	/*width: 147px;*/
+	width:30%;
+	height: 47px;
 	background-repeat: no-repeat;
-	padding-top:10px;
+	margin-top:20px;
 }
 
 .logo_beta
@@ -234,17 +239,36 @@ page width. Or, you can specify an exact pixel width. */
 	background-image: url('images/logo_nobeta.png');
 }
 
+.headerMenu
+{
+    width:40%;
+    text-align:center;
+}
+
+.headerMenu .buttonStd
+{
+    width: 100px;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.loginContainer
+{
+    width:30%;    
+}
+
 /*ajouter no repeat si besoin*/
 
-#btn_register{ background-image:url('images/btn_register.png'); background-position: 0 0; width: 104px; height: 23px; } 
-#btn_register:hover{ background-position: 0 -73px; } 
+/*#btn_register{ background-image:url('images/btn_register.png'); background-position: 0 0; width: 104px; height: 23px; } 
+#btn_register:hover{ background-position: 0 -73px; } */
 
-#btn_searchIndex{ background-color:#F8F8F8; background-image:url('images/btn_searchIndex.png'); background-position: 0 0; width: 133px; height: 32px; } 
-#btn_searchIndex:hover{ background-image:url('images/btn_searchIndex.png'); background-position: 0 -82px; width: 133px; height: 32px; }
+/*#btn_searchIndex{ background-color:#F8F8F8; background-image:url('images/btn_searchIndex.png'); background-position: 0 0; width: 133px; height: 32px; } 
+#btn_searchIndex:hover{ background-image:url('images/btn_searchIndex.png'); background-position: 0 -82px; width: 133px; height: 32px; }*/
 
-.arrow_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 0; background-repeat:no-repeat; width: 33px; height: 26px; } 
+/*.arrow_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 0; background-repeat:no-repeat; width: 33px; height: 26px; } 
 .mail_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 -152px; background-repeat:no-repeat; width: 33px; height: 26px; }
-.print_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 -228px; background-repeat:no-repeat; width: 33px; height: 26px; }
+.print_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 -228px; background-repeat:no-repeat; width: 33px; height: 26px; }*/
 
 .logindisplay
 {
@@ -259,7 +283,7 @@ page width. Or, you can specify an exact pixel width. */
 
 .nouveau_register
 {
-	width:200px;
+	/*width:200px;*/
 }
 
 .connect
@@ -502,7 +526,7 @@ div.pagerTop
 	background-color: #5dafde;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
 	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
-	background-image: -webkit-linear-gradient(top,#5DAFDE,#4787ed);
+	background-image: -webkit-linear-gradient(top,#5fb4e6,#449ed2);
 	background-image: linear-gradient(top,#5DAFDE,#4787ed);
 }
 
@@ -511,7 +535,7 @@ div.pagerTop
 	background-color: #379ed6;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);
 	background-image: -moz-linear-gradient(top,#379ed6,#4787ed);
-	background-image: -webkit-linear-gradient(top,#379ed6,#4787ed);
+	background-image: -webkit-linear-gradient(top,#88c7ec,#74b7de);
 	background-image: linear-gradient(top,#379ed6,#4787ed);
 }
 
@@ -1452,11 +1476,11 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
   width: 265px;
 }
 
-.mainRow
+/*.mainRow
 {
     height:330px;
     margin-bottom:30px;
-}
+}*/
 
 .serviceIcones_coffee_h{ background-image:url('images/serviceIcones.png'); background-position: 0 0; width: 28px; height: 28px; } 
 .serviceIcones_coffee_off{ background-image:url('images/serviceIcones.png'); background-position: 0 -78px; width: 28px; height: 28px; } 

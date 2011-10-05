@@ -1,92 +1,121 @@
 ﻿/* Index Page
 ----------------------------------------------------------*/
-.indexSearchContainer
+.indexHeader
+{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.borderBlue
+{
+	border-color:#5dafde!important;
+}
+
+.borderRed
+{
+	border-color:#d25657!important;
+}
+
+.borderOrange
+{
+	border-color:#f7a33a!important;
+}
+
+.borderGreen
+{
+	border-color:#bbd31f!important;
+}
+
+ul.tabs li.backgroundOrange.active, ul.tabs li.backgroundOrange.active a, html ul.tabs li.backgroundOrange.active a:hover
+{
+	background-color:#f7a33a!important;
+}
+
+ul.tabs li.backgroundRed.active, ul.tabs li.backgroundRed.active a, html ul.tabs li.backgroundRed.active a:hover
+{
+	background-color:#d25657!important;
+}
+
+ul.tabs li.backgroundGreen.active, ul.tabs li.backgroundGreen.active a, html ul.tabs li.backgroundGreen.active a:hover
+{
+	background-color:#bbd31f!important;
+}
+
+/*.indexSearchContainer
 {
     background: #f8f8f8;
+}*/
+
+.index_row_margin
+{
+    margin-top:20px;
+}
+
+.index_slides_container
+{
+    width: 49%;
+}
+
+.index_slides
+{
+    height: 310px;
+}
+
+.indexFormContainer
+{
+    width:47%;
+}
+
+.indexFormContainer ul.tabs li
+{
+    font-size:1.5em;
+}
+
+.indexFormContainer .contentBlock
+{
+    margin:0;
+    height:290px;
+    font-size: 1.7em!important;
 }
 
 .indexSearchFormDiv
 {
-    padding:50px 50px 50px 80px;
+    padding:20px;
 }
 
-.indexSearchFormDiv h2
+.indexSearchFormDiv select, .indexSearchFormDiv input[type="text"], input[type="password"]
 {
-    margin-bottom:20px;
-}
-
-.indexSearchFormDiv table td:first-child
-{
-    width:50px;
-    padding-top:10px;
-}
-
-.indexSearchFormDiv table td:last-child
-{
-    width:250px;
-}
-
-.indexSearchFormDiv select
-{
-  width: 231px;
+    width: 100%;
+    font-size:1em;
 }
 
 .indexSearchFormDiv input[type="text"], input[type="password"]
 {
-    width:227px;
+    /*width:227px;*/
 }
 
-.indexSearchFormDiv td
+.indexSearchIndexLinks
 {
-    padding: 5px;
-}
-
-.indexFormTable
-{
-    margin: 20px 0 20px 0;   
+    margin-top:40px;
 }
 
 .indexSearchIndexLinksLeft
 {
-    padding-top:10px;
-    padding-left:50px;
+
 }
 
 .indexSearchIndexLinksRight
 {
-    padding-right:65px;
+    
 }
 
-.searchIndexHead
+/*.searchIndexHead
 {
     background-position: left center;
     background: url('images/loupe.png') no-repeat;
     height: 27px;
     padding-left:50px;
-}
-
-.visitorDesc
-{
-    padding:10px;
-}
-
-.visitorDesc p
-{
-    /*padding:10px;*/
-}
-
-.visitorForm
-{
-    padding-left:10px;
-    margin-bottom: 30px;
-}
-
-.visitorBottom
-{
-    text-align:right;
-    font-style:italic;
-    font-weight:bold;
-}
+}*/
 
 #slides {
 	z-index:100;
@@ -171,13 +200,6 @@
     height:100%;
 }
 
-.index_slides
-{
-    width: 48%;
-    height: 310px;
-    border: 10px solid #f8f8f8;
-}
-
 .slides_container div.slide 
 {
 	width:480px;
@@ -185,45 +207,66 @@
 	display:block;
 }
 
-.blogSummary
+.indexLogoContainer
 {
-    width: 43%;
-    height: 200px;
-    padding:20px;
-    padding-top: 50px;
-    background: #F8F8F8 url('images/blog.png') top left no-repeat;
-    border: 2px solid gainsboro;
+    width: 47%;
+    height: 100px;
 }
 
-.blogSummary a
+.indexLogoImage
 {
-    text-decoration:none;
+    width: 122px;
+    height: 75px;
+    margin-top: 15px;
 }
 
-.blogItem
+.indexLogoSearch
 {
-    height:200px;
-    width:440px;
-    overflow:hidden;
+    background: url('images/homeLogo1.png');
 }
 
-.blogImg
+.indexLogoRental
 {
-    width:45%;
-    margin-right:5px;
+    background: url('images/homeLogo3.png');
 }
 
-.blogImg img
+.indexLogoBooking
 {
-    max-height:110px;
+    background: url('images/homeLogo2.png');
+}
+
+.indexLogoMore
+{
+    background: url('images/homeLogo4.png');
+}
+
+.indexLogoDesc
+{
+    width:70%;
 }
 
 .blogDesc
 {
-    padding-right:10px;
+    padding:10px;
+}
+
+.blogItem
+{
+    padding: 10px;
+    margin: 5px;
+}
+
+.blogItem:hover
+{
+    background:#f3f3f3
+}
+
+.blogDate
+{
+    width:120px;
 }
 
 .blogContent
 {
-    padding-top: 10px;
+    width:550px;
 }

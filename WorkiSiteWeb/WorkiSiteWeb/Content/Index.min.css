@@ -1,18 +1,20 @@
-﻿.indexSearchContainer{background:#f8f8f8}
-.indexSearchFormDiv{padding:50px 50px 50px 80px}
-.indexSearchFormDiv h2{margin-bottom:20px}
-.indexSearchFormDiv table td:first-child{width:50px;padding-top:10px}
-.indexSearchFormDiv table td:last-child{width:250px}
-.indexSearchFormDiv select{width:231px}
-.indexSearchFormDiv input[type="text"],input[type="password"]{width:227px}
-.indexSearchFormDiv td{padding:5px}
-.indexFormTable{margin:20px 0 20px 0}
-.indexSearchIndexLinksLeft{padding-top:10px;padding-left:50px}
-.indexSearchIndexLinksRight{padding-right:65px}
-.searchIndexHead{background-position:left center;background:url('images/loupe.png') no-repeat;height:27px;padding-left:50px}
-.visitorDesc{padding:10px}
-.visitorForm{padding-left:10px;margin-bottom:30px}
-.visitorBottom{text-align:right;font-style:italic;font-weight:bold}
+﻿.indexHeader{text-align:center;margin-bottom:20px}
+.borderBlue{border-color:#5dafde!important}
+.borderRed{border-color:#d25657!important}
+.borderOrange{border-color:#f7a33a!important}
+.borderGreen{border-color:#bbd31f!important}
+ul.tabs li.backgroundOrange.active,ul.tabs li.backgroundOrange.active a,html ul.tabs li.backgroundOrange.active a:hover{background-color:#f7a33a!important}
+ul.tabs li.backgroundRed.active,ul.tabs li.backgroundRed.active a,html ul.tabs li.backgroundRed.active a:hover{background-color:#d25657!important}
+ul.tabs li.backgroundGreen.active,ul.tabs li.backgroundGreen.active a,html ul.tabs li.backgroundGreen.active a:hover{background-color:#bbd31f!important}
+.index_row_margin{margin-top:20px}
+.index_slides_container{width:49%}
+.index_slides{height:310px}
+.indexFormContainer{width:47%}
+.indexFormContainer ul.tabs li{font-size:1.5em}
+.indexFormContainer .contentBlock{margin:0;height:290px;font-size:1.7em!important}
+.indexSearchFormDiv{padding:20px}
+.indexSearchFormDiv select,.indexSearchFormDiv input[type="text"],input[type="password"]{width:100%;font-size:1em}
+.indexSearchIndexLinks{margin-top:40px}
 #slides{z-index:100}
 .slides_container{overflow:hidden;position:relative;display:none}
 .slides_container div.slide{width:500px;height:325px;display:block}
@@ -25,12 +27,16 @@
 .caption_name{font-size:1.2em;color:#93c8e7}
 .caption_name a{color:#93c8e7;text-decoration:none}
 .slide_image img{width:100%;height:100%}
-.index_slides{width:48%;height:310px;border:10px solid #f8f8f8}
 .slides_container div.slide{width:480px;height:310px;display:block}
-.blogSummary{width:43%;height:200px;padding:20px;padding-top:50px;background:#F8F8F8 url('images/blog.png') top left no-repeat;border:2px solid gainsboro}
-.blogSummary a{text-decoration:none}
-.blogItem{height:200px;width:440px;overflow:hidden}
-.blogImg{width:45%;margin-right:5px}
-.blogImg img{max-height:110px}
-.blogDesc{padding-right:10px}
-.blogContent{padding-top:10px}
+.indexLogoContainer{width:47%;height:100px}
+.indexLogoImage{width:122px;height:75px;margin-top:15px}
+.indexLogoSearch{background:url('images/homeLogo1.png')}
+.indexLogoRental{background:url('images/homeLogo3.png')}
+.indexLogoBooking{background:url('images/homeLogo2.png')}
+.indexLogoMore{background:url('images/homeLogo4.png')}
+.indexLogoDesc{width:70%}
+.blogDesc{padding:10px}
+.blogItem{padding:10px;margin:5px}
+.blogItem:hover{background:#f3f3f3}
+.blogDate{width:120px}
+.blogContent{width:550px}
