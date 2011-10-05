@@ -174,4 +174,10 @@
   <data name="AgreeWithCGU" xml:space="preserve">
     <value>J'ai pris connaissance et j'accepte les Conditions Générales d'Utilisation du site eWorky ({0}).</value>
   </data>
+  <data name="ChangePasswordError" xml:space="preserve">
+    <value>Le mot de passe n'a pas pu être changé.</value>
+  </data>
+  <data name="PasswordHaveBeenChanged" xml:space="preserve">
+    <value>Le mot de passe a été changé.</value>
+  </data>
 </root>

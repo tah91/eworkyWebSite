@@ -1549,6 +1549,7 @@ namespace Worki.Web.Controllers {
             public readonly string FullSearchPerTypeSpecial = "recherche-special";
             public readonly string FullSearchResult = "resultats-liste";
             public readonly string FullSearchResultDetail = "resultats-detail";
+            public readonly string SendListLocMail = "envoyer-listlocmail";
         }
 
 
@@ -1692,6 +1693,11 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SendListLocMail() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendListLocMail);
             return callInfo;
         }
 
@@ -2169,6 +2175,7 @@ namespace T4MVC {
             public readonly string _ViewStart = "~/Views/Emails/_ViewStart.cshtml";
             public readonly string Email = "~/Views/Emails/Email.cshtml";
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
+            public readonly string ListLocMail = "~/Views/Emails/ListLocMail.cshtml";
         }
     }
 

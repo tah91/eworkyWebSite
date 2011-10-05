@@ -143,7 +143,10 @@ namespace Worki.Web.Controllers
                 {
                     _Logger.Error("Contact", ex);
                 }
-                return View(MVC.Home.Views.message_envoye);
+
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent;
+
+                return RedirectToAction(MVC.Home.Index());
             }
             return View(contact);
         }

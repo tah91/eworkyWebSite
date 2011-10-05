@@ -8,6 +8,7 @@ using Worki.Data.Models;
 using System.Linq;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Repository;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -82,7 +83,10 @@ namespace Worki.Web.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.Get(id);
 			if (member == null || member.MemberMainData == null)
-				return View(MVC.Shared.Views.Error);
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                return RedirectToAction(MVC.Home.Index());
+            }
 
 			var dashboard = GetDashboard(member);
 			return View(MVC.Profil.Views.dashboard, dashboard);
@@ -102,8 +106,11 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.Get(id);
-			if (member == null || member.MemberMainData == null)
-				return View(MVC.Shared.Views.Error);
+            if (member == null || member.MemberMainData == null)
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                return RedirectToAction(MVC.Home.Index());
+            }
 
 			var dashboard = GetDashboard(member, true);
 			return View(dashboard);
@@ -141,8 +148,12 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var item = mRepo.Get(id);
-			if (item == null)
-				return View(MVC.Shared.Views.Error);
+            if (item == null)
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                return RedirectToAction(MVC.Profil.Dashboard(id));
+            }
+				
 			return View(new ProfilFormViewModel { Member = item });
 		}
 
@@ -192,6 +203,9 @@ namespace Worki.Web.Controllers
 						m.MemberMainData.Avatar = member.MemberMainData.Avatar;
 
 					context.Commit();
+
+                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.ProfilHaveBeenEdit;
+
 					return RedirectToAction(MVC.Profil.ActionNames.Dashboard, new { id = id });
 				}
 				catch (Exception ex)

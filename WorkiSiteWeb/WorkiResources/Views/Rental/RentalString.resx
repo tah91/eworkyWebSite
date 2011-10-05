@@ -297,6 +297,15 @@
   <data name="RentalEdit" xml:space="preserve">
     <value>Editer l'annonce</value>
   </data>
+  <data name="RentalHaveBeenCreate" xml:space="preserve">
+    <value>L'annonce a été créée.</value>
+  </data>
+  <data name="RentalHaveBeenDel" xml:space="preserve">
+    <value>L'annonce a été supprimée.</value>
+  </data>
+  <data name="RentalHaveBeenEdit" xml:space="preserve">
+    <value>L'annonce a été éditée.</value>
+  </data>
   <data name="RentalSuppress" xml:space="preserve">
     <value>Effacer l'annonce</value>
   </data>

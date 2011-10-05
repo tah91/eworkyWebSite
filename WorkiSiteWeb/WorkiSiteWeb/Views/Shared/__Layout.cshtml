@@ -47,6 +47,17 @@
 
 		<div id="main" class="clearfix">
 			@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain)
+            @{if (ViewContext.TempData[MiscHelpers.Info] != null)
+              {
+                <div class="detailContent">
+                    <div class="blockContainer">
+                        <div class="contentBlock">
+                            <h3 style="margin-left:38%">@ViewContext.TempData[MiscHelpers.Info]</h3>
+                        </div>
+                    </div>
+                </div>
+              }
+            }
 			@*@Html.MvcSiteMap().SiteMapPath()*@
             @RenderBody()
 		</div>

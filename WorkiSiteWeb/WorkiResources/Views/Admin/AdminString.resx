@@ -247,7 +247,7 @@
     <value>Nous sommes désolés, l'article séléctionné n'existe pas ou a été effacé.</value>
   </data>
   <data name="PressNotFound" xml:space="preserve">
-    <value>Article non trouvé</value>
+    <value>Article non trouvé.</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>envoyer</value>
@@ -289,12 +289,48 @@
     <value>En attente d'inscription</value>
   </data>
   <data name="WorkspaceNotFound" xml:space="preserve">
-    <value>Lieu de travail non trouvé</value>
+    <value>Lieu de travail non trouvé.</value>
   </data>
   <data name="ConfirmDeleteRental" xml:space="preserve">
     <value>Veuillez confirmer la suppression de l'annonce :</value>
   </data>
   <data name="CreateRental" xml:space="preserve">
     <value>Ajouter une annonce</value>
+  </data>
+  <data name="MailHaveBeenSent" xml:space="preserve">
+    <value>L'email a été envoyé avec succès.</value>
+  </data>
+  <data name="PressHaveBeenDel" xml:space="preserve">
+    <value>L'article de presse a été supprimé.</value>
+  </data>
+  <data name="PressHaveBeenEdit" xml:space="preserve">
+    <value>L'article de presse a été édité.</value>
+  </data>
+  <data name="RoleHaveBeenSet" xml:space="preserve">
+    <value>Les rôles ont été changés.</value>
+  </data>
+  <data name="UserHaveBeenDel" xml:space="preserve">
+    <value>L'utilisateur a été supprimé.</value>
+  </data>
+  <data name="WelcomePeopleHaveBeenDel" xml:space="preserve">
+    <value>L'entrepreneur star a été supprimé.</value>
+  </data>
+  <data name="WelcomePeopleHaveBeenEdit" xml:space="preserve">
+    <value>L'entrepreneur star a été édité.</value>
+  </data>
+  <data name="PressHaveBeenCreate" xml:space="preserve">
+    <value>L'article de presse a été créé.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Utilisateur non trouvé.</value>
+  </data>
+  <data name="VisitorNotFound" xml:space="preserve">
+    <value>Visiteur non trouvé.</value>
+  </data>
+  <data name="WelcomePeopleHaveBeenCreate" xml:space="preserve">
+    <value>L'entrepreneur star a été créé.</value>
+  </data>
+  <data name="WelcomePeopleNotFound" xml:space="preserve">
+    <value>L'entrepreneur star non trouvé.</value>
   </data>
 </root>

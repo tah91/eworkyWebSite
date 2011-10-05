@@ -245,8 +245,11 @@ namespace Worki.Web.Controllers
         {
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			if (mRepo.ActivateMember(username, key) == false)
+            if (mRepo.ActivateMember(username, key) == false)
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain; 
                 return RedirectToAction(MVC.Home.Index());
+            }
             else
                 return RedirectToAction(MVC.Account.LogOn());
         }
@@ -271,7 +274,11 @@ namespace Worki.Web.Controllers
 			var member = mRepo.GetMember(username);
             //link not ok, redirect to home
             if (member == null || string.Compare(key, member.EmailKey) != 0)
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.ChangePasswordError; ;
                 return RedirectToAction(MVC.Home.Index());
+            }
+
             return View(new ChangePasswordModel { UserName = username });
         }
 
@@ -296,11 +303,13 @@ namespace Worki.Web.Controllers
 						var member = mRepo.GetMember(model.UserName);
                         var userData = member.GetUserData();
                         FormsService.SignIn(model.UserName, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+                        TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
                         return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
                     }
                     else
                     {
-                        return RedirectToAction(MVC.Account.ActionNames.ChangePasswordSuccess);
+                        TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                        return RedirectToAction(MVC.Home.Index());
                     }
                 }
                 else
@@ -363,7 +372,9 @@ namespace Worki.Web.Controllers
                     {
                         _Logger.Error("error", ex);
                     }
-                    return RedirectToAction(MVC.Account.ActionNames.ResetPasswordSuccess);
+
+                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                    return RedirectToAction(MVC.Home.Index());
                 }
                 else
                 {

@@ -601,6 +601,33 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to L&apos;annonce a été créée..
+        /// </summary>
+        public static string RentalHaveBeenCreate {
+            get {
+                return ResourceManager.GetString("RentalHaveBeenCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;annonce a été supprimée..
+        /// </summary>
+        public static string RentalHaveBeenDel {
+            get {
+                return ResourceManager.GetString("RentalHaveBeenDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;annonce a été éditée..
+        /// </summary>
+        public static string RentalHaveBeenEdit {
+            get {
+                return ResourceManager.GetString("RentalHaveBeenEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Effacer l&apos;annonce.
         /// </summary>
         public static string RentalSuppress {
