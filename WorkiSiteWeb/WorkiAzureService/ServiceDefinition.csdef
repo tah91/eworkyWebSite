@@ -23,5 +23,8 @@
     <ConfigurationSettings>
       <Setting name="DataConnectionString" />
     </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="azureconfig" storeLocation="LocalMachine" storeName="My" />
+    </Certificates>
   </WebRole>
 </ServiceDefinition>

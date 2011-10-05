@@ -157,6 +157,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Externals\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="PKCS12ProtectedConfigurationProvider, Version=1.0.0.0, Culture=neutral, PublicKeyToken=34da007ac91f901d, processorArchitecture=MSIL">
+      <HintPath>..\Externals\PKCS12ProtectedConfigurationProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Postal, Version=0.6.3.0, Culture=neutral, PublicKeyToken=45719375b8b4d528, processorArchitecture=MSIL">
       <HintPath>..\packages\postal.0.6.3\lib\net40\Postal.dll</HintPath>
     </Reference>
