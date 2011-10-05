@@ -491,5 +491,45 @@ namespace Worki.Web.Controllers
 		}
 
 		#endregion
+
+        [ActionName("envoyer-listlocmail")]
+        public virtual ActionResult SendListLocMail()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.GetMember(User.Identity.Name);
+
+            if (member.IsValidUser())
+            {
+                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var list = lRepo.GetAll();
+
+                dynamic Mail = new Email(MiscHelpers.ListLocMailView);
+                Mail.From = member.MemberMainData.FirstName + " " + member.MemberMainData.LastName + "<" + member.Email + ">";
+                Mail.To = member.Email;
+                Mail.Subject = Worki.Resources.Views.Localisation.LocalisationString.LocList;
+                Mail.Content = "";
+
+                var count = 1;
+                var total = 1;
+
+                foreach (var item in list)
+                {
+                    if (!string.IsNullOrEmpty(item.Mail))
+                    {
+                        Mail.content += item.ID + " " + "<a href=" + item.GetDetailFullUrl(Url) + ">" + item.GetDisplayName() + "</a>" + " " + item.Member.MemberMainData.LastName + " " + item.Member.Email + " " + item.Mail + "<br />";
+                        count++;
+                    }
+                    total++;
+                }
+                Mail.content += "<br />" + count + "/" + total + "<br />";
+
+                Mail.Send();
+            }
+
+            TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.ListLocSent;
+
+            return RedirectToAction(MVC.Admin.Index());
+        }
 	}
 }
