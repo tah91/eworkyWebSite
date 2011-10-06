@@ -69,16 +69,16 @@
                             @Html.AntiForgeryToken()
                             @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
                             @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                            <div class="indexSearchFormDivRow">
+                            <div class="indexSearchFormLabel">
                                 <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
                             </div>
-                            <div class="editor-field indexSearchFormDivRow">
+                            <div class="editor-field indexSearchFormField">
                                 @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
                             </div>
-                            <div class="indexSearchFormDivRow">
+                            <div class="indexSearchFormLabel">
                                 <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
                             </div>
-                            <div class="editor-field indexSearchFormDivRow">
+                            <div class="editor-field indexSearchFormField">
                                 @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
                             </div>
 

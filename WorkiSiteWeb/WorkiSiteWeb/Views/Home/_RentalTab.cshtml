@@ -7,13 +7,13 @@
             @Html.AntiForgeryToken()
             @Html.HiddenFor(model => model.RentalData.Latitude)
             @Html.HiddenFor(model => model.RentalData.Longitude)
-            <div class="indexSearchFormDivRow">
+            <div class="indexSearchFormLabel">
                 <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
             </div>
-            <div class="editor-field indexSearchFormDivRow">
+            <div class="editor-field indexSearchFormField">
                 @Html.TextBoxFor(model => model.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "rentalInputIndex" })
             </div>
-            <div class="indexSearchFormDivRow">
+            <div class="indexSearchFormLabel">
                 <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
             </div>
             <div class="editor-field">
