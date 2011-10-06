@@ -50,39 +50,42 @@ namespace Worki.Data.Models
             var idsToLoad = new List<int>();
             var rentals = _Context.Rentals.AsQueryable();
 
-            if (criteria.MinRate != null && criteria.MaxRate != null)
+            if (criteria.MinRate != null)
             {
                 var min_rate = criteria.MinRate.Value;
-                var max_rate = criteria.MaxRate.Value;
-
-                if (min_rate > max_rate)
-                {
-                    var swap = min_rate;
-                    min_rate = max_rate;
-                    max_rate = swap;
-                }
 
                 rentals = from rent
                                in rentals
-                          where ((rent.Rate + rent.Charges) <= max_rate) && ((rent.Rate + rent.Charges) >= min_rate)
+                          where ((rent.Rate + rent.Charges) >= min_rate)
                           select rent;
             }
 
-            if (criteria.MinSurface != null && criteria.MaxSurface != null)
+            if (criteria.MaxRate != null)
             {
-                var min_surface = criteria.MinSurface.Value;
-                var max_surface = criteria.MaxSurface.Value;
-
-                if (min_surface > max_surface)
-                {
-                    var swap = min_surface;
-                    min_surface = max_surface;
-                    max_surface = swap;
-                }
+                var max_rate = criteria.MaxRate.Value;
 
                 rentals = from rent
                                in rentals
-                          where (rent.Surface <= max_surface) && (rent.Surface >= min_surface)
+                          where ((rent.Rate + rent.Charges) <= max_rate)
+                          select rent;
+            }
+
+            if (criteria.MinSurface != null)
+            {
+                var min_surface = criteria.MinSurface.Value;
+
+                rentals = from rent
+                               in rentals
+                          where (rent.Surface >= min_surface)
+                          select rent;
+            }
+            if (criteria.MaxSurface != null)
+            {
+                var max_surface = criteria.MaxSurface.Value;
+
+                rentals = from rent
+                               in rentals
+                          where (rent.Surface <= max_surface)
                           select rent;
             }
 
@@ -114,7 +117,7 @@ namespace Worki.Data.Models
             {
                 rentals = from rent
                                in rentals
-                          where ((rent.Address + " " + rent.City + " " + rent.Country).ToLower().Contains(criteria.Place.ToLower()))
+                          where ((rent.Address + " " + rent.PostalCode + " " + rent.City + " " + rent.Country).ToLower().Contains(criteria.Place.ToLower()))
                           select rent;
             }
 

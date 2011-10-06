@@ -30,5 +30,5 @@ input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}
 .halfMiniContainer{height:130px;width:50%}
 .halfMiniContainer2{height:40px;width:50%}
 input#RentalData_AvailableDate{width:46%;margin:0}
-select#RentalData_Type{width:180px}
+select#RentalData_Type{width:205px}
 input#Place{width:311px}
