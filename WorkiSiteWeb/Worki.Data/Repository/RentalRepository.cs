@@ -45,9 +45,6 @@ namespace Worki.Data.Models
 
         #endregion
 
-        //the radius of circle within which the results of the seach must be (in km)
-        public const float BoundDistance = 50;
-
         public IList<Rental> FindByCriteria(RentalSearchCriteria criteria)
         {
             var idsToLoad = new List<int>();
@@ -89,6 +86,38 @@ namespace Worki.Data.Models
                           select rent;
             }
 
+            if ((criteria.RentalData.AvailableDate != null && criteria.RentalData.AvailableDate.HasValue) || criteria.RentalData.AvailableNow)
+            {
+                rentals = from rent
+                               in rentals
+                          where ((System.DateTime.Compare(rent.AvailableDate.Value, criteria.RentalData.AvailableDate.Value) <= 0) || (rent.AvailableNow == true))
+                          select rent;
+            }
+
+            if (criteria.RentalData.LeaseType != -1)
+            {
+                rentals = from rent
+                               in rentals
+                          where (rent.LeaseType == criteria.RentalData.LeaseType)
+                          select rent;
+            }
+
+            if (criteria.RentalData.Type != -1)
+            {
+                rentals = from rent
+                               in rentals
+                          where (rent.Type == criteria.RentalData.Type)
+                          select rent;
+            }
+
+            if (criteria.Place != null)
+            {
+                rentals = from rent
+                               in rentals
+                          where ((rent.Address + " " + rent.City + " " + rent.Country).ToLower().Contains(criteria.Place.ToLower()))
+                          select rent;
+            }
+
             var templist = (from item in rentals
                             select new
                             {
@@ -100,62 +129,7 @@ namespace Worki.Data.Models
                                             })
                             }).ToList();
 
-
             var neededFeatures = new List<FeatureProjection>();
-
-            var lease = (Lease)criteria.RentalData.LeaseType;
-            switch (lease)
-			{
-                case Lease.Type_24:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)Lease.Type_24 });
-                    }
-                    break;
-                case Lease.Type_369:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)Lease.Type_369 });
-                    }
-                    break;
-                default:
-                    break;
-            }
-
-            var type = (RentalType)criteria.RentalData.Type;
-            switch (type)
-            {
-                case RentalType.Commercial:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)RentalType.Commercial });
-                    }
-                    break;
-                case RentalType.Desk:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)RentalType.Desk });
-                    }
-                    break;
-                case RentalType.Farm:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)RentalType.Farm });
-                    }
-                    break;
-                case RentalType.Franchise:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)RentalType.Franchise });
-                    }
-                    break;
-                case RentalType.Ground:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)RentalType.Ground });
-                    }
-                    break;
-                case RentalType.Leasehold:
-                    {
-                        neededFeatures.Add(new FeatureProjection { Feature = (int)RentalType.Leasehold });
-                    }
-                    break;
-                default:
-                    break;
-            }
 
             foreach (var criteriaFeatures in criteria.RentalData.RentalFeatures)
             {
