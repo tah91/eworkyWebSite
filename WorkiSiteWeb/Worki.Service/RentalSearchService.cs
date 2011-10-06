@@ -58,6 +58,8 @@ namespace Worki.Service
                 criteria.MaxSurface = int.Parse(value);
             if (MiscHelpers.GetRequestValue(parameters, "type", ref value))
                 criteria.RentalData.Type = int.Parse(value);
+            if (MiscHelpers.GetRequestValue(parameters, "lease-type", ref value))
+                criteria.RentalData.LeaseType = int.Parse(value);
 
             if (MiscHelpers.GetRequestValue(parameters, "places", ref value))
             {
@@ -98,6 +100,7 @@ namespace Worki.Service
             rvd["surf-min"] = criteria.MinSurface;
             rvd["surf-max"] = criteria.MaxSurface;
             rvd["type"] = criteria.RentalData.Type;
+            rvd["lease-type"] = criteria.RentalData.LeaseType;
 
             var places = criteria.Place;
             foreach (var item in criteria.Places)

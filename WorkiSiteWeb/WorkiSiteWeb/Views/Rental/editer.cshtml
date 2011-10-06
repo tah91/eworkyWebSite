@@ -11,7 +11,7 @@
 
 @RazorHelpers.TitleDiv((Model.Rental.Id == 0 ? Worki.Resources.Views.Rental.RentalString.AddRental : Worki.Resources.Views.Rental.RentalString.EditRental), "Red")
 
-@using (Html.BeginForm(MVC.Rental.ActionNames.Edit,MVC.Rental.Name, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm(MVC.Rental.ActionNames.Edit,MVC.Rental.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
 {
 	@Html.AntiForgeryToken()
 	<div class="detailContent">
@@ -76,7 +76,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Rental.AvailableDate, new { placeholder = Worki.Resources.Views.Rental.RentalString.DateExample })
+								@Html.TextBoxFor(m => m.Rental.AvailableDate, new { @class = "dp", placeholder = Worki.Resources.Views.Rental.RentalString.DateExample })
 							</div>
 						</td>
 					</tr>
@@ -223,6 +223,42 @@
 @section ScriptContent
 {
 	<script type="text/javascript">
+
+	    require(["@MiscHelpers.jqueryui"], function () {
+	        $.datepicker.regional['fr'] = {
+	            closeText: 'Fermer',
+	            prevText: '&#x3c;Préc',
+	            nextText: 'Suiv&#x3e;',
+	            currentText: 'Courant',
+	            monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+	            monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+	            dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+	            dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+	            dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+	            weekHeader: 'Sm',
+	            dateFormat: 'dd/mm/yy',
+	            firstDay: 1,
+	            isRTL: false,
+	            showMonthAfterYear: false,
+	            yearSuffix: ''
+	        };
+	        $.datepicker.setDefaults($.datepicker.regional['fr']);
+	        $(".dp").datepicker({
+	            changeMonth: true,
+	            changeYear: true,
+	            yearRange: '1900:2020'
+	        });
+	    });
+	    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
+	        $("#form").submit(function () {
+	            var val = $("#Rental_AvailableDate").val();
+	            var date = Date.parseExact(val, "dd/MM/yyyy");
+	            var newVal = date.toString('MM/dd/yyyy');
+	            $("#Rental_AvailableDate").val(newVal);
+	            return true;
+	        });
+	    });
+
 		require.ready(function () {
 			$("#addItem").click(function () {
 				$.ajax({
@@ -249,10 +285,12 @@
                 $("#labeldate").show();
             }
         });
-        
+
         function init() {
-            $("#Rental_AvailableDate").hide();
-            $("#labeldate").hide();
+            if ($("#Rental_AvailableDate").attr("value") == null || $("#Rental_AvailableNow:checked").val() == "true") {
+                $("#Rental_AvailableDate").hide();
+                $("#labeldate").hide();
+            }
             if ($("#Rental_Rate").attr("value") == 0)
                 $("#Rental_Rate").attr("value", null);
             if ($("#Rental_Charges").attr("value") == 0)
