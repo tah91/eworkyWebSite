@@ -24,14 +24,14 @@ namespace Worki.Web.Areas.Mobile
 
             context.MapRoute(
                 "", // Nom d'itinéraire
-                "lieu-de-travail/{action}/{id}", // URL avec des paramètres
+                "mobile/lieu-de-travail/{action}/{id}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Areas.Mobile.Controllers" }
             );
 
             context.MapRoute(
                 "Mobile_default",
-                "Mobile/{controller}/{action}/{id}",
+                "mobile/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
