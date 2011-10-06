@@ -47,3 +47,13 @@ label[for$="Type"]
 {
     margin-right:4px;
 }
+
+.indexSearchFormDivRow input[id=MinSurface]
+{
+    width:60px;
+}
+
+.indexSearchFormDivRow input[id=MaxRate]
+{
+    width:60px;
+}

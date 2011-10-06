@@ -19,10 +19,16 @@ input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}
 .rentalElementMoreDetail{font-weight:900;padding:5px;background:white;color:white;background-color:#D35758;margin-top:80px;width:82px}
 .rentalElementMiddle{margin-left:150px;margin-right:150px}
 .resultItem{margin-bottom:10px;overflow:auto;height:135px;background:#f8f8f8;padding:10px}
-.mainRowRental{height:420px;margin-bottom:30px}
+.mainRowRental{height:330px}
 .width98{width:98%}
 .rDetailUpRight{width:30%;height:100%}
 .tagContainer{border:1px solid #FF7800;padding:10px 0 10px 5px}
 .tagInput{border:0}
 .mytag{background:#FF7800;color:#fff;padding:5px;margin-right:5px}
 .removeTag{cursor:pointer}
+.halfContainerRental{width:47%;height:95%;background-image:url('images/rechercher2.png');background-repeat:no-repeat;background-position:95% bottom;margin:0!important}
+.halfMiniContainer{height:130px;width:50%}
+.halfMiniContainer2{height:40px;width:50%}
+input#RentalData_AvailableDate{width:46%;margin:0}
+select#RentalData_Type{width:180px}
+input#Place{width:311px}

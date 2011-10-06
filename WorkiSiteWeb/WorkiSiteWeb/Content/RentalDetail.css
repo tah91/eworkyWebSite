@@ -149,8 +149,7 @@ input#MaxSurface
 
 .mainRowRental
 {
-    height:420px;
-    margin-bottom:30px;
+    height:330px;
 }
 
 .width98
@@ -185,4 +184,42 @@ input#MaxSurface
 .removeTag
 {
     cursor:pointer;
+}
+
+.halfContainerRental
+{
+    width: 47%;
+    height:95%;
+    background-image: url('images/rechercher2.png');
+    background-repeat: no-repeat;
+    background-position: 95% bottom;
+    margin: 0!important;
+}
+
+.halfMiniContainer
+{
+    height:130px;
+    width:50%;
+}
+
+.halfMiniContainer2
+{
+    height:40px;
+    width:50%;
+}
+
+input#RentalData_AvailableDate
+{
+    width:46%;
+    margin:0px;
+}
+
+select#RentalData_Type
+{
+    width:180px;
+}
+
+input#Place
+{
+    width:311px;
 }

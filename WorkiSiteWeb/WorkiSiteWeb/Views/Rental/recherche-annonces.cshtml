@@ -8,100 +8,106 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-<div class="mainRowRental">
-	<div class="float-left bigPictureContainer">
-		@Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
-	</div>
 
-    <div class="halfContainer searchFormContainer float-right">
-        <div class="searchFormDiv">
+<div id="main" class="clearfix">
+    <div class="detailContent">
+        <div class="​detailcontent">
+            <div class="blockContainer">
+                <div class="mainRowRental">
+	                <div class="float-left bigPictureContainer">
+		                @Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
+	                </div>
 
-            @RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.Search, "Red")
+                    <div class="halfContainerRental float-right contentBlock">
+                        <div class="searchFormDiv">
 
-            @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="localisationField">
-                    <div class="label-field red">
-                        @Html.LabelFor(model => model.Place)
-                    </div>
-                    <div class="featureTag">
-                        <ul id="tagContainer">
+                            @RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.Search, "Red")
+
+                            @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="localisationField">
+                                    <div class="featureTag">
+                                        <ul id="tagContainer">
                             
-                        </ul>
-                    </div>
-                    <div class="clear">
-                    </div>
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class="tagInput" })
-                    </div>
+                                        </ul>
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class="tagInput" })
+                                    </div>
 
-                    <p>
-                        @Html.HiddenFor(model => model.RentalData.Latitude)
-                        @Html.HiddenFor(model => model.RentalData.Longitude)
-                    </p>
-                </div>
+                                    <p>
+                                        @Html.HiddenFor(model => model.RentalData.Latitude)
+                                        @Html.HiddenFor(model => model.RentalData.Longitude)
+                                    </p>
+                                </div>
+                                
+                                <div class="halfMiniContainer2 float-left margint15">
+                                    <div class="label-field red">
+                                        @Html.LabelFor(model => model.RentalData.Type)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.DropDownListFor(model => model.RentalData.Type, Model.RentalTypeSelect)
+                                    </div>
+                                </div>
+                                
+                                <div class="halfMiniContainer2 float-right margint15">
+                                    <div class="label-field red" style="margin-bottom:4px">
+                                            @Html.LabelFor(model => model.RentalData.AvailableDate)
+                                    </div>
+                                    <div>
+                                        @Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>
+                                        @Html.TextBoxFor(model => model.RentalData.AvailableDate, new { @class = "dp", placeholder = Worki.Resources.Views.Rental.RentalString.DateExample })
+                                    </div>
+                                </div>
+                                
+                                <div class="clear"></div>
                 
-                <div class="label-field red margint10">
-                    @Html.LabelFor(model => model.RentalData.Type)
-                </div>
-                <div class="editor-field">
-                    @Html.DropDownListFor(model => model.RentalData.Type, Model.RentalTypeSelect)
-                </div>
+                                <div class="halfMiniContainer float-left margint15">
+                                    <div class="label-field red">
+                                        @Html.LabelFor(model => model.MinRate)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(model => model.MinRate, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMinRate }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
+                                    </div>
+
+                                    <div class="label-field red margint10">
+                                        @Html.LabelFor(model => model.MinSurface)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(model => model.MinSurface, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMinArea }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
+                                    </div>
+                                </div>
                 
-                <div class="halfContainer float-left margint15">
-                    <div class="label-field red">
-                        @Html.LabelFor(model => model.MinRate)
-                    </div>
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MinRate, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMinRate }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
-                    </div>
+                                <div class="halfMiniContainer float-right margint15">
+                                    <div class="label-field red">
+                                        @Html.LabelFor(model => model.MaxRate)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(model => model.MaxRate, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMaxRate }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
+                                    </div>
 
-                    <div class="label-field red margint10">
-                        @Html.LabelFor(model => model.MinSurface)
-                    </div>
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MinSurface, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMinArea }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
-                    </div>
-
-                    <div class="label-field red margint10">
-                        @Html.LabelFor(model => model.RentalData.AvailableDate)
-                    </div>
-                    <div>
-                        @Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>
-                    </div>
-
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.RentalData.AvailableDate, new { @class = "dp", placeholder = Worki.Resources.Views.Rental.RentalString.DateExample })
+                                    <div class="label-field red margint10">
+                                        @Html.LabelFor(model => model.MaxSurface)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(model => model.MaxSurface, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMaxArea }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="submitSearchContainer float-right marginr10">
+                                    <input type="submit" class="buttonRed buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
+                                </div>
+                                <div class="clear"></div> 
+                            } 
+                        </div>
                     </div>
                 </div>
-                
-                <div class="halfContainer float-right margint15">
-                    <div class="label-field red">
-                        @Html.LabelFor(model => model.MaxRate)
-                    </div>
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MaxRate, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMaxRate }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
-                    </div>
-
-                    <div class="label-field red margint10">
-                        @Html.LabelFor(model => model.MaxSurface)
-                    </div>
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.MaxSurface, new { placeholder = Worki.Resources.Views.Rental.RentalString.ExMaxArea }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
-                    </div>
-                </div>
-                
-                <div class="clear"></div>                
-                <div>
-                    <div class="submitSearchContainer float-right margint15">
-                        <input type="submit" class="buttonGreen buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
-                    </div>
-                </div>
-            } 
+            </div>
         </div>
     </div>
 </div>
+
 
 <div class="clear"></div>
 
@@ -146,11 +152,11 @@
         $("#RentalData_AvailableNow").click(function () {
             if ($("#RentalData_AvailableNow:checked").val() == "true") {
                 $("#RentalData_AvailableDate").hide();
-                $("#msg").replaceWith('<span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>')
+                $("#msg").show(); ;
             }
             else {
                 $("#RentalData_AvailableDate").show();
-                $("#msg").replaceWith('<span id="msg">@Worki.Resources.Views.Rental.RentalString.ChooseDate</span>')
+                $("#msg").hide();
             }
         });
 
