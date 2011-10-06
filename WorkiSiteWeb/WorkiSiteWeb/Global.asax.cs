@@ -230,50 +230,6 @@ namespace Worki.Web
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());
 
-		static bool _Initialized = false;
-
-		void InitialiseAdmin()
-		{
-			if (_Initialized)
-				return;
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			try
-			{
-
-				//create roles
-				if (!Roles.RoleExists(MiscHelpers.AdminRole))
-				{
-					Roles.CreateRole(MiscHelpers.AdminRole);
-				}
-
-				//create admin
-				var user = mRepo.Get(m => m.Username == MiscHelpers.AdminUser);
-
-				//create admin
-				if (user == null)
-				{
-					MembershipCreateStatus status;
-					Membership.Provider.CreateUser(MiscHelpers.AdminUser, MiscHelpers.AdminPass, MiscHelpers.AdminMail, null, null, true, null, out status);
-					//add role
-					if (!Roles.IsUserInRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole))
-						Roles.AddUserToRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole);
-				}
-				//add member data
-				if (user.MemberMainData == null)
-				{
-					user.MemberMainData = new MemberMainData { FirstName = MiscHelpers.AdminUser, LastName = MiscHelpers.AdminUser, Civility = (int)CivilityType.Mr };
-				}
-				context.Commit();
-			}
-			catch (Exception)
-			{
-				context.Complete();
-				return;
-			}
-			_Initialized = true;
-		}
-
         protected void Application_Start()
         {
 			// Inject account repository into our custom membership & role providers.
@@ -291,7 +247,7 @@ namespace Worki.Web
 			//routes
             AreaRegistration.RegisterAllAreas();
 			XmlSiteMapController.RegisterRoutes(RouteTable.Routes);
-            //GlobalFilters.Filters.Add(new RedirectMobileDevicesToMobileAreaAttribute(), 1);
+            GlobalFilters.Filters.Add(new RedirectMobileDevicesToMobileAreaAttribute(), 1);
             RegisterRoutes(RouteTable.Routes);
 
 			//model binder
@@ -304,50 +260,94 @@ namespace Worki.Web
 			DefaultModelBinder.ResourceClassKey = "Messages";
         }
 
-		#region Privates
+		#region Initialisation
+
+        static bool _AdminInitialized = false;
+
+        void InitialiseAdmin()
+        {
+            if (_AdminInitialized)
+                return;
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            try
+            {
+
+                //create roles
+                if (!Roles.RoleExists(MiscHelpers.AdminRole))
+                {
+                    Roles.CreateRole(MiscHelpers.AdminRole);
+                }
+
+                //create admin
+                var user = mRepo.Get(m => m.Username == MiscHelpers.AdminUser);
+
+                //create admin
+                if (user == null)
+                {
+                    MembershipCreateStatus status;
+                    Membership.Provider.CreateUser(MiscHelpers.AdminUser, MiscHelpers.AdminPass, MiscHelpers.AdminMail, null, null, true, null, out status);
+                    //add role
+                    if (!Roles.IsUserInRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole))
+                        Roles.AddUserToRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole);
+                }
+                //add member data
+                if (user.MemberMainData == null)
+                {
+                    user.MemberMainData = new MemberMainData { FirstName = MiscHelpers.AdminUser, LastName = MiscHelpers.AdminUser, Civility = (int)CivilityType.Mr };
+                }
+                context.Commit();
+            }
+            catch (Exception)
+            {
+                context.Complete();
+                return;
+            }
+            _AdminInitialized = true;
+        }
 
 		private static object _gate = new object();
 		private static bool _initialized = false;
 
+        protected void Application_BeginRequest()
+        {
+            // Had to move azure role initialization here
+            // See http://social.msdn.microsoft.com/Forums/en-US/windowsazuredevelopment/thread/10d042da-50b1-4930-b0c0-aff22e4144f9 
+            // and http://social.msdn.microsoft.com/Forums/en-US/windowsazuredevelopment/thread/ab6d56dc-154d-4aba-8bde-2b7f7df121c1/#89264b8c-7e25-455a-8fd6-20f547ab545b
+
+            if (_initialized)
+            {
+                return;
+            }
+
+            lock (_gate)
+            {
+                if (!_initialized)
+                {
+                    // Moved all this diagnostics and configuration setup from WebRole.cs
+                    // See http://blog.smarx.com/posts/how-to-resolve-setconfigurationsettingpublisher-needs-to-be-called-before-fromconfigurationsetting-can-be-used-after-moving-to-windows-azure-sdk-1-3
+
+                    #region Setup CloudStorageAccount Configuration and Azure Diagnostics
+                    if (RoleEnvironment.IsAvailable)
+                    {
+                        //(CDLTLL) Configuration for Windows Azure settings 
+                        CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSettingPublisher) =>
+                        {
+                            var connectionString = RoleEnvironment.GetConfigurationSettingValue(configName);
+                            configSettingPublisher(connectionString);
+                        }
+                        );
+
+                        AzureAppender.ConfigureAzureDiagnostics();
+
+                    }
+                    #endregion
+
+                    _initialized = true;
+                }
+            }
+        }
+
 		#endregion
-
-		protected void Application_BeginRequest()
-		{
-			// Had to move azure role initialization here
-			// See http://social.msdn.microsoft.com/Forums/en-US/windowsazuredevelopment/thread/10d042da-50b1-4930-b0c0-aff22e4144f9 
-			// and http://social.msdn.microsoft.com/Forums/en-US/windowsazuredevelopment/thread/ab6d56dc-154d-4aba-8bde-2b7f7df121c1/#89264b8c-7e25-455a-8fd6-20f547ab545b
-
-			if (_initialized)
-			{
-				return;
-			}
-
-			lock (_gate)
-			{
-				if (!_initialized)
-				{
-					// Moved all this diagnostics and configuration setup from WebRole.cs
-					// See http://blog.smarx.com/posts/how-to-resolve-setconfigurationsettingpublisher-needs-to-be-called-before-fromconfigurationsetting-can-be-used-after-moving-to-windows-azure-sdk-1-3
-
-					#region Setup CloudStorageAccount Configuration and Azure Diagnostics
-					if (RoleEnvironment.IsAvailable)
-					{
-						//(CDLTLL) Configuration for Windows Azure settings 
-						CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSettingPublisher) =>
-							{
-								var connectionString = RoleEnvironment.GetConfigurationSettingValue(configName);
-								configSettingPublisher(connectionString);
-							}
-						);
-
-						AzureAppender.ConfigureAzureDiagnostics();
-
-					}
-					#endregion
-
-					_initialized = true;
-				}
-			}
-		}
     }
 }
