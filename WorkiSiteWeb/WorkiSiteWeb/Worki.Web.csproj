@@ -702,7 +702,6 @@
     <Content Include="Views\Rental\editer.cshtml" />
     <Content Include="Views\Rental\supprimer.cshtml" />
     <Content Include="Views\Rental\_RentalAccess.cshtml" />
-    <Content Include="Views\Rental\_RentalGalleryScript.cshtml" />
     <Content Include="Views\Admin\IndexRental.cshtml" />
     <Content Include="Web.AzureDev.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -526,7 +526,7 @@ div.pagerTop
 	background-color: #5dafde;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
 	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
-	background-image: -webkit-linear-gradient(top,#5fb4e6,#449ed2);
+	background-image: -webkit-linear-gradient(top,#5DAFDE,#449ed2);
 	background-image: linear-gradient(top,#5DAFDE,#4787ed);
 }
 
@@ -543,19 +543,19 @@ div.pagerTop
 {
 	border: 1px solid #f9af52;
 	background-color: #f9af52;
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f9af52, endColorstr=#ffa619);
-	background-image: -moz-linear-gradient(top,#f9af52,#ffa619);
-	background-image: -webkit-linear-gradient(top,#f9af52,#ffa619);
-	background-image: linear-gradient(top,#f9af52,#ffa619);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f9af52, endColorstr=#eb9916);
+	background-image: -moz-linear-gradient(top,#f9af52,#eb9916);
+	background-image: -webkit-linear-gradient(top,#f9af52,#eb9916);
+	background-image: linear-gradient(top,#f9af52,#eb9916);
 }
 
 .buttonOrange:hover
 {
-	background-color: #e48000;
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e48000, endColorstr=#e08400);
-	background-image: -moz-linear-gradient(top,#e48000,#e08400);
-	background-image: -webkit-linear-gradient(top,#e48000,#e08400);
-	background-image: linear-gradient(top,#e48000,#e08400);
+	background-color: #e6a14a;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e6a14a, endColorstr=#e2941a);
+	background-image: -moz-linear-gradient(top,#e6a14a,#e2941a);
+	background-image: -webkit-linear-gradient(top,#e6a14a,#e2941a);
+	background-image: linear-gradient(top,#e6a14a,#e2941a);
 }
 
 .buttonGreen
@@ -575,6 +575,25 @@ div.pagerTop
 	background-image: -moz-linear-gradient(top,#bde185,#a2bb54);
 	background-image: -webkit-linear-gradient(top,#bde185,#a2bb54);
 	background-image: linear-gradient(top,#bde185,#a2bb54);
+}
+
+.buttonRed
+{
+	border: 1px solid #d45558;
+	background-color: #d45558;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#d45558, endColorstr=#a42e2f);
+	background-image: -moz-linear-gradient(top,#d45558,#a42e2f);
+	background-image: -webkit-linear-gradient(top,#d45558,#a42e2f);
+	background-image: linear-gradient(top,#d45558,#a42e2f);
+}
+
+.buttonRed:hover
+{
+	background-color: #e96063;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e96063, endColorstr=#c63132);
+	background-image: -moz-linear-gradient(top,#e96063,#c63132);
+	background-image: -webkit-linear-gradient(top,#e96063,#c63132);
+	background-image: linear-gradient(top,#e96063,#c63132);
 }
 
 /*.btn_blue{ background-image:url('images/btn_sprites.png'); background-position: 0 0; width: 104px; height: 23px; }
@@ -1336,11 +1355,15 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 	box-shadow: 4px 4px 10px #DDD;
 }
 
-.contentBlock:first-child, .contentBlock:last-child
+.contentBlock:first-child
 {
-    margin:0;
+    margin-top:0;
 }
 
+.contentBlock:last-child
+{
+    margin-bottom:0;
+}
 /*FEATURE TAG
 ----------------------------------------------------------*/
 
@@ -1389,7 +1412,7 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 
 .bigPictureContainer
 {
-    width: 50%;
+    width: 49%;
     height:100%;
 }
 
@@ -1398,7 +1421,6 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 
 .adRow
 {
-    /*height:260px;*/
     margin-top:30px;
 }
 
@@ -1458,12 +1480,16 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 
 .searchFormContainer
 {
-    background:#f8f8f8 url('images/rechercher2.png') no-repeat 95% bottom;
+    background-image:url('images/rechercher2.png');
+    background-repeat:no-repeat;
+    background-position:95% bottom;
+    margin:0!important;
+    height:310px;
 }
 
 .searchFormDiv
 {
-    padding: 20px;   
+    padding: 10px;   
 }
 
 .searchFormDiv input[type="text"]

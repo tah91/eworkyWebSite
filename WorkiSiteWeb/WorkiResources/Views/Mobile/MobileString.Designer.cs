@@ -22,7 +22,7 @@ namespace Worki.Resources.Views.Mobile {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class MobileString {
+    public class MobileString {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Worki.Resources.Views.Mobile {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Worki.Resources.Views.Mobile.MobileString", typeof(MobileString).Assembly);
@@ -51,7 +51,7 @@ namespace Worki.Resources.Views.Mobile {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Essayer de rechercher en entrant un lieu.
         /// </summary>
-        internal static string AlertSearch {
+        public static string AlertSearch {
             get {
                 return ResourceManager.GetString("AlertSearch", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Version classique.
         /// </summary>
-        internal static string ClassicVersion {
+        public static string ClassicVersion {
             get {
                 return ResourceManager.GetString("ClassicVersion", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Se connecter.
         /// </summary>
-        internal static string Connection {
+        public static string Connection {
             get {
                 return ResourceManager.GetString("Connection", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Connectez-vous.
         /// </summary>
-        internal static string ConnectNow {
+        public static string ConnectNow {
             get {
                 return ResourceManager.GetString("ConnectNow", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
-        internal static string Description {
+        public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Go !.
         /// </summary>
-        internal static string Go {
+        public static string Go {
             get {
                 return ResourceManager.GetString("Go", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to près de.
         /// </summary>
-        internal static string Near {
+        public static string Near {
             get {
                 return ResourceManager.GetString("Near", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Près de ma position.
         /// </summary>
-        internal static string NearMyPosition {
+        public static string NearMyPosition {
             get {
                 return ResourceManager.GetString("NearMyPosition", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Offres.
         /// </summary>
-        internal static string Offers {
+        public static string Offers {
             get {
                 return ResourceManager.GetString("Offers", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to ou près de.
         /// </summary>
-        internal static string OrNear {
+        public static string OrNear {
             get {
                 return ResourceManager.GetString("OrNear", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to lieux pour travailler.
         /// </summary>
-        internal static string PlaceToWork {
+        public static string PlaceToWork {
             get {
                 return ResourceManager.GetString("PlaceToWork", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Rechercher.
         /// </summary>
-        internal static string Search {
+        public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Services.
         /// </summary>
-        internal static string Services {
+        public static string Services {
             get {
                 return ResourceManager.GetString("Services", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Worki.Resources.Views.Mobile {
         /// <summary>
         ///   Looks up a localized string similar to Bienvenue.
         /// </summary>
-        internal static string Welcome {
+        public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
             }

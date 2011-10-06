@@ -8,220 +8,223 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-<div class="mainRow">
-	<div class="bigPictureContainer float-left">
-		@Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
-	</div>
-
-    <div class="halfContainer searchFormContainer float-right">
-        <div class="searchFormDiv">
-            @{
-                var titleName = "";
-                switch (Model.Criteria.DirectAccessType)
-                {
-                    case eDirectAccessType.eStudent:
-						titleName = Worki.Resources.Models.Profile.Profile.Student;
-                        break;
-                    case eDirectAccessType.eTeleworker:
-						titleName = Worki.Resources.Models.Profile.Profile.Teleworker;
-                        break;
-                    case eDirectAccessType.eStartUp:
-                        titleName = Worki.Resources.Views.Search.SearchString.Entrepreneur;
-                        break;
-                    case eDirectAccessType.eNomade:
-                        titleName = Worki.Resources.Views.Search.SearchString.Nomad;
-                        break;
-                    case eDirectAccessType.eIndependant:
-                        titleName = Worki.Resources.Views.Search.SearchString.Independant;
-                        break;
-                    case eDirectAccessType.eEntreprise:
-						titleName = Worki.Resources.Models.Profile.Profile.Company;
-                        break;
-                    case eDirectAccessType.eNone:
-                    default:
-                        titleName = Worki.Resources.Views.Search.SearchString.Search;
-                        break;
-                }
-            }
-            @RazorHelpers.TitleDiv(titleName, "Green")
+<div class="detailContent">
+    <div class="blockContainer">
+        <div class="searchFirstRow">
+            <div class="bigPictureContainer float-left">
+		        @Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
+	        </div>
+            <div class="searchFormContainer float-right contentBlock">
+                <div class="searchFormDiv">
+                    @{
+                        var titleName = "";
+                        switch (Model.Criteria.DirectAccessType)
+                        {
+                            case eDirectAccessType.eStudent:
+						        titleName = Worki.Resources.Models.Profile.Profile.Student;
+                                break;
+                            case eDirectAccessType.eTeleworker:
+						        titleName = Worki.Resources.Models.Profile.Profile.Teleworker;
+                                break;
+                            case eDirectAccessType.eStartUp:
+                                titleName = Worki.Resources.Views.Search.SearchString.Entrepreneur;
+                                break;
+                            case eDirectAccessType.eNomade:
+                                titleName = Worki.Resources.Views.Search.SearchString.Nomad;
+                                break;
+                            case eDirectAccessType.eIndependant:
+                                titleName = Worki.Resources.Views.Search.SearchString.Independant;
+                                break;
+                            case eDirectAccessType.eEntreprise:
+						        titleName = Worki.Resources.Models.Profile.Profile.Company;
+                                break;
+                            case eDirectAccessType.eNone:
+                            default:
+                                titleName = Worki.Resources.Views.Search.SearchString.Search;
+                                break;
+                        }
+                    }
+                    @RazorHelpers.TitleDiv(titleName, "Green")
 
             
-            @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
-            { 
-                @Html.AntiForgeryToken()
-                <div class="localisationField">
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
-                        @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
-                    </div>
+                    @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+                    { 
+                        @Html.AntiForgeryToken()
+                        <div class="localisationField">
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
+                                @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
+                            </div>
 
-                    <p>
-                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                        @Html.HiddenFor(m=>m.Criteria.SearchType)
-                        @Html.HiddenFor(m=>m.Criteria.DirectAccessType)
-                    </p>
-                </div>
+                            <p>
+                                @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+                                @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+                                @Html.HiddenFor(m=>m.Criteria.SearchType)
+                                @Html.HiddenFor(m=>m.Criteria.DirectAccessType)
+                            </p>
+                        </div>
 
-                   if (Model.Criteria.SearchType == eSearchType.ePerOffer)
-                   {
-                <div class="searchBottom searchCriterias">
-                    <div class="localisationTypes searchOptions float-left">
-                        <p class="green">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
-                        <div class="editor-field">
-                            @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
-                            @Html.ValidationMessage("LocalisationOffer", "")
+                           if (Model.Criteria.SearchType == eSearchType.ePerOffer)
+                           {
+                        <div class="searchBottom searchCriterias">
+                            <div class="localisationTypes searchOptions float-left">
+                                <p class="green">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
+                                <div class="editor-field">
+                                    @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
+                                    @Html.ValidationMessage("LocalisationOffer", "")
+                                </div>
+                            </div>
+                            <div class="searchOptions float-left" style="padding-left:20px;">
+                                <p class="green">@Worki.Resources.Views.Search.SearchString.Equipments</p>
+                                @Html.Partial(MVC.Localisation.Views._ServicesSelector)
+                            </div>
+                            <div class="clear">
+                            </div>
+                            <div class="searchOptions">
+                                <div id="searchOption0">
+                                    <p class="green">@Worki.Resources.Views.Search.SearchString.Features</p>
+                                    <div id="searchOptionToReplace">
+                                    </div>
+                                </div>                                       
+                            </div>
+                            <div class="clear">
+                            </div>                
                         </div>
-                    </div>
-                    <div class="searchOptions float-left" style="padding-left:20px;">
-                        <p class="green">@Worki.Resources.Views.Search.SearchString.Equipments</p>
-                        @Html.Partial(MVC.Localisation.Views._ServicesSelector)
-                    </div>
-                    <div class="clear">
-                    </div>
-                    <div class="searchOptions">
-                        <div id="searchOption0">
-                            <p class="green">@Worki.Resources.Views.Search.SearchString.Features</p>
-                            <div id="searchOptionToReplace">
-                            </div>
-                        </div>                                       
-                    </div>
-                    <div class="clear">
-                    </div>                
-                </div>
-                   }
-                   if (Model.Criteria.SearchType == eSearchType.ePerType)
-                   {
-                <div class="searchBottom searchCriterias" style="margin-bottom:10px;">
-                    <div class="localisationTypes searchOptions float-left">
-                        <p class="green">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
-                        <div class="float-left">
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.Everything)
-                            @Html.LabelFor(model => model.Criteria.Everything)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
-                            @Html.LabelFor(model => model.Criteria.SpotWifi)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
-                            @Html.LabelFor(model => model.Criteria.CoffeeResto)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.Biblio)
-                            @Html.LabelFor(model => model.Criteria.Biblio)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
-                            @Html.LabelFor(model => model.Criteria.PublicSpace)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
-                            @Html.LabelFor(model => model.Criteria.TravelerSpace)
-                            </div>
-                        </div>
-                        <div class="float-right" style="padding-left:70px;">
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.Hotel)
-                            @Html.LabelFor(model => model.Criteria.Hotel)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.Telecentre)
-                            @Html.LabelFor(model => model.Criteria.Telecentre)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
-                            @Html.LabelFor(model => model.Criteria.BuisnessCenter)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
-                            @Html.LabelFor(model => model.Criteria.CoworkingSpace)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
-                            @Html.LabelFor(model => model.Criteria.WorkingHotel)
-                            </div>
-                            <div class="editor-field">
-                            @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
-                            @Html.LabelFor(model => model.Criteria.PrivateArea)
+                           }
+                           if (Model.Criteria.SearchType == eSearchType.ePerType)
+                           {
+                        <div class="searchBottom searchCriterias" style="margin-bottom:10px;">
+                            <div class="localisationTypes searchOptions float-left">
+                                <p class="green">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
+                                <div class="float-left">
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.Everything)
+                                    @Html.LabelFor(model => model.Criteria.Everything)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
+                                    @Html.LabelFor(model => model.Criteria.SpotWifi)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
+                                    @Html.LabelFor(model => model.Criteria.CoffeeResto)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.Biblio)
+                                    @Html.LabelFor(model => model.Criteria.Biblio)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
+                                    @Html.LabelFor(model => model.Criteria.PublicSpace)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
+                                    @Html.LabelFor(model => model.Criteria.TravelerSpace)
+                                    </div>
+                                </div>
+                                <div class="float-right" style="padding-left:70px;">
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.Hotel)
+                                    @Html.LabelFor(model => model.Criteria.Hotel)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.Telecentre)
+                                    @Html.LabelFor(model => model.Criteria.Telecentre)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
+                                    @Html.LabelFor(model => model.Criteria.BuisnessCenter)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
+                                    @Html.LabelFor(model => model.Criteria.CoworkingSpace)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
+                                    @Html.LabelFor(model => model.Criteria.WorkingHotel)
+                                    </div>
+                                    <div class="editor-field">
+                                    @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
+                                    @Html.LabelFor(model => model.Criteria.PrivateArea)
+                                    </div>
+                                </div>
+                                <div class="clear">
+                                </div>                            
                             </div>
                         </div>
-                        <div class="clear">
-                        </div>                            
-                    </div>
+                           } 
+                        <div>
+                            <div class="changeSeachType float-left">                        
+                            @if (Model.Criteria.SearchType == eSearchType.ePerOffer)
+                            {
+                                @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Localisation.FullSearchPerType())
+                            }
+                            else
+                            {
+                                @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByServiceType, MVC.Localisation.FullSearch())
+                            }
+                            </div>
+                            <div class="submitSearchContainer  float-right">
+                                <input type="submit" class="buttonGreen buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
+                            </div>
+                        </div>
+                    } 
                 </div>
-                   } 
-                <div>
-                    <div class="changeSeachType float-left">                        
-                    @if (Model.Criteria.SearchType == eSearchType.ePerOffer)
-                    {
-                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Localisation.FullSearchPerType())
-                    }
-                    else
-                    {
-                        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByServiceType, MVC.Localisation.FullSearch())
-                    }
-                    </div>
-                    <div class="submitSearchContainer  float-right">
-                        <input type="submit" class="buttonGreen buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
-                    </div>
-                </div>
-            } 
+            </div>
+            <div class="clear">
+            </div>
         </div>
+        <div class="adRow">
+            @Html.Partial(MVC.Localisation.Views._DirectAccess)
+	        @{
+		        var title = string.Empty;
+		        var desc = string.Empty;
+		        switch (Model.Criteria.DirectAccessType)
+		        {
+			        case eDirectAccessType.eStudent:
+				        title = Worki.Resources.Models.Profile.Profile.Student;
+				        desc = Worki.Resources.Views.Search.SearchString.SpeechForStudent;
+				        break;
+			        case eDirectAccessType.eTeleworker:
+				        title = Worki.Resources.Models.Profile.Profile.Teleworker;
+				        desc = Worki.Resources.Views.Search.SearchString.SpeechForTeleworker;
+				        break;
+			        case eDirectAccessType.eStartUp:
+				        title = Worki.Resources.Views.Search.SearchString.Entrepreneur;
+				        desc = Worki.Resources.Views.Search.SearchString.SpeechForStartUp;
+				        break;
+			        case eDirectAccessType.eNomade:
+				        title = @Worki.Resources.Views.Search.SearchString.Nomad;
+				        desc = Worki.Resources.Views.Search.SearchString.SpeechForNomad;
+				        break;
+			        case eDirectAccessType.eIndependant:
+				        title = Worki.Resources.Views.Search.SearchString.Independant;
+				        desc = Worki.Resources.Views.Search.SearchString.SpeechForIndependent;
+				        break;
+			        case eDirectAccessType.eEntreprise:
+				        title = Worki.Resources.Models.Profile.Profile.Company;
+				        desc = Worki.Resources.Views.Search.SearchString.SpeechForBuisnessman;
+				        break;
+			        case eDirectAccessType.eNone:
+			        default:
+				        break;
+		        }
+	        }
+            @if (!string.IsNullOrEmpty(title) &&!string.IsNullOrEmpty(desc))
+            {
+		        <div class="searchDesc float-right borderRadius">
+			        <h2 class="blue">@title</h2>
+			        @Html.Raw(desc)
+		        </div>
+	        }
+	        else
+	        {
+		        Html.RenderPartial(MVC.Shared.Views._IndexGallery);
+	        }        
+        </div>
+        <div class="clear">
+        </div>  
     </div>
-</div>
-
-<div class="clear">
-</div>
-
-<div class="adRow">
-    @Html.Partial(MVC.Localisation.Views._DirectAccess)
-	@{
-		var title = string.Empty;
-		var desc = string.Empty;
-		switch (Model.Criteria.DirectAccessType)
-		{
-			case eDirectAccessType.eStudent:
-				title = Worki.Resources.Models.Profile.Profile.Student;
-				desc = Worki.Resources.Views.Search.SearchString.SpeechForStudent;
-				break;
-			case eDirectAccessType.eTeleworker:
-				title = Worki.Resources.Models.Profile.Profile.Teleworker;
-				desc = Worki.Resources.Views.Search.SearchString.SpeechForTeleworker;
-				break;
-			case eDirectAccessType.eStartUp:
-				title = Worki.Resources.Views.Search.SearchString.Entrepreneur;
-				desc = Worki.Resources.Views.Search.SearchString.SpeechForStartUp;
-				break;
-			case eDirectAccessType.eNomade:
-				title = @Worki.Resources.Views.Search.SearchString.Nomad;
-				desc = Worki.Resources.Views.Search.SearchString.SpeechForNomad;
-				break;
-			case eDirectAccessType.eIndependant:
-				title = Worki.Resources.Views.Search.SearchString.Independant;
-				desc = Worki.Resources.Views.Search.SearchString.SpeechForIndependent;
-				break;
-			case eDirectAccessType.eEntreprise:
-				title = Worki.Resources.Models.Profile.Profile.Company;
-				desc = Worki.Resources.Views.Search.SearchString.SpeechForBuisnessman;
-				break;
-			case eDirectAccessType.eNone:
-			default:
-				break;
-		}
-	}
-    @if (!string.IsNullOrEmpty(title) &&!string.IsNullOrEmpty(desc))
-    {
-		<div class="searchDesc float-right borderRadius">
-			<h2 class="blue">@title</h2>
-			@Html.Raw(desc)
-		</div>
-	}
-	else
-	{
-		Html.RenderPartial(MVC.Shared.Views._IndexGallery);
-	}        
 </div>
 
 @section ScriptContent
@@ -232,14 +235,14 @@
         });
 
         require(["@MiscHelpers.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
-                require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-                    var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
-                    workiAutocomplete.SetAutocomplete();
-                });
+
             });
 
         function initialize() {
-
+            require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+                var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
+                workiAutocomplete.SetAutocomplete();
+            });
         }
     </script>
     @{ ViewData["IsSearchForm"] = false; }

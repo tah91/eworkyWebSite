@@ -1,4 +1,5 @@
-﻿.searchBottom{height:170px;position:relative}
+﻿.searchFirstRow{height:330px}
+.searchBottom{height:170px;position:relative}
 .searchOptions p{margin-top:15px;margin-bottom:5px}
 .searchCheckBoxs{width:200px}
 .submitSearchContainer{padding-right:100px}
@@ -32,11 +33,11 @@
 .ratingContainer span{padding-left:10px;vertical-align:25%}
 .commentText{margin:5px 0}
 .addCommLink{padding-top:2px}
-.directAccess{width:43%;background:#f8f8f8;height:270px;padding:0 20px 0 20px}
+.directAccess{width:43%;background:#f8f8f8;height:270px;padding:0 20px 0 20px!important}
 .directAccess h2{display:inline;font-size:1.5em;margin-bottom:0}
 .directAccess a{font-size:1.2em;font-weight:bold;font-style:normal;text-decoration:none;text-align:left;padding:10px 0 0 40px}
 .directAccessElem{border-bottom:1px solid #5dafde;padding:20px;background:no-repeat 5% center}
-.directAccessHead{padding-left:10px}
+.directAccessHead{padding:20px 0}
 .directAccessStudent{width:35%;background-image:url('images/student.png')}
 .directAccessNomad{width:35%;background-image:url('images/nomad.png')}
 .directAccessWorker{width:35%;background-image:url('images/worker.png')}

@@ -13,9 +13,9 @@
     <div class="resultItemGallery picBack borderRadius float-left">
     @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))
     {
-		<a href="@ViewData["link"]">
+		@*<a href="@ViewData["link"]">*@
 		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
-        </a>
+        @*</a>*@
     }
     </div>
     <div class="itemDetailsDiv float-left relative">

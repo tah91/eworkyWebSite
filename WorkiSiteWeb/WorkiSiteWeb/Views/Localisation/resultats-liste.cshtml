@@ -153,6 +153,10 @@
     <script type="text/javascript">
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"]);
         require(["@MiscHelpers.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+
+        });
+
+        function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
                 var resultsMap = new WorkiMap('resultsMap');
                 resultsMap.LoadSearchMap();
@@ -183,11 +187,7 @@
                 }
                 var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
                 workiAutocomplete.SetAutocomplete();
-            });
-        });
-
-        function initialize() {
-                
+            });   
         }
     </script>
     @{ ViewData["IsSearchForm"] = true; }

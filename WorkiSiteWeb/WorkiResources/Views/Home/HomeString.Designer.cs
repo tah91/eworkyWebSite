@@ -440,7 +440,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Où ?.
+        ///   Looks up a localized string similar to Où cherchez vous ?.
         /// </summary>
         public static string Where {
             get {

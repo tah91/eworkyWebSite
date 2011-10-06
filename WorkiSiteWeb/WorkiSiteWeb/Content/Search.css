@@ -1,5 +1,10 @@
 ﻿/* Serch Page
 ----------------------------------------------------------*/
+.searchFirstRow
+{
+    height:330px;
+}
+
 .searchBottom
 {
     height:170px;
@@ -200,7 +205,7 @@
     width: 43%;
     background:#f8f8f8;
     height:270px;
-    padding:0 20px 0 20px;
+    padding:0 20px 0 20px!important;
 }
 
 .directAccess h2
@@ -229,7 +234,7 @@
 
 .directAccessHead
 {
-    padding-left:10px;
+    padding:20px 0;
 }
 
 .directAccessStudent
