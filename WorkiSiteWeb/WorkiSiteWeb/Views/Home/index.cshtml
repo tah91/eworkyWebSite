@@ -94,39 +94,7 @@
                         }
                     </div>
                 </div>
-                <div id="locationTab" class="tab_content contentBlock borderRed">
-                    <div class="indexSearchFormDiv darkblue">
-                        @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                            <div class="indexSearchFormDivRow">
-                                <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
-                            </div>
-                            <div class="editor-field indexSearchFormDivRow">
-                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
-                            </div>
-                            <div class="indexSearchFormDivRow">
-                                <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
-                            </div>
-                            <div class="editor-field indexSearchFormDivRow">
-                                @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
-                            </div>
-
-                            <div class="indexSearchIndexLinks relative">
-                                <div class="indexSearchIndexLinksLeft float-left">
-                                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
-                                </div>
-                                <div class="indexSearchIndexLinksRight float-right">
-                                    <input type="submit" class="buttonStd buttonRed" id="btn_searchIndex" value="Rechercher" />
-                                </div>
-                                <div class="clear">
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
+                @Html.Partial(MVC.Home.Views._RentalTab, new Worki.Data.Models.RentalSearchCriteria())
             </div>
         </div>
         <div class="clear">

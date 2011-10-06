@@ -718,6 +718,7 @@
     <Content Include="Views\Emails\EmailOwner.cshtml" />
     <Content Include="Views\Rental\message-envoye-success.cshtml" />
     <Content Include="Views\Emails\ListLocMail.cshtml" />
+    <Content Include="Views\Home\_RentalTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -487,6 +487,10 @@ namespace Links {
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
             public static readonly string google_gif = Url("google.gif");
+            public static readonly string homeLogo1_png = Url("homeLogo1.png");
+            public static readonly string homeLogo2_png = Url("homeLogo2.png");
+            public static readonly string homeLogo3_png = Url("homeLogo3.png");
+            public static readonly string homeLogo4_png = Url("homeLogo4.png");
             public static readonly string iconeMap_png = Url("iconeMap.png");
             public static readonly string iconeMapold_png = Url("iconeMapold.png");
             public static readonly string independant_png = Url("independant.png");
@@ -1378,6 +1382,7 @@ namespace Worki.Web.Controllers {
         public class ViewNames {
             public readonly string _HomeDesc = "~/Views/Home/_HomeDesc.cshtml";
             public readonly string _PeopleSlider = "~/Views/Home/_PeopleSlider.cshtml";
+            public readonly string _RentalTab = "~/Views/Home/_RentalTab.cshtml";
             public readonly string a_propos = "~/Views/Home/a-propos.cshtml";
             public readonly string cgu = "~/Views/Home/cgu.cshtml";
             public readonly string contact = "~/Views/Home/contact.cshtml";
@@ -1922,7 +1927,6 @@ namespace Worki.Web.Controllers {
             public readonly string _Details = "~/Views/Rental/_Details.cshtml";
             public readonly string _Rental = "~/Views/Rental/_Rental.cshtml";
             public readonly string _RentalAccess = "~/Views/Rental/_RentalAccess.cshtml";
-            public readonly string _RentalGalleryScript = "~/Views/Rental/_RentalGalleryScript.cshtml";
             public readonly string details = "~/Views/Rental/details.cshtml";
             public readonly string editer = "~/Views/Rental/editer.cshtml";
             public readonly string message_envoye_success = "~/Views/Rental/message-envoye-success.cshtml";
