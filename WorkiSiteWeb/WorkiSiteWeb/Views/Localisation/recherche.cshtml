@@ -11,7 +11,7 @@
 <div class="detailContent">
     <div class="blockContainer">
         <div class="searchFirstRow">
-            <div class="bigPictureContainer float-left">
+            <div class="bigPictureContainer float-left contentBlock">
 		        @Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
 	        </div>
             <div class="searchFormContainer float-right contentBlock">
@@ -44,7 +44,7 @@
                                 break;
                         }
                     }
-                    @RazorHelpers.TitleDiv(titleName, "Green")
+                    @RazorHelpers.TitleDiv(titleName, "Blue")
 
             
                     @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
@@ -68,21 +68,21 @@
                            {
                         <div class="searchBottom searchCriterias">
                             <div class="localisationTypes searchOptions float-left">
-                                <p class="green">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
+                                <p class="blue">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
                                 <div class="editor-field">
                                     @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
                                     @Html.ValidationMessage("LocalisationOffer", "")
                                 </div>
                             </div>
                             <div class="searchOptions float-left" style="padding-left:20px;">
-                                <p class="green">@Worki.Resources.Views.Search.SearchString.Equipments</p>
+                                <p class="blue">@Worki.Resources.Views.Search.SearchString.Equipments</p>
                                 @Html.Partial(MVC.Localisation.Views._ServicesSelector)
                             </div>
                             <div class="clear">
                             </div>
                             <div class="searchOptions">
                                 <div id="searchOption0">
-                                    <p class="green">@Worki.Resources.Views.Search.SearchString.Features</p>
+                                    <p class="blue">@Worki.Resources.Views.Search.SearchString.Features</p>
                                     <div id="searchOptionToReplace">
                                     </div>
                                 </div>                                       
@@ -95,7 +95,7 @@
                            {
                         <div class="searchBottom searchCriterias" style="margin-bottom:10px;">
                             <div class="localisationTypes searchOptions float-left">
-                                <p class="green">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
+                                <p class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
                                 <div class="float-left">
                                     <div class="editor-field">
                                     @Html.CheckBoxFor(model => model.Criteria.Everything)
@@ -165,7 +165,7 @@
                             }
                             </div>
                             <div class="submitSearchContainer  float-right">
-                                <input type="submit" class="buttonGreen buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
+                                <input type="submit" class="buttonBlue buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
                             </div>
                         </div>
                     } 
@@ -212,7 +212,7 @@
 	        }
             @if (!string.IsNullOrEmpty(title) &&!string.IsNullOrEmpty(desc))
             {
-		        <div class="searchDesc float-right borderRadius">
+		        <div class="contentBlock searchDesc float-right">
 			        <h2 class="blue">@title</h2>
 			        @Html.Raw(desc)
 		        </div>

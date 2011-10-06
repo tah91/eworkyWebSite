@@ -1412,8 +1412,8 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 
 .bigPictureContainer
 {
-    width: 49%;
-    height:100%;
+    width: 47%;
+    height: 310px;
 }
 
 .bigPictureContainer img { width:100%; height:100%;}

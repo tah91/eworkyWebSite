@@ -35,10 +35,10 @@
 
 .searchDesc
 {
-    background: #f8f8f8;
-    width: 48%;
-    height:230px;
-    padding:20px;
+    margin: 0!important;
+    width: 47%;
+    height: 230px;
+    padding: 20px!important;
 }
 
 .searchDesc p

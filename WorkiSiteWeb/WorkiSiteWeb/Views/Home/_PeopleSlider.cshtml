@@ -1,42 +1,45 @@
 ﻿@model List<WelcomePeople>
 
+
 <div class="index_slides_container float-left">
     <h2 class="blue">Découvrez les lieux de travail préférés des eWorkers</h2>
-    <div class="index_slides " id="slides">
-	    <div class="slides_container">
-            @foreach (var item in Model)
-            {
-			    var localisationLink = item.Localisation.GetDetailFullUrl(Url);
-			    var memberLink = Url.Action(MVC.Profil.Detail(item.MemberId));
-			    var age = item.Member.GetAge();
-            <div class="slide">
-                <a href="@localisationLink" title="@item.Localisation.Name" class="slide_image">
-                    <img src="@ControllerHelpers.GetUserImagePath(item.LocalisationPicture)" alt="@item.Localisation.Name"/>
-                </a>
-			    <div class="caption">
-                    <div class="caption_avatar float-left">
-					    <a href="@memberLink">
-						    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar, true), item.Member.MemberMainData.FirstName + " " + item.Member.MemberMainData.LastName)
-					    </a>
-                    </div>
-                    <div class="caption_text">
-                        <div class="caption_desc flot-left">
-                            <a href="@localisationLink">@string.Format("\"{0}\"",item.Description)</a>
+    <div class="contentBlock">
+        <div class="index_slides " id="slides">
+	        <div class="slides_container">
+                @foreach (var item in Model)
+                {
+			        var localisationLink = item.Localisation.GetDetailFullUrl(Url);
+			        var memberLink = Url.Action(MVC.Profil.Detail(item.MemberId));
+			        var age = item.Member.GetAge();
+                <div class="slide">
+                    <a href="@localisationLink" title="@item.Localisation.Name" class="slide_image">
+                        <img src="@ControllerHelpers.GetUserImagePath(item.LocalisationPicture)" alt="@item.Localisation.Name"/>
+                    </a>
+			        <div class="caption">
+                        <div class="caption_avatar float-left">
+					        <a href="@memberLink">
+						        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.Member.MemberMainData.Avatar, true), item.Member.MemberMainData.FirstName + " " + item.Member.MemberMainData.LastName)
+					        </a>
                         </div>
-                        <div class="caption_infos flot-left">
-                            <span class="caption_name"><a href="@memberLink">@item.Member.MemberMainData.FirstName @item.Member.MemberMainData.LastName</a></span> <br />
-						    @MemberMainData.ProfileTypes[item.Member.MemberMainData.Profile]
-						    @if (age.HasValue)
-						    { 
-							    @string.Format(Worki.Resources.Views.Home.HomeString.YearsOld, age)
-						    }
+                        <div class="caption_text">
+                            <div class="caption_desc flot-left">
+                                <a href="@localisationLink">@string.Format("\"{0}\"",item.Description)</a>
+                            </div>
+                            <div class="caption_infos flot-left">
+                                <span class="caption_name"><a href="@memberLink">@item.Member.MemberMainData.FirstName @item.Member.MemberMainData.LastName</a></span> <br />
+						        @MemberMainData.ProfileTypes[item.Member.MemberMainData.Profile]
+						        @if (age.HasValue)
+						        { 
+							        @string.Format(Worki.Resources.Views.Home.HomeString.YearsOld, age)
+						        }
+                            </div>
+                            <div class="clear">
+                            </div>
                         </div>
-                        <div class="clear">
-                        </div>
-                    </div>
-			    </div>
+			        </div>
+                </div>
+		        }
             </div>
-		    }
         </div>
     </div>
 </div>

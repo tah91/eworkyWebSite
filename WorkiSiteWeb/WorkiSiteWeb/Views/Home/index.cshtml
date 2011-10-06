@@ -134,18 +134,20 @@
 
         <h2 class="index_row_margin blue">eWorky en quatre mots</h2>
         <div class="indexLogoContainer contentBlock float-left borderBlue">
-            <div class="indexLogoImage indexLogoSearch float-left">
+            <div class="indexLogoImage indexLogoSearch linkImg inline-block">
+                @Html.ActionLink(" ", MVC.Localisation.FullSearch())
             </div>
-            <div class="indexLogoDesc float-right">
-                <span class="bold blue">Recherche. </span>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking qui partagent leurs lieux de travail préférés. Les lieux indiqués en bleu sont gratuits.
+            <div class="indexLogoDesc inline-block">
+                <span class="bold blue">Recherche. </span>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking.
             </div>
             <div class="clear">
             </div>
         </div>
         <div class="contentBlock indexLogoContainer float-right borderRed">
-            <div class="indexLogoImage indexLogoRental float-left">
+            <div class="indexLogoImage indexLogoRental linkImg inline-block">
+                @Html.ActionLink(" ", MVC.Rental.RentalSearch())
             </div>
-            <div class="indexLogoDesc float-right">
+            <div class="indexLogoDesc inline-block">
                 <span class="bold red">Location. </span>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !
             </div>
             <div class="clear">
@@ -154,18 +156,20 @@
         <div class="clear">
         </div>
         <div class="contentBlock indexLogoContainer float-left borderOrange">
-            <div class="indexLogoImage indexLogoBooking float-left">
+            <div class="indexLogoImage indexLogoBooking linkImg inline-block">
+                @Html.ActionLink(" ", MVC.Localisation.FullSearch())
             </div>
-            <div class="indexLogoDesc float-right">
-                <span class="bold orange">Réservation. </span>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher ! Les lieux indiqués en orange sont payants et doivent être réservés.
+            <div class="indexLogoDesc inline-block">
+                <span class="bold orange">Réservation. </span>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !
             </div>
             <div class="clear">
             </div>
         </div>
         <div class="contentBlock indexLogoContainer float-right borderGreen">
-            <div class="indexLogoImage indexLogoMore float-left">
+            <div class="indexLogoImage indexLogoMore linkImg inline-block">
+                @Html.ActionLink(" ", MVC.Home.Index())
             </div>
-            <div class="indexLogoDesc float-right">
+            <div class="indexLogoDesc inline-block">
                 <span class="bold green">Et bientôt plein d’autres fonctionnalités. </span>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.
             </div>
             <div class="clear">
@@ -216,17 +220,17 @@
         });
         require(["@Url.VersionedContent(Links.Scripts.slides_jquery_js)"], function () {
             $('#slides').slides({
-                play: 8000,
+                play: 80000,
                 generatePagination: false,
                 effect: 'fade'
             });
 
-            $('#blog_slides').slides({
-                play: 5000,
-                generatePagination: false,
-                effect: 'fade',
-                container: 'blog_slides_container'
-            });
+//            $('#blog_slides').slides({
+//                play: 50000,
+//                generatePagination: false,
+//                effect: 'fade',
+//                container: 'blog_slides_container'
+//            });
         });
         require(["@MiscHelpers.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
 

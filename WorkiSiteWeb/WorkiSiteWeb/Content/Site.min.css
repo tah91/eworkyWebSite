@@ -196,7 +196,7 @@ ul.tabs li.active,ul.tabs li.active a,html ul.tabs li.active a:hover{background:
 .generalInfosTable input[type="text"],.generalInfosTable input[type="password"]{width:400px}
 .generalInfosTable select{width:414px}
 .generalInfosTable textarea{width:400px}
-.bigPictureContainer{width:49%;height:100%}
+.bigPictureContainer{width:47%;height:310px}
 .bigPictureContainer img{width:100%;height:100%}
 *:first-child+html .bigPictureContainer img{width:100%;height:100%}
 .adRow{margin-top:30px}
