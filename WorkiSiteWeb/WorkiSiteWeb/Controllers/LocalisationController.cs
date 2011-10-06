@@ -9,6 +9,7 @@ using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
 using Worki.Service;
 using Worki.Infrastructure.Repository;
+using Postal;
 
 namespace Worki.Web.Controllers
 {
@@ -148,6 +149,7 @@ namespace Worki.Web.Controllers
 
 					idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
 					localisation.ID = idToRedirect;
+                    TempData[MiscHelpers.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
 					return Redirect(localisation.GetDetailFullUrl(Url));
 				}
 			}
@@ -208,8 +210,11 @@ namespace Worki.Web.Controllers
 				_Logger.Error("Delete", ex);
 				context.Complete();
 			}
+
+            TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenDel;
+
             if (string.IsNullOrEmpty(returnUrl))
-                return View(MVC.Localisation.Views.supprimer_reussi);
+                return RedirectToAction(MVC.Admin.Index());
             else
                 return Redirect(returnUrl);
         }
@@ -486,5 +491,45 @@ namespace Worki.Web.Controllers
 		}
 
 		#endregion
+
+        [ActionName("envoyer-listlocmail")]
+        public virtual ActionResult SendListLocMail()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.GetMember(User.Identity.Name);
+
+            if (member.IsValidUser())
+            {
+                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var list = lRepo.GetAll();
+
+                dynamic Mail = new Email(MiscHelpers.ListLocMailView);
+                Mail.From = member.MemberMainData.FirstName + " " + member.MemberMainData.LastName + "<" + member.Email + ">";
+                Mail.To = member.Email;
+                Mail.Subject = Worki.Resources.Views.Localisation.LocalisationString.LocList;
+                Mail.Content = "";
+
+                var count = 1;
+                var total = 1;
+
+                foreach (var item in list)
+                {
+                    if (!string.IsNullOrEmpty(item.Mail))
+                    {
+                        Mail.content += item.ID + " " + "<a href=" + item.GetDetailFullUrl(Url) + ">" + item.GetDisplayName() + "</a>" + " " + item.Member.MemberMainData.LastName + " " + item.Member.Email + " " + item.Mail + "<br />";
+                        count++;
+                    }
+                    total++;
+                }
+                Mail.content += "<br />" + count + "/" + total + "<br />";
+
+                Mail.Send();
+            }
+
+            TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.ListLocSent;
+
+            return RedirectToAction(MVC.Admin.Index());
+        }
 	}
 }

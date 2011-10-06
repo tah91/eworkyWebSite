@@ -403,6 +403,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to L&apos;email a été envoyé avec succès..
+        /// </summary>
+        public static string MailHaveBeenSent {
+            get {
+                return ResourceManager.GetString("MailHaveBeenSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrateur.
         /// </summary>
         public static string ManagerRole {
@@ -457,7 +466,34 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Article non trouvé.
+        ///   Looks up a localized string similar to L&apos;article de presse a été créé..
+        /// </summary>
+        public static string PressHaveBeenCreate {
+            get {
+                return ResourceManager.GetString("PressHaveBeenCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;article de presse a été supprimé..
+        /// </summary>
+        public static string PressHaveBeenDel {
+            get {
+                return ResourceManager.GetString("PressHaveBeenDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;article de presse a été édité..
+        /// </summary>
+        public static string PressHaveBeenEdit {
+            get {
+                return ResourceManager.GetString("PressHaveBeenEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Article non trouvé..
         /// </summary>
         public static string PressNotFound {
             get {
@@ -471,6 +507,15 @@ namespace Worki.Resources.Views.Admin {
         public static string Rentals {
             get {
                 return ResourceManager.GetString("Rentals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Les rôles ont été changés..
+        /// </summary>
+        public static string RoleHaveBeenSet {
+            get {
+                return ResourceManager.GetString("RoleHaveBeenSet", resourceCulture);
             }
         }
         
@@ -565,6 +610,24 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to L&apos;utilisateur a été supprimé..
+        /// </summary>
+        public static string UserHaveBeenDel {
+            get {
+                return ResourceManager.GetString("UserHaveBeenDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utilisateur non trouvé..
+        /// </summary>
+        public static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to validation d&apos;envoi.
         /// </summary>
         public static string ValidationSend {
@@ -583,6 +646,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Visiteur non trouvé..
+        /// </summary>
+        public static string VisitorNotFound {
+            get {
+                return ResourceManager.GetString("VisitorNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to En attente d&apos;inscription.
         /// </summary>
         public static string WaitInscription {
@@ -592,7 +664,43 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lieu de travail non trouvé.
+        ///   Looks up a localized string similar to L&apos;entrepreneur star a été créé..
+        /// </summary>
+        public static string WelcomePeopleHaveBeenCreate {
+            get {
+                return ResourceManager.GetString("WelcomePeopleHaveBeenCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;entrepreneur star a été supprimé..
+        /// </summary>
+        public static string WelcomePeopleHaveBeenDel {
+            get {
+                return ResourceManager.GetString("WelcomePeopleHaveBeenDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;entrepreneur star a été édité..
+        /// </summary>
+        public static string WelcomePeopleHaveBeenEdit {
+            get {
+                return ResourceManager.GetString("WelcomePeopleHaveBeenEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;entrepreneur star non trouvé..
+        /// </summary>
+        public static string WelcomePeopleNotFound {
+            get {
+                return ResourceManager.GetString("WelcomePeopleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lieu de travail non trouvé..
         /// </summary>
         public static string WorkspaceNotFound {
             get {

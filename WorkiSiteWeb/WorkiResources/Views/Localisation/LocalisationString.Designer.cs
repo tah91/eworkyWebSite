@@ -250,6 +250,51 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La liste des lieux vous a été envoyée.
+        /// </summary>
+        public static string ListLocSent {
+            get {
+                return ResourceManager.GetString("ListLocSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le lieu a été créé..
+        /// </summary>
+        public static string LocHaveBeenCreate {
+            get {
+                return ResourceManager.GetString("LocHaveBeenCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le lieu a été supprimé..
+        /// </summary>
+        public static string LocHaveBeenDel {
+            get {
+                return ResourceManager.GetString("LocHaveBeenDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le lieu a été édité..
+        /// </summary>
+        public static string LocHaveBeenEdit {
+            get {
+                return ResourceManager.GetString("LocHaveBeenEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liste complète des lieux.
+        /// </summary>
+        public static string LocList {
+            get {
+                return ResourceManager.GetString("LocList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ce lieu vous intéresse ?.
         /// </summary>
         public static string NeedToBookPlace {
@@ -394,7 +439,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lieu de travail non trouvé.
+        ///   Looks up a localized string similar to Lieu de travail non trouvé..
         /// </summary>
         public static string WorkplaceNotFound {
             get {

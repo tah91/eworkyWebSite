@@ -144,6 +144,9 @@
   <data name="InfosEmpty" xml:space="preserve">
     <value>Pour compléter votre profil, {0}.</value>
   </data>
+  <data name="MemberNotFound" xml:space="preserve">
+    <value>Utilisateur non trouvé.</value>
+  </data>
   <data name="MyCommentedSpaces" xml:space="preserve">
     <value>Mes espaces commentés</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="ProfessionalInfo" xml:space="preserve">
     <value>Mes informations professionnelles</value>
+  </data>
+  <data name="ProfilHaveBeenEdit" xml:space="preserve">
+    <value>Profil édité.</value>
   </data>
   <data name="RelCommentsEmpty" xml:space="preserve">
     <value>Aucun des espaces que vous avez ajoutés n'a été commenté.</value>

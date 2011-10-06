@@ -286,7 +286,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message Envoyé.
+        ///   Looks up a localized string similar to Message Envoyé..
         /// </summary>
         public static string MailSent {
             get {
@@ -295,7 +295,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Votre message a été envoyé avec succes, nos services vont vous répondre rapidement.
+        ///   Looks up a localized string similar to Votre message a été envoyé avec succès, nos services vont vous répondre rapidement..
         /// </summary>
         public static string MailWellSent {
             get {
@@ -304,7 +304,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Votre message a été envoyé avec succes!.
+        ///   Looks up a localized string similar to Votre message a été envoyé avec succès!.
         /// </summary>
         public static string MailWellSent2 {
             get {

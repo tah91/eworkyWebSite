@@ -133,7 +133,7 @@
     <value>Affinner votre recherche</value>
   </data>
   <data name="AddAnother" xml:space="preserve">
-    <value>Add another...</value>
+    <value>Ajouter un autre accès...</value>
   </data>
   <data name="AddRental" xml:space="preserve">
     <value>Ajouter une annonce</value>
@@ -296,6 +296,15 @@
   </data>
   <data name="RentalEdit" xml:space="preserve">
     <value>Editer l'annonce</value>
+  </data>
+  <data name="RentalHaveBeenCreate" xml:space="preserve">
+    <value>L'annonce a été créée.</value>
+  </data>
+  <data name="RentalHaveBeenDel" xml:space="preserve">
+    <value>L'annonce a été supprimée.</value>
+  </data>
+  <data name="RentalHaveBeenEdit" xml:space="preserve">
+    <value>L'annonce a été éditée.</value>
   </data>
   <data name="RentalSuppress" xml:space="preserve">
     <value>Effacer l'annonce</value>

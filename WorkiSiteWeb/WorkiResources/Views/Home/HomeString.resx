@@ -187,10 +187,10 @@
     <value>Lieu</value>
   </data>
   <data name="MailSent" xml:space="preserve">
-    <value>Message Envoyé</value>
+    <value>Message Envoyé.</value>
   </data>
   <data name="MailWellSent" xml:space="preserve">
-    <value>Votre message a été envoyé avec succes, nos services vont vous répondre rapidement</value>
+    <value>Votre message a été envoyé avec succès, nos services vont vous répondre rapidement.</value>
   </data>
   <data name="MoreCriterias" xml:space="preserve">
     <value>Plus de critères</value>
@@ -260,6 +260,6 @@
     <value>, {0} ans.</value>
   </data>
   <data name="MailWellSent2" xml:space="preserve">
-    <value>Votre message a été envoyé avec succes!</value>
+    <value>Votre message a été envoyé avec succès!</value>
   </data>
 </root>

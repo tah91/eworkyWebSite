@@ -469,7 +469,7 @@ namespace Worki.Data.Models
     {
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [SelectValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "Type", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
+		[Display(Name = "TypeAccess", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Type { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]

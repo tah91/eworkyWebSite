@@ -172,7 +172,7 @@
     <value>Nous sommes désolés, le lieu de travail séléctionné n'existe pas ou a été effacé.</value>
   </data>
   <data name="WorkplaceNotFound" xml:space="preserve">
-    <value>Lieu de travail non trouvé</value>
+    <value>Lieu de travail non trouvé.</value>
   </data>
   <data name="WorkplaceWellDeleted" xml:space="preserve">
     <value>Votre lieu de travail a été supprimé avec succes</value>
@@ -236,5 +236,20 @@
   </data>
   <data name="ProWorkPlace" xml:space="preserve">
     <value>Postes de travail professionnels</value>
+  </data>
+  <data name="ListLocSent" xml:space="preserve">
+    <value>La liste des lieux vous a été envoyée</value>
+  </data>
+  <data name="LocList" xml:space="preserve">
+    <value>Liste complète des lieux</value>
+  </data>
+  <data name="LocHaveBeenCreate" xml:space="preserve">
+    <value>Le lieu a été créé.</value>
+  </data>
+  <data name="LocHaveBeenDel" xml:space="preserve">
+    <value>Le lieu a été supprimé.</value>
+  </data>
+  <data name="LocHaveBeenEdit" xml:space="preserve">
+    <value>Le lieu a été édité.</value>
   </data>
 </root>

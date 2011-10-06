@@ -1,3 +1,10 @@
-﻿textarea#Rental_Description{width:467px}
+﻿textarea#Rental_Description{width:502px}
 .tableEdit{width:40%}
-.generalInfosTable td{width:100px}
+.generalInfosTable td{margin-right:30px}
+td:first-child div{width:100px}
+td select[id="Rental_LeaseType"]{width:404px}
+td select[id="Rental_Type"]{width:404px}
+.rentalAccessRows select[id$="Type"]{width:100px}
+.rentalAccessRows input[id$="Line"]{width:40px}
+.rentalAccessRows input[id$="Station"]{width:143px}
+label[for$="Type"]{margin-right:4px}

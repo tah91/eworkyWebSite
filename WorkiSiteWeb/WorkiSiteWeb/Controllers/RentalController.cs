@@ -134,6 +134,8 @@ namespace Worki.Web.Controllers
 
 					context.Commit();
 					idToRedirect = newRental ? rentalToAdd.Id : id.Value;
+                    TempData[MiscHelpers.Info] = newRental ? Worki.Resources.Views.Rental.RentalString.RentalHaveBeenCreate  : Worki.Resources.Views.Rental.RentalString.RentalHaveBeenEdit;
+
 					return RedirectToAction(MVC.Rental.ActionNames.Detail, new { id = idToRedirect });
 				}
 			}
@@ -194,6 +196,8 @@ namespace Worki.Web.Controllers
 				_Logger.Error("Delete", ex);
 				context.Complete();
 			}
+
+            TempData[MiscHelpers.Info] = Worki.Resources.Views.Rental.RentalString.RentalHaveBeenDel;
 
             return RedirectToAction(MVC.Admin.IndexRental());
             //return Redirect(returnUrl);
@@ -390,7 +394,10 @@ namespace Worki.Web.Controllers
                 {
                     _Logger.Error("Rental", ex);
                 }
-                return View("message-envoye-success");
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent2;
+                var tab = contact.Link.Split('/');
+                var id = tab[tab.Length - 1];
+                return RedirectToAction(MVC.Rental.Detail(int.Parse(id)));
             }
             return View(contact);
         }
