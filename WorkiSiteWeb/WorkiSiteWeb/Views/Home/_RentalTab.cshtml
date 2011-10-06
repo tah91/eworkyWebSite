@@ -1,10 +1,5 @@
 ﻿@model RentalSearchCriteria
 
-@section HeadContent
-{
-	<link href="@Url.VersionedContent(Links.Content.RentalForm_min_css)" rel="stylesheet" type="text/css" />
-}
-
 <div id="locationTab" class="tab_content contentBlock borderRed">
     <div class="indexSearchFormDiv darkblue">
         @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
@@ -16,14 +11,19 @@
                 <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
             </div>
             <div class="editor-field indexSearchFormDivRow">
-                @Html.TextBoxFor(model => model.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+                @Html.TextBoxFor(model => model.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "rentalInputIndex" })
             </div>
             <div class="indexSearchFormDivRow">
                 <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
             </div>
-            <div class="editor-field indexSearchFormDivRow">
-                @Html.TextBoxFor(model => model.MinSurface, new { placeHolder = "Surface minimale (m²)" })
-                @Html.TextBoxFor(model => model.MaxRate, new { placeHolder = "Budget maximal (€)" })
+            <div class="editor-field">
+                <div class="halfContainer float-left">
+                    @Html.TextBoxFor(model => model.MinSurface, new { placeHolder = "Surface minimale (m²)", @class = "rentalInputIndex" })
+                </div>
+                <div class="halfContainer float-right">
+                    @Html.TextBoxFor(model => model.MaxRate, new { placeHolder = "Budget maximal (€)", @class = "rentalInputIndex" })
+                </div>
+                <div class="clear"></div>
             </div>
 
             <div class="indexSearchIndexLinks relative">
