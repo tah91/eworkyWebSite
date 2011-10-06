@@ -46,7 +46,7 @@
                 <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink("RECHERCHER UN ESPACE", MVC.Home.Index())</div>
                 <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink("PROPOSER UN ESPACE", MVC.Home.Index())</div>
             </div>
-            <div class="loginContainer  float-right">
+            <div class="loginContainer detailContent float-right">
                 <div  class="logindisplay sizeHeaderConnexion borderRadiusBottom">
 				    @Html.Partial(MVC.Shared.Views._LogOnUserControl)
 				    @*@Html.Partial(MVC.Shared.Views._CultureSwitchControl)*@
@@ -86,7 +86,6 @@
 						<li>@Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Localisation.FullSearch())</li>
 						<li>@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Add, MVC.Localisation.Create())</li>
 						<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.Contact, MVC.Home.Contact())</li>
-                        <li><a href="http://blog.eworky.com" target="_blank">@Worki.Resources.Views.Home.HomeString.Blog</a></li>
 					</ul>
 				</div>
 				<div class="footerLinks float-left">

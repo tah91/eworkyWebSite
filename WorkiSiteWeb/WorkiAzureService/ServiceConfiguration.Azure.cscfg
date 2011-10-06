@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="Worki.AzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*">
   <Role name="Worki.Web">
-    <Instances count="2" />
+    <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=workitest;AccountKey=6rLVskFAZVNiQCcJDxdK1HSGkvi6mbCIZBhI7udO3iTS2qBZtBVBcNOrOKhT3iz2txsz7j+isZ99X7rJWM8NnA==" />
       <Setting name="DataConnectionString" value="DefaultEndpointsProtocol=https;AccountName=workitest;AccountKey=6rLVskFAZVNiQCcJDxdK1HSGkvi6mbCIZBhI7udO3iTS2qBZtBVBcNOrOKhT3iz2txsz7j+isZ99X7rJWM8NnA==" />

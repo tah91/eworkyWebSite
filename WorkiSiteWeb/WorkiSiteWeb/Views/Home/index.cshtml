@@ -23,7 +23,7 @@
 
         <div class="indexForms indexFormContainer float-right">
             <ul class="tabs">
-                <li><a href="#searchTab" class="bold">Recherche</a></li>
+                <li class="backgroundBlue"><a href="#searchTab" class="bold">Recherche</a></li>
                 <li class="backgroundOrange"><a href="#bookingTab" class="bold">Reservation</a></li>
                 <li class="backgroundRed"><a href="#locationTab" class="bold">Location</a></li>
             </ul>
@@ -35,16 +35,16 @@
                             @Html.AntiForgeryToken()
                             @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
                             @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                            <div class="indexSearchFormDivRow">
+                            <div class="indexSearchFormLabel">
                                 <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
                             </div>
-                            <div class="editor-field indexSearchFormDivRow">
+                            <div class="editor-field indexSearchFormField">
                                 @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
                             </div>
-                            <div class="indexSearchFormDivRow">
+                            <div class="indexSearchFormLabel">
                                 <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
                             </div>
-                            <div class="editor-field indexSearchFormDivRow">
+                            <div class="editor-field indexSearchFormField">
                                 @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
                             </div>
 
@@ -100,53 +100,64 @@
         <div class="clear">
         </div>
 
-        <h2 class="index_row_margin blue">eWorky en quatre mots</h2>
-        <div class="indexLogoContainer contentBlock float-left borderBlue">
-            <div class="indexLogoImage indexLogoSearch linkImg inline-block">
-                @Html.ActionLink(" ", MVC.Localisation.FullSearch())
+        <div class="indexLogos">
+            <div>
             </div>
-            <div class="indexLogoDesc inline-block">
-                <span class="bold blue">Recherche. </span>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking.
+            <div class="indexLogoContainer contentBlock float-left borderBlue">
+                <a href="@Url.Action(MVC.Localisation.FullSearch())" title="Recherche">
+                    <div class="indexLogoImage indexLogoSearch linkImg inline-block">
+                    
+                    </div>
+                    <div class="indexLogoDesc inline-block">
+                        <span class="bold blue">Recherche. </span>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking.
+                    </div>
+                    <div class="clear">
+                    </div>
+                </a>
             </div>
-            <div class="clear">
-            </div>
-        </div>
-        <div class="contentBlock indexLogoContainer float-right borderRed">
-            <div class="indexLogoImage indexLogoRental linkImg inline-block">
-                @Html.ActionLink(" ", MVC.Rental.RentalSearch())
-            </div>
-            <div class="indexLogoDesc inline-block">
-                <span class="bold red">Location. </span>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !
-            </div>
-            <div class="clear">
-            </div>
-        </div>
-        <div class="clear">
-        </div>
-        <div class="contentBlock indexLogoContainer float-left borderOrange">
-            <div class="indexLogoImage indexLogoBooking linkImg inline-block">
-                @Html.ActionLink(" ", MVC.Localisation.FullSearch())
-            </div>
-            <div class="indexLogoDesc inline-block">
-                <span class="bold orange">Réservation. </span>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !
+            <div class="contentBlock indexLogoContainer float-right borderRed">
+                <a href="@Url.Action(MVC.Rental.RentalSearch())" title="Location">
+                    <div class="indexLogoImage indexLogoRental linkImg inline-block">
+                        
+                    </div>
+                    <div class="indexLogoDesc inline-block">
+                        <span class="bold red">Location. </span>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !
+                    </div>
+                    <div class="clear">
+                    </div>
+                </a>
             </div>
             <div class="clear">
             </div>
-        </div>
-        <div class="contentBlock indexLogoContainer float-right borderGreen">
-            <div class="indexLogoImage indexLogoMore linkImg inline-block">
-                @Html.ActionLink(" ", MVC.Home.Index())
+            <div class="contentBlock indexLogoContainer float-left borderOrange">
+                <a href="@Url.Action(MVC.Localisation.FullSearch())" title="Réservation">
+                    <div class="indexLogoImage indexLogoBooking linkImg inline-block">
+                        
+                    </div>
+                    <div class="indexLogoDesc inline-block">
+                        <span class="bold orange">Réservation. </span>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !
+                    </div>
+                    <div class="clear">
+                    </div>
+                </a>
             </div>
-            <div class="indexLogoDesc inline-block">
-                <span class="bold green">Et bientôt plein d’autres fonctionnalités. </span>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.
+            <div class="contentBlock indexLogoContainer float-right borderGreen">
+                <a href="@Url.Action(MVC.Home.Index())" title="Et bientôt plein d’autres fonctionnalités">
+                    <div class="indexLogoImage indexLogoMore linkImg inline-block">
+                        
+                    </div>
+                    <div class="indexLogoDesc inline-block">
+                        <span class="bold green">Et bientôt plein d’autres fonctionnalités. </span>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.
+                    </div>
+                    <div class="clear">
+                    </div>
+                </a>
             </div>
             <div class="clear">
             </div>
-        </div>
-        <div class="clear">
         </div>
 
-        <h2 class="index_row_margin blue">Blog</h2>
+        <h3 class="index_row_margin blue">Blog</h3>
         <div class="contentBlock">
             <div class="blogDesc float-left">
                 Les dernières new sur le télétravail
@@ -188,7 +199,7 @@
         });
         require(["@Url.VersionedContent(Links.Scripts.slides_jquery_js)"], function () {
             $('#slides').slides({
-                play: 80000,
+                play: 8000,
                 generatePagination: false,
                 effect: 'fade'
             });

@@ -35,13 +35,13 @@ h3{font-size:1.2em}
 h4{font-size:1.1em}
 h5,h6{font-size:1em}
 .page{width:1000px;margin-left:auto;margin-right:auto;min-height:430px}
-.header{margin-bottom:20px}
+.header{margin-bottom:30px}
 .logo{background-image:url('images/logo.png');width:30%;height:47px;background-repeat:no-repeat;margin-top:20px}
 .logo_beta{background-image:url('images/logo.png')}
 .logo_nobeta{background-image:url('images/logo_nobeta.png')}
 .headerMenu{width:40%;text-align:center}
 .headerMenu .buttonStd{width:100px;margin:0;padding:10px;font-size:14px}
-.loginContainer{width:30%}
+.loginContainer{width:29%;margin-top:0!important}
 .logindisplay{background-color:#f8f8f8;padding:10px}
 .logindisplay p{font-size:.9em}
 .connect{text-align:right}
@@ -214,6 +214,7 @@ ul.tabs li.active,ul.tabs li.active a,html ul.tabs li.active a:hover{background:
 .searchFormDiv{padding:10px}
 .searchFormDiv input[type="text"]{width:250px}
 .searchFormDiv select{width:265px}
+.backToResult{margin-left:0}
 .serviceIcones_coffee_h{background-image:url('images/serviceIcones.png');background-position:0 0;width:28px;height:28px}
 .serviceIcones_coffee_off{background-image:url('images/serviceIcones.png');background-position:0 -78px;width:28px;height:28px}
 .serviceIcones_coffee_on{background-image:url('images/serviceIcones.png');background-position:0 -156px;width:28px;height:28px}

@@ -216,7 +216,7 @@ page width. Or, you can specify an exact pixel width. */
 ----------------------------------------------------------*/
 .header
 {
-    margin-bottom:20px;
+    margin-bottom:30px;
 }
 
 .logo
@@ -255,7 +255,8 @@ page width. Or, you can specify an exact pixel width. */
 
 .loginContainer
 {
-    width:30%;    
+    width:29%;
+    margin-top:0!important; 
 }
 
 /*ajouter no repeat si besoin*/
@@ -1500,6 +1501,11 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 .searchFormDiv select
 {
   width: 265px;
+}
+
+.backToResult
+{
+    margin-left:0;
 }
 
 /*.mainRow

@@ -11,7 +11,7 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.YourSearchResult, "Green", false)
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.YourSearchResult, "Blue", false)
     
 <div class="resultHeader2 float-left">
     <span class="blue bold">@Worki.Resources.Views.Search.SearchString.ResultOfSearch</span> @Model.Results.Count @Worki.Resources.Views.Search.SearchString.PlaceFound
@@ -30,7 +30,7 @@
             </div> 
         
             <div class="searchResultFormDiv" id="searchFormReset">
-                <h3 class="green">@Worki.Resources.Views.Search.SearchString.RefineSearch</h3>
+                <h3 class="blue">@Worki.Resources.Views.Search.SearchString.RefineSearch</h3>
                 @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
                 {
                     @Html.AntiForgeryToken()
@@ -44,15 +44,15 @@
                         @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
                     </p>
         
-                    <p class="green">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</p>
+                    <p class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</p>
                     <div class="editor-field">
                         @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
                         @Html.ValidationMessage("LocalisationOffer", "")
                     </div>
 
-                    <p class="green">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</p>
+                    <p class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</p>
                     @Html.Partial(MVC.Localisation.Views._ServicesSelector)
-                    <p class="green">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
+                    <p class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
                     <div class="editor-field">
                     @Html.CheckBoxFor(model => model.Criteria.Everything)
                     @Html.LabelFor(model => model.Criteria.Everything)
@@ -102,7 +102,7 @@
                     @Html.LabelFor(model => model.Criteria.PrivateArea)
                     </div>
 
-                    <p class="green">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</p>
+                    <p class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</p>
                     <div>
                         <div id="searchOption0">
                             <div id="searchOptionToReplace">
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="resetSearch">
-                        <input type="submit" class="buttonGreen buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
+                        <input type="submit" class="buttonBlue buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
                     </div>
 
                 }
