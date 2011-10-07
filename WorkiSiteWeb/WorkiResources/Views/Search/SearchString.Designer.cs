@@ -317,7 +317,7 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vos résultats de recherche.
+        ///   Looks up a localized string similar to Vos résultats de recherche : {0} lieu(x) trouvé(s).
         /// </summary>
         public static string YourSearchResult {
             get {

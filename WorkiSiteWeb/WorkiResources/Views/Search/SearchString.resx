@@ -238,6 +238,6 @@ favoris dans l’onglet « Ajout » ainsi qu’en notant et commentant les lieux
     <value>Lieux de travail</value>
   </data>
   <data name="YourSearchResult" xml:space="preserve">
-    <value>Vos résultats de recherche</value>
+    <value>Vos résultats de recherche : {0} lieu(x) trouvé(s)</value>
   </data>
 </root>

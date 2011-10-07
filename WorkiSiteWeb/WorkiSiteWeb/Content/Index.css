@@ -90,7 +90,7 @@
 
 .indexFormContainer .tabs li
 {
-    font-size:1.3em;
+    font-size:1.2em;
 }
 
 .indexFormContainer .contentBlock
@@ -258,15 +258,9 @@
     margin-top:30px!important;
 }
 
-.blogDesc li
-{
-    /*width:40%;*/
-}
-
 .blogItem
 {
     padding: 10px;
-    /*margin: 5px;*/
     width:47%;
 }
 

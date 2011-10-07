@@ -278,4 +278,10 @@
   <data name="Valid" xml:space="preserve">
     <value>Valider</value>
   </data>
+  <data name="HeaderSearch" xml:space="preserve">
+    <value>Rechercher un espace</value>
+  </data>
+  <data name="HeaderSuggest" xml:space="preserve">
+    <value>Proposer un espace</value>
+  </data>
 </root>

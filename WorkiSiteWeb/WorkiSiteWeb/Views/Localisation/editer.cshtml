@@ -8,7 +8,7 @@
         id="theme">
     <link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
 }
-@RazorHelpers.TitleDiv((Model.Localisation.ID == 0 ? Worki.Resources.Views.Localisation.LocalisationString.Add : Worki.Resources.Views.Localisation.LocalisationString.Edit), "Orange")
+@RazorHelpers.TitleDiv((Model.Localisation.ID == 0 ? Worki.Resources.Views.Localisation.LocalisationString.Add : Worki.Resources.Views.Localisation.LocalisationString.Edit), "Blue")
 <div class="detailContent">
     @using (Html.BeginForm(MVC.Localisation.ActionNames.Edit, MVC.Localisation.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "localisationEditForm" }))
     {
@@ -659,7 +659,7 @@
                     </tr>
                 </table>
                 <div class="editPlace float-right borderRadius">
-                    <h3 class="orange">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
+                    <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
                     <span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
                     <div id="editMapDiv">
                     </div>
@@ -894,7 +894,7 @@
                 </div>
             </div>
             <div class="float-right">
-                <input  type="submit" class="buttonStd buttonOrange imageBtn" 
+                <input  type="submit" class="buttonStd buttonBlue imageBtn" 
 				    name="valid" id="submit_add" value="@(Model.Localisation.ID == 0 ? Worki.Resources.Views.Shared.SharedString.Adds : Worki.Resources.Views.Shared.SharedString.Valid)"/>
             </div>
             <div class="clear">

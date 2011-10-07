@@ -11,14 +11,7 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Search.SearchString.YourSearchResult, "Blue", false)
-    
-<div class="resultHeader2 float-left">
-    <span class="blue bold">@Worki.Resources.Views.Search.SearchString.ResultOfSearch</span> @Model.Results.Count @Worki.Resources.Views.Search.SearchString.PlaceFound
-</div>
-
-<div class="clear">
-</div>
+@RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
 
 <div class="detailContent">
     <div class="searchFormBlock float-left">

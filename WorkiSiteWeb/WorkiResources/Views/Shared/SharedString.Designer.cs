@@ -242,6 +242,24 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rechercher un espace.
+        /// </summary>
+        public static string HeaderSearch {
+            get {
+                return ResourceManager.GetString("HeaderSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proposer un espace.
+        /// </summary>
+        public static string HeaderSuggest {
+            get {
+                return ResourceManager.GetString("HeaderSuggest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accueil.
         /// </summary>
         public static string Home {

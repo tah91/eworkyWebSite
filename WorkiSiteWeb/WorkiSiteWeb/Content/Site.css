@@ -256,10 +256,10 @@ page width. Or, you can specify an exact pixel width. */
 
 .headerMenu .buttonStd
 {
-    width: 100px;
+    width: 90px;
     margin: 0;
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .ie7 .headerMenu .buttonStd
@@ -1051,7 +1051,7 @@ table tr.row-alternate
 
 .titleDiv h1
 {
-	font-size:1.4em;
+	font-size:1.2em;
 	margin:0;
 }
 
@@ -1248,7 +1248,7 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 .tab_container
 {
 	/*border: 1px solid #999;*/
-	overflow: hidden;
+	/*overflow: hidden;*/
 	clear: both;
 	float: left; 
 	width: 100%;
