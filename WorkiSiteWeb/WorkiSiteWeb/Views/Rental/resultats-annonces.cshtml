@@ -16,7 +16,7 @@
 
     <div class="detailContent">
         <div class="resultDiv dashedRight float-left">
-            <div class="rentalSearchLeftPanel">
+            <div class="searchFormBlockLeft">
                 @for (int i = 0; i < Model.PageResults.Count; ++i)
 			    {
 				    var index = Model.PagingInfo.GlobalIndex(i);
@@ -35,13 +35,14 @@
 				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Rental.ActionNames.FullSearchResult, rvd); })
 			</div>
         </div>
-        <div class="float-right rentalSearchRightPanel">
-            <div class="rentalSearchLeftPanelDetail">
+        <div class="float-right searchFormBlock">
+        <div class="contentBlock">
+            <div class="searchResultFormDiv" id="searchFormReset">
 			    <h3 class="red">@Worki.Resources.Views.Rental.RentalString.AccurateSearch</h3>
                 @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
                 {
                 @Html.AntiForgeryToken()
-                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Price</span></h3>
+                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Price</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
                         <p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
@@ -50,7 +51,7 @@
 		            </div>
 	            </div>
 
-                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Area</span></h3>
+                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Area</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
                         <div>
@@ -61,28 +62,28 @@
 		            </div>
 	            </div>
 
-                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h3>
+                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
 			            @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "width98" })
 		            </div>
 	            </div>
 
-                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h3>
+                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
 			            @Html.TextBoxFor(model => model.RentalData.AvailableDate, new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
 		            </div>
 	            </div>
 
-                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h3>
+                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
 			            @Html.DropDownListFor(model => model.RentalData.LeaseType, Model.LeaseTypeSelect)
 		            </div>
 	            </div>
 
-                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="bold">@Worki.Resources.Views.Rental.RentalString.Others</span></h3>
+                <h3 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Others</span></h3>
 	            <div class="toogle_container">
                     <div class="block">
                         <ul class="marginl0">
@@ -103,6 +104,7 @@
                 </div>
                 }
             </div>
+        </div>
         </div>
 	    <div class="clear"></div>
     </div>

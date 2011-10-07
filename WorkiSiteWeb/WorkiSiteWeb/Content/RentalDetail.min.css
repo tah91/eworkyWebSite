@@ -8,9 +8,6 @@
 .rentalTitlered{color:#D35758;font-size:2em;font-weight:bold}
 .rentalTitle{margin-left:0;margin-top:20px}
 .rentalMargin{margin-bottom:5px;margin-top:15px}
-.resultDiv{width:72.5%}
-.rentalSearchRightPanel{padding:10px;width:24.5%}
-.rentalSearchLeftPanel{margin:10px}
 .rentalSearchLeftPanelDetail{margin:0;padding:10px;border:1px solid #CCC;background-color:White;-webkit-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD;height:650px}
 input#MaxRate.Rsrchcol,input#MinRate.Rsrchcol,input#MinSurface.Rsrchcol,input#MaxSurface.Rsrchcol{width:28%}
 input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}

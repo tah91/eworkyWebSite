@@ -252,4 +252,7 @@
   <data name="LocHaveBeenEdit" xml:space="preserve">
     <value>Le lieu a été édité.</value>
   </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Localisation</value>
+  </data>
 </root>

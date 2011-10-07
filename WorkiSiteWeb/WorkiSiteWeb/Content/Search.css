@@ -59,21 +59,6 @@
     font-size:1.2em;
 }
 
-.searchFormBlock
-{
-	padding:10px;
-}
-
-.ie7 .searchFormBlock
-{
-	padding:8px;
-}
-
-.resultDiv
-{
-    width: 72.5%;
-}
-
 .resultsMapDiv
 {
     height:auto;
