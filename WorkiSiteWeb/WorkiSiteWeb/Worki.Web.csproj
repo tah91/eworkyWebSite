@@ -289,6 +289,7 @@
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
     <Content Include="Content\boilerplate.css" />
+    <Content Include="Content\images\arrow_red.png" />
     <Content Include="Content\images\blog.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\homeLogo1.png" />
