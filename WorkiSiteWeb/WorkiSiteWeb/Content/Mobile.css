@@ -21,6 +21,20 @@ input[type="text"], input[type="password"]
 	padding:10px;
 }
 
+.placeInput
+{
+    width:85%;
+    margin-right:5px;
+}
+
+.currentPosButton .buttonStd
+{
+    width:15px;
+    height: 25px;
+    background:#5DAFDE url('images/geoloc.png') no-repeat center center;
+    margin-right: -3px;
+}
+
 /* LAYOUT
 ----------------------------------------------------------*/
 html,

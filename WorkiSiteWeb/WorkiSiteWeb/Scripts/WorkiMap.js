@@ -12,6 +12,35 @@ Utils.GetJSDouble = function (val) {
     return str1;
 }
 
+function ReverseGeocoder(latitudeField, longitudeField, addressField) {
+    //properties
+    var _latitudeField = latitudeField;
+    var _longitudeField = longitudeField;
+    var _addressField = addressField;
+    var _geocoder = new google.maps.Geocoder();
+
+    //Geocode from an address
+    ReverseGeocodeAddress = function () {
+        var lat = jQuery.trim($(_latitudeField).val());
+        var lng = jQuery.trim($(_longitudeField).val());
+        var latLng = new google.maps.LatLng(lat, lng);
+        _geocoder.geocode({ 'location': latLng, 'region': 'FR' }, _callbackForReverseGeocode);
+    }
+
+    _callbackForReverseGeocode = function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            var latToFill = results[0].geometry.location.lat();
+            var lngToFill = results[0].geometry.location.lng();
+            $(_latitudeField).val(latToFill);
+            $(_longitudeField).val(lngToFill);
+            $(_addressField).val(results[0].formatted_address);
+        }
+    }
+
+    //public methods
+    this.ReverseGeocodeAddress = ReverseGeocodeAddress;
+}
+
 function WorkiAutoComplete(textField) {
     //properties
     var _textField = textField;

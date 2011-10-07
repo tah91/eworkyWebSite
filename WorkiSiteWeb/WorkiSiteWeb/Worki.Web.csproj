@@ -292,6 +292,7 @@
     <Content Include="Content\images\arrow_red.png" />
     <Content Include="Content\images\blog.png" />
     <Content Include="Content\images\cross.png" />
+    <Content Include="Content\images\geoloc.png" />
     <Content Include="Content\images\homeLogo1.png" />
     <Content Include="Content\images\homeLogo2.png" />
     <Content Include="Content\images\homeLogo3.png" />

@@ -2,6 +2,8 @@
 button,input[type="submit"],select{width:100%}
 input[type="text"],input[type="password"]{width:100%}
 .blockContainer{padding:10px}
+.placeInput{width:85%;margin-right:5px}
+.currentPosButton .buttonStd{width:15px;height:25px;background:#5DAFDE url('images/geoloc.png') no-repeat center center;margin-right:-3px}
 html,body{margin:0;padding:0;height:100%}
 .page{width:auto;margin-left:auto;margin-right:auto;position:relative;min-height:100%}
 #main{text-align:center;min-height:100%;position:relative}
