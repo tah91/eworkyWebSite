@@ -1,0 +1,23 @@
+2011-10-07T09:53:15.9864202Z - 5728 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\Users\TI\eworky_git\WorkiSiteWeb\WorkiSiteWeb\App_Data\51Degrees.mobi.config'.
+2011-10-07T09:53:15.9894204Z - 5728 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'C:\Users\TI\eworky_git\WorkiSiteWeb\WorkiSiteWeb\App_Data\51Degrees.mobi.config'.
+2011-10-07T09:53:16.0014210Z - 5728 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-10-07T09:53:18.5875690Z - 5728 - Debug - Initialising redirection module
+2011-10-07T09:53:18.5885690Z - 5728 - Debug - Initialising redirection module static fields.
+2011-10-07T09:53:18.5885690Z - 5728 - Debug - Initialising redirection module event handlers
+2011-10-07T09:53:20.3786714Z - 5728 - Info - Loaded 14691 devices using 12720 strings in 1761ms
+2011-10-07T09:53:28.6691456Z - 5728 - Debug - Initialising redirection module
+2011-10-07T09:53:28.6691456Z - 5728 - Debug - Initialising redirection module event handlers
+2011-10-07T09:53:28.6701457Z - 5728 - Debug - Initialising redirection module
+2011-10-07T09:53:28.6701457Z - 5728 - Debug - Initialising redirection module event handlers
+2011-10-07T09:53:28.6811463Z - 5728 - Debug - Initialising redirection module
+2011-10-07T09:53:28.6811463Z - 5728 - Debug - Initialising redirection module event handlers
+2011-10-07T09:53:28.6941470Z - 5728 - Debug - Initialising redirection module
+2011-10-07T09:53:28.6941470Z - 5728 - Debug - Initialising redirection module event handlers
+2011-10-07T09:53:28.6951471Z - 5728 - Debug - Initialising redirection module
+2011-10-07T09:53:28.6951471Z - 5728 - Debug - Initialising redirection module event handlers
+2011-10-07T09:54:15.3328146Z - 5728 - Debug - Disposing Redirection Module
+2011-10-07T09:54:45.3469092Z - 5728 - Debug - Disposing Redirection Module
+2011-10-07T09:55:15.3614849Z - 5728 - Debug - Disposing Redirection Module
+2011-10-07T09:55:45.3761560Z - 5728 - Debug - Disposing Redirection Module
+2011-10-07T09:56:15.3913532Z - 5728 - Debug - Disposing Redirection Module
+2011-10-07T09:56:49.9664546Z - 5728 - Debug - Disposing Redirection Module
