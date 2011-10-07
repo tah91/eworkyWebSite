@@ -54,3 +54,4 @@ WorkiSiteWeb/WorkiSiteWeb/Users/thumbnail/*.*
 *.dbmdl
 
 *.orig
+WorkiSiteWeb/WorkiSiteWeb/App_Data/Log.txt
