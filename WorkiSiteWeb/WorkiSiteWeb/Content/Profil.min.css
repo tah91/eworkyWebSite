@@ -32,6 +32,7 @@
 .profil_viadeo{background-image:url('images/profil_social.png');background-position:0 -216px;width:22px;height:22px}
 .localisationsTagContainer ul{margin:0;padding:0}
 .localisationsTagContainer ul li a{text-decoration:none;display:block}
+.ie7 .localisationsTagContainer ul li a{text-decoration:none;display:inline}
 .localisationTag{padding:5px 10px 5px 0;padding-left:0;text-align:right;height:200px}
 .localisationImgDiv{width:190px;height:140px}
 .localisationImgDiv img{max-height:140px}

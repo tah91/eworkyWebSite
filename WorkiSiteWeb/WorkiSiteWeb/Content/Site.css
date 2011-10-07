@@ -253,6 +253,11 @@ page width. Or, you can specify an exact pixel width. */
     font-size: 14px;
 }
 
+.ie7 .headerMenu .buttonStd
+{
+    margin-left:5px;
+}
+
 .loginContainer
 {
     width:29%;
@@ -305,7 +310,13 @@ page width. Or, you can specify an exact pixel width. */
 
 *:first-child+html .sizeHeaderConnexion
 {
-	width: 330px;
+	width:85%;
+	height:100%;
+}
+
+.ie7 .sizeHeaderConnexion
+{
+	width:85%;
 	height:100%;
 }
 
@@ -1545,4 +1556,15 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
     border:none;
 }
 .cross{ background-image:url('images/cross.png'); background-position: 0 0;width: 12px; height: 12px; background-repeat:no-repeat; } 
-.cross:hover{ background-image:url('images/cross.png'); background-position: 0 -62px; width: 12px; height: 12px; background-repeat:no-repeat; } 
+.cross:hover{ background-image:url('images/cross.png'); background-position: 0 -62px; width: 12px; height: 12px; background-repeat:no-repeat; }
+
+.ie7 .inline-block
+{
+    float:left;
+    display:block;
+}
+
+.ie7 .halfContainer
+{
+	height:36px;
+}

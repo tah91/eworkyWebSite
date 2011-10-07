@@ -41,13 +41,15 @@ h5,h6{font-size:1em}
 .logo_nobeta{background-image:url('images/logo_nobeta.png')}
 .headerMenu{width:40%;text-align:center}
 .headerMenu .buttonStd{width:100px;margin:0;padding:10px;font-size:14px}
+.ie7 .headerMenu .buttonStd{margin-left:5px}
 .loginContainer{width:29%;margin-top:0!important}
 .logindisplay{background-color:#f8f8f8;padding:10px}
 .logindisplay p{font-size:.9em}
 .connect{text-align:right}
 .createAccount{margin-top:10px}
 *:first-child+html .lengthConnexionBox{width:130px;height:100%}
-*:first-child+html .sizeHeaderConnexion{width:330px;height:100%}
+*:first-child+html .sizeHeaderConnexion{width:85%;height:100%}
+.ie7 .sizeHeaderConnexion{width:85%;height:100%}
 .footer{background-image:url('images/footer.jpg');background-repeat:repeat-x;height:275px;width:100%;position:relative;float:left;margin-top:40px;font-size:12px;line-height:20px}
 .footer a{text-decoration:none;color:#999;font-style:normal}
 .footer a:hover{color:White}
@@ -242,3 +244,5 @@ ul.tabs li.active,ul.tabs li.active a,html ul.tabs li.active a:hover{background:
 .crossButton{margin-top:9px;border:0}
 .cross{background-image:url('images/cross.png');background-position:0 0;width:12px;height:12px;background-repeat:no-repeat}
 .cross:hover{background-image:url('images/cross.png');background-position:0 -62px;width:12px;height:12px;background-repeat:no-repeat}
+.ie7 .inline-block{float:left;display:block}
+.ie7 .halfContainer{height:36px}
