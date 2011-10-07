@@ -15,7 +15,7 @@
     var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
 }
 <div class="indexHeader">
-    <h1 class="darkblue">@string.Format("Trouver le meilleur endroit pour travailler parmi {0:### ### ###} lieux", indexViewModel.LocalisationCount)</h1>
+    <h1 class="darkblue">@string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace, indexViewModel.LocalisationCount)</h1>
 </div>
 
 <div class="detailContent">
@@ -24,9 +24,9 @@
 
         <div class="indexForms indexFormContainer float-right">
             <ul class="tabs">
-                <li class="backgroundBlue"><a href="#searchTab" class="bold">Recherche</a></li>
-                <li class="backgroundOrange"><a href="#bookingTab" class="bold">Reservation</a></li>
-                <li class="backgroundRed"><a href="#locationTab" class="bold">Location</a></li>
+                <li class="backgroundBlue"><a href="#searchTab" class="bold">@Worki.Resources.Views.Home.HomeString.Search</a></li>
+                <li class="backgroundOrange"><a href="#bookingTab" class="bold">@Worki.Resources.Views.Home.HomeString.Reserve</a></li>
+                <li class="backgroundRed"><a href="#locationTab" class="bold">@Worki.Resources.Views.Home.HomeString.Rent</a></li>
             </ul>
             <div class="tab_container">
                 <div id="searchTab" class="tab_content contentBlock borderBlue">
@@ -54,7 +54,7 @@
                                 @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
                                 </div>
                                 <div class="indexSearchIndexLinksRight float-right">
-                                    <input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="Rechercher" />
+                                    <input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
                                 </div>
                                 <div class="clear">
                                 </div>
@@ -87,7 +87,7 @@
                                 @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
                                 </div>
                                 <div class="indexSearchIndexLinksRight float-right">
-                                    <input type="submit" class="buttonStd buttonOrange" id="btn_searchIndex" value="Rechercher" />
+                                    <input type="submit" class="buttonStd buttonOrange" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
                                 </div>
                                 <div class="clear">
                                 </div>
@@ -105,24 +105,24 @@
             <div>
             </div>
             <div class="indexLogoContainer contentBlock float-left borderBlue">
-                <a href="@Url.Action(MVC.Localisation.FullSearch())" title="Recherche">
+                <a href="@Url.Action(MVC.Localisation.FullSearch())" title="@Worki.Resources.Views.Home.HomeString.Search">
                     <div class="indexLogoImage indexLogoSearch linkImg inline-block">
                     
                     </div>
                     <div class="indexLogoDesc inline-block">
-                        <span class="bold blue">Recherche. </span>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking.
+                        <span class="bold blue">@Worki.Resources.Views.Home.HomeString.Search. </span>@Worki.Resources.Views.Home.HomeString.SearchSpeech
                     </div>
                     <div class="clear">
                     </div>
                 </a>
             </div>
             <div class="contentBlock indexLogoContainer float-right borderRed">
-                <a href="@Url.Action(MVC.Rental.RentalSearch())" title="Location">
+                <a href="@Url.Action(MVC.Rental.RentalSearch())" title="@Worki.Resources.Views.Home.HomeString.Rent">
                     <div class="indexLogoImage indexLogoRental linkImg inline-block">
                         
                     </div>
                     <div class="indexLogoDesc inline-block">
-                        <span class="bold red">Location. </span>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !
+                        <span class="bold red">@Worki.Resources.Views.Home.HomeString.Rent. </span>@Worki.Resources.Views.Home.HomeString.RentSpeech
                     </div>
                     <div class="clear">
                     </div>
@@ -131,24 +131,24 @@
             <div class="clear">
             </div>
             <div class="contentBlock indexLogoContainer float-left borderOrange">
-                <a href="@Url.Action(MVC.Localisation.FullSearch())" title="Réservation">
+                <a href="@Url.Action(MVC.Localisation.FullSearch())" title="@Worki.Resources.Views.Home.HomeString.Reserve">
                     <div class="indexLogoImage indexLogoBooking linkImg inline-block">
                         
                     </div>
                     <div class="indexLogoDesc inline-block">
-                        <span class="bold orange">Réservation. </span>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !
+                        <span class="bold orange">@Worki.Resources.Views.Home.HomeString.Reserve. </span>@Worki.Resources.Views.Home.HomeString.ReserveSpeech
                     </div>
                     <div class="clear">
                     </div>
                 </a>
             </div>
             <div class="contentBlock indexLogoContainer float-right borderGreen">
-                <a href="@Url.Action(MVC.Home.Index())" title="Et bientôt plein d’autres fonctionnalités">
+                <a href="@Url.Action(MVC.Home.Index())" title="@Worki.Resources.Views.Home.HomeString.SoonLotofFeatures">
                     <div class="indexLogoImage indexLogoMore linkImg inline-block">
                         
                     </div>
-                    <div class="indexLogoDesc inline-block">
-                        <span class="bold green">Et bientôt plein d’autres fonctionnalités. </span>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.
+                    <div class="indexLogoDesc inline-block">@Worki.Resources.Views.Home.HomeString.Teamworky
+                        <span class="bold green">@Worki.Resources.Views.Home.HomeString.SoonLotofFeatures </span>
                     </div>
                     <div class="clear">
                     </div>
@@ -158,11 +158,11 @@
             </div>
         </div>
 
-        <h3 class="index_row_margin blue">Blog</h3>
+        <h3 class="index_row_margin blue">@Worki.Resources.Views.Home.HomeString.Blog</h3>
         <div class="contentBlock">
             <div class="blogDesc float-left">
-                Les dernières new sur le télétravail
-                <div class="buttonStd buttonBlue linkImg"><a href="@Worki.Web.Controllers.HomeController.BlogUrl" target="_blank">Voir le blog eWorky</a></div>
+                @Worki.Resources.Views.Home.HomeString.LastNews
+                <div class="buttonStd buttonBlue linkImg"><a href="@Worki.Web.Controllers.HomeController.BlogUrl" target="_blank">@Worki.Resources.Views.Home.HomeString.CheckOutBlog</a></div>
             </div>
             <ul class="float-right">
             @foreach (var item in indexViewModel.BlogPosts)

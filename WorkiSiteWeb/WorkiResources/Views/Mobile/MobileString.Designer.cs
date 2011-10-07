@@ -70,6 +70,15 @@ namespace Worki.Resources.Views.Mobile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appeler.
+        /// </summary>
+        public static string Call {
+            get {
+                return ResourceManager.GetString("Call", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version classique.
         /// </summary>
         public static string ClassicVersion {

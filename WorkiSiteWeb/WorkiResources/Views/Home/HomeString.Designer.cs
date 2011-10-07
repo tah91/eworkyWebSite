@@ -115,6 +115,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Voir le blog eWorky.
+        /// </summary>
+        public static string CheckOutBlog {
+            get {
+                return ResourceManager.GetString("CheckOutBlog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {
@@ -214,6 +223,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trouver le meilleur endroit pour travailler parmi {0:### ### ###} lieux.
+        /// </summary>
+        public static string FindTheBesPlace {
+            get {
+                return ResourceManager.GetString("FindTheBesPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Du plaisir.
         /// </summary>
         public static string Fun {
@@ -277,6 +295,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Les dernières new sur le télétravail.
+        /// </summary>
+        public static string LastNews {
+            get {
+                return ResourceManager.GetString("LastNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lieu.
         /// </summary>
         public static string Location {
@@ -313,6 +340,24 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Budget maximal (€).
+        /// </summary>
+        public static string MaxRate {
+            get {
+                return ResourceManager.GetString("MaxRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surface minimale (m²).
+        /// </summary>
+        public static string MinSurface {
+            get {
+                return ResourceManager.GetString("MinSurface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plus de critères.
         /// </summary>
         public static string MoreCriterias {
@@ -327,6 +372,69 @@ namespace Worki.Resources.Views.Home {
         public static string News {
             get {
                 return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string Rent {
+            get {
+                return ResourceManager.GetString("Rent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !.
+        /// </summary>
+        public static string RentSpeech {
+            get {
+                return ResourceManager.GetString("RentSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation.
+        /// </summary>
+        public static string Reserve {
+            get {
+                return ResourceManager.GetString("Reserve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eWorky c&apos;est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !.
+        /// </summary>
+        public static string ReserveSpeech {
+            get {
+                return ResourceManager.GetString("ReserveSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recherche.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rechercher.
+        /// </summary>
+        public static string Searching {
+            get {
+                return ResourceManager.GetString("Searching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eWorky c&apos;est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking..
+        /// </summary>
+        public static string SearchSpeech {
+            get {
+                return ResourceManager.GetString("SearchSpeech", resourceCulture);
             }
         }
         
@@ -368,6 +476,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Et bientôt plein d’autres fonctionnalités..
+        /// </summary>
+        public static string SoonLotofFeatures {
+            get {
+                return ResourceManager.GetString("SoonLotofFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous trouverez bientôt ici également un dossier de presse sur eWorky..
         /// </summary>
         public static string SoonPressKit {
@@ -391,6 +508,15 @@ namespace Worki.Resources.Views.Home {
         public static string SubmitWorkplace {
             get {
                 return ResourceManager.GetString("SubmitWorkplace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc..
+        /// </summary>
+        public static string Teamworky {
+            get {
+                return ResourceManager.GetString("Teamworky", resourceCulture);
             }
         }
         

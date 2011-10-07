@@ -159,4 +159,7 @@
   <data name="Welcome" xml:space="preserve">
     <value>Bienvenue</value>
   </data>
+  <data name="Call" xml:space="preserve">
+    <value>Appeler</value>
+  </data>
 </root>
