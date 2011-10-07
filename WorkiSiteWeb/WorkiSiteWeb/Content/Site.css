@@ -83,6 +83,15 @@ body
 
 /*TEXT COLORS
 ----------------------------------------------------------*/
+.white
+{
+	color:white;
+}
+
+.white a
+{
+	color:white;
+}
 .blue
 {
 	color:#5dafde;

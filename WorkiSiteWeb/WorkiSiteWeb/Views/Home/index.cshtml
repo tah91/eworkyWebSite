@@ -104,7 +104,7 @@
         <div class="indexLogos">
             <div>
             </div>
-            <div class="indexLogoContainer contentBlock float-left borderBlue">
+            <div class="indexLogoContainer contentBlock float-left borderBlue noUnderline">
                 <a href="@Url.Action(MVC.Localisation.FullSearch())" title="Recherche">
                     <div class="indexLogoImage indexLogoSearch linkImg inline-block">
                     
@@ -116,7 +116,7 @@
                     </div>
                 </a>
             </div>
-            <div class="contentBlock indexLogoContainer float-right borderRed">
+            <div class="contentBlock indexLogoContainer float-right borderRed noUnderline">
                 <a href="@Url.Action(MVC.Rental.RentalSearch())" title="Location">
                     <div class="indexLogoImage indexLogoRental linkImg inline-block">
                         
@@ -130,7 +130,7 @@
             </div>
             <div class="clear">
             </div>
-            <div class="contentBlock indexLogoContainer float-left borderOrange">
+            <div class="contentBlock indexLogoContainer float-left borderOrange noUnderline">
                 <a href="@Url.Action(MVC.Localisation.FullSearch())" title="Réservation">
                     <div class="indexLogoImage indexLogoBooking linkImg inline-block">
                         
@@ -142,7 +142,7 @@
                     </div>
                 </a>
             </div>
-            <div class="contentBlock indexLogoContainer float-right borderGreen">
+            <div class="contentBlock indexLogoContainer float-right borderGreen noUnderline">
                 <a href="@Url.Action(MVC.Home.Index())" title="Et bientôt plein d’autres fonctionnalités">
                     <div class="indexLogoImage indexLogoMore linkImg inline-block">
                         
@@ -158,37 +158,35 @@
             </div>
         </div>
 
-        <h3 class="index_row_margin blue">Blog</h3>
         <div class="contentBlock">
-            <div class="blogDesc float-left">
-                Les dernières new sur le télétravail
-                <div class="buttonStd buttonBlue linkImg"><a href="@Worki.Web.Controllers.HomeController.BlogUrl" target="_blank">Voir le blog eWorky</a></div>
-            </div>
-            <ul class="float-right">
-            @foreach (var item in indexViewModel.BlogPosts)
-            {
-                <li class="blogItem borderRadius noUnderline">
-                    <a href="@item.Url" target="_blank" title="@Html.Raw(item.Title)">
-                        <div class="blogDate bold float-left">
-                            @item.PublicationDate.ToString("dd/MM/yyyy")
-                        </div>
-                        <div class="blogContent float-left">
-                            <h4 class="blue">@Html.Raw(item.Title)</h4>
-                            @Html.Raw(@item.Content) ...
-                        </div>
-                        <div class="clear">
-                        </div>
-                    </a>
-                </li>        
-            }
-            </ul>
-            <div class="clear">
+            <div class="blogDesc">
+                <ul>
+                @foreach (var item in indexViewModel.BlogPosts)
+                {
+                    <li class="blogItem borderRadius noUnderline float-left">
+                        <a href="@item.Url" target="_blank" title="@Html.Raw(item.Title)">
+                            <div class="blogImg borderedImg borderRadius float-left">
+                                @RazorHelpers.CenterImage(item.Image, item.Title)
+                            </div>
+                            <div class="blogContent float-left">
+                                <h4 class="blue">@Html.Raw(item.Title) - @item.PublicationDate.ToString("dd/MM/yyyy")</h4>
+                                @Html.TruncateAtWord(item.Content, 120)
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </a>
+                    </li>        
+                }
+                    <div class="clear">
+                    </div>
+                </ul>
+                <div class="blogButton buttonStd buttonBlue linkImg float-right">
+                    <a href="@Worki.Web.Controllers.HomeController.BlogUrl" target="_blank">Voir le blog eWorky</a>
+                </div>
+                <div class="clear">
+                </div>
             </div>
         </div>
-@*        <div class="adRow">
-            @Html.Partial(MVC.Home.Views._HomeDesc, indexViewModel.BlogPosts)
-            @Html.Partial(MVC.Shared.Views._IndexGallery)
-        </div>*@
     </div>
 </div>
 

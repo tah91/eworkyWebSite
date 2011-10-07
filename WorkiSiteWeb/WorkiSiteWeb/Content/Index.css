@@ -67,16 +67,6 @@
 	border-radius: 4px;
 }
 
-/*.indexSearchContainer
-{
-    background: #f8f8f8;
-}*/
-
-.index_row_margin
-{
-    /*margin-top:20px;*/
-}
-
 .index_slides_container
 {
     width: 49%;
@@ -86,11 +76,6 @@
 {
     margin:5px 0 4px 0;
     font-size:1.3em;
-}
-
-.index_slides_block
-{
-    /*margin-top:15px!important;*/
 }
 
 .index_slides
@@ -162,14 +147,6 @@
     
 }
 
-/*.searchIndexHead
-{
-    background-position: left center;
-    background: url('images/loupe.png') no-repeat;
-    height: 27px;
-    padding-left:50px;
-}*/
-
 #slides {
 	z-index:100;
 }
@@ -192,11 +169,12 @@
 	position:absolute;
 	bottom:0;
 	left:0;
-	height:80px;
-	width:440px;
+	height:40px;
+	width:430px;
 	padding:10px;
 	background:#4E5A68;
 	opacity: 0.8;
+    font-size: 1.1em;
 }
 
 .caption_avatar
@@ -209,30 +187,6 @@
 .caption_avatar img
 {
     max-height: 80px;
-}
-
-.caption_text
-{
-    color:White;
-}
-
-.caption_desc
-{
-    height: 49px;
-    font-size: 1.1em;
-    font-style:italic;
-    color: white;
-}
-
-.caption_desc a
-{
-    font-style:italic;
-    color: white;
-    text-decoration:none;
-}
-
-.caption_infos
-{
 }
 
 .caption_name
@@ -294,20 +248,40 @@
 
 .indexLogoDesc
 {
-    width:70%;
+    width:69%;
     vertical-align: 15%;
     margin-left: 5px;
 }
 
-.blogDesc
+.blogButton
 {
-    padding:10px;
+    /*width: 150px;*/
+    /*margin: 0 10px!important;*/
+}
+
+.blogDesc li
+{
+    /*width:40%;*/
 }
 
 .blogItem
 {
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
+    width:47%;
+}
+
+.blogImg
+{
+    margin-right: 10px;
+    width:125px;
+    height:100px;
+}
+
+.blogImg img
+{
+    width:125px;
+    height:100px;
 }
 
 .blogItem:hover
@@ -322,5 +296,6 @@
 
 .blogContent
 {
-    width:550px;
+    /*width:550px;*/
+    width:67%;
 }

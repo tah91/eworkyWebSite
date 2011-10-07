@@ -24,12 +24,9 @@
 #slides{z-index:100}
 .slides_container{overflow:hidden;position:relative;display:none}
 .slides_container div.slide{width:450px;height:310px;display:block}
-.caption{z-index:500;position:absolute;bottom:0;left:0;height:80px;width:440px;padding:10px;background:#4E5A68;opacity:.8}
+.caption{z-index:500;position:absolute;bottom:0;left:0;height:40px;width:430px;padding:10px;background:#4E5A68;opacity:.8;font-size:1.1em}
 .caption_avatar{width:80px;height:80px;margin-right:10px}
 .caption_avatar img{max-height:80px}
-.caption_text{color:White}
-.caption_desc{height:49px;font-size:1.1em;font-style:italic;color:white}
-.caption_desc a{font-style:italic;color:white;text-decoration:none}
 .caption_name{font-size:1.2em;color:#93c8e7}
 .caption_name a{color:#93c8e7;text-decoration:none}
 .slide_image img{width:100%;height:100%}
@@ -40,9 +37,10 @@
 .indexLogoRental{background:url('images/homeLogo3.png')}
 .indexLogoBooking{background:url('images/homeLogo2.png')}
 .indexLogoMore{background:url('images/homeLogo4.png')}
-.indexLogoDesc{width:70%;vertical-align:15%;margin-left:5px}
-.blogDesc{padding:10px}
-.blogItem{padding:10px;margin:5px}
+.indexLogoDesc{width:69%;vertical-align:15%;margin-left:5px}
+.blogItem{padding:10px;width:47%}
+.blogImg{margin-right:10px;width:125px;height:100px}
+.blogImg img{width:125px;height:100px}
 .blogItem:hover{background:#f3f3f3}
 .blogDate{width:120px}
-.blogContent{width:550px}
+.blogContent{width:67%}
