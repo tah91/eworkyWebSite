@@ -25,7 +25,7 @@ namespace Worki.SpecFlow
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeText("mika7869@gmail.com");
             WebBrowser.Current.Page<WelcomePeoplePage>().Localisation.TypeText("Le Bistrot Marguerite");
-            WebBrowser.Current.Page<WelcomePeoplePage>().Description.TypeText("Ceci est un test ...");
+            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeText("Ceci est un test ...");
         }
 
         [When(@"Je valide le formulaire welcome people")]
@@ -58,7 +58,7 @@ namespace Worki.SpecFlow
         [When(@"Je modifie le formulaire")]
         public void WhenJeModifieLeFormulaire()
         {
-            WebBrowser.Current.Page<WelcomePeoplePage>().Description.TypeText("Ceci est un test ... j'ai édité cette description ...");
+            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeText("Ceci est un test ... j'ai édité cette description ...");
         }
 
         [When(@"Je valide save welcome people")]
@@ -88,7 +88,7 @@ namespace Worki.SpecFlow
             get { return Document.TextField(Find.ById("LocalisationName")); }
         }
 
-        public TextField Description
+        public TextField WelcomePeopleDescription
         {
             get { return Document.TextField(Find.ById("WelcomePeople_Description")); }
         }
