@@ -1577,3 +1577,24 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 {
 	height:36px;
 }
+
+.searchFormBlockLeft
+{
+	margin:10px;
+}
+
+.searchFormBlock
+{
+	padding:10px;
+    width:24.5%;
+}
+
+.ie7 .searchFormBlock
+{
+	padding:8px;
+}
+
+.resultDiv
+{
+    width: 72.5%;
+}

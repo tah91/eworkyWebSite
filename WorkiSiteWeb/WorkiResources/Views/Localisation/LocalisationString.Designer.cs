@@ -259,6 +259,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Localisation.
+        /// </summary>
+        public static string Localisation {
+            get {
+                return ResourceManager.GetString("Localisation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Le lieu a été créé..
         /// </summary>
         public static string LocHaveBeenCreate {

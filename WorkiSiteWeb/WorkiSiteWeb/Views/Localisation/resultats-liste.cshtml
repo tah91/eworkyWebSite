@@ -14,7 +14,7 @@
 @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
 
 <div class="detailContent">
-    <div class="searchFormBlock float-left">
+    <div class="searchFormBlock float-right">
 		<div class="contentBlock">
 			<div class="resultsMapDiv">
                 <span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
@@ -27,9 +27,15 @@
                 @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Criteria.Place)
-                        @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
+
+                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h3>
+                    <div class="toogle_container">
+                        <div class="block">
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Criteria.Place)
+                                @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
+                            </div>
+                        </div>
                     </div>
 
                     <p>
@@ -37,68 +43,85 @@
                         @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
                     </p>
         
-                    <p class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</p>
-                    <div class="editor-field">
-                        @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
-                        @Html.ValidationMessage("LocalisationOffer", "")
+                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h3>
+                    <div class="toogle_container">
+                        <div class="block">
+                            <div class="editor-field">
+                                @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
+                                @Html.ValidationMessage("LocalisationOffer", "")
+                            </div>
+                        </div>
+		            </div>
+
+                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h3>
+                    <div class="toogle_container">
+                        <div class="block">
+                            @Html.Partial(MVC.Localisation.Views._ServicesSelector)
+                        </div>
+                    </div>
+                    
+                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h3>
+                    <div class="toogle_container">
+                        <div class="block">
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.Everything)
+                                @Html.LabelFor(model => model.Criteria.Everything)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
+                                @Html.LabelFor(model => model.Criteria.SpotWifi)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
+                                @Html.LabelFor(model => model.Criteria.CoffeeResto)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.Biblio)
+                                @Html.LabelFor(model => model.Criteria.Biblio)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
+                                @Html.LabelFor(model => model.Criteria.PublicSpace)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
+                                @Html.LabelFor(model => model.Criteria.TravelerSpace)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.Hotel)
+                                @Html.LabelFor(model => model.Criteria.Hotel)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.Telecentre)
+                                @Html.LabelFor(model => model.Criteria.Telecentre)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
+                                @Html.LabelFor(model => model.Criteria.BuisnessCenter)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
+                                @Html.LabelFor(model => model.Criteria.CoworkingSpace)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
+                                @Html.LabelFor(model => model.Criteria.WorkingHotel)
+                            </div>
+                            <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
+                                @Html.LabelFor(model => model.Criteria.PrivateArea)
+                            </div>
+                        </div>
                     </div>
 
-                    <p class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</p>
-                    @Html.Partial(MVC.Localisation.Views._ServicesSelector)
-                    <p class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.Everything)
-                    @Html.LabelFor(model => model.Criteria.Everything)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
-                    @Html.LabelFor(model => model.Criteria.SpotWifi)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
-                    @Html.LabelFor(model => model.Criteria.CoffeeResto)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.Biblio)
-                    @Html.LabelFor(model => model.Criteria.Biblio)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
-                    @Html.LabelFor(model => model.Criteria.PublicSpace)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
-                    @Html.LabelFor(model => model.Criteria.TravelerSpace)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.Hotel)
-                    @Html.LabelFor(model => model.Criteria.Hotel)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.Telecentre)
-                    @Html.LabelFor(model => model.Criteria.Telecentre)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
-                    @Html.LabelFor(model => model.Criteria.BuisnessCenter)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
-                    @Html.LabelFor(model => model.Criteria.CoworkingSpace)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
-                    @Html.LabelFor(model => model.Criteria.WorkingHotel)
-                    </div>
-                    <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
-                    @Html.LabelFor(model => model.Criteria.PrivateArea)
-                    </div>
-
-                    <p class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</p>
-                    <div>
-                        <div id="searchOption0">
-                            <div id="searchOptionToReplace">
+                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</span></h3>
+                    <div class="toogle_container">
+                        <div class="block">
+                            <div>
+                                <div id="searchOption0">
+                                    <div id="searchOptionToReplace">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,8 +134,8 @@
 		</div>
     </div>
 
-    <div class="resultDiv dashedLeft float-right">
-        <div class="searchFormBlock">
+    <div class="resultDiv dashedRight float-left">
+        <div class="searchFormBlockLeft">
             @for (int i = 0; i < Model.PageResults.Count; ++i)
 			{ 
 				var index = Model.PagingInfo.GlobalIndex(i);
@@ -144,6 +167,7 @@
 @section ScriptContent
 {
     <script type="text/javascript">
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"]);
         require(["@MiscHelpers.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
 
