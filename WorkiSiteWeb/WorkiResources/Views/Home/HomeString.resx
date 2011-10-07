@@ -262,4 +262,46 @@
   <data name="MailWellSent2" xml:space="preserve">
     <value>Votre message a été envoyé avec succès!</value>
   </data>
+  <data name="Rent" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="RentSpeech" xml:space="preserve">
+    <value>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>Reservation</value>
+  </data>
+  <data name="ReserveSpeech" xml:space="preserve">
+    <value>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Recherche</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="SearchSpeech" xml:space="preserve">
+    <value>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking.</value>
+  </data>
+  <data name="SoonLotofFeatures" xml:space="preserve">
+    <value>Et bientôt plein d’autres fonctionnalités.</value>
+  </data>
+  <data name="Teamworky" xml:space="preserve">
+    <value>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.</value>
+  </data>
+  <data name="CheckOutBlog" xml:space="preserve">
+    <value>Voir le blog eWorky</value>
+  </data>
+  <data name="FindTheBesPlace" xml:space="preserve">
+    <value>Trouver le meilleur endroit pour travailler parmi {0:### ### ###} lieux</value>
+  </data>
+  <data name="LastNews" xml:space="preserve">
+    <value>Les dernières new sur le télétravail</value>
+  </data>
+  <data name="MaxRate" xml:space="preserve">
+    <value>Budget maximal (€)</value>
+  </data>
+  <data name="MinSurface" xml:space="preserve">
+    <value>Surface minimale (m²)</value>
+  </data>
 </root>

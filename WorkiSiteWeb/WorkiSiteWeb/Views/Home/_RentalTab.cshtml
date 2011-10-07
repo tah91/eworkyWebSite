@@ -18,10 +18,10 @@
             </div>
             <div class="editor-field">
                 <div class="halfContainer float-left">
-                    @Html.TextBoxFor(model => model.MinSurface, new { placeHolder = "Surface minimale (m²)", @class = "rentalInputIndex" })
+                    @Html.TextBoxFor(model => model.MinSurface, new { placeHolder = Worki.Resources.Views.Home.HomeString.MinSurface, @class = "rentalInputIndex" })
                 </div>
                 <div class="halfContainer float-right">
-                    @Html.TextBoxFor(model => model.MaxRate, new { placeHolder = "Budget maximal (€)", @class = "rentalInputIndex" })
+                    @Html.TextBoxFor(model => model.MaxRate, new { placeHolder = Worki.Resources.Views.Home.HomeString.MaxRate, @class = "rentalInputIndex" })
                 </div>
                 <div class="clear"></div>
             </div>
@@ -31,7 +31,7 @@
                 @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Rental.RentalSearch())
                 </div>
                 <div class="indexSearchIndexLinksRight float-right">
-                    <input type="submit" class="buttonStd buttonRed" id="btn_searchIndex" value="Rechercher" />
+                    <input type="submit" class="buttonStd buttonRed" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
                 </div>
                 <div class="clear">
                 </div>

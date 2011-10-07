@@ -170,6 +170,12 @@
     display:block;
 }
 
+.ie7 .localisationsTagContainer ul li a 
+{
+    text-decoration:none;
+    display:inline;
+}
+
 .localisationTag
 {
     padding: 5px 10px 5px 0;

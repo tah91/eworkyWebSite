@@ -9,6 +9,7 @@
 .resultHeader2{margin-left:60px;padding:8px}
 .resultHeader2 span{font-size:1.2em}
 .searchFormBlock{padding:10px}
+.ie7 .searchFormBlock{padding:8px}
 .resultDiv{width:72.5%}
 .resultsMapDiv{height:auto}
 #resultsMap{height:180px;margin:5px 0 5px 0}

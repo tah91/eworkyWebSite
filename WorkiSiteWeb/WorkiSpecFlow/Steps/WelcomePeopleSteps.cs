@@ -12,8 +12,6 @@ namespace Worki.SpecFlow
     [Binding]
     class WelcomePeopleSteps
     {
-        public String myStatiqueRand;
-
         #region Ajout New Welcome People
         [Given(@"Je vais dans la page New Welcome People")]
         public void GivenJeVaisDansLaPageNewWelcomePeople()
@@ -25,28 +23,25 @@ namespace Worki.SpecFlow
         [When(@"Je remplis le formulaire")]
         public void WhenJeRemplisLeFormulaire()
         {
-            Random myRand = new Random();
-            WebBrowser.Current.TextField(Find.ById("FirstName")).TypeTextQuickly("Grégoire" + myRand.Next().ToString());
-            WebBrowser.Current.TextField(Find.ById("LastName")).TypeTextQuickly("de Montety" + myRand.Next().ToString());
-            WebBrowser.Current.TextField(Find.ById("Age")).TypeTextQuickly("20");
-            WebBrowser.Current.TextField(Find.ById("Job")).TypeTextQuickly("Etudiant a plein temps ;)");
-            WebBrowser.Current.TextField(Find.ById("Company")).TypeTextQuickly("La meilleur");
-            WebBrowser.Current.TextField(Find.ById("Localisation")).TypeTextQuickly("Dans mon lit");
-            WebBrowser.Current.TextField(Find.ById("Description")).TypeTextQuickly("un peu humide mais calme et agréable");
+            WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeText("mika7869@gmail.com");
+            WebBrowser.Current.Page<WelcomePeoplePage>().Localisation.TypeText("Le Bistrot Marguerite");
+            WebBrowser.Current.Page<WelcomePeoplePage>().Description.TypeText("Ceci est un test ...");
         }
 
         [When(@"Je valide le formulaire welcome people")]
         public void WhenJeValideLeFormulaireWelcomePeople()
         {
-            WebBrowser.Current.Button(Find.ByValue("Créer")).ClickNoWait();
-            System.Threading.Thread.Sleep(1000);
+            WebBrowser.Current.Page<WelcomePeoplePage>().Envoyer.Click();
         }
 
 
         [Then(@"Je dois retrouver ce que j'ai remplis")]
         public void ThenJeDoisRetrouverCeQueJAiRemplis()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("La meilleur"));
+            WebBrowser.Current.Page<WelcomePeoplePage>().Detail.Click();
+            Assert.IsTrue(WebBrowser.Current.ContainsText("mika7869@gmail.com"));
+            Assert.IsTrue(WebBrowser.Current.ContainsText("Le Bistrot Marguerite"));
+            Assert.IsTrue(WebBrowser.Current.ContainsText("Ceci est un test ..."));
         }
         #endregion
 
@@ -56,31 +51,66 @@ namespace Worki.SpecFlow
         [Given(@"Je vais sur Editer")]
         public void GivenJeCliqueSurEditer()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Admin/EditWelcomePeople/5");
-        
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Admin/IndexWelcomePeople");
+            WebBrowser.Current.Page<WelcomePeoplePage>().Edit.Click();
         }
 
         [When(@"Je modifie le formulaire")]
         public void WhenJeModifieLeFormulaire()
         {
-            Random myRand = new Random();
-            myStatiqueRand = myRand.Next().ToString();
-            WebBrowser.Current.TextField(Find.ById("Company")).TypeTextQuickly(myStatiqueRand);
+            WebBrowser.Current.Page<WelcomePeoplePage>().Description.TypeText("Ceci est un test ... j'ai édité cette description ...");
         }
 
         [When(@"Je valide save welcome people")]
         public void WhenJeValideSaveWelcomePeople()
         {
-            WebBrowser.Current.Button(Find.ByValue("Save")).ClickNoWait();
-            System.Threading.Thread.Sleep(1000);
+            WebBrowser.Current.Page<WelcomePeoplePage>().Save.Click();
         }
 
         [Then(@"Je dois retrouver ce que j'ai modifié")]
         public void ThenJeDoisRetrouverCeQueJAiModifie()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText(myStatiqueRand));
+            Assert.IsTrue(WebBrowser.Current.ContainsText("L'entrepreneur star a été édité."));
         }
 
         #endregion
+    }
+
+    public class WelcomePeoplePage : Page
+    {
+        public TextField Email
+        {
+            get { return Document.TextField(Find.ById("Email")); }
+        }
+
+        public TextField Localisation
+        {
+            get { return Document.TextField(Find.ById("LocalisationName")); }
+        }
+
+        public TextField Description
+        {
+            get { return Document.TextField(Find.ById("WelcomePeople_Description")); }
+        }
+
+        public Button Envoyer
+        {
+            get { return Document.Button(Find.ByValue("Envoyer")); }
+        }
+
+        public Button Save
+        {
+            get { return Document.Button(Find.ByValue("Save")); }
+        }
+
+        public Link Edit
+        {
+            get { return Document.Link(Find.ByText("Editer")); }
+        }
+
+        public Link Detail
+        {
+            get { return Document.Link(Find.ByText("Détails")); }
+        }
     }
 }

@@ -19,7 +19,7 @@
             @if (!string.IsNullOrEmpty(Model.PhoneNumber))
             {
                 <div class="bold blue noUnderline">
-                    <a href="tel:@Model.PhoneNumber">Appeler @Model.PhoneNumber</a>
+                    <a href="tel:@Model.PhoneNumber">@Worki.Resources.Views.Mobile.MobileString.Call @Model.PhoneNumber</a>
                 </div> 
             }
         </div>

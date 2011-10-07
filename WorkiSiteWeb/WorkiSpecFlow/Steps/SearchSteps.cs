@@ -17,22 +17,18 @@ namespace Worki.SpecFlow
         [Given(@"Je tappe (.*) dans la zone de recherche")]
         public void GivenJeTappeParisDansLaZoneDeRecherche(string address)
         {
-            // WebBrowser.Current.TextField(Find.ByName("Criteria.Place")).TypeText(address);
             WebBrowser.Current.Page<SearchPage>().Champ_Recherche.TypeText(address);
         }
 
         [When(@"Je clique sur rechercher dans la page d'acceuil")]
         public void WhenJeCliqueSurRechercherDansLaPageDAcceuil()
         {
-            //TODO: implement act (action) logic
-            // WebBrowser.Current.Button(Find.ById("btn_searchIndex")).Click();
             WebBrowser.Current.Page<SearchPage>().Recherche.Click();
         }
 
         [Then(@"Il doit y avoir plus de (.*) resultats")]
         public void ThenIlDoitYAvoirPlusDe200Resultats(int count)
         {
-            //TODO: implement assert (verification) logic
             var text = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )lieu"));
 
             var strings = text.Split(' ');
@@ -59,42 +55,34 @@ namespace Worki.SpecFlow
         [Given(@"Je coche la checkbox prise de courant")]
         public void GivenJeCocheLaCheckboxPriseDeCourant()
         {
-            // WebBrowser.Current.CheckBox("Outlet-General").Click();
             WebBrowser.Current.Page<SearchPage>().CheckBox_OutletGeneral.Click();
         }
 
         [Given(@"Je coche l'equipement restaurant")]
         public void GivenJeCocheLEquipementRestaurant()
         {
-            // WebBrowser.Current.TextField("Restauration-General").TypeTextQuickly("True");
             WebBrowser.Current.Page<SearchPage>().Equipment_Resto.SetAttributeValue("value", "True");
         }
          
         #endregion
 
-        #region Recherche Erreur
-
         [Given(@"Je vais dans la page Recherche")]
         public void GivenJeVaisDansLaPageRecherche()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "recherche/recherche-lieu-travail");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/recherche");
         }
 
         [When(@"Je clique sur rechercher")]
         public void WhenJeCliqueSurRechercher()
         {
-            // WebBrowser.Current.Button(Find.ByValue("Rechercher")).Click();
             WebBrowser.Current.Page<SearchPage>().Recherche.Click();
         }
-
-        #endregion
 
         #region Description Etudiant
 
         [When(@"Je clique sur Etudiant")]
         public void WhenJeCliqueSurEtudiant()
         {
-            // WebBrowser.Current.Link(Find.ByText("Etudiant")).Click();
             WebBrowser.Current.Page<SearchPage>().Link_Etudiant.Click();
         }
 
@@ -111,7 +99,6 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Entrepreneur")]
         public void WhenJeCliqueSurEntrepreneur()
         {
-            // WebBrowser.Current.Link(Find.ByText("Entrepreneur")).Click();
             WebBrowser.Current.Page<SearchPage>().Link_Entrepreneur.Click();
         }
 
@@ -128,7 +115,6 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur GrandCompte")]
         public void WhenJeCliqueSurGrandCompte()
         {
-            // WebBrowser.Current.Link(Find.ByText("Grand compte")).Click();
             WebBrowser.Current.Page<SearchPage>().Link_GrdCompte.Click();
         }
 
@@ -145,7 +131,6 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Indépendant")]
         public void WhenJeCliqueSurIndependant()
         {
-            // WebBrowser.Current.Link(Find.ByText("Indépendant")).Click();
             WebBrowser.Current.Page<SearchPage>().Link_Independant.Click();
         }
 
@@ -162,7 +147,6 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Nomade")]
         public void WhenJeCliqueSurNomade()
         {
-            // WebBrowser.Current.Link(Find.ByText("Nomade")).Click();
             WebBrowser.Current.Page<SearchPage>().Link_Nomade.Click();
         }
 
@@ -178,7 +162,6 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Teletravailleur")]
         public void WhenJeCliqueSurTeletravailleur()
         {
-            // WebBrowser.Current.Link(Find.ByText("Télétravailleur")).Click();
             WebBrowser.Current.Page<SearchPage>().Link_Teletravailleur.Click();
         }
 
@@ -290,32 +273,32 @@ namespace Worki.SpecFlow
 
         public Link Link_Etudiant
         {
-            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/1']")); }
+            get { return Document.Link(Find.ByText("Etudiant")); }
         }
 
         public Link Link_Nomade
         {
-            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/2']")); }
+            get { return Document.Link(Find.ByText("Nomade")); }
         }
 
         public Link Link_Teletravailleur
         {
-            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/3']")); }
+            get { return Document.Link(Find.ByText("Télétravailleur")); }
         }
 
         public Link Link_Entrepreneur
         {
-            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/4']")); }
+            get { return Document.Link(Find.ByText("Entrepreneur")); }
         }
 
         public Link Link_GrdCompte
         {
-            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/6']")); }
+            get { return Document.Link(Find.ByText("Grand compte")); }
         }
 
         public Link Link_Independant
         {
-            get { return Document.Link(Find.BySelector("a[href='/recherche/recherche-lieu-travail-special/5']")); }
+            get { return Document.Link(Find.ByText("Indépendant")); }
         }
 
         public TextField Equipment_Wifi
