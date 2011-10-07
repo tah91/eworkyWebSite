@@ -87,12 +87,10 @@ this.ScenarioSetup(scenarioInfo);
 #line 15
  testRunner.Given("Je vais dans la page d\'acceuil");
 #line 16
- testRunner.When("Je clique sur administrateur");
+ testRunner.When("Je clique sur recherche location");
 #line 17
-  testRunner.And("Je clique sur recherche location");
-#line 18
   testRunner.And("Je clique sur Rechercher location");
-#line 19
+#line 18
  testRunner.Then("Je dois arriver sur la page d\'erreur");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -105,21 +103,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lancer une Recherche", new string[] {
                         "Rental"});
-#line 22
+#line 21
 this.ScenarioSetup(scenarioInfo);
-#line 23
+#line 22
  testRunner.Given("Je vais dans la page d\'acceuil");
+#line 23
+ testRunner.When("Je clique sur recherche location");
 #line 24
- testRunner.When("Je clique sur administrateur");
-#line 25
-  testRunner.And("Je clique sur recherche location");
-#line 26
   testRunner.And("Je remplis des champs");
-#line 27
+#line 25
   testRunner.And("Je clique sur Rechercher location");
-#line 28
+#line 26
  testRunner.Then("Je dois arriver sur la page de resultat location");
-#line 29
+#line 27
   testRunner.And("Tous les résultats doivent respecter les critères");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -132,19 +128,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recherche Paris", new string[] {
                         "Rental"});
-#line 32
+#line 30
 this.ScenarioSetup(scenarioInfo);
-#line 33
+#line 31
  testRunner.Given("Je vais dans la page d\'acceuil");
-#line 34
- testRunner.When("Je clique sur administrateur");
-#line 35
-  testRunner.And("Je clique sur recherche location");
-#line 36
+#line 32
+ testRunner.When("Je clique sur recherche location");
+#line 33
   testRunner.And("Je remplis le champs location avec Paris");
-#line 37
+#line 34
   testRunner.And("Je clique sur Rechercher location");
-#line 38
+#line 35
  testRunner.Then("Je dois avoir au moins 2 pages de résultat");
 #line hidden
             testRunner.CollectScenarioErrors();

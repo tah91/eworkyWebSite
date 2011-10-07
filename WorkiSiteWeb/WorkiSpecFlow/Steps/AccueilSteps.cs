@@ -17,20 +17,19 @@ namespace Worki.SpecFlow
             [Given(@"Je vais dans la page d'acceuil")]
             public void GivenJeVaisDansLaPageDAcceuil()
             {
-                WebBrowser.Current.GoTo(WebBrowser.RootURL + "accueil/Index");
+                WebBrowser.Current.GoTo(WebBrowser.RootURL);
             }
 
             [When(@"Je clique sur Recherche")]
             public void WhenJeCliqueSurRecherche()
             {
-                // WebBrowser.Current.Link(Find.ByText("Recherche")).Click();
-                WebBrowser.Current.Page<AccueilPage>().Lien_RechercheHeader.Click();
+                WebBrowser.Current.Page<AccueilPage>().Lien_Recherche.Click();
             }
 
             [Then(@"Je dois arriver sur la page de recherche")]
             public void ThenJeDoisArriverSurLaPageDeRecherche()
             {
-                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "recherche/recherche-lieu-travail");
+                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "lieu-de-travail/recherche");
             }
 
         #endregion
@@ -57,7 +56,6 @@ namespace Worki.SpecFlow
             [When(@"Je clique sur plus de critères")]
             public void WhenJeCliqueSurPlusDeCriteres()
             {
-                // WebBrowser.Current.Link(Find.ByText("Plus de critères")).Click();
                 WebBrowser.Current.Page<AccueilPage>().Plus_Criteres.Click();
             }
 
@@ -70,12 +68,6 @@ namespace Worki.SpecFlow
             {
                 // WebBrowser.Current.Button("btn_searchIndex").Click();
                 WebBrowser.Current.Page<AccueilPage>().Bouton_Recherche.Click();
-            }
-
-            [Then(@"Je dois avoir un message d'erreur")]
-            public void ThenJeDoisAvoirUnMessageDErreur()
-            {
-                Assert.IsTrue(WebBrowser.Current.ContainsText("Une erreur a été rencontrée"));
             }
 
         #endregion
@@ -114,14 +106,9 @@ namespace Worki.SpecFlow
             get { return Document.Button(Find.ById("btn_searchIndex")); }
         }
 
-        public Link Lien_RechercheHeader
+        public Link Lien_Recherche
         {
-            get { return Document.Link(Find.ByText("Recherche")); }
-        }
-
-        public Link Lien_RechercheBody
-        {
-            get { return Document.Link(Find.BySelector("div[class^='bottom'] a[href^='/recherche/recherche-lieu-travail']")); }
+            get { return Document.Link(Find.BySelector("a[href='/lieu-de-travail/recherche']")); }
         }
 
         public Link Lien_RechercheFooter

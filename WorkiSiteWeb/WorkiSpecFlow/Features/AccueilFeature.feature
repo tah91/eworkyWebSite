@@ -22,13 +22,6 @@ Scenario: Acceuil plus de critères
 	Then Je dois arriver sur la page de recherche
 
 @Accueil
-Scenario: Recherche Erreur
-	Given Je vais dans la page d'acceuil
-	When Je clique sur Rechercher
-	Then Je dois arriver sur la page de recherche
-		And Je dois avoir un message d'erreur
-
-@Accueil
 Scenario: Recherche Salon d'affaire
 	Given Je vais dans la page d'acceuil
 		And Je tappe Paris dans la zone de recherche

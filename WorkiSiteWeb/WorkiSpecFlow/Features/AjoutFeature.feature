@@ -56,10 +56,3 @@ Scenario: Ajout de lieu et geolocalisation
 	Given Je vais dans la page d'ajout
 	When Je remplis lieux valide
 	Then La position initial doit avoir changée
-
-@Ajout
-Scenario: Présence Photo Existante
-	Given Je vais dans la page d'acceuil
-	And Je Selectionne la une
-	When Je clique sur editer lieu
-	Then Je dois avoir une photo presente

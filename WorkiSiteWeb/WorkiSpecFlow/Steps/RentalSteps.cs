@@ -46,10 +46,8 @@ namespace Worki.SpecFlow
         [When(@"Je remplis des champs")]
         public void WhenJeRemplisDesChamps()
         {
-            WebBrowser.Current.Page<RentalPage>().MinRate.TypeText("500");
             WebBrowser.Current.Page<RentalPage>().MaxRate.TypeText("3000");
             WebBrowser.Current.Page<RentalPage>().MinSurface.TypeText("10");
-            WebBrowser.Current.Page<RentalPage>().MaxSurface.TypeText("200");
         }
 
         [Then(@"Tous les résultats doivent respecter les critères")]
@@ -88,7 +86,7 @@ namespace Worki.SpecFlow
 
         public Link Lien_Recherche
         {
-            get { return Document.Link(Find.ByText("RentalSearch")); }
+            get { return Document.Link(Find.ByText("Location")); }
         }
 
         public Button Boutton_Rechercher

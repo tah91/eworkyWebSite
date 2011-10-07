@@ -23,8 +23,6 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Envoyer")]
         public void WhenJeCliqueSurEnvoyer()
         {
-            // WebBrowser.Current.Button("submit_add").ClickNoWait();
-            // System.Threading.Thread.Sleep(4000);
             WebBrowser.Current.Page<AjoutPage>().Bouton_Add.Click();
         }
 
@@ -35,15 +33,12 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis mal le champs Email")]
         public void GivenJeRemplisMalLeChampsEmail()
         {
-            // WebBrowser.Current.TextField(Find.ById("Localisation_Mail")).TypeTextQuickly("emailpasbon");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("emailpasbon");
         }
 
         [Given(@"je remplis mal les horaires")]
         public void GivenJeRemplisMalLesHoraires()
         {
-            // WebBrowser.Current.TextField(Find.ById("Localisation_MonOpen")).TypeTextQuickly("horairepasbonne");
-            // WebBrowser.Current.TextField(Find.ById("Localisation_MonClose")).TypeTextQuickly("27:60");
             WebBrowser.Current.Page<AjoutPage>().MonOpen.TypeText("horairepasbonne");
             WebBrowser.Current.Page<AjoutPage>().MonClose.TypeText("27:60");
         }
@@ -56,18 +51,6 @@ namespace Worki.SpecFlow
         public void GivenJeRemplisLaPartieInformationsGenerales()
         {
             Random myRand = new Random();
-            /*
-            WebBrowser.Current.TextField(Find.ById("Localisation_Name")).TypeTextQuickly("Test 0 " + myRand.Next().ToString());
-            WebBrowser.Current.TextField(Find.ById("Localisation_Adress")).TypeTextQuickly("Test 1 " + myRand.Next().ToString());
-            WebBrowser.Current.TextField(Find.ById("Localisation_City")).TypeTextQuickly("Test 2");
-            WebBrowser.Current.TextField(Find.ById("Localisation_PostalCode")).TypeTextQuickly("Test 3");
-            WebBrowser.Current.TextField(Find.ById("Localisation_Country")).TypeTextQuickly("Test 4");
-            WebBrowser.Current.TextField(Find.ById("Localisation_PhoneNumber")).TypeTextQuickly("Test 5");
-            WebBrowser.Current.TextField(Find.ById("Localisation_Fax")).TypeTextQuickly("Test 6");
-            WebBrowser.Current.TextField(Find.ById("Localisation_Mail")).TypeTextQuickly("Test7@test7bis.ter");
-            WebBrowser.Current.TextField(Find.ById("Localisation_WebSite")).TypeTextQuickly("Test 8");
-            WebBrowser.Current.TextField(Find.ById("Localisation_Description")).TypeTextQuickly("Test 9");
-            */
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("Test 0 " + myRand.Next().ToString());
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("Test 1 " + myRand.Next().ToString());
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Test 2");
@@ -83,22 +66,6 @@ namespace Worki.SpecFlow
         [Given(@"Je coche quelques checkbox")]
         public void GivenJeCocheQuelquesCheckbox()
         {
-            /*
-            WebBrowser.Current.SelectList("Localisation_TypeValue").Option(Find.ByValue("1")).Select();
-            WebBrowser.Current.CheckBox("FreeArea-WorkingPlace").Click();
-            WebBrowser.Current.CheckBox("SeminarRoom-SeminarRoom").Click();
-            WebBrowser.Current.CheckBox("Workstation-WorkingPlace").Click();
-            WebBrowser.Current.CheckBox("SingleDesk-WorkingPlace").Click();
-            WebBrowser.Current.CheckBox("Coffee-General").Click();
-            WebBrowser.Current.CheckBox("Handicap-General").Click();
-            WebBrowser.Current.CheckBox("Restauration-General").Click();
-            WebBrowser.Current.CheckBox("Parking-General").Click();
-            WebBrowser.Current.CheckBox("ErgonomicFurniture-General").Click();
-            WebBrowser.Current.CheckBox("Domiciliation-WorkingPlace").Click();
-            WebBrowser.Current.CheckBox("Concierge-WorkingPlace").Click();
-            WebBrowser.Current.CheckBox("Room20_100-SeminarRoom").Click();
-            WebBrowser.Current.CheckBox("Scene-SeminarRoom").Click();
-            */
             WebBrowser.Current.Page<AjoutPage>().Espace((int)LocalisationType.CoffeeResto);
             WebBrowser.Current.Page<AjoutPage>().Check_FreeArea.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_SeminarRoom.Click();
@@ -131,8 +98,6 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis Horaires")]
         public void GivenJeRemplisHoraires()
         {
-            // WebBrowser.Current.TextField(Find.ById("Localisation_MonOpen")).TypeTextQuickly("08:00");
-            // WebBrowser.Current.TextField(Find.ById("Localisation_MonClose")).TypeTextQuickly("18:00");
             WebBrowser.Current.Page<AjoutPage>().MonOpen.TypeText("08:00");
             WebBrowser.Current.Page<AjoutPage>().MonClose.TypeText("18:00");
         }
@@ -140,15 +105,9 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir le détail des informations générales")]
         public void ThenJeDoisAvoirLeDetailDesInformationsGenerales()
         {
-            //Assert.IsTrue(WebBrowser.Current.ContainsText("Test 0"));
-            //Assert.IsTrue(WebBrowser.Current.ContainsText("Test 1"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 2"));
-            //Assert.IsTrue(WebBrowser.Current.ContainsText("Test 3"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 5"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 6"));
-            //Assert.IsTrue(WebBrowser.Current.ContainsText("Test 7"));
-            //Assert.IsTrue(WebBrowser.Current.ContainsText("Test 9"));
-            //Assert.IsTrue(WebBrowser.Current.ContainsText("Test 10"));
         }
 
         [Then(@"Je dois avoir le texte des checkbox")]
@@ -180,16 +139,6 @@ namespace Worki.SpecFlow
         [Given(@"Je coche quelques checkbox 2")]
         public void GivenJeCocheQuelquesCheckbox2()
         {
-            /*
-            WebBrowser.Current.CheckBox("BuisnessRoom-WorkingPlace").Click();
-            WebBrowser.Current.CheckBox("MeetingRoom-MeetingRoom").Click();
-            WebBrowser.Current.CheckBox("VisioRoom-VisioRoom").Click();
-            WebBrowser.Current.CheckBox("AvoidMorning-General").Click();
-            WebBrowser.Current.CheckBox("Room20_plus-MeetingRoom").Click();
-            WebBrowser.Current.CheckBox("Projector-MeetingRoom").Click();
-            WebBrowser.Current.CheckBox("Drinks-VisioRoom").Click();
-            WebBrowser.Current.CheckBox("Room1_4-VisioRoom").Click();
-            */
             WebBrowser.Current.Page<AjoutPage>().Check_BuisnessRoom.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_MeetingRoom.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_VisioRoom.Click();
@@ -203,7 +152,6 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis Horaires 2")]
         public void GivenJeRemplisHoraires2()
         {
-            // WebBrowser.Current.CheckBox("Access24-General").Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Access24.Click();
         }
 
@@ -231,13 +179,6 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis lieux deja rentré")]
         public void GivenJeRemplisLieuxDejaRentre()
         {
-            /*
-            WebBrowser.Current.TextField(Find.ById("Localisation_Name")).TypeTextQuickly("testnepaseffacer");
-            WebBrowser.Current.TextField(Find.ById("Localisation_Adress")).TypeTextQuickly("testnepaseffacer");
-            WebBrowser.Current.TextField(Find.ById("Localisation_City")).TypeTextQuickly("testnepaseffacer");
-            WebBrowser.Current.TextField(Find.ById("Localisation_PostalCode")).TypeTextQuickly("test");
-            WebBrowser.Current.TextField(Find.ById("Localisation_Country")).TypeTextQuickly("testnepaseffacer");
-            */
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("testnepaseffacer");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("testnepaseffacer");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("testnepaseffacer");
@@ -266,31 +207,6 @@ namespace Worki.SpecFlow
             Assert.IsFalse(double.Parse(lat).Equals(0));
             Assert.IsFalse(double.Parse(lon).Equals(0));
         }
-
-        #endregion
-
-        #region Présence Photo Existante
-
-        [Given(@"Je Selectionne la une")]
-        public void GivenJeSelectionneLaUne()
-        {
-            WebBrowser.Current.Page<AccueilPage>().Lien_ALaUne.Click();
-        }
-
-        [When(@"Je clique sur editer lieu")]
-        public void WhenJeCliqueSurEditerLieu()
-        {
-            WebBrowser.Current.Page<DetailPage>().Lien_Editer.Click();
-        }
-
-        [Then(@"Je dois avoir une photo presente")]
-        public void ThenJeDoisAvoirUnePhotoPresente()
-        {
-            var img = WebBrowser.Current.Page<AjoutPage>().Picture;
-
-            Assert.IsTrue(img != null);
-        }
-
 
         #endregion
     }

@@ -19,13 +19,6 @@ Scenario: Recherche Detailer
 		And Je selectionne Salon d'affaire
 	When Je clique sur rechercher
 	Then Il doit y avoir plus de 1 resultats
-
-@search
-Scenario: Recherche Erreur
-	Given Je vais dans la page Recherche
-	When Je clique sur rechercher
-	Then Je dois avoir un message d'erreur
-		
 	
 @search
 Scenario: Description Etudiant
