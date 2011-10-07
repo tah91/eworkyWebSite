@@ -253,10 +253,9 @@
     margin-left: 5px;
 }
 
-.blogButton
+.blogContainer
 {
-    /*width: 150px;*/
-    /*margin: 0 10px!important;*/
+    margin-top:30px!important;
 }
 
 .blogDesc li
