@@ -334,18 +334,9 @@ namespace Links {
         private const string URLPATH = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-        public static readonly string application_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/application.min.js") ? Url("application.min.js") : Url("application.js");
-                      
-        public static readonly string application_min_js = Url("application.min.js");
-        public static readonly string cufon_yui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/cufon-yui.min.js") ? Url("cufon-yui.min.js") : Url("cufon-yui.js");
-                      
-        public static readonly string cufon_yui_min_js = Url("cufon-yui.min.js");
         public static readonly string date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/date.min.js") ? Url("date.min.js") : Url("date.js");
                       
         public static readonly string date_min_js = Url("date.min.js");
-        public static readonly string head_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/head.min.js") ? Url("head.min.js") : Url("head.js");
-                      
-        public static readonly string head_min_js = Url("head.min.js");
         public static readonly string jquery_1_5_1_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.5.1-vsdoc.min.js") ? Url("jquery-1.5.1-vsdoc.min.js") : Url("jquery-1.5.1-vsdoc.js");
                       
         public static readonly string jquery_1_5_1_vsdoc_min_js = Url("jquery-1.5.1-vsdoc.min.js");
@@ -409,9 +400,6 @@ namespace Links {
         public static readonly string slides_jquery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/slides.jquery.min.js") ? Url("slides.jquery.min.js") : Url("slides.jquery.js");
                       
         public static readonly string slides_jquery_min_js = Url("slides.jquery.min.js");
-        public static readonly string Steinem_Unicode_400_Steinem_700_Steinem_italic_400_font_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js") ? Url("Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js") : Url("Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js");
-                      
-        public static readonly string Steinem_Unicode_400_Steinem_700_Steinem_italic_400_font_min_js = Url("Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js");
         public static readonly string tabs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tabs.min.js") ? Url("tabs.min.js") : Url("tabs.js");
                       
         public static readonly string tabs_min_js = Url("tabs.min.js");
@@ -468,6 +456,7 @@ namespace Links {
             public static readonly string a_la_une_png = Url("a_la_une.png");
             public static readonly string ajout_jpg = Url("ajout.jpg");
             public static readonly string arrow_png = Url("arrow.png");
+            public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avail_png = Url("avail.png");
             public static readonly string blog_png = Url("blog.png");
             public static readonly string btn_png = Url("btn.png");
@@ -486,6 +475,7 @@ namespace Links {
             public static readonly string favorite_png = Url("favorite.png");
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
+            public static readonly string geoloc_png = Url("geoloc.png");
             public static readonly string google_gif = Url("google.gif");
             public static readonly string homeLogo1_png = Url("homeLogo1.png");
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
@@ -1380,7 +1370,6 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string _HomeDesc = "~/Views/Home/_HomeDesc.cshtml";
             public readonly string _PeopleSlider = "~/Views/Home/_PeopleSlider.cshtml";
             public readonly string _RentalTab = "~/Views/Home/_RentalTab.cshtml";
             public readonly string a_propos = "~/Views/Home/a-propos.cshtml";
@@ -2435,6 +2424,16 @@ namespace Worki.Web.Areas.Mobile.Controllers {
         public System.Web.Mvc.ActionResult FullSearchResultDetail() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult LocalisationDetail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LocalisationDetail);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult LocalisationDescription() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.LocalisationDescription);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Mobile.Localisation; } }
@@ -2451,6 +2450,8 @@ namespace Worki.Web.Areas.Mobile.Controllers {
             public readonly string FullSearch = "recherche";
             public readonly string FullSearchResult = "resultats-liste";
             public readonly string FullSearchResultDetail = "resultats-detail";
+            public readonly string LocalisationDetail = "LocalisationDetail";
+            public readonly string LocalisationDescription = "LocalisationDescription";
         }
 
 
@@ -2486,6 +2487,18 @@ namespace Worki.Web.Areas.Mobile.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LocalisationDetail(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LocalisationDetail);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult LocalisationDescription(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.LocalisationDescription);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

@@ -95,5 +95,41 @@ namespace Worki.Web.Areas.Mobile.Controllers
 				return View(MVC.Shared.Views.Error);
 			return View(MVC.Mobile.Localisation.Views.resultats_detail, detailModel);
 		}
+
+		/// <summary>
+		/// Action to get localisation detail
+		/// </summary>
+		/// <param name="id">Id of the localisation</param>
+		/// <returns>Localisation Detail</returns>
+		public virtual ActionResult LocalisationDetail(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+			var localisation = lRepo.Get(id);
+			if (localisation == null)
+				return null;
+
+			var model = new SearchSingleResultViewModel { Localisation = localisation };
+			return View(MVC.Mobile.Localisation.Views.resultats_detail, model);
+		}
+
+		/// <summary>
+		/// Action to get localisation description
+		/// </summary>
+		/// <param name="id">Id of the localisation</param>
+		/// <returns>Redirect to returnUrl</returns>
+		public virtual PartialViewResult LocalisationDescription(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+			var localisation = lRepo.Get(id);
+			if (localisation == null)
+				return null;
+
+			var model = new SearchSingleResultViewModel { Localisation = localisation, Index = -1 };
+			return PartialView(MVC.Mobile.Localisation.Views._SearchResultSummary, model);
+		}
     }
 }

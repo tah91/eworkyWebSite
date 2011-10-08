@@ -1,12 +1,19 @@
 ﻿@model Worki.Data.Models.SearchSingleResultViewModel
 @{  
-    RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
-    foreach (string key in Request.QueryString.Keys)
-    {
-        rvd[key] = Request.QueryString[key].ToString();
-    }
-    rvd["index"] = Model.Index;
-	ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
+	if (Model.Index != -1)
+	{
+		RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+		foreach (string key in Request.QueryString.Keys)
+		{
+			rvd[key] = Request.QueryString[key].ToString();
+		}
+		rvd["index"] = Model.Index;
+		ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
+	}
+	else 
+	{
+		ViewData["link"] = Url.Action(MVC.Mobile.Localisation.LocalisationDetail(Model.Localisation.ID));
+	}
 }
 
 <div class="contentBlock resultItem relative noUnderline">
@@ -19,7 +26,14 @@
 	    </div>
 	    <div class="itemDesc float-right">
 		    <div class="green noUnderline">
-			    <span class="bold">@Model.Localisation.Name</span>&nbsp;-&nbsp;@String.Format("{0:0.##} km", Model.Distance)
+			@if (Model.Distance == 0)
+			{
+				<span class="bold">@Model.Localisation.Name</span>
+			}
+			else
+			{
+				<span class="bold">@Model.Localisation.Name&nbsp;-&nbsp;</span>@String.Format("{0:0.##} km", Model.Distance)
+			}			    
 		    </div>
 		    <div class="itemCommDiv float-left">
 			    @Html.Partial(MVC.Mobile.Localisation.Views._CommentSummary, Model.Localisation)

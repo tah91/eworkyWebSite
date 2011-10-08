@@ -6,7 +6,6 @@
 	<meta name="Description" content="@Worki.Resources.Views.Home.HomeString.Description"/>
     <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.BestWorkspace)</title>
     <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.VersionedContent(Links.Content.skin_min_css)" rel="stylesheet" type="text/css"/>
     <link href="@Url.VersionedContent(Links.Content.RentalForm_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
@@ -202,13 +201,6 @@
                 generatePagination: false,
                 effect: 'fade'
             });
-
-//            $('#blog_slides').slides({
-//                play: 50000,
-//                generatePagination: false,
-//                effect: 'fade',
-//                container: 'blog_slides_container'
-//            });
         });
         require(["@MiscHelpers.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
 

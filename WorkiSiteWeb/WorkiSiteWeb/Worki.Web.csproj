@@ -474,23 +474,11 @@
     <Content Include="robots.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\application.js" />
-    <Content Include="Scripts\application.min.js">
-      <DependentUpon>application.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\cufon-yui.js" />
     <Content Include="Content\galleria\galleria-1.2.4.js" />
     <Content Include="Content\galleria\galleria.classic.js" />
-    <Content Include="Scripts\cufon-yui.min.js">
-      <DependentUpon>cufon-yui.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\date.js" />
     <Content Include="Scripts\date.min.js">
       <DependentUpon>date.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\head.js" />
-    <Content Include="Scripts\head.min.js">
-      <DependentUpon>head.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.min.js">
@@ -572,10 +560,6 @@
     <Content Include="Scripts\slides.jquery.min.js">
       <DependentUpon>slides.jquery.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js" />
-    <Content Include="Scripts\Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.min.js">
-      <DependentUpon>Steinem_Unicode_400-Steinem_700-Steinem_italic_400.font.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\WorkiAutocomplete.min.js">
       <DependentUpon>WorkiAutocomplete.js</DependentUpon>
     </Content>
@@ -592,7 +576,9 @@
     <Content Include="Areas\Mobile\Views\Localisation\resultats-detail.cshtml" />
     <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\_Connexion.cshtml" />
-    <Content Include="App_Data\51Degrees.mobi.config" />
+    <Content Include="App_Data\51Degrees.mobi.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\wurfl.xml.gz" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
@@ -623,7 +609,6 @@
     <Content Include="Views\Home\jobs.cshtml" />
     <Content Include="Views\Localisation\_ServicesSelector.cshtml" />
     <Content Include="Views\Admin\_AdminMenu.cshtml" />
-    <Content Include="Views\Home\_HomeDesc.cshtml" />
     <Content Include="Views\Shared\_IndexGalleryScript.cshtml" />
     <Content Include="Views\Shared\_MetaDataHeader.cshtml" />
     <Content Include="Views\Localisation\_DirectAccess.cshtml" />

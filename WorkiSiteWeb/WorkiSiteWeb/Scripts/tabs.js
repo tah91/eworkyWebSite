@@ -22,20 +22,21 @@ $(".toogle_trigger_click").click(function () {
 });
 
 function InitTab(tabId) {
-    //When page loads...
-    $(tabId + " .tab_content").hide(); //Hide all content
-    $(tabId + " ul.tabs li:first").addClass("active").show(); //Activate first tab
-    $(tabId + " .tab_content:first").show(); //Show first tab content
+	//When page loads...
+	var hiddenClass = "visuallyhidden";
+	$(tabId + " .tab_content").addClass(hiddenClass); //.hide(); //Hide all content
+    $(tabId + " ul.tabs li:first").addClass("active");//.show(); //Activate first tab
+    $(tabId + " .tab_content:first").removeClass(hiddenClass); //.show(); //Show first tab content
 
     //On Click Event
     $(tabId + " ul.tabs li").click(function () {
 
         $(tabId + " ul.tabs li").removeClass("active"); //Remove any "active" class
         $(this).addClass("active"); //Add "active" class to selected tab
-        $(tabId + " .tab_content").hide(); //Hide all tab content
+        $(tabId + " .tab_content").addClass(hiddenClass); //hide(); //Hide all tab content
 
         var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-        $(activeTab).fadeIn(); //Fade in the active ID content
+        $(activeTab).removeClass(hiddenClass).fadeIn(); //Fade in the active ID content
         return false;
     });
 };

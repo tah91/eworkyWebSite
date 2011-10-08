@@ -162,4 +162,10 @@
   <data name="Call" xml:space="preserve">
     <value>Appeler</value>
   </data>
+  <data name="List" xml:space="preserve">
+    <value>Liste</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Carte</value>
+  </data>
 </root>

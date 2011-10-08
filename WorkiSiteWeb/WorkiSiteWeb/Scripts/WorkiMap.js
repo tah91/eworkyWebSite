@@ -216,30 +216,33 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     }
 
     //load an pin with address, nam and desc
-    LoadPin = function (LL, name, dragable, theMap) {
-        if (dragable == null)
-            dragable = false;
-        if (theMap == null)
-            theMap = _searchMap;
-        var title = "<span class=\"pinTitle\"> " + name + "</span>";
-        var image = '/Content/images/iconeMap.png';
-        var marker = new google.maps.Marker({
-            position: LL,
-            map: theMap,
-            title: name,
-            icon: image
-        });
-        if (dragable == true)
-            _markersArray.push(marker);
+    LoadPin = function (LL, name, dragable, theMap, clickHandler) {
+    	if (dragable == null)
+    		dragable = false;
+    	if (theMap == null)
+    		theMap = _searchMap;
+    	var title = "<span class=\"pinTitle\"> " + name + "</span>";
+    	var image = '/Content/images/iconeMap.png';
+    	var marker = new google.maps.Marker({
+    		position: LL,
+    		map: theMap,
+    		title: name,
+    		icon: image
+    	});
+    	if (dragable == true)
+    		_markersArray.push(marker);
 
-        marker.setDraggable(dragable);
-        if (dragable) {
-            google.maps.event.addListener(marker, 'dragend', function () {
-                //alert(marker.getPosition().lng());
-                $(_latitudeField).val(marker.getPosition().lat());
-                $(_longitudeField).val(marker.getPosition().lng());
-            });
-        }
+    	marker.setDraggable(dragable);
+    	if (dragable) {
+    		google.maps.event.addListener(marker, 'dragend', function () {
+    			//alert(marker.getPosition().lng());
+    			$(_latitudeField).val(marker.getPosition().lat());
+    			$(_longitudeField).val(marker.getPosition().lng());
+    		});
+    	}
+    	if (clickHandler != null) {
+    		google.maps.event.addListener(marker, 'click', clickHandler);
+    	}
 
     }
 

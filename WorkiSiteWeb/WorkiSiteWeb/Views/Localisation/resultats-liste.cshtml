@@ -179,22 +179,16 @@
                 resultsMap.LoadSearchMap();
                 var where = "@Model.Criteria.Place";
                 resultsMap.CenterSearchResults(where);
-                var latitude = null;
-                var longitude = null;
-                var nom = null;
-                var desc = null;
-                var LL = null;
                 var bounds = new google.maps.LatLngBounds();
+				function addMarker(latitude, longitude, name)
+				{
+                    var LL = new google.maps.LatLng(latitude,longitude);
+                    resultsMap.LoadPin(LL, name);
+                    bounds.extend(LL);
+				}
                 @foreach (var localisation in Model.PageResults)
                 {
-                    <text>
-                    latitude = @localisation.Latitude;
-                    longitude = @localisation.Longitude;
-                    nom = "@localisation.Name";
-                    LL = new google.maps.LatLng(latitude,longitude);
-                    resultsMap.LoadPin(LL, nom);
-                    bounds.extend(LL);
-                    </text>
+					@:addMarker(@localisation.Latitude, @localisation.Longitude, "@Html.Raw(localisation.Name)");
                 }
                 @if (Model.PageResults.Count >= 2)
                 {

@@ -124,6 +124,24 @@ namespace Worki.Resources.Views.Mobile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Liste.
+        /// </summary>
+        public static string List {
+            get {
+                return ResourceManager.GetString("List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carte.
+        /// </summary>
+        public static string Map {
+            get {
+                return ResourceManager.GetString("Map", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to près de.
         /// </summary>
         public static string Near {

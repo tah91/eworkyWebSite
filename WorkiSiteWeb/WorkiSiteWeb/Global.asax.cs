@@ -12,18 +12,18 @@ using Microsoft.WindowsAzure.ServiceRuntime;
 using MvcSiteMapProvider.Web;
 using Ninject;
 using Ninject.Modules;
+using Postal;
 using Worki.Data.Models;
 using Worki.Infrastructure;
+using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Logging;
+using Worki.Infrastructure.Repository;
+using Worki.Infrastructure.UnitOfWork;
 using Worki.Memberships;
 using Worki.Service;
 using Worki.SiteMap;
 using Worki.Web.Helpers;
 using Worki.Web.ModelBinder;
-using Postal;
-using Worki.Infrastructure.Repository;
-using Worki.Infrastructure.UnitOfWork;
-using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web
 {
