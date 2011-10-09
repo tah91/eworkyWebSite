@@ -115,9 +115,14 @@
     width: 49%;
 }
 
+.index_slides_block
+{
+	margin:0!important;
+}
+
 .index_slides_container h3
 {
-    margin:5px 0 4px 0;
+    /*margin:5px 0 4px 0;*/
     font-size:1.3em;
 }
 
@@ -129,6 +134,7 @@
 .indexFormContainer
 {
     width:49%;
+    margin-top:23px;
 }
 
 .indexFormContainer .tabs li

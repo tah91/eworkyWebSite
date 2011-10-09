@@ -12,9 +12,10 @@
 .backgroundGreen,.backgroundGreen a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#bbd31f!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bbd31f,endColorstr=#d4f500)!important;background-image:-moz-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:-webkit-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:linear-gradient(top,#bbd31f,#d4f500)!important}
 .backgroundGreen a:hover{background-color:#bde185!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bde185,endColorstr=#a2bb54)!important;background-image:-moz-linear-gradient(top,#bde185,#a2bb54)!important;background-image:-webkit-linear-gradient(top,#bde185,#a2bb54)!important;background-image:linear-gradient(top,#bde185,#a2bb54)!important}
 .index_slides_container{width:49%}
-.index_slides_container h3{margin:5px 0 4px 0;font-size:1.3em}
+.index_slides_block{margin:0!important}
+.index_slides_container h3{font-size:1.3em}
 .index_slides{height:310px}
-.indexFormContainer{width:49%}
+.indexFormContainer{width:49%;margin-top:23px}
 .indexFormContainer .contentBlock{margin:6px 0 0 0!important;height:310px;font-size:1.2em!important}
 .indexSearchFormDiv{padding:20px}
 .indexSearchFormDiv select,.indexSearchFormDiv input[type="text"],input[type="password"]{width:100%;font-size:1em}

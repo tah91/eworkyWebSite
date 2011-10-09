@@ -176,7 +176,8 @@
         </div>
         <div class="adRow">
             @Html.Partial(MVC.Localisation.Views._DirectAccess)
-	        @{
+			@Html.Partial(MVC.Shared.Views._IndexGallery)
+@*	        @{
 		        var title = string.Empty;
 		        var desc = string.Empty;
 		        switch (Model.Criteria.DirectAccessType)
@@ -220,7 +221,7 @@
 	        else
 	        {
 		        Html.RenderPartial(MVC.Shared.Views._IndexGallery);
-	        }        
+	        } *@       
         </div>
         <div class="clear">
         </div>  

@@ -22,7 +22,41 @@
         @Html.Partial(MVC.Home.Views._PeopleSlider, indexViewModel.WelcomePeople)
 
         <div class="indexForms indexFormContainer float-right">
-            <ul class="tabs">
+			<div class="contentBlock">
+				<div class="indexSearchFormDiv darkblue">
+					@using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+					{
+						@Html.AntiForgeryToken()
+						@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+						@Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+						<div class="indexSearchFormLabel">
+							<h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
+						</div>
+						<div class="editor-field indexSearchFormField">
+							@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
+						</div>
+						<div class="indexSearchFormLabel">
+							<h3>@Worki.Resources.Views.Home.HomeString.What</h3>
+						</div>
+						<div class="editor-field indexSearchFormField">
+							@Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
+						</div>
+
+						<div class="indexSearchIndexLinks relative">
+							<div class="indexSearchIndexLinksLeft float-left">
+							@Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
+							</div>
+							<div class="indexSearchIndexLinksRight float-right">
+								<input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
+							</div>
+							<div class="clear">
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+@*          TO USE WHEN LOCATION IS READY  
+			<ul class="tabs">
                 <li class="backgroundBlue"><a href="#searchTab" class="bold">@Worki.Resources.Views.Home.HomeString.Search</a></li>
                 <li class="backgroundOrange"><a href="#bookingTab" class="bold">@Worki.Resources.Views.Home.HomeString.Reserve</a></li>
                 <li class="backgroundRed"><a href="#locationTab" class="bold">@Worki.Resources.Views.Home.HomeString.Rent</a></li>
@@ -95,7 +129,7 @@
                     </div>
                 </div>
                 @Html.Partial(MVC.Home.Views._RentalTab, new Worki.Data.Models.RentalSearchCriteria())
-            </div>
+            </div>*@
         </div>
         <div class="clear">
         </div>
