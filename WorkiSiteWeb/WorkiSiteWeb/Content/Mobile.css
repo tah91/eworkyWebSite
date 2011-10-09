@@ -95,6 +95,11 @@ body
     margin:25px 10px 0 0;
 }
 
+#mapTabLi, #listTabLi
+{
+	width:48%;
+}
+
 /* RESULT ITEM
 ----------------------------------------------------------*/
 

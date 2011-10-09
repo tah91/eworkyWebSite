@@ -62,31 +62,6 @@
             BindRateIt("RatingDispo");
             BindRateIt("RatingWelcome");
         });
-
-        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
-            
-        //favorites
-        $("#favLinkAddButton").live("click", function () {
-			$.ajax({
-					url: "@Url.Action(MVC.Profil.ActionNames.AddToFavorite,MVC.Profil.Name)",
-					data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
-					success: function (data) {
-						$("#favLink").html(data);
-					}
-				});
-		});
-		$("#favLinkDelButton").live("click", function () {
-			$.ajax({
-					url: "@Url.Action(MVC.Profil.ActionNames.RemoveFromFavorite,MVC.Profil.Name)",
-					data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
-					success: function (data) {
-						$("#favLink").html(data);
-					}
-				});
-		});
-        require(["https://apis.google.com/js/plusone.js"], function () {
-            { lang: 'fr' }
-        });
     </script>
 	@Html.Partial(MVC.Localisation.Views._CommentFormScript, Model.Localisation)
 }

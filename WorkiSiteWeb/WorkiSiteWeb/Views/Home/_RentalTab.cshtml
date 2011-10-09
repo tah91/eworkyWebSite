@@ -1,6 +1,6 @@
 ﻿@model RentalSearchCriteria
 
-<div id="locationTab" class="tab_content contentBlock borderRed">
+<div id="locationTab" class="tab_content contentBlock borderRed visuallyhidden">
     <div class="indexSearchFormDiv darkblue">
         @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
         {

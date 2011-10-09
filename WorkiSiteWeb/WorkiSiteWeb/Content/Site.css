@@ -207,6 +207,13 @@ h5, h6
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
+html,
+body 
+{
+	margin:0;
+	padding:0;
+	height:100%;
+}
 
 /* you can specify a greater or lesser percentage for the 
 page width. Or, you can specify an exact pixel width. */
@@ -215,7 +222,14 @@ page width. Or, you can specify an exact pixel width. */
 	width: 1000px; 
 	margin-left: auto;
 	margin-right: auto;
-	min-height: 430px;
+	min-height: 100%;
+	padding-bottom: 300px;/* Height of the footer element */
+}
+
+.wrapper
+{
+	position:relative;
+	min-height: 100%;
 }
 
 /* Layout
@@ -223,9 +237,19 @@ page width. Or, you can specify an exact pixel width. */
 
 /* Header
 ----------------------------------------------------------*/
+.headerContainer
+{
+	margin-bottom:30px;
+    background: whiteSmoke;
+	border-bottom: 1px solid #E5E5E5;
+	height: 75px;
+}
+
 .header
 {
-    margin-bottom:30px;
+	width: 1000px; 
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .logo
@@ -235,7 +259,7 @@ page width. Or, you can specify an exact pixel width. */
 	width:30%;
 	height: 47px;
 	background-repeat: no-repeat;
-	margin-top:20px;
+	margin-top:15px;
 }
 
 .logo_beta
@@ -257,9 +281,10 @@ page width. Or, you can specify an exact pixel width. */
 .headerMenu .buttonStd
 {
     width: 90px;
+    height: 40px;
     margin: 0;
-    padding: 10px;
-    font-size: 16px;
+    /*padding: 10px;*/
+    font-size: 14px;
 }
 
 .ie7 .headerMenu .buttonStd
@@ -338,11 +363,14 @@ page width. Or, you can specify an exact pixel width. */
 	background-repeat:repeat-x;
 	height:275px;
 	width:100%;
-	position:relative;
+	/*position:relative;*/
 	float: left;
 	margin-top: 40px;
 	font-size: 12px;
 	line-height: 20px;
+	position:absolute;
+	bottom:0;
+	left:0;
 }
 
 .footer a
@@ -501,13 +529,22 @@ div.pagerTop
 	border-top: 0;
 }
 
+.informationContainer
+{
+	text-align:center;
+	background:whiteSmoke;
+	border: 1px solid #E5E5E5;
+	padding: 10px;
+	margin: 5px 0;
+}
+
 /* BORDER
 ----------------------------------------------------------*/
 .borderRadius
 {
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .borderRadiusBottom
@@ -545,10 +582,10 @@ div.pagerTop
 {
 	border: 1px solid #5DAFDE;
 	background-color: #5dafde;
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
-	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#449ed2);
+	background-image: -moz-linear-gradient(top,#5DAFDE,#449ed2);
 	background-image: -webkit-linear-gradient(top,#5DAFDE,#449ed2);
-	background-image: linear-gradient(top,#5DAFDE,#4787ed);
+	background-image: linear-gradient(top,#5DAFDE,#449ed2);
 }
 
 .buttonBlue:hover
@@ -1030,11 +1067,11 @@ table tr.row-alternate
 {
     position:relative;
 	color:White;
-	padding:2px 7px 3px 5px;
+	padding:3px 7px 2px 5px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 
 .titleDiv:after
@@ -1203,6 +1240,43 @@ ul.tabs li:first-child
     margin:0 5px 0 0;
 }
 
+/*.buttonStd
+{
+	overflow: visible;
+	padding: 5px 15px;
+	color: white;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-image: initial;
+	font-weight:bold;
+	margin: 3px;
+}
+
+.buttonStd a
+{
+	color: white;
+	text-align: center;
+}
+
+.buttonBlue
+{
+	border: 1px solid #5DAFDE;
+	background-color: #5dafde;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
+	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
+	background-image: -webkit-linear-gradient(top,#5DAFDE,#449ed2);
+	background-image: linear-gradient(top,#5DAFDE,#4787ed);
+}
+
+.buttonBlue:hover
+{
+	background-color: #379ed6;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);
+	background-image: -moz-linear-gradient(top,#379ed6,#4787ed);
+	background-image: -webkit-linear-gradient(top,#88c7ec,#74b7de);
+	background-image: linear-gradient(top,#379ed6,#4787ed);
+}*/
+
 ul.tabs li
 {
 	float: left;
@@ -1213,12 +1287,17 @@ ul.tabs li
 	overflow: hidden;
 	position: relative;
 	background: #e0e0e0;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e0e0e0, endColorstr=#cac8c8);
+	background-image: -moz-linear-gradient(top,#e0e0e0,#cac8c8);
+	background-image: -webkit-linear-gradient(top,#e0e0e0,#cac8c8);
+	background-image: linear-gradient(top,#e0e0e0,#cac8c8);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
     text-align: center;
-    font-size:1.1em;
+    color:White;
 }
+
 
 ul.tabs li a 
 {
@@ -1226,23 +1305,41 @@ ul.tabs li a
 	display: block;
 	padding: 0 10px;
 	outline: none;
+	color:White;
 }
 
 ul.tabs li a:hover 
 {
 	background: #ccc;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ccc, endColorstr=#a8a8a8);
+	background-image: -moz-linear-gradient(top,#ccc,#a8a8a8);
+	background-image: -webkit-linear-gradient(top,#ccc,#a8a8a8);
+	background-image: linear-gradient(top,#ccc,#a8a8a8);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
-ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
+ul.tabs li.active, ul.tabs li.active a
 { /*--Makes sure that the active tab does not listen to the hover properties--*/
-	background: #5dafde;
+  	background-color: #5dafde;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
+	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
+	background-image: -webkit-linear-gradient(top,#5DAFDE,#449ed2);
+	background-image: linear-gradient(top,#5DAFDE,#4787ed);
     color:White;
-    -webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+html ul.tabs li.active a:hover
+{ /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background-color: #379ed6;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);
+	background-image: -moz-linear-gradient(top,#379ed6,#4787ed);
+	background-image: -webkit-linear-gradient(top,#88c7ec,#74b7de);
+	background-image: linear-gradient(top,#379ed6,#4787ed);
 }
 
 .tab_container
@@ -1256,8 +1353,7 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 
 .tab_content
 {
-	padding: 10px;
-    padding-left:0;
+	padding: 10px 0;
 }
 
 /*ACCORDEON
@@ -1447,6 +1543,8 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 
 .indexGallery
 {
+	margin: 0!important;
+	padding: 0!important;
     width: 52%;
 }
 
@@ -1455,6 +1553,17 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
     font-weight:bold;
     font-size:1.1em;
     text-decoration:none;
+}
+
+.indexGalleryTitle .titleDiv
+{
+	margin:0;
+}
+
+.indexGalleryTitle
+{
+	height:20px;
+	padding: 15px;
 }
 
 .imageContainer
@@ -1472,6 +1581,12 @@ ul.tabs li.active, ul.tabs li.active a, html ul.tabs li.active a:hover
 {
    width: 130px;
    margin-top:5px;
+   text-align:center;   
+}
+
+.imageDescription p
+{
+   text-align:left;   
 }
 
 .contactDiv

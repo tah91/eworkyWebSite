@@ -61,7 +61,7 @@
                         }
                     </div>
                 </div>
-                <div id="bookingTab" class="tab_content contentBlock borderOrange">
+                <div id="bookingTab" class="tab_content contentBlock borderOrange visuallyhidden">
                     <div class="indexSearchFormDiv darkblue">
                         @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
                         {
@@ -180,7 +180,7 @@
                     </div>
                 </ul>
                 <div class="buttonStd buttonBlue linkImg float-right">
-                    <a href="@Worki.Web.Controllers.HomeController.BlogUrl" target="_blank">Voir le blog eWorky</a>
+                    <a href="@Worki.Web.Controllers.HomeController.BlogUrl" target="_blank">@Worki.Resources.Views.Home.HomeString.BlogTitle</a>
                 </div>
                 <div class="clear">
                 </div>

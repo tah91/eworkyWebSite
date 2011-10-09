@@ -1,7 +1,6 @@
 ﻿@model Worki.Data.Models.LogOnModel
-       
-<h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.ConnectNow</h3>	    
-@using (Html.BeginForm(MVC.Mobile.Account.ActionNames.LogOn, MVC.Mobile.Account.Name, FormMethod.Post, new { id = "connexionform" }))
+
+@using (Html.BeginForm(MVC.Mobile.Account.ActionNames.LogOn, MVC.Mobile.Account.Name, new { returnUrl = Request.Url.PathAndQuery }, FormMethod.Post, new { id = "connexionform" }))
 { 
     @Html.AntiForgeryToken()
     <div class="editor-field">

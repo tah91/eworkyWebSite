@@ -19,18 +19,24 @@
     <div class="blockContainer">
 		<div class="indexTabs">
 			<ul class="tabs">
-			
-                <li><a href="#listTab" class="bold">@Worki.Resources.Views.Mobile.MobileString.List</a></li>
-                <li><a href="#mapTab" class="bold">@Worki.Resources.Views.Mobile.MobileString.Map</a></li>
+                <li id="mapTabLi"><a href="#mapTab" class="bold">@Worki.Resources.Views.Mobile.MobileString.Map</a></li>
+                <li id="listTabLi"><a href="#listTab" class="bold">@Worki.Resources.Views.Mobile.MobileString.List</a></li>
             </ul>
-			<div class="tab_container clearfix">
-				<div id="listTab" class="tab_content">
+			<div class="tab_container">
+				<div id="mapTab" class="tab_content">
+					<div class="contentBlock">
+						<div id="mobileMap" style="height:220px">
+						</div>
+					</div>
+					<div id="currentLoc">
+					</div>
+				</div>
+				<div id="listTab" class="tab_content visuallyhidden">
 				    @for (int i = 0; i < Model.PageResults.Count; ++i)
 					{ 
 						var index = Model.PagingInfo.GlobalIndex(i);
 						@Html.Partial(MVC.Mobile.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
 					}
-
 					<div class="pager">
 						@{
 							RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
@@ -40,14 +46,6 @@
 							}
 						}
 						@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.FullSearchResult, rvd); })
-					</div>
-				</div>
-				<div id="mapTab" class="tab_content">
-					<div class="contentBlock">
-						<div id="mobileMap" style="height:250px">
-						</div>
-					</div>
-					<div id="currentLoc">
 					</div>
 				</div>
 			</div>
@@ -66,19 +64,25 @@
 
     	require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
     		InitTab(".indexTabs");
+//			var page = @Request.QueryString["page"].ToString();
+//			if(page>1){
+//				$('#listTabLi').click();
+//			}
     	});
 
 		require(["@MiscHelpers.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
 
         });
 
+		var resultsMap = null;
+		var where = "@Model.Criteria.Place";
+		var bounds = null;
         function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-                var resultsMap = new WorkiMap('mobileMap');
+                resultsMap = new WorkiMap('mobileMap');
                 resultsMap.LoadSearchMap();
-                var where = "@Model.Criteria.Place";
                 resultsMap.CenterSearchResults(where);
-                var bounds = new google.maps.LatLngBounds();
+                bounds = new google.maps.LatLngBounds();
 				var extendCount = 0;
 				var extendMax = 7;
 				function addMarker(latitude, longitude, name, localisationId)

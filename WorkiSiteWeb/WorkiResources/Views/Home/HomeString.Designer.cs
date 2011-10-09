@@ -115,6 +115,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Le blog eWorky.
+        /// </summary>
+        public static string BlogTitle {
+            get {
+                return ResourceManager.GetString("BlogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Voir le blog eWorky.
         /// </summary>
         public static string CheckOutBlog {
@@ -394,7 +403,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reservation.
+        ///   Looks up a localized string similar to Réservation.
         /// </summary>
         public static string Reserve {
             get {

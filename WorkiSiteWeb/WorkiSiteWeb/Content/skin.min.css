@@ -1,6 +1,5 @@
-﻿.jcarousel-skin-tango{background:White url('images/a_la_une.png') top left no-repeat;border:2px solid #dcdcdc}
-.jcarousel-skin-tango .jcarousel-direction-rtl{direction:rtl}
-.jcarousel-skin-tango .jcarousel-container-horizontal{padding:50px 40px 20px 40px}
+﻿.jcarousel-skin-tango .jcarousel-direction-rtl{direction:rtl}
+.jcarousel-skin-tango .jcarousel-container-horizontal{padding:0 40px 20px 40px}
 .jcarousel-skin-tango .jcarousel-container-vertical{width:75px;height:245px;padding:40px 20px}
 .jcarousel-skin-tango .jcarousel-clip{overflow:hidden}
 .jcarousel-skin-tango .jcarousel-clip-horizontal{height:200px}

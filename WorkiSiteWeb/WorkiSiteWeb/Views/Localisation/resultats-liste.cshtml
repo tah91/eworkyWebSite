@@ -27,8 +27,9 @@
                 @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
                 {
                     @Html.AntiForgeryToken()
-
-                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h3>
+					@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+                    @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+                    <h4 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
                     <div class="toogle_container">
                         <div class="block">
                             <div class="editor-field">
@@ -37,13 +38,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <p>
-                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                    </p>
         
-                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h3>
+                    <h4 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h4>
                     <div class="toogle_container">
                         <div class="block">
                             <div class="editor-field">
@@ -53,14 +49,14 @@
                         </div>
 		            </div>
 
-                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h3>
+                    <h4 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h4>
                     <div class="toogle_container">
                         <div class="block">
                             @Html.Partial(MVC.Localisation.Views._ServicesSelector)
                         </div>
                     </div>
                     
-                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h3>
+                    <h4 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h4>
                     <div class="toogle_container">
                         <div class="block">
                             <div class="editor-field">
@@ -114,7 +110,7 @@
                         </div>
                     </div>
 
-                    <h3 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</span></h3>
+                    <h4 class="toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</span></h4>
                     <div class="toogle_container">
                         <div class="block">
                             <div>
@@ -128,8 +124,7 @@
                     <div class="resetSearch">
                         <input type="submit" class="buttonBlue buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
                     </div>
-
-                }
+				}
             </div>
 		</div>
     </div>
@@ -137,7 +132,7 @@
     <div class="resultDiv dashedRight float-left">
         <div class="searchFormBlockLeft">
             @for (int i = 0; i < Model.PageResults.Count; ++i)
-			{ 
+			{
 				var index = Model.PagingInfo.GlobalIndex(i);
                 @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
 			}
@@ -187,15 +182,15 @@
                     bounds.extend(LL);
 				}
                 @foreach (var localisation in Model.PageResults)
-                {
+				{
 					@:addMarker(@localisation.Latitude, @localisation.Longitude, "@Html.Raw(localisation.Name)");
                 }
                 @if (Model.PageResults.Count >= 2)
-                {
+				{
                     <text>
                     resultsMap.FitBoundsSearchResults(bounds);
                     </text>
-                }
+				}
                 var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
                 workiAutocomplete.SetAutocomplete();
             });   

@@ -48,7 +48,7 @@ namespace Worki.Infrastructure
 			    return true;
 
             // Don't redirect requests for the Mobile area
-            if (Regex.IsMatch(httpContext.Request.Url.PathAndQuery, "/Mobile($|/)"))
+            if (Regex.IsMatch(httpContext.Request.Url.PathAndQuery, "/mobile($|/)"))
                 return true;
 
             return false;

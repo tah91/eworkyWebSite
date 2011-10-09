@@ -75,7 +75,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 			var criteria = _SearchService.GetCriteria(Request);
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
-			criteriaViewModel.FillPageInfo(pageValue);
+			criteriaViewModel.FillPageInfo(pageValue, 10);
 			return View(criteriaViewModel);
 		}
 

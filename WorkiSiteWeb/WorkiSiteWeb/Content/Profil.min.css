@@ -19,8 +19,9 @@
 .profilTitle{padding:10px 0}
 .profilDetailLeft{width:25%}
 .profilDetailRight{width:66.5%}
-.profilAvatar{height:250px}
-.profilAvatar img{max-height:250px}
+.profilAvatar{height:200px}
+.profilAvatar img{max-height:200px}
+.profilAvatar .picBackEmpty{background-image:url('images/avatar.png')}
 .profilName{padding:10px;text-align:center}
 .profilDesc{margin:5px 0}
 .profilType{color:#2c3b4c}

@@ -290,6 +290,7 @@
     </Content>
     <Content Include="Content\boilerplate.css" />
     <Content Include="Content\images\arrow_red.png" />
+    <Content Include="Content\images\avatar.png" />
     <Content Include="Content\images\blog.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\geoloc.png" />
@@ -776,7 +777,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>9069</DevelopmentServerPort>
+          <DevelopmentServerPort>4373</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

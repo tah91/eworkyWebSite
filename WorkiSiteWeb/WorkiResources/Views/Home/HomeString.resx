@@ -269,7 +269,7 @@
     <value>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !</value>
   </data>
   <data name="Reserve" xml:space="preserve">
-    <value>Reservation</value>
+    <value>Réservation</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
     <value>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !</value>
@@ -303,5 +303,8 @@
   </data>
   <data name="MinSurface" xml:space="preserve">
     <value>Surface minimale (m²)</value>
+  </data>
+  <data name="BlogTitle" xml:space="preserve">
+    <value>Le blog eWorky</value>
   </data>
 </root>

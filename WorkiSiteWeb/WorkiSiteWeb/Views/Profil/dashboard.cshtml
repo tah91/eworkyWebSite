@@ -102,7 +102,7 @@
                         <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.FavoriteSpacesEmptyPublic</span>
                     }
                 </div> 
-                <div id="addedLocalisationTab" class="tab_content localisationsTagContainer">
+                <div id="addedLocalisationTab" class="tab_content localisationsTagContainer visuallyhidden">
 					@if (Model.AddedLocalisations.Count != 0)
                     {
                         ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.AddedLoc;
@@ -141,7 +141,7 @@
                         <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.MyCompanyPublic</span>
                     }                    
                 </div> 
-                <div id="favPlacesTab" class="tab_content">
+                <div id="favPlacesTab" class="tab_content visuallyhidden">
 					@if (!string.IsNullOrEmpty(Model.Member.MemberMainData.FavoritePlaces))
                     {
 						@Model.Member.MemberMainData.FavoritePlaces
@@ -178,7 +178,7 @@
 						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.CommentsEmpy</span>
                     }					
                 </div> 
-                <div id="locCommentsTab" class="tab_content">
+                <div id="locCommentsTab" class="tab_content visuallyhidden">
 					@if (Model.RelatedComments.Count != 0)
                     {
                         ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.RelCom;

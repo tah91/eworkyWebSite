@@ -37,24 +37,25 @@
 
 		<div class="contentBlock">
 			@if (!Request.IsAuthenticated)
-   {       
+			{
+				<h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.ConnectNow</h3>	    	       
 				@Html.Partial(MVC.Mobile.Shared.Views._Connexion, new LogOnModel())
-   }
-   else
-   {
-       var displayName = User.Identity.Name;
-       FormsIdentity ident = User.Identity as FormsIdentity;
-       if (ident != null)
-       {
-           displayName = ControllerHelpers.GetIdentityDisplayName(User.Identity);
-       }
+			}
+			else
+			{
+				var displayName = User.Identity.Name;
+				FormsIdentity ident = User.Identity as FormsIdentity;
+				if (ident != null)
+				{
+					displayName = ControllerHelpers.GetIdentityDisplayName(User.Identity);
+				}
 				<div>
 					@Worki.Resources.Views.Mobile.MobileString.Welcome <span class="blue bold">@displayName</span> !
 				</div>
 				<div>
 					@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Mobile.Account.LogOff())
 				</div>
-   }
+			}
 		</div>
 	</div>
 </div>

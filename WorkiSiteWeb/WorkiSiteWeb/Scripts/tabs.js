@@ -36,7 +36,7 @@ function InitTab(tabId) {
         $(tabId + " .tab_content").addClass(hiddenClass); //hide(); //Hide all tab content
 
         var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-        $(activeTab).removeClass(hiddenClass).fadeIn(); //Fade in the active ID content
+        $(activeTab).removeClass(hiddenClass);//.fadeIn(); //Fade in the active ID content
         return false;
     });
 };

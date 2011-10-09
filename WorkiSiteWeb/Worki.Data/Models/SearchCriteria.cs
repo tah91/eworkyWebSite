@@ -154,12 +154,12 @@ namespace Worki.Data.Models
 		/// <summary>
 		/// fill page info from page index
 		/// </summary>
-		public void FillPageInfo(int pageValue = 1)
+		public void FillPageInfo(int pageValue = 1, int pageSize = PageSize)
 		{
 			PagingInfo = new PagingInfo
 			{
 				CurrentPage = pageValue,
-				ItemsPerPage = PageSize,
+				ItemsPerPage = pageSize,
 				TotalItems = Results.Count()
 			};
 		}

@@ -26,45 +26,88 @@
 	border-color:#bbd31f!important;
 }
 
-.backgroundOrange a
+.backgroundBlue, .backgroundBlue a
 {
-	color:White;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color:#5DAFDE!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#449ed2)!important;
+	background-image: -moz-linear-gradient(top,#5DAFDE,#449ed2)!important;
+	background-image: -webkit-linear-gradient(top,#5DAFDE,#449ed2)!important;
+	background-image: linear-gradient(top,#5DAFDE,#449ed2)!important;
 }
 
-.backgroundBlue, .backgroundBlue a, .backgroundBlue a:hover
+.backgroundBlue a:hover
 {
-	background-color:#5dafde!important;
-	color:White!important;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	background-color: #379ed6!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed)!important;
+	background-image: -moz-linear-gradient(top,#379ed6,#4787ed)!important;
+	background-image: -webkit-linear-gradient(top,#379ed6,#4787ed)!important;
+	background-image: linear-gradient(top,#379ed6,#4787ed)!important;
 }
 
-.backgroundOrange, .backgroundOrange a, .backgroundOrange a:hover
+.backgroundOrange, .backgroundOrange a
 {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	background-color:#f7a33a!important;
-	color:White!important;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f9af52, endColorstr=#eb9916)!important;
+	background-image: -moz-linear-gradient(top,#f9af52,#eb9916)!important;
+	background-image: -webkit-linear-gradient(top,#f9af52,#eb9916)!important;
+	background-image: linear-gradient(top,#f9af52,#eb9916)!important;
 }
 
-.backgroundRed, .backgroundRed a, .backgroundRed a:hover
+.backgroundOrange a:hover
 {
-    background-color:#d25657!important;
-	color:White!important;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	background-color: #e6a14a!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e6a14a, endColorstr=#e2941a)!important;
+	background-image: -moz-linear-gradient(top,#e6a14a,#e2941a)!important;
+	background-image: -webkit-linear-gradient(top,#e6a14a,#e2941a)!important;
+	background-image: linear-gradient(top,#e6a14a,#e2941a)!important;
 }
 
-.backgroundGreen, .backgroundGreen a, .backgroundGreen a:hover
+.backgroundRed, .backgroundRed a
 {
-    background-color:#bbd31f!important;
-	color:White!important;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color:#d45558!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#d45558, endColorstr=#a42e2f)!important;
+	background-image: -moz-linear-gradient(top,#d45558,#a42e2f)!important;
+	background-image: -webkit-linear-gradient(top,#d45558,#a42e2f)!important;
+	background-image: linear-gradient(top,#d45558,#a42e2f)!important;
+}
+
+.backgroundRed a:hover
+{
+	background-color: #e96063!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e96063, endColorstr=#c63132)!important;
+	background-image: -moz-linear-gradient(top,#e96063,#c63132)!important;
+	background-image: -webkit-linear-gradient(top,#e96063,#c63132)!important;
+	background-image: linear-gradient(top,#e96063,#c63132)!important;
+}
+
+.backgroundGreen, .backgroundGreen a
+{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color:#bbd31f!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#bbd31f, endColorstr=#d4f500)!important;
+	background-image: -moz-linear-gradient(top,#bbd31f,#d4f500)!important;
+	background-image: -webkit-linear-gradient(top,#bbd31f,#d4f500)!important;
+	background-image: linear-gradient(top,#bbd31f,#d4f500)!important;
+}
+
+.backgroundGreen a:hover
+{
+	background-color: #bde185!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#bde185, endColorstr=#a2bb54)!important;
+	background-image: -moz-linear-gradient(top,#bde185,#a2bb54)!important;
+	background-image: -webkit-linear-gradient(top,#bde185,#a2bb54)!important;
+	background-image: linear-gradient(top,#bde185,#a2bb54)!important;
 }
 
 .index_slides_container
@@ -90,14 +133,14 @@
 
 .indexFormContainer .tabs li
 {
-    font-size:1.2em;
+    /*font-size:1.2em;*/
 }
 
 .indexFormContainer .contentBlock
 {
     margin: 6px 0 0 0!important;
     height:310px;
-    font-size: 1.4em!important;
+    font-size: 1.2em!important;
 }
 
 .indexSearchFormDiv
@@ -118,12 +161,12 @@
 
 .indexSearchFormLabel
 {
-    margin-bottom:5px;
+    margin-bottom:10px;
 }
 
 .indexSearchFormField
 {
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 
 .indexSearchIndexLinks
