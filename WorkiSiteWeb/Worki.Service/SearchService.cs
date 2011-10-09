@@ -39,7 +39,7 @@ namespace Worki.Service
         {
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var results = lRepo.FindByCriteria(criteriaViewModel.Criteria);//.ToList();
+			var results = lRepo.FindByCriteria(criteriaViewModel.Criteria);
 
             foreach (var item in results)
             {
@@ -53,7 +53,6 @@ namespace Worki.Service
                                          select item).ToList();
 
             criteriaViewModel.FillPageInfo();
-            //session[CriteriaViewModelKey] = criteriaViewModel;
         }
 
 		#endregion
@@ -79,14 +78,11 @@ namespace Worki.Service
 		/// <param name="session">session to look up for results</param>
 		/// <param name="parameters">parameters from which to build result of not in session</param>
 		/// <returns>a object containing the criteria and the results of a search</returns>
-        public SearchCriteriaFormViewModel FillSearchResults(SearchCriteria criteria)
+		public SearchCriteriaFormViewModel FillSearchResults(SearchCriteria criteria)
 		{
-			SearchCriteriaFormViewModel criteriaViewModel = null;// session[CriteriaViewModelKey] as SearchCriteriaFormViewModel;
-			if (criteriaViewModel == null)
-			{				
-				criteriaViewModel = new SearchCriteriaFormViewModel(criteria, true);
-				FillResults(criteriaViewModel);
-			}
+
+			var criteriaViewModel = new SearchCriteriaFormViewModel(criteria, true);
+			FillResults(criteriaViewModel);
 			return criteriaViewModel;
 		}
 
@@ -125,12 +121,6 @@ namespace Worki.Service
 
             if (MiscHelpers.GetRequestValue(parameters, "lieu", ref value))
                 criteria.Place = value;
-
-			if (MiscHelpers.GetRequestValue(parameters, "lat", ref value))
-				criteria.LocalisationData.Latitude = float.Parse(value);
-
-			if (MiscHelpers.GetRequestValue(parameters, "lng", ref value))
-				criteria.LocalisationData.Longitude = float.Parse(value);
 
 			if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
 			{
@@ -191,11 +181,6 @@ namespace Worki.Service
 		{
 			var rvd = new RouteValueDictionary();
 			rvd["page"] = page;
-			rvd["lieu"] = criteria.Place;
-			if(criteria.LocalisationData.Latitude!=0)
-				rvd["lat"] = criteria.LocalisationData.Latitude;
-			if (criteria.LocalisationData.Longitude != 0)
-				rvd["lng"] = criteria.LocalisationData.Longitude;
 			rvd["lieu"] = criteria.Place;
 			rvd["offer-type"] = criteria.LocalisationOffer;
 

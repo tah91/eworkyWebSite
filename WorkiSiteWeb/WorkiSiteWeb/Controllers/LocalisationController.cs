@@ -435,7 +435,6 @@ namespace Worki.Web.Controllers
 			{
 				try
 				{
-					//Session.Remove(SearchService.CriteriaViewModelKey);
 					var rvd = _SearchService.GetRVD(criteria);
 					return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
 				}
@@ -465,7 +464,6 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearchResult(int? page)
 		{
 			var pageValue = page ?? 1;
-			//SearchCriteriaFormViewModel criteriaViewModel = null;
 			var criteria = _SearchService.GetCriteria(Request);
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 

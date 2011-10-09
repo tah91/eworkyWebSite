@@ -30,7 +30,7 @@ input[type="text"], input[type="password"]
 .currentPosButton .buttonStd
 {
     width:15px;
-    height: 25px;
+    height: 22px;
     background:#5DAFDE url('images/geoloc.png') no-repeat center center;
     margin-right: -3px;
 }
@@ -95,9 +95,19 @@ body
     margin:25px 10px 0 0;
 }
 
+#mapTabLi
+{
+	margin:0 0.5% 0 0;
+}
+
+#listTabLi
+{
+	margin:0 0 0 0.5%;
+}
+
 #mapTabLi, #listTabLi
 {
-	width:48%;
+	width:49.5%;
 }
 
 /* RESULT ITEM
