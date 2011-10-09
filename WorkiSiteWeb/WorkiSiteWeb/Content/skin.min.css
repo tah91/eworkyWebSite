@@ -8,12 +8,12 @@
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal{margin-left:10px;margin-right:0}
 .jcarousel-skin-tango .jcarousel-item-vertical{margin-bottom:10px}
 .jcarousel-skin-tango .jcarousel-item-placeholder{background:#fff;color:#000}
-.jcarousel-skin-tango .jcarousel-next-horizontal{position:absolute;top:50%;right:5px;width:32px;height:32px;cursor:pointer;background:transparent url('images/next-horizontal.png') no-repeat 0 0}
+.jcarousel-skin-tango .jcarousel-next-horizontal{position:absolute;top:40%;right:5px;width:32px;height:32px;cursor:pointer;background:transparent url('images/next-horizontal.png') no-repeat 0 0}
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal{left:5px;right:auto;background-image:url('images/prev-horizontal.png')}
 .jcarousel-skin-tango .jcarousel-next-horizontal:hover,.jcarousel-skin-tango .jcarousel-next-horizontal:focus{background-position:-32px 0}
 .jcarousel-skin-tango .jcarousel-next-horizontal:active{background-position:-64px 0}
 .jcarousel-skin-tango .jcarousel-next-disabled-horizontal,.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:focus,.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active{cursor:default;background-position:-96px 0}
-.jcarousel-skin-tango .jcarousel-prev-horizontal{position:absolute;top:50%;left:5px;width:32px;height:32px;cursor:pointer;background:transparent url('images/prev-horizontal.png') no-repeat 0 0}
+.jcarousel-skin-tango .jcarousel-prev-horizontal{position:absolute;top:40%;left:5px;width:32px;height:32px;cursor:pointer;background:transparent url('images/prev-horizontal.png') no-repeat 0 0}
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal{left:auto;right:5px;background-image:url('images/next-horizontal.png')}
 .jcarousel-skin-tango .jcarousel-prev-horizontal:hover,.jcarousel-skin-tango .jcarousel-prev-horizontal:focus{background-position:-32px 0}
 .jcarousel-skin-tango .jcarousel-prev-horizontal:active{background-position:-64px 0}

@@ -19,8 +19,7 @@
 .indexFormContainer .contentBlock{margin:6px 0 0 0!important;height:310px;font-size:1.2em!important}
 .indexSearchFormDiv{padding:20px}
 .indexSearchFormDiv select,.indexSearchFormDiv input[type="text"],input[type="password"]{width:100%;font-size:1em}
-.indexSearchFormLabel{margin-bottom:10px}
-.indexSearchFormField{margin-bottom:30px}
+.indexSearchFormField{margin-bottom:40px}
 .indexSearchIndexLinks{margin-top:40px}
 .indexSearchIndexLinks .buttonStd{padding:10px 20px}
 .indexSearchIndexLinksLeft{bottom:25%;position:absolute}
