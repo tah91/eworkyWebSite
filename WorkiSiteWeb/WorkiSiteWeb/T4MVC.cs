@@ -453,21 +453,10 @@ namespace Links {
             private const string URLPATH = "~/Content/images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string a_la_une_png = Url("a_la_une.png");
-            public static readonly string ajout_jpg = Url("ajout.jpg");
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
-            public static readonly string avail_png = Url("avail.png");
             public static readonly string avatar_png = Url("avatar.png");
-            public static readonly string blog_png = Url("blog.png");
-            public static readonly string btn_png = Url("btn.png");
-            public static readonly string btn_logo_png = Url("btn_logo.png");
-            public static readonly string btn_searchIndex_png = Url("btn_searchIndex.png");
-            public static readonly string btn_side_png = Url("btn_side.png");
-            public static readonly string btn_sprites_png = Url("btn_sprites.png");
             public static readonly string comm_content_png = Url("comm_content.png");
-            public static readonly string comm_content1_png = Url("comm_content1.png");
-            public static readonly string coworking_png = Url("coworking.png");
             public static readonly string cross_png = Url("cross.png");
             public static readonly string csv_import_png = Url("csv-import.png");
             public static readonly string delete_gif = Url("delete.gif");
@@ -477,31 +466,22 @@ namespace Links {
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
             public static readonly string geoloc_png = Url("geoloc.png");
-            public static readonly string google_gif = Url("google.gif");
             public static readonly string homeLogo1_png = Url("homeLogo1.png");
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
             public static readonly string homeLogo3_png = Url("homeLogo3.png");
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
-            public static readonly string iconeMap_png = Url("iconeMap.png");
-            public static readonly string iconeMapold_png = Url("iconeMapold.png");
             public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
             public static readonly string logo_png = Url("logo.png");
-            public static readonly string logo_fiche_png = Url("logo_fiche.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
-            public static readonly string loupe_png = Url("loupe.png");
             public static readonly string menu_middle_png = Url("menu_middle.png");
-            public static readonly string menu_middleold_png = Url("menu_middleold.png");
             public static readonly string menu_side_png = Url("menu_side.png");
-            public static readonly string menu_sideold_png = Url("menu_sideold.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
-            public static readonly string openid_gif = Url("openid.gif");
-            public static readonly string openingBack_png = Url("openingBack.png");
             public static readonly string pbar_ani_gif = Url("pbar-ani.gif");
             public static readonly string photo1_jpg = Url("photo1.jpg");
             public static readonly string photo2_jpg = Url("photo2.jpg");
@@ -511,19 +491,13 @@ namespace Links {
             public static readonly string prev_vertical_png = Url("prev-vertical.png");
             public static readonly string profil_social_png = Url("profil_social.png");
             public static readonly string recherche_min_png = Url("recherche-min.png");
-            public static readonly string rechercher_jpg = Url("rechercher.jpg");
-            public static readonly string rechercher2_jpg = Url("rechercher2.jpg");
             public static readonly string rechercher2_png = Url("rechercher2.png");
-            public static readonly string reset_search_png = Url("reset_search.png");
             public static readonly string retour_png = Url("retour.png");
             public static readonly string scoop_jpg = Url("scoop.jpg");
             public static readonly string serviceIcones_png = Url("serviceIcones.png");
-            public static readonly string star_gif = Url("star.gif");
             public static readonly string star_png = Url("star.png");
             public static readonly string startup_png = Url("startup.png");
             public static readonly string student_png = Url("student.png");
-            public static readonly string submit_add_png = Url("submit_add.png");
-            public static readonly string submit_search_png = Url("submit_search.png");
             public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
             public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
             public static readonly string ui_bg_glass_55_fbf9ee_1x400_png = Url("ui-bg_glass_55_fbf9ee_1x400.png");
@@ -539,11 +513,9 @@ namespace Links {
             public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
             public static readonly string users_jpg = Url("users.jpg");
             public static readonly string visitor_jpg = Url("visitor.jpg");
-            public static readonly string vu_tele_png = Url("vu-tele.png");
             public static readonly string worker_png = Url("worker.png");
             public static readonly string worki_fb_jpg = Url("worki_fb.jpg");
             public static readonly string worki_footer_png = Url("worki_footer.png");
-            public static readonly string yahoo_gif = Url("yahoo.gif");
         }
     
         public static readonly string Index_css = Url("Index.css");
@@ -1540,7 +1512,6 @@ namespace Worki.Web.Controllers {
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
             public readonly string editer = "~/Views/Localisation/editer.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
-            public readonly string lieu_absent = "~/Views/Localisation/lieu-absent.cshtml";
             public readonly string recherche = "~/Views/Localisation/recherche.cshtml";
             public readonly string resultats_detail = "~/Views/Localisation/resultats-detail.cshtml";
             public readonly string resultats_liste = "~/Views/Localisation/resultats-liste.cshtml";
