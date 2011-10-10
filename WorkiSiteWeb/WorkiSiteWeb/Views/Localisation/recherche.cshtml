@@ -16,157 +16,23 @@
 	        </div>
             <div class="searchFormContainer float-right contentBlock">
                 <div class="searchFormDiv">
-                    @{
-                        var titleName = "";
-                        switch (Model.Criteria.DirectAccessType)
-                        {
-                            case eDirectAccessType.eStudent:
-						        titleName = Worki.Resources.Models.Profile.Profile.Student;
-                                break;
-                            case eDirectAccessType.eTeleworker:
-						        titleName = Worki.Resources.Models.Profile.Profile.Teleworker;
-                                break;
-                            case eDirectAccessType.eStartUp:
-                                titleName = Worki.Resources.Views.Search.SearchString.Entrepreneur;
-                                break;
-                            case eDirectAccessType.eNomade:
-                                titleName = Worki.Resources.Views.Search.SearchString.Nomad;
-                                break;
-                            case eDirectAccessType.eIndependant:
-                                titleName = Worki.Resources.Views.Search.SearchString.Independant;
-                                break;
-                            case eDirectAccessType.eEntreprise:
-						        titleName = Worki.Resources.Models.Profile.Profile.Company;
-                                break;
-                            case eDirectAccessType.eNone:
-                            default:
-                                titleName = Worki.Resources.Views.Search.SearchString.Search;
-                                break;
-                        }
-                    }
-                    @RazorHelpers.TitleDiv(titleName, "Blue")
+                    @RazorHelpers.TitleDiv(SearchCriteria.GetDirectAccessTitle(Model.Criteria.DirectAccessType), "Blue")
 
-            
-                    @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+                    @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
                     { 
                         @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+
                         <div class="localisationField">
                             <div class="editor-field">
                                 @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
                                 @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
                             </div>
-
-                            <p>
-                                @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                                @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                                @Html.HiddenFor(m=>m.Criteria.SearchType)
-                                @Html.HiddenFor(m=>m.Criteria.DirectAccessType)
-                            </p>
                         </div>
 
-                           if (Model.Criteria.SearchType == eSearchType.ePerOffer)
-                           {
-                        <div class="searchBottom searchCriterias">
-                            <div class="localisationTypes searchOptions float-left">
-                                <p class="blue">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
-                                <div class="editor-field">
-                                    @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
-                                    @Html.ValidationMessage("LocalisationOffer", "")
-                                </div>
-                            </div>
-                            <div class="searchOptions float-left" style="padding-left:20px;">
-                                <p class="blue">@Worki.Resources.Views.Search.SearchString.Equipments</p>
-                                @Html.Partial(MVC.Localisation.Views._ServicesSelector)
-                            </div>
-                            <div class="clear">
-                            </div>
-                            <div class="searchOptions">
-                                <div id="searchOption0">
-                                    <p class="blue">@Worki.Resources.Views.Search.SearchString.Features</p>
-                                    <div id="searchOptionToReplace">
-                                    </div>
-                                </div>                                       
-                            </div>
-                            <div class="clear">
-                            </div>                
-                        </div>
-                           }
-                           if (Model.Criteria.SearchType == eSearchType.ePerType)
-                           {
-                        <div class="searchBottom searchCriterias" style="margin-bottom:10px;">
-                            <div class="localisationTypes searchOptions float-left">
-                                <p class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
-                                <div class="float-left">
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.Everything)
-                                    @Html.LabelFor(model => model.Criteria.Everything)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
-                                    @Html.LabelFor(model => model.Criteria.SpotWifi)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
-                                    @Html.LabelFor(model => model.Criteria.CoffeeResto)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.Biblio)
-                                    @Html.LabelFor(model => model.Criteria.Biblio)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
-                                    @Html.LabelFor(model => model.Criteria.PublicSpace)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
-                                    @Html.LabelFor(model => model.Criteria.TravelerSpace)
-                                    </div>
-                                </div>
-                                <div class="float-right" style="padding-left:70px;">
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.Hotel)
-                                    @Html.LabelFor(model => model.Criteria.Hotel)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.Telecentre)
-                                    @Html.LabelFor(model => model.Criteria.Telecentre)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
-                                    @Html.LabelFor(model => model.Criteria.BuisnessCenter)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
-                                    @Html.LabelFor(model => model.Criteria.CoworkingSpace)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
-                                    @Html.LabelFor(model => model.Criteria.WorkingHotel)
-                                    </div>
-                                    <div class="editor-field">
-                                    @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
-                                    @Html.LabelFor(model => model.Criteria.PrivateArea)
-                                    </div>
-                                </div>
-                                <div class="clear">
-                                </div>                            
-                            </div>
-                        </div>
-                           } 
-                        <div>
-                            <div class="changeSeachType float-left">                        
-                            @if (Model.Criteria.SearchType == eSearchType.ePerOffer)
-                            {
-                                @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Localisation.FullSearchPerType())
-                            }
-                            else
-                            {
-                                @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByServiceType, MVC.Localisation.FullSearch())
-                            }
-                            </div>
-                            <div class="submitSearchContainer  float-right">
-                                <input type="submit" class="buttonBlue buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
-                            </div>
+                        <div id="searchFormPartialContainer">
+                            @Html.Partial(MVC.Localisation.Views._SearchForm)
                         </div>
                     } 
                 </div>

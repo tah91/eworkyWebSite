@@ -32,6 +32,69 @@ namespace Worki.Data.Models
             DirectAccessType = eDirectAccessType.eNone;
 		}
 
+        #region Direct Access
+
+        public static SearchCriteria CreateSearchCriteria(eDirectAccessType directAccessType)
+        {
+            SearchCriteria criteria = null;
+            switch (directAccessType)
+            {
+                case eDirectAccessType.eStudent:
+                    criteria = new SearchCriteria { SpotWifi = true, CoffeeResto = true, Biblio = true, PublicSpace = true };
+                    break;
+                case eDirectAccessType.eTeleworker:
+                    criteria = new SearchCriteria { PublicSpace = true, Telecentre = true, BuisnessCenter = true, CoworkingSpace = true };
+                    break;
+                case eDirectAccessType.eStartUp:
+                    criteria = new SearchCriteria { BuisnessCenter = true, CoworkingSpace = true, WorkingHotel = true };
+                    break;
+                case eDirectAccessType.eNomade:
+                    criteria = new SearchCriteria { SpotWifi = true, CoffeeResto = true, Biblio = true, TravelerSpace = true, Hotel = true, Telecentre = true, BuisnessCenter = true, CoworkingSpace = true };
+                    break;
+                case eDirectAccessType.eEntreprise:
+                    criteria = new SearchCriteria { Hotel = true, Telecentre = true, BuisnessCenter = true, WorkingHotel = true, PrivateArea = true };
+                    break;
+                case eDirectAccessType.eIndependant:
+                    criteria = new SearchCriteria { Telecentre = true, BuisnessCenter = true, CoworkingSpace = true, WorkingHotel = true };
+                    break;
+                case eDirectAccessType.eNone:
+                default:
+                    criteria = new SearchCriteria { SearchType = eSearchType.ePerType };
+                    break;
+            }
+
+            if (directAccessType != eDirectAccessType.eNone)
+                criteria.Everything = false;
+            criteria.SearchType = eSearchType.ePerType;
+            criteria.DirectAccessType = directAccessType;
+
+            return criteria;
+        }
+
+        public static string GetDirectAccessTitle(eDirectAccessType type)
+        {
+            switch (type)
+            {
+                case eDirectAccessType.eStudent:
+                    return Worki.Resources.Models.Profile.Profile.Student;
+                case eDirectAccessType.eTeleworker:
+                    return Worki.Resources.Models.Profile.Profile.Teleworker;
+                case eDirectAccessType.eStartUp:
+                    return Worki.Resources.Views.Search.SearchString.Entrepreneur;
+                case eDirectAccessType.eNomade:
+                    return Worki.Resources.Views.Search.SearchString.Nomad;
+                case eDirectAccessType.eIndependant:
+                    return Worki.Resources.Views.Search.SearchString.Independant;
+                case eDirectAccessType.eEntreprise:
+                    return Worki.Resources.Models.Profile.Profile.Company;
+                case eDirectAccessType.eNone:
+                default:
+                    return Worki.Resources.Views.Search.SearchString.Search;
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Properties

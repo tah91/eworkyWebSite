@@ -6,19 +6,6 @@
         {
             switch (offerType)
             {
-                case LocalisationOffer.FreeArea:
-        <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
-            </div>
-        </div>
-                break;
                 case LocalisationOffer.BuisnessRoom:
         <div id="searchOptionToReplace">                            
             <div class="editor-field">
@@ -148,7 +135,19 @@
             </div>
         </div>
                 break;
+                case LocalisationOffer.FreeArea:
                 default:
+        <div id="searchOptionToReplace">                            
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+            </div>
+            <div class="editor-field">
+            @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
+            </div>
+        </div>                  
                 break;
             }
         }
@@ -156,17 +155,6 @@
         {
             switch (offerType)
             {
-                case LocalisationOffer.FreeArea:
-        <div id="searchOptionToReplace">                            
-            <div class="float-left searchCheckBoxs">
-                @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
-            </div>
-            <div class="clear">
-            </div>
-        </div>
-           break;
                 case LocalisationOffer.BuisnessRoom:
         <div id="searchOptionToReplace">                            
             <div class="float-left searchCheckBoxs">
@@ -261,16 +249,26 @@
                 <div class="clear">
                 </div>
             </div>
-               break;
-                    default:
-               break;
+                break;
+                case LocalisationOffer.FreeArea:
+                default:
+        <div id="searchOptionToReplace">                            
+            <div class="float-left searchCheckBoxs">
+                @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
+                @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+                break;
             }
         }
 }
 
 <script type="text/javascript">
     require.ready(function () {
-        @{ bool isSearchForm = (bool)ViewData["IsSearchForm"] ; }
+        @{ bool isSearchForm = (bool)ViewData["IsSearchForm"]; }
         var offer0 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea, isSearchForm).ToString()))';
         var offer1 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessRoom, isSearchForm).ToString()))';
         var offer2 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Workstation, isSearchForm).ToString()))';
@@ -310,12 +308,12 @@
             $("#searchOptionToReplace").replaceWith(newDivContent);
         }
         SelectSearch();
-        $('.offerSelect').change(function () {
+        $('.offerSelect').live('change', function () {
             SelectSearch();
         });
 
         //check all types
-        $("#Criteria_Everything").click(function () {
+        $("#Criteria_Everything").live('click', function () {
             var isAll = $("#Criteria_Everything:checked").val();
             if (isAll == 'true') {
                 $("#Criteria_SpotWifi").attr('checked', false);
@@ -331,8 +329,8 @@
                 $("#Criteria_PrivateArea").attr('checked', false);
             }
         });
-        UnckeckEverithing = function (checkboxId) {
-            $(checkboxId).click(function () {
+        UnckeckEverything = function (checkboxId) {
+            $(checkboxId).live('click', function () {
                 var checked = checkboxId + ':checked';
                 var isTrue = $(checked).val();
                 if (isTrue == 'true') {
@@ -340,16 +338,75 @@
                 }
             });
         };
-        UnckeckEverithing("#Criteria_SpotWifi");
-        UnckeckEverithing("#Criteria_CoffeeResto");
-        UnckeckEverithing("#Criteria_Biblio");
-        UnckeckEverithing("#Criteria_PublicSpace");
-        UnckeckEverithing("#Criteria_TravelerSpace");
-        UnckeckEverithing("#Criteria_Hotel");
-        UnckeckEverithing("#Criteria_Telecentre");
-        UnckeckEverithing("#Criteria_BuisnessCenter");
-        UnckeckEverithing("#Criteria_CoworkingSpace");
-        UnckeckEverithing("#Criteria_WorkingHotel");
-        UnckeckEverithing("#Criteria_PrivateArea");
+        UnckeckEverything("#Criteria_SpotWifi");
+        UnckeckEverything("#Criteria_CoffeeResto");
+        UnckeckEverything("#Criteria_Biblio");
+        UnckeckEverything("#Criteria_PublicSpace");
+        UnckeckEverything("#Criteria_TravelerSpace");
+        UnckeckEverything("#Criteria_Hotel");
+        UnckeckEverything("#Criteria_Telecentre");
+        UnckeckEverything("#Criteria_BuisnessCenter");
+        UnckeckEverything("#Criteria_CoworkingSpace");
+        UnckeckEverything("#Criteria_WorkingHotel");
+        UnckeckEverything("#Criteria_PrivateArea");
+
+        SelectForm = function (event, searchType, directAccessType) {
+            event.preventDefault();
+            $.ajax({
+                url: '@Url.Action(MVC.Localisation.ActionNames.SearchForm, MVC.Localisation.Name)',
+                data: { 'searchType': searchType, 'directAccessType': directAccessType },
+                success: function (data) {
+                    $('#searchFormPartialContainer').html(data);
+                }
+            });
+            var newTitle;
+            switch(directAccessType)
+            {
+                case '@eDirectAccessType.eStudent':
+                    newTitle = '@Html.Raw(SearchCriteria.GetDirectAccessTitle(eDirectAccessType.eStudent))';
+                    break;
+                case '@eDirectAccessType.eNomade':
+                    newTitle = '@Html.Raw(SearchCriteria.GetDirectAccessTitle(eDirectAccessType.eNomade))';
+                    break;
+                case '@eDirectAccessType.eTeleworker':
+                    newTitle = '@Html.Raw(SearchCriteria.GetDirectAccessTitle(eDirectAccessType.eTeleworker))';
+                    break;
+                case '@eDirectAccessType.eStartUp':
+                    newTitle = '@Html.Raw(SearchCriteria.GetDirectAccessTitle(eDirectAccessType.eStartUp))';
+                    break;
+                case '@eDirectAccessType.eEntreprise':
+                    newTitle = '@Html.Raw(SearchCriteria.GetDirectAccessTitle(eDirectAccessType.eEntreprise))';
+                    break;
+                case '@eDirectAccessType.eIndependant':
+                    newTitle = '@Html.Raw(SearchCriteria.GetDirectAccessTitle(eDirectAccessType.eIndependant))';
+                    break;
+                case '@eDirectAccessType.eNone':
+                    newTitle = '@Html.Raw(SearchCriteria.GetDirectAccessTitle(eDirectAccessType.eNone))';
+                    break;
+            }
+            $('.searchFormDiv .titleDiv h1').text(newTitle);
+        }
+
+        $('#searchPerType').live('click', function () {
+            SelectForm(event, '@eSearchType.ePerType', '@eDirectAccessType.eNone');
+        });
+
+        $('#searchPerNeed').live('click', function () {
+            SelectForm(event, '@eSearchType.ePerOffer', '@eDirectAccessType.eNone');
+        });
+
+        DirectAccessSelectForm = function (theType) {
+            var id = '#' + theType;
+            $(id).click(function () {
+                SelectForm(event, '@eSearchType.ePerType', theType);
+            });
+        }
+
+        DirectAccessSelectForm('@eDirectAccessType.eStudent');
+        DirectAccessSelectForm('@eDirectAccessType.eNomade');
+        DirectAccessSelectForm('@eDirectAccessType.eTeleworker');
+        DirectAccessSelectForm('@eDirectAccessType.eStartUp');
+        DirectAccessSelectForm('@eDirectAccessType.eEntreprise');
+        DirectAccessSelectForm('@eDirectAccessType.eIndependant');
     });
 </script>

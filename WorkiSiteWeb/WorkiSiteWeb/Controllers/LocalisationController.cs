@@ -344,6 +344,31 @@ namespace Worki.Web.Controllers
 			return Json(jsonLocalisations.ToList());
 		}
 
+        /// <summary>
+        /// Action to get partial view of search form
+        /// </summary>
+        /// <param name="searchType">enum within eSearchType</param>
+        /// <param name="directAccessType">enum within eDirectAccessType</param>
+        /// <returns>corresponding partial form</returns>
+        public virtual PartialViewResult SearchForm(string searchType, string directAccessType)
+        {
+            var searchEnum = (eSearchType)Enum.Parse(typeof(eSearchType), searchType);
+            var directAccessEnum = (eDirectAccessType)Enum.Parse(typeof(eDirectAccessType), directAccessType);
+
+            SearchCriteriaFormViewModel model = null;
+            if (searchEnum == eSearchType.ePerOffer)
+            {
+                var criteria = new SearchCriteria(true);
+                model = new SearchCriteriaFormViewModel(criteria, false);
+            }
+            else
+            {
+                var criteria = SearchCriteria.CreateSearchCriteria(directAccessEnum);
+                model = new SearchCriteriaFormViewModel(criteria, false);
+            }
+            return PartialView(MVC.Localisation.Views._SearchForm, model);
+        }
+
 		/// <summary>
 		/// GET Action result to search localisations from a SearchCriteria
 		/// the search is per offer (free area, meeting room etc...)
@@ -374,7 +399,7 @@ namespace Worki.Web.Controllers
 		[ActionName("recherche-par-type")]
 		public virtual ActionResult FullSearchPerType()
 		{
-			var criteria = new SearchCriteria { SearchType = eSearchType.ePerType };
+            var criteria = SearchCriteria.CreateSearchCriteria(eDirectAccessType.eNone);
 			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
 		}
 
@@ -388,32 +413,7 @@ namespace Worki.Web.Controllers
 		[ActionName("recherche-special")]
 		public virtual ActionResult FullSearchPerTypeSpecial(int type)
 		{
-			var directAccessType = (eDirectAccessType)type;
-			SearchCriteria criteria = null;
-			switch (directAccessType)
-			{
-				case eDirectAccessType.eStudent:
-					criteria = new SearchCriteria { SpotWifi = true, CoffeeResto = true, Biblio = true, PublicSpace = true };
-					break;
-				case eDirectAccessType.eTeleworker:
-					criteria = new SearchCriteria { PublicSpace = true, Telecentre = true, BuisnessCenter = true, CoworkingSpace = true };
-					break;
-				case eDirectAccessType.eStartUp:
-					criteria = new SearchCriteria { BuisnessCenter = true, CoworkingSpace = true, WorkingHotel = true };
-					break;
-				case eDirectAccessType.eNomade:
-					criteria = new SearchCriteria { SpotWifi = true, CoffeeResto = true, Biblio = true, TravelerSpace = true, Hotel = true, Telecentre = true, BuisnessCenter = true, CoworkingSpace = true };
-					break;
-				case eDirectAccessType.eEntreprise:
-					criteria = new SearchCriteria { Hotel = true, Telecentre = true, BuisnessCenter = true, WorkingHotel = true, PrivateArea = true };
-					break;
-				case eDirectAccessType.eIndependant:
-					criteria = new SearchCriteria { Telecentre = true, BuisnessCenter = true, CoworkingSpace = true, WorkingHotel = true };
-					break;
-			}
-			criteria.Everything = false;
-			criteria.SearchType = eSearchType.ePerType;
-			criteria.DirectAccessType = directAccessType;
+            var criteria = SearchCriteria.CreateSearchCriteria((eDirectAccessType)type);
 			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
 		}
 

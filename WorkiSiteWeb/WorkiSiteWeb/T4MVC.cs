@@ -458,6 +458,7 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avail_png = Url("avail.png");
+            public static readonly string avatar_png = Url("avatar.png");
             public static readonly string blog_png = Url("blog.png");
             public static readonly string btn_png = Url("btn.png");
             public static readonly string btn_logo_png = Url("btn_logo.png");
@@ -1497,6 +1498,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult SearchForm() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.SearchForm);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FullSearchOffer() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchOffer);
         }
@@ -1537,6 +1543,7 @@ namespace Worki.Web.Controllers {
             public readonly string DeleteComment = "DeleteComment";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
+            public readonly string SearchForm = "SearchForm";
             public readonly string FullSearch = "recherche";
             public readonly string FullSearchOffer = "recherche-lieu-travail-menu";
             public readonly string FullSearchPerType = "recherche-par-type";
@@ -1558,6 +1565,7 @@ namespace Worki.Web.Controllers {
             public readonly string _IconeServices = "~/Views/Localisation/_IconeServices.cshtml";
             public readonly string _LocalisationDetail = "~/Views/Localisation/_LocalisationDetail.cshtml";
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
+            public readonly string _SearchForm = "~/Views/Localisation/_SearchForm.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
@@ -1647,6 +1655,13 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult GetMainLocalisations() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMainLocalisations);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult SearchForm(string searchType, string directAccessType) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.SearchForm);
+            callInfo.RouteValueDictionary.Add("searchType", searchType);
+            callInfo.RouteValueDictionary.Add("directAccessType", directAccessType);
             return callInfo;
         }
 

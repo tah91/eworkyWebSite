@@ -1,0 +1,115 @@
+﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
+
+@Html.HiddenFor(m => m.Criteria.SearchType)
+@Html.HiddenFor(m => m.Criteria.DirectAccessType)
+@if (Model.Criteria.SearchType == eSearchType.ePerOffer)
+{
+<div class="searchBottom searchCriterias">
+    <div class="localisationTypes searchOptions float-left">
+        <p class="blue">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers, new { @class = "offerSelect" })
+        </div>
+    </div>
+    <div class="searchOptions float-left" style="padding-left:20px;">
+        <p class="blue">@Worki.Resources.Views.Search.SearchString.Equipments</p>
+        @Html.Partial(MVC.Localisation.Views._ServicesSelector)
+    </div>
+    <div class="clear">
+    </div>
+    <div class="searchOptions">
+        <div id="searchOption0">
+            <p class="blue">@Worki.Resources.Views.Search.SearchString.Features</p>
+            <div id="searchOptionToReplace">
+                <div class="float-left searchCheckBoxs">
+                    @Html.FeatureChecboxLabel(Model.Criteria.LocalisationData, Feature.Outlet, FeatureType.General)
+                    @Html.FeatureChecboxLabel(Model.Criteria.LocalisationData, Feature.FastInternet, FeatureType.General)
+                    @Html.FeatureChecboxLabel(Model.Criteria.LocalisationData, Feature.AC, FeatureType.General)
+                </div>
+            <div class="clear">
+            </div>
+            </div>
+        </div>                                       
+    </div>
+    <div class="clear">
+    </div>                
+</div>
+}
+@if (Model.Criteria.SearchType == eSearchType.ePerType)
+{
+<div class="searchBottom searchCriterias" style="margin-bottom:10px;">
+    <div class="localisationTypes searchOptions float-left">
+        <p class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
+        <div class="float-left">
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.Everything)
+            @Html.LabelFor(model => model.Criteria.Everything)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
+            @Html.LabelFor(model => model.Criteria.SpotWifi)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
+            @Html.LabelFor(model => model.Criteria.CoffeeResto)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.Biblio)
+            @Html.LabelFor(model => model.Criteria.Biblio)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
+            @Html.LabelFor(model => model.Criteria.PublicSpace)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
+            @Html.LabelFor(model => model.Criteria.TravelerSpace)
+            </div>
+        </div>
+        <div class="float-right" style="padding-left:70px;">
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.Hotel)
+            @Html.LabelFor(model => model.Criteria.Hotel)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.Telecentre)
+            @Html.LabelFor(model => model.Criteria.Telecentre)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
+            @Html.LabelFor(model => model.Criteria.BuisnessCenter)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
+            @Html.LabelFor(model => model.Criteria.CoworkingSpace)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
+            @Html.LabelFor(model => model.Criteria.WorkingHotel)
+            </div>
+            <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
+            @Html.LabelFor(model => model.Criteria.PrivateArea)
+            </div>
+        </div>
+        <div class="clear">
+        </div>                            
+    </div>
+</div>
+} 
+<div>
+    <div class="changeSeachType float-left">                        
+    @if (Model.Criteria.SearchType == eSearchType.ePerOffer)
+    {
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByPlaceType, MVC.Localisation.FullSearchPerType(), new { id="searchPerType" })
+    }
+    else
+    {
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.SearchByServiceType, MVC.Localisation.FullSearch(), new { id = "searchPerNeed" })
+    }
+    </div>
+    <div class="submitSearchContainer  float-right">
+        <input type="submit" class="buttonBlue buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
+    </div>
+</div>
+ 
