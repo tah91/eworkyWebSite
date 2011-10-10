@@ -416,9 +416,7 @@
     <Content Include="Content\images\logo_fiche.png" />
     <Content Include="Content\images\logo_footer.png" />
     <Content Include="Content\images\loupe.png" />
-    <Content Include="Content\images\menu_middle.png" />
     <Content Include="Content\images\menu_middleold.png" />
-    <Content Include="Content\images\menu_side.png" />
     <Content Include="Content\images\menu_sideold.png" />
     <Content Include="Content\images\next-horizontal.png" />
     <Content Include="Content\images\next-vertical.png" />
