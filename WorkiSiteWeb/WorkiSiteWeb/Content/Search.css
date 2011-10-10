@@ -5,6 +5,11 @@
     height:330px;
 }
 
+#searchFormPartialContainer
+{
+    width: 440px;
+}
+
 .searchBottom
 {
     height:170px;
@@ -20,6 +25,11 @@
 .searchCheckBoxs
 {
     width:200px;
+}
+
+.searchLinkAndSubmit
+{
+    margin-top:20px;
 }
 
 .submitSearchContainer
