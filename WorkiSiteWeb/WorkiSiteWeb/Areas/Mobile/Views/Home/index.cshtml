@@ -79,6 +79,12 @@
         }
 
         require.ready(function () {
+            function watchPosition() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.watchPosition(successCallback, errorCallback, { enableHighAccuracy: true, maximumAge: 30000, timeout: 10000 });
+                }
+            }
+
             function successCallback(position) {
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
@@ -92,10 +98,10 @@
                 return false;
             }
             $('#submitCurrentLoc').click(function () {
-                if (navigator.geolocation) {
-                    navigator.geolocation.watchPosition(successCallback, errorCallback, { enableHighAccuracy: true, maximumAge: 30000, timeout: 10000 });
-                }
+                watchPosition();
             });
+
+            watchPosition();
         });
     </script>
 }
