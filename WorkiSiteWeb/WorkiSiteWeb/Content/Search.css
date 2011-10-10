@@ -262,3 +262,13 @@
     width:35%;
     background-image: url('images/independant.png');
 }
+
+h4.toogle_item
+{
+    margin-bottom:5px;
+}
+
+div.acc_container, div.toogle_container
+{
+    margin-bottom:15px;
+}
