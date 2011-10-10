@@ -154,7 +154,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">The id of the rental to delete</param>
 		/// <returns>the confirmation view</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize]
+        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
 		[ActionName("supprimer")]
 		public virtual ActionResult DeleteRental(int id, string returnUrl = null)
 		{
@@ -176,7 +176,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">The id of the rental to delete</param>
 		/// </summary>
 		/// <returns>the deletetion success view</returns>
-		[AcceptVerbs(HttpVerbs.Post), Authorize]
+        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminRole)]
 		[ActionName("supprimer")]
 		[ValidateAntiForgeryToken]
         public virtual ActionResult DeleteRental(int id, string confirm, string returnUrl)

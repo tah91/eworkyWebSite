@@ -177,7 +177,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">The id of the localisation to delete</param>
         /// <returns>the confirmation view</returns>
-        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
         [ActionName("supprimer")]
         public virtual ActionResult Delete(int id, string returnUrl = null)
         {
@@ -202,7 +202,7 @@ namespace Worki.Web.Controllers
         /// <param name="id">The id of the localisation to delete</param>
         /// </summary>
         /// <returns>the deletetion success view</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminRole)]
         [ActionName("supprimer")]
         [ValidateAntiForgeryToken]
         public virtual ActionResult Delete(int id, string confirmButton, string returnUrl)
