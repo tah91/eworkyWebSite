@@ -458,6 +458,7 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avail_png = Url("avail.png");
+            public static readonly string avatar_png = Url("avatar.png");
             public static readonly string blog_png = Url("blog.png");
             public static readonly string btn_png = Url("btn.png");
             public static readonly string btn_logo_png = Url("btn_logo.png");
@@ -677,12 +678,9 @@ namespace Worki.Web.Controllers {
             public readonly string LogOn = "connexion";
             public readonly string LogOff = "deconnexion";
             public readonly string Register = "inscription";
-            public readonly string RegisterSuccess = "inscription-reussie";
             public readonly string Activate = "activer";
             public readonly string ChangePassword = "changer-mdp";
             public readonly string ResetPassword = "reset-mdp";
-            public readonly string ChangePasswordSuccess = "changer-mdp-reussi";
-            public readonly string ResetPasswordSuccess = "reset-mdp-reussi";
         }
 
 
@@ -691,12 +689,9 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string changer_mdp_reussi = "~/Views/Account/changer-mdp-reussi.cshtml";
             public readonly string changer_mdp = "~/Views/Account/changer-mdp.cshtml";
             public readonly string connexion = "~/Views/Account/connexion.cshtml";
-            public readonly string inscription_reussie = "~/Views/Account/inscription-reussie.cshtml";
             public readonly string inscription = "~/Views/Account/inscription.cshtml";
-            public readonly string reset_mdp_reussi = "~/Views/Account/reset-mdp-reussi.cshtml";
             public readonly string reset_mdp = "~/Views/Account/reset-mdp.cshtml";
         }
     }
@@ -735,11 +730,6 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult RegisterSuccess() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RegisterSuccess);
-            return callInfo;
-        }
-
         public override System.Web.Mvc.ActionResult Activate(string username, string key) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Activate);
             callInfo.RouteValueDictionary.Add("username", username);
@@ -768,16 +758,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult ResetPassword(Worki.Data.Models.ResetPasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResetPassword);
             callInfo.RouteValueDictionary.Add("model", model);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult ChangePasswordSuccess() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePasswordSuccess);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult ResetPasswordSuccess() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResetPasswordSuccess);
             return callInfo;
         }
 
@@ -928,7 +908,6 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _AdminMenu = "~/Views/Admin/_AdminMenu.cshtml";
-            public readonly string article_inexistant = "~/Views/Admin/article-inexistant.cshtml";
             public readonly string CreatePress = "~/Views/Admin/CreatePress.cshtml";
             public readonly string CreateWelcomePeople = "~/Views/Admin/CreateWelcomePeople.cshtml";
             public readonly string DeletePress = "~/Views/Admin/DeletePress.cshtml";
@@ -946,7 +925,6 @@ namespace Worki.Web.Controllers {
             public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";
             public readonly string IndexWelcomePeople = "~/Views/Admin/IndexWelcomePeople.cshtml";
             public readonly string supprimer_utilisateur = "~/Views/Admin/supprimer-utilisateur.cshtml";
-            public readonly string utilisateur_absent = "~/Views/Admin/utilisateur-absent.cshtml";
         }
     }
 
@@ -1379,7 +1357,6 @@ namespace Worki.Web.Controllers {
             public readonly string index = "~/Views/Home/index.cshtml";
             public readonly string jobs = "~/Views/Home/jobs.cshtml";
             public readonly string mentions_legales = "~/Views/Home/mentions-legales.cshtml";
-            public readonly string message_envoye = "~/Views/Home/message-envoye.cshtml";
             public readonly string presse = "~/Views/Home/presse.cshtml";
         }
     }
@@ -1567,9 +1544,7 @@ namespace Worki.Web.Controllers {
             public readonly string recherche = "~/Views/Localisation/recherche.cshtml";
             public readonly string resultats_detail = "~/Views/Localisation/resultats-detail.cshtml";
             public readonly string resultats_liste = "~/Views/Localisation/resultats-liste.cshtml";
-            public readonly string supprimer_reussi = "~/Views/Localisation/supprimer-reussi.cshtml";
             public readonly string supprimer = "~/Views/Localisation/supprimer.cshtml";
-            public readonly string utilisateur_invalid = "~/Views/Localisation/utilisateur-invalid.cshtml";
         }
     }
 
@@ -1918,7 +1893,6 @@ namespace Worki.Web.Controllers {
             public readonly string _RentalAccess = "~/Views/Rental/_RentalAccess.cshtml";
             public readonly string details = "~/Views/Rental/details.cshtml";
             public readonly string editer = "~/Views/Rental/editer.cshtml";
-            public readonly string message_envoye_success = "~/Views/Rental/message-envoye-success.cshtml";
             public readonly string recherche_annonces = "~/Views/Rental/recherche-annonces.cshtml";
             public readonly string resultats_annonces = "~/Views/Rental/resultats-annonces.cshtml";
             public readonly string SendFriend = "~/Views/Rental/SendFriend.cshtml";
