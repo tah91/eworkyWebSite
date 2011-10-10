@@ -26,6 +26,10 @@
                             @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
                             {
                                 @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(model => model.RentalData.Latitude)
+                                @Html.HiddenFor(model => model.RentalData.Longitude)
+                                
                                 <div class="localisationField">
                                     <div class="featureTag">
                                         <ul id="tagContainer">
@@ -36,10 +40,6 @@
                                         @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class="tagInput" })
                                     </div>
 
-                                    <p>
-                                        @Html.HiddenFor(model => model.RentalData.Latitude)
-                                        @Html.HiddenFor(model => model.RentalData.Longitude)
-                                    </p>
                                 </div>
                                 
                                 <div class="halfMiniContainer2 float-left margint15">
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="clear"></div>
                                 <div class="submitSearchContainer float-right marginr10">
-                                    <input type="submit" class="buttonRed buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
+                                    <input type="submit" class="buttonRed buttonStd imageBtn" id="send" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
                                 </div>
                                 <div class="clear"></div> 
                             } 
@@ -168,22 +168,30 @@
             init();
         });
 
+        var places = "";
+
         $('.removeTag').live('click', function () {
             $(this).closest('li').remove();
         });
 
-        require(["@MiscHelpers.jqueryui","@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
+        require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
             var cityAutocomplete = new WorkiCityAutoComplete('#Place');
             cityAutocomplete.SetAutocomplete();
-            $( "#Place" ).bind( "autocompleteselect", function(event, ui) {
+            $("#Place").bind("autocompleteselect", function (event, ui) {
                 var tagname = ui.item.value;
                 if (tagname != " ") {
                     var newtag = $('<li class="mytag">' + tagname + '<span class="removeTag" title="Effacer ce lieu"> x</span></li>');
                     $("#tagContainer").append(newtag);
+                    places += tagname + "|";
                 }
                 $(this).val("");
                 event.preventDefault();
             });
+        });
+
+
+        $("#send").click(function () {
+            $("#Place").val(places);
         });
     </script>
 }

@@ -113,12 +113,15 @@ namespace Worki.Data.Models
                           select rent;
             }
 
-            if (criteria.Place != null)
+            if (criteria.Places != null && criteria.Places.Count != 0)
             {
-                rentals = from rent
+                foreach (var place in criteria.Places)
+                {
+                    rentals = from rent
                                in rentals
-                          where ((rent.Address + " " + rent.PostalCode + " " + rent.City + " " + rent.Country).ToLower().Contains(criteria.Place.ToLower()))
-                          select rent;
+                              where ((rent.Address + " " + rent.PostalCode + " " + rent.City + " " + rent.Country).ToLower().Contains(criteria.Place.ToLower()))
+                              select rent;
+                }
             }
 
             var templist = (from item in rentals
