@@ -26,20 +26,21 @@
                             @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
                             {
                                 @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(model => model.RentalData.Latitude)
+                                @Html.HiddenFor(model => model.RentalData.Longitude)
+                                
                                 <div class="localisationField">
                                     <div class="featureTag">
                                         <ul id="tagContainer">
                             
                                         </ul>
                                     </div>
+                                    <div class="clear"></div>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class="tagInput" })
                                     </div>
 
-                                    <p>
-                                        @Html.HiddenFor(model => model.RentalData.Latitude)
-                                        @Html.HiddenFor(model => model.RentalData.Longitude)
-                                    </p>
                                 </div>
                                 
                                 <div class="halfMiniContainer2 float-left margint15">
@@ -96,7 +97,7 @@
                                 </div>
                                 <div class="clear"></div>
                                 <div class="submitSearchContainer float-right marginr10">
-                                    <input type="submit" class="buttonRed buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
+                                    <input type="submit" class="buttonRed buttonStd imageBtn" id="send" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
                                 </div>
                                 <div class="clear"></div> 
                             } 
@@ -168,22 +169,48 @@
             init();
         });
 
+        function Remplace(expr, a, b) {
+            var i = 0
+            while (i != -1) {
+                i = expr.indexOf(a, i);
+                if (i >= 0) {
+                    expr = expr.substring(0, i) + b + expr.substring(i + a.length);
+                    i += b.length;
+                }
+            }
+            return expr
+        }
+
+        var places = "";
+
         $('.removeTag').live('click', function () {
+            var place = $(this).closest('li').text();
+            var match = place.concat("|");
+            var index = places.indexOf(match, 0);
+            if (index >= 0) {
+                places = Remplace(places, match, "");
+            }
             $(this).closest('li').remove();
         });
 
-        require(["@MiscHelpers.jqueryui","@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
+        require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
             var cityAutocomplete = new WorkiCityAutoComplete('#Place');
             cityAutocomplete.SetAutocomplete();
-            $( "#Place" ).bind( "autocompleteselect", function(event, ui) {
+            $("#Place").bind("autocompleteselect", function (event, ui) {
                 var tagname = ui.item.value;
                 if (tagname != " ") {
-                    var newtag = $('<li class="mytag">' + tagname + '<span class="removeTag" title="Effacer ce lieu"> x</span></li>');
+                    var newtag = $('<li class="mytag">' + tagname + '<button class="removeTag crossButton cross" title="@Worki.Resources.Views.Shared.SharedString.Delete"></button></li>');
                     $("#tagContainer").append(newtag);
+                    places += tagname + "|";
                 }
                 $(this).val("");
                 event.preventDefault();
             });
+        });
+
+
+        $("#send").click(function () {
+            $("#Place").val(places);
         });
     </script>
 }

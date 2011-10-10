@@ -50,7 +50,10 @@ namespace Worki.Web.Controllers
             var nameToMatch = ControllerHelpers.GetSeoString(localisation.Name);
 
 			if (localisation == null || string.IsNullOrEmpty(name) || string.Compare(nameToMatch, name, true) != 0)
-				return View(MVC.Localisation.Views.lieu_absent);
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                return RedirectToAction(MVC.Home.Index());
+            }
 			else
 			{
 				var container = new SearchSingleResultViewModel { Localisation = localisation };
@@ -78,12 +81,18 @@ namespace Worki.Web.Controllers
         public virtual ActionResult Edit(int? id)
         {
             if (!id.HasValue)
-                return View(MVC.Localisation.Views.lieu_absent);
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                return RedirectToAction(MVC.Home.Index());
+            }
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id.Value);
             if (localisation == null)
-                return View(MVC.Localisation.Views.lieu_absent);
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                return RedirectToAction(MVC.Home.Index());
+            }
             return View(new LocalisationFormViewModel(localisation));
         }
 
@@ -176,7 +185,10 @@ namespace Worki.Web.Controllers
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id);
             if (localisation == null)
-                return View(MVC.Localisation.Views.lieu_absent);
+            {
+                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                return RedirectToAction(MVC.Admin.Index());
+            }
             else
             {
                 TempData["returnUrl"] = returnUrl;
@@ -201,7 +213,10 @@ namespace Worki.Web.Controllers
 				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 				var localisation = lRepo.Get(id);
 				if (localisation == null)
-					return View(MVC.Localisation.Views.lieu_absent);
+                {
+                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                    return RedirectToAction(MVC.Admin.Index());
+                }
 				lRepo.Delete(id);
 				context.Commit();
 			}

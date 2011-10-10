@@ -291,7 +291,6 @@
     <Content Include="Content\boilerplate.css" />
     <Content Include="Content\images\arrow_red.png" />
     <Content Include="Content\images\avatar.png" />
-    <Content Include="Content\images\blog.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\geoloc.png" />
     <Content Include="Content\images\homeLogo1.png" />
@@ -309,7 +308,6 @@
       <DependentUpon>Mobile.css</DependentUpon>
     </Content>
     <Content Include="Content\RentalDetail.css" />
-    <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\Press.css" />
     <Content Include="Content\RentalForm.css" />
     <Content Include="Content\galleria\galleria-1.2.4.min.js">
@@ -345,7 +343,6 @@
     <Content Include="Content\galleria\classic-loader.gif" />
     <Content Include="Content\galleria\classic-map.png" />
     <Content Include="Content\galleria\galleria.classic.css" />
-    <Content Include="Content\images\coworking.png" />
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\jobs_mark.jpeg" />
     <Content Include="Content\images\pbar-ani.gif" />
@@ -394,50 +391,26 @@
     <Content Include="Content\icons\error.gif" />
     <Content Include="Content\icons\exclamation.gif" />
     <Content Include="Content\icons\info.gif" />
-    <Content Include="Content\images\ajout.jpg" />
-    <Content Include="Content\images\avail.png" />
-    <Content Include="Content\images\a_la_une.png" />
-    <Content Include="Content\images\btn.png" />
-    <Content Include="Content\images\btn_logo.png" />
-    <Content Include="Content\images\btn_searchIndex.png" />
-    <Content Include="Content\images\btn_side.png" />
-    <Content Include="Content\images\btn_sprites.png" />
     <Content Include="Content\images\comm_content.png" />
-    <Content Include="Content\images\comm_content1.png" />
     <Content Include="Content\images\delete.gif" />
     <Content Include="Content\images\drh.png" />
     <Content Include="Content\images\followUs_footer.png" />
     <Content Include="Content\images\footer.jpg" />
-    <Content Include="Content\images\google.gif" />
-    <Content Include="Content\images\iconeMap.png" />
-    <Content Include="Content\images\iconeMapold.png" />
     <Content Include="Content\images\independant.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\logo_fiche.png" />
     <Content Include="Content\images\logo_footer.png" />
-    <Content Include="Content\images\loupe.png" />
-    <Content Include="Content\images\menu_middleold.png" />
-    <Content Include="Content\images\menu_sideold.png" />
     <Content Include="Content\images\next-horizontal.png" />
     <Content Include="Content\images\next-vertical.png" />
     <Content Include="Content\images\nomad.png" />
-    <Content Include="Content\images\openid.gif" />
-    <Content Include="Content\images\openingBack.png" />
     <Content Include="Content\images\photo1.jpg" />
     <Content Include="Content\images\photo4.jpg" />
     <Content Include="Content\images\prev-horizontal.png" />
     <Content Include="Content\images\prev-vertical.png" />
     <Content Include="Content\images\recherche-min.png" />
-    <Content Include="Content\images\rechercher.jpg" />
-    <Content Include="Content\images\rechercher2.jpg" />
     <Content Include="Content\images\rechercher2.png" />
-    <Content Include="Content\images\reset_search.png" />
-    <Content Include="Content\images\star.gif" />
     <Content Include="Content\images\star.png" />
     <Content Include="Content\images\startup.png" />
     <Content Include="Content\images\student.png" />
-    <Content Include="Content\images\submit_add.png" />
-    <Content Include="Content\images\submit_search.png" />
     <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -455,7 +428,6 @@
     <Content Include="Content\images\worker.png" />
     <Content Include="Content\images\worki_fb.jpg" />
     <Content Include="Content\images\worki_footer.png" />
-    <Content Include="Content\images\yahoo.gif" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\jquery-ui-1.8.12.custom.css" />
     <Content Include="Content\rateit.css" />
@@ -583,15 +555,12 @@
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
     </Content>
-    <Content Include="Views\Account\inscription-reussie.cshtml" />
-    <Content Include="Views\Account\reset-mdp-reussi.cshtml" />
     <Content Include="Views\Account\reset-mdp.cshtml" />
     <Content Include="Views\Admin\IndexImport.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\IndexUser.cshtml" />
     <Content Include="Views\Admin\IndexVisitor.cshtml" />
     <Content Include="Views\Admin\supprimer-utilisateur.cshtml" />
-    <Content Include="Views\Admin\utilisateur-absent.cshtml" />
     <Content Include="Views\Shared\_UploadGalleryScript.cshtml" />
     <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />
     <Content Include="Views\Localisation\_SelectSearchScript.cshtml" />
@@ -613,17 +582,13 @@
     <Content Include="Views\Localisation\_DirectAccess.cshtml" />
     <Content Include="Views\Shared\_PictureContainer.cshtml" />
     <Content Include="Views\Home\contact.cshtml" />
-    <Content Include="Views\Home\message-envoye.cshtml" />
     <Content Include="Views\Localisation\_CommentForm.cshtml" />
     <Content Include="Views\Localisation\_SearchResultSummary.cshtml" />
     <Content Include="Views\Localisation\_IconeServices.cshtml" />
     <Content Include="Views\Localisation\supprimer.cshtml" />
-    <Content Include="Views\Localisation\supprimer-reussi.cshtml" />
     <Content Include="Views\Localisation\editer.cshtml" />
     <Content Include="Views\Localisation\Index.cshtml" />
-    <Content Include="Views\Localisation\utilisateur-invalid.cshtml" />
     <Content Include="Views\Shared\_Map.cshtml" />
-    <Content Include="Views\Localisation\lieu-absent.cshtml" />
     <Content Include="Views\Localisation\recherche.cshtml" />
     <Content Include="Views\Localisation\resultats-liste.cshtml" />
     <Content Include="Views\Shared\_IndexGallery.cshtml" />
@@ -638,7 +603,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Account\changer-mdp.cshtml" />
-    <Content Include="Views\Account\changer-mdp-reussi.cshtml" />
     <Content Include="Views\Account\connexion.cshtml" />
     <Content Include="Views\Account\inscription.cshtml" />
     <Content Include="Views\Home\a-propos.cshtml" />
@@ -687,7 +651,6 @@
     <Content Include="Views\Admin\IndexPress.cshtml" />
     <Content Include="Views\Admin\CreatePress.cshtml" />
     <Content Include="Views\Admin\DeletePress.cshtml" />
-    <Content Include="Views\Admin\article-inexistant.cshtml" />
     <Content Include="Views\Admin\EditPress.cshtml" />
     <Content Include="Views\Admin\DetailPress.cshtml" />
     <Content Include="Views\Rental\details.cshtml" />
@@ -708,7 +671,6 @@
     <Content Include="Views\Rental\SendFriend.cshtml" />
     <Content Include="Views\Rental\SendOwner.cshtml" />
     <Content Include="Views\Emails\EmailOwner.cshtml" />
-    <Content Include="Views\Rental\message-envoye-success.cshtml" />
     <Content Include="Views\Emails\ListLocMail.cshtml" />
     <Content Include="Views\Home\_RentalTab.cshtml" />
     <Content Include="Views\Localisation\_SearchForm.cshtml" />

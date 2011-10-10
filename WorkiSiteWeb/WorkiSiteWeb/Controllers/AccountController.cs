@@ -211,8 +211,9 @@ namespace Worki.Web.Controllers
 					catch (Exception ex)
 					{
 						_Logger.Error(ex.Message);
-					}
-					return RedirectToAction(MVC.Account.RegisterSuccess());
+                    }
+                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.ConfirmationMail;
+                    return RedirectToAction(MVC.Home.Index());
 				}
 				else
 				{
@@ -223,16 +224,6 @@ namespace Worki.Web.Controllers
 			ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 			return View(model);
 		}
-
-        /// <summary>
-        /// Action method for registration success
-        /// </summary>
-        /// <returns>The view of registration succes</returns>
-        [ActionName("inscription-reussie")]
-        public virtual ActionResult RegisterSuccess()
-        {
-            return View();
-        }
 
         /// <summary>
         /// Action method to activate an account for a member
@@ -382,26 +373,6 @@ namespace Worki.Web.Controllers
                 }
             }
             return View(model);
-        }
-
-        /// <summary>
-        /// Action method when password change is ok
-        /// </summary>
-        /// <returns>the wiew</returns>
-        [ActionName("changer-mdp-reussi")]
-        public virtual ActionResult ChangePasswordSuccess()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// Action method when password reset is ok
-        /// </summary>
-        /// <returns>the wiew</returns>
-        [ActionName("reset-mdp-reussi")]
-        public virtual ActionResult ResetPasswordSuccess()
-        {
-            return View();
         }
 
         //OpenIdRelyingParty openId = new OpenIdRelyingParty();

@@ -303,13 +303,6 @@ page width. Or, you can specify an exact pixel width. */
 /*#btn_register{ background-image:url('images/btn_register.png'); background-position: 0 0; width: 104px; height: 23px; } 
 #btn_register:hover{ background-position: 0 -73px; } */
 
-/*#btn_searchIndex{ background-color:#F8F8F8; background-image:url('images/btn_searchIndex.png'); background-position: 0 0; width: 133px; height: 32px; } 
-#btn_searchIndex:hover{ background-image:url('images/btn_searchIndex.png'); background-position: 0 -82px; width: 133px; height: 32px; }*/
-
-/*.arrow_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 0; background-repeat:no-repeat; width: 33px; height: 26px; } 
-.mail_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 -152px; background-repeat:no-repeat; width: 33px; height: 26px; }
-.print_fiche{ background-image:url('images/logo_fiche.png'); background-position: 0 -228px; background-repeat:no-repeat; width: 33px; height: 26px; }*/
-
 .logindisplay
 {
 	background-color:#f8f8f8;
@@ -653,33 +646,6 @@ div.pagerTop
 	background-image: -webkit-linear-gradient(top,#e96063,#c63132);
 	background-image: linear-gradient(top,#e96063,#c63132);
 }
-
-/*.btn_blue{ background-image:url('images/btn_sprites.png'); background-position: 0 0; width: 104px; height: 23px; }
-.btn_blue:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -73px; width: 104px; height: 23px; }*/ 
-/*.btn_green_check{ background-image:url('images/btn_sprites.png'); background-position: 0 -146px; width: 128px; height: 27px; } 
-.btn_green_check:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -223px; width: 128px; height: 27px; } */
-/*.btn_green_roulette{ background-image:url('images/btn_sprites.png'); background-position: 0 -300px; width: 113px; height: 25px; } 
-.btn_green_roulette:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -375px; width: 113px; height: 25px; } */
-/*.btn_orange_plus{ background-image:url('images/btn_sprites.png'); background-position: 0 -450px; width: 113px; height: 25px; } 
-.btn_orange_plus:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -525px; width: 113px; height: 25px; } */
-/*.btn_purple_star{ background-image:url('images/btn_sprites.png'); background-position: 0 -600px; width: 113px; height: 25px; } 
-.btn_purple_star:hover{ background-image:url('images/btn_sprites.png'); background-position: 0 -675px; width: 113px; height: 25px; }*/
-
-/*.btn_blue
-{
-	color: White;
-	font-size: 14px;
-	margin-top:5px;
-	line-height: 1.4;
-}
-
-.btn_blue a
-{
-	color: white;
-	text-align: center;
-	padding-top: 3px;
-	font-size: 14px;
-}*/
 
 /*.btn_text
 {
