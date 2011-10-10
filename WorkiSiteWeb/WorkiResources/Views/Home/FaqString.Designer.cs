@@ -61,7 +61,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to page Ajout.
+        ///   Looks up a localized string similar to Proposer un espace.
         /// </summary>
         public static string AddPage {
             get {
@@ -152,10 +152,12 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le formulaire situé sur la {0} du site permet d’effectuer une recherche simple à partir du lieu et du
-        ///        type d’emplacement recherché (espace public, café…). Une recherche plus détaillée peut être lancée à partir de
-        ///        la {1} . Vous pourrez alors faire votre choix sur plus de critères tels que les services proposés par le
-        ///        lieu (wifi, restauration, parking…) ou encore son prix..
+        ///   Looks up a localized string similar to Le formulaire situé sur la {0} du site permet d’effectuer une recherche simple à partir du
+        ///lieu et du type d’emplacement recherché (espace public, café, etc.). Une recherche plus détaillée
+        ///peut être lancée via le lien « {1} ». Vous pourrez alors faire votre choix sur plus de
+        ///critères tels que les services proposés par le lieu (wifi, restauration, parking, etc.), le type de lieu
+        ///(espace de travail gratuit, centre d’affaires, etc.) ou encore utiliser les recherches pré-paramétrées
+        ///selon votre profil (étu [rest of string was truncated]&quot;;.
         /// </summary>
         public static string FormForSearch {
             get {
@@ -479,8 +481,13 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La {0}  vous permet de proposer un espace de travail aux utilisateurs d’eWorky. Seuls quelques champs sont obligatoires pour pouvoir mettre votre lieu de travail à disposition sur eWorky, mais nous vous conseillons de remplir le maximum de champs pour faciliter l’accès aux informations des utilisateurs. &lt;/br&gt;
-        ///De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa fiche, nous vous conseillons de mettre au minimum quatre photos de bonne qualité. Pour ajouter des photos, faites glisser vo [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to L’onglet « {0} » vous permet de proposer un espace de travail aux utilisateurs
+        ///	d’eWorky. Seuls quelques champs sont obligatoires pour pouvoir mettre votre lieu de travail à
+        ///	disposition sur eWorky, mais nous vous conseillons de remplir le maximum de champs pour faciliter
+        ///	l’accès aux informations des utilisateurs.
+        ///	De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa fiche, nous vous
+        ///	conseillons de mettre au minimum quatre photos de bonne qualité. Pour ajouter des photos,
+        ///	fai [rest of string was truncated]&quot;;.
         /// </summary>
         public static string SuggestWorkplace {
             get {
