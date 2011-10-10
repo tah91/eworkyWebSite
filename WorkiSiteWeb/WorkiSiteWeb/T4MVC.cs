@@ -456,7 +456,6 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avatar_png = Url("avatar.png");
-            public static readonly string avatar_png = Url("avatar.png");
             public static readonly string comm_content_png = Url("comm_content.png");
             public static readonly string cross_png = Url("cross.png");
             public static readonly string csv_import_png = Url("csv-import.png");
@@ -471,6 +470,7 @@ namespace Links {
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
             public static readonly string homeLogo3_png = Url("homeLogo3.png");
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
+            public static readonly string iconeMap_png = Url("iconeMap.png");
             public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
@@ -478,8 +478,6 @@ namespace Links {
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
-            public static readonly string menu_middle_png = Url("menu_middle.png");
-            public static readonly string menu_side_png = Url("menu_side.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
@@ -514,6 +512,7 @@ namespace Links {
             public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
             public static readonly string users_jpg = Url("users.jpg");
             public static readonly string visitor_jpg = Url("visitor.jpg");
+            public static readonly string vu_tele_png = Url("vu-tele.png");
             public static readonly string worker_png = Url("worker.png");
             public static readonly string worki_fb_jpg = Url("worki_fb.jpg");
             public static readonly string worki_footer_png = Url("worki_footer.png");
