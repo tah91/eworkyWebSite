@@ -297,9 +297,11 @@
     <Content Include="Content\images\homeLogo2.png" />
     <Content Include="Content\images\homeLogo3.png" />
     <Content Include="Content\images\homeLogo4.png" />
+    <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\retour.png" />
+    <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\LocalisationForm.min.css">
       <DependentUpon>LocalisationForm.css</DependentUpon>
     </Content>
