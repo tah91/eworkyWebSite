@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddPage" xml:space="preserve">
-    <value>page Ajout</value>
+    <value>Proposer un espace</value>
   </data>
   <data name="Bugs" xml:space="preserve">
     <value>Bugs</value>
@@ -141,10 +141,12 @@
     <comment>FAQ</comment>
   </data>
   <data name="FormForSearch" xml:space="preserve">
-    <value>Le formulaire situé sur la {0} du site permet d’effectuer une recherche simple à partir du lieu et du
-        type d’emplacement recherché (espace public, café…). Une recherche plus détaillée peut être lancée à partir de
-        la {1} . Vous pourrez alors faire votre choix sur plus de critères tels que les services proposés par le
-        lieu (wifi, restauration, parking…) ou encore son prix.</value>
+    <value>Le formulaire situé sur la {0} du site permet d’effectuer une recherche simple à partir du
+lieu et du type d’emplacement recherché (espace public, café, etc.). Une recherche plus détaillée
+peut être lancée via le lien « {1} ». Vous pourrez alors faire votre choix sur plus de
+critères tels que les services proposés par le lieu (wifi, restauration, parking, etc.), le type de lieu
+(espace de travail gratuit, centre d’affaires, etc.) ou encore utiliser les recherches pré-paramétrées
+selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
   </data>
   <data name="ForRateComment" xml:space="preserve">
     <value>Pour commenter ou noter un lieu de travail, vous devez être connecté sur votre compte eWorky. Une fois
@@ -265,8 +267,14 @@
     <value>page Recherche</value>
   </data>
   <data name="SuggestWorkplace" xml:space="preserve">
-    <value>La {0}  vous permet de proposer un espace de travail aux utilisateurs d’eWorky. Seuls quelques champs sont obligatoires pour pouvoir mettre votre lieu de travail à disposition sur eWorky, mais nous vous conseillons de remplir le maximum de champs pour faciliter l’accès aux informations des utilisateurs. &lt;/br&gt;
-De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa fiche, nous vous conseillons de mettre au minimum quatre photos de bonne qualité. Pour ajouter des photos, faites glisser vos images sur le champ « + ajouter vos images » ou cliquez sur ce même bouton, puis choisissez celle qui sera la photo principale du lieu.</value>
+    <value>L’onglet « {0} » vous permet de proposer un espace de travail aux utilisateurs
+	d’eWorky. Seuls quelques champs sont obligatoires pour pouvoir mettre votre lieu de travail à
+	disposition sur eWorky, mais nous vous conseillons de remplir le maximum de champs pour faciliter
+	l’accès aux informations des utilisateurs.
+	De plus, les photos d’un lieu étant particulièrement mises en valeur sur sa fiche, nous vous
+	conseillons de mettre au minimum quatre photos de bonne qualité. Pour ajouter des photos,
+	faites glisser vos images sur le champ « Ajouter des images » ou cliquez sur ce même bouton, puis
+	choisissez celle qui sera la photo principale du lieu.</value>
   </data>
   <data name="TheInscription" xml:space="preserve">
     <value>Inscription</value>
