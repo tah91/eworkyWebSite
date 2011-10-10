@@ -284,4 +284,7 @@
   <data name="HeaderSuggest" xml:space="preserve">
     <value>Proposer un espace</value>
   </data>
+  <data name="StarPlaces" xml:space="preserve">
+    <value>À la une</value>
+  </data>
 </root>
