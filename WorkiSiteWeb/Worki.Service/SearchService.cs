@@ -63,7 +63,7 @@ namespace Worki.Service
 			_GeocodeService = geocodeService;
 		}
 
-		public const string CriteriaViewModelKey = "CriteriaViewModelKey";
+        public const string DefaultSearchPlace = "Paris";
 
 		/// <summary>
 		/// get a SearchCriteriaFormViewModel containing the criteria and the results of a search

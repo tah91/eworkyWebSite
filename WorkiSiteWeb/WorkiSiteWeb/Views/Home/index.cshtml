@@ -249,6 +249,14 @@
         require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
             InitTab(".indexForms");
         });
+
+        $("#searchform").submit(function () {
+            var val = $("#Criteria_Place").val();
+            if(val==""){
+                $("#Criteria_Place").val('@SearchService.DefaultSearchPlace');
+            }
+            return true;
+        });
     </script>
     @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
 }
