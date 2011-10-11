@@ -184,10 +184,10 @@ namespace Worki.Data.Models
 
             var now = DateTime.Now;
             if (now - CreatedDate < RegisterWaitInterval)
-                return "Vous devez attendre 48h avant de pouvoir éditer un lieu";
+                return Worki.Resources.Views.Profile.ProfileString.Wait2Days;
             var todayEdition = from item in MemberEditions where (now - item.ModificationDate).Ticks < TimeSpan.TicksPerDay select item;
             if (todayEdition != null && todayEdition.Count() > MaxEditionCount)
-                return string.Format("Vous ne pouvez pas éditer plus de {0} en moins de 24h", MaxEditionCount);
+                return string.Format(Worki.Resources.Views.Profile.ProfileString.Edit24Hours, MaxEditionCount);
             return string.Empty;
         }
 
@@ -523,6 +523,28 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        #region Methode
+
+        public string TwitterUrl()
+        {
+            var toRet = "";
+            var link = "http://twitter.com/#!/";
+            var twitter = Member.MemberMainData.Twitter;
+
+            if (twitter.Contains("http://twitter.com/#!/"))
+            {
+                var tab = twitter.Split('/');
+                toRet += tab[tab.Length - 1];
+            }
+
+            if (!string.IsNullOrEmpty(toRet))
+                return (link + toRet);
+            return (link + twitter);
+        }
+
+        #endregion
+
     }
 
     #endregion

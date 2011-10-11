@@ -88,6 +88,15 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous ne pouvez pas éditer plus de {0} en moins de 24h.
+        /// </summary>
+        public static string Edit24Hours {
+            get {
+                return ResourceManager.GetString("Edit24Hours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editer mon profil.
         /// </summary>
         public static string EditProfile {
@@ -255,6 +264,15 @@ namespace Worki.Resources.Views.Profile {
         public static string SocialNetwork {
             get {
                 return ResourceManager.GetString("SocialNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez attendre 48h avant de pouvoir éditer un lieu.
+        /// </summary>
+        public static string Wait2Days {
+            get {
+                return ResourceManager.GetString("Wait2Days", resourceCulture);
             }
         }
         
