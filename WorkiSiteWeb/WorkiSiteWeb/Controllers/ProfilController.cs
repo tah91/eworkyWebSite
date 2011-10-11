@@ -111,6 +111,15 @@ namespace Worki.Web.Controllers
                 TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
+            var user = mRepo.GetMember(User.Identity.Name);
+            if (user != null)
+            {
+                var id_user = user.MemberId;
+                if (id != id_user)
+                {
+                    return View(MVC.Shared.Views.Error);
+                }
+            }
 
 			var dashboard = GetDashboard(member, true);
 			return View(dashboard);
@@ -148,6 +157,15 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var item = mRepo.Get(id);
+            var user = mRepo.GetMember(User.Identity.Name);
+            if (user != null)
+            {
+                var id_user = user.MemberId;
+                if (id != id_user)
+                {
+                    return View(MVC.Shared.Views.Error);
+                }
+            }
             if (item == null)
             {
                 TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
