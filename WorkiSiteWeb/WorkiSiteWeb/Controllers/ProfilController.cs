@@ -9,6 +9,7 @@ using System.Linq;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
+using System.Web.Security;
 
 namespace Worki.Web.Controllers
 {
@@ -103,6 +104,11 @@ namespace Worki.Web.Controllers
 		[ActionName("dashboard")]
 		public virtual ActionResult Dashboard(int id)
 		{
+            if (!Roles.IsUserInRole(MiscHelpers.AdminRole) && !ControllerHelpers.MatchIdentity(User.Identity, id))
+            {
+                return View(MVC.Shared.Views.Error);
+            }
+
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.Get(id);
@@ -110,15 +116,6 @@ namespace Worki.Web.Controllers
             {
                 TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
                 return RedirectToAction(MVC.Home.Index());
-            }
-            var user = mRepo.GetMember(User.Identity.Name);
-            if (user != null)
-            {
-                var id_user = user.MemberId;
-                if (id != id_user)
-                {
-                    return View(MVC.Shared.Views.Error);
-                }
             }
 
 			var dashboard = GetDashboard(member, true);
@@ -154,18 +151,14 @@ namespace Worki.Web.Controllers
 		[ActionName("editer")]
 		public virtual ActionResult Edit(int id)
 		{
+            if (!Roles.IsUserInRole(MiscHelpers.AdminRole) && !ControllerHelpers.MatchIdentity(User.Identity, id))
+            {
+                return View(MVC.Shared.Views.Error);
+            }
+
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var item = mRepo.Get(id);
-            var user = mRepo.GetMember(User.Identity.Name);
-            if (user != null)
-            {
-                var id_user = user.MemberId;
-                if (id != id_user)
-                {
-                    return View(MVC.Shared.Views.Error);
-                }
-            }
             if (item == null)
             {
                 TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;

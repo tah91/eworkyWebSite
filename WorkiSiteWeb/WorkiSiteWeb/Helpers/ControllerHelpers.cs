@@ -200,6 +200,21 @@ namespace Worki.Web.Helpers
         }
 
         /// <summary>
+        /// tell if the identiry match the member id
+        /// </summary>
+        /// <param name="ident">the identity containing authentication data</param>
+        /// <param name="id">id of the member to match</param>
+        /// <returns>true if match</returns>
+        public static bool MatchIdentity(IIdentity ident, int id)
+        {
+            FormsIdentity formIdent = ident as FormsIdentity;
+            if (formIdent == null)
+                return false;
+            var ticket = formIdent.Ticket;
+            return Member.GetIdFromUserData(ticket.UserData) == id;
+        }
+
+        /// <summary>
         /// Get the path of an image on a server
         /// if on azure, get the corresponding url
         /// </summary>
