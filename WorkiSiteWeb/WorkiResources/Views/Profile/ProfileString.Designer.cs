@@ -79,6 +79,15 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modifier mon mot de passe.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous n&apos;avez commenté aucun lieu. Pour donner votre avis sur un espace de travail, allez en bas de sa fiche de description..
         /// </summary>
         public static string CommentsEmpy {

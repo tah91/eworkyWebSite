@@ -69,7 +69,8 @@
             
 			@if (Model.IsPrivate)
 			{
-				@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId))
+				@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId)) <br />
+                @Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.ChangePassword, MVC.Account.ChangePassword(Model.Member.Username, Model.Member.EmailKey))
 			}
         </div>
     </div>

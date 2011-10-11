@@ -123,6 +123,9 @@
   <data name="AddedSpacesEmpy" xml:space="preserve">
     <value>Vous n'avez suggéré aucun lieu à la communauté des eWorkers. Pour ajouter un lieu, {0}.</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Modifier mon mot de passe</value>
+  </data>
   <data name="CommentsEmpy" xml:space="preserve">
     <value>Vous n'avez commenté aucun lieu. Pour donner votre avis sur un espace de travail, allez en bas de sa fiche de description.</value>
   </data>
