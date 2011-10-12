@@ -214,7 +214,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>the form to fill</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("recherche-annonces")]
+        [ActionName("recherche")]
         public virtual ActionResult RentalSearch()
         {
             return View(new RentalSearchCriteria());
@@ -227,9 +227,9 @@ namespace Worki.Web.Controllers
         /// <param name="criteria">The criteria data from the form</param>
         /// <returns>redirect to the list of results</returns>
         [AcceptVerbs(HttpVerbs.Post)]
-        [ActionName("recherche-annonces")]
+        [ActionName("recherche")]
         [ValidateAntiForgeryToken]
-        [ValidateOnlyIncomingValues]
+        [ValidateOnlyIncomingValues(Exclude = "Type,LeaseType", Prefix="RentalData")]
         public virtual ActionResult RentalSearch(RentalSearchCriteria rentalSearchCriteria)
         {
             if (ModelState.IsValid)
@@ -241,7 +241,7 @@ namespace Worki.Web.Controllers
                 }
                 catch (Exception ex)
                 {
-                    _Logger.Error("FullSearch", ex);
+                    _Logger.Error("RentalSearch", ex);
                     ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
                 }
             }

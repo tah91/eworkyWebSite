@@ -1,0 +1,100 @@
+﻿@model Worki.Data.Models.RentalSearchCriteria
+
+<script type="text/javascript">
+    require(["@MiscHelpers.jqueryui"], function () {
+        $.datepicker.regional['fr'] = {
+            closeText: 'Fermer',
+            prevText: '&#x3c;Préc',
+            nextText: 'Suiv&#x3e;',
+            currentText: 'Courant',
+            monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+            dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+            dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['fr']);
+        $(".dp").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1900:2020'
+        });
+    });
+    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
+        $("#searchform").submit(function () {
+            var val = $("#RentalData_AvailableDate").val();
+            var date = Date.parseExact(val, "dd/MM/yyyy");
+            if (date != null) {
+                var newVal = date.toString('MM/dd/yyyy');
+                $("#RentalData_AvailableDate").val(newVal);
+            }
+            return true;
+        });
+    });
+
+    $("#RentalData_AvailableNow").click(function () {
+        if ($("#RentalData_AvailableNow:checked").val() == "true") {
+            $("#RentalData_AvailableDate").hide();
+            $("#msg").show(); ;
+        }
+        else {
+            $("#RentalData_AvailableDate").show();
+            $("#msg").hide();
+        }
+    });
+
+    function init() {
+        $("#RentalData_AvailableDate").hide();
+    };
+
+    $('.removeTag').live('click', function (event) {
+        $(this).closest('li').remove();
+    });
+
+    function GetRentalTag(place) {
+        return '<li>' + place + '<div class="removeTag cross float-right" title="@Worki.Resources.Views.Shared.SharedString.Delete"></div></li>';
+    }
+
+    function InitRentalPlaces() {
+        var places = '@Model.Place';
+        var placesArray = places.split('|');
+        $.each(placesArray, function () {
+            if (this == "")
+                return true;
+            $('#tagContainer').append(GetRentalTag(this));
+        });
+    };
+
+    require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_autocomplete_selectFirst_js)", "@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
+        var cityAutocomplete = new WorkiCityAutoComplete('#placeAutocomplete');
+        cityAutocomplete.SetAutocomplete();
+        $("#placeAutocomplete").bind("autocompleteselect", function (event, ui) {
+            var tagname = ui.item.value;
+            if (tagname != " ") {
+                $("#tagContainer").append(GetRentalTag(tagname));
+            }
+            $(this).val("");
+            event.preventDefault();
+        });
+    });
+
+    $("#searchform").submit(function () {
+        var places = [];
+        $(".featureTag ul li").each(function () {
+            places.push($(this).text())
+        });
+        var new_place = places.join('|')
+        $("#Place").val(new_place);
+    });
+
+    $(document).ready(function () {
+        init();
+        InitRentalPlaces();
+    });
+</script>

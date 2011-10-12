@@ -27,7 +27,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois arriver sur la page de recherche location")]
         public void ThenJeDoisArriverSurLaPageDeRechercheLocation()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "Rental/recherche-annonces");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "Rental/recherche");
         }
 
         [When(@"Je clique sur Rechercher location")]

@@ -672,7 +672,7 @@
     <Content Include="Views\Emails\Email.cshtml" />
     <Content Include="Views\Rental\resultats-annonces.cshtml" />
     <Content Include="Views\Rental\_Rental.cshtml" />
-    <Content Include="Views\Rental\recherche-annonces.cshtml" />
+    <Content Include="Views\Rental\recherche.cshtml" />
     <Content Include="Views\Rental\_Details.cshtml" />
     <Content Include="Views\Rental\SendFriend.cshtml" />
     <Content Include="Views\Rental\SendOwner.cshtml" />
@@ -680,6 +680,7 @@
     <Content Include="Views\Emails\ListLocMail.cshtml" />
     <Content Include="Views\Home\_RentalTab.cshtml" />
     <Content Include="Views\Localisation\_SearchForm.cshtml" />
+    <Content Include="Views\Rental\_RentalSeachFormScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

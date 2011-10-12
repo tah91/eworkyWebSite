@@ -11,6 +11,7 @@ using System.Reflection;
 using Worki.Infrastructure.Helpers;
 using System.Web.Routing;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace Worki.Infrastructure
 {
@@ -71,12 +72,23 @@ namespace Worki.Infrastructure
 
     public class ValidateOnlyIncomingValuesAttribute : ActionFilterAttribute
     {
+        /// <summary>
+        /// Gets or sets a comma-delimited list of property names for which validation is excluded
+        /// </summary>
+        public string Exclude { get; set; }
+
+        /// <summary>
+        /// Gets or sets a prefix for properties to exclude
+        /// </summary>
+        public string Prefix { get; set; }
+
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var modelState = filterContext.Controller.ViewData.ModelState;
             var incomingValues = filterContext.Controller.ValueProvider;
+            var excludedProperties = !string.IsNullOrEmpty(Exclude) ? Exclude.Split(',').Select(e => Prefix + "." + e).ToList() : null;
 
-            var keys = modelState.Keys.Where(x => !incomingValues.ContainsPrefix(x));
+            var keys = modelState.Keys.Where(x => (!incomingValues.ContainsPrefix(x) || (!string.IsNullOrEmpty(Exclude) && excludedProperties.Contains(x))));
             foreach (var key in keys) // These keys don't match any incoming value
                 modelState[key].Errors.Clear();
         }

@@ -1862,7 +1862,7 @@ namespace Worki.Web.Controllers {
             public readonly string Edit = "editer";
             public readonly string DeleteRental = "supprimer";
             public readonly string AddRentalAccess = "AddRentalAccess";
-            public readonly string RentalSearch = "recherche-annonces";
+            public readonly string RentalSearch = "recherche";
             public readonly string FullSearchResult = "resultats-annonces";
             public readonly string FullSearchResultDetail = "resultats-annonces-detail";
             public readonly string SendMailOwner = "envoyer-email-propriétaire";
@@ -1879,9 +1879,10 @@ namespace Worki.Web.Controllers {
             public readonly string _Details = "~/Views/Rental/_Details.cshtml";
             public readonly string _Rental = "~/Views/Rental/_Rental.cshtml";
             public readonly string _RentalAccess = "~/Views/Rental/_RentalAccess.cshtml";
+            public readonly string _RentalSeachFormScript = "~/Views/Rental/_RentalSeachFormScript.cshtml";
             public readonly string details = "~/Views/Rental/details.cshtml";
             public readonly string editer = "~/Views/Rental/editer.cshtml";
-            public readonly string recherche_annonces = "~/Views/Rental/recherche-annonces.cshtml";
+            public readonly string recherche = "~/Views/Rental/recherche.cshtml";
             public readonly string resultats_annonces = "~/Views/Rental/resultats-annonces.cshtml";
             public readonly string SendFriend = "~/Views/Rental/SendFriend.cshtml";
             public readonly string SendOwner = "~/Views/Rental/SendOwner.cshtml";
