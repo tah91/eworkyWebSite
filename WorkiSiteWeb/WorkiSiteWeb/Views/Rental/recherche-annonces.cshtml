@@ -14,7 +14,7 @@
         <div class="​detailcontent">
             <div class="blockContainer">
                 <div class="mainRowRental">
-	<div class="float-left bigPictureContainer contentBlock">
+	                <div class="float-left bigPictureContainer contentBlock">
 		                @Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
 	                </div>
 
@@ -29,6 +29,7 @@
 
                                 @Html.HiddenFor(model => model.RentalData.Latitude)
                                 @Html.HiddenFor(model => model.RentalData.Longitude)
+                                @Html.HiddenFor(model => model.Place)
                                 
                                 <div class="localisationField">
                                     <div class="featureTag">
@@ -38,7 +39,7 @@
                                     </div>
                                     <div class="clear"></div>
                                     <div class="editor-field">
-                                        @Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class="tagInput" })
+                                        <input id="placeAutocomplete" placeholder="@Worki.Resources.Views.Home.HomeString.ExampleLocation" type="text"/>
                                     </div>
 
                                 </div>
@@ -109,7 +110,6 @@
     </div>
 </div>
 
-
 <div class="clear"></div>
 
 @section ScriptContent
@@ -144,8 +144,10 @@
             $("#searchform").submit(function () {
                 var val = $("#RentalData_AvailableDate").val();
                 var date = Date.parseExact(val, "dd/MM/yyyy");
-                var newVal = date.toString('MM/dd/yyyy');
-                $("#RentalData_AvailableDate").val(newVal);
+                if (date != null) {
+                    var newVal = date.toString('MM/dd/yyyy');
+                    $("#RentalData_AvailableDate").val(newVal);
+                }
                 return true;
             });
         });
@@ -169,48 +171,31 @@
             init();
         });
 
-        function Remplace(expr, a, b) {
-            var i = 0
-            while (i != -1) {
-                i = expr.indexOf(a, i);
-                if (i >= 0) {
-                    expr = expr.substring(0, i) + b + expr.substring(i + a.length);
-                    i += b.length;
-                }
-            }
-            return expr
-        }
-
-        var places = "";
-
-        $('.removeTag').live('click', function () {
-            var place = $(this).closest('li').text();
-            var match = place.concat("|");
-            var index = places.indexOf(match, 0);
-            if (index >= 0) {
-                places = Remplace(places, match, "");
-            }
+        $('.removeTag').live('click', function (event) {
             $(this).closest('li').remove();
         });
 
-        require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
-            var cityAutocomplete = new WorkiCityAutoComplete('#Place');
+        require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_autocomplete_selectFirst_js)", "@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
+            var cityAutocomplete = new WorkiCityAutoComplete('#placeAutocomplete');
             cityAutocomplete.SetAutocomplete();
-            $("#Place").bind("autocompleteselect", function (event, ui) {
+            $("#placeAutocomplete").bind("autocompleteselect", function (event, ui) {
                 var tagname = ui.item.value;
                 if (tagname != " ") {
-                    var newtag = $('<li class="mytag">' + tagname + '<button class="removeTag crossButton cross" title="@Worki.Resources.Views.Shared.SharedString.Delete"></button></li>');
+                    var newtag = $('<li>' + tagname + '<div class="removeTag cross float-right" title="@Worki.Resources.Views.Shared.SharedString.Delete"></div></li>');
                     $("#tagContainer").append(newtag);
-                    places += tagname + "|";
                 }
                 $(this).val("");
                 event.preventDefault();
             });
         });
 
-
-        $("#send").click(function () {
-            $("#Place").val(places);
+        $("#searchform").submit(function () {
+            var places = [];
+            $(".featureTag ul li").each(function () {
+                places.push($(this).text()) 
+            });
+            var new_place = places.join('|')
+            $("#Place").val(new_place);
         });
     </script>
 }

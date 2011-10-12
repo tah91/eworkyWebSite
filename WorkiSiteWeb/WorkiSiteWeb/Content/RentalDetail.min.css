@@ -21,8 +21,7 @@ input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}
 .rDetailUpRight{width:30%;height:100%}
 .tagContainer{border:1px solid #FF7800;padding:10px 0 10px 5px}
 .tagInput{border:0}
-.mytag{background:#FF7800;color:#fff;padding:5px;margin-right:5px}
-.removeTag{cursor:pointer}
+.removeTag{cursor:pointer;margin:5px 0 3px 5px}
 .halfContainerRental{width:47%;height:95%;background-image:url('images/rechercher2.png');background-repeat:no-repeat;background-position:95% bottom;margin:0!important}
 .halfMiniContainer{height:130px;width:50%}
 .halfMiniContainer2{height:40px;width:50%}

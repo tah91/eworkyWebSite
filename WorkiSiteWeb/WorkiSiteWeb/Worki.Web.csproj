@@ -376,6 +376,10 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.ui.autocomplete.selectFirst.js" />
+    <Content Include="Scripts\jquery.ui.autocomplete.selectFirst.min.js">
+      <DependentUpon>jquery.ui.autocomplete.selectFirst.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\WorkiAutocomplete.js" />
     <Content Include="Scripts\require-jquery.js" />
     <Content Include="Scripts\require-jquery.min.js">

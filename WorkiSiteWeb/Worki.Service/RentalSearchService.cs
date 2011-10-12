@@ -64,8 +64,6 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, "places", ref value))
             {
                 var places = value.Split('|');
-                if (places.Count() > 0)
-                    criteria.Place = places[0];
                 foreach (var p in places)
                 {
                     criteria.Places.Add(new RentalPlace { Place = p });
@@ -76,6 +74,9 @@ namespace Worki.Service
             {
                 criteria.RentalData.AvailableDate = DateTime.ParseExact(value, _DateFormat, CultureInfo.InvariantCulture);
             }
+
+            if (MiscHelpers.GetRequestValue(parameters, "avail-now", ref value))
+                criteria.RentalData.AvailableNow = true;
 
             var keys = MiscHelpers.GetFeatureIds(parameters.Params.AllKeys.ToList());
             criteria.RentalData.RentalFeatures.Clear();
@@ -95,25 +96,27 @@ namespace Worki.Service
         {
             var rvd = new RouteValueDictionary();
             rvd["page"] = page;
-            rvd["prix-min"] = criteria.MinRate;
-            rvd["prix-max"] = criteria.MaxRate;
-            rvd["surf-min"] = criteria.MinSurface;
-            rvd["surf-max"] = criteria.MaxSurface;
+
+            if (criteria.MinRate.HasValue)
+                rvd["prix-min"] = criteria.MinRate;
+            if (criteria.MaxRate.HasValue)
+                rvd["prix-max"] = criteria.MaxRate;
+            if (criteria.MinSurface.HasValue)
+                rvd["surf-min"] = criteria.MinSurface;
+            if (criteria.MaxSurface.HasValue)
+                rvd["surf-max"] = criteria.MaxSurface;
+
             rvd["type"] = criteria.RentalData.Type;
             rvd["lease-type"] = criteria.RentalData.LeaseType;
 
-            var places = criteria.Place;
-            foreach (var item in criteria.Places)
-            {
-                places += item.Place + "|";
-            }
-            places = places.TrimEnd('|');
-
-            if (!string.IsNullOrEmpty(places))
-                rvd["places"] = places;
+            if (!string.IsNullOrEmpty(criteria.Place))
+                rvd["places"] = criteria.Place;
 
             if (criteria.RentalData.AvailableDate.HasValue)
                 rvd["avail"] = criteria.RentalData.AvailableDate.Value.ToString(_DateFormat);
+
+            if (criteria.RentalData.AvailableNow)
+                rvd["avail-now"] = true;
 
             foreach (var neededFeature in criteria.RentalData.RentalFeatures)
             {

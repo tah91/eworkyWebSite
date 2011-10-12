@@ -33,7 +33,8 @@
             select: function (event, ui) {
                 var pos = ui.item.position;
                 var lct = ui.item.locType;
-            }
+            },
+            selectFirst: true
         });
     }
 

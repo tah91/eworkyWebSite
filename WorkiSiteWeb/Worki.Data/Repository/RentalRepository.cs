@@ -50,53 +50,49 @@ namespace Worki.Data.Models
             var idsToLoad = new List<int>();
             var rentals = _Context.Rentals.AsQueryable();
 
-            if (criteria.MinRate != null)
-            {
-                var min_rate = criteria.MinRate.Value;
-
+            if (criteria.MinRate.HasValue)
+            {   
                 rentals = from rent
                                in rentals
-                          where ((rent.Rate + rent.Charges) >= min_rate)
+                          where ((rent.Rate + rent.Charges) >= criteria.MinRate)
                           select rent;
             }
 
-            if (criteria.MaxRate != null)
-            {
-                var max_rate = criteria.MaxRate.Value;
-
-                rentals = from rent
-                               in rentals
-                          where ((rent.Rate + rent.Charges) <= max_rate)
-                          select rent;
-            }
-
-            if (criteria.MinSurface != null)
-            {
-                var min_surface = criteria.MinSurface.Value;
-
-                rentals = from rent
-                               in rentals
-                          where (rent.Surface >= min_surface)
-                          select rent;
-            }
-            if (criteria.MaxSurface != null)
-            {
-                var max_surface = criteria.MaxSurface.Value;
-
-                rentals = from rent
-                               in rentals
-                          where (rent.Surface <= max_surface)
-                          select rent;
-            }
-
-            if ((criteria.RentalData.AvailableDate != null && criteria.RentalData.AvailableDate.HasValue) || criteria.RentalData.AvailableNow)
+            if (criteria.MaxRate.HasValue)
             {
                 rentals = from rent
                                in rentals
-                          where ((System.DateTime.Compare(rent.AvailableDate.Value, criteria.RentalData.AvailableDate.Value) <= 0) || (rent.AvailableNow == true))
+                          where ((rent.Rate + rent.Charges) <= criteria.MaxRate)
                           select rent;
             }
-
+            if (criteria.MinSurface.HasValue)
+            {
+                rentals = from rent
+                               in rentals
+                          where (rent.Surface >= criteria.MinSurface)
+                          select rent;
+            }
+            if (criteria.MaxSurface.HasValue)
+            {
+                rentals = from rent
+                               in rentals
+                          where (rent.Surface <= criteria.MaxSurface)
+                          select rent;
+            }
+            if (criteria.RentalData.AvailableDate.HasValue)
+            {
+                rentals = from rent
+                               in rentals
+                          where System.DateTime.Compare(rent.AvailableDate.Value, criteria.RentalData.AvailableDate.Value) <= 0
+                          select rent;
+            }
+            if (criteria.RentalData.AvailableNow)
+            {
+                rentals = from rent
+                               in rentals
+                          where rent.AvailableNow == true
+                          select rent;
+            }
             if (criteria.RentalData.LeaseType != -1)
             {
                 rentals = from rent
