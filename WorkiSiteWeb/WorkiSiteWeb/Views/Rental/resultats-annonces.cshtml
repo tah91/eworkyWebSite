@@ -41,7 +41,7 @@
 					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Price</span></h4>
 					<div class="toogle_container">
 						<div class="block">
-							<p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
+							<div>@Worki.Resources.Views.Rental.RentalString.Between</div>
 							@Html.TextBoxFor(model => model.MinRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
 							@Html.TextBoxFor(model => model.MaxRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
 						</div>
@@ -51,7 +51,7 @@
 					<div class="toogle_container">
 						<div class="block">
 							<div>
-								<p class="marginb5">@Worki.Resources.Views.Rental.RentalString.Between</p>
+								<div>@Worki.Resources.Views.Rental.RentalString.Between</div>
 								@Html.TextBoxFor(model => model.MinSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
 								@Html.TextBoxFor(model => model.MaxSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
 							</div>
@@ -67,7 +67,7 @@
                                 </ul>
                             </div>
                             <div class="clear"></div>
-                            <input id="placeAutocomplete" placeholder="@Worki.Resources.Views.Home.HomeString.ExampleLocation" type="text" class = "width98"/>
+                            <input id="placeAutocomplete" placeholder="@Worki.Resources.Views.Rental.RentalString.PlaceExemple" type="text" class = "width98"/>
 						</div>
 					</div>
 

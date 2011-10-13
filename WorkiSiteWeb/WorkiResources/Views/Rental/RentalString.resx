@@ -276,6 +276,9 @@
   <data name="Place" xml:space="preserve">
     <value>Lieu</value>
   </data>
+  <data name="PlaceExemple" xml:space="preserve">
+    <value>Ex : Paris 5e, Orsay, ...</value>
+  </data>
   <data name="PostalCode" xml:space="preserve">
     <value>Code Postal :</value>
   </data>

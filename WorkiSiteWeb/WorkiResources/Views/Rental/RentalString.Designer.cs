@@ -538,6 +538,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ex : Paris 5e, Orsay, ....
+        /// </summary>
+        public static string PlaceExemple {
+            get {
+                return ResourceManager.GetString("PlaceExemple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code Postal :.
         /// </summary>
         public static string PostalCode {

@@ -28,3 +28,9 @@ input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}
 input#RentalData_AvailableDate{width:46%;margin:0}
 select#RentalData_Type{width:205px}
 input#Place{width:311px}
+.rentalItem{margin-bottom:10px;overflow:auto;height:110px;padding:10px}
+.rentalItemGallery{width:20%;height:100%}
+.rentalItemGallery img{max-height:110px}
+.rentalItemDetailsDiv{height:100%;width:75%;padding-left:10px}
+.rentalItemHead{margin-bottom:15px}
+.rentalItemSurface{margin-right:30px}

@@ -19,7 +19,7 @@
 .searchResultFormDiv input[type="text"]{width:190px}
 .searchResultFormDiv select{width:205px}
 .resetSearch{margin:20px 0 0 40px}
-.resultItem{margin-bottom:10px;overflow:auto;height:135px;background:#f8f8f8;padding:10px}
+.resultItem{margin-bottom:10px;overflow:auto;height:135px;padding:10px}
 .resultItemGallery{width:20%;height:100%}
 .resultItemGallery img{max-height:135px}
 .itemDetailsDiv{height:100%;width:43%;padding-left:10px}
