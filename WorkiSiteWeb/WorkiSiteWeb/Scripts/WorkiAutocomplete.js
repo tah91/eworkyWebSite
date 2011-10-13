@@ -17,11 +17,25 @@
                     success: function (data) {
                         var toDisplay = new Array();
                         response($.map(data.geonames, function (item) {
-                            var displayName = item.name + ' (' + item.adminCode2 + ')';
+                            var postalCode = null;
+                            if (item.alternateNames != null) {
+                                $.each(item.alternateNames, function () {
+                                    if (this.lang == 'post' && this.name.length == 5) {
+                                        postalCode = this.name;
+                                        return false;
+                                    }
+                                });
+                            }
+                            if (postalCode == null) {
+                                postalCode = item.adminCode2;
+                            }
+                            var displayName = item.name + ' (' + postalCode + ')';
+                            var displayName2 = item.name + ' (' + item.adminCode2 + ')';
                             var alreadyHere = $.inArray(displayName, toDisplay);
                             if (alreadyHere > -1)
                                 return;
                             toDisplay.push(displayName);
+                            toDisplay.push(displayName2);
                             return {
                                 label: displayName,
                                 value: displayName

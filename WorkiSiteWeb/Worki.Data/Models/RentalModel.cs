@@ -508,12 +508,10 @@ namespace Worki.Data.Models
             Results = new List<Rental>();
 			RentalTypeSelect = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);
             LeaseTypeSelect = new SelectList(Rental.LeaseTypes, "Key", "Value", Lease.NotDefined);
-            Places = new List<RentalPlace>();
 		}
 
 		#endregion
 
-        public List<RentalPlace> Places { get; set; }
 
         public string Place { get; set; }
 

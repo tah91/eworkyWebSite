@@ -373,6 +373,9 @@ namespace Links {
         public static readonly string jquery_ui_autocomplete_selectFirst_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.autocomplete.selectFirst.min.js") ? Url("jquery.ui.autocomplete.selectFirst.min.js") : Url("jquery.ui.autocomplete.selectFirst.js");
                       
         public static readonly string jquery_ui_autocomplete_selectFirst_min_js = Url("jquery.ui.autocomplete.selectFirst.min.js");
+        public static readonly string jquery_ui_datepicker_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datepicker-fr.min.js") ? Url("jquery.ui.datepicker-fr.min.js") : Url("jquery.ui.datepicker-fr.js");
+                      
+        public static readonly string jquery_ui_datepicker_fr_min_js = Url("jquery.ui.datepicker-fr.min.js");
         public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
                       
         public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js");

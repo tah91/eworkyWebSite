@@ -37,6 +37,7 @@
 					@using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
 					{
 					@Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.Place)
 					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Price</span></h4>
 					<div class="toogle_container">
 						<div class="block">
@@ -60,7 +61,13 @@
 					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h4>
 					<div class="toogle_container">
 						<div class="block">
-							@Html.TextBoxFor(model => model.Place, new { placeholder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "width98" })
+                            <div class="featureTag">
+                                <ul id="tagContainer">
+                            
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                            <input id="placeAutocomplete" placeholder="@Worki.Resources.Views.Home.HomeString.ExampleLocation" type="text" class = "width98"/>
 						</div>
 					</div>
 
@@ -83,13 +90,13 @@
 						<div class="block">
 							<ul class="marginl0">
 							@foreach (var feature in Rental.RentalFeatureDict)
-							{ 
+       { 
 								<li>
 									@{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
-									@Html.CheckBox(enumName,Model.RentalData.HasFeature((RentalFeatureType)feature.Key))
+									@Html.CheckBox(enumName, Model.RentalData.HasFeature((RentalFeatureType)feature.Key))
 									@Html.LabelFor(feature.Value, enumName)
 								</li>
-							}
+       }
 							</ul>
 						</div>
 					</div>
@@ -97,7 +104,7 @@
 					<div class="resetSearch margint15">
 						<input type="submit" class="buttonRed buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
 					</div>
-					}
+                    }
 				</div>
 			</div>
 		</div>

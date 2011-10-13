@@ -376,9 +376,21 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\order.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-fr.js" />
     <Content Include="Scripts\jquery.ui.autocomplete.selectFirst.js" />
     <Content Include="Scripts\jquery.ui.autocomplete.selectFirst.min.js">
       <DependentUpon>jquery.ui.autocomplete.selectFirst.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.ui.datepicker-fr.min.js">
+      <DependentUpon>jquery.ui.datepicker-fr.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\main.min.js">
+      <DependentUpon>main.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\order.min.js">
+      <DependentUpon>order.js</DependentUpon>
     </Content>
     <Content Include="Scripts\WorkiAutocomplete.js" />
     <Content Include="Scripts\require-jquery.js" />

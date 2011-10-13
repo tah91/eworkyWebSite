@@ -4,6 +4,7 @@ using Worki.Data.Repository;
 using Worki.Infrastructure.UnitOfWork;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Worki.Data.Models
 {
@@ -44,6 +45,29 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        Regex _PlaceRegex = new Regex("(?<address>.+)\\((?<postalCode>[0-9]+)\\)");
+
+        class PlaceDefinition
+        {
+            public string Address { get; set; }
+            public string PostalCode { get; set; }
+
+            public bool Compare(PlaceDefinition criterion)
+            {
+                //case departement
+                if (criterion.PostalCode.Length == 2)
+                {
+                    var dep = PostalCode.Substring(0, 2);
+                    return dep == criterion.PostalCode;
+                }
+                //case city
+                else 
+                {
+                    return PostalCode == criterion.PostalCode && Address.Contains(criterion.Address);
+                }
+            }
+        }
 
         public IList<Rental> FindByCriteria(RentalSearchCriteria criteria)
         {
@@ -109,20 +133,16 @@ namespace Worki.Data.Models
                           select rent;
             }
 
-            if (criteria.Places != null && criteria.Places.Count != 0)
-            {
-                var places = from item in criteria.Places select item.Place.ToLower();
-
-                rentals = from rent
-                           in rentals
-                          where places.Contains(rent.City.ToLower())
-                          select rent;
-            }
-
+            //load temporary list
             var templist = (from item in rentals
                             select new
                             {
                                 ID = item.Id,
+                                Place = new PlaceDefinition
+                                {
+                                   Address = item.City.ToLower(),
+                                   PostalCode = item.PostalCode
+                                },
                                 Features = (from f in item.RentalFeatures
                                             select new FeatureProjection
                                             {
@@ -130,14 +150,37 @@ namespace Worki.Data.Models
                                             })
                             }).ToList();
 
-            var neededFeatures = new List<FeatureProjection>();
+            if (!string.IsNullOrEmpty(criteria.Place))
+            {
+                var places = from item
+                                in criteria.Place.Split('|')
+                             where _PlaceRegex.Match(item).Success
+                             select new PlaceDefinition
+                             {
+                                 Address = _PlaceRegex.Match(item).Groups["address"].Value.TrimEnd(' ').ToLower(),
+                                 PostalCode = _PlaceRegex.Match(item).Groups["postalCode"].Value
+                             };
 
+                //filter OR by places
+                templist = templist.Where(rent =>
+                {
+                    foreach (var item in places)
+                    {
+                        if (rent.Place.Compare(item))
+                            return true;
+                    }
+                    return false;
+                }).ToList();
+            }
+
+            var neededFeatures = new List<FeatureProjection>();
             foreach (var criteriaFeatures in criteria.RentalData.RentalFeatures)
             {
                 neededFeatures.Add(new FeatureProjection { Feature = criteriaFeatures.FeatureId });
             }
 
             var equalityComparer = new FeatureProjectionEqualityComparer();
+            //filter AND by features
             idsToLoad = templist.Where(rent =>
             {
                 foreach (var item in neededFeatures)

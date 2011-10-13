@@ -12,7 +12,7 @@
 
 @RazorHelpers.TitleDiv((Model.Rental.Id == 0 ? Worki.Resources.Views.Rental.RentalString.AddRental : Worki.Resources.Views.Rental.RentalString.EditRental), "Red")
 
-@using (Html.BeginForm(MVC.Rental.ActionNames.Edit,MVC.Rental.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
+@using (Html.BeginForm(MVC.Rental.ActionNames.Edit,MVC.Rental.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "rentalForm" }))
 {
 	@Html.AntiForgeryToken()
 	<div class="detailContent">
@@ -225,25 +225,7 @@
 {
 	<script type="text/javascript">
 
-	    require(["@MiscHelpers.jqueryui"], function () {
-	        $.datepicker.regional['fr'] = {
-	            closeText: 'Fermer',
-	            prevText: '&#x3c;Préc',
-	            nextText: 'Suiv&#x3e;',
-	            currentText: 'Courant',
-	            monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-	            monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
-	            dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-	            dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-	            dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
-	            weekHeader: 'Sm',
-	            dateFormat: 'dd/mm/yy',
-	            firstDay: 1,
-	            isRTL: false,
-	            showMonthAfterYear: false,
-	            yearSuffix: ''
-	        };
-	        $.datepicker.setDefaults($.datepicker.regional['fr']);
+	    require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
 	        $(".dp").datepicker({
 	            changeMonth: true,
 	            changeYear: true,
@@ -251,7 +233,7 @@
 	        });
 	    });
 	    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
-	        $("#form").submit(function () {
+	        $("#rentalForm").submit(function () {
 	            var val = $("#Rental_AvailableDate").val();
 	            var date = Date.parseExact(val, "dd/MM/yyyy");
 	            var newVal = date.toString('MM/dd/yyyy');

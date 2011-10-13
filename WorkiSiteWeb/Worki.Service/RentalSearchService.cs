@@ -62,13 +62,7 @@ namespace Worki.Service
                 criteria.RentalData.LeaseType = int.Parse(value);
 
             if (MiscHelpers.GetRequestValue(parameters, "places", ref value))
-            {
-                var places = value.Split('|');
-                foreach (var p in places)
-                {
-                    criteria.Places.Add(new RentalPlace { Place = p });
-                }
-            }
+                criteria.Place = value;
 
             if (MiscHelpers.GetRequestValue(parameters, "avail", ref value))
             {
