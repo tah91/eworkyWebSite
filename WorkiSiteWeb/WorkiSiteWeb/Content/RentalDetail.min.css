@@ -1,16 +1,13 @@
-﻿.rentalDetailLeft{width:61.5%}
+﻿.rentalSearchContainer{padding:0!important}
+.rentalDetailLeft{width:61.5%}
 .rentalDetailRight{width:30%}
 .rentalGallery{height:350px}
 .rentalDesc{margin-bottom:10px}
 .rentalMap{padding:2px;border:1px solid #5dafde}
-.rentalSummary{height:128;width:250;margin:20px}
-.rentalSummaryElem{background:white;color:white;background-color:#D35758;margin-right:10px;height:32;width:100;font-size:1.5em;font-family:Arial,Helvetica,Sans-Serif;font-weight:600;border-width:20px;border-color:#D35758;padding:10px}
-.rentalTitlered{color:#D35758;font-size:2em;font-weight:bold}
-.rentalTitle{margin-left:0;margin-top:20px}
+.rentalSummaryElem{background-color:#D35758;height:32;width:100;font-size:1.5em;padding:10px}
 .rentalMargin{margin-bottom:5px;margin-top:15px}
-.rentalSearchLeftPanelDetail{margin:0;padding:10px;border:1px solid #CCC;background-color:White;-webkit-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD;height:650px}
-input#MaxRate.Rsrchcol,input#MinRate.Rsrchcol,input#MinSurface.Rsrchcol,input#MaxSurface.Rsrchcol{width:28%}
-input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}
+#MaxRate.Rsrchcol,#MinRate.Rsrchcol,#MinSurface.Rsrchcol,#MaxSurface.Rsrchcol{width:28%}
+#MaxRate,#MinRate,#MinSurface,#MaxSurface{width:45%}
 .rentalElementDesc{width:75%}
 .rentalElementAcces{margin-top:40px}
 .rentalElementMoreDetail{font-weight:900;padding:5px;background:white;color:white;background-color:#D35758;margin-top:80px;width:82px}
@@ -25,12 +22,17 @@ input#MaxRate,input#MinRate,input#MinSurface,input#MaxSurface{width:45%}
 .halfContainerRental{width:47%;height:95%;background-image:url('images/rechercher2.png');background-repeat:no-repeat;background-position:95% bottom;margin:0!important}
 .halfMiniContainer{height:130px;width:50%}
 .halfMiniContainer2{height:40px;width:50%}
-input#RentalData_AvailableDate{width:46%;margin:0}
+#RentalData_AvailableDate{width:46%}
+#RentalData_AvailableNow{margin:10px 5px}
 select#RentalData_Type{width:205px}
 input#Place{width:311px}
-.rentalItem{margin-bottom:10px;overflow:auto;height:110px;padding:10px}
+.rentalItem{margin-bottom:10px;overflow:auto;height:120px;padding:10px}
 .rentalItemGallery{width:20%;height:100%}
-.rentalItemGallery img{max-height:110px}
+.rentalItemGallery img{max-height:120px}
 .rentalItemDetailsDiv{height:100%;width:75%;padding-left:10px}
 .rentalItemHead{margin-bottom:15px}
 .rentalItemSurface{margin-right:30px}
+.rentalLocalisationField{border:1px solid #DEDFE4;padding:3px 1px;color:#777}
+.rentalLocalisationField input[type="text"]{margin:0;border:0;width:auto!important}
+.rentalLocalisationField input[type="text"]:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;border:0;background:white}
+.rentalLocalisationField .featureTag li{margin:0 2px;padding:1px 3px}

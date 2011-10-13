@@ -27,7 +27,7 @@
                                 @Html.AntiForgeryToken()
                                 @Html.HiddenFor(model => model.Place)
                                 
-                                <div class="localisationField">
+                                <div class="rentalLocalisationField borderRadius">
                                     <div class="featureTag">
                                         <ul id="tagContainer">
                             
@@ -51,7 +51,7 @@
                                 
                                 <div class="halfMiniContainer2 float-right margint15">
                                     <div class="label-field red" style="margin-bottom:4px">
-                                            @Html.LabelFor(model => model.RentalData.AvailableDate)
+                                        @Html.LabelFor(model => model.RentalData.AvailableDate)
                                     </div>
                                     <div>
                                         @Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>

@@ -32,7 +32,14 @@
     });
 
     function init() {
-        $("#RentalData_AvailableDate").hide();
+        if ($("#RentalData_AvailableNow:checked").val() == "true") {
+            $("#RentalData_AvailableDate").hide();
+            $("#msg").show(); ;
+        }
+        else {
+            $("#RentalData_AvailableDate").show();
+            $("#msg").hide();
+        }
     };
 
     $('.removeTag').live('click', function (event) {

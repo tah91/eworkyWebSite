@@ -10,57 +10,58 @@
 @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Red")
 
 <div class="detailContent">
-    <div class="resultDiv dashedRight float-left">
-        <div class="searchFormBlockLeft">
-            @for (int i = 0; i < Model.PageResults.Count; ++i)
-			{
-				var index = Model.PagingInfo.GlobalIndex(i);
-                @Html.Partial(MVC.Rental.Views._Rental, Model.GetSingleResult(index))
-			}
+    <div class="blockContainer rentalSearchContainer">
+        <div class="resultDiv dashedRight float-left">
+            <div class="searchFormBlockLeft">
+                @for (int i = 0; i < Model.PageResults.Count; ++i)
+			    {
+				    var index = Model.PagingInfo.GlobalIndex(i);
+                    @Html.Partial(MVC.Rental.Views._Rental, Model.GetSingleResult(index))
+			    }
+            </div>
+
+            <div class="pager">
+			    @{
+				    RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
+				    foreach (string key in Request.QueryString.Keys)
+				    {
+					    rvd[key] = Request.QueryString[key].ToString();
+				    }
+			    }
+			    @Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Rental.ActionNames.FullSearchResult, rvd); })
+		    </div>
         </div>
-
-        <div class="pager">
-			@{
-				RouteValueDictionary rvd = new RouteValueDictionary(ViewContext.RouteData.Values);
-				foreach (string key in Request.QueryString.Keys)
-				{
-					rvd[key] = Request.QueryString[key].ToString();
-				}
-			}
-			@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Rental.ActionNames.FullSearchResult, rvd); })
-		</div>
-    </div>
         <div class="searchFormBlock float-right">
-			<div class="contentBlock">
-				<div class="searchResultFormDiv" id="searchFormReset">
-					<h3 class="red">@Worki.Resources.Views.Rental.RentalString.AccurateSearch</h3>
-					@using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
-					{
-					@Html.AntiForgeryToken()
+		    <div class="contentBlock">
+			    <div class="searchResultFormDiv" id="searchFormReset">
+				    <h3 class="red">@Worki.Resources.Views.Rental.RentalString.AccurateSearch</h3>
+				    @using (Html.BeginForm(MVC.Rental.ActionNames.RentalSearch, MVC.Rental.Name, FormMethod.Post, new { id = "searchform" }))
+				    {
+				    @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.Place)
-					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Price</span></h4>
-					<div class="toogle_container">
-						<div class="block">
-							<div>@Worki.Resources.Views.Rental.RentalString.Between</div>
-							@Html.TextBoxFor(model => model.MinRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
-							@Html.TextBoxFor(model => model.MaxRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
-						</div>
-					</div>
+				    <h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Price</span></h4>
+				    <div class="toogle_container">
+					    <div class="block">
+						    <div>@Worki.Resources.Views.Rental.RentalString.Between</div>
+						    @Html.TextBoxFor(model => model.MinRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
+						    @Html.TextBoxFor(model => model.MaxRate, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.MoneyUnit
+					    </div>
+				    </div>
 
-					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Area</span></h4>
-					<div class="toogle_container">
-						<div class="block">
-							<div>
-								<div>@Worki.Resources.Views.Rental.RentalString.Between</div>
-								@Html.TextBoxFor(model => model.MinSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
-								@Html.TextBoxFor(model => model.MaxSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
-							</div>
-						</div>
-					</div>
+				    <h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Area</span></h4>
+				    <div class="toogle_container">
+					    <div class="block">
+						    <div>
+							    <div>@Worki.Resources.Views.Rental.RentalString.Between</div>
+							    @Html.TextBoxFor(model => model.MinSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.And 
+							    @Html.TextBoxFor(model => model.MaxSurface, new { @class = "Rsrchcol" }) @Worki.Resources.Views.Rental.RentalString.AreaUnit
+						    </div>
+					    </div>
+				    </div>
 
-					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h4>
-					<div class="toogle_container">
-						<div class="block">
+				    <h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Localisation</span></h4>
+				    <div class="toogle_container">
+					    <div class="block">
                             <div class="featureTag">
                                 <ul id="tagContainer">
                             
@@ -68,48 +69,50 @@
                             </div>
                             <div class="clear"></div>
                             <input id="placeAutocomplete" placeholder="@Worki.Resources.Views.Rental.RentalString.PlaceExemple" type="text" class = "width98"/>
-						</div>
-					</div>
+					    </div>
+				    </div>
 
-					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h4>
-					<div class="toogle_container">
-						<div class="block">
-							@Html.TextBoxFor(model => model.RentalData.AvailableDate, new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
-						</div>
-					</div>
+				    <h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.AvailableDate</span></h4>
+				    <div class="toogle_container">
+					    <div class="block">
+                            @Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>
+                            @Html.TextBox("RentalData.AvailableDate", String.Format("{0:dd/MM/yyyy}", Model.RentalData.AvailableDate), new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
+					    </div>
+				    </div>
 
-					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h4>
-					<div class="toogle_container">
-						<div class="block">
-							@Html.DropDownListFor(model => model.RentalData.LeaseType, Model.LeaseTypeSelect)
-						</div>
-					</div>
+				    <h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.ContractType</span></h4>
+				    <div class="toogle_container">
+					    <div class="block">
+						    @Html.DropDownListFor(model => model.RentalData.LeaseType, Model.LeaseTypeSelect)
+					    </div>
+				    </div>
 
-					<h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Others</span></h4>
-					<div class="toogle_container">
-						<div class="block">
-							<ul class="marginl0">
-							@foreach (var feature in Rental.RentalFeatureDict)
-       { 
-								<li>
-									@{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
-									@Html.CheckBox(enumName, Model.RentalData.HasFeature((RentalFeatureType)feature.Key))
-									@Html.LabelFor(feature.Value, enumName)
-								</li>
-       }
-							</ul>
-						</div>
-					</div>
+				    <h4 class="toogle_trigger_red toogle_trigger_click"><span class="red">@Worki.Resources.Views.Rental.RentalString.Others</span></h4>
+				    <div class="toogle_container">
+					    <div class="block">
+						    <ul class="marginl0">
+						    @foreach (var feature in Rental.RentalFeatureDict)
+        { 
+							    <li>
+								    @{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
+								    @Html.CheckBox(enumName, Model.RentalData.HasFeature((RentalFeatureType)feature.Key))
+								    @Html.LabelFor(feature.Value, enumName)
+							    </li>
+        }
+						    </ul>
+					    </div>
+				    </div>
                     
-					<div class="resetSearch margint15">
-						<input type="submit" class="buttonRed buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
-					</div>
+				    <div class="resetSearch margint15">
+					    <input type="submit" class="buttonRed buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
+				    </div>
                     }
-				</div>
-			</div>
-		</div>
-		<div class="clear">
-		</div>
+			    </div>
+		    </div>
+	    </div>
+	    <div class="clear">
+	    </div>
+    </div>
 </div>
 
 @section ScriptContent

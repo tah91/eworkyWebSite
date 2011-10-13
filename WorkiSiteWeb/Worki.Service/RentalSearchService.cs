@@ -71,6 +71,8 @@ namespace Worki.Service
 
             if (MiscHelpers.GetRequestValue(parameters, "avail-now", ref value))
                 criteria.RentalData.AvailableNow = true;
+            else
+                criteria.RentalData.AvailableNow = false;
 
             var keys = MiscHelpers.GetFeatureIds(parameters.Params.AllKeys.ToList());
             criteria.RentalData.RentalFeatures.Clear();
