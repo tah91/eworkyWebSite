@@ -1,4 +1,4 @@
-﻿﻿ /*Detail Rental Page
+﻿/* Detail Rental Page
 ----------------------------------------------------------*/
 
 .rentalDetailLeft
@@ -9,6 +9,11 @@
 .rentalDetailRight
 {
     width:30%;
+}
+
+.rentalShare
+{
+    margin-top: 10px;
 }
 
 .rentalDesc
