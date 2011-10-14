@@ -12,6 +12,12 @@ namespace Worki.SpecFlow
     [Binding]
     public class RentalSteps
     {
+        [Given(@"Je vais dans la page recherche")]
+        public void GivenJeVaisDansLaPageRecherche()
+        {
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Rental/recherche");
+        }
+
         [When(@"Je clique sur administrateur")]
         public void WhenJeCliqueSurAdministrateur()
         {
@@ -116,7 +122,7 @@ namespace Worki.SpecFlow
 
         public TextField Place
         {
-            get { return Document.TextField(Find.ById("Place")); }
+            get { return Document.TextField(Find.ById("placeAutocomplete")); }
         }
     }
 
