@@ -44,7 +44,7 @@ namespace Worki.Data.Models
 		public MemberBooking()
 		{
             System.DateTime now = DateTime.Now;
-            FromDate = now.Subtract(new TimeSpan(0, now.Minute, now.Second));
+            FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
             ToDate = FromDate;
 		}
 	}
