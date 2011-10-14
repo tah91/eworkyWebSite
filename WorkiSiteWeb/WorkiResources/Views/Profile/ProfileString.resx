@@ -186,6 +186,9 @@
   <data name="RelCommentsEmpty" xml:space="preserve">
     <value>Aucun des espaces que vous avez ajoutés n'a été commenté.</value>
   </data>
+  <data name="Score" xml:space="preserve">
+    <value>eWorker {0} ({1:### ### ###} pts )</value>
+  </data>
   <data name="SocialNetwork" xml:space="preserve">
     <value>Réseaux sociaux</value>
   </data>
