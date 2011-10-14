@@ -65,6 +65,11 @@ body
 	padding-bottom:0;
 }
 
+#header
+{
+    background: whiteSmoke;
+}
+
 #main 
 {
     text-align:center;

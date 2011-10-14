@@ -305,7 +305,7 @@ page width. Or, you can specify an exact pixel width. */
 
 .logindisplay
 {
-	background-color:#f8f8f8;
+	background-color:whiteSmoke;
 	padding:10px;
 }
 
@@ -1003,7 +1003,7 @@ table tr.row-alternate
 {
 	width: 80%;
 	margin-top: 40px;
-	background: #f8f8f8;
+	background: whiteSmoke;
 	padding: 10px;
 }
 
@@ -1298,7 +1298,7 @@ html ul.tabs li.active a:hover
 {
     margin-top: 10px;
     border:1px solid #CCCCCC;
-    background-color: #F8F8F8;
+    background-color: whiteSmoke;
     box-shadow: 2px -5px 10px #DDD;
     /*padding:20px;*/
 }

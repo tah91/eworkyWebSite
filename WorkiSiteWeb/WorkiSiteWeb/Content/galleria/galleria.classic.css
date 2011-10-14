@@ -7,7 +7,7 @@
 .galleria-container {
     position: relative;
     overflow: hidden;
-    background: #f8f8f8;
+    background: whiteSmoke;
 }
 .galleria-container img {
     -moz-user-select: none;

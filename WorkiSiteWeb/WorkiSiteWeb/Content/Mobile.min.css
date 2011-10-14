@@ -8,6 +8,7 @@ button,input[type="submit"]{width:50%}
 .currentPosButton .buttonStd{width:15px;height:26px;background:#5DAFDE url('images/geoloc.png') no-repeat center center;margin-right:-3px}
 html,body{margin:0;padding:0;height:100%}
 .page{width:auto;margin-left:auto;margin-right:auto;position:relative;min-height:100%;padding-bottom:0}
+#header{background:whiteSmoke}
 #main{text-align:center;min-height:100%;position:relative}
 #content{padding-bottom:20px}
 .footer{background:#2c3c4c;width:100%;height:20px;position:absolute;bottom:0;left:0}
