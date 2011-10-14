@@ -341,3 +341,22 @@
     /*width:550px;*/
     width:67%;
 }
+
+/* Rental Tab
+----------------------------------------------------------*/
+
+input#MaxRate.rentalInputIndex,
+input#MinSurface.rentalInputIndex
+{
+    width:96%;
+}
+
+input#Place.rentalInputIndex
+{
+    width:98%;
+}
+
+.indexSearchIndexLinksRental
+{
+    margin-top:30px;
+}

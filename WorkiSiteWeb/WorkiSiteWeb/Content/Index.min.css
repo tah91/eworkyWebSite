@@ -47,3 +47,6 @@
 .blogItem:hover{background:#f3f3f3}
 .blogDate{width:120px}
 .blogContent{width:67%}
+input#MaxRate.rentalInputIndex,input#MinSurface.rentalInputIndex{width:96%}
+input#Place.rentalInputIndex{width:98%}
+.indexSearchIndexLinksRental{margin-top:30px}

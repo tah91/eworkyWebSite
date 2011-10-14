@@ -1,4 +1,7 @@
-﻿.rentalDetailLeft
+﻿/* Detail Rental Page
+----------------------------------------------------------*/
+
+.rentalDetailLeft
 {
     width:61.5%;
 }
@@ -6,11 +9,6 @@
 .rentalDetailRight
 {
     width:30%;
-}
-
-.rentalGallery
-{
-    height: 350px;
 }
 
 .rentalDesc
@@ -66,17 +64,8 @@
     margin-top:15px;
 }
 
-.rentalSearchLeftPanelDetail
-{
-    margin:0px;
-    padding:10px;
-    border: 1px solid #CCC;
-    background-color:White;
-    -webkit-border-radius:4px;
-    border-radius:4px;
-    box-shadow:4px 4px 10px #DDD;
-    height:650px;
-}
+/* Result Rental Page
+----------------------------------------------------------*/
 
 input#MaxRate.Rsrchcol,
 input#MinRate.Rsrchcol,
@@ -86,6 +75,14 @@ input#MaxSurface.Rsrchcol
     width:28%;
 }
 
+.width98
+{
+    width:98%;
+}
+
+/* Search Rental Page
+----------------------------------------------------------*/
+
 input#MaxRate,
 input#MinRate,
 input#MinSurface,
@@ -94,68 +91,15 @@ input#MaxSurface
     width:45%;
 }
 
-
-.rentalElementDesc
-{
-    width:75%;
-}
-
-.rentalElementAcces
-{
-    margin-top:40px;
-}
-
-.rentalElementMoreDetail
-{
-    font-weight:900;
-    padding:5px;
-    background:white;
-    color:white;
-    background-color:#D35758;
-    margin-top:80px;
-    width:82px;
-}
-
-.rentalElementMiddle
-{
-    margin-left:150px;
-    margin-right:150px;
-}
-
-.resultItem
-{   
-    margin-bottom: 10px;
-    overflow:auto;
-    height: 135px;
-    background: #f8f8f8;
-    padding:10px;
-}
-
 .mainRowRental
 {
     height:330px;
-}
-
-.width98
-{
-    width:98%;
-}
-
-.rDetailUpRight
-{
-    width:30%;
-    height:100%;
 }
 
 .tagContainer
 {
    border: 1px solid #FF7800;
    padding:10px 0 10px 5px;
-}
-
-.tagInput
-{
-   border:none;
 }
 
 .removeTag
@@ -201,6 +145,9 @@ input#Place
 {
     width:311px;
 }
+
+/* Items of the Result Rental Page
+----------------------------------------------------------*/
 
 .rentalItem
 {   
