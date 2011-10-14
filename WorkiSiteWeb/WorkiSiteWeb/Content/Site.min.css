@@ -78,7 +78,7 @@ div.pager A{font-size:1.1em;color:#666;text-decoration:none;padding:0 .4em 0 .4e
 div.pager A:hover{background-color:Silver}
 div.pager A.selected{background-color:#353535;color:White}
 div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
-.informationContainer{text-align:center;background:whiteSmoke;border:1px solid #E5E5E5;padding:10px;margin:5px 0}
+.informationContainer{text-align:center;background:whiteSmoke;border:1px solid #E5E5E5;padding:10px;margin:5px 0 15px 0}
 .borderRadius{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
 .borderRadiusBottom{-webkit-border-bottom-left-radius:4px 4px;-webkit-border-bottom-right-radius:4px 4px;-moz-border-bottom-left-radius:4px 4px;-moz-border-bottom-right-radius:4px 4px;border-bottom-left-radius:4px 4px;border-bottom-right-radius:4px 4px}
 .buttonStd{overflow:visible;padding:5px 10px;color:white;-moz-border-radius:3px;border-radius:3px;border-image:initial;font-weight:bold;margin:3px}

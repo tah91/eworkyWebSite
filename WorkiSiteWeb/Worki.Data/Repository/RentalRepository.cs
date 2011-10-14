@@ -108,7 +108,7 @@ namespace Worki.Data.Models
             {
                 rentals = from rent
                                in rentals
-                          where System.DateTime.Compare(rent.AvailableDate.Value, criteria.RentalData.AvailableDate.Value) <= 0
+                          where ((System.DateTime.Compare(rent.AvailableDate.Value, criteria.RentalData.AvailableDate.Value) <= 0) || (rent.AvailableNow == true))
                           select rent;
             }
             if (criteria.RentalData.AvailableNow)
