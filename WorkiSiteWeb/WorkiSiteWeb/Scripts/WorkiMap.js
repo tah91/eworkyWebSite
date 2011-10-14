@@ -170,6 +170,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     var _geocoder = new google.maps.Geocoder();
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
+    this.Map = null;
 
     //methods
     //load an empty map to fill
@@ -183,6 +184,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
 
         var center = new google.maps.LatLng(48, 2); //Paris...
         _searchMap.setCenter(center);
+        this.Map = _searchMap;
     }
 
     //load map with an adress
@@ -249,6 +251,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     //ajust zoom of the search map on an address
     FitBoundsSearchResults = function (bounds) {
         _searchMap.fitBounds(bounds);
+        this.Map = _searchMap;
     }
 
     //center the search map on an address
@@ -259,6 +262,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     _callbackForCenterSearchResults = function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             _searchMap.setCenter(results[0].geometry.location);
+            this.Map = _searchMap;
             //_map.setZoom(9);
             //alert(results[0].geometry.location);
             //LoadPin(results[0].geometry.location, 'Votre recherche');
