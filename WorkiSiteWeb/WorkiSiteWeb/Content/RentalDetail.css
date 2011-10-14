@@ -1,10 +1,5 @@
-﻿﻿/* Detail Rental Page
+﻿﻿ /*Detail Rental Page
 ----------------------------------------------------------*/
-
-.rentalSearchContainer
-{
-    padding:0!important;
-}
 
 .rentalDetailLeft
 {
@@ -79,6 +74,11 @@
 
 /* Search Rental Page
 ----------------------------------------------------------*/
+
+.rentalSearchContainer
+{
+    padding:0!important;
+}
 
 .rentalLocalisationField
 {

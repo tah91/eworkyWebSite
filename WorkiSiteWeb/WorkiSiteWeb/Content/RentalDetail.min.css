@@ -1,5 +1,4 @@
-﻿﻿ .rentalSearchContainer{padding:0!important}
-.rentalDetailLeft{width:61.5%}
+﻿﻿ .rentalDetailLeft{width:61.5%}
 .rentalDetailRight{width:30%}
 .rentalDesc{margin-bottom:10px}
 .rentalMap{padding:2px;border:1px solid #5dafde}
@@ -10,6 +9,7 @@
 .rentalMargin{margin-bottom:5px;margin-top:15px}
 #MaxRate.Rsrchcol,#MinRate.Rsrchcol,#MinSurface.Rsrchcol,#MaxSurface.Rsrchcol{width:28%}
 .width98{width:98%}
+.rentalSearchContainer{padding:0!important}
 .rentalLocalisationField{border:1px solid #DEDFE4;padding:3px 1px;color:#777}
 .rentalLocalisationField input[type="text"]{margin:0;border:0;width:auto!important}
 .rentalLocalisationField input[type="text"]:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;border:0;background:white}
