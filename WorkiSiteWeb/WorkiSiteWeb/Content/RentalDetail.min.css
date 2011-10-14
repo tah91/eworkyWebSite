@@ -6,8 +6,8 @@
 .rentalSummaryElem{background-color:#D35758;height:32;width:100;font-size:1.5em;padding:10px}
 .rentalMargin{margin-bottom:5px;margin-top:15px}
 #MaxRate.Rsrchcol,#MinRate.Rsrchcol,#MinSurface.Rsrchcol,#MaxSurface.Rsrchcol{width:28%}
-#MaxRate,#MinRate,#MinSurface,#MaxSurface{width:45%}
 .width98{width:98%}
+#MaxRate,#MinRate,#MinSurface,#MaxSurface{width:45%}
 .mainRowRental{height:330px}
 .tagContainer{border:1px solid #FF7800;padding:10px 0 10px 5px}
 .removeTag{cursor:pointer;margin:5px 0 3px 5px}
