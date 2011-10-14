@@ -1,4 +1,4 @@
-﻿/* Detail Rental Page
+﻿﻿/* Detail Rental Page
 ----------------------------------------------------------*/
 
 .rentalSearchContainer
@@ -27,6 +27,13 @@
     border: 1px solid #5dafde;
 }
 
+.rentalSummary
+{
+    height:128;
+    width:250;
+    margin:20px;
+}
+
 .rentalSummaryElem
 {
     background-color:#D35758;
@@ -34,6 +41,19 @@
     width:100;
     font-size:1.5em;
     padding:10px;
+}
+
+.rentalTitlered
+{
+    color: #D35758;
+    font-size:2em;
+    font-weight:bold;
+}
+
+.rentalTitle
+{
+    margin-left:0px;
+    margin-top:20px;
 }
 
 .rentalMargin
@@ -56,14 +76,43 @@
 {
     width:98%;
 }
-#MaxRate,
-#MinRate,
-#MinSurface,
-#MaxSurface
 
 /* Search Rental Page
 ----------------------------------------------------------*/
 
+.rentalLocalisationField
+{
+    border: 1px solid #DEDFE4;
+    padding: 3px 1px;
+    color: #777;
+}
+
+.rentalLocalisationField input[type="text"]
+{
+    margin: 0;
+    border:0;
+    width: auto!important;
+}
+
+.rentalLocalisationField input[type="text"]:focus
+{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 0;
+    background:white;
+}
+
+.rentalLocalisationField .featureTag li
+{
+    margin:0 2px;
+    padding: 1px 3px;
+}
+
+#MaxRate,
+#MinRate,
+#MinSurface,
+#MaxSurface
 {
     width:45%;
 }
@@ -165,33 +214,3 @@ input#Place
 {
     margin-right:30px;
 }
-
-.rentalLocalisationField
-{
-    border: 1px solid #DEDFE4;
-    padding: 3px 1px;
-    color: #777;
-}
-
-.rentalLocalisationField input[type="text"]
-{
-    margin: 0;
-    border:0;
-    width: auto!important;
-}
-
-.rentalLocalisationField input[type="text"]:focus
-{
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border: 0;
-    background:white;
-}
-
-.rentalLocalisationField .featureTag li
-{
-    margin:0 2px;
-    padding: 1px 3px;
-}
-
