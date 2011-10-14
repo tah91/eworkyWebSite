@@ -1,12 +1,12 @@
 ﻿@model Worki.Data.Models.IPictureDataProvider
 
 <script type="text/javascript">
-    require(["@MiscHelpers.jqueryui"], function () {
-        require(["https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ",
-                "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js",
-                "@Url.VersionedContent(Links.Scripts.jquery_iframe_transport_js)",
-                "@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)"], function () {
-                require(["@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)"], function () {
+    require(["order!@MiscHelpers.jqueryui", 
+                "order!https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ",
+                "order!https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js",
+                "order!@Url.VersionedContent(Links.Scripts.jquery_iframe_transport_js)",
+                "order!@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)",
+                "order!@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)"], function () {
                 require.ready(function () {
                     // Initialize the jQuery File Upload widget:
                     $('#fileupload').fileupload({
@@ -40,8 +40,6 @@
                             .appendTo('body');
                     });
                 });
-                });
-        });
     });
 </script>
 <script id="template-upload" type="text/x-jquery-tmpl">
