@@ -171,9 +171,8 @@
         function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
                 var resultsMap = new WorkiMap('resultsMap');
-                resultsMap.LoadSearchMap();
                 var where = "@Model.Criteria.Place";
-                resultsMap.CenterSearchResults(where);
+                resultsMap.LoadSearchMap(where);
                 var bounds = new google.maps.LatLngBounds();
 				function addMarker(latitude, longitude, name)
 				{

@@ -74,49 +74,13 @@
 
         });
 
-        var Reset = null;
-
-        function HomeControl(controlDiv, map) {
-
-          // Set CSS styles for the DIV containing the control
-          // Setting padding to 5 px will offset the control
-          // from the edge of the map
-          controlDiv.style.padding = '5px';
-
-          // Set CSS for the control border
-          var controlUI = document.createElement('DIV');
-          controlUI.style.backgroundColor = 'white';
-          controlUI.style.borderStyle = 'solid';
-          controlUI.style.borderWidth = '2px';
-          controlUI.style.cursor = 'pointer';
-          controlUI.style.textAlign = 'center';
-          controlUI.title = 'Cliquer pour revenir à la position initial';
-          controlDiv.appendChild(controlUI);
-
-          // Set CSS for the control interior
-          var controlText = document.createElement('DIV');
-          controlText.style.fontFamily = 'Arial,sans-serif';
-          controlText.style.fontSize = '12px';
-          controlText.style.paddingLeft = '4px';
-          controlText.style.paddingRight = '4px';
-          controlText.innerHTML = 'Reset';
-          controlUI.appendChild(controlText);
-
-          // Setup the click event listeners: simply set the map to Chicago
-          google.maps.event.addDomListener(controlUI, 'click', function() {
-            map.setCenter(Reset)
-          });
-        }
-
 		var resultsMap = null;
 		var where = "@Model.Criteria.Place";
 		var bounds = null;
         function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
                 resultsMap = new WorkiMap('mobileMap');
-                resultsMap.LoadSearchMap();
-                resultsMap.CenterSearchResults(where);
-                Reset = resultsMap.Map.getCenter();
+                resultsMap.LoadSearchMap(where);
                 bounds = new google.maps.LatLngBounds();
 				var extendCount = 0;
 				var extendMax = 7;
@@ -138,11 +102,6 @@
 						bounds.extend(LL);
 					}
 				}
-                var homeControlDiv = document.createElement('DIV');
-                var homeControl = new HomeControl(homeControlDiv, resultsMap.Map);
-
-                homeControlDiv.index = 1;
-                resultsMap.Map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
                 @foreach (var localisation in Model.Results)
                 {

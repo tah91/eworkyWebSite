@@ -170,11 +170,12 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     var _geocoder = new google.maps.Geocoder();
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
-    this.Map = null;
+    var _initialBounds = null;
+    var _initialWhere = null;
 
     //methods
     //load an empty map to fill
-    LoadSearchMap = function () {
+    LoadSearchMap = function (where) {
         var options = {
             zoom: 9,
             mapTypeControl: false,
@@ -184,7 +185,28 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
 
         var center = new google.maps.LatLng(48, 2); //Paris...
         _searchMap.setCenter(center);
-        this.Map = _searchMap;
+        _initialWhere = where;
+        _CenterSearchResults(where);
+        _SetResetControl();
+    }
+
+    //center the search map on an address
+    _CenterSearchResults = function (where) {
+        _geocoder.geocode({ 'address': where }, _callbackForCenterSearchResults);
+    }
+
+    _callbackForCenterSearchResults = function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            _searchMap.setCenter(results[0].geometry.location);
+            LoadPin(results[0].geometry.location, "Votre recherche", false, _searchMap, null, true);
+            //_map.setZoom(9);
+            //alert(results[0].geometry.location);
+            //LoadPin(results[0].geometry.location, 'Votre recherche');
+        }
+        else {
+            //alert("La géolocalisation de votre lieu a échouée");
+            return;
+        }
     }
 
     //load map with an adress
@@ -217,14 +239,59 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         }
     }
 
+    _SetResetControl = function () {
+
+        var controlDiv = document.createElement('DIV');
+        controlDiv.index = 1;
+
+        // Set CSS styles for the DIV containing the control
+        // Setting padding to 5 px will offset the control
+        // from the edge of the map
+        controlDiv.style.padding = '5px';
+
+        // Set CSS for the control border
+        var controlUI = document.createElement('div');
+        controlUI.style.backgroundColor = '#5DAFDE';
+        controlUI.style.borderStyle = 'solid';
+        controlUI.style.borderWidth = '1px';
+        controlUI.style.borderColor = '#5DAFDE';
+        controlUI.style.backgroundImage = '-webkit-linear-gradient(top,#5DAFDE,#449ed2)';
+        controlUI.style.borderRadius = '3px';
+        controlUI.style.cursor = 'pointer';
+        controlUI.style.textAlign = 'center';
+        controlUI.title = 'Cliquer pour revenir à la position initial';
+        controlDiv.appendChild(controlUI);
+
+        // Set CSS for the control interior
+        var controlText = document.createElement('DIV');
+        controlText.style.fontFamily = 'Arial,sans-serif';
+        controlText.style.fontSize = '11px';
+        controlText.style.color = 'white';
+        controlText.style.paddingLeft = '4px';
+        controlText.style.paddingRight = '4px';
+        controlText.innerHTML = 'Reset';
+        controlUI.appendChild(controlText);
+
+        // Setup the click event listeners: simply set the map to Chicago
+        google.maps.event.addDomListener(controlUI, 'click', function () {
+            _CenterSearchResults(_initialWhere);
+            if (_initialBounds != null)
+                FitBoundsSearchResults(_initialBounds);
+        });
+
+        _searchMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+    }
+
     //load an pin with address, nam and desc
-    LoadPin = function (LL, name, dragable, theMap, clickHandler) {
+    LoadPin = function (LL, name, dragable, theMap, clickHandler, currentPosition) {
     	if (dragable == null)
     		dragable = false;
     	if (theMap == null)
     		theMap = _searchMap;
     	var title = "<span class=\"pinTitle\"> " + name + "</span>";
     	var image = '/Content/images/iconeMap.png';
+    	if (currentPosition != null)
+    	    image = '/Content/images/iconeMapRed.png';
     	var marker = new google.maps.Marker({
     		position: LL,
     		map: theMap,
@@ -251,26 +318,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     //ajust zoom of the search map on an address
     FitBoundsSearchResults = function (bounds) {
         _searchMap.fitBounds(bounds);
-        this.Map = _searchMap;
-    }
-
-    //center the search map on an address
-    CenterSearchResults = function (where) {
-        _geocoder.geocode({ 'address': where }, _callbackForCenterSearchResults);
-    }
-
-    _callbackForCenterSearchResults = function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            _searchMap.setCenter(results[0].geometry.location);
-            this.Map = _searchMap;
-            //_map.setZoom(9);
-            //alert(results[0].geometry.location);
-            //LoadPin(results[0].geometry.location, 'Votre recherche');
-        }
-        else {
-            //alert("La géolocalisation de votre lieu a échouée");
-            return;
-        }
+        _initialBounds = bounds;
     }
 
     //find address on the map with draggable pin
@@ -291,51 +339,11 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         }
     }
 
-    _renderLocalisations = function (localisations) {
-        $("#localisationList").empty();
-
-        ClearMap();
-
-        $.each(localisations, function (i, localisation) {
-
-            var LL = new google.maps.LatLng(localisation.Latitude, localisation.Longitude);
-
-            // Add Pin to Map
-            LoadPin(LL, _getLocalisationLinkHTML(localisation));
-
-            //Add a localisation to the <ul> localisationList on the right
-            $('#localisationList').append($('<li/>')
-                              .attr("class", "localisationItem")
-                              .append(_getLocalisationLinkHTML(localisation))
-                              .append($('<br/>'))
-                              .append(_getLocalisationDescriptionHTML(localisation)));
-        });
-
-        // Adjust zoom to display all the pins we just added.
-
-        // Display the event's pin-bubble on hover.
-        /*$(".localisationItem").each(function (i, localisation) {
-        $(localisation).hover(
-        function () { _map.ShowInfoBox(_shapes[i]); },
-        function () { _map.HideInfoBox(_shapes[i]); }
-        );
-        });*/
-
-        function _getLocalisationLinkHTML(localisation) {
-            return '<a href=/Localisation/Details/' + localisation.ID + '>' + localisation.Name + '</a>';
-        }
-
-        function _getLocalisationDescriptionHTML(localisation) {
-            return '<p>' + localisation.Description + '</p>';
-        }
-    }
-
     //public methods
     this.LoadSearchMap = LoadSearchMap;
     this.LoadDetailMap = LoadDetailMap;
     this.ClearMap = ClearMap;
     this.LoadPin = LoadPin;
     this.FindAddressOnMap = FindAddressOnMap;
-    this.CenterSearchResults = CenterSearchResults;
     this.FitBoundsSearchResults = FitBoundsSearchResults;
 }
