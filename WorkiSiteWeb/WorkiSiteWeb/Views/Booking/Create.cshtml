@@ -10,13 +10,17 @@
 @{
     var isEditing = Model.MemberBooking.Id != 0;
 }
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookIt, "Blue")
+
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookIt, "Blue")
-	<div class="bookingFormDiv">
-			@using (Html.BeginForm()) 
-			{ 
+    <div class="blockContainer">
+	    <div class="bookingFormDiv">
+			@using (Html.BeginForm())
+            {
+                <div class="contentBlock">
 				@Html.AntiForgeryToken()
-                @Html.HiddenFor(m=>m.NeedNewAccount)
+                @Html.HiddenFor(m => m.NeedNewAccount)
 				<table>
                     @if (Model.NeedNewAccount)
                     {
@@ -124,7 +128,7 @@
 						</td>
 					</tr>
 					@if (isEditing)
-     {
+                    {
 		 			<tr>
 						<td>
 							<div class="editor-label">
@@ -137,33 +141,28 @@
 							</div>
 						</td>
 					</tr>
-     }
-					<tr>
-						<td>							
-						</td>
-						<td>
-							@if (isEditing)
-       {
-							<div class="editor-field float-left">
-								<div class="buttonStd buttonBlue linkImg"><a href="@Model.ReturnUrl">@Worki.Resources.Views.Booking.BookingString.BackToUrl</a></div>
-							</div>
-       }
-							<div class="editor-field float-right">
-								<input type="submit" class="buttonStd buttonBlue" value="@(isEditing ? Worki.Resources.Views.Booking.BookingString.ConfirmIt : Worki.Resources.Views.Booking.BookingString.BookIt)"/>
-							</div>
-							<div class="clear">
-							</div>
-						</td>
-					</tr>
+                    }
 				</table>
-            } 
-	</div>
+                </div>
+                if (isEditing)
+                {
+					<div class="editor-field float-left">
+						<div class="buttonStd buttonBlue linkImg"><a href="@Model.ReturnUrl">@Worki.Resources.Views.Booking.BookingString.BackToUrl</a></div>
+					</div>
+                }
+				<div class="editor-field float-right">
+					<input type="submit" class="buttonStd buttonBlue" value="@(isEditing ? Worki.Resources.Views.Booking.BookingString.ConfirmIt : Worki.Resources.Views.Booking.BookingString.BookIt)"/>
+				</div>
+				<div class="clear"></div>
+            }
+	    </div>
+    </div>
 </div>
 
 @section ScriptContent
 {
 	<script type="text/javascript">
-	    require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
+	    require(["order!@MiscHelpers.jqueryui", "order!@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
 	        $(".dtp").datetimepicker({
 	            stepHour: 1,
 	            stepMinute: 30,

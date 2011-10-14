@@ -34,6 +34,9 @@ namespace Worki.Infrastructure.Helpers
 		public const string AdminPass = "Admin_Pass";
 		public const string AdminMail = "admin@eworky.com";
 
+        public const string eWorkyFacebook = "http://www.facebook.com/pages/eWorky/226917517335276";
+        public const string eWorkyTwitter = "http://www.twitter.com/#!/eWorky";
+
 		public const string DataConnectionString = "DataConnectionString";
 
 		public const int MinRange = 1;

@@ -291,7 +291,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">id coming from the rental's detail page.</param>
         /// <returns>The contact form to fill.</returns>
-        [AcceptVerbs(HttpVerbs.Get)]
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
         [ActionName("envoyer-email-propriétaire")]
         public virtual ActionResult SendMailOwner(int id)
         {

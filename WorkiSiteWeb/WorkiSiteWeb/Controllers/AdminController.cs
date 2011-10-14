@@ -992,5 +992,44 @@ namespace Worki.Web.Controllers
 
         #endregion
 
+        [ActionName("envoyer-listlocmail")]
+        public virtual ActionResult SendListLocMail()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.GetMember(User.Identity.Name);
+
+            if (member.IsValidUser())
+            {
+                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var Loc = lRepo.GetAll();
+
+                dynamic Mail = new Email(MiscHelpers.ListLocMailView);
+                var count = 0;
+
+                foreach (var item in Loc)
+                {
+                    if (count > 0)
+                        break;
+                    else
+                    {
+                        Mail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+                        Mail.To = "mika7869@gmail.com";
+                        // Mail.To = item.Mail;
+                        Mail.Subject = "TEST MAIL";
+                        Mail.Type = Localisation.LocalisationTypes[item.TypeValue].ToLower();
+                        Mail.Link = item.GetDetailFullUrl(Url);
+                    }
+                    count++;
+                }
+                
+                Mail.Send();
+            }
+
+            TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.ListLocSent;
+
+            return RedirectToAction(MVC.Admin.Index());
+        }
+
     }
 }

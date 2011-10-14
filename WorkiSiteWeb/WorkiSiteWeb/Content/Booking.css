@@ -1,9 +1,4 @@
-﻿.bookingFormDiv
-{
-	padding-left: 250px;
-}
-
-.bookingFormDiv table td:first-child
+﻿.bookingFormDiv table td:first-child
 {
 	padding-right:5px;
 }

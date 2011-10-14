@@ -3,8 +3,8 @@
 <div class="rentalDetailHead">
     <div class="float-left">
         <h1 class="red">@Model.GetDisplayName()</h1>
-        @{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Address + " " + Model.PostalCode + " " + Model.City;}
-        <a href="@itinLink" target="_blank">@Model.FullAddress</a>
+        <!--@@{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Address + " " + Model.PostalCode + " " + Model.City;}
+        <a href="@@itinLink" target="_blank">@@Model.FullAddress</a>-->
     </div>
     <div class="white float-right">
         <span class="rentalSummaryElem borderRadius">@Model.SurfaceString</span>
@@ -93,26 +93,27 @@
         </div>
         <div class="contentBlock">
 			<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Owner</h3>
-            @Model.Member.GetFullDisplayName()<br />
-            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel </span>@Html.GetPhoneFormat(Model.Member.MemberMainData.PhoneNumber)<br />
+            <!--@@Model.Member.GetFullDisplayName()<br />
+            <span class="bold">@@Worki.Resources.Views.Localisation.LocalisationString.Tel </span>@@Html.GetPhoneFormat(Model.Member.MemberMainData.PhoneNumber)<br />-->
             @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.SendMailToOwner, MVC.Rental.SendMailOwner(Model.Id), new { @class = "red" })<br />
             <span class="bold red">@Worki.Resources.Models.Rental.Rental.Reference : </span>@Model.Reference<br />
             <span class="bold red">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@string.Format("{0:dd/MM/yyyy}", Model.TimeStamp)<br />
 		</div>
-        <div class="contentBlock">
-            <h3 class="red">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
-            <div class="rentalMap">
-                @Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
-            </div>
-            @if (Model.RentalAccesses.Count > 0)
-            {
+
+        @if (Model.RentalAccesses.Count > 0)
+        { 
+            <div class="contentBlock">
+                <h3 class="red">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
+                <!--<div class="rentalMap">
+                    @@Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
+                </div>-->
                 <span class="bold red">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span><br />
-                foreach (var item in Model.RentalAccesses)
-                {
-                    @item.DisplayName<br />
-                }
-            }
-        </div>
+                    @foreach (var item in Model.RentalAccesses)
+                    {
+                        @item.DisplayName<br />
+                    }
+            </div>
+        }
         @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
         {
             <div class="contentBlock">

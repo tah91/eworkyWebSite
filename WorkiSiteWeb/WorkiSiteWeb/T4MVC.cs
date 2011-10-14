@@ -388,6 +388,9 @@ namespace Links {
         public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
                       
         public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
+        public static readonly string main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/main.min.js") ? Url("main.min.js") : Url("main.js");
+                      
+        public static readonly string main_min_js = Url("main.min.js");
         public static readonly string MicrosoftAjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftAjax.min.js") ? Url("MicrosoftAjax.min.js") : Url("MicrosoftAjax.js");
                       
         public static readonly string MicrosoftAjax_min_js = Url("MicrosoftAjax.min.js");
@@ -400,6 +403,9 @@ namespace Links {
         public static readonly string modernizr_1_7_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-1.7.min.js") ? Url("modernizr-1.7.min.js") : Url("modernizr-1.7.js");
                       
         public static readonly string modernizr_1_7_min_js = Url("modernizr-1.7.min.js");
+        public static readonly string order_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/order.min.js") ? Url("order.min.js") : Url("order.js");
+                      
+        public static readonly string order_min_js = Url("order.min.js");
         public static readonly string require_jquery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/require-jquery.min.js") ? Url("require-jquery.min.js") : Url("require-jquery.js");
                       
         public static readonly string require_jquery_min_js = Url("require-jquery.min.js");
@@ -439,6 +445,7 @@ namespace Links {
                           
             public static readonly string galleria_1_2_4_min_js = Url("galleria-1.2.4.min.js");
             public static readonly string galleria_classic_css = Url("galleria.classic.css");
+            public static readonly string galleria_classic_min_css = Url("galleria.classic.min.css");
             public static readonly string galleria_classic_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/galleria.classic.min.js") ? Url("galleria.classic.min.js") : Url("galleria.classic.js");
                           
             public static readonly string galleria_classic_min_js = Url("galleria.classic.min.js");
@@ -477,6 +484,7 @@ namespace Links {
             public static readonly string homeLogo3_png = Url("homeLogo3.png");
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
             public static readonly string iconeMap_png = Url("iconeMap.png");
+            public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
             public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
@@ -877,6 +885,7 @@ namespace Worki.Web.Controllers {
             public readonly string EditPress = "EditPress";
             public readonly string DeletePress = "supprimer-press";
             public readonly string IndexRental = "IndexRental";
+            public readonly string SendListLocMail = "envoyer-listlocmail";
         }
 
 
@@ -1088,6 +1097,11 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult IndexRental(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SendListLocMail() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendListLocMail);
             return callInfo;
         }
 
@@ -1504,7 +1518,6 @@ namespace Worki.Web.Controllers {
             public readonly string FullSearchPerTypeSpecial = "recherche-special";
             public readonly string FullSearchResult = "resultats-liste";
             public readonly string FullSearchResultDetail = "resultats-detail";
-            public readonly string SendListLocMail = "envoyer-listlocmail";
         }
 
 
@@ -1653,11 +1666,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult SendListLocMail() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendListLocMail);
             return callInfo;
         }
 
