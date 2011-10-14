@@ -2,4 +2,21 @@
 From: @Html.Raw(ViewBag.From)
 Subject: @Html.Raw(ViewBag.Subject)
 
-<p>@Html.Raw(MiscHelpers.Nl2Br(ViewBag.Content))</p>
+<div>
+Bonjour,<br />
+ <br />
+Toutes nos félicitations, nous tenons à vous informer que votre @ViewBag.Type a été référencé par un utilisateur sur le site eWorky en tant qu’espace agréable pour venir travailler ! <br />
+<br />
+Afin de garantir la bonne qualité des informations sur le site, nous vous invitons à <b>vérifier que les informations fournies sur votre fiche-lieu sont exactes</b> : <a href="@ViewBag.Link">@ViewBag.Link</a>.<br />
+Si vous souhaitez modifier ces informations, il vous suffit de cliquer en bas à droite de la fiche sur Editer le lieu, puis de vous inscrire en un clic.<br />
+ <br />
+Nous vous invitons de plus à <b>proposer à vos clients d’ajouter des commentaires</b> sur votre fiche-lieu, étant donné qu’un tri des résultats par note sera bientôt disponible.<br />
+ <br />
+Bien cordialement,<br />
+ <br />
+L’équipe eWorky<br />
+<a href="@MiscHelpers.ContactMail">@MiscHelpers.ContactMail</a><br />
+01 77 17 04 21 <br />
+<a href="@MiscHelpers.eWorkyFacebook">Suivez-nous sur Facebook</a><br />
+<a href="@MiscHelpers.eWorkyTwitter">Suivez-nous sur twitter</a><br />
+</div>
