@@ -64,7 +64,8 @@ namespace Worki.Data.Models
                 //case city
                 else 
                 {
-                    return PostalCode == criterion.PostalCode && Address.Contains(criterion.Address);
+                    //return PostalCode == criterion.PostalCode && Address.Contains(criterion.Address);
+                    return PostalCode == criterion.PostalCode;
                 }
             }
         }
