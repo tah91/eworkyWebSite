@@ -99,10 +99,11 @@ namespace Worki.Web.Controllers
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
             var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
             var indexModel = new IndexViewModel()
             {
-                LocalisationCount = lRepo.GetCount(),
+                LocalisationCount = lRepo.GetCount() + rRepo.GetCount(),
                 WelcomePeople = wpRepo.GetAll().OrderByDescending(wp => wp.Id).ToList(),
                 BlogPosts = GetBlogPosts()
             };

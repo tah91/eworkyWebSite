@@ -61,12 +61,22 @@ li#importSubMenu
 
 li#bookingsSubMenu
 {
-    list-style-image: url(images/csv-import.png);
+    list-style-image: url(images/booking.png);
 }
 
 li#rentalsSubMenu
 {
-    list-style-image: url(images/csv-import.png);
+    list-style-image: url(images/rental.png);
+}
+
+li#pressSubMenu
+{
+    list-style-image: url(images/press.png);
+}
+
+li#emailSubMenu
+{
+    list-style-image: url(images/e-mail.png);
 }
 
 .adminSubMenu li a
