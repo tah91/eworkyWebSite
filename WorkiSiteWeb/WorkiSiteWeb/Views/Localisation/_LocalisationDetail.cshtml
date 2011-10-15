@@ -1,24 +1,14 @@
 ﻿@model Worki.Data.Models.Localisation
 
-<div class="vcard hreview">
 <div class="localisationDetailHead">
 @*    <div class="localisationLogo float-left">
 	@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetLogoPic(), true), Model.Name)
     </div>*@
 
-    <span class="geo">
-        <span class="latitude">
-           <span class="value-title" title="@Model.Latitude"></span>
-        </span>
-        <span class="longitude">
-           <span class="value-title" title="@Model.Longitude"></span>
-        </span>
-    </span>
-
     <div class="localisationTitle float-left">
         <div class="float-left blue bold">
         <span class="item">
-            <span class="localisationName fn org">@Model.Name</span>
+            <span class="localisationName">@Model.Name</span>
         </span>
         </div>
         <div class="clear">
@@ -26,8 +16,8 @@
         <div class="localisationSubtitle">
             <span class="localisationCity bold blue">@Localisation.LocalisationTypes[Model.TypeValue]</span>&nbsp;&nbsp;
             @{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;}
-            <a href="@itinLink" class="adr" target="_blank">
-                <span class="street-address">@Model.Adress</span> - <span class="postal-code">@Model.PostalCode</span> <span class="locality">@Model.City</span>
+            <a href="@itinLink" target="_blank">
+				@Model.Adress - @Model.PostalCode @Model.City
             </a>
         </div>
     </div>
@@ -273,7 +263,7 @@
             <table>
                 <tr>
                     <td>
-                        <span class="rating">@Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.General))</span>&nbsp;&nbsp;
+                        @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.General))&nbsp;&nbsp;
                     </td>
                     <td>
                             <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.GeneralOpinion</span>
@@ -335,16 +325,16 @@
                     }
                     if (!string.IsNullOrEmpty(Model.WebSite))
                     {
-                        <span class="url"><a href="@Model.WebSite" title="@Model.WebSite" class="value-title" target="_blank">@Worki.Resources.Models.Localisation.Localisation.WebSite</a></span><br />
+                        <a href="@Model.WebSite" title="@Model.WebSite" class="value-title" target="_blank">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
                     }
                     if (!string.IsNullOrEmpty(Model.PhoneNumber))
                     {
-                            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
-                        <span class="tel">@Html.GetPhoneFormat(Model.PhoneNumber)</span><br />
+                        <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
+                        <span>@Html.GetPhoneFormat(Model.PhoneNumber)</span><br />
                     }
                     if (!string.IsNullOrEmpty(Model.Fax))
                     {
-                            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
+                        <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
                         @Html.GetPhoneFormat(Model.Fax)<br />
                     }
                 }
@@ -380,7 +370,6 @@
     </div>
     <div class="clear">
     </div>
-</div>
 </div>
 <div class="buttonStd buttonBlue linkImg float-right">
 @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
