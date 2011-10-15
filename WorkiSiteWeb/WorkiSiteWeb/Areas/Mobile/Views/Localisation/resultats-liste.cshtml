@@ -84,8 +84,13 @@
                 bounds = new google.maps.LatLngBounds();
 				var extendCount = 0;
 				var extendMax = 7;
+				var addedCount = 0;
+				var addedMax = 50;
 				function addMarker(latitude, longitude, name, localisationId)
 				{
+					if(addedCount++>addedMax){
+						return;
+					}
 					var handler = function () {
 						$.ajax({
 							url: "@Url.Action(MVC.Mobile.Localisation.ActionNames.LocalisationDescription, MVC.Mobile.Localisation.Name)",
