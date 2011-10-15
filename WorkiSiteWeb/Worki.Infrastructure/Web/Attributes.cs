@@ -44,9 +44,20 @@ namespace Worki.Infrastructure
             if (!httpContext.Session.IsNewSession)
                 return true;
 
-            // Don't redirect non-mobile browsers
-			if (!httpContext.Request.Browser.IsMobileDevice)
-			    return true;
+            // Don't redirect non-mobile browsers, or mobile but tablet
+			var isMobile = false;
+			var isTablet = false;
+			try
+			{
+				isMobile = httpContext.Request.Browser.IsMobileDevice;
+				isTablet = bool.Parse(httpContext.Request.Browser["is_tablet"]);
+			}
+			catch(Exception)
+			{
+			
+			}
+			if (!isMobile || isTablet)
+				return true;
 
             // Don't redirect requests for the Mobile area
             if (Regex.IsMatch(httpContext.Request.Url.PathAndQuery, "/mobile($|/)"))
