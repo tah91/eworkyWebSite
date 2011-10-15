@@ -1,7 +1,7 @@
 ﻿@model Worki.Data.Models.Localisation
     
 <div class="ratingContainer">
-    @Html.ReadOnlyRating(Model.GetRatingAverage(RatingType.General))
+    @RazorHelpers.ReadOnlyRating(Model.GetRatingAverage(RatingType.General))
     <div class="clear">
     </div> 
 </div>

@@ -84,3 +84,9 @@
         </tr> 
 		}
 }
+
+@helper ReadOnlyRating(double value)
+	{
+		<div class="rateit" data-rateit-value="@value" data-rateit-readonly="true"></div>
+		<meta itemprop="ratingValue" content ="@value"/>
+}

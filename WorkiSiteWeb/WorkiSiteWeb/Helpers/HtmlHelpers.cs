@@ -191,17 +191,6 @@ namespace Worki.Web.Helpers
                 return MvcHtmlString.Create(time.Value.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR")));
         }
 
-        public static MvcHtmlString ReadOnlyRating(this HtmlHelper html, double value)
-        {
-            StringBuilder result = new StringBuilder();
-            TagBuilder tag = new TagBuilder("div");
-            tag.MergeAttribute("class", "rateit");
-            tag.MergeAttribute("data-rateit-value", value.ToString(CultureInfo.InvariantCulture));
-            tag.MergeAttribute("data-rateit-readonly", "true");
-            result.AppendLine(tag.ToString());
-            return MvcHtmlString.Create(result.ToString());
-        }
-
         //to improve
         public static MvcHtmlString TruncateAtWord(this HtmlHelper html, string str, int length)
         {

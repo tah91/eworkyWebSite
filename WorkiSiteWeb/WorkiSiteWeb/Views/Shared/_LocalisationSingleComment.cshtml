@@ -8,11 +8,13 @@
 	}
 }
 
-<div class="profilComment">
+<div class="profilComment" itemprop="reviews" itemscope itemtype="http://schema.org/Review">
 	<div class="profilCommentHead">
-        @Html.ReadOnlyRating(Model.GetRating())
+		<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+			@RazorHelpers.ReadOnlyRating(Model.GetRating())
+		</span>
         <span class="memberLink">
-            <span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span>
+            <span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId), new {itemprop="author" })</span>
             @if (displayLoc)
             { 
                 <span> @Worki.Resources.Views.Localisation.LocalisationString.AboutPlace </span>
@@ -24,8 +26,9 @@
     @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
     </div>
     <div class="commentContent float-left" style=@(displayLoc ? "width:70%" : "")>
-        <p>@Html.Nl2Br(Model.Post)</p>
+        <p itemprop="description">@Html.Nl2Br(Model.Post)</p>
         <p class="commentDate">@Model.Date.ToString("F", System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR"))</p>
+		<meta  itemprop="datePublished" content="@Model.Date.ToString("yyyy-MM-dd")" />
     </div>
 	@if (displayLoc)
 	{
