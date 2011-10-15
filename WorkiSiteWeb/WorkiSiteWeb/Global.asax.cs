@@ -175,6 +175,21 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
 			);
 
+			//old urls
+			routes.MapRoute(
+				"",
+				"recherche/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
+				new { controller = "Localisation", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
+			);
+
+			routes.MapRoute(
+				"",
+				"recherche/{action}/{lieu}/{page}/{offer-type}/{tout}/",
+				new { controller = "Localisation", action = "Default" },
+				new string[] { "Worki.Web.Controllers" }
+			);
+
             //routes.MapRoute(
             //    "",
             //    "lieu-de-travail/{action}/{type}/",
