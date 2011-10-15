@@ -210,6 +210,14 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
             );
 
+			//routing error handling
+			routes.MapRoute(
+				"Error",
+				"{*url}",
+				new { controller = "Home", action = "Error" },
+				new string[] { "Worki.Web.Controllers" }
+			);
+
             //foreach (Route r in routes)
             //{
             //    if (!(r.RouteHandler is SingleCultureMvcRouteHandler))
