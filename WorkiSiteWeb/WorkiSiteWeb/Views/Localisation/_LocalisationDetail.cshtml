@@ -192,7 +192,7 @@
 			</div>
 		</div>
 		<div class="localisationDetailRight blockContainer float-right">
-			@if (Model.Bookable)
+			@if (Html.IsDebug() && Model.Bookable)
 			{
 	   			<div class="contentBlock">
 					<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.NeedToBookPlace</h3>

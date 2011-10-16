@@ -10,13 +10,11 @@ namespace Worki.Web.Helpers
 {
     public static class ModelHelper
 	{
-        static bool test = false;
-
         public static string AbsoluteAction(this UrlHelper url, string action, string controller, object routeValues)
         {
             Uri requestUrl = url.RequestContext.HttpContext.Request.Url;
 
-            var host = test ? requestUrl.Host : requestUrl.Authority;
+            var host = requestUrl.Authority;
 
             string absoluteAction = string.Format("{0}://{1}{2}",
                                                   requestUrl.Scheme,

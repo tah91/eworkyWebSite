@@ -345,8 +345,6 @@ namespace Worki.Web.Helpers
             return s;
         }
 
-        static bool _IsAzureDebug = bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
-
         /// <summary>
         /// Append build dependend id at the end of css/ js file
         /// to force ctrl f5 on each build
@@ -419,5 +417,16 @@ namespace Worki.Web.Helpers
 		}
 
 		#endregion
+
+		static bool _IsAzureDebug = bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
+
+		/// <summary>
+		/// Tell if it is in debug or prod
+		/// </summary>
+		/// <returns>true if in debug</returns>
+		public static bool IsDebug(this HtmlHelper instance)
+		{
+			return _IsAzureDebug;
+		}
     }
 }

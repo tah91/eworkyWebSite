@@ -14,7 +14,7 @@
 			@RazorHelpers.ReadOnlyRating(Model.GetRating())
 		</span>
         <span class="memberLink">
-            <span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId), new {itemprop="author" })</span>
+            <span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId), new { itemprop = "author" })</span>
             @if (displayLoc)
             { 
                 <span> @Worki.Resources.Views.Localisation.LocalisationString.AboutPlace </span>

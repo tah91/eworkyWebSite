@@ -78,9 +78,11 @@
             });
         }
 
+        var count = 0;
+        var maxCount = 2;
         require.ready(function () {
             function watchPosition() {
-                if (navigator.geolocation) {
+            	if (navigator.geolocation && count++ < maxCount) {
                     navigator.geolocation.watchPosition(successCallback, errorCallback, { enableHighAccuracy: true, maximumAge: 30000, timeout: 10000 });
                 }
             }
@@ -94,14 +96,16 @@
                 workiReverseGeoCoder.ReverseGeocodeAddress();
             }
             function errorCallback(error) {
-                alert('@Worki.Resources.Views.Mobile.MobileString.AlertSearch');
+                //alert('@Worki.Resources.Views.Mobile.MobileString.AlertSearch');
                 return false;
             }
             $('#submitCurrentLoc').click(function () {
                 watchPosition();
             });
 
-            watchPosition();
+            $(document).ready(function () {
+            	watchPosition();
+            });
         });
     </script>
 }
