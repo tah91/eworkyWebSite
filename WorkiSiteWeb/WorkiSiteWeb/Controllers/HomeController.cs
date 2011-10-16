@@ -45,15 +45,15 @@ namespace Worki.Web.Controllers
         public const string BlogUrl = "http://blog.eworky.com";
         public const string JTPath = "http://vimeo.com/29038745";
         public const string IndexViewModelContent = "IndexViewModel";
-        const string _BlogCacheKey = "BlogCacheKey2";
+        const string _BlogCacheKey = "BlogCacheKey";
         const int _CacheDaySpan = 1;
         const int _MaxBlogItem = 4;
 
         IEnumerable<BlogPost> GetBlogPosts()
         {
-            var fromCache = DataCacheSingleton.Instance.Cache.Get(_BlogCacheKey);
-            if (fromCache != null)
-                return (IEnumerable<BlogPost>)fromCache;
+			var fromCache = DataCacheSingleton.Instance.Cache.Get(_BlogCacheKey);
+			if (fromCache != null)
+				return (IEnumerable<BlogPost>)fromCache;
 
             var toRet = new List<BlogPost>();
 

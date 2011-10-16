@@ -387,17 +387,17 @@
             $('.searchFormDiv .titleDiv h1').text(newTitle);
         }
 
-        $('#searchPerType').live('click', function () {
+        $('#searchPerType').live('click', function (event) {
             SelectForm(event, '@eSearchType.ePerType', '@eDirectAccessType.eNone');
         });
 
-        $('#searchPerNeed').live('click', function () {
+        $('#searchPerNeed').live('click', function (event) {
             SelectForm(event, '@eSearchType.ePerOffer', '@eDirectAccessType.eNone');
         });
 
         DirectAccessSelectForm = function (theType) {
             var id = '#' + theType;
-            $(id).click(function () {
+            $(id).click(function (event) {
                 SelectForm(event, '@eSearchType.ePerType', theType);
             });
         }
