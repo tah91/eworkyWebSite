@@ -428,5 +428,21 @@ namespace Worki.Web.Helpers
 		{
 			return _IsAzureDebug;
 		}
+
+        public static RouteValueDictionary GetOrderRVD(RouteValueDictionary rvd, eOrderBy order)
+        {
+            switch (order)
+            {
+                case eOrderBy.Distance:
+                    rvd["order"] = (int)eOrderBy.Distance;
+                    break;
+                case eOrderBy.Rating:
+                    rvd["order"] = (int)eOrderBy.Rating;
+                    break;
+                default:
+                    break;
+            }
+            return (rvd);
+        }
     }
 }
