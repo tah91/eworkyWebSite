@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AllSupelecNeedWifi" xml:space="preserve">
-    <value>Tous les trois ingénieurs de Supélec ou de Centrale Lyon, presque tous déjà entrepreneurs (Greenworking), on avait régulièrement besoin d’accéder à un wifi, de louer une salle de réunion ou même une salle de formation.</value>
+    <value>Tous les trois très travailleurs, presque tous déjà entrepreneurs (Greenworking), on avait régulièrement besoin d’accéder à un wifi, de louer une salle de réunion ou même une salle de formation.</value>
   </data>
   <data name="ANeed" xml:space="preserve">
     <value>Un besoin</value>
@@ -215,7 +215,7 @@
     <value>Vous trouverez bientôt ici également un dossier de presse sur eWorky.</value>
   </data>
   <data name="SpeechForJournalists" xml:space="preserve">
-    <value>Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d'un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez nous à {0}</value>
+    <value>Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d'un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez-nous à {0}.</value>
   </data>
   <data name="SubmitWorkplace" xml:space="preserve">
     <value>Proposer des lieux de travail</value>

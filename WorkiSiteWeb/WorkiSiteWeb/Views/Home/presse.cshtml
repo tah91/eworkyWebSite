@@ -36,8 +36,8 @@
                 @foreach (var item in Model)
                 {
                     <li>                    
-                        <h4 class="bold">@item.Title - @String.Format("{0:dd/MM/yyyy}", item.Date)</h4>
-                        <a href="@item.Url" target="_blank">@item.Description</a>
+                        <h4 class="bold"><a href="@item.Url" target="_blank">@item.Title</a> - @String.Format("{0:dd/MM/yyyy}", item.Date)</h4>
+                        <p>@item.Description</p>
                     </li>
                 }
             </ul>
