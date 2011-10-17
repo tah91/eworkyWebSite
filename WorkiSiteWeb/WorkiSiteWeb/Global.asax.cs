@@ -213,6 +213,13 @@ namespace Worki.Web
 
             routes.MapRoute(
                 "", // Nom d'itinéraire
+                "recherche/{action}/{id}", // URL avec des paramètres
+                new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                "", // Nom d'itinéraire
                 "annonces/{action}/{id}", // URL avec des paramètres
                 new { controller = "Rental", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
