@@ -71,41 +71,45 @@
 
         });
 
+        var count = 0;
+        var maxCount = 3;
+
         function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
                 var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
                 workiAutocomplete.SetAutocomplete();
-            });
-        }
 
-        var count = 0;
-        var maxCount = 2;
-        require.ready(function () {
-            function watchPosition() {
-            	if (navigator.geolocation && count++ < maxCount) {
-                    navigator.geolocation.watchPosition(successCallback, errorCallback, { enableHighAccuracy: true, maximumAge: 30000, timeout: 10000 });
+                function watchPosition() {
+                    if (navigator.geolocation && count++ < maxCount) {
+                        try {
+                            navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+                        }
+                        catch (e) {
+                            errorHandler();
+                        }
+                    }
                 }
-            }
 
-            function successCallback(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-                $('#Criteria_LocalisationData_Latitude').val(latitude);
-                $('#Criteria_LocalisationData_Longitude').val(longitude);
-                var workiReverseGeoCoder = new ReverseGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
-                workiReverseGeoCoder.ReverseGeocodeAddress();
-            }
-            function errorCallback(error) {
-                //alert('@Worki.Resources.Views.Mobile.MobileString.AlertSearch');
-                return false;
-            }
-            $('#submitCurrentLoc').click(function () {
+                function successCallback(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    $('#Criteria_LocalisationData_Latitude').val(latitude);
+                    $('#Criteria_LocalisationData_Longitude').val(longitude);
+                    var workiReverseGeoCoder = new ReverseGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
+                    workiReverseGeoCoder.ReverseGeocodeAddress();
+                }
+                function errorCallback() {
+                    //alert('@Worki.Resources.Views.Mobile.MobileString.AlertSearch');
+                    return false;
+                }
+
+                $('#submitCurrentLoc').click(function () {
+                    $('#Criteria_Place').val('');
+                    watchPosition();
+                });
+
                 watchPosition();
             });
-
-            $(document).ready(function () {
-            	watchPosition();
-            });
-        });
+        }
     </script>
 }

@@ -573,6 +573,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\wurfl.xml.gz" />
+    <Content Include="Areas\Mobile\Views\Account\connexion.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

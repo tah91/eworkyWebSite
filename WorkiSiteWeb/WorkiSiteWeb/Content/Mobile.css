@@ -68,6 +68,8 @@ body
 #header
 {
     background: whiteSmoke;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 10px;
 }
 
 #main 

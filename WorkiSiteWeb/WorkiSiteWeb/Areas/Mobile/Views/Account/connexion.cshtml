@@ -1,0 +1,26 @@
+﻿@model Worki.Data.Models.LogOnModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.BestWorkspace)</title>
+    <link href="@Url.Content(Links.Content.Index_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(Links.Content.jquery_ui_1_8_12_custom_css)" rel="stylesheet" type="text/css"/>
+}
+
+<div class="detailContent">
+	<div class="blockContainer">
+		<div class="contentBlock">
+			<h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.ConnectNow</h3>	    	       
+			@Html.Partial(MVC.Mobile.Shared.Views._Connexion)
+		</div>
+	</div>
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        require(["@Url.VersionedContent(Links.Scripts.jquery_placeholder_js)"], function () {
+            $('input:text').placeholder();
+        });
+    </script>
+}

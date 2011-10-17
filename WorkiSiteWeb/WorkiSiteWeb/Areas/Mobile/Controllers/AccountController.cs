@@ -42,38 +42,38 @@ namespace Worki.Web.Areas.Mobile.Controllers
 		/// <param name="model">The logon data from the form</param>
 		/// <param name="returnUrl">The url to redirect to in case of sucess</param>
 		/// <returns>Redirect to return url if any, if not to home page</returns>
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		[ActionName("connexion")]
-		public virtual ActionResult LogOn(LogOnModel model, string returnUrl)
-		{
-			if (ModelState.IsValid)
-			{
-				if (MembershipService.ValidateUser(model.Login, model.Password))
-				{
-					var context = ModelFactory.GetUnitOfWork();
-					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var member = mRepo.GetMember(model.Login);
-					var userData = member.GetUserData();
-					FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
-					if (!String.IsNullOrEmpty(returnUrl))
-					{
-						return Redirect(returnUrl);
-					}
-					else
-					{
-						return RedirectToAction(MVC.Mobile.Home.Index());
-					}
-				}
-				else
-				{
-					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
-				}
-			}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("connexion")]
+        public virtual ActionResult LogOn(LogOnModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                if (MembershipService.ValidateUser(model.Login, model.Password))
+                {
+                    var context = ModelFactory.GetUnitOfWork();
+                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                    var member = mRepo.GetMember(model.Login);
+                    var userData = member.GetUserData();
+                    FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+                    if (!String.IsNullOrEmpty(returnUrl) && !returnUrl.Contains("returnUrl"))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction(MVC.Mobile.Home.Index());
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
+                }
+            }
 
-			// Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
-			return View(model);
-		}
+            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
+            return View(model);
+        }
 
 		/// <summary>
 		/// Action method to login off, remove the cookie of display name

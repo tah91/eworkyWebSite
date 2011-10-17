@@ -2298,6 +2298,7 @@ namespace Worki.Web.Areas.Mobile.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string connexion = "~/Areas/Mobile/Views/Account/connexion.cshtml";
         }
     }
 
