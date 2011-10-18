@@ -19,13 +19,18 @@
 	}
 }
 
+<div class="float-left">
+    @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
+</div>
 <div class="float-right">
-    @Html.ActionLink("Trier par Note", MVC.Localisation.ActionNames.FullSearchResult, PagingHelpers.GetOrderRVD(rvd, eOrderBy.Rating), new { @class = "buttonStd buttonBlue linkImg inline-block" })
-    @Html.ActionLink("Trier par Distance", MVC.Localisation.ActionNames.FullSearchResult, PagingHelpers.GetOrderRVD(rvd, eOrderBy.Distance), new { @class = "buttonStd buttonBlue linkImg inline-block" })
+    <div class="buttonStd buttonBlue linkImg inline-block">
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, PagingHelpers.GetOrderCrit(rvd, eOrderBy.Distance))
+    </div>
+    <div class="buttonStd buttonBlue linkImg inline-block">
+        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, PagingHelpers.GetOrderCrit(rvd, eOrderBy.Rating))
+    </div>
 </div>
 <div class="clear"></div>
-
-@RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
 
 <div class="detailContent">
     <div class="searchFormBlock float-right">
@@ -152,7 +157,19 @@
 			}
 
 			<div class="pager">
-				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.FullSearchResult, rvd); })
+				@Html.PageLinks(Model.PagingInfo, x => {
+                                                        rvd["page"] = x;
+                                                        var url = Context.Request.RawUrl.Split('/');
+                                                        if (url[url.Length - 1] == "1")
+                                                        {
+                                                            rvd["order"] = (int)eOrderBy.Distance;
+                                                        }
+                                                        else
+                                                        {
+                                                            rvd["order"] = (int)eOrderBy.Rating;
+                                                        }
+                                                        return Url.Action(MVC.Localisation.ActionNames.FullSearchResult, rvd);
+                                                        })
 			</div>
         </div>    
     </div>

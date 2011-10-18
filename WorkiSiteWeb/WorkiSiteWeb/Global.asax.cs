@@ -163,14 +163,14 @@ namespace Worki.Web
 
 			routes.MapRoute(
 				"",
-				"lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
+                "lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/{order}/",
 				new { controller = "Localisation", action = "Default" },
 				new string[] { "Worki.Web.Controllers" }
 			);
 
 			routes.MapRoute(
 				"",
-				"lieu-de-travail/{action}/{lieu}/{page}/{offer-type}/{tout}/",
+                "lieu-de-travail/{action}/{lieu}/{page}/{offer-type}/{tout}/{order}/",
 				new { controller = "Localisation", action = "Default" },
 				new string[] { "Worki.Web.Controllers" }
 			);

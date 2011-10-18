@@ -429,7 +429,7 @@ namespace Worki.Web.Helpers
 			return _IsAzureDebug;
 		}
 
-        public static RouteValueDictionary GetOrderRVD(RouteValueDictionary rvd, eOrderBy order)
+        public static RouteValueDictionary GetOrderCrit(RouteValueDictionary rvd, eOrderBy order)
         {
             switch (order)
             {
