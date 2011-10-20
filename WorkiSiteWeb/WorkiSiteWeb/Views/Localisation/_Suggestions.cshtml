@@ -1,0 +1,13 @@
+﻿@model System.Collections.Generic.List<Localisation>
+
+<div class="contentBlock">
+    <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>
+        <ul>
+            @{
+                foreach (var item in Model)
+                {
+                    <li><a href="@item.GetDetailFullUrl(Url)">@item.Name</a></li>
+                }
+            }
+        </ul>
+</div>

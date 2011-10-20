@@ -255,4 +255,7 @@
   <data name="Localisation" xml:space="preserve">
     <value>Localisation</value>
   </data>
+  <data name="Suggestion" xml:space="preserve">
+    <value>Suggestion</value>
+  </data>
 </root>

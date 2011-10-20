@@ -354,7 +354,7 @@
 				</div>
 			}
 			<div class="localisationSchedule contentBlock">
-					<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
+				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
 				@if (Model.HasFeature(Feature.Access24, FeatureType.General))
 				{
 					@Html.FeatureLabelFor(Feature.Access24, FeatureType.General)
@@ -376,6 +376,7 @@
 					@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.ContactMail
 				}
 			</div>
+            @Html.Partial(MVC.Localisation.Views._Suggestions, MVC.Localisation.Suggestions(Model.ID))
 		</div>
 		<div class="clear">
 		</div>
