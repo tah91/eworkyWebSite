@@ -37,7 +37,7 @@
 .directAccess h2{display:inline;font-size:1.5em;margin-bottom:0}
 .directAccess a{font-size:1.2em;font-weight:bold;font-style:normal;text-decoration:none;text-align:left;padding:10px 0 0 40px}
 .directAccessElem{border-bottom:1px solid #5dafde;padding:20px;background:no-repeat 5% center}
-.directAccessHead{padding:20px 0}
+.directAccessHead{padding:15px 0}
 .directAccessStudent{width:35%;background-image:url('images/student.png')}
 .directAccessNomad{width:35%;background-image:url('images/nomad.png')}
 .directAccessWorker{width:35%;background-image:url('images/worker.png')}

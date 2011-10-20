@@ -182,7 +182,7 @@
     <value>Caractéristiques des salles de visio / téléprésence</value>
   </data>
   <data name="WorkingPlace" xml:space="preserve">
-    <value>Caractéristiques des espaces de travail</value>
+    <value>Services proposés</value>
   </data>
   <data name="SendLocalisationMail" xml:space="preserve">
     <value>Bonjour, je viens de découvrir un lieu de travail très sympathique sur eWorky.com : {0}. A bientôt !</value>
