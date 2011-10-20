@@ -135,7 +135,19 @@
 				var visioRoomFeatures = new List<Feature>();
 				var emptyFeature = new List<Feature>();
 				}
-				@if (Model.HasOffer(LocalisationOffer.MeetingRoom))
+				@if (Model.HasOffer(LocalisationOffer.BuisnessRoom))
+				{
+					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom, emptyFeature)
+				}
+				@if (Model.HasOffer(LocalisationOffer.Workstation))
+				{
+					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation, emptyFeature)
+				}
+				@if (Model.HasOffer(LocalisationOffer.SingleDesk))
+				{
+					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesk, emptyFeature)
+				}
+                @if (Model.HasOffer(LocalisationOffer.MeetingRoom))
 				{
 					meetingRoomFeatures = Model.GetFeaturesOfType(FeatureType.MeetingRoom, new List<Feature> { Feature.MeetingRoom });
 					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom, meetingRoomFeatures)
@@ -149,18 +161,6 @@
 				{
 					visioRoomFeatures = Model.GetFeaturesOfType(FeatureType.VisioRoom, new List<Feature> { Feature.VisioRoom });
 					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom, visioRoomFeatures)
-				}
-				@if (Model.HasOffer(LocalisationOffer.BuisnessRoom))
-				{
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom, emptyFeature)
-				}
-				@if (Model.HasOffer(LocalisationOffer.Workstation))
-				{
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation, emptyFeature)
-				}
-				@if (Model.HasOffer(LocalisationOffer.SingleDesk))
-				{
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesk, emptyFeature)
 				}
 				<div class="clear">
 				</div>
