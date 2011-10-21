@@ -11,6 +11,8 @@ using Worki.Web.Helpers;
 using Postal;
 using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Repository;
+using Facebook;
+using System.Collections.Generic;
 
 namespace Worki.Web.Controllers
 {
@@ -20,6 +22,7 @@ namespace Worki.Web.Controllers
     public partial class AccountController : Controller
     {
         public const string MemberDisplayNameString = "MemberDisplayName";
+ 
         public IFormsAuthenticationService FormsService
         {
             get { return _FormsService; }
@@ -429,5 +432,181 @@ namespace Worki.Web.Controllers
         //    }
         //    return RedirectToAction(MVC.Account.ActionNames.LogOn);
         //}
+
+
+        /// <summary>
+        /// Redirige vers le Auth Dialog de Facebook Connect avec les paramètres et permissions nécessaires sur les données utiles 
+        /// à la création de compte
+        /// </summary>
+        /// <returns></returns>
+        [ActionName("facebook-logon")]
+        public virtual ActionResult FacebookLogOn()
+        {
+            string returnUrl = Request.UrlReferrer.AbsoluteUri;
+
+            if (Request.UrlReferrer.AbsolutePath == Url.Action(this.ActionNames.LogOn) || Request.UrlReferrer.AbsolutePath == Url.Action(this.ActionNames.Register))
+            {
+                // Si on fait un facebook connect depuis les pages de login ou de création de compte, on atterrit sur la Home au retour 
+                returnUrl = Url.Action(MVC.Home.Index());
+            }
+
+            string redirectUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Url.Action(this.FacebookOAuth());
+            
+            // Liste des permissions demandées par eWorky sur le profil facebook du user
+            // Pour la liste exhaustives des permissions, voir http://developers.facebook.com/docs/reference/api/permissions/
+            string[] permissions = new[] { "user_location", "email", "offline_access" };
+
+            var oAuthClient = new FacebookOAuthClient(FacebookApplication.Current);
+            oAuthClient.RedirectUri = new Uri(redirectUrl);
+
+            var scope = new System.Text.StringBuilder();
+            
+            if (permissions != null && permissions.Length > 0)
+            {
+                scope.Append(string.Join(",", permissions));
+            }
+
+            var loginUri = oAuthClient.GetLoginUrl(new Dictionary<string, object> { { "state", returnUrl }, { "scope", scope.ToString() } });
+            return Redirect(loginUri.AbsoluteUri);
+        }
+
+
+        /// <summary>
+        /// Callback appelé après l'authentification réussie via le Auth Dialog de Facebook Connect
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        [ActionName("facebook-oauth")]
+        public virtual ActionResult FacebookOAuth(string code, string state)
+        {
+            FacebookOAuthResult oauthResult;
+            if (FacebookOAuthResult.TryParse(Request.Url, out oauthResult))
+            {
+                if (oauthResult.IsSuccess)
+                {
+                    string redirectUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Url.Action(this.FacebookOAuth());
+
+                    var oAuthClient = new FacebookOAuthClient(FacebookApplication.Current);
+                    oAuthClient.RedirectUri = new Uri(redirectUrl);
+                    dynamic tokenResult = oAuthClient.ExchangeCodeForAccessToken(code);
+                    string accessToken = tokenResult.access_token;
+                    
+                    //DateTime expiresOn = DateTime.MaxValue;
+
+                    //if (tokenResult.ContainsKey("expires"))
+                    //{
+                    //    DateTimeConvertor.FromUnixTime(tokenResult.expires);
+                    //}
+
+                    FacebookClient fbClient = new FacebookClient(accessToken);
+                    dynamic me = fbClient.Get("me?fields=id,name,email,first_name,last_name");
+                    long facebookId = Convert.ToInt64(me.id);
+                    string faceBookEmail = ((string)me.email).ToString();
+                    string faceBookFirstName = ((string)me.first_name).ToString();
+                    string faceBookLastName = ((string)me.last_name).ToString();
+
+                    var context = ModelFactory.GetUnitOfWork();
+                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                    var member = mRepo.GetMember(faceBookEmail);
+                    
+                    if (member != null)
+                    {
+                        var userData = member.GetUserData();
+                        FormsService.SignIn(faceBookEmail, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+
+                        if (Url.IsLocalUrl(state))
+                        {
+                            return Redirect(state);
+                        }
+                        else
+                        {
+                            return RedirectToAction(MVC.Home.Index());
+                        }
+                    }
+                    else
+                    {
+                        bool createStatusSuccess = false;
+                        bool addMemberDataSuccess = false;
+
+                        try
+                        {
+                            MembershipCreateStatus createStatus = MembershipService.CreateUser(faceBookEmail, MiscHelpers.FaceBookConstants.FacebookDefaultPassword, faceBookEmail);
+                            createStatusSuccess = createStatus == MembershipCreateStatus.Success;
+                            if (!createStatusSuccess)
+                            {
+                                throw new Exception(AccountValidation.ErrorCodeToString(createStatus));
+                            }
+
+                            //add memberData
+                            context = ModelFactory.GetUnitOfWork();
+                            mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                            var created = mRepo.GetMember(faceBookEmail);
+                            created.MemberMainData = new MemberMainData();
+                            created.MemberMainData.Avatar = string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, facebookId);
+                            created.MemberMainData.Facebook = string.Format(MiscHelpers.FaceBookConstants.FacebookProfileViewPattern, facebookId, facebookId);
+                            created.MemberMainData.FirstName = faceBookFirstName;
+                            created.MemberMainData.LastName = faceBookLastName;
+
+                            // pour un compte facebook, pas besoin d'activation
+                            created.IsApproved = true;
+                            created.LastActivityDate = DateTime.Now;
+                            created.EmailKey = null;
+                            
+                            context.Commit();
+                            addMemberDataSuccess = true;
+                        }
+                        catch (Exception ex)
+                        {
+                            _Logger.Error(ex.Message);
+                        }
+
+                        if (createStatusSuccess && addMemberDataSuccess)
+                        {
+                            //add them to private beta role
+                            context = ModelFactory.GetUnitOfWork();
+                            mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                            member = mRepo.GetMember(faceBookEmail);
+
+                            // Send mail
+                            try
+                            {
+                                dynamic facebookMail = new Email(MiscHelpers.EmailView);
+                                facebookMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+                                facebookMail.To = member.Email;
+                                facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
+                                facebookMail.ToName = member.MemberMainData.FirstName;
+                                facebookMail.Content = Worki.Resources.Email.FacebookRegistration.Content;
+                                facebookMail.Send();
+                            }
+                            catch (Exception ex)
+                            {
+                                _Logger.Error(ex.Message);
+                            }
+
+                            var userData = member.GetUserData();
+                            FormsService.SignIn(member.Email, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+
+                            if (Url.IsLocalUrl(state))
+                            {
+                                return Redirect(state);
+                            }
+                            else
+                            {
+                                return RedirectToAction(MVC.Home.Index());
+                            }
+                        }
+                        else
+                        {
+                            // TODO Gérer l'erreur de création
+                            
+                        }
+                    }
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

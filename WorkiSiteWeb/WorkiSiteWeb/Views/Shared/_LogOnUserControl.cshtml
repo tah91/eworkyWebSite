@@ -33,6 +33,7 @@ else
     </div>
     <div class="connect lengthConnexionBox float-right">
         <div class="blue">
+            @Html.ActionImage(null, "~/Content/Images/icon_facebook.png", "Connection avec Facebook", MVC.Account.FacebookLogOn())
             @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())
         </div>
         <div>

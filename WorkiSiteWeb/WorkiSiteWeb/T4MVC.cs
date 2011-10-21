@@ -473,6 +473,7 @@ namespace Links {
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
             public static readonly string homeLogo3_png = Url("homeLogo3.png");
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
+            public static readonly string icon_facebook_png = Url("icon_facebook.png");
             public static readonly string iconeMap_png = Url("iconeMap.png");
             public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
@@ -637,6 +638,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult ChangePassword() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FacebookOAuth() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FacebookOAuth);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AccountController Actions { get { return MVC.Account; } }
@@ -656,6 +662,8 @@ namespace Worki.Web.Controllers {
             public readonly string Activate = "activer";
             public readonly string ChangePassword = "changer-mdp";
             public readonly string ResetPassword = "reset-mdp";
+            public readonly string FacebookLogOn = "facebook-logon";
+            public readonly string FacebookOAuth = "facebook-oauth";
         }
 
 
@@ -733,6 +741,18 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult ResetPassword(Worki.Data.Models.ResetPasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResetPassword);
             callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FacebookLogOn() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FacebookLogOn);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FacebookOAuth(string code, string state) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FacebookOAuth);
+            callInfo.RouteValueDictionary.Add("code", code);
+            callInfo.RouteValueDictionary.Add("state", state);
             return callInfo;
         }
 

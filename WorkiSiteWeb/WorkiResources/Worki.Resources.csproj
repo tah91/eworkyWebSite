@@ -92,6 +92,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Email\FacebookRegistration.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacebookRegistration.resx</DependentUpon>
+    </Compile>
     <Compile Include="Email\ResetPassword.Designer.cs">
       <DependentUpon>ResetPassword.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -258,6 +263,7 @@
     <EmbeddedResource Include="Email\Activation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Activation.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -267,6 +273,10 @@
     <EmbeddedResource Include="Email\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\FacebookRegistration.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FacebookRegistration.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\ResetPassword.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
