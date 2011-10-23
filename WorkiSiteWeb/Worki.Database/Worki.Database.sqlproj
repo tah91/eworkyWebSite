@@ -90,7 +90,7 @@
     <SqlServerVerification>True</SqlServerVerification>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-	<OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <SuppressWarnings>
@@ -224,5 +224,8 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="dbo\Tables\Offer.sql" />
+    <Build Include="dbo\Tables\OfferFeature.sql" />
+    <Build Include="dbo\Tables\OfferFile.sql" />
   </ItemGroup>
 </Project>

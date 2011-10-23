@@ -23,6 +23,7 @@ namespace Worki.Data.Models
             this.MemberBookings = new HashSet<MemberBooking>();
             this.MemberEditions = new HashSet<MemberEdition>();
             this.WelcomePeoples = new HashSet<WelcomePeople>();
+            this.Offers = new HashSet<Offer>();
     		OnInitialized();
         }
     
@@ -91,6 +92,7 @@ namespace Worki.Data.Models
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
         public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
+        public virtual ICollection<Offer> Offers { get; set; }
     
     }
 }

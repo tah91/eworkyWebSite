@@ -92,6 +92,7 @@
     <Compile Include="Models\Comment.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OfferModel.cs" />
     <Compile Include="Models\FavoriteLocalisation.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
@@ -133,6 +134,15 @@
     </Compile>
     <Compile Include="Models\MetaData.cs" />
     <Compile Include="Models\MobileIndexModel.cs" />
+    <Compile Include="Models\Offer.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OfferFeature.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OfferFile.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Models\Press.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
@@ -182,6 +192,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\OfferRepository.cs" />
     <Compile Include="Repository\PressRepository.cs" />
     <Compile Include="Repository\RentalRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
