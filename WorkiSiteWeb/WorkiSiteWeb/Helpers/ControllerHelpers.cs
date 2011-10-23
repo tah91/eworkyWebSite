@@ -224,6 +224,12 @@ namespace Worki.Web.Helpers
         {
             if (string.IsNullOrEmpty(image))
                 return string.Empty;
+
+            if (image.StartsWith("http://") || image.StartsWith("https://"))
+            {
+                return image;
+            }
+
             var fileName = ThumbPath(image, thumb); 
             if (RoleEnvironment.IsAvailable)
             {

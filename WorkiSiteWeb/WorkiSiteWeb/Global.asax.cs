@@ -37,6 +37,7 @@ namespace Worki.Web
 			Bind<ILocalisationRepository>()
 				.To<LocalisationRepository>();
 
+
 			Bind<IFormsAuthenticationService>()
 				.To<FormsAuthenticationService>();
 
