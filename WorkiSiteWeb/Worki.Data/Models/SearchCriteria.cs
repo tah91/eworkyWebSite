@@ -30,6 +30,9 @@ namespace Worki.Data.Models
 				LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
             SearchType = eSearchType.ePerOffer;
             DirectAccessType = eDirectAccessType.eNone;
+
+            /* Initialize it with the distance criteria */
+            OrderBy = eOrderBy.Distance;
 		}
 
         #region Direct Access
@@ -105,6 +108,9 @@ namespace Worki.Data.Models
 
         public Localisation LocalisationData { get; set; }
 
+        /* Add the property OderBy */
+        public eOrderBy OrderBy { get; set; }
+
         public int LocalisationOffer { get; set; }
 
         [Display(Name = "Everything", ResourceType = typeof(Worki.Resources.Models.Search.SearchCriteria))]
@@ -164,6 +170,13 @@ namespace Worki.Data.Models
         eStartUp,
         eIndependant,
         eEntreprise
+    }
+
+    /* Enum of the different ordered type */
+    public enum eOrderBy
+    {
+        Rating,
+        Distance
     }
 
     public class SearchCriteriaFormViewModel

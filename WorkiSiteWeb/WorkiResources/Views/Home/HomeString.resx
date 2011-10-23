@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AllSupelecNeedWifi" xml:space="preserve">
-    <value>Tous les trois ingénieurs de Supélec ou de Centrale Lyon, presque tous déjà entrepreneurs (Greenworking), on avait régulièrement besoin d’accéder à un wifi, de louer une salle de réunion ou même une salle de formation.</value>
+    <value>Tous les trois très travailleurs, presque tous déjà entrepreneurs (Greenworking), on avait régulièrement besoin d’accéder à un wifi, de louer une salle de réunion ou même une salle de formation.</value>
   </data>
   <data name="ANeed" xml:space="preserve">
     <value>Un besoin</value>
@@ -215,7 +215,7 @@
     <value>Vous trouverez bientôt ici également un dossier de presse sur eWorky.</value>
   </data>
   <data name="SpeechForJournalists" xml:space="preserve">
-    <value>Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d'un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez nous à {0}</value>
+    <value>Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d'un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez-nous à {0}.</value>
   </data>
   <data name="SubmitWorkplace" xml:space="preserve">
     <value>Proposer des lieux de travail</value>
@@ -266,13 +266,13 @@
     <value>Location</value>
   </data>
   <data name="RentSpeech" xml:space="preserve">
-    <value>Vous cherchez des locaux ? Marre de payer des frais exorbitants aux intermédiaires ? Venez déposer et consulter les petites annonces, de professionnel à professionnel  !</value>
+    <value>&lt;br /&gt;- bureaux professionnels&lt;br /&gt;- fond de commerce&lt;br /&gt;- local commercial, etc...</value>
   </data>
   <data name="Reserve" xml:space="preserve">
     <value>Réservation</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>eWorky c'est aussi la possibilité de réserver en ligne le lieu de travail (poste, salle de réunion, de conférence, etc.) dont vous avez besoin. C’est rapide, facile et moins cher !</value>
+    <value>&lt;br /&gt;- centre d'affaires&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentres, etc...</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Recherche</value>
@@ -281,7 +281,7 @@
     <value>Rechercher</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
-    <value>eWorky c'est une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking.</value>
+    <value>&lt;br /&gt;- un café internet, un spot wifi&lt;br /&gt;- un espace voyageur, un espace publique numérique&lt;br /&gt;- une bibliotèque, un musée, etc...</value>
   </data>
   <data name="SoonLotofFeatures" xml:space="preserve">
     <value>Et bientôt plein d’autres fonctionnalités.</value>
@@ -306,5 +306,17 @@
   </data>
   <data name="BlogTitle" xml:space="preserve">
     <value>Le blog eWorky</value>
+  </data>
+  <data name="AddPlaceTitle" xml:space="preserve">
+    <value>Que voulez-vous ajouter ?</value>
+  </data>
+  <data name="CostSpace" xml:space="preserve">
+    <value>Un lieu de travail payant</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Un lieu de travail gratuit</value>
+  </data>
+  <data name="RentalAd" xml:space="preserve">
+    <value>Une Annonce de locaux à louer</value>
   </data>
 </root>

@@ -1352,6 +1352,7 @@ namespace Worki.Web.Controllers {
             public readonly string CGU = "cgu";
             public readonly string Legal = "mentions-legales";
             public readonly string ChangeCulture = "ChangeCulture";
+            public readonly string AddSpace = "ajouter-espace";
         }
 
 
@@ -1363,6 +1364,7 @@ namespace Worki.Web.Controllers {
             public readonly string _PeopleSlider = "~/Views/Home/_PeopleSlider.cshtml";
             public readonly string _RentalTab = "~/Views/Home/_RentalTab.cshtml";
             public readonly string a_propos = "~/Views/Home/a-propos.cshtml";
+            public readonly string ajouter_espace = "~/Views/Home/ajouter-espace.cshtml";
             public readonly string cgu = "~/Views/Home/cgu.cshtml";
             public readonly string contact = "~/Views/Home/contact.cshtml";
             public readonly string faq = "~/Views/Home/faq.cshtml";
@@ -1432,6 +1434,11 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangeCulture);
             callInfo.RouteValueDictionary.Add("lang", lang);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddSpace() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddSpace);
             return callInfo;
         }
 
