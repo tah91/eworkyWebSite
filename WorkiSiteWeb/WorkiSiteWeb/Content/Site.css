@@ -1571,3 +1571,11 @@ html ul.tabs li.active a:hover
 {
     width: 72.5%;
 }
+
+/* IMPORTANT SECTION
+----------------------------------------------------------*/
+
+.margin0important
+{
+    margin:0px!important;
+}

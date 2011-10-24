@@ -11,47 +11,48 @@
 
 <div class="detailContent">
     <div class="blockContainer">
-        <div class="indexLogos">
-            <div class="indexLogoContainer contentBlock float-left borderBlue noUnderline">
-                <a href="@Url.Action(MVC.Localisation.Create())" title="@Worki.Resources.Views.Home.HomeString.FreeSpace">
-                    <div class="indexLogoImage indexLogoSearch linkImg inline-block">
+        <div class="indexLogoContainer contentBlock float-left borderBlue noUnderline margin0important">
+            <a href="@Url.Action(MVC.Localisation.Create())" title="@Worki.Resources.Views.Home.HomeString.FreeSpace">
+                <div class="indexLogoImage indexLogoSearch linkImg float-left">
                     
-                    </div>
-                    <div class="indexLogoDesc inline-block">
-                        <span class="bold blue">@Worki.Resources.Views.Home.HomeString.FreeSpace. </span>@Html.Raw(Worki.Resources.Views.Home.HomeString.SearchSpeech)
-                    </div>
-                    <div class="clear">
-                    </div>
-                </a>
-            </div>
-            <div class="contentBlock indexLogoContainer float-right borderRed noUnderline" style="margin:0px!important">
-                <a href="@Url.Action(MVC.Rental.Create())" title="@Worki.Resources.Views.Home.HomeString.RentalAd">
-                    <div class="indexLogoImage indexLogoRental linkImg inline-block">
+                </div>
+                <div class="indexLogoDesc float-right">
+                    <span class="bold blue">@Worki.Resources.Views.Home.HomeString.FreeSpace. </span>
+                    <p class="marginl10">@Html.Raw(Worki.Resources.Views.Home.HomeString.SearchSpeech)</p>
+                </div>
+                <div class="clear">
+                </div>
+            </a>
+        </div>            
+        <div class="contentBlock indexLogoContainer float-right borderOrange noUnderline margin0important">
+            <a href="@Url.Action(MVC.Localisation.FullSearch())" title="@Worki.Resources.Views.Home.HomeString.CostSpace">
+                <div class="indexLogoImage indexLogoBooking linkImg float-left">
                         
-                    </div>
-                    <div class="indexLogoDesc inline-block">
-                        <span class="bold red">@Worki.Resources.Views.Home.HomeString.RentalAd. </span>@Html.Raw(Worki.Resources.Views.Home.HomeString.RentSpeech)
-                    </div>
-                    <div class="clear">
-                    </div>
-                </a>
-            </div>
-            <div class="clear">
-            </div>
-            <div class="contentBlock indexLogoContainer float-left borderOrange noUnderline">
-                <a href="@Url.Action(MVC.Localisation.FullSearch())" title="@Worki.Resources.Views.Home.HomeString.CostSpace">
-                    <div class="indexLogoImage indexLogoBooking linkImg inline-block">
+                </div>
+                <div class="indexLogoDesc float-right">
+                    <span class="bold orange">@Worki.Resources.Views.Home.HomeString.CostSpace. </span>
+                    <p class="marginl10">@Html.Raw(Worki.Resources.Views.Home.HomeString.ReserveSpeech)</p>
+                </div>
+                <div class="clear">
+                </div>
+            </a>
+        </div>
+        <div class="clear">
+        </div>
+        <div class="contentBlock indexLogoContainer float-left borderRed noUnderline margin0important" style="margin-top:10px!important">
+            <a href="@Url.Action(MVC.Rental.Create())" title="@Worki.Resources.Views.Home.HomeString.RentalAd">
+                <div class="indexLogoImage indexLogoRental linkImg float-left">
                         
-                    </div>
-                    <div class="indexLogoDesc inline-block">
-                        <span class="bold orange">@Worki.Resources.Views.Home.HomeString.CostSpace. </span>@Html.Raw(Worki.Resources.Views.Home.HomeString.ReserveSpeech)
-                    </div>
-                    <div class="clear">
-                    </div>
-                </a>
-            </div>
-            <div class="clear">
-            </div>
+                </div>
+                <div class="indexLogoDesc float-right">
+                    <span class="bold red">@Worki.Resources.Views.Home.HomeString.RentalAd. </span>
+                    <p class="marginl10">@Html.Raw(Worki.Resources.Views.Home.HomeString.RentSpeech)</p>
+                </div>
+                <div class="clear">
+                </div>
+            </a>
+        </div>
+        <div class="clear">
         </div>
     </div>
 </div>

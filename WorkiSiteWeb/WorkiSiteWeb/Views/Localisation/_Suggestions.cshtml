@@ -1,6 +1,6 @@
 ﻿@model System.Collections.Generic.IEnumerable<Localisation>
 
-@{ if (Model != null)
+@{ if (Model.Count() != 0)
    {
     <div class="contentBlock">
         <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>
