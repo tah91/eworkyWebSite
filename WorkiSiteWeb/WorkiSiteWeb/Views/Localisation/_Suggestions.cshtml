@@ -1,0 +1,17 @@
+﻿@model System.Collections.Generic.IEnumerable<Localisation>
+
+@{ if (Model != null)
+   {
+    <div class="contentBlock">
+        <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>
+            <ul>
+                @{
+                   foreach (var item in Model)
+                   {
+                        <li><a class="preview" href="@item.GetDetailFullUrl(Url)">@item.Name</a></li>
+                   }
+                }
+            </ul>
+    </div>
+    }
+}

@@ -503,6 +503,19 @@ namespace Worki.Web.Controllers
 			return View(MVC.Localisation.Views.resultats_detail, detailModel);
 		}
 
+        public virtual System.Collections.Generic.IEnumerable<Localisation> Suggestions(int id)
+        {
+            System.Collections.Generic.IList<Localisation> list = new System.Collections.Generic.List<Localisation>();
+
+            var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var original = lRepo.Get(id);
+            list = lRepo.GetMany(item => (item.ID != id) && (item.TypeValue == original.TypeValue) && (item.PostalCode == original.PostalCode));
+            var ordered_list = list.OrderBy(x => x.Name).Where((x, i) => i < 10);
+            
+            return (ordered_list);
+        }
+
 		#endregion
 	}
 }

@@ -1563,6 +1563,7 @@ namespace Worki.Web.Controllers {
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
+            public readonly string _Suggestions = "~/Views/Localisation/_Suggestions.cshtml";
             public readonly string editer = "~/Views/Localisation/editer.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
             public readonly string recherche = "~/Views/Localisation/recherche.cshtml";
