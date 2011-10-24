@@ -395,9 +395,7 @@ namespace Worki.Web.Controllers
                     _Logger.Error("Rental", ex);
                 }
                 TempData[MiscHelpers.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent2;
-                var tab = contact.Link.Split('/');
-                var id = tab[tab.Length - 1];
-                return RedirectToAction(MVC.Rental.Detail(int.Parse(id)));
+                return Redirect(contact.Link);
             }
             return View(contact);
         }
