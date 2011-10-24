@@ -53,7 +53,7 @@ namespace Worki.Service
                 case eOrderBy.Rating:
                     criteriaViewModel.Results = (from item
                                                     in results
-                                                 orderby criteriaViewModel.Criteria.LocalisationData.GetRatingAverage(RatingType.General)
+                                                 orderby item.GetRatingAverage(RatingType.General) descending
                                                  select item).ToList();
                     break;
                 case eOrderBy.Distance:
