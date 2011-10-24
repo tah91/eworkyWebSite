@@ -1,7 +1,7 @@
 ﻿.contentAdmin{position:relative}
 #adminMenu{margin-right:10px;background-color:Silver;float:left;width:15%;padding-left:10px}
 img.welcomePeopleMaxSize{max-height:300px;max-width:300px;overflow:hidden}
-ul.adminSubMenu{padding:5px;margin:10px 30px}
+ul.adminSubMenu{padding:5px;margin:10px 0}
 .adminSubMenu li{margin-top:5px;margin-bottom:10px;color:White}
 li#localisationSubMenu{list-style-image:url(images/recherche-min.png)}
 li#userSubMenu{list-style-image:url(images/users.jpg)}

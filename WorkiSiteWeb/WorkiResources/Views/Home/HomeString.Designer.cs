@@ -106,7 +106,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recherche de bureaux.
+        ///   Looks up a localized string similar to eWorky | Coworking, cafés wifi, centres d&apos;affaires, location et réservation de salles de réunion et de bureaux.
         /// </summary>
         public static string BestWorkspace {
             get {
