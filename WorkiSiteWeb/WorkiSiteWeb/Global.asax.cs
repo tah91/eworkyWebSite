@@ -79,6 +79,9 @@ namespace Worki.Web
 			Bind<IUnitOfWork>()
 				.To<WorkiDBEntities>();
 
+			Bind<IOfferRepository>()
+				.To<OfferRepository>();
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();

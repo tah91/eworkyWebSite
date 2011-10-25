@@ -1,0 +1,77 @@
+﻿@model Worki.Data.Models.OfferFormViewModel
+
+@{
+    var isEditing = Model.Offer.Id != 0;
+	var title = isEditing ? Worki.Resources.Views.Offer.OfferString.EditOffer : Worki.Resources.Views.Offer.OfferString.AddOffer;
+}
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(title) </title>
+}
+
+@RazorHelpers.TitleDiv(title, "Blue")
+
+<div class="detailContent">
+    <div class="blockContainer">
+		@using (Html.BeginForm())
+        {
+	   		@Html.AntiForgeryToken()
+            <div class="contentBlock">
+				<table>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Offer.Type) <span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m => m.Offer.Type, Model.Offers)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Offer.Name) <span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Offer.Name)
+							</div>
+						</td>
+					</tr>
+				</table>
+            </div>
+	  		<div class="contentBlock">
+				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Images</h3>
+				<div id="fileupload" class="borderRadius">
+					<div class="fileupload-buttonbar">
+						<label class="fileinput-button">
+							<span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
+							<input type="file" name="files[]" accept="image/*"/>
+						</label>
+					</div>
+					<div class="fileupload-content">
+						<table class="files"></table>
+						<div class="fileupload-progressbar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="editor-field float-right">
+				<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
+			</div>
+			<div class="clear"></div>
+        }
+    </div>
+</div>
+
+@section ScriptContent
+{
+	<script type="text/javascript">
+    </script>
+	@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
+}
+

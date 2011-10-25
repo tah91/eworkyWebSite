@@ -699,6 +699,9 @@
     <Content Include="Views\Home\_RentalTab.cshtml" />
     <Content Include="Views\Localisation\_SearchForm.cshtml" />
     <Content Include="Views\Rental\_RentalSeachFormScript.cshtml" />
+    <Content Include="Views\Offer\Create.cshtml" />
+    <Content Include="Views\Offer\Details.cshtml" />
+    <Content Include="Views\Offer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

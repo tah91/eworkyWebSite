@@ -896,6 +896,13 @@
                     </table>
                 </div>
             </div>
+			@Html.ActionLink("ajouter une offre",MVC.Offer.Create(Model.Localisation.ID))
+			<ul>
+				@foreach (var item in Model.Localisation.Offers)
+				{
+					<li>@item.Name | @Html.ActionLink("éditer", MVC.Offer.Edit(item.Id,item.LocalisationId)) | @Html.ActionLink("supprimer", MVC.Offer.Delete(item.Id, item.LocalisationId))</li>
+				}
+			</ul>
             <div class="float-right">
                 <input  type="submit" class="buttonStd buttonBlue imageBtn" 
 				    name="valid" id="submit_add" value="@(Model.Localisation.ID == 0 ? Worki.Resources.Views.Shared.SharedString.Adds : Worki.Resources.Views.Shared.SharedString.Valid)"/>

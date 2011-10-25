@@ -33,6 +33,7 @@ public static class MVC {
     public static Worki.Web.Controllers.CaptchaImageController CaptchaImage = new Worki.Web.Controllers.T4MVC_CaptchaImageController();
     public static Worki.Web.Controllers.HomeController Home = new Worki.Web.Controllers.T4MVC_HomeController();
     public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
+    public static Worki.Web.Controllers.OfferController Offer = new Worki.Web.Controllers.T4MVC_OfferController();
     public static Worki.Web.Controllers.ProfilController Profil = new Worki.Web.Controllers.T4MVC_ProfilController();
     public static Worki.Web.Controllers.RentalController Rental = new Worki.Web.Controllers.T4MVC_RentalController();
     public static Worki.Web.Controllers.UploadImageController UploadImage = new Worki.Web.Controllers.T4MVC_UploadImageController();
@@ -1666,6 +1667,125 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Controllers {
+    public partial class OfferController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected OfferController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Create() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Details() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Edit() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Delete() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public OfferController Actions { get { return MVC.Offer; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Offer";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Create = "Create";
+            public readonly string Details = "Details";
+            public readonly string Edit = "Edit";
+            public readonly string Delete = "Delete";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Create = "~/Views/Offer/Create.cshtml";
+            public readonly string Delete = "~/Views/Offer/Delete.cshtml";
+            public readonly string Details = "~/Views/Offer/Details.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_OfferController: Worki.Web.Controllers.OfferController {
+        public T4MVC_OfferController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Create(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Create(int id, Worki.Data.Models.OfferFormViewModel offerFormViewModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerFormViewModel", offerFormViewModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Details(int id, int localisationId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id, int localisationId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id, int localisationId, Worki.Data.Models.OfferFormViewModel formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
+            callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Delete(int id, int localisationId, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Delete(int id, int localisationId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 

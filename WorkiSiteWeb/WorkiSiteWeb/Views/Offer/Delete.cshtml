@@ -1,0 +1,20 @@
+﻿@model Worki.Data.Models.Offer
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Offer.OfferString.RemoveOffer) </title>
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Offer.OfferString.RemoveOffer, "Blue")
+
+<div>
+    <p>
+        @string.Format(Worki.Resources.Views.Offer.OfferString.AskRemoveOffer, Model.Name)
+    </p>
+</div>
+
+@using (Html.BeginForm(MVC.Offer.ActionNames.Delete, MVC.Offer.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
+{
+	@Html.AntiForgeryToken()
+    <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
+}

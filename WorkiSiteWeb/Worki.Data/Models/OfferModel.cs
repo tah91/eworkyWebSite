@@ -3,69 +3,83 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Worki.Infrastructure;
+using System.Linq;
 
 namespace Worki.Data.Models
 {
-	public class MemberBookingFormViewModel
+	public class OfferFormViewModel
 	{
-		public MemberBookingFormViewModel()
+		public OfferFormViewModel()
 		{
 			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessRoom);
-			MemberBooking = new MemberBooking();
+			Offer = new Offer();
 		}
 
-		public MemberBooking MemberBooking { get; set; }
+		public Offer Offer { get; set; }
 		public SelectList Offers { get; set; }
-		public string ReturnUrl { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "FirstName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string Email { get; set; }
-
-        public bool NeedNewAccount { get; set; }
 	}
 
-	[MetadataType(typeof(MemberBooking_Validation))]
-	public partial class MemberBooking
+	[MetadataType(typeof(Offer_Validation))]
+	public partial class Offer : IPictureDataProvider
 	{
-		public MemberBooking()
+		#region IPictureDataProvider
+
+		public int GetId()
 		{
-            System.DateTime now = DateTime.Now;
-            FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
-            ToDate = FromDate;
+			return Id;
 		}
+
+		public List<PictureData> GetPictureData()
+		{
+			if (OfferFiles != null)
+				return (from item in OfferFiles select new PictureData { FileName = item.FileName, IsDefault = item.IsDefault }).ToList();
+			return new List<PictureData>();
+		}
+
+		public string GetMainPic()
+		{
+			var main = (from item in OfferFiles where item.IsDefault orderby item.Id select item.FileName).FirstOrDefault();
+			return main;
+		}
+
+		public string GetPic(int index)
+		{
+			var list = (from item in OfferFiles where !item.IsDefault orderby item.Id select item.FileName).ToList();
+			var count = list.Count();
+			if (count == 0 || index < 0 || index >= count)
+				return string.Empty;
+			return list[index];
+		}
+
+		public string GetLogoPic()
+		{
+			throw new NotImplementedException("GetLogoPic");
+		}
+
+		public string GetDisplayName()
+		{
+			return Name;
+		}
+
+		public string GetDescription()
+		{
+			throw new NotImplementedException("GetDescription");
+		}
+
+		#endregion
 	}
 
-	[Bind(Exclude = "Id,MemberId,LocalisationId")]
-	public class MemberBooking_Validation
+	[Bind(Exclude = "Id,LocalisationId")]
+	public class Offer_Validation
 	{
         [SelectValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "Offer", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public int Offer { get; set; }
+		[Display(Name = "Type", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+		public int Type { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "FromDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public DateTime FromDate { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "ToDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public DateTime ToDate { get; set; }
-
-		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public string Message { get; set; }
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Name", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+		public string Name { get; set; }
 	}
 }

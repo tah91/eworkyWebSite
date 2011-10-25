@@ -102,6 +102,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Offer\Offer.Designer.cs">
+      <DependentUpon>Offer.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\Rental\Rental.Designer.cs">
       <DependentUpon>Rental.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -170,6 +175,11 @@
     </Compile>
     <Compile Include="Views\Booking\BookingString.Designer.cs">
       <DependentUpon>BookingString.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Offer\OfferString.Designer.cs">
+      <DependentUpon>OfferString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -287,6 +297,11 @@
       <LastGenOutput>Booking.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Offer\Offer.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Offer.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Rental\Rental.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Rental.Designer.cs</LastGenOutput>
@@ -341,6 +356,11 @@
     <EmbeddedResource Include="Views\Booking\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Offer\OfferString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OfferString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Mobile\MobileString.resx">
