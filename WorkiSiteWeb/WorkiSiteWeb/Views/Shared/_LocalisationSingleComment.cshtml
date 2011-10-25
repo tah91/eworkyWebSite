@@ -41,7 +41,7 @@
     <div class="clear">
     </div>
 </div> 
-@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 { 
     @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.DeleteComment, MVC.Localisation.DeleteComment(Model.LocalisationID, Model.ID, Model.Localisation.GetDetailFullUrl(Url)))
 }

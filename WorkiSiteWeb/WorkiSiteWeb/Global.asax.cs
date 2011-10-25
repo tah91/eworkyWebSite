@@ -155,7 +155,7 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
             );
 
-            var localisationTypes = (from t in Localisation.LocalisationTypes.Values select ControllerHelpers.GetSeoString(t));
+			var localisationTypes = (from t in Localisation.LocalisationTypes.Values select MiscHelpers.GetSeoString(t));
 
             routes.MapRoute(
                 "", // Nom d'itinéraire
@@ -315,27 +315,27 @@ namespace Worki.Web
             {
 
                 //create roles
-                if (!Roles.RoleExists(MiscHelpers.AdminRole))
+                if (!Roles.RoleExists(MiscHelpers.AdminConstants.AdminRole))
                 {
-                    Roles.CreateRole(MiscHelpers.AdminRole);
+                    Roles.CreateRole(MiscHelpers.AdminConstants.AdminRole);
                 }
 
                 //create admin
-                var user = mRepo.Get(m => m.Username == MiscHelpers.AdminUser);
+                var user = mRepo.Get(m => m.Username == MiscHelpers.AdminConstants.AdminUser);
 
                 //create admin
                 if (user == null)
                 {
                     MembershipCreateStatus status;
-                    Membership.Provider.CreateUser(MiscHelpers.AdminUser, MiscHelpers.AdminPass, MiscHelpers.AdminMail, null, null, true, null, out status);
+                    Membership.Provider.CreateUser(MiscHelpers.AdminConstants.AdminUser, MiscHelpers.AdminConstants.AdminPass, MiscHelpers.AdminConstants.AdminMail, null, null, true, null, out status);
                     //add role
-                    if (!Roles.IsUserInRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole))
-                        Roles.AddUserToRole(MiscHelpers.AdminUser, MiscHelpers.AdminRole);
+                    if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminUser, MiscHelpers.AdminConstants.AdminRole))
+                        Roles.AddUserToRole(MiscHelpers.AdminConstants.AdminUser, MiscHelpers.AdminConstants.AdminRole);
                 }
                 //add member data
                 if (user.MemberMainData == null)
                 {
-                    user.MemberMainData = new MemberMainData { FirstName = MiscHelpers.AdminUser, LastName = MiscHelpers.AdminUser, Civility = (int)CivilityType.Mr };
+                    user.MemberMainData = new MemberMainData { FirstName = MiscHelpers.AdminConstants.AdminUser, LastName = MiscHelpers.AdminConstants.AdminUser, Civility = (int)CivilityType.Mr };
                 }
                 context.Commit();
             }

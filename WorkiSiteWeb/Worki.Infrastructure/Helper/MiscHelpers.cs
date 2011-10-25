@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Text.RegularExpressions;
 
 namespace Worki.Infrastructure.Helpers
 {
@@ -14,16 +15,16 @@ namespace Worki.Infrastructure.Helpers
     {
         #region Email
 
-        public const string EmailView = "Email";
-        public const string EmailOwnerView = "EmailOwner";
-        public const string ListLocMailView = "ListLocMail";
-        public const string ContactDisplayName = "eWorky Team";
-        //public const string ContactMail = "t.iftikhar@hotmail.fr";
-        //public const string BookingMail = "t.iftikhar@hotmail.fr";
-        public const string WebsiteAddress = "www.eworky.com";
-        public const string ContactMail = "contact@eworky.com";
-        public const string BookingMail = "team@eworky.com";
-        public const string DummyPassword = "000000";
+		public static class EmailConstants
+		{
+			public const string EmailView = "Email";
+			public const string EmailOwnerView = "EmailOwner";
+			public const string ListLocMailView = "ListLocMail";
+			public const string ContactDisplayName = "eWorky Team";
+			public const string WebsiteAddress = "www.eworky.com";
+			public const string ContactMail = "contact@eworky.com";
+			public const string BookingMail = "team@eworky.com";
+		}
 
         #endregion
 
@@ -36,31 +37,48 @@ namespace Worki.Infrastructure.Helpers
             public const string FacebookDefaultPassword = "Fcbkdfltpsswrd";
         }
 
-
         #endregion
 
-        public const string Info = "info";
+		public static class UrlConstants
+		{
+			public const string BlogApiPath = "http://blog.eworky.com/api/get_recent_posts/";
+			public const string BlogUrl = "http://blog.eworky.com";
+			public const string JTPath = "http://vimeo.com/29038745";
+			public const string eWorkyFacebook = "http://www.facebook.com/pages/eWorky/226917517335276";
+			public const string eWorkyTwitter = "http://www.twitter.com/#!/eWorky";
+			public const string jquery = "";//"https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js";
+			public const string jqueryui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js";
+		}
 
-        public const string AdminRole = "AdminRole";
-		public const string AdminUser = "Admin";
-		public const string AdminPass = "Admin_Pass";
-		public const string AdminMail = "admin@eworky.com";
+		public static class AdminConstants
+		{
+			public const string AdminRole = "AdminRole";
+			public const string AdminUser = "Admin";
+			public const string AdminPass = "Admin_Pass";
+			public const string AdminMail = "admin@eworky.com";
+			public const string DummyPassword = "000000";
+		}
 
-        public const string eWorkyFacebook = "http://www.facebook.com/pages/eWorky/226917517335276";
-        public const string eWorkyTwitter = "http://www.twitter.com/#!/eWorky";
+		public static class AzureConstants
+		{
+			public const string DataConnectionString = "DataConnectionString";
+		}
 
-		public const string DataConnectionString = "DataConnectionString";
+		public static class Constants
+		{
+			public const int MinRange = 1;
+			public const int MaxRange = 10000;
+			public const int MaxLengh = 256;
+			public const int MaxFileSize = 3145728;
+			public const int MinRequiredPasswordLength = 6;
+			public const int UnselectedItem = -1;
+			public const int OneMo = 1048576;
+		}
 
-		public const int MinRange = 1;
-		public const int MaxRange = 10000;
-        public const int MaxLengh = 256;
-		public const string jquery = "";//"https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js";
-		public const string jqueryui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js";
-		public const int MaxFileSize = 3145728;
-		public const int OneMo = 1048576;
-		public const int MinRequiredPasswordLength = 6;
-
-        public const int UnselectedItem = -1;
+		public static class TempDataConstants
+		{
+			public const string Info = "info";
+		}
 
         /// <summary>
         /// Get the display name of enums, from resource file
@@ -117,7 +135,7 @@ namespace Worki.Infrastructure.Helpers
 				scale = scaleWidth;
 			}
 
-			if (scale == 1.0 && fs.Length < OneMo)
+			if (scale == 1.0 && fs.Length < Constants.OneMo)
 				return new Bitmap(image);
 
 			int destWidth = (int)((image.Width * scale) + 0.5);
@@ -257,5 +275,34 @@ namespace Worki.Infrastructure.Helpers
                     yield return id;
             }
         }
+
+		/// <summary>
+		/// Get seo compliant version of a string
+		/// </summary>
+		/// <param name="title">string to transform</param>
+		/// <returns>correct string</returns>
+		public static string GetSeoString(string title)
+		{
+			// make it all lower case
+			title = title.ToLower();
+			// remove entities
+			title = Regex.Replace(title, @"&\w+;", "");
+			// remove tabs
+			title = Regex.Replace(title, @"\t", "");
+			// remove anything that is not letters, numbers, dash, or space, accent letter
+			title = Regex.Replace(title, @"[^a-z0-9ÁÀÂÄÉÈÊËÍÌÎÏÓÒÔÖÚÙÛÜ0Çàáâãäåòóôõöøèéêëçìíîïùúûüÿñ\-\s]", "");
+			// replace spaces
+			title = title.Replace(' ', '-');
+			// collapse dashes
+			title = Regex.Replace(title, @"-{2,}", "-");
+			// trim excessive dashes at the beginning
+			title = title.TrimStart(new[] { '-' });
+			// if it's too long, clip it
+			if (title.Length > 80)
+				title = title.Substring(0, 79);
+			// remove trailing dashes
+			title = title.TrimEnd(new[] { '-' });
+			return title;
+		}
     }
 }

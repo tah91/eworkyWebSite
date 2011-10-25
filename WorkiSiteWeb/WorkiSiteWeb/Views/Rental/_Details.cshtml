@@ -61,7 +61,7 @@
                     <li>@Rental.RentalFeatureDict[(int)item]</li>
 				}
                 <li>@Rental.LeaseTypes[Model.LeaseType]</li>
-                @if (Model.HeatingType != MiscHelpers.UnselectedItem)
+                @if (Model.HeatingType != MiscHelpers.Constants.UnselectedItem)
                 {
                     <li>@Rental.HeatingTypes[Model.HeatingType]</li>
                 }
@@ -114,7 +114,7 @@
                     }
             </div>
         }
-        @if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+        @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
         {
             <div class="contentBlock">
                 <h3 class="red marginBottom">@Worki.Resources.Views.Rental.RentalString.InfoAdmin</h3>
@@ -149,7 +149,7 @@
 <div class="buttonStd buttonRed linkImg float-right">
     @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.RentalEdit, MVC.Rental.Edit(Model.Id))
 </div>
-@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
  {
 	<div class="buttonStd buttonRed linkImg float-right">
 	    @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.RentalSuppress, MVC.Rental.DeleteRental(Model.Id))

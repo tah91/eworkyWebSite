@@ -2155,6 +2155,11 @@ namespace Worki.Web.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult UploadFiles() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.UploadFiles);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult LoadFiles() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.LoadFiles);
         }
@@ -2194,8 +2199,9 @@ namespace Worki.Web.Controllers {
     public class T4MVC_UploadImageController: Worki.Web.Controllers.UploadImageController {
         public T4MVC_UploadImageController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult UploadFiles() {
+        public override System.Web.Mvc.ActionResult UploadFiles(Worki.Data.Models.ProviderType type) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UploadFiles);
+            callInfo.RouteValueDictionary.Add("type", type);
             return callInfo;
         }
 

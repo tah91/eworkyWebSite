@@ -66,7 +66,7 @@ namespace Worki.Web.Controllers
                         context.Complete();
                         throw ex;
                     }
-					TempData[MiscHelpers.Info] = Worki.Resources.Views.Offer.OfferString.OfferCreated;
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferCreated;
 					return RedirectToAction(MVC.Localisation.Edit(offerFormViewModel.Offer.LocalisationId));
                 }
                 catch (Exception ex)
@@ -83,7 +83,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of offer</param>
 		/// <returns>View containing offer data</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		public virtual ActionResult Details(int id, int localisationId)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -124,7 +124,7 @@ namespace Worki.Web.Controllers
 					var o = oRepo.Get(id, localisationId);
 					UpdateModel(o, "Offer");
 					context.Commit();
-					TempData[MiscHelpers.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Localisation.Edit(localisationId));
 				}
 				catch (Exception ex)
@@ -183,7 +183,7 @@ namespace Worki.Web.Controllers
 				context.Complete();
 			}
 
-			TempData[MiscHelpers.Info] = Worki.Resources.Views.Offer.OfferString.OfferRemoved;
+			TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferRemoved;
 			return RedirectToAction(MVC.Localisation.Edit(localisationId));
 		}
     }

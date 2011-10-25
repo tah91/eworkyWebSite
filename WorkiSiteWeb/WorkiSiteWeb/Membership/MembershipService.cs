@@ -152,7 +152,7 @@ namespace Worki.Memberships
                          {
                              MemberId = item.MemberId,
                              UserName = item.Username,
-                             IsAdmin = Roles.IsUserInRole(item.Username, MiscHelpers.AdminRole),
+                             IsAdmin = Roles.IsUserInRole(item.Username, MiscHelpers.AdminConstants.AdminRole),
                              Score = item.ComputeScore()
                          });
             return toRet.ToList();

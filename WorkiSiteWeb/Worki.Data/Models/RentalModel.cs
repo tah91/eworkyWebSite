@@ -175,9 +175,9 @@ namespace Worki.Data.Models
 
         partial void OnInitialized()
         {
-            Type = MiscHelpers.UnselectedItem;
-            LeaseType = MiscHelpers.UnselectedItem;
-            HeatingType = MiscHelpers.UnselectedItem;
+            Type = MiscHelpers.Constants.UnselectedItem;
+            LeaseType = MiscHelpers.Constants.UnselectedItem;
+            HeatingType = MiscHelpers.Constants.UnselectedItem;
             TimeStamp = DateTime.Now;
         }
 
@@ -211,6 +211,11 @@ namespace Worki.Data.Models
         {
             return Id;
         }
+
+		public ProviderType GetProviderType()
+		{
+			return ProviderType.Rental;
+		}
 
         public List<PictureData> GetPictureData()
         {
@@ -291,7 +296,7 @@ namespace Worki.Data.Models
         {
             get
             {
-                if (Energy != MiscHelpers.UnselectedItem)
+                if (Energy != MiscHelpers.Constants.UnselectedItem)
                     return Worki.Resources.Models.Rental.Rental.Energy + " : " + ((DiagnosticRate)Energy).ToString();
                 else
                     return string.Empty;
@@ -302,7 +307,7 @@ namespace Worki.Data.Models
         {
             get
             {
-                if (GreenHouse != MiscHelpers.UnselectedItem)
+                if (GreenHouse != MiscHelpers.Constants.UnselectedItem)
                     return Worki.Resources.Models.Rental.Rental.GreenHouse + " : " + ((DiagnosticRate)GreenHouse).ToString();
                 else
                     return string.Empty;
@@ -330,7 +335,7 @@ namespace Worki.Data.Models
     public class Rental_Validation
     {
 		[Display(Name = "Reference", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Reference { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -340,12 +345,12 @@ namespace Worki.Data.Models
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Address", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Address { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "City", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string City { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -355,7 +360,7 @@ namespace Worki.Data.Models
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Country", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Country { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -373,17 +378,17 @@ namespace Worki.Data.Models
 		public int LeaseType { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MiscHelpers.Constants.MinRange, MiscHelpers.Constants.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Rate", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Rate { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MiscHelpers.Constants.MinRange, MiscHelpers.Constants.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Charges", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Charges { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Range(MiscHelpers.Constants.MinRange, MiscHelpers.Constants.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Surface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
 		public int Surface { get; set; }
 
@@ -452,7 +457,7 @@ namespace Worki.Data.Models
     {
         public RentalAccess()
         {
-            Type = MiscHelpers.UnselectedItem;
+            Type = MiscHelpers.Constants.UnselectedItem;
         }
 
         public string DisplayName
@@ -474,12 +479,12 @@ namespace Worki.Data.Models
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Line", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Line { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Station", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Station { get; set; }
 	}
 
@@ -516,19 +521,19 @@ namespace Worki.Data.Models
         public string Place { get; set; }
 
 		[Display(Name = "MinRate", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Range(MiscHelpers.Constants.MinRange, MiscHelpers.Constants.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MinRate { get; set; }
 
 		[Display(Name = "MaxRate", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Range(MiscHelpers.Constants.MinRange, MiscHelpers.Constants.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MaxRate { get; set; }
 
 		[Display(Name = "MinSurface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Range(MiscHelpers.Constants.MinRange, MiscHelpers.Constants.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MinSurface { get; set; }
 
 		[Display(Name = "MaxSurface", ResourceType = typeof(Worki.Resources.Models.Rental.Rental))]
-		[Range(MiscHelpers.MinRange, MiscHelpers.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Range(MiscHelpers.Constants.MinRange, MiscHelpers.Constants.MaxRange, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public int? MaxSurface { get; set; }
 
 		public Rental RentalData { get; set; }

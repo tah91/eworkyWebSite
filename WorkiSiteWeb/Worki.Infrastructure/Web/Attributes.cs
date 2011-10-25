@@ -199,7 +199,7 @@ namespace Worki.Infrastructure
             if (!(value is int))
                 return false;
             var val = (int)value;
-            if (val != MiscHelpers.UnselectedItem)
+            if (val != MiscHelpers.Constants.UnselectedItem)
                 return true;
             return false;
         }

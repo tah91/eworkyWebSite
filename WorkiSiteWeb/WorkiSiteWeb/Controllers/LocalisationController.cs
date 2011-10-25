@@ -47,11 +47,11 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id);
-            var nameToMatch = ControllerHelpers.GetSeoString(localisation.Name);
+            var nameToMatch = MiscHelpers.GetSeoString(localisation.Name);
 
 			if (localisation == null || string.IsNullOrEmpty(name) || string.Compare(nameToMatch, name, true) != 0)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
 			else
@@ -82,7 +82,7 @@ namespace Worki.Web.Controllers
         {
             if (!id.HasValue)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
 			var context = ModelFactory.GetUnitOfWork();
@@ -90,7 +90,7 @@ namespace Worki.Web.Controllers
 			var localisation = lRepo.Get(id.Value);
             if (localisation == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
             return View(new LocalisationFormViewModel(localisation));
@@ -143,7 +143,7 @@ namespace Worki.Web.Controllers
 					}
 					else
 					{
-						var editionAccess = member.HasEditionAccess(Roles.IsUserInRole(MiscHelpers.AdminRole));
+						var editionAccess = member.HasEditionAccess(Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole));
 						if (!string.IsNullOrEmpty(editionAccess))
 						{
 							error = editionAccess;
@@ -158,7 +158,7 @@ namespace Worki.Web.Controllers
 
 					idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
 					localisation.ID = idToRedirect;
-                    TempData[MiscHelpers.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
+                    TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
 					return Redirect(localisation.GetDetailFullUrl(Url));
 				}
 			}
@@ -177,7 +177,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">The id of the localisation to delete</param>
         /// <returns>the confirmation view</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
         [ActionName("supprimer")]
         public virtual ActionResult Delete(int id, string returnUrl = null)
         {
@@ -186,7 +186,7 @@ namespace Worki.Web.Controllers
 			var localisation = lRepo.Get(id);
             if (localisation == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Admin.Index());
             }
             else
@@ -202,7 +202,7 @@ namespace Worki.Web.Controllers
         /// <param name="id">The id of the localisation to delete</param>
         /// </summary>
         /// <returns>the deletetion success view</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminRole)]
+        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
         [ActionName("supprimer")]
         [ValidateAntiForgeryToken]
         public virtual ActionResult Delete(int id, string confirmButton, string returnUrl)
@@ -214,7 +214,7 @@ namespace Worki.Web.Controllers
 				var localisation = lRepo.Get(id);
 				if (localisation == null)
                 {
-                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                     return RedirectToAction(MVC.Admin.Index());
                 }
 				lRepo.Delete(id);
@@ -226,7 +226,7 @@ namespace Worki.Web.Controllers
 				context.Complete();
 			}
 
-            TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenDel;
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenDel;
 
             if (string.IsNullOrEmpty(returnUrl))
                 return RedirectToAction(MVC.Admin.Index());
@@ -295,7 +295,7 @@ namespace Worki.Web.Controllers
         /// <param name="commentId">The id of the comment</param>
         /// <param name="returnUrl">The comment data from the form</param>
         /// <returns>redirect to the return url if ok, show errors else</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		public virtual ActionResult DeleteComment(int id, int commentId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();

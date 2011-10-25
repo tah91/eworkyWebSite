@@ -22,6 +22,23 @@ namespace Worki.Web.Controllers
 			_Logger = logger;
 		}
 
+		const string _RentalFolder = "rental";
+		const string _OfferFolder = "offer";
+
+		string GetFolder(ProviderType type)
+		{
+			switch(type)
+			{
+				case ProviderType.Rental:
+					return _RentalFolder;
+				case ProviderType.Offer:
+					return _OfferFolder;
+				case ProviderType.Localisation:
+				default:
+					return null;
+			}
+		}
+
         IPictureDataProvider GetProvider(ProviderType type, int id)
         {
 			var context = ModelFactory.GetUnitOfWork();
@@ -42,7 +59,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>json result containing uploaded data</returns>
         [AcceptVerbs(HttpVerbs.Post)]
-        public virtual ActionResult UploadFiles()
+		public virtual ActionResult UploadFiles(ProviderType type)
         {
             var toRet = new List<ImageJson>();
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
@@ -53,7 +70,7 @@ namespace Worki.Web.Controllers
                     var postedFile = Request.Files[name];
                     if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
                         continue;
-                    var uploadedFileName = this.UploadFile(postedFile);
+					var uploadedFileName = this.UploadFile(postedFile, GetFolder(type));
                     var url = ControllerHelpers.GetUserImagePath(uploadedFileName, true);
                     var deleteUrl = urlHelper.Action(MVC.UploadImage.DeleteImage(uploadedFileName));
 

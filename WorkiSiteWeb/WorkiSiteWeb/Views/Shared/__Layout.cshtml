@@ -58,10 +58,10 @@
 		<div class="page">
 			<div id="main" class="clearfix">
 				@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain)
-				@if (ViewContext.TempData[MiscHelpers.Info] != null)
+				@if (ViewContext.TempData[MiscHelpers.TempDataConstants.Info] != null)
 				{
 				<div class="informationContainer borderRadius bold blue">
-					<span>@ViewContext.TempData[MiscHelpers.Info]</span>
+					<span>@ViewContext.TempData[MiscHelpers.TempDataConstants.Info]</span>
 				</div>
 				}
 				@*@Html.MvcSiteMap().SiteMapPath()*@
@@ -101,10 +101,10 @@
 					</div>
 					<div class="social_logo">  
 						<div class="linkImg fb_footer float-left">
-							<a href="@MiscHelpers.eWorkyFacebook" target="_blank"></a>
+							<a href="@MiscHelpers.UrlConstants.eWorkyFacebook" target="_blank"></a>
 						</div>
 						<div class="linkImg tw_footer logo-middle float-left">
-							<a href="@MiscHelpers.eWorkyTwitter" target="_blank"></a>
+							<a href="@MiscHelpers.UrlConstants.eWorkyTwitter" target="_blank"></a>
 						</div>
 						<div class="linkImg in_footer logo-middle float-left">
 							<a href="http://www.linkedin.com/company/eworky" target="_blank"></a>

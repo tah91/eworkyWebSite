@@ -7,6 +7,7 @@ using MvcSiteMapProvider.Extensibility;
 using Ninject;
 using Worki.Data.Models;
 using Worki.Web.Helpers;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.SiteMap
 {
@@ -45,8 +46,8 @@ namespace Worki.SiteMap
 			{
 				DynamicNode node = new DynamicNode("Id_" + loc.ID.ToString(), loc.Name);
 				node.RouteValues.Add("id", loc.ID);
-                node.RouteValues.Add("name", ControllerHelpers.GetSeoString(loc.Name));
-                node.RouteValues.Add("type", ControllerHelpers.GetSeoString(Localisation.LocalisationTypes[loc.TypeValue]));
+				node.RouteValues.Add("name", MiscHelpers.GetSeoString(loc.Name));
+				node.RouteValues.Add("type", MiscHelpers.GetSeoString(Localisation.LocalisationTypes[loc.TypeValue]));
 
 				yield return node;
 			}

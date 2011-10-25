@@ -5,6 +5,7 @@ using Worki.Data.Models;
 using Worki.Infrastructure.Helpers;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Routing;
 
 namespace Worki.Web.Helpers
 {
@@ -24,7 +25,6 @@ namespace Worki.Web.Helpers
             return absoluteAction;
         }
 
-
 		public static LocalisationJson GetJson(this Localisation localisation, Controller controller)
 		{
 			//get data from model
@@ -38,7 +38,7 @@ namespace Worki.Web.Helpers
 			var image = localisation.LocalisationFiles.Where(f => f.IsDefault == true).FirstOrDefault();
 			var imageUrl = image == null ? string.Empty : ControllerHelpers.GetUserImagePath(image.FileName, true);
 			if (!string.IsNullOrEmpty(imageUrl) && VirtualPathUtility.IsAppRelative(imageUrl))
-				json.image = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
+				json.image = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imageUrl), true);
 			else
 				json.image = imageUrl;
 
@@ -72,7 +72,7 @@ namespace Worki.Web.Helpers
                                                                 ControllerHelpers.GetUserImagePath(Links.Content.images.worki_fb_jpg, true);
 
             if (!string.IsNullOrEmpty(imagePath) && VirtualPathUtility.IsAppRelative(imagePath))
-                imagePath = ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imagePath), true);
+				imagePath = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imagePath), true);
 
             return new MetaData
             {
@@ -87,8 +87,8 @@ namespace Worki.Web.Helpers
             if (loc == null || urlHelper==null)
                 return null;
 
-            var type = ControllerHelpers.GetSeoString(Localisation.LocalisationTypes[loc.TypeValue]);
-            var name = ControllerHelpers.GetSeoString(loc.Name);
+			var type = MiscHelpers.GetSeoString(Localisation.LocalisationTypes[loc.TypeValue]);
+			var name = MiscHelpers.GetSeoString(loc.Name);
             return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "" });
         }
 
@@ -99,5 +99,21 @@ namespace Worki.Web.Helpers
 
             return urlHelper.AbsoluteAction(MVC.Rental.ActionNames.Detail, MVC.Rental.Name, new { id = rental.Id });
         }
+
+		public static RouteValueDictionary GetOrderCrit(this RouteValueDictionary rvd, eOrderBy order)
+		{
+			switch (order)
+			{
+				case eOrderBy.Distance:
+					rvd["order"] = (int)eOrderBy.Distance;
+					break;
+				case eOrderBy.Rating:
+					rvd["order"] = (int)eOrderBy.Rating;
+					break;
+				default:
+					break;
+			}
+			return rvd;
+		}
     }
 }

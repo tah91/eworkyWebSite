@@ -44,7 +44,7 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult Create(int id, string returnUrl)
         {
-            var memberId = ControllerHelpers.GetIdentityId(User.Identity);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
             //if (memberId == 0)
             //    return View(MVC.Shared.Views.Error);
             var context = ModelFactory.GetUnitOfWork();
@@ -74,7 +74,7 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var memberId = ControllerHelpers.GetIdentityId(User.Identity);
+				var memberId = WebHelper.GetIdentityId(User.Identity);
                 var sendNewAccountMail = false;
                 try
                 {
@@ -113,11 +113,11 @@ namespace Worki.Web.Controllers
                     }
 
                     //send mail to team
-                    dynamic teamMail = new Email(MiscHelpers.EmailView);
-                    teamMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
-                    teamMail.To = MiscHelpers.BookingMail;
+					dynamic teamMail = new Email(MiscHelpers.EmailConstants.EmailView);
+					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
                     teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-                    teamMail.ToName = MiscHelpers.ContactDisplayName;
+					teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
                     teamMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
                                                      string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
                                                      formData.PhoneNumber,
@@ -145,7 +145,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		public virtual ActionResult Details(int id, int memberId)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -159,7 +159,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		public virtual ActionResult Edit(int id, int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -185,7 +185,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
-		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminRole)]
+		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		public virtual ActionResult Edit(int id, int memberId)
 		{
 			var formData = new MemberBookingFormViewModel();
@@ -217,7 +217,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking to handle</param>
 		/// <param name="returnUrl">url to redirect</param>
 		/// <returns>Redirect to url</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		public virtual ActionResult HandleBooking(int id,int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -231,8 +231,8 @@ namespace Worki.Web.Controllers
 
 				//send email
 
-                dynamic handleMail = new Email(MiscHelpers.EmailView);
-                handleMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.BookingMail + ">";
+				dynamic handleMail = new Email(MiscHelpers.EmailConstants.EmailView);
+				handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
                 handleMail.To = booking.Member.Email;
                 handleMail.Subject = Worki.Resources.Email.BookingString.HandleMailSubject;
                 handleMail.ToName = booking.Member.MemberMainData.FirstName;
@@ -259,7 +259,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking to confirm</param>
 		/// <param name="returnUrl">url to redirect</param>
 		/// <returns>Redirect to url</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		public virtual ActionResult ConfirmBooking(int id, int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -272,8 +272,8 @@ namespace Worki.Web.Controllers
                 booking.Confirmed = true;
 
 				//send email
-				dynamic confirmMail = new Email(MiscHelpers.EmailView);
-				confirmMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.BookingMail + ">";
+				dynamic confirmMail = new Email(MiscHelpers.EmailConstants.EmailView);
+				confirmMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 				confirmMail.To = booking.Member.Email;
 				confirmMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
 				confirmMail.ToName = booking.Member.MemberMainData.FirstName;
@@ -301,7 +301,7 @@ namespace Worki.Web.Controllers
         /// <param name="id">id of booking to refuse</param>
         /// <param name="returnUrl">url to redirect</param>
         /// <returns>Redirect to url</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
         public virtual ActionResult RefuseBooking(int id, int memberId, string returnUrl)
         {
             var context = ModelFactory.GetUnitOfWork();
@@ -314,8 +314,8 @@ namespace Worki.Web.Controllers
                 booking.Refused = true;
 
                 //send email
-                dynamic refuseMail = new Email(MiscHelpers.EmailView);
-                refuseMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.BookingMail + ">";
+				dynamic refuseMail = new Email(MiscHelpers.EmailConstants.EmailView);
+				refuseMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
                 refuseMail.To = booking.Member.Email;
                 refuseMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
                 refuseMail.ToName = booking.Member.MemberMainData.FirstName;
@@ -360,7 +360,7 @@ namespace Worki.Web.Controllers
                 else
                 {
                     //if not create an account from form data
-                    var status = _MembershipService.CreateUser(formData.Email, MiscHelpers.DummyPassword, formData.Email, true);
+                    var status = _MembershipService.CreateUser(formData.Email, MiscHelpers.AdminConstants.DummyPassword, formData.Email, true);
                     if (status != System.Web.Security.MembershipCreateStatus.Success)
                     {
                         var error = AccountValidation.ErrorCodeToString(status);
@@ -405,8 +405,8 @@ namespace Worki.Web.Controllers
             changePassLink.MergeAttribute("href", changePassUrl);
             changePassLink.InnerHtml = changePassUrl;
 
-            dynamic newMemberMail = new Email(MiscHelpers.EmailView);
-            newMemberMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+			dynamic newMemberMail = new Email(MiscHelpers.EmailConstants.EmailView);
+			newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
             newMemberMail.To = formData.Email;
             newMemberMail.Subject = Worki.Resources.Email.BookingString.NewMemberSubject;
             newMemberMail.ToName = formData.FirstName;

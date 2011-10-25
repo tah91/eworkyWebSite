@@ -7,8 +7,8 @@
             FormsIdentity ident = User.Identity as FormsIdentity;
             if (ident != null)
             {
-				displayName = ControllerHelpers.GetIdentityDisplayName(User.Identity);
-				memberId = ControllerHelpers.GetIdentityId(User.Identity);
+				displayName = WebHelper.GetIdentityDisplayName(User.Identity);
+				memberId = WebHelper.GetIdentityId(User.Identity);
             }
         }
         <div>
@@ -17,7 +17,7 @@
         <div>
             @Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.MyProfile, MVC.Profil.Dashboard(memberId)) | 
             @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Account.LogOff())
-            @if (User.IsInRole(MiscHelpers.AdminRole))
+            @if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
             {
                 <span> | </span>
                 @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Admin, MVC.Admin.Index())

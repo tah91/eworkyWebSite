@@ -77,7 +77,7 @@ namespace Worki.Data.Models
             Member member = _Context.Members.SingleOrDefault(m => m.MemberId == id);
             if (member == null)
                 return;
-            var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminUser);
+            var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminConstants.AdminUser);
             //set member localisation to admin
             foreach (var item in member.Localisations.ToList())
             {

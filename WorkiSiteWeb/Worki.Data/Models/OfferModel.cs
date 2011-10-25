@@ -30,6 +30,11 @@ namespace Worki.Data.Models
 			return Id;
 		}
 
+		public ProviderType GetProviderType()
+		{
+			return ProviderType.Offer;
+		}
+
 		public List<PictureData> GetPictureData()
 		{
 			if (OfferFiles != null)

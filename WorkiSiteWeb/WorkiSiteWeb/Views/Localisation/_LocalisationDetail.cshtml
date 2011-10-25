@@ -31,7 +31,7 @@
 			var link = Model.GetDetailFullUrl(Url);
 			if (Request.IsAuthenticated)
 			{
-				var id = ControllerHelpers.GetIdentityId(User.Identity);
+				var id = WebHelper.GetIdentityId(User.Identity);
 				if (id != 0)
 				{
 					if (Model.FavoriteLocalisations.Where(f => f.MemberId == id).Count() > 0)
@@ -192,7 +192,7 @@
 			</div>
 		</div>
 		<div class="localisationDetailRight blockContainer float-right">
-			@if (Html.IsDebug() && Model.Bookable)
+			@if (WebHelper.IsDebug() && Model.Bookable)
 			{
 	   			<div class="contentBlock">
 					<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.NeedToBookPlace</h3>
@@ -238,7 +238,7 @@
 				<div class="clear">
 				</div>
 			</div>*@
-			@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+			@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 			{
    
 	   			<div class="contentBlock">
@@ -373,7 +373,7 @@
 				}
 				else
 				{
-					@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.ContactMail
+					@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.EmailConstants.ContactMail
 				}
 			</div>
             @Html.Partial(MVC.Localisation.Views._Suggestions, MVC.Localisation.Suggestions(Model.ID))
@@ -386,7 +386,7 @@
 <div class="buttonStd buttonBlue linkImg float-right">
 @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 </div>
-@if (Roles.IsUserInRole(MiscHelpers.AdminRole))
+@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 {
 	<div class="buttonStd buttonBlue linkImg float-right">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Localisation.Delete(Model.ID))

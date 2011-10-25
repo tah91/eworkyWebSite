@@ -12,7 +12,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 {
 	public partial class AccountController : Controller
 	{
-		public const string MemberDisplayNameString = "MemberDisplayName";
+		const string MemberDisplayNameString = "MemberDisplayName";
 		public IFormsAuthenticationService FormsService
 		{
 			get { return _FormsService; }

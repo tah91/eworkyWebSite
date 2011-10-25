@@ -25,7 +25,7 @@ namespace Worki.Web.Singletons
             if (string.IsNullOrEmpty(_BlobContainerName))
                 return;
 
-            var blobStorageAccount = _IsDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(MiscHelpers.DataConnectionString);
+            var blobStorageAccount = _IsDevStore ? CloudStorageAccount.DevelopmentStorageAccount : CloudStorageAccount.FromConfigurationSetting(MiscHelpers.AzureConstants.DataConnectionString);
             var blobClient = blobStorageAccount.CreateCloudBlobClient();
             var blobContainer = blobClient.GetContainerReference(_BlobContainerName);
             blobContainer.CreateIfNotExist();

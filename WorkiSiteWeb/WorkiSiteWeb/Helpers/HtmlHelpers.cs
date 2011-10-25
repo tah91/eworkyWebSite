@@ -233,7 +233,7 @@ namespace Worki.Web.Helpers
         {
             try
             {
-                return ControllerHelpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute(path), forceHttps);
+				return WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(path), forceHttps);
             }
             catch (Exception)
             {
@@ -437,32 +437,5 @@ namespace Worki.Web.Helpers
 		}
 
 		#endregion
-
-		static bool _IsAzureDebug = bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
-
-		/// <summary>
-		/// Tell if it is in debug or prod
-		/// </summary>
-		/// <returns>true if in debug</returns>
-		public static bool IsDebug(this HtmlHelper instance)
-		{
-			return _IsAzureDebug;
-		}
-
-        public static RouteValueDictionary GetOrderCrit(RouteValueDictionary rvd, eOrderBy order)
-        {
-            switch (order)
-            {
-                case eOrderBy.Distance:
-                    rvd["order"] = (int)eOrderBy.Distance;
-                    break;
-                case eOrderBy.Rating:
-                    rvd["order"] = (int)eOrderBy.Rating;
-                    break;
-                default:
-                    break;
-            }
-            return (rvd);
-        }
     }
 }

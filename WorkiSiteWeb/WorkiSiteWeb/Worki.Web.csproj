@@ -258,6 +258,7 @@
     </Compile>
     <Compile Include="Helpers\Capatchahelper.cs" />
     <Compile Include="Helpers\ControllerHelpers.cs" />
+    <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Logging\AzureAppender.cs" />

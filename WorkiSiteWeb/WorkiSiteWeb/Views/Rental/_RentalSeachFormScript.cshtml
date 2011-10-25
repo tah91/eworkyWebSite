@@ -1,7 +1,7 @@
 ﻿@model Worki.Data.Models.RentalSearchCriteria
 
 <script type="text/javascript">
-    require(["order!@MiscHelpers.jqueryui", "order!@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
+    require(["order!@MiscHelpers.UrlConstants.jqueryui", "order!@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
         $(".dp").datepicker({
             changeMonth: true,
             changeYear: true,
@@ -60,7 +60,7 @@
         });
     };
 
-    require(["@MiscHelpers.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_autocomplete_selectFirst_js)", "@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
+    require(["@MiscHelpers.UrlConstants.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_autocomplete_selectFirst_js)", "@Url.VersionedContent(Links.Scripts.WorkiAutocomplete_js)"], function () {
         var cityAutocomplete = new WorkiCityAutoComplete('#placeAutocomplete');
         cityAutocomplete.SetAutocomplete();
         $("#placeAutocomplete").bind("autocompleteselect", function (event, ui) {

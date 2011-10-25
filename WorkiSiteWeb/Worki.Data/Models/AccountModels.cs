@@ -23,13 +23,13 @@ namespace Worki.Data.Models
         [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
         [Display(Name = "NewPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
-		[StringLength(128, MinimumLength = MiscHelpers.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[StringLength(128, MinimumLength = MiscHelpers.Constants.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string NewPassword { get; set; }
 
         [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
-		[StringLength(128, MinimumLength = MiscHelpers.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[StringLength(128, MinimumLength = MiscHelpers.Constants.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Compare("NewPassword", ErrorMessageResourceName = "TheTwoNotMatch", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string ConfirmPassword { get; set; }
     }
@@ -107,19 +107,19 @@ namespace Worki.Data.Models
         [DataType(DataType.EmailAddress)]
         [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Email { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
         [Display(Name = "Password", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
-		[StringLength(128, MinimumLength = MiscHelpers.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[StringLength(128, MinimumLength = MiscHelpers.Constants.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Password { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPassword", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
-		[StringLength(128, MinimumLength = MiscHelpers.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[StringLength(128, MinimumLength = MiscHelpers.Constants.MinRequiredPasswordLength, ErrorMessageResourceName = "MinMaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Compare("Password", ErrorMessageResourceName = "TheTwoNotMatch", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string ConfirmPassword { get; set; }
 
@@ -138,7 +138,7 @@ namespace Worki.Data.Models
     {
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Contact.Contact))]
-        [StringLength(MiscHelpers.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string EMail { get; set; }
     }

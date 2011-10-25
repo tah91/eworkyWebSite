@@ -47,7 +47,7 @@
 				FormsIdentity ident = User.Identity as FormsIdentity;
 				if (ident != null)
 				{
-					displayName = ControllerHelpers.GetIdentityDisplayName(User.Identity);
+					displayName = WebHelper.GetIdentityDisplayName(User.Identity);
 				}
 				<div>
 					@Worki.Resources.Views.Mobile.MobileString.Welcome <span class="blue bold">@displayName</span> !
@@ -67,7 +67,7 @@
             $('input:text').placeholder();
         });
 
-        require(["@MiscHelpers.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+        require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
 
         });
 

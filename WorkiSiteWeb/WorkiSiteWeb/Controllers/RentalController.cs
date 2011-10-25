@@ -134,7 +134,7 @@ namespace Worki.Web.Controllers
 
 					context.Commit();
 					idToRedirect = newRental ? rentalToAdd.Id : id.Value;
-                    TempData[MiscHelpers.Info] = newRental ? Worki.Resources.Views.Rental.RentalString.RentalHaveBeenCreate  : Worki.Resources.Views.Rental.RentalString.RentalHaveBeenEdit;
+                    TempData[MiscHelpers.TempDataConstants.Info] = newRental ? Worki.Resources.Views.Rental.RentalString.RentalHaveBeenCreate  : Worki.Resources.Views.Rental.RentalString.RentalHaveBeenEdit;
 
 					return RedirectToAction(MVC.Rental.ActionNames.Detail, new { id = idToRedirect });
 				}
@@ -154,7 +154,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">The id of the rental to delete</param>
 		/// <returns>the confirmation view</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminRole)]
+        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		[ActionName("supprimer")]
 		public virtual ActionResult DeleteRental(int id, string returnUrl = null)
 		{
@@ -176,7 +176,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">The id of the rental to delete</param>
 		/// </summary>
 		/// <returns>the deletetion success view</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminRole)]
+        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 		[ActionName("supprimer")]
 		[ValidateAntiForgeryToken]
         public virtual ActionResult DeleteRental(int id, string confirm, string returnUrl)
@@ -197,7 +197,7 @@ namespace Worki.Web.Controllers
 				context.Complete();
 			}
 
-            TempData[MiscHelpers.Info] = Worki.Resources.Views.Rental.RentalString.RentalHaveBeenDel;
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Rental.RentalString.RentalHaveBeenDel;
 
             return RedirectToAction(MVC.Admin.IndexRental());
             //return Redirect(returnUrl);
@@ -381,7 +381,7 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    dynamic contactMail = new Email(MiscHelpers.EmailOwnerView);
+					dynamic contactMail = new Email(MiscHelpers.EmailConstants.EmailOwnerView);
                     contactMail.From = contact.FirstName + " " + contact.LastName + "<" + contact.EMail + ">";
                     contactMail.To = contact.ToEMail;
                     contactMail.Subject = contact.Subject;
@@ -394,7 +394,7 @@ namespace Worki.Web.Controllers
                 {
                     _Logger.Error("Rental", ex);
                 }
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent2;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent2;
                 return Redirect(contact.Link);
             }
             return View(contact);

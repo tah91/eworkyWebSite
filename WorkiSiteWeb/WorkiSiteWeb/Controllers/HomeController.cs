@@ -41,9 +41,6 @@ namespace Worki.Web.Controllers
             return View();
         }
 
-        const string _BlogApiPath = "http://blog.eworky.com/api/get_recent_posts/";
-        public const string BlogUrl = "http://blog.eworky.com";
-        public const string JTPath = "http://vimeo.com/29038745";
         public const string IndexViewModelContent = "IndexViewModel";
         const string _BlogCacheKey = "BlogCacheKey";
         const int _CacheDaySpan = 1;
@@ -61,7 +58,7 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    string textString = client.DownloadString(_BlogApiPath);
+                    string textString = client.DownloadString(MiscHelpers.UrlConstants.BlogApiPath);
                     JObject blogJson = JObject.Parse(textString);
                     var posts = blogJson["posts"];
                     var added = 0;
@@ -137,11 +134,11 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    dynamic contactMail = new Email(MiscHelpers.EmailView);
+					dynamic contactMail = new Email(MiscHelpers.EmailConstants.EmailView);
                     contactMail.From = contact.FirstName + " " + contact.LastName + "<" + contact.EMail + ">";
-                    contactMail.To = MiscHelpers.ContactMail;
+                    contactMail.To = MiscHelpers.EmailConstants.ContactMail;
                     contactMail.Subject = contact.Subject;
-                    contactMail.ToName = MiscHelpers.ContactDisplayName;
+					contactMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
                     contactMail.Content = contact.Message;
                     contactMail.Send();
                 }
@@ -150,7 +147,7 @@ namespace Worki.Web.Controllers
                     _Logger.Error("Contact", ex);
                 }
 
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent;
 
                 return RedirectToAction(MVC.Home.Index());
             }

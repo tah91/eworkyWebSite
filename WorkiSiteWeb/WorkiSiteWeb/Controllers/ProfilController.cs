@@ -85,7 +85,7 @@ namespace Worki.Web.Controllers
 			var member = mRepo.Get(id);
 			if (member == null || member.MemberMainData == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
 
@@ -104,7 +104,7 @@ namespace Worki.Web.Controllers
 		[ActionName("dashboard")]
 		public virtual ActionResult Dashboard(int id)
 		{
-            if (!Roles.IsUserInRole(MiscHelpers.AdminRole) && !ControllerHelpers.MatchIdentity(User.Identity, id))
+			if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) && !WebHelper.MatchIdentity(User.Identity, id))
             {
                 return View(MVC.Shared.Views.Error);
             }
@@ -114,7 +114,7 @@ namespace Worki.Web.Controllers
 			var member = mRepo.Get(id);
             if (member == null || member.MemberMainData == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
 
@@ -151,7 +151,7 @@ namespace Worki.Web.Controllers
 		[ActionName("editer")]
 		public virtual ActionResult Edit(int id)
 		{
-            if (!Roles.IsUserInRole(MiscHelpers.AdminRole) && !ControllerHelpers.MatchIdentity(User.Identity, id))
+			if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) && !WebHelper.MatchIdentity(User.Identity, id))
             {
                 return View(MVC.Shared.Views.Error);
             }
@@ -161,7 +161,7 @@ namespace Worki.Web.Controllers
 			var item = mRepo.Get(id);
             if (item == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
                 return RedirectToAction(MVC.Profil.Dashboard(id));
             }
 				
@@ -215,7 +215,7 @@ namespace Worki.Web.Controllers
 
 					context.Commit();
 
-                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Profile.ProfileString.ProfilHaveBeenEdit;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.ProfilHaveBeenEdit;
 
 					return RedirectToAction(MVC.Profil.ActionNames.Dashboard, new { id = id });
 				}

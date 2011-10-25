@@ -17,6 +17,12 @@ namespace Worki.Data.Models
         /// <returns>the id</returns>
         int GetId();
 
+		/// <summary>
+		/// Internal type of the provider
+		/// </summary>
+		/// <returns>the type</returns>
+		ProviderType GetProviderType();
+
         /// <summary>
         /// Get filename of default image
         /// </summary>
@@ -52,7 +58,8 @@ namespace Worki.Data.Models
     public enum ProviderType
     {
         Localisation,
-        Rental
+        Rental,
+		Offer
     }
 
     public class PictureData

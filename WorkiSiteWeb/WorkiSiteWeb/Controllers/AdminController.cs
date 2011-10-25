@@ -16,7 +16,7 @@ using Postal;
 
 namespace Worki.Web.Controllers
 {
-	[Authorize(Roles = MiscHelpers.AdminRole)]
+	[Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
     [CompressFilter(Order = 1)]
     [CacheFilter(Order = 2)]
     public partial class AdminController : Controller
@@ -188,19 +188,19 @@ namespace Worki.Web.Controllers
 						var member = mRepo.GetMember(username);
                         if (member == null)
                             continue;
-                        var userInRole = Roles.IsUserInRole(username, MiscHelpers.AdminRole);
+                        var userInRole = Roles.IsUserInRole(username, MiscHelpers.AdminConstants.AdminRole);
                         if (roleCheck.Contains("true"))
                         {
                             if (!userInRole)
                             {
-                                Roles.AddUserToRole(username, MiscHelpers.AdminRole);
+                                Roles.AddUserToRole(username, MiscHelpers.AdminConstants.AdminRole);
                             }
                         }
                         else
                         {
                             if (userInRole)
                             {
-                                Roles.RemoveUserFromRole(username, MiscHelpers.AdminRole);
+                                Roles.RemoveUserFromRole(username, MiscHelpers.AdminConstants.AdminRole);
                             }
                         }
                     }
@@ -211,7 +211,7 @@ namespace Worki.Web.Controllers
                 }
             }
             
-            TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.RoleHaveBeenSet;
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.RoleHaveBeenSet;
 
             // Redirection
             return Redirect(returnUrl);
@@ -230,7 +230,7 @@ namespace Worki.Web.Controllers
             var user = _MembershipService.GetUser(username);
             if (user == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
                 return RedirectToAction(MVC.Admin.IndexUser());
             }
             TempData["returnUrl"] = returnUrl;
@@ -255,7 +255,7 @@ namespace Worki.Web.Controllers
 			var member = mRepo.GetMember(user.UserName);
             if (member == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
                 return RedirectToAction(MVC.Admin.IndexUser());
             }
             else
@@ -272,7 +272,7 @@ namespace Worki.Web.Controllers
 					context.Complete();
 				}
 
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.UserHaveBeenDel;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.UserHaveBeenDel;
 
                 return Redirect(returnUrl);
             }
@@ -326,7 +326,7 @@ namespace Worki.Web.Controllers
 			var visitor = vRepo.Get(item => string.Compare(item.Email, email, StringComparison.InvariantCultureIgnoreCase) == 0);
             if (visitor == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.VisitorNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.VisitorNotFound;
                 return RedirectToAction(MVC.Admin.IndexVisitor());
             }
             try
@@ -342,7 +342,7 @@ namespace Worki.Web.Controllers
 			vRepo.ValidateVisitor(email);
 			context.Commit();
 
-            TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.MailHaveBeenSent;
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.MailHaveBeenSent;
 
             if (!string.IsNullOrEmpty(returnUrl))
                 return Redirect(returnUrl);
@@ -391,7 +391,7 @@ namespace Worki.Web.Controllers
 			var item = wpRepo.Get(id);
             if (item == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             }
             return View(item);
@@ -442,7 +442,7 @@ namespace Worki.Web.Controllers
 					wpRepo.Add(formModel.WelcomePeople);
 					context.Commit();
 
-                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenCreate;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenCreate;
 
 					return RedirectToAction(MVC.Admin.IndexWelcomePeople());
 				}
@@ -468,7 +468,7 @@ namespace Worki.Web.Controllers
 			var item = wpRepo.Get(id);
             if (item == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             }
 			return View(new WelcomePeopleFormViewModel(item));
@@ -523,7 +523,7 @@ namespace Worki.Web.Controllers
 					ModelState.AddModelError("", ex.Message);
 				}
 
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenEdit;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenEdit;
 
 				return RedirectToAction(MVC.Admin.IndexWelcomePeople());
 			}
@@ -544,7 +544,7 @@ namespace Worki.Web.Controllers
 			var welcomePeople = wpRepo.Get(id);
             if (welcomePeople == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             }
 			TempData["returnUrl"] = returnUrl;
@@ -564,7 +564,7 @@ namespace Worki.Web.Controllers
 			var profil = wpRepo.Get(id);
             if (profil == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             }
             else
@@ -572,7 +572,7 @@ namespace Worki.Web.Controllers
 				wpRepo.Delete(profil.Id);
                 context.Commit();
 
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenDel;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenDel;
 
                 return RedirectToAction(MVC.Admin.IndexWelcomePeople());
             }
@@ -807,7 +807,7 @@ namespace Worki.Web.Controllers
             var item = pRepo.Get(id);
             if (item == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
                 return RedirectToAction(MVC.Admin.IndexPress());
             }
 
@@ -842,7 +842,7 @@ namespace Worki.Web.Controllers
 					pRepo.Add(formModel);
 					context.Commit();
 
-                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenCreate;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenCreate;
 
                     return RedirectToAction(MVC.Admin.IndexPress());
                 }
@@ -868,7 +868,7 @@ namespace Worki.Web.Controllers
 			var item = pRepo.Get(id);
             if (item == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
                 return RedirectToAction(MVC.Admin.IndexPress());
             }
 
@@ -900,7 +900,7 @@ namespace Worki.Web.Controllers
 					ModelState.AddModelError("", ex.Message);
 				}
 
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenEdit;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenEdit;
 
 				return RedirectToAction(MVC.Admin.IndexPress());
 			}
@@ -921,7 +921,7 @@ namespace Worki.Web.Controllers
 			var press = pRepo.Get(id);
             if (press == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
                 return RedirectToAction(MVC.Admin.IndexPress());
             }
 
@@ -940,7 +940,7 @@ namespace Worki.Web.Controllers
 			var article = pRepo.Get(id);
 			if (article == null)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
                 return RedirectToAction(MVC.Admin.IndexPress());
             }
 			else
@@ -956,7 +956,7 @@ namespace Worki.Web.Controllers
 					context.Complete();
 				}
 
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenDel;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenDel;
 
 				return RedirectToAction(MVC.Admin.IndexPress());
 			}
@@ -1004,7 +1004,7 @@ namespace Worki.Web.Controllers
                 var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
                 var Loc = lRepo.GetAll();
 
-                dynamic Mail = new Email(MiscHelpers.ListLocMailView);
+				dynamic Mail = new Email(MiscHelpers.EmailConstants.ListLocMailView);
                 var count = 0;
 
                 foreach (var item in Loc)
@@ -1013,7 +1013,7 @@ namespace Worki.Web.Controllers
                         break;
                     else
                     {
-                        Mail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+						Mail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         Mail.To = "mika7869@gmail.com";
                         // Mail.To = item.Mail;
                         Mail.Subject = "TEST MAIL";
@@ -1026,7 +1026,7 @@ namespace Worki.Web.Controllers
                 Mail.Send();
             }
 
-            TempData[MiscHelpers.Info] = Worki.Resources.Views.Localisation.LocalisationString.ListLocSent;
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.ListLocSent;
 
             return RedirectToAction(MVC.Admin.Index());
         }

@@ -21,7 +21,7 @@ namespace Worki.Web.Controllers
     [CacheFilter(Order = 2)]
     public partial class AccountController : Controller
     {
-        public const string MemberDisplayNameString = "MemberDisplayName";
+        const string MemberDisplayNameString = "MemberDisplayName";
  
         public IFormsAuthenticationService FormsService
         {
@@ -203,8 +203,8 @@ namespace Worki.Web.Controllers
                         link.MergeAttribute("href", activationLink);
                         link.InnerHtml = activationLink;
 
-                        dynamic activateMail = new Email(MiscHelpers.EmailView);
-                        activateMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+                        dynamic activateMail = new Email(MiscHelpers.EmailConstants.EmailView);
+						activateMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         activateMail.To = member.Email;
                         activateMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
                         activateMail.ToName = member.MemberMainData.FirstName;
@@ -215,7 +215,7 @@ namespace Worki.Web.Controllers
 					{
 						_Logger.Error(ex.Message);
                     }
-                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.ConfirmationMail;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.ConfirmationMail;
                     return RedirectToAction(MVC.Home.Index());
 				}
 				else
@@ -241,7 +241,7 @@ namespace Worki.Web.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             if (mRepo.ActivateMember(username, key) == false)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain; 
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain; 
                 return RedirectToAction(MVC.Home.Index());
             }
             else
@@ -269,7 +269,7 @@ namespace Worki.Web.Controllers
             //link not ok, redirect to home
             if (member == null || string.Compare(key, member.EmailKey) != 0)
             {
-                TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.ChangePasswordError; ;
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.ChangePasswordError; ;
                 return RedirectToAction(MVC.Home.Index());
             }
 
@@ -297,12 +297,12 @@ namespace Worki.Web.Controllers
 						var member = mRepo.GetMember(model.UserName);
                         var userData = member.GetUserData();
                         FormsService.SignIn(model.UserName, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
-                        TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
                         return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
                     }
                     else
                     {
-                        TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
                         return RedirectToAction(MVC.Home.Index());
                     }
                 }
@@ -354,8 +354,8 @@ namespace Worki.Web.Controllers
                         link.MergeAttribute("href", changePassLink);
                         link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
 
-                        dynamic resetMail = new Email(MiscHelpers.EmailView);
-                        resetMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+                        dynamic resetMail = new Email(MiscHelpers.EmailConstants.EmailView);
+						resetMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         resetMail.To = member.Email;
                         resetMail.Subject = Worki.Resources.Email.ResetPassword.ResetPasswordSubject;
                         resetMail.ToName = member.MemberMainData.FirstName;
@@ -367,7 +367,7 @@ namespace Worki.Web.Controllers
                         _Logger.Error("error", ex);
                     }
 
-                    TempData[MiscHelpers.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
                     return RedirectToAction(MVC.Home.Index());
                 }
                 else
@@ -571,8 +571,8 @@ namespace Worki.Web.Controllers
                             // Send mail
                             try
                             {
-                                dynamic facebookMail = new Email(MiscHelpers.EmailView);
-                                facebookMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
+								dynamic facebookMail = new Email(MiscHelpers.EmailConstants.EmailView);
+								facebookMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                                 facebookMail.To = member.Email;
                                 facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
                                 facebookMail.ToName = member.MemberMainData.FirstName;
