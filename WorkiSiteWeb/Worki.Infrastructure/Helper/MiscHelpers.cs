@@ -27,6 +27,18 @@ namespace Worki.Infrastructure.Helpers
 
         #endregion
 
+        #region Facebook
+
+        public static class FaceBookConstants
+        {
+            public const string FacebookProfilePictureUrlPattern = "https://graph.facebook.com/{0}/picture?type=large";
+            public const string FacebookProfileViewPattern = "http://www.facebook.com/#!/profile.php?id={0}&viewas={1}&returnto=profile";
+            public const string FacebookDefaultPassword = "Fcbkdfltpsswrd";
+        }
+
+
+        #endregion
+
         public const string Info = "info";
 
         public const string AdminRole = "AdminRole";

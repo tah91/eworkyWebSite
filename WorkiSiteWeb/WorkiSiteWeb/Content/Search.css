@@ -233,7 +233,7 @@
 
 .directAccessHead
 {
-    padding:20px 0;
+    padding:15px 0;
 }
 
 .directAccessStudent
@@ -280,4 +280,28 @@ h4.toogle_item
 div.acc_container, div.toogle_container
 {
     margin-bottom:20px;
+}
+
+/* Suggestion block
+----------------------------------------------------------*/
+
+.preview
+{
+    margin-bottom:5px;
+}
+
+.preview .resultItemGallery img
+{
+    width:90px!important;
+    height:60px!important;
+}
+
+.previewpic
+{
+    margin: 4px 0px 4px 4px;
+}
+
+.preview .desc
+{
+    width:60%;
 }

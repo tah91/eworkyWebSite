@@ -557,7 +557,7 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to lieu de travail.
+        ///   Looks up a localized string similar to Lieux de travail.
         /// </summary>
         public static string Workplace {
             get {

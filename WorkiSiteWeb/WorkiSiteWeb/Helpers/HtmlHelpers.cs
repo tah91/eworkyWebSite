@@ -209,6 +209,26 @@ namespace Worki.Web.Helpers
             return MvcHtmlString.Create(string.Format("{0}...", truncated));
         }
 
+        public static MvcHtmlString ActionImage(this HtmlHelper html, object routeValues, string imagePath, string alt, ActionResult action)
+        {
+            action.AddRouteValues(routeValues);
+
+            var url = new UrlHelper(html.ViewContext.RequestContext);
+
+            var imgBuilder = new TagBuilder("img");
+            imgBuilder.MergeAttribute("src", url.Content(imagePath));
+            imgBuilder.MergeAttribute("alt", alt);
+            string imgHtml = imgBuilder.ToString(TagRenderMode.SelfClosing);
+            
+            var anchorBuilder = new TagBuilder("a");
+            anchorBuilder.MergeAttribute("href", url.Action(action)); 
+            anchorBuilder.InnerHtml = imgHtml; 
+            string anchorHtml = anchorBuilder.ToString(TagRenderMode.Normal);
+
+            return MvcHtmlString.Create(anchorHtml);
+        }
+
+
         public static string GetFileFullUrl(this HtmlHelper html, string path, bool forceHttps)
         {
             try
@@ -428,5 +448,21 @@ namespace Worki.Web.Helpers
 		{
 			return _IsAzureDebug;
 		}
+
+        public static RouteValueDictionary GetOrderCrit(RouteValueDictionary rvd, eOrderBy order)
+        {
+            switch (order)
+            {
+                case eOrderBy.Distance:
+                    rvd["order"] = (int)eOrderBy.Distance;
+                    break;
+                case eOrderBy.Rating:
+                    rvd["order"] = (int)eOrderBy.Rating;
+                    break;
+                default:
+                    break;
+            }
+            return (rvd);
+        }
     }
 }

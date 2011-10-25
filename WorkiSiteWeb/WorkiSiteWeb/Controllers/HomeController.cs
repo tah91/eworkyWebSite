@@ -232,6 +232,12 @@ namespace Worki.Web.Controllers
             return Redirect(returnUrl);
         }
 
+        [ActionName("ajouter-espace")]
+        public virtual ActionResult AddSpace()
+        {
+            return View();
+        }
+
         //public virtual ActionResult Partners()
         //{
         //    return View();

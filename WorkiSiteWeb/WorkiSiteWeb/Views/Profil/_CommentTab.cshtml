@@ -17,7 +17,7 @@
 	}
 }
 
-@foreach (var com in comments)
+@foreach (var com in comments.OrderByDescending(x => x.ID))
 {
     if (com.Member == null)
     {

@@ -71,7 +71,9 @@
 			    if(lat == "0" || lng == "0")
 				    FindAddress(null);
 
-			    var coffeePrice = $("#Localisation_LocalisationData_CoffeePrice").val();
+			    var mail = $("#Localisation_Mail").val().replace(/ /g,'');
+                $("#Localisation_Mail").val(mail);
+                var coffeePrice = $("#Localisation_LocalisationData_CoffeePrice").val();
 			    var newCoffeePrice = coffeePrice.replace(",", ".");
                 $("#Localisation_LocalisationData_CoffeePrice").val(newCoffeePrice);
                 return true;

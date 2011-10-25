@@ -47,10 +47,24 @@ namespace Worki.Service
                 criteriaViewModel.DistanceFromLocalisation.Add(item.ID, distance);
             }
 
-            criteriaViewModel.Results = (from item
-                                            in results
-                                         orderby criteriaViewModel.DistanceFromLocalisation[item.ID]
-                                         select item).ToList();
+            /* Switch needed to check the different cases */
+            switch (criteriaViewModel.Criteria.OrderBy)
+            {
+                case eOrderBy.Rating:
+                    criteriaViewModel.Results = (from item
+                                                    in results
+                                                 orderby item.GetRatingAverage(RatingType.General) descending
+                                                 select item).ToList();
+                    break;
+                case eOrderBy.Distance:
+                    criteriaViewModel.Results = (from item
+                                                    in results
+                                                 orderby criteriaViewModel.DistanceFromLocalisation[item.ID]
+                                                 select item).ToList();
+                    break;
+                default:
+                    break;
+            }
 
             criteriaViewModel.FillPageInfo();
         }
@@ -122,6 +136,9 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, "lieu", ref value))
                 criteria.Place = value;
 
+            if (MiscHelpers.GetRequestValue(parameters, "order", ref value))
+                criteria.OrderBy = (eOrderBy)int.Parse(value);
+
 			if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
 			{
 				float lat = 0, lng = 0;
@@ -184,6 +201,8 @@ namespace Worki.Service
 			rvd["lieu"] = criteria.Place;
 			rvd["offer-type"] = criteria.LocalisationOffer;
 
+            rvd["order"] = (int)criteria.OrderBy;
+
 			if (!criteria.Everything)
 			{
                 rvd["tout"] = false;
@@ -245,6 +264,6 @@ namespace Worki.Service
 				error = Worki.Resources.Validation.ValidationString.DuplicateName;
 				throw new Exception(error);
 			}
-		}
+		}        
 	}
 }

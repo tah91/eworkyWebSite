@@ -123,6 +123,10 @@
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Facebook, Version=5.2.1.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\facebooksdk\net40-client\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="FiftyOne.Foundation">
       <HintPath>..\packages\51Degrees.mobi.1.2.0.5\lib\NET40\FiftyOne.Foundation.dll</HintPath>
     </Reference>
@@ -303,6 +307,7 @@
     <Content Include="Content\images\homeLogo4.png" />
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
+    <Content Include="Content\images\icon_facebook.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\retour.png" />
@@ -701,6 +706,8 @@
     <Content Include="Views\Rental\_RentalSeachFormScript.cshtml" />
     <Content Include="Views\Offer\Create.cshtml" />
     <Content Include="Views\Offer\Details.cshtml" />
+    <Content Include="Views\Home\ajouter-espace.cshtml" />
+    <Content Include="Views\Localisation\_Suggestions.cshtml" />
     <Content Include="Views\Offer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -766,7 +773,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4373</DevelopmentServerPort>
+          <DevelopmentServerPort>2441</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

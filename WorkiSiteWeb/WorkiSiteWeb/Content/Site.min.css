@@ -94,6 +94,7 @@ div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
 .boldLink{font-weight:bold}
 .boldLink a{text-decoration:none}
 .marginb5{margin-bottom:5px}
+.marginb10{margin-bottom:10px}
 .marginl5{margin-left:5px}
 .marginl10{margin-left:10px}
 .marginl0{margin-left:0}
@@ -237,3 +238,4 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .searchFormBlock{padding:10px;width:24.5%}
 .ie7 .searchFormBlock{padding:8px}
 .resultDiv{width:72.5%}
+.margin0important{margin:0!important}

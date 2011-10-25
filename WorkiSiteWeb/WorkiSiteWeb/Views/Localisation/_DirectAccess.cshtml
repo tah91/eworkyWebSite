@@ -1,6 +1,6 @@
 ﻿<div class="directAccess float-left contentBlock">
     <div class="directAccessHead directAccessElem blue">
-        <h2>@Worki.Resources.Views.Shared.SharedString.DirectAccess</h2> <span>&nbsp;&nbsp;&nbsp;@Worki.Resources.Views.Shared.SharedString.WhatEWorkyCouldDo</span>
+        @RazorHelpers.TitleDiv(Worki.Resources.Views.Shared.SharedString.DirectAccess, "Blue")
     </div>
     <div class="directAccessStudent directAccessElem float-left">
         @Html.ActionLink(Worki.Resources.Models.Profile.Profile.Student, MVC.Localisation.FullSearchPerTypeSpecial((int)eDirectAccessType.eStudent), new { id = eDirectAccessType.eStudent })

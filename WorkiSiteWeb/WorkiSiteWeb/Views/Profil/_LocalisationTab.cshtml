@@ -19,7 +19,7 @@
 }
 
 <ul>
-    @foreach (var loc in locs)
+    @foreach (var loc in locs.OrderByDescending(x => x.ID))
 	{ 
         <li>
             <a href="@loc.GetDetailFullUrl(Url)">
