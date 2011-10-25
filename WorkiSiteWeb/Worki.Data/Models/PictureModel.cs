@@ -74,6 +74,23 @@ namespace Worki.Data.Models
         public string FileName { get; set; }
         public bool IsDefault { get; set; }
         public bool IsLogo { get; set; }
+
+		const string _RentalFolder = "rental";
+		const string _OfferFolder = "offer";
+
+		public static string GetFolder(ProviderType type)
+		{
+			switch (type)
+			{
+				case ProviderType.Rental:
+					return _RentalFolder;
+				case ProviderType.Offer:
+					return _OfferFolder;
+				case ProviderType.Localisation:
+				default:
+					return null;
+			}
+		}
     }
 
     [DataContract]

@@ -264,6 +264,7 @@
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
     <Compile Include="Membership\MembershipService.cs" />
+    <Compile Include="ModelBinder\OfferBinder.cs" />
     <Compile Include="ModelBinder\RentalBinder.cs" />
     <Compile Include="ModelBinder\LocalisationBinder.cs" />
     <Compile Include="Membership\IFormAuthentication.cs" />

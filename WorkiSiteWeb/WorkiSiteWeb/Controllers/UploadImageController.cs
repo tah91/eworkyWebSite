@@ -22,37 +22,29 @@ namespace Worki.Web.Controllers
 			_Logger = logger;
 		}
 
-		const string _RentalFolder = "rental";
-		const string _OfferFolder = "offer";
-
-		string GetFolder(ProviderType type)
+		IPictureDataProvider GetProvider(ProviderType type, int id)
 		{
-			switch(type)
+			var context = ModelFactory.GetUnitOfWork();
+			switch (type)
 			{
 				case ProviderType.Rental:
-					return _RentalFolder;
+				{
+					var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+					return rRepo.Get(id);
+				}
 				case ProviderType.Offer:
-					return _OfferFolder;
+				{
+					var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+					return oRepo.Get(o => o.Id == id);
+				}
 				case ProviderType.Localisation:
 				default:
-					return null;
+				{
+					var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+					return lRepo.Get(id);
+				}
 			}
 		}
-
-        IPictureDataProvider GetProvider(ProviderType type, int id)
-        {
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
-            switch(type)
-            {
-                case ProviderType.Rental:
-					return rRepo.Get(id);
-                case ProviderType.Localisation:
-                default:
-					return lRepo.Get(id);
-            }
-        }
 
         /// <summary>
         /// Action method to handle the json upload of files
@@ -63,6 +55,7 @@ namespace Worki.Web.Controllers
         {
             var toRet = new List<ImageJson>();
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+			var folder = PictureData.GetFolder(type);
             foreach (string name in Request.Files)
             {
                 try
@@ -70,8 +63,8 @@ namespace Worki.Web.Controllers
                     var postedFile = Request.Files[name];
                     if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
                         continue;
-					var uploadedFileName = this.UploadFile(postedFile, GetFolder(type));
-                    var url = ControllerHelpers.GetUserImagePath(uploadedFileName, true);
+					var uploadedFileName = this.UploadFile(postedFile, folder);
+					var url = ControllerHelpers.GetUserImagePath(uploadedFileName, true, folder);
                     var deleteUrl = urlHelper.Action(MVC.UploadImage.DeleteImage(uploadedFileName));
 
                     toRet.Add(new ImageJson
@@ -118,9 +111,10 @@ namespace Worki.Web.Controllers
             }
 
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+			var folder = PictureData.GetFolder(type);
             foreach (var file in filesFromCache.Files)
             {
-                var url = ControllerHelpers.GetUserImagePath(file.FileName, true);
+				var url = ControllerHelpers.GetUserImagePath(file.FileName, true, folder);
                 var deleteUrl = urlHelper.Action(MVC.UploadImage.DeleteImage(file.FileName));
                 toRet.Add(new ImageJson
                 {

@@ -296,6 +296,7 @@ namespace Worki.Web
             ModelBinders.Binders.DefaultBinder = defaultBinder;
             ModelBinders.Binders.Add(typeof(Localisation), new LocalisationBinder(defaultBinder));
             ModelBinders.Binders.Add(typeof(Rental), new RentalBinder(defaultBinder));
+			ModelBinders.Binders.Add(typeof(Offer), new OfferBinder(defaultBinder));			
 
 			//resources
 			DefaultModelBinder.ResourceClassKey = "Messages";

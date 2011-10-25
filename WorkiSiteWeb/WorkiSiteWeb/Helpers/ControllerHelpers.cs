@@ -133,6 +133,8 @@ namespace Worki.Web.Helpers
                 {
                     var destinationFolder = controller.Server.MapPath(_UserImgFolder);
 					var path = string.Join(_PathSeparator, destinationFolder, fileName);
+					var dir = Path.GetDirectoryName(path);
+					Directory.CreateDirectory(dir);
                     bmp.Save(path, _JpegCodecInfo, _EncoderParameters);
                 }
             }

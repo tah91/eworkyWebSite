@@ -47,8 +47,8 @@ _ReSharper*/
 
 # Logs
 Logs/
-WorkiSiteWeb/WorkiSiteWeb/Users/*.*
-WorkiSiteWeb/WorkiSiteWeb/Users/thumbnail/*.*
+WorkiSiteWeb/WorkiSiteWeb/Users/
+WorkiSiteWeb/WorkiSiteWeb/Users/thumbnail/
 *.ldf
 *.mdf
 *.dbmdl

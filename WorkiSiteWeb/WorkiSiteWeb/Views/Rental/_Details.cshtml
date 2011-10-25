@@ -42,8 +42,8 @@
             <div id="gallery">
                 @foreach (var item in Model.RentalFiles.OrderBy(f => !f.IsDefault))
 				{
-                    <a href="@ControllerHelpers.GetUserImagePath(item.FileName)">
-            	        <img title="@Model.GetDisplayName()" alt="@Model.GetDisplayName()" src="@ControllerHelpers.GetUserImagePath(item.FileName)"/>
+                    <a href="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Rental))">
+            	        <img title="@Model.GetDisplayName()" alt="@Model.GetDisplayName()" src="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Rental))"/>
         	        </a>                        
 				}
             </div>

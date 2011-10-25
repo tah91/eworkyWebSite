@@ -8,6 +8,8 @@
 @section HeadContent
 {
     <title>@Html.WorkiTitle(title) </title>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
+	<link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
 }
 
 @RazorHelpers.TitleDiv(title, "Blue")
@@ -46,7 +48,7 @@
 				</table>
             </div>
 	  		<div class="contentBlock">
-				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Images</h3>
+				<h3 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h3>
 				<div id="fileupload" class="borderRadius">
 					<div class="fileupload-buttonbar">
 						<label class="fileinput-button">

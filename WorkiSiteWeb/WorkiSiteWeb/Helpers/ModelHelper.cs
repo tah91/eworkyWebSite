@@ -68,8 +68,8 @@ namespace Worki.Web.Helpers
                 return null;
 
             var imageUrl = provider.GetMainPic();
-            var imagePath = !string.IsNullOrEmpty(imageUrl) ?   ControllerHelpers.GetUserImagePath(imageUrl, true) :
-                                                                ControllerHelpers.GetUserImagePath(Links.Content.images.worki_fb_jpg, true);
+			var imagePath = !string.IsNullOrEmpty(imageUrl) ?	ControllerHelpers.GetUserImagePath(imageUrl, true, PictureData.GetFolder(provider.GetProviderType())) :
+																ControllerHelpers.GetUserImagePath(Links.Content.images.worki_fb_jpg, true);
 
             if (!string.IsNullOrEmpty(imagePath) && VirtualPathUtility.IsAppRelative(imagePath))
 				imagePath = WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(imagePath), true);
