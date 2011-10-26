@@ -15,6 +15,7 @@ using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Repository;
 using Microsoft.ApplicationServer.Caching;
 using Worki.Web.Singletons;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -131,9 +132,15 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         [ActionName("contact")]
-        public virtual ActionResult Contact(Contact contact)
+        public virtual ActionResult Contact(Contact contact, string myCaptcha, string attempt)
         {
-            if (ModelState.IsValid)
+            //check capatcha
+            if (!CaptchaHelper.VerifyAndExpireSolution(HttpContext, myCaptcha, attempt))
+            {
+                ModelState.AddModelError("attempt", Worki.Resources.Validation.ValidationString.VerificationLettersWrong);
+            }
+            //check model validity
+            else if (ModelState.IsValid)
             {
                 try
                 {

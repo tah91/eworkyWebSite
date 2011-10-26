@@ -707,6 +707,7 @@
     <Content Include="Views\Rental\_RentalSeachFormScript.cshtml" />
     <Content Include="Views\Home\ajouter-espace.cshtml" />
     <Content Include="Views\Localisation\_Suggestions.cshtml" />
+    <Content Include="Views\Emails\FacebookMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

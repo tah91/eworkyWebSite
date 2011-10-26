@@ -531,7 +531,7 @@ namespace Worki.Web.Controllers
 
                         try
                         {
-                            MembershipCreateStatus createStatus = MembershipService.CreateUser(faceBookEmail, MiscHelpers.GeneratePassword(8,true), faceBookEmail);
+                            MembershipCreateStatus createStatus = MembershipService.CreateUser(faceBookEmail, MiscHelpers.GeneratePassword(12,true), faceBookEmail);
                             createStatusSuccess = createStatus == MembershipCreateStatus.Success;
                             if (!createStatusSuccess)
                             {
@@ -571,7 +571,7 @@ namespace Worki.Web.Controllers
                             // Send mail
                             try
                             {
-                                dynamic facebookMail = new Email(MiscHelpers.EmailView);
+                                dynamic facebookMail = new Email(MiscHelpers.FacebookMail);
                                 facebookMail.From = MiscHelpers.ContactDisplayName + "<" + MiscHelpers.ContactMail + ">";
                                 facebookMail.To = member.Email;
                                 facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;

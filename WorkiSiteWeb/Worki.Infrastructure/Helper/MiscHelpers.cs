@@ -16,6 +16,7 @@ namespace Worki.Infrastructure.Helpers
 
         public const string EmailView = "Email";
         public const string EmailOwnerView = "EmailOwner";
+        public const string FacebookMail = "FacebookMail";
         public const string ListLocMailView = "ListLocMail";
         public const string ContactDisplayName = "eWorky Team";
         //public const string ContactMail = "t.iftikhar@hotmail.fr";

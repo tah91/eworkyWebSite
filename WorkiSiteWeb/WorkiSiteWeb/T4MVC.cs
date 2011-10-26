@@ -1396,9 +1396,11 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Contact(Worki.Data.Models.Contact contact) {
+        public override System.Web.Mvc.ActionResult Contact(Worki.Data.Models.Contact contact, string myCaptcha, string attempt) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Contact);
             callInfo.RouteValueDictionary.Add("contact", contact);
+            callInfo.RouteValueDictionary.Add("myCaptcha", myCaptcha);
+            callInfo.RouteValueDictionary.Add("attempt", attempt);
             return callInfo;
         }
 
@@ -2172,6 +2174,7 @@ namespace T4MVC {
             public readonly string _ViewStart = "~/Views/Emails/_ViewStart.cshtml";
             public readonly string Email = "~/Views/Emails/Email.cshtml";
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
+            public readonly string FacebookMail = "~/Views/Emails/FacebookMail.cshtml";
             public readonly string ListLocMail = "~/Views/Emails/ListLocMail.cshtml";
         }
     }
