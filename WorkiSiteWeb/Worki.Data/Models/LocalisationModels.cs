@@ -8,11 +8,12 @@ using System.Web.Mvc;
 using Worki.Infrastructure;
 using System.Runtime.Serialization;
 using Worki.Infrastructure.Helpers;
+using System.Reflection;
 
 namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
-	public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider// : IDataErrorInfo
+	public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureContainer// : IDataErrorInfo
 	{
 		#region Data Container Ctor
 
@@ -43,7 +44,7 @@ namespace Worki.Data.Models
                 address = Adress,
                 city = City,
                 rating = GetRatingAverage(RatingType.General),
-                type = Localisation.LocalisationTypes[TypeValue]
+				type = Localisation.GetLocalisationType(TypeValue)
             };
         }
 
@@ -53,103 +54,337 @@ namespace Worki.Data.Models
 
 		#region Static Members
 
-		public static List<int> OfferTypes = new List<int>()
-        {
-            (int)Feature.BuisnessRoom,
-            (int)Feature.Workstation,
-            (int)Feature.MeetingRoom,
-            (int)Feature.SeminarRoom,
-            (int)Feature.VisioRoom,
-            (int)Feature.SingleDesk,
-            (int)Feature.FreeArea
-        };
+		//public static Dictionary<int, string> LocalisationFeatureDict = MiscHelpers.GetEnumDescriptors(typeof(Feature));
 
-		public static Dictionary<int, string> LocalisationFeatureDict = MiscHelpers.GetEnumDescriptors(typeof(Feature));
-		public static Dictionary<FeatureType, string> LocalisationFeatureTypes = new Dictionary<FeatureType, string>()
-        {
-            { FeatureType.General, string.Empty},
-            { FeatureType.WorkingPlace, Worki.Resources.Models.Localisation.Localisation.WorkingPlace},
-            { FeatureType.MeetingRoom, Worki.Resources.Models.Localisation.Localisation.MeetingRoom},
-            { FeatureType.SeminarRoom, Worki.Resources.Models.Localisation.Localisation.SeminarRoom},
-            { FeatureType.VisioRoom, Worki.Resources.Models.Localisation.Localisation.VisioRoom}
-        };
-
-		public static string GetFeatureDesc(Feature feat, FeatureType featType)
+		public static string GetFeatureDisplayName(Feature feature)
 		{
-			var first = Enum.GetName(typeof(Feature), feat);
-			var sec = Enum.GetName(typeof(FeatureType), featType);
-			return first + "-" + sec;
+			var enumType = typeof(Feature);
+			var enumResxType = typeof(Worki.Resources.Models.Localisation.LocalisationFeatures);
+			var enumStr = Enum.GetName(enumType, feature);
+
+			var nameProperty = enumResxType.GetProperty(enumStr, BindingFlags.Static | BindingFlags.Public);
+			if (nameProperty != null)
+			{
+				enumStr = (string)nameProperty.GetValue(nameProperty.DeclaringType, null);
+			}
+			return enumStr;
 		}
 
-		public static bool GetFeatureDesc(string str, out KeyValuePair<int, int> toFill)
+
+		//to remove
+		//public static Dictionary<FeatureType, string> LocalisationFeatureTypes = new Dictionary<FeatureType, string>()
+		//{
+		//    { FeatureType.General, string.Empty},
+		//    { FeatureType.WorkingPlace, Worki.Resources.Models.Localisation.Localisation.WorkingPlace},
+		//    { FeatureType.MeetingRoom, Worki.Resources.Models.Localisation.Localisation.MeetingRoom},
+		//    { FeatureType.SeminarRoom, Worki.Resources.Models.Localisation.Localisation.SeminarRoom},
+		//    { FeatureType.VisioRoom, Worki.Resources.Models.Localisation.Localisation.VisioRoom}
+		//};
+
+		//public static string GetFeatureDesc(Feature feat, FeatureType featType)
+		//{
+		//    var first = Enum.GetName(typeof(Feature), feat);
+		//    var sec = Enum.GetName(typeof(FeatureType), featType);
+		//    return first + "-" + sec;
+		//}
+
+		//public static bool GetFeatureDesc(string str, out KeyValuePair<int, int> toFill)
+		//{
+		//    toFill = new KeyValuePair<int, int>(0, 0);
+		//    var strs = str.Split('-');
+		//    if (strs.Length != 2)
+		//        return false;
+		//    var first = strs[0];
+		//    var sec = strs[1];
+		//    if (string.IsNullOrEmpty(first) || string.IsNullOrEmpty(sec))
+		//        return false;
+		//    try
+		//    {
+		//        var firstVal = (int)Enum.Parse(typeof(Feature), first);
+		//        var secVal = (int)Enum.Parse(typeof(FeatureType), sec);
+		//        toFill = new KeyValuePair<int, int>(firstVal, secVal);
+		//    }
+		//    catch (ArgumentException)
+		//    {
+		//        return false;
+		//    }
+		//    return true;
+		//}
+
+		#endregion
+
+		#region IFeatureContainer
+
+		public bool HasFeature(Feature feature)
 		{
-			toFill = new KeyValuePair<int, int>(0, 0);
-			var strs = str.Split('-');
-			if (strs.Length != 2)
-				return false;
-			var first = strs[0];
-			var sec = strs[1];
-			if (string.IsNullOrEmpty(first) || string.IsNullOrEmpty(sec))
-				return false;
-			try
-			{
-				var firstVal = (int)Enum.Parse(typeof(Feature), first);
-				var secVal = (int)Enum.Parse(typeof(FeatureType), sec);
-				toFill = new KeyValuePair<int, int>(firstVal, secVal);
-			}
-			catch (ArgumentException)
-			{
-				return false;
-			}
-			return true;
+			var equalityComparer = new LocalisationFeatureEqualityComparer();
+			return LocalisationFeatures.Contains(new LocalisationFeature { FeatureID = (int)feature }, equalityComparer);
+		}
+
+		public string GetStringFeature(Feature feature)
+		{
+			var obj = LocalisationFeatures.FirstOrDefault(o => o.FeatureID == (int)feature);
+			if (obj == null)
+				return null;
+			return null;// obj.StringValue;
+		}
+
+		public decimal? GetNumberFeature(Feature feature)
+		{
+			var obj = LocalisationFeatures.FirstOrDefault(o => o.FeatureID == (int)feature);
+			if (obj == null)
+				return null;
+			return null;// obj.DecimalValue;
 		}
 
 		#endregion
 
-		public List<Feature> GetFeaturesOfType(FeatureType featureType, IEnumerable<Feature> toExclude = null)
+		#region Features
+
+		public static List<Feature> AvoidPeriods = new List<Feature>()
+		{
+			Feature.AvoidMorning,
+			Feature.AvoidLunch, 
+			Feature.AvoidAfternoom, 
+			Feature.AvoidEvening
+		};
+
+		public static List<Feature> Characteristics = new List<Feature>()
+		{
+			Feature.Handicap,
+			Feature.Wifi_Free, 
+			Feature.Wifi_Not_Free, 
+			Feature.Parking,
+			Feature.Outlet,
+			Feature.FastInternet, 
+			Feature.SafeStorage, 
+			Feature.Coffee,
+			Feature.Restauration,
+			Feature.AC, 
+			Feature.ErgonomicFurniture, 
+			Feature.Shower,
+			Feature.Newspaper,
+			Feature.TV
+		};
+
+		public static List<Feature> Services = new List<Feature>()
+		{
+			Feature.Domiciliation,
+			Feature.Secretariat, 
+			Feature.Courier, 
+			Feature.Printer,
+			Feature.Computers,
+			Feature.Archiving, 
+			Feature.Concierge, 
+			Feature.Pressing,
+			Feature.ComputerHelp,
+			Feature.RoomService, 
+			Feature.Community, 
+			Feature.RelaxingArea
+		};
+
+		public List<Feature> GetFeaturesWithin(IEnumerable<Feature> toInclude)
 		{
 			var toRet = new List<Feature>();
-			var featureToCheck = toExclude == null ? LocalisationFeatures : LocalisationFeatures.Where(f => !toExclude.Contains((Feature)f.FeatureID));
-			if (featureToCheck == null)
-				return toRet;
-			return (from item in featureToCheck where item.OfferID == (int)featureType select (Feature)item.FeatureID).ToList();
+			return (from item
+						in LocalisationFeatures
+					where toInclude.Contains((Feature)item.FeatureID)
+					select (Feature)item.FeatureID).ToList();
 		}
 
-		public bool HasFeatureIn(List<Feature> features, FeatureType featureType)
+		//public List<Feature> GetFeaturesOfType(FeatureType featureType, IEnumerable<Feature> toExclude = null)
+		//{
+		//    var toRet = new List<Feature>();
+		//    var featureToCheck = toExclude == null ? LocalisationFeatures : LocalisationFeatures.Where(f => !toExclude.Contains((Feature)f.FeatureID));
+		//    if (featureToCheck == null)
+		//        return toRet;
+		//    return (from item in featureToCheck where item.OfferID == (int)featureType select (Feature)item.FeatureID).ToList();
+		//}
+
+		public bool HasFeatureIn(List<Feature> features)
 		{
 			foreach (var item in features)
 			{
-				if (HasFeature(item, featureType))
+				if (HasFeature(item))
 					return true;
 			}
 			return false;
 		}
 
-		public bool HasFeature(Feature feature, FeatureType featureType)
+		#endregion
+
+		//public bool HasFeature(Feature feature, FeatureType featureType)
+		//{
+		//    return HasFeature((int)feature, (int)featureType);
+		//}
+
+		//public bool HasFeature(int feature, int featureType)
+		//{
+		//    var equalityComparer = new LocalisationFeatureEqualityComparer();
+		//    return LocalisationFeatures.Contains(new LocalisationFeature { FeatureID = feature, OfferID = featureType }, equalityComparer);
+		//}
+
+		/// <summary>
+		/// Check if localisation have offer except a given offer
+		/// </summary>
+		/// <param name="offer">offer to exclude</param>
+		/// <returns>true if it is the case</returns>
+		//public bool HasOfferExcept(LocalisationOffer offer)
+		//{
+		//    var feature = GetFeatureFromOfferType((int)offer);
+		//    var types = Localisation.OfferTypes.Except(new List<int> { (int)feature }).ToList();
+		//    return LocalisationFeatures.Where(f => types.Contains(f.FeatureID)).Count() > 0;
+		//}
+
+		#endregion
+
+		#region Localisation Types
+
+		public static List<int> LocalisationTypes = new List<int>()
+        {
+            (int)LocalisationType.SpotWifi,
+            (int)LocalisationType.CoffeeResto,
+            (int)LocalisationType.Biblio,
+            (int)LocalisationType.PublicSpace,
+			(int)LocalisationType.TravelerSpace,
+            (int)LocalisationType.Telecentre,
+            (int)LocalisationType.BuisnessCenter,
+            (int)LocalisationType.CoworkingSpace,
+ 			(int)LocalisationType.WorkingHotel,
+			(int)LocalisationType.PrivateArea
+        };
+
+		public static string GetLocalisationType(int type)
 		{
-			return HasFeature((int)feature, (int)featureType);
+			var enumType = (LocalisationType)type;
+			switch (enumType)
+			{
+				case LocalisationType.SpotWifi:
+					return Worki.Resources.Models.Localisation.Localisation.SpotWifi;
+				case LocalisationType.CoffeeResto:
+					return Worki.Resources.Models.Localisation.Localisation.CoffeeResto;
+				case LocalisationType.Biblio:
+					return Worki.Resources.Models.Localisation.Localisation.Biblio;
+				case LocalisationType.PublicSpace:
+					return Worki.Resources.Models.Localisation.Localisation.PublicSpace;
+				case LocalisationType.TravelerSpace:
+					return Worki.Resources.Models.Localisation.Localisation.TravelerSpace;
+				case LocalisationType.Hotel:
+					return Worki.Resources.Models.Localisation.Localisation.Hotel;
+				case LocalisationType.Telecentre:
+					return Worki.Resources.Models.Localisation.Localisation.Telecentre;
+				case LocalisationType.BuisnessCenter:
+					return Worki.Resources.Models.Localisation.Localisation.BuisnessCenter;
+				case LocalisationType.CoworkingSpace:
+					return Worki.Resources.Models.Localisation.Localisation.CoworkingSpace;
+				case LocalisationType.WorkingHotel:
+					return Worki.Resources.Models.Localisation.Localisation.WorkingHotel;
+				case LocalisationType.PrivateArea:
+					return Worki.Resources.Models.Localisation.Localisation.PrivateArea;
+				default:
+					return string.Empty;
+			}
 		}
 
-		public bool HasFeature(int feature, int featureType)
+		public static Dictionary<int, string> GetLocalisationTypes()
 		{
-			var equalityComparer = new LocalisationFeatureEqualityComparer();
-			return LocalisationFeatures.Contains(new LocalisationFeature { FeatureID = feature, OfferID = featureType }, equalityComparer);
+			return LocalisationTypes.ToDictionary(t => t, t => GetLocalisationType(t));
 		}
 
-		public bool HasFeatureType(FeatureType type, IEnumerable<Feature> toExclude)
+		public static Dictionary<int, string> GetFreeLocalisationTypes()
 		{
-			var featureToCheck = LocalisationFeatures.Where(f => !toExclude.Contains((Feature)f.FeatureID));
-			if (featureToCheck == null)
-				return false;
-			var intType = (int)type;
-			return featureToCheck.Where(f => f.OfferID == intType).Count() > 0;
+			return FreeLocalisationTypes.ToDictionary(t => t, t => GetLocalisationType(t));
+		}
+
+		public static Dictionary<int, string> GetNotFreeLocalisationTypes()
+		{
+			var notFree = LocalisationTypes.Except(FreeLocalisationTypes);
+			return notFree.ToDictionary(t => t, t => GetLocalisationType(t));
+		}
+
+		public static List<int> FreeLocalisationTypes = new List<int>()
+        {
+            (int)LocalisationType.SpotWifi,
+            (int)LocalisationType.CoffeeResto,
+            (int)LocalisationType.Biblio,
+            (int)LocalisationType.PublicSpace 
+        };
+
+		public bool IsFreeLocalisation()
+		{
+			return FreeLocalisationTypes.Contains(TypeValue);
+		}
+
+		#endregion
+
+		#region Localisation Offers
+
+		public static List<int> OfferTypes = new List<int>()
+        {
+            (int)LocalisationOffer.AllOffers,
+            (int)LocalisationOffer.FreeArea,
+            (int)LocalisationOffer.BuisnessLounge,
+            (int)LocalisationOffer.Workstation,
+			(int)LocalisationOffer.Desktop,
+            (int)LocalisationOffer.MeetingRoom,
+            (int)LocalisationOffer.SeminarRoom,
+            (int)LocalisationOffer.VisioRoom
+        };
+
+		public static string GetOfferType(int type)
+		{
+			var enumType = (LocalisationOffer)type;
+			switch (enumType)
+			{
+				case LocalisationOffer.AllOffers:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.AllOffers;
+				case LocalisationOffer.FreeArea:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea;
+				case LocalisationOffer.BuisnessLounge:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom;
+				case LocalisationOffer.Workstation:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation;
+				case LocalisationOffer.Desktop:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSingleDesk;
+				case LocalisationOffer.MeetingRoom:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom;
+				case LocalisationOffer.SeminarRoom:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom;
+				case LocalisationOffer.VisioRoom:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom;
+				default:
+					return string.Empty;
+			}
+		}
+
+		//public static List<int> OfferTypes = new List<int>()
+		//{
+		//    (int)Feature.BuisnessLounge,
+		//    (int)Feature.Workstation,
+		//    (int)Feature.MeetingRoom,
+		//    (int)Feature.SeminarRoom,
+		//    (int)Feature.VisioRoom,
+		//    (int)Feature.Desktop,
+		//    (int)Feature.FreeArea
+		//};
+
+		public static Dictionary<int, string> GetOfferTypes()
+		{
+			return OfferTypes.ToDictionary(o => o, o => GetOfferType(o));
+		}
+
+		public static Dictionary<int, string> GetOfferTypeDict(IEnumerable<LocalisationOffer> except)
+		{
+			var toRet = (from item in GetOfferTypes() where !except.Contains((LocalisationOffer)item.Key) select item).ToDictionary(k => k.Key, k => k.Value);
+			return toRet;
 		}
 
 		public bool HasOffer(LocalisationOffer offer)
 		{
-			var featureType = (FeatureType)GetFeatureTypeFromOfferType((int)offer);
-			var feature = GetFeatureFromOfferType((int)offer);
-			return HasFeature(feature, featureType);
+			return Offers.Where(o => o.Type == (int)offer).Count() != 0;
+			//var featureType = (FeatureType)GetFeatureTypeFromOfferType((int)offer);
+			//var feature = GetFeatureFromOfferType((int)offer);
+			//return HasFeature(feature, featureType);
 		}
 
 		/// <summary>
@@ -158,19 +393,8 @@ namespace Worki.Data.Models
 		/// <returns>true if it is the case</returns>
 		public bool HasOffer()
 		{
-			return LocalisationFeatures.Where(f => Localisation.OfferTypes.Contains(f.FeatureID)).Count() > 0;
-		}
-
-		/// <summary>
-		/// Check if localisation have offer except a given offer
-		/// </summary>
-		/// <param name="offer">offer to exclude</param>
-		/// <returns>true if it is the case</returns>
-		public bool HasOfferExcept(LocalisationOffer offer)
-		{
-			var feature = GetFeatureFromOfferType((int)offer);
-			var types = Localisation.OfferTypes.Except(new List<int> { (int)feature }).ToList();
-			return LocalisationFeatures.Where(f => types.Contains(f.FeatureID)).Count() > 0;
+			return Offers.Count != 0;
+			//return LocalisationFeatures.Where(f => Localisation.OfferTypes.Contains(f.FeatureID)).Count() > 0;
 		}
 
 		#endregion
@@ -391,133 +615,15 @@ namespace Worki.Data.Models
 		public string GetAvoidString()
 		{
 			var toRet = string.Empty;
-			var avoidList = new List<Feature> { Feature.AvoidMorning, Feature.AvoidLunch, Feature.AvoidAfternoom, Feature.AvoidEvening };
-			if (!HasFeatureIn(avoidList, FeatureType.General))
+			if (!HasFeatureIn(AvoidPeriods))
 				return toRet;
-			foreach (var item in avoidList)
+			foreach (var item in AvoidPeriods)
 			{
-				if (HasFeature(item, FeatureType.General))
-					toRet += Localisation.LocalisationFeatureDict[(int)item].ToLower() + ", ";
+				if (HasFeature(item))
+					toRet += Localisation.GetFeatureDisplayName(item).ToLower() + ", ";
 			}
 			var last = toRet.LastIndexOf(",");
 			toRet = toRet.Remove(last, 1).Insert(last, ".");
-			return toRet;
-		}
-
-
-		#endregion
-
-		#region Localisation Types
-
-		public static Dictionary<int, string> LocalisationTypes = new Dictionary<int, string>()
-        {
-            { (int)LocalisationType.SpotWifi, Worki.Resources.Models.Localisation.Localisation.SpotWifi},
-            { (int)LocalisationType.CoffeeResto, Worki.Resources.Models.Localisation.Localisation.CoffeeResto},
-            { (int)LocalisationType.Biblio, Worki.Resources.Models.Localisation.Localisation.Biblio},
-            { (int)LocalisationType.PublicSpace, Worki.Resources.Models.Localisation.Localisation.PublicSpace},
-            { (int)LocalisationType.TravelerSpace, Worki.Resources.Models.Localisation.Localisation.TravelerSpace},
-            { (int)LocalisationType.Hotel, Worki.Resources.Models.Localisation.Localisation.Hotel},
-            { (int)LocalisationType.Telecentre, Worki.Resources.Models.Localisation.Localisation.Telecentre},
-            { (int)LocalisationType.BuisnessCenter, Worki.Resources.Models.Localisation.Localisation.BuisnessCenter},
-            { (int)LocalisationType.CoworkingSpace, Worki.Resources.Models.Localisation.Localisation.CoworkingSpace},
-            { (int)LocalisationType.WorkingHotel, Worki.Resources.Models.Localisation.Localisation.WorkingHotel},
-            { (int)LocalisationType.PrivateArea, Worki.Resources.Models.Localisation.Localisation.PrivateArea}
-        };
-
-		public static List<int> FreeLocalisationTypes = new List<int>()
-        {
-            (int)LocalisationType.SpotWifi,
-            (int)LocalisationType.CoffeeResto,
-            (int)LocalisationType.Biblio,
-            (int)LocalisationType.PublicSpace 
-        };
-
-		public bool IsFreeLocalisation()
-		{
-			return FreeLocalisationTypes.Contains(TypeValue);
-		}
-
-		#endregion
-
-		#region Localisation Offers
-
-        public static Dictionary<int, string> LocalisationOfferTypes = new Dictionary<int, string>()
-        {
-            { (int)LocalisationOffer.AllOffers , Worki.Resources.Models.Localisation.LocalisationFeatures.AllOffers},
-            { (int)LocalisationOffer.FreeArea,Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea},
-            { (int)LocalisationOffer.BuisnessRoom ,Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom},            
-            { (int)LocalisationOffer.Workstation,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation},
-            { (int)LocalisationOffer.SingleDesk,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSingleDesk},
-            { (int)LocalisationOffer.MeetingRoom,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom },            
-            { (int)LocalisationOffer.SeminarRoom,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom },
-            { (int)LocalisationOffer.VisioRoom,Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom}
-        };
-
-
-		public static int GetFeatureTypeFromOfferType(int offerType)
-		{
-			var offerEnum = (LocalisationOffer)offerType;
-			switch (offerEnum)
-			{
-				case LocalisationOffer.FreeArea:
-				case LocalisationOffer.BuisnessRoom:
-				case LocalisationOffer.SingleDesk:
-				case LocalisationOffer.Workstation:
-					return (int)FeatureType.WorkingPlace;
-				case LocalisationOffer.MeetingRoom:
-					return (int)FeatureType.MeetingRoom;
-				case LocalisationOffer.SeminarRoom:
-					return (int)FeatureType.SeminarRoom;
-				case LocalisationOffer.VisioRoom:
-					return (int)FeatureType.VisioRoom;
-				default:
-					return (int)FeatureType.General;
-			}
-		}
-
-		public static Feature GetFeatureFromOfferType(int offerType)
-		{
-			var offerEnum = (LocalisationOffer)offerType;
-			var feature = Feature.FreeArea;
-			switch (offerEnum)
-			{
-				case LocalisationOffer.FreeArea:
-					feature = Feature.FreeArea;
-					break;
-				case LocalisationOffer.BuisnessRoom:
-					feature = Feature.BuisnessRoom;
-					break;
-				case LocalisationOffer.MeetingRoom:
-					feature = Feature.MeetingRoom;
-					break;
-				case LocalisationOffer.SeminarRoom:
-					feature = Feature.SeminarRoom;
-					break;
-				case LocalisationOffer.SingleDesk:
-					feature = Feature.SingleDesk;
-					break;
-				case LocalisationOffer.VisioRoom:
-					feature = Feature.VisioRoom;
-					break;
-				case LocalisationOffer.Workstation:
-					feature = Feature.Workstation;
-					break;
-				default:
-					break;
-			}
-			return feature;
-		}
-
-		public static string GetOfferType(int index)
-		{
-			if (!LocalisationOfferTypes.ContainsKey(index))
-				return null;
-			return LocalisationOfferTypes[index];
-		}
-
-		public static Dictionary<int, string> GetOfferTypeDict(IEnumerable<LocalisationOffer> except)
-		{
-			var toRet = (from item in LocalisationOfferTypes where !except.Contains((LocalisationOffer)item.Key) select item).ToDictionary(k => k.Key, k => k.Value);
 			return toRet;
 		}
 
@@ -723,6 +829,7 @@ namespace Worki.Data.Models
 
 		public Localisation Localisation { get; private set; }
 		public SelectList Types { get; private set; }
+		public bool IsFreeLocalisation { get; set; }
 
 		#endregion
 
@@ -732,13 +839,27 @@ namespace Worki.Data.Models
 		{
 			Localisation = new Localisation();
 			Localisation.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
-			Types = new SelectList(Localisation.LocalisationTypes, "Key", "Value", LocalisationType.SpotWifi);
+			Init();
+		}
+
+		public LocalisationFormViewModel(bool isFree)
+		{
+			Localisation = new Localisation();
+			Localisation.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
+			Init(isFree);
 		}
 
 		public LocalisationFormViewModel(Localisation localisation)
 		{
 			Localisation = localisation;
-			Types = new SelectList(Localisation.LocalisationTypes, "Key", "Value", LocalisationType.SpotWifi);
+			Init(localisation.IsFreeLocalisation());
+		}
+
+		void Init(bool isFree = true)
+		{
+			IsFreeLocalisation = isFree;
+			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes();
+			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
 		}
 
 		#endregion
@@ -821,14 +942,14 @@ namespace Worki.Data.Models
 	/// <summary>
 	/// Feature type, correspond to the field FeatureId of LocalisationFeature
 	/// </summary>
-	[LocalizedEnum(ResourceType = typeof(Worki.Resources.Models.Localisation.LocalisationFeatures))]
+	//[LocalizedEnum(ResourceType = typeof(Worki.Resources.Models.Localisation.LocalisationFeatures))]
 	public enum Feature
 	{
 		Access24,
 		LunchClose,
-		BuisnessRoom,
+		BuisnessLounge,
 		Workstation,
-		SingleDesk,
+		Desktop,
 		MeetingRoom,
 		VisioRoom,
 		SeminarRoom,
@@ -891,8 +1012,27 @@ namespace Worki.Data.Models
 		AvoidMorning,
 		AvoidLunch,
 		AvoidAfternoom,
-		AvoidEvening
+		AvoidEvening,
+		Desktop10_25,
+		Desktop25_50,
+		Desktop50_100,
+		Desktop100Plus,
+		Equipped,
+		AvailableNow,
+		AllInclusive,
+		FlexibleContract,
+		NotSectorial,
+		CoworkingVibe,
+		OpenToAll,
+		ReservedToClients,
 
+		//string features start from 1000, put bool features before this
+		Sector = 1000,
+		MinimalPeriod,
+		ForCardOwner,
+
+		//number features start from 2000, put string features before this
+		CoffeePrice = 2000
 	}
 
 	/// <summary>
@@ -902,9 +1042,9 @@ namespace Worki.Data.Models
 	{
         AllOffers = -1,
 		FreeArea,
-		BuisnessRoom,
+		BuisnessLounge,
 		Workstation,
-		SingleDesk,
+		Desktop,
 		MeetingRoom,
 		SeminarRoom,
 		VisioRoom

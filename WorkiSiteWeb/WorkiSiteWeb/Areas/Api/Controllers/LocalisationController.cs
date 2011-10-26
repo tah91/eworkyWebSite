@@ -117,7 +117,7 @@ namespace Worki.Web.Areas.Api.Controllers
 			{
 				try
 				{
-					var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
+					//var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
 					string[] featuresArray = features.Trim(_arrayTrim).Split(',');
 					foreach (var item in featuresArray)
 					{
@@ -125,19 +125,19 @@ namespace Worki.Web.Areas.Api.Controllers
 						switch (intType)
 						{
 							case ApiFeatures.Wifi:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free, OfferID = offerId });
+								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
 								break;
 							case ApiFeatures.Cofee:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Coffee, OfferID = offerId });
+								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Coffee });
 								break;
 							case ApiFeatures.Resto:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Restauration, OfferID = offerId });
+								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Restauration });
 								break;
 							case ApiFeatures.Parking:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Parking, OfferID = offerId });
+								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Parking });
 								break;
 							case ApiFeatures.Handicap:
-								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Handicap, OfferID = offerId });
+								criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Handicap });
 								break;
 							default:
 								break;

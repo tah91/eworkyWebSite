@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Worki.Data.Models;
 using Worki.Infrastructure.Helpers;
 using Worki.Web.Helpers;
+using System;
 
 namespace Worki.Web.ModelBinder
 {
@@ -34,12 +35,12 @@ namespace Worki.Web.ModelBinder
 			var keys = controllerContext.HttpContext.Request.Form.AllKeys;
 			foreach (var key in keys)
 			{
-				KeyValuePair<int, int> toFill;
-				if (!Localisation.GetFeatureDesc(key, out  toFill))
+				Feature parsedEnum;
+				if (!Enum.TryParse<Feature>(key, true, out parsedEnum))
 					continue;
 				foreach (var feature in loc.LocalisationFeatures.ToList())
 				{
-					if (feature.FeatureID == toFill.Key && feature.OfferID == toFill.Value)
+					if (feature.FeatureID == (int)parsedEnum)
 					{
 						loc.LocalisationFeatures.Remove(feature);
 					}
@@ -47,14 +48,14 @@ namespace Worki.Web.ModelBinder
 				var hasFeature = controllerContext.HttpContext.Request.Form[key] as string;
 				if (!string.IsNullOrEmpty(hasFeature) && hasFeature.ToLowerInvariant().Contains("true"))
 				{
-					var feature = new LocalisationFeature { FeatureID = toFill.Key, OfferID = toFill.Value };
+					var feature = new LocalisationFeature { FeatureID = (int)parsedEnum };
 					loc.LocalisationFeatures.Add(feature);
 				}
 			}
-			if (bindingContext.ModelName == "localisation" && !loc.HasOffer())
-			{
-				bindingContext.ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.GiveMinADate);
-			}
+			//if (bindingContext.ModelName == "localisation" && !loc.HasOffer())
+			//{
+			//    bindingContext.ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.GiveMinADate);
+			//}
 
 			//handle images
 			loc.LocalisationFiles.Clear();

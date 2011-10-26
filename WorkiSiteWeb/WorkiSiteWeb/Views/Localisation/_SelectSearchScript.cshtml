@@ -1,152 +1,76 @@
-﻿@model Worki.Data.Models.Localisation
+﻿@model Worki.Data.Models.SearchCriteria
 
-@helper SelectFeatures(Localisation model, LocalisationOffer offerType, bool isSearchForm)
+@helper SelectFeatures(SearchCriteria model, LocalisationOffer offerType, bool isSearchForm)
     {
         if (isSearchForm)
         {
             switch (offerType)
             {
-                case LocalisationOffer.BuisnessRoom:
+                case LocalisationOffer.BuisnessLounge:
         <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.SafeStorage, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Shower, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Newspaper, FeatureType.General)
-            </div>
+            @Html.FeatureChecboxLabel2(Feature.Outlet, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.SafeStorage, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Shower, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Newspaper, model.LocalisationData)
         </div>
                 break;
                 case LocalisationOffer.Workstation:
         <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.ErgonomicFurniture, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Printer, FeatureType.WorkingPlace)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Computers, FeatureType.WorkingPlace)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
-            </div>
+            @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.ErgonomicFurniture, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Secretariat, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Printer, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Computers, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Community, model.LocalisationData)
         </div>
                 break;
-                case LocalisationOffer.SingleDesk:
+                case LocalisationOffer.Desktop:
         <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Domiciliation, FeatureType.WorkingPlace)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Courier, FeatureType.WorkingPlace)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.RelaxingArea, FeatureType.WorkingPlace)
-            </div>
+            @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Domiciliation, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Secretariat, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Courier, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.Community, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.RelaxingArea, model.LocalisationData)
         </div>
                 break;
                 case LocalisationOffer.MeetingRoom:
         <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room2_7, FeatureType.MeetingRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room7_20, FeatureType.MeetingRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room20_plus, FeatureType.MeetingRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Audio, FeatureType.MeetingRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.VideoProj, FeatureType.MeetingRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Drinks, FeatureType.MeetingRoom)
-            </div>
+            @Html.FeatureChecboxLabel2(Feature.Room2_7, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Room7_20, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Room20_plus, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Audio, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.VideoProj, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Drinks, model.OfferData)
         </div>
                 break;
                 case LocalisationOffer.SeminarRoom:
         <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room20_100, FeatureType.SeminarRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room100_250, FeatureType.SeminarRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room250_1000, FeatureType.SeminarRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room1000_plus, FeatureType.SeminarRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Welcoming, FeatureType.SeminarRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Catering, FeatureType.SeminarRoom)
-            </div>
+            @Html.FeatureChecboxLabel2(Feature.Room20_100, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Room100_250, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Room250_1000, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Room1000_plus, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Welcoming, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Catering, model.OfferData)
         </div>
                 break;
                 case LocalisationOffer.VisioRoom:
         <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room1_4, FeatureType.VisioRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room5_10, FeatureType.VisioRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Room10_Plus, FeatureType.VisioRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Visio, FeatureType.VisioRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.VisioHD, FeatureType.VisioRoom)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Telepresence, FeatureType.VisioRoom)
-            </div>
+            @Html.FeatureChecboxLabel2(Feature.Room1_4, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Room5_10, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Room10_Plus, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Visio, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.VisioHD, model.OfferData)
+            @Html.FeatureChecboxLabel2(Feature.Telepresence, model.OfferData)
         </div>
                 break;
                 case LocalisationOffer.FreeArea:
                 default:
         <div id="searchOptionToReplace">                            
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-            </div>
-            <div class="editor-field">
-            @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
-            </div>
+            @Html.FeatureChecboxLabel2(Feature.Outlet, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+            @Html.FeatureChecboxLabel2(Feature.AC, model.LocalisationData)
         </div>                  
                 break;
             }
@@ -155,16 +79,16 @@
         {
             switch (offerType)
             {
-                case LocalisationOffer.BuisnessRoom:
+                case LocalisationOffer.BuisnessLounge:
         <div id="searchOptionToReplace">                            
             <div class="float-left searchCheckBoxs">
-                @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.SafeStorage, FeatureType.General)
+                @Html.FeatureChecboxLabel2(Feature.Outlet, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.SafeStorage, model.LocalisationData)
             </div>
             <div class="float-left searchCheckBoxs" style="padding-left:30px;">
-                @Html.FeatureChecboxLabel(model, Feature.Shower, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.Newspaper, FeatureType.General)
+                @Html.FeatureChecboxLabel2(Feature.Shower, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.Newspaper, model.LocalisationData)
             </div>
             <div class="clear">
             </div>
@@ -173,30 +97,30 @@
                 case LocalisationOffer.Workstation:
         <div id="searchOptionToReplace">                            
             <div class="float-left searchCheckBoxs">
-                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.ErgonomicFurniture, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.ErgonomicFurniture, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.Secretariat, model.LocalisationData)
             </div>
             <div class="float-left searchCheckBoxs" style="padding-left:30px;">
-                @Html.FeatureChecboxLabel(model, Feature.Printer, FeatureType.WorkingPlace)
-                @Html.FeatureChecboxLabel(model, Feature.Computers, FeatureType.WorkingPlace)
-                @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel2(Feature.Printer, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.Computers, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.Community, model.LocalisationData)
             </div>
             <div class="clear">
             </div>
         </div>
            break;
-                case LocalisationOffer.SingleDesk:
+                case LocalisationOffer.Desktop:
         <div id="searchOptionToReplace">                            
             <div class="float-left searchCheckBoxs">
-                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.Domiciliation, FeatureType.WorkingPlace)
-                @Html.FeatureChecboxLabel(model, Feature.Secretariat, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.Domiciliation, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.Secretariat, model.LocalisationData)
             </div>
             <div class="float-left searchCheckBoxs" style="padding-left:30px;">
-                @Html.FeatureChecboxLabel(model, Feature.Courier, FeatureType.WorkingPlace)
-                @Html.FeatureChecboxLabel(model, Feature.Community, FeatureType.WorkingPlace)
-                @Html.FeatureChecboxLabel(model, Feature.RelaxingArea, FeatureType.WorkingPlace)
+                @Html.FeatureChecboxLabel2(Feature.Courier, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.Community, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.RelaxingArea, model.LocalisationData)
             </div>
             <div class="clear">
             </div>
@@ -205,14 +129,14 @@
                 case LocalisationOffer.MeetingRoom:
         <div id="searchOptionToReplace">                            
             <div class="float-left searchCheckBoxs">
-                @Html.FeatureChecboxLabel(model, Feature.Room2_7, FeatureType.MeetingRoom)
-                @Html.FeatureChecboxLabel(model, Feature.Room7_20, FeatureType.MeetingRoom)
-                @Html.FeatureChecboxLabel(model, Feature.Room20_plus, FeatureType.MeetingRoom)
+                @Html.FeatureChecboxLabel2(Feature.Room2_7, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.Room7_20, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.Room20_plus, model.OfferData)
             </div>
             <div class="float-left searchCheckBoxs" style="padding-left:30px;">
-                @Html.FeatureChecboxLabel(model, Feature.Audio, FeatureType.MeetingRoom)
-                @Html.FeatureChecboxLabel(model, Feature.VideoProj, FeatureType.MeetingRoom)
-                @Html.FeatureChecboxLabel(model, Feature.Drinks, FeatureType.MeetingRoom)
+                @Html.FeatureChecboxLabel2(Feature.Audio, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.VideoProj, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.Drinks, model.OfferData)
             </div>
             <div class="clear">
             </div>
@@ -221,14 +145,14 @@
                 case LocalisationOffer.SeminarRoom:
         <div id="searchOptionToReplace">                            
             <div class="float-left searchCheckBoxs">
-                @Html.FeatureChecboxLabel(model, Feature.Room20_100, FeatureType.SeminarRoom)
-                @Html.FeatureChecboxLabel(model, Feature.Room100_250, FeatureType.SeminarRoom)
-                @Html.FeatureChecboxLabel(model, Feature.Room250_1000, FeatureType.SeminarRoom)
+                @Html.FeatureChecboxLabel2(Feature.Room20_100, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.Room100_250, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.Room250_1000, model.OfferData)
             </div>
             <div class="float-left searchCheckBoxs" style="padding-left:30px;">
-                @Html.FeatureChecboxLabel(model, Feature.Room1000_plus, FeatureType.SeminarRoom)
-                @Html.FeatureChecboxLabel(model, Feature.Welcoming, FeatureType.SeminarRoom)
-                @Html.FeatureChecboxLabel(model, Feature.Catering, FeatureType.SeminarRoom)
+                @Html.FeatureChecboxLabel2(Feature.Room1000_plus, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.Welcoming, model.OfferData)
+                @Html.FeatureChecboxLabel2(Feature.Catering, model.OfferData)
             </div>
             <div class="clear">
             </div>
@@ -237,14 +161,14 @@
                 case LocalisationOffer.VisioRoom:
             <div id="searchOptionToReplace">                            
                 <div class="float-left searchCheckBoxs">
-                    @Html.FeatureChecboxLabel(model, Feature.Room1_4, FeatureType.VisioRoom)
-                    @Html.FeatureChecboxLabel(model, Feature.Room5_10, FeatureType.VisioRoom)
-                    @Html.FeatureChecboxLabel(model, Feature.Room10_Plus, FeatureType.VisioRoom)
+                    @Html.FeatureChecboxLabel2(Feature.Room1_4, model.OfferData)
+                    @Html.FeatureChecboxLabel2(Feature.Room5_10, model.OfferData)
+                    @Html.FeatureChecboxLabel2(Feature.Room10_Plus, model.OfferData)
                 </div>
                 <div class="float-left searchCheckBoxs" style="padding-left:30px;">
-                    @Html.FeatureChecboxLabel(model, Feature.Visio, FeatureType.VisioRoom)
-                    @Html.FeatureChecboxLabel(model, Feature.VisioHD, FeatureType.VisioRoom)
-                    @Html.FeatureChecboxLabel(model, Feature.Telepresence, FeatureType.VisioRoom)
+                    @Html.FeatureChecboxLabel2(Feature.Visio, model.OfferData)
+                    @Html.FeatureChecboxLabel2(Feature.VisioHD, model.OfferData)
+                    @Html.FeatureChecboxLabel2(Feature.Telepresence, model.OfferData)
                 </div>
                 <div class="clear">
                 </div>
@@ -254,9 +178,9 @@
                 default:
         <div id="searchOptionToReplace">                            
             <div class="float-left searchCheckBoxs">
-                @Html.FeatureChecboxLabel(model, Feature.Outlet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.FastInternet, FeatureType.General)
-                @Html.FeatureChecboxLabel(model, Feature.AC, FeatureType.General)
+                @Html.FeatureChecboxLabel2(Feature.Outlet, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.FastInternet, model.LocalisationData)
+                @Html.FeatureChecboxLabel2(Feature.AC, model.LocalisationData)
             </div>
             <div class="clear">
             </div>
@@ -270,9 +194,9 @@
     require.ready(function () {
         @{ bool isSearchForm = (bool)ViewData["IsSearchForm"]; }
         var offer0 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea, isSearchForm).ToString()))';
-        var offer1 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessRoom, isSearchForm).ToString()))';
+        var offer1 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessLounge, isSearchForm).ToString()))';
         var offer2 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Workstation, isSearchForm).ToString()))';
-        var offer3 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SingleDesk, isSearchForm).ToString()))';
+        var offer3 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Desktop, isSearchForm).ToString()))';
         var offer4 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.MeetingRoom, isSearchForm).ToString()))';
         var offer5 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SeminarRoom, isSearchForm).ToString()))';
         var offer6 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.VisioRoom, isSearchForm).ToString()))';

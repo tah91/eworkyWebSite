@@ -33,25 +33,58 @@ namespace Worki.Web.ModelBinder
 
             //handle features
             var keys = controllerContext.HttpContext.Request.Form.AllKeys;
-            foreach (var key in keys)
-            {
-                var parsedEnum = RentalFeatureType.Quiet;
-                if (!Enum.TryParse<RentalFeatureType>(key, true, out parsedEnum))
-                    continue;
+			foreach (var key in keys)
+			{
+				Feature parsedEnum;
+				if (!Enum.TryParse<Feature>(key, true, out parsedEnum))
+					continue;
 				foreach (var feature in offer.OfferFeatures.ToList())
-                {
-                    if (feature.FeatureId == (int)parsedEnum)
-                    {
+				{
+					if (feature.FeatureId == (int)parsedEnum)
+					{
 						offer.OfferFeatures.Remove(feature);
-                    }
-                }
-                var hasFeature = controllerContext.HttpContext.Request.Form[key] as string;
-                if (!string.IsNullOrEmpty(hasFeature) && hasFeature.ToLowerInvariant().Contains("true"))
-                {
-                    var feature = new OfferFeature { FeatureId = (int)parsedEnum };
-					offer.OfferFeatures.Add(feature);
-                }
-            }
+					}
+				}
+				var fieldType = FeatureHelper.GetFieldType(parsedEnum);
+				var fieldValue = controllerContext.HttpContext.Request.Form[key] as string;
+				if (string.IsNullOrEmpty(fieldValue))
+					continue;
+
+				switch (fieldType)
+				{
+					case FeatureHelper.FeatureField.String:
+						{
+							var feature = new OfferFeature { FeatureId = (int)parsedEnum, StringValue = fieldValue };
+							offer.OfferFeatures.Add(feature);
+							break;
+						}
+					case FeatureHelper.FeatureField.Number:
+						{
+							try
+							{
+								var numberFieldValue = decimal.Parse(fieldValue);
+								var feature = new OfferFeature { FeatureId = (int)parsedEnum, DecimalValue = numberFieldValue };
+								offer.OfferFeatures.Add(feature);
+							}
+							catch (Exception)
+							{
+								break;
+							}
+							break;
+						}
+					case FeatureHelper.FeatureField.Bool:
+					default:
+						{
+
+							if (!string.IsNullOrEmpty(fieldValue) && fieldValue.ToLowerInvariant().Contains("true"))
+							{
+								var feature = new OfferFeature { FeatureId = (int)parsedEnum };
+								offer.OfferFeatures.Add(feature);
+							}
+							break;
+						}
+				}
+			}
 
             //handle images
 			offer.OfferFiles.Clear();

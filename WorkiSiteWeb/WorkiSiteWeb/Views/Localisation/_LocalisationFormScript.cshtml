@@ -82,26 +82,22 @@
     }
 
     //select freearea by default for free types
-	ResetOfferCheckBox = function () {
-        if($(".validation-summary-errors").has("ul").length)
-            return;
-		var currentType = jQuery.trim($("#Localisation_TypeValue").val());
-		if (currentType == "0" || currentType == "1" || currentType == "2" || currentType == "3") {
-            $("#FreeArea-WorkingPlace").attr('checked', true);
-            $(".freeAreaType").show();
-		}
-		else {
-			$("#FreeArea-WorkingPlace").attr('checked', false);
-            $(".freeAreaType").hide();
-		}
-	}
-    @if (Model.Localisation.ID == 0)
-    { 
-		@:ResetOfferCheckBox();
-    }
-	$('.typeSelect').change(function () {
-		ResetOfferCheckBox();
-	});
+//	ResetOfferCheckBox = function () {
+//        if($(".validation-summary-errors").has("ul").length)
+//            return;
+//		var currentType = jQuery.trim($("#Localisation_TypeValue").val());
+//		if (currentType == "0" || currentType == "1" || currentType == "2" || currentType == "3") {
+//            $("#FreeArea-WorkingPlace").attr('checked', true);
+//            $(".freeAreaType").show();
+//		}
+//		else {
+//			$("#FreeArea-WorkingPlace").attr('checked', false);
+//            $(".freeAreaType").hide();
+//		}
+//	}
+//	$('.typeSelect').change(function () {
+//		ResetOfferCheckBox();
+//	});
 
     $("#Wifi_Free-General").click(function () {
     var isChecked = $("#Wifi_Free-General:checked").val();
@@ -162,92 +158,6 @@
 		else {
 			$(".lunchclose").hide();
 		}
-	});
-
-	NeedWorkingPlace = function () {
-		var buisnessRoom = $("#BuisnessRoom-WorkingPlace:checked").val();
-		var workstation = $("#Workstation-WorkingPlace:checked").val();
-		var singleDesk = $("#SingleDesk-WorkingPlace:checked").val();
-        var freeArea = $("#FreeArea-WorkingPlace:checked").val();                
-
-		if (buisnessRoom == 'true' || workstation == 'true' || singleDesk == 'true' || freeArea == 'true') {
-			$(".workingPlaceFeatures").show();
-		}
-		else {
-			$(".workingPlaceFeatures").hide();
-		}
-	};
-
-	NeedMeetingRoom = function () {
-		var meetingRoom = $("#MeetingRoom-MeetingRoom:checked").val();
-
-		if (meetingRoom == 'true') {
-			$(".meetingRoomFeatures").show();
-		}
-		else {
-			$(".meetingRoomFeatures").hide();
-		}
-	};
-
-	NeedSeminarRoom = function () {
-		var SeminarRoom = $("#SeminarRoom-SeminarRoom:checked").val();
-
-		if (SeminarRoom == 'true') {
-			$(".seminarRoomFeatures").show();
-		}
-		else {
-			$(".seminarRoomFeatures").hide();
-		}
-	};
-
-	NeedVisioRoom = function () {
-		var visioRoom = $("#VisioRoom-VisioRoom:checked").val();
-
-		if (visioRoom == 'true') {
-			$(".visioRoomFeatures").show();
-		}
-		else {
-			$(".visioRoomFeatures").hide();
-		}
-	};
-
-	InitOfferPanes = function () {
-		// init
-		NeedWorkingPlace();
-		NeedMeetingRoom();
-		NeedSeminarRoom();
-		NeedVisioRoom();                
-	};
-
-	InitOfferPanes();
-
-	// event
-	$("#BuisnessRoom-WorkingPlace").click(function () {
-		NeedWorkingPlace();
-	});
-
-	$("#Workstation-WorkingPlace").click(function () {
-		NeedWorkingPlace();
-	});
-
-	$("#SingleDesk-WorkingPlace").click(function () {
-		NeedWorkingPlace();
-	});
-
-    $("#FreeArea-WorkingPlace").click(function () {
-		NeedWorkingPlace();
-	});
-
-	$("#MeetingRoom-MeetingRoom").click(function () {
-		NeedMeetingRoom();
-	});
-
-	$("#SeminarRoom-SeminarRoom").click(function () {
-		NeedSeminarRoom();
-	});
-
-	$("#VisioRoom-VisioRoom").click(function () {
-		NeedVisioRoom();
 	});
 		
 	//auto fill opening times from monday blur

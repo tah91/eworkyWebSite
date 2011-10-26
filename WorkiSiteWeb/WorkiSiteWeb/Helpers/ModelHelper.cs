@@ -57,7 +57,7 @@ namespace Worki.Web.Helpers
 			//get amenities
 			foreach (var item in localisation.LocalisationFeatures)
 			{
-				json.amenities.Add(Localisation.LocalisationFeatureDict[(int)item.FeatureID]);
+				json.amenities.Add(Localisation.GetFeatureDisplayName((Feature)item.FeatureID));
 			}
 			return json;
 		}
@@ -87,7 +87,7 @@ namespace Worki.Web.Helpers
             if (loc == null || urlHelper==null)
                 return null;
 
-			var type = MiscHelpers.GetSeoString(Localisation.LocalisationTypes[loc.TypeValue]);
+			var type = MiscHelpers.GetSeoString(Localisation.GetLocalisationType(loc.TypeValue));
 			var name = MiscHelpers.GetSeoString(loc.Name);
             return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "" });
         }

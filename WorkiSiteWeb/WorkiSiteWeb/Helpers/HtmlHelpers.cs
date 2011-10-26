@@ -129,53 +129,74 @@ namespace Worki.Web.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
-        public static MvcHtmlString FeatureLabelFor(this HtmlHelper html, Feature value, FeatureType valueType)
+		public static MvcHtmlString FeatureLabelFor2(this HtmlHelper html, Feature value)
         {
-			return html.LabelFor(Localisation.LocalisationFeatureDict[(int)value], Localisation.GetFeatureDesc(value, valueType));
+			return html.LabelFor(Localisation.GetFeatureDisplayName(value), Enum.GetName(typeof(Feature), value));
         }
 
-        public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
-        {
-			return html.CheckBox(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
-        }
+		public static MvcHtmlString FeatureCheckBox2(this HtmlHelper html, Feature value, IFeatureContainer offer)
+		{
+			return html.CheckBox(Enum.GetName(typeof(Feature), value), offer.HasFeature(value));
+		}
 
-        public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType, object htmlAttributes)
-        {
-			return html.CheckBox(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType), htmlAttributes);
-        }
+		public static MvcHtmlString FeatureChecboxLabel2(this HtmlHelper html, Feature value, IFeatureContainer offer)
+		{
+			StringBuilder result = new StringBuilder();
+			TagBuilder tag = new TagBuilder("div");
+			tag.AddCssClass("editor-field");
+			var checkbox = html.FeatureCheckBox2(value, offer);
+			var label = html.FeatureLabelFor2(value);
+			tag.InnerHtml = checkbox.ToHtmlString() + label.ToHtmlString();
+			result.AppendLine(tag.ToString());
+			return MvcHtmlString.Create(result.ToString());
+		}
 
-        public static MvcHtmlString FeatureHidden(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
-        {
-			return html.Hidden(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
-        }
+		public static MvcHtmlString FeatureStringTextBox2(this HtmlHelper html, Feature value, IFeatureContainer offer, object htmlAttributes = null)
+		{
+			return html.TextBox(Enum.GetName(typeof(Feature), value), offer.GetStringFeature(value), htmlAttributes);
+		}
 
-        public static MvcHtmlString FeatureChecboxLabel(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
-        {
-            StringBuilder result = new StringBuilder();
-            TagBuilder tag = new TagBuilder("div");
-            tag.AddCssClass("editor-field");
-            var checkbox = html.FeatureCheckBox(localisation, value, valueType);
-            var label = html.FeatureLabelFor(value, valueType);
-            tag.InnerHtml = checkbox.ToHtmlString() + label.ToHtmlString();
-            result.AppendLine(tag.ToString());
-            return MvcHtmlString.Create(result.ToString());
-        }
+		public static MvcHtmlString FeatureNumberTextBox2(this HtmlHelper html, Feature value, IFeatureContainer offer, object htmlAttributes = null)
+		{
+			return html.TextBox(Enum.GetName(typeof(Feature), value), offer.GetNumberFeature(value), htmlAttributes);
+		}
 
-        public static MvcHtmlString FeatureAvailable(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
-        {
-            StringBuilder result = new StringBuilder();
-            if (!localisation.HasFeature(value, valueType))
-                return MvcHtmlString.Create(result.ToString());
+		public static MvcHtmlString FeatureHidden2(this HtmlHelper html, Feature value, IFeatureContainer offer)
+		{
+			return html.Hidden(Enum.GetName(typeof(Feature), value), offer.HasFeature(value));
+		}
 
-            TagBuilder li = new TagBuilder("li");
-            TagBuilder div = new TagBuilder("div");
-            div.AddCssClass("available");
-            var lablel = html.FeatureLabelFor(value, valueType);
-            div.InnerHtml = lablel.ToHtmlString();
-            li.InnerHtml = div.ToString();
-            result.AppendLine(li.ToString());
-            return MvcHtmlString.Create(result.ToString());
-        }
+		//public static MvcHtmlString FeatureLabelFor(this HtmlHelper html, Feature value, FeatureType valueType)
+		//{
+		//    return html.LabelFor(Localisation.GetFeatureDisplayName(value), Localisation.GetFeatureDesc(value, valueType));
+		//}
+
+		//public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
+		//{
+		//    return html.CheckBox(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
+		//}
+
+		//public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType, object htmlAttributes)
+		//{
+		//    return html.CheckBox(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType), htmlAttributes);
+		//}
+
+		//public static MvcHtmlString FeatureHidden(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
+		//{
+		//    return html.Hidden(Localisation.GetFeatureDesc(value, valueType), localisation.HasFeature(value, valueType));
+		//}
+
+		//public static MvcHtmlString FeatureChecboxLabel(this HtmlHelper html, Localisation localisation, Feature value, FeatureType valueType)
+		//{
+		//    StringBuilder result = new StringBuilder();
+		//    TagBuilder tag = new TagBuilder("div");
+		//    tag.AddCssClass("editor-field");
+		//    var checkbox = html.FeatureCheckBox(localisation, value, valueType);
+		//    var label = html.FeatureLabelFor(value, valueType);
+		//    tag.InnerHtml = checkbox.ToHtmlString() + label.ToHtmlString();
+		//    result.AppendLine(tag.ToString());
+		//    return MvcHtmlString.Create(result.ToString());
+		//}
 
         public static MvcHtmlString WorkiTitle(this HtmlHelper html, string content)
         {
@@ -321,7 +342,7 @@ namespace Worki.Web.Helpers
 
             var index = -1;
 
-            foreach (string item in Localisation.LocalisationOfferTypes.Values)
+			foreach (string item in Localisation.GetOfferTypes().Values)
             {
                 if (index < 3)
                 {

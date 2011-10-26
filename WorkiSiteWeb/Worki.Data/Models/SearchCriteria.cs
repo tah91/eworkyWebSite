@@ -24,6 +24,7 @@ namespace Worki.Data.Models
 		void Init(bool wifi=false)
 		{
 			LocalisationData = new Localisation();
+			OfferData = new Offer();
 			Everything = true;
 			LocalisationOffer = -1;
 			if (wifi)
@@ -107,6 +108,8 @@ namespace Worki.Data.Models
         public string Place { get; set; }
 
         public Localisation LocalisationData { get; set; }
+
+		public Offer OfferData { get; set; }
 
         /* Add the property OderBy */
         public eOrderBy OrderBy { get; set; }
@@ -208,7 +211,7 @@ namespace Worki.Data.Models
             Results = new List<Localisation>();
             DistanceFromLocalisation = new Dictionary<int, double>();
             Criteria = new SearchCriteria();
-            var offers = allOffers ? Localisation.LocalisationOfferTypes : Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.AllOffers });
+			var offers = allOffers ? Localisation.GetOfferTypes() : Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.AllOffers });
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
         }
 

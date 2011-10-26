@@ -181,10 +181,10 @@ namespace Worki.Service
 
             var keys = MiscHelpers.GetFeatureIds(parameters.Params.AllKeys.ToList());
             criteria.LocalisationData.LocalisationFeatures.Clear();
-            var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
+            //var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
             foreach (var key in keys)
             {
-                criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = key, OfferID = offerId });
+                criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = key/*, OfferID = offerId*/ });
             }
             return criteria;
         }

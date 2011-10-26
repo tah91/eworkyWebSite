@@ -683,11 +683,11 @@ namespace Worki.Web.Controllers
 							if (infosLocalisation[14].Trim().ToLower() == featureTrueIndicator.ToLower())
 								localisationToAdd.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.SeminarRoom, OfferID = (int)FeatureType.SeminarRoom });
 							if (infosLocalisation[15].Trim().ToLower() == featureTrueIndicator.ToLower())
-								localisationToAdd.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.BuisnessRoom, OfferID = (int)FeatureType.WorkingPlace });
+								localisationToAdd.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.BuisnessLounge, OfferID = (int)FeatureType.WorkingPlace });
 							if (infosLocalisation[16].Trim().ToLower() == featureTrueIndicator.ToLower())
 								localisationToAdd.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Workstation, OfferID = (int)FeatureType.WorkingPlace });
 							if (infosLocalisation[17].Trim().ToLower() == featureTrueIndicator.ToLower())
-								localisationToAdd.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.SingleDesk, OfferID = (int)FeatureType.WorkingPlace });
+								localisationToAdd.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Desktop, OfferID = (int)FeatureType.WorkingPlace });
 
 							localisationToAdd.TypeValue = (int)LocalisationType.BuisnessCenter;
 
@@ -701,7 +701,7 @@ namespace Worki.Web.Controllers
 								if (similarLoc.Count() == 1)
 								{
 									var loc = similarLoc[0];
-									if (!loc.HasFeature(Feature.Wifi_Free, FeatureType.General))
+									if (!loc.HasFeature(Feature.Wifi_Free))
 									{
 										var l = lRepo.Get(loc.ID);
 										l.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free, OfferID = (int)FeatureType.General });
@@ -1017,7 +1017,7 @@ namespace Worki.Web.Controllers
                         Mail.To = "mika7869@gmail.com";
                         // Mail.To = item.Mail;
                         Mail.Subject = "TEST MAIL";
-                        Mail.Type = Localisation.LocalisationTypes[item.TypeValue].ToLower();
+						Mail.Type = Localisation.GetLocalisationType(item.TypeValue).ToLower();
                         Mail.Link = item.GetDetailFullUrl(Url);
                     }
                     count++;

@@ -220,6 +220,6 @@
         }
     </script>
     @{ ViewData["IsSearchForm"] = true; }
-    @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria.LocalisationData, ViewData)
+    @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
     @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
 }

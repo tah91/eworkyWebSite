@@ -22,9 +22,9 @@
             <p class="blue">@Worki.Resources.Views.Search.SearchString.Features</p>
             <div id="searchOptionToReplace">
                 <div class="float-left searchCheckBoxs">
-                    @Html.FeatureChecboxLabel(Model.Criteria.LocalisationData, Feature.Outlet, FeatureType.General)
-                    @Html.FeatureChecboxLabel(Model.Criteria.LocalisationData, Feature.FastInternet, FeatureType.General)
-                    @Html.FeatureChecboxLabel(Model.Criteria.LocalisationData, Feature.AC, FeatureType.General)
+                    @Html.FeatureChecboxLabel2(Feature.Outlet, Model.Criteria.LocalisationData)
+                    @Html.FeatureChecboxLabel2(Feature.FastInternet, Model.Criteria.LocalisationData)
+                    @Html.FeatureChecboxLabel2(Feature.AC, Model.Criteria.LocalisationData)
                 </div>
             <div class="clear">
             </div>

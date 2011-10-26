@@ -27,8 +27,8 @@
                                 </td>
                                 <td>
                                     <div class="editor-label localisationOwnerField">
-                                        @Html.FeatureCheckBox(Model.Localisation, Feature.LocalisationOwner, FeatureType.General)
-                                        @Html.FeatureLabelFor(Feature.LocalisationOwner, FeatureType.General)
+                                        @Html.FeatureCheckBox2(Feature.LocalisationOwner, Model.Localisation)
+                                        @Html.FeatureLabelFor2(Feature.LocalisationOwner)
                                     </div>
                                 </td>
                             </tr>
@@ -70,78 +70,78 @@
                                         <tr>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureCheckBox(Model.Localisation, Feature.FreeArea, FeatureType.WorkingPlace)
+                                                    @Html.FeatureCheckBox2(Feature.FreeArea, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor(Feature.FreeArea, FeatureType.WorkingPlace)
+                                                    @Html.FeatureLabelFor2(Feature.FreeArea)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-field">
-                                                    @Html.FeatureCheckBox(Model.Localisation, Feature.BuisnessRoom, FeatureType.WorkingPlace)
+                                                    @Html.FeatureCheckBox2(Feature.BuisnessLounge, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor(Feature.BuisnessRoom, FeatureType.WorkingPlace)
+                                                    @Html.FeatureLabelFor2(Feature.BuisnessLounge)
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="editor-field">
-                                                    @Html.FeatureCheckBox(Model.Localisation, Feature.Workstation, FeatureType.WorkingPlace)
+                                                    @Html.FeatureCheckBox2(Feature.Workstation, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.LabelFor(Worki.Resources.Views.Localisation.LocalisationString.ProWorkPlace, Localisation.GetFeatureDesc(Feature.Workstation, FeatureType.WorkingPlace))
+                                                    @Html.LabelFor(Worki.Resources.Views.Localisation.LocalisationString.ProWorkPlace, "plop")
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-field">
-                                                    @Html.FeatureCheckBox(Model.Localisation, Feature.MeetingRoom, FeatureType.MeetingRoom)
+                                                    @Html.FeatureCheckBox2(Feature.MeetingRoom, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor(Feature.MeetingRoom, FeatureType.MeetingRoom)
+                                                    @Html.FeatureLabelFor2(Feature.MeetingRoom)
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="editor-field">
-                                                    @Html.FeatureCheckBox(Model.Localisation, Feature.SeminarRoom, FeatureType.SeminarRoom)
+                                                    @Html.FeatureCheckBox2(Feature.SeminarRoom, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor(Feature.SeminarRoom, FeatureType.SeminarRoom)
+                                                    @Html.FeatureLabelFor2(Feature.SeminarRoom)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-field">
-                                                    @Html.FeatureCheckBox(Model.Localisation, Feature.VisioRoom, FeatureType.VisioRoom)
+                                                    @Html.FeatureCheckBox2(Feature.VisioRoom, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor(Feature.VisioRoom, FeatureType.VisioRoom)
+                                                    @Html.FeatureLabelFor2(Feature.VisioRoom)
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="editor-field">
-                                                    @Html.FeatureCheckBox(Model.Localisation, Feature.SingleDesk, FeatureType.WorkingPlace)
+                                                    @Html.FeatureCheckBox2(Feature.Desktop, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor(Feature.SingleDesk, FeatureType.WorkingPlace)
+                                                    @Html.FeatureLabelFor2(Feature.Desktop)
                                                 </div>
                                             </td>
                                         </tr>
@@ -314,23 +314,25 @@
                     </div>
                 </div>
             </div>
-            <div class="freeAreaType contentBlock">
+			@if (Model.IsFreeLocalisation)
+			{
+            <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea</h3>
                 <div class="serviceContainer">
                     <div class="subserviceContainer float-left">
                         <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods</h4>
                         <ul>
                             <li>
-                                @Html.FeatureChecboxLabel(Model.Localisation, Feature.AvoidMorning, FeatureType.General)
+                                @Html.FeatureChecboxLabel2(Feature.AvoidMorning, Model.Localisation)
                             </li>
                             <li>
-                                @Html.FeatureChecboxLabel(Model.Localisation, Feature.AvoidLunch, FeatureType.General)
+                                @Html.FeatureChecboxLabel2(Feature.AvoidLunch, Model.Localisation)
                             </li>
                             <li>
-                                @Html.FeatureChecboxLabel(Model.Localisation, Feature.AvoidAfternoom, FeatureType.General)
+                                @Html.FeatureChecboxLabel2(Feature.AvoidAfternoom, Model.Localisation)
                             </li>
                             <li>
-                                @Html.FeatureChecboxLabel(Model.Localisation, Feature.AvoidEvening, FeatureType.General)
+                                @Html.FeatureChecboxLabel2(Feature.AvoidEvening, Model.Localisation)
                             </li>
                         </ul>
                     </div>
@@ -339,8 +341,8 @@
                         <ul>
                             <li>
                                 <div class="coffeePrice editor-label">
-                                    @Html.LabelFor(model => model.Localisation.LocalisationData.CoffeePrice)
-                                    @Html.TextBoxFor(model => model.Localisation.LocalisationData.CoffeePrice, new { placeholder = "Ex : 1.20" })&nbsp;&nbsp;&#8364;
+                                    @Html.FeatureLabelFor2(Feature.CoffeePrice)
+                                    @Html.FeatureNumberTextBox2(Feature.CoffeePrice, Model.Localisation, new { placeholder = "Ex : 1.20" })&nbsp;&nbsp;&#8364;
                                 </div>
                             </li>
                         </ul>
@@ -351,31 +353,32 @@
                 <div class="clear">
                 </div>
             </div>
-            <div class="serviceContainer contentBlock">
+			}
+			<div class="serviceContainer contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.PlaceDetails</h3>
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</h4>
                     <ul>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Handicap, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Handicap, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Wifi_Free, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Wifi_Free, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Wifi_Not_Free, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Wifi_Not_Free, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Parking, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Parking, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Outlet, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Outlet, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.FastInternet, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.FastInternet, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.SafeStorage, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.SafeStorage, Model.Localisation)
                         </li>
                     </ul>
                 </div>
@@ -383,53 +386,55 @@
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Comfort</h4>
                     <ul>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Coffee, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Coffee, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Restauration, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Restauration, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.AC, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.AC, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.ErgonomicFurniture, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.ErgonomicFurniture, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Shower, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Shower, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Newspaper, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.Newspaper, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.TV, FeatureType.General)
+                            @Html.FeatureChecboxLabel2(Feature.TV, Model.Localisation)
                         </li>
                     </ul>
                 </div>
                 <div class="clear">
                 </div>
             </div>
-            <div class="workingPlaceFeatures serviceContainer contentBlock">
-                <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.WorkingPlace]</h3>
+			@if (!Model.IsFreeLocalisation)
+			{ 
+            <div class="serviceContainer contentBlock">
+                <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.WorkingPlace</h3>
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
                     <ul>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Domiciliation, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Domiciliation, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Secretariat, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Secretariat, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Courier, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Courier, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Printer, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Printer, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Computers, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Computers, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Archiving, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Archiving, Model.Localisation)
                         </li>
                     </ul>
                 </div>
@@ -437,187 +442,40 @@
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.UserServices</h4>
                     <ul>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Concierge, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Concierge, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Pressing, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Pressing, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.ComputerHelp, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.ComputerHelp, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.RoomService, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.RoomService, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Community, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.Community, Model.Localisation)
                         </li>
                         <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.RelaxingArea, FeatureType.WorkingPlace)
+                            @Html.FeatureChecboxLabel2(Feature.RelaxingArea, Model.Localisation)
                         </li>
                     </ul>
                 </div>
                 <div class="clear">
                 </div>
             </div>
-            <div class="meetingRoomFeatures serviceContainer contentBlock">
-                <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.MeetingRoom]</h3>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room2_7, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room7_20, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room20_plus, FeatureType.MeetingRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Audio, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Visio, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Projector, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.VideoProj, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Paperboard, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Internet, FeatureType.MeetingRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.PhoneJack, FeatureType.MeetingRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Services</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Drinks, FeatureType.MeetingRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="clear">
-                </div>
-            </div>
-            <div class="seminarRoomFeatures serviceContainer contentBlock">
-                <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.SeminarRoom]</h3>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room20_100, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room100_250, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room250_1000, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room1000_plus, FeatureType.SeminarRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Scene, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Micro, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Picturesque, FeatureType.SeminarRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Services</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Welcoming, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Accommodation, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Lighting, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Sound, FeatureType.SeminarRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Catering, FeatureType.SeminarRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="clear">
-                </div>
-            </div>
-            <div class="visioRoomFeatures serviceContainer contentBlock">
-                <h3 class="blue">@Localisation.LocalisationFeatureTypes[FeatureType.VisioRoom]</h3>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room1_4, FeatureType.VisioRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room5_10, FeatureType.VisioRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Room10_Plus, FeatureType.VisioRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProposedTechnology</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Visio, FeatureType.VisioRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.VisioHD, FeatureType.VisioRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Telepresence, FeatureType.VisioRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="subserviceContainer float-left">
-                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.EquipementsServices</h4>
-                    <ul>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Paperboard, FeatureType.VisioRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Internet, FeatureType.VisioRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.PhoneJack, FeatureType.VisioRoom)
-                        </li>
-                        <li>
-                            @Html.FeatureChecboxLabel(Model.Localisation, Feature.Drinks, FeatureType.VisioRoom)
-                        </li>
-                    </ul>
-                </div>
-                <div class="clear">
-                </div>
-            </div>
+			<div class="contentBlock">
+				<h3 class="blue">Offres</h3>
+				<ul>
+				@foreach (var item in Model.Localisation.Offers)
+				{
+						<li>@item.Name | @Html.ActionLink("éditer", MVC.Offer.Edit(item.Id, item.LocalisationId)) | @Html.ActionLink("supprimer", MVC.Offer.Delete(item.Id, item.LocalisationId))</li>
+				}
+				</ul>
+				<input  type="submit" class="buttonStd buttonBlue imageBtn" 
+						name="addOffer" value="Ajouter une offre"/>
+			</div>
+			}
             <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
                 <table class="generalInfosTable editionTable float-left">
@@ -677,10 +535,10 @@
                     <div class="subserviceContainer float-left">
                         <ul>
                             <li>
-                                @Html.FeatureChecboxLabel(Model.Localisation, Feature.Access24, FeatureType.General)
+                                @Html.FeatureChecboxLabel2(Feature.Access24, Model.Localisation)
                             </li>
                             <li id="lunchCloseChecked">
-                                @Html.FeatureChecboxLabel(Model.Localisation, Feature.LunchClose, FeatureType.General)
+                                @Html.FeatureChecboxLabel2(Feature.LunchClose, Model.Localisation)
                             </li>
                         </ul>
                     </div>
@@ -896,16 +754,9 @@
                     </table>
                 </div>
             </div>
-			@Html.ActionLink("ajouter une offre",MVC.Offer.Create(Model.Localisation.ID))
-			<ul>
-				@foreach (var item in Model.Localisation.Offers)
-				{
-					<li>@item.Name | @Html.ActionLink("éditer", MVC.Offer.Edit(item.Id,item.LocalisationId)) | @Html.ActionLink("supprimer", MVC.Offer.Delete(item.Id, item.LocalisationId))</li>
-				}
-			</ul>
             <div class="float-right">
                 <input  type="submit" class="buttonStd buttonBlue imageBtn" 
-				    name="valid" id="submit_add" value="@(Model.Localisation.ID == 0 ? Worki.Resources.Views.Shared.SharedString.Adds : Worki.Resources.Views.Shared.SharedString.Valid)"/>
+						name="valid" id="submit_add" value="@(Model.Localisation.ID == 0 ? Worki.Resources.Views.Shared.SharedString.Adds : Worki.Resources.Views.Shared.SharedString.Valid)"/>
             </div>
             <div class="clear">
             </div>

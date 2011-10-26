@@ -1,31 +1,4 @@
-﻿@*<div id="menucontainer">
-    <ul id="menu">
-    @{var controllerName = ViewData["controllerName"] as String;}
-        <li> 
-            <div class="menu1_left float-left">
-            </div>
-            <div class="menu1 float-left">
-            @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Home, MVC.Home.Index())
-            </div>
-            <div class="trait float-left"></div>
-        </li>
-        <li id="@(string.Compare(controllerName, "Search", StringComparison.InvariantCultureIgnoreCase) == 0 ? "search" : " ")">
-            <div class="menu2 float-left">
-            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.Search, MVC.Localisation.FullSearch())
-            </div>
-            <div class="trait float-left"></div>
-        </li> 
-        <li id="@(string.Compare(controllerName, "Localisation", StringComparison.InvariantCultureIgnoreCase) == 0 ? "search" : " ")">
-            <div class="menu3 float-left">
-            @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Add, MVC.Localisation.Create())
-            </div>
-            <div class="menu3_right float-left">
-            </div>
-        </li>
-    </ul>
-</div>*@
-
-<div>
+﻿<div>
     <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink("RECHERCHER UN ESPACE", MVC.Home.Index())</div>
     <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink("PROPOSER UN ESPACE", MVC.Home.Index())</div>
 </div>

@@ -1,4 +1,5 @@
 ﻿@using Worki.Data.Models
+@using Worki.Web.Helpers
 
 @helper TitleDiv(string title, string color, bool clear = true)
 {
@@ -32,7 +33,7 @@
 
 @helper FeatureTag(Feature feature)
 	{
-    @Localisation.LocalisationFeatureDict[(int)feature]
+    @Localisation.GetFeatureDisplayName(feature)
 }
 
 @helper FeatureTabContent(List<Feature> list, string id)
@@ -52,7 +53,7 @@
 
 @helper FeatureToogle(string title, List<Feature> list)
 	{
-    <h4 class="toogle_trigger toogle_trigger_click@(list.Count==0 ? "k":"") bold blue"><span>@title</span></h4>
+    <h4 class="toogle_trigger toogle_trigger_click@(list.Count == 0 ? "k" : "") bold blue"><span>@title</span></h4>
 		if (list.Count > 0)
 		{
     <div class="toogle_container">

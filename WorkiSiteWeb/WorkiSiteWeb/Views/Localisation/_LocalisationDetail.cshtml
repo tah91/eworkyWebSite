@@ -15,7 +15,7 @@
 			<div class="clear">
 			</div>
 			<div class="localisationSubtitle" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-				<span class="localisationCity bold blue">@Localisation.LocalisationTypes[Model.TypeValue]</span>&nbsp;&nbsp;
+				<span class="localisationCity bold blue">@Localisation.GetLocalisationType(Model.TypeValue)</span>&nbsp;&nbsp;
 				@{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;}
 				<a href="@itinLink" target="_blank">
 					<span itemprop="streetAddress">@Model.Adress</span> - <span itemprop="postalCode">@Model.PostalCode</span> <span itemprop="addressLocality">@Model.City</span>
@@ -83,7 +83,7 @@
 			</div>
 			}
 			@{
-				var generalFeatures = Model.GetFeaturesOfType(FeatureType.General, new List<Feature> { Feature.AvoidMorning, Feature.AvoidLunch, Feature.AvoidAfternoom, Feature.AvoidEvening, Feature.LocalisationOwner });
+				var generalFeatures = Model.GetFeaturesWithin(Localisation.Characteristics);
 			}
 			<div class="localisationDescription contentBlock">
 				<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Description</h3>
@@ -96,9 +96,9 @@
 					{
 						<li>@RazorHelpers.FeatureTag(item)</li>
 					}       
-					@if (Model.LocalisationData != null && Model.LocalisationData.CoffeePrice.HasValue)
+					@if (Model.HasFeature(Feature.CoffeePrice))
 					{
-						<li>@Worki.Resources.Views.Shared.SharedString.CoffeePrice : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.LocalisationData.CoffeePrice)</li>
+						<li>@Localisation.GetFeatureDisplayName(Feature.CoffeePrice) : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.GetNumberFeature(Feature.CoffeePrice))</li>
 					}
 					</ul>
 				</div>
@@ -106,12 +106,12 @@
 				</div>
 			</div>
 			@{
-				var workingPlaceFeatures = Model.GetFeaturesOfType(FeatureType.WorkingPlace, new List<Feature> { Feature.FreeArea, Feature.SingleDesk, Feature.Workstation, Feature.BuisnessRoom });
+				var workingPlaceFeatures = Model.GetFeaturesWithin(Localisation.Services);
 			}
 			@if (workingPlaceFeatures.Count > 0)
 			{
 			<div class="localisationServices contentBlock">
-					<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Services</h3>
+				<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Services</h3>
 
 				<div class="featureTag">
 					<ul>
@@ -124,47 +124,6 @@
 				<div class="clear">
 				</div>
 			</div>   
-			}
-			@if (Model.HasOffer() && Model.HasOfferExcept(LocalisationOffer.FreeArea))
-			{
-			<div class="localisationOffers contentBlock">
-				<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
-				@{
-				var meetingRoomFeatures = new List<Feature>();
-				var seminarRoomFeatures = new List<Feature>();
-				var visioRoomFeatures = new List<Feature>();
-				var emptyFeature = new List<Feature>();
-				}
-				@if (Model.HasOffer(LocalisationOffer.BuisnessRoom))
-				{
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom, emptyFeature)
-				}
-				@if (Model.HasOffer(LocalisationOffer.Workstation))
-				{
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation, emptyFeature)
-				}
-				@if (Model.HasOffer(LocalisationOffer.SingleDesk))
-				{
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesk, emptyFeature)
-				}
-                @if (Model.HasOffer(LocalisationOffer.MeetingRoom))
-				{
-					meetingRoomFeatures = Model.GetFeaturesOfType(FeatureType.MeetingRoom, new List<Feature> { Feature.MeetingRoom });
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom, meetingRoomFeatures)
-				}
-				@if (Model.HasOffer(LocalisationOffer.SeminarRoom))
-				{
-					seminarRoomFeatures = Model.GetFeaturesOfType(FeatureType.SeminarRoom, new List<Feature> { Feature.SeminarRoom });
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom, seminarRoomFeatures)
-				}
-				@if (Model.HasOffer(LocalisationOffer.VisioRoom))
-				{
-					visioRoomFeatures = Model.GetFeaturesOfType(FeatureType.VisioRoom, new List<Feature> { Feature.VisioRoom });
-					@RazorHelpers.FeatureToogle(Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom, visioRoomFeatures)
-				}
-				<div class="clear">
-				</div>
-			</div> 
 			}
 			<div class="localisationComments contentBlock">
 				<h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
@@ -231,9 +190,9 @@
 				@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
 				</div>
 				<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
-				@if (Model.HasFeature(Feature.LocalisationOwner, FeatureType.General))
+				@if (Model.HasFeature(Feature.LocalisationOwner))
 				{	 
-					<span>@Localisation.LocalisationFeatureDict[(int)Feature.LocalisationOwner]</span>
+					<span>@Localisation.GetFeatureDisplayName(Feature.LocalisationOwner)</span>
 				}
 				<div class="clear">
 				</div>
@@ -355,9 +314,9 @@
 			}
 			<div class="localisationSchedule contentBlock">
 				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
-				@if (Model.HasFeature(Feature.Access24, FeatureType.General))
+				@if (Model.HasFeature(Feature.Access24))
 				{
-					@Html.FeatureLabelFor(Feature.Access24, FeatureType.General)
+					@Html.FeatureLabelFor2(Feature.Access24)
 				}
 				else if (Model.HasOpenningTimes())
 				{

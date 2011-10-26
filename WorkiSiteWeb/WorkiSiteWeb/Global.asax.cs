@@ -155,7 +155,7 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
             );
 
-			var localisationTypes = (from t in Localisation.LocalisationTypes.Values select MiscHelpers.GetSeoString(t));
+			var localisationTypes = (from t in Localisation.GetLocalisationTypes().Values select MiscHelpers.GetSeoString(t));
 
             routes.MapRoute(
                 "", // Nom d'itinéraire

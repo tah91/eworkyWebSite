@@ -11,7 +11,7 @@ namespace Worki.Data.Models
 		public MemberBookingFormViewModel()
 		{
 			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
-			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessRoom);
+			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
 			MemberBooking = new MemberBooking();
 		}
 

@@ -78,7 +78,7 @@ namespace Worki.SpecFlow
             public void GivenJeSelectionneSalonDAffaire()
             {
                 // WebBrowser.Current.SelectList("Criteria_LocalisationOffer").Option(Find.ByValue("1")).Select();
-                WebBrowser.Current.Page<AccueilPage>().Espace((int)LocalisationOffer.BuisnessRoom);
+                WebBrowser.Current.Page<AccueilPage>().Espace((int)LocalisationOffer.BuisnessLounge);
             }
 
         #endregion

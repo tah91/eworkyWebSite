@@ -1,13 +1,280 @@
 ﻿@model Worki.Data.Models.OfferFormViewModel
 
+@helper BuisnessLoungeForm()
+	{
+	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
+        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.OpenToAll, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.ReservedToClients, Model.Offer)
+                </li>
+                <li>
+					@Html.FeatureLabelFor2(Feature.ForCardOwner)
+                    @Html.FeatureStringTextBox2(Feature.ForCardOwner, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}
+
+@helper WorkstationForm()
+	{
+	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
+        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <ul>
+                <li>
+                    @Html.FeatureLabelFor2(Feature.Sector)
+                    @Html.FeatureStringTextBox2(Feature.Sector, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.NotSectorial, Model.Offer)
+                </li>
+				<li>
+                    @Html.FeatureChecboxLabel2(Feature.CoworkingVibe, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}
+
+@helper DesktopForm()
+	{
+	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
+        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Desktop10_25, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Desktop25_50, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Desktop50_100, Model.Offer)
+                </li>
+				<li>
+                    @Html.FeatureChecboxLabel2(Feature.Desktop100Plus, Model.Offer)
+                </li>
+            </ul>
+        </div>
+		<div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Equipped, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.AvailableNow, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.AllInclusive, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.FlexibleContract, Model.Offer)
+                </li>
+                <li>
+				    @Html.FeatureLabelFor2(Feature.MinimalPeriod)
+                    @Html.FeatureNumberTextBox2(Feature.MinimalPeriod, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}
+
+@helper MeetingRoomForm()
+	{
+	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
+        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room2_7, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room7_20, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room20_plus, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Audio, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Visio, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Projector, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.VideoProj, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Paperboard, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Internet, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.PhoneJack, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Services</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Drinks, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}
+
+@helper SeminarRoomForm()
+	{
+	<div class="serviceContainer contentBlock"  id="offerFeaturesForm">
+        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.SeminarRoom</h3>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room20_100, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room100_250, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room250_1000, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room1000_plus, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Scene, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Micro, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Picturesque, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Services</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Welcoming, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Accommodation, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Lighting, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Sound, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Catering, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}
+
+@helper VisioRoomForm()
+	{
+	<div class="serviceContainer contentBlock"  id="offerFeaturesForm">
+        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.VisioRoom</h3>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room1_4, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room5_10, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Room10_Plus, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProposedTechnology</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Visio, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.VisioHD, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Telepresence, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="subserviceContainer float-left">
+            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.EquipementsServices</h4>
+            <ul>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Paperboard, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Internet, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.PhoneJack, Model.Offer)
+                </li>
+                <li>
+                    @Html.FeatureChecboxLabel2(Feature.Drinks, Model.Offer)
+                </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}
+
 @{
-    var isEditing = Model.Offer.Id != 0;
+	var isEditing = Model.Offer.Id != 0;
 	var title = isEditing ? Worki.Resources.Views.Offer.OfferString.EditOffer : Worki.Resources.Views.Offer.OfferString.AddOffer;
 }
 
 @section HeadContent
 {
     <title>@Html.WorkiTitle(title) </title>
+	<link href="@Url.VersionedContent(Links.Content.LocalisationForm_min_css)" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
 	<link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
 }
@@ -17,7 +284,7 @@
 <div class="detailContent">
     <div class="blockContainer">
 		@using (Html.BeginForm())
-        {
+  {
 	   		@Html.AntiForgeryToken()
             <div class="contentBlock">
 				<table>
@@ -47,7 +314,7 @@
 					</tr>
 				</table>
             </div>
-	  		<div class="contentBlock">
+	  	  	<div class="contentBlock">
 				<h3 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h3>
 				<div id="fileupload" class="borderRadius">
 					<div class="fileupload-buttonbar">
@@ -62,17 +329,58 @@
 					</div>
 				</div>
 			</div>
+			<div id="offerFeaturesForm">
+			</div>
 			<div class="editor-field float-right">
 				<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
 			</div>
 			<div class="clear"></div>
-        }
+  }
     </div>
 </div>
 
 @section ScriptContent
 {
 	<script type="text/javascript">
+		var offer0 = '<div id="offerFeaturesForm"></div>';
+		var offer1 = '@Html.Raw(Html.JSEscape(BuisnessLoungeForm().ToString()))';
+		var offer2 = '@Html.Raw(Html.JSEscape(WorkstationForm().ToString()))';
+		var offer3 = '@Html.Raw(Html.JSEscape(DesktopForm().ToString()))';
+		var offer4 = '@Html.Raw(Html.JSEscape(MeetingRoomForm().ToString()))';
+		var offer5 = '@Html.Raw(Html.JSEscape(SeminarRoomForm().ToString()))';
+		var offer6 = '@Html.Raw(Html.JSEscape(VisioRoomForm().ToString()))';
+		OfferFeatureFormReplace = function () {
+			var currentOffer = jQuery.trim($("#Offer_Type").val());
+			switch (currentOffer) {
+				case "-1":
+				case "0":
+					newDivContent = offer0;
+					break;
+				case "1":
+					newDivContent = offer1;
+					break;
+				case "2":
+					newDivContent = offer2;
+					break;
+				case "3":
+					newDivContent = offer3;
+					break;
+				case "4":
+					newDivContent = offer4;
+					break;
+				case "5":
+					newDivContent = offer5;
+					break;
+				case "6":
+					newDivContent = offer6;
+					break;
+			}
+			$("#offerFeaturesForm").replaceWith(newDivContent);
+		}
+		OfferFeatureFormReplace();
+		$('#Offer_Type').change(function () {
+			OfferFeatureFormReplace();
+		});
     </script>
 	@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
 }

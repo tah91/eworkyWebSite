@@ -20,7 +20,7 @@
     <div class="itemDetailsDiv float-left relative">
         <p class="@linkColor noUnderline"><span class="itemName">@Html.ActionLink(Model.Localisation.Name, MVC.Localisation.ActionNames.FullSearchResultDetail, rvd)</span>&nbsp; - &nbsp;@String.Format("{0:0.##} km", Model.Distance)</p>
         <span class="itemAddress">@Model.Localisation.Adress&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>
-        <span class="bold lightblue">@Localisation.LocalisationTypes[Model.Localisation.TypeValue]</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, 80)</span><br />
+        <span class="bold lightblue">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, 80)</span><br />
         <div class="itemLogos bottom">
           @Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
           <div class="clear">

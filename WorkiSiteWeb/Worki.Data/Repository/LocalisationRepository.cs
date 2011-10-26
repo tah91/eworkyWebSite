@@ -147,9 +147,9 @@ namespace Worki.Data.Models
 						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.FreeArea });
 					}
 					break;
-				case LocalisationOffer.BuisnessRoom:
+				case LocalisationOffer.BuisnessLounge:
 					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.BuisnessRoom });
+						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.BuisnessLounge });
 					}
 					break;
 				case LocalisationOffer.Workstation:
@@ -157,9 +157,9 @@ namespace Worki.Data.Models
 						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.Workstation });
 					}
 					break;
-				case LocalisationOffer.SingleDesk:
+				case LocalisationOffer.Desktop:
 					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.SingleDesk });
+						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.Desktop });
 					}
 					break;
 				case LocalisationOffer.MeetingRoom:

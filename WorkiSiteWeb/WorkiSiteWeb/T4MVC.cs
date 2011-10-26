@@ -1532,7 +1532,8 @@ namespace Worki.Web.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string Details = "details";
-            public readonly string Create = "ajouter";
+            public readonly string CreateFree = "ajouter-lieu-gratuit";
+            public readonly string CreateNotFree = "ajouter-lieu-payant";
             public readonly string Edit = "editer";
             public readonly string Delete = "supprimer";
             public readonly string PostComment = "PostComment";
@@ -1591,8 +1592,13 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Create() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
+        public override System.Web.Mvc.ActionResult CreateFree() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateFree);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreateNotFree() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateNotFree);
             return callInfo;
         }
 
@@ -1602,10 +1608,11 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Localisation localisation, int? id) {
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Localisation localisation, int? id, string addOffer) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("localisation", localisation);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("addOffer", addOffer);
             return callInfo;
         }
 

@@ -62,15 +62,26 @@ namespace Worki.Web.Controllers
 		}
 
         /// <summary>
-        /// GET action to create a new localisation
+        /// GET action to create a new free localisation
         /// </summary>
         /// <returns>The form to fill</returns>
         [AcceptVerbs(HttpVerbs.Get), Authorize]
-        [ActionName("ajouter")]
-        public virtual ActionResult Create()
+        [ActionName("ajouter-lieu-gratuit")]
+        public virtual ActionResult CreateFree()
         {
-            return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel());
+			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(true));
         }
+
+		/// <summary>
+		/// GET action to create a new bookable localisation
+		/// </summary>
+		/// <returns>The form to fill</returns>
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		[ActionName("ajouter-lieu-payant")]
+		public virtual ActionResult CreateNotFree()
+		{
+			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false));
+		}
 
         /// <summary>
         /// GET action to adit an existing localisation
@@ -109,7 +120,7 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ActionName("editer")]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Edit(Localisation localisation, int? id)
+		public virtual ActionResult Edit(Localisation localisation, int? id, string addOffer)
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			//to keep files state in case of error
@@ -158,8 +169,15 @@ namespace Worki.Web.Controllers
 
 					idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
 					localisation.ID = idToRedirect;
-                    TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
-					return Redirect(localisation.GetDetailFullUrl(Url));
+					if (!string.IsNullOrEmpty(addOffer))
+					{
+						return RedirectToAction(MVC.Offer.Create(idToRedirect));
+					}
+					else
+					{
+						TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
+						return Redirect(localisation.GetDetailFullUrl(Url));
+					}
 				}
 			}
 			catch (Exception ex)
