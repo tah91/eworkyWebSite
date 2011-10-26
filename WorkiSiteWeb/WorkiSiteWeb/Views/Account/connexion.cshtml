@@ -10,16 +10,13 @@
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.LoginToEWorky, "Blue")
 
-<a href="/compte/facebook-logon">Connectez-vous via facebook</a>
-
 <div class="detailContent">
     <div class="blockContainer">
     @using (Html.BeginForm())
     { 
         @Html.AntiForgeryToken()
-        <div class="contentBlock">
-            <div class="loginDiv">
-            <table>
+        <span class="contentBlock float-left" style="margin:0px!important;width:49%;height:123px">
+            <table style="margin: 15px 0px;">
                 @if (ViewBag.AlreadyRegistered != null)
                 {
                 <tr>
@@ -49,7 +46,8 @@
                         @Html.LabelFor(m => m.Password) 
                     </td>
                     <td>
-                        @Html.PasswordFor(m => m.Password) &nbsp;&nbsp; @Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
+                        @Html.PasswordFor(m => m.Password) &nbsp;
+                        <span class="blue">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())</span>
                     </td>
                 </tr>
                 <tr>
@@ -58,12 +56,16 @@
                     </td>
                     <td>
                         <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.LogIn"/>
-                        &nbsp;&nbsp;ou @Html.ActionLink(Worki.Resources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())
+                        &nbsp;&nbsp;ou <span class="blue">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())</span>
                     </td>
                 </tr>
             </table>
-            </div>
-        </div>
+        </span>
+        <span class="contentBlock float-right" style="margin:0px!important;width:46%;height:123px">
+            <p style="margin:20px 80px;"><b class="blue">Connectez-vous</b> en quelques secondes à <b class="blue">eWorky</b> grâce à votre compte <b class="blue">Facebook</b> !</p>
+            <a href="/compte/facebook-logon"><img alt="Connection avec Facebook" src="/Content/Images/signin_facebook.png" style="margin-top:10px;margin-left:144px" /></a>
+        </span>
+        <div class="clear"></div>
     }
     </div>
 </div>
