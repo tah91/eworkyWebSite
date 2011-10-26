@@ -531,7 +531,7 @@ namespace Worki.Web.Controllers
 
                         try
                         {
-                            MembershipCreateStatus createStatus = MembershipService.CreateUser(faceBookEmail, MiscHelpers.FaceBookConstants.FacebookDefaultPassword, faceBookEmail);
+                            MembershipCreateStatus createStatus = MembershipService.CreateUser(faceBookEmail, MiscHelpers.GeneratePassword(8,true), faceBookEmail);
                             createStatusSuccess = createStatus == MembershipCreateStatus.Success;
                             if (!createStatusSuccess)
                             {

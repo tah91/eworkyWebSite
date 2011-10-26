@@ -308,8 +308,10 @@
     <Content Include="Content\images\iconeMapRed.png" />
     <Content Include="Content\images\icon_facebook.png" />
     <Content Include="Content\images\logoMobile.png" />
+    <Content Include="Content\images\logon_facebook.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\retour.png" />
+    <Content Include="Content\images\signin_facebook.png" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\LocalisationForm.min.css">
       <DependentUpon>LocalisationForm.css</DependentUpon>
