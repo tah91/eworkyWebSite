@@ -494,6 +494,7 @@ namespace Links {
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
+            public static readonly string logon_facebook_png = Url("logon_facebook.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
@@ -510,6 +511,7 @@ namespace Links {
             public static readonly string retour_png = Url("retour.png");
             public static readonly string scoop_jpg = Url("scoop.jpg");
             public static readonly string serviceIcones_png = Url("serviceIcones.png");
+            public static readonly string signin_facebook_png = Url("signin_facebook.png");
             public static readonly string star_png = Url("star.png");
             public static readonly string startup_png = Url("startup.png");
             public static readonly string student_png = Url("student.png");
@@ -1401,9 +1403,11 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Contact(Worki.Data.Models.Contact contact) {
+        public override System.Web.Mvc.ActionResult Contact(Worki.Data.Models.Contact contact, string myCaptcha, string attempt) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Contact);
             callInfo.RouteValueDictionary.Add("contact", contact);
+            callInfo.RouteValueDictionary.Add("myCaptcha", myCaptcha);
+            callInfo.RouteValueDictionary.Add("attempt", attempt);
             return callInfo;
         }
 
@@ -2309,6 +2313,7 @@ namespace T4MVC {
             public readonly string _ViewStart = "~/Views/Emails/_ViewStart.cshtml";
             public readonly string Email = "~/Views/Emails/Email.cshtml";
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
+            public readonly string FacebookMail = "~/Views/Emails/FacebookMail.cshtml";
             public readonly string ListLocMail = "~/Views/Emails/ListLocMail.cshtml";
         }
     }

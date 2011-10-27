@@ -266,13 +266,13 @@
     <value>Location</value>
   </data>
   <data name="RentSpeech" xml:space="preserve">
-    <value>&lt;br /&gt;- bureaux professionnels&lt;br /&gt;- fond de commerce&lt;br /&gt;- local commercial, etc...</value>
+    <value>- bureaux professionnels&lt;br /&gt;- fond de commerce&lt;br /&gt;- local commercial, etc.</value>
   </data>
   <data name="Reserve" xml:space="preserve">
     <value>Réservation</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>&lt;br /&gt;- centre d'affaires&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentres, etc...</value>
+    <value>- centre d'affaire&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Recherche</value>
@@ -281,7 +281,7 @@
     <value>Rechercher</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
-    <value>&lt;br /&gt;- un café internet, un spot wifi&lt;br /&gt;- un espace voyageur, un espace publique numérique&lt;br /&gt;- une bibliotèque, un musée, etc...</value>
+    <value>- café internet, spot wifi&lt;br /&gt;- espace voyageur, espace publique numérique&lt;br /&gt;- bibliotèque, musée, etc.</value>
   </data>
   <data name="SoonLotofFeatures" xml:space="preserve">
     <value>Et bientôt plein d’autres fonctionnalités.</value>

@@ -10,15 +10,12 @@
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Account.AccountString.LoginToEWorky, "Blue")
 
-<a href="/compte/facebook-logon">Connectez-vous via facebook</a>
-
 <div class="detailContent">
     <div class="blockContainer">
     @using (Html.BeginForm())
     { 
         @Html.AntiForgeryToken()
-        <div class="contentBlock">
-            <div class="loginDiv">
+        <span class="contentBlock float-left fb_left_block_connexion">
             <table>
                 @if (ViewBag.AlreadyRegistered != null)
                 {
@@ -49,7 +46,8 @@
                         @Html.LabelFor(m => m.Password) 
                     </td>
                     <td>
-                        @Html.PasswordFor(m => m.Password) &nbsp;&nbsp; @Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
+                        @Html.PasswordFor(m => m.Password) &nbsp;
+                        <span class="blue">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())</span>
                     </td>
                 </tr>
                 <tr>
@@ -58,12 +56,16 @@
                     </td>
                     <td>
                         <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.LogIn"/>
-                        &nbsp;&nbsp;ou @Html.ActionLink(Worki.Resources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())
+                        &nbsp;&nbsp;ou <span class="blue">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.EWorkyRegister, MVC.Account.Register())</span>
                     </td>
                 </tr>
             </table>
-            </div>
-        </div>
+        </span>
+        <span class="contentBlock float-right fb_right_block_connexion">
+            <p>Connectez-vous en quelques secondes à eWorky grâce à votre compte Facebook !</p>
+            <a href="/compte/facebook-logon"><img alt="Connection avec Facebook" src="/Content/Images/signin_facebook.png" class="fb_button_logon" /></a>
+        </span>
+        <div class="clear"></div>
     }
     </div>
 </div>

@@ -430,7 +430,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;br /&gt;- bureaux professionnels&lt;br /&gt;- fond de commerce&lt;br /&gt;- local commercial, etc....
+        ///   Looks up a localized string similar to - bureaux professionnels&lt;br /&gt;- fond de commerce&lt;br /&gt;- local commercial, etc..
         /// </summary>
         public static string RentSpeech {
             get {
@@ -448,7 +448,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;br /&gt;- centre d&apos;affaires&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentres, etc....
+        ///   Looks up a localized string similar to - centre d&apos;affaire&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc..
         /// </summary>
         public static string ReserveSpeech {
             get {
@@ -475,7 +475,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;br /&gt;- un café internet, un spot wifi&lt;br /&gt;- un espace voyageur, un espace publique numérique&lt;br /&gt;- une bibliotèque, un musée, etc....
+        ///   Looks up a localized string similar to - café internet, spot wifi&lt;br /&gt;- espace voyageur, espace publique numérique&lt;br /&gt;- bibliotèque, musée, etc..
         /// </summary>
         public static string SearchSpeech {
             get {

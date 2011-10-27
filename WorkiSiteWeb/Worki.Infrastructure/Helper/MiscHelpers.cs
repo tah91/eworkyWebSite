@@ -19,6 +19,7 @@ namespace Worki.Infrastructure.Helpers
 		{
 			public const string EmailView = "Email";
 			public const string EmailOwnerView = "EmailOwner";
+        public const string FacebookMail = "FacebookMail";
 			public const string ListLocMailView = "ListLocMail";
 			public const string ContactDisplayName = "eWorky Team";
 			public const string WebsiteAddress = "www.eworky.com";
@@ -253,6 +254,28 @@ namespace Worki.Infrastructure.Helpers
 			// remove trailing dashes
 			title = title.TrimEnd(new[] { '-' });
 			return title;
+        }
+
+        public static string GeneratePassword(int Length)
+        {
+            return GeneratePassword(Length, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray());
+        }
+
+        public static string GeneratePassword(int Length, bool CaseSensitive)
+        {
+            if (CaseSensitive)
+                return GeneratePassword(Length);
+            else
+                return GeneratePassword(Length, "0123456789abcdefghijklmnopqrstuvwxyz".ToCharArray());
+        }
+
+        public static string GeneratePassword(int Length, char[] Chars)
+        {
+            string Password = string.Empty;
+            System.Random rnd = new System.Random();
+            for (int i = 0; i < Length; i++)
+                Password += Chars[rnd.Next(Chars.Length)];
+            return Password;
 		}
     }
 }

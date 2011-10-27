@@ -75,6 +75,30 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Worki.Resources.Views.Account.AccountString.EnterFollowingLetters
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.Captcha("myCaptcha") 
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.Label(Worki.Resources.Views.Account.AccountString.ValidationLetter)<span class="blue">*</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBox("attempt") 
+                            </div>
+                        </td>
+                    </tr>
                 </table>
                 </div>
                 <div class="float-right">
