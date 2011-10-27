@@ -54,8 +54,6 @@ namespace Worki.Data.Models
 
 		#region Static Members
 
-		//public static Dictionary<int, string> LocalisationFeatureDict = MiscHelpers.GetEnumDescriptors(typeof(Feature));
-
 		public static string GetFeatureDisplayName(Feature feature)
 		{
 			var enumType = typeof(Feature);
@@ -69,47 +67,6 @@ namespace Worki.Data.Models
 			}
 			return enumStr;
 		}
-
-
-		//to remove
-		//public static Dictionary<FeatureType, string> LocalisationFeatureTypes = new Dictionary<FeatureType, string>()
-		//{
-		//    { FeatureType.General, string.Empty},
-		//    { FeatureType.WorkingPlace, Worki.Resources.Models.Localisation.Localisation.WorkingPlace},
-		//    { FeatureType.MeetingRoom, Worki.Resources.Models.Localisation.Localisation.MeetingRoom},
-		//    { FeatureType.SeminarRoom, Worki.Resources.Models.Localisation.Localisation.SeminarRoom},
-		//    { FeatureType.VisioRoom, Worki.Resources.Models.Localisation.Localisation.VisioRoom}
-		//};
-
-		//public static string GetFeatureDesc(Feature feat, FeatureType featType)
-		//{
-		//    var first = Enum.GetName(typeof(Feature), feat);
-		//    var sec = Enum.GetName(typeof(FeatureType), featType);
-		//    return first + "-" + sec;
-		//}
-
-		//public static bool GetFeatureDesc(string str, out KeyValuePair<int, int> toFill)
-		//{
-		//    toFill = new KeyValuePair<int, int>(0, 0);
-		//    var strs = str.Split('-');
-		//    if (strs.Length != 2)
-		//        return false;
-		//    var first = strs[0];
-		//    var sec = strs[1];
-		//    if (string.IsNullOrEmpty(first) || string.IsNullOrEmpty(sec))
-		//        return false;
-		//    try
-		//    {
-		//        var firstVal = (int)Enum.Parse(typeof(Feature), first);
-		//        var secVal = (int)Enum.Parse(typeof(FeatureType), sec);
-		//        toFill = new KeyValuePair<int, int>(firstVal, secVal);
-		//    }
-		//    catch (ArgumentException)
-		//    {
-		//        return false;
-		//    }
-		//    return true;
-		//}
 
 		#endregion
 
@@ -146,120 +103,6 @@ namespace Worki.Data.Models
 
 		#region Features
 
-		public static List<Feature> AvoidPeriods = new List<Feature>()
-		{
-			Feature.AvoidMorning,
-			Feature.AvoidLunch, 
-			Feature.AvoidAfternoom, 
-			Feature.AvoidEvening
-		};
-
-		public static List<Feature> Characteristics = new List<Feature>()
-		{
-			Feature.Handicap,
-			Feature.Wifi_Free, 
-			Feature.Wifi_Not_Free, 
-			Feature.Parking,
-			Feature.Outlet,
-			Feature.FastInternet, 
-			Feature.SafeStorage, 
-			Feature.Coffee,
-			Feature.Restauration,
-			Feature.AC, 
-			Feature.ErgonomicFurniture, 
-			Feature.Shower,
-			Feature.Newspaper,
-			Feature.TV
-		};
-
-		public static List<Feature> Services = new List<Feature>()
-		{
-			Feature.Domiciliation,
-			Feature.Secretariat, 
-			Feature.Courier, 
-			Feature.Printer,
-			Feature.Computers,
-			Feature.Archiving, 
-			Feature.Concierge, 
-			Feature.Pressing,
-			Feature.ComputerHelp,
-			Feature.RoomService, 
-			Feature.Community,
-			Feature.RelaxingArea
-		};
-
-		public static List<Feature> BuisnessLounge = new List<Feature>()
-        {
-            Feature.OpenToAll,
-            Feature.ReservedToClients,
-            Feature.ForCardOwner
-        };
-
-        public static List<Feature> Workstation = new List<Feature>()
-        {
-            Feature.Sector,
-            Feature.NotSectorial,
-            Feature.CoworkingVibe
-        };
-
-        public static List<Feature> Desktop = new List<Feature>()
-        {
-            Feature.Desktop10_25,
-            Feature.Desktop25_50,
-            Feature.Desktop50_100,
-            Feature.Desktop100Plus,
-            Feature.Equipped,
-            Feature.AvailableNow,
-            Feature.AllInclusive,
-            Feature.FlexibleContract,
-            Feature.MinimalPeriod
-        };
-
-        public static List<Feature> MeetingRoom = new List<Feature>() 
-        {
-            Feature.Room2_7,
-            Feature.Room7_20,
-            Feature.Room20_plus,
-            Feature.Audio,
-            Feature.Visio,
-            Feature.Projector,
-            Feature.VideoProj,
-            Feature.Paperboard,
-            Feature.Internet,
-            Feature.PhoneJack,
-            Feature.Drinks
-        };
-
-        public static List<Feature> SeminarRoom = new List<Feature>() 
-        {
-            Feature.Room20_100,
-            Feature.Room100_250,
-            Feature.Room250_1000,
-            Feature.Room1000_plus,
-            Feature.Scene,
-            Feature.Micro,
-            Feature.Picturesque,
-            Feature.Welcoming,
-            Feature.Accommodation,
-            Feature.Lighting,
-            Feature.Sound,
-            Feature.Catering
-        };
-
-        public static List<Feature> VisioRoom = new List<Feature>() 
-        {
-            Feature.Room1_4,
-            Feature.Room5_10,
-            Feature.Room10_Plus,
-            Feature.Visio,
-            Feature.VisioHD,
-            Feature.Telepresence,
-            Feature.Paperboard,
-            Feature.Internet,
-            Feature.PhoneJack,
-            Feature.Drinks
-        };
-
 		public List<Feature> GetFeaturesWithin(IEnumerable<Feature> toInclude)
 		{
 			var toRet = new List<Feature>();
@@ -268,15 +111,6 @@ namespace Worki.Data.Models
 					where toInclude.Contains((Feature)item.FeatureID)
 					select (Feature)item.FeatureID).ToList();
 		}
-
-		//public List<Feature> GetFeaturesOfType(FeatureType featureType, IEnumerable<Feature> toExclude = null)
-		//{
-		//    var toRet = new List<Feature>();
-		//    var featureToCheck = toExclude == null ? LocalisationFeatures : LocalisationFeatures.Where(f => !toExclude.Contains((Feature)f.FeatureID));
-		//    if (featureToCheck == null)
-		//        return toRet;
-		//    return (from item in featureToCheck where item.OfferID == (int)featureType select (Feature)item.FeatureID).ToList();
-		//}
 
 		public bool HasFeatureIn(List<Feature> features)
 		{
@@ -289,29 +123,6 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
-
-		//public bool HasFeature(Feature feature, FeatureType featureType)
-		//{
-		//    return HasFeature((int)feature, (int)featureType);
-		//}
-
-		//public bool HasFeature(int feature, int featureType)
-		//{
-		//    var equalityComparer = new LocalisationFeatureEqualityComparer();
-		//    return LocalisationFeatures.Contains(new LocalisationFeature { FeatureID = feature, OfferID = featureType }, equalityComparer);
-		//}
-
-		/// <summary>
-		/// Check if localisation have offer except a given offer
-		/// </summary>
-		/// <param name="offer">offer to exclude</param>
-		/// <returns>true if it is the case</returns>
-		//public bool HasOfferExcept(LocalisationOffer offer)
-		//{
-		//    var feature = GetFeatureFromOfferType((int)offer);
-		//    var types = Localisation.OfferTypes.Except(new List<int> { (int)feature }).ToList();
-		//    return LocalisationFeatures.Where(f => types.Contains(f.FeatureID)).Count() > 0;
-		//}
 
 		#endregion
 
@@ -434,17 +245,6 @@ namespace Worki.Data.Models
 			}
 		}
 
-		//public static List<int> OfferTypes = new List<int>()
-		//{
-		//    (int)Feature.BuisnessLounge,
-		//    (int)Feature.Workstation,
-		//    (int)Feature.MeetingRoom,
-		//    (int)Feature.SeminarRoom,
-		//    (int)Feature.VisioRoom,
-		//    (int)Feature.Desktop,
-		//    (int)Feature.FreeArea
-		//};
-
 		public static Dictionary<int, string> GetOfferTypes()
 		{
 			return OfferTypes.ToDictionary(o => o, o => GetOfferType(o));
@@ -459,9 +259,6 @@ namespace Worki.Data.Models
 		public bool HasOffer(LocalisationOffer offer)
 		{
 			return Offers.Where(o => o.Type == (int)offer).Count() != 0;
-			//var featureType = (FeatureType)GetFeatureTypeFromOfferType((int)offer);
-			//var feature = GetFeatureFromOfferType((int)offer);
-			//return HasFeature(feature, featureType);
 		}
 
 		/// <summary>
@@ -471,7 +268,6 @@ namespace Worki.Data.Models
 		public bool HasOffer()
 		{
 			return Offers.Count != 0;
-			//return LocalisationFeatures.Where(f => Localisation.OfferTypes.Contains(f.FeatureID)).Count() > 0;
 		}
 
 		#endregion
@@ -692,9 +488,9 @@ namespace Worki.Data.Models
 		public string GetAvoidString()
 		{
 			var toRet = string.Empty;
-			if (!HasFeatureIn(AvoidPeriods))
+			if (!HasFeatureIn(FeatureHelper.AvoidPeriods))
 				return toRet;
-			foreach (var item in AvoidPeriods)
+			foreach (var item in FeatureHelper.AvoidPeriods)
 			{
 				if (HasFeature(item))
 					toRet += Localisation.GetFeatureDisplayName(item).ToLower() + ", ";

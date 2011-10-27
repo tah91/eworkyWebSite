@@ -1069,7 +1069,7 @@ namespace Worki.Web.Controllers
                         var offer = new Offer();
                         offer.Type = (int)LocalisationOffer.BuisnessLounge;
                         offer.Name = Localisation.GetOfferType((int)LocalisationOffer.BuisnessLounge) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(Localisation.BuisnessLounge);
+						var features = item.GetFeaturesWithin(FeatureHelper.BuisnessLounge);
                         foreach (var f in features)
                         {
                             offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
@@ -1083,7 +1083,7 @@ namespace Worki.Web.Controllers
                         var offer = new Offer();
                         offer.Type = (int)LocalisationOffer.Workstation;
                         offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Workstation) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(Localisation.Workstation);
+                        var features = item.GetFeaturesWithin(FeatureHelper.Workstation);
                         foreach (var f in features)
                         {
                             offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
@@ -1097,7 +1097,7 @@ namespace Worki.Web.Controllers
                         var offer = new Offer();
                         offer.Type = (int)LocalisationOffer.Desktop;
                         offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Desktop) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(Localisation.Desktop);
+                        var features = item.GetFeaturesWithin(FeatureHelper.Desktop);
                         foreach (var f in features)
                         {
                             offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
@@ -1111,7 +1111,7 @@ namespace Worki.Web.Controllers
                         var offer = new Offer();
                         offer.Type = (int)LocalisationOffer.MeetingRoom;
                         offer.Name = Localisation.GetOfferType((int)LocalisationOffer.MeetingRoom) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(Localisation.MeetingRoom);
+                        var features = item.GetFeaturesWithin(FeatureHelper.MeetingRoom);
                         foreach (var f in features)
                         {
                             offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
@@ -1125,7 +1125,7 @@ namespace Worki.Web.Controllers
                         var offer = new Offer();
                         offer.Type = (int)LocalisationOffer.SeminarRoom;
                         offer.Name = Localisation.GetOfferType((int)LocalisationOffer.SeminarRoom) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(Localisation.SeminarRoom);
+                        var features = item.GetFeaturesWithin(FeatureHelper.SeminarRoom);
                         foreach (var f in features)
                         {
                             offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
@@ -1139,7 +1139,7 @@ namespace Worki.Web.Controllers
                         var offer = new Offer();
                         offer.Type = (int)LocalisationOffer.VisioRoom;
                         offer.Name = Localisation.GetOfferType((int)LocalisationOffer.VisioRoom) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(Localisation.VisioRoom);
+                        var features = item.GetFeaturesWithin(FeatureHelper.VisioRoom);
                         foreach (var f in features)
                         {
                             offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });

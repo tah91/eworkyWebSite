@@ -42,7 +42,7 @@
             </div>
             }
             @{
-				var generalFeatures = Model.GetFeaturesWithin(Localisation.Characteristics);
+				var generalFeatures = Model.GetFeaturesWithin(FeatureHelper.Characteristics);
             }
             <div class="localisationDescription contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.Description</h3>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             @{
-                var workingPlaceFeatures = Model.GetFeaturesWithin(Localisation.Services);
+                var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
             }
             @if (workingPlaceFeatures.Count > 0)
             {

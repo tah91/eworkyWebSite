@@ -46,11 +46,44 @@ namespace Worki.Web.ModelBinder
 						loc.LocalisationFeatures.Remove(feature);
 					}
 				}
-                var hasFeature = controllerContext.HttpContext.Request.Form[FeatureHelper.GetStringId(parsedEnum, FeatureHelper.LocalisationPrefix)] as string;
-				if (!string.IsNullOrEmpty(hasFeature) && hasFeature.ToLowerInvariant().Contains("true"))
+				var fieldType = FeatureHelper.GetFieldType(parsedEnum);
+				var fieldValue = controllerContext.HttpContext.Request.Form[FeatureHelper.GetStringId(parsedEnum, FeatureHelper.LocalisationPrefix)] as string;
+				if (string.IsNullOrEmpty(fieldValue))
+					continue;
+
+				switch (fieldType)
 				{
-					var feature = new LocalisationFeature { FeatureID = (int)parsedEnum };
-					loc.LocalisationFeatures.Add(feature);
+					case FeatureHelper.FeatureField.String:
+						{
+							var feature = new LocalisationFeature { FeatureID = (int)parsedEnum, StringValue = fieldValue };
+							loc.LocalisationFeatures.Add(feature);
+							break;
+						}
+					case FeatureHelper.FeatureField.Number:
+						{
+							try
+							{
+								var numberFieldValue = decimal.Parse(fieldValue);
+								var feature = new LocalisationFeature { FeatureID = (int)parsedEnum, DecimalValue = numberFieldValue };
+								loc.LocalisationFeatures.Add(feature);
+							}
+							catch (Exception)
+							{
+								break;
+							}
+							break;
+						}
+					case FeatureHelper.FeatureField.Bool:
+					default:
+						{
+
+							if (!string.IsNullOrEmpty(fieldValue) && fieldValue.ToLowerInvariant().Contains("true"))
+							{
+								var feature = new LocalisationFeature { FeatureID = (int)parsedEnum };
+								loc.LocalisationFeatures.Add(feature);
+							}
+							break;
+						}
 				}
 			}
 
