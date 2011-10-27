@@ -16,8 +16,8 @@ namespace Worki.Data.Models
     {
         public Offer()
         {
-            this.OfferFeatures = new HashSet<OfferFeature>();
             this.OfferFiles = new HashSet<OfferFile>();
+            this.OfferFeatures = new HashSet<OfferFeature>();
     		OnInitialized();
         }
     
@@ -30,12 +30,13 @@ namespace Worki.Data.Models
         public int LocalisationId { get; set; }
         public int Type { get; set; }
         public string Name { get; set; }
+        public int Capacity { get; set; }
     
         // Navigation properties
     
         public virtual Localisation Localisation { get; set; }
-        public virtual ICollection<OfferFeature> OfferFeatures { get; set; }
         public virtual ICollection<OfferFile> OfferFiles { get; set; }
+        public virtual ICollection<OfferFeature> OfferFeatures { get; set; }
     
     }
 }

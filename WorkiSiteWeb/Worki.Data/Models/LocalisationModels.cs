@@ -126,7 +126,7 @@ namespace Worki.Data.Models
 			var obj = LocalisationFeatures.FirstOrDefault(o => o.FeatureID == (int)feature);
 			if (obj == null)
 				return null;
-			return null;// obj.StringValue;
+			return obj.StringValue;
 		}
 
 		public decimal? GetNumberFeature(Feature feature)
@@ -134,7 +134,7 @@ namespace Worki.Data.Models
 			var obj = LocalisationFeatures.FirstOrDefault(o => o.FeatureID == (int)feature);
 			if (obj == null)
 				return null;
-			return null;// obj.DecimalValue;
+			return obj.DecimalValue;
 		}
 
 		#endregion

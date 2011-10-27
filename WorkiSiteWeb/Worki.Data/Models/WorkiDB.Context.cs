@@ -40,7 +40,7 @@ namespace Worki.Data.Models
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<WelcomePeople> WelcomePeoples { get; set; }
         public DbSet<Offer> Offers { get; set; }
-        public DbSet<OfferFeature> OfferFeatures { get; set; }
         public DbSet<OfferFile> OfferFiles { get; set; }
+        public DbSet<OfferFeature> OfferFeatures { get; set; }
     }
 }

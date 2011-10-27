@@ -20,6 +20,8 @@ namespace Worki.Data.Models
         public int LocalisationID { get; set; }
         public int FeatureID { get; set; }
         public int OfferID { get; set; }
+        public string StringValue { get; set; }
+        public Nullable<decimal> DecimalValue { get; set; }
     
         // Navigation properties
     
