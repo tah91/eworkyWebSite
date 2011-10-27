@@ -54,7 +54,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.DropDownList("Localisation.TypeValue", Model.Types, new { @class = "typeSelect" })
-                                        @Html.ValidationMessage("TypeValue", "")
                                     </div>
                                 </td>
                             </tr>
@@ -157,7 +156,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Localisation.Name, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.PlacesExample })
-                                        @Html.ValidationMessage("Name", "")
                                     </div>
                                 </td>
                             </tr>
@@ -180,7 +178,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Localisation.Adress)
-                                        @Html.ValidationMessage("Adress", "")
                                     </div>
                                 </td>
                             </tr>
@@ -193,7 +190,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Localisation.City)
-                                        @Html.ValidationMessage("City", "")
                                     </div>
                                 </td>
                             </tr>
@@ -206,7 +202,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Localisation.PostalCode)
-                                        @Html.ValidationMessage("PostalCode", "")
                                     </div>
                                 </td>
                             </tr>
@@ -219,7 +214,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Localisation.Country)
-                                        @Html.ValidationMessage("Country", "")
                                     </div>
                                 </td>
                             </tr>
@@ -235,7 +229,6 @@
                                             <td>
                                                 <div class="editor-field">
                                                     @Html.TextBoxFor(model => model.Localisation.PhoneNumber)
-                                                    @Html.ValidationMessage("PhoneNumber", "")
                                                 </div>
                                             </td>
                                             <td>
@@ -246,7 +239,6 @@
                                             <td>
                                                 <div class="editor-field">
                                                     @Html.TextBoxFor(model => model.Localisation.Fax)
-                                                    @Html.ValidationMessage("Fax", "")
                                                 </div>
                                             </td>
                                         </tr>
@@ -262,7 +254,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Localisation.Mail)
-                                        @Html.ValidationMessage("Mail", "")
                                     </div>
                                 </td>
                             </tr>
@@ -275,7 +266,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextBoxFor(model => model.Localisation.WebSite)
-                                        @Html.ValidationMessage("WebSite", "")
                                     </div>
                                 </td>
                             </tr>
@@ -288,7 +278,6 @@
                                 <td>
                                     <div class="editor-field">
                                         @Html.TextAreaFor(model => model.Localisation.Description)
-                                        @Html.ValidationMessage("Description", "")
                                     </div>
                                 </td>
                             </tr>
@@ -488,7 +477,6 @@
                         <td>
                             <div class="editor-field">
                                 @Html.TextBoxFor(model => model.Localisation.PublicTransportation, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.SubwayExample })
-                                @Html.ValidationMessage("PublicTransportation", "")
                             </div>
                         </td>
                     </tr>
@@ -501,7 +489,6 @@
                         <td>
                             <div class="editor-field">
                                 @Html.TextBoxFor(model => model.Localisation.Station, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.SncfExample })
-                                @Html.ValidationMessage("Station", "")
                             </div>
                         </td>
                     </tr>
@@ -514,7 +501,6 @@
                         <td>
                             <div class="editor-field">
                                 @Html.TextBoxFor(model => model.Localisation.RoadAccess, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.RoadExample })
-                                @Html.ValidationMessage("RoadAccess", "")
                             </div>
                         </td>
                     </tr>
@@ -570,7 +556,6 @@
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
                                     @Html.TextBox("Localisation.MonClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonClose), new { placeholder = "Ex : 18:00" })
-                                    @Html.ValidationMessage("MonClose", "")
                                 </div>
                             </td>
                         </tr>
@@ -581,25 +566,21 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.TueOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueOpen), new { placeholder = "Ex : 9:00" })
-                                    @Html.ValidationMessage("TueOpen", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.TueClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueClose2))
-                                    @Html.ValidationMessage("TueClose2", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.TueOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueOpen2))
-                                    @Html.ValidationMessage("TueOpen2", "")
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.TueClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueClose), new { placeholder = "Ex : 22:00" })
-                                    @Html.ValidationMessage("TueClose", "")
                                 </div>
                             </td>
                         </tr>
@@ -610,25 +591,21 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.WedOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedOpen))
-                                    @Html.ValidationMessage("WedOpen", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.WedClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedClose2))
-                                    @Html.ValidationMessage("WedClose2", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.WedOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedOpen2))
-                                    @Html.ValidationMessage("WedOpen2", "")
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.WedClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedClose))
-                                    @Html.ValidationMessage("WedClose", "")
                                 </div>
                             </td>
                         </tr>
@@ -639,25 +616,21 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.ThuOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuOpen))
-                                    @Html.ValidationMessage("ThuOpen", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.ThuClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuClose2))
-                                    @Html.ValidationMessage("ThuClose2", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.ThuOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuOpen2))
-                                    @Html.ValidationMessage("ThuOpen2", "")
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.ThuClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuClose))
-                                    @Html.ValidationMessage("ThuClose", "")
                                 </div>
                             </td>
                         </tr>
@@ -668,25 +641,21 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.FriOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriOpen))
-                                    @Html.ValidationMessage("FriOpen", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.FriClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriClose2))
-                                    @Html.ValidationMessage("FriClose2", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.FriOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriOpen2))
-                                    @Html.ValidationMessage("FriOpen2", "")
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.FriClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriClose))
-                                    @Html.ValidationMessage("FriClose", "")
                                 </div>
                             </td>
                         </tr>
@@ -697,25 +666,21 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SatOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatOpen))
-                                    @Html.ValidationMessage("SatOpen", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SatClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatClose2))
-                                    @Html.ValidationMessage("SatClose2", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SatOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatOpen2))
-                                    @Html.ValidationMessage("SatOpen2", "")
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SatClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatClose))
-                                    @Html.ValidationMessage("SatClose", "")
                                 </div>
                             </td>
                         </tr>
@@ -726,25 +691,21 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SunOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunOpen))
-                                    @Html.ValidationMessage("SunOpen", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SunClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunClose2))
-                                    @Html.ValidationMessage("SunClose2", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SunOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunOpen2))
-                                    @Html.ValidationMessage("SunOpen2", "")
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBox("Localisation.SunClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunClose))
-                                    @Html.ValidationMessage("SunClose", "")
                                 </div>
                             </td>
                         </tr>

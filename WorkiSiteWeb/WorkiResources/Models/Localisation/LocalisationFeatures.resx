@@ -346,4 +346,52 @@
   <data name="AllOffers" xml:space="preserve">
     <value>Sélectionnez une offre</value>
   </data>
+  <data name="AllInclusive" xml:space="preserve">
+    <value>Tout compris (charges, taxes, nettoyage, etc.)</value>
+  </data>
+  <data name="AvailableNow" xml:space="preserve">
+    <value>Disponibilité immédiate</value>
+  </data>
+  <data name="CoffeePrice" xml:space="preserve">
+    <value>Prix du café</value>
+  </data>
+  <data name="CoworkingVibe" xml:space="preserve">
+    <value>Ambiance coworking</value>
+  </data>
+  <data name="Desktop100Plus" xml:space="preserve">
+    <value>&gt; 100 m2</value>
+  </data>
+  <data name="Desktop10_25" xml:space="preserve">
+    <value>De 10 à 25 m2</value>
+  </data>
+  <data name="Desktop25_50" xml:space="preserve">
+    <value>De 25 à 50 m2</value>
+  </data>
+  <data name="Desktop50_100" xml:space="preserve">
+    <value>De 50 à 100 m2</value>
+  </data>
+  <data name="Equipped" xml:space="preserve">
+    <value>Equipés et câblés</value>
+  </data>
+  <data name="FlexibleContract" xml:space="preserve">
+    <value>Contrats flexibles</value>
+  </data>
+  <data name="ForCardOwner" xml:space="preserve">
+    <value>Accès réservé aux détenteurs de la carte</value>
+  </data>
+  <data name="MinimalPeriod" xml:space="preserve">
+    <value>Durée minimale</value>
+  </data>
+  <data name="NotSectorial" xml:space="preserve">
+    <value>Non sectoriel</value>
+  </data>
+  <data name="OpenToAll" xml:space="preserve">
+    <value>Ouvert à tous</value>
+  </data>
+  <data name="ReservedToClients" xml:space="preserve">
+    <value>Accès réservé aux clients</value>
+  </data>
+  <data name="Sector" xml:space="preserve">
+    <value>Sectoriel</value>
+  </data>
 </root>
