@@ -1050,8 +1050,10 @@ namespace Worki.Web.Controllers
             var newofferSuffix = " 1";
             try
             {
+                var count = 0;
                 foreach (var item in all)
                 {
+                    count++;
                     //coffee price 
                     if (item.LocalisationData != null && item.LocalisationData.CoffeePrice.HasValue && item.LocalisationData.CoffeePrice != 0)
                     {
@@ -1146,6 +1148,8 @@ namespace Worki.Web.Controllers
                         strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
                     }
                 }
+
+                context.Commit();
             }
             catch (Exception ex)
             {
@@ -1153,7 +1157,8 @@ namespace Worki.Web.Controllers
                 context.Complete();
             }
 
-            return Content(strBuilder.ToString());
+            var content = MiscHelpers.Nl2Br(strBuilder.ToString());
+            return Content(content);
         }
 
         #endregion
