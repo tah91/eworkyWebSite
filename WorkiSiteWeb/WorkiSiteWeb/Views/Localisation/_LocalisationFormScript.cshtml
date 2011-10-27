@@ -99,24 +99,24 @@
 //		ResetOfferCheckBox();
 //	});
 
-    $("#Wifi_Free-General").click(function () {
-    var isChecked = $("#Wifi_Free-General:checked").val();
+    $("#f_Wifi_Free").click(function () {
+    var isChecked = $("#f_Wifi_Free:checked").val();
     if (isChecked == 'true') {
-        $("#Wifi_Not_Free-General").attr('checked', false);
+        $("#f_Wifi_Not_Free").attr('checked', false);
         }
     });
 
-    $("#Wifi_Not_Free-General").click(function () {
-    var isChecked = $("#Wifi_Not_Free-General:checked").val();
+    $("#f_Wifi_Not_Free").click(function () {
+    var isChecked = $("#f_Wifi_Not_Free:checked").val();
     if (isChecked == 'true') {
-        $("#Wifi_Free-General").attr('checked', false);
+        $("#f_Wifi_Free").attr('checked', false);
         }
     });
 
 	InitOpenning = function () {
 		// init
-		var acces24 = $("#Access24-General:checked").val();
-		var isLunchClose = $("#LunchClose-General:checked").val();
+		var acces24 = $("#f_Access24:checked").val();
+		var isLunchClose = $("#f_LunchClose:checked").val();
 
 		if (acces24 == 'true') {
 			$(".editOpenning").hide();
@@ -138,8 +138,8 @@
 	InitOpenning();
 
 	// event
-	$("#Access24-General").click(function () {
-		var is24 = $("#Access24-General:checked").val();
+	$("#f_Access24").click(function () {
+		var is24 = $("#f_Access24:checked").val();
 		if (is24 == 'true') {
 			$(".editOpenning").hide();
 			$("#lunchCloseChecked").hide();
@@ -150,8 +150,8 @@
 		}
 	});
 
-	$("#LunchClose-General").click(function () {
-		var isLunchClose = $("#LunchClose-General:checked").val();
+	$("#f_LunchClose").click(function () {
+		var isLunchClose = $("#f_LunchClose:checked").val();
 		if (isLunchClose == 'true') {
 			$(".lunchclose").show();
 		}
