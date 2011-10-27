@@ -115,6 +115,11 @@ namespace Worki.Data.Models
 
 		#region IFeatureContainer
 
+        public string GetPrefix()
+        {
+            return FeatureHelper.LocalisationPrefix;
+        }
+
 		public bool HasFeature(Feature feature)
 		{
 			var equalityComparer = new LocalisationFeatureEqualityComparer();

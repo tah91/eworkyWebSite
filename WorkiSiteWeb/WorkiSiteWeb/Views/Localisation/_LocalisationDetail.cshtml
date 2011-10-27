@@ -316,7 +316,7 @@
 				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
 				@if (Model.HasFeature(Feature.Access24))
 				{
-					@Html.FeatureLabelFor2(Feature.Access24)
+					@Html.FeatureLabelFor2(Feature.Access24, Model)
 				}
 				else if (Model.HasOpenningTimes())
 				{

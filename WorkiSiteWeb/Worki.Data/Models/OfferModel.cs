@@ -30,6 +30,28 @@ namespace Worki.Data.Models
 		public const string LocalisationPrefix = "f_";
 		public const string OfferPrefix = "o_";
 
+        /// <summary>
+        /// Get an unique id for form purpose
+        /// </summary>
+        /// <param name="feature"></param>
+        public static string GetStringId(Feature feature, string prefix)
+        {
+            return prefix + Enum.GetName(typeof(Feature), feature);
+        }
+
+        /// <summary>
+        /// Get corresponding Feature from stringId
+        /// </summary>
+        /// <param name="feature"></param>
+        public static string ParseStringId(string strId, string prefix)
+        {
+            var str = strId.Replace(prefix, string.Empty);
+            Feature parsedEnum;
+            if (!Enum.TryParse<Feature>(str, true, out parsedEnum))
+                return null;
+            return str;
+        }
+
 		/// <summary>
 		/// return a string for the feature
 		/// to put in url query string
@@ -79,6 +101,21 @@ namespace Worki.Data.Models
 					yield return id;
 			}
 		}
+
+        /// <summary>
+        /// convert a list of feature url to the corresponding feature
+        /// </summary>
+        /// <param name="strings">the feature urls</param>
+        /// <returns>list of feature</returns>
+        public static IEnumerable<string> GetFeatureStrings(List<string> strings, string prefix)
+        {
+            foreach (var item in strings)
+            {
+                var str = ParseStringId(item, prefix);
+                if (!string.IsNullOrEmpty(str))
+                    yield return str;
+            }
+        }
 	}
 
 	/// <summary>
@@ -86,6 +123,12 @@ namespace Worki.Data.Models
 	/// </summary>
 	public interface IFeatureContainer
 	{
+        /// <summary>
+        /// Get internal prefix depending on container
+        /// </summary>
+        /// <returns>the prefix</returns>
+        string GetPrefix();
+
 		/// <summary>
 		/// Tell if it has a given feature
 		/// </summary>
@@ -193,6 +236,11 @@ namespace Worki.Data.Models
 		#endregion
 
 		#region IFeatureContainer
+
+        public string GetPrefix()
+        {
+            return FeatureHelper.OfferPrefix;
+        }
 
 		public bool HasFeature(Feature feature)
 		{

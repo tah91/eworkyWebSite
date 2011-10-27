@@ -127,8 +127,6 @@ namespace Worki.Data.Models
 					break;
 			}
 
-			//build an offerlist which intersect this from offer repository
-
 			var neededLocalisationFeatures = (from item in criteria.LocalisationData.LocalisationFeatures select item.FeatureID).ToList();
 
 			idsToLoad = locProjectionList.Where(loc =>
@@ -148,6 +146,36 @@ namespace Worki.Data.Models
 					}
 					return true;
 				}).Select(loc => loc.ID).ToList();
+
+            //build an offerlist which contains correct ids
+            if (criteria.OfferData.OfferFeatures.Count != 0)
+            {
+                var offers = _Context.Offers.AsQueryable();
+                //all offers from the localisations
+                offers = offers.Where(o => idsToLoad.Contains(o.LocalisationId));
+
+                var offerProjectionList = (from item in offers
+                                           select new
+                                           {
+                                               ID = item.Id,
+                                               LocID = item.LocalisationId,
+                                               OfferType = item.Type,
+                                               Features = (from f in item.OfferFeatures select f.FeatureId)
+                                           }).ToList();
+
+                var neededOfferFeatures = (from item in criteria.OfferData.OfferFeatures select item.FeatureId).ToList();
+
+                //all localisation which offer match needed features
+                idsToLoad = offerProjectionList.Where(offer =>
+                {
+                    foreach (var item in neededOfferFeatures)
+                    {
+                        if (!offer.Features.Contains(item))
+                            return false;
+                    }
+                    return true;
+                }).Select(offer => offer.LocID).ToList();
+            }
 
 			return _Context.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList();
 		}

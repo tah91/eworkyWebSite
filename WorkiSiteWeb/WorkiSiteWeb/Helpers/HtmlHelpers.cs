@@ -129,14 +129,14 @@ namespace Worki.Web.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
-		public static MvcHtmlString FeatureLabelFor2(this HtmlHelper html, Feature value)
+		public static MvcHtmlString FeatureLabelFor2(this HtmlHelper html, Feature value, IFeatureContainer offer)
         {
-			return html.LabelFor(Localisation.GetFeatureDisplayName(value), Enum.GetName(typeof(Feature), value));
+            return html.LabelFor(Localisation.GetFeatureDisplayName(value), FeatureHelper.GetStringId(value, offer.GetPrefix()));
         }
 
 		public static MvcHtmlString FeatureCheckBox2(this HtmlHelper html, Feature value, IFeatureContainer offer)
 		{
-			return html.CheckBox(Enum.GetName(typeof(Feature), value), offer.HasFeature(value));
+            return html.CheckBox(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.HasFeature(value));
 		}
 
 		public static MvcHtmlString FeatureChecboxLabel2(this HtmlHelper html, Feature value, IFeatureContainer offer)
@@ -145,7 +145,7 @@ namespace Worki.Web.Helpers
 			TagBuilder tag = new TagBuilder("div");
 			tag.AddCssClass("editor-field");
 			var checkbox = html.FeatureCheckBox2(value, offer);
-			var label = html.FeatureLabelFor2(value);
+			var label = html.FeatureLabelFor2(value,offer);
 			tag.InnerHtml = checkbox.ToHtmlString() + label.ToHtmlString();
 			result.AppendLine(tag.ToString());
 			return MvcHtmlString.Create(result.ToString());
@@ -153,18 +153,18 @@ namespace Worki.Web.Helpers
 
 		public static MvcHtmlString FeatureStringTextBox2(this HtmlHelper html, Feature value, IFeatureContainer offer, object htmlAttributes = null)
 		{
-			return html.TextBox(Enum.GetName(typeof(Feature), value), offer.GetStringFeature(value), htmlAttributes);
+            return html.TextBox(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.GetStringFeature(value), htmlAttributes);
 		}
 
 		public static MvcHtmlString FeatureNumberTextBox2(this HtmlHelper html, Feature value, IFeatureContainer offer, object htmlAttributes = null)
 		{
-			return html.TextBox(Enum.GetName(typeof(Feature), value), offer.GetNumberFeature(value), htmlAttributes);
+            return html.TextBox(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.GetNumberFeature(value), htmlAttributes);
 		}
 
-		public static MvcHtmlString FeatureHidden2(this HtmlHelper html, Feature value, IFeatureContainer offer)
-		{
-			return html.Hidden(Enum.GetName(typeof(Feature), value), offer.HasFeature(value));
-		}
+        public static MvcHtmlString FeatureHidden2(this HtmlHelper html, Feature value, IFeatureContainer offer)
+        {
+            return html.Hidden(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.HasFeature(value));
+        }
 
 		//public static MvcHtmlString FeatureLabelFor(this HtmlHelper html, Feature value, FeatureType valueType)
 		//{

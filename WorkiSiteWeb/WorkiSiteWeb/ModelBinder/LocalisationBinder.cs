@@ -33,7 +33,8 @@ namespace Worki.Web.ModelBinder
 
 			//handle features
 			var keys = controllerContext.HttpContext.Request.Form.AllKeys;
-			foreach (var key in keys)
+            var locFeatureKeys = FeatureHelper.GetFeatureStrings(controllerContext.HttpContext.Request.Form.AllKeys.ToList(), FeatureHelper.LocalisationPrefix);
+            foreach (var key in locFeatureKeys)
 			{
 				Feature parsedEnum;
 				if (!Enum.TryParse<Feature>(key, true, out parsedEnum))
@@ -45,17 +46,13 @@ namespace Worki.Web.ModelBinder
 						loc.LocalisationFeatures.Remove(feature);
 					}
 				}
-				var hasFeature = controllerContext.HttpContext.Request.Form[key] as string;
+                var hasFeature = controllerContext.HttpContext.Request.Form[FeatureHelper.GetStringId(parsedEnum, FeatureHelper.LocalisationPrefix)] as string;
 				if (!string.IsNullOrEmpty(hasFeature) && hasFeature.ToLowerInvariant().Contains("true"))
 				{
 					var feature = new LocalisationFeature { FeatureID = (int)parsedEnum };
 					loc.LocalisationFeatures.Add(feature);
 				}
 			}
-			//if (bindingContext.ModelName == "localisation" && !loc.HasOffer())
-			//{
-			//    bindingContext.ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.GiveMinADate);
-			//}
 
 			//handle images
 			loc.LocalisationFiles.Clear();

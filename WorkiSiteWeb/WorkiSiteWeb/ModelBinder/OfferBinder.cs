@@ -33,7 +33,8 @@ namespace Worki.Web.ModelBinder
 
             //handle features
             var keys = controllerContext.HttpContext.Request.Form.AllKeys;
-			foreach (var key in keys)
+            var offerFeatureKeys = FeatureHelper.GetFeatureStrings(controllerContext.HttpContext.Request.Form.AllKeys.ToList(), FeatureHelper.OfferPrefix);
+            foreach (var key in offerFeatureKeys)
 			{
 				Feature parsedEnum;
 				if (!Enum.TryParse<Feature>(key, true, out parsedEnum))
@@ -46,7 +47,7 @@ namespace Worki.Web.ModelBinder
 					}
 				}
 				var fieldType = FeatureHelper.GetFieldType(parsedEnum);
-				var fieldValue = controllerContext.HttpContext.Request.Form[key] as string;
+                var fieldValue = controllerContext.HttpContext.Request.Form[FeatureHelper.GetStringId(parsedEnum, FeatureHelper.OfferPrefix)] as string;
 				if (string.IsNullOrEmpty(fieldValue))
 					continue;
 

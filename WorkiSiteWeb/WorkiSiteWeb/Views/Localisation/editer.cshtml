@@ -28,7 +28,7 @@
                                 <td>
                                     <div class="editor-label localisationOwnerField">
                                         @Html.FeatureCheckBox2(Feature.LocalisationOwner, Model.Localisation)
-                                        @Html.FeatureLabelFor2(Feature.LocalisationOwner)
+                                        @Html.FeatureLabelFor2(Feature.LocalisationOwner, Model.Localisation)
                                     </div>
                                 </td>
                             </tr>
@@ -75,7 +75,7 @@
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor2(Feature.FreeArea)
+                                                    @Html.FeatureLabelFor2(Feature.FreeArea, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
@@ -85,7 +85,7 @@
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor2(Feature.BuisnessLounge)
+                                                    @Html.FeatureLabelFor2(Feature.BuisnessLounge, Model.Localisation)
                                                 </div>
                                             </td>
                                         </tr>
@@ -107,7 +107,7 @@
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor2(Feature.MeetingRoom)
+                                                    @Html.FeatureLabelFor2(Feature.MeetingRoom, Model.Localisation)
                                                 </div>
                                             </td>
                                         </tr>
@@ -119,7 +119,7 @@
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor2(Feature.SeminarRoom)
+                                                    @Html.FeatureLabelFor2(Feature.SeminarRoom, Model.Localisation)
                                                 </div>
                                             </td>
                                             <td>
@@ -129,7 +129,7 @@
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor2(Feature.VisioRoom)
+                                                    @Html.FeatureLabelFor2(Feature.VisioRoom, Model.Localisation)
                                                 </div>
                                             </td>
                                         </tr>
@@ -141,7 +141,7 @@
                                             </td>
                                             <td>
                                                 <div class="editor-label">
-                                                    @Html.FeatureLabelFor2(Feature.Desktop)
+                                                    @Html.FeatureLabelFor2(Feature.Desktop, Model.Localisation)
                                                 </div>
                                             </td>
                                         </tr>
@@ -341,7 +341,7 @@
                         <ul>
                             <li>
                                 <div class="coffeePrice editor-label">
-                                    @Html.FeatureLabelFor2(Feature.CoffeePrice)
+                                    @Html.FeatureLabelFor2(Feature.CoffeePrice, Model.Localisation)
                                     @Html.FeatureNumberTextBox2(Feature.CoffeePrice, Model.Localisation, new { placeholder = "Ex : 1.20" })&nbsp;&nbsp;&#8364;
                                 </div>
                             </li>
