@@ -53,7 +53,6 @@
                         <div class="block">
                             <div class="editor-field">
                                 @Html.TextBoxFor(model => model.Criteria.Place)
-                                @Html.ValidationMessage(Worki.Resources.Views.Home.HomeString.Location, "")
                             </div>
                         </div>
                     </div>
@@ -63,7 +62,6 @@
                         <div class="block">
                             <div class="editor-field">
                                 @Html.DropDownListFor(m=>m.Criteria.OfferData.Type, Model.Offers, new { @class = "offerSelect" })
-                                @Html.ValidationMessage("LocalisationOffer", "")
                             </div>
                         </div>
 		            </div>
