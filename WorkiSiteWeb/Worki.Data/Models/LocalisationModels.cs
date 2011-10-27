@@ -179,16 +179,81 @@ namespace Worki.Data.Models
 			Feature.Pressing,
 			Feature.ComputerHelp,
 			Feature.RoomService, 
-			Feature.Community, 
+			Feature.Community,
 			Feature.RelaxingArea
 		};
 
-		public static List<Feature> BuisnessLounge = new List<Feature>();
-		public static List<Feature> Workstation = new List<Feature>();
-		public static List<Feature> Desktop = new List<Feature>();
-		public static List<Feature> MeetingRoom = new List<Feature>();
-		public static List<Feature> SeminarRoom = new List<Feature>();
-		public static List<Feature> VisioRoom = new List<Feature>();
+		public static List<Feature> BuisnessLounge = new List<Feature>()
+        {
+            Feature.OpenToAll,
+            Feature.ReservedToClients,
+            Feature.ForCardOwner
+        };
+
+        public static List<Feature> Workstation = new List<Feature>()
+        {
+            Feature.Sector,
+            Feature.NotSectorial,
+            Feature.CoworkingVibe
+        };
+
+        public static List<Feature> Desktop = new List<Feature>()
+        {
+            Feature.Desktop10_25,
+            Feature.Desktop25_50,
+            Feature.Desktop50_100,
+            Feature.Desktop100Plus,
+            Feature.Equipped,
+            Feature.AvailableNow,
+            Feature.AllInclusive,
+            Feature.FlexibleContract,
+            Feature.MinimalPeriod
+        };
+
+        public static List<Feature> MeetingRoom = new List<Feature>() 
+        {
+            Feature.Room2_7,
+            Feature.Room7_20,
+            Feature.Room20_plus,
+            Feature.Audio,
+            Feature.Visio,
+            Feature.Projector,
+            Feature.VideoProj,
+            Feature.Paperboard,
+            Feature.Internet,
+            Feature.PhoneJack,
+            Feature.Drinks
+        };
+
+        public static List<Feature> SeminarRoom = new List<Feature>() 
+        {
+            Feature.Room20_100,
+            Feature.Room100_250,
+            Feature.Room250_1000,
+            Feature.Room1000_plus,
+            Feature.Scene,
+            Feature.Micro,
+            Feature.Picturesque,
+            Feature.Welcoming,
+            Feature.Accommodation,
+            Feature.Lighting,
+            Feature.Sound,
+            Feature.Catering
+        };
+
+        public static List<Feature> VisioRoom = new List<Feature>() 
+        {
+            Feature.Room1_4,
+            Feature.Room5_10,
+            Feature.Room10_Plus,
+            Feature.Visio,
+            Feature.VisioHD,
+            Feature.Telepresence,
+            Feature.Paperboard,
+            Feature.Internet,
+            Feature.PhoneJack,
+            Feature.Drinks
+        };
 
 		public List<Feature> GetFeaturesWithin(IEnumerable<Feature> toInclude)
 		{

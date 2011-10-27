@@ -92,6 +92,12 @@
     <Compile Include="Models\Comment.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\C__RefactorLog.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberBooking.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OfferFeature.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
@@ -121,9 +127,6 @@
     </Compile>
     <Compile Include="Models\MapModel.cs" />
     <Compile Include="Models\Member.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MemberBooking.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MemberEdition.cs">

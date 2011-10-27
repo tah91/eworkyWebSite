@@ -2,7 +2,7 @@
     [Id]             INT            IDENTITY (1, 1) NOT NULL,
     [MemberId]       INT            NOT NULL,
     [LocalisationId] INT            NOT NULL,
-    [Offer]          INT            NOT NULL,
+    OfferId          INT            NOT NULL,
     [FromDate]       DATETIME       NOT NULL,
     [ToDate]         DATETIME       NOT NULL,
     [Message]        NVARCHAR (MAX) NULL,

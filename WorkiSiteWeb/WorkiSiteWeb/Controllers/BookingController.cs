@@ -123,7 +123,7 @@ namespace Worki.Web.Controllers
                                                      formData.PhoneNumber,
                                                      member.Email,
                                                      loc.Name,
-                                                     Localisation.GetOfferType(formData.MemberBooking.Offer),
+                                                     Localisation.GetOfferType(formData.MemberBooking.OfferId),
                                                      string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
                                                      string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
                                                      formData.MemberBooking.Message);
@@ -237,7 +237,7 @@ namespace Worki.Web.Controllers
                 handleMail.Subject = Worki.Resources.Email.BookingString.HandleMailSubject;
                 handleMail.ToName = booking.Member.MemberMainData.FirstName;
                 handleMail.Content = string.Format( Worki.Resources.Email.BookingString.HandleMailBody,
-                                                    Localisation.GetOfferType(booking.Offer),
+                                                    Localisation.GetOfferType(booking.OfferId),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
                                                     booking.Localisation.Name,
@@ -278,7 +278,7 @@ namespace Worki.Web.Controllers
 				confirmMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
 				confirmMail.ToName = booking.Member.MemberMainData.FirstName;
 				confirmMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
-													Localisation.GetOfferType(booking.Offer),
+													Localisation.GetOfferType(booking.OfferId),
 													string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
 													string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
 													booking.Localisation.Name,
@@ -320,7 +320,7 @@ namespace Worki.Web.Controllers
                 refuseMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
                 refuseMail.ToName = booking.Member.MemberMainData.FirstName;
                 refuseMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseMailBody,
-                                                    Localisation.GetOfferType(booking.Offer),
+                                                    Localisation.GetOfferType(booking.OfferId),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
                                                     booking.Localisation.Name,
@@ -411,7 +411,7 @@ namespace Worki.Web.Controllers
             newMemberMail.Subject = Worki.Resources.Email.BookingString.NewMemberSubject;
             newMemberMail.ToName = formData.FirstName;
             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.NewMemberBody,
-                                                Localisation.GetOfferType(formData.MemberBooking.Offer),
+                                                Localisation.GetOfferType(formData.MemberBooking.OfferId),
                                                 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
                                                 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
                                                 loc.Name,

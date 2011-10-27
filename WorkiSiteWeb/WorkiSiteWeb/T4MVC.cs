@@ -907,6 +907,7 @@ namespace Worki.Web.Controllers {
             public readonly string DeletePress = "supprimer-press";
             public readonly string IndexRental = "IndexRental";
             public readonly string SendListLocMail = "envoyer-listlocmail";
+            public readonly string MigrateToOffer = "MigrateToOffer";
         }
 
 
@@ -1123,6 +1124,11 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult SendListLocMail() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendListLocMail);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult MigrateToOffer() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MigrateToOffer);
             return callInfo;
         }
 
