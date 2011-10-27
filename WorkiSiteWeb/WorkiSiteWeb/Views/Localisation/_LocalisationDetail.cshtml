@@ -2,10 +2,6 @@
 
 <div itemscope itemtype="http://schema.org/LocalBusiness">
 	<div class="localisationDetailHead">
-	@*    <div class="localisationLogo float-left">
-		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetLogoPic(), true), Model.Name)
-		</div>*@
-
 		<div class="localisationTitle float-left">
 			<div class="float-left blue bold">
 			<span class="item">
@@ -72,10 +68,10 @@
 			@if (Model.LocalisationFiles.Count > 0)
 			{
 			<div class="localisationGallery contentBlock">
-				<div id="gallery">
+				<div class="gallery">
 					@foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
 					{
-						<a href="@ControllerHelpers.GetUserImagePath(item.FileName)">
+						<a href="@ControllerHelpers.GetUserImagePath(item.FileName)" class="hidden">
             				<img title="@Model.Name" alt="@Model.Name" src="@ControllerHelpers.GetUserImagePath(item.FileName)" itemprop="image"/>
         				</a>                        
 					}
@@ -125,6 +121,36 @@
 				</div>
 			</div>   
 			}
+			@foreach (var offer in Model.Offers)
+			{
+				var title = Model.OfferCount((LocalisationOffer)offer.Type) > 1 ? Localisation.GetOfferType(offer.Type) + " - " + offer.Name : Localisation.GetOfferType(offer.Type);
+			<div class="contentBlock">
+				<h3 class="blue">@title</h3>
+				<div class="featureTag">
+					<ul>
+					@foreach (var item in offer.OfferFeatures)
+					{
+						<li>@RazorHelpers.FeatureTag((Feature)item.FeatureId)</li>
+					}
+					</ul>
+				</div> 
+				<div class="clear">
+				</div>
+				@if (offer.OfferFiles.Count > 0)
+				{
+                <div class="offerGallery">
+					@foreach (var item in offer.OfferFiles.OrderBy(f => !f.IsDefault))
+					{
+						<a href="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Offer))" class="hidden">
+            				<img title="@offer.Name" alt="@offer.Name" src="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Offer))" itemprop="image"/>
+        				</a>                        
+					}
+				</div>
+				<div class="clear">
+				</div>
+				}
+			</div> 
+			}
 			<div class="localisationComments contentBlock">
 				<h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
 				<div id="commentFormDiv">
@@ -133,7 +159,7 @@
 						@Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
 					}
 					else
-					{ 
+					{	
 						@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl))
 					}
 				</div>
@@ -147,7 +173,7 @@
 						continue;
 					}
 					@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
-			   }
+				}
 			</div>
 		</div>
 		<div class="localisationDetailRight blockContainer float-right">
@@ -203,8 +229,8 @@
 	   			<div class="contentBlock">
 					<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
 					@{
-						var lastEdition = Model.GetLastEdition();
-						var creation = Model.GetCreation();
+					   var lastEdition = Model.GetLastEdition();
+					   var creation = Model.GetCreation();
 					}
 					@if (creation != null)
 					{
@@ -271,7 +297,7 @@
 							@Worki.Resources.Models.Localisation.Localisation.RatingWelcome
 						</td>                    
 					</tr>
-					}
+				}
 				</table>
 				@{
 					var haveAvoid = Model.GetAvoidString();
@@ -286,40 +312,40 @@
 				<div class="localisationGeneralInfo contentBlock">
 					<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
 					@if (!Model.ContactEmpty())
-					{
-						if (!string.IsNullOrEmpty(Model.Mail))
-						{
+	 {
+		 if (!string.IsNullOrEmpty(Model.Mail))
+		 {
 							@Html.Mailto(Model.Mail, Model.Mail, new { itemprop = "email" })<br />
-						}
-						if (!string.IsNullOrEmpty(Model.WebSite))
-						{
+		 }
+		 if (!string.IsNullOrEmpty(Model.WebSite))
+		 {
 							<a href="@Model.WebSite" title="@Model.WebSite" target="_blank" itemprop="url">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
-						}
-						if (!string.IsNullOrEmpty(Model.PhoneNumber))
-						{
+		 }
+		 if (!string.IsNullOrEmpty(Model.PhoneNumber))
+		 {
 							<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
 							<span itemprop="telephone">@Html.GetPhoneFormat(Model.PhoneNumber)</span><br />
-						}
-						if (!string.IsNullOrEmpty(Model.Fax))
-						{
+		 }
+		 if (!string.IsNullOrEmpty(Model.Fax))
+		 {
 							<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
 							<span itemprop="faxNumber">@Html.GetPhoneFormat(Model.Fax)</span><br />
-						}
-					}
-					else
-					{
+		 }
+	 }
+	 else
+	 {
 						<span>@Worki.Resources.Views.Localisation.LocalisationString.YouKnowContactUs</span>
-					}
+	 }
 				</div>
 			}
 			<div class="localisationSchedule contentBlock">
 				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
 				@if (Model.HasFeature(Feature.Access24))
-				{
+	{
 					@Html.FeatureLabelFor(Feature.Access24, Model)
-				}
-				else if (Model.HasOpenningTimes())
-				{
+	}
+	else if (Model.HasOpenningTimes())
+	{
 				<table>
 					@RazorHelpers.OpenningRow(Model, DayOfWeek.Monday, Worki.Resources.Views.Localisation.LocalisationFormString.Monday)
 					@RazorHelpers.OpenningRow(Model, DayOfWeek.Tuesday, Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday)
@@ -329,11 +355,11 @@
 					@RazorHelpers.OpenningRow(Model, DayOfWeek.Saturday, Worki.Resources.Views.Localisation.LocalisationFormString.Saturday)
 					@RazorHelpers.OpenningRow(Model, DayOfWeek.Sunday, Worki.Resources.Views.Localisation.LocalisationFormString.Sunday)
 				</table>
-				}
-				else
-				{
+	}
+	else
+	{
 					@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.EmailConstants.ContactMail
-				}
+	}
 			</div>
             @Html.Partial(MVC.Localisation.Views._Suggestions, MVC.Localisation.Suggestions(Model.ID))
 		</div>

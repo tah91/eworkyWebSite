@@ -261,6 +261,11 @@ namespace Worki.Data.Models
 			return Offers.Where(o => o.Type == (int)offer).Count() != 0;
 		}
 
+		public int OfferCount(LocalisationOffer offer)
+		{
+			return Offers.Where(o => o.Type == (int)offer).Count();
+		}
+
 		/// <summary>
 		/// Check if localisation have an offer
 		/// </summary>

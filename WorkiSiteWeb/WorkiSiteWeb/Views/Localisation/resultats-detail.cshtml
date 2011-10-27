@@ -37,16 +37,20 @@
 {
     <script type="text/javascript">
         require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
-            require.ready(function () {
-                // Load the classic theme
-                Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
+            // Load the classic theme
+            Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
 
-                // Initialize Galleria
-                $('#gallery').galleria({
-                    //width: 600,
-                    height: 350,
-                    showInfo: false
-                });
+            // Initialize Galleria
+            $('.gallery').galleria({
+                //width: 600,
+                height: 350,
+                showInfo: false
+            });
+
+			$('.offerGallery').galleria({
+                //width: 600,
+                height: 150,
+                showInfo: false
             });
         });
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {
