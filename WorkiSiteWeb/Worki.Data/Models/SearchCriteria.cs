@@ -24,9 +24,9 @@ namespace Worki.Data.Models
 		void Init(bool wifi=false)
 		{
 			LocalisationData = new Localisation();
-			OfferData = new Offer();
+			OfferData = new Offer { Type = -1 };
 			Everything = true;
-			LocalisationOffer = -1;
+			//LocalisationOffer = -1;
 			if (wifi)
 				LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
             SearchType = eSearchType.ePerOffer;
@@ -114,7 +114,7 @@ namespace Worki.Data.Models
         /* Add the property OderBy */
         public eOrderBy OrderBy { get; set; }
 
-        public int LocalisationOffer { get; set; }
+        //public int LocalisationOffer { get; set; }
 
         [Display(Name = "Everything", ResourceType = typeof(Worki.Resources.Models.Search.SearchCriteria))]
         public bool Everything { get; set; }

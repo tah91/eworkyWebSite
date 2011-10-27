@@ -18,7 +18,7 @@
 				@Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
 
 				<div>
-					@Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers)
+					@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers)
 				</div>
 				<div class="placeInput float-left">
 					@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation }) 

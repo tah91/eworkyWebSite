@@ -62,7 +62,7 @@
                     <div class="toogle_container">
                         <div class="block">
                             <div class="editor-field">
-                                @Html.DropDownList("Criteria.LocalisationOffer", Model.Offers, new { @class = "offerSelect" })
+                                @Html.DropDownListFor(m=>m.Criteria.OfferData.Type, Model.Offers, new { @class = "offerSelect" })
                                 @Html.ValidationMessage("LocalisationOffer", "")
                             </div>
                         </div>

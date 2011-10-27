@@ -148,7 +148,7 @@ namespace Worki.Service
 			}
 
             if (MiscHelpers.GetRequestValue(parameters, "offer-type", ref value))
-                criteria.LocalisationOffer = int.Parse(value, CultureInfo.InvariantCulture);
+                criteria.OfferData.Type = int.Parse(value, CultureInfo.InvariantCulture);
 
             if (MiscHelpers.GetRequestValue(parameters, "tout", ref value) && string.Compare(value, Boolean.TrueString, true) == 0)
                 criteria.Everything = true;
@@ -179,13 +179,19 @@ namespace Worki.Service
                     criteria.PrivateArea = true;
             }
 
-            var keys = MiscHelpers.GetFeatureIds(parameters.Params.AllKeys.ToList());
+			var locKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.LocalisationPrefix);
             criteria.LocalisationData.LocalisationFeatures.Clear();
-            //var offerId = Localisation.GetFeatureTypeFromOfferType(criteria.LocalisationOffer);
-            foreach (var key in keys)
+			foreach (var key in locKeys)
             {
                 criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = key/*, OfferID = offerId*/ });
             }
+
+			var offerKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.OfferPrefix);
+			criteria.OfferData.OfferFeatures.Clear();
+			foreach (var key in offerKeys)
+			{
+				criteria.OfferData.OfferFeatures.Add(new OfferFeature { FeatureId = key });
+			}
             return criteria;
         }
 
@@ -199,7 +205,7 @@ namespace Worki.Service
 			var rvd = new RouteValueDictionary();
 			rvd["page"] = page;
 			rvd["lieu"] = criteria.Place;
-			rvd["offer-type"] = criteria.LocalisationOffer;
+			rvd["offer-type"] = criteria.OfferData.Type;
 
             rvd["order"] = (int)criteria.OrderBy;
 
@@ -234,7 +240,13 @@ namespace Worki.Service
 
 			foreach (var neededFeature in criteria.LocalisationData.LocalisationFeatures)
 			{
-				var display = MiscHelpers.FeatureToString(neededFeature.FeatureID);
+				var display = FeatureHelper.FeatureToString(neededFeature.FeatureID, FeatureHelper.LocalisationPrefix);
+				rvd[display] = true;
+			}
+
+			foreach (var offerFeature in criteria.OfferData.OfferFeatures)
+			{
+				var display = FeatureHelper.FeatureToString(offerFeature.FeatureId, FeatureHelper.OfferPrefix);
 				rvd[display] = true;
 			}
 			return rvd;

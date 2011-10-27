@@ -424,7 +424,7 @@ namespace Worki.Web.Controllers
 		[ActionName("recherche-lieu-travail-menu")]
 		public virtual ActionResult FullSearchOffer(int offertID)// Pré selection of the list box of recherche
 		{
-			var criteria = new SearchCriteria { LocalisationOffer = offertID };
+			var criteria = new SearchCriteria();// { LocalisationOffer = offertID };
 			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
 		}
 

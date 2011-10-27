@@ -32,7 +32,7 @@
                                     </div>
                                 </td>
                             </tr>
-							@if (WebHelper.IsDebug())
+							@if (WebHelper.IsDebug() && !Model.IsFreeLocalisation)
 							{
                             <tr>
 					            <td>
@@ -58,7 +58,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+@*                            <tr>
                                 <td>
                                     <div class="editor-label">
                                         @Html.Label(Worki.Resources.Views.Localisation.LocalisationFormString.Offers)<span
@@ -147,7 +147,7 @@
                                         </tr>
                                     </table>
                                 </td>
-                            </tr>
+                            </tr>*@
                             <tr>
                                 <td>
                                     <div class="editor-label">
@@ -469,7 +469,7 @@
 				<ul>
 				@foreach (var item in Model.Localisation.Offers)
 				{
-						<li>@item.Name | @Html.ActionLink("éditer", MVC.Offer.Edit(item.Id, item.LocalisationId)) | @Html.ActionLink("supprimer", MVC.Offer.Delete(item.Id, item.LocalisationId))</li>
+						<li>@item.Name | @Html.ActionLink("Editer", MVC.Offer.Edit(item.Id, item.LocalisationId)) | @Html.ActionLink("Supprimer", MVC.Offer.Delete(item.Id, item.LocalisationId))</li>
 				}
 				</ul>
 				<input  type="submit" class="buttonStd buttonBlue imageBtn" 
@@ -555,19 +555,16 @@
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
                                     @Html.TextBox("Localisation.MonOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonOpen), new { placeholder = "Ex : 9:00" })
-                                    @Html.ValidationMessage("MonOpen", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
                                     @Html.TextBox("Localisation.MonClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonClose2), new { placeholder = "Ex : 12:30" })
-                                    @Html.ValidationMessage("MonClose2", "")
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
                                     @Html.TextBox("Localisation.MonOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonOpen2), new { placeholder = "Ex : 14:00" })
-                                    @Html.ValidationMessage("MonOpen2", "")
                                 </div>
                             </td>
                             <td>

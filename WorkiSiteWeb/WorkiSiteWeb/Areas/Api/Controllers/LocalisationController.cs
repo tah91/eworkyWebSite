@@ -150,7 +150,7 @@ namespace Worki.Web.Areas.Api.Controllers
 				}
 			}
 
-			criteria.LocalisationOffer = offerType;
+			criteria.OfferData.Type = offerType;
 		}
 
         /// <summary>

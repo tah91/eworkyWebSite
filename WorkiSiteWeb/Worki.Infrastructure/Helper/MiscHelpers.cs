@@ -226,56 +226,6 @@ namespace Worki.Infrastructure.Helpers
                 return false;
         }
 
-        const string _FeaturePrefix = "f_";
-
-        /// <summary>
-        /// return a string for the feature
-        /// to put in url query string
-        /// </summary>
-        /// <param name="featureId">the feature id</param>
-        /// <returns>a string</returns>
-        public static string FeatureToString(int featureId)
-        {
-            return _FeaturePrefix + featureId.ToString();
-        }
-
-        /// <summary>
-        /// get the feature id from the string of query string
-        /// </summary>
-        /// <param name="featureStr">the string to recover</param>
-        /// <returns>the feature id</returns>
-        public static int FeatureFromString(string featureStr)
-        {
-            var toRet = -1;
-            if (string.IsNullOrEmpty(featureStr))
-                return toRet;
-            var idStr = featureStr.Replace(_FeaturePrefix, string.Empty);
-            try
-            {
-                toRet = int.Parse(idStr);
-            }
-            catch (Exception)
-            {
-
-            }
-            return toRet;
-        }
-
-        /// <summary>
-        /// convert a list of feature url to the corresponding feature ids
-        /// </summary>
-        /// <param name="strings">the feature urls</param>
-        /// <returns>list of feature ids</returns>
-        public static IEnumerable<int> GetFeatureIds(List<string> strings)
-        {
-            foreach (var item in strings)
-            {
-                var id = FeatureFromString(item);
-                if (id != -1)
-                    yield return id;
-            }
-        }
-
 		/// <summary>
 		/// Get seo compliant version of a string
 		/// </summary>

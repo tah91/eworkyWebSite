@@ -26,6 +26,59 @@ namespace Worki.Data.Models
 			else
 				return FeatureField.Number;
 		}
+
+		public const string LocalisationPrefix = "f_";
+		public const string OfferPrefix = "o_";
+
+		/// <summary>
+		/// return a string for the feature
+		/// to put in url query string
+		/// </summary>
+		/// <param name="featureId">the feature id</param>
+		/// <param name="prefix">the prefix</param>
+		/// <returns>a string</returns>
+		public static string FeatureToString(int featureId, string prefix)
+		{
+			return prefix + featureId.ToString();
+		}
+
+		/// <summary>
+		/// get the feature id from the string of query string
+		/// </summary>
+		/// <param name="featureStr">the string to recover</param>
+		/// <param name="prefix">the prefix</param>
+		/// <returns>the feature id</returns>
+		public static int FeatureFromString(string featureStr, string prefix)
+		{
+			var toRet = -1;
+			if (string.IsNullOrEmpty(featureStr))
+				return toRet;
+			var idStr = featureStr.Replace(prefix, string.Empty);
+			try
+			{
+				toRet = int.Parse(idStr);
+			}
+			catch (Exception)
+			{
+
+			}
+			return toRet;
+		}
+
+		/// <summary>
+		/// convert a list of feature url to the corresponding feature ids
+		/// </summary>
+		/// <param name="strings">the feature urls</param>
+		/// <returns>list of feature ids</returns>
+		public static IEnumerable<int> GetFeatureIds(List<string> strings, string prefix)
+		{
+			foreach (var item in strings)
+			{
+				var id = FeatureFromString(item, prefix);
+				if (id != -1)
+					yield return id;
+			}
+		}
 	}
 
 	/// <summary>

@@ -74,7 +74,7 @@ namespace Worki.Service
             else
                 criteria.RentalData.AvailableNow = false;
 
-            var keys = MiscHelpers.GetFeatureIds(parameters.Params.AllKeys.ToList());
+            var keys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.LocalisationPrefix);
             criteria.RentalData.RentalFeatures.Clear();
             foreach (var key in keys)
             {
@@ -116,7 +116,7 @@ namespace Worki.Service
 
             foreach (var neededFeature in criteria.RentalData.RentalFeatures)
             {
-                var display = MiscHelpers.FeatureToString(neededFeature.FeatureId);
+				var display = FeatureHelper.FeatureToString(neededFeature.FeatureId, FeatureHelper.LocalisationPrefix);
                 rvd[display] = true;
             }
             return rvd;

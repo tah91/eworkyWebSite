@@ -8,7 +8,7 @@
     <div class="localisationTypes searchOptions float-left">
         <p class="blue">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Criteria.LocalisationOffer, Model.Offers, new { @class = "offerSelect" })
+            @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "offerSelect" })
         </div>
     </div>
     <div class="searchOptions float-left">

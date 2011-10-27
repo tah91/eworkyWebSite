@@ -50,37 +50,6 @@ namespace Worki.Data.Models
 					select localisation).ToList();
 		}
 
-		#region FeatureProjection
-
-		public class FeatureProjection
-		{
-			public int Feature { get; set; }
-			public int Offer { get; set; }
-		}
-
-		public class FeatureProjectionEqualityComparer : IEqualityComparer<FeatureProjection>
-		{
-			#region IEqualityComparer<FeatureProjection> Members
-
-			public bool Equals(FeatureProjection x, FeatureProjection y)
-			{
-				//case of general feature
-				if (x.Offer == 0 || y.Offer == 0)
-					return x.Feature == y.Feature;
-				else
-					return x.Feature == y.Feature && x.Offer == y.Offer;
-			}
-
-			public int GetHashCode(FeatureProjection obj)
-			{
-				return base.GetHashCode();
-			}
-
-			#endregion
-		}
-
-		#endregion
-
 		public IList<Localisation> FindByCriteria(SearchCriteria criteria)
 		{
 			var idsToLoad = new List<int>();
@@ -93,7 +62,7 @@ namespace Worki.Data.Models
 				localisations = from loc
 									 in localisations
 								where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude) < BoundDistance
-								select loc;// as DbSet<Localisation>;
+								select loc;
 
 			//matching type
 			if (!criteria.Everything)
@@ -121,88 +90,60 @@ namespace Worki.Data.Models
 					allowedTypes.Add((int)LocalisationType.WorkingHotel);
 				if (criteria.PrivateArea)
 					allowedTypes.Add((int)LocalisationType.PrivateArea);
-				localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));// as DbSet<Localisation>;
+				localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));
 			}
 
 			//retrieve list from db, then filter it
-			var tempList = (from item in localisations
-							select new
-							{
-								ID = item.ID,
-								Features = (from f in item.LocalisationFeatures
-											select new FeatureProjection
-											{
-												Feature = f.FeatureID,
-												Offer = f.OfferID
-											})
-							}).ToList();
-			var neededFeatures = new List<FeatureProjection>();
+			var locProjectionList = (from item in localisations
+									 select new
+									 {
+										 ID = item.ID,
+										 LocalisationType = item.TypeValue,
+										 Features = (from f in item.LocalisationFeatures select f.FeatureID),
+										 OfferTypes = (from o in item.Offers select o.Type),
+									 }).ToList();
 
-			//matching the offer type
-			var locOffer = (LocalisationOffer)criteria.LocalisationOffer;
-			switch (locOffer)
+			//match offer type
+			var offerType = (LocalisationOffer)criteria.OfferData.Type;
+			switch (offerType)
 			{
 				case LocalisationOffer.FreeArea:
 					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.FreeArea });
+						locProjectionList = locProjectionList.Where(p => Localisation.FreeLocalisationTypes.Contains(p.LocalisationType)).ToList();
+						break;
 					}
-					break;
 				case LocalisationOffer.BuisnessLounge:
-					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.BuisnessLounge });
-					}
-					break;
-				case LocalisationOffer.Workstation:
-					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.Workstation });
-					}
-					break;
 				case LocalisationOffer.Desktop:
-					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.Desktop });
-					}
-					break;
+				case LocalisationOffer.Workstation:
 				case LocalisationOffer.MeetingRoom:
-					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.MeetingRoom });
-					}
-					break;
 				case LocalisationOffer.SeminarRoom:
-					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.SeminarRoom });
-					}
-					break;
 				case LocalisationOffer.VisioRoom:
 					{
-						neededFeatures.Add(new FeatureProjection { Feature = (int)Feature.VisioRoom });
+						locProjectionList = locProjectionList.Where(p => p.OfferTypes.Contains((int)offerType)).ToList();
+						break;
 					}
-					break;
+				case LocalisationOffer.AllOffers:
 				default:
 					break;
 			}
 
-			//matching the needed features
-			foreach (var criteriaFeatures in criteria.LocalisationData.LocalisationFeatures)
-			{
-				//offerid match an offer from search, or a general criteria not corresponding to any offer
-				neededFeatures.Add(new FeatureProjection { Feature = criteriaFeatures.FeatureID, Offer = criteriaFeatures.OfferID });
-			}
+			//build an offerlist which intersect this from offer repository
 
-			var wifi_Not_Free = new FeatureProjection { Feature = (int)Feature.Wifi_Not_Free, Offer = (int)FeatureType.General };
-			var equalityComparer = new FeatureProjectionEqualityComparer();
-			idsToLoad = tempList.Where(loc =>
+			var neededLocalisationFeatures = (from item in criteria.LocalisationData.LocalisationFeatures select item.FeatureID).ToList();
+
+			idsToLoad = locProjectionList.Where(loc =>
 				{
-					foreach (var item in neededFeatures)
+					foreach (var item in neededLocalisationFeatures)
 					{
 						//if we search wifi, it is for not free as well
-						if (item.Feature == (int)Feature.Wifi_Free)
+						if (item == (int)Feature.Wifi_Free)
 						{
-							if (!loc.Features.Contains(item, equalityComparer) && !loc.Features.Contains(wifi_Not_Free, equalityComparer))
+							if (!loc.Features.Contains(item) && !loc.Features.Contains((int)Feature.Wifi_Not_Free))
 								return false;
 							continue;
 						}
 
-						if (!loc.Features.Contains(item, equalityComparer))
+						if (!loc.Features.Contains(item))
 							return false;
 					}
 					return true;
