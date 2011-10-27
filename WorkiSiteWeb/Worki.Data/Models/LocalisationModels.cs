@@ -183,6 +183,13 @@ namespace Worki.Data.Models
 			Feature.RelaxingArea
 		};
 
+		public static List<Feature> BuisnessLounge = new List<Feature>();
+		public static List<Feature> Workstation = new List<Feature>();
+		public static List<Feature> Desktop = new List<Feature>();
+		public static List<Feature> MeetingRoom = new List<Feature>();
+		public static List<Feature> SeminarRoom = new List<Feature>();
+		public static List<Feature> VisioRoom = new List<Feature>();
+
 		public List<Feature> GetFeaturesWithin(IEnumerable<Feature> toInclude)
 		{
 			var toRet = new List<Feature>();

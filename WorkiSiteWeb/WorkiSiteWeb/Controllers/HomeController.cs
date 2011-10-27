@@ -32,6 +32,122 @@ namespace Worki.Web.Controllers
             this._EmailService = emailService;
         }
 
+		public ActionResult MigrateToOffer()
+		{
+			var strBuilder = new System.Text.StringBuilder();
+
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var all = lRepo.GetAll();
+			var newofferSuffix = " 1";
+			try
+			{
+				foreach (var item in all)
+				{
+					//coffee price 
+					if (item.LocalisationData != null && item.LocalisationData.CoffeePrice.HasValue && item.LocalisationData.CoffeePrice != 0)
+					{
+						item.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.CoffeePrice, DecimalValue = item.LocalisationData.CoffeePrice });
+					}
+
+					//case free loc
+					if (item.IsFreeLocalisation())
+						continue;
+
+					if (item.HasFeature(Feature.BuisnessLounge))
+					{
+						var offer = new Offer();
+						offer.Type = (int)LocalisationOffer.BuisnessLounge;
+						offer.Name = Localisation.GetOfferType((int)LocalisationOffer.BuisnessLounge) + newofferSuffix;
+						var features = item.GetFeaturesWithin(Localisation.BuisnessLounge);
+						foreach (var f in features)
+						{
+							offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+						}
+						item.Offers.Add(offer);
+						strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+					}
+
+					if (item.HasFeature(Feature.Workstation))
+					{
+						var offer = new Offer();
+						offer.Type = (int)LocalisationOffer.Workstation;
+						offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Workstation) + newofferSuffix;
+						var features = item.GetFeaturesWithin(Localisation.Workstation);
+						foreach (var f in features)
+						{
+							offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+						}
+						item.Offers.Add(offer);
+						strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+					}
+
+					if (item.HasFeature(Feature.Desktop))
+					{
+						var offer = new Offer();
+						offer.Type = (int)LocalisationOffer.Desktop;
+						offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Desktop) + newofferSuffix;
+						var features = item.GetFeaturesWithin(Localisation.Desktop);
+						foreach (var f in features)
+						{
+							offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+						}
+						item.Offers.Add(offer);
+						strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+					}
+
+					if (item.HasFeature(Feature.MeetingRoom))
+					{
+						var offer = new Offer();
+						offer.Type = (int)LocalisationOffer.MeetingRoom;
+						offer.Name = Localisation.GetOfferType((int)LocalisationOffer.MeetingRoom) + newofferSuffix;
+						var features = item.GetFeaturesWithin(Localisation.MeetingRoom);
+						foreach (var f in features)
+						{
+							offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+						}
+						item.Offers.Add(offer);
+						strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+					}
+
+					if (item.HasFeature(Feature.SeminarRoom))
+					{
+						var offer = new Offer();
+						offer.Type = (int)LocalisationOffer.SeminarRoom;
+						offer.Name = Localisation.GetOfferType((int)LocalisationOffer.SeminarRoom) + newofferSuffix;
+						var features = item.GetFeaturesWithin(Localisation.SeminarRoom);
+						foreach (var f in features)
+						{
+							offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+						}
+						item.Offers.Add(offer);
+						strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+					}
+
+					if (item.HasFeature(Feature.VisioRoom))
+					{
+						var offer = new Offer();
+						offer.Type = (int)LocalisationOffer.VisioRoom;
+						offer.Name = Localisation.GetOfferType((int)LocalisationOffer.VisioRoom) + newofferSuffix;
+						var features = item.GetFeaturesWithin(Localisation.VisioRoom);
+						foreach (var f in features)
+						{
+							offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+						}
+						item.Offers.Add(offer);
+						strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				strBuilder.AppendLine("error : " + ex.Message);
+				context.Complete();
+			}
+
+			return Content(strBuilder.ToString());
+		}
+
         /// <summary>
         /// Return view of error
         /// </summary>
