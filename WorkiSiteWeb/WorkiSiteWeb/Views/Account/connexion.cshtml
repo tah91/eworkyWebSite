@@ -15,8 +15,8 @@
     @using (Html.BeginForm())
     { 
         @Html.AntiForgeryToken()
-        <span class="contentBlock float-left" style="margin:0px!important;width:49%;height:123px">
-            <table style="margin: 15px 0px;">
+        <span class="contentBlock float-left fb_left_block_connexion">
+            <table>
                 @if (ViewBag.AlreadyRegistered != null)
                 {
                 <tr>
@@ -61,9 +61,9 @@
                 </tr>
             </table>
         </span>
-        <span class="contentBlock float-right" style="margin:0px!important;width:46%;height:123px">
-            <p style="margin:20px 80px;"><b class="blue">Connectez-vous</b> en quelques secondes à <b class="blue">eWorky</b> grâce à votre compte <b class="blue">Facebook</b> !</p>
-            <a href="/compte/facebook-logon"><img alt="Connection avec Facebook" src="/Content/Images/signin_facebook.png" style="margin-top:10px;margin-left:144px" /></a>
+        <span class="contentBlock float-right fb_right_block_connexion">
+            <p>Connectez-vous en quelques secondes à eWorky grâce à votre compte Facebook !</p>
+            <a href="/compte/facebook-logon"><img alt="Connection avec Facebook" src="/Content/Images/signin_facebook.png" class="fb_button_logon" /></a>
         </span>
         <div class="clear"></div>
     }

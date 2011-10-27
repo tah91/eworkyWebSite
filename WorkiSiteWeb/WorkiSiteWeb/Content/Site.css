@@ -274,7 +274,7 @@ page width. Or, you can specify an exact pixel width. */
 
 .headerMenu
 {
-    width:40%;
+    width:35%;
     text-align:center;
 }
 
@@ -294,7 +294,7 @@ page width. Or, you can specify an exact pixel width. */
 
 .loginContainer
 {
-    width:29%;
+    width:34%;
     margin-top:0!important; 
 }
 
@@ -1583,4 +1583,57 @@ html ul.tabs li.active a:hover
 .margin0important
 {
     margin:0px!important;
+}
+
+/* FACEBOOK SECTION
+----------------------------------------------------------*/
+
+.header_buttons
+{
+    width:76px;
+}
+
+.fb_button_gap
+{
+    margin-left:6px;
+}
+
+.fb_button_margin
+{
+    margin: 3px 3px 0px 0px;
+}
+
+.fb_left_block_connexion
+{
+    margin:0px!important;
+    width:49%;
+    height:123px;
+}
+
+.fb_left_block_connexion table
+{
+    margin: 15px 0px;
+}
+
+.fb_right_block_connexion
+{
+    margin:0px!important;
+    width:46%;
+    height:123px
+}
+
+.fb_right_block_connexion p
+{
+    margin:20px 80px;
+}
+
+.fb_button_logon
+{
+    margin:10px 0px 0px 144px;
+}
+
+.fb_button_signin
+{
+    margin:10px 10px 10px 185px;
+    vertical-align: middle;
 }
