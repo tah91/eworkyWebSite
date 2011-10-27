@@ -13,7 +13,7 @@
                 <li>
                     @Html.FeatureChecboxLabel2(Feature.ReservedToClients, Model.Offer)
                 </li>
-                <li>
+                <li class="li_ForCardOwner">
 					@Html.FeatureLabelFor2(Feature.ForCardOwner)
                     @Html.FeatureStringTextBox2(Feature.ForCardOwner, Model.Offer)
                 </li>
@@ -31,7 +31,7 @@
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
-                <li>
+                <li class="li_Sector">
                     @Html.FeatureLabelFor2(Feature.Sector)
                     @Html.FeatureStringTextBox2(Feature.Sector, Model.Offer)
                 </li>
@@ -84,7 +84,7 @@
                 <li>
                     @Html.FeatureChecboxLabel2(Feature.FlexibleContract, Model.Offer)
                 </li>
-                <li>
+                <li class="li_MinimalPeriod">
 				    @Html.FeatureLabelFor2(Feature.MinimalPeriod)
                     @Html.FeatureNumberTextBox2(Feature.MinimalPeriod, Model.Offer)
                 </li>
