@@ -139,24 +139,16 @@ En espérant avoir satisfait votre demande,</value>
     <value>eWorky – Votre réservation est confirmée</value>
   </data>
   <data name="HandleMailBody" xml:space="preserve">
-    <value>Votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) a été prise en charge par nos équipes. 
-Notre équipe vous recontactera sous 48 H pour vous confirmer votre réservation.
-En espérant vous revoir très vite sur www.eworky.com,</value>
+    <value>Votre demande de devis pour un bureau de {0} m² dans l'établissement {1} ({2}) a été prise en charge par nos équipes et transmise au gérant qui vous recontactera aux coordonnées que vous nous avez indiquées dans les plus bref délais.</value>
   </data>
   <data name="HandleMailSubject" xml:space="preserve">
-    <value>eWorky – Votre demande de réservation a été prise en compte</value>
+    <value>eWorky – Votre demande de devis a été traitée et transmise au gérant</value>
   </data>
   <data name="NewMemberBody" xml:space="preserve">
-    <value>Suite à votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos réservations.
-
-Votre login est "{5}" et votre mot de passe temporaire est "{6}". Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {7}
-
-Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {8}
-
-En espérant vous revoir très vite sur eworky.com,</value>
+    <value>Suite à votre demande de devis pour un bureau de {0} m² dans l'établissement {1} ({2}), un compte eWorky a été créé. Il vous permettra de suivre l'historique de l'état de vos demandes de devis et de vos réservations.&lt;br/&gt;Votre login est {3} et votre mot de passe temporaire est {4}. Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {5}&lt;br /&gt;Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {6}</value>
   </data>
   <data name="NewMemberSubject" xml:space="preserve">
-    <value>eWorky – Un compte a été créé suite à votre demande de réservation</value>
+    <value>eWorky – Un compte a été créé suite à votre demande de devis</value>
   </data>
   <data name="RefuseMailBody" xml:space="preserve">
     <value>L’ offre {0} du {1} à {2} dans l’établissement {3} ({4}) n’est pas disponible.

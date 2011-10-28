@@ -244,9 +244,7 @@ namespace Worki.Web.Controllers
                 handleMail.Subject = Worki.Resources.Email.BookingString.HandleMailSubject;
                 handleMail.ToName = booking.Member.MemberMainData.FirstName;
                 handleMail.Content = string.Format( Worki.Resources.Email.BookingString.HandleMailBody,
-                                                    Localisation.GetOfferType(booking.Offer.Type),
-                                                    string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-                                                    string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+                                                    booking.Surface,
                                                     booking.Offer.Localisation.Name,
 													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
                 handleMail.Send();
@@ -424,11 +422,9 @@ namespace Worki.Web.Controllers
             newMemberMail.Subject = Worki.Resources.Email.BookingString.NewMemberSubject;
             newMemberMail.ToName = formData.FirstName;
             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.NewMemberBody,
-												Localisation.GetOfferType(offer.Type),
-                                                string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
-                                                string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
-												offer.Localisation.Name,
-												offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
+                                                formData.MemberBooking.Surface,
+                                                offer.Localisation.Name,
+                                                offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
                                                 member.Email,
                                                 _MembershipService.GetPassword(member.Email, null),
                                                 changePassLink.ToString(),
