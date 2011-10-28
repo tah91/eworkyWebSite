@@ -467,7 +467,7 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Services.
+        ///   Looks up a localized string similar to Services professionnels.
         /// </summary>
         public static string Services {
             get {
