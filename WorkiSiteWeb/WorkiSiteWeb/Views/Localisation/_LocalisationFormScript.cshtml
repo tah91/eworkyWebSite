@@ -81,24 +81,6 @@
         });
     }
 
-    //select freearea by default for free types
-//	ResetOfferCheckBox = function () {
-//        if($(".validation-summary-errors").has("ul").length)
-//            return;
-//		var currentType = jQuery.trim($("#Localisation_TypeValue").val());
-//		if (currentType == "0" || currentType == "1" || currentType == "2" || currentType == "3") {
-//            $("#FreeArea-WorkingPlace").attr('checked', true);
-//            $(".freeAreaType").show();
-//		}
-//		else {
-//			$("#FreeArea-WorkingPlace").attr('checked', false);
-//            $(".freeAreaType").hide();
-//		}
-//	}
-//	$('.typeSelect').change(function () {
-//		ResetOfferCheckBox();
-//	});
-
     $("#f_Wifi_Free").click(function () {
     var isChecked = $("#f_Wifi_Free:checked").val();
     if (isChecked == 'true') {
