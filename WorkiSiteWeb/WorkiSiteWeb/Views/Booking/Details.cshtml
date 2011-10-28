@@ -5,10 +5,11 @@
     <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.BookingDetails) </title>
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookingDetails, "Blue")   
 
 <div class="detailContent">
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookingDetails, "Blue")    
-    <div class="contactDiv">
+        <div class="blockContainer">
+            <div class="contentBlock">
             <table>
                 <tr>
                     <td>
@@ -107,5 +108,6 @@
                     </td>
                 </tr>
             </table>
+        </div>
     </div>   
 </div>
