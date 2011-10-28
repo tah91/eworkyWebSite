@@ -30,8 +30,8 @@ namespace Worki.Data.Models
     
         // Navigation properties
     
-        public virtual Localisation Localisation { get; set; }
         public virtual Member Member { get; set; }
+        public virtual Offer Offer { get; set; }
     
     }
 }

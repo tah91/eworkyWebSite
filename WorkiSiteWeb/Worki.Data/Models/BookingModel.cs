@@ -10,14 +10,10 @@ namespace Worki.Data.Models
 	{
 		public MemberBookingFormViewModel()
 		{
-			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
-			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
 			MemberBooking = new MemberBooking();
 		}
 
 		public MemberBooking MemberBooking { get; set; }
-		public SelectList Offers { get; set; }
-		public string ReturnUrl { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
@@ -49,14 +45,9 @@ namespace Worki.Data.Models
 		}
 	}
 
-	[Bind(Exclude = "Id,MemberId,LocalisationId")]
+	[Bind(Exclude = "Id,MemberId,LocalisationId,OfferId")]
 	public class MemberBooking_Validation
 	{
-        [SelectValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "Offer", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public int Offer { get; set; }
-
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "FromDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public DateTime FromDate { get; set; }

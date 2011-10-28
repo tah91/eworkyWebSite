@@ -18,6 +18,7 @@ namespace Worki.Data.Models
         {
             this.OfferFiles = new HashSet<OfferFile>();
             this.OfferFeatures = new HashSet<OfferFeature>();
+            this.MemberBookings = new HashSet<MemberBooking>();
     		OnInitialized();
         }
     
@@ -37,6 +38,7 @@ namespace Worki.Data.Models
         public virtual Localisation Localisation { get; set; }
         public virtual ICollection<OfferFile> OfferFiles { get; set; }
         public virtual ICollection<OfferFeature> OfferFeatures { get; set; }
+        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
     
     }
 }

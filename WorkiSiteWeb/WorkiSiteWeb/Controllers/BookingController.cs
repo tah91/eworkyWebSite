@@ -42,7 +42,7 @@ namespace Worki.Web.Controllers
 		/// <returns>View containing booking form</returns>
 		//[AcceptVerbs(HttpVerbs.Get), Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult Create(int id, string returnUrl)
+		public virtual ActionResult Create(int id, int localisationId)
         {
 			var memberId = WebHelper.GetIdentityId(User.Identity);
             //if (memberId == 0)
@@ -54,7 +54,6 @@ namespace Worki.Web.Controllers
             var formModel = new MemberBookingFormViewModel
             {
                 PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty,
-                ReturnUrl = returnUrl,
                 NeedNewAccount = (memberId == 0),
                 FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty,
                 LastName = membetExists ? member.MemberMainData.LastName : string.Empty,
@@ -69,76 +68,77 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>View containing booking form</returns>
         //[AcceptVerbs(HttpVerbs.Post), Authorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public virtual ActionResult Create(int id, MemberBookingFormViewModel formData)
-        {
-            if (ModelState.IsValid)
-            {
+		[AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult Create(int id, int localisationId, MemberBookingFormViewModel formData)
+		{
+			if (ModelState.IsValid)
+			{
 				var memberId = WebHelper.GetIdentityId(User.Identity);
-                var sendNewAccountMail = false;
-                try
-                {
-                    if (memberId == 0)
-                    {
-                        FetchAccount(formData, ref  memberId, ref  sendNewAccountMail);
-                    }
+				var sendNewAccountMail = false;
+				try
+				{
+					if (memberId == 0)
+					{
+						FetchAccount(formData, ref  memberId, ref  sendNewAccountMail);
+					}
 
-                    var context = ModelFactory.GetUnitOfWork();
-                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                    var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-                    var member = mRepo.Get(memberId);
-                    var loc = lRepo.Get(id);
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+					var member = mRepo.Get(memberId);
+					var offer = oRepo.Get(id, localisationId);
+					var locName = offer.Localisation.Name;
+					try
+					{
+						formData.MemberBooking.MemberId = memberId;
+						formData.MemberBooking.LocalisationId = localisationId;
+						formData.MemberBooking.OfferId = id;
 
-                    try
-                    {
-                        formData.MemberBooking.MemberId = memberId;
-                        formData.MemberBooking.LocalisationId = id;
+						//set phone number to the one from form
+						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
+						member.MemberBookings.Add(formData.MemberBooking);
 
-                        //set phone number to the one from form
-                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
-                        member.MemberBookings.Add(formData.MemberBooking);
+						context.Commit();
+					}
+					catch (Exception ex)
+					{
+						_Logger.Error(ex.Message);
+						context.Complete();
+						throw ex;
+					}
 
-                        context.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        _Logger.Error(ex.Message);
-                        context.Complete();
-                        throw ex;
-                    }
+					if (sendNewAccountMail)
+					{
+						SendCreationAccountMail(formData, member, offer);
+					}
 
-                    if (sendNewAccountMail)
-                    {
-                        SendCreationAccountMail(formData, member, loc);
-                    }
-
-                    //send mail to team
+					//send mail to team
 					dynamic teamMail = new Email(MiscHelpers.EmailConstants.EmailView);
 					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-                    teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+					teamMail.To = MiscHelpers.EmailConstants.BookingMail;
+					teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
 					teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-                    teamMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
-                                                     string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
-                                                     formData.PhoneNumber,
-                                                     member.Email,
-                                                     loc.Name,
-                                                     Localisation.GetOfferType(formData.MemberBooking.OfferId),
-                                                     string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
-                                                     string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
-                                                     formData.MemberBooking.Message);
-                    teamMail.Send();
+					teamMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
+													 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
+													 formData.PhoneNumber,
+													 member.Email,
+													 locName,
+													 Localisation.GetOfferType(offer.Type),
+													 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
+													 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
+													 formData.MemberBooking.Message);
+					teamMail.Send();
 
-                    return Redirect(formData.ReturnUrl);
-                }
-                catch (Exception ex)
-                {
-                    _Logger.Error("Create", ex);
-                    ModelState.AddModelError("", ex.Message);
-                }
-            }
-            return View(formData);
-        }
+					return Redirect(offer.Localisation.GetDetailFullUrl(Url));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("Create", ex);
+					ModelState.AddModelError("", ex.Message);
+				}
+			}
+			return View(formData);
+		}
 
 		/// <summary>
 		/// GET Action result to show booking data
@@ -146,11 +146,11 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Details(int id, int memberId)
+		public virtual ActionResult Details(int id, int memberId, int offerId, int localisationId)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-            var booking = bRepo.Get(id, memberId);
+			var booking = bRepo.Get(id, memberId, localisationId, offerId);
 			return View(booking);
 		}
 
@@ -160,17 +160,16 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, string returnUrl)
+		public virtual ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-            var booking = bRepo.Get(id, memberId);
+			var booking = bRepo.Get(id, memberId, localisationId, offerId);
 			var member = mRepo.Get(memberId);
             var formModel = new MemberBookingFormViewModel
             {
                 PhoneNumber = member.MemberMainData.PhoneNumber,
-                ReturnUrl = returnUrl,
                 MemberBooking = booking,
                 FirstName = member.MemberMainData.FirstName,
                 LastName = member.MemberMainData.LastName,
@@ -186,9 +185,8 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId)
+		public virtual ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl, MemberBookingFormViewModel formData)
 		{
-			var formData = new MemberBookingFormViewModel();
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			try
@@ -196,10 +194,11 @@ namespace Worki.Web.Controllers
 				UpdateModel(formData);
 				if (ModelState.IsValid)
 				{
-                    var b = bRepo.Get(id, memberId);
+					var b = bRepo.Get(id, memberId, localisationId, offerId);
 					UpdateModel(b, "MemberBooking");
 					context.Commit();
-					return Redirect(formData.ReturnUrl);
+					//return Redirect(b.Offer.Localisation.GetDetailFullUrl(Url));
+					return Redirect(returnUrl);
 				}
 			}
 			catch (Exception ex)
@@ -218,7 +217,7 @@ namespace Worki.Web.Controllers
 		/// <param name="returnUrl">url to redirect</param>
 		/// <returns>Redirect to url</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult HandleBooking(int id,int memberId, string returnUrl)
+		public virtual ActionResult HandleBooking(int id, int memberId, int offerId, int localisationId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			try
@@ -226,7 +225,7 @@ namespace Worki.Web.Controllers
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
                 var m = mRepo.Get(memberId);
-                var booking = bRepo.Get(id,memberId);
+				var booking = bRepo.Get(id, memberId, localisationId, offerId);
                 booking.Handled = true;
 
 				//send email
@@ -237,11 +236,11 @@ namespace Worki.Web.Controllers
                 handleMail.Subject = Worki.Resources.Email.BookingString.HandleMailSubject;
                 handleMail.ToName = booking.Member.MemberMainData.FirstName;
                 handleMail.Content = string.Format( Worki.Resources.Email.BookingString.HandleMailBody,
-                                                    Localisation.GetOfferType(booking.OfferId),
+                                                    Localisation.GetOfferType(booking.Offer.Type),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
-                                                    booking.Localisation.Name,
-                                                    booking.Localisation.Adress + ", " + booking.Localisation.PostalCode + " " + booking.Localisation.City);
+                                                    booking.Offer.Localisation.Name,
+													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
                 handleMail.Send();
 				context.Commit();
 			}
@@ -260,7 +259,7 @@ namespace Worki.Web.Controllers
 		/// <param name="returnUrl">url to redirect</param>
 		/// <returns>Redirect to url</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult ConfirmBooking(int id, int memberId, string returnUrl)
+		public virtual ActionResult ConfirmBooking(int id, int memberId, int offerId, int localisationId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			try
@@ -268,7 +267,7 @@ namespace Worki.Web.Controllers
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var m = mRepo.Get(memberId);
-                var booking = bRepo.Get(id, memberId);
+				var booking = bRepo.Get(id, memberId, localisationId, offerId);
                 booking.Confirmed = true;
 
 				//send email
@@ -278,11 +277,11 @@ namespace Worki.Web.Controllers
 				confirmMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
 				confirmMail.ToName = booking.Member.MemberMainData.FirstName;
 				confirmMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
-													Localisation.GetOfferType(booking.OfferId),
+													Localisation.GetOfferType(booking.Offer.Type),
 													string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
 													string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
-													booking.Localisation.Name,
-													booking.Localisation.Adress + ", " + booking.Localisation.PostalCode + " " + booking.Localisation.City,
+													booking.Offer.Localisation.Name,
+													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
 													booking.Price);
 				confirmMail.Send();
 				context.Commit();
@@ -302,7 +301,7 @@ namespace Worki.Web.Controllers
         /// <param name="returnUrl">url to redirect</param>
         /// <returns>Redirect to url</returns>
         [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-        public virtual ActionResult RefuseBooking(int id, int memberId, string returnUrl)
+		public virtual ActionResult RefuseBooking(int id, int memberId, int offerId, int localisationId, string returnUrl)
         {
             var context = ModelFactory.GetUnitOfWork();
             try
@@ -310,7 +309,7 @@ namespace Worki.Web.Controllers
                 var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
                 var m = mRepo.Get(memberId);
-                var booking = bRepo.Get(id, memberId);
+				var booking = bRepo.Get(id, memberId, localisationId, offerId);
                 booking.Refused = true;
 
                 //send email
@@ -320,11 +319,11 @@ namespace Worki.Web.Controllers
                 refuseMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
                 refuseMail.ToName = booking.Member.MemberMainData.FirstName;
                 refuseMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseMailBody,
-                                                    Localisation.GetOfferType(booking.OfferId),
+                                                    Localisation.GetOfferType(booking.Offer.Type),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
                                                     string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
-                                                    booking.Localisation.Name,
-                                                    booking.Localisation.Adress + ", " + booking.Localisation.PostalCode + " " + booking.Localisation.City);
+													booking.Offer.Localisation.Name,
+													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
                 refuseMail.Send();
                 context.Commit();
             }
@@ -397,7 +396,7 @@ namespace Worki.Web.Controllers
         /// <param name="formData">form data containing booking data</param>
         /// <param name="member">member data</param>
         /// <param name="loc">localisation data</param>
-        void SendCreationAccountMail(MemberBookingFormViewModel formData, Member member, Localisation loc)
+        void SendCreationAccountMail(MemberBookingFormViewModel formData, Member member, Offer offer)
         {
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
             var changePassUrl = urlHelper.AbsoluteAction(MVC.Account.ActionNames.ChangePassword, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
@@ -411,11 +410,11 @@ namespace Worki.Web.Controllers
             newMemberMail.Subject = Worki.Resources.Email.BookingString.NewMemberSubject;
             newMemberMail.ToName = formData.FirstName;
             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.NewMemberBody,
-                                                Localisation.GetOfferType(formData.MemberBooking.OfferId),
+												Localisation.GetOfferType(offer.Type),
                                                 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
                                                 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
-                                                loc.Name,
-                                                loc.Adress + ", " + loc.PostalCode + " " + loc.City,
+												offer.Localisation.Name,
+												offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
                                                 member.Email,
                                                 _MembershipService.GetPassword(member.Email, null),
                                                 changePassLink.ToString(),

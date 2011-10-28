@@ -126,6 +126,8 @@ namespace Worki.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			#region Home
+
 			//home index
 			routes.MapRoute(
 				"",
@@ -134,12 +136,16 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
 			);
 
-            routes.MapRoute(
+			routes.MapRoute(
 				"",
 				"accueil/{action}/",
 				new { controller = "Home", action = "Default" },
 				new string[] { "Worki.Web.Controllers" }
-            );
+			);
+
+			#endregion
+
+			#region Profil
 
 			routes.MapRoute(
 				"",
@@ -148,33 +154,41 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
 			);
 
-            routes.MapRoute(
+			#endregion
+
+			#region Account
+
+			routes.MapRoute(
 				"",
 				"compte/{action}/{id}",
 				new { controller = "Account", action = "Default", id = UrlParameter.Optional },
 				new string[] { "Worki.Web.Controllers" }
-            );
+			);
+
+			#endregion
+
+			#region Localisation
 
 			var localisationTypes = (from t in Localisation.GetLocalisationTypes().Values select MiscHelpers.GetSeoString(t));
 
-            routes.MapRoute(
-                "", // Nom d'itinéraire
-                "{type}/{id}/{name}", // URL avec des paramètres
-                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
-                new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
-                new string[] { "Worki.Web.Controllers" }
-            );
+			routes.MapRoute(
+				"", // Nom d'itinéraire
+				"{type}/{id}/{name}", // URL avec des paramètres
+				new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
+				new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
+				new string[] { "Worki.Web.Controllers" }
+			);
 
 			routes.MapRoute(
 				"",
-                "lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/{order}/",
+				"lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/{order}/",
 				new { controller = "Localisation", action = "Default" },
 				new string[] { "Worki.Web.Controllers" }
 			);
 
 			routes.MapRoute(
 				"",
-                "lieu-de-travail/{action}/{lieu}/{page}/{offer-type}/{tout}/{order}/",
+				"lieu-de-travail/{action}/{lieu}/{page}/{offer-type}/{tout}/{order}/",
 				new { controller = "Localisation", action = "Default" },
 				new string[] { "Worki.Web.Controllers" }
 			);
@@ -194,42 +208,59 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
 			);
 
-            //routes.MapRoute(
-            //    "",
-            //    "lieu-de-travail/{action}/{type}/",
-            //    new { controller = "Localisation", action = "Default" },
-            //    new string[] { "Worki.Web.Controllers" }
-            //);
+			//routes.MapRoute(
+			//    "",
+			//    "lieu-de-travail/{action}/{type}/",
+			//    new { controller = "Localisation", action = "Default" },
+			//    new string[] { "Worki.Web.Controllers" }
+			//);
 
-            routes.MapRoute(
-                "", // Nom d'itinéraire
-                "lieu-de-travail/details/{id}/{name}", // URL avec des paramètres
-                new { area="", controller = "Localisation", action = "Details" }, // Paramètres par défaut
+			routes.MapRoute(
+				"", // Nom d'itinéraire
+				"lieu-de-travail/details/{id}/{name}", // URL avec des paramètres
+				new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
 				new string[] { "Worki.Web.Controllers" }
-            );
+			);
 
-            routes.MapRoute(
-                "", // Nom d'itinéraire
-                "lieu-de-travail/{action}/{id}", // URL avec des paramètres
+			routes.MapRoute(
+				"", // Nom d'itinéraire
+				"lieu-de-travail/{action}/{id}", // URL avec des paramètres
 				new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
 				new string[] { "Worki.Web.Controllers" }
-            );
+			);
 
-            routes.MapRoute(
-                "", // Nom d'itinéraire
-                "recherche/{action}/{id}", // URL avec des paramètres
-                new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
+			routes.MapRoute(
+				"", // Nom d'itinéraire
+				"recherche/{action}/{id}", // URL avec des paramètres
+				new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+				new string[] { "Worki.Web.Controllers" }
+			);
 
-            routes.MapRoute(
-                "", // Nom d'itinéraire
-                "annonces/{action}/{id}", // URL avec des paramètres
-                new { controller = "Rental", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
+			#endregion
 
-            routes.MapRoute(
+			#region Rental
+
+			routes.MapRoute(
+				"", // Nom d'itinéraire
+				"annonces/{action}/{id}", // URL avec des paramètres
+				new { controller = "Rental", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+				new string[] { "Worki.Web.Controllers" }
+			);
+
+			#endregion
+
+			#region Booking
+
+			routes.MapRoute(
+				"", // Nom d'itinéraire
+				"reservation/{action}/{id}/{localisationId}", // URL avec des paramètres
+				new { controller = "Booking", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+				new string[] { "Worki.Web.Controllers" }
+			);
+
+			#endregion
+
+			routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut

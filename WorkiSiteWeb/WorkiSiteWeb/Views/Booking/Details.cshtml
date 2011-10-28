@@ -61,12 +61,12 @@
 				<tr>
                     <td>
                         <div class="editor-label">
-                            @Html.LabelFor(model => model.Offer)
+                            @Html.LabelFor(model => model.Offer.Name)
                         </div>
                     </td>
                     <td>
                         <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@Localisation.GetOfferType(Model.Offer)
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Offer.Name)
                         </div>
                     </td>
                 </tr>
