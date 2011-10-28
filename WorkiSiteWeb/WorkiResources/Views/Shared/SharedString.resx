@@ -287,4 +287,7 @@
   <data name="StarPlaces" xml:space="preserve">
     <value>À la une</value>
   </data>
+  <data name="FbConnexionText" xml:space="preserve">
+    <value>Nouveau ! Connectez-vous simplement avec Facebook !</value>
+  </data>
 </root>

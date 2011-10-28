@@ -412,7 +412,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suggestion.
+        ///   Looks up a localized string similar to Suggestion(s).
         /// </summary>
         public static string Suggestion {
             get {

@@ -27,7 +27,6 @@ Scenario: Ajout complet
 		And Je remplis Horaires
 	When Je clique sur Envoyer
 	Then Je dois avoir le détail des informations générales
-		And Je dois avoir le texte des checkbox
 		And Je dois avoir le détail de l'acces
 		And Je dois avoir le détail des horaires
 
@@ -40,7 +39,6 @@ Scenario: Ajout complet 2
 		And Je remplis Horaires 2
 	When Je clique sur Envoyer
 	Then Je dois avoir le détail des informations générales
-		And Je dois avoir le texte des checkbox 2
 		And Je dois avoir le détail de l'acces
 		And Je dois avoir le détail des horaires 2
 

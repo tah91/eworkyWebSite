@@ -42,12 +42,16 @@ else
         </div>
     </div>
     -->
+    
+    <p>@Worki.Resources.Views.Shared.SharedString.FbConnexionText</p>
     <div class="connect lengthConnexionBox">
-        <div class="float-left fb_button_gap">
-            <a href="/compte/facebook-logon"><img alt="​Se connecter avec Facebook" src="/Content/Images/facebook.jpg" class="fb_button_margin" />​</a>​
+        <a href="/compte/facebook-logon">
+            <div class="float-left fb_button_gap fb-login-button">S'identifier avec Facebook</div>
+        </a>​
+        <div class="blue float-left" style="margin: 8px 0px 0px 8px;">
+            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn()) &nbsp;&nbsp;|&nbsp;&nbsp; 
+            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())
         </div>
-        <div class="buttonStd buttonBlue linkImg float-left header_buttons">@Html.ActionLink("Se connecter", MVC.Account.LogOn())</div>
-        <div class="buttonStd buttonBlue linkImg float-left header_buttons">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</div>
     </div>
 }
 <div class="clear">

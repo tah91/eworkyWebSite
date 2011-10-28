@@ -9,7 +9,7 @@ namespace Worki.SpecFlow
 {
     public static class WebBrowser
     {
-        public const string RootURL = "http://localhost:7395/"; 
+        public const string RootURL = "http://localhost:2441/"; 
 
         public static IE Current
         {

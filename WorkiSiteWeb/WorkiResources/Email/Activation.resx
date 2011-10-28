@@ -125,6 +125,6 @@ Pour valider votre inscription sur eWorky, il vous suffit de cliquer sur le lien
 Vous pourrez ensuite vous connecter facilement avec votre identifiant " {1} "</value>
   </data>
   <data name="ActivationSubject" xml:space="preserve">
-    <value>Activation de votre compte eWorky</value>
+    <value>Bienvenue dans la communauté eWorky !</value>
   </data>
 </root>

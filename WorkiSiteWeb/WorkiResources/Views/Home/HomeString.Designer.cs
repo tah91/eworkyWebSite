@@ -61,7 +61,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Que voulez-vous ajouter ?.
+        ///   Looks up a localized string similar to Proposer un nouvel espace de travail.
         /// </summary>
         public static string AddPlaceTitle {
             get {
