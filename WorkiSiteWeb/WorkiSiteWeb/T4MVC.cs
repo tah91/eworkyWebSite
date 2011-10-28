@@ -475,6 +475,7 @@ namespace Links {
             public static readonly string csv_import_png = Url("csv-import.png");
             public static readonly string delete_gif = Url("delete.gif");
             public static readonly string drh_png = Url("drh.png");
+            public static readonly string facebook_jpg = Url("facebook.jpg");
             public static readonly string favicon_png = Url("favicon.png");
             public static readonly string favorite_png = Url("favorite.png");
             public static readonly string followUs_footer_png = Url("followUs_footer.png");

@@ -44,7 +44,7 @@ else
     -->
     <div class="connect lengthConnexionBox">
         <div class="float-left fb_button_gap">
-            <a href="/compte/facebook-logon"><img alt="​Se connecter avec Facebook" src="/Content/Images/facebook.jpg" class="fb_button_margin" />​</a>​
+            <a href="@Url.Action(MVC.Account.FacebookLogOn())"><img alt="​Se connecter avec Facebook" src="@Links.Content.images.facebook_jpg" class="fb_button_margin" />​</a>​
         </div>
         <div class="buttonStd buttonBlue linkImg float-left header_buttons">@Html.ActionLink("Se connecter", MVC.Account.LogOn())</div>
         <div class="buttonStd buttonBlue linkImg float-left header_buttons">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</div>
