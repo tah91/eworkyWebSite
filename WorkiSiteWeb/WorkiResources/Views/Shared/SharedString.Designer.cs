@@ -232,6 +232,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nouveau ! Connectez-vous simplement avec Facebook !.
+        /// </summary>
+        public static string FbConnexionText {
+            get {
+                return ResourceManager.GetString("FbConnexionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inscrivez-vous gratuitement et &lt;br /&gt;
         ///            profitez de tous nos services !.
         /// </summary>
@@ -458,7 +467,7 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Services.
+        ///   Looks up a localized string similar to Services professionnels.
         /// </summary>
         public static string Services {
             get {

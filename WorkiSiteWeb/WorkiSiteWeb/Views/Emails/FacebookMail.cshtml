@@ -2,7 +2,7 @@
 From: @Html.Raw(ViewBag.From)
 Subject: @Html.Raw(ViewBag.Subject)
 
-<p>@string.Format(Worki.Resources.Email.Common.Hello, ViewBag.ToName)
+<p>@string.Format(Worki.Resources.Email.Common.Hello, ViewBag.ToName),
 </p>
 
 <p>@Html.Raw(MiscHelpers.Nl2Br(ViewBag.Content))

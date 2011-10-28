@@ -272,7 +272,7 @@
     <value>Réservation</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>- centre d'affaire&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc.</value>
+    <value>- centre d'affaires&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Recherche</value>
@@ -308,7 +308,7 @@
     <value>Le blog eWorky</value>
   </data>
   <data name="AddPlaceTitle" xml:space="preserve">
-    <value>Que voulez-vous ajouter ?</value>
+    <value>Proposer un nouvel espace de travail</value>
   </data>
   <data name="CostSpace" xml:space="preserve">
     <value>Un lieu de travail payant</value>
@@ -317,6 +317,6 @@
     <value>Un lieu de travail gratuit</value>
   </data>
   <data name="RentalAd" xml:space="preserve">
-    <value>Une Annonce de locaux à louer</value>
+    <value>Une annonce de location de locaux</value>
   </data>
 </root>

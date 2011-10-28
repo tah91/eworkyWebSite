@@ -46,7 +46,7 @@ namespace Worki.SpecFlow
             [Then(@"Je dois arriver sur la page de Ajout")]
             public void ThenJeDoisArriverSurLaPageDeAjout()
             {
-                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "lieu-de-travail/ajouter");
+                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/ajouter-espace");
             }
 
         #endregion
@@ -208,7 +208,7 @@ namespace Worki.SpecFlow
 
         public SelectList Type_Espace
         {
-            get { return Document.SelectList(Find.ById("Criteria_LocalisationOffer")); }
+            get { return Document.SelectList(Find.ById("Criteria_OfferData_Type")); }
         }
 
         /// <summary>

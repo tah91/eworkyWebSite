@@ -567,6 +567,7 @@ namespace Worki.Web.Controllers
                             context = ModelFactory.GetUnitOfWork();
                             mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                             member = mRepo.GetMember(faceBookEmail);
+                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 
                             // Send mail
                             try
@@ -576,7 +577,7 @@ namespace Worki.Web.Controllers
                                 facebookMail.To = member.Email;
                                 facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
                                 facebookMail.ToName = member.MemberMainData.FirstName;
-                                facebookMail.Content = Worki.Resources.Email.FacebookRegistration.Content;
+                                facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content, urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }), member.Email, _MembershipService.GetPassword(member.Email, null));
                                 facebookMail.Send();
                             }
                             catch (Exception ex)

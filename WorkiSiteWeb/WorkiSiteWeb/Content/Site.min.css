@@ -44,10 +44,10 @@ html,body{margin:0;padding:0;height:100%}
 .logo{background-image:url('images/logo.png');width:30%;height:47px;background-repeat:no-repeat;margin-top:15px}
 .logo_beta{background-image:url('images/logo.png')}
 .logo_nobeta{background-image:url('images/logo_nobeta.png')}
-.headerMenu{width:35%;text-align:center}
+.headerMenu{width:39%;text-align:center}
 .headerMenu .buttonStd{width:90px;height:40px;margin:0;font-size:14px}
 .ie7 .headerMenu .buttonStd{margin-left:5px}
-.loginContainer{width:34%;margin-top:0!important}
+.loginContainer{width:29%;margin-top:0!important}
 .logindisplay{background-color:whiteSmoke;padding:10px}
 .logindisplay p{font-size:.9em}
 .connect{text-align:right}
@@ -246,7 +246,7 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .fb_left_block_connexion table{margin:15px 0}
 .fb_right_block_connexion{margin:0!important;width:46%;height:123px}
 .fb_right_block_connexion p{margin:20px 80px}
-.fb_button_logon{margin:10px 0 0 144px}
+.fb_button_logon{margin-left:144px}
 .fb_button_signin{margin:10px 10px 10px 185px;vertical-align:middle}
 .li_ForCardOwner{width:439px}
 .li_Sector{width:266px}

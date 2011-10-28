@@ -61,7 +61,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Que voulez-vous ajouter ?.
+        ///   Looks up a localized string similar to Proposer un nouvel espace de travail.
         /// </summary>
         public static string AddPlaceTitle {
             get {
@@ -421,7 +421,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Une Annonce de locaux à louer.
+        ///   Looks up a localized string similar to Une annonce de location de locaux.
         /// </summary>
         public static string RentalAd {
             get {
@@ -448,7 +448,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - centre d&apos;affaire&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc..
+        ///   Looks up a localized string similar to - centre d&apos;affaires&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc..
         /// </summary>
         public static string ReserveSpeech {
             get {

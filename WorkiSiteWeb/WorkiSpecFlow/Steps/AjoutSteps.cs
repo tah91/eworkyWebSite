@@ -17,7 +17,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page d'ajout")]
         public void GivenJeVaisDansLaPageDAjout()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/ajouter");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/ajouter-lieu-gratuit");
         }
 
         [When(@"Je clique sur Envoyer")]
@@ -67,19 +67,11 @@ namespace Worki.SpecFlow
         public void GivenJeCocheQuelquesCheckbox()
         {
             WebBrowser.Current.Page<AjoutPage>().Espace((int)LocalisationType.CoffeeResto);
-            WebBrowser.Current.Page<AjoutPage>().Check_FreeArea.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_SeminarRoom.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_WorkStation.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_SingleDesk.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Handicap.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Restauration.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Parking.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_ErgonomicFurniture.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_Domiciliation.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_Concierge.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_SeminarRoom20_100.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_Scene.Click();
         }
 
         [Given(@"je remplis Acces")]
@@ -139,14 +131,7 @@ namespace Worki.SpecFlow
         [Given(@"Je coche quelques checkbox 2")]
         public void GivenJeCocheQuelquesCheckbox2()
         {
-            WebBrowser.Current.Page<AjoutPage>().Check_BuisnessRoom.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_MeetingRoom.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_VisioRoom.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidMorning.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_MeetingRoom20Plus.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_MeetingRoomProjector.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_VisioRoomDrinks.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_VisioRoom1_4.Click();
         }
 
         [Given(@"Je remplis Horaires 2")]
@@ -225,7 +210,7 @@ namespace Worki.SpecFlow
 
         public CheckBox Check_Owner
         {
-            get { return Document.CheckBox(Find.ById("LocalisationOwner-General")); }
+            get { return Document.CheckBox(Find.ById("f_LocalisationOwner")); }
         }
 
         public SelectList Type_Espace
@@ -350,97 +335,97 @@ namespace Worki.SpecFlow
 
         public CheckBox Check_AvoidMorning
         {
-            get { return Document.CheckBox(Find.ById("AvoidMorning-General")); }
+            get { return Document.CheckBox(Find.ById("f_AvoidMorning")); }
         }
 
         public CheckBox Check_AvoidLunch
         {
-            get { return Document.CheckBox(Find.ById("AvoidLunch-General")); }
+            get { return Document.CheckBox(Find.ById("f_AvoidLunch")); }
         }
 
         public CheckBox Check_AvoidAfternoom
         {
-            get { return Document.CheckBox(Find.ById("AvoidAfternoom-General")); }
+            get { return Document.CheckBox(Find.ById("f_AvoidAfternoom")); }
         }
 
         public CheckBox Check_AvoidEvening
         {
-            get { return Document.CheckBox(Find.ById("AvoidEvening-General")); }
+            get { return Document.CheckBox(Find.ById("f_AvoidEvening")); }
         }
 
         public TextField Prix_Cafe
         {
-            get { return Document.TextField(Find.ById("Localisation_LocalisationData_CoffeePrice")); }
+            get { return Document.TextField(Find.ById("f_CoffeePrice")); }
         }
 
         public CheckBox Check_Handicap
         {
-            get { return Document.CheckBox(Find.ById("Handicap-General")); }
+            get { return Document.CheckBox(Find.ById("f_Handicap")); }
         }
         
         public CheckBox Check_WifiFree
         {
-            get { return Document.CheckBox(Find.ById("Wifi_Free-General")); }
+            get { return Document.CheckBox(Find.ById("f_Wifi_Free")); }
         }
 
         public CheckBox Check_WifiNotFree
         {
-            get { return Document.CheckBox(Find.ById("Wifi_Not_Free-General")); }
+            get { return Document.CheckBox(Find.ById("f_Wifi_Not_Free")); }
         }
 
         public CheckBox Check_Parking
         {
-            get { return Document.CheckBox(Find.ById("Parking-General")); }
+            get { return Document.CheckBox(Find.ById("f_Parking")); }
         }
 
         public CheckBox Check_Outlet
         {
-            get { return Document.CheckBox(Find.ById("Outlet-General")); }
+            get { return Document.CheckBox(Find.ById("f_Outlet")); }
         }
 
         public CheckBox Check_FastInternet
         {
-            get { return Document.CheckBox(Find.ById("FastInternet-General")); }
+            get { return Document.CheckBox(Find.ById("f_FastInternet")); }
         }
 
         public CheckBox Check_SafeStorage
         {
-            get { return Document.CheckBox(Find.ById("SafeStorage-General")); }
+            get { return Document.CheckBox(Find.ById("f_SafeStorage")); }
         }
 
         public CheckBox Check_Coffee
         {
-            get { return Document.CheckBox(Find.ById("Coffee-General")); }
+            get { return Document.CheckBox(Find.ById("f_Coffee")); }
         }
 
         public CheckBox Check_Restauration
         {
-            get { return Document.CheckBox(Find.ById("Restauration-General")); }
+            get { return Document.CheckBox(Find.ById("f_Restauration")); }
         }
 
         public CheckBox Check_AC
         {
-            get { return Document.CheckBox(Find.ById("AC-General")); }
+            get { return Document.CheckBox(Find.ById("f_AC")); }
         }
 
         public CheckBox Check_ErgonomicFurniture
         {
-            get { return Document.CheckBox(Find.ById("ErgonomicFurniture-General")); }
+            get { return Document.CheckBox(Find.ById("f_ErgonomicFurniture")); }
         }
 
         public CheckBox Check_Shower
         {
-            get { return Document.CheckBox(Find.ById("Shower-General")); }
+            get { return Document.CheckBox(Find.ById("f_Shower")); }
         }
 
         public CheckBox Check_NewsPaper
         {
-            get { return Document.CheckBox(Find.ById("Newspaper-General")); }
+            get { return Document.CheckBox(Find.ById("f_Newspaper")); }
         }
 
         public CheckBox Check_TV
         {
-            get { return Document.CheckBox(Find.ById("TV-General")); }
+            get { return Document.CheckBox(Find.ById("f_TV")); }
         }
 
         public CheckBox Check_Domiciliation
@@ -520,12 +505,12 @@ namespace Worki.SpecFlow
 
         public CheckBox Check_Access24
         {
-            get { return Document.CheckBox(Find.ById("Access24-General")); }
+            get { return Document.CheckBox(Find.ById("f_Access24")); }
         }
 
         public CheckBox Check_LunchClose
         {
-            get { return Document.CheckBox(Find.ById("LunchClose-General")); }
+            get { return Document.CheckBox(Find.ById("f_LunchClose")); }
         }
         
         public TextField MonOpen
