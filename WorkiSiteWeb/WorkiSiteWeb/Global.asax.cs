@@ -260,6 +260,17 @@ namespace Worki.Web
 
 			#endregion
 
+			#region Offer
+
+			routes.MapRoute(
+				"", // Nom d'itinéraire
+				"offre/{action}/{id}/{localisationId}", // URL avec des paramètres
+				new { controller = "Offer", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+				new string[] { "Worki.Web.Controllers" }
+			);
+
+			#endregion
+
 			routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters

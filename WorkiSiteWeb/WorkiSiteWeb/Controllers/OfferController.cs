@@ -37,7 +37,7 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		public virtual ActionResult Create(int id)
 		{
-			return View(new OfferFormViewModel { Offer = new Offer { LocalisationId = id, Id = 58 } });
+			return View(new OfferFormViewModel { Offer = new Offer { LocalisationId = id } });
 		}
 
 		/// <summary>

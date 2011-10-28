@@ -16,5 +16,5 @@
 @using (Html.BeginForm(MVC.Offer.ActionNames.Delete, MVC.Offer.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
 {
 	@Html.AntiForgeryToken()
-    <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
+    <input name="confirmButton" class="buttonStd buttonBlue"  type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
 }
