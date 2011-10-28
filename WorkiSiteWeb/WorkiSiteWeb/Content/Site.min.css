@@ -48,10 +48,10 @@ html,body{margin:0;padding:0;height:100%}
 .headerMenu .buttonStd{width:90px;height:40px;margin:0;font-size:14px}
 .ie7 .headerMenu .buttonStd{margin-left:5px}
 .loginContainer{width:29%;margin-top:0!important}
-.logindisplay{background-color:whiteSmoke;padding:10px}
-.logindisplay p{font-size:.9em}
-.connect{text-align:right}
+.logindisplay{background-color:whiteSmoke;padding:5px 10px 10px 10px}
+.loginTitle{font-size:.9em;margin-bottom:5px}
 .createAccount{margin-top:10px}
+.connectEworky{padding:3px 10px}
 *:first-child+html .lengthConnexionBox{width:130px;height:100%}
 *:first-child+html .sizeHeaderConnexion{width:85%;height:100%}
 .ie7 .sizeHeaderConnexion{width:85%;height:100%}
@@ -239,15 +239,12 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .ie7 .searchFormBlock{padding:8px}
 .resultDiv{width:72.5%}
 .margin0important{margin:0!important}
-.header_buttons{width:76px}
-.fb_button_gap{margin-left:6px}
-.fb_button_margin{margin:3px 3px 0 0}
 .fb_left_block_connexion{margin:0!important;width:49%;height:123px}
 .fb_left_block_connexion table{margin:15px 0}
 .fb_right_block_connexion{margin:0!important;width:46%;height:123px}
 .fb_right_block_connexion p{margin:20px 80px}
-.fb_button_logon{margin-left:144px}
-.fb_button_signin{margin:10px 10px 10px 185px;vertical-align:middle}
+.fb_button_logon{text-align:center}
+.fb_button_signin{margin:0 10px 0 20%}
 .li_ForCardOwner{width:439px}
 .li_Sector{width:266px}
 .li_MinimalPeriod{width:307px}

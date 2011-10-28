@@ -14,8 +14,12 @@
 <div class="detailContent">
     <div class="blockContainer">
         <div class="contentBlock">
-        <a href="@Url.Action(MVC.Account.FacebookLogOn())"><img alt="Connection avec Facebook" src="@Links.Content.images.logon_facebook_png" class="fb_button_signin" /></a>
-        Pour gagner du temps, connectez-vous grâce à votre compte Facebook.
+			<a href="@Url.Action(MVC.Account.FacebookLogOn())">
+				<div class="fb-login-button fb_button_signin float-left">Inscrivez-vous avec Facebook</div>
+			</a>​
+			<div class="float-left">Pour gagner du temps, connectez-vous grâce à votre compte Facebook.</div>
+			<div class="clear">
+			</div>
         </div>
         <div class="contentBlock">
             <div class="registerDesc float-right">

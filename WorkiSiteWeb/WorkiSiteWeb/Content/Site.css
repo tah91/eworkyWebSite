@@ -300,33 +300,26 @@ page width. Or, you can specify an exact pixel width. */
 
 /*ajouter no repeat si besoin*/
 
-/*#btn_register{ background-image:url('images/btn_register.png'); background-position: 0 0; width: 104px; height: 23px; } 
-#btn_register:hover{ background-position: 0 -73px; } */
-
 .logindisplay
 {
 	background-color:whiteSmoke;
-	padding:10px;
+	padding:5px 10px 10px 10px;
 }
 
-.logindisplay p
+.loginTitle
 {
 	font-size:0.9em;
-}
-
-.nouveau_register
-{
-	/*width:200px;*/
-}
-
-.connect
-{
-	text-align:right;
+	margin-bottom:5px;
 }
 
 .createAccount
 {
 	margin-top:10px;
+}
+
+.connectEworky
+{
+	padding: 3px 10px;
 }
 
 *:first-child+html .lengthConnexionBox
@@ -1588,21 +1581,6 @@ html ul.tabs li.active a:hover
 /* FACEBOOK SECTION
 ----------------------------------------------------------*/
 
-.header_buttons
-{
-    width:76px;
-}
-
-.fb_button_gap
-{
-    margin-left:6px;
-}
-
-.fb_button_margin
-{
-    margin: 3px 3px 0px 0px;
-}
-
 .fb_left_block_connexion
 {
     margin:0px!important;
@@ -1629,13 +1607,12 @@ html ul.tabs li.active a:hover
 
 .fb_button_logon
 {
-    margin-left:144px;
+	text-align:center;
 }
 
 .fb_button_signin
 {
-    margin:10px 10px 10px 185px;
-    vertical-align: middle;
+    margin:0 10px 0 20%;
 }
 
 /* OFFERS SECTION

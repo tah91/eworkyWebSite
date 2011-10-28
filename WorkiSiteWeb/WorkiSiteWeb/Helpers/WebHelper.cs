@@ -89,5 +89,20 @@ namespace Worki.Web.Helpers
 		{
 			return _IsAzureDebug;
 		}
+
+		static string _FacebookId = null;
+
+		/// <summary>
+		/// Get facebook appid
+		/// </summary>
+		/// <returns>facebook appid</returns>
+		public static string GetFacebookId()
+		{
+			if (!string.IsNullOrEmpty(_FacebookId))
+				return _FacebookId;
+			var fbSettings = ConfigurationManager.GetSection("facebookSettings") as Facebook.FacebookConfigurationSection;
+			_FacebookId= fbSettings != null ? fbSettings.AppId : string.Empty;
+			return _FacebookId;
+		}
     }
 }

@@ -27,29 +27,16 @@
 }
 else
 {
-    <!--
-    <div class="nouveau_register float-left">
-        <span class="bold blue">@Worki.Resources.Views.Shared.SharedString.NewOnEWorky</span>
-        <p>@Html.Raw(Worki.Resources.Views.Shared.SharedString.FreeInscriptionEnjoy)</p> 
-    </div>
-    <div class="connect lengthConnexionBox float-right">
-        <div class="blue">
-            @Html.ActionImage(null, "~/Content/Images/icon_facebook.png", "Connection avec Facebook", MVC.Account.FacebookLogOn())
-            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())
-        </div>
-        <div>
-            <div class="buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</div>
-        </div>
-    </div>
-    -->
-    
-    <p>@Worki.Resources.Views.Shared.SharedString.FbConnexionText</p>
-    <div class="connect lengthConnexionBox">
-        <a href="/compte/facebook-logon">
-            <div class="float-left fb_button_gap fb-login-button">S'identifier avec Facebook</div>
+    <div id="fb-root">
+	</div>
+	<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+    <div class="loginTitle">@Worki.Resources.Views.Shared.SharedString.FbConnexionText</div>
+    <div class="lengthConnexionBox">
+        <a href="@Url.Action(MVC.Account.FacebookLogOn())">
+            <div class="float-left fb-login-button"></div>
         </a>​
-        <div class="blue float-left" style="margin: 8px 0px 0px 8px;">
-            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn()) &nbsp;&nbsp;|&nbsp;&nbsp; 
+        <div class="blue float-left connectEworky">
+            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn()) | 
             @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())
         </div>
     </div>
