@@ -49,6 +49,8 @@ namespace Worki.Web.Controllers
             //    return View(MVC.Shared.Views.Error);
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var offer = oRepo.Get(id,localisationId);
             var member = mRepo.Get(memberId);
             var membetExists = member != null;
             var formModel = new MemberBookingFormViewModel
@@ -58,6 +60,7 @@ namespace Worki.Web.Controllers
                 FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty,
                 LastName = membetExists ? member.MemberMainData.LastName : string.Empty,
                 Email = membetExists ? member.Email : string.Empty,
+				NeedQuotation = offer.NeedQuotation()
             };
 
             return View(formModel);
@@ -88,6 +91,7 @@ namespace Worki.Web.Controllers
 					var member = mRepo.Get(memberId);
 					var offer = oRepo.Get(id, localisationId);
 					var locName = offer.Localisation.Name;
+					var needQuotation = offer.NeedQuotation();
 					try
 					{
 						formData.MemberBooking.MemberId = memberId;
@@ -113,6 +117,9 @@ namespace Worki.Web.Controllers
 					}
 
 					//send mail to team
+
+					//separate two cases : needQuotation true or false
+
 					dynamic teamMail = new Email(MiscHelpers.EmailConstants.EmailView);
 					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 					teamMail.To = MiscHelpers.EmailConstants.BookingMail;
@@ -229,6 +236,7 @@ namespace Worki.Web.Controllers
                 booking.Handled = true;
 
 				//send email
+				//separate two cases : booking.Offer.NeedQuotation() true or false
 
 				dynamic handleMail = new Email(MiscHelpers.EmailConstants.EmailView);
 				handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
@@ -269,6 +277,9 @@ namespace Worki.Web.Controllers
 				var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
                 booking.Confirmed = true;
+
+				if (booking.Offer.NeedQuotation())
+					throw new Exception("No confirmation for Quotation");
 
 				//send email
 				dynamic confirmMail = new Email(MiscHelpers.EmailConstants.EmailView);
@@ -311,6 +322,9 @@ namespace Worki.Web.Controllers
                 var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
                 booking.Refused = true;
+
+				if (booking.Offer.NeedQuotation())
+					throw new Exception("No confirmation for Quotation");
 
                 //send email
 				dynamic refuseMail = new Email(MiscHelpers.EmailConstants.EmailView);

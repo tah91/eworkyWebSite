@@ -56,7 +56,11 @@
 					@Html.ActionLink(item.Price.ToString(), MVC.Booking.Edit(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
                 </td>
 				<td align="center">
-					@if (item.Confirmed)
+					@if (item.Offer.NeedQuotation())
+					{
+						<text>Devis</text>
+					}
+					else if (item.Confirmed)
 					{
 						<text>OK</text>
 					}

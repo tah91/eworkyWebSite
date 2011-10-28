@@ -32,6 +32,8 @@ namespace Worki.Data.Models
         public string Email { get; set; }
 
         public bool NeedNewAccount { get; set; }
+
+		public bool NeedQuotation { get; set; }
 	}
 
 	[MetadataType(typeof(MemberBooking_Validation))]
@@ -55,6 +57,9 @@ namespace Worki.Data.Models
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "ToDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public DateTime ToDate { get; set; }
+
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public decimal Surface { get; set; }
 
 		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public string Message { get; set; }

@@ -22,6 +22,7 @@ namespace Worki.Data.Models
         public int OfferId { get; set; }
         public System.DateTime FromDate { get; set; }
         public System.DateTime ToDate { get; set; }
+        public decimal Surface { get; set; }
         public string Message { get; set; }
         public bool Handled { get; set; }
         public bool Confirmed { get; set; }

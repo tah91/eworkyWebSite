@@ -79,6 +79,26 @@
 							</div>
 						</td>
 					</tr>
+					@if (Model.NeedQuotation)
+					{
+						@Html.HiddenFor(m => m.MemberBooking.FromDate)
+						@Html.HiddenFor(m => m.MemberBooking.ToDate)
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.MemberBooking.Surface)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.MemberBooking.Surface)
+							</div>
+						</td>
+					</tr>
+					}
+					else
+					{ 
+						@Html.HiddenFor(m => m.MemberBooking.Surface)
 					<tr>
 						<td>
 							<div class="editor-label">
@@ -103,6 +123,7 @@
 							</div>
 						</td>
 					</tr>
+					}
 					<tr>
 						<td>
 							<div class="editor-label">

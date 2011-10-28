@@ -70,6 +70,8 @@
                         </div>
                     </td>
                 </tr>
+				@if (!Model.Offer.NeedQuotation())
+				{
 				<tr>
                     <td>
                         <div class="editor-label">
@@ -94,6 +96,22 @@
                         </div>
                     </td>
                 </tr>
+				}
+				else
+				{
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Surface)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Surface)
+                        </div>
+                    </td>
+                </tr>
+				}
 				<tr>
                     <td>
                         <div class="editor-label">

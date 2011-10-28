@@ -149,9 +149,10 @@
 				<div class="clear">
 				</div>
 				}
-				@if (WebHelper.IsDebug() && Model.Bookable)
+				@if (Model.Bookable)
 				{
-					<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id, offer.LocalisationId))</div>
+					var text = offer.NeedQuotation() ? "Demande de devis" : Worki.Resources.Views.Localisation.LocalisationString.BookIt;
+					<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(text, MVC.Booking.Create(offer.Id, offer.LocalisationId))</div>
 					<div class="clear">
 					</div>
 				}

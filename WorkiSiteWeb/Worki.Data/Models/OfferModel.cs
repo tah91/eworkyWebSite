@@ -121,6 +121,11 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
+
+		public bool NeedQuotation()
+		{
+			return Type == (int)LocalisationOffer.Desktop;
+		}
 	}
 
 	[Bind(Exclude = "Id,LocalisationId")]

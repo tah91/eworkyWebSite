@@ -5,6 +5,7 @@
     [OfferId]        INT            NOT NULL,
     [FromDate]       DATETIME       NOT NULL,
     [ToDate]         DATETIME       NOT NULL,
+	[Surface]		 DECIMAL(18, 2) NOT NULL DEFAULT 0, 
     [Message]        NVARCHAR (MAX) NULL,
     [Handled]        BIT            CONSTRAINT [DF__MemberBoo__Handl__59FA5E80] DEFAULT ((0)) NOT NULL,
     [Confirmed]      BIT            CONSTRAINT [DF__MemberBoo__Confi__5AEE82B9] DEFAULT ((0)) NOT NULL,
