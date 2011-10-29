@@ -537,7 +537,10 @@ namespace Worki.Web.Controllers
 								facebookMail.To = member.Email;
 								facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
 								facebookMail.ToName = member.MemberMainData.FirstName;
-								facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content, urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }), member.Email, _MembershipService.GetPassword(member.Email, null));
+								facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content, 
+																	urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }), 
+																	member.Email, 
+																	_MembershipService.GetPassword(member.Email, null));
 								facebookMail.Send();
 							}
 							catch (Exception ex)
@@ -568,6 +571,5 @@ namespace Worki.Web.Controllers
 			}
 			return RedirectToAction(MVC.Home.Index());
 		}
-
     }
 }

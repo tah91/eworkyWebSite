@@ -61,6 +61,27 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) a été prise en charge par nos équipes. 
+        ///Notre équipe vous recontactera sous 48 H pour vous confirmer votre réservation.
+        ///
+        ///En espérant vous revoir très vite sur www.eworky.com,.
+        /// </summary>
+        public static string BookingHandleMailBody {
+            get {
+                return ResourceManager.GetString("BookingHandleMailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eWorky – Votre demande de réservation a été prise en compte.
+        /// </summary>
+        public static string BookingHandleMailSubject {
+            get {
+                return ResourceManager.GetString("BookingHandleMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nom : {0}
         ///Téléphone : {1}
         ///E-mail : {2}
@@ -86,6 +107,30 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suite à votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}), un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
+        ///
+        ///Votre login est &quot;{5}&quot; et votre mot de passe temporaire est &quot;{6}&quot;. Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {7}
+        ///
+        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {8}
+        ///
+        ///En espérant vous revoir très vite sur eworky.com,.
+        /// </summary>
+        public static string BookingNewMemberBody {
+            get {
+                return ResourceManager.GetString("BookingNewMemberBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to eWorky – Un compte a été créé suite à votre demande de réservation.
+        /// </summary>
+        public static string BookingNewMemberSubject {
+            get {
+                return ResourceManager.GetString("BookingNewMemberSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}) est confirmée. 
         ///Vous devrez régler la somme de {5} € directement auprès du prestataire.
         ///En espérant avoir satisfait votre demande,.
@@ -106,38 +151,50 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Votre demande de devis pour un bureau de {0} m² dans l&apos;établissement {1} ({2}) a été prise en charge par nos équipes et transmise au gérant qui vous recontactera aux coordonnées que vous nous avez indiquées dans les plus bref délais..
+        ///   Looks up a localized string similar to Bonjour,
+        ///
+        ///Votre demande de devis pour un {0} de {1} m2 dans l’établissement {2} ({3}) a été prise en charge par nos équipes et transmise au gérant qui vous recontactera aux coordonnées que vous nous avez indiquées dans les plus brefs délais. 
+        ///
+        ///En espérant vous revoir très vite sur eworky.com,.
         /// </summary>
-        public static string HandleMailBody {
+        public static string QuotationHandleMailBody {
             get {
-                return ResourceManager.GetString("HandleMailBody", resourceCulture);
+                return ResourceManager.GetString("QuotationHandleMailBody", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to eWorky – Votre demande de devis a été traitée et transmise au gérant.
         /// </summary>
-        public static string HandleMailSubject {
+        public static string QuotationHandleMailSubject {
             get {
-                return ResourceManager.GetString("HandleMailSubject", resourceCulture);
+                return ResourceManager.GetString("QuotationHandleMailSubject", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suite à votre demande de devis pour un bureau de {0} m² dans l&apos;établissement {1} ({2}), un compte eWorky a été créé. Il vous permettra de suivre l&apos;historique de l&apos;état de vos demandes de devis et de vos réservations.&lt;br/&gt;Votre login est {3} et votre mot de passe temporaire est {4}. Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {5}&lt;br /&gt;Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {6}.
+        ///   Looks up a localized string similar to Bonjour,
+        ///
+        ///Suite à votre demande de devis pour un {0} de {1} m2 dans l’établissement {2} ({3}), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos demandes de devis et de vos réservations.
+        ///
+        ///Votre login est {4} et votre mot de passe temporaire est {5}. Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {6}
+        ///
+        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {7}
+        ///
+        ///En espérant vous revoir très vite sur eworky.com [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string NewMemberBody {
+        public static string QuotationNewMemberBody {
             get {
-                return ResourceManager.GetString("NewMemberBody", resourceCulture);
+                return ResourceManager.GetString("QuotationNewMemberBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorky – Un compte a été créé suite à votre demande de devis.
+        ///   Looks up a localized string similar to eWorky – Un compte a été créé suite à votre demande de devis.
         /// </summary>
-        public static string NewMemberSubject {
+        public static string QuotationNewMemberSubject {
             get {
-                return ResourceManager.GetString("NewMemberSubject", resourceCulture);
+                return ResourceManager.GetString("QuotationNewMemberSubject", resourceCulture);
             }
         }
         
