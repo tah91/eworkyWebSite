@@ -5,6 +5,7 @@ using System.Web.Security;
 using Worki.Data.Models;
 using Worki.Infrastructure.Helpers;
 using System.Linq;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Memberships
 {
@@ -172,6 +173,56 @@ namespace Worki.Memberships
 		public string GetPassword(string username, string answer)
 		{
 			return _Provider.GetPassword(username, answer);
+		}
+
+		/// <summary>
+		/// Try to create an account for the given mail and data, already activated
+		/// if account aleady exists, do nothing
+		/// </summary>
+		/// <param name="email">email of the account to create</param>
+		/// <param name="memberData">member data of the account</param>
+		/// <param name="memberId">filled by the fectched account</param>
+		/// <returns>true if account created</returns>
+		public bool TryCreateAccount(string email, MemberMainData memberData, out int memberId)
+		{
+			//check if email match an account
+			var createAccountContext = ModelFactory.GetUnitOfWork();
+			var createAccountmRepo = ModelFactory.GetRepository<IMemberRepository>(createAccountContext);
+			try
+			{
+				var member = createAccountmRepo.GetMember(email);
+				if (member != null)
+				{
+					memberId = member.MemberId;
+					return false;
+				}
+				else
+				{
+					//if not create an account from memberdata
+					var status = CreateUser(email, MiscHelpers.AdminConstants.DummyPassword, email, true);
+					if (status != System.Web.Security.MembershipCreateStatus.Success)
+					{
+						var error = AccountValidation.ErrorCodeToString(status);
+						throw new Exception(error);
+					}
+					var created = createAccountmRepo.GetMember(email);
+					created.MemberMainData = memberData;
+					createAccountContext.Commit();
+
+					if (!ResetPassword(email))
+					{
+						throw new Exception("ResetPassword failed");
+					}
+
+					memberId = created.MemberId;
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				createAccountContext.Complete();
+				throw ex;
+			}
 		}
 	}
 

@@ -255,27 +255,5 @@ namespace Worki.Infrastructure.Helpers
 			title = title.TrimEnd(new[] { '-' });
 			return title;
         }
-
-        public static string GeneratePassword(int Length)
-        {
-            return GeneratePassword(Length, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray());
-        }
-
-        public static string GeneratePassword(int Length, bool CaseSensitive)
-        {
-            if (CaseSensitive)
-                return GeneratePassword(Length);
-            else
-                return GeneratePassword(Length, "0123456789abcdefghijklmnopqrstuvwxyz".ToCharArray());
-        }
-
-        public static string GeneratePassword(int Length, char[] Chars)
-        {
-            string Password = string.Empty;
-            System.Random rnd = new System.Random();
-            for (int i = 0; i < Length; i++)
-                Password += Chars[rnd.Next(Chars.Length)];
-            return Password;
-		}
     }
 }

@@ -80,10 +80,13 @@ namespace Worki.Web.Controllers
 				var sendNewAccountMail = false;
 				try
 				{
-					if (memberId == 0)
+					var memberData = new MemberMainData
 					{
-						FetchAccount(formData, ref  memberId, ref  sendNewAccountMail);
-					}
+						FirstName = formData.FirstName,
+						LastName = formData.LastName,
+						PhoneNumber = formData.PhoneNumber,
+					};
+					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
 
 					var context = ModelFactory.GetUnitOfWork();
 					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);

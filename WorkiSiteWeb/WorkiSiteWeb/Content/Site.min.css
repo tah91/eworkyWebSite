@@ -47,7 +47,7 @@ html,body{margin:0;padding:0;height:100%}
 .headerMenu{width:39%;text-align:center}
 .headerMenu .buttonStd{width:90px;height:40px;margin:0;font-size:14px}
 .ie7 .headerMenu .buttonStd{margin-left:5px}
-.loginContainer{width:29%;margin-top:0!important}
+.loginContainer{width:auto;margin-top:0!important}
 .logindisplay{background-color:whiteSmoke;padding:5px 10px 10px 10px}
 .loginTitle{font-size:.9em;margin-bottom:5px}
 .createAccount{margin-top:10px}

@@ -22,15 +22,6 @@ namespace Worki.Web.Controllers
     public partial class AccountController : Controller
     {
         const string MemberDisplayNameString = "MemberDisplayName";
- 
-        public IFormsAuthenticationService FormsService
-        {
-            get { return _FormsService; }
-        }
-        public IMembershipService MembershipService
-        {
-            get { return _MembershipService; }
-        }
 
         IFormsAuthenticationService _FormsService;
         IMembershipService _MembershipService;
@@ -73,13 +64,13 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (MembershipService.ValidateUser(model.Login, model.Password))
+                if (_MembershipService.ValidateUser(model.Login, model.Password))
                 {
 					var context = ModelFactory.GetUnitOfWork();
 					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 					var member = mRepo.GetMember(model.Login);
                     var userData = member.GetUserData();
-                    FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+                    _FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
                     if (!String.IsNullOrEmpty(returnUrl))
                     {
                         return Redirect(returnUrl);
@@ -106,7 +97,7 @@ namespace Worki.Web.Controllers
         [ActionName("deconnexion")]
         public virtual ActionResult LogOff()
         {
-            FormsService.SignOut();
+            _FormsService.SignOut();
             if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains(MemberDisplayNameString))
             {
                 HttpCookie cookie = ControllerContext.HttpContext.Request.Cookies[MemberDisplayNameString];
@@ -164,7 +155,7 @@ namespace Worki.Web.Controllers
 						field = "Email";
 						throw new Exception(error);
 					}
-					createStatus = MembershipService.CreateUser(model.Email, model.Password, model.Email);
+					createStatus = _MembershipService.CreateUser(model.Email, model.Password, model.Email);
 					createStatusSuccess = createStatus == MembershipCreateStatus.Success;
 					if (!createStatusSuccess)
 					{
@@ -224,7 +215,7 @@ namespace Worki.Web.Controllers
 				}
 			}
 			// Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
-			ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
 			return View(model);
 		}
 
@@ -262,7 +253,7 @@ namespace Worki.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult ChangePassword(string username, string key)
         {
-            ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+            ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.GetMember(username);
@@ -288,15 +279,15 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (MembershipService.ChangePassword(model.UserName, model.OldPassword, model.NewPassword))
+                if (_MembershipService.ChangePassword(model.UserName, model.OldPassword, model.NewPassword))
                 {
-                    if (MembershipService.ValidateUser(model.UserName, model.NewPassword))
+                    if (_MembershipService.ValidateUser(model.UserName, model.NewPassword))
                     {
 						var context = ModelFactory.GetUnitOfWork();
 						var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 						var member = mRepo.GetMember(model.UserName);
                         var userData = member.GetUserData();
-                        FormsService.SignIn(model.UserName, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+                        _FormsService.SignIn(model.UserName, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
                         TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
                         return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
                     }
@@ -313,7 +304,7 @@ namespace Worki.Web.Controllers
             }
 
             // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
-            ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+            ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
             return View(model);
         }
 
@@ -340,7 +331,7 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (MembershipService.ResetPassword(model.EMail))
+                if (_MembershipService.ResetPassword(model.EMail))
                 {
                     //send mail to activate the account
 					var context = ModelFactory.GetUnitOfWork();
@@ -477,137 +468,106 @@ namespace Worki.Web.Controllers
         /// <param name="code"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        [ActionName("facebook-oauth")]
-        public virtual ActionResult FacebookOAuth(string code, string state)
-        {
-            FacebookOAuthResult oauthResult;
-            if (FacebookOAuthResult.TryParse(Request.Url, out oauthResult))
-            {
-                if (oauthResult.IsSuccess)
-                {
-                    string redirectUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Url.Action(this.FacebookOAuth());
+		[ActionName("facebook-oauth")]
+		public virtual ActionResult FacebookOAuth(string code, string state)
+		{
+			FacebookOAuthResult oauthResult;
+			if (FacebookOAuthResult.TryParse(Request.Url, out oauthResult))
+			{
+				if (oauthResult.IsSuccess)
+				{
+					string redirectUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Url.Action(this.FacebookOAuth());
 
-                    var oAuthClient = new FacebookOAuthClient(FacebookApplication.Current);
-                    oAuthClient.RedirectUri = new Uri(redirectUrl);
-                    dynamic tokenResult = oAuthClient.ExchangeCodeForAccessToken(code);
-                    string accessToken = tokenResult.access_token;
-                    
-                    //DateTime expiresOn = DateTime.MaxValue;
+					var oAuthClient = new FacebookOAuthClient(FacebookApplication.Current);
+					oAuthClient.RedirectUri = new Uri(redirectUrl);
+					dynamic tokenResult = oAuthClient.ExchangeCodeForAccessToken(code);
+					string accessToken = tokenResult.access_token;
 
-                    //if (tokenResult.ContainsKey("expires"))
-                    //{
-                    //    DateTimeConvertor.FromUnixTime(tokenResult.expires);
-                    //}
+					//DateTime expiresOn = DateTime.MaxValue;
 
-                    FacebookClient fbClient = new FacebookClient(accessToken);
-                    dynamic me = fbClient.Get("me?fields=id,name,email,first_name,last_name");
-                    long facebookId = Convert.ToInt64(me.id);
-                    string faceBookEmail = ((string)me.email).ToString();
-                    string faceBookFirstName = ((string)me.first_name).ToString();
-                    string faceBookLastName = ((string)me.last_name).ToString();
+					//if (tokenResult.ContainsKey("expires"))
+					//{
+					//    DateTimeConvertor.FromUnixTime(tokenResult.expires);
+					//}
 
-                    var context = ModelFactory.GetUnitOfWork();
-                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                    var member = mRepo.GetMember(faceBookEmail);
-                    
-                    if (member != null)
-                    {
-                        var userData = member.GetUserData();
-                        FormsService.SignIn(faceBookEmail, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+					FacebookClient fbClient = new FacebookClient(accessToken);
+					dynamic me = fbClient.Get("me?fields=id,name,email,first_name,last_name,link");
+					long facebookId = Convert.ToInt64(me.id);
+					string faceBookEmail = ((string)me.email).ToString();
+					string faceBookFirstName = ((string)me.first_name).ToString();
+					string faceBookLastName = ((string)me.last_name).ToString();
+					string faceBookLink = ((string)me.link).ToString();
 
-                        if (Url.IsLocalUrl(state))
-                        {
-                            return Redirect(state);
-                        }
-                        else
-                        {
-                            return RedirectToAction(MVC.Home.Index());
-                        }
-                    }
-                    else
-                    {
-                        bool createStatusSuccess = false;
-                        bool addMemberDataSuccess = false;
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var member = mRepo.GetMember(faceBookEmail);
 
-                        try
-                        {
-                            MembershipCreateStatus createStatus = MembershipService.CreateUser(faceBookEmail, MiscHelpers.GeneratePassword(12,true), faceBookEmail);
-                            createStatusSuccess = createStatus == MembershipCreateStatus.Success;
-                            if (!createStatusSuccess)
-                            {
-                                throw new Exception(AccountValidation.ErrorCodeToString(createStatus));
-                            }
+					if (member == null)
+					{
+						bool created = false;
+						int memberId = 0;
+						try
+						{
+							var memberData = new MemberMainData
+							{
+								Avatar = string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, facebookId),
+								Facebook = faceBookLink,//string.Format(MiscHelpers.FaceBookConstants.FacebookProfileViewPattern, facebookId, facebookId),
+								FirstName = faceBookFirstName,
+								LastName = faceBookLastName
+							};
+							created = _MembershipService.TryCreateAccount(faceBookEmail, memberData, out memberId);
+						}
+						catch (Exception ex)
+						{
+							_Logger.Error(ex.Message);
+						}
 
-                            //add memberData
-                            context = ModelFactory.GetUnitOfWork();
-                            mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                            var created = mRepo.GetMember(faceBookEmail);
-                            created.MemberMainData = new MemberMainData();
-                            created.MemberMainData.Avatar = string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, facebookId);
-                            created.MemberMainData.Facebook = string.Format(MiscHelpers.FaceBookConstants.FacebookProfileViewPattern, facebookId, facebookId);
-                            created.MemberMainData.FirstName = faceBookFirstName;
-                            created.MemberMainData.LastName = faceBookLastName;
+						if (created)
+						{
+							context = ModelFactory.GetUnitOfWork();
+							mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+							member = mRepo.Get(memberId);
+							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 
-                            // pour un compte facebook, pas besoin d'activation
-                            created.IsApproved = true;
-                            created.LastActivityDate = DateTime.Now;
-                            created.EmailKey = null;
-                            
-                            context.Commit();
-                            addMemberDataSuccess = true;
-                        }
-                        catch (Exception ex)
-                        {
-                            _Logger.Error(ex.Message);
-                        }
-
-                        if (createStatusSuccess && addMemberDataSuccess)
-                        {
-                            //add them to private beta role
-                            context = ModelFactory.GetUnitOfWork();
-                            mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                            member = mRepo.GetMember(faceBookEmail);
-                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-
-                            // Send mail
-                            try
-                            {
+							// Send mail
+							try
+							{
 								dynamic facebookMail = new Email(MiscHelpers.EmailConstants.EmailView);
 								facebookMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                                facebookMail.To = member.Email;
-                                facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
-                                facebookMail.ToName = member.MemberMainData.FirstName;
-                                facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content, urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }), member.Email, _MembershipService.GetPassword(member.Email, null));
-                                facebookMail.Send();
-                            }
-                            catch (Exception ex)
-                            {
-                                _Logger.Error(ex.Message);
-                            }
+								facebookMail.To = member.Email;
+								facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
+								facebookMail.ToName = member.MemberMainData.FirstName;
+								facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content, urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }), member.Email, _MembershipService.GetPassword(member.Email, null));
+								facebookMail.Send();
+							}
+							catch (Exception ex)
+							{
+								_Logger.Error(ex.Message);
+							}
 
-                            var userData = member.GetUserData();
-                            FormsService.SignIn(member.Email, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+							TempData[MiscHelpers.TempDataConstants.Info] = "Vous êtes maintenant inscrit sur eWorky !";
+						}
+						else
+						{
+							return RedirectToAction(MVC.Home.Index());
+						}
+					}
 
-                            if (Url.IsLocalUrl(state))
-                            {
-                                return Redirect(state);
-                            }
-                            else
-                            {
-                                return RedirectToAction(MVC.Home.Index());
-                            }
-                        }
-                        else
-                        {
-                            // TODO Gérer l'erreur de création
-                            
-                        }
-                    }
-                }
-            }
+					var userData = member.GetUserData();
+					_FormsService.SignIn(member.Email, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
 
-            return RedirectToAction("Index", "Home");
-        }
+					if (Url.IsLocalUrl(state))
+					{
+						return Redirect(state);
+					}
+					else
+					{
+						return RedirectToAction(MVC.Home.Index());
+					}
+				}
+			}
+			return RedirectToAction(MVC.Home.Index());
+		}
 
     }
 }

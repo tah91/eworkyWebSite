@@ -294,11 +294,10 @@ page width. Or, you can specify an exact pixel width. */
 
 .loginContainer
 {
-    width:29%;
+    /*width:29%;*/
+    width:auto;
     margin-top:0!important; 
 }
-
-/*ajouter no repeat si besoin*/
 
 .logindisplay
 {

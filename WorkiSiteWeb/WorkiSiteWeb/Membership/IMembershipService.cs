@@ -22,5 +22,6 @@ namespace Worki.Memberships
 		MembershipUser GetUser(string username);
 		string GetUserByMail(string email);
 		string GetPassword(string username, string answer);
+		bool TryCreateAccount(string email, MemberMainData memberData, out int memberId);
 	}
 }

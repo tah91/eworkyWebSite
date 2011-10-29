@@ -11,3 +11,13 @@
 	</div>
     <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Mobile.MobileString.Connection"/>
 }
+
+<div class="facebookConnect">
+	<div id="fb-root">
+	</div>
+	<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+	<h3 class="blue">Ou avec votre compte Facebook</h3>	
+	<a href="@Url.Action(MVC.Account.FacebookLogOn())">
+		<div class="fb-login-button"></div>
+	</a>​
+</div>
