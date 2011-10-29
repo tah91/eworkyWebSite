@@ -380,7 +380,7 @@
     <value>Accès réservé aux détenteurs de la carte</value>
   </data>
   <data name="MinimalPeriod" xml:space="preserve">
-    <value>Durée minimale</value>
+    <value>Durée minimale de location</value>
   </data>
   <data name="NotSectorial" xml:space="preserve">
     <value>Non sectoriel</value>
@@ -392,6 +392,6 @@
     <value>Accès réservé aux clients</value>
   </data>
   <data name="Sector" xml:space="preserve">
-    <value>Sectoriel</value>
+    <value>Secteur</value>
   </data>
 </root>

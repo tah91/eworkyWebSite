@@ -3,9 +3,8 @@
 @helper BuisnessLoungeForm()
 	{
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
-        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
-            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Feature.OpenToAll, Model.Offer)
@@ -27,19 +26,18 @@
 @helper WorkstationForm()
 	{
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
-        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
-            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
+				<li>
+                    @Html.FeatureChecboxLabel(Feature.CoworkingVibe, Model.Offer)
+                </li>
+				<li>
+                    @Html.FeatureChecboxLabel(Feature.NotSectorial, Model.Offer)
+                </li>
                 <li class="li_Sector">
                     @Html.FeatureLabelFor(Feature.Sector, Model.Offer)
                     @Html.FeatureStringTextBox(Feature.Sector, Model.Offer)
-                </li>
-                <li>
-                    @Html.FeatureChecboxLabel(Feature.NotSectorial, Model.Offer)
-                </li>
-				<li>
-                    @Html.FeatureChecboxLabel(Feature.CoworkingVibe, Model.Offer)
                 </li>
             </ul>
         </div>
@@ -51,9 +49,8 @@
 @helper DesktopForm()
 	{
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
-        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
-            <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Feature.Desktop10_25, Model.Offer)
@@ -70,7 +67,6 @@
             </ul>
         </div>
 		<div class="subserviceContainer float-left">
-            <h4>@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
             <ul>
                 <li>
                     @Html.FeatureChecboxLabel(Feature.Equipped, Model.Offer)
@@ -98,7 +94,7 @@
 @helper MeetingRoomForm()
 	{
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
-        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.MeetingRoom</h3>
+        <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
@@ -155,7 +151,7 @@
 @helper SeminarRoomForm()
 	{
 	<div class="serviceContainer contentBlock"  id="offerFeaturesForm">
-        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.SeminarRoom</h3>
+        <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>
@@ -215,7 +211,7 @@
 @helper VisioRoomForm()
 	{
 	<div class="serviceContainer contentBlock"  id="offerFeaturesForm">
-        <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.VisioRoom</h3>
+        <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
             <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.RoomCapacity</h4>
             <ul>

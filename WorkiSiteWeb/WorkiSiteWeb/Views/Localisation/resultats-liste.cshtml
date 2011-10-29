@@ -19,16 +19,12 @@
 	}
 }
 
-<div class="float-left">
-    @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
-</div>
-<div class="float-right">
-    <div class="buttonStd buttonBlue linkImg inline-block">
-        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, rvd.GetOrderCrit(eOrderBy.Distance))
-    </div>
-    <div class="buttonStd buttonBlue linkImg inline-block">
-        @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, rvd.GetOrderCrit(eOrderBy.Rating))
-    </div>
+
+@RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
+
+<div class="float-right blue">
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, rvd.GetOrderCrit(eOrderBy.Distance)) | 
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, rvd.GetOrderCrit(eOrderBy.Rating))
 </div>
 <div class="clear"></div>
 

@@ -61,7 +61,7 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trie par Distance.
+        ///   Looks up a localized string similar to Tri par distance.
         /// </summary>
         public static string DistanceOrdered {
             get {
@@ -142,7 +142,7 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trie par Note.
+        ///   Looks up a localized string similar to Tri par note.
         /// </summary>
         public static string RateOrdered {
             get {

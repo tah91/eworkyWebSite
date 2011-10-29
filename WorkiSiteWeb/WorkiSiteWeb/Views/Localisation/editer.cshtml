@@ -17,8 +17,8 @@
         @Html.HiddenFor(model => model.Localisation.Longitude)
         <div class="blockContainer">
             <div class="contentBlock">
-                <div class="dataEdition float-left">
-                    <div class="generalInfos">
+                <div class="dataEdition">
+                    <div class="generalInfos float-left">
                         <h3 class="blue inline">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3>
                         <span>&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
                         <table class="generalInfosTable editionTable">
@@ -193,6 +193,13 @@
                             </tr>
                         </table>
                     </div>
+					<div class="editPlace float-right borderRadius">
+						<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
+						<span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
+						<div id="editMapDiv">
+						</div>
+						<button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
+					</div>
                 </div>
                 <div class="clear">
                 </div>
@@ -377,7 +384,7 @@
 			}
             <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
-                <table class="generalInfosTable editionTable float-left">
+                <table class="generalInfosTable editionTable">
                     <tr>
                         <td>
                             <div class="editor-label">
@@ -415,15 +422,6 @@
                         </td>
                     </tr>
                 </table>
-                <div class="editPlace float-right borderRadius">
-                    <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
-                    <span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
-                    <div id="editMapDiv">
-                    </div>
-                    <button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
-                </div>
-                <div class="clear">
-                </div>
             </div>
             <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Hourly</h3>

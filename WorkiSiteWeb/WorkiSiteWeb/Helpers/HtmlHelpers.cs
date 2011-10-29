@@ -114,6 +114,8 @@ namespace Worki.Web.Helpers
                 tag.MergeAttribute("href", pageUrl(nextIndex));
                 tag.InnerHtml = next;
                 div.InnerHtml = tag.ToString();
+				if (result.Length > 0)
+					result.Append(" | ");
                 result.AppendLine(div.ToString());
             }
             return MvcHtmlString.Create(result.ToString());

@@ -272,7 +272,7 @@
     <value>Réservation</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>- centre d'affaires&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc.</value>
+    <value>- centre d'affaires, espace voyageur&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Recherche</value>
@@ -281,7 +281,7 @@
     <value>Rechercher</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
-    <value>- café internet, spot wifi&lt;br /&gt;- espace voyageur, espace publique numérique&lt;br /&gt;- bibliotèque, musée, etc.</value>
+    <value>- café internet, spot wifi&lt;br /&gt;- espace publique numérique&lt;br /&gt;- bibliotèque, musée, etc.</value>
   </data>
   <data name="SoonLotofFeatures" xml:space="preserve">
     <value>Et bientôt plein d’autres fonctionnalités.</value>

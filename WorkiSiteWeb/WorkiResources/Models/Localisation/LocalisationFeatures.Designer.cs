@@ -448,7 +448,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Durée minimale.
+        ///   Looks up a localized string similar to Durée minimale de location.
         /// </summary>
         public static string MinimalPeriod {
             get {
@@ -709,7 +709,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sectoriel.
+        ///   Looks up a localized string similar to Secteur.
         /// </summary>
         public static string Sector {
             get {

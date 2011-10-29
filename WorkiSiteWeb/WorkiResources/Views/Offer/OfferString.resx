@@ -138,4 +138,7 @@
   <data name="OfferEdited" xml:space="preserve">
     <value>L'offre a bien été éditée</value>
   </data>
+  <data name="OfferCharacteristics" xml:space="preserve">
+    <value>Caractéristiques de l'offre</value>
+  </data>
 </root>
