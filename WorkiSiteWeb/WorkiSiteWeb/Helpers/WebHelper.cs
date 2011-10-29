@@ -16,6 +16,7 @@ using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Helpers;
 using Worki.Service;
 using Worki.Web.Singletons;
+using System.Web.Routing;
 
 namespace Worki.Web.Helpers
 {
@@ -103,6 +104,16 @@ namespace Worki.Web.Helpers
 			var fbSettings = ConfigurationManager.GetSection("facebookSettings") as Facebook.FacebookConfigurationSection;
 			_FacebookId= fbSettings != null ? fbSettings.AppId : string.Empty;
 			return _FacebookId;
+		}
+
+		public static RouteValueDictionary GetRVD(WebViewPage page)
+		{
+			RouteValueDictionary rvd = new RouteValueDictionary(page.ViewContext.RouteData.Values);
+			foreach (string key in page.Request.QueryString.Keys)
+			{
+				rvd[key] = page.Request.QueryString[key].ToString();
+			}
+			return rvd;
 		}
     }
 }
