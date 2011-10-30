@@ -304,7 +304,7 @@
   <data name="Wifi_Not_Free" xml:space="preserve">
     <value>Wifi payant</value>
   </data>
-  <data name="BuisnessRoom" xml:space="preserve">
+  <data name="BuisnessLounge" xml:space="preserve">
     <value>Salon d'affaires</value>
   </data>
   <data name="FreeArea" xml:space="preserve">
@@ -313,7 +313,7 @@
   <data name="SeminarRoom" xml:space="preserve">
     <value>Salle(s) de conférence</value>
   </data>
-  <data name="SingleDesk" xml:space="preserve">
+  <data name="Desktop" xml:space="preserve">
     <value>Bureau(x)</value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
@@ -334,7 +334,7 @@
   <data name="SingleSeminarRoom" xml:space="preserve">
     <value>Salle de conférence / séminaire</value>
   </data>
-  <data name="SingleSingleDesk" xml:space="preserve">
+  <data name="SingleDesktop" xml:space="preserve">
     <value>Bureau</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">

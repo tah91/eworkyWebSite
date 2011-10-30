@@ -475,7 +475,6 @@ namespace Links {
             public static readonly string csv_import_png = Url("csv-import.png");
             public static readonly string delete_gif = Url("delete.gif");
             public static readonly string drh_png = Url("drh.png");
-            public static readonly string facebook_jpg = Url("facebook.jpg");
             public static readonly string favicon_png = Url("favicon.png");
             public static readonly string favorite_png = Url("favorite.png");
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
@@ -485,7 +484,6 @@ namespace Links {
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
             public static readonly string homeLogo3_png = Url("homeLogo3.png");
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
-            public static readonly string icon_facebook_png = Url("icon_facebook.png");
             public static readonly string iconeMap_png = Url("iconeMap.png");
             public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
             public static readonly string independant_png = Url("independant.png");
@@ -495,7 +493,6 @@ namespace Links {
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
-            public static readonly string logon_facebook_png = Url("logon_facebook.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
@@ -1495,6 +1492,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Offers() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Offers);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Edit() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
         }
@@ -1558,6 +1560,7 @@ namespace Worki.Web.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string Details = "details";
+            public readonly string Offers = "offres";
             public readonly string CreateFree = "ajouter-lieu-gratuit";
             public readonly string CreateNotFree = "ajouter-lieu-payant";
             public readonly string Edit = "editer";
@@ -1587,6 +1590,7 @@ namespace Worki.Web.Controllers {
             public readonly string _IconeServices = "~/Views/Localisation/_IconeServices.cshtml";
             public readonly string _LocalisationDetail = "~/Views/Localisation/_LocalisationDetail.cshtml";
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
+            public readonly string _LocalisationInfos = "~/Views/Localisation/_LocalisationInfos.cshtml";
             public readonly string _SearchForm = "~/Views/Localisation/_SearchForm.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
@@ -1594,6 +1598,7 @@ namespace Worki.Web.Controllers {
             public readonly string _Suggestions = "~/Views/Localisation/_Suggestions.cshtml";
             public readonly string editer = "~/Views/Localisation/editer.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
+            public readonly string Offers = "~/Views/Localisation/Offers.cshtml";
             public readonly string recherche = "~/Views/Localisation/recherche.cshtml";
             public readonly string resultats_detail = "~/Views/Localisation/resultats-detail.cshtml";
             public readonly string resultats_liste = "~/Views/Localisation/resultats-liste.cshtml";
@@ -1615,6 +1620,13 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("name", name);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Offers(int id, int type) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Offers);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("type", type);
             return callInfo;
         }
 

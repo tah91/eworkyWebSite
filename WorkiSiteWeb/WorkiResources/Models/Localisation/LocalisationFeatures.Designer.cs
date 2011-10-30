@@ -171,9 +171,9 @@ namespace Worki.Resources.Models.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Salon d&apos;affaires.
         /// </summary>
-        public static string BuisnessRoom {
+        public static string BuisnessLounge {
             get {
-                return ResourceManager.GetString("BuisnessRoom", resourceCulture);
+                return ResourceManager.GetString("BuisnessLounge", resourceCulture);
             }
         }
         
@@ -264,6 +264,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bureau(x).
+        /// </summary>
+        public static string Desktop {
+            get {
+                return ResourceManager.GetString("Desktop", resourceCulture);
             }
         }
         
@@ -736,11 +745,11 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bureau(x).
+        ///   Looks up a localized string similar to Bureau.
         /// </summary>
-        public static string SingleDesk {
+        public static string SingleDesktop {
             get {
-                return ResourceManager.GetString("SingleDesk", resourceCulture);
+                return ResourceManager.GetString("SingleDesktop", resourceCulture);
             }
         }
         
@@ -759,15 +768,6 @@ namespace Worki.Resources.Models.Localisation {
         public static string SingleSeminarRoom {
             get {
                 return ResourceManager.GetString("SingleSeminarRoom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bureau.
-        /// </summary>
-        public static string SingleSingleDesk {
-            get {
-                return ResourceManager.GetString("SingleSingleDesk", resourceCulture);
             }
         }
         

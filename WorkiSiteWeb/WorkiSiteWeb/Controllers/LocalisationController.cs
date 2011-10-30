@@ -61,6 +61,23 @@ namespace Worki.Web.Controllers
 			}
 		}
 
+		/// <summary>
+		/// The view containing the offers of a localisation
+		/// </summary>
+		/// <param name="id">id of the localisation</param>
+		/// <param name="type">offer type</param>
+		/// <returns>The action result.</returns>
+		[ActionName("offres")]
+		public virtual ActionResult Offers(int id, int type)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
+
+			var container = new LocalisationOfferViewModel(localisation, (LocalisationOffer)type);
+			return View(MVC.Localisation.Views.Offers, container);
+		}
+
         /// <summary>
         /// GET action to create a new free localisation
         /// </summary>

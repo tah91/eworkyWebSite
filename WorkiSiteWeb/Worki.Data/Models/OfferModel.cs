@@ -122,9 +122,14 @@ namespace Worki.Data.Models
 
 		#endregion
 
+		public static bool NeedQuotation(LocalisationOffer type)
+		{
+			return type == LocalisationOffer.Desktop;
+		}
+
 		public bool NeedQuotation()
 		{
-			return Type == (int)LocalisationOffer.Desktop;
+			return NeedQuotation((LocalisationOffer)Type);
 		}
 	}
 

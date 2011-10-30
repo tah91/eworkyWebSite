@@ -229,17 +229,17 @@ namespace Worki.Data.Models
 				case LocalisationOffer.FreeArea:
 					return Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea;
 				case LocalisationOffer.BuisnessLounge:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessRoom;
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge;
 				case LocalisationOffer.Workstation:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation;
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation;
 				case LocalisationOffer.Desktop:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSingleDesk;
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop;
 				case LocalisationOffer.MeetingRoom:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom;
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom;
 				case LocalisationOffer.SeminarRoom:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom;
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom;
 				case LocalisationOffer.VisioRoom:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom;
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom;
 				default:
 					return string.Empty;
 			}
@@ -266,6 +266,11 @@ namespace Worki.Data.Models
 			return Offers.Where(o => o.Type == (int)offer).Count();
 		}
 
+		public IEnumerable<Offer> GetOffers(LocalisationOffer offerType)
+		{
+			return Offers.Where(o => o.Type == (int)offerType);
+		}
+
 		/// <summary>
 		/// Check if localisation have an offer
 		/// </summary>
@@ -273,6 +278,44 @@ namespace Worki.Data.Models
 		public bool HasOffer()
 		{
 			return Offers.Count != 0;
+		}
+
+		/// <summary>
+		/// Get all files of a certain type of offer
+		/// </summary>
+		/// <param name="offerType">the type of offer</param>
+		/// <returns>the files</returns>
+		public IEnumerable<OfferFile>  GetOfferFiles(LocalisationOffer offerType)
+		{
+			var offers = GetOffers(offerType);
+			var toRet = new List<OfferFile>();
+			foreach (var item in offers)
+			{
+				foreach (var file in item.OfferFiles)
+				{
+					toRet.Add(file);
+				}
+			}
+			return toRet;
+		}
+
+		/// <summary>
+		/// Get all features of a certain type of offer
+		/// </summary>
+		/// <param name="offerType">the type of offer</param>
+		/// <returns>the features</returns>
+		public IEnumerable<Feature> GetOfferFeatures(LocalisationOffer offerType)
+		{
+			var offers = GetOffers(offerType);
+			var set = new HashSet<Feature>();
+			foreach (var item in offers)
+			{
+				foreach (var feature in item.OfferFeatures)
+				{
+					set.Add((Feature)feature.FeatureId);
+				}
+			}
+			return set.ToList();
 		}
 
 		#endregion
@@ -738,6 +781,26 @@ namespace Worki.Data.Models
 			IsFreeLocalisation = isFree;
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes();
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
+		}
+
+		#endregion
+	}
+
+	public class LocalisationOfferViewModel
+	{
+		#region Properties
+
+		public Localisation Localisation { get; private set; }
+		public IEnumerable<Offer> Offers { get; private set; }
+
+		#endregion
+
+		#region Ctor
+
+		public LocalisationOfferViewModel(Localisation localisation, LocalisationOffer offerType)
+		{
+			Localisation = localisation;
+			Offers = Localisation.GetOffers(offerType);
 		}
 
 		#endregion
