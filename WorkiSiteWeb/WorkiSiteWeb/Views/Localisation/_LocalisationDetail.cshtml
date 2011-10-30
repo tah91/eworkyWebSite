@@ -80,47 +80,46 @@
 			}
 			@{
 				var generalFeatures = Model.GetFeaturesWithin(FeatureHelper.Characteristics);
+				var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
 			}
 			<div class="localisationDescription contentBlock">
-				<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Description</h3>
+				@*<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Description</h3>*@
 				<div class="localisationDesc" itemprop="description">
 					@Html.Nl2Br(Model.Description)
 				</div>
-				<div class="featureTag">
-					<ul>
-					@foreach (var item in generalFeatures)
-					{
-						<li>@RazorHelpers.FeatureTag(item)</li>
-					}       
-					@if (Model.HasFeature(Feature.CoffeePrice))
-					{
-						<li>@Localisation.GetFeatureDisplayName(Feature.CoffeePrice) : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.GetNumberFeature(Feature.CoffeePrice))</li>
-					}
-					</ul>
-				</div>
-				<div class="clear">
-				</div>
+				@if (generalFeatures.Count > 0)
+				{
+					<h4 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
+					<div class="featureTag">
+						<ul>
+						@foreach (var item in generalFeatures)
+						{
+							<li>@RazorHelpers.FeatureTag(item)</li>
+						}       
+						@if (Model.HasFeature(Feature.CoffeePrice))
+						{
+							<li>@Localisation.GetFeatureDisplayName(Feature.CoffeePrice) : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.GetNumberFeature(Feature.CoffeePrice))</li>
+						}
+						</ul>
+					</div>
+					<div class="clear">
+					</div>
+				}
+				@if (workingPlaceFeatures.Count > 0)
+				{
+					<h4 class="blue">@Worki.Resources.Views.Shared.SharedString.Services</h4>
+					<div class="featureTag">
+						<ul>
+						@foreach (var item in workingPlaceFeatures)
+						{
+							<li>@RazorHelpers.FeatureTag(item)</li>
+						}
+						</ul>
+					</div> 
+					<div class="clear">
+					</div>
+				}
 			</div>
-			@{
-				var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
-			}
-			@if (workingPlaceFeatures.Count > 0)
-			{
-			<div class="localisationServices contentBlock">
-				<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Services</h3>
-
-				<div class="featureTag">
-					<ul>
-					@foreach (var item in workingPlaceFeatures)
-					{
-						<li>@RazorHelpers.FeatureTag(item)</li>
-					}
-					</ul>
-				</div> 
-				<div class="clear">
-				</div>
-			</div>   
-			}
 			@foreach (var offer in Model.Offers)
 			{
 				var title = Model.OfferCount((LocalisationOffer)offer.Type) > 1 ? Localisation.GetOfferType(offer.Type) + " - " + offer.Name : Localisation.GetOfferType(offer.Type);

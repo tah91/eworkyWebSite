@@ -115,15 +115,6 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prix du café.
-        /// </summary>
-        public static string CoffeePrice {
-            get {
-                return ResourceManager.GetString("CoffeePrice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Commentaires.
         /// </summary>
         public static string Comments {
