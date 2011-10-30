@@ -264,7 +264,7 @@
 .indexLogoContainer
 {
     width: 45%;
-    height: 100px;
+    /*height: 100px;*/
     padding:20px!important;
 }
 
@@ -272,7 +272,7 @@
 {
     width: 122px;
     height: 75px;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
 }
 
 .indexLogoSearch
@@ -298,8 +298,8 @@
 .indexLogoDesc
 {
     width:60%;
-    vertical-align: 15%;
-    margin-left: 15px;
+    /*vertical-align: 15%;*/
+    /*margin-left: 15px;*/
 }
 
 .blogContainer
