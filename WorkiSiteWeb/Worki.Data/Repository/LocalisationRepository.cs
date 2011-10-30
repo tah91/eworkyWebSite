@@ -101,6 +101,7 @@ namespace Worki.Data.Models
 										 LocalisationType = item.TypeValue,
 										 Features = (from f in item.LocalisationFeatures select f.FeatureID),
 										 OfferTypes = (from o in item.Offers select o.Type),
+										 Ratings = (from c in item.Comments select new { Price = c.RatingPrice, Wifi = c.RatingWifi, Dispo = c.RatingDispo, Welcome = c.RatingWelcome, Rating = c.Rating })
 									 }).ToList();
 
 			//match offer type
@@ -147,6 +148,38 @@ namespace Worki.Data.Models
 					return true;
 				}).Select(loc => loc.ID).ToList();
 
+			var ratingDict = new Dictionary<int, double>();
+			foreach (var item in locProjectionList)
+			{
+				if (item.Ratings.Count() == 0)
+				{
+					ratingDict[item.ID] = -1;
+					continue;
+				}
+				try
+				{
+					if (Localisation.FreeLocalisationTypes.Contains(item.LocalisationType))
+					{
+						var ratings = new List<double>
+                    { 
+                        item.Ratings.Where(c => c.Price >= 0).Average(c => c.Price),
+						item.Ratings.Where(c => c.Wifi >= 0).Average(c => c.Wifi),
+						item.Ratings.Where(c => c.Dispo >= 0).Average(c => c.Dispo),
+						item.Ratings.Where(c => c.Welcome >= 0).Average(c => c.Welcome)
+                    };
+						ratingDict[item.ID] = ratings.Where(d => d >= 0).Average();
+					}
+					else
+					{
+						ratingDict[item.ID] = item.Ratings.Where(c => c.Rating >= 0).Average(c => c.Rating);
+					}
+				}
+				catch (Exception)
+				{
+					ratingDict[item.ID] = -1;
+				}
+			}
+
             //build an offerlist which contains correct ids
             if (criteria.OfferData.OfferFeatures.Count != 0)
             {
@@ -177,7 +210,7 @@ namespace Worki.Data.Models
                 }).Select(offer => offer.LocID).ToList();
             }
 
-			return _Context.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList();
+			return _Context.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList().OrderByDescending(loc => ratingDict[loc.ID]).ToList();
 		}
 
 		public Comment GetComment(int comId)

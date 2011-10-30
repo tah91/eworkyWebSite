@@ -50,12 +50,9 @@ namespace Worki.Service
             /* Switch needed to check the different cases */
             switch (criteriaViewModel.Criteria.OrderBy)
             {
-                case eOrderBy.Rating:
-                    criteriaViewModel.Results = (from item
-                                                    in results
-                                                 orderby item.GetRatingAverage(RatingType.General) descending
-                                                 select item).ToList();
-                    break;
+				case eOrderBy.Rating:
+					criteriaViewModel.Results = results;
+					break;
                 case eOrderBy.Distance:
                     criteriaViewModel.Results = (from item
                                                     in results
