@@ -1545,6 +1545,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult FullSearchResultDetail() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Suggestions() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Localisation; } }
@@ -1576,6 +1581,7 @@ namespace Worki.Web.Controllers {
             public readonly string FullSearchPerTypeSpecial = "recherche-special";
             public readonly string FullSearchResult = "resultats-liste";
             public readonly string FullSearchResultDetail = "resultats-detail";
+            public readonly string Suggestions = "Suggestions";
         }
 
 
@@ -1740,6 +1746,12 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
             callInfo.RouteValueDictionary.Add("index", index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Suggestions(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

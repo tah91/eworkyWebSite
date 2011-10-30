@@ -339,6 +339,9 @@ namespace Worki.Infrastructure
 
 			HttpResponseBase response = filterContext.HttpContext.Response;
 
+			if (response.Filter == null)
+				return;
+
 			if (acceptEncoding.Contains("GZIP"))
 			{
 				response.AppendHeader("Content-encoding", "gzip");

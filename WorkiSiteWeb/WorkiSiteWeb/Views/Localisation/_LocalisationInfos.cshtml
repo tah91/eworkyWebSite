@@ -177,4 +177,5 @@
 		@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.EmailConstants.ContactMail
 	}
 </div>
-@Html.Partial(MVC.Localisation.Views._Suggestions, MVC.Localisation.Suggestions(Model.ID))
+
+@{Html.RenderAction(MVC.Localisation.Suggestions(Model.ID));}
