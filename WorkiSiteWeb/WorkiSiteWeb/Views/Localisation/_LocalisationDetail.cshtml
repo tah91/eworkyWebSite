@@ -36,7 +36,7 @@
 				<ul>
 				@foreach (var item in features)
 				{
-					<li>@RazorHelpers.FeatureTag((Feature)item)</li>
+					<li>@FeatureHelper.Display(item)</li>
 				}
 				</ul>
 			</div> 
@@ -143,12 +143,8 @@
 						<ul>
 						@foreach (var item in generalFeatures)
 						{
-							<li>@RazorHelpers.FeatureTag(item)</li>
+							<li>@FeatureHelper.Display(item)</li>
 						}       
-						@if (Model.HasFeature(Feature.CoffeePrice))
-						{
-							<li>@Localisation.GetFeatureDisplayName(Feature.CoffeePrice) : @string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", Model.GetNumberFeature(Feature.CoffeePrice))</li>
-						}
 						</ul>
 					</div>
 					<div class="clear">
@@ -161,7 +157,7 @@
 						<ul>
 						@foreach (var item in workingPlaceFeatures)
 						{
-							<li>@RazorHelpers.FeatureTag(item)</li>
+							<li>@FeatureHelper.Display(item)</li>
 						}
 						</ul>
 					</div> 

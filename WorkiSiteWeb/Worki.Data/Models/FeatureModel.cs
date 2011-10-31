@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Worki.Data.Models
 {
@@ -46,7 +47,8 @@ namespace Worki.Data.Models
 			Feature.ErgonomicFurniture, 
 			Feature.Shower,
 			Feature.Newspaper,
-			Feature.TV
+			Feature.TV,
+			Feature.CoffeePrice
 		};
 
 		public static List<Feature> Services = new List<Feature>()
@@ -226,12 +228,52 @@ namespace Worki.Data.Models
                     yield return str;
             }
         }
+
+		/// <summary>
+		/// Get feature display name from resources
+		/// </summary>
+		/// <param name="feature">the feature</param>
+		/// <returns>the display name</returns>
+		public static string GetFeatureDisplayName(Feature feature)
+		{
+			var enumType = typeof(Feature);
+			var enumResxType = typeof(Worki.Resources.Models.Localisation.LocalisationFeatures);
+			var enumStr = Enum.GetName(enumType, feature);
+
+			var nameProperty = enumResxType.GetProperty(enumStr, BindingFlags.Static | BindingFlags.Public);
+			if (nameProperty != null)
+			{
+				enumStr = (string)nameProperty.GetValue(nameProperty.DeclaringType, null);
+			}
+			return enumStr;
+		}
+
+		/// <summary>
+		/// Get displayed value of a feature
+		/// </summary>
+		/// <param name="feature">feature to display</param>
+		/// <param name="container">feature container</param>
+		/// <returns>the display value</returns>
+		public static string Display(IFeatureContainer feature)
+		{
+			switch(feature.Feature)
+			{
+				case Feature.CoffeePrice:
+					return FeatureHelper.GetFeatureDisplayName(feature.Feature) + " : " + string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", feature.DecimalValue);
+				case Feature.Sector:
+				case Feature.MinimalPeriod:
+				case Feature.ForCardOwner:
+					return FeatureHelper.GetFeatureDisplayName(feature.Feature) + " : " + feature.StringValue;
+				default:
+					return GetFeatureDisplayName(feature.Feature);
+			}
+		}
 	}
 
 	/// <summary>
 	/// interface for handling features (for localisation and offer)
 	/// </summary>
-	public interface IFeatureContainer
+	public interface IFeatureProvider
 	{
         /// <summary>
         /// Get internal prefix depending on container
@@ -259,5 +301,28 @@ namespace Worki.Data.Models
 		/// <param name="feature">the feature to check</param>
 		/// <returns>decimal value, null if don't have the feature</returns>
 		decimal? GetNumberFeature(Feature feature);
+	}
+
+	/// <summary>
+	/// interface for handling features (for localisation and offer)
+	/// </summary>
+	public interface IFeatureContainer
+	{
+		/// <summary>
+		/// The feature
+		/// </summary>
+		Feature Feature { get; }
+
+		/// <summary>
+		/// Get the string value of a feature
+		/// </summary>
+		/// <returns>string value</returns>
+		string StringValue { get; }
+
+		/// <summary>
+		/// Get the decimal value of a feature
+		/// </summary>
+		/// <returns>decimal value</returns>
+		decimal? DecimalValue { get; }
 	}
 }

@@ -37,7 +37,7 @@
 					<ul>
 					@foreach (var item in offer.OfferFeatures)
 					{
-						<li>@RazorHelpers.FeatureTag((Feature)item.FeatureId)</li>
+						<li>@FeatureHelper.Display(item)</li>
 					}
 					</ul>
 				</div> 

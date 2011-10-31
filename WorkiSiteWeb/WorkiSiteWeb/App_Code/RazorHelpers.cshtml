@@ -31,46 +31,6 @@
 	}
 }
 
-@helper FeatureTag(Feature feature)
-	{
-    @Localisation.GetFeatureDisplayName(feature)
-}
-
-@helper FeatureTabContent(List<Feature> list, string id)
-	{
-		if (list != null && list.Count != 0)
-		{
-        <div id="@id" class="tab_content featureTag">
-            <ul>
-                @foreach (var item in list)
-				{
-                    <li>@FeatureTag(item)</li>
-				}        
-            </ul>
-        </div> 
-		} 
-}
-
-@helper FeatureToogle(string title, List<Feature> list)
-	{
-    <h4 class="toogle_trigger toogle_trigger_click@(list.Count == 0 ? "k" : "") bold blue"><span>@title</span></h4>
-		if (list.Count > 0)
-		{
-    <div class="toogle_container">
-        <div class="block featureTag">
-            <ul>
-            @foreach (var item in list)
-			{
-                <li>@FeatureTag(item)</li>
-			}
-            </ul>
-        </div> 
-    </div> 
-		}
-    <div class="clear">
-    </div>
-}
-
 @helper OpenningRow(Localisation model, DayOfWeek dayOfWeek, string displayName)
 	{
 		if (model.HasOpenningTimes(dayOfWeek))

@@ -131,17 +131,17 @@ namespace Worki.Web.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
-		public static MvcHtmlString FeatureLabelFor(this HtmlHelper html, Feature value, IFeatureContainer offer)
+		public static MvcHtmlString FeatureLabelFor(this HtmlHelper html, Feature value, IFeatureProvider offer)
         {
-            return html.LabelFor(Localisation.GetFeatureDisplayName(value), FeatureHelper.GetStringId(value, offer.GetPrefix()));
+			return html.LabelFor(FeatureHelper.GetFeatureDisplayName(value), FeatureHelper.GetStringId(value, offer.GetPrefix()));
         }
 
-		public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Feature value, IFeatureContainer offer)
+		public static MvcHtmlString FeatureCheckBox(this HtmlHelper html, Feature value, IFeatureProvider offer)
 		{
             return html.CheckBox(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.HasFeature(value));
 		}
 
-		public static MvcHtmlString FeatureChecboxLabel(this HtmlHelper html, Feature value, IFeatureContainer offer)
+		public static MvcHtmlString FeatureChecboxLabel(this HtmlHelper html, Feature value, IFeatureProvider offer)
 		{
 			StringBuilder result = new StringBuilder();
 			TagBuilder tag = new TagBuilder("div");
@@ -153,17 +153,17 @@ namespace Worki.Web.Helpers
 			return MvcHtmlString.Create(result.ToString());
 		}
 
-		public static MvcHtmlString FeatureStringTextBox(this HtmlHelper html, Feature value, IFeatureContainer offer, object htmlAttributes = null)
+		public static MvcHtmlString FeatureStringTextBox(this HtmlHelper html, Feature value, IFeatureProvider offer, object htmlAttributes = null)
 		{
             return html.TextBox(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.GetStringFeature(value), htmlAttributes);
 		}
 
-		public static MvcHtmlString FeatureNumberTextBox(this HtmlHelper html, Feature value, IFeatureContainer offer, object htmlAttributes = null)
+		public static MvcHtmlString FeatureNumberTextBox(this HtmlHelper html, Feature value, IFeatureProvider offer, object htmlAttributes = null)
 		{
             return html.TextBox(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.GetNumberFeature(value), htmlAttributes);
 		}
 
-        public static MvcHtmlString FeatureHidden(this HtmlHelper html, Feature value, IFeatureContainer offer)
+        public static MvcHtmlString FeatureHidden(this HtmlHelper html, Feature value, IFeatureProvider offer)
         {
             return html.Hidden(FeatureHelper.GetStringId(value, offer.GetPrefix()), offer.HasFeature(value));
         }

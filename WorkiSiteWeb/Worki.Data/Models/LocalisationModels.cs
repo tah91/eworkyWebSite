@@ -13,7 +13,7 @@ using System.Reflection;
 namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
-	public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureContainer// : IDataErrorInfo
+	public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureProvider// : IDataErrorInfo
 	{
 		#region Data Container Ctor
 
@@ -52,25 +52,7 @@ namespace Worki.Data.Models
 
 		#region Features
 
-		#region Static Members
-
-		public static string GetFeatureDisplayName(Feature feature)
-		{
-			var enumType = typeof(Feature);
-			var enumResxType = typeof(Worki.Resources.Models.Localisation.LocalisationFeatures);
-			var enumStr = Enum.GetName(enumType, feature);
-
-			var nameProperty = enumResxType.GetProperty(enumStr, BindingFlags.Static | BindingFlags.Public);
-			if (nameProperty != null)
-			{
-				enumStr = (string)nameProperty.GetValue(nameProperty.DeclaringType, null);
-			}
-			return enumStr;
-		}
-
-		#endregion
-
-		#region IFeatureContainer
+		#region IFeatureProvider
 
         public string GetPrefix()
         {
@@ -103,13 +85,13 @@ namespace Worki.Data.Models
 
 		#region Features
 
-		public List<Feature> GetFeaturesWithin(IEnumerable<Feature> toInclude)
+		public List<IFeatureContainer> GetFeaturesWithin(IEnumerable<Feature> toInclude)
 		{
-			var toRet = new List<Feature>();
+			var toRet = new List<IFeatureContainer>();
 			return (from item
 						in LocalisationFeatures
 					where toInclude.Contains((Feature)item.FeatureID)
-					select (Feature)item.FeatureID).ToList();
+					select (IFeatureContainer)item).ToList();
 		}
 
 		public bool HasFeatureIn(List<Feature> features)
@@ -304,15 +286,15 @@ namespace Worki.Data.Models
 		/// </summary>
 		/// <param name="offerType">the type of offer</param>
 		/// <returns>the features</returns>
-		public IEnumerable<Feature> GetOfferFeatures(LocalisationOffer offerType)
+		public IEnumerable<IFeatureContainer> GetOfferFeatures(LocalisationOffer offerType)
 		{
 			var offers = GetOffers(offerType);
-			var set = new HashSet<Feature>();
+			var set = new HashSet<IFeatureContainer>();
 			foreach (var item in offers)
 			{
 				foreach (var feature in item.OfferFeatures)
 				{
-					set.Add((Feature)feature.FeatureId);
+					set.Add(feature);
 				}
 			}
 			return set.ToList();
@@ -541,7 +523,7 @@ namespace Worki.Data.Models
 			foreach (var item in FeatureHelper.AvoidPeriods)
 			{
 				if (HasFeature(item))
-					toRet += Localisation.GetFeatureDisplayName(item).ToLower() + ", ";
+					toRet += FeatureHelper.GetFeatureDisplayName(item).ToLower() + ", ";
 			}
 			var last = toRet.LastIndexOf(",");
 			toRet = toRet.Remove(last, 1).Insert(last, ".");
@@ -1140,5 +1122,13 @@ namespace Worki.Data.Models
 	{
 		[Display(Name = "CoffeePrice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int CoffeePrice { get; set; }
+	}
+
+	public partial class LocalisationFeature : IFeatureContainer
+	{
+		public Feature Feature
+		{
+			get { return (Feature)FeatureID; }
+		}
 	}
 }

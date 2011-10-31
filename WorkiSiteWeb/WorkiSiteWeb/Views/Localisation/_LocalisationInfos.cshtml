@@ -34,7 +34,7 @@
 	<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
 	@if (Model.HasFeature(Feature.LocalisationOwner))
 	{	 
-		<span>@Localisation.GetFeatureDisplayName(Feature.LocalisationOwner)</span>
+		<span>@FeatureHelper.Display(Feature.LocalisationOwner,Model)</span>
 	}
 	<div class="clear">
 	</div>

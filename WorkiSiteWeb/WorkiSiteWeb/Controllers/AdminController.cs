@@ -1072,7 +1072,7 @@ namespace Worki.Web.Controllers
 						var features = item.GetFeaturesWithin(FeatureHelper.BuisnessLounge);
                         foreach (var f in features)
                         {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
                         }
                         item.Offers.Add(offer);
                         strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
@@ -1086,7 +1086,7 @@ namespace Worki.Web.Controllers
                         var features = item.GetFeaturesWithin(FeatureHelper.Workstation);
                         foreach (var f in features)
                         {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
                         }
                         item.Offers.Add(offer);
                         strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
@@ -1100,7 +1100,7 @@ namespace Worki.Web.Controllers
                         var features = item.GetFeaturesWithin(FeatureHelper.Desktop);
                         foreach (var f in features)
                         {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
                         }
                         item.Offers.Add(offer);
                         strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
@@ -1114,7 +1114,7 @@ namespace Worki.Web.Controllers
                         var features = item.GetFeaturesWithin(FeatureHelper.MeetingRoom);
                         foreach (var f in features)
                         {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
                         }
                         item.Offers.Add(offer);
                         strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
@@ -1128,7 +1128,7 @@ namespace Worki.Web.Controllers
                         var features = item.GetFeaturesWithin(FeatureHelper.SeminarRoom);
                         foreach (var f in features)
                         {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
                         }
                         item.Offers.Add(offer);
                         strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
@@ -1142,7 +1142,7 @@ namespace Worki.Web.Controllers
                         var features = item.GetFeaturesWithin(FeatureHelper.VisioRoom);
                         foreach (var f in features)
                         {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f });
+                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
                         }
                         item.Offers.Add(offer);
                         strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);

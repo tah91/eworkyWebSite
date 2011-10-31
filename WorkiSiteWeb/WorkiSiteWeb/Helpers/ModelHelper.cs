@@ -57,7 +57,7 @@ namespace Worki.Web.Helpers
 			//get amenities
 			foreach (var item in localisation.LocalisationFeatures)
 			{
-				json.amenities.Add(Localisation.GetFeatureDisplayName((Feature)item.FeatureID));
+				json.amenities.Add(FeatureHelper.GetFeatureDisplayName((Feature)item.FeatureID));
 			}
 			return json;
 		}

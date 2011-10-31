@@ -38,7 +38,7 @@ namespace Worki.Data.Models
 	}
 
 	[MetadataType(typeof(Offer_Validation))]
-	public partial class Offer : IPictureDataProvider, IFeatureContainer
+	public partial class Offer : IPictureDataProvider, IFeatureProvider
 	{
 		#region IPictureDataProvider
 
@@ -91,7 +91,7 @@ namespace Worki.Data.Models
 
 		#endregion
 
-		#region IFeatureContainer
+		#region IFeatureProvider
 
         public string GetPrefix()
         {
@@ -144,5 +144,13 @@ namespace Worki.Data.Models
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Name", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
 		public string Name { get; set; }
+	}
+
+	public partial class OfferFeature : IFeatureContainer
+	{
+		public Feature Feature
+		{
+			get { return (Feature)FeatureId; }
+		}
 	}
 }

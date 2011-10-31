@@ -50,6 +50,7 @@ namespace Worki.Service
             /* Switch needed to check the different cases */
             switch (criteriaViewModel.Criteria.OrderBy)
             {
+				//already ordered by rating
 				case eOrderBy.Rating:
 					criteriaViewModel.Results = results;
 					break;
@@ -180,7 +181,7 @@ namespace Worki.Service
             criteria.LocalisationData.LocalisationFeatures.Clear();
 			foreach (var key in locKeys)
             {
-                criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = key/*, OfferID = offerId*/ });
+                criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = key });
             }
 
 			var offerKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.OfferPrefix);
