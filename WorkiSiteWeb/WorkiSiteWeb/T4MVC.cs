@@ -1351,6 +1351,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult ChangeCulture() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ChangeCulture);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AboutMenu() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AboutMenu);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Home; } }
@@ -1375,6 +1380,7 @@ namespace Worki.Web.Controllers {
             public readonly string Legal = "mentions-legales";
             public readonly string ChangeCulture = "ChangeCulture";
             public readonly string AddSpace = "ajouter-espace";
+            public readonly string AboutMenu = "AboutMenu";
         }
 
 
@@ -1383,6 +1389,7 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _AboutMenu = "~/Views/Home/_AboutMenu.cshtml";
             public readonly string _PeopleSlider = "~/Views/Home/_PeopleSlider.cshtml";
             public readonly string _RentalTab = "~/Views/Home/_RentalTab.cshtml";
             public readonly string a_propos = "~/Views/Home/a-propos.cshtml";
@@ -1463,6 +1470,12 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult AddSpace() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddSpace);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AboutMenu(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AboutMenu);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

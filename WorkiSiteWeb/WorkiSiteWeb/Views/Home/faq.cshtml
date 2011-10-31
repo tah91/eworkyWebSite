@@ -7,256 +7,264 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.FaqString.FAQ, "Blue")
 
 <div class="detailContent generalTextContainer">
-	<div class="contentBlock generalTextContent float-right">
+	@{Html.RenderAction(MVC.Home.AboutMenu((int)IndexItem.Faq));}
 
-	    <h2>@Worki.Resources.Views.Home.HomeString.UsingOfEWorky
-	    </h2>
+	<div class="dashedLeft float-right generalTextContent">
+		<div class="faqTabs contentBlock">
+		    <ul class="tabs">
+                <li><a href="#usingOfEworky" class="bold">@Worki.Resources.Views.Home.HomeString.UsingOfEWorky</a></li>
+                <li><a href="#bugs" class="bold">@Worki.Resources.Views.Home.FaqString.Bugs</a></li>
+				<li><a href="#inscription" class="bold">@Worki.Resources.Views.Home.FaqString.TheInscription</a></li>
+				<li><a href="#glossary" class="bold">@Worki.Resources.Views.Home.FaqString.Glossary</a></li>
+            </ul>
+			<div class="tab_container">
+				<div id="usingOfEworky" class="tab_content">
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsEWorky</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.YouCanFindAll
+							</p>
+						</div>
+					</div>	
 
-	    <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsEWorky</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.YouCanFindAll
-			    </p>
-		    </div>
-	    </div>	
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowFindWorkplace</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.FormForSearch, Html.ActionLink(Worki.Resources.Views.Home.FaqString.HomePage, MVC.Home.Index()), Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch()))) 
+							</p>
+						</div>
+					</div>	
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowFindWorkplace</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.FormForSearch,Html.ActionLink(Worki.Resources.Views.Home.FaqString.HomePage,MVC.Home.Index()),Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch()) )) 
-	            </p>
-		    </div>
-	    </div>	
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowAddWorkplace</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.SuggestWorkplace, Html.ActionLink(Worki.Resources.Views.Home.FaqString.AddPage, MVC.Home.AddSpace())))
+							</p>
+						</div>
+					</div>	
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowAddWorkplace</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.SuggestWorkplace, Html.ActionLink(Worki.Resources.Views.Home.FaqString.AddPage, MVC.Home.AddSpace())))
-	            </p>
-		    </div>
-	    </div>	
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowSuggestWorkplace</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.WorkplaceManager
+							</p>
+						</div>
+					</div>	
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowSuggestWorkplace</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.WorkplaceManager
-                </p>
-		    </div>
-	    </div>	
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowEdit</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.ClickEdit
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowEdit</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.ClickEdit
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowRateComment</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.ForRateComment
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowRateComment</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.ForRateComment
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowEditProfil</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.ForEditProfil
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowEditProfil</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.ForEditProfil
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatAreThosePoint</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.WhyThereArePoint
+							</p>
+						</div>
+					</div>
+					<div class="clear">
+					</div>
+				</div>
+				<div id="bugs" class="tab_content">
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.ReportBug</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.EncounterBugs
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatAreThosePoint</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.WhyThereArePoint
-                </p>
-		    </div>
-	    </div>
-		<div class="clear">
-		</div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.CouldNotIncludePicture</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.YourPossiblilitiesOnForm
+							</p>
+						</div>
+					</div>
 
-	    <h2 class="faqTitle">@Worki.Resources.Views.Home.FaqString.Bugs
-	    </h2>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.CouldNotEditLocation</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.HowEditLocation
+							</p>
+						</div>
+					</div>    
+					<div class="clear">
+					</div>
+				</div>
+				<div id="inscription" class="tab_content">
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowCreateAccount</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.ProposeWorkplaceAfterInscription, Html.ActionLink(Worki.Resources.Views.Home.FaqString.Inscription, MVC.Account.Register())))
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.ReportBug</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.EncounterBugs
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.RetrivePassword</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.PasswordLost, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Account.ResetPassword())))
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.CouldNotIncludePicture</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.YourPossiblilitiesOnForm
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.InviteFriends</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<ul>
+								<li>@Worki.Resources.Views.Home.FaqString.ViaFacebook</li>
+								<li>@Worki.Resources.Views.Home.FaqString.ViaViadeo</li>
+								<li>@Worki.Resources.Views.Home.FaqString.ViaTwitter</li>
+							</ul>
+						</div>
+					</div>
+					<div class="clear">
+					</div>
+				</div>
+				<div id="glossary" class="tab_content">
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsMeetingRoom</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWorkyMeetingRoom
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.CouldNotEditLocation</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.HowEditLocation
-                </p>
-		    </div>
-	    </div>    
-		<div class="clear">
-		</div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTelepresenceRoom</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWVisioRoom
+							</p>
+						</div>
+					</div>
 
-	    <h2 class="faqTitle">@Worki.Resources.Views.Home.FaqString.TheInscription
-	    </h2>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsVisioRoom</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWVisioRoom
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.HowCreateAccount</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.ProposeWorkplaceAfterInscription, Html.ActionLink(Worki.Resources.Views.Home.FaqString.Inscription, MVC.Account.Register())))
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessLounge</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessLounge
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.RetrivePassword</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Html.Raw(String.Format(Worki.Resources.Views.Home.FaqString.PasswordLost,  Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere,MVC.Account.ResetPassword())))
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsWorkStation</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWWorkStation
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.InviteFriends</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-                <ul>
-		            <li>@Worki.Resources.Views.Home.FaqString.ViaFacebook</li>
-		            <li>@Worki.Resources.Views.Home.FaqString.ViaViadeo</li>
-		            <li>@Worki.Resources.Views.Home.FaqString.ViaTwitter</li>
-	            </ul>
-		    </div>
-	    </div>
-		<div class="clear">
-		</div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsConferenceRoom</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWConferenceRoom
+							</p>
+						</div>
+					</div>
 
-        <h2 class="faqTitle">@Worki.Resources.Views.Home.FaqString.Glossary
-	    </h2>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsOffice</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWOffice
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsMeetingRoom</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWorkyMeetingRoom
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsDigitalPublicSpace</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWDigitalPublicSpace
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTelepresenceRoom</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWVisioRoom
-                </p>
-		    </div>
-	    </div>
-
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsVisioRoom</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWVisioRoom
-                </p>
-		    </div>
-	    </div>
-
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessLounge</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessLounge
-                </p>
-		    </div>
-	    </div>
-
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsWorkStation</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWWorkStation
-                </p>
-		    </div>
-	    </div>
-
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsConferenceRoom</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWConferenceRoom
-                </p>
-		    </div>
-	    </div>
-
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsOffice</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWOffice
-                </p>
-		    </div>
-	    </div>
-
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsDigitalPublicSpace</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWDigitalPublicSpace
-                </p>
-		    </div>
-	    </div>
-
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTelecenter</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWTelecenter
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTelecenter</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWTelecenter
+							</p>
+						</div>
+					</div>
 	
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessCenter</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessCenter
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessCenter</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessCenter
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsCoworking</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWCoworking
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsCoworking</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWCoworking
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessHotel</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessHotel
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsBuisnessHotel</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWBuisnessHotel
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsPrivatePlace</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p>@Worki.Resources.Views.Home.FaqString.OnEWPrivatePlace
-                </p>
-		    </div>
-	    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsPrivatePlace</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p>@Worki.Resources.Views.Home.FaqString.OnEWPrivatePlace
+							</p>
+						</div>
+					</div>
 
-        <h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTeleWork</span></h3>
-	    <div class="toogle_container">
-            <div class="block">
-			    <p><span style=" font-style:italic; text-align:center; display:block;">
-                    @Worki.Resources.Views.Home.FaqString.OnEWTelework1</span>
-	                <br />
-	                @Worki.Resources.Views.Home.FaqString.OnEWTelework2
-	            </p>
-		    </div>
-	    </div>
-    </div>
+					<h3 class="toogle_trigger toogle_trigger_click blue"><span>@Worki.Resources.Views.Home.FaqString.WhatIsTeleWork</span></h3>
+					<div class="toogle_container">
+						<div class="block">
+							<p><span style=" font-style:italic; text-align:center; display:block;">
+								@Worki.Resources.Views.Home.FaqString.OnEWTelework1</span>
+								<br />
+								@Worki.Resources.Views.Home.FaqString.OnEWTelework2
+							</p>
+						</div>
+					</div>
+					<div class="clear">
+					</div>
+				</div>
+			</div>
+			<div class="clear">
+			</div>			
+		</div>
+	</div>
     <div class="clear">
 	</div>
 </div>
@@ -264,6 +272,8 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
+    	require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
+    		InitTab(".faqTabs");
+		});
     </script>
 }

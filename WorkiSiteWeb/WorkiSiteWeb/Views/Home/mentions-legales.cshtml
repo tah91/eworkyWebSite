@@ -6,11 +6,15 @@
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.Imprint, "Blue")
 <div class="detailContent generalTextContainer">
-	<div class="contentBlock generalTextContent float-right">
-	    <p>
-            @Html.Raw(String.Format(Worki.Resources.Views.Home.HomeString.ImprintDescription, MiscHelpers.EmailConstants.ContactMail))
-        </p>
-    </div>
+	@{Html.RenderAction(MVC.Home.AboutMenu((int)IndexItem.Legal));}
+
+	<div class="dashedLeft float-right generalTextContent">
+		<div class="contentBlock">
+			<p>
+				@Html.Raw(String.Format(Worki.Resources.Views.Home.HomeString.ImprintDescription, MiscHelpers.EmailConstants.ContactMail))
+			</p>
+		</div>
+	</div>
     <div class="clear">
 	</div>
 </div>

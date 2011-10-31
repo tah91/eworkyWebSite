@@ -998,10 +998,8 @@ table tr.row-alternate
 
 .generalTextContent
 {
-	width: 80%;
-	margin-top: 40px;
-	background: whiteSmoke;
-	padding: 10px;
+	width: 74%;
+	padding-left: 10px;
 }
 
 .generalTextContent p
@@ -1635,4 +1633,36 @@ html ul.tabs li.active a:hover
 .li_AllInclusive
 {
     width: 271px;
+}
+
+/* OFFERS SECTION
+----------------------------------------------------------*/
+
+.leftMenu
+{
+    padding:10px;
+    width:22%;
+}
+
+.leftMenu a
+{
+	display: block;
+    text-decoration:none;
+}
+
+.leftMenu li
+{
+	padding: 5px 10px;
+	font-weight:bold;
+}
+
+.leftMenu li:hover
+{
+	background:whitesmoke;
+}
+
+.leftMenu .selected
+{
+	padding: 5px 10px;
+	border: 1px solid #5dafde;
 }

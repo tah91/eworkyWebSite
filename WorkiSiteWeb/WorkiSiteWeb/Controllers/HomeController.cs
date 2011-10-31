@@ -251,5 +251,11 @@ namespace Worki.Web.Controllers
         //{
         //    return View();
         //}
+
+		[ChildActionOnly]
+		public virtual ActionResult AboutMenu(int id)
+		{
+			return PartialView(MVC.Home.Views._AboutMenu, new IndexMenuModel { IndexItem = (IndexItem)id });
+		}
     }
 }

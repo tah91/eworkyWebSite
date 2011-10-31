@@ -7,42 +7,47 @@
     <link href="@Url.VersionedContent(Links.Content.Press_min_css)" rel="stylesheet" type="text/css" />
 }
 
-<div>
-    @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.News, "Blue")
-</div>
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.News, "Blue")
 
 <div class="detailContent generalTextContainer">
-    <div class="contentBlock generalTextContent float-right">
-        <div class="pressDesc">
-            <h3 class="blue">@Worki.Resources.Views.Home.PresseString.ContactUs</h3>
-            <p>
-                @String.Format(Worki.Resources.Views.Home.HomeString.SpeechForJournalists, MiscHelpers.EmailConstants.ContactMail)
-            </p>
-        </div>
-@*        <div class="jtDiv">
-            <h3 class="blue">@Worki.Resources.Views.Home.PresseString.OnJT</h3>
-            <div class="jtDesc float-left">
-                @Worki.Resources.Views.Home.PresseString.VideoDesc
-            </div>
-            <div class="jtVideo float-right" >
-                <iframe src="http://player.vimeo.com/video/29038745" width="400" height="225" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
-            </div>
-            <div class="clear">
-            </div>
-        </div>*@
-        <div class="pressArticles">
-            <h3 class="blue">@Worki.Resources.Views.Home.PresseString.Articles</h3>
-            <ul>
-                @foreach (var item in Model)
-                {
-                    <li>                    
-                        <h4 class="bold"><a href="@item.Url" target="_blank">@item.Title</a> - @String.Format("{0:dd/MM/yyyy}", item.Date)</h4>
-                        <p>@item.Description</p>
-                    </li>
-                }
-            </ul>
-        </div>
-    </div>
+	@{Html.RenderAction(MVC.Home.AboutMenu((int)IndexItem.Press));}
+
+	<div class="dashedLeft float-right generalTextContent">
+		<div class="contentBlock">
+			<div class="pressDesc">
+				<h3 class="blue">@Worki.Resources.Views.Home.PresseString.ContactUs</h3>
+				<p>
+					@String.Format(Worki.Resources.Views.Home.HomeString.SpeechForJournalists, MiscHelpers.EmailConstants.ContactMail)
+				</p>
+			</div>
+	@*        <div class="jtDiv">
+				<h3 class="blue">@Worki.Resources.Views.Home.PresseString.OnJT</h3>
+				<div class="jtDesc float-left">
+					@Worki.Resources.Views.Home.PresseString.VideoDesc
+				</div>
+				<div class="jtVideo float-right" >
+					<iframe src="http://player.vimeo.com/video/29038745" width="400" height="225" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+				</div>
+				<div class="clear">
+				</div>
+			</div>*@
+			<div class="pressArticles">
+				<h3 class="blue">@Worki.Resources.Views.Home.PresseString.Articles</h3>
+				<ul>
+					@foreach (var item in Model)
+					{
+						<li>                    
+							<h4 class="bold"><a href="@item.Url" target="_blank">@item.Title</a> - @String.Format("{0:dd/MM/yyyy}", item.Date)</h4>
+							<p>@item.Description</p>
+						</li>
+					}
+				</ul>
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+	</div>
     <div class="clear">
 	</div>
 </div>

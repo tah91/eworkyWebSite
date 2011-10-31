@@ -7,66 +7,70 @@
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.CguString.TermsOfUse, "Blue")
 <div class="detailContent generalTextContainer">
-	<div class="contentBlock generalTextContent float-right">
-        <h3 class="blue">@Worki.Resources.Views.Home.CguString.VendorInformations</h3>
-        <p>@Worki.Resources.Views.Home.CguString.WebSiteOfOmnicentre</p>
-        <h3 class="blue">@Worki.Resources.Views.Home.CguString.CopyrightTrademarks</h3>
-        <p style="padding-bottom:0;">
-        @Worki.Resources.Views.Home.CguString.SpeechCgu
-        </p>
-        <ul>
-            <li>@Worki.Resources.Views.Home.CguString.UseRobots</li>
-            <li>@Worki.Resources.Views.Home.CguString.FakeRevervations</li>
-            <li>@Worki.Resources.Views.Home.CguString.EWorkySupportYourProduct</li>
-            <li>@Worki.Resources.Views.Home.CguString.FalseInformations</li>
-            <li>@Worki.Resources.Views.Home.CguString.NotLegalPublication</li>
-            <li>@Worki.Resources.Views.Home.CguString.NegativeEffectForWebsite</li>
-            <li>@Worki.Resources.Views.Home.CguString.NoHacking</li>
-            <li>@Worki.Resources.Views.Home.CguString.SaturationOfTheSite</li>
-        </ul>
-        <br />
-        <h3 class="blue">@Worki.Resources.Views.Home.CguString.AccuracyInformations</h3>
-        <p>@Worki.Resources.Views.Home.CguString.GoodFaithInformation</p>
-        <h3 class="blue">@Worki.Resources.Views.Home.CguString.Changes</h3>
-        <p>@Worki.Resources.Views.Home.CguString.ChangesCgu</p>
-        <h3 class="blue">@Worki.Resources.Views.Home.CguString.Inscription</h3>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.Inscription</h4>
-        <p>@Worki.Resources.Views.Home.CguString.AllFonctionality</p>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.AcceptCGU</h4>
-        <p>@Worki.Resources.Views.Home.CguString.NotForChild
-        </p>
-        <h3 class="blue">@Worki.Resources.Views.Home.CguString.PersonneDatas</h3>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.Objet
-        </h4>
-        <p>@Worki.Resources.Views.Home.CguString.CommintmentEWorky
-        </p>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.CollectedDatas
-        </h4>
-        <p>@Worki.Resources.Views.Home.CguString.TraitedCollectedDatas
-        </p>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.AimsOfTreatment
-        </h4>
-        <p>@Worki.Resources.Views.Home.CguString.MandatoryInscription
-        </p>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.ReciptionsOfDatas
-        </h4>
-        <p>@Worki.Resources.Views.Home.CguString.NoUseWithoutYourConsentement
-        </p>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.SafeData
-        </h4>
-        <p>@Worki.Resources.Views.Home.CguString.SafeDataForEWorky
-        </p>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.DataRetention
-        </h4>
-        <p>@Worki.Resources.Views.Home.CguString.ServerDataRetention
-        </p>
-        <h4 class="blue">@Worki.Resources.Views.Home.CguString.YourRight
-        </h4>
-        <p>@String.Format(Worki.Resources.Views.Home.CguString.RectificationYourData, MiscHelpers.EmailConstants.ContactMail)
-        </p>
-		<h3 class="blue">@Worki.Resources.Views.Home.CguString.ApplicalbleLaws</h3>
-        <p>@Worki.Resources.Views.Home.CguString.ApplicalbleLawsValue</p>
-    </div>
+	@{Html.RenderAction(MVC.Home.AboutMenu((int)IndexItem.Cgu));}
+
+	<div class="dashedLeft float-right generalTextContent">
+		<div class="contentBlock">
+			<h3 class="blue">@Worki.Resources.Views.Home.CguString.VendorInformations</h3>
+			<p>@Worki.Resources.Views.Home.CguString.WebSiteOfOmnicentre</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.CguString.CopyrightTrademarks</h3>
+			<p style="padding-bottom:0;">
+			@Worki.Resources.Views.Home.CguString.SpeechCgu
+			</p>
+			<ul>
+				<li>@Worki.Resources.Views.Home.CguString.UseRobots</li>
+				<li>@Worki.Resources.Views.Home.CguString.FakeRevervations</li>
+				<li>@Worki.Resources.Views.Home.CguString.EWorkySupportYourProduct</li>
+				<li>@Worki.Resources.Views.Home.CguString.FalseInformations</li>
+				<li>@Worki.Resources.Views.Home.CguString.NotLegalPublication</li>
+				<li>@Worki.Resources.Views.Home.CguString.NegativeEffectForWebsite</li>
+				<li>@Worki.Resources.Views.Home.CguString.NoHacking</li>
+				<li>@Worki.Resources.Views.Home.CguString.SaturationOfTheSite</li>
+			</ul>
+			<br />
+			<h3 class="blue">@Worki.Resources.Views.Home.CguString.AccuracyInformations</h3>
+			<p>@Worki.Resources.Views.Home.CguString.GoodFaithInformation</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.CguString.Changes</h3>
+			<p>@Worki.Resources.Views.Home.CguString.ChangesCgu</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.CguString.Inscription</h3>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.Inscription</h4>
+			<p>@Worki.Resources.Views.Home.CguString.AllFonctionality</p>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.AcceptCGU</h4>
+			<p>@Worki.Resources.Views.Home.CguString.NotForChild
+			</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.CguString.PersonneDatas</h3>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.Objet
+			</h4>
+			<p>@Worki.Resources.Views.Home.CguString.CommintmentEWorky
+			</p>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.CollectedDatas
+			</h4>
+			<p>@Worki.Resources.Views.Home.CguString.TraitedCollectedDatas
+			</p>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.AimsOfTreatment
+			</h4>
+			<p>@Worki.Resources.Views.Home.CguString.MandatoryInscription
+			</p>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.ReciptionsOfDatas
+			</h4>
+			<p>@Worki.Resources.Views.Home.CguString.NoUseWithoutYourConsentement
+			</p>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.SafeData
+			</h4>
+			<p>@Worki.Resources.Views.Home.CguString.SafeDataForEWorky
+			</p>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.DataRetention
+			</h4>
+			<p>@Worki.Resources.Views.Home.CguString.ServerDataRetention
+			</p>
+			<h4 class="blue">@Worki.Resources.Views.Home.CguString.YourRight
+			</h4>
+			<p>@String.Format(Worki.Resources.Views.Home.CguString.RectificationYourData, MiscHelpers.EmailConstants.ContactMail)
+			</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.CguString.ApplicalbleLaws</h3>
+			<p>@Worki.Resources.Views.Home.CguString.ApplicalbleLawsValue</p>
+		</div>
+	</div>
     <div class="clear">
 	</div>
 </div>

@@ -136,7 +136,7 @@ table tr.row-alternate{background-color:#E4E4E4}
 .titleRed{background-color:#D35758}
 .titleRed:after{border-color:#D35758 transparent}
 .generalTextContainer{padding:10px}
-.generalTextContent{width:80%;margin-top:40px;background:whiteSmoke;padding:10px}
+.generalTextContent{width:74%;padding-left:10px}
 .generalTextContent p{padding-bottom:25px}
 .generalTextContent ul{margin:10px 30px}
 .generalTextContent li{list-style:disc;margin-bottom:10px}
@@ -249,3 +249,8 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .li_Sector{width:266px}
 .li_MinimalPeriod{width:307px}
 .li_AllInclusive{width:271px}
+.leftMenu{padding:10px;width:22%}
+.leftMenu a{display:block;text-decoration:none}
+.leftMenu li{padding:5px 10px;font-weight:bold}
+.leftMenu li:hover{background:whitesmoke}
+.leftMenu .selected{padding:5px 10px;border:1px solid #5dafde}

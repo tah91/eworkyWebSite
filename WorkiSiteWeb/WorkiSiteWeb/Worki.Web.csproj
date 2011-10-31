@@ -714,6 +714,7 @@
     <Content Include="Views\Emails\FacebookMail.cshtml" />
     <Content Include="Views\Localisation\Offers.cshtml" />
     <Content Include="Views\Localisation\_LocalisationInfos.cshtml" />
+    <Content Include="Views\Home\_AboutMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

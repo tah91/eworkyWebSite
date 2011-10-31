@@ -6,76 +6,82 @@
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.JobString.Jobs, "Blue")
 
-<div class="detailContent generalTextContainer">       
-    <div class="contentBlock generalTextContent float-right">
+<div class="detailContent generalTextContainer">
+	@{Html.RenderAction(MVC.Home.AboutMenu((int)IndexItem.Jobs));}
+	
+	<div class="dashedLeft float-right generalTextContent"> 
+		<div class="contentBlock">
 
-		<h3 class="blue">@Worki.Resources.Views.Home.JobString.EWSpirit</h3>
-		<p>
-		@Worki.Resources.Views.Home.JobString.EWTeam
+			<h3 class="blue">@Worki.Resources.Views.Home.JobString.EWSpirit</h3>
+			<p>
+			@Worki.Resources.Views.Home.JobString.EWTeam
 
-		</p>
-		<p>
-		@Worki.Resources.Views.Home.JobString.EWProject
-		</p>
-		<p>
-		@Worki.Resources.Views.Home.JobString.EWSearchStudents
-		</p>
+			</p>
+			<p>
+			@Worki.Resources.Views.Home.JobString.EWProject
+			</p>
+			<p>
+			@Worki.Resources.Views.Home.JobString.EWSearchStudents
+			</p>
 
-		<h4 class="toogle_trigger toogle_trigger_click bold blue"><span>@Worki.Resources.Views.Home.JobString.YouAreDev</span></h4>
-		<div class="toogle_container">
-			<div class="block">
-				<p>
-				@Worki.Resources.Views.Home.JobString.LikeDev
-				</p>
-                <table>
-                    <tr>
-                        <td>
-				            <p style="padding-bottom:0;">
-				            @Worki.Resources.Views.Home.JobString.EWSearchEveryProfil
-				            </p>
+			<h4 class="toogle_trigger toogle_trigger_click bold blue"><span>@Worki.Resources.Views.Home.JobString.YouAreDev</span></h4>
+			<div class="toogle_container">
+				<div class="block">
+					<p>
+					@Worki.Resources.Views.Home.JobString.LikeDev
+					</p>
+					<table>
+						<tr>
+							<td>
+								<p style="padding-bottom:0;">
+								@Worki.Resources.Views.Home.JobString.EWSearchEveryProfil
+								</p>
 				
-				            <ul>
-					            <li>@Html.Raw(Worki.Resources.Views.Home.JobString.JuniorDev)</li>
-					            <li>@Html.Raw(Worki.Resources.Views.Home.JobString.SeniorDev)</li>
-				            </ul>
-                        </td>
-                        <td>
-                            @Html.Image(Links.Content.images.jobs_mark_jpeg, "mark zuckerberg", new { style = "max-height:300px;max-width:300px;float:right;margin:10px 20px 10px 10px;" })
-                        </td>
-                    </tr>
-                </table>
+								<ul>
+									<li>@Html.Raw(Worki.Resources.Views.Home.JobString.JuniorDev)</li>
+									<li>@Html.Raw(Worki.Resources.Views.Home.JobString.SeniorDev)</li>
+								</ul>
+							</td>
+							<td>
+								@Html.Image(Links.Content.images.jobs_mark_jpeg, "mark zuckerberg", new { style = "max-height:300px;max-width:300px;float:right;margin:10px 20px 10px 10px;" })
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+
+			<div class="clear">
+			</div>
+
+			<h4 class="toogle_trigger toogle_trigger_click bold blue"><span>@Worki.Resources.Views.Home.JobString.SoulBuisnessDev</span></h4>
+			<div class="toogle_container">
+				<div class="block">
+					<p>
+					@Worki.Resources.Views.Home.JobString.SearchInternShip
+					</p>
+					<p style="padding-bottom:0;">
+					@Worki.Resources.Views.Home.JobString.CommunicationIntern
+					</p>
+					@Html.Image(Links.Content.images.jobs_steve_jpg, "steve jobs", new { style = "max-height:300px;max-width:300px;float:right;margin:10px" })
+					<ul>
+						<li>@Worki.Resources.Views.Home.JobString.Commercial</li>
+						<li>@Worki.Resources.Views.Home.JobString.Marketing</li>
+						<li>@Worki.Resources.Views.Home.JobString.CommunityManagement</li>
+						<li>@Worki.Resources.Views.Home.JobString.PressRelation</li>
+						<li>@Worki.Resources.Views.Home.JobString.Event</li>
+						<li>@Worki.Resources.Views.Home.JobString.MoreThings</li>
+					</ul>
+					<p>
+					@Worki.Resources.Views.Home.JobString.InternGoodUniversity
+					</p>
+				</div>
+			</div>
+
+			<div class="clear">
 			</div>
 		</div>
-
-
-		<div class="clear">
-		</div>
-
-		<h4 class="toogle_trigger toogle_trigger_click bold blue"><span>@Worki.Resources.Views.Home.JobString.SoulBuisnessDev</span></h4>
-		<div class="toogle_container">
-			<div class="block">
-				<p>
-				@Worki.Resources.Views.Home.JobString.SearchInternShip
-				</p>
-				<p style="padding-bottom:0;">
-				@Worki.Resources.Views.Home.JobString.CommunicationIntern
-				</p>
-				@Html.Image(Links.Content.images.jobs_steve_jpg, "steve jobs", new { style = "max-height:300px;max-width:300px;float:right;margin:10px" })
-				<ul>
-					<li>@Worki.Resources.Views.Home.JobString.Commercial</li>
-					<li>@Worki.Resources.Views.Home.JobString.Marketing</li>
-					<li>@Worki.Resources.Views.Home.JobString.CommunityManagement</li>
-					<li>@Worki.Resources.Views.Home.JobString.PressRelation</li>
-					<li>@Worki.Resources.Views.Home.JobString.Event</li>
-					<li>@Worki.Resources.Views.Home.JobString.MoreThings</li>
-				</ul>
-				<p>
-				@Worki.Resources.Views.Home.JobString.InternGoodUniversity
-				</p>
-			</div>
-		</div>
-
-    </div>
+	</div>
 	<div class="clear">
 	</div>
 </div>

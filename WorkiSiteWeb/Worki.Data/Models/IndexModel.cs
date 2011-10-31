@@ -25,4 +25,24 @@ namespace Worki.Data.Models
 
         #endregion
     }
+
+	public enum IndexItem
+	{
+		WhoWeAre,
+		Faq,
+		Cgu,
+		Press,
+		Jobs,
+		Legal
+	}
+
+	public class IndexMenuModel
+	{
+		public IndexItem IndexItem { get; set; }
+
+		public string GetClass(string classContent, IndexItem item)
+		{
+			return IndexItem == item ? classContent : string.Empty;
+		}
+	}
 }
