@@ -392,19 +392,19 @@ namespace Worki.Data.Models
 			switch (day)
 			{
 				case DayOfWeek.Monday:
-					return MonOpen != null || MonOpen2 != null || MonClose != null || MonClose2 != null;
+					return LocalisationData.MonOpenMorning != null || LocalisationData.MonCloseMorning != null || LocalisationData.MonOpenAfter != null || LocalisationData.MonCloseAfter != null;
 				case DayOfWeek.Tuesday:
-					return TueOpen != null || TueOpen2 != null || TueClose != null || TueClose2 != null;
+					return LocalisationData.TueOpenMorning != null || LocalisationData.TueCloseMorning != null || LocalisationData.TueOpenAfter != null || LocalisationData.TueCloseAfter != null;
 				case DayOfWeek.Wednesday:
-					return WedOpen != null || MonOpen2 != null || WedClose != null || WedClose2 != null;
+					return LocalisationData.WedOpenMorning != null || LocalisationData.WedCloseMorning != null || LocalisationData.WedOpenAfter != null || LocalisationData.WedCloseAfter != null;
 				case DayOfWeek.Thursday:
-					return ThuOpen != null || ThuOpen2 != null || ThuClose != null || ThuClose2 != null;
+					return LocalisationData.ThuOpenMorning != null || LocalisationData.ThuCloseMorning != null || LocalisationData.ThuOpenAfter != null || LocalisationData.ThuCloseAfter != null;
 				case DayOfWeek.Friday:
-					return FriOpen != null || FriOpen2 != null || FriClose != null || FriClose2 != null;
+					return LocalisationData.FriOpenMorning != null || LocalisationData.FriCloseMorning != null || LocalisationData.FriOpenAfter != null || LocalisationData.FriCloseAfter != null;
 				case DayOfWeek.Saturday:
-					return SatOpen != null || SatOpen2 != null || SatClose != null || SatClose2 != null;
+					return LocalisationData.SatOpenMorning != null || LocalisationData.SatCloseMorning != null || LocalisationData.SatOpenAfter != null || LocalisationData.SatCloseAfter != null;
 				case DayOfWeek.Sunday:
-					return SunOpen != null || SunOpen2 != null || SunClose != null || SunClose2 != null;
+					return LocalisationData.SunOpenMorning != null || LocalisationData.SunCloseMorning != null || LocalisationData.SunOpenAfter != null || LocalisationData.SunCloseAfter != null;
 				default:
 					return false;
 			}
@@ -497,19 +497,19 @@ namespace Worki.Data.Models
 			switch (day)
 			{
 				case DayOfWeek.Monday:
-					return GetOpenningTime(MonOpen, MonClose2, MonOpen2, MonClose);
+					return GetOpenningTime(LocalisationData.MonOpenMorning, LocalisationData.MonCloseMorning, LocalisationData.MonOpenAfter, LocalisationData.MonCloseAfter);
 				case DayOfWeek.Tuesday:
-					return GetOpenningTime(TueOpen, TueClose2, TueOpen2, TueClose);
+					return GetOpenningTime(LocalisationData.TueOpenMorning, LocalisationData.TueCloseMorning, LocalisationData.TueOpenAfter, LocalisationData.TueCloseAfter);
 				case DayOfWeek.Wednesday:
-					return GetOpenningTime(WedOpen, WedClose2, WedOpen2, WedClose);
+					return GetOpenningTime(LocalisationData.WedOpenMorning, LocalisationData.WedCloseMorning, LocalisationData.WedOpenAfter, LocalisationData.WedCloseAfter);
 				case DayOfWeek.Thursday:
-					return GetOpenningTime(ThuOpen, ThuClose2, ThuOpen2, ThuClose);
+					return GetOpenningTime(LocalisationData.ThuOpenMorning, LocalisationData.ThuCloseMorning, LocalisationData.ThuOpenAfter, LocalisationData.ThuCloseAfter);
 				case DayOfWeek.Friday:
-					return GetOpenningTime(FriOpen, FriClose2, FriOpen2, FriClose);
+					return GetOpenningTime(LocalisationData.FriOpenMorning, LocalisationData.FriCloseMorning, LocalisationData.FriOpenAfter, LocalisationData.FriCloseAfter);
 				case DayOfWeek.Saturday:
-					return GetOpenningTime(SatOpen, SatClose2, SatOpen2, SatClose);
+					return GetOpenningTime(LocalisationData.SatOpenMorning, LocalisationData.SatCloseMorning, LocalisationData.SatOpenAfter, LocalisationData.SatCloseAfter);
 				case DayOfWeek.Sunday:
-					return GetOpenningTime(SunOpen, SunClose2, SunOpen2, SunClose);
+					return GetOpenningTime(LocalisationData.SunOpenMorning, LocalisationData.SunCloseMorning, LocalisationData.SunOpenAfter, LocalisationData.SunCloseAfter);
 				default:
 					return string.Empty;
 			}
@@ -671,38 +671,6 @@ namespace Worki.Data.Models
 		public double Latitude { get; set; }
 
 		public double Longitude { get; set; }
-
-		#region Openning times
-
-		public DateTime? MonOpen { get; set; }
-
-		public DateTime? MonClose { get; set; }
-
-		public DateTime? TueOpen { get; set; }
-
-		public DateTime? TueClose { get; set; }
-
-		public DateTime? WedOpen { get; set; }
-
-		public DateTime? WedClose { get; set; }
-
-		public DateTime? ThuOpen { get; set; }
-
-		public DateTime? ThuClose { get; set; }
-
-		public DateTime? FriOpen { get; set; }
-
-		public DateTime? FriClose { get; set; }
-
-		public DateTime? SatOpen { get; set; }
-
-		public DateTime? SatClose { get; set; }
-
-		public DateTime? SunOpen { get; set; }
-
-		public DateTime? SunClose { get; set; }
-
-		#endregion
 
 		[Display(Name = "PublicTransportation", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -1120,8 +1088,9 @@ namespace Worki.Data.Models
 
 	public class LocalisationData_Validation
 	{
-		[Display(Name = "CoffeePrice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
-		public int CoffeePrice { get; set; }
+		//todo
+		//[Display(Name = "MonOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		public Nullable<System.DateTime> MonOpenMorning { get; set; }
 	}
 
 	public partial class LocalisationFeature : IFeatureContainer

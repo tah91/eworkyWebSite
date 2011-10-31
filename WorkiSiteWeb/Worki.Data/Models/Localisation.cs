@@ -78,6 +78,8 @@ namespace Worki.Data.Models
         public string PublicTransportation { get; set; }
         public string Station { get; set; }
         public string RoadAccess { get; set; }
+        public string Facebook { get; set; }
+        public string Twitter { get; set; }
     
         // Navigation properties
     

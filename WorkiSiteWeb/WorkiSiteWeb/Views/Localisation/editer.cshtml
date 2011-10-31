@@ -448,172 +448,172 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.MonOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonOpen), new { placeholder = "Ex : 9:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonOpenMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.MonOpenMorning), new { placeholder = "Ex : 9:00" })
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.MonClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonClose2), new { placeholder = "Ex : 12:30" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonCloseMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.MonCloseMorning), new { placeholder = "Ex : 12:30" })
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.MonOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonOpen2), new { placeholder = "Ex : 14:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonOpenAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.MonOpenAfter), new { placeholder = "Ex : 14:00" })
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.MonClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.MonClose), new { placeholder = "Ex : 18:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonCloseAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.MonCloseAfter), new { placeholder = "Ex : 18:00" })
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+						<tr>
                             <td>
                                 @Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.TueOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueOpen), new { placeholder = "Ex : 9:00" })
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.TueOpenMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.TueOpenMorning), new { placeholder = "Ex : 9:00" })
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.TueClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueClose2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.TueCloseMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.TueCloseMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.TueOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueOpen2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.TueOpenAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.TueOpenAfter))
                                 </div>
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.TueClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.TueClose), new { placeholder = "Ex : 22:00" })
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.TueCloseAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.TueCloseAfter), new { placeholder = "Ex : 22:00" })
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+						<tr>
                             <td>
                                 @Worki.Resources.Views.Localisation.LocalisationFormString.Wednesday
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.WedOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedOpen))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.WedOpenMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.WedOpenMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.WedClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedClose2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.WedCloseMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.WedCloseMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.WedOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedOpen2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.WedOpenAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.WedOpenAfter))
                                 </div>
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.WedClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.WedClose))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.WedCloseAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.WedCloseAfter))
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+						<tr>
                             <td>
                                 @Worki.Resources.Views.Localisation.LocalisationFormString.Thursday
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.ThuOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuOpen))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.ThuOpenMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.ThuOpenMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.ThuClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuClose2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.ThuCloseMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.ThuCloseMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.ThuOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuOpen2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.ThuOpenAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.ThuOpenAfter))
                                 </div>
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.ThuClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.ThuClose))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.ThuCloseAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.ThuCloseAfter))
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+						<tr>
                             <td>
                                 @Worki.Resources.Views.Localisation.LocalisationFormString.Friday
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.FriOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriOpen))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.FriOpenMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.FriOpenMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.FriClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriClose2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.FriCloseMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.FriCloseMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.FriOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriOpen2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.FriOpenAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.FriOpenAfter))
                                 </div>
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.FriClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.FriClose))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.FriCloseAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.FriCloseAfter))
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+						<tr>
                             <td>
                                 @Worki.Resources.Views.Localisation.LocalisationFormString.Saturday
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SatOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatOpen))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.SatOpenMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SatOpenMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SatClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatClose2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.SatCloseMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SatCloseMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SatOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatOpen2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.SatOpenAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SatOpenAfter))
                                 </div>
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SatClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.SatClose))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.SatCloseAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SatCloseAfter))
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+						<tr>
                             <td>
                                 @Worki.Resources.Views.Localisation.LocalisationFormString.Sunday
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SunOpen", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunOpen))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.SunOpenMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SunOpenMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SunClose2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunClose2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.SunCloseMorning", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SunCloseMorning))
                                 </div>
                             </td>
                             <td class="lunchclose">
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SunOpen2", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunOpen2))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                    @Html.TextBox("Localisation.LocalisationData.SunOpenAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SunOpenAfter))
                                 </div>
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextBox("Localisation.SunClose", string.Format(frenchCulture, "{0:t}", Model.Localisation.SunClose))
+                                <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                    @Html.TextBox("Localisation.LocalisationData.SunCloseAfter", string.Format(frenchCulture, "{0:t}", Model.Localisation.LocalisationData.SunCloseAfter))
                                 </div>
                             </td>
                         </tr>

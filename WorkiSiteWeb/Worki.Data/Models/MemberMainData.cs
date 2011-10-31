@@ -38,6 +38,7 @@ namespace Worki.Data.Models
         public string Twitter { get; set; }
         public string Linkedin { get; set; }
         public string Viadeo { get; set; }
+        public string Website { get; set; }
     
         // Navigation properties
     

@@ -145,24 +145,23 @@
 	//auto fill opening times from monday blur
 	AutoFillFromMonday = function(ext)
 	{
-		var monValue = jQuery.trim($('#Localisation_Mon'+ext).val());
+		var monValue = jQuery.trim($('#Localisation_LocalisationData_Mon'+ext).val());
 		if(monValue === "")
 			return;
-		$('#Localisation_Tue'+ext).val(monValue);
-		$('#Localisation_Wed'+ext).val(monValue);
-		$('#Localisation_Thu'+ext).val(monValue);
-		$('#Localisation_Fri'+ext).val(monValue);
+		$('#Localisation_LocalisationData_Tue'+ext).val(monValue);
+		$('#Localisation_LocalisationData_Wed'+ext).val(monValue);
+		$('#Localisation_LocalisationData_Thu'+ext).val(monValue);
+		$('#Localisation_LocalisationData_Fri'+ext).val(monValue);
 	}
-	$('#Localisation_MonOpen').blur(function (evt) {
-		AutoFillFromMonday('Open');
-	});
-	$('#Localisation_MonClose').blur(function (evt) {
-		AutoFillFromMonday('Close');
-	});
-	$('#Localisation_MonOpen2').blur(function (evt) {
-		AutoFillFromMonday('Open2');
-	});
-	$('#Localisation_MonClose2').blur(function (evt) {
-		AutoFillFromMonday('Close2');
-	});
+
+	SetOpeningBlur = function(ext)
+	{
+		$('#Localisation_LocalisationData_Mon'+ext).blur(function (evt) {
+			AutoFillFromMonday(ext);
+		});
+	}
+	SetOpeningBlur('OpenMorning');
+	SetOpeningBlur('CloseMorning');
+	SetOpeningBlur('OpenAfter');
+	SetOpeningBlur('CloseAfter');
 </script>

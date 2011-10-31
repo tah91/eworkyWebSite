@@ -19,6 +19,34 @@ namespace Worki.Data.Models
         public int ID { get; set; }
         public int LocalisationID { get; set; }
         public Nullable<decimal> CoffeePrice { get; set; }
+        public Nullable<System.DateTime> MonOpenMorning { get; set; }
+        public Nullable<System.DateTime> MonCloseMorning { get; set; }
+        public Nullable<System.DateTime> MonOpenAfter { get; set; }
+        public Nullable<System.DateTime> MonCloseAfter { get; set; }
+        public Nullable<System.DateTime> TueOpenMorning { get; set; }
+        public Nullable<System.DateTime> TueCloseMorning { get; set; }
+        public Nullable<System.DateTime> TueOpenAfter { get; set; }
+        public Nullable<System.DateTime> TueCloseAfter { get; set; }
+        public Nullable<System.DateTime> WedOpenMorning { get; set; }
+        public Nullable<System.DateTime> WedCloseMorning { get; set; }
+        public Nullable<System.DateTime> WedOpenAfter { get; set; }
+        public Nullable<System.DateTime> WedCloseAfter { get; set; }
+        public Nullable<System.DateTime> ThuOpenMorning { get; set; }
+        public Nullable<System.DateTime> ThuCloseMorning { get; set; }
+        public Nullable<System.DateTime> ThuOpenAfter { get; set; }
+        public Nullable<System.DateTime> ThuCloseAfter { get; set; }
+        public Nullable<System.DateTime> FriOpenMorning { get; set; }
+        public Nullable<System.DateTime> FriCloseMorning { get; set; }
+        public Nullable<System.DateTime> FriOpenAfter { get; set; }
+        public Nullable<System.DateTime> FriCloseAfter { get; set; }
+        public Nullable<System.DateTime> SatOpenMorning { get; set; }
+        public Nullable<System.DateTime> SatCloseMorning { get; set; }
+        public Nullable<System.DateTime> SatOpenAfter { get; set; }
+        public Nullable<System.DateTime> SatCloseAfter { get; set; }
+        public Nullable<System.DateTime> SunOpenMorning { get; set; }
+        public Nullable<System.DateTime> SunCloseMorning { get; set; }
+        public Nullable<System.DateTime> SunOpenAfter { get; set; }
+        public Nullable<System.DateTime> SunCloseAfter { get; set; }
     
         // Navigation properties
     
