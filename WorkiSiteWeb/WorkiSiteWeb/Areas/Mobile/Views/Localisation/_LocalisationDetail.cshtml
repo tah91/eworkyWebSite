@@ -43,43 +43,42 @@
             }
             @{
 				var generalFeatures = Model.GetFeaturesWithin(FeatureHelper.Characteristics);
+				var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
             }
-            <div class="localisationDescription contentBlock">
-                <h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.Description</h3>
-                <div class="localisationDesc">
-                    @Html.Nl2Br(Model.Description)
-                </div>
-                <div class="featureTag">
-                    <ul>
-                    @foreach (var item in generalFeatures)
-                    {
-                        <li>@FeatureHelper.Display(item)</li>
-                    }
-                    </ul>
-                </div>
-                <div class="clear">
-                </div>
-            </div>
-            @{
-                var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
-            }
-            @if (workingPlaceFeatures.Count > 0)
-            {
-            <div class="localisationServices contentBlock">
-                <h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.Services</h3>
-
-                <div class="featureTag">
-                    <ul>
-                    @foreach (var item in workingPlaceFeatures)
-                    {
-                        <li>@FeatureHelper.Display(item)</li>
-                    }
-                    </ul>
-                </div> 
-                <div class="clear">
-                </div>
-            </div>   
-            }
+			<div class="localisationDescription contentBlock">
+				@*<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Description</h3>*@
+				<div class="localisationDesc" itemprop="description">
+					@Html.Nl2Br(Model.Description)
+				</div>
+				@if (generalFeatures.Count > 0)
+				{
+					<h4 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
+					<div class="featureTag">
+						<ul>
+						@foreach (var item in generalFeatures)
+						{
+							<li>@FeatureHelper.Display(item)</li>
+						}       
+						</ul>
+					</div>
+					<div class="clear">
+					</div>
+				}
+				@if (workingPlaceFeatures.Count > 0)
+				{
+					<h4 class="blue">@Worki.Resources.Views.Shared.SharedString.Services</h4>
+					<div class="featureTag">
+						<ul>
+						@foreach (var item in workingPlaceFeatures)
+						{
+							<li>@FeatureHelper.Display(item)</li>
+						}
+						</ul>
+					</div> 
+					<div class="clear">
+					</div>
+				}
+			</div>
             <div class="localisationComments contentBlock">
                 <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
                 <div id="commentFormDiv">
