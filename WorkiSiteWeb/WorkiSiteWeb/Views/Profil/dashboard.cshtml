@@ -16,7 +16,7 @@
 </div>
 
 <div class="detailContent">
-    <div class="profilDetailLeft blockContainer float-left">
+    <div class="profilDetailLeft blockContainer dashedRight float-left">
         <div class="profilSummary contentBlock">
             <div class="profilAvatar borderedImg">
                 @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
@@ -74,11 +74,16 @@
 			}
         </div>
     </div>
-    <div class="profilDetailRight blockContainer dashedLeft float-right">
+    <div class="profilDetailRight blockContainer float-right">
         <div class="profilLocalisations contentBlock">
             <ul class="tabs">
                 <li><a href="#favoritesTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.Favorite</a></li>
                 <li><a href="#addedLocalisationTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MySpaces</a></li>
+				@if (Model.IsPrivate)
+				{
+				<li><a href="#myCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyComments</a></li>
+				<li><a href="#locCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyCommentedSpaces</a></li>
+				}
             </ul>
             <div class="tab_container">
                 <div id="favoritesTab" class="tab_content localisationsTagContainer">
@@ -111,6 +116,31 @@
                         <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
                      }
                 </div> 
+				@if (Model.IsPrivate)
+				{
+                <div id="myCommentsTab" class="tab_content visuallyhidden">
+					@if (Model.PostedComments.Count != 0)
+                    {
+                        ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.PostedCom;
+						@Html.Partial(MVC.Profil.Views._CommentTab)
+                    }
+                    else
+                    {
+						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.CommentsEmpy</span>
+                    }					
+                </div> 
+                <div id="locCommentsTab" class="tab_content visuallyhidden">
+					@if (Model.RelatedComments.Count != 0)
+                    {
+                        ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.RelCom;
+						@Html.Partial(MVC.Profil.Views._CommentTab)
+                    }
+                    else
+                    {
+						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.RelCommentsEmpty</span>
+                    }					
+                </div> 
+				}
             </div>
             <div class="clear">
             </div>
@@ -153,41 +183,6 @@
             <div class="clear">
             </div>
         </div>
-		@if (Model.IsPrivate)
-        {
-        <div class="profilComments contentBlock">
-            <ul class="tabs">
-                <li><a href="#myCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyComments</a></li>
-                <li><a href="#locCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyCommentedSpaces</a></li>
-            </ul>
-            <div class="tab_container">
-                <div id="myCommentsTab" class="tab_content">
-					@if (Model.PostedComments.Count != 0)
-                    {
-                        ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.PostedCom;
-						@Html.Partial(MVC.Profil.Views._CommentTab)
-                    }
-                    else
-                    {
-						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.CommentsEmpy</span>
-                    }					
-                </div> 
-                <div id="locCommentsTab" class="tab_content visuallyhidden">
-					@if (Model.RelatedComments.Count != 0)
-                    {
-                        ViewData[ProfilDashboardModel.TabId] = ProfilDashboardModel.DashboardTab.RelCom;
-						@Html.Partial(MVC.Profil.Views._CommentTab)
-                    }
-                    else
-                    {
-						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.RelCommentsEmpty</span>
-                    }					
-                </div> 
-            </div>
-            <div class="clear">
-            </div>
-        </div>
-        }
     </div>
     <div class="clear">
     </div>

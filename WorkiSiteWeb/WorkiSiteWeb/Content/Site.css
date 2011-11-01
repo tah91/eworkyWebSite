@@ -1637,8 +1637,56 @@ html ul.tabs li.active a:hover
 
 /* OFFERS SECTION
 ----------------------------------------------------------*/
-
 .leftMenu
+{
+    padding:10px;
+    width:22%;
+}
+
+.leftMenu a
+{
+	display: block;
+    text-decoration:none;
+    /*color:#5dafde;*/
+}
+
+.leftMenu li
+{
+	margin:3px 0;
+	padding: 5px 0;
+}
+
+.leftMenu li:hover
+{
+	background:whitesmoke;
+}
+
+.leftMenu .selected
+{
+	/*background: #E0E0E0;*/
+	/*filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ccc, endColorstr=#a8a8a8);
+	background-image: -moz-linear-gradient(top,#ccc,#a8a8a8);
+	background-image: -webkit-linear-gradient(top,#ccc,#a8a8a8);
+	background-image: linear-gradient(top,#ccc,#a8a8a8);*/
+	padding: 5px 10px;
+	font-weight:bold;
+	border: 1px solid #5dafde;
+}
+
+.leftMenu .selected:hover
+{
+	/*filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e0e0e0,endColorstr=#cac8c8);
+	background-image: -moz-linear-gradient(top,#e0e0e0,#cac8c8);
+	background-image: -webkit-linear-gradient(top,#e0e0e0,#cac8c8);
+	background-image: linear-gradient(top,#e0e0e0,#cac8c8);*/
+}
+
+.leftMenu .selected a
+{
+	/*color:white;*/
+}
+
+/*.leftMenu
 {
     padding:10px;
     width:22%;
@@ -1665,4 +1713,4 @@ html ul.tabs li.active a:hover
 {
 	padding: 5px 10px;
 	border: 1px solid #5dafde;
-}
+}*/
