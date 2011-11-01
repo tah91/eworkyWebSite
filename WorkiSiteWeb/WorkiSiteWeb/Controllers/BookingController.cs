@@ -373,10 +373,10 @@ namespace Worki.Web.Controllers
         void SendCreationAccountMail(MemberBookingFormViewModel formData, Member member, Offer offer)
         {
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-            var changePassUrl = urlHelper.AbsoluteAction(MVC.Account.ActionNames.ChangePassword, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
-            TagBuilder changePassLink = new TagBuilder("a");
-            changePassLink.MergeAttribute("href", changePassUrl);
-            changePassLink.InnerHtml = changePassUrl;
+			var profilUrl = urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Dashboard, MVC.Profil.Name, new { id = member.MemberId });
+			TagBuilder profilLink = new TagBuilder("a");
+			profilLink.MergeAttribute("href", profilUrl);
+			profilLink.InnerHtml = profilUrl;
 
 			dynamic newMemberMail = new Email(MiscHelpers.EmailConstants.EmailView);
 			newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
@@ -393,7 +393,7 @@ namespace Worki.Web.Controllers
 													offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
 													member.Email,
 													_MembershipService.GetPassword(member.Email, null),
-													changePassLink.ToString(),
+													profilLink.ToString(),
 													urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }));
 			}
 			else
@@ -406,7 +406,7 @@ namespace Worki.Web.Controllers
 													offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
 													member.Email,
 													_MembershipService.GetPassword(member.Email, null),
-													changePassLink.ToString(),
+													profilLink.ToString(),
 													urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }));
 			}
            

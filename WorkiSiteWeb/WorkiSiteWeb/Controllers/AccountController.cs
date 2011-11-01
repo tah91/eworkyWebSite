@@ -239,75 +239,6 @@ namespace Worki.Web.Controllers
                 return RedirectToAction(MVC.Account.LogOn());
         }
 
-        // **************************************
-        // URL: /Account/ChangePassword
-        // **************************************
-
-        /// <summary>
-        /// GET Action method to change the password
-        /// </summary>
-        /// <param name="username">The username of the account to modify</param>
-        /// <param name="returnUrl">The key provided by the user via email link</param>
-        /// <returns>the form to fill</returns>
-        [ActionName("changer-mdp")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult ChangePassword(string username, string key)
-        {
-            ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var member = mRepo.GetMember(username);
-            //link not ok, redirect to home
-            if (member == null || string.Compare(key, member.EmailKey) != 0)
-            {
-                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.ChangePasswordError; ;
-                return RedirectToAction(MVC.Home.Index());
-            }
-
-            return View(new ChangePasswordModel { UserName = username });
-        }
-
-        /// <summary>
-        /// POST Action method to change the password
-        /// </summary>
-        /// <param name="model">The change password data from the form</param>
-        /// <returns>Password change succes page if ok, the form with error if not</returns>
-        [ActionName("changer-mdp")]
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult ChangePassword(ChangePasswordModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (_MembershipService.ChangePassword(model.UserName, model.OldPassword, model.NewPassword))
-                {
-                    if (_MembershipService.ValidateUser(model.UserName, model.NewPassword))
-                    {
-						var context = ModelFactory.GetUnitOfWork();
-						var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-						var member = mRepo.GetMember(model.UserName);
-                        var userData = member.GetUserData();
-                        _FormsService.SignIn(model.UserName, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
-                        return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
-                    }
-                    else
-                    {
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
-                        return RedirectToAction(MVC.Home.Index());
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.PasswordNotValide);
-                }
-            }
-
-            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
-            ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
-            return View(model);
-        }
-
         /// <summary>
         /// GET Action method to reset password
         /// </summary>
@@ -340,9 +271,9 @@ namespace Worki.Web.Controllers
                     try
                     {
                         var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-                        var changePassLink = urlHelper.AbsoluteAction(MVC.Account.ActionNames.ChangePassword, MVC.Account.Name, new { userName = member.Email, key = member.EmailKey });
+                        var profilLink = urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Dashboard, MVC.Profil.Name, new { id = member.MemberId });
                         TagBuilder link = new TagBuilder("a");
-                        link.MergeAttribute("href", changePassLink);
+						link.MergeAttribute("href", profilLink);
                         link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
 
                         dynamic resetMail = new Email(MiscHelpers.EmailConstants.EmailView);

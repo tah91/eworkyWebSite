@@ -60,14 +60,13 @@
 ----------------------------------------------------------*/
 .avatarEditor
 {
-	margin-top: 10px;
-    width: 300px;
+    width: 230px;
 }
 
 .avatarContainer
 {
-    width: 280px;
-    height: 280px;
+    width: 180px;
+    height: 180px;
     margin-bottom: 10px;
 }
 
@@ -88,32 +87,27 @@
 
 .profilData textarea
 {
-    width: 300px;
+    width: 250px;
 }
 
 .profilData select
 {
-    width: 314px;
+    width: 260px;
 }
 
 .profilData input[type="text"]
 {
-    width: 300px;
-}
-
-.profilTitle
-{
-    padding: 10px 0;
+    width: 250px;
 }
 
 .profilDetailLeft
 {
-    width: 25%;
+    width: 23%;
 }
 
 .profilDetailRight
 {
-    width: 66.5%;
+    width: 69%;
 }
 
 .profilAvatar

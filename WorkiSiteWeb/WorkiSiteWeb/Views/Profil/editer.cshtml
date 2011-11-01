@@ -7,22 +7,24 @@
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.EditProfile, "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.MyProfile, "Blue")
 
 <div class="detailContent">
-    <div class="blockContainer">
+	@{Html.RenderAction(MVC.Profil.ProfilMenu(Model.Member.MemberId, (int)ProfilConstants.ProfilItem.Edit));}
+
+    <div class="profilDetailRight dashedLeft blockContainer float-right">
         @using (Html.BeginForm(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id="profilEditForm" }))
         {
             @Html.AntiForgeryToken()
-            <div class="avatarEditor float-right">
-                <div class="avatarContainer borderedImg">
-                    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
-                </div>
-                <input type="file" name="Avatar" accept="image/*"/>
-            </div>
             <div class="profilData">
                 <div class="contentBlock">
 			        <h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.PersonalInfo</h3>
+					<div class="avatarEditor float-right">
+						<div class="avatarContainer borderedImg">
+							@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+						</div>
+						<input type="file" name="Avatar" accept="image/*"/>
+					</div>
                     <table>
                         <tr>
                             <td>
@@ -271,6 +273,9 @@
             <div class="clear"></div>
         }
     </div>
+
+	<div class="clear">
+	</div>
 </div>
 
 @section ScriptContent

@@ -1,0 +1,63 @@
+﻿@model Worki.Data.Models.ProfilMenuModel
+		   
+<div class="profilDetailLeft blockContainer float-left">
+        <div class="contentBlock">
+            <div class="profilAvatar borderedImg">
+                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar), Model.Member.GetDisplayName())
+            </div>
+            <div class="profilName">
+				@{
+					var score = Model.Member.ComputeScore();
+				}
+                <h2 class="blue bold">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName</h2>
+                <span class="profilType bold">@MemberMainData.ProfileTypes[Model.Member.MemberMainData.Profile]</span><br />
+                @string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.Member.GetMemberScoreStatus(score), score)
+            </div>
+            <div class="profilDesc">
+                @Model.Member.MemberMainData.Description
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Facebook))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_fb linkImg" title="Profil Facebook">
+						<a href="@Model.Member.MemberMainData.Facebook" target="_blank"></a>
+					</div>
+				</div>
+			}
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Twitter))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_tw linkImg" title="Profil Twitter">
+						<a href="@Model.TwitterUrl" target="_blank"></a>
+					</div>
+				</div>
+			}
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Linkedin))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_in linkImg" title="Profil LinkedIn">
+						<a href="@Model.Member.MemberMainData.Linkedin" target="_blank"></a>
+					</div>
+				</div>
+			}
+            @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Viadeo))
+			{   
+				<div class="profil_social float-left">
+					<div class="profil_viadeo linkImg" title="Profil Viadeo">
+						<a href="@Model.Member.MemberMainData.Viadeo" target="_blank"></a>
+					</div>
+				</div>
+			}
+			<div class="clear">
+			</div>
+            
+			@if (Model.IsPrivate)
+			{
+	   			<ul class="leftMenu">
+					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.CommunityActivity)">@Html.ActionLink("Mon activité communautaire", MVC.Profil.Dashboard(Model.Member.MemberId))</li>
+					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.Edit)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId))</li>
+					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.ChangePassword)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.ChangePassword, MVC.Profil.ChangePassword(Model.Member.MemberId))</li>
+				</ul>
+			}
+        </div>
+    </div>

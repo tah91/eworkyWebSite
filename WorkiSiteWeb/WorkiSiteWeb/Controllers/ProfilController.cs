@@ -10,6 +10,7 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
 using System.Web.Security;
+using Worki.Memberships;
 
 namespace Worki.Web.Controllers
 {
@@ -21,6 +22,7 @@ namespace Worki.Web.Controllers
 		#region Private
 
 		ILogger _Logger;
+		IMembershipService _MembershipService;
 
 		ProfilDashboardModel GetDashboard(Member member, bool isPrivate = false, int p1 = 1, int p2 = 1, int p3 = 1, int p4 = 1)
 		{
@@ -66,8 +68,10 @@ namespace Worki.Web.Controllers
 
 		#endregion
 
-		public ProfilController(ILogger logger)
+		public ProfilController(ILogger logger,
+								IMembershipService membershipService)
 		{
+			_MembershipService = membershipService;
 			_Logger = logger;
 		}
 
@@ -131,12 +135,12 @@ namespace Worki.Web.Controllers
 				return null;
 
 			var dashboard = GetDashboard(member, true, p1, p2, p3, p4);
-			ViewData[ProfilDashboardModel.TabId] = tabId;
+			ViewData[ProfilConstants.TabId] = tabId;
 			ViewData[Comment.DisplayRelatedLocalisation] = true;
-			var tab = (ProfilDashboardModel.DashboardTab)tabId;
-			if (tab == ProfilDashboardModel.DashboardTab.FavLoc || tab == ProfilDashboardModel.DashboardTab.AddedLoc)
+			var tab = (ProfilConstants.DashboardTab)tabId;
+			if (tab == ProfilConstants.DashboardTab.FavLoc || tab == ProfilConstants.DashboardTab.AddedLoc)
 				return PartialView(MVC.Profil.Views._LocalisationTab, dashboard);
-			else if (tab == ProfilDashboardModel.DashboardTab.PostedCom || tab == ProfilDashboardModel.DashboardTab.RelCom)
+			else if (tab == ProfilConstants.DashboardTab.PostedCom || tab == ProfilConstants.DashboardTab.RelCom)
 				return PartialView(MVC.Profil.Views._CommentTab, dashboard);
 			else
 				return null;
@@ -255,8 +259,8 @@ namespace Worki.Web.Controllers
 				context.Complete();
 				_Logger.Error("AddToFavorite", ex);
 			}
-			ViewData[ProfilDashboardModel.AddToFavorite] = false;
-			ViewData[ProfilDashboardModel.DelFavorite] = true;
+			ViewData[ProfilConstants.AddToFavorite] = false;
+			ViewData[ProfilConstants.DelFavorite] = true;
 			return PartialView(MVC.Shared.Views._AddToFavorite);
 		}
 
@@ -293,9 +297,71 @@ namespace Worki.Web.Controllers
 			}
 
 
-			ViewData[ProfilDashboardModel.AddToFavorite] = true;
-			ViewData[ProfilDashboardModel.DelFavorite] = false;
+			ViewData[ProfilConstants.AddToFavorite] = true;
+			ViewData[ProfilConstants.DelFavorite] = false;
 			return PartialView(MVC.Shared.Views._AddToFavorite);
+		}
+
+		// **************************************
+		// URL: /Account/ChangePassword
+		// **************************************
+
+		/// <summary>
+		/// GET Action method to change the password
+		/// </summary>
+		/// <param name="id">member id</param>
+		/// <returns>the form to fill</returns>
+		[ActionName("changer-mdp")]
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult ChangePassword(int id)
+		{
+			if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) && !WebHelper.MatchIdentity(User.Identity, id))
+			{
+				return View(MVC.Shared.Views.Error);
+			}
+			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
+			return View(new ChangePasswordModel { MemberId = id });
+		}
+
+		/// <summary>
+		/// POST Action method to change the password
+		/// </summary>
+		/// <param name="model">The change password data from the form</param>
+		/// <returns>Password change succes page if ok, the form with error if not</returns>
+		[ActionName("changer-mdp")]
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult ChangePassword(int id, ChangePasswordModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				var member = mRepo.Get(id);
+				if (_MembershipService.ChangePassword(member.Username, model.OldPassword, model.NewPassword))
+				{
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+					return RedirectToAction(MVC.Profil.Dashboard(id));
+				}
+				else
+				{
+					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.PasswordNotValide);
+				}
+			}
+
+			// Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
+			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
+			return View(model);
+		}
+
+		[ChildActionOnly]
+		public virtual ActionResult ProfilMenu(int memberId, int type, bool isPrivate = true)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(memberId);
+
+			return PartialView(MVC.Profil.Views._ProfilMenu, new ProfilMenuModel { Member = member, MenuItem = type, IsPrivate = isPrivate });
 		}
 	}
 }

@@ -1,16 +1,16 @@
 ﻿@model Worki.Data.Models.ProfilDashboardModel
 
 @{
-	var tabId = (ProfilDashboardModel.DashboardTab)ViewData[ProfilDashboardModel.TabId];
+	var tabId = (ProfilConstants.DashboardTab)ViewData[ProfilConstants.TabId];
 	var a_class = tabId.ToString();
 	List<Comment> comments = new List<Comment>();
 	PagingInfo pi = new PagingInfo();
-	if (tabId == ProfilDashboardModel.DashboardTab.PostedCom)
+	if (tabId == ProfilConstants.DashboardTab.PostedCom)
 	{
 		comments = Model.PostedComments;
 		pi = Model.PostedCommentsPI;
 	}
-	else if (tabId == ProfilDashboardModel.DashboardTab.RelCom)
+	else if (tabId == ProfilConstants.DashboardTab.RelCom)
 	{
 		comments = Model.RelatedComments;
 		pi = Model.RelatedCommentsPI;

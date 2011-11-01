@@ -647,11 +647,6 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult ChangePassword() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FacebookOAuth() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FacebookOAuth);
         }
@@ -672,7 +667,6 @@ namespace Worki.Web.Controllers {
             public readonly string LogOff = "deconnexion";
             public readonly string Register = "inscription";
             public readonly string Activate = "activer";
-            public readonly string ChangePassword = "changer-mdp";
             public readonly string ResetPassword = "reset-mdp";
             public readonly string FacebookLogOn = "facebook-logon";
             public readonly string FacebookOAuth = "facebook-oauth";
@@ -684,7 +678,6 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string changer_mdp = "~/Views/Account/changer-mdp.cshtml";
             public readonly string connexion = "~/Views/Account/connexion.cshtml";
             public readonly string inscription = "~/Views/Account/inscription.cshtml";
             public readonly string reset_mdp = "~/Views/Account/reset-mdp.cshtml";
@@ -729,19 +722,6 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Activate);
             callInfo.RouteValueDictionary.Add("username", username);
             callInfo.RouteValueDictionary.Add("key", key);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult ChangePassword(string username, string key) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
-            callInfo.RouteValueDictionary.Add("username", username);
-            callInfo.RouteValueDictionary.Add("key", key);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult ChangePassword(Worki.Data.Models.ChangePasswordModel model) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
-            callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
 
@@ -1931,6 +1911,16 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.PartialViewResult RemoveFromFavorite() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ChangePassword() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ProfilMenu() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ProfilMenu);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProfilController Actions { get { return MVC.Profil; } }
@@ -1950,6 +1940,8 @@ namespace Worki.Web.Controllers {
             public readonly string Edit = "editer";
             public readonly string AddToFavorite = "AddToFavorite";
             public readonly string RemoveFromFavorite = "RemoveFromFavorite";
+            public readonly string ChangePassword = "changer-mdp";
+            public readonly string ProfilMenu = "ProfilMenu";
         }
 
 
@@ -1960,6 +1952,8 @@ namespace Worki.Web.Controllers {
         public class ViewNames {
             public readonly string _CommentTab = "~/Views/Profil/_CommentTab.cshtml";
             public readonly string _LocalisationTab = "~/Views/Profil/_LocalisationTab.cshtml";
+            public readonly string _ProfilMenu = "~/Views/Profil/_ProfilMenu.cshtml";
+            public readonly string changer_mdp = "~/Views/Profil/changer-mdp.cshtml";
             public readonly string dashboard = "~/Views/Profil/dashboard.cshtml";
             public readonly string editer = "~/Views/Profil/editer.cshtml";
         }
@@ -2016,6 +2010,27 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("locId", locId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ChangePassword(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ChangePassword(int id, Worki.Data.Models.ChangePasswordModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ProfilMenu(int memberId, int type, bool isPrivate) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ProfilMenu);
+            callInfo.RouteValueDictionary.Add("memberId", memberId);
+            callInfo.RouteValueDictionary.Add("type", type);
+            callInfo.RouteValueDictionary.Add("isPrivate", isPrivate);
             return callInfo;
         }
 

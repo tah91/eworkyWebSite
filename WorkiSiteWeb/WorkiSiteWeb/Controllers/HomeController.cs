@@ -268,7 +268,7 @@ namespace Worki.Web.Controllers
 		[ChildActionOnly]
 		public virtual ActionResult AboutMenu(int id)
 		{
-			return PartialView(MVC.Home.Views._AboutMenu, new IndexMenuModel { IndexItem = (IndexItem)id });
+			return PartialView(MVC.Home.Views._AboutMenu, new MenuModelBase { MenuItem = id });
 		}
     }
 }

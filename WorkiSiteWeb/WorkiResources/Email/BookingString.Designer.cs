@@ -109,7 +109,7 @@ namespace Worki.Resources.Email {
         /// <summary>
         ///   Looks up a localized string similar to Suite à votre demande de réservation pour un(e) {0} du {1} à {2} dans l’établissement {3} ({4}), un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
         ///
-        ///Votre login est &quot;{5}&quot; et votre mot de passe temporaire est &quot;{6}&quot;. Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {7}
+        ///Votre login est &quot;{5}&quot; et votre mot de passe temporaire est &quot;{6}&quot;. Vous pouvez changer votre mot de passe allant sur votre profil : {7}
         ///
         ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {8}
         ///
@@ -177,11 +177,11 @@ namespace Worki.Resources.Email {
         ///
         ///Suite à votre demande de devis pour un {0} de {1} m2 dans l’établissement {2} ({3}), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos demandes de devis et de vos réservations.
         ///
-        ///Votre login est {4} et votre mot de passe temporaire est {5}. Vous pouvez changer votre mot de passe en cliquant sur le lien suivant {6}
+        ///Votre login est {4} et votre mot de passe temporaire est {5}. Vous pouvez changer votre mot de passe en allant sur votre profil : {6}
         ///
         ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : {7}
         ///
-        ///En espérant vous revoir très vite sur eworky.com [rest of string was truncated]&quot;;.
+        ///En espérant vous revoir très vite sur eworky.com,.
         /// </summary>
         public static string QuotationNewMemberBody {
             get {

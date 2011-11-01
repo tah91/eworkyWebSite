@@ -485,8 +485,8 @@ namespace Worki.Data.Models
 
     #region ProfilDashboardModel
 
-    public class ProfilDashboardModel
-    {
+	public  class ProfilConstants
+	{
 		public const string TabId = "TabId";
 
 		public enum DashboardTab
@@ -500,6 +500,16 @@ namespace Worki.Data.Models
 		public const string AddToFavorite = "AddToFavorite";
 		public const string DelFavorite = "DelFavorite";
 
+		public enum ProfilItem
+		{
+			CommunityActivity,
+			Edit,
+			ChangePassword
+		}
+	}
+
+    public class ProfilDashboardModel
+    {
         #region Properties
 
         public Member Member { get; set; }
@@ -523,29 +533,54 @@ namespace Worki.Data.Models
         }
 
         #endregion
-
-        #region Methode
-
-        public string TwitterUrl()
-        {
-            var toRet = "";
-            var link = "http://twitter.com/#!/";
-            var twitter = Member.MemberMainData.Twitter;
-
-            if (twitter.Contains("http://twitter.com/#!/"))
-            {
-                var tab = twitter.Split('/');
-                toRet += tab[tab.Length - 1];
-            }
-
-            if (!string.IsNullOrEmpty(toRet))
-                return (link + toRet);
-            return (link + twitter);
-        }
-
-        #endregion
-
     }
 
     #endregion
+
+	#region ProfilMenuModel
+
+	public class ProfilMenuModel : MenuModelBase
+	{
+		#region Properties
+
+		public Member Member { get; set; }
+		public bool IsPrivate { get; set; }
+
+		#endregion
+
+		#region Ctor
+
+		public ProfilMenuModel()
+		{
+
+		}
+
+		#endregion
+
+		#region Properties
+
+		public string TwitterUrl
+		{
+			get
+			{
+				var toRet = "";
+				var link = "http://twitter.com/#!/";
+				var twitter = Member.MemberMainData.Twitter;
+
+				if (twitter.Contains("http://twitter.com/#!/"))
+				{
+					var tab = twitter.Split('/');
+					toRet += tab[tab.Length - 1];
+				}
+
+				if (!string.IsNullOrEmpty(toRet))
+					return (link + toRet);
+				return (link + twitter);
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
 }

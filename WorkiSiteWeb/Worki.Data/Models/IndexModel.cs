@@ -36,13 +36,13 @@ namespace Worki.Data.Models
 		Legal
 	}
 
-	public class IndexMenuModel
+	public class MenuModelBase
 	{
-		public IndexItem IndexItem { get; set; }
+		public int MenuItem { get; set; }
 
-		public string GetClass(string classContent, IndexItem item)
+		public string GetClass(string classContent, int item)
 		{
-			return IndexItem == item ? classContent : string.Empty;
+			return MenuItem == item ? classContent : string.Empty;
 		}
 	}
 }

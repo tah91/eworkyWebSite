@@ -8,17 +8,16 @@
 .loginDiv td:first-child{text-align:right}
 .loginDiv a{text-decoration:none;font-size:.9em;color:#5dafde}
 .loginDiv input[type="password"]{width:200px}
-.avatarEditor{margin-top:10px;width:300px}
-.avatarContainer{width:280px;height:280px;margin-bottom:10px}
+.avatarEditor{width:230px}
+.avatarContainer{width:180px;height:180px;margin-bottom:10px}
 .avatarContainer img{max-height:280px}
 .profilData table td:first-child{width:150px}
 .profilData h3{margin:10px 0}
-.profilData textarea{width:300px}
-.profilData select{width:314px}
-.profilData input[type="text"]{width:300px}
-.profilTitle{padding:10px 0}
-.profilDetailLeft{width:25%}
-.profilDetailRight{width:66.5%}
+.profilData textarea{width:250px}
+.profilData select{width:260px}
+.profilData input[type="text"]{width:250px}
+.profilDetailLeft{width:23%}
+.profilDetailRight{width:69%}
 .profilAvatar{height:200px}
 .profilAvatar img{max-height:200px}
 .profilAvatar .picBackEmpty{background-image:url('images/avatar.png')}

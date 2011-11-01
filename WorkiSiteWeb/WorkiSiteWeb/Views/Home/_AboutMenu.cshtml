@@ -1,12 +1,12 @@
-﻿@model IndexMenuModel
+﻿@model MenuModelBase
 		   
-<div class="leftMenu contentBlock float-left">
-	<ul>
-		<li class="@Model.GetClass("selected borderRadius", IndexItem.WhoWeAre)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())</li>
-		<li class="@Model.GetClass("selected borderRadius", IndexItem.Press)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.News, MVC.Home.Press())</li>
-		<li class="@Model.GetClass("selected borderRadius", IndexItem.Jobs)">@Html.ActionLink(Worki.Resources.Views.Home.JobString.Jobs, MVC.Home.Jobs())</li>
-		<li class="@Model.GetClass("selected borderRadius", IndexItem.Cgu)">@Html.ActionLink(Worki.Resources.Views.Home.CguString.TermsOfUse, MVC.Home.CGU())</li>
-		<li class="@Model.GetClass("selected borderRadius", IndexItem.Legal)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.Imprint, MVC.Home.Legal())</li>
-		<li class="@Model.GetClass("selected borderRadius", IndexItem.Faq)">@Html.ActionLink(Worki.Resources.Views.Home.FaqString.FAQ, MVC.Home.Faq())</li>
+<div class="contentBlock float-left">
+	<ul class="leftMenu">
+		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.WhoWeAre)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())</li>
+		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Press)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.News, MVC.Home.Press())</li>
+		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Jobs)">@Html.ActionLink(Worki.Resources.Views.Home.JobString.Jobs, MVC.Home.Jobs())</li>
+		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Cgu)">@Html.ActionLink(Worki.Resources.Views.Home.CguString.TermsOfUse, MVC.Home.CGU())</li>
+		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Legal)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.Imprint, MVC.Home.Legal())</li>
+		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Faq)">@Html.ActionLink(Worki.Resources.Views.Home.FaqString.FAQ, MVC.Home.Faq())</li>
 	</ul>
 </div>

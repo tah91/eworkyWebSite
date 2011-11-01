@@ -11,8 +11,8 @@ namespace Worki.Data.Models
     #region Modèles
 
     public class ChangePasswordModel
-    {        
-        public string UserName { get; set; }
+    {
+		public int MemberId { get; set; }
 
         [Required(ErrorMessageResourceName="Required", ErrorMessageResourceType= typeof(Worki.Resources.Validation.ValidationString))]
         [DataType(DataType.Password)]

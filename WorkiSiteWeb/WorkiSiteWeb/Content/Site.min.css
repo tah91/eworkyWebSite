@@ -249,8 +249,7 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .li_Sector{width:266px}
 .li_MinimalPeriod{width:307px}
 .li_AllInclusive{width:271px}
-.leftMenu{padding:10px;width:22%}
 .leftMenu a{display:block;text-decoration:none}
-.leftMenu li{margin:3px 0;padding:5px 0}
+.leftMenu li{margin:3px 0;padding:5px 10px}
 .leftMenu li:hover{background:whitesmoke}
-.leftMenu .selected{padding:5px 10px;font-weight:bold;border:1px solid #5dafde}
+.leftMenu .selected{font-weight:bold;border:1px solid #5dafde}
