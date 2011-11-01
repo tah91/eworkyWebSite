@@ -1,4 +1,5 @@
 ﻿@model Worki.Data.Models.LocalisationFormViewModel
+		   
 @section HeadContent
 {
     <title>@Html.WorkiTitle(Model.Localisation.ID == 0 ? Worki.Resources.Views.Localisation.LocalisationString.Add : Worki.Resources.Views.Localisation.LocalisationString.Edit)
@@ -372,14 +373,21 @@
             </div>
 			<div class="contentBlock">
 				<h3 class="blue">Offres</h3>
-				<ul>
-				@foreach (var item in Model.Localisation.Offers)
-				{
-						<li>@item.Name | @Html.ActionLink("Editer", MVC.Offer.Edit(item.Id, item.LocalisationId)) | @Html.ActionLink("Supprimer", MVC.Offer.Delete(item.Id, item.LocalisationId))</li>
-				}
-				</ul>
+				<div class="offersTable">
+					<table>
+					@foreach (var item in Model.Localisation.Offers)
+					{
+						<tr>
+							<td>@item.Name</td>
+							<td>@Html.ActionLink("Editer", MVC.Offer.Edit(item.Id, item.LocalisationId))</td>
+							<td><div class="cross linkImg" title="Supprimer">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id, item.LocalisationId))</div></td>
+						</tr>
+					}
+					</table>
+				</div>
+				@Html.DropDownListFor(m => m.NewOfferType, Model.Offers)
 				<input  type="submit" class="buttonStd buttonBlue imageBtn" 
-						name="addOffer" value="Ajouter une offre"/>
+						name="addOffer" value="Ajouter"/>
 			</div>
 			}
             <div class="contentBlock">

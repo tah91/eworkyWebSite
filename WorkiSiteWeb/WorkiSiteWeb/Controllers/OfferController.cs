@@ -35,9 +35,9 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of the offer localisation</param>
 		/// <returns>View containing offer form</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual ActionResult Create(int id)
+		public virtual ActionResult Create(int id, int type)
 		{
-			return View(new OfferFormViewModel { Offer = new Offer { LocalisationId = id } });
+			return View(new OfferFormViewModel { Offer = new Offer { LocalisationId = id, Type = type } });
 		}
 
 		/// <summary>

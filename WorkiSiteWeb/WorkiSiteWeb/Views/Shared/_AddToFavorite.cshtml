@@ -1,13 +1,13 @@
 ﻿@{
 	var add = false;
 	var del = false;
-	if (ViewData.ContainsKey(ProfilDashboardModel.AddToFavorite))
+	if (ViewData.ContainsKey(ProfilConstants.AddToFavorite))
 	{
-		add = (bool)ViewData[ProfilDashboardModel.AddToFavorite]; 
+		add = (bool)ViewData[ProfilConstants.AddToFavorite]; 
 	}
-	if (ViewData.ContainsKey(ProfilDashboardModel.DelFavorite))
+	if (ViewData.ContainsKey(ProfilConstants.DelFavorite))
 	{
-		del = (bool)ViewData[ProfilDashboardModel.DelFavorite];
+		del = (bool)ViewData[ProfilConstants.DelFavorite];
 	}
 }
 

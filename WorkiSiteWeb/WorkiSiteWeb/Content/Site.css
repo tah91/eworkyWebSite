@@ -296,19 +296,21 @@ page width. Or, you can specify an exact pixel width. */
 {
     /*width:29%;*/
     width:auto;
+    background-color:white!important;
     margin-top:0!important; 
+    height: 50px;
 }
 
 .logindisplay
 {
-	background-color:whiteSmoke;
+	/*background-color:whiteSmoke;*/
 	padding:5px 10px 10px 10px;
 }
 
 .loginTitle
 {
 	font-size:0.9em;
-	margin-bottom:5px;
+	margin-bottom:3px;
 }
 
 .createAccount

@@ -47,9 +47,9 @@ html,body{margin:0;padding:0;height:100%}
 .headerMenu{width:39%;text-align:center}
 .headerMenu .buttonStd{width:90px;height:40px;margin:0;font-size:14px}
 .ie7 .headerMenu .buttonStd{margin-left:5px}
-.loginContainer{width:auto;margin-top:0!important}
-.logindisplay{background-color:whiteSmoke;padding:5px 10px 10px 10px}
-.loginTitle{font-size:.9em;margin-bottom:5px}
+.loginContainer{width:auto;background-color:white!important;margin-top:0!important;height:50px}
+.logindisplay{padding:5px 10px 10px 10px}
+.loginTitle{font-size:.9em;margin-bottom:3px}
 .createAccount{margin-top:10px}
 .connectEworky{padding:3px 10px}
 *:first-child+html .lengthConnexionBox{width:130px;height:100%}

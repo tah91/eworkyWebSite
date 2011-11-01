@@ -1645,9 +1645,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Localisation localisation, int? id, string addOffer) {
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.LocalisationFormViewModel localisationForm, int? id, string addOffer) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            callInfo.RouteValueDictionary.Add("localisation", localisation);
+            callInfo.RouteValueDictionary.Add("localisationForm", localisationForm);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("addOffer", addOffer);
             return callInfo;
@@ -1817,9 +1817,10 @@ namespace Worki.Web.Controllers {
     public class T4MVC_OfferController: Worki.Web.Controllers.OfferController {
         public T4MVC_OfferController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Create(int id) {
+        public override System.Web.Mvc.ActionResult Create(int id, int type) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("type", type);
             return callInfo;
         }
 

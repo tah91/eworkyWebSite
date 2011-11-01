@@ -134,3 +134,13 @@
     padding: 2px;
     width: 400px;
 }
+
+.offersTable
+{
+	margin-bottom: 5px;
+}
+
+.offersTable td
+{
+	padding:2px 10px;
+}

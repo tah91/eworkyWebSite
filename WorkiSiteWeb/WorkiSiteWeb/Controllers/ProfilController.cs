@@ -80,7 +80,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of the member</param>
 		/// <returns>View containing profil details</returns>
-		[HttpGet]
+		[AcceptVerbs(HttpVerbs.Get)]
 		[ActionName("details")]
 		public virtual ActionResult Detail(int id)
 		{
@@ -104,7 +104,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of the member</param>
 		/// <returns>View containing profil dashboard</returns>
-		[HttpGet]
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		[ActionName("dashboard")]
 		public virtual ActionResult Dashboard(int id)
 		{
@@ -312,7 +312,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">member id</param>
 		/// <returns>the form to fill</returns>
 		[ActionName("changer-mdp")]
-		[AcceptVerbs(HttpVerbs.Get)]
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		public virtual ActionResult ChangePassword(int id)
 		{
 			if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) && !WebHelper.MatchIdentity(User.Identity, id))
@@ -329,7 +329,7 @@ namespace Worki.Web.Controllers
 		/// <param name="model">The change password data from the form</param>
 		/// <returns>Password change succes page if ok, the form with error if not</returns>
 		[ActionName("changer-mdp")]
-		[AcceptVerbs(HttpVerbs.Post)]
+		[AcceptVerbs(HttpVerbs.Post),Authorize]
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult ChangePassword(int id, ChangePasswordModel model)
 		{

@@ -117,6 +117,7 @@ namespace Worki.Data.Models
             (int)LocalisationType.Biblio,
             (int)LocalisationType.PublicSpace,
 			(int)LocalisationType.TravelerSpace,
+			(int)LocalisationType.Hotel,
             (int)LocalisationType.Telecentre,
             (int)LocalisationType.BuisnessCenter,
             (int)LocalisationType.CoworkingSpace,
@@ -701,6 +702,8 @@ namespace Worki.Data.Models
 		public Localisation Localisation { get; private set; }
 		public SelectList Types { get; private set; }
 		public bool IsFreeLocalisation { get; set; }
+		public int NewOfferType { get; set; }
+		public SelectList Offers { get; set; }
 
 		#endregion
 
@@ -709,6 +712,8 @@ namespace Worki.Data.Models
 		public LocalisationFormViewModel()
 		{
 			Localisation = new Localisation();
+			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
+			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
 			Localisation.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
 			Init();
 		}
@@ -731,6 +736,8 @@ namespace Worki.Data.Models
 			IsFreeLocalisation = isFree;
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes();
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
+			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
+			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
 		}
 
 		#endregion

@@ -138,11 +138,11 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ActionName("editer")]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Edit(Localisation localisation, int? id, string addOffer)
+		public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int? id, string addOffer)
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			//to keep files state in case of error
-			TempData[PictureData.PictureDataString] = new PictureDataContainer(localisation);
+			TempData[PictureData.PictureDataString] = new PictureDataContainer(localisationForm.Localisation);
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
@@ -186,15 +186,15 @@ namespace Worki.Web.Controllers
 					context.Commit();
 
 					idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
-					localisation.ID = idToRedirect;
+					localisationForm.Localisation.ID = idToRedirect;
 					if (!string.IsNullOrEmpty(addOffer))
 					{
-						return RedirectToAction(MVC.Offer.Create(idToRedirect));
+						return RedirectToAction(MVC.Offer.Create(idToRedirect, localisationForm.NewOfferType));
 					}
 					else
 					{
 						TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
-						return Redirect(localisation.GetDetailFullUrl(Url));
+						return Redirect(localisationForm.Localisation.GetDetailFullUrl(Url));
 					}
 				}
 			}
@@ -204,7 +204,7 @@ namespace Worki.Web.Controllers
 				context.Complete();
 				ModelState.AddModelError("", error);
 			}
-			return View(new LocalisationFormViewModel(localisation));
+			return View(localisationForm);
 		}
 
         /// <summary>

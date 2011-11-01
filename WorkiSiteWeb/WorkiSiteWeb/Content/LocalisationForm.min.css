@@ -21,3 +21,5 @@
 .editPlace h3{display:block}
 #editMapDiv{height:180px;margin:5px 0 5px 0}
 .localisationAtSamePlace{padding:2px;width:400px}
+.offersTable{margin-bottom:5px}
+.offersTable td{padding:2px 10px}

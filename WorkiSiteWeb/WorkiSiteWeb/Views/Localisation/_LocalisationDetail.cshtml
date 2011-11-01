@@ -81,11 +81,11 @@
 				{
 					if (Model.FavoriteLocalisations.Where(f => f.MemberId == id).Count() > 0)
 					{
-						ViewData[ProfilDashboardModel.DelFavorite] = true;
+						ViewData[ProfilConstants.DelFavorite] = true;
 					}
 					else
 					{
-						ViewData[ProfilDashboardModel.AddToFavorite] = true;
+						ViewData[ProfilConstants.AddToFavorite] = true;
 					}
 				}
 			}
