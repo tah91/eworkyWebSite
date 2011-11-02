@@ -147,21 +147,29 @@
 				<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
 				<span itemprop="faxNumber">@Html.GetPhoneFormat(Model.Fax)</span><br />
 			}
-		}
-		else
-		{
+            if (!string.IsNullOrEmpty(Model.Facebook))
+			{
+				<a href="@Model.Facebook"><span>Facebook</span></a><br />
+            }
+            if (!string.IsNullOrEmpty(Model.Twitter))
+			{
+				<a href="@Model.Twitter"><span>Twitter</span></a><br />
+            }
+        }
+  else
+  {
 			<span>@Worki.Resources.Views.Localisation.LocalisationString.YouKnowContactUs</span>
-		}
+  }
 	</div>
 }
 <div class="localisationSchedule contentBlock">
 	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
 	@if (Model.HasFeature(Feature.Access24))
-	{
+ {
 		@Html.FeatureLabelFor(Feature.Access24, Model)
-	}
-	else if (Model.HasOpenningTimes())
-	{
+ }
+ else if (Model.HasOpenningTimes())
+ {
 	<table>
 		@RazorHelpers.OpenningRow(Model, DayOfWeek.Monday, Worki.Resources.Views.Localisation.LocalisationFormString.Monday)
 		@RazorHelpers.OpenningRow(Model, DayOfWeek.Tuesday, Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday)
@@ -171,11 +179,11 @@
 		@RazorHelpers.OpenningRow(Model, DayOfWeek.Saturday, Worki.Resources.Views.Localisation.LocalisationFormString.Saturday)
 		@RazorHelpers.OpenningRow(Model, DayOfWeek.Sunday, Worki.Resources.Views.Localisation.LocalisationFormString.Sunday)
 	</table>
-	}
-	else
-	{
+ }
+ else
+ {
 		@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.EmailConstants.ContactMail
-	}
+ }
 </div>
 
 @{Html.RenderAction(MVC.Localisation.Suggestions(Model.ID));}

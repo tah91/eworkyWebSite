@@ -180,4 +180,7 @@
   <data name="Viadeo" xml:space="preserve">
     <value>Viadeo</value>
   </data>
+  <data name="Website" xml:space="preserve">
+    <value>Site internet</value>
+  </data>
 </root>

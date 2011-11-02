@@ -166,6 +166,18 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Website)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.Website, new { placeholder = "Votre site internet" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
                                     @Html.LabelFor(m => m.Member.MemberMainData.WorkCity)
                                 </div>
                             </td>

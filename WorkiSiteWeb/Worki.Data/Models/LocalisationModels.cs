@@ -431,7 +431,7 @@ namespace Worki.Data.Models
 
 		public bool ContactEmpty()
 		{
-			return (string.IsNullOrEmpty(Fax) && string.IsNullOrEmpty(PhoneNumber) && string.IsNullOrEmpty(WebSite) && string.IsNullOrEmpty(Mail));
+            return (string.IsNullOrEmpty(Fax) && string.IsNullOrEmpty(PhoneNumber) && string.IsNullOrEmpty(WebSite) && string.IsNullOrEmpty(Mail) && string.IsNullOrEmpty(Facebook) && string.IsNullOrEmpty(Twitter));
 		}
 
 		#endregion

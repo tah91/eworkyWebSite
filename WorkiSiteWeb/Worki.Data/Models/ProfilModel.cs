@@ -442,6 +442,9 @@ namespace Worki.Data.Models
         [Display(Name = "Viadeo", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
         [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Viadeo { get; set; }
+
+        [Display(Name = "Website", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        public string Website { get; set; }
     }
 
     #endregion

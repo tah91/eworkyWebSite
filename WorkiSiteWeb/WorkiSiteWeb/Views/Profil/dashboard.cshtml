@@ -97,6 +97,10 @@
 					@if (!string.IsNullOrEmpty(Model.Member.MemberMainData.CompanyName))
                     {
 						@Model.Member.MemberMainData.CompanyName
+                        if (Model.Member.MemberMainData.Website != null)
+                        {
+                            <br/><a href="@Model.Member.MemberMainData.Website">Mon site internet</a>
+                        }
                     }
                     else if (Model.IsPrivate)
                     {
