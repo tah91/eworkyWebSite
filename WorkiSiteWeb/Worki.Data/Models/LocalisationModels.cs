@@ -14,21 +14,10 @@ namespace Worki.Data.Models
 {
 	[MetadataType(typeof(Localisation_Validation))]
 	public partial class Localisation : IJsonProvider<LocalisationJson>, IPictureDataProvider, IMapModelProvider, IFeatureProvider// : IDataErrorInfo
-	{
-		#region Data Container Ctor
+    {
+        #region Ctor
 
-		//public void FillFromPictureData(PictureData picData)
-		//{
-		//    if (picData == null)
-		//        return;
-		//    LocalisationFiles.Clear();
-		//    foreach (var item in picData.Files)
-		//    {
-		//        LocalisationFiles.Add(item);
-		//    }
-		//}
-
-		#endregion
+        #endregion
 
         #region IJsonProvider
 
@@ -202,31 +191,31 @@ namespace Worki.Data.Models
             (int)LocalisationOffer.VisioRoom
         };
 
-		public static string GetOfferType(int type)
-		{
-			var enumType = (LocalisationOffer)type;
-			switch (enumType)
-			{
-				case LocalisationOffer.AllOffers:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.AllOffers;
-				case LocalisationOffer.FreeArea:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea;
-				case LocalisationOffer.BuisnessLounge:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge;
-				case LocalisationOffer.Workstation:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation;
-				case LocalisationOffer.Desktop:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop;
-				case LocalisationOffer.MeetingRoom:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom;
-				case LocalisationOffer.SeminarRoom:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom;
-				case LocalisationOffer.VisioRoom:
-					return Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom;
-				default:
-					return string.Empty;
-			}
-		}
+        public static string GetOfferType(int type, bool single = true)
+        {
+            var enumType = (LocalisationOffer)type;
+            switch (enumType)
+            {
+                case LocalisationOffer.AllOffers:
+                    return Worki.Resources.Models.Localisation.LocalisationFeatures.AllOffers;
+                case LocalisationOffer.FreeArea:
+                    return Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea;
+                case LocalisationOffer.BuisnessLounge:
+                    return Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge;
+                case LocalisationOffer.Workstation:
+                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation : Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation;
+                case LocalisationOffer.Desktop:
+                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesktop : Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop;
+                case LocalisationOffer.MeetingRoom:
+                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom;
+                case LocalisationOffer.SeminarRoom:
+                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom;
+                case LocalisationOffer.VisioRoom:
+                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom;
+                default:
+                    return string.Empty;
+            }
+        }
 
 		public static Dictionary<int, string> GetOfferTypes()
 		{
@@ -744,6 +733,8 @@ namespace Worki.Data.Models
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
 			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
+            if (Localisation.LocalisationData == null)
+                Localisation.LocalisationData = new LocalisationData();
 		}
 
 		#endregion

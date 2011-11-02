@@ -17,7 +17,7 @@
 .profilData select{width:260px}
 .profilData input[type="text"]{width:250px}
 .profilDetailLeft{width:23%}
-.profilDetailRight{width:69%}
+.profilDetailRight{width:68.5%}
 .profilAvatar{height:200px}
 .profilAvatar img{max-height:200px}
 .profilAvatar .picBackEmpty{background-image:url('images/avatar.png')}

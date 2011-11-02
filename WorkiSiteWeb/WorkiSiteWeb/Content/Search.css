@@ -285,23 +285,23 @@ div.acc_container, div.toogle_container
 /* Suggestion block
 ----------------------------------------------------------*/
 
-.preview
+.suggestion
 {
-    margin-bottom:5px;
+    margin: 10px 0;
 }
 
-.preview .resultItemGallery img
+.suggestionImage
 {
-    width:90px!important;
-    height:60px!important;
+    width: 100px;
+    height: 70px;
 }
 
-.previewpic
+.suggestionImage img 
 {
-    margin: 4px 0px 4px 4px;
+    max-height: 70px;
 }
 
-.preview .desc
+.suggestiondesc
 {
     width:60%;
 }

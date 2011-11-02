@@ -134,7 +134,7 @@
 .indexFormContainer
 {
     width:49%;
-    margin-top:23px;
+    /*margin-top:23px;*/
 }
 
 .indexFormContainer .tabs li
@@ -144,7 +144,7 @@
 
 .indexFormContainer .contentBlock
 {
-    margin: 6px 0 0 0!important;
+    /*margin: 6px 0 0 0!important;*/
     height:310px;
     font-size: 1.2em!important;
 }

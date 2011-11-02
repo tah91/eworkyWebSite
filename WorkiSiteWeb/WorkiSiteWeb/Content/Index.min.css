@@ -15,8 +15,8 @@
 .index_slides_block{margin:0!important}
 .index_slides_container h3{font-size:1.3em}
 .index_slides{height:310px}
-.indexFormContainer{width:49%;margin-top:23px}
-.indexFormContainer .contentBlock{margin:6px 0 0 0!important;height:310px;font-size:1.2em!important}
+.indexFormContainer{width:49%}
+.indexFormContainer .contentBlock{height:310px;font-size:1.2em!important}
 .indexSearchFormDiv{padding:20px}
 .indexSearchFormDiv select,.indexSearchFormDiv input[type="text"],input[type="password"]{width:100%;font-size:1em}
 .indexSearchFormField{margin-bottom:40px}
