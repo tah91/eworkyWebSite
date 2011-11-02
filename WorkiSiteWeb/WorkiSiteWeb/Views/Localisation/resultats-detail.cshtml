@@ -67,16 +67,6 @@
         });
 
         require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
-
-        $("li.preview").hover(function () {
-            var style = $(this).attr("style");
-            $(this).attr("style", "background-color:#D1E1FA;" + style);
-        }, 
-            function () {
-            var style = $(this).attr("style");
-            var nstyle = style.replace(/background-color:#D1E1FA;/g, '');
-            $(this).attr("style", nstyle);
-        });
             
         //favorites
         $("#favLinkAddButton").live("click", function () {

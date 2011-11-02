@@ -4,27 +4,28 @@
 {
     <div class="contentBlock">
         <h3 class="blue marginb10">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>
-            <ul>
-                @foreach (var item in Model)
+            @foreach (var item in Model)
+            {
+                if (string.IsNullOrEmpty(item.GetMainPic()))
                 {
-                    <li class="preview">
-                        <div class="float-left">
-                            <div class="resultItemGallery picBack borderRadius float-left previewpic">
-                            @if (!string.IsNullOrEmpty(item.GetMainPic()))
-                            {
-		                        <a href="@item.GetDetailFullUrl(Url)">@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)</a>
-                            }
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="float-right desc">
-                            <a class="preview float-left bold blue marginb5" href="@item.GetDetailFullUrl(Url)">@item.Name</a>
-                            <div class="clear"></div>
-                            @Html.TruncateAtWord(item.Description, 40)
-                        </div>
-                        <div class="clear"></div>
-                    </li>
+                    continue;
                 }
-            </ul>
+                <div class="suggestion">
+                    <div class="float-left">
+                        <div class="suggestionImage borderRadius">
+                        @if (!string.IsNullOrEmpty(item.GetMainPic()))
+                        {
+		                    <a href="@item.GetDetailFullUrl(Url)">@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)</a>
+                        }
+                        </div>
+                    </div>
+                    <div class="suggestiondesc float-right">
+                        <a class="bold blue" href="@item.GetDetailFullUrl(Url)">@item.Name</a>
+                        <div class="clear"></div>
+                        @Html.TruncateAtWord(item.Description, 40)
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            }
     </div>
 }
