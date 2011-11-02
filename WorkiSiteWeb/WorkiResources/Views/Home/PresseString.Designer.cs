@@ -61,7 +61,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Articles.
+        ///   Looks up a localized string similar to Ils parlent de nous.
         /// </summary>
         public static string Articles {
             get {
