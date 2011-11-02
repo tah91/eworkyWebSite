@@ -268,7 +268,7 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorker {0} ({1:### ### ###} pts ).
+        ///   Looks up a localized string similar to eWorker {0} - {1:### ### ###} pts.
         /// </summary>
         public static string Score {
             get {

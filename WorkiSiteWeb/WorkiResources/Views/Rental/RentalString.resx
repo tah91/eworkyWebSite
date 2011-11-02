@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Access" xml:space="preserve">
-    <value>Accès</value>
+    <value>Localisation</value>
   </data>
   <data name="AccessLine" xml:space="preserve">
     <value>Line</value>
@@ -133,7 +133,7 @@
     <value>Affinner votre recherche</value>
   </data>
   <data name="AddAnother" xml:space="preserve">
-    <value>Ajouter un autre accès</value>
+    <value>Ajouter un accès en transports en commun</value>
   </data>
   <data name="AddRental" xml:space="preserve">
     <value>Ajouter une annonce</value>
