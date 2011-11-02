@@ -288,6 +288,12 @@ div.acc_container, div.toogle_container
 .suggestion
 {
     margin: 10px 0;
+    padding: 5px;
+}
+
+.suggestion:hover
+{
+    background-color:Whitesmoke;
 }
 
 .suggestionImage

@@ -61,7 +61,7 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accès.
+        ///   Looks up a localized string similar to Localisation.
         /// </summary>
         public static string Access {
             get {
@@ -106,7 +106,7 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajouter un autre accès.
+        ///   Looks up a localized string similar to Ajouter un accès en transports en commun.
         /// </summary>
         public static string AddAnother {
             get {

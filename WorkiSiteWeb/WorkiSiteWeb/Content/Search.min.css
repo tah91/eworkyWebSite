@@ -46,7 +46,8 @@
 .directAccessIndependant{width:35%;background-image:url('images/independant.png')}
 h4.toogle_item{margin-bottom:5px}
 div.acc_container,div.toogle_container{margin-bottom:20px}
-.suggestion{margin:10px 0}
+.suggestion{margin:10px 0;padding:5px}
+.suggestion:hover{background-color:Whitesmoke}
 .suggestionImage{width:100px;height:70px}
 .suggestionImage img{max-height:70px}
 .suggestiondesc{width:60%}
