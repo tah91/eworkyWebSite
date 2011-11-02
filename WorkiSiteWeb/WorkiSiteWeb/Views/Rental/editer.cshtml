@@ -41,7 +41,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m=> m.Rental.Reference)
+								@Html.TextBoxFor(m => m.Rental.Reference, new { placeHolder = "Ex : Immo03/2011, RAMBUTEAU-03" })
 							</div>
 						</td>
 					</tr>
@@ -84,36 +84,36 @@
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Rental.Rate)
+								@Html.LabelFor(m => m.Rental.Rate) (€)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m=> m.Rental.Rate)
+								@Html.TextBoxFor(m => m.Rental.Rate, new { placeHolder = "Ex : 3000" })
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Rental.Charges)
+								@Html.LabelFor(m => m.Rental.Charges) (€)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m=> m.Rental.Charges)
+								@Html.TextBoxFor(m => m.Rental.Charges, new { placeHolder = "Ex : 400" })
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Rental.Surface)
+								@Html.LabelFor(m => m.Rental.Surface) (m2)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m=> m.Rental.Surface)
+								@Html.TextBoxFor(m => m.Rental.Surface, new { placeHolder = "Ex : 250" })
 							</div>
 						</td>
 					</tr>
@@ -134,7 +134,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Rental.Address)
+								@Html.TextBoxFor(m => m.Rental.Address, new { placeHolder = "Ex : 9 rue de Lille" })
 							</div>
 						</td>
 					</tr>
@@ -146,7 +146,7 @@
 						</td>
 						<td>
 							<div class="editor-label">
-							@Html.TextBoxFor(m => m.Rental.PostalCode)
+							@Html.TextBoxFor(m => m.Rental.PostalCode, new { placeHolder = "Ex : 75007" })
 							</div>
 						</td>
 					</tr>
@@ -158,7 +158,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Rental.City)
+								@Html.TextBoxFor(m => m.Rental.City, new { placeHolder = "Ex : Paris" })
 							</div>
 						</td>
 					</tr>
@@ -170,7 +170,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Rental.Country)
+								@Html.TextBoxFor(m => m.Rental.Country, new { placeHolder = "Ex : France" })
 							</div>
 						</td>
 					</tr>

@@ -124,10 +124,10 @@
     <value>Date de disponibilité</value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
-    <value>Disponibilité Immédiate</value>
+    <value>Disponibilité immédiate</value>
   </data>
   <data name="Charges" xml:space="preserve">
-    <value>Charges</value>
+    <value>Charges mensuelles</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>Ville</value>
@@ -196,10 +196,10 @@
     <value>Environnement calme</value>
   </data>
   <data name="Rate" xml:space="preserve">
-    <value>Loyer</value>
+    <value>Loyer mensuel hors charges</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Réference</value>
+    <value>Référence</value>
   </data>
   <data name="StartUpFriendly" xml:space="preserve">
     <value>Start-up friendly</value>

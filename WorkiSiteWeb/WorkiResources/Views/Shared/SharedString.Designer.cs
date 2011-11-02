@@ -476,6 +476,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S&apos;identifier.
+        /// </summary>
+        public static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to À la une.
         /// </summary>
         public static string StarPlaces {

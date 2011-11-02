@@ -602,7 +602,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quoi ?.
+        ///   Looks up a localized string similar to Que cherchez-vous ?.
         /// </summary>
         public static string What {
             get {

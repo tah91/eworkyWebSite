@@ -106,7 +106,7 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajouter un autre accès....
+        ///   Looks up a localized string similar to Ajouter un autre accès.
         /// </summary>
         public static string AddAnother {
             get {

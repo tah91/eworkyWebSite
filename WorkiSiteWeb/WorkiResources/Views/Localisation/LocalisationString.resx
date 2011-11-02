@@ -244,7 +244,7 @@
     <value>Liste complète des lieux</value>
   </data>
   <data name="LocHaveBeenCreate" xml:space="preserve">
-    <value>Le lieu a été créé.</value>
+    <value>La fiche du lieu a été créée.</value>
   </data>
   <data name="LocHaveBeenDel" xml:space="preserve">
     <value>Le lieu a été supprimé.</value>

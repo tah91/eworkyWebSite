@@ -287,4 +287,7 @@
   <data name="FbConnexionText" xml:space="preserve">
     <value>Nouveau ! Connectez-vous simplement avec Facebook !</value>
   </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>S'identifier</value>
+  </data>
 </root>

@@ -268,7 +268,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bureau(x).
+        ///   Looks up a localized string similar to Bureaux.
         /// </summary>
         public static string Desktop {
             get {
@@ -439,7 +439,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salle(s) de réunion.
+        ///   Looks up a localized string similar to Salles de réunion.
         /// </summary>
         public static string MeetingRoom {
             get {
@@ -727,7 +727,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salle(s) de conférence.
+        ///   Looks up a localized string similar to Salles de conférence.
         /// </summary>
         public static string SeminarRoom {
             get {
@@ -844,7 +844,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salle(s) de téléprésence.
+        ///   Looks up a localized string similar to Salles de téléprésence.
         /// </summary>
         public static string VisioRoom {
             get {
@@ -880,7 +880,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Poste(s) de travail professionnels.
+        ///   Looks up a localized string similar to Postes de travail.
         /// </summary>
         public static string Workstation {
             get {

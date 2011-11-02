@@ -268,7 +268,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le lieu a été créé..
+        ///   Looks up a localized string similar to La fiche du lieu a été créée..
         /// </summary>
         public static string LocHaveBeenCreate {
             get {

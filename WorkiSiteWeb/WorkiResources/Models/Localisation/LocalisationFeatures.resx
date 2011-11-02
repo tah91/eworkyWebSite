@@ -311,19 +311,19 @@
     <value>Espace de travail gratuit</value>
   </data>
   <data name="SeminarRoom" xml:space="preserve">
-    <value>Salle(s) de conférence</value>
+    <value>Salles de conférence</value>
   </data>
   <data name="Desktop" xml:space="preserve">
-    <value>Bureau(x)</value>
+    <value>Bureaux</value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
-    <value>Salle(s) de téléprésence</value>
+    <value>Salles de téléprésence</value>
   </data>
   <data name="Workstation" xml:space="preserve">
-    <value>Poste(s) de travail professionnels</value>
+    <value>Postes de travail</value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
-    <value>Salle(s) de réunion</value>
+    <value>Salles de réunion</value>
   </data>
   <data name="Sound" xml:space="preserve">
     <value>Régie son</value>
