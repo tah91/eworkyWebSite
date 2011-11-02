@@ -819,6 +819,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult WelcomePeopleLine() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.WelcomePeopleLine);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult IndexImportValidate() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexImportValidate);
         }
@@ -877,6 +882,7 @@ namespace Worki.Web.Controllers {
             public readonly string CreateWelcomePeople = "CreateWelcomePeople";
             public readonly string EditWelcomePeople = "EditWelcomePeople";
             public readonly string DeleteWelcomePeople = "DeleteWelcomePeople";
+            public readonly string WelcomePeopleLine = "WelcomePeopleLine";
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string IndexBooking = "IndexBooking";
@@ -1021,6 +1027,13 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult DeleteWelcomePeople(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteWelcomePeople);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult WelcomePeopleLine(System.Web.Mvc.FormCollection collection, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.WelcomePeopleLine);
+            callInfo.RouteValueDictionary.Add("collection", collection);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 

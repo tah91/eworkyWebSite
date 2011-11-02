@@ -115,7 +115,7 @@ namespace Worki.Web.Controllers
             var indexModel = new IndexViewModel()
             {
                 LocalisationCount = lRepo.GetCount() + rRepo.GetCount(),
-                WelcomePeople = wpRepo.GetAll().OrderByDescending(wp => wp.Id).ToList(),
+                WelcomePeople = wpRepo.GetMany(wp => wp.Online == true).OrderByDescending(wp => wp.Id).ToList(),
                 BlogPosts = GetBlogPosts()
             };
 

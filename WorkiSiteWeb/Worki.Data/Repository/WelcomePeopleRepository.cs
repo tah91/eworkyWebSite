@@ -10,7 +10,7 @@ namespace Worki.Data.Models
 {
 	public interface IWelcomePeopleRepository : IRepository<WelcomePeople>
 	{
-
+        WelcomePeople GetWelcomePeople(string key);
 	}
 
 	public class WelcomePeopleRepository : RepositoryBase<WelcomePeople>, IWelcomePeopleRepository
@@ -19,6 +19,13 @@ namespace Worki.Data.Models
 			: base(logger, context)
 		{
 		}
+
+        public WelcomePeople GetWelcomePeople(string key)
+        {
+            WelcomePeople member = _Context.WelcomePeoples.SingleOrDefault(m => m.Member.Username == key);
+
+            return member;
+        }
 
         #region IWelcomePeopleRepository
 

@@ -333,4 +333,13 @@
   <data name="WelcomePeopleNotFound" xml:space="preserve">
     <value>L'entrepreneur star non trouvé.</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail eWorker</value>
+  </data>
+  <data name="ExactLoc" xml:space="preserve">
+    <value>Nom exact du lieu</value>
+  </data>
+  <data name="OnOffLine" xml:space="preserve">
+    <value>Online/Offline</value>
+  </data>
 </root>
