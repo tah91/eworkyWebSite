@@ -21,6 +21,7 @@ namespace Worki.Data.Models
         public int LocalisationId { get; set; }
         public string Description { get; set; }
         public string LocalisationPicture { get; set; }
+        public bool Online { get; set; }
     
         // Navigation properties
     

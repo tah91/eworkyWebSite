@@ -502,6 +502,7 @@
           <Property Name="LocalisationId" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="LocalisationPicture" Type="nvarchar" MaxLength="256" />
+          <Property Name="Online" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Comment_Localisation">
           <End Role="Localisation" Type="WorkiDBModel.Store.Localisation" Multiplicity="1">
@@ -1342,6 +1343,7 @@
           <Property Name="LocalisationPicture" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_WelcomePeople_Localisation" FromRole="WelcomePeople" ToRole="Localisation" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_WelcomePeople_Member" FromRole="WelcomePeople" ToRole="Member" />
+          <Property Type="Boolean" Name="Online" Nullable="false" />
         </EntityType>
         <Association Name="FK_Comment_Localisation">
           <End Role="Localisation" Type="WorkiDBModel.Localisation" Multiplicity="1">
@@ -1998,7 +2000,8 @@
             <ScalarProperty Name="IsValid" ColumnName="IsValid" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="WelcomePeoples"><EntityTypeMapping TypeName="WorkiDBModel.WelcomePeople"><MappingFragment StoreEntitySet="WelcomePeople">
-            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Online" ColumnName="Online" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="MemberId" ColumnName="MemberId" />
             <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
             <ScalarProperty Name="Description" ColumnName="Description" />
