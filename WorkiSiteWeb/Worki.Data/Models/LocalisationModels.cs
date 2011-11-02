@@ -687,6 +687,12 @@ namespace Worki.Data.Models
 
         [Display(Name = "Bookable", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public bool Bookable { get; set; }
+
+        [Display(Name = "Facebook", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public string Facebook { get; set; }
+
+        [Display(Name = "Twitter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public string Twitter { get; set; }
 	}
 
 	public class LocalisationListViewModel
