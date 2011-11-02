@@ -16,6 +16,7 @@
         @Html.AntiForgeryToken()
         @Html.HiddenFor(model => model.Localisation.Latitude)
         @Html.HiddenFor(model => model.Localisation.Longitude)
+        @Html.HiddenFor(model => model.IsFreeLocalisation)
         <div class="blockContainer">
             <div class="contentBlock">
                 <div class="dataEdition">
