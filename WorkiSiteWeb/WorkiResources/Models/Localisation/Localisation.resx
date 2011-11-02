@@ -256,4 +256,10 @@
   <data name="Bookable" xml:space="preserve">
     <value>Proposer la réservation en ligne</value>
   </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
 </root>
