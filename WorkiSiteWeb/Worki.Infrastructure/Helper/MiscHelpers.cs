@@ -23,8 +23,8 @@ namespace Worki.Infrastructure.Helpers
             public const string FacebookMail = "FacebookMail";
 			public const string ContactDisplayName = "eWorky Team";
 			public const string WebsiteAddress = "www.eworky.com";
-			public const string ContactMail = "tah.iftikhar@gmail.com";//"contact@eworky.com";
-			public const string BookingMail = "tah.iftikhar@gmail.com";//"team@eworky.com";
+			public const string ContactMail = "contact@eworky.com";
+			public const string BookingMail = "team@eworky.com";
 		}
 
         #endregion
