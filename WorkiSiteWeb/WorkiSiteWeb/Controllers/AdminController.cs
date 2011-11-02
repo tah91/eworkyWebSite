@@ -578,6 +578,47 @@ namespace Worki.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// POST Action method to update admin roles
+        /// and redirect to user admin home
+        /// </summary>
+        /// <param name="collection">form containg the list of ids to push to admin role</param>
+        /// <returns>Redirect to return url</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult WelcomePeopleLine(FormCollection collection, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var wRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+                try
+                {
+                    var listCollection = collection.AllKeys;
+                    foreach (var username in listCollection)
+                    {
+                        var onlineCheck = collection[username].ToLower();
+                        var welcomeppl = wRepo.GetWelcomePeople(username);
+                        if (welcomeppl == null)
+                            continue;
+                        welcomeppl.Online = onlineCheck.Contains("true");
+                    }
+                    context.Commit();
+                }
+                catch (Exception e)
+                {
+                    _Logger.Error(e.Message);
+                    context.Complete();
+                }
+
+            }
+
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.RoleHaveBeenSet;
+
+            // Redirection
+            return Redirect(returnUrl);
+        }
+
         #endregion
 
         #region Import csv
