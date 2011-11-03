@@ -162,11 +162,11 @@ namespace Worki.Data.Models
 
 		public static Dictionary<int, string> AccessTypes = new Dictionary<int, string>()
         {
-			{ (int)Access.NotDefined,Worki.Resources.Models.Rental.Rental.NotDefined},
-            { (int)Access.Metro,Access.Metro.ToString()},
-			{ (int)Access.Train,Access.Train.ToString()},
-			{ (int)Access.Tram,Access.Tram.ToString()},
-			{ (int)Access.Bus,Access.Bus.ToString()}
+			{ (int)Access.NotDefined, Worki.Resources.Models.Rental.Rental.NotDefined},
+            { (int)Access.Metro, RentalAccess.GetAccessType((int)Access.Metro)},
+			{ (int)Access.Train, RentalAccess.GetAccessType((int)Access.Train)},
+			{ (int)Access.Tram, RentalAccess.GetAccessType((int)Access.Tram)},
+			{ (int)Access.Bus, RentalAccess.GetAccessType((int)Access.Bus)}
         };
 
 		public static Dictionary<int, string> RentalFeatureDict = MiscHelpers.GetEnumDescriptors(typeof(RentalFeatureType));
@@ -464,9 +464,28 @@ namespace Worki.Data.Models
         {
             get
             {
-                return string.Format("{0} ({1} {2})", Station, ((Access)Type).ToString(), Line);
+                return string.Format("{0} ({1} {2})", Station, GetAccessType(Type), Line);
             }
         }
+
+        public static string GetAccessType(int type)
+        {
+            var enumType = (Access)type;
+            switch (enumType)
+            {
+                case Access.Metro:
+                    return Worki.Resources.Models.Rental.Rental.Metro;
+                case Access.Bus:
+                    return Worki.Resources.Models.Rental.Rental.Bus;
+                case Access.Train:
+                    return Worki.Resources.Models.Rental.Rental.Train;
+                case Access.Tram:
+                    return Worki.Resources.Models.Rental.Rental.Tram;
+                default:
+                    return string.Empty;
+            }
+        }
+
 	}
 
     [Bind(Exclude = "Id,RentalId")]

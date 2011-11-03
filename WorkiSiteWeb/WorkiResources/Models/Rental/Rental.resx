@@ -261,4 +261,16 @@
   <data name="TypeAccess" xml:space="preserve">
     <value>Type de transport</value>
   </data>
+  <data name="Bus" xml:space="preserve">
+    <value>Bus</value>
+  </data>
+  <data name="Metro" xml:space="preserve">
+    <value>Métro</value>
+  </data>
+  <data name="Train" xml:space="preserve">
+    <value>Train</value>
+  </data>
+  <data name="Tram" xml:space="preserve">
+    <value>Tram</value>
+  </data>
 </root>

@@ -137,6 +137,7 @@ namespace Worki.Web.Controllers
 													 formData.MemberBooking.Message);
 					teamMail.Send();
 
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));
 				}
 				catch (Exception ex)

@@ -97,6 +97,15 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bus.
+        /// </summary>
+        public static string Bus {
+            get {
+                return ResourceManager.GetString("Bus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charges mensuelles.
         /// </summary>
         public static string Charges {
@@ -304,6 +313,15 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Métro.
+        /// </summary>
+        public static string Metro {
+            get {
+                return ResourceManager.GetString("Metro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Min.
         /// </summary>
         public static string Min {
@@ -444,6 +462,24 @@ namespace Worki.Resources.Models.Rental {
         public static string Toilets {
             get {
                 return ResourceManager.GetString("Toilets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Train.
+        /// </summary>
+        public static string Train {
+            get {
+                return ResourceManager.GetString("Train", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tram.
+        /// </summary>
+        public static string Tram {
+            get {
+                return ResourceManager.GetString("Tram", resourceCulture);
             }
         }
         
