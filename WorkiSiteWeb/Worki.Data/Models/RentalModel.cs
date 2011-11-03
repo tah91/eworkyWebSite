@@ -246,7 +246,7 @@ namespace Worki.Data.Models
 
         public string GetDisplayName()
         {
-            return RentalTypes[Type] + " - " + City;
+            return RentalTypes[Type] + " - " + City + " (" + PostalCode + ")";
         }
 
         public string GetDescription()

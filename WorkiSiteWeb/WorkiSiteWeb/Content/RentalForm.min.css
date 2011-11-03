@@ -4,6 +4,8 @@
 td:first-child div{width:100px}
 td select[id="Rental_LeaseType"]{width:404px}
 td select[id="Rental_Type"]{width:404px}
+td select[id="Rental_GreenHouse"]{width:404px}
+td select[id="Rental_HeatingType"]{width:404px}
 .rentalAccessRows select[id$="Type"]{width:100px}
 .rentalAccessRows input[id$="Line"]{width:40px}
 .rentalAccessRows input[id$="Station"]{width:143px}

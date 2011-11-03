@@ -153,7 +153,7 @@
             }
             if (!string.IsNullOrEmpty(Model.Twitter))
 			{
-				<a href="@Model.Twitter"><span>@Worki.Resources.Models.Localisation.Localisation.Twitter</span></a><br />
+				<a href="@Model.GetTwitter()"><span>@Model.GetLoginTwitter()</span></a><br />
             }
         }
   else

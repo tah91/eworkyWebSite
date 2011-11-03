@@ -262,6 +262,16 @@ page width. Or, you can specify an exact pixel width. */
 	margin-top:15px;
 }
 
+.ie7 .logo
+{
+	background-image: url('images/logo.png');
+	/*width: 147px;*/
+	width:38%;
+	height: 47px;
+	background-repeat: no-repeat;
+	margin-top:15px;
+}
+
 .logo_beta
 {
 	background-image: url('images/logo.png');
@@ -275,6 +285,12 @@ page width. Or, you can specify an exact pixel width. */
 .headerMenu
 {
     width:39%;
+    text-align:center;
+}
+
+.ie7 .headerMenu
+{
+    width:24%;
     text-align:center;
 }
 
@@ -296,6 +312,14 @@ page width. Or, you can specify an exact pixel width. */
 {
     /*width:29%;*/
     width:auto;
+    background-color:white!important;
+    margin-top:0!important; 
+    height: 50px;
+}
+
+.ie7 .loginContainer
+{
+    width:32%;
     background-color:white!important;
     margin-top:0!important; 
     height: 50px;

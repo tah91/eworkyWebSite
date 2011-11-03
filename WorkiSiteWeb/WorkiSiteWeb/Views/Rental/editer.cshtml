@@ -117,6 +117,30 @@
 							</div>
 						</td>
 					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.HeatingType)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m => m.Rental.HeatingType, Model.HeatingTypeSelect)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Rental.GreenHouse)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m => m.Rental.GreenHouse, Model.DiagnosticRateSelect)
+							</div>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="contentBlock">
