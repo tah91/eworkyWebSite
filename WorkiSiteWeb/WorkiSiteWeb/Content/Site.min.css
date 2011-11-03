@@ -42,12 +42,15 @@ html,body{margin:0;padding:0;height:100%}
 .headerContainer{margin-bottom:30px;background:whiteSmoke;border-bottom:1px solid #E5E5E5;height:75px}
 .header{width:1000px;margin-left:auto;margin-right:auto}
 .logo{background-image:url('images/logo.png');width:30%;height:47px;background-repeat:no-repeat;margin-top:15px}
+.ie7 .logo{background-image:url('images/logo.png');width:38%;height:47px;background-repeat:no-repeat;margin-top:15px}
 .logo_beta{background-image:url('images/logo.png')}
 .logo_nobeta{background-image:url('images/logo_nobeta.png')}
 .headerMenu{width:39%;text-align:center}
+.ie7 .headerMenu{width:24%;text-align:center}
 .headerMenu .buttonStd{width:90px;height:40px;margin:0;font-size:14px}
 .ie7 .headerMenu .buttonStd{margin-left:5px}
 .loginContainer{width:auto;background-color:white!important;margin-top:0!important;height:50px}
+.ie7 .loginContainer{width:32%;background-color:white!important;margin-top:0!important;height:50px}
 .logindisplay{padding:5px 10px 10px 10px}
 .loginTitle{font-size:.9em;margin-bottom:3px}
 .createAccount{margin-top:10px}
