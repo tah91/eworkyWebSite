@@ -48,6 +48,7 @@ namespace Worki.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Create(int id, OfferFormViewModel offerFormViewModel)
         {
+            TempData[PictureData.PictureDataString] = new PictureDataContainer(offerFormViewModel.Offer);
             if (ModelState.IsValid)
             {
                 try
@@ -116,6 +117,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult Edit(int id, int localisationId, OfferFormViewModel formData)
 		{
 			var context = ModelFactory.GetUnitOfWork();
+            TempData[PictureData.PictureDataString] = new PictureDataContainer(formData.Offer);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			if (ModelState.IsValid)
 			{
