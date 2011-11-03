@@ -282,6 +282,27 @@ div.acc_container, div.toogle_container
     margin-bottom:20px;
 }
 
+.order
+{
+    margin-top:20px;
+    width: 27%;
+}
+
+.order a
+{
+    text-decoration:none;
+}
+
+.order a:hover
+{
+    text-decoration:underline;
+}
+
+.underline
+{
+    text-decoration:underline!important;
+}
+
 /* Suggestion block
 ----------------------------------------------------------*/
 

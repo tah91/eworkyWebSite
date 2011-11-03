@@ -570,15 +570,13 @@ namespace Worki.Data.Models
 				var link = "http://twitter.com/#!/";
 				var twitter = Member.MemberMainData.Twitter;
 
-				if (twitter.Contains("http://twitter.com/#!/"))
-				{
-					var tab = twitter.Split('/');
-					toRet += tab[tab.Length - 1];
-				}
+                if (twitter.Contains(link))
+                {
+                    var tab = twitter.Split('/');
+                    toRet += tab[tab.Length - 1];
+                }
 
-				if (!string.IsNullOrEmpty(toRet))
-					return (link + toRet);
-				return (link + twitter);
+                return (!string.IsNullOrEmpty(toRet) ? (link + toRet) : (link + twitter));
 			}
 		}
 

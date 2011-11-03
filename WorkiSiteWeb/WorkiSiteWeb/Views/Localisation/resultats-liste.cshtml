@@ -13,6 +13,7 @@
 
 @{
 	var rvd = WebHelper.GetRVD(this);
+    var order = rvd["order"];
 	var distRvd = WebHelper.GetRVD(this);
 	var ratingRvd = WebHelper.GetRVD(this);
 	distRvd["order"] = (int)eOrderBy.Distance;
@@ -20,13 +21,21 @@
 }
 
 
-@RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
-
-<div class="float-right blue">
-    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd) | 
-    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd)
+<div class="float-right blue order">
+    @{
+        if (int.Parse(order.ToString()) == (int)eOrderBy.Distance)
+        {
+            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new { @class = "underline" }) <text>|</text>
+            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd) 
+        }
+        else
+        {
+            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd) <text>|</text>
+            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new { @class = "underline" })
+        }
+    }
 </div>
-<div class="clear"></div>
+@RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
 
 <div class="detailContent">
     <div class="searchFormBlock float-right">

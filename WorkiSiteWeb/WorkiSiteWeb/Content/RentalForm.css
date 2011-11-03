@@ -31,6 +31,16 @@ td select[id="Rental_Type"]
     width:404px;
 }
 
+td select[id="Rental_GreenHouse"]
+{
+    width:404px;
+}
+
+td select[id="Rental_HeatingType"]
+{
+    width:404px;
+}
+
 .rentalAccessRows select[id$="Type"]
 {
     width:100px;

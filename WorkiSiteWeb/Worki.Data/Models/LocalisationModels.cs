@@ -603,6 +603,42 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        public string GetLoginTwitter()
+        {
+            var toRet = "";
+            var link = "twitter.com/#!/";
+
+            if (!string.IsNullOrEmpty(Twitter))
+            {
+                if (Twitter.Contains(link))
+                {
+                    var tab = Twitter.Split('/');
+                    toRet += tab[tab.Length - 1];
+                }
+                else
+                {
+                    toRet += Twitter;
+                }
+                return (!toRet.Contains("@") ? ("@" + toRet) : toRet);
+            }
+
+            return (toRet);
+        }
+
+        public string GetTwitter()
+        {
+            var toRet = "";
+            var link = "http://twitter.com/#!/";
+
+            if (Twitter.Contains(link))
+            {
+                var tab = Twitter.Split('/');
+                toRet += tab[tab.Length - 1];
+            }
+
+            return (!string.IsNullOrEmpty(toRet) ? (link + toRet) : (link + Twitter));
+        }
     }
 
 	[Bind(Exclude = "Id,OwnerId")]
