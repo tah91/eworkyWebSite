@@ -371,10 +371,10 @@
     <value>De 50 à 100 m2</value>
   </data>
   <data name="Equipped" xml:space="preserve">
-    <value>Equipés et câblés</value>
+    <value>Equipé et câblé</value>
   </data>
   <data name="FlexibleContract" xml:space="preserve">
-    <value>Contrats flexibles</value>
+    <value>Contrat flexible</value>
   </data>
   <data name="ForCardOwner" xml:space="preserve">
     <value>Accès réservé aux détenteurs de la carte</value>

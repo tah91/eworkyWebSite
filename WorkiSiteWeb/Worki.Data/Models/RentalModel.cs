@@ -279,7 +279,7 @@ namespace Worki.Data.Models
             get
             {
                 if (AvailableNow)
-                    return string.Format("{0} : {1}", Worki.Resources.Models.Rental.Rental.Availability, Worki.Resources.Models.Rental.Rental.AvailableNow);
+                    return string.Format("{0}", Worki.Resources.Models.Rental.Rental.AvailableNow);
                 else if (AvailableDate.HasValue)
                     return string.Format("{0} : {1:dd/MM/yyyy}", Worki.Resources.Models.Rental.Rental.Availability, AvailableDate.Value);
                 else

@@ -70,7 +70,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contactez-nous.
+        ///   Looks up a localized string similar to Contactez-nous !.
         /// </summary>
         public static string ContactUs {
             get {

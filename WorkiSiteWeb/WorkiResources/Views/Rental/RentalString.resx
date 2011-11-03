@@ -319,7 +319,7 @@
     <value>Mémoriser cette recherche</value>
   </data>
   <data name="SendMailToOwner" xml:space="preserve">
-    <value>Envoyer un email au propriétaire</value>
+    <value>Envoyer un e-mail au propriétaire</value>
   </data>
   <data name="SendToFriend" xml:space="preserve">
     <value>Recommander à un ami</value>

@@ -7,17 +7,17 @@
         <a href="@@itinLink" target="_blank">@@Model.FullAddress</a>-->
     </div>
     <div class="white float-right">
-        <span class="rentalSummaryElem borderRadius">@Model.SurfaceString</span>
-        <span class="rentalSummaryElem borderRadius">@Model.RateString</span>
+        <span class="rentalSummaryElem borderRadius bold">@Model.SurfaceString</span>
+        <span class="rentalSummaryElem borderRadius bold">@Model.RateString</span>
     </div>
     <div class="clear"></div>
-    <div class="rentalShare float-right">
+    @*<div class="rentalShare float-right">
     @{
 		var link = Model.GetDetailFullUrl(Url);
     }
         <div id="fb-root">
         </div>
-        <script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
+        @*<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
         <fb:like href="@link" layout="button_count" show_faces="false" font="arial" style="vertical-align: top;">
         </fb:like>
 		<!-- Placez cette balise à l'endroit où vous souhaitez que le bouton +1 s'affiche --> 
@@ -32,7 +32,7 @@
         <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>               
     </div>
     <div class="clear">
-    </div>
+    </div>*@
 </div>
 <div class="detailContent">
     <div class="rentalDetailLeft blockContainer dashedRight float-left">

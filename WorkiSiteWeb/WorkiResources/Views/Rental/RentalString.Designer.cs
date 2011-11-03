@@ -664,7 +664,7 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Envoyer un email au propriétaire.
+        ///   Looks up a localized string similar to Envoyer un e-mail au propriétaire.
         /// </summary>
         public static string SendMailToOwner {
             get {

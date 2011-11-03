@@ -331,7 +331,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Equipés et câblés.
+        ///   Looks up a localized string similar to Equipé et câblé.
         /// </summary>
         public static string Equipped {
             get {
@@ -358,7 +358,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contrats flexibles.
+        ///   Looks up a localized string similar to Contrat flexible.
         /// </summary>
         public static string FlexibleContract {
             get {

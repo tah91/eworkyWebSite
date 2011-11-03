@@ -151,7 +151,7 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Affiner votre recherche.
+        ///   Looks up a localized string similar to Affiner la recherche.
         /// </summary>
         public static string RefineSearch {
             get {

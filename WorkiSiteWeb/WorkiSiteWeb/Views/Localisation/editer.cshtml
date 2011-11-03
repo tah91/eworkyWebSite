@@ -189,7 +189,7 @@
                                 </td>
                                 <td>
                                     <div class="editor-field">
-                                        @Html.TextBoxFor(model => model.Localisation.Facebook)
+                                        @Html.TextBoxFor(model => model.Localisation.Facebook, new { placeHolder = "Lien vers la page Facebook" })
                                     </div>
                                 </td>
                             </tr>
@@ -201,7 +201,7 @@
                                 </td>
                                 <td>
                                     <div class="editor-field">
-                                        @Html.TextBoxFor(model => model.Localisation.Twitter)
+                                        @Html.TextBoxFor(model => model.Localisation.Twitter, new { placeHolder = "Lien vers le profil Twitter" })
                                     </div>
                                 </td>
                             </tr>
