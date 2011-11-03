@@ -262,4 +262,10 @@
   <data name="Twitter" xml:space="preserve">
     <value>Twitter</value>
   </data>
+  <data name="Coffee" xml:space="preserve">
+    <value>Café</value>
+  </data>
+  <data name="UsefulHandicap" xml:space="preserve">
+    <value>Adapté pour personnes à mobilité réduite</value>
+  </data>
 </root>

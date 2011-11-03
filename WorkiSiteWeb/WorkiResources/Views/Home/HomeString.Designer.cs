@@ -142,6 +142,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous voulez ajouter un espace de travail ? Choisissez le formulaire qui correspond au type de lieu que vous voulez ajouter..
+        /// </summary>
+        public static string ChooseForm {
+            get {
+                return ResourceManager.GetString("ChooseForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {

@@ -319,4 +319,7 @@
   <data name="RentalAd" xml:space="preserve">
     <value>Une annonce de location de locaux</value>
   </data>
+  <data name="ChooseForm" xml:space="preserve">
+    <value>Vous voulez ajouter un espace de travail ? Choisissez le formulaire qui correspond au type de lieu que vous voulez ajouter.</value>
+  </data>
 </root>

@@ -258,4 +258,7 @@
   <data name="Suggestion" xml:space="preserve">
     <value>Suggestion(s)</value>
   </data>
+  <data name="execError" xml:space="preserve">
+    <value>Une erreur est survenue.</value>
+  </data>
 </root>

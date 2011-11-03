@@ -189,7 +189,7 @@
                                 </td>
                                 <td>
                                     <div class="editor-field">
-                                        @Html.TextBoxFor(model => model.Localisation.Facebook, new { placeHolder = "Lien vers la page Facebook" })
+                                        @Html.TextBoxFor(model => model.Localisation.Facebook, new { placeHolder = Worki.Resources.Views.Localisation.LocalisationFormString.LinkToFB })
                                     </div>
                                 </td>
                             </tr>
@@ -201,7 +201,7 @@
                                 </td>
                                 <td>
                                     <div class="editor-field">
-                                        @Html.TextBoxFor(model => model.Localisation.Twitter, new { placeHolder = "Lien vers le profil Twitter" })
+                                        @Html.TextBoxFor(model => model.Localisation.Twitter, new { placeHolder = Worki.Resources.Views.Localisation.LocalisationFormString.LinkToTwitter })
                                     </div>
                                 </td>
                             </tr>
@@ -397,7 +397,7 @@
                 </div>
             </div>
 			<div class="contentBlock">
-				<h3 class="blue">Offres</h3>
+				<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
 				<div class="offersTable">
 					<table>
 					@foreach (var item in Model.Localisation.Offers)
@@ -405,14 +405,14 @@
 						<tr>
 							<td>@item.Name</td>
 							<td>@Html.ActionLink("Editer", MVC.Offer.Edit(item.Id, item.LocalisationId))</td>
-							<td><div class="cross linkImg" title="Supprimer">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id, item.LocalisationId))</div></td>
+							<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id, item.LocalisationId))</div></td>
 						</tr>
 					}
 					</table>
 				</div>
 				@Html.DropDownListFor(m => m.NewOfferType, Model.Offers)
 				<input  type="submit" class="buttonStd buttonBlue imageBtn" 
-						name="addOffer" value="Ajouter"/>
+						name="addOffer" value="@Worki.Resources.Views.Shared.SharedString.Adds"/>
 			</div>
 			}
             <div class="contentBlock">

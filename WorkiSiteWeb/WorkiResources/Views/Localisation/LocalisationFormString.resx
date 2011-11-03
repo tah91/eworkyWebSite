@@ -145,6 +145,12 @@
   <data name="GoogleMapsLocalisation" xml:space="preserve">
     <value>Localisation Google Maps</value>
   </data>
+  <data name="LinkToFB" xml:space="preserve">
+    <value>Lien vers la page Facebook</value>
+  </data>
+  <data name="LinkToTwitter" xml:space="preserve">
+    <value>Lien vers le profil Twitter</value>
+  </data>
   <data name="MandatoryFields" xml:space="preserve">
     <value>champs obligatoires</value>
   </data>

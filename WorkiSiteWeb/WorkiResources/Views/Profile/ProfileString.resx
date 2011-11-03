@@ -147,8 +147,14 @@
   <data name="FavoriteSpacesEmptyPublic" xml:space="preserve">
     <value>n'a pas ajouté d'espace à ses favoris.</value>
   </data>
+  <data name="FBProfile" xml:space="preserve">
+    <value>Profil Facebook</value>
+  </data>
   <data name="InfosEmpty" xml:space="preserve">
     <value>Pour compléter votre profil, {0}.</value>
+  </data>
+  <data name="LinkedInProfile" xml:space="preserve">
+    <value>Profil LinkedIn</value>
   </data>
   <data name="MemberNotFound" xml:space="preserve">
     <value>Utilisateur non trouvé.</value>
@@ -174,6 +180,9 @@
   <data name="MySpaces" xml:space="preserve">
     <value>Espaces ajoutés</value>
   </data>
+  <data name="MyWebsite" xml:space="preserve">
+    <value>Mon site internet</value>
+  </data>
   <data name="PersonalInfo" xml:space="preserve">
     <value>Mes informations personnelles</value>
   </data>
@@ -191,6 +200,12 @@
   </data>
   <data name="SocialNetwork" xml:space="preserve">
     <value>Réseaux sociaux</value>
+  </data>
+  <data name="TwitterProfile" xml:space="preserve">
+    <value>Profil Twitter</value>
+  </data>
+  <data name="ViadeoProfile" xml:space="preserve">
+    <value>Profil Viadeo</value>
   </data>
   <data name="Wait2Days" xml:space="preserve">
     <value>Vous devez attendre 48h avant de pouvoir éditer un lieu</value>
@@ -212,5 +227,11 @@
   </data>
   <data name="YourViadeo" xml:space="preserve">
     <value>Votre page Viadeo</value>
+  </data>
+  <data name="YourWebsite" xml:space="preserve">
+    <value>Votre site internet</value>
+  </data>
+  <data name="MyComActivities" xml:space="preserve">
+    <value>Mon activité communautaire</value>
   </data>
 </root>

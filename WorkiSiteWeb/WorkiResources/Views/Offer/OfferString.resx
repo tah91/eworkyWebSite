@@ -141,4 +141,10 @@
   <data name="OfferCharacteristics" xml:space="preserve">
     <value>Caractéristiques de l'offre</value>
   </data>
+  <data name="AskDevis" xml:space="preserve">
+    <value>Demande de devis</value>
+  </data>
+  <data name="InfoUnknown" xml:space="preserve">
+    <value>Les caractéristiques de cette offre n’ont pas été renseignées.</value>
+  </data>
 </root>

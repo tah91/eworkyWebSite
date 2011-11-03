@@ -780,7 +780,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2441</DevelopmentServerPort>
+          <DevelopmentServerPort>4415</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

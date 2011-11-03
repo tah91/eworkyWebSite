@@ -29,7 +29,7 @@
 				}
 				@if (offer.OfferFeatures.Count() == 0)
 				{
-					<div class="italic">Les caractéristiques de cette offre n’ont pas été renseignées.</div>
+					<div class="italic">@Worki.Resources.Views.Offer.OfferString.InfoUnknown</div>
 				}
 				else
 				{
@@ -46,7 +46,7 @@
 				}
 				@if (Model.Localisation.Bookable)
 				{
-					var text = Offer.NeedQuotation((LocalisationOffer)offer.Type) ? "Demande de devis" : Worki.Resources.Views.Localisation.LocalisationString.BookIt;
+					var text = Offer.NeedQuotation((LocalisationOffer)offer.Type) ? Worki.Resources.Views.Offer.OfferString.AskDevis : Worki.Resources.Views.Localisation.LocalisationString.BookIt;
 					<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(text, MVC.Booking.Create(offer.Id, offer.LocalisationId))</div>
 					<div class="clear">
 					</div>
@@ -75,15 +75,5 @@
             });
         });
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"]);
-
-        $("li.preview").hover(function () {
-            var style = $(this).attr("style");
-            $(this).attr("style", "background-color:#D1E1FA;" + style);
-        }, 
-            function () {
-            var style = $(this).attr("style");
-            var nstyle = style.replace(/background-color:#D1E1FA;/g, '');
-            $(this).attr("style", nstyle);
-        });
     </script>
 }

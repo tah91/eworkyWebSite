@@ -3,32 +3,32 @@
 <div class="availableServices">
 @if (Model.HasFeature(Feature.Wifi_Free))
 {
-    <div class="serviceIcones_wifi_on float-left" title="Wifi gratuit">
+    <div class="serviceIcones_wifi_on float-left" title="@Worki.Resources.Models.Localisation.LocalisationFeatures.Wifi_Free">
     </div>
 }
 @if (Model.HasFeature(Feature.Wifi_Not_Free))
 {
-    <div class="serviceIcones_wifip_on float-left" title="Wifi payant">
+    <div class="serviceIcones_wifip_on float-left" title="@Worki.Resources.Models.Localisation.LocalisationFeatures.Wifi_Not_Free">
     </div>
 }
 @if (Model.HasFeature(Feature.Restauration))
 {
-    <div class="serviceIcones_resto_on float-left" title="Restauration">
+    <div class="serviceIcones_resto_on float-left" title="@Worki.Resources.Models.Localisation.LocalisationFeatures.Restauration">
     </div>
 }
 @if (Model.HasFeature(Feature.Coffee))
 {
-    <div class="serviceIcones_coffee_on float-left" title="Café">
+    <div class="serviceIcones_coffee_on float-left" title="@Worki.Resources.Models.Localisation.Localisation.Coffee">
     </div>
 }
 @if (Model.HasFeature(Feature.Parking))
 {
-    <div class="serviceIcones_parking_on float-left" title="Parking">
+    <div class="serviceIcones_parking_on float-left" title="@Worki.Resources.Models.Localisation.LocalisationFeatures.Parking">
     </div>
 }
 @if (Model.HasFeature(Feature.Handicap))
 {
-    <div class="serviceIcones_handicap_on float-left" title="Adapté pour personnes à mobilité réduite">
+    <div class="serviceIcones_handicap_on float-left" title="@Worki.Resources.Models.Localisation.Localisation.UsefulHandicap">
     </div>
 }
 </div>

@@ -21,8 +21,8 @@
 				if (xhr.status == 400) {
 					execError(xhr.responseText)
 				}
-				else {
-					execError("Une erreur est survenue.");
+                else {
+                    execError("@Worki.Resources.Views.Localisation.LocalisationString.execError");
 				}
 			},
 			success: function (data, status, xhr) {

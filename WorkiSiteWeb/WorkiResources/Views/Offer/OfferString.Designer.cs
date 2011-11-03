@@ -70,6 +70,15 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande de devis.
+        /// </summary>
+        public static string AskDevis {
+            get {
+                return ResourceManager.GetString("AskDevis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Voulez-vous effacer l&apos;offre suivante : {0}.
         /// </summary>
         public static string AskRemoveOffer {
@@ -84,6 +93,15 @@ namespace Worki.Resources.Views.Offer {
         public static string EditOffer {
             get {
                 return ResourceManager.GetString("EditOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Les caractéristiques de cette offre n’ont pas été renseignées..
+        /// </summary>
+        public static string InfoUnknown {
+            get {
+                return ResourceManager.GetString("InfoUnknown", resourceCulture);
             }
         }
         

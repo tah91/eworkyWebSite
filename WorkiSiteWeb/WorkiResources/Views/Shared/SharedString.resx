@@ -290,4 +290,13 @@
   <data name="SignIn" xml:space="preserve">
     <value>S'identifier</value>
   </data>
+  <data name="FastLogonFb" xml:space="preserve">
+    <value>Pour gagner du temps, connectez-vous grâce à votre compte Facebook.</value>
+  </data>
+  <data name="FastLogonFb2" xml:space="preserve">
+    <value>Connectez-vous en quelques secondes à eWorky grâce à votre compte Facebook !</value>
+  </data>
+  <data name="SignViaFB" xml:space="preserve">
+    <value>Inscrivez-vous avec Facebook</value>
+  </data>
 </root>

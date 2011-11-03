@@ -168,4 +168,7 @@
   <data name="Map" xml:space="preserve">
     <value>Carte</value>
   </data>
+  <data name="OrViaFB" xml:space="preserve">
+    <value>Ou avec votre compte Facebook</value>
+  </data>
 </root>

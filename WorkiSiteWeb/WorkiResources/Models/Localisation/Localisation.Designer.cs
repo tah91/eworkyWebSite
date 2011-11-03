@@ -106,6 +106,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Café.
+        /// </summary>
+        public static string Coffee {
+            get {
+                return ResourceManager.GetString("Coffee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prix du café.
         /// </summary>
         public static string CoffeePrice {
@@ -417,6 +426,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string TypeValue {
             get {
                 return ResourceManager.GetString("TypeValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adapté pour personnes à mobilité réduite.
+        /// </summary>
+        public static string UsefulHandicap {
+            get {
+                return ResourceManager.GetString("UsefulHandicap", resourceCulture);
             }
         }
         

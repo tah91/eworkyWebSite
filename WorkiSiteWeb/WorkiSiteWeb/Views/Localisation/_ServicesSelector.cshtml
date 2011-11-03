@@ -1,34 +1,34 @@
 ﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
 
-<div class="float-left" title="Wifi gratuit">
+<div class="float-left" title="@Worki.Resources.Models.Localisation.LocalisationFeatures.Wifi_Free">
     <div class="linkImg" id="wifiLnk">
     <a href="#"></a>
     </div>
     @Html.FeatureHidden(Feature.Wifi_Free, Model.Criteria.LocalisationData)
 </div>
 
-<div class="float-left" title="Restauration">
+<div class="float-left" title="@Worki.Resources.Models.Localisation.LocalisationFeatures.Restauration">
     <div class="linkImg" id="restoLnk">
     <a href="#"></a>
     </div>
     @Html.FeatureHidden(Feature.Restauration, Model.Criteria.LocalisationData)
 </div>
 
-<div class="float-left" title="Café">
+<div class="float-left" title="@Worki.Resources.Models.Localisation.Localisation.Coffee">
     <div class="linkImg" id="coffeeLnk">
     <a href="#"></a>
     </div>
     @Html.FeatureHidden(Feature.Coffee, Model.Criteria.LocalisationData)
 </div>
 
-<div class="float-left" title="Parking">
+<div class="float-left" title="@Worki.Resources.Models.Localisation.LocalisationFeatures.Parking">
     <div class="linkImg" id="parkingLnk">
     <a href="#"></a>
     </div>
     @Html.FeatureHidden(Feature.Parking, Model.Criteria.LocalisationData)
 </div>
 
-<div class="float-left" title="Adapté pour personnes à mobilité réduite">
+<div class="float-left" title="@Worki.Resources.Models.Localisation.Localisation.UsefulHandicap">
     <div class="linkImg" id="handicapLnk">
     <a href="#"></a>
     </div>

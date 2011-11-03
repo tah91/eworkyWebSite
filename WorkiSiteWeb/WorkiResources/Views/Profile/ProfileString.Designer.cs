@@ -151,6 +151,15 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profil Facebook.
+        /// </summary>
+        public static string FBProfile {
+            get {
+                return ResourceManager.GetString("FBProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pour compléter votre profil, {0}..
         /// </summary>
         public static string InfosEmpty {
@@ -160,11 +169,29 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profil LinkedIn.
+        /// </summary>
+        public static string LinkedInProfile {
+            get {
+                return ResourceManager.GetString("LinkedInProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Utilisateur non trouvé..
         /// </summary>
         public static string MemberNotFound {
             get {
                 return ResourceManager.GetString("MemberNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mon activité communautaire.
+        /// </summary>
+        public static string MyComActivities {
+            get {
+                return ResourceManager.GetString("MyComActivities", resourceCulture);
             }
         }
         
@@ -232,6 +259,15 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mon site internet.
+        /// </summary>
+        public static string MyWebsite {
+            get {
+                return ResourceManager.GetString("MyWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mes informations personnelles.
         /// </summary>
         public static string PersonalInfo {
@@ -282,6 +318,24 @@ namespace Worki.Resources.Views.Profile {
         public static string SocialNetwork {
             get {
                 return ResourceManager.GetString("SocialNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profil Twitter.
+        /// </summary>
+        public static string TwitterProfile {
+            get {
+                return ResourceManager.GetString("TwitterProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profil Viadeo.
+        /// </summary>
+        public static string ViadeoProfile {
+            get {
+                return ResourceManager.GetString("ViadeoProfile", resourceCulture);
             }
         }
         
@@ -345,6 +399,15 @@ namespace Worki.Resources.Views.Profile {
         public static string YourViadeo {
             get {
                 return ResourceManager.GetString("YourViadeo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre site internet.
+        /// </summary>
+        public static string YourWebsite {
+            get {
+                return ResourceManager.GetString("YourWebsite", resourceCulture);
             }
         }
     }

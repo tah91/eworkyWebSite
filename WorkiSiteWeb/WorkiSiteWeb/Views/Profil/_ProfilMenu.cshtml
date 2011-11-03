@@ -19,7 +19,7 @@
             @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Facebook))
 			{   
 				<div class="profil_social float-left">
-					<div class="profil_fb linkImg" title="Profil Facebook">
+					<div class="profil_fb linkImg" title="@Worki.Resources.Views.Profile.ProfileString.FBProfile">
 						<a href="@Model.Member.MemberMainData.Facebook" target="_blank"></a>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
             @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Twitter))
 			{   
 				<div class="profil_social float-left">
-					<div class="profil_tw linkImg" title="Profil Twitter">
+					<div class="profil_tw linkImg" title="@Worki.Resources.Views.Profile.ProfileString.TwitterProfile">
 						<a href="@Model.TwitterUrl" target="_blank"></a>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
             @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Linkedin))
 			{   
 				<div class="profil_social float-left">
-					<div class="profil_in linkImg" title="Profil LinkedIn">
+					<div class="profil_in linkImg" title="@Worki.Resources.Views.Profile.ProfileString.LinkedInProfile">
 						<a href="@Model.Member.MemberMainData.Linkedin" target="_blank"></a>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
             @if (!string.IsNullOrEmpty(Model.Member.MemberMainData.Viadeo))
 			{   
 				<div class="profil_social float-left">
-					<div class="profil_viadeo linkImg" title="Profil Viadeo">
+					<div class="profil_viadeo linkImg" title="@Worki.Resources.Views.Profile.ProfileString.ViadeoProfile">
 						<a href="@Model.Member.MemberMainData.Viadeo" target="_blank"></a>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 			@if (Model.IsPrivate)
 			{
 	   			<ul class="leftMenu">
-					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.CommunityActivity)">@Html.ActionLink("Mon activité communautaire", MVC.Profil.Dashboard(Model.Member.MemberId))</li>
+					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.CommunityActivity)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.MyComActivities, MVC.Profil.Dashboard(Model.Member.MemberId))</li>
 					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.Edit)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId))</li>
 					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.ChangePassword)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.ChangePassword, MVC.Profil.ChangePassword(Model.Member.MemberId))</li>
 				</ul>

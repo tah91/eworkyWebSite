@@ -223,6 +223,24 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pour gagner du temps, connectez-vous grâce à votre compte Facebook..
+        /// </summary>
+        public static string FastLogonFb {
+            get {
+                return ResourceManager.GetString("FastLogonFb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connectez-vous en quelques secondes à eWorky grâce à votre compte Facebook !.
+        /// </summary>
+        public static string FastLogonFb2 {
+            get {
+                return ResourceManager.GetString("FastLogonFb2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nouveau ! Connectez-vous simplement avec Facebook !.
         /// </summary>
         public static string FbConnexionText {
@@ -481,6 +499,15 @@ namespace Worki.Resources.Views.Shared {
         public static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inscrivez-vous avec Facebook.
+        /// </summary>
+        public static string SignViaFB {
+            get {
+                return ResourceManager.GetString("SignViaFB", resourceCulture);
             }
         }
         

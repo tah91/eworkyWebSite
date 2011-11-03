@@ -205,6 +205,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Une erreur est survenue..
+        /// </summary>
+        public static string execError {
+            get {
+                return ResourceManager.GetString("execError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fax : .
         /// </summary>
         public static string Fax {
