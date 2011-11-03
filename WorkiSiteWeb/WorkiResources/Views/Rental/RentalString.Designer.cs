@@ -232,6 +232,15 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accès en transports en commun.
+        /// </summary>
+        public static string CommonTransportAccess {
+            get {
+                return ResourceManager.GetString("CommonTransportAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type de contrat.
         /// </summary>
         public static string ContractType {

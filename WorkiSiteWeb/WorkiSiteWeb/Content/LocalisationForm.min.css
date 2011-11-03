@@ -1,6 +1,6 @@
 ﻿.dataEdition td{padding:1px 5px}
 .offerContainer{padding:10px 5px}
-.localisationOwnerField{padding:0 0 10px 0}
+.localisationOwnerField{padding:0}
 .localisationOwnerField input[type="checkbox"]{margin-left:10px}
 .phoneNumberRow td{padding:0!important;border:0!important}
 .phoneNumberRow input[type="text"],input[type="password"]{width:170px!important}

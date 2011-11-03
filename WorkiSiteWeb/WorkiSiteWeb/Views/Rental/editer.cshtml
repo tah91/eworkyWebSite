@@ -12,7 +12,7 @@
 
 @RazorHelpers.TitleDiv((Model.Rental.Id == 0 ? Worki.Resources.Views.Rental.RentalString.AddRental : Worki.Resources.Views.Rental.RentalString.EditRental), "Red")
 
-@using (Html.BeginForm(MVC.Rental.ActionNames.Edit,MVC.Rental.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "rentalForm" }))
+@using (Html.BeginForm(MVC.Rental.ActionNames.Edit, MVC.Rental.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "rentalForm" }))
 {
 	@Html.AntiForgeryToken()
 	<div class="detailContent">
@@ -29,7 +29,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.DropDownListFor(m=> m.Rental.Type, Model.RentalTypeSelect)
+								@Html.DropDownListFor(m => m.Rental.Type, Model.RentalTypeSelect)
 							</div>
 						</td>
 					</tr>
@@ -53,7 +53,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.DropDownListFor(m=> m.Rental.LeaseType, Model.LeaseTypeSelect)
+								@Html.DropDownListFor(m => m.Rental.LeaseType, Model.LeaseTypeSelect)
 							</div>
 						</td>
 					</tr>
@@ -121,7 +121,7 @@
 			</div>
 			<div class="contentBlock">
 				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Description</h3>
-				@Html.TextAreaFor(m=> m.Rental.Description)
+				@Html.TextAreaFor(m => m.Rental.Description)
 			</div> 
 			<div class="contentBlock">
 				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Access</h3>
@@ -175,11 +175,12 @@
 						</td>
 					</tr>
 				</table>
+                <h3 class="red margint10">@Worki.Resources.Views.Rental.RentalString.CommonTransportAccess</h3>
 				<div class="rentalAccessRows">
 					@foreach (var item in Model.Rental.RentalAccesses)
-					{
-						 @Html.Partial(MVC.Rental.Views._RentalAccess,item)
-					}
+     {
+						 @Html.Partial(MVC.Rental.Views._RentalAccess, item)
+     }
 				</div>
 				@Html.ActionLink(Worki.Resources.Views.Rental.RentalString.AddAnother, "AddRentalAccess", null, new { id = "addItem" })
 			</div> 
@@ -201,14 +202,28 @@
 			<div class="contentBlock">
 				<h3 class="red">@Worki.Resources.Views.Rental.RentalString.Features</h3>
 				<ul class="marginl0">
+                @{var count = 0;}
 					@foreach (var feature in Rental.RentalFeatureDict)
-					 { 
-						 <li>
-							@{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
-							@Html.CheckBox(enumName,Model.Rental.HasFeature((RentalFeatureType)feature.Key))
-							@Html.LabelFor(feature.Value, enumName)
-						 </li>
-					 }
+					 {
+                         if (count % 2 == 0)
+                         {
+						     <li class="float-left leftLiFeature">
+							    @{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
+							    @Html.CheckBox(enumName, Model.Rental.HasFeature((RentalFeatureType)feature.Key))
+							    @Html.LabelFor(feature.Value, enumName)
+						     </li>
+                         }
+                         else
+                         {
+                            <li>
+						        @{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
+						        @Html.CheckBox(enumName, Model.Rental.HasFeature((RentalFeatureType)feature.Key))
+						        @Html.LabelFor(feature.Value, enumName)
+						    </li>
+                            <div class="clear"></div>
+                         }
+                         count++;
+                     }
 				</ul>
 			</div> 
 			<div class="submitAddButton float-right">

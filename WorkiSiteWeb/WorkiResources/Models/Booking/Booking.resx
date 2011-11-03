@@ -127,7 +127,7 @@
     <value>Prénom</value>
   </data>
   <data name="FromDate" xml:space="preserve">
-    <value>Du</value>
+    <value>Début souhaité</value>
   </data>
   <data name="Handled" xml:space="preserve">
     <value>Prise en charge</value>
@@ -141,13 +141,16 @@
   <data name="Offer" xml:space="preserve">
     <value>Besoin</value>
   </data>
+  <data name="PhoneInfo" xml:space="preserve">
+    <value>vous serez contacté à ce numéro</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Numéro de téléphone</value>
+    <value>Téléphone</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Prix</value>
   </data>
   <data name="ToDate" xml:space="preserve">
-    <value>Au</value>
+    <value>Fin souhaitée</value>
   </data>
 </root>

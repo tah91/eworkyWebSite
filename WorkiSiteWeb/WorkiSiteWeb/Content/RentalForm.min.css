@@ -8,3 +8,4 @@ td select[id="Rental_Type"]{width:404px}
 .rentalAccessRows input[id$="Line"]{width:40px}
 .rentalAccessRows input[id$="Station"]{width:143px}
 label[for$="Type"]{margin-right:4px}
+.leftLiFeature{width:150px}
