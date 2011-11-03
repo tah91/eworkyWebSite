@@ -63,9 +63,7 @@
         </span>
         <span class="contentBlock float-right fb_right_block_connexion">
             <p>@Worki.Resources.Views.Shared.SharedString.FastLogonFb2</p>
-			<a href="@Url.Action(MVC.Account.FacebookLogOn())">
-				<div class="fb_button_logon fb-login-button"></div>
-			</a>​
+            @RazorHelpers.FacebookLogon(Url.Action(MVC.Account.FacebookLogOn()), Worki.Resources.Views.Shared.SharedString.SignIn, "fb_button_logon")
         </span>
         <div class="clear"></div>
     }

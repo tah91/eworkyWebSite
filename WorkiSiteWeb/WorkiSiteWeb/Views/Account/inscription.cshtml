@@ -14,9 +14,7 @@
 <div class="detailContent">
     <div class="blockContainer">
         <div class="contentBlock">
-			<a href="@Url.Action(MVC.Account.FacebookLogOn())">
-				<div class="fb-login-button fb_button_signin float-left">@Worki.Resources.Views.Shared.SharedString.SignViaFB</div>
-			</a>​
+            @RazorHelpers.FacebookLogon(Url.Action(MVC.Account.FacebookLogOn()), Worki.Resources.Views.Shared.SharedString.SignViaFB, "fb_button_signin float-left")
 			<div class="float-left">@Worki.Resources.Views.Shared.SharedString.FastLogonFb</div>
 			<div class="clear">
 			</div>

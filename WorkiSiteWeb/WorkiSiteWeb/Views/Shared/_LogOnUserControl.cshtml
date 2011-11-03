@@ -27,16 +27,9 @@
 }
 else
 {
-    <div id="fb-root">
-	</div>
-	<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
     <div class="loginTitle">@Worki.Resources.Views.Shared.SharedString.FbConnexionText</div>
     <div class="lengthConnexionBox">
-        <a href="@Url.Action(MVC.Account.FacebookLogOn())">
-            <div class="float-left">
-                <a class="fb_button fb_button_medium"><span class="fb_button_text">@Worki.Resources.Views.Shared.SharedString.SignIn</span></a>
-            </div>
-        </a>​
+        @RazorHelpers.FacebookLogon(Url.Action(MVC.Account.FacebookLogOn()), Worki.Resources.Views.Shared.SharedString.SignIn, "float-left")
         <div class="blue float-left connectEworky">
             @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn()) | 
             @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())

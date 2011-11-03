@@ -13,11 +13,6 @@
 }
 
 <div class="facebookConnect">
-	<div id="fb-root">
-	</div>
-	<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
-	<h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.OrViaFB</h3>	
-	<a href="@Url.Action(MVC.Account.FacebookLogOn())">
-		<div class="fb-login-button"></div>
-	</a>​
+	<h3 class="blue">@Worki.Resources.Views.Mobile.MobileString.OrViaFB</h3>
+    @RazorHelpers.FacebookLogon(Url.Action(MVC.Account.FacebookLogOn()), Worki.Resources.Views.Shared.SharedString.SignIn)	
 </div>

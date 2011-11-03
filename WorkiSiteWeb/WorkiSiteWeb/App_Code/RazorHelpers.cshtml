@@ -51,3 +51,12 @@
 		<div class="rateit" data-rateit-value="@value" data-rateit-readonly="true"></div>
 		<meta itemprop="ratingValue" content ="@value"/>
 }
+
+@helper FacebookLogon(string url, string text, string cssClass = "")
+{
+    <a href="@url">
+        <div class="@cssClass">
+            <a class="fb_button fb_button_medium"><span class="fb_button_text">@text</span></a>
+        </div>
+    </a>
+}
