@@ -21,6 +21,7 @@
                     @String.Format(Worki.Resources.Views.Account.AccountString.MinimumLength, ViewData["PasswordLength"])
                 </div>
                 @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.MemberId)
            
                 <div class="editor-label">
                     @Html.LabelFor(m => m.OldPassword) 
