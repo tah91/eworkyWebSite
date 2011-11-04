@@ -97,15 +97,6 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorky, avec ses jeux et ses lieux de travail insolites, est décidément le meilleur endroit pour travailler !.
-        /// </summary>
-        public static string BestPlaceToWork {
-            get {
-                return ResourceManager.GetString("BestPlaceToWork", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to eWorky | Coworking, cafés wifi, centres d&apos;affaires, location et réservation de salles de réunion et de bureaux.
         /// </summary>
         public static string BestWorkspace {
@@ -115,29 +106,11 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blog.
-        /// </summary>
-        public static string Blog {
-            get {
-                return ResourceManager.GetString("Blog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Le blog eWorky.
         /// </summary>
         public static string BlogTitle {
             get {
                 return ResourceManager.GetString("BlogTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Voir le blog eWorky.
-        /// </summary>
-        public static string CheckOutBlog {
-            get {
-                return ResourceManager.GetString("CheckOutBlog", resourceCulture);
             }
         }
         
@@ -205,15 +178,6 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profiter..
-        /// </summary>
-        public static string Enjoy {
-            get {
-                return ResourceManager.GetString("Enjoy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 2011 eWorky.
         /// </summary>
         public static string eWorky {
@@ -223,38 +187,11 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorky est le premier portail français permettant à quiconque de trouver le lieu de travail qui lui convient là où il en a besoin. Et ce qu&apos;il s&apos;agisse d&apos;un restaurant équipé du wifi, d&apos;une salle de réunion de grand hôtel ou d&apos;un bureau en centre d’affaires..
-        /// </summary>
-        public static string EWorkyCouldFindWorkplace {
-            get {
-                return ResourceManager.GetString("EWorkyCouldFindWorkplace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ex : Pau, Oise, rue Rivoli Paris, 92200, ....
         /// </summary>
         public static string ExampleLocation {
             get {
                 return ResourceManager.GetString("ExampleLocation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trouver..
-        /// </summary>
-        public static string Find {
-            get {
-                return ResourceManager.GetString("Find", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trouver le lieu de travail de vos rêves.
-        /// </summary>
-        public static string FindDreamWorkspace {
-            get {
-                return ResourceManager.GetString("FindDreamWorkspace", resourceCulture);
             }
         }
         
@@ -282,15 +219,6 @@ namespace Worki.Resources.Views.Home {
         public static string Fun {
             get {
                 return ResourceManager.GetString("Fun", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to en fonction de critères avancés, noter, commenter.
-        /// </summary>
-        public static string GradeComment {
-            get {
-                return ResourceManager.GetString("GradeComment", resourceCulture);
             }
         }
         
@@ -327,42 +255,6 @@ namespace Worki.Resources.Views.Home {
         public static string ImprintDescription {
             get {
                 return ResourceManager.GetString("ImprintDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to eWorky c&apos;est également une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking. Rejoignez la communauté et partagez vous aussi vos lieux de travail préférés sur le site..
-        /// </summary>
-        public static string JoinCommunity {
-            get {
-                return ResourceManager.GetString("JoinCommunity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Les dernières new sur le télétravail.
-        /// </summary>
-        public static string LastNews {
-            get {
-                return ResourceManager.GetString("LastNews", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lieu.
-        /// </summary>
-        public static string Location {
-            get {
-                return ResourceManager.GetString("Location", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Message Envoyé..
-        /// </summary>
-        public static string MailSent {
-            get {
-                return ResourceManager.GetString("MailSent", resourceCulture);
             }
         }
         
@@ -493,34 +385,6 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rechercher un lieu de travail.
-        /// </summary>
-        public static string SearchWorkspace {
-            get {
-                return ResourceManager.GetString("SearchWorkspace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Partager..
-        /// </summary>
-        public static string Share {
-            get {
-                return ResourceManager.GetString("Share", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Faites profiter la communauté de vos bons plans&lt;br /&gt;
-        ///                ou de votre propre espace de travail.
-        /// </summary>
-        public static string ShareTips {
-            get {
-                return ResourceManager.GetString("ShareTips", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Puis on a eu mauvaise conscience, on s’est dit que c’était dommage de ne pas vous en faire profiter aussi. Soyez donc les bienvenus dans la communauté eWorky !.
         /// </summary>
         public static string ShareWithYou {
@@ -539,29 +403,11 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous trouverez bientôt ici également un dossier de presse sur eWorky..
-        /// </summary>
-        public static string SoonPressKit {
-            get {
-                return ResourceManager.GetString("SoonPressKit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d&apos;un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez-nous à {0}..
         /// </summary>
         public static string SpeechForJournalists {
             get {
                 return ResourceManager.GetString("SpeechForJournalists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Proposer des lieux de travail.
-        /// </summary>
-        public static string SubmitWorkplace {
-            get {
-                return ResourceManager.GetString("SubmitWorkplace", resourceCulture);
             }
         }
         
@@ -602,15 +448,6 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bienvenue sur eWorky !.
-        /// </summary>
-        public static string WelcomeToEWorky {
-            get {
-                return ResourceManager.GetString("WelcomeToEWorky", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Que cherchez-vous ?.
         /// </summary>
         public static string What {
@@ -634,24 +471,6 @@ namespace Worki.Resources.Views.Home {
         public static string WhoAreWe {
             get {
                 return ResourceManager.GetString("WhoAreWe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to lieux de travail.
-        /// </summary>
-        public static string Workspace {
-            get {
-                return ResourceManager.GetString("Workspace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to , {0} ans..
-        /// </summary>
-        public static string YearsOld {
-            get {
-                return ResourceManager.GetString("YearsOld", resourceCulture);
             }
         }
     }

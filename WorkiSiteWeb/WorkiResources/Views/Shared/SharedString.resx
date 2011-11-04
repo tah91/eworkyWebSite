@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Comments" xml:space="preserve">
-    <value>Commentaires</value>
-  </data>
-  <data name="ConnectForTest" xml:space="preserve">
-    <value>Connectez-vous pour tester</value>
-  </data>
   <data name="DeleteComment" xml:space="preserve">
     <value>Effacer le commentaire</value>
   </data>
@@ -139,23 +133,11 @@
   <data name="KnowHouly" xml:space="preserve">
     <value>Si vous connaissez les horaires d'ouverture de ce lieu, saisissez-les grâce au formulaire d'édition ou contactez-nous : </value>
   </data>
-  <data name="Localisations" xml:space="preserve">
-    <value>Localisations</value>
-  </data>
-  <data name="Recommended" xml:space="preserve">
-    <value>Je vous recommande de découvrir ce lieu de travail :</value>
-  </data>
-  <data name="ShareWorkplace" xml:space="preserve">
-    <value>Partager ce lieu de travail</value>
-  </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweet</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Utilisateurs</value>
-  </data>
-  <data name="Visitors" xml:space="preserve">
-    <value>Visiteurs</value>
   </data>
   <data name="WhatEWorkyCouldDo" xml:space="preserve">
     <value>Découvrez tout ce que eWorky peut faire pour vous</value>
@@ -174,16 +156,6 @@
   </data>
   <data name="Deconnect" xml:space="preserve">
     <value>Déconnexion</value>
-  </data>
-  <data name="FreeInscriptionEnjoy" xml:space="preserve">
-    <value>Inscrivez-vous gratuitement et &lt;br /&gt;
-            profitez de tous nos services !</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="NewOnEWorky" xml:space="preserve">
-    <value>Nouveau sur eWorky ?</value>
   </data>
   <data name="Workplace" xml:space="preserve">
     <value>Lieux de travail</value>
@@ -250,9 +222,6 @@
   </data>
   <data name="PrevDesc" xml:space="preserve">
     <value>&lt; Fiche Précédente</value>
-  </data>
-  <data name="ReadNext" xml:space="preserve">
-    <value>lire la suite</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Réinitialiser</value>

@@ -115,15 +115,6 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Editer votre profil.
-        /// </summary>
-        public static string EditYourProfile {
-            get {
-                return ResourceManager.GetString("EditYourProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Espaces favoris.
         /// </summary>
         public static string Favorite {
@@ -372,15 +363,6 @@ namespace Worki.Resources.Views.Profile {
         public static string YourLinkedIn {
             get {
                 return ResourceManager.GetString("YourLinkedIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Votre profil.
-        /// </summary>
-        public static string YourProfile {
-            get {
-                return ResourceManager.GetString("YourProfile", resourceCulture);
             }
         }
         

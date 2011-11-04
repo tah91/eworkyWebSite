@@ -326,15 +326,6 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lieux de travail.
-        /// </summary>
-        public static string Workplace {
-            get {
-                return ResourceManager.GetString("Workplace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Vos résultats de recherche : {0} lieu(x) trouvé(s).
         /// </summary>
         public static string YourSearchResult {

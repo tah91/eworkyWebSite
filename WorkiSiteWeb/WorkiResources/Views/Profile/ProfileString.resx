@@ -135,9 +135,6 @@
   <data name="EditProfile" xml:space="preserve">
     <value>Editer mon profil</value>
   </data>
-  <data name="EditYourProfile" xml:space="preserve">
-    <value>Editer votre profil</value>
-  </data>
   <data name="Favorite" xml:space="preserve">
     <value>Espaces favoris</value>
   </data>
@@ -218,9 +215,6 @@
   </data>
   <data name="YourLinkedIn" xml:space="preserve">
     <value>Votre page LinkedIn</value>
-  </data>
-  <data name="YourProfile" xml:space="preserve">
-    <value>Votre profil</value>
   </data>
   <data name="YourTwitter" xml:space="preserve">
     <value>Votre pseudo twitter</value>

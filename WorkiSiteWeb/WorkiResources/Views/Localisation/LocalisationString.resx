@@ -120,12 +120,6 @@
   <data name="Add" xml:space="preserve">
     <value>Ajouter</value>
   </data>
-  <data name="BackHome" xml:space="preserve">
-    <value>Revenir à la page d'acceuil</value>
-  </data>
-  <data name="Browse" xml:space="preserve">
-    <value>Parcourir...</value>
-  </data>
   <data name="ComfirmDelete" xml:space="preserve">
     <value>Confirmer la suppression:</value>
   </data>
@@ -144,29 +138,11 @@
   <data name="EditPlace" xml:space="preserve">
     <value>Editer le lieu</value>
   </data>
-  <data name="JoinFile" xml:space="preserve">
-    <value>Joindre un fichier</value>
-  </data>
   <data name="NotAccessToWorkplace" xml:space="preserve">
     <value>Erreur d'acces au lieu de travail</value>
   </data>
-  <data name="NotOwnerOfThePlace" xml:space="preserve">
-    <value>Vous n'êtes pas le créateur de ce lieu de travail</value>
-  </data>
-  <data name="OnlyOwnerCanEdit" xml:space="preserve">
-    <value>Désolé, uniquement le créateur d'un lieu de travail peut le supprimer ou l'éditer.</value>
-  </data>
-  <data name="PicturesNotLoad" xml:space="preserve">
-    <value>Vous n'avez pas téléchargé les photos ajoutées. Elles ne seront donc pas prises en compte. Souhaitez-vous continuer sans ces photos ?</value>
-  </data>
   <data name="PleaseConfirmDelete" xml:space="preserve">
     <value>Veuillez confirmer la supression du lieu de travail:</value>
-  </data>
-  <data name="SelectLogo" xml:space="preserve">
-    <value>Sélectionnez votre logo</value>
-  </data>
-  <data name="SelectPictures" xml:space="preserve">
-    <value>Sélectionnez vos images</value>
   </data>
   <data name="WorkplaceDeleted" xml:space="preserve">
     <value>Nous sommes désolés, le lieu de travail séléctionné n'existe pas ou a été effacé.</value>
@@ -183,20 +159,11 @@
   <data name="Index" xml:space="preserve">
     <value>Index</value>
   </data>
-  <data name="SearchAWorkplace" xml:space="preserve">
-    <value>Chercher un lieu de travail</value>
-  </data>
-  <data name="Address" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
   <data name="YouKnowContactUs" xml:space="preserve">
     <value>Si vous connaissez les coordonnées de contact de cet espace de travail, saisissez-les grâce au formulaire d'édition ou contactez-nous : contact@eworky.com.</value>
   </data>
   <data name="BookIt" xml:space="preserve">
     <value>Réserver</value>
-  </data>
-  <data name="NeedToBookPlace" xml:space="preserve">
-    <value>Ce lieu vous intéresse ?</value>
   </data>
   <data name="AboutPlace" xml:space="preserve">
     <value>à propos du lieu</value>
@@ -233,9 +200,6 @@
   </data>
   <data name="Equipments" xml:space="preserve">
     <value>Equipements</value>
-  </data>
-  <data name="ProWorkPlace" xml:space="preserve">
-    <value>Postes de travail professionnels</value>
   </data>
   <data name="ListLocSent" xml:space="preserve">
     <value>La liste des lieux vous a été envoyée</value>

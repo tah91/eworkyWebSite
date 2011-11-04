@@ -61,15 +61,6 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utilisateur absent.
-        /// </summary>
-        public static string AbsentUser {
-            get {
-                return ResourceManager.GetString("AbsentUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
         public static string Action {
@@ -93,15 +84,6 @@ namespace Worki.Resources.Views.Admin {
         public static string AdminRental {
             get {
                 return ResourceManager.GetString("AdminRental", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Age.
-        /// </summary>
-        public static string Age {
-            get {
-                return ResourceManager.GetString("Age", resourceCulture);
             }
         }
         
@@ -372,15 +354,6 @@ namespace Worki.Resources.Views.Admin {
         public static string IsRegistered {
             get {
                 return ResourceManager.GetString("IsRegistered", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Métier.
-        /// </summary>
-        public static string Job {
-            get {
-                return ResourceManager.GetString("Job", resourceCulture);
             }
         }
         

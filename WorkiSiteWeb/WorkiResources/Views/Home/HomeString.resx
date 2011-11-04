@@ -126,9 +126,6 @@
   <data name="ATeam" xml:space="preserve">
     <value>Une équipe</value>
   </data>
-  <data name="BestPlaceToWork" xml:space="preserve">
-    <value>eWorky, avec ses jeux et ses lieux de travail insolites, est décidément le meilleur endroit pour travailler !</value>
-  </data>
   <data name="BestWorkspace" xml:space="preserve">
     <value>eWorky | Coworking, cafés wifi, centres d'affaires, location et réservation de salles de réunion et de bureaux</value>
   </data>
@@ -141,26 +138,11 @@
   <data name="CreateTheWebSite" xml:space="preserve">
     <value>On a donc créé un site pour partager entre amis des bons plans en matière de lieux de travail. Cela nous a bien servi.</value>
   </data>
-  <data name="Enjoy" xml:space="preserve">
-    <value>Profiter.</value>
-  </data>
-  <data name="EWorkyCouldFindWorkplace" xml:space="preserve">
-    <value>eWorky est le premier portail français permettant à quiconque de trouver le lieu de travail qui lui convient là où il en a besoin. Et ce qu'il s'agisse d'un restaurant équipé du wifi, d'une salle de réunion de grand hôtel ou d'un bureau en centre d’affaires.</value>
-  </data>
   <data name="ExampleLocation" xml:space="preserve">
     <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, ...</value>
   </data>
-  <data name="Find" xml:space="preserve">
-    <value>Trouver.</value>
-  </data>
-  <data name="FindDreamWorkspace" xml:space="preserve">
-    <value>Trouver le lieu de travail de vos rêves</value>
-  </data>
   <data name="Fun" xml:space="preserve">
     <value>Du plaisir</value>
-  </data>
-  <data name="GradeComment" xml:space="preserve">
-    <value>en fonction de critères avancés, noter, commenter</value>
   </data>
   <data name="HowCameTheIdea" xml:space="preserve">
     <value>En général on parvenait à en trouver par le bouche à oreille, mais il manquait quelque chose pour gagner du temps et obtenir les meilleures informations : une plate-forme collaborative de recherche de lieu de travail.</value>
@@ -180,15 +162,6 @@
         Hébergement :&lt;br /&gt;
         Microsoft Windows Azure</value>
   </data>
-  <data name="JoinCommunity" xml:space="preserve">
-    <value>eWorky c'est également une communauté active d’indépendants, de nomades, de télétravailleurs, d’entrepreneurs et d’étudiants adeptes de mobilité et de coworking. Rejoignez la communauté et partagez vous aussi vos lieux de travail préférés sur le site.</value>
-  </data>
-  <data name="Location" xml:space="preserve">
-    <value>Lieu</value>
-  </data>
-  <data name="MailSent" xml:space="preserve">
-    <value>Message Envoyé.</value>
-  </data>
   <data name="MailWellSent" xml:space="preserve">
     <value>Votre message a été envoyé avec succès, nos services vont vous répondre rapidement.</value>
   </data>
@@ -198,36 +171,17 @@
   <data name="News" xml:space="preserve">
     <value>Presse</value>
   </data>
-  <data name="SearchWorkspace" xml:space="preserve">
-    <value>Rechercher un lieu de travail</value>
-  </data>
-  <data name="Share" xml:space="preserve">
-    <value>Partager.</value>
-  </data>
-  <data name="ShareTips" xml:space="preserve">
-    <value>Faites profiter la communauté de vos bons plans&lt;br /&gt;
-                ou de votre propre espace de travail</value>
-  </data>
   <data name="ShareWithYou" xml:space="preserve">
     <value>Puis on a eu mauvaise conscience, on s’est dit que c’était dommage de ne pas vous en faire profiter aussi. Soyez donc les bienvenus dans la communauté eWorky !</value>
   </data>
-  <data name="SoonPressKit" xml:space="preserve">
-    <value>Vous trouverez bientôt ici également un dossier de presse sur eWorky.</value>
-  </data>
   <data name="SpeechForJournalists" xml:space="preserve">
     <value>Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d'un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez-nous à {0}.</value>
-  </data>
-  <data name="SubmitWorkplace" xml:space="preserve">
-    <value>Proposer des lieux de travail</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
     <value>Fonctionnement d’eWorky</value>
   </data>
   <data name="VeryGenerous" xml:space="preserve">
     <value>Et surtout beaucoup beaucoup de générosité</value>
-  </data>
-  <data name="WelcomeToEWorky" xml:space="preserve">
-    <value>Bienvenue sur eWorky !</value>
   </data>
   <data name="What" xml:space="preserve">
     <value>Que cherchez-vous ?</value>
@@ -237,12 +191,6 @@
   </data>
   <data name="WhoAreWe" xml:space="preserve">
     <value>Qui sommes-nous ?</value>
-  </data>
-  <data name="Workspace" xml:space="preserve">
-    <value>lieux de travail</value>
-  </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Trouvez un lieu de travail où vous voulez : locaux à louer, centre d'affaires, espaces de coworking, café wifi, salle de réunion ou de conférence.</value>
@@ -255,9 +203,6 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Bienvenue</value>
-  </data>
-  <data name="YearsOld" xml:space="preserve">
-    <value>, {0} ans.</value>
   </data>
   <data name="MailWellSent2" xml:space="preserve">
     <value>Votre message a été envoyé avec succès!</value>
@@ -289,14 +234,8 @@
   <data name="Teamworky" xml:space="preserve">
     <value>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.</value>
   </data>
-  <data name="CheckOutBlog" xml:space="preserve">
-    <value>Voir le blog eWorky</value>
-  </data>
   <data name="FindTheBesPlace" xml:space="preserve">
     <value>Trouver le meilleur endroit pour travailler parmi {0:### ### ###} lieux</value>
-  </data>
-  <data name="LastNews" xml:space="preserve">
-    <value>Les dernières new sur le télétravail</value>
   </data>
   <data name="MaxRate" xml:space="preserve">
     <value>Budget maximal (€)</value>

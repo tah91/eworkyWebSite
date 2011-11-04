@@ -120,15 +120,6 @@
   <data name="Access" xml:space="preserve">
     <value>Localisation</value>
   </data>
-  <data name="AccessLine" xml:space="preserve">
-    <value>Line</value>
-  </data>
-  <data name="AccessStation" xml:space="preserve">
-    <value>Station</value>
-  </data>
-  <data name="AccessType" xml:space="preserve">
-    <value>Type de transport</value>
-  </data>
   <data name="AccurateSearch" xml:space="preserve">
     <value>Affinner votre recherche</value>
   </data>
@@ -332,8 +323,5 @@
   </data>
   <data name="UpdatedAt" xml:space="preserve">
     <value>Annonce mise à jour le</value>
-  </data>
-  <data name="Usefull" xml:space="preserve">
-    <value>Pratique</value>
   </data>
 </root>

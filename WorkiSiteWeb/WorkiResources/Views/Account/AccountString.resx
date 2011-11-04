@@ -117,23 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChooseProvider" xml:space="preserve">
-    <value>Choisir un provider.</value>
-  </data>
   <data name="ConfirmationMail" xml:space="preserve">
     <value>Merci, vous allez maintenant recevoir un e-mail vous permettant de confirmer votre inscription !</value>
-  </data>
-  <data name="EditPasswordSuccess" xml:space="preserve">
-    <value>Votre mot de passe a été modifié avec succès!</value>
   </data>
   <data name="EWorkyRegister" xml:space="preserve">
     <value>S'inscrire sur eWorky</value>
   </data>
   <data name="FillInscription" xml:space="preserve">
     <value>Pour vous inscrire, veuillez remplir les champs suivants.</value>
-  </data>
-  <data name="FollowStepsMail" xml:space="preserve">
-    <value>Un e-mail vous a été envoyé pour vous indiquer les étapes à suivre pour vous reconnecter à eWorky.</value>
   </data>
   <data name="ForgottenPassword" xml:space="preserve">
     <value>Mot de passe oublié</value>
@@ -173,9 +164,6 @@
   </data>
   <data name="AgreeWithCGU" xml:space="preserve">
     <value>J'ai pris connaissance et j'accepte les Conditions Générales d'Utilisation du site eWorky ({0}).</value>
-  </data>
-  <data name="ChangePasswordError" xml:space="preserve">
-    <value>Le mot de passe n'a pas pu être changé.</value>
   </data>
   <data name="PasswordHaveBeenChanged" xml:space="preserve">
     <value>Le mot de passe a été changé.</value>

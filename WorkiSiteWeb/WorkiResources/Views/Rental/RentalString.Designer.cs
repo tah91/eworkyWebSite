@@ -70,33 +70,6 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Line.
-        /// </summary>
-        public static string AccessLine {
-            get {
-                return ResourceManager.GetString("AccessLine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Station.
-        /// </summary>
-        public static string AccessStation {
-            get {
-                return ResourceManager.GetString("AccessStation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Type de transport.
-        /// </summary>
-        public static string AccessType {
-            get {
-                return ResourceManager.GetString("AccessType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Affinner votre recherche.
         /// </summary>
         public static string AccurateSearch {
@@ -705,15 +678,6 @@ namespace Worki.Resources.Views.Rental {
         public static string UpdatedAt {
             get {
                 return ResourceManager.GetString("UpdatedAt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pratique.
-        /// </summary>
-        public static string Usefull {
-            get {
-                return ResourceManager.GetString("Usefull", resourceCulture);
             }
         }
     }

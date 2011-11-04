@@ -115,29 +115,11 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Commentaires.
-        /// </summary>
-        public static string Comments {
-            get {
-                return ResourceManager.GetString("Comments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Connexion.
         /// </summary>
         public static string Connect {
             get {
                 return ResourceManager.GetString("Connect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Connectez-vous pour tester.
-        /// </summary>
-        public static string ConnectForTest {
-            get {
-                return ResourceManager.GetString("ConnectForTest", resourceCulture);
             }
         }
         
@@ -250,16 +232,6 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inscrivez-vous gratuitement et &lt;br /&gt;
-        ///            profitez de tous nos services !.
-        /// </summary>
-        public static string FreeInscriptionEnjoy {
-            get {
-                return ResourceManager.GetString("FreeInscriptionEnjoy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Rechercher un espace.
         /// </summary>
         public static string HeaderSearch {
@@ -274,15 +246,6 @@ namespace Worki.Resources.Views.Shared {
         public static string HeaderSuggest {
             get {
                 return ResourceManager.GetString("HeaderSuggest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Accueil.
-        /// </summary>
-        public static string Home {
-            get {
-                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -323,15 +286,6 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Localisations.
-        /// </summary>
-        public static string Localisations {
-            get {
-                return ResourceManager.GetString("Localisations", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Se connecter.
         /// </summary>
         public static string LogIn {
@@ -364,15 +318,6 @@ namespace Worki.Resources.Views.Shared {
         public static string Modify {
             get {
                 return ResourceManager.GetString("Modify", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nouveau sur eWorky ?.
-        /// </summary>
-        public static string NewOnEWorky {
-            get {
-                return ResourceManager.GetString("NewOnEWorky", resourceCulture);
             }
         }
         
@@ -422,24 +367,6 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to lire la suite.
-        /// </summary>
-        public static string ReadNext {
-            get {
-                return ResourceManager.GetString("ReadNext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Je vous recommande de découvrir ce lieu de travail :.
-        /// </summary>
-        public static string Recommended {
-            get {
-                return ResourceManager.GetString("Recommended", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Réinitialiser.
         /// </summary>
         public static string Reset {
@@ -481,15 +408,6 @@ namespace Worki.Resources.Views.Shared {
         public static string Services {
             get {
                 return ResourceManager.GetString("Services", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Partager ce lieu de travail.
-        /// </summary>
-        public static string ShareWorkplace {
-            get {
-                return ResourceManager.GetString("ShareWorkplace", resourceCulture);
             }
         }
         
@@ -562,15 +480,6 @@ namespace Worki.Resources.Views.Shared {
         public static string Valid {
             get {
                 return ResourceManager.GetString("Valid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Visiteurs.
-        /// </summary>
-        public static string Visitors {
-            get {
-                return ResourceManager.GetString("Visitors", resourceCulture);
             }
         }
         

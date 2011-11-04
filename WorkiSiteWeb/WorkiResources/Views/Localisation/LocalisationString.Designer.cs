@@ -97,38 +97,11 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adresse.
-        /// </summary>
-        public static string Address {
-            get {
-                return ResourceManager.GetString("Address", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Revenir à la page d&apos;acceuil.
-        /// </summary>
-        public static string BackHome {
-            get {
-                return ResourceManager.GetString("BackHome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Réserver.
         /// </summary>
         public static string BookIt {
             get {
                 return ResourceManager.GetString("BookIt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parcourir....
-        /// </summary>
-        public static string Browse {
-            get {
-                return ResourceManager.GetString("Browse", resourceCulture);
             }
         }
         
@@ -241,15 +214,6 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Joindre un fichier.
-        /// </summary>
-        public static string JoinFile {
-            get {
-                return ResourceManager.GetString("JoinFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Dernière édition par : .
         /// </summary>
         public static string LastEditBy {
@@ -313,15 +277,6 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ce lieu vous intéresse ?.
-        /// </summary>
-        public static string NeedToBookPlace {
-            get {
-                return ResourceManager.GetString("NeedToBookPlace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Erreur d&apos;acces au lieu de travail.
         /// </summary>
         public static string NotAccessToWorkplace {
@@ -331,47 +286,11 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous n&apos;êtes pas le créateur de ce lieu de travail.
-        /// </summary>
-        public static string NotOwnerOfThePlace {
-            get {
-                return ResourceManager.GetString("NotOwnerOfThePlace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Désolé, uniquement le créateur d&apos;un lieu de travail peut le supprimer ou l&apos;éditer..
-        /// </summary>
-        public static string OnlyOwnerCanEdit {
-            get {
-                return ResourceManager.GetString("OnlyOwnerCanEdit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vous n&apos;avez pas téléchargé les photos ajoutées. Elles ne seront donc pas prises en compte. Souhaitez-vous continuer sans ces photos ?.
-        /// </summary>
-        public static string PicturesNotLoad {
-            get {
-                return ResourceManager.GetString("PicturesNotLoad", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Veuillez confirmer la supression du lieu de travail:.
         /// </summary>
         public static string PleaseConfirmDelete {
             get {
                 return ResourceManager.GetString("PleaseConfirmDelete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Postes de travail professionnels.
-        /// </summary>
-        public static string ProWorkPlace {
-            get {
-                return ResourceManager.GetString("ProWorkPlace", resourceCulture);
             }
         }
         
@@ -390,33 +309,6 @@ namespace Worki.Resources.Views.Localisation {
         public static string Schedule {
             get {
                 return ResourceManager.GetString("Schedule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chercher un lieu de travail.
-        /// </summary>
-        public static string SearchAWorkplace {
-            get {
-                return ResourceManager.GetString("SearchAWorkplace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sélectionnez votre logo.
-        /// </summary>
-        public static string SelectLogo {
-            get {
-                return ResourceManager.GetString("SelectLogo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sélectionnez vos images.
-        /// </summary>
-        public static string SelectPictures {
-            get {
-                return ResourceManager.GetString("SelectPictures", resourceCulture);
             }
         }
         
