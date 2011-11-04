@@ -54,10 +54,7 @@
 
 @helper FacebookLogon(string url, string text, string cssClass = "")
 {
-    <div id="fb-root">
-	</div>
-	<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
-    <a href="@url">
-        <div class="@cssClass fb-login-button">@text</div>
-    </a>
+    <div class="@cssClass">
+        <a class="fb_button fb_button_medium" href="@url"><span class="fb_button_text">@text</span></a>
+    </div>
 }
