@@ -319,7 +319,7 @@ namespace Worki.Web.Controllers
                     contact.ToEMail = rental.Member.Email;
                     contact.ToName = rental.Member.MemberMainData.LastName;
                     contact.Subject = Worki.Resources.Email.Common.Concern + rental.Reference + " - " + rental.PostalCode + " - " + rental.SurfaceString + " - " + rental.RateString;
-                    contact.Link = Worki.Resources.Email.Common.LinkToDetail + id;
+                    contact.Link = Url.ActionAbsolute(MVC.Rental.Detail(id));
                 }
             }
             catch (Exception ex)
@@ -361,7 +361,7 @@ namespace Worki.Web.Controllers
             else
                 contact.LastName = User.Identity.Name;
 
-            contact.Link = Worki.Resources.Email.Common.LinkToDetail + id;
+            contact.Link = Url.ActionAbsolute(MVC.Rental.Detail(id));
 
             return View("SendFriend", contact);
         }

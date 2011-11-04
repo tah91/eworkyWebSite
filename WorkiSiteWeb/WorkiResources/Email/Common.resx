@@ -145,7 +145,4 @@
   <data name="Concern" xml:space="preserve">
     <value>Concernant l'annonce : </value>
   </data>
-  <data name="LinkToDetail" xml:space="preserve">
-    <value>http://localhost:9069/Rental/details/</value>
-  </data>
 </root>
