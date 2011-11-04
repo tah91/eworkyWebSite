@@ -204,7 +204,7 @@ namespace Worki.Web.Controllers
 				context.Complete();
 				ModelState.AddModelError("", error);
 			}
-			return View(localisationForm);
+            return View(new LocalisationFormViewModel(localisationForm.Localisation));
 		}
 
         /// <summary>
