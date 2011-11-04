@@ -607,7 +607,7 @@ namespace Worki.Data.Models
         public string GetLoginTwitter()
         {
             var toRet = "";
-            var link = "twitter.com/#!/";
+            var link = "twitter.com/";
 
             if (!string.IsNullOrEmpty(Twitter))
             {
@@ -629,15 +629,17 @@ namespace Worki.Data.Models
         public string GetTwitter()
         {
             var toRet = "";
-            var link = "http://twitter.com/#!/";
+            var link = "twitter.com/";
+            var http = "http://";
 
             if (Twitter.Contains(link))
             {
                 var tab = Twitter.Split('/');
                 toRet += tab[tab.Length - 1];
+                toRet = http + link + toRet;
             }
 
-            return (!string.IsNullOrEmpty(toRet) ? (link + toRet) : (link + Twitter));
+            return (!string.IsNullOrEmpty(toRet) ? toRet : Twitter.Contains(http) ? Twitter : Twitter.Contains(link) ? (http + Twitter) : (http + link + Twitter));
         }
     }
 

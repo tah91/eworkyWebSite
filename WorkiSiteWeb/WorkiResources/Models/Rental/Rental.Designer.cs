@@ -205,7 +205,7 @@ namespace Worki.Resources.Models.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Emission gaz à effet de serre.
+        ///   Looks up a localized string similar to Diagnostic énergétique.
         /// </summary>
         public static string GreenHouse {
             get {
