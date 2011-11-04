@@ -1088,7 +1088,7 @@ jQuery(function ($) {
         secondText: 'Secondes',
         timezoneText: 'Fuseau horaire',
         currentText: 'Maintenant',
-        closeText: 'Terminé',
+        closeText: 'Valider',
         timeFormat: 'hh:mm',
         ampm: false
     };

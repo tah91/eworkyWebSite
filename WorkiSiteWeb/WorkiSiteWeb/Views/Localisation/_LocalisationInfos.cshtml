@@ -135,7 +135,7 @@
 			}
 			if (!string.IsNullOrEmpty(Model.WebSite))
 			{
-				<a href="@Model.WebSite" title="@Model.WebSite" target="_blank" itemprop="url">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
+				<a href="@WebHelper.GetWebsite(Model.WebSite)" title="@Model.WebSite" target="_blank" itemprop="url">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
 			}
 			if (!string.IsNullOrEmpty(Model.PhoneNumber))
 			{
@@ -149,11 +149,11 @@
 			}
             if (!string.IsNullOrEmpty(Model.Facebook))
 			{
-				<a href="@Model.Facebook"><span>@Worki.Resources.Models.Localisation.Localisation.Facebook</span></a><br />
+				<a href="@WebHelper.GetWebsite(Model.Facebook)"><span>@Worki.Resources.Models.Localisation.Localisation.Facebook</span></a><br />
             }
             if (!string.IsNullOrEmpty(Model.Twitter))
 			{
-				<a href="@Model.GetTwitter()"><span>@Model.GetLoginTwitter()</span></a><br />
+				<a href="@WebHelper.GetTwitter(Model.Twitter)"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
             }
         }
   else

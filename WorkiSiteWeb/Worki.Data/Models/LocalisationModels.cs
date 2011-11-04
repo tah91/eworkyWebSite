@@ -603,42 +603,6 @@ namespace Worki.Data.Models
         }
 
         #endregion
-
-        public string GetLoginTwitter()
-        {
-            var toRet = "";
-            var link = "twitter.com/#!/";
-
-            if (!string.IsNullOrEmpty(Twitter))
-            {
-                if (Twitter.Contains(link))
-                {
-                    var tab = Twitter.Split('/');
-                    toRet += tab[tab.Length - 1];
-                }
-                else
-                {
-                    toRet += Twitter;
-                }
-                return (!toRet.Contains("@") ? ("@" + toRet) : toRet);
-            }
-
-            return (toRet);
-        }
-
-        public string GetTwitter()
-        {
-            var toRet = "";
-            var link = "http://twitter.com/#!/";
-
-            if (Twitter.Contains(link))
-            {
-                var tab = Twitter.Split('/');
-                toRet += tab[tab.Length - 1];
-            }
-
-            return (!string.IsNullOrEmpty(toRet) ? (link + toRet) : (link + Twitter));
-        }
     }
 
 	[Bind(Exclude = "Id,OwnerId")]
@@ -1128,9 +1092,89 @@ namespace Worki.Data.Models
 
 	public class LocalisationData_Validation
 	{
-		//todo
-		//[Display(Name = "MonOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[Display(Name = "MonOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public Nullable<System.DateTime> MonOpenMorning { get; set; }
+
+        [Display(Name = "MonCloseMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> MonCloseMorning { get; set; }
+
+        [Display(Name = "MonOpenAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> MonOpenAfter { get; set; }
+
+        [Display(Name = "MonCloseAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> MonCloseAfter { get; set; }
+
+        [Display(Name = "TueOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> TueOpenMorning { get; set; }
+
+        [Display(Name = "TueCloseMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> TueCloseMorning { get; set; }
+
+        [Display(Name = "TueOpenAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> TueOpenAfter { get; set; }
+
+        [Display(Name = "TueCloseAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> TueCloseAfter { get; set; }
+
+        [Display(Name = "WedOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> WedOpenMorning { get; set; }
+
+        [Display(Name = "WedCloseMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> WedCloseMorning { get; set; }
+
+        [Display(Name = "WedOpenAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> WedOpenAfter { get; set; }
+
+        [Display(Name = "WedCloseAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> WedCloseAfter { get; set; }
+
+        [Display(Name = "ThuOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> ThuOpenMorning { get; set; }
+
+        [Display(Name = "ThuCloseMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> ThuCloseMorning { get; set; }
+
+        [Display(Name = "ThuOpenAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> ThuOpenAfter { get; set; }
+
+        [Display(Name = "ThuCloseAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> ThuCloseAfter { get; set; }
+
+        [Display(Name = "FriOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> FriOpenMorning { get; set; }
+
+        [Display(Name = "FriCloseMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> FriCloseMorning { get; set; }
+
+        [Display(Name = "FriOpenAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> FriOpenAfter { get; set; }
+
+        [Display(Name = "FriCloseAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> FriCloseAfter { get; set; }
+
+        [Display(Name = "SatOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SatOpenMorning { get; set; }
+
+        [Display(Name = "SatCloseMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SatCloseMorning { get; set; }
+
+        [Display(Name = "SatOpenAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SatOpenAfter { get; set; }
+
+        [Display(Name = "SatCloseAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SatCloseAfter { get; set; }
+
+        [Display(Name = "SunOpenMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SunOpenMorning { get; set; }
+
+        [Display(Name = "SunCloseMorning", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SunCloseMorning { get; set; }
+
+        [Display(Name = "SunOpenAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SunOpenAfter { get; set; }
+
+        [Display(Name = "SunCloseAfter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public Nullable<System.DateTime> SunCloseAfter { get; set; }
 	}
 
 	public partial class LocalisationFeature : IFeatureContainer

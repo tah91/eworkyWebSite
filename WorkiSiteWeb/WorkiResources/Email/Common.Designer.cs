@@ -106,15 +106,6 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:9069/Rental/details/.
-        /// </summary>
-        public static string LinkToDetail {
-            get {
-                return ResourceManager.GetString("LinkToDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Message :.
         /// </summary>
         public static string Message {

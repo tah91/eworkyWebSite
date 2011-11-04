@@ -19,3 +19,12 @@
     padding:10px;
 }
 
+.pressArticles li
+{
+    margin-bottom:5px!important;
+}
+
+.pressArticles p
+{
+    padding-bottom:10px!important;
+}

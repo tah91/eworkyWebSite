@@ -20,7 +20,7 @@
 			{   
 				<div class="profil_social float-left">
 					<div class="profil_fb linkImg" title="@Worki.Resources.Views.Profile.ProfileString.FBProfile">
-						<a href="@Model.Member.MemberMainData.Facebook" target="_blank"></a>
+						<a href="@WebHelper.GetWebsite(Model.Member.MemberMainData.Facebook)" target="_blank"></a>
 					</div>
 				</div>
 			}
@@ -28,7 +28,7 @@
 			{   
 				<div class="profil_social float-left">
 					<div class="profil_tw linkImg" title="@Worki.Resources.Views.Profile.ProfileString.TwitterProfile">
-						<a href="@Model.TwitterUrl" target="_blank"></a>
+						<a href="@WebHelper.GetTwitter(Model.Member.MemberMainData.Twitter)" target="_blank"></a>
 					</div>
 				</div>
 			}
@@ -36,7 +36,7 @@
 			{   
 				<div class="profil_social float-left">
 					<div class="profil_in linkImg" title="@Worki.Resources.Views.Profile.ProfileString.LinkedInProfile">
-						<a href="@Model.Member.MemberMainData.Linkedin" target="_blank"></a>
+						<a href="@WebHelper.GetWebsite(Model.Member.MemberMainData.Linkedin)" target="_blank"></a>
 					</div>
 				</div>
 			}
@@ -44,7 +44,7 @@
 			{   
 				<div class="profil_social float-left">
 					<div class="profil_viadeo linkImg" title="@Worki.Resources.Views.Profile.ProfileString.ViadeoProfile">
-						<a href="@Model.Member.MemberMainData.Viadeo" target="_blank"></a>
+						<a href="@WebHelper.GetWebsite(Model.Member.MemberMainData.Viadeo)" target="_blank"></a>
 					</div>
 				</div>
 			}

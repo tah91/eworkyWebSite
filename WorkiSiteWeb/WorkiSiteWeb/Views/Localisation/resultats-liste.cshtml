@@ -25,13 +25,13 @@
     @{
         if (int.Parse(order.ToString()) == (int)eOrderBy.Distance)
         {
-            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new { @class = "underline" }) <text>|</text>
+            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new { @class = "noUnderline" }) <text>|</text>
             @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd) 
         }
         else
         {
             @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd) <text>|</text>
-            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new { @class = "underline" })
+            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new { @class = "noUnderline" })
         }
     }
 </div>

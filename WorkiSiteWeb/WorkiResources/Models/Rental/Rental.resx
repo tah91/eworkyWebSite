@@ -160,7 +160,7 @@
     <value>Gaz</value>
   </data>
   <data name="GreenHouse" xml:space="preserve">
-    <value>Emission gaz à effet de serre</value>
+    <value>Diagnostic énergétique</value>
   </data>
   <data name="Ground" xml:space="preserve">
     <value>Local d'activité, terrain</value>

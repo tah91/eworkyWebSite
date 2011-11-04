@@ -115,5 +115,50 @@ namespace Worki.Web.Helpers
 			}
 			return rvd;
 		}
+
+        public static string GetLoginTwitter(string twitter)
+        {
+            var toRet = "";
+            var link = "twitter.com/";
+
+            if (!string.IsNullOrEmpty(twitter))
+            {
+                if (twitter.Contains(link))
+                {
+                    var tab = twitter.Split('/');
+                    toRet += tab[tab.Length - 1];
+                }
+                else
+                {
+                    toRet += twitter;
+                }
+                return (!toRet.Contains("@") ? ("@" + toRet) : toRet);
+            }
+
+            return (toRet);
+        }
+
+        public static string GetTwitter(string twitter)
+        {
+            var toRet = "";
+            var link = "twitter.com/";
+            var http = "http://";
+
+            if (twitter.Contains(link))
+            {
+                var tab = twitter.Split('/');
+                toRet += tab[tab.Length - 1];
+                toRet = http + link + toRet;
+            }
+
+            return (!string.IsNullOrEmpty(toRet) ? toRet : twitter.Contains(http) ? twitter : twitter.Contains(link) ? (http + twitter) : (http + link + twitter));
+        }
+
+        public static string GetWebsite(string website)
+        {
+            var http = "http://";
+
+            return (website.Contains(http) ? website : (http + website));
+        }
     }
 }
