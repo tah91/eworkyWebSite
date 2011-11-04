@@ -268,4 +268,88 @@
   <data name="UsefulHandicap" xml:space="preserve">
     <value>Adapté pour personnes à mobilité réduite</value>
   </data>
+  <data name="FriCloseAfter" xml:space="preserve">
+    <value>Fermeture Vendredi soir</value>
+  </data>
+  <data name="FriCloseMorning" xml:space="preserve">
+    <value>Fermeture Vendredi  matin</value>
+  </data>
+  <data name="FriOpenAfter" xml:space="preserve">
+    <value>Ouverture Vendredi soir</value>
+  </data>
+  <data name="FriOpenMorning" xml:space="preserve">
+    <value>Ouverture Vendredi  matin</value>
+  </data>
+  <data name="MonCloseAfter" xml:space="preserve">
+    <value>Fermeture Lundi soir</value>
+  </data>
+  <data name="MonCloseMorning" xml:space="preserve">
+    <value>Fermeture Lundi  matin</value>
+  </data>
+  <data name="MonOpenAfter" xml:space="preserve">
+    <value>Ouverture Lundi soir</value>
+  </data>
+  <data name="MonOpenMorning" xml:space="preserve">
+    <value>Ouverture Lundi matin</value>
+  </data>
+  <data name="SatCloseAfter" xml:space="preserve">
+    <value>Fermeture Samedi soir</value>
+  </data>
+  <data name="SatCloseMorning" xml:space="preserve">
+    <value>Fermeture Samedi  matin</value>
+  </data>
+  <data name="SatOpenAfter" xml:space="preserve">
+    <value>Ouverture Samedi soir</value>
+  </data>
+  <data name="SatOpenMorning" xml:space="preserve">
+    <value>Ouverture Samedi  matin</value>
+  </data>
+  <data name="SunCloseAfter" xml:space="preserve">
+    <value>Fermeture Dimanche soir</value>
+  </data>
+  <data name="SunCloseMorning" xml:space="preserve">
+    <value>Fermeture Dimanche  matin</value>
+  </data>
+  <data name="SunOpenAfter" xml:space="preserve">
+    <value>Ouverture Dimanche soir</value>
+  </data>
+  <data name="SunOpenMorning" xml:space="preserve">
+    <value>Ouverture Dimanche  matin</value>
+  </data>
+  <data name="ThuCloseAfter" xml:space="preserve">
+    <value>Fermeture Jeudi soir</value>
+  </data>
+  <data name="ThuCloseMorning" xml:space="preserve">
+    <value>Fermeture Jeudi  matin</value>
+  </data>
+  <data name="ThuOpenAfter" xml:space="preserve">
+    <value>Ouverture Jeudi soir</value>
+  </data>
+  <data name="ThuOpenMorning" xml:space="preserve">
+    <value>Ouverture Jeudi  matin</value>
+  </data>
+  <data name="TueCloseAfter" xml:space="preserve">
+    <value>Fermeture Mardi soir</value>
+  </data>
+  <data name="TueCloseMorning" xml:space="preserve">
+    <value>Fermeture Mardi  matin</value>
+  </data>
+  <data name="TueOpenAfter" xml:space="preserve">
+    <value>Ouverture Mardi soir</value>
+  </data>
+  <data name="TueOpenMorning" xml:space="preserve">
+    <value>Ouverture Mardi  matin</value>
+  </data>
+  <data name="WedCloseAfter" xml:space="preserve">
+    <value>Fermeture Mercredi soir</value>
+  </data>
+  <data name="WedCloseMorning" xml:space="preserve">
+    <value>Fermeture Mercredi  matin</value>
+  </data>
+  <data name="WedOpenAfter" xml:space="preserve">
+    <value>Ouverture Mercredi soir</value>
+  </data>
+  <data name="WedOpenMorning" xml:space="preserve">
+    <value>Ouverture Mercredi  matin</value>
+  </data>
 </root>

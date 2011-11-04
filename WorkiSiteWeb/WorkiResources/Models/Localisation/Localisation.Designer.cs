@@ -169,6 +169,42 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fermeture Vendredi soir.
+        /// </summary>
+        public static string FriCloseAfter {
+            get {
+                return ResourceManager.GetString("FriCloseAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Vendredi  matin.
+        /// </summary>
+        public static string FriCloseMorning {
+            get {
+                return ResourceManager.GetString("FriCloseMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Vendredi soir.
+        /// </summary>
+        public static string FriOpenAfter {
+            get {
+                return ResourceManager.GetString("FriOpenAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Vendredi  matin.
+        /// </summary>
+        public static string FriOpenMorning {
+            get {
+                return ResourceManager.GetString("FriOpenMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Donnez votre avis.
         /// </summary>
         public static string GiveYourAdvice {
@@ -219,6 +255,42 @@ namespace Worki.Resources.Models.Localisation {
         public static string Mme {
             get {
                 return ResourceManager.GetString("Mme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Lundi soir.
+        /// </summary>
+        public static string MonCloseAfter {
+            get {
+                return ResourceManager.GetString("MonCloseAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Lundi  matin.
+        /// </summary>
+        public static string MonCloseMorning {
+            get {
+                return ResourceManager.GetString("MonCloseMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Lundi soir.
+        /// </summary>
+        public static string MonOpenAfter {
+            get {
+                return ResourceManager.GetString("MonOpenAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Lundi matin.
+        /// </summary>
+        public static string MonOpenMorning {
+            get {
+                return ResourceManager.GetString("MonOpenMorning", resourceCulture);
             }
         }
         
@@ -349,6 +421,42 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fermeture Samedi soir.
+        /// </summary>
+        public static string SatCloseAfter {
+            get {
+                return ResourceManager.GetString("SatCloseAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Samedi  matin.
+        /// </summary>
+        public static string SatCloseMorning {
+            get {
+                return ResourceManager.GetString("SatCloseMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Samedi soir.
+        /// </summary>
+        public static string SatOpenAfter {
+            get {
+                return ResourceManager.GetString("SatOpenAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Samedi  matin.
+        /// </summary>
+        public static string SatOpenMorning {
+            get {
+                return ResourceManager.GetString("SatOpenMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caractéristiques des salles de conférence / séminaire.
         /// </summary>
         public static string SeminarRoom {
@@ -385,11 +493,83 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fermeture Dimanche soir.
+        /// </summary>
+        public static string SunCloseAfter {
+            get {
+                return ResourceManager.GetString("SunCloseAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Dimanche  matin.
+        /// </summary>
+        public static string SunCloseMorning {
+            get {
+                return ResourceManager.GetString("SunCloseMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Dimanche soir.
+        /// </summary>
+        public static string SunOpenAfter {
+            get {
+                return ResourceManager.GetString("SunOpenAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Dimanche  matin.
+        /// </summary>
+        public static string SunOpenMorning {
+            get {
+                return ResourceManager.GetString("SunOpenMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Télécentre.
         /// </summary>
         public static string Telecentre {
             get {
                 return ResourceManager.GetString("Telecentre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Jeudi soir.
+        /// </summary>
+        public static string ThuCloseAfter {
+            get {
+                return ResourceManager.GetString("ThuCloseAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Jeudi  matin.
+        /// </summary>
+        public static string ThuCloseMorning {
+            get {
+                return ResourceManager.GetString("ThuCloseMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Jeudi soir.
+        /// </summary>
+        public static string ThuOpenAfter {
+            get {
+                return ResourceManager.GetString("ThuOpenAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Jeudi  matin.
+        /// </summary>
+        public static string ThuOpenMorning {
+            get {
+                return ResourceManager.GetString("ThuOpenMorning", resourceCulture);
             }
         }
         
@@ -408,6 +588,42 @@ namespace Worki.Resources.Models.Localisation {
         public static string TravelerSpace {
             get {
                 return ResourceManager.GetString("TravelerSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Mardi soir.
+        /// </summary>
+        public static string TueCloseAfter {
+            get {
+                return ResourceManager.GetString("TueCloseAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Mardi  matin.
+        /// </summary>
+        public static string TueCloseMorning {
+            get {
+                return ResourceManager.GetString("TueCloseMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Mardi soir.
+        /// </summary>
+        public static string TueOpenAfter {
+            get {
+                return ResourceManager.GetString("TueOpenAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Mardi  matin.
+        /// </summary>
+        public static string TueOpenMorning {
+            get {
+                return ResourceManager.GetString("TueOpenMorning", resourceCulture);
             }
         }
         
@@ -453,6 +669,42 @@ namespace Worki.Resources.Models.Localisation {
         public static string WebSite {
             get {
                 return ResourceManager.GetString("WebSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Mercredi soir.
+        /// </summary>
+        public static string WedCloseAfter {
+            get {
+                return ResourceManager.GetString("WedCloseAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fermeture Mercredi  matin.
+        /// </summary>
+        public static string WedCloseMorning {
+            get {
+                return ResourceManager.GetString("WedCloseMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Mercredi soir.
+        /// </summary>
+        public static string WedOpenAfter {
+            get {
+                return ResourceManager.GetString("WedOpenAfter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouverture Mercredi  matin.
+        /// </summary>
+        public static string WedOpenMorning {
+            get {
+                return ResourceManager.GetString("WedOpenMorning", resourceCulture);
             }
         }
         

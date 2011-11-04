@@ -153,7 +153,7 @@
             }
             if (!string.IsNullOrEmpty(Model.Twitter))
 			{
-				<a href="@Model.GetTwitter()"><span>@Model.GetLoginTwitter()</span></a><br />
+				<a href="@WebHelper.GetTwitter(Model.Twitter)"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
             }
         }
   else

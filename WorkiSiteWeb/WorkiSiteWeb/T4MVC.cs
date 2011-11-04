@@ -477,6 +477,7 @@ namespace Links {
             public static readonly string drh_png = Url("drh.png");
             public static readonly string favicon_png = Url("favicon.png");
             public static readonly string favorite_png = Url("favorite.png");
+            public static readonly string fb_sprite_png = Url("fb_sprite.png");
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
             public static readonly string geoloc_png = Url("geoloc.png");

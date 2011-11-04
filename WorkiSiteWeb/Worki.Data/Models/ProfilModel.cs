@@ -559,30 +559,6 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
-
-		#region Properties
-
-		public string TwitterUrl
-		{
-			get
-			{
-				var toRet = "";
-				var link = "twitter.com/";
-                var http = "http://";
-				var twitter = Member.MemberMainData.Twitter;
-
-                if (twitter.Contains(link))
-                {
-                    var tab = twitter.Split('/');
-                    toRet += tab[tab.Length - 1];
-                    toRet = http + link + toRet;
-                }
-
-                return (!string.IsNullOrEmpty(toRet) ? toRet : twitter.Contains(http) ? twitter : twitter.Contains(link) ? (http + twitter) : (http + link + twitter));
-			}
-		}
-
-		#endregion
 	}
 
 	#endregion
