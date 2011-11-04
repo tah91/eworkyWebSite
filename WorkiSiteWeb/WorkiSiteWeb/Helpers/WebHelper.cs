@@ -153,5 +153,12 @@ namespace Worki.Web.Helpers
 
             return (!string.IsNullOrEmpty(toRet) ? toRet : twitter.Contains(http) ? twitter : twitter.Contains(link) ? (http + twitter) : (http + link + twitter));
         }
+
+        public static string GetWebsite(string website)
+        {
+            var http = "http://";
+
+            return (website.Contains(http) ? website : (http + website));
+        }
     }
 }
