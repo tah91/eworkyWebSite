@@ -13,7 +13,9 @@
 
 @{
 	var rvd = WebHelper.GetRVD(this);
-    var order = rvd["order"];
+	int order = 0;
+	int.TryParse((string)rvd["order"], out order);
+	bool byDistance = order == (int)eOrderBy.Distance;
 	var distRvd = WebHelper.GetRVD(this);
 	var ratingRvd = WebHelper.GetRVD(this);
 	distRvd["order"] = (int)eOrderBy.Distance;
@@ -22,18 +24,8 @@
 
 
 <div class="float-right blue order">
-    @{
-        if (int.Parse(order.ToString()) == (int)eOrderBy.Distance)
-        {
-            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new { @class = "noUnderline" }) <text>|</text>
-            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd) 
-        }
-        else
-        {
-            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd) <text>|</text>
-            @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new { @class = "noUnderline" })
-        }
-    }
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new Dictionary<string, object> { { "class", byDistance ? "noUnderline" : null } }) <text>|</text>
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new Dictionary<string, object> { { "class", !byDistance ? "noUnderline" : null } }) 
 </div>
 @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
 
