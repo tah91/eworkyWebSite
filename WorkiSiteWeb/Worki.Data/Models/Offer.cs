@@ -35,10 +35,10 @@ namespace Worki.Data.Models
     
         // Navigation properties
     
-        public virtual Localisation Localisation { get; set; }
         public virtual ICollection<OfferFile> OfferFiles { get; set; }
         public virtual ICollection<OfferFeature> OfferFeatures { get; set; }
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
+        public virtual Localisation Localisation { get; set; }
     
     }
 }

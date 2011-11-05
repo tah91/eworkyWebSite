@@ -1075,202 +1075,202 @@ namespace Worki.Web.Controllers
 
         #region Migration
 
-        public virtual ActionResult MigrateToOffer()
-        {
-            var strBuilder = new System.Text.StringBuilder();
+		//public virtual ActionResult MigrateToOffer()
+		//{
+		//    var strBuilder = new System.Text.StringBuilder();
 
-            var context = ModelFactory.GetUnitOfWork();
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+		//    var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 
-            //already processed
-            if (oRepo.GetCount() != 0)
-                return Content(strBuilder.ToString());
+		//    //already processed
+		//    if (oRepo.GetCount() != 0)
+		//        return Content(strBuilder.ToString());
 
-            var all = lRepo.GetAll();
-            var newofferSuffix = " 1";
-            try
-            {
-                var count = 0;
-                foreach (var item in all)
-                {
-                    count++;
+		//    var all = lRepo.GetAll();
+		//    var newofferSuffix = " 1";
+		//    try
+		//    {
+		//        var count = 0;
+		//        foreach (var item in all)
+		//        {
+		//            count++;
 
-					//opennings
-					if (item.LocalisationData == null)
-						item.LocalisationData = new LocalisationData();
+		//            //opennings
+		//            if (item.LocalisationData == null)
+		//                item.LocalisationData = new LocalisationData();
 
-					if (item.MonOpen.HasValue)
-						item.LocalisationData.MonOpenMorning = item.MonOpen;
-					if (item.MonClose2.HasValue)
-						item.LocalisationData.MonCloseMorning = item.MonClose2;
-					if (item.MonOpen2.HasValue)
-						item.LocalisationData.MonOpenAfter = item.MonOpen2;
-					if (item.MonClose.HasValue)
-						item.LocalisationData.MonCloseAfter = item.MonClose;
+		//            if (item.MonOpen.HasValue)
+		//                item.LocalisationData.MonOpenMorning = item.MonOpen;
+		//            if (item.MonClose2.HasValue)
+		//                item.LocalisationData.MonCloseMorning = item.MonClose2;
+		//            if (item.MonOpen2.HasValue)
+		//                item.LocalisationData.MonOpenAfter = item.MonOpen2;
+		//            if (item.MonClose.HasValue)
+		//                item.LocalisationData.MonCloseAfter = item.MonClose;
 
-					if (item.TueOpen.HasValue)
-						item.LocalisationData.TueOpenMorning = item.TueOpen;
-					if (item.TueClose2.HasValue)
-						item.LocalisationData.TueCloseMorning = item.TueClose2;
-					if (item.TueOpen2.HasValue)
-						item.LocalisationData.TueOpenAfter = item.TueOpen2;
-					if (item.TueClose.HasValue)
-						item.LocalisationData.TueCloseAfter = item.TueClose;
+		//            if (item.TueOpen.HasValue)
+		//                item.LocalisationData.TueOpenMorning = item.TueOpen;
+		//            if (item.TueClose2.HasValue)
+		//                item.LocalisationData.TueCloseMorning = item.TueClose2;
+		//            if (item.TueOpen2.HasValue)
+		//                item.LocalisationData.TueOpenAfter = item.TueOpen2;
+		//            if (item.TueClose.HasValue)
+		//                item.LocalisationData.TueCloseAfter = item.TueClose;
 
-					if (item.WedOpen.HasValue)
-						item.LocalisationData.WedOpenMorning = item.WedOpen;
-					if (item.WedClose2.HasValue)
-						item.LocalisationData.WedCloseMorning = item.WedClose2;
-					if (item.WedOpen2.HasValue)
-						item.LocalisationData.WedOpenAfter = item.WedOpen2;
-					if (item.WedClose.HasValue)
-						item.LocalisationData.WedCloseAfter = item.WedClose;
+		//            if (item.WedOpen.HasValue)
+		//                item.LocalisationData.WedOpenMorning = item.WedOpen;
+		//            if (item.WedClose2.HasValue)
+		//                item.LocalisationData.WedCloseMorning = item.WedClose2;
+		//            if (item.WedOpen2.HasValue)
+		//                item.LocalisationData.WedOpenAfter = item.WedOpen2;
+		//            if (item.WedClose.HasValue)
+		//                item.LocalisationData.WedCloseAfter = item.WedClose;
 
-					if (item.ThuOpen.HasValue)
-						item.LocalisationData.ThuOpenMorning = item.ThuOpen;
-					if (item.ThuClose2.HasValue)
-						item.LocalisationData.ThuCloseMorning = item.ThuClose2;
-					if (item.ThuOpen2.HasValue)
-						item.LocalisationData.ThuOpenAfter = item.ThuOpen2;
-					if (item.ThuClose.HasValue)
-						item.LocalisationData.ThuCloseAfter = item.ThuClose;
+		//            if (item.ThuOpen.HasValue)
+		//                item.LocalisationData.ThuOpenMorning = item.ThuOpen;
+		//            if (item.ThuClose2.HasValue)
+		//                item.LocalisationData.ThuCloseMorning = item.ThuClose2;
+		//            if (item.ThuOpen2.HasValue)
+		//                item.LocalisationData.ThuOpenAfter = item.ThuOpen2;
+		//            if (item.ThuClose.HasValue)
+		//                item.LocalisationData.ThuCloseAfter = item.ThuClose;
 
-					if (item.FriOpen.HasValue)
-						item.LocalisationData.FriOpenMorning = item.FriOpen;
-					if (item.FriClose2.HasValue)
-						item.LocalisationData.FriCloseMorning = item.FriClose2;
-					if (item.FriOpen2.HasValue)
-						item.LocalisationData.FriOpenAfter = item.FriOpen2;
-					if (item.FriClose.HasValue)
-						item.LocalisationData.FriCloseAfter = item.FriClose;
+		//            if (item.FriOpen.HasValue)
+		//                item.LocalisationData.FriOpenMorning = item.FriOpen;
+		//            if (item.FriClose2.HasValue)
+		//                item.LocalisationData.FriCloseMorning = item.FriClose2;
+		//            if (item.FriOpen2.HasValue)
+		//                item.LocalisationData.FriOpenAfter = item.FriOpen2;
+		//            if (item.FriClose.HasValue)
+		//                item.LocalisationData.FriCloseAfter = item.FriClose;
 
-					if (item.SatOpen.HasValue)
-						item.LocalisationData.SatOpenMorning = item.SatOpen;
-					if (item.SatClose2.HasValue)
-						item.LocalisationData.SatCloseMorning = item.SatClose2;
-					if (item.SatOpen2.HasValue)
-						item.LocalisationData.SatOpenAfter = item.SatOpen2;
-					if (item.SatClose.HasValue)
-						item.LocalisationData.SatCloseAfter = item.SatClose;
+		//            if (item.SatOpen.HasValue)
+		//                item.LocalisationData.SatOpenMorning = item.SatOpen;
+		//            if (item.SatClose2.HasValue)
+		//                item.LocalisationData.SatCloseMorning = item.SatClose2;
+		//            if (item.SatOpen2.HasValue)
+		//                item.LocalisationData.SatOpenAfter = item.SatOpen2;
+		//            if (item.SatClose.HasValue)
+		//                item.LocalisationData.SatCloseAfter = item.SatClose;
 
-					if (item.SunOpen.HasValue)
-						item.LocalisationData.SunOpenMorning = item.SunOpen;
-					if (item.SunClose2.HasValue)
-						item.LocalisationData.SunCloseMorning = item.SunClose2;
-					if (item.SunOpen2.HasValue)
-						item.LocalisationData.SunOpenAfter = item.SunOpen2;
-					if (item.SunClose.HasValue)
-						item.LocalisationData.SunCloseAfter = item.SunClose;
+		//            if (item.SunOpen.HasValue)
+		//                item.LocalisationData.SunOpenMorning = item.SunOpen;
+		//            if (item.SunClose2.HasValue)
+		//                item.LocalisationData.SunCloseMorning = item.SunClose2;
+		//            if (item.SunOpen2.HasValue)
+		//                item.LocalisationData.SunOpenAfter = item.SunOpen2;
+		//            if (item.SunClose.HasValue)
+		//                item.LocalisationData.SunCloseAfter = item.SunClose;
 
 
-                    //coffee price 
-                    if (item.LocalisationData != null && item.LocalisationData.CoffeePrice.HasValue && item.LocalisationData.CoffeePrice != 0)
-                    {
+		//            //coffee price 
+		//            if (item.LocalisationData != null && item.LocalisationData.CoffeePrice.HasValue && item.LocalisationData.CoffeePrice != 0)
+		//            {
 
-                        item.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.CoffeePrice, DecimalValue = item.LocalisationData.CoffeePrice });
-                    }
+		//                item.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.CoffeePrice, DecimalValue = item.LocalisationData.CoffeePrice });
+		//            }
 
-                    //case free loc
-                    if (item.IsFreeLocalisation())
-                        continue;
+		//            //case free loc
+		//            if (item.IsFreeLocalisation())
+		//                continue;
 
-                    if (item.HasFeature(Feature.BuisnessLounge))
-                    {
-                        var offer = new Offer();
-                        offer.Type = (int)LocalisationOffer.BuisnessLounge;
-                        offer.Name = Localisation.GetOfferType((int)LocalisationOffer.BuisnessLounge) + newofferSuffix;
-						var features = item.GetFeaturesWithin(FeatureHelper.BuisnessLounge);
-                        foreach (var f in features)
-                        {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
-                        }
-                        item.Offers.Add(offer);
-                        strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
-                    }
+		//            if (item.HasFeature(Feature.BuisnessLounge))
+		//            {
+		//                var offer = new Offer();
+		//                offer.Type = (int)LocalisationOffer.BuisnessLounge;
+		//                offer.Name = Localisation.GetOfferType((int)LocalisationOffer.BuisnessLounge) + newofferSuffix;
+		//                var features = item.GetFeaturesWithin(FeatureHelper.BuisnessLounge);
+		//                foreach (var f in features)
+		//                {
+		//                    offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
+		//                }
+		//                item.Offers.Add(offer);
+		//                strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+		//            }
 
-                    if (item.HasFeature(Feature.Workstation))
-                    {
-                        var offer = new Offer();
-                        offer.Type = (int)LocalisationOffer.Workstation;
-                        offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Workstation) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(FeatureHelper.Workstation);
-                        foreach (var f in features)
-                        {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
-                        }
-                        item.Offers.Add(offer);
-                        strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
-                    }
+		//            if (item.HasFeature(Feature.Workstation))
+		//            {
+		//                var offer = new Offer();
+		//                offer.Type = (int)LocalisationOffer.Workstation;
+		//                offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Workstation) + newofferSuffix;
+		//                var features = item.GetFeaturesWithin(FeatureHelper.Workstation);
+		//                foreach (var f in features)
+		//                {
+		//                    offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
+		//                }
+		//                item.Offers.Add(offer);
+		//                strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+		//            }
 
-                    if (item.HasFeature(Feature.Desktop))
-                    {
-                        var offer = new Offer();
-                        offer.Type = (int)LocalisationOffer.Desktop;
-                        offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Desktop) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(FeatureHelper.Desktop);
-                        foreach (var f in features)
-                        {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
-                        }
-                        item.Offers.Add(offer);
-                        strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
-                    }
+		//            if (item.HasFeature(Feature.Desktop))
+		//            {
+		//                var offer = new Offer();
+		//                offer.Type = (int)LocalisationOffer.Desktop;
+		//                offer.Name = Localisation.GetOfferType((int)LocalisationOffer.Desktop) + newofferSuffix;
+		//                var features = item.GetFeaturesWithin(FeatureHelper.Desktop);
+		//                foreach (var f in features)
+		//                {
+		//                    offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
+		//                }
+		//                item.Offers.Add(offer);
+		//                strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+		//            }
 
-                    if (item.HasFeature(Feature.MeetingRoom))
-                    {
-                        var offer = new Offer();
-                        offer.Type = (int)LocalisationOffer.MeetingRoom;
-                        offer.Name = Localisation.GetOfferType((int)LocalisationOffer.MeetingRoom) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(FeatureHelper.MeetingRoom);
-                        foreach (var f in features)
-                        {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
-                        }
-                        item.Offers.Add(offer);
-                        strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
-                    }
+		//            if (item.HasFeature(Feature.MeetingRoom))
+		//            {
+		//                var offer = new Offer();
+		//                offer.Type = (int)LocalisationOffer.MeetingRoom;
+		//                offer.Name = Localisation.GetOfferType((int)LocalisationOffer.MeetingRoom) + newofferSuffix;
+		//                var features = item.GetFeaturesWithin(FeatureHelper.MeetingRoom);
+		//                foreach (var f in features)
+		//                {
+		//                    offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
+		//                }
+		//                item.Offers.Add(offer);
+		//                strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+		//            }
 
-                    if (item.HasFeature(Feature.SeminarRoom))
-                    {
-                        var offer = new Offer();
-                        offer.Type = (int)LocalisationOffer.SeminarRoom;
-                        offer.Name = Localisation.GetOfferType((int)LocalisationOffer.SeminarRoom) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(FeatureHelper.SeminarRoom);
-                        foreach (var f in features)
-                        {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
-                        }
-                        item.Offers.Add(offer);
-                        strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
-                    }
+		//            if (item.HasFeature(Feature.SeminarRoom))
+		//            {
+		//                var offer = new Offer();
+		//                offer.Type = (int)LocalisationOffer.SeminarRoom;
+		//                offer.Name = Localisation.GetOfferType((int)LocalisationOffer.SeminarRoom) + newofferSuffix;
+		//                var features = item.GetFeaturesWithin(FeatureHelper.SeminarRoom);
+		//                foreach (var f in features)
+		//                {
+		//                    offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
+		//                }
+		//                item.Offers.Add(offer);
+		//                strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+		//            }
 
-                    if (item.HasFeature(Feature.VisioRoom))
-                    {
-                        var offer = new Offer();
-                        offer.Type = (int)LocalisationOffer.VisioRoom;
-                        offer.Name = Localisation.GetOfferType((int)LocalisationOffer.VisioRoom) + newofferSuffix;
-                        var features = item.GetFeaturesWithin(FeatureHelper.VisioRoom);
-                        foreach (var f in features)
-                        {
-                            offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
-                        }
-                        item.Offers.Add(offer);
-                        strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
-                    }
-                }
+		//            if (item.HasFeature(Feature.VisioRoom))
+		//            {
+		//                var offer = new Offer();
+		//                offer.Type = (int)LocalisationOffer.VisioRoom;
+		//                offer.Name = Localisation.GetOfferType((int)LocalisationOffer.VisioRoom) + newofferSuffix;
+		//                var features = item.GetFeaturesWithin(FeatureHelper.VisioRoom);
+		//                foreach (var f in features)
+		//                {
+		//                    offer.OfferFeatures.Add(new OfferFeature { FeatureId = (int)f.Feature });
+		//                }
+		//                item.Offers.Add(offer);
+		//                strBuilder.AppendLine("Localisation : " + item.Name + " ; Offer added : " + offer.Name);
+		//            }
+		//        }
 
-                context.Commit();
-            }
-            catch (Exception ex)
-            {
-                strBuilder.AppendLine("error : " + ex.Message);
-                context.Complete();
-            }
+		//        context.Commit();
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        strBuilder.AppendLine("error : " + ex.Message);
+		//        context.Complete();
+		//    }
 
-            var content = MiscHelpers.Nl2Br(strBuilder.ToString());
-            return Content(content);
-        }
+		//    var content = MiscHelpers.Nl2Br(strBuilder.ToString());
+		//    return Content(content);
+		//}
 
         #endregion
     }

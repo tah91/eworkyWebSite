@@ -21,8 +21,8 @@ namespace Worki.Data.Models
             this.LocalisationFeatures = new HashSet<LocalisationFeature>();
             this.LocalisationFiles = new HashSet<LocalisationFile>();
             this.MemberEditions = new HashSet<MemberEdition>();
-            this.WelcomePeoples = new HashSet<WelcomePeople>();
             this.Offers = new HashSet<Offer>();
+            this.WelcomePeoples = new HashSet<WelcomePeople>();
     		OnInitialized();
         }
     
@@ -42,44 +42,16 @@ namespace Worki.Data.Models
         public string Mail { get; set; }
         public string Fax { get; set; }
         public string WebSite { get; set; }
+        public string Facebook { get; set; }
+        public string Twitter { get; set; }
         public string Description { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public Nullable<int> OwnerID { get; set; }
         public bool Bookable { get; set; }
-        public Nullable<System.DateTime> MonOpen { get; set; }
-        public Nullable<System.DateTime> MonClose { get; set; }
-        public Nullable<System.DateTime> MonOpen2 { get; set; }
-        public Nullable<System.DateTime> MonClose2 { get; set; }
-        public Nullable<System.DateTime> TueOpen { get; set; }
-        public Nullable<System.DateTime> TueClose { get; set; }
-        public Nullable<System.DateTime> TueOpen2 { get; set; }
-        public Nullable<System.DateTime> TueClose2 { get; set; }
-        public Nullable<System.DateTime> WedOpen { get; set; }
-        public Nullable<System.DateTime> WedClose { get; set; }
-        public Nullable<System.DateTime> WedOpen2 { get; set; }
-        public Nullable<System.DateTime> WedClose2 { get; set; }
-        public Nullable<System.DateTime> ThuOpen { get; set; }
-        public Nullable<System.DateTime> ThuClose { get; set; }
-        public Nullable<System.DateTime> ThuOpen2 { get; set; }
-        public Nullable<System.DateTime> ThuClose2 { get; set; }
-        public Nullable<System.DateTime> FriOpen { get; set; }
-        public Nullable<System.DateTime> FriClose { get; set; }
-        public Nullable<System.DateTime> FriOpen2 { get; set; }
-        public Nullable<System.DateTime> FriClose2 { get; set; }
-        public Nullable<System.DateTime> SatOpen { get; set; }
-        public Nullable<System.DateTime> SatClose { get; set; }
-        public Nullable<System.DateTime> SatOpen2 { get; set; }
-        public Nullable<System.DateTime> SatClose2 { get; set; }
-        public Nullable<System.DateTime> SunOpen { get; set; }
-        public Nullable<System.DateTime> SunClose { get; set; }
-        public Nullable<System.DateTime> SunOpen2 { get; set; }
-        public Nullable<System.DateTime> SunClose2 { get; set; }
         public string PublicTransportation { get; set; }
         public string Station { get; set; }
         public string RoadAccess { get; set; }
-        public string Facebook { get; set; }
-        public string Twitter { get; set; }
     
         // Navigation properties
     
@@ -91,8 +63,8 @@ namespace Worki.Data.Models
         public virtual ICollection<LocalisationFile> LocalisationFiles { get; set; }
         public virtual MainLocalisation MainLocalisation { get; set; }
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
-        public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
+        public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
     
     }
 }
