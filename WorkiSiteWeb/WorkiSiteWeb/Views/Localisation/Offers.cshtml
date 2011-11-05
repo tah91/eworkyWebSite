@@ -8,6 +8,8 @@
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
 }
 
+<a class="blue" href="@Model.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Offer.OfferString.BackToLocalisation</a>
+
 <div class="detailContent">
 	<div class="localisationDetailLeft blockContainer float-left">
 		@foreach (var offer in Model.Offers)

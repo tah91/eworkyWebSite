@@ -88,6 +88,15 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retourner à la fiche du lieu.
+        /// </summary>
+        public static string BackToLocalisation {
+            get {
+                return ResourceManager.GetString("BackToLocalisation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editer une offre.
         /// </summary>
         public static string EditOffer {

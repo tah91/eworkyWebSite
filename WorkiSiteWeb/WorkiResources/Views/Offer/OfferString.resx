@@ -147,4 +147,7 @@
   <data name="InfoUnknown" xml:space="preserve">
     <value>Les caractéristiques de cette offre n’ont pas été renseignées.</value>
   </data>
+  <data name="BackToLocalisation" xml:space="preserve">
+    <value>Retourner à la fiche du lieu</value>
+  </data>
 </root>
