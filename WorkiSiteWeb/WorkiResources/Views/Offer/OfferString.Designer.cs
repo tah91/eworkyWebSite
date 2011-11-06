@@ -88,7 +88,7 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retourner à la fiche du lieu.
+        ///   Looks up a localized string similar to Retour à la fiche du lieu.
         /// </summary>
         public static string BackToLocalisation {
             get {
