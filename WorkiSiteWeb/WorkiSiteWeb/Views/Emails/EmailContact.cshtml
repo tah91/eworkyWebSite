@@ -1,0 +1,6 @@
+﻿To: @ViewBag.To
+From: @Html.Raw(ViewBag.From)
+Subject: @Html.Raw(ViewBag.Subject)
+
+<p>@Html.Raw(MiscHelpers.Nl2Br(ViewBag.Content))
+</p>

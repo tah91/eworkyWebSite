@@ -18,6 +18,7 @@ namespace Worki.Infrastructure.Helpers
 		public static class EmailConstants
 		{
 			public const string EmailView = "Email";
+            public const string EmailContactView = "EmailContact";
 			public const string EmailOwnerView = "EmailOwner";
 			public const string ListLocMailView = "ListLocMail";
             public const string FacebookMail = "FacebookMail";

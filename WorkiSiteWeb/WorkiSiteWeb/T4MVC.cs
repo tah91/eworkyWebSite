@@ -2389,6 +2389,7 @@ namespace T4MVC {
         public class ViewNames {
             public readonly string _ViewStart = "~/Views/Emails/_ViewStart.cshtml";
             public readonly string Email = "~/Views/Emails/Email.cshtml";
+            public readonly string EmailContact = "~/Views/Emails/EmailContact.cshtml";
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
             public readonly string FacebookMail = "~/Views/Emails/FacebookMail.cshtml";
             public readonly string ListLocMail = "~/Views/Emails/ListLocMail.cshtml";
