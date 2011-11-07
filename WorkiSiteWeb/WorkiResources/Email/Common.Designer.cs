@@ -106,6 +106,15 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande d&apos;informations - {0}.
+        /// </summary>
+        public static string Info {
+            get {
+                return ResourceManager.GetString("Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Message :.
         /// </summary>
         public static string Message {

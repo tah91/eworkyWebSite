@@ -145,4 +145,7 @@
   <data name="Concern" xml:space="preserve">
     <value>Concernant l'annonce : </value>
   </data>
+  <data name="Info" xml:space="preserve">
+    <value>Demande d'informations - {0}</value>
+  </data>
 </root>

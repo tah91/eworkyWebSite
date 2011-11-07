@@ -1057,7 +1057,7 @@ namespace Worki.Web.Controllers
 						Mail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         Mail.To = "mika7869@gmail.com";
                         // Mail.To = item.Mail;
-                        Mail.Subject = "TEST MAIL";
+                        Mail.Subject = string.Format(Worki.Resources.Email.Common.Info, item.Name);
 						Mail.Type = Localisation.GetLocalisationType(item.TypeValue).ToLower();
                         Mail.Link = item.GetDetailFullUrl(Url);
                     }
