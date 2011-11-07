@@ -11,7 +11,7 @@
     var isEditing = Model.MemberBooking.Id != 0;
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookIt, "Blue")
+@RazorHelpers.TitleDiv(Model.NeedQuotation ? Worki.Resources.Views.Booking.BookingString.Quotation : Worki.Resources.Views.Booking.BookingString.BookIt, "Blue")
 
 <div class="detailContent">
     <div class="blockContainer">
@@ -70,7 +70,7 @@
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.PhoneNumber) <span class="blue">*</span>
+								@Html.LabelFor(m => m.PhoneNumber)<span class="blue">*</span>
 							</div>
 						</td>
 						<td>
@@ -91,7 +91,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m => m.MemberBooking.Surface)
+								@Html.TextBoxFor(m => m.MemberBooking.Surface, new { placeholder = "Ex : 40" })
 							</div>
 						</td>
 					</tr>
@@ -189,6 +189,16 @@
 	            return true;
 	        });
 	    });
+
+	    function init() {
+	        if ($("#MemberBooking_Surface").attr("value") == 0)
+	            $("#MemberBooking_Surface").attr("value", null);
+	    };
+
+	    $(document).ready(function () {
+	        init();
+	    });
+
     </script>
 }
 

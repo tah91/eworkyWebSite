@@ -680,5 +680,14 @@ namespace Worki.Resources.Views.Rental {
                 return ResourceManager.GetString("UpdatedAt", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pratique.
+        /// </summary>
+        public static string Usefull {
+            get {
+                return ResourceManager.GetString("Usefull", resourceCulture);
+            }
+        }
     }
 }

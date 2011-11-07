@@ -59,6 +59,7 @@ namespace Worki.Data.Models
 		public DateTime ToDate { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Surface", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public decimal Surface { get; set; }
 
 		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]

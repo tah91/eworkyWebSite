@@ -324,4 +324,7 @@
   <data name="UpdatedAt" xml:space="preserve">
     <value>Annonce mise à jour le</value>
   </data>
+  <data name="Usefull" xml:space="preserve">
+    <value>Pratique</value>
+  </data>
 </root>

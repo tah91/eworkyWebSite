@@ -124,6 +124,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande de devis.
+        /// </summary>
+        public static string Quotation {
+            get {
+                return ResourceManager.GetString("Quotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refuser.
         /// </summary>
         public static string RefuseIt {

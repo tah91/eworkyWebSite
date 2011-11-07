@@ -349,7 +349,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - centre d&apos;affaires, espace voyageur&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc..
+        ///   Looks up a localized string similar to - centre d&apos;affaires, espace voyageurs&lt;br /&gt;- espace de coworking&lt;br /&gt;- télécentre, etc..
         /// </summary>
         public static string ReserveSpeech {
             get {

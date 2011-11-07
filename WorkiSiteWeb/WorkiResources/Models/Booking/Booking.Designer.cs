@@ -160,6 +160,15 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surface de bureaux souhaitée (en m2).
+        /// </summary>
+        public static string Surface {
+            get {
+                return ResourceManager.GetString("Surface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fin souhaitée.
         /// </summary>
         public static string ToDate {
