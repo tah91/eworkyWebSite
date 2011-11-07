@@ -118,13 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivationContent" xml:space="preserve">
-    <value>Une fois votre compte activé, vous serez officiellement membre de la communauté eWorky ... et nous avons le plaisir de vous annoncer que vous y êtes presque !
-
-Pour valider votre inscription sur eWorky, il vous suffit de cliquer sur le lien suivant : {0}
-
-Vous pourrez ensuite vous connecter facilement avec votre identifiant " {1} "</value>
+    <value> </value>
   </data>
   <data name="ActivationSubject" xml:space="preserve">
-    <value>Bienvenue dans la communauté eWorky !</value>
+    <value> </value>
   </data>
 </root>
