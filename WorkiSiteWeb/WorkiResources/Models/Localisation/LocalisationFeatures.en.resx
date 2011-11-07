@@ -118,280 +118,280 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AC" xml:space="preserve">
-    <value>Climatisation</value>
+    <value> </value>
     <comment>Features</comment>
   </data>
   <data name="Access24" xml:space="preserve">
-    <value>Accès 24/7</value>
+    <value> </value>
   </data>
   <data name="Accommodation" xml:space="preserve">
-    <value>Hébergement</value>
+    <value> </value>
   </data>
   <data name="Archiving" xml:space="preserve">
-    <value>Stockage / archivage</value>
+    <value> </value>
   </data>
   <data name="Audio" xml:space="preserve">
-    <value>Audioconférence</value>
+    <value> </value>
   </data>
   <data name="AvoidAfternoom" xml:space="preserve">
-    <value>Après-midi</value>
+    <value> </value>
   </data>
   <data name="AvoidEvening" xml:space="preserve">
-    <value>Soirée</value>
+    <value> </value>
   </data>
   <data name="AvoidLunch" xml:space="preserve">
-    <value>Déjeuner</value>
+    <value> </value>
   </data>
   <data name="AvoidMorning" xml:space="preserve">
-    <value>Matinée</value>
+    <value> </value>
   </data>
   <data name="Catering" xml:space="preserve">
-    <value>Traiteur</value>
+    <value> </value>
   </data>
   <data name="Coffee" xml:space="preserve">
-    <value>Café / Bar</value>
+    <value> </value>
   </data>
   <data name="Community" xml:space="preserve">
-    <value>Activités communautaires</value>
+    <value> </value>
   </data>
   <data name="Courier" xml:space="preserve">
-    <value>Gestion du courrier</value>
+    <value> </value>
   </data>
   <data name="ComputerHelp" xml:space="preserve">
-    <value>Assistance informatique</value>
+    <value> </value>
   </data>
   <data name="Computers" xml:space="preserve">
-    <value>Mise à disposition d'ordinateurs</value>
+    <value> </value>
   </data>
   <data name="Concierge" xml:space="preserve">
-    <value>Conciergerie</value>
+    <value> </value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value> </value>
   </data>
   <data name="Domiciliation" xml:space="preserve">
-    <value>Domiciliation</value>
+    <value> </value>
   </data>
   <data name="Drinks" xml:space="preserve">
-    <value>Service de boissons</value>
+    <value> </value>
   </data>
   <data name="ErgonomicFurniture" xml:space="preserve">
-    <value>Mobilier ergonomique</value>
+    <value> </value>
   </data>
   <data name="FastInternet" xml:space="preserve">
-    <value>Internet très haut débit</value>
+    <value> </value>
   </data>
   <data name="Handicap" xml:space="preserve">
-    <value>Accès handicapés</value>
+    <value> </value>
   </data>
   <data name="Internet" xml:space="preserve">
-    <value>Connexion Internet</value>
+    <value> </value>
   </data>
   <data name="Lighting" xml:space="preserve">
-    <value>Régie lumière</value>
+    <value> </value>
   </data>
   <data name="LocalisationOwner" xml:space="preserve">
-    <value>Je suis le propriétaire / gestionnaire du lieu</value>
+    <value> </value>
   </data>
   <data name="Longitude" xml:space="preserve">
-    <value>Longitude</value>
+    <value> </value>
   </data>
   <data name="LunchClose" xml:space="preserve">
-    <value>Fermeture au déjeuner</value>
+    <value> </value>
   </data>
   <data name="Micro" xml:space="preserve">
-    <value>Micro</value>
+    <value> </value>
   </data>
   <data name="Newspaper" xml:space="preserve">
-    <value>Journaux</value>
+    <value> </value>
   </data>
   <data name="Outlet" xml:space="preserve">
-    <value>Prise de courant</value>
+    <value> </value>
   </data>
   <data name="Paperboard" xml:space="preserve">
-    <value>Paper-board</value>
+    <value> </value>
   </data>
   <data name="Parking" xml:space="preserve">
-    <value>Parking</value>
+    <value> </value>
   </data>
   <data name="PhoneJack" xml:space="preserve">
-    <value>Prise téléphonique</value>
+    <value> </value>
   </data>
   <data name="Picturesque" xml:space="preserve">
-    <value>Cadre pittoresque</value>
+    <value> </value>
   </data>
   <data name="Pressing" xml:space="preserve">
-    <value>Pressing</value>
+    <value> </value>
   </data>
   <data name="Printer" xml:space="preserve">
-    <value>Copie, impression, fax</value>
+    <value> </value>
   </data>
   <data name="Projector" xml:space="preserve">
-    <value>Rétroprojecteur</value>
+    <value> </value>
   </data>
   <data name="RelaxingArea" xml:space="preserve">
-    <value>Espace(s) de détente</value>
+    <value> </value>
   </data>
   <data name="Restauration" xml:space="preserve">
-    <value>Restauration</value>
+    <value> </value>
   </data>
   <data name="Room1000_plus" xml:space="preserve">
-    <value>Supérieure à 1000 personnes</value>
+    <value> </value>
   </data>
   <data name="Room100_250" xml:space="preserve">
-    <value>De 100 à 250 personnes</value>
+    <value> </value>
   </data>
   <data name="Room10_Plus" xml:space="preserve">
-    <value>Supérieure à 10 personnes</value>
+    <value> </value>
   </data>
   <data name="Room1_4" xml:space="preserve">
-    <value>De 1 à 4 personnes</value>
+    <value> </value>
   </data>
   <data name="Room20_100" xml:space="preserve">
-    <value>De 20 à 100 personnes</value>
+    <value> </value>
   </data>
   <data name="Room20_plus" xml:space="preserve">
-    <value>Supérieure à 20 personnes</value>
+    <value> </value>
   </data>
   <data name="Room250_1000" xml:space="preserve">
-    <value>De 250 à 1000 personnes</value>
+    <value> </value>
   </data>
   <data name="Room2_7" xml:space="preserve">
-    <value>De 2 à 7 personnes</value>
+    <value> </value>
   </data>
   <data name="Room5_10" xml:space="preserve">
-    <value>De 5 à 10 personnes</value>
+    <value> </value>
   </data>
   <data name="Room7_20" xml:space="preserve">
-    <value>De 8 à 20 personnes</value>
+    <value> </value>
   </data>
   <data name="RoomService" xml:space="preserve">
-    <value>Room service bureau</value>
+    <value> </value>
   </data>
   <data name="SafeStorage" xml:space="preserve">
-    <value>Rangement sécurisé</value>
+    <value> </value>
   </data>
   <data name="Scene" xml:space="preserve">
-    <value>Scène</value>
+    <value> </value>
   </data>
   <data name="Secretariat" xml:space="preserve">
-    <value>Secrétariat</value>
+    <value> </value>
   </data>
   <data name="Shower" xml:space="preserve">
-    <value>Douche</value>
+    <value> </value>
   </data>
   <data name="Telepresence" xml:space="preserve">
-    <value>Téléprésence</value>
+    <value> </value>
   </data>
   <data name="TV" xml:space="preserve">
-    <value>TV</value>
+    <value> </value>
   </data>
   <data name="VideoProj" xml:space="preserve">
-    <value>Vidéoprojecteur</value>
+    <value> </value>
   </data>
   <data name="Visio" xml:space="preserve">
-    <value>Visioconférence</value>
+    <value> </value>
   </data>
   <data name="VisioHD" xml:space="preserve">
-    <value>Visioconférence HD</value>
+    <value> </value>
   </data>
   <data name="Welcoming" xml:space="preserve">
-    <value>Accueil des invités</value>
+    <value> </value>
   </data>
   <data name="Wifi_Free" xml:space="preserve">
-    <value>Wifi gratuit</value>
+    <value> </value>
   </data>
   <data name="Wifi_Not_Free" xml:space="preserve">
-    <value>Wifi payant</value>
+    <value> </value>
   </data>
   <data name="BuisnessLounge" xml:space="preserve">
-    <value>Salon d'affaires</value>
+    <value> </value>
   </data>
   <data name="FreeArea" xml:space="preserve">
-    <value>Espace de travail gratuit</value>
+    <value> </value>
   </data>
   <data name="SeminarRoom" xml:space="preserve">
-    <value>Salles de conférence</value>
+    <value> </value>
   </data>
   <data name="Desktop" xml:space="preserve">
-    <value>Bureaux</value>
+    <value> </value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
-    <value>Salles de téléprésence</value>
+    <value> </value>
   </data>
   <data name="Workstation" xml:space="preserve">
-    <value>Postes de travail</value>
+    <value> </value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
-    <value>Salles de réunion</value>
+    <value> </value>
   </data>
   <data name="Sound" xml:space="preserve">
-    <value>Régie son</value>
+    <value> </value>
   </data>
   <data name="SingleMeetingRoom" xml:space="preserve">
-    <value>Salle de réunion / formation</value>
+    <value> </value>
   </data>
   <data name="SingleSeminarRoom" xml:space="preserve">
-    <value>Salle de conférence / séminaire</value>
+    <value> </value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Bureau</value>
+    <value> </value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
-    <value>Salle de visio / téléprésence</value>
+    <value> </value>
   </data>
   <data name="SingleWorkstation" xml:space="preserve">
-    <value>Poste de travail</value>
+    <value> </value>
   </data>
   <data name="AllOffers" xml:space="preserve">
-    <value>Sélectionnez une offre</value>
+    <value> </value>
   </data>
   <data name="AllInclusive" xml:space="preserve">
-    <value>Tout compris (charges, taxes, nettoyage, etc.)</value>
+    <value> </value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
-    <value>Disponibilité immédiate</value>
+    <value> </value>
   </data>
   <data name="CoffeePrice" xml:space="preserve">
-    <value>Prix du café</value>
+    <value> </value>
   </data>
   <data name="CoworkingVibe" xml:space="preserve">
-    <value>Ambiance coworking</value>
+    <value> </value>
   </data>
   <data name="Desktop100Plus" xml:space="preserve">
-    <value>&gt; 100 m2</value>
+    <value> </value>
   </data>
   <data name="Desktop10_25" xml:space="preserve">
-    <value>De 10 à 25 m2</value>
+    <value> </value>
   </data>
   <data name="Desktop25_50" xml:space="preserve">
-    <value>De 25 à 50 m2</value>
+    <value> </value>
   </data>
   <data name="Desktop50_100" xml:space="preserve">
-    <value>De 50 à 100 m2</value>
+    <value> </value>
   </data>
   <data name="Equipped" xml:space="preserve">
-    <value>Equipé et câblé</value>
+    <value> </value>
   </data>
   <data name="FlexibleContract" xml:space="preserve">
-    <value>Contrat flexible</value>
+    <value> </value>
   </data>
   <data name="ForCardOwner" xml:space="preserve">
-    <value>Accès réservé aux détenteurs de la carte</value>
+    <value> </value>
   </data>
   <data name="MinimalPeriod" xml:space="preserve">
-    <value>Durée minimale de location</value>
+    <value> </value>
   </data>
   <data name="NotSectorial" xml:space="preserve">
-    <value>Non sectoriel</value>
+    <value> </value>
   </data>
   <data name="OpenToAll" xml:space="preserve">
-    <value>Ouvert à tous</value>
+    <value> </value>
   </data>
   <data name="ReservedToClients" xml:space="preserve">
-    <value>Accès réservé aux clients</value>
+    <value> </value>
   </data>
   <data name="Sector" xml:space="preserve">
-    <value>Secteur</value>
+    <value> </value>
   </data>
 </root>

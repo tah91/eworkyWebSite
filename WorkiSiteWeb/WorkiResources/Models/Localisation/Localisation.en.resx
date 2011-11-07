@@ -118,238 +118,238 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Biblio" xml:space="preserve">
-    <value>Bibliothèque / Musée</value>
+    <value> </value>
   </data>
   <data name="BuisnessCenter" xml:space="preserve">
-    <value>Centre d'affaires</value>
+    <value> </value>
   </data>
   <data name="CoffeePrice" xml:space="preserve">
-    <value>Prix du café</value>
+    <value> </value>
     <comment>LocalisationData_Validation</comment>
   </data>
   <data name="CoffeeResto" xml:space="preserve">
-    <value>Café / Restaurant</value>
+    <value> </value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Pays</value>
+    <value> </value>
   </data>
   <data name="CoworkingSpace" xml:space="preserve">
-    <value>Espace de coworking</value>
+    <value> </value>
   </data>
   <data name="Latitude" xml:space="preserve">
-    <value>Latitude</value>
+    <value> </value>
   </data>
   <data name="Post" xml:space="preserve">
-    <value>Commentaire</value>
+    <value> </value>
     <comment>Comment_Validation</comment>
   </data>
   <data name="PostalCode" xml:space="preserve">
-    <value>Code Postal</value>
+    <value> </value>
   </data>
   <data name="PrivateArea" xml:space="preserve">
-    <value>Lieu privé</value>
+    <value> </value>
   </data>
   <data name="PublicSpace" xml:space="preserve">
-    <value>Espace public numérique / Cybercafé</value>
+    <value> </value>
   </data>
   <data name="SpotWifi" xml:space="preserve">
-    <value>Spot Wifi</value>
+    <value> </value>
     <comment>SearchCriteria</comment>
   </data>
   <data name="TypeValue" xml:space="preserve">
-    <value>Type</value>
+    <value> </value>
     <comment>Localisation_Validation</comment>
   </data>
   <data name="WebSite" xml:space="preserve">
-    <value>Site Internet</value>
+    <value> </value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
-    <value>Hôtel d'entreprises</value>
+    <value> </value>
   </data>
   <data name="SeminarRoom" xml:space="preserve">
-    <value>Caractéristiques des salles de conférence / séminaire</value>
+    <value> </value>
   </data>
   <data name="Mlle" xml:space="preserve">
-    <value>Mlle</value>
+    <value> </value>
   </data>
   <data name="Mme" xml:space="preserve">
-    <value>Mme</value>
+    <value> </value>
   </data>
   <data name="Mr" xml:space="preserve">
-    <value>M.</value>
+    <value> </value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
-    <value>Caractéristiques des salles de visio / téléprésence</value>
+    <value> </value>
   </data>
   <data name="WorkingPlace" xml:space="preserve">
-    <value>Services proposés</value>
+    <value> </value>
   </data>
   <data name="SendLocalisationMail" xml:space="preserve">
-    <value>Bonjour, je viens de découvrir un lieu de travail très sympathique sur eWorky.com : {0}. A bientôt !</value>
+    <value> </value>
   </data>
   <data name="Adress" xml:space="preserve">
-    <value>N° et Rue</value>
+    <value> </value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>Ville</value>
+    <value> </value>
   </data>
   <data name="Fax" xml:space="preserve">
-    <value>Fax</value>
+    <value> </value>
   </data>
   <data name="Hotel" xml:space="preserve">
-    <value>Hôtel</value>
+    <value> </value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Nom du lieu</value>
+    <value> </value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Téléphone</value>
+    <value> </value>
   </data>
   <data name="PublicTransportation" xml:space="preserve">
-    <value>Transports en commun</value>
+    <value> </value>
   </data>
   <data name="RoadAccess" xml:space="preserve">
-    <value>Accès routiers</value>
+    <value> </value>
   </data>
   <data name="Station" xml:space="preserve">
-    <value>Gare(s) SNCF</value>
+    <value> </value>
   </data>
   <data name="Telecentre" xml:space="preserve">
-    <value>Télécentre</value>
+    <value> </value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
-    <value>Espace voyageurs</value>
+    <value> </value>
   </data>
   <data name="RatingDispo" xml:space="preserve">
-    <value>Disponibilité / calme</value>
+    <value> </value>
   </data>
   <data name="RatingPrice" xml:space="preserve">
-    <value>Rapport qualité / prix</value>
+    <value> </value>
   </data>
   <data name="RatingWelcome" xml:space="preserve">
-    <value>Accueil</value>
+    <value> </value>
   </data>
   <data name="RatingWifi" xml:space="preserve">
-    <value>Qualité du wifi</value>
+    <value> </value>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Appréciation générale</value>
+    <value> </value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
-    <value>Caractéristiques des salle de réunion / formation</value>
+    <value> </value>
   </data>
   <data name="WorkCity" xml:space="preserve">
-    <value>Ville</value>
+    <value> </value>
   </data>
   <data name="WorkCountry" xml:space="preserve">
-    <value>Pays</value>
+    <value> </value>
   </data>
   <data name="WorkPostalCode" xml:space="preserve">
-    <value>Code postal</value>
+    <value> </value>
   </data>
   <data name="GiveYourAdvice" xml:space="preserve">
-    <value>Donnez votre avis</value>
+    <value> </value>
   </data>
   <data name="To" xml:space="preserve">
-    <value> à </value>
+    <value> </value>
   </data>
   <data name="Bookable" xml:space="preserve">
-    <value>Proposer la réservation en ligne</value>
+    <value> </value>
   </data>
   <data name="Facebook" xml:space="preserve">
-    <value>Facebook</value>
+    <value> </value>
   </data>
   <data name="Twitter" xml:space="preserve">
-    <value>Twitter</value>
+    <value> </value>
   </data>
   <data name="Coffee" xml:space="preserve">
-    <value>Café</value>
+    <value> </value>
   </data>
   <data name="UsefulHandicap" xml:space="preserve">
-    <value>Adapté pour personnes à mobilité réduite</value>
+    <value> </value>
   </data>
   <data name="FriCloseAfter" xml:space="preserve">
-    <value>Fermeture Vendredi soir</value>
+    <value> </value>
   </data>
   <data name="FriCloseMorning" xml:space="preserve">
-    <value>Fermeture Vendredi  matin</value>
+    <value> </value>
   </data>
   <data name="FriOpenAfter" xml:space="preserve">
-    <value>Ouverture Vendredi soir</value>
+    <value> </value>
   </data>
   <data name="FriOpenMorning" xml:space="preserve">
-    <value>Ouverture Vendredi  matin</value>
+    <value> </value>
   </data>
   <data name="MonCloseAfter" xml:space="preserve">
-    <value>Fermeture Lundi soir</value>
+    <value> </value>
   </data>
   <data name="MonCloseMorning" xml:space="preserve">
-    <value>Fermeture Lundi  matin</value>
+    <value> </value>
   </data>
   <data name="MonOpenAfter" xml:space="preserve">
-    <value>Ouverture Lundi soir</value>
+    <value> </value>
   </data>
   <data name="MonOpenMorning" xml:space="preserve">
-    <value>Ouverture Lundi matin</value>
+    <value> </value>
   </data>
   <data name="SatCloseAfter" xml:space="preserve">
-    <value>Fermeture Samedi soir</value>
+    <value> </value>
   </data>
   <data name="SatCloseMorning" xml:space="preserve">
-    <value>Fermeture Samedi  matin</value>
+    <value> </value>
   </data>
   <data name="SatOpenAfter" xml:space="preserve">
-    <value>Ouverture Samedi soir</value>
+    <value> </value>
   </data>
   <data name="SatOpenMorning" xml:space="preserve">
-    <value>Ouverture Samedi  matin</value>
+    <value> </value>
   </data>
   <data name="SunCloseAfter" xml:space="preserve">
-    <value>Fermeture Dimanche soir</value>
+    <value> </value>
   </data>
   <data name="SunCloseMorning" xml:space="preserve">
-    <value>Fermeture Dimanche  matin</value>
+    <value> </value>
   </data>
   <data name="SunOpenAfter" xml:space="preserve">
-    <value>Ouverture Dimanche soir</value>
+    <value> </value>
   </data>
   <data name="SunOpenMorning" xml:space="preserve">
-    <value>Ouverture Dimanche  matin</value>
+    <value> </value>
   </data>
   <data name="ThuCloseAfter" xml:space="preserve">
-    <value>Fermeture Jeudi soir</value>
+    <value> </value>
   </data>
   <data name="ThuCloseMorning" xml:space="preserve">
-    <value>Fermeture Jeudi  matin</value>
+    <value> </value>
   </data>
   <data name="ThuOpenAfter" xml:space="preserve">
-    <value>Ouverture Jeudi soir</value>
+    <value> </value>
   </data>
   <data name="ThuOpenMorning" xml:space="preserve">
-    <value>Ouverture Jeudi  matin</value>
+    <value> </value>
   </data>
   <data name="TueCloseAfter" xml:space="preserve">
-    <value>Fermeture Mardi soir</value>
+    <value> </value>
   </data>
   <data name="TueCloseMorning" xml:space="preserve">
-    <value>Fermeture Mardi  matin</value>
+    <value> </value>
   </data>
   <data name="TueOpenAfter" xml:space="preserve">
-    <value>Ouverture Mardi soir</value>
+    <value> </value>
   </data>
   <data name="TueOpenMorning" xml:space="preserve">
-    <value>Ouverture Mardi  matin</value>
+    <value> </value>
   </data>
   <data name="WedCloseAfter" xml:space="preserve">
-    <value>Fermeture Mercredi soir</value>
+    <value> </value>
   </data>
   <data name="WedCloseMorning" xml:space="preserve">
-    <value>Fermeture Mercredi  matin</value>
+    <value> </value>
   </data>
   <data name="WedOpenAfter" xml:space="preserve">
-    <value>Ouverture Mercredi soir</value>
+    <value> </value>
   </data>
   <data name="WedOpenMorning" xml:space="preserve">
-    <value>Ouverture Mercredi  matin</value>
+    <value> </value>
   </data>
 </root>

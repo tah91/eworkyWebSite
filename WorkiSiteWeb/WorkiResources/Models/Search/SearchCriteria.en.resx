@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Everything" xml:space="preserve">
-    <value>Tous</value>
+    <value> </value>
   </data>
   <data name="Place" xml:space="preserve">
-    <value>Lieu</value>
+    <value> </value>
   </data>
 </root>
