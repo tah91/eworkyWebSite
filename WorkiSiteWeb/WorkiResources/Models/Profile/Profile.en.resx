@@ -118,69 +118,69 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BirthDate" xml:space="preserve">
-    <value> </value>
+    <value>Date de naissance</value>
   </data>
   <data name="Civility" xml:space="preserve">
-    <value> </value>
+    <value>Civilité</value>
   </data>
   <data name="Company" xml:space="preserve">
-    <value> </value>
+    <value>Grand compte</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
-    <value> </value>
+    <value>Activité professionnelle</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
+    <value>Décrivez-vous en 140 caractères</value>
   </data>
   <data name="Facebook" xml:space="preserve">
-    <value> </value>
+    <value>Facebook</value>
   </data>
   <data name="FavoritePlaces" xml:space="preserve">
-    <value> </value>
+    <value>Où j'aime travailler</value>
   </data>
   <data name="Independant" xml:space="preserve">
-    <value> </value>
+    <value>Indépendant (auto-entrepreneur, libéral)</value>
   </data>
   <data name="Linkedin" xml:space="preserve">
-    <value> </value>
+    <value>LinkedIn</value>
   </data>
   <data name="LocalisationOwner" xml:space="preserve">
-    <value> </value>
+    <value>Propriétaire d'un lieu</value>
   </data>
   <data name="Nomad" xml:space="preserve">
-    <value> </value>
+    <value>Travailleur nomade</value>
   </data>
   <data name="NotSelected" xml:space="preserve">
-    <value> </value>
+    <value>Sélectionnez votre profil</value>
   </data>
   <data name="Other" xml:space="preserve">
-    <value> </value>
+    <value>Autre</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value> </value>
+    <value>Téléphone portable</value>
   </data>
   <data name="ProfileString" xml:space="preserve">
-    <value> </value>
+    <value>Profil</value>
   </data>
   <data name="PunctualUser" xml:space="preserve">
-    <value> </value>
+    <value>Utilisateur du dimanche</value>
   </data>
   <data name="Startup" xml:space="preserve">
-    <value> </value>
+    <value>Entrepreneur / TPE</value>
   </data>
   <data name="Student" xml:space="preserve">
-    <value> </value>
+    <value>Etudiant</value>
   </data>
   <data name="Teleworker" xml:space="preserve">
-    <value> </value>
+    <value>Télétravailleur</value>
   </data>
   <data name="Twitter" xml:space="preserve">
-    <value> </value>
+    <value>Twitter</value>
   </data>
   <data name="Viadeo" xml:space="preserve">
-    <value> </value>
+    <value>Viadeo</value>
   </data>
   <data name="Website" xml:space="preserve">
-    <value> </value>
+    <value>Site internet</value>
   </data>
 </root>

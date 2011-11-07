@@ -118,54 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Civility" xml:space="preserve">
-    <value> </value>
+    <value>Civilité</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value> </value>
+    <value>Confirmez le mot de passe</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value> </value>
+    <value>Adresse email</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value> </value>
+    <value>Adresse de messagerie</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value> </value>
+    <value>Nouveau mot de passe</value>
   </data>
   <data name="OldPassword" xml:space="preserve">
-    <value> </value>
+    <value>Mot de passe actuel</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value> </value>
+    <value>Mot de passe</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
-    <value> </value>
+    <value>Mémoriser le mot de passe ?</value>
   </data>
   <data name="Facebook" xml:space="preserve">
-    <value> </value>
+    <value>Facebook</value>
   </data>
   <data name="Twitter" xml:space="preserve">
-    <value> </value>
+    <value> Twitter </value>
   </data>
   <data name="ChangeThePassword" xml:space="preserve">
-    <value> </value>
+    <value>Modifier le mot de passe</value>
   </data>
   <data name="ResetThePassword" xml:space="preserve">
-    <value> </value>
+    <value>Réinitialiser le mot de passe</value>
   </data>
   <data name="BirthDate" xml:space="preserve">
-    <value> </value>
+    <value>Date de naissance</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
-    <value> </value>
+    <value>Nom de l'entreprise</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
+    <value>Décrivez-vous</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value> </value>
+    <value>Télephone portable</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value> </value>
+    <value>Profil</value>
   </data>
 </root>

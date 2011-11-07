@@ -118,159 +118,159 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Address" xml:space="preserve">
-    <value> </value>
+    <value>Adresse</value>
   </data>
   <data name="AvailableDate" xml:space="preserve">
-    <value> </value>
+    <value>Date de disponibilité</value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
-    <value> </value>
+    <value>Disponibilité immédiate</value>
   </data>
   <data name="Charges" xml:space="preserve">
-    <value> </value>
+    <value>Charges mensuelles</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value> </value>
+    <value>Ville</value>
   </data>
   <data name="Commercial" xml:space="preserve">
-    <value> </value>
+    <value>Local commercial</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value> </value>
+    <value>Pays</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
+    <value>Description</value>
   </data>
   <data name="Desk" xml:space="preserve">
-    <value> </value>
+    <value>Bureaux &amp; locaux professionnels</value>
   </data>
   <data name="Electric" xml:space="preserve">
-    <value> </value>
+    <value>Electrique</value>
   </data>
   <data name="Energy" xml:space="preserve">
-    <value> </value>
+    <value>Consommation énergétique</value>
   </data>
   <data name="Farm" xml:space="preserve">
-    <value> </value>
+    <value>Exploitations agricoles</value>
   </data>
   <data name="Franchise" xml:space="preserve">
-    <value> </value>
+    <value>Gérance - franchise</value>
   </data>
   <data name="Gas" xml:space="preserve">
-    <value> </value>
+    <value>Gaz</value>
   </data>
   <data name="GreenHouse" xml:space="preserve">
-    <value> </value>
+    <value>Diagnostic énergétique</value>
   </data>
   <data name="Ground" xml:space="preserve">
-    <value> </value>
+    <value>Local d'activité, terrain</value>
   </data>
   <data name="HeatingType" xml:space="preserve">
-    <value> </value>
+    <value>Chauffage</value>
   </data>
   <data name="Kitchen" xml:space="preserve">
-    <value> </value>
+    <value>Cuisine</value>
   </data>
   <data name="Leasehold" xml:space="preserve">
-    <value> </value>
+    <value>Fonds de commerce</value>
   </data>
   <data name="LeaseType" xml:space="preserve">
-    <value> </value>
+    <value>Type de bail</value>
   </data>
   <data name="LocalNetwork" xml:space="preserve">
-    <value> </value>
+    <value>Réseau local préinstallé</value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
-    <value> </value>
+    <value>Salle de réunion</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value> </value>
+    <value>Etat neuf</value>
   </data>
   <data name="Parking" xml:space="preserve">
-    <value> </value>
+    <value>Parking</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
-    <value> </value>
+    <value>Code postal</value>
   </data>
   <data name="Quiet" xml:space="preserve">
-    <value> </value>
+    <value>Environnement calme</value>
   </data>
   <data name="Rate" xml:space="preserve">
-    <value> </value>
+    <value>Loyer mensuel hors charges</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value> </value>
+    <value>Référence</value>
   </data>
   <data name="StartUpFriendly" xml:space="preserve">
-    <value> </value>
+    <value>Start-up friendly</value>
   </data>
   <data name="Surface" xml:space="preserve">
-    <value> </value>
+    <value>Surface</value>
   </data>
   <data name="TimeStamp" xml:space="preserve">
-    <value> </value>
+    <value>Date de mise à jour</value>
   </data>
   <data name="Toilets" xml:space="preserve">
-    <value> </value>
+    <value>Toilettes</value>
   </data>
   <data name="Transport" xml:space="preserve">
-    <value> </value>
+    <value>Accès transport en commun</value>
   </data>
   <data name="Type" xml:space="preserve">
-    <value> </value>
+    <value>Type de lieu</value>
   </data>
   <data name="Type_24" xml:space="preserve">
-    <value> </value>
+    <value>Bail précaire 24 mois</value>
   </data>
   <data name="Type_369" xml:space="preserve">
-    <value> </value>
+    <value>Bail 3/6/9</value>
   </data>
   <data name="NotDefined" xml:space="preserve">
-    <value> </value>
+    <value>Choisir...</value>
   </data>
   <data name="Line" xml:space="preserve">
-    <value> </value>
+    <value>Ligne</value>
   </data>
   <data name="RentalAccessType" xml:space="preserve">
-    <value> </value>
+    <value>Type de transport</value>
   </data>
   <data name="Station" xml:space="preserve">
-    <value> </value>
+    <value>Station</value>
   </data>
   <data name="Availability" xml:space="preserve">
-    <value> </value>
+    <value>Disponibilité</value>
   </data>
   <data name="Max" xml:space="preserve">
-    <value> </value>
+    <value>Max</value>
   </data>
   <data name="Min" xml:space="preserve">
-    <value> </value>
+    <value>Min</value>
   </data>
   <data name="MaxRate" xml:space="preserve">
-    <value> </value>
+    <value>Prix Maximum</value>
   </data>
   <data name="MaxSurface" xml:space="preserve">
-    <value> </value>
+    <value>Surface Maximum</value>
   </data>
   <data name="MinRate" xml:space="preserve">
-    <value> </value>
+    <value>Prix Minimum</value>
   </data>
   <data name="MinSurface" xml:space="preserve">
-    <value> </value>
+    <value>Surface Minimum</value>
   </data>
   <data name="TypeAccess" xml:space="preserve">
-    <value> </value>
+    <value>Type de transport</value>
   </data>
   <data name="Bus" xml:space="preserve">
-    <value> </value>
+    <value>Bus</value>
   </data>
   <data name="Metro" xml:space="preserve">
-    <value> </value>
+    <value>Métro</value>
   </data>
   <data name="Train" xml:space="preserve">
-    <value> </value>
+    <value>Train</value>
   </data>
   <data name="Tram" xml:space="preserve">
-    <value> </value>
+    <value>Tram</value>
   </data>
 </root>

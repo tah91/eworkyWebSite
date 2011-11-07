@@ -118,165 +118,165 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlreadyRateThis" xml:space="preserve">
-    <value> </value>
+    <value>Il semble que vous ayez oublié d'attribuer une note !</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value> </value>
+    <value>Annuler</value>
   </data>
   <data name="CannotBeEmpty" xml:space="preserve">
-    <value> </value>
+    <value>La valeur ne peut pas être null ou vide.</value>
   </data>
   <data name="CheckCriterias" xml:space="preserve">
-    <value> </value>
+    <value>Veuillez verifier vos critères.</value>
   </data>
   <data name="CreateUsernameFail" xml:space="preserve">
-    <value> </value>
+    <value>La demande de création d'utilisateur a été annulée. Vérifiez votre entrée et réessayez. Si le problème persiste, contactez votre administrateur système.</value>
   </data>
   <data name="DuplicateName" xml:space="preserve">
-    <value> </value>
+    <value>Un lieu de travail avec le même nom et situé au même endroit existe déjà</value>
   </data>
   <data name="EmptyFileUpload" xml:space="preserve">
-    <value> </value>
+    <value>Empty file upload result</value>
   </data>
   <data name="ErrorWhenSave" xml:space="preserve">
-    <value> </value>
+    <value>Une erreur empeche la sauvegarde.</value>
   </data>
   <data name="FailWriteToDisk" xml:space="preserve">
-    <value> </value>
+    <value>Failed to write file to disk</value>
   </data>
   <data name="FileTooBig" xml:space="preserve">
-    <value> </value>
+    <value>File is too big</value>
   </data>
   <data name="FileTooSmall" xml:space="preserve">
-    <value> </value>
+    <value>File is too small</value>
   </data>
   <data name="GetBackPasswordMailNotValide" xml:space="preserve">
-    <value> </value>
+    <value>La réponse de récupération du mot de passe fournie n'est pas valide. Vérifiez la valeur et réessayez.</value>
   </data>
   <data name="GetBackPasswordQuestionNotValide" xml:space="preserve">
-    <value> </value>
+    <value>La question de récupération du mot de passe fournie n'est pas valide. Vérifiez la valeur et réessayez.</value>
   </data>
   <data name="GiveMinADate" xml:space="preserve">
-    <value> </value>
+    <value>Vous devez indiquer au minimum une offre.</value>
   </data>
   <data name="GivenPasswordNotValide" xml:space="preserve">
-    <value> </value>
+    <value>Le mot de passe fourni n'est pas valide. Entrez une valeur de mot de passe valide.</value>
   </data>
   <data name="InknowError" xml:space="preserve">
-    <value> </value>
+    <value>Une erreur inconnue s'est produite. Vérifiez votre entrée et réessayez. Si le problème persiste, contactez votre administrateur système.</value>
   </data>
   <data name="InvalidUser" xml:space="preserve">
-    <value> </value>
+    <value>Utilisateur non valide !</value>
   </data>
   <data name="MailDoNotMatch" xml:space="preserve">
-    <value> </value>
+    <value>L'adresse mail ne correspond à aucun utilisateur.</value>
   </data>
   <data name="MailHaveNotGoodPattern" xml:space="preserve">
-    <value> </value>
+    <value>L'adresse mail entrée n'est pas au bon format.</value>
   </data>
   <data name="MailNotValide" xml:space="preserve">
-    <value> </value>
+    <value>L'adresse de messagerie fournie n'est pas valide. Vérifiez la valeur et réessayez.</value>
   </data>
   <data name="MailOrPasswordNotCorrect" xml:space="preserve">
-    <value> </value>
+    <value>L'adresse de messagerie ou le mot de passe fourni est incorrect.</value>
   </data>
   <data name="MatchPassword" xml:space="preserve">
-    <value> </value>
+    <value>Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas.</value>
   </data>
   <data name="MaxFileSize" xml:space="preserve">
-    <value> </value>
+    <value>File exceeds MAX_FILE_SIZE (HTML form directive)</value>
   </data>
   <data name="MaxLength" xml:space="preserve">
-    <value> </value>
+    <value>Le champs "{0}" doit faire moins de {1} caractères.</value>
   </data>
   <data name="MinLength" xml:space="preserve">
-    <value> </value>
+    <value>Le champs "{0}" doit faire plus de {1} caractères.</value>
   </data>
   <data name="MinMaxLength" xml:space="preserve">
-    <value> </value>
+    <value>Le champs "{0}" doit faire entre {2} et {1} caractères.</value>
   </data>
   <data name="MustAgreeCGU" xml:space="preserve">
-    <value> </value>
+    <value>Vous devez accepter les Conditions Générales d'Utilisation pour vous inscrire sur eWorky.</value>
   </data>
   <data name="NoFileUploaded" xml:space="preserve">
-    <value> </value>
+    <value>No File was uploaded</value>
   </data>
   <data name="NoValideDate" xml:space="preserve">
-    <value> </value>
+    <value>Le champs {0} ne correspond pas à une date valide.</value>
   </data>
   <data name="NumberFileExceeded" xml:space="preserve">
-    <value> </value>
+    <value>Max number of files exceeded</value>
   </data>
   <data name="PartialUpload" xml:space="preserve">
-    <value> </value>
+    <value>File was only partially uploaded</value>
   </data>
   <data name="PasswordNotValide" xml:space="preserve">
-    <value> </value>
+    <value>Le mot de passe actuel est incorrect ou le nouveau mot de passe n'est pas valide.</value>
   </data>
   <data name="PatternEmail" xml:space="preserve">
-    <value> </value>
+    <value>Le champ "{0}" n'est pas au bon format.</value>
   </data>
   <data name="PictureTooBig" xml:space="preserve">
-    <value> </value>
+    <value>&lt;br/&gt;1 Mo max</value>
   </data>
   <data name="PictureTooMuch" xml:space="preserve">
-    <value> </value>
+    <value>&lt;br/&gt;Maximun&lt;br/&gt;Atteint</value>
   </data>
   <data name="PictureTooSmall" xml:space="preserve">
-    <value> </value>
+    <value>&lt;br/&gt;Trop petit</value>
   </data>
   <data name="PictureWrongExtention" xml:space="preserve">
-    <value> </value>
+    <value>&lt;br/&gt;Mauvaise&lt;br/&gt;extention</value>
   </data>
   <data name="PleaseSelectProfile" xml:space="preserve">
-    <value> </value>
+    <value>Vous devez sélectionner un profil.</value>
   </data>
   <data name="Range" xml:space="preserve">
-    <value> </value>
+    <value>Le champs "{0}" doit être compris entre {1} et {2}.</value>
   </data>
   <data name="Required" xml:space="preserve">
-    <value> </value>
+    <value>Le champ "{0}" est obligatoire.</value>
   </data>
   <data name="ReturnErrorTryAgain" xml:space="preserve">
-    <value> </value>
+    <value>Le fournisseur d'authentification a retourné une erreur. Vérifiez votre entrée et réessayez. Si le problème persiste, contactez votre administrateur système.</value>
   </data>
   <data name="SelectOne" xml:space="preserve">
-    <value> </value>
+    <value>Vous devez choisir une valeur pour le champs "{0}".</value>
   </data>
   <data name="Start" xml:space="preserve">
-    <value> </value>
+    <value>Démarrer</value>
   </data>
   <data name="TempFolderMissing" xml:space="preserve">
-    <value> </value>
+    <value>Missing a temporary folder</value>
   </data>
   <data name="TheTwoNotMatch" xml:space="preserve">
-    <value> </value>
+    <value>'{0}' et '{1}' ne correspondent pas.</value>
   </data>
   <data name="TypeNotAllowed" xml:space="preserve">
-    <value> </value>
+    <value>Filetype not allowed</value>
   </data>
   <data name="UploadedBytesExceedFileSize" xml:space="preserve">
-    <value> </value>
+    <value>Uploaded bytes exceed file size</value>
   </data>
   <data name="UploadMaxFileSize" xml:space="preserve">
-    <value> </value>
+    <value>File exceeds upload_max_filesize (php.ini directive)</value>
   </data>
   <data name="UploadStopExtension" xml:space="preserve">
-    <value> </value>
+    <value>File upload stopped by extension</value>
   </data>
   <data name="UsernameExist" xml:space="preserve">
-    <value> </value>
+    <value>Le nom d'utilisateur existe déjà. Entrez un nom d'utilisateur différent.</value>
   </data>
   <data name="UsernameExistForThisMail" xml:space="preserve">
-    <value> </value>
+    <value>Un nom d'utilisateur pour cette adresse de messagerie existe déjà. Entrez une adresse de messagerie différente.</value>
   </data>
   <data name="UsernameNotValide" xml:space="preserve">
-    <value> </value>
+    <value>Le nom d'utilisateur fourni n'est pas valide. Vérifiez la valeur et réessayez.</value>
   </data>
   <data name="VerificationLettersWrong" xml:space="preserve">
-    <value> </value>
+    <value>Les lettres vérification saisies sont incorrectes.</value>
   </data>
   <data name="WebsiteNotGoodPattern" xml:space="preserve">
-    <value> </value>
+    <value>L'adresse web entrée n'est pas au bon format.</value>
   </data>
 </root>
