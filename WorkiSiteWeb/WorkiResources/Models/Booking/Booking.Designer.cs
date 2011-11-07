@@ -70,7 +70,7 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to Adresse électronique.
         /// </summary>
         public static string Email {
             get {

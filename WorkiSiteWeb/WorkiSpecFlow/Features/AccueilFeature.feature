@@ -27,7 +27,7 @@ Scenario: Recherche Salon d'affaire
 		And Je tappe Paris dans la zone de recherche
 		And Je selectionne Salon d'affaire
 	When Je clique sur Rechercher
-	Then Il doit y avoir plus de 5 resultats
+	Then Il doit y avoir plus de 0 resultats
 
 @Accueil
 Scenario: Accueil a la une

@@ -97,6 +97,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pour effectuer une demande de réservation, remplissez les champs suivants..
+        /// </summary>
+        public static string BookSpeech {
+            get {
+                return ResourceManager.GetString("BookSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre demande de réservation a été correctement prise en compte..
         /// </summary>
         public static string Confirmed {
@@ -133,11 +142,29 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pour effectuer une demande de devis, remplissez les champs suivants..
+        /// </summary>
+        public static string QuotationSpeech {
+            get {
+                return ResourceManager.GetString("QuotationSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refuser.
         /// </summary>
         public static string RefuseIt {
             get {
                 return ResourceManager.GetString("RefuseIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous serez contacté dans les meilleurs délais par le gestionnaire de lieu..
+        /// </summary>
+        public static string Speech {
+            get {
+                return ResourceManager.GetString("Speech", resourceCulture);
             }
         }
     }

@@ -144,4 +144,13 @@
   <data name="Quotation" xml:space="preserve">
     <value>Demande de devis</value>
   </data>
+  <data name="BookSpeech" xml:space="preserve">
+    <value>Pour effectuer une demande de réservation, remplissez les champs suivants.</value>
+  </data>
+  <data name="QuotationSpeech" xml:space="preserve">
+    <value>Pour effectuer une demande de devis, remplissez les champs suivants.</value>
+  </data>
+  <data name="Speech" xml:space="preserve">
+    <value>Vous serez contacté dans les meilleurs délais par le gestionnaire de lieu.</value>
+  </data>
 </root>

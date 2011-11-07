@@ -515,22 +515,22 @@ namespace Worki.SpecFlow
         
         public TextField MonOpen
         {
-            get { return Document.TextField(Find.ById("Localisation_MonOpen")); }
+            get { return Document.TextField(Find.ById("Localisation_LocalisationData_MonOpenMorning")); }
         }
 
         public TextField MonClose
         {
-            get { return Document.TextField(Find.ById("Localisation_MonClose")); }
+            get { return Document.TextField(Find.ById("Localisation_LocalisationData_MonCloseAfter")); }
         }
 
         public TextField TueOpen
         {
-            get { return Document.TextField(Find.ById("Localisation_TueOpen")); }
+            get { return Document.TextField(Find.ById("Localisation_LocalisationData_TueOpenMorning")); }
         }
 
         public TextField TueClose
         {
-            get { return Document.TextField(Find.ById("Localisation_TueClose")); }
+            get { return Document.TextField(Find.ById("Localisation_LocalisationData_TueCloseAfter")); }
         }
 
         public TextField WedOpen

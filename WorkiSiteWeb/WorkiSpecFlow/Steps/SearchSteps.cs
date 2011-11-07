@@ -27,7 +27,7 @@ namespace Worki.SpecFlow
         }
 
         [Then(@"Il doit y avoir plus de (.*) resultats")]
-        public void ThenIlDoitYAvoirPlusDe200Resultats(int count)
+        public void ThenIlDoitYAvoirPlusDe0Resultats(int count)
         {
             var text = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )lieu"));
 
