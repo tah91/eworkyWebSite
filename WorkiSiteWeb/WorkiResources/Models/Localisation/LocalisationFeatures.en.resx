@@ -118,23 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AC" xml:space="preserve">
-    <value>Climatisation</value>
+    <value> </value>
     <comment>Features</comment>
   </data>
   <data name="Access24" xml:space="preserve">
-    <value>Accès 24/7</value>
+    <value> </value>
   </data>
   <data name="Accommodation" xml:space="preserve">
-    <value>Hébergement</value>
+    <value> </value>
   </data>
   <data name="Archiving" xml:space="preserve">
-    <value>Stockage / archivage</value>
+    <value> </value>
   </data>
   <data name="Audio" xml:space="preserve">
-    <value>Audioconférence</value>
+    <value> </value>
   </data>
   <data name="AvoidAfternoom" xml:space="preserve">
-    <value>Après-midi</value>
+    <value> </value>
   </data>
   <data name="AvoidEvening" xml:space="preserve">
     <value> </value>
@@ -344,13 +344,13 @@
     <value> </value>
   </data>
   <data name="AllOffers" xml:space="preserve">
-    <value>Sélectionnez une offre</value>
+    <value> </value>
   </data>
   <data name="AllInclusive" xml:space="preserve">
-    <value>Tout compris (charges, taxes, nettoyage, etc.)</value>
+    <value> </value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
-    <value>Disponibilité immédiate</value>
+    <value> </value>
   </data>
   <data name="CoffeePrice" xml:space="preserve">
     <value> </value>

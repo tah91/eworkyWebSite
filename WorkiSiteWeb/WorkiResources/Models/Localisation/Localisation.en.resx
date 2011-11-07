@@ -352,4 +352,7 @@
   <data name="WedOpenMorning" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

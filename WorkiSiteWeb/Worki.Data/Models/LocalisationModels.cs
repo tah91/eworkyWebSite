@@ -655,6 +655,7 @@ namespace Worki.Data.Models
 		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string WebSite { get; set; }
 
+        [Display(Name = "Description", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Description { get; set; }
 
