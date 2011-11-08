@@ -28,6 +28,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisArriverSurMonProfil()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText("Ambiance de travail recherchée"));
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -63,6 +64,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisAvoirLesModificationsFaites()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText(myStatiqueRand));
+            WebBrowser.Current.Close();
         }
 
         #endregion

@@ -48,9 +48,3 @@ Scenario: Ajout de lieu deja present
 		And Je remplis lieux deja rentré
 	When Je clique sur Envoyer
 	Then Il doit y avoir des messages d'erreur
-
-@Ajout
-Scenario: Ajout de lieu et geolocalisation
-	Given Je vais dans la page d'ajout
-	When Je remplis lieux valide
-	Then La position initial doit avoir changée

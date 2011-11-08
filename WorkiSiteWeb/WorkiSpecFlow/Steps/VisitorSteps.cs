@@ -30,6 +30,7 @@ namespace Worki.SpecFlow
         public void ThenIlDoitYAvoirDesMessagesDErreur()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText("Une erreur a été rencontrée"));
+            WebBrowser.Current.Close();
         }
 
         #endregion 
@@ -63,6 +64,7 @@ namespace Worki.SpecFlow
         {
             var currentURL = WebBrowser.Current.Url;
             Assert.AreEqual(currentURL, WebBrowser.RootURL + "accueil/Index");
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -80,12 +82,14 @@ namespace Worki.SpecFlow
         {
             var currentURL = WebBrowser.Current.Url;
             Assert.AreEqual(currentURL, WebBrowser.RootURL + "compte/reset-mdp");
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Je dois avoir le message envoie du nouveau mot de passe")]
         public void ThenJeDoisAvoirLeMessageEnvoieDuNouveauMotDePasse()
         {
             Assert.IsTrue( WebBrowser.Current.ContainsText("vos identifiants vous seront envoyés."));
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -112,12 +116,14 @@ namespace Worki.SpecFlow
         public void ThenJeDoisArriverSurDemandeReussi()
         {
             Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "Visitor/demande-reussie");
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Le bon texte de demande inscription réussi doit être présent")]
         public void ThenLeBonTexteDeDemandeInscriptionReussiDoitEtrePresent()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText("demande a été envoyée"));
+            WebBrowser.Current.Close();
         }
 
         #endregion

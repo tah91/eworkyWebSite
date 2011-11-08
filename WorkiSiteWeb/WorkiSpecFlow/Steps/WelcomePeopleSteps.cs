@@ -42,6 +42,7 @@ namespace Worki.SpecFlow
             Assert.IsTrue(WebBrowser.Current.ContainsText("mika7869@gmail.com"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Le Bistrot Marguerite"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Ceci est un test ..."));
+            WebBrowser.Current.Close();
         }
         #endregion
 
@@ -71,6 +72,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisRetrouverCeQueJAiModifie()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText("L'entrepreneur star a été édité."));
+            WebBrowser.Current.Close();
         }
 
         #endregion

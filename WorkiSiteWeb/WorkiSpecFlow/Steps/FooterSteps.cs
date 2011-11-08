@@ -16,6 +16,7 @@ namespace Worki.SpecFlow
         public void FindText(string TextPresent)
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText(TextPresent));
+            WebBrowser.Current.Close();
         }
 
         #region Test Mentions Légale
@@ -23,7 +24,6 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page mention légal")]
         public void WhenJeVaisDansLaPageMentionLegal()
         {
-            // WebBrowser.Current.Link(Find.ByText("Mentions légales")).Click();
             WebBrowser.Current.Page<AccueilPage>().Lien_MentionLegal.Click();
         }
 
@@ -40,7 +40,6 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page de jobs")]
         public void WhenJeVaisDansLaPageDeJobs()
         {
-            // WebBrowser.Current.Link(Find.ByText("Jobs")).Click();
             WebBrowser.Current.Page<AccueilPage>().Lien_Jobs.Click();
         }
 
@@ -116,6 +115,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisAvoirLaPageQuiSommesNous()
         {
             Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/a-propos");
+            WebBrowser.Current.Close();
         }
 
         #endregion

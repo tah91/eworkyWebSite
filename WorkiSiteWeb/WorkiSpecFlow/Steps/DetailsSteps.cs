@@ -56,12 +56,14 @@ namespace Worki.SpecFlow
         public void ThenJeDoisRetrouverLaNote()
         {
             ScenarioContext.Current.Pending();
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Je dois retrouver le commentaire")]
         public void ThenJeDoisRetrouverLeCommentaire()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText(myStatiqueRand));
+            WebBrowser.Current.Close();
         }
 
         #endregion

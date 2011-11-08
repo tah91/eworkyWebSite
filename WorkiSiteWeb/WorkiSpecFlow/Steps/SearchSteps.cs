@@ -45,7 +45,8 @@ namespace Worki.SpecFlow
                 {
                 }
             }
-            Assert.That(val, Is.GreaterThan(count));
+            Assert.That(val, Is.GreaterThanOrEqualTo(count));
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -70,6 +71,7 @@ namespace Worki.SpecFlow
         public void GivenJeVaisDansLaPageRecherche()
         {
             WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/recherche");
+            WebBrowser.Current.AutoClose = true;
         }
 
         [When(@"Je clique sur rechercher")]
@@ -89,7 +91,8 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Etudiant")]
         public void ThenJeDoisAvoirLaDescriptionEtudiant()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("Vous êtes étudiant"));
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Etudiant");
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -105,7 +108,8 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Entrepreneur")]
         public void ThenJeDoisAvoirLaDescriptionEntrepreneur()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("Vous êtes entrepreneur"));
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Entrepreneur");
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -121,7 +125,8 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description GrandCompte")]
         public void ThenJeDoisAvoirLaDescriptionGrandCompte()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("grand groupe"));
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Grand compte");
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -137,7 +142,8 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Indépendant")]
         public void ThenJeDoisAvoirLaDescriptionIndependant()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("profession libérale"));
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Indépendant");
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -153,7 +159,8 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Nomade")]
         public void ThenJeDoisAvoirLaDescriptionNomade()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("Vous êtes souvent en déplacement"));
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Nomade");
+            WebBrowser.Current.Close();
         }
         #endregion
 
@@ -168,7 +175,8 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Teletravailleur")]
         public void ThenJeDoisAvoirLaDescriptionTeletravailleur()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("Vous êtes télétravailleur"));
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Télétravailleur");
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -176,6 +184,11 @@ namespace Worki.SpecFlow
 
     public class SearchPage : Page
     {
+        public Div Search_Title
+        {
+            get { return Document.Div(Find.BySelector("div[class*='titleDiv']")); }
+        }
+
         public Link Type_Lieu
         {
             get { return Document.Link(Find.ByText("Rechercher par type de lieu")); }
@@ -258,7 +271,7 @@ namespace Worki.SpecFlow
 
         public CheckBox CheckBox_OutletGeneral
         {
-            get { return Document.CheckBox(Find.ById("Outlet-General")); }
+            get { return Document.CheckBox(Find.ById("f_Outlet")); }
         }
 
         public CheckBox CheckBox_FastInternet
@@ -308,7 +321,7 @@ namespace Worki.SpecFlow
 
         public TextField Equipment_Resto
         {
-            get { return Document.TextField(Find.ById("Restauration-General")); }
+            get { return Document.TextField(Find.ById("f_Restauration")); }
         }
 
         public TextField Equipment_Cafe

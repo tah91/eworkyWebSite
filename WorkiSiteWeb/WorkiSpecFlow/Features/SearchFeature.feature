@@ -18,7 +18,7 @@ Scenario: Recherche Detailer
 		And Je coche l'equipement restaurant
 		And Je selectionne Salon d'affaire
 	When Je clique sur rechercher
-	Then Il doit y avoir plus de 1 resultats
+	Then Il doit y avoir plus de 0 resultats
 	
 @search
 Scenario: Description Etudiant

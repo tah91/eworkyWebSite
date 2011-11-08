@@ -100,6 +100,7 @@ namespace Worki.SpecFlow
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 2"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 5"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 6"));
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Je dois avoir le texte des checkbox")]
@@ -108,6 +109,7 @@ namespace Worki.SpecFlow
             Assert.IsTrue(WebBrowser.Current.ContainsText("Poste(s) de travail professionnels"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Domiciliation"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Scène"));
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Je dois avoir le détail de l'acces")]
@@ -116,12 +118,14 @@ namespace Worki.SpecFlow
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 10"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 12"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Test 11"));
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Je dois avoir le détail des horaires")]
         public void ThenJeDoisAvoirLeDetailDesHoraires()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText("8h00 à 18h00"));
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -149,12 +153,14 @@ namespace Worki.SpecFlow
             Assert.IsTrue(WebBrowser.Current.ContainsText("Service de boissons"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("De 1 à 4 personnes"));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Salle(s) de téléprésence"));
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Je dois avoir le détail des horaires 2")]
         public void ThenJeDoisAvoirLeDetailDesHoraires2()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText("Accès 24/7"));
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -169,28 +175,6 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("testnepaseffacer");
             WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("testnepaseffacer");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("testnepaseffacer");
-        }
-
-        #endregion
-
-        #region Ajout de lieu et geolocalisation
-
-        [When(@"Je remplis lieux valide")]
-        public void WhenJeRemplisLieuxValide()
-        {
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("rue jean jaurès");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Villefuif");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("94800");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
-        }
-
-        [Then(@"La position initial doit avoir changée")]
-        public void ThenLaPositionInitialDoitAvoirChangée()
-        {
-            var lat = WebBrowser.Current.Page<AjoutPage>().Latitude.GetAttributeValue("value");
-            var lon = WebBrowser.Current.Page<AjoutPage>().Longitude.GetAttributeValue("value");
-            Assert.IsFalse(double.Parse(lat).Equals(0));
-            Assert.IsFalse(double.Parse(lon).Equals(0));
         }
 
         #endregion

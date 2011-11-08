@@ -30,6 +30,7 @@ namespace Worki.SpecFlow
             public void ThenJeDoisArriverSurLaPageDeRecherche()
             {
                 Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "lieu-de-travail/recherche");
+                WebBrowser.Current.Close();
             }
 
         #endregion
@@ -47,6 +48,7 @@ namespace Worki.SpecFlow
             public void ThenJeDoisArriverSurLaPageDeAjout()
             {
                 Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/ajouter-espace");
+                WebBrowser.Current.Close();
             }
 
         #endregion
@@ -66,7 +68,6 @@ namespace Worki.SpecFlow
             [When(@"Je clique sur Rechercher")]
             public void WhenJeCliqueSurRechercher()
             {
-                // WebBrowser.Current.Button("btn_searchIndex").Click();
                 WebBrowser.Current.Page<AccueilPage>().Bouton_Recherche.Click();
             }
 
@@ -77,7 +78,6 @@ namespace Worki.SpecFlow
             [Given(@"Je selectionne Salon d'affaire")]
             public void GivenJeSelectionneSalonDAffaire()
             {
-                // WebBrowser.Current.SelectList("Criteria_LocalisationOffer").Option(Find.ByValue("1")).Select();
                 WebBrowser.Current.Page<AccueilPage>().Espace((int)LocalisationOffer.BuisnessLounge);
             }
 
@@ -89,6 +89,7 @@ namespace Worki.SpecFlow
             public void ThenJeDoisAvoirALaUne()
             {
                 WebBrowser.Current.Div("mycarousel");
+                WebBrowser.Current.Close();
             }
 
         #endregion

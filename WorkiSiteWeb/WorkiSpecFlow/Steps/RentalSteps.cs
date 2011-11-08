@@ -34,6 +34,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisArriverSurLaPageDeRechercheLocation()
         {
             Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "Rental/recherche");
+            WebBrowser.Current.Close();
         }
 
         [When(@"Je clique sur Rechercher location")]
@@ -46,7 +47,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisArriverSurLaPageDeResultatLocation()
         {
             var url = WebBrowser.Current.Url.Split('?');
-            Assert.AreEqual(url[0], WebBrowser.RootURL + "Rental/resultats-annonces");
+            Assert.AreEqual(url[0], WebBrowser.RootURL + "annonces/resultats-annonces");
         }
 
         [When(@"Je remplis des champs")]
@@ -59,7 +60,40 @@ namespace Worki.SpecFlow
         [Then(@"Tous les résultats doivent respecter les critères")]
         public void ThenTousLesResultatsDoiventRespecterLesCriteres()
         {
-            ScenarioContext.Current.Pending();
+            var text_euro = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )€ cc"));
+            var text_surface = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )m²"));
+
+            var euro_tab = text_euro.Split(' ');
+            var surface_tab = text_surface.Split(' ');
+            var test_euro = 0;
+            foreach (var euro in euro_tab)
+            {
+                try
+                {
+                    test_euro = Convert.ToInt32(euro);
+                    if (test_euro > 0)
+                        break;
+                }
+                catch
+                {
+                }
+            }
+            var test_surface = 0;
+            foreach (var surface in surface_tab)
+            {
+                try
+                {
+                    test_surface = Convert.ToInt32(surface);
+                    if (test_surface > 0)
+                        break;
+                }
+                catch
+                {
+                }
+            }
+            Assert.That(test_euro, Is.LessThanOrEqualTo(3000));
+            Assert.That(test_surface, Is.GreaterThanOrEqualTo(10));
+            WebBrowser.Current.Close();
         }
 
         [When(@"Je remplis le champs location avec (.*)")]
@@ -71,13 +105,31 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir au moins (.*) pages de résultat")]
         public void ThenJeDoisAvoirAuMoins2PagesDeResultat(int nb_page)
         {
-            ScenarioContext.Current.Pending();
+            var text = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )lieu"));
+
+            var tab = text.Split(' ');
+            var count = 0;
+            foreach (var test in tab)
+            {
+                try
+                {
+                    count = Convert.ToInt32(test);
+                    if (count > 0)
+                        break;
+                }
+                catch
+                {
+                }
+            }
+            Assert.That(count, Is.GreaterThanOrEqualTo(3));
+            WebBrowser.Current.Close();
         }
 
         [Then(@"Je dois arriver sur la page d'erreur")]
         public void ThenJeDoisArriverSurLaPageDErreur()
         {
             Assert.IsTrue(WebBrowser.Current.ContainsText("Une erreur a été rencontrée"));
+            WebBrowser.Current.Close();
         }
     }
 

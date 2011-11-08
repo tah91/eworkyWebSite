@@ -178,25 +178,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Ajout de lieu et geolocalisation")]
-        [NUnit.Framework.CategoryAttribute("Ajout")]
-        public virtual void AjoutDeLieuEtGeolocalisation()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ajout de lieu et geolocalisation", new string[] {
-                        "Ajout"});
-#line 53
-this.ScenarioSetup(scenarioInfo);
-#line 54
- testRunner.Given("Je vais dans la page d\'ajout");
-#line 55
- testRunner.When("Je remplis lieux valide");
-#line 56
- testRunner.Then("La position initial doit avoir changée");
-#line hidden
-            testRunner.CollectScenarioErrors();
-        }
     }
 }
 #endregion
