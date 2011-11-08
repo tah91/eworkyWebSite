@@ -356,6 +356,31 @@ namespace Worki.Web.Controllers
 			return Redirect(returnUrl);
 		}
 
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		public virtual ActionResult SetOwnership(int id, bool sendMail = true)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
+			try
+			{
+				var memberId = WebHelper.GetIdentityId(User.Identity);
+				localisation.OwnerID = memberId;
+				context.Commit();
+				if (sendMail)
+				{
+					//send mail to member
+				}
+				//set tempdata to "Vous êtes désormais propriétaire de ce lieu"
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("SetOwnership", ex);
+			}
+			return Redirect(localisation.GetDetailFullUrl(Url));
+		}
+
 		#region Search
 
 		/// <summary>

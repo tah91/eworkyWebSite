@@ -1518,6 +1518,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SetOwnership() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SetOwnership);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
         }
@@ -1573,6 +1578,7 @@ namespace Worki.Web.Controllers {
             public readonly string Delete = "supprimer";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
+            public readonly string SetOwnership = "SetOwnership";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string SearchForm = "SearchForm";
@@ -1688,6 +1694,13 @@ namespace Worki.Web.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("commentId", commentId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SetOwnership(int id, bool sendMail) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SetOwnership);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("sendMail", sendMail);
             return callInfo;
         }
 
