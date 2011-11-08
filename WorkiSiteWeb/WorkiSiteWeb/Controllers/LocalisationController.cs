@@ -545,7 +545,7 @@ namespace Worki.Web.Controllers
             var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var original = lRepo.Get(id);
-            var suggestions = lRepo.GetMany(item => (item.ID != id) && (item.TypeValue == original.TypeValue) && (item.PostalCode == original.PostalCode)).Take(10).OrderBy(x => x.Name);
+            var suggestions = lRepo.GetMany(item => (item.ID != id) && (item.TypeValue == original.TypeValue) && (item.PostalCode == original.PostalCode)).Take(5).OrderBy(x => x.Name);
 
 			return PartialView(MVC.Localisation.Views._Suggestions, suggestions);
         }
