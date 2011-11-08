@@ -146,6 +146,7 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var admin = mRepo.GetMember(MiscHelpers.AdminConstants.AdminMail);
 			try
 			{
 				var member = mRepo.GetMember(User.Identity.Name);
@@ -163,7 +164,7 @@ namespace Worki.Web.Controllers
 					{
 						//update
 						UpdateModel(localisationToAdd, LocalisationPrefix);
-						localisationToAdd.OwnerID = member.MemberId;
+                        localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : admin.MemberId);
 						//validate
 						_SearchService.ValidateLocalisation(localisationToAdd, ref error);
 						//save
@@ -180,6 +181,7 @@ namespace Worki.Web.Controllers
 						}
 						var loc = lRepo.Get(id.Value);
 						UpdateModel(loc, LocalisationPrefix);
+                        localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
 						loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
 					}
 					TempData.Remove(PictureData.PictureDataString);
@@ -357,7 +359,8 @@ namespace Worki.Web.Controllers
 		}
 
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual ActionResult SetOwnership(int id, bool sendMail = true)
+        [ActionName("devenir-proprietaire")]
+		public virtual ActionResult SetOwnership(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
@@ -365,13 +368,11 @@ namespace Worki.Web.Controllers
 			try
 			{
 				var memberId = WebHelper.GetIdentityId(User.Identity);
-				localisation.OwnerID = memberId;
+                localisation.SetOwner(memberId);
 				context.Commit();
-				if (sendMail)
-				{
-					//send mail to member
-				}
-				//set tempdata to "Vous êtes désormais propriétaire de ce lieu"
+				//send mail to member
+
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.YouAreOwner;
 			}
 			catch (Exception ex)
 			{

@@ -34,7 +34,7 @@ namespace Worki.Data.Models
 
 		public Member GetMember(string key)
 		{
-			Member member = _Context.Members.SingleOrDefault(m => m.Username == key);
+            Member member = _Context.Members.SingleOrDefault(m => string.Compare(m.Email, key, StringComparison.InvariantCultureIgnoreCase) == 0);
 
 			return member;
 		}
@@ -77,11 +77,11 @@ namespace Worki.Data.Models
             Member member = _Context.Members.SingleOrDefault(m => m.MemberId == id);
             if (member == null)
                 return;
-            var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminConstants.AdminUser);
+            var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminConstants.AdminMail);
             //set member localisation to admin
             foreach (var item in member.Localisations.ToList())
             {
-                item.OwnerID = admin.MemberId;
+                item.SetOwner(admin.MemberId);
             }
             //set member comment to admin
             foreach (var item in member.Comments.ToList())

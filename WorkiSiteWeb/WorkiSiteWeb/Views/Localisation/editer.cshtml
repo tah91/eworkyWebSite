@@ -24,16 +24,19 @@
                         <h3 class="blue inline">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3>
                         <span>&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
                         <table class="generalInfosTable editionTable">
+                            @if (!Model.Localisation.HasOwner())
+                            { 
                             <tr>
                                 <td>
                                 </td>
                                 <td>
                                     <div class="editor-label localisationOwnerField">
-                                        @Html.FeatureCheckBox(Feature.LocalisationOwner, Model.Localisation)
-                                        @Html.FeatureLabelFor(Feature.LocalisationOwner, Model.Localisation)
+                                        @Html.CheckBoxFor(m => m.IsOwner)
+						                @Html.LabelFor(Worki.Resources.Models.Localisation.LocalisationFeatures.LocalisationOwner, "IsOwner")
                                     </div>
                                 </td>
                             </tr>
+                            }
 							@if (!Model.IsFreeLocalisation)
 							{
                             <tr>

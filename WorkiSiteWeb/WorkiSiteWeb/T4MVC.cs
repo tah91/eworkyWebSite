@@ -1578,7 +1578,7 @@ namespace Worki.Web.Controllers {
             public readonly string Delete = "supprimer";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
-            public readonly string SetOwnership = "SetOwnership";
+            public readonly string SetOwnership = "devenir-proprietaire";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string SearchForm = "SearchForm";
@@ -1697,10 +1697,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult SetOwnership(int id, bool sendMail) {
+        public override System.Web.Mvc.ActionResult SetOwnership(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SetOwnership);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("sendMail", sendMail);
             return callInfo;
         }
 

@@ -97,6 +97,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous êtes le gérant de ce lieu ?.
+        /// </summary>
+        public static string AreYouOwner {
+            get {
+                return ResourceManager.GetString("AreYouOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réserver.
         /// </summary>
         public static string BookIt {
@@ -372,6 +381,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string WorkplaceWellDeleted {
             get {
                 return ResourceManager.GetString("WorkplaceWellDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous êtes désormais gérant de ce lieu !.
+        /// </summary>
+        public static string YouAreOwner {
+            get {
+                return ResourceManager.GetString("YouAreOwner", resourceCulture);
             }
         }
         

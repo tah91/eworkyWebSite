@@ -155,6 +155,10 @@
 			{
 				<a href="@WebHelper.GetTwitter(Model.Twitter)"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
             }
+            if (!Model.HasOwner())
+			{
+				@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID))
+            }
         }
   else
   {
