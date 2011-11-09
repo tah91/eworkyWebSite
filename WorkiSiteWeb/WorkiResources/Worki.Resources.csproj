@@ -270,33 +270,41 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Email\Activation.en.resx" />
     <EmbeddedResource Include="Email\Activation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Activation.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Email\BookingString.en.resx" />
     <EmbeddedResource Include="Email\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Email\Common.en.resx" />
     <EmbeddedResource Include="Email\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Email\FacebookRegistration.en.resx" />
     <EmbeddedResource Include="Email\FacebookRegistration.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FacebookRegistration.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Email\ResetPassword.en.resx" />
     <EmbeddedResource Include="Email\ResetPassword.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPassword.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Account\AccountModels.en.resx" />
     <EmbeddedResource Include="Models\Account\AccountModels.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountModels.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Booking\Booking.en.resx" />
+    <EmbeddedResource Include="Models\Contact\Contact.en.resx" />
     <EmbeddedResource Include="Models\Contact\Contact.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Contact.Designer.cs</LastGenOutput>
@@ -307,11 +315,16 @@
       <LastGenOutput>Booking.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Localisation\Localisation.en.resx" />
+    <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.en.resx" />
+    <EmbeddedResource Include="Models\Offer\Offer.en.resx" />
     <EmbeddedResource Include="Models\Offer\Offer.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Offer.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Profile\Profile.en.resx" />
+    <EmbeddedResource Include="Models\Rental\Rental.en.resx" />
     <EmbeddedResource Include="Models\Rental\Rental.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Rental.Designer.cs</LastGenOutput>
@@ -332,42 +345,62 @@
       <LastGenOutput>Profile.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Search\SearchCriteria.en.resx" />
     <EmbeddedResource Include="Models\Search\SearchCriteria.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SearchCriteria.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Validation\ValidationString.en.resx" />
     <EmbeddedResource Include="Validation\ValidationString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ValidationString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\AccountString.en.resx" />
     <EmbeddedResource Include="Views\Account\AccountString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ConnexionString.en.resx" />
     <EmbeddedResource Include="Views\Account\ConnexionString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ConnexionString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\InscriptionString.en.resx" />
     <EmbeddedResource Include="Views\Account\InscriptionString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>InscriptionString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ResetMdpString.en.resx" />
     <EmbeddedResource Include="Views\Account\ResetMdpString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetMdpString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\AdminString.en.resx" />
     <EmbeddedResource Include="Views\Admin\AdminString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Booking\BookingString.en.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
+    <EmbeddedResource Include="Views\Home\CguString.en.resx" />
+    <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
+    <EmbeddedResource Include="Views\Home\FaqString.en.resx" />
+    <EmbeddedResource Include="Views\Home\HomeString.en.resx" />
+    <EmbeddedResource Include="Views\Home\JobString.en.resx" />
+    <EmbeddedResource Include="Views\Home\MentionLegaleString.en.resx" />
+    <EmbeddedResource Include="Views\Home\PresseString.en.resx" />
+    <EmbeddedResource Include="Views\Localisation\LocalisationFormString.en.resx" />
+    <EmbeddedResource Include="Views\Localisation\LocalisationString.en.resx" />
+    <EmbeddedResource Include="Views\Mobile\MobileString.en.resx" />
+    <EmbeddedResource Include="Views\Offer\OfferString.en.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OfferString.Designer.cs</LastGenOutput>
@@ -377,6 +410,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MobileString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\ProfileString.en.resx" />
+    <EmbeddedResource Include="Views\Rental\RentalString.en.resx" />
     <EmbeddedResource Include="Views\Rental\RentalString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RentalString.Designer.cs</LastGenOutput>
@@ -431,16 +466,19 @@
       <LastGenOutput>ProfileString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Search\SearchString.en.resx" />
     <EmbeddedResource Include="Views\Search\SearchString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SearchString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\SharedString.en.resx" />
     <EmbeddedResource Include="Views\Shared\SharedString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Visitor\VisitorString.en.resx" />
     <EmbeddedResource Include="Views\Visitor\VisitorString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>VisitorString.Designer.cs</LastGenOutput>

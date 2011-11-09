@@ -371,21 +371,21 @@ namespace Worki.Web
                 }
 
                 //create admin
-                var user = mRepo.Get(m => m.Username == MiscHelpers.AdminConstants.AdminUser);
+                var user = mRepo.GetMember(MiscHelpers.AdminConstants.AdminMail);
 
                 //create admin
                 if (user == null)
                 {
                     MembershipCreateStatus status;
-                    Membership.Provider.CreateUser(MiscHelpers.AdminConstants.AdminUser, MiscHelpers.AdminConstants.AdminPass, MiscHelpers.AdminConstants.AdminMail, null, null, true, null, out status);
-                    //add role
-                    if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminUser, MiscHelpers.AdminConstants.AdminRole))
-                        Roles.AddUserToRole(MiscHelpers.AdminConstants.AdminUser, MiscHelpers.AdminConstants.AdminRole);
+                    Membership.Provider.CreateUser(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.AdminConstants.AdminPass, MiscHelpers.AdminConstants.AdminMail, null, null, true, null, out status);
                 }
+                //add role
+                if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.AdminConstants.AdminRole))
+                    Roles.AddUserToRole(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.AdminConstants.AdminRole);
                 //add member data
                 if (user.MemberMainData == null)
                 {
-                    user.MemberMainData = new MemberMainData { FirstName = MiscHelpers.AdminConstants.AdminUser, LastName = MiscHelpers.AdminConstants.AdminUser, Civility = (int)CivilityType.Mr };
+                    user.MemberMainData = new MemberMainData { FirstName = MiscHelpers.AdminConstants.AdminMail, LastName = MiscHelpers.AdminConstants.AdminMail, Civility = (int)CivilityType.Mr };
                 }
                 context.Commit();
             }

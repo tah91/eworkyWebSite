@@ -893,7 +893,6 @@ namespace Worki.Web.Controllers {
             public readonly string EditPress = "EditPress";
             public readonly string DeletePress = "supprimer-press";
             public readonly string IndexRental = "IndexRental";
-            public readonly string SendListLocMail = "envoyer-listlocmail";
         }
 
 
@@ -1112,11 +1111,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult IndexRental(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
             callInfo.RouteValueDictionary.Add("page", page);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult SendListLocMail() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendListLocMail);
             return callInfo;
         }
 
@@ -1518,6 +1512,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SetOwnership() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SetOwnership);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
         }
@@ -1573,6 +1572,7 @@ namespace Worki.Web.Controllers {
             public readonly string Delete = "supprimer";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
+            public readonly string SetOwnership = "devenir-proprietaire";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string SearchForm = "SearchForm";
@@ -1688,6 +1688,12 @@ namespace Worki.Web.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("commentId", commentId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SetOwnership(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SetOwnership);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

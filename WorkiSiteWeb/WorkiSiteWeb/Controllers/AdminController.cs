@@ -109,7 +109,7 @@ namespace Worki.Web.Controllers
 								var member = mRepo.GetMember(item);
 								if (member == null)
 									throw new Exception();
-								loc.OwnerID = member.MemberId;
+                                loc.SetOwner(member.MemberId);
 							}
 						}
 						//case row is checked
@@ -715,7 +715,7 @@ namespace Worki.Web.Controllers
 
 							// Description in English : localisationToAdd.DescriptionEnglish = infosLocalisation[11]; ??
 							var member = mRepo.GetMember(infosLocalisation[0]);
-							localisationToAdd.OwnerID = member.MemberId;
+                            localisationToAdd.SetOwner(member.MemberId);
 
 							if (infosLocalisation[12].Trim().ToLower() == featureTrueIndicator.ToLower())
 								localisationToAdd.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.VisioRoom, OfferID = (int)FeatureType.VisioRoom });
@@ -1032,46 +1032,6 @@ namespace Worki.Web.Controllers
         }
 
         #endregion
-
-        [ActionName("envoyer-listlocmail")]
-        public virtual ActionResult SendListLocMail()
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var member = mRepo.GetMember(User.Identity.Name);
-
-            if (member.IsValidUser())
-            {
-                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-                var Loc = lRepo.GetAll();
-
-				dynamic Mail = new Email(MiscHelpers.EmailConstants.ListLocMailView);
-                var count = 0;
-
-                foreach (var item in Loc)
-                {
-                    if (count > 0)
-                        break;
-                    else
-                    {
-						Mail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        Mail.To = "mika7869@gmail.com";
-                        // Mail.To = item.Mail;
-                        Mail.Subject = string.Format(Worki.Resources.Email.Common.Info, item.Name);
-						Mail.Type = Localisation.GetLocalisationType(item.TypeValue).ToLower();
-                        Mail.Link = item.GetDetailFullUrl(Url);
-                    }
-                    count++;
-                }
-                
-                Mail.Send();
-            }
-
-            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.ListLocSent;
-
-            return RedirectToAction(MVC.Admin.Index());
-        }
-
 
         #region Migration
 

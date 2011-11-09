@@ -55,7 +55,6 @@ namespace Worki.Infrastructure.Helpers
 		public static class AdminConstants
 		{
 			public const string AdminRole = "AdminRole";
-			public const string AdminUser = "Admin";
 			public const string AdminPass = "Admin_Pass";
 			public const string AdminMail = "admin@eworky.com";
 			public const string DummyPassword = "000000";

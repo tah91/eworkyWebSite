@@ -603,6 +603,25 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        /// <summary>
+        /// tell if the localisation has an owner
+        /// </summary>
+        /// <returns>true of has owner</returns>
+        public bool HasOwner()
+        {
+            return Member != null && Member.Username != MiscHelpers.AdminConstants.AdminMail;
+        }
+
+        /// <summary>
+        /// set ownership to on member
+        /// </summary>
+        /// <param name="ownerid">Ownerid</param>
+        public void SetOwner(int ownerid)
+        {
+            if (ownerid != -1)
+                OwnerID = ownerid;
+        }
     }
 
 	[Bind(Exclude = "Id,OwnerId")]
@@ -655,6 +674,7 @@ namespace Worki.Data.Models
 		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string WebSite { get; set; }
 
+        [Display(Name = "Description", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Description { get; set; }
 
@@ -697,6 +717,7 @@ namespace Worki.Data.Models
 		public Localisation Localisation { get; private set; }
 		public SelectList Types { get; private set; }
 		public bool IsFreeLocalisation { get; set; }
+        public bool IsOwner { get; set; }
 		public int NewOfferType { get; set; }
 		public SelectList Offers { get; set; }
 

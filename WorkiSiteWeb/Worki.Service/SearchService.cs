@@ -134,8 +134,9 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, "lieu", ref value))
                 criteria.Place = value;
 
-            if (MiscHelpers.GetRequestValue(parameters, "order", ref value))
-                criteria.OrderBy = (eOrderBy)int.Parse(value);
+            int intVal;
+            if (MiscHelpers.GetRequestValue(parameters, "order", ref value) && int.TryParse(value, out intVal))
+                criteria.OrderBy = (eOrderBy)intVal;
 
 			if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
 			{
@@ -145,8 +146,8 @@ namespace Worki.Service
 				criteria.LocalisationData.Longitude = lng;
 			}
 
-            if (MiscHelpers.GetRequestValue(parameters, "offer-type", ref value))
-                criteria.OfferData.Type = int.Parse(value, CultureInfo.InvariantCulture);
+            if (MiscHelpers.GetRequestValue(parameters, "offer-type", ref value) && int.TryParse(value, out intVal))
+                criteria.OfferData.Type = intVal;
 
             if (MiscHelpers.GetRequestValue(parameters, "tout", ref value) && string.Compare(value, Boolean.TrueString, true) == 0)
                 criteria.Everything = true;
