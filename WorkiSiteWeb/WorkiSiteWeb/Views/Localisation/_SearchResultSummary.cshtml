@@ -5,7 +5,7 @@
 		var rvd = WebHelper.GetRVD(this);
         rvd["index"] = Model.Index;
         ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
-        var linkColor = !Model.Localisation.Bookable ? "blue" : "orange";
+        var linkColor = "blue";
     }
     <div class="resultItemGallery picBack borderRadius float-left">
     @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))

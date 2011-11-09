@@ -212,6 +212,14 @@
       <Project>{74AF8585-C459-41E3-A598-E7A170909D51}</Project>
       <Name>Worki.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Worki.Infrastructure\Worki.Infrastructure.csproj">
+      <Project>{67ED0D23-AE7B-4488-A180-EB85A2584423}</Project>
+      <Name>Worki.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkiResources\Worki.Resources.csproj">
+      <Project>{54441744-36D7-4CD6-A5B3-372A217841B0}</Project>
+      <Name>Worki.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
