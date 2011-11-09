@@ -610,7 +610,7 @@ namespace Worki.Data.Models
         /// <returns>true of has owner</returns>
         public bool HasOwner()
         {
-            return Member.Username != MiscHelpers.AdminConstants.AdminMail;
+            return Member != null && Member.Username != MiscHelpers.AdminConstants.AdminMail;
         }
 
         /// <summary>

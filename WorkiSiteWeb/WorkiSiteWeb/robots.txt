@@ -3,6 +3,12 @@ Disallow: /profil/RemoveFromFavorite
 Disallow: /profil/AjaxDashboard
 Disallow: /profil/AddToFavorite
 Disallow: /lieu-de-travail/PostComment/
+Disallow: /lieu-de-travail/resultat-liste/
+Disallow: /lieu-de-travail/resultat-liste?
+Disallow: /lieu-de-travail/resultat-detail/
+Disallow: /lieu-de-travail/resultat-detail?
+Disallow: /api/
+Disallow: /api?
 
 Allow: /
 
