@@ -371,6 +371,13 @@ namespace Worki.Web.Controllers
                 localisation.SetOwner(memberId);
 				context.Commit();
 				//send mail to member
+                dynamic Ownermail = new Email(MVC.Emails.Views.Email);
+                Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                Ownermail.To = "mika7869@gmail.com";
+                Ownermail.Subject = Worki.Resources.Email.Common.Welcome;
+                Ownermail.Content = string.Format(Worki.Resources.Email.Common.Ownership, localisation.Name,
+                                        Url.AbsoluteAction(MVC.Localisation.ActionNames.Edit, MVC.Localisation.Name, new { id = id }));
+                Ownermail.Send();
 
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.YouAreOwner;
 			}

@@ -166,7 +166,7 @@
 				    </table>
                 </div>
 				<div class="editor-field float-right">
-					<input type="submit" class="buttonStd buttonBlue" value="@(isEditing ? Worki.Resources.Views.Booking.BookingString.ConfirmIt : Worki.Resources.Views.Booking.BookingString.BookIt)"/>
+					<input type="submit" class="buttonStd buttonBlue" value="@(isEditing ? Worki.Resources.Views.Booking.BookingString.ConfirmIt : Model.NeedQuotation ? Worki.Resources.Views.Booking.BookingString.ValidateQuotation : Worki.Resources.Views.Booking.BookingString.BookIt)"/>
 				</div>
 				<div class="clear"></div>
             }

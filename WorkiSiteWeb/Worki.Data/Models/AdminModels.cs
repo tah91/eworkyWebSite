@@ -169,4 +169,120 @@ namespace Worki.Data.Models
 
     #endregion
 
+    #region Admin Stat
+
+    public class StateItem
+    {
+        public string Country_Name { get; set; }
+        public int nb_SpotWifi { get; set; }
+        public int nb_CoffeeResto { get; set; }
+        public int nb_Biblio { get; set; }
+        public int nb_PublicSpace { get; set; }
+        public int nb_TravelerSpace { get; set; }
+        public int nb_Hotel { get; set; }
+        public int nb_Telecentre { get; set; }
+        public int nb_BuisnessCenter { get; set; }
+        public int nb_CoworkingSpace { get; set; }
+        public int nb_WorkingHotel { get; set; }
+        public int nb_PrivateArea { get; set; }
+
+        public StateItem(string name)
+        {
+            Country_Name = name;
+            nb_SpotWifi = 0;
+            nb_CoffeeResto = 0;
+            nb_Biblio = 0;
+            nb_PublicSpace = 0;
+            nb_TravelerSpace = 0;
+            nb_Hotel = 0;
+            nb_Telecentre = 0;
+            nb_BuisnessCenter = 0;
+            nb_CoworkingSpace = 0;
+            nb_WorkingHotel = 0;
+            nb_PrivateArea = 0;
+        }
+
+        public void incr_nb_type(int type)
+        {
+            var enumType = (LocalisationType)type;
+            switch (enumType)
+            {
+                case LocalisationType.SpotWifi:
+                    {
+                        nb_SpotWifi++;
+                        break;
+                    }
+                case LocalisationType.CoffeeResto:
+                    {
+                        nb_CoffeeResto++;
+                        break;
+                    }
+                case LocalisationType.Biblio:
+                    {
+                        nb_Biblio++;
+                        break;
+                    }
+                case LocalisationType.PublicSpace:
+                    {
+                        nb_PublicSpace++;
+                        break;
+                    }
+                case LocalisationType.TravelerSpace:
+                    {
+                        nb_TravelerSpace++;
+                        break;
+                    }
+                case LocalisationType.Hotel:
+                    {
+                        nb_Hotel++;
+                        break;
+                    }
+                case LocalisationType.Telecentre:
+                    {
+                        nb_Telecentre++;
+                        break;
+                    }
+                case LocalisationType.BuisnessCenter:
+                    {
+                        nb_BuisnessCenter++;
+                        break;
+                    }
+                case LocalisationType.CoworkingSpace:
+                    {
+                        nb_CoworkingSpace++;
+                        break;
+                    }
+                case LocalisationType.WorkingHotel:
+                    {
+                        nb_WorkingHotel++;
+                        break;
+                    }
+                case LocalisationType.PrivateArea:
+                    {
+                        nb_PrivateArea++;
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
+        public void GetTotal(ILocalisationRepository lRepo)
+        {
+            nb_SpotWifi = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.SpotWifi)).Count;
+            nb_CoffeeResto = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.CoffeeResto)).Count;
+            nb_Biblio = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.Biblio)).Count;
+            nb_PublicSpace = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.PublicSpace)).Count;
+            nb_TravelerSpace = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.TravelerSpace)).Count;
+            nb_Hotel = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.Hotel)).Count;
+            nb_Telecentre = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.Telecentre)).Count;
+            nb_BuisnessCenter = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.BuisnessCenter)).Count;
+            nb_CoworkingSpace = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.CoworkingSpace)).Count;
+            nb_WorkingHotel = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.WorkingHotel)).Count;
+            nb_PrivateArea = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.PrivateArea)).Count;
+        }
+    }
+
+    #endregion
+
 }

@@ -718,6 +718,8 @@
     <Content Include="Views\Home\_AboutMenu.cshtml" />
     <Content Include="Views\Profil\_ProfilMenu.cshtml" />
     <Content Include="Views\Emails\EmailContact.cshtml" />
+    <Content Include="Views\Admin\Statistic.cshtml" />
+    <Content Include="Views\Admin\LastModif.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -1,0 +1,98 @@
+﻿@model List<Worki.Data.Models.StateItem>
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@RazorHelpers.TitleDiv("Statistique", "Blue")
+<div class="contentAdmin">
+    <div id="adminMenu"> 
+        @Html.Partial(MVC.Admin.Views._AdminMenu)
+    </div>
+    <div class="adminPanel">
+        <table>
+            <tr>
+                <th>
+                    Pays
+                </th>
+                <th>
+                    Wifi
+                </th>
+                <th>
+                    CoffeeResto
+                </th>
+                <th>
+                    Biblio
+                </th>
+                <th>
+                    PublicSpace
+                </th>
+                <th>
+                    TravelerSpace
+                </th>
+                <th>
+                    Hotel
+                </th>
+                <th>
+                    Telecentre
+                </th>
+                <th>
+                    BuisnessCenter
+                </th>
+                <th>
+                    CoworkingSpace
+                </th>
+                <th>
+                    WorkingHotel
+                </th>
+                <th>
+                    PrivateArea
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            { 
+            <tr>
+                <td align="right">
+                    @item.Country_Name
+                </td>
+                <td align="right">
+                    @item.nb_SpotWifi
+                </td>
+                <td align="right">
+                    @item.nb_CoffeeResto
+                </td>
+                <td align="right">
+                    @item.nb_Biblio
+                </td>
+                <td align="right">
+                    @item.nb_PublicSpace
+                </td>
+                <td align="right">
+                    @item.nb_TravelerSpace
+                </td>
+                <td align="right">
+                    @item.nb_Hotel
+                </td>
+                <td align="right">
+                    @item.nb_Telecentre
+                </td>
+                <td align="right">
+                    @item.nb_BuisnessCenter
+                </td>
+                <td align="right">
+                    @item.nb_CoworkingSpace
+                </td>
+                <td align="right">
+                    @item.nb_WorkingHotel
+                </td>
+                <td align="right">
+                    @item.nb_PrivateArea
+                </td>
+            </tr>
+            }
+        </table>
+        <div class="clear"></div>
+    </div>
+</div>

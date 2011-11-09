@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Localisation>
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@RazorHelpers.TitleDiv("100 Dernières Modifications", "Blue")
+<div class="contentAdmin">
+    <div id="adminMenu"> 
+        @Html.Partial(MVC.Admin.Views._AdminMenu)
+    </div>
+    <div class="adminPanel">
+        <table>
+            <tr>
+                <th>
+                    i
+                </th>
+                <th>
+                    Nom du eWorker
+                </th>
+                <th>
+                    Nom du lieu
+                </th>
+                <th>
+                    Fait à
+                </th>
+            </tr>
+            @{var count = 1;}
+            @foreach (var item in Model)
+            { 
+            <tr>
+                <td align="right">
+                    @count
+                </td>
+                <td align="right">
+                    @item.Member.MemberMainData.FirstName
+                </td>
+                <td align="right">
+                    @item.Name
+                </td>
+                <td align="right">
+                    @string.Format("{0:d/M/yyyy HH:mm:ss}", item.MemberEditions.LastOrDefault().ModificationDate)
+                </td>
+            </tr>
+                count++;
+            }
+        </table>
+        <div class="clear"></div>
+    </div>
+</div>

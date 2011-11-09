@@ -121,7 +121,7 @@ namespace Worki.Web.Controllers
 
 					//send mail to team
 
-					dynamic teamMail = new Email(MiscHelpers.EmailConstants.EmailView);
+					dynamic teamMail = new Email(MVC.Emails.Views.Email);
 					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 					teamMail.To = MiscHelpers.EmailConstants.BookingMail;
 					teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
@@ -238,7 +238,7 @@ namespace Worki.Web.Controllers
 
 				//send email
 
-				dynamic handleMail = new Email(MiscHelpers.EmailConstants.EmailView);
+				dynamic handleMail = new Email(MVC.Emails.Views.Email);
 				handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
                 handleMail.To = booking.Member.Email;
 				handleMail.ToName = booking.Member.MemberMainData.FirstName;
@@ -296,7 +296,7 @@ namespace Worki.Web.Controllers
 					throw new Exception("No confirmation for Quotation");
 
 				//send email
-				dynamic confirmMail = new Email(MiscHelpers.EmailConstants.EmailView);
+				dynamic confirmMail = new Email(MVC.Emails.Views.Email);
 				confirmMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 				confirmMail.To = booking.Member.Email;
 				confirmMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
@@ -341,7 +341,7 @@ namespace Worki.Web.Controllers
 					throw new Exception("No confirmation for Quotation");
 
                 //send email
-				dynamic refuseMail = new Email(MiscHelpers.EmailConstants.EmailView);
+				dynamic refuseMail = new Email(MVC.Emails.Views.Email);
 				refuseMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
                 refuseMail.To = booking.Member.Email;
                 refuseMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
@@ -379,7 +379,7 @@ namespace Worki.Web.Controllers
 			profilLink.MergeAttribute("href", profilUrl);
 			profilLink.InnerHtml = profilUrl;
 
-			dynamic newMemberMail = new Email(MiscHelpers.EmailConstants.EmailView);
+			dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
 			newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
             newMemberMail.To = formData.Email;
 			newMemberMail.ToName = formData.FirstName;

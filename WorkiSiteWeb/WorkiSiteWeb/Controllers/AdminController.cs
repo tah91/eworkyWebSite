@@ -1233,5 +1233,70 @@ namespace Worki.Web.Controllers
 		//}
 
         #endregion
+
+        #region Statistic
+
+        public virtual ActionResult Stat()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var all = lRepo.GetAll().OrderBy(x => x.Country);
+            List<StateItem> list = new List<StateItem>();
+
+            foreach (var item in all)
+            {
+                var country_name = item.Country.Trim();
+                var type = item.TypeValue;
+
+                if (list.Count != 0)
+                {
+                    bool found = false;
+
+                    // Find if one element exist in the list matching country_name
+                    foreach (var state_item in list)
+                    {
+                        // if matched then increment is counter for the specific type and break from the loop
+                        if (state_item.Country_Name == country_name)
+                        {
+                            state_item.incr_nb_type(type);
+                            found = true;
+                            break;
+                        }
+                    }
+                    // if we get here means that we dont find any element matching "country_name" so create one and add it to the list
+                    if (!found)
+                    {
+                        var new_state_item = new StateItem(country_name);
+                        new_state_item.incr_nb_type(type);
+                        list.Add(new_state_item);
+                    }
+                }
+                else
+                {
+                    // 1st element added into the list of StateItem
+                    var state_item = new StateItem(country_name);
+                    state_item.incr_nb_type(type);
+                    list.Add(state_item);
+                }
+            }
+            list.OrderBy(x => x.Country_Name);
+            // Add the last item which contains the total of each place type
+            var last_item = new StateItem("Total");
+            last_item.GetTotal(lRepo);
+            list.Add(last_item);
+
+            return View(MVC.Admin.Views.Statistic, list);
+        }
+
+        public virtual ActionResult Last100Modif()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var all = lRepo.GetAll().OrderByDescending(x => x.MemberEditions.LastOrDefault().ModificationDate).Take(100);
+
+            return View(MVC.Admin.Views.LastModif, all);
+        }
+
+        #endregion
     }
 }

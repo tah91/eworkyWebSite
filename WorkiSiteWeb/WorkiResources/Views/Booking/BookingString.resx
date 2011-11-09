@@ -153,4 +153,7 @@
   <data name="Speech" xml:space="preserve">
     <value>Vous serez contacté dans les meilleurs délais par le gestionnaire de lieu.</value>
   </data>
+  <data name="ValidateQuotation" xml:space="preserve">
+    <value>Valider la demande de devis</value>
+  </data>
 </root>

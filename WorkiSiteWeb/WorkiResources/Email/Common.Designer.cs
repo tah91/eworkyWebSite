@@ -133,7 +133,20 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;p&gt;A très vite,&lt;/p&gt;
+        ///   Looks up a localized string similar to Vous nous avez signalé que vous étiez gérant de {0}, bienvenue sur eWorky ! En tant que gérant de ce lieu, 
+        ///- vous allez pouvoir éditer sa fiche descriptive et améliorer la qualité des informations en cliquant ici {1} ;
+        ///- vous avez également la possibilité d’apposer à l&apos;entrée de votre établissement un sticker qui signale que votre espace est propice au travail et recommandé par eWorky. Ce sticker vous sera fourni gratuitement, n&apos;hésitez pas à le demander par retour d&apos;e-mail.
+        ///
+        ///N&apos;oubliez pas de proposer  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Ownership {
+            get {
+                return ResourceManager.GetString("Ownership", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;A bientôt sur eWorky,&lt;/p&gt;
         ///&lt;p&gt;L’équipe eWorky&lt;/p&gt;.
         /// </summary>
         public static string SeeYouSoon {
@@ -148,6 +161,15 @@ namespace Worki.Resources.Email {
         public static string To {
             get {
                 return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bienvenue sur eWorky !.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
     }

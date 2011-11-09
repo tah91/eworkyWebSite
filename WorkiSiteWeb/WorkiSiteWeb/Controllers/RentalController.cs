@@ -381,7 +381,7 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-					dynamic contactMail = new Email(MiscHelpers.EmailConstants.EmailOwnerView);
+					dynamic contactMail = new Email(MVC.Emails.Views.EmailOwner);
                     contactMail.From = contact.FirstName + " " + contact.LastName + "<" + contact.EMail + ">";
                     contactMail.To = contact.ToEMail;
                     contactMail.Subject = contact.Subject;

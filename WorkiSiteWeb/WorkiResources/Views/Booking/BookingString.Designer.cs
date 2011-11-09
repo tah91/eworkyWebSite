@@ -167,5 +167,14 @@ namespace Worki.Resources.Views.Booking {
                 return ResourceManager.GetString("Speech", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valider la demande de devis.
+        /// </summary>
+        public static string ValidateQuotation {
+            get {
+                return ResourceManager.GetString("ValidateQuotation", resourceCulture);
+            }
+        }
     }
 }

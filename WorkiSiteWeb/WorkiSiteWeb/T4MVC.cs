@@ -893,6 +893,8 @@ namespace Worki.Web.Controllers {
             public readonly string EditPress = "EditPress";
             public readonly string DeletePress = "supprimer-press";
             public readonly string IndexRental = "IndexRental";
+            public readonly string Stat = "Stat";
+            public readonly string Last100Modif = "Last100Modif";
         }
 
 
@@ -918,6 +920,8 @@ namespace Worki.Web.Controllers {
             public readonly string IndexUser = "~/Views/Admin/IndexUser.cshtml";
             public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";
             public readonly string IndexWelcomePeople = "~/Views/Admin/IndexWelcomePeople.cshtml";
+            public readonly string LastModif = "~/Views/Admin/LastModif.cshtml";
+            public readonly string Statistic = "~/Views/Admin/Statistic.cshtml";
             public readonly string supprimer_utilisateur = "~/Views/Admin/supprimer-utilisateur.cshtml";
         }
     }
@@ -1111,6 +1115,16 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult IndexRental(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Stat() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Stat);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Last100Modif() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Last100Modif);
             return callInfo;
         }
 

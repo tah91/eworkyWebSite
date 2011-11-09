@@ -194,7 +194,7 @@ namespace Worki.Web.Controllers
                         link.MergeAttribute("href", activationLink);
                         link.InnerHtml = activationLink;
 
-                        dynamic activateMail = new Email(MiscHelpers.EmailConstants.EmailView);
+                        dynamic activateMail = new Email(MVC.Emails.Views.Email);
 						activateMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         activateMail.To = member.Email;
                         activateMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
@@ -276,7 +276,7 @@ namespace Worki.Web.Controllers
 						link.MergeAttribute("href", profilLink);
                         link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
 
-                        dynamic resetMail = new Email(MiscHelpers.EmailConstants.EmailView);
+                        dynamic resetMail = new Email(MVC.Emails.Views.Email);
 						resetMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         resetMail.To = member.Email;
                         resetMail.Subject = Worki.Resources.Email.ResetPassword.ResetPasswordSubject;
@@ -463,7 +463,7 @@ namespace Worki.Web.Controllers
 							// Send mail
 							try
 							{
-								dynamic facebookMail = new Email(MiscHelpers.EmailConstants.EmailView);
+								dynamic facebookMail = new Email(MVC.Emails.Views.Email);
 								facebookMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 								facebookMail.To = member.Email;
 								facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
