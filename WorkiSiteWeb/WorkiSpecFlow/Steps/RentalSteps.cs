@@ -16,10 +16,13 @@ namespace Worki.SpecFlow
         public void GivenJeMeConnecteAEWorky()
         {
             WebBrowser.Current.GoTo(WebBrowser.RootURL + "compte/connexion");
-            /* eworkydev.cloudapp.net */
-            WebBrowser.Current.TextField(Find.ById("Login")).TypeText("admin@eworky.com");
-            /* localhost */
-            // WebBrowser.Current.TextField(Find.ById("Login")).TypeText("Admin");
+
+            /* Login for eworkydev.cloudapp.net */
+            // WebBrowser.Current.TextField(Find.ById("Login")).TypeText("admin@eworky.com");
+
+            /* Login for localhost */
+            WebBrowser.Current.TextField(Find.ById("Login")).TypeText("Admin");
+
             WebBrowser.Current.TextField(Find.ById("Password")).TypeText("Admin_Pass");
             WebBrowser.Current.Button(Find.ByValue("Se connecter")).Click();
         }
@@ -147,7 +150,7 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<RentalPage>().Surface.TypeText("120");
             WebBrowser.Current.Page<RentalPage>().HeatingType.Select("Gaz");
             WebBrowser.Current.Page<RentalPage>().GreenHouse.Select("B");
-            WebBrowser.Current.Page<RentalPage>().Description.TypeText("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeText("Ceci est un test auto Made by Mika");
             WebBrowser.Current.Page<RentalPage>().Adress.TypeText("57 rue de Lille");
             WebBrowser.Current.Page<RentalPage>().Postal.TypeText("75007");
             WebBrowser.Current.Page<RentalPage>().Town.TypeText("Paris");
@@ -206,7 +209,7 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<RentalPage>().Surface.TypeText("170");
             WebBrowser.Current.Page<RentalPage>().HeatingType.Select("Electrique");
             WebBrowser.Current.Page<RentalPage>().GreenHouse.Select("D");
-            WebBrowser.Current.Page<RentalPage>().Description.TypeText("Ceci est un test auto Edit Made by Mika");
+            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeText("Ceci est un test auto Edit Made by Mika");
             WebBrowser.Current.Page<RentalPage>().Startup.Click();
             WebBrowser.Current.Page<RentalPage>().Parking.Click();
         }
@@ -419,7 +422,7 @@ namespace Worki.SpecFlow
                 get { return Document.TextField(Find.ById("Rental_Country")); }
             }
 
-            public TextField Description
+            public TextField DescriptionRental
             {
                 get { return Document.TextField(Find.ById("Rental_Description")); }
             }

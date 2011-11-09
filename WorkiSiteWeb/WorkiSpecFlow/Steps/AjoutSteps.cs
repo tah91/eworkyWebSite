@@ -7,6 +7,7 @@ using SHDocVw;
 using WatiN.Core;
 using NUnit.Framework;
 using Worki.Data.Models;
+using Worki.Infrastructure.Helpers;
 namespace Worki.SpecFlow
 {
     [Binding]
@@ -255,11 +256,9 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis lieux deja rentré")]
         public void GivenJeRemplisLieuxDejaRentre()
         {
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("testnepaseffacer");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("testnepaseffacer");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("testnepaseffacer");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("testnepaseffacer");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("testnepaseffacer");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("eWorky");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
         }
 
         #endregion
