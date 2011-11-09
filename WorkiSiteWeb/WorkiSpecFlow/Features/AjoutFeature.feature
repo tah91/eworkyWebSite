@@ -4,31 +4,7 @@
 	I want to be able to view the list of localisations
 
 @Ajout
-Scenario: Ajout Erreur
-	Given Je me connecte à eWorky
-		And Je vais dans la page d'ajout
-	When Je clique sur Envoyer
-	Then Il doit y avoir des messages d'erreur
-
-@Ajout
-Scenario: Ajout mauvais pattern
-	Given Je me connecte à eWorky
-		And Je vais dans la page d'ajout
-		And Je remplis mal le champs Email
-		And je remplis mal les horaires
-	When Je clique sur Envoyer
-	Then Il doit y avoir des messages d'erreur
-
-@Ajout
-Scenario: Ajout de lieu deja present
-	Given Je me connecte à eWorky
-		And Je vais dans la page d'ajout
-		And Je remplis lieux deja rentré
-	When Je clique sur Envoyer
-	Then Il doit y avoir des messages d'erreur
-
-@Ajout
-Scenario: 1 Créer une fiche de lieu Gratuit
+Scenario: 11 Créer une fiche de lieu Gratuit
 	Given Je me connecte à eWorky
 		And Je vais dans la page d'ajout de lieux gratuits
 		And Je remplis les champs
@@ -36,7 +12,15 @@ Scenario: 1 Créer une fiche de lieu Gratuit
 	Then Je dois retrouver les infos
 
 @Ajout
-Scenario: 1 Editer une fiche de lieu Gratuit
+Scenario: 12 Ajout de lieu deja present
+	Given Je me connecte à eWorky
+		And Je vais dans la page d'ajout
+		And Je remplis lieux deja rentré
+	When Je clique sur Envoyer
+	Then Il doit y avoir des messages d'erreur
+
+@Ajout
+Scenario: 13 Editer une fiche de lieu Gratuit
 	Given Je me connecte à eWorky
 		And Je vais dans la page admin
 		And Je clique sur editer
@@ -45,7 +29,7 @@ Scenario: 1 Editer une fiche de lieu Gratuit
 	Then Je dois avoir retrouver les infos modifiées
 
 @Ajout
-Scenario: 1 Supprimer une fiche de lieu Gratuit
+Scenario: 14 Supprimer une fiche de lieu Gratuit
 	Given Je me connecte à eWorky
 		And Je vais dans la page admin
 	When Je clique sur Supprimer
@@ -74,3 +58,19 @@ Scenario: Supprimer une fiche de lieu Payant
 		And Je vais dans la page admin
 	When Je clique sur Supprimer
 	Then La fiche de lieu est supprimée
+
+@Ajout
+Scenario: Ajout Erreur
+	Given Je me connecte à eWorky
+		And Je vais dans la page d'ajout
+	When Je clique sur Envoyer
+	Then Il doit y avoir des messages d'erreur
+
+@Ajout
+Scenario: Ajout mauvais pattern
+	Given Je me connecte à eWorky
+		And Je vais dans la page d'ajout
+		And Je remplis mal le champs Email
+		And je remplis mal les horaires
+	When Je clique sur Envoyer
+	Then Il doit y avoir des messages d'erreur

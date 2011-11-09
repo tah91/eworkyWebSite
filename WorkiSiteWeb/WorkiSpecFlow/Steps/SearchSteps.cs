@@ -12,6 +12,19 @@ namespace Worki.SpecFlow
     [Binding]
     public class SearchSteps
     {
+        [Given(@"Je vais dans la page Recherche")]
+        public void GivenJeVaisDansLaPageRecherche()
+        {
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/recherche");
+            WebBrowser.Current.AutoClose = true;
+        }
+
+        [When(@"Je clique sur rechercher")]
+        public void WhenJeCliqueSurRechercher()
+        {
+            WebBrowser.Current.Page<SearchPage>().Recherche.Click();
+        }
+
         #region Recherche Simple
 
         [Given(@"Je tappe (.*) dans la zone de recherche")]
@@ -66,19 +79,6 @@ namespace Worki.SpecFlow
         }
          
         #endregion
-
-        [Given(@"Je vais dans la page Recherche")]
-        public void GivenJeVaisDansLaPageRecherche()
-        {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/recherche");
-            WebBrowser.Current.AutoClose = true;
-        }
-
-        [When(@"Je clique sur rechercher")]
-        public void WhenJeCliqueSurRechercher()
-        {
-            WebBrowser.Current.Page<SearchPage>().Recherche.Click();
-        }
 
         #region Description Etudiant
 
@@ -182,136 +182,168 @@ namespace Worki.SpecFlow
         #endregion
     }
 
+    #region Search Page
+
     public class SearchPage : Page
     {
+        #region Div
+
         public Div Search_Title
         {
             get { return Document.Div(Find.BySelector("div[class*='titleDiv']")); }
         }
 
-        public Link Type_Lieu
-        {
-            get { return Document.Link(Find.ByText("Rechercher par type de lieu")); }
-        }
+        #endregion
 
-        public Link Type_Prestation
-        {
-            get { return Document.Link(Find.ByText("Rechercher par type de prestation")); }
-        }
+        #region Link
+
+            #region Type de Recherche
+
+            public Link Type_Lieu
+            {
+                get { return Document.Link(Find.ByText("Rechercher par type de lieu")); }
+            }
+
+            public Link Type_Prestation
+            {
+                get { return Document.Link(Find.ByText("Rechercher par type de prestation")); }
+            }
+
+            #endregion
+
+            #region Acces Direct
+
+            public Link Link_Etudiant
+            {
+                get { return Document.Link(Find.ByText("Etudiant")); }
+            }
+
+            public Link Link_Nomade
+            {
+                get { return Document.Link(Find.ByText("Nomade")); }
+            }
+
+            public Link Link_Teletravailleur
+            {
+                get { return Document.Link(Find.ByText("Télétravailleur")); }
+            }
+
+            public Link Link_Entrepreneur
+            {
+                get { return Document.Link(Find.ByText("Entrepreneur")); }
+            }
+
+            public Link Link_GrdCompte
+            {
+                get { return Document.Link(Find.ByText("Grand compte")); }
+            }
+
+            public Link Link_Independant
+            {
+                get { return Document.Link(Find.ByText("Indépendant")); }
+            }
+
+            #endregion
+
+            #region Header
+
+            public Link Lien_AccueilHeader
+            {
+                get { return Document.Link(Find.ByText("Accueil")); }
+            }
+
+            public Link Lien_AjoutHeader
+            {
+                get { return Document.Link(Find.ByText("Ajout")); }
+            }
+
+            #endregion
+
+            #region Footer
+
+            public Link Lien_RechercheFooter
+            {
+                get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/recherche/recherche-lieu-travail']")); }
+            }
+
+            public Link Lien_AjoutFooter
+            {
+                get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/lieu-de-travail/ajouter']")); }
+            }
+
+            public Link Lien_Contact
+            {
+                get { return Document.Link(Find.ByText("Contact")); }
+            }
+
+            public Link Lien_Blog
+            {
+                get { return Document.Link(Find.ByText("Blog")); }
+            }
+
+            public Link Lien_WhoWeAre
+            {
+                get { return Document.Link(Find.ByText("Qui sommes-nous ?")); }
+            }
+
+            public Link Lien_FAQ
+            {
+                get { return Document.Link(Find.ByText("FAQ")); }
+            }
+
+            public Link Lien_CGU
+            {
+                get { return Document.Link(Find.ByText("CGU")); }
+            }
+
+            public Link Lien_Presse
+            {
+                get { return Document.Link(Find.ByText("Presse")); }
+            }
+
+            public Link Lien_Jobs
+            {
+                get { return Document.Link(Find.ByText("Jobs")); }
+            }
+
+            public Link Lien_ALaUne
+            {
+                get { return Document.Link(Find.BySelector("div[class=imageDescription] a[href^='/lieu-de-travail/details/']")); }
+            }
+
+            public Link Lien_MentionLegal
+            {
+                get { return Document.Link(Find.ByText("Mentions légales")); }
+            }
+
+            #endregion
+
+            #region Profil/Deconnexion/Admin
+
+            public Link Lien_MonProfil
+            {
+                get { return Document.Link(Find.ByText("Mon Profil")); }
+            }
+
+            public Link Lien_Deconnexion
+            {
+                get { return Document.Link(Find.ByText("Déconnexion")); }
+            }
+
+            public Link Lien_Administrateur
+            {
+                get { return Document.Link(Find.ByText("Administrateur")); }
+            }
+
+            #endregion
+
+        #endregion
+
+        #region TextField
 
         public TextField Champ_Recherche
         {
             get { return Document.TextField(Find.ById("Criteria_Place")); }
-        }
-
-        public Button Recherche
-        {
-            get { return Document.Button(Find.ByValue("Rechercher")); }
-        }
-
-        public CheckBox CheckBox_Tous
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_Everything")); }
-        }
-
-        public CheckBox CheckBox_Spot_Wifi
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_SpotWifi")); }
-        }
-
-        public CheckBox CheckBox_Cafe_Restaurant
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_CoffeeResto")); }
-        }
-
-        public CheckBox CheckBox_Biblioteque_Musee
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_Biblio")); }
-        }
-
-        public CheckBox CheckBox_Espace_Public
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_PublicSpace")); }
-        }
-
-        public CheckBox CheckBox_Voyageur
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_TravelerSpace")); }
-        }
-
-        public CheckBox CheckBox_Hotel
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_Hotel")); }
-        }
-
-        public CheckBox CheckBox_Telecentre
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_Telecentre")); }
-        }
-
-        public CheckBox CheckBox_BuisnessCenter
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_BuisnessCenter")); }
-        }
-
-        public CheckBox CheckBox_CoworkingSpace
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_CoworkingSpace")); }
-        }
-
-        public CheckBox CheckBox_WorkingHotel
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_WorkingHotel")); }
-        }
-
-        public CheckBox CheckBox_PrivateArea
-        {
-            get { return Document.CheckBox(Find.ById("Criteria_PrivateArea")); }
-        }
-
-        public CheckBox CheckBox_OutletGeneral
-        {
-            get { return Document.CheckBox(Find.ById("f_Outlet")); }
-        }
-
-        public CheckBox CheckBox_FastInternet
-        {
-            get { return Document.CheckBox(Find.ById("FastInternet-General")); }
-        }
-
-        public CheckBox CheckBox_AC
-        {
-            get { return Document.CheckBox(Find.ById("AC-General")); }
-        }
-
-        public Link Link_Etudiant
-        {
-            get { return Document.Link(Find.ByText("Etudiant")); }
-        }
-
-        public Link Link_Nomade
-        {
-            get { return Document.Link(Find.ByText("Nomade")); }
-        }
-
-        public Link Link_Teletravailleur
-        {
-            get { return Document.Link(Find.ByText("Télétravailleur")); }
-        }
-
-        public Link Link_Entrepreneur
-        {
-            get { return Document.Link(Find.ByText("Entrepreneur")); }
-        }
-
-        public Link Link_GrdCompte
-        {
-            get { return Document.Link(Find.ByText("Grand compte")); }
-        }
-
-        public Link Link_Independant
-        {
-            get { return Document.Link(Find.ByText("Indépendant")); }
         }
 
         public TextField Equipment_Wifi
@@ -339,84 +371,104 @@ namespace Worki.SpecFlow
             get { return Document.TextField(Find.ById("Handicap-General")); }
         }
 
-        public Link Lien_AccueilHeader
+        #endregion
+
+        #region Button
+
+        public Button Recherche
         {
-            get { return Document.Link(Find.ByText("Accueil")); }
+            get { return Document.Button(Find.ByValue("Rechercher")); }
         }
 
-        public Link Lien_AjoutHeader
-        {
-            get { return Document.Link(Find.ByText("Ajout")); }
-        }
+        #endregion
 
-        public Link Lien_RechercheFooter
-        {
-            get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/recherche/recherche-lieu-travail']")); }
-        }
+        #region CheckBox
 
-        public Link Lien_AjoutFooter
-        {
-            get { return Document.Link(Find.BySelector("div[class^='footer'] a[href^='/lieu-de-travail/ajouter']")); }
-        }
+            #region Type de Lieux
 
-        public Link Lien_Contact
-        {
-            get { return Document.Link(Find.ByText("Contact")); }
-        }
+            public CheckBox CheckBox_Tous
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_Everything")); }
+            }
 
-        public Link Lien_Blog
-        {
-            get { return Document.Link(Find.ByText("Blog")); }
-        }
+            public CheckBox CheckBox_Spot_Wifi
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_SpotWifi")); }
+            }
 
-        public Link Lien_WhoWeAre
-        {
-            get { return Document.Link(Find.ByText("Qui sommes-nous ?")); }
-        }
+            public CheckBox CheckBox_Cafe_Restaurant
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_CoffeeResto")); }
+            }
 
-        public Link Lien_FAQ
-        {
-            get { return Document.Link(Find.ByText("FAQ")); }
-        }
+            public CheckBox CheckBox_Biblioteque_Musee
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_Biblio")); }
+            }
 
-        public Link Lien_CGU
-        {
-            get { return Document.Link(Find.ByText("CGU")); }
-        }
+            public CheckBox CheckBox_Espace_Public
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_PublicSpace")); }
+            }
 
-        public Link Lien_Presse
-        {
-            get { return Document.Link(Find.ByText("Presse")); }
-        }
+            public CheckBox CheckBox_Voyageur
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_TravelerSpace")); }
+            }
 
-        public Link Lien_Jobs
-        {
-            get { return Document.Link(Find.ByText("Jobs")); }
-        }
+            public CheckBox CheckBox_Hotel
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_Hotel")); }
+            }
 
-        public Link Lien_ALaUne
-        {
-            get { return Document.Link(Find.BySelector("div[class=imageDescription] a[href^='/lieu-de-travail/details/']")); }
-        }
+            public CheckBox CheckBox_Telecentre
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_Telecentre")); }
+            }
 
-        public Link Lien_MentionLegal
-        {
-            get { return Document.Link(Find.ByText("Mentions légales")); }
-        }
+            public CheckBox CheckBox_BuisnessCenter
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_BuisnessCenter")); }
+            }
 
-        public Link Lien_MonProfil
-        {
-            get { return Document.Link(Find.ByText("Mon Profil")); }
-        }
+            public CheckBox CheckBox_CoworkingSpace
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_CoworkingSpace")); }
+            }
 
-        public Link Lien_Deconnexion
-        {
-            get { return Document.Link(Find.ByText("Déconnexion")); }
-        }
+            public CheckBox CheckBox_WorkingHotel
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_WorkingHotel")); }
+            }
 
-        public Link Lien_Administrateur
-        {
-            get { return Document.Link(Find.ByText("Administrateur")); }
-        }
+            public CheckBox CheckBox_PrivateArea
+            {
+                get { return Document.CheckBox(Find.ById("Criteria_PrivateArea")); }
+            }
+
+            #endregion
+
+            #region Caractéristiques
+
+            public CheckBox CheckBox_OutletGeneral
+            {
+                get { return Document.CheckBox(Find.ById("f_Outlet")); }
+            }
+
+            public CheckBox CheckBox_FastInternet
+            {
+                get { return Document.CheckBox(Find.ById("FastInternet-General")); }
+            }
+
+            public CheckBox CheckBox_AC
+            {
+                get { return Document.CheckBox(Find.ById("AC-General")); }
+            }
+
+            #endregion
+
+        #endregion
     }
+
+    #endregion
 }

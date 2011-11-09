@@ -9,7 +9,11 @@ namespace Worki.SpecFlow
 {
     public static class WebBrowser
     {
-        public const string RootURL = "http://eworkydev.cloudapp.net/"; //"http://localhost:9886/"; 
+        /* Root Url for eworkydev.cloudapp.net */
+        // public const string RootURL = "http://eworkydev.cloudapp.net/";
+
+        /* Root Url for localhost */
+        public const string RootURL = "http://localhost:9886/";
 
         public static IE Current
         {
