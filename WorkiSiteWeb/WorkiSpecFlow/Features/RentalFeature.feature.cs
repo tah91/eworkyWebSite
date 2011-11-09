@@ -97,6 +97,123 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Créer une fiche de location à Paris")]
+        [NUnit.Framework.CategoryAttribute("Rental")]
+        public virtual void CreerUneFicheDeLocationAParis()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Créer une fiche de location à Paris", new string[] {
+                        "Rental"});
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("Je me connecte à eWorky");
+#line 24
+  testRunner.And("Je vais sur la page de création de location");
+#line 25
+ testRunner.When("Je remplis le formulaire de location");
+#line 26
+  testRunner.And("Je clique sur Valider");
+#line 27
+ testRunner.Then("Je dois avoir arriver sur la page détail");
+#line 28
+  testRunner.And("Je dois retrouver les bonnes informations");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Editer une fiche de location")]
+        [NUnit.Framework.CategoryAttribute("Rental")]
+        public virtual void EditerUneFicheDeLocation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Editer une fiche de location", new string[] {
+                        "Rental"});
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
+ testRunner.Given("Je me connecte à eWorky");
+#line 33
+  testRunner.And("Je vais sur la page d\'édition de location");
+#line 34
+ testRunner.When("Je modifie le formulaire de location");
+#line 35
+  testRunner.And("Je clique sur Valider");
+#line 36
+ testRunner.Then("Les informations doivent avoir changées");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Supprimer une fiche de location")]
+        [NUnit.Framework.CategoryAttribute("Rental")]
+        public virtual void SupprimerUneFicheDeLocation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Supprimer une fiche de location", new string[] {
+                        "Rental"});
+#line 39
+this.ScenarioSetup(scenarioInfo);
+#line 40
+ testRunner.Given("Je me connecte à eWorky");
+#line 41
+  testRunner.And("Je vais sur la page admin des locations");
+#line 42
+ testRunner.When("Je clique sur supprimer de la derniere location");
+#line 43
+  testRunner.And("Je valide la suppression");
+#line 44
+ testRunner.Then("La location doit avoir disparu");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Envoyer à un ami")]
+        [NUnit.Framework.CategoryAttribute("Rental")]
+        public virtual void EnvoyerAUnAmi()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Envoyer à un ami", new string[] {
+                        "Rental"});
+#line 47
+this.ScenarioSetup(scenarioInfo);
+#line 48
+ testRunner.Given("Je me connecte à eWorky");
+#line 49
+  testRunner.And("Je vais sur la page admin des locations");
+#line 50
+  testRunner.And("Je clique sur Detail");
+#line 51
+ testRunner.When("Je clique sur envoyer à un ami");
+#line 52
+ testRunner.Then("Je dois arriver sur la page d\'envoi à un ami");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Envoyer au propriétaire")]
+        [NUnit.Framework.CategoryAttribute("Rental")]
+        public virtual void EnvoyerAuProprietaire()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Envoyer au propriétaire", new string[] {
+                        "Rental"});
+#line 55
+this.ScenarioSetup(scenarioInfo);
+#line 56
+ testRunner.Given("Je me connecte à eWorky");
+#line 57
+  testRunner.And("Je vais sur la page admin des locations");
+#line 58
+  testRunner.And("Je clique sur Detail");
+#line 59
+ testRunner.When("Je clique sur envoyer au proprietaire");
+#line 60
+ testRunner.Then("Je dois arriver sur la page d\'envoi au proprietaire");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

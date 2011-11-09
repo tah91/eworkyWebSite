@@ -40,7 +40,6 @@ namespace Worki.SpecFlow
             [When(@"Je clique sur Ajout")]
             public void WhenJeCliqueSurAjout()
             {
-                //WebBrowser.Current.Link(Find.ByText("Ajout")).Click();
                 WebBrowser.Current.Page<AccueilPage>().Lien_AjoutHeader.Click();
             }
 
@@ -78,7 +77,7 @@ namespace Worki.SpecFlow
             [Given(@"Je selectionne Salon d'affaire")]
             public void GivenJeSelectionneSalonDAffaire()
             {
-                WebBrowser.Current.Page<AccueilPage>().Espace((int)LocalisationOffer.BuisnessLounge);
+                WebBrowser.Current.Page<AccueilPage>().Type_Espace.Select("Salon d'affaires");
             }
 
         #endregion
@@ -95,8 +94,12 @@ namespace Worki.SpecFlow
         #endregion
     }
 
+    #region Accueil Page
+
     public class AccueilPage : Page
     {
+        #region Button
+
         public Button Boutton_Connexion
         {
             get { return Document.Button(Find.BySelector("a[href='/compte/connexion']")); }
@@ -106,6 +109,10 @@ namespace Worki.SpecFlow
         {
             get { return Document.Button(Find.ById("btn_searchIndex")); }
         }
+
+        #endregion
+
+        #region Link
 
         public Link Lien_Recherche
         {
@@ -179,7 +186,7 @@ namespace Worki.SpecFlow
 
         public Link Lien_MonProfil
         {
-            get { return Document.Link(Find.BySelector("a[href^='/profil/dashboard/']")); }
+            get { return Document.Link(Find.ByText("Mon profil")); }
         }
 
         public Link Lien_Deconnexion
@@ -196,29 +203,32 @@ namespace Worki.SpecFlow
         {
             get { return Document.Link(Find.BySelector("a[href^='/profil/details/']")); }
         }
-        
+
         public Link Plus_Criteres
         {
             get { return Document.Link(Find.ByText("Plus de critères")); }
         }
+
+        #endregion
+
+        #region TextField
 
         public TextField Champ_Recherche
         {
             get { return Document.TextField(Find.ById("Criteria_Place")); }
         }
 
+        #endregion
+
+        #region SelectList
+
         public SelectList Type_Espace
         {
             get { return Document.SelectList(Find.ById("Criteria_OfferData_Type")); }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="space"></param>
-        public void Espace(int space)
-        {
-            Type_Espace.Option(Find.ByValue(space.ToString())).Select();
-        }
+        #endregion
     }
+
+    #endregion
 }
