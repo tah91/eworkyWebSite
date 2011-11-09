@@ -225,4 +225,10 @@
   <data name="execError" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="AreYouOwner" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="YouAreOwner" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

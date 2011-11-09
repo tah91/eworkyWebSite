@@ -147,4 +147,7 @@
   <data name="InfoUnknown" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="BackToLocalisation" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

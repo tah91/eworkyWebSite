@@ -141,4 +141,16 @@
   <data name="Confirmed" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="Quotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BookSpeech" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationSpeech" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Speech" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>
