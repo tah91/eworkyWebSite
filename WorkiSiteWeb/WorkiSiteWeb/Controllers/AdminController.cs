@@ -1033,39 +1033,6 @@ namespace Worki.Web.Controllers
 
         #endregion
 
-        [ActionName("envoyer-listlocmail")]
-        public virtual ActionResult SendListLocMail()
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            var strBuilder = new System.Text.StringBuilder();
-
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var frenchPlaces = lRepo.GetMany(l => l.Country.ToLower() == "france" && !string.IsNullOrEmpty(l.Mail));
-            var count = 0;
-
-            foreach (var item in frenchPlaces)
-            {
-                if (count > 0)
-                    break;
-                dynamic Mail = new Email(MVC.Emails.Views.ListLocMail);
-                Mail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                Mail.To = "tah.iftikhar@gmail.com";
-                Mail.Register = Url.AbsoluteAction(MVC.Account.ActionNames.Register, MVC.Account.Name, null);
-                Mail.Ownership = Url.ActionAbsolute(MVC.Localisation.SetOwnership(item.ID));
-                // Mail.To = item.Mail;
-                Mail.Subject = string.Format(Worki.Resources.Email.Common.Info, item.Name);
-                Mail.Type = Localisation.GetLocalisationType(item.TypeValue).ToLower();
-                Mail.Link = item.GetDetailFullUrl(Url);
-                Mail.Send();
-                strBuilder.AppendLine("Localisation : " + item.Name + " ; Mail to : " + item.Mail);
-                count++;
-            }
-
-            var content = MiscHelpers.Nl2Br(strBuilder.ToString());
-            return Content(content);
-        }
-
-
         #region Migration
 
 		//public virtual ActionResult MigrateToOffer()

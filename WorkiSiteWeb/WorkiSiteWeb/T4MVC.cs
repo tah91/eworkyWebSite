@@ -893,7 +893,6 @@ namespace Worki.Web.Controllers {
             public readonly string EditPress = "EditPress";
             public readonly string DeletePress = "supprimer-press";
             public readonly string IndexRental = "IndexRental";
-            public readonly string SendListLocMail = "envoyer-listlocmail";
         }
 
 
@@ -1112,11 +1111,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult IndexRental(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
             callInfo.RouteValueDictionary.Add("page", page);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult SendListLocMail() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendListLocMail);
             return callInfo;
         }
 
