@@ -352,4 +352,7 @@
   <data name="WedOpenMorning" xml:space="preserve">
     <value>Ouverture Mercredi  matin</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
 </root>

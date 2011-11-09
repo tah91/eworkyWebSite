@@ -58,7 +58,7 @@ namespace Worki.Data.Models
                 lastName = MemberMainData.LastName,
                 companyName = MemberMainData.CompanyName,
                 city = MemberMainData.City,
-                profile = MemberMainData.ProfileTypes[MemberMainData.Profile],
+                profile = MemberMainData.GetProfileType(MemberMainData.Profile),
                 description = MemberMainData.Description,
                 twitter = MemberMainData.Twitter,
                 facebook = MemberMainData.Facebook,
@@ -341,26 +341,82 @@ namespace Worki.Data.Models
 
         #endregion
 
-        public static Dictionary<int, string> CivilityTypes = new Dictionary<int, string>()
+        public static List<int> CivilityTypes = new List<int>()
         {
-            { (int)CivilityType.Mr,Worki.Resources.Models.Localisation.Localisation.Mr},
-            { (int)CivilityType.Mme,Worki.Resources.Models.Localisation.Localisation.Mme},
-            { (int)CivilityType.Mlle,Worki.Resources.Models.Localisation.Localisation. Mlle},
+            (int)CivilityType.Mr,
+            (int)CivilityType.Mme,
+            (int)CivilityType.Mlle
         };
 
-        public static Dictionary<int, string> ProfileTypes = new Dictionary<int, string>()
+        public static string GetCivilityType(int type)
         {
-            { (int)ProfileType.LocalisationOwner,Worki.Resources.Models.Profile.Profile.LocalisationOwner},
-            { (int)ProfileType.Nomad ,Worki.Resources.Models.Profile.Profile.Nomad},            
-            { (int)ProfileType.Teleworker,Worki.Resources.Models.Profile.Profile.Teleworker},
-            { (int)ProfileType.Independant,Worki.Resources.Models.Profile.Profile.Independant},
-            { (int)ProfileType.Startup,Worki.Resources.Models.Profile.Profile.Startup },            
-            { (int)ProfileType.Company,Worki.Resources.Models.Profile.Profile.Company },
-            { (int)ProfileType.Student,Worki.Resources.Models.Profile.Profile.Student},
-            { (int)ProfileType.PunctualUser,Worki.Resources.Models.Profile.Profile.PunctualUser},
-            { (int)ProfileType.Other,Worki.Resources.Models.Profile.Profile.Other },
-			{ (int)ProfileType.NotSelected,Worki.Resources.Models.Profile.Profile.NotSelected }
+            var enumType = (CivilityType)type;
+            switch (enumType)
+            {
+                case CivilityType.Mr:
+                    return Worki.Resources.Models.Localisation.Localisation.Mr;
+                case CivilityType.Mlle:
+                    return Worki.Resources.Models.Localisation.Localisation.Mlle;
+                case CivilityType.Mme:
+                    return Worki.Resources.Models.Localisation.Localisation.Mme;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public static Dictionary<int, string> GetCivilityTypes()
+        {
+            return CivilityTypes.ToDictionary(t => t, t => GetCivilityType(t));
+        }
+
+        public static List<int> ProfileTypes = new List<int>()
+        {
+            (int)ProfileType.NotSelected,
+            (int)ProfileType.LocalisationOwner,
+            (int)ProfileType.Nomad,
+            (int)ProfileType.Teleworker,
+            (int)ProfileType.Independant,
+			(int)ProfileType.Startup,
+			(int)ProfileType.Company,
+            (int)ProfileType.Student,
+            (int)ProfileType.PunctualUser,
+            (int)ProfileType.Other
         };
+
+        public static string GetProfileType(int type)
+        {
+            var enumType = (ProfileType)type;
+            switch (enumType)
+            {
+                case ProfileType.LocalisationOwner:
+                    return Worki.Resources.Models.Profile.Profile.LocalisationOwner;
+                case ProfileType.Nomad:
+                    return Worki.Resources.Models.Profile.Profile.Nomad;
+                case ProfileType.Teleworker:
+                    return Worki.Resources.Models.Profile.Profile.Teleworker;
+                case ProfileType.Independant:
+                    return Worki.Resources.Models.Profile.Profile.Independant;
+                case ProfileType.Startup:
+                    return Worki.Resources.Models.Profile.Profile.Startup;
+                case ProfileType.Company:
+                    return Worki.Resources.Models.Profile.Profile.Company;
+                case ProfileType.Student:
+                    return Worki.Resources.Models.Profile.Profile.Student;
+                case ProfileType.PunctualUser:
+                    return Worki.Resources.Models.Profile.Profile.PunctualUser;
+                case ProfileType.Other:
+                    return Worki.Resources.Models.Profile.Profile.Other;
+                case ProfileType.NotSelected:
+                    return Worki.Resources.Models.Profile.Profile.NotSelected;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public static Dictionary<int, string> GetProfileTypes()
+        {
+            return ProfileTypes.ToDictionary(t => t, t => GetProfileType(t));
+        }
     }
 
     [Bind(Exclude = "RelationId,MemberId,Avatar")]
@@ -465,8 +521,8 @@ namespace Worki.Data.Models
 
         public ProfilFormViewModel()
         {
-            CivilitySelectTypes = new SelectList(MemberMainData.CivilityTypes, "Key", "Value", CivilityType.Mr);
-            ProfileSelectTypes = new SelectList(MemberMainData.ProfileTypes, "Key", "Value", ProfileType.LocalisationOwner);
+            CivilitySelectTypes = new SelectList(MemberMainData.GetCivilityTypes(), "Key", "Value", CivilityType.Mr);
+            ProfileSelectTypes = new SelectList(MemberMainData.GetProfileTypes(), "Key", "Value", ProfileType.LocalisationOwner);
             Member = new Member();
         }
 
