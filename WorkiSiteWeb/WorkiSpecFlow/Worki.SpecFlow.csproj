@@ -115,13 +115,13 @@
       <DependentUpon>AjoutFeature.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\AjoutSteps.cs" />
-    <Compile Include="Features\DetailsFeature.feature.cs">
+    <Compile Include="Features\ComsFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DetailsFeature.feature</DependentUpon>
+      <DependentUpon>ComsFeature.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\RentalSteps.cs" />
-    <Compile Include="Steps\DetailsSteps.cs" />
+    <Compile Include="Steps\ComsSteps.cs" />
     <Compile Include="Features\FooterFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,9 +169,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RentalFeature.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\DetailsFeature.feature">
+    <None Include="Features\ComsFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DetailsFeature.feature.cs</LastGenOutput>
+      <LastGenOutput>ComsFeature.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\FooterFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

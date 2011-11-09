@@ -64,10 +64,12 @@ namespace Worki.SpecFlow.Features
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("Je vais dans la page d\'ajout");
+ testRunner.Given("Je me connecte à eWorky");
 #line 9
- testRunner.When("Je clique sur Envoyer");
+  testRunner.And("Je vais dans la page d\'ajout");
 #line 10
+ testRunner.When("Je clique sur Envoyer");
+#line 11
  testRunner.Then("Il doit y avoir des messages d\'erreur");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -83,77 +85,17 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
- testRunner.Given("Je vais dans la page d\'ajout");
+ testRunner.Given("Je me connecte à eWorky");
 #line 16
-  testRunner.And("Je remplis mal le champs Email");
+  testRunner.And("Je vais dans la page d\'ajout");
 #line 17
-  testRunner.And("je remplis mal les horaires");
+  testRunner.And("Je remplis mal le champs Email");
 #line 18
- testRunner.When("Je clique sur Envoyer");
+  testRunner.And("je remplis mal les horaires");
 #line 19
+ testRunner.When("Je clique sur Envoyer");
+#line 20
  testRunner.Then("Il doit y avoir des messages d\'erreur");
-#line hidden
-            testRunner.CollectScenarioErrors();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Ajout complet")]
-        [NUnit.Framework.CategoryAttribute("Ajout")]
-        public virtual void AjoutComplet()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ajout complet", new string[] {
-                        "Ajout"});
-#line 22
-this.ScenarioSetup(scenarioInfo);
-#line 23
- testRunner.Given("Je vais dans la page d\'ajout");
-#line 24
-  testRunner.And("Je remplis la partie informations générales");
-#line 25
-  testRunner.And("Je coche quelques checkbox");
-#line 26
-  testRunner.And("je remplis Acces");
-#line 27
-  testRunner.And("Je remplis Horaires");
-#line 28
- testRunner.When("Je clique sur Envoyer");
-#line 29
- testRunner.Then("Je dois avoir le détail des informations générales");
-#line 30
-  testRunner.And("Je dois avoir le détail de l\'acces");
-#line 31
-  testRunner.And("Je dois avoir le détail des horaires");
-#line hidden
-            testRunner.CollectScenarioErrors();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Ajout complet 2")]
-        [NUnit.Framework.CategoryAttribute("Ajout")]
-        public virtual void AjoutComplet2()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ajout complet 2", new string[] {
-                        "Ajout"});
-#line 34
-this.ScenarioSetup(scenarioInfo);
-#line 35
- testRunner.Given("Je vais dans la page d\'ajout");
-#line 36
-  testRunner.And("Je remplis la partie informations générales");
-#line 37
-  testRunner.And("Je coche quelques checkbox 2");
-#line 38
-  testRunner.And("je remplis Acces");
-#line 39
-  testRunner.And("Je remplis Horaires 2");
-#line 40
- testRunner.When("Je clique sur Envoyer");
-#line 41
- testRunner.Then("Je dois avoir le détail des informations générales");
-#line 42
-  testRunner.And("Je dois avoir le détail de l\'acces");
-#line 43
-  testRunner.And("Je dois avoir le détail des horaires 2");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -165,16 +107,156 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ajout de lieu deja present", new string[] {
                         "Ajout"});
-#line 46
+#line 23
 this.ScenarioSetup(scenarioInfo);
-#line 47
- testRunner.Given("Je vais dans la page d\'ajout");
-#line 48
+#line 24
+ testRunner.Given("Je me connecte à eWorky");
+#line 25
+  testRunner.And("Je vais dans la page d\'ajout");
+#line 26
   testRunner.And("Je remplis lieux deja rentré");
-#line 49
+#line 27
  testRunner.When("Je clique sur Envoyer");
-#line 50
+#line 28
  testRunner.Then("Il doit y avoir des messages d\'erreur");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Créer une fiche de lieu Gratuit")]
+        [NUnit.Framework.CategoryAttribute("Ajout")]
+        public virtual void CreerUneFicheDeLieuGratuit()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Créer une fiche de lieu Gratuit", new string[] {
+                        "Ajout"});
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
+ testRunner.Given("Je me connecte à eWorky");
+#line 33
+  testRunner.And("Je vais dans la page d\'ajout de lieux gratuits");
+#line 34
+  testRunner.And("Je remplis les champs");
+#line 35
+ testRunner.When("Je clique sur Envoyer");
+#line 36
+ testRunner.Then("Je dois retrouver les infos");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Editer une fiche de lieu Gratuit")]
+        [NUnit.Framework.CategoryAttribute("Ajout")]
+        public virtual void EditerUneFicheDeLieuGratuit()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Editer une fiche de lieu Gratuit", new string[] {
+                        "Ajout"});
+#line 39
+this.ScenarioSetup(scenarioInfo);
+#line 40
+ testRunner.Given("Je me connecte à eWorky");
+#line 41
+  testRunner.And("Je vais dans la page admin");
+#line 42
+  testRunner.And("Je clique sur editer");
+#line 43
+ testRunner.When("Je change les champs");
+#line 44
+  testRunner.And("Je clique sur Envoyer");
+#line 45
+ testRunner.Then("Je dois avoir retrouver les infos modifiées");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Supprimer une fiche de lieu Gratuit")]
+        [NUnit.Framework.CategoryAttribute("Ajout")]
+        public virtual void SupprimerUneFicheDeLieuGratuit()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Supprimer une fiche de lieu Gratuit", new string[] {
+                        "Ajout"});
+#line 48
+this.ScenarioSetup(scenarioInfo);
+#line 49
+ testRunner.Given("Je me connecte à eWorky");
+#line 50
+  testRunner.And("Je vais dans la page admin");
+#line 51
+ testRunner.When("Je clique sur Supprimer");
+#line 52
+ testRunner.Then("La fiche de lieu est supprimée");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Créer une fiche de lieu Payant")]
+        [NUnit.Framework.CategoryAttribute("Ajout")]
+        public virtual void CreerUneFicheDeLieuPayant()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Créer une fiche de lieu Payant", new string[] {
+                        "Ajout"});
+#line 55
+this.ScenarioSetup(scenarioInfo);
+#line 56
+ testRunner.Given("Je me connecte à eWorky");
+#line 57
+  testRunner.And("Je vais dans la page d\'ajout de lieux payant");
+#line 58
+  testRunner.And("Je remplis les champs 2");
+#line 59
+ testRunner.When("Je clique sur Envoyer");
+#line 60
+ testRunner.Then("Je dois retrouver les infos 2");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Editer une fiche de lieu Payant")]
+        [NUnit.Framework.CategoryAttribute("Ajout")]
+        public virtual void EditerUneFicheDeLieuPayant()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Editer une fiche de lieu Payant", new string[] {
+                        "Ajout"});
+#line 63
+this.ScenarioSetup(scenarioInfo);
+#line 64
+ testRunner.Given("Je me connecte à eWorky");
+#line 65
+  testRunner.And("Je vais dans la page admin");
+#line 66
+  testRunner.And("Je clique sur editer");
+#line 67
+ testRunner.When("Je change les champs 2");
+#line 68
+  testRunner.And("Je clique sur Envoyer");
+#line 69
+ testRunner.Then("Je dois avoir retrouver les infos modifiées 2");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Supprimer une fiche de lieu Payant")]
+        [NUnit.Framework.CategoryAttribute("Ajout")]
+        public virtual void SupprimerUneFicheDeLieuPayant()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Supprimer une fiche de lieu Payant", new string[] {
+                        "Ajout"});
+#line 72
+this.ScenarioSetup(scenarioInfo);
+#line 73
+ testRunner.Given("Je me connecte à eWorky");
+#line 74
+  testRunner.And("Je vais dans la page admin");
+#line 75
+ testRunner.When("Je clique sur Supprimer");
+#line 76
+ testRunner.Then("La fiche de lieu est supprimée");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
