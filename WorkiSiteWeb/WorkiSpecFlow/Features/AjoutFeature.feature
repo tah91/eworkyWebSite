@@ -28,7 +28,7 @@ Scenario: Ajout de lieu deja present
 	Then Il doit y avoir des messages d'erreur
 
 @Ajout
-Scenario: Créer une fiche de lieu Gratuit
+Scenario: 1 Créer une fiche de lieu Gratuit
 	Given Je me connecte à eWorky
 		And Je vais dans la page d'ajout de lieux gratuits
 		And Je remplis les champs
@@ -36,7 +36,7 @@ Scenario: Créer une fiche de lieu Gratuit
 	Then Je dois retrouver les infos
 
 @Ajout
-Scenario: Editer une fiche de lieu Gratuit
+Scenario: 1 Editer une fiche de lieu Gratuit
 	Given Je me connecte à eWorky
 		And Je vais dans la page admin
 		And Je clique sur editer
@@ -45,7 +45,7 @@ Scenario: Editer une fiche de lieu Gratuit
 	Then Je dois avoir retrouver les infos modifiées
 
 @Ajout
-Scenario: Supprimer une fiche de lieu Gratuit
+Scenario: 1 Supprimer une fiche de lieu Gratuit
 	Given Je me connecte à eWorky
 		And Je vais dans la page admin
 	When Je clique sur Supprimer

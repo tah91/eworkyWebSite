@@ -124,11 +124,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Créer une fiche de lieu Gratuit")]
+        [NUnit.Framework.DescriptionAttribute("1 Créer une fiche de lieu Gratuit")]
         [NUnit.Framework.CategoryAttribute("Ajout")]
-        public virtual void CreerUneFicheDeLieuGratuit()
+        public virtual void _1CreerUneFicheDeLieuGratuit()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Créer une fiche de lieu Gratuit", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Créer une fiche de lieu Gratuit", new string[] {
                         "Ajout"});
 #line 31
 this.ScenarioSetup(scenarioInfo);
@@ -147,11 +147,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Editer une fiche de lieu Gratuit")]
+        [NUnit.Framework.DescriptionAttribute("1 Editer une fiche de lieu Gratuit")]
         [NUnit.Framework.CategoryAttribute("Ajout")]
-        public virtual void EditerUneFicheDeLieuGratuit()
+        public virtual void _1EditerUneFicheDeLieuGratuit()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Editer une fiche de lieu Gratuit", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Editer une fiche de lieu Gratuit", new string[] {
                         "Ajout"});
 #line 39
 this.ScenarioSetup(scenarioInfo);
@@ -172,11 +172,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Supprimer une fiche de lieu Gratuit")]
+        [NUnit.Framework.DescriptionAttribute("1 Supprimer une fiche de lieu Gratuit")]
         [NUnit.Framework.CategoryAttribute("Ajout")]
-        public virtual void SupprimerUneFicheDeLieuGratuit()
+        public virtual void _1SupprimerUneFicheDeLieuGratuit()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Supprimer une fiche de lieu Gratuit", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Supprimer une fiche de lieu Gratuit", new string[] {
                         "Ajout"});
 #line 48
 this.ScenarioSetup(scenarioInfo);

@@ -84,6 +84,7 @@ namespace Worki.SpecFlow
         public void ThenLeCommentaireAEteSupprime()
         {
             Assert.That(!WebBrowser.Current.ContainsText("Effacer le commentaire"));
+            WebBrowser.Current.Close();
         }
 
         #endregion

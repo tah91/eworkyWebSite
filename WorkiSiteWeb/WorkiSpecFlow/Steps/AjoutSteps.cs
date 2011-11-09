@@ -23,13 +23,10 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis les champs")]
         public void GivenJeRemplisLesChamps()
         {
-            WebBrowser.Current.Page<AjoutPage>().Check_Owner.Click();
             WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Espace public numérique / Cybercafé");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("eWorky");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("75007");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177170421");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@eworky.com");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("www.eworky.com");
@@ -84,13 +81,10 @@ namespace Worki.SpecFlow
         [When(@"Je change les champs")]
         public void WhenJeChangeLesChamps()
         {
-            WebBrowser.Current.Page<AjoutPage>().Check_Owner.Click();
             WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Café / Restaurant");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("Greenworking");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("62 Rue Chabot Charny");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Dijon");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("21000");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177198721");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@greenworking.fr");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("http://www.greenworking.fr/");
@@ -128,7 +122,7 @@ namespace Worki.SpecFlow
         public void WhenJeCliqueSurSupprimer()
         {
             WebBrowser.Current.Page<AjoutPage>().Supprimer.Click();
-            WebBrowser.Current.Page<AjoutPage>().Supprimer.Click();
+            WebBrowser.Current.Page<AjoutPage>().ConfirmDelete.Click();
         }
         [Then(@"La fiche de lieu est supprimée")]
         public void ThenLaFicheDeLieuEstSupprimee()
@@ -150,30 +144,23 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis les champs 2")]
         public void GivenJeRemplisLesChamps2()
         {
-            WebBrowser.Current.Page<AjoutPage>().Check_Owner.Click();
-            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Espace public numérique / Cybercafé");
+            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Télécentre");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("eWorky");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("75007");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177170421");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@eworky.com");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("www.eworky.com");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeText("Ceci est un test auto Made by Mika");
-            WebBrowser.Current.Page<AjoutPage>().Check_AvoidMorning.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_AvoidEvening.Click();
-            WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeText("1");
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Restauration.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
             WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeText("Près de la station Solférino");
-            WebBrowser.Current.Page<AjoutPage>().MonOpen.TypeText("08:00");
-            WebBrowser.Current.Page<AjoutPage>().MonClose.TypeText("18:00");
-            WebBrowser.Current.Page<AjoutPage>().Add_Offer.Click();
+            WebBrowser.Current.Page<AjoutPage>().Check_Access24.Click();
             WebBrowser.Current.Page<AjoutPage>().Type_Offer.Select("Bureau");
+            WebBrowser.Current.Page<AjoutPage>().Add_Offer.Click();
             WebBrowser.Current.Page<AjoutPage>().OfferName.TypeText("Bureau 1");
             WebBrowser.Current.Page<AjoutPage>().Desktop25_50.Click();
             WebBrowser.Current.Page<AjoutPage>().Equipped.Click();
@@ -186,10 +173,10 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
 
-            Assert.That(ie.ContainsText("Prix du café : 1,00 €") && ie.ContainsText("Wifi gratuit") && ie.ContainsText("Prise de courant")
+            Assert.That(ie.ContainsText("Wifi gratuit") && ie.ContainsText("Prise de courant")
                      && ie.ContainsText("Internet très haut débit") && ie.ContainsText("Rangement sécurisé") && ie.ContainsText("Café / Bar")
-                     && ie.ContainsText("Restauration") && ie.ContainsText("eWorky") && ie.ContainsText("Espace public numérique / Cybercafé") && ie.ContainsText("47 rue de Lille - 75007 Paris")
-                     && ie.ContainsText("01 77 17 04 21") && ie.ContainsText("8h00 à 18h00") && ie.ContainsText("contact@eworky.com") && ie.ContainsText("Eviter les periodes : matinée, soirée.")
+                     && ie.ContainsText("Restauration") && ie.ContainsText("eWorky") && ie.ContainsText("Télécentre") && ie.ContainsText("47 rue de Lille - 75007 Paris")
+                     && ie.ContainsText("01 77 17 04 21") && ie.ContainsText("Accès 24/7") && ie.ContainsText("contact@eworky.com")
                      && ie.ContainsText("Transports en commun : Près de la station Solférino") && ie.ContainsText("Bureaux") && ie.ContainsText("De 25 à 50 m2") && ie.ContainsText("Equipé et câblé")
                      && ie.ContainsText("Tout compris (charges, taxes, nettoyage, etc.)") && ie.ContainsText("Ceci est un test auto Made by Mika"));
             WebBrowser.Current.Close();
@@ -202,20 +189,14 @@ namespace Worki.SpecFlow
         [When(@"Je change les champs 2")]
         public void WhenJeChangeLesChamps2()
         {
-            WebBrowser.Current.Page<AjoutPage>().Check_Owner.Click();
-            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Café / Restaurant");
+            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Espace de coworking");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("Greenworking");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("62 Rue Chabot Charny");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Dijon");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("21000");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177198721");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@greenworking.fr");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("http://www.greenworking.fr/");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeText("Ceci est un test auto Made by Mika Edit");
-            WebBrowser.Current.Page<AjoutPage>().Check_AvoidMorning.Click();
-            WebBrowser.Current.Page<AjoutPage>().Check_AvoidEvening.Click();
-            WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeText("10");
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
@@ -223,6 +204,7 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
             WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeText("");
             WebBrowser.Current.Page<AjoutPage>().DeleteOffer.Click();
+            WebBrowser.Current.Page<AjoutPage>().ConfirmDelete.Click();
         }
 
         [Then(@"Je dois avoir retrouver les infos modifiées 2")]
@@ -230,10 +212,10 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
 
-            Assert.That(ie.ContainsText("Prix du café : 10,00 €") && ie.ContainsText("Wifi gratuit") && !ie.ContainsText("Prise de courant")
+            Assert.That(ie.ContainsText("Wifi gratuit") && !ie.ContainsText("Prise de courant")
                      && !ie.ContainsText("Internet très haut débit") && !ie.ContainsText("Rangement sécurisé") && !ie.ContainsText("Café / Bar")
-                     && !ie.ContainsText("Restauration") && ie.ContainsText("Greenworking") && ie.ContainsText("Café / Restaurant") && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
-                     && ie.ContainsText("01 77 19 87 21") && ie.ContainsText("contact@eworky.com") && !ie.ContainsText("Eviter les periodes : matinée, soirée.")
+                     && !ie.ContainsText("Restauration") && ie.ContainsText("Greenworking") && ie.ContainsText("Espace de coworking") && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
+                     && ie.ContainsText("01 77 19 87 21") && ie.ContainsText("contact@greenworking.fr")
                      && !ie.ContainsText("Transports en commun : Près de la station Solférino") && !ie.ContainsText("Bureaux") && !ie.ContainsText("De 25 à 50 m2") && !ie.ContainsText("Equipé et câblé")
                      && !ie.ContainsText("Tout compris (charges, taxes, nettoyage, etc.)") && ie.ContainsText("Ceci est un test auto Made by Mika Edit"));
             WebBrowser.Current.Close();
@@ -472,15 +454,6 @@ namespace Worki.SpecFlow
 
         #region CheckBox
 
-            #region Info General
-
-            public CheckBox Check_Owner
-            {
-                get { return Document.CheckBox(Find.ById("f_LocalisationOwner")); }
-            }
-
-            #endregion
-
             #region Caracteristiques
 
             public CheckBox Check_Outlet
@@ -687,7 +660,7 @@ namespace Worki.SpecFlow
 
         public SelectList Type_Offer
         {
-            get { return Document.SelectList(Find.ById("Offer_Type")); }
+            get { return Document.SelectList(Find.ById("NewOfferType")); }
         }
 
         #endregion
@@ -707,6 +680,11 @@ namespace Worki.SpecFlow
         public Button Validate
         {
             get { return Document.Button(Find.ByValue("Valider")); }
+        }
+
+        public Button ConfirmDelete
+        {
+            get { return Document.Button(Find.ByValue("Supprimer")); }
         }
 
         #endregion

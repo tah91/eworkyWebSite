@@ -16,9 +16,12 @@ namespace Worki.SpecFlow
         public void GivenJeMeConnecteAEWorky()
         {
             WebBrowser.Current.GoTo(WebBrowser.RootURL + "compte/connexion");
-            WebBrowser.Current.TextField(Find.ById("Login")).TypeText("Admin");
+            /* eworkydev.cloudapp.net */
+            WebBrowser.Current.TextField(Find.ById("Login")).TypeText("admin@eworky.com");
+            /* localhost */
+            // WebBrowser.Current.TextField(Find.ById("Login")).TypeText("Admin");
             WebBrowser.Current.TextField(Find.ById("Password")).TypeText("Admin_Pass");
-            WebBrowser.Current.Button(Find.BySelector("input[type='submit']")).Click();
+            WebBrowser.Current.Button(Find.ByValue("Se connecter")).Click();
         }
 
         #region Lancer une Recherche
