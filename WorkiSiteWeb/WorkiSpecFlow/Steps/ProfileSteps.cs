@@ -28,7 +28,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisArriverSurMonProfil()
         {
             Assert.IsTrue(Id != 0);
-            Assert.IsTrue(WebBrowser.Current.Url.Contains("profil/dashboard/" + Id));
+            Assert.IsTrue(WebBrowser.Current.Url.Contains(StaticStringClass.URL.Dashboard + Id));
             WebBrowser.Current.Close();
         }
 
@@ -104,7 +104,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisAvoirLaPageDeModificationDeMotDePasse()
         {
             Assert.IsTrue(Id != 0);
-            Assert.That(WebBrowser.Current.Url.Contains("profil/changer-mdp/" + Id));
+            Assert.That(WebBrowser.Current.Url.Contains(StaticStringClass.URL.ChangePassword + Id));
             WebBrowser.Current.Close();
         }
 

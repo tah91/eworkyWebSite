@@ -29,7 +29,7 @@ namespace Worki.SpecFlow
             [Then(@"Je dois arriver sur la page de recherche")]
             public void ThenJeDoisArriverSurLaPageDeRecherche()
             {
-                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "lieu-de-travail/recherche");
+                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.Search);
                 WebBrowser.Current.Close();
             }
 
@@ -46,7 +46,7 @@ namespace Worki.SpecFlow
             [Then(@"Je dois arriver sur la page de Ajout")]
             public void ThenJeDoisArriverSurLaPageDeAjout()
             {
-                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/ajouter-espace");
+                Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.AddSpace);
                 WebBrowser.Current.Close();
             }
 

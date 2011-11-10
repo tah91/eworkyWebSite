@@ -15,15 +15,15 @@ namespace Worki.SpecFlow
         [Given(@"Je me connecte à eWorky")]
         public void GivenJeMeConnecteAEWorky()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "compte/connexion");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Connexion);
 
             /* Login for eworkydev.cloudapp.net */
-            // WebBrowser.Current.TextField(Find.ById("Login")).TypeText("admin@eworky.com");
+            // WebBrowser.Current.TextField(Find.ById("Login")).TypeText(StaticStringClass.Connexion.OnlineLogin);
 
             /* Login for localhost */
-            WebBrowser.Current.TextField(Find.ById("Login")).TypeText("Admin");
+            WebBrowser.Current.TextField(Find.ById("Login")).TypeText(StaticStringClass.Connexion.LocalLogin);
 
-            WebBrowser.Current.TextField(Find.ById("Password")).TypeText("Admin_Pass");
+            WebBrowser.Current.TextField(Find.ById("Password")).TypeText(StaticStringClass.Connexion.Password);
             WebBrowser.Current.Button(Find.ByValue("Se connecter")).Click();
         }
 
@@ -32,7 +32,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page recherche")]
         public void GivenJeVaisDansLaPageRecherche()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Rental/recherche");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.RentalSearch);
         }
 
         [When(@"Je remplis des champs")]
@@ -52,7 +52,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisArriverSurLaPageDeResultatLocation()
         {
             var url = WebBrowser.Current.Url.Split('?');
-            Assert.AreEqual(url[0], WebBrowser.RootURL + "annonces/resultats-annonces");
+            Assert.AreEqual(url[0], WebBrowser.RootURL + StaticStringClass.URL.RentalResult);
         }
 
         [Then(@"Tous les résultats doivent respecter les critères")]
@@ -134,7 +134,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais sur la page de création de location")]
         public void GivenJeVaisSurLaPageDeCreationDeLocation()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "annonces/ajouter");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.RentalAdd);
         }
 
         [When(@"Je remplis le formulaire de location")]
@@ -170,7 +170,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir arriver sur la page détail")]
         public void ThenJeDoisAvoirArriverSurLaPageDetail()
         {
-            Assert.IsTrue(WebBrowser.Current.Url.Contains("annonces/details/"));
+            Assert.IsTrue(WebBrowser.Current.Url.Contains(StaticStringClass.URL.RentalDetail));
         }
 
         [Then(@"Je dois retrouver les bonnes informations")]
@@ -192,7 +192,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais sur la page d'édition de location")]
         public void GivenJeVaisSurLaPageDEditionDeLocation()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Admin/IndexRental");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.RentalIndex);
             WebBrowser.Current.Page<RentalPage>().Editer.Click();
         }
 
@@ -233,7 +233,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais sur la page admin des locations")]
         public void GivenJeVaisSurLaPageAdminDesLocations()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Admin/IndexRental");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.RentalIndex);
         }
 
         [When(@"Je clique sur supprimer de la derniere location")]
@@ -274,7 +274,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois arriver sur la page d'envoi à un ami")]
         public void ThenJeDoisArriverSurLaPageDEnvoiAUnAmi()
         {
-            Assert.That(WebBrowser.Current.Url.Contains("annonces/envoyer-email-ami/"));
+            Assert.That(WebBrowser.Current.Url.Contains(StaticStringClass.URL.RentalSendFriend));
             WebBrowser.Current.Close();
         }
 

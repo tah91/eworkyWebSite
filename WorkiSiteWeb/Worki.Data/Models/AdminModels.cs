@@ -185,6 +185,7 @@ namespace Worki.Data.Models
         public int nb_CoworkingSpace { get; set; }
         public int nb_WorkingHotel { get; set; }
         public int nb_PrivateArea { get; set; }
+        public int nb_Total { get; set; }
 
         public StateItem(string name)
         {
@@ -200,6 +201,7 @@ namespace Worki.Data.Models
             nb_CoworkingSpace = 0;
             nb_WorkingHotel = 0;
             nb_PrivateArea = 0;
+            nb_Total = 0;
         }
 
         public void incr_nb_type(int type)
@@ -210,56 +212,67 @@ namespace Worki.Data.Models
                 case LocalisationType.SpotWifi:
                     {
                         nb_SpotWifi++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.CoffeeResto:
                     {
                         nb_CoffeeResto++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.Biblio:
                     {
                         nb_Biblio++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.PublicSpace:
                     {
                         nb_PublicSpace++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.TravelerSpace:
                     {
                         nb_TravelerSpace++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.Hotel:
                     {
                         nb_Hotel++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.Telecentre:
                     {
                         nb_Telecentre++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.BuisnessCenter:
                     {
                         nb_BuisnessCenter++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.CoworkingSpace:
                     {
                         nb_CoworkingSpace++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.WorkingHotel:
                     {
                         nb_WorkingHotel++;
+                        nb_Total++;
                         break;
                     }
                 case LocalisationType.PrivateArea:
                     {
                         nb_PrivateArea++;
+                        nb_Total++;
                         break;
                     }
                 default:
@@ -280,12 +293,7 @@ namespace Worki.Data.Models
             nb_CoworkingSpace = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.CoworkingSpace)).Count;
             nb_WorkingHotel = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.WorkingHotel)).Count;
             nb_PrivateArea = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.PrivateArea)).Count;
-        }
-
-        public int TotalByCountry()
-        {
-            return (nb_SpotWifi + nb_CoffeeResto + nb_Biblio + nb_PublicSpace + nb_TravelerSpace + nb_Hotel
-                + nb_Telecentre + nb_BuisnessCenter + nb_CoworkingSpace + nb_WorkingHotel + nb_PrivateArea);
+            nb_Total = nb_SpotWifi + nb_CoffeeResto + nb_Biblio + nb_PublicSpace + nb_TravelerSpace + nb_Hotel + nb_Telecentre + nb_BuisnessCenter + nb_CoworkingSpace + nb_WorkingHotel + nb_PrivateArea;
         }
     }
 

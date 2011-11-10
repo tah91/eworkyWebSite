@@ -30,7 +30,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la page mention légal")]
         public void ThenJeDoisAvoirLaPageMentionLegal()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/mentions-legales");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.Legal);
         }
 
         #endregion
@@ -46,7 +46,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la page jobs")]
         public void ThenJeDoisAvoirLaPageJobs()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/jobs");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.Job);
         }
 
         #endregion
@@ -56,14 +56,13 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page presse")]
         public void WhenJeVaisDansLaPagePresse()
         {
-            // WebBrowser.Current.Link(Find.ByText("Presse")).Click();
             WebBrowser.Current.Page<AccueilPage>().Lien_Presse.Click();
         }
 
         [Then(@"Je dois avoir la page presse")]
         public void ThenJeDoisAvoirLaPagePresse()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/presse");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.Press);
         }
 
         #endregion
@@ -73,14 +72,13 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page CGU")]
         public void WhenJeVaisDansLaPageCGU()
         {
-            // WebBrowser.Current.Link(Find.ByText("CGU")).Click();
             WebBrowser.Current.Page<AccueilPage>().Lien_CGU.Click();
         }
 
         [Then(@"Je dois avoir la page CGU")]
         public void ThenJeDoisAvoirLaPageCGU()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/cgu");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.CGU);
         }
 
         #endregion
@@ -90,14 +88,13 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page FAQ")]
         public void WhenJeVaisDansLaPageFAQ()
         {
-            // WebBrowser.Current.Link(Find.ByText("FAQ")).Click();
             WebBrowser.Current.Page<AccueilPage>().Lien_FAQ.Click();
         }
 
         [Then(@"Je dois avoir la page FAQ")]
         public void ThenJeDoisAvoirLaPageFAQ()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/faq");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.FAQ);
         }
 
         #endregion
@@ -107,14 +104,13 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page Qui sommes nous")]
         public void WhenJeVaisDansLaPageQuiSommesNous()
         {
-            // WebBrowser.Current.Link(Find.ByText("Qui sommes-nous ?")).Click();
             WebBrowser.Current.Page<AccueilPage>().Lien_WhoWeAre.Click();
         }
 
         [Then(@"Je dois avoir la page Qui sommes nous")]
         public void ThenJeDoisAvoirLaPageQuiSommesNous()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/a-propos");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.WhoWeAre);
             WebBrowser.Current.Close();
         }
 
@@ -125,14 +121,13 @@ namespace Worki.SpecFlow
         [When(@"Je vais dans la page Contact")]
         public void WhenJeVaisDansLaPageContact()
         {
-            // WebBrowser.Current.Link(Find.ByText("Contact")).Click();
             WebBrowser.Current.Page<AccueilPage>().Lien_Contact.Click();
         }
 
         [Then(@"Je dois avoir la page Contact")]
         public void ThenJeDoisAvoirLaPageContact()
         {
-            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + "accueil/contact");
+            Assert.AreEqual(WebBrowser.Current.Url, WebBrowser.RootURL + StaticStringClass.URL.Contact);
         }
 
         #endregion

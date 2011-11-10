@@ -17,7 +17,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page Admin")]
         public void GivenJeVaisDansLaPageAdmin()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Admin");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Admin);
         }
 
         [When(@"Je clique sur detail")]

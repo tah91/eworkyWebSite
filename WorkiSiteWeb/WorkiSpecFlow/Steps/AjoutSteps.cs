@@ -18,7 +18,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page d'ajout de lieux gratuits")]
         public void GivenJeVaisDansLaPageDAjoutDeLieuxGratuits()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/ajouter-lieu-gratuit");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.AddFreeSpace);
         }
 
         [Given(@"Je remplis les champs")]
@@ -70,7 +70,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page admin")]
         public void GivenJeVaisDansLaPageAdmin()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Admin");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Admin);
         }
 
         [Given(@"Je clique sur editer")]
@@ -139,7 +139,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page d'ajout de lieux payant")]
         public void GivenJeVaisDansLaPageDAjoutDeLieuxPayant()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/ajouter-lieu-payant");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.AddNotFreeSpace);
         }
 
         [Given(@"Je remplis les champs 2")]
@@ -229,7 +229,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page d'ajout")]
         public void GivenJeVaisDansLaPageDAjout()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/ajouter-lieu-gratuit");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.AddFreeSpace);
         }
 
         #endregion

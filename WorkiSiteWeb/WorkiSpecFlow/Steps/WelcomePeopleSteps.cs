@@ -17,7 +17,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais sur la page Welcome People")]
         public void GivenJeVaisSurLaPageWelcomePeople()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Admin/IndexWelcomePeople");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.WelcomePeopleIndex);
         }
 
         [When(@"Je remplis le formulaire")]

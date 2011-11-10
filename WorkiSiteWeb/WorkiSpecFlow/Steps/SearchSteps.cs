@@ -15,7 +15,7 @@ namespace Worki.SpecFlow
         [Given(@"Je vais dans la page Recherche")]
         public void GivenJeVaisDansLaPageRecherche()
         {
-            WebBrowser.Current.GoTo(WebBrowser.RootURL + "lieu-de-travail/recherche");
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Search);
             WebBrowser.Current.AutoClose = true;
         }
 

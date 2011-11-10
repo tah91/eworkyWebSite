@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Steps\SearchSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\StaticStringClass.cs" />
     <Compile Include="WebBrowser.cs" />
     <Compile Include="Features\WelcomePeople.feature.cs">
       <AutoGen>True</AutoGen>
