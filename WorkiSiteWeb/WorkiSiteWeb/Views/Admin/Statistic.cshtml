@@ -6,7 +6,7 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv("Statistique", "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.StatString.StatTitle, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
         @Html.Partial(MVC.Admin.Views._AdminMenu)
@@ -15,88 +15,135 @@
         <table>
             <tr>
                 <th>
-                    Pays
+                    @Worki.Resources.Views.Admin.StatString.Country
                 </th>
-                <th>
-                    Wifi
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.Wifi
                 </th>
-                <th>
-                    CoffeeResto
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.CoffeeResto
                 </th>
-                <th>
-                    Biblio
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.Biblio
                 </th>
-                <th>
-                    PublicSpace
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.PublicSpace
                 </th>
-                <th>
-                    TravelerSpace
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.TravelerSpace
                 </th>
-                <th>
-                    Hotel
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.Hotel
                 </th>
-                <th>
-                    Telecentre
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.Telecentre
                 </th>
-                <th>
-                    BuisnessCenter
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.BuisnessCenter
                 </th>
-                <th>
-                    CoworkingSpace
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.CoworkingSpace
                 </th>
-                <th>
-                    WorkingHotel
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.WorkingHotel
                 </th>
-                <th>
-                    PrivateArea
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.PrivateArea
                 </th>
-                <th>
-                    Total par Pays
+                <th >
+                    @Worki.Resources.Views.Admin.StatString.NbByCountry
                 </th>
             </tr>
             @foreach (var item in Model)
-            { 
-            <tr>
-                <td align="right">
-                    @item.Country_Name
-                </td>
-                <td align="right">
-                    @item.nb_SpotWifi
-                </td>
-                <td align="right">
-                    @item.nb_CoffeeResto
-                </td>
-                <td align="right">
-                    @item.nb_Biblio
-                </td>
-                <td align="right">
-                    @item.nb_PublicSpace
-                </td>
-                <td align="right">
-                    @item.nb_TravelerSpace
-                </td>
-                <td align="right">
-                    @item.nb_Hotel
-                </td>
-                <td align="right">
-                    @item.nb_Telecentre
-                </td>
-                <td align="right">
-                    @item.nb_BuisnessCenter
-                </td>
-                <td align="right">
-                    @item.nb_CoworkingSpace
-                </td>
-                <td align="right">
-                    @item.nb_WorkingHotel
-                </td>
-                <td align="right">
-                    @item.nb_PrivateArea
-                </td>
-                <td align="right">
-                    @item.TotalByCountry()
-                </td>
-            </tr>
+            {
+                if (Model.ElementAt(Model.Count - 1) == item)
+                {
+                <tfoot>
+                    <td align="right" class="bold">
+                        @item.Country_Name
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_SpotWifi
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_CoffeeResto
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_Biblio
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_PublicSpace
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_TravelerSpace
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_Hotel
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_Telecentre
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_BuisnessCenter
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_CoworkingSpace
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_WorkingHotel
+                    </td>
+                    <td align="right" class="bold">
+                        @item.nb_PrivateArea
+                    </td>
+                    <td align="right" class="bold">
+                        @item.TotalByCountry()
+                    </td>
+                </tfoot>
+                }
+                else
+                {
+                <tr>
+                    <td align="right">
+                        @item.Country_Name
+                    </td>
+                    <td align="right">
+                        @item.nb_SpotWifi
+                    </td>
+                    <td align="right">
+                        @item.nb_CoffeeResto
+                    </td>
+                    <td align="right">
+                        @item.nb_Biblio
+                    </td>
+                    <td align="right">
+                        @item.nb_PublicSpace
+                    </td>
+                    <td align="right">
+                        @item.nb_TravelerSpace
+                    </td>
+                    <td align="right">
+                        @item.nb_Hotel
+                    </td>
+                    <td align="right">
+                        @item.nb_Telecentre
+                    </td>
+                    <td align="right">
+                        @item.nb_BuisnessCenter
+                    </td>
+                    <td align="right">
+                        @item.nb_CoworkingSpace
+                    </td>
+                    <td align="right">
+                        @item.nb_WorkingHotel
+                    </td>
+                    <td align="right">
+                        @item.nb_PrivateArea
+                    </td>
+                    <td align="right">
+                        @item.TotalByCountry()
+                    </td>
+                </tr>
+                }
             }
         </table>
         <div class="clear"></div>

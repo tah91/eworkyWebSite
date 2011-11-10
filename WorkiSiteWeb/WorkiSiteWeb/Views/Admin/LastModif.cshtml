@@ -6,7 +6,7 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv("100 Dernières Modifications", "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.StatString.LastModif, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
         @Html.Partial(MVC.Admin.Views._AdminMenu)
@@ -15,42 +15,34 @@
         <table>
             <tr>
                 <th>
-                    i
+                    @Worki.Resources.Views.Admin.StatString.EworkerName
                 </th>
                 <th>
-                    Nom du eWorker
+                    @Worki.Resources.Views.Admin.StatString.PlaceName
                 </th>
                 <th>
-                    Nom du lieu
+                    @Worki.Resources.Views.Admin.StatString.Date
                 </th>
                 <th>
-                    Fait à
-                </th>
-                <th>
-                    Status
+                    @Worki.Resources.Views.Admin.StatString.Status
                 </th>
             </tr>
-            @{var count = 1;}
             @foreach (var item in Model)
             { 
             <tr>
                 <td align="right">
-                    @count
+                    <a href="@Url.AbsoluteAction(MVC.Profil.ActionNames.Detail, MVC.Profil.Name, new { id = item.MemberEditions.Last().Member.MemberId })">@item.MemberEditions.Last().Member.Email</a>
                 </td>
                 <td align="right">
-                    <a href="@Url.AbsoluteAction(MVC.Profil.ActionNames.Detail, MVC.Profil.Name, new { id = item.GetLastEdition().Member.MemberId })">@item.GetLastEdition().Member.MemberMainData.FirstName</a>
+                    <a href="@Url.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = item.ID, name = item.Name })">@item.Name</a>
                 </td>
                 <td align="right">
-                    <a href="@Url.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = item.ID, name = item.Name})">@item.Name</a>
+                    @string.Format("{0:d/M/yyyy HH:mm:ss}", item.MemberEditions.Last().ModificationDate)
                 </td>
                 <td align="right">
-                    @string.Format("{0:d/M/yyyy HH:mm:ss}", item.GetLastEdition().ModificationDate)
-                </td>
-                <td align="right">
-                    @(item.GetLastEdition().ModificationType == (int)EditionType.Creation ? "Creation" : "Edition")
+                    @(item.MemberEditions.Last().ModificationType == (int)EditionType.Creation ? Worki.Resources.Views.Admin.StatString.Create : Worki.Resources.Views.Admin.StatString.Edit)
                 </td>
             </tr>
-                count++;
             }
         </table>
         <div class="clear"></div>

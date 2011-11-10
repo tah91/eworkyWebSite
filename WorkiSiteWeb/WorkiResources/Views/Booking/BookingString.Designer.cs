@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous serez contacté dans les meilleurs délais par le gestionnaire de lieu..
+        ///   Looks up a localized string similar to Vous serez contacté dans les meilleurs délais par le gérant du lieu..
         /// </summary>
         public static string Speech {
             get {

@@ -16,7 +16,6 @@ li#emailSubMenu{list-style-image:url(images/e-mail.png)}
 .adminSubMenu li a:hover{text-decoration:underline;color:red}
 .adminPanel{float:left;width:80%}
 .adminPanel table{width:100%;margin-left:5px;background:none repeat scroll 0 0 #E9E9F3;border:.5em solid #E9E9F3;border-spacing:0;border-collapse:collapse}
-.adminPanel table th{background-color:Silver;color:white;font-size:1.1em;font-family:Arial,"Arial Black",Times,"Times New Roman",serif}
-.adminPanel table td,.adminPanel table th{border:thin solid #FFE}
-.adminPanel table td{text-align:center}
+.adminPanel table th,.adminPanel table tfoot{background-color:Silver;color:white;font-size:1.1em;font-family:Arial,"Arial Black",Times,"Times New Roman",serif}
+.adminPanel table td,.adminPanel table th{border:thin solid #FFE;text-align:center}
 .adminPanel table tr:hover td{background-color:#FFF;color:Blue}

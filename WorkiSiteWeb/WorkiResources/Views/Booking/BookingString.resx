@@ -151,7 +151,7 @@
     <value>Pour effectuer une demande de devis, remplissez les champs suivants.</value>
   </data>
   <data name="Speech" xml:space="preserve">
-    <value>Vous serez contacté dans les meilleurs délais par le gestionnaire de lieu.</value>
+    <value>Vous serez contacté dans les meilleurs délais par le gérant du lieu.</value>
   </data>
   <data name="ValidateQuotation" xml:space="preserve">
     <value>Valider la demande de devis</value>

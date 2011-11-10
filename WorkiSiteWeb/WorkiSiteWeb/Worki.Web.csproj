@@ -720,6 +720,7 @@
     <Content Include="Views\Emails\EmailContact.cshtml" />
     <Content Include="Views\Admin\Statistic.cshtml" />
     <Content Include="Views\Admin\LastModif.cshtml" />
+    <Content Include="Views\Emails\TakeOwnershipMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -784,7 +785,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>9886</DevelopmentServerPort>
+          <DevelopmentServerPort>6057</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

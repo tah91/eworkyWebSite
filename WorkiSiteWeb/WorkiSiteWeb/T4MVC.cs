@@ -2413,6 +2413,7 @@ namespace T4MVC {
             public readonly string EmailOwner = "~/Views/Emails/EmailOwner.cshtml";
             public readonly string FacebookMail = "~/Views/Emails/FacebookMail.cshtml";
             public readonly string ListLocMail = "~/Views/Emails/ListLocMail.cshtml";
+            public readonly string TakeOwnershipMail = "~/Views/Emails/TakeOwnershipMail.cshtml";
         }
     }
 

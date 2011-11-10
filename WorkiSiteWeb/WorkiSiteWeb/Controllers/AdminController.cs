@@ -1240,7 +1240,7 @@ namespace Worki.Web.Controllers
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var all = lRepo.GetAll().OrderBy(x => x.Country);
+            var all = lRepo.GetAll().OrderBy(x => x.Country.Trim());
             List<StateItem> list = new List<StateItem>();
 
             foreach (var item in all)
@@ -1279,7 +1279,6 @@ namespace Worki.Web.Controllers
                     list.Add(state_item);
                 }
             }
-            list.OrderBy(x => x.Country_Name);
             // Add the last item which contains the total of each place type
             var last_item = new StateItem("Total");
             last_item.GetTotal(lRepo);
@@ -1292,18 +1291,8 @@ namespace Worki.Web.Controllers
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var all = lRepo.GetAll();
-            List<Localisation> list = new List<Localisation>();
 
-            foreach (var loc in all)
-            {
-                if (loc.GetLastEdition() != null)
-                {
-                    list.Add(loc);
-                }
-            }
-
-            return View(MVC.Admin.Views.LastModif, list.OrderByDescending(x => x.GetLastEdition().ModificationDate).Take(100));
+            return View(MVC.Admin.Views.LastModif, lRepo.GetMany(x => x.MemberEditions.Count != 0).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Take(100));
         }
 
         #endregion

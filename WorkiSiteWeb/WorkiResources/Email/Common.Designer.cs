@@ -79,6 +79,15 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}&lt;br /&gt;{1}&lt;br /&gt;&lt;a href=&quot;{2}&quot;&gt;Suivez-nous sur Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;{3}&quot;&gt;Suivez-nous sur twitter&lt;/a&gt;.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Envoyer à un ami.
         /// </summary>
         public static string Friend {

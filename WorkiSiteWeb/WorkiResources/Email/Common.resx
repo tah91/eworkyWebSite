@@ -158,4 +158,7 @@ N'oubliez pas de proposer à vos clients de commenter et noter votre lieu, cela 
   <data name="Welcome" xml:space="preserve">
     <value>Bienvenue sur eWorky !</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>{0}&lt;br /&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Suivez-nous sur Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Suivez-nous sur twitter&lt;/a&gt;</value>
+  </data>
 </root>
