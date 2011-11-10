@@ -26,6 +26,9 @@
                 <th>
                     Fait à
                 </th>
+                <th>
+                    Status
+                </th>
             </tr>
             @{var count = 1;}
             @foreach (var item in Model)
@@ -35,13 +38,16 @@
                     @count
                 </td>
                 <td align="right">
-                    @item.Member.MemberMainData.FirstName
+                    <a href="@Url.AbsoluteAction(MVC.Profil.ActionNames.Detail, MVC.Profil.Name, new { id = item.GetLastEdition().Member.MemberId })">@item.GetLastEdition().Member.MemberMainData.FirstName</a>
                 </td>
                 <td align="right">
-                    @item.Name
+                    <a href="@Url.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = item.ID, name = item.Name})">@item.Name</a>
                 </td>
                 <td align="right">
-                    @string.Format("{0:d/M/yyyy HH:mm:ss}", item.MemberEditions.LastOrDefault().ModificationDate)
+                    @string.Format("{0:d/M/yyyy HH:mm:ss}", item.GetLastEdition().ModificationDate)
+                </td>
+                <td align="right">
+                    @(item.GetLastEdition().ModificationType == (int)EditionType.Creation ? "Creation" : "Edition")
                 </td>
             </tr>
                 count++;

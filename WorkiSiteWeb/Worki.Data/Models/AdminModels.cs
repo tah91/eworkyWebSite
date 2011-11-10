@@ -281,6 +281,12 @@ namespace Worki.Data.Models
             nb_WorkingHotel = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.WorkingHotel)).Count;
             nb_PrivateArea = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.PrivateArea)).Count;
         }
+
+        public int TotalByCountry()
+        {
+            return (nb_SpotWifi + nb_CoffeeResto + nb_Biblio + nb_PublicSpace + nb_TravelerSpace + nb_Hotel
+                + nb_Telecentre + nb_BuisnessCenter + nb_CoworkingSpace + nb_WorkingHotel + nb_PrivateArea);
+        }
     }
 
     #endregion

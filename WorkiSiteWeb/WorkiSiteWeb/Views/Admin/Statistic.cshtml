@@ -50,6 +50,9 @@
                 <th>
                     PrivateArea
                 </th>
+                <th>
+                    Total par Pays
+                </th>
             </tr>
             @foreach (var item in Model)
             { 
@@ -89,6 +92,9 @@
                 </td>
                 <td align="right">
                     @item.nb_PrivateArea
+                </td>
+                <td align="right">
+                    @item.TotalByCountry()
                 </td>
             </tr>
             }

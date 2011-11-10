@@ -1292,9 +1292,18 @@ namespace Worki.Web.Controllers
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var all = lRepo.GetAll().OrderByDescending(x => x.MemberEditions.LastOrDefault().ModificationDate).Take(100);
+            var all = lRepo.GetAll();
+            List<Localisation> list = new List<Localisation>();
 
-            return View(MVC.Admin.Views.LastModif, all);
+            foreach (var loc in all)
+            {
+                if (loc.GetLastEdition() != null)
+                {
+                    list.Add(loc);
+                }
+            }
+
+            return View(MVC.Admin.Views.LastModif, list.OrderByDescending(x => x.GetLastEdition().ModificationDate).Take(100));
         }
 
         #endregion
