@@ -131,11 +131,14 @@
 		</div>
 	</div>
     @RenderSection("ScriptContent", false)
-    <script type="text/javascript">
-        require.ready(function() {
-            require(["http://widget.uservoice.com/QRiGQmvm2Qq2VarJYV0ghQ.js"]);
-        });
-    </script>
+	@if (!Url.RequestContext.RouteData.Values.ContainsKey("controller") || (string)Url.RequestContext.RouteData.Values["controller"] != "Admin")
+	{
+	<script type="text/javascript">
+	 	require.ready(function () {
+	 		require(["http://widget.uservoice.com/QRiGQmvm2Qq2VarJYV0ghQ.js"]);
+	 	});
+	</script>
+	}
       <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
       <!--[if lt IE 7 ]>
