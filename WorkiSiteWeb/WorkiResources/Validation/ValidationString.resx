@@ -279,4 +279,10 @@
   <data name="WebsiteNotGoodPattern" xml:space="preserve">
     <value>L'adresse web entrée n'est pas au bon format.</value>
   </data>
+  <data name="AccountInactive" xml:space="preserve">
+    <value>Votre compte n'est pas encore activé. Pour continuer, vous devez d'abord activer votre compte en cliquant sur le lien qui vous a été envoyé suite à votre inscription.</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Attention, votre compte a fait l'objet d'un grand nombre de tentatives de connexion infructueuses. Pour préserver la sécurité de votre compte, eWorky l'a temporairement bloqué. Pour le réactiver, contactez-nous.</value>
+  </data>
 </root>

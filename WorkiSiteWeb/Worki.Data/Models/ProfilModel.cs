@@ -291,6 +291,42 @@ namespace Worki.Data.Models
             else
 				return string.Empty;
         }
+
+        public class ValidationException : Exception
+        {
+            public ValidationException(string message) :
+                base(message)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Tell if a member is valid (for login)
+        /// </summary>
+        /// <param name="member">member to validate</param>
+        /// <returns>true if valid, throw exeption if not</returns>
+        public static bool Validate(Member member)
+        {
+            //member don't exist
+            if (member == null)
+                throw new ValidationException(Worki.Resources.Validation.ValidationString.MailDoNotMatch);
+
+            // We found a user by the username
+
+            // Not valid if not approved
+            if (!member.IsApproved)
+            {
+                throw new ValidationException(Worki.Resources.Validation.ValidationString.AccountInactive);
+            }
+            //or locked out
+            else if (member.IsLockedOut)
+            {
+                throw new ValidationException(Worki.Resources.Validation.ValidationString.AccountLocked);
+            }
+
+            return true;
+        }
     }
 
     [Bind(Exclude = "MemberId,Username")]

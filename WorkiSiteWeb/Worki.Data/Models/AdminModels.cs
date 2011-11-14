@@ -28,6 +28,7 @@ namespace Worki.Data.Models
         public string UserName { get; set; }
         public bool IsAdmin { get; set; }
         public int Score { get; set; }
+        public bool Locked { get; set; }
     }
 
 	public class UserListViewModel

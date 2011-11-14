@@ -94,19 +94,15 @@ namespace Worki.Memberships
 			try
 			{
 				var userName = _Provider.GetUserNameByEmail(email);
-				if (string.IsNullOrEmpty(userName))
-					throw new ArgumentException(Worki.Resources.Validation.ValidationString.MailDoNotMatch, "email");
 				MembershipUser currentUser = _Provider.GetUser(userName, false);
-				if (currentUser == null)
-					return false;
 				var newPassword = currentUser.ResetPassword();
 				return true;
 			}
-			catch (ArgumentException)
+            catch (Member.ValidationException ex)
 			{
-				return false;
+                throw ex;
 			}
-			catch (MembershipPasswordException)
+			catch (Exception)
 			{
 				return false;
 			}
@@ -154,7 +150,8 @@ namespace Worki.Memberships
                              MemberId = item.MemberId,
                              UserName = item.Username,
                              IsAdmin = Roles.IsUserInRole(item.Username, MiscHelpers.AdminConstants.AdminRole),
-                             Score = item.ComputeScore()
+                             Score = item.ComputeScore(),
+                             Locked = item.IsLockedOut
                          });
             return toRet.ToList();
         }
@@ -224,6 +221,48 @@ namespace Worki.Memberships
 				throw ex;
 			}
 		}
+
+        public bool ActivateMember(string username, string key)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.GetMember(username);
+            if (member == null)
+                return false;
+            try
+            {
+                if (string.Compare(key, member.EmailKey) == 0)
+                {
+                    member.IsApproved = true;
+                    member.LastActivityDate = DateTime.Now;
+                    member.EmailKey = null;
+                    context.Commit();
+                    return true;
+                }
+                else
+                {
+                    context.Complete();
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool UnlockMember(string username)
+        {
+            try
+            {
+                _Provider.UnlockUser(username);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 	}
 
 	public class FormsAuthenticationService : IFormsAuthenticationService

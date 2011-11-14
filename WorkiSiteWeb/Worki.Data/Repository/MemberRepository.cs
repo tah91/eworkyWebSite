@@ -13,7 +13,6 @@ namespace Worki.Data.Models
 	{
 		Member GetMember(string key);
 		string GetUserName(string email);
-		bool ActivateMember(string username, string key);
 	}
 
 	public class MemberRepository : RepositoryBase<Member>, IMemberRepository
@@ -39,33 +38,7 @@ namespace Worki.Data.Models
 			return member;
 		}
 
-		public bool ActivateMember(string username, string key)
-		{
-			var member = _Context.Members.SingleOrDefault(m => m.Email == username);
-			if (member == null)
-				return false;
-			try
-			{
-				if (string.Compare(key, member.EmailKey) == 0)
-				{
-					member.IsApproved = true;
-					member.LastActivityDate = DateTime.Now;
-					member.EmailKey = null;
-					_Context.Commit();
-					return true;
-				}
-				else
-				{
-					_Context.Complete();
-					return false;
-				}
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("ActivateMember", ex);
-				return false;
-			}			
-		}
+
 
 		#endregion
 

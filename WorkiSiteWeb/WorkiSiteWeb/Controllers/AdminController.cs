@@ -19,7 +19,7 @@ namespace Worki.Web.Controllers
 	[Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
     [CompressFilter(Order = 1)]
     [CacheFilter(Order = 2)]
-	[RequireHttps]
+	//[RequireHttps]
     public partial class AdminController : Controller
     {
         IMembershipService _MembershipService;
@@ -165,6 +165,26 @@ namespace Worki.Web.Controllers
 			};
 			return View(viewModel);
 		}
+
+
+                /// <summary>
+        /// Action method to unlock an account for a member
+        /// </summary>
+        /// <param name="id">The id of account to unlock</param>
+        /// <returns>Redirect to User index</returns>
+        public virtual ActionResult UnlockUser(string username)
+        {
+            try
+            {
+                _MembershipService.UnlockMember(username);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("UnlockUser", ex);
+            }
+
+            return RedirectToAction(MVC.Admin.IndexUser());
+        }
 
         /// <summary>
         /// POST Action method to update admin roles

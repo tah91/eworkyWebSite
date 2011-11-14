@@ -333,4 +333,7 @@
   <data name="OnOffLine" xml:space="preserve">
     <value>Online/Offline</value>
   </data>
+  <data name="Unlock" xml:space="preserve">
+    <value>Unlocker</value>
+  </data>
 </root>

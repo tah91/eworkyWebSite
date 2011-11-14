@@ -57,31 +57,44 @@ namespace Worki.Web.Controllers
         /// <param name="model">The logon data from the form</param>
         /// <param name="returnUrl">The url to redirect to in case of sucess</param>
         /// <returns>Redirect to return url if any, if not to home page</returns>
-        [HttpPost] 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("connexion")]
         public virtual ActionResult LogOn(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                if (_MembershipService.ValidateUser(model.Login, model.Password))
+                try
                 {
-					var context = ModelFactory.GetUnitOfWork();
-					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var member = mRepo.GetMember(model.Login);
-                    var userData = member.GetUserData();
-                    _FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
-                    if (!String.IsNullOrEmpty(returnUrl))
+                    if (_MembershipService.ValidateUser(model.Login, model.Password))
                     {
-                        return Redirect(returnUrl);
+                        var context = ModelFactory.GetUnitOfWork();
+                        var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                        var member = mRepo.GetMember(model.Login);
+                        var userData = member.GetUserData();
+                        _FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+                        if (!String.IsNullOrEmpty(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
+                        }
                     }
                     else
                     {
-                        return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
+                        ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
                     }
                 }
-                else
+                catch (Member.ValidationException ex)
                 {
+                    _Logger.Error("LogOn", ex);
+                    ModelState.AddModelError("", ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("LogOn", ex);
                     ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
                 }
             }
@@ -173,7 +186,6 @@ namespace Worki.Web.Controllers
 				}
 				catch (Exception ex)
 				{
-					//TODO change this
 					_Logger.Error(ex.Message);
 					if (string.IsNullOrEmpty(error))
 						error = "Une erreur est surevnue pendant la sauvegarde";
@@ -228,9 +240,7 @@ namespace Worki.Web.Controllers
         [ActionName("activer")]
         public virtual ActionResult Activate(string username, string key)
         {
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            if (mRepo.ActivateMember(username, key) == false)
+            if (_MembershipService.ActivateMember(username, key) == false)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain; 
                 return RedirectToAction(MVC.Home.Index());
@@ -262,98 +272,56 @@ namespace Worki.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_MembershipService.ResetPassword(model.EMail))
+                try
                 {
-                    //send mail to activate the account
-					var context = ModelFactory.GetUnitOfWork();
-					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var member = mRepo.GetMember(model.EMail);
-                    try
+                    if (_MembershipService.ResetPassword(model.EMail))
                     {
-                        var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-                        var profilLink = urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Dashboard, MVC.Profil.Name, new { id = member.MemberId });
-                        TagBuilder link = new TagBuilder("a");
-						link.MergeAttribute("href", profilLink);
-                        link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
+                        //send mail to activate the account
+                        var context = ModelFactory.GetUnitOfWork();
+                        var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                        var member = mRepo.GetMember(model.EMail);
+                        try
+                        {
+                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                            var profilLink = urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Dashboard, MVC.Profil.Name, new { id = member.MemberId });
+                            TagBuilder link = new TagBuilder("a");
+                            link.MergeAttribute("href", profilLink);
+                            link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
 
-                        dynamic resetMail = new Email(MVC.Emails.Views.Email);
-						resetMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        resetMail.To = member.Email;
-                        resetMail.Subject = Worki.Resources.Email.ResetPassword.ResetPasswordSubject;
-                        resetMail.ToName = member.MemberMainData.FirstName;
-                        resetMail.Content = string.Format(Worki.Resources.Email.ResetPassword.ResetPasswordContent, member.Email, _MembershipService.GetPassword(member.Email, null), link.ToString());
-                        resetMail.Send();
+                            dynamic resetMail = new Email(MVC.Emails.Views.Email);
+                            resetMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                            resetMail.To = member.Email;
+                            resetMail.Subject = Worki.Resources.Email.ResetPassword.ResetPasswordSubject;
+                            resetMail.ToName = member.MemberMainData.FirstName;
+                            resetMail.Content = string.Format(Worki.Resources.Email.ResetPassword.ResetPasswordContent, member.Email, _MembershipService.GetPassword(member.Email, null), link.ToString());
+                            resetMail.Send();
+                        }
+                        catch (Exception ex)
+                        {
+                            _Logger.Error("error", ex);
+                        }
+
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                        return RedirectToAction(MVC.Home.Index());
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        _Logger.Error("error", ex);
+                        ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailDoNotMatch);
                     }
-
-                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
-                    return RedirectToAction(MVC.Home.Index());
                 }
-                else
+                catch (Member.ValidationException ex)
                 {
+                    _Logger.Error("LogOn", ex);
+                    ModelState.AddModelError("", ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("LogOn", ex);
                     ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailDoNotMatch);
                 }
             }
             return View(model);
         }
-
-        //OpenIdRelyingParty openId = new OpenIdRelyingParty();
-        //public virtual ActionResult OpenId(string openIdUrl)
-        //{
-        //    var response = openId.GetResponse();
-        //    if (response == null)
-        //    {
-        //        // Stage 2: user submitting Identifier
-        //        Identifier id;
-        //        if (Identifier.TryParse(openIdUrl, out id))
-        //        {
-        //            try
-        //            {
-        //                var request = openId.CreateRequest(openIdUrl);
-        //                var fetch = new FetchRequest();
-        //                fetch.Attributes.AddRequired(WellKnownAttributes.Contact.Email);
-        //                fetch.Attributes.AddRequired(WellKnownAttributes.Name.First);
-        //                fetch.Attributes.AddRequired(WellKnownAttributes.Name.Last);
-        //                request.AddExtension(fetch);
-        //                return request.RedirectingResponse.AsActionResult();
-        //            }
-        //            catch (ProtocolException ex)
-        //            {
-        //                _Logger.Error("OpenID Exception...", ex);
-        //                return RedirectToAction(MVC.Account.ActionNames.LogOn);
-        //            }
-        //        }
-        //        _Logger.Info("OpenID Error...invalid url. url='" + openIdUrl + "'");
-        //        return RedirectToAction(MVC.Account.ActionNames.LogOn);
-        //    }
-
-        //    // Stage 3: OpenID Provider sending assertion response
-        //    switch (response.Status)
-        //    {
-        //        case AuthenticationStatus.Authenticated:
-        //            var fetch = response.GetExtension<FetchResponse>();
-        //            string firstName = "";
-        //            string lastName = "";
-        //            string email = "";
-        //            if (fetch != null)
-        //            {
-        //                firstName = fetch.GetAttributeValue(WellKnownAttributes.Name.First);
-        //                lastName = fetch.GetAttributeValue(WellKnownAttributes.Name.Last);
-        //                email = fetch.GetAttributeValue(WellKnownAttributes.Contact.Email);
-        //            }
-        //            return Content(response.ClaimedIdentifier.ToString() + firstName + lastName + email);
-        //        case AuthenticationStatus.Canceled:
-        //            _Logger.Info("OpenID: Cancelled at provider.");
-        //            return RedirectToAction("Login");
-        //        case AuthenticationStatus.Failed:
-        //            _Logger.Error("OpenID Exception...", response.Exception);
-        //            return RedirectToAction(MVC.Account.ActionNames.LogOn);
-        //    }
-        //    return RedirectToAction(MVC.Account.ActionNames.LogOn);
-        //}
 
 
         /// <summary>

@@ -310,7 +310,6 @@ namespace Worki.Memberships
 				Logger.Error("UpdateUser", ex);
 				context.Complete();
 			}
-
         }
 
         /// <summary>
@@ -327,7 +326,8 @@ namespace Worki.Memberships
             {
 				var member = mRepo.GetMember(userName);
 				member.IsLockedOut = false;
-
+                // Reset past failures
+                ResetAuthenticationFailures(ref member, DateTime.Now);
 				context.Commit();
                 // A user was found and nothing was thrown
                 ret = true;
@@ -382,64 +382,64 @@ namespace Worki.Memberships
         /// <param name="password">The login username</param>
         /// <param name="username">Login password</param>
         /// <returns>True if successful. Defaults to false.</returns>
-		public override bool ValidateUser(string username, string password)
-		{
-			// Return status defaults to false.
-			bool ret = false;
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			try
-			{
-				var m = mRepo.GetMember(username);
-				// We found a user by the username
-				if (m != null)
-				{
-					// A user cannot login if not approved or locked out
-					if ((!m.IsApproved) || m.IsLockedOut)
-					{
-						ret = false;
-					}
-					else
-					{
-						// Trigger period
-						DateTime dt = DateTime.Now;
+        public override bool ValidateUser(string username, string password)
+        {
+            // Return status defaults to false.
+            bool ret = false;
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            try
+            {
+                var m = mRepo.GetMember(username);
 
-						// Check the given password and the one stored (and salt, if it exists)
-						if (CheckPassword(password, m.Password, m.PasswordSalt))
-						{
-							m.LastLoginDate = dt;
-							m.LastActivityDate = dt;
+                if(Member.Validate(m))
+                {
+                    // Trigger period
+                    DateTime dt = DateTime.Now;
 
-							// Reset past failures
-							ResetAuthenticationFailures(ref m, dt);
+                    // Check the given password and the one stored (and salt, if it exists)
+                    if (CheckPassword(password, m.Password, m.PasswordSalt))
+                    {
+                        m.LastLoginDate = dt;
+                        m.LastActivityDate = dt;
 
-							ret = true;
-						}
-						else
-						{
-							// The login failed... Increment the login attempt count
-							m.FailedPasswordAttemptCount = (int)m.FailedPasswordAttemptCount + 1;
+                        // Reset past failures
+                        ResetAuthenticationFailures(ref m, dt);
 
-							if (m.FailedPasswordAttemptCount >= MaxInvalidPasswordAttempts)
-								m.IsLockedOut = true;
+                        ret = true;
+                    }
+                    else
+                    {
+                        // The login failed... Increment the login attempt count
+                        m.FailedPasswordAttemptCount = (int)m.FailedPasswordAttemptCount + 1;
 
-							m.FailedPasswordAttemptWindowStart = dt;
+                        if (m.FailedPasswordAttemptCount >= MaxInvalidPasswordAttempts)
+                            m.IsLockedOut = true;
 
-						}
-					}
-				}
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				// Nothing was thrown, so go ahead and return true
-				ret = false;
-				Logger.Error("ValidateUser", ex);
-				context.Complete();
-			}
+                        m.FailedPasswordAttemptWindowStart = dt;
 
-			return ret;
-		}
+                    }
+                }
+
+                context.Commit();
+            }
+            catch (Member.ValidationException ex)
+            {
+                // Re throw to indicate the error
+                ret = false;
+                Logger.Error("ValidateUser", ex);
+                context.Complete();
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                ret = false;
+                Logger.Error("ValidateUser", ex);
+                context.Complete();
+            }
+
+            return ret;
+        }
 
         /// <summary>
         /// Gets the current password of a user (provided it isn't hashed)
@@ -479,53 +479,58 @@ namespace Worki.Memberships
         /// <param name="username">User the password is being reset for</param>
         /// <param name="answer">Password retrieval answer</param>
         /// <returns>Newly generated password</returns>
-		public override string ResetPassword(string username, string answer)
-		{
-			// Default password is empty
-			string pass = String.Empty;
+        public override string ResetPassword(string username, string answer)
+        {
+            // Default password is empty
+            string pass = String.Empty;
 
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			try
-			{
-				Member m = mRepo.GetMember(username);
-				// We found a user by that name
-				if (m != null)
-				{
-					// Check if the returned password answer matches
-					if (answer == m.PasswordAnswer)
-					{
-						// Create a new password with the minimum number of characters
-						pass = GeneratePassword(MinRequiredPasswordLength);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            try
+            {
+                Member m = mRepo.GetMember(username);
+                // We found a user by that name
 
-						// If the password format is hashed, there must be a salt added
-						string salt = "";
-						if (PasswordFormat == MembershipPasswordFormat.Hashed)
-						{
-							salt = GenerateSalt();
-							pass = pass + salt;
-						}
+                // Check if the returned password answer matches
+                if (Member.Validate(m) && answer == m.PasswordAnswer)
+                {
+                    // Create a new password with the minimum number of characters
+                    pass = GeneratePassword(MinRequiredPasswordLength);
 
-						m.Password = EncodePassword(pass);
-						m.PasswordSalt = salt;
-						//to change password, same process has activation link
-						m.EmailKey = Member.GenerateKey();
+                    // If the password format is hashed, there must be a salt added
+                    string salt = "";
+                    if (PasswordFormat == MembershipPasswordFormat.Hashed)
+                    {
+                        salt = GenerateSalt();
+                        pass = pass + salt;
+                    }
 
-						// Reset everyting
-						ResetAuthenticationFailures(ref m, DateTime.Now);
+                    m.Password = EncodePassword(pass);
+                    m.PasswordSalt = salt;
+                    //to change password, same process has activation link
+                    m.EmailKey = Member.GenerateKey();
 
-						//MemberRepository.Save();
-					}
-				}
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				Logger.Error("ResetPassword", ex);
-				context.Complete();
-			}
-			return pass;
-		}
+                    // Reset everyting
+                    ResetAuthenticationFailures(ref m, DateTime.Now);
+
+                    //MemberRepository.Save();
+                }
+                context.Commit();
+            }
+            catch (Member.ValidationException ex)
+            {
+                // Re throw to indicate the error
+                Logger.Error("ResetPassword", ex);
+                context.Complete();
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ResetPassword", ex);
+                context.Complete();
+            }
+            return pass;
+        }
 
         /// <summary>
         /// Change the current password for a new one. Note: Both are required.
@@ -651,8 +656,10 @@ namespace Worki.Memberships
             {
 				Member m = mRepo.Get(Convert.ToInt32(providerUserKey));
 
-                if (m != null)
-                    u = GetUserFromMember(m);
+                if (m == null)
+                    throw new Exception(Worki.Resources.Validation.ValidationString.MailDoNotMatch);
+                
+                u = GetUserFromMember(m);
             }
 			catch (Exception ex)
             {
@@ -673,9 +680,10 @@ namespace Worki.Memberships
             try
             {
 				Member m = mRepo.GetMember(username);
+                if (m == null)
+                    throw new Exception(Worki.Resources.Validation.ValidationString.MailDoNotMatch);
 
-                if (m != null)
-                    u = GetUserFromMember(m);
+                u = GetUserFromMember(m);
             }
             catch(Exception ex)
             {

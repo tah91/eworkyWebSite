@@ -780,6 +780,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult UnlockUser() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.UnlockUser);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult ChangeUserRole() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ChangeUserRole);
         }
@@ -874,6 +879,7 @@ namespace Worki.Web.Controllers {
             public readonly string Index = "Index";
             public readonly string UpdateMainLocalisation = "UpdateMainLocalisation";
             public readonly string IndexUser = "IndexUser";
+            public readonly string UnlockUser = "UnlockUser";
             public readonly string ChangeUserRole = "ChangeUserRole";
             public readonly string DeleteUser = "supprimer-utilisateur";
             public readonly string IndexVisitor = "IndexVisitor";
@@ -946,6 +952,12 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult IndexUser(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexUser);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult UnlockUser(string username) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UnlockUser);
+            callInfo.RouteValueDictionary.Add("username", username);
             return callInfo;
         }
 

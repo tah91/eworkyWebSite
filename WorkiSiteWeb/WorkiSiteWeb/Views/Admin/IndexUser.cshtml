@@ -49,9 +49,13 @@
                         <td align="center">
                             @Html.CheckBox(item.UserName, item.IsAdmin)
                         </td>
-                       <td align="right">
-                            &nbsp;&nbsp;
+                       <td align="center">
                             @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteUser(item.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                            @if (item.Locked)
+                            {
+                                <text>|</text> 
+                                @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Unlock, MVC.Admin.UnlockUser(item.UserName))
+                            }
                         </td>
                         <td align="right">
                             &nbsp;&nbsp;
