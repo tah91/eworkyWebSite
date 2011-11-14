@@ -19,7 +19,7 @@ namespace Worki.Web.Controllers
 	[Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
     [CompressFilter(Order = 1)]
     [CacheFilter(Order = 2)]
-	//[RequireHttps]
+    [RequireHttpsRemote]
     public partial class AdminController : Controller
     {
         IMembershipService _MembershipService;

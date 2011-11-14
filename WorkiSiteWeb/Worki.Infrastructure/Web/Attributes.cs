@@ -35,6 +35,27 @@ namespace Worki.Infrastructure
 	//    }
 	//}
 
+    /// <summary>
+    /// Remote only require https
+    /// </summary>
+    public class RequireHttpsRemoteAttribute : RequireHttpsAttribute
+    {
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            if (filterContext == null)
+            {
+                throw new ArgumentNullException("filterContext");
+            }
+
+            if (filterContext.HttpContext != null && filterContext.HttpContext.Request.IsLocal)
+            {
+                return;
+            }
+
+            base.OnAuthorization(filterContext);
+        }
+    }
+
     //The class is taken from http://aspnetmobilesamples.codeplex.com/
     public class RedirectMobileDevicesToMobileAreaAttribute : AuthorizeAttribute
     {
