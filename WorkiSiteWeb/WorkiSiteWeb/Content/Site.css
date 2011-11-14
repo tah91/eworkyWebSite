@@ -543,10 +543,11 @@ div.pagerTop
 .informationContainer
 {
 	text-align:center;
-	background:whiteSmoke;
-	border: 1px solid #E5E5E5;
+	background:#cdffff;
+	border: 1px solid #7ad6ff;
 	padding: 10px;
 	margin: 5px 0px 15px 0px;
+	color:#6db9ea;
 }
 
 /* BORDER
@@ -918,10 +919,10 @@ table tr.row-alternate
 {
 	padding: 10px 10px 10px 35px;
 	margin: 10px 0;
-	border: 1px solid #dfdfdf;
-	color: #ff0000;
-	font-weight: bold;
-	background: #fcf9ce url(icons/error.gif) 5px 6px no-repeat;
+	border: 1px solid red;
+	color: red;
+	/*font-weight: bold;*/
+	background: #ffcccb url(icons/error.gif) 5px 6px no-repeat;
 }
 
 .errorMessage, .warningMessage, .infoMessage
