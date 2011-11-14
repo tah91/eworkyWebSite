@@ -57,8 +57,8 @@ namespace Worki.Data.Models
 
         public RegisterModel()
         {
-            CivilitySelectTypes = new SelectList(MemberMainData.CivilityTypes, "Key", "Value", CivilityType.Mr);
-            ProfileSelectTypes = new SelectList(MemberMainData.ProfileTypes, "Key", "Value", ProfileType.LocalisationOwner);
+            CivilitySelectTypes = new SelectList(MemberMainData.GetCivilityTypes(), "Key", "Value", CivilityType.Mr);
+            ProfileSelectTypes = new SelectList(MemberMainData.GetProfileTypes(), "Key", "Value", ProfileType.LocalisationOwner);
             MemberMainData = new MemberMainData();
 			AcceptCGU = true;
         }
