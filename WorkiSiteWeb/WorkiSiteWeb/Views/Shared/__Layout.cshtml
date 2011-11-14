@@ -57,7 +57,7 @@
 		</div>
 		<div class="page">
 			<div id="main" class="clearfix">
-				@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain)
+				@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain, new { @class = "borderRadius" })
 				@if (ViewContext.TempData[MiscHelpers.TempDataConstants.Info] != null)
 				{
 				<div class="informationContainer borderRadius bold blue">
@@ -141,7 +141,7 @@
 	}
     <script type="text/javascript">
         require.ready(function () {
-            $('.informationContainer').delay(10000).slideUp();
+            $('.informationContainer').delay(8000).slideUp();
         });
 	</script>
       <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.

@@ -122,8 +122,10 @@ table td{padding:0;border:solid 1px transparent;vertical-align:middle}
 table tr.row-alternate{background-color:#E4E4E4}
 .error{color:#f00}
 .field-validation-error{color:#f00}
-.input-validation-error{border:1px solid #f00;background-color:#fee}
-.validation-summary-errors{padding:10px 10px 10px 35px;margin:10px 0;border:1px solid red;color:red;background:#ffcccb url(icons/error.gif) 5px 6px no-repeat}
+.input-validation-error{border:1px solid red;background-color:#fee}
+.validation-summary-errors{padding:10px 10px 10px 35px;margin:10px 0;border:1px solid red;color:red;background:#fee url(icons/error.gif) 5px 6px no-repeat}
+.validation-summary-errors ul{margin-top:10px;margin-left:20px}
+.validation-summary-errors li{list-style:square}
 .errorMessage,.warningMessage,.infoMessage{padding:10px 10px 10px 35px;margin:5px 0;border:1px solid #DFDFDF;color:#333;font-weight:bold}
 .errorMessage{background:#fcf9ce url(icons/error.gif) 5px 6px no-repeat}
 .warningMessage{background:#fcf9ce url(icons/exclamation.gif) 5px 6px no-repeat}

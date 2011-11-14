@@ -911,7 +911,7 @@ table tr.row-alternate
 
 .input-validation-error
 {
-	border: 1px solid #ff0000;
+	border: 1px solid red;
 	background-color: #ffeeee;
 }
 
@@ -922,7 +922,18 @@ table tr.row-alternate
 	border: 1px solid red;
 	color: red;
 	/*font-weight: bold;*/
-	background: #ffcccb url(icons/error.gif) 5px 6px no-repeat;
+	background: #ffeeee url(icons/error.gif) 5px 6px no-repeat;
+}
+
+.validation-summary-errors ul
+{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.validation-summary-errors li
+{
+    list-style: square;
 }
 
 .errorMessage, .warningMessage, .infoMessage
