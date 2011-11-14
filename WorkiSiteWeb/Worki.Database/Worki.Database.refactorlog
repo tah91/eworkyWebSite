@@ -14,4 +14,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="MonOpenMorning" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="bd615aea-d688-407c-87d9-c7fce59e0c9c" ChangeDateTime="11/14/2011 21:01:58">
+    <Property Name="ElementName" Value="[dbo].[Localisation].[Online]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Localisation]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Offline" />
+  </Operation>
 </Operations>
