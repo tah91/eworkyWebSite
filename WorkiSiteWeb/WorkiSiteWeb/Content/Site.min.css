@@ -176,7 +176,7 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .active{background-position:0 0}
 .acc_container,.toogle_container{margin-bottom:5px;padding:0;overflow:hidden;clear:both;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
 .acc_container .block,.toogle_container .block{padding:0 10px}
-.detailContent{margin-top:10px;border:1px solid #CCC;background-color:whiteSmoke;box-shadow:2px -5px 10px #DDD}
+.detailContent{margin-top:10px;border:1px solid #CCC;background-color:whiteSmoke;box-shadow:2px 5px 10px #DDD}
 .blockContainer{padding:20px;line-height:1.6}
 .dashedRight{border-right:1px dashed #CCC}
 .dashedLeft{border-left:1px dashed #CCC}

@@ -863,6 +863,16 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult IndexRental() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Last100Modif() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Last100Modif);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult LastCreate() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LastCreate);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AdminController Actions { get { return MVC.Admin; } }
@@ -901,6 +911,7 @@ namespace Worki.Web.Controllers {
             public readonly string IndexRental = "IndexRental";
             public readonly string Stat = "Stat";
             public readonly string Last100Modif = "Last100Modif";
+            public readonly string LastCreate = "LastCreate";
         }
 
 
@@ -926,6 +937,7 @@ namespace Worki.Web.Controllers {
             public readonly string IndexUser = "~/Views/Admin/IndexUser.cshtml";
             public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";
             public readonly string IndexWelcomePeople = "~/Views/Admin/IndexWelcomePeople.cshtml";
+            public readonly string LastCreate = "~/Views/Admin/LastCreate.cshtml";
             public readonly string LastModif = "~/Views/Admin/LastModif.cshtml";
             public readonly string Statistic = "~/Views/Admin/Statistic.cshtml";
             public readonly string supprimer_utilisateur = "~/Views/Admin/supprimer-utilisateur.cshtml";
@@ -1135,8 +1147,15 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Last100Modif() {
+        public override System.Web.Mvc.ActionResult Last100Modif(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Last100Modif);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LastCreate(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LastCreate);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 

@@ -147,6 +147,9 @@
   <data name="Hotel" xml:space="preserve">
     <value>Hôtel</value>
   </data>
+  <data name="LastCreate" xml:space="preserve">
+    <value>Dernières créations</value>
+  </data>
   <data name="LastModif" xml:space="preserve">
     <value>Dernières modifications</value>
   </data>

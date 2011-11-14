@@ -1337,7 +1337,7 @@ html ul.tabs li.active a:hover
     margin-top: 10px;
     border:1px solid #CCCCCC;
     background-color: whiteSmoke;
-    box-shadow: 2px -5px 10px #DDD;
+    box-shadow: 2px 5px 10px #DDD;
     /*padding:20px;*/
 }
 
