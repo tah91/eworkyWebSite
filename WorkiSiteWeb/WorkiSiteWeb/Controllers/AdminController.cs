@@ -1288,12 +1288,42 @@ namespace Worki.Web.Controllers
             return View(MVC.Admin.Views.Statistic, list);
         }
 
-        public virtual ActionResult Last100Modif()
+        public virtual ActionResult Last100Modif(int? page)
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var pageValue = page ?? 1;
+            var localisations = lRepo.GetMany(x => x.MemberEditions.Count > 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
+            var viewModel = new AdminLocalisation(localisations.ToList())
+            {
+                Localisations = localisations,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = PageSize,
+                    TotalItems = 100
+                }
+            };
+            return View(MVC.Admin.Views.LastModif, viewModel);
+        }
 
-            return View(MVC.Admin.Views.LastModif, lRepo.GetMany(x => x.MemberEditions.Count != 0).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Take(100));
+        public virtual ActionResult LastCreate(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var pageValue = page ?? 1;
+            var localisations = lRepo.GetMany(x => x.MemberEditions.Count == 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
+            var viewModel = new AdminLocalisation(localisations.ToList())
+            {
+                Localisations = localisations,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = PageSize,
+                    TotalItems = 100
+                }
+            };
+            return View(MVC.Admin.Views.LastCreate, viewModel);
         }
 
         #endregion

@@ -151,6 +151,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dernières créations.
+        /// </summary>
+        public static string LastCreate {
+            get {
+                return ResourceManager.GetString("LastCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dernières modifications.
         /// </summary>
         public static string LastModif {

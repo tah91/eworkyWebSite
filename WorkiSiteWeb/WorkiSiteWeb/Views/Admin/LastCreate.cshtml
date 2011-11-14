@@ -6,7 +6,7 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.StatString.LastModif, "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.StatString.LastCreate, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
         @Html.Partial(MVC.Admin.Views._AdminMenu)
@@ -40,13 +40,13 @@
                     @string.Format("{0:d/M/yyyy HH:mm:ss}", item.MemberEditions.Last().ModificationDate)
                 </td>
                 <td align="right">
-                    @Worki.Resources.Views.Admin.StatString.Edit
+                    @Worki.Resources.Views.Admin.StatString.Create
                 </td>
             </tr>
             }
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.Last100Modif, MVC.Admin.Name, new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.LastCreate, MVC.Admin.Name, new { page = x }))
         </div> 
         <div class="clear"></div>
     </div>
