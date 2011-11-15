@@ -63,79 +63,58 @@ namespace Worki.Web.Controllers
             return View(viewModel);
         }
 
-        /// <summary>
-        /// POST Action method to update "a la une" localisation list
-        /// and redirect to localisation admin home
-        /// </summary>
-        /// <param name="collection">form containg the list of ids to push to "a la une"</param>
-        /// <returns>Redirect to return url</returns>
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public virtual ActionResult UpdateMainLocalisation(FormCollection collection, string returnUrl)
+        public virtual ActionResult OnOffline(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var loc = lRepo.Get(id);
+            try
+            {
+                if (loc == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                    return RedirectToAction(MVC.Admin.Index());
+                }
+                if (loc.MainLocalisation != null)
+                {
+                    loc.MainLocalisation.IsOffline = !loc.MainLocalisation.IsOffline;
+                    context.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("OnOffline", ex);
+            }
+
+            return RedirectToAction(MVC.Admin.Index());
+        }
+
+        public virtual ActionResult UpdateMainLocalisation(int id)
 		{
-			if (ModelState.IsValid)
-			{
-				var context = ModelFactory.GetUnitOfWork();
-				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-				try
-				{
-					// erase all values on the tables mainLocalisation inthe table
-					var listCollection = collection.AllKeys;
-					foreach (var key in listCollection)
-					{
-						var locId = 0;
-						try
-						{
-							locId = int.Parse(key);
-						}
-						catch (Exception)
-						{
-							continue;
-						}
-						var value = collection[key].ToLower();
-						var loc = lRepo.Get(locId);
-						var values = value.Split(',');
-						var isMain = false;
-						var userName = string.Empty;
-						foreach (var item in values)
-						{
-							if (string.IsNullOrEmpty(item))
-								continue;
-							if (string.Compare(item, "true", StringComparison.InvariantCultureIgnoreCase) == 0)
-								isMain = true;
-							//retrieve username
-							if (item.Contains('@'))
-							{
-								var member = mRepo.GetMember(item);
-								if (member == null)
-									throw new Exception();
-                                loc.SetOwner(member.MemberId);
-							}
-						}
-						//case row is checked
-						if (isMain)
-						{
-							if (loc.MainLocalisation == null)
-								loc.MainLocalisation = new MainLocalisation { LocalisationID = locId };
-						}
-						else
-						{
-                            if (loc.MainLocalisation != null)
-                                loc.MainLocalisation.Localisation = null;
-						}
-					}
-					context.Commit();
-				}
-				catch (Exception e)
-				{
-					_Logger.Error(e.Message);
-					context.Complete();
-					ModelState.AddModelError("", e.Message);
-				}
-			}
-			// Redirection
-			return Redirect(returnUrl);
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var loc = lRepo.Get(id);
+            try
+            {
+                if (loc == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                    return RedirectToAction(MVC.Admin.Index());
+                }
+                if (loc.MainLocalisation != null)
+                {
+                    loc.MainLocalisation.IsMain = !loc.MainLocalisation.IsMain;
+                    context.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("UpdateMainLocalisation", ex);
+            }
+
+            return RedirectToAction(MVC.Admin.Index());
 		}
 
         #endregion 
@@ -1298,51 +1277,32 @@ namespace Worki.Web.Controllers
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var all = lRepo.GetAll().OrderBy(x => x.Country.Trim());
-            List<StateItem> list = new List<StateItem>();
+            var all = lRepo.GetAll();
 
-            foreach (var item in all)
+            var req = from p in all
+                      group p by new { p.Country } into g
+                      select new { Count = g.Count(), Country = g.Key.Country };
+
+            IList<StateItem> list = new List<StateItem>();
+
+            foreach (var item in req)
             {
-                var country_name = item.Country.Trim();
-                var type = item.TypeValue;
-
-                if (list.Count != 0)
-                {
-                    bool found = false;
-
-                    // Find if one element exist in the list matching country_name
-                    foreach (var state_item in list)
-                    {
-                        // if matched then increment is counter for the specific type and break from the loop
-                        if (state_item.Country_Name == country_name)
-                        {
-                            state_item.incr_nb_type(type);
-                            found = true;
-                            break;
-                        }
-                    }
-                    // if we get here means that we dont find any element matching "country_name" so create one and add it to the list
-                    if (!found)
-                    {
-                        var new_state_item = new StateItem(country_name);
-                        new_state_item.incr_nb_type(type);
-                        list.Add(new_state_item);
-                    }
-                }
-                else
-                {
-                    // 1st element added into the list of StateItem
-                    var state_item = new StateItem(country_name);
-                    state_item.incr_nb_type(type);
-                    list.Add(state_item);
-                }
+                StateItem item_stat = new StateItem(item.Country, item.Count);
+                item_stat.SpotWifi = all.Where(x => item_stat.Country_Name == x.Country && item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.SpotWifi).Count();
+                item_stat.CoffeeResto = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.CoffeeResto).Count();
+                item_stat.Biblio = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.Biblio).Count();
+                item_stat.PublicSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.PublicSpace).Count();
+                item_stat.TravelerSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.TravelerSpace).Count();
+                item_stat.Hotel = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.Hotel).Count();
+                item_stat.Telecentre = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.Telecentre).Count();
+                item_stat.BuisnessCenter = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.BuisnessCenter).Count();
+                item_stat.CoworkingSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.CoworkingSpace).Count();
+                item_stat.WorkingHotel = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.WorkingHotel).Count();
+                item_stat.PrivateArea = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.PrivateArea).Count();
+                list.Add(item_stat);
             }
-            // Add the last item which contains the total of each place type
-            var last_item = new StateItem("Total");
-            last_item.GetTotal(lRepo);
-            list.Add(last_item);
 
-            return View(MVC.Admin.Views.Statistic, list);
+            return View(MVC.Admin.Views.Statistic, list.OrderBy(x => x.Country_Name).ToList());
         }
 
         public virtual ActionResult Last100Modif(int? page)

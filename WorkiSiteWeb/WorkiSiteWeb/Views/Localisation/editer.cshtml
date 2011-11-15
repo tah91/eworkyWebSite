@@ -18,6 +18,21 @@
         @Html.HiddenFor(model => model.Localisation.Longitude)
         @Html.HiddenFor(model => model.IsFreeLocalisation)
         <div class="blockContainer">
+        @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+        {
+            <div class="contentBlock">
+                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Admin</h3>
+                <div class="float-left" style="margin:5px 20px">
+                    @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsMain)
+				    @Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Main)
+                </div>
+                <div class="float-left" style="margin:5px 20px">
+                    @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsOffline)
+				    @Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Offline)
+                </div>
+                <div class="clear"></div>
+            </div>
+        }
             <div class="contentBlock">
                 <div class="dataEdition">
                     <div class="generalInfos float-left">

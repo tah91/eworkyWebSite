@@ -54,97 +54,117 @@
                     @Worki.Resources.Views.Admin.StatString.NbByCountry
                 </th>
             </tr>
+            @{
+                var SpotWifi = 0;
+                var CoffeeResto = 0;
+                var Biblio = 0;
+                var PublicSpace = 0;
+                var TravelerSpace = 0;
+                var Hotel = 0;
+                var Telecentre = 0;
+                var BuisnessCenter = 0;
+                var CoworkingSpace = 0;
+                var WorkingHotel = 0;
+                var PrivateArea = 0;
+                var Total = 0;
+            }
             @foreach (var item in Model)
             {
-                if (Model.ElementAt(Model.Count - 1) == item)
-                {
-                <tfoot>
-                    <td align="right" class="bold">
-                        @item.Country_Name
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_SpotWifi
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_CoffeeResto
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_Biblio
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_PublicSpace
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_TravelerSpace
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_Hotel
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_Telecentre
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_BuisnessCenter
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_CoworkingSpace
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_WorkingHotel
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_PrivateArea
-                    </td>
-                    <td align="right" class="bold">
-                        @item.nb_Total
-                    </td>
-                </tfoot>
-                }
-                else
-                {
                 <tr>
                     <td align="right">
                         @item.Country_Name
                     </td>
                     <td align="right">
-                        @item.nb_SpotWifi
+                        @item.SpotWifi
+                        @{SpotWifi += item.SpotWifi;}
                     </td>
                     <td align="right">
-                        @item.nb_CoffeeResto
+                        @item.CoffeeResto
+                        @{CoffeeResto += item.CoffeeResto;}
                     </td>
                     <td align="right">
-                        @item.nb_Biblio
+                        @item.Biblio
+                        @{Biblio += item.Biblio;}
                     </td>
                     <td align="right">
-                        @item.nb_PublicSpace
+                        @item.PublicSpace
+                        @{PublicSpace += item.PublicSpace;}
                     </td>
                     <td align="right">
-                        @item.nb_TravelerSpace
+                        @item.TravelerSpace
+                        @{TravelerSpace += item.TravelerSpace;}
                     </td>
                     <td align="right">
-                        @item.nb_Hotel
+                        @item.Hotel
+                        @{Hotel += item.Hotel;}
                     </td>
                     <td align="right">
-                        @item.nb_Telecentre
+                        @item.Telecentre
+                        @{Telecentre += item.Telecentre;}
                     </td>
                     <td align="right">
-                        @item.nb_BuisnessCenter
+                        @item.BuisnessCenter
+                        @{BuisnessCenter += item.BuisnessCenter;}
                     </td>
                     <td align="right">
-                        @item.nb_CoworkingSpace
+                        @item.CoworkingSpace
+                        @{CoworkingSpace += item.CoworkingSpace;}
                     </td>
                     <td align="right">
-                        @item.nb_WorkingHotel
+                        @item.WorkingHotel
+                        @{WorkingHotel += item.WorkingHotel;}
                     </td>
                     <td align="right">
-                        @item.nb_PrivateArea
+                        @item.PrivateArea
+                        @{PrivateArea += item.PrivateArea;}
                     </td>
                     <td align="right">
-                        @item.nb_Total
+                        @item.Total
+                        @{Total += item.Total;}
                     </td>
                 </tr>
-                }
             }
+            <tfoot>
+                <td align="right">
+                    Total
+                </td>
+                <td align="right">
+                    @SpotWifi
+                </td>
+                <td align="right">
+                    @CoffeeResto
+                </td>
+                <td align="right">
+                    @Biblio
+                </td>
+                <td align="right">
+                    @PublicSpace
+                </td>
+                <td align="right">
+                    @TravelerSpace
+                </td>
+                <td align="right">
+                    @Hotel
+                </td>
+                <td align="right">
+                    @Telecentre
+                </td>
+                <td align="right">
+                    @BuisnessCenter
+                </td>
+                <td align="right">
+                    @CoworkingSpace
+                </td>
+                <td align="right">
+                    @WorkingHotel
+                </td>
+                <td align="right">
+                    @PrivateArea
+                </td>
+                <td align="right">
+                    @Total
+                </td>
+            </tfoot>
         </table>
         <div class="clear"></div>
     </div>

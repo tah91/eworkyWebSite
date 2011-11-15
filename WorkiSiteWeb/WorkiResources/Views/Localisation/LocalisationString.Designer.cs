@@ -286,6 +286,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A la Une.
+        /// </summary>
+        public static string Main {
+            get {
+                return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erreur d&apos;acces au lieu de travail.
         /// </summary>
         public static string NotAccessToWorkplace {
@@ -295,7 +304,16 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offline.
+        ///   Looks up a localized string similar to Pas à la Une.
+        /// </summary>
+        public static string NotMain {
+            get {
+                return ResourceManager.GetString("NotMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hors ligne.
         /// </summary>
         public static string Offline {
             get {
@@ -304,7 +322,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Online.
+        ///   Looks up a localized string similar to En ligne.
         /// </summary>
         public static string Online {
             get {

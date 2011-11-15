@@ -336,4 +336,7 @@
   <data name="Unlock" xml:space="preserve">
     <value>Unlocker</value>
   </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Gérant</value>
+  </data>
 </root>

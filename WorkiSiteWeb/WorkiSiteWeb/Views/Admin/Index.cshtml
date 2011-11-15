@@ -18,16 +18,19 @@
         <table>
             <tr>
                 <th>
+                    &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
+                </th>
+                <th>
                     &Agrave; @Worki.Resources.Views.Admin.AdminString.TheTop
                 </th>
                 <th>
-                    &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
+                    &nbsp;&nbsp; @Worki.Resources.Views.Localisation.LocalisationString.Online
                 </th>
                 <th>
                     &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Name
                 </th>
                 <th>
-                    &nbsp;&nbsp;@Worki.Resources.Views.Admin.AdminString.User
+                    &nbsp;&nbsp;@Worki.Resources.Views.Admin.AdminString.Owner
                 </th>
                 <th>
                     &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Action
@@ -37,10 +40,13 @@
             { 
                 <tr>
                     <td align="right">
-                    @Html.CheckBox(item.ID.ToString(), item.IsMain)
+                        @item.ID
                     </td>
                     <td align="right">
-                        @item.ID
+                        @(item.MainLocalisation.IsMain ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Main, MVC.Admin.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NotMain, MVC.Admin.UpdateMainLocalisation(item.ID)))
+                    </td>
+                    <td align="right">
+                        @(item.MainLocalisation.IsOffline ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Offline, MVC.Admin.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Online, MVC.Admin.OnOffline(item.ID)))
                     </td>
                     <td align="right">
                         @item.Name
@@ -54,17 +60,12 @@
                         @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Localisation.Delete(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
                             | 
                         <a href="@item.GetDetailFullUrl(Url)">@Worki.Resources.Views.Localisation.LocalisationString.Details</a>
-                            |
-                        @(item.Offline ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Online, MVC.Localisation.OnOffline(item.ID, Url.AbsoluteAction(MVC.Admin.ActionNames.Index, MVC.Admin.Name, null))) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Offline, MVC.Localisation.OnOffline(item.ID, Url.AbsoluteAction(MVC.Admin.ActionNames.Index, MVC.Admin.Name, null))))
                     </td>
                 </tr>
             } 
             </table>
         <div class="pager">
             @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.Index, MVC.Admin.Name, new { page = x }))
-        </div> 
-        <div>
-            @Html.SubmitButton("Update", Worki.Resources.Views.Admin.AdminString.Update)
         </div>
         } 
         <div class="clear">

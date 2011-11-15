@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System;
+using System.Linq;
 
 namespace Worki.Data.Models
 {
@@ -150,126 +151,34 @@ namespace Worki.Data.Models
     public class StateItem
     {
         public string Country_Name { get; set; }
-        public int nb_SpotWifi { get; set; }
-        public int nb_CoffeeResto { get; set; }
-        public int nb_Biblio { get; set; }
-        public int nb_PublicSpace { get; set; }
-        public int nb_TravelerSpace { get; set; }
-        public int nb_Hotel { get; set; }
-        public int nb_Telecentre { get; set; }
-        public int nb_BuisnessCenter { get; set; }
-        public int nb_CoworkingSpace { get; set; }
-        public int nb_WorkingHotel { get; set; }
-        public int nb_PrivateArea { get; set; }
-        public int nb_Total { get; set; }
+        public int SpotWifi { get; set; }
+        public int CoffeeResto { get; set; }
+        public int Biblio { get; set; }
+        public int PublicSpace { get; set; }
+        public int TravelerSpace { get; set; }
+        public int Hotel { get; set; }
+        public int Telecentre { get; set; }
+        public int BuisnessCenter { get; set; }
+        public int CoworkingSpace { get; set; }
+        public int WorkingHotel { get; set; }
+        public int PrivateArea { get; set; }
+        public int Total { get; set; }
 
-        public StateItem(string name)
+        public StateItem(string name, int total)
         {
             Country_Name = name;
-            nb_SpotWifi = 0;
-            nb_CoffeeResto = 0;
-            nb_Biblio = 0;
-            nb_PublicSpace = 0;
-            nb_TravelerSpace = 0;
-            nb_Hotel = 0;
-            nb_Telecentre = 0;
-            nb_BuisnessCenter = 0;
-            nb_CoworkingSpace = 0;
-            nb_WorkingHotel = 0;
-            nb_PrivateArea = 0;
-            nb_Total = 0;
-        }
-
-        public void incr_nb_type(int type)
-        {
-            var enumType = (LocalisationType)type;
-            switch (enumType)
-            {
-                case LocalisationType.SpotWifi:
-                    {
-                        nb_SpotWifi++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.CoffeeResto:
-                    {
-                        nb_CoffeeResto++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.Biblio:
-                    {
-                        nb_Biblio++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.PublicSpace:
-                    {
-                        nb_PublicSpace++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.TravelerSpace:
-                    {
-                        nb_TravelerSpace++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.Hotel:
-                    {
-                        nb_Hotel++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.Telecentre:
-                    {
-                        nb_Telecentre++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.BuisnessCenter:
-                    {
-                        nb_BuisnessCenter++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.CoworkingSpace:
-                    {
-                        nb_CoworkingSpace++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.WorkingHotel:
-                    {
-                        nb_WorkingHotel++;
-                        nb_Total++;
-                        break;
-                    }
-                case LocalisationType.PrivateArea:
-                    {
-                        nb_PrivateArea++;
-                        nb_Total++;
-                        break;
-                    }
-                default:
-                    break;
-            }
-        }
-
-        public void GetTotal(ILocalisationRepository lRepo)
-        {
-            nb_SpotWifi = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.SpotWifi)).Count;
-            nb_CoffeeResto = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.CoffeeResto)).Count;
-            nb_Biblio = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.Biblio)).Count;
-            nb_PublicSpace = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.PublicSpace)).Count;
-            nb_TravelerSpace = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.TravelerSpace)).Count;
-            nb_Hotel = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.Hotel)).Count;
-            nb_Telecentre = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.Telecentre)).Count;
-            nb_BuisnessCenter = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.BuisnessCenter)).Count;
-            nb_CoworkingSpace = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.CoworkingSpace)).Count;
-            nb_WorkingHotel = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.WorkingHotel)).Count;
-            nb_PrivateArea = lRepo.GetMany(x => (x.TypeValue == (int)LocalisationType.PrivateArea)).Count;
-            nb_Total = nb_SpotWifi + nb_CoffeeResto + nb_Biblio + nb_PublicSpace + nb_TravelerSpace + nb_Hotel + nb_Telecentre + nb_BuisnessCenter + nb_CoworkingSpace + nb_WorkingHotel + nb_PrivateArea;
+            SpotWifi = 0;
+            CoffeeResto = 0;
+            Biblio = 0;
+            PublicSpace = 0;
+            TravelerSpace = 0;
+            Hotel = 0;
+            Telecentre = 0;
+            BuisnessCenter = 0;
+            CoworkingSpace = 0;
+            WorkingHotel = 0;
+            PrivateArea = 0;
+            Total = total;
         }
     }
 
