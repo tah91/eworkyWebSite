@@ -55,6 +55,8 @@ namespace Worki.Data.Models
 			var idsToLoad = new List<int>();
 			//all
 			var localisations = _Context.Localisations.AsQueryable();
+            //exclude offline ones
+            localisations = localisations.Where(loc => loc.MainLocalisation != null && !loc.IsOffline);
 			//matching address
 			var critLat = (float)criteria.LocalisationData.Latitude;
 			var critLng = (float)criteria.LocalisationData.Longitude;
