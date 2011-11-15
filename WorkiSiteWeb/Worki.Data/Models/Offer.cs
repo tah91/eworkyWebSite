@@ -23,6 +23,7 @@ namespace Worki.Data.Models
         }
     
     	// Custom initialisation inside constructor
+    	// Be aware this is called before loading data from store
     	partial void OnInitialized();
     
         // Primitive properties

@@ -19,8 +19,7 @@
     [Bookable]             BIT            CONSTRAINT [DF__Localisat__Booka__5629CD9C] DEFAULT ((0)) NOT NULL,
     [PublicTransportation] NVARCHAR (256) NULL,
     [Station]              NVARCHAR (256) NULL,
-    [RoadAccess]           NVARCHAR (256) NULL,
-    Offline BIT NOT NULL DEFAULT 0, 
+    [RoadAccess]           NVARCHAR (256) NULL, 
     CONSTRAINT [PK_Localisation] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [FK_Localisation_Member] FOREIGN KEY ([OwnerID]) REFERENCES [dbo].[Member] ([MemberId]) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

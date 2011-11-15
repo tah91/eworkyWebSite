@@ -27,6 +27,7 @@ namespace Worki.Data.Models
         }
     
     	// Custom initialisation inside constructor
+    	// Be aware this is called before loading data from store
     	partial void OnInitialized();
     
         // Primitive properties
@@ -52,7 +53,6 @@ namespace Worki.Data.Models
         public string PublicTransportation { get; set; }
         public string Station { get; set; }
         public string RoadAccess { get; set; }
-        public bool Offline { get; set; }
     
         // Navigation properties
     

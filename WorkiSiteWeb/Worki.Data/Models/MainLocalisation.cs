@@ -18,6 +18,8 @@ namespace Worki.Data.Models
     
         public int ID { get; set; }
         public int LocalisationID { get; set; }
+        public bool IsMain { get; set; }
+        public bool IsOffline { get; set; }
     
         // Navigation properties
     

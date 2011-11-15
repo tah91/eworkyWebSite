@@ -25,7 +25,6 @@ namespace Worki.Data.Models
         public DbSet<LocalisationData> LocalisationDatas { get; set; }
         public DbSet<LocalisationFeature> LocalisationFeatures { get; set; }
         public DbSet<LocalisationFile> LocalisationFiles { get; set; }
-        public DbSet<MainLocalisation> MainLocalisations { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<MemberEdition> MemberEditions { get; set; }
         public DbSet<MemberMainData> MemberMainDatas { get; set; }
@@ -43,5 +42,6 @@ namespace Worki.Data.Models
         public DbSet<MemberBooking> MemberBookings { get; set; }
         public DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public DbSet<Localisation> Localisations { get; set; }
+        public DbSet<MainLocalisation> MainLocalisations { get; set; }
     }
 }

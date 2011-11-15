@@ -622,6 +622,26 @@ namespace Worki.Data.Models
             if (ownerid != -1)
                 OwnerID = ownerid;
         }
+
+        #region MainLocalisation
+
+        public bool IsMain
+        {
+            get
+            {
+                return MainLocalisation != null && MainLocalisation.IsMain;
+            }
+        }
+
+        public bool IsOffline
+        {
+            get
+            {
+                return MainLocalisation != null && MainLocalisation.IsOffline;
+            }
+        }
+
+        #endregion
     }
 
 	[Bind(Exclude = "Id,OwnerId")]
@@ -756,6 +776,8 @@ namespace Worki.Data.Models
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
             if (Localisation.LocalisationData == null)
                 Localisation.LocalisationData = new LocalisationData();
+            if (Localisation.MainLocalisation == null)
+                Localisation.MainLocalisation = new MainLocalisation();
 		}
 
 		#endregion

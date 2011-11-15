@@ -39,31 +39,6 @@ namespace Worki.Data.Models
 
 	#endregion
 
-	#region Admin Localisation
-
-	public class AdminLocalisation : LocalisationListViewModel
-	{
-		public Dictionary<Localisation, bool> AdminDict { get; set; }
-
-		public AdminLocalisation(IList<Localisation> localisations)
-		{
-			AdminDict = new Dictionary<Localisation, bool>();
-			foreach (Localisation localisation in localisations)
-			{
-				if (localisation.MainLocalisation != null)
-				{
-					AdminDict[localisation] = true;
-				}
-				else
-				{
-					AdminDict[localisation] = false;
-				}
-			}
-		}
-	}
-
-	#endregion
-
 	#region Admin Import
 
 	public class AdminImportViewModel

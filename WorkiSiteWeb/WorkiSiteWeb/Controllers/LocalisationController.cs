@@ -181,7 +181,7 @@ namespace Worki.Web.Controllers
 						}
 						var loc = lRepo.Get(id.Value);
 						UpdateModel(loc, LocalisationPrefix);
-                        localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
+                        loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
 						loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
 					}
 					TempData.Remove(PictureData.PictureDataString);
@@ -426,7 +426,7 @@ namespace Worki.Web.Controllers
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var localisations = lRepo.GetMany(item => (item.MainLocalisation != null && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
+            var localisations = lRepo.GetMany(item => (item.IsMain && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
 			var jsonLocalisations = localisations.Select(item =>
 			{
 				return item.GetJson(this);

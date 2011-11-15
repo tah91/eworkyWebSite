@@ -50,7 +50,7 @@ namespace Worki.Web.Controllers
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
 			var localisations = lRepo.Get((pageValue - 1) * PageSize, PageSize, l => l.ID);
-            var viewModel = new AdminLocalisation(localisations.ToList())
+            var viewModel = new LocalisationListViewModel()
             {
                 Localisations = localisations,
                 PagingInfo = new PagingInfo
@@ -1056,6 +1056,43 @@ namespace Worki.Web.Controllers
 
         #region Migration
 
+        public virtual ActionResult MigrateLocalisation()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var strBuilder = new System.Text.StringBuilder();
+
+            try
+            {
+                var process = lRepo.GetMany(l => l.MainLocalisation.IsMain == true).Count > 0;
+                if (process)
+                    throw new Exception("Already processed");
+
+                var all = lRepo.GetAll();
+                foreach (var item in all)
+                {
+                    if (item.MainLocalisation != null)
+                    {
+                        item.MainLocalisation.IsMain = true;
+                        strBuilder.AppendLine("Localisation : " + item.Name + " ; Is main : true");
+                    }
+                    else
+                    {
+                        item.MainLocalisation = new MainLocalisation();
+                    }
+                }
+                context.Commit();
+            }
+            catch(Exception ex)
+            {
+                _Logger.Error("MigrateLocalisation", ex);
+                context.Complete();
+            }
+
+            var content = MiscHelpers.Nl2Br(strBuilder.ToString());
+            return Content(content);
+        }
+
 		//public virtual ActionResult MigrateToOffer()
 		//{
 		//    var strBuilder = new System.Text.StringBuilder();
@@ -1314,7 +1351,7 @@ namespace Worki.Web.Controllers
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
             var localisations = lRepo.GetMany(x => x.MemberEditions.Count > 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
-            var viewModel = new AdminLocalisation(localisations.ToList())
+            var viewModel = new LocalisationListViewModel()
             {
                 Localisations = localisations,
                 PagingInfo = new PagingInfo
@@ -1333,7 +1370,7 @@ namespace Worki.Web.Controllers
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
             var localisations = lRepo.GetMany(x => x.MemberEditions.Count == 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
-            var viewModel = new AdminLocalisation(localisations.ToList())
+            var viewModel = new LocalisationListViewModel()
             {
                 Localisations = localisations,
                 PagingInfo = new PagingInfo

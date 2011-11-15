@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.AdminLocalisation
+﻿@model Worki.Data.Models.LocalisationListViewModel
 
 @section HeadContent
 {
@@ -37,7 +37,7 @@
             { 
             <tr>
                 <td align="right">
-                    @Html.CheckBox(item.ID.ToString(), Model.AdminDict[item])
+                    @Html.CheckBox(item.ID.ToString(), item.IsMain)
                 </td>
                 <td align="right">
                     @item.ID
