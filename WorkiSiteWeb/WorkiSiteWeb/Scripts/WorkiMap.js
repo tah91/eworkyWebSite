@@ -102,8 +102,8 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
     var _checkSimilarLocalisation = null;
 
     //Geocode from an address
-    SearchFormSubmit = function () {
-        _evt.preventDefault();
+    SearchFormSubmit = function (evt) {
+        evt.preventDefault();
         $(_form).unbind('submit');
         var address = jQuery.trim($(_addressField).val());
         if (address.length < 1)
