@@ -1595,6 +1595,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult Suggestions() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult OnOffline() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.OnOffline);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Localisation; } }
@@ -1628,6 +1633,7 @@ namespace Worki.Web.Controllers {
             public readonly string FullSearchResult = "resultats-liste";
             public readonly string FullSearchResultDetail = "resultats-detail";
             public readonly string Suggestions = "Suggestions";
+            public readonly string OnOffline = "OnOffline";
         }
 
 
@@ -1804,6 +1810,13 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult Suggestions(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult OnOffline(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OnOffline);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
