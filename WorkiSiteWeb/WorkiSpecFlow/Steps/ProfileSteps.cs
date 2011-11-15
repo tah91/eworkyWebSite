@@ -110,6 +110,87 @@ namespace Worki.SpecFlow
 
         #endregion
 
+        #region Erreur de mot de passe
+
+        [When(@"Je me trompe de mot de passe")]
+        public void WhenJeMeTrompeDeMotDePasse()
+        {
+            WebBrowser.Current.Page<ProfilPage>().Login.TypeText("mika7869@gmail.com");
+            WebBrowser.Current.Page<ProfilPage>().Password.TypeText("mika");
+            WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
+        }
+
+        [Then(@"Je dois avoir le message d'erreur")]
+        public void ThenJeDoisAvoirLeMessageDErreur()
+        {
+            Assert.That(WebBrowser.Current.ContainsText("L'adresse de messagerie ou le mot de passe fourni est incorrect"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
+        #region Erreur de mot de passe & compte bloqué
+
+        [Given(@"Je vais sur la page connexion")]
+        public void GivenJeVaisSurLaPageConnexion()
+        {
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Connexion);
+        }
+
+        [When(@"Je me trompe de mot de passe 6 fois")]
+        public void WhenJeMeTrompeDeMotDePasse6Fois()
+        {
+            WebBrowser.Current.Page<ProfilPage>().Login.TypeText("mika7869@gmail.com");
+            for (var i = 0; i < 6; i++)
+            {
+                WebBrowser.Current.Page<ProfilPage>().Password.TypeText("mika");
+                WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
+            }
+        }
+
+        [Then(@"Je dois avoir le message d'erreur adéquat")]
+        public void ThenJeDoisAvoirLeMessageDErreurAdequat()
+        {
+            Assert.That(WebBrowser.Current.ContainsText("grand nombre de tentatives de connexion infructueuses"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
+        #region Inscription tout les messages d'erreur
+
+        [Given(@"Je vais sur la page d'inscription")]
+        public void GivenJeVaisSurLaPageDInscription()
+        {
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Inscription);
+        }
+
+        [When(@"Je valide")]
+        public void WhenJeValide()
+        {
+            WebBrowser.Current.Page<ProfilPage>().AcceptCGU.Click();
+            WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
+        }
+
+        [Then(@"Je dois avoir le message d'erreur d'inscription")]
+        public void ThenJeDoisAvoirLeMessageDErreurDInscription()
+        {
+            var ie = WebBrowser.Current;
+
+            Assert.That(ie.ContainsText("Vous devez accepter les Conditions Générales d'Utilisation pour vous inscrire sur eWorky")
+                    && ie.ContainsText("Le champ " + '"' + "Adresse email" + '"' + " est obligatoire")
+                    && ie.ContainsText("Le champ " + '"' + "Mot de passe" + '"' + " est obligatoire")
+                    && ie.ContainsText("Le champ " + '"' + "Confirmez le mot de passe" + '"' + " est obligatoire")
+                    && ie.ContainsText("Le champ " + '"' + "Prénom"+ '"' + " est obligatoire")
+                    && ie.ContainsText("Le champ " + '"' + "Nom" + '"' + " est obligatoire")
+                    && ie.ContainsText("Vous devez sélectionner un profil")
+                    && ie.ContainsText("Les lettres vérification saisies sont incorrectes")
+                );
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
     }
 
     #region Profil Page
@@ -132,25 +213,43 @@ namespace Worki.SpecFlow
 
         #region Textfield
 
-        public TextField LastName
-        {
-            get { return Document.TextField(Find.ById("Member_MemberMainData_LastName")); }
-        }
+            #region General Information
 
-        public TextField FirstName
-        {
-            get { return Document.TextField(Find.ById("Member_MemberMainData_FirstName")); }
-        }
+            public TextField LastName
+            {
+                get { return Document.TextField(Find.ById("Member_MemberMainData_LastName")); }
+            }
 
-        public TextField DescriptionField
-        {
-            get { return Document.TextField(Find.ById("Member_MemberMainData_Description")); }
-        }
+            public TextField FirstName
+            {
+                get { return Document.TextField(Find.ById("Member_MemberMainData_FirstName")); }
+            }
 
-        public TextField Company
-        {
-            get { return Document.TextField(Find.ById("Member_MemberMainData_CompanyName")); }
-        }
+            public TextField DescriptionField
+            {
+                get { return Document.TextField(Find.ById("Member_MemberMainData_Description")); }
+            }
+
+            public TextField Company
+            {
+                get { return Document.TextField(Find.ById("Member_MemberMainData_CompanyName")); }
+            }
+
+            #endregion
+
+            #region Connexion
+
+            public TextField Login
+            {
+                get { return Document.TextField(Find.ById("Login")); }
+            }
+
+            public TextField Password
+            {
+                get { return Document.TextField(Find.ById("Password")); }
+            }
+
+            #endregion
 
         #endregion
 
@@ -169,6 +268,19 @@ namespace Worki.SpecFlow
         {
             get { return Document.SelectList(Find.ById("Member_MemberMainData_Profile")); }
         }
+
+        #endregion
+
+        #region Checkbox
+
+            #region Inscription
+
+            public CheckBox AcceptCGU
+            {
+                get { return Document.CheckBox(Find.ById("AcceptCGU")); }
+            }
+
+            #endregion
 
         #endregion
     }

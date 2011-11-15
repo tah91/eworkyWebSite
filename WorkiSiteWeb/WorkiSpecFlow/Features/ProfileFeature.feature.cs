@@ -143,6 +143,63 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Erreur de mot de passe")]
+        [NUnit.Framework.CategoryAttribute("profil")]
+        public virtual void ErreurDeMotDePasse()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erreur de mot de passe", new string[] {
+                        "profil"});
+#line 38
+this.ScenarioSetup(scenarioInfo);
+#line 39
+ testRunner.Given("Je vais sur la page connexion");
+#line 40
+ testRunner.When("Je me trompe de mot de passe");
+#line 41
+ testRunner.Then("Je dois avoir le message d\'erreur");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Erreur de mot de passe et compte bloqué")]
+        [NUnit.Framework.CategoryAttribute("profil")]
+        public virtual void ErreurDeMotDePasseEtCompteBloque()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erreur de mot de passe et compte bloqué", new string[] {
+                        "profil"});
+#line 44
+this.ScenarioSetup(scenarioInfo);
+#line 45
+ testRunner.Given("Je vais sur la page connexion");
+#line 46
+ testRunner.When("Je me trompe de mot de passe 6 fois");
+#line 47
+ testRunner.Then("Je dois avoir le message d\'erreur adéquat");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Inscription tout les messages d\'erreur")]
+        [NUnit.Framework.CategoryAttribute("profil")]
+        public virtual void InscriptionToutLesMessagesDErreur()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inscription tout les messages d\'erreur", new string[] {
+                        "profil"});
+#line 50
+this.ScenarioSetup(scenarioInfo);
+#line 51
+ testRunner.Given("Je vais sur la page d\'inscription");
+#line 52
+ testRunner.When("Je valide");
+#line 53
+ testRunner.Then("Je dois avoir le message d\'erreur d\'inscription");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

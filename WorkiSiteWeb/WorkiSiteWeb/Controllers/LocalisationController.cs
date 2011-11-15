@@ -589,6 +589,30 @@ namespace Worki.Web.Controllers
 			return PartialView(MVC.Localisation.Views._Suggestions, suggestions);
         }
 
+        public virtual ActionResult OnOffline(int id, string returnUrl)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var loc = lRepo.Get(id);
+            try
+            {
+                if (loc == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                    return RedirectToAction(MVC.Admin.Index());
+                }
+                loc.Offline = !loc.Offline;
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("OnOffline", ex);
+            }
+
+            return Redirect(returnUrl);
+        }
+
 		#endregion
 	}
 }

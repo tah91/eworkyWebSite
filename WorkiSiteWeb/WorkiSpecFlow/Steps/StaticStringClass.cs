@@ -22,6 +22,7 @@ namespace Worki.SpecFlow
             public const string Connexion = "compte/connexion";
             public const string Dashboard = "profil/dashboard/";
             public const string FAQ = "accueil/faq";
+            public const string Inscription = "compte/inscription";
             public const string Job = "accueil/jobs";
             public const string Legal = "accueil/mentions-legales";
             public const string Press = "accueil/presse";

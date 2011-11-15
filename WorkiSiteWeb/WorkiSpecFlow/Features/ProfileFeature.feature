@@ -33,3 +33,21 @@ Scenario: Changer le Mot de passe
 	When Je clique sur mon profil
 		And Je clique sur Modifier mon mot de passe
 	Then Je dois avoir la page de modification de mot de passe
+
+@profil
+Scenario: Erreur de mot de passe
+	Given Je vais sur la page connexion
+	When Je me trompe de mot de passe
+	Then Je dois avoir le message d'erreur
+
+@profil
+Scenario: Erreur de mot de passe et compte bloqué
+	Given Je vais sur la page connexion
+	When Je me trompe de mot de passe 6 fois
+	Then Je dois avoir le message d'erreur adéquat
+
+@profil
+Scenario: Inscription tout les messages d'erreur
+	Given Je vais sur la page d'inscription
+	When Je valide
+	Then Je dois avoir le message d'erreur d'inscription

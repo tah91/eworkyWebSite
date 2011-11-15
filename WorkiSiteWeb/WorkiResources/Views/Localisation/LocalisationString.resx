@@ -231,4 +231,10 @@
   <data name="YouAreOwner" xml:space="preserve">
     <value>Vous êtes désormais gérant de ce lieu !</value>
   </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Online</value>
+  </data>
 </root>

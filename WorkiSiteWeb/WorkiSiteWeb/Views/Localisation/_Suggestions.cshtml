@@ -6,7 +6,7 @@
         <h3 class="blue marginb10">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>
             @foreach (var item in Model)
             {
-                if (string.IsNullOrEmpty(item.GetMainPic()))
+                if (string.IsNullOrEmpty(item.GetMainPic()) || item.Offline)
                 {
                     continue;
                 }
