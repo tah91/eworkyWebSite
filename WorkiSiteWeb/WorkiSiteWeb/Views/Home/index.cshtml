@@ -250,23 +250,26 @@
         require(["@MiscHelpers.UrlConstants.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
 
         });
+        var workiGeoCoder = null;
 
         function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
                 var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
                 workiAutocomplete.SetAutocomplete();
+                workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', '#searchform');
             });
         }
         require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
             InitTab(".indexForms");
         });
 
-        $("#searchform").submit(function () {
+        $("#searchform").submit(function (evt) {
             var val = $("#Criteria_Place").val();
-            if(val==""){
+            if (val == "") {
                 $("#Criteria_Place").val('@SearchService.DefaultSearchPlace');
             }
-            return true;
+            workiGeoCoder.SearchFormSubmit(evt);
+            return false;
         });
     </script>
     @Html.Partial(MVC.Shared.Views._IndexGalleryScript)

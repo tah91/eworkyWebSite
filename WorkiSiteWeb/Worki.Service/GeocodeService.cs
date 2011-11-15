@@ -51,14 +51,28 @@ namespace Worki.Service
 				{
 					string textString = client.DownloadString(sPath);
                     JObject gmapJson = JObject.Parse(textString);
-                    var location = gmapJson["results"][0]["geometry"]["location"];
-					_Logger.Info("geocoded");
-                    lat = (float)location["lat"];
-                    lg = (float)location["lng"]; 
+                    var results = gmapJson["results"];
+                    foreach (var item in results)
+                    {
+                        if (item == null)
+                            continue;
+                        var geometry = item["geometry"];
+                        if (geometry == null)
+                            continue;
+                        var location = geometry["location"];
+                        if (location == null)
+                            continue;
+                        lat = (float)location["lat"];
+                        lg = (float)location["lng"];
+                        break;
+                    }
+					_Logger.Info("geocoded"); 
 				}
 				catch (Exception ex)
 				{
-					_Logger.Error(ex.Message);
+                    _Logger.Error("GeoCode", ex);
+                    lat = (float)48.8566140;
+                    lg = (float)2.35222190;
 				}
 			}
 		}
