@@ -45,11 +45,12 @@ namespace Worki.Service
 			if (string.IsNullOrEmpty(address))
 				return;
             string sPath = "http://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&sensor=true&region=fr";
+			var textString = string.Empty;
 			using (var client = new WebClient())
 			{
 				try
 				{
-					string textString = client.DownloadString(sPath);
+					textString = client.DownloadString(sPath);
                     JObject gmapJson = JObject.Parse(textString);
                     var results = gmapJson["results"];
                     foreach (var item in results)
@@ -71,6 +72,7 @@ namespace Worki.Service
 				catch (Exception ex)
 				{
                     _Logger.Error("GeoCode", ex);
+					_Logger.Error(textString);
                     lat = (float)48.8566140;
                     lg = (float)2.35222190;
 				}

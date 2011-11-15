@@ -43,10 +43,10 @@
                         @item.ID
                     </td>
                     <td align="right">
-                        @(item.MainLocalisation.IsMain ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Main, MVC.Admin.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NotMain, MVC.Admin.UpdateMainLocalisation(item.ID)))
+                        @(item.IsMain ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Main, MVC.Admin.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NotMain, MVC.Admin.UpdateMainLocalisation(item.ID)))
                     </td>
                     <td align="right">
-                        @(item.MainLocalisation.IsOffline ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Offline, MVC.Admin.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Online, MVC.Admin.OnOffline(item.ID)))
+                        @(item.IsOffline ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Offline, MVC.Admin.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Online, MVC.Admin.OnOffline(item.ID)))
                     </td>
                     <td align="right">
                         @item.Name
