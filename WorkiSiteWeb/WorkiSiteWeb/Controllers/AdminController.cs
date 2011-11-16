@@ -1288,7 +1288,7 @@ namespace Worki.Web.Controllers
             foreach (var item in req)
             {
                 StateItem item_stat = new StateItem(item.Country, item.Count);
-                item_stat.SpotWifi = all.Where(x => item_stat.Country_Name == x.Country && item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.SpotWifi).Count();
+                item_stat.SpotWifi = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.SpotWifi).Count();
                 item_stat.CoffeeResto = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.CoffeeResto).Count();
                 item_stat.Biblio = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.Biblio).Count();
                 item_stat.PublicSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.PublicSpace).Count();
