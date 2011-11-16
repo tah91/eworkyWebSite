@@ -138,10 +138,17 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, "order", ref value) && int.TryParse(value, out intVal))
                 criteria.OrderBy = (eOrderBy)intVal;
 
+            float floatVal;
+            if (MiscHelpers.GetRequestValue(parameters, "lat", ref value) && float.TryParse(value, out floatVal))
+                criteria.LocalisationData.Latitude = floatVal;
+            if (MiscHelpers.GetRequestValue(parameters, "lng", ref value) && float.TryParse(value, out floatVal))
+                criteria.LocalisationData.Longitude = floatVal;
+
+			float lat = 0, lng = 0;
+			_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
+
 			if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
 			{
-				float lat = 0, lng = 0;
-				_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
 				criteria.LocalisationData.Latitude = lat;
 				criteria.LocalisationData.Longitude = lng;
 			}
@@ -205,6 +212,8 @@ namespace Worki.Service
 			rvd["page"] = page;
 			rvd["lieu"] = criteria.Place;
 			rvd["offer-type"] = criteria.OfferData.Type;
+            rvd["lat"] = criteria.LocalisationData.Latitude;
+            rvd["lng"] = criteria.LocalisationData.Longitude;
 
             rvd["order"] = (int)criteria.OrderBy;
 
