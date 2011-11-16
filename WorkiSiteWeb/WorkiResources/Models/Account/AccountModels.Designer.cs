@@ -115,7 +115,7 @@ namespace Worki.Resources.Models.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adresse email.
+        ///   Looks up a localized string similar to Adresse électronique.
         /// </summary>
         public static string Email {
             get {
@@ -133,7 +133,7 @@ namespace Worki.Resources.Models.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adresse de messagerie.
+        ///   Looks up a localized string similar to Adresse électronique.
         /// </summary>
         public static string Login {
             get {

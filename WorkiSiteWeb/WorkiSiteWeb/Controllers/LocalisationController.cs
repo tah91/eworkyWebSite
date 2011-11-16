@@ -364,16 +364,23 @@ namespace Worki.Web.Controllers
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var lMem = ModelFactory.GetRepository<IMemberRepository>(context);
 			var localisation = lRepo.Get(id);
 			try
 			{
 				var memberId = WebHelper.GetIdentityId(User.Identity);
                 localisation.SetOwner(memberId);
-				context.Commit();
+                context.Commit();
+                var member = lMem.Get(memberId);
+                if (member == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                    return RedirectToAction(MVC.Home.Index());
+                }
 				//send mail to member
                 dynamic Ownermail = new Email(MVC.Emails.Views.TakeOwnershipMail);
                 Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                Ownermail.To = "mika7869@gmail.com";
+                Ownermail.To = member.Email;
                 Ownermail.Subject = Worki.Resources.Email.Common.Welcome;
                 Ownermail.Contact = string.Format(Worki.Resources.Email.Common.Contact,
                                                     MiscHelpers.EmailConstants.ContactMail,

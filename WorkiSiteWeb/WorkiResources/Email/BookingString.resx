@@ -129,7 +129,7 @@ En espérant vous revoir très vite sur www.eworky.com,</value>
   <data name="BookingMailBody" xml:space="preserve">
     <value>Nom : {0}
 Téléphone : {1}
-E-mail : {2}
+Adresse électronique : {2}
 Nom du lieu : {3}
 Besoin : {4}
 Début : {5}

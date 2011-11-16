@@ -232,7 +232,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;adresse mail ne correspond à aucun utilisateur..
+        ///   Looks up a localized string similar to L&apos;adresse électronique ne correspond à aucun utilisateur..
         /// </summary>
         public static string MailDoNotMatch {
             get {
@@ -241,7 +241,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;adresse mail entrée n&apos;est pas au bon format..
+        ///   Looks up a localized string similar to L&apos;adresse électronique entrée n&apos;est pas au bon format..
         /// </summary>
         public static string MailHaveNotGoodPattern {
             get {
@@ -250,7 +250,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;adresse de messagerie fournie n&apos;est pas valide. Vérifiez la valeur et réessayez..
+        ///   Looks up a localized string similar to L&apos;adresse électronique fournie n&apos;est pas valide. Vérifiez la valeur et réessayez..
         /// </summary>
         public static string MailNotValide {
             get {
@@ -259,7 +259,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;adresse de messagerie ou le mot de passe fourni est incorrect..
+        ///   Looks up a localized string similar to L&apos;adresse électronique ou le mot de passe fourni est incorrect..
         /// </summary>
         public static string MailOrPasswordNotCorrect {
             get {
@@ -529,7 +529,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Un nom d&apos;utilisateur pour cette adresse de messagerie existe déjà. Entrez une adresse de messagerie différente..
+        ///   Looks up a localized string similar to Un nom d&apos;utilisateur pour cette adresse électronique existe déjà. Entrez une adresse électronique différente..
         /// </summary>
         public static string UsernameExistForThisMail {
             get {

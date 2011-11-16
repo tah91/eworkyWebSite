@@ -169,16 +169,16 @@
     <value>Utilisateur non valide !</value>
   </data>
   <data name="MailDoNotMatch" xml:space="preserve">
-    <value>L'adresse mail ne correspond à aucun utilisateur.</value>
+    <value>L'adresse électronique ne correspond à aucun utilisateur.</value>
   </data>
   <data name="MailHaveNotGoodPattern" xml:space="preserve">
-    <value>L'adresse mail entrée n'est pas au bon format.</value>
+    <value>L'adresse électronique entrée n'est pas au bon format.</value>
   </data>
   <data name="MailNotValide" xml:space="preserve">
-    <value>L'adresse de messagerie fournie n'est pas valide. Vérifiez la valeur et réessayez.</value>
+    <value>L'adresse électronique fournie n'est pas valide. Vérifiez la valeur et réessayez.</value>
   </data>
   <data name="MailOrPasswordNotCorrect" xml:space="preserve">
-    <value>L'adresse de messagerie ou le mot de passe fourni est incorrect.</value>
+    <value>L'adresse électronique ou le mot de passe fourni est incorrect.</value>
   </data>
   <data name="MatchPassword" xml:space="preserve">
     <value>Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas.</value>
@@ -268,7 +268,7 @@
     <value>Le nom d'utilisateur existe déjà. Entrez un nom d'utilisateur différent.</value>
   </data>
   <data name="UsernameExistForThisMail" xml:space="preserve">
-    <value>Un nom d'utilisateur pour cette adresse de messagerie existe déjà. Entrez une adresse de messagerie différente.</value>
+    <value>Un nom d'utilisateur pour cette adresse électronique existe déjà. Entrez une adresse électronique différente.</value>
   </data>
   <data name="UsernameNotValide" xml:space="preserve">
     <value>Le nom d'utilisateur fourni n'est pas valide. Vérifiez la valeur et réessayez.</value>

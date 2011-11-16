@@ -84,7 +84,7 @@ namespace Worki.Resources.Email {
         /// <summary>
         ///   Looks up a localized string similar to Nom : {0}
         ///Téléphone : {1}
-        ///E-mail : {2}
+        ///Adresse électronique : {2}
         ///Nom du lieu : {3}
         ///Besoin : {4}
         ///Début : {5}

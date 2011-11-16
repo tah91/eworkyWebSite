@@ -124,10 +124,10 @@
     <value>Confirmez le mot de passe</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Adresse email</value>
+    <value>Adresse électronique</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Adresse de messagerie</value>
+    <value>Adresse électronique</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Nouveau mot de passe</value>
