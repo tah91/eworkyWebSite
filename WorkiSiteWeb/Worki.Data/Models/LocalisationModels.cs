@@ -604,6 +604,8 @@ namespace Worki.Data.Models
 
         #endregion
 
+        #region Owner
+
         /// <summary>
         /// tell if the localisation has an owner
         /// </summary>
@@ -622,6 +624,13 @@ namespace Worki.Data.Models
             if (ownerid != -1)
                 OwnerID = ownerid;
         }
+
+        public bool IsOwner(int memberid)
+        {
+            return (OwnerID == memberid);
+        }
+
+        #endregion
 
         #region MainLocalisation
 

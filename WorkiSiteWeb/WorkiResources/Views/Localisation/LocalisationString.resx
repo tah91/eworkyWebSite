@@ -246,4 +246,7 @@
   <data name="NoPictureAvailable" xml:space="preserve">
     <value>Aucune photo disponible</value>
   </data>
+  <data name="OwnerIdentity" xml:space="preserve">
+    <value>Identité du gérant : </value>
+  </data>
 </root>

@@ -22,13 +22,24 @@
         {
             <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Admin</h3>
-                <div class="float-left" style="margin:5px 20px">
+                <div class="adminBlock">
                     @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsMain)
 				    @Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Main)
                 </div>
-                <div class="float-left" style="margin:5px 20px">
+                <div class="adminBlock">
                     @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsOffline)
 				    @Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Offline)
+                </div>
+                <div class="clear"></div>
+            </div>
+        }
+        @if ((Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) || Model.Localisation.IsOwner(WebHelper.GetIdentityId(User.Identity))) && !Model.IsFreeLocalisation)
+        {
+            <div class="contentBlock">
+                <h3 class="blue">@Worki.Resources.Views.Admin.AdminString.Owner</h3>
+                <div class="adminBlock">
+					@Html.CheckBoxFor(m => m.Localisation.Bookable)
+					@Html.LabelFor(m => m.Localisation.Bookable)
                 </div>
                 <div class="clear"></div>
             </div>
@@ -52,19 +63,6 @@
                                 </td>
                             </tr>
                             }
-							@if (!Model.IsFreeLocalisation)
-							{
-                            <tr>
-					            <td>
-					            </td>
-					            <td>
-						            <div class="editor-label localisationOwnerField">
-						            @Html.CheckBoxFor(m => m.Localisation.Bookable)
-						            @Html.LabelFor(m => m.Localisation.Bookable)
-						            </div>
-					            </td>
-				            </tr>
-							}
                             <tr>
                                 <td>
                                     <div class="editor-label">
@@ -265,7 +263,7 @@
                 </div>
             </div>
 			@if (Model.IsFreeLocalisation)
-			{
+            {
             <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea</h3>
                 <div class="serviceContainer">
@@ -303,7 +301,7 @@
                 <div class="clear">
                 </div>
             </div>
-			}
+            }
 			<div class="serviceContainer contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.PlaceDetails</h3>
                 <div class="subserviceContainer float-left">
@@ -362,7 +360,7 @@
                 </div>
             </div>
 			@if (!Model.IsFreeLocalisation)
-			{ 
+            { 
             <div class="serviceContainer contentBlock">
                 <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.WorkingPlace</h3>
                 <div class="subserviceContainer float-left">
@@ -419,20 +417,20 @@
 				<div class="offersTable">
 					<table>
 					@foreach (var item in Model.Localisation.Offers)
-					{
+                    {
 						<tr>
 							<td>@item.Name</td>
 							<td>@Html.ActionLink("Editer", MVC.Offer.Edit(item.Id, item.LocalisationId))</td>
 							<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id, item.LocalisationId))</div></td>
 						</tr>
-					}
+                    }
 					</table>
 				</div>
 				@Html.DropDownListFor(m => m.NewOfferType, Model.Offers)
 				<input  type="submit" class="buttonStd buttonBlue imageBtn" 
 						name="addOffer" value="@Worki.Resources.Views.Shared.SharedString.Adds"/>
 			</div>
-			}
+            }
             <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
                 <table class="generalInfosTable editionTable">

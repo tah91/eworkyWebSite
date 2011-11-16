@@ -340,6 +340,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Identité du gérant : .
+        /// </summary>
+        public static string OwnerIdentity {
+            get {
+                return ResourceManager.GetString("OwnerIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Veuillez confirmer la supression du lieu de travail:.
         /// </summary>
         public static string PleaseConfirmDelete {
