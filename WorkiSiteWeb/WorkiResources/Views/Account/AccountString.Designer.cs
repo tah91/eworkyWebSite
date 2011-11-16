@@ -187,7 +187,7 @@ namespace Worki.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrez l&apos;adresse électronique utilisée lors de votre inscription à eWorky, vos identifiants vous seront envoyés..
+        ///   Looks up a localized string similar to Saisissez l&apos;adresse électronique utilisée lors de votre inscription à eWorky, vos identifiants vous seront renvoyés à cette adresse..
         /// </summary>
         public static string SetMailInscription {
             get {

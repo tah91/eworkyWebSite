@@ -223,7 +223,7 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Créer une alerte email.
+        ///   Looks up a localized string similar to Créer une alerte e-mail.
         /// </summary>
         public static string CreateAlert {
             get {
@@ -286,7 +286,7 @@ namespace Worki.Resources.Views.Rental {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email :.
+        ///   Looks up a localized string similar to Adresse électronique :.
         /// </summary>
         public static string Email {
             get {

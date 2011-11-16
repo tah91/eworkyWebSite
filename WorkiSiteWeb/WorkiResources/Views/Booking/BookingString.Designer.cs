@@ -79,7 +79,7 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remplir les champs pour réserver, un email vous sera envoyé.
+        ///   Looks up a localized string similar to Remplir les champs pour réserver, un e-mail vous sera envoyé.
         /// </summary>
         public static string BookingIntro {
             get {

@@ -332,7 +332,7 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
     <value>Qu'il s'agisse de centres d'affaires, d'hôtels, de cafés, de télécentres ou d'immeubles de bureaux, que vous vouliez trouver, réserver, acheter, louer, vendre ou partager, eWorky vous aidera. Vous pourrez y trouver le lieu de travail qui vous convient, le noter, le réserver on-line, ajouter vos lieux de travail préférés ou encore trouver des bureaux à louer ou à acheter. En s'adaptant à votre nouvelle façon de travailler, eWorky est décidément le meilleur endroit pour travailler !</value>
   </data>
   <data name="YourPossiblilitiesOnForm" xml:space="preserve">
-    <value>Dans le formulaire d'ajout du lieu de travail, vous avez la possibilité de choisir des photos à joindre à la description de votre lieu de travail. Pour cela, il vous suffit de glisser vos images sur « + ajouter vos images » ou de cliquer sur ce même bouton pour choisir votre fichier, puis de cliquer sur Télécharger pour nous envoyer ce fichier. La taille de chaque image ne doit pas excéder 3 Mo et vous pouvez ajouter au maximum 10 photos. Assurez-vous que vous respectez ces limites et si le problème persiste, vous pouvez nous contacter par mail à support@eworky.com.</value>
+    <value>Dans le formulaire d'ajout du lieu de travail, vous avez la possibilité de choisir des photos à joindre à la description de votre lieu de travail. Pour cela, il vous suffit de glisser vos images sur « + ajouter vos images » ou de cliquer sur ce même bouton pour choisir votre fichier, puis de cliquer sur Télécharger pour nous envoyer ce fichier. La taille de chaque image ne doit pas excéder 3 Mo et vous pouvez ajouter au maximum 10 photos. Assurez-vous que vous respectez ces limites et si le problème persiste, vous pouvez nous contacter par e-mail à support@eworky.com.</value>
   </data>
   <data name="CouldNotEditLocation" xml:space="preserve">
     <value>Je n’arrive plus à modifier un lieu</value>
@@ -341,7 +341,7 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
     <value>Votre profil est accessible depuis n’importe quelle page du site en cliquant sur le lien « Mon profil » dans la barre  en haut à droite (vous devez être connecté). Pour éditer votre profil, cliquez sur le lien « Editer mon profil » sous votre nom à gauche sur la page de votre profil. Complétez-le au maximum pour favoriser les échanges entre eWorkers et obtenir des points supplémentaires.</value>
   </data>
   <data name="HowEditLocation" xml:space="preserve">
-    <value>Le nombre de modifications est limité à 15 par jour. Si vous n’arrivez plus à modifier à éditer des lieux, vérifier que vous n’avez pas dépassé la limite. Si le problème persiste, vous pouvez nous contacter par mail à support@eworky.com.</value>
+    <value>Le nombre de modifications est limité à 15 par jour. Si vous n’arrivez plus à modifier à éditer des lieux, vérifier que vous n’avez pas dépassé la limite. Si le problème persiste, vous pouvez nous contacter par e-mail à support@eworky.com.</value>
   </data>
   <data name="HowEditProfil" xml:space="preserve">
     <value>Comment éditer mon profil ?</value>

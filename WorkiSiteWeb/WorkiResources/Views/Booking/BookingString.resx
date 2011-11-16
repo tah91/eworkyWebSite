@@ -124,7 +124,7 @@
     <value>Retour</value>
   </data>
   <data name="BookingIntro" xml:space="preserve">
-    <value>Remplir les champs pour réserver, un email vous sera envoyé</value>
+    <value>Remplir les champs pour réserver, un e-mail vous sera envoyé</value>
   </data>
   <data name="BookingDetails" xml:space="preserve">
     <value>Détails de la réservation</value>

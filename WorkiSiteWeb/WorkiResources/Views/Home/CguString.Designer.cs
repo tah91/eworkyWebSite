@@ -259,7 +259,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Les enfants sous l’âge de 13 ans ne sont pas autorisés à s&apos;inscrire sur le site. Si vous avez moins de 13 ans, merci de ne pas utiliser ou accéder au site en aucune manière. Si vous êtes un parent ou le représentant légal d&apos;un enfant de moins de 13 ans qui se serait enregistré sur le site, merci de nous envoyer un email avec les informations nécessaires à l&apos;annulation de l&apos;inscription de l&apos;enfant. Dans cet email, merci d&apos;inclure votre nom complet et adresse, le nom complet et adresse de l&apos;enfant, la nature  [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Les enfants sous l’âge de 13 ans ne sont pas autorisés à s&apos;inscrire sur le site. Si vous avez moins de 13 ans, merci de ne pas utiliser ou accéder au site en aucune manière. Si vous êtes un parent ou le représentant légal d&apos;un enfant de moins de 13 ans qui se serait enregistré sur le site, merci de nous envoyer un e-mail avec les informations nécessaires à l&apos;annulation de l&apos;inscription de l&apos;enfant. Dans cet e-mail, merci d&apos;inclure votre nom complet et adresse, le nom complet et adresse de l&apos;enfant, la natur [rest of string was truncated]&quot;;.
         /// </summary>
         public static string NotForChild {
             get {

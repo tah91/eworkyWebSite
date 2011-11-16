@@ -268,7 +268,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas..
+        ///   Looks up a localized string similar to Attention, vous avez saisi un mot de passe de confirmation différent. Veuillez réessayer..
         /// </summary>
         public static string MatchPassword {
             get {
@@ -286,7 +286,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit faire moins de {1} caractères..
+        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit comporter moins de {1} caractères..
         /// </summary>
         public static string MaxLength {
             get {
@@ -295,7 +295,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit faire plus de {1} caractères..
+        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit comporter plus de {1} caractères..
         /// </summary>
         public static string MinLength {
             get {
@@ -304,7 +304,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit faire entre {2} et {1} caractères..
+        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit comporter entre {2} et {1} caractères..
         /// </summary>
         public static string MinMaxLength {
             get {
@@ -367,7 +367,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champ &quot;{0}&quot; n&apos;est pas au bon format..
+        ///   Looks up a localized string similar to Votre adresse électronique n&apos;est pas valide. Veuillez réessayer..
         /// </summary>
         public static string PatternEmail {
             get {
@@ -430,7 +430,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champ &quot;{0}&quot; est obligatoire..
+        ///   Looks up a localized string similar to Vous devez saisir un(e) &quot;{0}&quot;..
         /// </summary>
         public static string Required {
             get {
@@ -529,7 +529,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Un nom d&apos;utilisateur pour cette adresse électronique existe déjà. Entrez une adresse électronique différente..
+        ///   Looks up a localized string similar to Il existe déjà un compte associé à cette adresse électronique. Veuillez vous connecter avec le compte existant ou saisir une adresse électronique différente..
         /// </summary>
         public static string UsernameExistForThisMail {
             get {

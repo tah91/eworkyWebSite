@@ -151,7 +151,7 @@
     <value>Les champs suivis d'un astérisque sont obligatoires.</value>
   </data>
   <data name="SetMailInscription" xml:space="preserve">
-    <value>Entrez l'adresse électronique utilisée lors de votre inscription à eWorky, vos identifiants vous seront envoyés.</value>
+    <value>Saisissez l'adresse électronique utilisée lors de votre inscription à eWorky, vos identifiants vous seront renvoyés à cette adresse.</value>
   </data>
   <data name="SocialNetworkSoon" xml:space="preserve">
     <value>prochainement d'authentifier votre profil via un réseau social.</value>

@@ -130,8 +130,8 @@
     <value>Message Privé</value>
   </data>
   <data name="SeeYouSoon" xml:space="preserve">
-    <value>&lt;p&gt;A bientôt sur eWorky,&lt;/p&gt;
-&lt;p&gt;L’équipe eWorky&lt;/p&gt;</value>
+    <value>A bientôt sur eWorky,&lt;br /&gt;
+L’équipe eWorky&lt;br /&gt;</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>A :</value>
@@ -160,5 +160,14 @@ N'oubliez pas de proposer à vos clients de commenter et noter votre lieu, cela 
   </data>
   <data name="Contact" xml:space="preserve">
     <value>{0}&lt;br /&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Suivez-nous sur Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Suivez-nous sur twitter&lt;/a&gt;</value>
+  </data>
+  <data name="FollowFacebook" xml:space="preserve">
+    <value>Suivez-nous sur Facebook</value>
+  </data>
+  <data name="FollowTwitter" xml:space="preserve">
+    <value>Suivez-nous sur Twitter</value>
+  </data>
+  <data name="Hey" xml:space="preserve">
+    <value>Bonjour</value>
   </data>
 </root>

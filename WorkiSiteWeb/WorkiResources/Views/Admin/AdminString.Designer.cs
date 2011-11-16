@@ -277,7 +277,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mail eWorker.
+        ///   Looks up a localized string similar to Adresse électronique eWorker.
         /// </summary>
         public static string Email {
             get {
@@ -403,7 +403,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;email a été envoyé avec succès..
+        ///   Looks up a localized string similar to L&apos;e-mail a été envoyé avec succès..
         /// </summary>
         public static string MailHaveBeenSent {
             get {

@@ -61,7 +61,7 @@ namespace Worki.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pour retrouver votre mot de passe, entrez votre adresse électronique. Vous recevrez vos nouvelles informations de connexion par mail..
+        ///   Looks up a localized string similar to Pour retrouver votre mot de passe, entrez votre adresse électronique. Vous recevrez vos nouvelles informations de connexion par e-mail..
         /// </summary>
         public static string Description {
             get {

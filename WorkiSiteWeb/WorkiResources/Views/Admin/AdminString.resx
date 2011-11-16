@@ -289,7 +289,7 @@
     <value>Ajouter une annonce</value>
   </data>
   <data name="MailHaveBeenSent" xml:space="preserve">
-    <value>L'email a été envoyé avec succès.</value>
+    <value>L'e-mail a été envoyé avec succès.</value>
   </data>
   <data name="PressHaveBeenDel" xml:space="preserve">
     <value>L'article de presse a été supprimé.</value>
@@ -325,7 +325,7 @@
     <value>L'entrepreneur star non trouvé.</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>E-mail eWorker</value>
+    <value>Adresse électronique eWorker</value>
   </data>
   <data name="ExactLoc" xml:space="preserve">
     <value>Nom exact du lieu</value>

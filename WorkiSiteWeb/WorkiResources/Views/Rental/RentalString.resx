@@ -172,7 +172,7 @@
     <value>Type de contrat</value>
   </data>
   <data name="CreateAlert" xml:space="preserve">
-    <value>Créer une alerte email</value>
+    <value>Créer une alerte e-mail</value>
   </data>
   <data name="DateDrop" xml:space="preserve">
     <value>Date de dépôt :</value>
@@ -193,7 +193,7 @@
     <value>Editer une annonce</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email :</value>
+    <value>Adresse électronique :</value>
   </data>
   <data name="EndResultAnswer" xml:space="preserve">
     <value>annonce(s) trouvée(s)</value>

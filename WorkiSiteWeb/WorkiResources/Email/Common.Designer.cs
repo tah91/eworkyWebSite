@@ -88,6 +88,24 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suivez-nous sur Facebook.
+        /// </summary>
+        public static string FollowFacebook {
+            get {
+                return ResourceManager.GetString("FollowFacebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suivez-nous sur Twitter.
+        /// </summary>
+        public static string FollowTwitter {
+            get {
+                return ResourceManager.GetString("FollowTwitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Envoyer à un ami.
         /// </summary>
         public static string Friend {
@@ -111,6 +129,15 @@ namespace Worki.Resources.Email {
         public static string Hello {
             get {
                 return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonjour.
+        /// </summary>
+        public static string Hey {
+            get {
+                return ResourceManager.GetString("Hey", resourceCulture);
             }
         }
         
@@ -155,8 +182,8 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;p&gt;A bientôt sur eWorky,&lt;/p&gt;
-        ///&lt;p&gt;L’équipe eWorky&lt;/p&gt;.
+        ///   Looks up a localized string similar to A bientôt sur eWorky,&lt;br /&gt;
+        ///L’équipe eWorky&lt;br /&gt;.
         /// </summary>
         public static string SeeYouSoon {
             get {

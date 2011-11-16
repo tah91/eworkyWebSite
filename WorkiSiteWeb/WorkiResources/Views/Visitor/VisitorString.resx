@@ -121,13 +121,13 @@
     <value>eWorky</value>
   </data>
   <data name="LetUsYourMail" xml:space="preserve">
-    <value>Vous n’avez pas reçu d'identifiants pour tester eWorky. Laissez-nous votre email.</value>
+    <value>Vous n’avez pas reçu d'identifiants pour tester eWorky. Laissez-nous votre adresse électronique.</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Mot de passe</value>
   </data>
   <data name="SetUserMail" xml:space="preserve">
-    <value>Pour accéder à eWorky, saisissez les identifiants reçus par email.</value>
+    <value>Pour accéder à eWorky, saisissez les identifiants reçus par e-mail.</value>
   </data>
   <data name="SugestBug" xml:space="preserve">
     <value>Vous voulez nous suggérer une amélioration ou nous signaler un bug, une seule adresse :</value>

@@ -181,19 +181,19 @@
     <value>L'adresse électronique ou le mot de passe fourni est incorrect.</value>
   </data>
   <data name="MatchPassword" xml:space="preserve">
-    <value>Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas.</value>
+    <value>Attention, vous avez saisi un mot de passe de confirmation différent. Veuillez réessayer.</value>
   </data>
   <data name="MaxFileSize" xml:space="preserve">
     <value>File exceeds MAX_FILE_SIZE (HTML form directive)</value>
   </data>
   <data name="MaxLength" xml:space="preserve">
-    <value>Le champs "{0}" doit faire moins de {1} caractères.</value>
+    <value>Le champs "{0}" doit comporter moins de {1} caractères.</value>
   </data>
   <data name="MinLength" xml:space="preserve">
-    <value>Le champs "{0}" doit faire plus de {1} caractères.</value>
+    <value>Le champs "{0}" doit comporter plus de {1} caractères.</value>
   </data>
   <data name="MinMaxLength" xml:space="preserve">
-    <value>Le champs "{0}" doit faire entre {2} et {1} caractères.</value>
+    <value>Le champs "{0}" doit comporter entre {2} et {1} caractères.</value>
   </data>
   <data name="MustAgreeCGU" xml:space="preserve">
     <value>Vous devez accepter les Conditions Générales d'Utilisation pour vous inscrire sur eWorky.</value>
@@ -214,7 +214,7 @@
     <value>Le mot de passe actuel est incorrect ou le nouveau mot de passe n'est pas valide.</value>
   </data>
   <data name="PatternEmail" xml:space="preserve">
-    <value>Le champ "{0}" n'est pas au bon format.</value>
+    <value>Votre adresse électronique n'est pas valide. Veuillez réessayer.</value>
   </data>
   <data name="PictureTooBig" xml:space="preserve">
     <value>&lt;br/&gt;1 Mo max</value>
@@ -235,7 +235,7 @@
     <value>Le champs "{0}" doit être compris entre {1} et {2}.</value>
   </data>
   <data name="Required" xml:space="preserve">
-    <value>Le champ "{0}" est obligatoire.</value>
+    <value>Vous devez saisir un(e) "{0}".</value>
   </data>
   <data name="ReturnErrorTryAgain" xml:space="preserve">
     <value>Le fournisseur d'authentification a retourné une erreur. Vérifiez votre entrée et réessayez. Si le problème persiste, contactez votre administrateur système.</value>
@@ -268,7 +268,7 @@
     <value>Le nom d'utilisateur existe déjà. Entrez un nom d'utilisateur différent.</value>
   </data>
   <data name="UsernameExistForThisMail" xml:space="preserve">
-    <value>Un nom d'utilisateur pour cette adresse électronique existe déjà. Entrez une adresse électronique différente.</value>
+    <value>Il existe déjà un compte associé à cette adresse électronique. Veuillez vous connecter avec le compte existant ou saisir une adresse électronique différente.</value>
   </data>
   <data name="UsernameNotValide" xml:space="preserve">
     <value>Le nom d'utilisateur fourni n'est pas valide. Vérifiez la valeur et réessayez.</value>
