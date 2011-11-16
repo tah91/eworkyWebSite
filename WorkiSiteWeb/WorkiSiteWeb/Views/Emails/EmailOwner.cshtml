@@ -2,7 +2,14 @@
 From: @Html.Raw(ViewBag.From)
 Subject: @Html.Raw(ViewBag.Subject)
 
-<p>@Html.Raw(MiscHelpers.Nl2Br(ViewBag.Content))
-</p>
+<p>@string.Format(Worki.Resources.Email.Common.Hello, ViewBag.ToName),</p>
+
+<p>@Html.Raw(MiscHelpers.Nl2Br(ViewBag.Content))</p>
 
 @Worki.Resources.Email.Common.ConsultHere <a href="@Html.Raw(ViewBag.Link)">@Html.Raw(ViewBag.Link)</a>
+
+@Html.Raw(Worki.Resources.Email.Common.SeeYouSoon)
+<a href="@MiscHelpers.EmailConstants.ContactMail">@MiscHelpers.EmailConstants.ContactMail</a><br />
+@MiscHelpers.EmailConstants.Tel<br />
+<a href="@MiscHelpers.UrlConstants.eWorkyFacebook">@Worki.Resources.Email.Common.FollowFacebook</a><br />
+<a href="@MiscHelpers.UrlConstants.eWorkyTwitter">@Worki.Resources.Email.Common.FollowTwitter</a><br />

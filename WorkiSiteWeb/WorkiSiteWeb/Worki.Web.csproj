@@ -712,15 +712,12 @@
     <Content Include="Views\Home\ajouter-espace.cshtml" />
     <Content Include="Views\Localisation\_Suggestions.cshtml" />
     <Content Include="Views\Offer\Delete.cshtml" />
-    <Content Include="Views\Emails\FacebookMail.cshtml" />
     <Content Include="Views\Localisation\Offers.cshtml" />
     <Content Include="Views\Localisation\_LocalisationInfos.cshtml" />
     <Content Include="Views\Home\_AboutMenu.cshtml" />
     <Content Include="Views\Profil\_ProfilMenu.cshtml" />
-    <Content Include="Views\Emails\EmailContact.cshtml" />
     <Content Include="Views\Admin\Statistic.cshtml" />
     <Content Include="Views\Admin\LastModif.cshtml" />
-    <Content Include="Views\Emails\TakeOwnershipMail.cshtml" />
     <Content Include="Views\Admin\LastCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>

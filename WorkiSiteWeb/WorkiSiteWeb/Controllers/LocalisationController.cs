@@ -379,16 +379,11 @@ namespace Worki.Web.Controllers
 				var dest = member.Email;
                 context.Commit();
 				//send mail to member
-                dynamic Ownermail = new Email(MVC.Emails.Views.TakeOwnershipMail);
+                dynamic Ownermail = new Email(MVC.Emails.Views.Email);
                 Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 				Ownermail.To = dest;
                 Ownermail.ToName = member.MemberMainData.FirstName;
                 Ownermail.Subject = Worki.Resources.Email.Common.Welcome;
-                Ownermail.Contact = string.Format(Worki.Resources.Email.Common.Contact,
-                                                    MiscHelpers.EmailConstants.ContactMail,
-                                                    MiscHelpers.EmailConstants.Tel,
-                                                    MiscHelpers.UrlConstants.eWorkyFacebook,
-                                                    MiscHelpers.UrlConstants.eWorkyTwitter);
                 Ownermail.Content = string.Format(Worki.Resources.Email.Common.Ownership, localisation.Name,
                                         Url.AbsoluteAction(MVC.Localisation.ActionNames.Edit, MVC.Localisation.Name, new { id = id }));
                 Ownermail.Send();
