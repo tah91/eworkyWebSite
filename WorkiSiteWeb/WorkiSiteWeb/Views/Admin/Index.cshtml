@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace) </title>
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -43,10 +43,10 @@
                         @item.ID
                     </td>
                     <td align="right">
-                        @(item.IsMain ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Main, MVC.Admin.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NotMain, MVC.Admin.UpdateMainLocalisation(item.ID)))
+                        @(item.IsMain ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.UpdateMainLocalisation(item.ID)))
                     </td>
                     <td align="right">
-                        @(item.IsOffline ? Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Offline, MVC.Admin.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Online, MVC.Admin.OnOffline(item.ID)))
+                        @(item.IsOffline ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.OnOffline(item.ID)))
                     </td>
                     <td align="right">
                         @item.Name

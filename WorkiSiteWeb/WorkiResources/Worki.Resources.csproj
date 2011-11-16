@@ -296,6 +296,7 @@
     <EmbeddedResource Include="Email\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\FacebookRegistration.en.resx" />
     <EmbeddedResource Include="Email\FacebookRegistration.resx">
@@ -365,6 +366,7 @@
     <EmbeddedResource Include="Validation\ValidationString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ValidationString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\AccountString.en.resx" />
     <EmbeddedResource Include="Views\Account\AccountString.resx">
@@ -386,6 +388,7 @@
     <EmbeddedResource Include="Views\Account\ResetMdpString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetMdpString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\AdminString.en.resx" />
     <EmbeddedResource Include="Views\Admin\AdminString.resx">
@@ -442,6 +445,7 @@
     <EmbeddedResource Include="Views\Home\CguString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CguString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\ContactString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

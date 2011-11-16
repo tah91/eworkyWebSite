@@ -12,6 +12,20 @@
     {
 		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
     }
+    else
+    {
+        <div class="centerImg picBack">
+		    <table>
+			    <tbody>
+                    <tr>
+				        <td>
+					        <span class="italic">@Worki.Resources.Views.Localisation.LocalisationString.NoPictureAvailable</span>
+				        </td>
+			        </tr>
+		        </tbody>
+            </table>
+	    </div>
+    }
     </div>
     <div class="itemDetailsDiv float-left relative">
         <p class="@linkColor noUnderline"><span class="itemName">@Html.ActionLink(Model.Localisation.Name, MVC.Localisation.ActionNames.FullSearchResultDetail, rvd)</span>&nbsp; - &nbsp;@String.Format("{0:0.##} km", Model.Distance)</p>
@@ -33,18 +47,18 @@
 					</div> 
 				</div>
 				@{
-					int index = 0;
-					foreach (var com in Model.Localisation.Comments)
-					{
-						if (com.Member == null)
-						{ 
-							continue;
-						}
-						if (index++ >= 2)
-						{
-							break;
-						}
-						<p>&laquo; @Html.TruncateAtWord(com.Post,50)&raquo; <span class="commentUser bold">@com.Member.GetDisplayName()</span>
+                    int index = 0;
+                    foreach (var com in Model.Localisation.Comments)
+                    {
+                        if (com.Member == null)
+                        {
+                            continue;
+                        }
+                        if (index++ >= 2)
+                        {
+                            break;
+                        }
+						<p>&laquo; @Html.TruncateAtWord(com.Post, 50)&raquo; <span class="commentUser bold">@com.Member.GetDisplayName()</span>
 						</p>
 					}
 				}

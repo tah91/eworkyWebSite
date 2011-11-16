@@ -295,6 +295,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aucune photo disponible.
+        /// </summary>
+        public static string NoPictureAvailable {
+            get {
+                return ResourceManager.GetString("NoPictureAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erreur d&apos;acces au lieu de travail.
         /// </summary>
         public static string NotAccessToWorkplace {

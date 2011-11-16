@@ -339,4 +339,7 @@
   <data name="Owner" xml:space="preserve">
     <value>Gérant</value>
   </data>
+  <data name="AdminSpace" xml:space="preserve">
+    <value>Espace administrateur</value>
+  </data>
 </root>

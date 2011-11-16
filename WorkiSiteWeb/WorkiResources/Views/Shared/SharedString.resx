@@ -271,4 +271,10 @@
   <data name="Or" xml:space="preserve">
     <value>ou</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
 </root>

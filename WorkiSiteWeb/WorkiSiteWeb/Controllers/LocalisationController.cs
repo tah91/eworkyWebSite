@@ -371,7 +371,7 @@ namespace Worki.Web.Controllers
 				var memberId = WebHelper.GetIdentityId(User.Identity);
                 localisation.SetOwner(memberId);
 				var member = mRepo.Get(memberId);
-				if (member == null)
+				if (member == null || member.MemberMainData == null)
 				{
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
 					return RedirectToAction(MVC.Home.Index());
@@ -382,6 +382,7 @@ namespace Worki.Web.Controllers
                 dynamic Ownermail = new Email(MVC.Emails.Views.TakeOwnershipMail);
                 Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 				Ownermail.To = dest;
+                Ownermail.ToName = member.MemberMainData.FirstName;
                 Ownermail.Subject = Worki.Resources.Email.Common.Welcome;
                 Ownermail.Contact = string.Format(Worki.Resources.Email.Common.Contact,
                                                     MiscHelpers.EmailConstants.ContactMail,

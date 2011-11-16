@@ -144,6 +144,9 @@
   <data name="EworkerName" xml:space="preserve">
     <value>eWorker</value>
   </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hôtel</value>
   </data>
@@ -166,7 +169,7 @@
     <value>Espace PN / Cybercafé</value>
   </data>
   <data name="StatTitle" xml:space="preserve">
-    <value>Statistique</value>
+    <value>Statistiques</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Type</value>

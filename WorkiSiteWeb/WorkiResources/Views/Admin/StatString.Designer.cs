@@ -142,6 +142,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eWorkers.
+        /// </summary>
+        public static string Eworkers {
+            get {
+                return ResourceManager.GetString("Eworkers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hôtel.
         /// </summary>
         public static string Hotel {
@@ -205,7 +214,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Statistique.
+        ///   Looks up a localized string similar to Statistiques.
         /// </summary>
         public static string StatTitle {
             get {

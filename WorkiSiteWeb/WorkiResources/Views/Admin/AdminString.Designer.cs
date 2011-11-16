@@ -88,6 +88,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Espace administrateur.
+        /// </summary>
+        public static string AdminSpace {
+            get {
+                return ResourceManager.GetString("AdminSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;Attention : Les lieux de travail suivant n&apos;ont pas été ajoutés car ils existaient déjà dans la base de donnée &lt;br /&gt;&lt;/b&gt; {0}.
         /// </summary>
         public static string AlreadyAdded {
