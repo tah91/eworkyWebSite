@@ -370,8 +370,8 @@ namespace Worki.Web.Controllers
 			{
 				var memberId = WebHelper.GetIdentityId(User.Identity);
                 localisation.SetOwner(memberId);
-                context.Commit();
                 var member = lMem.Get(memberId);
+                context.Commit();
                 if (member == null)
                 {
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
