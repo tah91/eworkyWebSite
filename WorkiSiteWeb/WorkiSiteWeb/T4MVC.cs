@@ -919,6 +919,7 @@ namespace Worki.Web.Controllers {
             public readonly string Stat = "Stat";
             public readonly string Last100Modif = "Last100Modif";
             public readonly string LastCreate = "LastCreate";
+            public readonly string RefreshBlog = "RefreshBlog";
         }
 
 
@@ -1173,6 +1174,11 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult LastCreate(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LastCreate);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult RefreshBlog() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RefreshBlog);
             return callInfo;
         }
 

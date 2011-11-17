@@ -43,9 +43,6 @@ namespace Worki.Web.Controllers
         }
 
         public const string IndexViewModelContent = "IndexViewModel";
-        const string _BlogCacheKey = "BlogCacheKey";
-        const int _CacheDaySpan = 1;
-        const int _MaxBlogItem = 4;
 
 		IEnumerable<BlogPost> GetBlogPostsFromApi()
 		{
@@ -69,7 +66,7 @@ namespace Worki.Web.Controllers
 							Image = item["attachments"].Count() != 0 ? (string)item["attachments"][0]["images"]["medium"]["url"] : (string)item["thumbnail"],
 							PublicationDate = DateTime.Parse((string)item["date"])
 						});
-						if (++added >= _MaxBlogItem)
+						if (++added >= MiscHelpers.BlogConstants.MaxBlogItem)
 							break;
 					}
 					_Logger.Info("blog get_recent_posts ");
@@ -86,12 +83,12 @@ namespace Worki.Web.Controllers
         {
 			try
 			{
-				var fromCache = DataCacheSingleton.Instance.Cache.Get(_BlogCacheKey);
+				var fromCache = DataCacheSingleton.Instance.Cache.Get(MiscHelpers.BlogConstants.BlogCacheKey);
 				if (fromCache != null)
 					return (IEnumerable<BlogPost>)fromCache;
 
 				var toRet = GetBlogPostsFromApi();
-				DataCacheSingleton.Instance.Cache.Add(_BlogCacheKey, toRet, new TimeSpan(_CacheDaySpan, 0, 0, 0));
+				DataCacheSingleton.Instance.Cache.Add(MiscHelpers.BlogConstants.BlogCacheKey, toRet, new TimeSpan(MiscHelpers.BlogConstants.CacheDaySpan, 0, 0, 0));
 				return toRet;
 			}
 			catch (Exception ex)

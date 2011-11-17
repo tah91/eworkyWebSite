@@ -48,6 +48,13 @@ namespace Worki.Infrastructure.Helpers
 			public const string jqueryui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js";
 		}
 
+		public static class BlogConstants
+		{
+			public const string BlogCacheKey = "BlogCacheKey";
+			public const int CacheDaySpan = 1;
+			public const int MaxBlogItem = 4;
+		}
+
 		public static class AdminConstants
 		{
 			public const string AdminRole = "AdminRole";

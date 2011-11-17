@@ -13,6 +13,7 @@ using Worki.Data.Models;
 using Worki.Memberships;
 using Worki.Infrastructure;
 using Postal;
+using Worki.Web.Singletons;
 
 namespace Worki.Web.Controllers
 {
@@ -1344,5 +1345,22 @@ namespace Worki.Web.Controllers
         }
 
         #endregion
-    }
+
+		#region
+
+		public virtual ActionResult RefreshBlog()
+		{
+			try
+			{
+				DataCacheSingleton.Instance.Cache.Remove(MiscHelpers.BlogConstants.BlogCacheKey);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("RefreshBlog", ex);
+			}
+			return RedirectToAction(MVC.Admin.Index());
+		}
+
+		#endregion
+	}
 }
