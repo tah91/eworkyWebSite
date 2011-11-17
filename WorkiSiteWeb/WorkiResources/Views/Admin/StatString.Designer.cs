@@ -70,7 +70,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Centre d&apos;affaires.
+        ///   Looks up a localized string similar to Centre d&apos;aff..
         /// </summary>
         public static string BuisnessCenter {
             get {
@@ -79,7 +79,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Café / Restaurant.
+        ///   Looks up a localized string similar to Café / Restau.
         /// </summary>
         public static string CoffeeResto {
             get {
@@ -97,7 +97,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Espace de coworking.
+        ///   Looks up a localized string similar to Esp. cowork..
         /// </summary>
         public static string CoworkingSpace {
             get {
@@ -205,7 +205,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Espace PN / Cybercafé.
+        ///   Looks up a localized string similar to EPN / Cyber.
         /// </summary>
         public static string PublicSpace {
             get {
@@ -241,7 +241,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Espace voyageurs.
+        ///   Looks up a localized string similar to Esp. voyag..
         /// </summary>
         public static string TravelerSpace {
             get {
@@ -250,7 +250,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Spot Wifi.
+        ///   Looks up a localized string similar to Spot wifi.
         /// </summary>
         public static string Wifi {
             get {
@@ -259,7 +259,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hôtel d&apos;entreprises.
+        ///   Looks up a localized string similar to Hôtel d&apos;ent..
         /// </summary>
         public static string WorkingHotel {
             get {
