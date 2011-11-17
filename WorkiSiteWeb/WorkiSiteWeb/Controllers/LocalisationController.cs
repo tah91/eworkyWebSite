@@ -184,8 +184,8 @@ namespace Worki.Web.Controllers
                         loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
 						loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
 					}
-					TempData.Remove(PictureData.PictureDataString);
 					context.Commit();
+					TempData.Remove(PictureData.PictureDataString);
 
 					idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
 					localisationForm.Localisation.ID = idToRedirect;

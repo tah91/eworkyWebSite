@@ -60,6 +60,7 @@ namespace Worki.Web.Controllers
                     {
 						loc.Offers.Add(offerFormViewModel.Offer);
                         context.Commit();
+						TempData.Remove(PictureData.PictureDataString);
                     }
                     catch (Exception ex)
                     {
@@ -126,6 +127,7 @@ namespace Worki.Web.Controllers
 					var o = oRepo.Get(id, localisationId);
 					UpdateModel(o, "Offer");
 					context.Commit();
+					TempData.Remove(PictureData.PictureDataString);
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Localisation.Edit(localisationId));
 				}
