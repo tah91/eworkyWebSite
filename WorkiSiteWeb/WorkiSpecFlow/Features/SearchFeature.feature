@@ -55,3 +55,9 @@ Scenario: Description Indépendant
 	Given Je vais dans la page Recherche
 	When Je clique sur Indépendant
 	Then Je dois avoir la description Indépendant
+
+@search
+Scenario: Présence de lieux A la Une
+	Given Je vais dans la page d'acceuil
+	When Je clique sur Plus de critère
+	Then Il doit y avoir des lieux dans le bloc A la Une
