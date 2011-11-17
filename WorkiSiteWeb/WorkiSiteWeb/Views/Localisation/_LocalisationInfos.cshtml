@@ -51,8 +51,8 @@
 		@if (creation != null)
 		{
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Profil.Detail(creation.Member.MemberId))</span><br />
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", creation.ModificationDate)<br />
-		}
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@string.Format(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat, "{0}", creation.ModificationDate)<br />
+        }
 		else
 		{ 
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Profil.Detail(Model.Member.MemberId))</span><br />
@@ -60,8 +60,8 @@
 		@if (lastEdition != null)
 		{
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Profil.Detail(lastEdition.Member.MemberId))</span><br />
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@String.Format("{0:d/M/yyyy HH:mm:ss}", lastEdition.ModificationDate)<br />
-		}
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@string.Format(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat, "{0}", lastEdition.ModificationDate)<br />
+        }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
         {
             <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Profil.Detail(Model.OwnerID.Value))</span><br />
@@ -153,11 +153,11 @@
               }
               if (!string.IsNullOrEmpty(Model.Facebook))
               {
-				<a href="@WebHelper.GetWebsite(Model.Facebook)"><span>@Worki.Resources.Models.Localisation.Localisation.Facebook</span></a><br />
+				<a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank"><span>@Worki.Resources.Models.Localisation.Localisation.Facebook</span></a><br />
               }
               if (!string.IsNullOrEmpty(Model.Twitter))
               {
-				<a href="@WebHelper.GetTwitter(Model.Twitter)"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
+				<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
               }
               if (!Model.HasOwner())
               {

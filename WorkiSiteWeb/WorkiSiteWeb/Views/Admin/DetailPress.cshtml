@@ -20,7 +20,7 @@
                     </td>
                     <td>
                         <div class="editor-field"> 
-                            &nbsp;&nbsp;&nbsp;@Model.Date.ToString("dd/MM/yyyy")           
+                            &nbsp;&nbsp;&nbsp;@String.Format(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat, "{0:d}", Model.Date)         
                         </div>
                     </td>
                 </tr>

@@ -23,7 +23,7 @@
 					</td>
 					<td>
 						<div class="editor-field">
-							@Html.TextBox("Date", String.Format("{0:dd/MM/yyyy}", Model.Date), new { @class = "dp" })
+							@Html.TextBox("Date", String.Format(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat, "{0:d}", Model.Date), new { @class = "dp" })
 						</div>
 					</td>
 				</tr>
@@ -73,26 +73,9 @@
 	</div>
 </div>
 <div>
-	@Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexPress())
+	@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexPress())
 </div>
 @section ScriptContent
 {
-	<script type="text/javascript">
-	    require(["@MiscHelpers.UrlConstants.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
-            $(".dp").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                yearRange: '1900:2020'
-            });
-        });
-        require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
-            $("#DateForm").submit(function () {
-                var val = $("#Date").val();
-                var date = Date.parseExact(val, "dd/MM/yyyy");
-                var newVal = date.toString('MM/dd/yyyy');
-                $("#Date").val(newVal);
-                return true;
-            });
-        });
-    </script>
+	@Html.Partial(MVC.Shared.Views._DatepickerScript)
 }

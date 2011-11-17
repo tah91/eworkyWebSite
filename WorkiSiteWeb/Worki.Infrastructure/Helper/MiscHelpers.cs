@@ -253,6 +253,12 @@ namespace Worki.Infrastructure.Helpers
 			return title;
         }
 
+        /// <summary>
+        /// Randomize the order of a list
+        /// </summary>
+        /// <typeparam name="T">Type T</typeparam>
+        /// <param name="list">List of type T</param>
+        /// <returns>A randomize ordered list of type T</returns>
         public static IList<T> Shuffle<T>(IList<T> list)
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();

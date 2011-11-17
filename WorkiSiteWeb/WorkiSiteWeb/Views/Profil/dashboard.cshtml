@@ -99,7 +99,7 @@
 						@Model.Member.MemberMainData.CompanyName
                         if (Model.Member.MemberMainData.Website != null)
                         {
-                            <br/><a href="@WebHelper.GetWebsite(Model.Member.MemberMainData.Website)">@Worki.Resources.Views.Profile.ProfileString.MyWebsite</a>
+                            <br/><a href="@WebHelper.GetWebsite(Model.Member.MemberMainData.Website)" target="_blank">@Worki.Resources.Views.Profile.ProfileString.MyWebsite</a>
                         }
                     }
                     else if (Model.IsPrivate)

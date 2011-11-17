@@ -37,7 +37,7 @@
                     <a href="@Url.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { id = item.ID, name = item.Name })">@item.Name</a>
                 </td>
                 <td align="right">
-                    @string.Format("{0:d/M/yyyy HH:mm:ss}", item.MemberEditions.Last().ModificationDate)
+                    @string.Format(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat, "{0}", item.MemberEditions.Last().ModificationDate)
                 </td>
                 <td align="right">
                     @Worki.Resources.Views.Admin.StatString.Edit

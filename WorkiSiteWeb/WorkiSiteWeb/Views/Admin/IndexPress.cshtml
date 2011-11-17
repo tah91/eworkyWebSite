@@ -45,10 +45,10 @@
                     @item.ID
                 </td>
                 <td align="center">
-                    @String.Format("{0:dd/MM/yyyy}", item.Date)
+                    @String.Format(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat, "{0:d}", item.Date)
                 </td>
                 <td align="center">
-                    <a href=@item.Url>@item.Url</a>
+                    <a href=@item.Url target="_blank">@item.Url</a>
                 </td>
                 <td align="center">
                     @item.Title

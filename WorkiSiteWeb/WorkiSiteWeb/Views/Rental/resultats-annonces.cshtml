@@ -76,7 +76,7 @@
 				    <div class="toogle_container">
 					    <div class="block">
                             @Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>
-                            @Html.TextBox("RentalData.AvailableDate", String.Format("{0:dd/MM/yyyy}", Model.RentalData.AvailableDate), new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
+                            @Html.TextBox("RentalData.AvailableDate", String.Format(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat, "{0:d}", Model.RentalData.AvailableDate), new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
 					    </div>
 				    </div>
 
@@ -92,13 +92,13 @@
 					    <div class="block">
 						    <ul class="marginl0">
 						    @foreach (var feature in Rental.RentalFeatureDict)
-        { 
+                            { 
 							    <li>
 								    @{var enumName = Enum.GetName(typeof(RentalFeatureType), feature.Key);}
 								    @Html.CheckBox(enumName, Model.RentalData.HasFeature((RentalFeatureType)feature.Key))
 								    @Html.LabelFor(feature.Value, enumName)
 							    </li>
-        }
+                            }
 						    </ul>
 					    </div>
 				    </div>
@@ -120,5 +120,6 @@
     <script type="text/javascript">
         require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
     </script>
+    @Html.Partial(MVC.Shared.Views._DatepickerScript)
     @Html.Partial(MVC.Rental.Views._RentalSeachFormScript)
 }
