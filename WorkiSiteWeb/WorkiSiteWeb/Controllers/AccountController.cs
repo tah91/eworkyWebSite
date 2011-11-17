@@ -242,11 +242,14 @@ namespace Worki.Web.Controllers
         {
             if (_MembershipService.ActivateMember(username, key) == false)
             {
-                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain; 
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain;
                 return RedirectToAction(MVC.Home.Index());
             }
             else
+            {
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Shared.SharedString.ActivationCongratz;
                 return RedirectToAction(MVC.Account.LogOn());
+            }
         }
 
         /// <summary>
