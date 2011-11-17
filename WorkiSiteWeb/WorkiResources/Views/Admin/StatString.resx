@@ -121,16 +121,16 @@
     <value>Biblio / Musée</value>
   </data>
   <data name="BuisnessCenter" xml:space="preserve">
-    <value>Centre d'affaires</value>
+    <value>Centre d'aff.</value>
   </data>
   <data name="CoffeeResto" xml:space="preserve">
-    <value>Café / Restaurant</value>
+    <value>Café / Restau</value>
   </data>
   <data name="Country" xml:space="preserve">
     <value>Pays</value>
   </data>
   <data name="CoworkingSpace" xml:space="preserve">
-    <value>Espace de coworking</value>
+    <value>Esp. cowork.</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Création</value>
@@ -166,7 +166,7 @@
     <value>Lieu privé</value>
   </data>
   <data name="PublicSpace" xml:space="preserve">
-    <value>Espace PN / Cybercafé</value>
+    <value>EPN / Cyber</value>
   </data>
   <data name="StatTitle" xml:space="preserve">
     <value>Statistiques</value>
@@ -178,12 +178,12 @@
     <value>Télécentre</value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
-    <value>Espace voyageurs</value>
+    <value>Esp. voyag.</value>
   </data>
   <data name="Wifi" xml:space="preserve">
-    <value>Spot Wifi</value>
+    <value>Spot wifi</value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
-    <value>Hôtel d'entreprises</value>
+    <value>Hôtel d'ent.</value>
   </data>
 </root>

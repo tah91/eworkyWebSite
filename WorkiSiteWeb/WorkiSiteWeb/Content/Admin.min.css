@@ -19,3 +19,5 @@ li#emailSubMenu{list-style-image:url(images/e-mail.png)}
 .adminPanel table th,.adminPanel table tfoot{background-color:Silver;color:white;font-size:1.1em;font-family:Arial,"Arial Black",Times,"Times New Roman",serif}
 .adminPanel table td,.adminPanel table th{border:thin solid #FFE;text-align:center}
 .adminPanel table tr:hover td{background-color:#FFF;color:Blue}
+.stat td{width:60px}
+.stat tr td:first-child{width:80px}

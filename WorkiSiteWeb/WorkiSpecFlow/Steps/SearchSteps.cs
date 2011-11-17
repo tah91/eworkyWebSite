@@ -180,6 +180,23 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Lieux A la Une
+
+        [When(@"Je clique sur Plus de critère")]
+        public void WhenJeCliqueSurPlusDeCritere()
+        {
+            WebBrowser.Current.Page<AccueilPage>().Lien_Recherche.Click();
+        }
+
+        [Then(@"Il doit y avoir des lieux dans le bloc A la Une")]
+        public void ThenIlDoitYAvoirDesLieuxDansLeBlocALaUne()
+        {
+            Assert.That(WebBrowser.Current.Div(Find.BySelector("li[jcarouselindex='1']")) != null);
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
     }
 
     #region Search Page

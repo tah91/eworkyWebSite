@@ -136,3 +136,13 @@ li#emailSubMenu
 	background-color:#FFF;
 	color:Blue;
 }
+
+.stat td
+{
+    width:60px;
+}
+
+.stat tr td:first-child
+{
+    width:80px;
+}

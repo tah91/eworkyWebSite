@@ -215,6 +215,25 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Présence de lieux A la Une")]
+        [NUnit.Framework.CategoryAttribute("search")]
+        public virtual void PresenceDeLieuxALaUne()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Présence de lieux A la Une", new string[] {
+                        "search"});
+#line 60
+this.ScenarioSetup(scenarioInfo);
+#line 61
+ testRunner.Given("Je vais dans la page d\'acceuil");
+#line 62
+ testRunner.When("Je clique sur Plus de critère");
+#line 63
+ testRunner.Then("Il doit y avoir des lieux dans le bloc A la Une");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

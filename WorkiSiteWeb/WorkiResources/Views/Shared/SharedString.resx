@@ -277,4 +277,7 @@
   <data name="Yes" xml:space="preserve">
     <value>Oui</value>
   </data>
+  <data name="ActivationCongratz" xml:space="preserve">
+    <value>Votre compte vient d'être activé, félicitations !</value>
+  </data>
 </root>

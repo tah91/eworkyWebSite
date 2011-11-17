@@ -61,6 +61,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre compte vient d&apos;être activé, félicitations !.
+        /// </summary>
+        public static string ActivationCongratz {
+            get {
+                return ResourceManager.GetString("ActivationCongratz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ajout.
         /// </summary>
         public static string Add {
