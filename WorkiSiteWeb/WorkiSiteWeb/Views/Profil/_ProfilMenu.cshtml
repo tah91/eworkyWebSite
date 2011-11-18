@@ -55,9 +55,9 @@
 		{
             <div class="contentBlock">
 	   			<ul class="leftMenu">
-					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.CommunityActivity)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.MyComActivities, MVC.Profil.Dashboard(Model.Member.MemberId))</li>
-					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.Edit)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit(Model.Member.MemberId))</li>
-					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.ChangePassword)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.ChangePassword, MVC.Profil.ChangePassword(Model.Member.MemberId))</li>
+					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.CommunityActivity)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.MyComActivities, MVC.Profil.Dashboard())</li>
+					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.Edit)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.EditProfile, MVC.Profil.Edit())</li>
+					<li class="borderRadius @Model.GetClass("selected", (int)ProfilConstants.ProfilItem.ChangePassword)">@Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.ChangePassword, MVC.Profil.ChangePassword())</li>
 				</ul>
             </div>
         }

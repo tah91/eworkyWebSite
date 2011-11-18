@@ -44,7 +44,7 @@
                             @item.LastName
                         </td>
                         <td align="right">
-							@Html.ActionLink(item.UserName, MVC.Profil.Dashboard(item.MemberId)) 
+							@Html.ActionLink(item.UserName, MVC.Profil.Detail(item.MemberId)) 
                         </td>
                         <td align="center">
                             @Html.CheckBox(item.UserName, item.IsAdmin)

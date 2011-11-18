@@ -46,7 +46,7 @@
                     @Html.ActionLink(item.Id.ToString(), MVC.Rental.Detail(item.Id))
                 </td>
                 <td align="center">
-                    @Html.ActionLink(item.Member.Email,MVC.Profil.Dashboard(item.MemberId))
+                    @Html.ActionLink(item.Member.Email, MVC.Profil.Detail(item.MemberId))
                 </td>
                 <td align="center">
 					@item.PostalCode

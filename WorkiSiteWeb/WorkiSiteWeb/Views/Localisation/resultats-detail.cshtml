@@ -72,7 +72,7 @@
         $("#favLinkAddButton").live("click", function () {
 			$.ajax({
 					url: "@Url.Action(MVC.Profil.ActionNames.AddToFavorite,MVC.Profil.Name)",
-					data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
+					data: { "locId" : @Model.Localisation.ID },
 					success: function (data) {
 						$("#favLink").html(data);
 					}
@@ -81,7 +81,7 @@
 		$("#favLinkDelButton").live("click", function () {
 			$.ajax({
 					url: "@Url.Action(MVC.Profil.ActionNames.RemoveFromFavorite,MVC.Profil.Name)",
-					data: { "id": '@User.Identity.Name', "locId" : @Model.Localisation.ID },
+					data: { "locId" : @Model.Localisation.ID },
 					success: function (data) {
 						$("#favLink").html(data);
 					}

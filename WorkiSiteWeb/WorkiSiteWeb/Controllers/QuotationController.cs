@@ -268,7 +268,7 @@ namespace Worki.Web.Controllers
 		void SendCreationAccountMail(MemberQuotationFormViewModel formData, Member member, Offer offer)
 		{
 			var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-			var profilUrl = urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Dashboard, MVC.Profil.Name, new { id = member.MemberId });
+			var profilUrl = urlHelper.ActionAbsolute(MVC.Profil.Dashboard());
 			TagBuilder profilLink = new TagBuilder("a");
 			profilLink.MergeAttribute("href", profilUrl);
 			profilLink.InnerHtml = profilUrl;
@@ -287,7 +287,7 @@ namespace Worki.Web.Controllers
 												member.Email,
 												_MembershipService.GetPassword(member.Email, null),
 												profilLink.ToString(),
-												urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }));
+												urlHelper.ActionAbsolute(MVC.Profil.Edit()));
 
 			newMemberMail.Send();
 		}

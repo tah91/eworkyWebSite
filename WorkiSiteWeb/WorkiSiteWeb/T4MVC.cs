@@ -1985,18 +1985,8 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Dashboard() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Dashboard);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult AjaxDashboard() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDashboard);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Edit() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2007,11 +1997,6 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult RemoveFromFavorite() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult ChangePassword() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2066,9 +2051,8 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Dashboard(int id) {
+        public override System.Web.Mvc.ActionResult Dashboard() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Dashboard);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -2083,42 +2067,36 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id) {
+        public override System.Web.Mvc.ActionResult Edit() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, Worki.Data.Models.Member member) {
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Member member) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("member", member);
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AddToFavorite(string id, int locId) {
+        public override System.Web.Mvc.PartialViewResult AddToFavorite(int locId) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddToFavorite);
-            callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("locId", locId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult RemoveFromFavorite(string id, int locId) {
+        public override System.Web.Mvc.PartialViewResult RemoveFromFavorite(int locId) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
-            callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("locId", locId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangePassword(int id) {
+        public override System.Web.Mvc.ActionResult ChangePassword() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangePassword(int id, Worki.Data.Models.ChangePasswordModel model) {
+        public override System.Web.Mvc.ActionResult ChangePassword(Worki.Data.Models.ChangePasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
-            callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }

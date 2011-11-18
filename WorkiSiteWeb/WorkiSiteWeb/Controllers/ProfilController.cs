@@ -106,13 +106,11 @@ namespace Worki.Web.Controllers
 		/// <returns>View containing profil dashboard</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		[ActionName("dashboard")]
-		public virtual ActionResult Dashboard(int id)
+		public virtual ActionResult Dashboard()
 		{
-			if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) && !WebHelper.MatchIdentity(User.Identity, id))
-            {
-                return View(MVC.Shared.Views.Error);
-            }
-
+			var id = WebHelper.GetIdentityId(User.Identity);
+			if (id == 0)
+				return View(MVC.Shared.Views.Error);
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.Get(id);
@@ -153,20 +151,18 @@ namespace Worki.Web.Controllers
 		/// <returns>the form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		[ActionName("editer")]
-		public virtual ActionResult Edit(int id)
+		public virtual ActionResult Edit()
 		{
-			if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) && !WebHelper.MatchIdentity(User.Identity, id))
-            {
-                return View(MVC.Shared.Views.Error);
-            }
-
+			var id = WebHelper.GetIdentityId(User.Identity);
+			if (id == 0)
+				return View(MVC.Shared.Views.Error);
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var item = mRepo.Get(id);
             if (item == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
-                return RedirectToAction(MVC.Profil.Dashboard(id));
+                return RedirectToAction(MVC.Profil.Dashboard());
             }
 				
 			return View(new ProfilFormViewModel { Member = item });
@@ -181,8 +177,13 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ValidateAntiForgeryToken]
 		[ActionName("editer")]
-		public virtual ActionResult Edit(int id, Member member)
+		public virtual ActionResult Edit(Member member)
 		{
+			var id = WebHelper.GetIdentityId(User.Identity);
+			if (id == 0)
+				return View(MVC.Shared.Views.Error);
+
+			member.MemberId = id;
 			if (ModelState.IsValid)
 			{
 				var context = ModelFactory.GetUnitOfWork();
@@ -221,7 +222,7 @@ namespace Worki.Web.Controllers
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.ProfilHaveBeenEdit;
 
-					return RedirectToAction(MVC.Profil.ActionNames.Dashboard, new { id = id });
+					return RedirectToAction(MVC.Profil.Dashboard());
 				}
 				catch (Exception ex)
 				{
@@ -236,17 +237,18 @@ namespace Worki.Web.Controllers
 		/// <summary>
 		/// Action to add a localisation to member favorites
 		/// </summary>
-		/// <param name="id">Id of the member</param>
 		/// <param name="locId">Id of the favorite localisation</param>
 		/// <param name="returnUrl">Url to redirect when action done</param>
 		/// <returns>Redirect to returnUrl</returns>
-		public virtual PartialViewResult AddToFavorite(string id, int locId)
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		public virtual PartialViewResult AddToFavorite( int locId)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			try
 			{
-				var member = mRepo.GetMember(id);
+				var id = WebHelper.GetIdentityId(User.Identity);
+				var member = mRepo.Get(id);
 				if (member == null)
 					return null;
 				member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = locId });
@@ -267,17 +269,18 @@ namespace Worki.Web.Controllers
 		/// <summary>
 		/// Action to remove a localisation from member favorites
 		/// </summary>
-		/// <param name="id">Id of the member</param>
 		/// <param name="locId">Id of the favorite localisation to remove</param>
 		/// <param name="returnUrl">Url to redirect when action done</param>
 		/// <returns>Redirect to returnUrl</returns>
-		public virtual PartialViewResult RemoveFromFavorite(string id, int locId)
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		public virtual PartialViewResult RemoveFromFavorite(int locId)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			try
 			{
-				var member = mRepo.GetMember(id);
+				var id = WebHelper.GetIdentityId(User.Identity);
+				var member = mRepo.Get(id);
 				if (member == null)
 					return null;
 
@@ -313,12 +316,12 @@ namespace Worki.Web.Controllers
 		/// <returns>the form to fill</returns>
 		[ActionName("changer-mdp")]
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual ActionResult ChangePassword(int id)
+		public virtual ActionResult ChangePassword()
 		{
-			if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) && !WebHelper.MatchIdentity(User.Identity, id))
-			{
+			var id = WebHelper.GetIdentityId(User.Identity);
+			if (id == 0)
 				return View(MVC.Shared.Views.Error);
-			}
+
 			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
 			return View(new ChangePasswordModel { MemberId = id });
 		}
@@ -331,8 +334,11 @@ namespace Worki.Web.Controllers
 		[ActionName("changer-mdp")]
 		[AcceptVerbs(HttpVerbs.Post),Authorize]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult ChangePassword(int id, ChangePasswordModel model)
+		public virtual ActionResult ChangePassword(ChangePasswordModel model)
 		{
+			var id = WebHelper.GetIdentityId(User.Identity);
+			if (id == 0)
+				return View(MVC.Shared.Views.Error);
 			if (ModelState.IsValid)
 			{
 				var context = ModelFactory.GetUnitOfWork();
@@ -341,7 +347,7 @@ namespace Worki.Web.Controllers
 				if (_MembershipService.ChangePassword(member.Username, model.OldPassword, model.NewPassword))
 				{
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
-					return RedirectToAction(MVC.Profil.Dashboard(id));
+					return RedirectToAction(MVC.Profil.Dashboard());
 				}
 				else
 				{
