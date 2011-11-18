@@ -150,4 +150,7 @@
   <data name="BackToLocalisation" xml:space="preserve">
     <value>Retour à la fiche du lieu</value>
   </data>
+  <data name="OffersDetail" xml:space="preserve">
+    <value>Détail des offres</value>
+  </data>
 </root>

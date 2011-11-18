@@ -151,6 +151,15 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Détail des offres.
+        /// </summary>
+        public static string OffersDetail {
+            get {
+                return ResourceManager.GetString("OffersDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supprimer une offre.
         /// </summary>
         public static string RemoveOffer {

@@ -79,7 +79,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proposer la réservation en ligne.
+        ///   Looks up a localized string similar to Je souhaite proposer la réservation ligne sur eworky.com !.
         /// </summary>
         public static string Bookable {
             get {

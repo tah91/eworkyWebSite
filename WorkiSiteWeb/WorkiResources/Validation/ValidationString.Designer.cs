@@ -286,7 +286,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit comporter moins de {1} caractères..
+        ///   Looks up a localized string similar to Le champ &quot;{0}&quot; doit comporter moins de {1} caractères..
         /// </summary>
         public static string MaxLength {
             get {
@@ -295,7 +295,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit comporter plus de {1} caractères..
+        ///   Looks up a localized string similar to Le champ &quot;{0}&quot; doit comporter plus de {1} caractères..
         /// </summary>
         public static string MinLength {
             get {
@@ -304,7 +304,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit comporter entre {2} et {1} caractères..
+        ///   Looks up a localized string similar to Le champ &quot;{0}&quot; doit comporter entre {2} et {1} caractères..
         /// </summary>
         public static string MinMaxLength {
             get {
@@ -331,7 +331,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs {0} ne correspond pas à une date valide..
+        ///   Looks up a localized string similar to Le champ {0} ne correspond pas à une date valide..
         /// </summary>
         public static string NoValideDate {
             get {
@@ -421,7 +421,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le champs &quot;{0}&quot; doit être compris entre {1} et {2}..
+        ///   Looks up a localized string similar to Le champ &quot;{0}&quot; doit être compris entre {1} et {2}..
         /// </summary>
         public static string Range {
             get {
@@ -448,7 +448,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous devez choisir une valeur pour le champs &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Vous devez choisir une valeur pour le champ &quot;{0}&quot;..
         /// </summary>
         public static string SelectOne {
             get {

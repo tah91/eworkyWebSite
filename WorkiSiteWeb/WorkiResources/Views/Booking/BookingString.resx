@@ -156,4 +156,7 @@
   <data name="ValidateQuotation" xml:space="preserve">
     <value>Valider la demande de devis</value>
   </data>
+  <data name="AskQuotation" xml:space="preserve">
+    <value>Demande de devis</value>
+  </data>
 </root>
