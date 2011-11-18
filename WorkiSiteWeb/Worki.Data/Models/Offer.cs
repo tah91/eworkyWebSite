@@ -34,6 +34,9 @@ namespace Worki.Data.Models
         public int Type { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
+        public decimal Price { get; set; }
+        public int Period { get; set; }
+        public bool IsOffline { get; set; }
     
         // Navigation properties
     

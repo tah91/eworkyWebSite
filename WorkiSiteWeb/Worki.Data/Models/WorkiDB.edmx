@@ -392,6 +392,9 @@
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="IsOffline" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="OfferFeature">
           <Key>
@@ -1478,6 +1481,9 @@
           <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_Offer_Localisation" FromRole="Offer" ToRole="Localisation" />
           <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Offer" FromRole="Offer" ToRole="MemberBooking" />
           <NavigationProperty Name="MemberQuotations" Relationship="WorkiDBModel.FK_MemberQuotation_Offer" FromRole="Offer" ToRole="MemberQuotation" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Period" Nullable="false" />
+          <Property Type="Boolean" Name="IsOffline" Nullable="false" />
         </EntityType>
         <EntityType Name="OfferFile">
           <Key>
@@ -1999,6 +2005,9 @@
           <EntitySetMapping Name="Offers">
             <EntityTypeMapping TypeName="WorkiDBModel.Offer">
               <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Capacity" ColumnName="Capacity" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
