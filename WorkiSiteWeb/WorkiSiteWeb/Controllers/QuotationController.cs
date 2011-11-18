@@ -124,7 +124,6 @@ namespace Worki.Web.Controllers
                     teamMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
 					teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
                     teamMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
-                                                     Localisation.GetOfferType(offer.Type),
 					                                 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
 					                                 formData.PhoneNumber,
 					                                 member.Email,
