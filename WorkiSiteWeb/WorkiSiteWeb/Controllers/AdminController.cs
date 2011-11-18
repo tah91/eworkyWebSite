@@ -810,6 +810,34 @@ namespace Worki.Web.Controllers
 
 		#endregion
 
+        #region Admin Quotation
+
+        /// <summary>
+        /// Prepares a web page containing a paginated list of localisations
+        /// </summary>
+        /// <param name="page">The page to display</param>
+        /// <returns>The action result.</returns>
+        public virtual ActionResult IndexQuotation(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            var pageValue = page ?? 1;
+            var quotations = qRepo.Get((pageValue - 1) * PageSize, PageSize, mb => mb.Id);
+            var viewModel = new MemberQuotationListViewModel()
+            {
+                MemberQuotation = quotations,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = PageSize,
+                    TotalItems = qRepo.GetCount()
+                }
+            };
+            return View(viewModel);
+        }
+
+        #endregion
+
         #region Admin Press
 
         /// <summary>

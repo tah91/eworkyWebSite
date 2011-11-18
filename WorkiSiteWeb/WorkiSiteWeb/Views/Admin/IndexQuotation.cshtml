@@ -1,0 +1,66 @@
+﻿@model Worki.Data.Models.MemberQuotationListViewModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.IndexQuotation, "Blue")
+<div class="contentAdmin">
+    <div id="adminMenu"> 
+        @Html.Partial(MVC.Admin.Views._AdminMenu)
+    </div>
+    <div class="adminPanel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
+                    </th> 
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.EmailAddress
+                    </th> 
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Booking.Booking.Handled
+                    </th>
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Booking.Booking.Price
+                    </th>
+                </tr>
+            </thead>
+        <tbody>
+        @foreach (var item in Model.MemberQuotation)
+        {
+            <tr>
+                <td align="center">
+                    @Html.ActionLink(item.Id.ToString(), MVC.Quotation.Details(item.Id, item.MemberId, item.OfferId, item.LocalisationId))
+                </td>
+                <td align="center">
+                    @Html.ActionLink(item.Member.Email,MVC.Profil.Dashboard(item.MemberId))
+                </td>
+				<td align="center">
+					@if (item.Handled)
+					{
+						<text>OK</text>
+					}
+					else
+					{ 
+						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.HandleIt, MVC.Quotation.HandleBooking(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+					}
+                </td>
+				<td align="center">
+					@Html.ActionLink(item.Price.ToString(), MVC.Quotation.Edit(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.IndexQuotation, MVC.Admin.Name, new { page = x }))
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>

@@ -118,22 +118,21 @@ namespace Worki.Web.Controllers
 					}
 
 					//send mail to team
-					//TODO mail containing quoation data
-					//dynamic teamMail = new Email(MVC.Emails.Views.Email);
-					//teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					//teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-					//teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-					//teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-					//teamMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
-					//                                 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
-					//                                 formData.PhoneNumber,
-					//                                 member.Email,
-					//                                 locName,
-					//                                 Localisation.GetOfferType(offer.Type),
-					//                                 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberQuotation.FromDate),
-					//                                 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberQuotation.ToDate),
-					//                                 formData.MemberQuotation.Message);
-					//teamMail.Send();
+					dynamic teamMail = new Email(MVC.Emails.Views.Email);
+					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
+                    teamMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
+					teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
+                    teamMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
+                                                     Localisation.GetOfferType(offer.Type),
+					                                 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
+					                                 formData.PhoneNumber,
+					                                 member.Email,
+					                                 locName,
+					                                 Localisation.GetOfferType(offer.Type),
+					                                 formData.MemberQuotation.Surface,
+					                                 formData.MemberQuotation.Message);
+					teamMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));

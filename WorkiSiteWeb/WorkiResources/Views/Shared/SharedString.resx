@@ -280,4 +280,7 @@
   <data name="ActivationCongratz" xml:space="preserve">
     <value>Votre compte vient d'être activé, félicitations !</value>
   </data>
+  <data name="Quotations" xml:space="preserve">
+    <value>Devis</value>
+  </data>
 </root>

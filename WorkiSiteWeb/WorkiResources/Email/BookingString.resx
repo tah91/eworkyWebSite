@@ -169,6 +169,18 @@ En espérant vous revoir très vite sur eworky.com,</value>
   <data name="QuotationHandleMailSubject" xml:space="preserve">
     <value>eWorky – Votre demande de devis a été traitée et transmise au gérant</value>
   </data>
+  <data name="QuotationMailBody" xml:space="preserve">
+    <value>Nom : {0}
+Téléphone : {1}
+Adresse électronique : {2}
+Nom du lieu : {3}
+Besoin : {4}
+Surface : {5}
+Message : {6}</value>
+  </data>
+  <data name="QuotationMailSubject" xml:space="preserve">
+    <value>Alerte eWorky – Demande de devis</value>
+  </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
     <value>Bonjour,
 

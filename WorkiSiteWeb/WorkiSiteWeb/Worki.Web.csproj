@@ -722,6 +722,7 @@
     <Content Include="Views\Admin\LastCreate.cshtml" />
     <Content Include="Views\Quotation\Create.cshtml" />
     <Content Include="Views\Quotation\Details.cshtml" />
+    <Content Include="Views\Admin\IndexQuotation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

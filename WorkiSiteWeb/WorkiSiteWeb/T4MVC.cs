@@ -846,6 +846,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult IndexQuotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.IndexQuotation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult IndexPress() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexPress);
         }
@@ -910,6 +915,7 @@ namespace Worki.Web.Controllers {
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string IndexBooking = "IndexBooking";
+            public readonly string IndexQuotation = "IndexQuotation";
             public readonly string IndexPress = "IndexPress";
             public readonly string DetailPress = "DetailPress";
             public readonly string CreatePress = "CreatePress";
@@ -1097,6 +1103,12 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult IndexBooking(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexBooking);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult IndexQuotation(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexQuotation);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }

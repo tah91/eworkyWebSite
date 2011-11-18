@@ -394,6 +394,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Devis.
+        /// </summary>
+        public static string Quotations {
+            get {
+                return ResourceManager.GetString("Quotations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réinitialiser.
         /// </summary>
         public static string Reset {

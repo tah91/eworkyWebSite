@@ -173,6 +173,30 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nom : {0}
+        ///Téléphone : {1}
+        ///Adresse électronique : {2}
+        ///Nom du lieu : {3}
+        ///Besoin : {4}
+        ///Surface : {5}
+        ///Message : {6}.
+        /// </summary>
+        public static string QuotationMailBody {
+            get {
+                return ResourceManager.GetString("QuotationMailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alerte eWorky – Demande de devis.
+        /// </summary>
+        public static string QuotationMailSubject {
+            get {
+                return ResourceManager.GetString("QuotationMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bonjour,
         ///
         ///Suite à votre demande de devis pour un {0} de {1} m2 dans l’établissement {2} ({3}), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos demandes de devis et de vos réservations.
