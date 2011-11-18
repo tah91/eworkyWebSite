@@ -119,6 +119,8 @@ namespace Worki.Web
                 //Finally setting culture for each request
                 Thread.CurrentThread.CurrentUICulture = ci;
                 Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
+                Thread.CurrentThread.CurrentUICulture.NumberFormat = CultureInfo.InvariantCulture.NumberFormat;
+                Thread.CurrentThread.CurrentCulture.NumberFormat = CultureInfo.InvariantCulture.NumberFormat;
             }
         }
 
