@@ -70,7 +70,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Administrateur.
+        ///   Looks up a localized string similar to Fonctionnalités de modération.
         /// </summary>
         public static string Admin {
             get {
@@ -192,6 +192,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string Offers {
             get {
                 return ResourceManager.GetString("Offers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fonctionnalités réservées au gérant du lieu.
+        /// </summary>
+        public static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
             }
         }
         

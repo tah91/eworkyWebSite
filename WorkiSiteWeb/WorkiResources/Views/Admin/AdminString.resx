@@ -342,4 +342,7 @@
   <data name="AdminSpace" xml:space="preserve">
     <value>Espace administrateur</value>
   </data>
+  <data name="IndexQuotation" xml:space="preserve">
+    <value>Gestion des devis</value>
+  </data>
 </root>

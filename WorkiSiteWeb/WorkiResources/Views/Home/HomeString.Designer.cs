@@ -376,7 +376,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - café internet, spot wifi&lt;br /&gt;- espace publique numérique&lt;br /&gt;- bibliotèque, musée, etc..
+        ///   Looks up a localized string similar to - café internet, spot wifi&lt;br /&gt;- espace publique numérique&lt;br /&gt;- bibliothèque, musée, etc..
         /// </summary>
         public static string SearchSpeech {
             get {

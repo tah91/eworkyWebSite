@@ -61,6 +61,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande de devis.
+        /// </summary>
+        public static string AskQuotation {
+            get {
+                return ResourceManager.GetString("AskQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retour.
         /// </summary>
         public static string BackToUrl {
@@ -165,6 +174,15 @@ namespace Worki.Resources.Views.Booking {
         public static string Speech {
             get {
                 return ResourceManager.GetString("Speech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surface.
+        /// </summary>
+        public static string Surface {
+            get {
+                return ResourceManager.GetString("Surface", resourceCulture);
             }
         }
         

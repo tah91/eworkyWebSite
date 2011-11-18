@@ -30,6 +30,7 @@ namespace Worki.Data.Models
         public bool IsAdmin { get; set; }
         public int Score { get; set; }
         public bool Locked { get; set; }
+        public string LastName { get; set; }
     }
 
 	public class UserListViewModel
@@ -103,6 +104,16 @@ namespace Worki.Data.Models
 	}
 
 	#endregion
+
+    #region Admin Quotation
+
+    public class MemberQuotationListViewModel
+    {
+        public IList<MemberQuotation> MemberQuotation { get; set; }
+        public PagingInfo PagingInfo { get; set; }
+    }
+
+    #endregion
 
     #region Admin Press
 

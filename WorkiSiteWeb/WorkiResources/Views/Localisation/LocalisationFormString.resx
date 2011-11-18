@@ -121,7 +121,7 @@
     <value>Accès</value>
   </data>
   <data name="Admin" xml:space="preserve">
-    <value>Administrateur</value>
+    <value>Fonctionnalités de modération</value>
   </data>
   <data name="AvoidPeriods" xml:space="preserve">
     <value>Eviter les periodes</value>
@@ -162,6 +162,9 @@
   </data>
   <data name="Offers" xml:space="preserve">
     <value>Offre</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Fonctionnalités réservées au gérant du lieu</value>
   </data>
   <data name="PlaceDetails" xml:space="preserve">
     <value>Caractéristiques du lieu</value>

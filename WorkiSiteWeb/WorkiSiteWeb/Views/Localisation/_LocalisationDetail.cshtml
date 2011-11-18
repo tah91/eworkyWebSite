@@ -9,8 +9,8 @@
 		var files = localisation.GetOfferFiles(offerType);
 		var features = localisation.GetOfferFeatures(offerType);
         var title = Localisation.GetOfferType((int)offerType, false);
-		var text = !localisation.Bookable ? "Détail des offres" :
-					Offer.NeedQuotation(offerType) ? "Demande de devis" : Worki.Resources.Views.Localisation.LocalisationString.BookIt;
+		var text = !localisation.Bookable ? Worki.Resources.Views.Offer.OfferString.OffersDetail :
+					Offer.NeedQuotation(offerType) ? Worki.Resources.Views.Booking.BookingString.AskQuotation : Worki.Resources.Views.Localisation.LocalisationString.BookIt;
 		<div class="contentBlock">
 			<h3 class="blue">@title</h3>
 			@if (files.Count() > 0)

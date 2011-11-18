@@ -340,6 +340,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gestion des devis.
+        /// </summary>
+        public static string IndexQuotation {
+            get {
+                return ResourceManager.GetString("IndexQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gestion des entrepreneurs stars.
         /// </summary>
         public static string IndexWelcomePeople {

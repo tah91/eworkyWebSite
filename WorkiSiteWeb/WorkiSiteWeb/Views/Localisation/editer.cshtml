@@ -36,7 +36,7 @@
         @if ((Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) || Model.Localisation.IsOwner(WebHelper.GetIdentityId(User.Identity))) && !Model.IsFreeLocalisation)
         {
             <div class="contentBlock">
-                <h3 class="blue">@Worki.Resources.Views.Admin.AdminString.Owner</h3>
+                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Owner</h3>
                 <div class="adminBlock">
 					@Html.CheckBoxFor(m => m.Localisation.Bookable)
 					@Html.LabelFor(m => m.Localisation.Bookable)
@@ -50,7 +50,7 @@
                         <h3 class="blue inline">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3>
                         <span>&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
                         <table class="generalInfosTable editionTable">
-                            @if (!Model.Localisation.HasOwner())
+                            @if (Model.Localisation.ID == 0)
                             { 
                             <tr>
                                 <td>
