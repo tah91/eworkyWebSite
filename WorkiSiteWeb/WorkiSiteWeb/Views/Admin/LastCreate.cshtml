@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.LocalisationListViewModel
+﻿@model Worki.Data.Models.PagingList<Localisation>
 
 @section HeadContent
 {
@@ -27,7 +27,7 @@
                     @Worki.Resources.Views.Admin.StatString.Status
                 </th>
             </tr>
-            @foreach (var item in Model.Localisations)
+            @foreach (var item in Model.List)
             { 
             <tr>
                 <td align="right">

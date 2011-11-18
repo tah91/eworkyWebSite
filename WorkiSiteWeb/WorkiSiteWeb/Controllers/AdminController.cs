@@ -51,9 +51,9 @@ namespace Worki.Web.Controllers
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
 			var localisations = lRepo.Get((pageValue - 1) * PageSize, PageSize, l => l.ID);
-            var viewModel = new LocalisationListViewModel()
+			var viewModel = new PagingList<Localisation>()
             {
-                Localisations = localisations,
+                List = localisations,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -133,9 +133,9 @@ namespace Worki.Web.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			int pageValue = page ?? 1;
 			var members = mRepo.Get((pageValue - 1) * PageSize, PageSize, m => m.MemberId);
-			var viewModel = new UserListViewModel()
+			var viewModel = new PagingList<MemberAdminModel>()
 			{
-				ListMemberShip = _MembershipService.GetAdminMapping(members),
+				List = _MembershipService.GetAdminMapping(members).ToList(),
 				PagingInfo = new PagingInfo
 				 {
 					 CurrentPage = pageValue,
@@ -281,78 +281,6 @@ namespace Worki.Web.Controllers
 
         #endregion
 
-        #region Admin Visitor
-
-        /// <summary>
-        /// Prepares a web page containing a paginated list of visitors
-        /// </summary>
-        /// <param name="page">The page to display</param>
-        /// <returns>The action result.</returns>
-        public virtual ActionResult IndexVisitor(int? page)
-        {
-			var context = ModelFactory.GetUnitOfWork();
-			var vRepo = ModelFactory.GetRepository<IVisitorRepository>(context);
-            int pageValue = page ?? 1;
-            int itemTotal = 1;
-            //IQueryable<Visitor> visitors = _VisitorRepository.GetVisitors((pageValue - 1) * PageSize, PageSize);
-			var currentPage = vRepo.Get((pageValue - 1) * PageSize, PageSize, v => v.Id);
-            var dict = currentPage.ToDictionary(v => v, v => _MembershipService.GetUserByMail(v.Email) != null);
-			itemTotal = vRepo.GetCount();
-            var viewModel = new VisitorListViewModel()
-            {
-                ListVisitor = dict,
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = pageValue,
-                    ItemsPerPage = PageSize,
-                    TotalItems = itemTotal
-                }
-            };
-            return View(viewModel);
-        }
-
-        /// <summary>
-        /// Send an email to a visitor
-        /// containing a link to create an account
-        /// and redirect to visitor admin home
-        /// </summary>
-        /// <param name="email">The email of the visitor</param>
-        /// <param name="returnUrl">url to redirect to</param>
-        /// <returns>Redirect to return url</returns>
-        [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult SendEmail(string email, string returnUrl)
-        {
-			var context = ModelFactory.GetUnitOfWork();
-			var vRepo = ModelFactory.GetRepository<IVisitorRepository>(context);
-			var visitor = vRepo.Get(item => string.Compare(item.Email, email, StringComparison.InvariantCultureIgnoreCase) == 0);
-            if (visitor == null)
-            {
-                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.VisitorNotFound;
-                return RedirectToAction(MVC.Admin.IndexVisitor());
-            }
-            try
-            {
-                //this.SendVisitorMail(_EmailService, visitor);
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error(ex.Message);
-                return RedirectToAction(MVC.Admin.IndexVisitor());
-            }
-            //validate all visitors with the email
-			vRepo.ValidateVisitor(email);
-			context.Commit();
-
-            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.MailHaveBeenSent;
-
-            if (!string.IsNullOrEmpty(returnUrl))
-                return Redirect(returnUrl);
-            else
-                return RedirectToAction(MVC.Admin.IndexVisitor());
-        }
-
-        #endregion
-
         #region Admin WelcomePeople
 
         /// <summary>
@@ -366,9 +294,9 @@ namespace Worki.Web.Controllers
 			var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
             int pageValue = page ?? 1;
 			var welcomPeople = wpRepo.Get((pageValue - 1) * PageSize, PageSize, wp => wp.Id);
-            var viewModel = new WelcomePeopleListViewModel()
+			var viewModel = new PagingList<WelcomePeople>()
             {
-                WelcomePeople = welcomPeople,
+                List = welcomPeople,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -795,9 +723,9 @@ namespace Worki.Web.Controllers
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			var pageValue = page ?? 1;
 			var bookings = bRepo.Get((pageValue - 1) * PageSize, PageSize, mb => mb.Id);
-			var viewModel = new MemberBookingListViewModel()
+			var viewModel = new PagingList<MemberBooking>()
 			{
-				MemberBooking = bookings,
+				List = bookings,
 				PagingInfo = new PagingInfo
 				{
 					CurrentPage = pageValue,
@@ -823,9 +751,9 @@ namespace Worki.Web.Controllers
             var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
             var pageValue = page ?? 1;
             var quotations = qRepo.Get((pageValue - 1) * PageSize, PageSize, mb => mb.Id);
-            var viewModel = new MemberQuotationListViewModel()
+			var viewModel = new PagingList<MemberQuotation>()
             {
-                MemberQuotation = quotations,
+                List = quotations,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -851,9 +779,9 @@ namespace Worki.Web.Controllers
 			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
             int pageValue = page ?? 1;
 			var press = pRepo.Get((pageValue - 1) * PageSize, PageSize, p => p.ID);
-            var viewModel = new PressListViewModel()
+            var viewModel = new PagingList<Press>()
             {
-                Press = press,
+                List = press,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -1047,9 +975,9 @@ namespace Worki.Web.Controllers
 			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
             var pageValue = page ?? 1;
 			var rentals = rRepo.Get((pageValue - 1) * PageSize, PageSize, r => r.Id);
-            var viewModel = new RentalListViewModel()
+			var viewModel = new PagingList<Rental>()
             {
-                Rentals = rentals,
+                List = rentals,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -1340,9 +1268,9 @@ namespace Worki.Web.Controllers
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
             var localisations = lRepo.GetMany(x => x.MemberEditions.Count > 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
-            var viewModel = new LocalisationListViewModel()
+			var viewModel = new PagingList<Localisation>()
             {
-                Localisations = localisations,
+                List = localisations,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -1359,9 +1287,9 @@ namespace Worki.Web.Controllers
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
             var localisations = lRepo.GetMany(x => x.MemberEditions.Count == 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
-            var viewModel = new LocalisationListViewModel()
+			var viewModel = new PagingList<Localisation>()
             {
-                Localisations = localisations,
+                List = localisations,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,

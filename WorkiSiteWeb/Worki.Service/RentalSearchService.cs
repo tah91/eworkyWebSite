@@ -132,7 +132,7 @@ namespace Worki.Service
             var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
             var results = rRepo.FindByCriteria(criteria);
 
-            criteria.Results = results;
+			criteria.List = results;
         }
 
 		/// <summary>
@@ -146,7 +146,7 @@ namespace Worki.Service
             var criteria = GetCriteria(parameters);
             FillSearchResults(ref criteria);
 
-            if (index < 0 || index >= criteria.Results.Count)
+			if (index < 0 || index >= criteria.List.Count)
 				return null;
 
             var detailModel = criteria.GetSingleResult(index);

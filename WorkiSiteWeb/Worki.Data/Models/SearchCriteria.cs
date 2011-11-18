@@ -182,23 +182,21 @@ namespace Worki.Data.Models
         Distance
     }
 
-    public class SearchCriteriaFormViewModel
+    public class SearchCriteriaFormViewModel : PagingList<Localisation>
     {
         #region Properties
 
         public SearchCriteria Criteria { get; private set; }
         public SelectList Offers { get; private set; }
         public Dictionary<int, double> DistanceFromLocalisation { get; private set; }
-        public IList<Localisation> Results { get; set; }
-        public PagingInfo PagingInfo { get; set; }
 
         public IList<Localisation> PageResults
         {
             get 
 			{
-				if (Results.Count == 0)
-					return Results;
-				return Results.Skip((PagingInfo.CurrentPage - 1) * PagingInfo.ItemsPerPage).Take(PagingInfo.ItemsPerPage).ToList(); 
+				if (List.Count == 0)
+					return List;
+				return List.Skip((PagingInfo.CurrentPage - 1) * PagingInfo.ItemsPerPage).Take(PagingInfo.ItemsPerPage).ToList(); 
 			}
         }
 
@@ -208,7 +206,7 @@ namespace Worki.Data.Models
 
         void Init(bool allOffers = false)
         {
-            Results = new List<Localisation>();
+            List = new List<Localisation>();
             DistanceFromLocalisation = new Dictionary<int, double>();
             Criteria = new SearchCriteria();
 			var offers = allOffers ? Localisation.GetOfferTypes() : Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.AllOffers });
@@ -239,21 +237,21 @@ namespace Worki.Data.Models
 			{
 				CurrentPage = pageValue,
 				ItemsPerPage = pageSize,
-				TotalItems = Results.Count()
+				TotalItems = List.Count()
 			};
 		}
 
 		public SearchSingleResultViewModel GetSingleResult(int index)
 		{
-			if (index < 0 || index >= Results.Count)
+			if (index < 0 || index >= List.Count)
 				return null;
 
 			var detailModel = new SearchSingleResultViewModel
 			{
-				Localisation = Results[index],
+				Localisation = List[index],
 				Index = index,
 				TotalItems = PagingInfo.TotalItems,
-				Distance = DistanceFromLocalisation[Results[index].ID],
+				Distance = DistanceFromLocalisation[List[index].ID],
 				FromSearch = true
 			};
 			return detailModel;

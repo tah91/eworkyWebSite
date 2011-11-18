@@ -6,16 +6,7 @@ using System.Linq;
 
 namespace Worki.Data.Models
 {
-	#region Admin Visitor
 	
-	public class VisitorListViewModel
-	{
-		public Dictionary<Visitor, bool> ListVisitor { get; set; }
-		public PagingInfo PagingInfo { get; set; }
-	}    
-
-	#endregion
-
 	#region Admin User
 
 	public class User
@@ -32,12 +23,6 @@ namespace Worki.Data.Models
         public bool Locked { get; set; }
         public string LastName { get; set; }
     }
-
-	public class UserListViewModel
-	{
-        public IEnumerable<MemberAdminModel> ListMemberShip { get; set; }
-		public PagingInfo PagingInfo { get; set; }
-	}
 
 	#endregion
 
@@ -62,12 +47,6 @@ namespace Worki.Data.Models
 	public class WelcomePeople_Validation
 	{
 
-	}
-
-	public class WelcomePeopleListViewModel
-	{
-		public IList<WelcomePeople> WelcomePeople { get; set; }
-		public PagingInfo PagingInfo { get; set; }
 	}
 
 	public class WelcomePeopleFormViewModel
@@ -97,21 +76,9 @@ namespace Worki.Data.Models
 
 	#region Admin Booking
 
-	public class MemberBookingListViewModel
-	{
-		public IList<MemberBooking> MemberBooking { get; set; }
-		public PagingInfo PagingInfo { get; set; }
-	}
-
 	#endregion
 
     #region Admin Quotation
-
-    public class MemberQuotationListViewModel
-    {
-        public IList<MemberQuotation> MemberQuotation { get; set; }
-        public PagingInfo PagingInfo { get; set; }
-    }
 
     #endregion
 
@@ -124,12 +91,6 @@ namespace Worki.Data.Models
         {
             Date = DateTime.Now;
         }
-    }
-
-    public class PressListViewModel
-    {
-        public IList<Press> Press { get; set; }
-        public PagingInfo PagingInfo { get; set; }
     }
 
     [Bind(Exclude = "Id")]
@@ -148,12 +109,6 @@ namespace Worki.Data.Models
     #endregion
     
     #region Admin Rental
-
-    public class RentalListViewModel
-    {
-        public IList<Rental> Rentals { get; set; }
-        public PagingInfo PagingInfo { get; set; }
-    }
 
     #endregion
 

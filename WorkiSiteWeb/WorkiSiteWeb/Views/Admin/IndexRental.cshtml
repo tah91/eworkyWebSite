@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.RentalListViewModel
+﻿@model Worki.Data.Models.PagingList<Rental>
 
 @section HeadContent
 {
@@ -39,7 +39,7 @@
                 </tr>
             </thead>
         <tbody>
-        @foreach (var item in Model.Rentals)
+        @foreach (var item in Model.List)
         {
             <tr>
                 <td align="center">

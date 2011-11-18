@@ -201,7 +201,7 @@ namespace Worki.Web.Areas.Api.Controllers
             var results = _SearchService.FillSearchResults(criteria);
 
             //take the json
-            var neededLocs = (from item in results.Results.Take(maxCount) select item.GetJson(this)).ToList();
+			var neededLocs = (from item in results.List.Take(maxCount) select item.GetJson(this)).ToList();
             return new ObjectResult<List<LocalisationJson>>(neededLocs);
         }
     }

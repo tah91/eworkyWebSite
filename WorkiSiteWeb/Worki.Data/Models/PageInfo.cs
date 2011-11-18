@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Worki.Data.Models
 {
@@ -16,4 +17,10 @@ namespace Worki.Data.Models
             return ItemsPerPage * (CurrentPage - 1) + localIndex;
         }
     }
+
+	public class PagingList<T>
+	{
+		public IList<T> List { get; set; }
+		public PagingInfo PagingInfo { get; set; }
+	}
 }

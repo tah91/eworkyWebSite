@@ -733,12 +733,6 @@ namespace Worki.Data.Models
         public string Twitter { get; set; }
 	}
 
-	public class LocalisationListViewModel
-	{
-		public IList<Localisation> Localisations { get; set; }
-		public PagingInfo PagingInfo { get; set; }
-	}
-
 	public class LocalisationFormViewModel
 	{
 		#region Properties

@@ -801,16 +801,6 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult IndexVisitor() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.IndexVisitor);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult SendEmail() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.SendEmail);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult IndexWelcomePeople() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexWelcomePeople);
         }
@@ -904,8 +894,6 @@ namespace Worki.Web.Controllers {
             public readonly string UnlockUser = "UnlockUser";
             public readonly string ChangeUserRole = "ChangeUserRole";
             public readonly string DeleteUser = "supprimer-utilisateur";
-            public readonly string IndexVisitor = "IndexVisitor";
-            public readonly string SendEmail = "SendEmail";
             public readonly string IndexWelcomePeople = "IndexWelcomePeople";
             public readonly string DetailWelcomePeople = "DetailWelcomePeople";
             public readonly string CreateWelcomePeople = "CreateWelcomePeople";
@@ -951,7 +939,6 @@ namespace Worki.Web.Controllers {
             public readonly string IndexQuotation = "~/Views/Admin/IndexQuotation.cshtml";
             public readonly string IndexRental = "~/Views/Admin/IndexRental.cshtml";
             public readonly string IndexUser = "~/Views/Admin/IndexUser.cshtml";
-            public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";
             public readonly string IndexWelcomePeople = "~/Views/Admin/IndexWelcomePeople.cshtml";
             public readonly string LastCreate = "~/Views/Admin/LastCreate.cshtml";
             public readonly string LastModif = "~/Views/Admin/LastModif.cshtml";
@@ -1012,19 +999,6 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteUser);
             callInfo.RouteValueDictionary.Add("user", user);
             callInfo.RouteValueDictionary.Add("confirmButton", confirmButton);
-            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult IndexVisitor(int? page) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexVisitor);
-            callInfo.RouteValueDictionary.Add("page", page);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult SendEmail(string email, string returnUrl) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SendEmail);
-            callInfo.RouteValueDictionary.Add("email", email);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }

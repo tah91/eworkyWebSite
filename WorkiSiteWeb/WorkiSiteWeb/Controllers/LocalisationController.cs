@@ -34,7 +34,7 @@ namespace Worki.Web.Controllers
         /// <returns>The action result.</returns>
         public virtual ActionResult Index(int? page)
         {
-            var viewModel = new LocalisationListViewModel();
+			var viewModel = new PagingList<Localisation>();
             return View(viewModel);
         }
 

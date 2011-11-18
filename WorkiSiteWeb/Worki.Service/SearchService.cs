@@ -52,10 +52,10 @@ namespace Worki.Service
             {
 				//already ordered by rating
 				case eOrderBy.Rating:
-					criteriaViewModel.Results = results;
+					criteriaViewModel.List = results;
 					break;
                 case eOrderBy.Distance:
-                    criteriaViewModel.Results = (from item
+					criteriaViewModel.List = (from item
                                                     in results
                                                  orderby criteriaViewModel.DistanceFromLocalisation[item.ID]
                                                  select item).ToList();
@@ -110,7 +110,7 @@ namespace Worki.Service
             var criteria = GetCriteria(parameters);
             var criteriaViewModel = FillSearchResults(criteria);
 
-			if (index < 0 || index >= criteriaViewModel.Results.Count)
+			if (index < 0 || index >= criteriaViewModel.List.Count)
 				return null;
 
 			//refresh item before returning it, don't take the one from session

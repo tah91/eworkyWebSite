@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.PressListViewModel
+﻿@model Worki.Data.Models.PagingList<Press>
 
 @section HeadContent
 {
@@ -36,30 +36,27 @@
                 </tr>
             </thead>
         <tbody>
-        @if (Model.Press != null)
+        @foreach (var item in Model.List)
         {
-            foreach (var item in Model.Press)
-            {
-            <tr>
-                <td align="center">
-                    @item.ID
-                </td>
-                <td align="center">
-                    @String.Format("{0:dd/MM/yyyy}", item.Date)
-                </td>
-                <td align="center">
-                    <a href=@item.Url>@item.Url</a>
-                </td>
-                <td align="center">
-                    @item.Title
-                </td>
-                <td align="center">
-                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.EditPress(item.ID)) |
-                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeletePress(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
-                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Details, MVC.Admin.DetailPress(item.ID))
-                </td>
-            </tr>
-            }
+        <tr>
+            <td align="center">
+                @item.ID
+            </td>
+            <td align="center">
+                @String.Format("{0:dd/MM/yyyy}", item.Date)
+            </td>
+            <td align="center">
+                <a href=@item.Url>@item.Url</a>
+            </td>
+            <td align="center">
+                @item.Title
+            </td>
+            <td align="center">
+                @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.EditPress(item.ID)) |
+                @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeletePress(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
+                @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Details, MVC.Admin.DetailPress(item.ID))
+            </td>
+        </tr>
         }
         </tbody>
         <tfoot> </tfoot>

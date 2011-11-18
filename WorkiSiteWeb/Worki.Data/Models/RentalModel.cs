@@ -516,7 +516,7 @@ namespace Worki.Data.Models
         public string Place { get; set; }
     }
 
-	public class RentalSearchCriteria
+	public class RentalSearchCriteria : PagingList<Rental>
 	{
         #region Ctor
 
@@ -529,13 +529,12 @@ namespace Worki.Data.Models
 
 		void Init()
 		{
-            Results = new List<Rental>();
+			List = new List<Rental>();
 			RentalTypeSelect = new SelectList(Rental.RentalTypes, "Key", "Value", RentalType.NotDefined);
             LeaseTypeSelect = new SelectList(Rental.LeaseTypes, "Key", "Value", Lease.NotDefined);
 		}
 
 		#endregion
-
 
         public string Place { get; set; }
 
@@ -561,17 +560,13 @@ namespace Worki.Data.Models
 
         public SelectList LeaseTypeSelect { get; private set; }
 
-        public IList<Rental> Results { get; set; }
-
-        public PagingInfo PagingInfo { get; set; }
-
         public IList<Rental> PageResults
         {
             get
             {
-                if (Results.Count == 0)
-                    return Results;
-                return Results.Skip((PagingInfo.CurrentPage - 1) * PagingInfo.ItemsPerPage).Take(PagingInfo.ItemsPerPage).ToList();
+                if (List.Count == 0)
+					return List;
+				return List.Skip((PagingInfo.CurrentPage - 1) * PagingInfo.ItemsPerPage).Take(PagingInfo.ItemsPerPage).ToList();
             }
         }
 
@@ -586,18 +581,18 @@ namespace Worki.Data.Models
             {
                 CurrentPage = pageValue,
                 ItemsPerPage = PageSize,
-                TotalItems = Results.Count()
+				TotalItems = List.Count()
             };
         }
 
         public RentalSearchSingleResultViewModel GetSingleResult(int index)
         {
-            if (index < 0 || index >= Results.Count)
+			if (index < 0 || index >= List.Count)
                 return null;
 
             var detailModel = new RentalSearchSingleResultViewModel
             {
-                Rental = Results[index],
+				Rental = List[index],
                 Index = index,
                 TotalItems = PagingInfo.TotalItems,
                 FromSearch = true

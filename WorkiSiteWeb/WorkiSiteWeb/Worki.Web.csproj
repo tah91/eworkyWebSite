@@ -592,7 +592,6 @@
     <Content Include="Views\Admin\IndexImport.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\IndexUser.cshtml" />
-    <Content Include="Views\Admin\IndexVisitor.cshtml" />
     <Content Include="Views\Admin\supprimer-utilisateur.cshtml" />
     <Content Include="Views\Shared\_UploadGalleryScript.cshtml" />
     <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />

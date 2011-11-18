@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.WelcomePeopleListViewModel
+﻿@model Worki.Data.Models.PagingList<WelcomePeople>
 
 @section HeadContent
 {
@@ -36,7 +36,7 @@
                 </tr>
             </thead>
         <tbody>
-        @foreach (var item in Model.WelcomePeople)
+        @foreach (var item in Model.List)
         {
             <tr>
                 <td align="center">
