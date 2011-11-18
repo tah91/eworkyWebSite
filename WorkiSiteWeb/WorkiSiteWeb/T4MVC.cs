@@ -948,6 +948,7 @@ namespace Worki.Web.Controllers {
             public readonly string IndexBooking = "~/Views/Admin/IndexBooking.cshtml";
             public readonly string IndexImport = "~/Views/Admin/IndexImport.cshtml";
             public readonly string IndexPress = "~/Views/Admin/IndexPress.cshtml";
+            public readonly string IndexQuotation = "~/Views/Admin/IndexQuotation.cshtml";
             public readonly string IndexRental = "~/Views/Admin/IndexRental.cshtml";
             public readonly string IndexUser = "~/Views/Admin/IndexUser.cshtml";
             public readonly string IndexVisitor = "~/Views/Admin/IndexVisitor.cshtml";

@@ -25,7 +25,7 @@
                         &nbsp;&nbsp; @Worki.Resources.Models.Booking.Booking.Handled
                     </th>
 					<th>
-                        &nbsp;&nbsp; @Worki.Resources.Models.Booking.Booking.Price
+                        &nbsp;&nbsp; @Worki.Resources.Views.Booking.BookingString.Surface
                     </th>
                 </tr>
             </thead>
@@ -50,7 +50,7 @@
 					}
                 </td>
 				<td align="center">
-					@Html.ActionLink(item.Price.ToString(), MVC.Quotation.Edit(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+					@Html.ActionLink(item.Surface.ToString(), MVC.Quotation.Edit(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
                 </td>
             </tr>
         }

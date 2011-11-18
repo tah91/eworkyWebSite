@@ -121,7 +121,7 @@ namespace Worki.Web.Controllers
 
 					dynamic teamMail = new Email(MVC.Emails.Views.Email);
 					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					teamMail.To = MiscHelpers.EmailConstants.BookingMail;
+                    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
 					teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
 					teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
 					teamMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
@@ -238,7 +238,7 @@ namespace Worki.Web.Controllers
 
 				dynamic handleMail = new Email(MVC.Emails.Views.Email);
 				handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-				handleMail.To = booking.Member.Email;
+                handleMail.To = booking.Member.Email;
 				handleMail.ToName = booking.Member.MemberMainData.FirstName;
 
 				handleMail.Subject = Worki.Resources.Email.BookingString.BookingHandleMailSubject;
@@ -281,7 +281,7 @@ namespace Worki.Web.Controllers
 				//send email
 				dynamic confirmMail = new Email(MVC.Emails.Views.Email);
 				confirmMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-				confirmMail.To = booking.Member.Email;
+                confirmMail.To = booking.Member.Email;
 				confirmMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
 				confirmMail.ToName = booking.Member.MemberMainData.FirstName;
 				confirmMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
@@ -361,7 +361,7 @@ namespace Worki.Web.Controllers
 
 			dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
 			newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-			newMemberMail.To = formData.Email;
+            newMemberMail.To = formData.Email;
 			newMemberMail.ToName = formData.FirstName;
 
 			newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;

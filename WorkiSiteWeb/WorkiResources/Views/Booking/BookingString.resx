@@ -159,4 +159,7 @@
   <data name="AskQuotation" xml:space="preserve">
     <value>Demande de devis</value>
   </data>
+  <data name="Surface" xml:space="preserve">
+    <value>Surface</value>
+  </data>
 </root>

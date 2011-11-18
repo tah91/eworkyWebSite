@@ -178,6 +178,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surface.
+        /// </summary>
+        public static string Surface {
+            get {
+                return ResourceManager.GetString("Surface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valider la demande de devis.
         /// </summary>
         public static string ValidateQuotation {
