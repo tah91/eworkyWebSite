@@ -60,7 +60,6 @@ namespace Worki.Web.Controllers
                 FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty,
                 LastName = membetExists ? member.MemberMainData.LastName : string.Empty,
                 Email = membetExists ? member.Email : string.Empty,
-				NeedQuotation = offer.NeedQuotation()
             };
 
             return View(formModel);
@@ -94,7 +93,6 @@ namespace Worki.Web.Controllers
 					var member = mRepo.Get(memberId);
 					var offer = oRepo.Get(id, localisationId);
 					var locName = offer.Localisation.Name;
-					var needQuotation = offer.NeedQuotation();
 					try
 					{
 						formData.MemberBooking.MemberId = memberId;
@@ -232,38 +230,26 @@ namespace Worki.Web.Controllers
 			{
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-                var m = mRepo.Get(memberId);
+				var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
-                booking.Handled = true;
+				booking.Handled = true;
 
 				//send email
 
 				dynamic handleMail = new Email(MVC.Emails.Views.Email);
 				handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                handleMail.To = booking.Member.Email;
+				handleMail.To = booking.Member.Email;
 				handleMail.ToName = booking.Member.MemberMainData.FirstName;
 
-				if (booking.Offer.NeedQuotation())
-				{
-					handleMail.Subject = Worki.Resources.Email.BookingString.QuotationHandleMailSubject;
-					handleMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationHandleMailBody,
-														Localisation.GetOfferType(booking.Offer.Type),
-														booking.Surface,
-														booking.Offer.Localisation.Name,
-														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
-				}
-				else 
-				{
-					handleMail.Subject = Worki.Resources.Email.BookingString.BookingHandleMailSubject;
-					handleMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingHandleMailBody,
-														Localisation.GetOfferType(booking.Offer.Type),
-														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-														string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
-														booking.Offer.Localisation.Name,
-														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
-				}
+				handleMail.Subject = Worki.Resources.Email.BookingString.BookingHandleMailSubject;
+				handleMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingHandleMailBody,
+													Localisation.GetOfferType(booking.Offer.Type),
+													string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
+													string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+													booking.Offer.Localisation.Name,
+													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
 
-                handleMail.Send();
+				handleMail.Send();
 				context.Commit();
 			}
 			catch (Exception ex)
@@ -291,9 +277,6 @@ namespace Worki.Web.Controllers
 				var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
                 booking.Confirmed = true;
-
-				if (booking.Offer.NeedQuotation())
-					throw new Exception("No confirmation for Quotation");
 
 				//send email
 				dynamic confirmMail = new Email(MVC.Emails.Views.Email);
@@ -337,9 +320,6 @@ namespace Worki.Web.Controllers
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
                 booking.Refused = true;
 
-				if (booking.Offer.NeedQuotation())
-					throw new Exception("No confirmation for Quotation");
-
                 //send email
 				dynamic refuseMail = new Email(MVC.Emails.Views.Email);
 				refuseMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
@@ -371,9 +351,9 @@ namespace Worki.Web.Controllers
         /// <param name="formData">form data containing booking data</param>
         /// <param name="member">member data</param>
         /// <param name="loc">localisation data</param>
-        void SendCreationAccountMail(MemberBookingFormViewModel formData, Member member, Offer offer)
-        {
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+		void SendCreationAccountMail(MemberBookingFormViewModel formData, Member member, Offer offer)
+		{
+			var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 			var profilUrl = urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Dashboard, MVC.Profil.Name, new { id = member.MemberId });
 			TagBuilder profilLink = new TagBuilder("a");
 			profilLink.MergeAttribute("href", profilUrl);
@@ -381,38 +361,22 @@ namespace Worki.Web.Controllers
 
 			dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
 			newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-            newMemberMail.To = formData.Email;
+			newMemberMail.To = formData.Email;
 			newMemberMail.ToName = formData.FirstName;
 
-			if (offer.NeedQuotation())
-			{
-				newMemberMail.Subject = Worki.Resources.Email.BookingString.QuotationNewMemberSubject;
-				newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationNewMemberBody,
-													Localisation.GetOfferType(offer.Type),
-													formData.MemberBooking.Surface,
-													offer.Localisation.Name,
-													offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
-													member.Email,
-													_MembershipService.GetPassword(member.Email, null),
-													profilLink.ToString(),
-													urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }));
-			}
-			else
-			{
-				newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
-				newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMemberBody,
-													string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
-													string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
-													offer.Localisation.Name,
-													offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
-													member.Email,
-													_MembershipService.GetPassword(member.Email, null),
-													profilLink.ToString(),
-													urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }));
-			}
-           
-            newMemberMail.Send();
-        }
+			newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
+			newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMemberBody,
+												string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
+												string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
+												offer.Localisation.Name,
+												offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
+												member.Email,
+												_MembershipService.GetPassword(member.Email, null),
+												profilLink.ToString(),
+												urlHelper.AbsoluteAction(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, new { id = member.MemberId }));
+
+			newMemberMail.Send();
+		}
 
         #endregion
     }

@@ -246,6 +246,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\QuotationController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\UploadImageController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
@@ -719,6 +720,8 @@
     <Content Include="Views\Admin\Statistic.cshtml" />
     <Content Include="Views\Admin\LastModif.cshtml" />
     <Content Include="Views\Admin\LastCreate.cshtml" />
+    <Content Include="Views\Quotation\Create.cshtml" />
+    <Content Include="Views\Quotation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

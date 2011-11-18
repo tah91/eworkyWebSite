@@ -68,6 +68,9 @@ namespace Worki.Web
 			Bind<IBookingRepository>()
 				.To<BookingRepository>();
 
+			Bind<IQuotationRepository>()
+				.To<QuotationRepository>();
+
 			Bind<IRentalRepository>()
                 .To<RentalRepository>();
 

@@ -12,7 +12,7 @@ namespace Worki.Data.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MemberBooking
+    public partial class MemberQuotation
     {
         // Primitive properties
     
@@ -20,12 +20,11 @@ namespace Worki.Data.Models
         public int MemberId { get; set; }
         public int LocalisationId { get; set; }
         public int OfferId { get; set; }
-        public System.DateTime FromDate { get; set; }
-        public System.DateTime ToDate { get; set; }
+        public decimal Surface { get; set; }
         public string Message { get; set; }
+        public decimal Price { get; set; }
         public bool Handled { get; set; }
         public bool Confirmed { get; set; }
-        public int Price { get; set; }
         public bool Refused { get; set; }
     
         // Navigation properties

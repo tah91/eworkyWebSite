@@ -6,14 +6,14 @@ using Worki.Infrastructure;
 
 namespace Worki.Data.Models
 {
-	public class MemberBookingFormViewModel
+	public class MemberQuotationFormViewModel
 	{
-		public MemberBookingFormViewModel()
+		public MemberQuotationFormViewModel()
 		{
-			MemberBooking = new MemberBooking();
+			MemberQuotation = new MemberQuotation();
 		}
 
-		public MemberBooking MemberBooking { get; set; }
+		public MemberQuotation MemberQuotation { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
@@ -34,27 +34,18 @@ namespace Worki.Data.Models
         public bool NeedNewAccount { get; set; }
 	}
 
-	[MetadataType(typeof(MemberBooking_Validation))]
-	public partial class MemberBooking
+	[MetadataType(typeof(MemberQuotation_Validation))]
+	public partial class MemberQuotation
 	{
-		public MemberBooking()
-		{
-            System.DateTime now = DateTime.Now;
-            FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
-            ToDate = FromDate;
-		}
+
 	}
 
 	[Bind(Exclude = "Id,MemberId,LocalisationId,OfferId")]
-	public class MemberBooking_Validation
+	public class MemberQuotation_Validation
 	{
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "FromDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public DateTime FromDate { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "ToDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public DateTime ToDate { get; set; }
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Surface", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+		public decimal Surface { get; set; }
 
 		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public string Message { get; set; }

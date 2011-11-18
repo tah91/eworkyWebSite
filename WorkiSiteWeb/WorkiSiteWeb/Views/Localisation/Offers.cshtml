@@ -48,8 +48,16 @@
 				}
 				@if (Model.Localisation.Bookable)
 				{
-					var text = Offer.NeedQuotation((LocalisationOffer)offer.Type) ? Worki.Resources.Views.Offer.OfferString.AskDevis : Worki.Resources.Views.Localisation.LocalisationString.BookIt;
-					<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(text, MVC.Booking.Create(offer.Id, offer.LocalisationId))</div>
+					<div class="buttonStd buttonBlue linkImg float-right">
+					@if (Offer.NeedQuotation((LocalisationOffer)offer.Type))
+					{
+					@Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AskDevis, MVC.Quotation.Create(offer.Id, offer.LocalisationId))
+					}
+					else
+					{
+					@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id, offer.LocalisationId))
+					}
+					</div>
 					<div class="clear">
 					</div>
 				}

@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.MemberBooking
+﻿@model Worki.Data.Models.MemberQuotation
 
 @section HeadContent
 {
@@ -74,24 +74,12 @@
 				<tr>
                     <td>
                         <div class="editor-label">
-                            @Html.LabelFor(model => model.FromDate)
+                            @Html.LabelFor(model => model.Surface)
                         </div>
                     </td>
                     <td>
                         <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@string.Format("{0:dd/MM/yyyy HH:MM}", Model.FromDate)
-                        </div>
-                    </td>
-                </tr>
-				<tr>
-                    <td>
-                        <div class="editor-label">
-                            @Html.LabelFor(model => model.ToDate)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@string.Format("{0:dd/MM/yyyy HH:MM}", Model.ToDate)
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Surface)
                         </div>
                     </td>
                 </tr>
