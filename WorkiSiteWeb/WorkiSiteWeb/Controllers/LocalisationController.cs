@@ -150,11 +150,7 @@ namespace Worki.Web.Controllers
 			try
 			{
 				var member = mRepo.GetMember(User.Identity.Name);
-				if (!member.IsValidUser())
-				{
-					error = Worki.Resources.Validation.ValidationString.InvalidUser;
-					throw new Exception(error);
-				}
+				Member.Validate(member);
 				if (ModelState.IsValid)
 				{
 					var localisationToAdd = new Localisation();
@@ -230,11 +226,7 @@ namespace Worki.Web.Controllers
 			try
 			{
 				var member = mRepo.GetMember(User.Identity.Name);
-				if (!member.IsValidUser())
-				{
-					error = Worki.Resources.Validation.ValidationString.InvalidUser;
-					throw new Exception(error);
-				}
+				Member.Validate(member);
 
 				if (ModelState.IsValid)
 				{

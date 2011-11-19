@@ -160,15 +160,6 @@ namespace Worki.Data.Models
         /// </summary>
         public static TimeSpan RegisterWaitInterval = new TimeSpan(0, 0, 0);
 
-		/// <summary>
-		/// Check if the user is valid
-		/// </summary>
-		/// <returns>true if valid</returns>
-		public bool IsValidUser()
-		{
-			return MemberMainData != null;
-		}
-
         /// <summary>
         /// Check if member satisfy all edition access rules 
         /// </summary>
@@ -176,9 +167,6 @@ namespace Worki.Data.Models
         /// <returns>string containing the reason if can't edit, empty string else</returns>
         public string HasEditionAccess(bool adminRole)
         {
-			if (!IsValidUser())
-				return Worki.Resources.Validation.ValidationString.InvalidUser;
-
 			if (adminRole)
 				return string.Empty;
 
@@ -311,6 +299,9 @@ namespace Worki.Data.Models
             //member don't exist
             if (member == null)
                 throw new ValidationException(Worki.Resources.Validation.ValidationString.MailDoNotMatch);
+
+			if (member.MemberMainData == null)
+				throw new ValidationException(Worki.Resources.Validation.ValidationString.InvalidUser);
 
             // We found a user by the username
 
@@ -587,9 +578,7 @@ namespace Worki.Data.Models
 		public enum DashboardTab
 		{
 			FavLoc,
-			AddedLoc,
-			PostedCom,
-			RelCom
+			AddedLoc
 		}
 
 		public const string AddToFavorite = "AddToFavorite";
@@ -603,31 +592,47 @@ namespace Worki.Data.Models
 		}
 	}
 
-    public class ProfilDashboardModel
+    public class ProfilPublicModel
     {
         #region Properties
 
         public Member Member { get; set; }
-        public List<Localisation> FavoriteLocalisations { get; set; }
-        public List<Localisation> AddedLocalisations { get; set; }
-        public List<Comment> PostedComments { get; set; }
-        public List<Comment> RelatedComments { get; set; }
-        public PagingInfo FavoriteLocalisationsPI { get; set; }
-        public PagingInfo AddedLocalisationsPI { get; set; }
-        public PagingInfo PostedCommentsPI { get; set; }
-        public PagingInfo RelatedCommentsPI { get; set; }
-		public bool IsPrivate { get; set; }
+        public PagingList<Localisation> FavoriteLocalisations { get; set; }
+		public PagingList<Localisation> AddedLocalisations { get; set; }
 
         #endregion
 
-        #region Ctor
+		public const int LocalisationPageSize = 6;
+		public const int CommentPageSize = 3;
 
-        public ProfilDashboardModel()
-        {
+		public static ProfilPublicModel GetProfilPublic(Member member, int p1 = 1, int p2 = 1)
+		{
+			//get fav localisations
+			var favLocs = new List<Localisation>();
+			foreach (var item in member.FavoriteLocalisations.Skip((p1 - 1) * LocalisationPageSize).Take(LocalisationPageSize))
+			{
+				favLocs.Add(item.Localisation);
+			}
+			//added localisations
+			var addedLoc = member.Localisations.Skip((p2 - 1) * LocalisationPageSize).Take(LocalisationPageSize).ToList();
 
-        }
+			var profilDashboard = new ProfilPublicModel
+			{
+				Member = member,
+				FavoriteLocalisations = new PagingList<Localisation>
+				{
+					List = favLocs,
+					PagingInfo = new PagingInfo { CurrentPage = p1, ItemsPerPage = LocalisationPageSize, TotalItems = member.FavoriteLocalisations.Count }
+				},
+				AddedLocalisations = new PagingList<Localisation>
+				{
+					List = addedLoc,
+					PagingInfo = new PagingInfo { CurrentPage = p2, ItemsPerPage = LocalisationPageSize, TotalItems = member.Localisations.Count }
+				}
+			};
 
-        #endregion
+			return profilDashboard;
+		}
     }
 
     #endregion

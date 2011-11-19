@@ -10,7 +10,7 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.MyProfile, "Blue")
 
 <div class="detailContent">
-	@{Html.RenderAction(MVC.Profil.ProfilMenu(Model.MemberId, (int)ProfilConstants.ProfilItem.ChangePassword));}
+	@{Html.RenderAction(MVC.Dashboard.Profil.ProfilMenu(Model.MemberId, (int)ProfilConstants.ProfilItem.ChangePassword));}
 	
     <div class="profilDetailRight dashedLeft blockContainer float-right">
         @using (Html.BeginForm())

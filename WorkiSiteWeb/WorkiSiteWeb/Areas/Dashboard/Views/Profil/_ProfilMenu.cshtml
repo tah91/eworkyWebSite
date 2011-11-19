@@ -1,0 +1,54 @@
+﻿@model Worki.Data.Models.Member
+		   
+<div class="profilDetailLeft blockContainer float-left">
+    <div class="contentBlock">
+        <div class="profilAvatar borderedImg">
+            @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.MemberMainData.Avatar), Model.GetDisplayName())
+        </div>
+        <div class="profilName">
+			@{
+				var score = Model.ComputeScore();
+			}
+            <h2 class="blue bold">@Model.MemberMainData.FirstName @Model.MemberMainData.LastName</h2>
+            <span class="profilType bold">@MemberMainData.GetProfileType(Model.MemberMainData.Profile)</span><br />
+            @string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.GetMemberScoreStatus(score), score)
+        </div>
+        <div class="profilDesc">
+            @Model.MemberMainData.Description
+        </div>
+        @if (!string.IsNullOrEmpty(Model.MemberMainData.Facebook))
+		{   
+			<div class="profil_social float-left">
+				<div class="profil_fb linkImg" title="@Worki.Resources.Views.Profile.ProfileString.FBProfile">
+					<a href="@WebHelper.GetWebsite(Model.MemberMainData.Facebook)" target="_blank"></a>
+				</div>
+			</div>
+		}
+        @if (!string.IsNullOrEmpty(Model.MemberMainData.Twitter))
+		{   
+			<div class="profil_social float-left">
+				<div class="profil_tw linkImg" title="@Worki.Resources.Views.Profile.ProfileString.TwitterProfile">
+					<a href="@WebHelper.GetTwitter(Model.MemberMainData.Twitter)" target="_blank"></a>
+				</div>
+			</div>
+		}
+        @if (!string.IsNullOrEmpty(Model.MemberMainData.Linkedin))
+		{   
+			<div class="profil_social float-left">
+				<div class="profil_in linkImg" title="@Worki.Resources.Views.Profile.ProfileString.LinkedInProfile">
+					<a href="@WebHelper.GetWebsite(Model.MemberMainData.Linkedin)" target="_blank"></a>
+				</div>
+			</div>
+		}
+        @if (!string.IsNullOrEmpty(Model.MemberMainData.Viadeo))
+		{   
+			<div class="profil_social float-left">
+				<div class="profil_viadeo linkImg" title="@Worki.Resources.Views.Profile.ProfileString.ViadeoProfile">
+					<a href="@WebHelper.GetWebsite(Model.MemberMainData.Viadeo)" target="_blank"></a>
+				</div>
+			</div>
+		}
+		<div class="clear">
+		</div>
+    </div>
+</div>

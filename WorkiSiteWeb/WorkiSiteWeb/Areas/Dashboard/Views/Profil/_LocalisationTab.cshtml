@@ -1,19 +1,19 @@
-﻿@model Worki.Data.Models.ProfilDashboardModel
+﻿@model Worki.Data.Models.ProfilPublicModel
 
 @{
 	var tabId = (ProfilConstants.DashboardTab)ViewData[ProfilConstants.TabId];
 	var a_class = tabId.ToString();
-	List<Localisation> locs = new List<Localisation>();
+	IList<Localisation> locs = new List<Localisation>();
 	PagingInfo pi = new PagingInfo();
 	if (tabId == ProfilConstants.DashboardTab.FavLoc)
 	{
-		locs = Model.FavoriteLocalisations;
-		pi = Model.FavoriteLocalisationsPI;
+		locs = Model.FavoriteLocalisations.List;
+		pi = Model.FavoriteLocalisations.PagingInfo;
 	}
 	else if (tabId == ProfilConstants.DashboardTab.AddedLoc)
 	{
-		locs = Model.AddedLocalisations;
-		pi = Model.AddedLocalisationsPI;
+		locs = Model.AddedLocalisations.List;
+		pi = Model.AddedLocalisations.PagingInfo;
 	}
 	
 }

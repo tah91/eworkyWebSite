@@ -100,11 +100,8 @@ namespace Worki.Web.Controllers
 			try
 			{
 				var member = mRepo.GetMember(User.Identity.Name);
-				if (!member.IsValidUser())
-				{
-					error = Worki.Resources.Validation.ValidationString.InvalidUser;
-					throw new Exception(error);
-				}
+				Member.Validate(member);
+
 				if (ModelState.IsValid)
 				{
 					var rentalToAdd = new Rental();
@@ -236,45 +233,40 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">id coming from the rental's detail page.</param>
         /// <returns>The contact form to fill.</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize]
-        [ActionName("envoyer-email-propriétaire")]
-        public virtual ActionResult SendMailOwner(int id)
-        {
-            var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
-            var rental = rRepo.Get(id);
-            if (rental == null)
-                return View(MVC.Shared.Views.Error);
-            var contact = new Contact();
-            var member = mRepo.GetMember(User.Identity.Name);
-            try
-            {
-                if (!member.IsValidUser())
-                {
-                    error = Worki.Resources.Validation.ValidationString.InvalidUser;
-                    throw new Exception(error);
-                }
-                else
-                {
-                    contact.EMail = member.Email;
-                    contact.LastName = member.MemberMainData.LastName;
-                    contact.FirstName = member.MemberMainData.FirstName;
-                    contact.ToEMail = rental.Member.Email;
-                    contact.ToName = rental.Member.MemberMainData.LastName;
-                    contact.Subject = Worki.Resources.Email.Common.Concern + rental.Reference + " - " + rental.PostalCode + " - " + rental.SurfaceString + " - " + rental.RateString;
-                    contact.Link = Url.ActionAbsolute(MVC.Rental.Detail(id));
-                }
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("Rental", ex);
-                context.Complete();
-            }
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		[ActionName("envoyer-email-propriétaire")]
+		public virtual ActionResult SendMailOwner(int id)
+		{
+			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			var rental = rRepo.Get(id);
+			if (rental == null)
+				return View(MVC.Shared.Views.Error);
+			var contact = new Contact();
+			var member = mRepo.GetMember(User.Identity.Name);
+			try
+			{
+				Member.Validate(member);
 
-            return View("SendOwner", contact);
-        }
+				contact.EMail = member.Email;
+				contact.LastName = member.MemberMainData.LastName;
+				contact.FirstName = member.MemberMainData.FirstName;
+				contact.ToEMail = rental.Member.Email;
+				contact.ToName = rental.Member.MemberMainData.LastName;
+				contact.Subject = Worki.Resources.Email.Common.Concern + rental.Reference + " - " + rental.PostalCode + " - " + rental.SurfaceString + " - " + rental.RateString;
+				contact.Link = Url.ActionAbsolute(MVC.Rental.Detail(id));
+
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Rental", ex);
+				context.Complete();
+			}
+
+			return View("SendOwner", contact);
+		}
 
         /// <summary>
         /// GET action method to send a demand to a friend
@@ -296,15 +288,19 @@ namespace Worki.Web.Controllers
             var contact = new Contact();
             var member = mRepo.GetMember(User.Identity.Name);
 
-            if (member.IsValidUser())
-            {
-                contact.EMail = member.Email;
-                contact.LastName = member.MemberMainData.LastName;
-                contact.FirstName = member.MemberMainData.FirstName;
-                contact.Subject = Worki.Resources.Email.Common.Concern + rental.Reference + " - " + rental.PostalCode + " - " + rental.SurfaceString + " - " + rental.RateString;
-            }
-            else
-                contact.LastName = User.Identity.Name;
+			try
+			{
+				Member.Validate(member);
+				contact.EMail = member.Email;
+				contact.LastName = member.MemberMainData.LastName;
+				contact.FirstName = member.MemberMainData.FirstName;
+				contact.Subject = Worki.Resources.Email.Common.Concern + rental.Reference + " - " + rental.PostalCode + " - " + rental.SurfaceString + " - " + rental.RateString;
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("SendMailFriend", ex);
+				contact.LastName = User.Identity.Name;
+			}
 
             contact.Link = Url.ActionAbsolute(MVC.Rental.Detail(id));
 

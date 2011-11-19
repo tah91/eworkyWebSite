@@ -9,7 +9,7 @@
                 @foreach (var item in MiscHelpers.Shuffle(Model))
                 {
 			        var localisationLink = item.Localisation.GetDetailFullUrl(Url);
-			        var memberLink = Url.Action(MVC.Profil.Detail(item.MemberId));
+			        var memberLink = Url.Action(MVC.Dashboard.Profil.Public(item.MemberId));
 			        var age = item.Member.GetAge();
                 <div class="slide">
                     <a href="@localisationLink" title="@item.Localisation.Name" class="slide_image">

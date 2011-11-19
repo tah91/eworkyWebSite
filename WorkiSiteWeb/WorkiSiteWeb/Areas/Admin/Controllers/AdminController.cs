@@ -1381,10 +1381,10 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
-            var localisations = lRepo.GetMany(x => x.MemberEditions.Count > 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
-			var viewModel = new PagingList<Localisation>()
+			var modifications = lRepo.GetLatestModifications(100, EditionType.Edition).Skip(pageValue).Take(PageSize).ToList();
+			var viewModel = new PagingList<MemberEdition>()
             {
-                List = localisations,
+				List = modifications,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -1400,10 +1400,10 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
-            var localisations = lRepo.GetMany(x => x.MemberEditions.Count == 1).OrderByDescending(x => x.MemberEditions.Last().ModificationDate).Skip((pageValue - 1) * PageSize).Take(PageSize).ToList();
-			var viewModel = new PagingList<Localisation>()
+			var modifications = lRepo.GetLatestModifications(100, EditionType.Creation).Skip(pageValue).Take(PageSize).ToList();
+			var viewModel = new PagingList<MemberEdition>()
             {
-                List = localisations,
+				List = modifications,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,

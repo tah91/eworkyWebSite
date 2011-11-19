@@ -286,7 +286,7 @@ namespace Worki.Web.Controllers
                         try
                         {
                             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-							var profilLink = urlHelper.ActionAbsolute(MVC.Profil.Dashboard());
+							var profilLink = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
                             TagBuilder link = new TagBuilder("a");
                             link.MergeAttribute("href", profilLink);
                             link.InnerHtml = Worki.Resources.Email.ResetPassword.ResetPasswordLink;
@@ -439,8 +439,8 @@ namespace Worki.Web.Controllers
 								facebookMail.To = member.Email;
 								facebookMail.Subject = Worki.Resources.Email.Activation.ActivationSubject;
 								facebookMail.ToName = member.MemberMainData.FirstName;
-								facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content, 
-																	urlHelper.ActionAbsolute(MVC.Profil.Edit()), 
+								facebookMail.Content = string.Format(Worki.Resources.Email.FacebookRegistration.Content,
+																	urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit()), 
 																	member.Email, 
 																	_MembershipService.GetPassword(member.Email, null));
 								facebookMail.Send();

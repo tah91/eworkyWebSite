@@ -10,10 +10,10 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.MyProfile, "Blue")
 
 <div class="detailContent">
-	@{Html.RenderAction(MVC.Profil.ProfilMenu(Model.Member.MemberId, (int)ProfilConstants.ProfilItem.Edit));}
+	@{Html.RenderAction(MVC.Dashboard.Profil.ProfilMenu(Model.Member.MemberId, (int)ProfilConstants.ProfilItem.Edit));}
 
     <div class="profilDetailRight dashedLeft blockContainer float-right">
-        @using (Html.BeginForm(MVC.Profil.ActionNames.Edit, MVC.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id="profilEditForm" }))
+        @using (Html.BeginForm(MVC.Dashboard.Profil.ActionNames.Edit, MVC.Dashboard.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
         {
             @Html.AntiForgeryToken()
             <div class="profilData">

@@ -12,7 +12,7 @@ using Worki.Infrastructure.Helpers;
 using System.Web.Security;
 using Worki.Memberships;
 
-namespace Worki.Web.Controllers
+namespace Worki.Web.Areas.Dashboard.Controllers
 {
     [HandleError]
     [CompressFilter(Order = 1)]
@@ -24,48 +24,6 @@ namespace Worki.Web.Controllers
 		ILogger _Logger;
 		IMembershipService _MembershipService;
 
-		ProfilDashboardModel GetDashboard(Member member, bool isPrivate = false, int p1 = 1, int p2 = 1, int p3 = 1, int p4 = 1)
-		{
-			//get fav localisations
-			var favLocs = new List<Localisation>();
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			foreach (var item in member.FavoriteLocalisations.Skip((p1 - 1) * LocalisationPageSize).Take(LocalisationPageSize))
-			{
-				favLocs.Add(lRepo.Get(item.LocalisationId));
-			}
-			//added localisations
-			var addedLoc = member.Localisations.Skip((p2 - 1) * LocalisationPageSize).Take(LocalisationPageSize).ToList();
-
-			var profilDashboard = new ProfilDashboardModel
-			{
-				Member = member,
-				FavoriteLocalisations = favLocs,
-				FavoriteLocalisationsPI = new PagingInfo { CurrentPage = p1, ItemsPerPage = LocalisationPageSize, TotalItems = member.FavoriteLocalisations.Count },
-				AddedLocalisations = addedLoc,
-				AddedLocalisationsPI = new PagingInfo { CurrentPage = p2, ItemsPerPage = LocalisationPageSize, TotalItems = member.Localisations.Count },
-				IsPrivate = isPrivate
-			};
-
-			if (isPrivate)
-			{
-				//posted comments
-				var postedComments = member.Comments.Skip((p3 - 1) * CommentPageSize).Take(CommentPageSize).ToList();
-				//related comments
-				var relatedCom = new List<Comment>();
-				foreach (var loc in addedLoc)
-				{
-					relatedCom.AddRange(loc.Comments.ToList());
-				}
-				relatedCom = relatedCom.Skip((p4 - 1) * CommentPageSize).Take(CommentPageSize).ToList();
-				profilDashboard.PostedComments = postedComments;
-				profilDashboard.PostedCommentsPI = new PagingInfo { CurrentPage = p3, ItemsPerPage = CommentPageSize, TotalItems = member.Comments.Count };
-				profilDashboard.RelatedComments = relatedCom;
-				profilDashboard.RelatedCommentsPI = new PagingInfo { CurrentPage = p4, ItemsPerPage = CommentPageSize, TotalItems = relatedCom.Count };
-			}
-			return profilDashboard;
-		}
-
 		#endregion
 
 		public ProfilController(ILogger logger,
@@ -76,72 +34,53 @@ namespace Worki.Web.Controllers
 		}
 
 		/// <summary>
-		/// GET Action result to show profil details
+		/// GET Action result to show profil public information
 		/// </summary>
 		/// <param name="id">id of the member</param>
-		/// <returns>View containing profil details</returns>
+		/// <returns>View containing profil public information</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("details")]
-		public virtual ActionResult Detail(int id)
+		[ActionName("public")]
+		public virtual ActionResult Public(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.Get(id);
-			if (member == null || member.MemberMainData == null)
-            {
-                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
-                return RedirectToAction(MVC.Home.Index());
-            }
+			try
+			{
+				Member.Validate(member);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Public", ex);
+				TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+				return RedirectToAction(MVC.Home.Index());
+			}
 
-			var dashboard = GetDashboard(member);
-			return View(MVC.Profil.Views.dashboard, dashboard);
+			var model = ProfilPublicModel.GetProfilPublic(member);
+			return View(model);
 		}
 
-		public const int LocalisationPageSize = 6;
-		public const int CommentPageSize = 3;
-		/// <summary>
-		/// GET Action result to show profil dashboard
-		/// </summary>
-		/// <param name="id">id of the member</param>
-		/// <returns>View containing profil dashboard</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		[ActionName("dashboard")]
-		public virtual ActionResult Dashboard()
-		{
-			var id = WebHelper.GetIdentityId(User.Identity);
-			if (id == 0)
-				return View(MVC.Shared.Views.Error);
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var member = mRepo.Get(id);
-            if (member == null || member.MemberMainData == null)
-            {
-                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
-                return RedirectToAction(MVC.Home.Index());
-            }
-
-			var dashboard = GetDashboard(member, true);
-			return View(dashboard);
-		}
-
-		public virtual PartialViewResult AjaxDashboard(int id, int tabId, int p1, int p2, int p3, int p4)
+		public virtual PartialViewResult AjaxDashboard(int id, int tabId, int p1, int p2)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.Get(id);
-			if (member == null || member.MemberMainData == null)
+			try
+			{
+				Member.Validate(member);
+				var model = ProfilPublicModel.GetProfilPublic(member, p1, p2);
+				ViewData[ProfilConstants.TabId] = tabId;
+				var tab = (ProfilConstants.DashboardTab)tabId;
+				if (tab == ProfilConstants.DashboardTab.FavLoc || tab == ProfilConstants.DashboardTab.AddedLoc)
+					return PartialView(MVC.Dashboard.Profil.Views._LocalisationTab, model);
+				else
+					return null;
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("AjaxDashboard", ex);
 				return null;
-
-			var dashboard = GetDashboard(member, true, p1, p2, p3, p4);
-			ViewData[ProfilConstants.TabId] = tabId;
-			ViewData[Comment.DisplayRelatedLocalisation] = true;
-			var tab = (ProfilConstants.DashboardTab)tabId;
-			if (tab == ProfilConstants.DashboardTab.FavLoc || tab == ProfilConstants.DashboardTab.AddedLoc)
-				return PartialView(MVC.Profil.Views._LocalisationTab, dashboard);
-			else if (tab == ProfilConstants.DashboardTab.PostedCom || tab == ProfilConstants.DashboardTab.RelCom)
-				return PartialView(MVC.Profil.Views._CommentTab, dashboard);
-			else
-				return null;
+			}
 		}
 
 		/// <summary>
@@ -162,7 +101,7 @@ namespace Worki.Web.Controllers
             if (item == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
-                return RedirectToAction(MVC.Profil.Dashboard());
+				return RedirectToAction(MVC.Dashboard.Home.Index());
             }
 				
 			return View(new ProfilFormViewModel { Member = item });
@@ -222,7 +161,7 @@ namespace Worki.Web.Controllers
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.ProfilHaveBeenEdit;
 
-					return RedirectToAction(MVC.Profil.Dashboard());
+					return RedirectToAction(MVC.Dashboard.Home.Index());
 				}
 				catch (Exception ex)
 				{
@@ -347,7 +286,7 @@ namespace Worki.Web.Controllers
 				if (_MembershipService.ChangePassword(member.Username, model.OldPassword, model.NewPassword))
 				{
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
-					return RedirectToAction(MVC.Profil.Dashboard());
+					return RedirectToAction(MVC.Dashboard.Home.Index());
 				}
 				else
 				{
@@ -367,7 +306,7 @@ namespace Worki.Web.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var member = mRepo.Get(memberId);
 
-			return PartialView(MVC.Profil.Views._ProfilMenu, new ProfilMenuModel { Member = member, MenuItem = type, IsPrivate = isPrivate });
+			return PartialView(MVC.Dashboard.Profil.Views._ProfilMenu, new ProfilMenuModel { Member = member, MenuItem = type, IsPrivate = isPrivate });
 		}
 	}
 }

@@ -20,6 +20,7 @@ namespace Worki.Data.Models
 		IList<Localisation> FindByCriteria(SearchCriteria criteria);
 		float DistanceBetween(float latitude, float longitude, int localisationId);
 		Comment GetComment(int comId);
+		IList<MemberEdition> GetLatestModifications(int count, EditionType type);
 	}
 
 	public class LocalisationRepository : RepositoryBase<Localisation>, ILocalisationRepository
@@ -226,6 +227,16 @@ namespace Worki.Data.Models
 			if (loc == null)
 				return 0;
 			return EdmMethods.DistanceBetween((float)loc.Latitude, (float)loc.Longitude, latitude, longitude) ?? 0;
+		}
+
+		public IList<MemberEdition> GetLatestModifications(int count, EditionType type)
+		{
+			var lastest = from item in _Context.MemberEditions
+						  where item.ModificationType == (int)type
+						  orderby item.ModificationDate descending
+						  select item;
+
+			return lastest.Take(count).ToList();
 		}
 
 		#endregion

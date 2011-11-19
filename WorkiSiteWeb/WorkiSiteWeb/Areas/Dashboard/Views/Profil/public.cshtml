@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.ProfilDashboardModel
+﻿@model Worki.Data.Models.ProfilPublicModel
 
 @section HeadContent
 {
@@ -8,81 +8,42 @@
 }
 
 @{
-	var title = Model.IsPrivate ? Worki.Resources.Views.Profile.ProfileString.MyProfile : Model.Member.GetDisplayName();
-	ViewData[Comment.DisplayRelatedLocalisation] = true;
+	var title = Model.Member.GetDisplayName();
 }
 @RazorHelpers.TitleDiv(title, "Blue")
 
 <div class="detailContent">
-    @{Html.RenderAction(MVC.Profil.ProfilMenu(Model.Member.MemberId, (int)ProfilConstants.ProfilItem.CommunityActivity, Model.IsPrivate));}
+    @Html.Partial(MVC.Dashboard.Profil.Views._ProfilMenu,Model.Member)
 
     <div class="profilDetailRight dashedLeft blockContainer float-right">
         <div class="profilLocalisations contentBlock">
             <ul class="tabs">
                 <li><a href="#favoritesTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.Favorite</a></li>
                 <li><a href="#addedLocalisationTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MySpaces</a></li>
-				@if (Model.IsPrivate)
-				{
-				<li><a href="#myCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyComments</a></li>
-				<li><a href="#locCommentsTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.MyCommentedSpaces</a></li>
-				}
             </ul>
             <div class="tab_container">
                 <div id="favoritesTab" class="tab_content localisationsTagContainer">
-					@if(Model.FavoriteLocalisations.Count != 0)
+					@if(Model.FavoriteLocalisations.List.Count != 0)
 					{
 						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.FavLoc;
-						@Html.Partial(MVC.Profil.Views._LocalisationTab)
+						@Html.Partial(MVC.Dashboard.Profil.Views._LocalisationTab)
 					}
-                    else if (Model.IsPrivate)
-                    {
-						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.FavoriteSpacesEmpty</span>
-                    }
                     else
                     {
                         <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.FavoriteSpacesEmptyPublic</span>
                     }
                 </div> 
                 <div id="addedLocalisationTab" class="tab_content localisationsTagContainer visuallyhidden">
-					@if (Model.AddedLocalisations.Count != 0)
+					@if (Model.AddedLocalisations.List.Count != 0)
                     {
 						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.AddedLoc;
-						@Html.Partial(MVC.Profil.Views._LocalisationTab)
-                    }
-                    else if (Model.IsPrivate)
-                    {
-						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))</span>
-                    }
-                     else
-                     {
-                        <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
-                     }
-                </div> 
-				@if (Model.IsPrivate)
-				{
-                <div id="myCommentsTab" class="tab_content visuallyhidden">
-					@if (Model.PostedComments.Count != 0)
-                    {
-						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.PostedCom;
-						@Html.Partial(MVC.Profil.Views._CommentTab)
+						@Html.Partial(MVC.Dashboard.Profil.Views._LocalisationTab)
                     }
                     else
                     {
-						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.CommentsEmpy</span>
-                    }					
-                </div> 
-                <div id="locCommentsTab" class="tab_content visuallyhidden">
-					@if (Model.RelatedComments.Count != 0)
-                    {
-						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.RelCom;
-						@Html.Partial(MVC.Profil.Views._CommentTab)
+                    <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmptyPublic</span>
                     }
-                    else
-                    {
-						<span class="italic">@Worki.Resources.Views.Profile.ProfileString.RelCommentsEmpty</span>
-                    }					
                 </div> 
-				}
             </div>
             <div class="clear">
             </div>
@@ -102,10 +63,6 @@
                             <br/><a href="@WebHelper.GetWebsite(Model.Member.MemberMainData.Website)">@Worki.Resources.Views.Profile.ProfileString.MyWebsite</a>
                         }
                     }
-                    else if (Model.IsPrivate)
-                    {
-						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit())))</span>
-                    }
                     else
                     {
                         <span class="italic">@Model.Member.MemberMainData.FirstName @Model.Member.MemberMainData.LastName @Worki.Resources.Views.Profile.ProfileString.MyCompanyPublic</span>
@@ -115,10 +72,6 @@
 					@if (!string.IsNullOrEmpty(Model.Member.MemberMainData.FavoritePlaces))
                     {
 						@Model.Member.MemberMainData.FavoritePlaces
-                    }
-                    else if (Model.IsPrivate)
-                    {
-						<span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.InfosEmpty, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Profil.Edit())))</span>
                     }
                     else
                     {
@@ -140,7 +93,6 @@
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)", "@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
                 InitTab(".profilLocalisations");
                 InitTab(".profilCompany");
-                InitTab(".profilComments");
 
                 function GetInt(str){
 				    var intVal = parseInt(str);
@@ -150,10 +102,10 @@
 					    return intVal;
 			    };
 			
-			    function AjaxFill(tabId,p1,p2,p3,p4,divId) {					
+			    function AjaxFill(tabId,p1,p2,divId) {					
                     $.ajax({
-					    url: "@Url.Action(MVC.Profil.ActionNames.AjaxDashboard)",
-					    data: { "id": @Model.Member.MemberId, "tabId" : tabId, "p1" : p1, "p2" : p2, "p3" : p3, "p4" : p4 },
+					    url: "@Url.Action(MVC.Dashboard.Profil.ActionNames.AjaxDashboard)",
+					    data: { "id": @Model.Member.MemberId, "tabId" : tabId, "p1" : p1, "p2" : p2 },
 					    success: function (data) {
 						    $(divId).html(data);
 					    }
@@ -164,40 +116,16 @@
 
 				    var p1 = GetInt($(this).html());
 				    var p2 = GetInt($(".AddedLoc .selected").html());
-				    var p3 = GetInt($(".PostedCom .selected").html());
-				    var p4 = GetInt($(".RelCom .selected").html());
 
-				    AjaxFill(@((int)ProfilConstants.DashboardTab.FavLoc),p1,p2,p3,p4,"#favoritesTab");
+				    AjaxFill(@((int)ProfilConstants.DashboardTab.FavLoc),p1,p2,"#favoritesTab");
 				    return false;
 			    });
 			    $(".AddedLoc").live("click", function () {
 
 				    var p1 = GetInt($(".FavLoc .selected").html());
 				    var p2 = GetInt($(this).html());
-				    var p3 = GetInt($(".PostedCom .selected").html());
-				    var p4 = GetInt($(".RelCom .selected").html());
 
-				    AjaxFill(@((int)ProfilConstants.DashboardTab.AddedLoc),p1,p2,p3,p4,"#addedLocalisationTab");
-				    return false;
-			    });
-			    $(".PostedCom").live("click", function () {
-
-				    var p1 = GetInt($(".FavLoc .selected").html());
-				    var p2 = GetInt($(".AddedLoc .selected").html());
-				    var p3 = GetInt($(this).html());
-				    var p4 = GetInt($(".RelCom .selected").html());
-
-				    AjaxFill(@((int)ProfilConstants.DashboardTab.PostedCom),p1,p2,p3,p4,"#myCommentsTab");
-				    return false;
-			    });
-			    $(".RelCom").live("click", function () {
-
-				    var p1 = GetInt($(".FavLoc .selected").html());
-				    var p2 = GetInt($(".AddedLoc .selected").html());
-				    var p3 = GetInt($(".PostedCom .selected").html());
-				    var p4 = GetInt($(this).html());
-
-				    AjaxFill(@((int)ProfilConstants.DashboardTab.RelCom),p1,p2,p3,p4,"#locCommentsTab");
+				    AjaxFill(@((int)ProfilConstants.DashboardTab.AddedLoc),p1,p2,"#addedLocalisationTab");
 				    return false;
 			    });
         });

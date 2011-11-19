@@ -238,6 +238,8 @@
     <Compile Include="Areas\Api\Routing\PathDoesNotStartWith.cs" />
     <Compile Include="Areas\Api\Routing\PathStartsWith.cs" />
     <Compile Include="Areas\Api\Routing\RestRoutes.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Mobile\Controllers\AccountController.cs" />
     <Compile Include="Areas\Mobile\Controllers\HomeController.cs" />
     <Compile Include="Areas\Mobile\Controllers\LocalisationController.cs" />
@@ -251,7 +253,7 @@
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\UploadImageController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
-    <Compile Include="Controllers\ProfilController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\ProfilController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalisationController.cs" />
@@ -587,6 +589,9 @@
     <Content Include="Areas\Mobile\Views\Account\connexion.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Web.config" />
+    <Content Include="Areas\Dashboard\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -637,7 +642,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Profil\changer-mdp.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profil\changer-mdp.cshtml" />
     <Content Include="Views\Account\connexion.cshtml" />
     <Content Include="Views\Account\inscription.cshtml" />
     <Content Include="Views\Home\a-propos.cshtml" />
@@ -671,11 +676,11 @@
     <Content Include="Areas\Admin\Views\Admin\EditWelcomePeople.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DetailWelcomePeople.cshtml" />
     <Content Include="Views\Home\_PeopleSlider.cshtml" />
-    <Content Include="Views\Profil\editer.cshtml" />
-    <Content Include="Views\Profil\dashboard.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profil\editer.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profil\public.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DeleteWelcomePeople.cshtml" />
-    <Content Include="Views\Profil\_LocalisationTab.cshtml" />
-    <Content Include="Views\Profil\_CommentTab.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profil\_LocalisationTab.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profil\_CommentTab.cshtml" />
     <Content Include="Views\Localisation\resultats-detail.cshtml" />
     <Content Include="Views\Shared\_AddToFavorite.cshtml" />
     <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
@@ -718,7 +723,7 @@
     <Content Include="Views\Localisation\Offers.cshtml" />
     <Content Include="Views\Localisation\_LocalisationInfos.cshtml" />
     <Content Include="Views\Home\_AboutMenu.cshtml" />
-    <Content Include="Views\Profil\_ProfilMenu.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profil\_ProfilMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Statistic.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\LastModif.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\LastCreate.cshtml" />
@@ -775,6 +780,8 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Shared\" />
+    <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="Areas\Dashboard\Views\Shared\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
