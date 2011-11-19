@@ -9,7 +9,7 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.AdminRental, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Views._AdminMenu)
+        @Html.Partial(MVC.Admin.Admin.Views._AdminMenu)
     </div>
     <p>
     <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.CreateRental, MVC.Rental.Create())</h3>
@@ -61,7 +61,7 @@
                     &nbsp;&nbsp;
                     @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Rental.Edit(item.Id)) 
                     &nbsp;&nbsp; | &nbsp;&nbsp;
-                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Rental.DeleteRental(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Admin.DeleteRental(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery))
                     &nbsp;&nbsp; | &nbsp;&nbsp;
                     @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.Detail, MVC.Rental.Detail(item.Id))
                 </td>
@@ -71,7 +71,7 @@
         <tfoot> </tfoot>
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.IndexRental, MVC.Admin.Name, new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Admin.ActionNames.IndexRental, MVC.Admin.Admin.Name, new { page = x }))
         </div>
         <div class="clear">
         </div>

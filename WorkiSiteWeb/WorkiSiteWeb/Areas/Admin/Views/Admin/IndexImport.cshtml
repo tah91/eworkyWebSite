@@ -9,10 +9,10 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.LocalisationsAdmin, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu">
-        @Html.Partial(MVC.Admin.Views._AdminMenu)
+        @Html.Partial(MVC.Admin.Admin.Views._AdminMenu)
     </div>
     <div class="adminPanel">
-        @using (Html.BeginForm(MVC.Admin.ActionNames.IndexImport, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "adminForm" }))
+        @using (Html.BeginForm(MVC.Admin.Admin.ActionNames.IndexImport, MVC.Admin.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "adminForm" }))
         {
             @Html.AntiForgeryToken();
             <div>

@@ -209,69 +209,6 @@ namespace Worki.Web.Controllers
             return View(new LocalisationFormViewModel(localisationForm.Localisation));
 		}
 
-        /// <summary>
-        /// GET Action result to delete a localisation
-        /// if the id is in db, ask for confirmation to delete the localiosation
-        /// </summary>
-        /// <param name="id">The id of the localisation to delete</param>
-        /// <returns>the confirmation view</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-        [ActionName("supprimer")]
-        public virtual ActionResult Delete(int id, string returnUrl = null)
-        {
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var localisation = lRepo.Get(id);
-            if (localisation == null)
-            {
-                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
-                return RedirectToAction(MVC.Admin.Index());
-            }
-            else
-            {
-                TempData["returnUrl"] = returnUrl;
-                return View(localisation);
-            }
-        }
-
-        /// <summary>
-        /// POST Action result to delete a localisation
-        /// remove localistion from db
-        /// <param name="id">The id of the localisation to delete</param>
-        /// </summary>
-        /// <returns>the deletetion success view</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-        [ActionName("supprimer")]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult Delete(int id, string confirmButton, string returnUrl)
-        {
-			var context = ModelFactory.GetUnitOfWork();
-			try
-			{
-				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-				var localisation = lRepo.Get(id);
-				if (localisation == null)
-                {
-                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
-                    return RedirectToAction(MVC.Admin.Index());
-                }
-				lRepo.Delete(id);
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Delete", ex);
-				context.Complete();
-			}
-
-            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenDel;
-
-            if (string.IsNullOrEmpty(returnUrl))
-                return RedirectToAction(MVC.Admin.Index());
-            else
-                return Redirect(returnUrl);
-        }
-
         const string returnUrlPostComment = "returnUrlPostComment";
 
         /// <summary>

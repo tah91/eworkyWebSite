@@ -9,13 +9,13 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.IndexWelcomePeople, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Views._AdminMenu)
+        @Html.Partial(MVC.Admin.Admin.Views._AdminMenu)
     </div>
     <p>
-    <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.CreateNewWelcomePeople, MVC.Admin.CreateWelcomePeople())</h3>
+    <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.CreateNewWelcomePeople, MVC.Admin.Admin.CreateWelcomePeople())</h3>
     </p>
     <div class="adminPanel">
-        @using (Html.BeginForm(MVC.Admin.ActionNames.WelcomePeopleLine, MVC.Admin.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+        @using (Html.BeginForm(MVC.Admin.Admin.ActionNames.WelcomePeopleLine, MVC.Admin.Admin.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
         { 
         @Html.AntiForgeryToken();
         <table>
@@ -49,9 +49,9 @@
                     @Html.CheckBox(item.Member.Username, item.Online)
                 </td>
                 <td align="center">
-                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.EditWelcomePeople(item.Id)) |
-                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.DeleteWelcomePeople(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
-                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Details, MVC.Admin.DetailWelcomePeople(item.Id))
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.Admin.EditWelcomePeople(item.Id)) |
+                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Admin.DeleteWelcomePeople(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Details, MVC.Admin.Admin.DetailWelcomePeople(item.Id))
                 </td>
             </tr>
         }
@@ -59,7 +59,7 @@
         <tfoot> </tfoot>
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.IndexWelcomePeople, MVC.Admin.Name, new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Admin.ActionNames.IndexWelcomePeople, MVC.Admin.Admin.Name, new { page = x }))
         </div>
         <div>
             @Html.SubmitButton("Update", Worki.Resources.Views.Admin.AdminString.Update)

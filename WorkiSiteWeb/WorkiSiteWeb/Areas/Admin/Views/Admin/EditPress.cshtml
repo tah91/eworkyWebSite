@@ -10,7 +10,7 @@
 
 <div class="detailContent">
 	<div class="blockContainer">
-		@using (Html.BeginForm(MVC.Admin.ActionNames.EditPress, MVC.Admin.Name, null, FormMethod.Post, new { id = "DateForm" }))
+		@using (Html.BeginForm(MVC.Admin.Admin.ActionNames.EditPress, MVC.Admin.Admin.Name, null, FormMethod.Post, new { id = "DateForm" }))
         {
             <div class="contentBlock">
 			@Html.AntiForgeryToken()
@@ -73,7 +73,7 @@
 	</div>
 </div>
 <div>
-	@Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexPress())
+	@Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.Admin.IndexPress())
 </div>
 @section ScriptContent
 {

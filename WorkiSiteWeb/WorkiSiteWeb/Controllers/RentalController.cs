@@ -148,61 +148,6 @@ namespace Worki.Web.Controllers
 			return View(new RentalFormViewModel(rental));
 		}
 
-		/// <summary>
-		/// GET Action result to delete a rental
-		/// if the id is in db, ask for confirmation to delete the rental
-		/// </summary>
-		/// <param name="id">The id of the rental to delete</param>
-		/// <returns>the confirmation view</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		[ActionName("supprimer")]
-		public virtual ActionResult DeleteRental(int id, string returnUrl = null)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
-			var rental = rRepo.Get(id);
-			if (rental == null)
-				return View(MVC.Shared.Views.Error);
-			else
-			{
-				TempData["returnUrl"] = returnUrl;
-				return View(rental);
-			}
-		}
-
-		/// <summary>
-		/// POST Action result to delete a rental
-		/// remove rental from db
-		/// <param name="id">The id of the rental to delete</param>
-		/// </summary>
-		/// <returns>the deletetion success view</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		[ActionName("supprimer")]
-		[ValidateAntiForgeryToken]
-        public virtual ActionResult DeleteRental(int id, string confirm, string returnUrl)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
-			try
-			{
-				var rental = rRepo.Get(id);
-				if (rental == null)
-					return View(MVC.Shared.Views.Error);
-				rRepo.Delete(id);
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Delete", ex);
-				context.Complete();
-			}
-
-            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Rental.RentalString.RentalHaveBeenDel;
-
-            return RedirectToAction(MVC.Admin.IndexRental());
-            //return Redirect(returnUrl);
-		}
-
 
 		public virtual PartialViewResult AddRentalAccess()
 		{

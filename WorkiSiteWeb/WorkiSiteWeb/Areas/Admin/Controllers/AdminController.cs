@@ -15,7 +15,7 @@ using Worki.Infrastructure;
 using Postal;
 using Worki.Web.Singletons;
 
-namespace Worki.Web.Controllers
+namespace Worki.Web.Areas.Admin.Controllers
 {
 	[Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
     [CompressFilter(Order = 1)]
@@ -74,7 +74,7 @@ namespace Worki.Web.Controllers
                 if (loc == null)
                 {
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
-                    return RedirectToAction(MVC.Admin.Index());
+                    return RedirectToAction(MVC.Admin.Admin.Index());
                 }
                 if (loc.MainLocalisation != null)
                 {
@@ -88,7 +88,7 @@ namespace Worki.Web.Controllers
                 _Logger.Error("OnOffline", ex);
             }
 
-            return RedirectToAction(MVC.Admin.Index());
+            return RedirectToAction(MVC.Admin.Admin.Index());
         }
 
         public virtual ActionResult UpdateMainLocalisation(int id)
@@ -101,7 +101,7 @@ namespace Worki.Web.Controllers
                 if (loc == null)
                 {
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
-                    return RedirectToAction(MVC.Admin.Index());
+                    return RedirectToAction(MVC.Admin.Admin.Index());
                 }
                 if (loc.MainLocalisation != null)
                 {
@@ -115,7 +115,68 @@ namespace Worki.Web.Controllers
                 _Logger.Error("UpdateMainLocalisation", ex);
             }
 
-            return RedirectToAction(MVC.Admin.Index());
+            return RedirectToAction(MVC.Admin.Admin.Index());
+		}
+
+		/// <summary>
+		/// GET Action result to delete a localisation
+		/// if the id is in db, ask for confirmation to delete the localiosation
+		/// </summary>
+		/// <param name="id">The id of the localisation to delete</param>
+		/// <returns>the confirmation view</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult DeleteLocalisation(int id, string returnUrl = null)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
+			if (localisation == null)
+			{
+				TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+				return RedirectToAction(MVC.Admin.Admin.Index());
+			}
+			else
+			{
+				TempData["returnUrl"] = returnUrl;
+				return View(localisation);
+			}
+		}
+
+		/// <summary>
+		/// POST Action result to delete a localisation
+		/// remove localistion from db
+		/// <param name="id">The id of the localisation to delete</param>
+		/// </summary>
+		/// <returns>the deletetion success view</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult DeleteLocalisation(int id, string confirmButton, string returnUrl)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			try
+			{
+				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+				var localisation = lRepo.Get(id);
+				if (localisation == null)
+				{
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+					return RedirectToAction(MVC.Admin.Admin.Index());
+				}
+				lRepo.Delete(id);
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Delete", ex);
+				context.Complete();
+			}
+
+			TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenDel;
+
+			if (string.IsNullOrEmpty(returnUrl))
+				return RedirectToAction(MVC.Admin.Admin.Index());
+			else
+				return Redirect(returnUrl);
 		}
 
         #endregion 
@@ -163,7 +224,7 @@ namespace Worki.Web.Controllers
                 _Logger.Error("UnlockUser", ex);
             }
 
-            return RedirectToAction(MVC.Admin.IndexUser());
+            return RedirectToAction(MVC.Admin.Admin.IndexUser());
         }
 
         /// <summary>
@@ -232,7 +293,7 @@ namespace Worki.Web.Controllers
             if (user == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
-                return RedirectToAction(MVC.Admin.IndexUser());
+                return RedirectToAction(MVC.Admin.Admin.IndexUser());
             }
             TempData["returnUrl"] = returnUrl;
             return View(new User { UserName = user.UserName });
@@ -257,7 +318,7 @@ namespace Worki.Web.Controllers
             if (member == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
-                return RedirectToAction(MVC.Admin.IndexUser());
+                return RedirectToAction(MVC.Admin.Admin.IndexUser());
             }
             else
             {
@@ -321,7 +382,7 @@ namespace Worki.Web.Controllers
             if (item == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
-                return RedirectToAction(MVC.Admin.IndexWelcomePeople());
+                return RedirectToAction(MVC.Admin.Admin.IndexWelcomePeople());
             }
             return View(item);
         }
@@ -373,7 +434,7 @@ namespace Worki.Web.Controllers
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenCreate;
 
-					return RedirectToAction(MVC.Admin.IndexWelcomePeople());
+					return RedirectToAction(MVC.Admin.Admin.IndexWelcomePeople());
 				}
 				catch (Exception ex)
 				{
@@ -398,7 +459,7 @@ namespace Worki.Web.Controllers
             if (item == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
-                return RedirectToAction(MVC.Admin.IndexWelcomePeople());
+                return RedirectToAction(MVC.Admin.Admin.IndexWelcomePeople());
             }
 			return View(new WelcomePeopleFormViewModel(item));
         }
@@ -454,7 +515,7 @@ namespace Worki.Web.Controllers
 
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenEdit;
 
-				return RedirectToAction(MVC.Admin.IndexWelcomePeople());
+				return RedirectToAction(MVC.Admin.Admin.IndexWelcomePeople());
 			}
 			return View(formModel);
 		}
@@ -474,7 +535,7 @@ namespace Worki.Web.Controllers
             if (welcomePeople == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
-                return RedirectToAction(MVC.Admin.IndexWelcomePeople());
+                return RedirectToAction(MVC.Admin.Admin.IndexWelcomePeople());
             }
 			TempData["returnUrl"] = returnUrl;
 
@@ -494,7 +555,7 @@ namespace Worki.Web.Controllers
             if (profil == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
-                return RedirectToAction(MVC.Admin.IndexWelcomePeople());
+                return RedirectToAction(MVC.Admin.Admin.IndexWelcomePeople());
             }
             else
             {
@@ -503,7 +564,7 @@ namespace Worki.Web.Controllers
 
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenDel;
 
-                return RedirectToAction(MVC.Admin.IndexWelcomePeople());
+                return RedirectToAction(MVC.Admin.Admin.IndexWelcomePeople());
             }
         }
 
@@ -806,7 +867,7 @@ namespace Worki.Web.Controllers
             if (item == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
-                return RedirectToAction(MVC.Admin.IndexPress());
+                return RedirectToAction(MVC.Admin.Admin.IndexPress());
             }
 
             return View(item);
@@ -842,7 +903,7 @@ namespace Worki.Web.Controllers
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenCreate;
 
-                    return RedirectToAction(MVC.Admin.IndexPress());
+                    return RedirectToAction(MVC.Admin.Admin.IndexPress());
                 }
                 catch (Exception ex)
                 {
@@ -867,7 +928,7 @@ namespace Worki.Web.Controllers
             if (item == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
-                return RedirectToAction(MVC.Admin.IndexPress());
+                return RedirectToAction(MVC.Admin.Admin.IndexPress());
             }
 
             return View(item);
@@ -900,7 +961,7 @@ namespace Worki.Web.Controllers
 
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenEdit;
 
-				return RedirectToAction(MVC.Admin.IndexPress());
+				return RedirectToAction(MVC.Admin.Admin.IndexPress());
 			}
 			return View(formModel);
 		}
@@ -920,7 +981,7 @@ namespace Worki.Web.Controllers
             if (press == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
-                return RedirectToAction(MVC.Admin.IndexPress());
+                return RedirectToAction(MVC.Admin.Admin.IndexPress());
             }
 
             TempData["returnUrl"] = returnUrl;
@@ -939,7 +1000,7 @@ namespace Worki.Web.Controllers
 			if (article == null)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressNotFound;
-                return RedirectToAction(MVC.Admin.IndexPress());
+                return RedirectToAction(MVC.Admin.Admin.IndexPress());
             }
 			else
 			{
@@ -956,7 +1017,7 @@ namespace Worki.Web.Controllers
 
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.PressHaveBeenDel;
 
-				return RedirectToAction(MVC.Admin.IndexPress());
+				return RedirectToAction(MVC.Admin.Admin.IndexPress());
 			}
 		}
 
@@ -987,6 +1048,59 @@ namespace Worki.Web.Controllers
             };
             return View(viewModel);
         }
+
+		/// <summary>
+		/// GET Action result to delete a rental
+		/// if the id is in db, ask for confirmation to delete the rental
+		/// </summary>
+		/// <param name="id">The id of the rental to delete</param>
+		/// <returns>the confirmation view</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult DeleteRental(int id, string returnUrl = null)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			var rental = rRepo.Get(id);
+			if (rental == null)
+				return View(MVC.Shared.Views.Error);
+			else
+			{
+				TempData["returnUrl"] = returnUrl;
+				return View(rental);
+			}
+		}
+
+		/// <summary>
+		/// POST Action result to delete a rental
+		/// remove rental from db
+		/// <param name="id">The id of the rental to delete</param>
+		/// </summary>
+		/// <returns>the deletetion success view</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult DeleteRental(int id, string confirm, string returnUrl)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+			try
+			{
+				var rental = rRepo.Get(id);
+				if (rental == null)
+					return View(MVC.Shared.Views.Error);
+				rRepo.Delete(id);
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Delete", ex);
+				context.Complete();
+			}
+
+			TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Rental.RentalString.RentalHaveBeenDel;
+
+			return RedirectToAction(MVC.Admin.Admin.IndexRental());
+			//return Redirect(returnUrl);
+		}
 
         #endregion
 
@@ -1259,7 +1373,7 @@ namespace Worki.Web.Controllers
                 list.Add(item_stat);
             }
 
-            return View(MVC.Admin.Views.Statistic, list.OrderBy(x => x.Country_Name).ToList());
+            return View(MVC.Admin.Admin.Views.Statistic, list.OrderBy(x => x.Country_Name).ToList());
         }
 
         public virtual ActionResult Last100Modif(int? page)
@@ -1278,7 +1392,7 @@ namespace Worki.Web.Controllers
                     TotalItems = 100
                 }
             };
-            return View(MVC.Admin.Views.LastModif, viewModel);
+            return View(MVC.Admin.Admin.Views.LastModif, viewModel);
         }
 
         public virtual ActionResult LastCreate(int? page)
@@ -1297,7 +1411,7 @@ namespace Worki.Web.Controllers
                     TotalItems = 100
                 }
             };
-            return View(MVC.Admin.Views.LastCreate, viewModel);
+            return View(MVC.Admin.Admin.Views.LastCreate, viewModel);
         }
 
         #endregion
@@ -1314,7 +1428,7 @@ namespace Worki.Web.Controllers
 			{
 				_Logger.Error("RefreshBlog", ex);
 			}
-			return RedirectToAction(MVC.Admin.Index());
+			return RedirectToAction(MVC.Admin.Admin.Index());
 		}
 
 		#endregion

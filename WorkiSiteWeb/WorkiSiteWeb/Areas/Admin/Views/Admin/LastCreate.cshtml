@@ -9,7 +9,7 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.StatString.LastCreate, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Views._AdminMenu)
+        @Html.Partial(MVC.Admin.Admin.Views._AdminMenu)
     </div>
     <div class="adminPanel">
         <table>
@@ -46,7 +46,7 @@
             }
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.LastCreate, MVC.Admin.Name, new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Admin.ActionNames.LastCreate, MVC.Admin.Admin.Name, new { page = x }))
         </div> 
         <div class="clear"></div>
     </div>

@@ -12,7 +12,7 @@
         @Worki.Resources.Views.Admin.AdminString.ConfirmDeletePress
     </p>
 </div>
-@using (Html.BeginForm(MVC.Admin.ActionNames.DeletePress, MVC.Admin.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
+@using (Html.BeginForm(MVC.Admin.Admin.ActionNames.DeletePress, MVC.Admin.Admin.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
 {
 	@Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.ID)

@@ -9,10 +9,10 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.LocalisationsAdmin, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Views._AdminMenu)
+        @Html.Partial(MVC.Admin.Admin.Views._AdminMenu)
     </div>
     <div class="adminPanel">
-        @using (Html.BeginForm(MVC.Admin.ActionNames.UpdateMainLocalisation, MVC.Admin.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+        @using (Html.BeginForm(MVC.Admin.Admin.ActionNames.UpdateMainLocalisation, MVC.Admin.Admin.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
         {
         @Html.AntiForgeryToken()
         <table>
@@ -43,10 +43,10 @@
                         @item.ID
                     </td>
                     <td align="right">
-                        @(item.IsMain ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.UpdateMainLocalisation(item.ID)))
+                        @(item.IsMain ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Admin.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Admin.UpdateMainLocalisation(item.ID)))
                     </td>
                     <td align="right">
-                        @(item.IsOffline ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.OnOffline(item.ID)))
+                        @(item.IsOffline ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Admin.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Admin.OnOffline(item.ID)))
                     </td>
                     <td align="right">
                         @item.Name
@@ -57,7 +57,7 @@
                     <td align="right">
                         @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Localisation.Edit(item.ID)) 
                             | 
-                        @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Localisation.Delete(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                        @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Admin.DeleteLocalisation(item.ID, ViewContext.HttpContext.Request.Url.PathAndQuery))
                             | 
                         <a href="@item.GetDetailFullUrl(Url)">@Worki.Resources.Views.Localisation.LocalisationString.Details</a>
                     </td>
@@ -65,7 +65,7 @@
             } 
             </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.ActionNames.Index, MVC.Admin.Name, new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Admin.ActionNames.Index, MVC.Admin.Admin.Name, new { page = x }))
         </div>
         } 
         <div class="clear">

@@ -13,7 +13,7 @@
     </p>
 </div>
 
-@using (Html.BeginForm(MVC.Rental.ActionNames.DeleteRental, MVC.Rental.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
+@using (Html.BeginForm(MVC.Admin.Admin.ActionNames.DeleteRental, MVC.Rental.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
 {
 	@Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)

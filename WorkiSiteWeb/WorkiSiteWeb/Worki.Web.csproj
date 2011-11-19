@@ -227,6 +227,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Api\Rest\BasicActionResult.cs" />
@@ -243,7 +244,7 @@
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
     <Compile Include="Areas\Mobile\Models\MobileHelpers.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\QuotationController.cs" />
@@ -584,15 +585,17 @@
     </Content>
     <Content Include="App_Data\wurfl.xml.gz" />
     <Content Include="Areas\Mobile\Views\Account\connexion.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
     </Content>
     <Content Include="Views\Account\reset-mdp.cshtml" />
-    <Content Include="Views\Admin\IndexImport.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\IndexUser.cshtml" />
-    <Content Include="Views\Admin\supprimer-utilisateur.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\IndexImport.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\IndexUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\supprimer-utilisateur.cshtml" />
     <Content Include="Views\Shared\_UploadGalleryScript.cshtml" />
     <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />
     <Content Include="Views\Localisation\_SelectSearchScript.cshtml" />
@@ -608,7 +611,7 @@
     <Content Include="Views\Home\presse.cshtml" />
     <Content Include="Views\Home\jobs.cshtml" />
     <Content Include="Views\Localisation\_ServicesSelector.cshtml" />
-    <Content Include="Views\Admin\_AdminMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\_IndexGalleryScript.cshtml" />
     <Content Include="Views\Shared\_MetaDataHeader.cshtml" />
     <Content Include="Views\Localisation\_DirectAccess.cshtml" />
@@ -617,7 +620,7 @@
     <Content Include="Views\Localisation\_CommentForm.cshtml" />
     <Content Include="Views\Localisation\_SearchResultSummary.cshtml" />
     <Content Include="Views\Localisation\_IconeServices.cshtml" />
-    <Content Include="Views\Localisation\supprimer.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeleteLocalisation.cshtml" />
     <Content Include="Views\Localisation\editer.cshtml" />
     <Content Include="Views\Localisation\Index.cshtml" />
     <Content Include="Views\Shared\_Map.cshtml" />
@@ -663,14 +666,14 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Localisation\_LocalisationDetail.cshtml" />
-    <Content Include="Views\Admin\IndexWelcomePeople.cshtml" />
-    <Content Include="Views\Admin\CreateWelcomePeople.cshtml" />
-    <Content Include="Views\Admin\EditWelcomePeople.cshtml" />
-    <Content Include="Views\Admin\DetailWelcomePeople.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\IndexWelcomePeople.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CreateWelcomePeople.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditWelcomePeople.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DetailWelcomePeople.cshtml" />
     <Content Include="Views\Home\_PeopleSlider.cshtml" />
     <Content Include="Views\Profil\editer.cshtml" />
     <Content Include="Views\Profil\dashboard.cshtml" />
-    <Content Include="Views\Admin\DeleteWelcomePeople.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeleteWelcomePeople.cshtml" />
     <Content Include="Views\Profil\_LocalisationTab.cshtml" />
     <Content Include="Views\Profil\_CommentTab.cshtml" />
     <Content Include="Views\Localisation\resultats-detail.cshtml" />
@@ -678,18 +681,18 @@
     <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
     <Content Include="Views\Localisation\_CommentFormScript.cshtml" />
     <Content Include="Views\Booking\Create.cshtml" />
-    <Content Include="Views\Admin\IndexBooking.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\IndexBooking.cshtml" />
     <Content Include="Views\Booking\Details.cshtml" />
-    <Content Include="Views\Admin\IndexPress.cshtml" />
-    <Content Include="Views\Admin\CreatePress.cshtml" />
-    <Content Include="Views\Admin\DeletePress.cshtml" />
-    <Content Include="Views\Admin\EditPress.cshtml" />
-    <Content Include="Views\Admin\DetailPress.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\IndexPress.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CreatePress.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeletePress.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditPress.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DetailPress.cshtml" />
     <Content Include="Views\Rental\details.cshtml" />
     <Content Include="Views\Rental\editer.cshtml" />
-    <Content Include="Views\Rental\supprimer.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeleteRental.cshtml" />
     <Content Include="Views\Rental\_RentalAccess.cshtml" />
-    <Content Include="Views\Admin\IndexRental.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\IndexRental.cshtml" />
     <Content Include="Web.AzureDev.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -716,12 +719,12 @@
     <Content Include="Views\Localisation\_LocalisationInfos.cshtml" />
     <Content Include="Views\Home\_AboutMenu.cshtml" />
     <Content Include="Views\Profil\_ProfilMenu.cshtml" />
-    <Content Include="Views\Admin\Statistic.cshtml" />
-    <Content Include="Views\Admin\LastModif.cshtml" />
-    <Content Include="Views\Admin\LastCreate.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Statistic.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\LastModif.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\LastCreate.cshtml" />
     <Content Include="Views\Quotation\Create.cshtml" />
     <Content Include="Views\Quotation\Details.cshtml" />
-    <Content Include="Views\Admin\IndexQuotation.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\IndexQuotation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -768,6 +771,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Shared\" />
   </ItemGroup>

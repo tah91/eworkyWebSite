@@ -9,7 +9,7 @@
 
 <div class="detailContent">
     <div class="blockContainer">
-        @using (Html.BeginForm(MVC.Admin.ActionNames.CreateWelcomePeople, MVC.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm(MVC.Admin.Admin.ActionNames.CreateWelcomePeople, MVC.Admin.Admin.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="contentBlock">
             @Html.AntiForgeryToken()
@@ -71,5 +71,5 @@
 </div>
 
 <div>
-    @Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.IndexWelcomePeople())
+    @Html.ActionLink(@Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.Admin.IndexWelcomePeople())
 </div>
