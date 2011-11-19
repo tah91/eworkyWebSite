@@ -278,17 +278,23 @@ namespace Worki.Memberships
         {
             // Return status defaults to false
             bool ret = false;
+			try
+			{
+				if (RoleExists(roleName))
+				{
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
-            if (RoleExists(roleName))
-            {
-				var context = ModelFactory.GetUnitOfWork();
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-
-				var member = mRepo.GetMember(username);
-                int c = member.MembersInGroups.Count(mig => mig.Group.Title == roleName);
-                if (c > 0)
-                    ret = true;
-            }
+					var member = mRepo.GetMember(username);
+					int c = member.MembersInGroups.Count(mig => mig.Group.Title == roleName);
+					if (c > 0)
+						ret = true;
+				}
+			}
+			catch (Exception)
+			{
+				
+			}
 
             return ret;
         }
