@@ -9,7 +9,7 @@
 }				
 
 <div class="">
-    @Worki.Resources.Views.Search.SearchString.Search <span class="blue bold">@Localisation.GetOfferType(Model.Criteria.OfferData.Type)</span> @Worki.Resources.Views.Mobile.MobileString.Near <span class="blue bold">@Model.Criteria.Place</span> @Model.Results.Count @Worki.Resources.Views.Search.SearchString.PlaceFound
+    @Worki.Resources.Views.Search.SearchString.Search <span class="blue bold">@Localisation.GetOfferType(Model.Criteria.OfferData.Type)</span> @Worki.Resources.Views.Mobile.MobileString.Near <span class="blue bold">@Model.Criteria.Place</span> @Model.List.Count @Worki.Resources.Views.Search.SearchString.PlaceFound
 </div>
 
 <div class="clear">
@@ -104,11 +104,11 @@
 					}
 				}
 
-                @foreach (var localisation in Model.Results)
+                @foreach (var localisation in Model.List)
                 {
 					@:addMarker(@localisation.Latitude, @localisation.Longitude, "@Html.Raw(localisation.Name)", @localisation.ID);
                 }
-                @if (Model.Results.Count >= 2)
+                @if (Model.List.Count >= 2)
                 {
                     <text>
                     resultsMap.FitBoundsSearchResults(bounds);

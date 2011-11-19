@@ -27,7 +27,7 @@
     @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new Dictionary<string, object> { { "class", byDistance ? "noUnderline" : null } }) <text>|</text>
     @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new Dictionary<string, object> { { "class", !byDistance ? "noUnderline" : null } }) 
 </div>
-@RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.Results.Count), "Blue")
+@RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.List.Count), "Blue")
 
 <div class="detailContent">
     <div class="searchFormBlock float-right">
