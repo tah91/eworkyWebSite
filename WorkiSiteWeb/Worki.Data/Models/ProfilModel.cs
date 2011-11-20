@@ -574,6 +574,7 @@ namespace Worki.Data.Models
 	public  class ProfilConstants
 	{
 		public const string TabId = "TabId";
+		public const string PageUrl = "PageUrl";
 
 		public enum DashboardTab
 		{
@@ -636,27 +637,4 @@ namespace Worki.Data.Models
     }
 
     #endregion
-
-	#region ProfilMenuModel
-
-	public class ProfilMenuModel : MenuModelBase
-	{
-		#region Properties
-
-		public Member Member { get; set; }
-		public bool IsPrivate { get; set; }
-
-		#endregion
-
-		#region Ctor
-
-		public ProfilMenuModel()
-		{
-
-		}
-
-		#endregion
-	}
-
-	#endregion
 }

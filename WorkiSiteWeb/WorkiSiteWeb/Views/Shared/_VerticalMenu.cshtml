@@ -1,0 +1,13 @@
+﻿@model IList<MenuItem>
+
+<div class="contentBlock">
+	<div class="verticalMenu">
+		<ul>
+		@foreach (var item in Model)
+		{
+			var liClass = item.Selected ? "selected" : "";
+			<li class="@liClass">@item.Link</li>
+		}
+		</ul>
+	</div>
+</div>

@@ -7,9 +7,11 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.JobString.Jobs, "Blue")
 
 <div class="detailContent generalTextContainer">
-	@{Html.RenderAction(MVC.Home.AboutMenu((int)IndexItem.Jobs));}
+	<div class="blockContainer float-left">
+		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.Jobs)
+	</div>
 	
-	<div class="dashedLeft float-right generalTextContent"> 
+	<div class="float-right generalTextContent blockContainer"> 
 		<div class="contentBlock">
 
 			<h3 class="blue">@Worki.Resources.Views.Home.JobString.EWSpirit</h3>

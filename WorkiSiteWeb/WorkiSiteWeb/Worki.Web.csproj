@@ -228,6 +228,10 @@
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ActivityController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ModerationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SheetController.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Api\Rest\BasicActionResult.cs" />
@@ -238,6 +242,8 @@
     <Compile Include="Areas\Api\Routing\PathDoesNotStartWith.cs" />
     <Compile Include="Areas\Api\Routing\PathStartsWith.cs" />
     <Compile Include="Areas\Api\Routing\RestRoutes.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\CommunityController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\HistoricController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Mobile\Controllers\AccountController.cs" />
@@ -265,6 +271,7 @@
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
     <Compile Include="Membership\MembershipService.cs" />
@@ -592,6 +599,10 @@
     <Content Include="Areas\Dashboard\Views\Web.config" />
     <Content Include="Areas\Dashboard\Views\Home\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Community\Places.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Community\FavoritePlaces.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Community\CommentedPlaces.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Community\AddedPlaces.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -605,7 +616,6 @@
     <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />
     <Content Include="Views\Localisation\_SelectSearchScript.cshtml" />
     <Content Include="Views\Shared\_CultureSwitchControl.cshtml" />
-    <Content Include="Views\Shared\_MainMenu.cshtml" />
     <Content Include="Views\Visitor\demande-reussie.cshtml" />
     <Content Include="Views\Visitor\_LogOnForm.cshtml" />
     <Content Include="Views\Visitor\_VisitorForm.cshtml" />
@@ -679,8 +689,8 @@
     <Content Include="Areas\Dashboard\Views\Profil\editer.cshtml" />
     <Content Include="Areas\Dashboard\Views\Profil\public.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DeleteWelcomePeople.cshtml" />
-    <Content Include="Areas\Dashboard\Views\Profil\_LocalisationTab.cshtml" />
-    <Content Include="Areas\Dashboard\Views\Profil\_CommentTab.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_LocalisationTab.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_CommentTab.cshtml" />
     <Content Include="Views\Localisation\resultats-detail.cshtml" />
     <Content Include="Views\Shared\_AddToFavorite.cshtml" />
     <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
@@ -723,13 +733,15 @@
     <Content Include="Views\Localisation\Offers.cshtml" />
     <Content Include="Views\Localisation\_LocalisationInfos.cshtml" />
     <Content Include="Views\Home\_AboutMenu.cshtml" />
-    <Content Include="Areas\Dashboard\Views\Profil\_ProfilMenu.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profil\_ProfilSummary.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Statistic.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\LastModif.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\LastCreate.cshtml" />
     <Content Include="Views\Quotation\Create.cshtml" />
     <Content Include="Views\Quotation\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\IndexQuotation.cshtml" />
+    <Content Include="Views\Shared\_HorizontalMenu.cshtml" />
+    <Content Include="Views\Shared\_VerticalMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -781,7 +793,6 @@
     <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Areas\Dashboard\Models\" />
-    <Folder Include="Areas\Dashboard\Views\Shared\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

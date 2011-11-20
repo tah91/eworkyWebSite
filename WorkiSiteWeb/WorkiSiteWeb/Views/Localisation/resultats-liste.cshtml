@@ -30,7 +30,21 @@
 @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.List.Count), "Blue")
 
 <div class="detailContent">
-    <div class="searchFormBlock float-right">
+    <div class="resultDiv float-left blockContainer">
+        <div class="searchFormBlockLeft">
+            @for (int i = 0; i < Model.PageResults.Count; ++i)
+			{
+				var index = Model.PagingInfo.GlobalIndex(i);
+                @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
+			}
+
+			<div class="pager">
+				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x;return Url.Action(MVC.Localisation.ActionNames.FullSearchResult, rvd);})
+			</div>
+        </div>    
+    </div>
+
+    <div class="searchFormBlock float-right blockContainer">
 		<div class="contentBlock">
 			<div class="resultsMapDiv">
                 <span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
@@ -142,20 +156,6 @@
 				}
             </div>
 		</div>
-    </div>
-
-    <div class="resultDiv dashedRight float-left">
-        <div class="searchFormBlockLeft">
-            @for (int i = 0; i < Model.PageResults.Count; ++i)
-			{
-				var index = Model.PagingInfo.GlobalIndex(i);
-                @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
-			}
-
-			<div class="pager">
-				@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x;return Url.Action(MVC.Localisation.ActionNames.FullSearchResult, rvd);})
-			</div>
-        </div>    
     </div>
 
 	<div class="clear">

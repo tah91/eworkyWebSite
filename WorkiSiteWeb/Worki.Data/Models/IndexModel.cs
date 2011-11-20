@@ -26,23 +26,14 @@ namespace Worki.Data.Models
         #endregion
     }
 
-	public enum IndexItem
+	public enum AboutPages
 	{
-		WhoWeAre,
-		Faq,
-		Cgu,
+		WhoAreWe,
 		Press,
 		Jobs,
-		Legal
-	}
-
-	public class MenuModelBase
-	{
-		public int MenuItem { get; set; }
-
-		public string GetClass(string classContent, int item)
-		{
-			return MenuItem == item ? classContent : string.Empty;
-		}
+		Cgu,
+		Legal,
+		Faq,
+		Contact
 	}
 }

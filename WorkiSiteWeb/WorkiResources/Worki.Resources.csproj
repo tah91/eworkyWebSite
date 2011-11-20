@@ -77,6 +77,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Menu.Designer.cs">
+      <DependentUpon>Menu.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Email\Activation.Designer.cs">
       <DependentUpon>Activation.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -280,6 +285,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Menu\Menu.en.resx" />
+    <EmbeddedResource Include="Menu\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\Activation.en.resx" />
     <EmbeddedResource Include="Email\Activation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

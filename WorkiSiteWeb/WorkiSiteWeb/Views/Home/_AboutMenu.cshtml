@@ -1,12 +1,12 @@
-﻿@model MenuModelBase
-		   
-<div class="contentBlock float-left">
-	<ul class="leftMenu">
-		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.WhoWeAre)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())</li>
-		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Press)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.News, MVC.Home.Press())</li>
-		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Jobs)">@Html.ActionLink(Worki.Resources.Views.Home.JobString.Jobs, MVC.Home.Jobs())</li>
-		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Cgu)">@Html.ActionLink(Worki.Resources.Views.Home.CguString.TermsOfUse, MVC.Home.CGU())</li>
-		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Legal)">@Html.ActionLink(Worki.Resources.Views.Home.HomeString.Imprint, MVC.Home.Legal())</li>
-		<li class="borderRadius @Model.GetClass("selected", (int)IndexItem.Faq)">@Html.ActionLink(Worki.Resources.Views.Home.FaqString.FAQ, MVC.Home.Faq())</li>
-	</ul>
-</div>
+﻿@model AboutPages
+	
+@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+{ 
+	new MenuItem{ Selected = AboutPages.WhoAreWe == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())} ,
+	new MenuItem{ Selected = AboutPages.Press == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HomeString.News, MVC.Home.Press())} ,
+	new MenuItem{ Selected = AboutPages.Jobs == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.JobString.Jobs, MVC.Home.Jobs())},
+	new MenuItem{ Selected = AboutPages.Cgu == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.CguString.TermsOfUse, MVC.Home.CGU())},
+	new MenuItem{ Selected = AboutPages.Legal == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HomeString.Imprint, MVC.Home.Legal())},
+	new MenuItem{ Selected = AboutPages.Faq == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.FaqString.FAQ, MVC.Home.Faq())},
+	new MenuItem{ Selected = AboutPages.Contact == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HomeString.Contact, MVC.Home.Contact())}
+})

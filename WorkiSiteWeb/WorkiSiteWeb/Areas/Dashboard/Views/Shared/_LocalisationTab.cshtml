@@ -1,25 +1,12 @@
-﻿@model Worki.Data.Models.ProfilPublicModel
+﻿@model Worki.Data.Models.PagingList<Localisation>
 
 @{
-	var tabId = (ProfilConstants.DashboardTab)ViewData[ProfilConstants.TabId];
-	var a_class = tabId.ToString();
-	IList<Localisation> locs = new List<Localisation>();
-	PagingInfo pi = new PagingInfo();
-	if (tabId == ProfilConstants.DashboardTab.FavLoc)
-	{
-		locs = Model.FavoriteLocalisations.List;
-		pi = Model.FavoriteLocalisations.PagingInfo;
-	}
-	else if (tabId == ProfilConstants.DashboardTab.AddedLoc)
-	{
-		locs = Model.AddedLocalisations.List;
-		pi = Model.AddedLocalisations.PagingInfo;
-	}
-	
+	var a_class = ViewData.ContainsKey(ProfilConstants.TabId) ? (string)ViewData[ProfilConstants.TabId] : "";
+	var pageUrl = ViewData.ContainsKey(ProfilConstants.PageUrl) ? (Func<int, string>)ViewData[ProfilConstants.PageUrl] : null;
 }
 
 <ul>
-    @foreach (var loc in locs.OrderByDescending(x => x.ID))
+    @foreach (var loc in Model.List.OrderByDescending(x => x.ID))
 	{ 
         <li>
             <a href="@loc.GetDetailFullUrl(Url)">
@@ -39,5 +26,5 @@
 <div class="clear">
 </div>
 <div class="pager @(a_class)">
-    @Html.PageLinks(pi, null, a_class)
+    @Html.PageLinks(Model.PagingInfo, pageUrl, a_class)
 </div>

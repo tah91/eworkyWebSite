@@ -71,8 +71,10 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				var model = ProfilPublicModel.GetProfilPublic(member, p1, p2);
 				ViewData[ProfilConstants.TabId] = tabId;
 				var tab = (ProfilConstants.DashboardTab)tabId;
-				if (tab == ProfilConstants.DashboardTab.FavLoc || tab == ProfilConstants.DashboardTab.AddedLoc)
-					return PartialView(MVC.Dashboard.Profil.Views._LocalisationTab, model);
+				if (tab == ProfilConstants.DashboardTab.FavLoc )
+					return PartialView(MVC.Dashboard.Shared.Views._LocalisationTab, model.FavoriteLocalisations);
+				else if(tab == ProfilConstants.DashboardTab.AddedLoc)
+					return PartialView(MVC.Dashboard.Shared.Views._LocalisationTab, model.AddedLocalisations);
 				else
 					return null;
 			}
@@ -297,16 +299,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			// Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
 			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
 			return View(model);
-		}
-
-		[ChildActionOnly]
-		public virtual ActionResult ProfilMenu(int memberId, int type, bool isPrivate = true)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var member = mRepo.Get(memberId);
-
-			return PartialView(MVC.Dashboard.Profil.Views._ProfilMenu, new ProfilMenuModel { Member = member, MenuItem = type, IsPrivate = isPrivate });
 		}
 	}
 }

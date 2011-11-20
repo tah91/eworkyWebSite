@@ -141,8 +141,7 @@ table tr.row-alternate{background-color:#E4E4E4}
 .titleBlue:after{border-color:#5DAFDE transparent}
 .titleRed{background-color:#D35758}
 .titleRed:after{border-color:#D35758 transparent}
-.generalTextContainer{padding:10px}
-.generalTextContent{width:74%;padding-left:10px}
+.generalTextContent{width:72%}
 .generalTextContent p{padding-bottom:25px}
 .generalTextContent ul{margin:10px 30px}
 .generalTextContent li{list-style:disc;margin-bottom:10px}
@@ -177,7 +176,7 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .acc_container,.toogle_container{margin-bottom:5px;padding:0;overflow:hidden;clear:both;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
 .acc_container .block,.toogle_container .block{padding:0 10px}
 .detailContent{margin-top:10px;border:1px solid #CCC;background-color:whiteSmoke;box-shadow:2px 5px 10px #DDD}
-.blockContainer{padding:20px;line-height:1.6}
+.blockContainer{padding:10px;line-height:1.6}
 .dashedRight{border-right:1px dashed #CCC}
 .dashedLeft{border-left:1px dashed #CCC}
 .contentBlock{padding:10px;border:1px solid #CCC;margin:10px 0;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD}
@@ -240,8 +239,7 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .cross:hover{background-image:url('images/cross.png');background-position:0 -62px;width:12px;height:12px;background-repeat:no-repeat}
 .ie7 .inline-block{float:left;display:block}
 .ie7 .halfContainer{height:36px}
-.searchFormBlockLeft{margin:10px}
-.searchFormBlock{padding:10px;width:24.5%}
+.searchFormBlock{width:23.5%}
 .ie7 .searchFormBlock{padding:8px}
 .resultDiv{width:72.5%}
 .margin0important{margin:0!important}
@@ -259,7 +257,19 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .li_Sector{width:266px}
 .li_MinimalPeriod{width:307px}
 .li_AllInclusive{width:271px}
-.leftMenu a{display:block;text-decoration:none}
-.leftMenu li{margin:3px 0;padding:5px 10px}
-.leftMenu li:hover{background:whitesmoke}
-.leftMenu .selected{font-weight:bold;border:1px solid #5dafde}
+.horizontalMenu{text-align:center}
+.horizontalMenu a,.verticalMenu a{text-decoration:none;display:block;font-weight:bold;color:#aaa}
+.horizontalMenu ul{width:100%;display:table;table-layout:fixed}
+.horizontalMenu li:first-child{-moz-border-top-left-radius:3px;-webkit-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-bottom-left-radius:3px;-webkit-border-bottom-left-radius:3px;border-bottom-left-radius:3px}
+.horizontalMenu li:last-child{-moz-border-top-right-radius:3px;-webkit-border-top-right-radius:3px;border-top-right-radius:3px;-moz-border-bottom-right-radius:3px;-webkit-border-bottom-right-radius:3px;border-bottom-right-radius:3px}
+.horizontalMenu li{display:table-cell;vertical-align:middle;height:20px;padding:5px;border:1px solid rgba(0,0,0,0.1);background-image:-webkit-linear-gradient(top,#f0f0f0,#f8f8f8);background-image:-moz-linear-gradient(top,#f0f0f0,#f8f8f8);background-image:linear-gradient(top,#f0f0f0,#f8f8f8)}
+.horizontalMenu li:hover{background-image:-webkit-linear-gradient(top,whitesmoke,#f8f8f8);background-image:-moz-linear-gradient(top,whitesmoke,#f8f8f8);background-image:linear-gradient(top,whitesmoke,#f8f8f8)}
+.horizontalMenu li.selected{border-bottom:4px solid #5dafde;background-image:-webkit-linear-gradient(top,whitesmoke,#f8f8f8);background-image:-moz-linear-gradient(top,whitesmoke,#f8f8f8);background-image:linear-gradient(top,whitesmoke,#f8f8f8)}
+.horizontalMenu li.selected a{color:Gray}
+.verticalMenu ul{width:100%}
+.verticalMenu li{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;vertical-align:middle;height:20px;padding:5px 10px;margin:10px 0;border:1px solid white}
+.verticalMenu li:first-child{margin-top:0}
+.verticalMenu li:last-child{margin-bottom:0}
+.verticalMenu li:hover{border:1px solid rgba(0,0,0,0.1);background-image:-webkit-linear-gradient(top,whitesmoke,#f8f8f8);background-image:-moz-linear-gradient(top,whitesmoke,#f8f8f8);background-image:linear-gradient(top,whitesmoke,#f8f8f8)}
+.verticalMenu li.selected{border:1px solid rgba(0,0,0,0.1);border-left:4px solid #5dafde;background-image:-webkit-linear-gradient(top,whitesmoke,#f8f8f8);background-image:-moz-linear-gradient(top,whitesmoke,#f8f8f8);background-image:linear-gradient(top,whitesmoke,#f8f8f8)}
+.verticalMenu li.selected a{color:Gray}

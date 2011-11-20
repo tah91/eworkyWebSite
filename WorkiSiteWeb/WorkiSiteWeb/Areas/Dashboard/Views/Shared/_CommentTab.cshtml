@@ -1,0 +1,14 @@
+﻿@model PagingList<Comment>
+
+@{
+	var a_class = ViewData.ContainsKey(ProfilConstants.TabId) ? (string)ViewData[ProfilConstants.TabId] : "";
+	var pageUrl = ViewData.ContainsKey(ProfilConstants.PageUrl) ? (Func<int, string>)ViewData[ProfilConstants.PageUrl] : null;
+}
+
+@foreach (var com in Model.List.OrderByDescending(x => x.ID))
+{
+	@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
+}
+<div class="pager @(a_class)">
+    @Html.PageLinks(Model.PagingInfo, pageUrl, a_class)
+</div>

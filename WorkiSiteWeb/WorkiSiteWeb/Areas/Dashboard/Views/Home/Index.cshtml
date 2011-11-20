@@ -1,5 +1,25 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@section HeadContent
+{
+	<title>Accueil</title>
 }
 
-<h2>Index</h2>
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Home, MVC.Dashboard.Home.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Community, MVC.Dashboard.Community.Places())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Historic, MVC.Dashboard.Historic.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Profil, MVC.Dashboard.Profil.Edit())} 
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left">
+
+	</div>
+
+	<div class="blockContainer float-left">
+		content
+	</div>
+	<div class="clear">
+	</div>
+</div>

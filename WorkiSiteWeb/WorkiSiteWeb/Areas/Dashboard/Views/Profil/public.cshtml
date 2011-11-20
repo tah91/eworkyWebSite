@@ -13,9 +13,9 @@
 @RazorHelpers.TitleDiv(title, "Blue")
 
 <div class="detailContent">
-    @Html.Partial(MVC.Dashboard.Profil.Views._ProfilMenu,Model.Member)
+    @Html.Partial(MVC.Dashboard.Profil.Views._ProfilSummary,Model.Member)
 
-    <div class="profilDetailRight dashedLeft blockContainer float-right">
+    <div class="profilDetailRight blockContainer float-right">
         <div class="profilLocalisations contentBlock">
             <ul class="tabs">
                 <li><a href="#favoritesTab" class="bold">@Worki.Resources.Views.Profile.ProfileString.Favorite</a></li>
@@ -25,8 +25,8 @@
                 <div id="favoritesTab" class="tab_content localisationsTagContainer">
 					@if(Model.FavoriteLocalisations.List.Count != 0)
 					{
-						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.FavLoc;
-						@Html.Partial(MVC.Dashboard.Profil.Views._LocalisationTab)
+						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.FavLoc.ToString();
+						@Html.Partial(MVC.Dashboard.Shared.Views._LocalisationTab, Model.FavoriteLocalisations)
 					}
                     else
                     {
@@ -36,8 +36,8 @@
                 <div id="addedLocalisationTab" class="tab_content localisationsTagContainer visuallyhidden">
 					@if (Model.AddedLocalisations.List.Count != 0)
                     {
-						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.AddedLoc;
-						@Html.Partial(MVC.Dashboard.Profil.Views._LocalisationTab)
+						ViewData[ProfilConstants.TabId] = ProfilConstants.DashboardTab.AddedLoc.ToString();
+						@Html.Partial(MVC.Dashboard.Shared.Views._LocalisationTab, Model.AddedLocalisations)
                     }
                     else
                     {

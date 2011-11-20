@@ -7,12 +7,24 @@
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Profile.ProfileString.MyProfile, "Blue")
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Home, MVC.Dashboard.Home.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Community, MVC.Dashboard.Community.Places())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Historic, MVC.Dashboard.Historic.Index())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Profil, MVC.Dashboard.Profil.Edit())} 
+	})
 
 <div class="detailContent">
-	@{Html.RenderAction(MVC.Dashboard.Profil.ProfilMenu(Model.Member.MemberId, (int)ProfilConstants.ProfilItem.Edit));}
+	<div class="blockContainer float-left profilDetailLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditProfil, MVC.Dashboard.Profil.Edit())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPassword, MVC.Dashboard.Profil.ChangePassword())} 
+		})
+	</div>
 
-    <div class="profilDetailRight dashedLeft blockContainer float-right">
+    <div class="profilDetailRight blockContainer float-right">
         @using (Html.BeginForm(MVC.Dashboard.Profil.ActionNames.Edit, MVC.Dashboard.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
         {
             @Html.AntiForgeryToken()

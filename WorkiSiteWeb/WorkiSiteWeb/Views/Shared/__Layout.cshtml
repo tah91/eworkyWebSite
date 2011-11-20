@@ -140,9 +140,21 @@
 	</script>
 	}
     <script type="text/javascript">
-        require.ready(function () {
-            $('.informationContainer').delay(8000).slideUp();
-        });
+    	require.ready(function () {
+    		$('.informationContainer').delay(8000).slideUp();
+    		var count = $('.blockContainer').size();
+    		if (count > 1) {
+    			var firstHeight = $('.blockContainer').first().height();
+    			var lastHeight = $('.blockContainer').last().height();
+    			if (firstHeight > lastHeight) {
+    				$('.blockContainer').first().addClass('dashedRight');
+    			}
+    			else {
+    				$('.blockContainer').last().addClass('dashedLeft');
+    			}
+    		}
+    	});
+
 	</script>
       <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->

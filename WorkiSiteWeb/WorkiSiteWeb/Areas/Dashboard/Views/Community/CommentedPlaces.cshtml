@@ -1,0 +1,43 @@
+﻿@model PagingList<Comment>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.CommentedPlaces)</title>
+	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Home, MVC.Dashboard.Home.Index())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Community, MVC.Dashboard.Community.Places())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Historic, MVC.Dashboard.Historic.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Profil, MVC.Dashboard.Profil.Edit())} 
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left profilDetailLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Dashboard.Community.Places())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.FavoritePlaces, MVC.Dashboard.Community.FavoritePlaces())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddedPlaces, MVC.Dashboard.Community.AddedPlaces())},
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CommentedPlaces, MVC.Dashboard.Community.CommentedPlaces())} 
+		})
+	</div>
+
+	<div class="blockContainer float-left profilDetailRight">
+		<div class="contentBlock">
+			@if (Model.List.Count != 0)
+            {
+				@Html.Partial(MVC.Dashboard.Shared.Views._CommentTab)
+            }
+            else
+            {
+            <span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))</span>
+            }
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

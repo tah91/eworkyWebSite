@@ -208,7 +208,7 @@
 
 .slides_container div.slide 
 {
-    width:450px;
+    width:460px;
     height:310px;
 	display:block;
 }
@@ -219,7 +219,7 @@
 	bottom:0;
 	left:0;
 	height:40px;
-	width:430px;
+	width:440px;
 	padding:10px;
 	background:#4E5A68;
 	opacity: 0.8;

@@ -49,7 +49,11 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class AdminClass {
         public readonly string Name = "Admin";
+        public Worki.Web.Areas.Admin.Controllers.ActivityController Activity = new Worki.Web.Areas.Admin.Controllers.T4MVC_ActivityController();
         public Worki.Web.Areas.Admin.Controllers.AdminController Admin = new Worki.Web.Areas.Admin.Controllers.T4MVC_AdminController();
+        public Worki.Web.Areas.Admin.Controllers.MemberController Member = new Worki.Web.Areas.Admin.Controllers.T4MVC_MemberController();
+        public Worki.Web.Areas.Admin.Controllers.ModerationController Moderation = new Worki.Web.Areas.Admin.Controllers.T4MVC_ModerationController();
+        public Worki.Web.Areas.Admin.Controllers.SheetController Sheet = new Worki.Web.Areas.Admin.Controllers.T4MVC_SheetController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -61,6 +65,8 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class DashboardClass {
         public readonly string Name = "Dashboard";
+        public Worki.Web.Areas.Dashboard.Controllers.CommunityController Community = new Worki.Web.Areas.Dashboard.Controllers.T4MVC_CommunityController();
+        public Worki.Web.Areas.Dashboard.Controllers.HistoricController Historic = new Worki.Web.Areas.Dashboard.Controllers.T4MVC_HistoricController();
         public Worki.Web.Areas.Dashboard.Controllers.HomeController Home = new Worki.Web.Areas.Dashboard.Controllers.T4MVC_HomeController();
         public Worki.Web.Areas.Dashboard.Controllers.ProfilController Profil = new Worki.Web.Areas.Dashboard.Controllers.T4MVC_ProfilController();
         public T4MVC.Dashboard.SharedController Shared = new T4MVC.Dashboard.SharedController();
@@ -984,11 +990,6 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult ChangeCulture() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ChangeCulture);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult AboutMenu() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.AboutMenu);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Home; } }
@@ -1013,7 +1014,6 @@ namespace Worki.Web.Controllers {
             public readonly string Legal = "mentions-legales";
             public readonly string ChangeCulture = "ChangeCulture";
             public readonly string AddSpace = "ajouter-espace";
-            public readonly string AboutMenu = "AboutMenu";
         }
 
 
@@ -1103,12 +1103,6 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult AddSpace() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddSpace);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult AboutMenu(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AboutMenu);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -1976,19 +1970,71 @@ namespace T4MVC {
             public readonly string @__Layout = "~/Views/Shared/__Layout.cshtml";
             public readonly string _AddToFavorite = "~/Views/Shared/_AddToFavorite.cshtml";
             public readonly string _CultureSwitchControl = "~/Views/Shared/_CultureSwitchControl.cshtml";
+            public readonly string _HorizontalMenu = "~/Views/Shared/_HorizontalMenu.cshtml";
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";
             public readonly string _LocalisationSingleComment = "~/Views/Shared/_LocalisationSingleComment.cshtml";
             public readonly string _LogOnUserControl = "~/Views/Shared/_LogOnUserControl.cshtml";
-            public readonly string _MainMenu = "~/Views/Shared/_MainMenu.cshtml";
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";
             public readonly string _MetaDataHeader = "~/Views/Shared/_MetaDataHeader.cshtml";
             public readonly string _PictureContainer = "~/Views/Shared/_PictureContainer.cshtml";
             public readonly string _UploadGalleryScript = "~/Views/Shared/_UploadGalleryScript.cshtml";
+            public readonly string _VerticalMenu = "~/Views/Shared/_VerticalMenu.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
         }
     }
 
+}
+
+namespace Worki.Web.Areas.Admin.Controllers {
+    public partial class ActivityController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActivityController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected ActivityController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActivityController Actions { get { return MVC.Admin.Activity; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Admin";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Activity";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_ActivityController: Worki.Web.Areas.Admin.Controllers.ActivityController {
+        public T4MVC_ActivityController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
 }
 
 namespace Worki.Web.Areas.Admin.Controllers {
@@ -2455,6 +2501,159 @@ namespace Worki.Web.Areas.Admin.Controllers {
     }
 }
 
+namespace Worki.Web.Areas.Admin.Controllers {
+    public partial class MemberController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public MemberController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected MemberController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public MemberController Actions { get { return MVC.Admin.Member; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Admin";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Member";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_MemberController: Worki.Web.Areas.Admin.Controllers.MemberController {
+        public T4MVC_MemberController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Admin.Controllers {
+    public partial class ModerationController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ModerationController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected ModerationController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ModerationController Actions { get { return MVC.Admin.Moderation; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Admin";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Moderation";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_ModerationController: Worki.Web.Areas.Admin.Controllers.ModerationController {
+        public T4MVC_ModerationController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Admin.Controllers {
+    public partial class SheetController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public SheetController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected SheetController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public SheetController Actions { get { return MVC.Admin.Sheet; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Admin";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Sheet";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_SheetController: Worki.Web.Areas.Admin.Controllers.SheetController {
+        public T4MVC_SheetController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
+}
+
 namespace T4MVC.Admin {
     public class SharedController {
 
@@ -2554,6 +2753,148 @@ namespace T4MVC.Api {
 }
 
 namespace Worki.Web.Areas.Dashboard.Controllers {
+    public partial class CommunityController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected CommunityController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Places() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Places);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FavoritePlaces() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FavoritePlaces);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AddedPlaces() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AddedPlaces);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult CommentedPlaces() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.CommentedPlaces);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public CommunityController Actions { get { return MVC.Dashboard.Community; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Dashboard";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Community";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Places = "Places";
+            public readonly string FavoritePlaces = "FavoritePlaces";
+            public readonly string AddedPlaces = "AddedPlaces";
+            public readonly string CommentedPlaces = "CommentedPlaces";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Places = "~/Areas/Dashboard/Views/Community/Places.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_CommunityController: Worki.Web.Areas.Dashboard.Controllers.CommunityController {
+        public T4MVC_CommunityController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Places(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Places);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FavoritePlaces(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FavoritePlaces);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddedPlaces(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddedPlaces);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CommentedPlaces(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CommentedPlaces);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Dashboard.Controllers {
+    public partial class HistoricController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HistoricController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected HistoricController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HistoricController Actions { get { return MVC.Dashboard.Historic; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Dashboard";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Historic";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_HistoricController: Worki.Web.Areas.Dashboard.Controllers.HistoricController {
+        public T4MVC_HistoricController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Dashboard.Controllers {
     public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController() { }
@@ -2589,6 +2930,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string Index = "~/Areas/Dashboard/Views/Home/Index.cshtml";
         }
     }
 
@@ -2635,11 +2977,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public System.Web.Mvc.PartialViewResult RemoveFromFavorite() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult ProfilMenu() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.ProfilMenu);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProfilController Actions { get { return MVC.Dashboard.Profil; } }
@@ -2659,7 +2996,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             public readonly string AddToFavorite = "AddToFavorite";
             public readonly string RemoveFromFavorite = "RemoveFromFavorite";
             public readonly string ChangePassword = "changer-mdp";
-            public readonly string ProfilMenu = "ProfilMenu";
         }
 
 
@@ -2668,9 +3004,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string _CommentTab = "~/Areas/Dashboard/Views/Profil/_CommentTab.cshtml";
-            public readonly string _LocalisationTab = "~/Areas/Dashboard/Views/Profil/_LocalisationTab.cshtml";
-            public readonly string _ProfilMenu = "~/Areas/Dashboard/Views/Profil/_ProfilMenu.cshtml";
+            public readonly string _ProfilSummary = "~/Areas/Dashboard/Views/Profil/_ProfilSummary.cshtml";
             public readonly string changer_mdp = "~/Areas/Dashboard/Views/Profil/changer-mdp.cshtml";
             public readonly string editer = "~/Areas/Dashboard/Views/Profil/editer.cshtml";
             public readonly string @public = "~/Areas/Dashboard/Views/Profil/public.cshtml";
@@ -2730,14 +3064,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ProfilMenu(int memberId, int type, bool isPrivate) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ProfilMenu);
-            callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("type", type);
-            callInfo.RouteValueDictionary.Add("isPrivate", isPrivate);
-            return callInfo;
-        }
-
     }
 }
 
@@ -2749,6 +3075,8 @@ namespace T4MVC.Dashboard {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _CommentTab = "~/Areas/Dashboard/Views/Shared/_CommentTab.cshtml";
+            public readonly string _LocalisationTab = "~/Areas/Dashboard/Views/Shared/_LocalisationTab.cshtml";
         }
     }
 
