@@ -24,6 +24,7 @@ using Worki.Service;
 using Worki.SiteMap;
 using Worki.Web.Helpers;
 using Worki.Web.ModelBinder;
+using System.Configuration;
 
 namespace Worki.Web
 {
@@ -397,6 +398,15 @@ namespace Worki.Web
                 context.Complete();
                 return;
             }
+			if (WebHelper.IsDebug())
+			{
+				var email = ConfigurationManager.AppSettings["TestEmail"];
+				if (!string.IsNullOrEmpty(email))
+				{
+					MiscHelpers.EmailConstants.ContactMail = email;
+					MiscHelpers.EmailConstants.BookingMail = email;
+				}
+			}
             _AdminInitialized = true;
         }
 

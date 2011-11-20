@@ -20,8 +20,8 @@ namespace Worki.Infrastructure.Helpers
 		{
 			public const string ContactDisplayName = "eWorky Team";
 			public const string WebsiteAddress = "www.eworky.com";
-			public const string ContactMail = "contact@eworky.com";
-			public const string BookingMail = "team@eworky.com";
+			public static string ContactMail = "contact@eworky.com";
+			public static string BookingMail = "team@eworky.com";
             public const string Tel = "01 77 17 04 21";
 		}
 
