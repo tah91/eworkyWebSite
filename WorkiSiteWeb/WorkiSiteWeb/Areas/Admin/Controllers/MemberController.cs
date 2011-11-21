@@ -81,50 +81,35 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="collection">form containg the list of ids to push to admin role</param>
         /// <returns>Redirect to return url</returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult ChangeUserRole(FormCollection collection, string returnUrl)
+        public virtual ActionResult ChangeUserRole(int id)
         {
-            if (ModelState.IsValid)
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.Get(id);
+            try
             {
-                var context = ModelFactory.GetUnitOfWork();
-                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                try
+                if (member == null)
                 {
-                    var listCollection = collection.AllKeys;
-                    foreach (var username in listCollection)
-                    {
-                        var roleCheck = collection[username].ToLower();
-                        var member = mRepo.GetMember(username);
-                        if (member == null)
-                            continue;
-                        var userInRole = Roles.IsUserInRole(username, MiscHelpers.AdminConstants.AdminRole);
-                        if (roleCheck.Contains("true"))
-                        {
-                            if (!userInRole)
-                            {
-                                Roles.AddUserToRole(username, MiscHelpers.AdminConstants.AdminRole);
-                            }
-                        }
-                        else
-                        {
-                            if (userInRole)
-                            {
-                                Roles.RemoveUserFromRole(username, MiscHelpers.AdminConstants.AdminRole);
-                            }
-                        }
-                    }
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
+                    return RedirectToAction(MVC.Admin.Member.IndexUser());
                 }
-                catch (Exception e)
+
+                if (!Roles.IsUserInRole(member.Email, MiscHelpers.AdminConstants.AdminRole))
                 {
-                    _Logger.Error(e.Message);
+                    Roles.AddUserToRole(member.Email, MiscHelpers.AdminConstants.AdminRole);
                 }
+                else
+                {
+                    Roles.RemoveUserFromRole(member.Email, MiscHelpers.AdminConstants.AdminRole);
+                }
+            }
+            catch (Exception e)
+            {
+                _Logger.Error(e.Message);
             }
 
             TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.RoleHaveBeenSet;
-
-            // Redirection
-            return Redirect(returnUrl);
+            return RedirectToAction(MVC.Admin.Member.IndexUser());
         }
 
 

@@ -268,7 +268,7 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Importer des lieux.
+        ///   Looks up a localized string similar to Importer.
         /// </summary>
         public static string ImportLocalisations {
             get {

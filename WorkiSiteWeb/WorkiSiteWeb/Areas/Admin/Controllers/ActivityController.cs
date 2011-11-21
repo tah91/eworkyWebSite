@@ -52,6 +52,30 @@ namespace Worki.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
+        public virtual ActionResult OnOffline(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var wRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+            var welcomeppl = wRepo.Get(id);
+            try
+            {
+                if (welcomeppl == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.WelcomePeopleNotFound;
+                    return RedirectToAction(MVC.Admin.Activity.IndexWelcomePeople());
+                }
+                welcomeppl.Online = !welcomeppl.Online;
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("OnOffline", ex);
+            }
+
+            return RedirectToAction(MVC.Admin.Activity.IndexWelcomePeople());
+        }
+
         /// <summary>
         /// Prepares a web page containing the details of a WelcomePeople
         /// </summary>

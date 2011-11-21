@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Activity" xml:space="preserve">
-    <value>Animations</value>
+    <value>Vie du site</value>
   </data>
   <data name="AddedPlaces" xml:space="preserve">
     <value>Espaces ajoutés</value>
@@ -157,7 +157,7 @@
     <value>eWorkers</value>
   </data>
   <data name="Moderation" xml:space="preserve">
-    <value>Espace Modérateur</value>
+    <value>Modération</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Actualités</value>
@@ -177,11 +177,14 @@
   <data name="Quoations" xml:space="preserve">
     <value>Demandes de devis</value>
   </data>
+  <data name="RefreshBlog" xml:space="preserve">
+    <value>Rafraichir blog</value>
+  </data>
   <data name="Rentals" xml:space="preserve">
     <value>Annonces</value>
   </data>
   <data name="Sheet" xml:space="preserve">
-    <value>Annonces &amp; Lieux</value>
+    <value>Fiches</value>
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Abonnements</value>
