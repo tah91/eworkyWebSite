@@ -9,7 +9,7 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.IndexQuotation, "Blue")
 <div class="contentAdmin">
     <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Admin.Views._AdminMenu)
+        @Html.Partial(MVC.Admin.Shared.Views._AdminMenu)
     </div>
     <div class="adminPanel">
         <table>
@@ -58,7 +58,7 @@
         <tfoot> </tfoot>
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Admin.ActionNames.IndexQuotation, MVC.Admin.Admin.Name, new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Moderation.ActionNames.IndexQuotation, MVC.Admin.Moderation.Name, new { page = x }))
         </div>
         <div class="clear">
         </div>

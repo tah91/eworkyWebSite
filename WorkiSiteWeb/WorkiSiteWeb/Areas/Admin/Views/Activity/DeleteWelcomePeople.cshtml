@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.Press
+﻿@model Worki.Data.Models.WelcomePeople
 
 @section HeadContent{
     <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
@@ -9,12 +9,12 @@
 </h2>
 <div>
     <p>
-        @Worki.Resources.Views.Admin.AdminString.ConfirmDeletePress
+        @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteWelcome
     </p>
 </div>
-@using (Html.BeginForm(MVC.Admin.Admin.ActionNames.DeletePress, MVC.Admin.Admin.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
-{
+@using (Html.BeginForm(MVC.Admin.Activity.ActionNames.DeleteWelcomePeople, MVC.Admin.Activity.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
+{ 
 	@Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.Id)
     <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
 } 

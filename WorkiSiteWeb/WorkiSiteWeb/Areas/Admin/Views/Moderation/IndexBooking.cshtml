@@ -1,0 +1,89 @@
+﻿@model Worki.Data.Models.PagingList<MemberBooking>
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.IndexBooking, "Blue")
+<div class="contentAdmin">
+    <div id="adminMenu"> 
+        @Html.Partial(MVC.Admin.Shared.Views._AdminMenu)
+    </div>
+    <div class="adminPanel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
+                    </th> 
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.EmailAddress
+                    </th> 
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Booking.Booking.Handled
+                    </th>
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Booking.Booking.Price
+                    </th>
+					<th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Booking.Booking.Confirmed
+                    </th>
+                </tr>
+            </thead>
+        <tbody>
+        @foreach (var item in Model.List)
+        {
+            <tr>
+                <td align="center">
+                    @Html.ActionLink(item.Id.ToString(), MVC.Booking.Details(item.Id, item.MemberId, item.OfferId, item.LocalisationId))
+                </td>
+                <td align="center">
+                    @Html.ActionLink(item.Member.Email,MVC.Dashboard.Profil.Public(item.MemberId))
+                </td>
+				<td align="center">
+					@if (item.Handled)
+					{
+						<text>OK</text>
+					}
+					else
+					{ 
+						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.HandleIt, MVC.Booking.HandleBooking(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+					}
+                </td>
+				<td align="center">
+					@Html.ActionLink(item.Price.ToString(), MVC.Booking.Edit(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                </td>
+				<td align="center">
+					@if (item.Offer.NeedQuotation())
+					{
+						<text>Devis</text>
+					}
+					else if (item.Confirmed)
+					{
+						<text>OK</text>
+					}
+                    else if (item.Refused)
+                    {
+                        <text>KO</text>
+                    }
+                    else
+                    { 
+						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.ConfirmIt, MVC.Booking.ConfirmBooking(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                        <text>&nbsp;&nbsp; | &nbsp;&nbsp;</text>
+                        @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.RefuseIt, MVC.Booking.RefuseBooking(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))                                                                                                                                                                                    
+					}
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Moderation.ActionNames.IndexBooking, MVC.Admin.Moderation.Name, new { page = x }))
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>

@@ -78,6 +78,7 @@ namespace Worki.Infrastructure.Helpers
 			public const int MinRequiredPasswordLength = 6;
 			public const int UnselectedItem = -1;
 			public const int OneMo = 1048576;
+            public const int PageSize = 25;
 		}
 
 		public static class TempDataConstants
