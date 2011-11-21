@@ -1,0 +1,75 @@
+﻿@model Worki.Data.Models.WelcomePeopleFormViewModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.CreateWelcomePeople) </title>
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.CreateWelcomePeople, "Blue")
+
+<div class="detailContent">
+    <div class="blockContainer">
+        @using (Html.BeginForm(MVC.Admin.Activity.ActionNames.CreateWelcomePeople, MVC.Admin.Activity.Name, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="contentBlock">
+            @Html.AntiForgeryToken()
+            <table>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Email
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Email)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.ExactLoc
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.LocalisationName)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.Description
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.WelcomePeople.Description)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @string.Format("{0} (450 * 310)", Worki.Resources.Views.Admin.AdminString.LocalisationPicture)
+                        </div>
+                    </td>
+                    <td>
+                        <input type="file" name="LocalisationPicture" accept="image/*"/>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <div class="float-right">
+                <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
+            </div>
+            <div class="clear"></div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.Activity.IndexWelcomePeople())
+</div>

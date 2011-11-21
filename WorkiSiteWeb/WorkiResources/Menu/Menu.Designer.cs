@@ -61,6 +61,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Animations.
+        /// </summary>
+        public static string Activity {
+            get {
+                return ResourceManager.GetString("Activity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espaces ajoutés.
         /// </summary>
         public static string AddedPlaces {
@@ -151,6 +160,24 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eWorkers.
+        /// </summary>
+        public static string Members {
+            get {
+                return ResourceManager.GetString("Members", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Espace Modérateur.
+        /// </summary>
+        public static string Moderation {
+            get {
+                return ResourceManager.GetString("Moderation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actualités.
         /// </summary>
         public static string News {
@@ -201,6 +228,15 @@ namespace Worki.Resources.Menu {
         public static string Rentals {
             get {
                 return ResourceManager.GetString("Rentals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annonces &amp; Lieux.
+        /// </summary>
+        public static string Sheet {
+            get {
+                return ResourceManager.GetString("Sheet", resourceCulture);
             }
         }
         

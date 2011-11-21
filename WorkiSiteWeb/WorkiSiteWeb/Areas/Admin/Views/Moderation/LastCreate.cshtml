@@ -1,0 +1,71 @@
+﻿@model Worki.Data.Models.PagingList<MemberEdition>
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())}
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left adminLeftMenu">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.StatTitle, MVC.Admin.Moderation.Stat())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Bookings, MVC.Admin.Moderation.IndexBooking())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Quotations, MVC.Admin.Moderation.IndexQuotation())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastModif, MVC.Admin.Moderation.Last100Modif())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastCreate, MVC.Admin.Moderation.LastCreate())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.ImportLocalisations, MVC.Admin.Moderation.IndexImport())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+		<table>
+            <tr>
+                <th>
+                    @Worki.Resources.Views.Admin.StatString.EworkerName
+                </th>
+                <th>
+                    @Worki.Resources.Views.Admin.StatString.PlaceName
+                </th>
+                <th>
+                    @Worki.Resources.Views.Admin.StatString.Date
+                </th>
+                <th>
+                    @Worki.Resources.Views.Admin.StatString.Status
+                </th>
+            </tr>
+            @foreach (var item in Model.List)
+            { 
+            <tr>
+                <td align="right">
+                    <a href="@Url.Action(MVC.Dashboard.Profil.Public(item.MemberId))">@item.Member.Email</a>
+                </td>
+                <td align="right">
+                    <a href="@item.Localisation.GetDetailFullUrl(Url)">@item.Localisation.Name</a>
+                </td>
+                <td align="right">
+                    @string.Format("{0:d/M/yyyy HH:mm:ss}", item.ModificationDate)
+                </td>
+                <td align="right">
+                    @Worki.Resources.Views.Admin.StatString.Create
+                </td>
+            </tr>
+            }
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Moderation.ActionNames.LastCreate, MVC.Admin.Moderation.Name, new { page = x }))
+        </div> 
+        <div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,57 @@
+﻿@model Worki.Data.Models.AdminImportViewModel 
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())}
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left adminLeftMenu">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.StatTitle, MVC.Admin.Moderation.Stat())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Bookings, MVC.Admin.Moderation.IndexBooking())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Quotations, MVC.Admin.Moderation.IndexQuotation())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastModif, MVC.Admin.Moderation.Last100Modif())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastCreate, MVC.Admin.Moderation.LastCreate())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.ImportLocalisations, MVC.Admin.Moderation.IndexImport())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+		@using (Html.BeginForm(MVC.Admin.Moderation.ActionNames.IndexImport, MVC.Admin.Moderation.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "adminForm" }))
+        {
+            @Html.AntiForgeryToken();
+            <div>
+                @Model.resultMessage
+            </div>
+            <div style="color:Red;">
+                @if (Model.localisationsAlreadyInDB != null && Model.localisationsAlreadyInDB.ToString() != "")
+                { 
+                    @Html.Raw(String.Format(Worki.Resources.Views.Admin.AdminString.AlreadyAdded, Model.localisationsAlreadyInDB))
+                }
+            </div>
+            <div>
+                <input type="file" id="importCsv" name="importCsv"/>
+            </div>
+            <div>
+                <input type="checkbox" id="importCsvHeader" name="importCsvHeader" /> @Worki.Resources.Views.Admin.AdminString.FileGotHeader
+            </div>
+            <div>
+                @Html.SubmitButton("Import", Worki.Resources.Views.Admin.AdminString.Update)
+            </div>
+        } 
+        <div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>

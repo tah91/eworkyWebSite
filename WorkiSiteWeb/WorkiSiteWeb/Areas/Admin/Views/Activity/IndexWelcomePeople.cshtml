@@ -1,0 +1,82 @@
+﻿@model Worki.Data.Models.PagingList<WelcomePeople>
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())} 
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left adminLeftMenu">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Welcome, MVC.Admin.Activity.IndexWelcomePeople())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Press, MVC.Admin.Activity.IndexPress())} ,
+            new MenuItem{ Link= Html.ActionLink("Rafraichir blog", MVC.Admin.Activity.RefreshBlog())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+		@using (Html.BeginForm(MVC.Admin.Activity.ActionNames.WelcomePeopleLine, MVC.Admin.Activity.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+        { 
+        @Html.AntiForgeryToken();
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ID
+                    </th> 
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Models.Contact.Contact.Email
+                    </th>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.OnOffLine
+                    </th>
+                    <th>
+                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Action
+                    </th>
+                </tr>
+            </thead>
+        <tbody>
+        @foreach (var item in Model.List)
+        {
+            <tr>
+                <td align="center">
+                    @item.Id
+                </td>
+                <td align="center">
+                    @item.Member.Username
+                </td>
+                <td align="center">
+                    @Html.CheckBox(item.Member.Username, item.Online)
+                </td>
+                <td align="center">
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.Activity.EditWelcomePeople(item.Id)) |
+                    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Activity.DeleteWelcomePeople(item.Id, ViewContext.HttpContext.Request.Url.PathAndQuery)) |
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Details, MVC.Admin.Activity.DetailWelcomePeople(item.Id))
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Activity.ActionNames.IndexWelcomePeople, MVC.Admin.Activity.Name, new { page = x }))
+        </div>
+        <div>
+            @Html.SubmitButton("Update", Worki.Resources.Views.Admin.AdminString.Update)
+        </div>
+        }
+        <div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>

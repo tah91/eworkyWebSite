@@ -151,10 +151,10 @@
     <value>Hôtel</value>
   </data>
   <data name="LastCreate" xml:space="preserve">
-    <value>Dernières créations</value>
+    <value>Créations</value>
   </data>
   <data name="LastModif" xml:space="preserve">
-    <value>Dernières modifications</value>
+    <value>Modifications</value>
   </data>
   <data name="NbByCountry" xml:space="preserve">
     <value>Total par pays</value>

@@ -1,0 +1,89 @@
+﻿@model Worki.Data.Models.PagingList<MemberAdminModel>
+           
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace)</title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())} 
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left adminLeftMenu">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+		@using (Html.BeginForm(MVC.Admin.Member.ActionNames.ChangeUserRole, MVC.Admin.Member.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+        { 
+        @Html.AntiForgeryToken();
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                       &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Name
+                    </th>
+                    <th>
+                       &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.EmailAddress
+                    </th>
+                    <th>
+                      &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ManagerRole
+                    </th>
+                    <th>
+                      &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Action
+                    </th>
+                    <th>
+                      &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Points
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.List)
+                { 
+                    <tr>
+                        <td align="right">
+                            @item.LastName
+                        </td>
+                        <td align="right">
+							@Html.ActionLink(item.UserName, MVC.Dashboard.Profil.Public(item.MemberId)) 
+                        </td>
+                        <td align="center">
+                            @Html.CheckBox(item.UserName, item.IsAdmin)
+                        </td>
+                       <td align="center">
+                            @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Member.DeleteUser(item.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                            @if (item.Locked)
+                            {
+                                <text>|</text> 
+                                @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Unlock, MVC.Admin.Member.UnlockUser(item.UserName))
+                            }
+                        </td>
+                        <td align="right">
+                            &nbsp;&nbsp;
+                            @item.Score
+                        </td>
+                    </tr>
+				} 
+            </tbody>
+            <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("IndexUser", new { page = x }))
+        </div> 
+        <div>
+            @Html.SubmitButton("Update", Worki.Resources.Views.Admin.AdminString.UpdateRole)
+        </div>
+        }
+	</div>
+	<div class="clear"></div>
+</div>
