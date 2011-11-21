@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace) </title>
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -16,7 +16,7 @@
 
 <div class="detailContent">
 
-	<div class="blockContainer float-left">
+	<div class="blockContainer float-left adminLeftMenu">
     @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.StatTitle, MVC.Admin.Moderation.Stat())} ,

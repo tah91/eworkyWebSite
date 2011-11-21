@@ -21,3 +21,4 @@ li#emailSubMenu{list-style-image:url(images/e-mail.png)}
 .adminPanel table tr:hover td{background-color:#FFF;color:Blue}
 .stat td{width:60px}
 .stat tr td:first-child{width:80px}
+.adminLeftMenu{width:15%}
