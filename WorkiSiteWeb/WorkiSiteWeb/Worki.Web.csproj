@@ -242,6 +242,10 @@
     <Compile Include="Areas\Api\Routing\PathDoesNotStartWith.cs" />
     <Compile Include="Areas\Api\Routing\PathStartsWith.cs" />
     <Compile Include="Areas\Api\Routing\RestRoutes.cs" />
+    <Compile Include="Areas\Backoffice\BackofficeAreaRegistration.cs" />
+    <Compile Include="Areas\Backoffice\Controllers\ClientController.cs" />
+    <Compile Include="Areas\Backoffice\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Backoffice\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\CommunityController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HistoricController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
@@ -606,6 +610,7 @@
     <Content Include="Areas\Dashboard\Views\Historic\Booking.cshtml" />
     <Content Include="Areas\Dashboard\Views\Historic\Quotation.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_DashboardMenu.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Web.config" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -795,6 +800,8 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Shared\" />
+    <Folder Include="Areas\Backoffice\Models\" />
+    <Folder Include="Areas\Backoffice\Views\Shared\" />
     <Folder Include="Areas\Dashboard\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
