@@ -6,13 +6,7 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
-	{ 
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
-		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())} 
-	})
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Member)
 
 <div class="detailContent">
 
@@ -58,7 +52,7 @@
 							@Html.ActionLink(item.UserName, MVC.Dashboard.Profil.Public(item.MemberId)) 
                         </td>
                         <td align="center">
-                            @Html.CheckBox(item.UserName, item.IsAdmin)
+                            @(!item.IsAdmin ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Member.ChangeUserRole(item.MemberId)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Member.ChangeUserRole(item.MemberId)))
                         </td>
                        <td align="center">
                             @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Member.DeleteUser(item.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))
@@ -79,9 +73,6 @@
         </table>
         <div class="pager">
             @Html.PageLinks(Model.PagingInfo, x => Url.Action("IndexUser", new { page = x }))
-        </div> 
-        <div>
-            @Html.SubmitButton("Update", Worki.Resources.Views.Admin.AdminString.UpdateRole)
         </div>
         }
 	</div>

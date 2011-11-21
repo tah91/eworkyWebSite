@@ -61,7 +61,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Animations.
+        ///   Looks up a localized string similar to Vie du site.
         /// </summary>
         public static string Activity {
             get {
@@ -169,7 +169,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Espace Modérateur.
+        ///   Looks up a localized string similar to Modération.
         /// </summary>
         public static string Moderation {
             get {
@@ -223,6 +223,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rafraichir blog.
+        /// </summary>
+        public static string RefreshBlog {
+            get {
+                return ResourceManager.GetString("RefreshBlog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annonces.
         /// </summary>
         public static string Rentals {
@@ -232,7 +241,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Annonces &amp; Lieux.
+        ///   Looks up a localized string similar to Fiches.
         /// </summary>
         public static string Sheet {
             get {

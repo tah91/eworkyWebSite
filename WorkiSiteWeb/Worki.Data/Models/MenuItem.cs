@@ -24,4 +24,12 @@ namespace Worki.Data.Models
         Historic,
         Profil
     }
+
+    public enum AdminMenu
+    {
+        Sheet,
+        Member,
+        Activity,
+        Moderation
+    }
 }

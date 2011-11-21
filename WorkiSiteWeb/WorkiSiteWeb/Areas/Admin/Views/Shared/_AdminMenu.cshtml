@@ -1,39 +1,9 @@
-﻿<ul class="adminSubMenu" >
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Workplace,MVC.Admin.Sheet.Index())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Admin.StatString.Eworkers, MVC.Admin.Member.IndexUser())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Welcome, MVC.Admin.Activity.IndexWelcomePeople())
-    </li>
-	<li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.ImportLocalisations, MVC.Admin.Moderation.IndexImport())
-    </li>
-	<li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Bookings, MVC.Admin.Moderation.IndexBooking())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Quotations, MVC.Admin.Moderation.IndexQuotation())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Rentals, MVC.Admin.Sheet.IndexRental())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Press, MVC.Admin.Activity.IndexPress())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Admin.StatString.StatTitle, MVC.Admin.Moderation.Stat())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastModif, MVC.Admin.Moderation.Last100Modif())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastCreate, MVC.Admin.Moderation.LastCreate())
-    </li>
-    <li class="bold"> 
-        @Html.ActionLink("Rafraichir blog", MVC.Admin.Activity.RefreshBlog())
-    </li>
-</ul>
+﻿@model AdminMenu
 
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{
+        new MenuItem{ Selected = Model == AdminMenu.Sheet, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Selected = Model == AdminMenu.Member, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Selected = Model == AdminMenu.Activity, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())} ,
+		new MenuItem{ Selected = Model == AdminMenu.Moderation, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())}
+	})

@@ -6,13 +6,7 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
-	{ 
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
-		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())} 
-	})
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Activity)
 
 <div class="detailContent">
 
@@ -21,11 +15,12 @@
 		{
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Welcome, MVC.Admin.Activity.IndexWelcomePeople())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Press, MVC.Admin.Activity.IndexPress())} ,
-            new MenuItem{ Link= Html.ActionLink("Rafraichir blog", MVC.Admin.Activity.RefreshBlog())}
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.RefreshBlog, MVC.Admin.Activity.RefreshBlog())}
 		})
 	</div>
 
 	<div class="blockContainer float-left adminPanel">
+        <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.CreateNewWelcomePeople, MVC.Admin.Activity.CreateWelcomePeople())</h3>
 		@using (Html.BeginForm(MVC.Admin.Activity.ActionNames.WelcomePeopleLine, MVC.Admin.Activity.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
         { 
         @Html.AntiForgeryToken();
@@ -39,7 +34,7 @@
                         &nbsp;&nbsp; @Worki.Resources.Models.Contact.Contact.Email
                     </th>
                     <th>
-                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.OnOffLine
+                        &nbsp;&nbsp; @Worki.Resources.Views.Localisation.LocalisationString.Online
                     </th>
                     <th>
                         &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Action
@@ -57,7 +52,7 @@
                     @item.Member.Username
                 </td>
                 <td align="center">
-                    @Html.CheckBox(item.Member.Username, item.Online)
+                    @(!item.Online ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Activity.OnOffline(item.Id)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Activity.OnOffline(item.Id)))
                 </td>
                 <td align="center">
                     @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Admin.Activity.EditWelcomePeople(item.Id)) |
@@ -71,9 +66,6 @@
         </table>
         <div class="pager">
             @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Activity.ActionNames.IndexWelcomePeople, MVC.Admin.Activity.Name, new { page = x }))
-        </div>
-        <div>
-            @Html.SubmitButton("Update", Worki.Resources.Views.Admin.AdminString.Update)
         </div>
         }
         <div class="clear"></div>

@@ -1,20 +1,41 @@
 ﻿@model Worki.Data.Models.WelcomePeople
 
-@section HeadContent{
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin)</title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-<h2>
-    @Worki.Resources.Views.Admin.AdminString.ConfirmDelete
-</h2>
-<div>
-    <p>
-        @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteWelcome
-    </p>
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Activity)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Welcome, MVC.Admin.Activity.IndexWelcomePeople())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Press, MVC.Admin.Activity.IndexPress())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.RefreshBlog, MVC.Admin.Activity.RefreshBlog())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminDetailBlock">
+        <div class="contentBlock">
+		<h2>
+            @Worki.Resources.Views.Admin.AdminString.ConfirmDelete
+        </h2>
+        <div>
+            <p>
+                @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteWelcome
+            </p>
+        </div>
+        @using (Html.BeginForm(MVC.Admin.Activity.ActionNames.DeleteWelcomePeople, MVC.Admin.Activity.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
+        { 
+	        @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
+        }
+        </div>
+	</div>
+	<div class="clear"></div>
 </div>
-@using (Html.BeginForm(MVC.Admin.Activity.ActionNames.DeleteWelcomePeople, MVC.Admin.Activity.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
-{ 
-	@Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Id)
-    <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
-} 

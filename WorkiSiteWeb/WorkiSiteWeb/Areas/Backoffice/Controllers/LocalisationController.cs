@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
-    public class LocalisationController : Controller
+    public partial class LocalisationController : Controller
     {
         //
         // GET: /Backoffice/Localisation/
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }

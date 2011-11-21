@@ -4,13 +4,24 @@
 {
     <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.CreateNewPress) </title>
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.CreateNewPress, "Blue") 
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Activity)
 
 <div class="detailContent">
-    <div class="blockContainer">
-        @using (Html.BeginForm(MVC.Admin.Activity.ActionNames.CreatePress, MVC.Admin.Activity.Name, null, FormMethod.Post, new { id = "DateForm" }))
+
+	<div class="blockContainer float-left">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Welcome, MVC.Admin.Activity.IndexWelcomePeople())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Press, MVC.Admin.Activity.IndexPress())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.RefreshBlog, MVC.Admin.Activity.RefreshBlog())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminDetailBlock">
+		@using (Html.BeginForm(MVC.Admin.Activity.ActionNames.CreatePress, MVC.Admin.Activity.Name, null, FormMethod.Post, new { id = "DateForm" }))
         {
             <div class="contentBlock">
             @Html.AntiForgeryToken()
@@ -70,11 +81,8 @@
             </div>
             <div class="clear"></div>
         }
-        </div>
-</div>
-
-<div>
-    @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.BackToList, MVC.Admin.Activity.IndexPress())
+	</div>
+	<div class="clear"></div>
 </div>
 
 @section ScriptContent

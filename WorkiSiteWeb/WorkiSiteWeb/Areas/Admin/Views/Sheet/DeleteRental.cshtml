@@ -4,18 +4,34 @@
     <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.Admin) </title>
 }
 
-<h2>
-    @Worki.Resources.Views.Admin.AdminString.ConfirmDelete
-</h2>
-<div>
-    <p>
-        @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteRental
-    </p>
-</div>
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Sheet)
 
-@using (Html.BeginForm(MVC.Admin.Sheet.ActionNames.DeleteRental, MVC.Admin.Sheet.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
-{
-	@Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Id)
-    <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
-}
+<div class="detailContent">
+
+	<div class="blockContainer float-left">
+     @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Workplace, MVC.Admin.Sheet.Index())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Rentals, MVC.Admin.Sheet.IndexRental())}
+		})
+	</div>
+
+	<div class="blockContainer float-left">
+		<h2>
+            @Worki.Resources.Views.Admin.AdminString.ConfirmDelete
+        </h2>
+        <div>
+            <p>
+                @Worki.Resources.Views.Admin.AdminString.ConfirmDeleteRental
+            </p>
+        </div>
+
+        @using (Html.BeginForm(MVC.Admin.Sheet.ActionNames.DeleteRental, MVC.Admin.Sheet.Name, null, FormMethod.Post, new { returnUrl = TempData["returnUrl"] }))
+        {
+	        @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            <input name="confirmButton" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Suppress" />
+        }
+	</div>
+	<div class="clear"></div>
+</div>
