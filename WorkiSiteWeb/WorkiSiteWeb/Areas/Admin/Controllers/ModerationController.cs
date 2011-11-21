@@ -64,7 +64,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
-            var modifications = lRepo.GetLatestModifications(100, EditionType.Edition).Skip(pageValue).Take(MiscHelpers.Constants.PageSize).ToList();
+            var modifications = lRepo.GetLatestModifications(100, EditionType.Edition).Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList();
             var viewModel = new PagingList<MemberEdition>()
             {
                 List = modifications,
@@ -83,7 +83,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
-            var modifications = lRepo.GetLatestModifications(100, EditionType.Creation).Skip(pageValue).Take(MiscHelpers.Constants.PageSize).ToList();
+            var modifications = lRepo.GetLatestModifications(100, EditionType.Creation).Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList();
             var viewModel = new PagingList<MemberEdition>()
             {
                 List = modifications,
