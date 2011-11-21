@@ -2808,6 +2808,9 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string AddedPlaces = "~/Areas/Dashboard/Views/Community/AddedPlaces.cshtml";
+            public readonly string CommentedPlaces = "~/Areas/Dashboard/Views/Community/CommentedPlaces.cshtml";
+            public readonly string FavoritePlaces = "~/Areas/Dashboard/Views/Community/FavoritePlaces.cshtml";
             public readonly string Places = "~/Areas/Dashboard/Views/Community/Places.cshtml";
         }
     }
@@ -2846,9 +2849,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
 namespace Worki.Web.Areas.Dashboard.Controllers {
     public partial class HistoricController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HistoricController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected HistoricController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2857,6 +2857,16 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Booking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Quotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HistoricController Actions { get { return MVC.Dashboard.Historic; } }
@@ -2870,7 +2880,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string Index = "Index";
+            public readonly string Booking = "Booking";
+            public readonly string Quotation = "Quotation";
         }
 
 
@@ -2879,6 +2890,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string Booking = "~/Areas/Dashboard/Views/Historic/Booking.cshtml";
+            public readonly string Quotation = "~/Areas/Dashboard/Views/Historic/Quotation.cshtml";
         }
     }
 
@@ -2886,8 +2899,15 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
     public class T4MVC_HistoricController: Worki.Web.Areas.Dashboard.Controllers.HistoricController {
         public T4MVC_HistoricController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Index() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        public override System.Web.Mvc.ActionResult Booking(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Quotation(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
@@ -3076,6 +3096,7 @@ namespace T4MVC.Dashboard {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _CommentTab = "~/Areas/Dashboard/Views/Shared/_CommentTab.cshtml";
+            public readonly string _DashboardMenu = "~/Areas/Dashboard/Views/Shared/_DashboardMenu.cshtml";
             public readonly string _LocalisationTab = "~/Areas/Dashboard/Views/Shared/_LocalisationTab.cshtml";
         }
     }

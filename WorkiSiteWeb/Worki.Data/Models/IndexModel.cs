@@ -25,15 +25,4 @@ namespace Worki.Data.Models
 
         #endregion
     }
-
-	public enum AboutPages
-	{
-		WhoAreWe,
-		Press,
-		Jobs,
-		Cgu,
-		Legal,
-		Faq,
-		Contact
-	}
 }

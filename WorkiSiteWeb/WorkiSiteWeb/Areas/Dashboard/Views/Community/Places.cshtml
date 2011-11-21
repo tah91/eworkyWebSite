@@ -6,13 +6,7 @@
 	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
-	{ 
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Home, MVC.Dashboard.Home.Index())} ,
-		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Community, MVC.Dashboard.Community.Places())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Historic, MVC.Dashboard.Historic.Index())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Profil, MVC.Dashboard.Profil.Edit())} 
-	})
+@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Community)
 
 <div class="detailContent">
 

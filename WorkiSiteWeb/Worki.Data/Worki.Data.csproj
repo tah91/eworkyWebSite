@@ -92,6 +92,7 @@
     <Compile Include="Models\Comment.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\QuotationModel.cs" />
     <Compile Include="Models\FeatureModel.cs" />
     <Compile Include="Models\C__RefactorLog.cs">

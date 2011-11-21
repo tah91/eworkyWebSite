@@ -603,6 +603,9 @@
     <Content Include="Areas\Dashboard\Views\Community\FavoritePlaces.cshtml" />
     <Content Include="Areas\Dashboard\Views\Community\CommentedPlaces.cshtml" />
     <Content Include="Areas\Dashboard\Views\Community\AddedPlaces.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Historic\Booking.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Historic\Quotation.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_DashboardMenu.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

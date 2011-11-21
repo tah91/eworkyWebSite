@@ -3,13 +3,7 @@
 	<title>Accueil</title>
 }
 
-@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
-	{ 
-		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Home, MVC.Dashboard.Home.Index())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Community, MVC.Dashboard.Community.Places())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Historic, MVC.Dashboard.Historic.Index())} ,
-		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Profil, MVC.Dashboard.Profil.Edit())} 
-	})
+@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
 
 <div class="detailContent">
 

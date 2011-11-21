@@ -1,22 +1,20 @@
-﻿@model PagingList<Comment>
+﻿@model PagingList<MemberBooking>
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.CommentedPlaces)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Bookings)</title>
 	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Community)
+@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Historic)
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left profilDetailLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Dashboard.Community.Places())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.FavoritePlaces, MVC.Dashboard.Community.FavoritePlaces())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddedPlaces, MVC.Dashboard.Community.AddedPlaces())},
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CommentedPlaces, MVC.Dashboard.Community.CommentedPlaces())} 
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Historic.Booking())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Historic.Quotation())}
 		})
 	</div>
 
@@ -24,7 +22,7 @@
 		<div class="contentBlock">
 			@if (Model.List.Count != 0)
             {
-				@Html.Partial(MVC.Dashboard.Shared.Views._CommentTab)
+				
             }
             else
             {
