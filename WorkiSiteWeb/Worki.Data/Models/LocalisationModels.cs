@@ -651,6 +651,36 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        #region Booking
+
+        public IList<MemberBooking> GetBookings()
+        {
+            var toRet = new List<MemberBooking>();
+            foreach (var offer in Offers)
+            {
+                toRet.AddRange(offer.MemberBookings);
+            }
+
+            return toRet;
+        }
+
+        #endregion
+
+        #region Quotation
+
+        public IList<MemberQuotation> GetQuotations()
+        {
+            var toRet = new List<MemberQuotation>();
+            foreach (var offer in Offers)
+            {
+                toRet.AddRange(offer.MemberQuotations);
+            }
+
+            return toRet;
+        }
+
+        #endregion
     }
 
 	[Bind(Exclude = "Id,OwnerId")]

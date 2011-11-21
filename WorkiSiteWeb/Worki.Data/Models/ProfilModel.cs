@@ -318,6 +318,56 @@ namespace Worki.Data.Models
 
             return true;
         }
+
+        #region Booking
+
+        public IList<MemberBooking> GetBookings()
+        {
+            var toRet = new List<MemberBooking>();
+            foreach (var loc in Localisations)
+            {
+                toRet.AddRange(loc.GetBookings());
+            }
+
+            return toRet;
+        }
+
+        #endregion
+
+        #region Quotation
+
+        public IList<MemberQuotation> GetQuotations()
+        {
+            var toRet = new List<MemberQuotation>();
+            foreach (var loc in Localisations)
+            {
+                toRet.AddRange(loc.GetQuotations());
+            }
+
+            return toRet;
+        }
+
+        #endregion
+
+        #region Clients
+
+        public IList<int> GetClients()
+        {
+            var hashset = new HashSet<int>();
+            foreach (var b in GetBookings())
+            {
+                hashset.Add(b.MemberId);
+            }
+
+            foreach (var b in GetQuotations())
+            {
+                hashset.Add(b.MemberId);
+            }
+
+            return hashset.ToList();
+        }
+
+        #endregion
     }
 
     [Bind(Exclude = "MemberId,Username")]

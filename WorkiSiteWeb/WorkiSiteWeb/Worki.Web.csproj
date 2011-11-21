@@ -246,6 +246,7 @@
     <Compile Include="Areas\Backoffice\Controllers\ClientController.cs" />
     <Compile Include="Areas\Backoffice\Controllers\HomeController.cs" />
     <Compile Include="Areas\Backoffice\Controllers\LocalisationController.cs" />
+    <Compile Include="Areas\Backoffice\Controllers\ProfilController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\CommunityController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HistoricController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
@@ -610,6 +611,16 @@
     <Content Include="Areas\Dashboard\Views\Historic\Quotation.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_DashboardMenu.cshtml" />
     <Content Include="Areas\Backoffice\Views\Web.config" />
+    <Content Include="Areas\Backoffice\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Home\Booking.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Home\Quotation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\Booking.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\Quotation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\OfferBooking.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\OfferQuotation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Profil\changer-mdp.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Profil\editer.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Shared\_BackofficeMenu.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -799,7 +810,6 @@
     <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Areas\Backoffice\Models\" />
-    <Folder Include="Areas\Backoffice\Views\Shared\" />
     <Folder Include="Areas\Dashboard\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

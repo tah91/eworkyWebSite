@@ -1,0 +1,9 @@
+﻿@model DashboardMenu
+
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Selected = Model == DashboardMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Home, MVC.Dashboard.Home.Index())} ,
+		new MenuItem{ Selected = Model == DashboardMenu.Community, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Community, MVC.Dashboard.Community.Places())} ,
+		new MenuItem{ Selected = Model == DashboardMenu.Historic, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Historic, MVC.Dashboard.Historic.Booking())} ,
+		new MenuItem{ Selected = Model == DashboardMenu.Profil, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Profil, MVC.Dashboard.Profil.Edit())} 
+	})

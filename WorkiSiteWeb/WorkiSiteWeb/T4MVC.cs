@@ -27,6 +27,8 @@ public static class MVC {
     public static AdminClass Admin { get { return s_Admin; } }
     static readonly ApiClass s_Api = new ApiClass();
     public static ApiClass Api { get { return s_Api; } }
+    static readonly BackofficeClass s_Backoffice = new BackofficeClass();
+    public static BackofficeClass Backoffice { get { return s_Backoffice; } }
     static readonly DashboardClass s_Dashboard = new DashboardClass();
     public static DashboardClass Dashboard { get { return s_Dashboard; } }
     static readonly MobileClass s_Mobile = new MobileClass();
@@ -60,6 +62,15 @@ namespace T4MVC {
         public readonly string Name = "Api";
         public Worki.Web.Areas.Api.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Api.Controllers.T4MVC_LocalisationController();
         public T4MVC.Api.SharedController Shared = new T4MVC.Api.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class BackofficeClass {
+        public readonly string Name = "Backoffice";
+        public Worki.Web.Areas.Backoffice.Controllers.ClientController Client = new Worki.Web.Areas.Backoffice.Controllers.T4MVC_ClientController();
+        public Worki.Web.Areas.Backoffice.Controllers.HomeController Home = new Worki.Web.Areas.Backoffice.Controllers.T4MVC_HomeController();
+        public Worki.Web.Areas.Backoffice.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Backoffice.Controllers.T4MVC_LocalisationController();
+        public Worki.Web.Areas.Backoffice.Controllers.ProfilController Profil = new Worki.Web.Areas.Backoffice.Controllers.T4MVC_ProfilController();
+        public T4MVC.Backoffice.SharedController Shared = new T4MVC.Backoffice.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class DashboardClass {
@@ -2655,6 +2666,316 @@ namespace Worki.Web.Areas.Api.Controllers {
 }
 
 namespace T4MVC.Api {
+    public class SharedController {
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+}
+
+namespace Worki.Web.Areas.Backoffice.Controllers {
+    public partial class ClientController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected ClientController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Clients() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Clients);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ClientController Actions { get { return MVC.Backoffice.Client; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Backoffice";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Client";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Clients = "Clients";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_ClientController: Worki.Web.Areas.Backoffice.Controllers.ClientController {
+        public T4MVC_ClientController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Clients(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Clients);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Backoffice.Controllers {
+    public partial class HomeController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected HomeController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Booking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Quotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public HomeController Actions { get { return MVC.Backoffice.Home; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Backoffice";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Home";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+            public readonly string Booking = "Booking";
+            public readonly string Quotation = "Quotation";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Booking = "~/Areas/Backoffice/Views/Home/Booking.cshtml";
+            public readonly string Index = "~/Areas/Backoffice/Views/Home/Index.cshtml";
+            public readonly string Quotation = "~/Areas/Backoffice/Views/Home/Quotation.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_HomeController: Worki.Web.Areas.Backoffice.Controllers.HomeController {
+        public T4MVC_HomeController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Booking(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Quotation(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Backoffice.Controllers {
+    public partial class LocalisationController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected LocalisationController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Booking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Quotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult OfferBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.OfferBooking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult OfferQuotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.OfferQuotation);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public LocalisationController Actions { get { return MVC.Backoffice.Localisation; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Backoffice";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Localisation";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Booking = "Booking";
+            public readonly string Quotation = "Quotation";
+            public readonly string OfferBooking = "OfferBooking";
+            public readonly string OfferQuotation = "OfferQuotation";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Booking = "~/Areas/Backoffice/Views/Localisation/Booking.cshtml";
+            public readonly string OfferBooking = "~/Areas/Backoffice/Views/Localisation/OfferBooking.cshtml";
+            public readonly string OfferQuotation = "~/Areas/Backoffice/Views/Localisation/OfferQuotation.cshtml";
+            public readonly string Quotation = "~/Areas/Backoffice/Views/Localisation/Quotation.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_LocalisationController: Worki.Web.Areas.Backoffice.Controllers.LocalisationController {
+        public T4MVC_LocalisationController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Booking(int id, int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Quotation(int id, int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult OfferBooking(int id, int offerid, int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerid", offerid);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult OfferQuotation(int id, int offerid, int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferQuotation);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerid", offerid);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Backoffice.Controllers {
+    public partial class ProfilController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected ProfilController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ProfilController Actions { get { return MVC.Backoffice.Profil; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Backoffice";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Profil";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Edit = "editer";
+            public readonly string ChangePassword = "changer-mdp";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string changer_mdp = "~/Areas/Backoffice/Views/Profil/changer-mdp.cshtml";
+            public readonly string editer = "~/Areas/Backoffice/Views/Profil/editer.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_ProfilController: Worki.Web.Areas.Backoffice.Controllers.ProfilController {
+        public T4MVC_ProfilController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Edit() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Member member) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("member", member);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ChangePassword() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ChangePassword(Worki.Data.Models.ChangePasswordModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace T4MVC.Backoffice {
     public class SharedController {
 
         static readonly ViewNames s_views = new ViewNames();

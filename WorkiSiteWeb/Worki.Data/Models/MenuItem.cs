@@ -24,4 +24,11 @@ namespace Worki.Data.Models
         Historic,
         Profil
     }
+
+    public enum BackofficeMenu
+    {
+        Home,
+        Clients,
+        Profil
+    }
 }
