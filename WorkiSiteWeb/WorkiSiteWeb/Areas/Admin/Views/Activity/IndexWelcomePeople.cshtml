@@ -6,16 +6,27 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.IndexWelcomePeople, "Blue")
-<div class="contentAdmin">
-    <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Shared.Views._AdminMenu)
-    </div>
-    <p>
-    <h3>@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.CreateNewWelcomePeople, MVC.Admin.Activity.CreateWelcomePeople())</h3>
-    </p>
-    <div class="adminPanel">
-        @using (Html.BeginForm(MVC.Admin.Activity.ActionNames.WelcomePeopleLine, MVC.Admin.Activity.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())} 
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Welcome, MVC.Admin.Activity.IndexWelcomePeople())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Press, MVC.Admin.Activity.IndexPress())} ,
+            new MenuItem{ Link= Html.ActionLink("Rafraichir blog", MVC.Admin.Activity.RefreshBlog())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+		@using (Html.BeginForm(MVC.Admin.Activity.ActionNames.WelcomePeopleLine, MVC.Admin.Activity.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
         { 
         @Html.AntiForgeryToken();
         <table>
@@ -65,7 +76,7 @@
             @Html.SubmitButton("Update", Worki.Resources.Views.Admin.AdminString.Update)
         </div>
         }
-        <div class="clear">
-        </div>
-    </div>
+        <div class="clear"></div>
+	</div>
+	<div class="clear"></div>
 </div>

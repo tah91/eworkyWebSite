@@ -6,13 +6,30 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.StatString.LastModif, "Blue")
-<div class="contentAdmin">
-    <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Shared.Views._AdminMenu)
-    </div>
-    <div class="adminPanel">
-        <table>
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())}
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.StatTitle, MVC.Admin.Moderation.Stat())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Bookings, MVC.Admin.Moderation.IndexBooking())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Quotations, MVC.Admin.Moderation.IndexQuotation())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastModif, MVC.Admin.Moderation.Last100Modif())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastCreate, MVC.Admin.Moderation.LastCreate())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.ImportLocalisations, MVC.Admin.Moderation.IndexImport())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+		<table>
             <tr>
                 <th>
                     @Worki.Resources.Views.Admin.StatString.EworkerName
@@ -49,5 +66,6 @@
             @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Moderation.ActionNames.Last100Modif, MVC.Admin.Moderation.Name, new { page = x }))
         </div> 
         <div class="clear"></div>
-    </div>
+	</div>
+	<div class="clear"></div>
 </div>

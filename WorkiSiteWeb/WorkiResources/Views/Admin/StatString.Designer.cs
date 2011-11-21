@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dernières créations.
+        ///   Looks up a localized string similar to Créations.
         /// </summary>
         public static string LastCreate {
             get {
@@ -169,7 +169,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dernières modifications.
+        ///   Looks up a localized string similar to Modifications.
         /// </summary>
         public static string LastModif {
             get {

@@ -503,7 +503,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             {
                 _Logger.Error("RefreshBlog", ex);
             }
-            return RedirectToAction(MVC.Admin.Sheet.Index());
+            return RedirectToAction(MVC.Admin.Activity.IndexWelcomePeople());
         }
 
         #endregion

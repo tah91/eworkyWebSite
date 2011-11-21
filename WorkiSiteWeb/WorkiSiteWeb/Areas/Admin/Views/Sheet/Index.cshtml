@@ -6,13 +6,26 @@
     <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Admin.AdminString.LocalisationsAdmin, "Blue")
-<div class="contentAdmin">
-    <div id="adminMenu"> 
-        @Html.Partial(MVC.Admin.Shared.Views._AdminMenu)
-    </div>
-    <div class="adminPanel">
-        @using (Html.BeginForm(MVC.Admin.Sheet.ActionNames.UpdateMainLocalisation, MVC.Admin.Sheet.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+	{ 
+		new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Sheet, MVC.Admin.Sheet.Index())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Moderation, MVC.Admin.Moderation.Stat())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+		new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Activity, MVC.Admin.Activity.IndexWelcomePeople())} 
+	})
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Workplace, MVC.Admin.Sheet.Index())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Rentals, MVC.Admin.Sheet.IndexRental())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+		@using (Html.BeginForm(MVC.Admin.Sheet.ActionNames.UpdateMainLocalisation, MVC.Admin.Sheet.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
         {
         @Html.AntiForgeryToken()
         <table>
@@ -68,9 +81,7 @@
             @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Sheet.ActionNames.Index, MVC.Admin.Sheet.Name, new { page = x }))
         </div>
         } 
-        <div class="clear">
-        </div>
-    </div>
+        <div class="clear"></div>
+	</div>
+	<div class="clear"></div>
 </div>
-
-
