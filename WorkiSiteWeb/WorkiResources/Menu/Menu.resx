@@ -126,6 +126,9 @@
   <data name="Bookings" xml:space="preserve">
     <value>Réservations</value>
   </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Clients</value>
+  </data>
   <data name="CommentedPlaces" xml:space="preserve">
     <value>Espaces commentés</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>Actualités</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Offres</value>
   </data>
   <data name="OnlineRental" xml:space="preserve">
     <value>Annonces en ligne</value>

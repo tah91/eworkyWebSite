@@ -1,0 +1,27 @@
+﻿@model PagingList<Member>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Clients)</title>
+	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Clients)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left profilDetailLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Clients, MVC.Backoffice.Client.Clients())}
+		})
+	</div>
+
+	<div class="blockContainer float-left profilDetailRight">
+		<div class="contentBlock">
+
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

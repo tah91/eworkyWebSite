@@ -28,9 +28,29 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// Get action result to show recent activities of the owner
         /// </summary>
         /// <returns>View with recent activities</returns>
-        public virtual ActionResult Index()
+        public virtual ActionResult Index(int? page)
         {
-            return View();
+			var id = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var p = page ?? 1;
+			try
+			{
+				var member = mRepo.Get(id);
+				Member.Validate(member);
+				var model = new PagingList<Localisation>
+				{
+					List = member.Localisations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.Localisations.Count }
+				};
+				return View(model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Booking", ex);
+				return View(MVC.Shared.Views.Error);
+			}
         }
 
         public const int PageSize = 5;

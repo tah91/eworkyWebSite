@@ -1,5 +1,34 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model PagingList<Localisation>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Home)</title>
+	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
-<h2>Index</h2>
+@Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Home)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left profilDetailLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Home.Index())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Home.Booking())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Home.Quotation())}
+		})
+	</div>
+
+	<div class="blockContainer float-left profilDetailRight">
+		<div class="contentBlock">
+			<ul>
+			@foreach (var item in Model.List)
+			{
+				<li>@Html.ActionLink(item.Name, MVC.Backoffice.Localisation.Index(item.ID))</li>
+			}
+			</ul>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

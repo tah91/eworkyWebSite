@@ -2716,6 +2716,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string Clients = "~/Areas/Backoffice/Views/Client/Clients.cshtml";
         }
     }
 
@@ -2743,6 +2744,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Index() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Booking() {
@@ -2787,8 +2793,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
     public class T4MVC_HomeController: Worki.Web.Areas.Backoffice.Controllers.HomeController {
         public T4MVC_HomeController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Index() {
+        public override System.Web.Mvc.ActionResult Index(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
@@ -2820,6 +2827,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Index() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Booking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
         }
@@ -2827,6 +2839,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Quotation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult OfferIndex() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.OfferIndex);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2851,8 +2868,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
+            public readonly string Index = "Index";
             public readonly string Booking = "Booking";
             public readonly string Quotation = "Quotation";
+            public readonly string OfferIndex = "OfferIndex";
             public readonly string OfferBooking = "OfferBooking";
             public readonly string OfferQuotation = "OfferQuotation";
         }
@@ -2863,8 +2882,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _LocalisationMenu = "~/Areas/Backoffice/Views/Localisation/_LocalisationMenu.cshtml";
             public readonly string Booking = "~/Areas/Backoffice/Views/Localisation/Booking.cshtml";
+            public readonly string Index = "~/Areas/Backoffice/Views/Localisation/Index.cshtml";
             public readonly string OfferBooking = "~/Areas/Backoffice/Views/Localisation/OfferBooking.cshtml";
+            public readonly string OfferIndex = "~/Areas/Backoffice/Views/Localisation/OfferIndex.cshtml";
             public readonly string OfferQuotation = "~/Areas/Backoffice/Views/Localisation/OfferQuotation.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Localisation/Quotation.cshtml";
         }
@@ -2874,17 +2896,29 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
     public class T4MVC_LocalisationController: Worki.Web.Areas.Backoffice.Controllers.LocalisationController {
         public T4MVC_LocalisationController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Booking(int id, int? page) {
+        public override System.Web.Mvc.ActionResult Index(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Booking(int id, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Quotation(int id, int? page) {
+        public override System.Web.Mvc.ActionResult Quotation(int id, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult OfferIndex(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferIndex);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -2941,8 +2975,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string changer_mdp = "~/Areas/Backoffice/Views/Profil/changer-mdp.cshtml";
-            public readonly string editer = "~/Areas/Backoffice/Views/Profil/editer.cshtml";
+            public readonly string ChangePassword = "~/Areas/Backoffice/Views/Profil/ChangePassword.cshtml";
+            public readonly string Edit = "~/Areas/Backoffice/Views/Profil/Edit.cshtml";
         }
     }
 
@@ -2983,6 +3017,7 @@ namespace T4MVC.Backoffice {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _BackofficeMenu = "~/Areas/Backoffice/Views/Shared/_BackofficeMenu.cshtml";
         }
     }
 

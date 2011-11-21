@@ -54,8 +54,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
 				return RedirectToAction(MVC.Backoffice.Home.Index());
             }
-				
-			return View(new ProfilFormViewModel { Member = item });
+
+			return View(MVC.Backoffice.Profil.Views.Edit, new ProfilFormViewModel { Member = item });
 		}
 
 		/// <summary>
@@ -121,7 +121,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					ModelState.AddModelError("EditProfil", ex);
 				}
 			}
-			return View(new ProfilFormViewModel { Member = member });
+			return View(MVC.Backoffice.Profil.Views.Edit, new ProfilFormViewModel { Member = member });
 		}
 
 		/// <summary>
@@ -138,7 +138,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				return View(MVC.Shared.Views.Error);
 
 			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
-			return View(new ChangePasswordModel { MemberId = id });
+			return View(MVC.Backoffice.Profil.Views.ChangePassword, new ChangePasswordModel { MemberId = id });
 		}
 
 		/// <summary>
@@ -172,7 +172,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 			// Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
 			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
-			return View(model);
+			return View(MVC.Backoffice.Profil.Views.ChangePassword, model);
 		}
 	}
 }

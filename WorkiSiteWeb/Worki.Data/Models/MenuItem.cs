@@ -31,4 +31,10 @@ namespace Worki.Data.Models
         Clients,
         Profil
     }
+
+	public enum LocalisationMenu
+	{
+		Home,
+		Offers
+	}
 }

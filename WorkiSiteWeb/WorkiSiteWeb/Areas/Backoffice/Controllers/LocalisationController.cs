@@ -26,19 +26,47 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
         public const int PageSize = 5;
 
+		/// <summary>
+		/// Get action result to show recent activities of the owner localisation
+		/// </summary>
+		/// <returns>View with recent activities</returns>
+		public virtual ActionResult Index(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				var loc = lRepo.Get(id);
+				if (loc.OwnerID != memberId)
+					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+
+				return View(loc);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Index", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
         /// <summary>
         /// Get action method to show bookings of the owner, for a given localisation
         /// </summary>
         /// <param name="id">id of the localisation</param>
         /// <returns>View containing the bookings</returns>
-        public virtual ActionResult Booking(int id, int? page)
+        public virtual ActionResult Booking(int id, int page=1)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var p = page ?? 1;
+            var p = page;
             try
             {
                 var member = mRepo.Get(memberId);
@@ -66,14 +94,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// </summary>
         /// <param name="id">id of the localisation</param>
         /// <returns>View containing the quotations</returns>
-        public virtual ActionResult Quotation(int id, int? page)
+        public virtual ActionResult Quotation(int id, int page=1)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var p = page ?? 1;
+            var p = page;
             try
             {
                 var member = mRepo.Get(memberId);
@@ -95,6 +123,34 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 return View(MVC.Shared.Views.Error);
             }
         }
+
+		/// <summary>
+		/// Get action result to show recent activities of the owner localisation
+		/// </summary>
+		/// <returns>View with recent activities</returns>
+		public virtual ActionResult OfferIndex(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				var loc = lRepo.Get(id);
+				if (loc.OwnerID != memberId)
+					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+
+				return View(loc);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Index", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
 
         /// <summary>
         /// Get action method to show bookings of the owner, for a given localisation and offer

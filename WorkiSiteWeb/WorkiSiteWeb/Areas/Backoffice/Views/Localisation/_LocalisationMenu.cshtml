@@ -1,0 +1,7 @@
+﻿@model LocalisationMenu
+
+@Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
+{ 
+	new MenuItem{ Selected = Model == LocalisationMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index())} ,
+	new MenuItem{ Selected = Model == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.OfferIndex())}
+})
