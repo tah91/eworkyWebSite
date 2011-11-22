@@ -1,4 +1,4 @@
-﻿@model PagingList<MemberBooking>
+﻿@model LocalisationBookingViewModel
 
 @section HeadContent
 {
@@ -13,15 +13,32 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index())} ,
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.Booking())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation())}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))}
 		})
 	</div>
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-
+            @if (Model.Bookings.List.Count != 0)
+            {
+                <ul>
+                @foreach (var booking in Model.Bookings.List)
+                {
+                    @Html.Partial(MVC.Backoffice.Shared.Views._BookingItem, booking)
+                }
+                </ul>
+                <div class="pager">
+                    @Html.PageLinks(Model.Bookings.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.Booking(Model.Localisation.ID, x)))
+                </div>
+            }
+            else
+            {
+            <div class="contentBlock italic">
+                @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
+            </div>
+            }
 		</div>
 	</div>
 	<div class="clear">

@@ -2929,13 +2929,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult OfferIndex(int id) {
+        public override System.Web.Mvc.ActionResult OfferIndex(int id, int offerid) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferIndex);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerid", offerid);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult OfferBooking(int id, int offerid, int? page) {
+        public override System.Web.Mvc.ActionResult OfferBooking(int id, int offerid, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("offerid", offerid);
@@ -2943,7 +2944,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult OfferQuotation(int id, int offerid, int? page) {
+        public override System.Web.Mvc.ActionResult OfferQuotation(int id, int offerid, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferQuotation);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("offerid", offerid);

@@ -75,10 +75,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (loc.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-                var model = new PagingList<MemberBooking>
+                var model = new LocalisationBookingViewModel
                 {
-                    List = loc.GetBookings().Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = loc.GetBookings().Count }
+                    Localisation = loc,
+                    Bookings = new PagingList<MemberBooking>
+                    {
+                        List = loc.GetBookings().Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = loc.GetBookings().Count }
+                    }
                 };
                 return View(model);
             }
@@ -128,22 +132,22 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// Get action result to show recent activities of the owner localisation
 		/// </summary>
 		/// <returns>View with recent activities</returns>
-		public virtual ActionResult OfferIndex(int id)
+        public virtual ActionResult OfferIndex(int id, int offerid)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			try
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
-				var loc = lRepo.Get(id);
-				if (loc.OwnerID != memberId)
+                var offer = oRepo.Get(offerid, id);
+                if (offer.Localisation.OwnerID != memberId)
 					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-				return View(loc);
+                return View(offer);
 			}
 			catch (Exception ex)
 			{
@@ -158,14 +162,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <param name="id">id of the localisation</param>
         /// <param name="offerid">id of the offer</param>
         /// <returns>View containing the bookings</returns>
-        public virtual ActionResult OfferBooking(int id,int offerid, int? page)
+        public virtual ActionResult OfferBooking(int id,int offerid, int page=1)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-            var p = page ?? 1;
+            var p = page ;
             try
             {
                 var member = mRepo.Get(memberId);
@@ -174,10 +178,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (offer.Localisation.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-                var model = new PagingList<MemberBooking>
+                var model = new OfferBookingViewModel
                 {
-                    List = offer.MemberBookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberBookings.Count }
+                    Offer = offer,
+                    Bookings = new PagingList<MemberBooking>
+                    {
+                        List = offer.MemberBookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberBookings.Count }
+                    }
                 };
                 return View(model);
             }
@@ -194,14 +202,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <param name="id">id of the localisation</param>
         /// <param name="offerid">id of the offer</param>
         /// <returns>View containing the quotations</returns>
-        public virtual ActionResult OfferQuotation(int id, int offerid, int? page)
+        public virtual ActionResult OfferQuotation(int id, int offerid, int page = 1)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-            var p = page ?? 1;
+            var p = page;
             try
             {
                 var member = mRepo.Get(memberId);

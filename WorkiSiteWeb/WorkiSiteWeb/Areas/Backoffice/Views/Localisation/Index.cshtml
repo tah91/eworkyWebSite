@@ -13,7 +13,7 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index(Model.ID))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.Booking(Model.ID))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.ID))}
 		})
@@ -21,7 +21,12 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-
+            <ul>
+			@foreach (var item in Model.Offers)
+			{
+				<li>@Html.ActionLink(item.Name, MVC.Backoffice.Localisation.OfferIndex(item.Localisation.ID, item.Id))</li>
+			}
+			</ul>
 		</div>
 	</div>
 	<div class="clear">
