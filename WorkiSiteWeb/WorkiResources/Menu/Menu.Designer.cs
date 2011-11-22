@@ -97,6 +97,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business Fr.
+        /// </summary>
+        public static string BusinessCenterFr {
+            get {
+                return ResourceManager.GetString("BusinessCenterFr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clients.
         /// </summary>
         public static string Clients {
@@ -120,6 +129,15 @@ namespace Worki.Resources.Menu {
         public static string Community {
             get {
                 return ResourceManager.GetString("Community", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coworking Fr.
+        /// </summary>
+        public static string CoworkingSpaceFr {
+            get {
+                return ResourceManager.GetString("CoworkingSpaceFr", resourceCulture);
             }
         }
         

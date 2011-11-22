@@ -2513,6 +2513,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BookIt() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BookIt);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult IndexRental() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
         }
@@ -2520,6 +2525,16 @@ namespace Worki.Web.Areas.Admin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult DeleteRental() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteRental);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult CoworkingSpace() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.CoworkingSpace);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BusinessCenter() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BusinessCenter);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2538,8 +2553,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string OnOffline = "OnOffline";
             public readonly string UpdateMainLocalisation = "UpdateMainLocalisation";
             public readonly string DeleteLocalisation = "DeleteLocalisation";
+            public readonly string BookIt = "BookIt";
             public readonly string IndexRental = "IndexRental";
             public readonly string DeleteRental = "DeleteRental";
+            public readonly string CoworkingSpace = "CoworkingSpace";
+            public readonly string BusinessCenter = "BusinessCenter";
         }
 
 
@@ -2548,6 +2566,8 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string BusinessCenter = "~/Areas/Admin/Views/Sheet/BusinessCenter.cshtml";
+            public readonly string CoworkingSpace = "~/Areas/Admin/Views/Sheet/CoworkingSpace.cshtml";
             public readonly string DeleteLocalisation = "~/Areas/Admin/Views/Sheet/DeleteLocalisation.cshtml";
             public readonly string DeleteRental = "~/Areas/Admin/Views/Sheet/DeleteRental.cshtml";
             public readonly string Index = "~/Areas/Admin/Views/Sheet/Index.cshtml";
@@ -2592,6 +2612,12 @@ namespace Worki.Web.Areas.Admin.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult BookIt(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookIt);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult IndexRental(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
             callInfo.RouteValueDictionary.Add("page", page);
@@ -2610,6 +2636,18 @@ namespace Worki.Web.Areas.Admin.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("confirm", confirm);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CoworkingSpace(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CoworkingSpace);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BusinessCenter(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BusinessCenter);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 

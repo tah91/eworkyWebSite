@@ -14,7 +14,9 @@
     @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Workplace, MVC.Admin.Sheet.Index())} ,
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Rentals, MVC.Admin.Sheet.IndexRental())}
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Rentals, MVC.Admin.Sheet.IndexRental())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CoworkingSpaceFr, MVC.Admin.Sheet.CoworkingSpace())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BusinessCenterFr, MVC.Admin.Sheet.BusinessCenter())}
 		})
 	</div>
 

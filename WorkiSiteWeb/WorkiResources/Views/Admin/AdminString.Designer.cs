@@ -547,6 +547,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Score.
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to envoyer.
         /// </summary>
         public static string Send {
