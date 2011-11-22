@@ -29,7 +29,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             _Logger = logger;
         }
 
-        #region Admin User
+        #region Members
 
         /// <summary>
         /// Prepares a web page containing a paginated list of members
@@ -52,7 +52,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                     TotalItems = mRepo.GetCount()
                 }
             };
-            return View(viewModel);
+            return View(MVC.Admin.Member.Views.IndexUser, viewModel);
         }
 
 
@@ -171,6 +171,56 @@ namespace Worki.Web.Areas.Admin.Controllers
 
                 return Redirect(returnUrl);
             }
+        }
+
+        #endregion
+
+        #region Admin Members
+
+        public virtual ActionResult AdminList(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            int pageValue = page ?? 1;
+            var admins = mRepo.GetAdmins().Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList();
+            var viewModel = new PagingList<MemberAdminModel>()
+            {
+                List = admins,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = MiscHelpers.Constants.PageSize,
+                    TotalItems = admins.Count
+                }
+            };
+            return View(MVC.Admin.Member.Views.Admins, viewModel);
+        }
+
+        #endregion
+
+        #region Member Leaderboard
+
+        public virtual ActionResult Leaderboard(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            int pageValue = page ?? 1;
+            var members = mRepo.GetLeaders();
+            foreach (var member in members)
+            {
+                member.Score = mRepo.Get(member.MemberId).ComputeScore();
+            }
+            var viewModel = new PagingList<MemberAdminModel>()
+            {
+                List = members.OrderByDescending(x => x.Score).Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).ToList(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = MiscHelpers.Constants.PageSize,
+                    TotalItems = members.Count
+                }
+            };
+            return View(MVC.Admin.Member.Views.UsersLeaderboard, viewModel);
         }
 
         #endregion

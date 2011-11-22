@@ -123,6 +123,9 @@
   <data name="AddedPlaces" xml:space="preserve">
     <value>Espaces ajoutés</value>
   </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Administrateurs</value>
+  </data>
   <data name="Bookings" xml:space="preserve">
     <value>Réservations</value>
   </data>
@@ -188,5 +191,8 @@
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Abonnements</value>
+  </data>
+  <data name="TopMember" xml:space="preserve">
+    <value>Top 50</value>
   </data>
 </root>

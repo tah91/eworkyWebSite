@@ -626,6 +626,8 @@
     <Content Include="Areas\Backoffice\Views\Localisation\OfferIndex.cshtml" />
     <Content Include="Areas\Backoffice\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Backoffice\Views\Client\Clients.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\Admins.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\UsersLeaderboard.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

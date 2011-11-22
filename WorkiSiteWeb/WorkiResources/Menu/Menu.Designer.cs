@@ -79,6 +79,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrateurs.
+        /// </summary>
+        public static string Admins {
+            get {
+                return ResourceManager.GetString("Admins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réservations.
         /// </summary>
         public static string Bookings {
@@ -273,6 +282,15 @@ namespace Worki.Resources.Menu {
         public static string Subscription {
             get {
                 return ResourceManager.GetString("Subscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top 50.
+        /// </summary>
+        public static string TopMember {
+            get {
+                return ResourceManager.GetString("TopMember", resourceCulture);
             }
         }
     }
