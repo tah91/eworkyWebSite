@@ -311,6 +311,10 @@
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
     <Content Include="Content\boilerplate.css" />
+    <Content Include="Content\Dashboard.css" />
+    <Content Include="Content\Dashboard.min.css">
+      <DependentUpon>Dashboard.css</DependentUpon>
+    </Content>
     <Content Include="Content\galleria\galleria.classic.min.css">
       <DependentUpon>galleria.classic.css</DependentUpon>
     </Content>
@@ -626,6 +630,10 @@
     <Content Include="Areas\Backoffice\Views\Localisation\OfferIndex.cshtml" />
     <Content Include="Areas\Backoffice\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Backoffice\Views\Client\Clients.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\Booking.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\Quotation.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_BookingItem.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Shared\_BookingItem.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

@@ -1,0 +1,82 @@
+﻿/*GENERAL
+----------------------------------------------------------*/
+
+.contentLeft
+{
+    width: 25%;
+}
+
+.contentRight
+{
+    width: 70%;
+}
+
+
+/*BOOKING ITEM
+----------------------------------------------------------*/
+.bookingItem
+{
+    margin:10px 0;
+}
+
+.bookingItem:first-child
+{
+    margin-top:0;
+}
+
+.bookingItem:last-child
+{
+    margin-bottom:0;
+}
+
+.bookingGallery
+{
+    width:25%;
+    height: 120px;
+    margin-right:10px;
+}
+
+.bookingGallery img 
+{
+    max-height: 100px;
+}
+
+.bookingDesc
+{
+    width:25%;
+    margin-right:10px;
+}
+
+.bookingStatus
+{
+    width:25%;
+    text-align:center;
+    border:2px solid orange;
+    height: 120px;
+    background:whitesmoke;
+    font-weight:bold;
+    display:table;
+}
+
+.bookingStatusContent
+{
+    display:table-cell;
+    vertical-align:middle;
+    margin:10px 0;
+    text-align:center;
+}
+
+.bookingStatusDesc
+{
+    
+}
+
+.bookingStatusAction
+{
+    
+}
+
+.bookingLinks
+{
+    width:20%;
+}

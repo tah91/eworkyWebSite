@@ -467,6 +467,8 @@ namespace Links {
         public static readonly string boilerplate_min_css = Url("boilerplate.min.css");
         public static readonly string Booking_css = Url("Booking.css");
         public static readonly string Booking_min_css = Url("Booking.min.css");
+        public static readonly string Dashboard_css = Url("Dashboard.css");
+        public static readonly string Dashboard_min_css = Url("Dashboard.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class galleria {
             private const string URLPATH = "~/Content/galleria";
@@ -3029,6 +3031,7 @@ namespace T4MVC.Backoffice {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _BackofficeMenu = "~/Areas/Backoffice/Views/Shared/_BackofficeMenu.cshtml";
+            public readonly string _BookingItem = "~/Areas/Backoffice/Views/Shared/_BookingItem.cshtml";
         }
     }
 
@@ -3199,9 +3202,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
 namespace Worki.Web.Areas.Dashboard.Controllers {
     public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected HomeController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3210,6 +3210,16 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Booking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Quotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Dashboard.Home; } }
@@ -3224,6 +3234,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string Booking = "Booking";
+            public readonly string Quotation = "Quotation";
         }
 
 
@@ -3232,7 +3244,9 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string Booking = "~/Areas/Dashboard/Views/Home/Booking.cshtml";
             public readonly string Index = "~/Areas/Dashboard/Views/Home/Index.cshtml";
+            public readonly string Quotation = "~/Areas/Dashboard/Views/Home/Quotation.cshtml";
         }
     }
 
@@ -3242,6 +3256,18 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
 
         public override System.Web.Mvc.ActionResult Index() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Booking(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Quotation(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
@@ -3377,6 +3403,7 @@ namespace T4MVC.Dashboard {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _BookingItem = "~/Areas/Dashboard/Views/Shared/_BookingItem.cshtml";
             public readonly string _CommentTab = "~/Areas/Dashboard/Views/Shared/_CommentTab.cshtml";
             public readonly string _DashboardMenu = "~/Areas/Dashboard/Views/Shared/_DashboardMenu.cshtml";
             public readonly string _LocalisationTab = "~/Areas/Dashboard/Views/Shared/_LocalisationTab.cshtml";

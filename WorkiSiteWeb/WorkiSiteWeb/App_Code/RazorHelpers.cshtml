@@ -12,29 +12,29 @@
 
 @helper CenterImage(string src, string alt)
 {
-	if (!string.IsNullOrEmpty(src))
-	{
 	<div class="centerImg picBack">
 		<table>
 			<tr>
 				<td>
-					<img src="@src" alt="@alt"/>
+                    @if(!string.IsNullOrEmpty(src))
+                    {
+                        <img src="@src" alt="@alt"/>
+                    }
+                    else
+                    {
+                        <span class="italic">@Worki.Resources.Views.Localisation.LocalisationString.NoPictureAvailable</span>
+                    }
+					
 				</td>
 			</tr>
 		</table>
 	</div>	
-	}
-	else
-	{
-	<div class="picBackEmpty">
-	</div>
-	}
 }
 
 @helper OpenningRow(Localisation model, DayOfWeek dayOfWeek, string displayName)
-	{
-		if (model.HasOpenningTimes(dayOfWeek))
-		{
+    {
+        if (model.HasOpenningTimes(dayOfWeek))
+        {
         <tr>
             <td class="dayOfWeek bold">
                 @displayName 
@@ -43,18 +43,23 @@
                 @model.GetOpenningTime(dayOfWeek)
             </td>
         </tr> 
-		}
+        }
 }
 
 @helper ReadOnlyRating(double value)
-	{
+    {
 		<div class="rateit" data-rateit-value="@value" data-rateit-readonly="true"></div>
 		<meta itemprop="ratingValue" content ="@value"/>
 }
 
 @helper FacebookLogon(string url, string text, string cssClass = "")
-{
+    {
     <div class="@cssClass">
         <a class="fb_button fb_button_medium" href="@url"><span class="fb_button_text">@text</span></a>
     </div>
+}
+
+@helper Description(string item, string value)
+{
+    @item <text>: <span class="bold">@value</span></text><br />
 }

@@ -2,34 +2,34 @@
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.CurrentBookings)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Bookings)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Home)
+@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Home.Index())} ,
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Home.Booking())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Home.Quotation())}
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Dashboard.Home.Index())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Home.Booking())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Home.Quotation())}
 		})
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-    		@if (Model.List.Count != 0)
+			@if (Model.List.Count != 0)
             {
                 <ul>
                 @foreach (var booking in Model.List)
                 {
-                    @Html.Partial(MVC.Backoffice.Shared.Views._BookingItem, booking)
+                    @Html.Partial(MVC.Dashboard.Shared.Views._BookingItem, booking)
                 }
                 </ul>
                 <div class="pager">
-                    @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Home.Booking(x)))
+                    @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Dashboard.Home.Booking(x)))
                 </div>
             }
             else
@@ -38,6 +38,7 @@
                 @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
             </div>
             }
+
 	</div>
 	<div class="clear">
 	</div>

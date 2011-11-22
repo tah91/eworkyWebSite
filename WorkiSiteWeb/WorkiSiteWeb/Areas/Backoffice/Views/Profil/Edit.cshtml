@@ -4,13 +4,14 @@
 {
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Profile.ProfileString.EditProfile)</title>
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
 @Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Profil)
 
 <div class="detailContent">
-	<div class="blockContainer float-left profilDetailLeft">
+	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditProfil, MVC.Backoffice.Profil.Edit())} ,
@@ -18,7 +19,7 @@
 		})
 	</div>
 
-    <div class="profilDetailRight blockContainer float-right">
+    <div class="contentRight blockContainer float-right">
         @using (Html.BeginForm(MVC.Dashboard.Profil.ActionNames.Edit, MVC.Dashboard.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
         {
             @Html.AntiForgeryToken()

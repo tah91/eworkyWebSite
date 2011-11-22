@@ -3,14 +3,14 @@
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Offers)</title>
-	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, LocalisationMenu.Offers)
 
 <div class="detailContent">
 
-	<div class="blockContainer float-left profilDetailLeft">
+	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex())} ,
@@ -19,7 +19,7 @@
 		})
 	</div>
 
-	<div class="blockContainer float-left profilDetailRight">
+	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
 
 		</div>

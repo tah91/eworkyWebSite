@@ -1,0 +1,32 @@
+﻿@model MemberBooking
+
+<li class="bookingItem">
+    <div class="contentBlock">
+        <div class="bookingDesc float-left">
+            @RazorHelpers.Description("Client(e)",Model.Member.GetFullDisplayName())
+            @RazorHelpers.Description("Lieu", Model.Offer.Localisation.Name)
+            @RazorHelpers.Description("Offre", Model.Offer.Name)
+            @RazorHelpers.Description("Demandé le", DateTime.Now.ToString())
+        </div>
+        <div class="bookingDesc float-left">
+            @RazorHelpers.Description("Début", Model.FromDate.ToString())
+            @RazorHelpers.Description("Fin", Model.ToDate.ToString())
+            @RazorHelpers.Description("Prix", Model.Price.ToString())
+        </div>
+        <div class="bookingStatus float-left">
+            <div class="bookingStatusContent">
+                <div class="bookingStatusDesc">
+                    En attente de payment
+                </div>
+                <div class="buttonStd buttonBlue linkImg bookingStatusAction">
+                    <a href=#>Régler</a>
+                </div>
+            </div>
+        </div>
+        <div class="bookingLinks float-right blue">
+            @Html.ActionLink("Voir la fiche du client", MVC.Dashboard.Profil.Public(Model.MemberId))
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</li> 

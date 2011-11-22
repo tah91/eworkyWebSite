@@ -6,15 +6,16 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Historic)
+@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Historic.Booking())} ,
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Historic.Quotation())}
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Dashboard.Home.Index())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Home.Booking())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Home.Quotation())}
 		})
 	</div>
 
@@ -22,7 +23,14 @@
 		<div class="contentBlock">
 			@if (Model.List.Count != 0)
             {
-				
+				<ul>
+                @foreach (var quotation in Model.List)
+                {
+                    <li>
+                    @quotation.Offer.Localisation.Name : @quotation.Message
+                    </li> 
+                }
+                </ul>
             }
             else
             {

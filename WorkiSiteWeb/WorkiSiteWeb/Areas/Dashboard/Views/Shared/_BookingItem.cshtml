@@ -1,0 +1,31 @@
+﻿@model MemberBooking
+
+<li class="bookingItem">
+    <div class="contentBlock">
+        <div class="bookingGallery float-left">
+            @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Offer.Localisation.GetMainPic(), true), Model.Offer.Localisation.Name)
+        </div>
+        <div class="bookingDesc float-left">
+            @RazorHelpers.Description("Lieu",Model.Offer.Localisation.Name)
+            @RazorHelpers.Description("Offre", Model.Offer.Name)
+            @RazorHelpers.Description("Début", Model.FromDate.ToString())
+            @RazorHelpers.Description("Fin", Model.ToDate.ToString())
+            @RazorHelpers.Description("Prix", Model.Price.ToString())
+        </div>
+        <div class="bookingStatus float-left">
+            <div class="bookingStatusContent">
+                <div class="bookingStatusDesc">
+                    En attente de payment
+                </div>
+                <div class="buttonStd buttonBlue linkImg bookingStatusAction">
+                    <a href=#>Régler</a>
+                </div>
+            </div>
+        </div>
+        <div class="bookingLinks float-right blue">
+            <a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">Voir la fiche du lieu</a>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</li> 

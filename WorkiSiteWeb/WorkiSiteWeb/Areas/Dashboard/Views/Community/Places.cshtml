@@ -3,14 +3,15 @@
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Places)</title>
-	<link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
 @Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Community)
 
 <div class="detailContent">
 
-	<div class="blockContainer float-left profilDetailLeft">
+	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Dashboard.Community.Places())} ,
@@ -20,7 +21,7 @@
 		})
 	</div>
 
-	<div class="blockContainer float-left profilDetailRight">
+	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
 			@if (Model.List.Count != 0)
             {
