@@ -3097,6 +3097,7 @@ namespace T4MVC.Backoffice {
         public class ViewNames {
             public readonly string _BackofficeMenu = "~/Areas/Backoffice/Views/Shared/_BackofficeMenu.cshtml";
             public readonly string _BookingItem = "~/Areas/Backoffice/Views/Shared/_BookingItem.cshtml";
+            public readonly string _QuotationItem = "~/Areas/Backoffice/Views/Shared/_QuotationItem.cshtml";
         }
     }
 
@@ -3472,6 +3473,7 @@ namespace T4MVC.Dashboard {
             public readonly string _CommentTab = "~/Areas/Dashboard/Views/Shared/_CommentTab.cshtml";
             public readonly string _DashboardMenu = "~/Areas/Dashboard/Views/Shared/_DashboardMenu.cshtml";
             public readonly string _LocalisationTab = "~/Areas/Dashboard/Views/Shared/_LocalisationTab.cshtml";
+            public readonly string _QuotationItem = "~/Areas/Dashboard/Views/Shared/_QuotationItem.cshtml";
         }
     }
 
