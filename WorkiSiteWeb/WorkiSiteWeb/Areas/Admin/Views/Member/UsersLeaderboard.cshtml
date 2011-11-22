@@ -13,16 +13,13 @@
 	<div class="blockContainer float-left adminLeftMenu">
     @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())}
 		})
 	</div>
 
 	<div class="blockContainer float-left adminPanel">
-		@using (Html.BeginForm(MVC.Admin.Member.ActionNames.ChangeUserRole, MVC.Admin.Member.Name, new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, FormMethod.Post, new { id = "adminForm" }))
-        { 
-        @Html.AntiForgeryToken();
         <table>
             <thead>
                 <tr>
@@ -33,10 +30,7 @@
                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.EmailAddress
                     </th>
                     <th>
-                      &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.ManagerRole
-                    </th>
-                    <th>
-                      &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Action
+                      &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Score
                     </th>
                 </tr>
             </thead>
@@ -51,25 +45,16 @@
 							@Html.ActionLink(item.UserName, MVC.Dashboard.Profil.Public(item.MemberId)) 
                         </td>
                         <td align="center">
-                            @(!item.IsAdmin ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Member.ChangeUserRole(item.MemberId)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Member.ChangeUserRole(item.MemberId)))
-                        </td>
-                       <td align="center">
-                            @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Member.DeleteUser(item.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))
-                            @if (item.Locked)
-                            {
-                                <text>|</text> 
-                                @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Unlock, MVC.Admin.Member.UnlockUser(item.UserName))
-                            }
+                            @item.Score
                         </td>
                     </tr>
-				} 
+                }
             </tbody>
             <tfoot> </tfoot>
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("IndexUser", new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Leaderboard", new { page = x }))
         </div>
-        }
 	</div>
 	<div class="clear"></div>
 </div>

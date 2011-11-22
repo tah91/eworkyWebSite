@@ -634,6 +634,10 @@
     <Content Include="Areas\Dashboard\Views\Home\Quotation.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_BookingItem.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_BookingItem.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\Admins.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\UsersLeaderboard.cshtml" />
+    <Content Include="Areas\Admin\Views\Sheet\CoworkingSpace.cshtml" />
+    <Content Include="Areas\Admin\Views\Sheet\BusinessCenter.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -840,7 +844,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>6057</DevelopmentServerPort>
+          <DevelopmentServerPort>3573</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

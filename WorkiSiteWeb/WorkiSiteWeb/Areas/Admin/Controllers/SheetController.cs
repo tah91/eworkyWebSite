@@ -165,6 +165,31 @@ namespace Worki.Web.Areas.Admin.Controllers
                 return Redirect(returnUrl);
         }
 
+        public virtual ActionResult BookIt(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            bool Iscoworking = false;
+            try
+            {
+                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var localisation = lRepo.Get(id);
+                if (localisation == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                    return RedirectToAction(MVC.Admin.Sheet.Index());
+                }
+                localisation.Bookable = !localisation.Bookable;
+                Iscoworking = (int)LocalisationType.CoworkingSpace == localisation.TypeValue;
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("BookIt", ex);
+                context.Complete();
+            }
+            return RedirectToAction(!Iscoworking ? MVC.Admin.Sheet.BusinessCenter() : MVC.Admin.Sheet.CoworkingSpace());
+        }
+
         #endregion 
 
         #region Admin Rental
@@ -244,6 +269,48 @@ namespace Worki.Web.Areas.Admin.Controllers
 
             return RedirectToAction(MVC.Admin.Sheet.IndexRental());
             //return Redirect(returnUrl);
+        }
+
+        #endregion
+
+        #region Localisation Type && Location
+
+        public virtual ActionResult CoworkingSpace(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var pageValue = page ?? 1;
+            var localisations = lRepo.GetSpace(LocalisationType.CoworkingSpace, "France").OrderByDescending(x => x.ID).ToList();
+            var viewModel = new PagingList<Localisation>()
+            {
+                List = localisations.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = MiscHelpers.Constants.PageSize,
+                    TotalItems = localisations.Count
+                }
+            };
+            return View(MVC.Admin.Sheet.Views.CoworkingSpace, viewModel);
+        }
+
+        public virtual ActionResult BusinessCenter(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var pageValue = page ?? 1;
+            var localisations = lRepo.GetSpace(LocalisationType.BuisnessCenter, "France").OrderByDescending(x => x.ID).ToList();
+            var viewModel = new PagingList<Localisation>()
+            {
+                List = localisations.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = MiscHelpers.Constants.PageSize,
+                    TotalItems = localisations.Count
+                }
+            };
+            return View(MVC.Admin.Sheet.Views.BusinessCenter, viewModel);
         }
 
         #endregion

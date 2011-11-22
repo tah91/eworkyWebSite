@@ -345,4 +345,7 @@
   <data name="IndexQuotation" xml:space="preserve">
     <value>Gestion des devis</value>
   </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
 </root>

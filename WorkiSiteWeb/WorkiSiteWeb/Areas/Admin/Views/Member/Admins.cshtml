@@ -1,0 +1,54 @@
+﻿@model Worki.Data.Models.PagingList<MemberAdminModel>
+           
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Admin.AdminString.AdminSpace)</title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Member)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left adminLeftMenu">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminPanel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                       &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.Name
+                    </th>
+                    <th>
+                       &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.EmailAddress
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.List)
+                { 
+                    <tr>
+                        <td align="right">
+                            @item.LastName
+                        </td>
+                        <td align="right">
+							@Html.ActionLink(item.UserName, MVC.Dashboard.Profil.Public(item.MemberId)) 
+                        </td>
+                    </tr>
+				} 
+            </tbody>
+            <tfoot> </tfoot>
+        </table>
+        <div class="pager">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("AdminList", new { page = x }))
+        </div>
+	</div>
+	<div class="clear"></div>
+</div>

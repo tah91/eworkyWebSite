@@ -79,11 +79,29 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrateurs.
+        /// </summary>
+        public static string Admins {
+            get {
+                return ResourceManager.GetString("Admins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réservations.
         /// </summary>
         public static string Bookings {
             get {
                 return ResourceManager.GetString("Bookings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Business Fr.
+        /// </summary>
+        public static string BusinessCenterFr {
+            get {
+                return ResourceManager.GetString("BusinessCenterFr", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace Worki.Resources.Menu {
         public static string Community {
             get {
                 return ResourceManager.GetString("Community", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coworking Fr.
+        /// </summary>
+        public static string CoworkingSpaceFr {
+            get {
+                return ResourceManager.GetString("CoworkingSpaceFr", resourceCulture);
             }
         }
         
@@ -273,6 +300,15 @@ namespace Worki.Resources.Menu {
         public static string Subscription {
             get {
                 return ResourceManager.GetString("Subscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top 50.
+        /// </summary>
+        public static string TopMember {
+            get {
+                return ResourceManager.GetString("TopMember", resourceCulture);
             }
         }
     }
