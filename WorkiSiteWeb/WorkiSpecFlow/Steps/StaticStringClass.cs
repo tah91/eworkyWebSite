@@ -15,8 +15,8 @@ namespace Worki.SpecFlow
             public const string AddFreeSpace = "lieu-de-travail/ajouter-lieu-gratuit";
             public const string AddNotFreeSpace = "lieu-de-travail/ajouter-lieu-payant";
             public const string AddSpace = "accueil/ajouter-espace";
-            public const string Admin = "Admin";
-            public const string ChangePassword = "profil/changer-mdp/";
+            public const string Admin = "Admin/Sheet";
+            public const string ChangePassword = "Dashboard/Profil/changer-mdp";
             public const string CGU = "accueil/cgu";
             public const string Contact = "accueil/contact";
             public const string Connexion = "compte/connexion";
@@ -29,11 +29,11 @@ namespace Worki.SpecFlow
             public const string RentalResult = "annonces/resultats-annonces";
             public const string RentalAdd = "annonces/ajouter";
             public const string RentalDetail = "annonces/details/";
-            public const string RentalIndex = "Admin/IndexRental";
+            public const string RentalIndex = "Admin/Sheet/IndexRental";
             public const string RentalSearch = "Rental/recherche";
             public const string RentalSendFriend = "annonces/envoyer-email-ami/";
             public const string Search = "lieu-de-travail/recherche";
-            public const string WelcomePeopleIndex = "Admin/IndexWelcomePeople";
+            public const string WelcomePeopleIndex = "Admin/Activity/IndexWelcomePeople";
             public const string WhoWeAre = "accueil/a-propos";
         }
 

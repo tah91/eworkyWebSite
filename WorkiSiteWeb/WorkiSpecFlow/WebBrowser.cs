@@ -13,7 +13,7 @@ namespace Worki.SpecFlow
         // public const string RootURL = "http://eworkydev.cloudapp.net/";
 
         /* Root Url for localhost */
-        public const string RootURL = "http://localhost:6057/";
+        public const string RootURL = "http://localhost:3573/";
 
         public static IE Current
         {

@@ -25,22 +25,22 @@ namespace Worki.SpecFlow
         public void GivenJeRemplisLesChamps()
         {
             WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Espace public numérique / Cybercafé");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("eWorky");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177170421");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("www.eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeText("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("eWorky");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("47 rue de Lille");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Paris");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177170421");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@eworky.com");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("www.eworky.com");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika");
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidMorning.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidEvening.Click();
-            WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeText("1");
+            WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeTextQuickly("1");
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Restauration.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
-            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeText("Près de la station Solférino");
+            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeTextQuickly("Près de la station Solférino");
             WebBrowser.Current.Page<AjoutPage>().Check_Access24.Click();
         }
 
@@ -83,22 +83,22 @@ namespace Worki.SpecFlow
         public void WhenJeChangeLesChamps()
         {
             WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Café / Restaurant");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("Greenworking");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("62 Rue Chabot Charny");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Dijon");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177198721");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@greenworking.fr");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("http://www.greenworking.fr/");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeText("Ceci est un test auto Made by Mika Edit");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("Greenworking");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("62 Rue Chabot Charny");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Dijon");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177198721");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@greenworking.fr");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("http://www.greenworking.fr/");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika Edit");
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidMorning.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidEvening.Click();
-            WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeText("10");
+            WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeTextQuickly("10");
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Restauration.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
-            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeText("");
+            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeTextQuickly("");
             WebBrowser.Current.Page<AjoutPage>().Check_Access24.Click();
         }
 
@@ -110,7 +110,7 @@ namespace Worki.SpecFlow
             Assert.That(ie.ContainsText("Prix du café : 10,00 €") && ie.ContainsText("Wifi gratuit") && !ie.ContainsText("Prise de courant")
                      && !ie.ContainsText("Internet très haut débit") && !ie.ContainsText("Rangement sécurisé") && !ie.ContainsText("Café / Bar")
                      && !ie.ContainsText("Restauration") && ie.ContainsText("Greenworking") && ie.ContainsText("Café / Restaurant") && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
-                     && ie.ContainsText("01 77 19 87 21") && !ie.ContainsText("Accès 24/7") && ie.ContainsText("contact@eworky.com") && !ie.ContainsText("Eviter les periodes : matinée, soirée.")
+                     && ie.ContainsText("01 77 19 87 21") && !ie.ContainsText("Accès 24/7") && ie.ContainsText("contact@greenworking.fr") && !ie.ContainsText("Eviter les periodes : matinée, soirée.")
                      && !ie.ContainsText("Transports en commun : Près de la station Solférino") && ie.ContainsText("Ceci est un test auto Made by Mika Edit"));
             WebBrowser.Current.Close();
         }
@@ -146,23 +146,23 @@ namespace Worki.SpecFlow
         public void GivenJeRemplisLesChamps2()
         {
             WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Télécentre");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("eWorky");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177170421");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("www.eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeText("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("eWorky");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("47 rue de Lille");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Paris");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177170421");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@eworky.com");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("www.eworky.com");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika");
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Restauration.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
-            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeText("Près de la station Solférino");
+            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeTextQuickly("Près de la station Solférino");
             WebBrowser.Current.Page<AjoutPage>().Check_Access24.Click();
             WebBrowser.Current.Page<AjoutPage>().Type_Offer.Select("Bureau");
             WebBrowser.Current.Page<AjoutPage>().Add_Offer.Click();
-            WebBrowser.Current.Page<AjoutPage>().OfferName.TypeText("Bureau 1");
+            WebBrowser.Current.Page<AjoutPage>().OfferName.TypeTextQuickly("Bureau 1");
             WebBrowser.Current.Page<AjoutPage>().Desktop25_50.Click();
             WebBrowser.Current.Page<AjoutPage>().Equipped.Click();
             WebBrowser.Current.Page<AjoutPage>().AllInclusive.Click();
@@ -191,19 +191,19 @@ namespace Worki.SpecFlow
         public void WhenJeChangeLesChamps2()
         {
             WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Espace de coworking");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("Greenworking");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("62 Rue Chabot Charny");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Dijon");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeText("0177198721");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("contact@greenworking.fr");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeText("http://www.greenworking.fr/");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeText("Ceci est un test auto Made by Mika Edit");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("Greenworking");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("62 Rue Chabot Charny");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Dijon");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177198721");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@greenworking.fr");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("http://www.greenworking.fr/");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika Edit");
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Restauration.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
-            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeText("");
+            WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeTextQuickly("");
             WebBrowser.Current.Page<AjoutPage>().DeleteOffer.Click();
             WebBrowser.Current.Page<AjoutPage>().ConfirmDelete.Click();
         }
@@ -239,14 +239,14 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis mal le champs Email")]
         public void GivenJeRemplisMalLeChampsEmail()
         {
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeText("emailpasbon");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("emailpasbon");
         }
 
         [Given(@"je remplis mal les horaires")]
         public void GivenJeRemplisMalLesHoraires()
         {
-            WebBrowser.Current.Page<AjoutPage>().MonOpen.TypeText("horairepasbonne");
-            WebBrowser.Current.Page<AjoutPage>().MonClose.TypeText("27:60");
+            WebBrowser.Current.Page<AjoutPage>().MonOpen.TypeTextQuickly("horairepasbonne");
+            WebBrowser.Current.Page<AjoutPage>().MonClose.TypeTextQuickly("27:60");
         }
 
         #endregion
@@ -256,9 +256,9 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis lieux deja rentré")]
         public void GivenJeRemplisLieuxDejaRentre()
         {
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeText("eWorky");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("eWorky");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("47 rue de Lille");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Paris");
         }
 
         #endregion

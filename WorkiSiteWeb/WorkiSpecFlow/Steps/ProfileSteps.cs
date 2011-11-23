@@ -46,10 +46,10 @@ namespace Worki.SpecFlow
         public void WhenJeChangeQuelquesChamps()
         {
             WebBrowser.Current.Page<ProfilPage>().Profil_Type.Select("Travailleur nomade");
-            WebBrowser.Current.Page<ProfilPage>().LastName.TypeText("AdminE");
-            WebBrowser.Current.Page<ProfilPage>().FirstName.TypeText("AdminE");
-            WebBrowser.Current.Page<ProfilPage>().DescriptionField.TypeText("Ceci est un Test auto Made by Mika");
-            WebBrowser.Current.Page<ProfilPage>().Company.TypeText("eWorky");
+            WebBrowser.Current.Page<ProfilPage>().LastName.TypeTextQuickly("AdminE");
+            WebBrowser.Current.Page<ProfilPage>().FirstName.TypeTextQuickly("AdminE");
+            WebBrowser.Current.Page<ProfilPage>().DescriptionField.TypeTextQuickly("Ceci est un Test auto Made by Mika");
+            WebBrowser.Current.Page<ProfilPage>().Company.TypeTextQuickly("eWorky");
         }
 
         [When(@"Je valide le formulaire du profil")]
@@ -75,10 +75,10 @@ namespace Worki.SpecFlow
         public void WhenJeRemetLesChampsDeBase()
         {
             WebBrowser.Current.Page<ProfilPage>().Profil_Type.Select("Autre");
-            WebBrowser.Current.Page<ProfilPage>().LastName.TypeText("Admin");
-            WebBrowser.Current.Page<ProfilPage>().FirstName.TypeText("Admin");
-            WebBrowser.Current.Page<ProfilPage>().DescriptionField.TypeText("");
-            WebBrowser.Current.Page<ProfilPage>().Company.TypeText("Administrateur");
+            WebBrowser.Current.Page<ProfilPage>().LastName.TypeTextQuickly("Admin");
+            WebBrowser.Current.Page<ProfilPage>().FirstName.TypeTextQuickly("Admin");
+            WebBrowser.Current.Page<ProfilPage>().DescriptionField.TypeTextQuickly("");
+            WebBrowser.Current.Page<ProfilPage>().Company.TypeTextQuickly("Administrateur");
         }
 
         [Then(@"Le profil est reinitialiser")]
@@ -115,8 +115,8 @@ namespace Worki.SpecFlow
         [When(@"Je me trompe de mot de passe")]
         public void WhenJeMeTrompeDeMotDePasse()
         {
-            WebBrowser.Current.Page<ProfilPage>().Login.TypeText("mika7869@gmail.com");
-            WebBrowser.Current.Page<ProfilPage>().Password.TypeText("mika");
+            WebBrowser.Current.Page<ProfilPage>().Login.TypeTextQuickly("mika7869@gmail.com");
+            WebBrowser.Current.Page<ProfilPage>().Password.TypeTextQuickly("mika");
             WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
         }
 
@@ -140,10 +140,10 @@ namespace Worki.SpecFlow
         [When(@"Je me trompe de mot de passe 6 fois")]
         public void WhenJeMeTrompeDeMotDePasse6Fois()
         {
-            WebBrowser.Current.Page<ProfilPage>().Login.TypeText("mika7869@gmail.com");
+            WebBrowser.Current.Page<ProfilPage>().Login.TypeTextQuickly("mika7869@gmail.com");
             for (var i = 0; i < 6; i++)
             {
-                WebBrowser.Current.Page<ProfilPage>().Password.TypeText("mika");
+                WebBrowser.Current.Page<ProfilPage>().Password.TypeTextQuickly("mika");
                 WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
             }
         }
