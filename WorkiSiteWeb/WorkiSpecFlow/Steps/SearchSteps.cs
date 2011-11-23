@@ -91,7 +91,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Etudiant")]
         public void ThenJeDoisAvoirLaDescriptionEtudiant()
         {
-            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Etudiant");
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, Worki.Resources.Models.Profile.Profile.Student);
             WebBrowser.Current.Close();
         }
 
@@ -108,7 +108,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Entrepreneur")]
         public void ThenJeDoisAvoirLaDescriptionEntrepreneur()
         {
-            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Entrepreneur");
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, Worki.Resources.Views.Search.SearchString.Entrepreneur);
             WebBrowser.Current.Close();
         }
 
@@ -125,7 +125,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description GrandCompte")]
         public void ThenJeDoisAvoirLaDescriptionGrandCompte()
         {
-            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Grand compte");
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, Worki.Resources.Models.Profile.Profile.Company);
             WebBrowser.Current.Close();
         }
 
@@ -142,7 +142,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Indépendant")]
         public void ThenJeDoisAvoirLaDescriptionIndependant()
         {
-            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Indépendant");
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, Worki.Resources.Views.Search.SearchString.Independant);
             WebBrowser.Current.Close();
         }
 
@@ -159,7 +159,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Nomade")]
         public void ThenJeDoisAvoirLaDescriptionNomade()
         {
-            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Nomade");
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, Worki.Resources.Views.Search.SearchString.Nomad);
             WebBrowser.Current.Close();
         }
         #endregion
@@ -175,7 +175,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la description Teletravailleur")]
         public void ThenJeDoisAvoirLaDescriptionTeletravailleur()
         {
-            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, "Télétravailleur");
+            Assert.AreEqual(WebBrowser.Current.Page<SearchPage>().Search_Title.Text, Worki.Resources.Models.Profile.Profile.Teleworker);
             WebBrowser.Current.Close();
         }
 
@@ -232,32 +232,32 @@ namespace Worki.SpecFlow
 
             public Link Link_Etudiant
             {
-                get { return Document.Link(Find.ByText("Etudiant")); }
+                get { return Document.Link(Find.ByText(Worki.Resources.Models.Profile.Profile.Student)); }
             }
 
             public Link Link_Nomade
             {
-                get { return Document.Link(Find.ByText("Nomade")); }
+                get { return Document.Link(Find.ByText(Worki.Resources.Views.Search.SearchString.Nomad)); }
             }
 
             public Link Link_Teletravailleur
             {
-                get { return Document.Link(Find.ByText("Télétravailleur")); }
+                get { return Document.Link(Find.ByText(Worki.Resources.Models.Profile.Profile.Teleworker)); }
             }
 
             public Link Link_Entrepreneur
             {
-                get { return Document.Link(Find.ByText("Entrepreneur")); }
+                get { return Document.Link(Find.ByText(Worki.Resources.Views.Search.SearchString.Entrepreneur)); }
             }
 
             public Link Link_GrdCompte
             {
-                get { return Document.Link(Find.ByText("Grand compte")); }
+                get { return Document.Link(Find.ByText(Worki.Resources.Models.Profile.Profile.Company)); }
             }
 
             public Link Link_Independant
             {
-                get { return Document.Link(Find.ByText("Indépendant")); }
+                get { return Document.Link(Find.ByText(Worki.Resources.Views.Search.SearchString.Independant)); }
             }
 
             #endregion

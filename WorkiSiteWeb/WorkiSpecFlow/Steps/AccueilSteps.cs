@@ -77,7 +77,7 @@ namespace Worki.SpecFlow
             [Given(@"Je selectionne Salon d'affaire")]
             public void GivenJeSelectionneSalonDAffaire()
             {
-                WebBrowser.Current.Page<AccueilPage>().Type_Espace.Select("Salon d'affaires");
+                WebBrowser.Current.Page<AccueilPage>().Type_Espace.Select(Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge);
             }
 
         #endregion

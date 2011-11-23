@@ -49,5 +49,15 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Autre
+
+        public static class Autre
+        {
+            public const string MsgPerso = "Ceci est un test auto Made by Mika";
+            public const string MyLogin = "mika7869@gmail.com";
+        }
+
+        #endregion
     }
 }

@@ -150,7 +150,7 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<RentalPage>().Surface.TypeTextQuickly("120");
             WebBrowser.Current.Page<RentalPage>().HeatingType.Select("Gaz");
             WebBrowser.Current.Page<RentalPage>().GreenHouse.Select("B");
-            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeTextQuickly("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
             WebBrowser.Current.Page<RentalPage>().Adress.TypeTextQuickly("57 rue de Lille");
             WebBrowser.Current.Page<RentalPage>().Postal.TypeTextQuickly("75007");
             WebBrowser.Current.Page<RentalPage>().Town.TypeTextQuickly("Paris");

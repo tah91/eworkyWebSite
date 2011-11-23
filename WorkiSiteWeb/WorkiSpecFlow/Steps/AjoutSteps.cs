@@ -24,14 +24,14 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis les champs")]
         public void GivenJeRemplisLesChamps()
         {
-            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Espace public numérique / Cybercafé");
+            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select(Worki.Resources.Models.Localisation.Localisation.PublicSpace);
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("eWorky");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("47 rue de Lille");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Paris");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177170421");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("www.eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly(MiscHelpers.EmailConstants.Tel);
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly(MiscHelpers.EmailConstants.ContactMail);
+            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly(MiscHelpers.EmailConstants.WebsiteAddress);
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidMorning.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidEvening.Click();
             WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeTextQuickly("1");
@@ -55,11 +55,11 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
 
-            Assert.That(ie.ContainsText("Prix du café : 1,00 €") && ie.ContainsText("Wifi gratuit") && ie.ContainsText("Prise de courant")
-                     && ie.ContainsText("Internet très haut débit") && ie.ContainsText("Rangement sécurisé") && ie.ContainsText("Café / Bar")
-                     && ie.ContainsText("Restauration") && ie.ContainsText("eWorky") && ie.ContainsText("Espace public numérique / Cybercafé") && ie.ContainsText("47 rue de Lille - 75007 Paris")
-                     && ie.ContainsText("01 77 17 04 21") && ie.ContainsText("Accès 24/7") && ie.ContainsText("contact@eworky.com") && ie.ContainsText("Eviter les periodes : matinée, soirée.")
-                     && ie.ContainsText("Transports en commun : Près de la station Solférino") && ie.ContainsText("Ceci est un test auto Made by Mika"));
+            Assert.That(ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.CoffeePrice + " : 1,00 €") && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Wifi_Free) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Outlet)
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.FastInternet) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.SafeStorage) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Coffee)
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Restauration) && ie.ContainsText("eWorky") && ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.PublicSpace) && ie.ContainsText("47 rue de Lille - 75007 Paris")
+                     && ie.ContainsText(MiscHelpers.EmailConstants.Tel) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Access24) && ie.ContainsText(MiscHelpers.EmailConstants.ContactMail) && ie.ContainsText(Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods + " : matinée, soirée.")
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.PublicTransportation + " : Près de la station Solférino") && ie.ContainsText(StaticStringClass.Autre.MsgPerso));
             WebBrowser.Current.Close();
         }
 
@@ -82,14 +82,14 @@ namespace Worki.SpecFlow
         [When(@"Je change les champs")]
         public void WhenJeChangeLesChamps()
         {
-            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Café / Restaurant");
+            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select(Worki.Resources.Models.Localisation.Localisation.CoffeeResto);
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("Greenworking");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("62 Rue Chabot Charny");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Dijon");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177198721");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@greenworking.fr");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("http://www.greenworking.fr/");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika Edit");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly(StaticStringClass.Autre.MsgPerso + " Edit");
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidMorning.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_AvoidEvening.Click();
             WebBrowser.Current.Page<AjoutPage>().Prix_Cafe.TypeTextQuickly("10");
@@ -107,11 +107,11 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
 
-            Assert.That(ie.ContainsText("Prix du café : 10,00 €") && ie.ContainsText("Wifi gratuit") && !ie.ContainsText("Prise de courant")
-                     && !ie.ContainsText("Internet très haut débit") && !ie.ContainsText("Rangement sécurisé") && !ie.ContainsText("Café / Bar")
-                     && !ie.ContainsText("Restauration") && ie.ContainsText("Greenworking") && ie.ContainsText("Café / Restaurant") && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
-                     && ie.ContainsText("01 77 19 87 21") && !ie.ContainsText("Accès 24/7") && ie.ContainsText("contact@greenworking.fr") && !ie.ContainsText("Eviter les periodes : matinée, soirée.")
-                     && !ie.ContainsText("Transports en commun : Près de la station Solférino") && ie.ContainsText("Ceci est un test auto Made by Mika Edit"));
+            Assert.That(ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.CoffeePrice + " : 10,00 €") && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Wifi_Free) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Outlet)
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.FastInternet) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.SafeStorage) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Coffee)
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Restauration) && ie.ContainsText("Greenworking") && ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.CoffeeResto) && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
+                     && ie.ContainsText("01 77 19 87 21") && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Access24) && ie.ContainsText("contact@greenworking.fr") && !ie.ContainsText(Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods + " : matinée, soirée.")
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.PublicTransportation + " : Près de la station Solférino") && ie.ContainsText(StaticStringClass.Autre.MsgPerso + " Edit"));
             WebBrowser.Current.Close();
         }
 
@@ -128,7 +128,7 @@ namespace Worki.SpecFlow
         [Then(@"La fiche de lieu est supprimée")]
         public void ThenLaFicheDeLieuEstSupprimee()
         {
-            WebBrowser.Current.ContainsText("Le lieu a été supprimé.");
+            WebBrowser.Current.ContainsText(Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenDel);
             WebBrowser.Current.Close();
         }
 
@@ -145,14 +145,14 @@ namespace Worki.SpecFlow
         [Given(@"Je remplis les champs 2")]
         public void GivenJeRemplisLesChamps2()
         {
-            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Télécentre");
+            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select(Worki.Resources.Models.Localisation.Localisation.Telecentre);
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("eWorky");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("47 rue de Lille");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Paris");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177170421");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("www.eworky.com");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly(MiscHelpers.EmailConstants.Tel);
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly(MiscHelpers.EmailConstants.ContactMail);
+            WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly(MiscHelpers.EmailConstants.WebsiteAddress);
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
@@ -160,7 +160,7 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
             WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeTextQuickly("Près de la station Solférino");
             WebBrowser.Current.Page<AjoutPage>().Check_Access24.Click();
-            WebBrowser.Current.Page<AjoutPage>().Type_Offer.Select("Bureau");
+            WebBrowser.Current.Page<AjoutPage>().Type_Offer.Select(Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesktop);
             WebBrowser.Current.Page<AjoutPage>().Add_Offer.Click();
             WebBrowser.Current.Page<AjoutPage>().OfferName.TypeTextQuickly("Bureau 1");
             WebBrowser.Current.Page<AjoutPage>().Desktop25_50.Click();
@@ -174,12 +174,12 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
 
-            Assert.That(ie.ContainsText("Wifi gratuit") && ie.ContainsText("Prise de courant")
-                     && ie.ContainsText("Internet très haut débit") && ie.ContainsText("Rangement sécurisé") && ie.ContainsText("Café / Bar")
-                     && ie.ContainsText("Restauration") && ie.ContainsText("eWorky") && ie.ContainsText("Télécentre") && ie.ContainsText("47 rue de Lille - 75007 Paris")
-                     && ie.ContainsText("01 77 17 04 21") && ie.ContainsText("Accès 24/7") && ie.ContainsText("contact@eworky.com")
-                     && ie.ContainsText("Transports en commun : Près de la station Solférino") && ie.ContainsText("Bureaux") && ie.ContainsText("De 25 à 50 m2") && ie.ContainsText("Equipé et câblé")
-                     && ie.ContainsText("Tout compris (charges, taxes, nettoyage, etc.)") && ie.ContainsText("Ceci est un test auto Made by Mika"));
+            Assert.That(ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Wifi_Free) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Outlet)
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.FastInternet) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.SafeStorage) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Coffee)
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Restauration) && ie.ContainsText("eWorky") && ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.Telecentre) && ie.ContainsText("47 rue de Lille - 75007 Paris")
+                     && ie.ContainsText(MiscHelpers.EmailConstants.Tel) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Access24) && ie.ContainsText(MiscHelpers.EmailConstants.ContactMail)
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.PublicTransportation + " : Près de la station Solférino") && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop25_50) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Equipped)
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.AllInclusive) && ie.ContainsText(StaticStringClass.Autre.MsgPerso));
             WebBrowser.Current.Close();
         }
 
@@ -190,14 +190,14 @@ namespace Worki.SpecFlow
         [When(@"Je change les champs 2")]
         public void WhenJeChangeLesChamps2()
         {
-            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select("Espace de coworking");
+            WebBrowser.Current.Page<AjoutPage>().Type_Espace.Select(Worki.Resources.Models.Localisation.Localisation.CoworkingSpace);
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("Greenworking");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeTextQuickly("62 Rue Chabot Charny");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeTextQuickly("Dijon");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177198721");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@greenworking.fr");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("http://www.greenworking.fr/");
-            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly("Ceci est un test auto Made by Mika Edit");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Description.TypeTextQuickly(StaticStringClass.Autre.MsgPerso + " Edit");
             WebBrowser.Current.Page<AjoutPage>().Check_Outlet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_FastInternet.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_Coffee.Click();
@@ -213,12 +213,12 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
 
-            Assert.That(ie.ContainsText("Wifi gratuit") && !ie.ContainsText("Prise de courant")
-                     && !ie.ContainsText("Internet très haut débit") && !ie.ContainsText("Rangement sécurisé") && !ie.ContainsText("Café / Bar")
-                     && !ie.ContainsText("Restauration") && ie.ContainsText("Greenworking") && ie.ContainsText("Espace de coworking") && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
+            Assert.That(ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Wifi_Free) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Outlet)
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.FastInternet) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.SafeStorage) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Coffee)
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Restauration) && ie.ContainsText("Greenworking") && ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.CoworkingSpace) && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
                      && ie.ContainsText("01 77 19 87 21") && ie.ContainsText("contact@greenworking.fr")
-                     && !ie.ContainsText("Transports en commun : Près de la station Solférino") && !ie.ContainsText("Bureaux") && !ie.ContainsText("De 25 à 50 m2") && !ie.ContainsText("Equipé et câblé")
-                     && !ie.ContainsText("Tout compris (charges, taxes, nettoyage, etc.)") && ie.ContainsText("Ceci est un test auto Made by Mika Edit"));
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.PublicTransportation + " : Près de la station Solférino") && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop25_50) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Equipped)
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.AllInclusive) && ie.ContainsText(StaticStringClass.Autre.MsgPerso + " Edit"));
             WebBrowser.Current.Close();
         }
 

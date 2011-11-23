@@ -34,14 +34,14 @@ namespace Worki.SpecFlow
         public void WhenJeMetUneNoteEtUnCommentaire()
         {
             WebBrowser.Current.Page<DetailPage>().CommentRate(4, 4, 4, 4);
-            WebBrowser.Current.Page<DetailPage>().Msg.TypeTextQuickly("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<DetailPage>().Msg.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
             WebBrowser.Current.Page<DetailPage>().Boutton_Envoyer.Click();
         }
 
         [Then(@"Je dois retrouver le commentaire et la note")]
         public void ThenJeDoisRetrouverLeCommentaireEtLaNote()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("Ceci est un test auto Made by Mika"));
+            Assert.IsTrue(WebBrowser.Current.ContainsText(StaticStringClass.Autre.MsgPerso));
             Assert.That(int.Parse(WebBrowser.Current.Page<DetailPage>().Rateit.GetAttributeValue("data-rateit-value")) == 4);
             WebBrowser.Current.Close();
         }
@@ -65,7 +65,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois retrouver mon commentaire")]
         public void ThenJeDoisRetrouverMonCommentaire()
         {
-            Assert.That(WebBrowser.Current.ContainsText("Ceci est un test auto Made by Mika"));
+            Assert.That(WebBrowser.Current.ContainsText(StaticStringClass.Autre.MsgPerso));
             WebBrowser.Current.Close();
         }
 
@@ -77,13 +77,13 @@ namespace Worki.SpecFlow
         [When(@"Je supprime mon commentaire")]
         public void WhenJeSupprimeMonCommentaire()
         {
-            WebBrowser.Current.Link(Find.ByText("Effacer le commentaire")).Click();
+            WebBrowser.Current.Link(Find.ByText(Worki.Resources.Views.Shared.SharedString.DeleteComment)).Click();
         }
 
         [Then(@"Le commentaire a été supprimé")]
         public void ThenLeCommentaireAEteSupprime()
         {
-            Assert.That(!WebBrowser.Current.ContainsText("Effacer le commentaire"));
+            Assert.That(!WebBrowser.Current.ContainsText(Worki.Resources.Views.Shared.SharedString.DeleteComment));
             WebBrowser.Current.Close();
         }
 
