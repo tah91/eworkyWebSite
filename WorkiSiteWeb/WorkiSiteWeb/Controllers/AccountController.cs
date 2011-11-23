@@ -188,7 +188,7 @@ namespace Worki.Web.Controllers
 				{
 					_Logger.Error(ex.Message);
 					if (string.IsNullOrEmpty(error))
-						error = "Une erreur est surevnue pendant la sauvegarde";
+						error = Worki.Resources.Views.Account.InscriptionString.ErrorSave;
 				}
 
 				if (createStatusSuccess && addMemberDataSuccess)
@@ -450,7 +450,7 @@ namespace Worki.Web.Controllers
 								_Logger.Error(ex.Message);
 							}
 
-							TempData[MiscHelpers.TempDataConstants.Info] = "Vous êtes maintenant inscrit sur eWorky !";
+							TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.InscriptionString.RegisterEworky;
 						}
 						else
 						{

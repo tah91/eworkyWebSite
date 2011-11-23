@@ -283,4 +283,10 @@
   <data name="Quotations" xml:space="preserve">
     <value>Devis</value>
   </data>
+  <data name="AddLocError" xml:space="preserve">
+    <value>Une erreur a eu lieu ({0} lieux de travail ont été ajoutés) =&gt; {1}</value>
+  </data>
+  <data name="LocAdded" xml:space="preserve">
+    <value>{0} lieux ajoutés.</value>
+  </data>
 </root>

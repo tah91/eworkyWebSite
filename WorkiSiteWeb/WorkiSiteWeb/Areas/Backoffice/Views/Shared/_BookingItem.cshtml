@@ -3,28 +3,28 @@
 <li class="bookingItem">
     <div class="contentBlock">
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description("Client(e)",Model.Member.GetFullDisplayName())
-            @RazorHelpers.Description("Lieu", Model.Offer.Localisation.Name)
-            @RazorHelpers.Description("Offre", Model.Offer.Name)
-            @RazorHelpers.Description("Demandé le", DateTime.Now.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, DateTime.Now.ToString())
         </div>
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description("Début", Model.FromDate.ToString())
-            @RazorHelpers.Description("Fin", Model.ToDate.ToString())
-            @RazorHelpers.Description("Prix", Model.Price.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, Model.FromDate.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, Model.ToDate.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
         </div>
         <div class="bookingStatus float-left">
             <div class="bookingStatusContent">
                 <div class="bookingStatusDesc">
-                    En attente de payment
+                    @Worki.Resources.Views.Booking.BookingString.WaitingForPayement
                 </div>
                 <div class="buttonStd buttonBlue linkImg bookingStatusAction">
-                    <a href=#>Régler</a>
+                    <a href=#>@Worki.Resources.Views.Booking.BookingString.Pay</a>
                 </div>
             </div>
         </div>
         <div class="bookingLinks float-right blue">
-            @Html.ActionLink("Voir la fiche du client", MVC.Dashboard.Profil.Public(Model.MemberId))
+            @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))
         </div>
         <div class="clear">
         </div>

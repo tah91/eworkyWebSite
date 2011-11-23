@@ -120,4 +120,10 @@
   <data name="Description" xml:space="preserve">
     <value>Créez votre compte en quelques secondes, et bénéficiez de toutes les fonctionnalités d'eWorky.</value>
   </data>
+  <data name="ErrorSave" xml:space="preserve">
+    <value>Une erreur est survenue pendant la sauvegarde</value>
+  </data>
+  <data name="RegisterEworky" xml:space="preserve">
+    <value>Vous êtes maintenant inscrit sur eWorky !</value>
+  </data>
 </root>
