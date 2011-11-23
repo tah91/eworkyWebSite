@@ -107,6 +107,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
             var p = page;
             try
             {
@@ -116,10 +117,15 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (loc.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-                var model = new PagingList<MemberQuotation>
+                var quotations = qRepo.GetLocalisationQuotations(id);
+                var model = new LocalisationQuotationViewModel
                 {
-                    List = loc.GetQuotations().Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = loc.GetQuotations().Count }
+                    Localisation = loc,
+                    Quotations = new PagingList<MemberQuotation>
+                    {
+                        List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
+                    }
                 };
                 return View(model);
             }
@@ -220,10 +226,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (offer.Localisation.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-                var model = new PagingList<MemberQuotation>
+                var model = new OfferQuotationViewModel
                 {
-                    List = offer.MemberQuotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberQuotations.Count }
+                    Offer = offer,
+                    Quotations = new PagingList<MemberQuotation>
+                    {
+                        List = offer.MemberQuotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberQuotations.Count }
+                    }
                 };
                 return View(model);
             }

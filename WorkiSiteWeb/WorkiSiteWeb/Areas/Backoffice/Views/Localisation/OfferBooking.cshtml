@@ -20,27 +20,24 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		<div class="contentBlock">
-            @if (Model.Bookings.List.Count != 0)
+        @if (Model.Bookings.List.Count != 0)
+        {
+            <ul>
+            @foreach (var booking in Model.Bookings.List)
             {
-                <ul>
-                @foreach (var booking in Model.Bookings.List)
-                {
-                    @Html.Partial(MVC.Backoffice.Shared.Views._BookingItem, booking)
-                }
-                </ul>
-                <div class="pager">
-                    @Html.PageLinks(Model.Bookings.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Localisation.ID, Model.Offer.Id, x)))
-                </div>
+                @Html.Partial(MVC.Backoffice.Shared.Views._BookingItem, booking)
             }
-            else
-            {
-            <div class="contentBlock italic">
-                @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
+            </ul>
+            <div class="pager">
+                @Html.PageLinks(Model.Bookings.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Localisation.ID, Model.Offer.Id, x)))
             </div>
-            }
-		</div>
+        }
+        else
+        {
+        <div class="contentBlock italic">
+            @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
+        </div>
+        }
 	</div>
-	<div class="clear">
-	</div>
+	<div class="clear"></div>
 </div>

@@ -50,4 +50,16 @@ namespace Worki.Data.Models
 		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public string Message { get; set; }
 	}
+
+    public class LocalisationQuotationViewModel
+    {
+        public PagingList<MemberQuotation> Quotations { get; set; }
+        public Localisation Localisation { get; set; }
+    }
+
+    public class OfferQuotationViewModel
+    {
+        public PagingList<MemberQuotation> Quotations { get; set; }
+        public Offer Offer { get; set; }
+    }
 }
