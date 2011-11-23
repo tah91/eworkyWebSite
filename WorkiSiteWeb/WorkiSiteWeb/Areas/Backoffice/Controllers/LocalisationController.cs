@@ -140,17 +140,20 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// Get action result to show recent activities of the owner localisation
 		/// </summary>
 		/// <returns>View with recent activities</returns>
-        public virtual ActionResult OfferIndex(int id, int offerid)
+        public virtual ActionResult OfferIndex(int id, int offerid = 0)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			try
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
+                
+                //case no offer selected, take the first one
                 var offer = oRepo.Get(offerid, id);
                 if (offer.Localisation.OwnerID != memberId)
 					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
