@@ -76,7 +76,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (loc.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-				var bookings = bRepo.GetLocalisationBookings(id);
+				var bookings = bRepo.GetMany(b => b.LocalisationId == id);
                 var model = new LocalisationBookingViewModel
                 {
                     Localisation = loc,
@@ -107,6 +107,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
             var p = page;
             try
             {
@@ -116,10 +117,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (loc.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
+				var quotations = qRepo.GetMany(b => b.LocalisationId == id);
                 var model = new PagingList<MemberQuotation>
                 {
-                    List = loc.GetQuotations().Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = loc.GetQuotations().Count }
+					List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
                 };
                 return View(model);
             }

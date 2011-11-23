@@ -71,7 +71,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 var member = mRepo.Get(id);
                 Member.Validate(member);
-				var bookings = bRepo.GetOwnerBookings(id);
+				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
                 var model = new PagingList<MemberBooking>
                 {
 					List = bookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
@@ -96,15 +96,17 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
             var p = page ?? 1;
             try
             {
                 var member = mRepo.Get(id);
                 Member.Validate(member);
+				var quotations = qRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
                 var model = new PagingList<MemberQuotation>
                 {
-                    List = member.GetQuotations().Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.GetQuotations().Count }
+					List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
                 };
                 return View(model);
             }
