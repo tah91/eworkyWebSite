@@ -21,7 +21,6 @@ namespace Worki.Data.Models
 		float DistanceBetween(float latitude, float longitude, int localisationId);
 		Comment GetComment(int comId);
 		IList<MemberEdition> GetLatestModifications(int count, EditionType type);
-        IList<Localisation> GetSpace(LocalisationType type, string country);
 	}
 
 	public class LocalisationRepository : RepositoryBase<Localisation>, ILocalisationRepository
@@ -245,22 +244,6 @@ namespace Worki.Data.Models
 
 			return lastest.Take(count).ToList();
 		}
-
-        /// <summary>
-        /// Get back all localisation of an asked type and location
-        /// </summary>
-        /// <param name="type">Type of localisation</param>
-        /// <param name="country">Location desired</param>
-        /// <returns></returns>
-        public IList<Localisation> GetSpace(LocalisationType type, string country)
-        {
-            var locs = from item in _Context.Localisations
-                          where item.Country == country && item.TypeValue == (int)type
-                          orderby item.ID descending
-                          select item;
-
-            return locs.ToList();
-        }
 
 		#endregion
 	}

@@ -280,7 +280,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
-            var localisations = lRepo.GetSpace(LocalisationType.CoworkingSpace, "France").OrderByDescending(x => x.ID).ToList();
+			var localisations = lRepo.GetMany(loc => loc.TypeValue == (int)LocalisationType.CoworkingSpace && loc.Country == "France").OrderByDescending(x => x.ID).ToList();
             var viewModel = new PagingList<Localisation>()
             {
                 List = localisations.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
@@ -299,7 +299,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var pageValue = page ?? 1;
-            var localisations = lRepo.GetSpace(LocalisationType.BuisnessCenter, "France").OrderByDescending(x => x.ID).ToList();
+			var localisations = lRepo.GetMany(loc => loc.TypeValue == (int)LocalisationType.BuisnessCenter && loc.Country == "France").OrderByDescending(x => x.ID).ToList();
             var viewModel = new PagingList<Localisation>()
             {
                 List = localisations.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
