@@ -162,4 +162,40 @@
   <data name="Surface" xml:space="preserve">
     <value>Surface</value>
   </data>
+  <data name="Asked" xml:space="preserve">
+    <value>Demandé le</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Client(e)</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value>Offre</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Régler</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="SeeCustomerSheet" xml:space="preserve">
+    <value>Voir la fiche du client</value>
+  </data>
+  <data name="SeeLocSheet" xml:space="preserve">
+    <value>Voir la fiche du lieu</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Début</value>
+  </data>
+  <data name="SurfaceFormat" xml:space="preserve">
+    <value>{0} ({1} m2)</value>
+  </data>
+  <data name="WaitingForPayement" xml:space="preserve">
+    <value>En attente de payment</value>
+  </data>
 </root>

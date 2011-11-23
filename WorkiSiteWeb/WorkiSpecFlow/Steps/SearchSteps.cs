@@ -30,7 +30,7 @@ namespace Worki.SpecFlow
         [Given(@"Je tappe (.*) dans la zone de recherche")]
         public void GivenJeTappeParisDansLaZoneDeRecherche(string address)
         {
-            WebBrowser.Current.Page<SearchPage>().Champ_Recherche.TypeText(address);
+            WebBrowser.Current.Page<SearchPage>().Champ_Recherche.TypeTextQuickly(address);
         }
 
         [When(@"Je clique sur rechercher dans la page d'acceuil")]

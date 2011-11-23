@@ -41,7 +41,7 @@
                         <a href="@item.GetDetailFullUrl(Url)">@item.Name</a>
                     </td>
                     <td align="right">
-                        @item.Member.GetFullDisplayName()
+                        @Html.ActionLink(item.Member.Username, MVC.Dashboard.Profil.Public(item.Member.MemberId))
                     </td>
                     <td align="right">
                         @(item.Bookable ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Sheet.BookIt(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.BookIt(item.ID)))

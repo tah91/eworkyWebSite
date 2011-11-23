@@ -302,13 +302,13 @@ namespace Worki.Web.Areas.Admin.Controllers
                 catch (Exception ex)
                 {
                     _Logger.Error("Edit", ex);
-                    ModelState.AddModelError("", "Une erreur a eu lieu (" + nbLocalisationsAdded + " lieux de travail ont été ajoutés) => " + ex.Message);
+                    ModelState.AddModelError("", string.Format(Worki.Resources.Views.Shared.SharedString.AddLocError, nbLocalisationsAdded, ex.Message));
                     context.Complete();
                 }
             }
 
             AdminImportViewModel viewModel = new AdminImportViewModel();
-            viewModel.resultMessage = nbLocalisationsAdded.ToString() + " localisations added.";
+            viewModel.resultMessage = string.Format(Worki.Resources.Views.Shared.SharedString.LocAdded, nbLocalisationsAdded);
             viewModel.localisationsAlreadyInDB = listLocalisationsAlreadyInDB;
             return View(viewModel);
         }

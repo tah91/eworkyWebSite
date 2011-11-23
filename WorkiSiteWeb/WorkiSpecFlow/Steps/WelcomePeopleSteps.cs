@@ -24,9 +24,9 @@ namespace Worki.SpecFlow
         public void WhenJeRemplisLeFormulaire()
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Creer.Click();
-            WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeText("mika7869@gmail.com");
-            WebBrowser.Current.Page<WelcomePeoplePage>().Localisation.TypeText("Le Bistrot Marguerite");
-            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeText("Ceci est un test ...");
+            WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeTextQuickly("mika7869@gmail.com");
+            WebBrowser.Current.Page<WelcomePeoplePage>().Localisation.TypeTextQuickly("Le Bistrot Marguerite");
+            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeTextQuickly("Ceci est un test ...");
         }
 
         [When(@"Je valide le formulaire welcome people")]
@@ -52,7 +52,7 @@ namespace Worki.SpecFlow
         public void WhenJeModifieLeFormulaire()
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Edit.Click();
-            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeText("Ceci est un test ... j'ai édité cette description ...");
+            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeTextQuickly("Ceci est un test ... j'ai édité cette description ...");
         }
 
         [When(@"Je valide save welcome people")]

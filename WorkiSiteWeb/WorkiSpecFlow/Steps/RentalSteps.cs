@@ -18,12 +18,12 @@ namespace Worki.SpecFlow
             WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Connexion);
 
             /* Login for eworkydev.cloudapp.net */
-            // WebBrowser.Current.TextField(Find.ById("Login")).TypeText(StaticStringClass.Connexion.OnlineLogin);
+            WebBrowser.Current.TextField(Find.ById("Login")).TypeTextQuickly(StaticStringClass.Connexion.OnlineLogin);
 
             /* Login for localhost */
-            WebBrowser.Current.TextField(Find.ById("Login")).TypeText(StaticStringClass.Connexion.LocalLogin);
+            // WebBrowser.Current.TextField(Find.ById("Login")).TypeTextQuickly(StaticStringClass.Connexion.LocalLogin);
 
-            WebBrowser.Current.TextField(Find.ById("Password")).TypeText(StaticStringClass.Connexion.Password);
+            WebBrowser.Current.TextField(Find.ById("Password")).TypeTextQuickly(StaticStringClass.Connexion.Password);
             WebBrowser.Current.Button(Find.ByValue("Se connecter")).Click();
         }
 
@@ -38,8 +38,8 @@ namespace Worki.SpecFlow
         [When(@"Je remplis des champs")]
         public void WhenJeRemplisDesChamps()
         {
-            WebBrowser.Current.Page<RentalPage>().MaxRate.TypeText("3000");
-            WebBrowser.Current.Page<RentalPage>().MinSurface.TypeText("10");
+            WebBrowser.Current.Page<RentalPage>().MaxRate.TypeTextQuickly("3000");
+            WebBrowser.Current.Page<RentalPage>().MinSurface.TypeTextQuickly("10");
         }
 
         [When(@"Je clique sur Rechercher location")]
@@ -101,7 +101,7 @@ namespace Worki.SpecFlow
         [When(@"Je remplis le champs location avec (.*)")]
         public void WhenJeRemplisLeChampsLocationAvecParis(string address)
         {
-            WebBrowser.Current.Page<RentalPage>().Place.TypeText(address);
+            WebBrowser.Current.Page<RentalPage>().Place.TypeTextQuickly(address);
         }
 
         [Then(@"Je dois avoir au moins (.*) pages de résultat")]
@@ -141,20 +141,20 @@ namespace Worki.SpecFlow
         public void WhenJeRemplisLeFormulaireDeLocation()
         {
             WebBrowser.Current.Page<RentalPage>().Rental_Type.Select("Bureaux & locaux professionnels");
-            WebBrowser.Current.Page<RentalPage>().Ref.TypeText("Ref Test Auto");
+            WebBrowser.Current.Page<RentalPage>().Ref.TypeTextQuickly("Ref Test Auto");
             WebBrowser.Current.Page<RentalPage>().Lease_Type.Select("Bail 3/6/9");
             WebBrowser.Current.Page<RentalPage>().AvailableNow.Click();
-            WebBrowser.Current.Page<RentalPage>().AvailableDate.TypeText("21/12/2012");
-            WebBrowser.Current.Page<RentalPage>().Rate.TypeText("2000");
-            WebBrowser.Current.Page<RentalPage>().Charges.TypeText("100");
-            WebBrowser.Current.Page<RentalPage>().Surface.TypeText("120");
+            WebBrowser.Current.Page<RentalPage>().AvailableDate.TypeTextQuickly("21/12/2012");
+            WebBrowser.Current.Page<RentalPage>().Rate.TypeTextQuickly("2000");
+            WebBrowser.Current.Page<RentalPage>().Charges.TypeTextQuickly("100");
+            WebBrowser.Current.Page<RentalPage>().Surface.TypeTextQuickly("120");
             WebBrowser.Current.Page<RentalPage>().HeatingType.Select("Gaz");
             WebBrowser.Current.Page<RentalPage>().GreenHouse.Select("B");
-            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeText("Ceci est un test auto Made by Mika");
-            WebBrowser.Current.Page<RentalPage>().Adress.TypeText("57 rue de Lille");
-            WebBrowser.Current.Page<RentalPage>().Postal.TypeText("75007");
-            WebBrowser.Current.Page<RentalPage>().Town.TypeText("Paris");
-            WebBrowser.Current.Page<RentalPage>().Country.TypeText("France");
+            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeTextQuickly("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<RentalPage>().Adress.TypeTextQuickly("57 rue de Lille");
+            WebBrowser.Current.Page<RentalPage>().Postal.TypeTextQuickly("75007");
+            WebBrowser.Current.Page<RentalPage>().Town.TypeTextQuickly("Paris");
+            WebBrowser.Current.Page<RentalPage>().Country.TypeTextQuickly("France");
             WebBrowser.Current.Page<RentalPage>().Startup.Click();
             WebBrowser.Current.Page<RentalPage>().New.Click();
             WebBrowser.Current.Page<RentalPage>().Parking.Click();
@@ -200,16 +200,16 @@ namespace Worki.SpecFlow
         public void WhenJeModifieLeFormulaireDeLocation()
         {
             WebBrowser.Current.Page<RentalPage>().Rental_Type.Select("Fonds de commerce");
-            WebBrowser.Current.Page<RentalPage>().Ref.TypeText("Ref Test Auto Edit");
+            WebBrowser.Current.Page<RentalPage>().Ref.TypeTextQuickly("Ref Test Auto Edit");
             WebBrowser.Current.Page<RentalPage>().Lease_Type.Select("Bail précaire 24 mois");
-            WebBrowser.Current.Page<RentalPage>().AvailableDate.TypeText("");
+            WebBrowser.Current.Page<RentalPage>().AvailableDate.TypeTextQuickly("");
             WebBrowser.Current.Page<RentalPage>().AvailableNow.Click();
-            WebBrowser.Current.Page<RentalPage>().Rate.TypeText("4000");
-            WebBrowser.Current.Page<RentalPage>().Charges.TypeText("200");
-            WebBrowser.Current.Page<RentalPage>().Surface.TypeText("170");
+            WebBrowser.Current.Page<RentalPage>().Rate.TypeTextQuickly("4000");
+            WebBrowser.Current.Page<RentalPage>().Charges.TypeTextQuickly("200");
+            WebBrowser.Current.Page<RentalPage>().Surface.TypeTextQuickly("170");
             WebBrowser.Current.Page<RentalPage>().HeatingType.Select("Electrique");
             WebBrowser.Current.Page<RentalPage>().GreenHouse.Select("D");
-            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeText("Ceci est un test auto Edit Made by Mika");
+            WebBrowser.Current.Page<RentalPage>().DescriptionRental.TypeTextQuickly("Ceci est un test auto Edit Made by Mika");
             WebBrowser.Current.Page<RentalPage>().Startup.Click();
             WebBrowser.Current.Page<RentalPage>().Parking.Click();
         }

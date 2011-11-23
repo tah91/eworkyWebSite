@@ -61,6 +61,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demandé le.
+        /// </summary>
+        public static string Asked {
+            get {
+                return ResourceManager.GetString("Asked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demande de devis.
         /// </summary>
         public static string AskQuotation {
@@ -133,11 +142,65 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Client(e).
+        /// </summary>
+        public static string Customer {
+            get {
+                return ResourceManager.GetString("Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fin.
+        /// </summary>
+        public static string End {
+            get {
+                return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prendre en charge.
         /// </summary>
         public static string HandleIt {
             get {
                 return ResourceManager.GetString("HandleIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lieu.
+        /// </summary>
+        public static string Localisation {
+            get {
+                return ResourceManager.GetString("Localisation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offre.
+        /// </summary>
+        public static string Offer {
+            get {
+                return ResourceManager.GetString("Offer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Régler.
+        /// </summary>
+        public static string Pay {
+            get {
+                return ResourceManager.GetString("Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prix.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
             }
         }
         
@@ -169,11 +232,38 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Voir la fiche du client.
+        /// </summary>
+        public static string SeeCustomerSheet {
+            get {
+                return ResourceManager.GetString("SeeCustomerSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voir la fiche du lieu.
+        /// </summary>
+        public static string SeeLocSheet {
+            get {
+                return ResourceManager.GetString("SeeLocSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous serez contacté dans les meilleurs délais par le gérant du lieu..
         /// </summary>
         public static string Speech {
             get {
                 return ResourceManager.GetString("Speech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Début.
+        /// </summary>
+        public static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
             }
         }
         
@@ -187,11 +277,29 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} ({1} m2).
+        /// </summary>
+        public static string SurfaceFormat {
+            get {
+                return ResourceManager.GetString("SurfaceFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valider la demande de devis.
         /// </summary>
         public static string ValidateQuotation {
             get {
                 return ResourceManager.GetString("ValidateQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En attente de payment.
+        /// </summary>
+        public static string WaitingForPayement {
+            get {
+                return ResourceManager.GetString("WaitingForPayement", resourceCulture);
             }
         }
     }

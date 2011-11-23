@@ -79,6 +79,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Une erreur a eu lieu ({0} lieux de travail ont été ajoutés) =&gt; {1}.
+        /// </summary>
+        public static string AddLocError {
+            get {
+                return ResourceManager.GetString("AddLocError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ajouter.
         /// </summary>
         public static string Adds {
@@ -291,6 +300,15 @@ namespace Worki.Resources.Views.Shared {
         public static string KnowHouly {
             get {
                 return ResourceManager.GetString("KnowHouly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} lieux ajoutés..
+        /// </summary>
+        public static string LocAdded {
+            get {
+                return ResourceManager.GetString("LocAdded", resourceCulture);
             }
         }
         

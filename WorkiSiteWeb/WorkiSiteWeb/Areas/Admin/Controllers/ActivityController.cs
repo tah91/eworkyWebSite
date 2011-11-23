@@ -478,7 +478,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 
             TempData["returnUrl"] = returnUrl;
 
-            return View("DeletePress");
+            return View(MVC.Admin.Activity.Views.DeletePress);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

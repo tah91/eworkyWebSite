@@ -34,7 +34,7 @@ namespace Worki.SpecFlow
         public void WhenJeMetUneNoteEtUnCommentaire()
         {
             WebBrowser.Current.Page<DetailPage>().CommentRate(4, 4, 4, 4);
-            WebBrowser.Current.Page<DetailPage>().Msg.TypeText("Ceci est un test auto Made by Mika");
+            WebBrowser.Current.Page<DetailPage>().Msg.TypeTextQuickly("Ceci est un test auto Made by Mika");
             WebBrowser.Current.Page<DetailPage>().Boutton_Envoyer.Click();
         }
 

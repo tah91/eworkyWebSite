@@ -6,22 +6,22 @@
             @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Offer.Localisation.GetMainPic(), true), Model.Offer.Localisation.Name)
         </div>
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description("Lieu", Model.Offer.Localisation.Name)
-            @RazorHelpers.Description("Offre", Model.Offer.Name + " (" + Model.Price.ToString() + " m2)")
-            @RazorHelpers.Description("Prix", Model.Price.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, string.Format(Worki.Resources.Views.Booking.BookingString.SurfaceFormat, Model.Offer.Name, Model.Price.ToString()))
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
         </div>
         <div class="bookingStatus float-left">
             <div class="bookingStatusContent">
                 <div class="bookingStatusDesc">
-                    En attente de payment
+                    @Worki.Resources.Views.Booking.BookingString.WaitingForPayement
                 </div>
                 <div class="buttonStd buttonBlue linkImg bookingStatusAction">
-                    <a href=#>Régler</a>
+                    <a href=#>@Worki.Resources.Views.Booking.BookingString.Pay</a>
                 </div>
             </div>
         </div>
         <div class="bookingLinks float-right blue">
-            <a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">Voir la fiche du lieu</a>
+            <a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Booking.BookingString.SeeLocSheet</a>
         </div>
         <div class="clear">
         </div>
