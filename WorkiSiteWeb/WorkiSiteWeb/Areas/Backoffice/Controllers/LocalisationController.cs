@@ -66,6 +66,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
             var p = page;
             try
             {
@@ -75,13 +76,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (loc.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
+				var bookings = bRepo.GetLocalisationBookings(id);
                 var model = new LocalisationBookingViewModel
                 {
                     Localisation = loc,
                     Bookings = new PagingList<MemberBooking>
                     {
-                        List = loc.GetBookings().Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = loc.GetBookings().Count }
+						List = bookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = bookings.Count }
                     }
                 };
                 return View(model);

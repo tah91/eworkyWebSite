@@ -65,15 +65,17 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
             var p = page ?? 1;
             try
             {
                 var member = mRepo.Get(id);
                 Member.Validate(member);
+				var bookings = bRepo.GetOwnerBookings(id);
                 var model = new PagingList<MemberBooking>
                 {
-                    List = member.GetBookings().Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.GetBookings().Count }
+					List = bookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = bookings.Count }
                 };
                 return View(model);
             }

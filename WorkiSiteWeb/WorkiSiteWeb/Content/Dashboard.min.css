@@ -7,5 +7,6 @@
 .bookingGallery img{max-height:100px}
 .bookingDesc{width:25%;margin-right:10px}
 .bookingStatus{width:25%;text-align:center;border:2px solid orange;height:120px;background:whitesmoke;font-weight:bold;display:table}
-.bookingStatusContent{display:table-cell;vertical-align:middle;margin:10px 0;text-align:center}
+.bookingStatusContent{display:table-cell;vertical-align:middle;margin:10px 0}
+.bookingStatusAction{width:60px;margin:10px auto!important}
 .bookingLinks{width:20%}
