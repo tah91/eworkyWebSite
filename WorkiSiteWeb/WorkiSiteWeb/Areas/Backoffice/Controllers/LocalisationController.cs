@@ -120,8 +120,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var quotations = qRepo.GetMany(b => b.LocalisationId == id);
                 var model = new LocalisationQuotationViewModel
                 {
-					List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
+                    Localisation = loc,
+                    Quotations = new PagingList<MemberQuotation>
                     {
                         List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
                         PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
