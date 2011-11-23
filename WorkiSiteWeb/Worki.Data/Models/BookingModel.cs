@@ -60,6 +60,12 @@ namespace Worki.Data.Models
 		public string Message { get; set; }
 	}
 
+    public class LocalisationMenuIndex
+    {
+        public LocalisationMenu MenuItem { get; set; }
+        public int Id { get; set; }
+    }
+
     public class LocalisationBookingViewModel
     {
         public PagingList<MemberBooking> Bookings { get; set; }

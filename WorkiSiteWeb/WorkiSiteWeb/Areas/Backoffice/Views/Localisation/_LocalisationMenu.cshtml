@@ -1,9 +1,7 @@
-﻿@model LocalisationMenu
-
-@{ var id = string.IsNullOrEmpty(Url.RequestContext.RouteData.Values["id"].ToString()) ? -1 : int.Parse(Url.RequestContext.RouteData.Values["id"].ToString()); }
+﻿@model LocalisationMenuIndex
 
 @Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
 { 
-	new MenuItem{ Selected = Model == LocalisationMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, (id < 0) ? MVC.Backoffice.Localisation.Index() : MVC.Backoffice.Localisation.Index(id))} ,
-	new MenuItem{ Selected = Model == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.OfferIndex())}
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index(Model.Id))} ,
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.OfferIndex())}
 })
