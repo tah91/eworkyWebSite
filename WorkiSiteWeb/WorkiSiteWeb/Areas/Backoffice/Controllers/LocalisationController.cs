@@ -118,10 +118,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
 				var quotations = qRepo.GetMany(b => b.LocalisationId == id);
-                var model = new PagingList<MemberQuotation>
+                var model = new LocalisationQuotationViewModel
                 {
 					List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
 					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
+                    {
+                        List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
+                    }
                 };
                 return View(model);
             }
@@ -222,10 +226,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (offer.Localisation.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-                var model = new PagingList<MemberQuotation>
+                var model = new OfferQuotationViewModel
                 {
-                    List = offer.MemberQuotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberQuotations.Count }
+                    Offer = offer,
+                    Quotations = new PagingList<MemberQuotation>
+                    {
+                        List = offer.MemberQuotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberQuotations.Count }
+                    }
                 };
                 return View(model);
             }
