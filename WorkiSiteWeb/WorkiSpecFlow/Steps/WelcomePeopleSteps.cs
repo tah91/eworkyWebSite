@@ -24,9 +24,9 @@ namespace Worki.SpecFlow
         public void WhenJeRemplisLeFormulaire()
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Creer.Click();
-            WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeTextQuickly("mika7869@gmail.com");
+            WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeTextQuickly(StaticStringClass.Autre.MyLogin);
             WebBrowser.Current.Page<WelcomePeoplePage>().Localisation.TypeTextQuickly("Le Bistrot Marguerite");
-            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeTextQuickly("Ceci est un test ...");
+            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
         }
 
         [When(@"Je valide le formulaire welcome people")]
@@ -39,9 +39,9 @@ namespace Worki.SpecFlow
         public void ThenJeDoisRetrouverCeQueJAiRemplis()
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Detail.Click();
-            Assert.IsTrue(WebBrowser.Current.ContainsText("mika7869@gmail.com"));
+            Assert.IsTrue(WebBrowser.Current.ContainsText(StaticStringClass.Autre.MyLogin));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Le Bistrot Marguerite"));
-            Assert.IsTrue(WebBrowser.Current.ContainsText("Ceci est un test ..."));
+            Assert.IsTrue(WebBrowser.Current.ContainsText(StaticStringClass.Autre.MsgPerso));
             WebBrowser.Current.Close();
         }
         #endregion
@@ -52,7 +52,7 @@ namespace Worki.SpecFlow
         public void WhenJeModifieLeFormulaire()
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Edit.Click();
-            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeTextQuickly("Ceci est un test ... j'ai édité cette description ...");
+            WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeTextQuickly(StaticStringClass.Autre.MsgPerso + " Edit");
         }
 
         [When(@"Je valide save welcome people")]
@@ -64,9 +64,9 @@ namespace Worki.SpecFlow
         [Then(@"Je dois retrouver ce que j'ai modifié")]
         public void ThenJeDoisRetrouverCeQueJAiModifie()
         {
-            Assert.IsTrue(WebBrowser.Current.ContainsText("L'entrepreneur star a été édité."));
+            Assert.IsTrue(WebBrowser.Current.ContainsText(Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenEdit));
             WebBrowser.Current.Page<WelcomePeoplePage>().Detail.Click();
-            Assert.IsTrue(WebBrowser.Current.ContainsText("Ceci est un test ... j'ai édité cette description ..."));
+            Assert.IsTrue(WebBrowser.Current.ContainsText(StaticStringClass.Autre.MsgPerso + " Edit"));
             WebBrowser.Current.Close();
         }
 
@@ -77,7 +77,7 @@ namespace Worki.SpecFlow
         [Then(@"Welcome people est supprimé")]
         public void ThenWelcomePeopleEstSupprime()
         {
-            Assert.That(WebBrowser.Current.ContainsText("L'entrepreneur star a été supprimé."));
+            Assert.That(WebBrowser.Current.ContainsText(Worki.Resources.Views.Admin.AdminString.WelcomePeopleHaveBeenDel));
             WebBrowser.Current.Close();
         }
 
