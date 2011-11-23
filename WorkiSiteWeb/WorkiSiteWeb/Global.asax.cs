@@ -83,6 +83,9 @@ namespace Worki.Web
 			Bind<IOfferRepository>()
 				.To<OfferRepository>();
 
+            Bind<IPaymentService>()
+                .To<PaymentService>();
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();
@@ -278,6 +281,36 @@ namespace Worki.Web
 
 			#endregion
 
+            // MQP 
+            routes.MapRoute(
+                "",
+                "paywithpaypal/{memberBookingId}",
+                new { controller = "Payment", action = "PayWithPayPal" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                "",
+                "paypalaccepted/{memberBookingId}",
+                new { controller = "Payment", action = "PayPalAccepted" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                "",
+                "paypalcancelled/{memberBookingId}",
+                new { controller = "Payment", action = "PayPalCancelled" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                "",
+                "paypalnotification",
+                new { controller = "Payment", action = "PayPalInstantNotification" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+
 			routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
@@ -316,6 +349,8 @@ namespace Worki.Web
             //        Worki.Infrastructure.Culture.fr.ToString()));
             //    }
             //}
+
+
         }
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());

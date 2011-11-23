@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PaymentService.cs" />
     <Compile Include="RentalSearchService.cs" />
     <Compile Include="GeocodeService.cs" />
     <Compile Include="EmailService.cs" />

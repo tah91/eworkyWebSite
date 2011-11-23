@@ -247,6 +247,7 @@
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\UploadImageController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
@@ -718,6 +719,8 @@
     <Content Include="Views\Home\_AboutMenu.cshtml" />
     <Content Include="Views\Profil\_ProfilMenu.cshtml" />
     <Content Include="Views\Emails\EmailContact.cshtml" />
+    <Content Include="Views\Payment\PayPalAccepted.cshtml" />
+    <Content Include="Views\Payment\PayPalCancelled.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
