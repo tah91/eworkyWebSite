@@ -40,6 +40,7 @@ public static class MVC {
     public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
     public static Worki.Web.Controllers.OfferController Offer = new Worki.Web.Controllers.T4MVC_OfferController();
     public static Worki.Web.Controllers.QuotationController Quotation = new Worki.Web.Controllers.T4MVC_QuotationController();
+    public static Worki.Web.Controllers.PaymentController Payment = new Worki.Web.Controllers.T4MVC_PaymentController();
     public static Worki.Web.Controllers.RentalController Rental = new Worki.Web.Controllers.T4MVC_RentalController();
     public static Worki.Web.Controllers.UploadImageController UploadImage = new Worki.Web.Controllers.T4MVC_UploadImageController();
     public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
@@ -1514,6 +1515,92 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("localisationId", localisationId);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Controllers {
+    public partial class PaymentController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected PaymentController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PayWithPayPal() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PayPalAccepted() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PayPalAccepted);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PayPalCancelled() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PayPalCancelled);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public PaymentController Actions { get { return MVC.Payment; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Payment";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string PayWithPayPal = "paywithpaypal";
+            public readonly string PayPalAccepted = "paypalaccepted";
+            public readonly string PayPalCancelled = "paypalcancelled";
+            public readonly string PayPalInstantNotification = "paypalnotification";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string PayPalAccepted = "~/Views/Payment/PayPalAccepted.cshtml";
+            public readonly string PayPalCancelled = "~/Views/Payment/PayPalCancelled.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_PaymentController: Worki.Web.Controllers.PaymentController {
+        public T4MVC_PaymentController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult PayWithPayPal(int memberBookingId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
+            callInfo.RouteValueDictionary.Add("memberBookingId", memberBookingId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PayPalAccepted(int memberBookingId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayPalAccepted);
+            callInfo.RouteValueDictionary.Add("memberBookingId", memberBookingId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PayPalCancelled(int memberBookingId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayPalCancelled);
+            callInfo.RouteValueDictionary.Add("memberBookingId", memberBookingId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PayPalInstantNotification() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayPalInstantNotification);
             return callInfo;
         }
 
