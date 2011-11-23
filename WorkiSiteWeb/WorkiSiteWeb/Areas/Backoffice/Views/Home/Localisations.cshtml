@@ -1,0 +1,60 @@
+﻿@model PagingList<Localisation>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Places)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Home)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Home.Index())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Backoffice.Home.Localisations())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Home.Booking())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Home.Quotation())}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+		<div class="contentBlock">
+			@if (Model.List.Count != 0)
+            {
+				<ul>
+					@foreach (var loc in Model.List)
+					{ 
+						<li>
+							<a href="@Url.Action(MVC.Backoffice.Localisation.Index(loc.ID))">
+								<div class="localisationTag float-left">
+									<div class="localisationImgDiv borderedImg">
+									@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic(), true), loc.Name)
+									</div>
+									<div class="localisationImgDesc">
+										<span class="bold">@loc.Name</span><br />
+										@loc.City
+									</div>                                   
+								</div>
+							</a>
+						</li>
+					}
+				</ul>
+				<div class="clear">
+				</div>
+				<div class="pager">
+					@Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Home.Localisations(x)))
+				</div>
+            }
+            else
+            {
+            <span class="italic">@Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))</span>
+            }
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

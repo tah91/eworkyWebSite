@@ -152,9 +152,19 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
-                
+
+				Offer offer;
                 //case no offer selected, take the first one
-                var offer = oRepo.Get(offerid, id);
+				if (offerid == 0)
+				{
+					var loc = lRepo.Get(id);
+					offer = loc.Offers.FirstOrDefault();
+				}
+				else
+				{
+					offer = oRepo.Get(offerid, id);
+				}
+                
                 if (offer.Localisation.OwnerID != memberId)
 					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 

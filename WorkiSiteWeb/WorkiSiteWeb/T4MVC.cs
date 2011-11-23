@@ -39,8 +39,8 @@ public static class MVC {
     public static Worki.Web.Controllers.HomeController Home = new Worki.Web.Controllers.T4MVC_HomeController();
     public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
     public static Worki.Web.Controllers.OfferController Offer = new Worki.Web.Controllers.T4MVC_OfferController();
-    public static Worki.Web.Controllers.QuotationController Quotation = new Worki.Web.Controllers.T4MVC_QuotationController();
     public static Worki.Web.Controllers.PaymentController Payment = new Worki.Web.Controllers.T4MVC_PaymentController();
+    public static Worki.Web.Controllers.QuotationController Quotation = new Worki.Web.Controllers.T4MVC_QuotationController();
     public static Worki.Web.Controllers.RentalController Rental = new Worki.Web.Controllers.T4MVC_RentalController();
     public static Worki.Web.Controllers.UploadImageController UploadImage = new Worki.Web.Controllers.T4MVC_UploadImageController();
     public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
@@ -1572,8 +1572,6 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string PayPalAccepted = "~/Views/Payment/PayPalAccepted.cshtml";
-            public readonly string PayPalCancelled = "~/Views/Payment/PayPalCancelled.cshtml";
         }
     }
 
@@ -2910,8 +2908,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Index() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        public System.Web.Mvc.ActionResult Localisations() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Localisations);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2937,6 +2935,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string Localisations = "Localisations";
             public readonly string Booking = "Booking";
             public readonly string Quotation = "Quotation";
         }
@@ -2949,6 +2948,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ViewNames {
             public readonly string Booking = "~/Areas/Backoffice/Views/Home/Booking.cshtml";
             public readonly string Index = "~/Areas/Backoffice/Views/Home/Index.cshtml";
+            public readonly string Localisations = "~/Areas/Backoffice/Views/Home/Localisations.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Home/Quotation.cshtml";
         }
     }
@@ -2957,8 +2957,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
     public class T4MVC_HomeController: Worki.Web.Areas.Backoffice.Controllers.HomeController {
         public T4MVC_HomeController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Index(int? page) {
+        public override System.Web.Mvc.ActionResult Index() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Localisations(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Localisations);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }

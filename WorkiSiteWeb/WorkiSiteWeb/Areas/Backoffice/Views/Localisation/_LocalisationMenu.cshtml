@@ -2,6 +2,6 @@
 
 @Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
 { 
-	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index(Model.Id))} ,
-	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.OfferIndex())}
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Home, MVC.Backoffice.Localisation.Index(Model.Id))} ,
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.OfferIndex(Model.Id))}
 })

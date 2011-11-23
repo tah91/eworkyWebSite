@@ -641,6 +641,7 @@
     <Content Include="Areas\Admin\Views\Sheet\BusinessCenter.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_QuotationItem.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_QuotationItem.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Home\Localisations.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

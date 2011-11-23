@@ -21,6 +21,7 @@ namespace Worki.Data.Models
 		float DistanceBetween(float latitude, float longitude, int localisationId);
 		Comment GetComment(int comId);
 		IList<MemberEdition> GetLatestModifications(int count, EditionType type);
+		IList<Localisation> GetMostBooked(int memberId, int count);
 	}
 
 	public class LocalisationRepository : RepositoryBase<Localisation>, ILocalisationRepository
@@ -243,6 +244,20 @@ namespace Worki.Data.Models
 						  select item;
 
 			return lastest.Take(count).ToList();
+		}
+
+		public IList<Localisation> GetMostBooked(int memberId, int count)
+		{
+			var ret = (from item
+						  in _Context.MemberBookings
+					   where item.Offer.Localisation.OwnerID == memberId
+					   group item by item.LocalisationId into bookings
+					   where bookings.Count() > 0
+					   orderby bookings.Count()
+					   select new { LocalisationId = bookings.Key, BookingCount = bookings.Count() }).Take(count);
+
+			var ids = ret.Select(r => r.LocalisationId);
+			return GetMany(loc => ids.Contains(loc.ID));
 		}
 
 		#endregion
