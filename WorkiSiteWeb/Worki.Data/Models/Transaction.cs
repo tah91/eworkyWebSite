@@ -21,8 +21,9 @@ namespace Worki.Data.Models
         public int MemberId { get; set; }
         public int LocalisationId { get; set; }
         public int OfferId { get; set; }
+        public int ReceiverId { get; set; }
         public decimal Amount { get; set; }
-        public string PaymentType { get; set; }
+        public int PaymentType { get; set; }
         public int StatusId { get; set; }
         public string TransactionId { get; set; }
         public System.DateTime CreatedDate { get; set; }
@@ -31,6 +32,7 @@ namespace Worki.Data.Models
     
         // Navigation properties
     
+        public virtual Member Member { get; set; }
         public virtual MemberBooking MemberBooking { get; set; }
     
     }
