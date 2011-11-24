@@ -14,6 +14,17 @@ namespace Worki.Data.Models
     
     public partial class MemberBooking
     {
+        public MemberBooking()
+        {
+            this.MemberBookingLogs = new HashSet<MemberBookingLog>();
+            this.Transactions = new HashSet<Transaction>();
+    		OnInitialized();
+        }
+    
+    	// Custom initialisation inside constructor
+    	// Be aware this is called before loading data from store
+    	partial void OnInitialized();
+    
         // Primitive properties
     
         public int Id { get; set; }

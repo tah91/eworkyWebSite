@@ -37,7 +37,7 @@ namespace Worki.Data.Models
 	[MetadataType(typeof(MemberBooking_Validation))]
 	public partial class MemberBooking
 	{
-		public MemberBooking()
+		partial void OnInitialized()
 		{
             System.DateTime now = DateTime.Now;
             FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
