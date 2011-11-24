@@ -10,6 +10,7 @@
     [TransactionId]   NVARCHAR (50) NOT NULL,
     [CreatedDate]     DATETIME      NOT NULL,
     [UpdatedDate]     DATETIME      NULL,
+    [RequestId]		  NVARCHAR (50) NOT NULL, 
     CONSTRAINT [PK_Transaction] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_Transaction_MemberBooking] FOREIGN KEY ([MemberBookingId], [MemberId], [LocalisationId], [OfferId]) REFERENCES [dbo].[MemberBooking] ([Id], [MemberId], [LocalisationId], [OfferId]) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

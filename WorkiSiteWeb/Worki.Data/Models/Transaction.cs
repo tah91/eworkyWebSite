@@ -27,6 +27,7 @@ namespace Worki.Data.Models
         public string TransactionId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public string RequestId { get; set; }
     
         // Navigation properties
     
