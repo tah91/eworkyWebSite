@@ -62,6 +62,8 @@ namespace Worki.Service
             request.Headers.Add("X-PAYPAL-RESPONSE-DATA-FORMAT", "XML");
             request.Headers.Add("X-PAYPAL-APPLICATION-ID", applicationId);
 
+
+            
             return request;
         }
 
