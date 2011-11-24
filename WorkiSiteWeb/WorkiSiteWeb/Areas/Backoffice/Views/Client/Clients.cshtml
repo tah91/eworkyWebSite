@@ -18,8 +18,70 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		<div class="contentBlock">
-
+		<div class="contentBlock tableStyle">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Nom, Prénom
+                        </th>
+                        <th>
+                            Nombre de réservations
+                        </th>
+                        <th>
+                            Tél.
+                        </th>
+                        <th>
+                            E-mail
+                        </th>
+                        <th>
+                            Fiche client
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.List)
+                {
+                    <tr>
+                        <td>
+                            @string.Format("{0}, {1}", item.MemberMainData.LastName, item.MemberMainData.FirstName)
+                        </td>
+                        <td>
+                            @item.MemberBookings.Count
+                        </td>
+                        <td>
+                            @item.MemberMainData.PhoneNumber
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @Html.ActionLink("Accès", MVC.Dashboard.Profil.Public(item.MemberId), new { @class = "blue" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @string.Format("{0}, {1}", item.MemberMainData.LastName, item.MemberMainData.FirstName)
+                        </td>
+                        <td>
+                            @item.MemberBookings.Count
+                        </td>
+                        <td>
+                            @item.MemberMainData.PhoneNumber
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @Html.ActionLink("Accès", MVC.Dashboard.Profil.Public(item.MemberId), new { @class = "blue" })
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <div class="pager">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Client.Clients(x)))
+            </div>
 		</div>
 	</div>
 	<div class="clear">

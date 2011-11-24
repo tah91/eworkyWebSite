@@ -11,6 +11,41 @@
     width: 70%;
 }
 
+/*TABLE LAYOUT
+----------------------------------------------------------*/
+.tableStyle table
+{
+    width:100%;
+}
+
+.tableStyle td
+{
+    border:2px solid white;
+    padding:5px;
+}
+
+.tableStyle thead tr
+{
+    background:#228fcc;
+    color:White;
+}
+
+.tableStyle tbody tr:nth-child(odd)
+{
+    background:#f2f2f2;
+}
+
+.tableStyle tbody tr:nth-child(even)
+{
+    background:#e6e6e6;
+}
+
+.tableStyle tbody td
+{
+     /*font-weight:bold;*/
+}
+
+
 /*LOCALISATION NAVIGATION
 ----------------------------------------------------------*/
 .localisationNavigation

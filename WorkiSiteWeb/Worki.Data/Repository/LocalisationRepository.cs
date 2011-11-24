@@ -248,7 +248,7 @@ namespace Worki.Data.Models
 
 		public IList<Localisation> GetMostBooked(int memberId, int count)
 		{
-			var ret = (from item
+			var locBookings = (from item
 						  in _Context.MemberBookings
 					   where item.Offer.Localisation.OwnerID == memberId
 					   group item by item.LocalisationId into bookings
@@ -256,7 +256,7 @@ namespace Worki.Data.Models
 					   orderby bookings.Count()
 					   select new { LocalisationId = bookings.Key, BookingCount = bookings.Count() }).Take(count);
 
-			var ids = ret.Select(r => r.LocalisationId);
+            var ids = locBookings.Select(r => r.LocalisationId);
 			return GetMany(loc => ids.Contains(loc.ID));
 		}
 

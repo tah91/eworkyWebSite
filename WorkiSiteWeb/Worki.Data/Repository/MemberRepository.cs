@@ -16,6 +16,7 @@ namespace Worki.Data.Models
 		string GetUserName(string email);
         IList<MemberAdminModel> GetAdmins();
         IList<MemberAdminModel> GetLeaders();
+        IList<Member> GetClients(int ownerId);
 	}
 
 	public class MemberRepository : RepositoryBase<Member>, IMemberRepository
@@ -107,5 +108,17 @@ namespace Worki.Data.Models
         }
 
         #endregion
+
+        public IList<Member> GetClients(int ownerId)
+        {
+            var clientIds = from item in _Context.MemberBookings
+                       where item.Offer.Localisation.OwnerID == ownerId
+                       group item by item.MemberId into clients
+                       where clients.Count() > 0
+                       orderby clients.Count()
+                       select clients.Key;
+
+            return GetMany(m => clientIds.Contains(m.MemberId));
+        }
     }
 }

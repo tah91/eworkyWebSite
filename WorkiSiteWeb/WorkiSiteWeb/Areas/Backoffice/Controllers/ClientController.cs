@@ -41,14 +41,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 var member = mRepo.Get(id);
                 Member.Validate(member);
-                var clientIds = member.GetClients();
-                var skipped = clientIds.Skip((p - 1) * PageSize).Take(PageSize);
 
-                var clients = mRepo.GetMany(m => skipped.Contains(m.MemberId));
+                var clients = mRepo.GetClients(id);
                 var model = new PagingList<Member>
                 {
-                    List = clients,
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = clientIds.Count }
+                    List = clients.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = clients.Count }
                 };
                 return View(model);
             }
