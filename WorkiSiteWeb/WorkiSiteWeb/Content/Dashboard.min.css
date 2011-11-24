@@ -1,5 +1,6 @@
 ﻿.contentLeft{width:25%}
 .contentRight{width:70%}
+.localisationNavigation{margin-bottom:10px;font-size:15px;font-weight:bold}
 .bookingItem{margin:10px 0}
 .bookingItem:first-child{margin-top:0}
 .bookingItem:last-child{margin-bottom:0}

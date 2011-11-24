@@ -11,6 +11,15 @@
     width: 70%;
 }
 
+/*LOCALISATION NAVIGATION
+----------------------------------------------------------*/
+.localisationNavigation
+{
+    margin-bottom:10px;
+    font-size:15px;
+    font-weight:bold;
+}
+
 
 /*BOOKING ITEM
 ----------------------------------------------------------*/
