@@ -92,6 +92,9 @@
     <Compile Include="Models\Comment.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MemberBookingLog.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\QuotationModel.cs" />
     <Compile Include="Models\FeatureModel.cs" />
@@ -178,6 +181,9 @@
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\ProfilModel.cs" />
     <Compile Include="Models\SearchCriteria.cs" />
+    <Compile Include="Models\Transaction.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Visitor.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>

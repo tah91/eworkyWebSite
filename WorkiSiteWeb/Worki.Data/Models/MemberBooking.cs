@@ -27,11 +27,14 @@ namespace Worki.Data.Models
         public bool Confirmed { get; set; }
         public int Price { get; set; }
         public bool Refused { get; set; }
+        public int StatusId { get; set; }
     
         // Navigation properties
     
         public virtual Member Member { get; set; }
         public virtual Offer Offer { get; set; }
+        public virtual ICollection<MemberBookingLog> MemberBookingLogs { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     
     }
 }
