@@ -8,6 +8,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -255,6 +256,51 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 _Logger.Error("OfferQuotation", ex);
                 return View(MVC.Shared.Views.Error);
             }
+        }
+
+        /// <summary>
+        /// GET Action result to configure offer
+        /// </summary>
+        /// <param name="id">id of offer</param>
+        /// <returns>View containing offer data</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult ConfigureOffer(int id, int offerId)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var offer = oRepo.Get(offerId, id);
+            return View(new OfferFormViewModel { Offer = offer });
+        }
+
+        /// <summary>
+        /// Post Action result to configure offer
+        /// </summary>
+        /// <param name="id">id of offer</param>
+        /// <returns>View containing localisation data</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult ConfigureOffer(int id, int offerId, OfferFormViewModel formData)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var o = oRepo.Get(offerId, id);
+                    UpdateModel(o, "Offer");
+                    context.Commit();
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
+                    return RedirectToAction(MVC.Backoffice.Localisation.OfferIndex(id, offerId));
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("Edit", ex);
+                    context.Complete();
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View(formData);
         }
     }
 }

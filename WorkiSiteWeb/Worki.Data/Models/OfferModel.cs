@@ -13,11 +13,13 @@ namespace Worki.Data.Models
 		{
 			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
+            Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
 			Offer = new Offer();
 		}
 
 		public Offer Offer { get; set; }
 		public SelectList Offers { get; set; }
+        public SelectList Periods { get; set; }
 	}
 
 	public class OfferFeatureEqualityComparer : IEqualityComparer<OfferFeature>
@@ -130,8 +132,58 @@ namespace Worki.Data.Models
 		public bool NeedQuotation()
 		{
 			return NeedQuotation((LocalisationOffer)Type);
-		}
-	}
+        }
+
+        #region Payment
+
+        /// <summary>
+        /// Payment period
+        /// </summary>
+        public enum PaymentPeriod
+        {
+            Hour,
+            Day,
+            Week,
+            Month,
+            Year
+        }
+
+        public static List<int> PaymentPeriodTypes = new List<int>()
+        {
+            (int)PaymentPeriod.Hour,
+            (int)PaymentPeriod.Day,
+            (int)PaymentPeriod.Week,
+            (int)PaymentPeriod.Month,
+            (int)PaymentPeriod.Year
+        };
+
+        public static string GetPaymentPeriodType(int type)
+        {
+            var enumType = (PaymentPeriod)type;
+            switch (enumType)
+            {
+                case PaymentPeriod.Hour:
+                    return Worki.Resources.Models.Offer.Offer.Hour;
+                case PaymentPeriod.Day:
+                    return Worki.Resources.Models.Offer.Offer.Day;
+                case PaymentPeriod.Week:
+                    return Worki.Resources.Models.Offer.Offer.Week;
+                case PaymentPeriod.Month:
+                    return Worki.Resources.Models.Offer.Offer.Month;
+                case PaymentPeriod.Year:
+                    return Worki.Resources.Models.Offer.Offer.Year;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public static Dictionary<int, string> GetPaymentPeriodTypes()
+        {
+            return PaymentPeriodTypes.ToDictionary(p => p, p => GetPaymentPeriodType(p));
+        }
+
+        #endregion
+    }
 
 	[Bind(Exclude = "Id,LocalisationId")]
 	public class Offer_Validation
@@ -144,6 +196,18 @@ namespace Worki.Data.Models
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Name", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
 		public string Name { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Price", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public decimal Price { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Period", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int Period { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "IsOffline", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int IsOffline { get; set; }
 	}
 
 	public partial class OfferFeature : IFeatureContainer

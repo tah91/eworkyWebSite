@@ -141,6 +141,9 @@
   <data name="Community" xml:space="preserve">
     <value>Activité communautaire</value>
   </data>
+  <data name="Configure" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
   <data name="CoworkingSpaceFr" xml:space="preserve">
     <value>Coworking Fr</value>
   </data>

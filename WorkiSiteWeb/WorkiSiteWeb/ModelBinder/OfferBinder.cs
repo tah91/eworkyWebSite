@@ -88,20 +88,23 @@ namespace Worki.Web.ModelBinder
 			}
 
             //handle images
-			offer.OfferFiles.Clear();
             var imageKeys = from item in keys where item.Contains(PictureData.HiddenImagePrefix) select item;
-            var defaultName = controllerContext.HttpContext.Request.Form[PictureData.IsDefaultPrefix] as string;
-            foreach (var key in imageKeys)
+            if (imageKeys.Count() > 0)
             {
-                var value = controllerContext.HttpContext.Request.Form[key] as string;
-                if (string.IsNullOrEmpty(value) || !value.Contains(PictureData.HiddenImagePrefix))
-                    continue;
-                var fileName = value.Replace(PictureData.HiddenImagePrefix, string.Empty);
-				offer.OfferFiles.Add(new OfferFile
+                offer.OfferFiles.Clear();
+                var defaultName = controllerContext.HttpContext.Request.Form[PictureData.IsDefaultPrefix] as string;
+                foreach (var key in imageKeys)
                 {
-                    FileName = fileName,
-                    IsDefault = string.Compare(defaultName, value) == 0
-                });
+                    var value = controllerContext.HttpContext.Request.Form[key] as string;
+                    if (string.IsNullOrEmpty(value) || !value.Contains(PictureData.HiddenImagePrefix))
+                        continue;
+                    var fileName = value.Replace(PictureData.HiddenImagePrefix, string.Empty);
+                    offer.OfferFiles.Add(new OfferFile
+                    {
+                        FileName = fileName,
+                        IsDefault = string.Compare(defaultName, value) == 0
+                    });
+                }
             }
 
 			return offer;
