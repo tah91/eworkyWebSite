@@ -42,9 +42,9 @@ namespace Worki.Data.Models
         public DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public DbSet<Localisation> Localisations { get; set; }
         public DbSet<MainLocalisation> MainLocalisations { get; set; }
-        public DbSet<MemberBooking> MemberBookings { get; set; }
         public DbSet<MemberQuotation> MemberQuotations { get; set; }
         public DbSet<MemberBookingLog> MemberBookingLogs { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<MemberBooking> MemberBookings { get; set; }
     }
 }

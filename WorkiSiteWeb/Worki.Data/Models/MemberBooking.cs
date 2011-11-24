@@ -34,11 +34,9 @@ namespace Worki.Data.Models
         public System.DateTime FromDate { get; set; }
         public System.DateTime ToDate { get; set; }
         public string Message { get; set; }
-        public bool Handled { get; set; }
-        public bool Confirmed { get; set; }
         public int Price { get; set; }
-        public bool Refused { get; set; }
         public int StatusId { get; set; }
+        public string PaymentMail { get; set; }
     
         // Navigation properties
     

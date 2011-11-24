@@ -232,7 +232,7 @@ namespace Worki.Web.Controllers
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
-				booking.Handled = true;
+				//booking.Handled = true;
 
 				//send email
 
@@ -276,7 +276,7 @@ namespace Worki.Web.Controllers
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
-                booking.Confirmed = true;
+                //booking.Confirmed = true;
 
 				//send email
 				dynamic confirmMail = new Email(MVC.Emails.Views.Email);
@@ -318,7 +318,7 @@ namespace Worki.Web.Controllers
                 var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
                 var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id, memberId, localisationId, offerId);
-                booking.Refused = true;
+                //booking.Refused = true;
 
                 //send email
 				dynamic refuseMail = new Email(MVC.Emails.Views.Email);
