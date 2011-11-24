@@ -33,7 +33,7 @@ namespace Worki.SpecFlow
         [When(@"Je met une note et un commentaire")]
         public void WhenJeMetUneNoteEtUnCommentaire()
         {
-            WebBrowser.Current.Page<DetailPage>().CommentRate(4, 4, 4, 4);
+            WebBrowser.Current.Page<DetailPage>().Rating.SetAttributeValue("value", "4");
             WebBrowser.Current.Page<DetailPage>().Msg.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
             WebBrowser.Current.Page<DetailPage>().Boutton_Envoyer.Click();
         }
@@ -124,24 +124,9 @@ namespace Worki.SpecFlow
 
         #region TextField
 
-        public TextField RatingPrice
+        public Element Rating
         {
-            get { return Document.TextField(Find.ByName("RatingPrice")); }
-        }
-
-        public TextField RatingWifi
-        {
-            get { return Document.TextField(Find.ByName("RatingWifi")); }
-        }
-
-        public TextField RatingDispo
-        {
-            get { return Document.TextField(Find.ByName("RatingDispo")); }
-        }
-
-        public TextField RatingWelcome
-        {
-            get { return Document.TextField(Find.ByName("RatingWelcome")); }
+            get { return Document.Element(Find.ById("backingRating")); }
         }
 
         public TextField Msg
@@ -159,21 +144,6 @@ namespace Worki.SpecFlow
         }
 
         #endregion
-
-        /// <summary>
-        /// Function which rate the comment
-        /// </summary>
-        /// <param name="price">Price Rate</param>
-        /// <param name="wifi">Wifi Rate</param>
-        /// <param name="dispo">Dispo Rate</param>
-        /// <param name="welcome">Welcome Rate</param>
-        public void CommentRate(int price, int wifi, int dispo, int welcome)
-        {
-            WebBrowser.Current.Page<DetailPage>().RatingPrice.Value = price.ToString();
-            WebBrowser.Current.Page<DetailPage>().RatingWifi.Value = wifi.ToString();
-            WebBrowser.Current.Page<DetailPage>().RatingDispo.Value = dispo.ToString();
-            WebBrowser.Current.Page<DetailPage>().RatingWelcome.Value = welcome.ToString();
-        }
     }
 
     #endregion
