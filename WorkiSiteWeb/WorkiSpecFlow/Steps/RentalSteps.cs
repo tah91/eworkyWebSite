@@ -12,20 +12,27 @@ namespace Worki.SpecFlow
     [Binding]
     public class RentalSteps
     {
+        #region Connexion
+
         [Given(@"Je me connecte à eWorky")]
         public void GivenJeMeConnecteAEWorky()
         {
             WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.Connexion);
 
-            /* Login for eworkydev.cloudapp.net */
-            WebBrowser.Current.TextField(Find.ById("Login")).TypeTextQuickly(StaticStringClass.Connexion.OnlineLogin);
+            if (!WebBrowser.Current.ContainsText("Bienvenue"))
+            {
+                /* Login for eworkydev.cloudapp.net */
+                WebBrowser.Current.TextField(Find.ById("Login")).TypeTextQuickly(StaticStringClass.Connexion.OnlineLogin);
 
-            /* Login for localhost */
-            // WebBrowser.Current.TextField(Find.ById("Login")).TypeTextQuickly(StaticStringClass.Connexion.LocalLogin);
+                /* Login for localhost */
+                // WebBrowser.Current.TextField(Find.ById("Login")).TypeTextQuickly(StaticStringClass.Connexion.LocalLogin);
 
-            WebBrowser.Current.TextField(Find.ById("Password")).TypeTextQuickly(StaticStringClass.Connexion.Password);
-            WebBrowser.Current.Button(Find.ByValue("Se connecter")).Click();
+                WebBrowser.Current.TextField(Find.ById("Password")).TypeTextQuickly(StaticStringClass.Connexion.Password);
+                WebBrowser.Current.Button(Find.ByValue("Se connecter")).Click();
+            }
         }
+
+        #endregion
 
         #region Lancer une Recherche
 
@@ -58,39 +65,32 @@ namespace Worki.SpecFlow
         [Then(@"Tous les résultats doivent respecter les critères")]
         public void ThenTousLesResultatsDoiventRespecterLesCriteres()
         {
-            var text_euro = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )€ cc"));
-            var text_surface = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )m²"));
-
-            var euro_tab = text_euro.Split(' ');
-            var surface_tab = text_surface.Split(' ');
-            var test_euro = 0;
-            foreach (var euro in euro_tab)
+            int index = 0;
+            foreach (var item in WebBrowser.Current.Page<RentalPage>().Results)
             {
-                try
+                int count = 1;
+                var tab = item.Text.Split(' ');
+                foreach (var value in tab)
                 {
-                    test_euro = Convert.ToInt32(euro);
-                    if (test_euro > 0)
+                    int val;
+                    if (count > 2)
                         break;
-                }
-                catch
-                {
+                    int.TryParse(value, out val);
+                    if (val > 0)
+                    {
+                        if (index % 2 == 0)
+                        {
+                            Assert.True(val <= 3000 && val >= 1000);
+                        }
+                        else
+                        {
+                            Assert.True(val >= 10 && val <= 100);
+                        }
+                        index++;
+                        count++;
+                    }
                 }
             }
-            var test_surface = 0;
-            foreach (var surface in surface_tab)
-            {
-                try
-                {
-                    test_surface = Convert.ToInt32(surface);
-                    if (test_surface > 0)
-                        break;
-                }
-                catch
-                {
-                }
-            }
-            Assert.That(test_euro, Is.LessThanOrEqualTo(3000));
-            Assert.That(test_surface, Is.GreaterThanOrEqualTo(10));
             WebBrowser.Current.Close();
         }
 
@@ -481,6 +481,15 @@ namespace Worki.SpecFlow
         public CheckBox Quiet
         {
             get { return Document.CheckBox(Find.ById("Quiet")); }
+        }
+
+        #endregion
+
+        #region List
+
+        public List<Div> Results
+        {
+            get { return Document.Divs.Where(x => !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Equals("rentalItemHead red bold")).ToList(); }
         }
 
         #endregion

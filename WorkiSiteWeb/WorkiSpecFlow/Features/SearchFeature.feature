@@ -8,17 +8,15 @@ Scenario: Recherche Simple
 	Given Je vais dans la page Recherche
 		And Je tappe Paris dans la zone de recherche
 	When Je clique sur rechercher
-	Then Il doit y avoir plus de 0 resultats
+	Then Il doit y avoir plus de 1 resultats
 
 @search
 Scenario: Recherche Detailer
 	Given Je vais dans la page Recherche
 		And Je tappe Paris dans la zone de recherche
-		And Je coche la checkbox prise de courant
-		And Je coche l'equipement restaurant
 		And Je selectionne Salon d'affaire
 	When Je clique sur rechercher
-	Then Il doit y avoir plus de 0 resultats
+	Then Il doit y avoir plus de 1 resultats
 	
 @search
 Scenario: Description Etudiant

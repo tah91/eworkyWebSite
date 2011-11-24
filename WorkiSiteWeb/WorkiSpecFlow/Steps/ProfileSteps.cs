@@ -12,23 +12,19 @@ namespace Worki.SpecFlow
     [Binding]
     class ProfileSteps
     {
-        public int Id;
-
         #region Aller sur son profil
 
         [When(@"Je clique sur mon profil")]
         public void WhenJeCliqueSurMonProfil()
         {
             WebBrowser.Current.Page<AccueilPage>().Lien_MonProfil.Click();
-            var tab = WebBrowser.Current.Url.Split('/');
-            int.TryParse(tab[tab.Length - 1], out Id);
+            WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
         }
 
         [Then(@"Je dois arriver sur mon profil")]
         public void ThenJeDoisArriverSurMonProfil()
         {
-            Assert.IsTrue(Id != 0);
-            Assert.IsTrue(WebBrowser.Current.Url.Contains(StaticStringClass.URL.Dashboard + Id));
+            Assert.IsTrue(WebBrowser.Current.Url.Contains(StaticStringClass.URL.Dashboard));
             WebBrowser.Current.Close();
         }
 
@@ -62,6 +58,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisAvoirLesModificationsFaites()
         {
             var ie = WebBrowser.Current;
+            WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
             Assert.IsTrue(ie.ContainsText("AdminE AdminE") && ie.ContainsText(Worki.Resources.Models.Profile.Profile.Nomad)
                         && ie.ContainsText(StaticStringClass.Autre.MsgPerso) && ie.ContainsText("eWorky"));
             WebBrowser.Current.Close();
@@ -85,6 +82,7 @@ namespace Worki.SpecFlow
         public void ThenLeProfilEstReinitialiser()
         {
             var ie = WebBrowser.Current;
+            WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
             Assert.IsTrue(ie.ContainsText("Admin Admin") && ie.ContainsText("Autre")
                         && !ie.ContainsText(StaticStringClass.Autre.MsgPerso) && ie.ContainsText("Administrateur"));
             WebBrowser.Current.Close();
@@ -103,8 +101,7 @@ namespace Worki.SpecFlow
         [Then(@"Je dois avoir la page de modification de mot de passe")]
         public void ThenJeDoisAvoirLaPageDeModificationDeMotDePasse()
         {
-            Assert.IsTrue(Id != 0);
-            Assert.That(WebBrowser.Current.Url.Contains(StaticStringClass.URL.ChangePassword + Id));
+            Assert.That(WebBrowser.Current.Url.Contains(StaticStringClass.URL.ChangePassword));
             WebBrowser.Current.Close();
         }
 
@@ -201,12 +198,12 @@ namespace Worki.SpecFlow
 
         public Link Lien_Editer
         {
-            get { return Document.Link(Find.ByText("Editer mon profil")); }
+            get { return Document.Link(Find.ByText("Profil")); }
         }
 
         public Link Change_Password
         {
-            get { return Document.Link(Find.ByText("Modifier mon mot de passe")); }
+            get { return Document.Link(Find.ByText("Modifier le mot de passe")); }
         }
 
         #endregion

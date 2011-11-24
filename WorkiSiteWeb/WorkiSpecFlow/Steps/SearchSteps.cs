@@ -12,6 +12,8 @@ namespace Worki.SpecFlow
     [Binding]
     public class SearchSteps
     {
+        #region Communs
+
         [Given(@"Je vais dans la page Recherche")]
         public void GivenJeVaisDansLaPageRecherche()
         {
@@ -24,6 +26,8 @@ namespace Worki.SpecFlow
         {
             WebBrowser.Current.Page<SearchPage>().Recherche.Click();
         }
+
+        #endregion
 
         #region Recherche Simple
 
@@ -40,44 +44,12 @@ namespace Worki.SpecFlow
         }
 
         [Then(@"Il doit y avoir plus de (.*) resultats")]
-        public void ThenIlDoitYAvoirPlusDe0Resultats(int count)
+        public void ThenIlDoitYAvoirPlusDe1Resultats(int count)
         {
-            var text = WebBrowser.Current.FindText(new System.Text.RegularExpressions.Regex("(.* )lieu"));
-
-            var strings = text.Split(' ');
-            var val = 0;
-            foreach (var item in strings)
-            {
-                try
-                {
-                    val = Convert.ToInt32(item);
-                    if (val > 0)
-                        break;
-                }
-                catch
-                {
-                }
-            }
-            Assert.That(val, Is.GreaterThanOrEqualTo(count));
+            Assert.True(WebBrowser.Current.Page<SearchPage>().Locs.Count >= count);
             WebBrowser.Current.Close();
         }
 
-        #endregion
-
-        #region Recherche détailé
-
-        [Given(@"Je coche la checkbox prise de courant")]
-        public void GivenJeCocheLaCheckboxPriseDeCourant()
-        {
-            WebBrowser.Current.Page<SearchPage>().CheckBox_OutletGeneral.Click();
-        }
-
-        [Given(@"Je coche l'equipement restaurant")]
-        public void GivenJeCocheLEquipementRestaurant()
-        {
-            WebBrowser.Current.Page<SearchPage>().Equipment_Resto.SetAttributeValue("value", "True");
-        }
-         
         #endregion
 
         #region Description Etudiant
@@ -483,6 +455,15 @@ namespace Worki.SpecFlow
             }
 
             #endregion
+
+        #endregion
+
+        #region List
+
+        public List<Div> Locs
+        {
+            get { return Document.Divs.Where(x => !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Equals("contentBlock resultItem")).ToList(); }
+        }
 
         #endregion
     }
