@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.IO;
 using System.Xml;
+using Newtonsoft.Json;
 using Worki.Infrastructure.Logging;
 
 
@@ -18,16 +19,82 @@ namespace Worki.Service
         string PayWithPayPal(double receiverAmount, double workiFee, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, string receiverEmail, string workiAccountEmail);
     }
 
+    #region Constants for Paypal
+    public class PayPalConstants
+    {
+        private const string _postbackProductionUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
+        private const string _postbackSandboxUrl = "https://www.paypal.com/cgi-bin/webscr";
+        private const string _paymentSandBoxUrl = "https://svcs.sandbox.paypal.com/AdaptivePayments/Pay";
+        private const string _paymentProductionUrl = "https://svcs.paypal.com/AdaptivePayments/API_operation";
+        private const string _approvalProductionUrl = "https://www.paypal.com/webscr?cmd=_ap-payment&paykey=";
+        private const string _approvalSandBoxUrl = "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey=";
+
+        private static bool IsProduction
+        {
+            get
+            {
+                return false; // TODO Implements
+            }
+        }
+
+        /// <summary>
+        /// Paypal API Url to call
+        /// </summary>
+        public static string PaymentUrl
+        {
+            get
+            {
+                return IsProduction ? _paymentProductionUrl : _paymentSandBoxUrl;
+            }
+        }
+
+        /// <summary>
+        /// Paypal url with the Payment form
+        /// </summary>
+        public static string ApprovalUrl
+        {
+            get
+            {
+                return IsProduction ? _approvalProductionUrl : _approvalSandBoxUrl;
+            }
+        }
+
+        /// <summary>
+        /// Paypal Url for IPN request checking
+        /// </summary>
+        public static string PostbackUrl
+        {
+            get
+            {
+                return IsProduction ? _postbackProductionUrl : _postbackSandboxUrl;
+            }
+        }
+
+        public class FeePayer
+        {
+            public static string Sender = "SENDER";
+            public static string PrimvaryReceiver = "PRIMARYRECEIVER";
+            public static string EachReceiver = "EACHRECEIVER";
+            public static string SecondaryOnly = "SECONDARYONLY";
+        }
+
+        public class MessageFormat
+        {
+            public static string NameValue = "NV";
+            public static string Xml = "XML";
+            public static string Json = "JSON";
+        }
+    }
+
+    #endregion
+
+
     public class PaymentService : IPaymentService
     {
         #region private
 
         ILogger _Logger;
 
-        private const string PaymentSandBoxUrl = "https://svcs.sandbox.paypal.com/AdaptivePayments/Pay";
-        private const string PaymentProductionUrl = "https://svcs.paypal.com/AdaptivePayments/API_operation";
-        private const string ApprovalUrl = "https://www.paypal.com/webscr?cmd=_ap-payment&paykey=";
-        private const string ApprovalSandBoxUrl = "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey=";
 
         private const string ApiUsername = "ulysse_1321039527_biz_api1.hotmail.com";
         private const string ApiPassword = "1321039578";
@@ -36,20 +103,22 @@ namespace Worki.Service
 
         #endregion
 
-
-
         public PaymentService(ILogger logger)
         {
             _Logger = logger;
         }
 
+        #region Private methods
 
-
-
-        private HttpWebRequest CreatePaypalRequest(string dataFormat)
+        /// <summary>
+        /// Create a HttpWebRequest for Paypal with required Headers
+        /// </summary>
+        /// <param name="requestFormat">Formt of data sent to Paypal</param>
+        /// <param name="responseFormat"></param>
+        /// <returns></returns>
+        private HttpWebRequest CreatePaypalRequest(string requestFormat, string responseFormat)
         {
-            // TODO Ajuster
-            string url = PaymentSandBoxUrl;
+            string url = PayPalConstants.PaymentUrl;
             string applicationId = ApiTestApplicationId;
             string ip = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
 
@@ -58,16 +127,15 @@ namespace Worki.Service
             request.Headers.Add("X-PAYPAL-SECURITY-PASSWORD", ApiPassword);
             request.Headers.Add("X-PAYPAL-SECURITY-SIGNATURE", ApiSignature);
             request.Headers.Add("X-PAYPAL-DEVICE-IPADDRESS", ip);
-            request.Headers.Add("X-PAYPAL-REQUEST-DATA-FORMAT", dataFormat);
-            request.Headers.Add("X-PAYPAL-RESPONSE-DATA-FORMAT", "XML");
+            request.Headers.Add("X-PAYPAL-REQUEST-DATA-FORMAT", requestFormat);
+            request.Headers.Add("X-PAYPAL-RESPONSE-DATA-FORMAT", responseFormat);
             request.Headers.Add("X-PAYPAL-APPLICATION-ID", applicationId);
-
-
             
             return request;
         }
+        
 
-
+        #endregion
 
 
         /// <summary>
@@ -79,10 +147,7 @@ namespace Worki.Service
         {
             List<string> errors = new List<string>();
 
-            //Post back to either sandbox or live
-            string strSandbox = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-            string strLive = "https://www.paypal.com/cgi-bin/webscr";
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(strSandbox);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(PayPalConstants.PostbackUrl);
 
             //Set values for the request back
             req.Method = "POST";
@@ -92,10 +157,6 @@ namespace Worki.Service
             strRequest += "&cmd=_notify-validate";
             req.ContentLength = strRequest.Length;
 
-            //for proxy
-            //WebProxy proxy = new WebProxy(new Uri("http://url:port#"));
-            //req.Proxy = proxy;
-
             //Send the request to PayPal and get the response
             StreamWriter streamOut = new StreamWriter(req.GetRequestStream(), System.Text.Encoding.ASCII);
             streamOut.Write(strRequest);
@@ -104,19 +165,11 @@ namespace Worki.Service
             string strResponse = streamIn.ReadToEnd();
             streamIn.Close();
 
+            // PayPayl confirmation
             if (strResponse == "VERIFIED")
             {
-                string paymentStatus = paypalRequest["payment_status"];
-                string transactionId = paypalRequest["txn_id"];                
 
-
-
-
-
-
-                //check the payment_status is Completed
-                //check that txn_id has not been previously processed
-                //process payment
+            
             }
             else
             {
@@ -130,10 +183,6 @@ namespace Worki.Service
 
             return errors;
         }
-
-
-
-
 
 
         /// <summary>
@@ -158,7 +207,7 @@ namespace Worki.Service
 
             try
             {
-                request = CreatePaypalRequest("NV");
+                request = CreatePaypalRequest(PayPalConstants.MessageFormat.NameValue, PayPalConstants.MessageFormat.Xml);
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
 
@@ -169,6 +218,7 @@ namespace Worki.Service
                 postData += "&currencyCode=" + "EUR";
                 postData += "&receiverList.receiver(0).amount=" + receiverAmount.ToString("F");
                 postData += "&receiverList.receiver(0).email=" + receiverEmail;
+                postData += "&feesPayer=" + PayPalConstants.FeePayer.Sender;   
               
                 if (workiFee > 0)
                 {
@@ -208,7 +258,7 @@ namespace Worki.Service
 
                         if (nodes.Count > 0)
                         {
-                            resultUrl = ApprovalSandBoxUrl + nodes[0].InnerText;
+                            resultUrl = PayPalConstants.ApprovalUrl + nodes[0].InnerText;
                         }
                         else
                         {

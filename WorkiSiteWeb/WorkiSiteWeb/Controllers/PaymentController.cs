@@ -28,15 +28,15 @@ namespace Worki.Web.Controllers
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int memberBookingId)
         {
-            string returnUrl = Url.ActionAbsolute(MVC.Payment.PayPalAccepted(memberBookingId)) + "/" + memberBookingId.ToString();
-            string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId)) + "/" + memberBookingId.ToString();
+            string returnUrl = Url.ActionAbsolute(MVC.Payment.PayPalAccepted(memberBookingId));
+            string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
             string paypalApprovalUrl = _PaymentService.PayWithPayPal(1000, 10,
                                             returnUrl, 
                                             cancelUrl, 
                                             ipnUrl,
-                                            "ulysse_1321956805_per@hotmail.com",
+                                            "",
                                             "ulysse_1321039676_per@hotmail.com",
                                             "ulysse_1321039527_biz@hotmail.com");
 
@@ -70,6 +70,7 @@ namespace Worki.Web.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ActionName("paypalnotification")]
+        [HttpPost] 
         public virtual ActionResult PayPalInstantNotification()
         {
             List<string> errors = _PaymentService.ProcessPaypalIPNMessage(Request);
