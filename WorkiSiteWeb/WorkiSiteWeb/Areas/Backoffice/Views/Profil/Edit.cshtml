@@ -89,7 +89,7 @@
                             </td>
                             <td>
                                 <div class="editor-field">
-                                    @Html.TextBox("Member.MemberMainData.BirthDate", String.Format("{0:dd/MM/yyyy}", Model.Member.MemberMainData.BirthDate), new { @class = "dp" })
+                                    @Html.TextBox("Member.MemberMainData.BirthDate", CultureHelpers.GetSpecificFormat(Model.Member.MemberMainData.BirthDate, CultureHelpers.TimeFormat.Date), new { @class = "dp" })
                                 </div>
                             </td>
                         </tr>
@@ -305,15 +305,6 @@
                 changeMonth: true,
                 changeYear: true,
                 yearRange: '1911:2020'
-            });
-        });
-        require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
-            $("#profilEditForm").submit(function () {
-                var val = $("#Member_MemberMainData_BirthDate").val();
-                var date = Date.parseExact(val, "dd/MM/yyyy");
-                var newVal = date.toString('MM/dd/yyyy');
-                $("#Member_MemberMainData_BirthDate").val(newVal);
-                return true;
             });
         });
     </script>

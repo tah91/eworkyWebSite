@@ -281,7 +281,7 @@ namespace Worki.Data.Models
                 if (AvailableNow)
                     return string.Format("{0}", Worki.Resources.Models.Rental.Rental.AvailableNow);
                 else if (AvailableDate.HasValue)
-                    return string.Format("{0} : {1:dd/MM/yyyy}", Worki.Resources.Models.Rental.Rental.Availability, AvailableDate.Value);
+                    return string.Format("{0} : {1}", Worki.Resources.Models.Rental.Rental.Availability, CultureHelpers.GetSpecificFormat(AvailableDate, CultureHelpers.TimeFormat.Date));
                 else
                     return string.Empty;
             }

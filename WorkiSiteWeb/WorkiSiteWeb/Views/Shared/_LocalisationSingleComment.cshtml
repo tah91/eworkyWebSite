@@ -27,7 +27,7 @@
     </div>
     <div class="commentContent float-left" style=@(displayLoc ? "width:70%" : "")>
         <p itemprop="description">@Html.Nl2Br(Model.Post)</p>
-        <p class="commentDate">@Model.Date.ToString("F", System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR"))</p>
+        <p class="commentDate">@CultureHelpers.GetSpecificFormat(Model.Date, CultureHelpers.TimeFormat.LongFull)</p>
 		<meta  itemprop="datePublished" content="@Model.Date.ToString("yyyy-MM-dd")" />
     </div>
 	@if (displayLoc)
