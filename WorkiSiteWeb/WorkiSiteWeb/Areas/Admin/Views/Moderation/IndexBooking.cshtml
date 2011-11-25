@@ -48,43 +48,21 @@
         {
             <tr>
                 <td align="center">
-                    @Html.ActionLink(item.Id.ToString(), MVC.Booking.Details(item.Id, item.MemberId, item.OfferId, item.LocalisationId))
+                    @Html.ActionLink(item.Id.ToString(), MVC.Booking.Details(item.Id))
                 </td>
                 <td align="center">
                     @Html.ActionLink(item.Member.Email,MVC.Dashboard.Profil.Public(item.MemberId))
                 </td>
 				<td align="center">
-					@if (item.Handled)
-					{
-						<text>OK</text>
-					}
-					else
-					{ 
-						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.HandleIt, MVC.Booking.HandleBooking(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
-					}
+					@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.HandleIt, MVC.Booking.HandleBooking(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))
                 </td>
 				<td align="center">
-					@Html.ActionLink(item.Price.ToString(), MVC.Booking.Edit(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+					@Html.ActionLink(item.Price.ToString(), MVC.Booking.Edit(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))
                 </td>
 				<td align="center">
-					@if (item.Offer.NeedQuotation())
-					{
-						<text>Devis</text>
-					}
-					else if (item.Confirmed)
-					{
-						<text>OK</text>
-					}
-                    else if (item.Refused)
-                    {
-                        <text>KO</text>
-                    }
-                    else
-                    { 
-						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.ConfirmIt, MVC.Booking.ConfirmBooking(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))
-                        <text>&nbsp;&nbsp; | &nbsp;&nbsp;</text>
-                        @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.RefuseIt, MVC.Booking.RefuseBooking(item.Id, item.MemberId, item.OfferId, item.LocalisationId, ViewContext.HttpContext.Request.Url.PathAndQuery))                                                                                                                                                                                    
-					}
+					@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.ConfirmIt, MVC.Booking.ConfirmBooking(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))
+                    <text>&nbsp;&nbsp; | &nbsp;&nbsp;</text>
+                    @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.RefuseIt, MVC.Booking.RefuseBooking(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))
                 </td>
             </tr>
         }

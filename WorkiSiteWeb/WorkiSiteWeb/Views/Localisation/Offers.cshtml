@@ -51,11 +51,11 @@
 					<div class="buttonStd buttonBlue linkImg float-right">
 					@if (Offer.NeedQuotation((LocalisationOffer)offer.Type))
 					{
-					@Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AskDevis, MVC.Quotation.Create(offer.Id, offer.LocalisationId))
+					@Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AskDevis, MVC.Quotation.Create(offer.Id))
 					}
 					else
 					{
-					@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id, offer.LocalisationId))
+					@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
 					}
 					</div>
 					<div class="clear">
