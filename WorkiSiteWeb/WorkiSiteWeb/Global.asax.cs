@@ -93,6 +93,9 @@ namespace Worki.Web
             Bind<ITransactionRepository>()
                 .To<TransactionRepository>();
 
+            Bind<IBookingLogRepository>()
+               .To<BookingLogRepository>();
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();

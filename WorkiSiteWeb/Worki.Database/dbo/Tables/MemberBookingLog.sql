@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[MemberBookingLog] (
-    [Id]              INT            NOT NULL,
+    [Id]              INT            NOT NULL IDENTITY,
     [MemberBookingId] INT            NOT NULL,
     [MemberId]        INT            NOT NULL,
     [LocalisationId]  INT            NOT NULL,

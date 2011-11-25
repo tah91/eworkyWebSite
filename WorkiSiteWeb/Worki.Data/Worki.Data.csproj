@@ -208,6 +208,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BookingLogRepository.cs" />
     <Compile Include="Repository\QuotationRepository.cs" />
     <Compile Include="Repository\OfferRepository.cs" />
     <Compile Include="Repository\PressRepository.cs" />

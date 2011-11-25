@@ -13,5 +13,11 @@ namespace Worki.Data.Models
             Completed,
             Cancelled
         }
+
+
+        public enum Payment
+        {
+            PayPal
+        }
     }
 }

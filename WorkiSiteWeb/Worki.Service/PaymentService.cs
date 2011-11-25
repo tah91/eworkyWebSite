@@ -140,7 +140,7 @@ namespace Worki.Service
 
         private bool CreateTransactions(int memberBookingId, string payKey, double receiverAmount, double workiFee)
         {
-            bool error = false;
+            bool isCreated = false;
 
             var context = ModelFactory.GetUnitOfWork();
    
@@ -165,11 +165,11 @@ namespace Worki.Service
                     t.ReceiverId = localisation.OwnerID.Value;
                     t.Amount = (decimal)receiverAmount;
                     t.CreatedDate = DateTime.Now;
+                    t.PaymentType = (int)Transaction.Payment.PayPal;
                     t.StatusId = (int)Transaction.Status.Created;
                     t.RequestId = payKey;
 
                     tRepo.Add(t);
-
 
                     
                     t = new Transaction();
@@ -180,17 +180,27 @@ namespace Worki.Service
                     t.ReceiverId = 1;               // MQP Id de l'admin en dur...
                     t.Amount = (decimal)workiFee;
                     t.CreatedDate = DateTime.Now;
+                    t.PaymentType = (int)Transaction.Payment.PayPal;
                     t.StatusId = (int)Transaction.Status.Created;
                     t.RequestId = payKey;
-                    
+
                     tRepo.Add(t);
 
+                    var blRepo = ModelFactory.GetRepository<IBookingLogRepository>(context);
+
+                    MemberBookingLog log = new MemberBookingLog();
+                    log.MemberBookingId = booking.Id;
+                    log.MemberId = booking.MemberId;
+                    log.LocalisationId = booking.LocalisationId;
+                    log.OfferId = booking.OfferId;
+                    log.CreatedDate = DateTime.Now;
+                    log.Event = "Paypal Payment Requested";
+
+                    blRepo.Add(log);
 
                     context.Commit();
-                }
-                else
-                {
-                    error = true;
+
+                    isCreated = true;
                 }
             }
             catch (Exception ex)
@@ -199,38 +209,72 @@ namespace Worki.Service
                 _Logger.Error(ex.Message);
             }
 
-            return error;
-         
-
-            //var context = ModelFactory.GetUnitOfWork();
-            //var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            //try
-            //{
-            //    mRepo.Add(m);
-
-            //    // User creation was a success
-            //    status = MembershipCreateStatus.Success;
-            //    context.Commit();
-            //    // Return the newly craeted user
-            //    return GetUserFromMember(m);
-            //}
-            //catch (Exception ex)
-            //{
-            //    context.Complete();
-            //    // Something was wrong and the user was rejected
-            //    status = MembershipCreateStatus.UserRejected;
-            //    Logger.Error("CreateUser", ex);
-            //}
-
+            return isCreated;
         }
 
 
-        private void CompleteTransactions(string payKey)
+        private void CompleteTransactions(string payKey, string customerTransactionId, string eworkiTransactionId)
         {
+            var context = ModelFactory.GetUnitOfWork();
+            var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
+            var transactions = tRepo.GetMany(trx => trx.RequestId == payKey);
 
+            if (transactions.Count == 0) return;
 
+            bool alreadyProcessed = true;
 
+            foreach (var transaction in transactions)
+            {
+                if (transaction.UpdatedDate == null)
+                {
+                    alreadyProcessed = false;
+                }
+            }
 
+            if (alreadyProcessed)
+            {
+                return;
+            }
+
+            try
+            {
+                foreach (var transaction in transactions)
+                {
+                    transaction.UpdatedDate = DateTime.Now;
+                    transaction.StatusId = (int)Transaction.Status.Completed;
+
+                    if (transaction.ReceiverId == 1)
+                    {
+                        transaction.TransactionId = eworkiTransactionId;
+                    }
+                    else
+                    {
+                        transaction.TransactionId = customerTransactionId;
+                    }
+                }
+
+                var t = transactions[0];
+
+                var blRepo = ModelFactory.GetRepository<IBookingLogRepository>(context);
+
+                MemberBookingLog log = new MemberBookingLog();
+                log.MemberBookingId = t.MemberBookingId;
+                log.MemberId = t.MemberId;
+                log.LocalisationId = t.LocalisationId;
+                log.OfferId = t.OfferId;
+                log.CreatedDate = DateTime.Now;
+                log.Event = "Paypal transaction completed";
+                blRepo.Add(log);
+                
+                // TODO MQP Update Booking  Status & Send Confirmation Mails
+
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error(ex.Message);
+            }
         }
 
 
@@ -309,12 +353,15 @@ namespace Worki.Service
                     if (!string.IsNullOrEmpty(status))
                     {
                         status = status.ToUpper();
-                        string payKey = paypalRequest.Form["payKey"];
+                        string payKey = paypalRequest.Form["pay_key"];
+
+                        string customerTransactionId = paypalRequest["transaction[0].id"];
+                        string eworkiTransactionId = paypalRequest["transaction[1].id"];
 
                         switch (status)
                         {
                             case "COMPLETED":
-                                CompleteTransactions(payKey);
+                                CompleteTransactions(payKey, customerTransactionId, eworkiTransactionId);
                                 break;
                             case "INCOMPLETE":
                             case "ERROR":
@@ -430,22 +477,34 @@ namespace Worki.Service
                 {
                     string ackMessage = nodes[0].InnerText;
 
-                    if (!string.IsNullOrEmpty(ackMessage) && ackMessage.ToLower() == "success")
+                    if (!string.IsNullOrEmpty(ackMessage))
                     {
                         nodes = xdoc.GetElementsByTagName("payKey");
 
                         if (nodes.Count > 0)
                         {
                             string payKey = nodes[0].InnerText.Trim();
-                            if (CreateTransactions(memberBookingId, payKey, receiverAmount, workiFee))
+
+                            if (ackMessage.ToLower() == "success")
                             {
-                                resultUrl = PayPalConstants.ApprovalUrl + payKey;
+                                if (CreateTransactions(memberBookingId, payKey, receiverAmount, workiFee))
+                                {
+                                    resultUrl = PayPalConstants.ApprovalUrl + payKey;
+                                }
+                            }
+                            else
+                            {
+                                _Logger.Error("Paypal: API call failure\r\n" + responseFromServer);
                             }
                         }
                         else
                         {
                             throw new Exception("Paypal: invalid API response XML format");
                         }
+                    }
+                    else
+                    {
+                        throw new Exception("Paypal: invalid API response XML format");
                     }
                 }
                 else
