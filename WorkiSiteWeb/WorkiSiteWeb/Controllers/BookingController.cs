@@ -97,7 +97,7 @@ namespace Worki.Web.Controllers
 					{
 						formData.MemberBooking.MemberId = memberId;
 						formData.MemberBooking.OfferId = id;
-
+						formData.MemberBooking.StatusId = (int)MemberBooking.Status.Waiting;
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 						member.MemberBookings.Add(formData.MemberBooking);
@@ -275,7 +275,7 @@ namespace Worki.Web.Controllers
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id);
-                //booking.Confirmed = true;
+				booking.StatusId = (int)MemberBooking.Status.Accepted;
 
 				//send email
 				dynamic confirmMail = new Email(MVC.Emails.Views.Email);
@@ -317,7 +317,7 @@ namespace Worki.Web.Controllers
                 var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
                 var m = mRepo.Get(memberId);
 				var booking = bRepo.Get(id);
-                //booking.Refused = true;
+				booking.StatusId = (int)MemberBooking.Status.Accepted;
 
                 //send email
 				dynamic refuseMail = new Email(MVC.Emails.Views.Email);

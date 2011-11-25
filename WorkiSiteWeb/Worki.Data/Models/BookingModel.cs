@@ -43,6 +43,13 @@ namespace Worki.Data.Models
             FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
             ToDate = FromDate;
 		}
+
+		public enum Status
+		{
+			Waiting,
+			Accepted,
+			Refused
+		}
 	}
 
 	[Bind(Exclude = "Id,MemberId,LocalisationId,OfferId")]
