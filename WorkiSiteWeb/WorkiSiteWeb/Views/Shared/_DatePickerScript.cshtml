@@ -1,0 +1,15 @@
+﻿<script type="text/javascript">
+    require(["@MiscHelpers.UrlConstants.jqueryui", "@Url.VersionedContent((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "fr-FR") ? Links.Scripts.jquery_ui_datepicker_fr_js : Links.Scripts.jquery_ui_datepicker_en_js)"], function () {
+        $(".dp").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1900:2020'
+        });
+        $(".dtp").datetimepicker({
+					stepHour: 1,
+					stepMinute: 15,
+					hourMin: 8,
+					hourMax: 20
+		});
+    });
+</script>

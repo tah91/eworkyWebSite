@@ -148,17 +148,9 @@
 
 @section ScriptContent
 {
+    @Html.Partial(MVC.Shared.Views._DatePickerScript)
+
 	<script type="text/javascript">
-	    require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
-	        require(["@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
-				$(".dtp").datetimepicker({
-					stepHour: 1,
-					stepMinute: 15,
-					hourMin: 8,
-					hourMax: 20
-				});
-            });
-	    });
 
 	    $(document).ready(function () {
 	        init();

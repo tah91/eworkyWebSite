@@ -1,15 +1,8 @@
 ﻿@model Worki.Data.Models.RentalSearchCriteria
 
+@Html.Partial(MVC.Shared.Views._DatePickerScript)
+
 <script type="text/javascript">
-    require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
-        require(["@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
-			$(".dp").datepicker({
-				changeMonth: true,
-				changeYear: true,
-				yearRange: '1900:2020'
-			});
-        });
-	});
 
     $("#RentalData_AvailableNow").click(function () {
         if ($("#RentalData_AvailableNow:checked").val() == "true") {
