@@ -38,11 +38,11 @@ namespace Worki.Web.Controllers
 		/// <summary>
 		/// GET Action result to show booking form
 		/// </summary>
-		/// <param name="id">id of localisation to book</param>
+		/// <param name="id">id of offer to book</param>
 		/// <returns>View containing booking form</returns>
 		//[AcceptVerbs(HttpVerbs.Get), Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult Create(int id, int localisationId)
+		public virtual ActionResult Create(int id)
         {
 			var memberId = WebHelper.GetIdentityId(User.Identity);
             //if (memberId == 0)
@@ -50,7 +50,7 @@ namespace Worki.Web.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var offer = oRepo.Get(id,localisationId);
+			var offer = oRepo.Get(id);
             var member = mRepo.Get(memberId);
             var membetExists = member != null;
             var formModel = new MemberBookingFormViewModel
@@ -71,7 +71,7 @@ namespace Worki.Web.Controllers
 		/// <returns>View containing booking form</returns>
         //[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult Create(int id, int localisationId, MemberBookingFormViewModel formData)
+		public virtual ActionResult Create(int id, MemberBookingFormViewModel formData)
 		{
 			if (ModelState.IsValid)
 			{
@@ -91,12 +91,11 @@ namespace Worki.Web.Controllers
 					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 					var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 					var member = mRepo.Get(memberId);
-					var offer = oRepo.Get(id, localisationId);
+					var offer = oRepo.Get(id);
 					var locName = offer.Localisation.Name;
 					try
 					{
 						formData.MemberBooking.MemberId = memberId;
-						formData.MemberBooking.LocalisationId = localisationId;
 						formData.MemberBooking.OfferId = id;
 
 						//set phone number to the one from form
@@ -153,11 +152,11 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Details(int id, int memberId, int offerId, int localisationId)
+		public virtual ActionResult Details(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id, memberId, localisationId, offerId);
+			var booking = bRepo.Get(id);
 			return View(booking);
 		}
 
@@ -167,12 +166,12 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl)
+		public virtual ActionResult Edit(int id, int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id, memberId, localisationId, offerId);
+			var booking = bRepo.Get(id);
 			var member = mRepo.Get(memberId);
             var formModel = new MemberBookingFormViewModel
             {
@@ -192,7 +191,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of booking</param>
 		/// <returns>View containing booking data</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl, MemberBookingFormViewModel formData)
+		public virtual ActionResult Edit(int id, string returnUrl, MemberBookingFormViewModel formData)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
@@ -201,7 +200,7 @@ namespace Worki.Web.Controllers
 				UpdateModel(formData);
 				if (ModelState.IsValid)
 				{
-					var b = bRepo.Get(id, memberId, localisationId, offerId);
+					var b = bRepo.Get(id);
 					UpdateModel(b, "MemberBooking");
 					context.Commit();
 					return Redirect(returnUrl);
@@ -223,7 +222,7 @@ namespace Worki.Web.Controllers
 		/// <param name="returnUrl">url to redirect</param>
 		/// <returns>Redirect to url</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult HandleBooking(int id, int memberId, int offerId, int localisationId, string returnUrl)
+		public virtual ActionResult HandleBooking(int id, int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			try
@@ -231,7 +230,7 @@ namespace Worki.Web.Controllers
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var m = mRepo.Get(memberId);
-				var booking = bRepo.Get(id, memberId, localisationId, offerId);
+				var booking = bRepo.Get(id);
 				//booking.Handled = true;
 
 				//send email
@@ -267,7 +266,7 @@ namespace Worki.Web.Controllers
 		/// <param name="returnUrl">url to redirect</param>
 		/// <returns>Redirect to url</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult ConfirmBooking(int id, int memberId, int offerId, int localisationId, string returnUrl)
+		public virtual ActionResult ConfirmBooking(int id, int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			try
@@ -275,7 +274,7 @@ namespace Worki.Web.Controllers
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var m = mRepo.Get(memberId);
-				var booking = bRepo.Get(id, memberId, localisationId, offerId);
+				var booking = bRepo.Get(id);
                 //booking.Confirmed = true;
 
 				//send email
@@ -309,7 +308,7 @@ namespace Worki.Web.Controllers
         /// <param name="returnUrl">url to redirect</param>
         /// <returns>Redirect to url</returns>
         [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult RefuseBooking(int id, int memberId, int offerId, int localisationId, string returnUrl)
+		public virtual ActionResult RefuseBooking(int id, int memberId, string returnUrl)
         {
             var context = ModelFactory.GetUnitOfWork();
             try
@@ -317,7 +316,7 @@ namespace Worki.Web.Controllers
                 var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
                 var m = mRepo.Get(memberId);
-				var booking = bRepo.Get(id, memberId, localisationId, offerId);
+				var booking = bRepo.Get(id);
                 //booking.Refused = true;
 
                 //send email

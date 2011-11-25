@@ -77,7 +77,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (loc.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-				var bookings = bRepo.GetMany(b => b.LocalisationId == id);
+				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
                 var model = new LocalisationBookingViewModel
                 {
                     Localisation = loc,
@@ -118,7 +118,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 if (loc.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
-				var quotations = qRepo.GetMany(b => b.LocalisationId == id);
+				var quotations = qRepo.GetMany(b => b.Offer.LocalisationId == id);
                 var model = new LocalisationQuotationViewModel
                 {
                     Localisation = loc,

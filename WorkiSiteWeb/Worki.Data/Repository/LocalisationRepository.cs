@@ -251,7 +251,7 @@ namespace Worki.Data.Models
 			var locBookings = (from item
 						  in _Context.MemberBookings
 					   where item.Offer.Localisation.OwnerID == memberId
-					   group item by item.LocalisationId into bookings
+					   group item by item.Offer.LocalisationId into bookings
 					   where bookings.Count() > 0
 					   orderby bookings.Count()
 					   select new { LocalisationId = bookings.Key, BookingCount = bookings.Count() }).Take(count);

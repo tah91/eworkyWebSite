@@ -18,7 +18,6 @@ namespace Worki.Data.Models
     
         public int Id { get; set; }
         public int OfferId { get; set; }
-        public int LocalisationId { get; set; }
         public int FeatureId { get; set; }
         public string StringValue { get; set; }
         public Nullable<decimal> DecimalValue { get; set; }

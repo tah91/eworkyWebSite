@@ -18,9 +18,6 @@ namespace Worki.Data.Models
     
         public int Id { get; set; }
         public int MemberBookingId { get; set; }
-        public int MemberId { get; set; }
-        public int LocalisationId { get; set; }
-        public int OfferId { get; set; }
         public string Event { get; set; }
         public System.DateTime CreatedDate { get; set; }
     

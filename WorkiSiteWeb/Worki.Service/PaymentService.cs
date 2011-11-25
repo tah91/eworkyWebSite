@@ -152,51 +152,31 @@ namespace Worki.Service
 
                 if (booking != null)
                 {
-                    var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
-                    var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-                    
-                    Localisation localisation = lRepo.Get(booking.LocalisationId);
+					booking.Transactions.Add(new Transaction
+					{
+						ReceiverId = booking.Offer.Localisation.OwnerID.Value,
+						Amount = (decimal)receiverAmount,
+						CreatedDate = DateTime.Now,
+						PaymentType = (int)Transaction.Payment.PayPal,
+						StatusId = (int)Transaction.Status.Created,
+						RequestId = payKey,
+					});
 
-                    Transaction t = new Transaction();
-                    t.MemberBookingId = booking.Id;
-                    t.MemberId = booking.MemberId;
-                    t.LocalisationId = booking.LocalisationId;
-                    t.OfferId = booking.OfferId;
-                    t.ReceiverId = localisation.OwnerID.Value;
-                    t.Amount = (decimal)receiverAmount;
-                    t.CreatedDate = DateTime.Now;
-                    t.PaymentType = (int)Transaction.Payment.PayPal;
-                    t.StatusId = (int)Transaction.Status.Created;
-                    t.RequestId = payKey;
+					booking.Transactions.Add(new Transaction
+					{
+						ReceiverId = 1,         // MQP Id de l'admin en dur...
+						Amount = (decimal)workiFee,
+						CreatedDate = DateTime.Now,
+						PaymentType = (int)Transaction.Payment.PayPal,
+						StatusId = (int)Transaction.Status.Created,
+						RequestId = payKey,
+					});
 
-                    tRepo.Add(t);
-
-                    
-                    t = new Transaction();
-                    t.MemberBookingId = booking.Id;
-                    t.MemberId = booking.MemberId;
-                    t.LocalisationId = booking.LocalisationId;
-                    t.OfferId = booking.OfferId;
-                    t.ReceiverId = 1;               // MQP Id de l'admin en dur...
-                    t.Amount = (decimal)workiFee;
-                    t.CreatedDate = DateTime.Now;
-                    t.PaymentType = (int)Transaction.Payment.PayPal;
-                    t.StatusId = (int)Transaction.Status.Created;
-                    t.RequestId = payKey;
-
-                    tRepo.Add(t);
-
-                    var blRepo = ModelFactory.GetRepository<IBookingLogRepository>(context);
-
-                    MemberBookingLog log = new MemberBookingLog();
-                    log.MemberBookingId = booking.Id;
-                    log.MemberId = booking.MemberId;
-                    log.LocalisationId = booking.LocalisationId;
-                    log.OfferId = booking.OfferId;
-                    log.CreatedDate = DateTime.Now;
-                    log.Event = "Paypal Payment Requested";
-
-                    blRepo.Add(log);
+					booking.MemberBookingLogs.Add(new MemberBookingLog
+					{
+						CreatedDate = DateTime.Now,
+						Event = "Paypal Payment Requested",
+					});
 
                     context.Commit();
 
@@ -206,7 +186,7 @@ namespace Worki.Service
             catch (Exception ex)
             {
                 context.Complete();
-                _Logger.Error(ex.Message);
+				_Logger.Error("CreateTransactions", ex);
             }
 
             return isCreated;
@@ -255,16 +235,11 @@ namespace Worki.Service
 
                 var t = transactions[0];
 
-                var blRepo = ModelFactory.GetRepository<IBookingLogRepository>(context);
-
-                MemberBookingLog log = new MemberBookingLog();
-                log.MemberBookingId = t.MemberBookingId;
-                log.MemberId = t.MemberId;
-                log.LocalisationId = t.LocalisationId;
-                log.OfferId = t.OfferId;
-                log.CreatedDate = DateTime.Now;
-                log.Event = "Paypal transaction completed";
-                blRepo.Add(log);
+				t.MemberBooking.MemberBookingLogs.Add(new MemberBookingLog
+				{
+					CreatedDate = DateTime.Now,
+					Event = "Paypal transaction completed",
+				});
                 
                 // TODO MQP Update Booking  Status & Send Confirmation Mails
 
@@ -273,7 +248,7 @@ namespace Worki.Service
             catch (Exception ex)
             {
                 context.Complete();
-                _Logger.Error(ex.Message);
+				_Logger.Error("CompleteTransactions", ex);
             }
         }
 

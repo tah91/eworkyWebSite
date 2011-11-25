@@ -864,77 +864,61 @@ namespace Worki.Web.Controllers {
     public class T4MVC_BookingController: Worki.Web.Controllers.BookingController {
         public T4MVC_BookingController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Create(int id, int localisationId) {
+        public override System.Web.Mvc.ActionResult Create(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Create(int id, int localisationId, Worki.Data.Models.MemberBookingFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Create(int id, Worki.Data.Models.MemberBookingFormViewModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Details(int id, int memberId, int offerId, int localisationId) {
+        public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl) {
+        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl, Worki.Data.Models.MemberBookingFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Edit(int id, string returnUrl, Worki.Data.Models.MemberBookingFormViewModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult HandleBooking(int id, int memberId, int offerId, int localisationId, string returnUrl) {
+        public override System.Web.Mvc.ActionResult HandleBooking(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.HandleBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ConfirmBooking(int id, int memberId, int offerId, int localisationId, string returnUrl) {
+        public override System.Web.Mvc.ActionResult ConfirmBooking(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult RefuseBooking(int id, int memberId, int offerId, int localisationId, string returnUrl) {
+        public override System.Web.Mvc.ActionResult RefuseBooking(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RefuseBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
@@ -1481,40 +1465,35 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Details(int id, int localisationId) {
+        public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, int localisationId) {
+        public override System.Web.Mvc.ActionResult Edit(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, int localisationId, Worki.Data.Models.OfferFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Edit(int id, Worki.Data.Models.OfferFormViewModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Delete(int id, int localisationId, string returnUrl) {
+        public override System.Web.Mvc.ActionResult Delete(int id, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Delete(int id, int localisationId) {
+        public override System.Web.Mvc.ActionResult Delete(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 
@@ -1670,57 +1649,46 @@ namespace Worki.Web.Controllers {
     public class T4MVC_QuotationController: Worki.Web.Controllers.QuotationController {
         public T4MVC_QuotationController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Create(int id, int localisationId) {
+        public override System.Web.Mvc.ActionResult Create(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Create(int id, int localisationId, Worki.Data.Models.MemberQuotationFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Create(int id, Worki.Data.Models.MemberQuotationFormViewModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Details(int id, int memberId, int offerId, int localisationId) {
+        public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl) {
+        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl, Worki.Data.Models.MemberQuotationFormViewModel formData) {
+        public override System.Web.Mvc.ActionResult Edit(int id, int memberId, string returnUrl, Worki.Data.Models.MemberQuotationFormViewModel formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult HandleBooking(int id, int memberId, int offerId, int localisationId, string returnUrl) {
+        public override System.Web.Mvc.ActionResult HandleBooking(int id, int memberId, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.HandleBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("memberId", memberId);
-            callInfo.RouteValueDictionary.Add("offerId", offerId);
-            callInfo.RouteValueDictionary.Add("localisationId", localisationId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }

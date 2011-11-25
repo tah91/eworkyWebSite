@@ -315,13 +315,9 @@
         <EntityType Name="MemberBooking">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
-            <PropertyRef Name="LocalisationId" />
-            <PropertyRef Name="OfferId" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MemberId" Type="int" Nullable="false" />
-          <Property Name="LocalisationId" Type="int" Nullable="false" />
           <Property Name="OfferId" Type="int" Nullable="false" />
           <Property Name="FromDate" Type="datetime" Nullable="false" />
           <Property Name="ToDate" Type="datetime" Nullable="false" />
@@ -336,16 +332,12 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MemberBookingId" Type="int" Nullable="false" />
-          <Property Name="MemberId" Type="int" Nullable="false" />
-          <Property Name="LocalisationId" Type="int" Nullable="false" />
-          <Property Name="OfferId" Type="int" Nullable="false" />
           <Property Name="Event" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberEdition">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MemberId" Type="int" Nullable="false" />
@@ -384,13 +376,9 @@
         <EntityType Name="MemberQuotation">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
-            <PropertyRef Name="LocalisationId" />
-            <PropertyRef Name="OfferId" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="MemberId" Type="int" Nullable="false" />
-          <Property Name="LocalisationId" Type="int" Nullable="false" />
           <Property Name="OfferId" Type="int" Nullable="false" />
           <Property Name="Surface" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="Message" Type="nvarchar(max)" />
@@ -410,7 +398,6 @@
         <EntityType Name="Offer">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="LocalisationId" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="LocalisationId" Type="int" Nullable="false" />
@@ -424,12 +411,9 @@
         <EntityType Name="OfferFeature">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="OfferId" />
-            <PropertyRef Name="LocalisationId" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OfferId" Type="int" Nullable="false" />
-          <Property Name="LocalisationId" Type="int" Nullable="false" />
           <Property Name="FeatureId" Type="int" Nullable="false" />
           <Property Name="StringValue" Type="nvarchar" MaxLength="256" />
           <Property Name="DecimalValue" Type="decimal" Scale="2" />
@@ -437,12 +421,9 @@
         <EntityType Name="OfferFile">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="OfferId" />
-            <PropertyRef Name="LocalisationId" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OfferId" Type="int" Nullable="false" />
-          <Property Name="LocalisationId" Type="int" Nullable="false" />
           <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="IsDefault" Type="bit" Nullable="false" />
         </EntityType>
@@ -516,13 +497,9 @@
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberBookingId" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MemberBookingId" Type="int" Nullable="false" />
-          <Property Name="MemberId" Type="int" Nullable="false" />
-          <Property Name="LocalisationId" Type="int" Nullable="false" />
-          <Property Name="OfferId" Type="int" Nullable="false" />
           <Property Name="ReceiverId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="money" Nullable="false" />
           <Property Name="PaymentType" Type="int" Nullable="false" />
@@ -695,11 +672,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="MemberBooking">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -709,15 +684,9 @@
           <ReferentialConstraint>
             <Principal Role="MemberBooking">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Principal>
             <Dependent Role="MemberBookingLog">
               <PropertyRef Name="MemberBookingId" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -785,11 +754,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="MemberQuotation">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -843,11 +810,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="OfferFeature">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -859,11 +824,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="OfferFile">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -941,15 +904,9 @@
           <ReferentialConstraint>
             <Principal Role="MemberBooking">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Principal>
             <Dependent Role="Transaction">
               <PropertyRef Name="MemberBookingId" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1331,13 +1288,9 @@
         <EntityType Name="MemberBooking">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
-            <PropertyRef Name="LocalisationId" />
-            <PropertyRef Name="OfferId" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
           <Property Type="Int32" Name="OfferId" Nullable="false" />
           <Property Type="DateTime" Name="FromDate" Nullable="false" />
           <Property Type="DateTime" Name="ToDate" Nullable="false" />
@@ -1356,9 +1309,6 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="MemberBookingId" Nullable="false" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
-          <Property Type="Int32" Name="OfferId" Nullable="false" />
           <Property Type="String" Name="Event" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
           <NavigationProperty Name="MemberBooking" Relationship="WorkiDBModel.FK_MemberBookingLog_MemberBooking" FromRole="MemberBookingLog" ToRole="MemberBooking" />
@@ -1366,7 +1316,6 @@
         <EntityType Name="MemberEdition">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="MemberId" Nullable="false" />
@@ -1408,13 +1357,9 @@
         <EntityType Name="MemberQuotation">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberId" />
-            <PropertyRef Name="LocalisationId" />
-            <PropertyRef Name="OfferId" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
           <Property Type="Int32" Name="OfferId" Nullable="false" />
           <Property Type="Decimal" Name="Surface" Nullable="false" Precision="18" Scale="2" />
           <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1438,7 +1383,6 @@
         <EntityType Name="Offer">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="LocalisationId" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="LocalisationId" Nullable="false" />
@@ -1457,12 +1401,9 @@
         <EntityType Name="OfferFeature">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="OfferId" />
-            <PropertyRef Name="LocalisationId" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="OfferId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
           <Property Type="Int32" Name="FeatureId" Nullable="false" />
           <Property Type="String" Name="StringValue" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="DecimalValue" Precision="18" Scale="2" />
@@ -1471,12 +1412,9 @@
         <EntityType Name="OfferFile">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="OfferId" />
-            <PropertyRef Name="LocalisationId" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="OfferId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
           <Property Type="String" Name="FileName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="IsDefault" Nullable="false" />
           <NavigationProperty Name="Offer" Relationship="WorkiDBModel.FK_OfferFile_Offer" FromRole="OfferFile" ToRole="Offer" />
@@ -1558,13 +1496,9 @@
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="MemberBookingId" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="MemberBookingId" Nullable="false" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="LocalisationId" Nullable="false" />
-          <Property Type="Int32" Name="OfferId" Nullable="false" />
           <Property Type="Int32" Name="ReceiverId" Nullable="false" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Int32" Name="PaymentType" Nullable="false" />
@@ -1855,11 +1789,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="MemberBooking">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1869,15 +1801,9 @@
           <ReferentialConstraint>
             <Principal Role="MemberBooking">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Principal>
             <Dependent Role="MemberBookingLog">
               <PropertyRef Name="MemberBookingId" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1887,15 +1813,9 @@
           <ReferentialConstraint>
             <Principal Role="MemberBooking">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Principal>
             <Dependent Role="Transaction">
               <PropertyRef Name="MemberBookingId" />
-              <PropertyRef Name="MemberId" />
-              <PropertyRef Name="LocalisationId" />
-              <PropertyRef Name="OfferId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1905,11 +1825,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="MemberQuotation">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1919,11 +1837,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="OfferFeature">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1933,11 +1849,9 @@
           <ReferentialConstraint>
             <Principal Role="Offer">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="LocalisationId" />
             </Principal>
             <Dependent Role="OfferFile">
               <PropertyRef Name="OfferId" />
-              <PropertyRef Name="LocalisationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2157,7 +2071,6 @@
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
                 <ScalarProperty Name="FromDate" ColumnName="FromDate" />
                 <ScalarProperty Name="OfferId" ColumnName="OfferId" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -2168,9 +2081,6 @@
               <MappingFragment StoreEntitySet="MemberBookingLog">
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Event" ColumnName="Event" />
-                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="MemberBookingId" ColumnName="MemberBookingId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -2226,7 +2136,6 @@
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="Surface" ColumnName="Surface" />
                 <ScalarProperty Name="OfferId" ColumnName="OfferId" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -2261,7 +2170,6 @@
                 <ScalarProperty Name="DecimalValue" ColumnName="DecimalValue" />
                 <ScalarProperty Name="StringValue" ColumnName="StringValue" />
                 <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
                 <ScalarProperty Name="OfferId" ColumnName="OfferId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -2272,7 +2180,6 @@
               <MappingFragment StoreEntitySet="OfferFile">
                 <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
                 <ScalarProperty Name="OfferId" ColumnName="OfferId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -2358,9 +2265,6 @@
                 <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
-                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
-                <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="MemberBookingId" ColumnName="MemberBookingId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -2410,286 +2314,279 @@
     <Diagrams>
       <Diagram Name="Model1" ZoomLevel="83">
         <EntityTypeShape EntityType="WorkiDBModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2110807291666674" />
-        <EntityTypeShape EntityType="WorkiDBModel.Comment" Width="1.5" PointX="8.25" PointY="34.375" Height="3.3263964843750102" />
-        <EntityTypeShape EntityType="WorkiDBModel.FavoriteLocalisation" Width="1.5" PointX="8.25" PointY="31.125" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="WorkiDBModel.Group" Width="1.5" PointX="0.75" PointY="41.375" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="WorkiDBModel.Localisation" Width="1.5" PointX="3" PointY="32.375" Height="6.9801236979166674" />
-        <EntityTypeShape EntityType="WorkiDBModel.LocalisationData" Width="1.5" PointX="5.25" PointY="28" Height="7.1724251302083246" />
-        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFeature" Width="1.5" PointX="5.25" PointY="24.875" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFile" Width="1.5" PointX="5.25" PointY="35.875" Height="2.172587890624996" />
-        <EntityTypeShape EntityType="WorkiDBModel.MainLocalisation" Width="1.5" PointX="5.25" PointY="38.875" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="WorkiDBModel.Member" Width="1.5" PointX="0.75" PointY="32.875" Height="6.9801236979166674" />
-        <EntityTypeShape EntityType="WorkiDBModel.MemberBooking" Width="1.5" PointX="7.5" PointY="42.125" Height="3.7109993489583246" />
-        <EntityTypeShape EntityType="WorkiDBModel.MemberBookingLog" Width="1.5" PointX="9.75" PointY="43.625" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="WorkiDBModel.MemberEdition" Width="1.5" PointX="8.25" PointY="38.875" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="WorkiDBModel.MemberMainData" Width="1.5" PointX="3" PointY="47.625" Height="5.634013671874996" />
-        <EntityTypeShape EntityType="WorkiDBModel.MemberQuotation" Width="1.5" PointX="10.5" PointY="39.25" Height="3.326396484374996" />
-        <EntityTypeShape EntityType="WorkiDBModel.MembersInGroup" Width="1.5" PointX="3" PointY="40.375" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="WorkiDBModel.Offer" Width="1.5" PointX="5.25" PointY="45.5" Height="3.518697916666639" />
-        <EntityTypeShape EntityType="WorkiDBModel.OfferFeature" Width="1.5" PointX="7.5" PointY="53.25" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="WorkiDBModel.OfferFile" Width="1.5" PointX="7.5" PointY="56.375" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="WorkiDBModel.Comment" Width="1.5" PointX="8.25" PointY="33.5" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="WorkiDBModel.FavoriteLocalisation" Width="1.5" PointX="8.25" PointY="30.125" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="WorkiDBModel.Group" Width="1.5" PointX="0.75" PointY="40.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="WorkiDBModel.Localisation" Width="1.5" PointX="3" PointY="31.375" Height="6.9801236979166674" />
+        <EntityTypeShape EntityType="WorkiDBModel.LocalisationData" Width="1.5" PointX="5.25" PointY="27.25" Height="7.1724251302083246" />
+        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFeature" Width="1.5" PointX="5.25" PointY="24.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="WorkiDBModel.LocalisationFile" Width="1.5" PointX="5.25" PointY="35.125" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="WorkiDBModel.MainLocalisation" Width="1.5" PointX="5.25" PointY="38" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="WorkiDBModel.Member" Width="1.5" PointX="0.75" PointY="31.875" Height="6.9801236979166674" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberBooking" Width="1.5" PointX="7.5" PointY="41.25" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberBookingLog" Width="1.5" PointX="9.75" PointY="43" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberEdition" Width="1.5" PointX="8.25" PointY="38" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberMainData" Width="1.5" PointX="3" PointY="46.5" Height="5.634013671874996" />
+        <EntityTypeShape EntityType="WorkiDBModel.MemberQuotation" Width="1.5" PointX="10.5" PointY="38.375" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="WorkiDBModel.MembersInGroup" Width="1.5" PointX="3" PointY="39.375" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="WorkiDBModel.Offer" Width="1.5" PointX="5.25" PointY="44.625" Height="3.518697916666639" />
+        <EntityTypeShape EntityType="WorkiDBModel.OfferFeature" Width="1.5" PointX="7.5" PointY="52" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="WorkiDBModel.OfferFile" Width="1.5" PointX="7.5" PointY="55" Height="1.980286458333353" />
         <EntityTypeShape EntityType="WorkiDBModel.Press" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="WorkiDBModel.Rental" Width="1.5" PointX="3" PointY="57.375" Height="6.018616536458353" />
-        <EntityTypeShape EntityType="WorkiDBModel.RentalAccess" Width="1.5" PointX="5.25" PointY="56.75" Height="2.1725878906249818" />
-        <EntityTypeShape EntityType="WorkiDBModel.RentalFeature" Width="1.5" PointX="5.25" PointY="59.625" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="WorkiDBModel.RentalFile" Width="1.5" PointX="5.25" PointY="62.125" Height="1.980286458333353" />
-        <EntityTypeShape EntityType="WorkiDBModel.Transaction" Width="1.5" PointX="12.75" PointY="38.375" Height="3.9033007812499818" />
+        <EntityTypeShape EntityType="WorkiDBModel.Rental" Width="1.5" PointX="3" PointY="56.25" Height="6.018616536458353" />
+        <EntityTypeShape EntityType="WorkiDBModel.RentalAccess" Width="1.5" PointX="5.25" PointY="55.5" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="WorkiDBModel.RentalFeature" Width="1.5" PointX="5.25" PointY="58.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="WorkiDBModel.RentalFile" Width="1.5" PointX="5.25" PointY="61" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="WorkiDBModel.Transaction" Width="1.5" PointX="12.75" PointY="37.625" Height="3.3263964843749818" />
         <EntityTypeShape EntityType="WorkiDBModel.Visitor" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="WorkiDBModel.WelcomePeople" Width="1.5" PointX="11.25" PointY="34.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="WorkiDBModel.WelcomePeople" Width="1.5" PointX="11.25" PointY="33.875" Height="2.5571907552083246" />
         <AssociationConnector Association="WorkiDBModel.FK_Comment_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="35.523712565104162" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="35.523712565104162" />
-          <ConnectorPoint PointX="4.833333333333333" PointY="35.523712565104162" />
-          <ConnectorPoint PointX="7.541666666666667" PointY="35.523712565104162" />
-          <ConnectorPoint PointX="7.708333333333333" PointY="35.523712565104162" />
-          <ConnectorPoint PointX="8.25" PointY="35.523712565104162" />
+          <ConnectorPoint PointX="4.5" PointY="34.773712565104162" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="34.773712565104162" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="34.773712565104162" />
+          <ConnectorPoint PointX="8.25" PointY="34.773712565104162" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Comment_Member" >
-          <ConnectorPoint PointX="1.5" PointY="39.855123697916667" />
-          <ConnectorPoint PointX="1.5" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="2.3716666666666688" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="2.5971804871794832" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="2.6467903645833339" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="2.8134570312500009" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="4.572916666666667" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="4.739583333333333" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="5" PointY="40.105123697916667" />
-          <ConnectorPoint PointX="5" PointY="38.625" />
-          <ConnectorPoint PointX="7.875" PointY="38.625" />
-          <ConnectorPoint PointX="7.875" PointY="36.643806524739581" />
-          <ConnectorPoint PointX="8.25" PointY="36.643806524739581" />
+          <ConnectorPoint PointX="1.5" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="1.5" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="1.8229186666666666" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="1.9895853333333331" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="2.3716666666666688" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="2.5971804871794832" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="2.6467903645833339" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="2.8134570312500009" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="5" PointY="39.105123697916667" />
+          <ConnectorPoint PointX="5" PointY="37.75" />
+          <ConnectorPoint PointX="7.875" PointY="37.75" />
+          <ConnectorPoint PointX="7.875" PointY="35.831306524739581" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="35.831306524739581" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="35.831306524739581" />
+          <ConnectorPoint PointX="8.25" PointY="35.831306524739581" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_FavoriteLocalisation_Localisation" >
-          <ConnectorPoint PointX="3.75" PointY="32.375" />
-          <ConnectorPoint PointX="3.75" PointY="32.115143229166669" />
-          <ConnectorPoint PointX="4.0729191666666669" PointY="32.115143229166669" />
-          <ConnectorPoint PointX="4.2395858333333329" PointY="32.115143229166669" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="32.115143229166669" />
-          <ConnectorPoint PointX="4.833333333333333" PointY="32.115143229166669" />
-          <ConnectorPoint PointX="5" PointY="32.115143229166669" />
-          <ConnectorPoint PointX="5" PointY="35.297425130208325" />
-          <ConnectorPoint PointX="7.541666666666667" PointY="35.297425130208325" />
-          <ConnectorPoint PointX="7.708333333333333" PointY="35.297425130208325" />
-          <ConnectorPoint PointX="7.875" PointY="35.297425130208325" />
-          <ConnectorPoint PointX="7.875" PointY="32.115143229166669" />
-          <ConnectorPoint PointX="8.25" PointY="32.115143229166669" />
+          <ConnectorPoint PointX="4.5" PointY="37.5550439453125" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="37.5550439453125" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="37.5550439453125" />
+          <ConnectorPoint PointX="8" PointY="37.5550439453125" />
+          <ConnectorPoint PointX="8" PointY="33.25" />
+          <ConnectorPoint PointX="9" PointY="33.25" />
+          <ConnectorPoint PointX="9" PointY="32.105286458333339" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_FavoriteLocalisation_Member" >
-          <ConnectorPoint PointX="1.5" PointY="32.875" />
-          <ConnectorPoint PointX="1.5" PointY="31.865143229166669" />
-          <ConnectorPoint PointX="4.0729191666666669" PointY="31.865143229166669" />
-          <ConnectorPoint PointX="4.2395858333333329" PointY="31.865143229166669" />
-          <ConnectorPoint PointX="4.75" PointY="31.865143229166669" />
-          <ConnectorPoint PointX="4.75" PointY="35.672425130208325" />
-          <ConnectorPoint PointX="7.625" PointY="35.672425130208325" />
-          <ConnectorPoint PointX="7.625" PointY="32.641466843749996" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="32.641466843749996" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="32.641466843749996" />
-          <ConnectorPoint PointX="8.25" PointY="32.641466843749996" />
+          <ConnectorPoint PointX="1.5" PointY="31.875" />
+          <ConnectorPoint PointX="1.5" PointY="31.115143229166669" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="31.115143229166669" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="31.115143229166669" />
+          <ConnectorPoint PointX="5" PointY="31.115143229166669" />
+          <ConnectorPoint PointX="5" PointY="34.547425130208325" />
+          <ConnectorPoint PointX="7.625" PointY="34.547425130208325" />
+          <ConnectorPoint PointX="7.625" PointY="31.115143229166669" />
+          <ConnectorPoint PointX="8.25" PointY="31.115143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MembersInGroup_Group" >
-          <ConnectorPoint PointX="2.25" PointY="41.865143229166662" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="41.865143229166662" />
-          <ConnectorPoint PointX="2.9270833333333335" PointY="41.865143229166662" />
-          <ConnectorPoint PointX="3" PointY="41.865143229166662" />
+          <ConnectorPoint PointX="2.25" PointY="40.927643229166662" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="40.927643229166662" />
+          <ConnectorPoint PointX="2.9270833333333335" PointY="40.927643229166662" />
+          <ConnectorPoint PointX="3" PointY="40.927643229166662" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Localisation_Member" >
-          <ConnectorPoint PointX="2.25" PointY="36.115061848958334" />
-          <ConnectorPoint PointX="2.4166666666666665" PointY="36.115061848958334" />
-          <ConnectorPoint PointX="2.5833333333333335" PointY="36.115061848958334" />
-          <ConnectorPoint PointX="3" PointY="36.115061848958334" />
+          <ConnectorPoint PointX="2.25" PointY="35.115061848958334" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="35.115061848958334" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="35.115061848958334" />
+          <ConnectorPoint PointX="3" PointY="35.115061848958334" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_LocalisationData_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="33.773712565104162" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="33.773712565104162" />
-          <ConnectorPoint PointX="4.833333333333333" PointY="33.773712565104162" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="33.773712565104162" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="33.773712565104162" />
-          <ConnectorPoint PointX="5.25" PointY="33.773712565104162" />
+          <ConnectorPoint PointX="4.5" PointY="32.898712565104162" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="32.898712565104162" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="32.898712565104162" />
+          <ConnectorPoint PointX="5.25" PointY="32.898712565104162" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_LocalisationFeature_Localisation" >
-          <ConnectorPoint PointX="4.1562525" PointY="32.375" />
-          <ConnectorPoint PointX="4.1562525" PointY="26.057444661458334" />
-          <ConnectorPoint PointX="5.25" PointY="26.057444661458334" />
+          <ConnectorPoint PointX="3.75" PointY="31.375" />
+          <ConnectorPoint PointX="3.75" PointY="25.307444661458334" />
+          <ConnectorPoint PointX="5.25" PointY="25.307444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_LocalisationFile_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="36.9612939453125" />
-          <ConnectorPoint PointX="5.25" PointY="36.9612939453125" />
+          <ConnectorPoint PointX="4.5" PointY="36.2112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="36.2112939453125" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MainLocalisation_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="39.115061848958334" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="39.115061848958334" />
-          <ConnectorPoint PointX="5.208333333333333" PointY="39.115061848958334" />
-          <ConnectorPoint PointX="5.25" PointY="39.115061848958334" />
+          <ConnectorPoint PointX="4.5" PointY="38.177561848958334" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="38.177561848958334" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="38.177561848958334" />
+          <ConnectorPoint PointX="5.25" PointY="38.177561848958334" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberEdition_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="39.297430390224363" />
-          <ConnectorPoint PointX="4.65625" PointY="39.453680390224363" />
-          <ConnectorPoint PointX="4.65625" PointY="41.614889322916667" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="41.614889322916667" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="41.614889322916667" />
-          <ConnectorPoint PointX="7.875" PointY="41.614889322916667" />
-          <ConnectorPoint PointX="8.25" PointY="41.239889322916667" />
+          <ConnectorPoint PointX="4.5" PointY="38.297430390224363" />
+          <ConnectorPoint PointX="4.65625" PointY="38.453680390224363" />
+          <ConnectorPoint PointX="4.65625" PointY="40.739889322916667" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="40.739889322916667" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="40.739889322916667" />
+          <ConnectorPoint PointX="7.875" PointY="40.739889322916667" />
+          <ConnectorPoint PointX="8.25" PointY="40.364889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Offer_Localisation" >
-          <ConnectorPoint PointX="4.4757692307692318" PointY="39.355123697916667" />
-          <ConnectorPoint PointX="4.875" PointY="39.754354467147436" />
-          <ConnectorPoint PointX="4.875" PointY="47.25934895833332" />
-          <ConnectorPoint PointX="5.25" PointY="47.25934895833332" />
+          <ConnectorPoint PointX="4.4757692307692318" PointY="38.355123697916667" />
+          <ConnectorPoint PointX="4.875" PointY="38.754354467147436" />
+          <ConnectorPoint PointX="4.875" PointY="46.38434895833332" />
+          <ConnectorPoint PointX="5.25" PointY="46.38434895833332" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_WelcomePeople_Localisation" >
-          <ConnectorPoint PointX="4.5" PointY="38.3675439453125" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="38.3675439453125" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="38.3675439453125" />
-          <ConnectorPoint PointX="10.791666666666666" PointY="38.3675439453125" />
-          <ConnectorPoint PointX="10.958333333333334" PointY="38.3675439453125" />
-          <ConnectorPoint PointX="12.375" PointY="38.3675439453125" />
-          <ConnectorPoint PointX="12.375" PointY="37.307190755208325" />
+          <ConnectorPoint PointX="4.5" PointY="37.84375" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="37.84375" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="37.84375" />
+          <ConnectorPoint PointX="11.96875" PointY="37.84375" />
+          <ConnectorPoint PointX="11.96875" PointY="36.432190755208325" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Member" >
-          <ConnectorPoint PointX="2.25" PointY="39.841276544070517" />
-          <ConnectorPoint PointX="2.84375" PointY="40.435026544070517" />
-          <ConnectorPoint PointX="2.84375" PointY="43.927643229166662" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="43.927643229166662" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="43.927643229166662" />
-          <ConnectorPoint PointX="7.5" PointY="43.927643229166662" />
+          <ConnectorPoint PointX="2.25" PointY="38.841276544070517" />
+          <ConnectorPoint PointX="2.84375" PointY="39.435026544070517" />
+          <ConnectorPoint PointX="2.84375" PointY="42.990143229166662" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="42.990143229166662" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="42.990143229166662" />
+          <ConnectorPoint PointX="7.5" PointY="42.990143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberEdition_Member" >
-          <ConnectorPoint PointX="1.9062519999999998" PointY="39.855123697916667" />
-          <ConnectorPoint PointX="1.9062519999999998" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="2.2614876302083355" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="2.5158476045673033" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="2.5366113281250002" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="2.7032779947916672" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="4.572916666666667" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="4.739583333333333" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="5.125" PointY="39.994944661458334" />
-          <ConnectorPoint PointX="5.125" PointY="41.105286458333325" />
-          <ConnectorPoint PointX="7.875" PointY="41.105286458333325" />
-          <ConnectorPoint PointX="7.875" PointY="40.026192661458339" />
-          <ConnectorPoint PointX="8.25" PointY="40.026192661458339" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="39.25" />
+          <ConnectorPoint PointX="2.545389122596152" PointY="39.25" />
+          <ConnectorPoint PointX="2.7420567892628167" PointY="39.25" />
+          <ConnectorPoint PointX="2.7916666666666665" PointY="39.25" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="39.25" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="39.25" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="39.25" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="39.25" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="39.25" />
+          <ConnectorPoint PointX="5.125" PointY="39.25" />
+          <ConnectorPoint PointX="5.125" PointY="40.230286458333325" />
+          <ConnectorPoint PointX="7.875" PointY="40.230286458333325" />
+          <ConnectorPoint PointX="7.875" PointY="39.151192661458339" />
+          <ConnectorPoint PointX="8.25" PointY="39.151192661458339" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberMainData_Member" >
-          <ConnectorPoint PointX="2.2338461538461543" PointY="39.855123697916667" />
-          <ConnectorPoint PointX="2.78125" PointY="40.402527544070516" />
-          <ConnectorPoint PointX="2.78125" PointY="50.4420068359375" />
-          <ConnectorPoint PointX="3" PointY="50.4420068359375" />
+          <ConnectorPoint PointX="2.2338461538461543" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="2.78125" PointY="39.402527544070516" />
+          <ConnectorPoint PointX="2.78125" PointY="49.3170068359375" />
+          <ConnectorPoint PointX="3" PointY="49.3170068359375" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberQuotation_Member" >
-          <ConnectorPoint PointX="1.093748" PointY="39.855123697916667" />
-          <ConnectorPoint PointX="1.093748" PointY="40.25" />
-          <ConnectorPoint PointX="2.545389122596152" PointY="40.25" />
-          <ConnectorPoint PointX="2.7420567892628167" PointY="40.25" />
-          <ConnectorPoint PointX="2.7916666666666665" PointY="40.25" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="40.25" />
-          <ConnectorPoint PointX="4.572916666666667" PointY="40.25" />
-          <ConnectorPoint PointX="4.739583333333333" PointY="40.25" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="40.25" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="40.25" />
-          <ConnectorPoint PointX="5.0625" PointY="40.25" />
-          <ConnectorPoint PointX="5.0625" PointY="41.489889322916667" />
-          <ConnectorPoint PointX="7.916666666666667" PointY="41.489889322916667" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="41.489889322916667" />
-          <ConnectorPoint PointX="10.125" PointY="41.489889322916667" />
-          <ConnectorPoint PointX="10.125" PointY="40.9131982421875" />
-          <ConnectorPoint PointX="10.5" PointY="40.9131982421875" />
+          <ConnectorPoint PointX="1.093748" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="1.093748" PointY="39.1875" />
+          <ConnectorPoint PointX="2.4540429687500009" PointY="39.1875" />
+          <ConnectorPoint PointX="2.6795567892628163" PointY="39.1875" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="39.1875" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="39.1875" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="39.1875" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="39.1875" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="39.1875" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="39.1875" />
+          <ConnectorPoint PointX="5.0625" PointY="39.1875" />
+          <ConnectorPoint PointX="5.0625" PointY="40.614889322916667" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="40.614889322916667" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="40.614889322916667" />
+          <ConnectorPoint PointX="10.125" PointY="40.614889322916667" />
+          <ConnectorPoint PointX="10.125" PointY="39.942047526041662" />
+          <ConnectorPoint PointX="10.5" PointY="39.942047526041662" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MembersInGroup_Member" >
-          <ConnectorPoint PointX="2.25" PointY="39.812430390224364" />
-          <ConnectorPoint PointX="2.5" PointY="40.062430390224364" />
-          <ConnectorPoint PointX="2.5" PointY="39.875" />
-          <ConnectorPoint PointX="3" PointY="40.375" />
+          <ConnectorPoint PointX="2.25" PointY="38.812430390224364" />
+          <ConnectorPoint PointX="2.5" PointY="39.062430390224364" />
+          <ConnectorPoint PointX="2.5" PointY="38.875" />
+          <ConnectorPoint PointX="3" PointY="39.375" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Rental_Member" >
-          <ConnectorPoint PointX="2.205" PointY="39.855123697916667" />
-          <ConnectorPoint PointX="2.625" PointY="40.275123697916669" />
-          <ConnectorPoint PointX="2.625" PointY="60.384308268229177" />
-          <ConnectorPoint PointX="3" PointY="60.384308268229177" />
+          <ConnectorPoint PointX="2.205" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="2.625" PointY="39.275123697916669" />
+          <ConnectorPoint PointX="2.625" PointY="59.259308268229177" />
+          <ConnectorPoint PointX="3" PointY="59.259308268229177" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Transaction_Member" >
-          <ConnectorPoint PointX="2.25" PointY="37.963746119591349" />
-          <ConnectorPoint PointX="2.4166666666666665" PointY="37.963746119591349" />
-          <ConnectorPoint PointX="2.5833333333333335" PointY="37.963746119591349" />
-          <ConnectorPoint PointX="2.75" PointY="37.963746119591349" />
-          <ConnectorPoint PointX="2.75" PointY="39.605123697916667" />
-          <ConnectorPoint PointX="4.572916666666667" PointY="39.605123697916667" />
-          <ConnectorPoint PointX="4.8091025641025675" PointY="39.605123697916667" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="39.605123697916667" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="39.605123697916667" />
-          <ConnectorPoint PointX="5.125" PointY="39.605123697916667" />
-          <ConnectorPoint PointX="5.125" PointY="38.75" />
-          <ConnectorPoint PointX="8" PointY="38.75" />
-          <ConnectorPoint PointX="8" PointY="37.95139648437501" />
-          <ConnectorPoint PointX="10.791666666666666" PointY="37.95139648437501" />
-          <ConnectorPoint PointX="10.958333333333334" PointY="37.95139648437501" />
-          <ConnectorPoint PointX="12.291666666666666" PointY="37.95139648437501" />
-          <ConnectorPoint PointX="12.458333333333334" PointY="37.95139648437501" />
-          <ConnectorPoint PointX="13.5" PointY="37.95139648437501" />
-          <ConnectorPoint PointX="13.5" PointY="38.375" />
+          <ConnectorPoint PointX="2.25" PointY="36.963746119591349" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="36.963746119591349" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="36.963746119591349" />
+          <ConnectorPoint PointX="2.75" PointY="36.963746119591349" />
+          <ConnectorPoint PointX="2.75" PointY="38.605123697916667" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="38.605123697916667" />
+          <ConnectorPoint PointX="4.8091025641025675" PointY="38.605123697916667" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="38.605123697916667" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="38.605123697916667" />
+          <ConnectorPoint PointX="5.125" PointY="38.605123697916667" />
+          <ConnectorPoint PointX="5.125" PointY="37.6875" />
+          <ConnectorPoint PointX="8.25" PointY="37.6875" />
+          <ConnectorPoint PointX="8.25" PointY="37.07639648437501" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="37.07639648437501" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="37.07639648437501" />
+          <ConnectorPoint PointX="11.885416666666666" PointY="37.07639648437501" />
+          <ConnectorPoint PointX="12.052083333333334" PointY="37.07639648437501" />
+          <ConnectorPoint PointX="13.5" PointY="37.07639648437501" />
+          <ConnectorPoint PointX="13.5" PointY="37.625" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_WelcomePeople_Member" >
-          <ConnectorPoint PointX="1.9062519999999998" PointY="32.875" />
-          <ConnectorPoint PointX="1.9062519999999998" PointY="32.625" />
-          <ConnectorPoint PointX="2.5" PointY="32.625" />
-          <ConnectorPoint PointX="2.5" PointY="39.730123697916667" />
-          <ConnectorPoint PointX="4.572916666666667" PointY="39.730123697916667" />
-          <ConnectorPoint PointX="4.739583333333333" PointY="39.730123697916667" />
-          <ConnectorPoint PointX="5.0625" PointY="39.730123697916667" />
-          <ConnectorPoint PointX="5.0625" PointY="38.5" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="38.5" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="38.5" />
-          <ConnectorPoint PointX="10.875" PointY="38.5" />
-          <ConnectorPoint PointX="10.875" PointY="36.028595377604162" />
-          <ConnectorPoint PointX="11.25" PointY="36.028595377604162" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="31.875" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="31.625" />
+          <ConnectorPoint PointX="2.5" PointY="31.625" />
+          <ConnectorPoint PointX="2.5" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="5.0625" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="5.0625" PointY="37.625" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="37.625" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="37.625" />
+          <ConnectorPoint PointX="10.875" PointY="37.625" />
+          <ConnectorPoint PointX="10.875" PointY="35.153595377604162" />
+          <ConnectorPoint PointX="11.25" PointY="35.153595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Offer" >
-          <ConnectorPoint PointX="6.75" PointY="45.667999674479162" />
-          <ConnectorPoint PointX="7.5" PointY="45.667999674479162" />
+          <ConnectorPoint PointX="6.75" PointY="46.456198416666652" />
+          <ConnectorPoint PointX="8.25" PointY="46.456198416666652" />
+          <ConnectorPoint PointX="8.25" PointY="44.768697916666667" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberBookingLog_MemberBooking" >
-          <ConnectorPoint PointX="9" PointY="44.730499674479162" />
-          <ConnectorPoint PointX="9.75" PointY="44.730499674479162" />
+          <ConnectorPoint PointX="9" PointY="43.884348958333334" />
+          <ConnectorPoint PointX="9.75" PointY="43.884348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Transaction_MemberBooking" >
-          <ConnectorPoint PointX="9" PointY="43.1006982421875" />
-          <ConnectorPoint PointX="11.572916666666666" PointY="43.1006982421875" />
-          <ConnectorPoint PointX="11.739583333333334" PointY="43.1006982421875" />
-          <ConnectorPoint PointX="13.5" PointY="43.1006982421875" />
-          <ConnectorPoint PointX="13.5" PointY="42.278300781249982" />
+          <ConnectorPoint PointX="9" PointY="42.254547526041662" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="42.254547526041662" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="42.254547526041662" />
+          <ConnectorPoint PointX="13.5" PointY="42.254547526041662" />
+          <ConnectorPoint PointX="13.5" PointY="40.951396484374982" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberQuotation_Offer" >
-          <ConnectorPoint PointX="6.75" PointY="47.631694335937482" />
-          <ConnectorPoint PointX="11.65625" PointY="47.631694335937482" />
-          <ConnectorPoint PointX="11.65625" PointY="42.576396484374996" />
+          <ConnectorPoint PointX="6.75" PointY="47.331200666666639" />
+          <ConnectorPoint PointX="11.65625" PointY="47.331200666666639" />
+          <ConnectorPoint PointX="11.65625" PointY="41.509095052083325" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_OfferFeature_Offer" >
-          <ConnectorPoint PointX="6" PointY="49.018697916666639" />
-          <ConnectorPoint PointX="6" PointY="54.432444661458334" />
-          <ConnectorPoint PointX="7.041666666666667" PointY="54.432444661458334" />
-          <ConnectorPoint PointX="7.208333333333333" PointY="54.432444661458334" />
-          <ConnectorPoint PointX="7.5" PointY="54.432444661458334" />
+          <ConnectorPoint PointX="6" PointY="48.143697916666639" />
+          <ConnectorPoint PointX="6" PointY="53.086293945312491" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="53.086293945312491" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="53.086293945312491" />
+          <ConnectorPoint PointX="7.5" PointY="53.086293945312491" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_OfferFile_Offer" >
-          <ConnectorPoint PointX="6.75" PointY="49.017543070512794" />
-          <ConnectorPoint PointX="7.125" PointY="49.392543070512794" />
-          <ConnectorPoint PointX="7.125" PointY="57.461293945312491" />
-          <ConnectorPoint PointX="7.5" PointY="57.461293945312491" />
+          <ConnectorPoint PointX="6.75" PointY="48.142543070512794" />
+          <ConnectorPoint PointX="7.125" PointY="48.517543070512794" />
+          <ConnectorPoint PointX="7.125" PointY="55.990143229166677" />
+          <ConnectorPoint PointX="7.5" PointY="55.990143229166677" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_RentalAccess_Rental" >
-          <ConnectorPoint PointX="4.5" PointY="58.148793945312491" />
-          <ConnectorPoint PointX="5.25" PointY="58.148793945312491" />
+          <ConnectorPoint PointX="4.5" PointY="56.961293945312491" />
+          <ConnectorPoint PointX="5.25" PointY="56.961293945312491" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_RentalFeature_Rental" >
-          <ConnectorPoint PointX="4.5" PointY="60.518992513020834" />
-          <ConnectorPoint PointX="5.25" PointY="60.518992513020834" />
+          <ConnectorPoint PointX="4.5" PointY="59.393992513020834" />
+          <ConnectorPoint PointX="5.25" PointY="59.393992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_RentalFile_Rental" >
-          <ConnectorPoint PointX="4.5" PointY="62.759308268229177" />
-          <ConnectorPoint PointX="5.25" PointY="62.759308268229177" />
+          <ConnectorPoint PointX="4.5" PointY="61.634308268229177" />
+          <ConnectorPoint PointX="5.25" PointY="61.634308268229177" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -29,7 +29,6 @@ namespace Worki.Data.Models
     
         public int Id { get; set; }
         public int MemberId { get; set; }
-        public int LocalisationId { get; set; }
         public int OfferId { get; set; }
         public System.DateTime FromDate { get; set; }
         public System.DateTime ToDate { get; set; }

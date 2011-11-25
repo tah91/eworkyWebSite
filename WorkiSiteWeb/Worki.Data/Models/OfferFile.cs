@@ -18,7 +18,6 @@ namespace Worki.Data.Models
     
         public int Id { get; set; }
         public int OfferId { get; set; }
-        public int LocalisationId { get; set; }
         public string FileName { get; set; }
         public bool IsDefault { get; set; }
     

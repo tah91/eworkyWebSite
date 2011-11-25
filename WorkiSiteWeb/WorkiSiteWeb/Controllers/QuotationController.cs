@@ -42,7 +42,7 @@ namespace Worki.Web.Controllers
 		/// <returns>View containing Quotation form</returns>
 		//[AcceptVerbs(HttpVerbs.Get), Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult Create(int id, int localisationId)
+		public virtual ActionResult Create(int id)
         {
 			var memberId = WebHelper.GetIdentityId(User.Identity);
             //if (memberId == 0)
@@ -50,7 +50,7 @@ namespace Worki.Web.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var offer = oRepo.Get(id,localisationId);
+			var offer = oRepo.Get(id);
             var member = mRepo.Get(memberId);
             var membetExists = member != null;
             var formModel = new MemberQuotationFormViewModel
@@ -71,7 +71,7 @@ namespace Worki.Web.Controllers
 		/// <returns>View containing Quotation form</returns>
         //[AcceptVerbs(HttpVerbs.Post), Authorize]
 		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult Create(int id, int localisationId, MemberQuotationFormViewModel formData)
+		public virtual ActionResult Create(int id, MemberQuotationFormViewModel formData)
 		{
 			if (ModelState.IsValid)
 			{
@@ -91,12 +91,11 @@ namespace Worki.Web.Controllers
 					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 					var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 					var member = mRepo.Get(memberId);
-					var offer = oRepo.Get(id, localisationId);
+					var offer = oRepo.Get(id);
 					var locName = offer.Localisation.Name;
 					try
 					{
 						formData.MemberQuotation.MemberId = memberId;
-						formData.MemberQuotation.LocalisationId = localisationId;
 						formData.MemberQuotation.OfferId = id;
 
 						//set phone number to the one from form
@@ -151,11 +150,11 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of Quotation</param>
 		/// <returns>View containing Quotation data</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Details(int id, int memberId, int offerId, int localisationId)
+		public virtual ActionResult Details(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
-			var quotation = qRepo.Get(id, memberId, localisationId, offerId);
+			var quotation = qRepo.Get(id);
 			return View(quotation);
 		}
 
@@ -165,12 +164,12 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of quotation</param>
 		/// <returns>View containing quotation data</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl)
+		public virtual ActionResult Edit(int id, int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
-			var quotation = qRepo.Get(id, memberId, localisationId, offerId);
+			var quotation = qRepo.Get(id);
 			var member = mRepo.Get(memberId);
             var formModel = new MemberQuotationFormViewModel
             {
@@ -190,7 +189,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of quotation</param>
 		/// <returns>View containing quotation data</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, int offerId, int localisationId, string returnUrl, MemberQuotationFormViewModel formData)
+		public virtual ActionResult Edit(int id, int memberId, string returnUrl, MemberQuotationFormViewModel formData)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
@@ -199,7 +198,7 @@ namespace Worki.Web.Controllers
 				UpdateModel(formData);
 				if (ModelState.IsValid)
 				{
-					var b = bRepo.Get(id, memberId, localisationId, offerId);
+					var b = bRepo.Get(id);
 					UpdateModel(b, "MemberQuotation");
 					context.Commit();
 					return Redirect(returnUrl);
@@ -221,7 +220,7 @@ namespace Worki.Web.Controllers
 		/// <param name="returnUrl">url to redirect</param>
 		/// <returns>Redirect to url</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult HandleBooking(int id, int memberId, int offerId, int localisationId, string returnUrl)
+		public virtual ActionResult HandleBooking(int id, int memberId, string returnUrl)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			try
@@ -229,7 +228,7 @@ namespace Worki.Web.Controllers
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 				var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 				var m = mRepo.Get(memberId);
-				var quotation = qRepo.Get(id, memberId, localisationId, offerId);
+				var quotation = qRepo.Get(id);
 				quotation.Handled = true;
 
 				//send email

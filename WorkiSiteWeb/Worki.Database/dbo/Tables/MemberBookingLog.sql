@@ -1,12 +1,9 @@
 ﻿CREATE TABLE [dbo].[MemberBookingLog] (
     [Id]              INT            NOT NULL IDENTITY,
     [MemberBookingId] INT            NOT NULL,
-    [MemberId]        INT            NOT NULL,
-    [LocalisationId]  INT            NOT NULL,
-    [OfferId]         INT            NOT NULL,
     [Event]           NVARCHAR (100) NOT NULL,
     [CreatedDate] DATETIME NOT NULL, 
     CONSTRAINT [PK_MemberBookingLog] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_MemberBookingLog_MemberBooking] FOREIGN KEY ([MemberBookingId], [MemberId], [LocalisationId], [OfferId]) REFERENCES [dbo].[MemberBooking] ([Id], [MemberId], [LocalisationId], [OfferId]) ON DELETE NO ACTION ON UPDATE NO ACTION
+    CONSTRAINT [FK_MemberBookingLog_MemberBooking] FOREIGN KEY ([MemberBookingId]) REFERENCES [dbo].[MemberBooking] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
