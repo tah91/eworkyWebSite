@@ -27,16 +27,18 @@ namespace Worki.Infrastructure.Helpers
         {
             if (date.HasValue)
             {
+                var thread_format = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat;
+
                 if (format == TimeFormat.Date)
-                    return string.Format(System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat, "{0:d}", date.Value);
+                    return string.Format(thread_format, "{0:d}", date.Value);
                 if (format == TimeFormat.Time)
-                    return string.Format(System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat, "{0:t}", date.Value);
+                    return string.Format(thread_format, "{0:t}", date.Value);
                 if (format == TimeFormat.LongFull)
-                    return string.Format(System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat, "{0:F}", date.Value);
+                    return string.Format(thread_format, "{0:F}", date.Value);
                 if (format == TimeFormat.General)
-                    return string.Format(System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat, "{0:g}", date.Value);
+                    return string.Format(thread_format, "{0:g}", date.Value);
                 if (format == TimeFormat.LongGeneral)
-                    return string.Format(System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat, "{0:G}", date.Value);
+                    return string.Format(thread_format, "{0:G}", date.Value);
             }
 
             return "";
