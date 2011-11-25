@@ -11,18 +11,6 @@
         });
 	});
 
-    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
-        $("#searchform").submit(function () {
-            var val = $("#RentalData_AvailableDate").val();
-            var date = Date.parseExact(val, "dd/MM/yyyy");
-            if (date != null) {
-                var newVal = date.toString('MM/dd/yyyy');
-                $("#RentalData_AvailableDate").val(newVal);
-            }
-            return true;
-        });
-    });
-
     $("#RentalData_AvailableNow").click(function () {
         if ($("#RentalData_AvailableNow:checked").val() == "true") {
             $("#RentalData_AvailableDate").hide();

@@ -271,15 +271,6 @@
 	            yearRange: '1900:2020'
 	        });
 	    });
-	    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
-	        $("#rentalForm").submit(function () {
-	            var val = $("#Rental_AvailableDate").val();
-	            var date = Date.parseExact(val, "dd/MM/yyyy");
-	            var newVal = date.toString('MM/dd/yyyy');
-	            $("#Rental_AvailableDate").val(newVal);
-	            return true;
-	        });
-	    });
 
 		require.ready(function () {
 			$("#addItem").click(function () {
