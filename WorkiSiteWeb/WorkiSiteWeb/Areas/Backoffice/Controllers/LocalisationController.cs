@@ -9,6 +9,7 @@ using Worki.Data.Models;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
+using Postal;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -163,7 +164,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				}
 				else
 				{
-					offer = oRepo.Get(offerid, id);
+					offer = oRepo.Get(offerid);
 				}
                 
                 if (offer.Localisation.OwnerID != memberId)
@@ -181,10 +182,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <summary>
         /// Get action method to show bookings of the owner, for a given localisation and offer
         /// </summary>
-        /// <param name="id">id of the localisation</param>
         /// <param name="offerid">id of the offer</param>
         /// <returns>View containing the bookings</returns>
-        public virtual ActionResult OfferBooking(int id,int offerid, int page=1)
+        public virtual ActionResult OfferBooking(int id, int page=1)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -196,7 +196,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 var member = mRepo.Get(memberId);
                 Member.Validate(member);
-                var offer = oRepo.Get(offerid, id);
+                var offer = oRepo.Get(id);
                 if (offer.Localisation.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
@@ -221,10 +221,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <summary>
         /// Get action method to show quotation of the owner, for a given localisation and offer
         /// </summary>
-        /// <param name="id">id of the localisation</param>
-        /// <param name="offerid">id of the offer</param>
+		/// <param name="id">id of the offer</param>
         /// <returns>View containing the quotations</returns>
-        public virtual ActionResult OfferQuotation(int id, int offerid, int page = 1)
+        public virtual ActionResult OfferQuotation(int id, int page = 1)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -236,7 +235,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 var member = mRepo.Get(memberId);
                 Member.Validate(member);
-                var offer = oRepo.Get(offerid, id);
+                var offer = oRepo.Get(id);
                 if (offer.Localisation.OwnerID != memberId)
                     throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
@@ -264,11 +263,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <param name="id">id of offer</param>
         /// <returns>View containing offer data</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult ConfigureOffer(int id, int offerId)
+        public virtual ActionResult ConfigureOffer(int id)
         {
             var context = ModelFactory.GetUnitOfWork();
             var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-            var offer = oRepo.Get(offerId, id);
+            var offer = oRepo.Get(id);
             return View(new OfferFormViewModel { Offer = offer });
         }
 
@@ -279,7 +278,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <returns>View containing localisation data</returns>
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult ConfigureOffer(int id, int offerId, OfferFormViewModel formData)
+        public virtual ActionResult ConfigureOffer(int id, OfferFormViewModel formData)
         {
             var context = ModelFactory.GetUnitOfWork();
             var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
@@ -287,11 +286,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 try
                 {
-                    var o = oRepo.Get(offerId, id);
+                    var o = oRepo.Get(id);
                     UpdateModel(o, "Offer");
                     context.Commit();
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
-                    return RedirectToAction(MVC.Backoffice.Localisation.OfferIndex(id, offerId));
+                    return RedirectToAction(MVC.Backoffice.Localisation.OfferIndex(o.LocalisationId, o.Id));
                 }
                 catch (Exception ex)
                 {
@@ -302,5 +301,149 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             }
             return View(formData);
         }
+
+		/// <summary>
+		/// GET Action result to confirm booking
+		/// </summary>
+		/// <param name="id">id of booking to confirm</param>
+		/// <returns>View to fill booking data</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult ConfirmBooking(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var booking = bRepo.Get(id);
+			return View(booking);
+		}
+
+		/// <summary>
+		/// POST Action result to confirm booking
+		/// </summary>
+		/// <param name="id">id of booking to confirm</param>
+		/// <returns>View to fill booking data</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult ConfirmBooking(int id, MemberBooking memberBooking)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var booking = bRepo.Get(id);
+					UpdateModel(booking);
+					booking.StatusId = (int)MemberBooking.Status.Accepted;					
+
+					//send mail to owner
+					var owner = booking.Offer.Localisation.Member;
+					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+					ownerMail.To = owner.Email;
+					ownerMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+					ownerMail.ToName = owner.MemberMainData.FirstName;
+					ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
+														Localisation.GetOfferType(booking.Offer.Type),
+														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
+														string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+														booking.Offer.Localisation.Name,
+														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
+														booking.Price);
+					ownerMail.Send();
+
+					//send mail to client
+					var client = booking.Member;
+					dynamic clientMail = new Email(MVC.Emails.Views.Email);
+					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+					clientMail.To = client.Email;
+					clientMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+					clientMail.ToName = client.MemberMainData.FirstName;
+					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
+														Localisation.GetOfferType(booking.Offer.Type),
+														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
+														string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+														booking.Offer.Localisation.Name,
+														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
+														booking.Price);
+					clientMail.Send();
+
+					context.Commit();
+
+					return RedirectToAction(MVC.Backoffice.Localisation.OfferBooking(booking.OfferId));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("ConfirmBooking", ex);
+					context.Complete();
+				}
+			}
+			return View(memberBooking);
+		}
+
+		/// <summary>
+		/// GET Action result to refuse booking
+		/// </summary>
+		/// <param name="id">id of booking to refuse</param>
+		/// <returns>View to fill booking data</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult RefuseBooking(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var booking = bRepo.Get(id);
+			return View(new RefuseBookingFormViewModel { MemberBooking = booking });
+		}
+
+		/// <summary>
+		/// POST Action result to confirm booking
+		/// </summary>
+		/// <param name="id">id of booking to confirm</param>
+		/// <returns>View to fill booking data</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult RefuseBooking(int id, RefuseBookingFormViewModel formModel)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var booking = bRepo.Get(id);
+					UpdateModel(booking);
+					booking.StatusId = (int)MemberBooking.Status.Refused;
+
+					//send mail to owner
+					var owner = booking.Offer.Localisation.Member;
+					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+					ownerMail.To = owner.Email;
+					ownerMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+					ownerMail.ToName = owner.MemberMainData.FirstName;
+					ownerMail.Content = formModel.Message;
+					ownerMail.Send();
+
+					//send mail to client
+					var client = booking.Member;
+					dynamic clientMail = new Email(MVC.Emails.Views.Email);
+					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+					clientMail.To = client.Email;
+					clientMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+					clientMail.ToName = client.MemberMainData.FirstName;
+					clientMail.Content = formModel.Message;
+					clientMail.Send();
+
+					context.Commit();
+
+					return RedirectToAction(MVC.Backoffice.Localisation.OfferBooking(booking.OfferId));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("RefuseBooking", ex);
+					context.Complete();
+				}
+			}
+			return View(formModel);
+		}
     }
 }

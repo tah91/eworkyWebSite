@@ -146,7 +146,6 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var admin = mRepo.GetMember(MiscHelpers.AdminConstants.AdminMail);
 			try
 			{
 				var member = mRepo.GetMember(User.Identity.Name);
@@ -160,7 +159,7 @@ namespace Worki.Web.Controllers
 					{
 						//update
 						UpdateModel(localisationToAdd, LocalisationPrefix);
-                        localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : admin.MemberId);
+						localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : mRepo.GetAdminId());
 						//validate
 						_SearchService.ValidateLocalisation(localisationToAdd, ref error);
 						//save

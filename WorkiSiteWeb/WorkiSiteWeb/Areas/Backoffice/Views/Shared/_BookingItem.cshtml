@@ -1,5 +1,29 @@
 ﻿@model MemberBooking
 
+@{
+	var statusText = "";
+	var color = "";
+	if (Model.Unknown)
+	{
+		color = "Yellow";
+	}
+	if (Model.Refused)
+	{
+		statusText = "Refusée";
+		color = "Red";
+	}
+	else if (Model.Waiting)
+	{
+		statusText = "En attente de réglement";
+		color = "Orange";
+	}
+	else if (Model.Paid)
+	{
+		statusText = "Payé le " + Model.PaidDate.ToShortDateString();
+		color = "Green";
+	}
+}
+
 <li class="bookingItem">
     <div class="contentBlock">
         <div class="bookingDesc float-left">
@@ -13,14 +37,24 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, Model.ToDate.ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
         </div>
-        <div class="bookingStatus float-left">
+        <div class="bookingStatus bookingStatus@(color) float-left">
             <div class="bookingStatusContent">
-                <div class="bookingStatusDesc">
-                    @Worki.Resources.Views.Booking.BookingString.WaitingForPayement
-                </div>
-                <div class="buttonStd buttonBlue linkImg bookingStatusAction">
-                    <a href=#>@Worki.Resources.Views.Booking.BookingString.Pay</a>
-                </div>
+				@if (!string.IsNullOrEmpty(statusText))
+				{
+					<div class="bookingStatusDesc">
+						@statusText
+					</div>
+				}
+				@if (Model.Unknown)
+				{
+					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
+						@Html.ActionLink("Accepter",MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
+					</div>
+					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
+						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
+					</div>
+				}
+
             </div>
         </div>
         <div class="bookingLinks float-right blue">

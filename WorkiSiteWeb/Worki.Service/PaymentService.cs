@@ -16,7 +16,7 @@ namespace Worki.Service
 {
     public interface IPaymentService
     {
-        List<string> ProcessPaypalIPNMessage(HttpRequestBase req);
+		List<string> ProcessPaypalIPNMessage(HttpRequestBase req, out string status, out string requestId);
 
         string PayWithPayPal(int memberBookingId, double receiverAmount, double workiFee, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, string receiverEmail, string workiAccountEmail);
     }
@@ -97,11 +97,9 @@ namespace Worki.Service
 
         ILogger _Logger;
 
-        static object _Lock = new object();
-
-        private const string ApiUsername = "ulysse_1321039527_biz_api1.hotmail.com";
-        private const string ApiPassword = "1321039578";
-        private const string ApiSignature = "A3C9t4rj9cNZUxlBZAHngM9kfX.pAKAzUNijx8cmFgCIdqwAfHO4rpLR";
+		private const string ApiUsername = "t.ifti_1322172136_biz_api1.hotmail.fr";
+		private const string ApiPassword = "1322172161";
+		private const string ApiSignature = "AeiLOX9D9hPNdgMhxGPb255O5u61AanPdNVGf5h0Kf6YW4deoOscaJ66";
         private const string ApiTestApplicationId = "APP-80W284485P519543T";
 
         #endregion
@@ -147,7 +145,7 @@ namespace Worki.Service
             try
             {
                 var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 MemberBooking booking = bRepo.GetBooking(memberBookingId);
 
                 if (booking != null)
@@ -164,7 +162,7 @@ namespace Worki.Service
 
 					booking.Transactions.Add(new Transaction
 					{
-						ReceiverId = 1,         // MQP Id de l'admin en dur...
+						ReceiverId = mRepo.GetAdminId(),
 						Amount = (decimal)workiFee,
 						CreatedDate = DateTime.Now,
 						PaymentType = (int)Transaction.Payment.PayPal,
@@ -197,6 +195,7 @@ namespace Worki.Service
         {
             var context = ModelFactory.GetUnitOfWork();
             var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var transactions = tRepo.GetMany(trx => trx.RequestId == payKey);
 
             if (transactions.Count == 0) return;
@@ -218,19 +217,12 @@ namespace Worki.Service
 
             try
             {
+				var adminId = mRepo.GetAdminId();
                 foreach (var transaction in transactions)
                 {
                     transaction.UpdatedDate = DateTime.Now;
                     transaction.StatusId = (int)Transaction.Status.Completed;
-
-                    if (transaction.ReceiverId == 1)
-                    {
-                        transaction.TransactionId = eworkiTransactionId;
-                    }
-                    else
-                    {
-                        transaction.TransactionId = customerTransactionId;
-                    }
+					transaction.TransactionId = transaction.ReceiverId == adminId? eworkiTransactionId:customerTransactionId;
                 }
 
                 var t = transactions[0];
@@ -251,16 +243,6 @@ namespace Worki.Service
 				_Logger.Error("CompleteTransactions", ex);
             }
         }
-
-
-        private void SendWarningMail(string payKey)
-        {
-
-
-
-
-        }
-
 
         /// <summary>
         /// 
@@ -312,23 +294,25 @@ namespace Worki.Service
         /// Checks if the provided IPN request is valid and really comes from PayPal. If all's OK process the message
         /// </summary>
         /// <param name="paypalRequest"></param>
-        /// <returns>A string list of errors, empty list if none</returns>
-        public List<string> ProcessPaypalIPNMessage(HttpRequestBase paypalRequest)
+		/// <returns>A string list of errors, empty list if none</returns>
+        public List<string> ProcessPaypalIPNMessage(HttpRequestBase paypalRequest, out string status, out string requestId)
         {
-            List<string> errors = new List<string>();
+			List<string> errors = new List<string>();
 
             string strResponse = ValidateIPNRequest(paypalRequest, false);
+			status = string.Empty;
+			requestId = string.Empty;
 
             if (strResponse != null)
             {
                 if (strResponse == "VERIFIED")
                 {
-                    string status = paypalRequest.Form["status"];
+                    status = paypalRequest.Form["status"];
 
                     if (!string.IsNullOrEmpty(status))
                     {
                         status = status.ToUpper();
-                        string payKey = paypalRequest.Form["pay_key"];
+                        requestId = paypalRequest.Form["pay_key"];
 
                         string customerTransactionId = paypalRequest["transaction[0].id"];
                         string eworkiTransactionId = paypalRequest["transaction[1].id"];
@@ -336,12 +320,10 @@ namespace Worki.Service
                         switch (status)
                         {
                             case "COMPLETED":
-                                CompleteTransactions(payKey, customerTransactionId, eworkiTransactionId);
+								CompleteTransactions(requestId, customerTransactionId, eworkiTransactionId);
                                 break;
                             case "INCOMPLETE":
                             case "ERROR":
-                                SendWarningMail(payKey);
-                                break;
                             case "PROCESSING":  // Do something?
                             case "PENDING":     // Do something?
                             default: break;
@@ -362,7 +344,7 @@ namespace Worki.Service
                     message += "Request   : " + paypalRequest.RawUrl;
                     _Logger.Error(message);
 
-                    errors.Add("Paypal: invalid IPN message");
+					errors.Add("Paypal: invalid IPN message");
                 }
 
                 // Stops IPN callback calls
@@ -370,10 +352,10 @@ namespace Worki.Service
             }
             else
             {
-                errors.Add("Paypal : cannot validate IPN request");
+				errors.Add("Paypal : cannot validate IPN request");
             }
 
-            return errors;
+			return errors;
         }
 
 

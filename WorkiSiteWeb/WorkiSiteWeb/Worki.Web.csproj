@@ -13,7 +13,7 @@
     <RootNamespace>Worki.Web</RootNamespace>
     <AssemblyName>Worki.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <MvcBuildViews>true</MvcBuildViews>
+    <MvcBuildViews>false</MvcBuildViews>
     <TargetFrameworkProfile />
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -644,6 +644,8 @@
     <Content Include="Areas\Backoffice\Views\Home\Localisations.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\ConfigureOffer.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationNavigation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\ConfirmBooking.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\RefuseBooking.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

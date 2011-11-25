@@ -95,11 +95,31 @@
 {
     width:25%;
     text-align:center;
-    border:2px solid orange;
+    border:2px solid;
     height: 120px;
     background:whitesmoke;
     font-weight:bold;
     display:table;
+}
+
+.bookingStatusYellow
+{
+	border-color: Yellow;
+}
+
+.bookingStatusOrange
+{
+	border-color: Orange;
+}
+
+.bookingStatusRed
+{
+	border-color: Red;
+}
+
+.bookingStatusGreen
+{
+	border-color: Green;
 }
 
 .bookingStatusContent
