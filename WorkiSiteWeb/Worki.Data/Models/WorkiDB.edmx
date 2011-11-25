@@ -340,6 +340,7 @@
           <Property Name="LocalisationId" Type="int" Nullable="false" />
           <Property Name="OfferId" Type="int" Nullable="false" />
           <Property Name="Event" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberEdition">
           <Key>
@@ -526,7 +527,7 @@
           <Property Name="Amount" Type="money" Nullable="false" />
           <Property Name="PaymentType" Type="int" Nullable="false" />
           <Property Name="StatusId" Type="int" Nullable="false" />
-          <Property Name="TransactionId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TransactionId" Type="nvarchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="RequestId" Type="nvarchar" Nullable="false" MaxLength="50" />
@@ -1875,6 +1876,7 @@
           <Property Type="Int32" Name="OfferId" Nullable="false" />
           <Property Type="String" Name="Event" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MemberBooking" Relationship="WorkiDBModel.FK_MemberBookingLog_MemberBooking" FromRole="MemberBookingLog" ToRole="MemberBooking" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -2290,6 +2292,7 @@
           <EntitySetMapping Name="MemberBookingLogs">
             <EntityTypeMapping TypeName="WorkiDBModel.MemberBookingLog">
               <MappingFragment StoreEntitySet="MemberBookingLog">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Event" ColumnName="Event" />
                 <ScalarProperty Name="OfferId" ColumnName="OfferId" />
                 <ScalarProperty Name="LocalisationId" ColumnName="LocalisationId" />

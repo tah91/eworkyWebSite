@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Worki.Service;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure;
+using Worki.Infrastructure.Repository;
+using Worki.Data.Models;
 
 namespace Worki.Web.Controllers
 {
@@ -32,7 +34,7 @@ namespace Worki.Web.Controllers
             string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
-            string paypalApprovalUrl = _PaymentService.PayWithPayPal(1000, 10,
+            string paypalApprovalUrl = _PaymentService.PayWithPayPal(19, 1000, 10,
                                             returnUrl, 
                                             cancelUrl, 
                                             ipnUrl,

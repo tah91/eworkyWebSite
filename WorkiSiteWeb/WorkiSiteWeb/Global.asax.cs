@@ -90,6 +90,9 @@ namespace Worki.Web
             Bind<IPaymentService>()
                 .To<PaymentService>();
 
+            Bind<ITransactionRepository>()
+                .To<TransactionRepository>();
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();

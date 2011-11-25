@@ -8,7 +8,7 @@
     [Amount]          MONEY         NOT NULL,
     [PaymentType]     INT			NOT NULL,
     [StatusId]        INT           NOT NULL,
-    [TransactionId]   NVARCHAR (50) NOT NULL,
+    [TransactionId]   NVARCHAR (50) NULL,
     [CreatedDate]     DATETIME      NOT NULL,
     [UpdatedDate]     DATETIME      NULL,
     [RequestId]		  NVARCHAR (50) NOT NULL, 

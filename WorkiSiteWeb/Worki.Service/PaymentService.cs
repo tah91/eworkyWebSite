@@ -8,6 +8,8 @@ using System.IO;
 using System.Xml;
 using Newtonsoft.Json;
 using Worki.Infrastructure.Logging;
+using Worki.Infrastructure.Repository;
+using Worki.Data.Models;
 
 
 namespace Worki.Service
@@ -16,14 +18,14 @@ namespace Worki.Service
     {
         List<string> ProcessPaypalIPNMessage(HttpRequestBase req);
 
-        string PayWithPayPal(double receiverAmount, double workiFee, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, string receiverEmail, string workiAccountEmail);
+        string PayWithPayPal(int memberBookingId, double receiverAmount, double workiFee, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, string receiverEmail, string workiAccountEmail);
     }
 
     #region Constants for Paypal
     public class PayPalConstants
     {
-        private const string _postbackProductionUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-        private const string _postbackSandboxUrl = "https://www.paypal.com/cgi-bin/webscr";
+        private const string _postbackSandboxUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
+        private const string _postbackProductionUrl = "https://www.paypal.com/cgi-bin/webscr";
         private const string _paymentSandBoxUrl = "https://svcs.sandbox.paypal.com/AdaptivePayments/Pay";
         private const string _paymentProductionUrl = "https://svcs.paypal.com/AdaptivePayments/API_operation";
         private const string _approvalProductionUrl = "https://www.paypal.com/webscr?cmd=_ap-payment&paykey=";
@@ -95,6 +97,7 @@ namespace Worki.Service
 
         ILogger _Logger;
 
+        static object _Lock = new object();
 
         private const string ApiUsername = "ulysse_1321039527_biz_api1.hotmail.com";
         private const string ApiPassword = "1321039578";
@@ -133,7 +136,155 @@ namespace Worki.Service
             
             return request;
         }
+
+
+        private bool CreateTransactions(int memberBookingId, string payKey, double receiverAmount, double workiFee)
+        {
+            bool error = false;
+
+            var context = ModelFactory.GetUnitOfWork();
+   
+            try
+            {
+                var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+
+                MemberBooking booking = bRepo.GetBooking(memberBookingId);
+
+                if (booking != null)
+                {
+                    var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
+                    var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                    
+                    Localisation localisation = lRepo.Get(booking.LocalisationId);
+
+                    Transaction t = new Transaction();
+                    t.MemberBookingId = booking.Id;
+                    t.MemberId = booking.MemberId;
+                    t.LocalisationId = booking.LocalisationId;
+                    t.OfferId = booking.OfferId;
+                    t.ReceiverId = localisation.OwnerID.Value;
+                    t.Amount = (decimal)receiverAmount;
+                    t.CreatedDate = DateTime.Now;
+                    t.StatusId = (int)Transaction.Status.Created;
+                    t.RequestId = payKey;
+
+                    tRepo.Add(t);
+
+
+                    
+                    t = new Transaction();
+                    t.MemberBookingId = booking.Id;
+                    t.MemberId = booking.MemberId;
+                    t.LocalisationId = booking.LocalisationId;
+                    t.OfferId = booking.OfferId;
+                    t.ReceiverId = 1;               // MQP Id de l'admin en dur...
+                    t.Amount = (decimal)workiFee;
+                    t.CreatedDate = DateTime.Now;
+                    t.StatusId = (int)Transaction.Status.Created;
+                    t.RequestId = payKey;
+                    
+                    tRepo.Add(t);
+
+
+                    context.Commit();
+                }
+                else
+                {
+                    error = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error(ex.Message);
+            }
+
+            return error;
+         
+
+            //var context = ModelFactory.GetUnitOfWork();
+            //var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            //try
+            //{
+            //    mRepo.Add(m);
+
+            //    // User creation was a success
+            //    status = MembershipCreateStatus.Success;
+            //    context.Commit();
+            //    // Return the newly craeted user
+            //    return GetUserFromMember(m);
+            //}
+            //catch (Exception ex)
+            //{
+            //    context.Complete();
+            //    // Something was wrong and the user was rejected
+            //    status = MembershipCreateStatus.UserRejected;
+            //    Logger.Error("CreateUser", ex);
+            //}
+
+        }
+
+
+        private void CompleteTransactions(string payKey)
+        {
+
+
+
+
+        }
+
+
+        private void SendWarningMail(string payKey)
+        {
+
+
+
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="paypalRequest"></param>
+        /// <param name="sendAcknowledgement"></param>
+        /// <returns></returns>
+        private string ValidateIPNRequest(HttpRequestBase paypalRequest, bool sendAcknowledgement)
+        {
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(PayPalConstants.PostbackUrl);
+
+            string strResponse = null;
+
+            try
+            {
+                if (sendAcknowledgement)
+                {
+                    // Tell IPN server to stop calling
+                    req.Headers.Add("HTTP/1.0 200 OK");
+                }
+
+                req.Method = "POST";
+                req.ContentType = "application/x-www-form-urlencoded";
+                byte[] param = paypalRequest.BinaryRead(HttpContext.Current.Request.ContentLength);
+                string strRequest = Encoding.ASCII.GetString(param);
+                strRequest += "&cmd=_notify-validate";
+                req.ContentLength = strRequest.Length;
+               
+                //Send the request to PayPal and get the response
+                StreamWriter streamOut = new StreamWriter(req.GetRequestStream(), System.Text.Encoding.ASCII);
+                streamOut.Write(strRequest);
+                streamOut.Close();
+                StreamReader streamIn = new StreamReader(req.GetResponse().GetResponseStream());
+                strResponse = streamIn.ReadToEnd();
+                streamIn.Close();
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("Paypal: error while contacting IPN for request validation\r\n" + ex.Message);
+            }
         
+            return strResponse;
+        }
 
         #endregion
 
@@ -147,38 +298,57 @@ namespace Worki.Service
         {
             List<string> errors = new List<string>();
 
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(PayPalConstants.PostbackUrl);
+            string strResponse = ValidateIPNRequest(paypalRequest, false);
 
-            //Set values for the request back
-            req.Method = "POST";
-            req.ContentType = "application/x-www-form-urlencoded";
-            byte[] param = paypalRequest.BinaryRead(HttpContext.Current.Request.ContentLength);
-            string strRequest = Encoding.ASCII.GetString(param);
-            strRequest += "&cmd=_notify-validate";
-            req.ContentLength = strRequest.Length;
-
-            //Send the request to PayPal and get the response
-            StreamWriter streamOut = new StreamWriter(req.GetRequestStream(), System.Text.Encoding.ASCII);
-            streamOut.Write(strRequest);
-            streamOut.Close();
-            StreamReader streamIn = new StreamReader(req.GetResponse().GetResponseStream());
-            string strResponse = streamIn.ReadToEnd();
-            streamIn.Close();
-
-            // PayPayl confirmation
-            if (strResponse == "VERIFIED")
+            if (strResponse != null)
             {
+                if (strResponse == "VERIFIED")
+                {
+                    string status = paypalRequest.Form["status"];
 
-            
+                    if (!string.IsNullOrEmpty(status))
+                    {
+                        status = status.ToUpper();
+                        string payKey = paypalRequest.Form["payKey"];
+
+                        switch (status)
+                        {
+                            case "COMPLETED":
+                                CompleteTransactions(payKey);
+                                break;
+                            case "INCOMPLETE":
+                            case "ERROR":
+                                SendWarningMail(payKey);
+                                break;
+                            case "PROCESSING":  // Do something?
+                            case "PENDING":     // Do something?
+                            default: break;
+                        }
+                    }
+                    else
+                    {
+                        string message = "Paypal: no status found in IPN message\r\n";
+                        message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
+                        message += "Request   : " + paypalRequest.RawUrl;
+                        _Logger.Error(message);
+                    }
+                }
+                else
+                {
+                    string message = "Paypal: invalid Paypal IPN message\r\n";
+                    message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
+                    message += "Request   : " + paypalRequest.RawUrl;
+                    _Logger.Error(message);
+
+                    errors.Add("Paypal: invalid IPN message");
+                }
+
+                // Stops IPN callback calls
+                ValidateIPNRequest(paypalRequest, true);
             }
             else
             {
-                string message = "Invalid Paypal IPN Message\r\n";
-                message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
-                message += "Request   : " + paypalRequest.RawUrl;
-                _Logger.Error(message);
-
-                errors.Add("Invalide PayPal IPN message");
+                errors.Add("Paypal : cannot validate IPN request");
             }
 
             return errors;
@@ -197,7 +367,15 @@ namespace Worki.Service
         /// <param name="receiverEmail">The receiver email</param>
         /// <param name="workiAccountEmail">Worki's Paypal account email</param>
         /// <returns>The customer Paypal approval url, null if an error occurred</returns>
-        public string PayWithPayPal(double receiverAmount, double workiFee, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, string receiverEmail, string workiAccountEmail)
+        public string PayWithPayPal(int memberBookingId, 
+                                    double receiverAmount, 
+                                    double workiFee, 
+                                    string returnUrl, 
+                                    string cancelUrl, 
+                                    string ipnUrl, 
+                                    string senderEmail, 
+                                    string receiverEmail, 
+                                    string workiAccountEmail)
         {
             HttpWebRequest request;
             WebResponse response = null;
@@ -258,17 +436,21 @@ namespace Worki.Service
 
                         if (nodes.Count > 0)
                         {
-                            resultUrl = PayPalConstants.ApprovalUrl + nodes[0].InnerText;
+                            string payKey = nodes[0].InnerText.Trim();
+                            if (CreateTransactions(memberBookingId, payKey, receiverAmount, workiFee))
+                            {
+                                resultUrl = PayPalConstants.ApprovalUrl + payKey;
+                            }
                         }
                         else
                         {
-                            throw new Exception("Paypal response XML format changed!");
+                            throw new Exception("Paypal: invalid API response XML format");
                         }
                     }
                 }
                 else
                 {
-                    throw new Exception("Paypal response XML format changed!");
+                    throw new Exception("Paypal: invalid API response XML format");
                 }
             }
             catch (Exception ex)

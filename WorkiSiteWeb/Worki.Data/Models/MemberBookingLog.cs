@@ -22,6 +22,7 @@ namespace Worki.Data.Models
         public int LocalisationId { get; set; }
         public int OfferId { get; set; }
         public string Event { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     
         // Navigation properties
     
