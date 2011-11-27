@@ -79,7 +79,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@string.Format("{0:dd/MM/yyyy HH:MM}", Model.FromDate)
+                            &nbsp;&nbsp;&nbsp;@CultureHelpers.GetSpecificFormat(Model.FromDate, CultureHelpers.TimeFormat.General)
                         </div>
                     </td>
                 </tr>
@@ -91,7 +91,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@string.Format("{0:dd/MM/yyyy HH:MM}", Model.ToDate)
+                            &nbsp;&nbsp;&nbsp;@CultureHelpers.GetSpecificFormat(Model.ToDate, CultureHelpers.TimeFormat.General)
                         </div>
                     </td>
                 </tr>

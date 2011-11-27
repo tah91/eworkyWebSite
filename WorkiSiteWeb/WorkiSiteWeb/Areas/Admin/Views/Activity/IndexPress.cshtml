@@ -49,7 +49,7 @@
                 @item.ID
             </td>
             <td align="center">
-                @String.Format("{0:dd/MM/yyyy}", item.Date)
+                @CultureHelpers.GetSpecificFormat(item.Date, CultureHelpers.TimeFormat.Date)
             </td>
             <td align="center">
                 <a href=@item.Url>@item.Url</a>

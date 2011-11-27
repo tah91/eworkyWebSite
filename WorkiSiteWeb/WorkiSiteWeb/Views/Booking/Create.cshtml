@@ -92,7 +92,7 @@
 						    </td>
 						    <td>
 							    <div class="editor-field">
-								    @Html.TextBox("MemberBooking.FromDate", String.Format("{0:dd/MM/yyyy HH:mm}", Model.MemberBooking.FromDate), new { @class = "dtp" })
+								    @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
 							    </div>
 						    </td>
 					    </tr>
@@ -104,7 +104,7 @@
 						    </td>
 						    <td>
 							    <div class="editor-field">
-								    @Html.TextBox("MemberBooking.ToDate", String.Format("{0:dd/MM/yyyy HH:mm}", Model.MemberBooking.ToDate), new { @class = "dtp" })
+								    @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
 							    </div>
 						    </td>
 					    </tr>
@@ -148,31 +148,9 @@
 
 @section ScriptContent
 {
-	<script type="text/javascript">
-	    require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
-	        require(["@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
-				$(".dtp").datetimepicker({
-					stepHour: 1,
-					stepMinute: 15,
-					hourMin: 8,
-					hourMax: 20
-				});
-            });
-	    });
+    @Html.Partial(MVC.Shared.Views._DatePickerScript)
 
-	    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
-	        $("form").submit(function () {
-	            var val = $("#MemberBooking_FromDate").val();
-	            var date = Date.parse(val, "dd/MM/yyyy HH:mm");
-	            var newVal = date.toString('MM/dd/yyyy HH:mm');
-	            $("#MemberBooking_FromDate").val(newVal);
-	            val = $("#MemberBooking_ToDate").val();
-	            date = Date.parse(val, "dd/MM/yyyy HH:mm");
-	            newVal = date.toString('MM/dd/yyyy HH:mm');
-	            $("#MemberBooking_ToDate").val(newVal);
-	            return true;
-	        });
-	    });
+	<script type="text/javascript">
 
 	    $(document).ready(function () {
 	        init();

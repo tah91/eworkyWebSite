@@ -407,6 +407,9 @@ namespace Links {
         public static readonly string jquery_ui_autocomplete_selectFirst_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.autocomplete.selectFirst.min.js") ? Url("jquery.ui.autocomplete.selectFirst.min.js") : Url("jquery.ui.autocomplete.selectFirst.js");
                       
         public static readonly string jquery_ui_autocomplete_selectFirst_min_js = Url("jquery.ui.autocomplete.selectFirst.min.js");
+        public static readonly string jquery_ui_datepicker_en_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datepicker-en.min.js") ? Url("jquery.ui.datepicker-en.min.js") : Url("jquery.ui.datepicker-en.js");
+                      
+        public static readonly string jquery_ui_datepicker_en_min_js = Url("jquery.ui.datepicker-en.min.js");
         public static readonly string jquery_ui_datepicker_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datepicker-fr.min.js") ? Url("jquery.ui.datepicker-fr.min.js") : Url("jquery.ui.datepicker-fr.js");
                       
         public static readonly string jquery_ui_datepicker_fr_min_js = Url("jquery.ui.datepicker-fr.min.js");
@@ -2035,6 +2038,7 @@ namespace T4MVC {
             public readonly string @__Layout = "~/Views/Shared/__Layout.cshtml";
             public readonly string _AddToFavorite = "~/Views/Shared/_AddToFavorite.cshtml";
             public readonly string _CultureSwitchControl = "~/Views/Shared/_CultureSwitchControl.cshtml";
+            public readonly string _DatePickerScript = "~/Views/Shared/_DatePickerScript.cshtml";
             public readonly string _HorizontalMenu = "~/Views/Shared/_HorizontalMenu.cshtml";
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";

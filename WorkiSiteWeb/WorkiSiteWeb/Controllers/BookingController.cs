@@ -129,8 +129,8 @@ namespace Worki.Web.Controllers
 													 member.Email,
 													 locName,
 													 Localisation.GetOfferType(offer.Type),
-													 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
-													 string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
+													 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.General),
+                                                     CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.General),
 													 formData.MemberBooking.Message);
 					teamMail.Send();
 
@@ -243,8 +243,8 @@ namespace Worki.Web.Controllers
 				handleMail.Subject = Worki.Resources.Email.BookingString.BookingHandleMailSubject;
 				handleMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingHandleMailBody,
 													Localisation.GetOfferType(booking.Offer.Type),
-													string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-													string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+                                                    CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+                                                    CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
 													booking.Offer.Localisation.Name,
 													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
 
@@ -285,8 +285,8 @@ namespace Worki.Web.Controllers
 				confirmMail.ToName = booking.Member.MemberMainData.FirstName;
 				confirmMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
 													Localisation.GetOfferType(booking.Offer.Type),
-													string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-													string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+                                                    CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+                                                    CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
 													booking.Offer.Localisation.Name,
 													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
 													booking.Price);
@@ -327,8 +327,8 @@ namespace Worki.Web.Controllers
                 refuseMail.ToName = booking.Member.MemberMainData.FirstName;
                 refuseMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseMailBody,
                                                     Localisation.GetOfferType(booking.Offer.Type),
-                                                    string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-                                                    string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+                                                    CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+                                                    CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
 													booking.Offer.Localisation.Name,
 													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
                 refuseMail.Send();
@@ -365,8 +365,8 @@ namespace Worki.Web.Controllers
 
 			newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
 			newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMemberBody,
-												string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.FromDate),
-												string.Format("{0:dd/MM/yyyy HH:MM}", formData.MemberBooking.ToDate),
+                                                CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.General),
+                                                CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.General),
 												offer.Localisation.Name,
 												offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
 												member.Email,

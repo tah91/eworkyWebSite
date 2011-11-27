@@ -409,6 +409,10 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.ui.datepicker-en.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-en.min.js">
+      <DependentUpon>jquery.ui.datepicker-en.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\order.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\jquery.ui.datepicker-fr.js" />
@@ -785,6 +789,7 @@
     <Content Include="Areas\Admin\Views\Moderation\IndexQuotation.cshtml" />
     <Content Include="Views\Shared\_HorizontalMenu.cshtml" />
     <Content Include="Views\Shared\_VerticalMenu.cshtml" />
+    <Content Include="Views\Shared\_DatePickerScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -30,7 +30,7 @@
                     </td>
                     <td>
                         <div class="editor-field"> 
-                            &nbsp;&nbsp;&nbsp;@Model.Date.ToString("dd/MM/yyyy")           
+                            &nbsp;&nbsp;&nbsp;@CultureHelpers.GetSpecificFormat(Model.Date, CultureHelpers.TimeFormat.Date)
                         </div>
                     </td>
                 </tr>
