@@ -10,6 +10,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
 using Postal;
 using Worki.Infrastructure.Helpers;
+using System.Text;
 
 namespace Worki.Web.Controllers
 {
@@ -43,9 +44,11 @@ namespace Worki.Web.Controllers
 			//string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
-            string paypalApprovalUrl = _PaymentService.PayWithPayPal(id, 
-																	booking.Price,
-																	booking.Price,
+			double ownerAmount, eworkyAmount;
+			_PaymentService.GetAmounts(booking.Price, out ownerAmount, out eworkyAmount);
+            string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,
+																	ownerAmount,
+																	eworkyAmount,
 																	returnUrl, 
 																	cancelUrl, 
 																	ipnUrl,
@@ -139,6 +142,13 @@ namespace Worki.Web.Controllers
 															 booking.Message);
 							clientMail.Send();
 
+							Response.Clear();
+							Response.ClearHeaders();
+							Response.StatusCode = 200;
+							Response.StatusDescription = "OK";
+							Response.Flush();
+							Response.End();
+
 							break;
 						}
 					default:
@@ -147,9 +157,14 @@ namespace Worki.Web.Controllers
 							dynamic adminMail = new Email(MVC.Emails.Views.Email);
 							adminMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 							adminMail.To = MiscHelpers.AdminConstants.AdminMail;
-							adminMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+							adminMail.Subject = status;
 							adminMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-							adminMail.Content = status;
+							var strBuilder = new StringBuilder();
+							foreach (var item in errors)
+							{
+								strBuilder.AppendLine(item);
+							}
+							adminMail.Content = strBuilder.ToString();
 							adminMail.Send();
 
 							break;
