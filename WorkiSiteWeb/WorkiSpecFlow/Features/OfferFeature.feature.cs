@@ -261,6 +261,33 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Je créé des offres sur un lieu")]
+        [NUnit.Framework.CategoryAttribute("Offer")]
+        public virtual void JeCreeDesOffresSurUnLieu()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Je créé des offres sur un lieu", new string[] {
+                        "Offer"});
+#line 76
+this.ScenarioSetup(scenarioInfo);
+#line 77
+ testRunner.Given("Je me connecte à eWorky");
+#line 78
+  testRunner.And("Je vais dans la page admin");
+#line 79
+ testRunner.When("J\'edite un lieu");
+#line 80
+  testRunner.And("je sélectionne une offre");
+#line 81
+  testRunner.And("je remplis des champs pour l\'offre");
+#line 82
+  testRunner.And("je valide");
+#line 83
+ testRunner.Then("Je dois avoir l\'offre présente et conforme");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

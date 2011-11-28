@@ -154,17 +154,97 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Je créé des offres sur un lieu
+
+        [When(@"J'edite un lieu")]
+        public void WhenJEditeUnLieu()
+        {
+            WebBrowser.Current.Links.First(x => x.GetAttributeValue("href").Contains("/lieu-de-travail/editer/")).Click();
+        }
+
+        [When(@"je sélectionne une offre")]
+        public void WhenJeSelectionneUneOffre()
+        {
+            var url = WebBrowser.Current.Url.Split('/').ToList();
+            var id = int.Parse(url[url.Count - 1]);
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + "Offer/Create/" + id + "?type=3");
+        }
+
+        [When(@"je remplis des champs pour l'offre")]
+        public void WhenJeRemplisDesChampsPourLOffre()
+        {
+            WebBrowser.Current.TextField(Find.ById("Offer_Name")).TypeTextQuickly("Bureau 1");
+            WebBrowser.Current.TextField(Find.ById("Offer_Price")).TypeTextQuickly("4500");
+            WebBrowser.Current.SelectList(Find.ById("Offer_Period")).SelectByValue("3");
+            WebBrowser.Current.CheckBox(Find.ById("o_Desktop100Plus")).Click();
+            WebBrowser.Current.CheckBox(Find.ById("o_Equipped")).Click();
+        }
+
+        [When(@"je valide")]
+        public void WhenJeValide()
+        {
+            WebBrowser.Current.Button(Find.ByValue("Valider")).Click();
+            WebBrowser.Current.Button(Find.ByValue("Valider")).Click();
+        }
+
+        [Then(@"Je dois avoir l'offre présente et conforme")]
+        public void ThenJeDoisAvoirLOffrePresenteEtConforme()
+        {
+            var ie = WebBrowser.Current;
+
+            Assert.That(ie.ContainsText("Bureaux") && ie.ContainsText("> 100 m2") && ie.ContainsText("Equipé et câblé"));
+            ie.Close();
+        }
+
+        #endregion
     }
 
     #region BackOffice Page
 
     public class BackOfficePage : Page
     {
+        #region TextFields
+
+        public TextField[] TextFields
+        {
+            get { return Document.TextFields.ToArray(); }
+        }
+
+        #endregion
+
         #region Links
 
         public Link[] Links
         {
             get { return Document.Links.ToArray(); }
+        }
+
+        #endregion
+
+        #region SelectLists
+
+        public SelectList[] SelectLists
+        {
+            get { return Document.SelectLists.ToArray(); }
+        }
+
+        #endregion
+
+        #region CheckBoxes
+
+        public CheckBox[] CheckBoxes
+        {
+            get { return Document.CheckBoxes.ToArray(); }
+        }
+
+        #endregion
+
+        #region Buttons
+
+        public Button[] Buttons
+        {
+            get { return Document.Buttons.ToArray(); }
         }
 
         #endregion

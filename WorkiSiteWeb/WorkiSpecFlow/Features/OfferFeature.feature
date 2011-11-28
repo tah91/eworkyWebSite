@@ -71,3 +71,13 @@ Scenario: Je dois avoir des offres sur un des lieux
 	When Je clique sur bo
 		And Je clique sur un des lieux
 	Then Je dois avoir des offres associées à ce lieu
+
+@Offer
+Scenario: Je créé des offres sur un lieu
+	Given Je me connecte à eWorky
+		And Je vais dans la page admin
+	When J'edite un lieu
+		And je sélectionne une offre
+		And je remplis des champs pour l'offre
+		And je valide
+	Then Je dois avoir l'offre présente et conforme
