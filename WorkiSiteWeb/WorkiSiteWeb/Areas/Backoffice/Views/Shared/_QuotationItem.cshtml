@@ -6,7 +6,7 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, DateTime.Now.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, CultureHelpers.GetSpecificFormat(DateTime.Now, CultureHelpers.TimeFormat.LongGeneral))
         </div>
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())

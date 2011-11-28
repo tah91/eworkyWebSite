@@ -17,6 +17,7 @@ namespace Worki.Data.Models
         IList<MemberAdminModel> GetAdmins();
         IList<MemberAdminModel> GetLeaders();
         IList<Member> GetClients(int ownerId);
+		int GetAdminId();
 	}
 
 	public class MemberRepository : RepositoryBase<Member>, IMemberRepository
@@ -54,16 +55,16 @@ namespace Worki.Data.Models
             Member member = _Context.Members.SingleOrDefault(m => m.MemberId == id);
             if (member == null)
                 return;
-            var admin = _Context.Members.SingleOrDefault(m => m.Username == MiscHelpers.AdminConstants.AdminMail);
+			var adminId = GetAdminId();
             //set member localisation to admin
             foreach (var item in member.Localisations.ToList())
             {
-                item.SetOwner(admin.MemberId);
+				item.SetOwner(adminId);
             }
             //set member comment to admin
             foreach (var item in member.Comments.ToList())
             {
-                item.PostUserID = admin.MemberId;
+				item.PostUserID = adminId;
             }
             _Context.Members.Remove(member);
         }
@@ -120,5 +121,12 @@ namespace Worki.Data.Models
 
             return GetMany(m => clientIds.Contains(m.MemberId));
         }
+
+		public int GetAdminId()
+		{
+			Member member = _Context.Members.SingleOrDefault(m => string.Compare(m.Email, MiscHelpers.AdminConstants.AdminMail, StringComparison.InvariantCultureIgnoreCase) == 0);
+
+			return member != null ? member.MemberId : -1;
+		}
     }
 }

@@ -262,24 +262,9 @@
 
 @section ScriptContent
 {
-	<script type="text/javascript">
+    @Html.Partial(MVC.Shared.Views._DatePickerScript)
 
-	    require(["@MiscHelpers.UrlConstants.jqueryui", "@Url.VersionedContent(Links.Scripts.jquery_ui_datepicker_fr_js)"], function () {
-	        $(".dp").datepicker({
-	            changeMonth: true,
-	            changeYear: true,
-	            yearRange: '1900:2020'
-	        });
-	    });
-	    require(["@Url.VersionedContent(Links.Scripts.date_js)"], function () {
-	        $("#rentalForm").submit(function () {
-	            var val = $("#Rental_AvailableDate").val();
-	            var date = Date.parseExact(val, "dd/MM/yyyy");
-	            var newVal = date.toString('MM/dd/yyyy');
-	            $("#Rental_AvailableDate").val(newVal);
-	            return true;
-	        });
-	    });
+	<script type="text/javascript">
 
 		require.ready(function () {
 			$("#addItem").click(function () {

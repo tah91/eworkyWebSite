@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Worki.Infrastructure;
+using System.Linq;
 
 namespace Worki.Data.Models
 {
@@ -34,6 +35,18 @@ namespace Worki.Data.Models
         public bool NeedNewAccount { get; set; }
 	}
 
+	public class RefuseBookingFormViewModel
+	{
+		public RefuseBookingFormViewModel()
+		{
+			MemberBooking = new MemberBooking();
+		}
+
+		public MemberBooking MemberBooking { get; set; }
+
+		public string Message { get; set; }
+	}
+
 	[MetadataType(typeof(MemberBooking_Validation))]
 	public partial class MemberBooking
 	{
@@ -43,6 +56,42 @@ namespace Worki.Data.Models
             FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
             ToDate = FromDate;
 		}
+
+		public enum Status
+		{
+			Unknown,
+			Accepted,
+			Refused
+		}
+
+		#region Payment
+
+		public bool Unknown
+		{
+			get { return StatusId == (int)Status.Unknown; }
+		}
+
+		public bool Refused
+		{
+			get { return StatusId == (int)Status.Refused; }
+		}
+
+		public bool Waiting
+		{
+			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.UpdatedDate.HasValue).Count() == 0; }
+		}
+
+		public bool Paid
+		{
+			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.UpdatedDate.HasValue).Count() != 0; }
+		}
+
+		public DateTime PaidDate
+		{
+			get { return (from item in Transactions where item.UpdatedDate.HasValue select item.UpdatedDate.Value).FirstOrDefault(); }
+		}
+
+		#endregion
 	}
 
 	[Bind(Exclude = "Id,MemberId,LocalisationId,OfferId")]

@@ -1,0 +1,52 @@
+﻿@model Worki.Data.Models.RefuseBookingFormViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Bookings)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.MemberBooking.Offer.Localisation, Offer = Model.MemberBooking.Offer })
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.MemberBooking.Offer.LocalisationId })
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex(Model.MemberBooking.Offer.Localisation.ID,Model.MemberBooking.Offer.Id))} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Configure, MVC.Backoffice.Localisation.ConfigureOffer(Model.MemberBooking.Offer.Id))} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.OfferBooking(Model.MemberBooking.Offer.Id))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.OfferQuotation(Model.MemberBooking.Offer.Id))}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+		<div class="contentBlock">
+			@using (Html.BeginForm())
+            {
+				@Html.AntiForgeryToken()
+				<table>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								Message
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextAreaFor(m => m.Message)
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="editor-field float-right">
+					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.RefuseIt)"/>
+				</div>
+				<div class="clear"></div>
+            }
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

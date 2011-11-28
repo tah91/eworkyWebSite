@@ -12,7 +12,11 @@
 .bookingGallery{width:25%;height:120px;margin-right:10px}
 .bookingGallery img{max-height:100px}
 .bookingDesc{width:25%;margin-right:10px}
-.bookingStatus{width:25%;text-align:center;border:2px solid orange;height:120px;background:whitesmoke;font-weight:bold;display:table}
+.bookingStatus{width:25%;text-align:center;border:2px solid;height:120px;background:whitesmoke;font-weight:bold;display:table}
+.bookingStatusYellow{border-color:Yellow}
+.bookingStatusOrange{border-color:Orange}
+.bookingStatusRed{border-color:Red}
+.bookingStatusGreen{border-color:Green}
 .bookingStatusContent{display:table-cell;vertical-align:middle;margin:10px 0}
 .bookingStatusAction{width:60px;margin:10px auto!important}
 .bookingLinks{width:20%}

@@ -1,4 +1,4 @@
-﻿@model	OfferBookingViewModel
+﻿@model Worki.Data.Models.MemberBooking
 
 @section HeadContent
 {
@@ -14,7 +14,7 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID, Model.Offer.Id))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID,Model.Offer.Id))} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Configure, MVC.Backoffice.Localisation.ConfigureOffer(Model.Offer.Id))} ,
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Id))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.OfferQuotation(Model.Offer.Id))}
@@ -22,24 +22,41 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-        @if (Model.Bookings.List.Count != 0)
-        {
-            <ul>
-            @foreach (var booking in Model.Bookings.List)
+		<div class="contentBlock">
+			@using (Html.BeginForm())
             {
-                @Html.Partial(MVC.Backoffice.Shared.Views._BookingItem, booking)
+				@Html.AntiForgeryToken()
+				<table>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Price)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Price)
+							</div>
+						</td>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.PaymentMail)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.PaymentMail)
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="editor-field float-right">
+					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ConfirmIt"/>
+				</div>
+				<div class="clear"></div>
             }
-            </ul>
-            <div class="pager">
-                @Html.PageLinks(Model.Bookings.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Id, x)))
-            </div>
-        }
-        else
-        {
-        <div class="contentBlock italic">
-            @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
-        </div>
-        }
+		</div>
 	</div>
-	<div class="clear"></div>
+	<div class="clear">
+	</div>
 </div>

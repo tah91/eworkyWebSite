@@ -16,12 +16,40 @@ namespace Worki.Service
 {
     public interface IPaymentService
     {
-        List<string> ProcessPaypalIPNMessage(HttpRequestBase req);
-
+		/// <summary>
+		/// Send a payment request to Paypals API
+		/// </summary>
+		/// <param name="receiverAmount">payment for the owner</param>
+		/// <param name="workiFee">Worki fee for this transaction</param>
+		/// <param name="returnUrl">Return url if the payment is accepted by Paypal</param>
+		/// <param name="ipnUrl">Return url if the payment is accepted by Paypal</param>
+		/// <param name="cancelUrl">Cancel url if the payment is cancelled by the customer</param>
+		/// <param name="senderEmail">The buyer email</param>
+		/// <param name="receiverEmail">The receiver email</param>
+		/// <param name="workiAccountEmail">Worki's Paypal account email</param>
+		/// <returns>The customer Paypal approval url, null if an error occurred</returns>
         string PayWithPayPal(int memberBookingId, double receiverAmount, double workiFee, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, string receiverEmail, string workiAccountEmail);
+
+		/// <summary>
+		/// Checks if the provided IPN request is valid and really comes from PayPal. If all's OK process the message
+		/// </summary>
+		/// <param name="req">paypal request</param>
+		/// <param name="status">payment status</param>
+		/// <param name="requestId">paypal request id</param>
+		/// <returns>A string list of errors, empty list if none</returns>
+		List<string> ProcessPaypalIPNMessage(HttpRequestBase req, out string status, out string requestId);
+
+		/// <summary>
+		/// Get amounts after commission processing
+		/// </summary>
+		/// <param name="totalAmount">total amount</param>
+		/// <param name="ownerAmount">amount for owner</param>
+		/// <param name="eworkyAmount">amount for eworky</param>
+		void GetAmounts(double totalAmount, out double ownerAmount, out double eworkyAmount);
     }
 
     #region Constants for Paypal
+
     public class PayPalConstants
     {
         private const string _postbackSandboxUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
@@ -86,6 +114,11 @@ namespace Worki.Service
             public static string Xml = "XML";
             public static string Json = "JSON";
         }
+
+		public class Commission
+		{
+			public static double BookingCom = 0.10;
+		}
     }
 
     #endregion
@@ -97,11 +130,9 @@ namespace Worki.Service
 
         ILogger _Logger;
 
-        static object _Lock = new object();
-
-        private const string ApiUsername = "ulysse_1321039527_biz_api1.hotmail.com";
-        private const string ApiPassword = "1321039578";
-        private const string ApiSignature = "A3C9t4rj9cNZUxlBZAHngM9kfX.pAKAzUNijx8cmFgCIdqwAfHO4rpLR";
+		private const string ApiUsername = "t.ifti_1322172136_biz_api1.hotmail.fr";
+		private const string ApiPassword = "1322172161";
+		private const string ApiSignature = "AeiLOX9D9hPNdgMhxGPb255O5u61AanPdNVGf5h0Kf6YW4deoOscaJ66";
         private const string ApiTestApplicationId = "APP-80W284485P519543T";
 
         #endregion
@@ -116,9 +147,9 @@ namespace Worki.Service
         /// <summary>
         /// Create a HttpWebRequest for Paypal with required Headers
         /// </summary>
-        /// <param name="requestFormat">Formt of data sent to Paypal</param>
-        /// <param name="responseFormat"></param>
-        /// <returns></returns>
+        /// <param name="requestFormat">Format of data sent to Paypal</param>
+		/// <param name="responseFormat">Format of data received from Paypal</param>
+        /// <returns>created request</returns>
         private HttpWebRequest CreatePaypalRequest(string requestFormat, string responseFormat)
         {
             string url = PayPalConstants.PaymentUrl;
@@ -137,7 +168,14 @@ namespace Worki.Service
             return request;
         }
 
-
+		/// <summary>
+		/// Create 2 transactions for the memberbooking, called when make the paypal request
+		/// </summary>
+		/// <param name="memberBookingId">memberbooking id</param>
+		/// <param name="payKey">paypal request id</param>
+		/// <param name="receiverAmount">ammount for the owner</param>
+		/// <param name="workiFee">ammount for eworky</param>
+		/// <returns>true if transactions are created</returns>
         private bool CreateTransactions(int memberBookingId, string payKey, double receiverAmount, double workiFee)
         {
             bool isCreated = false;
@@ -147,7 +185,7 @@ namespace Worki.Service
             try
             {
                 var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 MemberBooking booking = bRepo.GetBooking(memberBookingId);
 
                 if (booking != null)
@@ -164,7 +202,7 @@ namespace Worki.Service
 
 					booking.Transactions.Add(new Transaction
 					{
-						ReceiverId = 1,         // MQP Id de l'admin en dur...
+						ReceiverId = mRepo.GetAdminId(),
 						Amount = (decimal)workiFee,
 						CreatedDate = DateTime.Now,
 						PaymentType = (int)Transaction.Payment.PayPal,
@@ -192,57 +230,58 @@ namespace Worki.Service
             return isCreated;
         }
 
+		const string AmountIncorrectError = "Amount incorrect, RequestId : {0}, TransactionId : {1}, Amount : {2}, ExpectedAmount {3}";
 
-        private void CompleteTransactions(string payKey, string customerTransactionId, string eworkiTransactionId)
+		/// <summary>
+		/// Complete succelfull transactions by marking them as completed
+		/// </summary>
+		/// <param name="payKey">paypal request id to fetch corresponding transactions</param>
+		/// <param name="ownerTransactionId">paypal transaction id to set</param>
+		/// <param name="eworkyTransactionId">paypal transaction id to set</param>
+		/// <param name="ownerAmount">owner amount from request</param>
+		/// <param name="eworkyAmount">eworky amount from request</param>
+		private void CompleteTransactions(string payKey, string ownerTransactionId, string eworkyTransactionId, double ownerAmount, double eworkyAmount)
         {
             var context = ModelFactory.GetUnitOfWork();
             var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var transactions = tRepo.GetMany(trx => trx.RequestId == payKey);
 
-            if (transactions.Count == 0) return;
+            if (transactions.Count == 0)
+				return;
 
-            bool alreadyProcessed = true;
-
-            foreach (var transaction in transactions)
-            {
-                if (transaction.UpdatedDate == null)
-                {
-                    alreadyProcessed = false;
-                }
-            }
-
+			bool alreadyProcessed = transactions.Where(t => t.UpdatedDate == null).Count() == 0;
             if (alreadyProcessed)
-            {
                 return;
-            }
+
+			var booking = transactions[0].MemberBooking;
 
             try
             {
+				double storedOwnerAmount,storedEworkyAmount;
+				GetAmounts(booking.Price, out storedOwnerAmount, out storedEworkyAmount);
+				if (storedOwnerAmount != ownerAmount)
+				{
+					throw new Exception(string.Format(AmountIncorrectError, payKey, ownerTransactionId, ownerAmount, storedOwnerAmount));
+				}
+				if (storedEworkyAmount != eworkyAmount)
+				{
+					throw new Exception(string.Format(AmountIncorrectError, payKey, eworkyTransactionId, eworkyAmount, storedEworkyAmount));
+				}
+
+				var adminId = mRepo.GetAdminId();
                 foreach (var transaction in transactions)
                 {
                     transaction.UpdatedDate = DateTime.Now;
                     transaction.StatusId = (int)Transaction.Status.Completed;
-
-                    if (transaction.ReceiverId == 1)
-                    {
-                        transaction.TransactionId = eworkiTransactionId;
-                    }
-                    else
-                    {
-                        transaction.TransactionId = customerTransactionId;
-                    }
+					transaction.TransactionId = transaction.ReceiverId == adminId ? eworkyTransactionId : ownerTransactionId;
                 }
 
-                var t = transactions[0];
-
-				t.MemberBooking.MemberBookingLogs.Add(new MemberBookingLog
+				booking.MemberBookingLogs.Add(new MemberBookingLog
 				{
 					CreatedDate = DateTime.Now,
 					Event = "Paypal transaction completed",
 				});
-                
-                // TODO MQP Update Booking  Status & Send Confirmation Mails
-
                 context.Commit();
             }
             catch (Exception ex)
@@ -252,36 +291,18 @@ namespace Worki.Service
             }
         }
 
-
-        private void SendWarningMail(string payKey)
-        {
-
-
-
-
-        }
-
-
         /// <summary>
-        /// 
+        /// Validate the paypal request via postbackurl
         /// </summary>
-        /// <param name="paypalRequest"></param>
-        /// <param name="sendAcknowledgement"></param>
-        /// <returns></returns>
-        private string ValidateIPNRequest(HttpRequestBase paypalRequest, bool sendAcknowledgement)
+        /// <param name="paypalRequest">the request to validate</param>
+        /// <returns>string telling if paypalrequest is valid</returns>
+        private string ValidateIPNRequest(HttpRequestBase paypalRequest)
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(PayPalConstants.PostbackUrl);
-
             string strResponse = null;
 
             try
             {
-                if (sendAcknowledgement)
-                {
-                    // Tell IPN server to stop calling
-                    req.Headers.Add("HTTP/1.0 200 OK");
-                }
-
+				HttpWebRequest req = (HttpWebRequest)WebRequest.Create(PayPalConstants.PostbackUrl);
                 req.Method = "POST";
                 req.ContentType = "application/x-www-form-urlencoded";
                 byte[] param = paypalRequest.BinaryRead(HttpContext.Current.Request.ContentLength);
@@ -296,10 +317,11 @@ namespace Worki.Service
                 StreamReader streamIn = new StreamReader(req.GetResponse().GetResponseStream());
                 strResponse = streamIn.ReadToEnd();
                 streamIn.Close();
+				
             }
             catch (Exception ex)
             {
-                _Logger.Error("Paypal: error while contacting IPN for request validation\r\n" + ex.Message);
+				_Logger.Error("ValidateIPNRequest", ex);
             }
         
             return strResponse;
@@ -307,88 +329,6 @@ namespace Worki.Service
 
         #endregion
 
-
-        /// <summary>
-        /// Checks if the provided IPN request is valid and really comes from PayPal. If all's OK process the message
-        /// </summary>
-        /// <param name="paypalRequest"></param>
-        /// <returns>A string list of errors, empty list if none</returns>
-        public List<string> ProcessPaypalIPNMessage(HttpRequestBase paypalRequest)
-        {
-            List<string> errors = new List<string>();
-
-            string strResponse = ValidateIPNRequest(paypalRequest, false);
-
-            if (strResponse != null)
-            {
-                if (strResponse == "VERIFIED")
-                {
-                    string status = paypalRequest.Form["status"];
-
-                    if (!string.IsNullOrEmpty(status))
-                    {
-                        status = status.ToUpper();
-                        string payKey = paypalRequest.Form["pay_key"];
-
-                        string customerTransactionId = paypalRequest["transaction[0].id"];
-                        string eworkiTransactionId = paypalRequest["transaction[1].id"];
-
-                        switch (status)
-                        {
-                            case "COMPLETED":
-                                CompleteTransactions(payKey, customerTransactionId, eworkiTransactionId);
-                                break;
-                            case "INCOMPLETE":
-                            case "ERROR":
-                                SendWarningMail(payKey);
-                                break;
-                            case "PROCESSING":  // Do something?
-                            case "PENDING":     // Do something?
-                            default: break;
-                        }
-                    }
-                    else
-                    {
-                        string message = "Paypal: no status found in IPN message\r\n";
-                        message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
-                        message += "Request   : " + paypalRequest.RawUrl;
-                        _Logger.Error(message);
-                    }
-                }
-                else
-                {
-                    string message = "Paypal: invalid Paypal IPN message\r\n";
-                    message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
-                    message += "Request   : " + paypalRequest.RawUrl;
-                    _Logger.Error(message);
-
-                    errors.Add("Paypal: invalid IPN message");
-                }
-
-                // Stops IPN callback calls
-                ValidateIPNRequest(paypalRequest, true);
-            }
-            else
-            {
-                errors.Add("Paypal : cannot validate IPN request");
-            }
-
-            return errors;
-        }
-
-
-        /// <summary>
-        /// Send a payment request to Paypals API
-        /// </summary>
-        /// <param name="receiverAmount">Payment amount</param>
-        /// <param name="workiFee">Worki fee for this transaction</param>
-        /// <param name="returnUrl">Return url if the payment is accepted by Paypal</param>
-        /// <param name="ipnUrl">Return url if the payment is accepted by Paypal</param>
-        /// <param name="cancelUrl">Cancel url if the payment is cancelled by the customer</param>
-        /// <param name="senderEmail">The buyer email</param>
-        /// <param name="receiverEmail">The receiver email</param>
-        /// <param name="workiAccountEmail">Worki's Paypal account email</param>
-        /// <returns>The customer Paypal approval url, null if an error occurred</returns>
         public string PayWithPayPal(int memberBookingId, 
                                     double receiverAmount, 
                                     double workiFee, 
@@ -418,7 +358,7 @@ namespace Worki.Service
                 postData += "&currencyCode=" + "EUR";
                 postData += "&receiverList.receiver(0).amount=" + receiverAmount.ToString("F");
                 postData += "&receiverList.receiver(0).email=" + receiverEmail;
-                postData += "&feesPayer=" + PayPalConstants.FeePayer.Sender;   
+                postData += "&feesPayer=" + PayPalConstants.FeePayer.EachReceiver;   
               
                 if (workiFee > 0)
                 {
@@ -506,5 +446,83 @@ namespace Worki.Service
 
             return resultUrl;
         }
+
+		public List<string> ProcessPaypalIPNMessage(HttpRequestBase paypalRequest, out string status, out string requestId)
+		{
+			List<string> errors = new List<string>();
+
+			string strResponse = ValidateIPNRequest(paypalRequest);
+			status = string.Empty;
+			requestId = string.Empty;
+
+			try
+			{
+				if (strResponse != null)
+				{
+					if (strResponse == "VERIFIED")
+					{
+						status = paypalRequest.Form["status"];
+
+						if (!string.IsNullOrEmpty(status))
+						{
+							status = status.ToUpper();
+							requestId = paypalRequest.Form["pay_key"];
+
+							string ownerTransactionId = paypalRequest["transaction[0].id"];
+							string eworkyTransactionId = paypalRequest["transaction[1].id"];
+							string ownerAmountStr = paypalRequest["transaction[0].amount"].Split()[1];
+							string eworkyAmountStr = paypalRequest["transaction[1].amount"].Split()[1];
+							var ownerAmount = double.Parse(ownerAmountStr);
+							var eworkyAmount = double.Parse(eworkyAmountStr);
+
+							switch (status)
+							{
+								case "COMPLETED":
+									CompleteTransactions(requestId, ownerTransactionId, eworkyTransactionId, ownerAmount, eworkyAmount);
+									break;
+								case "INCOMPLETE":
+								case "ERROR":
+								case "PROCESSING":  // Do something?
+								case "PENDING":     // Do something?
+								default: break;
+							}
+						}
+						else
+						{
+							string message = "Paypal: no status found in IPN message\r\n";
+							message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
+							message += "Request   : " + paypalRequest.RawUrl;
+							_Logger.Error(message);
+						}
+					}
+					else
+					{
+						string message = "Paypal: invalid Paypal IPN message\r\n";
+						message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
+						message += "Request   : " + paypalRequest.RawUrl;
+						_Logger.Error(message);
+					}
+				}
+				else
+				{
+					string message = "Paypal : cannot validate IPN request";
+					errors.Add(message);
+					_Logger.Error(message);
+				}
+			}
+			catch (Exception ex)
+			{
+				errors.Add(ex.Message);
+				_Logger.Error("ProcessPaypalIPNMessage", ex);
+			}
+
+			return errors;
+		}
+
+		public void GetAmounts(double totalAmount, out double ownerAmount, out double eworkyAmount)
+		{
+			ownerAmount = (1 - PayPalConstants.Commission.BookingCom) * totalAmount;
+			eworkyAmount = PayPalConstants.Commission.BookingCom * totalAmount;
+		}
     }
 }
