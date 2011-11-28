@@ -39,6 +39,7 @@ namespace Worki.Data.Models
         public string Linkedin { get; set; }
         public string Viadeo { get; set; }
         public string Website { get; set; }
+        public string PaymentAddress { get; set; }
     
         // Navigation properties
     

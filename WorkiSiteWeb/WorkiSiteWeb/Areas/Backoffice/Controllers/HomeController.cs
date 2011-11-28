@@ -24,6 +24,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             _Logger = logger;
         }
 
+		public const int NewsCount = 10;
+		public const int LocalisationCount = 10;
+
         /// <summary>
         /// Get action result to show recent activities of the owner
         /// </summary>
@@ -35,12 +38,19 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			try
 			{
 				var member = mRepo.Get(id);
 				Member.Validate(member);
+
+				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
+				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
+				news = news.OrderByDescending(n => n.Date).Take(10).ToList();
+
 				var localisations = lRepo.GetMostBooked(id, 10);
-				return View(localisations);
+
+				return View(new HomeViewModel { Places = localisations, News = news });
 			}
 			catch (Exception ex)
 			{
@@ -50,9 +60,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         }
 
 		/// <summary>
-		/// Get action result to show recent activities of the owner
+		/// Get action result to show all the localisations of the owner
 		/// </summary>
-		/// <returns>View with recent activities</returns>
+		/// <returns>View of owner localisations</returns>
 		public virtual ActionResult Localisations(int? page)
 		{
 			var id = WebHelper.GetIdentityId(User.Identity);
@@ -73,7 +83,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 			catch (Exception ex)
 			{
-				_Logger.Error("Booking", ex);
+				_Logger.Error("Localisations", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}

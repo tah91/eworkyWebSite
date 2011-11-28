@@ -115,5 +115,27 @@ namespace Worki.Web.Helpers
 			}
 			return rvd;
 		}
+
+		public static List<NewsItem> GetNews(IEnumerable<MemberBooking> bookings, Func<MemberBooking,string> linkFunction)
+		{
+			var toRet = new List<NewsItem>();
+			foreach (var booking in bookings)
+			{
+				foreach (var log in booking.MemberBookingLogs)
+				{
+					if (log.EventType == (int)MemberBookingLog.BookingEvent.General)
+						continue;
+
+					toRet.Add(new NewsItem
+					{
+						Date = log.CreatedDate,
+						DisplayName = log.GetDisplay(),
+						Link = linkFunction(booking)
+					});
+				}
+			}
+
+			return toRet;
+		}
     }
 }

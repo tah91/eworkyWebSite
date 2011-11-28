@@ -374,6 +374,7 @@
           <Property Name="Linkedin" Type="nvarchar" MaxLength="256" />
           <Property Name="Viadeo" Type="nvarchar" MaxLength="256" />
           <Property Name="Website" Type="nvarchar" MaxLength="256" />
+          <Property Name="PaymentAddress" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="MemberQuotation">
           <Key>
@@ -1357,6 +1358,7 @@
           <Property Type="String" Name="Viadeo" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Website" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberMainData_Member" FromRole="MemberMainData" ToRole="Member" />
+          <Property Type="String" Name="PaymentAddress" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MemberQuotation">
           <Key>
@@ -2106,6 +2108,7 @@
           <EntitySetMapping Name="MemberMainDatas">
             <EntityTypeMapping TypeName="WorkiDBModel.MemberMainData">
               <MappingFragment StoreEntitySet="MemberMainData">
+                <ScalarProperty Name="PaymentAddress" ColumnName="PaymentAddress" />
                 <ScalarProperty Name="Website" ColumnName="Website" />
                 <ScalarProperty Name="Viadeo" ColumnName="Viadeo" />
                 <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />

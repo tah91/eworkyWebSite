@@ -1,4 +1,4 @@
-﻿@model List<Localisation>
+﻿@model HomeViewModel
 
 @section HeadContent
 {
@@ -22,8 +22,19 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
+			<h3>Dernières actualités</h3>
 			<ul>
-			@foreach (var item in Model)
+			@foreach (var item in Model.News)
+			{
+				<li>
+					@item.Date.ToString() : @item.DisplayName (<a href="@item.Link">plus...</a>)
+				</li>
+			}
+			</ul>
+
+			<h3>Accès direct à la gestion des lieux</h3>
+			<ul>
+			@foreach (var item in Model.Places)
 			{
 				<li>@Html.ActionLink(item.Name, MVC.Backoffice.Localisation.Index(item.ID))</li>
 			}

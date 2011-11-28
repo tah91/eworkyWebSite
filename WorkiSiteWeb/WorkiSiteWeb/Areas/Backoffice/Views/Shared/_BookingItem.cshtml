@@ -3,11 +3,16 @@
 @{
 	var statusText = "";
 	var color = "";
-	if (Model.Unknown)
+	if (Model.Expired)
+	{
+		statusText = "Achevée le " + Model.ToDate;
+		color = "Gray";
+	}
+	else if (Model.Unknown)
 	{
 		color = "Yellow";
 	}
-	if (Model.Refused)
+	else if (Model.Refused)
 	{
 		statusText = "Refusée";
 		color = "Red";
@@ -30,7 +35,7 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, CultureHelpers.GetSpecificFormat(DateTime.UtcNow, CultureHelpers.TimeFormat.LongGeneral))
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, CultureHelpers.GetSpecificFormat(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral))
         </div>
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, CultureHelpers.GetSpecificFormat(Model.FromDate, CultureHelpers.TimeFormat.General))

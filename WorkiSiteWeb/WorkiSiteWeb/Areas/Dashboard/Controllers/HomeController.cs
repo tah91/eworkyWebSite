@@ -36,22 +36,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
 			var member = mRepo.Get(id);
-			var news = new List<NewsItem>();
-			foreach (var booking in member.MemberBookings)
-			{
-				foreach (var log in booking.MemberBookingLogs)
-				{
-					if (log.EventType == (int)MemberBookingLog.BookingEvent.General)
-						continue;
-
-					news.Add(new NewsItem
-						{
-							Date = log.CreatedDate,
-							DisplayName = log.GetDisplay(),
-							Link = Url.Action(MVC.Dashboard.Home.Booking())
-						});
-				}
-			}
+			var news = ModelHelper.GetNews(member.MemberBookings, mb => { return Url.Action(MVC.Dashboard.Home.BookingDetail(mb.Id)); });
 
 			news = news.OrderByDescending(n => n.Date).Take(10).ToList();
 			return View(news);
@@ -59,63 +44,64 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 
         public const int PageSize = 5;
 
-        /// <summary>
-        /// Get action method to show bookings of the member
-        /// </summary>
-        /// <returns>View containing the bookings</returns>
-        public virtual ActionResult Booking(int? page)
-        {
-            var id = WebHelper.GetIdentityId(User.Identity);
+		#region Booking
 
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var p = page ?? 1;
-            try
-            {
-                var member = mRepo.Get(id);
-                Member.Validate(member);
-                var model = new PagingList<MemberBooking>
-                {
-                    List = member.MemberBookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.MemberBookings.Count }
-                };
-                return View(model);
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("Booking", ex);
-                return View(MVC.Shared.Views.Error);
-            }
-        }
+		/// <summary>
+		/// Get action method to show current bookings of the member
+		/// </summary>
+		/// <returns>View containing the bookings</returns>
+		public virtual ActionResult Booking(int? page)
+		{
+			var id = WebHelper.GetIdentityId(User.Identity);
 
-        /// <summary>
-        /// Get action method to show quotation of the member
-        /// </summary>
-        /// <returns>View containing the quotations</returns>
-        public virtual ActionResult Quotation(int? page)
-        {
-            var id = WebHelper.GetIdentityId(User.Identity);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var p = page ?? 1;
+			try
+			{
+				var member = mRepo.Get(id);
+				Member.Validate(member);
+				var model = new PagingList<MemberBooking>
+				{
+					List = member.MemberBookings.Where(mb => !mb.Expired).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.MemberBookings.Count }
+				};
+				return View(model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Booking", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
 
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var p = page ?? 1;
-            try
-            {
-                var member = mRepo.Get(id);
-                Member.Validate(member);
-                var model = new PagingList<MemberQuotation>
-                {
-                    List = member.MemberQuotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.MemberQuotations.Count }
-                };
-                return View(model);
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("Quotation", ex);
-                return View(MVC.Shared.Views.Error);
-            }
-        }
+		/// <summary>
+		/// Get action method to show booking detail
+		/// </summary>
+		/// <returns>View containing the booking</returns>
+		public virtual ActionResult BookingDetail(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			try
+			{
+				var member = mRepo.Get(id);
+				Member.Validate(member);
+				var booking = bRepo.Get(id);
+				if (memberId != booking.MemberId)
+					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+
+				return View(booking);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("BookingDetail", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
 
 		/// <summary>
 		/// Get action method to show bookings is paid
@@ -136,7 +122,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 				return View(booking);
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				_Logger.Error("BookingAccepted", ex);
 				return View(MVC.Shared.Views.Error);
@@ -177,5 +163,67 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			}
 		}
 
+		#endregion
+
+		#region Quotation
+
+		/// <summary>
+		/// Get action method to show quotation of the member
+		/// </summary>
+		/// <returns>View containing the quotations</returns>
+		public virtual ActionResult Quotation(int? page)
+		{
+			var id = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var p = page ?? 1;
+			try
+			{
+				var member = mRepo.Get(id);
+				Member.Validate(member);
+				var model = new PagingList<MemberQuotation>
+				{
+					List = member.MemberQuotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.MemberQuotations.Count }
+				};
+				return View(model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Quotation", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Get action method to show quotation detail
+		/// </summary>
+		/// <returns>View containing the quotation</returns>
+		public virtual ActionResult QuotationDetail(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+			try
+			{
+				var member = mRepo.Get(id);
+				Member.Validate(member);
+				var quotation = qRepo.Get(id);
+				if (memberId != quotation.MemberId)
+					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+
+				return View(quotation);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("QuotationDetail", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		#endregion
     }
 }

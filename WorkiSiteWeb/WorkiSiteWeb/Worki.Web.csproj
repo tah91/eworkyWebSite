@@ -652,6 +652,9 @@
     <Content Include="Areas\Backoffice\Views\Localisation\RefuseBooking.cshtml" />
     <Content Include="Areas\Dashboard\Views\Home\BookingAccepted.cshtml" />
     <Content Include="Areas\Dashboard\Views\Home\BookingCancelled.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\BookingDetail.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\QuotationDetail.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\BookingDetail.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
