@@ -214,15 +214,6 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Une erreur inconnue s&apos;est produite. Vérifiez votre entrée et réessayez. Si le problème persiste, contactez votre administrateur système..
-        /// </summary>
-        public static string InknowError {
-            get {
-                return ResourceManager.GetString("InknowError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Utilisateur non valide !.
         /// </summary>
         public static string InvalidUser {
@@ -489,6 +480,15 @@ namespace Worki.Resources.Validation {
         public static string TypeNotAllowed {
             get {
                 return ResourceManager.GetString("TypeNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Une erreur inconnue s&apos;est produite..
+        /// </summary>
+        public static string UnknowError {
+            get {
+                return ResourceManager.GetString("UnknowError", resourceCulture);
             }
         }
         

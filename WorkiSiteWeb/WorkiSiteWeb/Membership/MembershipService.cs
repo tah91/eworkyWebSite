@@ -331,7 +331,7 @@ namespace Worki.Memberships
 					return Worki.Resources.Validation.ValidationString.CreateUsernameFail;
 
 				default:
-					return Worki.Resources.Validation.ValidationString.InknowError;
+					return Worki.Resources.Validation.ValidationString.UnknowError;
 			}
 		}
 	}

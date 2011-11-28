@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.RefuseBookingFormViewModel
+﻿@model Worki.Data.Models.MemberBooking
 
 @section HeadContent
 {
@@ -6,18 +6,18 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.MemberBooking.Offer.Localisation, Offer = Model.MemberBooking.Offer })
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.MemberBooking.Offer.LocalisationId })
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Offer.Localisation, Offer = Model.Offer })
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.Offer.LocalisationId })
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex(Model.MemberBooking.Offer.Localisation.ID,Model.MemberBooking.Offer.Id))} ,
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Configure, MVC.Backoffice.Localisation.ConfigureOffer(Model.MemberBooking.Offer.Id))} ,
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.OfferBooking(Model.MemberBooking.Offer.Id))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.OfferQuotation(Model.MemberBooking.Offer.Id))}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID,Model.Offer.Id))} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Configure, MVC.Backoffice.Localisation.ConfigureOffer(Model.Offer.Id))} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Id))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.OfferQuotation(Model.Offer.Id))}
 		})
 	</div>
 
@@ -35,7 +35,7 @@
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextAreaFor(m => m.Message)
+								@Html.TextAreaFor(m => m.Response)
 							</div>
 						</td>
 					</tr>

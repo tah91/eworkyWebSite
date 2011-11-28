@@ -318,7 +318,32 @@ namespace Worki.Data.Models
 
             return true;
         }
-    }
+
+		/// <summary>
+		/// Tell if a member is the valid owner
+		/// </summary>
+		/// <param name="member">member to validate</param>
+		/// <param name="localisation">localisation to validate</param>
+		/// <returns>true if valid, throw exeption if not</returns>
+		public static bool ValidateOwner(Member member, Localisation localisation)
+		{
+
+			if (localisation == null || member == null)
+				throw new Exception(Worki.Resources.Validation.ValidationString.UnknowError);
+
+			if (localisation.OwnerID != member.MemberId)
+				throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+
+			return true;
+		}
+	}
+
+	public class NewsItem
+	{
+		public DateTime Date { get; set; }
+		public string DisplayName { get; set; }
+		public string Link { get; set; }
+	}
 
     [Bind(Exclude = "MemberId,Username")]
     public class Member_Validation

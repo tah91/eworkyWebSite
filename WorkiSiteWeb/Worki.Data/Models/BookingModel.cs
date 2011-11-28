@@ -35,18 +35,6 @@ namespace Worki.Data.Models
         public bool NeedNewAccount { get; set; }
 	}
 
-	public class RefuseBookingFormViewModel
-	{
-		public RefuseBookingFormViewModel()
-		{
-			MemberBooking = new MemberBooking();
-		}
-
-		public MemberBooking MemberBooking { get; set; }
-
-		public string Message { get; set; }
-	}
-
 	[MetadataType(typeof(MemberBooking_Validation))]
 	public partial class MemberBooking
 	{
@@ -92,6 +80,20 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
+
+		#region Member
+
+		public Member Client
+		{
+			get { return Member; }
+		}
+
+		public Member Owner
+		{
+			get { return Offer.Localisation.Member; }
+		}
+
+		#endregion
 	}
 
 	[Bind(Exclude = "Id,MemberId,LocalisationId,OfferId")]
@@ -107,6 +109,37 @@ namespace Worki.Data.Models
 
 		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public string Message { get; set; }
+	}
+
+	public partial class MemberBookingLog
+	{
+		public enum BookingEvent
+		{
+			General,
+			Creation,
+			Approval,
+			Refusal,
+			Payment
+		}
+
+		public string GetDisplay()
+		{
+			var type = (BookingEvent)EventType;
+			switch(type)
+			{
+				case BookingEvent.Creation:
+					return string.Format("{0} a fait une demande de réservation pour le lieu {1}", MemberBooking.Client.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+				case BookingEvent.Approval:
+					return string.Format("{0} a accepté la demande de réservation pour le lieu {1}", MemberBooking.Owner.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+				case BookingEvent.Refusal:
+					return string.Format("{0} a refusé la demande de réservation pour le lieu {1}", MemberBooking.Owner.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+				case BookingEvent.Payment:
+					return string.Format("{0} a payé la demande de réservation pour le lieu {1}", MemberBooking.Client.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+				case BookingEvent.General:
+				default:
+					return Event;
+			}
+		}
 	}
 
     public class LocalisationMenuIndex

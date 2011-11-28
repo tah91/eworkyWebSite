@@ -44,8 +44,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
 				var loc = lRepo.Get(id);
-				if (loc.OwnerID != memberId)
-					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				Member.ValidateOwner(member, loc);
 
 				return View(loc);
 			}
@@ -75,8 +74,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var member = mRepo.Get(memberId);
                 Member.Validate(member);
                 var loc = lRepo.Get(id);
-                if (loc.OwnerID != memberId)
-                    throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				Member.ValidateOwner(member, loc);
 
 				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
                 var model = new LocalisationBookingViewModel
@@ -116,8 +114,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var member = mRepo.Get(memberId);
                 Member.Validate(member);
                 var loc = lRepo.Get(id);
-                if (loc.OwnerID != memberId)
-                    throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				Member.ValidateOwner(member, loc);
 
 				var quotations = qRepo.GetMany(b => b.Offer.LocalisationId == id);
                 var model = new LocalisationQuotationViewModel
@@ -166,9 +163,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				{
 					offer = oRepo.Get(offerid);
 				}
-                
-                if (offer.Localisation.OwnerID != memberId)
-					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				Member.ValidateOwner(member, offer.Localisation);
 
                 return View(offer);
 			}
@@ -197,8 +192,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var member = mRepo.Get(memberId);
                 Member.Validate(member);
                 var offer = oRepo.Get(id);
-                if (offer.Localisation.OwnerID != memberId)
-                    throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				Member.ValidateOwner(member, offer.Localisation);
 
                 var model = new OfferBookingViewModel
                 {
@@ -234,10 +228,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             try
             {
                 var member = mRepo.Get(memberId);
+				var offer = oRepo.Get(id);
                 Member.Validate(member);
-                var offer = oRepo.Get(id);
-                if (offer.Localisation.OwnerID != memberId)
-                    throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				Member.ValidateOwner(member, offer.Localisation);
 
                 var model = new OfferQuotationViewModel
                 {
@@ -265,10 +258,25 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult ConfigureOffer(int id)
         {
-            var context = ModelFactory.GetUnitOfWork();
-            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-            var offer = oRepo.Get(id);
-            return View(new OfferFormViewModel { Offer = offer });
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+
+			try
+			{
+				var member = mRepo.Get(memberId);
+				var offer = oRepo.Get(id);
+				Member.Validate(member);
+				Member.ValidateOwner(member, offer.Localisation);
+
+				return View(new OfferFormViewModel { Offer = offer });
+			}
+			catch(Exception ex)
+			{
+				_Logger.Error("ConfigureOffer", ex);
+				return View(MVC.Shared.Views.Error);
+			}            
         }
 
         /// <summary>
@@ -310,10 +318,25 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[AcceptVerbs(HttpVerbs.Get)]
 		public virtual ActionResult ConfirmBooking(int id)
 		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
-			return View(booking);
+
+			try
+			{
+				var member = mRepo.Get(memberId);
+				var booking = bRepo.Get(id);
+				Member.Validate(member);
+				Member.ValidateOwner(member, booking.Offer.Localisation);
+
+				return View(booking);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("ConfirmBooking", ex);
+				return View(MVC.Shared.Views.Error);
+			}  
 		}
 
 		/// <summary>
@@ -333,15 +356,20 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				{
 					var booking = bRepo.Get(id);
 					UpdateModel(booking);
-					booking.StatusId = (int)MemberBooking.Status.Accepted;					
+					booking.StatusId = (int)MemberBooking.Status.Accepted;
+					booking.MemberBookingLogs.Add(new MemberBookingLog
+						{
+							CreatedDate = DateTime.Now,
+							Event = "Booking Confirmed",
+							EventType = (int)MemberBookingLog.BookingEvent.Approval
+						});
 
 					//send mail to owner
-					var owner = booking.Offer.Localisation.Member;
 					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					ownerMail.To = owner.Email;
+					ownerMail.To = booking.Owner.Email;
 					ownerMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
-					ownerMail.ToName = owner.MemberMainData.FirstName;
+					ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
 					ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
 														Localisation.GetOfferType(booking.Offer.Type),
 														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
@@ -352,12 +380,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					ownerMail.Send();
 
 					//send mail to client
-					var client = booking.Member;
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					clientMail.To = client.Email;
+					clientMail.To = booking.Client.Email;
 					clientMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
-					clientMail.ToName = client.MemberMainData.FirstName;
+					clientMail.ToName = booking.Client.MemberMainData.FirstName;
 					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
 														Localisation.GetOfferType(booking.Offer.Type),
 														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
@@ -388,10 +415,25 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[AcceptVerbs(HttpVerbs.Get)]
 		public virtual ActionResult RefuseBooking(int id)
 		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
-			return View(new RefuseBookingFormViewModel { MemberBooking = booking });
+
+			try
+			{
+				var member = mRepo.Get(memberId);
+				var booking = bRepo.Get(id);
+				Member.Validate(member);
+				Member.ValidateOwner(member, booking.Offer.Localisation);
+
+				return View(booking);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("RefuseBooking", ex);
+				return View(MVC.Shared.Views.Error);
+			}
 		}
 
 		/// <summary>
@@ -400,7 +442,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <param name="id">id of booking to confirm</param>
 		/// <returns>View to fill booking data</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult RefuseBooking(int id, RefuseBookingFormViewModel formModel)
+		public virtual ActionResult RefuseBooking(int id, MemberBooking formModel)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
@@ -412,25 +454,29 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					var booking = bRepo.Get(id);
 					UpdateModel(booking);
 					booking.StatusId = (int)MemberBooking.Status.Refused;
+					booking.MemberBookingLogs.Add(new MemberBookingLog
+					{
+						CreatedDate = DateTime.Now,
+						Event = "Booking Refused",
+						EventType = (int)MemberBookingLog.BookingEvent.Refusal
+					});
 
 					//send mail to owner
-					var owner = booking.Offer.Localisation.Member;
 					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					ownerMail.To = owner.Email;
+					ownerMail.To = booking.Owner.Email;
 					ownerMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
-					ownerMail.ToName = owner.MemberMainData.FirstName;
-					ownerMail.Content = formModel.Message;
+					ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
+					ownerMail.Content = formModel.Response;
 					ownerMail.Send();
 
 					//send mail to client
-					var client = booking.Member;
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					clientMail.To = client.Email;
+					clientMail.To = booking.Client.Email;
 					clientMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
-					clientMail.ToName = client.MemberMainData.FirstName;
-					clientMail.Content = formModel.Message;
+					clientMail.ToName = booking.Client.MemberMainData.FirstName;
+					clientMail.Content = formModel.Response;
 					clientMail.Send();
 
 					context.Commit();

@@ -1519,16 +1519,6 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult PayWithPayPal() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult PayPalAccepted() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.PayPalAccepted);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult PayPalCancelled() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.PayPalCancelled);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public PaymentController Actions { get { return MVC.Payment; } }
@@ -1543,8 +1533,6 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string PayWithPayPal = "paywithpaypal";
-            public readonly string PayPalAccepted = "paypalaccepted";
-            public readonly string PayPalCancelled = "paypalcancelled";
             public readonly string PayPalInstantNotification = "paypalnotification";
         }
 
@@ -1564,18 +1552,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult PayWithPayPal(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
             callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult PayPalAccepted(int memberBookingId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayPalAccepted);
-            callInfo.RouteValueDictionary.Add("memberBookingId", memberBookingId);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult PayPalCancelled(int memberBookingId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayPalCancelled);
-            callInfo.RouteValueDictionary.Add("memberBookingId", memberBookingId);
             return callInfo;
         }
 
@@ -3132,7 +3108,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult RefuseBooking(int id, Worki.Data.Models.RefuseBookingFormViewModel formModel) {
+        public override System.Web.Mvc.ActionResult RefuseBooking(int id, Worki.Data.Models.MemberBooking formModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RefuseBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formModel", formModel);
@@ -3409,6 +3385,16 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public System.Web.Mvc.ActionResult Quotation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BookingAccepted() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BookingAccepted);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BookingCancelled() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BookingCancelled);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Dashboard.Home; } }
@@ -3425,6 +3411,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             public readonly string Index = "Index";
             public readonly string Booking = "Booking";
             public readonly string Quotation = "Quotation";
+            public readonly string BookingAccepted = "BookingAccepted";
+            public readonly string BookingCancelled = "BookingCancelled";
         }
 
 
@@ -3434,6 +3422,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string Booking = "~/Areas/Dashboard/Views/Home/Booking.cshtml";
+            public readonly string BookingAccepted = "~/Areas/Dashboard/Views/Home/BookingAccepted.cshtml";
+            public readonly string BookingCancelled = "~/Areas/Dashboard/Views/Home/BookingCancelled.cshtml";
             public readonly string Index = "~/Areas/Dashboard/Views/Home/Index.cshtml";
             public readonly string Quotation = "~/Areas/Dashboard/Views/Home/Quotation.cshtml";
         }
@@ -3457,6 +3447,18 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public override System.Web.Mvc.ActionResult Quotation(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BookingAccepted(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookingAccepted);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BookingCancelled(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookingCancelled);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

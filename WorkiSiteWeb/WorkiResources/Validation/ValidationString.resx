@@ -162,8 +162,8 @@
   <data name="GivenPasswordNotValide" xml:space="preserve">
     <value>Le mot de passe fourni n'est pas valide. Entrez une valeur de mot de passe valide.</value>
   </data>
-  <data name="InknowError" xml:space="preserve">
-    <value>Une erreur inconnue s'est produite. Vérifiez votre entrée et réessayez. Si le problème persiste, contactez votre administrateur système.</value>
+  <data name="UnknowError" xml:space="preserve">
+    <value>Une erreur inconnue s'est produite.</value>
   </data>
   <data name="InvalidUser" xml:space="preserve">
     <value>Utilisateur non valide !</value>

@@ -102,6 +102,13 @@ namespace Worki.Web.Controllers
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 						member.MemberBookings.Add(formData.MemberBooking);
 
+						formData.MemberBooking.MemberBookingLogs.Add(new MemberBookingLog
+						{
+							CreatedDate = DateTime.Now,
+							Event = "Booking Created",
+							EventType = (int)MemberBookingLog.BookingEvent.Creation
+						});
+
 						context.Commit();
 					}
 					catch (Exception ex)
@@ -117,7 +124,6 @@ namespace Worki.Web.Controllers
 					}
 
 					//send mail to team
-
 					dynamic teamMail = new Email(MVC.Emails.Views.Email);
 					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                     teamMail.To = MiscHelpers.EmailConstants.BookingMail;
@@ -133,6 +139,9 @@ namespace Worki.Web.Controllers
                                                      CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.General),
 													 formData.MemberBooking.Message);
 					teamMail.Send();
+
+					//TODO send mail to booking member
+					//TODO send mail to localisation member
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));

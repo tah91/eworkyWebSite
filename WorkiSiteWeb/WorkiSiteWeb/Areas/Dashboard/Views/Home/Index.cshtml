@@ -1,4 +1,6 @@
-﻿@section HeadContent
+﻿@model List<NewsItem>
+
+@section HeadContent
 {
 	<title>Accueil</title>
     <link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
@@ -18,7 +20,14 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		content
+		<ul>
+		@foreach (var item in Model)
+		{
+			<li>
+				@item.Date.ToString() : @item.DisplayName (<a href="@item.Link">plus...</a>)
+			</li>			
+		}
+		</ul>
 	</div>
 	<div class="clear">
 	</div>

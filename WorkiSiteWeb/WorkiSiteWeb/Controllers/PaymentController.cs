@@ -17,6 +17,7 @@ namespace Worki.Web.Controllers
     [HandleError]
     [CompressFilter(Order = 1)]
     [CacheFilter(Order = 2)]
+	[Authorize]
     public partial class PaymentController : Controller
     {
         ILogger _Logger;
@@ -38,8 +39,8 @@ namespace Worki.Web.Controllers
 
 			var booking = bRepo.Get(id);
 
-			string returnUrl = Url.ActionAbsolute(MVC.Dashboard.Home.Booking());
-			string cancelUrl = Url.ActionAbsolute(MVC.Dashboard.Home.Booking());
+			string returnUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingAccepted(id));
+			string cancelUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingCancelled(id));
 			//string returnUrl = Url.ActionAbsolute(MVC.Payment.PayPalAccepted(memberBookingId));
 			//string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
@@ -61,28 +62,10 @@ namespace Worki.Web.Controllers
                 return Redirect(paypalApprovalUrl);
             }
 
-            // TODO MQP Afficher le message d'erreur
-            return Redirect("/");
+			TempData[MiscHelpers.TempDataConstants.Info] = "Une erreur emepeche le paymenent, veuillez nous contacter à support@eworky.com";
+
+			return RedirectToAction(MVC.Home.Index());
         }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("paypalaccepted")]
-        public virtual ActionResult PayPalAccepted(int memberBookingId)
-        {
-
-
-            return View();
-        }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("paypalcancelled")]
-        public virtual ActionResult PayPalCancelled(int memberBookingId)
-        {
-
-
-            return View();
-        }
-
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ActionName("paypalnotification")]
@@ -105,19 +88,17 @@ namespace Worki.Web.Controllers
 							var booking = transaction.MemberBooking;
 							var offer = booking.Offer;
 							var localisation = offer.Localisation;
-							var client = booking.Member;
-							var owner = transaction.Member;
 
 							//send mail to owner 
 							dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 							ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-							ownerMail.To = client.Email;
+							ownerMail.To = booking.Owner.Email;
 							ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
 							ownerMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
 							ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
-															 string.Format("{0} {1}", client.MemberMainData.FirstName, client.MemberMainData.LastName),
-															 client.MemberMainData.PhoneNumber,
-															 client.Email,
+															 string.Format("{0} {1}", booking.Client.MemberMainData.FirstName, booking.Client.MemberMainData.LastName),
+															 booking.Client.MemberMainData.PhoneNumber,
+															 booking.Client.Email,
 															 localisation.Name,
 															 Localisation.GetOfferType(offer.Type),
 															 string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
@@ -128,13 +109,13 @@ namespace Worki.Web.Controllers
 							//send mail to client 
 							dynamic clientMail = new Email(MVC.Emails.Views.Email);
 							clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-							clientMail.To = client.Email;
+							clientMail.To = booking.Client.Email;
 							clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
 							clientMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
 							clientMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
-															 string.Format("{0} {1}", owner.MemberMainData.FirstName, owner.MemberMainData.LastName),
-															 owner.MemberMainData.PhoneNumber,
-															 owner.Email,
+															 string.Format("{0} {1}", booking.Owner.MemberMainData.FirstName, booking.Owner.MemberMainData.LastName),
+															 booking.Owner.MemberMainData.PhoneNumber,
+															 booking.Owner.Email,
 															 localisation.Name,
 															 Localisation.GetOfferType(offer.Type),
 															 string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
@@ -149,6 +130,22 @@ namespace Worki.Web.Controllers
 							Response.Flush();
 							Response.End();
 
+							try
+							{
+								booking.MemberBookingLogs.Add(new MemberBookingLog
+								{
+									CreatedDate = DateTime.Now,
+									Event = "Payment completed",
+									EventType = (int)MemberBookingLog.BookingEvent.Payment
+								});
+
+								context.Commit();
+							}
+							catch (Exception ex)
+							{
+								context.Complete();
+								_Logger.Error("PayPalInstantNotification", ex);
+							}
 							break;
 						}
 					default:

@@ -325,6 +325,7 @@
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="StatusId" Type="int" Nullable="false" />
           <Property Name="PaymentMail" Type="nvarchar" MaxLength="256" />
+          <Property Name="Response" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="MemberBookingLog">
           <Key>
@@ -334,6 +335,7 @@
           <Property Name="MemberBookingId" Type="int" Nullable="false" />
           <Property Name="Event" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="EventType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberEdition">
           <Key>
@@ -1302,6 +1304,7 @@
           <NavigationProperty Name="Offer" Relationship="WorkiDBModel.FK_MemberBooking_Offer" FromRole="MemberBooking" ToRole="Offer" />
           <NavigationProperty Name="MemberBookingLogs" Relationship="WorkiDBModel.FK_MemberBookingLog_MemberBooking" FromRole="MemberBooking" ToRole="MemberBookingLog" />
           <NavigationProperty Name="Transactions" Relationship="WorkiDBModel.FK_Transaction_MemberBooking" FromRole="MemberBooking" ToRole="Transaction" />
+          <Property Type="String" Name="Response" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MemberBookingLog">
           <Key>
@@ -1312,6 +1315,7 @@
           <Property Type="String" Name="Event" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
           <NavigationProperty Name="MemberBooking" Relationship="WorkiDBModel.FK_MemberBookingLog_MemberBooking" FromRole="MemberBookingLog" ToRole="MemberBooking" />
+          <Property Type="Int32" Name="EventType" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberEdition">
           <Key>
@@ -2064,6 +2068,7 @@
           <EntitySetMapping Name="MemberBookings">
             <EntityTypeMapping TypeName="WorkiDBModel.MemberBooking">
               <MappingFragment StoreEntitySet="MemberBooking">
+                <ScalarProperty Name="Response" ColumnName="Response" />
                 <ScalarProperty Name="PaymentMail" ColumnName="PaymentMail" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -2079,6 +2084,7 @@
           <EntitySetMapping Name="MemberBookingLogs">
             <EntityTypeMapping TypeName="WorkiDBModel.MemberBookingLog">
               <MappingFragment StoreEntitySet="MemberBookingLog">
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Event" ColumnName="Event" />
                 <ScalarProperty Name="MemberBookingId" ColumnName="MemberBookingId" />

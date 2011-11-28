@@ -20,6 +20,7 @@ namespace Worki.Data.Models
         public int MemberBookingId { get; set; }
         public string Event { get; set; }
         public System.DateTime CreatedDate { get; set; }
+        public int EventType { get; set; }
     
         // Navigation properties
     

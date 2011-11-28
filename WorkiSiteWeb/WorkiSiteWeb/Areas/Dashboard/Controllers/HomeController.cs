@@ -30,7 +30,31 @@ namespace Worki.Web.Areas.Dashboard.Controllers
         /// <returns>View with recent activities</returns>
         public virtual ActionResult Index()
         {
-            return View();
+			var id = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+
+			var member = mRepo.Get(id);
+			var news = new List<NewsItem>();
+			foreach (var booking in member.MemberBookings)
+			{
+				foreach (var log in booking.MemberBookingLogs)
+				{
+					if (log.EventType == (int)MemberBookingLog.BookingEvent.General)
+						continue;
+
+					news.Add(new NewsItem
+						{
+							Date = log.CreatedDate,
+							DisplayName = log.GetDisplay(),
+							Link = Url.Action(MVC.Dashboard.Home.Booking())
+						});
+				}
+			}
+
+			news = news.OrderByDescending(n => n.Date).Take(10).ToList();
+			return View(news);
         }
 
         public const int PageSize = 5;
@@ -92,6 +116,66 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 return View(MVC.Shared.Views.Error);
             }
         }
+
+		/// <summary>
+		/// Get action method to show bookings is paid
+		/// </summary>
+		/// <param name="id">member booking id</param>
+		/// <returns>View containing the booking</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult BookingAccepted(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			try
+			{
+				var booking = bRepo.Get(id);
+				if (booking.MemberId != memberId)
+					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				return View(booking);
+			}
+			catch(Exception ex)
+			{
+				_Logger.Error("BookingAccepted", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Get action method to show bookings is canceled
+		/// </summary>
+		/// <param name="id">member booking id</param>
+		/// <returns>View containing the booking</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult BookingCancelled(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			try
+			{
+				var booking = bRepo.Get(id);
+				if (booking.MemberId != memberId)
+					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
+				booking.MemberBookingLogs.Add(new MemberBookingLog
+				{
+					CreatedDate = DateTime.Now,
+					Event = "Booking Payment Cancelled"
+				});
+
+				context.Commit();
+				return View(booking);
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("BookingCancelled", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
 
     }
 }
