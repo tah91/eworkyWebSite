@@ -104,7 +104,7 @@ namespace Worki.Web.Controllers
 
 						formData.MemberBooking.MemberBookingLogs.Add(new MemberBookingLog
 						{
-							CreatedDate = DateTime.Now,
+							CreatedDate = DateTime.UtcNow,
 							Event = "Booking Created",
 							EventType = (int)MemberBookingLog.BookingEvent.Creation
 						});

@@ -170,7 +170,7 @@ namespace Worki.Data.Models
 			if (adminRole)
 				return string.Empty;
 
-            var now = DateTime.Now;
+            var now = DateTime.UtcNow;
             if (now - CreatedDate < RegisterWaitInterval)
                 return Worki.Resources.Views.Profile.ProfileString.Wait2Days;
             var todayEdition = from item in MemberEditions where (now - item.ModificationDate).Ticks < TimeSpan.TicksPerDay select item;

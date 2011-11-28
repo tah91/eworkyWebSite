@@ -359,7 +359,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					booking.StatusId = (int)MemberBooking.Status.Accepted;
 					booking.MemberBookingLogs.Add(new MemberBookingLog
 						{
-							CreatedDate = DateTime.Now,
+							CreatedDate = DateTime.UtcNow,
 							Event = "Booking Confirmed",
 							EventType = (int)MemberBookingLog.BookingEvent.Approval
 						});
@@ -456,7 +456,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					booking.StatusId = (int)MemberBooking.Status.Refused;
 					booking.MemberBookingLogs.Add(new MemberBookingLog
 					{
-						CreatedDate = DateTime.Now,
+						CreatedDate = DateTime.UtcNow,
 						Event = "Booking Refused",
 						EventType = (int)MemberBookingLog.BookingEvent.Refusal
 					});

@@ -134,7 +134,7 @@ namespace Worki.Web.Controllers
 							{
 								booking.MemberBookingLogs.Add(new MemberBookingLog
 								{
-									CreatedDate = DateTime.Now,
+									CreatedDate = DateTime.UtcNow,
 									Event = "Payment completed",
 									EventType = (int)MemberBookingLog.BookingEvent.Payment
 								});

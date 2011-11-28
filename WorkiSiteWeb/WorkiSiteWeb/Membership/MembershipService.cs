@@ -234,7 +234,7 @@ namespace Worki.Memberships
                 if (string.Compare(key, member.EmailKey) == 0)
                 {
                     member.IsApproved = true;
-                    member.LastActivityDate = DateTime.Now;
+                    member.LastActivityDate = DateTime.UtcNow;
                     member.EmailKey = null;
                     context.Commit();
                     return true;

@@ -287,7 +287,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                             else
                             {
                                 lRepo.Add(localisationToAdd);
-                                member.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.Now, LocalisationId = localisationToAdd.ID, ModificationType = (int)EditionType.Creation });
+                                member.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, LocalisationId = localisationToAdd.ID, ModificationType = (int)EditionType.Creation });
                                 nbLocalisationsAdded++;
                             }
                         }

@@ -114,7 +114,7 @@ namespace Worki.Web.Controllers
             if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains(MemberDisplayNameString))
             {
                 HttpCookie cookie = ControllerContext.HttpContext.Request.Cookies[MemberDisplayNameString];
-                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Expires = DateTime.UtcNow.AddDays(-1);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
             }
             return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);

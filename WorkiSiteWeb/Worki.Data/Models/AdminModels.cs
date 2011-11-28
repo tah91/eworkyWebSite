@@ -89,7 +89,7 @@ namespace Worki.Data.Models
     {
         public Press()
         {
-            Date = DateTime.Now;
+            Date = DateTime.UtcNow;
         }
     }
 

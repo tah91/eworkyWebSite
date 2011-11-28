@@ -40,7 +40,7 @@ namespace Worki.Data.Models
 	{
 		partial void OnInitialized()
 		{
-            System.DateTime now = DateTime.Now;
+            System.DateTime now = DateTime.UtcNow;
             FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
             ToDate = FromDate;
 		}

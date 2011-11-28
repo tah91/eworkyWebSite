@@ -97,7 +97,7 @@ namespace Worki.Web.Helpers
             if (postedFile == null)
                 return string.Empty;
             var ext = Path.GetExtension(postedFile.FileName);
-            var nameToSave = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.Now) + ext;
+            var nameToSave = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.UtcNow) + ext;
             using (var fs = postedFile.InputStream)
             {
 				SaveFile(controller, fs, nameToSave, ext, postedFile.ContentType, folder);

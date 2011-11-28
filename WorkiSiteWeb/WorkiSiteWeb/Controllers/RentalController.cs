@@ -114,7 +114,7 @@ namespace Worki.Web.Controllers
 						//update
                         UpdateModel(rentalToAdd, _RentalPrefix);
 						rentalToAdd.MemberId = member.MemberId;
-						rentalToAdd.CreationDate = DateTime.Now;
+						rentalToAdd.CreationDate = DateTime.UtcNow;
 						rentalToAdd.Latitude = lat;
 						rentalToAdd.Longitude = lng;
 						//save
@@ -124,7 +124,7 @@ namespace Worki.Web.Controllers
 					{
 						var r = rRepo.Get(id.Value);
                         UpdateModel(r, _RentalPrefix);
-						r.TimeStamp = DateTime.Now;
+						r.TimeStamp = DateTime.UtcNow;
 						r.Latitude = lat;
 						r.Longitude = lng;
 					}

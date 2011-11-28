@@ -194,7 +194,7 @@ namespace Worki.Service
 					{
 						ReceiverId = booking.Offer.Localisation.OwnerID.Value,
 						Amount = (decimal)receiverAmount,
-						CreatedDate = DateTime.Now,
+						CreatedDate = DateTime.UtcNow,
 						PaymentType = (int)Transaction.Payment.PayPal,
 						StatusId = (int)Transaction.Status.Created,
 						RequestId = payKey,
@@ -204,7 +204,7 @@ namespace Worki.Service
 					{
 						ReceiverId = mRepo.GetAdminId(),
 						Amount = (decimal)workiFee,
-						CreatedDate = DateTime.Now,
+						CreatedDate = DateTime.UtcNow,
 						PaymentType = (int)Transaction.Payment.PayPal,
 						StatusId = (int)Transaction.Status.Created,
 						RequestId = payKey,
@@ -212,7 +212,7 @@ namespace Worki.Service
 
 					booking.MemberBookingLogs.Add(new MemberBookingLog
 					{
-						CreatedDate = DateTime.Now,
+						CreatedDate = DateTime.UtcNow,
 						Event = "Paypal Payment Requested",
 					});
 
@@ -272,14 +272,14 @@ namespace Worki.Service
 				var adminId = mRepo.GetAdminId();
                 foreach (var transaction in transactions)
                 {
-                    transaction.UpdatedDate = DateTime.Now;
+                    transaction.UpdatedDate = DateTime.UtcNow;
                     transaction.StatusId = (int)Transaction.Status.Completed;
 					transaction.TransactionId = transaction.ReceiverId == adminId ? eworkyTransactionId : ownerTransactionId;
                 }
 
 				booking.MemberBookingLogs.Add(new MemberBookingLog
 				{
-					CreatedDate = DateTime.Now,
+					CreatedDate = DateTime.UtcNow,
 					Event = "Paypal transaction completed",
 				});
                 context.Commit();

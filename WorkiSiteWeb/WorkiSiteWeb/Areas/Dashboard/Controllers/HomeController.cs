@@ -162,7 +162,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 				booking.MemberBookingLogs.Add(new MemberBookingLog
 				{
-					CreatedDate = DateTime.Now,
+					CreatedDate = DateTime.UtcNow,
 					Event = "Booking Payment Cancelled"
 				});
 

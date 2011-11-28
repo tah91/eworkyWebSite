@@ -178,7 +178,7 @@ namespace Worki.Data.Models
             Type = MiscHelpers.Constants.UnselectedItem;
             LeaseType = MiscHelpers.Constants.UnselectedItem;
             HeatingType = MiscHelpers.Constants.UnselectedItem;
-            TimeStamp = DateTime.Now;
+            TimeStamp = DateTime.UtcNow;
         }
 
         public string SurfaceString

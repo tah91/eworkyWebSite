@@ -219,7 +219,7 @@ namespace Worki.Memberships
             // If no user with this name already exists
             if (GetUser(username, false) == null)
             {
-                DateTime createdDate = DateTime.Now;
+                DateTime createdDate = DateTime.UtcNow;
 
                 string salt = "";
                 if (PasswordFormat == MembershipPasswordFormat.Hashed)
@@ -327,7 +327,7 @@ namespace Worki.Memberships
 				var member = mRepo.GetMember(userName);
 				member.IsLockedOut = false;
                 // Reset past failures
-                ResetAuthenticationFailures(ref member, DateTime.Now);
+                ResetAuthenticationFailures(ref member, DateTime.UtcNow);
 				context.Commit();
                 // A user was found and nothing was thrown
                 ret = true;
@@ -395,7 +395,7 @@ namespace Worki.Memberships
                 if(Member.Validate(m))
                 {
                     // Trigger period
-                    DateTime dt = DateTime.Now;
+                    DateTime dt = DateTime.UtcNow;
 
                     // Check the given password and the one stored (and salt, if it exists)
                     if (CheckPassword(password, m.Password, m.PasswordSalt))
@@ -511,7 +511,7 @@ namespace Worki.Memberships
                     m.EmailKey = Member.GenerateKey();
 
                     // Reset everyting
-                    ResetAuthenticationFailures(ref m, DateTime.Now);
+                    ResetAuthenticationFailures(ref m, DateTime.UtcNow);
 
                     //MemberRepository.Save();
                 }
@@ -573,7 +573,7 @@ namespace Worki.Memberships
 				m.EmailKey = null;
 
 				// Reset everything
-				ResetAuthenticationFailures(ref m, DateTime.Now);
+				ResetAuthenticationFailures(ref m, DateTime.UtcNow);
 				ret = true;
 				context.Commit();
 			}
@@ -739,7 +739,7 @@ namespace Worki.Memberships
             try
             {
 				c = (from members in mRepo.GetAll()
-                     where members.LastActivityDate.Add(UserIsOnlineTimeWindow) >= DateTime.Now
+                     where members.LastActivityDate.Add(UserIsOnlineTimeWindow) >= DateTime.UtcNow
                      select members).Count();
             }
             catch { }
