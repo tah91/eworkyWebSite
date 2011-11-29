@@ -35,10 +35,10 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, CultureHelpers.GetSpecificFormat(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral))
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
         </div>
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, CultureHelpers.GetSpecificFormat(Model.FromDate, CultureHelpers.TimeFormat.General))
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, CultureHelpers.GetSpecificFormat(Model.ToDate, CultureHelpers.TimeFormat.General))
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
         </div>
@@ -50,7 +50,7 @@
 						@statusText
 					</div>
 				}
-				@if (Model.Unknown)
+				@if (!Model.Expired && Model.Unknown)
 				{
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
 						@Html.ActionLink("Accepter",MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))

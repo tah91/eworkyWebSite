@@ -174,5 +174,59 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			ViewData["PasswordLength"] = _MembershipService.MinPasswordLength;
 			return View(MVC.Backoffice.Profil.Views.ChangePassword, model);
 		}
+
+        /// <summary>
+        /// GET Action method to change payment information
+        /// </summary>
+        /// <returns>the form to fill</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult ChangePaymentInformation()
+        {
+            var id = WebHelper.GetIdentityId(User.Identity);
+            if (id == 0)
+                return View(MVC.Shared.Views.Error);
+
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.Get(id);
+
+            return View(member);
+        }
+
+        /// <summary>
+        /// POST Action method to change payment information
+        /// </summary>
+        /// <param name="model">The change payment information data from the form</param>
+        /// <returns>Back office home page if ok, the form with error if not</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult ChangePaymentInformation(Member model)
+        {
+            var id = WebHelper.GetIdentityId(User.Identity);
+            if (id == 0)
+                return View(MVC.Shared.Views.Error);
+
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                try
+                {
+                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                    var member = mRepo.Get(id);
+                    UpdateModel(member);
+                    context.Commit();
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                    return RedirectToAction(MVC.Backoffice.Home.Index());
+                }
+                catch (Exception ex)
+                {
+                    context.Complete();
+                    _Logger.Error("ChangePaymentInformation", ex);
+                }
+            }
+
+            return View(model);
+        }
 	}
 }

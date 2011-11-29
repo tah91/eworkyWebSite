@@ -552,7 +552,12 @@ namespace Worki.Data.Models
         public string Viadeo { get; set; }
 
         [Display(Name = "Website", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string Website { get; set; }
+
+        //[Display(Name = "PaymentAddress", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string PaymentAddress { get; set; }
     }
 
     #endregion

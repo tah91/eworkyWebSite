@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.ChangePasswordModel
+﻿@model Worki.Data.Models.Member
 
 @section HeadContent
 {  
@@ -14,8 +14,8 @@
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditProfil, MVC.Backoffice.Profil.Edit())} ,
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPassword, MVC.Backoffice.Profil.ChangePassword())} ,
-            new MenuItem{ Link= Html.ActionLink("modifier informations de payment", MVC.Backoffice.Profil.ChangePaymentInformation())} 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPassword, MVC.Backoffice.Profil.ChangePassword())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink("modifier informations de payment", MVC.Backoffice.Profil.ChangePaymentInformation())} 
 		})
 	</div>
 	
@@ -25,31 +25,19 @@
             <div class="contentBlock">
                 <div class="loginDesc">
                     @Worki.Resources.Views.Account.AccountString.NewOldPassword<br />
-                    @String.Format(Worki.Resources.Views.Account.AccountString.MinimumLength, ViewData["PasswordLength"])
                 </div>
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => m.MemberId)
+                @Html.HiddenFor(m=>m.MemberMainData.FirstName)
+                @Html.HiddenFor(m=>m.MemberMainData.LastName)
+                @Html.HiddenFor(m=>m.MemberMainData.Profile)
            
                 <div class="editor-label">
-                    @Html.LabelFor(m => m.OldPassword) 
+                    @Html.LabelFor(m => m.MemberMainData.PaymentAddress) 
                 </div>
                 <div class="editor-field">
-                    @Html.PasswordFor(m => m.OldPassword) 
+                    @Html.TextBoxFor(m => m.MemberMainData.PaymentAddress) 
                 </div>
-                
-                <div class="editor-label">
-                    @Html.LabelFor(m => m.NewPassword) 
-                </div>
-                <div class="editor-field">
-                    @Html.PasswordFor(m => m.NewPassword) 
-                </div>
-                
-                <div class="editor-label">
-                    @Html.LabelFor(m => m.ConfirmPassword) 
-                </div>
-                <div class="editor-field">
-                    @Html.PasswordFor(m => m.ConfirmPassword) 
-                </div>
+
             </div>
             <div class="float-right">
                 <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Modify"/>

@@ -51,7 +51,7 @@
 						@statusText
 					</div>
 				}
-				@if (Model.Waiting)
+				@if (!Model.Expired && Model.Waiting)
 				{
 		            <div class="buttonStd buttonBlue linkImg bookingStatusAction">
 						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Payment.PayWithPayPal(Model.Id))

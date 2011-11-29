@@ -3157,6 +3157,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ActionNamesClass {
             public readonly string Edit = "editer";
             public readonly string ChangePassword = "changer-mdp";
+            public readonly string ChangePaymentInformation = "ChangePaymentInformation";
         }
 
 
@@ -3166,6 +3167,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string ChangePassword = "~/Areas/Backoffice/Views/Profil/ChangePassword.cshtml";
+            public readonly string ChangePaymentInformation = "~/Areas/Backoffice/Views/Profil/ChangePaymentInformation.cshtml";
             public readonly string Edit = "~/Areas/Backoffice/Views/Profil/Edit.cshtml";
         }
     }
@@ -3192,6 +3194,17 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         public override System.Web.Mvc.ActionResult ChangePassword(Worki.Data.Models.ChangePasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ChangePaymentInformation() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePaymentInformation);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ChangePaymentInformation(Worki.Data.Models.Member model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePaymentInformation);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
