@@ -230,17 +230,17 @@ namespace Worki.Data.Models
 
 		public bool HasOffer(LocalisationOffer offer)
 		{
-			return Offers.Where(o => o.Type == (int)offer).Count() != 0;
+			return Offers.Where(o => !o.IsOffline && o.Type == (int)offer).Count() != 0;
 		}
 
 		public int OfferCount(LocalisationOffer offer)
 		{
-			return Offers.Where(o => o.Type == (int)offer).Count();
+            return Offers.Where(o => !o.IsOffline &&  o.Type == (int)offer).Count();
 		}
 
 		public IEnumerable<Offer> GetOffers(LocalisationOffer offerType)
 		{
-			return Offers.Where(o => o.Type == (int)offerType);
+            return Offers.Where(o => !o.IsOffline &&  o.Type == (int)offerType);
 		}
 
 		/// <summary>
@@ -249,7 +249,7 @@ namespace Worki.Data.Models
 		/// <returns>true if it is the case</returns>
 		public bool HasOffer()
 		{
-			return Offers.Count != 0;
+            return Offers.Where(o => !o.IsOffline).Count() != 0;
 		}
 
 		/// <summary>

@@ -188,8 +188,8 @@ namespace Worki.Data.Models
             if (criteria.OfferData.OfferFeatures.Count != 0)
             {
                 var offers = _Context.Offers.AsQueryable();
-                //all offers from the localisations
-                offers = offers.Where(o => idsToLoad.Contains(o.LocalisationId));
+                //all offers from the localisations that are online
+                offers = offers.Where(o => !o.IsOffline && idsToLoad.Contains(o.LocalisationId));
 
                 var offerProjectionList = (from item in offers
                                            select new
