@@ -34,7 +34,7 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            @Html.TextBox("Date", RazorHelpers.DisplayDate(Model.Date), new { @class = "dp" })
+                            @Html.TextBox("Date", CultureHelpers.GetSpecificFormat(Model.Date, CultureHelpers.TimeFormat.Date), new { @class = "dp" })
                         </div>
                     </td>
                 </tr>

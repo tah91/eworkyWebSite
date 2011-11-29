@@ -89,38 +89,32 @@ namespace Worki.Web.Controllers
 							var offer = booking.Offer;
 							var localisation = offer.Localisation;
 
-                            //TODO MAIL send mail to owner 
+                            //send mail to owner 
 							dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 							ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 							ownerMail.To = booking.Owner.Email;
-							ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-							ownerMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-							ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
-															 string.Format("{0} {1}", booking.Client.MemberMainData.FirstName, booking.Client.MemberMainData.LastName),
-															 booking.Client.MemberMainData.PhoneNumber,
-															 booking.Client.Email,
-															 localisation.Name,
-															 Localisation.GetOfferType(offer.Type),
-															 string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-															 string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
-															 booking.Message);
+                            ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+                            ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
+                            ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
+                                                            Localisation.GetOfferType(offer.Type),
+                                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                            localisation.Name,
+                                                            localisation.Adress);
 							ownerMail.Send();
 
-                            //TODO MAIL send mail to client 
+                            //send mail to client 
 							dynamic clientMail = new Email(MVC.Emails.Views.Email);
 							clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 							clientMail.To = booking.Client.Email;
-							clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-							clientMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-							clientMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
-															 string.Format("{0} {1}", booking.Owner.MemberMainData.FirstName, booking.Owner.MemberMainData.LastName),
-															 booking.Owner.MemberMainData.PhoneNumber,
-															 booking.Owner.Email,
-															 localisation.Name,
-															 Localisation.GetOfferType(offer.Type),
-															 string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-															 string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
-															 booking.Message);
+                            clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+							clientMail.ToName = booking.Client.MemberMainData.FirstName;
+                            clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementClient,
+                                                            Localisation.GetOfferType(offer.Type),
+                                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                            localisation.Name,
+                                                            localisation.Adress);
 							clientMail.Send();
 
 							Response.Clear();
@@ -150,7 +144,7 @@ namespace Worki.Web.Controllers
 						}
 					default:
 						{
-                            //TODO MAIL send mail to admin 
+                            //send mail to admin 
 							dynamic adminMail = new Email(MVC.Emails.Views.Email);
 							adminMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 							adminMail.To = MiscHelpers.AdminConstants.AdminMail;

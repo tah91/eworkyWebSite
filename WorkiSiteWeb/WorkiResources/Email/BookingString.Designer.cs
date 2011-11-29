@@ -151,6 +151,71 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en compte. 
+        ///L&apos;offrant confirmera votre réservation dans les prochains jours..
+        /// </summary>
+        public static string CreateBookingClient {
+            get {
+                return ResourceManager.GetString("CreateBookingClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Une demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été effectuée. 
+        ///Merci de bien vouloir confirmer/refuser cette réservation dans les plus brefs délais..
+        /// </summary>
+        public static string CreateBookingOwner {
+            get {
+                return ResourceManager.GetString("CreateBookingOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;b&gt;Création&lt;/b&gt;
+        ///
+        ///Nom : &lt;b&gt;{0}&lt;/b&gt;
+        ///Téléphone : &lt;b&gt;{1}&lt;/b&gt;
+        ///Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;
+        ///Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;
+        ///Besoin : &lt;b&gt;{4}&lt;/b&gt;
+        ///Début : &lt;b&gt;{5}&lt;/b&gt;
+        ///Fin : &lt;b&gt;{6}&lt;/b&gt;
+        ///Message : &lt;b&gt;{7}&lt;/b&gt;.
+        /// </summary>
+        public static string CreateBookingTeam {
+            get {
+                return ResourceManager.GetString("CreateBookingTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre transaction concernant la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été réalisée avec succès..
+        /// </summary>
+        public static string PayementClient {
+            get {
+                return ResourceManager.GetString("PayementClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La transaction de la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été réalisée avec succès..
+        /// </summary>
+        public static string PayementOwner {
+            get {
+                return ResourceManager.GetString("PayementOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction.
+        /// </summary>
+        public static string PayementSubject {
+            get {
+                return ResourceManager.GetString("PayementSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre demande de devis pour un &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) a été prise en charge par nos équipes et transmise au gérant qui vous recontactera aux coordonnées que vous nous avez indiquées dans les plus brefs délais. 
         ///
         ///En espérant vous revoir très vite sur eworky.com,.
@@ -215,6 +280,24 @@ namespace Worki.Resources.Email {
         public static string QuotationNewMemberSubject {
             get {
                 return ResourceManager.GetString("QuotationNewMemberSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été refusé pour la raison suivante : {5}.
+        /// </summary>
+        public static string RefuseBookingClient {
+            get {
+                return ResourceManager.GetString("RefuseBookingClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous avez refusé la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) pour la raison suivante : &lt;b&gt;{5}&lt;/b&gt;.
+        /// </summary>
+        public static string RefuseBookingOwner {
+            get {
+                return ResourceManager.GetString("RefuseBookingOwner", resourceCulture);
             }
         }
         

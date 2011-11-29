@@ -90,7 +90,7 @@
                             </td>
                             <td>
                                 <div class="editor-field">
-                                    @Html.TextBox("Member.MemberMainData.BirthDate", RazorHelpers.DisplayDate(Model.Member.MemberMainData.BirthDate), new { @class = "dp" })
+                                    @Html.TextBox("Member.MemberMainData.BirthDate", CultureHelpers.GetSpecificFormat(Model.Member.MemberMainData.BirthDate, CultureHelpers.TimeFormat.Date), new { @class = "dp" })
                                 </div>
                             </td>
                         </tr>

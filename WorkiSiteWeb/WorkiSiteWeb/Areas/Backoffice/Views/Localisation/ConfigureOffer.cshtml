@@ -22,10 +22,10 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		<div class="contentBlock">
-            @RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
-            @using (Html.BeginForm())
-		    {
+        @using (Html.BeginForm())
+		{
+		    <div class="contentBlock">
+                @RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
                 <div class="loginDesc marginb10">
                     @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
                 </div>
@@ -70,12 +70,12 @@
 						</td>
 					</tr>
 				</table>
-		    }
-		</div>
-		<div class="editor-field float-right">
-			<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
-		</div>
-		<div class="clear"></div>
+		    </div>
+		    <div class="editor-field float-right">
+			    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
+		    </div>
+		    <div class="clear"></div>
+        }
 	</div>
 	<div class="clear">
 	</div>
