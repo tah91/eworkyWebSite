@@ -329,7 +329,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					//set payment address
 					booking.Owner.MemberMainData.PaymentAddress = booking.PaymentMail;
 
-					//send mail to owner
+					//TODO MAIL send mail to owner
 					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					ownerMail.To = booking.Owner.Email;
@@ -344,7 +344,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 														booking.Price);
 					ownerMail.Send();
 
-					//send mail to client
+                    //TODO MAIL send mail to client
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
@@ -426,7 +426,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						EventType = (int)MemberBookingLog.BookingEvent.Refusal
 					});
 
-					//send mail to owner
+                    //TODO MAIL send mail to owner
 					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					ownerMail.To = booking.Owner.Email;
@@ -435,7 +435,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					ownerMail.Content = formModel.Response;
 					ownerMail.Send();
 
-					//send mail to client
+                    //TODO MAIL send mail to client
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;

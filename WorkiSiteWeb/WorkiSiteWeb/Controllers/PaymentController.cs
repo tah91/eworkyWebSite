@@ -89,7 +89,7 @@ namespace Worki.Web.Controllers
 							var offer = booking.Offer;
 							var localisation = offer.Localisation;
 
-							//send mail to owner 
+                            //TODO MAIL send mail to owner 
 							dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 							ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 							ownerMail.To = booking.Owner.Email;
@@ -106,7 +106,7 @@ namespace Worki.Web.Controllers
 															 booking.Message);
 							ownerMail.Send();
 
-							//send mail to client 
+                            //TODO MAIL send mail to client 
 							dynamic clientMail = new Email(MVC.Emails.Views.Email);
 							clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 							clientMail.To = booking.Client.Email;
@@ -150,7 +150,7 @@ namespace Worki.Web.Controllers
 						}
 					default:
 						{
-							//send mail to admin 
+                            //TODO MAIL send mail to admin 
 							dynamic adminMail = new Email(MVC.Emails.Views.Email);
 							adminMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 							adminMail.To = MiscHelpers.AdminConstants.AdminMail;

@@ -140,8 +140,8 @@ namespace Worki.Web.Controllers
 													 formData.MemberBooking.Message);
 					teamMail.Send();
 
-					//TODO send mail to booking member
-					//TODO send mail to localisation member
+                    //TODO MAIL  send mail to booking member
+                    //TODO MAIL  send mail to localisation member
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));

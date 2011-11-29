@@ -24,9 +24,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             _Logger = logger;
         }
 
-		public const int NewsCount = 10;
-		public const int LocalisationCount = 10;
-
         /// <summary>
         /// Get action result to show recent activities of the owner
         /// </summary>
@@ -46,11 +43,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
 				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
-				news = news.OrderByDescending(n => n.Date).Take(10).ToList();
+                news = news.OrderByDescending(n => n.Date).Take(HomeViewModel.NewsCount).ToList();
 
-				var localisations = lRepo.GetMostBooked(id, 10);
+                var localisations = lRepo.GetMostBooked(id, HomeViewModel.LocalisationCount);
 
-				return View(new HomeViewModel { Places = localisations, News = news });
+                return View(new HomeViewModel { Owner = member, Places = localisations, News = news });
 			}
 			catch (Exception ex)
 			{
