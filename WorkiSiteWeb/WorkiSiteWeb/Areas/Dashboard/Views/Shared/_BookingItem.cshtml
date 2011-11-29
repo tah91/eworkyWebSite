@@ -16,7 +16,7 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
 			@Html.ActionLink("Details", MVC.Dashboard.Home.BookingDetail(Model.Id))
         </div>
         <div class="bookingStatus bookingStatus@(color) float-left">

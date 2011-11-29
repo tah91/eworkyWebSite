@@ -17,7 +17,7 @@
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
             @Html.ActionLink("Details", MVC.Backoffice.Localisation.BookingDetail(Model.Id))
         </div>
         <div class="bookingStatus bookingStatus@(color) float-left">
