@@ -35,8 +35,10 @@
             </div>
         </div>
         <div class="bookingLinks float-right blue">
-            @Html.ActionLink("Details", MVC.Dashboard.Home.BookingDetail(Model.Id))
-            <a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Booking.BookingString.SeeLocSheet</a>
+            <ul>
+                <li>@Html.ActionLink("Details", MVC.Dashboard.Home.BookingDetail(Model.Id))</li>
+                <li><a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Booking.BookingString.SeeLocSheet</a></li>
+            </ul>
         </div>
         <div class="clear">
         </div>

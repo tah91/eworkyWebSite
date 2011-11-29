@@ -40,8 +40,10 @@
             </div>
         </div>
         <div class="bookingLinks float-right blue">
-            @Html.ActionLink("Details", MVC.Backoffice.Localisation.BookingDetail(Model.Id))
-            @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))
+            <ul>
+                <li>@Html.ActionLink("Details", MVC.Backoffice.Localisation.BookingDetail(Model.Id))</li>
+                <li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))</li>
+            </ul>            
         </div>
         <div class="clear">
         </div>
