@@ -289,4 +289,7 @@
   <data name="LocAdded" xml:space="preserve">
     <value>{0} lieux ajoutés.</value>
   </data>
+  <data name="PleaseChangeInfos" xml:space="preserve">
+    <value>Veuillez changer les informations suivantes :</value>
+  </data>
 </root>

@@ -178,6 +178,15 @@ namespace Worki.Resources.Models.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adresse électonique Paypal.
+        /// </summary>
+        public static string PaymentAddress {
+            get {
+                return ResourceManager.GetString("PaymentAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Téléphone portable.
         /// </summary>
         public static string PhoneNumber {

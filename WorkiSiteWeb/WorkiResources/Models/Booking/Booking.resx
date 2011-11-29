@@ -141,6 +141,9 @@
   <data name="Offer" xml:space="preserve">
     <value>Besoin</value>
   </data>
+  <data name="PaymentMail" xml:space="preserve">
+    <value>Adresse électronique Paypal</value>
+  </data>
   <data name="PhoneInfo" xml:space="preserve">
     <value>vous serez contacté à ce numéro</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value>Prix</value>
+  </data>
+  <data name="Response" xml:space="preserve">
+    <value>Réponse</value>
   </data>
   <data name="Surface" xml:space="preserve">
     <value>Surface de bureaux souhaitée (en m2)</value>
