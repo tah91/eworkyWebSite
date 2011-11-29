@@ -337,31 +337,27 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
 			);
 
-            //foreach (Route r in routes)
-            //{
-            //    if (!(r.RouteHandler is SingleCultureMvcRouteHandler))
-            //    {
-            //        r.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-            //        r.Url = "{culture}/" + r.Url;
-            //        Adding default culture 
-            //        if (r.Defaults == null)
-            //        {
-            //            r.Defaults = new RouteValueDictionary();
-            //        }
-            //        r.Defaults.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
+            /*foreach (Route r in routes)
+            {
+                if (!(r.RouteHandler is SingleCultureMvcRouteHandler))
+                {
+                    r.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+                    r.Url = "{culture}/" + r.Url;
+                    //Adding default culture 
+                    if (r.Defaults == null)
+                    {
+                        r.Defaults = new RouteValueDictionary();
+                    }
+                    r.Defaults.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
 
-            //        Adding constraint for culture param
-            //        if (r.Constraints == null)
-            //        {
-            //            r.Constraints = new RouteValueDictionary();
-            //        }
-            //        r.Constraints.Add("culture", new Worki.Infrastructure.CultureConstraint(Worki.Infrastructure.Culture.fr.ToString(),
-
-            //        Worki.Infrastructure.Culture.fr.ToString()));
-            //    }
-            //}
-
-
+                    //Adding constraint for culture param
+                    if (r.Constraints == null)
+                    {
+                        r.Constraints = new RouteValueDictionary();
+                    }
+                    r.Constraints.Add("culture", new Worki.Infrastructure.CultureConstraint(Worki.Infrastructure.Culture.fr.ToString(), Worki.Infrastructure.Culture.en.ToString()));
+                }
+            }*/
         }
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());

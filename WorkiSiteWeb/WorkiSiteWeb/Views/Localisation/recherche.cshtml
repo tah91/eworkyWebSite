@@ -105,12 +105,13 @@
             });
 
         var workiGeoCoder = null;
+        var lang = ("@System.Threading.Thread.CurrentThread.CurrentCulture.Name" == 'fr-FR') ? 'fr' : 'en';
 
         function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-                var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
+                var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place', lang);
                 workiAutocomplete.SetAutocomplete();
-                workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', '#searchform');
+                workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', '#searchform', null, null, null, null, lang);
             });
         }
 

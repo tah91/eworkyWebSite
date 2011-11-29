@@ -12,19 +12,22 @@ Utils.GetJSDouble = function (val) {
     return str1;
 }
 
-function ReverseGeocoder(latitudeField, longitudeField, addressField) {
+function ReverseGeocoder(latitudeField, longitudeField, addressField, lang) {
     //properties
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
     var _addressField = addressField;
     var _geocoder = new google.maps.Geocoder();
+    var _lang = lang;
 
     //Geocode from an address
     ReverseGeocodeAddress = function () {
         var lat = jQuery.trim($(_latitudeField).val());
         var lng = jQuery.trim($(_longitudeField).val());
         var latLng = new google.maps.LatLng(lat, lng);
-        _geocoder.geocode({ 'location': latLng, 'region': 'FR' }, _callbackForReverseGeocode);
+        if (_lang == 'fr') {
+            _geocoder.geocode({ 'location': latLng, 'region': 'FR' }, _callbackForReverseGeocode);
+        }
     }
 
     _callbackForReverseGeocode = function (results, status) {
@@ -41,10 +44,11 @@ function ReverseGeocoder(latitudeField, longitudeField, addressField) {
     this.ReverseGeocodeAddress = ReverseGeocodeAddress;
 }
 
-function WorkiAutoComplete(textField) {
+function WorkiAutoComplete(textField, lang) {
     //properties
     var _textField = textField;
     var _geocoder = new google.maps.Geocoder();
+    var _lang = lang;
 
     SetAutocomplete = function () {
         $(_textField).autocomplete({ minLength: 5,
@@ -55,27 +59,29 @@ function WorkiAutoComplete(textField) {
                     _geocoder = new google.maps.Geocoder();
                 }
 
-                var bottomLeft = new google.maps.LatLng(41.395378, -5.93291);
-                var topRight = new google.maps.LatLng(52.444311, 11.381544);
-                var topLeft = new google.maps.LatLng(51.800574, -5.815127);
-                var bottomRight = new google.maps.LatLng(40.737341, 11.713035);
-                var frBounds = new google.maps.LatLngBounds(bottomLeft, topRight);
-                _geocoder.geocode({ 'address': request.term + ', fr', 'bounds': frBounds, 'region': 'FR' }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        response($.map(results, function (loc) {
-                            var searchLoc = loc.geometry.location;
-                            var lat = loc.geometry.location.lat();
-                            var lng = loc.geometry.location.lng();
-                            var latlng = new google.maps.LatLng(lat, lng);
-                            if (!frBounds.contains(latlng))
-                                return;
-                            return {
-                                label: loc.formatted_address,
-                                value: loc.formatted_address
-                            }
-                        }));
-                    }
-                });
+                if (_lang == 'fr') {
+                    var bottomLeft = new google.maps.LatLng(41.395378, -5.93291);
+                    var topRight = new google.maps.LatLng(52.444311, 11.381544);
+                    var topLeft = new google.maps.LatLng(51.800574, -5.815127);
+                    var bottomRight = new google.maps.LatLng(40.737341, 11.713035);
+                    var frBounds = new google.maps.LatLngBounds(bottomLeft, topRight);
+                    _geocoder.geocode({ 'address': request.term + ', fr', 'bounds': frBounds, 'region': 'FR' }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            response($.map(results, function (loc) {
+                                var searchLoc = loc.geometry.location;
+                                var lat = loc.geometry.location.lat();
+                                var lng = loc.geometry.location.lng();
+                                var latlng = new google.maps.LatLng(lat, lng);
+                                if (!frBounds.contains(latlng))
+                                    return;
+                                return {
+                                    label: loc.formatted_address,
+                                    value: loc.formatted_address
+                                }
+                            }));
+                        }
+                    });
+                }
             },
             select: function (event, ui) {
                 var pos = ui.item.position;
@@ -88,7 +94,7 @@ function WorkiAutoComplete(textField) {
     this.SetAutocomplete = SetAutocomplete;
 }
 
-function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, cityField, postalCodeField, countryField) {
+function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, cityField, postalCodeField, countryField, lang) {
     //properties
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
@@ -100,6 +106,7 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
     var _evt = evt;
     var _geocoder = new google.maps.Geocoder();
     var _checkSimilarLocalisation = null;
+    var _lang = lang;
 
     //Geocode from an address
     SearchFormSubmit = function (evt) {
@@ -116,7 +123,9 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
         $(_latitudeField).val("0");
         $(_longitudeField).val("0");
         _checkSimilarLocalisation = checkSimilarLocalisation;
-        _geocoder.geocode({ 'address': address, 'region': 'FR' }, _callbackForGeocode);
+        if (_lang == 'fr') {
+            _geocoder.geocode({ 'address': address, 'region': 'FR' }, _callbackForGeocode);
+        }
     }
 
     _callbackForGeocode = function (results, status) {

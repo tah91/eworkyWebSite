@@ -1,3 +1,3 @@
-﻿@Html.ActionLink("Français", "ChangeCulture", MVC.Home.Name, new { lang = "fr", returnUrl = this.Request.RawUrl }, null)
+﻿@Html.ActionLink("Français", MVC.Home.ActionNames.ChangeCulture, MVC.Home.Name, new { lang = "fr", returnUrl = this.Request.RawUrl }, null)
 
-@Html.ActionLink("English", "ChangeCulture", MVC.Home.Name, new { lang = "en", returnUrl = this.Request.RawUrl }, null)
+@Html.ActionLink("English", MVC.Home.ActionNames.ChangeCulture, MVC.Home.Name, new { lang = "en", returnUrl = this.Request.RawUrl }, null)
