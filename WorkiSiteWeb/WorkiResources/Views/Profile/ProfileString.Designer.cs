@@ -259,6 +259,15 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Veuillez spécifier l&apos;adresse électronique pour les futures paiements.
+        /// </summary>
+        public static string PaypalEmail {
+            get {
+                return ResourceManager.GetString("PaypalEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mes informations personnelles.
         /// </summary>
         public static string PersonalInfo {

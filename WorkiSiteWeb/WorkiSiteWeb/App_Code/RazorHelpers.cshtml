@@ -65,7 +65,7 @@
     @item <text>: <span class="bold @(blue ? "blue" : "")">@value</span></text><br />
 }
 
-@helper DisplayDate(DateTime date, CultureHelpers.TimeFormat format = CultureHelpers.TimeFormat.Date)
+@helper DisplayDate(DateTime? date, CultureHelpers.TimeFormat format = CultureHelpers.TimeFormat.Date)
 {
     @CultureHelpers.GetSpecificFormat(date, format)
 }

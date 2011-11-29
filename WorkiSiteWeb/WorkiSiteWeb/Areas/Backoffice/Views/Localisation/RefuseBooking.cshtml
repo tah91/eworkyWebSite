@@ -23,14 +23,18 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
+            @RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
+            <div class="loginDesc marginb10">
+                @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
+            </div>
 			@using (Html.BeginForm())
             {
 				@Html.AntiForgeryToken()
-				<table>
+				<table class="confirmbooktable">
                     <tr>
 						<td>
 							<div class="editor-label">
-								Message
+								@Html.LabelFor(m => m.Response)
 							</div>
 						</td>
 						<td>
@@ -40,12 +44,12 @@
 						</td>
 					</tr>
 				</table>
-				<div class="editor-field float-right">
-					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.RefuseIt)"/>
-				</div>
-				<div class="clear"></div>
             }
 		</div>
+		<div class="editor-field float-right">
+			<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.RefuseIt"/>
+		</div>
+		<div class="clear"></div>
 	</div>
 	<div class="clear">
 	</div>

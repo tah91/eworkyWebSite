@@ -228,4 +228,7 @@
   <data name="MyComActivities" xml:space="preserve">
     <value>Mon activité communautaire</value>
   </data>
+  <data name="PaypalEmail" xml:space="preserve">
+    <value>Veuillez spécifier l'adresse électronique pour les futures paiements</value>
+  </data>
 </root>

@@ -14,8 +14,8 @@
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, CultureHelpers.GetSpecificFormat(Model.FromDate, CultureHelpers.TimeFormat.General))
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, CultureHelpers.GetSpecificFormat(Model.ToDate, CultureHelpers.TimeFormat.General))
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
 			@Html.ActionLink("Details", MVC.Dashboard.Home.BookingDetail(Model.Id))
         </div>

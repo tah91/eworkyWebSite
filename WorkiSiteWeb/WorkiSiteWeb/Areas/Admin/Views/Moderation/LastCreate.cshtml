@@ -48,7 +48,7 @@
                     <a href="@item.Localisation.GetDetailFullUrl(Url)">@item.Localisation.Name</a>
                 </td>
                 <td align="right">
-                    @CultureHelpers.GetSpecificFormat(item.ModificationDate, CultureHelpers.TimeFormat.LongGeneral)
+                    @RazorHelpers.DisplayDate(item.ModificationDate, CultureHelpers.TimeFormat.LongGeneral)
                 </td>
                 <td align="right">
                     @Worki.Resources.Views.Admin.StatString.Create

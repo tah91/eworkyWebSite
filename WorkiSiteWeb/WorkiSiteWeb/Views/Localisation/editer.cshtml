@@ -496,22 +496,22 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.MonOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonOpenMorning, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 9:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonOpenMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.MonOpenMorning, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 9:00" })
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.MonCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonCloseMorning, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 12:30" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonCloseMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.MonCloseMorning, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 12:30" })
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.MonOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonOpenAfter, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 14:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonOpenAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.MonOpenAfter, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 14:00" })
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.MonCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonCloseAfter, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 18:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.MonCloseAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.MonCloseAfter, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 18:00" })
                                 </div>
                             </td>
                         </tr>
@@ -521,22 +521,22 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.TueOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueOpenMorning, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 9:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.TueOpenMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.TueOpenMorning, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 9:00" })
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.TueCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueCloseMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.TueCloseMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.TueCloseMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.TueOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueOpenAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.TueOpenAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.TueOpenAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.TueCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueCloseAfter, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 22:00" })
+                                    @Html.TextBox("Localisation.LocalisationData.TueCloseAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.TueCloseAfter, CultureHelpers.TimeFormat.Time), new { placeholder = "Ex : 22:00" })
                                 </div>
                             </td>
                         </tr>
@@ -546,22 +546,22 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.WedOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedOpenMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.WedOpenMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.WedOpenMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.WedCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedCloseMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.WedCloseMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.WedCloseMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.WedOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedOpenAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.WedOpenAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.WedOpenAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.WedCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedCloseAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.WedCloseAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.WedCloseAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                         </tr>
@@ -571,22 +571,22 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.ThuOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuOpenMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.ThuOpenMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.ThuOpenMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.ThuCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuCloseMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.ThuCloseMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.ThuCloseMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.ThuOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuOpenAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.ThuOpenAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.ThuOpenAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.ThuCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuCloseAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.ThuCloseAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.ThuCloseAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                         </tr>
@@ -596,22 +596,22 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.FriOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriOpenMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.FriOpenMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.FriOpenMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.FriCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriCloseMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.FriCloseMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.FriCloseMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.FriOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriOpenAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.FriOpenAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.FriOpenAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.FriCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriCloseAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.FriCloseAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.FriCloseAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                         </tr>
@@ -621,22 +621,22 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.SatOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatOpenMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SatOpenMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SatOpenMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.SatCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatCloseMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SatCloseMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SatCloseMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.SatOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatOpenAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SatOpenAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SatOpenAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.SatCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatCloseAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SatCloseAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SatCloseAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                         </tr>
@@ -646,22 +646,22 @@
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.SunOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunOpenMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SunOpenMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SunOpenMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.SunCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunCloseMorning, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SunCloseMorning", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SunCloseMorning, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td class="lunchclose">
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
-                                    @Html.TextBox("Localisation.LocalisationData.SunOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunOpenAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SunOpenAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SunOpenAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
-                                    @Html.TextBox("Localisation.LocalisationData.SunCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunCloseAfter, CultureHelpers.TimeFormat.Time))
+                                    @Html.TextBox("Localisation.LocalisationData.SunCloseAfter", RazorHelpers.DisplayDate(Model.Localisation.LocalisationData.SunCloseAfter, CultureHelpers.TimeFormat.Time))
                                 </div>
                             </td>
                         </tr>

@@ -385,6 +385,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Veuillez changer les informations suivantes :.
+        /// </summary>
+        public static string PleaseChangeInfos {
+            get {
+                return ResourceManager.GetString("PleaseChangeInfos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Presse.
         /// </summary>
         public static string Press {

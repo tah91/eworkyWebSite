@@ -133,6 +133,15 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adresse électronique Paypal.
+        /// </summary>
+        public static string PaymentMail {
+            get {
+                return ResourceManager.GetString("PaymentMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to vous serez contacté à ce numéro.
         /// </summary>
         public static string PhoneInfo {
@@ -156,6 +165,15 @@ namespace Worki.Resources.Models.Booking {
         public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Réponse.
+        /// </summary>
+        public static string Response {
+            get {
+                return ResourceManager.GetString("Response", resourceCulture);
             }
         }
         

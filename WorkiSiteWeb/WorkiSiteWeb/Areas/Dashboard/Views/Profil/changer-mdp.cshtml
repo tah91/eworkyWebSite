@@ -22,33 +22,39 @@
         @using (Html.BeginForm())
 	    {
             <div class="contentBlock">
-                <div class="loginDesc">
+                <div class="loginDesc marginb10">
                     @Worki.Resources.Views.Account.AccountString.NewOldPassword<br />
                     @String.Format(Worki.Resources.Views.Account.AccountString.MinimumLength, ViewData["PasswordLength"])
                 </div>
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.MemberId)
            
-                <div class="editor-label">
-                    @Html.LabelFor(m => m.OldPassword) 
-                </div>
-                <div class="editor-field">
-                    @Html.PasswordFor(m => m.OldPassword) 
-                </div>
-                
-                <div class="editor-label">
-                    @Html.LabelFor(m => m.NewPassword) 
-                </div>
-                <div class="editor-field">
-                    @Html.PasswordFor(m => m.NewPassword) 
-                </div>
-                
-                <div class="editor-label">
-                    @Html.LabelFor(m => m.ConfirmPassword) 
-                </div>
-                <div class="editor-field">
-                    @Html.PasswordFor(m => m.ConfirmPassword) 
-                </div>
+                <table>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.OldPassword)<span class="blue">*</span>
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.OldPassword)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.NewPassword)<span class="blue">*</span>
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.NewPassword)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.ConfirmPassword)<span class="blue">*</span>
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.ConfirmPassword)
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="float-right">
                 <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Modify"/>

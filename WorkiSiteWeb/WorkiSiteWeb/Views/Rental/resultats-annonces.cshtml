@@ -76,7 +76,7 @@
 				    <div class="toogle_container">
 					    <div class="block">
                             @Html.CheckBoxFor(model => model.RentalData.AvailableNow) <span id="msg">@Worki.Resources.Views.Rental.RentalString.Now</span>
-                            @Html.TextBox("RentalData.AvailableDate", CultureHelpers.GetSpecificFormat(Model.RentalData.AvailableDate, CultureHelpers.TimeFormat.Date), new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
+                            @Html.TextBox("RentalData.AvailableDate", RazorHelpers.DisplayDate(Model.RentalData.AvailableDate), new { placeholder = @Worki.Resources.Views.Rental.RentalString.DateExample, @class = "dp width98" })
 					    </div>
 				    </div>
 

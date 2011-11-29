@@ -245,3 +245,26 @@
 {
     width:20%;
 }
+
+/*BACKOFFICE LOCALISATION
+----------------------------------------------------------*/
+
+.offerindextable
+{
+    width:200px;
+}
+
+.configoffertable
+{
+    width:400px;
+}
+
+select#Offer_Period
+{
+    width:204px;
+}
+
+.confirmbooktable
+{
+    width:415px;
+}
