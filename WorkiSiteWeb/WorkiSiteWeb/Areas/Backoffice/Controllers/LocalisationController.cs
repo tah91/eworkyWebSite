@@ -289,7 +289,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var booking = bRepo.Get(id);
 				Member.Validate(member);
 				Member.ValidateOwner(member, booking.Offer.Localisation);
-
+				booking.PaymentMail = booking.Owner.MemberMainData.PaymentAddress;
 				return View(booking);
 			}
 			catch (Exception ex)
