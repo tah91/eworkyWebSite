@@ -15,8 +15,8 @@
 .localisationImgDesc{width:190px}
 .summaryHeader{background:#228fcc;color:White;padding:5px 10px;font-weight:bold}
 .summaryList li{padding:5px}
-.summaryList li:nth-child(odd){background:#f2f2f2}
-.summaryList li:nth-child(even){background:#e6e6e6}
+.summaryList li:nth-child(odd){background:#fff}
+.summaryList li:nth-child(even){background:#f2f2f2}
 .summaryListLeft{width:20%}
 .summaryListRight{width:75%}
 .summaryContainer{width:25%}

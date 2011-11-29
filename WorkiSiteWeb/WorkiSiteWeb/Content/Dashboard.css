@@ -118,12 +118,12 @@
 
 .summaryList li:nth-child(odd)
 {
-    background:#f2f2f2;
+    background:#ffffff;
 }
 
 .summaryList li:nth-child(even)
 {
-    background:#e6e6e6;
+    background:#f2f2f2;
 }
 
 .summaryListLeft
