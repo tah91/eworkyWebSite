@@ -44,25 +44,24 @@
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
                 @RazorHelpers.Description("Statut", statusText)
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
-                @if (Model.NeedOwnerAction)
-                { 
-                    <div class="buttonStd buttonBlue linkImg float-right">
-						@Html.ActionLink("Accepter", MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
-					</div>
-					<div class="buttonStd buttonBlue linkImg float-right">
-						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
-					</div>
-                    <div class="clear">
-                    </div>
-                }
             </div>
+            <div class="clear"></div>
+        </div>
+        @if (Model.NeedOwnerAction)
+        { 
+            <div class="buttonStd buttonBlue linkImg float-right">
+				@Html.ActionLink("Accepter", MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
+			</div>
+			<div class="buttonStd buttonBlue linkImg float-right">
+				@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
+			</div>
             <div class="clear">
             </div>
-        </div>
+        }
 	</div>
 	<div class="clear"></div>
 </div>

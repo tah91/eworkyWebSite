@@ -160,5 +160,10 @@ namespace Worki.Web.Helpers
 
             return (website.Contains(http) ? website : (http + website));
         }
+
+        public static string DisplayCurrency(int price)
+        {
+            return (price + " €");
+        }
     }
 }

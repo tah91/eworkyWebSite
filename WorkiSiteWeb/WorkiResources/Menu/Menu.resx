@@ -171,6 +171,9 @@
   <data name="Moderation" xml:space="preserve">
     <value>Modération</value>
   </data>
+  <data name="ModifyPayement" xml:space="preserve">
+    <value>Modifier informations de paiement</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>Actualités</value>
   </data>
