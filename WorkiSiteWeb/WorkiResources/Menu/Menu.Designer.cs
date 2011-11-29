@@ -223,6 +223,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modifier informations de paiement.
+        /// </summary>
+        public static string ModifyPayement {
+            get {
+                return ResourceManager.GetString("ModifyPayement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actualités.
         /// </summary>
         public static string News {

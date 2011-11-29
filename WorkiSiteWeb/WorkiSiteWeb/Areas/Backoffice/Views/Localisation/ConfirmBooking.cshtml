@@ -46,15 +46,13 @@
 						<td>
 							@Html.TextBoxFor(m => m.PaymentMail)
 						</td>
+                    </tr>
+                    <tr>
                         <td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Response)<span class="blue">*</span>
-							</div>
+							@Html.LabelFor(m => m.Response)<span class="blue">*</span>
 						</td>
 						<td>
-							<div class="editor-field">
-								@Html.TextAreaFor(m => m.Response)
-							</div>
+							@Html.TextAreaFor(m => m.Response)
 						</td>
 					</tr>
 				</table>
