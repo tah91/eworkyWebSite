@@ -88,7 +88,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			try
 			{
-				var member = mRepo.Get(id);
+                var member = mRepo.Get(memberId);
 				Member.Validate(member);
 				var booking = bRepo.Get(id);
 				if (memberId != booking.MemberId)
@@ -209,7 +209,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 			try
 			{
-				var member = mRepo.Get(id);
+				var member = mRepo.Get(memberId);
 				Member.Validate(member);
 				var quotation = qRepo.Get(id);
 				if (memberId != quotation.MemberId)

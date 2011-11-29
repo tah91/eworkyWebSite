@@ -257,7 +257,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			try
 			{
-				var member = mRepo.Get(id);
+                var member = mRepo.Get(memberId);
 				Member.Validate(member);
 				var booking = bRepo.Get(id);
 				if (memberId != booking.MemberId)
