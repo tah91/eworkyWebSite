@@ -29,8 +29,8 @@
 
 	<div class="blockContainer float-left contentRight">
         <div class="contentBlock">
-            <div class="bookingDisplay contentBlock float-left">
-                <div class="localisationImage">
+            <div class="summaryContainer contentBlock float-left">
+                <div class="summaryImage">
                     @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Offer.Localisation.GetMainPic()), Model.Offer.Localisation.Name)
                 </div>
                 <div>
@@ -40,7 +40,7 @@
                 <div class="clear">
                 </div>
             </div>
-            <div class="contentBlock bookingDescription float-right">
+            <div class="contentBlock summaryDescription float-right">
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())

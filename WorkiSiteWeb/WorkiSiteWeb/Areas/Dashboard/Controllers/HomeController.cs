@@ -39,7 +39,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			var news = ModelHelper.GetNews(member.MemberBookings, mb => { return Url.Action(MVC.Dashboard.Home.BookingDetail(mb.Id)); });
 
 			news = news.OrderByDescending(n => n.Date).Take(10).ToList();
-			return View(news);
+            return View(new DashoboardHomeViewModel { News = news, Member = member });
         }
 
         public const int PageSize = 5;

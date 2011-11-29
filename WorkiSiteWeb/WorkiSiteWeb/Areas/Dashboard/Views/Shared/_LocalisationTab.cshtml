@@ -8,19 +8,7 @@
 <ul>
     @foreach (var loc in Model.List.OrderByDescending(x => x.ID))
 	{ 
-        <li>
-            <a href="@loc.GetDetailFullUrl(Url)">
-                <div class="localisationTag float-left">
-                    <div class="localisationImgDiv borderedImg">
-					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic(), true), loc.Name)
-                    </div>
-                    <div class="localisationImgDesc">
-                        <span class="bold">@loc.Name</span><br />
-                        @loc.City
-                    </div>                                   
-                </div>
-            </a>
-        </li>
+        @Html.Partial(MVC.Dashboard.Shared.Views._LocalisationItem, new LocalisationItem{ Localisation = loc, Url = loc.GetDetailFullUrl(Url) })
 	}
 </ul>
 <div class="clear">

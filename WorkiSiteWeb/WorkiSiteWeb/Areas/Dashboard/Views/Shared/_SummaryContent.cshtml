@@ -1,0 +1,15 @@
+﻿@model SummaryViewModel
+
+<div class="summaryContainer contentBlock float-left">
+    <div class="summaryImage">
+        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.ImagePath), Model.ImageAlt)
+    </div>
+    <div>
+        @foreach (var item in Model.Descriptions)
+        { 
+            @RazorHelpers.Description(item.Title, item.Value, true)
+        }
+    </div>
+    <div class="clear">
+    </div>
+</div>

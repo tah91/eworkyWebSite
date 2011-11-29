@@ -142,7 +142,7 @@ namespace Worki.Data.Models
         {
             if (MemberMainData == null)
                 return Username;
-            return string.Format("{0} {1}", ((CivilityType)MemberMainData.Civility).ToString(), MemberMainData.LastName);
+            return string.Format("{0} {1}", MemberMainData.FirstName, MemberMainData.LastName);
         }
 
         /// <summary>

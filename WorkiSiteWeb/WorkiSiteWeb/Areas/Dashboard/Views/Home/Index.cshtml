@@ -1,4 +1,4 @@
-﻿@model List<NewsItem>
+﻿@model DashoboardHomeViewModel
 
 @section HeadContent
 {
@@ -20,14 +20,26 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		<ul>
-		@foreach (var item in Model)
-		{
-			<li>
-				@item.Date.ToString() : @item.DisplayName (<a href="@item.Link">plus...</a>)
-			</li>			
-		}
-		</ul>
+        <div class="contentBlock">
+            @{
+                var score = Model.Member.ComputeScore();
+                var summaryModel = new SummaryViewModel
+                {
+                    ImagePath = Model.Member.MemberMainData.Avatar,
+                    ImageAlt = Model.Member.GetDisplayName(),
+                    Descriptions = new List<DescriptionItem>
+                    {
+                        new DescriptionItem{ Title = "Membre", Value=Model.Member.GetDisplayName()},
+                        new DescriptionItem{ Title = "Score", Value=string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.Member.GetMemberScoreStatus(score), score)}
+                    }
+                };
+            }
+            @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
+            @Html.Partial(MVC.Dashboard.Shared.Views._NewsContent,Model.News)
+            <div class="clear">
+	        </div>
+        </div>
+
 	</div>
 	<div class="clear">
 	</div>

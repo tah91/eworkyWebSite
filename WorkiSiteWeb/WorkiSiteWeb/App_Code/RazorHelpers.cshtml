@@ -60,9 +60,9 @@
     </div>
 }
 
-@helper Description(string item, string value)
+@helper Description(string item, string value, bool blue = false)
 {
-    @item <text>: <span class="bold">@value</span></text><br />
+    @item <text>: <span class="bold @(blue ? "blue" : "")">@value</span></text><br />
 }
 
 @helper DisplayDate(DateTime date, CultureHelpers.TimeFormat format = CultureHelpers.TimeFormat.Date)

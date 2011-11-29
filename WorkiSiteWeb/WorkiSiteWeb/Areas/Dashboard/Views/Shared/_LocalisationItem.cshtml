@@ -1,0 +1,15 @@
+﻿@model Worki.Data.Models.LocalisationItem
+
+<li>
+    <a href="@Model.Url">
+        <div class="localisationTag float-left">
+            <div class="localisationImgDiv borderedImg">
+			@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
+            </div>
+            <div class="localisationImgDesc">
+                <span class="bold">@Model.Localisation.Name</span><br />
+                @Model.Localisation.City
+            </div>                                   
+        </div>
+    </a>
+</li>

@@ -54,7 +54,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
 				news = news.OrderByDescending(n => n.Date).Take(10).ToList();
 
-				return View(new LocalisationHomeViewModel { Localisation = loc, News = news });
+                return View(new BackOfficeLocalisationHomeViewModel { Localisation = loc, News = news });
 			}
 			catch (Exception ex)
 			{
@@ -260,8 +260,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var member = mRepo.Get(memberId);
 				Member.Validate(member);
 				var booking = bRepo.Get(id);
-				if (memberId != booking.MemberId)
-					throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
 				return View(booking);
 			}

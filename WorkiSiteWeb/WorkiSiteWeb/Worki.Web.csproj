@@ -643,7 +643,8 @@
     <Content Include="Areas\Admin\Views\Member\UsersLeaderboard.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\CoworkingSpace.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\BusinessCenter.cshtml" />
-    <Content Include="Areas\Dashboard\Views\Shared\_QuotationItem.cshtml" />
+	<Content Include="Areas\Dashboard\Views\Shared\_QuotationItem.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_SummaryContent.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_QuotationItem.cshtml" />
     <Content Include="Areas\Backoffice\Views\Home\Localisations.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\ConfigureOffer.cshtml" />
@@ -656,6 +657,8 @@
     <Content Include="Areas\Dashboard\Views\Home\QuotationDetail.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\BookingDetail.cshtml" />
     <Content Include="Areas\Backoffice\Views\Profil\ChangePaymentInformation.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_NewsContent.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_LocalisationItem.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

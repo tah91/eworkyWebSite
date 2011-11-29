@@ -3649,8 +3649,10 @@ namespace T4MVC.Dashboard {
             public readonly string _BookingItem = "~/Areas/Dashboard/Views/Shared/_BookingItem.cshtml";
             public readonly string _CommentTab = "~/Areas/Dashboard/Views/Shared/_CommentTab.cshtml";
             public readonly string _DashboardMenu = "~/Areas/Dashboard/Views/Shared/_DashboardMenu.cshtml";
+            public readonly string _LocalisationItem = "~/Areas/Dashboard/Views/Shared/_LocalisationItem.cshtml";
             public readonly string _LocalisationTab = "~/Areas/Dashboard/Views/Shared/_LocalisationTab.cshtml";
-            public readonly string _QuotationItem = "~/Areas/Dashboard/Views/Shared/_QuotationItem.cshtml";
+            public readonly string _NewsContent = "~/Areas/Dashboard/Views/Shared/_NewsContent.cshtml";
+            public readonly string _SummaryContent = "~/Areas/Dashboard/Views/Shared/_SummaryContent.cshtml";
         }
     }
 

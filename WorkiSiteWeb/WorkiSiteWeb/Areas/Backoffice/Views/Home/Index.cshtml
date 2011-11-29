@@ -1,4 +1,4 @@
-﻿@model HomeViewModel
+﻿@model BackOfficeHomeViewModel
 
 @section HeadContent
 {
@@ -22,23 +22,36 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-			<h3>Dernières actualités</h3>
-			<ul>
-			@foreach (var item in Model.News)
-			{
-				<li>
-					@item.Date.ToString() : @item.DisplayName (<a href="@item.Link">plus...</a>)
-				</li>
-			}
-			</ul>
-
-			<h3>Accès direct à la gestion des lieux</h3>
-			<ul>
-			@foreach (var item in Model.Places)
-			{
-				<li>@Html.ActionLink(item.Name, MVC.Backoffice.Localisation.Index(item.ID))</li>
-			}
-			</ul>
+            @{
+                var score = Model.Owner.ComputeScore();
+                var summaryModel = new SummaryViewModel
+                {
+                    ImagePath = Model.Owner.MemberMainData.Avatar,
+                    ImageAlt = Model.Owner.GetDisplayName(),
+                    Descriptions = new List<DescriptionItem>
+                    {
+                        new DescriptionItem{ Title = "Gérant", Value = Model.Owner.GetDisplayName()},
+                        new DescriptionItem{ Title = "Score", Value = string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.Owner.GetMemberScoreStatus(score), score)}
+                    }
+                };
+            }
+            @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
+            @Html.Partial(MVC.Dashboard.Shared.Views._NewsContent,Model.News)
+            <div class="clear">
+	        </div>
+            <div class="contentBlock">
+                <div class="summaryHeader">
+                    Accès direct à la gestion des lieux
+                </div>
+			    <ul>
+			    @foreach (var item in Model.Places)
+			    {
+                    @Html.Partial(MVC.Dashboard.Shared.Views._LocalisationItem, new LocalisationItem { Localisation = item, Url = Url.Action(MVC.Backoffice.Localisation.Index(item.ID)) })
+			    }
+			    </ul>
+                <div class="clear">
+                </div>
+            </div>
 		</div>
 	</div>
 	<div class="clear">

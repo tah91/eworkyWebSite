@@ -1,4 +1,4 @@
-﻿@model LocalisationHomeViewModel
+﻿@model BackOfficeLocalisationHomeViewModel
 
 @section HeadContent
 {
@@ -22,23 +22,44 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-			<h3>Dernières actualités</h3>
-			<ul>
-			@foreach (var item in Model.News)
-			{
-				<li>
-					@item.Date.ToString() : @item.DisplayName (<a href="@item.Link">plus...</a>)
-				</li>
-			}
-			</ul>
-
-			<h3>Accès direct à la gestion des offres</h3>
-            <ul>
-			@foreach (var item in Model.Localisation.Offers)
-			{
-				<li>@Html.ActionLink(item.Name, MVC.Backoffice.Localisation.OfferIndex(item.Localisation.ID, item.Id))</li>
-			}
-			</ul>
+            @{
+                var summaryModel = new SummaryViewModel
+                {
+                    ImagePath = Model.Localisation.GetMainPic(),
+                    ImageAlt = Model.Localisation.Name,
+                    Descriptions = new List<DescriptionItem>
+                    {
+                        new DescriptionItem{ Title = "Lieu", Value = Model.Localisation.Name},
+                        new DescriptionItem{ Title = "Ville", Value = Model.Localisation.City}
+                    }
+                };
+            }
+            @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
+            @Html.Partial(MVC.Dashboard.Shared.Views._NewsContent,Model.News)
+            <div class="clear">
+	        </div>
+            <div class="contentBlock">
+                <div class="summaryHeader">
+                    Accès direct à la gestion des offres
+                </div>
+			    <ul>
+			    @foreach (var item in Model.Localisation.Offers)
+			    {
+                    <a href="@Url.Action(MVC.Backoffice.Localisation.OfferIndex(item.Localisation.ID, item.Id))">
+                        <div class="localisationTag float-left">
+                            <div class="localisationImgDiv borderedImg">
+			                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)
+                            </div>
+                            <div class="localisationImgDesc">
+                                <span class="bold">@item.Name</span>
+                            </div>                                   
+                        </div>
+                    </a>
+                }
+			    </ul>
+                <div class="clear">
+                </div>
+            </div>
 		</div>
 	</div>
 	<div class="clear">

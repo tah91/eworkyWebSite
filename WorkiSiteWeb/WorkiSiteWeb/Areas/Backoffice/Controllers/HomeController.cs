@@ -43,11 +43,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
 				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
-                news = news.OrderByDescending(n => n.Date).Take(HomeViewModel.NewsCount).ToList();
+                news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
-                var localisations = lRepo.GetMostBooked(id, HomeViewModel.LocalisationCount);
+                var localisations = lRepo.GetMostBooked(id, BackOfficeConstants.LocalisationCount);
 
-                return View(new HomeViewModel { Owner = member, Places = localisations, News = news });
+                return View(new BackOfficeHomeViewModel { Owner = member, Places = localisations, News = news });
 			}
 			catch (Exception ex)
 			{

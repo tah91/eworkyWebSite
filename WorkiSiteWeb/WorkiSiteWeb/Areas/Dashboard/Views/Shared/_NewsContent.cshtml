@@ -1,0 +1,22 @@
+﻿@model IEnumerable<NewsItem>
+
+<div class="summaryDescription contentBlock float-right">
+    <div class="summaryHeader">
+        Dernières actualités
+    </div>
+    <ul class="summaryList">
+	@foreach (var item in Model)
+	{
+		<li>
+            <div class="summaryListLeft float-left">
+                @item.Date
+            </div>
+            <div class="summaryListRight float-right">
+                @item.DisplayName (<a href="@item.Link">plus...</a>)
+            </div>
+            <div class="clear">
+	        </div>
+		</li>			
+	}
+	</ul>
+</div>
