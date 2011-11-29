@@ -48,6 +48,16 @@
 								@Html.TextBoxFor(m => m.PaymentMail)
 							</div>
 						</td>
+                        <td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Response)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextAreaFor(m => m.Response)
+							</div>
+						</td>
 					</tr>
 				</table>
 				<div class="editor-field float-right">

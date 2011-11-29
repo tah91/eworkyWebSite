@@ -55,6 +55,29 @@
     font-weight:bold;
 }
 
+/*BOOKING DETAIL
+----------------------------------------------------------*/
+
+.bookingDisplay
+{
+    width: 25%;
+}
+
+.localisationImage
+{
+    height: 200px;
+}
+
+.localisationImage img
+{
+    max-height: 200px;
+}
+
+.bookingDescription
+{
+    width: 65%;
+    margin:0!important;
+}
 
 /*BOOKING ITEM
 ----------------------------------------------------------*/

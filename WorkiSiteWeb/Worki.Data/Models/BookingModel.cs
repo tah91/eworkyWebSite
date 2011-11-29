@@ -89,6 +89,78 @@ namespace Worki.Data.Models
 			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Creation select item.CreatedDate).FirstOrDefault(); }
 		}
 
+        public bool NeedOwnerAction
+        {
+            get { return !Expired && Unknown; }
+        }
+
+        public bool NeedClientAction
+        {
+            get { return !Expired && Waiting; }
+        }
+
+        public void GetStatusForOwner(out string status, out string color)
+        {
+            status = "";
+            color = "";
+            if (Expired)
+            {
+                status = "Achevée le " + ToDate;
+                color = "Gray";
+            }
+            else if (Unknown)
+            {
+                color = "Yellow";
+                status = "";
+            }
+            else if (Refused)
+            {
+                status = "Refusée";
+                color = "Red";
+            }
+            else if (Waiting)
+            {
+                status = "En attente de réglement";
+                color = "Orange";
+            }
+            else if (Paid)
+            {
+                status = "Payé le " + PaidDate;
+                color = "Green";
+            }
+        }
+
+        public void GetStatusForClient(out string status, out string color)
+        {
+            status = "";
+            color = "";
+            if (Expired)
+            {
+                status = "Achevée le " + ToDate;
+                color = "Gray";
+            }
+            else if (Unknown)
+            {
+                status = "En attente de confirmation";
+                color = "Yellow";
+            }
+            else if (Refused)
+            {
+                status = "Refusée";
+                color = "Red";
+            }
+            else if (Waiting)
+            {
+                status = "En attente de réglement";
+                color = "Orange";
+            }
+            else if (Paid)
+            {
+                status = "Payé le " + PaidDate;
+                color = "Green";
+            }
+        }
+
 		#endregion
 
 		#region Member

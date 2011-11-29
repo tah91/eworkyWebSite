@@ -3,30 +3,7 @@
 @{
 	var statusText = "";
 	var color = "";
-	if (Model.Expired)
-	{
-		statusText = "Achevée le " + Model.ToDate;
-		color = "Gray";
-	}
-	else if (Model.Unknown)
-	{
-		color = "Yellow";
-	}
-	else if (Model.Refused)
-	{
-		statusText = "Refusée";
-		color = "Red";
-	}
-	else if (Model.Waiting)
-	{
-		statusText = "En attente de réglement";
-		color = "Orange";
-	}
-	else if (Model.Paid)
-	{
-		statusText = "Payé le " + Model.PaidDate.ToShortDateString();
-		color = "Green";
-	}
+    Model.GetStatusForOwner(out statusText, out color);
 }
 
 <li class="bookingItem">
@@ -50,7 +27,7 @@
 						@statusText
 					</div>
 				}
-				@if (!Model.Expired && Model.Unknown)
+				@if (Model.NeedOwnerAction)
 				{
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
 						@Html.ActionLink("Accepter",MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))

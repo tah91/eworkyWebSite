@@ -6,6 +6,12 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@{
+    var statusText = "";
+    var color = "";
+    Model.GetStatusForOwner(out statusText, out color);
+}
+
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Offer.Localisation, Offer = Model.Offer })
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.Offer.LocalisationId })
 
@@ -22,7 +28,41 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-        Réservation du lieu @Model.Offer.Localisation.Name
+        <div class="contentBlock">
+            <div class="bookingDisplay contentBlock float-left">
+                <div class="localisationImage">
+                    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Offer.Localisation.GetMainPic()), Model.Offer.Localisation.Name)
+                </div>
+                <div>
+                    @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
+                    @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="contentBlock bookingDescription float-right">
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
+                @RazorHelpers.Description("Statut", statusText)
+                @RazorHelpers.Description("Message", Model.Message)
+                @RazorHelpers.Description("Réponse", Model.Response)
+                @if (Model.NeedOwnerAction)
+                { 
+                    <div class="buttonStd buttonBlue linkImg float-right">
+						@Html.ActionLink("Accepter", MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
+					</div>
+					<div class="buttonStd buttonBlue linkImg float-right">
+						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
+					</div>
+                    <div class="clear">
+                    </div>
+                }
+            </div>
+            <div class="clear">
+            </div>
+        </div>
 	</div>
 	<div class="clear"></div>
 </div>

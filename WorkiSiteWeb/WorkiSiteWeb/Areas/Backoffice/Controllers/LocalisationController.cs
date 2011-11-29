@@ -361,7 +361,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 					context.Commit();
 
-					return RedirectToAction(MVC.Backoffice.Localisation.OfferBooking(booking.OfferId));
+					return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}
 				catch (Exception ex)
 				{
@@ -446,7 +446,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 					context.Commit();
 
-					return RedirectToAction(MVC.Backoffice.Localisation.OfferBooking(booking.OfferId));
+                    return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}
 				catch (Exception ex)
 				{
