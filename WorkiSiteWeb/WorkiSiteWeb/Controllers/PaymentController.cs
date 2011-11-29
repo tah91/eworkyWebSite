@@ -17,7 +17,6 @@ namespace Worki.Web.Controllers
     [HandleError]
     [CompressFilter(Order = 1)]
     [CacheFilter(Order = 2)]
-	[Authorize]
     public partial class PaymentController : Controller
     {
         ILogger _Logger;
@@ -67,103 +66,100 @@ namespace Worki.Web.Controllers
 			return RedirectToAction(MVC.Home.Index());
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ActionName("paypalnotification")]
-        [HttpPost] 
-        public virtual ActionResult PayPalInstantNotification()
-        {
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ActionName("paypalnotification")]
+		public virtual ActionResult PayPalInstantNotification()
+		{
 			string status = string.Empty;
 			string requestId = string.Empty;
 			var context = ModelFactory.GetUnitOfWork();
 			var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
 
-            List<string> errors = _PaymentService.ProcessPaypalIPNMessage(Request, out status, out requestId);
-			if (!string.IsNullOrEmpty(status))
+			List<string> errors = _PaymentService.ProcessPaypalIPNMessage(Request, out status, out requestId);
+			switch (status)
 			{
-				switch (status)
-				{
-					case "COMPLETED":
+				case "COMPLETED":
+					{
+						var transaction = tRepo.Get(trx => trx.RequestId == requestId);
+						var booking = transaction.MemberBooking;
+						var offer = booking.Offer;
+						var localisation = offer.Localisation;
+
+						//send mail to owner 
+						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+						ownerMail.To = booking.Owner.Email;
+						ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+						ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
+						ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
+														Localisation.GetOfferType(offer.Type),
+														CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+														CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+														localisation.Name,
+														localisation.Adress);
+						ownerMail.Send();
+
+						//send mail to client 
+						dynamic clientMail = new Email(MVC.Emails.Views.Email);
+						clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+						clientMail.To = booking.Client.Email;
+						clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+						clientMail.ToName = booking.Client.MemberMainData.FirstName;
+						clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementClient,
+														Localisation.GetOfferType(offer.Type),
+														CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+														CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+														localisation.Name,
+														localisation.Adress);
+						clientMail.Send();
+
+						Response.Clear();
+						Response.ClearHeaders();
+						Response.StatusCode = 200;
+						Response.StatusDescription = "OK";
+						Response.Flush();
+						Response.End();
+
+						try
 						{
-							var transaction = tRepo.Get(trx => trx.RequestId == requestId);
-							var booking = transaction.MemberBooking;
-							var offer = booking.Offer;
-							var localisation = offer.Localisation;
-
-                            //send mail to owner 
-							dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-							ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-							ownerMail.To = booking.Owner.Email;
-                            ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-                            ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-                            ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
-                                                            Localisation.GetOfferType(offer.Type),
-                                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-                                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-                                                            localisation.Name,
-                                                            localisation.Adress);
-							ownerMail.Send();
-
-                            //send mail to client 
-							dynamic clientMail = new Email(MVC.Emails.Views.Email);
-							clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-							clientMail.To = booking.Client.Email;
-                            clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-							clientMail.ToName = booking.Client.MemberMainData.FirstName;
-                            clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementClient,
-                                                            Localisation.GetOfferType(offer.Type),
-                                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-                                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-                                                            localisation.Name,
-                                                            localisation.Adress);
-							clientMail.Send();
-
-							Response.Clear();
-							Response.ClearHeaders();
-							Response.StatusCode = 200;
-							Response.StatusDescription = "OK";
-							Response.Flush();
-							Response.End();
-
-							try
+							booking.MemberBookingLogs.Add(new MemberBookingLog
 							{
-								booking.MemberBookingLogs.Add(new MemberBookingLog
-								{
-									CreatedDate = DateTime.UtcNow,
-									Event = "Payment completed",
-									EventType = (int)MemberBookingLog.BookingEvent.Payment
-								});
+								CreatedDate = DateTime.UtcNow,
+								Event = "Payment completed",
+								EventType = (int)MemberBookingLog.BookingEvent.Payment
+							});
 
-								context.Commit();
-							}
-							catch (Exception ex)
-							{
-								context.Complete();
-								_Logger.Error("PayPalInstantNotification", ex);
-							}
-							break;
+							context.Commit();
 						}
-					default:
+						catch (Exception ex)
 						{
-                            //send mail to admin 
-							dynamic adminMail = new Email(MVC.Emails.Views.Email);
-							adminMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-							adminMail.To = MiscHelpers.AdminConstants.AdminMail;
-							adminMail.Subject = status;
-							adminMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-							var strBuilder = new StringBuilder();
-							foreach (var item in errors)
-							{
-								strBuilder.AppendLine(item);
-							}
-							adminMail.Content = strBuilder.ToString();
-							adminMail.Send();
-
-							break;
+							context.Complete();
+							_Logger.Error("PayPalInstantNotification", ex);
 						}
-				}
+						break;
+					}
+				default:
+					{
+						//send mail to admin 
+						dynamic adminMail = new Email(MVC.Emails.Views.Email);
+						adminMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+						adminMail.To = MiscHelpers.AdminConstants.AdminMail;
+						adminMail.Subject = status;
+						adminMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
+						var strBuilder = new StringBuilder();
+						foreach (var item in errors)
+						{
+							strBuilder.AppendLine(item);
+						}
+						adminMail.Content = strBuilder.ToString();
+						adminMail.Send();
+
+						break;
+					}
 			}
 
-            return View();
-        }
+
+			return View();
+		}
     }
 }
