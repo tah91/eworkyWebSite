@@ -23,20 +23,41 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-            <ul>
-                <li>
-                    @Html.LabelFor(model => model.Name) : @Html.DisplayFor(model => model.Name)
-                </li>
-                <li>
-                    @Html.LabelFor(model => model.IsOffline) : @Html.DisplayFor(model => model.IsOffline)
-                </li>
-                <li>
-                    @Html.LabelFor(model => model.Price) : @Html.DisplayFor(model => model.Price)
-                </li>
-                <li>
-                    @Html.LabelFor(model => model.Period) : @Offer.GetPaymentPeriodType(Model.Period)
-                </li>
-            </ul>
+        @RazorHelpers.TitleDiv(Model.Name, "Blue")
+            <table class="offerindextable margint10">
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Name)
+                    </td>
+                    <td>
+                        : @Html.DisplayFor(model => model.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.IsOffline)
+                    </td>
+                    <td>
+                        : @Html.DisplayFor(model => model.IsOffline)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Price)
+                    </td>
+                    <td>
+                        : @Html.DisplayFor(model => model.Price)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Period)
+                    </td>
+                    <td>
+                        : @Offer.GetPaymentPeriodType(Model.Period)
+                    </td>
+                </tr>
+            </table>
 		</div>
 	</div>
 	<div class="clear">

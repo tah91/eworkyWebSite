@@ -23,39 +23,37 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
+            @RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
+            <div class="loginDesc marginb10">
+                @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
+            </div>
 			@using (Html.BeginForm())
             {
 				@Html.AntiForgeryToken()
-				<table>
+				<table class="confirmbooktable">
                     <tr>
 						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Price)<span class="blue">*</span>
-							</div>
+							@Html.LabelFor(m => m.Price)<span class="blue">*</span>
 						</td>
 						<td>
-							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Price)
-							</div>
+							@Html.TextBoxFor(m => m.Price)
+						</td>
+                    </tr>
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.PaymentMail)<span class="blue">*</span>
 						</td>
 						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.PaymentMail)<span class="blue">*</span>
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.TextBoxFor(m => m.PaymentMail)
-							</div>
+							@Html.TextBoxFor(m => m.PaymentMail)
 						</td>
 					</tr>
 				</table>
-				<div class="editor-field float-right">
-					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ConfirmIt"/>
-				</div>
-				<div class="clear"></div>
             }
 		</div>
+		<div class="editor-field float-right">
+			<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ConfirmIt"/>
+		</div>
+		<div class="clear"></div>
 	</div>
 	<div class="clear">
 	</div>
