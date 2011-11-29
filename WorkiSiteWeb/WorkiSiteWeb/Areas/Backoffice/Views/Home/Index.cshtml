@@ -43,7 +43,7 @@
                 <div class="newsHeader">
                     Accès direct à la gestion des lieux
                 </div>
-			    <ul>
+			    <ul class="padding10">
 			    @foreach (var item in Model.Places)
 			    {
                     @Html.Partial(MVC.Dashboard.Shared.Views._LocalisationItem, new LocalisationItem { Localisation = item, Url = Url.Action(MVC.Backoffice.Localisation.Index(item.ID)) })

@@ -3222,6 +3222,7 @@ namespace T4MVC.Backoffice {
         public class ViewNames {
             public readonly string _BackofficeMenu = "~/Areas/Backoffice/Views/Shared/_BackofficeMenu.cshtml";
             public readonly string _BookingItem = "~/Areas/Backoffice/Views/Shared/_BookingItem.cshtml";
+            public readonly string _BookingList = "~/Areas/Backoffice/Views/Shared/_BookingList.cshtml";
             public readonly string _QuotationItem = "~/Areas/Backoffice/Views/Shared/_QuotationItem.cshtml";
         }
     }

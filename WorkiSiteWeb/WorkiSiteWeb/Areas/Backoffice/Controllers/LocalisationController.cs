@@ -193,7 +193,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Localisation = loc,
 					Bookings = new PagingList<MemberBooking>
 					{
-						List = bookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        List = bookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
 						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = bookings.Count }
 					}
 				};
@@ -231,7 +231,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Offer = offer,
 					Bookings = new PagingList<MemberBooking>
 					{
-						List = offer.MemberBookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                        List = offer.MemberBookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
 						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberBookings.Count }
 					}
 				};

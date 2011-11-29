@@ -49,4 +49,10 @@ namespace Worki.Data.Models
         public string ImageAlt { get; set; }
         public IEnumerable<DescriptionItem> Descriptions { get; set; }
     }
+
+    public class BookingListViewModel
+    {
+        public string Title { get; set; }
+        public PagingList<MemberBooking> Bookings { get; set; }
+    }
 }

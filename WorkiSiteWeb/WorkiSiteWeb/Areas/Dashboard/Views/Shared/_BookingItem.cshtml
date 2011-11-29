@@ -17,9 +17,8 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
-			@Html.ActionLink("Details", MVC.Dashboard.Home.BookingDetail(Model.Id))
         </div>
-        <div class="bookingStatus bookingStatus@(color) float-left">
+        <div class="bookingStatus bookingStatus@(color) float-left borderRadius">
             <div class="bookingStatusContent">
 				@if (!string.IsNullOrEmpty(statusText))
 				{
@@ -36,6 +35,7 @@
             </div>
         </div>
         <div class="bookingLinks float-right blue">
+            @Html.ActionLink("Details", MVC.Dashboard.Home.BookingDetail(Model.Id))
             <a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Booking.BookingString.SeeLocSheet</a>
         </div>
         <div class="clear">

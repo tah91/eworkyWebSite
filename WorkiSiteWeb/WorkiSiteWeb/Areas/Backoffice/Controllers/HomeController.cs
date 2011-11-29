@@ -106,7 +106,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
                 var model = new PagingList<MemberBooking>
                 {
-					List = bookings.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+                    List = bookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
 					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = bookings.Count }
                 };
                 return View(model);

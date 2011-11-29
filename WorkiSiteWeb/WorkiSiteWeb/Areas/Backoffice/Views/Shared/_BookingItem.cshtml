@@ -7,7 +7,7 @@
 }
 
 <li class="bookingItem">
-    <div class="contentBlock">
+    <div class="innerContentBlock padding10">
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
@@ -18,9 +18,8 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
-            @Html.ActionLink("Details", MVC.Backoffice.Localisation.BookingDetail(Model.Id))
         </div>
-        <div class="bookingStatus bookingStatus@(color) float-left">
+        <div class="bookingStatus bookingStatus@(color) borderRadius float-left">
             <div class="bookingStatusContent">
 				@if (!string.IsNullOrEmpty(statusText))
 				{
@@ -41,6 +40,7 @@
             </div>
         </div>
         <div class="bookingLinks float-right blue">
+            @Html.ActionLink("Details", MVC.Backoffice.Localisation.BookingDetail(Model.Id))
             @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))
         </div>
         <div class="clear">
