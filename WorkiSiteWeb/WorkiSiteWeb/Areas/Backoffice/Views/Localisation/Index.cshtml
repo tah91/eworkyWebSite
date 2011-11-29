@@ -38,11 +38,11 @@
             @Html.Partial(MVC.Dashboard.Shared.Views._NewsContent,Model.News)
             <div class="clear">
 	        </div>
-            <div class="innerContentBlock">
-                <div class="summaryHeader">
+            <div class="newsBottom innerContentBlock">
+                <div class="newsHeader">
                     Accès direct à la gestion des offres
                 </div>
-			    <ul>
+			    <ul class="padding10">
 			    @foreach (var item in Model.Localisation.Offers)
 			    {
                     <a href="@Url.Action(MVC.Backoffice.Localisation.OfferIndex(item.Localisation.ID, item.Id))">

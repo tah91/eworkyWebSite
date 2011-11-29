@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<NewsItem>
 
 <div class="summaryDescription innerContentBlock float-right">
-    <div class="summaryHeader">
+    <div class="newsHeader">
         Dernières actualités
     </div>
-    <ul class="summaryList">
+    <ul class="newsContent">
 	@foreach (var item in Model)
 	{
 		<li>
-            <div class="summaryListLeft float-left">
+            <div class="newsListLeft float-left">
                 @item.Date
             </div>
-            <div class="summaryListRight float-right">
+            <div class="newsListRight float-right">
                 @item.DisplayName (<a href="@item.Link">plus...</a>)
             </div>
             <div class="clear">

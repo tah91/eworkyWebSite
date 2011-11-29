@@ -1033,7 +1033,6 @@ table tr.row-alternate
 
 /* FOOTER PAGES TEXT  
 ----------------------------------------------------------*/
-
 .generalTextContainer
 {
 	/*padding:10px;*/
@@ -1381,13 +1380,13 @@ html ul.tabs li.active a:hover
 
 .innerContentBlock
 {
-    border:1px solid #CCCCCC;
-    margin:10px 0;
+    /*border:1px solid #CCCCCC;*/
+    margin:10px;
     background-color: White;
     -webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	box-shadow: 4px 4px 10px #DDD;
+    box-shadow: 0 0 5px 1px #DDD;
 }
 
 /*FEATURE TAG
@@ -1435,6 +1434,10 @@ html ul.tabs li.active a:hover
 
 /*SHARED STYLES
 ----------------------------------------------------------*/
+.padding10
+{
+    padding:10px;
+}
 
 .bigPictureContainer
 {
