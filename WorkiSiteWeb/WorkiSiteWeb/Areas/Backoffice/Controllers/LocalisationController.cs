@@ -426,22 +426,34 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						EventType = (int)MemberBookingLog.BookingEvent.Refusal
 					});
 
-                    //TODO MAIL send mail to owner
+                    //send mail to owner
 					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					ownerMail.To = booking.Owner.Email;
-					ownerMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+                    ownerMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
 					ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-					ownerMail.Content = formModel.Response;
+                    ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseBookingOwner,
+                                                     Localisation.GetOfferType(booking.Offer.Type),
+                                                     CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                     CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                     booking.Offer.Localisation.Name,
+                                                     booking.Offer.Localisation.Adress,
+                                                     formModel.Response);
 					ownerMail.Send();
 
-                    //TODO MAIL send mail to client
+                    //send mail to client
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
-					clientMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+                    clientMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
 					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = formModel.Response;
+                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseBookingClient,
+                                                     Localisation.GetOfferType(booking.Offer.Type),
+                                                     CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                     CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                     booking.Offer.Localisation.Name,
+                                                     booking.Offer.Localisation.Adress,
+                                                     formModel.Response);
 					clientMail.Send();
 
 					context.Commit();

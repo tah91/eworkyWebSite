@@ -129,19 +129,44 @@ namespace Worki.Web.Controllers
                     teamMail.To = MiscHelpers.EmailConstants.BookingMail;
 					teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
 					teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-					teamMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingMailBody,
+                    teamMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingTeam,
 													 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
 													 formData.PhoneNumber,
 													 member.Email,
 													 locName,
 													 Localisation.GetOfferType(offer.Type),
-													 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.General),
-                                                     CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.General),
+													 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                     CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
 													 formData.MemberBooking.Message);
 					teamMail.Send();
 
-                    //TODO MAIL  send mail to booking member
-                    //TODO MAIL  send mail to localisation member
+                    //send mail to booking member
+                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                    clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    clientMail.To = member.Email;
+                    clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+                    clientMail.ToName = member.MemberMainData.FirstName;
+                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
+                                                     Localisation.GetOfferType(offer.Type),
+                                                     CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                     CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                     locName,
+                                                     offer.Localisation.Adress);
+                    clientMail.Send();
+
+                    //send mail to localisation member
+                    dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    ownerMail.To = offer.Localisation.Member.Email;
+                    ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+                    ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
+                    ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingOwner,
+                                                    Localisation.GetOfferType(offer.Type),
+                                                     CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                     CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                     locName,
+                                                     offer.Localisation.Adress);
+                    ownerMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));
