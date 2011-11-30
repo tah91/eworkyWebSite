@@ -33,17 +33,6 @@
                 <div class="clear"></div>
             </div>
         }
-        @if ((Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole) || Model.Localisation.IsOwner(WebHelper.GetIdentityId(User.Identity))) && !Model.IsFreeLocalisation)
-        {
-            <div class="contentBlock">
-                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Owner</h3>
-                <div class="adminBlock">
-@*					@Html.CheckBoxFor(m => m.Localisation.Bookable)
-					@Html.LabelFor(m => m.Localisation.Bookable)*@
-                </div>
-                <div class="clear"></div>
-            </div>
-        }
             <div class="contentBlock">
                 <div class="dataEdition">
                     <div class="generalInfos float-left">
