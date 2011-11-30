@@ -5,18 +5,25 @@
         Dernières actualités
     </div>
     <ul class="newsContent">
-	@foreach (var item in Model)
+	@if(Model.Count()!=0)
 	{
-		<li>
-            <div class="newsListLeft float-left">
-                @item.Date
-            </div>
-            <div class="newsListRight float-right">
-                @item.DisplayName (<a href="@item.Link">plus...</a>)
-            </div>
-            <div class="clear">
-	        </div>
-		</li>			
+		foreach (var item in Model)
+		{
+			<li>
+				<div class="newsListLeft float-left">
+					@item.Date
+				</div>
+				<div class="newsListRight float-right">
+					@item.DisplayName (<a href="@item.Link">plus...</a>)
+				</div>
+				<div class="clear">
+				</div>
+			</li>			
+		}
+	}
+	else
+	{
+		<li>Vous n'avez reçu aucune notification.</li>
 	}
 	</ul>
 </div>
