@@ -306,10 +306,10 @@
 
 .configoffertable
 {
-    width:400px;
+    width:440px;
 }
 
-select#Offer_Period
+select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
 {
     width:204px;
 }

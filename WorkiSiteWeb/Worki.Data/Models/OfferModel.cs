@@ -14,12 +14,16 @@ namespace Worki.Data.Models
 			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
+            PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
+            Currencies = new SelectList(Offer.GetCurrencyEnumTypes(), "Key", "Value", Offer.CurrencyEnum.Euro);
 			Offer = new Offer();
 		}
 
 		public Offer Offer { get; set; }
 		public SelectList Offers { get; set; }
         public SelectList Periods { get; set; }
+        public SelectList PaymentTypes { get; set; }
+        public SelectList Currencies { get; set; }
 	}
 
 	public class OfferFeatureEqualityComparer : IEqualityComparer<OfferFeature>
@@ -148,6 +152,16 @@ namespace Worki.Data.Models
             Year
         }
 
+        public enum CurrencyEnum
+        {
+            Euro
+        }
+
+        public enum PaymentTypeEnum
+        {
+            Paypal
+        }
+
         public static List<int> PaymentPeriodTypes = new List<int>()
         {
             (int)PaymentPeriod.Hour,
@@ -155,6 +169,16 @@ namespace Worki.Data.Models
             (int)PaymentPeriod.Week,
             (int)PaymentPeriod.Month,
             (int)PaymentPeriod.Year
+        };
+
+        public static List<int> CurrencyEnumTypes = new List<int>()
+        {
+            (int)CurrencyEnum.Euro
+        };
+
+        public static List<int> PaymentTypeEnumTypes = new List<int>()
+        {
+            (int)PaymentTypeEnum.Paypal
         };
 
         public static string GetPaymentPeriodType(int type)
@@ -177,9 +201,43 @@ namespace Worki.Data.Models
             }
         }
 
+        public static string GetCurrencyEnumType(int type)
+        {
+            var enumType = (CurrencyEnum)type;
+            switch (enumType)
+            {
+                case CurrencyEnum.Euro:
+                    return Worki.Resources.Models.Offer.Offer.Euro;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public static string GetPaymentTypeEnumType(int type)
+        {
+            var enumType = (PaymentTypeEnum)type;
+            switch (enumType)
+            {
+                case PaymentTypeEnum.Paypal:
+                    return Worki.Resources.Models.Offer.Offer.Paypal;
+                default:
+                    return string.Empty;
+            }
+        }
+
         public static Dictionary<int, string> GetPaymentPeriodTypes()
         {
             return PaymentPeriodTypes.ToDictionary(p => p, p => GetPaymentPeriodType(p));
+        }
+
+        public static Dictionary<int, string> GetCurrencyEnumTypes()
+        {
+            return CurrencyEnumTypes.ToDictionary(p => p, p => GetCurrencyEnumType(p));
+        }
+
+        public static Dictionary<int, string> GetPaymentTypeEnumTypes()
+        {
+            return PaymentTypeEnumTypes.ToDictionary(p => p, p => GetPaymentTypeEnumType(p));
         }
 
         #endregion
@@ -208,6 +266,18 @@ namespace Worki.Data.Models
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "IsOffline", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int IsOffline { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "IsBookable", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int IsBookable { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "PaymentType", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int PaymentType { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Currency", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int Currency { get; set; }
 	}
 
 	public partial class OfferFeature : IFeatureContainer
