@@ -22,6 +22,7 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
+        @RazorHelpers.TitleDiv(Worki.Resources.Views.BackOffice.BackOfficeString.OwnerSpace, "Blue")
             @{
                 var score = Model.Owner.ComputeScore();
                 var summaryModel = new SummaryViewModel

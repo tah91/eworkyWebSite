@@ -178,6 +178,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Espace gérant.
+        /// </summary>
+        public static string OwnerSpace {
+            get {
+                return ResourceManager.GetString("OwnerSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tél..
         /// </summary>
         public static string PhoneNumber {
