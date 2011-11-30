@@ -194,10 +194,6 @@ namespace Worki.Data.Models
 
         [Display(Name = "Response", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string Response { get; set; }
-
-        [Display(Name = "PaymentMail", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        [Email(ErrorMessageResourceName = "PaymentMail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        public string PaymentMail { get; set; }
 	}
 
 	public partial class MemberBookingLog

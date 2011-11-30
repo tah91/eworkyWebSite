@@ -289,7 +289,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var booking = bRepo.Get(id);
 				Member.Validate(member);
 				Member.ValidateOwner(member, booking.Offer.Localisation);
-				booking.PaymentMail = booking.Owner.MemberMainData.PaymentAddress;
 				return View(booking);
 			}
 			catch (Exception ex)
@@ -323,9 +322,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						Event = "Booking Confirmed",
 						EventType = (int)MemberBookingLog.BookingEvent.Approval
 					});
-
-					//set payment address
-					booking.Owner.MemberMainData.PaymentAddress = booking.PaymentMail;
 
 					//TODO MAIL send mail to owner
 					dynamic ownerMail = new Email(MVC.Emails.Views.Email);

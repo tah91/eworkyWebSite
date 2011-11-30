@@ -209,20 +209,27 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             if (ModelState.IsValid)
             {
                 var context = ModelFactory.GetUnitOfWork();
-                try
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                var member = mRepo.Get(id);
+                if (_MembershipService.ValidateUser(member.Username, model.Password))
                 {
-                    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                    var member = mRepo.Get(id);
-                    UpdateModel(member);
-                    context.Commit();
+                    try
+                    {
+                        UpdateModel(member);
+                        context.Commit();
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
-                    return RedirectToAction(MVC.Backoffice.Home.Index());
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                        return RedirectToAction(MVC.Backoffice.Home.Index());
+                    }
+                    catch (Exception ex)
+                    {
+                        context.Complete();
+                        _Logger.Error("ChangePaymentInformation", ex);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    context.Complete();
-                    _Logger.Error("ChangePaymentInformation", ex);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
                 }
             }
 

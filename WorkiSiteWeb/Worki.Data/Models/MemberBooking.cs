@@ -35,7 +35,6 @@ namespace Worki.Data.Models
         public string Message { get; set; }
         public int Price { get; set; }
         public int StatusId { get; set; }
-        public string PaymentMail { get; set; }
         public string Response { get; set; }
     
         // Navigation properties

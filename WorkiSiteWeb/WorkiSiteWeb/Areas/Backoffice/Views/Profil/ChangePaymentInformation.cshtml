@@ -34,6 +34,14 @@
                 <table class="confirmbooktable">
                     <tr>
                         <td>
+                            @Html.LabelFor(m => m.Password)<span class="blue">*</span>
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.Password)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             @Html.LabelFor(m => m.MemberMainData.PaymentAddress)
                         </td>
                         <td>
