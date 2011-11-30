@@ -11,6 +11,11 @@
     width: 70%;
 }
 
+.emptyContent
+{
+	height:200px;
+}
+
 /*TABLE LAYOUT
 ----------------------------------------------------------*/
 .tableStyle table
