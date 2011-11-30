@@ -137,6 +137,12 @@
     max-height: 200px;
 }
 
+.summaryIntro
+{
+    text-align:center;
+    font-weight:bold;
+}
+
 .summaryDetail
 {
     width: 63%;
