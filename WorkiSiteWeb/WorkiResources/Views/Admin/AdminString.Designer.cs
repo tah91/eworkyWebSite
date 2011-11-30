@@ -124,6 +124,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rôle BackOffice.
+        /// </summary>
+        public static string BORole {
+            get {
+                return ResourceManager.GetString("BORole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirmer la suppression : .
         /// </summary>
         public static string ConfirmDelete {

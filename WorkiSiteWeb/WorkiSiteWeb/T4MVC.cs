@@ -2571,6 +2571,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public System.Web.Mvc.ActionResult BusinessCenter() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.BusinessCenter);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SetBackOfficeRole() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SetBackOfficeRole);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SheetController Actions { get { return MVC.Admin.Sheet; } }
@@ -2593,6 +2598,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string DeleteRental = "DeleteRental";
             public readonly string CoworkingSpace = "CoworkingSpace";
             public readonly string BusinessCenter = "BusinessCenter";
+            public readonly string SetBackOfficeRole = "SetBackOfficeRole";
         }
 
 
@@ -2683,6 +2689,14 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public override System.Web.Mvc.ActionResult BusinessCenter(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BusinessCenter);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SetBackOfficeRole(int id, int page, bool b) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SetBackOfficeRole);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("page", page);
+            callInfo.RouteValueDictionary.Add("b", b);
             return callInfo;
         }
 
