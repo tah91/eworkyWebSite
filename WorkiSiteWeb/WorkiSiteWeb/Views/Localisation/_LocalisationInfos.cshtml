@@ -153,11 +153,11 @@
       }
       if (!string.IsNullOrEmpty(Model.Facebook))
       {
-				<a href="@WebHelper.GetWebsite(Model.Facebook)"><span>@Worki.Resources.Models.Localisation.Localisation.Facebook</span></a><br />
+				<a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank"><span>@Worki.Resources.Models.Localisation.Localisation.Facebook</span></a><br />
       }
       if (!string.IsNullOrEmpty(Model.Twitter))
       {
-				<a href="@WebHelper.GetTwitter(Model.Twitter)"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
+				<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
       }
       if (!Model.HasOwner())
       {

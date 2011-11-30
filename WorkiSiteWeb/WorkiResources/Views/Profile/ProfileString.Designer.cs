@@ -115,6 +115,15 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nous vous rappelons que seront prélevées sur toutes les réservations transitant sur eWorky une commission de 10 % ainsi qu&apos;une commission PayPal de X %. Pour toute question, contactez-nous : contact@eworky.com..
+        /// </summary>
+        public static string EndModifyPayment {
+            get {
+                return ResourceManager.GetString("EndModifyPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espaces favoris.
         /// </summary>
         public static string Favorite {
@@ -151,6 +160,15 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vos clients devront vous régler via la plateforme de paiement PayPal. Pour pouvoir encaisser les règlements, vous devez posséder un compte PayPal (pour ouvrir un compte, cliquez &lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;ici&lt;/a&gt;)..
+        /// </summary>
+        public static string HeadModifyPayment {
+            get {
+                return ResourceManager.GetString("HeadModifyPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pour compléter votre profil, {0}..
         /// </summary>
         public static string InfosEmpty {
@@ -165,6 +183,15 @@ namespace Worki.Resources.Views.Profile {
         public static string LinkedInProfile {
             get {
                 return ResourceManager.GetString("LinkedInProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Veillez saisir l&apos;adresse électronique associée votre compte PAYPAL.
+        /// </summary>
+        public static string MailPayment {
+            get {
+                return ResourceManager.GetString("MailPayment", resourceCulture);
             }
         }
         
@@ -259,11 +286,11 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Veuillez spécifier l&apos;adresse électronique pour les futures paiements.
+        ///   Looks up a localized string similar to Pour votre sécurité, veuillez saisir votre mot de passe eWorky.
         /// </summary>
-        public static string PaypalEmail {
+        public static string PasswordEworky {
             get {
-                return ResourceManager.GetString("PaypalEmail", resourceCulture);
+                return ResourceManager.GetString("PasswordEworky", resourceCulture);
             }
         }
         

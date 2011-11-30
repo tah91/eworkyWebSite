@@ -228,7 +228,16 @@
   <data name="MyComActivities" xml:space="preserve">
     <value>Mon activité communautaire</value>
   </data>
-  <data name="PaypalEmail" xml:space="preserve">
-    <value>Veuillez spécifier l'adresse électronique pour les futures paiements</value>
+  <data name="HeadModifyPayment" xml:space="preserve">
+    <value>Vos clients devront vous régler via la plateforme de paiement PayPal. Pour pouvoir encaisser les règlements, vous devez posséder un compte PayPal (pour ouvrir un compte, cliquez &lt;a href="{0}" target="_blank"&gt;ici&lt;/a&gt;).</value>
+  </data>
+  <data name="EndModifyPayment" xml:space="preserve">
+    <value>Nous vous rappelons que seront prélevées sur toutes les réservations transitant sur eWorky une commission de 10 % ainsi qu'une commission PayPal de X %. Pour toute question, contactez-nous : contact@eworky.com.</value>
+  </data>
+  <data name="MailPayment" xml:space="preserve">
+    <value>Veillez saisir l'adresse électronique associée votre compte PAYPAL</value>
+  </data>
+  <data name="PasswordEworky" xml:space="preserve">
+    <value>Pour votre sécurité, veuillez saisir votre mot de passe eWorky</value>
   </data>
 </root>

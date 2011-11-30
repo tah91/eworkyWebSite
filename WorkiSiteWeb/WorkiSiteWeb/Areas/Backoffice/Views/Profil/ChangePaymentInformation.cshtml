@@ -24,7 +24,7 @@
 	    {
             <div class="contentBlock">
                 <div class="loginDesc marginb10">
-                    @Worki.Resources.Views.Profile.ProfileString.PaypalEmail<br />
+                    @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.HeadModifyPayment, MiscHelpers.UrlConstants.paypal))<br />
                 </div>
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(m=>m.MemberMainData.FirstName)
@@ -34,20 +34,24 @@
                 <table class="confirmbooktable">
                     <tr>
                         <td>
-                            @Html.LabelFor(m => m.Password)<span class="blue">*</span>
+                            @Worki.Resources.Views.Profile.ProfileString.MailPayment <span class="blue">*</span>
                         </td>
                         <td>
-                            @Html.PasswordFor(m => m.Password)
+                            : @Html.TextBoxFor(m => m.MemberMainData.PaymentAddress)
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            @Worki.Resources.Views.Profile.ProfileString.PasswordEworky <span class="blue">*</span>
                         </td>
                         <td>
-                            @Html.TextBoxFor(m => m.MemberMainData.PaymentAddress)
+                            : @Html.PasswordFor(m => m.Password)
                         </td>
                     </tr>
                 </table>
+                <div class="margint10">
+                    @Worki.Resources.Views.Profile.ProfileString.EndModifyPayment
+                </div>
             </div>
             <div class="float-right">
                 <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Modify"/>
