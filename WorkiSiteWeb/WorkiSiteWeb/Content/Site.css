@@ -1930,6 +1930,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 }
 .dropdown dd ul li a:hover 
 { 
-	background-color:#a7d4fe;
+	background-color:#5DAFDE;
 	color:White;
+	font-weight:bold;
 }
