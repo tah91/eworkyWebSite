@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
+using System.Globalization;
 
 
 namespace Worki.Service
@@ -470,10 +471,13 @@ namespace Worki.Service
 
 							string ownerTransactionId = paypalRequest["transaction[0].id"];
 							string eworkyTransactionId = paypalRequest["transaction[1].id"];
-							string ownerAmountStr = paypalRequest["transaction[0].amount"].Split()[1];
-							string eworkyAmountStr = paypalRequest["transaction[1].amount"].Split()[1];
-							var ownerAmount = double.Parse(ownerAmountStr);
-							var eworkyAmount = double.Parse(eworkyAmountStr);
+                            //Check it...
+                            double ownerAmount = double.Parse(paypalRequest["transaction[0].amount"], NumberStyles.Currency);
+                            double eworkyAmount = double.Parse(paypalRequest["transaction[1].amount"], NumberStyles.Currency);
+                            //string ownerAmountStr = paypalRequest["transaction[0].amount"].Split()[1];
+                            //string eworkyAmountStr = paypalRequest["transaction[1].amount"].Split()[1];
+                            //var ownerAmount = double.Parse(ownerAmountStr);
+                            //var eworkyAmount = double.Parse(eworkyAmountStr);
 
 							switch (status)
 							{
