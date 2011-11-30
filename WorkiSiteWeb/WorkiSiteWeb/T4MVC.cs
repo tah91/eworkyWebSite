@@ -2015,6 +2015,7 @@ namespace T4MVC {
             public readonly string _AddToFavorite = "~/Views/Shared/_AddToFavorite.cshtml";
             public readonly string _CultureSwitchControl = "~/Views/Shared/_CultureSwitchControl.cshtml";
             public readonly string _DatePickerScript = "~/Views/Shared/_DatePickerScript.cshtml";
+            public readonly string _DropDownList = "~/Views/Shared/_DropDownList.cshtml";
             public readonly string _HorizontalMenu = "~/Views/Shared/_HorizontalMenu.cshtml";
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";

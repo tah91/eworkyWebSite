@@ -1,6 +1,6 @@
 ﻿@if (Request.IsAuthenticated)
 {       
-    <div class="welcome blue">
+    <div class="welcome">
         @{
             var displayName = User.Identity.Name;
 			var memberId = 0;
@@ -10,23 +10,28 @@
 				displayName = WebHelper.GetIdentityDisplayName(User.Identity);
 				memberId = WebHelper.GetIdentityId(User.Identity);
             }
+			var dropDown = new DropDownModel
+			{
+				Title = displayName,
+				Items = new List<DropDownItem>
+						{
+							new DropDownItem{ DisplayName = Worki.Resources.Views.Profile.ProfileString.MyProfile, Link = Url.Action(MVC.Dashboard.Home.Index())}
+						}
+			};
+			if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
+			{
+				dropDown.Items.Add(new DropDownItem { DisplayName = "bo", Link = Url.Action(MVC.Backoffice.Home.Index()) });
+			}
+			if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
+			{
+				dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Shared.SharedString.Admin, Link = Url.Action(MVC.Admin.Sheet.Index()) });
+			}
+			dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Shared.SharedString.Deconnect, Link = Url.Action(MVC.Account.LogOff()) });
         }
-        <div class="loginTitle">
+        @*<div class="loginTitle">
             @Worki.Resources.Views.Home.HomeString.Welcome <b>@displayName</b> !
-        </div>
-        <div>
-            @Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.MyProfile, MVC.Dashboard.Home.Index()) | 
-            @if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
-            {
-                @Html.ActionLink("bo", MVC.Backoffice.Home.Index()) <span> | </span> 
-            }			
-            @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Account.LogOff())
-            @if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
-            {
-                <span> | </span>
-                @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Admin, MVC.Admin.Sheet.Index())
-            }
-        </div>
+        </div>*@
+		@Html.Partial(MVC.Shared.Views._DropDownList, dropDown)
     </div>
 }
 else
