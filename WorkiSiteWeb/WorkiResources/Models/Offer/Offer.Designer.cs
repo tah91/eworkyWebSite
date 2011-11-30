@@ -61,11 +61,29 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Devise.
+        /// </summary>
+        public static string Currency {
+            get {
+                return ResourceManager.GetString("Currency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Jour.
         /// </summary>
         public static string Day {
             get {
                 return ResourceManager.GetString("Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EUR.
+        /// </summary>
+        public static string Euro {
+            get {
+                return ResourceManager.GetString("Euro", resourceCulture);
             }
         }
         
@@ -79,7 +97,16 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mettre hors ligne.
+        ///   Looks up a localized string similar to Proposer à la réservation en ligne.
+        /// </summary>
+        public static string IsBookable {
+            get {
+                return ResourceManager.GetString("IsBookable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offre en ligne.
         /// </summary>
         public static string IsOffline {
             get {
@@ -106,7 +133,25 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Par.
+        ///   Looks up a localized string similar to Moyen de paiement admis.
+        /// </summary>
+        public static string PaymentType {
+            get {
+                return ResourceManager.GetString("PaymentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paypal.
+        /// </summary>
+        public static string Paypal {
+            get {
+                return ResourceManager.GetString("Paypal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unité de temps.
         /// </summary>
         public static string Period {
             get {

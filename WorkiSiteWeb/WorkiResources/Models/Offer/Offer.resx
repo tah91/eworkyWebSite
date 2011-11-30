@@ -117,14 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Currency" xml:space="preserve">
+    <value>Devise</value>
+  </data>
   <data name="Day" xml:space="preserve">
     <value>Jour</value>
+  </data>
+  <data name="Euro" xml:space="preserve">
+    <value>EUR</value>
   </data>
   <data name="Hour" xml:space="preserve">
     <value>Heure</value>
   </data>
+  <data name="IsBookable" xml:space="preserve">
+    <value>Proposer à la réservation en ligne</value>
+  </data>
   <data name="IsOffline" xml:space="preserve">
-    <value>Mettre hors ligne</value>
+    <value>Offre en ligne</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>Mois</value>
@@ -132,8 +141,14 @@
   <data name="Name" xml:space="preserve">
     <value>Nom de l'offre</value>
   </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Moyen de paiement admis</value>
+  </data>
+  <data name="Paypal" xml:space="preserve">
+    <value>Paypal</value>
+  </data>
   <data name="Period" xml:space="preserve">
-    <value>Par</value>
+    <value>Unité de temps</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Prix</value>

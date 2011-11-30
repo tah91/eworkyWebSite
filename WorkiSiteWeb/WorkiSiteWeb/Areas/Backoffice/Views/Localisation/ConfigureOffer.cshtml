@@ -35,38 +35,50 @@
 				<table class="configoffertable">
                 	<tr>
 						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Offer.Price) <span class="blue">*</span>
-							</div>
+							@Html.LabelFor(m => m.Offer.Price) <span class="blue">*</span>
 						</td>
 						<td>
-							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Offer.Price)
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Offer.Period) <span class="blue">*</span>
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.DropDownListFor(m => m.Offer.Period, Model.Periods)
-							</div>
+							@Html.TextBoxFor(m => m.Offer.Price)
 						</td>
 					</tr>
                     <tr>
 						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Offer.IsOffline) <span class="blue">*</span>
-							</div>
+						    @Html.LabelFor(m => m.Offer.IsOffline)
 						</td>
 						<td>
-							<div class="editor-field">
-								@Html.CheckBoxFor(m => m.Offer.IsOffline)
-							</div>
+							@Html.CheckBoxFor(m => m.Offer.IsOffline)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+						    @Html.LabelFor(m => m.Offer.IsBookable)
+						</td>
+						<td>
+							@Html.CheckBoxFor(m => m.Offer.IsBookable)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							@Html.LabelFor(m => m.Offer.Period)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Offer.Period, Model.Periods)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.Offer.Currency)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.Offer.PaymentType)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Offer.PaymentType, Model.PaymentTypes)
 						</td>
 					</tr>
 				</table>

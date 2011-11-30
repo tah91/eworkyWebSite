@@ -43,6 +43,6 @@
 .bookingStatusAction{width:60px;margin:10px auto!important}
 .bookingLinks{width:20%}
 .offerindextable{width:200px}
-.configoffertable{width:400px}
-select#Offer_Period{width:204px}
+.configoffertable{width:440px}
+select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType{width:204px}
 .confirmbooktable{width:605px}

@@ -26,8 +26,7 @@
         				</a>                        
 					}
 				</div>
-				<div class="clear">
-				</div>
+				<div class="clear"></div>
 				}
 				@if (offer.OfferFeatures.Count() == 0)
 				{
@@ -43,10 +42,9 @@
 					}
 					</ul>
 				</div> 
-				<div class="clear">
-				</div>
+				<div class="clear"></div>
 				}
-				@*@if (Model.Localisation.Bookable)
+				@if (offer.IsBookable)
 				{
 					<div class="buttonStd buttonBlue linkImg float-right">
 					@if (Offer.NeedQuotation((LocalisationOffer)offer.Type))
@@ -58,17 +56,15 @@
 					@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
 					}
 					</div>
-					<div class="clear">
-					</div>
-				}*@
+					<div class="clear"></div>
+				}
 			</div> 
 		}
 	</div>
 	<div class="localisationDetailRight blockContainer float-right">
 	@Html.Partial(MVC.Localisation.Views._LocalisationInfos, Model.Localisation)
 	</div>
-	<div class="clear">
-	</div>
+	<div class="clear"></div>
 </div>
 
 @section ScriptContent

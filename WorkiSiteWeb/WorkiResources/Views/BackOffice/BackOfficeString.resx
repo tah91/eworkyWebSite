@@ -156,6 +156,9 @@
   <data name="Owner" xml:space="preserve">
     <value>Gérant</value>
   </data>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value>Espace gérant</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Tél.</value>
   </data>
