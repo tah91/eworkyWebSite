@@ -37,14 +37,17 @@ namespace Worki.Data.Models
         public decimal Price { get; set; }
         public int Period { get; set; }
         public bool IsOffline { get; set; }
+        public bool IsBookable { get; set; }
+        public int PaymentType { get; set; }
+        public int Currency { get; set; }
     
         // Navigation properties
     
-        public virtual Localisation Localisation { get; set; }
         public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
         public virtual ICollection<OfferFeature> OfferFeatures { get; set; }
         public virtual ICollection<OfferFile> OfferFiles { get; set; }
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
+        public virtual Localisation Localisation { get; set; }
     
     }
 }

@@ -178,7 +178,6 @@ namespace Worki.Web.Areas.Admin.Controllers
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                     return RedirectToAction(MVC.Admin.Sheet.Index());
                 }
-                localisation.Bookable = !localisation.Bookable;
                 Iscoworking = (int)LocalisationType.CoworkingSpace == localisation.TypeValue;
                 context.Commit();
             }

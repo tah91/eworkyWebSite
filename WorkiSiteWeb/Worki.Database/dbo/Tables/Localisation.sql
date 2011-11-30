@@ -16,7 +16,6 @@
     [Latitude]             FLOAT (53)     NOT NULL,
     [Longitude]            FLOAT (53)     NOT NULL,
     [OwnerID]              INT            CONSTRAINT [DF__Localisat__Owner__5535A963] DEFAULT ((0)) NULL,
-    [Bookable]             BIT            CONSTRAINT [DF__Localisat__Booka__5629CD9C] DEFAULT ((0)) NOT NULL,
     [PublicTransportation] NVARCHAR (256) NULL,
     [Station]              NVARCHAR (256) NULL,
     [RoadAccess]           NVARCHAR (256) NULL, 

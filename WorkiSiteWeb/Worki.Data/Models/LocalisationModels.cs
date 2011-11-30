@@ -753,9 +753,6 @@ namespace Worki.Data.Models
 		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string RoadAccess { get; set; }
 
-        [Display(Name = "Bookable", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
-        public bool Bookable { get; set; }
-
         [Display(Name = "Facebook", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public string Facebook { get; set; }
 

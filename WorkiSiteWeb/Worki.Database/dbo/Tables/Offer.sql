@@ -8,6 +8,9 @@
     [Price] DECIMAL(18, 2) NOT NULL DEFAULT 0, 
     [Period] INT NOT NULL DEFAULT 0, 
     [IsOffline] BIT NOT NULL DEFAULT 0, 
-	CONSTRAINT [FK_Offer_Localisation] FOREIGN KEY (LocalisationId) REFERENCES [dbo].[Localisation] ([ID]) ON DELETE CASCADE ON UPDATE NO ACTION, 
+	[IsBookable] BIT NOT NULL DEFAULT 0, 
+    [PaymentType] INT NOT NULL DEFAULT 0, 
+    [Currency] INT NOT NULL DEFAULT 0, 
+    CONSTRAINT [FK_Offer_Localisation] FOREIGN KEY (LocalisationId) REFERENCES [dbo].[Localisation] ([ID]) ON DELETE CASCADE ON UPDATE NO ACTION, 
     CONSTRAINT [PK_Offer] PRIMARY KEY ([Id])
 )

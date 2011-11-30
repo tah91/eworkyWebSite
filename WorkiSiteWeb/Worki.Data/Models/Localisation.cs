@@ -49,7 +49,6 @@ namespace Worki.Data.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public Nullable<int> OwnerID { get; set; }
-        public bool Bookable { get; set; }
         public string PublicTransportation { get; set; }
         public string Station { get; set; }
         public string RoadAccess { get; set; }
