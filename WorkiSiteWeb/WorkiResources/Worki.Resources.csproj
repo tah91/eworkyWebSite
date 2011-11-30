@@ -193,6 +193,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StatString.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BackOffice\BackOfficeString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BackOfficeString.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Booking\BookingString.Designer.cs">
       <DependentUpon>BookingString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -414,6 +419,10 @@
     <EmbeddedResource Include="Views\Admin\StatString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StatString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BackOffice\BackOfficeString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BackOfficeString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Booking\BookingString.en.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.resx">

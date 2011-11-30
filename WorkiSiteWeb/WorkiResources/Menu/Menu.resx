@@ -154,7 +154,7 @@
     <value>Modifier le mot de passe</value>
   </data>
   <data name="EditProfil" xml:space="preserve">
-    <value>Modifier les informations</value>
+    <value>Modifier le profil</value>
   </data>
   <data name="FavoritePlaces" xml:space="preserve">
     <value>Espaces favoris</value>
@@ -172,7 +172,7 @@
     <value>Modération</value>
   </data>
   <data name="ModifyPayement" xml:space="preserve">
-    <value>Modifier informations de paiement</value>
+    <value>Modifier les informations de paiement</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Actualités</value>
@@ -184,7 +184,7 @@
     <value>Annonces en ligne</value>
   </data>
   <data name="Places" xml:space="preserve">
-    <value>Espaces de travail</value>
+    <value>Mes espaces de travail</value>
   </data>
   <data name="Profil" xml:space="preserve">
     <value>Profil</value>
@@ -206,5 +206,11 @@
   </data>
   <data name="TopMember" xml:space="preserve">
     <value>Top 50</value>
+  </data>
+  <data name="WorkingBook" xml:space="preserve">
+    <value>Réservations en cours</value>
+  </data>
+  <data name="WorkingQuotation" xml:space="preserve">
+    <value>Demandes de devis cours</value>
   </data>
 </root>

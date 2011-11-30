@@ -178,7 +178,7 @@ namespace Worki.Resources.Models.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adresse électonique Paypal.
+        ///   Looks up a localized string similar to Adresse URL de paiement PayPal.
         /// </summary>
         public static string PaymentAddress {
             get {

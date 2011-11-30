@@ -133,7 +133,7 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adresse électronique Paypal.
+        ///   Looks up a localized string similar to Adresse URL de paiement PayPal.
         /// </summary>
         public static string PaymentMail {
             get {

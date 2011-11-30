@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Bookings)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.WorkingBook)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -35,7 +35,7 @@
         else
         {
             <div class="contentBlock italic">
-                @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
+                @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentBooking, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Historic, MVC.Dashboard.Historic.Booking())))
             </div>
         }
 	</div>

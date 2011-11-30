@@ -142,7 +142,7 @@
     <value>Besoin</value>
   </data>
   <data name="PaymentMail" xml:space="preserve">
-    <value>Adresse électronique Paypal</value>
+    <value>Adresse URL de paiement PayPal</value>
   </data>
   <data name="PhoneInfo" xml:space="preserve">
     <value>vous serez contacté à ce numéro</value>

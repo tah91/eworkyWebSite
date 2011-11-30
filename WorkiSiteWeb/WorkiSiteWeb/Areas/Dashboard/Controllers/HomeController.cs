@@ -63,7 +63,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				Member.Validate(member);
 				var model = new PagingList<MemberBooking>
 				{
-					List = member.MemberBookings.Where(mb => !mb.Expired).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					List = member.MemberBookings.Where(mb => !mb.Expired && !mb.Paid && !mb.Refused).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
 					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.MemberBookings.Count }
 				};
 				return View(model);
