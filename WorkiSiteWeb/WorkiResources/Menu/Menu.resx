@@ -148,7 +148,7 @@
     <value>Coworking Fr</value>
   </data>
   <data name="CurrentBookings" xml:space="preserve">
-    <value>Réservations en cours</value>
+    <value>Demandes de réservation</value>
   </data>
   <data name="EditPassword" xml:space="preserve">
     <value>Modifier le mot de passe</value>

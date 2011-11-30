@@ -151,7 +151,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Réservations en cours.
+        ///   Looks up a localized string similar to Demandes de réservation.
         /// </summary>
         public static string CurrentBookings {
             get {
