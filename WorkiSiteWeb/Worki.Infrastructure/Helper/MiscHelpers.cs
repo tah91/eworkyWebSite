@@ -47,6 +47,7 @@ namespace Worki.Infrastructure.Helpers
 			public const string eWorkyTwitter = "http://www.twitter.com/#!/eWorky";
 			public const string jquery = "";//"https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js";
 			public const string jqueryui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js";
+            public const string paypal = "https://www.paypal.com";
 		}
 
 		public static class BlogConstants

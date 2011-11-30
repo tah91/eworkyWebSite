@@ -348,4 +348,7 @@
   <data name="Score" xml:space="preserve">
     <value>Score</value>
   </data>
+  <data name="BORole" xml:space="preserve">
+    <value>Rôle BackOffice</value>
+  </data>
 </root>

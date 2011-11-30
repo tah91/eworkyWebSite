@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Logging;
@@ -310,6 +311,39 @@ namespace Worki.Web.Areas.Admin.Controllers
                 }
             };
             return View(MVC.Admin.Sheet.Views.BusinessCenter, viewModel);
+        }
+
+        public virtual ActionResult SetBackOfficeRole(int id, int page, bool b)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            try
+            {
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                var member = mRepo.Get(id);
+                if (member == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+                    return RedirectToAction(b ? MVC.Admin.Sheet.BusinessCenter(page) : MVC.Admin.Sheet.CoworkingSpace(page));
+                }
+
+                if (Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole))
+                {
+                    Roles.RemoveUserFromRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+                }
+                else
+                {
+                    Roles.AddUserToRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+                }
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("SetBackOfficeRole", ex);
+                context.Complete();
+            }
+
+            TempData[MiscHelpers.TempDataConstants.Info] = "Rôle BackOffice Mis à jour";
+            return RedirectToAction(b ? MVC.Admin.Sheet.BusinessCenter(page) : MVC.Admin.Sheet.CoworkingSpace(page));
         }
 
         #endregion

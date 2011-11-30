@@ -30,6 +30,9 @@
                     &nbsp;&nbsp;@Worki.Resources.Views.Admin.AdminString.Owner
                 </th>
                 <th>
+                    &nbsp;&nbsp;@Worki.Resources.Views.Admin.AdminString.BORole
+                </th>
+                <th>
                     &nbsp;&nbsp;@Worki.Resources.Views.Localisation.LocalisationString.BookIt
                 </th>
             </tr>
@@ -42,6 +45,9 @@
                     </td>
                     <td align="right">
                         @Html.ActionLink(item.Member.Username, MVC.Dashboard.Profil.Public(item.Member.MemberId))
+                    </td>
+                    <td align="right">
+                        @Html.ActionLink(Roles.IsUserInRole(item.Member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.SetBackOfficeRole(item.Member.MemberId, Model.PagingInfo.CurrentPage, true))
                     </td>
                     <td align="right">
                         @(item.Bookable ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Sheet.BookIt(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.BookIt(item.ID)))
