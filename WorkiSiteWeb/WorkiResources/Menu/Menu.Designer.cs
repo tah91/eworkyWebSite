@@ -169,7 +169,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier les informations.
+        ///   Looks up a localized string similar to Modifier le profil.
         /// </summary>
         public static string EditProfil {
             get {
@@ -223,7 +223,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier informations de paiement.
+        ///   Looks up a localized string similar to Modifier les informations de paiement.
         /// </summary>
         public static string ModifyPayement {
             get {
@@ -259,7 +259,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Espaces de travail.
+        ///   Looks up a localized string similar to Mes espaces de travail.
         /// </summary>
         public static string Places {
             get {
@@ -327,6 +327,24 @@ namespace Worki.Resources.Menu {
         public static string TopMember {
             get {
                 return ResourceManager.GetString("TopMember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Réservations en cours.
+        /// </summary>
+        public static string WorkingBook {
+            get {
+                return ResourceManager.GetString("WorkingBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demandes de devis cours.
+        /// </summary>
+        public static string WorkingQuotation {
+            get {
+                return ResourceManager.GetString("WorkingQuotation", resourceCulture);
             }
         }
     }

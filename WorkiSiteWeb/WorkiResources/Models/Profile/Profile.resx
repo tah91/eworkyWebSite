@@ -157,7 +157,7 @@
     <value>Autre</value>
   </data>
   <data name="PaymentAddress" xml:space="preserve">
-    <value>Adresse électonique Paypal</value>
+    <value>Adresse URL de paiement PayPal</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Téléphone portable</value>
