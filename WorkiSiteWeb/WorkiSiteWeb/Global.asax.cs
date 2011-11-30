@@ -415,6 +415,12 @@ namespace Worki.Web
                     Roles.CreateRole(MiscHelpers.AdminConstants.AdminRole);
                 }
 
+                //create bo roles
+                if (!Roles.RoleExists(MiscHelpers.BackOfficeConstants.BackOfficeRole))
+                {
+                    Roles.CreateRole(MiscHelpers.BackOfficeConstants.BackOfficeRole);
+                }
+
                 //create admin
                 var user = mRepo.GetMember(MiscHelpers.AdminConstants.AdminMail);
 
@@ -427,6 +433,8 @@ namespace Worki.Web
                 //add role
                 if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.AdminConstants.AdminRole))
                     Roles.AddUserToRole(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.AdminConstants.AdminRole);
+                if (!Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.BackOfficeConstants.BackOfficeRole))
+                    Roles.AddUserToRole(MiscHelpers.AdminConstants.AdminMail, MiscHelpers.BackOfficeConstants.BackOfficeRole);
                 //add member data
                 if (user.MemberMainData == null)
                 {

@@ -64,6 +64,11 @@ namespace Worki.Infrastructure.Helpers
 			public const string DummyPassword = "000000";
 		}
 
+        public static class BackOfficeConstants
+        {
+            public const string BackOfficeRole = "BackOfficeRole";
+        }
+
 		public static class AzureConstants
 		{
 			public const string DataConnectionString = "DataConnectionString";

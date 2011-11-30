@@ -16,7 +16,10 @@
         </div>
         <div>
             @Html.ActionLink(Worki.Resources.Views.Profile.ProfileString.MyProfile, MVC.Dashboard.Home.Index()) | 
-			@Html.ActionLink("bo", MVC.Backoffice.Home.Index()) | 
+            @if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
+            {
+                @Html.ActionLink("bo", MVC.Backoffice.Home.Index()) <span> | </span> 
+            }			
             @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Deconnect, MVC.Account.LogOff())
             @if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
             {
