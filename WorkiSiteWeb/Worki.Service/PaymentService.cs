@@ -327,11 +327,12 @@ namespace Worki.Service
 							status = status.ToUpper();
 							requestId = paypalRequest.Form["pay_key"];
 
-                            string ownerTransactionId = paypalRequest["transaction[0].id"];
-                            string eworkyTransactionId = paypalRequest["transaction[1].id"];
+                            string tr1 = paypalRequest["transaction[0].id"];
+                            string tr2 = paypalRequest["transaction[1].id"];
                             //Check it...
-                            decimal ownerAmount = decimal.Parse(paypalRequest["transaction[0].amount"], NumberStyles.Currency);
-                            decimal eworkyAmount = decimal.Parse(paypalRequest["transaction[1].amount"], NumberStyles.Currency);
+                            decimal tr1Amount, tr2Amount;
+                            decimal.TryParse(paypalRequest["transaction[0].amount"], NumberStyles.Currency, null, out tr1Amount);
+                            decimal.TryParse(paypalRequest["transaction[1].amount"], NumberStyles.Currency, null, out tr2Amount);
                             //string ownerAmountStr = paypalRequest["transaction[0].amount"].Split()[1];
                             //string eworkyAmountStr = paypalRequest["transaction[1].amount"].Split()[1];
                             //var ownerAmount = double.Parse(ownerAmountStr);
@@ -339,8 +340,8 @@ namespace Worki.Service
 
                             var payments = new List<PaymentItem>
                             {
-                                new PaymentItem{  Index = 0, Amount = ownerAmount, TransactionId = ownerTransactionId},
-                                new PaymentItem{  Index = 1, Amount = eworkyAmount, TransactionId = eworkyTransactionId},
+                                new PaymentItem{  Index = 0, Amount = tr1Amount, TransactionId = tr1},
+                                new PaymentItem{  Index = 1, Amount = tr2Amount, TransactionId = tr2},
                             };
 
                             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking);
