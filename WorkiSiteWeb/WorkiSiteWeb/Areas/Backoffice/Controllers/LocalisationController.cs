@@ -196,7 +196,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id && b.Unknown);
+				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
 				var model = new LocalisationBookingViewModel
 				{
 					Localisation = loc,
