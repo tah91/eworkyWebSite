@@ -29,7 +29,7 @@
 				@if (Model.NeedClientAction)
 				{
 		            <div class="buttonStd buttonBlue linkImg bookingStatusAction">
-						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Payment.PayWithPayPal(Model.Id))
+						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Booking.PayWithPayPal(Model.Id))
 					</div>
 				}
             </div>

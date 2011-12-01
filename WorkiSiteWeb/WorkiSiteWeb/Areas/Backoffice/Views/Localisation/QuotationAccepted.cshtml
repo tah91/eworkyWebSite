@@ -1,0 +1,26 @@
+﻿@model MemberQuotation
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Quoations)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Dashboard.Home.Index())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Home.Booking())} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Home.Quotation())}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+        @string.Format(Worki.Resources.Views.Booking.BookingString.BookPaid, Model.Offer.Localisation.Name)
+	</div>
+	<div class="clear"></div>
+</div>

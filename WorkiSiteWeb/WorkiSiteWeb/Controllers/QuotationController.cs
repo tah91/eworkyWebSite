@@ -11,6 +11,7 @@ using Worki.Infrastructure;
 using Postal;
 using System.Linq;
 using Worki.Memberships;
+using System.Collections.Generic;
 
 namespace Worki.Web.Controllers
 {
@@ -23,16 +24,19 @@ namespace Worki.Web.Controllers
 		ILogger _Logger;
 		IEmailService _EmailService;
         IMembershipService _MembershipService;
+        IPaymentService _PaymentService;
 
 		#endregion
 
 		public QuotationController(	ILogger logger,
 									IEmailService emailService,
-                                    IMembershipService membershipService)
+                                    IMembershipService membershipService,
+                                    IPaymentService paymentService)
 		{
 			_Logger = logger;
 			_EmailService = emailService;
             _MembershipService = membershipService;
+            _PaymentService = paymentService;
 		}
 
 		/// <summary>
@@ -102,6 +106,13 @@ namespace Worki.Web.Controllers
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 						member.MemberQuotations.Add(formData.MemberQuotation);
 
+                        formData.MemberQuotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Event = "Quotation Created",
+                            EventType = (int)MemberQuotationLog.QuotationEvent.Creation
+                        });
+
 						context.Commit();
 					}
 					catch (Exception ex)
@@ -131,6 +142,24 @@ namespace Worki.Web.Controllers
 					                                 formData.MemberQuotation.Surface,
 					                                 formData.MemberQuotation.Message);
 					teamMail.Send();
+
+                    //send mail to quoation member
+                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                    clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    clientMail.To = member.Email;
+                    clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+                    clientMail.ToName = member.MemberMainData.FirstName;
+                    clientMail.Content = "TODO";
+                    clientMail.Send();
+
+                    //send mail to localisation member
+                    dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    ownerMail.To = offer.Localisation.Member.Email;
+                    ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+                    ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
+                    ownerMail.Content = "TODO";
+                    ownerMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));
@@ -213,6 +242,48 @@ namespace Worki.Web.Controllers
 			return View(MVC.Quotation.Views.Create, formData);
 		}
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("paywithpaypal")]
+        public virtual ActionResult PayWithPayPal(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+
+            var booking = bRepo.Get(id);
+
+            string returnUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingAccepted(id));
+            string cancelUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingCancelled(id));
+            //string returnUrl = Url.ActionAbsolute(MVC.Payment.PayPalAccepted(memberBookingId));
+            //string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
+            string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
+
+            decimal ownerAmount, eworkyAmount;
+            var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking) as MemberBookingPaymentHandler;
+            paymentHandler.GetAmounts(booking.Price, out ownerAmount, out eworkyAmount);
+            var payments = new List<PaymentItem>
+            {
+                new PaymentItem{  Index = 0, Amount = ownerAmount, Email = "t.ifti_1322172136_biz@hotmail.fr"},
+                new PaymentItem{  Index = 1, Amount = eworkyAmount, Email = "t.ifti_1322171616_biz@hotmail.fr"},
+            };
+
+            string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,
+                                                                    returnUrl,
+                                                                    cancelUrl,
+                                                                    ipnUrl,
+                                                                    "",
+                                                                    payments,
+                                                                    paymentHandler);
+
+            if (paypalApprovalUrl != null)
+            {
+                return Redirect(paypalApprovalUrl);
+            }
+
+            TempData[MiscHelpers.TempDataConstants.Info] = "Une erreur emepeche le paymenent, veuillez nous contacter à support@eworky.com";
+
+            return RedirectToAction(MVC.Home.Index());
+        }
+
 		/// <summary>
 		/// GET Action result to handle quotation
 		/// </summary>
@@ -229,7 +300,6 @@ namespace Worki.Web.Controllers
 				var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 				var m = mRepo.Get(memberId);
 				var quotation = qRepo.Get(id);
-				quotation.Handled = true;
 
 				//send email
 

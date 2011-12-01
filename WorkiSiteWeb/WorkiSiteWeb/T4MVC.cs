@@ -821,6 +821,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PayWithPayPal() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult HandleBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.HandleBooking);
         }
@@ -850,6 +855,7 @@ namespace Worki.Web.Controllers {
             public readonly string Create = "Create";
             public readonly string Details = "Details";
             public readonly string Edit = "Edit";
+            public readonly string PayWithPayPal = "paywithpaypal";
             public readonly string HandleBooking = "HandleBooking";
             public readonly string ConfirmBooking = "ConfirmBooking";
             public readonly string RefuseBooking = "RefuseBooking";
@@ -902,6 +908,12 @@ namespace Worki.Web.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PayWithPayPal(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -1517,11 +1529,6 @@ namespace Worki.Web.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult PayWithPayPal() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public PaymentController Actions { get { return MVC.Payment; } }
@@ -1535,7 +1542,6 @@ namespace Worki.Web.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string PayWithPayPal = "paywithpaypal";
             public readonly string PayPalInstantNotification = "paypalnotification";
         }
 
@@ -1551,12 +1557,6 @@ namespace Worki.Web.Controllers {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class T4MVC_PaymentController: Worki.Web.Controllers.PaymentController {
         public T4MVC_PaymentController() : base(Dummy.Instance) { }
-
-        public override System.Web.Mvc.ActionResult PayWithPayPal(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
 
         public override System.Web.Mvc.ActionResult PayPalInstantNotification() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayPalInstantNotification);
@@ -1594,6 +1594,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PayWithPayPal() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult HandleBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.HandleBooking);
         }
@@ -1613,6 +1618,7 @@ namespace Worki.Web.Controllers {
             public readonly string Create = "Create";
             public readonly string Details = "Details";
             public readonly string Edit = "Edit";
+            public readonly string PayWithPayPal = "paywithpaypal";
             public readonly string HandleBooking = "HandleBooking";
         }
 
@@ -1664,6 +1670,12 @@ namespace Worki.Web.Controllers {
             callInfo.RouteValueDictionary.Add("memberId", memberId);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PayWithPayPal(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -2996,6 +3008,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult QuotationDetail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.QuotationDetail);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult OfferQuotation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.OfferQuotation);
         }
@@ -3021,6 +3038,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string ConfirmBooking = "ConfirmBooking";
             public readonly string RefuseBooking = "RefuseBooking";
             public readonly string Quotation = "Quotation";
+            public readonly string QuotationDetail = "QuotationDetail";
             public readonly string OfferQuotation = "OfferQuotation";
         }
 
@@ -3042,6 +3060,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string OfferIndex = "~/Areas/Backoffice/Views/Localisation/OfferIndex.cshtml";
             public readonly string OfferQuotation = "~/Areas/Backoffice/Views/Localisation/OfferQuotation.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Localisation/Quotation.cshtml";
+            public readonly string QuotationDetail = "~/Areas/Backoffice/Views/Localisation/QuotationDetail.cshtml";
             public readonly string RefuseBooking = "~/Areas/Backoffice/Views/Localisation/RefuseBooking.cshtml";
         }
     }
@@ -3126,6 +3145,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult QuotationDetail(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.QuotationDetail);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

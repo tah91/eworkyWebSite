@@ -276,6 +276,7 @@
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\PaymentHandler.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
@@ -665,6 +666,9 @@
     <Content Include="Areas\Dashboard\Views\Shared\_LocalisationItem.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_BookingList.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_OfferDropDown.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\QuotationDetail.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\QuotationCancelled.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\QuotationAccepted.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

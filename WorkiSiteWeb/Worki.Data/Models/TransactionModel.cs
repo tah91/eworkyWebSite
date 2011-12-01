@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Worki.Data.Models
 {
-    public partial class Transaction
+    public class TransactionConstants
     {
         public enum Status
         {
@@ -19,5 +19,10 @@ namespace Worki.Data.Models
         {
             PayPal
         }
+    }
+
+    public partial class Transaction
+    {
+
     }
 }

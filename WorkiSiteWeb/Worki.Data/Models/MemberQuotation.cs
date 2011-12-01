@@ -14,6 +14,17 @@ namespace Worki.Data.Models
     
     public partial class MemberQuotation
     {
+        public MemberQuotation()
+        {
+            this.MemberQuotationLogs = new HashSet<MemberQuotationLog>();
+            this.MemberQuotationTransactions = new HashSet<MemberQuotationTransaction>();
+    		OnInitialized();
+        }
+    
+    	// Custom initialisation inside constructor
+    	// Be aware this is called before loading data from store
+    	partial void OnInitialized();
+    
         // Primitive properties
     
         public int Id { get; set; }
@@ -22,14 +33,16 @@ namespace Worki.Data.Models
         public decimal Surface { get; set; }
         public string Message { get; set; }
         public decimal Price { get; set; }
-        public bool Handled { get; set; }
-        public bool Confirmed { get; set; }
-        public bool Refused { get; set; }
+        public int StatusId { get; set; }
+        public string Response { get; set; }
+        public bool VisitNeeded { get; set; }
     
         // Navigation properties
     
         public virtual Member Member { get; set; }
         public virtual Offer Offer { get; set; }
+        public virtual ICollection<MemberQuotationLog> MemberQuotationLogs { get; set; }
+        public virtual ICollection<MemberQuotationTransaction> MemberQuotationTransactions { get; set; }
     
     }
 }

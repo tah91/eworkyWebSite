@@ -96,6 +96,12 @@
     <Compile Include="Models\MemberBookingLog.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MemberQuotationLog.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberQuotationTransaction.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\QuotationModel.cs" />
     <Compile Include="Models\FeatureModel.cs" />

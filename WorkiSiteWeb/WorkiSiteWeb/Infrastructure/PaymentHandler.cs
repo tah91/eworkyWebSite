@@ -11,9 +11,11 @@ using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
 using System.Globalization;
+using Postal;
+using Worki.Infrastructure.Helpers;
 
 
-namespace Worki.Service
+namespace Worki.Web
 {
     public class MemberBookingPaymentHandler : IPaymentHandler
     {
@@ -52,8 +54,8 @@ namespace Worki.Service
 						ReceiverId = booking.Offer.Localisation.OwnerID.Value,
 						Amount = (decimal)receiver.Amount,
 						CreatedDate = DateTime.UtcNow,
-						PaymentType = (int)Transaction.Payment.PayPal,
-						StatusId = (int)Transaction.Status.Created,
+                        PaymentType = (int)TransactionConstants.Payment.PayPal,
+						StatusId = (int)TransactionConstants.Status.Created,
 						RequestId = payKey,
 					});
 
@@ -62,8 +64,8 @@ namespace Worki.Service
 						ReceiverId = mRepo.GetAdminId(),
 						Amount = (decimal)eworky.Amount,
 						CreatedDate = DateTime.UtcNow,
-						PaymentType = (int)Transaction.Payment.PayPal,
-						StatusId = (int)Transaction.Status.Created,
+                        PaymentType = (int)TransactionConstants.Payment.PayPal,
+                        StatusId = (int)TransactionConstants.Status.Created,
 						RequestId = payKey,
 					});
 
@@ -127,11 +129,11 @@ namespace Worki.Service
                 }
 
                 ownerTransaction.UpdatedDate = DateTime.UtcNow;
-                ownerTransaction.StatusId = (int)Transaction.Status.Completed;
+                ownerTransaction.StatusId = (int)TransactionConstants.Status.Completed;
                 ownerTransaction.TransactionId = owner.TransactionId;
 
                 eworkyTransaction.UpdatedDate = DateTime.UtcNow;
-                eworkyTransaction.StatusId = (int)Transaction.Status.Completed;
+                eworkyTransaction.StatusId = (int)TransactionConstants.Status.Completed;
                 eworkyTransaction.TransactionId = eworky.TransactionId;
 
                 booking.MemberBookingLogs.Add(new MemberBookingLog
@@ -146,6 +148,62 @@ namespace Worki.Service
             {
                 context.Complete();
                 _Logger.Error("CompleteTransactions", ex);
+            }
+        }
+
+        public void PaymentCompleted(string payKey)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
+
+            var transaction = tRepo.Get(trx => trx.RequestId == payKey);
+            var booking = transaction.MemberBooking;
+            var offer = booking.Offer;
+            var localisation = offer.Localisation;
+
+            //send mail to owner 
+            dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+            ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+            ownerMail.To = booking.Owner.Email;
+            ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+            ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
+            ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
+                                            Localisation.GetOfferType(offer.Type),
+                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+                                            localisation.Name,
+                                            localisation.Adress);
+            ownerMail.Send();
+
+            //send mail to client 
+            dynamic clientMail = new Email(MVC.Emails.Views.Email);
+            clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+            clientMail.To = booking.Client.Email;
+            clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+            clientMail.ToName = booking.Client.MemberMainData.FirstName;
+            clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementClient,
+                                            Localisation.GetOfferType(offer.Type),
+                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+                                            localisation.Name,
+                                            localisation.Adress);
+            clientMail.Send();
+
+            try
+            {
+                booking.MemberBookingLogs.Add(new MemberBookingLog
+                {
+                    CreatedDate = DateTime.UtcNow,
+                    Event = "Payment completed",
+                    EventType = (int)MemberBookingLog.BookingEvent.Payment
+                });
+
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("PaymentCompleted", ex);
             }
         }
 

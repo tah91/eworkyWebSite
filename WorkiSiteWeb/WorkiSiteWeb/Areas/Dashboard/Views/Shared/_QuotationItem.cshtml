@@ -1,5 +1,11 @@
 ﻿@model MemberQuotation
 
+@{
+	var statusText = "";
+	var color = "";
+    Model.GetStatusForClient(out statusText, out color);
+}
+
 <li class="bookingItem">
     <div class="contentBlock">
         <div class="bookingGallery float-left">
@@ -12,16 +18,23 @@
         </div>
         <div class="bookingStatus float-left">
             <div class="bookingStatusContent">
-                <div class="bookingStatusDesc">
-                    @Worki.Resources.Views.Booking.BookingString.WaitingForPayement
-                </div>
-                <div class="buttonStd buttonBlue linkImg bookingStatusAction">
-                    <a href=#>@Worki.Resources.Views.Booking.BookingString.Pay</a>
-                </div>
+				@if (!string.IsNullOrEmpty(statusText))
+				{
+		            <div class="bookingStatusDesc">
+						@statusText
+					</div>
+				}
+				@if (Model.NeedClientAction)
+				{
+
+				}
             </div>
         </div>
         <div class="bookingLinks float-right blue">
-            <a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Booking.BookingString.SeeLocSheet</a>
+            <ul>
+                <li>@Html.ActionLink("Details", MVC.Dashboard.Home.QuotationDetail(Model.Id))</li>
+                <li><a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Booking.BookingString.SeeLocSheet</a></li>
+            </ul>
         </div>
         <div class="clear">
         </div>

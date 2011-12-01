@@ -516,6 +516,88 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 		}
 
+        /// <summary>
+        /// Get action method to show quotation detail
+        /// </summary>
+        /// <returns>View containing the quotation</returns>
+        public virtual ActionResult QuotationDetail(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            try
+            {
+                var member = mRepo.Get(memberId);
+                Member.Validate(member);
+                var quotation = qRepo.Get(id);
+
+                return View(quotation);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("QuotationDetail", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
+
+        /// <summary>
+        /// Get action method to show quotation is paid
+        /// </summary>
+        /// <param name="id">member quotation id</param>
+        /// <returns>View containing the quotation</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult QuotationAccepted(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            try
+            {
+                var quotation = qRepo.Get(id);
+                return View(quotation);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("QuotationAccepted", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
+
+        /// <summary>
+        /// Get action method to show quotation is canceled
+        /// </summary>
+        /// <param name="id">member quotation id</param>
+        /// <returns>View containing the quotation</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult QuotationCancelled(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            try
+            {
+                var quotation = qRepo.Get(id);
+                quotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                {
+                    CreatedDate = DateTime.UtcNow,
+                    Event = "Quotation Payment Cancelled"
+                });
+
+                context.Commit();
+                return View(quotation);
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("QuotationCancelled", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
+
 		/// <summary>
 		/// Get action method to show quotation of the owner, for a given localisation and offer
 		/// </summary>

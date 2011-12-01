@@ -54,7 +54,6 @@ namespace Worki.Data.Models
 
 		#region Booking status
 
-
 		/// <summary>
 		/// Created but not handled by owner yet
 		/// </summary>
@@ -77,7 +76,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Waiting
 		{
-			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)Transaction.Status.Completed).Count() == 0; }
+			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)TransactionConstants.Status.Completed).Count() == 0; }
 		}
 
 
@@ -86,7 +85,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Paid
 		{
-			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)Transaction.Status.Completed).Count() != 0; }
+			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)TransactionConstants.Status.Completed).Count() != 0; }
 		}
 
 		/// <summary>
