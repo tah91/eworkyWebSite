@@ -70,6 +70,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande de devis pour {0}.
+        /// </summary>
+        public static string AskingQuotation {
+            get {
+                return ResourceManager.GetString("AskingQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demande de devis.
         /// </summary>
         public static string AskQuotation {
@@ -111,6 +120,15 @@ namespace Worki.Resources.Views.Booking {
         public static string BookIt {
             get {
                 return ResourceManager.GetString("BookIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La réservation pour le lieu {0} à été payée !.
+        /// </summary>
+        public static string BookPaid {
+            get {
+                return ResourceManager.GetString("BookPaid", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace Worki.Resources.Views.Booking {
         public static string Pay {
             get {
                 return ResourceManager.GetString("Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le payment n&apos;a pas été pris en compte !.
+        /// </summary>
+        public static string PayFail {
+            get {
+                return ResourceManager.GetString("PayFail", resourceCulture);
             }
         }
         

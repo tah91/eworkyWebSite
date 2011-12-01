@@ -38,10 +38,10 @@
             }
             else
             {
-            <div class="emptyContent italic">
-                @Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(o.Id)) })
-                @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
-            </div>
+                <div class="emptyContent italic">
+                    @Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(o.Id)) })
+                    @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations())))
+                </div>
             }
         </div>
 	</div>

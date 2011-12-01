@@ -35,9 +35,11 @@
             }
             else
             {
-            <div class="contentBlock italic">
-                @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations())))
-            </div>
+                <div class="contentBlock">
+                    <div class="emptyContent italic">
+                        @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations())))
+                    </div>
+                </div>
             }
 	</div>
 	<div class="clear"></div>

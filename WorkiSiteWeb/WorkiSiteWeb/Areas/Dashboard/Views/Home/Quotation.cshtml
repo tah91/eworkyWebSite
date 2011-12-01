@@ -34,8 +34,10 @@
         }
         else
         {
-            <div class="contentBlock italic">
-                @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Historic, MVC.Dashboard.Historic.Quotation())))
+            <div class="contentBlock">
+                <div class="emptyContent italic">
+                    @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Historic, MVC.Dashboard.Historic.Quotation())))
+                </div>
             </div>
         }
 	</div>
