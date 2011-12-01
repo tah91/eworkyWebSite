@@ -30,31 +30,39 @@
                         @Html.LabelFor(model => model.Name)
                     </td>
                     <td>
-                        : @Html.DisplayFor(model => model.Name)
+                        <b>@Html.DisplayFor(model => model.Name)</b>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(model => model.IsOffline)
+                        Status
                     </td>
                     <td>
-                        : @Html.DisplayFor(model => model.IsOffline)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Price)
-                    </td>
-                    <td>
-                        : @Html.DisplayFor(model => model.Price)
+                        <b>@(Model.IsOffline ? "Hors-ligne": "En ligne")</b>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(model => model.Period)
+                        Tarif
                     </td>
                     <td>
-                        : @Offer.GetPaymentPeriodType(Model.Period)
+                        <b>@Model.Price @Offer.GetCurrencyEnumType(Model.Currency)</b> par <b>@Offer.GetPaymentPeriodType(Model.Period)</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.IsBookable)
+                    </td>
+                    <td>
+                        <b>@(Model.IsBookable ? "Oui" : "Non")</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.PaymentType)
+                    </td>
+                    <td>
+                        <b>@Offer.GetPaymentTypeEnumType(Model.PaymentType)</b>
                     </td>
                 </tr>
             </table>
