@@ -261,7 +261,7 @@ namespace Worki.Data.Models
 			if (fetchedCount < count)
 			{
 				var extra = (from loc in _Context.Localisations
-							 where loc.OwnerID == memberId && !ids.Contains(loc.ID)
+							 where loc.OwnerID == memberId && !ids.Contains(loc.ID) && !Localisation.FreeLocalisationTypes.Contains(loc.TypeValue)
 							 select loc.ID).Take(count - fetchedCount).ToList();
 				ids = ids.Concat(extra).ToList();
 			}

@@ -257,10 +257,10 @@ namespace Worki.Web.Controllers
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int id)
         {
-            var context = ModelFactory.GetUnitOfWork();
-            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 
-            var booking = bRepo.Get(id);
+			var booking = bRepo.Get(id);
 
             string returnUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingAccepted(id));
             string cancelUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingCancelled(id));

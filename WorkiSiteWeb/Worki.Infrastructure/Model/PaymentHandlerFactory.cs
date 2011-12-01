@@ -18,7 +18,8 @@ namespace Worki.Infrastructure.Repository
         public enum HandlerType
         {
             Booking,
-			Quotation
+			Quotation,
+			Unknown
         }
 
         static IKernel _Kernel;
@@ -34,7 +35,7 @@ namespace Worki.Infrastructure.Repository
             {
 				return metadata.Has(Constants.HandlerTypeString) && metadata.Get<HandlerType>(Constants.HandlerTypeString) == type;
             };
-            return (IPaymentHandler)_Kernel.Get(typeof(IPaymentHandler));
+			return (IPaymentHandler)_Kernel.Get(typeof(IPaymentHandler), func);
 		}
 	}
 

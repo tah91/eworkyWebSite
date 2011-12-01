@@ -3013,6 +3013,16 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult QuotationAccepted() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.QuotationAccepted);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult QuotationCancelled() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.QuotationCancelled);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult OfferQuotation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.OfferQuotation);
         }
@@ -3039,6 +3049,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string RefuseBooking = "RefuseBooking";
             public readonly string Quotation = "Quotation";
             public readonly string QuotationDetail = "QuotationDetail";
+            public readonly string QuotationAccepted = "QuotationAccepted";
+            public readonly string QuotationCancelled = "QuotationCancelled";
             public readonly string OfferQuotation = "OfferQuotation";
         }
 
@@ -3060,6 +3072,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string OfferIndex = "~/Areas/Backoffice/Views/Localisation/OfferIndex.cshtml";
             public readonly string OfferQuotation = "~/Areas/Backoffice/Views/Localisation/OfferQuotation.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Localisation/Quotation.cshtml";
+            public readonly string QuotationAccepted = "~/Areas/Backoffice/Views/Localisation/QuotationAccepted.cshtml";
+            public readonly string QuotationCancelled = "~/Areas/Backoffice/Views/Localisation/QuotationCancelled.cshtml";
             public readonly string QuotationDetail = "~/Areas/Backoffice/Views/Localisation/QuotationDetail.cshtml";
             public readonly string RefuseBooking = "~/Areas/Backoffice/Views/Localisation/RefuseBooking.cshtml";
         }
@@ -3150,6 +3164,18 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         public override System.Web.Mvc.ActionResult QuotationDetail(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.QuotationDetail);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult QuotationAccepted(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.QuotationAccepted);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult QuotationCancelled(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.QuotationCancelled);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }

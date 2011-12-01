@@ -344,7 +344,12 @@ namespace Worki.Service
                                 new PaymentItem{  Index = 1, Amount = tr2Amount, TransactionId = tr2},
                             };
 
-                            var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking);
+							var context = ModelFactory.GetUnitOfWork();
+							var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
+
+							var type = tRepo.GetHandlerType(requestId);
+							var paymentHandler = PaymentHandlerFactory.GetHandler(type);
+
 							switch (status)
 							{
 								case "COMPLETED":

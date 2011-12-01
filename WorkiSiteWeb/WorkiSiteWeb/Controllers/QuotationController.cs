@@ -101,6 +101,7 @@ namespace Worki.Web.Controllers
 					{
 						formData.MemberQuotation.MemberId = memberId;
 						formData.MemberQuotation.OfferId = id;
+						formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Unknown;
 
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
@@ -246,24 +247,17 @@ namespace Worki.Web.Controllers
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int id)
         {
-            var context = ModelFactory.GetUnitOfWork();
-            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-
-            var booking = bRepo.Get(id);
-
-            string returnUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingAccepted(id));
-            string cancelUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingCancelled(id));
+            string returnUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationAccepted(id));
+			string cancelUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationCancelled(id));
             //string returnUrl = Url.ActionAbsolute(MVC.Payment.PayPalAccepted(memberBookingId));
             //string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
-            decimal ownerAmount, eworkyAmount;
-            var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking) as MemberBookingPaymentHandler;
-            paymentHandler.GetAmounts(booking.Price, out ownerAmount, out eworkyAmount);
+            decimal eworkyAmount = 5;
+            var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Quotation) as MemberQuotationPaymentHandler;
             var payments = new List<PaymentItem>
             {
-                new PaymentItem{  Index = 0, Amount = ownerAmount, Email = "t.ifti_1322172136_biz@hotmail.fr"},
-                new PaymentItem{  Index = 1, Amount = eworkyAmount, Email = "t.ifti_1322171616_biz@hotmail.fr"},
+                new PaymentItem{  Index = 0, Amount = eworkyAmount, Email = "t.ifti_1322171616_biz@hotmail.fr"},
             };
 
             string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,

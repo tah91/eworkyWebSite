@@ -9,7 +9,7 @@ namespace Worki.Data.Models
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {
-        
+		PaymentHandlerFactory.HandlerType GetHandlerType(string requestId);
     }
 
     public class TransactionRepository : RepositoryBase<Transaction>, ITransactionRepository
@@ -18,6 +18,18 @@ namespace Worki.Data.Models
             : base(logger, context)
         {
         }
+
+		public PaymentHandlerFactory.HandlerType GetHandlerType(string requestId)
+		{
+			var booking = _Context.Transactions.Where(t => t.RequestId == requestId).Count();
+			if (booking != 0)
+				return PaymentHandlerFactory.HandlerType.Booking;
+			var quotation = _Context.MemberQuotationTransactions.Where(t => t.RequestId == requestId).Count();
+			if (quotation != 0)
+				return PaymentHandlerFactory.HandlerType.Quotation;
+
+			return PaymentHandlerFactory.HandlerType.Unknown;
+		}
     }
 
 	public interface IQuotationTransactionRepository : IRepository<MemberQuotationTransaction>

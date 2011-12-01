@@ -73,7 +73,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				Member.Validate(member);
 				var model = new PagingList<Localisation>
 				{
-					List = member.Localisations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
+					List = member.Localisations.Where(loc => !Localisation.FreeLocalisationTypes.Contains(loc.TypeValue)).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
 					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.Localisations.Count }
 				};
 				return View(model);
