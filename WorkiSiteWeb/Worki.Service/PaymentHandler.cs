@@ -26,19 +26,11 @@ namespace Worki.Service
 
         public class Constants
 		{
-			public static double BookingCom = 0.10;
+            public static decimal BookingCom = 0.10M;
             public const string AmountIncorrectError = "Amount incorrect, RequestId : {0}, TransactionId : {1}, Amount : {2}, ExpectedAmount {3}";
 		}
 
-        /// <summary>
-		/// Create 2 transactions for the memberbooking, called when make the paypal request
-		/// </summary>
-		/// <param name="memberBookingId">memberbooking id</param>
-		/// <param name="payKey">paypal request id</param>
-		/// <param name="receiverAmount">ammount for the owner</param>
-		/// <param name="workiFee">ammount for eworky</param>
-		/// <returns>true if transactions are created</returns>
-        public bool  CreateTransactions(int memberBookingId, string payKey, double receiverAmount, double workiFee)
+        public bool  CreateTransactions(int memberBookingId, string payKey, IEnumerable<PaymentItem> payments)
         {
  	        bool isCreated = false;
 
@@ -50,12 +42,15 @@ namespace Worki.Service
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 MemberBooking booking = bRepo.GetBooking(memberBookingId);
 
-                if (booking != null)
+                if (booking != null && payments.Count()==2)
                 {
+                    var receiver = payments.Where(p=>p.Index==0).FirstOrDefault();
+                    var eworky = payments.Where(p=>p.Index==1).FirstOrDefault();
+
 					booking.Transactions.Add(new Transaction
 					{
 						ReceiverId = booking.Offer.Localisation.OwnerID.Value,
-						Amount = (decimal)receiverAmount,
+						Amount = (decimal)receiver.Amount,
 						CreatedDate = DateTime.UtcNow,
 						PaymentType = (int)Transaction.Payment.PayPal,
 						StatusId = (int)Transaction.Status.Created,
@@ -65,7 +60,7 @@ namespace Worki.Service
 					booking.Transactions.Add(new Transaction
 					{
 						ReceiverId = mRepo.GetAdminId(),
-						Amount = (decimal)workiFee,
+						Amount = (decimal)eworky.Amount,
 						CreatedDate = DateTime.UtcNow,
 						PaymentType = (int)Transaction.Payment.PayPal,
 						StatusId = (int)Transaction.Status.Created,
@@ -92,62 +87,65 @@ namespace Worki.Service
             return isCreated;
         }
 
-        /// <summary>
-		/// Complete succelfull transactions by marking them as completed
-		/// </summary>
-		/// <param name="payKey">paypal request id to fetch corresponding transactions</param>
-		/// <param name="ownerTransactionId">paypal transaction id to set</param>
-		/// <param name="eworkyTransactionId">paypal transaction id to set</param>
-		/// <param name="ownerAmount">owner amount from request</param>
-		/// <param name="eworkyAmount">eworky amount from request</param>
-        public void  CompleteTransactions(string payKey, string ownerTransactionId, string eworkyTransactionId, double ownerAmount, double eworkyAmount)
+        public void CompleteTransactions(string payKey, IEnumerable<PaymentItem> payments)
         {
- 	                    var context = ModelFactory.GetUnitOfWork();
+            var context = ModelFactory.GetUnitOfWork();
             var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var transactions = tRepo.GetMany(trx => trx.RequestId == payKey);
-
-            if (transactions.Count == 0)
-				return;
-
-			bool alreadyProcessed = transactions.Where(t => t.UpdatedDate == null).Count() == 0;
-            if (alreadyProcessed)
-                return;
-
-			var booking = transactions[0].MemberBooking;
 
             try
             {
-				double storedOwnerAmount,storedEworkyAmount;
-				GetAmounts(booking.Price, out storedOwnerAmount, out storedEworkyAmount);
-				if (storedOwnerAmount != ownerAmount)
-				{
-					throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, ownerTransactionId, ownerAmount, storedOwnerAmount));
-				}
-				if (storedEworkyAmount != eworkyAmount)
-				{
-					throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, eworkyTransactionId, eworkyAmount, storedEworkyAmount));
-				}
-
-				var adminId = mRepo.GetAdminId();
-                foreach (var transaction in transactions)
+                if (transactions.Count != 2)
                 {
-                    transaction.UpdatedDate = DateTime.UtcNow;
-                    transaction.StatusId = (int)Transaction.Status.Completed;
-					transaction.TransactionId = transaction.ReceiverId == adminId ? eworkyTransactionId : ownerTransactionId;
+                    throw new Exception("Transaction count (" + transactions.Count + ") differ from 2");
                 }
 
-				booking.MemberBookingLogs.Add(new MemberBookingLog
-				{
-					CreatedDate = DateTime.UtcNow,
-					Event = "Paypal transaction completed",
-				});
+                bool alreadyProcessed = transactions.Where(t => t.UpdatedDate == null).Count() == 0;
+                if (alreadyProcessed)
+                {
+                    throw new Exception("Transaction (Paypal ID " + payKey + ") already processed");
+                }
+
+                var booking = transactions[0].MemberBooking;
+                var ownerId = booking.Offer.Localisation.OwnerID.Value;
+                var eworkyId = mRepo.GetAdminId();
+
+                var owner = payments.Where(p => p.Index == 0).FirstOrDefault();
+                var eworky = payments.Where(p => p.Index == 1).FirstOrDefault();
+                var ownerTransaction = transactions.Where(t => t.ReceiverId == ownerId).FirstOrDefault();
+                var eworkyTransaction = transactions.Where(t => t.ReceiverId == eworkyId).FirstOrDefault();
+
+                //check payment amounts
+                if (ownerTransaction.Amount != owner.Amount)
+                {
+                    throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, owner.TransactionId, owner.Amount, ownerTransaction.Amount));
+                }
+                if (eworkyTransaction.Amount != eworky.Amount)
+                {
+                    throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, eworky.TransactionId, eworky.Amount, eworkyTransaction.Amount));
+                }
+
+                ownerTransaction.UpdatedDate = DateTime.UtcNow;
+                ownerTransaction.StatusId = (int)Transaction.Status.Completed;
+                ownerTransaction.TransactionId = owner.TransactionId;
+
+                eworkyTransaction.UpdatedDate = DateTime.UtcNow;
+                eworkyTransaction.StatusId = (int)Transaction.Status.Completed;
+                eworkyTransaction.TransactionId = eworky.TransactionId;
+
+                booking.MemberBookingLogs.Add(new MemberBookingLog
+                {
+                    CreatedDate = DateTime.UtcNow,
+                    Event = "Paypal transaction completed",
+                });
+
                 context.Commit();
             }
             catch (Exception ex)
             {
                 context.Complete();
-				_Logger.Error("CompleteTransactions", ex);
+                _Logger.Error("CompleteTransactions", ex);
             }
         }
 
@@ -157,7 +155,7 @@ namespace Worki.Service
 		/// <param name="totalAmount">total amount</param>
 		/// <param name="ownerAmount">amount for owner</param>
 		/// <param name="eworkyAmount">amount for eworky</param>
-        public void GetAmounts(double totalAmount, out double ownerAmount, out double eworkyAmount)
+        public void GetAmounts(decimal totalAmount, out decimal ownerAmount, out decimal eworkyAmount)
 		{
 			ownerAmount = (1 - Constants.BookingCom) * totalAmount;
 			eworkyAmount = Constants.BookingCom * totalAmount;

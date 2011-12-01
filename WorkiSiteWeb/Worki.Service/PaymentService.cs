@@ -20,16 +20,15 @@ namespace Worki.Service
 		/// <summary>
 		/// Send a payment request to Paypals API
 		/// </summary>
-		/// <param name="receiverAmount">payment for the owner</param>
-		/// <param name="workiFee">Worki fee for this transaction</param>
+        /// <param name="id">id of the eworky product</param>
 		/// <param name="returnUrl">Return url if the payment is accepted by Paypal</param>
 		/// <param name="ipnUrl">Return url if the payment is accepted by Paypal</param>
 		/// <param name="cancelUrl">Cancel url if the payment is cancelled by the customer</param>
 		/// <param name="senderEmail">The buyer email</param>
-		/// <param name="receiverEmail">The receiver email</param>
-		/// <param name="workiAccountEmail">Worki's Paypal account email</param>
+        /// <param name="payments">list of payments</param>
+        /// <param name="paymentHandler">payment handler to create transactions</param>
 		/// <returns>The customer Paypal approval url, null if an error occurred</returns>
-        string PayWithPayPal(int memberBookingId, double receiverAmount, double workiFee, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, string receiverEmail, string workiAccountEmail, IPaymentHandler paymentHandler);
+        string PayWithPayPal(int id, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, IEnumerable<PaymentItem> payments, IPaymentHandler paymentHandler);
 
 		/// <summary>
 		/// Checks if the provided IPN request is valid and really comes from PayPal. If all's OK process the message
@@ -193,15 +192,12 @@ namespace Worki.Service
 
         #endregion
 
-        public string PayWithPayPal(int memberBookingId, 
-                                    double receiverAmount, 
-                                    double workiFee, 
+        public string PayWithPayPal(int id, 
                                     string returnUrl, 
                                     string cancelUrl, 
                                     string ipnUrl, 
                                     string senderEmail, 
-                                    string receiverEmail, 
-                                    string workiAccountEmail,
+                                    IEnumerable<PaymentItem> payments,
                                     IPaymentHandler paymentHandler)
         {
             HttpWebRequest request;
@@ -221,14 +217,12 @@ namespace Worki.Service
                 postData += "&cancelUrl=" + cancelUrl;
                 postData += "&ipnNotificationUrl=" + ipnUrl;
                 postData += "&currencyCode=" + "EUR";
-                postData += "&receiverList.receiver(0).amount=" + receiverAmount.ToString("F");
-                postData += "&receiverList.receiver(0).email=" + receiverEmail;
-                postData += "&feesPayer=" + PayPalConstants.FeePayer.EachReceiver;   
-              
-                if (workiFee > 0)
+                postData += "&feesPayer=" + PayPalConstants.FeePayer.EachReceiver;
+
+                foreach (var payment in payments)
                 {
-                    postData += "&receiverList.receiver(1).amount=" + workiFee.ToString("F");
-                    postData += "&receiverList.receiver(1).email=" + workiAccountEmail;
+                    postData += "&receiverList.receiver(" + payment.Index.ToString() + ").amount=" + payment.Amount.ToString("F");
+                    postData += "&receiverList.receiver(" + payment.Index.ToString() + ").email=" + payment.Email;
                 }
 
                 postData += "&requestEnvelope.errorLanguage=" + "en_US";
@@ -267,7 +261,7 @@ namespace Worki.Service
 
                             if (ackMessage.ToLower() == "success")
                             {
-                                if (paymentHandler.CreateTransactions(memberBookingId, payKey, receiverAmount, workiFee))
+                                if (paymentHandler.CreateTransactions(id, payKey, payments))
                                 {
                                     resultUrl = PayPalConstants.ApprovalUrl + payKey;
                                 }
@@ -319,7 +313,6 @@ namespace Worki.Service
 			string strResponse = ValidateIPNRequest(paypalRequest);
 			status = string.Empty;
 			requestId = string.Empty;
-            var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking);
 
 			try
 			{
@@ -334,20 +327,27 @@ namespace Worki.Service
 							status = status.ToUpper();
 							requestId = paypalRequest.Form["pay_key"];
 
-							string ownerTransactionId = paypalRequest["transaction[0].id"];
-							string eworkyTransactionId = paypalRequest["transaction[1].id"];
+                            string ownerTransactionId = paypalRequest["transaction[0].id"];
+                            string eworkyTransactionId = paypalRequest["transaction[1].id"];
                             //Check it...
-                            double ownerAmount = double.Parse(paypalRequest["transaction[0].amount"], NumberStyles.Currency);
-                            double eworkyAmount = double.Parse(paypalRequest["transaction[1].amount"], NumberStyles.Currency);
+                            decimal ownerAmount = decimal.Parse(paypalRequest["transaction[0].amount"], NumberStyles.Currency);
+                            decimal eworkyAmount = decimal.Parse(paypalRequest["transaction[1].amount"], NumberStyles.Currency);
                             //string ownerAmountStr = paypalRequest["transaction[0].amount"].Split()[1];
                             //string eworkyAmountStr = paypalRequest["transaction[1].amount"].Split()[1];
                             //var ownerAmount = double.Parse(ownerAmountStr);
                             //var eworkyAmount = double.Parse(eworkyAmountStr);
 
+                            var payments = new List<PaymentItem>
+                            {
+                                new PaymentItem{  Index = 0, Amount = ownerAmount, TransactionId = ownerTransactionId},
+                                new PaymentItem{  Index = 1, Amount = eworkyAmount, TransactionId = eworkyTransactionId},
+                            };
+
+                            var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking);
 							switch (status)
 							{
 								case "COMPLETED":
-                                    paymentHandler.CompleteTransactions(requestId, ownerTransactionId, eworkyTransactionId, ownerAmount, eworkyAmount);
+                                    paymentHandler.CompleteTransactions(requestId, payments);
 									break;
 								case "INCOMPLETE":
 								case "ERROR":

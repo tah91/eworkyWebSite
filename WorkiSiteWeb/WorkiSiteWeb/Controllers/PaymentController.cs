@@ -44,18 +44,21 @@ namespace Worki.Web.Controllers
 			//string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
-			double ownerAmount, eworkyAmount;
+			decimal ownerAmount, eworkyAmount;
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking) as MemberBookingPaymentHandler;
             paymentHandler.GetAmounts(booking.Price, out ownerAmount, out eworkyAmount);
+            var payments = new List<PaymentItem>
+            {
+                new PaymentItem{  Index = 0, Amount = ownerAmount, Email = "t.ifti_1322172136_biz@hotmail.fr"},
+                new PaymentItem{  Index = 1, Amount = eworkyAmount, Email = "t.ifti_1322171616_biz@hotmail.fr"},
+            };
+
             string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,
-																	ownerAmount,
-																	eworkyAmount,
 																	returnUrl, 
 																	cancelUrl, 
 																	ipnUrl,
 																	"",
-																	"t.ifti_1322172136_biz@hotmail.fr",
-																	"t.ifti_1322171616_biz@hotmail.fr",
+                                                                    payments,
                                                                     paymentHandler);
 
             if (paypalApprovalUrl != null)
