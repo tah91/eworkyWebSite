@@ -38,7 +38,12 @@ namespace Logging
         {
             if (_logger.IsErrorEnabled)
             {
-				_logger.Error(AddDebugInfo(message + "[" + e.Message + "]" + " at [" + e.StackTrace + "]"));
+                var toLog = message + "[" + e.Message + "]" + " at [" + e.StackTrace + "]";
+                if (e.InnerException != null)
+                {
+                    toLog += " inner : " + "[" + e.InnerException.Message + "]" + " at [" + e.InnerException.StackTrace + "]";
+                }
+                _logger.Error(AddDebugInfo(toLog));
             }
         }
 
