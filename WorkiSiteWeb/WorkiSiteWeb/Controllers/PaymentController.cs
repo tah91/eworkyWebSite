@@ -45,7 +45,8 @@ namespace Worki.Web.Controllers
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
 			double ownerAmount, eworkyAmount;
-			_PaymentService.GetAmounts(booking.Price, out ownerAmount, out eworkyAmount);
+            var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking) as MemberBookingPaymentHandler;
+            paymentHandler.GetAmounts(booking.Price, out ownerAmount, out eworkyAmount);
             string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,
 																	ownerAmount,
 																	eworkyAmount,
@@ -54,7 +55,8 @@ namespace Worki.Web.Controllers
 																	ipnUrl,
 																	"",
 																	"t.ifti_1322172136_biz@hotmail.fr",
-																	"t.ifti_1322171616_biz@hotmail.fr");
+																	"t.ifti_1322171616_biz@hotmail.fr",
+                                                                    paymentHandler);
 
             if (paypalApprovalUrl != null)
             {

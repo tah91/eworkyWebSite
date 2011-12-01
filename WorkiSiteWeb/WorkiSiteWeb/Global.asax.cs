@@ -96,6 +96,9 @@ namespace Worki.Web
             Bind<IBookingLogRepository>()
                .To<BookingLogRepository>();
 
+            Bind<IPaymentHandler>()
+                .To<MemberBookingPaymentHandler>().WithMetadata(PaymentHandlerFactory.HandlerTypeString, (int)PaymentHandlerFactory.HandlerType.Booking);
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();
@@ -374,6 +377,7 @@ namespace Worki.Web
 
 			LocalisationDynamicNodeProvider.RegisterKernel(_kernel);
 			ModelFactory.RegisterKernel(_kernel);
+            PaymentHandlerFactory.RegisterKernel(_kernel);
 
 			InitialiseAdmin();
 

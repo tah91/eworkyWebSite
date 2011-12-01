@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\CultureHelpers.cs" />
+    <Compile Include="Model\PaymentHandlerFactory.cs" />
     <Compile Include="Model\IUnitOfWork.cs" />
     <Compile Include="Model\ModelFactory.cs" />
     <Compile Include="Web\ActionResult.cs" />
