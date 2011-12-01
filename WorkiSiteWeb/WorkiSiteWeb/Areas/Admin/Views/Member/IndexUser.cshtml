@@ -51,7 +51,7 @@
 							@Html.ActionLink(item.UserName, MVC.Dashboard.Profil.Public(item.MemberId)) 
                         </td>
                         <td align="center">
-                            @(!item.IsAdmin ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Member.ChangeUserRole(item.MemberId)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Member.ChangeUserRole(item.MemberId)))
+                            @(!item.IsAdmin ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Member.ChangeUserRole(Model.PagingInfo.CurrentPage, item.MemberId)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Member.ChangeUserRole(Model.PagingInfo.CurrentPage, item.MemberId)))
                         </td>
                        <td align="center">
                             @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Delete, MVC.Admin.Member.DeleteUser(item.UserName, ViewContext.HttpContext.Request.Url.PathAndQuery))

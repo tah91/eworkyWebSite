@@ -166,30 +166,6 @@ namespace Worki.Web.Areas.Admin.Controllers
                 return Redirect(returnUrl);
         }
 
-        public virtual ActionResult BookIt(int id)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            bool Iscoworking = false;
-            try
-            {
-                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-                var localisation = lRepo.Get(id);
-                if (localisation == null)
-                {
-                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
-                    return RedirectToAction(MVC.Admin.Sheet.Index());
-                }
-                Iscoworking = (int)LocalisationType.CoworkingSpace == localisation.TypeValue;
-                context.Commit();
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("BookIt", ex);
-                context.Complete();
-            }
-            return RedirectToAction(!Iscoworking ? MVC.Admin.Sheet.BusinessCenter() : MVC.Admin.Sheet.CoworkingSpace());
-        }
-
         #endregion 
 
         #region Admin Rental

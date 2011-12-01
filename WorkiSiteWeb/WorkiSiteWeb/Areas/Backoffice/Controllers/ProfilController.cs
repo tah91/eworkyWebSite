@@ -190,7 +190,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var member = mRepo.Get(id);
 
-            return View(member);
+            return View(MVC.Backoffice.Profil.Views.ChangePaymentInformation, new PaymentInfoModel(member));
         }
 
         /// <summary>
@@ -200,31 +200,35 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <returns>Back office home page if ok, the form with error if not</returns>
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult ChangePaymentInformation(Member model)
+        public virtual ActionResult ChangePaymentInformation(PaymentInfoModel model)
         {
             var id = WebHelper.GetIdentityId(User.Identity);
             if (id == 0)
                 return View(MVC.Shared.Views.Error);
 
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.Get(id);
+
+            if (member == null)
+                return View(MVC.Shared.Views.Error);
+
             if (ModelState.IsValid)
             {
-                var context = ModelFactory.GetUnitOfWork();
-                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                var member = mRepo.Get(id);
-                if (_MembershipService.ValidateUser(member.Username, model.Password))
+                if (_MembershipService.ValidateUser(member.Username, model.WorkiPassword))
                 {
                     try
                     {
                         UpdateModel(member);
                         context.Commit();
 
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PaymentInfoModified;
                         return RedirectToAction(MVC.Backoffice.Home.Index());
                     }
                     catch (Exception ex)
                     {
-                        context.Complete();
                         _Logger.Error("ChangePaymentInformation", ex);
+                        context.Complete();
                     }
                 }
                 else
@@ -233,7 +237,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 }
             }
 
-            return View(model);
+            return RedirectToAction(MVC.Backoffice.Profil.ChangePaymentInformation());
         }
 	}
 }

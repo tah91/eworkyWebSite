@@ -143,5 +143,29 @@ namespace Worki.Data.Models
         public string EMail { get; set; }
     }
 
+    public class PaymentInfoModel
+    {
+        public PaymentInfoModel()
+        {
+
+        }
+
+        public PaymentInfoModel(Member member)
+        {
+            PaymentAddress = !string.IsNullOrEmpty(member.MemberMainData.PaymentAddress) ? member.MemberMainData.PaymentAddress : "";
+        }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "PaymentAddress", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string PaymentAddress { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Password", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+        [DataType(DataType.Password)]
+        [StringLength(128, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string WorkiPassword { get; set; }
+    }
+
     #endregion
 }

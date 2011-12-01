@@ -150,6 +150,9 @@
   <data name="Names" xml:space="preserve">
     <value>Nom, Prénom</value>
   </data>
+  <data name="NeedInfoPaypal" xml:space="preserve">
+    <value>Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans votre Profil.</value>
+  </data>
   <data name="NoCurrentBooking" xml:space="preserve">
     <value>Vous n'avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="OwnerSpace" xml:space="preserve">
     <value>Espace gérant</value>
+  </data>
+  <data name="PaymentInfoModified" xml:space="preserve">
+    <value>Les informations de paiements ont été mis à jour</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Tél.</value>
