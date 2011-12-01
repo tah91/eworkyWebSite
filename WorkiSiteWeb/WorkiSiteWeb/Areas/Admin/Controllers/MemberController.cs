@@ -102,13 +102,14 @@ namespace Worki.Web.Areas.Admin.Controllers
                 {
                     Roles.RemoveUserFromRole(member.Email, MiscHelpers.AdminConstants.AdminRole);
                 }
+
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.RoleHaveBeenSet;
             }
             catch (Exception e)
             {
                 _Logger.Error(e.Message);
             }
 
-            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.RoleHaveBeenSet;
             return RedirectToAction(MVC.Admin.Member.IndexUser());
         }
 

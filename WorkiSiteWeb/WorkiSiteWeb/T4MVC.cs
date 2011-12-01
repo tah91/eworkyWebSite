@@ -2552,11 +2552,6 @@ namespace Worki.Web.Areas.Admin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult BookIt() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.BookIt);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult IndexRental() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexRental);
         }
@@ -2597,7 +2592,6 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string OnOffline = "OnOffline";
             public readonly string UpdateMainLocalisation = "UpdateMainLocalisation";
             public readonly string DeleteLocalisation = "DeleteLocalisation";
-            public readonly string BookIt = "BookIt";
             public readonly string IndexRental = "IndexRental";
             public readonly string DeleteRental = "DeleteRental";
             public readonly string CoworkingSpace = "CoworkingSpace";
@@ -2654,12 +2648,6 @@ namespace Worki.Web.Areas.Admin.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("confirmButton", confirmButton);
             callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult BookIt(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookIt);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
