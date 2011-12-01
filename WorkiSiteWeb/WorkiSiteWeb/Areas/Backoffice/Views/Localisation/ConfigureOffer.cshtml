@@ -6,7 +6,7 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Offer.Localisation, Offer = Model.Offer })
+@RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.Offer.LocalisationId })
 
 <div class="detailContent">
@@ -25,7 +25,7 @@
         @using (Html.BeginForm())
 		{
 		    <div class="contentBlock">
-                @RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
+				@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(o.Id)) })
                 <div class="loginDesc marginb10">
                     @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
                 </div>
@@ -92,4 +92,13 @@
 	<div class="clear">
 	</div>
 </div>
+
+@section ScriptContent
+{
+	<script type="text/javascript">
+	    require(["@Links.Scripts.dropdown_js"], function () {
+	    	InitDropdown("#@DropDownModel.OfferDD");
+	    });
+	</script>
+}
 

@@ -299,6 +299,16 @@
 /*BACKOFFICE LOCALISATION
 ----------------------------------------------------------*/
 
+.offerDropDownContainer
+{
+	margin-bottom:10px;
+}
+
+.offerDropDown
+{
+	margin: 5px 10px 0 0;
+}
+
 .offerindextable
 {
     width:200px;

@@ -6,6 +6,7 @@ using Worki.Infrastructure.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
+using Worki.Web.Model;
 
 namespace Worki.Web.Helpers
 {
@@ -136,6 +137,22 @@ namespace Worki.Web.Helpers
 			}
 
 			return toRet;
+		}
+
+		public static DropDownModel GetOfferDropDown(Offer offer, Func<Offer,string> urlMaker)
+		{
+			var dropDown = new DropDownModel
+			{
+				Id = DropDownModel.OfferDD,
+				Title = offer.Name,
+				Items = new List<DropDownItem>()
+			};
+			foreach (var item in offer.Localisation.Offers)
+			{
+				dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+			}
+
+			return dropDown;
 		}
     }
 }

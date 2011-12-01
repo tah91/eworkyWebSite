@@ -6,7 +6,7 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Localisation, Offer = Model })
+@RazorHelpers.TitleDiv(Model.Name, "Blue")
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.LocalisationId })
 
 <div class="detailContent">
@@ -23,7 +23,7 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-        @RazorHelpers.TitleDiv(Model.Name, "Blue")
+			@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferIndex(o.Id)) })
             <table class="offerindextable margint10">
                 <tr>
                     <td>
@@ -63,3 +63,12 @@
 	<div class="clear">
 	</div>
 </div>
+
+@section ScriptContent
+{
+	<script type="text/javascript">
+		require(["@Links.Scripts.dropdown_js"], function () {
+			InitDropdown("#@DropDownModel.OfferDD");
+		});
+	</script>
+}

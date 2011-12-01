@@ -371,6 +371,9 @@ namespace Links {
         public static readonly string date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/date.min.js") ? Url("date.min.js") : Url("date.js");
                       
         public static readonly string date_min_js = Url("date.min.js");
+        public static readonly string dropdown_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dropdown.min.js") ? Url("dropdown.min.js") : Url("dropdown.js");
+                      
+        public static readonly string dropdown_min_js = Url("dropdown.min.js");
         public static readonly string jquery_1_5_1_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.5.1-vsdoc.min.js") ? Url("jquery-1.5.1-vsdoc.min.js") : Url("jquery-1.5.1-vsdoc.js");
                       
         public static readonly string jquery_1_5_1_vsdoc_min_js = Url("jquery-1.5.1-vsdoc.min.js");
@@ -3040,6 +3043,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ViewNames {
             public readonly string _LocalisationMenu = "~/Areas/Backoffice/Views/Localisation/_LocalisationMenu.cshtml";
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
+            public readonly string _OfferDropDown = "~/Areas/Backoffice/Views/Localisation/_OfferDropDown.cshtml";
             public readonly string Booking = "~/Areas/Backoffice/Views/Localisation/Booking.cshtml";
             public readonly string BookingDetail = "~/Areas/Backoffice/Views/Localisation/BookingDetail.cshtml";
             public readonly string ConfigureOffer = "~/Areas/Backoffice/Views/Localisation/ConfigureOffer.cshtml";
