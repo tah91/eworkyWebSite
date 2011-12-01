@@ -205,6 +205,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Les informations de paiements ont été mis à jour.
+        /// </summary>
+        public static string PaymentInfoModified {
+            get {
+                return ResourceManager.GetString("PaymentInfoModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tél..
         /// </summary>
         public static string PhoneNumber {

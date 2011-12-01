@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.Member
+﻿@model Worki.Data.Models.PaymentInfoModel
 
 @section HeadContent
 {  
@@ -27,9 +27,6 @@
                     @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.HeadModifyPayment, MiscHelpers.UrlConstants.paypal))<br />
                 </div>
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(m=>m.MemberMainData.FirstName)
-                @Html.HiddenFor(m=>m.MemberMainData.LastName)
-                @Html.HiddenFor(m=>m.MemberMainData.Profile)
            
                 <table class="confirmbooktable">
                     <tr>
@@ -37,7 +34,7 @@
                             @Worki.Resources.Views.Profile.ProfileString.MailPayment <span class="blue">*</span>
                         </td>
                         <td>
-                            : @Html.TextBoxFor(m => m.MemberMainData.PaymentAddress)
+                            : @Html.TextBoxFor(m => m.PaymentAddress)
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +42,7 @@
                             @Worki.Resources.Views.Profile.ProfileString.PasswordEworky <span class="blue">*</span>
                         </td>
                         <td>
-                            : @Html.PasswordFor(m => m.Password)
+                            : @Html.PasswordFor(m => m.WorkiPassword)
                         </td>
                     </tr>
                 </table>

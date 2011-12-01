@@ -3222,7 +3222,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangePaymentInformation(Worki.Data.Models.Member model) {
+        public override System.Web.Mvc.ActionResult ChangePaymentInformation(Worki.Data.Models.PaymentInfoModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePaymentInformation);
             callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
