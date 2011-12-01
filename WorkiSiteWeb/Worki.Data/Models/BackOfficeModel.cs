@@ -9,7 +9,7 @@ namespace Worki.Data.Models
     public class BackOfficeConstants
     {
         public const int NewsCount = 10;
-        public const int LocalisationCount = 10;
+        public const int LocalisationCount = 3;
     }
 
     public class BackOfficeHomeViewModel

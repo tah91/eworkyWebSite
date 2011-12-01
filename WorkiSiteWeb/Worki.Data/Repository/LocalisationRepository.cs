@@ -256,7 +256,16 @@ namespace Worki.Data.Models
 					   orderby bookings.Count()
 					   select new { LocalisationId = bookings.Key, BookingCount = bookings.Count() }).Take(count);
 
-            var ids = locBookings.Select(r => r.LocalisationId);
+            var ids = locBookings.Select(r => r.LocalisationId).ToList();
+			var fetchedCount = ids.Count;
+			if (fetchedCount < count)
+			{
+				var extra = (from loc in _Context.Localisations
+							 where loc.OwnerID == memberId && !ids.Contains(loc.ID)
+							 select loc.ID).Take(count - fetchedCount).ToList();
+				ids = ids.Concat(extra).ToList();
+			}
+
 			return GetMany(loc => ids.Contains(loc.ID));
 		}
 
