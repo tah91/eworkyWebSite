@@ -103,7 +103,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 var member = mRepo.Get(id);
                 Member.Validate(member);
-				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
+				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id && b.Unknown);
                 var model = new PagingList<MemberBooking>
                 {
                     List = bookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
