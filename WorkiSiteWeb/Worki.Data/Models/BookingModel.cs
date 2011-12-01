@@ -54,46 +54,76 @@ namespace Worki.Data.Models
 
 		#region Booking status
 
+
+		/// <summary>
+		/// Created but not handled by owner yet
+		/// </summary>
 		public bool Unknown
 		{
 			get { return StatusId == (int)Status.Unknown; }
 		}
 
+
+		/// <summary>
+		/// Refused by owner
+		/// </summary>
 		public bool Refused
 		{
 			get { return StatusId == (int)Status.Refused; }
 		}
 
+		/// <summary>
+		/// Accepted by owner but not paid yet by client
+		/// </summary>
 		public bool Waiting
 		{
 			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)Transaction.Status.Completed).Count() == 0; }
 		}
 
+
+		/// <summary>
+		/// Accepted and paid by client
+		/// </summary>
 		public bool Paid
 		{
 			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)Transaction.Status.Completed).Count() != 0; }
 		}
 
+		/// <summary>
+		/// Expired
+		/// </summary>
 		public bool Expired
 		{
 			get { return ToDate < DateTime.UtcNow; }
 		}
 
+		/// <summary>
+		/// Payement date of paid booking
+		/// </summary>
 		public DateTime PaidDate
 		{
 			get { return (from item in Transactions where item.UpdatedDate.HasValue select item.UpdatedDate.Value).FirstOrDefault(); }
 		}
 
+		/// <summary>
+		/// Creation date of the booking by the client
+		/// </summary>
 		public DateTime CreationDate
 		{
 			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Creation select item.CreatedDate).FirstOrDefault(); }
 		}
 
+		/// <summary>
+		/// Need action of the owner
+		/// </summary>
         public bool NeedOwnerAction
         {
             get { return !Expired && Unknown; }
         }
 
+		/// <summary>
+		/// Need action of the client
+		/// </summary>
         public bool NeedClientAction
         {
             get { return !Expired && Waiting; }

@@ -140,12 +140,21 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult ConfigureOffer(int id, OfferFormViewModel formData)
 		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			if (ModelState.IsValid)
 			{
 				try
 				{
+					var member = mRepo.Get(memberId);
+					//TODO adapter le message et celui du tempdata en bas (effacer commentaire qd c'est fait)
+					if (formData.Offer.IsBookable && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
+					{
+						throw new Exception("Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans votre Profil.");
+					}
+
 					var o = oRepo.Get(id);
 					UpdateModel(o, "Offer");
 					context.Commit();
@@ -187,7 +196,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
+				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id && b.Unknown);
 				var model = new LocalisationBookingViewModel
 				{
 					Localisation = loc,
