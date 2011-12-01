@@ -198,4 +198,13 @@
   <data name="WaitingForPayement" xml:space="preserve">
     <value>En attente de payment</value>
   </data>
+  <data name="BookPaid" xml:space="preserve">
+    <value>La réservation pour le lieu {0} à été payée !</value>
+  </data>
+  <data name="AskingQuotation" xml:space="preserve">
+    <value>Demande de devis pour {0}</value>
+  </data>
+  <data name="PayFail" xml:space="preserve">
+    <value>Le payment n'a pas été pris en compte !</value>
+  </data>
 </root>

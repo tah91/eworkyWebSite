@@ -106,7 +106,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offre en ligne.
+        ///   Looks up a localized string similar to Offre hors ligne.
         /// </summary>
         public static string IsOffline {
             get {

@@ -44,7 +44,7 @@
 .bookingLinks{width:20%}
 .offerDropDownContainer{margin-bottom:10px}
 .offerDropDown{margin:5px 10px 0 0}
-.offerindextable{width:200px}
+.offerindextable{width:400px;height:80px}
 .configoffertable{width:440px}
 select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType{width:204px}
 .confirmbooktable{width:605px}

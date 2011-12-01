@@ -187,11 +187,38 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous n&apos;avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}..
+        /// </summary>
+        public static string NoWorkingBooking {
+            get {
+                return ResourceManager.GetString("NoWorkingBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous n&apos;avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}..
+        /// </summary>
+        public static string NoWorkingQuotation {
+            get {
+                return ResourceManager.GetString("NoWorkingQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre de réservations.
         /// </summary>
         public static string NumberBooking {
             get {
                 return ResourceManager.GetString("NumberBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offres.
+        /// </summary>
+        public static string Offers {
+            get {
+                return ResourceManager.GetString("Offers", resourceCulture);
             }
         }
         

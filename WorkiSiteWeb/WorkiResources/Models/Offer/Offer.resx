@@ -133,7 +133,7 @@
     <value>Proposer à la réservation en ligne</value>
   </data>
   <data name="IsOffline" xml:space="preserve">
-    <value>Offre en ligne</value>
+    <value>Offre hors ligne</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>Mois</value>

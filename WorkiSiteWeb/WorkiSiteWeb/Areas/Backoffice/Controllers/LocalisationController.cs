@@ -332,13 +332,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						EventType = (int)MemberBookingLog.BookingEvent.Approval
 					});
 
-					//TODO MAIL send mail to owner
+					//send mail to owner
 					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					ownerMail.To = booking.Owner.Email;
 					ownerMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
 					ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-					ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
+					ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingOwner,
 														Localisation.GetOfferType(booking.Offer.Type),
 														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
 														string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
@@ -347,13 +347,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 														booking.Price);
 					ownerMail.Send();
 
-                    //TODO MAIL send mail to client
+                    //send mail to client
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
 					clientMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
 					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
+                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
 														Localisation.GetOfferType(booking.Offer.Type),
 														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
 														string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
