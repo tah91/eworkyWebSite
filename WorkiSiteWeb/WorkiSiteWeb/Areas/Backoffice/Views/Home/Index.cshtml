@@ -6,6 +6,7 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.BackOffice.BackOfficeString.OwnerSpace, "Blue")
 @Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Home)
 
 <div class="detailContent">
@@ -13,7 +14,7 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Home.Index())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Home.Index())} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Backoffice.Home.Localisations())} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Home.Booking())} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Home.Quotation())}
@@ -22,7 +23,6 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-        @RazorHelpers.TitleDiv(Worki.Resources.Views.BackOffice.BackOfficeString.OwnerSpace, "Blue")
             @{
                 var score = Model.Owner.ComputeScore();
                 var summaryModel = new SummaryViewModel

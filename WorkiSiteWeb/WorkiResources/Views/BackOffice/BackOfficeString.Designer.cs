@@ -61,6 +61,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retour à l&apos;espace gérant.
+        /// </summary>
+        public static string BackToOwnerSpace {
+            get {
+                return ResourceManager.GetString("BackToOwnerSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fiche client.
         /// </summary>
         public static string CustomerSheet {
@@ -120,6 +129,15 @@ namespace Worki.Resources.Views.BackOffice {
         public static string LastNews {
             get {
                 return ResourceManager.GetString("LastNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interface de gestion de {0}.
+        /// </summary>
+        public static string ManagementTitle {
+            get {
+                return ResourceManager.GetString("ManagementTitle", resourceCulture);
             }
         }
         

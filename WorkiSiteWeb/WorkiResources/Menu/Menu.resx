@@ -126,6 +126,12 @@
   <data name="Admins" xml:space="preserve">
     <value>Administrateurs</value>
   </data>
+  <data name="BOHome" xml:space="preserve">
+    <value>Espace</value>
+  </data>
+  <data name="BONews" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
   <data name="Bookings" xml:space="preserve">
     <value>Réservations</value>
   </data>

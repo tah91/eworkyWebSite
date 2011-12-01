@@ -88,6 +88,24 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Espace.
+        /// </summary>
+        public static string BOHome {
+            get {
+                return ResourceManager.GetString("BOHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bienvenue.
+        /// </summary>
+        public static string BONews {
+            get {
+                return ResourceManager.GetString("BONews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réservations.
         /// </summary>
         public static string Bookings {

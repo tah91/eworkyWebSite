@@ -14,7 +14,7 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID,Model.Offer.Id))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID,Model.Offer.Id))} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Configure, MVC.Backoffice.Localisation.ConfigureOffer(Model.Offer.Id))} ,
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Id))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.OfferQuotation(Model.Offer.Id))}

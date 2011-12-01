@@ -22,7 +22,7 @@
                     <tr>
                         <td>
                             <div class="editor-label">
-                                @Html.LabelFor(model => model.LastName) 
+                                @Html.LabelFor(model => model.LastName) <span class="blue">*</span>
                             </div>
                         </td>
                         <td>
@@ -46,7 +46,7 @@
                     <tr> 
                         <td>
                             <div class="editor-label">
-                                @Worki.Resources.Models.Contact.Contact.Email
+                                @Worki.Resources.Models.Contact.Contact.Email <span class="blue">*</span>
                             </div>
                         </td>
                         <td>
@@ -58,7 +58,7 @@
                     <tr>
                         <td>
                             <div class="editor-label">
-                                @Html.LabelFor(model => model.Subject)
+                                @Html.LabelFor(model => model.Subject) <span class="blue">*</span>
                             </div>
                         </td>
                         <td>
@@ -70,7 +70,7 @@
                     <tr>
                         <td>
                             <div class="editor-label">
-                                @Html.LabelFor(model => model.Message)
+                                @Html.LabelFor(model => model.Message) <span class="blue">*</span>
                             </div>
                         </td>
                         <td>
@@ -86,7 +86,7 @@
                             </div>
                         </td>
                         <td>
-                            <div class="editor-field">
+                            <div class="editor-field marginl5">
                                 @Html.Captcha("myCaptcha") 
                             </div>
                         </td>
@@ -94,7 +94,7 @@
                     <tr>
                         <td>
                             <div class="editor-label">
-                                @Html.Label(Worki.Resources.Views.Account.AccountString.ValidationLetter)<span class="blue">*</span>
+                                @Html.Label(Worki.Resources.Views.Account.AccountString.ValidationLetter) <span class="blue">*</span>
                             </div>
                         </td>
                         <td>

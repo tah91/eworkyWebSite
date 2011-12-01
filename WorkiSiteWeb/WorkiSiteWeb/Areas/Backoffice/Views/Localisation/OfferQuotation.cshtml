@@ -6,7 +6,7 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Offer.Localisation, Offer = Model.Offer })
+@RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.Offer.LocalisationId })
 
 <div class="detailContent">
@@ -14,7 +14,7 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID, Model.Offer.Id))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID, Model.Offer.Id))} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Configure, MVC.Backoffice.Localisation.ConfigureOffer(Model.Offer.Id))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Id))} ,
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.OfferQuotation(Model.Offer.Id))}
@@ -22,25 +22,28 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(o.Id)) })
-        @if (Model.Quotations.List.Count != 0)
-        {
-            <ul>
-            @foreach (var quotation in Model.Quotations.List)
+        <div class="contentBlock">
+		    @if (Model.Quotations.List.Count != 0)
             {
-                @Html.Partial(MVC.Backoffice.Shared.Views._QuotationItem, quotation)
+                @Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(o.Id)) })
+                <ul>
+                @foreach (var quotation in Model.Quotations.List)
+                {
+                    @Html.Partial(MVC.Backoffice.Shared.Views._QuotationItem, quotation)
+                }
+                </ul>
+                <div class="pager">
+                    @Html.PageLinks(Model.Quotations.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(Model.Offer.Id, x)))
+                </div>
             }
-            </ul>
-            <div class="pager">
-                @Html.PageLinks(Model.Quotations.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(Model.Offer.Id, x)))
+            else
+            {
+            <div class="emptyContent italic">
+                @Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(o.Id)) })
+                @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
             </div>
-        }
-        else
-        {
-        <div class="contentBlock italic">
-            @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
+            }
         </div>
-        }
 	</div>
 	<div class="clear"></div>
 </div>

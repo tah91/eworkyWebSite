@@ -1,11 +1,5 @@
 ﻿@model BookingListViewModel
 
-<div class="contentBlock">
-@if (!string.IsNullOrEmpty(Model.Title))
-{ 
-    @RazorHelpers.TitleDiv(Model.Title, "Blue")
-}
-
 @if (Model.Bookings.List.Count != 0)
 {
     <ul>
@@ -24,4 +18,3 @@ else
         @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.AddedSpacesEmpy, Html.ActionLink(Worki.Resources.Views.Home.FaqString.ClickHere, MVC.Home.AddSpace())))
     </div>
 }
-</div>
