@@ -2,11 +2,18 @@
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.News)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.BONews)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Localisation })
+<div class="float-left">
+    @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.ManagementTitle, Model.Localisation.Name),"Blue")
+</div>
+<div class="float-right bold margint15">
+    @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.BackToOwnerSpace, MVC.Backoffice.Home.Index(), new { @class = "blue" })
+</div>
+<div class="clear"></div>
+<!--@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Localisation })-->
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID })
 
 <div class="detailContent">
@@ -14,7 +21,7 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))}
 		})
