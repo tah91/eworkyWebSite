@@ -28,7 +28,9 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-        @Html.Partial(MVC.Backoffice.Shared.Views._BookingList, new BookingListViewModel { Bookings = Model.Bookings, Title = Model.Localisation.Name })
+        <div class="contentBlock">
+            @Html.Partial(MVC.Backoffice.Shared.Views._BookingList, new BookingListViewModel { Bookings = Model.Bookings, Title = Model.Localisation.Name })
+        </div>
 	</div>
 	<div class="clear">
 	</div>

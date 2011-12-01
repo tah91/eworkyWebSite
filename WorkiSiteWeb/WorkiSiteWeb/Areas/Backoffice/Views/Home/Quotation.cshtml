@@ -6,6 +6,7 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.BackOffice.BackOfficeString.OwnerSpace, "Blue")
 @Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Home)
 
 <div class="detailContent">
@@ -21,6 +22,7 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
+        <div class="contentBlock">
     		@if (Model.List.Count != 0)
             {
                 <ul>
@@ -35,12 +37,11 @@
             }
             else
             {
-                <div class="contentBlock">
-                    <div class="emptyContent italic">
-                        @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations())))
-                    </div>
+                <div class="emptyContent italic">
+                    @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations())))
                 </div>
             }
+        </div>
 	</div>
 	<div class="clear"></div>
 </div>

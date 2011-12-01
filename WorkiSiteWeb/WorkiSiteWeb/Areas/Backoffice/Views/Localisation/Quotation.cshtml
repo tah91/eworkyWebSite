@@ -28,26 +28,26 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-        @if (Model.Quotations.List.Count != 0)
-        {
-            <ul>
-            @foreach (var quotation in Model.Quotations.List)
+        <div class="contentBlock">
+            @if (Model.Quotations.List.Count != 0)
             {
-                @Html.Partial(MVC.Backoffice.Shared.Views._QuotationItem, quotation)
+                <ul>
+                @foreach (var quotation in Model.Quotations.List)
+                {
+                    @Html.Partial(MVC.Backoffice.Shared.Views._QuotationItem, quotation)
+                }
+                </ul>
+                <div class="pager">
+                    @Html.PageLinks(Model.Quotations.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x)))
+                </div>
             }
-            </ul>
-            <div class="pager">
-                @Html.PageLinks(Model.Quotations.PagingInfo, x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x)))
-            </div>
-        }
-        else
-        {
-            <div class="contentBlock">
+            else
+            {
                 <div class="emptyContent italic">
                     @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations())))
                 </div>
-            </div>
-        }
+            }
+        </div>
 	</div>
 	<div class="clear">
 	</div>
