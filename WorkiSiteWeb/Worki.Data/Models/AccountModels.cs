@@ -152,7 +152,12 @@ namespace Worki.Data.Models
 
         public PaymentInfoModel(Member member)
         {
-            PaymentAddress = !string.IsNullOrEmpty(member.MemberMainData.PaymentAddress) ? member.MemberMainData.PaymentAddress : "";
+            PaymentAddress = member.MemberMainData != null ? member.MemberMainData.PaymentAddress : string.Empty;
+        }
+
+        public void ChangePaymentInformation(Member member)
+        {
+            member.MemberMainData.PaymentAddress = PaymentAddress;
         }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]

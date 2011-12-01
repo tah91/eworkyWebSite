@@ -219,7 +219,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 {
                     try
                     {
-                        UpdateModel(member);
+                        model.ChangePaymentInformation(member);
                         context.Commit();
 
                         TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PaymentInfoModified;
@@ -237,7 +237,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 }
             }
 
-            return RedirectToAction(MVC.Backoffice.Profil.ChangePaymentInformation());
+            return View(model);
         }
 	}
 }
