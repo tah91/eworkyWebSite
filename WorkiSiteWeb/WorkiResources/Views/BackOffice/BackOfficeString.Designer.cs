@@ -160,6 +160,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans votre Profil..
+        /// </summary>
+        public static string NeedInfoPaypal {
+            get {
+                return ResourceManager.GetString("NeedInfoPaypal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous n&apos;avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}..
         /// </summary>
         public static string NoCurrentBooking {

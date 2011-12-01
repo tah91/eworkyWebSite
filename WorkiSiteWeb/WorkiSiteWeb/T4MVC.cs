@@ -2357,8 +2357,9 @@ namespace Worki.Web.Areas.Admin.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ChangeUserRole(int id) {
+        public override System.Web.Mvc.ActionResult ChangeUserRole(int page, int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangeUserRole);
+            callInfo.RouteValueDictionary.Add("page", page);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }

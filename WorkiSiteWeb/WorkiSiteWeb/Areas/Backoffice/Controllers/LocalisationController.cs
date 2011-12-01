@@ -149,10 +149,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				try
 				{
 					var member = mRepo.Get(memberId);
-					//TODO adapter le message et celui du tempdata en bas (effacer commentaire qd c'est fait)
 					if (formData.Offer.IsBookable && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
 					{
-						throw new Exception("Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans votre Profil.");
+						throw new Exception();
 					}
 
 					var o = oRepo.Get(id);
@@ -168,7 +167,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					ModelState.AddModelError("", ex.Message);
 				}
 			}
-			return View(formData);
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.NeedInfoPaypal;
+            return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
 		}
 
 		#endregion

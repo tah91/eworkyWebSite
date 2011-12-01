@@ -81,7 +81,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="collection">form containg the list of ids to push to admin role</param>
         /// <returns>Redirect to return url</returns>
-        public virtual ActionResult ChangeUserRole(int id)
+        public virtual ActionResult ChangeUserRole(int page, int id)
         {
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
@@ -91,7 +91,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 if (member == null)
                 {
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.UserNotFound;
-                    return RedirectToAction(MVC.Admin.Member.IndexUser());
+                    return RedirectToAction(MVC.Admin.Member.IndexUser(page));
                 }
 
                 if (!Roles.IsUserInRole(member.Email, MiscHelpers.AdminConstants.AdminRole))
@@ -110,7 +110,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 _Logger.Error(e.Message);
             }
 
-            return RedirectToAction(MVC.Admin.Member.IndexUser());
+            return RedirectToAction(MVC.Admin.Member.IndexUser(page));
         }
 
 
