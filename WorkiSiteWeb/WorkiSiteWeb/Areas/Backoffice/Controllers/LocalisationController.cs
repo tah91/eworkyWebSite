@@ -340,8 +340,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
 					ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingOwner,
 														Localisation.GetOfferType(booking.Offer.Type),
-														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-														string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+														CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+														CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
 														booking.Offer.Localisation.Name,
 														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
 														booking.Price);
@@ -355,8 +355,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					clientMail.ToName = booking.Client.MemberMainData.FirstName;
                     clientMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
 														Localisation.GetOfferType(booking.Offer.Type),
-														string.Format("{0:dd/MM/yyyy HH:MM}", booking.FromDate),
-														string.Format("{0:dd/MM/yyyy HH:MM}", booking.ToDate),
+                                                        CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+                                                        CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
 														booking.Offer.Localisation.Name,
 														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
 														booking.Price);
