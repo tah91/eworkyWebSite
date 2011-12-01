@@ -93,11 +93,17 @@ namespace Worki.Web
             Bind<ITransactionRepository>()
                 .To<TransactionRepository>();
 
+			Bind<IQuotationTransactionRepository>()
+				.To<QuotationTransactionRepository>();
+
             Bind<IBookingLogRepository>()
                .To<BookingLogRepository>();
 
             Bind<IPaymentHandler>()
-                .To<MemberBookingPaymentHandler>().WithMetadata(PaymentHandlerFactory.HandlerTypeString, (int)PaymentHandlerFactory.HandlerType.Booking);
+                .To<MemberBookingPaymentHandler>().WithMetadata(PaymentHandlerFactory.Constants.HandlerTypeString, PaymentHandlerFactory.HandlerType.Booking);
+
+			Bind<IPaymentHandler>()
+				.To<MemberQuotationPaymentHandler>().WithMetadata(PaymentHandlerFactory.Constants.HandlerTypeString, PaymentHandlerFactory.HandlerType.Quotation);
 
 			Bind<ILogger>().
 				To<Log4NetLogger>()

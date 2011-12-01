@@ -18,7 +18,18 @@ namespace Worki.Data.Models
             : base(logger, context)
         {
         }
-            
-      
     }
+
+	public interface IQuotationTransactionRepository : IRepository<MemberQuotationTransaction>
+	{
+
+	}
+
+	public class QuotationTransactionRepository : RepositoryBase<MemberQuotationTransaction>, IQuotationTransactionRepository
+	{
+		public QuotationTransactionRepository(ILogger logger, IUnitOfWork context)
+			: base(logger, context)
+		{
+		}
+	}
 }

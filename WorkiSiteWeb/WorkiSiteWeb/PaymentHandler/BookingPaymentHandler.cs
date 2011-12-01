@@ -14,7 +14,6 @@ using System.Globalization;
 using Postal;
 using Worki.Infrastructure.Helpers;
 
-
 namespace Worki.Web
 {
     public class MemberBookingPaymentHandler : IPaymentHandler
@@ -42,7 +41,7 @@ namespace Worki.Web
             {
                 var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                MemberBooking booking = bRepo.GetBooking(memberBookingId);
+                MemberBooking booking = bRepo.Get(memberBookingId);
 
                 if (booking != null && payments.Count()==2)
                 {

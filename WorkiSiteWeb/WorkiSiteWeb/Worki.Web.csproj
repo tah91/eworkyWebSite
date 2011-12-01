@@ -276,7 +276,7 @@
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
-    <Compile Include="Infrastructure\PaymentHandler.cs" />
+    <Compile Include="PaymentHandler\BookingPaymentHandler.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
@@ -289,6 +289,7 @@
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Membership\WorkiRoleProvider.cs" />
     <Compile Include="Membership\WorkiMembershipProvider.cs" />
+    <Compile Include="PaymentHandler\QuotationPaymentHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singletons\Singletons.cs" />
     <Compile Include="SiteMap\LocalisationDynamicNodeProvider.cs" />

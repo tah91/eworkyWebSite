@@ -9,11 +9,16 @@ namespace Worki.Infrastructure.Repository
 {
     public static class PaymentHandlerFactory
 	{
-        public const string HandlerTypeString = "HandlerType";
+		public class Constants
+		{
+			public const string AmountIncorrectError = "Amount incorrect, RequestId : {0}, TransactionId : {1}, Amount : {2}, ExpectedAmount {3}";
+			public const string HandlerTypeString = "HandlerType";
+		}
 
         public enum HandlerType
         {
-            Booking
+            Booking,
+			Quotation
         }
 
         static IKernel _Kernel;
@@ -27,7 +32,7 @@ namespace Worki.Infrastructure.Repository
 		{
             Func<IBindingMetadata, bool> func = (metadata) =>
             {
-                return metadata.Has(HandlerTypeString) && metadata.Get<int>(HandlerTypeString) == (int)type;
+				return metadata.Has(Constants.HandlerTypeString) && metadata.Get<HandlerType>(Constants.HandlerTypeString) == type;
             };
             return (IPaymentHandler)_Kernel.Get(typeof(IPaymentHandler));
 		}

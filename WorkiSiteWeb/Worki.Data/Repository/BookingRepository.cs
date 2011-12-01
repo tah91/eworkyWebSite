@@ -9,7 +9,7 @@ namespace Worki.Data.Models
 {
 	public interface IBookingRepository : IRepository<MemberBooking>
 	{
-        MemberBooking GetBooking(int id);
+
  	}
 
 	public class BookingRepository : RepositoryBase<MemberBooking>, IBookingRepository
@@ -18,10 +18,5 @@ namespace Worki.Data.Models
 			: base(logger, context)
 		{
 		}
-
-        public MemberBooking GetBooking(int id)
-        {
-            return (from b in _Context.MemberBookings where b.Id == id select b).FirstOrDefault();
-        }
     }
 }
