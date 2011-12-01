@@ -59,23 +59,6 @@
                             @Html.ActionLink("Accès", MVC.Dashboard.Profil.Public(item.MemberId), new { @class = "blue" })
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            @string.Format("{0}, {1}", item.MemberMainData.LastName, item.MemberMainData.FirstName)
-                        </td>
-                        <td>
-                            @item.MemberBookings.Count
-                        </td>
-                        <td>
-                            @item.MemberMainData.PhoneNumber
-                        </td>
-                        <td>
-                            @item.Email
-                        </td>
-                        <td>
-                            @Html.ActionLink("Accès", MVC.Dashboard.Profil.Public(item.MemberId), new { @class = "blue" })
-                        </td>
-                    </tr>
                 }
                 </tbody>
             </table>
