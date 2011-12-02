@@ -185,75 +185,6 @@ namespace Worki.Web.Controllers
 			return View(formData);
 		}
 
-		/// <summary>
-		/// GET Action result to show booking data
-		/// </summary>
-		/// <param name="id">id of booking</param>
-		/// <returns>View containing booking data</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Details(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
-			return View(booking);
-		}
-
-		/// <summary>
-		/// GET Action result to edit booking data
-		/// </summary>
-		/// <param name="id">id of booking</param>
-		/// <returns>View containing booking data</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, string returnUrl)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
-			var member = mRepo.Get(memberId);
-            var formModel = new MemberBookingFormViewModel
-            {
-                PhoneNumber = member.MemberMainData.PhoneNumber,
-                MemberBooking = booking,
-                FirstName = member.MemberMainData.FirstName,
-                LastName = member.MemberMainData.LastName,
-                Email = member.Email,
-                NeedNewAccount = false
-            };
-			return View(MVC.Booking.Views.Create, formModel);
-		}
-
-		/// <summary>
-		/// Post Action result to edit booking data
-		/// </summary>
-		/// <param name="id">id of booking</param>
-		/// <returns>View containing booking data</returns>
-		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, string returnUrl, MemberBookingFormViewModel formData)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			try
-			{
-				UpdateModel(formData);
-				if (ModelState.IsValid)
-				{
-					var b = bRepo.Get(id);
-					UpdateModel(b, "MemberBooking");
-					context.Commit();
-					return Redirect(returnUrl);
-				}
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Edit", ex);
-				context.Complete();
-				ModelState.AddModelError("", ex.Message);
-			}
-			return View(MVC.Booking.Views.Create, formData);
-		}
-
         [AcceptVerbs(HttpVerbs.Get)]
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int id)
@@ -296,132 +227,201 @@ namespace Worki.Web.Controllers
             return RedirectToAction(MVC.Home.Index());
         }
 
-		/// <summary>
-		/// GET Action result to handle booking
-		/// </summary>
-		/// <param name="id">id of booking to handle</param>
-		/// <param name="returnUrl">url to redirect</param>
-		/// <returns>Redirect to url</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult HandleBooking(int id, int memberId, string returnUrl)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			try
-			{
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-				var m = mRepo.Get(memberId);
-				var booking = bRepo.Get(id);
-				//booking.Handled = true;
+		///// <summary>
+		///// GET Action result to show booking data
+		///// </summary>
+		///// <param name="id">id of booking</param>
+		///// <returns>View containing booking data</returns>
+		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult Details(int id)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+		//    var booking = bRepo.Get(id);
+		//    return View(booking);
+		//}
 
-				//send email
+		///// <summary>
+		///// GET Action result to edit booking data
+		///// </summary>
+		///// <param name="id">id of booking</param>
+		///// <returns>View containing booking data</returns>
+		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult Edit(int id, int memberId, string returnUrl)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+		//    var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+		//    var booking = bRepo.Get(id);
+		//    var member = mRepo.Get(memberId);
+		//    var formModel = new MemberBookingFormViewModel
+		//    {
+		//        PhoneNumber = member.MemberMainData.PhoneNumber,
+		//        MemberBooking = booking,
+		//        FirstName = member.MemberMainData.FirstName,
+		//        LastName = member.MemberMainData.LastName,
+		//        Email = member.Email,
+		//        NeedNewAccount = false
+		//    };
+		//    return View(MVC.Booking.Views.Create, formModel);
+		//}
 
-				dynamic handleMail = new Email(MVC.Emails.Views.Email);
-				handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                handleMail.To = booking.Member.Email;
-				handleMail.ToName = booking.Member.MemberMainData.FirstName;
+		///// <summary>
+		///// Post Action result to edit booking data
+		///// </summary>
+		///// <param name="id">id of booking</param>
+		///// <returns>View containing booking data</returns>
+		//[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult Edit(int id, string returnUrl, MemberBookingFormViewModel formData)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+		//    try
+		//    {
+		//        UpdateModel(formData);
+		//        if (ModelState.IsValid)
+		//        {
+		//            var b = bRepo.Get(id);
+		//            UpdateModel(b, "MemberBooking");
+		//            context.Commit();
+		//            return Redirect(returnUrl);
+		//        }
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        _Logger.Error("Edit", ex);
+		//        context.Complete();
+		//        ModelState.AddModelError("", ex.Message);
+		//    }
+		//    return View(MVC.Booking.Views.Create, formData);
+		//}
 
-				handleMail.Subject = Worki.Resources.Email.BookingString.BookingHandleMailSubject;
-				handleMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingHandleMailBody,
-													Localisation.GetOfferType(booking.Offer.Type),
-                                                    CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
-                                                    CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
-													booking.Offer.Localisation.Name,
-													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
+		///// <summary>
+		///// GET Action result to handle booking
+		///// </summary>
+		///// <param name="id">id of booking to handle</param>
+		///// <param name="returnUrl">url to redirect</param>
+		///// <returns>Redirect to url</returns>
+		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult HandleBooking(int id, int memberId, string returnUrl)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    try
+		//    {
+		//        var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+		//        var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+		//        var m = mRepo.Get(memberId);
+		//        var booking = bRepo.Get(id);
+		//        //booking.Handled = true;
 
-				handleMail.Send();
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("HandleBooking", ex);
-				context.Complete();
-			}
-			return Redirect(returnUrl);
-		}
+		//        //send email
 
-		/// <summary>
-		/// GET Action result to confirm booking
-		/// </summary>
-		/// <param name="id">id of booking to confirm</param>
-		/// <param name="returnUrl">url to redirect</param>
-		/// <returns>Redirect to url</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult ConfirmBooking(int id, int memberId, string returnUrl)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			try
-			{
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-				var m = mRepo.Get(memberId);
-				var booking = bRepo.Get(id);
-				booking.StatusId = (int)MemberBooking.Status.Accepted;
+		//        dynamic handleMail = new Email(MVC.Emails.Views.Email);
+		//        handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+		//        handleMail.To = booking.Member.Email;
+		//        handleMail.ToName = booking.Member.MemberMainData.FirstName;
 
-				//send email
-				dynamic confirmMail = new Email(MVC.Emails.Views.Email);
-				confirmMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                confirmMail.To = booking.Member.Email;
-				confirmMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
-				confirmMail.ToName = booking.Member.MemberMainData.FirstName;
-				confirmMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
-													Localisation.GetOfferType(booking.Offer.Type),
-                                                    CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
-                                                    CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
-													booking.Offer.Localisation.Name,
-													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
-													booking.Price);
-				confirmMail.Send();
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("ConfirmBooking", ex);
-				context.Complete();
-			}
-			return Redirect(returnUrl);
-		}
+		//        handleMail.Subject = Worki.Resources.Email.BookingString.BookingHandleMailSubject;
+		//        handleMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingHandleMailBody,
+		//                                            Localisation.GetOfferType(booking.Offer.Type),
+		//                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+		//                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
+		//                                            booking.Offer.Localisation.Name,
+		//                                            booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
 
-        /// <summary>
-        /// GET Action result to refuse booking
-        /// </summary>
-        /// <param name="id">id of booking to refuse</param>
-        /// <param name="returnUrl">url to redirect</param>
-        /// <returns>Redirect to url</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult RefuseBooking(int id, int memberId, string returnUrl)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            try
-            {
-                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-                var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-                var m = mRepo.Get(memberId);
-				var booking = bRepo.Get(id);
-				booking.StatusId = (int)MemberBooking.Status.Accepted;
+		//        handleMail.Send();
+		//        context.Commit();
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        _Logger.Error("HandleBooking", ex);
+		//        context.Complete();
+		//    }
+		//    return Redirect(returnUrl);
+		//}
 
-                //send email
-				dynamic refuseMail = new Email(MVC.Emails.Views.Email);
-				refuseMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                refuseMail.To = booking.Member.Email;
-                refuseMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
-                refuseMail.ToName = booking.Member.MemberMainData.FirstName;
-                refuseMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseMailBody,
-                                                    Localisation.GetOfferType(booking.Offer.Type),
-                                                    CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
-                                                    CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
-													booking.Offer.Localisation.Name,
-													booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
-                refuseMail.Send();
-                context.Commit();
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("RefuseBooking", ex);
-                context.Complete();
-            }
-            return Redirect(returnUrl);
-        }
+		///// <summary>
+		///// GET Action result to confirm booking
+		///// </summary>
+		///// <param name="id">id of booking to confirm</param>
+		///// <param name="returnUrl">url to redirect</param>
+		///// <returns>Redirect to url</returns>
+		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult ConfirmBooking(int id, int memberId, string returnUrl)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    try
+		//    {
+		//        var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+		//        var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+		//        var m = mRepo.Get(memberId);
+		//        var booking = bRepo.Get(id);
+		//        booking.StatusId = (int)MemberBooking.Status.Accepted;
+
+		//        //send email
+		//        dynamic confirmMail = new Email(MVC.Emails.Views.Email);
+		//        confirmMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+		//        confirmMail.To = booking.Member.Email;
+		//        confirmMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+		//        confirmMail.ToName = booking.Member.MemberMainData.FirstName;
+		//        confirmMail.Content = string.Format(Worki.Resources.Email.BookingString.ConfirmMailBody,
+		//                                            Localisation.GetOfferType(booking.Offer.Type),
+		//                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+		//                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
+		//                                            booking.Offer.Localisation.Name,
+		//                                            booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
+		//                                            booking.Price);
+		//        confirmMail.Send();
+		//        context.Commit();
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        _Logger.Error("ConfirmBooking", ex);
+		//        context.Complete();
+		//    }
+		//    return Redirect(returnUrl);
+		//}
+
+		///// <summary>
+		///// GET Action result to refuse booking
+		///// </summary>
+		///// <param name="id">id of booking to refuse</param>
+		///// <param name="returnUrl">url to redirect</param>
+		///// <returns>Redirect to url</returns>
+		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult RefuseBooking(int id, int memberId, string returnUrl)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    try
+		//    {
+		//        var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+		//        var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+		//        var m = mRepo.Get(memberId);
+		//        var booking = bRepo.Get(id);
+		//        booking.StatusId = (int)MemberBooking.Status.Accepted;
+
+		//        //send email
+		//        dynamic refuseMail = new Email(MVC.Emails.Views.Email);
+		//        refuseMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+		//        refuseMail.To = booking.Member.Email;
+		//        refuseMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
+		//        refuseMail.ToName = booking.Member.MemberMainData.FirstName;
+		//        refuseMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseMailBody,
+		//                                            Localisation.GetOfferType(booking.Offer.Type),
+		//                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
+		//                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
+		//                                            booking.Offer.Localisation.Name,
+		//                                            booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
+		//        refuseMail.Send();
+		//        context.Commit();
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        _Logger.Error("RefuseBooking", ex);
+		//        context.Complete();
+		//    }
+		//    return Redirect(returnUrl);
+		//}
 
         #region Private
 

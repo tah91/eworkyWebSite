@@ -142,7 +142,6 @@ namespace Worki.Web.Controllers
 					                                 Localisation.GetOfferType(offer.Type),
 					                                 formData.MemberQuotation.Surface,
 					                                 formData.MemberQuotation.Message);
-					teamMail.Send();
 
                     //send mail to quoation member
                     dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -151,7 +150,6 @@ namespace Worki.Web.Controllers
                     clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
                     clientMail.ToName = member.MemberMainData.FirstName;
                     clientMail.Content = "TODO";
-                    clientMail.Send();
 
                     //send mail to localisation member
                     dynamic ownerMail = new Email(MVC.Emails.Views.Email);
@@ -160,6 +158,9 @@ namespace Worki.Web.Controllers
                     ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
                     ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
                     ownerMail.Content = "TODO";
+
+					clientMail.Send();
+					teamMail.Send();
                     ownerMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
@@ -186,61 +187,6 @@ namespace Worki.Web.Controllers
 			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 			var quotation = qRepo.Get(id);
 			return View(quotation);
-		}
-
-		/// <summary>
-		/// GET Action result to edit quotation data
-		/// </summary>
-		/// <param name="id">id of quotation</param>
-		/// <returns>View containing quotation data</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, string returnUrl)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
-			var quotation = qRepo.Get(id);
-			var member = mRepo.Get(memberId);
-            var formModel = new MemberQuotationFormViewModel
-            {
-                PhoneNumber = member.MemberMainData.PhoneNumber,
-				MemberQuotation = quotation,
-                FirstName = member.MemberMainData.FirstName,
-                LastName = member.MemberMainData.LastName,
-                Email = member.Email,
-                NeedNewAccount = false
-            };
-			return View(MVC.Quotation.Views.Create, formModel);
-		}
-
-		/// <summary>
-		/// Post Action result to edit quotation data
-		/// </summary>
-		/// <param name="id">id of quotation</param>
-		/// <returns>View containing quotation data</returns>
-		[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult Edit(int id, int memberId, string returnUrl, MemberQuotationFormViewModel formData)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var bRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
-			try
-			{
-				UpdateModel(formData);
-				if (ModelState.IsValid)
-				{
-					var b = bRepo.Get(id);
-					UpdateModel(b, "MemberQuotation");
-					context.Commit();
-					return Redirect(returnUrl);
-				}
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Edit", ex);
-				context.Complete();
-				ModelState.AddModelError("", ex.Message);
-			}
-			return View(MVC.Quotation.Views.Create, formData);
 		}
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -278,47 +224,102 @@ namespace Worki.Web.Controllers
             return RedirectToAction(MVC.Home.Index());
         }
 
-		/// <summary>
-		/// GET Action result to handle quotation
-		/// </summary>
-		/// <param name="id">id of quotation to handle</param>
-		/// <param name="returnUrl">url to redirect</param>
-		/// <returns>Redirect to url</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		public virtual ActionResult HandleBooking(int id, int memberId, string returnUrl)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			try
-			{
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-				var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
-				var m = mRepo.Get(memberId);
-				var quotation = qRepo.Get(id);
+		///// <summary>
+		///// GET Action result to edit quotation data
+		///// </summary>
+		///// <param name="id">id of quotation</param>
+		///// <returns>View containing quotation data</returns>
+		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult Edit(int id, int memberId, string returnUrl)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+		//    var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+		//    var quotation = qRepo.Get(id);
+		//    var member = mRepo.Get(memberId);
+		//    var formModel = new MemberQuotationFormViewModel
+		//    {
+		//        PhoneNumber = member.MemberMainData.PhoneNumber,
+		//        MemberQuotation = quotation,
+		//        FirstName = member.MemberMainData.FirstName,
+		//        LastName = member.MemberMainData.LastName,
+		//        Email = member.Email,
+		//        NeedNewAccount = false
+		//    };
+		//    return View(MVC.Quotation.Views.Create, formModel);
+		//}
 
-				//send email
+		///// <summary>
+		///// Post Action result to edit quotation data
+		///// </summary>
+		///// <param name="id">id of quotation</param>
+		///// <returns>View containing quotation data</returns>
+		//[AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult Edit(int id, int memberId, string returnUrl, MemberQuotationFormViewModel formData)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    var bRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+		//    try
+		//    {
+		//        UpdateModel(formData);
+		//        if (ModelState.IsValid)
+		//        {
+		//            var b = bRepo.Get(id);
+		//            UpdateModel(b, "MemberQuotation");
+		//            context.Commit();
+		//            return Redirect(returnUrl);
+		//        }
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        _Logger.Error("Edit", ex);
+		//        context.Complete();
+		//        ModelState.AddModelError("", ex.Message);
+		//    }
+		//    return View(MVC.Quotation.Views.Create, formData);
+		//}
 
-				dynamic handleMail = new Email(MVC.Emails.Views.Email);
-				handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-				handleMail.To = quotation.Member.Email;
-				handleMail.ToName = quotation.Member.MemberMainData.FirstName;
+		///// <summary>
+		///// GET Action result to handle quotation
+		///// </summary>
+		///// <param name="id">id of quotation to handle</param>
+		///// <param name="returnUrl">url to redirect</param>
+		///// <returns>Redirect to url</returns>
+		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		//public virtual ActionResult HandleBooking(int id, int memberId, string returnUrl)
+		//{
+		//    var context = ModelFactory.GetUnitOfWork();
+		//    try
+		//    {
+		//        var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+		//        var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+		//        var m = mRepo.Get(memberId);
+		//        var quotation = qRepo.Get(id);
 
-				handleMail.Subject = Worki.Resources.Email.BookingString.QuotationHandleMailSubject;
-				handleMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationHandleMailBody,
-													Localisation.GetOfferType(quotation.Offer.Type),
-													quotation.Surface,
-													quotation.Offer.Localisation.Name,
-													quotation.Offer.Localisation.Adress + ", " + quotation.Offer.Localisation.PostalCode + " " + quotation.Offer.Localisation.City);
+		//        //send email
 
-				handleMail.Send();
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("HandleBooking", ex);
-				context.Complete();
-			}
-			return Redirect(returnUrl);
-		}
+		//        dynamic handleMail = new Email(MVC.Emails.Views.Email);
+		//        handleMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+		//        handleMail.To = quotation.Member.Email;
+		//        handleMail.ToName = quotation.Member.MemberMainData.FirstName;
+
+		//        handleMail.Subject = Worki.Resources.Email.BookingString.QuotationHandleMailSubject;
+		//        handleMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationHandleMailBody,
+		//                                            Localisation.GetOfferType(quotation.Offer.Type),
+		//                                            quotation.Surface,
+		//                                            quotation.Offer.Localisation.Name,
+		//                                            quotation.Offer.Localisation.Adress + ", " + quotation.Offer.Localisation.PostalCode + " " + quotation.Offer.Localisation.City);
+
+		//        handleMail.Send();
+		//        context.Commit();
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        _Logger.Error("HandleBooking", ex);
+		//        context.Complete();
+		//    }
+		//    return Redirect(returnUrl);
+		//}
 
         #region Private
 
