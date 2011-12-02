@@ -267,6 +267,9 @@ namespace Worki.Data.Models
 
         [Display(Name = "Response", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string Response { get; set; }
+
+        [Display(Name = "Price", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string Price { get; set; }
 	}
 
 	public partial class MemberBookingLog

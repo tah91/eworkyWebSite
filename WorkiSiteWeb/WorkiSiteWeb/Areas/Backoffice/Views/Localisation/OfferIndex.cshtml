@@ -46,7 +46,7 @@
                         Tarif
                     </td>
                     <td>
-                        <b>@Model.Price @Offer.GetCurrencyEnumType(Model.Currency)</b> par <b>@Offer.GetPaymentPeriodType(Model.Period)</b>
+                        <b>@WebHelper.DisplayCurrency(Model.Price, false) @Offer.GetCurrencyEnumType(Model.Currency)</b> par <b>@Offer.GetPaymentPeriodType(Model.Period)</b>
                     </td>
                 </tr>
                 <tr>

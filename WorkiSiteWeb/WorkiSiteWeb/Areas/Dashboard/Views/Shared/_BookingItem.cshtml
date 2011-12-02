@@ -28,13 +28,13 @@
 				}
 				@if (Model.ClientCanPay)
 				{
-		            <div class="buttonStd buttonBlue linkImg bookingStatusAction">
+		            <div class="buttonStd buttonBlue linkImg bookingStatusAction bookingSingle">
 						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Booking.PayWithPayPal(Model.Id))
 					</div>
 				}
                 @if (Model.ClientCanCancel)
 				{
-		            <div class="buttonStd buttonBlue linkImg bookingStatusAction">
+		            <div class="buttonStd buttonBlue linkImg bookingStatusAction bookingSingle">
 						@Html.ActionLink("Annuler", MVC.Dashboard.Home.CancelBooking(Model.Id))
 					</div>
 				}
