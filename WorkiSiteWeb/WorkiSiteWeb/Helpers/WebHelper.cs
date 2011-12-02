@@ -165,5 +165,10 @@ namespace Worki.Web.Helpers
         {
             return (price + " €");
         }
+
+        public static string DisplayCurrency(decimal price)
+        {
+            return (price + " €");
+        }
     }
 }

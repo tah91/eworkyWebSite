@@ -7,7 +7,7 @@
 }
 
 <li class="bookingItem">
-    <div class="contentBlock">
+    <div class="innerContentBlock padding10">
         <div class="bookingGallery float-left">
             @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Offer.Localisation.GetMainPic(), true), Model.Offer.Localisation.Name)
         </div>
@@ -18,7 +18,7 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
         </div>
-        <div class="bookingStatus bookingStatus@(color) float-left borderRadius">
+        <div class="bookingStatus bookingStatus@(color) borderRadius float-left">
             <div class="bookingStatusContent">
 				@if (!string.IsNullOrEmpty(statusText))
 				{

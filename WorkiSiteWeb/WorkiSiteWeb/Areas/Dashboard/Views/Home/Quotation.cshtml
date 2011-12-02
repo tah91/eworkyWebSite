@@ -20,6 +20,7 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
+        <div class="contentBlock">
 		@if (Model.List.Count != 0)
         {
 			<ul>
@@ -34,12 +35,11 @@
         }
         else
         {
-            <div class="contentBlock">
-                <div class="emptyContent italic">
-                    @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Historic, MVC.Dashboard.Historic.Quotation())))
-                </div>
+            <div class="emptyContent italic">
+                @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Historic, MVC.Dashboard.Historic.Quotation())))
             </div>
         }
+        </div>
 	</div>
 	<div class="clear"></div>
 </div>

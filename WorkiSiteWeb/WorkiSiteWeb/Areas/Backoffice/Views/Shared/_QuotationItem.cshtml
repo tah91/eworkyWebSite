@@ -7,7 +7,7 @@
 }
 
 <li class="bookingItem">
-    <div class="contentBlock">
+    <div class="innerContentBlock padding10">
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
@@ -15,9 +15,9 @@
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(DateTime.UtcNow, CultureHelpers.TimeFormat.LongGeneral).ToString())
         </div>
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, Model.Price.ToString())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
         </div>
-        <div class="bookingStatus float-left">
+        <div class="bookingStatus bookingStatus@(color) borderRadius float-left">
             <div class="bookingStatusContent">
 				@if (!string.IsNullOrEmpty(statusText))
 				{
