@@ -23,7 +23,11 @@
 
 	<div class="blockContainer float-left contentRight">
         <div class="contentBlock">
-            @Html.Partial(MVC.Backoffice.Shared.Views._QuotationList, new QuotationListViewModel { Quotations = Model })
+            @Html.Partial(MVC.Backoffice.Shared.Views._QuotationList,
+            new QuotationListViewModel {
+                                            Quotations = Model,
+                                            UrlMaker = x => Url.Action(MVC.Backoffice.Home.Quotation(x))
+                                        })
         </div>
 	</div>
 	<div class="clear"></div>

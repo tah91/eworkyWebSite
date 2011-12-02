@@ -1064,7 +1064,7 @@
 jQuery(function ($) {
     $.datepicker.regional['fr'] = {
         closeText: 'Fermer',
-        prevText: '&#x3c;Préc',
+        prevText: '&#x3c;Pr&#233c',
         nextText: 'Suiv&#x3e;',
         currentText: 'Courant',
         monthNames: ['Janvier', 'F&#233vrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao&#251t', 'Septembre', 'Octobre', 'Novembre', 'D&#233cembre'],

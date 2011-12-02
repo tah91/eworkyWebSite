@@ -63,10 +63,11 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			{
 				var member = mRepo.Get(id);
 				Member.Validate(member);
+                var list = member.MemberBookings.Where(mb => !mb.Expired).Skip((p - 1) * PageSize).Take(PageSize).ToList();
 				var model = new PagingList<MemberBooking>
 				{
-					List = member.MemberBookings.Where(mb => !mb.Expired).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.MemberBookings.Count }
+					List = list,
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = list.Count }
 				};
 				return View(model);
 			}

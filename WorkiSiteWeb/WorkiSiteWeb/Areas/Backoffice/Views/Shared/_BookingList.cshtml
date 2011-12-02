@@ -9,7 +9,7 @@
     }
     </ul>
     <div class="pager">
-        @Html.PageLinks(Model.Bookings.PagingInfo, x => Url.Action(MVC.Backoffice.Home.Booking(x)))
+        @Html.PageLinks(Model.Bookings.PagingInfo, Model.UrlMaker)
     </div>  
 }
 else

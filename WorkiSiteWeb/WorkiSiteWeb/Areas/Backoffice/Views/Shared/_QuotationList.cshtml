@@ -9,7 +9,7 @@
     }
     </ul>
     <div class="pager">
-        @Html.PageLinks(Model.Quotations.PagingInfo, x => Url.Action(MVC.Backoffice.Home.Quotation(x)))
+        @Html.PageLinks(Model.Quotations.PagingInfo, Model.UrlMaker)
     </div>  
 }
 else
