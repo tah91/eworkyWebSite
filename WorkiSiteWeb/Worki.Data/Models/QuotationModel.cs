@@ -184,6 +184,9 @@ namespace Worki.Data.Models
 
         [Display(Name = "VisitNeeded", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public bool VisitNeeded { get; set; }
+
+        [Display(Name = "Response", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public bool Response { get; set; }
 	}
 
     public partial class MemberQuotationLog
