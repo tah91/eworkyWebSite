@@ -25,7 +25,7 @@
         <div class="contentBlock">
             @Html.Partial(MVC.Backoffice.Shared.Views._BookingList,
             new BookingListViewModel {
-                                        Bookings = Model,
+                                        PageList = Model,
                                         UrlMaker = x => Url.Action(MVC.Backoffice.Home.Booking(x))
                                     })
         </div>

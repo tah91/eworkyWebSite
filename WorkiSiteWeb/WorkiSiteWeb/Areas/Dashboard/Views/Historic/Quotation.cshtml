@@ -22,7 +22,7 @@
 		<div class="contentBlock">
             @Html.Partial(MVC.Dashboard.Shared.Views._QuotationList,
             new QuotationListViewModel {
-                                        Quotations = Model,
+                                        PageList = Model,
                                         EmptyMessage = Worki.Resources.Views.BackOffice.BackOfficeString.EmptyQuotationHistoric,
                                         UrlMaker = x => Url.Action(MVC.Dashboard.Historic.Quotation(x))
                                     })

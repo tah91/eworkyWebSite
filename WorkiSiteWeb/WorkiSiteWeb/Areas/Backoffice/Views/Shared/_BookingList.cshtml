@@ -1,15 +1,15 @@
 ﻿@model BookingListViewModel
 
-@if (Model.Bookings.List.Count != 0)
+@if (Model.PageList.List.Count != 0)
 {
     <ul>
-    @foreach (var booking in Model.Bookings.List)
+    @foreach (var booking in Model.PageList.List)
     {
         @Html.Partial(MVC.Backoffice.Shared.Views._BookingItem, booking)
     }
     </ul>
     <div class="pager">
-        @Html.PageLinks(Model.Bookings.PagingInfo, Model.UrlMaker)
+        @Html.PageLinks(Model.PageList.PagingInfo, Model.UrlMaker)
     </div>  
 }
 else

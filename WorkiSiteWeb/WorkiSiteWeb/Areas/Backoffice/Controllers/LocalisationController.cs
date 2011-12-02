@@ -210,8 +210,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Localisation = loc,
 					Bookings = new PagingList<MemberBooking>
 					{
-                        List = bookings.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
+                        List = bookings.Skip((p - 1) * PagedListViewModel<MemberBooking>.PageSize).Take(PagedListViewModel<MemberBooking>.PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel<MemberBooking>.PageSize, TotalItems = bookings.Count() }
 					}
 				};
 				return View(model);
@@ -248,8 +248,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Offer = offer,
 					Bookings = new PagingList<MemberBooking>
 					{
-                        List = offer.MemberBookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberBookings.Count }
+                        List = offer.MemberBookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PagedListViewModel<MemberBooking>.PageSize).Take(PagedListViewModel<MemberBooking>.PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel<MemberBooking>.PageSize, TotalItems = offer.MemberBookings.Count }
 					}
 				};
 				return View(model);
@@ -518,8 +518,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Localisation = loc,
 					Quotations = new PagingList<MemberQuotation>
 					{
-						List = quotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = quotations.Count() }
+                        List = quotations.Skip((p - 1) * PagedListViewModel<MemberQuotation>.PageSize).Take(PagedListViewModel<MemberQuotation>.PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel<MemberQuotation>.PageSize, TotalItems = quotations.Count() }
 					}
 				};
 				return View(model);
@@ -638,8 +638,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Offer = offer,
 					Quotations = new PagingList<MemberQuotation>
 					{
-						List = offer.MemberQuotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberQuotations.Count }
+                        List = offer.MemberQuotations.Skip((p - 1) * PagedListViewModel<MemberQuotation>.PageSize).Take(PagedListViewModel<MemberQuotation>.PageSize).ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel<MemberQuotation>.PageSize, TotalItems = offer.MemberQuotations.Count }
 					}
 				};
 				return View(model);

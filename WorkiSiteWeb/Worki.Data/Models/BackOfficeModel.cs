@@ -50,21 +50,20 @@ namespace Worki.Data.Models
         public IEnumerable<DescriptionItem> Descriptions { get; set; }
     }
 
-    public class PagedListViewModel
+    public class PagedListViewModel<T>
     {
         public const int PageSize = 5;
         public string Title { get; set; }
         public Func<int, string> UrlMaker { get; set; }
         public string EmptyMessage { get; set; }
+        public PagingList<T> PageList { get; set; }
     }
 
-    public class BookingListViewModel : PagedListViewModel
+    public class BookingListViewModel : PagedListViewModel<MemberBooking>
     {
-        public PagingList<MemberBooking> Bookings { get; set; }
     }
 
-    public class QuotationListViewModel : PagedListViewModel
+    public class QuotationListViewModel : PagedListViewModel<MemberQuotation>
     {
-        public PagingList<MemberQuotation> Quotations { get; set; }
     }
 }

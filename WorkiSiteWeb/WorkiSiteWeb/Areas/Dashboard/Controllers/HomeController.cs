@@ -65,8 +65,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 var list = member.MemberBookings.Where(mb => !mb.Expired);
 				var model = new PagingList<MemberBooking>
 				{
-                    List = list.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = list.Count() }
+                    List = list.Skip((p - 1) * PagedListViewModel<MemberBooking>.PageSize).Take(PagedListViewModel<MemberBooking>.PageSize).ToList(),
+                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel<MemberBooking>.PageSize, TotalItems = list.Count() }
 				};
 				return View(model);
 			}
@@ -225,8 +225,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 var list = member.MemberQuotations.Where(q => q.Unknown || q.CreationDate > DateTime.UtcNow.AddDays(-15));
 				var model = new PagingList<MemberQuotation>
 				{
-                    List = list.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = list.Count() }
+                    List = list.Skip((p - 1) * PagedListViewModel<MemberQuotation>.PageSize).Take(PagedListViewModel<MemberQuotation>.PageSize).ToList(),
+                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel<MemberQuotation>.PageSize, TotalItems = list.Count() }
 				};
 				return View(model);
 			}

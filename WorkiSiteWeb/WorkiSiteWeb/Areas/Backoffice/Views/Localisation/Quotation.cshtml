@@ -31,7 +31,7 @@
         <div class="contentBlock">
             @Html.Partial(MVC.Backoffice.Shared.Views._QuotationList, new QuotationListViewModel
             {
-                Quotations = Model.Quotations,
+                PageList = Model.Quotations,
                 Title = Model.Localisation.Name,
                 UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x))
             })

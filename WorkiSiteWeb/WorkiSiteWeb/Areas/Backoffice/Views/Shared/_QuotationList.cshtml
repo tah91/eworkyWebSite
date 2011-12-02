@@ -1,15 +1,15 @@
 ﻿@model QuotationListViewModel
 
-@if (Model.Quotations.List.Count != 0)
+@if (Model.PageList.List.Count != 0)
 {
     <ul>
-    @foreach (var quotation in Model.Quotations.List)
+    @foreach (var quotation in Model.PageList.List)
     {
         @Html.Partial(MVC.Backoffice.Shared.Views._QuotationItem, quotation)
     }
     </ul>
     <div class="pager">
-        @Html.PageLinks(Model.Quotations.PagingInfo, Model.UrlMaker)
+        @Html.PageLinks(Model.PageList.PagingInfo, Model.UrlMaker)
     </div>  
 }
 else

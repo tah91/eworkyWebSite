@@ -22,7 +22,7 @@
 		<div class="contentBlock">
             @Html.Partial(MVC.Dashboard.Shared.Views._BookingList,
             new BookingListViewModel {
-                                        Bookings = Model,
+                                        PageList = Model,
                                         EmptyMessage = Worki.Resources.Views.BackOffice.BackOfficeString.EmptyBookHistoric,
                                         UrlMaker = x => Url.Action(MVC.Dashboard.Historic.Booking(x))
                                     })
