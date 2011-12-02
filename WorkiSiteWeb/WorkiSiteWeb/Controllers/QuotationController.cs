@@ -115,7 +115,47 @@ namespace Worki.Web.Controllers
                             EventType = (int)MemberQuotationLog.QuotationEvent.Creation
                         });
 
+						if (sendNewAccountMail)
+						{
+							SendCreationAccountMail(formData, member, offer);
+						}
+
+						//send mail to team
+						dynamic teamMail = new Email(MVC.Emails.Views.Email);
+						teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+						teamMail.To = MiscHelpers.EmailConstants.BookingMail;
+						teamMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
+						teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
+						teamMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
+														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
+														 formData.PhoneNumber,
+														 member.Email,
+														 locName,
+														 Localisation.GetOfferType(offer.Type),
+														 formData.MemberQuotation.Surface,
+														 formData.MemberQuotation.Message);
+
+						//send mail to quoation member
+						dynamic clientMail = new Email(MVC.Emails.Views.Email);
+						clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+						clientMail.To = member.Email;
+						clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+						clientMail.ToName = member.MemberMainData.FirstName;
+						clientMail.Content = "TODO";
+
+						//send mail to localisation member
+						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+						ownerMail.To = offer.Localisation.Member.Email;
+						ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+						ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
+						ownerMail.Content = "TODO";
+
 						context.Commit();
+
+						clientMail.Send();
+						teamMail.Send();
+						ownerMail.Send();
 					}
 					catch (Exception ex)
 					{
@@ -123,46 +163,6 @@ namespace Worki.Web.Controllers
 						context.Complete();
 						throw ex;
 					}
-
-					if (sendNewAccountMail)
-					{
-						SendCreationAccountMail(formData, member, offer);
-					}
-
-					//send mail to team
-					dynamic teamMail = new Email(MVC.Emails.Views.Email);
-					teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-                    teamMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
-					teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-                    teamMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationMailBody,
-					                                 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
-					                                 formData.PhoneNumber,
-					                                 member.Email,
-					                                 locName,
-					                                 Localisation.GetOfferType(offer.Type),
-					                                 formData.MemberQuotation.Surface,
-					                                 formData.MemberQuotation.Message);
-
-                    //send mail to quoation member
-                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
-                    clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    clientMail.To = member.Email;
-                    clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-                    clientMail.ToName = member.MemberMainData.FirstName;
-                    clientMail.Content = "TODO";
-
-                    //send mail to localisation member
-                    dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                    ownerMail.To = offer.Localisation.Member.Email;
-                    ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
-                    ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-                    ownerMail.Content = "TODO";
-
-					clientMail.Send();
-					teamMail.Send();
-                    ownerMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));

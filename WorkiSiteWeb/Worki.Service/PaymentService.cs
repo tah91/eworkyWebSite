@@ -278,13 +278,13 @@ namespace Worki.Service
                             string tr1 = paypalRequest["transaction[0].id"];
                             string tr2 = paypalRequest["transaction[1].id"];
                             //Check it...
-                            decimal tr1Amount, tr2Amount;
-                            decimal.TryParse(paypalRequest["transaction[0].amount"], NumberStyles.Currency, null, out tr1Amount);
-                            decimal.TryParse(paypalRequest["transaction[1].amount"], NumberStyles.Currency, null, out tr2Amount);
-                            //string ownerAmountStr = paypalRequest["transaction[0].amount"].Split()[1];
-                            //string eworkyAmountStr = paypalRequest["transaction[1].amount"].Split()[1];
-                            //var ownerAmount = double.Parse(ownerAmountStr);
-                            //var eworkyAmount = double.Parse(eworkyAmountStr);
+                            //decimal tr1Amount, tr2Amount;
+							//decimal.TryParse(paypalRequest["transaction[0].amount"], NumberStyles.Currency, null, out tr1Amount);
+							//decimal.TryParse(paypalRequest["transaction[1].amount"], NumberStyles.Currency, null, out tr2Amount);
+                            string tr1Str = paypalRequest["transaction[0].amount"].Split()[1];
+							string tr2Str = paypalRequest["transaction[1].amount"].Split()[1];
+							var tr1Amount = decimal.Parse(tr1Str);
+							var tr2Amount = decimal.Parse(tr2Str);
 
                             var payments = new List<PaymentItem>
                             {
