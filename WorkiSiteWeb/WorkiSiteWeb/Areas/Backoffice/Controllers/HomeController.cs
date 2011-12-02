@@ -73,8 +73,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				Member.Validate(member);
 				var model = new PagingList<Localisation>
 				{
-					List = member.Localisations.Where(loc => !Localisation.FreeLocalisationTypes.Contains(loc.TypeValue)).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = member.Localisations.Count }
+					List = member.Localisations.Where(loc => !Localisation.FreeLocalisationTypes.Contains(loc.TypeValue)).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = member.Localisations.Count }
 				};
 				return View(model);
 			}
@@ -84,8 +84,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				return View(MVC.Shared.Views.Error);
 			}
 		}
-
-        public const int PageSize = 6;
 
         /// <summary>
         /// Get action method to show bookings of the owner
@@ -106,8 +104,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id && b.StatusId == (int)MemberBooking.Status.Unknown);
                 var model = new PagingList<MemberBooking>
                 {
-                    List = bookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = bookings.Count }
+                    List = bookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count }
                 };
                 return View(model);
             }
@@ -134,11 +132,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 var member = mRepo.Get(id);
                 Member.Validate(member);
-				var quotations = qRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
+                var quotations = qRepo.GetMany(q => q.Offer.Localisation.OwnerID == id && q.StatusId == (int)MemberQuotation.Status.Unknown);
                 var model = new PagingList<MemberQuotation>
                 {
-					List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
+					List = quotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = quotations.Count }
                 };
                 return View(model);
             }

@@ -147,7 +147,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Expired
 		{
-			get { return ToDate < DateTime.UtcNow; }
+			get { return ToDate < DateTime.UtcNow.AddDays(-1); }
 		}
 
 		/// <summary>

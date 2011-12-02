@@ -29,12 +29,12 @@
 
 	<div class="blockContainer float-left contentRight">
         <div class="contentBlock">
-            @Html.Partial(MVC.Backoffice.Shared.Views._QuotationList,
-            new QuotationListViewModel {
-                                            Quotations = Model.Quotations,
-                                            Title = Model.Localisation.Name,
-                                            UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Quotation(x))
-                                        })
+            @Html.Partial(MVC.Backoffice.Shared.Views._QuotationList, new QuotationListViewModel
+            {
+                Quotations = Model.Quotations,
+                Title = Model.Localisation.Name,
+                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x))
+            })
         </div>
 	</div>
 	<div class="clear">

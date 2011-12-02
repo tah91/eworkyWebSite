@@ -26,8 +26,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             _Logger = logger;
         }
 
-        public const int PageSize = 5;
-
 		#region Index
 
 		/// <summary>
@@ -196,14 +194,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id && b.StatusId == (int)MemberBooking.Status.Unknown);
+                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id && b.StatusId == (int)MemberBooking.Status.Unknown).OrderByDescending(b => b.CreationDate);
 				var model = new LocalisationBookingViewModel
 				{
 					Localisation = loc,
 					Bookings = new PagingList<MemberBooking>
 					{
-                        List = bookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = bookings.Count }
+                        List = bookings.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
 					}
 				};
 				return View(model);
@@ -240,8 +238,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Offer = offer,
 					Bookings = new PagingList<MemberBooking>
 					{
-                        List = offer.MemberBookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberBookings.Count }
+                        List = offer.MemberBookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberBookings.Count }
 					}
 				};
 				return View(model);
@@ -504,14 +502,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-				var quotations = qRepo.GetMany(b => b.Offer.LocalisationId == id);
+                var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id && q.StatusId == (int)MemberQuotation.Status.Unknown).OrderByDescending(q => q.CreationDate);
 				var model = new LocalisationQuotationViewModel
 				{
 					Localisation = loc,
 					Quotations = new PagingList<MemberQuotation>
 					{
-						List = quotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = quotations.Count }
+						List = quotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = quotations.Count() }
 					}
 				};
 				return View(model);
@@ -630,8 +628,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Offer = offer,
 					Quotations = new PagingList<MemberQuotation>
 					{
-						List = offer.MemberQuotations.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = offer.MemberQuotations.Count }
+						List = offer.MemberQuotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberQuotations.Count }
 					}
 				};
 				return View(model);
