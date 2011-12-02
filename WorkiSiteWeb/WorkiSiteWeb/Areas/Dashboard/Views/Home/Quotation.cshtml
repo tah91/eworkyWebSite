@@ -21,24 +21,7 @@
 
 	<div class="blockContainer float-left contentRight">
         <div class="contentBlock">
-		@if (Model.List.Count != 0)
-        {
-			<ul>
-            @foreach (var quotation in Model.List)
-            {
-                @Html.Partial(MVC.Dashboard.Shared.Views._QuotationItem, quotation)
-            }
-            </ul>
-            <div class="pager">
-                @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Dashboard.Home.Quotation(x)))
-            </div>
-        }
-        else
-        {
-            <div class="emptyContent italic">
-                @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Historic, MVC.Dashboard.Historic.Quotation())))
-            </div>
-        }
+            @Html.Partial(MVC.Dashboard.Shared.Views._QuotationList, new QuotationListViewModel { Quotations = Model })
         </div>
 	</div>
 	<div class="clear"></div>

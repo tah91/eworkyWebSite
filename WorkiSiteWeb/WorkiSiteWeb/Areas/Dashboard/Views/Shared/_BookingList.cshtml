@@ -1,0 +1,20 @@
+﻿@model BookingListViewModel
+
+@if (Model.Bookings.List.Count != 0)
+{
+    <ul>
+    @foreach (var booking in Model.Bookings.List)
+    {
+        @Html.Partial(MVC.Dashboard.Shared.Views._BookingItem, booking)
+    }
+    </ul>
+    <div class="pager">
+        @Html.PageLinks(Model.Bookings.PagingInfo, x => Url.Action(MVC.Dashboard.Home.Booking(x)))
+    </div>  
+}
+else
+{
+    <div class="emptyContent italic">
+        @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingBooking, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Dashboard.Home.Booking())))
+    </div>
+}

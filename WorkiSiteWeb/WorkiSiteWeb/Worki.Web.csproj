@@ -670,6 +670,9 @@
     <Content Include="Areas\Backoffice\Views\Localisation\QuotationDetail.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\QuotationCancelled.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\QuotationAccepted.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Shared\_QuotationList.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_QuotationList.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_BookingList.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

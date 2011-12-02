@@ -3283,6 +3283,7 @@ namespace T4MVC.Backoffice {
             public readonly string _BookingItem = "~/Areas/Backoffice/Views/Shared/_BookingItem.cshtml";
             public readonly string _BookingList = "~/Areas/Backoffice/Views/Shared/_BookingList.cshtml";
             public readonly string _QuotationItem = "~/Areas/Backoffice/Views/Shared/_QuotationItem.cshtml";
+            public readonly string _QuotationList = "~/Areas/Backoffice/Views/Shared/_QuotationList.cshtml";
         }
     }
 
@@ -3707,12 +3708,14 @@ namespace T4MVC.Dashboard {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _BookingItem = "~/Areas/Dashboard/Views/Shared/_BookingItem.cshtml";
+            public readonly string _BookingList = "~/Areas/Dashboard/Views/Shared/_BookingList.cshtml";
             public readonly string _CommentTab = "~/Areas/Dashboard/Views/Shared/_CommentTab.cshtml";
             public readonly string _DashboardMenu = "~/Areas/Dashboard/Views/Shared/_DashboardMenu.cshtml";
             public readonly string _LocalisationItem = "~/Areas/Dashboard/Views/Shared/_LocalisationItem.cshtml";
             public readonly string _LocalisationTab = "~/Areas/Dashboard/Views/Shared/_LocalisationTab.cshtml";
             public readonly string _NewsContent = "~/Areas/Dashboard/Views/Shared/_NewsContent.cshtml";
             public readonly string _QuotationItem = "~/Areas/Dashboard/Views/Shared/_QuotationItem.cshtml";
+            public readonly string _QuotationList = "~/Areas/Dashboard/Views/Shared/_QuotationList.cshtml";
             public readonly string _SummaryContent = "~/Areas/Dashboard/Views/Shared/_SummaryContent.cshtml";
         }
     }

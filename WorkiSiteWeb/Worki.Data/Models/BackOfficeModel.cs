@@ -55,4 +55,10 @@ namespace Worki.Data.Models
         public string Title { get; set; }
         public PagingList<MemberBooking> Bookings { get; set; }
     }
+
+    public class QuotationListViewModel
+    {
+        public string Title { get; set; }
+        public PagingList<MemberQuotation> Quotations { get; set; }
+    }
 }
