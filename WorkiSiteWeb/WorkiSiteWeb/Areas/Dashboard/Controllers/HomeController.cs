@@ -39,8 +39,9 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 
 			var member = mRepo.Get(id);
 			var news = ModelHelper.GetNews(member.MemberBookings, mb => { return Url.Action(MVC.Dashboard.Home.BookingDetail(mb.Id)); });
+            news = news.Concat(ModelHelper.GetNews(member.MemberQuotations, q => { return Url.Action(MVC.Dashboard.Home.QuotationDetail(q.Id)); })).ToList();
 
-			news = news.OrderByDescending(n => n.Date).Take(10).ToList();
+            news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
             return View(new DashoboardHomeViewModel { News = news, Member = member });
         }
 

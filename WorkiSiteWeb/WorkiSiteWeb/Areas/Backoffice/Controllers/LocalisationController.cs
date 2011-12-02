@@ -41,6 +41,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 			try
 			{
 				var member = mRepo.Get(memberId);
@@ -49,8 +50,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				Member.ValidateOwner(member, loc);
 
 				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
+                var quotations = qRepo.GetMany(q =>q.Offer.LocalisationId == id);
+
 				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
-				news = news.OrderByDescending(n => n.Date).Take(10).ToList();
+                news = news.Concat(ModelHelper.GetNews(quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
+
+				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
                 return View(new BackOfficeLocalisationHomeViewModel { Localisation = loc, News = news });
 			}

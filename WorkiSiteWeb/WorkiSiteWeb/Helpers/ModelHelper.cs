@@ -139,6 +139,28 @@ namespace Worki.Web.Helpers
 			return toRet;
 		}
 
+        public static List<NewsItem> GetNews(IEnumerable<MemberQuotation> quotations, Func<MemberQuotation, string> linkFunction)
+        {
+            var toRet = new List<NewsItem>();
+            foreach (var quotation in quotations)
+            {
+                foreach (var log in quotation.MemberQuotationLogs)
+                {
+                    if (log.EventType == (int)MemberQuotationLog.QuotationEvent.General)
+                        continue;
+
+                    toRet.Add(new NewsItem
+                    {
+                        Date = log.CreatedDate,
+                        DisplayName = log.GetDisplay(),
+                        Link = linkFunction(quotation)
+                    });
+                }
+            }
+
+            return toRet;
+        }
+
 		public static DropDownModel GetOfferDropDown(Offer offer, Func<Offer,string> urlMaker)
 		{
 			var dropDown = new DropDownModel

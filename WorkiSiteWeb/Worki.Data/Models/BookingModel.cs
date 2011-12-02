@@ -294,6 +294,8 @@ namespace Worki.Data.Models
 					return string.Format("{0} a refusé la demande de réservation pour le lieu {1}", MemberBooking.Owner.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.Payment:
 					return string.Format("{0} a payé la demande de réservation pour le lieu {1}", MemberBooking.Client.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+                case BookingEvent.Cancellation:
+                    return string.Format("{0} a annulé la demande de réservation pour le lieu {1}", MemberBooking.Client.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.General:
 				default:
 					return Event;

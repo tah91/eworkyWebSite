@@ -36,13 +36,17 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 			try
 			{
 				var member = mRepo.Get(id);
 				Member.Validate(member);
 
 				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
+                var quotations = qRepo.GetMany(q =>q.Offer.Localisation.OwnerID == id);
 				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
+                news = news.Concat(ModelHelper.GetNews(quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
+
                 news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
                 var localisations = lRepo.GetMostBooked(id, BackOfficeConstants.LocalisationCount);
