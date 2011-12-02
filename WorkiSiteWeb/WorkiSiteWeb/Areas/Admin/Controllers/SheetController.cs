@@ -166,6 +166,70 @@ namespace Worki.Web.Areas.Admin.Controllers
                 return Redirect(returnUrl);
         }
 
+        /// <summary>
+        /// POST Action method to update localisation owners
+        /// and redirect to localisation admin home
+        /// </summary>
+        /// <param name="collection">form containg the list of owners ids</param>
+        /// <returns>Redirect to home</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult UpdateOwner(FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                try
+                {
+                    // erase all values on the tables mainLocalisation inthe table
+                    var formKeys = collection.AllKeys;
+                    foreach (var key in formKeys)
+                    {
+                        Localisation loc = null;
+                        try
+                        {
+                            var locId = int.Parse(key);
+                            loc = lRepo.Get(locId);
+                            if (loc == null)
+                                continue;
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
+                        var formField = collection[key].ToLower();
+                        var values = formField.Split(',');
+                        var userName = string.Empty;
+                        foreach (var item in values)
+                        {
+                            if (string.IsNullOrEmpty(item))
+                                continue;
+                            //retrieve username
+                            if (item.Contains('@'))
+                            {
+                                var member = mRepo.GetMember(item);
+                                if (member == null)
+                                    continue;
+                                loc.SetOwner(member.MemberId);
+                            }
+                        }
+                    }
+                    context.Commit();
+                }
+                catch (Exception e)
+                {
+                    _Logger.Error(e.Message);
+                    context.Complete();
+                    ModelState.AddModelError("", e.Message);
+                }
+            }
+            // Redirection
+            TempData[MiscHelpers.TempDataConstants.Info] = "Les gérants ont été modifiés";
+            return RedirectToAction(MVC.Admin.Sheet.Index());
+        }
+
         #endregion 
 
         #region Admin Rental
