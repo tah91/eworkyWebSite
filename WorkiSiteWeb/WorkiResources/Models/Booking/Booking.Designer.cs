@@ -194,5 +194,14 @@ namespace Worki.Resources.Models.Booking {
                 return ResourceManager.GetString("ToDate", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demande de visite.
+        /// </summary>
+        public static string VisitNeeded {
+            get {
+                return ResourceManager.GetString("VisitNeeded", resourceCulture);
+            }
+        }
     }
 }

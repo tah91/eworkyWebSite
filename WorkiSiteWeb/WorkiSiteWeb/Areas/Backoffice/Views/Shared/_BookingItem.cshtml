@@ -29,12 +29,13 @@
 				}
 				@if (Model.OwnerCanAccept)
 				{
-					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
+					<div class="float-left buttonStd buttonBlue linkImg bookingStatusAction marginl5">
 						@Html.ActionLink("Accepter",MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
 					</div>
-					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
+					<div class="float-right buttonStd buttonBlue linkImg bookingStatusAction marginr5">
 						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
 					</div>
+                    <div class="clear"></div>
 				}
 
             </div>

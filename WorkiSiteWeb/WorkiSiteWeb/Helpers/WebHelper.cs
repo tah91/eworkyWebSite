@@ -168,7 +168,17 @@ namespace Worki.Web.Helpers
 
         public static string DisplayCurrency(decimal price)
         {
-            return (price + " €");
+            return ((price - decimal.Truncate(price) == 0 ? decimal.Truncate(price) : price) + " €");
+        }
+
+        public static string DisplaySurface(int surface)
+        {
+            return (surface + " m²");
+        }
+
+        public static string DisplaySurface(decimal surface)
+        {
+            return ((surface - decimal.Truncate(surface) == 0 ? decimal.Truncate(surface) : surface) + " m²");
         }
     }
 }
