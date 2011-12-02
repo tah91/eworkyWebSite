@@ -44,7 +44,8 @@ namespace Worki.Data.Models
         {
             Unknown,
             Accepted,
-            Refused
+            Refused,
+            Cancelled
         }
 
         /// <summary>
@@ -62,6 +63,14 @@ namespace Worki.Data.Models
         public bool Refused
         {
             get { return StatusId == (int)Status.Refused; }
+        }
+
+        /// <summary>
+        /// Cancelled by client
+        /// </summary>
+        public bool Cancelled
+        {
+            get { return StatusId == (int)Status.Cancelled; }
         }
 
         /// <summary>
@@ -89,59 +98,59 @@ namespace Worki.Data.Models
         }
 
         /// <summary>
-        /// Need action of the owner
+        /// Cancellation date of the booking by the client
         /// </summary>
-        public bool NeedOwnerAction
+        public DateTime CancellationDate
+        {
+            get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.QuotationEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
+        }
+
+        /// <summary>
+        /// Owner can pay
+        /// </summary>
+        public bool OwnerCanPay
         {
             get { return Unknown; }
         }
 
         /// <summary>
-        /// Need action of the client
+        /// Owner can refuse
         /// </summary>
-        public bool NeedClientAction
+        public bool OwnerCanRefuse
         {
-            get { return false; }
+            get { return Unknown; }
         }
 
-        public void GetStatusForOwner(out string status, out string color)
+        /// <summary>
+        /// Client can cancel
+        /// </summary>
+        public bool ClientCanCancel
+        {
+            get { return Unknown; }
+        }
+
+        public void GetStatus(out string status, out string color)
         {
             status = "";
             color = "";
             if (Unknown)
             {
                 color = "Yellow";
-                status = "";
+                status = "En attente de prise en charge";
             }
             else if (Refused)
             {
-                status = "Refusée";
+                status = "Demande de devis refusée";
                 color = "Red";
+            }
+            else if (Cancelled)
+            {
+                status = "Demande de devis annulé le " + CancellationDate;
+                color = "Gray";
             }
             else if (Paid)
             {
-                status = "Payé le " + PaidDate;
-                color = "Green";
-            }
-        }
-
-        public void GetStatusForClient(out string status, out string color)
-        {
-            status = "";
-            color = "";
-            if (Unknown)
-            {
-                status = "En attente de confirmation";
-                color = "Yellow";
-            }
-            else if (Refused)
-            {
-                status = "Refusée";
-                color = "Red";
-            }
-            else if (Paid)
-            {
-                status = "Payé le " + PaidDate;
+                status = "Contact établi le " + PaidDate;
                 color = "Green";
             }
         }
@@ -180,7 +189,9 @@ namespace Worki.Data.Models
         {
             General,
             Creation,
-            Payment
+            Payment,
+            Refusal,
+            Cancellation
         }
 
         public string GetDisplay()

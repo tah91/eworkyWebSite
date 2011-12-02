@@ -138,7 +138,6 @@ namespace Worki.Web
             ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
 			ownerMail.ToName = quotation.Owner.MemberMainData.FirstName;
 			ownerMail.Content = "TODO";
-            ownerMail.Send();
 
             //send mail to client 
             dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -147,6 +146,8 @@ namespace Worki.Web
             clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
 			clientMail.ToName = quotation.Client.MemberMainData.FirstName;
 			clientMail.Content = "TODO";
+
+            ownerMail.Send();
             clientMail.Send();
 
             try

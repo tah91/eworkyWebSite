@@ -9,7 +9,7 @@
 @{
     var statusText = "";
     var color = "";
-    Model.GetStatusForClient(out statusText, out color);
+    Model.GetStatus(out statusText, out color);
 }
 
 @Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
@@ -48,9 +48,13 @@
             </div>
             <div class="clear"></div>
         </div>
-        @if (Model.NeedClientAction)
+        @if (Model.ClientCanCancel)
         { 
-
+            <div class="buttonStd buttonBlue linkImg float-right">
+				@Html.ActionLink("Annuler", MVC.Dashboard.Home.CancelQuotation(Model.Id))
+			</div>
+            <div class="clear">
+            </div>
         }
 	</div>
 	<div class="clear"></div>

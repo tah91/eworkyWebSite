@@ -8,6 +8,8 @@ using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
+using Postal;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Areas.Dashboard.Controllers
 {
@@ -109,7 +111,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 		/// <param name="id">member booking id</param>
 		/// <returns>View containing the booking</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult BookingAccepted(int id)
+		public virtual ActionResult BookingPaymentAccepted(int id)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -124,7 +126,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			}
 			catch (Exception ex)
 			{
-				_Logger.Error("BookingAccepted", ex);
+                _Logger.Error("BookingPaymentAccepted", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}
@@ -135,7 +137,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 		/// <param name="id">member booking id</param>
 		/// <returns>View containing the booking</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult BookingCancelled(int id)
+		public virtual ActionResult BookingPaymentCancelled(int id)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -158,10 +160,48 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			catch (Exception ex)
 			{
 				context.Complete();
-				_Logger.Error("BookingCancelled", ex);
+                _Logger.Error("BookingPaymentCancelled", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}
+
+        /// <summary>
+        /// GET Action result to cancel booking
+        /// </summary>
+        /// <param name="id">id of booking to confirm</param>
+        /// <returns>View to fill booking data</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult CancelBooking(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+
+            try
+            {
+                var member = mRepo.Get(memberId);
+                var booking = bRepo.Get(id);
+                Member.Validate(member);
+                booking.StatusId = (int)MemberBooking.Status.Cancelled;
+                booking.MemberBookingLogs.Add(new MemberBookingLog
+                {
+                    CreatedDate = DateTime.UtcNow,
+                    Event = "Booking Cancelled",
+                    EventType = (int)MemberBookingLog.BookingEvent.Cancellation
+                });
+
+                context.Commit();
+
+                TempData[MiscHelpers.TempDataConstants.Info] = "Votre demande de réservation a été annulée";
+                return RedirectToAction(MVC.Dashboard.Home.BookingDetail(id));
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("CancelBooking", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
 
 		#endregion
 
@@ -223,6 +263,44 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				return View(MVC.Shared.Views.Error);
 			}
 		}
+
+        /// <summary>
+        /// GET Action result to cancel quotation
+        /// </summary>
+        /// <param name="id">id of quotation to cancel</param>
+        /// <returns>Redirect to quotation detail</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult CancelQuotation(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+
+            try
+            {
+                var member = mRepo.Get(memberId);
+                var quotation = qRepo.Get(id);
+                Member.Validate(member);
+                quotation.StatusId = (int)MemberQuotation.Status.Cancelled;
+                quotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                {
+                    CreatedDate = DateTime.UtcNow,
+                    Event = "Quotation Cancelled",
+                    EventType = (int)MemberQuotationLog.QuotationEvent.Cancellation
+                });
+
+                context.Commit();
+
+                TempData[MiscHelpers.TempDataConstants.Info] = "Votre demande de devis a été annulée";
+                return RedirectToAction(MVC.Dashboard.Home.QuotationDetail(id));
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("CancelBooking", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
 
 		#endregion
     }

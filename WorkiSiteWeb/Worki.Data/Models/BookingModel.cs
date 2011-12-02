@@ -50,7 +50,8 @@ namespace Worki.Data.Models
 		{
 			Unknown,
 			Accepted,
-			Refused
+			Refused,
+            Cancelled
 		}
 
 		#region IDataErrorInfo
@@ -116,6 +117,14 @@ namespace Worki.Data.Models
 			get { return StatusId == (int)Status.Refused; }
 		}
 
+        /// <summary>
+        /// Cancelled by client
+        /// </summary>
+        public bool Cancelled
+        {
+            get { return StatusId == (int)Status.Cancelled; }
+        }
+
 		/// <summary>
 		/// Accepted by owner but not paid yet by client
 		/// </summary>
@@ -157,54 +166,39 @@ namespace Worki.Data.Models
 			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Creation select item.CreatedDate).FirstOrDefault(); }
 		}
 
+        /// <summary>
+        /// Cancellation date of the booking by the client
+        /// </summary>
+        public DateTime CancellationDate
+        {
+            get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
+        }
+
 		/// <summary>
-		/// Need action of the owner
+		/// Owner can accept / refuse
 		/// </summary>
-        public bool NeedOwnerAction
+        public bool OwnerCanAccept
         {
             get { return !Expired && Unknown; }
         }
 
 		/// <summary>
-		/// Need action of the client
+		/// Client can pay
 		/// </summary>
-        public bool NeedClientAction
+        public bool ClientCanPay
         {
             get { return !Expired && Waiting; }
         }
 
-        public void GetStatusForOwner(out string status, out string color)
+        /// <summary>
+        /// Client can cancel
+        /// </summary>
+        public bool ClientCanCancel
         {
-            status = "";
-            color = "";
-            if (Expired)
-            {
-                status = "Achevée le " + ToDate;
-                color = "Gray";
-            }
-            else if (Unknown)
-            {
-                color = "Yellow";
-                status = "";
-            }
-            else if (Refused)
-            {
-                status = "Refusée";
-                color = "Red";
-            }
-            else if (Waiting)
-            {
-                status = "En attente de réglement";
-                color = "Orange";
-            }
-            else if (Paid)
-            {
-                status = "Payé le " + PaidDate;
-                color = "Green";
-            }
+            get { return !Expired && Unknown; }
         }
 
-        public void GetStatusForClient(out string status, out string color)
+        public void GetStatus(out string status, out string color)
         {
             status = "";
             color = "";
@@ -222,6 +216,11 @@ namespace Worki.Data.Models
             {
                 status = "Refusée";
                 color = "Red";
+            }
+            else if (Cancelled)
+            {
+                status = "Annulée le " + CancellationDate;
+                color = "Gray";
             }
             else if (Waiting)
             {
@@ -278,7 +277,8 @@ namespace Worki.Data.Models
 			Creation,
 			Approval,
 			Refusal,
-			Payment
+			Payment,
+            Cancellation
 		}
 
 		public string GetDisplay()

@@ -8,7 +8,7 @@
 @{
     var statusText = "";
     var color = "";
-    Model.GetStatusForOwner(out statusText, out color);
+    Model.GetStatus(out statusText, out color);
 }
 
 <div class="float-left">
@@ -54,15 +54,23 @@
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
             </div>
+            @if (Model.Paid)
+            { 
+                <span>TODO</span>
+            }
             <div class="clear"></div>
         </div>
-        @if (Model.NeedOwnerAction)
+        @if (Model.OwnerCanPay)
         { 
             <div class="buttonStd buttonBlue linkImg float-right">
 				@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Quotation.PayWithPayPal(Model.Id))
 			</div>
-            <div class="clear">
-            </div>
+        }
+        @if (Model.OwnerCanRefuse)
+        { 
+            <div class="buttonStd buttonBlue linkImg float-right">
+				@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseQuotation(Model.Id))
+			</div>
         }
 	</div>
 	<div class="clear"></div>

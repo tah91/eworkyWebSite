@@ -3,13 +3,12 @@
 @{
 	var statusText = "";
 	var color = "";
-    Model.GetStatusForOwner(out statusText, out color);
+    Model.GetStatus(out statusText, out color);
 }
 
 <li class="bookingItem">
     <div class="innerContentBlock padding10">
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(DateTime.UtcNow, CultureHelpers.TimeFormat.LongGeneral).ToString())
@@ -25,10 +24,16 @@
 						@statusText
 					</div>
 				}
-				@if (Model.NeedOwnerAction)
+				@if (Model.OwnerCanPay)
 				{
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
 						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Quotation.PayWithPayPal(Model.Id))
+					</div>
+				}
+                @if (Model.OwnerCanRefuse)
+				{
+					<div class="buttonStd buttonBlue linkImg bookingStatusAction">
+						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseQuotation(Model.Id))
 					</div>
 				}
             </div>
@@ -36,7 +41,10 @@
         <div class="bookingLinks float-right blue">
             <ul>
                 <li>@Html.ActionLink("Details", MVC.Backoffice.Localisation.QuotationDetail(Model.Id))</li>
-                <li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))</li>
+                @if (Model.Paid)
+                { 
+                    <li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))</li>
+                }
             </ul>            
         </div>
         <div class="clear">

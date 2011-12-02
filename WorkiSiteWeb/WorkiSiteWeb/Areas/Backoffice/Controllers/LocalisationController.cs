@@ -345,7 +345,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 														booking.Offer.Localisation.Name,
 														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
 														booking.Price);
-					ownerMail.Send();
 
                     //send mail to client
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -360,9 +359,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 														booking.Offer.Localisation.Name,
 														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
 														booking.Price);
-					clientMail.Send();
 
 					context.Commit();
+
+                    ownerMail.Send();
+                    clientMail.Send();
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été confirmée";
 
 					return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}
@@ -442,7 +445,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                                                      booking.Offer.Localisation.Name,
                                                      booking.Offer.Localisation.Adress,
                                                      formModel.Response);
-					ownerMail.Send();
 
                     //send mail to client
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -457,9 +459,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                                                      booking.Offer.Localisation.Name,
                                                      booking.Offer.Localisation.Adress,
                                                      formModel.Response);
-					clientMail.Send();
+					
 
 					context.Commit();
+
+                    clientMail.Send();
+                    ownerMail.Send();
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été refusée";
 
                     return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}
@@ -635,6 +642,94 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				return View(MVC.Shared.Views.Error);
 			}
 		}
+
+        /// <summary>
+        /// GET Action result to refuse quotation
+        /// </summary>
+        /// <param name="id">id of quotation to refuse</param>
+        /// <returns>View to fill quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult RefuseQuotation(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+
+            try
+            {
+                var member = mRepo.Get(memberId);
+                var quotation = qRepo.Get(id);
+                Member.Validate(member);
+                Member.ValidateOwner(member, quotation.Offer.Localisation);
+
+                return View(quotation);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("RefuseQuotation", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
+
+        /// <summary>
+        /// POST Action result to confirm quotation
+        /// </summary>
+        /// <param name="id">id of quotation to refuse</param>
+        /// <returns>View to fill quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult RefuseQuotation(int id, MemberBooking formModel)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var quotation = qRepo.Get(id);
+                    UpdateModel(quotation);
+                    quotation.StatusId = (int)MemberQuotation.Status.Refused;
+                    quotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                    {
+                        CreatedDate = DateTime.UtcNow,
+                        Event = "Quotation Refused",
+                        EventType = (int)MemberQuotationLog.QuotationEvent.Refusal
+                    });
+
+                    //send mail to owner
+                    dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+                    ownerMail.To = quotation.Owner.Email;
+                    ownerMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
+                    ownerMail.ToName = quotation.Owner.MemberMainData.FirstName;
+                    ownerMail.Content = "TODO";
+
+                    //send mail to client
+                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                    clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+                    clientMail.To = quotation.Client.Email;
+                    clientMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
+                    clientMail.ToName = quotation.Client.MemberMainData.FirstName;
+                    clientMail.Content = "TODO";
+
+                    context.Commit();
+
+                    ownerMail.Send();
+                    clientMail.Send();
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a été refusée";
+
+                    return RedirectToAction(MVC.Backoffice.Localisation.QuotationDetail(quotation.Id));
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("RefuseBooking", ex);
+                    context.Complete();
+                }
+            }
+            return View(formModel);
+        }
 
 		#endregion
     }

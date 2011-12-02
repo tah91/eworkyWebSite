@@ -9,7 +9,7 @@
 @{
     var statusText = "";
     var color = "";
-    Model.GetStatusForOwner(out statusText, out color);
+    Model.GetStatus(out statusText, out color);
 }
 
 <div class="float-left">
@@ -60,7 +60,7 @@
             </div>
             <div class="clear"></div>
         </div>
-        @if (Model.NeedOwnerAction)
+        @if (Model.OwnerCanAccept)
         { 
             <div class="buttonStd buttonBlue linkImg float-right">
 				@Html.ActionLink("Accepter", MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))

@@ -172,7 +172,6 @@ namespace Worki.Web
                                             CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
                                             localisation.Name,
                                             localisation.Adress);
-            ownerMail.Send();
 
             //send mail to client 
             dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -186,6 +185,8 @@ namespace Worki.Web
                                             CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
                                             localisation.Name,
                                             localisation.Adress);
+
+            ownerMail.Send();
             clientMail.Send();
 
             try

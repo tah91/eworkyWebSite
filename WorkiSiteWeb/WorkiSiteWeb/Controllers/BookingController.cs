@@ -194,8 +194,8 @@ namespace Worki.Web.Controllers
 
 			var booking = bRepo.Get(id);
 
-            string returnUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingAccepted(id));
-            string cancelUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingCancelled(id));
+            string returnUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingPaymentAccepted(id));
+            string cancelUrl = Url.ActionAbsolute(MVC.Dashboard.Home.BookingPaymentCancelled(id));
             //string returnUrl = Url.ActionAbsolute(MVC.Payment.PayPalAccepted(memberBookingId));
             //string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
