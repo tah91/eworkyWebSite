@@ -20,24 +20,7 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock">
-			@if (Model.List.Count != 0)
-            {
-				<ul>
-				@foreach (var booking in Model.List)
-				{
-					@Html.Partial(MVC.Dashboard.Shared.Views._BookingItem, booking)
-				}
-				</ul>
-				<div class="pager">
-					@Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Dashboard.Home.Booking(x)))
-				</div>
-            }
-            else
-            {
-                <div class="emptyContent italic">
-                    @Worki.Resources.Views.BackOffice.BackOfficeString.EmptyBookHistoric
-                </div>
-            }
+            @Html.Partial(MVC.Dashboard.Shared.Views._BookingList, new BookingListViewModel { Bookings = Model })
 		</div>
 	</div>
 	<div class="clear"></div>
