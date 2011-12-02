@@ -7,10 +7,6 @@
 	<link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@{
-    var isEditing = Model.MemberQuotation.Id != 0;
-}
-
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.Quotation, "Blue")
 
 <div class="detailContent">
@@ -108,25 +104,10 @@
 							    </div>
 						    </td>
 					    </tr>
-					    @if (isEditing)
-                        {
-		 			    <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.MemberQuotation.Price)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.MemberQuotation.Price)
-							    </div>
-						    </td>
-					    </tr>
-                    }
 				    </table>
                 </div>
 				<div class="editor-field float-right">
-					<input type="submit" class="buttonStd buttonBlue" value="@(isEditing ? Worki.Resources.Views.Booking.BookingString.ConfirmIt : Worki.Resources.Views.Booking.BookingString.ValidateQuotation)"/>
+					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ValidateQuotation"/>
 				</div>
 				<div class="clear"></div>
             }
