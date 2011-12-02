@@ -1894,7 +1894,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 	/*background:#e4dfcb url(arrow.png) no-repeat scroll right center; */
 	display:block; 	
     border:1px solid #CCC; 
-    width:170px;
+    min-width:170px;
 }
 .dropdown dt a span 
 {

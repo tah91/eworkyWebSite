@@ -13,7 +13,7 @@
 			var dropDown = new DropDownModel
 			{
 				Id = DropDownModel.ProfilDD,
-				Title = displayName,
+                Title = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", displayName),
 				Items = new List<DropDownItem>
 						{
 							new DropDownItem{ DisplayName = Worki.Resources.Views.Profile.ProfileString.MyProfile, Link = Url.Action(MVC.Dashboard.Home.Index())}
