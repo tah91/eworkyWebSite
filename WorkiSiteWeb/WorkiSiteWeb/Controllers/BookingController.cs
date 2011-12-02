@@ -142,7 +142,6 @@ namespace Worki.Web.Controllers
 													 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
                                                      CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
 													 formData.MemberBooking.Message);
-					teamMail.Send();
 
                     //send mail to booking member
                     dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -156,7 +155,6 @@ namespace Worki.Web.Controllers
                                                      CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
                                                      locName,
                                                      offer.Localisation.Adress);
-                    clientMail.Send();
 
                     //send mail to localisation member
                     dynamic ownerMail = new Email(MVC.Emails.Views.Email);
@@ -170,6 +168,9 @@ namespace Worki.Web.Controllers
                                                      CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
                                                      locName,
                                                      offer.Localisation.Adress);
+
+					clientMail.Send();
+					teamMail.Send();
                     ownerMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;

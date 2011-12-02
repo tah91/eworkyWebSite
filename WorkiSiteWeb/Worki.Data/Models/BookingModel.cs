@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Worki.Infrastructure;
 using System.Linq;
+using System.ComponentModel;
 
 namespace Worki.Data.Models
 {
@@ -36,7 +37,7 @@ namespace Worki.Data.Models
 	}
 
 	[MetadataType(typeof(MemberBooking_Validation))]
-	public partial class MemberBooking
+	public partial class MemberBooking : IDataErrorInfo
 	{
 		partial void OnInitialized()
 		{
@@ -51,6 +52,50 @@ namespace Worki.Data.Models
 			Accepted,
 			Refused
 		}
+
+		#region IDataErrorInfo
+
+		public string Error
+		{
+			get { return string.Empty; }
+		}
+
+		public string this[string columnName]
+		{
+			get
+			{
+				var oneDay = new TimeSpan(1,0,0,0);
+				switch (columnName)
+				{
+					case "FromDate":
+						{
+							if ((FromDate - DateTime.UtcNow).Days < 0)
+							{
+								return "Choisir une date de début à partir d'aujourd'hui";
+							}
+							else if (FromDate > ToDate)
+								return "Date de début avant date de fin";
+							else
+								return string.Empty;
+						}
+					case "ToDate":
+						{
+							if ((ToDate - DateTime.UtcNow).Days < 0)
+							{
+								return "Choisir une date de fin à partir d'aujourd'hui";
+							}
+							else if (FromDate > ToDate)
+								return "Date de début avant date de fin";
+							else
+								return string.Empty;
+						}
+					default:
+						return string.Empty;
+				}
+			}
+		}
+
+		#endregion
 
 		#region Booking status
 
