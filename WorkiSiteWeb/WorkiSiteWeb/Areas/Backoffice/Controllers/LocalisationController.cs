@@ -84,6 +84,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				{
 					var loc = lRepo.Get(id);
 					offer = loc.Offers.FirstOrDefault();
+                    if (offer == null)
+                    {
+                        TempData[MiscHelpers.TempDataConstants.Info] = "Ce lieu n'a pas encore d'offre";
+                        return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+                    }
 				}
 				else
 				{

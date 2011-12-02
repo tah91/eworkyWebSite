@@ -49,22 +49,31 @@
                 <div class="newsHeader">
                     Accès direct à la gestion des offres
                 </div>
-			    <ul class="padding10">
-			    @foreach (var item in Model.Localisation.Offers)
-			    {
-                    <a href="@Url.Action(MVC.Backoffice.Localisation.OfferIndex(item.Localisation.ID, item.Id))">
-                        <div class="localisationTag float-left">
-                            <div class="localisationImgDiv borderedImg">
-			                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)
-                            </div>
-                            <div class="localisationImgDesc">
-                                <span class="bold">@item.Name</span>
-                            </div>                                   
+                <div class="padding10">
+                    @if (Model.Localisation.Offers.Count > 0)
+                    {
+                    	<ul>
+			            @foreach (var item in Model.Localisation.Offers)
+			            {
+                            <a href="@Url.Action(MVC.Backoffice.Localisation.OfferIndex(item.Localisation.ID, item.Id))">
+                                <div class="localisationTag float-left">
+                                    <div class="localisationImgDiv borderedImg">
+			                        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)
+                                    </div>
+                                    <div class="localisationImgDesc">
+                                        <span class="bold">@item.Name</span>
+                                    </div>                                   
+                                </div>
+                            </a>
+                        }
+			            </ul>
+                        <div class="clear">
                         </div>
-                    </a>
-                }
-			    </ul>
-                <div class="clear">
+                    }
+                    else
+                    { 
+                        <span>Ce lieu n'a pas encore d'offre</span>
+                    }
                 </div>
             </div>
 		</div>
