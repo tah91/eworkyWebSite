@@ -161,24 +161,24 @@ namespace Worki.Web.Helpers
             return (website.Contains(http) ? website : (http + website));
         }
 
-        public static string DisplayCurrency(int price)
+        public static string DisplayCurrency(int price, bool b = true)
         {
-            return (price + " €");
+            return (price + (b == true ? " €" : ""));
         }
 
-        public static string DisplayCurrency(decimal price)
+        public static string DisplayCurrency(decimal price, bool b = true)
         {
-            return ((price - decimal.Truncate(price) == 0 ? decimal.Truncate(price) : price) + " €");
+            return ((price - decimal.Truncate(price) == 0 ? decimal.Truncate(price) : price) + (b == true ? " €" : ""));
         }
 
-        public static string DisplaySurface(int surface)
+        public static string DisplaySurface(int surface, bool b = true)
         {
-            return (surface + " m²");
+            return (surface + (b == true ? " m²" : ""));
         }
 
-        public static string DisplaySurface(decimal surface)
+        public static string DisplaySurface(decimal surface, bool b = true)
         {
-            return ((surface - decimal.Truncate(surface) == 0 ? decimal.Truncate(surface) : surface) + " m²");
+            return ((surface - decimal.Truncate(surface) == 0 ? decimal.Truncate(surface) : surface) + (b == true ? " m²" : ""));
         }
     }
 }
