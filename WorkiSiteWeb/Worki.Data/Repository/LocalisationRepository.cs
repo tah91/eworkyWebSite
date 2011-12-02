@@ -104,7 +104,7 @@ namespace Worki.Data.Models
 										 ID = item.ID,
 										 LocalisationType = item.TypeValue,
 										 Features = (from f in item.LocalisationFeatures select f.FeatureID),
-										 OfferTypes = (from o in item.Offers select o.Type),
+										 OfferTypes = (from o in item.Offers where !o.IsOffline select o.Type),
 										 Ratings = (from c in item.Comments select new { Price = c.RatingPrice, Wifi = c.RatingWifi, Dispo = c.RatingDispo, Welcome = c.RatingWelcome, Rating = c.Rating })
 									 }).ToList();
 
