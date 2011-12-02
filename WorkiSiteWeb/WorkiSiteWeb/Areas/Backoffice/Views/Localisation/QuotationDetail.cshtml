@@ -59,17 +59,16 @@
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
             </div>
-            <div class="innerContentBlock padding10 summaryDetail float-right">
-                <b>Prospect</b><br/>
-                @RazorHelpers.Description("Nom", Model.Member.MemberMainData.LastName)
-                @RazorHelpers.Description("Prénom", Model.Member.MemberMainData.FirstName)
-                @RazorHelpers.Description("Tel", Model.Member.MemberMainData.PhoneNumber)
-                @RazorHelpers.Description("Email", Model.Member.Email)
-                @Html.ActionLink("Voir le profil client", MVC.Dashboard.Profil.Public(Model.MemberId))
-            </div>
             @if (Model.Paid)
             { 
-                <span>TODO</span>
+                <div class="innerContentBlock padding10 summaryDetail float-right">
+                    <b>Prospect</b><br/>
+                    @RazorHelpers.Description("Nom", Model.Member.MemberMainData.LastName)
+                    @RazorHelpers.Description("Prénom", Model.Member.MemberMainData.FirstName)
+                    @RazorHelpers.Description("Tel", Model.Member.MemberMainData.PhoneNumber)
+                    @RazorHelpers.Description("Email", Model.Member.Email)
+                    @Html.ActionLink("Voir le profil client", MVC.Dashboard.Profil.Public(Model.MemberId))
+                </div>
             }
             <div class="clear"></div>
         </div>

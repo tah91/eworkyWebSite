@@ -62,7 +62,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			{
 				var member = mRepo.Get(id);
 				Member.Validate(member);
-                var list = member.MemberBookings.Where(mb => !mb.Expired);
+                var list = member.MemberBookings.Where(mb => !mb.Expired).OrderByDescending(b=>b.CreationDate);
 				var model = new PagingList<MemberBooking>
 				{
                     List = list.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
@@ -222,7 +222,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			{
 				var member = mRepo.Get(id);
 				Member.Validate(member);
-                var list = member.MemberQuotations.Where(q => q.Unknown || q.CreationDate > DateTime.UtcNow.AddDays(-15));
+                var list = member.MemberQuotations.Where(q => q.Unknown || q.CreationDate > DateTime.UtcNow.AddDays(-15)).OrderByDescending(q => q.CreationDate); ;
 				var model = new PagingList<MemberQuotation>
 				{
                     List = list.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
