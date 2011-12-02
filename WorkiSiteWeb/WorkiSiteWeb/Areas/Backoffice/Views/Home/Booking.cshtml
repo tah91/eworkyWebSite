@@ -23,7 +23,11 @@
 
 	<div class="blockContainer float-left contentRight">
         <div class="contentBlock">
-            @Html.Partial(MVC.Backoffice.Shared.Views._BookingList, new BookingListViewModel { Bookings = Model })
+            @Html.Partial(MVC.Backoffice.Shared.Views._BookingList,
+            new BookingListViewModel {
+                                        Bookings = Model,
+                                        UrlMaker = x => Url.Action(MVC.Backoffice.Home.Booking(x))
+                                    })
         </div>
 	</div>
 	<div class="clear"></div>

@@ -9,12 +9,12 @@
     }
     </ul>
     <div class="pager">
-        @Html.PageLinks(Model.Quotations.PagingInfo, x => Url.Action(MVC.Dashboard.Home.Quotation(x)))
+        @Html.PageLinks(Model.Quotations.PagingInfo, Model.UrlMaker)
     </div>  
 }
 else
 {
     <div class="emptyContent italic">
-        @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Dashboard.Home.Quotation())))
+        @Html.Raw(Model.EmptyMessage)
     </div>
 }

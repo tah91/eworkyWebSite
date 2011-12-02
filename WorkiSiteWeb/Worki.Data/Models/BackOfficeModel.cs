@@ -50,15 +50,20 @@ namespace Worki.Data.Models
         public IEnumerable<DescriptionItem> Descriptions { get; set; }
     }
 
-    public class BookingListViewModel
+    public class IOfferListViewModel
     {
         public string Title { get; set; }
+        public Func<int, string> UrlMaker { get; set; }
+        public string EmptyMessage { get; set; }
+    }
+
+    public class BookingListViewModel : IOfferListViewModel
+    {
         public PagingList<MemberBooking> Bookings { get; set; }
     }
 
-    public class QuotationListViewModel
+    public class QuotationListViewModel : IOfferListViewModel
     {
-        public string Title { get; set; }
         public PagingList<MemberQuotation> Quotations { get; set; }
     }
 }

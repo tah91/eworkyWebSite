@@ -9,12 +9,12 @@
     }
     </ul>
     <div class="pager">
-        @Html.PageLinks(Model.Bookings.PagingInfo, x => Url.Action(MVC.Dashboard.Home.Booking(x)))
+        @Html.PageLinks(Model.Bookings.PagingInfo, Model.UrlMaker)
     </div>  
 }
 else
 {
     <div class="emptyContent italic">
-        @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingBooking, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Dashboard.Home.Booking())))
+        @Html.Raw(Model.EmptyMessage)
     </div>
 }

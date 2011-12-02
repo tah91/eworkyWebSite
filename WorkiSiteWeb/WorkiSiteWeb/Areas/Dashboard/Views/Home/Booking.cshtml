@@ -21,7 +21,12 @@
 
 	<div class="blockContainer float-left contentRight">
         <div class="contentBlock">
-            @Html.Partial(MVC.Dashboard.Shared.Views._BookingList, new BookingListViewModel { Bookings = Model })
+            @Html.Partial(MVC.Dashboard.Shared.Views._BookingList,
+            new BookingListViewModel {
+                                        Bookings = Model,
+                                        UrlMaker = x => Url.Action(MVC.Dashboard.Home.Booking(x)),
+                                        EmptyMessage = string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentBooking, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Historic, MVC.Dashboard.Historic.Booking()))
+                                    })
         </div>
 	</div>
 	<div class="clear"></div>
