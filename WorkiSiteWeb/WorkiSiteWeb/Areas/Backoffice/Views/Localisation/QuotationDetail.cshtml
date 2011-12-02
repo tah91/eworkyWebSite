@@ -49,10 +49,23 @@
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
+                @RazorHelpers.Description("Lieu", Model.Offer.Localisation.Name)
+                @RazorHelpers.Description("Offre", Model.Offer.Name)
+                @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
+                @RazorHelpers.Description("Prix HT", WebHelper.DisplayCurrency(Model.Price))
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
+                @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
                 @RazorHelpers.Description("Statut", statusText)
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
+            </div>
+            <div class="innerContentBlock padding10 summaryDetail float-right">
+                <b>Prospect</b><br/>
+                @RazorHelpers.Description("Nom", Model.Member.MemberMainData.LastName)
+                @RazorHelpers.Description("Prénom", Model.Member.MemberMainData.FirstName)
+                @RazorHelpers.Description("Tel", Model.Member.MemberMainData.PhoneNumber)
+                @RazorHelpers.Description("Email", Model.Member.Email)
+                @Html.ActionLink("Voir le profil client", MVC.Dashboard.Profil.Public(Model.MemberId))
             </div>
             @if (Model.Paid)
             { 

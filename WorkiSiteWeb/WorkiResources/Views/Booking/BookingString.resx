@@ -192,9 +192,6 @@
   <data name="Start" xml:space="preserve">
     <value>Début</value>
   </data>
-  <data name="SurfaceFormat" xml:space="preserve">
-    <value>{0} ({1} m2)</value>
-  </data>
   <data name="WaitingForPayement" xml:space="preserve">
     <value>En attente de payment</value>
   </data>

@@ -181,6 +181,9 @@ namespace Worki.Data.Models
 
 		[Display(Name = "Message", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public string Message { get; set; }
+
+        [Display(Name = "VisitNeeded", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public bool VisitNeeded { get; set; }
 	}
 
     public partial class MemberQuotationLog

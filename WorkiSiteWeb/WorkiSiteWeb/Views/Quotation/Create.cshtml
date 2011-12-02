@@ -16,7 +16,7 @@
             {
                 <div class="contentBlock">
                     <div class="speechDiv">
-                        @Worki.Resources.Views.Booking.BookingString.QuotationSpeech;<br/>
+                        @Worki.Resources.Views.Booking.BookingString.QuotationSpeech<br/>
                         @Worki.Resources.Views.Booking.BookingString.Speech
                     </div>
                     <div class="clear"></div>
@@ -89,6 +89,18 @@
 						    <td>
 							    <div class="editor-field">
 								    @Html.TextBoxFor(m => m.MemberQuotation.Surface, new { placeholder = "Ex : 40" })
+							    </div>
+						    </td>
+					    </tr>
+					    <tr>
+						    <td>
+							    <div class="editor-label">
+								    @Html.LabelFor(m => m.MemberQuotation.VisitNeeded)
+							    </div>
+						    </td>
+						    <td>
+							    <div class="editor-field">
+								    @Html.CheckBoxFor(m => m.MemberQuotation.VisitNeeded)
 							    </div>
 						    </td>
 					    </tr>

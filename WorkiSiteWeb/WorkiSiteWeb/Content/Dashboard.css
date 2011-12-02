@@ -244,7 +244,7 @@
 
 .bookingStatus
 {
-    width:25%;
+    width:27%;
     text-align:center;
     border:2px solid;
     height: 120px;
@@ -282,18 +282,18 @@
 
 .bookingStatusDesc
 {
-    
+    margin:0px 5px;
 }
 
 .bookingStatusAction
 {
-    width:60px;
-    margin:10px auto!important;
+    width:52px;
+    /*margin:10px auto!important;*/
 }
 
 .bookingLinks
 {
-    width:20%;
+    width:18%
 }
 
 /*BACKOFFICE LOCALISATION

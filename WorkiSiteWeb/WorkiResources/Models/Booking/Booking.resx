@@ -162,4 +162,7 @@
   <data name="ToDate" xml:space="preserve">
     <value>Fin souhaitée</value>
   </data>
+  <data name="VisitNeeded" xml:space="preserve">
+    <value>Demande de visite</value>
+  </data>
 </root>
