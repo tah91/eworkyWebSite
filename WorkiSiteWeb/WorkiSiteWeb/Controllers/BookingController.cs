@@ -12,6 +12,7 @@ using Postal;
 using System.Linq;
 using Worki.Memberships;
 using System.Collections.Generic;
+using Worki.Section;
 
 namespace Worki.Web.Controllers
 {
@@ -215,7 +216,8 @@ namespace Worki.Web.Controllers
                                                                     ipnUrl,
                                                                     "",
                                                                     payments,
-                                                                    paymentHandler);
+                                                                    paymentHandler,
+                                                                    PaymentConfiguration.Constants);
 
             if (paypalApprovalUrl != null)
             {

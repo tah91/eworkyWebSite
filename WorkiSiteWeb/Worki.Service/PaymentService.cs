@@ -28,7 +28,7 @@ namespace Worki.Service
         /// <param name="payments">list of payments</param>
         /// <param name="paymentHandler">payment handler to create transactions</param>
 		/// <returns>The customer Paypal approval url, null if an error occurred</returns>
-        string PayWithPayPal(int id, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, IEnumerable<PaymentItem> payments, IPaymentHandler paymentHandler);
+        string PayWithPayPal(int id, string returnUrl, string cancelUrl, string ipnUrl, string senderEmail, IEnumerable<PaymentItem> payments, IPaymentHandler paymentHandler, PaymentConstants configuration);
 
 		/// <summary>
 		/// Checks if the provided IPN request is valid and really comes from PayPal. If all's OK process the message
@@ -37,61 +37,13 @@ namespace Worki.Service
 		/// <param name="status">payment status</param>
 		/// <param name="requestId">paypal request id</param>
 		/// <returns>A string list of errors, empty list if none</returns>
-		List<string> ProcessPaypalIPNMessage(HttpRequestBase req, out string status, out string requestId);
+        List<string> ProcessPaypalIPNMessage(HttpRequestBase req, out string status, out string requestId, PaymentConstants config);
     }
 
     #region Constants for Paypal
 
     public class PayPalConstants
     {
-        private const string _postbackSandboxUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-        private const string _postbackProductionUrl = "https://www.paypal.com/cgi-bin/webscr";
-        private const string _paymentSandBoxUrl = "https://svcs.sandbox.paypal.com/AdaptivePayments/Pay";
-        private const string _paymentProductionUrl = "https://svcs.paypal.com/AdaptivePayments/API_operation";
-        private const string _approvalProductionUrl = "https://www.paypal.com/webscr?cmd=_ap-payment&paykey=";
-        private const string _approvalSandBoxUrl = "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey=";
-
-        private static bool IsProduction
-        {
-            get
-            {
-                return false; // TODO Implements
-            }
-        }
-
-        /// <summary>
-        /// Paypal API Url to call
-        /// </summary>
-        public static string PaymentUrl
-        {
-            get
-            {
-                return IsProduction ? _paymentProductionUrl : _paymentSandBoxUrl;
-            }
-        }
-
-        /// <summary>
-        /// Paypal url with the Payment form
-        /// </summary>
-        public static string ApprovalUrl
-        {
-            get
-            {
-                return IsProduction ? _approvalProductionUrl : _approvalSandBoxUrl;
-            }
-        }
-
-        /// <summary>
-        /// Paypal Url for IPN request checking
-        /// </summary>
-        public static string PostbackUrl
-        {
-            get
-            {
-                return IsProduction ? _postbackProductionUrl : _postbackSandboxUrl;
-            }
-        }
-
         public class FeePayer
         {
             public static string Sender = "SENDER";
@@ -116,11 +68,6 @@ namespace Worki.Service
 
         ILogger _Logger;
 
-		private const string ApiUsername = "t.ifti_1322172136_biz_api1.hotmail.fr";
-		private const string ApiPassword = "1322172161";
-		private const string ApiSignature = "AeiLOX9D9hPNdgMhxGPb255O5u61AanPdNVGf5h0Kf6YW4deoOscaJ66";
-        private const string ApiTestApplicationId = "APP-80W284485P519543T";
-
         #endregion
 
         public PaymentService(ILogger logger)
@@ -136,16 +83,16 @@ namespace Worki.Service
         /// <param name="requestFormat">Format of data sent to Paypal</param>
 		/// <param name="responseFormat">Format of data received from Paypal</param>
         /// <returns>created request</returns>
-        private HttpWebRequest CreatePaypalRequest(string requestFormat, string responseFormat)
+        private HttpWebRequest CreatePaypalRequest(string requestFormat, string responseFormat, PaymentConstants config)
         {
-            string url = PayPalConstants.PaymentUrl;
-            string applicationId = ApiTestApplicationId;
+            string url = config.PaymentUrl;
+            string applicationId = config.ApiTestApplicationId;
             string ip = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-            request.Headers.Add("X-PAYPAL-SECURITY-USERID", ApiUsername);
-            request.Headers.Add("X-PAYPAL-SECURITY-PASSWORD", ApiPassword);
-            request.Headers.Add("X-PAYPAL-SECURITY-SIGNATURE", ApiSignature);
+            request.Headers.Add("X-PAYPAL-SECURITY-USERID", config.ApiUsername);
+            request.Headers.Add("X-PAYPAL-SECURITY-PASSWORD", config.ApiPassword);
+            request.Headers.Add("X-PAYPAL-SECURITY-SIGNATURE", config.ApiSignature);
             request.Headers.Add("X-PAYPAL-DEVICE-IPADDRESS", ip);
             request.Headers.Add("X-PAYPAL-REQUEST-DATA-FORMAT", requestFormat);
             request.Headers.Add("X-PAYPAL-RESPONSE-DATA-FORMAT", responseFormat);
@@ -159,13 +106,13 @@ namespace Worki.Service
         /// </summary>
         /// <param name="paypalRequest">the request to validate</param>
         /// <returns>string telling if paypalrequest is valid</returns>
-        private string ValidateIPNRequest(HttpRequestBase paypalRequest)
+        private string ValidateIPNRequest(HttpRequestBase paypalRequest, PaymentConstants config)
         {
             string strResponse = null;
 
             try
             {
-				HttpWebRequest req = (HttpWebRequest)WebRequest.Create(PayPalConstants.PostbackUrl);
+				HttpWebRequest req = (HttpWebRequest)WebRequest.Create(config.PostbackUrl);
                 req.Method = "POST";
                 req.ContentType = "application/x-www-form-urlencoded";
                 byte[] param = paypalRequest.BinaryRead(HttpContext.Current.Request.ContentLength);
@@ -198,7 +145,8 @@ namespace Worki.Service
                                     string ipnUrl, 
                                     string senderEmail, 
                                     IEnumerable<PaymentItem> payments,
-                                    IPaymentHandler paymentHandler)
+                                    IPaymentHandler paymentHandler,
+                                    PaymentConstants config)
         {
             HttpWebRequest request;
             WebResponse response = null;
@@ -208,7 +156,7 @@ namespace Worki.Service
 
             try
             {
-                request = CreatePaypalRequest(PayPalConstants.MessageFormat.NameValue, PayPalConstants.MessageFormat.Xml);
+                request = CreatePaypalRequest(PayPalConstants.MessageFormat.NameValue, PayPalConstants.MessageFormat.Xml, config);
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
 
@@ -263,7 +211,7 @@ namespace Worki.Service
                             {
                                 if (paymentHandler.CreateTransactions(id, payKey, payments))
                                 {
-                                    resultUrl = PayPalConstants.ApprovalUrl + payKey;
+                                    resultUrl = config.ApprovalUrl + payKey;
                                 }
                             }
                             else
@@ -306,11 +254,11 @@ namespace Worki.Service
             return resultUrl;
         }
 
-		public List<string> ProcessPaypalIPNMessage(HttpRequestBase paypalRequest, out string status, out string requestId)
+        public List<string> ProcessPaypalIPNMessage(HttpRequestBase paypalRequest, out string status, out string requestId, PaymentConstants config)
 		{
 			List<string> errors = new List<string>();
 
-			string strResponse = ValidateIPNRequest(paypalRequest);
+            string strResponse = ValidateIPNRequest(paypalRequest, config);
 			status = string.Empty;
 			requestId = string.Empty;
 

@@ -11,6 +11,7 @@ using Worki.Data.Models;
 using Postal;
 using Worki.Infrastructure.Helpers;
 using System.Text;
+using Worki.Section;
 
 namespace Worki.Web.Controllers
 {
@@ -35,7 +36,7 @@ namespace Worki.Web.Controllers
 			string status = string.Empty;
 			string requestId = string.Empty;
 
-			List<string> errors = _PaymentService.ProcessPaypalIPNMessage(Request, out status, out requestId);
+            List<string> errors = _PaymentService.ProcessPaypalIPNMessage(Request, out status, out requestId, PaymentConfiguration.Constants);
 			switch (status)
 			{
 				case "COMPLETED":

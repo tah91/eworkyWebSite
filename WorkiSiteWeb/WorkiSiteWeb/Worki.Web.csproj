@@ -256,6 +256,7 @@
     <Compile Include="Areas\Mobile\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
     <Compile Include="Areas\Mobile\Models\MobileHelpers.cs" />
+    <Compile Include="ConfigurationSection\PaymentSection.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />

@@ -13,6 +13,7 @@ using Worki.Data.Models;
 using System.Globalization;
 using Postal;
 using Worki.Infrastructure.Helpers;
+using Worki.Section;
 
 namespace Worki.Web
 {
@@ -27,7 +28,6 @@ namespace Worki.Web
 
         public class Constants
 		{
-            public static decimal BookingCom = 0.10M;
             public const string AmountIncorrectError = "Amount incorrect, RequestId : {0}, TransactionId : {1}, Amount : {2}, ExpectedAmount {3}";
 		}
 
@@ -215,8 +215,8 @@ namespace Worki.Web
 		/// <param name="eworkyAmount">amount for eworky</param>
         public void GetAmounts(decimal totalAmount, out decimal ownerAmount, out decimal eworkyAmount)
 		{
-			ownerAmount = (1 - Constants.BookingCom) * totalAmount;
-			eworkyAmount = Constants.BookingCom * totalAmount;
+            ownerAmount = (1 - PaymentConfiguration.Instance.Commission) * totalAmount;
+            eworkyAmount = PaymentConfiguration.Instance.Commission * totalAmount;
 		}
     }
 }

@@ -12,6 +12,7 @@ using Postal;
 using System.Linq;
 using Worki.Memberships;
 using System.Collections.Generic;
+using Worki.Section;
 
 namespace Worki.Web.Controllers
 {
@@ -199,7 +200,7 @@ namespace Worki.Web.Controllers
             //string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
-            decimal eworkyAmount = 5;
+            decimal eworkyAmount = PaymentConfiguration.Instance.QuotationFee;
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Quotation) as MemberQuotationPaymentHandler;
             var payments = new List<PaymentItem>
             {
@@ -212,7 +213,8 @@ namespace Worki.Web.Controllers
                                                                     ipnUrl,
                                                                     "",
                                                                     payments,
-                                                                    paymentHandler);
+                                                                    paymentHandler,
+                                                                    PaymentConfiguration.Constants);
 
             if (paypalApprovalUrl != null)
             {

@@ -25,6 +25,7 @@ using Worki.SiteMap;
 using Worki.Web.Helpers;
 using Worki.Web.ModelBinder;
 using System.Configuration;
+using Worki.Section;
 
 namespace Worki.Web
 {
@@ -377,7 +378,7 @@ namespace Worki.Web
 
         protected void Application_Start()
         {
-			// Inject account repository into our custom membership & role providers.
+            // Inject account repository into our custom membership & role providers.
 			_kernel.Inject(Membership.Provider);
 			_kernel.Inject(Roles.Provider);
 

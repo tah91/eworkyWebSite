@@ -47,6 +47,29 @@ namespace Worki.Infrastructure.Repository
         public string TransactionId { get; set; }
     }
 
+    public class PaymentConstants
+    {
+        /// <summary>
+        /// Paypal API Url to call
+        /// </summary>
+        public string PaymentUrl { get; set; }
+
+        /// <summary>
+        /// Paypal url with the Payment form
+        /// </summary>
+        public string ApprovalUrl { get; set; }
+
+        /// <summary>
+        /// Paypal Url for IPN request checking
+        /// </summary>
+        public string PostbackUrl { get; set; }
+
+        public string ApiUsername { get; set; }
+        public string ApiPassword { get; set; }
+        public string ApiSignature { get; set; }
+        public string ApiTestApplicationId { get; set; }
+    }
+
     public interface IPaymentHandler
     {
         /// <summary>
