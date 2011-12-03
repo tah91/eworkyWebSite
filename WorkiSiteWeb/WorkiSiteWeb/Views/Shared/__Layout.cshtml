@@ -158,6 +158,15 @@
     		InitDropdown("#@DropDownModel.ProfilDD");
     	});
 
+    	require(["@Links.Scripts.date_js"], function () {
+    		require(["@Links.Scripts.jquery_localdate_js"], function () {
+    			require(["@Links.Scripts.jquery_localdate_fr_js"], function () {
+    				$('.utcdate').localTimeFromUTC('MM/dd/yyyy HH:mm:ss');
+    				$('.timeago').timeago();
+    			});
+    		});
+    	});
+
 	</script>
       <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->

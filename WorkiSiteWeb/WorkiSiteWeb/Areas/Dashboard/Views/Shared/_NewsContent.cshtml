@@ -11,10 +11,10 @@
 		{
 			<li>
 				<div class="newsListLeft float-left">
-					@item.Date
+					<a class="blue" href="@item.Link">@Html.DisplayLocalDate(item.Date, true)</a>
 				</div>
 				<div class="newsListRight float-right">
-					@item.DisplayName (<a href="@item.Link">plus...</a>)
+					@item.DisplayName
 				</div>
 				<div class="clear"></div>
 			</li>			

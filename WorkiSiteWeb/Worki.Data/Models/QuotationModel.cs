@@ -206,13 +206,13 @@ namespace Worki.Data.Models
             switch (type)
             {
                 case QuotationEvent.Creation:
-                    return string.Format("{0} a fait une demande de devis pour le lieu {1}", MemberQuotation.Client.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+                    return string.Format("{0} a fait une demande de devis pour {1}", MemberQuotation.Client.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Payment:
-                    return string.Format("{0} a payé la demande de devis pour le lieu {1}", MemberQuotation.Owner.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+                    return string.Format("{0} a payé la demande de devis pour {1}", MemberQuotation.Owner.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Refusal:
-                    return string.Format("{0} a refusé la demande de devis pour le lieu {1}", MemberQuotation.Owner.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+                    return string.Format("{0} a refusé la demande de devis pour {1}", MemberQuotation.Owner.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Cancellation:
-                    return string.Format("{0} a annulé la demande de devis pour le lieu {1}", MemberQuotation.Client.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+                    return string.Format("{0} a annulé la demande de devis pour {1}", MemberQuotation.Client.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.General:
                 default:
                     return Event;

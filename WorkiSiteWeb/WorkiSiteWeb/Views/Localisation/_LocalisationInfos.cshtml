@@ -51,7 +51,7 @@
 		@if (creation != null)
 		{
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Dashboard.Profil.Public(creation.Member.MemberId))</span><br />
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayDate(creation.ModificationDate, CultureHelpers.TimeFormat.LongGeneral)<br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
 		}
 		else
 		{ 
@@ -60,7 +60,7 @@
 		@if (lastEdition != null)
 		{
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Dashboard.Profil.Public(lastEdition.Member.MemberId))</span><br />
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayDate(lastEdition.ModificationDate, CultureHelpers.TimeFormat.LongGeneral)<br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
         }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
         {

@@ -412,9 +412,17 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.localdate-fr.js" />
+    <Content Include="Scripts\jquery.localdate-fr.min.js">
+      <DependentUpon>jquery.localdate-fr.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.localdate.js" />
     <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\dropdown.min.js">
       <DependentUpon>dropdown.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.localdate.min.js">
+      <DependentUpon>jquery.localdate.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.ui.datepicker-en.js" />
     <Content Include="Scripts\jquery.ui.datepicker-en.min.js">

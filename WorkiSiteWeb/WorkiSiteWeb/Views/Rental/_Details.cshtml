@@ -97,7 +97,7 @@
             <span class="bold">@@Worki.Resources.Views.Localisation.LocalisationString.Tel </span>@@Html.GetPhoneFormat(Model.Member.MemberMainData.PhoneNumber)<br />-->
             @Html.ActionLink(Worki.Resources.Views.Rental.RentalString.SendMailToOwner, MVC.Rental.SendMailOwner(Model.Id), new { @class = "red" })<br />
             <span class="bold red">@Worki.Resources.Models.Rental.Rental.Reference : </span>@Model.Reference<br />
-            <span class="bold red">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@Html.DisplayDate(Model.TimeStamp)<br />
+            <span class="bold red">@Worki.Resources.Views.Rental.RentalString.UpdatedAt : </span>@Html.DisplayLocalDate(Model.TimeStamp)<br />
 		</div>
 
         @if (Model.RentalAccesses.Count > 0)
@@ -121,7 +121,7 @@
                 <h4 class="red rentalMargin">@Worki.Resources.Views.Rental.RentalString.Rental</h4>
                     @if (!string.IsNullOrEmpty(Model.CreationDate.ToString()))
                     {
-                        <span class="bold">@Worki.Resources.Views.Rental.RentalString.DateDrop </span>@Html.DisplayDate(Model.CreationDate)<br />
+                        <span class="bold">@Worki.Resources.Views.Rental.RentalString.DateDrop </span>@Html.DisplayLocalDate(Model.CreationDate)<br />
                     }
                     @if (!string.IsNullOrEmpty(Model.Reference))
                     {

@@ -372,7 +372,7 @@ namespace Worki.Web.Helpers
         }
 
 		/// <summary>
-		/// Display date with local shift and relative display if needed
+		/// Display date with specified format
 		/// </summary>
 		/// <param name="date">date to display</param>
 		/// <param name="format">datetime format</param>
@@ -380,6 +380,26 @@ namespace Worki.Web.Helpers
 		public static MvcHtmlString DisplayDate(this HtmlHelper instance, DateTime? date, CultureHelpers.TimeFormat format = CultureHelpers.TimeFormat.Date)
 		{
 			return MvcHtmlString.Create(CultureHelpers.GetSpecificFormat(date, format));
+		}
+
+		/// <summary>
+		/// Display date with local shift, format is long general
+		/// </summary>
+		/// <param name="date">date to display</param>
+		/// <param name="relative">tell if we need relative date display</param>
+		/// <returns>correct date string</returns>
+		public static MvcHtmlString DisplayLocalDate(this HtmlHelper instance, DateTime date, bool relative = false)
+		{
+			var str = CultureHelpers.GetSpecificFormat(date, CultureHelpers.TimeFormat.LongGeneral);
+			var tag = new TagBuilder("span");
+			tag.AddCssClass("utcdate");
+			if (relative)
+			{
+				tag.AddCssClass("timeago");
+				tag.MergeAttribute("title", date.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+			}
+			tag.SetInnerText(str);
+			return MvcHtmlString.Create(tag.ToString());
 		}
 
 		#region BeginCollectionItem

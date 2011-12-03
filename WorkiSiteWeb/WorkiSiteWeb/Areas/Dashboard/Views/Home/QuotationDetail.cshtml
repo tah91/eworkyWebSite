@@ -41,7 +41,7 @@
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, Html.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, Html.DisplayLocalDate(Model.CreationDate).ToString())
                 @RazorHelpers.Description("Statut", statusText)
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
