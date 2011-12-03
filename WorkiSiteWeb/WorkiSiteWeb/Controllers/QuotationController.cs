@@ -115,9 +115,22 @@ namespace Worki.Web.Controllers
                             EventType = (int)MemberQuotationLog.QuotationEvent.Creation
                         });
 
+						dynamic newMemberMail = null;
 						if (sendNewAccountMail)
 						{
-							SendCreationAccountMail(formData, member, offer);
+							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+							var profilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
+							TagBuilder profilLink = new TagBuilder("a");
+							profilLink.MergeAttribute("href", profilUrl);
+							profilLink.InnerHtml = profilUrl;
+
+							newMemberMail = new Email(MVC.Emails.Views.Email);
+							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+							newMemberMail.To = formData.Email;
+							newMemberMail.ToName = formData.FirstName;
+
+							newMemberMail.Subject = Worki.Resources.Email.BookingString.QuotationNewMemberSubject;
+							newMemberMail.Content = "TODO MAIL";
 						}
 
 						//send mail to team
@@ -153,6 +166,10 @@ namespace Worki.Web.Controllers
 
 						context.Commit();
 
+						if (sendNewAccountMail)
+						{
+							newMemberMail.Send();
+						}
 						clientMail.Send();
 						teamMail.Send();
 						ownerMail.Send();
@@ -322,42 +339,5 @@ namespace Worki.Web.Controllers
 		//    }
 		//    return Redirect(returnUrl);
 		//}
-
-        #region Private
-
-        /// <summary>
-        /// send mail for new member
-        /// </summary>
-        /// <param name="formData">form data containing quotation data</param>
-        /// <param name="member">member data</param>
-        /// <param name="loc">localisation data</param>
-		void SendCreationAccountMail(MemberQuotationFormViewModel formData, Member member, Offer offer)
-		{
-			var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-			var profilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
-			TagBuilder profilLink = new TagBuilder("a");
-			profilLink.MergeAttribute("href", profilUrl);
-			profilLink.InnerHtml = profilUrl;
-
-			dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
-			newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-			newMemberMail.To = formData.Email;
-			newMemberMail.ToName = formData.FirstName;
-
-			newMemberMail.Subject = Worki.Resources.Email.BookingString.QuotationNewMemberSubject;
-			newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationNewMemberBody,
-												Localisation.GetOfferType(offer.Type),
-												formData.MemberQuotation.Surface,
-												offer.Localisation.Name,
-												offer.Localisation.Adress + ", " + offer.Localisation.PostalCode + " " + offer.Localisation.City,
-												member.Email,
-												_MembershipService.GetPassword(member.Email, null),
-												profilLink.ToString(),
-												urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit()));
-
-			newMemberMail.Send();
-		}
-
-        #endregion
     }
 }
