@@ -63,11 +63,15 @@ namespace Worki.Web.Areas.Admin.Controllers
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                     return RedirectToAction(MVC.Admin.Sheet.Index());
                 }
-                if (loc.MainLocalisation != null)
-                {
-                    loc.MainLocalisation.IsOffline = !loc.MainLocalisation.IsOffline;
-                    context.Commit();
-                }
+				if (loc.MainLocalisation != null)
+				{
+					loc.MainLocalisation.IsOffline = !loc.MainLocalisation.IsOffline;
+				}
+				else
+				{
+					loc.MainLocalisation = new MainLocalisation();
+				}
+				context.Commit();
             }
             catch (Exception ex)
             {
@@ -90,11 +94,15 @@ namespace Worki.Web.Areas.Admin.Controllers
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                     return RedirectToAction(MVC.Admin.Sheet.Index());
                 }
-                if (loc.MainLocalisation != null)
-                {
-                    loc.MainLocalisation.IsMain = !loc.MainLocalisation.IsMain;
-                    context.Commit();
-                }
+				if (loc.MainLocalisation != null)
+				{
+					loc.MainLocalisation.IsMain = !loc.MainLocalisation.IsMain;
+				}
+				else
+				{
+					loc.MainLocalisation = new MainLocalisation();
+				}
+				context.Commit();
             }
             catch (Exception ex)
             {
