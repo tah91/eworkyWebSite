@@ -159,7 +159,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					var member = mRepo.Get(memberId);
 					if (formData.Offer.IsBookable && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
 					{
-						throw new Exception();
+						throw new Exception(Worki.Resources.Views.BackOffice.BackOfficeString.NeedInfoPaypal);
 					}
 
 					var o = oRepo.Get(id);
@@ -175,8 +175,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					ModelState.AddModelError("", ex.Message);
 				}
 			}
-            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.NeedInfoPaypal;
-            return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
+			context = ModelFactory.GetUnitOfWork();
+			oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var offer = oRepo.Get(id);
+			return View(new OfferFormViewModel { Offer = offer });
 		}
 
 		#endregion
