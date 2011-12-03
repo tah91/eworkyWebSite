@@ -388,15 +388,17 @@ namespace Worki.Web.Helpers
 		/// <param name="date">date to display</param>
 		/// <param name="relative">tell if we need relative date display</param>
 		/// <returns>correct date string</returns>
-		public static MvcHtmlString DisplayLocalDate(this HtmlHelper instance, DateTime date, bool relative = false)
+		public static MvcHtmlString DisplayLocalDate(this HtmlHelper instance, DateTime? date, bool relative = false)
 		{
+			if (!date.HasValue)
+				return null;
 			var str = CultureHelpers.GetSpecificFormat(date, CultureHelpers.TimeFormat.LongGeneral);
 			var tag = new TagBuilder("span");
 			tag.AddCssClass("utcdate");
 			if (relative)
 			{
 				tag.AddCssClass("timeago");
-				tag.MergeAttribute("title", date.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+				tag.MergeAttribute("title", date.Value.ToString("yyyy-MM-ddTHH:mm:ssZ"));
 			}
 			tag.SetInnerText(str);
 			return MvcHtmlString.Create(tag.ToString());

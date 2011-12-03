@@ -166,6 +166,14 @@ namespace Worki.Data.Models
 			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Creation select item.CreatedDate).FirstOrDefault(); }
 		}
 
+		/// <summary>
+		/// Refusal date of the booking by the owner
+		/// </summary>
+		public DateTime RefusalDate
+		{
+			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Refusal select item.CreatedDate).FirstOrDefault(); }
+		}
+
         /// <summary>
         /// Cancellation date of the booking by the client
         /// </summary>
@@ -198,13 +206,15 @@ namespace Worki.Data.Models
             get { return !Expired && Unknown; }
         }
 
-        public void GetStatus(out string status, out string color)
+        public void GetStatus(out string status, out string color, out DateTime? date)
         {
             status = "";
             color = "";
+			date = null;
             if (Expired)
             {
-                status = "Achevée le " + ToDate;
+                status = "Achevée le ";
+				date = ToDate;
                 color = "Gray";
             }
             else if (Unknown)
@@ -214,12 +224,14 @@ namespace Worki.Data.Models
             }
             else if (Refused)
             {
-                status = "Refusée";
+                status = "Refusée le ";
+				date = RefusalDate;
                 color = "Red";
             }
             else if (Cancelled)
             {
-                status = "Annulée le " + CancellationDate;
+                status = "Annulée le ";
+				date = CancellationDate;
                 color = "Gray";
             }
             else if (Waiting)
@@ -229,7 +241,8 @@ namespace Worki.Data.Models
             }
             else if (Paid)
             {
-                status = "Payé le " + PaidDate;
+                status = "Payé le ";
+				date = PaidDate;
                 color = "Green";
             }
         }

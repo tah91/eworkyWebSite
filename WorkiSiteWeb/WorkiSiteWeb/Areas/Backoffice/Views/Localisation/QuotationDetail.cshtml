@@ -8,7 +8,8 @@
 @{
     var statusText = "";
     var color = "";
-    Model.GetStatus(out statusText, out color);
+	DateTime? statusDate = null;
+	Model.GetStatus(out statusText, out color, out statusDate);
 }
 
 <div class="float-left">
@@ -55,7 +56,7 @@
                 @RazorHelpers.Description("Prix HT", WebHelper.DisplayCurrency(Model.Price))
 				@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
                 @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
-                @RazorHelpers.Description("Statut", statusText)
+                Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
             </div>

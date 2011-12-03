@@ -98,12 +98,20 @@ namespace Worki.Data.Models
         }
 
         /// <summary>
-        /// Cancellation date of the booking by the client
+		/// Cancellation date of the quotation by the client
         /// </summary>
         public DateTime CancellationDate
         {
             get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.QuotationEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
         }
+
+		/// <summary>
+		/// Refusal date of the quotation by the client
+		/// </summary>
+		public DateTime RefusalDate
+		{
+			get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.QuotationEvent.Refusal select item.CreatedDate).FirstOrDefault(); }
+		}
 
         /// <summary>
         /// Owner can pay
@@ -129,10 +137,11 @@ namespace Worki.Data.Models
             get { return Unknown; }
         }
 
-        public void GetStatus(out string status, out string color)
+        public void GetStatus(out string status, out string color, out DateTime? date)
         {
             status = "";
             color = "";
+			date = null;
             if (Unknown)
             {
                 color = "Yellow";
@@ -140,17 +149,20 @@ namespace Worki.Data.Models
             }
             else if (Refused)
             {
-                status = "Demande de devis refusée";
+                status = "Demande de devis refusée le ";
+				date = RefusalDate;
                 color = "Red";
             }
             else if (Cancelled)
             {
-                status = "Demande de devis annulé le " + CancellationDate;
+				status = "Demande de devis annulé le ";
+				date = CancellationDate;
                 color = "Gray";
             }
             else if (Paid)
             {
-                status = "Contact établi le " + PaidDate;
+				status = "Contact établi le ";
+				date = PaidDate;
                 color = "Green";
             }
         }

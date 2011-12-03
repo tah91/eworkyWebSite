@@ -9,7 +9,8 @@
 @{
     var statusText = "";
     var color = "";
-    Model.GetStatus(out statusText, out color);
+	DateTime? statusDate = null;
+	Model.GetStatus(out statusText, out color, out statusDate);
 }
 
 @Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
@@ -45,7 +46,7 @@
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, Html.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, Html.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
-                @RazorHelpers.Description("Statut", statusText)
+				Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
             </div>
