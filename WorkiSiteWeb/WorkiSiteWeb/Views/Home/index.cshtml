@@ -201,7 +201,7 @@
                                 @RazorHelpers.CenterImage(item.Image, item.Title)
                             </div>
                             <div class="blogContent float-left">
-                                <h4 class="blue">@Html.Raw(item.Title) - @RazorHelpers.DisplayDate(item.PublicationDate)</h4>
+                                <h4 class="blue">@Html.Raw(item.Title) - @Html.DisplayDate(item.PublicationDate)</h4>
                                 @Html.TruncateAtWord(item.Content, 120)
                             </div>
                             <div class="clear">

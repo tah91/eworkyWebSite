@@ -371,6 +371,17 @@ namespace Worki.Web.Helpers
             return string.Format("{0}?v={1}", instance.Content(fileName), hash);
         }
 
+		/// <summary>
+		/// Display date with local shift and relative display if needed
+		/// </summary>
+		/// <param name="date">date to display</param>
+		/// <param name="format">datetime format</param>
+		/// <returns>correct date string</returns>
+		public static MvcHtmlString DisplayDate(this HtmlHelper instance, DateTime? date, CultureHelpers.TimeFormat format = CultureHelpers.TimeFormat.Date)
+		{
+			return MvcHtmlString.Create(CultureHelpers.GetSpecificFormat(date, format));
+		}
+
 		#region BeginCollectionItem
 
 		private const string idsToReuseKey = "__htmlPrefixScopeExtensions_IdsToReuse_";

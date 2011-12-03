@@ -53,7 +53,7 @@
                 @RazorHelpers.Description("Offre", Model.Offer.Name)
                 @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
                 @RazorHelpers.Description("Prix HT", WebHelper.DisplayCurrency(Model.Price))
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, Html.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
                 @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
                 @RazorHelpers.Description("Statut", statusText)
                 @RazorHelpers.Description("Message", Model.Message)

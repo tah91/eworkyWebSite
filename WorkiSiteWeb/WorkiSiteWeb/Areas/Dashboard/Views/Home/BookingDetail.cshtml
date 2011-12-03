@@ -41,9 +41,9 @@
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, RazorHelpers.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, RazorHelpers.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, RazorHelpers.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, Html.DisplayDate(Model.CreationDate, CultureHelpers.TimeFormat.LongGeneral).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, Html.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, Html.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
                 @RazorHelpers.Description("Statut", statusText)
                 @RazorHelpers.Description("Message", Model.Message)
