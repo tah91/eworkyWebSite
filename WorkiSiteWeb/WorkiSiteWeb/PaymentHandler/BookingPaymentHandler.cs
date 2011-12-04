@@ -157,6 +157,7 @@ namespace Worki.Web
 				});
 
 				//send mail to owner 
+				//TODO MAIL
 				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 				ownerMail.To = booking.Owner.Email;
@@ -170,23 +171,12 @@ namespace Worki.Web
 												localisation.Adress);
 
 				//send mail to client 
-				dynamic clientMail = new Email(MVC.Emails.Views.Email);
-				clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-				clientMail.To = booking.Client.Email;
-				clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-				clientMail.ToName = booking.Client.MemberMainData.FirstName;
-				clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementClient,
-												Localisation.GetOfferType(offer.Type),
-												CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-												CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-												localisation.Name,
-												localisation.Adress);
+				//useless
 
                 context.Commit();
 				completed = true;
 
 				ownerMail.Send();
-				clientMail.Send();
             }
             catch (Exception ex)
             {

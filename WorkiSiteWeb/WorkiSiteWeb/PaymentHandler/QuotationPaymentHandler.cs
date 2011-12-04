@@ -127,26 +127,14 @@ namespace Worki.Web
 				});
 
 				//send mail to owner 
-				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-				ownerMail.To = quotation.Owner.Email;
-				ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-				ownerMail.ToName = quotation.Owner.MemberMainData.FirstName;
-				ownerMail.Content = "TODO";
+				//useless
 
 				//send mail to client 
-				dynamic clientMail = new Email(MVC.Emails.Views.Email);
-				clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-				clientMail.To = quotation.Client.Email;
-				clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-				clientMail.ToName = quotation.Client.MemberMainData.FirstName;
-				clientMail.Content = "TODO";
+				//useless
 
                 context.Commit();
 				completed = true;
 
-				ownerMail.Send();
-				clientMail.Send();
             }
             catch (Exception ex)
             {

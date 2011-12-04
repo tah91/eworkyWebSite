@@ -150,6 +150,7 @@ namespace Worki.Web.Controllers
 														 formData.MemberBooking.Message);
 
 						//send mail to booking member
+						//TODO MAIL
 						dynamic clientMail = new Email(MVC.Emails.Views.Email);
 						clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						clientMail.To = member.Email;
@@ -163,6 +164,7 @@ namespace Worki.Web.Controllers
 														 offer.Localisation.Adress);
 
 						//send mail to localisation member
+						//TODO MAIL
 						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						ownerMail.To = offer.Localisation.Member.Email;

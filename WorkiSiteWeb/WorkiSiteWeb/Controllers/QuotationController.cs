@@ -155,7 +155,7 @@ namespace Worki.Web.Controllers
 						clientMail.To = member.Email;
 						clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
 						clientMail.ToName = member.MemberMainData.FirstName;
-						clientMail.Content = "TODO";
+						clientMail.Content = "TODO MAIL";
 
 						//send mail to localisation member
 						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
@@ -163,7 +163,7 @@ namespace Worki.Web.Controllers
 						ownerMail.To = offer.Localisation.Member.Email;
 						ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
 						ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-						ownerMail.Content = "TODO";
+						ownerMail.Content = "TODO MAIL";
 
 						context.Commit();
 

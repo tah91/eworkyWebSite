@@ -413,20 +413,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					});
 
 					//send mail to owner
-					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					ownerMail.To = booking.Owner.Email;
-					ownerMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
-					ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-					ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingOwner,
-														Localisation.GetOfferType(booking.Offer.Type),
-														CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
-														CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
-														booking.Offer.Localisation.Name,
-														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
-														booking.Price);
+					//useless
 
                     //send mail to client
+					//TODO MAIL
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
@@ -442,7 +432,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 					context.Commit();
 
-                    ownerMail.Send();
                     clientMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été confirmée";
@@ -516,20 +505,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					});
 
                     //send mail to owner
-					dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-					ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					ownerMail.To = booking.Owner.Email;
-                    ownerMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
-					ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-                    ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseBookingOwner,
-                                                     Localisation.GetOfferType(booking.Offer.Type),
-                                                     CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-                                                     CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-                                                     booking.Offer.Localisation.Name,
-                                                     booking.Offer.Localisation.Adress,
-                                                     formModel.InnerModel.Response);
+					//useless
 
                     //send mail to client
+					//TODO MAIL
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
@@ -547,7 +526,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					context.Commit();
 
                     clientMail.Send();
-                    ownerMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été refusée";
 
@@ -784,14 +762,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     });
 
                     //send mail to owner
-                    dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                    ownerMail.To = quotation.Owner.Email;
-                    ownerMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
-                    ownerMail.ToName = quotation.Owner.MemberMainData.FirstName;
-                    ownerMail.Content = "TODO";
+                    //useless
 
                     //send mail to client
+					//TODO MAIL
                     dynamic clientMail = new Email(MVC.Emails.Views.Email);
                     clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
                     clientMail.To = quotation.Client.Email;
@@ -801,7 +775,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
                     context.Commit();
 
-                    ownerMail.Send();
                     clientMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a été refusée";
