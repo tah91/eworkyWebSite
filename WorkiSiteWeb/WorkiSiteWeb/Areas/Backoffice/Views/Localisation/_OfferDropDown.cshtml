@@ -1,12 +1,14 @@
 ﻿@model OfferDropDownModel
 
-<div class="offerDropDownContainer">
-	<div class="offerDropDown float-left">
-		Sélectionnez l'offre : 
-	</div>
-	<div class="float-left">
-		@Html.Partial(MVC.Shared.Views._DropDownList, ModelHelper.GetOfferDropDown(Model.Offer, Model.UrlMaker))
-	</div>
-	<div class="clear">
+<div class="contentBlock">
+	<div class="offerDropDownContainer">
+		<div class="offerDropDown float-left">
+			Sélectionnez l'offre : 
+		</div>
+		<div class="float-left">
+			@Html.Partial(MVC.Shared.Views._DropDownList, ModelHelper.GetOfferDropDown(Model.Offer, Model.UrlMaker))
+		</div>
+		<div class="clear">
+		</div>
 	</div>
 </div>

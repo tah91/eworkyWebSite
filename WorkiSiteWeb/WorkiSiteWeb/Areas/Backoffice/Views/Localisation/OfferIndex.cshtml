@@ -15,8 +15,8 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
+		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.Id)) })
 		<div class="contentBlock">
-			@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferIndex(Model.Localisation.ID, o.Id)) })
             <table class="offerindextable margint10">
                 <tr>
                     <td>

@@ -15,10 +15,10 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
+		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
         @using (Html.BeginForm())
 		{
 		    <div class="contentBlock">
-				@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
                 <div class="loginDesc marginb10">
                     @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
                 </div>
