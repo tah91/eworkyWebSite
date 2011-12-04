@@ -249,19 +249,19 @@ namespace Worki.Web.Controllers
             return RedirectToAction(MVC.Home.Index());
         }
 
-		///// <summary>
-		///// GET Action result to show booking data
-		///// </summary>
-		///// <param name="id">id of booking</param>
-		///// <returns>View containing booking data</returns>
-		//[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-		//public virtual ActionResult Details(int id)
-		//{
-		//    var context = ModelFactory.GetUnitOfWork();
-		//    var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-		//    var booking = bRepo.Get(id);
-		//    return View(booking);
-		//}
+		/// <summary>
+		/// GET Action result to show booking data
+		/// </summary>
+		/// <param name="id">id of booking</param>
+		/// <returns>View containing booking data</returns>
+		[AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+		public virtual ActionResult Details(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var booking = bRepo.Get(id);
+			return View(booking);
+		}
 
 		///// <summary>
 		///// GET Action result to edit booking data

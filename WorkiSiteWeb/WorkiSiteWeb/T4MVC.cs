@@ -820,6 +820,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult PayWithPayPal() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Details() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public BookingController Actions { get { return MVC.Booking; } }
@@ -835,6 +840,7 @@ namespace Worki.Web.Controllers {
         public class ActionNamesClass {
             public readonly string Create = "Create";
             public readonly string PayWithPayPal = "paywithpaypal";
+            public readonly string Details = "Details";
         }
 
 
@@ -867,6 +873,12 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult PayWithPayPal(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Details(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
