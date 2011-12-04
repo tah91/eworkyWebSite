@@ -32,10 +32,18 @@ namespace Worki.Web.Model
 		public List<DropDownItem> Items { get; set; }
 	}
 
+	public enum OfferDropDownFilter
+	{
+		Booking,
+		Quotation,
+		None
+	}
+
 	public class OfferDropDownModel
 	{
 		public Offer Offer { get; set; }
 		public Func<Offer, string> UrlMaker { get; set; }
+		public OfferDropDownFilter Filter { get; set; }
 	}
 
 	public enum OfferMenuType

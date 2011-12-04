@@ -128,15 +128,43 @@ namespace Worki.Data.Models
 
 		#endregion
 
-		public static bool NeedQuotation(LocalisationOffer type)
+		#region Booking Possibility
+
+		public static bool CanHaveProduct(LocalisationOffer type)
+		{
+			return CanHaveBooking(type) || CanHaveQuotation(type);
+		}
+
+		public bool CanHaveProduct()
+		{
+			return CanHaveProduct((LocalisationOffer)Type);
+		}
+
+		public static bool CanHaveQuotation(LocalisationOffer type)
 		{
 			return type == LocalisationOffer.Desktop;
 		}
 
-		public bool NeedQuotation()
+		public bool CanHaveQuotation()
 		{
-			return NeedQuotation((LocalisationOffer)Type);
-        }
+			return CanHaveQuotation((LocalisationOffer)Type);
+		}
+
+		public static bool CanHaveBooking(LocalisationOffer type)
+		{
+			return	type == LocalisationOffer.Workstation ||
+					type == LocalisationOffer.MeetingRoom ||
+					type == LocalisationOffer.SeminarRoom ||
+					type == LocalisationOffer.VisioRoom;
+		}
+
+		public bool CanHaveBooking()
+		{
+			return CanHaveBooking((LocalisationOffer)Type);
+		}
+
+		#endregion
+
 
         #region Payment
 

@@ -205,8 +205,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 			var model = new List<OfferMenuItem>();
 			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId, offer.Id)) });
-			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.Id)) });
-			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.Id)) });
+			if (offer.CanHaveBooking())
+				model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.Id)) });
+			if (offer.CanHaveQuotation())
+				model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.Id)) });
 
 			return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
 		}

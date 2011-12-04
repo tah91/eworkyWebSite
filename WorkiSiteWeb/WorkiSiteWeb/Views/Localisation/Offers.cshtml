@@ -44,14 +44,14 @@
 				</div> 
 				<div class="clear"></div>
 				}
-				@if (offer.IsBookable)
+				@if (offer.CanHaveProduct() && offer.IsBookable)
 				{
 					<div class="buttonStd buttonBlue linkImg float-right">
-					@if (Offer.NeedQuotation((LocalisationOffer)offer.Type))
+					@if (offer.CanHaveQuotation())
 					{
 					@Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AskDevis, MVC.Quotation.Create(offer.Id))
 					}
-					else
+					else if(offer.CanHaveBooking())
 					{
 					@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
 					}

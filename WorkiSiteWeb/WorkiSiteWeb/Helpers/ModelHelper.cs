@@ -167,7 +167,7 @@ namespace Worki.Web.Helpers
             return toRet;
         }
 
-		public static DropDownModel GetOfferDropDown(Offer offer, Func<Offer,string> urlMaker)
+		public static DropDownModel GetOfferDropDown(Offer offer, Func<Offer,string> urlMaker, OfferDropDownFilter filter = OfferDropDownFilter.None)
 		{
 			var dropDown = new DropDownModel
 			{
@@ -177,7 +177,26 @@ namespace Worki.Web.Helpers
 			};
 			foreach (var item in offer.Localisation.Offers)
 			{
-				dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+				switch (filter)
+				{
+					case OfferDropDownFilter.Quotation:
+						{
+							if (item.CanHaveQuotation())
+								dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+							break;
+						}
+					case OfferDropDownFilter.Booking:
+						{
+							if (item.CanHaveBooking())
+								dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+							break;
+						}
+					case OfferDropDownFilter.None:
+					default:
+						dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+						break;
+				}
+
 			}
 
 			return dropDown;
