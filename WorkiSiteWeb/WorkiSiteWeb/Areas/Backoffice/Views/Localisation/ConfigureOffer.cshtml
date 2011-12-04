@@ -19,28 +19,18 @@
         @using (Html.BeginForm())
 		{
 		    <div class="contentBlock">
-                <div class="loginDesc marginb10">
-                    @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
-                </div>
+				<h3 class="blue">@Model.InnerModel.Offer.Name</h3>
 	   		    @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.InnerModel.Offer.Name)
                 @Html.HiddenFor(m => m.InnerModel.Offer.Type)
 				@Html.HiddenFor(m => m.OfferModelId)
 				<table class="configoffertable">
-                	<tr>
-						<td>
-							@Html.LabelFor(m => m.InnerModel.Offer.Price) <span class="blue">*</span>
-						</td>
-						<td>
-							@Html.TextBoxFor(m => m.InnerModel.Offer.Price)
-						</td>
-					</tr>
                     <tr>
 						<td>
-						    @Html.LabelFor(m => m.InnerModel.Offer.IsOffline)
+						    @Html.LabelFor(m => m.InnerModel.Offer.IsOnline)
 						</td>
 						<td>
-							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsOffline)
+							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsOnline)
 						</td>
 					</tr>
                     <tr>
@@ -65,6 +55,14 @@
 						</td>
 						<td>
 							@Html.DropDownListFor(m => m.InnerModel.Offer.Currency, Model.InnerModel.Currencies)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							@Html.LabelFor(m => m.InnerModel.Offer.Price)
+						</td>
+						<td>
+							@Html.TextBoxFor(m => m.InnerModel.Offer.Price)
 						</td>
 					</tr>
                     <tr>

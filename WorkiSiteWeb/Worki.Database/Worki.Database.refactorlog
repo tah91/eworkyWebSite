@@ -35,4 +35,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="PaymentAddress" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="03c4de5a-53ee-4aa8-a350-cc8aa6f06adc" ChangeDateTime="12/04/2011 17:06:52">
+    <Property Name="ElementName" Value="[dbo].[Offer].[IsOffline]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Offer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsOnline" />
+  </Operation>
 </Operations>

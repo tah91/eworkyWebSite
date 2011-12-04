@@ -132,8 +132,8 @@
   <data name="IsBookable" xml:space="preserve">
     <value>Proposer à la réservation en ligne</value>
   </data>
-  <data name="IsOffline" xml:space="preserve">
-    <value>Offre hors ligne</value>
+  <data name="IsOnline" xml:space="preserve">
+    <value>Offre en ligne</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>Mois</value>

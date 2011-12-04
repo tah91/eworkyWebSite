@@ -327,6 +327,11 @@
     width:440px;
 }
 
+.configoffertable td
+{
+    height : 30px;
+}
+
 select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
 {
     width:204px;
