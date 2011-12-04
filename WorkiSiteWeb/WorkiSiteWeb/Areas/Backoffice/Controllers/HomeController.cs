@@ -28,37 +28,37 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// Get action result to show recent activities of the owner
         /// </summary>
         /// <returns>View with recent activities</returns>
-        public virtual ActionResult Index()
-        {
+		public virtual ActionResult Index()
+		{
 			var id = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 			try
 			{
 				var member = mRepo.Get(id);
 				Member.Validate(member);
 
 				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
-                var quotations = qRepo.GetMany(q =>q.Offer.Localisation.OwnerID == id);
-				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
-                news = news.Concat(ModelHelper.GetNews(quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
+				var quotations = qRepo.GetMany(q => q.Offer.Localisation.OwnerID == id);
+				var news = ModelHelper.GetNews(id, bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
+				news = news.Concat(ModelHelper.GetNews(id, quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
 
-                news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
+				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
-                var localisations = lRepo.GetMostBooked(id, BackOfficeConstants.LocalisationCount);
+				var localisations = lRepo.GetMostBooked(id, BackOfficeConstants.LocalisationCount);
 
-                return View(new BackOfficeHomeViewModel { Owner = member, Places = localisations, News = news });
+				return View(new BackOfficeHomeViewModel { Owner = member, Places = localisations, News = news });
 			}
 			catch (Exception ex)
 			{
 				_Logger.Error("Index", ex);
 				return View(MVC.Shared.Views.Error);
 			}
-        }
+		}
 
 		/// <summary>
 		/// Get action result to show all the localisations of the owner

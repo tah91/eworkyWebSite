@@ -30,20 +30,20 @@ namespace Worki.Web.Areas.Dashboard.Controllers
         /// Get action result to show recent activities of the member
         /// </summary>
         /// <returns>View with recent activities</returns>
-        public virtual ActionResult Index()
-        {
+		public virtual ActionResult Index()
+		{
 			var id = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
 			var member = mRepo.Get(id);
-			var news = ModelHelper.GetNews(member.MemberBookings, mb => { return Url.Action(MVC.Dashboard.Home.BookingDetail(mb.Id)); });
-            news = news.Concat(ModelHelper.GetNews(member.MemberQuotations, q => { return Url.Action(MVC.Dashboard.Home.QuotationDetail(q.Id)); })).ToList();
+			var news = ModelHelper.GetNews(id, member.MemberBookings, mb => { return Url.Action(MVC.Dashboard.Home.BookingDetail(mb.Id)); });
+			news = news.Concat(ModelHelper.GetNews(id, member.MemberQuotations, q => { return Url.Action(MVC.Dashboard.Home.QuotationDetail(q.Id)); })).ToList();
 
-            news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
-            return View(new DashoboardHomeViewModel { News = news, Member = member });
-        }
+			news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
+			return View(new DashoboardHomeViewModel { News = news, Member = member });
+		}
 
 		#region Booking
 
@@ -151,7 +151,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				booking.MemberBookingLogs.Add(new MemberBookingLog
 				{
 					CreatedDate = DateTime.UtcNow,
-					Event = "Booking Payment Cancelled"
+					Event = "Booking Payment Cancelled",
+					LoggerId = memberId
 				});
 
 				context.Commit();
@@ -188,7 +189,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Booking Cancelled",
-                    EventType = (int)MemberBookingLog.BookingEvent.Cancellation
+                    EventType = (int)MemberBookingLog.BookingEvent.Cancellation,
+					LoggerId = memberId
                 });
 
                 context.Commit();
@@ -288,7 +290,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Quotation Cancelled",
-                    EventType = (int)MemberQuotationLog.QuotationEvent.Cancellation
+                    EventType = (int)MemberQuotationLog.QuotationEvent.Cancellation,
+					LoggerId = memberId
                 });
 
                 context.Commit();

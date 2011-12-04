@@ -21,6 +21,7 @@ namespace Worki.Data.Models
         public string Event { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public int EventType { get; set; }
+        public int LoggerId { get; set; }
     
         // Navigation properties
     

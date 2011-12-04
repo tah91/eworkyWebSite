@@ -71,7 +71,7 @@ namespace Worki.Web
 					booking.MemberBookingLogs.Add(new MemberBookingLog
 					{
 						CreatedDate = DateTime.UtcNow,
-						Event = "Paypal Payment Requested",
+						Event = "Paypal Payment Requested"
 					});
 
                     context.Commit();
@@ -158,6 +158,7 @@ namespace Worki.Web
             var transaction = tRepo.Get(trx => trx.RequestId == payKey);
             var booking = transaction.MemberBooking;
             var offer = booking.Offer;
+			var clientId = booking.MemberId;
             var localisation = offer.Localisation;
 
             //send mail to owner 
@@ -195,7 +196,8 @@ namespace Worki.Web
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Payment completed",
-                    EventType = (int)MemberBookingLog.BookingEvent.Payment
+                    EventType = (int)MemberBookingLog.BookingEvent.Payment,
+					LoggerId = clientId
                 });
 
                 context.Commit();

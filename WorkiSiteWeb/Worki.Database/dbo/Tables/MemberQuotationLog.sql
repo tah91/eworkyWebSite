@@ -2,6 +2,7 @@
 (
 	[Id]				INT				NOT NULL IDENTITY,
     [MemberQuotationId] INT				NOT NULL,
+	[LoggerId]		    INT             NOT NULL DEFAULT 0,
     [Event]				NVARCHAR (100)	NOT NULL,
     [CreatedDate]		DATETIME		NOT NULL, 
     [EventType]			INT				NOT NULL DEFAULT 0, 

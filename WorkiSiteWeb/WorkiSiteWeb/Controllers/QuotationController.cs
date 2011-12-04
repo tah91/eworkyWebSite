@@ -112,7 +112,8 @@ namespace Worki.Web.Controllers
                         {
                             CreatedDate = DateTime.UtcNow,
                             Event = "Quotation Created",
-                            EventType = (int)MemberQuotationLog.QuotationEvent.Creation
+                            EventType = (int)MemberQuotationLog.QuotationEvent.Creation,
+							LoggerId = memberId
                         });
 
 						dynamic newMemberMail = null;

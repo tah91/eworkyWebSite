@@ -130,6 +130,7 @@ namespace Worki.Web
             var quotation = transaction.MemberQuotation;
 			var offer = quotation.Offer;
             var localisation = offer.Localisation;
+			var ownerId = localisation.Member.MemberId;
 
             //send mail to owner 
             dynamic ownerMail = new Email(MVC.Emails.Views.Email);
@@ -156,7 +157,8 @@ namespace Worki.Web
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Payment completed",
-					EventType = (int)MemberQuotationLog.QuotationEvent.Payment
+					EventType = (int)MemberQuotationLog.QuotationEvent.Payment,
+					LoggerId = ownerId
                 });
 
                 context.Commit();

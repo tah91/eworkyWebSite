@@ -111,7 +111,8 @@ namespace Worki.Web.Controllers
 						{
 							CreatedDate = DateTime.UtcNow,
 							Event = "Booking Created",
-							EventType = (int)MemberBookingLog.BookingEvent.Creation
+							EventType = (int)MemberBookingLog.BookingEvent.Creation,
+							LoggerId = memberId
 						});
 
 						dynamic newMemberMail = null;

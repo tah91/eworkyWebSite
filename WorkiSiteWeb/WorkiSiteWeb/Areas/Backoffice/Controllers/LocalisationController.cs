@@ -42,7 +42,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 			try
 			{
 				var member = mRepo.Get(memberId);
@@ -51,14 +51,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				Member.ValidateOwner(member, loc);
 
 				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
-                var quotations = qRepo.GetMany(q =>q.Offer.LocalisationId == id);
+				var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id);
 
-				var news = ModelHelper.GetNews(bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
-                news = news.Concat(ModelHelper.GetNews(quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
+				var news = ModelHelper.GetNews(memberId, bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
+				news = news.Concat(ModelHelper.GetNews(memberId, quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
 
 				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
-                return View(new BackOfficeLocalisationHomeViewModel { Localisation = loc, News = news });
+				return View(new BackOfficeLocalisationHomeViewModel { Localisation = loc, News = news });
 			}
 			catch (Exception ex)
 			{
@@ -393,6 +393,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult ConfirmBooking(int id, OfferModel<MemberBooking> memberBooking)
 		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 
@@ -407,7 +408,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					{
 						CreatedDate = DateTime.UtcNow,
 						Event = "Booking Confirmed",
-						EventType = (int)MemberBookingLog.BookingEvent.Approval
+						EventType = (int)MemberBookingLog.BookingEvent.Approval,
+						LoggerId = memberId
 					});
 
 					//send mail to owner
@@ -496,6 +498,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
 
 			if (ModelState.IsValid)
 			{
@@ -508,7 +511,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					{
 						CreatedDate = DateTime.UtcNow,
 						Event = "Booking Refused",
-						EventType = (int)MemberBookingLog.BookingEvent.Refusal
+						EventType = (int)MemberBookingLog.BookingEvent.Refusal,
+						LoggerId = memberId
 					});
 
                     //send mail to owner
@@ -762,6 +766,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         {
             var context = ModelFactory.GetUnitOfWork();
             var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
 
             if (ModelState.IsValid)
             {
@@ -774,7 +779,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     {
                         CreatedDate = DateTime.UtcNow,
                         Event = "Quotation Refused",
-                        EventType = (int)MemberQuotationLog.QuotationEvent.Refusal
+                        EventType = (int)MemberQuotationLog.QuotationEvent.Refusal,
+						LoggerId = memberId
                     });
 
                     //send mail to owner

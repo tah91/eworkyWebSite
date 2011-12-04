@@ -117,7 +117,7 @@ namespace Worki.Web.Helpers
 			return rvd;
 		}
 
-		public static List<NewsItem> GetNews(IEnumerable<MemberBooking> bookings, Func<MemberBooking,string> linkFunction)
+		public static List<NewsItem> GetNews(int memberId, IEnumerable<MemberBooking> bookings, Func<MemberBooking, string> linkFunction)
 		{
 			var toRet = new List<NewsItem>();
 			foreach (var booking in bookings)
@@ -125,6 +125,9 @@ namespace Worki.Web.Helpers
 				foreach (var log in booking.MemberBookingLogs)
 				{
 					if (log.EventType == (int)MemberBookingLog.BookingEvent.General)
+						continue;
+
+					if (log.LoggerId == memberId)
 						continue;
 
 					toRet.Add(new NewsItem
@@ -139,7 +142,7 @@ namespace Worki.Web.Helpers
 			return toRet;
 		}
 
-        public static List<NewsItem> GetNews(IEnumerable<MemberQuotation> quotations, Func<MemberQuotation, string> linkFunction)
+        public static List<NewsItem> GetNews(int memberId, IEnumerable<MemberQuotation> quotations, Func<MemberQuotation, string> linkFunction)
         {
             var toRet = new List<NewsItem>();
             foreach (var quotation in quotations)
@@ -148,6 +151,9 @@ namespace Worki.Web.Helpers
                 {
                     if (log.EventType == (int)MemberQuotationLog.QuotationEvent.General)
                         continue;
+
+					if (log.LoggerId == memberId)
+						continue;
 
                     toRet.Add(new NewsItem
                     {
