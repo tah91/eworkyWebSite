@@ -86,13 +86,7 @@ namespace Worki.Infrastructure.Repository
         /// </summary>
         /// <param name="payKey">paypal request id to fetch corresponding transactions</param>
         /// <param name="payments">payments made by the request, needed to verify the amount</param>
-        void CompleteTransactions(string payKey, IEnumerable<PaymentItem> payments);
-
-        /// <summary>
-        /// Perform Loging actions (send mail etc)
-        /// </summary>
-        /// <param name="payKey">paypal request id to fetch corresponding transactions</param>
-        void PaymentCompleted(string payKey);
-
+		/// <returns>true if completed with no error</returns>
+        bool CompleteTransactions(string payKey, IEnumerable<PaymentItem> payments);
     }
 }

@@ -41,9 +41,8 @@
 .bookingStatusGreen{border-color:#bbd31f}
 .bookingStatusContent{display:table-cell;vertical-align:middle;margin:10px 0}
 .bookingStatusDesc{margin:0 5px}
-.bookingStatusAction{width:52px}
+.bookingStatusAction{width:52px;margin:10px auto!important}
 .bookingLinks{width:18%}
-.bookingSingle{margin-left:auto!important;margin-right:auto!important}
 .offerDropDown{margin:5px 10px 0 0}
 .offerindextable{width:400px;height:80px}
 .configoffertable{width:440px}

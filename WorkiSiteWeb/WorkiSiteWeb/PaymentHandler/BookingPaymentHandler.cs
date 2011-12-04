@@ -88,12 +88,13 @@ namespace Worki.Web
             return isCreated;
         }
 
-        public void CompleteTransactions(string payKey, IEnumerable<PaymentItem> payments)
+        public bool CompleteTransactions(string payKey, IEnumerable<PaymentItem> payments)
         {
             var context = ModelFactory.GetUnitOfWork();
             var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var transactions = tRepo.GetMany(trx => trx.RequestId == payKey);
+			bool completed = false;
 
             try
             {
@@ -112,20 +113,24 @@ namespace Worki.Web
                 var ownerId = booking.Offer.Localisation.OwnerID.Value;
                 var eworkyId = mRepo.GetAdminId();
 
+				var offer = booking.Offer;
+				var clientId = booking.MemberId;
+				var localisation = offer.Localisation;
+
                 var owner = payments.Where(p => p.Index == 0).FirstOrDefault();
                 var eworky = payments.Where(p => p.Index == 1).FirstOrDefault();
                 var ownerTransaction = transactions.Where(t => t.ReceiverId == ownerId).FirstOrDefault();
                 var eworkyTransaction = transactions.Where(t => t.ReceiverId == eworkyId).FirstOrDefault();
 
                 //check payment amounts
-                if (ownerTransaction.Amount != owner.Amount)
-                {
-                    throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, owner.TransactionId, owner.Amount, ownerTransaction.Amount));
-                }
-                if (eworkyTransaction.Amount != eworky.Amount)
-                {
-                    throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, eworky.TransactionId, eworky.Amount, eworkyTransaction.Amount));
-                }
+				//if (ownerTransaction.Amount != owner.Amount)
+				//{
+				//    throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, owner.TransactionId, owner.Amount, ownerTransaction.Amount));
+				//}
+				//if (eworkyTransaction.Amount != eworky.Amount)
+				//{
+				//    throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, eworky.TransactionId, eworky.Amount, eworkyTransaction.Amount));
+				//}
 
                 ownerTransaction.UpdatedDate = DateTime.UtcNow;
                 ownerTransaction.StatusId = (int)TransactionConstants.Status.Completed;
@@ -135,78 +140,61 @@ namespace Worki.Web
                 eworkyTransaction.StatusId = (int)TransactionConstants.Status.Completed;
                 eworkyTransaction.TransactionId = eworky.TransactionId;
 
+				booking.StatusId = (int)MemberBooking.Status.Paid;
+
                 booking.MemberBookingLogs.Add(new MemberBookingLog
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Paypal transaction completed",
                 });
 
+				booking.MemberBookingLogs.Add(new MemberBookingLog
+				{
+					CreatedDate = DateTime.UtcNow,
+					Event = "Payment completed",
+					EventType = (int)MemberBookingLog.BookingEvent.Payment,
+					LoggerId = clientId
+				});
+
+				//send mail to owner 
+				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+				ownerMail.To = booking.Owner.Email;
+				ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+				ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
+				ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
+												Localisation.GetOfferType(offer.Type),
+												CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+												CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+												localisation.Name,
+												localisation.Adress);
+
+				//send mail to client 
+				dynamic clientMail = new Email(MVC.Emails.Views.Email);
+				clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+				clientMail.To = booking.Client.Email;
+				clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+				clientMail.ToName = booking.Client.MemberMainData.FirstName;
+				clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementClient,
+												Localisation.GetOfferType(offer.Type),
+												CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+												CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+												localisation.Name,
+												localisation.Adress);
+
                 context.Commit();
+				completed = true;
+
+				ownerMail.Send();
+				clientMail.Send();
             }
             catch (Exception ex)
             {
                 context.Complete();
                 _Logger.Error("CompleteTransactions", ex);
             }
-        }
 
-        public void PaymentCompleted(string payKey)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
-
-            var transaction = tRepo.Get(trx => trx.RequestId == payKey);
-            var booking = transaction.MemberBooking;
-            var offer = booking.Offer;
-			var clientId = booking.MemberId;
-            var localisation = offer.Localisation;
-
-            //send mail to owner 
-            dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-            ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-            ownerMail.To = booking.Owner.Email;
-            ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-            ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-            ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
-                                            Localisation.GetOfferType(offer.Type),
-                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-                                            localisation.Name,
-                                            localisation.Adress);
-
-            //send mail to client 
-            dynamic clientMail = new Email(MVC.Emails.Views.Email);
-            clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-            clientMail.To = booking.Client.Email;
-            clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-            clientMail.ToName = booking.Client.MemberMainData.FirstName;
-            clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementClient,
-                                            Localisation.GetOfferType(offer.Type),
-                                            CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-                                            CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-                                            localisation.Name,
-                                            localisation.Adress);
-
-            ownerMail.Send();
-            clientMail.Send();
-
-            try
-            {
-                booking.MemberBookingLogs.Add(new MemberBookingLog
-                {
-                    CreatedDate = DateTime.UtcNow,
-                    Event = "Payment completed",
-                    EventType = (int)MemberBookingLog.BookingEvent.Payment,
-					LoggerId = clientId
-                });
-
-                context.Commit();
-            }
-            catch (Exception ex)
-            {
-                context.Complete();
-                _Logger.Error("PaymentCompleted", ex);
-            }
+			return completed;
         }
 
         /// <summary>

@@ -112,12 +112,19 @@ namespace Worki.Data.Models
 
         public IList<Member> GetClients(int ownerId)
         {
-            var clientIds = from item in _Context.MemberBookings
-                       where item.Offer.Localisation.OwnerID == ownerId
-                       group item by item.MemberId into clients
-                       where clients.Count() > 0
-                       orderby clients.Count()
-                       select clients.Key;
+			var clientIds = from item in _Context.MemberBookings
+							where item.Offer.Localisation.OwnerID == ownerId && item.StatusId == (int)MemberBooking.Status.Paid
+							group item by item.MemberId into clients
+							where clients.Count() > 0
+							orderby clients.Count()
+							select clients.Key;
+
+			clientIds = clientIds.Concat(from item in _Context.MemberQuotations
+										 where item.Offer.Localisation.OwnerID == ownerId && item.StatusId == (int)MemberQuotation.Status.Paid
+										 group item by item.MemberId into clients
+										 where clients.Count() > 0
+										 orderby clients.Count()
+										 select clients.Key);
 
             return GetMany(m => clientIds.Contains(m.MemberId));
         }

@@ -145,6 +145,17 @@ namespace Worki.Data.Models
             return string.Format("{0} {1}", MemberMainData.FirstName, MemberMainData.LastName);
         }
 
+		/// <summary>
+		/// Get full display name
+		/// </summary>
+		/// <returns>the full display name</returns>
+		public string GetAnonymousDisplayName()
+		{
+			if (MemberMainData == null)
+				return Username;
+			return string.Format("{0} {1}.", MemberMainData.FirstName, MemberMainData.LastName.Substring(0, 1));
+		}
+
         /// <summary>
         /// Max edition in 24 hours
         /// </summary>

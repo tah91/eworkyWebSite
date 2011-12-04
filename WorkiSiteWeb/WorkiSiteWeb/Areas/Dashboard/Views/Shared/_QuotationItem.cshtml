@@ -29,7 +29,7 @@
 				}
 				@if (Model.ClientCanCancel)
 				{
-                    <div class="buttonStd buttonBlue linkImg bookingStatusAction bookingSingle">
+                    <div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
 						@Html.ActionLink("Annuler", MVC.Dashboard.Home.CancelQuotation(Model.Id))
 					</div>
                 }

@@ -289,18 +289,12 @@
 .bookingStatusAction
 {
     width:52px;
-    /*margin:10px auto!important;*/
+    margin:10px auto!important;
 }
 
 .bookingLinks
 {
     width:18%
-}
-
-.bookingSingle
-{
-    margin-left: auto!important;
-    margin-right: auto!important;
 }
 
 /*BACKOFFICE LOCALISATION

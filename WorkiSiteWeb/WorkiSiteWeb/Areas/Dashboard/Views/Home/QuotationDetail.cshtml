@@ -42,21 +42,21 @@
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Asked, Html.DisplayLocalDate(Model.CreationDate).ToString())
+				@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
                 Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
             </div>
             <div class="clear"></div>
         </div>
+		<div class="float-right">
         @if (Model.ClientCanCancel)
         { 
-            <div class="buttonStd buttonBlue linkImg float-right">
+            <div class="buttonStd buttonBlue linkImg inline-block">
 				@Html.ActionLink("Annuler", MVC.Dashboard.Home.CancelQuotation(Model.Id))
 			</div>
-            <div class="clear">
-            </div>
         }
+		</div>
 	</div>
 	<div class="clear"></div>
 </div>

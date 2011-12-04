@@ -59,18 +59,22 @@
             }
             <div class="clear"></div>
         </div>
+		<div class="float-right">
         @if (Model.OwnerCanPay)
         { 
-            <div class="buttonStd buttonBlue linkImg float-right">
+            <div class="buttonStd buttonBlue linkImg inline-block">
 				@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Quotation.PayWithPayPal(Model.Id))
 			</div>
         }
         @if (Model.OwnerCanRefuse)
         { 
-            <div class="buttonStd buttonBlue linkImg float-right">
+            <div class="buttonStd buttonBlue linkImg inline-block">
 				@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseQuotation(Model.Id))
 			</div>
         }
+		</div>
+		<div class="clear">
+        </div>
 	</div>
 	<div class="clear"></div>
 </div>

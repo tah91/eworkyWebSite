@@ -70,13 +70,13 @@ namespace Worki.Web
             return isCreated;
         }
 
-        public void CompleteTransactions(string payKey, IEnumerable<PaymentItem> payments)
+        public bool CompleteTransactions(string payKey, IEnumerable<PaymentItem> payments)
         {
             var context = ModelFactory.GetUnitOfWork();
 			var tRepo = ModelFactory.GetRepository<IQuotationTransactionRepository>(context);
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             var transactions = tRepo.GetMany(trx => trx.RequestId == payKey);
-
+			bool completed = false;
             try
             {
                 if (transactions.Count != 1)
@@ -94,6 +94,10 @@ namespace Worki.Web
 				var quotation = eworkyTransaction.MemberQuotation;
                 var eworkyId = mRepo.GetAdminId();
 
+				var offer = quotation.Offer;
+				var localisation = offer.Localisation;
+				var ownerId = localisation.Member.MemberId;
+
                 var eworky = payments.Where(p => p.Index == 0).FirstOrDefault();
                 
                 //check payment amounts
@@ -106,68 +110,51 @@ namespace Worki.Web
                 eworkyTransaction.StatusId = (int)TransactionConstants.Status.Completed;
                 eworkyTransaction.TransactionId = eworky.TransactionId;
 
+				quotation.StatusId = (int)MemberQuotation.Status.Paid;
+
 				quotation.MemberQuotationLogs.Add(new MemberQuotationLog
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Paypal transaction completed",
                 });
 
+				quotation.MemberQuotationLogs.Add(new MemberQuotationLog
+				{
+					CreatedDate = DateTime.UtcNow,
+					Event = "Payment completed",
+					EventType = (int)MemberQuotationLog.QuotationEvent.Payment,
+					LoggerId = ownerId
+				});
+
+				//send mail to owner 
+				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+				ownerMail.To = quotation.Owner.Email;
+				ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+				ownerMail.ToName = quotation.Owner.MemberMainData.FirstName;
+				ownerMail.Content = "TODO";
+
+				//send mail to client 
+				dynamic clientMail = new Email(MVC.Emails.Views.Email);
+				clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+				clientMail.To = quotation.Client.Email;
+				clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+				clientMail.ToName = quotation.Client.MemberMainData.FirstName;
+				clientMail.Content = "TODO";
+
                 context.Commit();
+				completed = true;
+
+				ownerMail.Send();
+				clientMail.Send();
             }
             catch (Exception ex)
             {
                 context.Complete();
                 _Logger.Error("CompleteTransactions", ex);
             }
-        }
 
-        public void PaymentCompleted(string payKey)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-			var tRepo = ModelFactory.GetRepository<IQuotationTransactionRepository>(context);
-
-            var transaction = tRepo.Get(trx => trx.RequestId == payKey);
-            var quotation = transaction.MemberQuotation;
-			var offer = quotation.Offer;
-            var localisation = offer.Localisation;
-			var ownerId = localisation.Member.MemberId;
-
-            //send mail to owner 
-            dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-            ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-			ownerMail.To = quotation.Owner.Email;
-            ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-			ownerMail.ToName = quotation.Owner.MemberMainData.FirstName;
-			ownerMail.Content = "TODO";
-
-            //send mail to client 
-            dynamic clientMail = new Email(MVC.Emails.Views.Email);
-            clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-			clientMail.To = quotation.Client.Email;
-            clientMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
-			clientMail.ToName = quotation.Client.MemberMainData.FirstName;
-			clientMail.Content = "TODO";
-
-            ownerMail.Send();
-            clientMail.Send();
-
-            try
-            {
-				quotation.MemberQuotationLogs.Add(new MemberQuotationLog
-                {
-                    CreatedDate = DateTime.UtcNow,
-                    Event = "Payment completed",
-					EventType = (int)MemberQuotationLog.QuotationEvent.Payment,
-					LoggerId = ownerId
-                });
-
-                context.Commit();
-            }
-            catch (Exception ex)
-            {
-                context.Complete();
-                _Logger.Error("PaymentCompleted", ex);
-            }
+			return completed;
         }
     }
 }

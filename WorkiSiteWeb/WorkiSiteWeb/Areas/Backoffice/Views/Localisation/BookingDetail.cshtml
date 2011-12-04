@@ -38,6 +38,7 @@
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
 				@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
+				@RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetAnonymousDisplayName())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, Html.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, Html.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
@@ -47,17 +48,19 @@
             </div>
             <div class="clear"></div>
         </div>
-        @if (Model.OwnerCanAccept)
-        { 
-            <div class="buttonStd buttonBlue linkImg float-right">
-				@Html.ActionLink("Accepter", MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
-			</div>
-			<div class="buttonStd buttonBlue linkImg float-right">
-				@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
-			</div>
-            <div class="clear">
-            </div>
-        }
+		<div class="float-right">		
+			@if (Model.OwnerCanAccept)
+			{ 
+				<div class="buttonStd buttonBlue linkImg inline-block">
+					@Html.ActionLink("Accepter", MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
+				</div>
+				<div class="buttonStd buttonBlue linkImg inline-block">
+					@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
+				</div>
+			}
+		</div>
+		<div class="clear">
+        </div>
 	</div>
 	<div class="clear"></div>
 </div>

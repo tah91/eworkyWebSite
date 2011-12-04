@@ -10,7 +10,7 @@
 <li class="bookingItem">
     <div class="innerContentBlock padding10">
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetFullDisplayName())
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetAnonymousDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
 			@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
@@ -30,13 +30,12 @@
 				}
 				@if (Model.OwnerCanAccept)
 				{
-					<div class="float-left buttonStd buttonBlue linkImg bookingStatusAction marginl5">
+					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
 						@Html.ActionLink("Accepter",MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
 					</div>
-					<div class="float-right buttonStd buttonBlue linkImg bookingStatusAction marginr5">
+					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
 						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
 					</div>
-                    <div class="clear"></div>
 				}
 
             </div>
@@ -44,7 +43,10 @@
         <div class="bookingLinks float-right blue">
             <ul>
                 <li>@Html.ActionLink("Details", MVC.Backoffice.Localisation.BookingDetail(Model.Id))</li>
-                <li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))</li>
+				@if (Model.Paid)
+				{
+					<li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))</li>	
+				}
             </ul>            
         </div>
         <div class="clear">

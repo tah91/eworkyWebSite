@@ -41,13 +41,6 @@ namespace Worki.Web.Controllers
 			{
 				case "COMPLETED":
 					{
-						var context = ModelFactory.GetUnitOfWork();
-						var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
-
-						var type = tRepo.GetHandlerType(requestId);
-						var paymentHandler = PaymentHandlerFactory.GetHandler(type);
-                        paymentHandler.PaymentCompleted(requestId);
-
 						Response.Clear();
 						Response.ClearHeaders();
 						Response.StatusCode = 200;

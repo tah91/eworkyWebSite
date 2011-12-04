@@ -45,7 +45,8 @@ namespace Worki.Data.Models
             Unknown,
             Accepted,
             Refused,
-            Cancelled
+            Cancelled,
+			Paid
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Worki.Data.Models
         /// </summary>
         public bool Paid
         {
-            get { return StatusId == (int)Status.Accepted && MemberQuotationTransactions.Where(t => t.StatusId == (int)TransactionConstants.Status.Completed).Count() != 0; }
+            get { return StatusId == (int)Status.Paid; }
         }
 
         /// <summary>
@@ -218,13 +219,13 @@ namespace Worki.Data.Models
             switch (type)
             {
                 case QuotationEvent.Creation:
-                    return string.Format("{0} a fait une demande de devis pour {1}", MemberQuotation.Client.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format("{0} a fait une demande de devis pour {1}", MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Payment:
-                    return string.Format("{0} a payé la demande de devis pour {1}", MemberQuotation.Owner.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format("{0} a payé la demande de devis pour {1}", MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Refusal:
-                    return string.Format("{0} a refusé la demande de devis pour {1}", MemberQuotation.Owner.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format("{0} a refusé la demande de devis pour {1}", MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Cancellation:
-                    return string.Format("{0} a annulé la demande de devis pour {1}", MemberQuotation.Client.GetFullDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format("{0} a annulé la demande de devis pour {1}", MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.General:
                 default:
                     return Event;

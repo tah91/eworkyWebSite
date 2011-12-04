@@ -301,7 +301,14 @@ namespace Worki.Service
 							switch (status)
 							{
 								case "COMPLETED":
-                                    paymentHandler.CompleteTransactions(requestId, payments);
+									if (!paymentHandler.CompleteTransactions(requestId, payments))
+									{
+										string message = "Paypal: CompleteTransactions failed\r\n";
+										message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
+										message += "Request   : " + paypalRequest.RawUrl;
+										errors.Add(message);
+										_Logger.Error(message);
+									}
 									break;
 								case "INCOMPLETE":
 								case "ERROR":
@@ -315,6 +322,7 @@ namespace Worki.Service
 							string message = "Paypal: no status found in IPN message\r\n";
 							message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
 							message += "Request   : " + paypalRequest.RawUrl;
+							errors.Add(message);
 							_Logger.Error(message);
 						}
 					}
@@ -323,6 +331,7 @@ namespace Worki.Service
 						string message = "Paypal: invalid Paypal IPN message\r\n";
 						message += "Client IP : " + paypalRequest.UserHostAddress + "\r\n";
 						message += "Request   : " + paypalRequest.RawUrl;
+						errors.Add(message);
 						_Logger.Error(message);
 					}
 				}

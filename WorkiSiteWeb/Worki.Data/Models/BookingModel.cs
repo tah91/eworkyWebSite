@@ -51,7 +51,8 @@ namespace Worki.Data.Models
 			Unknown,
 			Accepted,
 			Refused,
-            Cancelled
+            Cancelled,
+			Paid
 		}
 
 		#region IDataErrorInfo
@@ -130,7 +131,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Waiting
 		{
-			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)TransactionConstants.Status.Completed).Count() == 0; }
+			get { return StatusId == (int)Status.Accepted; }
 		}
 
 
@@ -139,7 +140,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Paid
 		{
-			get { return StatusId == (int)Status.Accepted && Transactions.Where(t => t.StatusId == (int)TransactionConstants.Status.Completed).Count() != 0; }
+			get { return StatusId == (int)Status.Paid; }
 		}
 
 		/// <summary>
@@ -203,7 +204,7 @@ namespace Worki.Data.Models
         /// </summary>
         public bool ClientCanCancel
         {
-            get { return !Expired && Unknown; }
+			get { return !Expired && !Cancelled && !Paid && !Refused; }
         }
 
         public void GetStatus(out string status, out string color, out DateTime? date)
@@ -303,15 +304,15 @@ namespace Worki.Data.Models
 			switch(type)
 			{
 				case BookingEvent.Creation:
-					return string.Format("{0} a fait une demande de réservation pour {1}", MemberBooking.Client.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+					return string.Format("{0} a fait une demande de réservation pour {1}", MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.Approval:
-					return string.Format("{0} a accepté la demande de réservation pour {1}", MemberBooking.Owner.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+					return string.Format("{0} a accepté la demande de réservation pour {1}", MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.Refusal:
-					return string.Format("{0} a refusé la demande de réservation pour {1}", MemberBooking.Owner.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+					return string.Format("{0} a refusé la demande de réservation pour {1}", MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.Payment:
-					return string.Format("{0} a payé la demande de réservation pour {1}", MemberBooking.Client.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+					return string.Format("{0} a payé la demande de réservation pour {1}", MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
                 case BookingEvent.Cancellation:
-                    return string.Format("{0} a annulé la demande de réservation pour {1}", MemberBooking.Client.GetFullDisplayName(), MemberBooking.Offer.Localisation.Name);
+					return string.Format("{0} a annulé la demande de réservation pour {1}", MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.General:
 				default:
 					return Event;
