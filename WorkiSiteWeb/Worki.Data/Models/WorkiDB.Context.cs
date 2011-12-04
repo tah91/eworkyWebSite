@@ -43,10 +43,10 @@ namespace Worki.Data.Models
         public DbSet<WelcomePeople> WelcomePeoples { get; set; }
         public DbSet<OfferFeature> OfferFeatures { get; set; }
         public DbSet<OfferFile> OfferFiles { get; set; }
-        public DbSet<MemberBooking> MemberBookings { get; set; }
         public DbSet<Localisation> Localisations { get; set; }
         public DbSet<MemberQuotationLog> MemberQuotationLogs { get; set; }
         public DbSet<MemberQuotationTransaction> MemberQuotationTransactions { get; set; }
         public DbSet<MemberQuotation> MemberQuotations { get; set; }
+        public DbSet<MemberBooking> MemberBookings { get; set; }
     }
 }

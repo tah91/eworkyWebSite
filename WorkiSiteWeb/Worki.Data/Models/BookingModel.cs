@@ -282,7 +282,7 @@ namespace Worki.Data.Models
         public string Response { get; set; }
 
         [Display(Name = "Price", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 	}
 
 	public partial class MemberBookingLog
@@ -322,6 +322,7 @@ namespace Worki.Data.Models
     public class LocalisationMenuIndex
     {
         public LocalisationMenu MenuItem { get; set; }
+		public string Title { get; set; }
         public int Id { get; set; }
     }
 

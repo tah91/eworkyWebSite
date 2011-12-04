@@ -404,6 +404,20 @@ namespace Worki.Web.Helpers
 			return MvcHtmlString.Create(tag.ToString());
 		}
 
+		/// <summary>
+		/// Create a link
+		/// </summary>
+		/// <param name="text">text of the link</param>
+		/// <param name="href">href of the string</param>
+		/// <returns>link</returns>
+		public static MvcHtmlString CreateLink(this HtmlHelper instance, string text, string href)
+		{
+			var tag = new TagBuilder("a");
+			tag.MergeAttribute("href", href);
+			tag.SetInnerText(text);
+			return MvcHtmlString.Create(tag.ToString());
+		}
+
 		#region BeginCollectionItem
 
 		private const string idsToReuseKey = "__htmlPrefixScopeExtensions_IdsToReuse_";

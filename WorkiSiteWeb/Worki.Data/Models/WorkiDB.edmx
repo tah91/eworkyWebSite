@@ -331,7 +331,7 @@
           <Property Name="FromDate" Type="datetime" Nullable="false" />
           <Property Name="ToDate" Type="datetime" Nullable="false" />
           <Property Name="Message" Type="nvarchar(max)" />
-          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="StatusId" Type="int" Nullable="false" />
           <Property Name="Response" Type="nvarchar(max)" />
         </EntityType>
@@ -1093,23 +1093,6 @@
             <End Role="Offer" EntitySet="Offers" />
             <End Role="OfferFile" EntitySet="OfferFiles" />
           </AssociationSet>
-          <EntitySet Name="MemberBookings" EntityType="WorkiDBModel.MemberBooking" />
-          <AssociationSet Name="FK_MemberBooking_Member" Association="WorkiDBModel.FK_MemberBooking_Member">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="MemberBooking" EntitySet="MemberBookings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MemberBooking_Offer" Association="WorkiDBModel.FK_MemberBooking_Offer">
-            <End Role="Offer" EntitySet="Offers" />
-            <End Role="MemberBooking" EntitySet="MemberBookings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MemberBookingLog_MemberBooking" Association="WorkiDBModel.FK_MemberBookingLog_MemberBooking">
-            <End Role="MemberBooking" EntitySet="MemberBookings" />
-            <End Role="MemberBookingLog" EntitySet="MemberBookingLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_MemberBooking" Association="WorkiDBModel.FK_Transaction_MemberBooking">
-            <End Role="MemberBooking" EntitySet="MemberBookings" />
-            <End Role="Transaction" EntitySet="Transactions" />
-          </AssociationSet>
           <EntitySet Name="Localisations" EntityType="WorkiDBModel.Localisation" />
           <AssociationSet Name="FK_Comment_Localisation" Association="WorkiDBModel.FK_Comment_Localisation">
             <End Role="Localisation" EntitySet="Localisations" />
@@ -1169,6 +1152,23 @@
           <AssociationSet Name="FK_QuotationTransaction_MemberQuotation" Association="WorkiDBModel.FK_QuotationTransaction_MemberQuotation">
             <End Role="MemberQuotation" EntitySet="MemberQuotations" />
             <End Role="MemberQuotationTransaction" EntitySet="MemberQuotationTransactions" />
+          </AssociationSet>
+          <EntitySet Name="MemberBookings" EntityType="WorkiDBModel.MemberBooking" />
+          <AssociationSet Name="FK_MemberBooking_Member" Association="WorkiDBModel.FK_MemberBooking_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="MemberBooking" EntitySet="MemberBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberBooking_Offer" Association="WorkiDBModel.FK_MemberBooking_Offer">
+            <End Role="Offer" EntitySet="Offers" />
+            <End Role="MemberBooking" EntitySet="MemberBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberBookingLog_MemberBooking" Association="WorkiDBModel.FK_MemberBookingLog_MemberBooking">
+            <End Role="MemberBooking" EntitySet="MemberBookings" />
+            <End Role="MemberBookingLog" EntitySet="MemberBookingLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_MemberBooking" Association="WorkiDBModel.FK_Transaction_MemberBooking">
+            <End Role="MemberBooking" EntitySet="MemberBookings" />
+            <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__RefactorLog">
@@ -1319,9 +1319,9 @@
           <NavigationProperty Name="Rentals" Relationship="WorkiDBModel.FK_Rental_Member" FromRole="Member" ToRole="Rental" />
           <NavigationProperty Name="Transactions" Relationship="WorkiDBModel.FK_Transaction_Member" FromRole="Member" ToRole="Transaction" />
           <NavigationProperty Name="WelcomePeoples" Relationship="WorkiDBModel.FK_WelcomePeople_Member" FromRole="Member" ToRole="WelcomePeople" />
-          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="Member" ToRole="MemberBooking" />
           <NavigationProperty Name="Localisations" Relationship="WorkiDBModel.FK_Localisation_Member" FromRole="Member" ToRole="Localisation" />
           <NavigationProperty Name="MemberQuotations" Relationship="WorkiDBModel.FK_MemberQuotation_Member" FromRole="Member" ToRole="MemberQuotation" />
+          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="Member" ToRole="MemberBooking" />
         </EntityType>
         <EntityType Name="MemberBookingLog">
           <Key>
@@ -1400,12 +1400,12 @@
           <Property Type="Boolean" Name="IsOffline" Nullable="false" />
           <NavigationProperty Name="OfferFeatures" Relationship="WorkiDBModel.FK_OfferFeature_Offer" FromRole="Offer" ToRole="OfferFeature" />
           <NavigationProperty Name="OfferFiles" Relationship="WorkiDBModel.FK_OfferFile_Offer" FromRole="Offer" ToRole="OfferFile" />
-          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Offer" FromRole="Offer" ToRole="MemberBooking" />
           <Property Type="Boolean" Name="IsBookable" Nullable="false" />
           <Property Type="Int32" Name="PaymentType" Nullable="false" />
           <Property Type="Int32" Name="Currency" Nullable="false" />
           <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_Offer_Localisation" FromRole="Offer" ToRole="Localisation" />
           <NavigationProperty Name="MemberQuotations" Relationship="WorkiDBModel.FK_MemberQuotation_Offer" FromRole="Offer" ToRole="MemberQuotation" />
+          <NavigationProperty Name="MemberBookings" Relationship="WorkiDBModel.FK_MemberBooking_Offer" FromRole="Offer" ToRole="MemberBooking" />
         </EntityType>
         <EntityType Name="Press">
           <Key>
@@ -1710,72 +1710,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MemberBooking">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MemberId" Nullable="false" />
-          <Property Type="Int32" Name="OfferId" Nullable="false" />
-          <Property Type="DateTime" Name="FromDate" Nullable="false" />
-          <Property Type="DateTime" Name="ToDate" Nullable="false" />
-          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Price" Nullable="false" />
-          <Property Type="Int32" Name="StatusId" Nullable="false" />
-          <Property Type="String" Name="Response" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="MemberBooking" ToRole="Member" />
-          <NavigationProperty Name="Offer" Relationship="WorkiDBModel.FK_MemberBooking_Offer" FromRole="MemberBooking" ToRole="Offer" />
-          <NavigationProperty Name="MemberBookingLogs" Relationship="WorkiDBModel.FK_MemberBookingLog_MemberBooking" FromRole="MemberBooking" ToRole="MemberBookingLog" />
-          <NavigationProperty Name="Transactions" Relationship="WorkiDBModel.FK_Transaction_MemberBooking" FromRole="MemberBooking" ToRole="Transaction" />
-        </EntityType>
-        <Association Name="FK_MemberBooking_Member">
-          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Member">
-              <PropertyRef Name="MemberId" />
-            </Principal>
-            <Dependent Role="MemberBooking">
-              <PropertyRef Name="MemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MemberBooking_Offer">
-          <End Type="WorkiDBModel.Offer" Role="Offer" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Offer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MemberBooking">
-              <PropertyRef Name="OfferId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MemberBookingLog_MemberBooking">
-          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="1" />
-          <End Type="WorkiDBModel.MemberBookingLog" Role="MemberBookingLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MemberBooking">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MemberBookingLog">
-              <PropertyRef Name="MemberBookingId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Transaction_MemberBooking">
-          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="1" />
-          <End Type="WorkiDBModel.Transaction" Role="Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MemberBooking">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="MemberBookingId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Localisation">
           <Key>
             <PropertyRef Name="ID" />
@@ -2020,6 +1954,72 @@
             </Principal>
             <Dependent Role="MemberQuotationTransaction">
               <PropertyRef Name="MemberQuotationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MemberBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MemberId" Nullable="false" />
+          <Property Type="Int32" Name="OfferId" Nullable="false" />
+          <Property Type="DateTime" Name="FromDate" Nullable="false" />
+          <Property Type="DateTime" Name="ToDate" Nullable="false" />
+          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="StatusId" Nullable="false" />
+          <Property Type="String" Name="Response" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="MemberBooking" ToRole="Member" />
+          <NavigationProperty Name="Offer" Relationship="WorkiDBModel.FK_MemberBooking_Offer" FromRole="MemberBooking" ToRole="Offer" />
+          <NavigationProperty Name="MemberBookingLogs" Relationship="WorkiDBModel.FK_MemberBookingLog_MemberBooking" FromRole="MemberBooking" ToRole="MemberBookingLog" />
+          <NavigationProperty Name="Transactions" Relationship="WorkiDBModel.FK_Transaction_MemberBooking" FromRole="MemberBooking" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_MemberBooking_Member">
+          <End Type="WorkiDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MemberBooking">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberBooking_Offer">
+          <End Type="WorkiDBModel.Offer" Role="Offer" Multiplicity="1" />
+          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberBooking">
+              <PropertyRef Name="OfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberBookingLog_MemberBooking">
+          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="1" />
+          <End Type="WorkiDBModel.MemberBookingLog" Role="MemberBookingLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberBooking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberBookingLog">
+              <PropertyRef Name="MemberBookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_MemberBooking">
+          <End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="1" />
+          <End Type="WorkiDBModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberBooking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="MemberBookingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2371,21 +2371,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MemberBookings">
-            <EntityTypeMapping TypeName="WorkiDBModel.MemberBooking">
-              <MappingFragment StoreEntitySet="MemberBooking">
-                <ScalarProperty Name="Response" ColumnName="Response" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Localisations">
             <EntityTypeMapping TypeName="WorkiDBModel.Localisation">
               <MappingFragment StoreEntitySet="Localisation">
@@ -2453,6 +2438,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MemberBookings">
+            <EntityTypeMapping TypeName="WorkiDBModel.MemberBooking">
+              <MappingFragment StoreEntitySet="MemberBooking">
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2498,8 +2498,8 @@
         <EntityTypeShape EntityType="WorkiDBModel.Visitor" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="WorkiDBModel.WelcomePeople" Width="1.5" PointX="11.25" PointY="33.875" Height="2.5571907552083246" />
         <AssociationConnector Association="WorkiDBModel.FK_Comment_Member" >
-          <ConnectorPoint PointX="2.25" PointY="35.824191700854712" />
-          <ConnectorPoint PointX="2.75" PointY="35.824191700854712" />
+          <ConnectorPoint PointX="2.25" PointY="35.057979018972574" />
+          <ConnectorPoint PointX="2.75" PointY="35.057979018972574" />
           <ConnectorPoint PointX="2.75" PointY="38.037822265624996" />
           <ConnectorPoint PointX="4.6678215128205123" PointY="38.037822265624996" />
           <ConnectorPoint PointX="4.8714112564102523" PointY="38.037822265624996" />
@@ -2530,16 +2530,16 @@
           <ConnectorPoint PointX="3" PointY="40.927643229166662" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberEdition_Member" >
-          <ConnectorPoint PointX="1.2250349624399042" PointY="38.855123697916667" />
-          <ConnectorPoint PointX="1.2250349624399042" PointY="39.25" />
-          <ConnectorPoint PointX="2.7916666666666665" PointY="39.25" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="39.25" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="39.25" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="39.25" />
-          <ConnectorPoint PointX="5" PointY="39.25" />
+          <ConnectorPoint PointX="1.5" PointY="38.855123697916667" />
+          <ConnectorPoint PointX="1.5" PointY="39.125" />
+          <ConnectorPoint PointX="2.2607139539971324" PointY="39.125" />
+          <ConnectorPoint PointX="2.6043644815705114" PointY="39.125" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="39.125" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="39.125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="39.125" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="39.125" />
+          <ConnectorPoint PointX="5" PointY="39.125" />
           <ConnectorPoint PointX="5" PointY="40.230286458333325" />
-          <ConnectorPoint PointX="5.041666666666667" PointY="40.230286458333325" />
-          <ConnectorPoint PointX="5.208333333333333" PointY="40.230286458333325" />
           <ConnectorPoint PointX="7.604166666666667" PointY="40.230286458333325" />
           <ConnectorPoint PointX="7.770833333333333" PointY="40.230286458333325" />
           <ConnectorPoint PointX="7.875" PointY="40.230286458333325" />
@@ -2573,10 +2573,10 @@
           <ConnectorPoint PointX="3" PointY="59.259308268229177" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Transaction_Member" >
-          <ConnectorPoint PointX="2.25" PointY="36.8830501315398" />
-          <ConnectorPoint PointX="2.6666666666666665" PointY="36.8830501315398" />
-          <ConnectorPoint PointX="2.8333333333333335" PointY="36.8830501315398" />
-          <ConnectorPoint PointX="2.875" PointY="36.8830501315398" />
+          <ConnectorPoint PointX="2.25" PointY="36.507197575892533" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="36.507197575892533" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="36.507197575892533" />
+          <ConnectorPoint PointX="2.875" PointY="36.507197575892533" />
           <ConnectorPoint PointX="2.875" PointY="38.053447265624996" />
           <ConnectorPoint PointX="4.6834465128205123" PointY="38.053447265624996" />
           <ConnectorPoint PointX="4.8870362564102523" PointY="38.053447265624996" />
@@ -2594,16 +2594,16 @@
           <ConnectorPoint PointX="13.5" PointY="37.625" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_WelcomePeople_Member" >
-          <ConnectorPoint PointX="2.25" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="2.6666666666666665" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="4.5093862705642378" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="4.7129760141539778" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="5.270833333333333" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="7.947916666666667" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="8.2127203567020555" PointY="37.879387023368722" />
-          <ConnectorPoint PointX="12.375" PointY="37.879387023368722" />
+          <ConnectorPoint PointX="2.25" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="4.513013163211137" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="4.716602906800877" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="5.270833333333333" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="7.947916666666667" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="8.2163472493489547" PointY="37.883013916015621" />
+          <ConnectorPoint PointX="12.375" PointY="37.883013916015621" />
           <ConnectorPoint PointX="12.375" PointY="36.432190755208325" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_RentalAccess_Rental" >
@@ -2629,34 +2629,6 @@
           <ConnectorPoint PointX="6" PointY="49.865143229166662" />
           <ConnectorPoint PointX="7.5" PointY="49.865143229166662" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="WorkiDBModel.MemberBooking" Width="1.5" PointX="7.5" PointY="41.25" Height="3.5186979166666674" />
-        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Member" >
-          <ConnectorPoint PointX="2.25" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="2.6666666666666665" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="4.538442758879877" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="4.742032502469617" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="5.270833333333333" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="7.6875" PointY="37.908443511684361" />
-          <ConnectorPoint PointX="7.6875" PointY="41.25" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Offer" >
-          <ConnectorPoint PointX="6" PointY="44.625" />
-          <ConnectorPoint PointX="6" PointY="42.9374995" />
-          <ConnectorPoint PointX="7.5" PointY="42.9374995" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_MemberBookingLog_MemberBooking" >
-          <ConnectorPoint PointX="9" PointY="43.884348958333334" />
-          <ConnectorPoint PointX="9.75" PointY="43.884348958333334" />
-        </AssociationConnector>
-        <AssociationConnector Association="WorkiDBModel.FK_Transaction_MemberBooking" >
-          <ConnectorPoint PointX="8.03125" PointY="41.25" />
-          <ConnectorPoint PointX="8.03125" PointY="37.775987456996859" />
-          <ConnectorPoint PointX="12.291666666666666" PointY="37.775987456996859" />
-          <ConnectorPoint PointX="12.458333333333334" PointY="37.775987456996859" />
-          <ConnectorPoint PointX="12.75" PointY="37.775987456996859" />
-        </AssociationConnector>
         <EntityTypeShape EntityType="WorkiDBModel.Localisation" Width="1.5" PointX="3" PointY="31" Height="6.787822265624996" />
         <AssociationConnector Association="WorkiDBModel.FK_Comment_Localisation" >
           <ConnectorPoint PointX="4.5" PointY="34.929962565104162" />
@@ -2676,8 +2648,8 @@
           <ConnectorPoint PointX="9" PointY="32.105286458333339" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_Localisation_Member" >
-          <ConnectorPoint PointX="2.25" PointY="33.787095850427356" />
-          <ConnectorPoint PointX="3" PointY="33.787095850427356" />
+          <ConnectorPoint PointX="2.25" PointY="33.403989509486287" />
+          <ConnectorPoint PointX="3" PointY="33.403989509486287" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_LocalisationData_Localisation" >
           <ConnectorPoint PointX="4.5" PointY="31.855606532552084" />
@@ -2726,23 +2698,17 @@
         <EntityTypeShape EntityType="WorkiDBModel.MemberQuotationTransaction" Width="1.5" PointX="12.75" PointY="45.125" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="WorkiDBModel.MemberQuotation" Width="1.5" PointX="10.5" PointY="38.5" Height="3.5186979166666674" />
         <AssociationConnector Association="WorkiDBModel.FK_MemberQuotation_Member" >
-          <ConnectorPoint PointX="1.719055942758414" PointY="38.855123697916667" />
-          <ConnectorPoint PointX="1.719055942758414" PointY="39.125" />
-          <ConnectorPoint PointX="2.2607139539971324" PointY="39.125" />
-          <ConnectorPoint PointX="2.6043644815705114" PointY="39.125" />
-          <ConnectorPoint PointX="2.6666666666666665" PointY="39.125" />
-          <ConnectorPoint PointX="2.8333333333333335" PointY="39.125" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="39.125" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="39.125" />
-          <ConnectorPoint PointX="5.125" PointY="39.125" />
-          <ConnectorPoint PointX="5.125" PointY="40.614889322916667" />
-          <ConnectorPoint PointX="7.604166666666667" PointY="40.614889322916667" />
-          <ConnectorPoint PointX="7.770833333333333" PointY="40.614889322916667" />
-          <ConnectorPoint PointX="7.947916666666667" PointY="40.614889322916667" />
-          <ConnectorPoint PointX="8.1145833333333339" PointY="40.614889322916667" />
-          <ConnectorPoint PointX="10.125" PointY="40.614889322916667" />
-          <ConnectorPoint PointX="10.125" PointY="40.259348958333334" />
-          <ConnectorPoint PointX="10.5" PointY="40.259348958333334" />
+          <ConnectorPoint PointX="2.25" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="4.5402562052033231" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="4.7438459487930631" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="5.270833333333333" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="7.947916666666667" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="8.24359029134114" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="10.75" PointY="37.910256958007807" />
+          <ConnectorPoint PointX="10.75" PointY="38.5" />
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_MemberQuotation_Offer" >
           <ConnectorPoint PointX="6.75" PointY="48.415345052083332" />
@@ -2756,10 +2722,37 @@
         </AssociationConnector>
         <AssociationConnector Association="WorkiDBModel.FK_QuotationTransaction_MemberQuotation" >
           <ConnectorPoint PointX="11.4531225" PointY="42.018697916666667" />
-          <ConnectorPoint PointX="11.4531225" PointY="46.650940755208332" />
-          <ConnectorPoint PointX="11.572916666666666" PointY="46.650940755208332" />
-          <ConnectorPoint PointX="11.739583333333334" PointY="46.650940755208332" />
-          <ConnectorPoint PointX="12.75" PointY="46.650940755208332" />
+          <ConnectorPoint PointX="11.4531225" PointY="46.747218424479165" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="46.747218424479165" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="46.747218424479165" />
+          <ConnectorPoint PointX="12.75" PointY="46.747218424479165" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="WorkiDBModel.MemberBooking" Width="1.5" PointX="7.5" PointY="41.5" Height="3.5186979166666674" />
+        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Member" >
+          <ConnectorPoint PointX="2.25" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="4.4966673380158282" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="4.7002570816055682" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="5.270833333333333" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="7.6875" PointY="37.866668090820312" />
+          <ConnectorPoint PointX="7.6875" PointY="41.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_MemberBooking_Offer" >
+          <ConnectorPoint PointX="6.75" PointY="44.821848958333334" />
+          <ConnectorPoint PointX="7.5" PointY="44.821848958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_MemberBookingLog_MemberBooking" >
+          <ConnectorPoint PointX="9" PointY="44.009348958333334" />
+          <ConnectorPoint PointX="9.75" PointY="44.009348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="WorkiDBModel.FK_Transaction_MemberBooking" >
+          <ConnectorPoint PointX="8.03125" PointY="41.5" />
+          <ConnectorPoint PointX="8.03125" PointY="37.769627990722654" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="37.769627990722654" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="37.769627990722654" />
+          <ConnectorPoint PointX="12.75" PointY="37.769627990722654" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

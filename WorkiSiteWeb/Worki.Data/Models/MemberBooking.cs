@@ -33,7 +33,7 @@ namespace Worki.Data.Models
         public System.DateTime FromDate { get; set; }
         public System.DateTime ToDate { get; set; }
         public string Message { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public int StatusId { get; set; }
         public string Response { get; set; }
     

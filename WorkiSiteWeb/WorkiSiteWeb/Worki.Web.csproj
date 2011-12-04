@@ -683,6 +683,7 @@
     <Content Include="Areas\Dashboard\Views\Shared\_QuotationList.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_BookingList.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\RefuseQuotation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\_OfferMenu.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

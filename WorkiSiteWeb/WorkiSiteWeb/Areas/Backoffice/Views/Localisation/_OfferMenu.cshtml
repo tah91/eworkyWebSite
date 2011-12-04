@@ -1,0 +1,11 @@
+﻿@model List<OfferMenuItem>
+
+@{
+	var menu = new List<MenuItem>();
+	foreach (var item in Model)
+	{
+		menu.Add(new MenuItem { Selected = item.Selected, Link = Html.CreateLink(item.Text, item.Link) });
+	}
+}
+
+@Html.Partial(MVC.Shared.Views._VerticalMenu, menu)

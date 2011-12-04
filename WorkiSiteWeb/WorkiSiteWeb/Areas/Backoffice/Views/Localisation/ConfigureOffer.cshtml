@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.OfferFormViewModel
+﻿@model OfferModel<OfferFormViewModel>
 
 @section HeadContent
 {
@@ -6,79 +6,73 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Model.Offer.Name, "Blue")
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = Model.Offer.LocalisationId })
+@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.OfferModelId));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
-		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.OfferIndex(Model.Offer.Localisation.ID,Model.Offer.Id))} ,
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Configure, MVC.Backoffice.Localisation.ConfigureOffer(Model.Offer.Id))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Id))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.OfferQuotation(Model.Offer.Id))}
-		})
+		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.OfferModelId, (int)OfferMenuType.Config));}
 	</div>
 
 	<div class="blockContainer float-left contentRight">
         @using (Html.BeginForm())
 		{
 		    <div class="contentBlock">
-				@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(o.Id)) })
+				@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
                 <div class="loginDesc marginb10">
                     @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
                 </div>
 	   		    @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => m.Offer.Name)
-                @Html.HiddenFor(m => m.Offer.Type)
+                @Html.HiddenFor(m => m.InnerModel.Offer.Name)
+                @Html.HiddenFor(m => m.InnerModel.Offer.Type)
+				@Html.HiddenFor(m => m.OfferModelId)
 				<table class="configoffertable">
                 	<tr>
 						<td>
-							@Html.LabelFor(m => m.Offer.Price) <span class="blue">*</span>
+							@Html.LabelFor(m => m.InnerModel.Offer.Price) <span class="blue">*</span>
 						</td>
 						<td>
-							@Html.TextBoxFor(m => m.Offer.Price)
-						</td>
-					</tr>
-                    <tr>
-						<td>
-						    @Html.LabelFor(m => m.Offer.IsOffline)
-						</td>
-						<td>
-							@Html.CheckBoxFor(m => m.Offer.IsOffline)
+							@Html.TextBoxFor(m => m.InnerModel.Offer.Price)
 						</td>
 					</tr>
                     <tr>
 						<td>
-						    @Html.LabelFor(m => m.Offer.IsBookable)
+						    @Html.LabelFor(m => m.InnerModel.Offer.IsOffline)
 						</td>
 						<td>
-							@Html.CheckBoxFor(m => m.Offer.IsBookable)
+							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsOffline)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+						    @Html.LabelFor(m => m.InnerModel.Offer.IsBookable)
+						</td>
+						<td>
+							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsBookable)
 						</td>
 					</tr>
 					<tr>
 						<td>
-							@Html.LabelFor(m => m.Offer.Period)
+							@Html.LabelFor(m => m.InnerModel.Offer.Period)
 						</td>
 						<td>
-							@Html.DropDownListFor(m => m.Offer.Period, Model.Periods)
-						</td>
-					</tr>
-                    <tr>
-						<td>
-							@Html.LabelFor(m => m.Offer.Currency)
-						</td>
-						<td>
-							@Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
+							@Html.DropDownListFor(m => m.InnerModel.Offer.Period, Model.InnerModel.Periods)
 						</td>
 					</tr>
                     <tr>
 						<td>
-							@Html.LabelFor(m => m.Offer.PaymentType)
+							@Html.LabelFor(m => m.InnerModel.Offer.Currency)
 						</td>
 						<td>
-							@Html.DropDownListFor(m => m.Offer.PaymentType, Model.PaymentTypes)
+							@Html.DropDownListFor(m => m.InnerModel.Offer.Currency, Model.InnerModel.Currencies)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.InnerModel.Offer.PaymentType)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.InnerModel.Offer.PaymentType, Model.InnerModel.PaymentTypes)
 						</td>
 					</tr>
 				</table>

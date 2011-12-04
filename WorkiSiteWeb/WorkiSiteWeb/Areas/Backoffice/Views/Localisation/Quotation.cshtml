@@ -6,14 +6,6 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-<div class="float-left">
-    @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.ManagementTitle, Model.Localisation.Name), "Blue")
-</div>
-<div class="float-right bold margint15">
-    @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.BackToOwnerSpace, MVC.Backoffice.Home.Index(), new { @class = "blue" })
-</div>
-<div class="clear"></div>
-<!--@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationNavigation, new LocalisationNavigation { Localisation = Model.Localisation })-->
 @Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID })
 
 <div class="detailContent">

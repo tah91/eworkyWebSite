@@ -37,4 +37,24 @@ namespace Worki.Web.Model
 		public Offer Offer { get; set; }
 		public Func<Offer, string> UrlMaker { get; set; }
 	}
+
+	public enum OfferMenuType
+	{
+		Config,
+		Booking,
+		Quotation
+	}
+
+	public class OfferMenuItem
+	{
+		public string Link { get; set; }
+		public string Text { get; set; }
+		public bool Selected { get; set; }
+	}
+
+	public class OfferModel<T>
+	{
+		public T InnerModel { get; set; }
+		public int OfferModelId { get; set; }
+	}
 }

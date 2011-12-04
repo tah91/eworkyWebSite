@@ -1,7 +1,15 @@
 ﻿@model LocalisationMenuIndex
 
+<div class="float-left">
+    @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.ManagementTitle, Model.Title),"Blue")
+</div>
+<div class="float-right bold margint15">
+    @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.BackToOwnerSpace, MVC.Backoffice.Home.Index(), new { @class = "blue" })
+</div>
+<div class="clear"></div>
+
 @Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
 { 
 	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BOHome, MVC.Backoffice.Localisation.Index(Model.Id))} ,
-	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.OfferIndex(Model.Id))}
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.ConfigureOffer(Model.Id))}
 })

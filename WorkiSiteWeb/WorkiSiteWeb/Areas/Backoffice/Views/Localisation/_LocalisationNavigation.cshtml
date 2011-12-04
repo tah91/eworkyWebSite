@@ -10,6 +10,6 @@
 
     @if (Model != null && Model.Offer != null)
     {
-        <text> / </text> @Html.ActionLink(Model.Offer.Name, MVC.Backoffice.Localisation.OfferIndex(Model.Localisation.ID, Model.Offer.Id), new { @class = "blue" })
+        <text> / </text> @Html.ActionLink(Model.Offer.Name, MVC.Backoffice.Localisation.ConfigureOffer(Model.Localisation.ID, Model.Offer.Id), new { @class = "blue" })
     }
 </div>
