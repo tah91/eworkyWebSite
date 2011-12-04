@@ -18,7 +18,7 @@ namespace Worki.Infrastructure.Helpers
 
 		public static class EmailConstants
 		{
-			public const string ContactDisplayName = "eWorky Team";
+			public const string ContactDisplayName = "eWorky";
 			public const string WebsiteAddress = "www.eworky.com";
 			public static string ContactMail = "contact@eworky.com";
 			public static string BookingMail = "team@eworky.com";
