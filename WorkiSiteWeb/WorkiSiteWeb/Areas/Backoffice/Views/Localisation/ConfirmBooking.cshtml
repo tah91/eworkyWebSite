@@ -15,7 +15,7 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		@using (Html.BeginForm())
+		@using (Html.BeginForm(MVC.Backoffice.Localisation.ActionNames.ConfirmBooking, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "confirmBookingForm" }))
         {
 		    <div class="contentBlock">
                 <div class="loginDesc marginb10">
@@ -50,3 +50,15 @@
 	</div>
 	<div class="clear"></div>
 </div>
+
+@section ScriptContent
+{
+	<script type="text/javascript">
+		$("#confirmBookingForm").submit(function () {
+			var bookingPrice = $("#InnerModel_Price").val();
+			var newBookingPrice = bookingPrice.replace(",", ".");
+			$("#InnerModel_Price").val(newBookingPrice);
+			return true;
+		});
+	</script>
+}

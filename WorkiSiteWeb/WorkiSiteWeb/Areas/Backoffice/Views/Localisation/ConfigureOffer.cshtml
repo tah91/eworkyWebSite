@@ -16,7 +16,7 @@
 
 	<div class="blockContainer float-left contentRight">
 		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
-        @using (Html.BeginForm())
+        @using (Html.BeginForm(MVC.Backoffice.Localisation.ActionNames.ConfigureOffer, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "configureOfferForm" }))
 		{
 		    <div class="contentBlock">
 				<h3 class="blue">@Model.InnerModel.Offer.Name</h3>
@@ -79,7 +79,7 @@
 			    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
 		    </div>
 		    <div class="clear"></div>
-        }
+		}
 	</div>
 	<div class="clear">
 	</div>
@@ -90,6 +90,13 @@
 	<script type="text/javascript">
 	    require(["@Links.Scripts.dropdown_js"], function () {
 	    	InitDropdown("#@DropDownModel.OfferDD");
+	    });
+
+	    $("#configureOfferForm").submit(function () {
+	    	var offerPrice = $("#InnerModel_Offer_Price").val();
+	    	var newOfferPrice = offerPrice.replace(",", ".");
+	    	$("#InnerModel_Offer_Price").val(newOfferPrice);
+	    	return true;
 	    });
 	</script>
 }

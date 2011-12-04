@@ -308,30 +308,6 @@
 							</div>
 						</td>
 					</tr>
-                    <tr>
-						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Offer.Price) <span class="blue">*</span>
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Offer.Price)
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Offer.Period) <span class="blue">*</span>
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.DropDownListFor(m => m.Offer.Period, Model.Periods)
-							</div>
-						</td>
-					</tr>
 				</table>
             </div>
 	  	  	<div class="contentBlock">
@@ -400,6 +376,20 @@
 		OfferFeatureFormReplace();
 		$('#Offer_Type').change(function () {
 			OfferFeatureFormReplace();
+		});
+
+		$("#localisationEditForm").submit(function () {
+			var lat = jQuery.trim($("#Localisation_Latitude").val());
+			var lng = jQuery.trim($("#Localisation_Longitude").val());
+			if (lat == "0" || lng == "0")
+				FindAddress(null);
+
+			var mail = $("#Localisation_Mail").val().replace(/ /g, '');
+			$("#Localisation_Mail").val(mail);
+			var coffeePrice = $("#f_CoffeePrice").val();
+			var newCoffeePrice = coffeePrice.replace(",", ".");
+			$("#f_CoffeePrice").val(newCoffeePrice);
+			return true;
 		});
     </script>
 	@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
