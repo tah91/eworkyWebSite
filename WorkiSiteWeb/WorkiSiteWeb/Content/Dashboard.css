@@ -318,7 +318,12 @@
 
 .configoffertable
 {
-    width:440px;
+    
+}
+
+.configoffertable td:first-child
+{
+    width:180px;
 }
 
 .configoffertable td
