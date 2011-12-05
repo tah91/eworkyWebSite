@@ -183,10 +183,10 @@ namespace Worki.Web.Areas.Admin.Controllers
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
             int pageValue = page ?? 1;
-            var admins = mRepo.GetAdmins().Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList();
-            var viewModel = new PagingList<MemberAdminModel>()
+            var admins = mRepo.GetMembers(MiscHelpers.AdminConstants.AdminRole);
+            var viewModel = new PagingList<Member>()
             {
-                List = admins,
+				List = admins.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = pageValue,
@@ -198,6 +198,54 @@ namespace Worki.Web.Areas.Admin.Controllers
         }
 
         #endregion
+
+		#region Admin Members
+
+		public virtual ActionResult IndexOwner(int? page)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			int pageValue = page ?? 1;
+			var owners = mRepo.GetOwners();
+			var viewModel = new PagingList<Member>()
+			{
+				List = owners.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
+				PagingInfo = new PagingInfo
+				{
+					CurrentPage = pageValue,
+					ItemsPerPage = MiscHelpers.Constants.PageSize,
+					TotalItems = owners.Count()
+				}
+			};
+			return View(viewModel);
+		}
+
+		public virtual ActionResult SetBackoffice(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
+			try
+			{
+				var hasRole = Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+				if (!hasRole)
+				{
+					Roles.AddUserToRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
+				}
+				else
+				{
+					Roles.RemoveUserFromRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
+				}
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("SetBackoffice", ex);
+			}
+
+			return RedirectToAction(MVC.Admin.Member.IndexOwner());
+		}
+
+		#endregion
 
         #region Member Leaderboard
 

@@ -2221,6 +2221,16 @@ namespace Worki.Web.Areas.Admin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult IndexOwner() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.IndexOwner);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SetBackoffice() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SetBackoffice);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Leaderboard() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Leaderboard);
         }
@@ -2242,6 +2252,8 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string ChangeUserRole = "ChangeUserRole";
             public readonly string DeleteUser = "supprimer-utilisateur";
             public readonly string AdminList = "AdminList";
+            public readonly string IndexOwner = "IndexOwner";
+            public readonly string SetBackoffice = "SetBackoffice";
             public readonly string Leaderboard = "Leaderboard";
         }
 
@@ -2252,6 +2264,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string Admins = "~/Areas/Admin/Views/Member/Admins.cshtml";
+            public readonly string IndexOwner = "~/Areas/Admin/Views/Member/IndexOwner.cshtml";
             public readonly string IndexUser = "~/Areas/Admin/Views/Member/IndexUser.cshtml";
             public readonly string supprimer_utilisateur = "~/Areas/Admin/Views/Member/supprimer-utilisateur.cshtml";
             public readonly string UsersLeaderboard = "~/Areas/Admin/Views/Member/UsersLeaderboard.cshtml";
@@ -2299,6 +2312,18 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public override System.Web.Mvc.ActionResult AdminList(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AdminList);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult IndexOwner(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexOwner);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SetBackoffice(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SetBackoffice);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

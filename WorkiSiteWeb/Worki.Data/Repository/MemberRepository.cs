@@ -14,9 +14,10 @@ namespace Worki.Data.Models
 	{
 		Member GetMember(string key);
 		string GetUserName(string email);
-        IList<MemberAdminModel> GetAdmins();
         IList<MemberAdminModel> GetLeaders();
+		IList<Member> GetMembers(string role);
         IList<Member> GetClients(int ownerId);
+		IEnumerable<Member> GetOwners();
 		int GetAdminId();
 	}
 
@@ -73,25 +74,6 @@ namespace Worki.Data.Models
 
         #region Admin List
 
-        public IList<MemberAdminModel> GetAdmins()
-        {
-            var admins = from item in _Context.MembersInGroups
-                          where item.Group.Title == MiscHelpers.AdminConstants.AdminRole
-                          orderby item.MemberId descending
-                          select new MemberAdminModel
-                          {
-                              MemberId = item.MemberId,
-                              UserName = item.Member.Username,
-                              LastName = item.Member.MemberMainData.LastName
-                          };
-
-            return admins.ToList();
-        }
-
-        #endregion
-
-        #region Admin List
-
         public IList<MemberAdminModel> GetLeaders()
         {
             var leaders = from item in _Context.Members
@@ -135,5 +117,30 @@ namespace Worki.Data.Models
 
 			return member != null ? member.MemberId : -1;
 		}
-    }
+
+		#region Role
+
+		public IList<Member> GetMembers(string role)
+		{
+			var members = from item in _Context.MembersInGroups
+						 where item.Group.Title == role
+						 orderby item.MemberId descending
+						 select item.Member;
+
+			return members.ToList();
+		}
+
+		public IEnumerable<Member> GetOwners()
+		{
+			var ownerIds = (from item in _Context.Localisations
+							group item by item.OwnerID into owners
+							where owners.Count() > 0
+							select owners).ToDictionary(o => o.Key.Value, o => o.Count());
+
+			var ids = ownerIds.Select(o => o.Key).ToList();
+			return GetMany(m => ids.Contains(m.MemberId)).OrderByDescending(m => ownerIds[m.MemberId]);
+		}
+
+		#endregion
+	}
 }

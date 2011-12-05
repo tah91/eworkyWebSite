@@ -15,7 +15,8 @@
 		{
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())}
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
+			new MenuItem{ Link= Html.ActionLink("Gérants", MVC.Admin.Member.IndexOwner())}
 		})
 	</div>
 

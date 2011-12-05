@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.PagingList<MemberAdminModel>
+﻿@model Worki.Data.Models.PagingList<Member>
            
 @section HeadContent
 {
@@ -15,7 +15,8 @@
 		{
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())}
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
+			new MenuItem{ Link= Html.ActionLink("Gérants", MVC.Admin.Member.IndexOwner())}
 		})
 	</div>
 
@@ -36,10 +37,10 @@
                 { 
                     <tr>
                         <td align="right">
-                            @item.LastName
+                            @item.GetFullDisplayName()
                         </td>
                         <td align="right">
-							@Html.ActionLink(item.UserName, MVC.Dashboard.Profil.Public(item.MemberId)) 
+							@Html.ActionLink(item.Email, MVC.Dashboard.Profil.Public(item.MemberId)) 
                         </td>
                     </tr>
 				} 
@@ -47,7 +48,7 @@
             <tfoot> </tfoot>
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("AdminList", new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Member.AdminList(x)))
         </div>
 	</div>
 	<div class="clear"></div>
