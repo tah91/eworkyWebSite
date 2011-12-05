@@ -151,7 +151,7 @@
     <value>Pour effectuer une demande de devis, remplissez les champs suivants.</value>
   </data>
   <data name="Speech" xml:space="preserve">
-    <value>Vous serez contacté dans les meilleurs délais par le gérant du lieu.</value>
+    <value>Veuillez indiquer les date et heure de début et de fin de votre réservation. La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur où vous pourrez alors valider définitivement votre réservation.</value>
   </data>
   <data name="ValidateQuotation" xml:space="preserve">
     <value>Valider la demande de devis</value>
@@ -218,5 +218,11 @@
   </data>
   <data name="QuotationCanceled" xml:space="preserve">
     <value>Votre demande de devis a été annulée.</value>
+  </data>
+  <data name="BookingBeforeToday" xml:space="preserve">
+    <value>Votre réservation ne peut pas débuter avant aujourd'hui.</value>
+  </data>
+  <data name="EndBookingBeforeStart" xml:space="preserve">
+    <value>La date de fin de votre réservation doit être postérieure à la date de début.</value>
   </data>
 </root>

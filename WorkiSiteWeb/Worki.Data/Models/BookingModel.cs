@@ -73,10 +73,10 @@ namespace Worki.Data.Models
 						{
 							if ((FromDate - DateTime.UtcNow).Days < 0)
 							{
-								return "Choisir une date de début à partir d'aujourd'hui";
+                                return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}
 							else if (FromDate > ToDate)
-								return "Date de début avant date de fin";
+                                return Worki.Resources.Views.Booking.BookingString.EndBookingBeforeStart;
 							else
 								return string.Empty;
 						}
@@ -84,10 +84,10 @@ namespace Worki.Data.Models
 						{
 							if ((ToDate - DateTime.UtcNow).Days < 0)
 							{
-								return "Choisir une date de fin à partir d'aujourd'hui";
+                                return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}
 							else if (FromDate > ToDate)
-								return "Date de début avant date de fin";
+								return Worki.Resources.Views.Booking.BookingString.EndBookingBeforeStart;
 							else
 								return string.Empty;
 						}
