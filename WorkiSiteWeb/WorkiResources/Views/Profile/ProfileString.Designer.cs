@@ -313,7 +313,7 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profil édité..
+        ///   Looks up a localized string similar to Votre profil a été correctement édité..
         /// </summary>
         public static string ProfilHaveBeenEdit {
             get {

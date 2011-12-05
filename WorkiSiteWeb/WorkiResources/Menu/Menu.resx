@@ -151,13 +151,13 @@
     <value>Activité communautaire</value>
   </data>
   <data name="Configure" xml:space="preserve">
-    <value>Configuration</value>
+    <value>Paramétrage</value>
   </data>
   <data name="CoworkingSpaceFr" xml:space="preserve">
     <value>Coworking Fr</value>
   </data>
   <data name="CurrentBookings" xml:space="preserve">
-    <value>Demandes de réservation</value>
+    <value>Réservations</value>
   </data>
   <data name="EditPassword" xml:space="preserve">
     <value>Mot de passe</value>

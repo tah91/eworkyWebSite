@@ -163,10 +163,10 @@
     <value>Vous n'avez aucune demande de vis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
   </data>
   <data name="NoWorkingBooking" xml:space="preserve">
-    <value>Vous n'avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}.</value>
+    <value>Aucune demande de réservation n'a été archivée.</value>
   </data>
   <data name="NoWorkingQuotation" xml:space="preserve">
-    <value>Vous n'avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
+    <value>Aucune demande de devis n'a été archivée.</value>
   </data>
   <data name="NumberBooking" xml:space="preserve">
     <value>Nombre de réservations</value>

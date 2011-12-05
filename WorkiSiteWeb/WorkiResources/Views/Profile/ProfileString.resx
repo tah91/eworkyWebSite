@@ -187,7 +187,7 @@
     <value>Mes informations professionnelles</value>
   </data>
   <data name="ProfilHaveBeenEdit" xml:space="preserve">
-    <value>Profil édité.</value>
+    <value>Votre profil a été correctement édité.</value>
   </data>
   <data name="RelCommentsEmpty" xml:space="preserve">
     <value>Aucun des espaces que vous avez ajoutés n'a été commenté.</value>

@@ -160,7 +160,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configuration.
+        ///   Looks up a localized string similar to Paramétrage.
         /// </summary>
         public static string Configure {
             get {
@@ -178,7 +178,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demandes de réservation.
+        ///   Looks up a localized string similar to Réservations.
         /// </summary>
         public static string CurrentBookings {
             get {
