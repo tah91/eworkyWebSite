@@ -119,10 +119,15 @@ namespace Worki.Web.Controllers
 						if (sendNewAccountMail)
 						{
 							var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-							var profilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
+							var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
 							TagBuilder profilLink = new TagBuilder("a");
-							profilLink.MergeAttribute("href", profilUrl);
-							profilLink.InnerHtml = profilUrl;
+							profilLink.MergeAttribute("href", editprofilUrl);
+							profilLink.InnerHtml = "editer mon profil";
+
+                            var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+                            TagBuilder passwordLink = new TagBuilder("a");
+                            passwordLink.MergeAttribute("href", editpasswordUrl);
+                            passwordLink.InnerHtml = "changer mon mot de passe";
 
 							newMemberMail = new Email(MVC.Emails.Views.Email);
 							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
@@ -130,7 +135,16 @@ namespace Worki.Web.Controllers
 							newMemberMail.ToName = formData.FirstName;
 
 							newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
-							newMemberMail.Content = "TODO MAIL";
+                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMemberSubject,
+                                                                    Localisation.GetOfferType(offer.Type),
+                                                                    formData.MemberBooking.FromDate,
+                                                                    formData.MemberBooking.ToDate,
+                                                                    locName,
+                                                                    offer.Localisation.Adress,
+                                                                    formData.Email,
+                                                                    _MembershipService.GetPassword(formData.Email, null),
+                                                                    passwordLink,
+                                                                    profilLink);
 						}
 
 						//send mail to team
@@ -150,7 +164,6 @@ namespace Worki.Web.Controllers
 														 formData.MemberBooking.Message);
 
 						//send mail to booking member
-						//TODO MAIL
 						dynamic clientMail = new Email(MVC.Emails.Views.Email);
 						clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						clientMail.To = member.Email;
@@ -164,12 +177,12 @@ namespace Worki.Web.Controllers
 														 offer.Localisation.Adress);
 
 						//send mail to localisation member
-						//TODO MAIL
                         var urlHelp = new UrlHelper(ControllerContext.RequestContext);
                         var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Booking());
 						TagBuilder ownerLink = new TagBuilder("a");
                         ownerLink.MergeAttribute("href", ownerUrl);
                         ownerLink.InnerHtml = "espace gérant";
+
 						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						ownerMail.To = offer.Localisation.Member.Email;
@@ -177,9 +190,9 @@ namespace Worki.Web.Controllers
 						ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
 						ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingOwnerBody,
 														Localisation.GetOfferType(offer.Type),
-														 locName,
-														 offer.Localisation.Adress,
-                                                         ownerLink);
+														locName,
+														offer.Localisation.Adress,
+                                                        ownerLink);
 
 						context.Commit();
 

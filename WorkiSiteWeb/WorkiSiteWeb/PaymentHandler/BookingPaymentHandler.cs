@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.IO;
 using System.Xml;
+using System.Web.Mvc;
 using Newtonsoft.Json;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
@@ -156,19 +157,15 @@ namespace Worki.Web
 					LoggerId = clientId
 				});
 
-				//send mail to owner 
-				//TODO MAIL
+				//send mail to owner
 				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 				ownerMail.To = booking.Owner.Email;
-				ownerMail.Subject = Worki.Resources.Email.BookingString.PayementSubject;
+				ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.PayementSubject, booking.Id);
 				ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
-				ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
-												Localisation.GetOfferType(offer.Type),
-												CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-												CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-												localisation.Name,
-												localisation.Adress);
+                ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
+                                                booking.Id,
+                                                "<a href=#>espace gérant</a>");
 
 				//send mail to client 
 				//useless
