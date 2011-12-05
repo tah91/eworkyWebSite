@@ -14,7 +14,7 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Home.Index())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Home.Index())} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Backoffice.Home.Localisations())} ,
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Home.Booking())} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Home.Quotation())}
@@ -26,7 +26,8 @@
             @Html.Partial(MVC.Backoffice.Shared.Views._BookingList,
             new BookingListViewModel {
                                         Bookings = Model,
-                                        UrlMaker = x => Url.Action(MVC.Backoffice.Home.Booking(x))
+                                        UrlMaker = x => Url.Action(MVC.Backoffice.Home.Booking(x)),
+                                        EmptyMessage = string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoCurrentBooking, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations()))
                                     })
         </div>
 	</div>

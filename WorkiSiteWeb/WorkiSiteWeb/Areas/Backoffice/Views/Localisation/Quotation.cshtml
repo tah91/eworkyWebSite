@@ -6,7 +6,7 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID })
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID, Title = Model.Localisation.Name })
 
 <div class="detailContent">
 
@@ -25,7 +25,8 @@
             {
                 Quotations = Model.Quotations,
                 Title = Model.Localisation.Name,
-                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x))
+                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x)),
+                EmptyMessage = string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations()))
             })
         </div>
 	</div>

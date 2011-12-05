@@ -15,6 +15,6 @@
 else
 {
     <div class="emptyContent italic">
-        @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations())))
+        @Html.Raw(Model.EmptyMessage)
     </div>
 }
