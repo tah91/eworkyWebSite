@@ -13,9 +13,7 @@
 <div class="detailContent">
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
-		{/*
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditProfil, MVC.Backoffice.Profil.Edit())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPassword, MVC.Backoffice.Profil.ChangePassword())} ,*/
+		{
             new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.ModifyPayement, MVC.Backoffice.Profil.ChangePaymentInformation())} 
 		})
 	</div>
