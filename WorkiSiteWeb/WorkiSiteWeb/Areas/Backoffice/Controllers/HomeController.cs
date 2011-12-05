@@ -106,11 +106,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             {
                 var member = mRepo.Get(id);
                 Member.Validate(member);
-                var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id && b.StatusId == (int)MemberBooking.Status.Unknown);
+                var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id && b.StatusId == (int)MemberBooking.Status.Unknown).Where(b => !b.Expired);
                 var model = new PagingList<MemberBooking>
                 {
                     List = bookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count }
+					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
                 };
                 return View(model);
             }
