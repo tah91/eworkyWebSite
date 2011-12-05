@@ -32,7 +32,7 @@
 .profil_viadeo{background-image:url('images/profil_social.png');background-position:0 -216px;width:22px;height:22px}
 .profilComment:first-child{margin-top:0}
 .profilComment{margin:20px 0}
-.commentAvatar{height:50px;width:50px;margin-right:20px}
+.commentAvatar{height:50px;width:50px;margin-right:20px;font-size:10px}
 .commentAvatar img{max-height:50px}
 .commentLocAvatar{margin-left:10px;width:75px}
 .commentLocAvatar img{max-height:70px}
