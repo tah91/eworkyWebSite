@@ -140,9 +140,7 @@ namespace Worki.Resources.Email {
         ///
         ///Votre login est &quot;&lt;b&gt;{5}&lt;/b&gt;&quot; et votre mot de passe temporaire est &lt;b&gt;&quot;{6}&quot;&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{7}&lt;/b&gt;
         ///
-        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{8}&lt;/b&gt;
-        ///
-        ///En espérant vou [rest of string was truncated]&quot;;.
+        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{8}&lt;/b&gt;.
         /// </summary>
         public static string BookingNewMemberBody {
             get {
@@ -247,6 +245,26 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m² dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) a été prise en compte. 
+        ///Le gérant de l&apos;espace confirmera votre demande de devis dès que possible..
+        /// </summary>
+        public static string CreateQuotationClient {
+            get {
+                return ResourceManager.GetString("CreateQuotationClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Une demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été effectuée. 
+        ///Merci de bien vouloir confirmer/refuser cette réservation dans les plus brefs délais..
+        /// </summary>
+        public static string CreateQuotationOwner {
+            get {
+                return ResourceManager.GetString("CreateQuotationOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre transaction concernant la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été réalisée avec succès..
         /// </summary>
         public static string PayementClient {
@@ -256,7 +274,7 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La transaction de la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été réalisée avec succès..
+        ///   Looks up a localized string similar to La réservation n°{0} a été réglé par le client. Vous pouvez consulter les réservations confirmées dans votre {1}.
         /// </summary>
         public static string PayementOwner {
             get {
@@ -265,7 +283,7 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transaction.
+        ///   Looks up a localized string similar to La réservation n°{0} a été réglée.
         /// </summary>
         public static string PayementSubject {
             get {
@@ -318,13 +336,11 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suite à votre demande de devis pour un &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos demandes de devis et de vos réservations.
+        ///   Looks up a localized string similar to Suite à votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos demandes de devis et de vos réservations.
         ///
         ///Votre login est &lt;b&gt;{4}&lt;/b&gt; et votre mot de passe temporaire est &lt;b&gt;{5}&lt;/b&gt;. Vous pouvez changer votre mot de passe en allant sur votre profil : &lt;b&gt;{6}&lt;/b&gt;
         ///
-        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{7}&lt;/b&gt;
-        ///
-        ///En espé [rest of string was truncated]&quot;;.
+        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{7}&lt;/b&gt;.
         /// </summary>
         public static string QuotationNewMemberBody {
             get {
@@ -377,6 +393,15 @@ namespace Worki.Resources.Email {
         public static string RefuseMailSubject {
             get {
                 return ResourceManager.GetString("RefuseMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; dans l’établissement &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) a été refusé pour la raison suivante : {3}.
+        /// </summary>
+        public static string RefuseQuotationClient {
+            get {
+                return ResourceManager.GetString("RefuseQuotationClient", resourceCulture);
             }
         }
     }

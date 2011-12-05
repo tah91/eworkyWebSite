@@ -515,7 +515,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					//useless
 
                     //send mail to client
-					//TODO MAIL
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
@@ -772,13 +771,16 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     //useless
 
                     //send mail to client
-					//TODO MAIL
                     dynamic clientMail = new Email(MVC.Emails.Views.Email);
                     clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
                     clientMail.To = quotation.Client.Email;
                     clientMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
                     clientMail.ToName = quotation.Client.MemberMainData.FirstName;
-                    clientMail.Content = "TODO";
+                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseQuotationClient,
+                                                     Localisation.GetOfferType(quotation.Offer.Type),
+                                                     quotation.Offer.Localisation.Name,
+                                                     quotation.Offer.Localisation.Adress,
+                                                     formModel.InnerModel.Response);
 
                     context.Commit();
 
