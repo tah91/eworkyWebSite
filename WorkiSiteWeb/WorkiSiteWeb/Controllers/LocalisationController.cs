@@ -305,15 +305,17 @@ namespace Worki.Web.Controllers
 					return RedirectToAction(MVC.Home.Index());
 				}
 				var dest = member.Email;
-                context.Commit();
 				//send mail to member
-                dynamic Ownermail = new Email(MVC.Emails.Views.Email);
-                Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+				dynamic Ownermail = new Email(MVC.Emails.Views.Email);
+				Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 				Ownermail.To = dest;
-                Ownermail.ToName = member.MemberMainData.FirstName;
-                Ownermail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, localisation.Name);
-                Ownermail.Content = string.Format(Worki.Resources.Email.Common.Ownership, localisation.Name,
-                                        Url.AbsoluteAction(MVC.Localisation.ActionNames.Edit, MVC.Localisation.Name, new { id = id }));
+				Ownermail.ToName = member.MemberMainData.FirstName;
+				Ownermail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, localisation.Name);
+				Ownermail.Content = string.Format(Worki.Resources.Email.Common.Ownership, localisation.Name,
+										Url.ActionAbsolute(MVC.Localisation.Edit(id)));
+
+                context.Commit();
+
                 Ownermail.Send();
 
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.YouAreOwner;

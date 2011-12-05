@@ -232,7 +232,7 @@
     <value>Vos clients devront vous régler via la plateforme de paiement PayPal. Pour pouvoir encaisser les règlements, vous devez posséder un compte PayPal (pour ouvrir un compte, cliquez &lt;a href="{0}" target="_blank"&gt;ici&lt;/a&gt;).</value>
   </data>
   <data name="EndModifyPayment" xml:space="preserve">
-    <value>Nous vous rappelons que seront prélevées sur toutes les réservations transitant sur eWorky une commission de 10 % ainsi qu'une commission PayPal de X %. Pour toute question, contactez-nous : contact@eworky.com.</value>
+    <value>Nous vous rappelons que seront prélevées sur toutes les réservations transitant sur eWorky une commission de 10 % ainsi qu'une commission PayPal. Pour toute question, contactez-nous : contact@eworky.com.</value>
   </data>
   <data name="MailPayment" xml:space="preserve">
     <value>Adresse électronique associée votre compte PayPal</value>
