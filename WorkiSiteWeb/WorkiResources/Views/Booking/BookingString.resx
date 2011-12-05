@@ -225,4 +225,7 @@
   <data name="EndBookingBeforeStart" xml:space="preserve">
     <value>La date de fin de votre réservation doit être postérieure à la date de début.</value>
   </data>
+  <data name="EndQuotationSpeech" xml:space="preserve">
+    <value>Vous serez contacté dans les meilleurs délais par le gérant du lieu.</value>
+  </data>
 </root>

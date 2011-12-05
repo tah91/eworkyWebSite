@@ -223,6 +223,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous serez contacté dans les meilleurs délais par le gérant du lieu..
+        /// </summary>
+        public static string EndQuotationSpeech {
+            get {
+                return ResourceManager.GetString("EndQuotationSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prendre en charge.
         /// </summary>
         public static string HandleIt {
