@@ -436,7 +436,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
                     clientMail.Send();
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été confirmée";
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingAccepted;
 
 					return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}

@@ -287,7 +287,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				var member = mRepo.Get(id);
 				if (_MembershipService.ChangePassword(member.Username, model.OldPassword, model.NewPassword))
 				{
-					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.PasswordHaveBeenChanged;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Account.AccountString.YouChangeYourPassword;
 					return RedirectToAction(MVC.Dashboard.Home.Index());
 				}
 				else
