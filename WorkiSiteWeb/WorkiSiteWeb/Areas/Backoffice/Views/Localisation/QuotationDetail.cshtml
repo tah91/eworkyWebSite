@@ -62,7 +62,7 @@
         @if (Model.OwnerCanPay)
         { 
             <div class="buttonStd buttonBlue linkImg inline-block">
-				@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.Pay, MVC.Quotation.PayWithPayPal(Model.Id))
+				@Html.ActionLink("Contacter", MVC.Quotation.PayWithPayPal(Model.Id))
 			</div>
         }
         @if (Model.OwnerCanRefuse)
