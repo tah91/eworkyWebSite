@@ -230,18 +230,21 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var offer = oRepo.Get(id);
 
-			var model = new OfferDropDownModel { Offer = offer };
+			var model = new OfferDropDownModel { Offer = offer  };
 			var type = (OfferMenuType)selected;
 			switch(type)
 			{
 				case OfferMenuType.Config:
 					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(o.LocalisationId, o.Id));
+					model.Filter = OfferDropDownFilter.None;
 					break;
 				case OfferMenuType.Booking:
 					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.Id));
+					model.Filter = OfferDropDownFilter.Booking;
 					break;
 				case OfferMenuType.Quotation:
 					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(o.Id));
+					model.Filter = OfferDropDownFilter.Quotation;
 					break;
 				default:
 					break;
