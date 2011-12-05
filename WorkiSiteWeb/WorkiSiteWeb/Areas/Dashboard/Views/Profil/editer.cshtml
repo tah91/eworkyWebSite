@@ -20,7 +20,7 @@
 		})
 	</div>
 
-    <div class="contentRight blockContainer float-right">
+    <div class="contentRight blockContainer float-left">
         @using (Html.BeginForm(MVC.Dashboard.Profil.ActionNames.Edit, MVC.Dashboard.Profil.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
         {
             @Html.AntiForgeryToken()
