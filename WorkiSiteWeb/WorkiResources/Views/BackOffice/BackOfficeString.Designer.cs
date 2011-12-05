@@ -250,7 +250,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Les informations de paiements ont été mis à jour.
+        ///   Looks up a localized string similar to Les informations de paiement ont été mises à jour..
         /// </summary>
         public static string PaymentInfoModified {
             get {

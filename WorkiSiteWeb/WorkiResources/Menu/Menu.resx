@@ -136,7 +136,7 @@
     <value>Bienvenue</value>
   </data>
   <data name="Bookings" xml:space="preserve">
-    <value>Réservations</value>
+    <value>Demandes de réservation</value>
   </data>
   <data name="BusinessCenterFr" xml:space="preserve">
     <value>Business Fr</value>
@@ -181,7 +181,7 @@
     <value>Modération</value>
   </data>
   <data name="ModifyPayement" xml:space="preserve">
-    <value>Modifier les informations de paiement</value>
+    <value>Informations de paiement</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Actualités</value>

@@ -181,7 +181,7 @@
     <value>Espace gérant</value>
   </data>
   <data name="PaymentInfoModified" xml:space="preserve">
-    <value>Les informations de paiements ont été mis à jour</value>
+    <value>Les informations de paiement ont été mises à jour.</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Tél.</value>

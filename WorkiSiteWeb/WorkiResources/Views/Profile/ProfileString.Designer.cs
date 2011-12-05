@@ -187,7 +187,7 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Veillez saisir l&apos;adresse électronique associée votre compte PAYPAL.
+        ///   Looks up a localized string similar to Adresse électronique associée votre compte PayPal.
         /// </summary>
         public static string MailPayment {
             get {
@@ -286,7 +286,7 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pour votre sécurité, veuillez saisir votre mot de passe eWorky.
+        ///   Looks up a localized string similar to Mot de passe eWorky.
         /// </summary>
         public static string PasswordEworky {
             get {

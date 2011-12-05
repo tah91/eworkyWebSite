@@ -115,7 +115,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Réservations.
+        ///   Looks up a localized string similar to Demandes de réservation.
         /// </summary>
         public static string Bookings {
             get {
@@ -250,7 +250,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier les informations de paiement.
+        ///   Looks up a localized string similar to Informations de paiement.
         /// </summary>
         public static string ModifyPayement {
             get {
