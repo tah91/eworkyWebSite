@@ -385,7 +385,7 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Veuillez changer les informations suivantes :.
+        ///   Looks up a localized string similar to Veuillez indiquer le prix TTC (hors commissions) à régler pour une réservation du {0} à {1} jusqu&apos;au {2} à {3}.
         /// </summary>
         public static string PleaseChangeInfos {
             get {

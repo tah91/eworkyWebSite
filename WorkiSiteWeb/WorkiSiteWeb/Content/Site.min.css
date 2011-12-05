@@ -99,14 +99,16 @@ div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
 .boldLink a{text-decoration:none}
 .marginb5{margin-bottom:5px}
 .marginb10{margin-bottom:10px}
+.marginb15{margin-bottom:15px}
+.marginb20{margin-bottom:20px}
+.marginl0{margin-left:0}
 .marginl5{margin-left:5px}
 .marginl10{margin-left:10px}
-.marginl0{margin-left:0}
 .marginr5{margin-right:5px}
 .marginr10{margin-right:10px}
-.margint15{margin-top:15px}
-.margint10{margin-top:10px}
 .margint5{margin-top:5px}
+.margint10{margin-top:10px}
+.margint15{margin-top:15px}
 .mapContainer{border:solid 1px #63b3eb}
 #detailMap{height:220px}
 span.pinTitle{color:blue}
