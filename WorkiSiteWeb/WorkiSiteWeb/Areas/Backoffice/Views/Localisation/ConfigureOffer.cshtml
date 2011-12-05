@@ -33,6 +33,8 @@
 							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsOnline)
 						</td>
 					</tr>
+                    @if (Model.InnerModel.Offer.CanHaveBooking)
+                    { 
                     <tr>
 						<td>
 						    @Html.LabelFor(m => m.InnerModel.Offer.IsBookable)
@@ -41,6 +43,20 @@
 							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsBookable)
 						</td>
 					</tr>
+                    }
+                    @if (Model.InnerModel.Offer.CanHaveQuotation)
+                    { 
+                    <tr>
+						<td>
+						    @Html.LabelFor(m => m.InnerModel.Offer.IsQuotable)
+						</td>
+						<td>
+							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsQuotable)
+						</td>
+					</tr>
+                    }
+                    @if (Model.InnerModel.Offer.CanHaveBooking)
+                    {
 					<tr>
 						<td>
 							@Html.LabelFor(m => m.InnerModel.Offer.Period)
@@ -73,13 +89,14 @@
 							@Html.DropDownListFor(m => m.InnerModel.Offer.PaymentType, Model.InnerModel.PaymentTypes)
 						</td>
 					</tr>
+                    }
 				</table>
 		    </div>
 		    <div class="editor-field float-right">
 			    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
 		    </div>
 		    <div class="clear"></div>
-		}
+        }
 	</div>
 	<div class="clear">
 	</div>

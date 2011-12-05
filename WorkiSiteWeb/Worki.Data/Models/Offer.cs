@@ -40,6 +40,7 @@ namespace Worki.Data.Models
         public bool IsBookable { get; set; }
         public int PaymentType { get; set; }
         public int Currency { get; set; }
+        public bool IsQuotable { get; set; }
     
         // Navigation properties
     

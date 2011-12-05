@@ -135,6 +135,9 @@
   <data name="IsOnline" xml:space="preserve">
     <value>Offre en ligne</value>
   </data>
+  <data name="IsQuotable" xml:space="preserve">
+    <value>Demande de devis en ligne</value>
+  </data>
   <data name="Month" xml:space="preserve">
     <value>Mois</value>
   </data>

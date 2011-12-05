@@ -115,6 +115,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande de devis en ligne.
+        /// </summary>
+        public static string IsQuotable {
+            get {
+                return ResourceManager.GetString("IsQuotable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mois.
         /// </summary>
         public static string Month {

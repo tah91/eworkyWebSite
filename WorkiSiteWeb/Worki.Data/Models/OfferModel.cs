@@ -130,41 +130,45 @@ namespace Worki.Data.Models
 
 		#region Booking Possibility
 
-		public static bool CanHaveProduct(LocalisationOffer type)
+		public static bool OfferCanHaveProduct(LocalisationOffer type)
 		{
-			return CanHaveBooking(type) || CanHaveQuotation(type);
+			return OfferCanHaveBooking(type) || OfferCanHaveQuotation(type);
 		}
 
-		public bool CanHaveProduct()
+        public static bool OfferCanHaveQuotation(LocalisationOffer type)
+        {
+            return type == LocalisationOffer.Desktop;
+        }
+
+        public static bool OfferCanHaveBooking(LocalisationOffer type)
+        {
+            return type == LocalisationOffer.Workstation ||
+                    type == LocalisationOffer.MeetingRoom ||
+                    type == LocalisationOffer.SeminarRoom ||
+                    type == LocalisationOffer.VisioRoom;
+        }
+
+		public bool CanHaveProduct
 		{
-			return CanHaveProduct((LocalisationOffer)Type);
+            get { return OfferCanHaveProduct((LocalisationOffer)Type); }			
 		}
 
-		public static bool CanHaveQuotation(LocalisationOffer type)
+        public bool HasProduct
+        {
+            get { return IsBookable || IsQuotable; }
+        }
+
+		public bool CanHaveQuotation
 		{
-			return type == LocalisationOffer.Desktop;
+            get { return OfferCanHaveQuotation((LocalisationOffer)Type); }
 		}
 
-		public bool CanHaveQuotation()
-		{
-			return CanHaveQuotation((LocalisationOffer)Type);
-		}
-
-		public static bool CanHaveBooking(LocalisationOffer type)
-		{
-			return	type == LocalisationOffer.Workstation ||
-					type == LocalisationOffer.MeetingRoom ||
-					type == LocalisationOffer.SeminarRoom ||
-					type == LocalisationOffer.VisioRoom;
-		}
-
-		public bool CanHaveBooking()
-		{
-			return CanHaveBooking((LocalisationOffer)Type);
-		}
+        public bool CanHaveBooking
+        {
+            get { return OfferCanHaveBooking((LocalisationOffer)Type); }
+        }
 
 		#endregion
-
 
         #region Payment
 
@@ -298,6 +302,10 @@ namespace Worki.Data.Models
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "IsBookable", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public bool IsBookable { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "IsQuotable", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public bool IsQuotable { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "PaymentType", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]

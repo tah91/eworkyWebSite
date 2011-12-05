@@ -175,29 +175,29 @@ namespace Worki.Web.Helpers
 				Title = offer.Name,
 				Items = new List<DropDownItem>()
 			};
-			foreach (var item in offer.Localisation.Offers)
-			{
-				switch (filter)
-				{
-					case OfferDropDownFilter.Quotation:
-						{
-							if (item.CanHaveQuotation())
-								dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
-							break;
-						}
-					case OfferDropDownFilter.Booking:
-						{
-							if (item.CanHaveBooking())
-								dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
-							break;
-						}
-					case OfferDropDownFilter.None:
-					default:
-						dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
-						break;
-				}
+            foreach (var item in offer.Localisation.Offers)
+            {
+                switch (filter)
+                {
+                    case OfferDropDownFilter.Quotation:
+                        {
+                            if (item.CanHaveQuotation)
+                                dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+                            break;
+                        }
+                    case OfferDropDownFilter.Booking:
+                        {
+                            if (item.CanHaveBooking)
+                                dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+                            break;
+                        }
+                    case OfferDropDownFilter.None:
+                    default:
+                        dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
+                        break;
+                }
 
-			}
+            }
 
 			return dropDown;
 		}

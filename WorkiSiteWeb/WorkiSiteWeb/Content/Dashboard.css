@@ -141,7 +141,7 @@
 .summaryIntro
 {
     text-align:center;
-    font-weight:bold;
+    /*font-weight:bold;*/
 }
 
 .summaryDetail

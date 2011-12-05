@@ -175,7 +175,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				try
 				{
 					var member = mRepo.Get(memberId);
-					if (formData.InnerModel.Offer.IsBookable && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
+					if (formData.InnerModel.Offer.HasProduct && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
 					{
 						throw new Exception(Worki.Resources.Views.BackOffice.BackOfficeString.NeedInfoPaypal);
 					}
@@ -196,22 +196,22 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			return View(formData);
 		}
 
-		[ChildActionOnly]
-		public virtual ActionResult OfferVerticalMenu(int id, int selected)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var offer = oRepo.Get(id);
+        [ChildActionOnly]
+        public virtual ActionResult OfferVerticalMenu(int id, int selected)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var offer = oRepo.Get(id);
 
-			var model = new List<OfferMenuItem>();
-			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId, offer.Id)) });
-			if (offer.CanHaveBooking())
-				model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.Id)) });
-			if (offer.CanHaveQuotation())
-				model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.Id)) });
+            var model = new List<OfferMenuItem>();
+            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId, offer.Id)) });
+            if (offer.CanHaveBooking)
+                model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.Id)) });
+            if (offer.CanHaveQuotation)
+                model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.Id)) });
 
-			return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
-		}
+            return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
+        }
 
 		[ChildActionOnly]
 		public virtual ActionResult OfferHorizontalMenu(int id)

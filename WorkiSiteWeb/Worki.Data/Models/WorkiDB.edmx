@@ -444,6 +444,7 @@
           <Property Name="Period" Type="int" Nullable="false" />
           <Property Name="IsOnline" Type="bit" Nullable="false" />
           <Property Name="IsBookable" Type="bit" Nullable="false" />
+          <Property Name="IsQuotable" Type="bit" Nullable="false" />
           <Property Name="PaymentType" Type="int" Nullable="false" />
           <Property Name="Currency" Type="int" Nullable="false" />
         </EntityType>
@@ -1911,6 +1912,7 @@
           <NavigationProperty Name="OfferFeatures" Relationship="WorkiDBModel.FK_OfferFeature_Offer" FromRole="Offer" ToRole="OfferFeature" />
           <NavigationProperty Name="OfferFiles" Relationship="WorkiDBModel.FK_OfferFile_Offer" FromRole="Offer" ToRole="OfferFile" />
           <NavigationProperty Name="MemberQuotations" Relationship="WorkiDBModel.FK_MemberQuotation_Offer" FromRole="Offer" ToRole="MemberQuotation" />
+          <Property Type="Boolean" Name="IsQuotable" Nullable="false" />
         </EntityType>
         <Association Name="FK_Offer_Localisation">
           <End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
@@ -2428,6 +2430,7 @@
           <EntitySetMapping Name="Offers">
             <EntityTypeMapping TypeName="WorkiDBModel.Offer">
               <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="IsQuotable" ColumnName="IsQuotable" />
                 <ScalarProperty Name="Currency" ColumnName="Currency" />
                 <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
                 <ScalarProperty Name="IsBookable" ColumnName="IsBookable" />
