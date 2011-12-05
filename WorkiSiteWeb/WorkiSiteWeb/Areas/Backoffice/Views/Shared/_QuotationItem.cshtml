@@ -45,7 +45,7 @@
         </div>
         <div class="bookingLinks float-right blue">
             <ul>
-                <li>@Html.ActionLink("Details", MVC.Backoffice.Localisation.QuotationDetail(Model.Id))</li>
+                <li>@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Details, MVC.Backoffice.Localisation.QuotationDetail(Model.Id))</li>
                 @if (Model.Paid)
                 { 
                     <li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))</li>

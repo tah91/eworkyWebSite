@@ -529,7 +529,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
                     clientMail.Send();
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été refusée";
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingRefused;
 
                     return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}

@@ -115,6 +115,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La demande de réservation a été refusée..
+        /// </summary>
+        public static string BookingRefused {
+            get {
+                return ResourceManager.GetString("BookingRefused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réserver.
         /// </summary>
         public static string BookIt {
@@ -237,6 +246,15 @@ namespace Worki.Resources.Views.Booking {
         public static string Quotation {
             get {
                 return ResourceManager.GetString("Quotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande de devis a correctement été prise en compte..
+        /// </summary>
+        public static string QuotationConfirmed {
+            get {
+                return ResourceManager.GetString("QuotationConfirmed", resourceCulture);
             }
         }
         

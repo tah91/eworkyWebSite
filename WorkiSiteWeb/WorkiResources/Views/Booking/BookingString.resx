@@ -204,4 +204,10 @@
   <data name="PayFail" xml:space="preserve">
     <value>Le payment n'a pas été pris en compte !</value>
   </data>
+  <data name="BookingRefused" xml:space="preserve">
+    <value>La demande de réservation a été refusée.</value>
+  </data>
+  <data name="QuotationConfirmed" xml:space="preserve">
+    <value>Votre demande de devis a correctement été prise en compte.</value>
+  </data>
 </root>
