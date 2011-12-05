@@ -106,6 +106,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre réservation ne peut pas débuter avant aujourd&apos;hui..
+        /// </summary>
+        public static string BookingBeforeToday {
+            get {
+                return ResourceManager.GetString("BookingBeforeToday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre demande de réservation a été annulée..
         /// </summary>
         public static string BookingCanceled {
@@ -201,6 +210,15 @@ namespace Worki.Resources.Views.Booking {
         public static string End {
             get {
                 return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La date de fin de votre réservation doit être postérieure à la date de début..
+        /// </summary>
+        public static string EndBookingBeforeStart {
+            get {
+                return ResourceManager.GetString("EndBookingBeforeStart", resourceCulture);
             }
         }
         
@@ -322,7 +340,7 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous serez contacté dans les meilleurs délais par le gérant du lieu..
+        ///   Looks up a localized string similar to Veuillez indiquer les date et heure de début et de fin de votre réservation. La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur où vous pourrez alors valider définitivement votre réservation..
         /// </summary>
         public static string Speech {
             get {

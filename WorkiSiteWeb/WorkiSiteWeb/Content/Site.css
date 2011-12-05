@@ -739,6 +739,21 @@ div.pagerTop
     margin-bottom:10px;
 }
 
+.marginb15
+{
+    margin-bottom:15px;
+}
+
+.marginb20
+{
+    margin-bottom:20px;
+}
+
+.marginl0
+{
+    margin-left:0px;
+}
+
 .marginl5
 {
     margin-left:5px;
@@ -747,11 +762,6 @@ div.pagerTop
 .marginl10
 {
     margin-left:10px;
-}
-
-.marginl0
-{
-    margin-left:0px;
 }
 
 .marginr5
@@ -764,9 +774,9 @@ div.pagerTop
     margin-right:10px;
 }
 
-.margint15
+.margint5
 {
-    margin-top:15px;
+    margin-top:5px;
 }
 
 .margint10
@@ -774,9 +784,9 @@ div.pagerTop
     margin-top:10px;
 }
 
-.margint5
+.margint15
 {
-    margin-top:5px;
+    margin-top:15px;
 }
 
 /* Map
