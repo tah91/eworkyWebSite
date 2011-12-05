@@ -51,7 +51,7 @@
                             @item.MemberBookings.Count
                         </td>
                         <td>
-                            @item.MemberMainData.PhoneNumber
+                            @Html.GetPhoneFormat(item.MemberMainData.PhoneNumber)
                         </td>
                         <td>
                             @item.Email

@@ -145,7 +145,7 @@
     <value>Moyen de paiement admis</value>
   </data>
   <data name="Paypal" xml:space="preserve">
-    <value>Paypal</value>
+    <value>PayPal</value>
   </data>
   <data name="Period" xml:space="preserve">
     <value>Unité de temps</value>

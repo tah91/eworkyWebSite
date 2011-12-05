@@ -142,7 +142,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paypal.
+        ///   Looks up a localized string similar to PayPal.
         /// </summary>
         public static string Paypal {
             get {

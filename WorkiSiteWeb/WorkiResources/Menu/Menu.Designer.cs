@@ -304,7 +304,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mes espaces de travail.
+        ///   Looks up a localized string similar to Mes espaces en ligne.
         /// </summary>
         public static string Places {
             get {
