@@ -511,27 +511,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						LoggerId = memberId
 					});
 
-                    //send mail to owner
-					//useless
-
-                    //send mail to client
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-					clientMail.To = booking.Client.Email;
-                    clientMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseBookingClient,
-                                                     Localisation.GetOfferType(booking.Offer.Type),
-                                                     CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-                                                     CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-                                                     booking.Offer.Localisation.Name,
-                                                     booking.Offer.Localisation.Adress,
-                                                     formModel.InnerModel.Response);
-					
-
 					context.Commit();
-
-                    clientMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingRefused;
 
@@ -770,21 +750,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     //send mail to owner
                     //useless
 
-                    //send mail to client
-                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
-                    clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
-                    clientMail.To = quotation.Client.Email;
-                    clientMail.Subject = Worki.Resources.Email.BookingString.RefuseMailSubject;
-                    clientMail.ToName = quotation.Client.MemberMainData.FirstName;
-                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseQuotationClient,
-                                                     Localisation.GetOfferType(quotation.Offer.Type),
-                                                     quotation.Offer.Localisation.Name,
-                                                     quotation.Offer.Localisation.Adress,
-                                                     formModel.InnerModel.Response);
-
                     context.Commit();
-
-                    clientMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a été refusée";
 

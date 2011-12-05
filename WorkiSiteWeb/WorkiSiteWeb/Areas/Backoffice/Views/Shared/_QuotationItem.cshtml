@@ -10,13 +10,14 @@
 <li class="bookingItem">
     <div class="innerContentBlock padding10">
         <div class="bookingDesc float-left">
-			@RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetAnonymousDisplayName())
+            @RazorHelpers.Description("Demande", string.Format("n° {0}", Model.Id))
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
-			@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
-            @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
         </div>
         <div class="bookingDesc float-left">
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetAnonymousDisplayName())
+            @Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
+            @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
             @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
         </div>
         <div class="bookingStatus bookingStatus@(color) borderRadius float-left">

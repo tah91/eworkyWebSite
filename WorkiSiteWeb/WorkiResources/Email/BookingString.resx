@@ -120,22 +120,13 @@
   <data name="AcceptBookingClient" xml:space="preserve">
     <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été accepté pour la somme de &lt;b&gt;{5}&lt;/b&gt; €.
 
-Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} (onglet Demandes de réservation) pour régler votre réservation.</value>
+Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} pour régler votre réservation.</value>
   </data>
   <data name="AcceptBookingClientSubject" xml:space="preserve">
     <value>Votre demande de réservation a été validée par le gérant</value>
   </data>
   <data name="AcceptBookingOwner" xml:space="preserve">
     <value>Vous avez accepté la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) pour la somme de &lt;b&gt;{5}&lt;/b&gt;</value>
-  </data>
-  <data name="BookingHandleMailBody" xml:space="preserve">
-    <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en charge par nos équipes. 
-Notre équipe vous recontactera sous 48 H pour vous confirmer votre réservation.
-
-En espérant vous revoir très vite sur www.eworky.com,</value>
-  </data>
-  <data name="BookingHandleMailSubject" xml:space="preserve">
-    <value>eWorky – Votre demande de réservation a été prise en compte</value>
   </data>
   <data name="BookingMailBody" xml:space="preserve">
     <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
@@ -168,24 +159,12 @@ Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation 
   <data name="BookingOwnerSubject" xml:space="preserve">
     <value>Demande de réservation - {0}</value>
   </data>
-  <data name="ConfirmMailBody" xml:space="preserve">
-    <value>Votre réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) est confirmée. 
-Vous devrez régler la somme de &lt;b&gt;{5}&lt;/b&gt; € directement auprès du prestataire.
-En espérant avoir satisfait votre demande,</value>
-  </data>
-  <data name="ConfirmMailSubject" xml:space="preserve">
-    <value>eWorky – Votre réservation est confirmée</value>
-  </data>
   <data name="CreateBookingClient" xml:space="preserve">
     <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en compte. 
 Le gérant de l'espace confirmera votre réservation dès que possible.</value>
   </data>
   <data name="CreateBookingClientSubject" xml:space="preserve">
     <value>Votre demande de réservation a bien été prise en compte</value>
-  </data>
-  <data name="CreateBookingOwner" xml:space="preserve">
-    <value>Une demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été effectuée. 
-Merci de bien vouloir confirmer/refuser cette réservation dans les plus brefs délais.</value>
   </data>
   <data name="CreateBookingTeam" xml:space="preserve">
     <value>&lt;b&gt;Création&lt;/b&gt;
@@ -203,26 +182,22 @@ Message : &lt;b&gt;{7}&lt;/b&gt;</value>
     <value>Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m² dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) a été prise en compte. 
 Le gérant de l'espace confirmera votre demande de devis dès que possible.</value>
   </data>
-  <data name="CreateQuotationOwner" xml:space="preserve">
-    <value>Une demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été effectuée. 
-Merci de bien vouloir confirmer/refuser cette réservation dans les plus brefs délais.</value>
+  <data name="CreateQuotationClientSubject" xml:space="preserve">
+    <value>Votre demande de devis a bien été prise en compte</value>
   </data>
-  <data name="PayementClient" xml:space="preserve">
-    <value>Votre transaction concernant la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été réalisée avec succès.</value>
+  <data name="CreateQuotationOwner" xml:space="preserve">
+    <value>Vous avez reçu une demande de devis pour un(e) {0} dans l'établissement {1} ({2}). 
+
+Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation dans les meilleurs délais.</value>
+  </data>
+  <data name="CreateQuotationOwnerSubject" xml:space="preserve">
+    <value>Demande de devis - {0}</value>
   </data>
   <data name="PayementOwner" xml:space="preserve">
-    <value>La réservation n°{0} a été réglé par le client. Vous pouvez consulter les réservations confirmées dans votre {1}</value>
+    <value>La réservation n°{0} a été réglé par le client. Vous pouvez consulter les réservations confirmées dans votre espace gérant.</value>
   </data>
   <data name="PayementSubject" xml:space="preserve">
     <value>La réservation n°{0} a été réglée</value>
-  </data>
-  <data name="QuotationHandleMailBody" xml:space="preserve">
-    <value>Votre demande de devis pour un &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) a été prise en charge par nos équipes et transmise au gérant qui vous recontactera aux coordonnées que vous nous avez indiquées dans les plus brefs délais. 
-
-En espérant vous revoir très vite sur eworky.com,</value>
-  </data>
-  <data name="QuotationHandleMailSubject" xml:space="preserve">
-    <value>eWorky – Votre demande de devis a été traitée et transmise au gérant</value>
   </data>
   <data name="QuotationMailBody" xml:space="preserve">
     <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
@@ -251,15 +226,6 @@ Nous vous invitons de plus à compléter votre profil en vous rendant à cette a
   </data>
   <data name="RefuseBookingOwner" xml:space="preserve">
     <value>Vous avez refusé la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) pour la raison suivante : &lt;b&gt;{5}&lt;/b&gt;</value>
-  </data>
-  <data name="RefuseMailBody" xml:space="preserve">
-    <value>L’ offre &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) n’est pas disponible.
-Nous sommes donc au regret de vous annoncer que votre réservation n’a pas pu aboutir.
-
-En espérant vous revoir très vite sur eworky.com,</value>
-  </data>
-  <data name="RefuseMailSubject" xml:space="preserve">
-    <value>eWorky – Votre réservation n’a pas pu aboutir</value>
   </data>
   <data name="RefuseQuotationClient" xml:space="preserve">
     <value>Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; dans l’établissement &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) a été refusé pour la raison suivante : {3}</value>

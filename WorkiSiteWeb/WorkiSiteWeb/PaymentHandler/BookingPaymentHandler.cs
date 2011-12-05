@@ -164,11 +164,7 @@ namespace Worki.Web
 				ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.PayementSubject, booking.Id);
 				ownerMail.ToName = booking.Owner.MemberMainData.FirstName;
                 ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.PayementOwner,
-                                                booking.Id,
-                                                "<a href=#>espace gérant</a>");
-
-				//send mail to client 
-				//useless
+                                                booking.Id);
 
                 context.Commit();
 				completed = true;

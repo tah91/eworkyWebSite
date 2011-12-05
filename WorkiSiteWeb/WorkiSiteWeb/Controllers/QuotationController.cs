@@ -161,25 +161,35 @@ namespace Worki.Web.Controllers
 														 formData.MemberQuotation.Surface,
 														 formData.MemberQuotation.Message);
 
-						//send mail to quoation member
-						dynamic clientMail = new Email(MVC.Emails.Views.Email);
-						clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-						clientMail.To = member.Email;
-                        clientMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
-						clientMail.ToName = member.MemberMainData.FirstName;
-                        clientMail.Content = Worki.Resources.Email.BookingString.CreateQuotationClient;
+						//send mail to quoation client
+                        dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                        clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                        clientMail.To = member.Email;
+                        clientMail.Subject = Worki.Resources.Email.BookingString.CreateQuotationClientSubject;
+                        clientMail.ToName = member.MemberMainData.FirstName;
+                        clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationClient,
+                                                         Localisation.GetOfferType(offer.Type),
+                                                         formData.MemberQuotation.Surface,
+                                                         locName,
+                                                         offer.Localisation.Adress);
 
-						//send mail to localisation member
+                        //send mail to quotation owner
+                        var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+                        var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Quotation());
+						TagBuilder ownerLink = new TagBuilder("a");
+                        ownerLink.MergeAttribute("href", ownerUrl);
+                        ownerLink.InnerHtml = "espace gérant";
+
 						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						ownerMail.To = offer.Localisation.Member.Email;
-                        ownerMail.Subject = Worki.Resources.Email.BookingString.QuotationMailSubject;
+						ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, locName);
 						ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-                        ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
-                                                            Localisation.GetOfferType(offer.Type),
-                                                            formData.MemberQuotation.Surface,
-                                                            locName,
-                                                            offer.Localisation.Adress);
+						ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
+														Localisation.GetOfferType(offer.Type),
+														locName,
+														offer.Localisation.Adress,
+                                                        ownerLink);
 
 						context.Commit();
 

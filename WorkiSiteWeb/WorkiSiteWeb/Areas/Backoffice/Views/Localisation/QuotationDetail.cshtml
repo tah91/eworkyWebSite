@@ -36,6 +36,7 @@
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
+                @RazorHelpers.Description("Demande", string.Format("n° {0}", Model.Id))
                 @RazorHelpers.Description("Lieu", Model.Offer.Localisation.Name)
                 @RazorHelpers.Description("Offre", Model.Offer.Name)
                 @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
