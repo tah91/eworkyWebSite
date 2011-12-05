@@ -339,11 +339,15 @@ namespace Worki.Web.Controllers
 
             if (Request.UrlReferrer.AbsolutePath == Url.Action(this.ActionNames.LogOn) || Request.UrlReferrer.AbsolutePath == Url.Action(this.ActionNames.Register))
             {
-                // Si on fait un facebook connect depuis les pages de login ou de création de compte, on atterrit sur la Home au retour 
-                returnUrl = Url.Action(MVC.Home.Index());
+                var parameters = HttpUtility.ParseQueryString(Request.UrlReferrer.Query);
+                if (!string.IsNullOrEmpty(parameters["returnUrl"]))
+                    returnUrl = parameters["returnUrl"];
+                else
+                    // Si on fait un facebook connect depuis les pages de login ou de création de compte, on atterrit sur la Home au retour 
+                    returnUrl = Url.Action(MVC.Home.Index());
             }
 
-            string redirectUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Url.Action(this.FacebookOAuth());
+            string redirectUrl = Url.ActionAbsolute(this.FacebookOAuth());
             
             // Liste des permissions demandées par eWorky sur le profil facebook du user
             // Pour la liste exhaustives des permissions, voir http://developers.facebook.com/docs/reference/api/permissions/
