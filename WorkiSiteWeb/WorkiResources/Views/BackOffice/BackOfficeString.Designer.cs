@@ -79,6 +79,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Détails.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Messagerie électronique.
         /// </summary>
         public static string Email {
@@ -187,7 +196,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous n&apos;avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}..
+        ///   Looks up a localized string similar to Aucune demande de réservation n&apos;a été archivée..
         /// </summary>
         public static string NoWorkingBooking {
             get {
@@ -196,7 +205,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous n&apos;avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}..
+        ///   Looks up a localized string similar to Aucune demande de devis n&apos;a été archivée..
         /// </summary>
         public static string NoWorkingQuotation {
             get {
@@ -241,7 +250,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Les informations de paiements ont été mis à jour.
+        ///   Looks up a localized string similar to Les informations de paiement ont été mises à jour..
         /// </summary>
         public static string PaymentInfoModified {
             get {

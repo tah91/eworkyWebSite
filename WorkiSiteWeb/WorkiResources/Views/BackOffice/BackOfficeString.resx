@@ -123,6 +123,9 @@
   <data name="CustomerSheet" xml:space="preserve">
     <value>Fiche client</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Détails</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Messagerie électronique</value>
   </data>
@@ -160,10 +163,10 @@
     <value>Vous n'avez aucune demande de vis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
   </data>
   <data name="NoWorkingBooking" xml:space="preserve">
-    <value>Vous n'avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}.</value>
+    <value>Aucune demande de réservation n'a été archivée.</value>
   </data>
   <data name="NoWorkingQuotation" xml:space="preserve">
-    <value>Vous n'avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
+    <value>Aucune demande de devis n'a été archivée.</value>
   </data>
   <data name="NumberBooking" xml:space="preserve">
     <value>Nombre de réservations</value>
@@ -178,7 +181,7 @@
     <value>Espace gérant</value>
   </data>
   <data name="PaymentInfoModified" xml:space="preserve">
-    <value>Les informations de paiements ont été mis à jour</value>
+    <value>Les informations de paiement ont été mises à jour.</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Tél.</value>

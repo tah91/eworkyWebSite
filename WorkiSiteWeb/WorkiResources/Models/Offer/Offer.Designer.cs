@@ -97,7 +97,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proposer à la réservation en ligne.
+        ///   Looks up a localized string similar to Réservation en ligne.
         /// </summary>
         public static string IsBookable {
             get {
@@ -142,7 +142,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Moyen de paiement admis.
+        ///   Looks up a localized string similar to Moyen de paiement proposé.
         /// </summary>
         public static string PaymentType {
             get {
@@ -151,7 +151,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paypal.
+        ///   Looks up a localized string similar to PayPal.
         /// </summary>
         public static string Paypal {
             get {

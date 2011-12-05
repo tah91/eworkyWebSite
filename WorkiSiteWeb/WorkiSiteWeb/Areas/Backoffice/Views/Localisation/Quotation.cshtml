@@ -25,7 +25,8 @@
             {
                 Quotations = Model.Quotations,
                 Title = Model.Localisation.Name,
-                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x))
+                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID, x)),
+                EmptyMessage = string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingQuotation, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations()))
             })
         </div>
 	</div>

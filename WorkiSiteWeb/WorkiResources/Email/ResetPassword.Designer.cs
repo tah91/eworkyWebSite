@@ -62,8 +62,8 @@ namespace Worki.Resources.Email {
         
         /// <summary>
         ///   Looks up a localized string similar to Voici vos nouveaux identifiants :
-        ///Login : {0}
-        ///Password : {1}
+        ///Identifiant : {0}
+        ///Mot de passe : {1}
         ///Vous pouvez {2}.
         /// </summary>
         public static string ResetPasswordContent {

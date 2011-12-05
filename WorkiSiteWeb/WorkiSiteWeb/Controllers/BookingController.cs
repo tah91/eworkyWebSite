@@ -154,7 +154,7 @@ namespace Worki.Web.Controllers
 						dynamic clientMail = new Email(MVC.Emails.Views.Email);
 						clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						clientMail.To = member.Email;
-						clientMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+						clientMail.Subject = Worki.Resources.Email.BookingString.CreateBookingClientSubject;
 						clientMail.ToName = member.MemberMainData.FirstName;
 						clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
 														 Localisation.GetOfferType(offer.Type),
@@ -165,17 +165,21 @@ namespace Worki.Web.Controllers
 
 						//send mail to localisation member
 						//TODO MAIL
+                        var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+                        var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Booking());
+						TagBuilder ownerLink = new TagBuilder("a");
+                        ownerLink.MergeAttribute("href", ownerUrl);
+                        ownerLink.InnerHtml = "espace gérant";
 						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 						ownerMail.To = offer.Localisation.Member.Email;
-						ownerMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+						ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName);
 						ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-						ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingOwner,
+						ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingOwnerBody,
 														Localisation.GetOfferType(offer.Type),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
 														 locName,
-														 offer.Localisation.Adress);
+														 offer.Localisation.Adress,
+                                                         ownerLink);
 
 						context.Commit();
 

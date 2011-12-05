@@ -13,9 +13,9 @@
 <div class="detailContent">
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
-		{ 
+		{/*
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditProfil, MVC.Backoffice.Profil.Edit())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPassword, MVC.Backoffice.Profil.ChangePassword())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPassword, MVC.Backoffice.Profil.ChangePassword())} ,*/
             new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.ModifyPayement, MVC.Backoffice.Profil.ChangePaymentInformation())} 
 		})
 	</div>
@@ -24,32 +24,33 @@
         @using (Html.BeginForm())
 	    {
             <div class="contentBlock">
-                <div class="loginDesc marginb10">
-                    @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.HeadModifyPayment, MiscHelpers.UrlConstants.paypal))<br />
+                <h3 class="blue marginb10">Principe de fonctionnement</h3>
+                <div class="marginb10">
+                    @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.HeadModifyPayment, MiscHelpers.UrlConstants.paypal))
+                </div>
+                <div class="marginb10">
+                    @Worki.Resources.Views.Profile.ProfileString.EndModifyPayment
                 </div>
                 @Html.AntiForgeryToken()
-           
+                <h3 class="blue marginb10">Identifiants PayPal</h3>
                 <table class="confirmbooktable">
                     <tr>
                         <td>
-                            @Worki.Resources.Views.Profile.ProfileString.MailPayment <span class="blue">*</span>
+                            @Worki.Resources.Views.Profile.ProfileString.MailPayment <span class="blue">*</span> :
                         </td>
                         <td>
-                            : @Html.TextBoxFor(m => m.PaymentAddress)
+                            @Html.TextBoxFor(m => m.PaymentAddress)
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            @Worki.Resources.Views.Profile.ProfileString.PasswordEworky <span class="blue">*</span>
+                            @Worki.Resources.Views.Profile.ProfileString.PasswordEworky <span class="blue">*</span> :
                         </td>
                         <td>
-                            : @Html.PasswordFor(m => m.WorkiPassword)
+                            @Html.PasswordFor(m => m.WorkiPassword)
                         </td>
                     </tr>
                 </table>
-                <div class="margint10">
-                    @Worki.Resources.Views.Profile.ProfileString.EndModifyPayment
-                </div>
             </div>
             <div class="float-right">
                 <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Modify"/>

@@ -166,6 +166,9 @@
     <value>J'ai pris connaissance et j'accepte les Conditions Générales d'Utilisation du site eWorky ({0}).</value>
   </data>
   <data name="PasswordHaveBeenChanged" xml:space="preserve">
+    <value>Votre mot de passe a été renvoyé à l'adresse électronique indiquée.</value>
+  </data>
+  <data name="YouChangeYourPassword" xml:space="preserve">
     <value>Le mot de passe a été changé.</value>
   </data>
 </root>

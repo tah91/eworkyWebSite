@@ -133,7 +133,7 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;offre a bien été éditée.
+        ///   Looks up a localized string similar to Les nouveaux paramètres ont bien été pris en compte..
         /// </summary>
         public static string OfferEdited {
             get {

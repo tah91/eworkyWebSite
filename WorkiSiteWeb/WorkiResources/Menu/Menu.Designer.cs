@@ -88,6 +88,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Espace administrateur.
+        /// </summary>
+        public static string AdminSpace {
+            get {
+                return ResourceManager.GetString("AdminSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espace.
         /// </summary>
         public static string BOHome {
@@ -106,7 +115,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Réservations.
+        ///   Looks up a localized string similar to Demandes de réservation.
         /// </summary>
         public static string Bookings {
             get {
@@ -151,7 +160,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configuration.
+        ///   Looks up a localized string similar to Paramétrage.
         /// </summary>
         public static string Configure {
             get {
@@ -169,7 +178,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demandes de réservation.
+        ///   Looks up a localized string similar to Réservations.
         /// </summary>
         public static string CurrentBookings {
             get {
@@ -178,7 +187,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier le mot de passe.
+        ///   Looks up a localized string similar to Mot de passe.
         /// </summary>
         public static string EditPassword {
             get {
@@ -187,7 +196,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier le profil.
+        ///   Looks up a localized string similar to Edition.
         /// </summary>
         public static string EditProfil {
             get {
@@ -241,7 +250,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier les informations de paiement.
+        ///   Looks up a localized string similar to Informations de paiement.
         /// </summary>
         public static string ModifyPayement {
             get {
@@ -277,7 +286,25 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mes espaces de travail.
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string Options {
+            get {
+                return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Espace gérant.
+        /// </summary>
+        public static string OwnerSpace {
+            get {
+                return ResourceManager.GetString("OwnerSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mes espaces en ligne.
         /// </summary>
         public static string Places {
             get {
@@ -345,6 +372,15 @@ namespace Worki.Resources.Menu {
         public static string TopMember {
             get {
                 return ResourceManager.GetString("TopMember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Espace utilisateur.
+        /// </summary>
+        public static string UserSpace {
+            get {
+                return ResourceManager.GetString("UserSpace", resourceCulture);
             }
         }
         

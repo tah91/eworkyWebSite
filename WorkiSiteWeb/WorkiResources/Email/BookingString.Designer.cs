@@ -61,11 +61,22 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été accepté pour la somme de &lt;b&gt;{5}&lt;/b&gt;..
+        ///   Looks up a localized string similar to Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été accepté pour la somme de &lt;b&gt;{5}&lt;/b&gt; €.
+        ///
+        ///Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} (onglet Demandes de réservation) pour régler votre réservation..
         /// </summary>
         public static string AcceptBookingClient {
             get {
                 return ResourceManager.GetString("AcceptBookingClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande de réservation a été validée par le gérant.
+        /// </summary>
+        public static string AcceptBookingClientSubject {
+            get {
+                return ResourceManager.GetString("AcceptBookingClientSubject", resourceCulture);
             }
         }
         
@@ -149,6 +160,26 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous avez reçu une demande de réservation pour un(e) {0} dans l&apos;établissement {1} ({2}). 
+        ///
+        ///Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation dans les meilleurs délais..
+        /// </summary>
+        public static string BookingOwnerBody {
+            get {
+                return ResourceManager.GetString("BookingOwnerBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demande de réservation - {0}.
+        /// </summary>
+        public static string BookingOwnerSubject {
+            get {
+                return ResourceManager.GetString("BookingOwnerSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) est confirmée. 
         ///Vous devrez régler la somme de &lt;b&gt;{5}&lt;/b&gt; € directement auprès du prestataire.
         ///En espérant avoir satisfait votre demande,.
@@ -170,11 +201,20 @@ namespace Worki.Resources.Email {
         
         /// <summary>
         ///   Looks up a localized string similar to Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en compte. 
-        ///L&apos;offrant confirmera votre réservation dans les prochains jours..
+        ///Le gérant de l&apos;espace confirmera votre réservation dès que possible..
         /// </summary>
         public static string CreateBookingClient {
             get {
                 return ResourceManager.GetString("CreateBookingClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande de réservation a bien été prise en compte.
+        /// </summary>
+        public static string CreateBookingClientSubject {
+            get {
+                return ResourceManager.GetString("CreateBookingClientSubject", resourceCulture);
             }
         }
         

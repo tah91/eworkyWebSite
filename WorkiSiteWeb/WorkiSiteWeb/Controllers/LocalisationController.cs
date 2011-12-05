@@ -311,7 +311,7 @@ namespace Worki.Web.Controllers
                 Ownermail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
 				Ownermail.To = dest;
                 Ownermail.ToName = member.MemberMainData.FirstName;
-                Ownermail.Subject = Worki.Resources.Email.Common.Welcome;
+                Ownermail.Subject = string.Format(Worki.Resources.Email.Common.OwnershipSubject, localisation.Name);
                 Ownermail.Content = string.Format(Worki.Resources.Email.Common.Ownership, localisation.Name,
                                         Url.AbsoluteAction(MVC.Localisation.ActionNames.Edit, MVC.Localisation.Name, new { id = id }));
                 Ownermail.Send();

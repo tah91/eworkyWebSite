@@ -17,7 +17,7 @@
 	<div class="blockContainer float-left contentRight">
 		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
         @using (Html.BeginForm(MVC.Backoffice.Localisation.ActionNames.ConfigureOffer, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "configureOfferForm" }))
-		{
+        {
 		    <div class="contentBlock">
 				<h3 class="blue">@Model.InnerModel.Offer.Name</h3>
 	   		    @Html.AntiForgeryToken()
@@ -75,7 +75,7 @@
 					</tr>
 					<tr>
 						<td>
-							@Html.LabelFor(m => m.InnerModel.Offer.Price)
+							@Html.LabelFor(m => m.InnerModel.Offer.Price) (TTC, hors commissions)
 						</td>
 						<td>
 							@Html.TextBoxFor(m => m.InnerModel.Offer.Price)

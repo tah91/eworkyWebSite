@@ -418,11 +418,15 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					//useless
 
                     //send mail to client
-					//TODO MAIL
+                    var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+                    var userUrl = urlHelp.ActionAbsolute(MVC.Dashboard.Home.Booking());
+                    TagBuilder userLink = new TagBuilder("a");
+                    userLink.MergeAttribute("href", userUrl);
+                    userLink.InnerHtml = "espace utilisateur";
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
-					clientMail.Subject = Worki.Resources.Email.BookingString.ConfirmMailSubject;
+					clientMail.Subject = Worki.Resources.Email.BookingString.AcceptBookingClientSubject;
 					clientMail.ToName = booking.Client.MemberMainData.FirstName;
                     clientMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
 														Localisation.GetOfferType(booking.Offer.Type),
@@ -430,13 +434,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                                                         CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
 														booking.Offer.Localisation.Name,
 														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
-														booking.Price);
+														booking.Price,
+                                                        userLink);
 
 					context.Commit();
 
                     clientMail.Send();
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été confirmée";
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingAccepted;
 
 					return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}
@@ -529,7 +534,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
                     clientMail.Send();
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de réservation a été refusée";
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingRefused;
 
                     return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(booking.Id));
 				}

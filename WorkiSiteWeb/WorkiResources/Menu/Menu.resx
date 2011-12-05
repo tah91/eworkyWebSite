@@ -126,6 +126,9 @@
   <data name="Admins" xml:space="preserve">
     <value>Administrateurs</value>
   </data>
+  <data name="AdminSpace" xml:space="preserve">
+    <value>Espace administrateur</value>
+  </data>
   <data name="BOHome" xml:space="preserve">
     <value>Espace</value>
   </data>
@@ -133,7 +136,7 @@
     <value>Bienvenue</value>
   </data>
   <data name="Bookings" xml:space="preserve">
-    <value>Réservations</value>
+    <value>Demandes de réservation</value>
   </data>
   <data name="BusinessCenterFr" xml:space="preserve">
     <value>Business Fr</value>
@@ -148,19 +151,19 @@
     <value>Activité communautaire</value>
   </data>
   <data name="Configure" xml:space="preserve">
-    <value>Configuration</value>
+    <value>Paramétrage</value>
   </data>
   <data name="CoworkingSpaceFr" xml:space="preserve">
     <value>Coworking Fr</value>
   </data>
   <data name="CurrentBookings" xml:space="preserve">
-    <value>Demandes de réservation</value>
+    <value>Réservations</value>
   </data>
   <data name="EditPassword" xml:space="preserve">
-    <value>Modifier le mot de passe</value>
+    <value>Mot de passe</value>
   </data>
   <data name="EditProfil" xml:space="preserve">
-    <value>Modifier le profil</value>
+    <value>Edition</value>
   </data>
   <data name="FavoritePlaces" xml:space="preserve">
     <value>Espaces favoris</value>
@@ -178,7 +181,7 @@
     <value>Modération</value>
   </data>
   <data name="ModifyPayement" xml:space="preserve">
-    <value>Modifier les informations de paiement</value>
+    <value>Informations de paiement</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Actualités</value>
@@ -189,8 +192,11 @@
   <data name="OnlineRental" xml:space="preserve">
     <value>Annonces en ligne</value>
   </data>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value>Espace gérant</value>
+  </data>
   <data name="Places" xml:space="preserve">
-    <value>Mes espaces de travail</value>
+    <value>Mes espaces en ligne</value>
   </data>
   <data name="Profil" xml:space="preserve">
     <value>Profil</value>
@@ -213,10 +219,16 @@
   <data name="TopMember" xml:space="preserve">
     <value>Top 50</value>
   </data>
+  <data name="UserSpace" xml:space="preserve">
+    <value>Espace utilisateur</value>
+  </data>
   <data name="WorkingBook" xml:space="preserve">
     <value>Réservations en cours</value>
   </data>
   <data name="WorkingQuotation" xml:space="preserve">
     <value>Demandes de devis cours</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
   </data>
 </root>

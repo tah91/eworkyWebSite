@@ -182,7 +182,7 @@ namespace Worki.Web.Controllers
 						throw ex;
 					}
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.QuotationConfirmed;
 					return Redirect(offer.Localisation.GetDetailFullUrl(Url));
 				}
 				catch (Exception ex)

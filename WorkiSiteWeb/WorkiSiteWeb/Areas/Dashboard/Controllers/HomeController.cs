@@ -195,7 +195,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 
                 context.Commit();
 
-                TempData[MiscHelpers.TempDataConstants.Info] = "Votre demande de réservation a été annulée";
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingCanceled;
                 return RedirectToAction(MVC.Dashboard.Home.BookingDetail(id));
             }
             catch (Exception ex)
@@ -296,7 +296,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 
                 context.Commit();
 
-                TempData[MiscHelpers.TempDataConstants.Info] = "Votre demande de devis a été annulée";
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.QuotationCanceled;
                 return RedirectToAction(MVC.Dashboard.Home.QuotationDetail(id));
             }
             catch (Exception ex)

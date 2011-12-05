@@ -187,7 +187,7 @@
     <value>Mes informations professionnelles</value>
   </data>
   <data name="ProfilHaveBeenEdit" xml:space="preserve">
-    <value>Profil édité.</value>
+    <value>Votre profil a été correctement édité.</value>
   </data>
   <data name="RelCommentsEmpty" xml:space="preserve">
     <value>Aucun des espaces que vous avez ajoutés n'a été commenté.</value>
@@ -235,9 +235,9 @@
     <value>Nous vous rappelons que seront prélevées sur toutes les réservations transitant sur eWorky une commission de 10 % ainsi qu'une commission PayPal de X %. Pour toute question, contactez-nous : contact@eworky.com.</value>
   </data>
   <data name="MailPayment" xml:space="preserve">
-    <value>Veillez saisir l'adresse électronique associée votre compte PAYPAL</value>
+    <value>Adresse électronique associée votre compte PayPal</value>
   </data>
   <data name="PasswordEworky" xml:space="preserve">
-    <value>Pour votre sécurité, veuillez saisir votre mot de passe eWorky</value>
+    <value>Mot de passe eWorky</value>
   </data>
 </root>

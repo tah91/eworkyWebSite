@@ -182,6 +182,15 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Félicitations ! Vous êtes désormais gérant de {0} !.
+        /// </summary>
+        public static string OwnershipSubject {
+            get {
+                return ResourceManager.GetString("OwnershipSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A bientôt sur eWorky,&lt;br /&gt;
         ///L’équipe eWorky&lt;br /&gt;.
         /// </summary>

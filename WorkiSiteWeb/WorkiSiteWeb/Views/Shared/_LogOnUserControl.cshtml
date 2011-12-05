@@ -16,16 +16,16 @@
                 Title = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", displayName),
 				Items = new List<DropDownItem>
 						{
-							new DropDownItem{ DisplayName = Worki.Resources.Views.Profile.ProfileString.MyProfile, Link = Url.Action(MVC.Dashboard.Home.Index())}
+							new DropDownItem{ DisplayName = Worki.Resources.Menu.Menu.UserSpace, Link = Url.Action(MVC.Dashboard.Home.Index())}
 						}
 			};
 			if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
 			{
-				dropDown.Items.Add(new DropDownItem { DisplayName = "bo", Link = Url.Action(MVC.Backoffice.Home.Index()) });
+                dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.OwnerSpace, Link = Url.Action(MVC.Backoffice.Home.Index()) });
 			}
 			if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
 			{
-				dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Shared.SharedString.Admin, Link = Url.Action(MVC.Admin.Sheet.Index()) });
+				dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.AdminSpace, Link = Url.Action(MVC.Admin.Sheet.Index()) });
 			}
 			dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Shared.SharedString.Deconnect, Link = Url.Action(MVC.Account.LogOff()) });
         }

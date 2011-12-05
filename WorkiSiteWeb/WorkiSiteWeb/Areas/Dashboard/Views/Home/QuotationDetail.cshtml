@@ -13,6 +13,7 @@
 	Model.GetStatus(out statusText, out color, out statusDate);
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Menu.Menu.UserSpace, "Blue")
 @Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
 
 <div class="detailContent">

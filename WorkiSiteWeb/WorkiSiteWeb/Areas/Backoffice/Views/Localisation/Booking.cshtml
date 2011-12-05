@@ -25,7 +25,8 @@
             {
                 Bookings = Model.Bookings,
                 Title = Model.Localisation.Name,
-                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Booking(Model.Localisation.ID, x))
+                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.Booking(Model.Localisation.ID, x)),
+                EmptyMessage = string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingBooking, Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Offers, MVC.Backoffice.Home.Localisations()))
             })
         </div>
 	</div>

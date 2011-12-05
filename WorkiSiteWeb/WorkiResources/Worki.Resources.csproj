@@ -423,6 +423,7 @@
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BackOfficeString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Booking\BookingString.en.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.resx">

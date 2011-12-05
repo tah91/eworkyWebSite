@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Le mot de passe a été changé..
+        ///   Looks up a localized string similar to Votre mot de passe a été renvoyé à l&apos;adresse électronique indiquée..
         /// </summary>
         public static string PasswordHaveBeenChanged {
             get {
@@ -210,6 +210,15 @@ namespace Worki.Resources.Views.Account {
         public static string ValidationLetter {
             get {
                 return ResourceManager.GetString("ValidationLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le mot de passe a été changé..
+        /// </summary>
+        public static string YouChangeYourPassword {
+            get {
+                return ResourceManager.GetString("YouChangeYourPassword", resourceCulture);
             }
         }
     }
