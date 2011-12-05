@@ -118,7 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptBookingClient" xml:space="preserve">
-    <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été accepté pour la somme de &lt;b&gt;{5}&lt;/b&gt;.</value>
+    <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été accepté pour la somme de &lt;b&gt;{5}&lt;/b&gt; €.
+
+Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} (onglet Demandes de réservation) pour régler votre réservation.</value>
+  </data>
+  <data name="AcceptBookingClientSubject" xml:space="preserve">
+    <value>Votre demande de réservation a été validée par le gérant</value>
   </data>
   <data name="AcceptBookingOwner" xml:space="preserve">
     <value>Vous avez accepté la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) pour la somme de &lt;b&gt;{5}&lt;/b&gt;</value>
@@ -157,6 +162,14 @@ En espérant vous revoir très vite sur eworky.com,</value>
   <data name="BookingNewMemberSubject" xml:space="preserve">
     <value>eWorky – Un compte a été créé suite à votre demande de réservation</value>
   </data>
+  <data name="BookingOwnerBody" xml:space="preserve">
+    <value>Vous avez reçu une demande de réservation pour un(e) {0} dans l'établissement {1} ({2}). 
+
+Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation dans les meilleurs délais.</value>
+  </data>
+  <data name="BookingOwnerSubject" xml:space="preserve">
+    <value>Demande de réservation - {0}</value>
+  </data>
   <data name="ConfirmMailBody" xml:space="preserve">
     <value>Votre réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) est confirmée. 
 Vous devrez régler la somme de &lt;b&gt;{5}&lt;/b&gt; € directement auprès du prestataire.
@@ -167,7 +180,10 @@ En espérant avoir satisfait votre demande,</value>
   </data>
   <data name="CreateBookingClient" xml:space="preserve">
     <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en compte. 
-L'offrant confirmera votre réservation dans les prochains jours.</value>
+Le gérant de l'espace confirmera votre réservation dès que possible.</value>
+  </data>
+  <data name="CreateBookingClientSubject" xml:space="preserve">
+    <value>Votre demande de réservation a bien été prise en compte</value>
   </data>
   <data name="CreateBookingOwner" xml:space="preserve">
     <value>Une demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été effectuée. 

@@ -170,4 +170,7 @@ N'oubliez pas de proposer à vos clients de commenter et noter votre lieu, cela 
   <data name="Hey" xml:space="preserve">
     <value>Bonjour</value>
   </data>
+  <data name="OwnershipSubject" xml:space="preserve">
+    <value>Félicitations ! Vous êtes désormais gérant de {0} !</value>
+  </data>
 </root>
