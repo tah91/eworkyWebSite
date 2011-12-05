@@ -45,8 +45,8 @@ namespace Worki.Data.Models
         public DbSet<Localisation> Localisations { get; set; }
         public DbSet<MemberQuotationLog> MemberQuotationLogs { get; set; }
         public DbSet<MemberQuotationTransaction> MemberQuotationTransactions { get; set; }
-        public DbSet<MemberQuotation> MemberQuotations { get; set; }
         public DbSet<MemberBooking> MemberBookings { get; set; }
         public DbSet<Offer> Offers { get; set; }
+        public DbSet<MemberQuotation> MemberQuotations { get; set; }
     }
 }

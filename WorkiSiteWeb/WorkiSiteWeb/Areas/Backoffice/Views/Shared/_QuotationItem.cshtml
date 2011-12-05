@@ -17,7 +17,6 @@
             @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
         </div>
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
             @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
         </div>
         <div class="bookingStatus bookingStatus@(color) borderRadius float-left">

@@ -24,8 +24,8 @@ namespace Worki.Data.Models
             this.Transactions = new HashSet<Transaction>();
             this.WelcomePeoples = new HashSet<WelcomePeople>();
             this.Localisations = new HashSet<Localisation>();
-            this.MemberQuotations = new HashSet<MemberQuotation>();
             this.MemberBookings = new HashSet<MemberBooking>();
+            this.MemberQuotations = new HashSet<MemberQuotation>();
     		OnInitialized();
         }
     
@@ -67,8 +67,8 @@ namespace Worki.Data.Models
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
         public virtual ICollection<Localisation> Localisations { get; set; }
-        public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
+        public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
     
     }
 }

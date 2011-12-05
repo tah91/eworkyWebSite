@@ -32,7 +32,6 @@ namespace Worki.Data.Models
         public int OfferId { get; set; }
         public decimal Surface { get; set; }
         public string Message { get; set; }
-        public decimal Price { get; set; }
         public int StatusId { get; set; }
         public string Response { get; set; }
         public bool VisitNeeded { get; set; }
@@ -40,9 +39,9 @@ namespace Worki.Data.Models
         // Navigation properties
     
         public virtual Member Member { get; set; }
+        public virtual Offer Offer { get; set; }
         public virtual ICollection<MemberQuotationLog> MemberQuotationLogs { get; set; }
         public virtual ICollection<MemberQuotationTransaction> MemberQuotationTransactions { get; set; }
-        public virtual Offer Offer { get; set; }
     
     }
 }
