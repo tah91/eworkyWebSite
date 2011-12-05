@@ -67,7 +67,55 @@
                             @Html.HiddenFor(m => m.LastName)
                             @Html.HiddenFor(m => m.FirstName)  
                             @Html.HiddenFor(m => m.Email) 
+                        <tr>
+						    <td>
+							    <div class="editor-label">
+								    @Html.LabelFor(m => m.LastName)
+							    </div>
+						    </td>
+						    <td>
+							    <div class="editor-field description">
+								    @Model.LastName
+							    </div>
+						    </td>
+					    </tr>
+                        <tr>
+						    <td>
+							    <div class="editor-label">
+								    @Html.LabelFor(m => m.FirstName)
+							    </div>
+						    </td>
+						    <td>
+							    <div class="editor-field description">
+								    @Model.FirstName
+							    </div>
+						    </td>
+					    </tr>
                         }
+                        <tr>
+						    <td>
+							    <div class="editor-label">
+								    @Html.LabelFor(m => m.LocalisationName)
+							    </div>
+						    </td>
+						    <td>
+							    <div class="editor-field description">
+								    @Model.LocalisationName
+							    </div>
+						    </td>
+					    </tr>
+                        <tr>
+						    <td>
+							    <div class="editor-label">
+								    @Html.LabelFor(m => m.OfferName)
+							    </div>
+						    </td>
+						    <td>
+							    <div class="editor-field description">
+								    @Model.OfferName
+							    </div>
+						    </td>
+					    </tr>
 					    <tr>
 						    <td>
 							    <div class="editor-label">

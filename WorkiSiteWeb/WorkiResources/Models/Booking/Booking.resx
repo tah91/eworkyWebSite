@@ -135,11 +135,17 @@
   <data name="LastName" xml:space="preserve">
     <value>Nom</value>
   </data>
+  <data name="LocalisationName" xml:space="preserve">
+    <value>Etablissement</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Message</value>
   </data>
   <data name="Offer" xml:space="preserve">
     <value>Besoin</value>
+  </data>
+  <data name="OfferName" xml:space="preserve">
+    <value>Offre </value>
   </data>
   <data name="PaymentMail" xml:space="preserve">
     <value>Adresse URL de paiement PayPal</value>

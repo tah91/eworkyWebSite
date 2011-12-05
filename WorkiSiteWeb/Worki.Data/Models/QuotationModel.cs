@@ -32,6 +32,12 @@ namespace Worki.Data.Models
         [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string Email { get; set; }
 
+        [Display(Name = "LocalisationName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string LocalisationName { get; set; }
+
+        [Display(Name = "OfferName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string OfferName { get; set; }
+
         public bool NeedNewAccount { get; set; }
 	}
 

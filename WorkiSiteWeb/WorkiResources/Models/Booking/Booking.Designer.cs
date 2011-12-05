@@ -115,6 +115,15 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Etablissement.
+        /// </summary>
+        public static string LocalisationName {
+            get {
+                return ResourceManager.GetString("LocalisationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Message.
         /// </summary>
         public static string Message {
@@ -129,6 +138,15 @@ namespace Worki.Resources.Models.Booking {
         public static string Offer {
             get {
                 return ResourceManager.GetString("Offer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offre .
+        /// </summary>
+        public static string OfferName {
+            get {
+                return ResourceManager.GetString("OfferName", resourceCulture);
             }
         }
         

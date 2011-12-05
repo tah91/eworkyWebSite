@@ -1,4 +1,6 @@
 ﻿.bookingFormDiv table{margin-left:188px}
+.bookingFormDiv table td{height:30px}
+.bookingFormDiv .description{padding:5px}
 .bookingFormDiv table td:first-child{padding-right:5px}
 .speechDiv{margin-bottom:15px;float:right;width:80%}
 .surfaceBooking{width:122px}

@@ -65,6 +65,8 @@ namespace Worki.Web.Controllers
                 FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty,
                 LastName = membetExists ? member.MemberMainData.LastName : string.Empty,
                 Email = membetExists ? member.Email : string.Empty,
+                LocalisationName = offer.Localisation.Name,
+                OfferName = offer.Name
             };
 
             return View(formModel);

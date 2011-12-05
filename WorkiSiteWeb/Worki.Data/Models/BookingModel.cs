@@ -29,6 +29,12 @@ namespace Worki.Data.Models
         [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string LastName { get; set; }
 
+        [Display(Name = "LocalisationName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string LocalisationName { get; set; }
+
+        [Display(Name = "OfferName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public string OfferName { get; set; }
+
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string Email { get; set; }
