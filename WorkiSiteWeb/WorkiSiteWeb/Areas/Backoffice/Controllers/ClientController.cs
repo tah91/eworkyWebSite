@@ -8,13 +8,14 @@ using Worki.Infrastructure;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
     [HandleError]
     [CompressFilter(Order = 1)]
     [CacheFilter(Order = 2)]
-    [Authorize]
+    [Authorize(Roles = MiscHelpers.BackOfficeConstants.BackOfficeRole)]
     public partial class ClientController : Controller
     {
         ILogger _Logger;
