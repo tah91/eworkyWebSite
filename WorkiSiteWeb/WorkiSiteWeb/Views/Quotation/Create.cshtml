@@ -22,6 +22,8 @@
                     <div class="clear"></div>
 				    @Html.AntiForgeryToken()
                     @Html.HiddenFor(m => m.NeedNewAccount)
+					@Html.HiddenFor(m => m.LocalisationName)
+					@Html.HiddenFor(m => m.OfferName)
 				    <table>
                         @if (Model.NeedNewAccount)
                         {
