@@ -15,7 +15,7 @@
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Dashboard.Home.Index())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Home.Booking())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Dashboard.Home.Booking())} ,
             new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Home.Quotation())}
 		})
 	</div>

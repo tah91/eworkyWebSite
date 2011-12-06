@@ -250,7 +250,7 @@
     <value>Missing a temporary folder</value>
   </data>
   <data name="TheTwoNotMatch" xml:space="preserve">
-    <value>'{0}' et '{1}' ne correspondent pas.</value>
+    <value>Attention, vous avez saisi un mot de passe de confirmation différent. Veuillez réessayer.</value>
   </data>
   <data name="TypeNotAllowed" xml:space="preserve">
     <value>Filetype not allowed</value>

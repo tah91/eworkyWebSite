@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nom, Prénom.
+        ///   Looks up a localized string similar to Identité.
         /// </summary>
         public static string Names {
             get {
@@ -178,7 +178,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous n&apos;avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}..
+        ///   Looks up a localized string similar to Vous n&apos;avez aucune demande de réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}..
         /// </summary>
         public static string NoCurrentBooking {
             get {
@@ -187,7 +187,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous n&apos;avez aucune demande de vis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}..
+        ///   Looks up a localized string similar to Vous n&apos;avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}..
         /// </summary>
         public static string NoCurrentQuotation {
             get {

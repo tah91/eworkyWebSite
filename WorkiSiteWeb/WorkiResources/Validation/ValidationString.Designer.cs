@@ -466,7 +466,7 @@ namespace Worki.Resources.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; et &apos;{1}&apos; ne correspondent pas..
+        ///   Looks up a localized string similar to Attention, vous avez saisi un mot de passe de confirmation différent. Veuillez réessayer..
         /// </summary>
         public static string TheTwoNotMatch {
             get {

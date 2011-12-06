@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.WorkingBook)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.CurrentBookings)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -15,7 +15,7 @@
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Dashboard.Home.Index())} ,
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Home.Booking())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Dashboard.Home.Booking())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Home.Quotation())}
 		})
 	</div>

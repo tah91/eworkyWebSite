@@ -139,7 +139,7 @@
     <value>Refuser</value>
   </data>
   <data name="Confirmed" xml:space="preserve">
-    <value>Votre demande de réservation a été correctement prise en compte.</value>
+    <value>Votre demande de réservation a été correctement prise en compte. Le prix et la disponibilité vont être confirmés par le gérant.</value>
   </data>
   <data name="Quotation" xml:space="preserve">
     <value>Demande de devis</value>
@@ -150,8 +150,8 @@
   <data name="QuotationSpeech" xml:space="preserve">
     <value>Pour effectuer une demande de devis, remplissez les champs suivants.</value>
   </data>
-  <data name="Speech" xml:space="preserve">
-    <value>Veuillez indiquer les date et heure de début et de fin de votre réservation. La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur où vous pourrez alors valider définitivement votre réservation.</value>
+  <data name="BeginSpeech" xml:space="preserve">
+    <value>Veuillez indiquer les date et heure de début et de fin de votre réservation.</value>
   </data>
   <data name="ValidateQuotation" xml:space="preserve">
     <value>Valider la demande de devis</value>
@@ -227,5 +227,11 @@
   </data>
   <data name="EndQuotationSpeech" xml:space="preserve">
     <value>Vous serez contacté dans les meilleurs délais par le gérant du lieu.</value>
+  </data>
+  <data name="QuotationRefused" xml:space="preserve">
+    <value>La demande de devis a été refusée.</value>
+  </data>
+  <data name="EndSpeech" xml:space="preserve">
+    <value>La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur. Une fois confirmée, vous pourrez alors régler en ligne votre réservation.</value>
   </data>
 </root>
