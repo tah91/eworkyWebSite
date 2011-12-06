@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.CurrentBookings)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Bookings)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -16,7 +16,7 @@
 		{ 
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Home.Index())} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Backoffice.Home.Localisations())} ,
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.CurrentBookings, MVC.Backoffice.Home.Booking())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Home.Booking())} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Home.Quotation())}
 		})
 	</div>
