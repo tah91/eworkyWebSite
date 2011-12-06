@@ -27,6 +27,8 @@
                 </div>
 				@Html.AntiForgeryToken()
 				@Html.HiddenFor(m => m.OfferModelId)
+                @Html.HiddenFor(m => m.InnerModel.FromDate)
+                @Html.HiddenFor(m => m.InnerModel.FromDate)
                 <div style="width:50%">
                     <span>
                         @Html.LabelFor(m => m.InnerModel.Price) <span class="blue">*</span>
