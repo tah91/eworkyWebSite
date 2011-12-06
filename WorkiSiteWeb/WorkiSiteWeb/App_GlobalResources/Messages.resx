@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PropertyValueInvalid" xml:space="preserve">
-    <value>La valeur "{0}" n'est pas valide pour le champs "{1}".</value>
+    <value>La valeur "{0}" n'est pas valide pour le champ "{1}".</value>
   </data>
 </root>
