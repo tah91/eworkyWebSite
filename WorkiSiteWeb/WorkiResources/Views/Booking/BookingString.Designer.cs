@@ -97,6 +97,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Veuillez indiquer les date et heure de début et de fin de votre réservation..
+        /// </summary>
+        public static string BeginSpeech {
+            get {
+                return ResourceManager.GetString("BeginSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La demande de réservation a été confirmée..
         /// </summary>
         public static string BookingAccepted {
@@ -232,6 +241,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur. Une fois confirmée, vous pourrez alors régler en ligne votre réservation..
+        /// </summary>
+        public static string EndSpeech {
+            get {
+                return ResourceManager.GetString("EndSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prendre en charge.
         /// </summary>
         public static string HandleIt {
@@ -354,15 +372,6 @@ namespace Worki.Resources.Views.Booking {
         public static string SeeLocSheet {
             get {
                 return ResourceManager.GetString("SeeLocSheet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Veuillez indiquer les date et heure de début et de fin de votre réservation. La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur où vous pourrez alors valider définitivement votre réservation..
-        /// </summary>
-        public static string Speech {
-            get {
-                return ResourceManager.GetString("Speech", resourceCulture);
             }
         }
         

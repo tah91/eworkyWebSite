@@ -15,7 +15,7 @@
 			@using (Html.BeginForm())
             {
                 <div class="contentBlock">
-                    <p class="speechDiv">@Worki.Resources.Views.Booking.BookingString.Speech</p>
+                    <p class="speechDiv">@Worki.Resources.Views.Booking.BookingString.BeginSpeech</p>
                     <div class="clear"></div>
 				    @Html.AntiForgeryToken()
                     @Html.HiddenFor(m => m.NeedNewAccount)
@@ -160,6 +160,8 @@
 						    </td>
 					    </tr>
 				    </table>
+                    <p class="speechDiv">@Worki.Resources.Views.Booking.BookingString.EndSpeech</p>
+                    <div class="clear"></div>
                 </div>
 				<div class="editor-field float-right">
 					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.BookIt"/>
