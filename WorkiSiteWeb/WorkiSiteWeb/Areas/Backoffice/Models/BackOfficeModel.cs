@@ -67,6 +67,12 @@ namespace Worki.Web.Model
 		public PagingList<MemberQuotation> Quotations { get; set; }
 	}
 
+    public class RefuseBookingModel
+    {
+        public int BookingId { get; set; }
+        public string ReturnUrl { get; set; }
+    }
+
 	public class RefuseQuotationModel
 	{
 		public int QuotationId { get; set; }

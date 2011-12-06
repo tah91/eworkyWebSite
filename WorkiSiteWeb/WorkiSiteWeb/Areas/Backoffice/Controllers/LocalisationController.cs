@@ -479,7 +479,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <param name="id">id of booking to refuse</param>
 		/// <returns>View to fill booking data</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult RefuseBooking(int id)
+        public virtual ActionResult RefuseBooking(int id, string returnUrl)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
@@ -493,7 +493,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				Member.Validate(member);
 				Member.ValidateOwner(member, booking.Offer.Localisation);
 
-				return View(new OfferModel<MemberBooking> { InnerModel = booking, OfferModelId = booking.OfferId });
+                var model = new RefuseBookingModel { BookingId = id, ReturnUrl = returnUrl };
+                return View(new OfferModel<RefuseBookingModel> { InnerModel = model, OfferModelId = booking.OfferId });
 			}
 			catch (Exception ex)
 			{
@@ -509,8 +510,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>View to fill booking data</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult RefuseBooking(int id, OfferModel<MemberBooking> formModel)
+        public virtual ActionResult RefuseBooking(int id, OfferModel<RefuseBookingModel> formModel, string confirm)
 		{
+            if (string.IsNullOrEmpty(confirm))
+            {
+                return Redirect(formModel.InnerModel.ReturnUrl);
+            }
+
 			var context = ModelFactory.GetUnitOfWork();
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			var memberId = WebHelper.GetIdentityId(User.Identity);

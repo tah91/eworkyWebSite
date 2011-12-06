@@ -42,7 +42,7 @@
 				@RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetAnonymousDisplayName())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, Html.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, Html.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
-                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, WebHelper.DisplayCurrency(Model.Price))
+                @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, !Model.Price.Equals(0) ? WebHelper.DisplayCurrency(Model.Price) : "Non fixé")
                 Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
                 @RazorHelpers.Description("Message", Model.Message)
                 @RazorHelpers.Description("Réponse", Model.Response)
@@ -56,7 +56,7 @@
 					@Html.ActionLink("Accepter", MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
 				</div>
 				<div class="buttonStd buttonBlue linkImg inline-block">
-					@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
+					@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id, Request.Url.PathAndQuery))
 				</div>
 			}
 		</div>
