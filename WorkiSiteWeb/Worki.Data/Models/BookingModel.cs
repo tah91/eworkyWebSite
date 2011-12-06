@@ -77,7 +77,7 @@ namespace Worki.Data.Models
 				{
 					case "FromDate":
 						{
-							if ((FromDate - DateTime.UtcNow).Days < 0)
+							if ((FromDate - DateTime.UtcNow).Days < -1)
 							{
                                 return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}
@@ -88,12 +88,10 @@ namespace Worki.Data.Models
 						}
 					case "ToDate":
 						{
-							if ((ToDate - DateTime.UtcNow).Days < 0)
+							if ((ToDate - DateTime.UtcNow).Days < -1)
 							{
                                 return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}
-							else if (FromDate >= ToDate)
-								return Worki.Resources.Views.Booking.BookingString.EndBookingBeforeStart;
 							else
 								return string.Empty;
 						}
@@ -154,7 +152,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Expired
 		{
-			get { return ToDate < DateTime.UtcNow.AddDays(-1); }
+			get { return (ToDate - DateTime.UtcNow).Days < -1; }
 		}
 
 		/// <summary>
