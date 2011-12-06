@@ -214,7 +214,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Historiques.
+        ///   Looks up a localized string similar to Historique.
         /// </summary>
         public static string Historic {
             get {
