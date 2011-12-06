@@ -56,6 +56,25 @@ namespace Worki.Infrastructure
         }
     }
 
+    /// <summary>
+    /// Don't require https
+    /// </summary>
+    public class DontRequireHttpsAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            var request = filterContext.HttpContext.Request;
+            var response = filterContext.HttpContext.Response;
+
+            if (request.IsSecureConnection && !request.IsLocal)
+            {
+                string redirectUrl = request.Url.ToString().Replace("https:", "http:");
+                response.Redirect(redirectUrl);
+            }
+            base.OnActionExecuting(filterContext);
+        }
+    }
+
     //The class is taken from http://aspnetmobilesamples.codeplex.com/
     public class RedirectMobileDevicesToMobileAreaAttribute : AuthorizeAttribute
     {
