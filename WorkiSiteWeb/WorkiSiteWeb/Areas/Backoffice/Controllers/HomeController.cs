@@ -77,10 +77,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				var member = mRepo.Get(id);
 				Member.Validate(member);
+                var localisations = member.Localisations.Where(loc => !Localisation.FreeLocalisationTypes.Contains(loc.TypeValue));
 				var model = new PagingList<Localisation>
 				{
-					List = member.Localisations.Where(loc => !Localisation.FreeLocalisationTypes.Contains(loc.TypeValue)).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = member.Localisations.Count }
+                    List = localisations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+                    PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = localisations.Count() }
 				};
 				return View(model);
 			}
