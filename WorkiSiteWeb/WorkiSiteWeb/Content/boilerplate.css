@@ -369,6 +369,11 @@ td { vertical-align: top; }
 	height:100%;
 }
 
+.verticalAlignTop
+{
+	vertical-align:top;
+}
+
 /* Button and link classes
 ----------------------------------------------------------*/
 .linkImg a

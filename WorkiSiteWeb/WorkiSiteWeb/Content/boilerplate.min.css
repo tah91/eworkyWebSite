@@ -71,6 +71,7 @@ td{vertical-align:top}
 .italic{font-style:italic}
 .noUnderline,.noUnderline a{text-decoration:none}
 .halfContainer{width:50%;height:100%}
+.verticalAlignTop{vertical-align:top}
 .linkImg a{display:block;width:100%;height:100%;text-decoration:none}
 .imageBtn{border:0;background:white}
 .imageBtn:hover{cursor:pointer}

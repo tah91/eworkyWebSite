@@ -121,6 +121,13 @@ namespace Worki.Web.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
+		/// <summary>
+		/// Create a label for a field
+		/// </summary>
+		/// <param name="html">HtmlHelper instance</param>
+		/// <param name="content">content of the label</param>
+		/// <param name="forContent">id of the for field</param>
+		/// <returns>the build label</returns>
         public static MvcHtmlString LabelFor(this HtmlHelper html, string content, string forContent)
         {
             StringBuilder result = new StringBuilder();
