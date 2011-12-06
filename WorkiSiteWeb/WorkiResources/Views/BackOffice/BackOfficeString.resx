@@ -157,10 +157,10 @@
     <value>Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans votre Profil.</value>
   </data>
   <data name="NoCurrentBooking" xml:space="preserve">
-    <value>Vous n'avez aucune réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}.</value>
+    <value>Vous n'avez aucune demande de réservation en cours. Pour consulter vos réservations archivées, allez dans la section {0}.</value>
   </data>
   <data name="NoCurrentQuotation" xml:space="preserve">
-    <value>Vous n'avez aucune demande de vis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
+    <value>Vous n'avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
   </data>
   <data name="NoWorkingBooking" xml:space="preserve">
     <value>Aucune demande de réservation n'a été archivée.</value>
