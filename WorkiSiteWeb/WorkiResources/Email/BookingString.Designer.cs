@@ -297,11 +297,22 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été refusé pour la raison suivante : {5}.
+        ///   Looks up a localized string similar to Malheureusement, votre demande de réservation pour un(e) {0} du {1} à {2} au {3} à {4} dans l’établissement {5} ({6}) a été refusée, faute de disponibilité.
+        ///
+        ///Le gérant vous invite à réitérer votre demande à un autre moment ou pour une autre offre..
         /// </summary>
         public static string RefuseBookingClient {
             get {
                 return ResourceManager.GetString("RefuseBookingClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande de réservation a été refusée par le gérant.
+        /// </summary>
+        public static string RefuseBookingClientSubject {
+            get {
+                return ResourceManager.GetString("RefuseBookingClientSubject", resourceCulture);
             }
         }
         

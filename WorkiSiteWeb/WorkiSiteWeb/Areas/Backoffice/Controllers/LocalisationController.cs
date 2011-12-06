@@ -514,7 +514,23 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						LoggerId = memberId
 					});
 
-					context.Commit();
+                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                    clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+                    clientMail.To = booking.Client.Email;
+                    clientMail.Subject = Worki.Resources.Email.BookingString.RefuseBookingClientSubject;
+                    clientMail.ToName = booking.Client.MemberMainData.FirstName;
+                    clientMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseBookingClient,
+                                                        Localisation.GetOfferType(booking.Offer.Type),
+                                                        CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
+                                                        CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Time),
+                                                        CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                        CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Time),
+                                                        booking.Offer.Localisation.Name,
+                                                        booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
+
+                    context.Commit();
+
+                    clientMail.Send();
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.BookingRefused;
 
