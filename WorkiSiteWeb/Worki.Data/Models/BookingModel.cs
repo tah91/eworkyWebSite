@@ -81,7 +81,7 @@ namespace Worki.Data.Models
 							{
                                 return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}
-							else if (FromDate > ToDate)
+							else if (FromDate >= ToDate)
                                 return Worki.Resources.Views.Booking.BookingString.EndBookingBeforeStart;
 							else
 								return string.Empty;
@@ -92,7 +92,7 @@ namespace Worki.Data.Models
 							{
                                 return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}
-							else if (FromDate > ToDate)
+							else if (FromDate >= ToDate)
 								return Worki.Resources.Views.Booking.BookingString.EndBookingBeforeStart;
 							else
 								return string.Empty;
