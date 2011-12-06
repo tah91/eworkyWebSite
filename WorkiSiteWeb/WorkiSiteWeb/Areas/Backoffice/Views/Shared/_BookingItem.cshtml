@@ -35,7 +35,7 @@
 						@Html.ActionLink("Accepter",MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
 					</div>
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
-						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id))
+						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id, Request.Url.PathAndQuery))
 					</div>
 				}
 

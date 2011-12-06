@@ -1,4 +1,4 @@
-﻿@model OfferModel<MemberBooking>
+﻿@model OfferModel<RefuseBookingModel>
 
 @section HeadContent
 {
@@ -17,31 +17,21 @@
 	<div class="blockContainer float-left contentRight">
 		@using (Html.BeginForm())
         {
-		    <div class="contentBlock">
-                <div class="loginDesc marginb10">
-                    @Worki.Resources.Views.Shared.SharedString.PleaseChangeInfos
-                </div>
-				@Html.AntiForgeryToken()
-				@Html.HiddenFor(m => m.OfferModelId)
-				<table class="confirmbooktable">
-                    <tr>
-						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.InnerModel.Response)
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.TextAreaFor(m => m.InnerModel.Response)
-							</div>
-						</td>
-					</tr>
-				</table>
-		    </div>
-		    <div class="editor-field float-right">
-			    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
-		    </div>
-		    <div class="clear"></div>
+			@Html.AntiForgeryToken()
+			@Html.HiddenFor(m => m.OfferModelId)
+            @Html.HiddenFor(m => m.InnerModel.ReturnUrl)
+			<div class="contentBlock emptyContent">
+			    Êtes-vous sûr de vouloir refuser cette demande de réservation ?
+			</div>
+			<div class="float-right">
+				<div class="inline-block">
+					<input type="submit" name="confirm" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ConfirmIt"/>
+				</div>
+				<div class="inline-block">
+					<input type="submit" class="buttonStd buttonBlue" value="Retour"/>
+				</div>
+			</div>
+			<div class="clear"></div>
         }
 	</div>
 	<div class="clear"></div>
