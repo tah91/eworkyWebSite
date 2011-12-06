@@ -3105,9 +3105,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult OfferBooking(int id, int page) {
+        public override System.Web.Mvc.ActionResult OfferBooking(int id, int offerId, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferBooking);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerId", offerId);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
@@ -3169,9 +3170,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult OfferQuotation(int id, int page) {
+        public override System.Web.Mvc.ActionResult OfferQuotation(int id, int offerId, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferQuotation);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerId", offerId);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }

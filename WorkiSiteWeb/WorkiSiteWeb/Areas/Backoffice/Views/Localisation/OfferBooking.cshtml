@@ -15,13 +15,13 @@
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.Id)), Filter = OfferDropDownFilter.Booking })
+		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Offer, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.LocalisationId, o.Id)), Filter = OfferDropDownFilter.Booking })
 		<div class="contentBlock">
             @Html.Partial(MVC.Backoffice.Shared.Views._BookingList, new BookingListViewModel
             {
                 Bookings = Model.Bookings,
                 Title = Model.Offer.Name,
-                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.OfferBooking(Model.Offer.Id, x)),
+                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.OfferBooking(Model.Offer.LocalisationId, Model.Offer.Id, x)),
                 EmptyMessage = Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingBooking
             })
 

@@ -204,11 +204,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             var offer = oRepo.Get(id);
 
             var model = new List<OfferMenuItem>();
-            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId, offer.Id)) });
-            if (offer.CanHaveBooking)
-                model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.Id)) });
-            if (offer.CanHaveQuotation)
-                model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.Id)) });
+            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId)) });
+            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId)) });
+            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId)) });
 
             return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
         }
@@ -239,11 +237,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					model.Filter = OfferDropDownFilter.None;
 					break;
 				case OfferMenuType.Booking:
-					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.Id));
+                    model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId, o.Id));
 					model.Filter = OfferDropDownFilter.Booking;
 					break;
 				case OfferMenuType.Quotation:
-					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(o.Id));
+                    model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId, o.Id));
 					model.Filter = OfferDropDownFilter.Quotation;
 					break;
 				default:
@@ -300,21 +298,39 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <summary>
 		/// Get action method to show bookings of the owner, for a given localisation and offer
 		/// </summary>
-		/// <param name="offerid">id of the offer</param>
+		/// <param name="offerid">id of the localisation</param>
+        /// <param name="offerId">id of the offer</param>
 		/// <returns>View containing the bookings</returns>
-		public virtual ActionResult OfferBooking(int id, int page = 1)
+		public virtual ActionResult OfferBooking(int id,int offerId = 0, int page = 1)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var p = page;
 			try
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
-				var offer = oRepo.Get(id);
+                Offer offer;
+                //case no offer selected, take the first one
+                if (offerId == 0)
+                {
+                    var loc = lRepo.Get(id);
+                    offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
+                    if (offer == null)
+                    {
+                        TempData[MiscHelpers.TempDataConstants.Info] = "Ce lieu n'a pas encore d'offre pouvant proposer la réservation en ligne";
+                        return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
+                    }
+                }
+                else
+                {
+                    offer = oRepo.Get(offerId);
+                }
+
 				Member.ValidateOwner(member, offer.Localisation);
 
 				var model = new OfferBookingViewModel
@@ -674,21 +690,38 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <summary>
 		/// Get action method to show quotation of the owner, for a given localisation and offer
 		/// </summary>
-		/// <param name="id">id of the offer</param>
+		/// <param name="id">id of the localisation</param>
+        /// <param name="offerId">id of the offer</param>
 		/// <returns>View containing the quotations</returns>
-		public virtual ActionResult OfferQuotation(int id, int page = 1)
+        public virtual ActionResult OfferQuotation(int id, int offerId = 0, int page = 1)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var p = page;
 			try
 			{
 				var member = mRepo.Get(memberId);
-				var offer = oRepo.Get(id);
 				Member.Validate(member);
+                Offer offer;
+                //case no offer selected, take the first one
+                if (offerId == 0)
+                {
+                    var loc = lRepo.Get(id);
+                    offer = loc.Offers.Where(o => o.CanHaveQuotation).FirstOrDefault();
+                    if (offer == null)
+                    {
+                        TempData[MiscHelpers.TempDataConstants.Info] = "Ce lieu n'a pas encore d'offre pouvant proposer la demande de devis";
+                        return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
+                    }
+                }
+                else
+                {
+                    offer = oRepo.Get(offerId);
+                }
 				Member.ValidateOwner(member, offer.Localisation);
 
 				var model = new OfferQuotationViewModel
