@@ -36,36 +36,6 @@
                     </span>
                     <div class="clear"></div>
                 </div>
-                <p class="margint10">
-                    Vous pouvez joindre un message au client (facultatif) :
-                </p>
-                <div class="margint10" style="width:50%">
-                    <div class="float-left" style="margin: 45px 0px;">
-                        @Html.LabelFor(m => m.InnerModel.Response)
-                    </div>
-                    <div class="float-right">
-                        @Html.TextAreaFor(m => m.InnerModel.Response)
-                    </div>
-                    <div class="clear"></div>
-                </div>
-				@*<table class="confirmbooktable">
-                    <tr>
-						<td>
-							@Html.LabelFor(m => m.InnerModel.Price)<span class="blue">*</span>
-						</td>
-						<td>
-							@Html.TextBoxFor(m => m.InnerModel.Price)
-						</td>
-                    </tr>
-                    <tr>
-                        <td>
-							@Html.LabelFor(m => m.InnerModel.Response)<span class="blue">*</span>
-						</td>
-						<td>
-							@Html.TextAreaFor(m => m.InnerModel.Response)
-						</td>
-					</tr>
-				</table>*@
 		    </div>
             <div class="editor-field float-right">
 			    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ConfirmIt"/>
