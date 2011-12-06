@@ -3176,16 +3176,18 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult RefuseQuotation(int id) {
+        public override System.Web.Mvc.ActionResult RefuseQuotation(int id, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RefuseQuotation);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult RefuseQuotation(int id, Worki.Web.Model.OfferModel<Worki.Data.Models.MemberQuotation> formModel) {
+        public override System.Web.Mvc.ActionResult RefuseQuotation(int id, Worki.Web.Model.OfferModel<Worki.Web.Model.RefuseQuotationModel> formModel, string confirm) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RefuseQuotation);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formModel", formModel);
+            callInfo.RouteValueDictionary.Add("confirm", confirm);
             return callInfo;
         }
 

@@ -715,7 +715,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <param name="id">id of quotation to refuse</param>
         /// <returns>View to fill quotation data</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult RefuseQuotation(int id)
+		public virtual ActionResult RefuseQuotation(int id, string returnUrl)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
             var context = ModelFactory.GetUnitOfWork();
@@ -729,7 +729,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 Member.Validate(member);
                 Member.ValidateOwner(member, quotation.Offer.Localisation);
 
-				return View(new OfferModel<MemberQuotation> { InnerModel = quotation, OfferModelId = quotation.OfferId });
+				var model = new RefuseQuotationModel { QuotationId = id, ReturnUrl = returnUrl };
+				return View(new OfferModel<RefuseQuotationModel> { InnerModel = model, OfferModelId = quotation.OfferId });
             }
             catch (Exception ex)
             {
@@ -745,8 +746,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <returns>View to fill quotation data</returns>
         [AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult RefuseQuotation(int id, OfferModel<MemberQuotation> formModel)
+		public virtual ActionResult RefuseQuotation(int id, OfferModel<RefuseQuotationModel> formModel, string confirm)
         {
+			if (string.IsNullOrEmpty(confirm))
+			{
+				return Redirect(formModel.InnerModel.ReturnUrl);
+			}
+
             var context = ModelFactory.GetUnitOfWork();
             var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
 			var memberId = WebHelper.GetIdentityId(User.Identity);
@@ -756,7 +762,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 try
                 {
 					var quotation = qRepo.Get(id);
-					UpdateModel(quotation, "InnerModel");
                     quotation.StatusId = (int)MemberQuotation.Status.Refused;
                     quotation.MemberQuotationLogs.Add(new MemberQuotationLog
                     {

@@ -37,7 +37,7 @@
                 @if (Model.OwnerCanRefuse)
                 {
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
-						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseQuotation(Model.Id))
+						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseQuotation(Model.Id, Request.Url.PathAndQuery))
 					</div>
                 }
             </div>

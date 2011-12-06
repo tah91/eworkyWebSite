@@ -247,6 +247,7 @@
     <Compile Include="Areas\Backoffice\Controllers\HomeController.cs" />
     <Compile Include="Areas\Backoffice\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Backoffice\Controllers\ProfilController.cs" />
+    <Compile Include="Areas\Backoffice\Models\BackOfficeModel.cs" />
     <Compile Include="Areas\Dashboard\Controllers\CommunityController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HistoricController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
@@ -875,7 +876,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Shared\" />
-    <Folder Include="Areas\Backoffice\Models\" />
     <Folder Include="Areas\Dashboard\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

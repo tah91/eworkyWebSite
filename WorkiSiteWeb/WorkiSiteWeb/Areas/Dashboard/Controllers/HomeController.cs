@@ -10,6 +10,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
 using Postal;
 using Worki.Infrastructure.Helpers;
+using Worki.Web.Model;
 
 namespace Worki.Web.Areas.Dashboard.Controllers
 {

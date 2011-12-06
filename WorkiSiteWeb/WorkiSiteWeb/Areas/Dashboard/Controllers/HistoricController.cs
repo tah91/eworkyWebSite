@@ -8,6 +8,7 @@ using Worki.Infrastructure;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
+using Worki.Web.Model;
 
 namespace Worki.Web.Areas.Dashboard.Controllers
 {

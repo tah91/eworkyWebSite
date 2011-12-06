@@ -9,6 +9,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Data.Models;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
+using Worki.Web.Model;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
