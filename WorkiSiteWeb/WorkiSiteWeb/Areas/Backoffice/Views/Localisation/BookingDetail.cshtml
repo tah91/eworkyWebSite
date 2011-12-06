@@ -45,7 +45,6 @@
                 @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, !Model.Price.Equals(0) ? WebHelper.DisplayCurrency(Model.Price) : "Non fixé")
                 Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
                 @RazorHelpers.Description("Message", Model.Message)
-                @RazorHelpers.Description("Réponse", Model.Response)
             </div>
             <div class="clear"></div>
         </div>

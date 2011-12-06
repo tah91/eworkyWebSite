@@ -44,7 +44,6 @@
                 @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
                 Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
                 @RazorHelpers.Description("Message", Model.Message)
-                @RazorHelpers.Description("Réponse", Model.Response)
             </div>
             @if (Model.Paid)
             { 
