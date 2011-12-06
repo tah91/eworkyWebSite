@@ -755,7 +755,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
                     context.Commit();
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a été refusée";
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.QuotationRefused;
 
                     return RedirectToAction(MVC.Backoffice.Localisation.QuotationDetail(quotation.Id));
                 }
