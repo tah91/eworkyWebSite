@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nom, Prénom.
+        ///   Looks up a localized string similar to Identité.
         /// </summary>
         public static string Names {
             get {

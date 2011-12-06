@@ -151,7 +151,7 @@
     <value>Membre</value>
   </data>
   <data name="Names" xml:space="preserve">
-    <value>Nom, Prénom</value>
+    <value>Identité</value>
   </data>
   <data name="NeedInfoPaypal" xml:space="preserve">
     <value>Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans votre Profil.</value>

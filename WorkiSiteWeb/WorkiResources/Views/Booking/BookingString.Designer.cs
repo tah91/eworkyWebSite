@@ -178,7 +178,7 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Votre demande de réservation a été correctement prise en compte..
+        ///   Looks up a localized string similar to Votre demande de réservation a été correctement prise en compte. Le prix et la disponibilité vont être confirmés par le gérant..
         /// </summary>
         public static string Confirmed {
             get {
@@ -309,6 +309,15 @@ namespace Worki.Resources.Views.Booking {
         public static string QuotationConfirmed {
             get {
                 return ResourceManager.GetString("QuotationConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La demande de devis a été refusée..
+        /// </summary>
+        public static string QuotationRefused {
+            get {
+                return ResourceManager.GetString("QuotationRefused", resourceCulture);
             }
         }
         

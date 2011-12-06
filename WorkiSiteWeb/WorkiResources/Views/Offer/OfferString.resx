@@ -153,4 +153,7 @@
   <data name="OffersDetail" xml:space="preserve">
     <value>Détail des offres</value>
   </data>
+  <data name="SelectOffer" xml:space="preserve">
+    <value>Sélectionner l'offre :</value>
+  </data>
 </root>

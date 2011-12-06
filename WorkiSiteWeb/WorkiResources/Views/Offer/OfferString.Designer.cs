@@ -167,5 +167,14 @@ namespace Worki.Resources.Views.Offer {
                 return ResourceManager.GetString("RemoveOffer", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sélectionner l&apos;offre :.
+        /// </summary>
+        public static string SelectOffer {
+            get {
+                return ResourceManager.GetString("SelectOffer", resourceCulture);
+            }
+        }
     }
 }
