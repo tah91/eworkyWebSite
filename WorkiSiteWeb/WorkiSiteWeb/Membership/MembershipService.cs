@@ -151,7 +151,7 @@ namespace Worki.Memberships
                              UserName = item.Username,
                              IsAdmin = Roles.IsUserInRole(item.Username, MiscHelpers.AdminConstants.AdminRole),
                              Locked = item.IsLockedOut,
-                             LastName = string.Format("{0} {1}", item.MemberMainData.FirstName, item.MemberMainData.LastName)
+                             LastName = item.GetFullDisplayName()
                          });
             return toRet.ToList();
         }
