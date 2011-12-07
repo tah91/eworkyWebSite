@@ -28,8 +28,8 @@
                     ImageAlt = Model.Localisation.Name,
                     Descriptions = new List<DescriptionItem>
                     {
-                        new DescriptionItem{ Title = "Lieu", Value = Model.Localisation.Name},
-                        new DescriptionItem{ Title = "Ville", Value = Model.Localisation.City}
+                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Place, Value = Model.Localisation.Name},
+                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Town, Value = Model.Localisation.City}
                     }
                 };
             }
@@ -39,7 +39,7 @@
 	        </div>
             <div class="newsBottom innerContentBlock">
                 <div class="newsHeader">
-                    Accès direct à la gestion des offres
+                    @Worki.Resources.Views.BackOffice.BackOfficeString.OffersDirectAccess
                 </div>
                 <div class="padding10">
                     @if (Model.Localisation.Offers.Count > 0)
@@ -64,7 +64,7 @@
                     }
                     else
                     { 
-                        <span>Ce lieu n'a pas encore d'offre</span>
+                        <span>@Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer</span>
                     }
                 </div>
             </div>

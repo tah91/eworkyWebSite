@@ -11,8 +11,7 @@
         @Html.Partial(MVC.Dashboard.Shared.Views._LocalisationItem, new LocalisationItem{ Localisation = loc, Url = loc.GetDetailFullUrl(Url) })
 	}
 </ul>
-<div class="clear">
-</div>
+<div class="clear"></div>
 <div class="pager @(a_class)">
     @Html.PageLinks(Model.PagingInfo, pageUrl, a_class)
 </div>

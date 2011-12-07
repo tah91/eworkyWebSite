@@ -295,6 +295,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gérants.
+        /// </summary>
+        public static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espace gérant.
         /// </summary>
         public static string OwnerSpace {

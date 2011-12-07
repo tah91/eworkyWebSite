@@ -15,8 +15,8 @@
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
-            @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
-            @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
+            @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Surface, WebHelper.DisplaySurface(Model.Surface))
+            @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.VisitNeeded, Model.VisitNeeded ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)
         </div>
         <div class="bookingStatus bookingStatus@(color) borderRadius float-left">
             <div class="bookingStatusContent">
@@ -29,18 +29,17 @@
 				@if (Model.ClientCanCancel)
 				{
                     <div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
-						@Html.ActionLink("Annuler", MVC.Dashboard.Home.CancelQuotation(Model.Id))
+						@Html.ActionLink(Worki.Resources.Validation.ValidationString.Cancel, MVC.Dashboard.Home.CancelQuotation(Model.Id))
 					</div>
                 }
             </div>
         </div>
         <div class="bookingLinks float-right blue">
             <ul>
-                <li>@Html.ActionLink("Details", MVC.Dashboard.Home.QuotationDetail(Model.Id))</li>
+                <li>@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Details, MVC.Dashboard.Home.QuotationDetail(Model.Id))</li>
                 <li><a href="@Model.Offer.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Booking.BookingString.SeeLocSheet</a></li>
             </ul>
         </div>
-        <div class="clear">
-        </div>
+        <div class="clear"></div>
     </div>
 </li> 

@@ -21,14 +21,14 @@
 			@Html.HiddenFor(m => m.OfferModelId)
             @Html.HiddenFor(m => m.InnerModel.ReturnUrl)
 			<div class="contentBlock emptyContent">
-			    Êtes-vous sûr de vouloir refuser cette demande de réservation ?
+			    @Worki.Resources.Views.BackOffice.BackOfficeString.RefuseBooking
 			</div>
 			<div class="float-right">
 				<div class="inline-block">
 					<input type="submit" name="confirm" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ConfirmIt"/>
 				</div>
 				<div class="inline-block">
-					<input type="submit" class="buttonStd buttonBlue" value="Retour"/>
+					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.BackOffice.BackOfficeString.Return"/>
 				</div>
 			</div>
 			<div class="clear"></div>

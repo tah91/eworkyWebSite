@@ -44,8 +44,8 @@
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
 				@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
-                Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
-                @RazorHelpers.Description("Message", Model.Message)
+                @Worki.Resources.Views.BackOffice.BackOfficeString.Status : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
+                @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Message, Model.Message)
             </div>
             <div class="clear"></div>
         </div>
@@ -53,7 +53,7 @@
         @if (Model.ClientCanCancel)
         { 
             <div class="buttonStd buttonBlue linkImg inline-block">
-				@Html.ActionLink("Annuler", MVC.Dashboard.Home.CancelQuotation(Model.Id))
+				@Html.ActionLink(Worki.Resources.Validation.ValidationString.Cancel, MVC.Dashboard.Home.CancelQuotation(Model.Id))
 			</div>
         }
 		</div>

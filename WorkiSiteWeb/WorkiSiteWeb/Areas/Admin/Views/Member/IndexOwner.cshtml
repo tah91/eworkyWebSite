@@ -16,7 +16,7 @@
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
-			new MenuItem{ Selected = true, Link= Html.ActionLink("Gérants", MVC.Admin.Member.IndexOwner())}
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Owner, MVC.Admin.Member.IndexOwner())}
 		})
 	</div>
 
@@ -31,7 +31,7 @@
                        &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.EmailAddress
                     </th>
 					<th>
-                       &nbsp;&nbsp; Backoffice
+                       &nbsp;&nbsp; @Worki.Resources.Views.Admin.AdminString.BORole
                     </th>
                 </tr>
             </thead>
@@ -46,7 +46,7 @@
 							@Html.ActionLink(item.Email, MVC.Dashboard.Profil.Public(item.MemberId)) 
                         </td>
 						<td align="right">
-							@Html.ActionLink(Roles.IsUserInRole(item.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) ? "Oui" : "Non", MVC.Admin.Member.SetBackoffice(item.MemberId)) 
+							@Html.ActionLink(Roles.IsUserInRole(item.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Member.SetBackoffice(item.MemberId)) 
                         </td>
                     </tr>
 				} 

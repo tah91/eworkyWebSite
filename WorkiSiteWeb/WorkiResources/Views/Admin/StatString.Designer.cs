@@ -241,6 +241,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Esp. voyag..
         /// </summary>
         public static string TravelerSpace {
