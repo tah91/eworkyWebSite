@@ -75,7 +75,8 @@ namespace Worki.Section
         {
             get
             {
-                return !bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
+				//return !bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
+				return false;
             }
         }
 

@@ -46,6 +46,11 @@ namespace Worki.Data.Models
 	[MetadataType(typeof(Offer_Validation))]
 	public partial class Offer : IPictureDataProvider, IFeatureProvider
 	{
+		partial void OnInitialized()
+		{
+			IsOnline = true;
+		}
+
 		#region IPictureDataProvider
 
 		public int GetId()
