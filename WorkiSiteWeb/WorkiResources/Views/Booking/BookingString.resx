@@ -234,4 +234,61 @@
   <data name="EndSpeech" xml:space="preserve">
     <value>La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur. Une fois confirmée, vous pourrez alors régler en ligne votre réservation.</value>
   </data>
+  <data name="Achieved" xml:space="preserve">
+    <value>Achevée le </value>
+  </data>
+  <data name="CancelStatus" xml:space="preserve">
+    <value>Annulée le </value>
+  </data>
+  <data name="ContactStatus" xml:space="preserve">
+    <value>Contact établi le </value>
+  </data>
+  <data name="HasAcceptBooking" xml:space="preserve">
+    <value>{0} a accepté la demande de réservation pour {1}</value>
+  </data>
+  <data name="HasAskBooking" xml:space="preserve">
+    <value>{0} a fait une demande de réservation pour {1}</value>
+  </data>
+  <data name="HasAskQuotation" xml:space="preserve">
+    <value>{0} a fait une demande de devis pour {1}</value>
+  </data>
+  <data name="HasCancelBooking" xml:space="preserve">
+    <value>{0} a annulé la demande de réservation pour {1}</value>
+  </data>
+  <data name="HasCancelQuotation" xml:space="preserve">
+    <value>{0} a annulé la demande de devis pour {1}</value>
+  </data>
+  <data name="HasPaidBooking" xml:space="preserve">
+    <value>{0} a payé la demande de réservation pour {1}</value>
+  </data>
+  <data name="HasPaidQuotation" xml:space="preserve">
+    <value>{0} a payé la demande de devis pour {1}</value>
+  </data>
+  <data name="HasRefuseBooking" xml:space="preserve">
+    <value>{0} a refusé la demande de réservation pour {1}</value>
+  </data>
+  <data name="HasRefuseQuotation" xml:space="preserve">
+    <value>{0} a refusé la demande de devis pour {1}</value>
+  </data>
+  <data name="PaidStatus" xml:space="preserve">
+    <value>Payé le </value>
+  </data>
+  <data name="QuotationCancel" xml:space="preserve">
+    <value>Demande de devis annulé le </value>
+  </data>
+  <data name="QuotationRefuse" xml:space="preserve">
+    <value>Demande de devis refusée le </value>
+  </data>
+  <data name="RefuseStatus" xml:space="preserve">
+    <value>Refusée le </value>
+  </data>
+  <data name="WaitingConfirm" xml:space="preserve">
+    <value>En attente de confirmation</value>
+  </data>
+  <data name="WaitingPayment" xml:space="preserve">
+    <value>En attente de réglement</value>
+  </data>
+  <data name="WaitingStatus" xml:space="preserve">
+    <value>En attente de prise en charge</value>
+  </data>
 </root>
