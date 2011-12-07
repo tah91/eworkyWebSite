@@ -19,7 +19,7 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur bo")]
         public void WhenJeCliqueSurBo()
         {
-            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "bo").Click();
+            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "Espace gérant").Click();
         }
 
         [Then(@"Je dois arriver sur la page de backoffice")]
@@ -53,7 +53,7 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Profil")]
         public void WhenJeCliqueSurProfil()
         {
-            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "Profil").Click();
+            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "Options").Click();
         }
 
         [Then(@"Je dois arriver sur la page de backoffice profil")]
@@ -70,7 +70,7 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Espaces de travail")]
         public void WhenJeCliqueSurEspacesDeTravail()
         {
-            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "Espaces de travail").Click();
+            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "Mes espaces en ligne").Click();
         }
 
         [Then(@"Je dois arriver sur la page de backoffice Espaces de travail")]
@@ -87,7 +87,7 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Reservation en cours")]
         public void WhenJeCliqueSurReservationEnCours()
         {
-            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "Réservations en cours").Click();
+            WebBrowser.Current.Page<BackOfficePage>().Links.Single(x => x.Text == "Demandes de réservation").Click();
         }
 
         [Then(@"Je dois arriver sur la page de backoffice Booking")]
@@ -175,8 +175,6 @@ namespace Worki.SpecFlow
         public void WhenJeRemplisDesChampsPourLOffre()
         {
             WebBrowser.Current.TextField(Find.ById("Offer_Name")).TypeTextQuickly("Bureau 1");
-            WebBrowser.Current.TextField(Find.ById("Offer_Price")).TypeTextQuickly("4500");
-            WebBrowser.Current.SelectList(Find.ById("Offer_Period")).SelectByValue("3");
             WebBrowser.Current.CheckBox(Find.ById("o_Desktop100Plus")).Click();
             WebBrowser.Current.CheckBox(Find.ById("o_Equipped")).Click();
         }
@@ -195,6 +193,60 @@ namespace Worki.SpecFlow
 
             Assert.That(ie.ContainsText("Bureaux") && ie.ContainsText("> 100 m2") && ie.ContainsText("Equipé et câblé"));
             ie.Close();
+        }
+
+        #endregion
+
+        #region Réserver une offre
+
+        public string localisation_name { get; set; }
+
+        [When(@"Je réserve une offre")]
+        public void WhenJeReserveUneOffre()
+        {
+            WebBrowser.Current.Page<AccueilPage>().Champ_Recherche.TypeText("Paris");
+            WebBrowser.Current.Page<AccueilPage>().Type_Espace.SelectByValue("2");
+            WebBrowser.Current.Page<AccueilPage>().Bouton_Recherche.Click();
+            WebBrowser.Current.Link(Find.BySelector("div[class='contentBlock resultItem'] a[href^='/lieu-de-travail/resultats-detail/']")).Click();
+            WebBrowser.Current.Page<BackOfficePage>().BookIt.Click();
+            WebBrowser.Current.Page<BackOfficePage>().BookIt.Click();
+            WebBrowser.Current.TextField(Find.ById("MemberBooking_ToDate")).TypeText("31/12/2013 08:00");
+            WebBrowser.Current.Page<BackOfficePage>().Buttons.Where(x => !string.IsNullOrEmpty(x.Text) && x.Text.Equals("Réserver")).First().Click();
+        }
+
+        [Then(@"Je dois avoir la demande de réservation côté utilisateur et gérant")]
+        public void ThenJeDoisAvoirLaDemandeDeReservationCoteUtilisateurEtGerant()
+        {
+            Assert.IsTrue(WebBrowser.Current.Page<BackOfficePage>().BookItems.Count > 0);
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.DashboardBooking);
+            Assert.IsTrue(WebBrowser.Current.Page<BackOfficePage>().BookItems.Count > 0);
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
+        #region Demande de devis
+
+        [When(@"Je demande un devis")]
+        public void WhenJeDemandeUnDevis()
+        {
+            WebBrowser.Current.Page<AccueilPage>().Champ_Recherche.TypeText("New York");
+            WebBrowser.Current.Page<AccueilPage>().Type_Espace.SelectByValue("3");
+            WebBrowser.Current.Page<AccueilPage>().Bouton_Recherche.Click();
+            WebBrowser.Current.Link(Find.BySelector("div[class='contentBlock resultItem'] a[href^='/lieu-de-travail/resultats-detail/']")).Click();
+            WebBrowser.Current.Page<BackOfficePage>().QuoteIt.Click();
+            WebBrowser.Current.Page<BackOfficePage>().QuoteIt.Click();
+            WebBrowser.Current.TextField(Find.ById("MemberQuotation_Surface")).TypeText("45");
+            WebBrowser.Current.Page<BackOfficePage>().Buttons.Where(x => !string.IsNullOrEmpty(x.Text) && x.Text.Equals("Valider la demande de devis")).First().Click();
+        }
+
+        [Then(@"Je dois avoir la demande de devis côté utilisateur et gérant")]
+        public void ThenJeDoisAvoirLaDemandeDeDevisCoteUtilisateurEtGerant()
+        {
+            Assert.IsTrue(WebBrowser.Current.Page<BackOfficePage>().BookItems.Count > 0);
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.DashboardQuotation);
+            Assert.IsTrue(WebBrowser.Current.Page<BackOfficePage>().BookItems.Count > 0);
+            WebBrowser.Current.Close();
         }
 
         #endregion
@@ -218,6 +270,16 @@ namespace Worki.SpecFlow
         public Link[] Links
         {
             get { return Document.Links.ToArray(); }
+        }
+
+        public Link BookIt 
+        {
+            get { return Document.Link(Find.ByText("Réserver")); }
+        }
+
+        public Link QuoteIt
+        {
+            get { return Document.Link(Find.ByText("Demande de devis")); }
         }
 
         #endregion
@@ -263,7 +325,7 @@ namespace Worki.SpecFlow
 
         public List<Element> Offers
         {
-            get { return Document.ElementsWithTag("li").ToList(); }
+            get { return Document.Elements.Where(x => (!string.IsNullOrEmpty(x.TagName) && x.TagName.ToLower().Equals("table"))).ToList(); }
         }
 
         #endregion

@@ -186,7 +186,7 @@ namespace Worki.SpecFlow
 
         public Link Lien_MonProfil
         {
-            get { return Document.Link(Find.ByText("Mon profil")); }
+            get { return Document.Link(Find.ByText("Espace utilisateur")); }
         }
 
         public Link Lien_Deconnexion

@@ -288,6 +288,52 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Réserver une offre")]
+        [NUnit.Framework.CategoryAttribute("Offer")]
+        public virtual void ReserverUneOffre()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Réserver une offre", new string[] {
+                        "Offer"});
+#line 86
+this.ScenarioSetup(scenarioInfo);
+#line 87
+ testRunner.Given("Je me connecte à eWorky");
+#line 88
+ testRunner.When("Je réserve une offre");
+#line 89
+  testRunner.And("Je clique sur bo");
+#line 90
+  testRunner.And("Je clique sur Reservation en cours");
+#line 91
+ testRunner.Then("Je dois avoir la demande de réservation côté utilisateur et gérant");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Demande de devis")]
+        [NUnit.Framework.CategoryAttribute("Offer")]
+        public virtual void DemandeDeDevis()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Demande de devis", new string[] {
+                        "Offer"});
+#line 94
+this.ScenarioSetup(scenarioInfo);
+#line 95
+ testRunner.Given("Je me connecte à eWorky");
+#line 96
+ testRunner.When("Je demande un devis");
+#line 97
+  testRunner.And("Je clique sur bo");
+#line 98
+  testRunner.And("Je clique sur Demande de devis");
+#line 99
+ testRunner.Then("Je dois avoir la demande de devis côté utilisateur et gérant");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion
