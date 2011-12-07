@@ -160,7 +160,7 @@
     <value>Lettres de validation</value>
   </data>
   <data name="EnterFollowingLetters" xml:space="preserve">
-    <value>Veuillez entrer les lettres ci-dessous.</value>
+    <value>Veuillez entrer les lettres ci-contre</value>
   </data>
   <data name="AgreeWithCGU" xml:space="preserve">
     <value>J'ai pris connaissance et j'accepte les Conditions Générales d'Utilisation du site eWorky ({0}).</value>

@@ -1,5 +1,4 @@
-﻿.bookingFormDiv table{margin-left:191px;margin-bottom:15px}
+﻿.bookingFormDiv table{margin-top:15px;margin-bottom:15px}
 .bookingFormDiv table td{height:30px}
 .bookingFormDiv .description{padding:5px}
-.bookingFormDiv table td:first-child{padding-right:5px}
-.speechDiv{margin-bottom:15px;float:right;width:80%}
+.bookingFormDiv table td:first-child{padding-right:30px}

@@ -79,7 +79,7 @@ namespace Worki.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Veuillez entrer les lettres ci-dessous..
+        ///   Looks up a localized string similar to Veuillez entrer les lettres ci-contre.
         /// </summary>
         public static string EnterFollowingLetters {
             get {
