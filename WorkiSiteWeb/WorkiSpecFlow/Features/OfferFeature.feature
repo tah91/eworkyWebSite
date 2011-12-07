@@ -94,6 +94,14 @@ Scenario: Réserver une offre
 Scenario: Demande de devis
 	Given Je me connecte à eWorky
 	When Je demande un devis
-		And Je clique sur bo
+		And Je clique sur mon profil
 		And Je clique sur Demande de devis
 	Then Je dois avoir la demande de devis côté utilisateur et gérant
+
+@Offer
+Scenario: Annuler une demande de devis
+	Given Je me connecte à eWorky
+	When Je clique sur mon profil
+		And Je clique sur Demande de devis
+		And je clique sur Annuler
+	Then Je dois avoir la demande de devis annuler

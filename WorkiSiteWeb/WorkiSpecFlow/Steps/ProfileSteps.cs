@@ -18,7 +18,6 @@ namespace Worki.SpecFlow
         public void WhenJeCliqueSurMonProfil()
         {
             WebBrowser.Current.Page<AccueilPage>().Lien_MonProfil.Click();
-            WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
         }
 
         [Then(@"Je dois arriver sur mon profil")]

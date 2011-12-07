@@ -326,11 +326,34 @@ this.ScenarioSetup(scenarioInfo);
 #line 96
  testRunner.When("Je demande un devis");
 #line 97
-  testRunner.And("Je clique sur bo");
+  testRunner.And("Je clique sur mon profil");
 #line 98
   testRunner.And("Je clique sur Demande de devis");
 #line 99
  testRunner.Then("Je dois avoir la demande de devis côté utilisateur et gérant");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Annuler une demande de devis")]
+        [NUnit.Framework.CategoryAttribute("Offer")]
+        public virtual void AnnulerUneDemandeDeDevis()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Annuler une demande de devis", new string[] {
+                        "Offer"});
+#line 102
+this.ScenarioSetup(scenarioInfo);
+#line 103
+ testRunner.Given("Je me connecte à eWorky");
+#line 104
+ testRunner.When("Je clique sur mon profil");
+#line 105
+  testRunner.And("Je clique sur Demande de devis");
+#line 106
+  testRunner.And("je clique sur Annuler");
+#line 107
+ testRunner.Then("Je dois avoir la demande de devis annuler");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

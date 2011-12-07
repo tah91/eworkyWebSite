@@ -250,6 +250,23 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Annuler une demande de devis
+
+        [When(@"je clique sur Annuler")]
+        public void WhenJeCliqueSurAnnuler()
+        {
+            WebBrowser.Current.Page<BackOfficePage>().Cancel.Click();
+        }
+
+        [Then(@"Je dois avoir la demande de devis annuler")]
+        public void ThenJeDoisAvoirLaDemandeDeDevisAnnuler()
+        {
+            Assert.IsTrue(WebBrowser.Current.ContainsText("Demande de devis annulé"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
     }
 
     #region BackOffice Page
@@ -280,6 +297,11 @@ namespace Worki.SpecFlow
         public Link QuoteIt
         {
             get { return Document.Link(Find.ByText("Demande de devis")); }
+        }
+
+        public Link Cancel
+        {
+            get { return Document.Link(Find.ByText("Annuler")); }
         }
 
         #endregion
