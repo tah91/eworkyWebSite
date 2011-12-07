@@ -16,5 +16,5 @@
 .favoris_add{background-image:url('images/favorite.png');background-position:0 0;width:20px;height:21px;display:inline-block}
 .favoris_del{background-image:url('images/favorite.png');background-position:0 -71px;width:20px;height:21px;display:inline-block}
 #commentFormDiv textarea{width:98.5%}
-.offerGallery{margin:10px 0}
+.offerGallery{margin:10px 0;height:350px}
 .servicesBlock{margin-bottom:5px}

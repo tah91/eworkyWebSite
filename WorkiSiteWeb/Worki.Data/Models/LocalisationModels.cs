@@ -284,6 +284,8 @@ namespace Worki.Data.Models
 			{
 				foreach (var feature in item.OfferFeatures)
 				{
+					if (set.Where(f => f.Feature == feature.Feature && f.DecimalValue == feature.DecimalValue && f.StringValue == feature.StringValue).Count() != 0)
+						continue;
 					set.Add(feature);
 				}
 			}
