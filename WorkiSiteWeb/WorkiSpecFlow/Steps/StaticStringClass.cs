@@ -27,6 +27,8 @@ namespace Worki.SpecFlow
             public const string Contact = "accueil/contact";
             public const string Connexion = "compte/connexion";
             public const string Dashboard = "Dashboard/Profil/";
+            public const string DashboardBooking = "Dashboard/Home/Booking";
+            public const string DashboardQuotation = "Dashboard/Home/Quotation";
             public const string FAQ = "accueil/faq";
             public const string Inscription = "compte/inscription";
             public const string Job = "accueil/jobs";
@@ -50,8 +52,8 @@ namespace Worki.SpecFlow
         public static class Connexion
         {
             public const string LocalLogin = "Admin";
-            public const string OnlineLogin = "admin@eworky.com";
-            public const string Password = "Admin_Pass";
+            public const string OnlineLogin = "testeworky@gmail.com";
+            public const string Password = "wrk_2011";
         }
 
         #endregion

@@ -177,6 +177,9 @@
   <data name="Telecentre" xml:space="preserve">
     <value>Télécentre</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="TravelerSpace" xml:space="preserve">
     <value>Esp. voyag.</value>
   </data>

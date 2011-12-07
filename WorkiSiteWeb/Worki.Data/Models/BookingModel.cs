@@ -218,35 +218,35 @@ namespace Worki.Data.Models
 			date = null;
             if (Expired)
             {
-                status = "Achevée le ";
+                status = Worki.Resources.Views.Booking.BookingString.Achieved;
 				date = ToDate;
                 color = "Gray";
             }
             else if (Unknown)
             {
-                status = "En attente de confirmation";
+                status = Worki.Resources.Views.Booking.BookingString.WaitingConfirm;
                 color = "Yellow";
             }
             else if (Refused)
             {
-                status = "Refusée le ";
+                status = Worki.Resources.Views.Booking.BookingString.RefuseStatus;
 				date = RefusalDate;
                 color = "Red";
             }
             else if (Cancelled)
             {
-                status = "Annulée le ";
+                status = Worki.Resources.Views.Booking.BookingString.CancelStatus;
 				date = CancellationDate;
                 color = "Gray";
             }
             else if (Waiting)
             {
-                status = "En attente de réglement";
+                status = Worki.Resources.Views.Booking.BookingString.WaitingPayment;
                 color = "Orange";
             }
             else if (Paid)
             {
-                status = "Payé le ";
+                status = Worki.Resources.Views.Booking.BookingString.PaidStatus;
 				date = PaidDate;
                 color = "Green";
             }
@@ -308,15 +308,15 @@ namespace Worki.Data.Models
 			switch(type)
 			{
 				case BookingEvent.Creation:
-					return string.Format("{0} a fait une demande de réservation pour {1}", MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
+                    return string.Format(Worki.Resources.Views.Booking.BookingString.HasAskBooking, MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.Approval:
-					return string.Format("{0} a accepté la demande de réservation pour {1}", MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
+                    return string.Format(Worki.Resources.Views.Booking.BookingString.HasAcceptBooking, MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.Refusal:
-					return string.Format("{0} a refusé la demande de réservation pour {1}", MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
+                    return string.Format(Worki.Resources.Views.Booking.BookingString.HasRefuseBooking, MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.Payment:
-					return string.Format("{0} a payé la demande de réservation pour {1}", MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
+                    return string.Format(Worki.Resources.Views.Booking.BookingString.HasPaidBooking, MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
                 case BookingEvent.Cancellation:
-					return string.Format("{0} a annulé la demande de réservation pour {1}", MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
+                    return string.Format(Worki.Resources.Views.Booking.BookingString.HasCancelBooking, MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
 				case BookingEvent.General:
 				default:
 					return Event;

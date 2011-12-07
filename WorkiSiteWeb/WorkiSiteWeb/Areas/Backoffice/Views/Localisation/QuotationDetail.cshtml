@@ -36,24 +36,24 @@
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
             <div class="innerContentBlock padding10 summaryDetail float-right">
-                @RazorHelpers.Description("Demande", string.Format("n° {0}", Model.Id))
-                @RazorHelpers.Description("Lieu", Model.Offer.Localisation.Name)
-                @RazorHelpers.Description("Offre", Model.Offer.Name)
-                @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
+                @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Demand, string.Format("n° {0}", Model.Id))
+                @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Place, Model.Offer.Localisation.Name)
+                @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Offer, Model.Offer.Name)
+                @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Surface, WebHelper.DisplaySurface(Model.Surface))
 				@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
-                @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
-                Statut : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
-                @RazorHelpers.Description("Message", Model.Message)
+                @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.VisitNeeded, Model.VisitNeeded ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)
+                @Worki.Resources.Views.BackOffice.BackOfficeString.Status : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
+                @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Message, Model.Message)
             </div>
             @if (Model.Paid)
             { 
                 <div class="innerContentBlock padding10 summaryDetail float-right">
                     <b>Prospect</b><br/>
-                    @RazorHelpers.Description("Nom", Model.Member.MemberMainData.LastName)
-                    @RazorHelpers.Description("Prénom", Model.Member.MemberMainData.FirstName)
-                    @RazorHelpers.Description("Tel", Model.Member.MemberMainData.PhoneNumber)
-                    @RazorHelpers.Description("Email", Model.Member.Email)
-                    @Html.ActionLink("Voir le profil client", MVC.Dashboard.Profil.Public(Model.MemberId))
+                    @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.LastName, Model.Member.MemberMainData.LastName)
+                    @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.FirstName, Model.Member.MemberMainData.FirstName)
+                    @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Tel, Model.Member.MemberMainData.PhoneNumber)
+                    @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Email, Model.Member.Email)
+                    @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.SeeClientProfile, MVC.Dashboard.Profil.Public(Model.MemberId))
                 </div>
             }
             <div class="clear"></div>
@@ -62,18 +62,17 @@
         @if (Model.OwnerCanPay)
         { 
             <div class="buttonStd buttonBlue linkImg inline-block">
-				@Html.ActionLink("Contacter", MVC.Quotation.PayWithPayPal(Model.Id))
+				@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Contact, MVC.Quotation.PayWithPayPal(Model.Id))
 			</div>
         }
         @if (Model.OwnerCanRefuse)
         { 
             <div class="buttonStd buttonBlue linkImg inline-block">
-				@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseQuotation(Model.Id, Request.Url.PathAndQuery))
+				@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Refuse, MVC.Backoffice.Localisation.RefuseQuotation(Model.Id, Request.Url.PathAndQuery))
 			</div>
         }
 		</div>
-		<div class="clear">
-        </div>
+		<div class="clear"></div>
 	</div>
 	<div class="clear"></div>
 </div>

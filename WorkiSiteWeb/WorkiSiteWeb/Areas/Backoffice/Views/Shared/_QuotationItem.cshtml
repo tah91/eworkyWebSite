@@ -10,15 +10,15 @@
 <li class="bookingItem">
     <div class="innerContentBlock padding10">
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description("Demande", string.Format("n° {0}", Model.Id))
+            @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Demand, string.Format("n° {0}", Model.Id))
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
         </div>
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetAnonymousDisplayName())
             @Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
-            @RazorHelpers.Description("Demande de visite", Model.VisitNeeded ? "Oui" : "Non")
-            @RazorHelpers.Description("Surface", WebHelper.DisplaySurface(Model.Surface))
+            @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.VisitNeeded, Model.VisitNeeded ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)
+            @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Surface, WebHelper.DisplaySurface(Model.Surface))
         </div>
         <div class="bookingStatus bookingStatus@(color) borderRadius float-left">
             <div class="bookingStatusContent">
@@ -31,13 +31,13 @@
 				@if (Model.OwnerCanPay)
                 {
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
-						@Html.ActionLink("Contacter", MVC.Quotation.PayWithPayPal(Model.Id))
+						@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Contact, MVC.Quotation.PayWithPayPal(Model.Id))
 					</div>
                 }
                 @if (Model.OwnerCanRefuse)
                 {
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
-						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseQuotation(Model.Id, Request.Url.PathAndQuery))
+						@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Refuse, MVC.Backoffice.Localisation.RefuseQuotation(Model.Id, Request.Url.PathAndQuery))
 					</div>
                 }
             </div>
@@ -51,7 +51,6 @@
                 }
             </ul>            
         </div>
-        <div class="clear">
-        </div>
+        <div class="clear"></div>
     </div>
 </li> 

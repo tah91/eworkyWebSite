@@ -10,7 +10,7 @@
 <li class="bookingItem">
     <div class="innerContentBlock padding10">
         <div class="bookingDesc float-left">
-            @RazorHelpers.Description("Réservation", string.Format("n° {0}", Model.Id))
+            @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Booking, string.Format("n° {0}", Model.Id))
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Customer, Model.Member.GetAnonymousDisplayName())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Offer, Model.Offer.Name)
@@ -19,7 +19,7 @@
             @Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Start, Html.DisplayDate(Model.FromDate, CultureHelpers.TimeFormat.General).ToString())
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.End, Html.DisplayDate(Model.ToDate, CultureHelpers.TimeFormat.General).ToString())
-            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, !Model.Price.Equals(0) ? WebHelper.DisplayCurrency(Model.Price) : "Non fixé")
+            @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Price, !Model.Price.Equals(0) ? WebHelper.DisplayCurrency(Model.Price) : Worki.Resources.Views.BackOffice.BackOfficeString.NotDefined)
         </div>
         <div class="bookingStatus bookingStatus@(color) borderRadius float-left">
             <div class="bookingStatusContent">
@@ -32,10 +32,10 @@
 				@if (Model.OwnerCanAccept)
 				{
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
-						@Html.ActionLink("Accepter",MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
+						@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Accept, MVC.Backoffice.Localisation.ConfirmBooking(Model.Id))
 					</div>
 					<div class="buttonStd buttonBlue linkImg bookingStatusAction inline-block">
-						@Html.ActionLink("Refuser", MVC.Backoffice.Localisation.RefuseBooking(Model.Id, Request.Url.PathAndQuery))
+						@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Refuse, MVC.Backoffice.Localisation.RefuseBooking(Model.Id, Request.Url.PathAndQuery))
 					</div>
 				}
 
@@ -50,7 +50,6 @@
 				}
             </ul>            
         </div>
-        <div class="clear">
-        </div>
+        <div class="clear"></div>
     </div>
 </li> 

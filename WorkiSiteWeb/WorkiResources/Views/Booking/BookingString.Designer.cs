@@ -61,6 +61,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Achevée le .
+        /// </summary>
+        public static string Achieved {
+            get {
+                return ResourceManager.GetString("Achieved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demandé le.
         /// </summary>
         public static string Asked {
@@ -187,6 +196,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Annulée le .
+        /// </summary>
+        public static string CancelStatus {
+            get {
+                return ResourceManager.GetString("CancelStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre demande de réservation a été correctement prise en compte. Le prix et la disponibilité vont être confirmés par le gérant..
         /// </summary>
         public static string Confirmed {
@@ -201,6 +219,15 @@ namespace Worki.Resources.Views.Booking {
         public static string ConfirmIt {
             get {
                 return ResourceManager.GetString("ConfirmIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact établi le .
+        /// </summary>
+        public static string ContactStatus {
+            get {
+                return ResourceManager.GetString("ContactStatus", resourceCulture);
             }
         }
         
@@ -259,6 +286,87 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} a accepté la demande de réservation pour {1}.
+        /// </summary>
+        public static string HasAcceptBooking {
+            get {
+                return ResourceManager.GetString("HasAcceptBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a fait une demande de réservation pour {1}.
+        /// </summary>
+        public static string HasAskBooking {
+            get {
+                return ResourceManager.GetString("HasAskBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a fait une demande de devis pour {1}.
+        /// </summary>
+        public static string HasAskQuotation {
+            get {
+                return ResourceManager.GetString("HasAskQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a annulé la demande de réservation pour {1}.
+        /// </summary>
+        public static string HasCancelBooking {
+            get {
+                return ResourceManager.GetString("HasCancelBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a annulé la demande de devis pour {1}.
+        /// </summary>
+        public static string HasCancelQuotation {
+            get {
+                return ResourceManager.GetString("HasCancelQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a payé la demande de réservation pour {1}.
+        /// </summary>
+        public static string HasPaidBooking {
+            get {
+                return ResourceManager.GetString("HasPaidBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a payé la demande de devis pour {1}.
+        /// </summary>
+        public static string HasPaidQuotation {
+            get {
+                return ResourceManager.GetString("HasPaidQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a refusé la demande de réservation pour {1}.
+        /// </summary>
+        public static string HasRefuseBooking {
+            get {
+                return ResourceManager.GetString("HasRefuseBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a refusé la demande de devis pour {1}.
+        /// </summary>
+        public static string HasRefuseQuotation {
+            get {
+                return ResourceManager.GetString("HasRefuseQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lieu.
         /// </summary>
         public static string Localisation {
@@ -273,6 +381,15 @@ namespace Worki.Resources.Views.Booking {
         public static string Offer {
             get {
                 return ResourceManager.GetString("Offer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payé le .
+        /// </summary>
+        public static string PaidStatus {
+            get {
+                return ResourceManager.GetString("PaidStatus", resourceCulture);
             }
         }
         
@@ -313,6 +430,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande de devis annulé le .
+        /// </summary>
+        public static string QuotationCancel {
+            get {
+                return ResourceManager.GetString("QuotationCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre demande de devis a été annulée..
         /// </summary>
         public static string QuotationCanceled {
@@ -327,6 +453,15 @@ namespace Worki.Resources.Views.Booking {
         public static string QuotationConfirmed {
             get {
                 return ResourceManager.GetString("QuotationConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demande de devis refusée le .
+        /// </summary>
+        public static string QuotationRefuse {
+            get {
+                return ResourceManager.GetString("QuotationRefuse", resourceCulture);
             }
         }
         
@@ -354,6 +489,15 @@ namespace Worki.Resources.Views.Booking {
         public static string RefuseIt {
             get {
                 return ResourceManager.GetString("RefuseIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refusée le .
+        /// </summary>
+        public static string RefuseStatus {
+            get {
+                return ResourceManager.GetString("RefuseStatus", resourceCulture);
             }
         }
         
@@ -403,11 +547,38 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to En attente de confirmation.
+        /// </summary>
+        public static string WaitingConfirm {
+            get {
+                return ResourceManager.GetString("WaitingConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to En attente de payment.
         /// </summary>
         public static string WaitingForPayement {
             get {
                 return ResourceManager.GetString("WaitingForPayement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En attente de réglement.
+        /// </summary>
+        public static string WaitingPayment {
+            get {
+                return ResourceManager.GetString("WaitingPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En attente de prise en charge.
+        /// </summary>
+        public static string WaitingStatus {
+            get {
+                return ResourceManager.GetString("WaitingStatus", resourceCulture);
             }
         }
     }

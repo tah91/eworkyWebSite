@@ -152,23 +152,23 @@ namespace Worki.Data.Models
             if (Unknown)
             {
                 color = "Yellow";
-                status = "En attente de prise en charge";
+                status = Worki.Resources.Views.Booking.BookingString.WaitingStatus;
             }
             else if (Refused)
             {
-                status = "Demande de devis refusée le ";
+                status = Worki.Resources.Views.Booking.BookingString.QuotationRefuse;
 				date = RefusalDate;
                 color = "Red";
             }
             else if (Cancelled)
             {
-				status = "Demande de devis annulé le ";
+                status = Worki.Resources.Views.Booking.BookingString.QuotationCancel;
 				date = CancellationDate;
                 color = "Gray";
             }
             else if (Paid)
             {
-				status = "Contact établi le ";
+                status = Worki.Resources.Views.Booking.BookingString.ContactStatus;
 				date = PaidDate;
                 color = "Green";
             }
@@ -225,13 +225,13 @@ namespace Worki.Data.Models
             switch (type)
             {
                 case QuotationEvent.Creation:
-					return string.Format("{0} a fait une demande de devis pour {1}", MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format(Worki.Resources.Views.Booking.BookingString.HasAskQuotation, MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Payment:
-					return string.Format("{0} a payé la demande de devis pour {1}", MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format(Worki.Resources.Views.Booking.BookingString.HasPaidQuotation, MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Refusal:
-					return string.Format("{0} a refusé la demande de devis pour {1}", MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format(Worki.Resources.Views.Booking.BookingString.HasRefuseQuotation, MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.Cancellation:
-					return string.Format("{0} a annulé la demande de devis pour {1}", MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
+					return string.Format(Worki.Resources.Views.Booking.BookingString.HasCancelQuotation, MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
                 case QuotationEvent.General:
                 default:
                     return Event;

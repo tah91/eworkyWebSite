@@ -20,10 +20,10 @@
 		    <div class="contentBlock">
                 <div class="loginDesc marginb20">
                 @string.Format(Worki.Resources.Views.Shared.SharedString.PleaseFillInfos,
-                                    string.Format("{0:dd/MM/yyyy}", Model.InnerModel.FromDate),
-                                    string.Format("{0:HH:mm}", Model.InnerModel.FromDate),
-                                    string.Format("{0:dd/MM/yyyy}", Model.InnerModel.ToDate),
-                                    string.Format("{0:HH:mm}", Model.InnerModel.ToDate)) :
+                                    CultureHelpers.GetSpecificFormat(Model.InnerModel.FromDate, CultureHelpers.TimeFormat.Date),
+                                    CultureHelpers.GetSpecificFormat(Model.InnerModel.FromDate, CultureHelpers.TimeFormat.Time),
+                                    CultureHelpers.GetSpecificFormat(Model.InnerModel.ToDate, CultureHelpers.TimeFormat.Date),
+                                    CultureHelpers.GetSpecificFormat(Model.InnerModel.ToDate, CultureHelpers.TimeFormat.Time)) :
                 </div>
 				@Html.AntiForgeryToken()
 				@Html.HiddenFor(m => m.OfferModelId)

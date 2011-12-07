@@ -81,3 +81,27 @@ Scenario: Je créé des offres sur un lieu
 		And je remplis des champs pour l'offre
 		And je valide
 	Then Je dois avoir l'offre présente et conforme
+
+@Offer
+Scenario: Réserver une offre
+	Given Je me connecte à eWorky
+	When Je réserve une offre
+		And Je clique sur bo
+		And Je clique sur Reservation en cours
+	Then Je dois avoir la demande de réservation côté utilisateur et gérant
+
+@Offer
+Scenario: Demande de devis
+	Given Je me connecte à eWorky
+	When Je demande un devis
+		And Je clique sur mon profil
+		And Je clique sur Demande de devis
+	Then Je dois avoir la demande de devis côté utilisateur et gérant
+
+@Offer
+Scenario: Annuler une demande de devis
+	Given Je me connecte à eWorky
+	When Je clique sur mon profil
+		And Je clique sur Demande de devis
+		And je clique sur Annuler
+	Then Je dois avoir la demande de devis annuler

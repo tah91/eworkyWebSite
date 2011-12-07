@@ -75,7 +75,7 @@
 					</tr>
 					<tr>
 						<td>
-							@Html.LabelFor(m => m.InnerModel.Offer.Price) (TTC, hors commissions)
+							@Html.LabelFor(m => m.InnerModel.Offer.Price) @string.Format("({0})", Worki.Resources.Views.BackOffice.BackOfficeString.TTC)
 						</td>
 						<td>
 							@Html.TextBoxFor(m => m.InnerModel.Offer.Price)

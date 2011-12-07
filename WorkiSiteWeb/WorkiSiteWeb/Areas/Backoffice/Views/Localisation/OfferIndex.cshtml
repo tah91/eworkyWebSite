@@ -28,18 +28,18 @@
                 </tr>
                 <tr>
                     <td>
-                        Status
+                        @Worki.Resources.Views.BackOffice.BackOfficeString.Status
                     </td>
                     <td>
-                        <b>@(Model.IsOnline ? "En ligne" : "Hors-ligne")</b>
+                        <b>@(Model.IsOnline ? Worki.Resources.Views.BackOffice.BackOfficeString.Inline : Worki.Resources.Views.BackOffice.BackOfficeString.Offline)</b>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Tarif
+                        @Worki.Resources.Views.BackOffice.BackOfficeString.Tariff
                     </td>
                     <td>
-                        <b>@WebHelper.DisplayCurrency(Model.Price, false) @Offer.GetCurrencyEnumType(Model.Currency)</b> par <b>@Offer.GetPaymentPeriodType(Model.Period)</b>
+                        @Html.Raw(string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.TariffByPeriod, WebHelper.DisplayCurrency(Model.Price, false), Offer.GetCurrencyEnumType(Model.Currency), Offer.GetPaymentPeriodType(Model.Period)))
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         @Html.LabelFor(model => model.IsBookable)
                     </td>
                     <td>
-                        <b>@(Model.IsBookable ? "Oui" : "Non")</b>
+                        <b>@(Model.IsBookable ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)</b>
                     </td>
                 </tr>
                 <tr>

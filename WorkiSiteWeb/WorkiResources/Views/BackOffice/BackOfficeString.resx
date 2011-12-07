@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Accepter</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Accès</value>
+  </data>
   <data name="BackToOwnerSpace" xml:space="preserve">
     <value>Retour à l'espace gérant</value>
   </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Réservation</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacter</value>
+  </data>
   <data name="CustomerSheet" xml:space="preserve">
     <value>Fiche client</value>
+  </data>
+  <data name="Demand" xml:space="preserve">
+    <value>Demande</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Détails</value>
@@ -138,8 +153,17 @@
   <data name="EmptyQuotationHistoric" xml:space="preserve">
     <value>Vous n'avez fait aucune demande de devis. Pour effectuer une demande de devis, allez sur la fiche du lieu souhaité.</value>
   </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
   <data name="Historic" xml:space="preserve">
     <value>Historiques</value>
+  </data>
+  <data name="Inline" xml:space="preserve">
+    <value>En ligne</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nom</value>
   </data>
   <data name="LastNews" xml:space="preserve">
     <value>Dernières actualités</value>
@@ -149,6 +173,9 @@
   </data>
   <data name="Member" xml:space="preserve">
     <value>Membre</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
   </data>
   <data name="Names" xml:space="preserve">
     <value>Identité</value>
@@ -162,6 +189,9 @@
   <data name="NoCurrentQuotation" xml:space="preserve">
     <value>Vous n'avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
   </data>
+  <data name="NotDefined" xml:space="preserve">
+    <value>Non fixé</value>
+  </data>
   <data name="NoWorkingBooking" xml:space="preserve">
     <value>Aucune demande de réservation n'a été archivée.</value>
   </data>
@@ -171,8 +201,17 @@
   <data name="NumberBooking" xml:space="preserve">
     <value>Nombre de réservations</value>
   </data>
+  <data name="Offer" xml:space="preserve">
+    <value>Offre</value>
+  </data>
   <data name="Offers" xml:space="preserve">
     <value>Offres</value>
+  </data>
+  <data name="OffersDirectAccess" xml:space="preserve">
+    <value>Accès direct à la gestion des offres</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Hors-ligne</value>
   </data>
   <data name="Owner" xml:space="preserve">
     <value>Gérant</value>
@@ -186,8 +225,53 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Tél.</value>
   </data>
+  <data name="Place" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="PlaceDoNotHaveOffer" xml:space="preserve">
+    <value>Ce lieu n'a pas encore d'offre</value>
+  </data>
+  <data name="Refuse" xml:space="preserve">
+    <value>Refuser</value>
+  </data>
+  <data name="RefuseBooking" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir refuser cette demande de réservation ?</value>
+  </data>
+  <data name="RefuseQuotation" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir refuser cette demande de devis ? Vous ne pourrez plus accéder aux coordonnées de ce prospect.</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Retour</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>Score</value>
+  </data>
+  <data name="SeeClientProfile" xml:space="preserve">
+    <value>Voir le profil client</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="Tariff" xml:space="preserve">
+    <value>Tarif</value>
+  </data>
+  <data name="TariffByPeriod" xml:space="preserve">
+    <value>&lt;b&gt;{0} {1}&lt;/b&gt; par &lt;b&gt;{2}&lt;/b&gt;</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="Town" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="TTC" xml:space="preserve">
+    <value>TTC, hors commissions</value>
+  </data>
+  <data name="VisitNeeded" xml:space="preserve">
+    <value>Demande de visite</value>
   </data>
   <data name="WorkplacesDirectAccess" xml:space="preserve">
     <value>Accès direct à la gestion des lieux</value>

@@ -31,7 +31,7 @@
                     ImageAlt = Model.Owner.GetDisplayName(),
                     Descriptions = new List<DescriptionItem>
                     {
-                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Owner, Value = Model.Owner.MemberMainData.FirstName + " " + Model.Owner.MemberMainData.LastName },
+                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Owner, Value = Model.Owner.GetFullDisplayName() },
                         new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Score, Value = string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.Owner.GetMemberScoreStatus(score), score)}
                     }
                 };
