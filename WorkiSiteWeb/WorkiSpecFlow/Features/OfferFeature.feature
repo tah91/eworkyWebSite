@@ -105,3 +105,43 @@ Scenario: Annuler une demande de devis
 		And Je clique sur Demande de devis
 		And je clique sur Annuler
 	Then Je dois avoir la demande de devis annuler
+
+@Offer
+Scenario: Annuler une demande de réservartion
+	Given Je me connecte à eWorky
+	When Je clique sur mon profil
+		And Je clique sur Reservation en cours
+		And je clique sur Annuler
+	Then Je dois avoir la demande de réservation annuler
+
+@Offer
+Scenario: Accepter une demande de réservation
+	Given Je me connecte à eWorky
+	When Je clique sur bo
+		And Je clique sur Reservation en cours
+		And je clique sur Accepter
+	Then Je dois avoir la demande de réservation Accepter
+
+@Offer
+Scenario: Accepter une demande de devis
+	Given Je me connecte à eWorky
+	When Je clique sur bo
+		And Je clique sur Demande de devis
+		And je clique sur Contacter
+	Then Je dois avoir la demande de devis Accepter
+
+@Offer
+Scenario: Refuser une demande de réservation
+	Given Je me connecte à eWorky
+	When Je clique sur bo
+		And Je clique sur Reservation en cours
+		And je clique sur Refuser
+	Then Je dois avoir la demande de réservation Refuser
+
+@Offer
+Scenario: Refuser une demande de devis
+	Given Je me connecte à eWorky
+	When Je clique sur bo
+		And Je clique sur Demande de devis
+		And je clique sur Refuser
+	Then Je dois avoir la demande de devis Refuser

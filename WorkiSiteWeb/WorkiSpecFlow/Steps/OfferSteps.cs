@@ -267,6 +267,82 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Annuler une demande de réservation
+
+        [Then(@"Je dois avoir la demande de réservation annuler")]
+        public void ThenJeDoisAvoirLaDemandeDeReservationAnnuler()
+        {
+            Assert.IsTrue(WebBrowser.Current.ContainsText("Annulée"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
+        #region Accepter une demande de réservation
+
+        [When(@"je clique sur Accepter")]
+        public void WhenJeCliqueSurAccepter()
+        {
+            WebBrowser.Current.Page<BackOfficePage>().Accept.Click();
+            WebBrowser.Current.Page<BackOfficePage>().Price.TypeTextQuickly("1000");
+            WebBrowser.Current.Page<BackOfficePage>().Buttons.Where(x => !string.IsNullOrEmpty(x.Text) && x.Text.Equals("Confirmer")).First().Click();
+        }
+
+        [Then(@"Je dois avoir la demande de réservation Accepter")]
+        public void ThenJeDoisAvoirLaDemandeDeReservationAccepter()
+        {
+            Assert.IsTrue(WebBrowser.Current.ContainsText("En attente de réglement"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
+        #region Accepter une demande de devis
+
+        [When(@"je clique sur Contacter")]
+        public void WhenJeCliqueSurContacter()
+        {
+            WebBrowser.Current.Page<BackOfficePage>().Contact.Click();
+        }
+
+        [Then(@"Je dois avoir la demande de devis Accepter")]
+        public void ThenJeDoisAvoirLaDemandeDeDevisAccepter()
+        {
+            Assert.IsTrue(WebBrowser.Current.Url.Contains("www.sandbox.paypal.com"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
+        #region Refuser une demande de réservation
+
+        [When(@"je clique sur Refuser")]
+        public void WhenJeCliqueSurRefuser()
+        {
+            WebBrowser.Current.Page<BackOfficePage>().Refuse.Click();
+            WebBrowser.Current.Page<BackOfficePage>().Buttons.Where(x => !string.IsNullOrEmpty(x.Text) && x.Text.Equals("Confirmer")).First().Click();
+        }
+
+        [Then(@"Je dois avoir la demande de réservation Refuser")]
+        public void ThenJeDoisAvoirLaDemandeDeReservationRefuser()
+        {
+            Assert.IsTrue(WebBrowser.Current.ContainsText("Refusée"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
+
+        #region Refuser une demande de devis
+
+        [Then(@"Je dois avoir la demande de devis Refuser")]
+        public void ThenJeDoisAvoirLaDemandeDeDevisRefuser()
+        {
+            Assert.IsTrue(WebBrowser.Current.ContainsText("Demande de devis refusée"));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
     }
 
     #region BackOffice Page
@@ -278,6 +354,11 @@ namespace Worki.SpecFlow
         public TextField[] TextFields
         {
             get { return Document.TextFields.ToArray(); }
+        }
+
+        public TextField Price
+        {
+            get { return Document.TextField(Find.ById("InnerModel_Price")); }
         }
 
         #endregion
@@ -302,6 +383,21 @@ namespace Worki.SpecFlow
         public Link Cancel
         {
             get { return Document.Link(Find.ByText("Annuler")); }
+        }
+
+        public Link Accept
+        {
+            get { return Document.Link(Find.ByText("Accepter")); }
+        }
+
+        public Link Contact
+        {
+            get { return Document.Link(Find.ByText("Contacter")); }
+        }
+
+        public Link Refuse
+        {
+            get { return Document.Link(Find.ByText("Refuser")); }
         }
 
         #endregion
