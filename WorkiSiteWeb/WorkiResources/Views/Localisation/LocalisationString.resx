@@ -252,4 +252,7 @@
   <data name="FacebookPage" xml:space="preserve">
     <value>Page Facebook</value>
   </data>
+  <data name="NoSuggestions" xml:space="preserve">
+    <value>eWorky n'a aucun lieu similaire à proximité à suggérer.</value>
+  </data>
 </root>
