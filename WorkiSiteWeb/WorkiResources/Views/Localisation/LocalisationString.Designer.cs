@@ -313,6 +313,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eWorky n&apos;a aucun lieu similaire à proximité à suggérer..
+        /// </summary>
+        public static string NoSuggestions {
+            get {
+                return ResourceManager.GetString("NoSuggestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erreur d&apos;acces au lieu de travail.
         /// </summary>
         public static string NotAccessToWorkplace {
