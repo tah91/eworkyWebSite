@@ -230,6 +230,29 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Faire Défiler les pages de résultats")]
+        [NUnit.Framework.CategoryAttribute("search")]
+        public virtual void FaireDefilerLesPagesDeResultats()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Faire Défiler les pages de résultats", new string[] {
+                        "search"});
+#line 64
+this.ScenarioSetup(scenarioInfo);
+#line 65
+ testRunner.Given("Je vais dans la page d\'acceuil");
+#line 66
+  testRunner.And("Je tappe Paris dans la zone de recherche");
+#line 67
+ testRunner.When("Je clique sur rechercher");
+#line 68
+  testRunner.And("Je fais défiler les pages");
+#line 69
+ testRunner.Then("Je dois avoir parcouru les pages");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

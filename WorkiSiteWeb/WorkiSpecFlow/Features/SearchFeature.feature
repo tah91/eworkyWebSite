@@ -59,3 +59,11 @@ Scenario: Présence de lieux A la Une
 	Given Je vais dans la page d'acceuil
 	When Je clique sur Plus de critère
 	Then Il doit y avoir des lieux dans le bloc A la Une
+
+@search
+Scenario: Faire Défiler les pages de résultats
+	Given Je vais dans la page d'acceuil
+		And Je tappe Paris dans la zone de recherche
+	When Je clique sur rechercher
+		And Je fais défiler les pages
+	Then Je dois avoir parcouru les pages

@@ -169,6 +169,31 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Faire Défiler les pages de résultats
+
+        int count = 0;
+
+        [When(@"Je fais défiler les pages")]
+        public void WhenJeFaisDefilerLesPages()
+        {
+            while (WebBrowser.Current.ContainsText(">"))
+            {
+                WebBrowser.Current.Link(Find.ByText(">")).Click();
+                count++;
+                if (count > 4)
+                    break;
+            }
+        }
+
+        [Then(@"Je dois avoir parcouru les pages")]
+        public void ThenJeDoisAvoirParcouruLesPages()
+        {
+            Assert.IsTrue(count != 0);
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
     }
 
     #region Search Page
