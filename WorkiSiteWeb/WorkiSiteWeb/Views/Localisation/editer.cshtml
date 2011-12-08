@@ -17,6 +17,7 @@
         @Html.HiddenFor(model => model.Localisation.Latitude)
         @Html.HiddenFor(model => model.Localisation.Longitude)
         @Html.HiddenFor(model => model.IsFreeLocalisation)
+		@Html.HiddenFor(model => model.Localisation.MainLocalisation.IsOffline)
         <div class="blockContainer">
         @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
         {
