@@ -10,7 +10,7 @@
 .loginDiv input[type="password"]{width:200px}
 .avatarEditor{width:230px}
 .avatarContainer{width:180px;height:180px;margin-bottom:10px}
-.avatarContainer img{max-height:280px}
+.avatarContainer img{max-height:180px}
 .profilData table td:first-child{width:150px}
 .profilData h3{margin:10px 0}
 .profilData textarea{width:250px}
