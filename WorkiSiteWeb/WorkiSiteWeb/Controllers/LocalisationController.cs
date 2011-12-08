@@ -518,7 +518,9 @@ namespace Worki.Web.Controllers
             var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var original = lRepo.Get(id);
-            var suggestions = MiscHelpers.Shuffle(lRepo.GetMany(item => (item.ID != id) && (item.TypeValue == original.TypeValue) && (item.PostalCode == original.PostalCode))).Take(5).OrderBy(x => x.Name);
+            var suggestions = lRepo.GetMany(loc => (loc.ID != id) && (loc.TypeValue == original.TypeValue) && (loc.PostalCode == original.PostalCode));
+            suggestions = MiscHelpers.Shuffle(suggestions.Where(loc => !string.IsNullOrEmpty(loc.GetMainPic()) && !loc.IsOffline).ToList());
+            suggestions = suggestions.Take(5).OrderBy(x => x.Name).ToList();
 
 			return PartialView(MVC.Localisation.Views._Suggestions, suggestions);
         }
