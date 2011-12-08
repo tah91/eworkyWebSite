@@ -18,7 +18,7 @@
             {
                 <div class="contentBlock">
                 @Html.AntiForgeryToken()
-                <table>
+                <table class="contactTable">
                     <tr>
                         <td>
                             <div class="editor-label">
@@ -44,7 +44,7 @@
                         </td>
                     </tr>
                     <tr> 
-                        <td class="contactPadding">
+                        <td>
                             <div class="editor-label">
                                 @Worki.Resources.Models.Contact.Contact.Email <span class="blue">*</span>
                             </div>
@@ -57,27 +57,21 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="editor-label marginb10">
+                            <div class="editor-label">
                                 @Html.LabelFor(model => model.Subject) <span class="blue">*</span>
                             </div>
                         </td>
                         <td>
-                            <div class="editor-field marginb10">
+                            <div class="editor-field">
                                 @Html.TextBoxFor(model => model.Subject)
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <div class="editor-field marginl5">
+                        <td class="verticalAlignTop">
+                            <div class="editor-label">
                                 @Html.LabelFor(model => model.Message) <span class="blue">*</span>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                         </td>
                         <td>
                             <div class="editor-field">

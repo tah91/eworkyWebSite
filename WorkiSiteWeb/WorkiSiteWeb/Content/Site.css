@@ -1953,7 +1953,12 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 /* CONTACT LAYOUT
 ----------------------------------------------------------*/
 
-.contactPadding
+.contactTable td
 {
-    padding-right:60px;
+	height : 30px;
+}
+
+.contactTable td:first-child
+{
+	padding-right:50px;
 }
