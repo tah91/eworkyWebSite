@@ -230,7 +230,7 @@ namespace Worki.SpecFlow
         [When(@"Je demande un devis")]
         public void WhenJeDemandeUnDevis()
         {
-            WebBrowser.Current.Page<AccueilPage>().Champ_Recherche.TypeText("New York");
+            WebBrowser.Current.Page<AccueilPage>().Champ_Recherche.TypeText("Paris");
             WebBrowser.Current.Page<AccueilPage>().Type_Espace.SelectByValue("3");
             WebBrowser.Current.Page<AccueilPage>().Bouton_Recherche.Click();
             WebBrowser.Current.Link(Find.BySelector("div[class='contentBlock resultItem'] a[href^='/lieu-de-travail/resultats-detail/']")).Click();
@@ -436,9 +436,9 @@ namespace Worki.SpecFlow
             get { return Document.Elements.Where(x => !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Equals("bookingItem")).ToList(); }
         }
 
-        public List<Div> LocItem
+        public List<Element> LocItem
         {
-            get { return Document.Divs.Where(x => !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Equals("localisationTag float-left")).ToList(); }
+            get { return Document.Elements.Where(x => !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Equals("localisationTag float-left")).ToList(); }
         }
 
         public List<Element> Offers

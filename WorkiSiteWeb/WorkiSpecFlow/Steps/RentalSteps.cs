@@ -30,6 +30,10 @@ namespace Worki.SpecFlow
                 WebBrowser.Current.TextField(Find.ById("Password")).TypeTextQuickly(StaticStringClass.Connexion.Password);
                 WebBrowser.Current.Button(Find.ByValue("Se connecter")).Click();
             }
+            else
+            {
+                WebBrowser.Current.GoTo(WebBrowser.RootURL);
+            }
         }
 
         #endregion

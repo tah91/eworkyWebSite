@@ -45,17 +45,43 @@ Scenario: Aller sur la page backoffice Devis
 	Then Je dois arriver sur la page de backoffice Devis
 
 @Offer
-Scenario: Je dois avoir plusieur reservations en cours
+Scenario: 11 Je créé des offres sur un lieu
 	Given Je me connecte à eWorky
-	When Je clique sur bo
-		And Je clique sur Reservation en cours
-	Then Je dois avoir des résultats
+		And Je vais dans la page admin
+	When J'edite un lieu
+		And je sélectionne une offre
+		And je remplis des champs pour l'offre
+		And je valide
+	Then Je dois avoir l'offre présente et conforme
 
 @Offer
-Scenario: Je dois avoir plusieur demande de devis
+Scenario: 12 Réserver une offre
+	Given Je me connecte à eWorky
+	When Je réserve une offre
+		And Je clique sur bo
+		And Je clique sur Reservation en cours
+	Then Je dois avoir la demande de réservation côté utilisateur et gérant
+
+@Offer
+Scenario: 13 Demande de devis
+	Given Je me connecte à eWorky
+	When Je demande un devis
+		And Je clique sur mon profil
+		And Je clique sur Demande de devis
+	Then Je dois avoir la demande de devis côté utilisateur et gérant
+
+@Offer
+Scenario: 14 Je dois avoir plusieur demande de devis
 	Given Je me connecte à eWorky
 	When Je clique sur bo
 		And Je clique sur Demande de devis
+	Then Je dois avoir des résultats
+
+@Offer
+Scenario: 15 Je dois avoir plusieur reservations en cours
+	Given Je me connecte à eWorky
+	When Je clique sur bo
+		And Je clique sur Reservation en cours
 	Then Je dois avoir des résultats
 
 @Offer
@@ -71,32 +97,6 @@ Scenario: Je dois avoir des offres sur un des lieux
 	When Je clique sur bo
 		And Je clique sur un des lieux
 	Then Je dois avoir des offres associées à ce lieu
-
-@Offer
-Scenario: Je créé des offres sur un lieu
-	Given Je me connecte à eWorky
-		And Je vais dans la page admin
-	When J'edite un lieu
-		And je sélectionne une offre
-		And je remplis des champs pour l'offre
-		And je valide
-	Then Je dois avoir l'offre présente et conforme
-
-@Offer
-Scenario: Réserver une offre
-	Given Je me connecte à eWorky
-	When Je réserve une offre
-		And Je clique sur bo
-		And Je clique sur Reservation en cours
-	Then Je dois avoir la demande de réservation côté utilisateur et gérant
-
-@Offer
-Scenario: Demande de devis
-	Given Je me connecte à eWorky
-	When Je demande un devis
-		And Je clique sur mon profil
-		And Je clique sur Demande de devis
-	Then Je dois avoir la demande de devis côté utilisateur et gérant
 
 @Offer
 Scenario: Annuler une demande de devis
