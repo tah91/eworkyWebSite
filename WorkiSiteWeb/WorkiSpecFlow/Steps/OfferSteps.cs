@@ -343,6 +343,56 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Mettre En ligne/Hors ligne une offre
+
+        bool Online = true;
+        string place;
+
+        [When(@"je clique sur une des Offres")]
+        public void WhenJeCliqueSurUneDesOffres()
+        {
+            WebBrowser.Current.Links.First(x => x.GetAttributeValue("href").Contains("/Backoffice/Localisation/ConfigureOffer/")).Click();
+        }
+
+        [When(@"Je met l'offre en ligne/hors ligne")]
+        public void WhenJeMetLOffreEnLigneHorsLigne()
+        {
+            string title = WebBrowser.Current.Page<BackOfficePage>().Elements.Where(x => !string.IsNullOrEmpty(x.TagName) && x.TagName.ToLower().Equals("h1")).First().InnerHtml;
+            place = title.Substring(("Interface de gestion de ").Length - 1);
+            if (WebBrowser.Current.Page<BackOfficePage>().Online.Checked)
+            {
+                Online = false;
+            }
+            WebBrowser.Current.Page<BackOfficePage>().Online.Click();
+            WebBrowser.Current.Page<BackOfficePage>().Validate.Click();
+        }
+
+        [When(@"je lance la recherche")]
+        public void WhenJeLanceLaRecherche()
+        {
+            WebBrowser.Current.GoTo(WebBrowser.RootURL);
+            WebBrowser.Current.Page<AccueilPage>().Champ_Recherche.TypeText("Paris");
+            WebBrowser.Current.Page<AccueilPage>().Type_Espace.SelectByValue("2");
+            WebBrowser.Current.Page<AccueilPage>().Bouton_Recherche.Click();
+        }
+
+        [Then(@"Je dois avoir ou pas le résultat à l'écran")]
+        public void ThenJeDoisAvoirOuPasLeResultatALEcran()
+        {
+            var name_list = WebBrowser.Current.Page<BackOfficePage>().Elements.Where(x => !string.IsNullOrEmpty(x.TagName) && x.TagName.ToLower().Equals("span") && !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Equals("itemName")).ToList();
+            if (Online)
+            {
+                Assert.IsTrue(name_list.Exists(x => x.Text.Trim().Equals(place.Trim())));
+            }
+            else
+            {
+                Assert.IsTrue(!name_list.Exists(x => x.Text.Trim().Equals(place.Trim())));
+            }
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
     }
 
     #region BackOffice Page
@@ -418,6 +468,11 @@ namespace Worki.SpecFlow
             get { return Document.CheckBoxes.ToArray(); }
         }
 
+        public CheckBox Online
+        {
+            get { return Document.CheckBox(Find.ById("InnerModel_Offer_IsOnline")); }
+        }
+
         #endregion
 
         #region Buttons
@@ -425,6 +480,11 @@ namespace Worki.SpecFlow
         public Button[] Buttons
         {
             get { return Document.Buttons.ToArray(); }
+        }
+
+        public Button Validate
+        {
+            get { return Document.Button(Find.ByValue("Valider")); }
         }
 
         #endregion
@@ -444,6 +504,11 @@ namespace Worki.SpecFlow
         public List<Element> Offers
         {
             get { return Document.Elements.Where(x => (!string.IsNullOrEmpty(x.TagName) && x.TagName.ToLower().Equals("table"))).ToList(); }
+        }
+
+        public List<Element> Elements
+        {
+            get { return Document.Elements.ToList(); }
         }
 
         #endregion

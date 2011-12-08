@@ -145,3 +145,13 @@ Scenario: Refuser une demande de devis
 		And Je clique sur Demande de devis
 		And je clique sur Refuser
 	Then Je dois avoir la demande de devis Refuser
+
+@Offer
+Scenario: Mettre En ligne/Hors ligne une offre
+	Given Je me connecte à eWorky
+	When Je clique sur bo
+		And Je clique sur un des lieux
+		And je clique sur une des Offres
+		And Je met l'offre en ligne/hors ligne
+		And je lance la recherche
+	Then Je dois avoir ou pas le résultat à l'écran
