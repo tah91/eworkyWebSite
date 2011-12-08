@@ -204,8 +204,6 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Check_Restauration.Click();
             WebBrowser.Current.Page<AjoutPage>().Check_SafeStorage.Click();
             WebBrowser.Current.Page<AjoutPage>().PublicTransportation.TypeTextQuickly("");
-            WebBrowser.Current.Page<AjoutPage>().DeleteOffer.Click();
-            WebBrowser.Current.Page<AjoutPage>().ConfirmDelete.Click();
         }
 
         [Then(@"Je dois avoir retrouver les infos modifiées 2")]
@@ -217,8 +215,8 @@ namespace Worki.SpecFlow
                      && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.FastInternet) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.SafeStorage) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Coffee)
                      && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Restauration) && ie.ContainsText("Greenworking") && ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.CoworkingSpace) && ie.ContainsText("62 Rue Chabot Charny - 21000 Dijon")
                      && ie.ContainsText("01 77 19 87 21") && ie.ContainsText("contact@greenworking.fr")
-                     && !ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.PublicTransportation + " : Près de la station Solférino") && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop25_50) && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Equipped)
-                     && !ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.AllInclusive) && ie.ContainsText(StaticStringClass.Autre.MsgPerso + " Edit"));
+                     && !ie.ContainsText(Worki.Resources.Models.Localisation.Localisation.PublicTransportation + " : Près de la station Solférino") && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop25_50) && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.Equipped)
+                     && ie.ContainsText(Worki.Resources.Models.Localisation.LocalisationFeatures.AllInclusive) && ie.ContainsText(StaticStringClass.Autre.MsgPerso + " Edit"));
             WebBrowser.Current.Close();
         }
 

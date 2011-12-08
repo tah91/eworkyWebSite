@@ -24,7 +24,7 @@ namespace Worki.SpecFlow
         public void WhenJeRemplisLeFormulaire()
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Creer.Click();
-            WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeTextQuickly(StaticStringClass.Autre.MyLogin);
+            WebBrowser.Current.Page<WelcomePeoplePage>().Email.TypeTextQuickly(StaticStringClass.Connexion.OnlineLogin);
             WebBrowser.Current.Page<WelcomePeoplePage>().Localisation.TypeTextQuickly("Le Bistrot Marguerite");
             WebBrowser.Current.Page<WelcomePeoplePage>().WelcomePeopleDescription.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
         }
@@ -39,7 +39,7 @@ namespace Worki.SpecFlow
         public void ThenJeDoisRetrouverCeQueJAiRemplis()
         {
             WebBrowser.Current.Page<WelcomePeoplePage>().Detail.Click();
-            Assert.IsTrue(WebBrowser.Current.ContainsText(StaticStringClass.Autre.MyLogin));
+            Assert.IsTrue(WebBrowser.Current.ContainsText(StaticStringClass.Connexion.OnlineLogin));
             Assert.IsTrue(WebBrowser.Current.ContainsText("Le Bistrot Marguerite"));
             Assert.IsTrue(WebBrowser.Current.ContainsText(StaticStringClass.Autre.MsgPerso));
             WebBrowser.Current.Close();

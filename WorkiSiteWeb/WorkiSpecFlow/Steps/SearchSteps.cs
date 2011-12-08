@@ -43,10 +43,10 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<SearchPage>().Recherche.Click();
         }
 
-        [Then(@"Il doit y avoir plus de (.*) resultats")]
-        public void ThenIlDoitYAvoirPlusDe1Resultats(int count)
+        [Then(@"Il doit y avoir plus de 1 resultats")]
+        public void ThenIlDoitYAvoirPlusDe1Resultats()
         {
-            Assert.True(WebBrowser.Current.Page<SearchPage>().Locs.Count >= count);
+            Assert.True(WebBrowser.Current.Page<SearchPage>().Locs.Count >= 1);
             WebBrowser.Current.Close();
         }
 
@@ -460,9 +460,9 @@ namespace Worki.SpecFlow
 
         #region List
 
-        public List<Div> Locs
+        public List<Element> Locs
         {
-            get { return Document.Divs.Where(x => !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Equals("contentBlock resultItem")).ToList(); }
+            get { return Document.Elements.Where(x => !string.IsNullOrEmpty(x.ClassName) && x.ClassName.Contains("contentBlock resultItem")).ToList(); }
         }
 
         #endregion

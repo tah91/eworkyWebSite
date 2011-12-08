@@ -33,7 +33,7 @@ namespace Worki.SpecFlow
         [When(@"Je met une note et un commentaire")]
         public void WhenJeMetUneNoteEtUnCommentaire()
         {
-            WebBrowser.Current.Page<DetailPage>().Rating.SetAttributeValue("value", "4");
+            WebBrowser.Current.Page<DetailPage>().Rating.Value = "4";
             WebBrowser.Current.Page<DetailPage>().Msg.TypeTextQuickly(StaticStringClass.Autre.MsgPerso);
             WebBrowser.Current.Page<DetailPage>().Boutton_Envoyer.Click();
         }
@@ -124,9 +124,9 @@ namespace Worki.SpecFlow
 
         #region TextField
 
-        public Element Rating
+        public TextField Rating
         {
-            get { return Document.Element(Find.ById("backingRating")); }
+            get { return Document.TextField(Find.ById("backingRating")); }
         }
 
         public TextField Msg

@@ -26,7 +26,7 @@ namespace Worki.SpecFlow
             public const string CGU = "accueil/cgu";
             public const string Contact = "accueil/contact";
             public const string Connexion = "compte/connexion";
-            public const string Dashboard = "Dashboard/Profil/";
+            public const string Dashboard = "Dashboard/Home";
             public const string DashboardBooking = "Dashboard/Home/Booking";
             public const string DashboardQuotation = "Dashboard/Home/Quotation";
             public const string FAQ = "accueil/faq";
@@ -63,7 +63,6 @@ namespace Worki.SpecFlow
         public static class Autre
         {
             public const string MsgPerso = "Ceci est un test auto Made by Mika";
-            public const string MyLogin = "mika7869@gmail.com";
         }
 
         #endregion

@@ -58,8 +58,9 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
             WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
-            Assert.IsTrue(ie.ContainsText("AdminE AdminE") && ie.ContainsText(Worki.Resources.Models.Profile.Profile.Nomad)
-                        && ie.ContainsText(StaticStringClass.Autre.MsgPerso) && ie.ContainsText("eWorky"));
+            Assert.IsTrue(ie.ContainsText(Worki.Resources.Models.Profile.Profile.Nomad));
+            Assert.IsTrue(ie.ContainsText(StaticStringClass.Autre.MsgPerso));
+            Assert.IsTrue(ie.ContainsText("eWorky"));
             WebBrowser.Current.Close();
         }
 
@@ -74,7 +75,7 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<ProfilPage>().LastName.TypeTextQuickly("Admin");
             WebBrowser.Current.Page<ProfilPage>().FirstName.TypeTextQuickly("Admin");
             WebBrowser.Current.Page<ProfilPage>().DescriptionField.TypeTextQuickly("");
-            WebBrowser.Current.Page<ProfilPage>().Company.TypeTextQuickly("Administrateur");
+            WebBrowser.Current.Page<ProfilPage>().Company.TypeTextQuickly("");
         }
 
         [Then(@"Le profil est reinitialiser")]
@@ -82,8 +83,9 @@ namespace Worki.SpecFlow
         {
             var ie = WebBrowser.Current;
             WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
-            Assert.IsTrue(ie.ContainsText("Admin Admin") && ie.ContainsText("Autre")
-                        && !ie.ContainsText(StaticStringClass.Autre.MsgPerso) && ie.ContainsText("Administrateur"));
+            Assert.IsTrue(ie.ContainsText("Admin"));
+            Assert.IsTrue(ie.ContainsText("Autre"));
+            Assert.IsTrue(!ie.ContainsText(StaticStringClass.Autre.MsgPerso));
             WebBrowser.Current.Close();
         }
 
@@ -94,6 +96,7 @@ namespace Worki.SpecFlow
         [When(@"Je clique sur Modifier mon mot de passe")]
         public void WhenJeCliqueSurModifierMonMotDePasse()
         {
+            WebBrowser.Current.Page<ProfilPage>().Lien_Editer.Click();
             WebBrowser.Current.Page<ProfilPage>().Change_Password.Click();
         }
 
@@ -111,15 +114,15 @@ namespace Worki.SpecFlow
         [When(@"Je me trompe de mot de passe")]
         public void WhenJeMeTrompeDeMotDePasse()
         {
-            WebBrowser.Current.Page<ProfilPage>().Login.TypeTextQuickly(StaticStringClass.Autre.MyLogin);
-            WebBrowser.Current.Page<ProfilPage>().Password.TypeTextQuickly("mika");
+            WebBrowser.Current.Page<ProfilPage>().Login.TypeTextQuickly(StaticStringClass.Connexion.OnlineLogin);
+            WebBrowser.Current.Page<ProfilPage>().Password.TypeTextQuickly("test");
             WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
         }
 
         [Then(@"Je dois avoir le message d'erreur")]
         public void ThenJeDoisAvoirLeMessageDErreur()
         {
-            Assert.That(WebBrowser.Current.ContainsText("L'adresse de messagerie ou le mot de passe fourni est incorrect"));
+            Assert.That(WebBrowser.Current.ContainsText("L'adresse électronique ou le mot de passe fourni est incorrect."));
             WebBrowser.Current.Close();
         }
 
@@ -136,10 +139,10 @@ namespace Worki.SpecFlow
         [When(@"Je me trompe de mot de passe 6 fois")]
         public void WhenJeMeTrompeDeMotDePasse6Fois()
         {
-            WebBrowser.Current.Page<ProfilPage>().Login.TypeTextQuickly(StaticStringClass.Autre.MyLogin);
+            WebBrowser.Current.Page<ProfilPage>().Login.TypeTextQuickly(StaticStringClass.Connexion.OnlineLogin);
             for (var i = 0; i < 6; i++)
             {
-                WebBrowser.Current.Page<ProfilPage>().Password.TypeTextQuickly("mika");
+                WebBrowser.Current.Page<ProfilPage>().Password.TypeTextQuickly("test");
                 WebBrowser.Current.Page<ProfilPage>().Boutton_Valider.Click();
             }
         }
@@ -174,11 +177,11 @@ namespace Worki.SpecFlow
             var ie = WebBrowser.Current;
 
             Assert.That(ie.ContainsText(Worki.Resources.Validation.ValidationString.MustAgreeCGU)
-                    && ie.ContainsText("Le champ " + '"' + "Adresse email" + '"' + " est obligatoire")
-                    && ie.ContainsText("Le champ " + '"' + "Mot de passe" + '"' + " est obligatoire")
-                    && ie.ContainsText("Le champ " + '"' + "Confirmez le mot de passe" + '"' + " est obligatoire")
-                    && ie.ContainsText("Le champ " + '"' + "Prénom"+ '"' + " est obligatoire")
-                    && ie.ContainsText("Le champ " + '"' + "Nom" + '"' + " est obligatoire")
+                    && ie.ContainsText("Vous devez saisir un(e) " + "\"Adresse électronique\"")
+                    && ie.ContainsText("Vous devez saisir un(e) " + "\"Mot de passe\"")
+                    && ie.ContainsText("Vous devez saisir un(e) " + "\"Confirmez le mot de passe\"")
+                    && ie.ContainsText("Vous devez saisir un(e) " + "\"Prénom\"")
+                    && ie.ContainsText("Vous devez saisir un(e) " + "\"Nom\"")
                     && ie.ContainsText(Worki.Resources.Validation.ValidationString.PleaseSelectProfile)
                     && ie.ContainsText(Worki.Resources.Validation.ValidationString.VerificationLettersWrong)
                 );
@@ -202,7 +205,7 @@ namespace Worki.SpecFlow
 
         public Link Change_Password
         {
-            get { return Document.Link(Find.ByText("Modifier le mot de passe")); }
+            get { return Document.Link(Find.ByText("Mot de passe")); }
         }
 
         #endregion
