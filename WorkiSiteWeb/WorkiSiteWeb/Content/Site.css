@@ -1949,3 +1949,11 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 	color:White;
 	font-weight:bold;
 }
+
+/* CONTACT LAYOUT
+----------------------------------------------------------*/
+
+.contactPadding
+{
+    padding-right:60px;
+}

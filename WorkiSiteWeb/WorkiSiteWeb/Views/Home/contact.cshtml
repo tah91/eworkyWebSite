@@ -44,7 +44,7 @@
                         </td>
                     </tr>
                     <tr> 
-                        <td>
+                        <td class="contactPadding">
                             <div class="editor-label">
                                 @Worki.Resources.Models.Contact.Contact.Email <span class="blue">*</span>
                             </div>
@@ -57,21 +57,27 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="editor-label">
+                            <div class="editor-label marginb10">
                                 @Html.LabelFor(model => model.Subject) <span class="blue">*</span>
                             </div>
                         </td>
                         <td>
-                            <div class="editor-field">
+                            <div class="editor-field marginb10">
                                 @Html.TextBoxFor(model => model.Subject)
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="editor-label">
+                        </td>
+                        <td>
+                            <div class="editor-field marginl5">
                                 @Html.LabelFor(model => model.Message) <span class="blue">*</span>
                             </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                         </td>
                         <td>
                             <div class="editor-field">
@@ -81,9 +87,6 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="editor-label">
-                                @Worki.Resources.Views.Account.AccountString.EnterFollowingLetters
-                            </div>
                         </td>
                         <td>
                             <div class="editor-field marginl5">
