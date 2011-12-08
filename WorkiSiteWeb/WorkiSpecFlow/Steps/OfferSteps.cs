@@ -393,6 +393,32 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Changer les informations de paiement
+
+        [When(@"Je clique sur Options")]
+        public void WhenJeCliqueSurOptions()
+        {
+            WebBrowser.Current.Page<BackOfficePage>().Options.Click();
+            Assert.IsTrue(WebBrowser.Current.Url.Contains(StaticStringClass.URL.BOPaymentInfo));
+        }
+
+        [When(@"je remplis adresse PayPal")]
+        public void WhenJeRemplisAdressePayPal()
+        {
+            WebBrowser.Current.Page<BackOfficePage>().PayPal.TypeTextQuickly(StaticStringClass.Connexion.OnlineLogin);
+            WebBrowser.Current.Page<BackOfficePage>().Password.TypeTextQuickly(StaticStringClass.Connexion.Password);
+            WebBrowser.Current.Page<BackOfficePage>().Modify.Click();
+        }
+
+        [Then(@"Je dois le message de confirmation")]
+        public void ThenJeDoisLeMessageDeConfirmation()
+        {
+            Assert.IsTrue(WebBrowser.Current.ContainsText(Worki.Resources.Views.BackOffice.BackOfficeString.PaymentInfoModified));
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
     }
 
     #region BackOffice Page
@@ -409,6 +435,16 @@ namespace Worki.SpecFlow
         public TextField Price
         {
             get { return Document.TextField(Find.ById("InnerModel_Price")); }
+        }
+
+        public TextField PayPal
+        {
+            get { return Document.TextField(Find.ById("PaymentAddress")); }
+        }
+
+        public TextField Password
+        {
+            get { return Document.TextField(Find.ById("WorkiPassword")); }
         }
 
         #endregion
@@ -450,6 +486,11 @@ namespace Worki.SpecFlow
             get { return Document.Link(Find.ByText("Refuser")); }
         }
 
+        public Link Options
+        {
+            get { return Document.Link(Find.ByText("Options")); }
+        }
+
         #endregion
 
         #region SelectLists
@@ -485,6 +526,11 @@ namespace Worki.SpecFlow
         public Button Validate
         {
             get { return Document.Button(Find.ByValue("Valider")); }
+        }
+
+        public Button Modify
+        {
+            get { return Document.Button(Find.ByValue("Modifier")); }
         }
 
         #endregion

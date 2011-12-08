@@ -499,6 +499,29 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("changer les informations de paiement")]
+        [NUnit.Framework.CategoryAttribute("Offer")]
+        public virtual void ChangerLesInformationsDePaiement()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("changer les informations de paiement", new string[] {
+                        "Offer"});
+#line 160
+this.ScenarioSetup(scenarioInfo);
+#line 161
+ testRunner.Given("Je me connecte à eWorky");
+#line 162
+ testRunner.When("Je clique sur bo");
+#line 163
+  testRunner.And("Je clique sur Options");
+#line 164
+  testRunner.And("je remplis adresse PayPal");
+#line 165
+ testRunner.Then("Je dois le message de confirmation");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

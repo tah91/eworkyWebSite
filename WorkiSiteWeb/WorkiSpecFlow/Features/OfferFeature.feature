@@ -155,3 +155,11 @@ Scenario: Mettre En ligne/Hors ligne une offre
 		And Je met l'offre en ligne/hors ligne
 		And je lance la recherche
 	Then Je dois avoir ou pas le résultat à l'écran
+
+@Offer
+Scenario: changer les informations de paiement
+	Given Je me connecte à eWorky
+	When Je clique sur bo
+		And Je clique sur Options
+		And je remplis adresse PayPal
+	Then Je dois le message de confirmation
