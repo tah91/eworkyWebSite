@@ -161,7 +161,8 @@ namespace Worki.Data.Models
     public enum eSearchType
     {
         ePerOffer,
-        ePerType
+        ePerType,
+        ePerName
     }
 
     public enum eDirectAccessType

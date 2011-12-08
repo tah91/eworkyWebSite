@@ -1,9 +1,9 @@
 ﻿function InitDropdown(dropdownId) {
-	$(dropdownId + " dt a").click(function () {
+    $(dropdownId + " dt a").live('click', function (event) {
 		$(dropdownId + " dd ul").toggle();
 	});
 
-	$(dropdownId + " dd ul li a").click(function () {
+    $(dropdownId + " dd ul li a").live('click', function (event) {
 		//var text = $(this).html();
 		//$(".dropdown dt a span").html(text);
 		$(dropdownId + " dd ul").hide();
