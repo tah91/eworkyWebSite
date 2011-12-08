@@ -249,4 +249,7 @@
   <data name="OwnerIdentity" xml:space="preserve">
     <value>Identité du gérant : </value>
   </data>
+  <data name="FacebookPage" xml:space="preserve">
+    <value>Page Facebook</value>
+  </data>
 </root>

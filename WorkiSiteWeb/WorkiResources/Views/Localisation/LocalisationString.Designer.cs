@@ -196,6 +196,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Page Facebook.
+        /// </summary>
+        public static string FacebookPage {
+            get {
+                return ResourceManager.GetString("FacebookPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fax : .
         /// </summary>
         public static string Fax {
