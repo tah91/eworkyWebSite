@@ -135,10 +135,19 @@
   <data name="LastName" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="LocalisationName" xml:space="preserve">
+    <value> </value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Offer" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="OfferName" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PaymentMail" xml:space="preserve">
     <value> </value>
   </data>
   <data name="PhoneInfo" xml:space="preserve">
@@ -150,10 +159,16 @@
   <data name="Price" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="ToDate" xml:space="preserve">
+  <data name="Response" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Surface" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="VisitNeeded" xml:space="preserve">
     <value> </value>
   </data>
 </root>

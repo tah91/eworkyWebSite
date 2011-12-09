@@ -150,7 +150,145 @@
   <data name="QuotationSpeech" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="Speech" xml:space="preserve">
+  <data name="BeginSpeech" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="ValidateQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AskQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Asked" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="SeeCustomerSheet" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="SeeLocSheet" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="WaitingForPayement" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BookPaid" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AskingQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PayFail" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BookingRefused" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationConfirmed" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BookingAccepted" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BookingCanceled" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationCanceled" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BookingBeforeToday" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="EndBookingBeforeStart" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="EndQuotationSpeech" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationRefused" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="EndSpeech" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Achieved" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CancelStatus" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="ContactStatus" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasAcceptBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasAskBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasAskQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasCancelBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasCancelQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasPaidBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasPaidQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasRefuseBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="HasRefuseQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PaidStatus" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationCancel" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationRefuse" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="RefuseStatus" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="WaitingConfirm" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="WaitingPayment" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="WaitingStatus" xml:space="preserve">
     <value> </value>
   </data>
 </root>

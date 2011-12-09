@@ -117,238 +117,163 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Action" xml:space="preserve">
+  <data name="Accept" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="Admin" xml:space="preserve">
+  <data name="Access" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="AdminRental" xml:space="preserve">
+  <data name="BackToOwnerSpace" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="AlreadyAdded" xml:space="preserve">
+  <data name="Booking" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="AlreadyRegistered" xml:space="preserve">
+  <data name="Contact" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="BackToList" xml:space="preserve">
+  <data name="CustomerSheet" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="ConfirmDelete" xml:space="preserve">
+  <data name="Demand" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="ConfirmDeletePress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ConfirmDeleteUser" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ConfirmDeleteWelcome" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="CreateNewPress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="CreateNewWelcomePeople" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="CreateWelcomePeople" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Date" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="DetailPress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="DetailWelcomePeople" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="EditPress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="EditWelcomePeople" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="EmailAddress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="FileGotHeader" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ID" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="IndexBooking" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="IndexPress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="IndexWelcomePeople" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="InexistingPress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="IsRegistered" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ListPress" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Localisation" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="LocalisationPicture" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="LocalisationsAdmin" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ManagerRole" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Picture" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="PlaceDeletedSorry" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Points" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Rentals" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="PressDeleted" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="PressNotFound" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Send" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="SendEmail" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="TheTop" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="UpdateRole" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="Url" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="UserAdmin" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="UserAdministration" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ValidationSend" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="VisitorAdministration" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="WaitInscription" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="WorkspaceNotFound" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ConfirmDeleteRental" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="CreateRental" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="MailHaveBeenSent" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="PressHaveBeenDel" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="PressHaveBeenEdit" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="RoleHaveBeenSet" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="UserHaveBeenDel" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="WelcomePeopleHaveBeenDel" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="WelcomePeopleHaveBeenEdit" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="PressHaveBeenCreate" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="UserNotFound" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="VisitorNotFound" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="WelcomePeopleHaveBeenCreate" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="WelcomePeopleNotFound" xml:space="preserve">
+  <data name="Details" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Email" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="ExactLoc" xml:space="preserve">
+  <data name="EmptyBookHistoric" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="OnOffLine" xml:space="preserve">
+  <data name="EmptyNews" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="Unlock" xml:space="preserve">
+  <data name="EmptyQuotationHistoric" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Historic" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Inline" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="LastNews" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="ManagementTitle" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Names" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NeedInfoPaypal" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NoCurrentBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NoCurrentQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NotDefined" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NoWorkingBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NoWorkingQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NumberBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="OffersDirectAccess" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Offline" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Owner" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="AdminSpace" xml:space="preserve">
+  <data name="OwnerSpace" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="IndexQuotation" xml:space="preserve">
+  <data name="PaymentInfoModified" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PlaceDoNotHaveOffer" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Refuse" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="RefuseBooking" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="RefuseQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Return" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Score" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="BORole" xml:space="preserve">
+  <data name="SeeClientProfile" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Tariff" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="TariffByPeriod" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Town" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="TTC" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="VisitNeeded" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="WorkplacesDirectAccess" xml:space="preserve">
     <value> </value>
   </data>
 </root>

@@ -162,7 +162,7 @@
   <data name="GivenPasswordNotValide" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="InknowError" xml:space="preserve">
+  <data name="UnknowError" xml:space="preserve">
     <value> </value>
   </data>
   <data name="InvalidUser" xml:space="preserve">
@@ -277,6 +277,12 @@
     <value> </value>
   </data>
   <data name="WebsiteNotGoodPattern" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AccountInactive" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
     <value> </value>
   </data>
 </root>

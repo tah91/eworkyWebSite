@@ -150,4 +150,10 @@
   <data name="BackToLocalisation" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="OffersDetail" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="SelectOffer" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

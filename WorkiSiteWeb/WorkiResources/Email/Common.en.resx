@@ -147,4 +147,25 @@
   <data name="Info" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="Ownership" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="FollowFacebook" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="FollowTwitter" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Hey" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="OwnershipSubject" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>
