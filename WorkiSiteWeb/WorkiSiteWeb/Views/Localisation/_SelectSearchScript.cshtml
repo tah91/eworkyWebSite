@@ -294,6 +294,10 @@
             SelectForm(event, '@eSearchType.ePerOffer', '@eDirectAccessType.eNone');
         });
 
+        $('#searchPerName').live('click', function (event) {
+            SelectForm(event, '@eSearchType.ePerName', '@eDirectAccessType.eNone');
+        });
+
         DirectAccessSelectForm = function (theType) {
             var id = '#' + theType;
             $(id).click(function (event) {

@@ -117,8 +117,13 @@
             </div>
                     }
                     break;
-                default:
+                case eSearchType.ePerName:
+                    {
+                        @Html.TextBoxFor(model => model.Criteria.LocalisationData.Name, new { placeHolder = "Régus..." }) 
+                    }
                     break;
+                default:
+               break;
             }
             <div class="searchLinkAndSubmit">
                 <div class="changeSeachType float-left">    
@@ -130,7 +135,8 @@
                         Items = new List<DropDownItem>
 					                {
 						                new DropDownItem{ DisplayName = "Par type de lieu", Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
-                                        new DropDownItem{ DisplayName = "Par type de prestation", Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"}
+                                        new DropDownItem{ DisplayName = "Par type de prestation", Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"},
+                                        new DropDownItem{ DisplayName = "Par nom", Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName"}
 					                }
                     };                     
                 }      

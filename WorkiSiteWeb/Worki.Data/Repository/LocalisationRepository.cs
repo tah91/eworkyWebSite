@@ -103,10 +103,18 @@ namespace Worki.Data.Models
 									 {
 										 ID = item.ID,
 										 LocalisationType = item.TypeValue,
+                                         LocalisationName = item.Name,
 										 Features = (from f in item.LocalisationFeatures select f.FeatureID),
 										 OfferTypes = (from o in item.Offers where o.IsOnline select o.Type),
 										 Ratings = (from c in item.Comments select new { Price = c.RatingPrice, Wifi = c.RatingWifi, Dispo = c.RatingDispo, Welcome = c.RatingWelcome, Rating = c.Rating })
 									 }).ToList();
+
+            //match name if needed
+            if (!string.IsNullOrEmpty(criteria.LocalisationData.Name))
+            {
+                var nameToSearch = criteria.LocalisationData.Name.Split(' ');
+                localisations = localisations.Where(loc => loc.Name.Contains(nameToSearch[0]));
+            }
 
 			//match offer type
 			var offerType = (LocalisationOffer)criteria.OfferData.Type;

@@ -13,28 +13,28 @@ namespace Worki.Data.Models
 
         public SearchCriteria()
         {
-			Init();
+            Init();
         }
 
-		public SearchCriteria(bool wifi)
+		public SearchCriteria(bool wifi = false, eSearchType searchType = eSearchType.ePerOffer, eOrderBy orderBy = eOrderBy.Distance)
 		{
-			Init(wifi);
+            Init(wifi, searchType, orderBy);
 		}
 
-		void Init(bool wifi=false)
-		{
-			LocalisationData = new Localisation();
-			OfferData = new Offer { Type = -1 };
-			Everything = true;
-			//LocalisationOffer = -1;
-			if (wifi)
-				LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
-            SearchType = eSearchType.ePerOffer;
+        void Init(bool wifi = false, eSearchType searchType = eSearchType.ePerOffer, eOrderBy orderBy = eOrderBy.Distance)
+        {
+            LocalisationData = new Localisation();
+            OfferData = new Offer { Type = -1 };
+            Everything = true;
+            //LocalisationOffer = -1;
+
+            if (wifi)
+                LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
+
+            SearchType = searchType;
+            OrderBy = orderBy;
             DirectAccessType = eDirectAccessType.eNone;
-
-            /* Initialize it with the distance criteria */
-            OrderBy = eOrderBy.Distance;
-		}
+        }
 
         #region Direct Access
 
@@ -103,7 +103,7 @@ namespace Worki.Data.Models
 
         #region Properties
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        //[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Place", ResourceType = typeof(Worki.Resources.Models.Search.SearchCriteria))]
         public string Place { get; set; }
 

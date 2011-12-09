@@ -397,6 +397,14 @@ namespace Worki.Web.Controllers
                     }
                     break;
                 case eSearchType.ePerName:
+                    {
+                        var criteria = new SearchCriteria(true);
+                        criteria.Place = place;
+                        criteria.SearchType = eSearchType.ePerName;
+                        criteria.OrderBy = eOrderBy.Rating;
+                        model = new SearchCriteriaFormViewModel(criteria, false);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -416,19 +424,6 @@ namespace Worki.Web.Controllers
 			return View(new SearchCriteriaFormViewModel(criteria, false));
 		}
 
-		/// <summary>
-		/// GET Action result to search localisations from a SearchCriteria
-		/// the search is per localisation type (wifi spot, hotel, resto etc...)
-		/// </summary>
-		/// <returns>the form to fill</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("recherche-lieu-travail-menu")]
-		public virtual ActionResult FullSearchOffer(int offertID)// Pré selection of the list box of recherche
-		{
-			var criteria = new SearchCriteria();// { LocalisationOffer = offertID };
-			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
-		}
-
 		[AcceptVerbs(HttpVerbs.Get)]
 		[ActionName("recherche-par-type")]
 		public virtual ActionResult FullSearchPerType()
@@ -436,6 +431,15 @@ namespace Worki.Web.Controllers
             var criteria = SearchCriteria.CreateSearchCriteria(eDirectAccessType.eNone);
 			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
 		}
+
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("recherche-par-nom")]
+        public virtual ActionResult FullSearchPerName()
+        {
+            var criteria = new SearchCriteria(true, eSearchType.ePerName, eOrderBy.Rating);
+            return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
+        }
 
 		/// <summary>
 		/// GET Action result to search localisations from a SearchCriteria

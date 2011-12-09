@@ -134,6 +134,9 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, "lieu", ref value))
                 criteria.Place = value;
 
+            if (MiscHelpers.GetRequestValue(parameters, "name", ref value))
+                criteria.LocalisationData.Name= value;
+
             int intVal;
             if (MiscHelpers.GetRequestValue(parameters, "order", ref value) && int.TryParse(value, out intVal))
                 criteria.OrderBy = (eOrderBy)intVal;
@@ -214,6 +217,7 @@ namespace Worki.Service
 			rvd["offer-type"] = criteria.OfferData.Type;
             rvd["lat"] = criteria.LocalisationData.Latitude;
             rvd["lng"] = criteria.LocalisationData.Longitude;
+            rvd["name"] = criteria.LocalisationData.Name;
 
             rvd["order"] = (int)criteria.OrderBy;
 

@@ -52,7 +52,9 @@
 
         $("#searchform").submit(function (evt) {
             var val = $("#Criteria_Place").val();
-            if (val == "") {
+            var searchType = $("#Criteria_SearchType").val();
+
+            if (val == "" && searchType != 'ePerName') {
                 $("#Criteria_Place").val('@SearchService.DefaultSearchPlace');
             }
             workiGeoCoder.SearchFormSubmit(evt);
