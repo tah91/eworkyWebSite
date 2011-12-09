@@ -735,7 +735,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					Item = offer,
 					List = new PagingList<MemberQuotation>
 					{
-						List = offer.MemberQuotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+                        List = offer.MemberQuotations.OrderByDescending(mq => mq.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
 						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberQuotations.Count }
 					}
 				};
