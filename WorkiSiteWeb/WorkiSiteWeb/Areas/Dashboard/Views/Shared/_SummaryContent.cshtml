@@ -6,8 +6,15 @@
     </div>
     <div class="summaryIntro">
         @foreach (var item in Model.Descriptions)
-        { 
-			@item.Value <br />
+        {
+            if (!item.Bold)
+            {
+			    @item.Value <br />
+            }
+            else
+            {
+                <b>@item.Value</b> <br />
+            }
         }
     </div>
     <div class="clear"></div>

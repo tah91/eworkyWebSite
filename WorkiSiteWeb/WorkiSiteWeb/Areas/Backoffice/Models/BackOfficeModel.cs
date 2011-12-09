@@ -34,6 +34,7 @@ namespace Worki.Web.Model
 	{
 		public string Title { get; set; }
 		public string Value { get; set; }
+        public bool Bold { get; set; }
 	}
 
 	public class LocalisationItem
