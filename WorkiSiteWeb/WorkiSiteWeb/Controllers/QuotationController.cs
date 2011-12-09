@@ -102,19 +102,19 @@ namespace Worki.Web.Controllers
 					var locName = offer.Localisation.Name;
 					try
 					{
-						formData.MemberQuotation.MemberId = memberId;
-						formData.MemberQuotation.OfferId = id;
-						formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Unknown;
+                        formData.MemberOffer.MemberId = memberId;
+                        formData.MemberOffer.OfferId = id;
+                        formData.MemberOffer.StatusId = (int)MemberQuotation.Status.Unknown;
 
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
-						member.MemberQuotations.Add(formData.MemberQuotation);
+                        member.MemberQuotations.Add(formData.MemberOffer);
 
-                        formData.MemberQuotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                        formData.MemberOffer.MemberQuotationLogs.Add(new MemberQuotationLog
                         {
                             CreatedDate = DateTime.UtcNow,
                             Event = "Quotation Created",
-                            EventType = (int)MemberQuotationLog.QuotationEvent.Creation,
+                            EventType = (int)MemberQuotationLog.OfferEvent.Creation,
 							LoggerId = memberId
                         });
 
@@ -139,7 +139,7 @@ namespace Worki.Web.Controllers
 							newMemberMail.Subject = Worki.Resources.Email.BookingString.QuotationNewMemberSubject;
                             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.QuotationNewMemberBody,
                                                                     Localisation.GetOfferType(offer.Type),
-                                                                    formData.MemberQuotation.Surface,
+                                                                    formData.MemberOffer.Surface,
                                                                     offer.Localisation.Name,
                                                                     offer.Localisation.Adress,
                                                                     formData.Email,
@@ -160,8 +160,8 @@ namespace Worki.Web.Controllers
 														 member.Email,
 														 locName,
 														 Localisation.GetOfferType(offer.Type),
-														 formData.MemberQuotation.Surface,
-														 formData.MemberQuotation.Message);
+                                                         formData.MemberOffer.Surface,
+                                                         formData.MemberOffer.Message);
 
 						//send mail to quoation client
                         dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -171,7 +171,7 @@ namespace Worki.Web.Controllers
                         clientMail.ToName = member.MemberMainData.FirstName;
                         clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationClient,
                                                          Localisation.GetOfferType(offer.Type),
-                                                         formData.MemberQuotation.Surface,
+                                                         formData.MemberOffer.Surface,
                                                          locName,
                                                          offer.Localisation.Adress);
 

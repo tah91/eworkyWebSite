@@ -130,36 +130,36 @@
 					    <tr>
 						    <td>
 							    <div class="editor-label">
-								    @Html.LabelFor(m => m.MemberBooking.FromDate)<span class="blue">*</span>
+								    @Html.LabelFor(m => m.MemberOffer.FromDate)<span class="blue">*</span>
 							    </div>
 						    </td>
 						    <td>
 							    <div class="editor-field">
-								    @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
+								    @Html.TextBox("MemberOffer.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberOffer.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
 							    </div>
 						    </td>
 					    </tr>
 					    <tr>
 						    <td>
 							    <div class="editor-label">
-								    @Html.LabelFor(m => m.MemberBooking.ToDate)<span class="blue">*</span>
+								    @Html.LabelFor(m => m.MemberOffer.ToDate)<span class="blue">*</span>
 							    </div>
 						    </td>
 						    <td>
 							    <div class="editor-field">
-								    @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
+								    @Html.TextBox("MemberOffer.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberOffer.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
 							    </div>
 						    </td>
 					    </tr>
 					    <tr>
 						    <td class="verticalAlignTop">
 								<div class="editor-label ">
-									@Html.LabelFor("Message au gérant (facultatif)", "MemberBooking_Message")
+									@Html.LabelFor("Message au gérant (facultatif)", "MemberOffer_Message")
 								</div>
 						    </td>
 						    <td>
 							    <div class="editor-field">
-								    @Html.TextAreaFor(m => m.MemberBooking.Message)
+								    @Html.TextAreaFor(m => m.MemberOffer.Message)
 							    </div>
 						    </td>
 					    </tr>

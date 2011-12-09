@@ -7,58 +7,23 @@ using System.Linq;
 
 namespace Worki.Data.Models
 {
-	public class MemberQuotationFormViewModel
+    public class MemberQuotationFormViewModel : MasterOfferFormViewModel<MemberQuotation>
 	{
 		public MemberQuotationFormViewModel()
 		{
-			MemberQuotation = new MemberQuotation();
+            MemberOffer = new MemberQuotation();
 		}
-
-		public MemberQuotation MemberQuotation { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "FirstName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string Email { get; set; }
-
-        [Display(Name = "LocalisationName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string LocalisationName { get; set; }
-
-        [Display(Name = "OfferName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string OfferName { get; set; }
-
-        public bool NeedNewAccount { get; set; }
 	}
 
-	[MetadataType(typeof(MemberQuotation_Validation))]
-	public partial class MemberQuotation
+    [MetadataType(typeof(MemberQuotation_Validation))]
+	public partial class MemberQuotation : MasterMemberOffer
     {
         #region Quotation status
-
-        public enum Status
-        {
-            Unknown,
-            Accepted,
-            Refused,
-            Cancelled,
-			Paid
-        }
 
         /// <summary>
         /// Created but not handled by owner yet
         /// </summary>
-        public bool Unknown
+        public override bool Unknown
         {
             get { return StatusId == (int)Status.Unknown; }
         }
@@ -67,7 +32,7 @@ namespace Worki.Data.Models
         /// <summary>
         /// Refused by owner
         /// </summary>
-        public bool Refused
+        public override bool Refused
         {
             get { return StatusId == (int)Status.Refused; }
         }
@@ -75,7 +40,7 @@ namespace Worki.Data.Models
         /// <summary>
         /// Cancelled by client
         /// </summary>
-        public bool Cancelled
+        public override bool Cancelled
         {
             get { return StatusId == (int)Status.Cancelled; }
         }
@@ -99,25 +64,25 @@ namespace Worki.Data.Models
         /// <summary>
         /// Creation date of the quotation by the client
         /// </summary>
-        public DateTime CreationDate
+        public override DateTime CreationDate
         {
-            get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.QuotationEvent.Creation select item.CreatedDate).FirstOrDefault(); }
+            get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.OfferEvent.Creation select item.CreatedDate).FirstOrDefault(); }
         }
 
         /// <summary>
 		/// Cancellation date of the quotation by the client
         /// </summary>
-        public DateTime CancellationDate
+        public override DateTime CancellationDate
         {
-            get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.QuotationEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
+            get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.OfferEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
         }
 
 		/// <summary>
 		/// Refusal date of the quotation by the client
 		/// </summary>
-		public DateTime RefusalDate
+        public override DateTime RefusalDate
 		{
-			get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.QuotationEvent.Refusal select item.CreatedDate).FirstOrDefault(); }
+            get { return (from item in MemberQuotationLogs where item.EventType == (int)MemberQuotationLog.OfferEvent.Refusal select item.CreatedDate).FirstOrDefault(); }
 		}
 
         /// <summary>
@@ -139,12 +104,12 @@ namespace Worki.Data.Models
         /// <summary>
         /// Client can cancel
         /// </summary>
-        public bool ClientCanCancel
+        public override bool ClientCanCancel
         {
             get { return Unknown; }
         }
 
-        public void GetStatus(out string status, out string color, out DateTime? date)
+        public override void GetStatus(out string status, out string color, out DateTime? date)
         {
             status = "";
             color = "";
@@ -208,46 +173,33 @@ namespace Worki.Data.Models
         public bool Response { get; set; }
 	}
 
-    public partial class MemberQuotationLog
+    public partial class MemberQuotationLog : MasterMemberLog
     {
-        public enum QuotationEvent
+        public override string GetDisplay()
         {
-            General,
-            Creation,
-            Payment,
-            Refusal,
-            Cancellation
-        }
-
-        public string GetDisplay()
-        {
-            var type = (QuotationEvent)EventType;
+            var type = (OfferEvent)EventType;
             switch (type)
             {
-                case QuotationEvent.Creation:
+                case OfferEvent.Creation:
 					return string.Format(Worki.Resources.Views.Booking.BookingString.HasAskQuotation, MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
-                case QuotationEvent.Payment:
+                case OfferEvent.Payment:
 					return string.Format(Worki.Resources.Views.Booking.BookingString.HasPaidQuotation, MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
-                case QuotationEvent.Refusal:
+                case OfferEvent.Refusal:
 					return string.Format(Worki.Resources.Views.Booking.BookingString.HasRefuseQuotation, MemberQuotation.Owner.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
-                case QuotationEvent.Cancellation:
+                case OfferEvent.Cancellation:
 					return string.Format(Worki.Resources.Views.Booking.BookingString.HasCancelQuotation, MemberQuotation.Client.GetAnonymousDisplayName(), MemberQuotation.Offer.Localisation.Name);
-                case QuotationEvent.General:
+                case OfferEvent.General:
                 default:
                     return Event;
             }
         }
     }
 
-    public class LocalisationQuotationViewModel
+    public class LocalisationQuotationViewModel : MasterViewModel<MemberQuotation, Localisation>
     {
-        public PagingList<MemberQuotation> Quotations { get; set; }
-        public Localisation Localisation { get; set; }
     }
 
-    public class OfferQuotationViewModel
+    public class OfferQuotationViewModel : MasterViewModel<MemberQuotation, Offer>
     {
-        public PagingList<MemberQuotation> Quotations { get; set; }
-        public Offer Offer { get; set; }
     }
 }

@@ -153,7 +153,7 @@ namespace Worki.Web
 				{
 					CreatedDate = DateTime.UtcNow,
 					Event = "Payment completed",
-					EventType = (int)MemberBookingLog.BookingEvent.Payment,
+                    EventType = (int)MemberBookingLog.OfferEvent.Payment,
 					LoggerId = clientId
 				});
 

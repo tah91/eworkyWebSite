@@ -124,7 +124,7 @@ namespace Worki.Web.Helpers
 			{
 				foreach (var log in booking.MemberBookingLogs)
 				{
-					if (log.EventType == (int)MemberBookingLog.BookingEvent.General)
+                    if (log.EventType == (int)MemberBookingLog.OfferEvent.General)
 						continue;
 
 					if (log.LoggerId == memberId)
@@ -149,7 +149,7 @@ namespace Worki.Web.Helpers
             {
                 foreach (var log in quotation.MemberQuotationLogs)
                 {
-                    if (log.EventType == (int)MemberQuotationLog.QuotationEvent.General)
+                    if (log.EventType == (int)MemberQuotationLog.OfferEvent.General)
                         continue;
 
 					if (log.LoggerId == memberId)

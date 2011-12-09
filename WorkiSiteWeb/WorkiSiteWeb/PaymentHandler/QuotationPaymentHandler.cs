@@ -122,7 +122,7 @@ namespace Worki.Web
 				{
 					CreatedDate = DateTime.UtcNow,
 					Event = "Payment completed",
-					EventType = (int)MemberQuotationLog.QuotationEvent.Payment,
+					EventType = (int)MemberQuotationLog.OfferEvent.Payment,
 					LoggerId = ownerId
 				});
 

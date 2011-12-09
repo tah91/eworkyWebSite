@@ -190,7 +190,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Booking Cancelled",
-                    EventType = (int)MemberBookingLog.BookingEvent.Cancellation,
+                    EventType = (int)MemberBookingLog.OfferEvent.Cancellation,
 					LoggerId = memberId
                 });
 
@@ -291,7 +291,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 {
                     CreatedDate = DateTime.UtcNow,
                     Event = "Quotation Cancelled",
-                    EventType = (int)MemberQuotationLog.QuotationEvent.Cancellation,
+                    EventType = (int)MemberQuotationLog.OfferEvent.Cancellation,
 					LoggerId = memberId
                 });
 

@@ -279,8 +279,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id && b.StatusId == (int)MemberBooking.Status.Unknown).Where(b => !b.Expired).OrderByDescending(b => b.CreationDate);
 				var model = new LocalisationBookingViewModel
 				{
-					Localisation = loc,
-					Bookings = new PagingList<MemberBooking>
+					Item = loc,
+					List = new PagingList<MemberBooking>
 					{
                         List = bookings.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
 						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
@@ -335,8 +335,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				var model = new OfferBookingViewModel
 				{
-					Offer = offer,
-					Bookings = new PagingList<MemberBooking>
+					Item = offer,
+					List = new PagingList<MemberBooking>
 					{
                         List = offer.MemberBookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
 						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberBookings.Count }
@@ -429,7 +429,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					{
 						CreatedDate = DateTime.UtcNow,
 						Event = "Booking Confirmed",
-						EventType = (int)MemberBookingLog.BookingEvent.Approval,
+                        EventType = (int)MemberBookingLog.OfferEvent.Approval,
 						LoggerId = memberId
 					});
 
@@ -532,7 +532,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					{
 						CreatedDate = DateTime.UtcNow,
 						Event = "Booking Refused",
-						EventType = (int)MemberBookingLog.BookingEvent.Refusal,
+                        EventType = (int)MemberBookingLog.OfferEvent.Refusal,
 						LoggerId = memberId
 					});
 
@@ -595,8 +595,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id && q.StatusId == (int)MemberQuotation.Status.Unknown).OrderByDescending(q => q.CreationDate);
 				var model = new LocalisationQuotationViewModel
 				{
-					Localisation = loc,
-					Quotations = new PagingList<MemberQuotation>
+					Item = loc,
+					List = new PagingList<MemberQuotation>
 					{
 						List = quotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
 						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = quotations.Count() }
@@ -732,8 +732,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				var model = new OfferQuotationViewModel
 				{
-					Offer = offer,
-					Quotations = new PagingList<MemberQuotation>
+					Item = offer,
+					List = new PagingList<MemberQuotation>
 					{
 						List = offer.MemberQuotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
 						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberQuotations.Count }
@@ -806,7 +806,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     {
                         CreatedDate = DateTime.UtcNow,
                         Event = "Quotation Refused",
-                        EventType = (int)MemberQuotationLog.QuotationEvent.Refusal,
+                        EventType = (int)MemberQuotationLog.OfferEvent.Refusal,
 						LoggerId = memberId
                     });
 

@@ -102,18 +102,18 @@ namespace Worki.Web.Controllers
 					var locName = offer.Localisation.Name;
 					try
 					{
-						formData.MemberBooking.MemberId = memberId;
-						formData.MemberBooking.OfferId = id;
-						formData.MemberBooking.StatusId = (int)MemberBooking.Status.Unknown;
+                        formData.MemberOffer.MemberId = memberId;
+                        formData.MemberOffer.OfferId = id;
+                        formData.MemberOffer.StatusId = (int)MemberBooking.Status.Unknown;
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
-						member.MemberBookings.Add(formData.MemberBooking);
+                        member.MemberBookings.Add(formData.MemberOffer);
 
-						formData.MemberBooking.MemberBookingLogs.Add(new MemberBookingLog
+                        formData.MemberOffer.MemberBookingLogs.Add(new MemberBookingLog
 						{
 							CreatedDate = DateTime.UtcNow,
 							Event = "Booking Created",
-							EventType = (int)MemberBookingLog.BookingEvent.Creation,
+							EventType = (int)MemberBookingLog.OfferEvent.Creation,
 							LoggerId = memberId
 						});
 
@@ -139,8 +139,8 @@ namespace Worki.Web.Controllers
 							newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
                             newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMemberSubject,
                                                                     Localisation.GetOfferType(offer.Type),
-                                                                    formData.MemberBooking.FromDate,
-                                                                    formData.MemberBooking.ToDate,
+                                                                    formData.MemberOffer.FromDate,
+                                                                    formData.MemberOffer.ToDate,
                                                                     locName,
                                                                     offer.Localisation.Adress,
                                                                     formData.Email,
@@ -161,9 +161,9 @@ namespace Worki.Web.Controllers
 														 member.Email,
 														 locName,
 														 Localisation.GetOfferType(offer.Type),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
-														 formData.MemberBooking.Message);
+                                                         CultureHelpers.GetSpecificFormat(formData.MemberOffer.FromDate, CultureHelpers.TimeFormat.Date),
+                                                         CultureHelpers.GetSpecificFormat(formData.MemberOffer.ToDate, CultureHelpers.TimeFormat.Date),
+                                                         formData.MemberOffer.Message);
 
 						//send mail to booking member
 						dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -173,8 +173,8 @@ namespace Worki.Web.Controllers
 						clientMail.ToName = member.MemberMainData.FirstName;
 						clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
 														 Localisation.GetOfferType(offer.Type),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
+                                                         CultureHelpers.GetSpecificFormat(formData.MemberOffer.FromDate, CultureHelpers.TimeFormat.Date),
+                                                         CultureHelpers.GetSpecificFormat(formData.MemberOffer.ToDate, CultureHelpers.TimeFormat.Date),
 														 locName,
 														 offer.Localisation.Adress);
 

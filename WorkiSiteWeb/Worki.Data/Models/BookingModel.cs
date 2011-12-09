@@ -8,57 +8,22 @@ using System.ComponentModel;
 
 namespace Worki.Data.Models
 {
-	public class MemberBookingFormViewModel
+    public class MemberBookingFormViewModel : MasterOfferFormViewModel<MemberBooking>
 	{
 		public MemberBookingFormViewModel()
 		{
-			MemberBooking = new MemberBooking();
+            MemberOffer = new MemberBooking();
 		}
-
-		public MemberBooking MemberBooking { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-		public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "FirstName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string LastName { get; set; }
-
-        [Display(Name = "LocalisationName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string LocalisationName { get; set; }
-
-        [Display(Name = "OfferName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string OfferName { get; set; }
-
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string Email { get; set; }
-
-        public bool NeedNewAccount { get; set; }
 	}
 
-	[MetadataType(typeof(MemberBooking_Validation))]
-	public partial class MemberBooking : IDataErrorInfo
+    [MetadataType(typeof(MemberBooking_Validation))]
+    public partial class MemberBooking : MasterMemberOffer, IDataErrorInfo
 	{
 		partial void OnInitialized()
 		{
             System.DateTime now = DateTime.UtcNow;
             FromDate = now.Subtract(new TimeSpan(now.Hour, now.Minute, now.Second)).AddHours(8).AddDays(1);
             ToDate = FromDate;
-		}
-
-		public enum Status
-		{
-			Unknown,
-			Accepted,
-			Refused,
-            Cancelled,
-			Paid
 		}
 
 		#region IDataErrorInfo
@@ -108,7 +73,7 @@ namespace Worki.Data.Models
 		/// <summary>
 		/// Created but not handled by owner yet
 		/// </summary>
-		public bool Unknown
+        public override bool Unknown
 		{
 			get { return StatusId == (int)Status.Unknown; }
 		}
@@ -117,7 +82,7 @@ namespace Worki.Data.Models
 		/// <summary>
 		/// Refused by owner
 		/// </summary>
-		public bool Refused
+        public override bool Refused
 		{
 			get { return StatusId == (int)Status.Refused; }
 		}
@@ -125,7 +90,7 @@ namespace Worki.Data.Models
         /// <summary>
         /// Cancelled by client
         /// </summary>
-        public bool Cancelled
+        public override bool Cancelled
         {
             get { return StatusId == (int)Status.Cancelled; }
         }
@@ -158,7 +123,7 @@ namespace Worki.Data.Models
 		/// <summary>
 		/// Payement date of paid booking
 		/// </summary>
-		public DateTime PaidDate
+        public DateTime PaidDate
 		{
 			get { return (from item in Transactions where item.UpdatedDate.HasValue select item.UpdatedDate.Value).FirstOrDefault(); }
 		}
@@ -166,25 +131,25 @@ namespace Worki.Data.Models
 		/// <summary>
 		/// Creation date of the booking by the client
 		/// </summary>
-		public DateTime CreationDate
+		public override DateTime CreationDate
 		{
-			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Creation select item.CreatedDate).FirstOrDefault(); }
+            get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.OfferEvent.Creation select item.CreatedDate).FirstOrDefault(); }
 		}
 
 		/// <summary>
 		/// Refusal date of the booking by the owner
 		/// </summary>
-		public DateTime RefusalDate
+        public override DateTime RefusalDate
 		{
-			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Refusal select item.CreatedDate).FirstOrDefault(); }
+            get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.OfferEvent.Refusal select item.CreatedDate).FirstOrDefault(); }
 		}
 
         /// <summary>
         /// Cancellation date of the booking by the client
         /// </summary>
-        public DateTime CancellationDate
+        public override DateTime CancellationDate
         {
-            get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
+            get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.OfferEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
         }
 
 		/// <summary>
@@ -206,12 +171,12 @@ namespace Worki.Data.Models
         /// <summary>
         /// Client can cancel
         /// </summary>
-        public bool ClientCanCancel
+        public override bool ClientCanCancel
         {
 			get { return !Expired && !Cancelled && !Paid && !Refused; }
         }
 
-        public void GetStatus(out string status, out string color, out DateTime? date)
+        public override void GetStatus(out string status, out string color, out DateTime? date)
         {
             status = "";
             color = "";
@@ -290,34 +255,24 @@ namespace Worki.Data.Models
         public decimal Price { get; set; }
 	}
 
-	public partial class MemberBookingLog
+    public partial class MemberBookingLog : MasterMemberLog
 	{
-		public enum BookingEvent
+        public override string GetDisplay()
 		{
-			General,
-			Creation,
-			Approval,
-			Refusal,
-			Payment,
-            Cancellation
-		}
-
-		public string GetDisplay()
-		{
-			var type = (BookingEvent)EventType;
+            var type = (OfferEvent)EventType;
 			switch(type)
 			{
-				case BookingEvent.Creation:
+                case OfferEvent.Creation:
                     return string.Format(Worki.Resources.Views.Booking.BookingString.HasAskBooking, MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
-				case BookingEvent.Approval:
+                case OfferEvent.Approval:
                     return string.Format(Worki.Resources.Views.Booking.BookingString.HasAcceptBooking, MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
-				case BookingEvent.Refusal:
+                case OfferEvent.Refusal:
                     return string.Format(Worki.Resources.Views.Booking.BookingString.HasRefuseBooking, MemberBooking.Owner.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
-				case BookingEvent.Payment:
+                case OfferEvent.Payment:
                     return string.Format(Worki.Resources.Views.Booking.BookingString.HasPaidBooking, MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
-                case BookingEvent.Cancellation:
+                case OfferEvent.Cancellation:
                     return string.Format(Worki.Resources.Views.Booking.BookingString.HasCancelBooking, MemberBooking.Client.GetAnonymousDisplayName(), MemberBooking.Offer.Localisation.Name);
-				case BookingEvent.General:
+                case OfferEvent.General:
 				default:
 					return Event;
 			}
@@ -337,15 +292,11 @@ namespace Worki.Data.Models
         public Offer Offer { get; set; }
     }
 
-    public class LocalisationBookingViewModel
+    public class LocalisationBookingViewModel : MasterViewModel<MemberBooking, Localisation>
     {
-        public PagingList<MemberBooking> Bookings { get; set; }
-        public Localisation Localisation { get; set; }
     }
 
-    public class OfferBookingViewModel
+    public class OfferBookingViewModel : MasterViewModel<MemberBooking, Offer>
     {
-        public PagingList<MemberBooking> Bookings { get; set; }
-        public Offer Offer { get; set; }
     }
 }
