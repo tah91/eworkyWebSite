@@ -115,7 +115,7 @@ namespace Worki.Resources.Views.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nous vous rappelons que seront prélevées sur toutes les réservations transitant sur eWorky une commission de 10 % ainsi qu&apos;une commission PayPal. Pour toute question, contactez-nous : contact@eworky.com..
+        ///   Looks up a localized string similar to Nous vous rappelons que seront prélevées sur toutes les réservations transitant sur eWorky une commission de {0} % ainsi qu&apos;une commission PayPal. Pour toute question, contactez-nous : contact@eworky.com..
         /// </summary>
         public static string EndModifyPayment {
             get {
