@@ -239,15 +239,11 @@ namespace Worki.Data.Models
         }
     }
 
-    public class LocalisationQuotationViewModel
+    public class LocalisationQuotationViewModel : MasterViewModel<MemberQuotation, Localisation>
     {
-        public PagingList<MemberQuotation> Quotations { get; set; }
-        public Localisation Localisation { get; set; }
     }
 
-    public class OfferQuotationViewModel
+    public class OfferQuotationViewModel : MasterViewModel<MemberQuotation, Offer>
     {
-        public PagingList<MemberQuotation> Quotations { get; set; }
-        public Offer Offer { get; set; }
     }
 }
