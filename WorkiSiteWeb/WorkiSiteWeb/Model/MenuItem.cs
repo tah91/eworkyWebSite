@@ -20,12 +20,14 @@ namespace Worki.Web.Model
 	{
 		public string DisplayName { get; set; }
 		public string Link { get; set; }
+        public string Id { get; set; }
 	}
 
 	public class DropDownModel
 	{
 		public const string ProfilDD = "profilDropdown";
 		public const string OfferDD = "offerDropdown";
+        public const string AdvancedSearchDD = "advancedSearchDropdown";
 
 		public string Id { get; set; }
 		public string Title { get; set; }

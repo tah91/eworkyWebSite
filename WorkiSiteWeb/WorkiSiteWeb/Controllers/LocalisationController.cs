@@ -374,21 +374,31 @@ namespace Worki.Web.Controllers
         /// <param name="searchType">enum within eSearchType</param>
         /// <param name="directAccessType">enum within eDirectAccessType</param>
         /// <returns>corresponding partial form</returns>
-        public virtual PartialViewResult SearchForm(string searchType, string directAccessType)
+        public virtual PartialViewResult SearchForm(string searchType, string directAccessType, string place)
         {
             var searchEnum = (eSearchType)Enum.Parse(typeof(eSearchType), searchType);
             var directAccessEnum = (eDirectAccessType)Enum.Parse(typeof(eDirectAccessType), directAccessType);
 
             SearchCriteriaFormViewModel model = null;
-            if (searchEnum == eSearchType.ePerOffer)
+            switch (searchEnum)
             {
-                var criteria = new SearchCriteria(true);
-                model = new SearchCriteriaFormViewModel(criteria, false);
-            }
-            else
-            {
-                var criteria = SearchCriteria.CreateSearchCriteria(directAccessEnum);
-                model = new SearchCriteriaFormViewModel(criteria, false);
+                case eSearchType.ePerOffer:
+                    {
+                        var criteria = new SearchCriteria(true);
+                        criteria.Place = place;
+                        model = new SearchCriteriaFormViewModel(criteria, false);
+                    }
+                    break;
+                case eSearchType.ePerType:
+                    {
+                        var criteria = SearchCriteria.CreateSearchCriteria(directAccessEnum);
+                        criteria.Place = place;
+                        model = new SearchCriteriaFormViewModel(criteria, false);
+                    }
+                    break;
+                case eSearchType.ePerName:
+                default:
+                    break;
             }
             return PartialView(MVC.Localisation.Views._SearchForm, model);
         }

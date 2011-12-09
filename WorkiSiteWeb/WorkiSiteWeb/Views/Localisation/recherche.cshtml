@@ -15,78 +15,14 @@
 		        @Html.Image(Links.Content.images.photo3_jpg, Worki.Resources.Views.Shared.SharedString.Workplace)
 	        </div>
             <div class="searchFormContainer float-right contentBlock">
-                <div class="searchFormDiv">
-                    @RazorHelpers.TitleDiv(SearchCriteria.GetDirectAccessTitle(Model.Criteria.DirectAccessType), "Blue")
-
-                    @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
-                    { 
-                        @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                        @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-
-                        <div class="localisationField">
-                            <div class="editor-field">
-                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
-                            </div>
-                        </div>
-
-                        <div id="searchFormPartialContainer">
-                            @Html.Partial(MVC.Localisation.Views._SearchForm)
-                        </div>
-                    } 
-                </div>
+                @Html.Partial(MVC.Localisation.Views._SearchForm)
             </div>
             <div class="clear">
             </div>
         </div>
         <div class="adRow">
             @Html.Partial(MVC.Localisation.Views._DirectAccess)
-			@Html.Partial(MVC.Shared.Views._IndexGallery)
-@*	        @{
-		        var title = string.Empty;
-		        var desc = string.Empty;
-		        switch (Model.Criteria.DirectAccessType)
-		        {
-			        case eDirectAccessType.eStudent:
-				        title = Worki.Resources.Models.Profile.Profile.Student;
-				        desc = Worki.Resources.Views.Search.SearchString.SpeechForStudent;
-				        break;
-			        case eDirectAccessType.eTeleworker:
-				        title = Worki.Resources.Models.Profile.Profile.Teleworker;
-				        desc = Worki.Resources.Views.Search.SearchString.SpeechForTeleworker;
-				        break;
-			        case eDirectAccessType.eStartUp:
-				        title = Worki.Resources.Views.Search.SearchString.Entrepreneur;
-				        desc = Worki.Resources.Views.Search.SearchString.SpeechForStartUp;
-				        break;
-			        case eDirectAccessType.eNomade:
-				        title = @Worki.Resources.Views.Search.SearchString.Nomad;
-				        desc = Worki.Resources.Views.Search.SearchString.SpeechForNomad;
-				        break;
-			        case eDirectAccessType.eIndependant:
-				        title = Worki.Resources.Views.Search.SearchString.Independant;
-				        desc = Worki.Resources.Views.Search.SearchString.SpeechForIndependent;
-				        break;
-			        case eDirectAccessType.eEntreprise:
-				        title = Worki.Resources.Models.Profile.Profile.Company;
-				        desc = Worki.Resources.Views.Search.SearchString.SpeechForBuisnessman;
-				        break;
-			        case eDirectAccessType.eNone:
-			        default:
-				        break;
-		        }
-	        }
-            @if (!string.IsNullOrEmpty(title) &&!string.IsNullOrEmpty(desc))
-            {
-		        <div class="contentBlock searchDesc float-right">
-			        <h2 class="blue">@title</h2>
-			        @Html.Raw(desc)
-		        </div>
-	        }
-	        else
-	        {
-		        Html.RenderPartial(MVC.Shared.Views._IndexGallery);
-	        } *@       
+			@Html.Partial(MVC.Shared.Views._IndexGallery)      
         </div>
         <div class="clear">
         </div>  
@@ -102,7 +38,7 @@
 
         require(["@MiscHelpers.UrlConstants.jqueryui","http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
 
-            });
+        });
 
         var workiGeoCoder = null;
 
