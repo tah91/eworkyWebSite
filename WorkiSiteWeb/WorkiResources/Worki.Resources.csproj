@@ -183,11 +183,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Admin\StatString.en.Designer.cs">
-      <DependentUpon>StatString.en.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Views\Admin\StatString.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -296,7 +291,9 @@
       <LastGenOutput>Menu.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\Activation.en.resx" />
+    <EmbeddedResource Include="Email\Activation.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\Activation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Activation.Designer.cs</LastGenOutput>
@@ -420,6 +417,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StatString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\BackOffice\BackOfficeString.en.resx" />
     <EmbeddedResource Include="Views\BackOffice\BackOfficeString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BackOfficeString.Designer.cs</LastGenOutput>

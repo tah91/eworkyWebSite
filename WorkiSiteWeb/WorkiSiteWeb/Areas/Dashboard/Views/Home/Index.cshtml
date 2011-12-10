@@ -30,8 +30,8 @@
                     ImageAlt = Model.Member.GetDisplayName(),
                     Descriptions = new List<DescriptionItem>
                     {
-                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Member, Value = Model.Member.MemberMainData.FirstName + " " + Model.Member.MemberMainData.LastName },
-                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Score, Value = string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.Member.GetMemberScoreStatus(score), score) }
+                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Member, Value = Model.Member.GetFullDisplayName() , Bold = true},
+                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Score, Value = string.Format(Worki.Resources.Views.Profile.ProfileString.Score, Model.Member.GetMemberScoreStatus(score), score), Bold = false }
                     }
                 };
             }

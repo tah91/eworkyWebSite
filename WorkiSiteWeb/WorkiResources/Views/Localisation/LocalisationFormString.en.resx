@@ -120,6 +120,9 @@
   <data name="Access" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="Admin" xml:space="preserve">
+    <value> </value>
+  </data>
   <data name="AvoidPeriods" xml:space="preserve">
     <value> </value>
   </data>
@@ -158,6 +161,9 @@
     <value> </value>
   </data>
   <data name="Offers" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Owner" xml:space="preserve">
     <value> </value>
   </data>
   <data name="PlaceDetails" xml:space="preserve">

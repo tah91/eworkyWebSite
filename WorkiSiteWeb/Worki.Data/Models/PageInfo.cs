@@ -23,4 +23,10 @@ namespace Worki.Data.Models
 		public IList<T> List { get; set; }
 		public PagingInfo PagingInfo { get; set; }
 	}
+
+    public class MasterViewModel<T, U>
+    {
+        public PagingList<T> List { get; set; }
+        public U Item { get; set; }
+    }
 }

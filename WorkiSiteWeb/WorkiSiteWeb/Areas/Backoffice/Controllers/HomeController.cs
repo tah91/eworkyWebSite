@@ -142,7 +142,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var quotations = qRepo.GetMany(q => q.Offer.Localisation.OwnerID == id && q.StatusId == (int)MemberQuotation.Status.Unknown);
                 var model = new PagingList<MemberQuotation>
                 {
-					List = quotations.Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
+                    List = quotations.OrderByDescending(mq => mq.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
 					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = quotations.Count }
                 };
                 return View(model);

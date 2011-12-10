@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BookingHandleMailBody" xml:space="preserve">
+  <data name="AcceptBookingClient" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="BookingHandleMailSubject" xml:space="preserve">
+  <data name="AcceptBookingClientSubject" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AcceptBookingOwner" xml:space="preserve">
     <value> </value>
   </data>
   <data name="BookingMailBody" xml:space="preserve">
@@ -135,16 +138,43 @@
   <data name="BookingNewMemberSubject" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="ConfirmMailBody" xml:space="preserve">
+  <data name="BookingOwnerBody" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="ConfirmMailSubject" xml:space="preserve">
+  <data name="BookingOwnerSubject" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="QuotationHandleMailBody" xml:space="preserve">
+  <data name="CreateBookingClient" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="QuotationHandleMailSubject" xml:space="preserve">
+  <data name="CreateBookingClientSubject" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CreateBookingTeam" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CreateQuotationClient" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CreateQuotationClientSubject" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CreateQuotationOwner" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CreateQuotationOwnerSubject" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PayementOwner" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PayementSubject" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationMailBody" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QuotationMailSubject" xml:space="preserve">
     <value> </value>
   </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
@@ -153,10 +183,16 @@
   <data name="QuotationNewMemberSubject" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="RefuseMailBody" xml:space="preserve">
+  <data name="RefuseBookingClient" xml:space="preserve">
     <value> </value>
   </data>
-  <data name="RefuseMailSubject" xml:space="preserve">
+  <data name="RefuseBookingClientSubject" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="RefuseBookingOwner" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="RefuseQuotationClient" xml:space="preserve">
     <value> </value>
   </data>
 </root>

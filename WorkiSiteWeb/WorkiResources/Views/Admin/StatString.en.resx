@@ -144,7 +144,13 @@
   <data name="EworkerName" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value> </value>
+  </data>
   <data name="Hotel" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="LastCreate" xml:space="preserve">
     <value> </value>
   </data>
   <data name="LastModif" xml:space="preserve">
@@ -169,6 +175,9 @@
     <value> </value>
   </data>
   <data name="Telecentre" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Total" xml:space="preserve">
     <value> </value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">

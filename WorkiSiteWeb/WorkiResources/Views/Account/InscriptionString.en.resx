@@ -120,4 +120,10 @@
   <data name="Description" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="ErrorSave" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="RegisterEworky" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

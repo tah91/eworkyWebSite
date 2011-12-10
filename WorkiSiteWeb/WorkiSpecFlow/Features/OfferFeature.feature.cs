@@ -472,6 +472,56 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Mettre En ligne/Hors ligne une offre")]
+        [NUnit.Framework.CategoryAttribute("Offer")]
+        public virtual void MettreEnLigneHorsLigneUneOffre()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Mettre En ligne/Hors ligne une offre", new string[] {
+                        "Offer"});
+#line 150
+this.ScenarioSetup(scenarioInfo);
+#line 151
+ testRunner.Given("Je me connecte à eWorky");
+#line 152
+ testRunner.When("Je clique sur bo");
+#line 153
+  testRunner.And("Je clique sur un des lieux");
+#line 154
+  testRunner.And("je clique sur une des Offres");
+#line 155
+  testRunner.And("Je met l\'offre en ligne/hors ligne");
+#line 156
+  testRunner.And("je lance la recherche");
+#line 157
+ testRunner.Then("Je dois avoir ou pas le résultat à l\'écran");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("changer les informations de paiement")]
+        [NUnit.Framework.CategoryAttribute("Offer")]
+        public virtual void ChangerLesInformationsDePaiement()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("changer les informations de paiement", new string[] {
+                        "Offer"});
+#line 160
+this.ScenarioSetup(scenarioInfo);
+#line 161
+ testRunner.Given("Je me connecte à eWorky");
+#line 162
+ testRunner.When("Je clique sur bo");
+#line 163
+  testRunner.And("Je clique sur Options");
+#line 164
+  testRunner.And("je remplis adresse PayPal");
+#line 165
+ testRunner.Then("Je dois le message de confirmation");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

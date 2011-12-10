@@ -337,15 +337,11 @@ namespace Worki.Data.Models
         public Offer Offer { get; set; }
     }
 
-    public class LocalisationBookingViewModel
+    public class LocalisationBookingViewModel : MasterViewModel<MemberBooking, Localisation>
     {
-        public PagingList<MemberBooking> Bookings { get; set; }
-        public Localisation Localisation { get; set; }
     }
 
-    public class OfferBookingViewModel
+    public class OfferBookingViewModel : MasterViewModel<MemberBooking, Offer>
     {
-        public PagingList<MemberBooking> Bookings { get; set; }
-        public Offer Offer { get; set; }
     }
 }

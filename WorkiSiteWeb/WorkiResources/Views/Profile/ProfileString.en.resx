@@ -228,4 +228,16 @@
   <data name="MyComActivities" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="HeadModifyPayment" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="EndModifyPayment" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="MailPayment" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PasswordEworky" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

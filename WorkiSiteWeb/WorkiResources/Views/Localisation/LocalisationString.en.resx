@@ -231,4 +231,28 @@
   <data name="YouAreOwner" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="Offline" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NotMain" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NoPictureAvailable" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="OwnerIdentity" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="FacebookPage" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="NoSuggestions" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

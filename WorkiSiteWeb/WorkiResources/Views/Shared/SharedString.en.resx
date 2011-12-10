@@ -271,4 +271,28 @@
   <data name="Or" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="ActivationCongratz" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Quotations" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AddLocError" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="LocAdded" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PleaseFillInfos" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PleaseChangeInfos" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

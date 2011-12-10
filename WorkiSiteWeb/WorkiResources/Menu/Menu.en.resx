@@ -117,4 +117,121 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Activity" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AddedPlaces" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AdminSpace" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BOHome" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BONews" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Bookings" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BusinessCenterFr" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CommentedPlaces" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Configure" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CoworkingSpaceFr" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="CurrentBookings" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="EditPassword" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="EditProfil" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="FavoritePlaces" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Historic" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Moderation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="ModifyPayement" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="OnlineRental" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Places" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Profil" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Quoations" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="RefreshBlog" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Rentals" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Sheet" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Subscription" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="TopMember" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="UserSpace" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="WorkingBook" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="WorkingQuotation" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>
