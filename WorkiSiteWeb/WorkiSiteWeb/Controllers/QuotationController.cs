@@ -250,7 +250,7 @@ namespace Worki.Web.Controllers
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Quotation) as MemberQuotationPaymentHandler;
             var payments = new List<PaymentItem>
             {
-                new PaymentItem{  Index = 0, Amount = eworkyAmount, Email = "t.ifti_1322171616_biz@hotmail.fr"},
+                new PaymentItem{  Index = 0, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail},
             };
 
             string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,

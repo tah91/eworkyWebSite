@@ -243,10 +243,13 @@ namespace Worki.Web.Controllers
             decimal ownerAmount, eworkyAmount;
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Booking) as MemberBookingPaymentHandler;
             paymentHandler.GetAmounts(booking.Price, out ownerAmount, out eworkyAmount);
+
+			var ownerMail = WebHelper.IsDebug() ? "t.ifti_1322172136_biz@hotmail.fr" : booking.Owner.MemberMainData.PaymentAddress;
+
             var payments = new List<PaymentItem>
             {
-                new PaymentItem{  Index = 0, Amount = ownerAmount, Email = "t.ifti_1322172136_biz@hotmail.fr"},
-                new PaymentItem{  Index = 1, Amount = eworkyAmount, Email = "t.ifti_1322171616_biz@hotmail.fr"},
+                new PaymentItem{  Index = 0, Amount = ownerAmount, Email = ownerMail},
+                new PaymentItem{  Index = 1, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail},
             };
 
             string paypalApprovalUrl = _PaymentService.PayWithPayPal(id,

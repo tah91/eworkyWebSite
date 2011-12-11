@@ -15,6 +15,8 @@ namespace Worki.Section
         public const string SignatureString = "signature";
         public const string ApplicationIdString = "appId";
 
+		public const string PaypalMailString = "paypalMail";
+
 
         [ConfigurationProperty(CommissionString, IsRequired = true)]
         public decimal Commission
@@ -22,6 +24,11 @@ namespace Worki.Section
             get { return (decimal)base[CommissionString]; }
             set { base[CommissionString] = value; }
         }
+
+		public decimal CommissionPercent
+		{
+			get { return Commission * 100; }
+		}
 
         [ConfigurationProperty(QuotationFeeString, IsRequired = true)]
         public decimal QuotationFee
@@ -58,6 +65,14 @@ namespace Worki.Section
             set { base[ApplicationIdString] = value; }
         }
 
+
+		[ConfigurationProperty(PaypalMailString, IsRequired = true)]
+		public string PaypalMail
+		{
+			get { return (string)base[PaypalMailString]; }
+			set { base[PaypalMailString] = value; }
+		}
+
         private static readonly Lazy<PaymentConfiguration> lazySection = new Lazy<PaymentConfiguration>(() => (PaymentConfiguration)WebConfigurationManager.GetSection("paymentSettings"));
         private static readonly Lazy<PaymentConstants> lazyConfiguration = new Lazy<PaymentConstants>(() => { return GetConstants(); });
 
@@ -67,7 +82,7 @@ namespace Worki.Section
         private const string _postbackSandboxUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
         private const string _postbackProductionUrl = "https://www.paypal.com/cgi-bin/webscr";
         private const string _paymentSandBoxUrl = "https://svcs.sandbox.paypal.com/AdaptivePayments/Pay";
-        private const string _paymentProductionUrl = "https://svcs.paypal.com/AdaptivePayments/API_operation";
+		private const string _paymentProductionUrl = "https://svcs.paypal.com/AdaptivePayments/Pay";
         private const string _approvalProductionUrl = "https://www.paypal.com/webscr?cmd=_ap-payment&paykey=";
         private const string _approvalSandBoxUrl = "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey=";
 
@@ -75,8 +90,7 @@ namespace Worki.Section
         {
             get
             {
-				//return !bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
-				return false;
+				return !bool.Parse(ConfigurationManager.AppSettings["IsAzureDebug"]);
             }
         }
 
