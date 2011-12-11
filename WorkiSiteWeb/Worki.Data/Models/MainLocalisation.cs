@@ -20,6 +20,7 @@ namespace Worki.Data.Models
         public int LocalisationID { get; set; }
         public bool IsMain { get; set; }
         public bool IsOffline { get; set; }
+        public bool HasSticker { get; set; }
     
         // Navigation properties
     

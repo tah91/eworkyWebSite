@@ -295,6 +295,7 @@
           <Property Name="LocalisationID" Type="int" Nullable="false" />
           <Property Name="IsMain" Type="bit" Nullable="false" />
           <Property Name="IsOffline" Type="bit" Nullable="false" />
+          <Property Name="HasSticker" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
@@ -1288,6 +1289,7 @@
           <Property Type="Boolean" Name="IsMain" Nullable="false" />
           <Property Type="Boolean" Name="IsOffline" Nullable="false" />
           <NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_MainLocalisation_Localisation" FromRole="MainLocalisation" ToRole="Localisation" />
+          <Property Type="Boolean" Name="HasSticker" Nullable="false" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
@@ -2137,6 +2139,7 @@
           <EntitySetMapping Name="MainLocalisations">
             <EntityTypeMapping TypeName="WorkiDBModel.MainLocalisation">
               <MappingFragment StoreEntitySet="MainLocalisation">
+                <ScalarProperty Name="HasSticker" ColumnName="HasSticker" />
                 <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
                 <ScalarProperty Name="IsMain" ColumnName="IsMain" />
                 <ScalarProperty Name="LocalisationID" ColumnName="LocalisationID" />
