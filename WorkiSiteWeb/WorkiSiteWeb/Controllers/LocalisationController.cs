@@ -14,10 +14,7 @@ using System.Collections.Generic;
 
 namespace Worki.Web.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    public partial class LocalisationController : Controller
+	public partial class LocalisationController : ControllerBase
     {
         ILogger _Logger;
 		ISearchService _SearchService;

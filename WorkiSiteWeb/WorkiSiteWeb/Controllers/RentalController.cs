@@ -10,10 +10,7 @@ using Postal;
 
 namespace Worki.Web.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-	public partial class RentalController : Controller
+	public partial class RentalController : ControllerBase
 	{
 		#region Private
 

@@ -12,11 +12,16 @@ using Worki.Data.Models;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    [RequireHttpsRemote]
-	public partial class SheetController : Controller
+	[Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+	[CompressFilter(Order = 1)]
+	[CacheFilter(Order = 2)]
+	[RequireHttpsRemote]
+	public abstract class AdminControllerBase : Controller
+	{
+
+	}
+
+	public partial class SheetController : AdminControllerBase
     {
         ILogger _Logger;
 

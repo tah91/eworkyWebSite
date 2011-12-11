@@ -13,11 +13,17 @@ using Worki.Web.Model;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    [Authorize(Roles = MiscHelpers.BackOfficeConstants.BackOfficeRole)]
-    public partial class HomeController : Controller
+	[HandleError]
+	[CompressFilter(Order = 1)]
+	[CacheFilter(Order = 2)]
+	[Authorize(Roles = MiscHelpers.BackOfficeConstants.BackOfficeRole)]
+	[RequireHttpsRemote]
+	public abstract class BackofficeControllerBase : Controller
+	{
+
+	}
+
+	public partial class HomeController : BackofficeControllerBase
     {
         ILogger _Logger;
 

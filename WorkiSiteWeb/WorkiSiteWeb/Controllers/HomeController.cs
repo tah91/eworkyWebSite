@@ -19,10 +19,16 @@ using Worki.Web.Helpers;
 
 namespace Worki.Web.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    public partial class HomeController : Controller
+	[HandleError]
+	[CompressFilter(Order = 1)]
+	[CacheFilter(Order = 2)]
+	[DontRequireHttps]
+	public abstract class ControllerBase : Controller
+	{
+
+	}
+
+	public partial class HomeController : ControllerBase
     {
         ILogger _Logger;
         IEmailService _EmailService;

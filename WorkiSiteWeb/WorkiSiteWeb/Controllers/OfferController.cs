@@ -14,9 +14,7 @@ using Worki.Memberships;
 
 namespace Worki.Web.Controllers
 {
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-	public partial class OfferController : Controller
+	public partial class OfferController : ControllerBase
 	{
 		#region Private
 

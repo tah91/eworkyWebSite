@@ -695,6 +695,16 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Public() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Public);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult AjaxDashboard() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDashboard);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FacebookOAuth() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FacebookOAuth);
         }
@@ -716,6 +726,8 @@ namespace Worki.Web.Controllers {
             public readonly string Register = "inscription";
             public readonly string Activate = "activer";
             public readonly string ResetPassword = "reset-mdp";
+            public readonly string Public = "public";
+            public readonly string AjaxDashboard = "AjaxDashboard";
             public readonly string FacebookLogOn = "facebook-logon";
             public readonly string FacebookOAuth = "facebook-oauth";
         }
@@ -728,6 +740,7 @@ namespace Worki.Web.Controllers {
         public class ViewNames {
             public readonly string connexion = "~/Views/Account/connexion.cshtml";
             public readonly string inscription = "~/Views/Account/inscription.cshtml";
+            public readonly string @public = "~/Views/Account/public.cshtml";
             public readonly string reset_mdp = "~/Views/Account/reset-mdp.cshtml";
         }
     }
@@ -781,6 +794,21 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult ResetPassword(Worki.Data.Models.ResetPasswordModel model) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResetPassword);
             callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Public(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Public);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AjaxDashboard(int id, int tabId, int p1, int p2) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDashboard);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("tabId", tabId);
+            callInfo.RouteValueDictionary.Add("p1", p1);
+            callInfo.RouteValueDictionary.Add("p2", p2);
             return callInfo;
         }
 
@@ -3618,16 +3646,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Public() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Public);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.PartialViewResult AjaxDashboard() {
-            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDashboard);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult AddToFavorite() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.AddToFavorite);
         }
@@ -3649,8 +3667,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string Public = "public";
-            public readonly string AjaxDashboard = "AjaxDashboard";
             public readonly string Edit = "editer";
             public readonly string AddToFavorite = "AddToFavorite";
             public readonly string RemoveFromFavorite = "RemoveFromFavorite";
@@ -3666,28 +3682,12 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             public readonly string _ProfilSummary = "~/Areas/Dashboard/Views/Profil/_ProfilSummary.cshtml";
             public readonly string changer_mdp = "~/Areas/Dashboard/Views/Profil/changer-mdp.cshtml";
             public readonly string editer = "~/Areas/Dashboard/Views/Profil/editer.cshtml";
-            public readonly string @public = "~/Areas/Dashboard/Views/Profil/public.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class T4MVC_ProfilController: Worki.Web.Areas.Dashboard.Controllers.ProfilController {
         public T4MVC_ProfilController() : base(Dummy.Instance) { }
-
-        public override System.Web.Mvc.ActionResult Public(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Public);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.PartialViewResult AjaxDashboard(int id, int tabId, int p1, int p2) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDashboard);
-            callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("tabId", tabId);
-            callInfo.RouteValueDictionary.Add("p1", p1);
-            callInfo.RouteValueDictionary.Add("p2", p2);
-            return callInfo;
-        }
 
         public override System.Web.Mvc.ActionResult Edit() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);

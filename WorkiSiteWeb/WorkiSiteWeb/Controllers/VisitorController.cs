@@ -9,10 +9,7 @@ using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    public partial class VisitorController : Controller
+	public partial class VisitorController : ControllerBase
     {
         IEmailService _EmailService;
 

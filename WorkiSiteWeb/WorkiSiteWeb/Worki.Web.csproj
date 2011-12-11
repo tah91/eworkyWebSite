@@ -770,7 +770,7 @@
     <Content Include="Areas\Admin\Views\Activity\DetailWelcomePeople.cshtml" />
     <Content Include="Views\Home\_PeopleSlider.cshtml" />
     <Content Include="Areas\Dashboard\Views\Profil\editer.cshtml" />
-    <Content Include="Areas\Dashboard\Views\Profil\public.cshtml" />
+    <Content Include="Views\Account\public.cshtml" />
     <Content Include="Areas\Admin\Views\Activity\DeleteWelcomePeople.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_LocalisationTab.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_CommentTab.cshtml" />

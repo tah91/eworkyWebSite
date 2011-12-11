@@ -16,9 +16,7 @@ using Worki.Section;
 
 namespace Worki.Web.Controllers
 {
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-	public partial class QuotationController : Controller
+	public partial class QuotationController : ControllerBase
 	{
 		#region Private
 

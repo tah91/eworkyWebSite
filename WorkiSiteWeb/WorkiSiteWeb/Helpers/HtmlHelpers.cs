@@ -278,6 +278,28 @@ namespace Worki.Web.Helpers
             return string.Format("{0}?v={1}", instance.Content(fileName), hash);
         }
 
+		const string _AreaString = "area";
+		const string _AdminString = "admin";
+		const string _DashboardString = "dashboard";
+		const string _BackofficeString = "backoffice";
+
+		/// <summary>
+		/// Tell if the url should be secured
+		/// </summary>
+		/// <param name="instance">helper instance</param>
+		/// <returns>true if should be</returns>
+		public static bool IsSecuredUrl(this UrlHelper instance)
+		{
+			if (!instance.RequestContext.RouteData.DataTokens.ContainsKey(_AreaString))
+				return false;
+
+			var area = ((string)instance.RequestContext.RouteData.DataTokens[_AreaString]).ToLower();
+			if (area != _AdminString && area != _DashboardString && area != _BackofficeString)
+				return false;
+
+			return true;
+		}
+
 		/// <summary>
 		/// Display date with specified format
 		/// </summary>

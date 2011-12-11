@@ -12,11 +12,7 @@ using Worki.Web.Model;
 
 namespace Worki.Web.Areas.Dashboard.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    [Authorize]
-	public partial class HistoricController : Controller
+	public partial class HistoricController : DashboardControllerBase
     {
         ILogger _Logger;
 

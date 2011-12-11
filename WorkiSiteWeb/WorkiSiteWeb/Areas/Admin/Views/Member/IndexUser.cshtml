@@ -49,7 +49,7 @@
                             @item.LastName
                         </td>
                         <td align="right">
-							@Html.ActionLink(item.UserName, MVC.Dashboard.Profil.Public(item.MemberId)) 
+							@Html.ActionLink(item.UserName, MVC.Account.Public(item.MemberId)) 
                         </td>
                         <td align="center">
                             @(!item.IsAdmin ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Member.ChangeUserRole(Model.PagingInfo.CurrentPage, item.MemberId)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Member.ChangeUserRole(Model.PagingInfo.CurrentPage, item.MemberId)))

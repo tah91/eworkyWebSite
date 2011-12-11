@@ -31,7 +31,7 @@
 	<div class="commentAvatar borderedImg float-left">
 	@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
 	</div>
-	<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Dashboard.Profil.Public(Model.Member.MemberId))</span><br />
+	<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
 	@if (Model.HasFeature(Feature.LocalisationOwner))
 	{	 
 		<span>@FeatureHelper.Display(Feature.LocalisationOwner,Model)</span>
@@ -50,21 +50,21 @@
 		}
 		@if (creation != null)
 		{
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Dashboard.Profil.Public(creation.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
 		}
 		else
 		{ 
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Dashboard.Profil.Public(Model.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
 		}
 		@if (lastEdition != null)
 		{
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Dashboard.Profil.Public(lastEdition.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
         }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
         {
-            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Dashboard.Profil.Public(Model.OwnerID.Value))</span><br />
+            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
         }
 	</div>
 }

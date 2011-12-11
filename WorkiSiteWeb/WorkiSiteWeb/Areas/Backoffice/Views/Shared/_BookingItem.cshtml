@@ -46,7 +46,7 @@
                 <li>@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Details, MVC.Backoffice.Localisation.BookingDetail(Model.Id))</li>
 				@if (Model.Paid)
 				{
-					<li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Dashboard.Profil.Public(Model.MemberId))</li>	
+					<li>@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.SeeCustomerSheet, MVC.Account.Public(Model.MemberId))</li>	
 				}
             </ul>            
         </div>

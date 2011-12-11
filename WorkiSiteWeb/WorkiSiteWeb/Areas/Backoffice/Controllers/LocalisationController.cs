@@ -14,11 +14,7 @@ using Worki.Web.Model;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    [Authorize(Roles = MiscHelpers.BackOfficeConstants.BackOfficeRole)]
-    public partial class LocalisationController : Controller
+	public partial class LocalisationController : BackofficeControllerBase
     {
         ILogger _Logger;
 

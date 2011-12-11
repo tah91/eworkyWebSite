@@ -43,7 +43,7 @@
                             @item.GetFullDisplayName()
                         </td>
                         <td align="right">
-							@Html.ActionLink(item.Email, MVC.Dashboard.Profil.Public(item.MemberId)) 
+							@Html.ActionLink(item.Email, MVC.Account.Public(item.MemberId)) 
                         </td>
 						<td align="right">
 							@Html.ActionLink(Roles.IsUserInRole(item.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Member.SetBackoffice(item.MemberId)) 

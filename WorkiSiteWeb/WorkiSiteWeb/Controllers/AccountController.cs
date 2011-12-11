@@ -16,10 +16,7 @@ using System.Collections.Generic;
 
 namespace Worki.Web.Controllers
 {
-    [HandleError]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    public partial class AccountController : Controller
+	public partial class AccountController : ControllerBase
     {
         const string MemberDisplayNameString = "MemberDisplayName";
 
@@ -326,6 +323,57 @@ namespace Worki.Web.Controllers
             return View(model);
         }
 
+		/// <summary>
+		/// GET Action result to show profil public information
+		/// </summary>
+		/// <param name="id">id of the member</param>
+		/// <returns>View containing profil public information</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		[ActionName("public")]
+		public virtual ActionResult Public(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
+			try
+			{
+				Member.Validate(member);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Public", ex);
+				TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Profile.ProfileString.MemberNotFound;
+				return RedirectToAction(MVC.Home.Index());
+			}
+
+			var model = ProfilPublicModel.GetProfilPublic(member);
+			return View(model);
+		}
+
+		public virtual PartialViewResult AjaxDashboard(int id, int tabId, int p1, int p2)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
+			try
+			{
+				Member.Validate(member);
+				var model = ProfilPublicModel.GetProfilPublic(member, p1, p2);
+				ViewData[ProfilConstants.TabId] = tabId;
+				var tab = (ProfilConstants.DashboardTab)tabId;
+				if (tab == ProfilConstants.DashboardTab.FavLoc)
+					return PartialView(MVC.Dashboard.Shared.Views._LocalisationTab, model.FavoriteLocalisations);
+				else if (tab == ProfilConstants.DashboardTab.AddedLoc)
+					return PartialView(MVC.Dashboard.Shared.Views._LocalisationTab, model.AddedLocalisations);
+				else
+					return null;
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("AjaxDashboard", ex);
+				return null;
+			}
+		}
 
         /// <summary>
         /// Redirige vers le Auth Dialog de Facebook Connect avec les paramètres et permissions nécessaires sur les données utiles 

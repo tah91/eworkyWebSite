@@ -140,7 +140,7 @@
                     <span class="bold">@Worki.Resources.Views.Rental.RentalString.City </span>@Model.Member.MemberMainData.City<br />
                     <span class="bold">@Worki.Resources.Views.Rental.RentalString.PhoneNumber </span>@Model.Member.MemberMainData.PhoneNumber<br />
                     <span class="bold">@Worki.Resources.Views.Rental.RentalString.Email </span>@Model.Member.Email<br />
-                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.CheckProfile </span><span class="boldLink red">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Dashboard.Profil.Public(Model.Member.MemberId))</span>
+                    <span class="bold">@Worki.Resources.Views.Rental.RentalString.CheckProfile </span><span class="boldLink red">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span>
             </div>
         }
     </div>

@@ -13,11 +13,7 @@ using System.Web.Security;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
-    [CompressFilter(Order = 1)]
-    [CacheFilter(Order = 2)]
-    [RequireHttpsRemote]
-	public partial class MemberController : Controller
+	public partial class MemberController : AdminControllerBase
     {
         IMembershipService _MembershipService;
         ILogger _Logger;

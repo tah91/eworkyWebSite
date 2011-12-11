@@ -11,11 +11,7 @@ using Worki.Infrastructure.Logging;
 
 namespace Worki.Web.Areas.Dashboard.Controllers
 {
-	[HandleError]
-	[CompressFilter(Order = 1)]
-	[CacheFilter(Order = 2)]
-	[Authorize]
-	public partial class CommunityController : Controller
+	public partial class CommunityController : DashboardControllerBase
     {
 		ILogger _Logger;
 

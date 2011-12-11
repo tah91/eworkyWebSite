@@ -131,7 +131,7 @@
 		</div>
 	</div>
     @RenderSection("ScriptContent", false)
-	@if (!Url.RequestContext.RouteData.Values.ContainsKey("controller") || (string)Url.RequestContext.RouteData.Values["controller"] != "Admin")
+	@if (!Url.IsSecuredUrl())
 	{
 	<script type="text/javascript">
 	 	require.ready(function () {

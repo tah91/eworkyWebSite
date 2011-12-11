@@ -102,7 +102,7 @@
 			
 			    function AjaxFill(tabId,p1,p2,divId) {					
                     $.ajax({
-					    url: "@Url.Action(MVC.Dashboard.Profil.ActionNames.AjaxDashboard)",
+					    url: "@Url.Action(MVC.Account.ActionNames.AjaxDashboard)",
 					    data: { "id": @Model.Member.MemberId, "tabId" : tabId, "p1" : p1, "p2" : p2 },
 					    success: function (data) {
 						    $(divId).html(data);

@@ -41,7 +41,7 @@
                         <a href="@item.GetDetailFullUrl(Url)">@item.Name</a>
                     </td>
                     <td align="right">
-                        @Html.ActionLink(item.Member.Username, MVC.Dashboard.Profil.Public(item.Member.MemberId))
+                        @Html.ActionLink(item.Member.Username, MVC.Account.Public(item.Member.MemberId))
                     </td>
                     <td align="right">
                         @Html.ActionLink(Roles.IsUserInRole(item.Member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.SetBackOfficeRole(item.Member.MemberId, Model.PagingInfo.CurrentPage, false))
