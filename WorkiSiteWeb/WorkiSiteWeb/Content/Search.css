@@ -12,7 +12,7 @@
 
 .searchBottom
 {
-    height:170px;
+    height:200px;
     position:relative;
 }
 
@@ -27,6 +27,13 @@
     width:200px;
 }
 
+.searchByNameText
+{
+    padding-top:20px;
+    padding-bottom:5px;
+}
+
+
 .searchLinkAndSubmit
 {
     margin-top:20px;
@@ -39,8 +46,8 @@
 
 .changeSeachType
 {
-    margin-top: 6px;
-    margin-left: 30px;
+    /*margin-top: 6px;
+    margin-left: 30px;*/
 }
 
 .searchDesc

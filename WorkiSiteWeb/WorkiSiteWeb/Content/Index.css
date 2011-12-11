@@ -177,7 +177,7 @@
 
 .indexSearchIndexLinks
 {
-    margin-top:40px;
+    /*margin-top:40px;*/
 }
 
 .indexSearchIndexLinks .buttonStd
@@ -187,8 +187,10 @@
 
 .indexSearchIndexLinksLeft
 {
-    bottom: 25%;
-    position: absolute;
+	margin: 5px 0 0 5px;
+	font-size:1em;
+    /*bottom: 25%;
+    position: absolute;*/
 }
 
 .indexSearchIndexLinksRight

@@ -11,6 +11,20 @@
 
 @{
     var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
+	var dropDown = new DropDownModel
+	{
+		Id = DropDownModel.AdvancedSearchDD,
+		Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
+		Items = new List<DropDownItem>
+		{
+			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
+			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"}
+		}
+	};
+	if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
+	{
+		dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName" });
+	}
 }
 <div class="indexHeader">
     <h1 class="darkblue">@string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace, indexViewModel.LocalisationCount)</h1>
@@ -41,9 +55,10 @@
 							@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers)
 						</div>
 
-						<div class="indexSearchIndexLinks relative">
+						<div class="indexSearchIndexLinks">
 							<div class="indexSearchIndexLinksLeft float-left">
-							@Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
+							@Html.Partial(MVC.Shared.Views._DropDownList, dropDown)    
+							@*@Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())*@
 							</div>
 							<div class="indexSearchIndexLinksRight float-right">
 								<input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
@@ -270,6 +285,9 @@
             }
             workiGeoCoder.SearchFormSubmit(evt);
             return false;
+           });
+        require(["@Links.Scripts.dropdown_js"], function () {
+			InitDropdown("#@DropDownModel.AdvancedSearchDD");
         });
     </script>
     @Html.Partial(MVC.Shared.Views._IndexGalleryScript)

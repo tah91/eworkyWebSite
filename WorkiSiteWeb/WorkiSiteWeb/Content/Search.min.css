@@ -1,11 +1,11 @@
 ﻿.searchFirstRow{height:330px}
 #searchFormPartialContainer{width:440px}
-.searchBottom{height:170px;position:relative}
+.searchBottom{height:200px;position:relative}
 .searchOptions p{margin-top:15px;margin-bottom:5px}
 .searchCheckBoxs{width:200px}
+.searchByNameText{padding-top:20px;padding-bottom:5px}
 .searchLinkAndSubmit{margin-top:20px}
 .submitSearchContainer{padding-right:100px}
-.changeSeachType{margin-top:6px;margin-left:30px}
 .searchDesc{margin:0!important;width:47%;height:230px;padding:20px!important}
 .searchDesc p{margin:10px 0}
 .resultHeader2{margin-left:60px;padding:8px}

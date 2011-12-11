@@ -61,6 +61,15 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recherche avancée.
+        /// </summary>
+        public static string AdvancedSearch {
+            get {
+                return ResourceManager.GetString("AdvancedSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tri par distance.
         /// </summary>
         public static string DistanceOrdered {
@@ -196,7 +205,16 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rechercher par type de lieu.
+        ///   Looks up a localized string similar to Par nom de lieu.
+        /// </summary>
+        public static string SearchByPlaceName {
+            get {
+                return ResourceManager.GetString("SearchByPlaceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Par type de lieu.
         /// </summary>
         public static string SearchByPlaceType {
             get {
@@ -205,7 +223,7 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rechercher par type de prestation.
+        ///   Looks up a localized string similar to Par services.
         /// </summary>
         public static string SearchByServiceType {
             get {

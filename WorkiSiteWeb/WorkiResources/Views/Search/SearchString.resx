@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Recherche avancée</value>
+  </data>
   <data name="DistanceOrdered" xml:space="preserve">
     <value>Tri par distance</value>
   </data>
@@ -162,11 +165,14 @@
   <data name="Search" xml:space="preserve">
     <value>Recherche</value>
   </data>
+  <data name="SearchByPlaceName" xml:space="preserve">
+    <value>Par nom de lieu</value>
+  </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value>Rechercher par type de lieu</value>
+    <value>Par type de lieu</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
-    <value>Rechercher par type de prestation</value>
+    <value>Par services</value>
   </data>
   <data name="SearchResult" xml:space="preserve">
     <value>Résultat(s) de recherche</value>

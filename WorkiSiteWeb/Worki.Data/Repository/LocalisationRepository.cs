@@ -57,7 +57,7 @@ namespace Worki.Data.Models
 			var idsToLoad = new List<int>();
 			//all
 			var localisations = _Context.Localisations.AsQueryable();
-            //exclude offline ones
+			//exclude offline ones
 			localisations = localisations.Where(loc => loc.MainLocalisation != null && !loc.MainLocalisation.IsOffline);
 			//matching address
 			var critLat = (float)criteria.LocalisationData.Latitude;
@@ -103,18 +103,25 @@ namespace Worki.Data.Models
 									 {
 										 ID = item.ID,
 										 LocalisationType = item.TypeValue,
-                                         LocalisationName = item.Name,
+										 LocalisationName = item.Name,
 										 Features = (from f in item.LocalisationFeatures select f.FeatureID),
 										 OfferTypes = (from o in item.Offers where o.IsOnline select o.Type),
 										 Ratings = (from c in item.Comments select new { Price = c.RatingPrice, Wifi = c.RatingWifi, Dispo = c.RatingDispo, Welcome = c.RatingWelcome, Rating = c.Rating })
 									 }).ToList();
 
-            //match name if needed
-            if (!string.IsNullOrEmpty(criteria.LocalisationData.Name))
-            {
-                var nameToSearch = criteria.LocalisationData.Name.Split(' ');
-                localisations = localisations.Where(loc => loc.Name.Contains(nameToSearch[0]));
-            }
+			//match name if needed
+			if (!string.IsNullOrEmpty(criteria.LocalisationData.Name))
+			{
+				var nameToSearch = criteria.LocalisationData.Name.ToLower().Split(' ');
+				var nameIds = new List<int>();
+				foreach (var item in nameToSearch)
+				{
+					var containItem = locProjectionList.Where(p => p.LocalisationName.ToLower().Contains(item)).Select(p => p.ID);
+					nameIds = nameIds.Concat(containItem).ToList();
+				}
+
+				locProjectionList = locProjectionList.Where(p => nameIds.Contains(p.ID)).ToList();
+			}
 
 			//match offer type
 			var offerType = (LocalisationOffer)criteria.OfferData.Type;
@@ -192,35 +199,35 @@ namespace Worki.Data.Models
 				}
 			}
 
-            //build an offerlist which contains correct ids
-            if (criteria.OfferData.OfferFeatures.Count != 0)
-            {
-                var offers = _Context.Offers.AsQueryable();
-                //all offers from the localisations that are online
+			//build an offerlist which contains correct ids
+			if (criteria.OfferData.OfferFeatures.Count != 0)
+			{
+				var offers = _Context.Offers.AsQueryable();
+				//all offers from the localisations that are online
 				offers = offers.Where(o => o.IsOnline && idsToLoad.Contains(o.LocalisationId));
 
-                var offerProjectionList = (from item in offers
-                                           select new
-                                           {
-                                               ID = item.Id,
-                                               LocID = item.LocalisationId,
-                                               OfferType = item.Type,
-                                               Features = (from f in item.OfferFeatures select f.FeatureId)
-                                           }).ToList();
+				var offerProjectionList = (from item in offers
+										   select new
+										   {
+											   ID = item.Id,
+											   LocID = item.LocalisationId,
+											   OfferType = item.Type,
+											   Features = (from f in item.OfferFeatures select f.FeatureId)
+										   }).ToList();
 
-                var neededOfferFeatures = (from item in criteria.OfferData.OfferFeatures select item.FeatureId).ToList();
+				var neededOfferFeatures = (from item in criteria.OfferData.OfferFeatures select item.FeatureId).ToList();
 
-                //all localisation which offer match needed features
-                idsToLoad = offerProjectionList.Where(offer =>
-                {
-                    foreach (var item in neededOfferFeatures)
-                    {
-                        if (!offer.Features.Contains(item))
-                            return false;
-                    }
-                    return true;
-                }).Select(offer => offer.LocID).ToList();
-            }
+				//all localisation which offer match needed features
+				idsToLoad = offerProjectionList.Where(offer =>
+				{
+					foreach (var item in neededOfferFeatures)
+					{
+						if (!offer.Features.Contains(item))
+							return false;
+					}
+					return true;
+				}).Select(offer => offer.LocID).ToList();
+			}
 
 			return _Context.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList().OrderByDescending(loc => ratingDict[loc.ID]).ToList();
 		}

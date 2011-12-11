@@ -10,19 +10,19 @@
         @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
         @Html.HiddenFor(m => m.Criteria.SearchType)
         @Html.HiddenFor(m => m.Criteria.DirectAccessType)
-
-        <div class="localisationField">
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
-            </div>
-        </div>
+		@Html.HiddenFor(m => m.Criteria.OrderBy)
 
         <div>
             @switch (Model.Criteria.SearchType)
-            {
-                case eSearchType.ePerOffer:
-                    {
+			{
+				case eSearchType.ePerOffer:
+					{
             <div class="searchBottom searchCriterias">
+				<div class="localisationField">
+					<div class="editor-field">
+						@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
+					</div>
+				</div>
                 <div class="localisationTypes searchOptions float-left">
                     <p class="blue">@Worki.Resources.Views.Search.SearchString.TypeOfService</p>
                     <div class="editor-field">
@@ -52,11 +52,17 @@
                 <div class="clear">
                 </div>                
             </div>
-                    }
-                    break;
-                case eSearchType.ePerType:
-                    {
+					}
+					break;
+				case eSearchType.ePerType:
+					{
+
             <div class="searchBottom searchCriterias">
+				<div class="localisationField">
+					<div class="editor-field">
+						@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
+					</div>
+				</div>
                 <div class="localisationTypes searchOptions float-left">
                     <p class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</p>
                     <div class="float-left">
@@ -115,30 +121,39 @@
                     </div>                            
                 </div>
             </div>
-                    }
-                    break;
-                case eSearchType.ePerName:
-                    {
-                        @Html.TextBoxFor(model => model.Criteria.LocalisationData.Name, new { placeHolder = "Régus..." }) 
-                    }
-                    break;
-                default:
-               break;
-            }
+					}
+					break;
+				case eSearchType.ePerName:
+					{
+			<div class="searchBottom searchCriterias">
+				<p class="blue searchByNameText">Quel est le nom du lieu ?</p>
+				<div class="editor-field">
+					@Html.TextBoxFor(model => model.Criteria.LocalisationData.Name, new { placeHolder = "Ex : La Cantine, Regus Opéra, ..." }) 
+				</div>
+				<p class="blue searchByNameText">Où est ce lieu ? (facultatif)</p>
+				<div class="editor-field">
+					@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
+				</div>
+			</div>
+					}
+					break;
+				default:
+					break;
+			}
             <div class="searchLinkAndSubmit">
                 <div class="changeSeachType float-left">    
                 @{
-                    var dropDown = new DropDownModel
-                    {
-                        Id = DropDownModel.AdvancedSearchDD,
-                        Title = "selectionnnez",
-                        Items = new List<DropDownItem>
+			var dropDown = new DropDownModel
+			{
+				Id = DropDownModel.AdvancedSearchDD,
+				Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
+				Items = new List<DropDownItem>
 					                {
-						                new DropDownItem{ DisplayName = "Par type de lieu", Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
-                                        new DropDownItem{ DisplayName = "Par type de prestation", Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"},
-                                        new DropDownItem{ DisplayName = "Par nom", Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName"}
+						                new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
+                                        new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"},
+                                        new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName"}
 					                }
-                    };                     
+			};                     
                 }      
                 @Html.Partial(MVC.Shared.Views._DropDownList, dropDown)              
                 </div>

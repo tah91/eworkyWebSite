@@ -10,6 +10,7 @@ using System.Web.Routing;
 using System.Web;
 using System.Net;
 using Worki.Infrastructure.Logging;
+using System.Collections.Generic;
 
 namespace Worki.Service
 {
@@ -41,24 +42,25 @@ namespace Worki.Service
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var results = lRepo.FindByCriteria(criteriaViewModel.Criteria);
 
+			var nameSimiltude = new Dictionary<int, int>();
+
             foreach (var item in results)
             {
                 var distance = MiscHelpers.GetDistanceBetween(criteriaViewModel.Criteria.LocalisationData.Latitude, criteriaViewModel.Criteria.LocalisationData.Longitude, item.Latitude, item.Longitude);
                 criteriaViewModel.DistanceFromLocalisation.Add(item.ID, distance);
+
+				nameSimiltude[item.ID] = MiscHelpers.GetSimilitude(criteriaViewModel.Criteria.LocalisationData.Name, item.Name);
             }
 
-            /* Switch needed to check the different cases */
             switch (criteriaViewModel.Criteria.OrderBy)
             {
 				//already ordered by rating
 				case eOrderBy.Rating:
-					criteriaViewModel.List = results;
+					criteriaViewModel.List = results.OrderByDescending(loc => nameSimiltude[loc.ID]).ToList();
 					break;
                 case eOrderBy.Distance:
-					criteriaViewModel.List = (from item
-                                                    in results
-                                                 orderby criteriaViewModel.DistanceFromLocalisation[item.ID]
-                                                 select item).ToList();
+					criteriaViewModel.List = results.OrderBy(loc=>criteriaViewModel.DistanceFromLocalisation[loc.ID])
+													.OrderByDescending(loc => nameSimiltude[loc.ID]).ToList();
                     break;
                 default:
                     break;

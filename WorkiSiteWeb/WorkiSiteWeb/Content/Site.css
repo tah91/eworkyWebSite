@@ -1882,6 +1882,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .dropdown dd, .dropdown dt, .dropdown ul 
 { 
 	margin:0px; padding:0px; 
+	line-height:18px;
 }
 
 .dropdown dd 
@@ -1921,7 +1922,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .dropdown-triangle
 {
 	font-size: 18px;
-	line-height: 14px;
+	/*line-height: 14px;*/
 }
 
 .dropdown dd ul 

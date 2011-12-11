@@ -198,6 +198,29 @@ namespace Worki.Infrastructure.Helpers
             return dDistance;
         }
 
+		/// <summary>
+		/// Get similitude between two string
+		/// </summary>
+		/// <param name="reference">the reference string</param>
+		/// <param name="toCompare">the string to evaluate</param>
+		/// <returns>index telling how similar the strings are</returns>
+		public static int GetSimilitude(string reference, string toCompare)
+		{
+			var toRet = 0;
+			if (string.IsNullOrEmpty(reference) || string.IsNullOrEmpty(toCompare))
+				return -1;
+
+			var splitted = reference.ToLower().Split(' ');
+			toCompare = toCompare.ToLower();
+			foreach (var part in splitted)
+			{
+				if (toCompare.Contains(part))
+					toRet++;
+			}
+
+			return toRet;
+		}
+
 		public static string Nl2Br(string text)
 		{
 			var builder = new System.Text.StringBuilder();

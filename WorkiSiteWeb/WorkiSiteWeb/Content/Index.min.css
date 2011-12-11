@@ -20,9 +20,8 @@
 .indexSearchFormDiv{padding:20px}
 .indexSearchFormDiv select,.indexSearchFormDiv input[type="text"],input[type="password"]{width:100%;font-size:1em}
 .indexSearchFormField{margin-bottom:40px}
-.indexSearchIndexLinks{margin-top:40px}
 .indexSearchIndexLinks .buttonStd{padding:10px 20px}
-.indexSearchIndexLinksLeft{bottom:25%;position:absolute}
+.indexSearchIndexLinksLeft{margin:5px 0 0 5px;font-size:1em}
 #slides{z-index:100}
 .slides_container{overflow:hidden;position:relative;display:none}
 .slides_container div.slide{width:460px;height:310px;display:block}
