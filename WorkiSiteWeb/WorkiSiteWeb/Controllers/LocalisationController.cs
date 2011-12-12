@@ -498,8 +498,10 @@ namespace Worki.Web.Controllers
             }
             criteria.Everything = false;
 
-            var rvd = _SearchService.GetRVD(criteria);
-            return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
+			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
+
+			criteriaViewModel.FillPageInfo();
+			return View(MVC.Localisation.Views.resultats_liste, criteriaViewModel);
         }
 
         /// <summary>
@@ -538,8 +540,10 @@ namespace Worki.Web.Controllers
                     break;
             }
 
-            var rvd = _SearchService.GetRVD(criteria);
-            return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
+			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
+
+			criteriaViewModel.FillPageInfo();
+			return View(MVC.Localisation.Views.resultats_liste, criteriaViewModel);
         }
 
 		/// <summary>

@@ -38,6 +38,15 @@ namespace Worki.Service
         /// </summary>
         void FillResults(SearchCriteriaFormViewModel criteriaViewModel)
         {
+			float lat = 0, lng = 0;
+			_GeocodeService.GeoCode(criteriaViewModel.Criteria.Place, out lat, out lng);
+
+			if (criteriaViewModel.Criteria.LocalisationData.Latitude == 0 && criteriaViewModel.Criteria.LocalisationData.Longitude == 0)
+			{
+				criteriaViewModel.Criteria.LocalisationData.Latitude = lat;
+				criteriaViewModel.Criteria.LocalisationData.Longitude = lng;
+			}
+
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var results = lRepo.FindByCriteria(criteriaViewModel.Criteria);
@@ -148,15 +157,6 @@ namespace Worki.Service
                 criteria.LocalisationData.Latitude = floatVal;
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Longitude, ref value) && float.TryParse(value, out floatVal))
                 criteria.LocalisationData.Longitude = floatVal;
-
-            float lat = 0, lng = 0;
-            _GeocodeService.GeoCode(criteria.Place, out lat, out lng);
-
-            if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
-            {
-                criteria.LocalisationData.Latitude = lat;
-                criteria.LocalisationData.Longitude = lng;
-            }
 
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.OfferType, ref value) && int.TryParse(value, out intVal))
                 criteria.OfferData.Type = intVal;
