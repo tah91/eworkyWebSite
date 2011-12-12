@@ -22,7 +22,7 @@
         @using (Html.BeginForm())
 	    {
             <div class="contentBlock">
-                <h3 class="blue marginb10">Principe de fonctionnement</h3>
+                <h3 class="blue marginb10">@Worki.Resources.Views.BackOffice.BackOfficeString.WorkingPrinciple</h3>
                 <div class="marginb10">
                     @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.HeadModifyPayment, MiscHelpers.UrlConstants.paypal))
                 </div>
@@ -30,7 +30,7 @@
                     @string.Format(Worki.Resources.Views.Profile.ProfileString.EndModifyPayment, Worki.Section.PaymentConfiguration.Instance.CommissionPercent)
                 </div>
                 @Html.AntiForgeryToken()
-                <h3 class="blue margint15">Identifiants PayPal</h3>
+                <h3 class="blue margint15">@Worki.Resources.Views.BackOffice.BackOfficeString.PaypalIdentity</h3>
                 <table class="confirmbooktable">
                     <tr>
                         <td>

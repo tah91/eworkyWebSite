@@ -351,4 +351,7 @@
   <data name="BORole" xml:space="preserve">
     <value>Rôle BackOffice</value>
   </data>
+  <data name="Stickers" xml:space="preserve">
+    <value>Stickers</value>
+  </data>
 </root>

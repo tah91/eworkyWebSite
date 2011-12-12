@@ -583,6 +583,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stickers.
+        /// </summary>
+        public static string Stickers {
+            get {
+                return ResourceManager.GetString("Stickers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to la une.
         /// </summary>
         public static string TheTop {

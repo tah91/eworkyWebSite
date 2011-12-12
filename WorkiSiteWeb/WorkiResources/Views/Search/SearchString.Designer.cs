@@ -344,6 +344,24 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quel est le nom du lieu ?.
+        /// </summary>
+        public static string VenueName {
+            get {
+                return ResourceManager.GetString("VenueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Où est ce lieu ? (facultatif).
+        /// </summary>
+        public static string Where {
+            get {
+                return ResourceManager.GetString("Where", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vos résultats de recherche : {0} lieu(x) trouvé(s).
         /// </summary>
         public static string YourSearchResult {

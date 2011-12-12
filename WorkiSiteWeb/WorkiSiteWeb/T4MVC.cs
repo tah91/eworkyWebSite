@@ -2508,6 +2508,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Sticker() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Sticker);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult UpdateMainLocalisation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.UpdateMainLocalisation);
         }
@@ -2561,6 +2566,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string OnOffline = "OnOffline";
+            public readonly string Sticker = "Sticker";
             public readonly string UpdateMainLocalisation = "UpdateMainLocalisation";
             public readonly string DeleteLocalisation = "DeleteLocalisation";
             public readonly string UpdateOwner = "UpdateOwner";
@@ -2596,15 +2602,24 @@ namespace Worki.Web.Areas.Admin.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult OnOffline(int id) {
+        public override System.Web.Mvc.ActionResult OnOffline(int id, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OnOffline);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult UpdateMainLocalisation(int id) {
+        public override System.Web.Mvc.ActionResult Sticker(int id, int page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Sticker);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult UpdateMainLocalisation(int id, int page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UpdateMainLocalisation);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 

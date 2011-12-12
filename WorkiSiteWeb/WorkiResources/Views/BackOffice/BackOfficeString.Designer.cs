@@ -376,6 +376,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Identifiants PayPal.
+        /// </summary>
+        public static string PaypalIdentity {
+            get {
+                return ResourceManager.GetString("PaypalIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tél..
         /// </summary>
         public static string PhoneNumber {
@@ -525,6 +534,15 @@ namespace Worki.Resources.Views.BackOffice {
         public static string VisitNeeded {
             get {
                 return ResourceManager.GetString("VisitNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Principe de fonctionnement.
+        /// </summary>
+        public static string WorkingPrinciple {
+            get {
+                return ResourceManager.GetString("WorkingPrinciple", resourceCulture);
             }
         }
         

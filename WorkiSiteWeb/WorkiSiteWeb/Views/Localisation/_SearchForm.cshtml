@@ -44,13 +44,11 @@
                                 @Html.FeatureChecboxLabel(Feature.FastInternet, Model.Criteria.LocalisationData)
                                 @Html.FeatureChecboxLabel(Feature.AC, Model.Criteria.LocalisationData)
                             </div>
-                        <div class="clear">
-                        </div>
+                        <div class="clear"></div>
                         </div>
                     </div>                                       
                 </div>
-                <div class="clear">
-                </div>                
+                <div class="clear"></div>                
             </div>
 					}
 					break;
@@ -117,8 +115,7 @@
                         @Html.LabelFor(model => model.Criteria.PrivateArea)
                         </div>
                     </div>
-                    <div class="clear">
-                    </div>                            
+                    <div class="clear"></div>                            
                 </div>
             </div>
 					}
@@ -126,11 +123,11 @@
 				case eSearchType.ePerName:
 					{
 			<div class="searchBottom searchCriterias">
-				<p class="blue searchByNameText">Quel est le nom du lieu ?</p>
+				<p class="blue searchByNameText">@Worki.Resources.Views.Search.SearchString.VenueName</p>
 				<div class="editor-field">
 					@Html.TextBoxFor(model => model.Criteria.LocalisationData.Name, new { placeHolder = "Ex : La Cantine, Regus Opéra, ..." }) 
 				</div>
-				<p class="blue searchByNameText">Où est ce lieu ? (facultatif)</p>
+				<p class="blue searchByNameText">@Worki.Resources.Views.Search.SearchString.Where</p>
 				<div class="editor-field">
 					@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Search.SearchString.PlaceExamples })
 				</div>
@@ -160,8 +157,7 @@
                 <div class="submitSearchContainer  float-right">
                     <input type="submit" class="buttonBlue buttonStd imageBtn" value="@Worki.Resources.Views.Shared.SharedString.Search"/>
                 </div>
-                <div class="clear">
-                </div>
+                <div class="clear"></div>
             </div>
         </div>
     }
