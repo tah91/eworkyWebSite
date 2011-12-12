@@ -50,7 +50,7 @@
                             <a href="@Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(item.Localisation.ID, item.Id))">
                                 <div class="localisationTag float-left">
                                     <div class="localisationImgDiv borderedImg">
-			                        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)
+                                        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), false, PictureData.GetFolder(ProviderType.Offer)), item.Name)
                                     </div>
                                     <div class="localisationImgDesc">
                                         <span class="bold">@item.Name</span>
