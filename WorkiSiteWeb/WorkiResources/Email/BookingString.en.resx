@@ -127,19 +127,29 @@
     <value> </value>
   </data>
   <data name="BookingMailBody" xml:space="preserve">
-    <value> </value>
+    <value>Name : {0}
+Phone number : {1}
+email address : {2}
+Workplace : {3}
+Need : {4}
+Start : {5}
+End : {6}
+Message : {7} </value>
   </data>
   <data name="BookingMailSubject" xml:space="preserve">
-    <value> </value>
+    <value>eWorky alert - Booking request</value>
   </data>
   <data name="BookingNewMemberBody" xml:space="preserve">
-    <value> </value>
+    <value>Following you booking request for a {0} from {1} to {2} at {3} ({4}), an eWorky account was created. It will enable you to follow all your history and the news on your booking requests. 
+
+Your login is "{5}" and your temporary password is "{6}". You can change your password on your profile : {7}. 
+
+Please complete your profile details here : {8}.
+
+We hope to see you soon again on eworky.com,</value>
   </data>
   <data name="BookingNewMemberSubject" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="BookingOwnerBody" xml:space="preserve">
-    <value> </value>
+    <value>eWorky - An account was created following your booking request</value>
   </data>
   <data name="BookingOwnerSubject" xml:space="preserve">
     <value> </value>
@@ -181,6 +191,9 @@
     <value> </value>
   </data>
   <data name="QuotationNewMemberSubject" xml:space="preserve">
+    <value>eWorky - An account has been created following your price request</value>
+  <comment>?</comment></data>
+  <data name="RefuseMailBody" xml:space="preserve">
     <value> </value>
   </data>
   <data name="RefuseBookingClient" xml:space="preserve">

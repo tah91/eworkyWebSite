@@ -376,6 +376,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message au gérant (facultatif).
+        /// </summary>
+        public static string MessageToOwner {
+            get {
+                return ResourceManager.GetString("MessageToOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offre.
         /// </summary>
         public static string Offer {
@@ -408,6 +417,15 @@ namespace Worki.Resources.Views.Booking {
         public static string PayFail {
             get {
                 return ResourceManager.GetString("PayFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Une erreur emepeche le paymenent, veuillez nous contacter à support@eworky.com..
+        /// </summary>
+        public static string PaymentError {
+            get {
+                return ResourceManager.GetString("PaymentError", resourceCulture);
             }
         }
         

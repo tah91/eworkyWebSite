@@ -118,72 +118,72 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BirthDate" xml:space="preserve">
-    <value> </value>
+    <value>Birth date</value>
   </data>
   <data name="Civility" xml:space="preserve">
-    <value> </value>
+    <value>Civility</value>
   </data>
   <data name="Company" xml:space="preserve">
-    <value> </value>
+    <value>Large cap</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
-    <value> </value>
+    <value>Professional activity</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
+    <value>Describe yourself in 140 caracters</value>
   </data>
   <data name="Facebook" xml:space="preserve">
-    <value> </value>
+    <value>Facebook</value>
   </data>
   <data name="FavoritePlaces" xml:space="preserve">
-    <value> </value>
+    <value>Where do I like to work?</value>
   </data>
   <data name="Independant" xml:space="preserve">
-    <value> </value>
+    <value>Independent</value>
   </data>
   <data name="Linkedin" xml:space="preserve">
-    <value> </value>
+    <value>LinkedIn</value>
   </data>
   <data name="LocalisationOwner" xml:space="preserve">
-    <value> </value>
+    <value>Workplace owner</value>
   </data>
   <data name="Nomad" xml:space="preserve">
-    <value> </value>
+    <value>Nomade</value>
   </data>
   <data name="NotSelected" xml:space="preserve">
-    <value> </value>
+    <value>Select your profile</value>
   </data>
   <data name="Other" xml:space="preserve">
-    <value> </value>
+    <value>Other</value>
   </data>
   <data name="PaymentAddress" xml:space="preserve">
     <value> </value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value> </value>
+    <value>Mobile phone</value>
   </data>
   <data name="ProfileString" xml:space="preserve">
-    <value> </value>
+    <value>Profile</value>
   </data>
   <data name="PunctualUser" xml:space="preserve">
     <value> </value>
-  </data>
+  <comment>?</comment></data>
   <data name="Startup" xml:space="preserve">
-    <value> </value>
+    <value>Entrepreneur / Small company</value>
   </data>
   <data name="Student" xml:space="preserve">
-    <value> </value>
+    <value>Student</value>
   </data>
   <data name="Teleworker" xml:space="preserve">
-    <value> </value>
+    <value>Telecommuter</value>
   </data>
   <data name="Twitter" xml:space="preserve">
-    <value> </value>
+    <value>Twitter</value>
   </data>
   <data name="Viadeo" xml:space="preserve">
-    <value> </value>
+    <value>Viadeo</value>
   </data>
   <data name="Website" xml:space="preserve">
-    <value> </value>
+    <value>Website</value>
   </data>
 </root>

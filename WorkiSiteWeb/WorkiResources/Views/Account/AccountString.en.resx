@@ -118,55 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfirmationMail" xml:space="preserve">
-    <value> </value>
+    <value>Thank you, you will now receive an email to validate your login details !</value>
   </data>
   <data name="EWorkyRegister" xml:space="preserve">
-    <value> </value>
+    <value>Sign up on eWorky</value>
   </data>
   <data name="FillInscription" xml:space="preserve">
-    <value> </value>
+    <value>To sign up, please answer the following questions.</value>
   </data>
   <data name="ForgottenPassword" xml:space="preserve">
-    <value> </value>
+    <value>Forbidden password</value>
   </data>
   <data name="Inscription" xml:space="preserve">
-    <value> </value>
+    <value>Sign up</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value> </value>
+    <value>Sign in</value>
   </data>
   <data name="LoginToEWorky" xml:space="preserve">
-    <value> </value>
+    <value>Sign in to eWorky</value>
   </data>
   <data name="MinimumLength" xml:space="preserve">
-    <value> </value>
+    <value>Passwords must be more than 0 character.</value>
   </data>
   <data name="NewOldPassword" xml:space="preserve">
-    <value> </value>
+    <value>Please enter your current password and your new password.</value>
   </data>
   <data name="QualityOfProfils" xml:space="preserve">
-    <value> </value>
+    <value>To make sure profiles are not fake, eWorky is likely to ask you to</value>
   </data>
   <data name="RequiredFields" xml:space="preserve">
     <value> </value>
-  </data>
+  <comment>?</comment></data>
   <data name="SetMailInscription" xml:space="preserve">
-    <value> </value>
+    <value>Please enter the email address used when you signed up, your login details will be sent up.</value>
   </data>
   <data name="SocialNetworkSoon" xml:space="preserve">
-    <value> </value>
+    <value>authentificate your profile soon using a social network.</value>
   </data>
   <data name="ValidationLetter" xml:space="preserve">
-    <value> </value>
+    <value>Validation letters</value>
   </data>
   <data name="EnterFollowingLetters" xml:space="preserve">
-    <value> </value>
+    <value>Please enter the following letters.</value>
   </data>
   <data name="AgreeWithCGU" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>I read and accept all </value>
+  <comment>?</comment></data>
   <data name="PasswordHaveBeenChanged" xml:space="preserve">
-    <value> </value>
+    <value>Your password has been changed.</value>
   </data>
   <data name="YouChangeYourPassword" xml:space="preserve">
     <value> </value>

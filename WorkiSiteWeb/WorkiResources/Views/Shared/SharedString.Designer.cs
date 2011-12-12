@@ -502,6 +502,15 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to espace utilisateur.
+        /// </summary>
+        public static string SpaceUser {
+            get {
+                return ResourceManager.GetString("SpaceUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to À la une.
         /// </summary>
         public static string StarPlaces {

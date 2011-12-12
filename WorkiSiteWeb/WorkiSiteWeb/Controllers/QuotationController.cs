@@ -123,11 +123,11 @@ namespace Worki.Web.Controllers
                             var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.ChangePassword());
                             TagBuilder editpasswordLink = new TagBuilder("a");
                             editpasswordLink.MergeAttribute("href", editpasswordUrl);
-                            editpasswordLink.InnerHtml = "changer mon mot de passe";
+                            editpasswordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
                             var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
                             TagBuilder editprofilLink = new TagBuilder("a");
                             editprofilLink.MergeAttribute("href", editprofilUrl);
-                            editprofilLink.InnerHtml = "editer mon profil";
+                            editprofilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
 
 							newMemberMail = new Email(MVC.Emails.Views.Email);
 							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
@@ -178,7 +178,7 @@ namespace Worki.Web.Controllers
                         var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Quotation());
 						TagBuilder ownerLink = new TagBuilder("a");
                         ownerLink.MergeAttribute("href", ownerUrl);
-                        ownerLink.InnerHtml = "espace gérant";
+                        ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
 						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
@@ -265,7 +265,7 @@ namespace Worki.Web.Controllers
                 return Redirect(paypalApprovalUrl);
             }
 
-            TempData[MiscHelpers.TempDataConstants.Info] = "Une erreur emepeche le paymenent, veuillez nous contacter à support@eworky.com";
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.PaymentError;
 
             return RedirectToAction(MVC.Home.Index());
         }

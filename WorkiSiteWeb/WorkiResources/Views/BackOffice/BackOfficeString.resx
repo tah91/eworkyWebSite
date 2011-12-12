@@ -229,7 +229,7 @@
     <value>Lieu</value>
   </data>
   <data name="PlaceDoNotHaveOffer" xml:space="preserve">
-    <value>Ce lieu n'a pas encore d'offre</value>
+    <value>Ce lieu n'a pas encore d'offre.</value>
   </data>
   <data name="Refuse" xml:space="preserve">
     <value>Refuser</value>
@@ -281,5 +281,11 @@
   </data>
   <data name="WorkingPrinciple" xml:space="preserve">
     <value>Principe de fonctionnement</value>
+  </data>
+  <data name="DoNotHaveOnlineBooking" xml:space="preserve">
+    <value>Ce lieu n'a pas encore d'offre pouvant proposer la réservation en ligne.</value>
+  </data>
+  <data name="DoNotHaveOnlineQuotation" xml:space="preserve">
+    <value>Ce lieu n'a pas encore d'offre pouvant proposer la demande de devis.</value>
   </data>
 </root>

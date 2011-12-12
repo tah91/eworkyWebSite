@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Action" xml:space="preserve">
-    <value> </value>
+    <value>Action</value>
   </data>
   <data name="Admin" xml:space="preserve">
-    <value> </value>
+    <value>Admin</value>
   </data>
   <data name="AdminRental" xml:space="preserve">
-    <value> </value>
+    <value>Rentals administration</value>
   </data>
   <data name="AlreadyAdded" xml:space="preserve">
-    <value> </value>
+    <value>&lt;b&gt; Warning : The following workplaces were not added because they were already existing in the database &lt;br/&gt;&lt;/b&gt; {0]</value>
   </data>
   <data name="AlreadyRegistered" xml:space="preserve">
     <value> </value>

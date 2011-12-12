@@ -88,7 +88,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					offer = loc.Offers.FirstOrDefault();
                     if (offer == null)
                     {
-                        TempData[MiscHelpers.TempDataConstants.Info] = "Ce lieu n'a pas encore d'offre";
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
                         return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
                     }
 				}
@@ -134,7 +134,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					offer = loc.Offers.FirstOrDefault();
 					if (offer == null)
 					{
-						TempData[MiscHelpers.TempDataConstants.Info] = "Ce lieu n'a pas encore d'offre";
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
 						return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
 					}
 				}
@@ -318,7 +318,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
                     if (offer == null)
                     {
-                        TempData[MiscHelpers.TempDataConstants.Info] = "Ce lieu n'a pas encore d'offre pouvant proposer la réservation en ligne";
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
                         return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
                     }
                 }
@@ -437,7 +437,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     var userUrl = urlHelp.ActionAbsolute(MVC.Dashboard.Home.Booking());
                     TagBuilder userLink = new TagBuilder("a");
                     userLink.MergeAttribute("href", userUrl);
-                    userLink.InnerHtml = "espace utilisateur";
+                    userLink.InnerHtml = Worki.Resources.Views.Shared.SharedString.SpaceUser;
 					dynamic clientMail = new Email(MVC.Emails.Views.Email);
 					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
 					clientMail.To = booking.Client.Email;
@@ -716,7 +716,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     offer = loc.Offers.Where(o => o.CanHaveQuotation).FirstOrDefault();
                     if (offer == null)
                     {
-                        TempData[MiscHelpers.TempDataConstants.Info] = "Ce lieu n'a pas encore d'offre pouvant proposer la demande de devis";
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineQuotation;
                         return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
                     }
                 }

@@ -133,6 +133,24 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ce lieu n&apos;a pas encore d&apos;offre pouvant proposer la réservation en ligne..
+        /// </summary>
+        public static string DoNotHaveOnlineBooking {
+            get {
+                return ResourceManager.GetString("DoNotHaveOnlineBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ce lieu n&apos;a pas encore d&apos;offre pouvant proposer la demande de devis..
+        /// </summary>
+        public static string DoNotHaveOnlineQuotation {
+            get {
+                return ResourceManager.GetString("DoNotHaveOnlineQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Messagerie électronique.
         /// </summary>
         public static string Email {
@@ -403,7 +421,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ce lieu n&apos;a pas encore d&apos;offre.
+        ///   Looks up a localized string similar to Ce lieu n&apos;a pas encore d&apos;offre..
         /// </summary>
         public static string PlaceDoNotHaveOffer {
             get {

@@ -122,12 +122,12 @@ namespace Worki.Web.Controllers
 							var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
 							TagBuilder profilLink = new TagBuilder("a");
 							profilLink.MergeAttribute("href", editprofilUrl);
-							profilLink.InnerHtml = "editer mon profil";
+							profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
 
                             var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
                             TagBuilder passwordLink = new TagBuilder("a");
                             passwordLink.MergeAttribute("href", editpasswordUrl);
-                            passwordLink.InnerHtml = "changer mon mot de passe";
+                            passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
 
 							newMemberMail = new Email(MVC.Emails.Views.Email);
 							newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
@@ -181,7 +181,7 @@ namespace Worki.Web.Controllers
                         var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Booking());
 						TagBuilder ownerLink = new TagBuilder("a");
                         ownerLink.MergeAttribute("href", ownerUrl);
-                        ownerLink.InnerHtml = "espace gérant";
+                        ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
 
 						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
@@ -264,7 +264,7 @@ namespace Worki.Web.Controllers
                 return Redirect(paypalApprovalUrl);
             }
 
-            TempData[MiscHelpers.TempDataConstants.Info] = "Une erreur emepeche le paymenent, veuillez nous contacter à support@eworky.com";
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.PaymentError;
 
             return RedirectToAction(MVC.Home.Index());
         }

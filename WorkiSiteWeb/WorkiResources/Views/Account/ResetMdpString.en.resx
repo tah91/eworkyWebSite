@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>To retrieve your password, please enter your email address. You will receive your new login access by email.</value>
+  <comment>?</comment></data>
 </root>

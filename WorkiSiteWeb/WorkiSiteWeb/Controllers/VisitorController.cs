@@ -52,7 +52,7 @@ namespace Worki.Web.Controllers
 					//already registered
 					if (user != null)
 					{
-						TempData["AlreadyRegistered"] = "Vous êtes déjà inscrit !";
+						TempData["AlreadyRegistered"] = Worki.Resources.Views.Account.ConnexionString.AlreadyRegistered;
 						return RedirectToAction(MVC.Account.LogOn());
 					}
 					//already added and validated from admin
