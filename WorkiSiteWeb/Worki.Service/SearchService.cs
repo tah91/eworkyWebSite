@@ -133,76 +133,76 @@ namespace Worki.Service
             var criteria = new SearchCriteria();
             var value = string.Empty;
 
-            if (MiscHelpers.GetRequestValue(parameters, "lieu", ref value))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Place, ref value))
                 criteria.Place = value;
 
-            if (MiscHelpers.GetRequestValue(parameters, "name", ref value))
-                criteria.LocalisationData.Name= value;
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.PlaceName, ref value))
+                criteria.LocalisationData.Name = value;
 
             int intVal;
-            if (MiscHelpers.GetRequestValue(parameters, "order", ref value) && int.TryParse(value, out intVal))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Order, ref value) && int.TryParse(value, out intVal))
                 criteria.OrderBy = (eOrderBy)intVal;
 
             float floatVal;
-            if (MiscHelpers.GetRequestValue(parameters, "lat", ref value) && float.TryParse(value, out floatVal))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Latitude, ref value) && float.TryParse(value, out floatVal))
                 criteria.LocalisationData.Latitude = floatVal;
-            if (MiscHelpers.GetRequestValue(parameters, "lng", ref value) && float.TryParse(value, out floatVal))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Longitude, ref value) && float.TryParse(value, out floatVal))
                 criteria.LocalisationData.Longitude = floatVal;
 
-			float lat = 0, lng = 0;
-			_GeocodeService.GeoCode(criteria.Place, out lat, out lng);
+            float lat = 0, lng = 0;
+            _GeocodeService.GeoCode(criteria.Place, out lat, out lng);
 
-			if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
-			{
-				criteria.LocalisationData.Latitude = lat;
-				criteria.LocalisationData.Longitude = lng;
-			}
+            if (criteria.LocalisationData.Latitude == 0 && criteria.LocalisationData.Longitude == 0)
+            {
+                criteria.LocalisationData.Latitude = lat;
+                criteria.LocalisationData.Longitude = lng;
+            }
 
-            if (MiscHelpers.GetRequestValue(parameters, "offer-type", ref value) && int.TryParse(value, out intVal))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.OfferType, ref value) && int.TryParse(value, out intVal))
                 criteria.OfferData.Type = intVal;
 
-            if (MiscHelpers.GetRequestValue(parameters, "tout", ref value) && string.Compare(value, Boolean.TrueString, true) == 0)
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.All, ref value) && string.Compare(value, Boolean.TrueString, true) == 0)
                 criteria.Everything = true;
             else
             {
                 criteria.Everything = false;
-                if (MiscHelpers.GetRequestValue(parameters, "spot-wifi", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.SpotWifi, ref value))
                     criteria.SpotWifi = true;
-                if (MiscHelpers.GetRequestValue(parameters, "cafe", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.CoffeeResto, ref value))
                     criteria.CoffeeResto = true;
-                if (MiscHelpers.GetRequestValue(parameters, "biblio", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Biblio, ref value))
                     criteria.Biblio = true;
-                if (MiscHelpers.GetRequestValue(parameters, "public", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.PublicSpace, ref value))
                     criteria.PublicSpace = true;
-                if (MiscHelpers.GetRequestValue(parameters, "voyageur", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.TravelerSpace, ref value))
                     criteria.TravelerSpace = true;
-                if (MiscHelpers.GetRequestValue(parameters, "hotel", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Hotel, ref value))
                     criteria.Hotel = true;
-                if (MiscHelpers.GetRequestValue(parameters, "telecentre", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Telecentre, ref value))
                     criteria.Telecentre = true;
-                if (MiscHelpers.GetRequestValue(parameters, "centre-affaire", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.BuisnessCenter, ref value))
                     criteria.BuisnessCenter = true;
-                if (MiscHelpers.GetRequestValue(parameters, "coworking", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.CoworkingSpace, ref value))
                     criteria.CoworkingSpace = true;
-                if (MiscHelpers.GetRequestValue(parameters, "entreprise", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.WorkingHotel, ref value))
                     criteria.WorkingHotel = true;
-                if (MiscHelpers.GetRequestValue(parameters, "prive", ref value))
+                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.PrivateArea, ref value))
                     criteria.PrivateArea = true;
             }
 
-			var locKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.LocalisationPrefix);
+            var locKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.LocalisationPrefix);
             criteria.LocalisationData.LocalisationFeatures.Clear();
-			foreach (var key in locKeys)
+            foreach (var key in locKeys)
             {
                 criteria.LocalisationData.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = key });
             }
 
-			var offerKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.OfferPrefix);
-			criteria.OfferData.OfferFeatures.Clear();
-			foreach (var key in offerKeys)
-			{
-				criteria.OfferData.OfferFeatures.Add(new OfferFeature { FeatureId = key });
-			}
+            var offerKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.OfferPrefix);
+            criteria.OfferData.OfferFeatures.Clear();
+            foreach (var key in offerKeys)
+            {
+                criteria.OfferData.OfferFeatures.Add(new OfferFeature { FeatureId = key });
+            }
             return criteria;
         }
 
@@ -214,43 +214,43 @@ namespace Worki.Service
 		public RouteValueDictionary GetRVD(SearchCriteria criteria, int page = 1)
 		{
 			var rvd = new RouteValueDictionary();
-			rvd["page"] = page;
-			rvd["lieu"] = criteria.Place;
-			rvd["offer-type"] = criteria.OfferData.Type;
-            rvd["lat"] = criteria.LocalisationData.Latitude;
-            rvd["lng"] = criteria.LocalisationData.Longitude;
-            rvd["name"] = criteria.LocalisationData.Name;
+			rvd[MiscHelpers.SeoConstants.Page] = page;
+			rvd[MiscHelpers.SeoConstants.Place] = criteria.Place;
+			rvd[MiscHelpers.SeoConstants.OfferType] = criteria.OfferData.Type;
+            rvd[MiscHelpers.SeoConstants.Latitude] = criteria.LocalisationData.Latitude;
+            rvd[MiscHelpers.SeoConstants.Longitude] = criteria.LocalisationData.Longitude;
+            rvd[MiscHelpers.SeoConstants.PlaceName] = criteria.LocalisationData.Name;
 
-            rvd["order"] = (int)criteria.OrderBy;
+            rvd[MiscHelpers.SeoConstants.Order] = (int)criteria.OrderBy;
 
 			if (!criteria.Everything)
 			{
-                rvd["tout"] = false;
+                rvd[MiscHelpers.SeoConstants.All] = false;
 				if (criteria.SpotWifi)
-					rvd["spot-wifi"] = true;
+					rvd[MiscHelpers.SeoConstants.SpotWifi] = true;
 				if (criteria.CoffeeResto)
-					rvd["cafe"] = true;
+					rvd[MiscHelpers.SeoConstants.CoffeeResto] = true;
 				if (criteria.Biblio)
-					rvd["biblio"] = true;
+					rvd[MiscHelpers.SeoConstants.Biblio] = true;
 				if (criteria.PublicSpace)
-					rvd["public"] = true;
+					rvd[MiscHelpers.SeoConstants.PublicSpace] = true;
 				if (criteria.TravelerSpace)
-					rvd["voyageur"] = true;
+					rvd[MiscHelpers.SeoConstants.TravelerSpace] = true;
 				if (criteria.Hotel)
-					rvd["hotel"] = true;
+					rvd[MiscHelpers.SeoConstants.Hotel] = true;
 				if (criteria.Telecentre)
-					rvd["telecentre"] = true;
+					rvd[MiscHelpers.SeoConstants.Telecentre] = true;
 				if (criteria.BuisnessCenter)
-					rvd["centre-affaire"] = true;
+					rvd[MiscHelpers.SeoConstants.BuisnessCenter] = true;
 				if (criteria.CoworkingSpace)
-					rvd["coworking"] = true;
+					rvd[MiscHelpers.SeoConstants.CoworkingSpace] = true;
 				if (criteria.WorkingHotel)
-					rvd["entreprise"] = true;
+					rvd[MiscHelpers.SeoConstants.WorkingHotel] = true;
 				if (criteria.PrivateArea)
-					rvd["prive"] = true;
+					rvd[MiscHelpers.SeoConstants.PrivateArea] = true;
 			}
 			else
-				rvd["tout"] = true;
+				rvd[MiscHelpers.SeoConstants.All] = true;
 
 			foreach (var neededFeature in criteria.LocalisationData.LocalisationFeatures)
 			{

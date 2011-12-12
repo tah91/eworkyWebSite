@@ -38,6 +38,66 @@ namespace Worki.Infrastructure.Helpers
 
         #endregion
 
+        public static class SeoConstants
+        {
+            public const string SpotWifi = "spot-wifi";
+            public const string CoffeeResto = "cafe";
+            public const string Biblio = "bibliotèque";
+            public const string PublicSpace = "public";
+            public const string TravelerSpace = "espace-voyageur";
+            public const string Hotel = "hotel";
+            public const string Telecentre = "telecentre";
+            public const string BuisnessCenter = "centre-affaire";
+            public const string CoworkingSpace = "coworking";
+            public const string WorkingHotel = "hotel-entreprise";
+            public const string PrivateArea = "lieu-prive";
+            public const string All = "tout";
+
+            public static List<string> LocalisationTypes = new List<string>
+            {
+                SpotWifi ,
+                CoffeeResto ,
+                Biblio,
+                PublicSpace ,
+                TravelerSpace ,
+                Hotel ,
+                Telecentre ,
+                BuisnessCenter ,
+                CoworkingSpace ,
+                WorkingHotel ,
+                PrivateArea ,
+                All 
+            };
+
+            public const string FreeArea = "espace-gratuit";
+            public const string BuisnessLounge = "salon-d'affaire";
+            public const string Workstation = "poste-de-travail";
+            public const string Desktop = "bureau";
+            public const string MeetingRoom = "salle-de-reunion";
+            public const string SeminarRoom = "salle-de-formation";
+            public const string VisioRoom = "salle-de-visioconférence";
+
+            public static List<string> LocalisationOfferTypes = new List<string>
+            {
+                FreeArea ,
+                BuisnessLounge,
+                Workstation ,
+                Desktop ,
+                MeetingRoom ,
+                SeminarRoom ,
+                VisioRoom 
+            };
+
+
+            public const string Page = "page";
+            public const string Place = "lieu";
+            public const string OfferType = "offer-type";
+            public const string Latitude = "lat";
+            public const string Longitude = "lng";
+            public const string PlaceName = "name";
+            public const string Order = "order";
+        }
+
 		public static class UrlConstants
 		{
 			public const string BlogApiPath = "http://blog.eworky.com/api/get_recent_posts/";

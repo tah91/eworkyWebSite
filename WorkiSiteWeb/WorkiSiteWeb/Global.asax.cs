@@ -203,6 +203,22 @@ namespace Worki.Web
 				new string[] { "Worki.Web.Controllers" }
 			);
 
+            routes.MapRoute(
+                "", // Nom d'itinéraire
+                "{localisationType}/{localisationPlace}", // URL avec des paramètres
+                new { controller = "Localisation", action = "FullSearchByTypeSeo" }, // Paramètres par défaut
+                new { localisationType = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationTypes) },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                "", // Nom d'itinéraire
+                "{offerType}/{localisationPlace}", // URL avec des paramètres
+                new { controller = "Localisation", action = "FullSearchByOfferSeo" }, // Paramètres par défaut
+                new { offerType = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationOfferTypes) },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
 			routes.MapRoute(
 				"",
 				"lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/{order}/",

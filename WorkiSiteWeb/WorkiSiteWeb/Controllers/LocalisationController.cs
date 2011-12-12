@@ -452,6 +452,96 @@ namespace Worki.Web.Controllers
 			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
 		}
 
+        /// <summary>
+        /// action which redirect to search results, for seo purpose
+        /// </summary>
+        /// <param name="localisationType">localisation type</param>
+        /// <param name="localisationPlace">localisation place</param>
+        /// <returns>redirect to corresponding results</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult FullSearchByTypeSeo(string localisationType, string localisationPlace)
+        {
+            var criteria = new SearchCriteria();
+            criteria.Place = localisationPlace;
+            switch (localisationType)
+            {
+                case MiscHelpers.SeoConstants.SpotWifi:
+                    criteria.SpotWifi = true;
+                    break;
+                case MiscHelpers.SeoConstants.CoffeeResto:
+                    criteria.CoffeeResto = true;
+                    break;
+                case MiscHelpers.SeoConstants.Biblio:
+                    criteria.Biblio = true;
+                    break;
+                case MiscHelpers.SeoConstants.PublicSpace:
+                    criteria.PublicSpace = true;
+                    break;
+                case MiscHelpers.SeoConstants.TravelerSpace:
+                    criteria.TravelerSpace = true;
+                    break;
+                case MiscHelpers.SeoConstants.Telecentre:
+                    criteria.Telecentre = true;
+                    break;
+                case MiscHelpers.SeoConstants.BuisnessCenter:
+                    criteria.BuisnessCenter = true;
+                    break;
+                case MiscHelpers.SeoConstants.CoworkingSpace:
+                    criteria.CoworkingSpace = true;
+                    break;
+                case MiscHelpers.SeoConstants.WorkingHotel:
+                    criteria.WorkingHotel = true;
+                    break;
+                case MiscHelpers.SeoConstants.PrivateArea:
+                    criteria.PrivateArea = true;
+                    break;
+            }
+            criteria.Everything = false;
+
+            var rvd = _SearchService.GetRVD(criteria);
+            return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
+        }
+
+        /// <summary>
+        /// action which redirect to search results, for seo purpose
+        /// </summary>
+        /// <param name="offerType">offer type</param>
+        /// <param name="localisationPlace">localisation place</param>
+        /// <returns>redirect to corresponding results</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult FullSearchByOfferSeo(string offerType, string localisationPlace)
+        {
+            var criteria = new SearchCriteria();
+            criteria.Place = localisationPlace;
+            switch (offerType)
+            {
+                case MiscHelpers.SeoConstants.FreeArea:
+                    criteria.OfferData.Type = (int)LocalisationOffer.FreeArea;
+                    break;
+                case MiscHelpers.SeoConstants.BuisnessLounge:
+                    criteria.OfferData.Type = (int)LocalisationOffer.BuisnessLounge;
+                    break;
+                case MiscHelpers.SeoConstants.Workstation:
+                    criteria.OfferData.Type = (int)LocalisationOffer.Workstation;
+                    break;
+                case MiscHelpers.SeoConstants.Desktop:
+                    criteria.OfferData.Type = (int)LocalisationOffer.Desktop;
+                    break;
+                case MiscHelpers.SeoConstants.MeetingRoom:
+                    criteria.OfferData.Type = (int)LocalisationOffer.MeetingRoom;
+                    break;
+                case MiscHelpers.SeoConstants.SeminarRoom:
+                    criteria.OfferData.Type = (int)LocalisationOffer.SeminarRoom;
+                    break;
+                case MiscHelpers.SeoConstants.VisioRoom:
+                    criteria.OfferData.Type = (int)LocalisationOffer.VisioRoom;
+                    break;
+            }
+
+            var rvd = _SearchService.GetRVD(criteria);
+            return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
+        }
+
 		/// <summary>
 		/// POST Action result to search localisations from a SearchCriteria
 		/// it remove the cached result from session store

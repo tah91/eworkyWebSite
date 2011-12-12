@@ -1157,6 +1157,16 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchByTypeSeo() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByTypeSeo);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FullSearchByOfferSeo() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByOfferSeo);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FullSearchResult() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
         }
@@ -1199,6 +1209,8 @@ namespace Worki.Web.Controllers {
             public readonly string FullSearchPerType = "recherche-par-type";
             public readonly string FullSearchPerName = "recherche-par-nom";
             public readonly string FullSearchPerTypeSpecial = "recherche-special";
+            public readonly string FullSearchByTypeSeo = "FullSearchByTypeSeo";
+            public readonly string FullSearchByOfferSeo = "FullSearchByOfferSeo";
             public readonly string FullSearchResult = "resultats-liste";
             public readonly string FullSearchResultDetail = "resultats-detail";
             public readonly string Suggestions = "Suggestions";
@@ -1338,6 +1350,20 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult FullSearchPerTypeSpecial(int type) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerTypeSpecial);
             callInfo.RouteValueDictionary.Add("type", type);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchByTypeSeo(string localisationType, string localisationPlace) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByTypeSeo);
+            callInfo.RouteValueDictionary.Add("localisationType", localisationType);
+            callInfo.RouteValueDictionary.Add("localisationPlace", localisationPlace);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult FullSearchByOfferSeo(string offerType, string localisationPlace) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByOfferSeo);
+            callInfo.RouteValueDictionary.Add("offerType", offerType);
+            callInfo.RouteValueDictionary.Add("localisationPlace", localisationPlace);
             return callInfo;
         }
 
