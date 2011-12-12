@@ -118,9 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivationContent" xml:space="preserve">
-    <value> </value>
+    <value>Once your account is activated, you will officially become part of the eWorky community ... and we are happy to let you know that you're almost there!
+
+To validate your subscription on eWorky, thanks for clicking on the following validation link: {0}
+
+You will then be able to connect easily with you login " {1} "</value>
   </data>
   <data name="ActivationSubject" xml:space="preserve">
-    <value> </value>
+    <value>Welcome to the eWorky community!</value>
   </data>
 </root>

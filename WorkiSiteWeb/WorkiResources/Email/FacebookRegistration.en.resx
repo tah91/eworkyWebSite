@@ -118,6 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Content" xml:space="preserve">
-    <value> </value>
+    <value>We are happy to let you know that you are now part of the large community of eWorkers and that you can access all eWorky functionalities and complete your profile here : {0}
+
+Now, you can indifferently connect using Facebook or with the personal following login details :
+
+Login : {1}
+Password : {2} (we invite you to change it next time you connect on eWorky) 
+</value>
   </data>
 </root>

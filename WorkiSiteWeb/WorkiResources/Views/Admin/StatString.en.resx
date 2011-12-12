@@ -118,73 +118,73 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Biblio" xml:space="preserve">
-    <value> </value>
+    <value>Library / Museum</value>
   </data>
   <data name="BuisnessCenter" xml:space="preserve">
-    <value> </value>
+    <value>Business centers</value>
   </data>
   <data name="CoffeeResto" xml:space="preserve">
-    <value> </value>
+    <value>Pub / Restaurant</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value> </value>
+    <value>Country</value>
   </data>
   <data name="CoworkingSpace" xml:space="preserve">
-    <value> </value>
+    <value>Coworking space</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value> </value>
+    <value>Creation</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value> </value>
+    <value>Date / Time</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value> </value>
+    <value>Edition</value>
   </data>
   <data name="EworkerName" xml:space="preserve">
-    <value> </value>
+    <value>eWorker</value>
   </data>
   <data name="Eworkers" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Hotel" xml:space="preserve">
-    <value> </value>
+    <value>Hotel</value>
   </data>
   <data name="LastCreate" xml:space="preserve">
     <value> </value>
   </data>
   <data name="LastModif" xml:space="preserve">
-    <value> </value>
+    <value>Last modifications</value>
   </data>
   <data name="NbByCountry" xml:space="preserve">
-    <value> </value>
+    <value>Total per country</value>
   </data>
   <data name="PlaceName" xml:space="preserve">
-    <value> </value>
+    <value>Workplace name</value>
   </data>
   <data name="PrivateArea" xml:space="preserve">
-    <value> </value>
+    <value>Private place</value>
   </data>
   <data name="PublicSpace" xml:space="preserve">
-    <value> </value>
+    <value>Cybercafe</value>
   </data>
   <data name="StatTitle" xml:space="preserve">
-    <value> </value>
+    <value>Statistics</value>
   </data>
   <data name="Status" xml:space="preserve">
-    <value> </value>
+    <value>Type</value>
   </data>
   <data name="Telecentre" xml:space="preserve">
-    <value> </value>
+    <value>Smart work center</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value> </value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Travel lounge</value>
+  <comment>?</comment></data>
   <data name="Wifi" xml:space="preserve">
-    <value> </value>
+    <value>WiFi hotspot</value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
     <value> </value>

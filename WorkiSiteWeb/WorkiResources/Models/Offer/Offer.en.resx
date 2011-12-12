@@ -142,7 +142,7 @@
     <value> </value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value> </value>
+    <value>Name of the offer</value>
   </data>
   <data name="PaymentType" xml:space="preserve">
     <value> </value>
@@ -157,7 +157,7 @@
     <value> </value>
   </data>
   <data name="Type" xml:space="preserve">
-    <value> </value>
+    <value>Type of the offer</value>
   </data>
   <data name="Week" xml:space="preserve">
     <value> </value>

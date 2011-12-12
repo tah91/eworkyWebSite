@@ -118,43 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="From" xml:space="preserve">
-    <value> </value>
+    <value>From : </value>
   </data>
   <data name="Hello" xml:space="preserve">
-    <value> </value>
+    <value>Hi {0}</value>
   </data>
   <data name="Message" xml:space="preserve">
-    <value> </value>
+    <value>Message : </value>
   </data>
   <data name="MP" xml:space="preserve">
-    <value> </value>
+    <value>Private message</value>
   </data>
   <data name="SeeYouSoon" xml:space="preserve">
-    <value> </value>
+    <value>&lt;p&gt;See you soon on eWorky,&lt;/p&gt;
+&lt;p&gt;eWorky Team&lt;/p&gt;</value>
   </data>
   <data name="To" xml:space="preserve">
-    <value> </value>
+    <value>To :</value>
   </data>
   <data name="Friend" xml:space="preserve">
-    <value> </value>
+    <value>Send to a friend</value>
   </data>
   <data name="ConsultHere" xml:space="preserve">
-    <value> </value>
+    <value>Read the add here ==&gt;</value>
   </data>
   <data name="Concern" xml:space="preserve">
-    <value> </value>
+    <value>Concerning the add : </value>
   </data>
   <data name="Info" xml:space="preserve">
-    <value> </value>
+    <value>Ask for information - {0}</value>
   </data>
   <data name="Ownership" xml:space="preserve">
-    <value> </value>
+    <value>You reported that you were Manager of {0}, welcome to eWorky! As Manager of this place,
+- you will be able to edit its description and improve the quality of the information by clicking here {1};
+- you also have the possibility of sticking a see-through sticker at the entrance of your workspace to indicate that your space is nomad friendly and recommended by eWorky. This sticker will be provided free of charge, do not hesitate to ask for it by sending us an email.
+
+Don't forget to ask your customers to comment and put a mark on your place, this will improve your SEO and your visibility on eWorky!</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value> </value>
+    <value>Welcome to eWorky!</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value> </value>
+    <value>{0}&lt;br/&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Follow us on Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Follow us on twitter&lt;/a&gt;</value>
   </data>
   <data name="FollowFacebook" xml:space="preserve">
     <value> </value>
