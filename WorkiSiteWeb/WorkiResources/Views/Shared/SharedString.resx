@@ -295,4 +295,7 @@
   <data name="PleaseChangeInfos" xml:space="preserve">
     <value>Veuillez changer les informations suivantes :</value>
   </data>
+  <data name="SpaceUser" xml:space="preserve">
+    <value>espace utilisateur</value>
+  </data>
 </root>

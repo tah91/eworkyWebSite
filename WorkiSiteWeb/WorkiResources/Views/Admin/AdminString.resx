@@ -354,4 +354,10 @@
   <data name="Stickers" xml:space="preserve">
     <value>Stickers</value>
   </data>
+  <data name="BackOfficeRoleUpdated" xml:space="preserve">
+    <value>Rôle BackOffice Mis à jour.</value>
+  </data>
+  <data name="OwnersHasChanged" xml:space="preserve">
+    <value>Les gérants ont été modifiés.</value>
+  </data>
 </root>

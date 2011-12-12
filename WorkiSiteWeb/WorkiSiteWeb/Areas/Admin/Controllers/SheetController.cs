@@ -270,7 +270,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 }
             }
             // Redirection
-            TempData[MiscHelpers.TempDataConstants.Info] = "Les gérants ont été modifiés";
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.OwnersHasChanged;
             return RedirectToAction(MVC.Admin.Sheet.Index());
         }
 
@@ -426,7 +426,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 context.Complete();
             }
 
-            TempData[MiscHelpers.TempDataConstants.Info] = "Rôle BackOffice Mis à jour";
+            TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.BackOfficeRoleUpdated;
             return RedirectToAction(b ? MVC.Admin.Sheet.BusinessCenter(page) : MVC.Admin.Sheet.CoworkingSpace(page));
         }
 

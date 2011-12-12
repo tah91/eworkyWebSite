@@ -70,11 +70,29 @@ namespace Worki.Resources.Views.Account {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to changer mon mot de passe.
+        /// </summary>
+        public static string ChangeMyPassword {
+            get {
+                return ResourceManager.GetString("ChangeMyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merci, vous allez maintenant recevoir un e-mail vous permettant de confirmer votre inscription !.
         /// </summary>
         public static string ConfirmationMail {
             get {
                 return ResourceManager.GetString("ConfirmationMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to editer mon profil.
+        /// </summary>
+        public static string EditMyProfile {
+            get {
+                return ResourceManager.GetString("EditMyProfile", resourceCulture);
             }
         }
         
@@ -156,6 +174,15 @@ namespace Worki.Resources.Views.Account {
         public static string NewOldPassword {
             get {
                 return ResourceManager.GetString("NewOldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to espace gérant.
+        /// </summary>
+        public static string OwnerSpace {
+            get {
+                return ResourceManager.GetString("OwnerSpace", resourceCulture);
             }
         }
         

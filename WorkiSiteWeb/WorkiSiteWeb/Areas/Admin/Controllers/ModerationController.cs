@@ -189,7 +189,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         public virtual ActionResult IndexImport(FormCollection collection)
         {
             char CSV_SEPARATOR = ';';
-            string featureTrueIndicator = "Oui"; // by default, it's false. It's true only for the string
+            string featureTrueIndicator = Worki.Resources.Views.Shared.SharedString.Yes; // by default, it's false. It's true only for the string
             int nbCol = 20;
             bool isHeaderLine = false;
             if (collection.Get("importCsvHeader") != null && collection.Get("importCsvHeader") == "on")

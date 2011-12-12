@@ -115,6 +115,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rôle BackOffice Mis à jour..
+        /// </summary>
+        public static string BackOfficeRoleUpdated {
+            get {
+                return ResourceManager.GetString("BackOfficeRoleUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retour a la liste.
         /// </summary>
         public static string BackToList {
@@ -462,6 +471,15 @@ namespace Worki.Resources.Views.Admin {
         public static string Owner {
             get {
                 return ResourceManager.GetString("Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Les gérants ont été modifiés..
+        /// </summary>
+        public static string OwnersHasChanged {
+            get {
+                return ResourceManager.GetString("OwnersHasChanged", resourceCulture);
             }
         }
         
