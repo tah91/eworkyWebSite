@@ -276,4 +276,10 @@
   <data name="WorkplacesDirectAccess" xml:space="preserve">
     <value>Accès direct à la gestion des lieux</value>
   </data>
+  <data name="PaypalIdentity" xml:space="preserve">
+    <value>Identifiants PayPal</value>
+  </data>
+  <data name="WorkingPrinciple" xml:space="preserve">
+    <value>Principe de fonctionnement</value>
+  </data>
 </root>
