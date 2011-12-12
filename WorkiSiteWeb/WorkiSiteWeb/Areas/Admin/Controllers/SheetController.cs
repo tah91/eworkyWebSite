@@ -56,7 +56,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
-        public virtual ActionResult OnOffline(int id)
+        public virtual ActionResult OnOffline(int id, int page = 1)
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
@@ -66,7 +66,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 if (loc == null)
                 {
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
-                    return RedirectToAction(MVC.Admin.Sheet.Index());
+                    return RedirectToAction(MVC.Admin.Sheet.Index(page));
                 }
 				if (loc.MainLocalisation != null)
 				{
@@ -84,10 +84,10 @@ namespace Worki.Web.Areas.Admin.Controllers
                 _Logger.Error("OnOffline", ex);
             }
 
-            return RedirectToAction(MVC.Admin.Sheet.Index());
+            return RedirectToAction(MVC.Admin.Sheet.Index(page));
         }
 
-        public virtual ActionResult UpdateMainLocalisation(int id)
+        public virtual ActionResult Sticker(int id, int page = 1)
         {
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
@@ -97,7 +97,38 @@ namespace Worki.Web.Areas.Admin.Controllers
                 if (loc == null)
                 {
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
-                    return RedirectToAction(MVC.Admin.Sheet.Index());
+                    return RedirectToAction(MVC.Admin.Sheet.Index(page));
+                }
+                if (loc.MainLocalisation != null)
+                {
+                    loc.MainLocalisation.HasSticker = !loc.MainLocalisation.HasSticker;
+                }
+                else
+                {
+                    loc.MainLocalisation = new MainLocalisation();
+                }
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("Sticker", ex);
+            }
+
+            return RedirectToAction(MVC.Admin.Sheet.Index(page));
+        }
+
+        public virtual ActionResult UpdateMainLocalisation(int id, int page = 1)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var loc = lRepo.Get(id);
+            try
+            {
+                if (loc == null)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
+                    return RedirectToAction(MVC.Admin.Sheet.Index(page));
                 }
 				if (loc.MainLocalisation != null)
 				{
@@ -115,7 +146,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 _Logger.Error("UpdateMainLocalisation", ex);
             }
 
-            return RedirectToAction(MVC.Admin.Sheet.Index());
+            return RedirectToAction(MVC.Admin.Sheet.Index(page));
         }
 
         /// <summary>

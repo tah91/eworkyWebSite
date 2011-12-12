@@ -36,6 +36,9 @@
                     @Worki.Resources.Views.Localisation.LocalisationString.Online
                 </th>
                 <th>
+                    Stickers
+                </th>
+                <th>
                     @Worki.Resources.Views.Admin.AdminString.Name
                 </th>
                 <th>
@@ -52,10 +55,13 @@
                         @item.ID
                     </td>
                     <td align="right">
-                        @(item.IsMain ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Sheet.UpdateMainLocalisation(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.UpdateMainLocalisation(item.ID)))
+                        @(item.IsMain ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Sheet.UpdateMainLocalisation(item.ID, Model.PagingInfo.CurrentPage)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.UpdateMainLocalisation(item.ID, Model.PagingInfo.CurrentPage)))
                     </td>
                     <td align="right">
-                        @(item.IsOffline ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.OnOffline(item.ID)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Sheet.OnOffline(item.ID)))
+                        @(item.IsOffline ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.OnOffline(item.ID, Model.PagingInfo.CurrentPage)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Sheet.OnOffline(item.ID, Model.PagingInfo.CurrentPage)))
+                    </td>
+                    <td align="right">
+                        @((item.MainLocalisation != null && item.MainLocalisation.HasSticker) ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Sheet.Sticker(item.ID, Model.PagingInfo.CurrentPage)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Sheet.Sticker(item.ID, Model.PagingInfo.CurrentPage)))
                     </td>
                     <td align="right">
                         @item.Name
