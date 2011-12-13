@@ -17,6 +17,13 @@ Scenario: Recherche Detailer
 		And Je selectionne Salon d'affaire
 	When Je clique sur rechercher
 	Then Il doit y avoir plus de 1 resultats
+
+@search
+Scenario: Recherche par nom
+	Given Je vais dans la page Recherche par nom
+		And Je tappe test dans la barre de recherche
+	When Je clique sur rechercher
+	Then Tout les résultats doivent contenir le mot cherché
 	
 @search
 Scenario: Description Etudiant

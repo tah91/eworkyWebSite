@@ -41,6 +41,7 @@ namespace Worki.SpecFlow
             public const string RentalSearch = "Rental/recherche";
             public const string RentalSendFriend = "annonces/envoyer-email-ami/";
             public const string Search = "lieu-de-travail/recherche";
+            public const string SearchByName = "lieu-de-travail/recherche-par-nom";
             public const string WelcomePeopleIndex = "Admin/Activity/IndexWelcomePeople";
             public const string WhoWeAre = "accueil/a-propos";
             public const string BOPaymentInfo = "Backoffice/Profil/ChangePaymentInformation";

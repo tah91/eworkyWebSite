@@ -99,19 +99,40 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Recherche par nom")]
+        [NUnit.Framework.CategoryAttribute("search")]
+        public virtual void RechercheParNom()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recherche par nom", new string[] {
+                        "search"});
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("Je vais dans la page Recherche par nom");
+#line 24
+  testRunner.And("Je tappe test dans la barre de recherche");
+#line 25
+ testRunner.When("Je clique sur rechercher");
+#line 26
+ testRunner.Then("Tout les résultats doivent contenir le mot cherché");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Description Etudiant")]
         [NUnit.Framework.CategoryAttribute("search")]
         public virtual void DescriptionEtudiant()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Description Etudiant", new string[] {
                         "search"});
-#line 22
+#line 29
 this.ScenarioSetup(scenarioInfo);
-#line 23
+#line 30
  testRunner.Given("Je vais dans la page Recherche");
-#line 24
+#line 31
  testRunner.When("Je clique sur Etudiant");
-#line 25
+#line 32
  testRunner.Then("Je dois avoir la description Etudiant");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -124,13 +145,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Description Nomade", new string[] {
                         "search"});
-#line 28
+#line 35
 this.ScenarioSetup(scenarioInfo);
-#line 29
+#line 36
  testRunner.Given("Je vais dans la page Recherche");
-#line 30
+#line 37
  testRunner.When("Je clique sur Nomade");
-#line 31
+#line 38
  testRunner.Then("Je dois avoir la description Nomade");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -143,13 +164,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Description Teletravailleur", new string[] {
                         "search"});
-#line 34
+#line 41
 this.ScenarioSetup(scenarioInfo);
-#line 35
+#line 42
  testRunner.Given("Je vais dans la page Recherche");
-#line 36
+#line 43
  testRunner.When("Je clique sur Teletravailleur");
-#line 37
+#line 44
  testRunner.Then("Je dois avoir la description Teletravailleur");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -162,13 +183,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Description Entrepreneur", new string[] {
                         "search"});
-#line 40
+#line 47
 this.ScenarioSetup(scenarioInfo);
-#line 41
+#line 48
  testRunner.Given("Je vais dans la page Recherche");
-#line 42
+#line 49
  testRunner.When("Je clique sur Entrepreneur");
-#line 43
+#line 50
  testRunner.Then("Je dois avoir la description Entrepreneur");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -181,13 +202,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Description GrandCompte", new string[] {
                         "search"});
-#line 46
+#line 53
 this.ScenarioSetup(scenarioInfo);
-#line 47
+#line 54
  testRunner.Given("Je vais dans la page Recherche");
-#line 48
+#line 55
  testRunner.When("Je clique sur GrandCompte");
-#line 49
+#line 56
  testRunner.Then("Je dois avoir la description GrandCompte");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -200,13 +221,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Description Indépendant", new string[] {
                         "search"});
-#line 52
+#line 59
 this.ScenarioSetup(scenarioInfo);
-#line 53
+#line 60
  testRunner.Given("Je vais dans la page Recherche");
-#line 54
+#line 61
  testRunner.When("Je clique sur Indépendant");
-#line 55
+#line 62
  testRunner.Then("Je dois avoir la description Indépendant");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -219,13 +240,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Présence de lieux A la Une", new string[] {
                         "search"});
-#line 58
+#line 65
 this.ScenarioSetup(scenarioInfo);
-#line 59
+#line 66
  testRunner.Given("Je vais dans la page d\'acceuil");
-#line 60
+#line 67
  testRunner.When("Je clique sur Plus de critère");
-#line 61
+#line 68
  testRunner.Then("Il doit y avoir des lieux dans le bloc A la Une");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -238,17 +259,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Faire Défiler les pages de résultats", new string[] {
                         "search"});
-#line 64
+#line 71
 this.ScenarioSetup(scenarioInfo);
-#line 65
+#line 72
  testRunner.Given("Je vais dans la page d\'acceuil");
-#line 66
+#line 73
   testRunner.And("Je tappe Paris dans la zone de recherche");
-#line 67
+#line 74
  testRunner.When("Je clique sur rechercher");
-#line 68
+#line 75
   testRunner.And("Je fais défiler les pages");
-#line 69
+#line 76
  testRunner.Then("Je dois avoir parcouru les pages");
 #line hidden
             testRunner.CollectScenarioErrors();

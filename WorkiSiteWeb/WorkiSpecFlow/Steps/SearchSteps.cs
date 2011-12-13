@@ -194,6 +194,41 @@ namespace Worki.SpecFlow
         }
 
         #endregion
+
+        #region Recherche par nom
+
+        [Given(@"Je vais dans la page Recherche par nom")]
+        public void GivenJeVaisDansLaPageRechercheParNom()
+        {
+            WebBrowser.Current.GoTo(WebBrowser.RootURL + StaticStringClass.URL.SearchByName);
+        }
+
+        public string venue_name = "test";
+
+        [Given(@"Je tappe test dans la barre de recherche")]
+        public void GivenJeTappeTestDansLaBarreDeRecherche()
+        {
+            WebBrowser.Current.TextField(Find.ById("Criteria_LocalisationData_Name")).TypeTextQuickly(venue_name);
+        }
+
+        [Then(@"Tout les résultats doivent contenir le mot cherché")]
+        public void ThenToutLesResultatsDoiventContenirLeMotCherche()
+        {
+            bool b = true;
+
+            foreach (var item in WebBrowser.Current.Page<SearchPage>().Locs)
+            {
+                if (!item.Text.Contains(venue_name))
+                {
+                    b = false;
+                    break;
+                }
+            }
+            Assert.IsTrue(b);
+            WebBrowser.Current.Close();
+        }
+
+        #endregion
     }
 
     #region Search Page
