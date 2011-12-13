@@ -66,6 +66,10 @@
         {
             <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
         }
+        @if (Model.MainLocalisation != null)
+        {
+            <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes: Worki.Resources.Views.Shared.SharedString.No)</span><br />
+        }
 	</div>
 }
 <div class="localisationMiscRatings contentBlock">

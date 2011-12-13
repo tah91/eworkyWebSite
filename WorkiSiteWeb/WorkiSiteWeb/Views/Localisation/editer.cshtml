@@ -31,6 +31,10 @@
                     @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsOffline)
 				    @Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Offline)
                 </div>
+                <div class="adminBlock">
+                    @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.HasSticker)
+				    @Html.Label(Worki.Resources.Views.Admin.AdminString.Stickers)
+                </div>
                 <div class="clear"></div>
             </div>
         }
