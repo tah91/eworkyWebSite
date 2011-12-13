@@ -205,15 +205,15 @@ namespace Worki.Web
 
             routes.MapRoute(
                 "", // Nom d'itinéraire
-                "{localisationType}/{localisationPlace}", // URL avec des paramètres
+                "{type}/{lieu}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByTypeSeo" }, // Paramètres par défaut
-                new { localisationType = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationTypes) },
+                new { type = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationTypes) },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.MapRoute(
                 "", // Nom d'itinéraire
-                "{offerType}/{localisationPlace}", // URL avec des paramètres
+                "{offerType}/{lieu}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByOfferSeo" }, // Paramètres par défaut
                 new { offerType = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationOfferTypes) },
                 new string[] { "Worki.Web.Controllers" }

@@ -158,36 +158,43 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Longitude, ref value) && float.TryParse(value, out floatVal))
                 criteria.LocalisationData.Longitude = floatVal;
 
-            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.OfferType, ref value) && int.TryParse(value, out intVal))
-                criteria.OfferData.Type = intVal;
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.OfferType, ref value))
+                criteria.OfferData.Type = Localisation.GetOfferTypeFromSeoString(value);
 
-            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.All, ref value) && string.Compare(value, Boolean.TrueString, true) == 0)
-                criteria.Everything = true;
-            else
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Type, ref value))
             {
+                var localisationTypes = value.Split(',');
                 criteria.Everything = false;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.SpotWifi, ref value))
-                    criteria.SpotWifi = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.CoffeeResto, ref value))
-                    criteria.CoffeeResto = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Biblio, ref value))
-                    criteria.Biblio = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.PublicSpace, ref value))
-                    criteria.PublicSpace = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.TravelerSpace, ref value))
-                    criteria.TravelerSpace = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Hotel, ref value))
-                    criteria.Hotel = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Telecentre, ref value))
-                    criteria.Telecentre = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.BuisnessCenter, ref value))
-                    criteria.BuisnessCenter = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.CoworkingSpace, ref value))
-                    criteria.CoworkingSpace = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.WorkingHotel, ref value))
-                    criteria.WorkingHotel = true;
-                if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.PrivateArea, ref value))
-                    criteria.PrivateArea = true;
+                foreach (var item in localisationTypes)
+                {
+                    if (item == MiscHelpers.SeoConstants.All)
+                    {
+                        criteria.Everything = true;
+                        break;
+                    }
+                    if (item == MiscHelpers.SeoConstants.SpotWifi)
+                        criteria.SpotWifi = true;
+                    if (item == MiscHelpers.SeoConstants.CoffeeResto)
+                        criteria.CoffeeResto = true;
+                    if (item == MiscHelpers.SeoConstants.Biblio)
+                        criteria.Biblio = true;
+                    if (item == MiscHelpers.SeoConstants.PublicSpace)
+                        criteria.PublicSpace = true;
+                    if (item == MiscHelpers.SeoConstants.TravelerSpace)
+                        criteria.TravelerSpace = true;
+                    if (item == MiscHelpers.SeoConstants.Hotel)
+                        criteria.Hotel = true;
+                    if (item == MiscHelpers.SeoConstants.Telecentre)
+                        criteria.Telecentre = true;
+                    if (item == MiscHelpers.SeoConstants.BuisnessCenter)
+                        criteria.BuisnessCenter = true;
+                    if (item == MiscHelpers.SeoConstants.CoworkingSpace)
+                        criteria.CoworkingSpace = true;
+                    if (item == MiscHelpers.SeoConstants.WorkingHotel)
+                        criteria.WorkingHotel = true;
+                    if (item == MiscHelpers.SeoConstants.PrivateArea)
+                        criteria.PrivateArea = true;
+                }
             }
 
             var locKeys = FeatureHelper.GetFeatureIds(parameters.Params.AllKeys.ToList(), FeatureHelper.LocalisationPrefix);
@@ -216,41 +223,43 @@ namespace Worki.Service
 			var rvd = new RouteValueDictionary();
 			rvd[MiscHelpers.SeoConstants.Page] = page;
 			rvd[MiscHelpers.SeoConstants.Place] = criteria.Place;
-			rvd[MiscHelpers.SeoConstants.OfferType] = criteria.OfferData.Type;
+			rvd[MiscHelpers.SeoConstants.OfferType] = Localisation.GetSeoStringOfferFromType(criteria.OfferData.Type);
             rvd[MiscHelpers.SeoConstants.Latitude] = criteria.LocalisationData.Latitude;
             rvd[MiscHelpers.SeoConstants.Longitude] = criteria.LocalisationData.Longitude;
             rvd[MiscHelpers.SeoConstants.PlaceName] = criteria.LocalisationData.Name;
 
             rvd[MiscHelpers.SeoConstants.Order] = (int)criteria.OrderBy;
 
-			if (!criteria.Everything)
-			{
-                rvd[MiscHelpers.SeoConstants.All] = false;
-				if (criteria.SpotWifi)
-					rvd[MiscHelpers.SeoConstants.SpotWifi] = true;
-				if (criteria.CoffeeResto)
-					rvd[MiscHelpers.SeoConstants.CoffeeResto] = true;
-				if (criteria.Biblio)
-					rvd[MiscHelpers.SeoConstants.Biblio] = true;
-				if (criteria.PublicSpace)
-					rvd[MiscHelpers.SeoConstants.PublicSpace] = true;
-				if (criteria.TravelerSpace)
-					rvd[MiscHelpers.SeoConstants.TravelerSpace] = true;
-				if (criteria.Hotel)
-					rvd[MiscHelpers.SeoConstants.Hotel] = true;
-				if (criteria.Telecentre)
-					rvd[MiscHelpers.SeoConstants.Telecentre] = true;
-				if (criteria.BuisnessCenter)
-					rvd[MiscHelpers.SeoConstants.BuisnessCenter] = true;
-				if (criteria.CoworkingSpace)
-					rvd[MiscHelpers.SeoConstants.CoworkingSpace] = true;
-				if (criteria.WorkingHotel)
-					rvd[MiscHelpers.SeoConstants.WorkingHotel] = true;
-				if (criteria.PrivateArea)
-					rvd[MiscHelpers.SeoConstants.PrivateArea] = true;
-			}
-			else
-				rvd[MiscHelpers.SeoConstants.All] = true;
+            var localisationTypes = new List<string>();
+            if (!criteria.Everything)
+            {
+                if (criteria.SpotWifi)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.SpotWifi);
+                if (criteria.CoffeeResto)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.CoffeeResto);
+                if (criteria.Biblio)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.Biblio);
+                if (criteria.PublicSpace)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.PublicSpace);
+                if (criteria.TravelerSpace)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.TravelerSpace);
+                if (criteria.Hotel)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.Hotel);
+                if (criteria.Telecentre)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.Telecentre);
+                if (criteria.BuisnessCenter)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.BuisnessCenter);
+                if (criteria.CoworkingSpace)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.CoworkingSpace);
+                if (criteria.WorkingHotel)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.WorkingHotel);
+                if (criteria.PrivateArea)
+                    localisationTypes.Add(MiscHelpers.SeoConstants.PrivateArea);
+            }
+            else
+                localisationTypes.Add(MiscHelpers.SeoConstants.All);
+
+            rvd[MiscHelpers.SeoConstants.Type] = string.Join(",", localisationTypes);
 
 			foreach (var neededFeature in criteria.LocalisationData.LocalisationFeatures)
 			{

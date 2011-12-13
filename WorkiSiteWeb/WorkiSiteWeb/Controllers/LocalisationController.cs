@@ -459,11 +459,11 @@ namespace Worki.Web.Controllers
         /// <param name="localisationPlace">localisation place</param>
         /// <returns>redirect to corresponding results</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult FullSearchByTypeSeo(string localisationType, string localisationPlace)
+        public virtual ActionResult FullSearchByTypeSeo(string type, string lieu)
         {
             var criteria = new SearchCriteria();
-            criteria.Place = localisationPlace;
-            switch (localisationType)
+            criteria.Place = lieu;
+            switch (type)
             {
                 case MiscHelpers.SeoConstants.SpotWifi:
                     criteria.SpotWifi = true;
@@ -511,34 +511,11 @@ namespace Worki.Web.Controllers
         /// <param name="localisationPlace">localisation place</param>
         /// <returns>redirect to corresponding results</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult FullSearchByOfferSeo(string offerType, string localisationPlace)
+        public virtual ActionResult FullSearchByOfferSeo(string offerType, string lieu)
         {
             var criteria = new SearchCriteria();
-            criteria.Place = localisationPlace;
-            switch (offerType)
-            {
-                case MiscHelpers.SeoConstants.FreeArea:
-                    criteria.OfferData.Type = (int)LocalisationOffer.FreeArea;
-                    break;
-                case MiscHelpers.SeoConstants.BuisnessLounge:
-                    criteria.OfferData.Type = (int)LocalisationOffer.BuisnessLounge;
-                    break;
-                case MiscHelpers.SeoConstants.Workstation:
-                    criteria.OfferData.Type = (int)LocalisationOffer.Workstation;
-                    break;
-                case MiscHelpers.SeoConstants.Desktop:
-                    criteria.OfferData.Type = (int)LocalisationOffer.Desktop;
-                    break;
-                case MiscHelpers.SeoConstants.MeetingRoom:
-                    criteria.OfferData.Type = (int)LocalisationOffer.MeetingRoom;
-                    break;
-                case MiscHelpers.SeoConstants.SeminarRoom:
-                    criteria.OfferData.Type = (int)LocalisationOffer.SeminarRoom;
-                    break;
-                case MiscHelpers.SeoConstants.VisioRoom:
-                    criteria.OfferData.Type = (int)LocalisationOffer.VisioRoom;
-                    break;
-            }
+            criteria.Place = lieu;
+            criteria.OfferData.Type = Localisation.GetOfferTypeFromSeoString(offerType);
 
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 

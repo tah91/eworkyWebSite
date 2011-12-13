@@ -52,6 +52,7 @@ namespace Worki.Infrastructure.Helpers
             public const string WorkingHotel = "hotel-entreprise";
             public const string PrivateArea = "lieu-prive";
             public const string All = "tout";
+            public const string Type = "type";
 
             public static List<string> LocalisationTypes = new List<string>
             {
@@ -88,10 +89,9 @@ namespace Worki.Infrastructure.Helpers
                 VisioRoom 
             };
 
-
             public const string Page = "page";
             public const string Place = "lieu";
-            public const string OfferType = "offer-type";
+            public const string OfferType = "offerType";
             public const string Latitude = "lat";
             public const string Longitude = "lng";
             public const string PlaceName = "name";

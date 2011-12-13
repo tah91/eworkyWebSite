@@ -217,6 +217,53 @@ namespace Worki.Data.Models
             }
         }
 
+        public static int GetOfferTypeFromSeoString(string offerType)
+        {
+            switch (offerType)
+            {
+                case MiscHelpers.SeoConstants.FreeArea:
+                    return (int)LocalisationOffer.FreeArea;
+                case MiscHelpers.SeoConstants.BuisnessLounge:
+                    return (int)LocalisationOffer.BuisnessLounge;
+                case MiscHelpers.SeoConstants.Workstation:
+                    return (int)LocalisationOffer.Workstation;
+                case MiscHelpers.SeoConstants.Desktop:
+                    return (int)LocalisationOffer.Desktop;
+                case MiscHelpers.SeoConstants.MeetingRoom:
+                    return (int)LocalisationOffer.MeetingRoom;
+                case MiscHelpers.SeoConstants.SeminarRoom:
+                    return (int)LocalisationOffer.SeminarRoom;
+                case MiscHelpers.SeoConstants.VisioRoom:
+                    return (int)LocalisationOffer.VisioRoom;
+                default:
+                    return -1;
+            }
+        }
+
+        public static string GetSeoStringOfferFromType(int offerType)
+        {
+            var offerTypeEnum = (LocalisationOffer)offerType;
+            switch (offerTypeEnum)
+            {
+                case LocalisationOffer.FreeArea:
+                    return MiscHelpers.SeoConstants.FreeArea;
+                case LocalisationOffer.BuisnessLounge:
+                    return MiscHelpers.SeoConstants.BuisnessLounge;
+                case LocalisationOffer.Workstation:
+                    return MiscHelpers.SeoConstants.Workstation;
+                case LocalisationOffer.Desktop:
+                    return MiscHelpers.SeoConstants.Desktop;
+                case LocalisationOffer.MeetingRoom:
+                    return MiscHelpers.SeoConstants.MeetingRoom;
+                case LocalisationOffer.SeminarRoom:
+                    return MiscHelpers.SeoConstants.SeminarRoom;
+                case LocalisationOffer.VisioRoom:
+                    return MiscHelpers.SeoConstants.VisioRoom;
+                default:
+                    return string.Empty;
+            }
+        }
+
 		public static Dictionary<int, string> GetOfferTypes()
 		{
 			return OfferTypes.ToDictionary(o => o, o => GetOfferType(o));
