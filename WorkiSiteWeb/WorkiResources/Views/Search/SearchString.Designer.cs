@@ -133,6 +133,15 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to avis.
+        /// </summary>
+        public static string Opinion {
+            get {
+                return ResourceManager.GetString("Opinion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ex : Pau, Oise, rue Rivoli Paris, 92200, ....
         /// </summary>
         public static string PlaceExamples {

@@ -414,7 +414,7 @@
                     {
 						<tr>
 							<td>@item.Name</td>
-							<td>@Html.ActionLink("Editer", MVC.Offer.Edit(item.Id))</td>
+							<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, MVC.Offer.Edit(item.Id))</td>
 							<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id))</div></td>
 						</tr>
                     }

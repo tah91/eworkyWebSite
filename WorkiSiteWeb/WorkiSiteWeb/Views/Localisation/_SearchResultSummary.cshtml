@@ -31,7 +31,7 @@
 		<div class="commentBgd">
 			<div class="commentContainer">
 				<div class="ratingContainer">
-					@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="lightblue noUnderline"><a href="@(ViewData["link"] + "#commentFormDiv")">@(Model.Localisation.Comments.Count.ToString() + " avis")</a></span>
+					@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="lightblue noUnderline"><a href="@(ViewData["link"] + "#commentFormDiv")">@(string.Format("{0} {1}", Model.Localisation.Comments.Count, Worki.Resources.Views.Search.SearchString.Opinion))</a></span>
 					<div class="clear">
 					</div> 
 				</div>
