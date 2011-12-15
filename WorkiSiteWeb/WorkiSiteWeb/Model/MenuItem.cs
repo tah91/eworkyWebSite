@@ -52,7 +52,8 @@ namespace Worki.Web.Model
 	{
 		Config,
 		Booking,
-		Quotation
+		Quotation,
+        Schedule
 	}
 
 	public class OfferMenuItem

@@ -374,12 +374,19 @@ namespace Links {
         public static readonly string dropdown_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dropdown.min.js") ? Url("dropdown.min.js") : Url("dropdown.js");
                       
         public static readonly string dropdown_min_js = Url("dropdown.min.js");
+        public static readonly string fullcalendar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/fullcalendar.min.js") ? Url("fullcalendar.min.js") : Url("fullcalendar.js");
+                      
+        public static readonly string fullcalendar_min_js = Url("fullcalendar.min.js");
+        public static readonly string gcal_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gcal.min.js") ? Url("gcal.min.js") : Url("gcal.js");
+                      
+        public static readonly string gcal_min_js = Url("gcal.min.js");
         public static readonly string jquery_1_5_1_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.5.1-vsdoc.min.js") ? Url("jquery-1.5.1-vsdoc.min.js") : Url("jquery-1.5.1-vsdoc.js");
                       
         public static readonly string jquery_1_5_1_vsdoc_min_js = Url("jquery-1.5.1-vsdoc.min.js");
         public static readonly string jquery_1_5_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.5.1.min.js") ? Url("jquery-1.5.1.min.js") : Url("jquery-1.5.1.js");
                       
         public static readonly string jquery_1_5_1_min_js = Url("jquery-1.5.1.min.js");
+        public static readonly string jquery_1_5_2_min_js = Url("jquery-1.5.2.min.js");
         public static readonly string jquery_ui_1_8_11_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.8.11.min.js") ? Url("jquery-ui-1.8.11.min.js") : Url("jquery-ui-1.8.11.js");
                       
         public static readonly string jquery_ui_1_8_11_min_js = Url("jquery-ui-1.8.11.min.js");
@@ -482,6 +489,8 @@ namespace Links {
         public static readonly string Booking_min_css = Url("Booking.min.css");
         public static readonly string Dashboard_css = Url("Dashboard.css");
         public static readonly string Dashboard_min_css = Url("Dashboard.min.css");
+        public static readonly string fullcalendar_css = Url("fullcalendar.css");
+        public static readonly string fullcalendar_min_css = Url("fullcalendar.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class galleria {
             private const string URLPATH = "~/Content/galleria";
@@ -1353,17 +1362,17 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FullSearchByTypeSeo(string localisationType, string localisationPlace) {
+        public override System.Web.Mvc.ActionResult FullSearchByTypeSeo(string type, string lieu) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByTypeSeo);
-            callInfo.RouteValueDictionary.Add("localisationType", localisationType);
-            callInfo.RouteValueDictionary.Add("localisationPlace", localisationPlace);
+            callInfo.RouteValueDictionary.Add("type", type);
+            callInfo.RouteValueDictionary.Add("lieu", lieu);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FullSearchByOfferSeo(string offerType, string localisationPlace) {
+        public override System.Web.Mvc.ActionResult FullSearchByOfferSeo(string offerType, string lieu) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByOfferSeo);
             callInfo.RouteValueDictionary.Add("offerType", offerType);
-            callInfo.RouteValueDictionary.Add("localisationPlace", localisationPlace);
+            callInfo.RouteValueDictionary.Add("lieu", lieu);
             return callInfo;
         }
 
@@ -3052,6 +3061,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public System.Web.Mvc.ActionResult RefuseQuotation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.RefuseQuotation);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Schedule() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Schedule);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Backoffice.Localisation; } }
@@ -3082,6 +3096,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string QuotationCancelled = "QuotationCancelled";
             public readonly string OfferQuotation = "OfferQuotation";
             public readonly string RefuseQuotation = "RefuseQuotation";
+            public readonly string Schedule = "Schedule";
         }
 
 
@@ -3090,6 +3105,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _Calendar = "~/Areas/Backoffice/Views/Localisation/_Calendar.cshtml";
             public readonly string _LocalisationMenu = "~/Areas/Backoffice/Views/Localisation/_LocalisationMenu.cshtml";
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
             public readonly string _OfferDropDown = "~/Areas/Backoffice/Views/Localisation/_OfferDropDown.cshtml";
@@ -3256,6 +3272,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formModel", formModel);
             callInfo.RouteValueDictionary.Add("confirm", confirm);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Schedule(int id, int offerId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Schedule);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerId", offerId);
             return callInfo;
         }
 

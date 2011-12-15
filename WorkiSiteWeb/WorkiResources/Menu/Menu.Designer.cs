@@ -358,6 +358,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Planning.
+        /// </summary>
+        public static string Schedule {
+            get {
+                return ResourceManager.GetString("Schedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fiches.
         /// </summary>
         public static string Sheet {

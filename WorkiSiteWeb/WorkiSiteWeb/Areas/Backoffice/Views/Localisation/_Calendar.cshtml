@@ -1,0 +1,105 @@
+﻿@model	OfferBookingViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Schedule)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+    <link rel='stylesheet' type='text/css' href="@Url.VersionedContent(Links.Content.fullcalendar_min_css)" />
+}
+
+@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Item.Id));}
+
+<div class="detailContent">
+	<div class="blockContainer float-left contentLeft">
+		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Item.Id, (int)OfferMenuType.Schedule));}
+	</div>
+	<div class="blockContainer float-left contentRight">
+		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Item, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.LocalisationId, o.Id)), Filter = OfferDropDownFilter.Booking })
+		<div class="contentBlock">
+            <div id='calendar'>
+            </div>
+        </div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+@section ScriptContent
+{
+    <script type='text/javascript'>
+        require(["@Links.Scripts.fullcalendar_min_js"], function () {
+            $(document).ready(function () {
+
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+            
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet',
+                             'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun',
+                                  'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi',
+                           'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                titleFormat: {
+                                month: 'MMMM yyyy',                             // Septembre 2009
+                                week: "MMM dd[ yyyy]{ '&#8212;'[ MMM] dd yyyy}", // Sep 07 - 13 2009
+                                day: 'dddd dd MMMM yyyy'                  // Mardi 08 Septembre 2009
+                            },
+                columnFormat: {
+                                month: 'ddd',    // Lun
+                                week: 'ddd dd/MM', // Lun 07/09
+                                day: 'dddd dd/MM'  // Lundi 07/09
+                            },
+                buttonText: {
+                                prev:     '&nbsp;&#9668;&nbsp;',  // left triangle
+                                next:     '&nbsp;&#9658;&nbsp;',  // right triangle
+                                prevYear: '&nbsp;&lt;&lt;&nbsp;', // <<
+                                nextYear: '&nbsp;&gt;&gt;&nbsp;', // >>
+                                today:    'aujourd\'hui',
+                                month:    'mois',
+                                week:     'semaine',
+                                day:      'jour'
+                            },
+                editable: true,
+                events: [
+                @{
+                        var orange = "#f7a33a";
+                        var red = "#d25657";
+                        var yellow = "#f5f322";
+                        var grey = "#808080";
+                        var colored = "";
+                }
+                    @foreach(var item in Model.List.List)
+                    {
+                        if (item.Expired || item.Cancelled)
+                        {
+                            colored = grey;
+                        }
+                        else if (item.Refused)
+                        {
+                            colored = red;
+                        }
+                        else if (item.Waiting)
+                        {
+                            colored = orange;
+                        }
+                        else if (item.Unknown)
+                        {
+                            colored = yellow;
+                        }
+
+                        @:{ title: '@item.Member.GetFullDisplayName()', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })' },
+                    }
+			    ]
+			});
+        });
+    });
+    </script>
+}

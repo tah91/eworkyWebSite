@@ -320,6 +320,10 @@
     <Content Include="Content\Dashboard.min.css">
       <DependentUpon>Dashboard.css</DependentUpon>
     </Content>
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\fullcalendar.min.css">
+      <DependentUpon>fullcalendar.css</DependentUpon>
+    </Content>
     <Content Include="Content\galleria\galleria.classic.min.css">
       <DependentUpon>galleria.classic.css</DependentUpon>
     </Content>
@@ -413,6 +417,15 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar.min.js">
+      <DependentUpon>fullcalendar.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\gcal.js" />
+    <Content Include="Scripts\gcal.min.js">
+      <DependentUpon>gcal.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.5.2.min.js" />
     <Content Include="Scripts\jquery.localdate-fr.js" />
     <Content Include="Scripts\jquery.localdate-fr.min.js">
       <DependentUpon>jquery.localdate-fr.js</DependentUpon>
@@ -686,6 +699,9 @@
     <Content Include="Areas\Backoffice\Views\Localisation\RefuseQuotation.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_OfferMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Member\IndexOwner.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\_Calendar.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

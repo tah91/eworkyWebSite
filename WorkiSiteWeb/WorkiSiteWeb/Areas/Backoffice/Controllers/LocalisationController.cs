@@ -203,6 +203,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId)) });
+            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Schedule == selected, Text = Worki.Resources.Menu.Menu.Schedule, Link = Url.Action(MVC.Backoffice.Localisation.Schedule(offer.LocalisationId)) });
 
             return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
         }
@@ -822,6 +823,56 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 }
             }
             return View(formModel);
+        }
+
+        public virtual ActionResult Schedule(int id, int offerId = 0)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var p = 1;
+            try
+            {
+                var member = mRepo.Get(memberId);
+                Member.Validate(member);
+                Offer offer;
+                //case no offer selected, take the first one
+                if (offerId == 0)
+                {
+                    var loc = lRepo.Get(id);
+                    offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
+                    if (offer == null)
+                    {
+                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
+                        return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
+                    }
+                }
+                else
+                {
+                    offer = oRepo.Get(offerId);
+                }
+
+                Member.ValidateOwner(member, offer.Localisation);
+
+                var model = new OfferBookingViewModel
+                {
+                    Item = offer,
+                    List = new PagingList<MemberBooking>
+                    {
+                        List = offer.MemberBookings.ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberBookings.Count }
+                    }
+                };
+                return View(MVC.Backoffice.Localisation.Views._Calendar, model);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("OfferBooking", ex);
+                return View(MVC.Shared.Views.Error);
+            }
         }
 
 		#endregion
