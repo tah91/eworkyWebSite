@@ -5,6 +5,7 @@
 	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Schedule)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
     <link rel='stylesheet' type='text/css' href="@Url.VersionedContent(Links.Content.fullcalendar_min_css)" />
+    <script type='text/javascript' src='@Links.Scripts.fullcalendar_min_js'></script>
 }
 
 @{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Item.Id));}
@@ -28,17 +29,12 @@
     <script type='text/javascript'>
         require(["@Links.Scripts.fullcalendar_min_js"], function () {
             $(document).ready(function () {
-
-            var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear();
             
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'month,basicWeek,basicDay'
+                    right: 'month,agendaWeek,agendaDay'
                 },
                 monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet',
                              'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
@@ -47,6 +43,13 @@
                 dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi',
                            'Jeudi', 'Vendredi', 'Samedi'],
                 dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                timeFormat: {
+                                // for agendaWeek and agendaDay
+                                agenda: 'hh:mm{ - hh:mm}', // 5:00 - 6:30
+
+                                // for all other views
+                                '': 'hh(:mm)t' // 07p
+                            },
                 titleFormat: {
                                 month: 'MMMM yyyy',                             // Septembre 2009
                                 week: "MMM dd[ yyyy]{ '&#8212;'[ MMM] dd yyyy}", // Sep 07 - 13 2009
@@ -95,7 +98,7 @@
                             colored = yellow;
                         }
 
-                        @:{ title: '@item.Member.GetFullDisplayName()', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })' },
+                        @:{ id: '@item.Id', title: '@item.Member.GetFullDisplayName()', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })', allDay: false },
                     }
 			    ]
 			});
