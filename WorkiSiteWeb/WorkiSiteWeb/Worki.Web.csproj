@@ -702,6 +702,7 @@
     <Content Include="Areas\Backoffice\Views\Localisation\_Calendar.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationCalendar.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

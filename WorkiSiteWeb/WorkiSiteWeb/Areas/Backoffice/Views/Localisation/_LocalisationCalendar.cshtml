@@ -1,4 +1,4 @@
-﻿@model	OfferBookingViewModel
+﻿@model	LocalisationBookingViewModel
 
 @section HeadContent
 {
@@ -7,22 +7,29 @@
     <link rel='stylesheet' type='text/css' href="@Url.VersionedContent(Links.Content.fullcalendar_min_css)" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Item.Id));}
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Item.ID, Title = Model.Item.Name })
 
 <div class="detailContent">
+
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Item.Id, (int)OfferMenuType.Schedule));}
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Item.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Item.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Item.ID))} ,
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Schedule, MVC.Backoffice.Localisation.Localisation_Schedule(Model.Item.ID))}
+		})
 	</div>
+
 	<div class="blockContainer float-left contentRight">
-		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Item, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.LocalisationId, o.Id)), Filter = OfferDropDownFilter.Booking })
-		<div class="contentBlock">
+        <div class="contentBlock">
             <div id='calendar'>
             </div>
         </div>
 	</div>
-	<div class="clear"></div>
+	<div class="clear">
+	</div>
 </div>
-
 @section ScriptContent
 {
     <script type='text/javascript' src='@Links.Scripts.jquery_ui_1_8_12_custom_min_js'></script>
@@ -76,13 +83,13 @@
                 editable: true,
                 events: [
                 @{
-                        var orange = "#f7a33a";
-                        var red = "#d25657";
-                        var yellow = "#f5f322";
-                        var grey = "#808080";
-                        var colored = "";
+                    var orange = "#f7a33a";
+                    var red = "#d25657";
+                    var yellow = "#f5f322";
+                    var grey = "#808080";
+                    var colored = "";
                 }
-                    @foreach(var item in Model.List.List)
+                    @foreach (var item in Model.List.List)
                     {
                         if (item.Expired || item.Cancelled)
                         {
@@ -101,7 +108,7 @@
                             colored = yellow;
                         }
 
-                        @:{ id: '@item.Id', title: '@item.Member.GetFullDisplayName()', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })', allDay: false },
+                        @:{ id: '@item.Id', title: '@item.Offer.Name - @item.Member.GetFullDisplayName()', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })', allDay: false },
                     }
 			    ],
                 selectable: true,

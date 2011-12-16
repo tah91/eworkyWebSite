@@ -3013,6 +3013,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Localisation_Schedule() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Localisation_Schedule);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult OfferBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.OfferBooking);
         }
@@ -3086,6 +3091,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string OfferHorizontalMenu = "OfferHorizontalMenu";
             public readonly string OfferDropdown = "OfferDropdown";
             public readonly string Booking = "Booking";
+            public readonly string Localisation_Schedule = "Localisation_Schedule";
             public readonly string OfferBooking = "OfferBooking";
             public readonly string BookingDetail = "BookingDetail";
             public readonly string ConfirmBooking = "ConfirmBooking";
@@ -3106,6 +3112,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _Calendar = "~/Areas/Backoffice/Views/Localisation/_Calendar.cshtml";
+            public readonly string _LocalisationCalendar = "~/Areas/Backoffice/Views/Localisation/_LocalisationCalendar.cshtml";
             public readonly string _LocalisationMenu = "~/Areas/Backoffice/Views/Localisation/_LocalisationMenu.cshtml";
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
             public readonly string _OfferDropDown = "~/Areas/Backoffice/Views/Localisation/_OfferDropDown.cshtml";
@@ -3182,6 +3189,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Booking);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Localisation_Schedule(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Localisation_Schedule);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

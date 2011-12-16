@@ -292,6 +292,41 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 		}
 
+        public virtual ActionResult Localisation_Schedule(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var p = 1;
+            try
+            {
+                var member = mRepo.Get(memberId);
+                Member.Validate(member);
+                var loc = lRepo.Get(id);
+                Member.ValidateOwner(member, loc);
+
+                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
+                var model = new LocalisationBookingViewModel
+                {
+                    Item = loc,
+                    List = new PagingList<MemberBooking>
+                    {
+                        List = bookings.ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
+                    }
+                };
+                return View(MVC.Backoffice.Localisation.Views._LocalisationCalendar, model);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("Localisation_Schedule", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
+
 		/// <summary>
 		/// Get action method to show bookings of the owner, for a given localisation and offer
 		/// </summary>
