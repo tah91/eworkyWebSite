@@ -5,7 +5,6 @@
 	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Schedule)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
     <link rel='stylesheet' type='text/css' href="@Url.VersionedContent(Links.Content.fullcalendar_min_css)" />
-    <script type='text/javascript' src='@Links.Scripts.fullcalendar_min_js'></script>
 }
 
 @{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Item.Id));}
@@ -26,6 +25,7 @@
 
 @section ScriptContent
 {
+    <script type='text/javascript' src='@Links.Scripts.jquery_ui_1_8_12_custom_min_js'></script>
     <script type='text/javascript'>
         require(["@Links.Scripts.fullcalendar_min_js"], function () {
             $(document).ready(function () {
@@ -102,7 +102,24 @@
 
                         @:{ id: '@item.Id', title: '@item.Member.GetFullDisplayName()', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })', allDay: false },
                     }
-			    ]
+			    ],
+                selectable: true,
+		        selectHelper: true,
+		        select: function(start, end, allDay) {
+			            var title = prompt('Event Title:');
+			            if (title) {
+				            $('#calendar').fullCalendar('renderEvent',
+					            {
+						            title: title,
+						            start: new Date(start.addHours(8)),
+						            end: new Date(start.addDays(1)),
+						            allDay: false
+					            },
+					            true // make the event "stick"
+				            );
+			            }
+			            $('#calendar').fullCalendar('unselect');
+		            }
 			});
         });
     });
