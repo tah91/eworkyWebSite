@@ -910,6 +910,57 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             }
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual void DropEvent(int id, int dayDelta, int minuteDelta)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var booking = bRepo.Get(id);
+
+            if (booking != null && !booking.Refused && !booking.Cancelled && !booking.Expired && !booking.Paid && !booking.Waiting && (booking.FromDate.AddDays(dayDelta) > DateTime.UtcNow))
+            {
+                try
+                {
+                    booking.FromDate = booking.FromDate.AddDays(dayDelta);
+                    booking.FromDate = booking.FromDate.AddMinutes(minuteDelta);
+
+                    booking.ToDate = booking.ToDate.AddDays(dayDelta);
+                    booking.ToDate = booking.ToDate.AddMinutes(minuteDelta);
+
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("DropEvent", ex);
+                    context.Complete();
+                }
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual void ResizeEvent(int id, int dayDelta, int minuteDelta)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var booking = bRepo.Get(id);
+
+            if (booking != null && !booking.Refused && !booking.Cancelled && !booking.Expired && !booking.Paid && !booking.Waiting && (booking.FromDate.AddDays(dayDelta) > DateTime.UtcNow))
+            {
+                try
+                {
+                    booking.ToDate = booking.ToDate.AddDays(dayDelta);
+                    booking.ToDate = booking.ToDate.AddMinutes(minuteDelta);
+
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("ResizeEvent", ex);
+                    context.Complete();
+                }
+            }
+        }
+
 		#endregion
     }
 }
