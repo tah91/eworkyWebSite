@@ -32,7 +32,7 @@
             
             $('#calendar').fullCalendar({
                 header: {
-                    left: 'prev,next today',
+                    left: 'prevYear,prev,next,nextYear today',
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
@@ -45,11 +45,13 @@
                 dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
                 timeFormat: {
                                 // for agendaWeek and agendaDay
-                                agenda: 'hh:mm{ - hh:mm}', // 5:00 - 6:30
+                                agenda: 'HH:mm{ - HH:mm}', // 17:00 - 18:30
 
                                 // for all other views
-                                '': 'hh(:mm)t' // 07p
+                                '': 'HH:mm' // 17:00
                             },
+                axisFormat: 'HH:mm',
+                allDaySlot: false,
                 titleFormat: {
                                 month: 'MMMM yyyy',                             // Septembre 2009
                                 week: "MMM dd[ yyyy]{ '&#8212;'[ MMM] dd yyyy}", // Sep 07 - 13 2009
