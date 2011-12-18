@@ -140,21 +140,19 @@
             <div class="searchLinkAndSubmit">
                 <div class="changeSeachType float-left">    
                 @{
-			var dropDown = new DropDownModel
-			{
-				Id = DropDownModel.AdvancedSearchDD,
-				Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
-				Items = new List<DropDownItem>
-				{
-					new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
-                    new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"}
-				}
-			};
-			if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
-			{
-				dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName" });
-			}            
-                }      
+					var dropDown = new DropDownModel
+					{
+						Id = DropDownModel.AdvancedSearchDD,
+						Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
+						Items = new List<DropDownItem>
+						{
+							new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlace, Link = Url.Action(MVC.Home.Index())},
+							new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
+							new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"},
+							new DropDownItem { DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName" }
+						}
+					};          
+                }
                 @Html.Partial(MVC.Shared.Views._DropDownList, dropDown)              
                 </div>
                 <div class="submitSearchContainer  float-right">

@@ -59,8 +59,8 @@
                     @Html.AntiForgeryToken()
 					@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
                     @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
-                    <div class="toogle_container">
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
+                    <div class="toogle_container active">
                         <div class="block">
                             <div class="editor-field">
                                 @Html.TextBoxFor(model => model.Criteria.Place)
@@ -68,8 +68,8 @@
                         </div>
                     </div>
                     
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h4>
-                    <div class="toogle_container">
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h4>
+                    <div class="toogle_container active">
                         <div class="block">
                             <div class="editor-field">
                                 @Html.DropDownListFor(m=>m.Criteria.OfferData.Type, Model.Offers, new { @class = "offerSelect" })
@@ -77,8 +77,8 @@
                         </div>
 		            </div>
 
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h4>
-                    <div class="toogle_container">
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h4>
+                    <div class="toogle_container active">
                         <div class="block">
                             @Html.Partial(MVC.Localisation.Views._ServicesSelector)
                         </div>

@@ -17,14 +17,12 @@
 		Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
 		Items = new List<DropDownItem>
 		{
+			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlace, Link = Url.Action(MVC.Home.Index())},
 			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
-			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"}
+			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"},
+			new DropDownItem { DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName" }
 		}
 	};
-	if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
-	{
-		dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName" });
-	}
 }
 <div class="indexHeader">
     <h1 class="darkblue">@string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace, indexViewModel.LocalisationCount)</h1>

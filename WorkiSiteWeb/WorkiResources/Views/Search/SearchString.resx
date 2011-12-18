@@ -168,11 +168,14 @@
   <data name="Search" xml:space="preserve">
     <value>Recherche</value>
   </data>
+  <data name="SearchByPlace" xml:space="preserve">
+    <value>Par localisation</value>
+  </data>
   <data name="SearchByPlaceName" xml:space="preserve">
-    <value>Par nom de lieu</value>
+    <value>Par nom du lieu</value>
   </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value>Par type de lieu</value>
+    <value>Par type d'espace</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
     <value>Par services</value>
