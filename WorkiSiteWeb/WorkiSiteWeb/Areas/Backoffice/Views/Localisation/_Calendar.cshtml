@@ -148,6 +148,15 @@
 				                }
                             },
                             success: function (data, textStatus, jqXHR) {
+                                $('#calendar').fullCalendar('renderEvent',
+                                            {
+                                                title: '@Model.Item.Localisation.Member.GetFullDisplayName()',
+                                                start: startDate.addHours(9),
+                                                end: endDate.addHours(9),
+                                                color: '@yellow',
+                                                allDay: false
+                                            },
+                                            true);
                                 $('#calendar').fullCalendar('unselect');
                             }
                         });
