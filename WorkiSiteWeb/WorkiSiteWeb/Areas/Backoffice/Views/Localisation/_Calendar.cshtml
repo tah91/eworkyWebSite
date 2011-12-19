@@ -113,7 +113,12 @@
                         url: "/Backoffice/Localisation/DropEvent",
                         data: ({ id : event.id, dayDelta : dayDelta, minuteDelta : minuteDelta}),
                         contentType: "application/json; charset=utf-8",
-                        dataType: "json"
+                        dataType: "json",
+			            error: function (xhr, status, err) {
+				            if (xhr.status == 400) {
+					            revertFunc();
+				            }
+                        }
                     });
                 },
                 eventResize: function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) {
@@ -122,7 +127,29 @@
                             url: "/Backoffice/Localisation/ResizeEvent",
                             data: ({ id : event.id, dayDelta : dayDelta, minuteDelta : minuteDelta}),
                             contentType: "application/json; charset=utf-8",
-                            dataType: "json"
+                            dataType: "json",
+			                error: function (xhr, status, err) {
+				                if (xhr.status == 400) {
+					                revertFunc();
+				                }
+                            }
+                        });
+                },
+                select: function( startDate, endDate, allDay, jsEvent, view ) {
+                    $.ajax({
+                            type: "GET",
+                            url: "/Backoffice/Localisation/CreateEvent",
+                            data: ({ offer_id : @Model.Item.Id, start : startDate.getTime(), end : endDate.getTime()}),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+			                error: function (xhr, status, err) {
+				                if (xhr.status == 400) {
+					                $('#calendar').fullCalendar( 'unselect' );
+				                }
+                            },
+                            success: function (data, textStatus, jqXHR) {
+                                $('#calendar').fullCalendar('unselect');
+                            }
                         });
                 }
 			});

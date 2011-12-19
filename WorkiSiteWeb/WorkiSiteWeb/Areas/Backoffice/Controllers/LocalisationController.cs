@@ -911,13 +911,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        [HandleModelStateException]
         public virtual void DropEvent(int id, int dayDelta, int minuteDelta)
         {
             var context = ModelFactory.GetUnitOfWork();
             var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
             var booking = bRepo.Get(id);
 
-            if (booking != null && !booking.Refused && !booking.Cancelled && !booking.Expired && !booking.Paid && !booking.Waiting && (booking.FromDate.AddDays(dayDelta) > DateTime.UtcNow))
+            if (booking != null && booking.Unknown && (booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta) > DateTime.UtcNow))
             {
                 try
                 {
@@ -933,18 +934,24 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 {
                     _Logger.Error("DropEvent", ex);
                     context.Complete();
+                    throw new ModelStateException(ModelState);
                 }
+            }
+            else
+            {
+                throw new ModelStateException(ModelState);
             }
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        [HandleModelStateException]
         public virtual void ResizeEvent(int id, int dayDelta, int minuteDelta)
         {
             var context = ModelFactory.GetUnitOfWork();
             var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
             var booking = bRepo.Get(id);
 
-            if (booking != null && !booking.Refused && !booking.Cancelled && !booking.Expired && !booking.Paid && !booking.Waiting && (booking.FromDate.AddDays(dayDelta) > DateTime.UtcNow))
+            if (booking != null && booking.Unknown && (booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta) > DateTime.UtcNow))
             {
                 try
                 {
@@ -957,7 +964,64 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 {
                     _Logger.Error("ResizeEvent", ex);
                     context.Complete();
+                    throw new ModelStateException(ModelState);
                 }
+            }
+            else
+            {
+                throw new ModelStateException(ModelState);
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        [HandleModelStateException]
+        public virtual void CreateEvent(int offer_id, long start, long end)
+        {
+            DateTime FromDate = new DateTime(1970, 01, 01).AddMilliseconds(start).AddHours(9);
+            DateTime ToDate = new DateTime(1970, 01, 01).AddMilliseconds(end).AddHours(9);
+            if (FromDate == ToDate)
+            {
+                ToDate = ToDate.AddDays(1);
+            }
+            var context = ModelFactory.GetUnitOfWork();
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var offer = oRepo.Get(offer_id);
+
+            if (offer != null && FromDate > DateTime.UtcNow)
+            {
+                try
+                {
+                    var member = mRepo.GetMember(User.Identity.Name);
+                    Member.Validate(member);
+
+                    MemberBooking booking = new MemberBooking();
+
+                    booking.OfferId = offer_id;
+                    booking.MemberId = offer.Localisation.Member.MemberId;
+                    booking.FromDate = FromDate;
+                    booking.ToDate = ToDate;
+                    booking.StatusId = (int)MemberBooking.Status.Unknown;
+                    MemberBookingLog log = new MemberBookingLog();
+                    log.CreatedDate = DateTime.UtcNow;
+                    log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
+                    log.Event = "Booking Created";
+                    booking.MemberBookingLogs.Add(log);
+
+                    offer.MemberBookings.Add(booking);
+
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("CreateEvent", ex);
+                    context.Complete();
+                    throw new ModelStateException(ModelState);
+                }
+            }
+            else
+            {
+                throw new ModelStateException(ModelState);
             }
         }
 
