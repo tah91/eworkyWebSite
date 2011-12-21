@@ -37,13 +37,6 @@ namespace Worki.Web.Controllers
             return View(viewModel);
         }
 
-        public static string RequestToken = "https://foursquare.com/oauth2/authenticate?client_id={0}&response_type=code&redirect_uri={1}";
-        public static string RequestTokenAccept = "https://foursquare.com/oauth2/access_token?client_id={0}&client_secret={1}&grant_type=authorization_code&redirect_uri={2}&code={3}";
-
-        public static string ClientId = "DFOFTOSU2VYAO5TKCENWR1PIIRBHY1B4HGEZVSUAI3EIURFA";
-        public static string ClientSecret = "HK4W330SMCPM3HRBLHZGCKPQC2GTJRA2XCNXSN3LCCF4Z5JM";
-        public static string RedirectUrl = "http://localhost:4119/caf%C3%A9-restaurant/9/the-frog-and-rosbif";
-        
         public static string FoursquareSearch = "https://api.foursquare.com/v2/venues/search?oauth_token={0}";
         public static string FoursquareTips = "https://api.foursquare.com/v2/venues/{0}/tips?oauth_token={1}";
 
@@ -52,11 +45,6 @@ namespace Worki.Web.Controllers
             if (Session["4SQTokenKey"] != null)
                 return (string)Session["4SQTokenKey"];
             else return string.Empty;
-        }
-
-        void SetTokenKey(string key)
-        {
-            Session["4SQTokenKey"] = key;
         }
 
         /// <summary>
@@ -81,42 +69,26 @@ namespace Worki.Web.Controllers
 
                 var container = new SearchSingleResultViewModel { Localisation = localisation };
 
-                var redirect = string.Format(RequestToken, ClientId, RedirectUrl);
-                Redirect(redirect);
-
-                var accept = String.Format(RequestTokenAccept, ClientId, ClientSecret, RedirectUrl, "CODE");
-                using (var client0 = new WebClient())
-                {
-                    client0.Encoding = System.Text.Encoding.UTF8;
-                    try
-                    {
-                        string textString0 = client0.DownloadString(accept);
-                        JObject venuesJson0 = JObject.Parse(textString0);
-                        SetTokenKey((string)venuesJson0["access_token"]);
-                    }
-                    catch (WebException)
-                    {
-                    }
-                }
-
                 using (var client = new WebClient())
                 {
                     client.Encoding = System.Text.Encoding.UTF8;
                     try
                     {
                         var path = string.Format(FoursquareSearch, GetTokenKey());
-                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=match";
+                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=browse&radius=50";
                         string textString = client.DownloadString(query);
                         JObject venuesJson = JObject.Parse(textString);
-                        var venues = venuesJson["response"]["venues"];
-                        var venue = venues[0];
-                        path = string.Format(FoursquareTips, (string)venue["id"], GetTokenKey());
+                        var group_venues = venuesJson["response"]["groups"];
+                        var venues = group_venues[0]["items"];
+                        var venue = (string)venues[0]["id"];
+                        path = string.Format(FoursquareTips, venue, GetTokenKey());
                         textString = client.DownloadString(path);
                         JObject tipsJSON = JObject.Parse(textString);
-                        var tips = tipsJSON["response"]["items"];
-                        foreach (var tip in tips)
+                        var tips = tipsJSON["response"]["tips"];
+                        foreach (var tip in tips["items"])
                         {
-                            var com = new Comment { Date = new DateTime(long.Parse((string)tip["createdAt"])), Post = (string)tip["text"], Member = new Member { MemberMainData = new MemberMainData { FirstName = (string)tip["user"]["firstName"], LastName = (string)tip["user"]["lastName"], Avatar = (string)tip["user"]["photo"] } } };
+                            /* Date = new DateTime(1970, 1, 1).AddTicks((long)tip["createdAt"] * 10000) */
+                            var com = new Comment { Date = DateTime.UtcNow, Post = (string)tip["text"], Member = new Member { MemberMainData = new MemberMainData { FirstName = (string)tip["user"]["firstName"], LastName = (string)tip["user"]["lastName"], Avatar = (string)tip["user"]["photo"] } }, Rating = 3, RatingDispo = 3, RatingPrice = 3, RatingWelcome = 3, RatingWifi = 3 };
                             container.Localisation.Comments.Add(com);
                         }
                     }

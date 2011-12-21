@@ -33,6 +33,13 @@ namespace Worki.Web.Controllers
         ILogger _Logger;
         IEmailService _EmailService;
 
+        public static string RequestToken = "https://foursquare.com/oauth2/authenticate?client_id={0}&response_type=code&redirect_uri={1}";
+        public static string RequestTokenAccept = "https://foursquare.com/oauth2/access_token?client_id={0}&client_secret={1}&grant_type=authorization_code&redirect_uri={2}&code={3}";
+
+        public static string ClientId = "WBQZGCHVXQH4UDJ4UDKPHKZXVIFXTZJIZNKDMZUI3FS0W2AF";
+        public static string ClientSecret = "RKMEELW5BR4KEOBMUEXQG5FPMGBE23I05NTL0JIJHA25SQED";
+        public static string RedirectUrl = "http://localhost:4119/Home/Token";
+        
         public HomeController(ILogger logger, IEmailService emailService)
         {
             this._Logger = logger;
@@ -104,6 +111,37 @@ namespace Worki.Web.Controllers
 			}
         }
 
+        string GetTokenKey()
+        {
+            if (Session["4SQTokenKey"] != null)
+                return (string)Session["4SQTokenKey"];
+            else return string.Empty;
+        }
+
+        void SetTokenKey(string key)
+        {
+            Session["4SQTokenKey"] = key;
+        }
+
+        public ActionResult Token(string code)
+        {
+            var accept = String.Format(RequestTokenAccept, ClientId, ClientSecret, RedirectUrl, code);
+            using (var client = new WebClient())
+            {
+                client.Encoding = System.Text.Encoding.UTF8;
+                try
+                {
+                    string textString = client.DownloadString(accept);
+                    JObject venuesJson = JObject.Parse(textString);
+                    SetTokenKey((string)venuesJson["access_token"]);
+                }
+                catch (WebException)
+                {
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
         /// <summary>
         /// Prepare the home page
         /// </summary>
@@ -111,6 +149,11 @@ namespace Worki.Web.Controllers
         [ActionName("index")]
         public virtual ActionResult Index()
         {
+            if (string.IsNullOrEmpty(GetTokenKey()))
+            {
+                var redirect = string.Format(RequestToken, ClientId, RedirectUrl);
+                return Redirect(redirect);
+            }
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
