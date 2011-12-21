@@ -196,7 +196,8 @@
 				@{
 					ViewData[Comment.DisplayRelatedLocalisation] = false;
 				}
-				@foreach (var com in Model.GetOrderedComments())
+                @* foreach (var com in Model.GetOrderedComments()) *@
+				@foreach (var com in Model.Comments)
 				{
 					if (com.Member == null)
 					{

@@ -11,6 +11,8 @@ using Worki.Service;
 using Worki.Infrastructure.Repository;
 using Postal;
 using System.Collections.Generic;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace Worki.Web.Controllers
 {
@@ -35,6 +37,28 @@ namespace Worki.Web.Controllers
             return View(viewModel);
         }
 
+        public static string RequestToken = "https://foursquare.com/oauth2/authenticate?client_id={0}&response_type=code&redirect_uri={1}";
+        public static string RequestTokenAccept = "https://foursquare.com/oauth2/access_token?client_id={0}&client_secret={1}&grant_type=authorization_code&redirect_uri={2}&code={3}";
+
+        public static string ClientId = "DFOFTOSU2VYAO5TKCENWR1PIIRBHY1B4HGEZVSUAI3EIURFA";
+        public static string ClientSecret = "HK4W330SMCPM3HRBLHZGCKPQC2GTJRA2XCNXSN3LCCF4Z5JM";
+        public static string RedirectUrl = "http://localhost:4119/caf%C3%A9-restaurant/9/the-frog-and-rosbif";
+        
+        public static string FoursquareSearch = "https://api.foursquare.com/v2/venues/search?oauth_token={0}";
+        public static string FoursquareTips = "https://api.foursquare.com/v2/venues/{0}/tips?oauth_token={1}";
+
+        string GetTokenKey()
+        {
+            if (Session["4SQTokenKey"] != null)
+                return (string)Session["4SQTokenKey"];
+            else return string.Empty;
+        }
+
+        void SetTokenKey(string key)
+        {
+            Session["4SQTokenKey"] = key;
+        }
+
         /// <summary>
         /// The view containing the details of a localisation
         /// </summary>
@@ -53,8 +77,54 @@ namespace Worki.Web.Controllers
                 return RedirectToAction(MVC.Home.Index());
             }
 			else
-			{
-				var container = new SearchSingleResultViewModel { Localisation = localisation };
+            {
+
+                var container = new SearchSingleResultViewModel { Localisation = localisation };
+
+                var redirect = string.Format(RequestToken, ClientId, RedirectUrl);
+                Redirect(redirect);
+
+                var accept = String.Format(RequestTokenAccept, ClientId, ClientSecret, RedirectUrl, "CODE");
+                using (var client0 = new WebClient())
+                {
+                    client0.Encoding = System.Text.Encoding.UTF8;
+                    try
+                    {
+                        string textString0 = client0.DownloadString(accept);
+                        JObject venuesJson0 = JObject.Parse(textString0);
+                        SetTokenKey((string)venuesJson0["access_token"]);
+                    }
+                    catch (WebException)
+                    {
+                    }
+                }
+
+                using (var client = new WebClient())
+                {
+                    client.Encoding = System.Text.Encoding.UTF8;
+                    try
+                    {
+                        var path = string.Format(FoursquareSearch, GetTokenKey());
+                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=match";
+                        string textString = client.DownloadString(query);
+                        JObject venuesJson = JObject.Parse(textString);
+                        var venues = venuesJson["response"]["venues"];
+                        var venue = venues[0];
+                        path = string.Format(FoursquareTips, (string)venue["id"], GetTokenKey());
+                        textString = client.DownloadString(path);
+                        JObject tipsJSON = JObject.Parse(textString);
+                        var tips = tipsJSON["response"]["items"];
+                        foreach (var tip in tips)
+                        {
+                            var com = new Comment { Date = new DateTime(long.Parse((string)tip["createdAt"])), Post = (string)tip["text"], Member = new Member { MemberMainData = new MemberMainData { FirstName = (string)tip["user"]["firstName"], LastName = (string)tip["user"]["lastName"], Avatar = (string)tip["user"]["photo"] } } };
+                            container.Localisation.Comments.Add(com);
+                        }
+                    }
+                    catch (WebException)
+                    {
+                    }
+                }
+
 				return View(MVC.Localisation.Views.resultats_detail, container);
 			}
 		}
