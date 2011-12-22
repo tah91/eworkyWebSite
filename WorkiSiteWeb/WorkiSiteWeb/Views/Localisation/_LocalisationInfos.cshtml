@@ -39,36 +39,76 @@
 	<div class="clear">
 	</div>
 </div>*@
+
+@if (Model.FSMembers != null && Model.FSMembers.Count != 0)
+{
+    <div class="contentBlock">
+	    <h3 class="blue">Personnes présentes sur le lieu en ce moment</h3>
+	    <table>
+        @foreach (var member in Model.FSMembers)
+        {
+            <tr>
+                <td>
+                    <div class="commentAvatar borderedImg float-left">
+                        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(member.MemberMainData.Avatar, true), member.GetDisplayName())
+                    </div>
+                    <div class="clear"></div>
+                </td>
+                @if (member.MemberMainData.Civility == (int)CivilityType.Mr)
+                {
+                    <td class="blue bold">
+                        <div class="marginr20">
+                            @member.GetFullDisplayName()
+                        </div>
+                    </td>
+                }
+                else
+                {
+                    <td class="bold" style="color:#ffc6d9;">
+                        <div class="marginr20">
+                            @member.GetFullDisplayName()
+                        </div>
+                    </td>
+                }
+                <td class="bold">
+                    @CultureHelpers.GetSpecificFormat(member.MemberMainData.BirthDate, CultureHelpers.TimeFormat.Time)
+                </td>
+            </tr>
+        }
+        </table>
+    </div>
+}
+
 @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 {
    
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
 		@{
-			var lastEdition = Model.GetLastEdition();
-			var creation = Model.GetCreation();
+    var lastEdition = Model.GetLastEdition();
+    var creation = Model.GetCreation();
 		}
 		@if (creation != null)
-		{
+  {
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
-		}
-		else
-		{ 
+  }
+  else
+  { 
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
-		}
+  }
 		@if (lastEdition != null)
-		{
+  {
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
-        }
+  }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
         {
             <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
         }
         @if (Model.MainLocalisation != null)
         {
-            <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes: Worki.Resources.Views.Shared.SharedString.No)</span><br />
+            <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)</span><br />
         }
 	</div>
 }

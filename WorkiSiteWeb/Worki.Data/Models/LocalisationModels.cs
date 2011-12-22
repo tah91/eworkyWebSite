@@ -1306,4 +1306,13 @@ namespace Worki.Data.Models
 			get { return (Feature)FeatureID; }
 		}
 	}
+
+    public partial class Localisation
+    {
+        #region Properties
+
+        public IList<Member> FSMembers { get; set; }
+
+        #endregion
+    }
 }

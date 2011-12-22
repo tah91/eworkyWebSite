@@ -39,6 +39,7 @@ namespace Worki.Web.Controllers
 
         public static string FoursquareSearch = "https://api.foursquare.com/v2/venues/search?oauth_token={0}";
         public static string FoursquareTips = "https://api.foursquare.com/v2/venues/{0}/tips?oauth_token={1}";
+        public static string FoursquareHereNow = "https://api.foursquare.com/v2/venues/{0}/herenow?oauth_token={1}";
 
         string GetTokenKey()
         {
@@ -74,13 +75,15 @@ namespace Worki.Web.Controllers
                     client.Encoding = System.Text.Encoding.UTF8;
                     try
                     {
+                        // get back venue from 4Square matching eworky venue
                         var path = string.Format(FoursquareSearch, GetTokenKey());
-                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=browse&radius=10";
+                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=browse&radius=500";
                         string textString = client.DownloadString(query);
                         JObject venuesJson = JObject.Parse(textString);
                         var group_venues = venuesJson["response"]["groups"];
                         var venues = group_venues[0]["items"];
                         var venue = (string)venues[0]["id"];
+                        // get back all comments on the venue
                         path = string.Format(FoursquareTips, venue, GetTokenKey());
                         textString = client.DownloadString(path);
                         JObject tipsJSON = JObject.Parse(textString);
@@ -101,8 +104,32 @@ namespace Worki.Web.Controllers
 
                             container.Localisation.Comments.Add(com);
                         }
+                        // get back users from 4Square who's currently on the venue
+                        path = string.Format(FoursquareHereNow, venue, GetTokenKey());
+                        textString = client.DownloadString(path);
+                        JObject hereNowJSON = JObject.Parse(textString);
+                        var users = hereNowJSON["response"]["hereNow"]["items"];
+                        container.Localisation.FSMembers = new List<Member>();
+                        foreach (var user in users)
+                        {
+                            var member = new Member
+                            {
+                                MemberMainData = new MemberMainData
+                                {
+                                    FirstName = (string)user["user"]["firstName"],
+                                    LastName = (string)user["user"]["lastName"],
+                                    Avatar = (string)user["user"]["photo"],
+                                    Civility = ((string)user["user"]["gender"]).Equals("female") ? (int)CivilityType.Mme : (int)CivilityType.Mr,
+                                    BirthDate = new DateTime(1970, 1, 1).AddTicks((long)user["createdAt"] * 10000000)
+                                }
+                            };
+                            container.Localisation.FSMembers.Add(member);
+                        }
                     }
                     catch (WebException)
+                    {
+                    }
+                    catch (ArgumentOutOfRangeException)
                     {
                     }
                 }
