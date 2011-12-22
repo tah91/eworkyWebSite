@@ -87,8 +87,7 @@ namespace Worki.Web.Controllers
                         var tips = tipsJSON["response"]["tips"];
                         foreach (var tip in tips["items"])
                         {
-                            /* Date = new DateTime(1970, 1, 1).AddTicks((long)tip["createdAt"] * 10000) */
-                            var com = new Comment { Date = DateTime.UtcNow, Post = (string)tip["text"], Member = new Member { MemberMainData = new MemberMainData { FirstName = (string)tip["user"]["firstName"], LastName = (string)tip["user"]["lastName"], Avatar = (string)tip["user"]["photo"] } }, Rating = 3, RatingDispo = 3, RatingPrice = 3, RatingWelcome = 3, RatingWifi = 3 };
+                            var com = new Comment { Date = new DateTime(1970, 1, 1).AddTicks((long)tip["createdAt"] * 10000000), Post = (string)tip["text"], Member = new Member { MemberMainData = new MemberMainData { FirstName = (string)tip["user"]["firstName"], LastName = (string)tip["user"]["lastName"], Avatar = (string)tip["user"]["photo"] } }, Rating = 3, RatingDispo = 3, RatingPrice = 3, RatingWelcome = 3, RatingWifi = 3 };
                             container.Localisation.Comments.Add(com);
                         }
                     }
