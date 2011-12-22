@@ -75,7 +75,7 @@ namespace Worki.Web.Controllers
                     try
                     {
                         var path = string.Format(FoursquareSearch, GetTokenKey());
-                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=browse&radius=50";
+                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=browse&radius=10";
                         string textString = client.DownloadString(query);
                         JObject venuesJson = JObject.Parse(textString);
                         var group_venues = venuesJson["response"]["groups"];
