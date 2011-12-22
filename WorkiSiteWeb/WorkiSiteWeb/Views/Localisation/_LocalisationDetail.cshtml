@@ -196,8 +196,7 @@
 				@{
 					ViewData[Comment.DisplayRelatedLocalisation] = false;
 				}
-                @* foreach (var com in Model.GetOrderedComments()) *@
-				@foreach (var com in Model.Comments)
+				@foreach (var com in Model.Comments.ToList().OrderByDescending(x => x.Date))
 				{
 					if (com.Member == null)
 					{
