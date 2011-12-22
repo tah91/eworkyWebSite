@@ -77,7 +77,7 @@ namespace Worki.Web.Controllers
                     {
                         // get back venue from 4Square matching eworky venue
                         var path = string.Format(FoursquareSearch, GetTokenKey());
-                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=browse&radius=500";
+                        var query = path + "&ll=" + localisation.Latitude + "," + localisation.Longitude + "&intent=browse&radius=10";
                         string textString = client.DownloadString(query);
                         JObject venuesJson = JObject.Parse(textString);
                         var group_venues = venuesJson["response"]["groups"];
