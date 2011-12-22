@@ -43,8 +43,8 @@
 @if (Model.FSMembers != null && Model.FSMembers.Count != 0)
 {
     <div class="contentBlock">
-	    <h3 class="blue">Personnes présentes sur le lieu en ce moment</h3>
-	    <table>
+	    <h3 class="blue">En ce moment sur le lieu</h3>
+	    <table class="hereNow">
         @foreach (var member in Model.FSMembers)
         {
             <tr>
@@ -57,21 +57,20 @@
                 @if (member.MemberMainData.Civility == (int)CivilityType.Mr)
                 {
                     <td class="blue bold">
-                        <div class="marginr20">
-                            @member.GetFullDisplayName()
-                        </div>
+                        @member.GetFullDisplayName()
                     </td>
                 }
                 else
                 {
                     <td class="bold" style="color:#ffc6d9;">
-                        <div class="marginr20">
-                            @member.GetFullDisplayName()
-                        </div>
+                        @member.GetFullDisplayName()
                     </td>
                 }
                 <td class="bold">
-                    @CultureHelpers.GetSpecificFormat(member.MemberMainData.BirthDate, CultureHelpers.TimeFormat.Time)
+                    <div class="float-right">
+                        @CultureHelpers.GetSpecificFormat(member.MemberMainData.BirthDate, CultureHelpers.TimeFormat.Time)
+                    </div>
+                    <div class="clear"></div>
                 </td>
             </tr>
         }
