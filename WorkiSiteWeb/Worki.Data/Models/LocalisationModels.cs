@@ -1312,6 +1312,7 @@ namespace Worki.Data.Models
         #region Properties
 
         public IList<Member> FSMembers { get; set; }
+        public int UsersCount_Stats { get; set; }
 
         #endregion
     }

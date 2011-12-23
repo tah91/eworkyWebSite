@@ -40,6 +40,40 @@
 	</div>
 </div>*@
 
+<div class="contentBlock">
+    <h3 class="blue">Informations complémentaires</h3>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <td style="width: 50%;">
+                    <div class="bold" style="text-align: center;">
+                        Commentaires
+                   </div>
+                </td>
+                <td>
+                    <div class="bold" style="text-align: center;">
+                        Visité
+                   </div>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div style="text-align: center;">
+                        x @Model.Comments.Count
+                    </div>
+                </td>
+                <td>
+                    <div style="text-align: center;">
+                        x @Model.UsersCount_Stats
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 @if (Model.FSMembers != null && Model.FSMembers.Count != 0)
 {
     <div class="contentBlock">

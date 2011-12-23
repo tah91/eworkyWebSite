@@ -83,6 +83,7 @@ namespace Worki.Web.Controllers
                         var group_venues = venuesJson["response"]["groups"];
                         var venues = group_venues[0]["items"];
                         var venue = (string)venues[0]["id"];
+                        container.Localisation.UsersCount_Stats = (int)venues[0]["stats"]["usersCount"];
                         // get back all comments on the venue
                         path = string.Format(FoursquareTips, venue, GetTokenKey());
                         textString = client.DownloadString(path);
