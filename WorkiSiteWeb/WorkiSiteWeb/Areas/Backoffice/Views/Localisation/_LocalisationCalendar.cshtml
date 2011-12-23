@@ -109,7 +109,7 @@
                             colored = yellow;
                         }
 
-                        @:{ id: '@item.Id', title: '@item.Offer.Name - @item.Member.GetFullDisplayName()', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })', allDay: false },
+                        @:{ id: '@item.Id', title: '@Html.Raw(item.Offer.Name) - @Html.Raw(item.Member.GetFullDisplayName())', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })', allDay: false },
                     }
 			    ],
                 selectable: true,
