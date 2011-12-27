@@ -613,7 +613,7 @@ namespace Worki.Data.Models
 
         public string GetDisplayName()
         {
-            return Name;
+			return string.Format(Worki.Resources.Models.Localisation.Localisation.DisplayName, Name, Localisation.GetLocalisationType(TypeValue), City);
         }
 
         public string GetDescription()
