@@ -4,6 +4,8 @@
 .localisationLogo{height:70px;width:90px}
 .localisationLogo img{max-height:70px}
 .localisationTitle{width:60%}
+.localisationTitle h1{margin-bottom:0}
+.localisationTitle h2{display:inline}
 .localisationName{font-size:2em}
 .localisationDesc{margin-bottom:10px}
 .localisationCity{font-size:1.2em}
