@@ -62,15 +62,9 @@
 <div itemscope itemtype="http://schema.org/LocalBusiness">
 	<div class="localisationDetailHead">
 		<div class="localisationTitle float-left">
-			<div class="float-left blue bold">
-			<span class="item">
-				<span class="localisationName" itemprop="name">@Model.Name</span>
-			</span>
-			</div>
-			<div class="clear">
-			</div>
+			<h1 class="localisationName blue bold" itemprop="name">@Model.Name</h1>
 			<div class="localisationSubtitle" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-				<span class="localisationCity bold blue">@Localisation.GetLocalisationType(Model.TypeValue)</span>&nbsp;&nbsp;
+				<h2 class="localisationCity bold blue">@Localisation.GetLocalisationType(Model.TypeValue)</h2>&nbsp;&nbsp;
 				@{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;}
 				<a href="@itinLink" target="_blank">
 					<span itemprop="streetAddress">@Model.Adress</span> - <span itemprop="postalCode">@Model.PostalCode</span> <span itemprop="addressLocality">@Model.City</span>

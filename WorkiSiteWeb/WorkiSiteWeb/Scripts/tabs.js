@@ -12,7 +12,7 @@ $('.acc_trigger').click(function () {
 });
 
 //Hide (Collapse) the toggle containers on load
-$(".toogle_container").hide();
+   $(".toogle_container:not(.active)").hide();
 
 //$('.toogle_trigger_click:first').addClass('active').next().show();
 //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)

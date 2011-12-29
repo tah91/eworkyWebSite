@@ -97,7 +97,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorky | Coworking, cafés wifi, centres d&apos;affaires, location et réservation de salles de réunion et de bureaux.
+        ///   Looks up a localized string similar to Coworking, partage de bureaux, cafés wifi.
         /// </summary>
         public static string BestWorkspace {
             get {
@@ -169,7 +169,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : locaux à louer, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
+        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : bureaux à partager, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
         /// </summary>
         public static string Description {
             get {

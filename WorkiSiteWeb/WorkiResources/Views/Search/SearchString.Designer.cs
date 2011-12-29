@@ -214,7 +214,16 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Par nom de lieu.
+        ///   Looks up a localized string similar to Par localisation.
+        /// </summary>
+        public static string SearchByPlace {
+            get {
+                return ResourceManager.GetString("SearchByPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Par nom du lieu.
         /// </summary>
         public static string SearchByPlaceName {
             get {
@@ -223,7 +232,7 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Par type de lieu.
+        ///   Looks up a localized string similar to Par type d&apos;espace.
         /// </summary>
         public static string SearchByPlaceType {
             get {

@@ -79,7 +79,7 @@ namespace Worki.Web.Helpers
             {
                 Title = provider.GetDisplayName(),
                 Image = imagePath,
-                Description = provider.GetDisplayName()
+                Description = provider.GetDescription()
             };
         }
 

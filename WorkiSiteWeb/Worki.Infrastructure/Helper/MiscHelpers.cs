@@ -75,7 +75,7 @@ namespace Worki.Infrastructure.Helpers
             public const string Workstation = "poste-de-travail";
             public const string Desktop = "bureau";
             public const string MeetingRoom = "salle-de-reunion";
-            public const string SeminarRoom = "salle-de-formation";
+            public const string SeminarRoom = "salle-de-conference";
             public const string VisioRoom = "salle-de-visioconférence";
 
             public static List<string> LocalisationOfferTypes = new List<string>

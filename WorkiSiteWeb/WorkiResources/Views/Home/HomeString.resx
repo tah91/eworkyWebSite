@@ -127,7 +127,7 @@
     <value>Une équipe</value>
   </data>
   <data name="BestWorkspace" xml:space="preserve">
-    <value>eWorky | Coworking, cafés wifi, centres d'affaires, location et réservation de salles de réunion et de bureaux</value>
+    <value>Coworking, partage de bureaux, cafés wifi</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -193,7 +193,7 @@
     <value>Qui sommes-nous ?</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Trouvez un lieu de travail où vous voulez : locaux à louer, centre d'affaires, espaces de coworking, café wifi, salle de réunion ou de conférence.</value>
+    <value>Trouvez un lieu de travail où vous voulez : bureaux à partager, centre d'affaires, espaces de coworking, café wifi, salle de réunion ou de conférence.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
