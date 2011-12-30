@@ -403,6 +403,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cuisine / kitchenette.
+        /// </summary>
+        public static string Kitchen {
+            get {
+                return ResourceManager.GetString("Kitchen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Régie lumière.
         /// </summary>
         public static string Lighting {
@@ -525,6 +534,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string PhoneJack {
             get {
                 return ResourceManager.GetString("PhoneJack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ligne téléphonique.
+        /// </summary>
+        public static string PhoneLine {
+            get {
+                return ResourceManager.GetString("PhoneLine", resourceCulture);
             }
         }
         
@@ -732,6 +750,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string SeminarRoom {
             get {
                 return ResourceManager.GetString("SeminarRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salle de réunion.
+        /// </summary>
+        public static string SharedMeetingRoom {
+            get {
+                return ResourceManager.GetString("SharedMeetingRoom", resourceCulture);
             }
         }
         

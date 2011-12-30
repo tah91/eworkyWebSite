@@ -214,6 +214,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Partage.
+        /// </summary>
+        public static string SharedOffice {
+            get {
+                return ResourceManager.GetString("SharedOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Statistiques.
         /// </summary>
         public static string StatTitle {

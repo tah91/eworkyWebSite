@@ -100,6 +100,9 @@ namespace Worki.Web.Areas.Api.Controllers
 							case LocalisationType.PrivateArea:
 								criteria.PrivateArea = true;
 								break;
+							case LocalisationType.SharedOffice:
+								criteria.SharedOffice = true;
+								break;
 							default:
 								break;
 						}

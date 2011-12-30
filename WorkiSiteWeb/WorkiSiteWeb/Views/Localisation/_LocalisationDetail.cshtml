@@ -2,6 +2,8 @@
 
 @helper AggregatedOfferBlock(Localisation localisation, LocalisationOffer offerType)
 	{
+		var color = localisation.IsSharedOffice() ? "green" : "blue";
+		var btnColor = localisation.IsSharedOffice() ? "buttonGreen" : "buttonBlue";
 		if (!localisation.HasOffer(offerType))
 		{
 			return;
@@ -22,20 +24,7 @@
 			}
 		}
 		<div class="contentBlock">
-			<h3 class="blue">@title</h3>
-@*			@if (files.Count() > 0)
-			{
-            <div class="offerGallery">
-				@foreach (var item in files)
-				{
-					<a href="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Offer))" class="hidden">
-            			<img title="@title" alt="@title" src="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Offer))" itemprop="image"/>
-        			</a>                        
-				}
-			</div>
-			<div class="clear">
-			</div>
-			}*@
+			<h3 class="@color">@title</h3>
 			@if (features.Count() == 0)
 			{
 				<div class="italic">@Worki.Resources.Views.Offer.OfferString.InfoUnknown</div>
@@ -53,18 +42,22 @@
 			<div class="clear">
 			</div>
 			}
-			<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(text, MVC.Localisation.Offers(localisation.ID, (int)offerType))</div>
+			<div class="buttonStd @btnColor linkImg float-right">@Html.ActionLink(text, MVC.Localisation.Offers(localisation.ID, (int)offerType))</div>
 			<div class="clear">
 			</div>
 		</div> 
 }
 
+@{
+	var color = Model.IsSharedOffice() ? "green" : "blue";
+	var btnColor = Model.IsSharedOffice() ? "buttonGreen" : "buttonBlue";
+}
 <div itemscope itemtype="http://schema.org/LocalBusiness">
 	<div class="localisationDetailHead">
 		<div class="localisationTitle float-left">
-			<h1 class="localisationName blue bold" itemprop="name">@Model.Name</h1>
+			<h1 class="localisationName bold @color" itemprop="name">@Model.Name</h1>
 			<div class="localisationSubtitle" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-				<h2 class="localisationCity bold blue">@Localisation.GetLocalisationType(Model.TypeValue)</h2>&nbsp;&nbsp;
+				<h2 class="localisationCity bold @color">@Localisation.GetLocalisationType(Model.TypeValue)</h2>&nbsp;&nbsp;
 				@{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;}
 				<a href="@itinLink" target="_blank">
 					<span itemprop="streetAddress">@Model.Adress</span> - <span itemprop="postalCode">@Model.PostalCode</span> <span itemprop="addressLocality">@Model.City</span>
@@ -136,7 +129,6 @@
 				var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
 			}
 			<div class="localisationDescription contentBlock">
-				@*<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Description</h3>*@
 				<div class="localisationDesc" itemprop="description">
 					@Html.Nl2Br(Model.Description)
 				</div>
@@ -176,7 +168,7 @@
 			@AggregatedOfferBlock(Model, LocalisationOffer.SeminarRoom)
 			@AggregatedOfferBlock(Model, LocalisationOffer.VisioRoom)
 			<div class="localisationComments contentBlock">
-				<h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
+				<h3 class="@color">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
 				<div id="commentFormDiv">
 					@if (Request.IsAuthenticated)
 					{
@@ -208,12 +200,12 @@
 	</div>
 </div>
 
-<div class="buttonStd buttonBlue linkImg float-right">
+<div class="buttonStd @btnColor linkImg float-right">
 @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 </div>
 @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 {
-	<div class="buttonStd buttonBlue linkImg float-right">
+	<div class="buttonStd @btnColor linkImg float-right">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
 	</div>
 }

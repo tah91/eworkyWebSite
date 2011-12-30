@@ -196,6 +196,9 @@
   <data name="Services" xml:space="preserve">
     <value>Services</value>
   </data>
+  <data name="SharedOfficeExemple" xml:space="preserve">
+    <value>Ex : Bureaux haut standing, Postes à partager avec une start-up, Poste de travail en open space, etc.</value>
+  </data>
   <data name="SncfExample" xml:space="preserve">
     <value>Ex : Gare de Lyon</value>
   </data>

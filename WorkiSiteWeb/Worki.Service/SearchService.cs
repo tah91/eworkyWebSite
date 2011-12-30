@@ -194,6 +194,8 @@ namespace Worki.Service
                         criteria.WorkingHotel = true;
                     if (item == MiscHelpers.SeoConstants.PrivateArea)
                         criteria.PrivateArea = true;
+					if (item == MiscHelpers.SeoConstants.SharedOffice)
+						criteria.SharedOffice = true;
                 }
             }
 
@@ -255,6 +257,8 @@ namespace Worki.Service
                     localisationTypes.Add(MiscHelpers.SeoConstants.WorkingHotel);
                 if (criteria.PrivateArea)
                     localisationTypes.Add(MiscHelpers.SeoConstants.PrivateArea);
+				if (criteria.SharedOffice)
+					localisationTypes.Add(MiscHelpers.SeoConstants.SharedOffice);
             }
             else
                 localisationTypes.Add(MiscHelpers.SeoConstants.All);

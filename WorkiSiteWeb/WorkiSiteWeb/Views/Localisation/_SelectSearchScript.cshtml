@@ -251,6 +251,7 @@
                 $("#Criteria_CoworkingSpace").attr('checked', false);
                 $("#Criteria_WorkingHotel").attr('checked', false);
                 $("#Criteria_PrivateArea").attr('checked', false);
+				$("#Criteria_SharedOffice").attr('checked', false);
             }
         });
         UnckeckEverything = function (checkboxId) {
@@ -273,6 +274,7 @@
         UnckeckEverything("#Criteria_CoworkingSpace");
         UnckeckEverything("#Criteria_WorkingHotel");
         UnckeckEverything("#Criteria_PrivateArea");
+		UnckeckEverything("#Criteria_SharedOffice");
 
         SelectForm = function (event, searchType, directAccessType) {
             event.preventDefault();

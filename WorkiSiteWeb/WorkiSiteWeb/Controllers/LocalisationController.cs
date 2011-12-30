@@ -98,6 +98,17 @@ namespace Worki.Web.Controllers
 			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false));
 		}
 
+		/// <summary>
+		/// GET action to create a new shared office
+		/// </summary>
+		/// <returns>The form to fill</returns>
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		[ActionName("ajouter-espace-partagé")]
+		public virtual ActionResult CreateSharedOffice()
+		{
+			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false, true));
+		}
+
         /// <summary>
         /// GET action to adit an existing localisation
         /// </summary>
@@ -494,6 +505,9 @@ namespace Worki.Web.Controllers
                     break;
                 case MiscHelpers.SeoConstants.PrivateArea:
                     criteria.PrivateArea = true;
+					break;
+				case MiscHelpers.SeoConstants.SharedOffice:
+					criteria.SharedOffice = true;
                     break;
             }
             criteria.Everything = false;
@@ -541,6 +555,11 @@ namespace Worki.Web.Controllers
 			{
 				try
 				{
+					if (criteria.OnlySharedOffice)
+					{
+						criteria.Everything = false;
+						criteria.SharedOffice = true;
+					}
 					var rvd = _SearchService.GetRVD(criteria);
 					return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
 				}

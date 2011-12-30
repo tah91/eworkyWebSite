@@ -170,7 +170,7 @@ namespace Worki.Data.Models
 
         public bool CanHaveBooking
         {
-            get { return OfferCanHaveBooking((LocalisationOffer)Type); }
+			get { return OfferCanHaveBooking((LocalisationOffer)Type) && Localisation != null && !Localisation.IsSharedOffice(); }
         }
 
 		#endregion
