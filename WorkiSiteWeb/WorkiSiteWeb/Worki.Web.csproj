@@ -343,6 +343,10 @@
     <Content Include="Content\images\retour.png" />
     <Content Include="Content\images\signin_facebook.png" />
     <Content Include="Content\images\vu-tele.png" />
+    <Content Include="Content\jquery.qtip.css" />
+    <Content Include="Content\jquery.qtip.min.css">
+      <DependentUpon>jquery.qtip.css</DependentUpon>
+    </Content>
     <Content Include="Content\LocalisationForm.min.css">
       <DependentUpon>LocalisationForm.css</DependentUpon>
     </Content>
@@ -425,7 +429,6 @@
     <Content Include="Scripts\gcal.min.js">
       <DependentUpon>gcal.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.5.2.min.js" />
     <Content Include="Scripts\jquery.localdate-fr.js" />
     <Content Include="Scripts\jquery.localdate-fr.min.js">
       <DependentUpon>jquery.localdate-fr.js</DependentUpon>
@@ -437,6 +440,10 @@
     </Content>
     <Content Include="Scripts\jquery.localdate.min.js">
       <DependentUpon>jquery.localdate.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.qtip.js" />
+    <Content Include="Scripts\jquery.qtip.min.js">
+      <DependentUpon>jquery.qtip.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.ui.datepicker-en.js" />
     <Content Include="Scripts\jquery.ui.datepicker-en.min.js">
@@ -699,7 +706,7 @@
     <Content Include="Areas\Backoffice\Views\Localisation\RefuseQuotation.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_OfferMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Member\IndexOwner.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\_Calendar.cshtml">
+    <Content Include="Areas\Backoffice\Views\Localisation\OfferSchedule.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationCalendar.cshtml" />

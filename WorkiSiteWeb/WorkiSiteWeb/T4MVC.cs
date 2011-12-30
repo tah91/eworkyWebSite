@@ -386,7 +386,6 @@ namespace Links {
         public static readonly string jquery_1_5_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.5.1.min.js") ? Url("jquery-1.5.1.min.js") : Url("jquery-1.5.1.js");
                       
         public static readonly string jquery_1_5_1_min_js = Url("jquery-1.5.1.min.js");
-        public static readonly string jquery_1_5_2_min_js = Url("jquery-1.5.2.min.js");
         public static readonly string jquery_ui_1_8_11_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.8.11.min.js") ? Url("jquery-ui-1.8.11.min.js") : Url("jquery-ui-1.8.11.js");
                       
         public static readonly string jquery_ui_1_8_11_min_js = Url("jquery-ui-1.8.11.min.js");
@@ -417,6 +416,9 @@ namespace Links {
         public static readonly string jquery_placeholder_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.placeholder.min.js") ? Url("jquery.placeholder.min.js") : Url("jquery.placeholder.js");
                       
         public static readonly string jquery_placeholder_min_js = Url("jquery.placeholder.min.js");
+        public static readonly string jquery_qtip_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.qtip.min.js") ? Url("jquery.qtip.min.js") : Url("jquery.qtip.js");
+                      
+        public static readonly string jquery_qtip_min_js = Url("jquery.qtip.min.js");
         public static readonly string jquery_rateit_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.rateit.min.js") ? Url("jquery.rateit.min.js") : Url("jquery.rateit.js");
                       
         public static readonly string jquery_rateit_min_js = Url("jquery.rateit.min.js");
@@ -599,6 +601,8 @@ namespace Links {
         public static readonly string jquery_ui_timepicker_addon_min_css = Url("jquery-ui-timepicker-addon.min.css");
         public static readonly string jquery_fileupload_ui_css = Url("jquery.fileupload-ui.css");
         public static readonly string jquery_fileupload_ui_min_css = Url("jquery.fileupload-ui.min.css");
+        public static readonly string jquery_qtip_css = Url("jquery.qtip.css");
+        public static readonly string jquery_qtip_min_css = Url("jquery.qtip.min.css");
         public static readonly string LocalisationDetail_css = Url("LocalisationDetail.css");
         public static readonly string LocalisationDetail_min_css = Url("LocalisationDetail.min.css");
         public static readonly string LocalisationForm_css = Url("LocalisationForm.css");
@@ -3068,8 +3072,28 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Schedule() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Schedule);
+        public System.Web.Mvc.ActionResult OfferSchedule() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.OfferSchedule);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BookingEvents() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BookingEvents);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DropEvent() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DropEvent);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ResizeEvent() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ResizeEvent);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult CreateEvent() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.CreateEvent);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3102,7 +3126,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string QuotationCancelled = "QuotationCancelled";
             public readonly string OfferQuotation = "OfferQuotation";
             public readonly string RefuseQuotation = "RefuseQuotation";
-            public readonly string Schedule = "Schedule";
+            public readonly string OfferSchedule = "OfferSchedule";
+            public readonly string BookingEvents = "BookingEvents";
+            public readonly string DropEvent = "DropEvent";
+            public readonly string ResizeEvent = "ResizeEvent";
+            public readonly string CreateEvent = "CreateEvent";
+            public readonly string Clients = "Clients";
         }
 
 
@@ -3111,7 +3140,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string _Calendar = "~/Areas/Backoffice/Views/Localisation/_Calendar.cshtml";
             public readonly string _LocalisationCalendar = "~/Areas/Backoffice/Views/Localisation/_LocalisationCalendar.cshtml";
             public readonly string _LocalisationMenu = "~/Areas/Backoffice/Views/Localisation/_LocalisationMenu.cshtml";
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
@@ -3125,6 +3153,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string OfferBooking = "~/Areas/Backoffice/Views/Localisation/OfferBooking.cshtml";
             public readonly string OfferIndex = "~/Areas/Backoffice/Views/Localisation/OfferIndex.cshtml";
             public readonly string OfferQuotation = "~/Areas/Backoffice/Views/Localisation/OfferQuotation.cshtml";
+            public readonly string OfferSchedule = "~/Areas/Backoffice/Views/Localisation/OfferSchedule.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Localisation/Quotation.cshtml";
             public readonly string QuotationAccepted = "~/Areas/Backoffice/Views/Localisation/QuotationAccepted.cshtml";
             public readonly string QuotationCancelled = "~/Areas/Backoffice/Views/Localisation/QuotationCancelled.cshtml";
@@ -3288,10 +3317,43 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Schedule(int id, int offerId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Schedule);
+        public override System.Web.Mvc.ActionResult OfferSchedule(int id, int offerId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferSchedule);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("offerId", offerId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BookingEvents(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookingEvents);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DropEvent(int id, int dayDelta, int minuteDelta) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DropEvent);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("dayDelta", dayDelta);
+            callInfo.RouteValueDictionary.Add("minuteDelta", minuteDelta);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ResizeEvent(int id, int dayDelta, int minuteDelta) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ResizeEvent);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("dayDelta", dayDelta);
+            callInfo.RouteValueDictionary.Add("minuteDelta", minuteDelta);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreateEvent(System.Web.Mvc.FormCollection form) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateEvent);
+            callInfo.RouteValueDictionary.Add("form", form);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Clients() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Clients);
             return callInfo;
         }
 
