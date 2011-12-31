@@ -997,6 +997,9 @@ namespace Worki.Web.Controllers {
             public readonly string About = "a-propos";
             public readonly string CGU = "cgu";
             public readonly string Legal = "mentions-legales";
+            public readonly string HowItWorks = "comment-ça-marche";
+            public readonly string OwnerTutorial = "mode-d'emploi-gérant";
+            public readonly string UserTutorial = "mode-d'emploi-utilisateur";
             public readonly string ChangeCulture = "ChangeCulture";
             public readonly string AddSpace = "ajouter-espace";
         }
@@ -1008,6 +1011,7 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _AboutMenu = "~/Views/Home/_AboutMenu.cshtml";
+            public readonly string _HowItWorksMenu = "~/Views/Home/_HowItWorksMenu.cshtml";
             public readonly string _PeopleSlider = "~/Views/Home/_PeopleSlider.cshtml";
             public readonly string _RentalTab = "~/Views/Home/_RentalTab.cshtml";
             public readonly string a_propos = "~/Views/Home/a-propos.cshtml";
@@ -1015,10 +1019,13 @@ namespace Worki.Web.Controllers {
             public readonly string cgu = "~/Views/Home/cgu.cshtml";
             public readonly string contact = "~/Views/Home/contact.cshtml";
             public readonly string faq = "~/Views/Home/faq.cshtml";
+            public readonly string HowItWorks = "~/Views/Home/HowItWorks.cshtml";
             public readonly string index = "~/Views/Home/index.cshtml";
             public readonly string jobs = "~/Views/Home/jobs.cshtml";
             public readonly string mentions_legales = "~/Views/Home/mentions-legales.cshtml";
+            public readonly string OwnerTutorial = "~/Views/Home/OwnerTutorial.cshtml";
             public readonly string presse = "~/Views/Home/presse.cshtml";
+            public readonly string UserTutorial = "~/Views/Home/UserTutorial.cshtml";
         }
     }
 
@@ -1076,6 +1083,21 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult Legal() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Legal);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult HowItWorks() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.HowItWorks);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult OwnerTutorial() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OwnerTutorial);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult UserTutorial() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UserTutorial);
             return callInfo;
         }
 

@@ -332,6 +332,7 @@
     <Content Include="Content\images\homeLogo2.png" />
     <Content Include="Content\images\homeLogo3.png" />
     <Content Include="Content\images\homeLogo4.png" />
+    <Content Include="Content\images\howitworks.png" />
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
     <Content Include="Content\images\logoMobile.png" />
@@ -827,6 +828,10 @@
     <Content Include="Views\Shared\_VerticalMenu.cshtml" />
     <Content Include="Views\Shared\_DatePickerScript.cshtml" />
     <Content Include="Views\Shared\_DropDownList.cshtml" />
+    <Content Include="Views\Home\HowItWorks.cshtml" />
+    <Content Include="Views\Home\OwnerTutorial.cshtml" />
+    <Content Include="Views\Home\UserTutorial.cshtml" />
+    <Content Include="Views\Home\_HowItWorksMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

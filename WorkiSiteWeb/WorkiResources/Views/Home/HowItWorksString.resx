@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessBO" xml:space="preserve">
+    <value>Pour gérer votre espace sur eWorky, faites la demande {0}</value>
+  </data>
+  <data name="AccessBOLink" xml:space="preserve">
+    <value>via le formulaire de contact</value>
+  </data>
+  <data name="AccessBOTitle" xml:space="preserve">
+    <value>Accéder à l'espace gérant</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Réserver et payer en ligne votre réservation de salle de réunion ou votre abonnement à un espace de coworking</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>Réserver</value>
+  </data>
+  <data name="BookUser" xml:space="preserve">
+    <value>Chaque lieu propose différentes offres. Consultez-les et réservez celle dont vous avez besoin !</value>
+  </data>
+  <data name="BookUserTitle" xml:space="preserve">
+    <value>Réserver</value>
+  </data>
+  <data name="Commercialize" xml:space="preserve">
+    <value>Répondre en un clic aux demandes de réservation et de devis des utilisateurs et encaisser directement sur votre compte</value>
+  </data>
+  <data name="CommercializeTitle" xml:space="preserve">
+    <value>Commercialiser</value>
+  </data>
+  <data name="Exchange" xml:space="preserve">
+    <value>Echanger, discuter et animer son espace grâce aux pages dédiées aux espaces de coworking</value>
+  </data>
+  <data name="ExchangeTitle" xml:space="preserve">
+    <value>Echanger avec ses coworkers</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Une fois votre demande validée par notre équipe, profitez gratuitement de toutes les fonctionnalités gratuites de gestion de votre espace</value>
+  </data>
+  <data name="GoTitle" xml:space="preserve">
+    <value>C'est parti !</value>
+  </data>
+  <data name="HandleClients" xml:space="preserve">
+    <value>Assurer un suivi commercial, émettre les factures et piloter l’activité de votre espace de travail</value>
+  </data>
+  <data name="HandleClientsTitle" xml:space="preserve">
+    <value>Gérer vos clients</value>
+  </data>
+  <data name="HandleSpace" xml:space="preserve">
+    <value>Gérer gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres</value>
+  </data>
+  <data name="HandleSpaceTitle" xml:space="preserve">
+    <value>Gérer votre espace</value>
+  </data>
+  <data name="HowDoIt" xml:space="preserve">
+    <value>Comment faire ?</value>
+  </data>
+  <data name="HowItWorks" xml:space="preserve">
+    <value>Comment ça marche ?</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Ajouter, noter et commenter les lieux de travail pour aider toute la communauté dans ses recherches</value>
+  </data>
+  <data name="JoinTitle" xml:space="preserve">
+    <value>Rejoindre la communauté</value>
+  </data>
+  <data name="MakeFamous" xml:space="preserve">
+    <value>Intégrer gratuitement la plus grande base de lieux de travail en Europe avec une fiche complète décrivant vos offres et vos services</value>
+  </data>
+  <data name="MakeFamousTitle" xml:space="preserve">
+    <value>Faire connaître</value>
+  </data>
+  <data name="OwnerTitle" xml:space="preserve">
+    <value>Gérant</value>
+  </data>
+  <data name="OwnerTutorial" xml:space="preserve">
+    <value>Mode d’emploi gérant</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Une fois votre demande de réservation confirmée par le gérant de l’espace, vous pouvez directement payer en ligne avec votre carte de paiement</value>
+  </data>
+  <data name="PayTitle" xml:space="preserve">
+    <value>Payer en ligne</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>Créer gratuitement {0} en précisant que vous en êtes propriétaire</value>
+  </data>
+  <data name="ReferenceLink" xml:space="preserve">
+    <value>une fiche pour votre lieu</value>
+  </data>
+  <data name="RefererenceTitle" xml:space="preserve">
+    <value>Réferencer</value>
+  </data>
+  <data name="RegisterLink" xml:space="preserve">
+    <value>vous inscrire gratuitement</value>
+  </data>
+  <data name="RegisterOwner" xml:space="preserve">
+    <value>Pour gérer un lieu sur eWorky, vous devez {0} créant un compte ou en vous identifiant par Facebook</value>
+  </data>
+  <data name="RegisterOwnerTitle" xml:space="preserve">
+    <value>S’inscrire</value>
+  </data>
+  <data name="RegisterUser" xml:space="preserve">
+    <value>Pour profiter pleinement d’eWorky, vous devez {0} créant un compte ou en vous identifiant par Facebook</value>
+  </data>
+  <data name="RegisterUserTitle" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Trouver un café wifi, une salle de réunion ou une place de coworking parmi la plus grande base de lieux de travail en Europe</value>
+  </data>
+  <data name="SearchTitle" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="SearchUser" xml:space="preserve">
+    <value>Rechercher l’espace de travail dont vous avez besoin par lieu, par nom, par services ou par type de lieu</value>
+  </data>
+  <data name="SearchUserTitle" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="UserTitle" xml:space="preserve">
+    <value>Utilisateur</value>
+  </data>
+  <data name="UserTutorial" xml:space="preserve">
+    <value>Mode d’emploi utilisateur</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>eWorky vous aide à gérer un lieu de travail mais ne remplacera jamais votre convivialité et votre accueil !</value>
+  </data>
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>Accueillir</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>eWorky vous aide à trouver un lieu de travail mais pas à travailler, alors au boulot !</value>
+  </data>
+  <data name="WorkTitle" xml:space="preserve">
+    <value>Au travail</value>
+  </data>
+</root>

@@ -181,6 +181,9 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .blockContainer{padding:10px;line-height:1.6}
 .dashedRight{border-right:1px dashed #CCC}
 .dashedLeft{border-left:1px dashed #CCC}
+.contentLeft{width:25%}
+.contentRight{width:70%}
+.emptyContent{height:200px}
 .contentBlock{padding:10px;border:1px solid #CCC;margin:10px 0;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD}
 .contentBlock:first-child{margin-top:0}
 .contentBlock:last-child{margin-bottom:0}
@@ -290,3 +293,28 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .dropdown dd ul li a:hover{background-color:#5DAFDE;color:White;font-weight:bold}
 .contactTable td{height:30px}
 .contactTable td:first-child{padding-right:50px}
+.howitWorksPart{width:46%}
+.howitWorks{margin-top:0!important}
+.howitWorks h1{font-size:14px}
+.howitWorks h2{font-size:14px}
+.howitWorksTuto{padding:0 10px}
+.howitWorks li{margin:10px 0}
+.howitWorksHeader{background-color:#5dafde;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#449ed2);background-image:-moz-linear-gradient(top,#5DAFDE,#449ed2);background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2);background-image:linear-gradient(top,#5DAFDE,#449ed2);color:White;padding:5px;text-align:center}
+.howitworksLogo{width:60px;height:60px}
+.hoitworksDesc{width:250px;margin-left:10px}
+.hiw_BO{background-image:url('images/howitworks.png');background-position:0 0;width:55px;height:55px}
+.hiw_Welcome{background-image:url('images/howitworks.png');background-position:0 -105px;width:55px;height:55px}
+.hiw_Register{background-image:url('images/howitworks.png');background-position:0 -210px;width:55px;height:55px}
+.hiw_Clients{background-image:url('images/howitworks.png');background-position:0 -315px;width:55px;height:55px}
+.hiw_Commerce{background-image:url('images/howitworks.png');background-position:0 -420px;width:55px;height:55px}
+.hiw_Famous{background-image:url('images/howitworks.png');background-position:0 -525px;width:55px;height:55px}
+.hiw_Exchange{background-image:url('images/howitworks.png');background-position:0 -630px;width:55px;height:55px}
+.hiw_Handle{background-image:url('images/howitworks.png');background-position:0 -735px;width:55px;height:55px}
+.hiw_Add{background-image:url('images/howitworks.png');background-position:0 -840px;width:55px;height:55px}
+.hiw_Register2{background-image:url('images/howitworks.png');background-position:0 -945px;width:55px;height:55px}
+.hiw_Go{background-image:url('images/howitworks.png');background-position:0 -1050px;width:55px;height:55px}
+.hiw_Pay{background-image:url('images/howitworks.png');background-position:0 -1155px;width:55px;height:55px}
+.hiw_Search{background-image:url('images/howitworks.png');background-position:0 -1260px;width:55px;height:55px}
+.hiw_Join{background-image:url('images/howitworks.png');background-position:0 -1365px;width:55px;height:55px}
+.hiw_Book{background-image:url('images/howitworks.png');background-position:0 -1470px;width:55px;height:55px}
+.hiw_Work{background-image:url('images/howitworks.png');background-position:0 -1575px;width:55px;height:55px}

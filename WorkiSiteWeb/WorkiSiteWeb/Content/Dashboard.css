@@ -1,22 +1,4 @@
-﻿/*GENERAL
-----------------------------------------------------------*/
-
-.contentLeft
-{
-    width: 25%;
-}
-
-.contentRight
-{
-    width: 70%;
-}
-
-.emptyContent
-{
-	height:200px;
-}
-
-/*TABLE LAYOUT
+﻿/*TABLE LAYOUT
 ----------------------------------------------------------*/
 .tableStyle table
 {

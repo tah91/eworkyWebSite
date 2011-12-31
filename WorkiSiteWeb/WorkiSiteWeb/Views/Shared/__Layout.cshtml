@@ -44,6 +44,7 @@
 				<div class="headerMenu float-left">
 					<div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSearch, MVC.Home.Index())</div>
                     <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
+					<div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</div>
 				</div>
 				<div class="loginContainer detailContent float-right borderRadiusBottom">
 					<div  class="logindisplay sizeHeaderConnexion">
@@ -82,15 +83,18 @@
 					</div>
 					<div class="footerLinks float-left">
 						<ul>
-							<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())</li>
+							<li>@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</li>
+							<li>@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.UserTutorial, MVC.Home.UserTutorial())</li>
+							<li>@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.OwnerTutorial, MVC.Home.OwnerTutorial())</li>
 							<li>@Html.ActionLink(Worki.Resources.Views.Home.FaqString.FAQ, MVC.Home.Faq())</li>
-							<li>@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.CGU, MVC.Home.CGU())</li>
 						</ul>
 					</div>
 					<div class="footerLinks float-left">
 						<ul>
+							<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())</li>
 							<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.News, MVC.Home.Press())</li>
 							<li>@Html.ActionLink(Worki.Resources.Views.Home.JobString.Jobs, MVC.Home.Jobs())</li>
+							<li>@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.CGU, MVC.Home.CGU())</li>
 							<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.Imprint, MVC.Home.Legal())</li>
 							@*<li>SiteMap</li>*@
 						</ul>

@@ -13,8 +13,15 @@ namespace Worki.Data.Models
 		Jobs,
 		Cgu,
 		Legal,
-		Faq,
 		Contact
+	}
+
+	public enum TutorialPages
+	{
+		HowItWorks,
+		UserTutorial,
+		OwnerTutorial,
+		Faq
 	}
 
     public enum DashboardMenu
