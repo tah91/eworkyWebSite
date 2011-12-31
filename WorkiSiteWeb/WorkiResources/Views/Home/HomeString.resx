@@ -261,4 +261,10 @@
   <data name="ChooseForm" xml:space="preserve">
     <value>Vous voulez ajouter un espace de travail ? Choisissez le formulaire qui correspond au type de lieu que vous voulez ajouter.</value>
   </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Un espace partagé</value>
+  </data>
+  <data name="SharedOfficeSpeach" xml:space="preserve">
+    <value>Vous avez des postes de travail inutilisés dans votre entreprise ? Partagez-les sur eWorky et profitez de revenus supplémentaires !</value>
+  </data>
 </root>

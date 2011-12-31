@@ -323,6 +323,7 @@
     <Content Include="Content\galleria\galleria.classic.min.css">
       <DependentUpon>galleria.classic.css</DependentUpon>
     </Content>
+    <Content Include="Content\images\addPlace.png" />
     <Content Include="Content\images\arrow_red.png" />
     <Content Include="Content\images\avatar.png" />
     <Content Include="Content\images\cross.png" />

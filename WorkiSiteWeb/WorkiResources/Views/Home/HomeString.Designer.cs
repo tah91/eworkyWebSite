@@ -385,6 +385,24 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Un espace partagé.
+        /// </summary>
+        public static string SharedOffice {
+            get {
+                return ResourceManager.GetString("SharedOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous avez des postes de travail inutilisés dans votre entreprise ? Partagez-les sur eWorky et profitez de revenus supplémentaires !.
+        /// </summary>
+        public static string SharedOfficeSpeach {
+            get {
+                return ResourceManager.GetString("SharedOfficeSpeach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Puis on a eu mauvaise conscience, on s’est dit que c’était dommage de ne pas vous en faire profiter aussi. Soyez donc les bienvenus dans la communauté eWorky !.
         /// </summary>
         public static string ShareWithYou {
