@@ -322,3 +322,12 @@ select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
 {
     width:605px;
 }
+
+/* CALENDAR LAYOUT
+----------------------------------------------------------*/
+
+#calendar
+{
+    width: 100%;
+    margin: 0 auto;
+}

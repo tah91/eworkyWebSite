@@ -46,3 +46,4 @@
 .configoffertable td{height:30px}
 select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType{width:204px}
 .confirmbooktable{width:605px}
+#calendar{width:100%;margin:0 auto}

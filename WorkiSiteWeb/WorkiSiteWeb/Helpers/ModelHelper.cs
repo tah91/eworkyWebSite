@@ -201,5 +201,41 @@ namespace Worki.Web.Helpers
 
 			return dropDown;
 		}
+
+		public static CalandarJson GetCalandarEvent(this MemberBooking booking, UrlHelper url)
+		{
+			if (booking == null)
+				return null;
+
+			var color = "";
+			if (booking.Expired || booking.Cancelled)
+			{
+				color = CalandarJson.Grey;
+			}
+			else if (booking.Refused)
+			{
+				color = CalandarJson.Red;
+			}
+			else if (booking.Waiting)
+			{
+				color = CalandarJson.Orange;
+			}
+			else if (booking.Unknown)
+			{
+				color = CalandarJson.Yellow;
+			}
+			var toRet = new CalandarJson
+				{
+					id = booking.Id,
+					title = booking.Member.GetFullDisplayName(),
+					start = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.FromDate),
+					end = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.ToDate),
+					url = url.Action(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = booking.Id }),
+					allDay = false,
+					color = color,
+					editable = true
+				};
+			return toRet;
+		}
     }
 }

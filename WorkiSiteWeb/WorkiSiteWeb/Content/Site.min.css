@@ -294,6 +294,7 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .contactTable td{height:30px}
 .contactTable td:first-child{padding-right:50px}
 .howitWorksPart{width:46%}
+.messagepop{position:absolute;width:394px;z-index:50;top:15px}
 .howitWorks{margin-top:0!important}
 .howitWorks h1{font-size:14px}
 .howitWorks h2{font-size:14px}
