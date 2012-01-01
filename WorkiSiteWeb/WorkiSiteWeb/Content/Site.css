@@ -825,7 +825,7 @@ span.pinTitle { color: blue; }
 ----------------------------------------------------------*/
 select
 {
-	width:213px;
+	width:205px;
 	font-size: 12px;
 	padding: 3px;
 	color: #777;
@@ -1969,14 +1969,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .contactTable td:first-child
 {
 	padding-right:50px;
-}
-
-.messagepop 
-{
-  position:absolute;
-  width:394px;
-  z-index:50;
-  top:15px;
 }
 
 /* HOW IT WORKS LAYOUT

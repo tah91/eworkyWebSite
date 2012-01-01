@@ -19,53 +19,8 @@
 		<div class="contentBlock">
             <div id='calendar'>
             </div>
-			<div class="contentBlock messagepop">
-				<form id="createEventForm">
-					@Html.Hidden("Start")
-					@Html.Hidden("End")
-					<table>
-						<tr>
-							<td>
-								<div class="editor-label">
-									@Html.Label("Periode")
-								</div>
-							</td>
-							<td>
-								<div class="editor-field">
-									<span id="eventPeriod"></span>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="editor-label">
-									@Html.Label("Client","Client")
-								</div>
-							</td>
-							<td>
-								<div class="editor-field">
-									@Html.TextBox("Client")
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="editor-label">
-									@Html.Label("Price", "Prix")
-								</div>
-							</td>
-							<td>
-								<div class="editor-field">
-									@Html.TextBox("Price")
-								</div>
-							</td>
-						</tr>
-					</table>
-					<div class="editor-field float-right">
-						<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.BookIt"/>
-					</div>
-					<div class="clear"></div>
-				</form>
+			@{Html.RenderAction(MVC.Backoffice.Localisation.CreateEvent(Model.Id));}
+			<div class="contentBlock createBooking" id="bookingSummary">
 			</div>
         </div>
 	</div>
@@ -87,11 +42,14 @@
 				error: function (xhr, status, err) {
 					if (xhr.status == 400) {
 						$('#calendar').fullCalendar('unselect');
+						$('div.field-validation-error').remove();
+						$('#createBookingError').append('<div class="field-validation-error">' + xhr.responseText + '</div>');
 					}
 				},
 				success: function (data, textStatus, jqXHR) {
 					$('#calendar').fullCalendar('renderEvent', data, true);
 					$('#calendar').fullCalendar('unselect');
+					$('div.field-validation-error').remove();
 				}
 			});
 			return false;
@@ -99,24 +57,6 @@
 
 
 		require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
-			$('#Client').autocomplete({ minLength: 1,
-
-				source: function (request, response) {
-					$.ajax({
-						url: '@Url.Action(MVC.Backoffice.Localisation.Clients())',
-						data: request,
-						dataType: "json",
-						type: "POST",
-						success: function (data) {
-							response(data);
-						}
-					});
-				},
-				select: function (event, ui) {
-					var pos = ui.item.position;
-					var lct = ui.item.locType;
-				}
-			});
 
 			require(["@Links.Scripts.fullcalendar_js"], function () {
 				$('#calendar').fullCalendar({
@@ -198,9 +138,28 @@
 					select: function (startDate, endDate, allDay, jsEvent, view) {
 						var start = (new Date(startDate)).toString('dd/MM/yy HH:mm');
 						var end = (new Date(endDate)).toString('dd/MM/yy HH:mm');
-						$('#Start').val(start);
-						$('#End').val(end);
+						$('#Booking_FromDate').val(start);
+						$('#Booking_ToDate').val(end);
 						$('#eventPeriod').html(start + ' - ' + end);
+						$('.createBooking').css({ left: jsEvent.pageX, top: jsEvent.pageY });
+						$('.createBooking').fadeIn("slow");
+					},
+					unselect: function (view, jsEvent) {
+						$('.createBooking').hide();
+					},
+					eventMouseover: function (calEvent, jsEvent, view) {
+						$.ajax({
+							url: '@Url.Action(MVC.Backoffice.Localisation.BookingSummary())',
+							data: { 'id': calEvent.id },
+							success: function (data) {
+								$('#bookingSummary').html(data);
+								$('#bookingSummary').css({ left: jsEvent.pageX, top: jsEvent.pageY });
+								$('#bookingSummary').fadeIn("slow");
+							}
+						});
+					},
+					eventMouseout: function (calEvent, jsEvent, view) {
+						$('#bookingSummary').hide();
 					}
 				});
 			});

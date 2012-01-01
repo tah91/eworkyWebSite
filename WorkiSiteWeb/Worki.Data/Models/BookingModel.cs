@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Worki.Infrastructure;
 using System.Linq;
 using System.ComponentModel;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Data.Models
 {
@@ -105,6 +106,10 @@ namespace Worki.Data.Models
 
 		#region Booking status
 
+		public string BookingPeriod
+		{
+			get { return string.Format("du {0} au {1}", CultureHelpers.GetSpecificFormat(FromDate, CultureHelpers.TimeFormat.General), CultureHelpers.GetSpecificFormat(ToDate, CultureHelpers.TimeFormat.General)); }
+		}
 		/// <summary>
 		/// Created but not handled by owner yet
 		/// </summary>
@@ -269,7 +274,13 @@ namespace Worki.Data.Models
 		#endregion
 	}
 
-	[Bind(Exclude = "Id,MemberId,LocalisationId,OfferId")]
+	public class CreateBookingModel
+	{
+		public MemberBooking Booking { get; set; }
+		public SelectList Clients { get; set; }
+	}
+
+	[Bind(Exclude = "Id")]
 	public class MemberBooking_Validation
 	{
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]

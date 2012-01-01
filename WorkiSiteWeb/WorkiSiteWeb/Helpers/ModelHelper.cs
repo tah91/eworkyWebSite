@@ -230,7 +230,7 @@ namespace Worki.Web.Helpers
 					title = booking.Member.GetFullDisplayName(),
 					start = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.FromDate),
 					end = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.ToDate),
-					url = url.Action(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = booking.Id }),
+					//url = url.Action(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = booking.Id }),
 					allDay = false,
 					color = color,
 					editable = true

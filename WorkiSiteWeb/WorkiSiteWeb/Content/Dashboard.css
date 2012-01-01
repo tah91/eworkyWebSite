@@ -331,3 +331,16 @@ select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
     width: 100%;
     margin: 0 auto;
 }
+
+.createBooking 
+{
+  position:absolute;
+  display:none;
+  width:300px;
+  z-index:50;
+}
+
+.createBooking table td:first-child
+{
+	width:100px;
+}

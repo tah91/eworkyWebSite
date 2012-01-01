@@ -525,6 +525,7 @@ namespace Links {
             private const string URLPATH = "~/Content/images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string addPlace_png = Url("addPlace.png");
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avatar_png = Url("avatar.png");
@@ -543,6 +544,7 @@ namespace Links {
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
             public static readonly string homeLogo3_png = Url("homeLogo3.png");
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
+            public static readonly string howitworks_png = Url("howitworks.png");
             public static readonly string iconeMap_png = Url("iconeMap.png");
             public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
             public static readonly string independant_png = Url("independant.png");
@@ -3123,6 +3125,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public System.Web.Mvc.ActionResult CreateEvent() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.CreateEvent);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult BookingSummary() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.BookingSummary);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Backoffice.Localisation; } }
@@ -3159,7 +3166,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string DropEvent = "DropEvent";
             public readonly string ResizeEvent = "ResizeEvent";
             public readonly string CreateEvent = "CreateEvent";
-            public readonly string Clients = "Clients";
+            public readonly string BookingSummary = "BookingSummary";
         }
 
 
@@ -3168,6 +3175,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _BookingSummary = "~/Areas/Backoffice/Views/Localisation/_BookingSummary.cshtml";
+            public readonly string _CreateBooking = "~/Areas/Backoffice/Views/Localisation/_CreateBooking.cshtml";
             public readonly string _LocalisationCalendar = "~/Areas/Backoffice/Views/Localisation/_LocalisationCalendar.cshtml";
             public readonly string _LocalisationMenu = "~/Areas/Backoffice/Views/Localisation/_LocalisationMenu.cshtml";
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
@@ -3374,14 +3383,21 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateEvent(System.Web.Mvc.FormCollection form) {
+        public override System.Web.Mvc.ActionResult CreateEvent(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateEvent);
-            callInfo.RouteValueDictionary.Add("form", form);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Clients() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Clients);
+        public override System.Web.Mvc.PartialViewResult BookingSummary(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.BookingSummary);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreateEvent(Worki.Data.Models.CreateBookingModel createBookingModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateEvent);
+            callInfo.RouteValueDictionary.Add("createBookingModel", createBookingModel);
             return callInfo;
         }
 

@@ -1019,6 +1019,58 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		}
 
 		/// <summary>
+		/// Action to create booking creation partial view for an offer
+		/// </summary>
+		/// <param name="id">id of the offer</param>
+		/// <returns></returns>
+		[ChildActionOnly]
+		public virtual ActionResult CreateEvent(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			try
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+
+				var clients = mRepo.GetClients(memberId).ToDictionary(m => m.MemberId, m => m.GetFullDisplayName());
+				var model = new CreateBookingModel { Booking = new MemberBooking { OfferId = id }, Clients = new SelectList(clients, "Key", "Value") };
+
+				return PartialView(MVC.Backoffice.Localisation.Views._CreateBooking, model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("CreateEvent", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Action to show booking summary
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		/// <returns></returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual PartialViewResult BookingSummary(int id)
+		{
+			try
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+				var booking = bRepo.Get(id);
+
+				return PartialView(MVC.Backoffice.Localisation.Views._BookingSummary, booking);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("BookingSummary", ex);
+				return null;
+			}
+		}
+
+		/// <summary>
 		/// Ajax action to handle Create event
 		/// </summary>
 		/// <param name="id">id of the booking</param>
@@ -1026,64 +1078,44 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <param name="end">end date</param>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[HandleModelStateException]
-		public virtual ActionResult CreateEvent(FormCollection form)
+		public virtual ActionResult CreateEvent(CreateBookingModel createBookingModel)
 		{
-			return null;
-			//DateTime FromDate = CalandarJson.UNIXStart.AddMilliseconds(start);
-			//DateTime ToDate = CalandarJson.UNIXStart.AddMilliseconds(end);
-			//if (FromDate == ToDate)
-			//{
-			//    ToDate = ToDate.AddDays(1);
-			//}
-			//var context = ModelFactory.GetUnitOfWork();
-			//var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			//var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			//var offer = oRepo.Get(id);
+			var context = ModelFactory.GetUnitOfWork();
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 
-			//if (offer != null && FromDate > DateTime.UtcNow)
-			//{
-			//    try
-			//    {
-			//        var member = mRepo.GetMember(User.Identity.Name);
-			//        Member.Validate(member);
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var offer = oRepo.Get(createBookingModel.Booking.OfferId);
 
-			//        MemberBooking booking = new MemberBooking();
+					MemberBookingLog log = new MemberBookingLog();
+					log.CreatedDate = DateTime.UtcNow;
+					log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
+					log.Event = "Booking Created From Calandar";
+					createBookingModel.Booking.MemberBookingLogs.Add(log);
 
-			//        booking.OfferId = id;
-			//        booking.MemberId = offer.Localisation.Member.MemberId;
-			//        booking.FromDate = FromDate;
-			//        booking.ToDate = ToDate;
-			//        booking.StatusId = (int)MemberBooking.Status.Unknown;
-			//        MemberBookingLog log = new MemberBookingLog();
-			//        log.CreatedDate = DateTime.UtcNow;
-			//        log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
-			//        log.Event = "Booking Created";
-			//        booking.MemberBookingLogs.Add(log);
+					offer.MemberBookings.Add(createBookingModel.Booking);
 
-			//        offer.MemberBookings.Add(booking);
+					context.Commit();
 
-			//        context.Commit();
+					var newContext = ModelFactory.GetUnitOfWork();
+					var bRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
+					var booking = bRepo.Get(createBookingModel.Booking.Id);
 
-			//        return Json(booking.GetCalandarEvent(Url));
-			//    }
-			//    catch (Exception ex)
-			//    {
-			//        _Logger.Error("CreateEvent", ex);
-			//        context.Complete();
-			//        throw new ModelStateException(ModelState);
-			//    }
-			//}
-			//else
-			//{
-			//    throw new ModelStateException(ModelState);
-			//}
-		}
-
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult Clients()
-		{
-			var toRet = new List<string> { "plop", "toto" };
-			return Json(toRet);
+					return Json(booking.GetCalandarEvent(Url));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("CreateEvent", ex);
+					context.Complete();
+					throw new ModelStateException(ModelState);
+				}
+			}
+			else
+			{
+				throw new ModelStateException(ModelState);
+			}
 		}
 
 		#endregion
