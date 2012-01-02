@@ -88,7 +88,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Réserver et payer en ligne votre réservation de salle de réunion ou votre abonnement à un espace de coworking.
+        ///   Looks up a localized string similar to Réservez et payez en ligne votre réservation de salle de réunion ou votre abonnement à un espace de coworking.
         /// </summary>
         public static string Book {
             get {
@@ -124,7 +124,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Répondre en un clic aux demandes de réservation et de devis des utilisateurs et encaisser directement sur votre compte.
+        ///   Looks up a localized string similar to Répondez en un clic aux demandes de réservation et de devis des utilisateurs et encaissez directement sur votre compte.
         /// </summary>
         public static string Commercialize {
             get {
@@ -142,7 +142,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Echanger, discuter et animer son espace grâce aux pages dédiées aux espaces de coworking.
+        ///   Looks up a localized string similar to Echangez, discutez et animez son espace grâce aux pages dédiées aux espaces de coworking.
         /// </summary>
         public static string Exchange {
             get {
@@ -178,7 +178,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Assurer un suivi commercial, émettre les factures et piloter l’activité de votre espace de travail.
+        ///   Looks up a localized string similar to Assurez un suivi commercial, émettez les factures et pilotez l’activité de votre espace de travail.
         /// </summary>
         public static string HandleClients {
             get {
@@ -196,7 +196,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gérer gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres.
+        ///   Looks up a localized string similar to Gérez gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres.
         /// </summary>
         public static string HandleSpace {
             get {
@@ -223,7 +223,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comment ça marche ?.
+        ///   Looks up a localized string similar to Comment ça marche.
         /// </summary>
         public static string HowItWorks {
             get {
@@ -232,7 +232,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajouter, noter et commenter les lieux de travail pour aider toute la communauté dans ses recherches.
+        ///   Looks up a localized string similar to Ajoutez, notez et commentez les lieux de travail pour aider toute la communauté dans ses recherches.
         /// </summary>
         public static string Join {
             get {
@@ -250,7 +250,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Intégrer gratuitement la plus grande base de lieux de travail en Europe avec une fiche complète décrivant vos offres et vos services.
+        ///   Looks up a localized string similar to Intégrez gratuitement la plus grande base de lieux de travail en Europe avec une fiche complète décrivant vos offres et vos services.
         /// </summary>
         public static string MakeFamous {
             get {
@@ -304,7 +304,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Créer gratuitement {0} en précisant que vous en êtes propriétaire.
+        ///   Looks up a localized string similar to Créez gratuitement {0} en précisant que vous en êtes propriétaire.
         /// </summary>
         public static string Reference {
             get {
@@ -376,7 +376,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouver un café wifi, une salle de réunion ou une place de coworking parmi la plus grande base de lieux de travail en Europe.
+        ///   Looks up a localized string similar to Trouvez un café wifi, une salle de réunion ou une place de coworking parmi la plus grande base de lieux de travail en Europe.
         /// </summary>
         public static string Search {
             get {
@@ -394,7 +394,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rechercher l’espace de travail dont vous avez besoin par lieu, par nom, par services ou par type de lieu.
+        ///   Looks up a localized string similar to Recherchez l’espace de travail dont vous avez besoin par lieu, par nom, par services ou par type de lieu.
         /// </summary>
         public static string SearchUser {
             get {

@@ -127,7 +127,7 @@
     <value>Accéder à l'espace gérant</value>
   </data>
   <data name="Book" xml:space="preserve">
-    <value>Réserver et payer en ligne votre réservation de salle de réunion ou votre abonnement à un espace de coworking</value>
+    <value>Réservez et payez en ligne votre réservation de salle de réunion ou votre abonnement à un espace de coworking</value>
   </data>
   <data name="BookTitle" xml:space="preserve">
     <value>Réserver</value>
@@ -139,13 +139,13 @@
     <value>Réserver</value>
   </data>
   <data name="Commercialize" xml:space="preserve">
-    <value>Répondre en un clic aux demandes de réservation et de devis des utilisateurs et encaisser directement sur votre compte</value>
+    <value>Répondez en un clic aux demandes de réservation et de devis des utilisateurs et encaissez directement sur votre compte</value>
   </data>
   <data name="CommercializeTitle" xml:space="preserve">
     <value>Commercialiser</value>
   </data>
   <data name="Exchange" xml:space="preserve">
-    <value>Echanger, discuter et animer son espace grâce aux pages dédiées aux espaces de coworking</value>
+    <value>Echangez, discutez et animez son espace grâce aux pages dédiées aux espaces de coworking</value>
   </data>
   <data name="ExchangeTitle" xml:space="preserve">
     <value>Echanger avec ses coworkers</value>
@@ -157,13 +157,13 @@
     <value>C'est parti !</value>
   </data>
   <data name="HandleClients" xml:space="preserve">
-    <value>Assurer un suivi commercial, émettre les factures et piloter l’activité de votre espace de travail</value>
+    <value>Assurez un suivi commercial, émettez les factures et pilotez l’activité de votre espace de travail</value>
   </data>
   <data name="HandleClientsTitle" xml:space="preserve">
     <value>Gérer vos clients</value>
   </data>
   <data name="HandleSpace" xml:space="preserve">
-    <value>Gérer gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres</value>
+    <value>Gérez gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres</value>
   </data>
   <data name="HandleSpaceTitle" xml:space="preserve">
     <value>Gérer votre espace</value>
@@ -172,16 +172,16 @@
     <value>Comment faire ?</value>
   </data>
   <data name="HowItWorks" xml:space="preserve">
-    <value>Comment ça marche ?</value>
+    <value>Comment ça marche</value>
   </data>
   <data name="Join" xml:space="preserve">
-    <value>Ajouter, noter et commenter les lieux de travail pour aider toute la communauté dans ses recherches</value>
+    <value>Ajoutez, notez et commentez les lieux de travail pour aider toute la communauté dans ses recherches</value>
   </data>
   <data name="JoinTitle" xml:space="preserve">
     <value>Rejoindre la communauté</value>
   </data>
   <data name="MakeFamous" xml:space="preserve">
-    <value>Intégrer gratuitement la plus grande base de lieux de travail en Europe avec une fiche complète décrivant vos offres et vos services</value>
+    <value>Intégrez gratuitement la plus grande base de lieux de travail en Europe avec une fiche complète décrivant vos offres et vos services</value>
   </data>
   <data name="MakeFamousTitle" xml:space="preserve">
     <value>Faire connaître</value>
@@ -199,7 +199,7 @@
     <value>Payer en ligne</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Créer gratuitement {0} en précisant que vous en êtes propriétaire</value>
+    <value>Créez gratuitement {0} en précisant que vous en êtes propriétaire</value>
   </data>
   <data name="ReferenceLink" xml:space="preserve">
     <value>une fiche pour votre lieu</value>
@@ -223,13 +223,13 @@
     <value>S'inscrire</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Trouver un café wifi, une salle de réunion ou une place de coworking parmi la plus grande base de lieux de travail en Europe</value>
+    <value>Trouvez un café wifi, une salle de réunion ou une place de coworking parmi la plus grande base de lieux de travail en Europe</value>
   </data>
   <data name="SearchTitle" xml:space="preserve">
     <value>Rechercher</value>
   </data>
   <data name="SearchUser" xml:space="preserve">
-    <value>Rechercher l’espace de travail dont vous avez besoin par lieu, par nom, par services ou par type de lieu</value>
+    <value>Recherchez l’espace de travail dont vous avez besoin par lieu, par nom, par services ou par type de lieu</value>
   </data>
   <data name="SearchUserTitle" xml:space="preserve">
     <value>Rechercher</value>
