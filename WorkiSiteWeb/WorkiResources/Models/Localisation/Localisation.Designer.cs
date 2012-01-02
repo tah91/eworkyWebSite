@@ -160,6 +160,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}, {1} à {2}.
+        /// </summary>
+        public static string DisplayName {
+            get {
+                return ResourceManager.GetString("DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Facebook.
         /// </summary>
         public static string Facebook {
@@ -322,6 +331,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uniquement les espaces partagés.
+        /// </summary>
+        public static string OnlySharedOffice {
+            get {
+                return ResourceManager.GetString("OnlySharedOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Téléphone.
         /// </summary>
         public static string PhoneNumber {
@@ -480,6 +498,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string SendLocalisationMail {
             get {
                 return ResourceManager.GetString("SendLocalisationMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Espace partagé.
+        /// </summary>
+        public static string SharedOffice {
+            get {
+                return ResourceManager.GetString("SharedOffice", resourceCulture);
             }
         }
         

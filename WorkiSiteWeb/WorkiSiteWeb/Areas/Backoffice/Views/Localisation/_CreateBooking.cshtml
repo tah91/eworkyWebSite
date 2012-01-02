@@ -1,0 +1,54 @@
+﻿@model CreateBookingModel
+
+<div class="contentBlock createBooking">
+	<h3 class="blue">Créer une réservation</h3>
+	<form id="createEventForm">
+		@Html.HiddenFor(m => m.Booking.FromDate)
+		@Html.HiddenFor(m => m.Booking.ToDate)
+		@Html.HiddenFor(m => m.Booking.OfferId)
+		<table>
+			<tr>
+				<td>
+					<div class="editor-label">
+						@Html.Label("Période")
+					</div>
+				</td>
+				<td>
+					<div class="editor-field">
+						<span id="eventPeriod"></span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="editor-label">
+						@Html.Label("Booking.MemberId", "Client")
+					</div>
+				</td>
+				<td>
+					<div class="editor-field">
+						@Html.DropDownListFor(m => m.Booking.MemberId, Model.Clients)
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="editor-label">
+						@Html.LabelFor(m => m.Booking.Price)
+					</div>
+				</td>
+				<td>
+					<div class="editor-field">
+						@Html.TextBoxFor(m => m.Booking.Price)
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div id="createBookingError">
+		</div>
+		<div class="editor-field float-right">
+			<input type="submit" class="buttonStd buttonBlue" value="Créer"/>
+		</div>
+		<div class="clear"></div>
+	</form>
+</div>

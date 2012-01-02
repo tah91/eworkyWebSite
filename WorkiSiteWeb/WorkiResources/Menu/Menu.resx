@@ -234,4 +234,7 @@
   <data name="Owner" xml:space="preserve">
     <value>Gérants</value>
   </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Planning</value>
+  </data>
 </root>

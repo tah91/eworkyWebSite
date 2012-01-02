@@ -40,23 +40,25 @@
 						@Html.AntiForgeryToken()
 						@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
 						@Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-						<div class="indexSearchFormLabel">
-							<h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
-						</div>
+						
+						<h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
 						<div class="editor-field indexSearchFormField">
 							@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
 						</div>
-						<div class="indexSearchFormLabel">
-							<h3>@Worki.Resources.Views.Home.HomeString.What</h3>
-						</div>
+		 
+						<h3>@Worki.Resources.Views.Home.HomeString.What</h3>
 						<div class="editor-field indexSearchFormField">
 							@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers)
+						</div>
+						
+						<div class="editor-field indexSearchBox">
+							@Html.CheckBoxFor(model=>model.Criteria.OnlySharedOffice)
+							@Html.LabelFor(model => model.Criteria.OnlySharedOffice)
 						</div>
 
 						<div class="indexSearchIndexLinks">
 							<div class="indexSearchIndexLinksLeft float-left">
 							@Html.Partial(MVC.Shared.Views._DropDownList, dropDown)    
-							@*@Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())*@
 							</div>
 							<div class="indexSearchIndexLinksRight float-right">
 								<input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
@@ -207,7 +209,7 @@
             <div class="blogDesc">
                 <ul>
                 @foreach (var item in indexViewModel.BlogPosts)
-                {
+				{
                     <li class="blogItem borderRadius noUnderline float-left">
                         <a href="@item.Url" target="_blank" title="@Html.Raw(item.Title)">
                             <div class="blogImg borderedImg borderRadius float-left">
@@ -221,7 +223,7 @@
                             </div>
                         </a>
                     </li>        
-                }
+				}
                     <div class="clear">
                     </div>
                 </ul>

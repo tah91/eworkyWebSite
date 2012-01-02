@@ -4,41 +4,48 @@
 	<meta name="Description" content="@Worki.Resources.Views.Home.HomeString.Description"/>
     <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.BestWorkspace)</title>
     <link href="@Url.VersionedContent(Links.Content.Index_min_css)" rel="stylesheet" type="text/css" />
-    <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.AddPlaceTitle, "Blue")
 
 <div class="detailContent">
     <div class="blockContainer">
-		<h3 class="blue">@Worki.Resources.Views.Home.HomeString.ChooseForm</h3>
-        <div class="indexLogoContainer contentBlock float-left borderBlue noUnderline margin0important">
+		<h2 class="indexLogoH2 blue">@Worki.Resources.Views.Home.HomeString.ChooseForm</h2>
+        <div class="indexLogoContainer contentBlock float-left borderBlue noUnderline">
             <a href="@Url.Action(MVC.Localisation.CreateFree())" title="@Worki.Resources.Views.Home.HomeString.FreeSpace">
-                <div class="indexLogoImage indexLogoSearch linkImg float-left">
+                <div class="addPlace1 addPlaceLogo">
                     
                 </div>
-                <div class="indexLogoDesc float-right">
-                    <span class="bold blue">@Worki.Resources.Views.Home.HomeString.FreeSpace </span>
+                <div class="indexLogoDesc">
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.FreeSpace </h3>
                     <p class="marginl10">@Html.Raw(Worki.Resources.Views.Home.HomeString.SearchSpeech)</p>
-                </div>
-                <div class="clear">
                 </div>
             </a>
         </div>            
-        <div class="contentBlock indexLogoContainer float-right borderOrange noUnderline margin0important">
+        <div class="indexLogoContainer contentBlock float-left borderOrange noUnderline">
             <a href="@Url.Action(MVC.Localisation.CreateNotFree())" title="@Worki.Resources.Views.Home.HomeString.CostSpace">
-                <div class="indexLogoImage indexLogoBooking linkImg float-left">
+                <div class="addPlace2 addPlaceLogo">
                         
                 </div>
-                <div class="indexLogoDesc float-right">
-                    <span class="bold orange">@Worki.Resources.Views.Home.HomeString.CostSpace </span>
+                <div class="indexLogoDesc">
+                    <h3 class="orange">@Worki.Resources.Views.Home.HomeString.CostSpace</h3>
                     <p class="marginl10">@Html.Raw(Worki.Resources.Views.Home.HomeString.ReserveSpeech)</p>
-                </div>
-                <div class="clear">
                 </div>
             </a>
         </div>
-        <div class="clear">
+		<div class="indexLogoContainer contentBlock float-left borderGreen noUnderline">
+            <a href="@Url.Action(MVC.Localisation.CreateSharedOffice())" title="Un espace partagé">
+                <div class="addPlace3 addPlaceLogo">
+                    
+                </div>
+                <div class="indexLogoDesc">
+                    <h3 class="green">@Worki.Resources.Views.Home.HomeString.SharedOffice</h3>
+                    <p class="marginl10">@Worki.Resources.Views.Home.HomeString.SharedOfficeSpeach
+					</p>
+                </div>
+            </a>
+        </div> 
+		<div class="clear">
         </div>
         @*<div class="contentBlock indexLogoContainer float-left borderRed noUnderline margin0important" style="margin-top:10px!important">
             <a href="@Url.Action(MVC.Rental.Create())" title="@Worki.Resources.Views.Home.HomeString.RentalAd">

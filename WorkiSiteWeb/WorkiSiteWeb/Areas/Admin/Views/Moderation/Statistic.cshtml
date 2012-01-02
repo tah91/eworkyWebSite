@@ -61,6 +61,9 @@
                 <th >
                     @Worki.Resources.Views.Admin.StatString.PrivateArea
                 </th>
+				<th >
+                    @Worki.Resources.Views.Admin.StatString.SharedOffice
+                </th>
                 <th >
                     @Worki.Resources.Views.Admin.StatString.NbByCountry
                 </th>
@@ -77,6 +80,7 @@
                 var CoworkingSpace = 0;
                 var WorkingHotel = 0;
                 var PrivateArea = 0;
+				var SharedOffice = 0;
                 var Total = 0;
             }
             @foreach (var item in Model)
@@ -129,6 +133,10 @@
                         @item.PrivateArea
                         @{PrivateArea += item.PrivateArea;}
                     </td>
+					<td align="right">
+                        @item.SharedOffice
+                        @{SharedOffice += item.SharedOffice;}
+                    </td>
                     <td align="right">
                         @item.Total
                         @{Total += item.Total;}
@@ -171,6 +179,9 @@
                 </td>
                 <td align="right">
                     @PrivateArea
+                </td>
+				<td align="right">
+                    @SharedOffice
                 </td>
                 <td align="right">
                     @Total

@@ -168,6 +168,9 @@
   <data name="PublicSpace" xml:space="preserve">
     <value>EPN / Cyber</value>
   </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Partage</value>
+  </data>
   <data name="StatTitle" xml:space="preserve">
     <value>Statistiques</value>
   </data>

@@ -1,0 +1,168 @@
+﻿@model	Offer
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Schedule)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+    <link rel='stylesheet' type='text/css' href="@Url.VersionedContent(Links.Content.fullcalendar_min_css)" />
+	<link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
+}
+
+@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Id));}
+
+<div class="detailContent">
+	<div class="blockContainer float-left contentLeft">
+		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Id, (int)OfferMenuType.Schedule));}
+	</div>
+	<div class="blockContainer float-left contentRight">
+		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferSchedule(o.LocalisationId, o.Id)), Filter = OfferDropDownFilter.Booking })
+		<div class="contentBlock">
+            <div id='calendar'>
+            </div>
+			@{Html.RenderAction(MVC.Backoffice.Localisation.CreateEvent(Model.Id));}
+			<div class="contentBlock createBooking" id="bookingSummary">
+			</div>
+        </div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+@section ScriptContent
+{
+    <script type='text/javascript'>
+		require(["@Links.Scripts.dropdown_js"], function () {
+			InitDropdown("#@DropDownModel.OfferDD");
+		});
+
+		$('#createEventForm').submit(function () {
+			$.ajax({
+				type: 'POST',
+				url: '@Url.Action(MVC.Backoffice.Localisation.CreateEvent())',
+				data: $(this).serializeArray(),
+				error: function (xhr, status, err) {
+					if (xhr.status == 400) {
+						$('#calendar').fullCalendar('unselect');
+						$('div.field-validation-error').remove();
+						$('#createBookingError').append('<div class="field-validation-error">' + xhr.responseText + '</div>');
+					}
+				},
+				success: function (data, textStatus, jqXHR) {
+					$('#calendar').fullCalendar('renderEvent', data, true);
+					$('#calendar').fullCalendar('unselect');
+					$('div.field-validation-error').remove();
+				}
+			});
+			return false;
+		});
+
+
+		require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
+
+			require(["@Links.Scripts.fullcalendar_js"], function () {
+				$('#calendar').fullCalendar({
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay'
+					},
+					monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+					monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+					dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+					dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+					timeFormat: {
+						// for agendaWeek and agendaDay
+						agenda: 'HH:mm{ - HH:mm}', // 17:00 - 18:30
+
+						// for all other views
+						'': 'HH:mm' // 17:00
+					},
+					axisFormat: 'HH:mm',
+					slotMinutes: 15,
+					allDaySlot: false,
+					titleFormat: {
+						month: 'MMMM yyyy',                             // Septembre 2009
+						week: "MMM dd[ yyyy]{ '&#8212;'[ MMM] dd yyyy}", // Sep 07 - 13 2009
+						day: 'dddd dd MMMM yyyy'                  // Mardi 08 Septembre 2009
+					},
+					columnFormat: {
+						month: 'ddd',    // Lun
+						week: 'ddd dd/MM', // Lun 07/09
+						day: 'dddd dd/MM'  // Lundi 07/09
+					},
+					buttonText: {
+						prev: '&nbsp;&#9668;&nbsp;',  // left triangle
+						next: '&nbsp;&#9658;&nbsp;',  // right triangle
+						prevYear: '&nbsp;&lt;&lt;&nbsp;', // <<
+						nextYear: '&nbsp;&gt;&gt;&nbsp;', // >>
+						today: 'aujourd\'hui',
+						month: 'mois',
+						week: 'semaine',
+						day: 'jour'
+					},
+					editable: true,
+					eventSources: [
+						{
+							url: '@Url.Action(MVC.Backoffice.Localisation.BookingEvents(Model.Id))',
+							type: 'POST',
+							error: function () {
+								alert('Erreur pendant le chargement des données !');
+							}
+						}
+					],
+					selectable: true,
+					selectHelper: true,
+					eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view) {
+						$.ajax({
+							type: 'POST',
+							url: '@Url.Action(MVC.Backoffice.Localisation.DropEvent())',
+							data: ({ id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta }),
+							error: function (xhr, status, err) {
+								if (xhr.status == 400) {
+									revertFunc();
+								}
+							}
+						});
+					},
+					eventResize: function (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
+						$.ajax({
+							type: 'POST',
+							url: '@Url.Action(MVC.Backoffice.Localisation.ResizeEvent())',
+							data: ({ id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta }),
+							error: function (xhr, status, err) {
+								if (xhr.status == 400) {
+									revertFunc();
+								}
+							}
+						});
+					},
+					select: function (startDate, endDate, allDay, jsEvent, view) {
+						var start = (new Date(startDate)).toString('dd/MM/yy HH:mm');
+						var end = (new Date(endDate)).toString('dd/MM/yy HH:mm');
+						$('#Booking_FromDate').val(start);
+						$('#Booking_ToDate').val(end);
+						$('#eventPeriod').html(start + ' - ' + end);
+						$('.createBooking').css({ left: jsEvent.pageX, top: jsEvent.pageY });
+						$('.createBooking').fadeIn("slow");
+					},
+					unselect: function (view, jsEvent) {
+						$('.createBooking').hide();
+					},
+					eventMouseover: function (calEvent, jsEvent, view) {
+						$.ajax({
+							url: '@Url.Action(MVC.Backoffice.Localisation.BookingSummary())',
+							data: { 'id': calEvent.id },
+							success: function (data) {
+								$('#bookingSummary').html(data);
+								$('#bookingSummary').css({ left: jsEvent.pageX, top: jsEvent.pageY });
+								$('#bookingSummary').fadeIn("slow");
+							}
+						});
+					},
+					eventMouseout: function (calEvent, jsEvent, view) {
+						$('#bookingSummary').hide();
+					}
+				});
+			});
+		});
+    </script>
+}

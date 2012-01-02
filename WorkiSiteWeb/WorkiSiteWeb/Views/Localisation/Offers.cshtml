@@ -8,6 +8,11 @@
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
 }
 
+@{
+	var color = Model.Localisation.IsSharedOffice() ? "green" : "blue";
+	var btnColor = Model.Localisation.IsSharedOffice() ? "buttonGreen" : "buttonBlue";
+}
+
 <a class="blue" href="@Model.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Offer.OfferString.BackToLocalisation</a>
 
 <div class="detailContent">
@@ -15,7 +20,7 @@
 		@foreach (var offer in Model.Offers)
 		{
 	  		<div class="contentBlock">
-				<h3 class="blue">@offer.Name</h3>
+				<h3 class="@color">@offer.Name</h3>
 				@if (offer.OfferFiles.Count > 0)
 				{
 				<div class="offerGallery">
@@ -48,13 +53,13 @@
 				{
 					if (offer.CanHaveQuotation && offer.IsQuotable)
 					{
-                        <div class="buttonStd buttonBlue linkImg float-right">
+                        <div class="buttonStd @btnColor linkImg float-right">
 					        @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AskDevis, MVC.Quotation.Create(offer.Id))
                         </div>
 					}
 					else if(offer.CanHaveBooking && offer.IsBookable)
 					{
-                        <div class="buttonStd buttonBlue linkImg float-right">
+                        <div class="buttonStd @btnColor linkImg float-right">
 					        @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
                         </div>
 					}

@@ -97,7 +97,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorky | Coworking, cafés wifi, centres d&apos;affaires, location et réservation de salles de réunion et de bureaux.
+        ///   Looks up a localized string similar to Coworking, partage de bureaux, cafés wifi.
         /// </summary>
         public static string BestWorkspace {
             get {
@@ -169,7 +169,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : locaux à louer, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
+        ///   Looks up a localized string similar to Trouvez un lieu de travail où vous voulez : bureaux à partager, centre d&apos;affaires, espaces de coworking, café wifi, salle de réunion ou de conférence..
         /// </summary>
         public static string Description {
             get {
@@ -381,6 +381,24 @@ namespace Worki.Resources.Views.Home {
         public static string SearchSpeech {
             get {
                 return ResourceManager.GetString("SearchSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Un espace partagé.
+        /// </summary>
+        public static string SharedOffice {
+            get {
+                return ResourceManager.GetString("SharedOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous avez des postes de travail inutilisés dans votre entreprise ? Partagez-les sur eWorky et profitez de revenus supplémentaires !.
+        /// </summary>
+        public static string SharedOfficeSpeach {
+            get {
+                return ResourceManager.GetString("SharedOfficeSpeach", resourceCulture);
             }
         }
         

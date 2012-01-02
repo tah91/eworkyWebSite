@@ -111,7 +111,8 @@ namespace Worki.Data.Models
             (int)LocalisationType.BuisnessCenter,
             (int)LocalisationType.CoworkingSpace,
  			(int)LocalisationType.WorkingHotel,
-			(int)LocalisationType.PrivateArea
+			(int)LocalisationType.PrivateArea,
+			(int)LocalisationType.SharedOffice
         };
 
 		public static string GetLocalisationType(int type)
@@ -141,6 +142,8 @@ namespace Worki.Data.Models
 					return Worki.Resources.Models.Localisation.Localisation.WorkingHotel;
 				case LocalisationType.PrivateArea:
 					return Worki.Resources.Models.Localisation.Localisation.PrivateArea;
+				case LocalisationType.SharedOffice:
+					return Worki.Resources.Models.Localisation.Localisation.SharedOffice;
 				default:
 					return string.Empty;
 			}
@@ -158,7 +161,7 @@ namespace Worki.Data.Models
 
 		public static Dictionary<int, string> GetNotFreeLocalisationTypes()
 		{
-			var notFree = LocalisationTypes.Except(FreeLocalisationTypes);
+			var notFree = LocalisationTypes.Except(FreeLocalisationTypes).Except(new List<int> { (int)LocalisationType.SharedOffice });
 			return notFree.ToDictionary(t => t, t => GetLocalisationType(t));
 		}
 
@@ -173,6 +176,11 @@ namespace Worki.Data.Models
 		public bool IsFreeLocalisation()
 		{
 			return FreeLocalisationTypes.Contains(TypeValue);
+		}
+
+		public bool IsSharedOffice()
+		{
+			return (int)LocalisationType.SharedOffice == TypeValue;
 		}
 
 		#endregion
@@ -613,7 +621,7 @@ namespace Worki.Data.Models
 
         public string GetDisplayName()
         {
-            return Name;
+			return string.Format(Worki.Resources.Models.Localisation.Localisation.DisplayName, Name, Localisation.GetLocalisationType(TypeValue), City);
         }
 
         public string GetDescription()
@@ -819,6 +827,7 @@ namespace Worki.Data.Models
         public bool IsOwner { get; set; }
 		public int NewOfferType { get; set; }
 		public SelectList Offers { get; set; }
+		public bool IsSharedOffice { get; set; }
 
 		#endregion
 
@@ -833,26 +842,35 @@ namespace Worki.Data.Models
 			Init();
 		}
 
-		public LocalisationFormViewModel(bool isFree)
+		public LocalisationFormViewModel(bool isFree, bool isShared = false)
 		{
 			Localisation = new Localisation();
 			Localisation.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
-			Init(isFree);
+			Init(isFree, isShared);
 		}
 
 		public LocalisationFormViewModel(Localisation localisation)
 		{
 			Localisation = localisation;
-			Init(localisation.IsFreeLocalisation());
+			Init(localisation.IsFreeLocalisation(), localisation.IsSharedOffice());
 		}
 
-		void Init(bool isFree = true)
+		void Init(bool isFree = true, bool isShared = false)
 		{
 			IsFreeLocalisation = isFree;
+			IsSharedOffice = isShared;
+			if (isShared)
+			{
+				Localisation.TypeValue = (int)LocalisationType.SharedOffice;
+				IsOwner = true;
+			}
+
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes();
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
-			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
-			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
+			var offersToExclude = isShared	? new List<LocalisationOffer> { LocalisationOffer.FreeArea, LocalisationOffer.BuisnessLounge, LocalisationOffer.MeetingRoom, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom }
+											: new List<LocalisationOffer> { LocalisationOffer.FreeArea };
+			var offers = Localisation.GetOfferTypeDict(offersToExclude);
+			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             if (Localisation.LocalisationData == null)
                 Localisation.LocalisationData = new LocalisationData();
             if (Localisation.MainLocalisation == null)
@@ -940,7 +958,8 @@ namespace Worki.Data.Models
 		BuisnessCenter,
 		CoworkingSpace,
 		WorkingHotel,
-		PrivateArea
+		PrivateArea,
+		SharedOffice
 	}
 
 	/// <summary>
@@ -1042,6 +1061,9 @@ namespace Worki.Data.Models
 		CoworkingVibe,
 		OpenToAll,
 		ReservedToClients,
+		PhoneLine,
+		Kitchen,
+		SharedMeetingRoom,
 
 		//string features start from 1000, put bool features before this
 		Sector = 1000,

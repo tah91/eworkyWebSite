@@ -49,6 +49,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 item_stat.CoworkingSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.CoworkingSpace).Count();
                 item_stat.WorkingHotel = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.WorkingHotel).Count();
                 item_stat.PrivateArea = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.PrivateArea).Count();
+				item_stat.SharedOffice = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.SharedOffice).Count();
                 list.Add(item_stat);
             }
 

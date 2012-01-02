@@ -4,14 +4,12 @@
     <title>@Html.WorkiTitle("FAQ") </title>
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.FaqString.FAQ, "Blue")
-
-<div class="detailContent generalTextContainer">
-	<div class="blockContainer float-left">
-		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.Faq)
+<div class="detailContent">
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Home.Views._HowItWorksMenu, TutorialPages.Faq)
 	</div>
 
-	<div class="float-right generalTextContent blockContainer">
+	<div class="float-left blockContainer contentRight">
 		<div class="faqTabs contentBlock">
 		    <ul class="tabs">
                 <li><a href="#usingOfEworky" class="bold">@Worki.Resources.Views.Home.HomeString.UsingOfEWorky</a></li>

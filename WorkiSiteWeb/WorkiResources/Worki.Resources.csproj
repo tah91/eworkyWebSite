@@ -203,6 +203,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Home\HowItWorksString.Designer.cs">
+      <DependentUpon>HowItWorksString.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Offer\OfferString.Designer.cs">
       <DependentUpon>OfferString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -437,6 +442,11 @@
     <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
+    <EmbeddedResource Include="Views\Home\HowItWorksString.en.resx" />
+    <EmbeddedResource Include="Views\Home\HowItWorksString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HowItWorksString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\FaqString.en.resx" />
     <EmbeddedResource Include="Views\Home\HomeString.en.resx" />
     <EmbeddedResource Include="Views\Home\JobString.en.resx" />

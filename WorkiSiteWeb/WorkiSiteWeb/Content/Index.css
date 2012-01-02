@@ -23,7 +23,7 @@
 
 .borderGreen
 {
-	border-color:#bbd31f!important;
+	border-color:#47a000!important;
 }
 
 .backgroundBlue, .backgroundBlue a
@@ -165,9 +165,9 @@
     /*width:227px;*/
 }
 
-.indexSearchFormLabel
+.indexSearchBox
 {
-    /*margin-bottom:10px;*/
+    margin-bottom:10px
 }
 
 .indexSearchFormField
@@ -263,11 +263,21 @@
     margin:20px 0;
 }
 
+.indexLogoH2
+{
+	font-size:16px;
+}
+
 .indexLogoContainer
 {
-    width: 45%;
-    /*height: 100px;*/
+    width: 28%;
     padding:20px!important;
+    margin:0 5px!important;
+}
+
+.indexLogoContainer h3
+{
+    text-align:center;
 }
 
 .indexLogoImage
@@ -297,11 +307,18 @@
     background: url('images/homeLogo4.png');
 }
 
+.addPlaceLogo
+{
+	margin:10px auto;
+}
+
+.addPlace1{ background-image:url('images/addPlace.png'); background-position: 0 0; width: 250px; height: 170px; } 
+.addPlace2{ background-image:url('images/addPlace.png'); background-position: 0 -220px; width: 250px; height: 170px; } 
+.addPlace3{ background-image:url('images/addPlace.png'); background-position: 0 -440px; width: 250px; height: 170px; } 
+
 .indexLogoDesc
 {
-    width:60%;
-    /*vertical-align: 15%;*/
-    /*margin-left: 15px;*/
+
 }
 
 .blogContainer

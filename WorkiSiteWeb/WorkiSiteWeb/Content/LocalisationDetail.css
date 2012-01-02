@@ -41,6 +41,16 @@
     width: 60%;
 }
 
+.localisationTitle h1
+{
+    margin-bottom:0;
+}
+
+.localisationTitle h2
+{
+    display:inline;
+}
+
 .localisationName
 {
     font-size:2em;

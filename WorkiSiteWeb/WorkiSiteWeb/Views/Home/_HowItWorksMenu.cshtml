@@ -1,0 +1,9 @@
+﻿@model TutorialPages
+	
+@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+{ 
+	new MenuItem{ Selected = TutorialPages.HowItWorks == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())} ,
+	new MenuItem{ Selected = TutorialPages.UserTutorial == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.UserTutorial, MVC.Home.UserTutorial())} ,
+	new MenuItem{ Selected = TutorialPages.OwnerTutorial == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.OwnerTutorial, MVC.Home.OwnerTutorial())},
+	new MenuItem{ Selected = TutorialPages.Faq == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.FaqString.FAQ, MVC.Home.Faq())}
+})

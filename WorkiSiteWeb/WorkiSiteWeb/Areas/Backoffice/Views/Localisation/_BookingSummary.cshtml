@@ -1,0 +1,44 @@
+﻿@model MemberBooking
+		 
+<div >
+	<table>
+		<tr>
+			<td>
+				<div class="editor-label">
+					@Html.Label("Période")
+				</div>
+			</td>
+			<td>
+				<div class="editor-field">
+					@Model.BookingPeriod
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="editor-label">
+					@Html.Label("Client")
+				</div>
+			</td>
+			<td>
+				<div class="editor-field">
+					@Model.Client.GetFullDisplayName()
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="editor-label">
+					@Html.LabelFor(m => m.Price)
+				</div>
+			</td>
+			<td>
+				<div class="editor-field">
+					@Model.Price
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>  
+
+

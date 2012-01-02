@@ -2,7 +2,7 @@
 .borderBlue{border-color:#5dafde!important}
 .borderRed{border-color:#d25657!important}
 .borderOrange{border-color:#f7a33a!important}
-.borderGreen{border-color:#bbd31f!important}
+.borderGreen{border-color:#47a000!important}
 .backgroundBlue,.backgroundBlue a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#5DAFDE!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#449ed2)!important;background-image:-moz-linear-gradient(top,#5DAFDE,#449ed2)!important;background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2)!important;background-image:linear-gradient(top,#5DAFDE,#449ed2)!important}
 .backgroundBlue a:hover{background-color:#379ed6!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#379ed6,endColorstr=#4787ed)!important;background-image:-moz-linear-gradient(top,#379ed6,#4787ed)!important;background-image:-webkit-linear-gradient(top,#379ed6,#4787ed)!important;background-image:linear-gradient(top,#379ed6,#4787ed)!important}
 .backgroundOrange,.backgroundOrange a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#f7a33a!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f9af52,endColorstr=#eb9916)!important;background-image:-moz-linear-gradient(top,#f9af52,#eb9916)!important;background-image:-webkit-linear-gradient(top,#f9af52,#eb9916)!important;background-image:linear-gradient(top,#f9af52,#eb9916)!important}
@@ -19,6 +19,7 @@
 .indexFormContainer .contentBlock{height:310px;font-size:1.2em!important}
 .indexSearchFormDiv{padding:20px}
 .indexSearchFormDiv select,.indexSearchFormDiv input[type="text"],input[type="password"]{width:100%;font-size:1em}
+.indexSearchBox{margin-bottom:10px}
 .indexSearchFormField{margin-bottom:40px}
 .indexSearchIndexLinks .buttonStd{padding:10px 20px}
 .indexSearchIndexLinksLeft{margin:5px 0 0 5px;font-size:1em}
@@ -32,13 +33,18 @@
 .caption_name a{color:#93c8e7;text-decoration:none}
 .slide_image img{width:100%;height:100%}
 .indexLogos{margin:20px 0}
-.indexLogoContainer{width:45%;padding:20px!important}
+.indexLogoH2{font-size:16px}
+.indexLogoContainer{width:28%;padding:20px!important;margin:0 5px!important}
+.indexLogoContainer h3{text-align:center}
 .indexLogoImage{width:122px;height:75px}
 .indexLogoSearch{background:url('images/homeLogo1.png')}
 .indexLogoRental{background:url('images/homeLogo3.png')}
 .indexLogoBooking{background:url('images/homeLogo2.png')}
 .indexLogoMore{background:url('images/homeLogo4.png')}
-.indexLogoDesc{width:60%}
+.addPlaceLogo{margin:10px auto}
+.addPlace1{background-image:url('images/addPlace.png');background-position:0 0;width:250px;height:170px}
+.addPlace2{background-image:url('images/addPlace.png');background-position:0 -220px;width:250px;height:170px}
+.addPlace3{background-image:url('images/addPlace.png');background-position:0 -440px;width:250px;height:170px}
 .blogContainer{margin-top:30px!important}
 .blogItem{padding:10px;width:47%}
 .blogImg{margin-right:10px;width:125px;height:100px}

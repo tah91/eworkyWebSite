@@ -295,6 +295,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ex : Bureaux haut standing, Postes à partager avec une start-up, Poste de travail en open space, etc..
+        /// </summary>
+        public static string SharedOfficeExemple {
+            get {
+                return ResourceManager.GetString("SharedOfficeExemple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ex : Gare de Lyon.
         /// </summary>
         public static string SncfExample {

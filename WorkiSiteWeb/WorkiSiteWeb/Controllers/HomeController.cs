@@ -240,6 +240,36 @@ namespace Worki.Web.Controllers
             return View();
         }
 
+		/// <summary>
+		/// Prepares the how it works page
+		/// </summary>
+		/// <returns>The action result.</returns>
+		[ActionName("comment-ça-marche")]
+		public virtual ActionResult HowItWorks()
+		{
+			return View(MVC.Home.Views.HowItWorks);
+		}
+
+		/// <summary>
+		/// Prepares the owner tutorial page
+		/// </summary>
+		/// <returns>The action result.</returns>
+		[ActionName("mode-d'emploi-gérant")]
+		public virtual ActionResult OwnerTutorial()
+		{
+			return View(MVC.Home.Views.OwnerTutorial);
+		}
+
+		/// <summary>
+		/// Prepares the user tutorial page
+		/// </summary>
+		/// <returns>The action result.</returns>
+		[ActionName("mode-d'emploi-utilisateur")]
+		public virtual ActionResult UserTutorial()
+		{
+			return View(MVC.Home.Views.UserTutorial);
+		}
+
         /// <summary>
         /// It's just setting new culture to session dictionary
         /// </summary>

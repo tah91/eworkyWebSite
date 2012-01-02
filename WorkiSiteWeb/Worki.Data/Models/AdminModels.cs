@@ -128,22 +128,12 @@ namespace Worki.Data.Models
         public int CoworkingSpace { get; set; }
         public int WorkingHotel { get; set; }
         public int PrivateArea { get; set; }
+		public int SharedOffice { get; set; }
         public int Total { get; set; }
 
         public StateItem(string name, int total)
         {
             Country_Name = name;
-            SpotWifi = 0;
-            CoffeeResto = 0;
-            Biblio = 0;
-            PublicSpace = 0;
-            TravelerSpace = 0;
-            Hotel = 0;
-            Telecentre = 0;
-            BuisnessCenter = 0;
-            CoworkingSpace = 0;
-            WorkingHotel = 0;
-            PrivateArea = 0;
             Total = total;
         }
     }

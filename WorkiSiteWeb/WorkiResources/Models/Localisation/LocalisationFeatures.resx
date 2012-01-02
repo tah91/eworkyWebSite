@@ -394,4 +394,13 @@
   <data name="Sector" xml:space="preserve">
     <value>Secteur</value>
   </data>
+  <data name="Kitchen" xml:space="preserve">
+    <value>Cuisine / kitchenette</value>
+  </data>
+  <data name="PhoneLine" xml:space="preserve">
+    <value>Ligne téléphonique</value>
+  </data>
+  <data name="SharedMeetingRoom" xml:space="preserve">
+    <value>Salle de réunion</value>
+  </data>
 </root>

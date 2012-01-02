@@ -203,6 +203,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId)) });
+            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Schedule == selected, Text = Worki.Resources.Menu.Menu.Schedule, Link = Url.Action(MVC.Backoffice.Localisation.OfferSchedule(offer.LocalisationId)) });
 
             return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
         }
@@ -290,6 +291,41 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				return View(MVC.Shared.Views.Error);
 			}
 		}
+
+        public virtual ActionResult Localisation_Schedule(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var p = 1;
+            try
+            {
+                var member = mRepo.Get(memberId);
+                Member.Validate(member);
+                var loc = lRepo.Get(id);
+                Member.ValidateOwner(member, loc);
+
+                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
+                var model = new LocalisationBookingViewModel
+                {
+                    Item = loc,
+                    List = new PagingList<MemberBooking>
+                    {
+                        List = bookings.ToList(),
+                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
+                    }
+                };
+                return View(MVC.Backoffice.Localisation.Views._LocalisationCalendar, model);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("Localisation_Schedule", ex);
+                return View(MVC.Shared.Views.Error);
+            }
+        }
 
 		/// <summary>
 		/// Get action method to show bookings of the owner, for a given localisation and offer
@@ -825,5 +861,265 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         }
 
 		#endregion
+
+		#region Schedule
+
+		/// <summary>
+		/// Get action method to show offer schedule
+		/// </summary>
+		/// <param name="id">localisation id</param>
+		/// <param name="offerId">offer id</param>
+		/// <returns>view with a calandar</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult OfferSchedule(int id, int offerId = 0)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				Offer offer;
+				//case no offer selected, take the first one
+				if (offerId == 0)
+				{
+					var loc = lRepo.Get(id);
+					offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
+					if (offer == null)
+					{
+						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
+						return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
+					}
+				}
+				else
+				{
+					offer = oRepo.Get(offerId);
+				}
+
+				Member.ValidateOwner(member, offer.Localisation);
+
+				return View(offer);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("OfferBooking", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		#region Event feed
+
+		/// <summary>
+		/// provid a json array of all booking events
+		/// </summary>
+		/// <param name="id">id of the offer</param>
+		/// <returns>json of booking events</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult BookingEvents(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+
+			var offer = oRepo.Get(id);
+
+			var events = new List<CalandarJson>();
+			foreach (var item in offer.MemberBookings)
+			{
+				events.Add(item.GetCalandarEvent(Url));
+			}
+
+			return Json(events);
+		}
+
+		#endregion
+
+		#region Handlers
+
+		/// <summary>
+		/// Ajax action to handle dropevent
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		/// <param name="dayDelta">day delta</param>
+		/// <param name="minuteDelta">minute delta</param>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[HandleModelStateException]
+		public virtual ActionResult DropEvent(int id, int dayDelta, int minuteDelta)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var booking = bRepo.Get(id);
+
+			if (booking != null && booking.Unknown && (booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta) > DateTime.UtcNow))
+			{
+				try
+				{
+					booking.FromDate = booking.FromDate.AddDays(dayDelta);
+					booking.FromDate = booking.FromDate.AddMinutes(minuteDelta);
+
+					booking.ToDate = booking.ToDate.AddDays(dayDelta);
+					booking.ToDate = booking.ToDate.AddMinutes(minuteDelta);
+
+					context.Commit();
+
+					return Json("Drop success");
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("DropEvent", ex);
+					context.Complete();
+					throw new ModelStateException(ModelState);
+				}
+			}
+			else
+			{
+				throw new ModelStateException(ModelState);
+			}
+		}
+
+		/// <summary>
+		/// Ajax action to handle Resizeevent
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		/// <param name="dayDelta">day delta</param>
+		/// <param name="minuteDelta">minute delta</param>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[HandleModelStateException]
+		public virtual ActionResult ResizeEvent(int id, int dayDelta, int minuteDelta)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var booking = bRepo.Get(id);
+
+			if (booking != null && booking.Unknown && (booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta) > DateTime.UtcNow))
+			{
+				try
+				{
+					booking.ToDate = booking.ToDate.AddDays(dayDelta);
+					booking.ToDate = booking.ToDate.AddMinutes(minuteDelta);
+
+					context.Commit();
+
+					return Json("Resize success");
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("ResizeEvent", ex);
+					context.Complete();
+					throw new ModelStateException(ModelState);
+				}
+			}
+			else
+			{
+				throw new ModelStateException(ModelState);
+			}
+		}
+
+		/// <summary>
+		/// Action to create booking creation partial view for an offer
+		/// </summary>
+		/// <param name="id">id of the offer</param>
+		/// <returns></returns>
+		[ChildActionOnly]
+		public virtual ActionResult CreateEvent(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			try
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+
+				var clients = mRepo.GetClients(memberId).ToDictionary(m => m.MemberId, m => m.GetFullDisplayName());
+				var model = new CreateBookingModel { Booking = new MemberBooking { OfferId = id }, Clients = new SelectList(clients, "Key", "Value") };
+
+				return PartialView(MVC.Backoffice.Localisation.Views._CreateBooking, model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("CreateEvent", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Action to show booking summary
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		/// <returns></returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual PartialViewResult BookingSummary(int id)
+		{
+			try
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+				var booking = bRepo.Get(id);
+
+				return PartialView(MVC.Backoffice.Localisation.Views._BookingSummary, booking);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("BookingSummary", ex);
+				return null;
+			}
+		}
+
+		/// <summary>
+		/// Ajax action to handle Create event
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		/// <param name="start">start date</param>
+		/// <param name="end">end date</param>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[HandleModelStateException]
+		public virtual ActionResult CreateEvent(CreateBookingModel createBookingModel)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var offer = oRepo.Get(createBookingModel.Booking.OfferId);
+
+					MemberBookingLog log = new MemberBookingLog();
+					log.CreatedDate = DateTime.UtcNow;
+					log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
+					log.Event = "Booking Created From Calandar";
+					createBookingModel.Booking.MemberBookingLogs.Add(log);
+
+					offer.MemberBookings.Add(createBookingModel.Booking);
+
+					context.Commit();
+
+					var newContext = ModelFactory.GetUnitOfWork();
+					var bRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
+					var booking = bRepo.Get(createBookingModel.Booking.Id);
+
+					return Json(booking.GetCalandarEvent(Url));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("CreateEvent", ex);
+					context.Complete();
+					throw new ModelStateException(ModelState);
+				}
+			}
+			else
+			{
+				throw new ModelStateException(ModelState);
+			}
+		}
+
+		#endregion
+
+		#endregion		
     }
 }

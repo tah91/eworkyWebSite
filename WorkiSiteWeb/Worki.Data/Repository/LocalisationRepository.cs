@@ -94,6 +94,8 @@ namespace Worki.Data.Models
 					allowedTypes.Add((int)LocalisationType.WorkingHotel);
 				if (criteria.PrivateArea)
 					allowedTypes.Add((int)LocalisationType.PrivateArea);
+				if (criteria.SharedOffice)
+					allowedTypes.Add((int)LocalisationType.SharedOffice);
 				localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));
 			}
 

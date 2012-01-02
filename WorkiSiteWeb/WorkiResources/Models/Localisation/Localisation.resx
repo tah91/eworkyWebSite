@@ -355,4 +355,13 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>{0}, {1} à {2}</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Espace partagé</value>
+  </data>
+  <data name="OnlySharedOffice" xml:space="preserve">
+    <value>Uniquement les espaces partagés</value>
+  </data>
 </root>

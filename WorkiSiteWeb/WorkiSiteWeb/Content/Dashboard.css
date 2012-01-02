@@ -1,22 +1,4 @@
-﻿/*GENERAL
-----------------------------------------------------------*/
-
-.contentLeft
-{
-    width: 25%;
-}
-
-.contentRight
-{
-    width: 70%;
-}
-
-.emptyContent
-{
-	height:200px;
-}
-
-/*TABLE LAYOUT
+﻿/*TABLE LAYOUT
 ----------------------------------------------------------*/
 .tableStyle table
 {
@@ -339,4 +321,26 @@ select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
 .confirmbooktable
 {
     width:605px;
+}
+
+/* CALENDAR LAYOUT
+----------------------------------------------------------*/
+
+#calendar
+{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.createBooking 
+{
+  position:absolute;
+  display:none;
+  width:300px;
+  z-index:50;
+}
+
+.createBooking table td:first-child
+{
+	width:100px;
 }

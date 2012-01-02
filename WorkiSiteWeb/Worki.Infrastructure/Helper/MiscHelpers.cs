@@ -51,6 +51,7 @@ namespace Worki.Infrastructure.Helpers
             public const string CoworkingSpace = "coworking";
             public const string WorkingHotel = "hotel-entreprise";
             public const string PrivateArea = "lieu-prive";
+			public const string SharedOffice = "espace-partagé";
             public const string All = "tout";
             public const string Type = "type";
 
