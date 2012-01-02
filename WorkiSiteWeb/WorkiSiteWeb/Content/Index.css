@@ -8,13 +8,20 @@
 
 .indexHeader h1
 {
-    font-size: 2.8em;
-    margin-bottom:0;
+    font-size: 2.7em;
+    margin-bottom:-3px;
 }
 
 .indexHeader h2
 {
-    font-size: 1em;
+    font-size: 1.2em;
+    font-weight:normal;
+}
+
+.indexHeader em
+{
+    font-weight: bold;
+    font-style:normal;
 }
 
 .borderBlue

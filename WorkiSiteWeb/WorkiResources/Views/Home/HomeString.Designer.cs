@@ -196,7 +196,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouver un endroit pour travailler.
+        ///   Looks up a localized string similar to Trouver le meilleur endroit pour travailler.
         /// </summary>
         public static string FindTheBesPlace1 {
             get {
@@ -205,7 +205,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parmi {0:### ### ###} espaces de coworking, cafés wifi, centres d&apos;affaires, bureaux partagés.
+        ///   Looks up a localized string similar to Parmi &lt;em&gt;{0:### ### ###}&lt;/em&gt; espaces de coworking, cafés wifi, centres d&apos;affaires, bureaux partagés.
         /// </summary>
         public static string FindTheBesPlace2 {
             get {

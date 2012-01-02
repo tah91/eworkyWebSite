@@ -1,6 +1,7 @@
 ﻿.indexHeader{text-align:center;margin-bottom:20px}
-.indexHeader h1{font-size:2.8em;margin-bottom:0}
-.indexHeader h2{font-size:1em}
+.indexHeader h1{font-size:2.7em;margin-bottom:-3px}
+.indexHeader h2{font-size:1.2em;font-weight:normal}
+.indexHeader em{font-weight:bold;font-style:normal}
 .borderBlue{border-color:#5dafde!important}
 .borderRed{border-color:#d25657!important}
 .borderOrange{border-color:#f7a33a!important}

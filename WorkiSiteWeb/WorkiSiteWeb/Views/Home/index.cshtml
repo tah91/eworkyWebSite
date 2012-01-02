@@ -26,7 +26,7 @@
 }
 <div class="indexHeader">
     <h1 class="darkblue">@Worki.Resources.Views.Home.HomeString.FindTheBesPlace1</h1>
-    <h2 class="blue">@string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace2, indexViewModel.LocalisationCount)</h2>
+    <h2 class="blue">@Html.Raw(string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace2, indexViewModel.LocalisationCount))</h2>
 </div>
 
 <div class="detailContent">
