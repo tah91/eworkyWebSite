@@ -203,7 +203,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId)) });
-            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Schedule == selected, Text = Worki.Resources.Menu.Menu.Schedule, Link = Url.Action(MVC.Backoffice.Localisation.OfferSchedule(offer.LocalisationId)) });
+			//model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Schedule == selected, Text = Worki.Resources.Menu.Menu.Schedule, Link = Url.Action(MVC.Backoffice.Localisation.OfferSchedule(offer.LocalisationId)) });
 
             return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
         }
