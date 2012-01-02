@@ -11,7 +11,9 @@ abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
 table{border-collapse:collapse;border-spacing:0}
 hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
 input,select{vertical-align:middle}
-body{margin:auto;height:auto;height:auto;font-size:.75em;font-family:Arial,Helvetica,Sans-Serif;color:Gray;line-height:1.4}
+body{margin:auto;height:auto;height:auto;font-size:.75em;font-family:Arial,Helvetica,Sans-Serif;color:#666;line-height:1.4}
+::-webkit-input-placeholder{color:#999!important}
+input:-moz-placeholder,textarea:-moz-placeholder{color:#999!important}
 .white{color:white}
 .white a{color:white}
 .blue{color:#5dafde}
@@ -53,7 +55,7 @@ html,body{margin:0;padding:0;height:100%}
 .loginTitle{font-size:.9em;margin-bottom:3px}
 .welcome{margin-top:5px}
 .createAccount{margin-top:10px}
-.connectEworky{padding:3px 10px}
+.connectEworky{padding:3px 0 3px 10px}
 *:first-child+html .lengthConnexionBox{width:130px;height:100%}
 *:first-child+html .sizeHeaderConnexion{width:85%;height:100%}
 .ie7 .sizeHeaderConnexion{width:85%;height:100%}
@@ -294,11 +296,12 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .contactTable td{height:30px}
 .contactTable td:first-child{padding-right:50px}
 .howitWorksPart{width:46%}
+.howitWorksHead{text-align:center;font-size:1.8em}
 .howitWorks{margin-top:0!important}
 .howitWorks h1{font-size:14px}
 .howitWorks h2{font-size:14px}
 .howitWorksTuto{padding:0 10px}
-.howitWorks li{margin:10px 0}
+.howitWorks li{margin:20px 0}
 .howitWorksHeader{background-color:#5dafde;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#449ed2);background-image:-moz-linear-gradient(top,#5DAFDE,#449ed2);background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2);background-image:linear-gradient(top,#5DAFDE,#449ed2);color:White;padding:5px;text-align:center}
 .howitworksLogo{width:60px;height:60px}
 .hoitworksDesc{width:250px;margin-left:10px}

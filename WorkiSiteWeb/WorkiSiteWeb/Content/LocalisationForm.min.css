@@ -4,7 +4,7 @@
 .localisationOwnerField input[type="checkbox"]{margin-left:10px}
 .phoneNumberRow td{padding:0!important;border:0!important}
 .phoneNumberRow input[type="text"],input[type="password"]{width:170px!important}
-.phoneNumberCol{padding-right:68px}
+.phoneNumberCol{padding-right:80px}
 .faxCol{padding-left:11px;padding-right:16px}
 .editOpenning td:first-child{width:72px}
 .editOpenning input[type="text"],input[type="password"]{width:50px}

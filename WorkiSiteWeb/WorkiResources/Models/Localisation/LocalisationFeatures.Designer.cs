@@ -583,7 +583,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Espace(s) de détente.
+        ///   Looks up a localized string similar to Espace de détente.
         /// </summary>
         public static string RelaxingArea {
             get {

@@ -1,4 +1,6 @@
-﻿.indexHeader{text-align:center;margin:10px 0 30px 0}
+﻿.indexHeader{text-align:center;margin-bottom:20px}
+.indexHeader h1{font-size:2.8em;margin-bottom:0}
+.indexHeader h2{font-size:1em}
 .borderBlue{border-color:#5dafde!important}
 .borderRed{border-color:#d25657!important}
 .borderOrange{border-color:#f7a33a!important}

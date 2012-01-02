@@ -555,11 +555,6 @@ namespace Worki.Web.Controllers
 			{
 				try
 				{
-					if (criteria.OnlySharedOffice)
-					{
-						criteria.Everything = false;
-						criteria.SharedOffice = true;
-					}
 					var rvd = _SearchService.GetRVD(criteria);
 					return RedirectToAction(MVC.Localisation.Actions.ActionNames.FullSearchResult, rvd);
 				}

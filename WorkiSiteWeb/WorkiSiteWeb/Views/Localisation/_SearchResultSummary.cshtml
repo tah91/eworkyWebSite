@@ -5,13 +5,12 @@
 		var rvd = WebHelper.GetRVD(this);
         rvd["index"] = Model.Index;
         ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
-		var color = Model.Localisation.IsSharedOffice() ? "green" : "blue";
     }
     <div class="resultItemGallery picBack borderRadius float-left">
 		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
     </div>
     <div class="itemDetailsDiv float-left relative">
-        <p class="@color noUnderline">
+        <p class="blue noUnderline">
             <span class="itemName">@Html.ActionLink(Model.Localisation.Name, MVC.Localisation.ActionNames.FullSearchResultDetail, rvd)</span>
             @if (Model.Distance < 1000)
             {
@@ -19,7 +18,7 @@
             }            
         </p>
         <span class="itemAddress">@Model.Localisation.Adress&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>
-        <span class="bold @color">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, Model.Localisation.IsSharedOffice() ? 180 : 80)</span><br />
+        <span class="bold blue">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, Model.Localisation.IsSharedOffice() ? 180 : 80)</span><br />
 		@if (!Model.Localisation.IsSharedOffice())
 		{
         <div class="itemLogos bottom">
@@ -34,7 +33,7 @@
 		<div class="commentBgd">
 			<div class="commentContainer">
 				<div class="ratingContainer">
-					@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="@color noUnderline"><a href="@(ViewData["link"] + "#commentFormDiv")">@(string.Format("{0} {1}", Model.Localisation.Comments.Count, Worki.Resources.Views.Search.SearchString.Opinion))</a></span>
+					@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="blue noUnderline"><a href="@(ViewData["link"] + "#commentFormDiv")">@(string.Format("{0} {1}", Model.Localisation.Comments.Count, Worki.Resources.Views.Search.SearchString.Opinion))</a></span>
 					<div class="clear">
 					</div> 
 				</div>

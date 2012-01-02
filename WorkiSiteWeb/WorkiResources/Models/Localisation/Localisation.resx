@@ -164,7 +164,7 @@
     <value>Site Internet</value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
-    <value>Hôtel d'entreprises</value>
+    <value>Pépinière / Incubateur</value>
   </data>
   <data name="SeminarRoom" xml:space="preserve">
     <value>Caractéristiques des salles de conférence / séminaire</value>
@@ -200,7 +200,7 @@
     <value>Hôtel</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Nom du lieu</value>
+    <value>Nom de l'espace</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Téléphone</value>
@@ -353,15 +353,12 @@
     <value>Ouverture Mercredi  matin</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Description de l'espace</value>
   </data>
   <data name="DisplayName" xml:space="preserve">
     <value>{0}, {1} à {2}</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>Espace partagé</value>
-  </data>
-  <data name="OnlySharedOffice" xml:space="preserve">
-    <value>Uniquement les espaces partagés</value>
   </data>
 </root>

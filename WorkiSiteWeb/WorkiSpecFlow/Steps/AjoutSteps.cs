@@ -28,6 +28,8 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("eWorky");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("75007");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly(MiscHelpers.EmailConstants.Tel);
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly(MiscHelpers.EmailConstants.ContactMail);
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly(MiscHelpers.EmailConstants.WebsiteAddress);
@@ -86,6 +88,8 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("Greenworking");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("62 Rue Chabot Charny");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Dijon");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("21000");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177198721");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@greenworking.fr");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("http://www.greenworking.fr/");
@@ -149,6 +153,8 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("eWorky");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("47 rue de Lille");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Paris");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("75007");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly(MiscHelpers.EmailConstants.Tel);
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly(MiscHelpers.EmailConstants.ContactMail);
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly(MiscHelpers.EmailConstants.WebsiteAddress);
@@ -194,6 +200,8 @@ namespace Worki.SpecFlow
             WebBrowser.Current.Page<AjoutPage>().Lieu_Name.TypeTextQuickly("Greenworking");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Adress.TypeText("62 Rue Chabot Charny");
             WebBrowser.Current.Page<AjoutPage>().Lieu_City.TypeText("Dijon");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_PostalCode.TypeText("21000");
+            WebBrowser.Current.Page<AjoutPage>().Lieu_Country.TypeText("France");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Phone.TypeTextQuickly("0177198721");
             WebBrowser.Current.Page<AjoutPage>().Lieu_Mail.TypeTextQuickly("contact@greenworking.fr");
             WebBrowser.Current.Page<AjoutPage>().Lieu_WebSite.TypeTextQuickly("http://www.greenworking.fr/");

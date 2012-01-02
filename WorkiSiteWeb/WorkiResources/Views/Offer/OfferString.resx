@@ -130,10 +130,10 @@
     <value>Editer une offre</value>
   </data>
   <data name="OfferRemoved" xml:space="preserve">
-    <value>L'offre a bien été effacée</value>
+    <value>L'offre a bien été effacée.</value>
   </data>
   <data name="OfferCreated" xml:space="preserve">
-    <value>L'offre a bien été ajoutée</value>
+    <value>L'offre a bien été ajoutée.</value>
   </data>
   <data name="OfferEdited" xml:space="preserve">
     <value>Les nouveaux paramètres ont bien été pris en compte.</value>

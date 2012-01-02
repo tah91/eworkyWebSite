@@ -151,7 +151,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description.
+        ///   Looks up a localized string similar to Description de l&apos;espace.
         /// </summary>
         public static string Description {
             get {
@@ -322,20 +322,11 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nom du lieu.
+        ///   Looks up a localized string similar to Nom de l&apos;espace.
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Uniquement les espaces partagés.
-        /// </summary>
-        public static string OnlySharedOffice {
-            get {
-                return ResourceManager.GetString("OnlySharedOffice", resourceCulture);
             }
         }
         
@@ -763,7 +754,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hôtel d&apos;entreprises.
+        ///   Looks up a localized string similar to Pépinière / Incubateur.
         /// </summary>
         public static string WorkingHotel {
             get {
