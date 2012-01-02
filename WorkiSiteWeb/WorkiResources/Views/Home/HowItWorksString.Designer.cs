@@ -232,6 +232,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eWorky est un marché ouvert du lieu de travail.
+        /// </summary>
+        public static string HowItWorksHead {
+            get {
+                return ResourceManager.GetString("HowItWorksHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ajouter, noter et commenter les lieux de travail pour aider toute la communauté dans ses recherches.
         /// </summary>
         public static string Join {

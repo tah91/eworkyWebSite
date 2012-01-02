@@ -295,6 +295,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ex : Deux postes de travail en open space proposés par une jeune PME du secteur de l&apos;agroalimentaire.  Espace de travail calme et lumineux, ambiance conviviale, nous sommes favorables aux échanges et à l&apos;entraide. Accès à deux salles de réunion, à un espace de détente avec une machine Nespresso. Longue durée souhaitée (à partir de 6 mois)..
+        /// </summary>
+        public static string SharedOfficeDesc {
+            get {
+                return ResourceManager.GetString("SharedOfficeDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ex : Bureaux haut standing, Postes à partager avec une start-up, Poste de travail en open space, etc..
         /// </summary>
         public static string SharedOfficeExemple {

@@ -124,7 +124,7 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;offre a bien été ajoutée.
+        ///   Looks up a localized string similar to L&apos;offre a bien été ajoutée..
         /// </summary>
         public static string OfferCreated {
             get {
@@ -142,7 +142,7 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L&apos;offre a bien été effacée.
+        ///   Looks up a localized string similar to L&apos;offre a bien été effacée..
         /// </summary>
         public static string OfferRemoved {
             get {

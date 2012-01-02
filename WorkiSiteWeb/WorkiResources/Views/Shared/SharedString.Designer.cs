@@ -241,7 +241,7 @@ namespace Worki.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nouveau ! Connectez-vous simplement avec Facebook !.
+        ///   Looks up a localized string similar to Nouveau ! Connectez-vous avec Facebook !.
         /// </summary>
         public static string FbConnexionText {
             get {

@@ -25,7 +25,8 @@
 	};
 }
 <div class="indexHeader">
-    <h1 class="darkblue">@string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace, indexViewModel.LocalisationCount)</h1>
+    <h1 class="darkblue">@Worki.Resources.Views.Home.HomeString.FindTheBesPlace1</h1>
+    <h2 class="blue">@string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace2, indexViewModel.LocalisationCount)</h2>
 </div>
 
 <div class="detailContent">
@@ -49,11 +50,6 @@
 						<h3>@Worki.Resources.Views.Home.HomeString.What</h3>
 						<div class="editor-field indexSearchFormField">
 							@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers)
-						</div>
-						
-						<div class="editor-field indexSearchBox">
-							@Html.CheckBoxFor(model=>model.Criteria.OnlySharedOffice)
-							@Html.LabelFor(model => model.Criteria.OnlySharedOffice)
 						</div>
 
 						<div class="indexSearchIndexLinks">

@@ -224,14 +224,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td class="verticalAlignTop">
                                     <div class="editor-label">
                                         @Html.LabelFor(model => model.Localisation.Description)
                                     </div>
                                 </td>
                                 <td>
                                     <div class="editor-field">
-                                        @Html.TextAreaFor(model => model.Localisation.Description)
+                                        @Html.TextAreaFor(model => model.Localisation.Description, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
                                     </div>
                                 </td>
                             </tr>
@@ -411,6 +411,8 @@
                     </ul>
 					}
                 </div>
+                @if (!Model.IsSharedOffice)
+                {
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.UserServices</h4>
                     <ul>
@@ -434,6 +436,7 @@
                         </li>
                     </ul>
                 </div>
+                }
                 <div class="clear">
                 </div>
             </div>

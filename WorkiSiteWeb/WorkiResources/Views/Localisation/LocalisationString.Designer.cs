@@ -70,7 +70,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajouter.
+        ///   Looks up a localized string similar to Ajouter un espace.
         /// </summary>
         public static string Add {
             get {

@@ -199,7 +199,7 @@
     <value>Copyright</value>
   </data>
   <data name="eWorky" xml:space="preserve">
-    <value>2011 eWorky</value>
+    <value>2012 eWorky</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Bienvenue</value>
@@ -234,8 +234,8 @@
   <data name="Teamworky" xml:space="preserve">
     <value>L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc.</value>
   </data>
-  <data name="FindTheBesPlace" xml:space="preserve">
-    <value>Trouver le meilleur endroit pour travailler parmi {0:### ### ###} lieux</value>
+  <data name="FindTheBesPlace1" xml:space="preserve">
+    <value>Trouver un endroit pour travailler</value>
   </data>
   <data name="MaxRate" xml:space="preserve">
     <value>Budget maximal (€)</value>
@@ -259,12 +259,15 @@
     <value>Une annonce de location de locaux</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>Vous voulez ajouter un espace de travail ? Choisissez le formulaire qui correspond au type de lieu que vous voulez ajouter.</value>
+    <value>Choisissez le type d'espace que vous voulez ajouter.</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>Un espace partagé</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
     <value>Vous avez des postes de travail inutilisés dans votre entreprise ? Partagez-les sur eWorky et profitez de revenus supplémentaires !</value>
+  </data>
+  <data name="FindTheBesPlace2" xml:space="preserve">
+    <value>Parmi {0:### ### ###} espaces de coworking, cafés wifi, centres d'affaires, bureaux partagés</value>
   </data>
 </root>

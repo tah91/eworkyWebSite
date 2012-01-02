@@ -149,9 +149,6 @@ namespace Worki.Data.Models
 		[Display(Name = "SharedOffice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public bool SharedOffice { get; set; }
 
-		[Display(Name = "OnlySharedOffice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
-		public bool OnlySharedOffice { get; set; }
-
 		public eOrderBy OrderBy { get; set; }
         public eSearchType SearchType { get; set; }
         public eDirectAccessType DirectAccessType { get; set; }

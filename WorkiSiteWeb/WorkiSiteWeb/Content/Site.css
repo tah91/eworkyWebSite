@@ -77,8 +77,18 @@ body
 	height:auto;
 	font-size: .75em;
 	font-family: Arial, Helvetica, Sans-Serif;
-	color:Gray;
+	color:#666;
 	line-height:1.4;
+}
+
+::-webkit-input-placeholder
+{
+    color:#999!important;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder
+{
+    color:#999!important;
 }
 
 /*TEXT COLORS
@@ -339,7 +349,7 @@ page width. Or, you can specify an exact pixel width. */
 
 .connectEworky
 {
-	padding: 3px 10px;
+	padding: 3px 0 3px 10px;
 }
 
 *:first-child+html .lengthConnexionBox
@@ -1979,6 +1989,12 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 	width : 46%;
 }
 
+.howitWorksHead
+{
+    text-align:center;
+    font-size: 1.8em;
+}
+
 .howitWorks
 {
 	margin-top: 0!important;
@@ -2001,7 +2017,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .howitWorks li
 {
-	margin: 10px 0;
+	margin: 20px 0;
 }
 
 .howitWorksHeader

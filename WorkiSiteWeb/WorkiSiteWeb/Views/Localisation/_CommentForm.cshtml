@@ -1,8 +1,5 @@
 ﻿@model Worki.Data.Models.Comment
 
-@{
-	var btnColor = Model.Localisation.IsSharedOffice() ? "buttonGreen" : "buttonBlue";
-}
 <form id="submitpostForm">
     <div class="commentFormRating">
         <table>
@@ -81,5 +78,5 @@
         @Html.TextAreaFor(model => model.Post)
     </div>
 
-    <input type="submit" class="buttonStd @btnColor margint10" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
+    <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
 </form>	

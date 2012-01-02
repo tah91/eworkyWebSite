@@ -115,7 +115,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous voulez ajouter un espace de travail ? Choisissez le formulaire qui correspond au type de lieu que vous voulez ajouter..
+        ///   Looks up a localized string similar to Choisissez le type d&apos;espace que vous voulez ajouter..
         /// </summary>
         public static string ChooseForm {
             get {
@@ -178,7 +178,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2011 eWorky.
+        ///   Looks up a localized string similar to 2012 eWorky.
         /// </summary>
         public static string eWorky {
             get {
@@ -196,11 +196,20 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouver le meilleur endroit pour travailler parmi {0:### ### ###} lieux.
+        ///   Looks up a localized string similar to Trouver un endroit pour travailler.
         /// </summary>
-        public static string FindTheBesPlace {
+        public static string FindTheBesPlace1 {
             get {
-                return ResourceManager.GetString("FindTheBesPlace", resourceCulture);
+                return ResourceManager.GetString("FindTheBesPlace1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parmi {0:### ### ###} espaces de coworking, cafés wifi, centres d&apos;affaires, bureaux partagés.
+        /// </summary>
+        public static string FindTheBesPlace2 {
+            get {
+                return ResourceManager.GetString("FindTheBesPlace2", resourceCulture);
             }
         }
         

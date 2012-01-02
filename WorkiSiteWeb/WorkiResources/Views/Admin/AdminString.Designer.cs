@@ -601,7 +601,7 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stickers.
+        ///   Looks up a localized string similar to Sticker.
         /// </summary>
         public static string Stickers {
             get {

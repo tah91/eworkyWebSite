@@ -1,11 +1,7 @@
 ﻿@model Worki.Data.Models.Localisation
 
-@{
-	var color = Model.IsSharedOffice() ? "green" : "blue";
-}
-
 <div class="contentBlock">
-	<h3 class="@color">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
+	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
 	<div class="localisationMap">
 		@Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
 	</div>
@@ -31,11 +27,11 @@
 	}
 </div>
 @*            <div class="contentBlock">
-	<h3 class="@color">Recommendé par</h3>
+	<h3 class="blue">Recommendé par</h3>
 	<div class="commentAvatar borderedImg float-left">
 	@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
 	</div>
-	<span class="boldLink @color">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
+	<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
 	@if (Model.HasFeature(Feature.LocalisationOwner))
 	{	 
 		<span>@FeatureHelper.Display(Feature.LocalisationOwner,Model)</span>
@@ -47,37 +43,37 @@
 {
    
 	<div class="contentBlock">
-		<h3 class="@color">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
+		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
 		@{
 			var lastEdition = Model.GetLastEdition();
 			var creation = Model.GetCreation();
 		}
 		@if (creation != null)
 		{
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink @color">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
 		}
 		else
 		{ 
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink @color">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
 		}
 		@if (lastEdition != null)
 		{
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink @color">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
         }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
         {
-            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink @color">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
+            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
         }
         @if (Model.MainLocalisation != null)
         {
-            <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink @color">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes: Worki.Resources.Views.Shared.SharedString.No)</span><br />
+            <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes: Worki.Resources.Views.Shared.SharedString.No)</span><br />
         }
 	</div>
 }
 <div class="localisationMiscRatings contentBlock">
-	<h3 class="@color">@Worki.Resources.Views.Localisation.LocalisationString.EworkersOpinion</h3>
+	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.EworkersOpinion</h3>
 	<table>
 		<tr>
 			<td>
@@ -138,7 +134,7 @@
 @if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
 {
 	<div class="localisationGeneralInfo contentBlock">
-		<h3 class="@color">@Worki.Resources.Views.Home.HomeString.Contact</h3>
+		<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
 		@if (!Model.ContactEmpty())
   {
       if (!string.IsNullOrEmpty(Model.Mail))
@@ -179,7 +175,7 @@
 	</div>
 }
 <div class="localisationSchedule contentBlock">
-	<h3 class="@color">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
+	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
 	@if (Model.HasFeature(Feature.Access24))
  {
 		@Html.FeatureLabelFor(Feature.Access24, Model)
@@ -203,6 +199,6 @@
 </div>
 
 <div class="contentBlock">
-	<h3 class="@color marginb10">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>
+	<h3 class="blue marginb10">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>
 	@{Html.RenderAction(MVC.Localisation.Suggestions(Model.ID));}
 </div>
