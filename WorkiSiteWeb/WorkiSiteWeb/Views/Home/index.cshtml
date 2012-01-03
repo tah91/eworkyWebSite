@@ -25,33 +25,6 @@
 			<div class="contentBlock">
 				<div class="indexSearchFormDiv darkblue">
 					@Html.Partial(MVC.Localisation.Views._SearchForm)
-@*					@using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
-					{
-						@Html.AntiForgeryToken()
-						@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-						@Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-						
-						<h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
-						<div class="editor-field indexSearchFormField">
-							@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
-						</div>
-		 
-						<h3>@Worki.Resources.Views.Home.HomeString.What</h3>
-						<div class="editor-field indexSearchFormField">
-							@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers)
-						</div>
-
-						<div class="indexSearchIndexLinks">
-							<div class="indexSearchIndexLinksLeft float-left">
-							@Html.Partial(MVC.Shared.Views._DropDownList, dropDown)    
-							</div>
-							<div class="indexSearchIndexLinksRight float-right">
-								<input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
-							</div>
-							<div class="clear">
-							</div>
-						</div>
-					}*@
 				</div>
 			</div>
 @*          TO USE WHEN LOCATION IS READY  
@@ -190,6 +163,31 @@
             </div>
         </div>*@
 
+		<div class="contentBlock">
+			<div class="bannerDesc blue float-left">
+				<h3>@Worki.Resources.Views.Home.HomeString.TalkAboutUs</h3>
+			</div>
+			<div class="fr3 linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press());
+			</div>
+			<div class="parisien linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press());
+			</div>
+			<div class="frenchweb linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press());
+			</div>
+			<div class="jdn linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press());
+			</div>
+			<div class="franceinfo linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press());
+			</div>
+			<div class="bfm linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press());
+			</div>
+			<div class="clear">
+			</div>
+		</div>
         <div class="blogContainer contentBlock">
             <div class="blogDesc">
                 <ul>

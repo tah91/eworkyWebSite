@@ -439,6 +439,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ils parlent de nous :.
+        /// </summary>
+        public static string TalkAboutUs {
+            get {
+                return ResourceManager.GetString("TalkAboutUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc..
         /// </summary>
         public static string Teamworky {
