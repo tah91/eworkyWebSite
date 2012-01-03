@@ -3,7 +3,7 @@
 .indexHeader
 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .indexHeader h1
@@ -183,6 +183,11 @@
     /*width:227px;*/
 }
 
+.indexSearch
+{
+	height:270px;
+}
+
 .indexSearchBox
 {
     margin-bottom:10px
@@ -195,7 +200,7 @@
 
 .indexSearchIndexLinks
 {
-    /*margin-top:40px;*/
+    width:100%;
 }
 
 .indexSearchIndexLinks .buttonStd
@@ -214,6 +219,11 @@
 .indexSearchIndexLinksRight
 {
     
+}
+
+.searchCheckBoxs
+{
+    width:170px;
 }
 
 #slides {

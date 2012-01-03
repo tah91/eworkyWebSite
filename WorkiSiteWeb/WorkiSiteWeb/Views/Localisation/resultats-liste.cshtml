@@ -84,60 +84,32 @@
                         </div>
                     </div>
                     
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h4>
-                    <div class="toogle_container">
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h4>
+                    <div class="toogle_container active">
                         <div class="block">
                             <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.Everything)
-                                @Html.LabelFor(model => model.Criteria.Everything)
-                            </div>
-                            <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.SpotWifi)
-                                @Html.LabelFor(model => model.Criteria.SpotWifi)
-                            </div>
-                            <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.CoffeeResto)
-                                @Html.LabelFor(model => model.Criteria.CoffeeResto)
-                            </div>
-                            <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.Biblio)
-                                @Html.LabelFor(model => model.Criteria.Biblio)
-                            </div>
-                            <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.PublicSpace)
-                                @Html.LabelFor(model => model.Criteria.PublicSpace)
-                            </div>
-                            <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.TravelerSpace)
-                                @Html.LabelFor(model => model.Criteria.TravelerSpace)
-                            </div>
-                            <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.Hotel)
-                                @Html.LabelFor(model => model.Criteria.Hotel)
+                                @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
+                                @Html.LabelFor(model => model.Criteria.CoworkingSpace)
                             </div>
                             <div class="editor-field">
                                 @Html.CheckBoxFor(model => model.Criteria.Telecentre)
                                 @Html.LabelFor(model => model.Criteria.Telecentre)
                             </div>
                             <div class="editor-field">
+                                @Html.CheckBoxFor(model => model.Criteria.SharedOffice)
+                                @Html.LabelFor(model => model.Criteria.SharedOffice)
+                            </div>
+                            <div class="editor-field">
                                 @Html.CheckBoxFor(model => model.Criteria.BuisnessCenter)
                                 @Html.LabelFor(model => model.Criteria.BuisnessCenter)
                             </div>
                             <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.CoworkingSpace)
-                                @Html.LabelFor(model => model.Criteria.CoworkingSpace)
+                                @Html.CheckBoxFor(model => model.Criteria.FreeAreas)
+                                @Html.LabelFor(model => model.Criteria.FreeAreas)
                             </div>
                             <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.WorkingHotel)
-                                @Html.LabelFor(model => model.Criteria.WorkingHotel)
-                            </div>
-                            <div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.PrivateArea)
-                                @Html.LabelFor(model => model.Criteria.PrivateArea)
-                            </div>
-							<div class="editor-field">
-                                @Html.CheckBoxFor(model => model.Criteria.SharedOffice)
-                                @Html.LabelFor(model => model.Criteria.SharedOffice)
+                                @Html.CheckBoxFor(model => model.Criteria.OtherTypes)
+                                @Html.LabelFor(model => model.Criteria.OtherTypes)
                             </div>
                         </div>
                     </div>
@@ -202,7 +174,5 @@
             });   
         }
     </script>
-    @{ ViewData["IsSearchForm"] = true; }
     @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
-    @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
 }

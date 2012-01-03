@@ -361,4 +361,10 @@
   <data name="SharedOffice" xml:space="preserve">
     <value>Espace partagé</value>
   </data>
+  <data name="FreeAreas" xml:space="preserve">
+    <value>Lieux gratuits</value>
+  </data>
+  <data name="OtherTypes" xml:space="preserve">
+    <value>Autres lieux</value>
+  </data>
 </root>

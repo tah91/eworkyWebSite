@@ -164,36 +164,18 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Type, ref value))
             {
                 var localisationTypes = value.Split(',');
-                criteria.Everything = false;
                 foreach (var item in localisationTypes)
                 {
-                    if (item == MiscHelpers.SeoConstants.All)
-                    {
-                        criteria.Everything = true;
-                        break;
-                    }
-                    if (item == MiscHelpers.SeoConstants.SpotWifi)
-                        criteria.SpotWifi = true;
-                    if (item == MiscHelpers.SeoConstants.CoffeeResto)
-                        criteria.CoffeeResto = true;
-                    if (item == MiscHelpers.SeoConstants.Biblio)
-                        criteria.Biblio = true;
-                    if (item == MiscHelpers.SeoConstants.PublicSpace)
-                        criteria.PublicSpace = true;
-                    if (item == MiscHelpers.SeoConstants.TravelerSpace)
-                        criteria.TravelerSpace = true;
-                    if (item == MiscHelpers.SeoConstants.Hotel)
-                        criteria.Hotel = true;
                     if (item == MiscHelpers.SeoConstants.Telecentre)
                         criteria.Telecentre = true;
                     if (item == MiscHelpers.SeoConstants.BuisnessCenter)
                         criteria.BuisnessCenter = true;
                     if (item == MiscHelpers.SeoConstants.CoworkingSpace)
                         criteria.CoworkingSpace = true;
-                    if (item == MiscHelpers.SeoConstants.WorkingHotel)
-                        criteria.WorkingHotel = true;
-                    if (item == MiscHelpers.SeoConstants.PrivateArea)
-                        criteria.PrivateArea = true;
+                    if (item == MiscHelpers.SeoConstants.FreeAreas)
+                        criteria.FreeAreas = true;
+                    if (item == MiscHelpers.SeoConstants.OtherPlaces)
+                        criteria.OtherTypes = true;
 					if (item == MiscHelpers.SeoConstants.SharedOffice)
 						criteria.SharedOffice = true;
                 }
@@ -233,35 +215,18 @@ namespace Worki.Service
             rvd[MiscHelpers.SeoConstants.Order] = (int)criteria.OrderBy;
 
             var localisationTypes = new List<string>();
-            if (!criteria.Everything)
-            {
-                if (criteria.SpotWifi)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.SpotWifi);
-                if (criteria.CoffeeResto)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.CoffeeResto);
-                if (criteria.Biblio)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.Biblio);
-                if (criteria.PublicSpace)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.PublicSpace);
-                if (criteria.TravelerSpace)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.TravelerSpace);
-                if (criteria.Hotel)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.Hotel);
-                if (criteria.Telecentre)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.Telecentre);
-                if (criteria.BuisnessCenter)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.BuisnessCenter);
-                if (criteria.CoworkingSpace)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.CoworkingSpace);
-                if (criteria.WorkingHotel)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.WorkingHotel);
-                if (criteria.PrivateArea)
-                    localisationTypes.Add(MiscHelpers.SeoConstants.PrivateArea);
-				if (criteria.SharedOffice)
-					localisationTypes.Add(MiscHelpers.SeoConstants.SharedOffice);
-            }
-            else
-                localisationTypes.Add(MiscHelpers.SeoConstants.All);
+            if (criteria.Telecentre)
+                localisationTypes.Add(MiscHelpers.SeoConstants.Telecentre);
+            if (criteria.BuisnessCenter)
+                localisationTypes.Add(MiscHelpers.SeoConstants.BuisnessCenter);
+            if (criteria.CoworkingSpace)
+                localisationTypes.Add(MiscHelpers.SeoConstants.CoworkingSpace);
+            if (criteria.FreeAreas)
+                localisationTypes.Add(MiscHelpers.SeoConstants.FreeAreas);
+            if (criteria.OtherTypes)
+                localisationTypes.Add(MiscHelpers.SeoConstants.OtherPlaces);
+			if (criteria.SharedOffice)
+				localisationTypes.Add(MiscHelpers.SeoConstants.SharedOffice);
 
             rvd[MiscHelpers.SeoConstants.Type] = string.Join(",", localisationTypes);
 

@@ -68,36 +68,50 @@ namespace Worki.Data.Models
 								where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude) < BoundDistance
 								select loc;
 
-			//matching type
-			if (!criteria.Everything)
+			if (criteria.FreeAreas)
 			{
-				var allowedTypes = new List<int>();
-				if (criteria.SpotWifi)
-					allowedTypes.Add((int)LocalisationType.SpotWifi);
-				if (criteria.CoffeeResto)
-					allowedTypes.Add((int)LocalisationType.CoffeeResto);
-				if (criteria.Biblio)
-					allowedTypes.Add((int)LocalisationType.Biblio);
-				if (criteria.PublicSpace)
-					allowedTypes.Add((int)LocalisationType.PublicSpace);
-				if (criteria.TravelerSpace)
-					allowedTypes.Add((int)LocalisationType.TravelerSpace);
-				if (criteria.Hotel)
-					allowedTypes.Add((int)LocalisationType.Hotel);
-				if (criteria.Telecentre)
-					allowedTypes.Add((int)LocalisationType.Telecentre);
-				if (criteria.BuisnessCenter)
-					allowedTypes.Add((int)LocalisationType.BuisnessCenter);
-				if (criteria.CoworkingSpace)
-					allowedTypes.Add((int)LocalisationType.CoworkingSpace);
-				if (criteria.WorkingHotel)
-					allowedTypes.Add((int)LocalisationType.WorkingHotel);
-				if (criteria.PrivateArea)
-					allowedTypes.Add((int)LocalisationType.PrivateArea);
-				if (criteria.SharedOffice)
-					allowedTypes.Add((int)LocalisationType.SharedOffice);
-				localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));
+				criteria.SpotWifi = true;
+				criteria.CoffeeResto = true;
+				criteria.Biblio = true;
+				criteria.TravelerSpace = true;
 			}
+
+			if (criteria.OtherTypes)
+			{
+				criteria.PrivateArea = true;
+				criteria.WorkingHotel = true;
+				criteria.PublicSpace = true;
+				criteria.Hotel = true;
+			}
+
+			//matching type
+			var allowedTypes = new List<int>();
+			if (criteria.SpotWifi)
+				allowedTypes.Add((int)LocalisationType.SpotWifi);
+			if (criteria.CoffeeResto)
+				allowedTypes.Add((int)LocalisationType.CoffeeResto);
+			if (criteria.Biblio)
+				allowedTypes.Add((int)LocalisationType.Biblio);
+			if (criteria.PublicSpace)
+				allowedTypes.Add((int)LocalisationType.PublicSpace);
+			if (criteria.TravelerSpace)
+				allowedTypes.Add((int)LocalisationType.TravelerSpace);
+			if (criteria.Hotel)
+				allowedTypes.Add((int)LocalisationType.Hotel);
+			if (criteria.Telecentre)
+				allowedTypes.Add((int)LocalisationType.Telecentre);
+			if (criteria.BuisnessCenter)
+				allowedTypes.Add((int)LocalisationType.BuisnessCenter);
+			if (criteria.CoworkingSpace)
+				allowedTypes.Add((int)LocalisationType.CoworkingSpace);
+			if (criteria.WorkingHotel)
+				allowedTypes.Add((int)LocalisationType.WorkingHotel);
+			if (criteria.PrivateArea)
+				allowedTypes.Add((int)LocalisationType.PrivateArea);
+			if (criteria.SharedOffice)
+				allowedTypes.Add((int)LocalisationType.SharedOffice);
+			if (allowedTypes.Count > 0)
+				localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));
 
 			//retrieve list from db, then filter it
 			var locProjectionList = (from item in localisations

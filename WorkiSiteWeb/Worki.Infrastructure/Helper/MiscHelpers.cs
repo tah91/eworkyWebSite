@@ -40,35 +40,22 @@ namespace Worki.Infrastructure.Helpers
 
         public static class SeoConstants
         {
-            public const string SpotWifi = "spot-wifi";
-            public const string CoffeeResto = "cafe";
-            public const string Biblio = "bibliotèque";
-            public const string PublicSpace = "public";
-            public const string TravelerSpace = "espace-voyageur";
-            public const string Hotel = "hotel";
+            public const string FreeAreas = "lieux-gratuits";
             public const string Telecentre = "telecentre";
             public const string BuisnessCenter = "centre-affaire";
             public const string CoworkingSpace = "coworking";
-            public const string WorkingHotel = "hotel-entreprise";
-            public const string PrivateArea = "lieu-prive";
+            public const string OtherPlaces = "autres-lieux";
 			public const string SharedOffice = "espace-partagé";
-            public const string All = "tout";
             public const string Type = "type";
 
             public static List<string> LocalisationTypes = new List<string>
             {
-                SpotWifi ,
-                CoffeeResto ,
-                Biblio,
-                PublicSpace ,
-                TravelerSpace ,
-                Hotel ,
+                FreeAreas ,
                 Telecentre ,
                 BuisnessCenter ,
                 CoworkingSpace ,
-                WorkingHotel ,
-                PrivateArea ,
-                All 
+                OtherPlaces ,
+                SharedOffice 
             };
 
             public const string FreeArea = "espace-gratuit";

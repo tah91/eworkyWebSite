@@ -476,38 +476,23 @@ namespace Worki.Web.Controllers
             criteria.Place = lieu;
             switch (type)
             {
-                case MiscHelpers.SeoConstants.SpotWifi:
-                    criteria.SpotWifi = true;
-                    break;
-                case MiscHelpers.SeoConstants.CoffeeResto:
-                    criteria.CoffeeResto = true;
-                    break;
-                case MiscHelpers.SeoConstants.Biblio:
-                    criteria.Biblio = true;
-                    break;
-                case MiscHelpers.SeoConstants.PublicSpace:
-                    criteria.PublicSpace = true;
-                    break;
-                case MiscHelpers.SeoConstants.TravelerSpace:
-                    criteria.TravelerSpace = true;
-                    break;
-                case MiscHelpers.SeoConstants.Telecentre:
-                    criteria.Telecentre = true;
-                    break;
-                case MiscHelpers.SeoConstants.BuisnessCenter:
-                    criteria.BuisnessCenter = true;
-                    break;
                 case MiscHelpers.SeoConstants.CoworkingSpace:
                     criteria.CoworkingSpace = true;
                     break;
-                case MiscHelpers.SeoConstants.WorkingHotel:
-                    criteria.WorkingHotel = true;
+				case MiscHelpers.SeoConstants.Telecentre:
+                    criteria.Telecentre = true;
                     break;
-                case MiscHelpers.SeoConstants.PrivateArea:
-                    criteria.PrivateArea = true;
-					break;
 				case MiscHelpers.SeoConstants.SharedOffice:
 					criteria.SharedOffice = true;
+                    break;
+				case MiscHelpers.SeoConstants.BuisnessCenter:
+                    criteria.BuisnessCenter = true;
+                    break;
+				case MiscHelpers.SeoConstants.FreeAreas:
+					criteria.FreeAreas = true;
+                    break;
+                case MiscHelpers.SeoConstants.OtherPlaces:
+					criteria.OtherTypes = true;
                     break;
             }
             criteria.Everything = false;

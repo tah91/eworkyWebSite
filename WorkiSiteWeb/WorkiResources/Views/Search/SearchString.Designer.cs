@@ -241,7 +241,7 @@ namespace Worki.Resources.Views.Search {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Par services.
+        ///   Looks up a localized string similar to Par besoin.
         /// </summary>
         public static string SearchByServiceType {
             get {
@@ -255,6 +255,15 @@ namespace Worki.Resources.Views.Search {
         public static string SearchResult {
             get {
                 return ResourceManager.GetString("SearchResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quel type de lieu cherchez-vous ?.
+        /// </summary>
+        public static string SearchType {
+            get {
+                return ResourceManager.GetString("SearchType", resourceCulture);
             }
         }
         
@@ -367,6 +376,15 @@ namespace Worki.Resources.Views.Search {
         public static string VenueName {
             get {
                 return ResourceManager.GetString("VenueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : La Cantine, Regus Opéra, ....
+        /// </summary>
+        public static string VenueNameExample {
+            get {
+                return ResourceManager.GetString("VenueNameExample", resourceCulture);
             }
         }
         

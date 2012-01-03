@@ -11,18 +11,6 @@
 
 @{
     var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
-	var dropDown = new DropDownModel
-	{
-		Id = DropDownModel.AdvancedSearchDD,
-		Title = Worki.Resources.Views.Search.SearchString.AdvancedSearch,
-		Items = new List<DropDownItem>
-		{
-			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlace, Link = Url.Action(MVC.Home.Index())},
-			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceType, Link = Url.Action(MVC.Localisation.FullSearchPerType()), Id = "searchPerType"},
-			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.SearchByServiceType, Link = Url.Action(MVC.Localisation.FullSearch()), Id = "searchPerNeed"},
-			new DropDownItem { DisplayName = Worki.Resources.Views.Search.SearchString.SearchByPlaceName, Link = Url.Action(MVC.Localisation.FullSearchPerName()), Id = "searchPerName" }
-		}
-	};
 }
 <div class="indexHeader">
     <h1 class="darkblue">@Worki.Resources.Views.Home.HomeString.FindTheBesPlace1</h1>
@@ -36,7 +24,8 @@
         <div class="indexForms indexFormContainer float-right">
 			<div class="contentBlock">
 				<div class="indexSearchFormDiv darkblue">
-					@using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
+					@Html.Partial(MVC.Localisation.Views._SearchForm)
+@*					@using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
 					{
 						@Html.AntiForgeryToken()
 						@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
@@ -62,7 +51,7 @@
 							<div class="clear">
 							</div>
 						</div>
-					}
+					}*@
 				</div>
 			</div>
 @*          TO USE WHEN LOCATION IS READY  
@@ -270,9 +259,6 @@
                 workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', '#searchform');
             });
         }
-        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
-            InitTab(".indexForms");
-        });
 
         $("#searchform").submit(function (evt) {
             var val = $("#Criteria_Place").val();
@@ -282,9 +268,9 @@
             workiGeoCoder.SearchFormSubmit(evt);
             return false;
            });
-        require(["@Links.Scripts.dropdown_js"], function () {
-			InitDropdown("#@DropDownModel.AdvancedSearchDD");
-        });
+//        require(["@Links.Scripts.dropdown_js"], function () {
+//			InitDropdown("#@DropDownModel.AdvancedSearchDD");
+//        });
     </script>
-    @Html.Partial(MVC.Shared.Views._IndexGalleryScript)
+    @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
 }

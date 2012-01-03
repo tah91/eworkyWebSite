@@ -187,6 +187,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lieux gratuits.
+        /// </summary>
+        public static string FreeAreas {
+            get {
+                return ResourceManager.GetString("FreeAreas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fermeture Vendredi soir.
         /// </summary>
         public static string FriCloseAfter {
@@ -327,6 +336,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autres lieux.
+        /// </summary>
+        public static string OtherTypes {
+            get {
+                return ResourceManager.GetString("OtherTypes", resourceCulture);
             }
         }
         
