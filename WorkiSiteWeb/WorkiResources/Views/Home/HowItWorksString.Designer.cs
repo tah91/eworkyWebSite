@@ -331,7 +331,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Réferencer.
+        ///   Looks up a localized string similar to Référencer.
         /// </summary>
         public static string RefererenceTitle {
             get {
