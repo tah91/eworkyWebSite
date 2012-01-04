@@ -57,6 +57,7 @@
 .blogItem:hover{background:#f3f3f3}
 .blogDate{width:120px}
 .blogContent{width:67%}
+.bannerBlock{padding:20px 10px!important}
 .bannerDesc{width:140px;padding:6px 0 0 30px}
 .bfm{background-image:url('images/mediaBanner.png');background-position:0 0;width:86px;height:32px}
 .bfm:hover{background-image:url('images/mediaBanner.png');background-position:0 -82px;width:86px;height:32px}
