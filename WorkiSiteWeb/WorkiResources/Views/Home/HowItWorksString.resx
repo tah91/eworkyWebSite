@@ -151,7 +151,7 @@
     <value>Echanger avec ses coworkers</value>
   </data>
   <data name="Go" xml:space="preserve">
-    <value>Une fois votre demande validée par notre équipe, profitez gratuitement de toutes les fonctionnalités gratuites de gestion de votre espace</value>
+    <value>Une fois votre demande validée, profitez gratuitement de toutes les fonctionnalités de gestion de votre espace</value>
   </data>
   <data name="GoTitle" xml:space="preserve">
     <value>C'est parti !</value>
@@ -193,7 +193,7 @@
     <value>Gérant</value>
   </data>
   <data name="OwnerTutorial" xml:space="preserve">
-    <value>Mode d’emploi gérant</value>
+    <value>Je suis gérant</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Une fois votre demande de réservation confirmée par le gérant de l’espace, vous pouvez directement payer en ligne avec votre carte de paiement</value>
@@ -214,13 +214,13 @@
     <value>vous inscrire gratuitement</value>
   </data>
   <data name="RegisterOwner" xml:space="preserve">
-    <value>Pour gérer un lieu sur eWorky, vous devez {0} créant un compte ou en vous identifiant par Facebook</value>
+    <value>Pour gérer un lieu sur eWorky, vous devez {0} en créant un compte ou en vous identifiant par Facebook</value>
   </data>
   <data name="RegisterOwnerTitle" xml:space="preserve">
     <value>S’inscrire</value>
   </data>
   <data name="RegisterUser" xml:space="preserve">
-    <value>Pour profiter pleinement d’eWorky, vous devez {0} créant un compte ou en vous identifiant par Facebook</value>
+    <value>Pour profiter pleinement d’eWorky, vous devez {0} en créant un compte ou en vous identifiant par Facebook</value>
   </data>
   <data name="RegisterUserTitle" xml:space="preserve">
     <value>S'inscrire</value>
@@ -241,7 +241,7 @@
     <value>Utilisateur</value>
   </data>
   <data name="UserTutorial" xml:space="preserve">
-    <value>Mode d’emploi utilisateur</value>
+    <value>Je suis utilisateur</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>eWorky vous aide à gérer un lieu de travail mais ne remplacera jamais votre convivialité et votre accueil !</value>

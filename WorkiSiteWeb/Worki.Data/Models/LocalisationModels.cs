@@ -1183,7 +1183,7 @@ namespace Worki.Data.Models
 			string commentError = Worki.Resources.Validation.ValidationString.AlreadyRateThis;
 			if (!Localisation.IsFreeLocalisation())
 			{
-				if (Rating < 0)
+				if (Rating < 0 && string.IsNullOrEmpty(Post))
 				{
 					error = commentError;
 					throw new Exception(error);
@@ -1191,7 +1191,7 @@ namespace Worki.Data.Models
 			}
 			else
 			{
-				if (RatingDispo < 0 || RatingPrice < 0 || RatingWelcome < 0 || RatingWifi < 0)
+                if (RatingDispo < 0 && RatingPrice < 0 && RatingWelcome < 0 && RatingWifi < 0 && string.IsNullOrEmpty(Post))
 				{
 					error = commentError;
 					throw new Exception(error);

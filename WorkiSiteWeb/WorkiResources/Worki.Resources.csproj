@@ -446,6 +446,7 @@
     <EmbeddedResource Include="Views\Home\HowItWorksString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HowItWorksString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\FaqString.en.resx" />
     <EmbeddedResource Include="Views\Home\HomeString.en.resx" />

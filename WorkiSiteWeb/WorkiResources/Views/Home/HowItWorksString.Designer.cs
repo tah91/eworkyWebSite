@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Une fois votre demande validée par notre équipe, profitez gratuitement de toutes les fonctionnalités gratuites de gestion de votre espace.
+        ///   Looks up a localized string similar to Une fois votre demande validée, profitez gratuitement de toutes les fonctionnalités de gestion de votre espace.
         /// </summary>
         public static string Go {
             get {
@@ -241,6 +241,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajoutez, notez et commentez les lieux de travail pour aider toute la communauté dans ses recherches.
         /// </summary>
         public static string Join {
             get {
@@ -285,7 +286,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mode d’emploi gérant.
+        ///   Looks up a localized string similar to Je suis gérant.
         /// </summary>
         public static string OwnerTutorial {
             get {
@@ -348,7 +349,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pour gérer un lieu sur eWorky, vous devez {0} créant un compte ou en vous identifiant par Facebook.
+        ///   Looks up a localized string similar to Pour gérer un lieu sur eWorky, vous devez {0} en créant un compte ou en vous identifiant par Facebook.
         /// </summary>
         public static string RegisterOwner {
             get {
@@ -366,7 +367,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pour profiter pleinement d’eWorky, vous devez {0} créant un compte ou en vous identifiant par Facebook.
+        ///   Looks up a localized string similar to Pour profiter pleinement d’eWorky, vous devez {0} en créant un compte ou en vous identifiant par Facebook.
         /// </summary>
         public static string RegisterUser {
             get {
@@ -429,7 +430,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mode d’emploi utilisateur.
+        ///   Looks up a localized string similar to Je suis utilisateur.
         /// </summary>
         public static string UserTutorial {
             get {

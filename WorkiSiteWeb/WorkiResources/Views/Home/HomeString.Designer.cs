@@ -252,8 +252,8 @@ namespace Worki.Resources.Views.Home {
         /// <summary>
         ///   Looks up a localized string similar to Ce site web est édité par :&lt;br /&gt;
         ///        Omnicentre SAS&lt;br /&gt;
-        ///        Société par actions simplifiée au capital de 10 000 € - RCS NANTERRE 529 309 668&lt;br /&gt;
-        ///        Siège social : 30 rue des poissonniers, 92200 Neuilly-sur-Seine&lt;br /&gt;
+        ///        Société par actions simplifiée au capital de 20 740 € - RCS PARIS 529 309 668&lt;br /&gt;
+        ///        Siège social : 57, rue de Lille, 75 007 Paris&lt;br /&gt;
         ///        &lt;br /&gt;
         ///        Contact :&lt;br /&gt;
         ///        {0}&lt;br /&gt;
