@@ -394,8 +394,8 @@
 
 .bannerDesc
 {
-	width: 170px;
-	margin-top:4px;
+	width: 160px;
+    padding: 6px 0 0 10px;
 }
 
 .bfm{ background-image:url('images/mediaBanner.png'); background-position: 0 0; width: 86px; height: 32px; } 
