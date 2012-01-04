@@ -860,6 +860,8 @@
     <Content Include="Views\Home\OwnerTutorial.cshtml" />
     <Content Include="Views\Home\UserTutorial.cshtml" />
     <Content Include="Views\Home\_HowItWorksMenu.cshtml" />
+    <Content Include="Views\Home\_IndexHead.cshtml" />
+    <Content Include="Views\Home\_BlogContainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

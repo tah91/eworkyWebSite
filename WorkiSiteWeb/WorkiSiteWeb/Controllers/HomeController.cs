@@ -105,24 +105,50 @@ namespace Worki.Web.Controllers
         }
 
         /// <summary>
+        /// Child action to create index head
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public virtual ActionResult IndexHead()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
+
+            return PartialView(MVC.Home.Views._IndexHead, lRepo.GetCount() + rRepo.GetCount());
+        }
+
+        /// <summary>
+        /// Child action to create index slider
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public virtual ActionResult PeopleSlider()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+
+            return PartialView(MVC.Home.Views._PeopleSlider, wpRepo.GetMany(wp => wp.Online == true).OrderByDescending(wp => wp.Id).ToList());
+        }
+
+        /// <summary>
+        /// Child action to create index blog container
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public virtual ActionResult BlogContainer()
+        {
+            return PartialView(MVC.Home.Views._BlogContainer, GetBlogPosts());
+        }
+
+
+        /// <summary>
         /// Prepare the home page
         /// </summary>
         /// <returns>The action result.</returns>
         [ActionName("index")]
         public virtual ActionResult Index()
         {
-            var context = ModelFactory.GetUnitOfWork();
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var rRepo = ModelFactory.GetRepository<IRentalRepository>(context);
-            var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
-            var indexModel = new IndexViewModel()
-            {
-                LocalisationCount = lRepo.GetCount() + rRepo.GetCount(),
-                WelcomePeople = wpRepo.GetMany(wp => wp.Online == true).OrderByDescending(wp => wp.Id).ToList(),
-                BlogPosts = GetBlogPosts()
-            };
-
-            ViewData[IndexViewModelContent] = indexModel;
             return View(new SearchCriteriaFormViewModel());
         }
 

@@ -9,17 +9,11 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-@{
-    var indexViewModel = ViewData[Worki.Web.Controllers.HomeController.IndexViewModelContent] as IndexViewModel;
-}
-<div class="indexHeader">
-    <h1 class="darkblue">@Worki.Resources.Views.Home.HomeString.FindTheBesPlace1</h1>
-    <h2 class="blue">@Html.Raw(string.Format(Worki.Resources.Views.Home.HomeString.FindTheBesPlace2, indexViewModel.LocalisationCount))</h2>
-</div>
+@{Html.RenderAction(MVC.Home.IndexHead());}
 
 <div class="detailContent">
     <div class="blockContainer">
-        @Html.Partial(MVC.Home.Views._PeopleSlider, indexViewModel.WelcomePeople)
+        @{Html.RenderAction(MVC.Home.PeopleSlider());}
 
         <div class="indexForms indexFormContainer float-right">
 			<div class="contentBlock">
@@ -168,55 +162,27 @@
 				<h3>@Worki.Resources.Views.Home.HomeString.TalkAboutUs</h3>
 			</div>
 			<div class="fr3 linkImg float-left">
-				@Html.ActionLink(" ", MVC.Home.Press());
+				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
 			<div class="parisien linkImg float-left">
-				@Html.ActionLink(" ", MVC.Home.Press());
+				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
 			<div class="frenchweb linkImg float-left">
-				@Html.ActionLink(" ", MVC.Home.Press());
+				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
 			<div class="jdn linkImg float-left">
-				@Html.ActionLink(" ", MVC.Home.Press());
+				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
 			<div class="franceinfo linkImg float-left">
-				@Html.ActionLink(" ", MVC.Home.Press());
+				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
 			<div class="bfm linkImg float-left">
-				@Html.ActionLink(" ", MVC.Home.Press());
+				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
 			<div class="clear">
 			</div>
 		</div>
-        <div class="blogContainer contentBlock">
-            <div class="blogDesc">
-                <ul>
-                @foreach (var item in indexViewModel.BlogPosts)
-				{
-                    <li class="blogItem borderRadius noUnderline float-left">
-                        <a href="@item.Url" target="_blank" title="@Html.Raw(item.Title)">
-                            <div class="blogImg borderedImg borderRadius float-left">
-                                @RazorHelpers.CenterImage(item.Image, item.Title)
-                            </div>
-                            <div class="blogContent float-left">
-                                <h4 class="blue">@Html.Raw(item.Title) - @Html.DisplayDate(item.PublicationDate)</h4>
-                                @Html.TruncateAtWord(item.Content, 120)
-                            </div>
-                            <div class="clear">
-                            </div>
-                        </a>
-                    </li>        
-				}
-                    <div class="clear">
-                    </div>
-                </ul>
-                <div class="buttonStd buttonBlue linkImg float-right">
-                    <a href="@MiscHelpers.UrlConstants.BlogUrl" target="_blank">@Worki.Resources.Views.Home.HomeString.BlogTitle</a>
-                </div>
-                <div class="clear">
-                </div>
-            </div>
-        </div>
+        @{Html.RenderAction(MVC.Home.BlogContainer());}
 		<div class="contentBlock">
 			<div id="fb-root"></div>
 			<script>	(function (d, s, id) {

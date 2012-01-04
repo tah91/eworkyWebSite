@@ -554,6 +554,7 @@ namespace Links {
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
+            public static readonly string mediaBanner_png = Url("mediaBanner.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
@@ -1004,6 +1005,9 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Error = "Error";
+            public readonly string IndexHead = "IndexHead";
+            public readonly string PeopleSlider = "PeopleSlider";
+            public readonly string BlogContainer = "BlogContainer";
             public readonly string Index = "index";
             public readonly string Contact = "contact";
             public readonly string Faq = "faq";
@@ -1026,7 +1030,9 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _AboutMenu = "~/Views/Home/_AboutMenu.cshtml";
+            public readonly string _BlogContainer = "~/Views/Home/_BlogContainer.cshtml";
             public readonly string _HowItWorksMenu = "~/Views/Home/_HowItWorksMenu.cshtml";
+            public readonly string _IndexHead = "~/Views/Home/_IndexHead.cshtml";
             public readonly string _PeopleSlider = "~/Views/Home/_PeopleSlider.cshtml";
             public readonly string _RentalTab = "~/Views/Home/_RentalTab.cshtml";
             public readonly string a_propos = "~/Views/Home/a-propos.cshtml";
@@ -1050,6 +1056,21 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult Error() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Error);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult IndexHead() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexHead);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PeopleSlider() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PeopleSlider);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BlogContainer() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BlogContainer);
             return callInfo;
         }
 

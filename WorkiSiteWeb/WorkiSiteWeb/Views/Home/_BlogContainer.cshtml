@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BlogPost>
+
+<div class="blogContainer contentBlock">
+    <div class="blogDesc">
+        <ul>
+        @foreach (var item in Model)
+		{
+            <li class="blogItem borderRadius noUnderline float-left">
+                <a href="@item.Url" target="_blank" title="@Html.Raw(item.Title)">
+                    <div class="blogImg borderedImg borderRadius float-left">
+                        @RazorHelpers.CenterImage(item.Image, item.Title)
+                    </div>
+                    <div class="blogContent float-left">
+                        <h4 class="blue">@Html.Raw(item.Title) - @Html.DisplayDate(item.PublicationDate)</h4>
+                        @Html.TruncateAtWord(item.Content, 120)
+                    </div>
+                    <div class="clear">
+                    </div>
+                </a>
+            </li>        
+		}
+            <div class="clear">
+            </div>
+        </ul>
+        <div class="buttonStd buttonBlue linkImg float-right">
+            <a href="@MiscHelpers.UrlConstants.BlogUrl" target="_blank">@Worki.Resources.Views.Home.HomeString.BlogTitle</a>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>

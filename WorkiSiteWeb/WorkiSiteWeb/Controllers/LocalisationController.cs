@@ -429,7 +429,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearch()
 		{
 			var criteria = new SearchCriteria(true);
-			return View(new SearchCriteriaFormViewModel(criteria, false));
+            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria, false));
 		}
 
 		[AcceptVerbs(HttpVerbs.Get)]
@@ -437,7 +437,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearchPerType()
 		{
             var criteria = SearchCriteria.CreateSearchCriteria(eDirectAccessType.eNone);
-			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
+            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria, false));
 		}
 
 
@@ -446,7 +446,7 @@ namespace Worki.Web.Controllers
         public virtual ActionResult FullSearchPerName()
         {
             var criteria = new SearchCriteria(true, eSearchType.ePerName, eOrderBy.Rating);
-            return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
+            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria, false));
         }
 
 		/// <summary>
@@ -533,7 +533,7 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ActionName("recherche")]
 		[ValidateAntiForgeryToken]
-		[ValidateOnlyIncomingValues]
+        [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
 		public virtual ActionResult FullSearch(SearchCriteria criteria)
 		{
 			if (ModelState.IsValid)
@@ -549,7 +549,7 @@ namespace Worki.Web.Controllers
 					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
 				}
 			}
-			return View(new SearchCriteriaFormViewModel(criteria));
+            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
 		}
 
 		/// <summary>
