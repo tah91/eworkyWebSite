@@ -439,7 +439,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ils parlent de nous :.
+        ///   Looks up a localized string similar to Ils en parlent.
         /// </summary>
         public static string TalkAboutUs {
             get {
