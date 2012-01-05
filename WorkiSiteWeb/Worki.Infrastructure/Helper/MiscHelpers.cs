@@ -48,6 +48,22 @@ namespace Worki.Infrastructure.Helpers
 			public const string SharedOffice = "espace-partagé";
             public const string Type = "type";
 
+            public class Coordinates
+            {
+                public double Latitude {get;set;}
+                public double Longitude {get;set;}
+            }
+
+            public static Dictionary<string, Coordinates> Places = new Dictionary<string, Coordinates>
+            {
+                {"paris", new Coordinates{ Latitude = 48.856614, Longitude=2.35222190000002}},
+                {"lyon", new Coordinates{ Latitude = 45.764043, Longitude=4.83565899999996}},
+                {"lille", new Coordinates{ Latitude = 50.62925, Longitude=3.05725600000005}},
+                {"marseille", new Coordinates{ Latitude = 43.296482, Longitude=5.36977999999999}},
+                {"bordeaux", new Coordinates{ Latitude = 44.837789, Longitude=-0.579179999999951}},
+                {"belgique", new Coordinates{ Latitude = 50.503887, Longitude=4.46993599999996}}
+            };
+
             public static List<string> LocalisationTypes = new List<string>
             {
                 FreeAreas ,

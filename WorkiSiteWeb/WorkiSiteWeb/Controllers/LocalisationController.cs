@@ -474,6 +474,13 @@ namespace Worki.Web.Controllers
         {
             var criteria = new SearchCriteria();
             criteria.Place = lieu;
+            lieu = lieu.ToLower();
+            if (MiscHelpers.SeoConstants.Places.ContainsKey(lieu))
+            {
+                var coor = MiscHelpers.SeoConstants.Places[lieu];
+                criteria.LocalisationData.Latitude = coor.Latitude;
+                criteria.LocalisationData.Longitude = coor.Longitude;
+            }
             switch (type)
             {
                 case MiscHelpers.SeoConstants.CoworkingSpace:
@@ -514,6 +521,12 @@ namespace Worki.Web.Controllers
         {
             var criteria = new SearchCriteria();
             criteria.Place = lieu;
+            if (MiscHelpers.SeoConstants.Places.ContainsKey(lieu))
+            {
+                var coor = MiscHelpers.SeoConstants.Places[lieu];
+                criteria.LocalisationData.Latitude = coor.Latitude;
+                criteria.LocalisationData.Longitude = coor.Longitude;
+            }
             criteria.OfferData.Type = Localisation.GetOfferTypeFromSeoString(offerType);
 
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
