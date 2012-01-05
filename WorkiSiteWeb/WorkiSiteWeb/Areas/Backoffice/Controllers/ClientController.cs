@@ -26,8 +26,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <summary>
         /// Get action method to show clients of the owner
         /// </summary>
-        /// <returns>View containing the bookings</returns>
-        public virtual ActionResult Clients(int? page)
+        /// <returns>View containing the clients</returns>
+        public virtual ActionResult List(int? page)
         {
             var id = WebHelper.GetIdentityId(User.Identity);
 
@@ -49,9 +49,18 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             }
             catch (Exception ex)
             {
-                _Logger.Error("Clients", ex);
+                _Logger.Error("List", ex);
                 return View(MVC.Shared.Views.Error);
             }
+        }
+
+        /// <summary>
+        /// Get action method to add a client
+        /// </summary>
+        /// <returns>View containing the client data</returns>
+        public virtual ActionResult Add()
+        {
+            return null;
         }
 
     }

@@ -673,7 +673,7 @@
     <Content Include="Areas\Backoffice\Views\Localisation\Index.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\OfferIndex.cshtml" />
     <Content Include="Areas\Backoffice\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Client\Clients.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Client\List.cshtml" />
     <Content Include="Areas\Dashboard\Views\Home\Booking.cshtml" />
     <Content Include="Areas\Dashboard\Views\Home\Quotation.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_BookingItem.cshtml" />
@@ -715,6 +715,7 @@
     <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationCalendar.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_CreateBooking.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_BookingSummary.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Client\Add.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -928,7 +929,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4119</DevelopmentServerPort>
+          <DevelopmentServerPort>33926</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

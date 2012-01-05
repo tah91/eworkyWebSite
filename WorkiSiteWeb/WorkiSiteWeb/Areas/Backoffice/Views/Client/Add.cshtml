@@ -14,7 +14,8 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Clients, MVC.Backoffice.Client.Clients())}
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.MyClients, MVC.Backoffice.Client.List())},
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add())}
 		})
 	</div>
 
@@ -64,10 +65,14 @@
                 </tbody>
             </table>
             <div class="pager">
-                @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Client.Clients(x)))
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Client.List(x)))
             </div>
 		</div>
 	</div>
 	<div class="clear">
 	</div>
-</div>
+</div>@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>

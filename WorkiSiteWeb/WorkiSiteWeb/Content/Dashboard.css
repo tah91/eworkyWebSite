@@ -340,6 +340,16 @@ select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
   z-index:50;
 }
 
+.createBooking h3
+{
+    display:inline;
+}
+
+.createBooking table
+{
+    margin-top:5px;
+}
+
 .createBooking table td:first-child
 {
 	width:100px;

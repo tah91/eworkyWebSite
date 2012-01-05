@@ -237,4 +237,10 @@
   <data name="Schedule" xml:space="preserve">
     <value>Planning</value>
   </data>
+  <data name="AddClient" xml:space="preserve">
+    <value>Ajouter un client</value>
+  </data>
+  <data name="MyClients" xml:space="preserve">
+    <value>Mes clients</value>
+  </data>
 </root>

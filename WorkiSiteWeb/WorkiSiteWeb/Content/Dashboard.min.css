@@ -48,4 +48,6 @@ select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType{width:204px}
 .confirmbooktable{width:605px}
 #calendar{width:100%;margin:0 auto}
 .createBooking{position:absolute;display:none;width:300px;z-index:50}
+.createBooking h3{display:inline}
+.createBooking table{margin-top:5px}
 .createBooking table td:first-child{width:100px}

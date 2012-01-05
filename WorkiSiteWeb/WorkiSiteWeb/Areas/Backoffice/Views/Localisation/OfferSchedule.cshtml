@@ -20,8 +20,6 @@
             <div id='calendar'>
             </div>
 			@{Html.RenderAction(MVC.Backoffice.Localisation.CreateEvent(Model.Id));}
-			<div class="contentBlock createBooking" id="bookingSummary">
-			</div>
         </div>
 	</div>
 	<div class="clear"></div>
@@ -55,6 +53,9 @@
 			return false;
 		});
 
+        $('.cross').click(function () {
+            $('.createBooking').hide();
+        });
 
 		require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
 
@@ -143,24 +144,24 @@
 						$('#eventPeriod').html(start + ' - ' + end);
 						$('.createBooking').css({ left: jsEvent.pageX, top: jsEvent.pageY });
 						$('.createBooking').fadeIn("slow");
-					},
-					unselect: function (view, jsEvent) {
-						$('.createBooking').hide();
-					},
-					eventMouseover: function (calEvent, jsEvent, view) {
-						$.ajax({
-							url: '@Url.Action(MVC.Backoffice.Localisation.BookingSummary())',
-							data: { 'id': calEvent.id },
-							success: function (data) {
-								$('#bookingSummary').html(data);
-								$('#bookingSummary').css({ left: jsEvent.pageX, top: jsEvent.pageY });
-								$('#bookingSummary').fadeIn("slow");
-							}
-						});
-					},
-					eventMouseout: function (calEvent, jsEvent, view) {
-						$('#bookingSummary').hide();
 					}
+//					unselect: function (jsEvent, view) {
+//						$('.createBooking').hide();
+//					}
+//					eventMouseover: function (calEvent, jsEvent, view) {
+//						$.ajax({
+//							url: '@Url.Action(MVC.Backoffice.Localisation.BookingSummary())',
+//							data: { 'id': calEvent.id },
+//							success: function (data) {
+//								$('#bookingSummary').html(data);
+//								$('#bookingSummary').css({ left: jsEvent.pageX, top: jsEvent.pageY });
+//								$('#bookingSummary').fadeIn("slow");
+//							}
+//						});
+//					},
+//					eventMouseout: function (calEvent, jsEvent, view) {
+//						$('#bookingSummary').hide();
+//					}
 				});
 			});
 		});

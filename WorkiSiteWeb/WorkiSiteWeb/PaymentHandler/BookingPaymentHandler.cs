@@ -157,6 +157,11 @@ namespace Worki.Web
 					LoggerId = clientId
 				});
 
+                if (!booking.Owner.HasClient(clientId))
+                {
+                    booking.Owner.MemberClients.Add(new MemberClient { ClientId = clientId });
+                }                
+
 				//send mail to owner
 				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";

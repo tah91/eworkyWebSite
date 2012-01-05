@@ -2890,8 +2890,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Clients() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Clients);
+        public System.Web.Mvc.ActionResult List() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.List);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -2906,7 +2906,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string Clients = "Clients";
+            public readonly string List = "List";
+            public readonly string Add = "Add";
         }
 
 
@@ -2915,7 +2916,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string Clients = "~/Areas/Backoffice/Views/Client/Clients.cshtml";
+            public readonly string Add = "~/Areas/Backoffice/Views/Client/Add.cshtml";
+            public readonly string List = "~/Areas/Backoffice/Views/Client/List.cshtml";
         }
     }
 
@@ -2923,9 +2925,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
     public class T4MVC_ClientController: Worki.Web.Areas.Backoffice.Controllers.ClientController {
         public T4MVC_ClientController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Clients(int? page) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Clients);
+        public override System.Web.Mvc.ActionResult List(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.List);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Add() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Add);
             return callInfo;
         }
 

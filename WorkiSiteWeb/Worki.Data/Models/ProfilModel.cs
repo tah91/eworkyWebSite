@@ -346,8 +346,22 @@ namespace Worki.Data.Models
 				throw new Exception(Worki.Resources.Validation.ValidationString.InvalidUser);
 
 			return true;
-		}
-	}
+        }
+
+        #region Owner
+
+        /// <summary>
+        /// tell if the owner has the specified client
+        /// </summary>
+        /// <param name="clientId">id of the client</param>
+        /// <returns>true if is already a client</returns>
+        public bool HasClient(int clientId)
+        {
+            return MemberClients.Where(mc => mc.ClientId == clientId).Count() > 0;
+        }
+
+        #endregion
+    }
 
 	public class NewsItem
 	{

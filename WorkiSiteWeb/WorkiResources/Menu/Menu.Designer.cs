@@ -70,6 +70,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajouter un client.
+        /// </summary>
+        public static string AddClient {
+            get {
+                return ResourceManager.GetString("AddClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espaces ajoutés.
         /// </summary>
         public static string AddedPlaces {
@@ -255,6 +264,15 @@ namespace Worki.Resources.Menu {
         public static string ModifyPayement {
             get {
                 return ResourceManager.GetString("ModifyPayement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mes clients.
+        /// </summary>
+        public static string MyClients {
+            get {
+                return ResourceManager.GetString("MyClients", resourceCulture);
             }
         }
         

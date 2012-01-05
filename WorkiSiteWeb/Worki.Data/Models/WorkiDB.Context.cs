@@ -48,5 +48,6 @@ namespace Worki.Data.Models
         public DbSet<MemberBooking> MemberBookings { get; set; }
         public DbSet<Offer> Offers { get; set; }
         public DbSet<MemberQuotation> MemberQuotations { get; set; }
+        public DbSet<MemberClient> MemberClients { get; set; }
     }
 }

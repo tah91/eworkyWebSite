@@ -245,7 +245,7 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .serviceIcones_wifip_on{background-image:url('images/serviceIcones.png');background-position:0 -1794px;width:28px;height:28px}
 .crossButton{margin-top:9px;border:0}
 .cross{background-image:url('images/cross.png');background-position:0 0;width:12px;height:12px;background-repeat:no-repeat}
-.cross:hover{background-image:url('images/cross.png');background-position:0 -62px;width:12px;height:12px;background-repeat:no-repeat}
+.cross:hover{background-image:url('images/cross.png');background-position:0 -62px;width:12px;height:12px;background-repeat:no-repeat;cursor:pointer}
 .ie7 .inline-block{float:left;display:block}
 .ie7 .halfContainer{height:36px}
 .searchFormBlock{width:23.5%}
