@@ -209,7 +209,7 @@ namespace Worki.Data.Models
 
         #region Ctor
 
-        void Init(bool allOffers = false)
+        void Init(bool allOffers = true)
         {
             List = new List<Localisation>();
             DistanceFromLocalisation = new Dictionary<int, double>();
@@ -218,7 +218,7 @@ namespace Worki.Data.Models
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
         }
 
-        public SearchCriteriaFormViewModel(SearchCriteria criteria, bool allOffers = false)
+        public SearchCriteriaFormViewModel(SearchCriteria criteria, bool allOffers = true)
         {
             Init(allOffers);
             Criteria = criteria;

@@ -344,7 +344,7 @@
     <value>Poste de travail (coworking, etc.)</value>
   </data>
   <data name="AllOffers" xml:space="preserve">
-    <value>Sélectionnez une offre</value>
+    <value>Tous les espaces</value>
   </data>
   <data name="AllInclusive" xml:space="preserve">
     <value>Tout compris (charges, taxes, nettoyage, etc.)</value>

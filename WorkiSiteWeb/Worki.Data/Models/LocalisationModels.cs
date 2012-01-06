@@ -285,8 +285,8 @@ namespace Worki.Data.Models
 
         public static Dictionary<int, string> GetOfferTypeDict(bool isShared)
         {
-            var offersToExclude = isShared ? new List<LocalisationOffer> { LocalisationOffer.FreeArea, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom }
-                                           : new List<LocalisationOffer> { LocalisationOffer.FreeArea };
+            var offersToExclude = isShared ? new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom }
+                                           : new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea };
 
             return Localisation.GetOfferTypeDict(offersToExclude);
         }

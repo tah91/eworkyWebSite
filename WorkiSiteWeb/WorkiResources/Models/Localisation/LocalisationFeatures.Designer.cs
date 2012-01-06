@@ -97,7 +97,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sélectionnez une offre.
+        ///   Looks up a localized string similar to Tous les espaces.
         /// </summary>
         public static string AllOffers {
             get {
