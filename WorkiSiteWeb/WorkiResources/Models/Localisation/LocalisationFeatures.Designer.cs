@@ -808,7 +808,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Poste de travail.
+        ///   Looks up a localized string similar to Poste de travail (coworking, etc.).
         /// </summary>
         public static string SingleWorkstation {
             get {

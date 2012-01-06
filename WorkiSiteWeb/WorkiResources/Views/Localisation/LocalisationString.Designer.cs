@@ -304,6 +304,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attention vous n&apos;avez pas précisé d&apos;offre pour cet espace. Veuillez en ajouter au moins une..
+        /// </summary>
+        public static string MustAddOffer {
+            get {
+                return ResourceManager.GetString("MustAddOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aucune photo disponible.
         /// </summary>
         public static string NoPictureAvailable {

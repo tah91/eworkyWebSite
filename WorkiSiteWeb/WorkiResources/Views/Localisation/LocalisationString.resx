@@ -255,4 +255,7 @@
   <data name="NoSuggestions" xml:space="preserve">
     <value>eWorky n'a aucun lieu similaire à proximité à suggérer.</value>
   </data>
+  <data name="MustAddOffer" xml:space="preserve">
+    <value>Attention vous n'avez pas précisé d'offre pour cet espace. Veuillez en ajouter au moins une.</value>
+  </data>
 </root>
