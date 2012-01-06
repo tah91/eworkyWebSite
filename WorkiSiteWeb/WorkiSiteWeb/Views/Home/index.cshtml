@@ -172,16 +172,14 @@
             if (processed)
                 return;
             var val = $("#Criteria_Place").val();
-            if (val == "") {
+            var searchType = $("#Criteria_SearchType").val();
+            if (val == "" && searchType != '@eSearchType.ePerName') {
                 $("#Criteria_Place").val('@SearchService.DefaultSearchPlace');
             }
             workiGeoCoder.SearchFormSubmit(evt);
             processed = true;
             return false;
         });
-//        require(["@Links.Scripts.dropdown_js"], function () {
-//			InitDropdown("#@DropDownModel.AdvancedSearchDD");
-//        });
     </script>
     @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
 }
