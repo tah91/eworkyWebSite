@@ -12,6 +12,9 @@
 	[IsQuotable] BIT NOT NULL DEFAULT 0, 
     [PaymentType] INT NOT NULL DEFAULT 0, 
     [Currency] INT NOT NULL DEFAULT 0, 
+    [AvailabilityDate] DATETIME NULL, 
+    [AvailabilityPeriod] INT NOT NULL DEFAULT 0, 
+    [AvailabilityPeriodType] INT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_Offer_Localisation] FOREIGN KEY (LocalisationId) REFERENCES [dbo].[Localisation] ([ID]) ON DELETE CASCADE ON UPDATE NO ACTION, 
     CONSTRAINT [PK_Offer] PRIMARY KEY ([Id])
 )

@@ -150,3 +150,20 @@
     float:left;
     margin:5px 20px;
 }
+
+.offerTable td:first-child
+{
+    width:130px;
+}
+
+.offerAvailTable td
+{
+    border:0px;
+    width:50px!important;
+}
+
+.offerAvailTable input, .offerAvailTable select
+{
+    width:95px!important;
+}
+

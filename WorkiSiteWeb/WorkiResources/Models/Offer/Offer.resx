@@ -117,17 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AvailabilityDate" xml:space="preserve">
+    <value>Date de disponibilité</value>
+  </data>
+  <data name="AvailabilityPeriod" xml:space="preserve">
+    <value>Durée de disponibilité</value>
+  </data>
+  <data name="AvailabilityPeriodType" xml:space="preserve">
+    <value>Unité de temps</value>
+  </data>
   <data name="Currency" xml:space="preserve">
     <value>Devise</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Jour</value>
+    <value>Jours</value>
   </data>
   <data name="Euro" xml:space="preserve">
     <value>EUR</value>
   </data>
   <data name="Hour" xml:space="preserve">
-    <value>Heure</value>
+    <value>Heures</value>
   </data>
   <data name="IsBookable" xml:space="preserve">
     <value>Réservation en ligne</value>
@@ -160,9 +169,9 @@
     <value>Type d'offre</value>
   </data>
   <data name="Week" xml:space="preserve">
-    <value>Semaine</value>
+    <value>Semaines</value>
   </data>
   <data name="Year" xml:space="preserve">
-    <value>Année</value>
+    <value>Années</value>
   </data>
 </root>

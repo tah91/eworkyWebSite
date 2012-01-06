@@ -35,7 +35,11 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
 		public virtual ActionResult Create(int id, int type)
 		{
-			return View(new OfferFormViewModel { Offer = new Offer { LocalisationId = id, Type = type } });
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var loc = lRepo.Get(id);
+
+            return View(new OfferFormViewModel(loc.IsSharedOffice()) { Offer = new Offer { LocalisationId = id, Type = type } });
 		}
 
 		/// <summary>
@@ -103,7 +107,7 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var offer = oRepo.Get(id);
-			return View(MVC.Offer.Views.Create, new OfferFormViewModel { Offer = offer });
+            return View(MVC.Offer.Views.Create, new OfferFormViewModel(offer.Localisation.IsSharedOffice()) { Offer = offer });
 		}
 
 		/// <summary>
