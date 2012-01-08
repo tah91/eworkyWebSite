@@ -27,7 +27,7 @@ namespace Worki.Data.Models
             this.MemberQuotations = new HashSet<MemberQuotation>();
             this.Localisations = new HashSet<Localisation>();
             this.MemberClients = new HashSet<MemberClient>();
-            this.MemberClients1 = new HashSet<MemberClient>();
+            this.MemberClientsOwners = new HashSet<MemberClient>();
     		OnInitialized();
         }
     
@@ -72,7 +72,7 @@ namespace Worki.Data.Models
         public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
         public virtual ICollection<Localisation> Localisations { get; set; }
         public virtual ICollection<MemberClient> MemberClients { get; set; }
-        public virtual ICollection<MemberClient> MemberClients1 { get; set; }
+        public virtual ICollection<MemberClient> MemberClientsOwners { get; set; }
     
     }
 }
