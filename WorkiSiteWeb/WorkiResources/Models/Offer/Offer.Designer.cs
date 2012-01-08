@@ -61,6 +61,33 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date de disponibilité.
+        /// </summary>
+        public static string AvailabilityDate {
+            get {
+                return ResourceManager.GetString("AvailabilityDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Durée de disponibilité.
+        /// </summary>
+        public static string AvailabilityPeriod {
+            get {
+                return ResourceManager.GetString("AvailabilityPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unité de temps.
+        /// </summary>
+        public static string AvailabilityPeriodType {
+            get {
+                return ResourceManager.GetString("AvailabilityPeriodType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Devise.
         /// </summary>
         public static string Currency {
@@ -70,7 +97,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jour.
+        ///   Looks up a localized string similar to Jours.
         /// </summary>
         public static string Day {
             get {
@@ -88,7 +115,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Heure.
+        ///   Looks up a localized string similar to Heures.
         /// </summary>
         public static string Hour {
             get {
@@ -187,7 +214,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Semaine.
+        ///   Looks up a localized string similar to Semaines.
         /// </summary>
         public static string Week {
             get {
@@ -196,7 +223,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Année.
+        ///   Looks up a localized string similar to Années.
         /// </summary>
         public static string Year {
             get {

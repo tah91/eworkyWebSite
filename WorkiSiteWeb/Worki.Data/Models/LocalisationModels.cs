@@ -283,6 +283,14 @@ namespace Worki.Data.Models
 			return toRet;
 		}
 
+        public static Dictionary<int, string> GetOfferTypeDict(bool isShared)
+        {
+            var offersToExclude = isShared ? new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom }
+                                           : new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea };
+
+            return Localisation.GetOfferTypeDict(offersToExclude);
+        }
+
 		public bool HasOffer(LocalisationOffer offer)
 		{
 			return Offers.Where(o => o.IsOnline && o.Type == (int)offer).Count() != 0;
@@ -886,9 +894,7 @@ namespace Worki.Data.Models
 
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes();
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
-			var offersToExclude = isShared	? new List<LocalisationOffer> { LocalisationOffer.FreeArea, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom }
-											: new List<LocalisationOffer> { LocalisationOffer.FreeArea };
-			var offers = Localisation.GetOfferTypeDict(offersToExclude);
+            var offers = Localisation.GetOfferTypeDict(isShared);
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             if (Localisation.LocalisationData == null)
                 Localisation.LocalisationData = new LocalisationData();

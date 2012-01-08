@@ -11,19 +11,31 @@ namespace Worki.Data.Models
 	{
 		public OfferFormViewModel()
 		{
-			var offers = Localisation.GetOfferTypeDict(new List<LocalisationOffer> { LocalisationOffer.FreeArea });
-			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.BuisnessLounge);
+            Init();
+		}
+
+        public OfferFormViewModel(bool isShared)
+        {
+            Init(isShared);
+        }
+
+        void Init(bool isShared = false)
+        {
+            var offers = Localisation.GetOfferTypeDict(isShared);
+            Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
             Currencies = new SelectList(Offer.GetCurrencyEnumTypes(), "Key", "Value", Offer.CurrencyEnum.Euro);
-			Offer = new Offer();
-		}
+            IsSharedOffice = isShared;
+            Offer = new Offer();
+        }
 
 		public Offer Offer { get; set; }
 		public SelectList Offers { get; set; }
         public SelectList Periods { get; set; }
         public SelectList PaymentTypes { get; set; }
         public SelectList Currencies { get; set; }
+        public bool IsSharedOffice { get; set; }
 	}
 
 	public class OfferFeatureEqualityComparer : IEqualityComparer<OfferFeature>
@@ -319,6 +331,15 @@ namespace Worki.Data.Models
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Currency", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int Currency { get; set; }
+
+        [Display(Name = "AvailabilityDate", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public DateTime? AvailabilityDate { get; set; }
+
+        [Display(Name = "AvailabilityPeriod", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int AvailabilityPeriod { get; set; }
+
+        [Display(Name = "AvailabilityPeriodType", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int AvailabilityPeriodType { get; set; }
 	}
 
 	public partial class OfferFeature : IFeatureContainer

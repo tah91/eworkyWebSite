@@ -149,6 +149,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int? id, string addOffer)
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+            var field = string.Empty;
 			//to keep files state in case of error
 			TempData[PictureData.PictureDataString] = new PictureDataContainer(localisationForm.Localisation);
 			var context = ModelFactory.GetUnitOfWork();
@@ -163,6 +164,7 @@ namespace Worki.Web.Controllers
 					var localisationToAdd = new Localisation();
 					var idToRedirect = 0;
 					var modifType = (!id.HasValue || id.Value == 0) ? EditionType.Creation : EditionType.Edition;
+                    var offerCount = 0;
 					if (modifType == EditionType.Creation)
 					{
 						//update
@@ -173,6 +175,7 @@ namespace Worki.Web.Controllers
 						//save
 						localisationToAdd.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Creation });
 						lRepo.Add(localisationToAdd);
+                        offerCount = localisationToAdd.Offers.Count;
 					}
 					else
 					{
@@ -186,7 +189,14 @@ namespace Worki.Web.Controllers
 						UpdateModel(loc, LocalisationPrefix);
                         loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
 						loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
+                        offerCount = loc.Offers.Count;
 					}
+                    if (string.IsNullOrEmpty(addOffer) && !localisationForm.IsFreeLocalisation && offerCount == 0)
+                    {
+                        error = Worki.Resources.Views.Localisation.LocalisationString.MustAddOffer;
+                        field = "NewOfferType";
+                        throw new Exception(error);
+                    }
 					context.Commit();
 					TempData.Remove(PictureData.PictureDataString);
 
@@ -207,7 +217,7 @@ namespace Worki.Web.Controllers
 			{
 				_Logger.Error("Edit", ex);
 				context.Complete();
-				ModelState.AddModelError("", error);
+                ModelState.AddModelError(field, error);
 			}
             return View(new LocalisationFormViewModel(localisationForm.Localisation));
 		}
@@ -474,6 +484,13 @@ namespace Worki.Web.Controllers
         {
             var criteria = new SearchCriteria();
             criteria.Place = lieu;
+            lieu = lieu.ToLower();
+            if (MiscHelpers.SeoConstants.Places.ContainsKey(lieu))
+            {
+                var coor = MiscHelpers.SeoConstants.Places[lieu];
+                criteria.LocalisationData.Latitude = coor.Latitude;
+                criteria.LocalisationData.Longitude = coor.Longitude;
+            }
             switch (type)
             {
                 case MiscHelpers.SeoConstants.CoworkingSpace:
@@ -514,6 +531,12 @@ namespace Worki.Web.Controllers
         {
             var criteria = new SearchCriteria();
             criteria.Place = lieu;
+            if (MiscHelpers.SeoConstants.Places.ContainsKey(lieu))
+            {
+                var coor = MiscHelpers.SeoConstants.Places[lieu];
+                criteria.LocalisationData.Latitude = coor.Latitude;
+                criteria.LocalisationData.Longitude = coor.Longitude;
+            }
             criteria.OfferData.Type = Localisation.GetOfferTypeFromSeoString(offerType);
 
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);

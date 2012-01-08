@@ -1,7 +1,7 @@
 ﻿@model Worki.Data.Models.OfferFormViewModel
 
 @helper BuisnessLoungeForm()
-	{
+    {
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
         <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
@@ -24,7 +24,7 @@
 }
 
 @helper WorkstationForm()
-	{
+    {
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
         <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
@@ -47,7 +47,7 @@
 }
 
 @helper DesktopForm()
-	{
+    {
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
         <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
@@ -92,7 +92,7 @@
 }
 
 @helper MeetingRoomForm()
-	{
+    {
 	<div class="serviceContainer contentBlock" id="offerFeaturesForm">
         <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
@@ -149,7 +149,7 @@
 }
 
 @helper SeminarRoomForm()
-	{
+    {
 	<div class="serviceContainer contentBlock"  id="offerFeaturesForm">
         <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
@@ -209,7 +209,7 @@
 }
 
 @helper VisioRoomForm()
-	{
+    {
 	<div class="serviceContainer contentBlock"  id="offerFeaturesForm">
         <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.OfferCharacteristics</h3>
         <div class="subserviceContainer float-left">
@@ -263,8 +263,8 @@
 }
 
 @{
-	var isEditing = Model.Offer.Id != 0;
-	var title = isEditing ? Worki.Resources.Views.Offer.OfferString.EditOffer : Worki.Resources.Views.Offer.OfferString.AddOffer;
+    var isEditing = Model.Offer.Id != 0;
+    var title = isEditing ? Worki.Resources.Views.Offer.OfferString.EditOffer : Worki.Resources.Views.Offer.OfferString.AddOffer;
 }
 
 @section HeadContent
@@ -280,10 +280,11 @@
 <div class="detailContent">
     <div class="blockContainer">
 		@using (Html.BeginForm())
-		{
+        {
 	   		@Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.IsSharedOffice)
             <div class="contentBlock">
-				<table>
+				<table class="offerTable">
 					<tr>
 						<td>
 							<div class="editor-label">
@@ -310,6 +311,78 @@
 					</tr>
 				</table>
             </div>
+            <div class="contentBlock">
+                <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.Prices</h3>
+                <table class="offerTable">
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.Offer.Period)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Offer.Period, Model.Periods)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.Offer.Currency)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							@Html.LabelFor(m => m.Offer.Price)
+						</td>
+						<td>
+							@Html.TextBoxFor(m => m.Offer.Price)
+						</td>
+					</tr>
+                </table>
+            </div> 
+            if (Model.IsSharedOffice)
+            {
+            <div class="contentBlock">
+                <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.Availability</h3>
+                <table class="offerTable">
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Offer.AvailabilityDate)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBox("Offer.AvailabilityDate", CultureHelpers.GetSpecificFormat(Model.Offer.AvailabilityDate, CultureHelpers.TimeFormat.Date), new { @class = "dp" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Offer.AvailabilityPeriod)
+                            </div>
+                        </td>
+                        <td>
+                            <table class="offerAvailTable">
+                                <tr>
+                                    <td>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.Offer.AvailabilityPeriod)
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="editor-field">
+                                            @Html.DropDownListFor(model => model.Offer.AvailabilityPeriodType, Model.Periods)
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+            }
 	  	  	<div class="contentBlock">
 				<h3 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h3>
 				<div id="fileupload" class="borderRadius">
@@ -331,7 +404,7 @@
 				<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
 			</div>
 			<div class="clear"></div>
-		}
+        }
     </div>
 </div>
 
@@ -393,5 +466,6 @@
 		});
     </script>
 	@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
+	@Html.Partial(MVC.Shared.Views._DatePickerScript)
 }
 

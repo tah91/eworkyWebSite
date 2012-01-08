@@ -88,6 +88,15 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disponibilité.
+        /// </summary>
+        public static string Availability {
+            get {
+                return ResourceManager.GetString("Availability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retour à la fiche du lieu.
         /// </summary>
         public static string BackToLocalisation {
@@ -156,6 +165,15 @@ namespace Worki.Resources.Views.Offer {
         public static string OffersDetail {
             get {
                 return ResourceManager.GetString("OffersDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tarifs.
+        /// </summary>
+        public static string Prices {
+            get {
+                return ResourceManager.GetString("Prices", resourceCulture);
             }
         }
         

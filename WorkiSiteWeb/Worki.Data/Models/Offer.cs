@@ -41,14 +41,17 @@ namespace Worki.Data.Models
         public int PaymentType { get; set; }
         public int Currency { get; set; }
         public bool IsQuotable { get; set; }
+        public Nullable<System.DateTime> AvailabilityDate { get; set; }
+        public int AvailabilityPeriod { get; set; }
+        public int AvailabilityPeriodType { get; set; }
     
         // Navigation properties
     
-        public virtual Localisation Localisation { get; set; }
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
         public virtual ICollection<OfferFeature> OfferFeatures { get; set; }
         public virtual ICollection<OfferFile> OfferFiles { get; set; }
         public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
+        public virtual Localisation Localisation { get; set; }
     
     }
 }
