@@ -304,6 +304,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modifié le {0}.
+        /// </summary>
+        public static string ModifiedThe {
+            get {
+                return ResourceManager.GetString("ModifiedThe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attention vous n&apos;avez pas précisé d&apos;offre pour cet espace. Veuillez en ajouter au moins une..
         /// </summary>
         public static string MustAddOffer {

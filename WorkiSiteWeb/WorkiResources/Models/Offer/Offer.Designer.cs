@@ -205,6 +205,69 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A partir de {0}.
+        /// </summary>
+        public static string PriceFrom {
+            get {
+                return ResourceManager.GetString("PriceFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} € / {1}.
+        /// </summary>
+        public static string PricePerPeriod {
+            get {
+                return ResourceManager.GetString("PricePerPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to jour.
+        /// </summary>
+        public static string SingleDay {
+            get {
+                return ResourceManager.GetString("SingleDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to heure.
+        /// </summary>
+        public static string SingleHour {
+            get {
+                return ResourceManager.GetString("SingleHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mois.
+        /// </summary>
+        public static string SingleMonth {
+            get {
+                return ResourceManager.GetString("SingleMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to semaine.
+        /// </summary>
+        public static string SingleWeek {
+            get {
+                return ResourceManager.GetString("SingleWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to an.
+        /// </summary>
+        public static string SingleYear {
+            get {
+                return ResourceManager.GetString("SingleYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type d&apos;offre.
         /// </summary>
         public static string Type {

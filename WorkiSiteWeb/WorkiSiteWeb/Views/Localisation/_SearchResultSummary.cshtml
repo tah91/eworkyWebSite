@@ -19,21 +19,27 @@
         </p>
         <span class="itemAddress">@Html.TruncateAtWord(Model.Localisation.Adress, 40)&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>
 		<div>
-			<span class="bold blue">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, Model.Localisation.IsSharedOffice() ? 180 : 120)</span>
+			<span class="bold blue">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, 120)</span>
 		</div>
-		@if (!Model.Localisation.IsSharedOffice())
-		{
         <div class="itemLogos bottom">
 			<div class="float-left">
-				@Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
+				@if (!Model.Localisation.IsSharedOffice())
+				{
+					@Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
+				}
+				else
+				{
+					<div class="itemPriceDisplay bold blue">
+						@string.Format(Worki.Resources.Views.Localisation.LocalisationString.ModifiedThe, CultureHelpers.GetSpecificFormat(Model.Localisation.GetLastModificationDate(), CultureHelpers.TimeFormat.Date))
+					</div>
+				}
 			</div>
-			<div class="float-right bold blue">
-				A partir de 30 € / mois
+			<div class="itemPriceDisplay float-right bold blue">
+				@Model.Localisation.GetMinPrice()
 			</div>
 			<div class="clear">
 			</div>
         </div>
-		}
     </div>
 
     <div class="itemCommDiv float-right">

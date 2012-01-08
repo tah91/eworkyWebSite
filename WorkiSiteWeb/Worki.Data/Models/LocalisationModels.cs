@@ -663,6 +663,19 @@ namespace Worki.Data.Models
 			return creation;
 		}
 
+		/// <summary>
+		/// Get last modification date
+		/// </summary>
+		/// <returns>last modification date</returns>
+		public DateTime GetLastModificationDate()
+		{
+			var last = GetLastEdition() ?? GetCreation();
+			if (last != null)
+				return last.ModificationDate;
+
+			return DateTime.UtcNow;
+		}
+
 		#endregion
 
         #region IMapModelProvider
@@ -759,9 +772,34 @@ namespace Worki.Data.Models
 
 		#region Prices
 
-		public string GetMinPrice()
+		/// <summary>
+		/// Get the min price of the localisation, empty if no price
+		/// filter by offerType if needed
+		/// </summary>
+		/// <returns>the min price string</returns>
+		public string GetMinPrice(int offerType = -1)
 		{
-			return null;
+			var offers = offerType == -1 ? Offers.Where(o => o.Price != 0) : Offers.Where(o => o.Type == offerType && o.Price != 0);
+
+			if (offers.Count() == 0)
+				return string.Empty;
+
+			var min = offers.Min(o => o.Price);
+			var minOffer = offers.FirstOrDefault(o => o.Price == min);
+
+			if (minOffer == null)
+				return string.Empty;
+
+			return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minOffer.GetPriceDisplay());
+		}
+
+		/// <summary>
+		/// Get all offers which have prices
+		/// </summary>
+		/// <returns>list of prices offers</returns>
+		public IEnumerable<Offer> GetPricedOffers()
+		{
+			return Offers.Where(o => o.Price != 0);
 		}
 
 		#endregion

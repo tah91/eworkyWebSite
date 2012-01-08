@@ -26,6 +26,26 @@
 		</div>
 	}
 </div>
+<div class="contentBlock">
+	<h3 class="blue">Tarifs</h3>
+	<div class="offerPrice">
+		<ul>
+			@foreach (var item in Model.GetPricedOffers())
+			{
+				<li>
+					<div class="float-left">
+						@Html.ActionLink(item.Name, MVC.Localisation.Offers(item.LocalisationId, (int)item.Type))
+					</div>
+					<div class="float-right">
+						@item.GetPriceDisplay()
+					</div>
+					<div class="clear">
+					</div>
+				</li>
+			}
+		</ul>
+	</div>
+</div>
 @*            <div class="contentBlock">
 	<h3 class="blue">Recommendé par</h3>
 	<div class="commentAvatar borderedImg float-left">

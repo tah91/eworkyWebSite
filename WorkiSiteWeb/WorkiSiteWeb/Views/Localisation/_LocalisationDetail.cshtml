@@ -40,7 +40,14 @@
 			<div class="clear">
 			</div>
 			}
-			<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(text, MVC.Localisation.Offers(localisation.ID, (int)offerType))</div>
+			<div class="float-right">
+				<div class="priceDisplay float-left bold blue">
+					@localisation.GetMinPrice((int)offerType)
+				</div>
+				<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(text, MVC.Localisation.Offers(localisation.ID, (int)offerType))</div>
+				<div class="clear">
+				</div>
+			</div>
 			<div class="clear">
 			</div>
 		</div> 

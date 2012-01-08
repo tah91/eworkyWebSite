@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Worki.Infrastructure;
 using System.Linq;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Data.Models
 {
@@ -289,7 +290,78 @@ namespace Worki.Data.Models
             return PaymentTypeEnumTypes.ToDictionary(p => p, p => GetPaymentTypeEnumType(p));
         }
 
+		public static string GetPricingPeriod(PaymentPeriod period)
+		{
+			switch (period)
+			{
+				case PaymentPeriod.Hour:
+					return Worki.Resources.Models.Offer.Offer.SingleHour;
+				case PaymentPeriod.Day:
+					return Worki.Resources.Models.Offer.Offer.SingleDay;
+				case PaymentPeriod.Week:
+					return Worki.Resources.Models.Offer.Offer.SingleWeek;
+				case PaymentPeriod.Month:
+					return Worki.Resources.Models.Offer.Offer.SingleMonth;
+				case PaymentPeriod.Year:
+					return Worki.Resources.Models.Offer.Offer.SingleYear;
+				default:
+					return string.Empty;
+			}
+		}
+
+		/// <summary>
+		/// Get price display : price / period
+		/// </summary>
+		/// <returns>the display</returns>
+		public string GetPriceDisplay()
+		{
+			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, Price, GetPricingPeriod((PaymentPeriod)Period));
+		}
+
         #endregion
+
+		#region Availability
+
+		public static string GetAvailabilityPeriod(PaymentPeriod period)
+		{
+			switch (period)
+			{
+				case PaymentPeriod.Hour:
+					return Worki.Resources.Models.Offer.Offer.Hour;
+				case PaymentPeriod.Day:
+					return Worki.Resources.Models.Offer.Offer.Day;
+				case PaymentPeriod.Week:
+					return Worki.Resources.Models.Offer.Offer.Week;
+				case PaymentPeriod.Month:
+					return Worki.Resources.Models.Offer.Offer.Month;
+				case PaymentPeriod.Year:
+					return Worki.Resources.Models.Offer.Offer.Year;
+				default:
+					return string.Empty;
+			}
+		} 
+
+		public string GetAvailabilityDisplay()
+		{
+			if (!Localisation.IsSharedOffice())
+				return string.Empty;
+
+			var toRet=string.Empty;
+			if (AvailabilityDate.HasValue)
+				toRet += "Disponible le " + CultureHelpers.GetSpecificFormat(AvailabilityDate, CultureHelpers.TimeFormat.Date);
+
+			if (AvailabilityPeriod != 0)
+			{
+				if (string.IsNullOrEmpty(toRet))
+					toRet += "Pour " + AvailabilityPeriod + GetAvailabilityPeriod((PaymentPeriod)AvailabilityPeriodType);
+				else
+					toRet += " pour " + AvailabilityPeriod + GetAvailabilityPeriod((PaymentPeriod)AvailabilityPeriodType);
+			}
+
+			return toRet;
+		}
+
+		#endregion
     }
 
 	[Bind(Exclude = "Id,LocalisationId")]

@@ -165,6 +165,27 @@
   <data name="Price" xml:space="preserve">
     <value>Prix</value>
   </data>
+  <data name="PriceFrom" xml:space="preserve">
+    <value>A partir de {0}</value>
+  </data>
+  <data name="PricePerPeriod" xml:space="preserve">
+    <value>{0} € / {1}</value>
+  </data>
+  <data name="SingleDay" xml:space="preserve">
+    <value>jour</value>
+  </data>
+  <data name="SingleHour" xml:space="preserve">
+    <value>heure</value>
+  </data>
+  <data name="SingleMonth" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="SingleWeek" xml:space="preserve">
+    <value>semaine</value>
+  </data>
+  <data name="SingleYear" xml:space="preserve">
+    <value>an</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>Type d'offre</value>
   </data>

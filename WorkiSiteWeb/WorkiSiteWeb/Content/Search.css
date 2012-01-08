@@ -167,6 +167,11 @@
     width:100%;
 }
 
+.itemPriceDisplay
+{
+	padding-top:5px;
+}
+
 .itemCommDiv
 {
     height: 100%;
