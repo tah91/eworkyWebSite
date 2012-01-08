@@ -389,6 +389,16 @@ namespace Worki.Data.Models
 			return toRet;
 		}
 
+		public IEnumerable<Comment> GetCommentSummary()
+		{
+			var toRet = (from item
+						   in Comments
+						 where item.Member != null
+						 orderby item.Date descending
+						 select item).Take(2);
+			return toRet;
+		}
+
 		public double GetRatingAverage(RatingType ratingType)
 		{
 			if (Comments.Count == 0)
@@ -738,7 +748,16 @@ namespace Worki.Data.Models
         }
 
         #endregion
-    }
+
+		#region Prices
+
+		public string GetMinPrice()
+		{
+			return null;
+		}
+
+		#endregion
+	}
 
 	[Bind(Exclude = "Id,OwnerId")]
 	public class Localisation_Validation

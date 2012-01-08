@@ -175,9 +175,9 @@
 .commentBgd
 {
     background:url('images/comm_content.png') no-repeat;
-    width: 215px;
+    width: 220px;
     height: 130px;
-    padding:10px 10px 0 10px;
+    padding:5px 5px 0 5px;
 }
 
 .commentContainer

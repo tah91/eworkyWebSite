@@ -26,7 +26,7 @@
 .itemAddress{margin-bottom:3px;display:block}
 .itemLogos{width:100%}
 .itemCommDiv{height:100%}
-.commentBgd{background:url('images/comm_content.png') no-repeat;width:215px;height:130px;padding:10px 10px 0 10px}
+.commentBgd{background:url('images/comm_content.png') no-repeat;width:220px;height:130px;padding:5px 5px 0 5px}
 .commentContainer{height:110px}
 .ratingContainer span{padding-left:10px;vertical-align:25%}
 .commentText{margin:5px 0}
