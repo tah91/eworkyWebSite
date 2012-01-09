@@ -47,7 +47,7 @@
     <div class="searchFormBlock float-right blockContainer">
 		<div class="contentBlock">
 			<div class="resultsMapDiv">
-                <span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
+                <span class="bold orange">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
                 <div class="mapContainer" id="resultsMap">
                 </div>
             </div> 
@@ -59,7 +59,7 @@
                     @Html.AntiForgeryToken()
 					@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
                     @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="orange">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
                     <div class="toogle_container active">
                         <div class="block">
                             <div class="editor-field">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h4>
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="orange">@Worki.Resources.Views.Localisation.LocalisationFormString.Offers</span></h4>
                     <div class="toogle_container active">
                         <div class="block">
                             <div class="editor-field">
@@ -77,14 +77,14 @@
                         </div>
 		            </div>
 
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h4>
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="orange">@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</span></h4>
                     <div class="toogle_container active">
                         <div class="block">
                             @Html.Partial(MVC.Localisation.Views._ServicesSelector)
                         </div>
                     </div>
                     
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h4>
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="orange">@Worki.Resources.Views.Search.SearchString.KindOfLocation</span></h4>
                     <div class="toogle_container active">
                         <div class="block">
                             <div class="editor-field">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
 
-                    <h4 class="toogle_item toogle_trigger toogle_trigger_click"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</span></h4>
+                    <h4 class="toogle_item toogle_trigger toogle_trigger_click"><span class="orange">@Worki.Resources.Views.Localisation.LocalisationFormString.Services</span></h4>
                     <div class="toogle_container">
                         <div class="block">
                             <div>
