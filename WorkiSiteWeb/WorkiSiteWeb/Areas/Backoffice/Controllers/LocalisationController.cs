@@ -953,15 +953,16 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 			var booking = bRepo.Get(id);
 
-			if (booking != null && booking.Unknown && (booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta) > DateTime.UtcNow))
-			{
+			if (booking != null)
+            {
+                var newFromDate = booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta);
+                if (!booking.CanModify(newFromDate))
+                    throw new ModelStateException(ModelState);
+
 				try
 				{
-					booking.FromDate = booking.FromDate.AddDays(dayDelta);
-					booking.FromDate = booking.FromDate.AddMinutes(minuteDelta);
-
-					booking.ToDate = booking.ToDate.AddDays(dayDelta);
-					booking.ToDate = booking.ToDate.AddMinutes(minuteDelta);
+					booking.FromDate = booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta);
+					booking.ToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
 
 					context.Commit();
 
@@ -986,37 +987,40 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <param name="id">id of the booking</param>
 		/// <param name="dayDelta">day delta</param>
 		/// <param name="minuteDelta">minute delta</param>
-		[AcceptVerbs(HttpVerbs.Post)]
-		[HandleModelStateException]
-		public virtual ActionResult ResizeEvent(int id, int dayDelta, int minuteDelta)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
+        [AcceptVerbs(HttpVerbs.Post)]
+        [HandleModelStateException]
+        public virtual ActionResult ResizeEvent(int id, int dayDelta, int minuteDelta)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var booking = bRepo.Get(id);
 
-			if (booking != null && booking.Unknown && (booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta) > DateTime.UtcNow))
-			{
-				try
-				{
-					booking.ToDate = booking.ToDate.AddDays(dayDelta);
-					booking.ToDate = booking.ToDate.AddMinutes(minuteDelta);
+            if (booking != null)
+            {
+                var newToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
+                if (!booking.CanModify(newToDate))
+                    throw new ModelStateException(ModelState);
 
-					context.Commit();
+                try
+                {
+                    booking.ToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
 
-					return Json("Resize success");
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("ResizeEvent", ex);
-					context.Complete();
-					throw new ModelStateException(ModelState);
-				}
-			}
-			else
-			{
-				throw new ModelStateException(ModelState);
-			}
-		}
+                    context.Commit();
+
+                    return Json("Resize success");
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("ResizeEvent", ex);
+                    context.Complete();
+                    throw new ModelStateException(ModelState);
+                }
+            }
+            else
+            {
+                throw new ModelStateException(ModelState);
+            }
+        }
 
 		/// <summary>
 		/// Action to create booking creation partial view for an offer
@@ -1035,7 +1039,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
 
-				var clients = mRepo.GetClients(memberId).ToDictionary(m => m.MemberId, m => m.GetFullDisplayName());
+                var clients = member.MemberClients.ToDictionary(mc => mc.ClientId, mc => mc.Client.GetFullDisplayName());
 				var model = new CreateBookingModel { Booking = new MemberBooking { OfferId = id }, Clients = new SelectList(clients, "Key", "Value") };
 
 				return PartialView(MVC.Backoffice.Localisation.Views._CreateBooking, model);

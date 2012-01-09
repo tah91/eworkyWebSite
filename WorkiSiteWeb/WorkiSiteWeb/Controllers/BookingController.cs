@@ -103,6 +103,7 @@ namespace Worki.Web.Controllers
 						formData.MemberBooking.MemberId = memberId;
 						formData.MemberBooking.OfferId = id;
 						formData.MemberBooking.StatusId = (int)MemberBooking.Status.Unknown;
+                        formData.MemberBooking.Price = offer.GetDefaultPrice(formData.MemberBooking.ToDate - formData.MemberBooking.FromDate);
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 						member.MemberBookings.Add(formData.MemberBooking);

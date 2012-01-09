@@ -32,7 +32,7 @@
 .bookingGallery img{max-height:100px}
 .bookingDesc{width:25%;margin-right:10px}
 .bookingStatus{width:27%;text-align:center;border:3px solid;height:120px;background:whitesmoke;font-weight:bold;display:table}
-.bookingStatusYellow{border-color:#f5f322}
+.bookingStatusYellow{border-color:#fc0}
 .bookingStatusOrange{border-color:#f7a33a}
 .bookingStatusRed{border-color:#d25657}
 .bookingStatusGreen{border-color:#bbd31f}

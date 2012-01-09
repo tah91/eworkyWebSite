@@ -53,10 +53,10 @@ namespace Worki.Data.Models
     
         // Navigation properties
     
-        public virtual Member Member { get; set; }
         public virtual ICollection<RentalAccess> RentalAccesses { get; set; }
         public virtual ICollection<RentalFeature> RentalFeatures { get; set; }
         public virtual ICollection<RentalFile> RentalFiles { get; set; }
+        public virtual Member Member { get; set; }
     
     }
 }

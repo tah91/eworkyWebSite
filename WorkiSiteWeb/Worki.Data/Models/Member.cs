@@ -18,16 +18,16 @@ namespace Worki.Data.Models
         {
             this.Comments = new HashSet<Comment>();
             this.FavoriteLocalisations = new HashSet<FavoriteLocalisation>();
+            this.Localisations = new HashSet<Localisation>();
+            this.MemberBookings = new HashSet<MemberBooking>();
+            this.MemberClients = new HashSet<MemberClient>();
+            this.MemberClientsOwners = new HashSet<MemberClient>();
             this.MemberEditions = new HashSet<MemberEdition>();
+            this.MemberQuotations = new HashSet<MemberQuotation>();
             this.MembersInGroups = new HashSet<MembersInGroup>();
             this.Rentals = new HashSet<Rental>();
             this.Transactions = new HashSet<Transaction>();
             this.WelcomePeoples = new HashSet<WelcomePeople>();
-            this.MemberBookings = new HashSet<MemberBooking>();
-            this.MemberQuotations = new HashSet<MemberQuotation>();
-            this.Localisations = new HashSet<Localisation>();
-            this.MemberClients = new HashSet<MemberClient>();
-            this.MemberClientsOwners = new HashSet<MemberClient>();
     		OnInitialized();
         }
     
@@ -62,17 +62,17 @@ namespace Worki.Data.Models
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<FavoriteLocalisation> FavoriteLocalisations { get; set; }
+        public virtual ICollection<Localisation> Localisations { get; set; }
+        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
+        public virtual ICollection<MemberClient> MemberClients { get; set; }
+        public virtual ICollection<MemberClient> MemberClientsOwners { get; set; }
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
         public virtual MemberMainData MemberMainData { get; set; }
+        public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
         public virtual ICollection<MembersInGroup> MembersInGroups { get; set; }
         public virtual ICollection<Rental> Rentals { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
-        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
-        public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
-        public virtual ICollection<Localisation> Localisations { get; set; }
-        public virtual ICollection<MemberClient> MemberClients { get; set; }
-        public virtual ICollection<MemberClient> MemberClientsOwners { get; set; }
     
     }
 }

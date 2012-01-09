@@ -29,8 +29,8 @@ namespace Worki.Data.Models
     
         // Navigation properties
     
-        public virtual Member Member { get; set; }
         public virtual MemberBooking MemberBooking { get; set; }
+        public virtual Member Member { get; set; }
     
     }
 }

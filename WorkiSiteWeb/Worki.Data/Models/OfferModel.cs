@@ -309,12 +309,46 @@ namespace Worki.Data.Models
 			}
 		}
 
+        /// <summary>
+        /// Get the default price for a given span
+        /// </summary>
+        /// <param name="span">span to price</param>
+        /// <returns>default price</returns>
+        public decimal GetDefaultPrice(TimeSpan span)
+        {
+            double units = 0;
+            var period = (PaymentPeriod)Period;
+            switch(period)
+            {
+                case PaymentPeriod.Hour:
+                    units = span.TotalHours;
+                    break;
+                case PaymentPeriod.Day:
+                    units = span.TotalDays;
+                    break;
+                case PaymentPeriod.Week:
+                    units = span.TotalDays/7;
+                    break;
+                case PaymentPeriod.Month:
+                    units = span.TotalDays/30;
+                    break;
+                case PaymentPeriod.Year:
+                    units = span.TotalDays/365;
+                    break;
+            }
+
+            return (decimal)(units * (double)Price);
+        }
+
 		/// <summary>
 		/// Get price display : price / period
 		/// </summary>
 		/// <returns>the display</returns>
 		public string GetPriceDisplay()
 		{
+            if (Price == 0)
+                return string.Empty;
+
 			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, Price, GetPricingPeriod((PaymentPeriod)Period));
 		}
 

@@ -6,8 +6,9 @@ namespace Worki.Data.Models
 	{
 		public const string Orange = "#f7a33a";
 		public const string Red = "#d25657";
-		public const string Yellow = "#f5f322";
+        public const string Yellow = "#ffcc00";
 		public const string Grey = "#808080";
+        public const string Green = "#bbd31f";
 
 		public static DateTime UNIXStart = new DateTime(1970, 01, 01);
 

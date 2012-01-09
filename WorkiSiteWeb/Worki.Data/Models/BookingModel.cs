@@ -259,9 +259,18 @@ namespace Worki.Data.Models
 
 		#endregion
 
-		#region Member
+        #region Booking Modification
 
-		public Member Client
+        public bool CanModify(DateTime newDate)
+        {
+            return Unknown && (newDate > DateTime.UtcNow);
+        }
+
+        #endregion
+
+        #region Member
+
+        public Member Client
 		{
 			get { return Member; }
 		}

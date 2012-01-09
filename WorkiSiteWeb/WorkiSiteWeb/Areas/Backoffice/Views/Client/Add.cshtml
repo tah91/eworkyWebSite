@@ -1,9 +1,10 @@
-﻿@model PagingList<Member>
+﻿@model ProfilFormViewModel
 
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Clients)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.BackOffice.BackOfficeString.OwnerSpace, "Blue")
@@ -14,65 +15,88 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.MyClients, MVC.Backoffice.Client.List())},
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add())}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.MyClients, MVC.Backoffice.Client.List())},
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add())}
 		})
 	</div>
 
-	<div class="blockContainer float-left contentRight">
-		<div class="contentBlock tableStyle">
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.Names
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.NumberBooking
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.PhoneNumber
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.Email
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.CustomerSheet
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach (var item in Model.List)
-                {
-                    <tr>
-                        <td>
-                            @string.Format("{0}, {1}", item.MemberMainData.LastName, item.MemberMainData.FirstName)
-                        </td>
-                        <td>
-                            @item.MemberBookings.Count
-                        </td>
-                        <td>
-                            @Html.GetPhoneFormat(item.MemberMainData.PhoneNumber)
-                        </td>
-                        <td>
-                            @item.Email
-                        </td>
-                        <td>
-                            @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Access, MVC.Account.Public(item.MemberId), new { @class = "blue" })
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-            <div class="pager">
-                @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Client.List(x)))
+	<div class="contentRight blockContainer float-left">
+        @using (Html.BeginForm(MVC.Backoffice.Client.ActionNames.Add, MVC.Backoffice.Client.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="profilData">
+                <div class="contentBlock">
+			        <h3 class="blue">Informations du client</h3>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Civility)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.DropDownList("Member.MemberMainData.Civility", Model.CivilitySelectTypes)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.LastName)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.FirstName)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.Email)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.Email)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.PhoneNumber)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.PhoneNumber)
+                                </div>
+                            </td>
+                        </tr>
+			        </table>
+                </div>
+                <div class="float-right">
+                    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
+                </div>
             </div>
-		</div>
-	</div>
+            <div class="clear"></div>
+        }
+    </div>
 	<div class="clear">
 	</div>
-</div>@{
-    ViewBag.Title = "Add";
-}
-
-<h2>Add</h2>
+</div>

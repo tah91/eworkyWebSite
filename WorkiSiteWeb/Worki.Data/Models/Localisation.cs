@@ -57,7 +57,6 @@ namespace Worki.Data.Models
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<FavoriteLocalisation> FavoriteLocalisations { get; set; }
-        public virtual Member Member { get; set; }
         public virtual LocalisationData LocalisationData { get; set; }
         public virtual ICollection<LocalisationFeature> LocalisationFeatures { get; set; }
         public virtual ICollection<LocalisationFile> LocalisationFiles { get; set; }
@@ -65,6 +64,7 @@ namespace Worki.Data.Models
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
         public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
+        public virtual Member Member { get; set; }
     
     }
 }

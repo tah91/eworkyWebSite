@@ -606,6 +606,7 @@ namespace Worki.Data.Models
             CivilitySelectTypes = new SelectList(MemberMainData.GetCivilityTypes(), "Key", "Value", CivilityType.Mr);
             ProfileSelectTypes = new SelectList(MemberMainData.GetProfileTypes(), "Key", "Value", ProfileType.LocalisationOwner);
             Member = new Member();
+            Member.MemberMainData = new MemberMainData();
         }
 
         #endregion
