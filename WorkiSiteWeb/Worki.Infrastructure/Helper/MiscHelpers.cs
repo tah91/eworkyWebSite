@@ -50,8 +50,8 @@ namespace Worki.Infrastructure.Helpers
 
             public class Coordinates
             {
-                public double Latitude {get;set;}
-                public double Longitude {get;set;}
+                public double Latitude { get; set; }
+                public double Longitude { get; set; }
             }
 
             public static Dictionary<string, Coordinates> Places = new Dictionary<string, Coordinates>
@@ -61,6 +61,7 @@ namespace Worki.Infrastructure.Helpers
                 {"lille", new Coordinates{ Latitude = 50.62925, Longitude=3.05725600000005}},
                 {"marseille", new Coordinates{ Latitude = 43.296482, Longitude=5.36977999999999}},
                 {"bordeaux", new Coordinates{ Latitude = 44.837789, Longitude=-0.579179999999951}},
+                {"rennes", new Coordinates{ Latitude = 48.113475, Longitude=-1.67570799999999}},
                 {"belgique", new Coordinates{ Latitude = 50.503887, Longitude=4.46993599999996}}
             };
 

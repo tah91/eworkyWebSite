@@ -103,7 +103,13 @@ namespace Worki.Service
 		/// <returns>a object containing the criteria and the results of a search</returns>
 		public SearchCriteriaFormViewModel FillSearchResults(SearchCriteria criteria)
 		{
-
+            var place = string.IsNullOrEmpty(criteria.Place) ? "" : criteria.Place.ToLower();
+            if (MiscHelpers.SeoConstants.Places.ContainsKey(place))
+            {
+                var coor = MiscHelpers.SeoConstants.Places[place];
+                criteria.LocalisationData.Latitude = coor.Latitude;
+                criteria.LocalisationData.Longitude = coor.Longitude;
+            }
 			var criteriaViewModel = new SearchCriteriaFormViewModel(criteria, true);
 			FillResults(criteriaViewModel);
 			return criteriaViewModel;
