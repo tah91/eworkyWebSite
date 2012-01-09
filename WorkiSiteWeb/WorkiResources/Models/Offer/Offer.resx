@@ -126,6 +126,21 @@
   <data name="AvailabilityPeriodType" xml:space="preserve">
     <value>Unité de temps</value>
   </data>
+  <data name="AvailableAt" xml:space="preserve">
+    <value>Disponible le {0}</value>
+  </data>
+  <data name="AvailableAtFor" xml:space="preserve">
+    <value>Disponible le {0} pour {1} {2}</value>
+  </data>
+  <data name="AvailableFor" xml:space="preserve">
+    <value>Disponible pour {1} {2}</value>
+  </data>
+  <data name="AvailableFrom" xml:space="preserve">
+    <value>Disponible à partir du {0}</value>
+  </data>
+  <data name="AvailableFromFor" xml:space="preserve">
+    <value>Disponible à partir du {0} pour {1} {2}</value>
+  </data>
   <data name="Currency" xml:space="preserve">
     <value>Devise</value>
   </data>
@@ -161,6 +176,21 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Unité de temps</value>
+  </data>
+  <data name="PluralDay" xml:space="preserve">
+    <value>jour(s)</value>
+  </data>
+  <data name="PluralHour" xml:space="preserve">
+    <value>heure(s)</value>
+  </data>
+  <data name="PluralMonth" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="PluralWeek" xml:space="preserve">
+    <value>semaine(s)</value>
+  </data>
+  <data name="PluralYear" xml:space="preserve">
+    <value>an(s)</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Prix</value>

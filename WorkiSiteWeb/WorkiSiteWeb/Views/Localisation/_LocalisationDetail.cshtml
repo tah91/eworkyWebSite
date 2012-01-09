@@ -22,7 +22,14 @@
 			}
 		}
 		<div class="contentBlock">
-			<h3 class="blue">@title</h3>
+            <div class="float-left">
+                <h3 class="blue">@title</h3>
+            </div>
+            <div class="float-right bold blue">
+                @Model.GetMinAvailability((int)offerType)
+            </div>
+            <div class="clear">
+            </div>
 			@if (features.Count() == 0)
 			{
 				<div class="italic">@Worki.Resources.Views.Offer.OfferString.InfoUnknown</div>

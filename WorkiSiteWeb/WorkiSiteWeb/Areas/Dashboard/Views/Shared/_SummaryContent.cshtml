@@ -7,13 +7,14 @@
     <div class="summaryIntro">
         @foreach (var item in Model.Descriptions)
         {
-            if (!item.Bold)
+            var bold = item.Bold ? "bold" : "";
+            if (string.IsNullOrEmpty(item.Url))
             {
-			    @item.Value <br />
+                 <span class="@bold">@item.Value <br /></span>
             }
             else
             {
-                <b>@item.Value</b> <br />
+                <a class="@bold noUnderline" href="@item.Url">@item.Value</a><br />
             }
         }
     </div>

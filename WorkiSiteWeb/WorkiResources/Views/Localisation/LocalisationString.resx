@@ -259,6 +259,6 @@
     <value>Attention vous n'avez pas précisé d'offre pour cet espace. Veuillez en ajouter au moins une.</value>
   </data>
   <data name="ModifiedThe" xml:space="preserve">
-    <value>Modifié le {0}</value>
+    <value>Mis à jour le {0}</value>
   </data>
 </root>

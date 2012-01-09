@@ -15,8 +15,14 @@
 		@foreach (var offer in Model.Offers)
 		{
 	  		<div class="contentBlock">
-				<h3 class="blue">@offer.Name</h3>
-				@offer.GetAvailabilityDisplay()
+                <div class="float-left">
+                    <h3 class="blue">@offer.Name</h3>
+                </div>
+                <div class="float-right bold blue">
+                    @offer.GetAvailabilityDisplay()
+                </div>
+                <div class="clear">
+                </div>
 				@if (offer.OfferFiles.Count > 0)
 				{
 				<div class="offerGallery">

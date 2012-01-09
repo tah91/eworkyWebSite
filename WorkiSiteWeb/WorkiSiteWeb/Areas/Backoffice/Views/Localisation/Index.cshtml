@@ -28,7 +28,7 @@
                     ImageAlt = Model.Localisation.Name,
                     Descriptions = new List<DescriptionItem>
                     {
-                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Place, Value = Model.Localisation.Name, Bold = true},
+                        new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Place, Value = Model.Localisation.Name, Bold = true, Url = Model.Localisation.GetDetailFullUrl(Url)},
                         new DescriptionItem{ Title = Worki.Resources.Views.BackOffice.BackOfficeString.Town, Value = Model.Localisation.City, Bold = false}
                     }
                 };

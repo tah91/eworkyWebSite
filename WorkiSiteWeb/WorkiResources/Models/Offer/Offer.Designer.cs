@@ -88,6 +88,51 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disponible le {0}.
+        /// </summary>
+        public static string AvailableAt {
+            get {
+                return ResourceManager.GetString("AvailableAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disponible le {0} pour {1} {2}.
+        /// </summary>
+        public static string AvailableAtFor {
+            get {
+                return ResourceManager.GetString("AvailableAtFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disponible pour {1} {2}.
+        /// </summary>
+        public static string AvailableFor {
+            get {
+                return ResourceManager.GetString("AvailableFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disponible à partir du {0}.
+        /// </summary>
+        public static string AvailableFrom {
+            get {
+                return ResourceManager.GetString("AvailableFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disponible à partir du {0} pour {1} {2}.
+        /// </summary>
+        public static string AvailableFromFor {
+            get {
+                return ResourceManager.GetString("AvailableFromFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Devise.
         /// </summary>
         public static string Currency {
@@ -192,6 +237,51 @@ namespace Worki.Resources.Models.Offer {
         public static string Period {
             get {
                 return ResourceManager.GetString("Period", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to jour(s).
+        /// </summary>
+        public static string PluralDay {
+            get {
+                return ResourceManager.GetString("PluralDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to heure(s).
+        /// </summary>
+        public static string PluralHour {
+            get {
+                return ResourceManager.GetString("PluralHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mois.
+        /// </summary>
+        public static string PluralMonth {
+            get {
+                return ResourceManager.GetString("PluralMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to semaine(s).
+        /// </summary>
+        public static string PluralWeek {
+            get {
+                return ResourceManager.GetString("PluralWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to an(s).
+        /// </summary>
+        public static string PluralYear {
+            get {
+                return ResourceManager.GetString("PluralYear", resourceCulture);
             }
         }
         

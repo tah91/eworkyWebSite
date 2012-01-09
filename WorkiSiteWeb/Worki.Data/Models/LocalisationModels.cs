@@ -803,7 +803,32 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
-	}
+
+        #region Availability
+
+        /// <summary>
+        /// Get the closer availability
+        /// </summary>
+        /// <param name="offerType">offer type to filter</param>
+        /// <returns>the availability display</returns>
+        public string GetMinAvailability(int offerType = -1)
+        {
+            if (!IsSharedOffice())
+                return string.Empty;
+
+            var offers = offerType == -1 ? Offers.Where(o => o.AvailabilityPeriod != 0) : Offers.Where(o => o.Type == offerType && o.AvailabilityPeriod != 0);
+
+            var min = offers.Min(o => o.AvailabilityPeriod);
+            var minOffer = offers.FirstOrDefault(o => o.AvailabilityPeriod == min);
+
+            if (minOffer == null)
+                return string.Empty;
+
+            return minOffer.GetAvailabilityDisplay(true);
+        }
+
+        #endregion
+    }
 
 	[Bind(Exclude = "Id,OwnerId")]
 	public class Localisation_Validation

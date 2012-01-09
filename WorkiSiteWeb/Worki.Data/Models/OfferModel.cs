@@ -327,36 +327,51 @@ namespace Worki.Data.Models
 			switch (period)
 			{
 				case PaymentPeriod.Hour:
-					return Worki.Resources.Models.Offer.Offer.Hour;
+					return Worki.Resources.Models.Offer.Offer.PluralHour;
 				case PaymentPeriod.Day:
-					return Worki.Resources.Models.Offer.Offer.Day;
+                    return Worki.Resources.Models.Offer.Offer.PluralDay;
 				case PaymentPeriod.Week:
-					return Worki.Resources.Models.Offer.Offer.Week;
+                    return Worki.Resources.Models.Offer.Offer.PluralWeek;
 				case PaymentPeriod.Month:
-					return Worki.Resources.Models.Offer.Offer.Month;
+                    return Worki.Resources.Models.Offer.Offer.PluralMonth;
 				case PaymentPeriod.Year:
-					return Worki.Resources.Models.Offer.Offer.Year;
+                    return Worki.Resources.Models.Offer.Offer.PluralYear;
 				default:
 					return string.Empty;
 			}
 		} 
 
-		public string GetAvailabilityDisplay()
+        /// <summary>
+        /// get availability display for an offer
+        /// </summary>
+        /// <param name="from">true if the availability is not exacte (aggregation of offers)</param>
+        /// <returns>the availability display</returns>
+		public string GetAvailabilityDisplay(bool from = false)
 		{
 			if (!Localisation.IsSharedOffice())
 				return string.Empty;
 
-			var toRet=string.Empty;
-			if (AvailabilityDate.HasValue)
-				toRet += "Disponible le " + CultureHelpers.GetSpecificFormat(AvailabilityDate, CultureHelpers.TimeFormat.Date);
-
-			if (AvailabilityPeriod != 0)
-			{
-				if (string.IsNullOrEmpty(toRet))
-					toRet += "Pour " + AvailabilityPeriod + GetAvailabilityPeriod((PaymentPeriod)AvailabilityPeriodType);
-				else
-					toRet += " pour " + AvailabilityPeriod + GetAvailabilityPeriod((PaymentPeriod)AvailabilityPeriodType);
-			}
+            var toRet = string.Empty;
+            if (AvailabilityDate.HasValue)
+            {
+                if (AvailabilityPeriod != 0)
+                {
+                    var format = from ? Worki.Resources.Models.Offer.Offer.AvailableFromFor : Worki.Resources.Models.Offer.Offer.AvailableAtFor;
+                    toRet = string.Format(format, CultureHelpers.GetSpecificFormat(AvailabilityDate), AvailabilityPeriod, GetAvailabilityPeriod((PaymentPeriod)AvailabilityPeriodType));
+                }
+                else
+                {
+                    var format = from ? Worki.Resources.Models.Offer.Offer.AvailableFor : Worki.Resources.Models.Offer.Offer.AvailableAt;
+                    toRet = string.Format(format, CultureHelpers.GetSpecificFormat(AvailabilityDate));
+                }
+            }
+            else
+            {
+                if (AvailabilityPeriod != 0)
+                {
+                    toRet = string.Format(Worki.Resources.Models.Offer.Offer.AvailableFor, AvailabilityPeriod, GetAvailabilityPeriod((PaymentPeriod)AvailabilityPeriodType));
+                }
+            }
 
 			return toRet;
 		}

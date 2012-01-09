@@ -304,7 +304,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifié le {0}.
+        ///   Looks up a localized string similar to Mis à jour le {0}.
         /// </summary>
         public static string ModifiedThe {
             get {

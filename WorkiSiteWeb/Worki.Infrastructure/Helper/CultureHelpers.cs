@@ -23,7 +23,7 @@ namespace Worki.Infrastructure.Helpers
         /// <param name="date">Date to display</param>
         /// <param name="format">Format desired</param>
         /// <returns>Formatted datetime</returns>
-        public static string GetSpecificFormat(DateTime? date, TimeFormat format)
+        public static string GetSpecificFormat(DateTime? date, TimeFormat format = TimeFormat.Date)
         {
             if (date.HasValue)
             {
