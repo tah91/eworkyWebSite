@@ -308,19 +308,19 @@
     <value>Salon d'affaires</value>
   </data>
   <data name="FreeArea" xml:space="preserve">
-    <value>Espace de travail gratuit</value>
+    <value>Espace gratuit (spot wifi, café, etc.)</value>
   </data>
   <data name="SeminarRoom" xml:space="preserve">
-    <value>Salles de conférence</value>
+    <value>Salles de séminaire</value>
   </data>
   <data name="Desktop" xml:space="preserve">
-    <value>Bureaux</value>
+    <value>Bureaux (centre d'affaires, pépinière, etc.)</value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
-    <value>Salles de téléprésence</value>
+    <value>Salles de visioconférence</value>
   </data>
   <data name="Workstation" xml:space="preserve">
-    <value>Postes de travail</value>
+    <value>Postes de travail (coworking, partage, etc.)</value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
     <value>Salles de réunion</value>
@@ -329,19 +329,19 @@
     <value>Régie son</value>
   </data>
   <data name="SingleMeetingRoom" xml:space="preserve">
-    <value>Salle de réunion / formation</value>
+    <value>Salle de réunion</value>
   </data>
   <data name="SingleSeminarRoom" xml:space="preserve">
-    <value>Salle de conférence / séminaire</value>
+    <value>Salle de séminaire</value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Bureau</value>
+    <value>Bureau (centre d'affaires, pépinière, etc.)</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
-    <value>Salle de visio / téléprésence</value>
+    <value>Salle de visioconférence</value>
   </data>
   <data name="SingleWorkstation" xml:space="preserve">
-    <value>Poste de travail (coworking, etc.)</value>
+    <value>Poste de travail (coworking, partage, etc.)</value>
   </data>
   <data name="AllOffers" xml:space="preserve">
     <value>Tous les espaces</value>

@@ -404,14 +404,14 @@ namespace Worki.Web.Controllers
                     {
                         var criteria = new SearchCriteria(true);
                         criteria.Place = place;
-                        model = new SearchCriteriaFormViewModel(criteria, false);
+                        model = new SearchCriteriaFormViewModel(criteria);
                     }
                     break;
                 case eSearchType.ePerType:
                     {
                         var criteria = SearchCriteria.CreateSearchCriteria(directAccessEnum);
                         criteria.Place = place;
-                        model = new SearchCriteriaFormViewModel(criteria, false);
+                        model = new SearchCriteriaFormViewModel(criteria);
                     }
                     break;
                 case eSearchType.ePerName:
@@ -420,7 +420,7 @@ namespace Worki.Web.Controllers
                         criteria.Place = place;
                         criteria.SearchType = eSearchType.ePerName;
                         criteria.OrderBy = eOrderBy.Rating;
-                        model = new SearchCriteriaFormViewModel(criteria, false);
+                        model = new SearchCriteriaFormViewModel(criteria);
                     }
                     break;
                 default:
@@ -439,7 +439,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearch()
 		{
 			var criteria = new SearchCriteria(true);
-            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria, false));
+            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
 		}
 
 		[AcceptVerbs(HttpVerbs.Get)]
@@ -447,7 +447,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearchPerType()
 		{
             var criteria = SearchCriteria.CreateSearchCriteria(eDirectAccessType.eNone);
-            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria, false));
+            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
 		}
 
 
@@ -456,7 +456,7 @@ namespace Worki.Web.Controllers
         public virtual ActionResult FullSearchPerName()
         {
             var criteria = new SearchCriteria(true, eSearchType.ePerName, eOrderBy.Rating);
-            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria, false));
+            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
         }
 
 		/// <summary>
@@ -470,7 +470,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearchPerTypeSpecial(int type)
 		{
             var criteria = SearchCriteria.CreateSearchCriteria((eDirectAccessType)type);
-			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria, false));
+			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria));
 		}
 
         /// <summary>

@@ -118,34 +118,5 @@
         $('.offerSelect').live('change', function () {
             SelectSearch();
         });
-
-        SelectForm = function (event, searchType, directAccessType) {
-            event.preventDefault();
-            var place = $("#Criteria_Place").val();
-            if (place == '@Worki.Resources.Views.Home.HomeString.ExampleLocation')
-                place = '';
-            $.ajax({
-                url: '@Url.Action(MVC.Localisation.ActionNames.SearchForm, MVC.Localisation.Name)',
-                data: { 'searchType': searchType, 'directAccessType': directAccessType, 'place': place },
-                success: function (data) {
-                    $('#searchFormPartialContainer').replaceWith(data);
-                }
-            });
-        }
-
-        $('#searchPerType').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerType', '@eDirectAccessType.eNone');
-        });
-
-        $('#searchPerNeed').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerOffer', '@eDirectAccessType.eNone');
-        });
-
-        $('#searchPerName').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerName', '@eDirectAccessType.eNone');
-        });
-    });
-    require(["@Links.Scripts.dropdown_js"], function () {
-    	InitDropdown("#@DropDownModel.AdvancedSearchDD");
     });
 </script>

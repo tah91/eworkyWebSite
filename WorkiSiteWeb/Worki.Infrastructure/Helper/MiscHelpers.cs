@@ -46,6 +46,14 @@ namespace Worki.Infrastructure.Helpers
             public const string CoworkingSpace = "coworking";
             public const string OtherPlaces = "autres-lieux";
 			public const string SharedOffice = "espace-partagé";
+            public const string SpotWifi = "spot-wifi";
+            public const string CoffeeResto = "café";
+            public const string Biblio = "biblio";
+            public const string TravelerSpace = "voyageur";
+            public const string WorkingHotel = "pepiniere";
+            public const string PrivateArea = "prive";
+            public const string PublicSpace = "epn";
+            public const string Hotel = "hotel";
             public const string Type = "type";
 
             public class Coordinates
