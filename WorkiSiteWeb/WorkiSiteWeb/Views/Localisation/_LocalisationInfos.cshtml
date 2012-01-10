@@ -6,25 +6,25 @@
 		@Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
 	</div>
 	@if (Model.HasAccesField())
- {
+    {
 		<div class="localisationAccessDetail">
 		@if (!string.IsNullOrEmpty(Model.PublicTransportation))
-  {
-			<span class="bold orange">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
+        {
+			<span class="bold">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
 			@Model.PublicTransportation<br />
-  }
+        }
 		@if (!string.IsNullOrEmpty(Model.RoadAccess))
-  {
-			<span class="bold orange">@Worki.Resources.Models.Localisation.Localisation.RoadAccess : </span>
+        {
+			<span class="bold">@Worki.Resources.Models.Localisation.Localisation.RoadAccess : </span>
 			@Model.RoadAccess<br />
-  }
+        }
 		@if (!string.IsNullOrEmpty(Model.Station))
-  {
-			<span class="bold orange">@Worki.Resources.Models.Localisation.Localisation.Station : </span>
+        {
+			<span class="bold">@Worki.Resources.Models.Localisation.Localisation.Station : </span>
 			@Model.Station<br />
-  }
+        }
 		</div>
- }
+    }
 </div>
 @*<div class="contentBlock">
 	<h3 class="blue">Tarifs</h3>
@@ -163,15 +163,15 @@
       }
       if (!string.IsNullOrEmpty(Model.WebSite))
       {
-				<a href="@WebHelper.GetWebsite(Model.WebSite)" title="@Model.WebSite" target="_blank" itemprop="url">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
+				<a href="@WebHelper.GetWebsite(Model.WebSite)" title="@Model.WebSite" target="_blank" itemprop="url" class="orange">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
       }
       if (!string.IsNullOrEmpty(Model.Facebook))
       {
-				<a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank"><span>@Worki.Resources.Views.Localisation.LocalisationString.FacebookPage</span></a><br />
+				<a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank" class="orange"><span>@Worki.Resources.Views.Localisation.LocalisationString.FacebookPage</span></a><br />
       }
       if (!string.IsNullOrEmpty(Model.Twitter))
       {
-				<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
+				<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank" class="orange"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
       }
       if (!Model.HasOwner())
       {
