@@ -228,6 +228,7 @@ namespace Worki.Web.Helpers
             {
                 color = CalandarJson.Green;
             }
+			var allDay = (booking.ToDate - booking.FromDate).TotalDays >= 1;
 			var toRet = new CalandarJson
 				{
 					id = booking.Id,
@@ -235,7 +236,7 @@ namespace Worki.Web.Helpers
 					start = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.FromDate),
 					end = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.ToDate),
 					url = url.Action(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = booking.Id }),
-					allDay = false,
+					allDay = allDay,
                     color = color,
 					editable = true
 				};
