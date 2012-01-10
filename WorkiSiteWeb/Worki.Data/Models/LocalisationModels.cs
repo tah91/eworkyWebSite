@@ -818,6 +818,9 @@ namespace Worki.Data.Models
 
             var offers = offerType == -1 ? Offers.Where(o => o.AvailabilityPeriod != 0) : Offers.Where(o => o.Type == offerType && o.AvailabilityPeriod != 0);
 
+			if (offers.Count() == 0)
+				return string.Empty;
+
             var min = offers.Min(o => o.AvailabilityPeriod);
             var minOffer = offers.FirstOrDefault(o => o.AvailabilityPeriod == min);
 
