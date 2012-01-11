@@ -118,141 +118,141 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value> </value>
+    <value>Add</value>
   </data>
   <data name="ComfirmDelete" xml:space="preserve">
-    <value> </value>
+    <value>Confirm the deletion:</value>
   </data>
   <data name="DeletedWorkplace" xml:space="preserve">
-    <value> </value>
+    <value>Workspace deleted</value>
   </data>
   <data name="DeletePlace" xml:space="preserve">
-    <value> </value>
+    <value>Delete the workplace</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value> </value>
+    <value>Details</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value> </value>
+    <value>Edit</value>
   </data>
   <data name="EditPlace" xml:space="preserve">
-    <value> </value>
+    <value>Edit the workplace</value>
   </data>
   <data name="NotAccessToWorkplace" xml:space="preserve">
-    <value> </value>
+    <value>Error to access the workplace</value>
   </data>
   <data name="PleaseConfirmDelete" xml:space="preserve">
-    <value> </value>
+    <value>Please confirm you want to delete the workplace:</value>
   </data>
   <data name="WorkplaceDeleted" xml:space="preserve">
-    <value> </value>
+    <value>We are sorry, the selected workplace does not exist or was deleted.</value>
   </data>
   <data name="WorkplaceNotFound" xml:space="preserve">
-    <value> </value>
+    <value>Workplace not found.</value>
   </data>
   <data name="WorkplaceWellDeleted" xml:space="preserve">
-    <value> </value>
+    <value>Your workplace was successfully deleted</value>
   </data>
   <data name="AddPicture" xml:space="preserve">
-    <value> </value>
+    <value>Add pictures...</value>
   </data>
   <data name="Index" xml:space="preserve">
-    <value> </value>
+    <value>Index</value>
   </data>
   <data name="YouKnowContactUs" xml:space="preserve">
-    <value> </value>
+    <value>If you know the contact details of this workspace, please fill them in using the edition form or contact us : contact@eworky.com</value>
   </data>
   <data name="BookIt" xml:space="preserve">
-    <value> </value>
+    <value>Book</value>
   </data>
   <data name="AboutPlace" xml:space="preserve">
-    <value> </value>
+    <value>About the place</value>
   </data>
   <data name="AddBy" xml:space="preserve">
-    <value> </value>
+    <value>Added by :</value>
   </data>
   <data name="EworkersOpinion" xml:space="preserve">
-    <value> </value>
+    <value>eWorkers opinion</value>
   </data>
   <data name="Fax" xml:space="preserve">
-    <value> </value>
+    <value>Fax:</value>
   </data>
   <data name="GeneralOpinion" xml:space="preserve">
-    <value> </value>
+    <value>General opinion</value>
   </data>
   <data name="LastEditBy" xml:space="preserve">
-    <value> </value>
+    <value>Last edition by:</value>
   </data>
   <data name="Recommendation" xml:space="preserve">
-    <value> </value>
+    <value>You should have a look at this workplace: {0}</value>
   </data>
   <data name="Schedule" xml:space="preserve">
-    <value> </value>
+    <value>Opening hours</value>
   </data>
   <data name="Tel" xml:space="preserve">
-    <value> </value>
+    <value>Phone number: </value>
   </data>
   <data name="TheDate" xml:space="preserve">
-    <value> </value>
+    <value>on:</value>
   </data>
   <data name="Tweet" xml:space="preserve">
-    <value> </value>
+    <value>Tweet</value>
   </data>
   <data name="Equipments" xml:space="preserve">
-    <value> </value>
+    <value>Facilities</value>
   </data>
   <data name="ListLocSent" xml:space="preserve">
-    <value> </value>
+    <value>The locations list was sent to you</value>
   </data>
   <data name="LocList" xml:space="preserve">
-    <value> </value>
+    <value>Complete locations list</value>
   </data>
   <data name="LocHaveBeenCreate" xml:space="preserve">
-    <value> </value>
+    <value>The workspace profile was created.</value>
   </data>
   <data name="LocHaveBeenDel" xml:space="preserve">
-    <value> </value>
+    <value>The workspace was deleted.</value>
   </data>
   <data name="LocHaveBeenEdit" xml:space="preserve">
-    <value> </value>
+    <value>The workspace was edited.</value>
   </data>
   <data name="Localisation" xml:space="preserve">
-    <value> </value>
+    <value>Location</value>
   </data>
   <data name="Suggestion" xml:space="preserve">
-    <value> </value>
+    <value>Suggestion(s)</value>
   </data>
   <data name="execError" xml:space="preserve">
-    <value> </value>
+    <value>An error occurred.</value>
   </data>
   <data name="AreYouOwner" xml:space="preserve">
-    <value> </value>
+    <value>Are you the manager of this workspace ?</value>
   </data>
   <data name="YouAreOwner" xml:space="preserve">
-    <value> </value>
+    <value>You are now the manager of this workspace !</value>
   </data>
   <data name="Offline" xml:space="preserve">
-    <value> </value>
+    <value>Offline</value>
   </data>
   <data name="Online" xml:space="preserve">
-    <value> </value>
+    <value>Online</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Main</value>
+  <comment>?</comment></data>
   <data name="NotMain" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Not main</value>
+  <comment>?</comment></data>
   <data name="NoPictureAvailable" xml:space="preserve">
-    <value> </value>
+    <value>No picture available</value>
   </data>
   <data name="OwnerIdentity" xml:space="preserve">
-    <value> </value>
+    <value>Identity of the manager: </value>
   </data>
   <data name="FacebookPage" xml:space="preserve">
-    <value> </value>
+    <value>Facebook page</value>
   </data>
   <data name="NoSuggestions" xml:space="preserve">
-    <value> </value>
+    <value>eWorky has no close similar workspace to suggest.</value>
   </data>
 </root>

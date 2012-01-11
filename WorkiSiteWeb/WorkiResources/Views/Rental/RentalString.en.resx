@@ -130,20 +130,20 @@
     <value> </value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Address :</value>
+  <comment>Mika</comment></data>
   <data name="And" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>and</value>
+  <comment>Mika</comment></data>
   <data name="Area" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Surface</value>
+  <comment>Mika</comment></data>
   <data name="AreaUnit" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>(m²)</value>
+  <comment>Mika</comment></data>
   <data name="Availability" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Availability</value>
+  <comment>Mika</comment></data>
   <data name="AvailableDate" xml:space="preserve">
     <value> </value>
   </data>
@@ -151,8 +151,8 @@
     <value> </value>
   </data>
   <data name="Between" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Range between :</value>
+  <comment>Mika</comment></data>
   <data name="CheckProfile" xml:space="preserve">
     <value> </value>
   </data>
@@ -160,8 +160,8 @@
     <value> </value>
   </data>
   <data name="ChooseDate" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Pick up a date</value>
+  <comment>Mika</comment></data>
   <data name="City" xml:space="preserve">
     <value> </value>
   </data>
@@ -181,11 +181,11 @@
     <value> </value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Description</value>
+  <comment>Mika</comment></data>
   <data name="Detail" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Detail</value>
+  <comment>Mika</comment></data>
   <data name="DiagnosticRate" xml:space="preserve">
     <value> </value>
   </data>
@@ -193,35 +193,35 @@
     <value> </value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>E-mail :</value>
+  <comment>Mika</comment></data>
   <data name="EndResultAnswer" xml:space="preserve">
     <value> </value>
   </data>
   <data name="ExMaxArea" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Ex : 150</value>
+  <comment>Mika</comment></data>
   <data name="ExMaxRate" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Ex : 5000</value>
+  <comment>Mika</comment></data>
   <data name="ExMinArea" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Ex : 25</value>
+  <comment>Mika</comment></data>
   <data name="ExMinRate" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Ex : 400</value>
+  <comment>Mika</comment></data>
   <data name="Features" xml:space="preserve">
     <value> </value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>First name :</value>
+  <comment>Mika</comment></data>
   <data name="HeatingType" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Images" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Pictures</value>
+  <comment>Mika</comment></data>
   <data name="InfoAdmin" xml:space="preserve">
     <value> </value>
   </data>
@@ -229,8 +229,8 @@
     <value> </value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Last name :</value>
+  <comment>Mika</comment></data>
   <data name="LeaseType" xml:space="preserve">
     <value> </value>
   </data>
@@ -253,23 +253,23 @@
     <value> </value>
   </data>
   <data name="MoreDetail" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>More details</value>
+  <comment>Mika</comment></data>
   <data name="Now" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Others</value>
+  <comment>Mika</comment></data>
   <data name="Owner" xml:space="preserve">
     <value> </value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Phone number :</value>
+  <comment>Mika</comment></data>
   <data name="Place" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Venue</value>
+  <comment>Mika</comment></data>
   <data name="PlaceExemple" xml:space="preserve">
     <value> </value>
   </data>
@@ -277,8 +277,8 @@
     <value> </value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Price</value>
+  <comment>Mika</comment></data>
   <data name="Print" xml:space="preserve">
     <value> </value>
   </data>
@@ -319,8 +319,8 @@
     <value> </value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Validate</value>
+  <comment>Mika</comment></data>
   <data name="UpdatedAt" xml:space="preserve">
     <value> </value>
   </data>

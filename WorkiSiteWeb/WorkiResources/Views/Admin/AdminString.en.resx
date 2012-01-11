@@ -130,223 +130,223 @@
     <value>&lt;b&gt; Warning : The following workplaces were not added because they were already existing in the database &lt;br/&gt;&lt;/b&gt; {0]</value>
   </data>
   <data name="AlreadyRegistered" xml:space="preserve">
-    <value> </value>
+    <value>Already registered</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value> </value>
+    <value>Back to list</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
-    <value> </value>
+    <value>Please confirm the deletion :</value>
   </data>
   <data name="ConfirmDeletePress" xml:space="preserve">
-    <value> </value>
+    <value>Please confirm the article deletion :</value>
   </data>
   <data name="ConfirmDeleteUser" xml:space="preserve">
-    <value> </value>
+    <value>Please confirm the user deletion : </value>
   </data>
   <data name="ConfirmDeleteWelcome" xml:space="preserve">
-    <value> </value>
+    <value>Please confirm the deletion of this person on the welcome page :</value>
   </data>
   <data name="CreateNewPress" xml:space="preserve">
-    <value> </value>
+    <value>Add a new article</value>
   </data>
   <data name="CreateNewWelcomePeople" xml:space="preserve">
-    <value> </value>
+    <value>Create a new profile</value>
   </data>
   <data name="CreateWelcomePeople" xml:space="preserve">
-    <value> </value>
+    <value>Create a welcome page profil</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value> </value>
+    <value>Date</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value> </value>
+    <value>Delete</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
+    <value>Description</value>
   </data>
   <data name="DetailPress" xml:space="preserve">
-    <value> </value>
+    <value>Details of an article</value>
   </data>
   <data name="DetailWelcomePeople" xml:space="preserve">
-    <value> </value>
+    <value>Details of the profile on the welcome page</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value> </value>
+    <value>Edit</value>
   </data>
   <data name="EditPress" xml:space="preserve">
-    <value> </value>
+    <value>Edit an article</value>
   </data>
   <data name="EditWelcomePeople" xml:space="preserve">
-    <value> </value>
+    <value>Edit a profile on the welcome page </value>
   </data>
   <data name="EmailAddress" xml:space="preserve">
-    <value> </value>
+    <value>E-mail</value>
   </data>
   <data name="FileGotHeader" xml:space="preserve">
-    <value> </value>
+    <value>The file has a header</value>
   </data>
   <data name="ID" xml:space="preserve">
-    <value> </value>
+    <value>ID</value>
   </data>
   <data name="IndexBooking" xml:space="preserve">
-    <value> </value>
+    <value>Bookings management</value>
   </data>
   <data name="IndexPress" xml:space="preserve">
-    <value> </value>
+    <value>Articles management</value>
   </data>
   <data name="IndexWelcomePeople" xml:space="preserve">
-    <value> </value>
+    <value>Featured entrepreneurs management</value>
   </data>
   <data name="InexistingPress" xml:space="preserve">
-    <value> </value>
+    <value>Article not found.</value>
   </data>
   <data name="IsRegistered" xml:space="preserve">
-    <value> </value>
+    <value>Registered</value>
   </data>
   <data name="ListPress" xml:space="preserve">
-    <value> </value>
+    <value>List of articles referenced on eWorky :</value>
   </data>
   <data name="Localisation" xml:space="preserve">
-    <value> </value>
+    <value>Location</value>
   </data>
   <data name="LocalisationPicture" xml:space="preserve">
-    <value> </value>
+    <value>Venue's picture</value>
   </data>
   <data name="LocalisationsAdmin" xml:space="preserve">
-    <value> </value>
+    <value>Workplace management</value>
   </data>
   <data name="ManagerRole" xml:space="preserve">
-    <value> </value>
+    <value>Administrator</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value> </value>
+    <value>Last name</value>
   </data>
   <data name="Picture" xml:space="preserve">
-    <value> </value>
+    <value>Picture</value>
   </data>
   <data name="PlaceDeletedSorry" xml:space="preserve">
-    <value> </value>
+    <value>We are sorry, the selected workplace does not exist or has been deleted.</value>
   </data>
   <data name="Points" xml:space="preserve">
-    <value> </value>
+    <value>Point(s)</value>
   </data>
   <data name="Rentals" xml:space="preserve">
-    <value> </value>
+    <value>Rentals</value>
   </data>
   <data name="PressDeleted" xml:space="preserve">
-    <value> </value>
+    <value>We are sorry, the selected article does not exist or has been deleted.</value>
   </data>
   <data name="PressNotFound" xml:space="preserve">
-    <value> </value>
+    <value>Article not found.</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value> </value>
+    <value>send</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
-    <value> </value>
+    <value>Send email</value>
   </data>
   <data name="TheTop" xml:space="preserve">
-    <value> </value>
+    <value>top</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value> </value>
+    <value>Title</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value> </value>
+    <value>Update</value>
   </data>
   <data name="UpdateRole" xml:space="preserve">
-    <value> </value>
+    <value>Updates roles</value>
   </data>
   <data name="Url" xml:space="preserve">
-    <value> </value>
+    <value>Url</value>
   </data>
   <data name="User" xml:space="preserve">
-    <value> </value>
+    <value>User</value>
   </data>
   <data name="UserAdmin" xml:space="preserve">
-    <value> </value>
+    <value>Users management</value>
   </data>
   <data name="UserAdministration" xml:space="preserve">
-    <value> </value>
+    <value>Users administration</value>
   </data>
   <data name="ValidationSend" xml:space="preserve">
-    <value> </value>
+    <value>sending validation</value>
   </data>
   <data name="VisitorAdministration" xml:space="preserve">
-    <value> </value>
+    <value>private beta management</value>
   </data>
   <data name="WaitInscription" xml:space="preserve">
-    <value> </value>
+    <value>Waiting for subscription</value>
   </data>
   <data name="WorkspaceNotFound" xml:space="preserve">
-    <value> </value>
+    <value>Workspace not found.</value>
   </data>
   <data name="ConfirmDeleteRental" xml:space="preserve">
-    <value> </value>
+    <value>Please confirm you want to delete this rental ad :</value>
   </data>
   <data name="CreateRental" xml:space="preserve">
-    <value> </value>
+    <value>Add an ads</value>
   </data>
   <data name="MailHaveBeenSent" xml:space="preserve">
-    <value> </value>
+    <value>The email was sent successfully.</value>
   </data>
   <data name="PressHaveBeenDel" xml:space="preserve">
-    <value> </value>
+    <value>The press article was deleted.</value>
   </data>
   <data name="PressHaveBeenEdit" xml:space="preserve">
-    <value> </value>
+    <value>The press article was edited.</value>
   </data>
   <data name="RoleHaveBeenSet" xml:space="preserve">
-    <value> </value>
+    <value>Roles have changed.</value>
   </data>
   <data name="UserHaveBeenDel" xml:space="preserve">
-    <value> </value>
+    <value>User was deleted.</value>
   </data>
   <data name="WelcomePeopleHaveBeenDel" xml:space="preserve">
-    <value> </value>
+    <value>The featured entrepreneur was deleted.</value>
   </data>
   <data name="WelcomePeopleHaveBeenEdit" xml:space="preserve">
-    <value> </value>
+    <value>The featured entrepreneur was edited.</value>
   </data>
   <data name="PressHaveBeenCreate" xml:space="preserve">
-    <value> </value>
+    <value>The press article was created.</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
-    <value> </value>
+    <value>User not found.</value>
   </data>
   <data name="VisitorNotFound" xml:space="preserve">
-    <value> </value>
+    <value>Visitor not found.</value>
   </data>
   <data name="WelcomePeopleHaveBeenCreate" xml:space="preserve">
-    <value> </value>
+    <value>The featured entrepreneur was created.</value>
   </data>
   <data name="WelcomePeopleNotFound" xml:space="preserve">
-    <value> </value>
+    <value>Featured entrepreneur not found.</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value> </value>
+    <value>eWorky email address</value>
   </data>
   <data name="ExactLoc" xml:space="preserve">
-    <value> </value>
+    <value>Exact name of the venue</value>
   </data>
   <data name="OnOffLine" xml:space="preserve">
-    <value> </value>
+    <value>Online/Offline</value>
   </data>
   <data name="Unlock" xml:space="preserve">
-    <value> </value>
+    <value>Unlock</value>
   </data>
   <data name="Owner" xml:space="preserve">
-    <value> </value>
+    <value>Manager</value>
   </data>
   <data name="AdminSpace" xml:space="preserve">
-    <value> </value>
+    <value>Admin space</value>
   </data>
   <data name="IndexQuotation" xml:space="preserve">
-    <value> </value>
+    <value>Quotes management</value>
   </data>
   <data name="Score" xml:space="preserve">
-    <value> </value>
+    <value>Score</value>
   </data>
   <data name="BORole" xml:space="preserve">
     <value> </value>

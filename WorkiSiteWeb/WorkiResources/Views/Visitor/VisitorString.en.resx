@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="eWorky" xml:space="preserve">
-    <value> </value>
+    <value>eWorky</value>
   </data>
   <data name="LetUsYourMail" xml:space="preserve">
-    <value> </value>
+    <value>You did not receive your login details to test eWorky. Let us your email address.</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value> </value>
+    <value>Password</value>
   </data>
   <data name="SetUserMail" xml:space="preserve">
-    <value> </value>
+    <value>To access to eWorky, please fill in the login details received by email.</value>
   </data>
   <data name="SugestBug" xml:space="preserve">
-    <value> </value>
+    <value>You want to suggest an improvement or let us know about a bug, send an email to:</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value> </value>
+    <value>User name</value>
   </data>
   <data name="EWBetaPrivate" xml:space="preserve">
-    <value> </value>
+    <value>eWorky Private Beta</value>
   </data>
   <data name="SuccessAsk" xml:space="preserve">
-    <value> </value>
+    <value>Your request was sent successfully ! We will send you your login details soon.</value>
   </data>
 </root>

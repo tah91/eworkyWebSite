@@ -136,19 +136,19 @@
     <value>Last name</value>
   </data>
   <data name="LocalisationName" xml:space="preserve">
-    <value> </value>
+    <value>Workplace</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Message</value>
   </data>
   <data name="Offer" xml:space="preserve">
-    <value> </value>
+    <value>Need</value>
   </data>
   <data name="OfferName" xml:space="preserve">
     <value>Offer</value>
   </data>
   <data name="PaymentMail" xml:space="preserve">
-    <value> </value>
+    <value>URL address of Paypal payment</value>
   </data>
   <data name="PhoneInfo" xml:space="preserve">
     <value>you will be contacted at this phone number</value>
@@ -160,15 +160,15 @@
     <value>Price</value>
   </data>
   <data name="Response" xml:space="preserve">
-    <value> </value>
+    <value>Answer</value>
   </data>
   <data name="Surface" xml:space="preserve">
-    <value> </value>
+    <value>Offices surface needed (in square meters)</value>
   </data>
   <data name="ToDate" xml:space="preserve">
-    <value> </value>
+    <value>End </value>
   </data>
   <data name="VisitNeeded" xml:space="preserve">
-    <value> </value>
+    <value>Visit wanted</value>
   </data>
 </root>

@@ -118,29 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Currency" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Currency</value>
+  <comment>Mika</comment></data>
   <data name="Day" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Day</value>
+  <comment>Mika</comment></data>
   <data name="Euro" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>EUR</value>
+  <comment>Mika</comment></data>
   <data name="Hour" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Hour</value>
+  <comment>Mika</comment></data>
   <data name="IsBookable" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Booking online</value>
+  <comment>Mika</comment></data>
   <data name="IsOnline" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Offer online</value>
+  <comment>Mika</comment></data>
   <data name="IsQuotable" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Quote request online</value>
+  <comment>Mika</comment></data>
   <data name="Month" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Month</value>
+  <comment>Mika</comment></data>
   <data name="Name" xml:space="preserve">
     <value>Name of the offer</value>
   </data>
@@ -148,21 +148,21 @@
     <value> </value>
   </data>
   <data name="Paypal" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>PayPal</value>
+  <comment>Mika</comment></data>
   <data name="Period" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Price</value>
+  <comment>Mika</comment></data>
   <data name="Type" xml:space="preserve">
     <value>Type of the offer</value>
   </data>
   <data name="Week" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Week</value>
+  <comment>Mika</comment></data>
   <data name="Year" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Year</value>
+  <comment>Mika</comment></data>
 </root>

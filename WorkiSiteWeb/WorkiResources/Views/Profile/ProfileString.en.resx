@@ -118,126 +118,126 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddedSpacesEmptyPublic" xml:space="preserve">
-    <value> </value>
+    <value>has not suggested any workplaces yet to the eWorky community.</value>
   </data>
   <data name="AddedSpacesEmpy" xml:space="preserve">
-    <value> </value>
+    <value>You have not suggested any workspace to eWorkers. To add a workplace, {0}.</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value> </value>
+    <value>Change my password</value>
   </data>
   <data name="CommentsEmpy" xml:space="preserve">
-    <value> </value>
+    <value>You did not comment any workplace. To give your opinion on a workspace, please go at the right low corner of its profile page.</value>
   </data>
   <data name="Edit24Hours" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>You cannot edit more than {0} in less than 24h</value>
+  <comment>times ? fois ?</comment></data>
   <data name="EditProfile" xml:space="preserve">
-    <value> </value>
+    <value>Edit my profile</value>
   </data>
   <data name="Favorite" xml:space="preserve">
-    <value> </value>
+    <value>Favorite workplaces</value>
   </data>
   <data name="FavoriteSpacesEmpty" xml:space="preserve">
-    <value> </value>
+    <value>You have not added any workplace to your favorites. To add a workspace to your favorites, click on the eWorky+ button at the top of its profile page.</value>
   </data>
   <data name="FavoriteSpacesEmptyPublic" xml:space="preserve">
-    <value> </value>
+    <value>has not added workspaces to his favorites.</value>
   </data>
   <data name="FBProfile" xml:space="preserve">
-    <value> </value>
+    <value>Facebook profile</value>
   </data>
   <data name="InfosEmpty" xml:space="preserve">
-    <value> </value>
+    <value>To complete your profile, {0}.</value>
   </data>
   <data name="LinkedInProfile" xml:space="preserve">
-    <value> </value>
+    <value>LinkedIn profile</value>
   </data>
   <data name="MemberNotFound" xml:space="preserve">
-    <value> </value>
+    <value>User not found.</value>
   </data>
   <data name="MyCommentedSpaces" xml:space="preserve">
-    <value> </value>
+    <value>My commented workplaces</value>
   </data>
   <data name="MyComments" xml:space="preserve">
-    <value> </value>
+    <value>My comments</value>
   </data>
   <data name="MyCompany" xml:space="preserve">
-    <value> </value>
+    <value>Professional activity</value>
   </data>
   <data name="MyCompanyPublic" xml:space="preserve">
-    <value> </value>
+    <value>has not given this piece of information.</value>
   </data>
   <data name="MyFavoritePlaces" xml:space="preserve">
-    <value> </value>
+    <value>Work environment looked for</value>
   </data>
   <data name="MyProfile" xml:space="preserve">
-    <value> </value>
+    <value>My profile</value>
   </data>
   <data name="MySpaces" xml:space="preserve">
-    <value> </value>
+    <value>Venues added</value>
   </data>
   <data name="MyWebsite" xml:space="preserve">
-    <value> </value>
+    <value>My website</value>
   </data>
   <data name="PersonalInfo" xml:space="preserve">
-    <value> </value>
+    <value>My personal information</value>
   </data>
   <data name="ProfessionalInfo" xml:space="preserve">
-    <value> </value>
+    <value>My professional information</value>
   </data>
   <data name="ProfilHaveBeenEdit" xml:space="preserve">
-    <value> </value>
+    <value>Your profile was successfully edited.</value>
   </data>
   <data name="RelCommentsEmpty" xml:space="preserve">
-    <value> </value>
+    <value>None of the venues you added has been commented yet.</value>
   </data>
   <data name="Score" xml:space="preserve">
-    <value> </value>
+    <value>eWorker {0} - {1:### ### ###} pts</value>
   </data>
   <data name="SocialNetwork" xml:space="preserve">
-    <value> </value>
+    <value>Social networks</value>
   </data>
   <data name="TwitterProfile" xml:space="preserve">
-    <value> </value>
+    <value>Twitter profile</value>
   </data>
   <data name="ViadeoProfile" xml:space="preserve">
-    <value> </value>
+    <value>Viadeo profile</value>
   </data>
   <data name="Wait2Days" xml:space="preserve">
-    <value> </value>
+    <value>You must wait for 48h before being able to edit a venue</value>
   </data>
   <data name="YourCompanyFunction" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Ex: function, company, ...</value>
+  <comment>? etc. =&gt; ?</comment></data>
   <data name="YourFacebook" xml:space="preserve">
-    <value> </value>
+    <value>Your Facebook page</value>
   </data>
   <data name="YourLinkedIn" xml:space="preserve">
-    <value> </value>
+    <value>Your LinkedIn page</value>
   </data>
   <data name="YourTwitter" xml:space="preserve">
-    <value> </value>
+    <value>Your Twitter nickname</value>
   </data>
   <data name="YourViadeo" xml:space="preserve">
-    <value> </value>
+    <value>Your Viadeo page</value>
   </data>
   <data name="YourWebsite" xml:space="preserve">
-    <value> </value>
+    <value>Your website</value>
   </data>
   <data name="MyComActivities" xml:space="preserve">
-    <value> </value>
+    <value>My community activity</value>
   </data>
   <data name="HeadModifyPayment" xml:space="preserve">
-    <value> </value>
+    <value>Your clients will pay you through the Paypal plateform. To be able to be paid, you must own a Paypal account (to open a Paypal account, click &lt;a href="{0}" target="_blank"&gt;here&lt;/a&gt;).</value>
   </data>
   <data name="EndModifyPayment" xml:space="preserve">
-    <value> </value>
+    <value>We remind you that a fee of {0}% and a PayPal fee will be taken from all bookings going through eWorky. For all questions, please contact us: contact@eworky.com.</value>
   </data>
   <data name="MailPayment" xml:space="preserve">
-    <value> </value>
+    <value>Email address linked to your Paypal account</value>
   </data>
   <data name="PasswordEworky" xml:space="preserve">
-    <value> </value>
+    <value>eWorky password</value>
   </data>
 </root>

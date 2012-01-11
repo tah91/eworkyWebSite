@@ -119,7 +119,7 @@
   </resheader>
   <data name="Commercial" xml:space="preserve">
     <value> </value>
-  </data>
+  <comment>pas à traduire ?</comment></data>
   <data name="CommunicationIntern" xml:space="preserve">
     <value> </value>
   </data>
@@ -148,7 +148,7 @@
     <value> </value>
   </data>
   <data name="Jobs" xml:space="preserve">
-    <value> </value>
+    <value>Jobs</value>
     <comment>JOBS</comment>
   </data>
   <data name="JuniorDev" xml:space="preserve">

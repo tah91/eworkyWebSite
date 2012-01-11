@@ -145,13 +145,13 @@
     <value>eWorker</value>
   </data>
   <data name="Eworkers" xml:space="preserve">
-    <value> </value>
+    <value>eWorkers</value>
   </data>
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
   </data>
   <data name="LastCreate" xml:space="preserve">
-    <value> </value>
+    <value>Last creations</value>
   </data>
   <data name="LastModif" xml:space="preserve">
     <value>Last modifications</value>
@@ -178,15 +178,15 @@
     <value>Smart work center</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value> </value>
+    <value>Total</value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
-    <value>Travel lounge</value>
-  <comment>?</comment></data>
+    <value>Travelers' lounge</value>
+  </data>
   <data name="Wifi" xml:space="preserve">
     <value>WiFi hotspot</value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
-    <value> </value>
+    <value>Incubator</value>
   </data>
 </root>

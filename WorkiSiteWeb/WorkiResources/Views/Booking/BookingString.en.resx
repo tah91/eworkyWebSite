@@ -118,175 +118,175 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BookIt" xml:space="preserve">
-    <value> </value>
+    <value>Book</value>
   </data>
   <data name="BackToUrl" xml:space="preserve">
-    <value> </value>
+    <value>Back</value>
   </data>
   <data name="BookingIntro" xml:space="preserve">
-    <value> </value>
+    <value>Please fill in the following fields to book online, you will receive a confirmation email</value>
   </data>
   <data name="BookingDetails" xml:space="preserve">
-    <value> </value>
+    <value>Booking details</value>
   </data>
   <data name="ConfirmIt" xml:space="preserve">
-    <value> </value>
+    <value>Confirm</value>
   </data>
   <data name="HandleIt" xml:space="preserve">
-    <value> </value>
+    <value>Handle</value>
   </data>
   <data name="RefuseIt" xml:space="preserve">
-    <value> </value>
+    <value>Refuse</value>
   </data>
   <data name="Confirmed" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request has been taken into account. Price and availability will be confirmed by the manager.</value>
   </data>
   <data name="Quotation" xml:space="preserve">
-    <value> </value>
+    <value>Quote request</value>
   </data>
   <data name="BookSpeech" xml:space="preserve">
-    <value> </value>
+    <value>To do a booking request, please fill in the following fields.</value>
   </data>
   <data name="QuotationSpeech" xml:space="preserve">
-    <value> </value>
+    <value>To do a quote request, please fill in the following fields.</value>
   </data>
   <data name="BeginSpeech" xml:space="preserve">
-    <value> </value>
+    <value>Please specify the start and end dates of your booking.</value>
   </data>
   <data name="ValidateQuotation" xml:space="preserve">
-    <value> </value>
+    <value>Validate the quote request</value>
   </data>
   <data name="AskQuotation" xml:space="preserve">
-    <value> </value>
+    <value>Quote request</value>
   </data>
   <data name="Surface" xml:space="preserve">
-    <value> </value>
+    <value>Surface</value>
   </data>
   <data name="Asked" xml:space="preserve">
-    <value> </value>
+    <value>Requested on </value>
   </data>
   <data name="Customer" xml:space="preserve">
-    <value> </value>
+    <value>Customer</value>
   </data>
   <data name="End" xml:space="preserve">
-    <value> </value>
+    <value>End</value>
   </data>
   <data name="Localisation" xml:space="preserve">
-    <value> </value>
+    <value>Venue</value>
   </data>
   <data name="Offer" xml:space="preserve">
-    <value> </value>
+    <value>Offer</value>
   </data>
   <data name="Pay" xml:space="preserve">
-    <value> </value>
+    <value>Pay</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value> </value>
+    <value>Price</value>
   </data>
   <data name="SeeCustomerSheet" xml:space="preserve">
-    <value> </value>
+    <value>See the client profile</value>
   </data>
   <data name="SeeLocSheet" xml:space="preserve">
-    <value> </value>
+    <value>See the workplace profile</value>
   </data>
   <data name="Start" xml:space="preserve">
-    <value> </value>
+    <value>Start</value>
   </data>
   <data name="WaitingForPayement" xml:space="preserve">
-    <value> </value>
+    <value>Waiting payment</value>
   </data>
   <data name="BookPaid" xml:space="preserve">
-    <value> </value>
+    <value>The booking for workplace {0} was paid !</value>
   </data>
   <data name="AskingQuotation" xml:space="preserve">
-    <value> </value>
+    <value>Quote request for {0}</value>
   </data>
   <data name="PayFail" xml:space="preserve">
-    <value> </value>
+    <value>Payment has not been taken into account !</value>
   </data>
   <data name="BookingRefused" xml:space="preserve">
-    <value> </value>
+    <value>Booking request was refused.</value>
   </data>
   <data name="QuotationConfirmed" xml:space="preserve">
-    <value> </value>
+    <value>Your quote request has been taken into account.</value>
   </data>
   <data name="BookingAccepted" xml:space="preserve">
-    <value> </value>
+    <value>Booking request was confirmed.</value>
   </data>
   <data name="BookingCanceled" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request was canceled.</value>
   </data>
   <data name="QuotationCanceled" xml:space="preserve">
-    <value> </value>
+    <value>Your quote request was canceled.</value>
   </data>
   <data name="BookingBeforeToday" xml:space="preserve">
-    <value> </value>
+    <value>Your booking can't start before today.</value>
   </data>
   <data name="EndBookingBeforeStart" xml:space="preserve">
-    <value> </value>
+    <value>The end date of your booking must be posterior to the start date.</value>
   </data>
   <data name="EndQuotationSpeech" xml:space="preserve">
-    <value> </value>
+    <value>You will be contacted very soon by the venue manager.</value>
   </data>
   <data name="QuotationRefused" xml:space="preserve">
-    <value> </value>
+    <value>The quote request was canceled.</value>
   </data>
   <data name="EndSpeech" xml:space="preserve">
-    <value> </value>
+    <value>Availability and price for this booking request will be confirmed by the manager in your profile space. Once confirmed, you will be able to pay online for your booking.</value>
   </data>
   <data name="Achieved" xml:space="preserve">
-    <value> </value>
+    <value>Completed on </value>
   </data>
   <data name="CancelStatus" xml:space="preserve">
-    <value> </value>
+    <value>Canceled on </value>
   </data>
   <data name="ContactStatus" xml:space="preserve">
-    <value> </value>
+    <value>Contacted on</value>
   </data>
   <data name="HasAcceptBooking" xml:space="preserve">
-    <value> </value>
+    <value>{0} accepted your booking request for {1}</value>
   </data>
   <data name="HasAskBooking" xml:space="preserve">
-    <value> </value>
+    <value>{0} made a booking request for {1}</value>
   </data>
   <data name="HasAskQuotation" xml:space="preserve">
-    <value> </value>
+    <value>{0} made a quote request for {1}</value>
   </data>
   <data name="HasCancelBooking" xml:space="preserve">
-    <value> </value>
+    <value>{0} cancelled his booking request for {1}</value>
   </data>
   <data name="HasCancelQuotation" xml:space="preserve">
-    <value> </value>
+    <value>{0} cancelled his booking request for {1}</value>
   </data>
   <data name="HasPaidBooking" xml:space="preserve">
-    <value> </value>
+    <value>{0} paid his booking request for {1}</value>
   </data>
   <data name="HasPaidQuotation" xml:space="preserve">
-    <value> </value>
+    <value>{0} paid his quote request for {1}</value>
   </data>
   <data name="HasRefuseBooking" xml:space="preserve">
-    <value> </value>
+    <value>{0} refused your booking request for {1}</value>
   </data>
   <data name="HasRefuseQuotation" xml:space="preserve">
-    <value> </value>
+    <value>{0} refused to answer your quote request for {1}</value>
   </data>
   <data name="PaidStatus" xml:space="preserve">
-    <value> </value>
+    <value>Paid on </value>
   </data>
   <data name="QuotationCancel" xml:space="preserve">
-    <value> </value>
+    <value>Quote request cancelled on </value>
   </data>
   <data name="QuotationRefuse" xml:space="preserve">
-    <value> </value>
+    <value>Quote request refused on </value>
   </data>
   <data name="RefuseStatus" xml:space="preserve">
-    <value> </value>
+    <value>Refused on </value>
   </data>
   <data name="WaitingConfirm" xml:space="preserve">
-    <value> </value>
+    <value>Waiting for confirmation</value>
   </data>
   <data name="WaitingPayment" xml:space="preserve">
-    <value> </value>
+    <value>Waiting for payment</value>
   </data>
   <data name="WaitingStatus" xml:space="preserve">
     <value> </value>
