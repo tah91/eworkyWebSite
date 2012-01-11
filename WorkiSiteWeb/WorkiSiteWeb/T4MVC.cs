@@ -2936,6 +2936,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult Add(Worki.Data.Models.ProfilFormViewModel formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Add);
+            callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
     }
 }
 
@@ -3173,6 +3179,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string OfferIndex = "OfferIndex";
+            public readonly string AddOfferPrice = "AddOfferPrice";
             public readonly string ConfigureOffer = "ConfigureOffer";
             public readonly string OfferVerticalMenu = "OfferVerticalMenu";
             public readonly string OfferHorizontalMenu = "OfferHorizontalMenu";
@@ -3210,6 +3217,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
             public readonly string _OfferDropDown = "~/Areas/Backoffice/Views/Localisation/_OfferDropDown.cshtml";
             public readonly string _OfferMenu = "~/Areas/Backoffice/Views/Localisation/_OfferMenu.cshtml";
+            public readonly string _OfferPrice = "~/Areas/Backoffice/Views/Localisation/_OfferPrice.cshtml";
             public readonly string Booking = "~/Areas/Backoffice/Views/Localisation/Booking.cshtml";
             public readonly string BookingDetail = "~/Areas/Backoffice/Views/Localisation/BookingDetail.cshtml";
             public readonly string ConfigureOffer = "~/Areas/Backoffice/Views/Localisation/ConfigureOffer.cshtml";
@@ -3242,6 +3250,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferIndex);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("offerid", offerid);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AddOfferPrice() {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddOfferPrice);
             return callInfo;
         }
 

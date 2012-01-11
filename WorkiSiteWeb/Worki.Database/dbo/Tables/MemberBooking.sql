@@ -8,6 +8,7 @@
     [Price]          DECIMAL(18, 2)            DEFAULT (0) NOT NULL,
     [StatusId]	     INT NOT NULL   DEFAULT (0),
     [Response]       NVARCHAR(MAX)  NULL, 
+    [TimeUnits]      INT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_MemberBooking_Offer] FOREIGN KEY ([OfferId]) REFERENCES [dbo].[Offer] ([Id]) ON DELETE CASCADE ON UPDATE NO ACTION,
     CONSTRAINT [FK_MemberBooking_Member] FOREIGN KEY ([MemberId]) REFERENCES [dbo].[Member] ([MemberId]) ON DELETE CASCADE ON UPDATE NO ACTION, 
     CONSTRAINT [PK_MemberBooking] PRIMARY KEY ([Id])

@@ -36,6 +36,7 @@ namespace Worki.Data.Models
         public decimal Price { get; set; }
         public int StatusId { get; set; }
         public string Response { get; set; }
+        public int TimeUnits { get; set; }
     
         // Navigation properties
     

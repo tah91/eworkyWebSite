@@ -17,7 +17,7 @@
 	<div class="blockContainer float-left contentRight">
 		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
         @using (Html.BeginForm(MVC.Backoffice.Localisation.ActionNames.ConfigureOffer, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "configureOfferForm" }))
-        {
+		{
 		    <div class="contentBlock">
 				<h3 class="blue">@Model.InnerModel.Offer.Name</h3>
 	   		    @Html.AntiForgeryToken()
@@ -34,7 +34,7 @@
 						</td>
 					</tr>
                     @if (Model.InnerModel.Offer.CanHaveBooking)
-                    { 
+					{ 
                     <tr>
 						<td>
 						    @Html.LabelFor(m => m.InnerModel.Offer.IsBookable)
@@ -43,9 +43,9 @@
 							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsBookable)
 						</td>
 					</tr>
-                    }
+					}
                     @if (Model.InnerModel.Offer.CanHaveQuotation)
-                    { 
+					{ 
                     <tr>
 						<td>
 						    @Html.LabelFor(m => m.InnerModel.Offer.IsQuotable)
@@ -54,31 +54,15 @@
 							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsQuotable)
 						</td>
 					</tr>
-                    }
+					}
                     @if (Model.InnerModel.Offer.CanHaveBooking)
-                    {
-					<tr>
-						<td>
-							@Html.LabelFor(m => m.InnerModel.Offer.Period)
-						</td>
-						<td>
-							@Html.DropDownListFor(m => m.InnerModel.Offer.Period, Model.InnerModel.Periods)
-						</td>
-					</tr>
+					{
                     <tr>
 						<td>
 							@Html.LabelFor(m => m.InnerModel.Offer.Currency)
 						</td>
 						<td>
 							@Html.DropDownListFor(m => m.InnerModel.Offer.Currency, Model.InnerModel.Currencies)
-						</td>
-					</tr>
-					<tr>
-						<td>
-							@Html.LabelFor(m => m.InnerModel.Offer.Price) @string.Format("({0})", Worki.Resources.Views.BackOffice.BackOfficeString.TTC)
-						</td>
-						<td>
-							@Html.TextBoxFor(m => m.InnerModel.Offer.Price)
 						</td>
 					</tr>
                     <tr>
@@ -89,14 +73,22 @@
 							@Html.DropDownListFor(m => m.InnerModel.Offer.PaymentType, Model.InnerModel.PaymentTypes)
 						</td>
 					</tr>
-                    }
+					}
 				</table>
+							<div class="offerPricesRows">
+				@foreach (var item in Model.InnerModel.Offer.OfferPrices)
+				{
+					@Html.Partial(MVC.Backoffice.Localisation.Views._OfferPrice , item)
+				}
+			</div>
+			@Html.ActionLink("ajouter un tarif", MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { id = "addItem" })
 		    </div>
+
 		    <div class="editor-field float-right">
 			    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
 		    </div>
 		    <div class="clear"></div>
-        }
+		}
 	</div>
 	<div class="clear">
 	</div>
@@ -108,6 +100,22 @@
 	    require(["@Links.Scripts.dropdown_js"], function () {
 	    	InitDropdown("#@DropDownModel.OfferDD");
 	    });
+
+		$("#addItem").click(function () {
+			$.ajax({
+				url: this.href,
+				cache: false,
+				success: function (html) {
+					$(".offerPricesRows").append(html);
+				}
+			});
+			return false;
+		});
+
+		$("button.deleteRow").live("click", function () {
+			$(this).parents(".offerPricesRow:first").remove();
+			return false;
+		});
 
 	    $("#configureOfferForm").submit(function () {
 	    	var offerPrice = $("#InnerModel_Offer_Price").val();

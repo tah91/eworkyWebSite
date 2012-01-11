@@ -107,6 +107,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 		}
 
+
+		public virtual PartialViewResult AddOfferPrice()
+		{
+			return PartialView(MVC.Backoffice.Localisation.Views._OfferPrice, new OfferPrice());
+		}
+
 		/// <summary>
 		/// GET Action result to configure offer
 		/// </summary>
