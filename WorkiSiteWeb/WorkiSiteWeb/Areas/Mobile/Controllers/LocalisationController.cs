@@ -36,7 +36,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ActionName("recherche")]
 		[ValidateAntiForgeryToken]
-		[ValidateOnlyIncomingValues]
+        [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
 		public virtual ActionResult FullSearch(SearchCriteria criteria)
 		{
 			if (ModelState.IsValid)
@@ -52,7 +52,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
 				}
 			}
-			return View(new SearchCriteriaFormViewModel(criteria));
+            return View(MVC.Mobile.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
 		}
 
 		/// <summary>
