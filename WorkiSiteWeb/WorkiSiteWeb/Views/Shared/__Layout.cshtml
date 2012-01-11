@@ -49,7 +49,10 @@
 				<div class="loginContainer detailContent float-right borderRadiusBottom">
 					<div  class="logindisplay sizeHeaderConnexion">
 						@Html.Partial(MVC.Shared.Views._LogOnUserControl)
-						@*@Html.Partial(MVC.Shared.Views._CultureSwitchControl)*@
+                        @if (WebHelper.IsDebug())
+                        {
+						    @Html.Partial(MVC.Shared.Views._CultureSwitchControl)
+                        }
 					</div>
 				</div>
 				<div class="clear">

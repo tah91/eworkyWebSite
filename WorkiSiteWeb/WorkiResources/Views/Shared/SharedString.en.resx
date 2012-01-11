@@ -128,7 +128,7 @@
   </data>
   <data name="Hourly" xml:space="preserve">
     <value>Hourly</value>
-    <comment>Mika</comment>
+    <comment>LocalisationDetails</comment>
   </data>
   <data name="KnowHouly" xml:space="preserve">
     <value> </value>
@@ -245,10 +245,10 @@
     <value>Validate</value>
   <comment>Mika</comment></data>
   <data name="HeaderSearch" xml:space="preserve">
-    <value> </value>
+    <value>Search a workspace</value>
   </data>
   <data name="HeaderSuggest" xml:space="preserve">
-    <value> </value>
+    <value>Add a workspace</value>
   </data>
   <data name="StarPlaces" xml:space="preserve">
     <value> </value>
