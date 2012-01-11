@@ -120,4 +120,7 @@
   <data name="Description" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>Book</value>
+  </data>
 </root>
