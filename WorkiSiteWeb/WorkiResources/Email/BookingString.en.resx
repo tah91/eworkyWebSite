@@ -118,13 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptBookingClient" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request for a &lt;b&gt;{0}&lt;/b&gt; from &lt;b&gt;{1}&lt;/b&gt; to &lt;b&gt;{2}&lt;/b&gt; in the workplace &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) was accepted for an amount of &lt;b&gt;{5}&lt;/b&gt; €.
+
+To confirm definitely your booking, please pay for your booking in your {6}.</value>
   </data>
   <data name="AcceptBookingClientSubject" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request was validated by the manager.</value>
   </data>
   <data name="AcceptBookingOwner" xml:space="preserve">
-    <value> </value>
+    <value>You accepted the booking for a &lt;b&gt;{0}&lt;/b&gt; from &lt;b&gt;{1}&lt;/b&gt; to &lt;b&gt;{2}&lt;/b&gt; in the workplace &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) for an amount of &lt;b&gt;{5}&lt;/b&gt;</value>
   </data>
   <data name="BookingMailBody" xml:space="preserve">
     <value>Name : {0}
@@ -140,11 +142,11 @@ Message : {7} </value>
     <value>eWorky alert - Booking request</value>
   </data>
   <data name="BookingNewMemberBody" xml:space="preserve">
-    <value>Following you booking request for a {0} from {1} to {2} at {3} ({4}), an eWorky account was created. It will enable you to follow all your history and the news on your booking requests. 
+    <value>Following your booking request for a {0} from {1} to {2} at {3} ({4}), an eWorky account was created. It will enable you to follow all your history and the news on your booking requests. 
 
-Your login is "{5}" and your temporary password is "{6}". You can change your password on your profile : {7}. 
+Your login is "{5}" and your temporary password is "{6}". You can change your password on your profile: {7}. 
 
-Please complete your profile details here : {8}.
+Please complete your profile details here: {8}.
 
 We hope to see you soon again on eworky.com,</value>
   </data>
@@ -152,60 +154,90 @@ We hope to see you soon again on eworky.com,</value>
     <value>eWorky - An account was created following your booking request</value>
   </data>
   <data name="BookingOwnerSubject" xml:space="preserve">
-    <value> </value>
+    <value>Booking request - {0}</value>
   </data>
   <data name="CreateBookingClient" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request for a &lt;b&gt;{0}&lt;/b&gt; from &lt;b&gt;{1}&lt;/b&gt; to &lt;b&gt;{2}&lt;/b&gt; in the workplace &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) was taken into account.
+The workspace manager will confirm your booking as soon as possible.</value>
   </data>
   <data name="CreateBookingClientSubject" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request was taken into account</value>
   </data>
   <data name="CreateBookingTeam" xml:space="preserve">
-    <value> </value>
+    <value>&lt;b&gt;Creation&lt;/b&gt;
+
+Name: &lt;b&gt;{0}&lt;/b&gt;
+Phone number: &lt;b&gt;{1}&lt;/b&gt;
+Email address: &lt;b&gt;{2}&lt;/b&gt;
+Workplace name: &lt;b&gt;{3}&lt;/b&gt;
+Need: &lt;b&gt;{4}&lt;/b&gt;
+Start: &lt;b&gt;{5}&lt;/b&gt;
+End: &lt;b&gt;{6}&lt;/b&gt;
+Message: &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="CreateQuotationClient" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request for a &lt;b&gt;{0}&lt;/b&gt; of &lt;b&gt;{1}&lt;/b&gt; m² in the workplace &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) was taken into account. 
+The workspace manager will confirm your booking request as soon as possible.</value>
   </data>
   <data name="CreateQuotationClientSubject" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request was taken into account</value>
   </data>
   <data name="CreateQuotationOwner" xml:space="preserve">
-    <value> </value>
+    <value>Your received a booking request for a {0} in the workplace {1} ({2}).
+
+See you in your {3} to confirm/refuse this booking request as soon as possible.</value>
   </data>
   <data name="CreateQuotationOwnerSubject" xml:space="preserve">
-    <value> </value>
+    <value>Booking request - {0}</value>
   </data>
   <data name="PayementOwner" xml:space="preserve">
-    <value> </value>
+    <value>Booking n°{0} was paid by the client. You can consult confirmed bookings in your manager profile.</value>
   </data>
   <data name="PayementSubject" xml:space="preserve">
-    <value> </value>
+    <value>Booking n°{0} was paid</value>
   </data>
   <data name="QuotationMailBody" xml:space="preserve">
-    <value> </value>
+    <value>Name: &lt;b&gt;{0}&lt;/b&gt;
+Phone number: &lt;b&gt;{1}&lt;/b&gt;
+Email address: &lt;b&gt;{2}&lt;/b&gt;
+Workplace name: &lt;b&gt;{3}&lt;/b&gt;
+Need: &lt;b&gt;{4}&lt;/b&gt;
+Surface: &lt;b&gt;{5}&lt;/b&gt;
+Message: &lt;b&gt;{6}&lt;/b&gt;</value>
   </data>
   <data name="QuotationMailSubject" xml:space="preserve">
-    <value> </value>
+    <value>eWorky aler - Quote request</value>
   </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
-    <value> </value>
+    <value>Following your quote request for a &lt;b&gt;{0}&lt;/b&gt; of &lt;b&gt;{1}&lt;/b&gt; square meters in the workplace &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), an eWorky account was created. It will enable you to follow the history and news about your booking requests and your bookings.
+
+Your login is &lt;b&gt;{4}&lt;/b&gt; and your temporary password is &lt;b&gt;{5}&lt;/b&gt;. You can change your password by visiting your profile: &lt;b&gt;{6}&lt;/b&gt;
+
+Moreover we invite you to complete your profile by going to this address: &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="QuotationNewMemberSubject" xml:space="preserve">
-    <value>eWorky - An account has been created following your price request</value>
-  <comment>?</comment></data>
+    <value>eWorky - An account was created following your price request</value>
+  </data>
   <data name="RefuseMailBody" xml:space="preserve">
     <value> </value>
   </data>
   <data name="RefuseBookingClient" xml:space="preserve">
-    <value> </value>
+    <value>Unfortunately, your booking request for a {0} from {1} at {2} until {3} at {4} in the workplace {5} ({6}) was refused, because it is unavailable.
+
+The manager invites you to try again at another period or for another offer.</value>
   </data>
   <data name="RefuseBookingClientSubject" xml:space="preserve">
-    <value> </value>
+    <value>Your booking request was refused by the manager.</value>
   </data>
   <data name="RefuseBookingOwner" xml:space="preserve">
-    <value> </value>
+    <value>You refused the booking of &lt;b&gt;{0}&lt;/b&gt; from &lt;b&gt;{1}&lt;/b&gt; at &lt;b&gt;{2}&lt;/b&gt; in the workspace &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) for the following reason: &lt;b&gt;{5}&lt;/b&gt;</value>
   </data>
   <data name="RefuseQuotationClient" xml:space="preserve">
-    <value> </value>
+    <value>Your quote request for a &lt;b&gt;{0}&lt;/b&gt; in the workspace &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) was refused for the following reason: {3}</value>
+  </data>
+  <data name="BookingOwnerBody" xml:space="preserve">
+    <value>You received a booking request for a {0} in the workplace {1} ({2}). 
+
+See you in your {3} to confirm/refuse this booking request as soon as possible.</value>
   </data>
 </root>

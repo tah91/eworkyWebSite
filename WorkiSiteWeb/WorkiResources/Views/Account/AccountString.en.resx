@@ -148,8 +148,8 @@
     <value>To make sure profiles are not fake, eWorky is likely to ask you to</value>
   </data>
   <data name="RequiredFields" xml:space="preserve">
-    <value> </value>
-  <comment>?</comment></data>
+    <value>Fields followed by an asterisk are mandatory.</value>
+  </data>
   <data name="SetMailInscription" xml:space="preserve">
     <value>Please enter the email address used when you signed up, your login details will be sent up.</value>
   </data>
@@ -163,12 +163,15 @@
     <value>Please enter the following letters.</value>
   </data>
   <data name="AgreeWithCGU" xml:space="preserve">
-    <value>I read and accept all </value>
-  <comment>?</comment></data>
+    <value>I read and accept eWorky Terms of Services ({0}).</value>
+  </data>
   <data name="PasswordHaveBeenChanged" xml:space="preserve">
-    <value>Your password has been changed.</value>
+    <value>Your password was sent back to your mailbox.</value>
   </data>
   <data name="YouChangeYourPassword" xml:space="preserve">
+    <value>Password has been changed.</value>
+  </data>
+  <data name="EditMyProfile" xml:space="preserve">
     <value> </value>
   </data>
 </root>

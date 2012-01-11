@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DistanceOrdered" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Sort by distance</value>
+  <comment>Mika</comment></data>
   <data name="Entrepreneur" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Entrepreneur</value>
+  <comment>Mika</comment></data>
   <data name="Equipments" xml:space="preserve">
     <value> </value>
   </data>
@@ -130,38 +130,38 @@
     <value> </value>
   </data>
   <data name="Independant" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Independent</value>
+  <comment>Mika</comment></data>
   <data name="KindOfLocation" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Nomad" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Nomad</value>
+  <comment>Mika</comment></data>
   <data name="PlaceExamples" xml:space="preserve">
     <value> </value>
   </data>
   <data name="PlaceFound" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>venue(s) found</value>
+  <comment>Mika</comment></data>
   <data name="RateOrdered" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Sort by rating</value>
+  <comment>Mika</comment></data>
   <data name="RefineSearch" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Refine search</value>
+  <comment>Mika</comment></data>
   <data name="ResultOfSearch" xml:space="preserve">
     <value> </value>
   </data>
   <data name="ResultOnMap" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Your results on map</value>
+  <comment>Mika</comment></data>
   <data name="ReturnToResult" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Back to results</value>
+  <comment>Mika</comment></data>
   <data name="Search" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Search</value>
+  <comment>Mika</comment></data>
   <data name="SearchByPlaceType" xml:space="preserve">
     <value> </value>
   </data>
@@ -169,8 +169,8 @@
     <value> </value>
   </data>
   <data name="SearchResult" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Search result(s)</value>
+  <comment>Mika</comment></data>
   <data name="SpeechForBuisnessman" xml:space="preserve">
     <value> </value>
     <comment>ascx</comment>
@@ -191,8 +191,8 @@
     <value> </value>
   </data>
   <data name="Student" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Student</value>
+  <comment>Mika</comment></data>
   <data name="TypeOfService" xml:space="preserve">
     <value> </value>
   </data>

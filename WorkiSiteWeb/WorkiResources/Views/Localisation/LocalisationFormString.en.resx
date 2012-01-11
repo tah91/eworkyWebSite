@@ -118,118 +118,119 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Access" xml:space="preserve">
-    <value> </value>
+    <value>Access</value>
   </data>
   <data name="Admin" xml:space="preserve">
-    <value> </value>
+    <value>Moderation features</value>
   </data>
   <data name="AvoidPeriods" xml:space="preserve">
-    <value> </value>
+    <value>Avoid periods</value>
   </data>
   <data name="Comfort" xml:space="preserve">
-    <value> </value>
+    <value>Comfort</value>
   </data>
   <data name="EquipementsServices" xml:space="preserve">
-    <value> </value>
+    <value>Facilities &amp; Services</value>
   </data>
   <data name="Facilities" xml:space="preserve">
-    <value> </value>
+    <value>Facilities</value>
   </data>
   <data name="FreeWorkplace" xml:space="preserve">
-    <value> </value>
+    <value>Free workspace</value>
   </data>
   <data name="Friday" xml:space="preserve">
-    <value> </value>
+    <value>Friday</value>
   </data>
   <data name="GlobalInformations" xml:space="preserve">
-    <value> </value>
+    <value>General information</value>
+    
     <comment>LocalisationForm</comment>
   </data>
   <data name="GoogleMapsLocalisation" xml:space="preserve">
-    <value> </value>
+    <value>Google maps location</value>
   </data>
   <data name="LinkToFB" xml:space="preserve">
-    <value> </value>
+    <value>Link to the Facebook page</value>
   </data>
   <data name="LinkToTwitter" xml:space="preserve">
-    <value> </value>
+    <value>Link to the Twitter profile</value>
   </data>
   <data name="MandatoryFields" xml:space="preserve">
-    <value> </value>
+    <value>mandatory fields</value>
   </data>
   <data name="Monday" xml:space="preserve">
-    <value> </value>
+    <value>Monday</value>
   </data>
   <data name="Offers" xml:space="preserve">
-    <value> </value>
+    <value>Offer</value>
   </data>
   <data name="Owner" xml:space="preserve">
-    <value> </value>
+    <value>Features for the workspace manager</value>
   </data>
   <data name="PlaceDetails" xml:space="preserve">
-    <value> </value>
+    <value>Features of the venue</value>
   </data>
   <data name="PlacesExample" xml:space="preserve">
-    <value> </value>
+    <value>Ex: Regus London, the Hub Amsterdam, Club Office Berlin</value>
   </data>
   <data name="ProfessionalServices" xml:space="preserve">
-    <value> </value>
+    <value>Professional services</value>
   </data>
   <data name="ProposedTechnology" xml:space="preserve">
-    <value> </value>
+    <value>Offered technology</value>
   </data>
   <data name="RefineLocation" xml:space="preserve">
-    <value> </value>
+    <value>To refine the location, move the marker</value>
   </data>
   <data name="ResetPosition" xml:space="preserve">
-    <value> </value>
+    <value>Reset the position</value>
   </data>
   <data name="RoadExample" xml:space="preserve">
-    <value> </value>
+    <value>Ex: Access from A15</value>
   </data>
   <data name="RoomCapacity" xml:space="preserve">
-    <value> </value>
+    <value>Room capacity</value>
   </data>
   <data name="Saturday" xml:space="preserve">
-    <value> </value>
+    <value>Saturday</value>
   </data>
   <data name="Services" xml:space="preserve">
-    <value> </value>
+    <value>Services</value>
   </data>
   <data name="SncfExample" xml:space="preserve">
-    <value> </value>
+    <value>Ex: Amsterdam train station</value>
   </data>
   <data name="SubwayExample" xml:space="preserve">
-    <value> </value>
+    <value>Ex: 3 minutes from Ecole Militaire station, line 8</value>
   </data>
   <data name="Sunday" xml:space="preserve">
-    <value> </value>
+    <value>Sunday</value>
   </data>
   <data name="Tariffs" xml:space="preserve">
-    <value> </value>
+    <value>Fees</value>
   </data>
   <data name="ThePlace1" xml:space="preserve">
-    <value> </value>
+    <value>The workplace *</value>
   </data>
   <data name="ThePlace2" xml:space="preserve">
-    <value> </value>
+    <value>* is at the same address as the workplace you are trying to add</value>
   </data>
   <data name="Thursday" xml:space="preserve">
-    <value> </value>
+    <value>Thursday</value>
   </data>
   <data name="TimeExample1" xml:space="preserve">
-    <value> </value>
+    <value>Please enter an hour with hh:mm format, for instance 9:30</value>
   </data>
   <data name="TimeExample2" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Please enter an hour with hh:mm format, for instance 19:30</value>
+  <comment>Problème des pm en Angleterre</comment></data>
   <data name="Tuesday" xml:space="preserve">
-    <value> </value>
+    <value>Tuesday</value>
   </data>
   <data name="UserServices" xml:space="preserve">
-    <value> </value>
+    <value>Users services</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
-    <value> </value>
+    <value>Wednesday</value>
   </data>
 </root>

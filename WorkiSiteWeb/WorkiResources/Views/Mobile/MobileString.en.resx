@@ -118,57 +118,57 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlertSearch" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Try to search by entering a location</value>
+  <comment>?</comment></data>
   <data name="ClassicVersion" xml:space="preserve">
-    <value> </value>
+    <value>Classic version</value>
   </data>
   <data name="Connection" xml:space="preserve">
-    <value> </value>
+    <value>Log in</value>
   </data>
   <data name="ConnectNow" xml:space="preserve">
-    <value> </value>
+    <value>Log in</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
+    <value>Description</value>
   </data>
   <data name="Go" xml:space="preserve">
-    <value> </value>
+    <value>Go !</value>
   </data>
   <data name="Near" xml:space="preserve">
-    <value> </value>
+    <value>close</value>
   </data>
   <data name="NearMyPosition" xml:space="preserve">
-    <value> </value>
+    <value>Close to my position</value>
   </data>
   <data name="Offers" xml:space="preserve">
-    <value> </value>
+    <value>Offers</value>
   </data>
   <data name="OrNear" xml:space="preserve">
-    <value> </value>
+    <value>or close to</value>
   </data>
   <data name="PlaceToWork" xml:space="preserve">
-    <value> </value>
+    <value>venues to work</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value> </value>
+    <value>Search</value>
   </data>
   <data name="Services" xml:space="preserve">
-    <value> </value>
+    <value>Services</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value> </value>
+    <value>Welcome</value>
   </data>
   <data name="Call" xml:space="preserve">
-    <value> </value>
+    <value>Call</value>
   </data>
   <data name="List" xml:space="preserve">
-    <value> </value>
+    <value>List</value>
   </data>
   <data name="Map" xml:space="preserve">
-    <value> </value>
+    <value>Map</value>
   </data>
   <data name="OrViaFB" xml:space="preserve">
-    <value> </value>
+    <value>Or with your Facebook account</value>
   </data>
 </root>

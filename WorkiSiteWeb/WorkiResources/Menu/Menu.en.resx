@@ -118,120 +118,120 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Activity" xml:space="preserve">
-    <value> </value>
+    <value>News</value>
   </data>
   <data name="AddedPlaces" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Added spaces</value>
+  <comment>Mika</comment></data>
   <data name="Admins" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Administrators</value>
+  <comment>Mika</comment></data>
   <data name="AdminSpace" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Administrator space</value>
+  <comment>Mika</comment></data>
   <data name="BOHome" xml:space="preserve">
-    <value> </value>
+    <value>Space</value>
   </data>
   <data name="BONews" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Welcome</value>
+  <comment>Mika</comment></data>
   <data name="Bookings" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Booking requests</value>
+  <comment>Mika</comment></data>
   <data name="BusinessCenterFr" xml:space="preserve">
-    <value> </value>
+    <value>Business centers</value>
   </data>
   <data name="Clients" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Customers</value>
+  <comment>Mika</comment></data>
   <data name="CommentedPlaces" xml:space="preserve">
-    <value> </value>
+    <value>Commented workplaces</value>
   </data>
   <data name="Community" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Community activity</value>
+  <comment>Mika</comment></data>
   <data name="Configure" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Settings</value>
+  <comment>Mika</comment></data>
   <data name="CoworkingSpaceFr" xml:space="preserve">
     <value> </value>
   </data>
   <data name="CurrentBookings" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Bookings</value>
+  <comment>Mika</comment></data>
   <data name="EditPassword" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Password</value>
+  <comment>Mika</comment></data>
   <data name="EditProfil" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Edit</value>
+  <comment>Mika</comment></data>
   <data name="FavoritePlaces" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Favorited venues</value>
+  <comment>Mika</comment></data>
   <data name="Historic" xml:space="preserve">
-    <value> </value>
+    <value>History</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Home</value>
+  <comment>Mika</comment></data>
   <data name="Members" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>eWorkers</value>
+  <comment>Mika</comment></data>
   <data name="Moderation" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Moderation</value>
+  <comment>Mika</comment></data>
   <data name="ModifyPayement" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Payment information</value>
+  <comment>Mika</comment></data>
   <data name="News" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>News</value>
+  <comment>Mika</comment></data>
   <data name="Offers" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Offers</value>
+  <comment>Mika</comment></data>
   <data name="OnlineRental" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Online ads</value>
+  <comment>Mika</comment></data>
   <data name="OwnerSpace" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Manager space</value>
+  <comment>Mika</comment></data>
   <data name="Places" xml:space="preserve">
-    <value> </value>
+    <value>My spaces</value>
   </data>
   <data name="Profil" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Profile</value>
+  <comment>Mika</comment></data>
   <data name="Quoations" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Quote requests</value>
+  <comment>Mika</comment></data>
   <data name="RefreshBlog" xml:space="preserve">
-    <value> </value>
+    <value>Refresh blog</value>
   </data>
   <data name="Rentals" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Ads</value>
+  <comment>Mika</comment></data>
   <data name="Sheet" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Subscription" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Subscriptions</value>
+  <comment>Mika</comment></data>
   <data name="TopMember" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Top 50</value>
+  <comment>Mika</comment></data>
   <data name="UserSpace" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>User space</value>
+  <comment>Mika</comment></data>
   <data name="WorkingBook" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Current bookings</value>
+  <comment>Mika</comment></data>
   <data name="WorkingQuotation" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Current quote requests</value>
+  <comment>Mika</comment></data>
   <data name="Options" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Options</value>
+  <comment>Mika</comment></data>
   <data name="Owner" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Managers</value>
+  <comment>Mika</comment></data>
 </root>

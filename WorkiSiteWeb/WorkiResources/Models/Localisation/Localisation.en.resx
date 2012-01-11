@@ -164,7 +164,7 @@
     <value>Website</value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
-    <value> </value>
+    <value>Incubator</value>
   <comment>?</comment></data>
   <data name="SeminarRoom" xml:space="preserve">
     <value>Caracteristics of conference / seminar rooms</value>
@@ -218,7 +218,7 @@
     <value>Smart work center</value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
-    <value> </value>
+    <value>Travel lounge</value>
   <comment>?</comment></data>
   <data name="RatingDispo" xml:space="preserve">
     <value>Disponibility / calm</value>

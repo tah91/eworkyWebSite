@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DeleteComment" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Delete comment</value>
+  <comment>Mika</comment></data>
   <data name="Error" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Error</value>
+  <comment>Mika</comment></data>
   <data name="ErrorWhenYouAsk" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Hourly" xml:space="preserve">
-    <value> </value>
-    <comment>LocalisationDetails</comment>
+    <value>Hourly</value>
+    <comment>Mika</comment>
   </data>
   <data name="KnowHouly" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Tweet" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Tweet</value>
+  <comment>Mika</comment></data>
   <data name="Users" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Users</value>
+  <comment>Mika</comment></data>
   <data name="WhatEWorkyCouldDo" xml:space="preserve">
     <value> </value>
   </data>
@@ -146,8 +146,8 @@
     <value> </value>
   </data>
   <data name="Admin" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Administrator</value>
+  <comment>Mika</comment></data>
   <data name="CGU" xml:space="preserve">
     <value> </value>
   </data>
@@ -155,44 +155,44 @@
     <value> </value>
   </data>
   <data name="Deconnect" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Disconnection</value>
+  <comment>Mika</comment></data>
   <data name="Workplace" xml:space="preserve">
     <value> </value>
   </data>
   <data name="ImportLocalisations" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Import</value>
+  <comment>Mika</comment></data>
   <data name="Welcome" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Bookings" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Bookings</value>
+  <comment>Mika</comment></data>
   <data name="Press" xml:space="preserve">
     <value> </value>
   </data>
   <data name="DirectAccess" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Direct Access</value>
+  <comment>Mika</comment></data>
   <data name="Delete" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Delete</value>
+  <comment>Mika</comment></data>
   <data name="Logo" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Logo</value>
+  <comment>Mika</comment></data>
   <data name="Principal" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Main</value>
+  <comment>Mika</comment></data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Description</value>
+  <comment>Mika</comment></data>
   <data name="InfoAdmin" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Offers" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Offers</value>
+  <comment>Mika</comment></data>
   <data name="Services" xml:space="preserve">
     <value> </value>
   </data>
@@ -203,20 +203,20 @@
     <value> </value>
   </data>
   <data name="Adds" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Add</value>
+  <comment>Mika</comment></data>
   <data name="Connect" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Log in</value>
+  <comment>Mika</comment></data>
   <data name="LogIn" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Connect</value>
+  <comment>Mika</comment></data>
   <data name="MinChar" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Modify" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Modify</value>
+  <comment>Mika</comment></data>
   <data name="NextDesc" xml:space="preserve">
     <value> </value>
   </data>
@@ -224,26 +224,26 @@
     <value> </value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Reset</value>
+  <comment>Mika</comment></data>
   <data name="Save" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Save</value>
+  <comment>Mika</comment></data>
   <data name="Search" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Search</value>
+  <comment>Mika</comment></data>
   <data name="Send" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Send</value>
+  <comment>Mika</comment></data>
   <data name="Subscribe" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Subscribe</value>
+  <comment>Mika</comment></data>
   <data name="Suppress" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Delete</value>
+  <comment>Mika</comment></data>
   <data name="Valid" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Validate</value>
+  <comment>Mika</comment></data>
   <data name="HeaderSearch" xml:space="preserve">
     <value> </value>
   </data>
@@ -257,8 +257,8 @@
     <value> </value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Sign in</value>
+  <comment>Mika</comment></data>
   <data name="FastLogonFb" xml:space="preserve">
     <value> </value>
   </data>
@@ -266,23 +266,23 @@
     <value> </value>
   </data>
   <data name="SignViaFB" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Sign in with Facebook</value>
+  <comment>Mika</comment></data>
   <data name="Or" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>or</value>
+  <comment>Mika</comment></data>
   <data name="No" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>No</value>
+  <comment>Mika</comment></data>
   <data name="Yes" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Yes</value>
+  <comment>Mika</comment></data>
   <data name="ActivationCongratz" xml:space="preserve">
     <value> </value>
   </data>
   <data name="Quotations" xml:space="preserve">
-    <value> </value>
-  </data>
+    <value>Quotation</value>
+  <comment>Mika</comment></data>
   <data name="AddLocError" xml:space="preserve">
     <value> </value>
   </data>
