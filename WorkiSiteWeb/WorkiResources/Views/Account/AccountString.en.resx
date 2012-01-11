@@ -174,4 +174,7 @@
   <data name="EditMyProfile" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value>backoffice</value>
+  </data>
 </root>
