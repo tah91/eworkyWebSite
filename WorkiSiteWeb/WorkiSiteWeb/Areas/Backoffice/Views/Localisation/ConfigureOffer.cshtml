@@ -75,13 +75,13 @@
 					</tr>
 					}
 				</table>
-							<div class="offerPricesRows">
-				@foreach (var item in Model.InnerModel.Offer.OfferPrices)
-				{
-					@Html.Partial(MVC.Backoffice.Localisation.Views._OfferPrice , item)
-				}
-			</div>
-			@Html.ActionLink("ajouter un tarif", MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { id = "addItem" })
+			    <div class="offerPricesRows">
+				    @foreach (var item in Model.InnerModel.Offer.OfferPrices)
+				    {
+					    @Html.Partial(MVC.Backoffice.Localisation.Views._OfferPrice , item)
+				    }
+			    </div>
+			    @Html.ActionLink("Ajouter un tarif", MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { id = "addItem" })
 		    </div>
 
 		    <div class="editor-field float-right">

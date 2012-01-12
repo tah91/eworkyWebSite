@@ -313,6 +313,11 @@
     height : 30px;
 }
 
+.offerPricesRows
+{
+    
+}
+
 select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
 {
     width:204px;

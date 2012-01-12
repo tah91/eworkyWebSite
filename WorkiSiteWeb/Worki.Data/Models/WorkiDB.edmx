@@ -361,6 +361,7 @@
           <Property Name="Event" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="EventType" Type="int" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberClient">
           <Key>
@@ -433,6 +434,7 @@
           <Property Name="Event" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="EventType" Type="int" Nullable="false" />
+          <Property Name="Read" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberQuotationTransaction">
           <Key>
@@ -1392,6 +1394,7 @@
 					<Property Type="Int32" Name="EventType" Nullable="false" />
 					<NavigationProperty Name="MemberBooking" Relationship="WorkiDBModel.FK_MemberBookingLog_MemberBooking" FromRole="MemberBookingLog" ToRole="MemberBooking" />
 					<Property Type="Int32" Name="LoggerId" Nullable="false" />
+          <Property Type="Boolean" Name="Read" Nullable="false" />
 				</EntityType>
 				<EntityType Name="MemberEdition">
 					<Key>
@@ -1639,6 +1642,7 @@
 					<Property Type="Int32" Name="EventType" Nullable="false" />
 					<Property Type="Int32" Name="LoggerId" Nullable="false" />
 					<NavigationProperty Name="MemberQuotation" Relationship="WorkiDBModel.FK_MemberQuotationLog_MemberQuotation" FromRole="MemberQuotationLog" ToRole="MemberQuotation" />
+          <Property Type="Int32" Name="Read" Nullable="false" />
 				</EntityType>
 				<EntityType Name="MemberQuotationTransaction">
 					<Key>
@@ -2304,7 +2308,8 @@
 					<EntitySetMapping Name="MemberBookingLogs">
 						<EntityTypeMapping TypeName="WorkiDBModel.MemberBookingLog">
 							<MappingFragment StoreEntitySet="MemberBookingLog">
-								<ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+								<ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
 								<ScalarProperty Name="EventType" ColumnName="EventType" />
 								<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
 								<ScalarProperty Name="Event" ColumnName="Event" />
@@ -2493,7 +2498,8 @@
 					<EntitySetMapping Name="MemberQuotationLogs">
 						<EntityTypeMapping TypeName="WorkiDBModel.MemberQuotationLog">
 							<MappingFragment StoreEntitySet="MemberQuotationLog">
-								<ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+								<ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
 								<ScalarProperty Name="EventType" ColumnName="EventType" />
 								<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
 								<ScalarProperty Name="Event" ColumnName="Event" />
