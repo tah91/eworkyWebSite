@@ -145,7 +145,7 @@
     <value>avis</value>
   </data>
   <data name="PlaceExamples" xml:space="preserve">
-    <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, ...</value>
+    <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, etc.</value>
   </data>
   <data name="PlaceFound" xml:space="preserve">
     <value>lieu(x) trouvé(s)</value>

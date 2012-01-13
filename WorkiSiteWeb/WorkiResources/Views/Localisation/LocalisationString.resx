@@ -239,10 +239,10 @@
   </data>
   <data name="Main" xml:space="preserve">
     <value>A la Une</value>
-  </data>
+  <comment>?</comment></data>
   <data name="NotMain" xml:space="preserve">
     <value>Pas à la Une</value>
-  </data>
+  <comment>?</comment></data>
   <data name="NoPictureAvailable" xml:space="preserve">
     <value>Aucune photo disponible</value>
   </data>

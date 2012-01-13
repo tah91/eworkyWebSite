@@ -119,26 +119,26 @@
   </resheader>
   <data name="DeleteComment" xml:space="preserve">
     <value>Effacer le commentaire</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="ErrorWhenYouAsk" xml:space="preserve">
     <value>Désolé, une erreur s'est produite lors du traitement de votre demande. Vous pouvez retourner sur la page d'accueil : {0} ou nous contacter si le problème persiste : support@eworky.com</value>
   </data>
   <data name="Hourly" xml:space="preserve">
     <value>Horaires</value>
-    <comment>LocalisationDetails</comment>
+    
   </data>
   <data name="KnowHouly" xml:space="preserve">
     <value>Si vous connaissez les horaires d'ouverture de ce lieu, saisissez-les grâce au formulaire d'édition ou contactez-nous : </value>
   </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweet</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Users" xml:space="preserve">
     <value>Utilisateurs</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="WhatEWorkyCouldDo" xml:space="preserve">
     <value>Découvrez tout ce que eWorky peut faire pour vous</value>
   </data>
@@ -147,7 +147,7 @@
   </data>
   <data name="Admin" xml:space="preserve">
     <value>Administrateur</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="CGU" xml:space="preserve">
     <value>CGU</value>
   </data>
@@ -156,43 +156,43 @@
   </data>
   <data name="Deconnect" xml:space="preserve">
     <value>Déconnexion</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Workplace" xml:space="preserve">
     <value>Lieux de travail</value>
   </data>
   <data name="ImportLocalisations" xml:space="preserve">
     <value>Importer</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Welcome" xml:space="preserve">
     <value>Profil accueil</value>
   </data>
   <data name="Bookings" xml:space="preserve">
     <value>Réservations</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Press" xml:space="preserve">
     <value>Presse</value>
   </data>
   <data name="DirectAccess" xml:space="preserve">
     <value>Accès direct</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Logo" xml:space="preserve">
     <value>Logo</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Principal" xml:space="preserve">
     <value>Principal</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="InfoAdmin" xml:space="preserve">
     <value>Infos Admin</value>
   </data>
   <data name="Offers" xml:space="preserve">
     <value>Offres</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Services" xml:space="preserve">
     <value>Services professionnels</value>
   </data>
@@ -204,19 +204,19 @@
   </data>
   <data name="Adds" xml:space="preserve">
     <value>Ajouter</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Connect" xml:space="preserve">
     <value>Connexion</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Se connecter</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="MinChar" xml:space="preserve">
     <value>caractères min.</value>
   </data>
   <data name="Modify" xml:space="preserve">
     <value>Modifier</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="NextDesc" xml:space="preserve">
     <value>Fiche Suivante &gt;</value>
   </data>
@@ -225,25 +225,25 @@
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Réinitialiser</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Rechercher</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Send" xml:space="preserve">
     <value>Envoyer</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Subscribe" xml:space="preserve">
     <value>S'inscrire</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Suppress" xml:space="preserve">
     <value>Supprimer</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Valid" xml:space="preserve">
     <value>Valider</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="HeaderSearch" xml:space="preserve">
     <value>Rechercher un espace</value>
   </data>
@@ -258,7 +258,7 @@
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>S'identifier</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="FastLogonFb" xml:space="preserve">
     <value>Pour gagner du temps, connectez-vous grâce à votre compte Facebook.</value>
   </data>
@@ -267,22 +267,22 @@
   </data>
   <data name="SignViaFB" xml:space="preserve">
     <value>Inscrivez-vous avec Facebook</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Or" xml:space="preserve">
     <value>ou</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Non</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Yes" xml:space="preserve">
     <value>Oui</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="ActivationCongratz" xml:space="preserve">
     <value>Votre compte vient d'être activé, félicitations !</value>
   </data>
   <data name="Quotations" xml:space="preserve">
     <value>Devis</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="AddLocError" xml:space="preserve">
     <value>Une erreur a eu lieu ({0} lieux de travail ont été ajoutés) =&gt; {1}</value>
   </data>

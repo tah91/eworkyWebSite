@@ -157,7 +157,7 @@
     <value>Other</value>
   </data>
   <data name="PaymentAddress" xml:space="preserve">
-    <value> </value>
+    <value>URL address for Paypal payment </value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Mobile phone</value>
@@ -166,7 +166,7 @@
     <value>Profile</value>
   </data>
   <data name="PunctualUser" xml:space="preserve">
-    <value> </value>
+    <value>Punctual user</value>
   <comment>?</comment></data>
   <data name="Startup" xml:space="preserve">
     <value>Entrepreneur / Small company</value>

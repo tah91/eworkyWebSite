@@ -118,70 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Commercial" xml:space="preserve">
-    <value> </value>
+    <value>Commercial: contacting hotels, business centers, etc.</value>
   <comment>pas à traduire ?</comment></data>
   <data name="CommunicationIntern" xml:space="preserve">
-    <value> </value>
+    <value>eWorky is currently looking for a trainee in communicaton to do many things, including:</value>
   </data>
   <data name="CommunityManagement" xml:space="preserve">
-    <value> </value>
+    <value>Community management (Twitter and other social networks)</value>
   </data>
   <data name="Event" xml:space="preserve">
-    <value> </value>
+    <value>Organize some events: games, parties, etc.</value>
   </data>
   <data name="EWProject" xml:space="preserve">
-    <value> </value>
+    <value>But eWorky is also a very promising start-up. We are part of Microsoft Bizspark program and were selected by Frenchweb as "one of the 10 startups of 2011".</value>
   </data>
   <data name="EWSearchEveryProfil" xml:space="preserve">
-    <value> </value>
+    <value>eWorky is currently looking for C# web developpers:</value>
   </data>
   <data name="EWSearchStudents" xml:space="preserve">
-    <value> </value>
+    <value>To help us growing, we are looking for young (and older) developers and business developers. So if you want to join a cool project and work with us, please send your CV and your cover letter to contact@eworky.com!</value>
   </data>
   <data name="EWSpirit" xml:space="preserve">
-    <value> </value>
+    <value>eWorky spirit</value>
   </data>
   <data name="EWTeam" xml:space="preserve">
-    <value> </value>
+    <value>eWorky is a team of three highly energetic and motivated entrepreneurs helped by three exceptional employees who work in a warm and stimulating atmosphere. Start-up spirit guaranteed!</value>
   </data>
   <data name="InternGoodUniversity" xml:space="preserve">
-    <value> </value>
+    <value>We are looking for an intern (internship &gt; 3 months) with a great background. A large autonomy, a entrepreneurship spirit, lots of creativity and good oral and writing skills are required. </value>
   </data>
   <data name="Jobs" xml:space="preserve">
     <value>Jobs</value>
     <comment>JOBS</comment>
   </data>
   <data name="JuniorDev" xml:space="preserve">
-    <value> </value>
+    <value>Junior developper for a more than 3 months internship, and &lt;/br&gt; having web development background. The intern will be&lt;/br&gt; paid, the amount depending on the profile.</value>
   </data>
   <data name="LikeDev" xml:space="preserve">
-    <value> </value>
+    <value>You like to develop? You are young, motivated, autonomous and you love to take up challenges! Willing to work in a web start-up? Then join eWorky!</value>
   </data>
   <data name="Marketing" xml:space="preserve">
-    <value> </value>
+    <value>Marketing: web-marketing (adwords), buzz, etc.</value>
   </data>
   <data name="MoreThings" xml:space="preserve">
-    <value> </value>
+    <value>And many other things!</value>
   </data>
   <data name="PressRelation" xml:space="preserve">
-    <value> </value>
+    <value>Public relations: contacts/answers</value>
   </data>
   <data name="SearchInternShip" xml:space="preserve">
-    <value> </value>
+    <value>You are looking for an internship? You like communication, marketing and commercial? You are young, motivated, autonomous and you love to take up challenges? Willing to work in a start-up? Then join eWorky!</value>
   </data>
   <data name="SendUsCV" xml:space="preserve">
-    <value> </value>
+    <value>There is no time to loose, send your CV and your cover letter to {0}</value>
   </data>
   <data name="SeniorDev" xml:space="preserve">
-    <value> </value>
+    <value>Senior developer (freelance contracts)</value>
   </data>
   <data name="SoulBuisnessDev" xml:space="preserve">
-    <value> </value>
+    <value>You feel like doing business development?</value>
   </data>
   <data name="YouAreDev" xml:space="preserve">
-    <value> </value>
+    <value>You are a developer?</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value> </value>
+    <value>To help us growing, we are looking for young talents ready to join the adventure.</value>
   </data>
 </root>

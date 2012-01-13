@@ -189,4 +189,7 @@
   <data name="WorkingHotel" xml:space="preserve">
     <value>Incubator</value>
   </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Shared office</value>
+  </data>
 </root>

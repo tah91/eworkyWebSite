@@ -211,7 +211,7 @@
     <value>Ads</value>
   <comment>Mika</comment></data>
   <data name="Sheet" xml:space="preserve">
-    <value> </value>
+    <value>Pages</value>
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Subscriptions</value>
@@ -234,4 +234,13 @@
   <data name="Owner" xml:space="preserve">
     <value>Managers</value>
   <comment>Mika</comment></data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Planning</value>
+  </data>
+  <data name="AddClient" xml:space="preserve">
+    <value>Add a client</value>
+  </data>
+  <data name="MyClients" xml:space="preserve">
+    <value>My clients</value>
+  </data>
 </root>

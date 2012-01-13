@@ -228,7 +228,7 @@
   </data>
   <data name="TimeExample2" xml:space="preserve">
     <value>Entrer une heure au format hh:mm, par exemple: 19:30</value>
-  </data>
+  <comment>Problème des pm en Angleterre</comment></data>
   <data name="Tuesday" xml:space="preserve">
     <value>Mardi</value>
   </data>

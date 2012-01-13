@@ -152,28 +152,28 @@
     <value>Home page</value>
   </data>
   <data name="HowAddWorkplace" xml:space="preserve">
-    <value>How to add a workplace ?</value>
+    <value>How to add a workplace?</value>
   </data>
   <data name="HowCreateAccount" xml:space="preserve">
-    <value>How to create an account ? Why should I sign up ?</value>
+    <value>How to create an account? Why should I sign up?</value>
   </data>
   <data name="HowEdit" xml:space="preserve">
-    <value>The workplace profile contains incorrect information, how to correct it ?</value>
+    <value>The workplace profile contains incorrect information, how to correct it?</value>
   </data>
   <data name="HowFindWorkplace" xml:space="preserve">
-    <value>How to find a workspace ?</value>
+    <value>How to find a workspace?</value>
   </data>
   <data name="HowRateComment" xml:space="preserve">
-    <value>How to comment and mark a workplace ?</value>
+    <value>How to comment and mark a workplace?</value>
   </data>
   <data name="HowSuggestWorkplace" xml:space="preserve">
-    <value>How to add a bookable workplace ?</value>
+    <value>How to add a bookable workplace?</value>
   </data>
   <data name="Inscription" xml:space="preserve">
     <value>sign up</value>
   </data>
   <data name="InviteFriends" xml:space="preserve">
-    <value>How to invite my friends to join eWorky community ?</value>
+    <value>How to invite my friends to join eWorky community?</value>
   </data>
   <data name="OnEWBuisnessCenter" xml:space="preserve">
     <value>On eWorky, a business center is a furnished offices building, that rents its individual offices for a limited period. The proposed rental agreements are more flexible and shorter than traditional rental agreements.</value>
@@ -224,10 +224,10 @@
     <value>If you want to propose a workspace or to join our community, you can {0}. By signing up on eWorky, you can add and comment workspaces.</value>
   </data>
   <data name="ReportBug" xml:space="preserve">
-    <value>How to report a bug ?</value>
+    <value>How to report a bug?</value>
   </data>
   <data name="RetrivePassword" xml:space="preserve">
-    <value>How to retrieve my password ?</value>
+    <value>How to retrieve my password?</value>
   </data>
   <data name="SearchPage" xml:space="preserve">
     <value>Search page</value>
@@ -240,55 +240,55 @@ Moreover, pictures are particularly obvious on workspaces profiles therefore we 
     <value>Subscription</value>
   </data>
   <data name="WhatIsBuisnessCenter" xml:space="preserve">
-    <value>What is a business center ?</value>
+    <value>What is a business center?</value>
   </data>
   <data name="WhatIsBuisnessHotel" xml:space="preserve">
-    <value>What is an incubator ?</value>
+    <value>What is an incubator?</value>
   </data>
   <data name="WhatIsBuisnessLounge" xml:space="preserve">
-    <value>What is a business lounge ?</value>
+    <value>What is a business lounge?</value>
   </data>
   <data name="WhatIsConferenceRoom" xml:space="preserve">
-    <value>What is a conference or seminar room ?</value>
+    <value>What is a conference or seminar room?</value>
   </data>
   <data name="WhatIsCoworking" xml:space="preserve">
-    <value>What is a coworking space ?</value>
+    <value>What is a coworking space?</value>
   </data>
   <data name="WhatIsDigitalPublicSpace" xml:space="preserve">
-    <value>What is a public digital space ?</value>
+    <value>What is a public digital space?</value>
   </data>
   <data name="WhatIsEWorky" xml:space="preserve">
-    <value>What does eWorky do ?</value>
+    <value>What does eWorky do?</value>
   <comment>?</comment></data>
   <data name="WhatIsMeetingRoom" xml:space="preserve">
-    <value>What is a meeting room ?</value>
+    <value>What is a meeting room?</value>
   </data>
   <data name="WhatIsOffice" xml:space="preserve">
-    <value>What are offices ?</value>
+    <value>What are offices?</value>
   </data>
   <data name="WhatIsPrivatePlace" xml:space="preserve">
-    <value>What is a private place ?</value>
+    <value>What is a private place?</value>
   </data>
   <data name="WhatIsTelecenter" xml:space="preserve">
-    <value>What is a telecottage ?</value>
+    <value>What is a smart work center?</value>
   </data>
   <data name="WhatIsTelepresenceRoom" xml:space="preserve">
-    <value>What is a telepresence room ?</value>
+    <value>What is a telepresence room?</value>
   </data>
   <data name="WhatIsVisioRoom" xml:space="preserve">
-    <value>What is a visioconference room ?</value>
+    <value>What is a visioconference room?</value>
   </data>
   <data name="WhatIsWorkOffice" xml:space="preserve">
-    <value>What is a desk ?</value>
+    <value>What is a desk?</value>
   <comment>?</comment></data>
   <data name="WhatIsWorkStation" xml:space="preserve">
-    <value>What is a desk ?</value>
+    <value>What is a desk?</value>
   </data>
   <data name="WorkplaceManager" xml:space="preserve">
-    <value>You manage a business center or a telecottage and want to enable eWorkers to book your desks online ? You can send us an email at contact@eworky.com</value>
+    <value>You manage a business center or a telecottage and want to enable eWorkers to book your desks online? You can send us an email at contact@eworky.com</value>
   </data>
   <data name="YouCanFindAll" xml:space="preserve">
-    <value>Whether you're looking for business centers, hotels, cafes, telecottages or offices buiding, whether you want to find, book, buy, rent, sell or share workspaces, eWorky will be there for you. You will find on eWorky the workspace you need, you will be able to comment your favorite workspace profile, to book it online, to add other workspaces or to find offices to rent or buy. By adapting to your new way of working, eWorky is for sure the best place to work !</value>
+    <value>Whether you're looking for business centers, hotels, cafes, telecottages or offices buiding, whether you want to find, book, buy, rent, sell or share workspaces, eWorky will be there for you. You will find on eWorky the workspace you need, you will be able to comment your favorite workspace profile, to book it online, to add other workspaces or to find offices to rent or buy. By adapting to your new way of working, eWorky is for sure the best place to work!</value>
   </data>
   <data name="YourPossiblilitiesOnForm" xml:space="preserve">
     <value>In the "Propose a workplace" form, you will be able to choose pictures to illustrate your workplace description. To do so, you need to put your pictures on "+ add your pictures" or click on this button to choose your file, then click on Download to send it to us. The size of each picture should not exceed 3 Mo and you cannot add more than 10 pictures. Please make sure that you respect these limits and if the problem persists, you can contact us by email at support@eworky.com.</value>
@@ -303,13 +303,13 @@ Moreover, pictures are particularly obvious on workspaces profiles therefore we 
     <value>The number of edits is limited to 15 a day. If you don't manage to edit workplaces anymore, please check that you did not go through the limit. If the problem persists, you can contact us by email at support@eworky.com.</value>
   </data>
   <data name="HowEditProfil" xml:space="preserve">
-    <value>How to edit my profile ?</value>
+    <value>How to edit my profile?</value>
   </data>
   <data name="WhatAreThosePoint" xml:space="preserve">
-    <value>What do the points on my profile mean ?</value>
+    <value>What do the points on my profile mean?</value>
   </data>
   <data name="WhatIsTeleWork" xml:space="preserve">
-    <value>What is telecommuting ?</value>
+    <value>What is telecommuting?</value>
   </data>
   <data name="WhyThereArePoint" xml:space="preserve">
     <value>By helping eWorky community, you get some points that will enable you to take part to games and get some discounts. You earn points by adding workplaces, by editing or commenting existing ones or even by completing your profile.</value>
