@@ -289,6 +289,12 @@
     <value>Waiting for payment</value>
   </data>
   <data name="WaitingStatus" xml:space="preserve">
-    <value> </value>
+    <value>Waiting for handling</value>
+  </data>
+  <data name="PaymentError" xml:space="preserve">
+    <value>An error is preventing payment to take place, please contact us at support@eworky.com.</value>
+  </data>
+  <data name="MessageToOwner" xml:space="preserve">
+    <value>Message to owner (optional)</value>
   </data>
 </root>

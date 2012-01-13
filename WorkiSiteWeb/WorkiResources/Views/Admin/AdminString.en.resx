@@ -349,6 +349,15 @@
     <value>Score</value>
   </data>
   <data name="BORole" xml:space="preserve">
-    <value> </value>
+    <value>Back-office role</value>
+  </data>
+  <data name="Stickers" xml:space="preserve">
+    <value>Sticker</value>
+  </data>
+  <data name="BackOfficeRoleUpdated" xml:space="preserve">
+    <value>Updated back-office role.</value>
+  </data>
+  <data name="OwnersHasChanged" xml:space="preserve">
+    <value>Managers were modified.</value>
   </data>
 </root>

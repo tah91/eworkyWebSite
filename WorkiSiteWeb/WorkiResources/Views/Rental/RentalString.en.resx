@@ -118,213 +118,213 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Access" xml:space="preserve">
-    <value> </value>
+    <value>Location</value>
   </data>
   <data name="AccurateSearch" xml:space="preserve">
-    <value> </value>
+    <value>Refine your search</value>
   </data>
   <data name="AddAnother" xml:space="preserve">
-    <value> </value>
+    <value>Add a public tranport access</value>
   </data>
   <data name="AddRental" xml:space="preserve">
-    <value> </value>
+    <value>Add an ads</value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>Address :</value>
-  <comment>Mika</comment></data>
+    <value>Address:</value>
+  </data>
   <data name="And" xml:space="preserve">
     <value>and</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Area" xml:space="preserve">
     <value>Surface</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="AreaUnit" xml:space="preserve">
     <value>(m²)</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Availability" xml:space="preserve">
     <value>Availability</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="AvailableDate" xml:space="preserve">
-    <value> </value>
+    <value>Availabilities</value>
   </data>
   <data name="BeginResultAnswer" xml:space="preserve">
-    <value> </value>
+    <value>Search result(s):</value>
   </data>
   <data name="Between" xml:space="preserve">
-    <value>Range between :</value>
-  <comment>Mika</comment></data>
+    <value>Range between:</value>
+  </data>
   <data name="CheckProfile" xml:space="preserve">
-    <value> </value>
+    <value>Consult the profile:</value>
   </data>
   <data name="CheckThisOut" xml:space="preserve">
-    <value> </value>
+    <value>I recommand you to discover this ads:</value>
   </data>
   <data name="ChooseDate" xml:space="preserve">
     <value>Pick up a date</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="City" xml:space="preserve">
-    <value> </value>
+    <value>City:</value>
   </data>
   <data name="CommonTransportAccess" xml:space="preserve">
-    <value> </value>
+    <value>Public transport access</value>
   </data>
   <data name="ContractType" xml:space="preserve">
-    <value> </value>
+    <value>Contract type</value>
   </data>
   <data name="CreateAlert" xml:space="preserve">
-    <value> </value>
+    <value>Create an email alert</value>
   </data>
   <data name="DateDrop" xml:space="preserve">
-    <value> </value>
+    <value>Published on:</value>
   </data>
   <data name="DateExample" xml:space="preserve">
-    <value> </value>
+    <value>Ex: 12/31/2011</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Detail" xml:space="preserve">
-    <value>Detail</value>
-  <comment>Mika</comment></data>
+    <value>Details</value>
+  </data>
   <data name="DiagnosticRate" xml:space="preserve">
-    <value> </value>
+    <value>Rating:</value>
   </data>
   <data name="EditRental" xml:space="preserve">
-    <value> </value>
+    <value>Edit an ads</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>E-mail :</value>
-  <comment>Mika</comment></data>
+    <value>Email address:</value>
+  </data>
   <data name="EndResultAnswer" xml:space="preserve">
-    <value> </value>
+    <value>ad(s) found</value>
   </data>
   <data name="ExMaxArea" xml:space="preserve">
-    <value>Ex : 150</value>
-  <comment>Mika</comment></data>
+    <value>Ex: 150</value>
+  </data>
   <data name="ExMaxRate" xml:space="preserve">
-    <value>Ex : 5000</value>
-  <comment>Mika</comment></data>
+    <value>Ex: 5000</value>
+  </data>
   <data name="ExMinArea" xml:space="preserve">
-    <value>Ex : 25</value>
-  <comment>Mika</comment></data>
+    <value>Ex: 25</value>
+  </data>
   <data name="ExMinRate" xml:space="preserve">
-    <value>Ex : 400</value>
-  <comment>Mika</comment></data>
+    <value>Ex: 400</value>
+  </data>
   <data name="Features" xml:space="preserve">
-    <value> </value>
+    <value>Features</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>First name :</value>
-  <comment>Mika</comment></data>
+    <value>First name:</value>
+  </data>
   <data name="HeatingType" xml:space="preserve">
-    <value> </value>
+    <value>Heating type:</value>
   </data>
   <data name="Images" xml:space="preserve">
     <value>Pictures</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="InfoAdmin" xml:space="preserve">
-    <value> </value>
+    <value>Admin information</value>
   </data>
   <data name="Infos" xml:space="preserve">
-    <value> </value>
+    <value>General information</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Last name :</value>
-  <comment>Mika</comment></data>
+    <value>Last name:</value>
+  </data>
   <data name="LeaseType" xml:space="preserve">
-    <value> </value>
+    <value>Lease type:</value>
   </data>
   <data name="Localisation" xml:space="preserve">
-    <value> </value>
+    <value>Location</value>
   </data>
   <data name="MaxArea" xml:space="preserve">
-    <value> </value>
+    <value>Maximum surface</value>
   </data>
   <data name="MaxPrice" xml:space="preserve">
-    <value> </value>
+    <value>Maximum price</value>
   </data>
   <data name="MinArea" xml:space="preserve">
-    <value> </value>
+    <value>Minimum surface</value>
   </data>
   <data name="MinPrice" xml:space="preserve">
-    <value> </value>
+    <value>Minimum price</value>
   </data>
   <data name="MoneyUnit" xml:space="preserve">
-    <value> </value>
+    <value>(€ all included)</value>
   </data>
   <data name="MoreDetail" xml:space="preserve">
     <value>More details</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Now" xml:space="preserve">
-    <value> </value>
+    <value>Immediately</value>
   </data>
   <data name="Others" xml:space="preserve">
     <value>Others</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Owner" xml:space="preserve">
-    <value> </value>
+    <value>Owner</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Phone number :</value>
-  <comment>Mika</comment></data>
+    <value>Phone number:</value>
+  </data>
   <data name="Place" xml:space="preserve">
     <value>Venue</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="PlaceExemple" xml:space="preserve">
-    <value> </value>
+    <value>Ex: Amsterdam, Manhattan, City of London, etc.</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
-    <value> </value>
+    <value>Postcode:</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Print" xml:space="preserve">
-    <value> </value>
+    <value>Print this ads</value>
   </data>
   <data name="Ref" xml:space="preserve">
-    <value> </value>
+    <value>Reference</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value> </value>
+    <value>eWorky reference:</value>
   </data>
   <data name="Rental" xml:space="preserve">
-    <value> </value>
+    <value>Advert</value>
   </data>
   <data name="RentalEdit" xml:space="preserve">
-    <value> </value>
+    <value>Edit the advert</value>
   </data>
   <data name="RentalHaveBeenCreate" xml:space="preserve">
-    <value> </value>
+    <value>The advert was created.</value>
   </data>
   <data name="RentalHaveBeenDel" xml:space="preserve">
-    <value> </value>
+    <value>The advert was deleted.</value>
   </data>
   <data name="RentalHaveBeenEdit" xml:space="preserve">
-    <value> </value>
+    <value>The advert was edited.</value>
   </data>
   <data name="RentalSuppress" xml:space="preserve">
-    <value> </value>
+    <value>Erase the ads</value>
   </data>
   <data name="RentalType" xml:space="preserve">
-    <value> </value>
+    <value>Ads type</value>
   </data>
   <data name="SaveSearch" xml:space="preserve">
-    <value> </value>
+    <value>Save this search</value>
   </data>
   <data name="SendMailToOwner" xml:space="preserve">
-    <value> </value>
+    <value>Send an email to the owner</value>
   </data>
   <data name="SendToFriend" xml:space="preserve">
-    <value> </value>
+    <value>Recommend to a friend</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Validate</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="UpdatedAt" xml:space="preserve">
-    <value> </value>
+    <value>Ads updated on</value>
   </data>
   <data name="Usefull" xml:space="preserve">
-    <value> </value>
+    <value>Useful</value>
   </data>
 </root>

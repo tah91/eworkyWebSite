@@ -224,7 +224,7 @@
     <value>Disponibility / calm</value>
   </data>
   <data name="RatingPrice" xml:space="preserve">
-    <value> </value>
+    <value>Quality / price ratio</value>
   <comment>?</comment></data>
   <data name="RatingWelcome" xml:space="preserve">
     <value>Welcome</value>
@@ -354,5 +354,17 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>{0}, {1} to {2}</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Shared space</value>
+  </data>
+  <data name="FreeAreas" xml:space="preserve">
+    <value>Free workplaces</value>
+  </data>
+  <data name="OtherTypes" xml:space="preserve">
+    <value>Other workplaces</value>
   </data>
 </root>

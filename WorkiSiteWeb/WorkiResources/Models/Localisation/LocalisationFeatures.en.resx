@@ -161,10 +161,10 @@
     <value>IT helpdesk</value>
   </data>
   <data name="Computers" xml:space="preserve">
-    <value>Computers</value>
+    <value>Computers lending</value>
   <comment>?</comment></data>
   <data name="Concierge" xml:space="preserve">
-    <value> </value>
+    <value>Concierge service</value>
   <comment>?</comment></data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
@@ -176,10 +176,10 @@
     <value>Drinks</value>
   </data>
   <data name="ErgonomicFurniture" xml:space="preserve">
-    <value> </value>
+    <value>Ergonomic furniture</value>
   <comment>?</comment></data>
   <data name="FastInternet" xml:space="preserve">
-    <value></value>
+    <value>Superfast broadband access</value>
   <comment>?</comment></data>
   <data name="Handicap" xml:space="preserve">
     <value>Disabled access</value>
@@ -188,7 +188,7 @@
     <value>Internet connexion</value>
   </data>
   <data name="Lighting" xml:space="preserve">
-    <value> </value>
+    <value>Lightening services</value>
   <comment>?</comment></data>
   <data name="LocalisationOwner" xml:space="preserve">
     <value>I am the owner / manager of this workplace</value>
@@ -206,7 +206,7 @@
     <value>Newspapers</value>
   </data>
   <data name="Outlet" xml:space="preserve">
-    <value> </value>
+    <value>Socket</value>
   </data>
   <data name="Paperboard" xml:space="preserve">
     <value>Paper-board</value>
@@ -215,10 +215,10 @@
     <value>Parking</value>
   <comment>?</comment></data>
   <data name="PhoneJack" xml:space="preserve">
-    <value></value>
+    <value>Phone jack</value>
   <comment>?</comment></data>
   <data name="Picturesque" xml:space="preserve">
-    <value> </value>
+    <value>Picturesque spot</value>
   <comment>?</comment></data>
   <data name="Pressing" xml:space="preserve">
     <value>Pressing</value>
@@ -227,10 +227,10 @@
     <value>Copy, printing, fax</value>
   </data>
   <data name="Projector" xml:space="preserve">
-    <value> </value>
+    <value>Projector</value>
   </data>
   <data name="RelaxingArea" xml:space="preserve">
-    <value> </value>
+    <value>Leasure space</value>
   </data>
   <data name="Restauration" xml:space="preserve">
     <value>Catering</value>
@@ -275,7 +275,7 @@
     <value>Scene</value>
   </data>
   <data name="Secretariat" xml:space="preserve">
-    <value></value>
+    <value>Secretariat</value>
   <comment>?</comment></data>
   <data name="Shower" xml:space="preserve">
     <value>Shower</value>
@@ -302,7 +302,7 @@
     <value>free WiFi</value>
   </data>
   <data name="Wifi_Not_Free" xml:space="preserve">
-    <value> WiFi</value>
+    <value>WiFi</value>
   <comment>?</comment></data>
   <data name="BuisnessLounge" xml:space="preserve">
     <value>Business lounge</value>
@@ -326,7 +326,7 @@
     <value>Meeting rooms</value>
   </data>
   <data name="Sound" xml:space="preserve">
-    <value> </value>
+    <value>Sound control</value>
   </data>
   <data name="SingleMeetingRoom" xml:space="preserve">
     <value>Meeting / training room</value>
@@ -335,7 +335,7 @@
     <value>Conference / seminar room</value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Single desktop</value>
+    <value>Closed desktop</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
     <value>Visioconference / telepresence room</value>
@@ -377,7 +377,7 @@
     <value>Flexible contract</value>
   <comment>?</comment></data>
   <data name="ForCardOwner" xml:space="preserve">
-    <value>Reserved access to card members</value>
+    <value>Access only for card members</value>
   <comment>?</comment></data>
   <data name="MinimalPeriod" xml:space="preserve">
     <value>Minimal renting period</value>
@@ -394,4 +394,13 @@
   <data name="Sector" xml:space="preserve">
     <value>Sector</value>
   <comment>?</comment></data>
+  <data name="Kitchen" xml:space="preserve">
+    <value>Kitchen</value>
+  </data>
+  <data name="PhoneLine" xml:space="preserve">
+    <value>Phone line</value>
+  </data>
+  <data name="SharedMeetingRoom" xml:space="preserve">
+    <value>Meeting room</value>
+  </data>
 </root>

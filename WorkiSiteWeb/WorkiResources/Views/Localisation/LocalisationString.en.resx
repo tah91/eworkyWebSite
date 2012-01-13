@@ -238,10 +238,10 @@
     <value>Online</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value>Main</value>
+    <value>On the frontpage</value>
   <comment>?</comment></data>
   <data name="NotMain" xml:space="preserve">
-    <value>Not main</value>
+    <value>Not on the frontpage</value>
   <comment>?</comment></data>
   <data name="NoPictureAvailable" xml:space="preserve">
     <value>No picture available</value>
@@ -254,5 +254,11 @@
   </data>
   <data name="NoSuggestions" xml:space="preserve">
     <value>eWorky has no close similar workspace to suggest.</value>
+  </data>
+  <data name="MustAddOffer" xml:space="preserve">
+    <value>Watch out, you did not add any offer for this space. Please add at least one offer.</value>
+  </data>
+  <data name="ModifiedThe" xml:space="preserve">
+    <value>Updated on {0}</value>
   </data>
 </root>

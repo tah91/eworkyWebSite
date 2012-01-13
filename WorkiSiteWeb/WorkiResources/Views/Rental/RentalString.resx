@@ -121,7 +121,7 @@
     <value>Localisation</value>
   </data>
   <data name="AccurateSearch" xml:space="preserve">
-    <value>Affinner votre recherche</value>
+    <value>Affiner votre recherche</value>
   </data>
   <data name="AddAnother" xml:space="preserve">
     <value>Ajouter un accès en transports en commun</value>
@@ -271,7 +271,7 @@
     <value>Lieu</value>
   </data>
   <data name="PlaceExemple" xml:space="preserve">
-    <value>Ex : Paris 5e, Orsay, ...</value>
+    <value>Ex : Paris 5e, Orsay, etc.</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>Code Postal :</value>

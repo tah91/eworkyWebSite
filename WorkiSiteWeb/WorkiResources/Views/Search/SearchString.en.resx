@@ -119,58 +119,58 @@
   </resheader>
   <data name="DistanceOrdered" xml:space="preserve">
     <value>Sort by distance</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Entrepreneur" xml:space="preserve">
     <value>Entrepreneur</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Equipments" xml:space="preserve">
-    <value> </value>
+    <value>Facilities</value>
   </data>
   <data name="Features" xml:space="preserve">
-    <value> </value>
+    <value>Features</value>
   </data>
   <data name="Independant" xml:space="preserve">
     <value>Independent</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="KindOfLocation" xml:space="preserve">
-    <value> </value>
+    <value>Workplace type</value>
   </data>
   <data name="Nomad" xml:space="preserve">
     <value>Nomad</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="PlaceExamples" xml:space="preserve">
-    <value> </value>
+    <value>Ex: Downing Street London, Amsterdam, Manhattan, etc.</value>
   </data>
   <data name="PlaceFound" xml:space="preserve">
     <value>venue(s) found</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="RateOrdered" xml:space="preserve">
     <value>Sort by rating</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="RefineSearch" xml:space="preserve">
     <value>Refine search</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="ResultOfSearch" xml:space="preserve">
-    <value> </value>
+    <value>Search result(s):</value>
   </data>
   <data name="ResultOnMap" xml:space="preserve">
-    <value>Your results on map</value>
-  <comment>Mika</comment></data>
+    <value>Your results on a map</value>
+  </data>
   <data name="ReturnToResult" xml:space="preserve">
     <value>Back to results</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value> </value>
+    <value>By workplace type</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
-    <value> </value>
+    <value>By need</value>
   </data>
   <data name="SearchResult" xml:space="preserve">
     <value>Search result(s)</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="SpeechForBuisnessman" xml:space="preserve">
     <value> </value>
     <comment>ascx</comment>
@@ -192,11 +192,35 @@
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="TypeOfService" xml:space="preserve">
-    <value> </value>
+    <value>Type of service</value>
   </data>
   <data name="YourSearchResult" xml:space="preserve">
-    <value> </value>
+    <value>Your search results: {0} workplaces found</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Advanced search</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>Opinion</value>
+  </data>
+  <data name="SearchByPlace" xml:space="preserve">
+    <value>By location</value>
+  </data>
+  <data name="SearchByPlaceName" xml:space="preserve">
+    <value>By workplace name</value>
+  </data>
+  <data name="SearchType" xml:space="preserve">
+    <value>What kind of workplace are you looking for ?</value>
+  </data>
+  <data name="VenueName" xml:space="preserve">
+    <value>What is the workplace name?</value>
+  </data>
+  <data name="VenueNameExample" xml:space="preserve">
+    <value>Ex: The Hub London, Regus Paris, etc.</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>Where is this workplace? (optional)</value>
   </data>
 </root>

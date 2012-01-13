@@ -167,7 +167,7 @@
   </data>
   <data name="PunctualUser" xml:space="preserve">
     <value>Utilisateur du dimanche</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Startup" xml:space="preserve">
     <value>Entrepreneur / TPE</value>
   </data>

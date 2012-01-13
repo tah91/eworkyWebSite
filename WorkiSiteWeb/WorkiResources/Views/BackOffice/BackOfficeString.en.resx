@@ -235,7 +235,7 @@
     <value>Refuse</value>
   </data>
   <data name="RefuseBooking" xml:space="preserve">
-    <value>Are you sure you want to refuse this booking request ?</value>
+    <value>Are you sure you want to refuse this booking request?</value>
   </data>
   <data name="RefuseQuotation" xml:space="preserve">
     <value>Are you sure you want to refuse this quote request ? You will not be able to ask for this customer details.</value>
@@ -276,5 +276,17 @@
   <data name="WorkplacesDirectAccess" xml:space="preserve">
     <value>Direct access to the workplaces' management</value>
 
+  </data>
+  <data name="PaypalIdentity" xml:space="preserve">
+    <value>Paypal login details</value>
+  </data>
+  <data name="WorkingPrinciple" xml:space="preserve">
+    <value>How does it work</value>
+  </data>
+  <data name="DoNotHaveOnlineBooking" xml:space="preserve">
+    <value>This workplace has no offer yet that can be booked on line.</value>
+  </data>
+  <data name="DoNotHaveOnlineQuotation" xml:space="preserve">
+    <value>This workplace has no offer yet where you can request a quote.</value>
   </data>
 </root>

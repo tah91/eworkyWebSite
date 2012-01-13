@@ -119,50 +119,110 @@
   </resheader>
   <data name="Currency" xml:space="preserve">
     <value>Currency</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Day" xml:space="preserve">
-    <value>Day</value>
-  <comment>Mika</comment></data>
+    <value>Days</value>
+  </data>
   <data name="Euro" xml:space="preserve">
     <value>EUR</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Hour" xml:space="preserve">
-    <value>Hour</value>
-  <comment>Mika</comment></data>
+    <value>Hours</value>
+  </data>
   <data name="IsBookable" xml:space="preserve">
-    <value>Booking online</value>
-  <comment>Mika</comment></data>
+    <value>Online booking</value>
+  </data>
   <data name="IsOnline" xml:space="preserve">
-    <value>Offer online</value>
-  <comment>Mika</comment></data>
+    <value>Online offer</value>
+  </data>
   <data name="IsQuotable" xml:space="preserve">
-    <value>Quote request online</value>
-  <comment>Mika</comment></data>
+    <value>Online quote request</value>
+  </data>
   <data name="Month" xml:space="preserve">
     <value>Month</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Name" xml:space="preserve">
-    <value>Name of the offer</value>
+    <value>Offer name</value>
   </data>
   <data name="PaymentType" xml:space="preserve">
-    <value> </value>
+    <value>Proposed payment solution</value>
   </data>
   <data name="Paypal" xml:space="preserve">
     <value>PayPal</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Period" xml:space="preserve">
-    <value> </value>
+    <value>Time unit</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
-  <comment>Mika</comment></data>
+  </data>
   <data name="Type" xml:space="preserve">
-    <value>Type of the offer</value>
+    <value>Offer type</value>
   </data>
   <data name="Week" xml:space="preserve">
-    <value>Week</value>
-  <comment>Mika</comment></data>
+    <value>Weeks</value>
+  </data>
   <data name="Year" xml:space="preserve">
-    <value>Year</value>
-  <comment>Mika</comment></data>
+    <value>Years</value>
+  </data>
+  <data name="AvailabilityDate" xml:space="preserve">
+    <value>Availability date</value>
+  </data>
+  <data name="AvailabilityPeriod" xml:space="preserve">
+    <value>Availability period</value>
+  </data>
+  <data name="AvailabilityPeriodType" xml:space="preserve">
+    <value>Time unit</value>
+  </data>
+  <data name="AvailableAt" xml:space="preserve">
+    <value>Available on {0}</value>
+  </data>
+  <data name="AvailableAtFor" xml:space="preserve">
+    <value>Available on {0} for {1} {2}</value>
+  </data>
+  <data name="AvailableFor" xml:space="preserve">
+    <value>Available for {1} {2}</value>
+  </data>
+  <data name="AvailableFrom" xml:space="preserve">
+    <value>Available from {0}</value>
+  </data>
+  <data name="AvailableFromFor" xml:space="preserve">
+    <value>Available from {0} for {1} {2}</value>
+  </data>
+  <data name="PluralDay" xml:space="preserve">
+    <value>day(s)</value>
+  </data>
+  <data name="PluralHour" xml:space="preserve">
+    <value>hour(s)</value>
+  </data>
+  <data name="PluralMonth" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="PluralWeek" xml:space="preserve">
+    <value>week(s)</value>
+  </data>
+  <data name="PluralYear" xml:space="preserve">
+    <value>year(s)</value>
+  </data>
+  <data name="PriceFrom" xml:space="preserve">
+    <value>From {0}</value>
+  </data>
+  <data name="PricePerPeriod" xml:space="preserve">
+    <value>{0} € / {1}</value>
+  </data>
+  <data name="SingleDay" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="SingleHour" xml:space="preserve">
+    <value>hour</value>
+  </data>
+  <data name="SingleMonth" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="SingleWeek" xml:space="preserve">
+    <value>week</value>
+  </data>
+  <data name="SingleYear" xml:space="preserve">
+    <value>year</value>
+  </data>
 </root>

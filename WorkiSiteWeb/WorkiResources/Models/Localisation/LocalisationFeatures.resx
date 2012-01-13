@@ -156,16 +156,16 @@
   </data>
   <data name="Courier" xml:space="preserve">
     <value>Gestion du courrier</value>
-  </data>
+  <comment>?</comment></data>
   <data name="ComputerHelp" xml:space="preserve">
     <value>Assistance informatique</value>
   </data>
   <data name="Computers" xml:space="preserve">
     <value>Mise à disposition d'ordinateurs</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Concierge" xml:space="preserve">
     <value>Conciergerie</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -177,25 +177,25 @@
   </data>
   <data name="ErgonomicFurniture" xml:space="preserve">
     <value>Mobilier ergonomique</value>
-  </data>
+  <comment>?</comment></data>
   <data name="FastInternet" xml:space="preserve">
     <value>Internet très haut débit</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Handicap" xml:space="preserve">
     <value>Accès handicapés</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Internet" xml:space="preserve">
     <value>Connexion Internet</value>
   </data>
   <data name="Lighting" xml:space="preserve">
     <value>Régie lumière</value>
-  </data>
+  <comment>?</comment></data>
   <data name="LocalisationOwner" xml:space="preserve">
     <value>Je suis le propriétaire / gestionnaire du lieu</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Longitude</value>
-  </data>
+  <comment>?</comment></data>
   <data name="LunchClose" xml:space="preserve">
     <value>Fermeture au déjeuner</value>
   </data>
@@ -213,13 +213,13 @@
   </data>
   <data name="Parking" xml:space="preserve">
     <value>Parking</value>
-  </data>
+  <comment>?</comment></data>
   <data name="PhoneJack" xml:space="preserve">
     <value>Prise téléphonique</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Picturesque" xml:space="preserve">
     <value>Cadre pittoresque</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Pressing" xml:space="preserve">
     <value>Pressing</value>
   </data>
@@ -276,7 +276,7 @@
   </data>
   <data name="Secretariat" xml:space="preserve">
     <value>Secrétariat</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Shower" xml:space="preserve">
     <value>Douche</value>
   </data>
@@ -288,7 +288,7 @@
   </data>
   <data name="VideoProj" xml:space="preserve">
     <value>Vidéoprojecteur</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Visio" xml:space="preserve">
     <value>Visioconférence</value>
   </data>
@@ -303,7 +303,7 @@
   </data>
   <data name="Wifi_Not_Free" xml:space="preserve">
     <value>Wifi payant</value>
-  </data>
+  <comment>?</comment></data>
   <data name="BuisnessLounge" xml:space="preserve">
     <value>Salon d'affaires</value>
   </data>
@@ -375,10 +375,10 @@
   </data>
   <data name="FlexibleContract" xml:space="preserve">
     <value>Contrat flexible</value>
-  </data>
+  <comment>?</comment></data>
   <data name="ForCardOwner" xml:space="preserve">
     <value>Accès réservé aux détenteurs de la carte</value>
-  </data>
+  <comment>?</comment></data>
   <data name="MinimalPeriod" xml:space="preserve">
     <value>Durée minimale de location</value>
   </data>
@@ -393,7 +393,7 @@
   </data>
   <data name="Sector" xml:space="preserve">
     <value>Secteur</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Kitchen" xml:space="preserve">
     <value>Cuisine / kitchenette</value>
   </data>

@@ -139,7 +139,7 @@
     <value> </value>
   </data>
   <data name="ExampleLocation" xml:space="preserve">
-    <value>Example : Amsterdam, Downing street London, Switzerland, ...</value>
+    <value>Example: Amsterdam, Downing street London, Switzerland, etc.</value>
   </data>
   <data name="Fun" xml:space="preserve">
     <value> </value>
@@ -175,22 +175,22 @@
     <value> </value>
   </data>
   <data name="SpeechForJournalists" xml:space="preserve">
-    <value>You're a journalist and you would like to write an article or make a video coverage on eWorky ? You need some informations about the developpement of teleworking ? You are looking to interview some Human Resources Directors on these subjects ? Contac us at {0}.</value>
+    <value>You're a journalist and you would like to write an article or make a video coverage on eWorky? You need some informations about the developpement of teleworking? You are looking to interview some Human Resources Directors on these subjects? Contact us at {0}.</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
-    <value>eWorky way of working</value>
+    <value>How does eWorky work?</value>
   <comment>?</comment></data>
   <data name="VeryGenerous" xml:space="preserve">
     <value> </value>
   </data>
   <data name="What" xml:space="preserve">
-    <value>What are you looking for ?</value>
+    <value>What are you looking for?</value>
   </data>
   <data name="Where" xml:space="preserve">
-    <value>Where are you looking ?</value>
+    <value>Where are you looking?</value>
   </data>
   <data name="WhoAreWe" xml:space="preserve">
-    <value>Who are we ?</value>
+    <value>Who are we?</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Find a workplace wherever you want : offices to rent, business center, coworking spaces, WiFi cafe, meeting or seminar room.</value>
@@ -205,7 +205,7 @@
     <value>Welcome</value>
   </data>
   <data name="MailWellSent2" xml:space="preserve">
-    <value>Your message was successfully sent !</value>
+    <value>Your message was successfully sent!</value>
   </data>
   <data name="Rent" xml:space="preserve">
     <value>Rental</value>
@@ -235,7 +235,7 @@
     <value>eWorky team has many projects to get the work easier ! So do not hesitate to follow our news on Facebook, Twitter, Google+, etc.</value>
   </data>
   <data name="FindTheBesPlace" xml:space="preserve">
-    <value>Find the best workplace to work amont {0:### ### ###} places</value>
+    <value>Find the best workplace to work amongst {0:### ### ###} places</value>
   </data>
   <data name="MaxRate" xml:space="preserve">
     <value>Maximal budget (€)</value>
@@ -250,15 +250,30 @@
     <value>Propose a new workspace</value>
   </data>
   <data name="CostSpace" xml:space="preserve">
-    <value>A charged workspace</value>
+    <value>A subscription workspace</value>
   <comment>?</comment></data>
   <data name="FreeSpace" xml:space="preserve">
-    <value>A free workspace</value>
+    <value>A free of charge workspace</value>
   </data>
   <data name="RentalAd" xml:space="preserve">
     <value>A rental ads</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>You want to find a worskpace ? Choose the form that corresponds to the workplace type you want to add</value>
+    <value>You want to find a worskpace? Choose the form that corresponds to the workplace type you want to add</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>A shared office</value>
+  </data>
+  <data name="SharedOfficeSpeach" xml:space="preserve">
+    <value>You have free desktops in your offices ? Share them on eWorky and get some extra income!</value>
+  </data>
+  <data name="FindTheBesPlace2" xml:space="preserve">
+    <value>Amongst &lt;em&gt;{0:### ### ###}&lt;/em&gt; coworking spaces, WiFi cafes, business centers, shared offices</value>
+  </data>
+  <data name="TalkAboutUs" xml:space="preserve">
+    <value>They're talking about us</value>
+  </data>
+  <data name="FindTheBesPlace1" xml:space="preserve">
+    <value>Find the best place to work</value>
   </data>
 </root>

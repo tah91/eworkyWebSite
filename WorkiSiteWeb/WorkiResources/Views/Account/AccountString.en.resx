@@ -172,9 +172,12 @@
     <value>Password has been changed.</value>
   </data>
   <data name="EditMyProfile" xml:space="preserve">
-    <value> </value>
+    <value>Edit my profile</value>
   </data>
   <data name="OwnerSpace" xml:space="preserve">
     <value>backoffice</value>
+  </data>
+  <data name="ChangeMyPassword" xml:space="preserve">
+    <value>Change my password</value>
   </data>
 </root>

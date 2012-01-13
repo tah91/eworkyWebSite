@@ -165,7 +165,7 @@
   </data>
   <data name="WorkingHotel" xml:space="preserve">
     <value>Pépinière / Incubateur</value>
-  </data>
+  <comment>?</comment></data>
   <data name="SeminarRoom" xml:space="preserve">
     <value>Caractéristiques des salles de conférence / séminaire</value>
   </data>

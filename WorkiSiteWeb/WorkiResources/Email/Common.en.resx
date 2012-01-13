@@ -149,7 +149,7 @@
     <value>Ask for information - {0}</value>
   </data>
   <data name="Ownership" xml:space="preserve">
-    <value>You reported that you were Manager of {0}, welcome to eWorky! As Manager of this place,
+    <value>You reported that you are manager of {0}, welcome to eWorky! As manager of this place,
 - you will be able to edit its description and improve the quality of the information by clicking here {1};
 - you also have the possibility of sticking a see-through sticker at the entrance of your workspace to indicate that your space is nomad friendly and recommended by eWorky. This sticker will be provided free of charge, do not hesitate to ask for it by sending us an email.
 
@@ -162,15 +162,15 @@ Don't forget to ask your customers to comment and put a mark on your place, this
     <value>{0}&lt;br/&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Follow us on Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Follow us on twitter&lt;/a&gt;</value>
   </data>
   <data name="FollowFacebook" xml:space="preserve">
-    <value> </value>
+    <value>Follow us on Facebook</value>
   </data>
   <data name="FollowTwitter" xml:space="preserve">
-    <value> </value>
+    <value>Follow us on Twitter</value>
   </data>
   <data name="Hey" xml:space="preserve">
-    <value> </value>
+    <value>Hey</value>
   </data>
   <data name="OwnershipSubject" xml:space="preserve">
-    <value> </value>
+    <value>Congratulations ! You are now manager of {0} !</value>
   </data>
 </root>
