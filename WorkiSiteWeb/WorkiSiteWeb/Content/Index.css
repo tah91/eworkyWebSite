@@ -1,5 +1,16 @@
 ﻿/* Index Page
 ----------------------------------------------------------*/
+.jelly
+{
+    height:148px;
+    width:159px;
+    margin-left:20px;
+    background:url('images/jelly.png') no-repeat;
+    position:absolute;
+    z-index:500;
+    top:55px;
+}
+
 .indexHeader
 {
     text-align: center;

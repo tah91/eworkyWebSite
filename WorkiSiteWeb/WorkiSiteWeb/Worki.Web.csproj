@@ -340,6 +340,7 @@
     <Content Include="Content\images\howitworks.png" />
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
+    <Content Include="Content\images\jelly.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\mediaBanner.png" />
