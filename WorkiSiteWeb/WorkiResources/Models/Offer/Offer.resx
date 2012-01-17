@@ -150,6 +150,9 @@
   <data name="Euro" xml:space="preserve">
     <value>EUR</value>
   </data>
+  <data name="HalfDay" xml:space="preserve">
+    <value>Demi-journée</value>
+  </data>
   <data name="Hour" xml:space="preserve">
     <value>Heures</value>
   </data>

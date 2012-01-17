@@ -147,7 +147,11 @@
 						    </td>
 						    <td>
 							    <div class="editor-field">
-								    @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
+								    @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
+                                    <span class="halfDaySelector">
+                                    @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor("matin", "HalfDay_Morning") 
+                                    @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor("après-midi", "HalfDay_Afternoon")
+                                    </span>
 							    </div>
 						    </td>
 					    </tr>
@@ -159,10 +163,10 @@
 						    </td>
 						    <td>
 							    <div class="bookingEndRow">
-								    @Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.SpendUnit, new { id = "PeriodType_SpendUnit" }) @Html.LabelFor("choisir un nombre de jours", "PeriodType_SpendUnit")
+								    @Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.SpendUnit, new { id = "PeriodType_SpendUnit" }) @Html.LabelFor("", "PeriodType_SpendUnit", "PeriodType_SpendUnitLabel")
 							    </div>
 								<div class="bookingEndSelection">
-								    @Html.TextBoxFor(m => m.MemberBooking.TimeUnits) jour(s)
+								    @Html.TextBoxFor(m => m.MemberBooking.TimeUnits) <span id="periodUnit"></span>
 							    </div>
 							    <div class="bookingEndRow">
 								    @Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.EndDate, new { id = "PeriodType_EndDate" }) @Html.LabelFor("choisir une date de fin", "PeriodType_EndDate")
@@ -201,67 +205,103 @@
 {
     @Html.Partial(MVC.Shared.Views._DatePickerScript)
 	<script type="text/javascript">
-		require(["@Links.Scripts.date_js"], function () {
-			require.ready(function () {
-			SelectPeriodType = function () {
-				var currentPeriodType = jQuery.trim($("#MemberBooking_TimeType").val());
-				var canChooseHour = false;
-				var canChooseEndDate = false;
-				switch (currentPeriodType) {
-					case '@((int)Offer.PaymentPeriod.Hour)':
-						canChooseHour = true;
-						canChooseEndDate = false;
-						break;
-					case '@((int)Offer.PaymentPeriod.Day)':
-						canChooseHour = false;
-						canChooseEndDate = true;
-						break;
-					case '@((int)Offer.PaymentPeriod.Week)':
-					case '@((int)Offer.PaymentPeriod.Month)':
-					case '@((int)Offer.PaymentPeriod.Year)':
-					case '@((int)Offer.PaymentPeriod.HalfDay)':
-					default:
-						canChooseHour = false;
-						canChooseEndDate = false;					
-						break;
-				}
-				var timeClass = canChooseHour ? 'dtp' : 'dp';
-				var timeFormat = canChooseHour ? 'dd/MM/yyyy HH:mm' : 'dd/MM/yyyy';
-				$('#MemberBooking_FromDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
-				$('#MemberBooking_ToDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
-				var fromDate = Date.parse($('#MemberBooking_FromDate').val());
-				var toDate = Date.parse($('#MemberBooking_ToDate').val());
-				$('#MemberBooking_FromDate').val(fromDate.toString(timeFormat));
-				$('#MemberBooking_ToDate').val(toDate.toString(timeFormat));
-				
-				if (canChooseEndDate) {
-					$('#PeriodType_EndDate').removeAttr("disabled");
-					$('#MemberBooking_ToDate').removeAttr("disabled");
-				}
-				else {
-					$('#PeriodType_EndDate').attr("disabled", true);
-					$('#MemberBooking_ToDate').attr("disabled", true);
-				}
+	    require(["@Links.Scripts.date_js"], function () {
+	        require.ready(function () {
+	            SelectPeriodType = function () {
+	                var currentPeriodType = jQuery.trim($("#MemberBooking_TimeType").val());
+	                var canChooseHour = false;
+	                var canChooseEndDate = false;
+	                var periodLabel = '';
+	                var periodUnitText = '';
+	                var showHalfDay = false;
+	                switch (currentPeriodType) {
+	                    case '@((int)Offer.PaymentPeriod.Hour)':
+	                        canChooseHour = true;
+	                        canChooseEndDate = false;
+	                        periodLabel = 'choisir un nombre d\'heures';
+	                        periodUnitText = 'heure(s)';
+	                        break;
+	                    case '@((int)Offer.PaymentPeriod.Day)':
+	                        canChooseHour = false;
+	                        canChooseEndDate = true;
+	                        periodLabel = 'choisir un nombre de jours';
+	                        periodUnitText = 'jour(s)';
+	                        break;
+	                    case '@((int)Offer.PaymentPeriod.Week)':
+	                        canChooseHour = false;
+	                        canChooseEndDate = false;
+	                        periodLabel = 'choisir un nombre de semaines';
+	                        periodUnitText = 'semaine(s)';
+	                        break;
+	                    case '@((int)Offer.PaymentPeriod.Month)':
+	                        canChooseHour = false;
+	                        canChooseEndDate = false;
+	                        periodLabel = 'choisir un nombre de mois';
+	                        periodUnitText = 'mois';
+	                        break;
+	                    case '@((int)Offer.PaymentPeriod.Year)':
+	                        canChooseHour = false;
+	                        canChooseEndDate = false;
+	                        periodLabel = 'choisir un nombre d\'années';
+	                        periodUnitText = 'année(s)';
+	                        break;
+	                    case '@((int)Offer.PaymentPeriod.HalfDay)':
+	                        canChooseHour = false;
+	                        canChooseEndDate = false;
+	                        periodLabel = 'choisir un nombre de demi-journées';
+	                        periodUnitText = 'demi-journée(s)';
+	                        showHalfDay = true;
+	                        break;
+	                    default:
 
-				$(".dp").datepicker({
-					changeMonth: true,
-					changeYear: true,
-					yearRange: '1900:2020'
-				});
-				$(".dtp").datetimepicker({
-					stepHour: 1,
-					stepMinute: 15,
-					hourMin: 8,
-					hourMax: 20
-				});
-			}
-			SelectPeriodType();
+	                        break;
+	                }
 
-			$('#MemberBooking_TimeType').live('change', function () {
-				SelectPeriodType();
-			});
-		});
-	});
+	                if (showHalfDay) {
+	                    $('.halfDaySelector').show();
+	                }
+	                else {
+	                    $('.halfDaySelector').hide();
+	                }
+	                $('#PeriodType_SpendUnitLabel').text(periodLabel);
+	                $('#periodUnit').text(periodUnitText);
+	                var timeClass = canChooseHour ? 'dtp' : 'dp';
+	                var timeFormat = canChooseHour ? 'dd/MM/yyyy HH:mm' : 'dd/MM/yyyy';
+	                $('#MemberBooking_FromDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
+	                $('#MemberBooking_ToDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
+	                var fromDate = Date.parse($('#MemberBooking_FromDate').val());
+	                var toDate = Date.parse($('#MemberBooking_ToDate').val());
+	                $('#MemberBooking_FromDate').val(fromDate.toString(timeFormat));
+	                $('#MemberBooking_ToDate').val(toDate.toString(timeFormat));
+
+	                if (canChooseEndDate) {
+	                    $('#PeriodType_EndDate').removeAttr("disabled");
+	                    $('#MemberBooking_ToDate').removeAttr("disabled");
+	                }
+	                else {
+	                    $('#PeriodType_EndDate').attr("disabled", true);
+	                    $('#MemberBooking_ToDate').attr("disabled", true);
+	                }
+
+	                $(".dp").datepicker({
+	                    changeMonth: true,
+	                    changeYear: true,
+	                    yearRange: '1900:2020'
+	                });
+	                $(".dtp").datetimepicker({
+	                    stepHour: 1,
+	                    stepMinute: 15,
+	                    hourMin: 8,
+	                    hourMax: 20
+	                });
+	            }
+	            SelectPeriodType();
+
+	            $('#MemberBooking_TimeType').live('change', function () {
+	                SelectPeriodType();
+	            });
+	        });
+	    });
 	</script>
 	
 }

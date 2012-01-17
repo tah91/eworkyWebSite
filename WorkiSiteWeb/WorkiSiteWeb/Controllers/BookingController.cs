@@ -55,19 +55,8 @@ namespace Worki.Web.Controllers
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var offer = oRepo.Get(id);
             var member = mRepo.Get(memberId);
-            var membetExists = member != null;
 
-            var formModel = new MemberBookingFormViewModel
-            {
-                PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty,
-                NeedNewAccount = (memberId == 0),
-                FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty,
-                LastName = membetExists ? member.MemberMainData.LastName : string.Empty,
-                Email = membetExists ? member.Email : string.Empty,
-                LocalisationName = offer.Localisation.Name,
-                OfferName = offer.Name,
-				Periods = new SelectList(Offer.GetPaymentPeriodTypes(offer.GetPricePeriods()), "Key", "Value")
-            };
+            var formModel = new MemberBookingFormViewModel(member, offer);
 
             return View(formModel);
         }
@@ -80,9 +69,15 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		public virtual ActionResult Create(int id, MemberBookingFormViewModel formData)
 		{
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            var member = mRepo.Get(memberId);
+            var offer = oRepo.Get(id);
+
 			if (ModelState.IsValid)
 			{
-				var memberId = WebHelper.GetIdentityId(User.Identity);
 				var sendNewAccountMail = false;
 				try
 				{
@@ -94,18 +89,18 @@ namespace Worki.Web.Controllers
 					};
 					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
 
-					var context = ModelFactory.GetUnitOfWork();
-					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-					var member = mRepo.Get(memberId);
-					var offer = oRepo.Get(id);
 					var locName = offer.Localisation.Name;
 					try
 					{
 						formData.MemberBooking.MemberId = memberId;
 						formData.MemberBooking.OfferId = id;
 						formData.MemberBooking.StatusId = (int)MemberBooking.Status.Unknown;
-                        formData.MemberBooking.Price = offer.GetDefaultPrice(formData.MemberBooking.ToDate - formData.MemberBooking.FromDate);
+                        formData.AjustBookingPeriod();
+                        formData.MemberBooking.Price = offer.GetDefaultPrice(   formData.MemberBooking.FromDate,
+                                                                                formData.MemberBooking.FromDate,
+                                                                                formData.PeriodType == MemberBookingFormViewModel.ePeriodType.SpendUnit,
+                                                                                (Offer.PaymentPeriod)formData.MemberBooking.TimeType,
+                                                                                formData.MemberBooking.TimeUnits);
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
 						member.MemberBookings.Add(formData.MemberBooking);
@@ -223,6 +218,7 @@ namespace Worki.Web.Controllers
 					ModelState.AddModelError("", ex.Message);
 				}
 			}
+            formData.Periods = new SelectList(Offer.GetPaymentPeriodTypes(offer.GetPricePeriods()), "Key", "Value");
 			return View(formData);
 		}
 

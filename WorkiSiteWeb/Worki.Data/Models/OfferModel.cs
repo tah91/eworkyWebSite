@@ -216,6 +216,7 @@ namespace Worki.Data.Models
         public static List<int> PaymentPeriodTypes = new List<int>()
         {
             (int)PaymentPeriod.Hour,
+            (int)PaymentPeriod.HalfDay,
             (int)PaymentPeriod.Day,
             (int)PaymentPeriod.Week,
             (int)PaymentPeriod.Month,
@@ -239,6 +240,8 @@ namespace Worki.Data.Models
             {
                 case PaymentPeriod.Hour:
                     return Worki.Resources.Models.Offer.Offer.Hour;
+                case PaymentPeriod.HalfDay:
+                    return Worki.Resources.Models.Offer.Offer.HalfDay;
                 case PaymentPeriod.Day:
                     return Worki.Resources.Models.Offer.Offer.Day;
                 case PaymentPeriod.Week:
@@ -321,30 +324,26 @@ namespace Worki.Data.Models
         /// </summary>
         /// <param name="span">span to price</param>
         /// <returns>default price</returns>
-        public decimal GetDefaultPrice(TimeSpan span)
+        public decimal GetDefaultPrice(DateTime startDate, DateTime endDate, bool useUnits, PaymentPeriod periodType, int periodUnits)
         {
-            double units = 0;
-            var period = (PaymentPeriod)Period;
-            switch(period)
+            if (useUnits)
             {
-                case PaymentPeriod.Hour:
-                    units = span.TotalHours;
-                    break;
-                case PaymentPeriod.Day:
-                    units = span.TotalDays;
-                    break;
-                case PaymentPeriod.Week:
-                    units = span.TotalDays/7;
-                    break;
-                case PaymentPeriod.Month:
-                    units = span.TotalDays/30;
-                    break;
-                case PaymentPeriod.Year:
-                    units = span.TotalDays/365;
-                    break;
-            }
+                var offerPrice = OfferPrices.FirstOrDefault(op => op.PriceType == (int)periodType);
+                if (offerPrice == null)
+                    return 0;
 
-            return (decimal)(units * (double)Price);
+                return periodUnits * offerPrice.Price;
+            }
+            else
+            {
+                //only happens for days
+                var offerPrice = OfferPrices.FirstOrDefault(op => op.PriceType == (int)PaymentPeriod.Day);
+                if (offerPrice == null)
+                    return 0;
+
+                var days = (endDate - startDate).TotalDays;
+                return (decimal)(days * (double)offerPrice.Price);
+            }
         }
 
 		/// <summary>

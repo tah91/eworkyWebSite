@@ -17,15 +17,36 @@ namespace Worki.Data.Models
 			EndDate
 		}
 
+        public enum eHalfDay
+        {
+            Morning,
+            Afternoon
+        }
+
 		public MemberBookingFormViewModel()
 		{
 			MemberBooking = new MemberBooking();
 			Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
 		}
 
+        public MemberBookingFormViewModel(Member member, Offer offer)
+        {
+            MemberBooking = new MemberBooking();
+            var membetExists = member != null;
+            PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty;
+            NeedNewAccount = !membetExists;
+            FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty;
+            LastName = membetExists ? member.MemberMainData.LastName : string.Empty;
+            Email = membetExists ? member.Email : string.Empty;
+            LocalisationName = offer.Localisation.Name;
+            OfferName = offer.Name;
+            Periods = new SelectList(Offer.GetPaymentPeriodTypes(offer.GetPricePeriods()), "Key", "Value");
+        }
+
 		public MemberBooking MemberBooking { get; set; }
 		public SelectList Periods { get; set; }
 		public ePeriodType PeriodType { get; set; }
+        public eHalfDay HalfDay { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
@@ -50,6 +71,69 @@ namespace Worki.Data.Models
         public string Email { get; set; }
 
         public bool NeedNewAccount { get; set; }
+
+        /// <summary>
+        /// Get the start / end date given form parameters
+        /// </summary>
+        public void AjustBookingPeriod()
+        {
+            switch ((Offer.PaymentPeriod)MemberBooking.TimeType)
+            {
+                case Offer.PaymentPeriod.Hour:
+                    MemberBooking.ToDate = MemberBooking.FromDate.AddHours(MemberBooking.TimeUnits);
+                    break;
+                case Offer.PaymentPeriod.HalfDay:
+                    {
+                        switch (HalfDay)
+                        {
+                            case eHalfDay.Morning:
+                                //add half days
+                                MemberBooking.FromDate = new DateTime(MemberBooking.FromDate.Year, MemberBooking.FromDate.Month, MemberBooking.FromDate.Day);
+                                MemberBooking.ToDate = MemberBooking.FromDate.AddDays(MemberBooking.TimeUnits * 0.5);
+                                //start at 8am
+                                MemberBooking.FromDate = MemberBooking.FromDate.AddHours(8);
+                                break;
+                            case eHalfDay.Afternoon:
+                                //start from 12am and add half days
+                                MemberBooking.FromDate = new DateTime(MemberBooking.FromDate.Year, MemberBooking.FromDate.Month, MemberBooking.FromDate.Day).AddDays(0.5);
+                                MemberBooking.ToDate = MemberBooking.FromDate.AddDays(MemberBooking.TimeUnits * 0.5);
+                                //start at 2pm
+                                MemberBooking.FromDate = MemberBooking.FromDate.AddHours(2);
+                                break;
+                            default:
+                                break;
+                        }
+                        //end at 12am or 6pm
+                        MemberBooking.ToDate = MemberBooking.ToDate.Hour == 0 ? MemberBooking.ToDate.AddHours(-6) : MemberBooking.ToDate;
+                    }
+                    break;
+                case Offer.PaymentPeriod.Day:
+                    {
+                        switch(PeriodType)
+                        {
+                            case ePeriodType.SpendUnit:
+                                MemberBooking.ToDate = MemberBooking.FromDate.AddDays(MemberBooking.TimeUnits);
+                                break;
+                            case ePeriodType.EndDate:
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    break;
+                case Offer.PaymentPeriod.Week:
+                    MemberBooking.ToDate = MemberBooking.FromDate.AddDays(MemberBooking.TimeUnits * 7);
+                    break;
+                case Offer.PaymentPeriod.Month:
+                    MemberBooking.ToDate = MemberBooking.FromDate.AddDays(MemberBooking.TimeUnits * 30);
+                    break;
+                case Offer.PaymentPeriod.Year:
+                    MemberBooking.ToDate = MemberBooking.FromDate.AddDays(MemberBooking.TimeUnits * 365);
+                    break;
+                default:
+                    break;
+            }
+        }
 	}
 
 	[MetadataType(typeof(MemberBooking_Validation))]
