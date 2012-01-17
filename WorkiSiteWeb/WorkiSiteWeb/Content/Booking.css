@@ -16,5 +16,20 @@
 
 .bookingFormDiv table td:first-child
 {
-	padding-right:30px;
+	width:130px;
+}
+
+.bookingEndRow
+{
+	margin:5px 0 0 0;
+}
+
+.bookingEndSelection
+{
+	margin-left:30px;
+}
+
+.bookingEndSelection input[type="text"]
+{
+	width:100px;
 }

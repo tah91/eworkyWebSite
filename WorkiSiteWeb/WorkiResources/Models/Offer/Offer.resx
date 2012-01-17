@@ -201,6 +201,9 @@
   <data name="PricePerPeriod" xml:space="preserve">
     <value>{0} € / {1}</value>
   </data>
+  <data name="PriceType" xml:space="preserve">
+    <value>Periode</value>
+  </data>
   <data name="SingleDay" xml:space="preserve">
     <value>jour</value>
   </data>

@@ -313,6 +313,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Periode.
+        /// </summary>
+        public static string PriceType {
+            get {
+                return ResourceManager.GetString("PriceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to jour.
         /// </summary>
         public static string SingleDay {

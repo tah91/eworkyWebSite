@@ -11,12 +11,21 @@ namespace Worki.Data.Models
 {
 	public class MemberBookingFormViewModel
 	{
+		public enum ePeriodType
+		{
+			SpendUnit,
+			EndDate
+		}
+
 		public MemberBookingFormViewModel()
 		{
 			MemberBooking = new MemberBooking();
+			Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
 		}
 
 		public MemberBooking MemberBooking { get; set; }
+		public SelectList Periods { get; set; }
+		public ePeriodType PeriodType { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]

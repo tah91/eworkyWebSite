@@ -183,7 +183,7 @@ namespace Worki.Data.Models
 
         public bool CanHaveBooking
         {
-			get { return OfferCanHaveBooking((LocalisationOffer)Type) && Localisation != null && !Localisation.IsSharedOffice(); }
+			get { return OfferCanHaveBooking((LocalisationOffer)Type) /*&& Localisation != null && !Localisation.IsSharedOffice()*/; }
         }
 
 		#endregion
@@ -199,7 +199,8 @@ namespace Worki.Data.Models
             Day,
             Week,
             Month,
-            Year
+            Year,
+			HalfDay
         }
 
         public enum CurrencyEnum
@@ -280,6 +281,12 @@ namespace Worki.Data.Models
             return PaymentPeriodTypes.ToDictionary(p => p, p => GetPaymentPeriodType(p));
         }
 
+		public static Dictionary<int, string> GetPaymentPeriodTypes(IEnumerable<int> only)
+		{
+			var types = PaymentPeriodTypes.Where(t => only.Contains(t));
+			return types.ToDictionary(p => p, p => GetPaymentPeriodType(p));
+		}
+
         public static Dictionary<int, string> GetCurrencyEnumTypes()
         {
             return CurrencyEnumTypes.ToDictionary(p => p, p => GetCurrencyEnumType(p));
@@ -352,6 +359,11 @@ namespace Worki.Data.Models
 			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, Price, GetPricingPeriod((PaymentPeriod)Period));
 		}
 
+		public IEnumerable<int> GetPricePeriods()
+		{
+			return OfferPrices.ToLookup(op => op.PriceType).Select(g => g.Key);
+		}
+
         #endregion
 
 		#region Availability
@@ -411,7 +423,25 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
-    }
+
+		#region Validation
+
+		/// <summary>
+		/// Validate offer, thow exception if not valid
+		/// </summary>
+		public void Validate()
+		{
+			string commentError = Worki.Resources.Validation.ValidationString.AlreadyRateThis;
+			var group = OfferPrices.ToLookup(op => op.PriceType);
+			foreach (var item in group)
+			{
+				if (item.Count() > 1)
+					throw new Exception("Vous ne pouvez indiquer qu'un prix par periode");
+			}
+		}
+
+		#endregion
+	}
 
 	[Bind(Exclude = "Id,LocalisationId")]
 	public class Offer_Validation
@@ -469,5 +499,23 @@ namespace Worki.Data.Models
 		{
 			get { return (Feature)FeatureId; }
 		}
+	}
+
+	[MetadataType(typeof(OfferPrice_Validation))]
+	public partial class OfferPrice
+	{
+
+	}
+
+	[Bind(Exclude = "Id,OfferId")]
+	public class OfferPrice_Validation
+	{
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "Price", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+		public decimal Price { get; set; }
+
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[Display(Name = "PriceType", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+		public int PriceType { get; set; }
 	}
 }

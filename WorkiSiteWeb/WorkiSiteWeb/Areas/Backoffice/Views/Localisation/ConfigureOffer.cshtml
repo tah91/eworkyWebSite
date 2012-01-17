@@ -18,7 +18,7 @@
 		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
         @using (Html.BeginForm(MVC.Backoffice.Localisation.ActionNames.ConfigureOffer, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "configureOfferForm" }))
 		{
-		    <div class="contentBlock">
+		    <div class="contentBlock configOffer">
 				<h3 class="blue">@Model.InnerModel.Offer.Name</h3>
 	   		    @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.InnerModel.Offer.Name)
@@ -81,7 +81,7 @@
 					    @Html.Partial(MVC.Backoffice.Localisation.Views._OfferPrice , item)
 				    }
 			    </div>
-			    @Html.ActionLink("Ajouter un tarif", MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { id = "addItem" })
+			    @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddPrice, MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { id = "addItem" })
 		    </div>
 
 		    <div class="editor-field float-right">

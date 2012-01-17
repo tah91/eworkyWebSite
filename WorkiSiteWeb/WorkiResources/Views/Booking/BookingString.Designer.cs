@@ -376,7 +376,7 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message au gérant (facultatif).
+        ///   Looks up a localized string similar to Message au gérant.
         /// </summary>
         public static string MessageToOwner {
             get {

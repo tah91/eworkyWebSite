@@ -1,14 +1,14 @@
 ﻿@model OfferPrice
 		   
 @{
-	var select = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
+	var select = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Model.PriceType);
 }
 
 <div class="offerPricesRow">
 	@using (Html.BeginCollectionItem("InnerModel.Offer.OfferPrices"))
 	{
 		@Html.LabelFor(m => m.PriceType)
-		@Html.DropDownListFor(m => m.PriceType,select)
+		@Html.DropDownListFor(m => m.PriceType, select)
 		@Html.LabelFor(m => m.Price)
 		@Html.TextBoxFor(m => m.Price)
 		<button class="deleteRow crossButton cross"></button>

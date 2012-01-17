@@ -70,6 +70,15 @@ namespace Worki.Resources.Views.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajouter un tarif.
+        /// </summary>
+        public static string AddPrice {
+            get {
+                return ResourceManager.GetString("AddPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demande de devis.
         /// </summary>
         public static string AskDevis {

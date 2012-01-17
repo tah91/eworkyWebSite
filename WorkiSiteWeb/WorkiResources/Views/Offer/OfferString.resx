@@ -162,4 +162,7 @@
   <data name="Prices" xml:space="preserve">
     <value>Tarifs</value>
   </data>
+  <data name="AddPrice" xml:space="preserve">
+    <value>Ajouter un tarif</value>
+  </data>
 </root>

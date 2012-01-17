@@ -184,6 +184,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 					var o = oRepo.Get(formData.OfferModelId);
 					UpdateModel(o, "InnerModel.Offer");
+					o.Validate();
 					context.Commit();
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(o.LocalisationId, o.Id));

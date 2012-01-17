@@ -56,6 +56,7 @@ namespace Worki.Web.Controllers
 			var offer = oRepo.Get(id);
             var member = mRepo.Get(memberId);
             var membetExists = member != null;
+
             var formModel = new MemberBookingFormViewModel
             {
                 PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty,
@@ -64,7 +65,8 @@ namespace Worki.Web.Controllers
                 LastName = membetExists ? member.MemberMainData.LastName : string.Empty,
                 Email = membetExists ? member.Email : string.Empty,
                 LocalisationName = offer.Localisation.Name,
-                OfferName = offer.Name
+                OfferName = offer.Name,
+				Periods = new SelectList(Offer.GetPaymentPeriodTypes(offer.GetPricePeriods()), "Key", "Value")
             };
 
             return View(formModel);

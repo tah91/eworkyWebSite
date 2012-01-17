@@ -295,6 +295,6 @@
     <value>Une erreur emepeche le paymenent, veuillez nous contacter à support@eworky.com.</value>
   </data>
   <data name="MessageToOwner" xml:space="preserve">
-    <value>Message au gérant (facultatif)</value>
+    <value>Message au gérant</value>
   </data>
 </root>
