@@ -394,6 +394,12 @@ namespace Worki.Data.Models
 
         [Display(Name = "Price", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public decimal Price { get; set; }
+
+        [Display(Name = "TimeUnits", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public int TimeUnits { get; set; }
+
+        [Display(Name = "TimeType", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public int TimeType { get; set; }
 	}
 
 	public partial class MemberBookingLog

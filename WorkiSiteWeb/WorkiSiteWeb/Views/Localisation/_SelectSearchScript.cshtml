@@ -76,13 +76,13 @@
 
 <script type="text/javascript">
     require.ready(function () {
-        var offer0 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea).ToString()))';
-        var offer1 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessLounge).ToString()))';
-        var offer2 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Workstation).ToString()))';
-        var offer3 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Desktop).ToString()))';
-        var offer4 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.MeetingRoom).ToString()))';
-        var offer5 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SeminarRoom).ToString()))';
-        var offer6 = '@Html.Raw(Html.JSEscape(SelectFeatures(Model, LocalisationOffer.VisioRoom).ToString()))';
+        var offer0 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea).ToString())';
+        var offer1 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessLounge).ToString())';
+        var offer2 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Workstation).ToString())';
+        var offer3 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Desktop).ToString())';
+        var offer4 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.MeetingRoom).ToString())';
+        var offer5 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SeminarRoom).ToString())';
+        var offer6 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.VisioRoom).ToString())';
         //show correct search pane
         SelectSearch = function () {
             //reset

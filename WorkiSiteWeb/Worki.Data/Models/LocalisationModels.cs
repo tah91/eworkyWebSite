@@ -772,26 +772,43 @@ namespace Worki.Data.Models
 
 		#region Prices
 
+        /// <summary>
+        /// Get list of all offers prices
+        /// </summary>
+        /// <returns>list of all offerprices</returns>
+        public IEnumerable<OfferPrice> GetAllPrices(int offerType = -1)
+        {
+            var toRet = new List<OfferPrice>();
+            var offers = offerType == -1 ? Offers : Offers.Where(o => o.Type == offerType);
+            if (offers.Count() == 0)
+                return toRet;
+
+            foreach (var offer in offers)
+            {
+                toRet = toRet.Concat(offer.OfferPrices).ToList();
+            }
+
+            return toRet;
+        }
+
 		/// <summary>
 		/// Get the min price of the localisation, empty if no price
 		/// filter by offerType if needed
 		/// </summary>
 		/// <returns>the min price string</returns>
-		//public string GetMinPrice(int offerType = -1)
-		//{
-		//    var offers = offerType == -1 ? Offers.Where(o => o.Price != 0) : Offers.Where(o => o.Type == offerType && o.Price != 0);
+        public string GetMinPrice(int offerType = -1)
+        {
+            var offerPrices = GetAllPrices(offerType);
 
-		//    if (offers.Count() == 0)
-		//        return string.Empty;
+            if (offerPrices.Count() == 0)
+                return string.Empty;
 
-		//    var min = offers.Min(o => o.Price);
-		//    var minOffer = offers.FirstOrDefault(o => o.Price == min);
+            var minPrice = offerPrices.Min();
+            if (minPrice == null)
+                return string.Empty;
 
-		//    if (minOffer == null)
-		//        return string.Empty;
-
-		//    return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minOffer.GetPriceDisplay());
-		//}
+            return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minPrice.GetPriceDisplay());
+        }
 
 		/// <summary>
 		/// Get all offers which have prices
@@ -977,6 +994,7 @@ namespace Worki.Data.Models
 
 		public Localisation Localisation { get; private set; }
 		public IEnumerable<Offer> Offers { get; private set; }
+        public string Title { get; set; }
 
 		#endregion
 
@@ -986,6 +1004,7 @@ namespace Worki.Data.Models
 		{
 			Localisation = localisation;
 			Offers = Localisation.GetOffers(offerType);
+            Title = Localisation.Name + " - " + Localisation.GetOfferType((int)offerType, false);
 		}
 
 		#endregion

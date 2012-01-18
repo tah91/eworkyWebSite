@@ -412,12 +412,12 @@
 {
 	<script type="text/javascript">
 		var offer0 = '<div id="offerFeaturesForm"></div>';
-		var offer1 = '@Html.Raw(Html.JSEscape(BuisnessLoungeForm().ToString()))';
-		var offer2 = '@Html.Raw(Html.JSEscape(WorkstationForm().ToString()))';
-		var offer3 = '@Html.Raw(Html.JSEscape(DesktopForm().ToString()))';
-		var offer4 = '@Html.Raw(Html.JSEscape(MeetingRoomForm().ToString()))';
-		var offer5 = '@Html.Raw(Html.JSEscape(SeminarRoomForm().ToString()))';
-		var offer6 = '@Html.Raw(Html.JSEscape(VisioRoomForm().ToString()))';
+		var offer1 = '@Html.JSEscape(BuisnessLoungeForm().ToString())';
+		var offer2 = '@Html.JSEscape(WorkstationForm().ToString())';
+		var offer3 = '@Html.JSEscape(DesktopForm().ToString())';
+		var offer4 = '@Html.JSEscape(MeetingRoomForm().ToString())';
+		var offer5 = '@Html.JSEscape(SeminarRoomForm().ToString())';
+		var offer6 = '@Html.JSEscape(VisioRoomForm().ToString())';
 		OfferFeatureFormReplace = function () {
 			var currentOffer = jQuery.trim($("#Offer_Type").val());
 			switch (currentOffer) {

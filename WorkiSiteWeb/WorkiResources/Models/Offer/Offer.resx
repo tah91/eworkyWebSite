@@ -183,6 +183,9 @@
   <data name="PluralDay" xml:space="preserve">
     <value>jour(s)</value>
   </data>
+  <data name="PluralHalfDay" xml:space="preserve">
+    <value>demi-journée(s)</value>
+  </data>
   <data name="PluralHour" xml:space="preserve">
     <value>heure(s)</value>
   </data>

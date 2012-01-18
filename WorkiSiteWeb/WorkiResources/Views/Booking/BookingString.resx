@@ -297,4 +297,46 @@
   <data name="MessageToOwner" xml:space="preserve">
     <value>Message au gérant</value>
   </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>après-midi</value>
+  </data>
+  <data name="ChooseDay" xml:space="preserve">
+    <value>choisir un nombre de jours</value>
+  </data>
+  <data name="ChooseHalfDay" xml:space="preserve">
+    <value>choisir un nombre de demi-journées</value>
+  </data>
+  <data name="ChooseHours" xml:space="preserve">
+    <value>choisir un nombre d'heures</value>
+  </data>
+  <data name="ChooseMonth" xml:space="preserve">
+    <value>choisir un nombre de mois</value>
+  </data>
+  <data name="ChooseWeek" xml:space="preserve">
+    <value>choisir un nombre de semaines</value>
+  </data>
+  <data name="ChooseYear" xml:space="preserve">
+    <value>choisir un nombre d'années</value>
+  </data>
+  <data name="HowItWorks" xml:space="preserve">
+    <value>Comment ça marche</value>
+  </data>
+  <data name="HowItWorks1" xml:space="preserve">
+    <value>Vous indiquez les détails de votre réservation</value>
+  </data>
+  <data name="HowItWorks2" xml:space="preserve">
+    <value>Votre demande sera alors immédiatement transmise au gérant</value>
+  </data>
+  <data name="HowItWorks3" xml:space="preserve">
+    <value>Vous recevrez ainsi dans votre espace utilisateur une confirmation du prix et des disponibilités</value>
+  </data>
+  <data name="HowItWorks4" xml:space="preserve">
+    <value>Vous pourrez alors régler en ligne votre réservation</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>matin</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>jusqu'au</value>
+  </data>
 </root>

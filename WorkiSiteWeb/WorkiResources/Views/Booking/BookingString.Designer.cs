@@ -70,6 +70,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to après-midi.
+        /// </summary>
+        public static string Afternoon {
+            get {
+                return ResourceManager.GetString("Afternoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demandé le.
         /// </summary>
         public static string Asked {
@@ -201,6 +210,60 @@ namespace Worki.Resources.Views.Booking {
         public static string CancelStatus {
             get {
                 return ResourceManager.GetString("CancelStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choisir un nombre de jours.
+        /// </summary>
+        public static string ChooseDay {
+            get {
+                return ResourceManager.GetString("ChooseDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choisir un nombre de demi-journées.
+        /// </summary>
+        public static string ChooseHalfDay {
+            get {
+                return ResourceManager.GetString("ChooseHalfDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choisir un nombre d&apos;heures.
+        /// </summary>
+        public static string ChooseHours {
+            get {
+                return ResourceManager.GetString("ChooseHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choisir un nombre de mois.
+        /// </summary>
+        public static string ChooseMonth {
+            get {
+                return ResourceManager.GetString("ChooseMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choisir un nombre de semaines.
+        /// </summary>
+        public static string ChooseWeek {
+            get {
+                return ResourceManager.GetString("ChooseWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choisir un nombre d&apos;années.
+        /// </summary>
+        public static string ChooseYear {
+            get {
+                return ResourceManager.GetString("ChooseYear", resourceCulture);
             }
         }
         
@@ -367,6 +430,51 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comment ça marche.
+        /// </summary>
+        public static string HowItWorks {
+            get {
+                return ResourceManager.GetString("HowItWorks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous indiquez les détails de votre réservation.
+        /// </summary>
+        public static string HowItWorks1 {
+            get {
+                return ResourceManager.GetString("HowItWorks1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande sera alors immédiatement transmise au gérant.
+        /// </summary>
+        public static string HowItWorks2 {
+            get {
+                return ResourceManager.GetString("HowItWorks2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous recevrez ainsi dans votre espace utilisateur une confirmation du prix et des disponibilités.
+        /// </summary>
+        public static string HowItWorks3 {
+            get {
+                return ResourceManager.GetString("HowItWorks3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous pourrez alors régler en ligne votre réservation.
+        /// </summary>
+        public static string HowItWorks4 {
+            get {
+                return ResourceManager.GetString("HowItWorks4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lieu.
         /// </summary>
         public static string Localisation {
@@ -381,6 +489,15 @@ namespace Worki.Resources.Views.Booking {
         public static string MessageToOwner {
             get {
                 return ResourceManager.GetString("MessageToOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to matin.
+        /// </summary>
+        public static string Morning {
+            get {
+                return ResourceManager.GetString("Morning", resourceCulture);
             }
         }
         
@@ -552,6 +669,15 @@ namespace Worki.Resources.Views.Booking {
         public static string Surface {
             get {
                 return ResourceManager.GetString("Surface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to jusqu&apos;au.
+        /// </summary>
+        public static string Until {
+            get {
+                return ResourceManager.GetString("Until", resourceCulture);
             }
         }
         

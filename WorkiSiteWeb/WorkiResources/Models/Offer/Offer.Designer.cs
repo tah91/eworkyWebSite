@@ -259,6 +259,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to demi-journée(s).
+        /// </summary>
+        public static string PluralHalfDay {
+            get {
+                return ResourceManager.GetString("PluralHalfDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to heure(s).
         /// </summary>
         public static string PluralHour {

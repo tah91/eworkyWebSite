@@ -205,6 +205,24 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Facturation.
+        /// </summary>
+        public static string TimeType {
+            get {
+                return ResourceManager.GetString("TimeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantité.
+        /// </summary>
+        public static string TimeUnits {
+            get {
+                return ResourceManager.GetString("TimeUnits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fin souhaitée.
         /// </summary>
         public static string ToDate {

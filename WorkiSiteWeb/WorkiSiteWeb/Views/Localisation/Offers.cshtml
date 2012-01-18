@@ -2,6 +2,7 @@
 
 @section HeadContent
 {
+    <title>@Html.WorkiTitle(Model.Title)</title>
     <link href="@Url.VersionedContent(Links.Content.Search_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.LocalisationDetail_min_css)" rel="stylesheet" type="text/css" />
     <link href="@Url.VersionedContent(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />	
@@ -15,14 +16,7 @@
 		@foreach (var offer in Model.Offers)
 		{
 	  		<div class="contentBlock">
-                <div class="float-left">
-                    <h3 class="blue">@offer.Name</h3>
-                </div>
-                <div class="float-right bold orange">
-                    @offer.GetAvailabilityDisplay()
-                </div>
-                <div class="clear">
-                </div>
+                <h3 class="blue">@offer.Name</h3>
 				@if (offer.OfferFiles.Count > 0)
 				{
 				<div class="offerGallery">
@@ -53,7 +47,23 @@
 				}
 				<div class="float-right">
 					<div class="priceDisplay float-left bold orange">
-						TODO@*@offer.GetPriceDisplay()*@
+                    	<div class="featureTag">
+					        <ul>
+                            @if (!string.IsNullOrEmpty(offer.GetAvailabilityDisplay()))
+                            {
+                                <li>@offer.GetAvailabilityDisplay()</li>   
+                            }
+					        @foreach (var price in offer.OfferPrices)
+					        {
+                                var priceDisplay = price.GetPriceDisplay();
+                                if (!string.IsNullOrEmpty(priceDisplay))
+                                {
+                                    <li>@priceDisplay</li> 
+                                }
+					        }
+					        </ul>
+				        </div> 
+				        <div class="clear"></div>
 					</div>
 					@if (offer.HasProduct)
 					{

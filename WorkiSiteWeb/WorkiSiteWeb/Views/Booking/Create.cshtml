@@ -30,12 +30,12 @@
 				</div>
 			</div>
 			<div class="contentBlock borderOrange bookingSteps">
-				<h3 class="orange">Comment ça marche</h3>
+				<h3 class="orange">@Worki.Resources.Views.Booking.BookingString.HowItWorks</h3>
 				<ul>
-					<li>Vous indiquez les détails de votre réservation</li>
-					<li>Votre demande sera alors immédiatement transmise au gérant</li>
-					<li>Vous recevrez ainsi dans votre espace utilisateur une confirmation du prix et des disponibilités</li>
-					<li>Vous pourrez alors régler en ligne votre réservation</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks1</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks2</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks3</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks4</li>
 				</ul>
 			</div>
 		</div>
@@ -124,8 +124,8 @@
 							<div class="editor-field">
 								@Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
                                 <span class="halfDaySelector">
-                                @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor("matin", "HalfDay_Morning") 
-                                @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor("après-midi", "HalfDay_Afternoon")
+                                @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Morning, "HalfDay_Morning") 
+                                @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Afternoon, "HalfDay_Afternoon")
                                 </span>
 							</div>
 						</td>
@@ -133,7 +133,7 @@
 					<tr>
 						<td class="verticalAlignTop">
 							<div class="bookingEndRow">
-								Fin souhaité
+								@Worki.Resources.Models.Booking.Booking.ToDate<span class="blue">*</span>
 							</div>
 						</td>
 						<td>
@@ -147,7 +147,7 @@
 								@Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.EndDate, new { id = "PeriodType_EndDate" }) @Html.LabelFor("choisir une date de fin", "PeriodType_EndDate")
 							</div>
 							<div class="bookingEndSelection">
-								jusqu'au @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
+								@Worki.Resources.Views.Booking.BookingString.Until @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
 							</div>
 						</td>
 					</tr>
@@ -176,6 +176,7 @@
     </div>
 </div>
 
+
 @section ScriptContent
 {
     @Html.Partial(MVC.Shared.Views._DatePickerScript)
@@ -193,38 +194,38 @@
 	                    case '@((int)Offer.PaymentPeriod.Hour)':
 	                        canChooseHour = true;
 	                        canChooseEndDate = false;
-	                        periodLabel = 'choisir un nombre d\'heures';
-	                        periodUnitText = 'heure(s)';
+	                        periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseHours)';
+	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralHour';
 	                        break;
 	                    case '@((int)Offer.PaymentPeriod.Day)':
 	                        canChooseHour = false;
 	                        canChooseEndDate = true;
-	                        periodLabel = 'choisir un nombre de jours';
-	                        periodUnitText = 'jour(s)';
+	                        periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseDay';
+	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralDay';
 	                        break;
 	                    case '@((int)Offer.PaymentPeriod.Week)':
 	                        canChooseHour = false;
 	                        canChooseEndDate = false;
-	                        periodLabel = 'choisir un nombre de semaines';
-	                        periodUnitText = 'semaine(s)';
+	                        periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseWeek';
+	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralWeek';
 	                        break;
 	                    case '@((int)Offer.PaymentPeriod.Month)':
 	                        canChooseHour = false;
 	                        canChooseEndDate = false;
-	                        periodLabel = 'choisir un nombre de mois';
-	                        periodUnitText = 'mois';
+	                        periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseMonth';
+	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralMonth';
 	                        break;
 	                    case '@((int)Offer.PaymentPeriod.Year)':
 	                        canChooseHour = false;
 	                        canChooseEndDate = false;
-	                        periodLabel = 'choisir un nombre d\'années';
-	                        periodUnitText = 'année(s)';
+	                        periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseYear)';
+	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralYear';
 	                        break;
 	                    case '@((int)Offer.PaymentPeriod.HalfDay)':
 	                        canChooseHour = false;
 	                        canChooseEndDate = false;
-	                        periodLabel = 'choisir un nombre de demi-journées';
-	                        periodUnitText = 'demi-journée(s)';
+	                        periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseHalfDay)';
+	                        periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralHalfDay)';
 	                        showHalfDay = true;
 	                        break;
 	                    default:

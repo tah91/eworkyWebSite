@@ -165,6 +165,12 @@
   <data name="Surface" xml:space="preserve">
     <value>Surface de bureaux souhaitée (en m2)</value>
   </data>
+  <data name="TimeType" xml:space="preserve">
+    <value>Facturation</value>
+  </data>
+  <data name="TimeUnits" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
   <data name="ToDate" xml:space="preserve">
     <value>Fin souhaitée</value>
   </data>

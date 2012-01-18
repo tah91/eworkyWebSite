@@ -258,11 +258,11 @@ namespace Worki.Web.Helpers
 			return MvcHtmlString.Create(MiscHelpers.Nl2Br(text));
 		}
 
-        public static string JSEscape(this HtmlHelper htmlHelper, string s)
+        public static IHtmlString JSEscape(this HtmlHelper htmlHelper, string s)
         {
             s = s.Replace(Environment.NewLine, " ");
             s = s.Replace("'", "\\'");
-            return s;
+            return htmlHelper.Raw(s);
         }
 
         /// <summary>

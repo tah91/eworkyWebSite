@@ -363,6 +363,8 @@ namespace Worki.Data.Models
 			{
 				case PaymentPeriod.Hour:
 					return Worki.Resources.Models.Offer.Offer.PluralHour;
+                case PaymentPeriod.HalfDay:
+                    return Worki.Resources.Models.Offer.Offer.PluralHour;
 				case PaymentPeriod.Day:
                     return Worki.Resources.Models.Offer.Offer.PluralDay;
 				case PaymentPeriod.Week:
@@ -491,7 +493,7 @@ namespace Worki.Data.Models
 	}
 
 	[MetadataType(typeof(OfferPrice_Validation))]
-	public partial class OfferPrice
+    public partial class OfferPrice : IComparable<OfferPrice>
 	{
 		/// <summary>
 		/// Get price display : price / period
@@ -504,7 +506,17 @@ namespace Worki.Data.Models
 
 			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, Price, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
 		}
-	}
+
+        public int CompareTo(OfferPrice other)
+        {
+            if (other.Price > this.Price)
+                return -1;
+            else if (other.Price == this.Price)
+                return 0;
+            else
+                return 1;
+        }
+    }
 
 	[Bind(Exclude = "Id,OfferId")]
 	public class OfferPrice_Validation
