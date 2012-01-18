@@ -210,6 +210,9 @@
   <data name="SingleDay" xml:space="preserve">
     <value>jour</value>
   </data>
+  <data name="SingleHalfDay" xml:space="preserve">
+    <value>demi-journée</value>
+  </data>
   <data name="SingleHour" xml:space="preserve">
     <value>heure</value>
   </data>

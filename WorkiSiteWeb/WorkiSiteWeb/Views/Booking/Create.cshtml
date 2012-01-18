@@ -11,193 +11,168 @@
 
 <div class="detailContent">
     <div class="blockContainer">
-	    <div class="bookingFormDiv">
+	<div class="contentBlock">
+		<div class="bookingDesc float-left">
+			<div class="innerContentBlock bookingLocalisation">
+				<h3 class="blue">@Model.BookingOffer.Localisation.Name - @Model.BookingOffer.Name</h3>
+				<div class="bookingImg borderedImg float-left">
+					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.BookingOffer.Localisation.GetMainPic(), true), Model.BookingOffer.Localisation.Name)
+				</div>
+				<div class="bookingPrices float-left">
+					<ul>
+						@foreach (var price in Model.BookingOffer.OfferPrices)
+						{
+						<li class="bold orange">@price.GetPriceDisplay()</li>	
+						}
+					</ul>
+				</div>
+				<div class="clear">
+				</div>
+			</div>
+			<div class="contentBlock borderOrange bookingSteps">
+				<h3 class="orange">Comment ça marche</h3>
+				<ul>
+					<li>Vous indiquez les détails de votre réservation</li>
+					<li>Votre demande sera alors immédiatement transmise au gérant</li>
+					<li>Vous recevrez ainsi dans votre espace utilisateur une confirmation du prix et des disponibilités</li>
+					<li>Vous pourrez alors régler en ligne votre réservation</li>
+				</ul>
+			</div>
+		</div>
+	    <div class="bookingFormDiv float-right">
 			@using (Html.BeginForm())
             {
-                <div class="contentBlock">
-                    <p>@Worki.Resources.Views.Booking.BookingString.BeginSpeech</p>
-                    <div class="clear"></div>
-				    @Html.AntiForgeryToken()
-                    @Html.HiddenFor(m => m.NeedNewAccount)
-					@Html.HiddenFor(m => m.LocalisationName)
-					@Html.HiddenFor(m => m.OfferName)
-				    <table>
-                        @if (Model.NeedNewAccount)
-                        {
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.LastName)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.LastName)
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.FirstName)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.FirstName)
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.Email)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.Email)
-							    </div>
-						    </td>
-					    </tr>
-                        }
-                        else
-                        {
-                            @Html.HiddenFor(m => m.LastName)
-                            @Html.HiddenFor(m => m.FirstName)  
-                            @Html.HiddenFor(m => m.Email) 
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.LastName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.LastName
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.FirstName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.FirstName
-							    </div>
-						    </td>
-					    </tr>
-                        }
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.LocalisationName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.LocalisationName
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.OfferName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.OfferName
-							    </div>
-						    </td>
-					    </tr>
-					    <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.PhoneNumber)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.PhoneNumber)
-							    </div>
-						    </td>
-					    </tr>
-						<tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.MemberBooking.TimeType)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.DropDownListFor(m => m.MemberBooking.TimeType, Model.Periods)
-							    </div>
-						    </td>
-					    </tr>
-					    <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.MemberBooking.FromDate)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
-                                    <span class="halfDaySelector">
-                                    @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor("matin", "HalfDay_Morning") 
-                                    @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor("après-midi", "HalfDay_Afternoon")
-                                    </span>
-							    </div>
-						    </td>
-					    </tr>
-						<tr>
-						    <td class="verticalAlignTop">
-								<div class="bookingEndRow">
-									Fin souhaité
-								</div>
-						    </td>
-						    <td>
-							    <div class="bookingEndRow">
-								    @Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.SpendUnit, new { id = "PeriodType_SpendUnit" }) @Html.LabelFor("", "PeriodType_SpendUnit", "PeriodType_SpendUnitLabel")
-							    </div>
-								<div class="bookingEndSelection">
-								    @Html.TextBoxFor(m => m.MemberBooking.TimeUnits) <span id="periodUnit"></span>
-							    </div>
-							    <div class="bookingEndRow">
-								    @Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.EndDate, new { id = "PeriodType_EndDate" }) @Html.LabelFor("choisir une date de fin", "PeriodType_EndDate")
-							    </div>
-								<div class="bookingEndSelection">
-								    jusqu'au @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
-							    </div>
-						    </td>
-					    </tr>
-					    <tr>
-						    <td class="verticalAlignTop">
-								<div class="editor-label ">
-									@Html.LabelFor(Worki.Resources.Views.Booking.BookingString.MessageToOwner, "MemberBooking_Message")
-								</div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextAreaFor(m => m.MemberBooking.Message)
-							    </div>
-						    </td>
-					    </tr>
-				    </table>
-                    <p>@Worki.Resources.Views.Booking.BookingString.EndSpeech</p>
-                    <div class="clear"></div>
-                </div>
+				@Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.NeedNewAccount)
+				<table>
+                    @if (Model.NeedNewAccount)
+                    {
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.LastName)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.LastName)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.FirstName)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.FirstName)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Email)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Email)
+							</div>
+						</td>
+					</tr>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.LastName)
+                        @Html.HiddenFor(m => m.FirstName)  
+                        @Html.HiddenFor(m => m.Email) 
+                    }
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.PhoneNumber)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.PhoneNumber)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.MemberBooking.TimeType)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m => m.MemberBooking.TimeType, Model.Periods)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.MemberBooking.FromDate)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
+                                <span class="halfDaySelector">
+                                @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor("matin", "HalfDay_Morning") 
+                                @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor("après-midi", "HalfDay_Afternoon")
+                                </span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="verticalAlignTop">
+							<div class="bookingEndRow">
+								Fin souhaité
+							</div>
+						</td>
+						<td>
+							<div class="bookingEndRow">
+								@Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.SpendUnit, new { id = "PeriodType_SpendUnit" }) @Html.LabelFor("", "PeriodType_SpendUnit", "PeriodType_SpendUnitLabel")
+							</div>
+							<div class="bookingEndSelection">
+								@Html.TextBoxFor(m => m.MemberBooking.TimeUnits) <span id="periodUnit"></span>
+							</div>
+							<div class="bookingEndRow">
+								@Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.EndDate, new { id = "PeriodType_EndDate" }) @Html.LabelFor("choisir une date de fin", "PeriodType_EndDate")
+							</div>
+							<div class="bookingEndSelection">
+								jusqu'au @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="verticalAlignTop">
+							<div class="editor-label ">
+								@Html.LabelFor(Worki.Resources.Views.Booking.BookingString.MessageToOwner, "MemberBooking_Message")
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextAreaFor(m => m.MemberBooking.Message)
+							</div>
+						</td>
+					</tr>
+				</table>
 				<div class="editor-field float-right">
 					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.BookIt"/>
 				</div>
 				<div class="clear"></div>
             }
 	    </div>
+		<div class="clear">
+		</div>
+	</div>
     </div>
 </div>
 

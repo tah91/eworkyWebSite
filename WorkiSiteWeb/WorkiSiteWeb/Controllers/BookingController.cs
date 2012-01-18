@@ -219,6 +219,7 @@ namespace Worki.Web.Controllers
 				}
 			}
             formData.Periods = new SelectList(Offer.GetPaymentPeriodTypes(offer.GetPricePeriods()), "Key", "Value");
+			formData.BookingOffer = offer;
 			return View(formData);
 		}
 

@@ -1,7 +1,55 @@
-﻿.bookingFormDiv table
+﻿.bookingDesc
 {
-    margin-top: 15px;
-	margin-bottom: 15px;
+	width:42%;
+}
+
+.bookingLocalisation
+{
+	margin:0!important;
+	padding:10px;
+}
+
+.bookingPrices
+{
+	margin-left:30px;
+}
+
+.bookingPrices ul li
+{
+	list-style: disc;
+}
+
+.bookingImg
+{
+    width: 200px;
+    height: 140px;
+}
+
+.bookingImg img
+{
+    max-height: 140px;
+}
+
+.bookingSteps ul
+{
+	margin-left:30px;
+}
+
+.borderOrange
+{
+	border-color:#f7a33a!important;
+}
+
+.bookingSteps ul li
+{
+	list-style: disc;
+	margin:5px 0;
+}
+
+.bookingFormDiv
+{
+	margin-top:0!important;
+    width:55%;
 }
 
 .bookingFormDiv table td

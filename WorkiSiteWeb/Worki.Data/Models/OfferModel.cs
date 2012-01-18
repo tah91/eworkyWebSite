@@ -306,6 +306,8 @@ namespace Worki.Data.Models
 			{
 				case PaymentPeriod.Hour:
 					return Worki.Resources.Models.Offer.Offer.SingleHour;
+				case PaymentPeriod.HalfDay:
+					return Worki.Resources.Models.Offer.Offer.SingleHalfDay;
 				case PaymentPeriod.Day:
 					return Worki.Resources.Models.Offer.Offer.SingleDay;
 				case PaymentPeriod.Week:
@@ -345,18 +347,6 @@ namespace Worki.Data.Models
                 return (decimal)(days * (double)offerPrice.Price);
             }
         }
-
-		/// <summary>
-		/// Get price display : price / period
-		/// </summary>
-		/// <returns>the display</returns>
-		public string GetPriceDisplay()
-		{
-            if (Price == 0)
-                return string.Empty;
-
-			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, Price, GetPricingPeriod((PaymentPeriod)Period));
-		}
 
 		public IEnumerable<int> GetPricePeriods()
 		{
@@ -503,7 +493,17 @@ namespace Worki.Data.Models
 	[MetadataType(typeof(OfferPrice_Validation))]
 	public partial class OfferPrice
 	{
+		/// <summary>
+		/// Get price display : price / period
+		/// </summary>
+		/// <returns>the display</returns>
+		public string GetPriceDisplay()
+		{
+			if (Price == 0)
+				return string.Empty;
 
+			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, Price, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
+		}
 	}
 
 	[Bind(Exclude = "Id,OfferId")]

@@ -32,21 +32,22 @@ namespace Worki.Data.Models
         public MemberBookingFormViewModel(Member member, Offer offer)
         {
             MemberBooking = new MemberBooking();
+			BookingOffer = offer;
             var membetExists = member != null;
             PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty;
             NeedNewAccount = !membetExists;
             FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty;
             LastName = membetExists ? member.MemberMainData.LastName : string.Empty;
             Email = membetExists ? member.Email : string.Empty;
-            LocalisationName = offer.Localisation.Name;
-            OfferName = offer.Name;
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(offer.GetPricePeriods()), "Key", "Value");
         }
 
 		public MemberBooking MemberBooking { get; set; }
+		public Offer BookingOffer { get; set; }
 		public SelectList Periods { get; set; }
 		public ePeriodType PeriodType { get; set; }
         public eHalfDay HalfDay { get; set; }
+		public bool NeedNewAccount { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
@@ -60,17 +61,9 @@ namespace Worki.Data.Models
         [Display(Name = "LastName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string LastName { get; set; }
 
-        [Display(Name = "LocalisationName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string LocalisationName { get; set; }
-
-        [Display(Name = "OfferName", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
-        public string OfferName { get; set; }
-
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public string Email { get; set; }
-
-        public bool NeedNewAccount { get; set; }
 
         /// <summary>
         /// Get the start / end date given form parameters

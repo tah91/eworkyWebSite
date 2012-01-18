@@ -777,21 +777,21 @@ namespace Worki.Data.Models
 		/// filter by offerType if needed
 		/// </summary>
 		/// <returns>the min price string</returns>
-		public string GetMinPrice(int offerType = -1)
-		{
-			var offers = offerType == -1 ? Offers.Where(o => o.Price != 0) : Offers.Where(o => o.Type == offerType && o.Price != 0);
+		//public string GetMinPrice(int offerType = -1)
+		//{
+		//    var offers = offerType == -1 ? Offers.Where(o => o.Price != 0) : Offers.Where(o => o.Type == offerType && o.Price != 0);
 
-			if (offers.Count() == 0)
-				return string.Empty;
+		//    if (offers.Count() == 0)
+		//        return string.Empty;
 
-			var min = offers.Min(o => o.Price);
-			var minOffer = offers.FirstOrDefault(o => o.Price == min);
+		//    var min = offers.Min(o => o.Price);
+		//    var minOffer = offers.FirstOrDefault(o => o.Price == min);
 
-			if (minOffer == null)
-				return string.Empty;
+		//    if (minOffer == null)
+		//        return string.Empty;
 
-			return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minOffer.GetPriceDisplay());
-		}
+		//    return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minOffer.GetPriceDisplay());
+		//}
 
 		/// <summary>
 		/// Get all offers which have prices
