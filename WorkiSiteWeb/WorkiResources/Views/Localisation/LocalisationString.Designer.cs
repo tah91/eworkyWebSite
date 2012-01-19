@@ -340,6 +340,16 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cet espace vous intéresse ?&lt;br /&gt;
+        ///Contactez le gérant.
+        /// </summary>
+        public static string NeedContactOfPlace {
+            get {
+                return ResourceManager.GetString("NeedContactOfPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ce lieu vous intéresse ?&lt;br /&gt;
         ///        Réservez directement en ligne.
         /// </summary>

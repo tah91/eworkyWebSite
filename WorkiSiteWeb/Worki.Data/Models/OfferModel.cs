@@ -166,25 +166,37 @@ namespace Worki.Data.Models
                     type == LocalisationOffer.VisioRoom;
         }
 
+		/// <summary>
+		/// True if offer can have a product feature activated
+		/// </summary>
 		public bool CanHaveProduct
 		{
             get { return OfferCanHaveProduct((LocalisationOffer)Type); }			
 		}
 
-        public bool HasProduct
-        {
-            get { return IsBookable || IsQuotable; }
-        }
-
+		/// <summary>
+		/// True if offer can have quotation feature activated
+		/// </summary>
 		public bool CanHaveQuotation
 		{
             get { return OfferCanHaveQuotation((LocalisationOffer)Type); }
 		}
 
+		/// <summary>
+		/// True if offer can have booking feature activated
+		/// </summary>
         public bool CanHaveBooking
         {
 			get { return OfferCanHaveBooking((LocalisationOffer)Type) /*&& Localisation != null && !Localisation.IsSharedOffice()*/; }
         }
+
+		/// <summary>
+		/// True if offer has product feature activated
+		/// </summary>
+		public bool HasProduct
+		{
+			get { return IsBookable || IsQuotable; }
+		}
 
 		#endregion
 

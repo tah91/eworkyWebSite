@@ -753,6 +753,33 @@ namespace Worki.Data.Models
             return toRet;
         }
 
+		/// <summary>
+		/// true if one offer can have products
+		/// </summary>
+		/// <returns></returns>
+		public bool CanHaveProducts()
+		{
+			return Offers.Count(o => o.CanHaveProduct) > 0;
+		}
+
+		/// <summary>
+		/// true if one offer is bookable
+		/// </summary>
+		/// <returns></returns>
+		public bool CanHaveBooking()
+		{
+			return Offers.Count(o => o.IsBookable) != 0;
+		}
+
+		/// <summary>
+		/// true if one offer is quotable
+		/// </summary>
+		/// <returns></returns>
+		public bool CanHaveQuotation()
+		{
+			return Offers.Count(o => o.IsQuotable) != 0;
+		}
+
         #endregion
 
         #region Quotation

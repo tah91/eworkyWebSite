@@ -26,15 +26,19 @@
 		</div>
     }
 </div>
-<div class="contentBlock">
-    <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Booking</h3>
-    <div class="float-left">
-        @Html.Raw(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpace)
-    </div>
-    <div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Localisation.BookableOffers(Model.ID))</div>
-    <div class="clear">
-    </div>
-</div>
+
+@if (Model.CanHaveBooking())
+{
+	<div class="contentBlock">
+		<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Booking</h3>
+		<div class="float-left">
+			@Html.Raw(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpace)
+		</div>
+		<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Localisation.BookableOffers(Model.ID))</div>
+		<div class="clear">
+		</div>
+	</div> 
+}
 
 @*<div class="contentBlock">
 	<h3 class="blue">Tarifs</h3>
@@ -75,8 +79,8 @@
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
 		@{
-    var lastEdition = Model.GetLastEdition();
-    var creation = Model.GetCreation();
+	var lastEdition = Model.GetLastEdition();
+	var creation = Model.GetCreation();
 		}
 		@if (creation != null)
   {
@@ -93,13 +97,13 @@
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
   }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
-        {
+		{
             <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
-        }
+		}
         @if (Model.MainLocalisation != null)
-        {
+		{
             <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)</span><br />
-        }
+		}
 	</div>
 }
 <div class="localisationMiscRatings contentBlock">
@@ -154,49 +158,61 @@
   }
 	</table>
 	@{
-        var haveAvoid = Model.GetAvoidString();
-        if (!string.IsNullOrEmpty(haveAvoid))
-        {
+		var haveAvoid = Model.GetAvoidString();
+		if (!string.IsNullOrEmpty(haveAvoid))
+		{
 		<span class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
-        }
+		}
 	}
 </div>
-@if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
+@if (Model.IsSharedOffice() && !Request.IsAuthenticated)
+{
+	<div class="contentBlock">
+		<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
+		<div class="float-left">
+        @Html.Raw(Worki.Resources.Views.Localisation.LocalisationString.NeedContactOfPlace)
+		</div>
+		<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())</div>
+		<div class="clear">
+		</div>
+		</div>
+}
+else if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
 {
 	<div class="localisationGeneralInfo contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
 		@if (!Model.ContactEmpty())
   {
-      if (!string.IsNullOrEmpty(Model.Mail))
-      {
+	  if (!string.IsNullOrEmpty(Model.Mail))
+	  {
 				@Html.Mailto(Model.Mail, Model.Mail, new { itemprop = "email" })<br />
-      }
-      if (!string.IsNullOrEmpty(Model.WebSite))
-      {
+	  }
+	  if (!string.IsNullOrEmpty(Model.WebSite))
+	  {
 				<a href="@WebHelper.GetWebsite(Model.WebSite)" title="@Model.WebSite" target="_blank" itemprop="url" class="orange">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
-      }
-      if (!string.IsNullOrEmpty(Model.Facebook))
-      {
+	  }
+	  if (!string.IsNullOrEmpty(Model.Facebook))
+	  {
 				<a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank" class="orange"><span>@Worki.Resources.Views.Localisation.LocalisationString.FacebookPage</span></a><br />
-      }
-      if (!string.IsNullOrEmpty(Model.Twitter))
-      {
+	  }
+	  if (!string.IsNullOrEmpty(Model.Twitter))
+	  {
 				<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank" class="orange"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
-      }
-      if (!Model.HasOwner())
-      {
+	  }
+	  if (!Model.HasOwner())
+	  {
 				@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID), new { @class = "orange" })<br />
-      }
-      if (!string.IsNullOrEmpty(Model.PhoneNumber))
-      {
+	  }
+	  if (!string.IsNullOrEmpty(Model.PhoneNumber))
+	  {
 				<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
 				<span itemprop="telephone">@Html.GetPhoneFormat(Model.PhoneNumber)</span><br />
-      }
-      if (!string.IsNullOrEmpty(Model.Fax))
-      {
+	  }
+	  if (!string.IsNullOrEmpty(Model.Fax))
+	  {
 				<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
 				<span itemprop="faxNumber">@Html.GetPhoneFormat(Model.Fax)</span><br />
-      }
+	  }
   }
   else
   {
