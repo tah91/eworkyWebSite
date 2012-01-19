@@ -430,6 +430,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paramétrage des tarifs.
+        /// </summary>
+        public static string PriceConfiguration {
+            get {
+                return ResourceManager.GetString("PriceConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refuser.
         /// </summary>
         public static string Refuse {

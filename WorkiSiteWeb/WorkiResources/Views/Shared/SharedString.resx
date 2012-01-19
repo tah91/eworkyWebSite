@@ -290,7 +290,7 @@
     <value>{0} lieux ajoutés.</value>
   </data>
   <data name="PleaseFillInfos" xml:space="preserve">
-    <value>Veuillez indiquer le prix TTC à régler pour une réservation du {0} à {1} jusqu'au {2} à {3}</value>
+    <value>Veuillez confirmer le prix TTC à régler pour une réservation du {0} à {1} jusqu'au {2} à {3}</value>
   </data>
   <data name="PleaseChangeInfos" xml:space="preserve">
     <value>Veuillez changer les informations suivantes :</value>

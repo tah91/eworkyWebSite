@@ -145,7 +145,7 @@
     <value>Devise</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Jours</value>
+    <value>Jour</value>
   </data>
   <data name="Euro" xml:space="preserve">
     <value>EUR</value>
@@ -154,7 +154,7 @@
     <value>Demi-journée</value>
   </data>
   <data name="Hour" xml:space="preserve">
-    <value>Heures</value>
+    <value>Heure</value>
   </data>
   <data name="IsBookable" xml:space="preserve">
     <value>Réservation en ligne</value>
@@ -232,9 +232,9 @@
     <value>Type d'offre</value>
   </data>
   <data name="Week" xml:space="preserve">
-    <value>Semaines</value>
+    <value>Semaine</value>
   </data>
   <data name="Year" xml:space="preserve">
-    <value>Années</value>
+    <value>Année</value>
   </data>
 </root>

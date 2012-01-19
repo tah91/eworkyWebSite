@@ -595,6 +595,12 @@ div.pagerTop
 	text-align: center;
 }
 
+.bigButtonStd
+{
+	padding: 10px 20px;
+	font-size:16px;
+}
+
 .buttonBlue
 {
 	border: 1px solid #5DAFDE;
@@ -1414,7 +1420,8 @@ html ul.tabs li.active a:hover
 
 .innerContentBlock
 {
-    /*border:1px solid #CCCCCC;*/
+    border:1px solid #CCCCCC;
+    padding:10px;
     margin:10px;
     background-color: White;
     -webkit-border-radius: 4px;

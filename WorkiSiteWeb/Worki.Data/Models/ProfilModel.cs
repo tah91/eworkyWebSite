@@ -373,7 +373,9 @@ namespace Worki.Data.Models
     [Bind(Exclude = "MemberId,Username")]
     public class Member_Validation
     {
-
+		[Display(Name = "Email", ResourceType = typeof(Worki.Resources.Models.Account.AccountModels))]
+		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string Email { get; set; }
     }
 
     #endregion

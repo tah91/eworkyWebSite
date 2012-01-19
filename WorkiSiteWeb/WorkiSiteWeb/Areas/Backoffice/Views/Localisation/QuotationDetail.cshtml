@@ -35,7 +35,7 @@
                 };
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
-            <div class="innerContentBlock padding10 summaryDetail float-right">
+            <div class="innerContentBlock summaryDetail float-right">
                 @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Demand, string.Format("n° {0}", Model.Id))
                 @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Place, Model.Offer.Localisation.Name)
                 @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Offer, Model.Offer.Name)
@@ -47,7 +47,7 @@
             </div>
             @if (Model.Paid)
             { 
-                <div class="innerContentBlock padding10 summaryDetail float-right">
+                <div class="innerContentBlock summaryDetail float-right">
                     <b>Prospect</b><br/>
                     @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.LastName, Model.Member.MemberMainData.LastName)
                     @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.FirstName, Model.Member.MemberMainData.FirstName)

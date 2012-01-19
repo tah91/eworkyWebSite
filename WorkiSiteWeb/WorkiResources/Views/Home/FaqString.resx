@@ -147,7 +147,8 @@ peut être lancée via le lien « {1} ». Vous pourrez alors faire votre choix s
 critères tels que les services proposés par le lieu (wifi, restauration, parking, etc.), le type de lieu
 (espace de travail gratuit, centre d’affaires, etc.) ou encore utiliser les recherches pré-paramétrées
 selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
-  <comment>toujours identique ?</comment></data>
+    <comment>toujours identique ?</comment>
+  </data>
   <data name="ForRateComment" xml:space="preserve">
     <value>Pour commenter ou noter un lieu de travail, vous devez être connecté sur votre compte eWorky. Une fois
         connecté, il vous suffit de vous rendre sur la fiche du lieu pour commenter et/ou noter le lieu.</value>
@@ -206,10 +207,11 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
         partage, l’ouverture et la convivialité.</value>
   </data>
   <data name="OnEWDigitalPublicSpace" xml:space="preserve">
-    <value>Sur eWorky, un espace publique numérique est une structure d’accueil, à but non lucratif proposant un accès
+    <value>Sur eWorky, un espace public numérique est une structure d’accueil, à but non lucratif proposant un accès
         internet et dont l’objectif principal est l’initiation à l’informatique et aux technologies de l’information et de la
         communication.</value>
-  <comment>Existe dans les autres pays ?</comment></data>
+    <comment>Existe dans les autres pays ?</comment>
+  </data>
   <data name="OnEWOffice" xml:space="preserve">
     <value>Sur eWorky, un bureau est une salle fermée avec un ou plusieurs postes de travail. Le terme « Bureaux » désigne les bureaux proposés en contrat flexible ou moyen terme, sans bail, dans un centre
         d’affaires, une pépinière, un télécentre ou encore un incubateur.</value>
@@ -234,7 +236,8 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
   <data name="OnEWTelework1" xml:space="preserve">
     <value>«Le télétravail est une forme d’organisation et/ou de réalisation du travail, utilisant les technologies de l’information dans le cadre d’un contrat de travail et dans laquelle un travail, qui aurait également pu être réalisé dans les locaux de l’employeur, est effectué hors de ces locaux de façon régulière.»
        </value>
-  <comment>Valable ?</comment></data>
+    <comment>Valable ?</comment>
+  </data>
   <data name="OnEWTelework2" xml:space="preserve">
     <value>Cette façon de concevoir et d’organiser le travail différemment concerne tous les types de travailleurs, qu’ils
         soient sédentaires ou nomades et offre de nombreux avantages d’un point de vue économique, social,
@@ -242,7 +245,8 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
         télétravailler à temps plein, seulement quelques jours par semaine ou encore de façon ponctuelle selon leurs
         besoins. De plus, les télétravailleurs peuvent rester à leur domicile ou bien se déplacer dans un télécentre proche
         de chez eux, selon leurs besoins et leurs envies.</value>
-  <comment>A traduire ?</comment></data>
+    <comment>A traduire ?</comment>
+  </data>
   <data name="OnEWWorkStation" xml:space="preserve">
     <value>Sur eWorky, un poste de travail correspond à un espace de quelques mètres carrés doté à minima de mobilier
         de bureau et d’une connexion internet. Un open space regroupe généralement plusieurs dizaines de postes de
@@ -299,7 +303,8 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
   </data>
   <data name="WhatIsEWorky" xml:space="preserve">
     <value>A quoi sert eWorky ?</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="WhatIsMeetingRoom" xml:space="preserve">
     <value>Qu’est-ce qu’une salle de réunion ?</value>
   </data>
@@ -320,7 +325,8 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
   </data>
   <data name="WhatIsWorkOffice" xml:space="preserve">
     <value>Qu’est-ce qu’un poste de travail ?</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="WhatIsWorkStation" xml:space="preserve">
     <value>Qu’est-ce qu’un poste de travail ?</value>
   </data>
@@ -366,5 +372,8 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
   </data>
   <data name="ViaViadeo" xml:space="preserve">
     <value>Via Viadeo</value>
+  </data>
+  <data name="OnEWTeleRoom" xml:space="preserve">
+    <value>Sur eWorky, une salle de téléprésence est une salle permettant de donner aux participants d’une vidéoconférence l’impression d’être dans la même pièce. Elle est équipée de caméras et de micros, les participants ont ainsi autour d’eux des personnes à taille réelle.</value>
   </data>
 </root>

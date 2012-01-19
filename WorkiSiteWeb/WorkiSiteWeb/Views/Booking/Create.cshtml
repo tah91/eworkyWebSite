@@ -2,12 +2,12 @@
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.BookIt) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.Booking) </title>
 	<link href="@Url.VersionedContent(Links.Content.Booking_min_css)" rel="stylesheet" type="text/css" />
 	<link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookIt, "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.Booking, "Blue")
 
 <div class="detailContent">
     <div class="blockContainer">
@@ -29,7 +29,7 @@
 				<div class="clear">
 				</div>
 			</div>
-			<div class="contentBlock borderOrange bookingSteps">
+			<div class="innerContentBlock borderOrange bookingSteps">
 				<h3 class="orange">@Worki.Resources.Views.Booking.BookingString.HowItWorks</h3>
 				<ul>
 					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks1</li>
@@ -181,103 +181,107 @@
 {
     @Html.Partial(MVC.Shared.Views._DatePickerScript)
 	<script type="text/javascript">
-	    require(["@Links.Scripts.date_js"], function () {
-	        require.ready(function () {
-	            SelectPeriodType = function () {
-	                var currentPeriodType = jQuery.trim($("#MemberBooking_TimeType").val());
-	                var canChooseHour = false;
-	                var canChooseEndDate = false;
-	                var periodLabel = '';
-	                var periodUnitText = '';
-	                var showHalfDay = false;
-	                switch (currentPeriodType) {
-	                    case '@((int)Offer.PaymentPeriod.Hour)':
-	                        canChooseHour = true;
-	                        canChooseEndDate = false;
-	                        periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseHours)';
-	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralHour';
-	                        break;
-	                    case '@((int)Offer.PaymentPeriod.Day)':
-	                        canChooseHour = false;
-	                        canChooseEndDate = true;
-	                        periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseDay';
-	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralDay';
-	                        break;
-	                    case '@((int)Offer.PaymentPeriod.Week)':
-	                        canChooseHour = false;
-	                        canChooseEndDate = false;
-	                        periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseWeek';
-	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralWeek';
-	                        break;
-	                    case '@((int)Offer.PaymentPeriod.Month)':
-	                        canChooseHour = false;
-	                        canChooseEndDate = false;
-	                        periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseMonth';
-	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralMonth';
-	                        break;
-	                    case '@((int)Offer.PaymentPeriod.Year)':
-	                        canChooseHour = false;
-	                        canChooseEndDate = false;
-	                        periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseYear)';
-	                        periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralYear';
-	                        break;
-	                    case '@((int)Offer.PaymentPeriod.HalfDay)':
-	                        canChooseHour = false;
-	                        canChooseEndDate = false;
-	                        periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseHalfDay)';
-	                        periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralHalfDay)';
-	                        showHalfDay = true;
-	                        break;
-	                    default:
+	    require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
+			require(["@Url.VersionedContent((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "fr-FR") ? Links.Scripts.jquery_ui_datepicker_fr_js : Links.Scripts.jquery_ui_datepicker_en_js)","@Links.Scripts.date_js"], function () {
+				require.ready(function () {
+					SelectPeriodType = function () {
+						var currentPeriodType = jQuery.trim($("#MemberBooking_TimeType").val());
+						var canChooseHour = false;
+						var canChooseEndDate = false;
+						var periodLabel = '';
+						var periodUnitText = '';
+						var showHalfDay = false;
+						switch (currentPeriodType) {
+							case '@((int)Offer.PaymentPeriod.Hour)':
+								canChooseHour = true;
+								canChooseEndDate = false;
+								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseHours)';
+								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralHour';
+								break;
+							case '@((int)Offer.PaymentPeriod.Day)':
+								canChooseHour = false;
+								canChooseEndDate = true;
+								periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseDay';
+								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralDay';
+								break;
+							case '@((int)Offer.PaymentPeriod.Week)':
+								canChooseHour = false;
+								canChooseEndDate = false;
+								periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseWeek';
+								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralWeek';
+								break;
+							case '@((int)Offer.PaymentPeriod.Month)':
+								canChooseHour = false;
+								canChooseEndDate = false;
+								periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseMonth';
+								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralMonth';
+								break;
+							case '@((int)Offer.PaymentPeriod.Year)':
+								canChooseHour = false;
+								canChooseEndDate = false;
+								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseYear)';
+								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralYear';
+								break;
+							case '@((int)Offer.PaymentPeriod.HalfDay)':
+								canChooseHour = false;
+								canChooseEndDate = false;
+								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseHalfDay)';
+								periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralHalfDay)';
+								showHalfDay = true;
+								break;
+							default:
 
-	                        break;
-	                }
+								break;
+						}
+						if (showHalfDay) {
+							$('.halfDaySelector').show();
+						}
+						else {
+							$('.halfDaySelector').hide();
+						}
+						$('#PeriodType_SpendUnitLabel').text(periodLabel);
+						$('#periodUnit').text(periodUnitText);
+						var timeClass = canChooseHour ? 'dtp' : 'dp';
+						var timeFormat = canChooseHour ? 'dd/MM/yyyy HH:mm' : 'dd/MM/yyyy';
+						$('#MemberBooking_FromDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
+						$('#MemberBooking_ToDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
+						var fromDate = Date.parse($('#MemberBooking_FromDate').val());
+						var toDate = Date.parse($('#MemberBooking_ToDate').val());
+						$('#MemberBooking_FromDate').val(fromDate.toString(timeFormat));
+						$('#MemberBooking_ToDate').val(toDate.toString(timeFormat));
 
-	                if (showHalfDay) {
-	                    $('.halfDaySelector').show();
-	                }
-	                else {
-	                    $('.halfDaySelector').hide();
-	                }
-	                $('#PeriodType_SpendUnitLabel').text(periodLabel);
-	                $('#periodUnit').text(periodUnitText);
-	                var timeClass = canChooseHour ? 'dtp' : 'dp';
-	                var timeFormat = canChooseHour ? 'dd/MM/yyyy HH:mm' : 'dd/MM/yyyy';
-	                $('#MemberBooking_FromDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
-	                $('#MemberBooking_ToDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
-	                var fromDate = Date.parse($('#MemberBooking_FromDate').val());
-	                var toDate = Date.parse($('#MemberBooking_ToDate').val());
-	                $('#MemberBooking_FromDate').val(fromDate.toString(timeFormat));
-	                $('#MemberBooking_ToDate').val(toDate.toString(timeFormat));
+						if (canChooseEndDate) {
+							$('#PeriodType_EndDate').removeAttr("disabled");
+							$('#MemberBooking_ToDate').removeAttr("disabled");
+						}
+						else {
+							$('#PeriodType_EndDate').attr("disabled", true);
+							$('#MemberBooking_ToDate').attr("disabled", true);
+						}
 
-	                if (canChooseEndDate) {
-	                    $('#PeriodType_EndDate').removeAttr("disabled");
-	                    $('#MemberBooking_ToDate').removeAttr("disabled");
-	                }
-	                else {
-	                    $('#PeriodType_EndDate').attr("disabled", true);
-	                    $('#MemberBooking_ToDate').attr("disabled", true);
-	                }
+						$('#PeriodType_SpendUnit').prop('checked', true);
+						$('#PeriodType_EndDate').prop('checked', false);
 
-	                $(".dp").datepicker({
-	                    changeMonth: true,
-	                    changeYear: true,
-	                    yearRange: '1900:2020'
-	                });
-	                $(".dtp").datetimepicker({
-	                    stepHour: 1,
-	                    stepMinute: 15,
-	                    hourMin: 8,
-	                    hourMax: 20
-	                });
-	            }
-	            SelectPeriodType();
+						$(".dp").datepicker({
+							changeMonth: true,
+							changeYear: true,
+							yearRange: '1900:2020'
+						});
+						$(".dtp").datetimepicker({
+							stepHour: 1,
+							stepMinute: 15,
+							hourMin: 8,
+							hourMax: 20
+						});
+					}
+					SelectPeriodType();
 
-	            $('#MemberBooking_TimeType').live('change', function () {
-	                SelectPeriodType();
-	            });
-	        });
-	    });
+					$('#MemberBooking_TimeType').live('change', function () {
+						SelectPeriodType();
+					});
+				});
+			});
+		});
 	</script>
 	
 }

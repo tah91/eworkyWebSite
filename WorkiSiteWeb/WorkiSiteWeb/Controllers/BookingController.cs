@@ -97,7 +97,7 @@ namespace Worki.Web.Controllers
 						formData.MemberBooking.StatusId = (int)MemberBooking.Status.Unknown;
                         formData.AjustBookingPeriod();
                         formData.MemberBooking.Price = offer.GetDefaultPrice(   formData.MemberBooking.FromDate,
-                                                                                formData.MemberBooking.FromDate,
+                                                                                formData.MemberBooking.ToDate,
 																				formData.MemberBooking.PeriodType == (int)MemberBooking.ePeriodType.SpendUnit,
                                                                                 (Offer.PaymentPeriod)formData.MemberBooking.TimeType,
                                                                                 formData.MemberBooking.TimeUnits);

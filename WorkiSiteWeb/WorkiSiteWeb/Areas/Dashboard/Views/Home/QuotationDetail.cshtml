@@ -42,7 +42,7 @@
                 };
             }
             @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
-            <div class="innerContentBlock padding10 summaryDetail float-right">
+            <div class="innerContentBlock summaryDetail float-right">
 				@Worki.Resources.Views.Booking.BookingString.Asked : <span class="bold">@Html.DisplayLocalDate(Model.CreationDate)</span><br />
                 @Worki.Resources.Views.BackOffice.BackOfficeString.Status : <span class="bold">@statusText @Html.DisplayLocalDate(statusDate)</span><br />
                 @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Message, Model.Message)

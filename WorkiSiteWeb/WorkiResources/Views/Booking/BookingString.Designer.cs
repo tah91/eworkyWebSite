@@ -124,6 +124,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Réservation.
+        /// </summary>
+        public static string Booking {
+            get {
+                return ResourceManager.GetString("Booking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La demande de réservation a été confirmée..
         /// </summary>
         public static string BookingAccepted {

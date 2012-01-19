@@ -397,6 +397,25 @@ namespace Worki.Web.Areas.Admin.Controllers
             return View(MVC.Admin.Sheet.Views.BusinessCenter, viewModel);
         }
 
+		public virtual ActionResult SharedOffice(int? page)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var pageValue = page ?? 1;
+			var localisations = lRepo.GetMany(loc => loc.TypeValue == (int)LocalisationType.SharedOffice && loc.Country == "France").OrderByDescending(x => x.ID).ToList();
+			var viewModel = new PagingList<Localisation>()
+			{
+				List = localisations.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
+				PagingInfo = new PagingInfo
+				{
+					CurrentPage = pageValue,
+					ItemsPerPage = MiscHelpers.Constants.PageSize,
+					TotalItems = localisations.Count
+				}
+			};
+			return View(MVC.Admin.Sheet.Views.SharedOffice, viewModel);
+		}
+
         public virtual ActionResult SetBackOfficeRole(int id, int page, bool b)
         {
             var context = ModelFactory.GetUnitOfWork();

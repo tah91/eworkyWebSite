@@ -10,13 +10,13 @@
 .newsContent li:nth-child(even){background:#f2f2f2}
 .newsListLeft{width:20%}
 .newsListRight{width:80%}
-.newsBottom{margin-top:10px}
+.newsBottom{margin-top:10px;padding:0!important}
 .summaryContainer{width:25%}
 .summaryImage{height:200px}
 .summaryImage img{max-height:200px}
 .summaryIntro{text-align:center}
 .summaryDetail{width:63%}
-.summaryDescription{width:65%}
+.summaryDescription{width:65%;padding:0!important}
 .localisationNavigation{margin-bottom:10px;font-size:15px;font-weight:bold}
 .localisationsTagContainer ul{margin:0;padding:0}
 .localisationsTagContainer ul li a{text-decoration:none;display:block}

@@ -6,7 +6,6 @@
 .bookingLocalisation
 {
 	margin:0!important;
-	padding:10px;
 }
 
 .bookingPrices
@@ -28,6 +27,11 @@
 .bookingImg img
 {
     max-height: 140px;
+}
+
+.bookingSteps
+{
+	margin:10px 0 0 0!important;
 }
 
 .bookingSteps ul

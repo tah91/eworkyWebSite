@@ -451,6 +451,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>View to fill booking data</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
+		[ValidateOnlyIncomingValues]
 		public virtual ActionResult ConfirmBooking(int id, OfferModel<MemberBooking> memberBooking)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);

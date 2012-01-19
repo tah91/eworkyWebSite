@@ -27,16 +27,14 @@
     }
 </div>
 
-@if (Model.CanHaveBooking())
+@if (!Model.IsSharedOffice() && Model.CanHaveBooking())
 {
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Booking</h3>
-		<div class="float-left">
+		<div>
 			@Html.Raw(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpace)
 		</div>
-		<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Localisation.BookableOffers(Model.ID))</div>
-		<div class="clear">
-		</div>
+		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction, MVC.Localisation.BookableOffers(Model.ID))</div>
 	</div> 
 }
 
@@ -169,13 +167,11 @@
 {
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
-		<div class="float-left">
+		<div>
         @Html.Raw(Worki.Resources.Views.Localisation.LocalisationString.NeedContactOfPlace)
 		</div>
-		<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())</div>
-		<div class="clear">
-		</div>
-		</div>
+		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedContactOfPlaceAction, MVC.Account.LogOn(null, Request.RawUrl))</div>
+	</div>
 }
 else if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
 {

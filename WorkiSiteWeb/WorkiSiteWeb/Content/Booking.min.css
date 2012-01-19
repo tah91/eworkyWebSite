@@ -1,9 +1,10 @@
 ﻿.bookingDesc{width:42%}
-.bookingLocalisation{margin:0!important;padding:10px}
+.bookingLocalisation{margin:0!important}
 .bookingPrices{margin-left:30px}
 .bookingPrices ul li{list-style:disc}
 .bookingImg{width:200px;height:140px}
 .bookingImg img{max-height:140px}
+.bookingSteps{margin:10px 0 0 0!important}
 .bookingSteps ul{margin-left:30px}
 .borderOrange{border-color:#f7a33a!important}
 .bookingSteps ul li{list-style:disc;margin:5px 0}

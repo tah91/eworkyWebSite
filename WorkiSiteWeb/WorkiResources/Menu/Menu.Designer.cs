@@ -385,6 +385,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Partage Fr.
+        /// </summary>
+        public static string SharedOfficeFr {
+            get {
+                return ResourceManager.GetString("SharedOfficeFr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fiches.
         /// </summary>
         public static string Sheet {

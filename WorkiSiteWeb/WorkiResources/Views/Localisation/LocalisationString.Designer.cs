@@ -340,8 +340,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cet espace vous intéresse ?&lt;br /&gt;
-        ///Contactez le gérant.
+        ///   Looks up a localized string similar to Cet espace vous intéresse ?.
         /// </summary>
         public static string NeedContactOfPlace {
             get {
@@ -350,12 +349,29 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ce lieu vous intéresse ?&lt;br /&gt;
-        ///        Réservez directement en ligne.
+        ///   Looks up a localized string similar to Contactez le gérant.
+        /// </summary>
+        public static string NeedContactOfPlaceAction {
+            get {
+                return ResourceManager.GetString("NeedContactOfPlaceAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cet espace vous intéresse ?.
         /// </summary>
         public static string NeedThisSpace {
             get {
                 return ResourceManager.GetString("NeedThisSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Réservez en ligne.
+        /// </summary>
+        public static string NeedThisSpaceAction {
+            get {
+                return ResourceManager.GetString("NeedThisSpaceAction", resourceCulture);
             }
         }
         

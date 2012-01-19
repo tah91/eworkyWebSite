@@ -516,7 +516,8 @@ namespace Worki.Data.Models
 			if (Price == 0)
 				return string.Empty;
 
-			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, Price, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
+			var priceStr = Price.ToString("### ### ###");
+			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
 		}
 
         public int CompareTo(OfferPrice other)

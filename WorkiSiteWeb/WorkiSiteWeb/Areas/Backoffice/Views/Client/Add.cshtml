@@ -43,7 +43,7 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @Worki.Resources.Models.Contact.Contact.LastName<span class="blue">*</span>
+                                    @Html.LabelFor(m => m.Member.MemberMainData.LastName)<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
@@ -55,7 +55,7 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @Worki.Resources.Models.Contact.Contact.FirstName<span class="blue">*</span>
+                                    @Html.LabelFor(m => m.Member.MemberMainData.FirstName)<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
@@ -67,7 +67,7 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @Html.LabelFor(m => m.Member.Email)
+                                    @Html.LabelFor(m => m.Member.Email)<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
@@ -79,12 +79,48 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @Html.LabelFor(m => m.Member.MemberMainData.PhoneNumber)
+                                    @Html.LabelFor(m => m.Member.MemberMainData.PhoneNumber)<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBoxFor(m => m.Member.MemberMainData.PhoneNumber)
+                                </div>
+                            </td>
+                        </tr>
+						<tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.City)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.City)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.PostalCode)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.PostalCode)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.Member.MemberMainData.Country)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.Member.MemberMainData.Country)
                                 </div>
                             </td>
                         </tr>

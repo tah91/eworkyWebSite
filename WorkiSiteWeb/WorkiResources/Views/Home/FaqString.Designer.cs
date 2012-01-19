@@ -337,7 +337,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sur eWorky, un espace publique numérique est une structure d’accueil, à but non lucratif proposant un accès
+        ///   Looks up a localized string similar to Sur eWorky, un espace public numérique est une structure d’accueil, à but non lucratif proposant un accès
         ///        internet et dont l’objectif principal est l’initiation à l’informatique et aux technologies de l’information et de la
         ///        communication..
         /// </summary>
@@ -384,6 +384,15 @@ namespace Worki.Resources.Views.Home {
         public static string OnEWTelecenter {
             get {
                 return ResourceManager.GetString("OnEWTelecenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sur eWorky, une salle de téléprésence est une salle permettant de donner aux participants d’une vidéoconférence l’impression d’être dans la même pièce. Elle est équipée de caméras et de micros, les participants ont ainsi autour d’eux des personnes à taille réelle..
+        /// </summary>
+        public static string OnEWTeleRoom {
+            get {
+                return ResourceManager.GetString("OnEWTeleRoom", resourceCulture);
             }
         }
         

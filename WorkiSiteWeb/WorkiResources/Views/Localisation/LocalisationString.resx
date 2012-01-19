@@ -270,11 +270,15 @@
     <value>Ce lieu proposera bientôt des offres à la réservation</value>
   </data>
   <data name="NeedThisSpace" xml:space="preserve">
-    <value>Ce lieu vous intéresse ?&lt;br /&gt;
-        Réservez directement en ligne</value>
+    <value>Cet espace vous intéresse ?</value>
   </data>
   <data name="NeedContactOfPlace" xml:space="preserve">
-    <value>Cet espace vous intéresse ?&lt;br /&gt;
-Contactez le gérant</value>
+    <value>Cet espace vous intéresse ?</value>
+  </data>
+  <data name="NeedContactOfPlaceAction" xml:space="preserve">
+    <value>Contactez le gérant</value>
+  </data>
+  <data name="NeedThisSpaceAction" xml:space="preserve">
+    <value>Réservez en ligne</value>
   </data>
 </root>

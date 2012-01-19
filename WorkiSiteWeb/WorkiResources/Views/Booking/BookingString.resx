@@ -342,4 +342,7 @@
   <data name="NotNullQuantity" xml:space="preserve">
     <value>Veuillez indiquer une quantité non nulle</value>
   </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Réservation</value>
+  </data>
 </root>

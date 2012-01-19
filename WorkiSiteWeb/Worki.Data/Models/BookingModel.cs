@@ -163,7 +163,7 @@ namespace Worki.Data.Models
 				{
 					case "FromDate":
 						{
-							if (PeriodType == (int)ePeriodType.EndDate && (FromDate - DateTime.UtcNow).Days < -1)
+							if ((FromDate - DateTime.UtcNow).Days < -1)
 							{
 								return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}

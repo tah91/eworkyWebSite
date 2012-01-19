@@ -288,4 +288,7 @@
   <data name="DoNotHaveOnlineQuotation" xml:space="preserve">
     <value>Ce lieu n'a pas encore d'offre pouvant proposer la demande de devis.</value>
   </data>
+  <data name="PriceConfiguration" xml:space="preserve">
+    <value>Paramétrage des tarifs</value>
+  </data>
 </root>

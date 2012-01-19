@@ -2651,6 +2651,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SharedOffice() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SharedOffice);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult SetBackOfficeRole() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.SetBackOfficeRole);
         }
@@ -2677,6 +2682,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string DeleteRental = "DeleteRental";
             public readonly string CoworkingSpace = "CoworkingSpace";
             public readonly string BusinessCenter = "BusinessCenter";
+            public readonly string SharedOffice = "SharedOffice";
             public readonly string SetBackOfficeRole = "SetBackOfficeRole";
         }
 
@@ -2692,6 +2698,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string DeleteRental = "~/Areas/Admin/Views/Sheet/DeleteRental.cshtml";
             public readonly string Index = "~/Areas/Admin/Views/Sheet/Index.cshtml";
             public readonly string IndexRental = "~/Areas/Admin/Views/Sheet/IndexRental.cshtml";
+            public readonly string SharedOffice = "~/Areas/Admin/Views/Sheet/SharedOffice.cshtml";
         }
     }
 
@@ -2776,6 +2783,12 @@ namespace Worki.Web.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult BusinessCenter(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BusinessCenter);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SharedOffice(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SharedOffice);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }

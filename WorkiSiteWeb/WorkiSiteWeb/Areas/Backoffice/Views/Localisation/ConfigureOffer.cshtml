@@ -75,13 +75,14 @@
 					</tr>
 					}
 				</table>
+				<h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
 			    <div class="offerPricesRows">
 				    @foreach (var item in Model.InnerModel.Offer.OfferPrices)
 				    {
 					    @Html.Partial(MVC.Backoffice.Localisation.Views._OfferPrice , item)
 				    }
 			    </div>
-			    @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddPrice, MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { id = "addItem" })
+			    @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddPrice, MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { @class = "orange", id = "addItem" })
 		    </div>
 
 		    <div class="editor-field float-right">

@@ -404,7 +404,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ce site Web est exploité par Omnicentre SAS, Société par Actions Simplifiée de droit français au capital de 10 000 euros, dont le siège social est situé au 30 rue des poissonniers, 92200 Neuilly-sur-Seine, immatriculée au Registre du Commerce et des Sociétés de Nanterre sous le numéro 529 309 668. Ce site Web est hébergé sous Microsoft Windows Azure..
+        ///   Looks up a localized string similar to Ce site Web est exploité par Omnicentre SAS, Société par Actions Simplifiée de droit français au capital de 20 740 euros, dont le siège social est situé au 57, rue de Lille, 75007 Paris, immatriculée au Registre du Commerce et des Sociétés de Paris sous le numéro 529 309 668. Ce site Web est hébergé sous Microsoft Windows Azure..
         /// </summary>
         public static string WebSiteOfOmnicentre {
             get {

@@ -142,7 +142,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jours.
+        ///   Looks up a localized string similar to Jour.
         /// </summary>
         public static string Day {
             get {
@@ -169,7 +169,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Heures.
+        ///   Looks up a localized string similar to Heure.
         /// </summary>
         public static string Hour {
             get {
@@ -403,7 +403,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Semaines.
+        ///   Looks up a localized string similar to Semaine.
         /// </summary>
         public static string Week {
             get {
@@ -412,7 +412,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Années.
+        ///   Looks up a localized string similar to Année.
         /// </summary>
         public static string Year {
             get {
