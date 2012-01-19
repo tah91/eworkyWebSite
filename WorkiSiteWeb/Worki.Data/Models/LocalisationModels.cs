@@ -763,10 +763,28 @@ namespace Worki.Data.Models
 		}
 
 		/// <summary>
-		/// true if one offer is bookable
+		/// true if one offer can be bookable
 		/// </summary>
 		/// <returns></returns>
 		public bool CanHaveBooking()
+		{
+			return Offers.Count(o => o.CanHaveBooking) != 0;
+		}
+
+		/// <summary>
+		/// true if one offer can be quotable
+		/// </summary>
+		/// <returns></returns>
+		public bool CanHaveQuotation()
+		{
+			return Offers.Count(o => o.CanHaveQuotation) != 0;
+		}
+
+		/// <summary>
+		/// true if one offer is bookable
+		/// </summary>
+		/// <returns></returns>
+		public bool IsBookable()
 		{
 			return Offers.Count(o => o.IsBookable) != 0;
 		}
@@ -775,7 +793,7 @@ namespace Worki.Data.Models
 		/// true if one offer is quotable
 		/// </summary>
 		/// <returns></returns>
-		public bool CanHaveQuotation()
+		public bool IsQuotable()
 		{
 			return Offers.Count(o => o.IsQuotable) != 0;
 		}
