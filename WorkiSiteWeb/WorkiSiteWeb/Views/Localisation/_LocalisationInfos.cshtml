@@ -27,12 +27,11 @@
     }
 </div>
 <div class="contentBlock">
-    <h3 class="blue">Réservation</h3>
+    <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Booking</h3>
     <div class="float-left">
-        Ce lieu vous intéresse ?<br />
-        Réservez directement en ligne
+        @Html.Raw(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpace)
     </div>
-    <div class="buttonStd buttonBlue linkImg float-right"><a href=#>Réserver</a></div>
+    <div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Localisation.BookableOffers(Model.ID))</div>
     <div class="clear">
     </div>
 </div>

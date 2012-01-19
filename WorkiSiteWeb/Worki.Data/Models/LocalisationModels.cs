@@ -992,13 +992,19 @@ namespace Worki.Data.Models
 	{
 		#region Properties
 
-		public Localisation Localisation { get; private set; }
-		public IEnumerable<Offer> Offers { get; private set; }
+		public Localisation Localisation { get; set; }
+		public IEnumerable<Offer> Offers { get; set; }
         public string Title { get; set; }
+		public string Message { get; set; }
 
 		#endregion
 
 		#region Ctor
+
+		public LocalisationOfferViewModel()
+		{
+
+		}
 
 		public LocalisationOfferViewModel(Localisation localisation, LocalisationOffer offerType)
 		{

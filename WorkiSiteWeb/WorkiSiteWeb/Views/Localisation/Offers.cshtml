@@ -13,6 +13,14 @@
 
 <div class="detailContent">
 	<div class="localisationDetailLeft blockContainer float-left">
+		@if (!string.IsNullOrEmpty(Model.Message))
+		{
+	  		<div class="contentBlock">
+            <div class="emptyContent italic">
+                @Model.Message
+            </div>
+        </div>
+		}
 		@foreach (var offer in Model.Offers)
 		{
 	  		<div class="contentBlock">

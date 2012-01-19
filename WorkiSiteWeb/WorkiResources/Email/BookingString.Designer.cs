@@ -90,6 +90,25 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacter le lieu suivant car une demande de réservation a été faite, alors que le lieu ne propose pas encore de réservation :
+        ///Nom du lieu : &lt;b&gt;{0}&lt;/b&gt;.
+        /// </summary>
+        public static string AlertBookingNeed {
+            get {
+                return ResourceManager.GetString("AlertBookingNeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demande de possibilité de réservation.
+        /// </summary>
+        public static string AlertBookingNeedSubject {
+            get {
+                return ResourceManager.GetString("AlertBookingNeedSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nom : &lt;b&gt;{0}&lt;/b&gt;
         ///Téléphone : &lt;b&gt;{1}&lt;/b&gt;
         ///Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;

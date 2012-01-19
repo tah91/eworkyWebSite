@@ -106,6 +106,24 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Réservation.
+        /// </summary>
+        public static string Booking {
+            get {
+                return ResourceManager.GetString("Booking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ce lieu proposera bientôt des offres à la réservation.
+        /// </summary>
+        public static string BookingAvailableSoon {
+            get {
+                return ResourceManager.GetString("BookingAvailableSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réserver.
         /// </summary>
         public static string BookIt {
@@ -318,6 +336,16 @@ namespace Worki.Resources.Views.Localisation {
         public static string MustAddOffer {
             get {
                 return ResourceManager.GetString("MustAddOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ce lieu vous intéresse ?&lt;br /&gt;
+        ///        Réservez directement en ligne.
+        /// </summary>
+        public static string NeedThisSpace {
+            get {
+                return ResourceManager.GetString("NeedThisSpace", resourceCulture);
             }
         }
         

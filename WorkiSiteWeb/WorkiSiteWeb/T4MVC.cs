@@ -548,6 +548,7 @@ namespace Links {
             public static readonly string iconeMap_png = Url("iconeMap.png");
             public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
             public static readonly string independant_png = Url("independant.png");
+            public static readonly string jelly_png = Url("jelly.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
             public static readonly string logo_png = Url("logo.png");
@@ -1180,6 +1181,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BookableOffers() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BookableOffers);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Edit() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
         }
@@ -1254,6 +1260,7 @@ namespace Worki.Web.Controllers {
             public readonly string Index = "Index";
             public readonly string Details = "details";
             public readonly string Offers = "offres";
+            public readonly string BookableOffers = "reservation";
             public readonly string CreateFree = "ajouter-lieu-gratuit";
             public readonly string CreateNotFree = "ajouter-lieu-payant";
             public readonly string CreateSharedOffice = "ajouter-espace-partagé";
@@ -1323,6 +1330,12 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Offers);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("type", type);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BookableOffers(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookableOffers);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

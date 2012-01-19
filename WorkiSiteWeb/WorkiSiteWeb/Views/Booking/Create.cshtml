@@ -138,13 +138,13 @@
 						</td>
 						<td>
 							<div class="bookingEndRow">
-								@Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.SpendUnit, new { id = "PeriodType_SpendUnit" }) @Html.LabelFor("", "PeriodType_SpendUnit", "PeriodType_SpendUnitLabel")
+								@Html.RadioButtonFor(m => m.MemberBooking.PeriodType, (int)MemberBooking.ePeriodType.SpendUnit, new { id = "PeriodType_SpendUnit" }) @Html.LabelFor("", "PeriodType_SpendUnit", "PeriodType_SpendUnitLabel")
 							</div>
 							<div class="bookingEndSelection">
 								@Html.TextBoxFor(m => m.MemberBooking.TimeUnits) <span id="periodUnit"></span>
 							</div>
 							<div class="bookingEndRow">
-								@Html.RadioButtonFor(m => m.PeriodType, MemberBookingFormViewModel.ePeriodType.EndDate, new { id = "PeriodType_EndDate" }) @Html.LabelFor("choisir une date de fin", "PeriodType_EndDate")
+								@Html.RadioButtonFor(m => m.MemberBooking.PeriodType, (int)MemberBooking.ePeriodType.EndDate, new { id = "PeriodType_EndDate" }) @Html.LabelFor("choisir une date de fin", "PeriodType_EndDate")
 							</div>
 							<div class="bookingEndSelection">
 								@Worki.Resources.Views.Booking.BookingString.Until @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })

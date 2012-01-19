@@ -239,10 +239,12 @@
   </data>
   <data name="Main" xml:space="preserve">
     <value>A la Une</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="NotMain" xml:space="preserve">
     <value>Pas à la Une</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="NoPictureAvailable" xml:space="preserve">
     <value>Aucune photo disponible</value>
   </data>
@@ -260,5 +262,15 @@
   </data>
   <data name="ModifiedThe" xml:space="preserve">
     <value>Mis à jour le {0}</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Réservation</value>
+  </data>
+  <data name="BookingAvailableSoon" xml:space="preserve">
+    <value>Ce lieu proposera bientôt des offres à la réservation</value>
+  </data>
+  <data name="NeedThisSpace" xml:space="preserve">
+    <value>Ce lieu vous intéresse ?&lt;br /&gt;
+        Réservez directement en ligne</value>
   </data>
 </root>

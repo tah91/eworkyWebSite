@@ -98,7 +98,7 @@ namespace Worki.Web.Controllers
                         formData.AjustBookingPeriod();
                         formData.MemberBooking.Price = offer.GetDefaultPrice(   formData.MemberBooking.FromDate,
                                                                                 formData.MemberBooking.FromDate,
-                                                                                formData.PeriodType == MemberBookingFormViewModel.ePeriodType.SpendUnit,
+																				formData.MemberBooking.PeriodType == (int)MemberBooking.ePeriodType.SpendUnit,
                                                                                 (Offer.PaymentPeriod)formData.MemberBooking.TimeType,
                                                                                 formData.MemberBooking.TimeUnits);
 						//set phone number to the one from form

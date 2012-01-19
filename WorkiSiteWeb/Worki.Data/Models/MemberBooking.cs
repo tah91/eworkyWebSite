@@ -38,6 +38,7 @@ namespace Worki.Data.Models
         public string Response { get; set; }
         public int TimeUnits { get; set; }
         public int TimeType { get; set; }
+        public int PeriodType { get; set; }
     
         // Navigation properties
     

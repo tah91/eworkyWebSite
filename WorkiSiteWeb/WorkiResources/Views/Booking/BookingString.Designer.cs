@@ -502,6 +502,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Veuillez indiquer une quantité non nulle.
+        /// </summary>
+        public static string NotNullQuantity {
+            get {
+                return ResourceManager.GetString("NotNullQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offre.
         /// </summary>
         public static string Offer {

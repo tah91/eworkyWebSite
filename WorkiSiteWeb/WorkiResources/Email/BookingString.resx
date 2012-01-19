@@ -128,6 +128,13 @@ Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} po
   <data name="AcceptBookingOwner" xml:space="preserve">
     <value>Vous avez accepté la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) pour la somme de &lt;b&gt;{5}&lt;/b&gt;</value>
   </data>
+  <data name="AlertBookingNeed" xml:space="preserve">
+    <value>Contacter le lieu suivant car une demande de réservation a été faite, alors que le lieu ne propose pas encore de réservation :
+Nom du lieu : &lt;b&gt;{0}&lt;/b&gt;</value>
+  </data>
+  <data name="AlertBookingNeedSubject" xml:space="preserve">
+    <value>Demande de possibilité de réservation</value>
+  </data>
   <data name="BookingMailBody" xml:space="preserve">
     <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
 Téléphone : &lt;b&gt;{1}&lt;/b&gt;

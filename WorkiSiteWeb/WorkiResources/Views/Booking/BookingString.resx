@@ -339,4 +339,7 @@
   <data name="Until" xml:space="preserve">
     <value>jusqu'au</value>
   </data>
+  <data name="NotNullQuantity" xml:space="preserve">
+    <value>Veuillez indiquer une quantité non nulle</value>
+  </data>
 </root>

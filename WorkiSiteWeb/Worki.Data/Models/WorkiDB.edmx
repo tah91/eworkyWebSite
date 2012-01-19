@@ -351,6 +351,7 @@
           <Property Name="Response" Type="nvarchar(max)" />
           <Property Name="TimeUnits" Type="int" Nullable="false" />
           <Property Name="TimeType" Type="int" Nullable="false" />
+          <Property Name="PeriodType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberBookingLog">
           <Key>
@@ -1680,6 +1681,7 @@
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberBooking_Member" FromRole="MemberBooking" ToRole="Member" />
           <Property Type="Int32" Name="TimeUnits" Nullable="false" />
           <Property Type="Int32" Name="TimeType" Nullable="false" />
+          <Property Type="Int32" Name="PeriodType" Nullable="false" />
 				</EntityType>
 				<Association Name="FK_MemberBookingLog_MemberBooking">
 					<End Type="WorkiDBModel.MemberBooking" Role="MemberBooking" Multiplicity="1" />
@@ -2530,7 +2532,8 @@
 					<EntitySetMapping Name="MemberBookings">
 						<EntityTypeMapping TypeName="WorkiDBModel.MemberBooking">
 							<MappingFragment StoreEntitySet="MemberBooking">
-								<ScalarProperty Name="TimeType" ColumnName="TimeType" />
+								<ScalarProperty Name="PeriodType" ColumnName="PeriodType" />
+                <ScalarProperty Name="TimeType" ColumnName="TimeType" />
                 <ScalarProperty Name="TimeUnits" ColumnName="TimeUnits" />
                 <ScalarProperty Name="Response" ColumnName="Response" />
 								<ScalarProperty Name="StatusId" ColumnName="StatusId" />

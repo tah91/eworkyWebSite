@@ -11,12 +11,6 @@ namespace Worki.Data.Models
 {
 	public class MemberBookingFormViewModel
 	{
-		public enum ePeriodType
-		{
-			SpendUnit,
-			EndDate
-		}
-
         public enum eHalfDay
         {
             Morning,
@@ -45,7 +39,6 @@ namespace Worki.Data.Models
 		public MemberBooking MemberBooking { get; set; }
 		public Offer BookingOffer { get; set; }
 		public SelectList Periods { get; set; }
-		public ePeriodType PeriodType { get; set; }
         public eHalfDay HalfDay { get; set; }
 		public bool NeedNewAccount { get; set; }
 
@@ -102,12 +95,12 @@ namespace Worki.Data.Models
                     break;
                 case Offer.PaymentPeriod.Day:
                     {
-                        switch(PeriodType)
+						switch ((MemberBooking.ePeriodType)MemberBooking.PeriodType)
                         {
-                            case ePeriodType.SpendUnit:
+							case MemberBooking.ePeriodType.SpendUnit:
                                 MemberBooking.ToDate = MemberBooking.FromDate.AddDays(MemberBooking.TimeUnits);
                                 break;
-                            case ePeriodType.EndDate:
+							case MemberBooking.ePeriodType.EndDate:
                                 break;
                             default:
                                 break;
@@ -139,6 +132,12 @@ namespace Worki.Data.Models
             ToDate = FromDate;
 		}
 
+		public enum ePeriodType
+		{
+			SpendUnit,
+			EndDate
+		}
+
 		public enum Status
 		{
 			Unknown,
@@ -159,25 +158,34 @@ namespace Worki.Data.Models
 		{
 			get
 			{
-				var oneDay = new TimeSpan(1,0,0,0);
+				var oneDay = new TimeSpan(1, 0, 0, 0);
 				switch (columnName)
 				{
 					case "FromDate":
 						{
-							if ((FromDate - DateTime.UtcNow).Days < -1)
+							if (PeriodType == (int)ePeriodType.EndDate && (FromDate - DateTime.UtcNow).Days < -1)
 							{
-                                return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
+								return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
 							}
-							else if (FromDate >= ToDate)
-                                return Worki.Resources.Views.Booking.BookingString.EndBookingBeforeStart;
+							else if (PeriodType == (int)ePeriodType.EndDate && FromDate >= ToDate)
+								return Worki.Resources.Views.Booking.BookingString.EndBookingBeforeStart;
 							else
 								return string.Empty;
 						}
 					case "ToDate":
 						{
-							if ((ToDate - DateTime.UtcNow).Days < -1)
+							if (PeriodType == (int)ePeriodType.EndDate && (ToDate - DateTime.UtcNow).Days < -1)
 							{
-                                return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
+								return Worki.Resources.Views.Booking.BookingString.BookingBeforeToday;
+							}
+							else
+								return string.Empty;
+						}
+					case "TimeUnits":
+						{
+							if (PeriodType == (int)ePeriodType.SpendUnit && TimeUnits <= 0)
+							{
+								return Worki.Resources.Views.Booking.BookingString.NotNullQuantity;
 							}
 							else
 								return string.Empty;
