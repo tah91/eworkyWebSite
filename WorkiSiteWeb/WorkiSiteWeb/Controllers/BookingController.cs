@@ -133,10 +133,10 @@ namespace Worki.Web.Controllers
 							newMemberMail.ToName = formData.FirstName;
 
 							newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
-                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMemberSubject,
+                            newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.BookingNewMember,
                                                                     Localisation.GetOfferType(offer.Type),
-                                                                    formData.MemberBooking.FromDate,
-                                                                    formData.MemberBooking.ToDate,
+                                                                    formData.MemberBooking.GetStartDate(),
+                                                                    formData.MemberBooking.GetEndDate(),
                                                                     locName,
                                                                     offer.Localisation.Adress,
                                                                     formData.Email,
@@ -157,8 +157,8 @@ namespace Worki.Web.Controllers
 														 member.Email,
 														 locName,
 														 Localisation.GetOfferType(offer.Type),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
+														 formData.MemberBooking.GetStartDate(),
+														 formData.MemberBooking.GetEndDate(),
 														 formData.MemberBooking.Message);
 
 						//send mail to booking member
@@ -169,8 +169,8 @@ namespace Worki.Web.Controllers
 						clientMail.ToName = member.MemberMainData.FirstName;
 						clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateBookingClient,
 														 Localisation.GetOfferType(offer.Type),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.FromDate, CultureHelpers.TimeFormat.Date),
-														 CultureHelpers.GetSpecificFormat(formData.MemberBooking.ToDate, CultureHelpers.TimeFormat.Date),
+														 formData.MemberBooking.GetStartDate(),
+														 formData.MemberBooking.GetEndDate(),
 														 locName,
 														 offer.Localisation.Adress);
 

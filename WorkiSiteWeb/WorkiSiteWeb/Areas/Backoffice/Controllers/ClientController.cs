@@ -117,8 +117,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                             newMemberMail.To = client.Email;
                             newMemberMail.ToName = client.MemberMainData.FirstName;
 
-                            newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
-                            newMemberMail.Content = "compte crée";
+							newMemberMail.Subject = Worki.Resources.Email.BookingString.ClientCreationAccountSubject;
+							newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.ClientCreationAccount,
+																	client.Email,
+																	_MembershipService.GetPassword(client.Email, null),
+																	passwordLink,
+																	profilLink);
                         }
 
                         context.Commit();

@@ -148,7 +148,7 @@ Message : &lt;b&gt;{7}&lt;/b&gt;</value>
   <data name="BookingMailSubject" xml:space="preserve">
     <value>Alerte eWorky – Demande de réservation</value>
   </data>
-  <data name="BookingNewMemberBody" xml:space="preserve">
+  <data name="BookingNewMember" xml:space="preserve">
     <value>Suite à votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;), un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
 
 Votre login est "&lt;b&gt;{5}&lt;/b&gt;" et votre mot de passe temporaire est &lt;b&gt;"{6}"&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{7}&lt;/b&gt;
@@ -156,7 +156,7 @@ Votre login est "&lt;b&gt;{5}&lt;/b&gt;" et votre mot de passe temporaire est &l
 Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="BookingNewMemberSubject" xml:space="preserve">
-    <value>eWorky – Un compte a été créé suite à votre demande de réservation</value>
+    <value>Un compte a été créé suite à votre demande de réservation</value>
   </data>
   <data name="BookingOwnerBody" xml:space="preserve">
     <value>Vous avez reçu une demande de réservation pour un(e) {0} dans l'établissement {1} ({2}). 
@@ -165,6 +165,41 @@ Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation 
   </data>
   <data name="BookingOwnerSubject" xml:space="preserve">
     <value>Demande de réservation - {0}</value>
+  </data>
+  <data name="CalandarBookingCreation" xml:space="preserve">
+    <value>Le gérant de &lt;b&gt;{0}&lt;/b&gt; a ajouté votre réservation pour un(e) &lt;b&gt;{1}&lt;/b&gt; du &lt;b&gt;{2}&lt;/b&gt; au &lt;b&gt;{3}&lt;/b&gt; sur son agenda eWorky. 
+
+Vous pouvez dès à présent consulter cette réservation dans votre espace utilisateur &lt;b&gt;{4}&lt;/b&gt;. 
+
+Le montant de cette réservation est de &lt;b&gt;{5} €&lt;/b&gt;, nous vous invitons également à effectuer ce règlement en ligne via Paypal.
+Pour votre prochaine réservation, n’hésitez pas à passer directement par eworky.com pour plus de simplicité !
+
+Si cet espace vous a plu n’hésitez pas à le noter et commenter sur sa fiche eWorky &lt;b&gt;{6}&lt;/b&gt;.</value>
+  </data>
+  <data name="CalandarBookingCreationSubject" xml:space="preserve">
+    <value>Votre réservation chez {0} a été enregistrée sur eWorky</value>
+  </data>
+  <data name="CalandarBookingModification" xml:space="preserve">
+    <value>Le gérant de &lt;b&gt;{0}&lt;/b&gt; a modifié votre réservation sur son agenda eWorky !
+Votre réservation est désormais enregistrée du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt;.
+
+Vous pouvez consulter vos différentes réservations dans votre espace utilisateur &lt;b&gt;{3}&lt;/b&gt;.
+Pour votre prochaine réservation, n’hésitez pas à passer directement par eworky.com pour plus de simplicité !
+
+Si cet espace vous a plu n’hésitez pas à le noter et commenter sur sa fiche eWorky &lt;b&gt;{4}&lt;/b&gt;.</value>
+  </data>
+  <data name="CalandarBookingModificationSubject" xml:space="preserve">
+    <value>Votre réservation chez {0} a été modifiée</value>
+  </data>
+  <data name="ClientCreationAccount" xml:space="preserve">
+    <value>Un gérant d'espace vous a rajouté dans son fichier client, et un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
+
+Votre login est "&lt;b&gt;{0}&lt;/b&gt;" et votre mot de passe temporaire est &lt;b&gt;"{1}"&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{2}&lt;/b&gt;
+
+Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{3}&lt;/b&gt;</value>
+  </data>
+  <data name="ClientCreationAccountSubject" xml:space="preserve">
+    <value>Un compte a été crée par l'espace {0}</value>
   </data>
   <data name="CreateBookingClient" xml:space="preserve">
     <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en compte. 
@@ -229,7 +264,7 @@ Nous vous invitons de plus à compléter votre profil en vous rendant à cette a
     <value>eWorky – Un compte a été créé suite à votre demande de devis</value>
   </data>
   <data name="RefuseBookingClient" xml:space="preserve">
-    <value>Malheureusement, votre demande de réservation pour un(e) {0} du {1} à {2} au {3} à {4} dans l’établissement {5} ({6}) a été refusée, faute de disponibilité.
+    <value>Malheureusement, votre demande de réservation pour un(e) {0} du {1} au {2}  dans l’établissement {3} ({4}) a été refusée, faute de disponibilité.
 
 Le gérant vous invite à réitérer votre demande à un autre moment ou pour une autre offre.</value>
   </data>

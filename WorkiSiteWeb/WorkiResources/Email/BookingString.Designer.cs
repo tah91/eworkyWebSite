@@ -140,14 +140,14 @@ namespace Worki.Resources.Email {
         ///
         ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{8}&lt;/b&gt;.
         /// </summary>
-        public static string BookingNewMemberBody {
+        public static string BookingNewMember {
             get {
-                return ResourceManager.GetString("BookingNewMemberBody", resourceCulture);
+                return ResourceManager.GetString("BookingNewMember", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorky – Un compte a été créé suite à votre demande de réservation.
+        ///   Looks up a localized string similar to Un compte a été créé suite à votre demande de réservation.
         /// </summary>
         public static string BookingNewMemberSubject {
             get {
@@ -172,6 +172,77 @@ namespace Worki.Resources.Email {
         public static string BookingOwnerSubject {
             get {
                 return ResourceManager.GetString("BookingOwnerSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le gérant de &lt;b&gt;{0}&lt;/b&gt; a ajouté votre réservation pour un(e) &lt;b&gt;{1}&lt;/b&gt; du &lt;b&gt;{2}&lt;/b&gt; au &lt;b&gt;{3}&lt;/b&gt; sur son agenda eWorky. 
+        ///
+        ///Vous pouvez dès à présent consulter cette réservation dans votre espace utilisateur &lt;b&gt;{4}&lt;/b&gt;. 
+        ///
+        ///Le montant de cette réservation est de &lt;b&gt;{5} €&lt;/b&gt;, nous vous invitons également à effectuer ce règlement en ligne via Paypal.
+        ///Pour votre prochaine réservation, n’hésitez pas à passer directement par eworky.com pour plus de simplicité !
+        ///
+        ///Si cet espace vous a plu n’hésitez pas à l [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string CalandarBookingCreation {
+            get {
+                return ResourceManager.GetString("CalandarBookingCreation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre réservation chez {0} a été enregistrée sur eWorky.
+        /// </summary>
+        public static string CalandarBookingCreationSubject {
+            get {
+                return ResourceManager.GetString("CalandarBookingCreationSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le gérant de &lt;b&gt;{0}&lt;/b&gt; a modifié votre réservation sur son agenda eWorky !
+        ///Votre réservation est désormais enregistrée du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt;.
+        ///
+        ///Vous pouvez consulter vos différentes réservations dans votre espace utilisateur &lt;b&gt;{3}&lt;/b&gt;.
+        ///Pour votre prochaine réservation, n’hésitez pas à passer directement par eworky.com pour plus de simplicité !
+        ///
+        ///Si cet espace vous a plu n’hésitez pas à le noter et commenter sur sa fiche eWorky &lt;b&gt;{4}&lt;/b&gt;..
+        /// </summary>
+        public static string CalandarBookingModification {
+            get {
+                return ResourceManager.GetString("CalandarBookingModification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre réservation chez {0} a été modifiée.
+        /// </summary>
+        public static string CalandarBookingModificationSubject {
+            get {
+                return ResourceManager.GetString("CalandarBookingModificationSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Un gérant d&apos;espace vous a rajouté dans son fichier client, et un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
+        ///
+        ///Votre login est &quot;&lt;b&gt;{0}&lt;/b&gt;&quot; et votre mot de passe temporaire est &lt;b&gt;&quot;{1}&quot;&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{2}&lt;/b&gt;
+        ///
+        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{3}&lt;/b&gt;.
+        /// </summary>
+        public static string ClientCreationAccount {
+            get {
+                return ResourceManager.GetString("ClientCreationAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Un compte a été crée par l&apos;espace {0}.
+        /// </summary>
+        public static string ClientCreationAccountSubject {
+            get {
+                return ResourceManager.GetString("ClientCreationAccountSubject", resourceCulture);
             }
         }
         
@@ -316,7 +387,7 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Malheureusement, votre demande de réservation pour un(e) {0} du {1} à {2} au {3} à {4} dans l’établissement {5} ({6}) a été refusée, faute de disponibilité.
+        ///   Looks up a localized string similar to Malheureusement, votre demande de réservation pour un(e) {0} du {1} au {2}  dans l’établissement {3} ({4}) a été refusée, faute de disponibilité.
         ///
         ///Le gérant vous invite à réitérer votre demande à un autre moment ou pour une autre offre..
         /// </summary>

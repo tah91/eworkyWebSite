@@ -143,6 +143,8 @@
 						$('#Booking_FromDate').val(start);
 						$('#Booking_ToDate').val(end);
 						$('#eventPeriod').html(start + ' - ' + end);
+						$('#Booking_Price').val('');
+						$('div.field-validation-error').remove(); 
 						$('.createBooking').css({ left: jsEvent.pageX, top: jsEvent.pageY });
 						$('.createBooking').fadeIn("slow");
 					}

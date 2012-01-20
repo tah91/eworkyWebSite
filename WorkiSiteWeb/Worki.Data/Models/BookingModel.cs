@@ -375,6 +375,26 @@ namespace Worki.Data.Models
 		}
 
 		#endregion
+
+		#region Email Strings
+
+		public string GetStartDate()
+		{
+			var format = FromDate.Hour == 0 ? CultureHelpers.TimeFormat.Date : CultureHelpers.TimeFormat.General;
+			return CultureHelpers.GetSpecificFormat(FromDate, format);
+		}
+
+		public string GetEndDate()
+		{
+		    var format = ToDate.Hour == 0 ? CultureHelpers.TimeFormat.Date : CultureHelpers.TimeFormat.General;
+			var toRet = CultureHelpers.GetSpecificFormat(ToDate, format);
+			if (PeriodType == (int)ePeriodType.SpendUnit)
+				toRet += string.Format(" ({0} {1})", TimeUnits, Offer.GetPricingPeriod((Offer.PaymentPeriod)TimeType));
+
+			return toRet;
+		}
+
+		#endregion
 	}
 
 	public class CreateBookingModel

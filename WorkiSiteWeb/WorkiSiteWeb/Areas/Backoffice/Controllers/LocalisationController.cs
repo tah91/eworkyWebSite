@@ -489,8 +489,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					clientMail.ToName = booking.Client.MemberMainData.FirstName;
                     clientMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
 														Localisation.GetOfferType(booking.Offer.Type),
-                                                        CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.General),
-                                                        CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.General),
+														booking.GetStartDate(),
+														booking.GetEndDate(),
 														booking.Offer.Localisation.Name,
 														booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
 														booking.Price,
@@ -583,10 +583,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     clientMail.ToName = booking.Client.MemberMainData.FirstName;
                     clientMail.Content = string.Format(Worki.Resources.Email.BookingString.RefuseBookingClient,
                                                         Localisation.GetOfferType(booking.Offer.Type),
-                                                        CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Date),
-                                                        CultureHelpers.GetSpecificFormat(booking.FromDate, CultureHelpers.TimeFormat.Time),
-                                                        CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Date),
-                                                        CultureHelpers.GetSpecificFormat(booking.ToDate, CultureHelpers.TimeFormat.Time),
+														booking.GetStartDate(),
+														booking.GetEndDate(),
                                                         booking.Offer.Localisation.Name,
                                                         booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City);
 
@@ -972,7 +970,33 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					booking.FromDate = booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta);
 					booking.ToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
 
+					//send mail to booking client
+					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
+					TagBuilder dashboardLink = new TagBuilder("a");
+					dashboardLink.MergeAttribute("href", dashboardUrl);
+					dashboardLink.InnerHtml = dashboardUrl;
+
+					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
+					TagBuilder localisationLink = new TagBuilder("a");
+					localisationLink.MergeAttribute("href", localisationUrl);
+					localisationLink.InnerHtml = localisationUrl;
+
+					dynamic clientMail = new Email(MVC.Emails.Views.Email);
+					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+					clientMail.To = booking.Client.Email;
+					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name);
+					clientMail.ToName = booking.Client.MemberMainData.FirstName;
+					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModification,
+														booking.Offer.Localisation.Name,
+														booking.GetStartDate(),
+														booking.GetEndDate(),
+														dashboardLink,
+														localisationLink);
+
 					context.Commit();
+
+					clientMail.Send();
 
 					return Json("Drop success");
 				}
@@ -1013,7 +1037,33 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 {
                     booking.ToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
 
+					//send mail to booking client
+					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
+					TagBuilder dashboardLink = new TagBuilder("a");
+					dashboardLink.MergeAttribute("href", dashboardUrl);
+					dashboardLink.InnerHtml = dashboardUrl;
+
+					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
+					TagBuilder localisationLink = new TagBuilder("a");
+					localisationLink.MergeAttribute("href", localisationUrl);
+					localisationLink.InnerHtml = localisationUrl;
+
+					dynamic clientMail = new Email(MVC.Emails.Views.Email);
+					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+					clientMail.To = booking.Client.Email;
+					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name);
+					clientMail.ToName = booking.Client.MemberMainData.FirstName;
+					clientMail.Content = string.Format(	Worki.Resources.Email.BookingString.CalandarBookingModification,
+														booking.Offer.Localisation.Name,
+														booking.GetStartDate(),
+														booking.GetEndDate(),
+														dashboardLink,
+														localisationLink);
+
                     context.Commit();
+
+					clientMail.Send();
 
                     return Json("Resize success");
                 }
@@ -1090,6 +1140,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <param name="end">end date</param>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[HandleModelStateException]
+		[ValidateOnlyIncomingValues]
 		public virtual ActionResult CreateEvent(CreateBookingModel createBookingModel)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -1114,6 +1165,32 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					var newContext = ModelFactory.GetUnitOfWork();
 					var bRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
 					var booking = bRepo.Get(createBookingModel.Booking.Id);
+
+					//send mail to client
+					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
+					TagBuilder dashboardLink = new TagBuilder("a");
+					dashboardLink.MergeAttribute("href", dashboardUrl);
+					dashboardLink.InnerHtml = dashboardUrl;
+
+					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
+					TagBuilder localisationLink = new TagBuilder("a");
+					localisationLink.MergeAttribute("href", localisationUrl);
+					localisationLink.InnerHtml = localisationUrl;
+
+					dynamic clientMail = new Email(MVC.Emails.Views.Email);
+					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+					clientMail.To = booking.Client.Email;
+					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreationSubject, booking.Offer.Localisation.Name);
+					clientMail.ToName = booking.Client.MemberMainData.FirstName;
+					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreation,
+														Localisation.GetOfferType(booking.Offer.Type),
+														booking.Offer.Localisation.Name,
+														booking.GetStartDate(),
+														booking.GetEndDate(),
+														dashboardLink,
+														booking.Price,
+														localisationLink);
 
 					return Json(booking.GetCalandarEvent(Url));
 				}
