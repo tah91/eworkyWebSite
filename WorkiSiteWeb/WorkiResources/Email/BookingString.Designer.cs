@@ -238,7 +238,7 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Un compte a été crée par l&apos;espace {0}.
+        ///   Looks up a localized string similar to Un compte a été crée pour gérer vos réservations.
         /// </summary>
         public static string ClientCreationAccountSubject {
             get {

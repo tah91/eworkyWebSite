@@ -386,9 +386,9 @@ namespace Worki.Data.Models
 
 		public string GetEndDate()
 		{
-		    var format = ToDate.Hour == 0 ? CultureHelpers.TimeFormat.Date : CultureHelpers.TimeFormat.General;
+			var format = ToDate.Hour == 0 ? CultureHelpers.TimeFormat.Date : CultureHelpers.TimeFormat.General;
 			var toRet = CultureHelpers.GetSpecificFormat(ToDate, format);
-			if (PeriodType == (int)ePeriodType.SpendUnit)
+			if (PeriodType == (int)ePeriodType.SpendUnit && TimeUnits != 0)
 				toRet += string.Format(" ({0} {1})", TimeUnits, Offer.GetPricingPeriod((Offer.PaymentPeriod)TimeType));
 
 			return toRet;

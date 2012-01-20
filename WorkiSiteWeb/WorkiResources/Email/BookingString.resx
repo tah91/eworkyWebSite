@@ -199,7 +199,7 @@ Votre login est "&lt;b&gt;{0}&lt;/b&gt;" et votre mot de passe temporaire est &l
 Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{3}&lt;/b&gt;</value>
   </data>
   <data name="ClientCreationAccountSubject" xml:space="preserve">
-    <value>Un compte a été crée par l'espace {0}</value>
+    <value>Un compte a été crée pour gérer vos réservations</value>
   </data>
   <data name="CreateBookingClient" xml:space="preserve">
     <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en compte. 

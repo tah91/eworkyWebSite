@@ -48,6 +48,7 @@
 					$('#calendar').fullCalendar('renderEvent', data, true);
 					$('#calendar').fullCalendar('unselect');
 					$('div.field-validation-error').remove();
+					$('.createBooking').fadeOut("slow");
 				}
 			});
 			return false;

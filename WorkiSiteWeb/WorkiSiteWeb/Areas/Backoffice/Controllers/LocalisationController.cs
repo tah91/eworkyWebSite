@@ -1192,6 +1192,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 														booking.Price,
 														localisationLink);
 
+					clientMail.Send();
+
 					return Json(booking.GetCalandarEvent(Url));
 				}
 				catch (Exception ex)
