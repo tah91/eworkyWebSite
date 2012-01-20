@@ -268,7 +268,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bureaux (centre d&apos;affaires, pépinière, etc.).
+        ///   Looks up a localized string similar to Bureaux.
         /// </summary>
         public static string Desktop {
             get {
@@ -309,6 +309,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string Desktop50_100 {
             get {
                 return ResourceManager.GetString("Desktop50_100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bureaux (centre d&apos;affaires, pépinière, etc.).
+        /// </summary>
+        public static string DesktopSearch {
+            get {
+                return ResourceManager.GetString("DesktopSearch", resourceCulture);
             }
         }
         
@@ -772,7 +781,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bureau (centre d&apos;affaires, pépinière, etc.).
+        ///   Looks up a localized string similar to Bureau.
         /// </summary>
         public static string SingleDesktop {
             get {
@@ -808,7 +817,7 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Poste de travail (coworking, partage, etc.).
+        ///   Looks up a localized string similar to Poste de travail.
         /// </summary>
         public static string SingleWorkstation {
             get {
@@ -907,11 +916,20 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postes de travail (coworking, partage, etc.).
+        ///   Looks up a localized string similar to Postes de travail.
         /// </summary>
         public static string Workstation {
             get {
                 return ResourceManager.GetString("Workstation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postes de travail (coworking, partage, etc.).
+        /// </summary>
+        public static string WorkstationSearch {
+            get {
+                return ResourceManager.GetString("WorkstationSearch", resourceCulture);
             }
         }
     }

@@ -199,31 +199,33 @@ namespace Worki.Data.Models
             (int)LocalisationOffer.VisioRoom
         };
 
-        public static string GetOfferType(int type, bool single = true)
-        {
-            var enumType = (LocalisationOffer)type;
-            switch (enumType)
-            {
-                case LocalisationOffer.AllOffers:
-                    return Worki.Resources.Models.Localisation.LocalisationFeatures.AllOffers;
-                case LocalisationOffer.FreeArea:
-                    return Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea;
-                case LocalisationOffer.BuisnessLounge:
-                    return Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge;
-                case LocalisationOffer.Workstation:
-                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation : Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation;
-                case LocalisationOffer.Desktop:
-                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesktop : Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop;
-                case LocalisationOffer.MeetingRoom:
-                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom;
-                case LocalisationOffer.SeminarRoom:
-                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom;
-                case LocalisationOffer.VisioRoom:
-                    return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom;
-                default:
-                    return string.Empty;
-            }
-        }
+		public static string GetOfferType(int type, bool single = true, bool forSearch = false)
+		{
+			var enumType = (LocalisationOffer)type;
+			switch (enumType)
+			{
+				case LocalisationOffer.AllOffers:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.AllOffers;
+				case LocalisationOffer.FreeArea:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea;
+				case LocalisationOffer.BuisnessLounge:
+					return Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge;
+				case LocalisationOffer.Workstation:
+					return forSearch ? Worki.Resources.Models.Localisation.LocalisationFeatures.WorkstationSearch
+							: single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleWorkstation : Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation;
+				case LocalisationOffer.Desktop:
+					return forSearch ? Worki.Resources.Models.Localisation.LocalisationFeatures.DesktopSearch
+							: single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleDesktop : Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop;
+				case LocalisationOffer.MeetingRoom:
+					return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleMeetingRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom;
+				case LocalisationOffer.SeminarRoom:
+					return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom;
+				case LocalisationOffer.VisioRoom:
+					return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom;
+				default:
+					return string.Empty;
+			}
+		}
 
         public static int GetOfferTypeFromSeoString(string offerType)
         {
@@ -272,14 +274,14 @@ namespace Worki.Data.Models
             }
         }
 
-		public static Dictionary<int, string> GetOfferTypes()
+		public static Dictionary<int, string> GetOfferTypes(bool forSearch = false)
 		{
-			return OfferTypes.ToDictionary(o => o, o => GetOfferType(o));
+			return OfferTypes.ToDictionary(o => o, o => GetOfferType(o, true, forSearch));
 		}
 
-		public static Dictionary<int, string> GetOfferTypeDict(IEnumerable<LocalisationOffer> except)
+		public static Dictionary<int, string> GetOfferTypeDict(IEnumerable<LocalisationOffer> except, bool forSearch = false)
 		{
-			var toRet = (from item in GetOfferTypes() where !except.Contains((LocalisationOffer)item.Key) select item).ToDictionary(k => k.Key, k => k.Value);
+			var toRet = (from item in GetOfferTypes(forSearch) where !except.Contains((LocalisationOffer)item.Key) select item).ToDictionary(k => k.Key, k => k.Value);
 			return toRet;
 		}
 
