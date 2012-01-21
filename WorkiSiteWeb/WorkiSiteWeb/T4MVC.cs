@@ -2526,6 +2526,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string IndexQuotation = "IndexQuotation";
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
+            public readonly string MigrateOfferPrices = "MigrateOfferPrices";
         }
 
 
@@ -2590,6 +2591,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public override System.Web.Mvc.ActionResult IndexImport(System.Web.Mvc.FormCollection collection) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexImport);
             callInfo.RouteValueDictionary.Add("collection", collection);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult MigrateOfferPrices() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MigrateOfferPrices);
             return callInfo;
         }
 

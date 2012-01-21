@@ -311,5 +311,45 @@ namespace Worki.Web.Areas.Admin.Controllers
         }
 
         #endregion
-    }
+
+		#region Migration
+
+		public virtual ActionResult MigrateOfferPrices()
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+
+			var message = "";
+			try
+			{
+				var offersWithPrice = oRepo.GetMany(o => o.Price != 0);
+				var count = 0;
+				foreach (var item in offersWithPrice)
+				{
+					if (item.OfferPrices.Count != 0)
+						continue;
+
+					item.OfferPrices.Add(new OfferPrice
+					{
+						Price = item.Price,
+						PriceType = item.Period
+					});
+					count++;
+				}
+
+				message = string.Format("migration of {0} offers", count);
+
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("MigrateOfferPrices", ex);
+				context.Complete();
+				Content(ex.Message);
+			}
+			return Content(message);
+		}
+
+		#endregion
+	}
 }
