@@ -124,7 +124,7 @@
     <value>3. Exactitude des informations sur le site Web et disponibilités</value>
   </data>
   <data name="AimsOfTreatment" xml:space="preserve">
-    <value>7.3 Finalités des traitements</value>
+    <value>6.3 Finalités des traitements</value>
   </data>
   <data name="AllFonctionality" xml:space="preserve">
     <value>Aux fins de bénéficier des fonctionnalités du site, vous devez créer un compte au moyen du formulaire en ligne prévu à cet effet. Vous demeurez à tout moment libre de modifier la teneur des données personnelles communiquées à cette occasion. L'accès à votre compte peut s'effectuer par saisie de votre identifiant et mot de passe associé, dont vous assurez seul la confidentialité. L'utilisation du site suivant votre inscription est valable pour une durée indéterminée. Nous nous réservons la possibilité d'y mettre fin à tout moment, par courrier électronique, moyennant un préavis raisonnable. En cas de non-respect des obligations inhérentes à votre responsabilité ci-avant, l'accès à votre espace personnel peut être, immédiatement et sans préavis, temporairement ou définitivement suspendu au moyen de la désactivation de votre compte et ce, sans préjudice de nos autres droits.</value>
@@ -136,7 +136,7 @@
     <value>Nous pouvons modifier les présentes conditions d’utilisation de ce site à tout moment et sans préavis. Lorsque nous modifions les conditions générales, les termes amendés sont applicables dès leur publication sur ce site. Chaque utilisation de ce site Web sera alors soumise aux conditions d’utilisation applicables à ce moment.</value>
   </data>
   <data name="CollectedDatas" xml:space="preserve">
-    <value>7.2 Données collectées</value>
+    <value>6.2 Données collectées</value>
   </data>
   <data name="CommintmentEWorky" xml:space="preserve">
     <value>Cette rubrique illustre l'engagement de eWorky eu égard au respect de votre vie privée et à la protection des données personnelles vous concernant, collectées et traitées à l'occasion de votre utilisation du site.</value>
@@ -145,7 +145,7 @@
     <value>2. Utilisation du site Web, droits d'auteur et marques déposées</value>
   </data>
   <data name="DataRetention" xml:space="preserve">
-    <value>7.6 Conservation des données</value>
+    <value>6.6 Conservation des données</value>
   </data>
   <data name="EWorkySupportYourProduct" xml:space="preserve">
     <value>Donner l'impression de quelque manière que ce soit que eWorky soutient vos produits ou vos services ;</value>
@@ -186,19 +186,19 @@ Toutes les photographies utilisées sur ce site Web sont présentées uniquement
     <value>Vos données ne font l'objet d'aucune communication à des tiers sans votre autorisation. Vous êtes toutefois informés qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente ou encore, si cela s'avère nécessaire, aux fins, pour eWorky, de préserver ses droits et intérêts.</value>
   </data>
   <data name="Objet" xml:space="preserve">
-    <value>7.1 Objet</value>
+    <value>6.1 Objet</value>
   </data>
   <data name="PersonneDatas" xml:space="preserve">
-    <value>7. Données personnelles</value>
+    <value>6. Données personnelles</value>
   </data>
   <data name="ReciptionsOfDatas" xml:space="preserve">
-    <value>7.4 Destinataires des données</value>
+    <value>6.4 Destinataires des données</value>
   </data>
   <data name="RectificationYourData" xml:space="preserve">
     <value>Vous disposez d'un droit d'accès et de rectification de vos données en nous adressant une demande en ce sens: {0}</value>
   </data>
   <data name="SafeData" xml:space="preserve">
-    <value>7.5 Sécurité de données</value>
+    <value>6.5 Sécurité de données</value>
   </data>
   <data name="SafeDataForEWorky" xml:space="preserve">
     <value>eWorky attache une importance toute particulière à la sécurité de vos données et met en œuvre toutes mesures appropriées aux fins de restreindre les risques de perte, détérioration ou mauvaise utilisation de celles-ci.</value>
@@ -234,10 +234,10 @@ Toutes les photographies utilisées sur ce site Web sont présentées uniquement
     <value>Ce site Web est exploité par Omnicentre SAS, Société par Actions Simplifiée de droit français au capital de 20 740 euros, dont le siège social est situé au 57, rue de Lille, 75007 Paris, immatriculée au Registre du Commerce et des Sociétés de Paris sous le numéro 529 309 668. Ce site Web est hébergé sous Microsoft Windows Azure.</value>
   </data>
   <data name="YourRight" xml:space="preserve">
-    <value>7.7 Vos droits</value>
+    <value>6.7 Vos droits</value>
   </data>
   <data name="ApplicalbleLaws" xml:space="preserve">
-    <value>8. Loi applicable</value>
+    <value>7. Loi applicable</value>
   </data>
   <data name="ApplicalbleLawsValue" xml:space="preserve">
     <value>Les présentes Conditions Générales d’Utilisation sont régies par la loi française. Toute difficulté relative à la validité et/ou l’application et/ou l’interprétation des présentes Conditions Générales d’Utilisation sera soumise, à défaut d’accord amiable, à la juridiction des tribunaux français à qui les parties attribuent compétence territoriale exclusive quelque soit le lieu d’utilisation du service ou le domicile du défendeur. Les lois Internationales ne sont pas applicables.</value>

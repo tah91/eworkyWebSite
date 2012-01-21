@@ -79,7 +79,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7.3 Finalités des traitements.
+        ///   Looks up a localized string similar to 6.3 Finalités des traitements.
         /// </summary>
         public static string AimsOfTreatment {
             get {
@@ -97,7 +97,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 8. Loi applicable.
+        ///   Looks up a localized string similar to 7. Loi applicable.
         /// </summary>
         public static string ApplicalbleLaws {
             get {
@@ -133,7 +133,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7.2 Données collectées.
+        ///   Looks up a localized string similar to 6.2 Données collectées.
         /// </summary>
         public static string CollectedDatas {
             get {
@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7.6 Conservation des données.
+        ///   Looks up a localized string similar to 6.6 Conservation des données.
         /// </summary>
         public static string DataRetention {
             get {
@@ -286,7 +286,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7.1 Objet.
+        ///   Looks up a localized string similar to 6.1 Objet.
         /// </summary>
         public static string Objet {
             get {
@@ -295,7 +295,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7. Données personnelles.
+        ///   Looks up a localized string similar to 6. Données personnelles.
         /// </summary>
         public static string PersonneDatas {
             get {
@@ -304,7 +304,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7.4 Destinataires des données.
+        ///   Looks up a localized string similar to 6.4 Destinataires des données.
         /// </summary>
         public static string ReciptionsOfDatas {
             get {
@@ -322,7 +322,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7.5 Sécurité de données.
+        ///   Looks up a localized string similar to 6.5 Sécurité de données.
         /// </summary>
         public static string SafeData {
             get {
@@ -413,7 +413,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7.7 Vos droits.
+        ///   Looks up a localized string similar to 6.7 Vos droits.
         /// </summary>
         public static string YourRight {
             get {

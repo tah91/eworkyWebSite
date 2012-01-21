@@ -159,9 +159,13 @@ namespace Worki.Data.Models
 			return FreeLocalisationTypes.ToDictionary(t => t, t => GetLocalisationType(t));
 		}
 
-		public static Dictionary<int, string> GetNotFreeLocalisationTypes()
+		public static Dictionary<int, string> GetNotFreeLocalisationTypes(bool sharedOffice = false)
 		{
-			var notFree = LocalisationTypes.Except(FreeLocalisationTypes).Except(new List<int> { (int)LocalisationType.SharedOffice });
+			var notFree = LocalisationTypes.Except(FreeLocalisationTypes);
+			if (!sharedOffice)
+			{
+				notFree = notFree.Except(new List<int> { (int)LocalisationType.SharedOffice });
+			}
 			return notFree.ToDictionary(t => t, t => GetLocalisationType(t));
 		}
 
@@ -1022,7 +1026,7 @@ namespace Worki.Data.Models
 				IsOwner = true;
 			}
 
-			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes();
+			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes(isShared);
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
             var offers = Localisation.GetOfferTypeDict(isShared);
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
@@ -1227,6 +1231,7 @@ namespace Worki.Data.Models
 		PhoneLine,
 		Kitchen,
 		SharedMeetingRoom,
+		Lift,
 
 		//string features start from 1000, put bool features before this
 		Sector = 1000,

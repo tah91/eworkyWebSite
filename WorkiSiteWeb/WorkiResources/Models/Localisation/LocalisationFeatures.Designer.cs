@@ -421,6 +421,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ascenseur.
+        /// </summary>
+        public static string Lift {
+            get {
+                return ResourceManager.GetString("Lift", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Régie lumière.
         /// </summary>
         public static string Lighting {
