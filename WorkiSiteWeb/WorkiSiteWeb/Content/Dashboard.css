@@ -300,41 +300,6 @@
     height: 80px;
 }
 
-.configOffer select, .configOffer input[type="text"]
-{
-	width:100px;
-}
-
-.configoffertable
-{
-    
-}
-
-.configoffertable td:first-child
-{
-    width:180px;
-}
-
-.configoffertable td
-{
-    height : 30px;
-}
-
-.offerPricesRow
-{
-    margin:10px 0;
-}
-
-.offerPricesRows select, .offerPricesRows input[type="text"]
-{
-    margin:0 20px;
-}
-
-select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType
-{
-    width:204px;
-}
-
 .confirmbooktable
 {
     width:605px;

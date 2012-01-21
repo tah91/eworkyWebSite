@@ -75,14 +75,7 @@
 					</tr>
 					}
 				</table>
-				<h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
-			    <div class="offerPricesRows">
-				    @foreach (var item in Model.InnerModel.Offer.OfferPrices)
-				    {
-					    @Html.Partial(MVC.Backoffice.Localisation.Views._OfferPrice , item)
-				    }
-			    </div>
-			    @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddPrice, MVC.Backoffice.Localisation.ActionNames.AddOfferPrice, null, new { @class = "orange", id = "addItem" })
+				@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.InnerModel.Offer.OfferPrices)
 		    </div>
 
 		    <div class="editor-field float-right">
@@ -100,29 +93,6 @@
 	<script type="text/javascript">
 	    require(["@Links.Scripts.dropdown_js"], function () {
 	    	InitDropdown("#@DropDownModel.OfferDD");
-	    });
-
-		$("#addItem").click(function () {
-			$.ajax({
-				url: this.href,
-				cache: false,
-				success: function (html) {
-					$(".offerPricesRows").append(html);
-				}
-			});
-			return false;
-		});
-
-		$("button.deleteRow").live("click", function () {
-			$(this).parents(".offerPricesRow:first").remove();
-			return false;
-		});
-
-	    $("#configureOfferForm").submit(function () {
-	    	var offerPrice = $("#InnerModel_Offer_Price").val();
-	    	var newOfferPrice = offerPrice.replace(",", ".");
-	    	$("#InnerModel_Offer_Price").val(newOfferPrice);
-	    	return true;
 	    });
 	</script>
 }

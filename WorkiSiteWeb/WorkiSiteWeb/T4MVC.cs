@@ -1519,6 +1519,7 @@ namespace Worki.Web.Controllers {
             public readonly string Details = "Details";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
+            public readonly string AddOfferPrice = "AddOfferPrice";
         }
 
 
@@ -1527,6 +1528,8 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _OfferPrice = "~/Views/Offer/_OfferPrice.cshtml";
+            public readonly string _OfferPriceList = "~/Views/Offer/_OfferPriceList.cshtml";
             public readonly string Create = "~/Views/Offer/Create.cshtml";
             public readonly string Delete = "~/Views/Offer/Delete.cshtml";
             public readonly string Details = "~/Views/Offer/Details.cshtml";
@@ -1580,6 +1583,11 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult Delete(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AddOfferPrice() {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddOfferPrice);
             return callInfo;
         }
 
@@ -3205,7 +3213,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string OfferIndex = "OfferIndex";
-            public readonly string AddOfferPrice = "AddOfferPrice";
             public readonly string ConfigureOffer = "ConfigureOffer";
             public readonly string OfferVerticalMenu = "OfferVerticalMenu";
             public readonly string OfferHorizontalMenu = "OfferHorizontalMenu";
@@ -3243,7 +3250,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
             public readonly string _OfferDropDown = "~/Areas/Backoffice/Views/Localisation/_OfferDropDown.cshtml";
             public readonly string _OfferMenu = "~/Areas/Backoffice/Views/Localisation/_OfferMenu.cshtml";
-            public readonly string _OfferPrice = "~/Areas/Backoffice/Views/Localisation/_OfferPrice.cshtml";
             public readonly string Booking = "~/Areas/Backoffice/Views/Localisation/Booking.cshtml";
             public readonly string BookingDetail = "~/Areas/Backoffice/Views/Localisation/BookingDetail.cshtml";
             public readonly string ConfigureOffer = "~/Areas/Backoffice/Views/Localisation/ConfigureOffer.cshtml";
@@ -3276,11 +3282,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OfferIndex);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("offerid", offerid);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.PartialViewResult AddOfferPrice() {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddOfferPrice);
             return callInfo;
         }
 

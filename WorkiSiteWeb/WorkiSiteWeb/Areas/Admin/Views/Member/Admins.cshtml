@@ -30,6 +30,9 @@
                     <th>
                         @Worki.Resources.Views.Admin.AdminString.EmailAddress
                     </th>
+					<th>
+                        @Worki.Resources.Views.Admin.AdminString.ManagerRole
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +44,9 @@
                         </td>
                         <td align="right">
 							@Html.ActionLink(item.Email, MVC.Account.Public(item.MemberId)) 
+                        </td>
+						<td align="center">
+                            @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Member.ChangeUserRole(Model.PagingInfo.CurrentPage, item.MemberId))
                         </td>
                     </tr>
 				} 

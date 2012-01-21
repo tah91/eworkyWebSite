@@ -172,7 +172,6 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>the deletetion success view</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
-		//[ActionName("supprimer")]
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Delete(int id)
 		{
@@ -194,6 +193,15 @@ namespace Worki.Web.Controllers
 
 			TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferRemoved;
 			return RedirectToAction(MVC.Localisation.Edit(localisationId));
+		}
+
+		/// <summary>
+		/// Action result to return offerprice item for edition
+		/// </summary>
+		/// <returns>a partial view</returns>
+		public virtual PartialViewResult AddOfferPrice()
+		{
+			return PartialView(MVC.Offer.Views._OfferPrice, new OfferPrice());
 		}
     }
 }

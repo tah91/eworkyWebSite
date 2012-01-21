@@ -311,34 +311,8 @@
 					</tr>
 				</table>
             </div>
-            <div class="contentBlock">
-                <h3 class="blue">@Worki.Resources.Views.Offer.OfferString.Prices</h3>
-                <table class="offerTable">
-                    <tr>
-						<td>
-							@Html.LabelFor(m => m.Offer.Period)
-						</td>
-						<td>
-							@Html.DropDownListFor(m => m.Offer.Period, Model.Periods)
-						</td>
-					</tr>
-                    <tr>
-						<td>
-							@Html.LabelFor(m => m.Offer.Currency)
-						</td>
-						<td>
-							@Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
-						</td>
-					</tr>
-					<tr>
-						<td>
-							@Html.LabelFor(m => m.Offer.Price)
-						</td>
-						<td>
-							@Html.TextBoxFor(m => m.Offer.Price)
-						</td>
-					</tr>
-                </table>
+            <div class="contentBlock configOffer">
+				@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
             </div> 
             if (Model.IsSharedOffice)
             {

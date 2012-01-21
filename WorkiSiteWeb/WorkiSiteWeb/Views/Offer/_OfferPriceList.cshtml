@@ -1,0 +1,29 @@
+﻿@model IEnumerable<OfferPrice>
+		   
+<h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
+<div class="offerPricesRows">
+	@foreach (var item in Model)
+	{
+		@Html.Partial(MVC.Offer.Views._OfferPrice , item)
+	}
+</div>
+@Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddPrice, MVC.Offer.AddOfferPrice(), new { @class = "orange", id = "addItem" })
+
+<script type="text/javascript">
+	$("#addItem").click(function () {
+		$.ajax({
+			url: this.href,
+			cache: false,
+			success: function (html) {
+				$(".offerPricesRows").append(html);
+			}
+		});
+		return false;
+	});
+
+	$("button.deleteRow").live("click", function () {
+		$(this).parents(".offerPricesRow:first").remove();
+		return false;
+	});
+
+</script>

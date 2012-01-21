@@ -1778,6 +1778,36 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     width: 271px;
 }
 
+.configOffer select, .configOffer input[type="text"]
+{
+	width:100px;
+}
+
+.configoffertable
+{
+    
+}
+
+.configoffertable td:first-child
+{
+    width:180px;
+}
+
+.configoffertable td
+{
+    height : 30px;
+}
+
+.offerPricesRow
+{
+    margin:10px 0;
+}
+
+.offerPricesRows select, .offerPricesRows input[type="text"]
+{
+    margin:0 20px;
+}
+
 /* MENU LAYOUT
 ----------------------------------------------------------*/
 .horizontalMenu

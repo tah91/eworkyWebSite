@@ -42,12 +42,6 @@
 .bookingLinks{width:18%}
 .offerDropDown{margin:5px 10px 0 0}
 .offerindextable{width:400px;height:80px}
-.configOffer select,.configOffer input[type="text"]{width:100px}
-.configoffertable td:first-child{width:180px}
-.configoffertable td{height:30px}
-.offerPricesRow{margin:10px 0}
-.offerPricesRows select,.offerPricesRows input[type="text"]{margin:0 20px}
-select#Offer_Period,select#Offer_Currency,select#Offer_PaymentType{width:204px}
 .confirmbooktable{width:605px}
 #calendar{width:100%;margin:0 auto}
 .createBooking{position:absolute;display:none;width:300px;z-index:50}
