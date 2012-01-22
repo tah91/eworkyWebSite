@@ -342,6 +342,33 @@ page width. Or, you can specify an exact pixel width. */
 	margin-top:5px;
 }
 
+.alertSummaryContainer
+{
+	padding:10px 0;
+}
+
+.alertSummary
+{
+	background: #FA993B;
+	color: White;
+	font-weight:bold;
+	text-decoration:none;
+	width: 15px;
+	height: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	padding:5px;
+	margin-right:5px;
+	text-align:center;
+}
+
+.alertSummary a
+{
+	color: White;
+	text-decoration:none;
+}
+
 .createAccount
 {
 	margin-top:10px;

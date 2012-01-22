@@ -45,11 +45,51 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
 			var member = mRepo.Get(id);
-			var news = ModelHelper.GetNews(id, member.MemberBookings, mb => { return Url.Action(MVC.Dashboard.Home.BookingDetail(mb.Id)); });
-			news = news.Concat(ModelHelper.GetNews(id, member.MemberQuotations, q => { return Url.Action(MVC.Dashboard.Home.QuotationDetail(q.Id)); })).ToList();
+			var news = ModelHelper.GetNews(id, member.MemberBookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id, false)); });
+			news = news.Concat(ModelHelper.GetNews(id, member.MemberQuotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id, false)); })).ToList();
 
 			news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 			return View(new DashoboardHomeViewModel { News = news, Member = member });
+		}
+
+		/// <summary>
+		/// Get action method to get read booking log
+		/// </summary>
+		/// <returns>redirect to booking detail</returns>
+		public virtual ActionResult GetAlertSummary()
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+
+				var news = ModelHelper.GetNews(memberId, member.MemberBookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id, false)); });
+				news = news.Concat(ModelHelper.GetNews(memberId, member.MemberQuotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id, false)); })).ToList();
+
+				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
+
+				var count = news.Count(n => !n.Read);
+				var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+				var dashboardHomeUrl = urlHelper.Action(MVC.Dashboard.Home.Index());	
+
+				var model = new AlertSumaryModel
+				{
+					AlertCount = count,
+					AlertLink = dashboardHomeUrl,
+					AlertTitle = string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.DashboardAlerts, count)
+				};
+
+				return PartialView(MVC.Backoffice.Shared.Views._AlertSummary, model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("GetAlertSummary", ex);
+				return null;
+			}
 		}
 
 		#region Booking

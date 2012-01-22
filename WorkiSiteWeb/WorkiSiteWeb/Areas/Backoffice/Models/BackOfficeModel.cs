@@ -80,4 +80,11 @@ namespace Worki.Web.Model
 		public int QuotationId { get; set; }
 		public string ReturnUrl { get; set; }
 	}
+
+	public class AlertSumaryModel
+	{
+		public int AlertCount { get; set; }
+		public string AlertLink { get; set; }
+		public string AlertTitle { get; set; }
+	}
 }

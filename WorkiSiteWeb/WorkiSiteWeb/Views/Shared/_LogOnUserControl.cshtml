@@ -1,39 +1,64 @@
 ﻿@if (Request.IsAuthenticated)
 {       
-    <div class="welcome">
-        @{
-            var displayName = User.Identity.Name;
-			var memberId = 0;
-            FormsIdentity ident = User.Identity as FormsIdentity;
-            if (ident != null)
-            {
-				displayName = WebHelper.GetIdentityDisplayName(User.Identity);
-				memberId = WebHelper.GetIdentityId(User.Identity);
-            }
-			var dropDown = new DropDownModel
-			{
-				Id = DropDownModel.ProfilDD,
-                Title = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", displayName),
-				Items = new List<DropDownItem>
-						{
-							new DropDownItem{ DisplayName = Worki.Resources.Menu.Menu.UserSpace, Link = Url.Action(MVC.Dashboard.Home.Index())}
-						}
-			};
-			if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
-			{
-                dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.OwnerSpace, Link = Url.Action(MVC.Backoffice.Home.Index()) });
-			}
-			if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
-			{
-				dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.AdminSpace, Link = Url.Action(MVC.Admin.Sheet.Index()) });
-			}
-			dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Shared.SharedString.Deconnect, Link = Url.Action(MVC.Account.LogOff()) });
-        }
-        @*<div class="loginTitle">
-            @Worki.Resources.Views.Home.HomeString.Welcome <b>@displayName</b> !
-        </div>*@
+    var displayName = User.Identity.Name;
+	var memberId = 0;
+    FormsIdentity ident = User.Identity as FormsIdentity;
+    if (ident != null)
+    {
+		displayName = WebHelper.GetIdentityDisplayName(User.Identity);
+		memberId = WebHelper.GetIdentityId(User.Identity);
+    }
+	var dropDown = new DropDownModel
+	{
+		Id = DropDownModel.ProfilDD,
+        Title = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", displayName),
+		Items = new List<DropDownItem>
+				{
+					new DropDownItem{ DisplayName = Worki.Resources.Menu.Menu.UserSpace, Link = Url.Action(MVC.Dashboard.Home.Index())}
+				}
+	};
+	var hasBO = User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole);
+	if (hasBO)
+	{
+        dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.OwnerSpace, Link = Url.Action(MVC.Backoffice.Home.Index()) });
+	}
+	if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
+	{
+		dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.AdminSpace, Link = Url.Action(MVC.Admin.Sheet.Index()) });
+	}
+	dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Shared.SharedString.Deconnect, Link = Url.Action(MVC.Account.LogOff()) });
+	<div class="alertSummaryContainer float-left">
+		@if(hasBO)
+		{
+	 		<div class="boSummary float-left">
+			</div>
+			<script type='text/javascript'>
+				$.ajax({
+					type: 'POST',
+					url: '@Url.Action(MVC.Backoffice.Home.GetAlertSummary())',
+					success: function (data, textStatus, jqXHR) {
+						$('.boSummary').html(data);
+					}
+				});
+			</script>
+		}
+		<div class="dashboardSummary float-left">
+		</div>
+		<script type='text/javascript'>
+				$.ajax({
+					type: 'POST',
+					url: '@Url.Action(MVC.Dashboard.Home.GetAlertSummary())',
+					success: function (data, textStatus, jqXHR) {
+						$('.dashboardSummary').html(data);
+					}
+				});
+		</script>
+	</div>
+    <div class="welcome float-right">
 		@Html.Partial(MVC.Shared.Views._DropDownList, dropDown)
     </div>
+	<div class="clear">
+	</div>
 }
 else
 {

@@ -88,6 +88,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Espace gérant : {0} alerte(s).
+        /// </summary>
+        public static string BOAlerts {
+            get {
+                return ResourceManager.GetString("BOAlerts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réservation.
         /// </summary>
         public static string Booking {
@@ -111,6 +120,15 @@ namespace Worki.Resources.Views.BackOffice {
         public static string CustomerSheet {
             get {
                 return ResourceManager.GetString("CustomerSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Espace utilisateur : {0} alerte(s).
+        /// </summary>
+        public static string DashboardAlerts {
+            get {
+                return ResourceManager.GetString("DashboardAlerts", resourceCulture);
             }
         }
         

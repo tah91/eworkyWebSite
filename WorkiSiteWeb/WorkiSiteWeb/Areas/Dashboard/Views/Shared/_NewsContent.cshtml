@@ -11,7 +11,7 @@
 		{
 			<li>
 				<div class="newsListLeft float-left">
-					<a class="blue" href="@item.Link">@Html.DisplayLocalDate(item.Date, true)</a>
+					<a class="@(item.Read ? "blue" : "orange")" href="@item.Link">@Html.DisplayLocalDate(item.Date, true)</a>
 				</div>
 				<div class="newsListRight float-right">
 					@item.DisplayName

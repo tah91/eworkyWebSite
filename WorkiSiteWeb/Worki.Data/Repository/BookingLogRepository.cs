@@ -19,4 +19,17 @@ namespace Worki.Data.Models
         {
         }
     }
+
+	public interface IQuotationLogRepository : IRepository<MemberQuotationLog>
+	{
+
+	}
+
+	public class QuotationLogRepository : RepositoryBase<MemberQuotationLog>, IQuotationLogRepository
+	{
+		public QuotationLogRepository(ILogger logger, IUnitOfWork context)
+			: base(logger, context)
+		{
+		}
+	}
 }

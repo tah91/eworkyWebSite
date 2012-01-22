@@ -18,11 +18,11 @@ namespace Worki.Data.Models
     
         public int Id { get; set; }
         public int MemberQuotationId { get; set; }
+        public int LoggerId { get; set; }
         public string Event { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public int EventType { get; set; }
-        public int LoggerId { get; set; }
-        public int Read { get; set; }
+        public bool Read { get; set; }
     
         // Navigation properties
     

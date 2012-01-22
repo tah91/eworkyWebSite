@@ -3028,6 +3028,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string Localisations = "Localisations";
             public readonly string Booking = "Booking";
             public readonly string Quotation = "Quotation";
+            public readonly string GetAlertSummary = "GetAlertSummary";
         }
 
 
@@ -3067,6 +3068,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public override System.Web.Mvc.ActionResult Quotation(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetAlertSummary() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetAlertSummary);
             return callInfo;
         }
 
@@ -3136,6 +3142,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ReadBookingLog() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ReadBookingLog);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult ConfirmBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
         }
@@ -3153,6 +3164,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult QuotationDetail() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.QuotationDetail);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ReadQuotationLog() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ReadQuotationLog);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3227,10 +3243,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string Localisation_Schedule = "Localisation_Schedule";
             public readonly string OfferBooking = "OfferBooking";
             public readonly string BookingDetail = "BookingDetail";
+            public readonly string ReadBookingLog = "ReadBookingLog";
             public readonly string ConfirmBooking = "ConfirmBooking";
             public readonly string RefuseBooking = "RefuseBooking";
             public readonly string Quotation = "Quotation";
             public readonly string QuotationDetail = "QuotationDetail";
+            public readonly string ReadQuotationLog = "ReadQuotationLog";
             public readonly string QuotationAccepted = "QuotationAccepted";
             public readonly string QuotationCancelled = "QuotationCancelled";
             public readonly string OfferQuotation = "OfferQuotation";
@@ -3352,6 +3370,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult ReadBookingLog(int id, bool forBO) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ReadBookingLog);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("forBO", forBO);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult ConfirmBooking(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ConfirmBooking);
             callInfo.RouteValueDictionary.Add("id", id);
@@ -3390,6 +3415,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public override System.Web.Mvc.ActionResult QuotationDetail(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.QuotationDetail);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ReadQuotationLog(int id, bool forBO) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ReadQuotationLog);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("forBO", forBO);
             return callInfo;
         }
 
@@ -3567,6 +3599,7 @@ namespace T4MVC.Backoffice {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _AlertSummary = "~/Areas/Backoffice/Views/Shared/_AlertSummary.cshtml";
             public readonly string _BackofficeMenu = "~/Areas/Backoffice/Views/Shared/_BackofficeMenu.cshtml";
             public readonly string _BookingItem = "~/Areas/Backoffice/Views/Shared/_BookingItem.cshtml";
             public readonly string _BookingList = "~/Areas/Backoffice/Views/Shared/_BookingList.cshtml";
@@ -3804,6 +3837,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string GetAlertSummary = "GetAlertSummary";
             public readonly string Booking = "Booking";
             public readonly string BookingDetail = "BookingDetail";
             public readonly string BookingPaymentAccepted = "BookingPaymentAccepted";
@@ -3836,6 +3870,11 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
 
         public override System.Web.Mvc.ActionResult Index() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetAlertSummary() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetAlertSummary);
             return callInfo;
         }
 

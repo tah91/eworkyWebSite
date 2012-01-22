@@ -368,6 +368,7 @@ namespace Worki.Data.Models
 		public DateTime Date { get; set; }
 		public string DisplayName { get; set; }
 		public string Link { get; set; }
+		public bool Read { get; set; }
 	}
 
     [Bind(Exclude = "MemberId,Username")]

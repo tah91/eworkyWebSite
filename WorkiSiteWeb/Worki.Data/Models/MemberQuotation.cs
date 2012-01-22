@@ -16,8 +16,8 @@ namespace Worki.Data.Models
     {
         public MemberQuotation()
         {
-            this.MemberQuotationLogs = new HashSet<MemberQuotationLog>();
             this.MemberQuotationTransactions = new HashSet<MemberQuotationTransaction>();
+            this.MemberQuotationLogs = new HashSet<MemberQuotationLog>();
     		OnInitialized();
         }
     
@@ -39,9 +39,9 @@ namespace Worki.Data.Models
         // Navigation properties
     
         public virtual Offer Offer { get; set; }
-        public virtual ICollection<MemberQuotationLog> MemberQuotationLogs { get; set; }
         public virtual ICollection<MemberQuotationTransaction> MemberQuotationTransactions { get; set; }
         public virtual Member Member { get; set; }
+        public virtual ICollection<MemberQuotationLog> MemberQuotationLogs { get; set; }
     
     }
 }

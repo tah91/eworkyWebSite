@@ -291,4 +291,10 @@
   <data name="PriceConfiguration" xml:space="preserve">
     <value>Paramétrage des tarifs</value>
   </data>
+  <data name="BOAlerts" xml:space="preserve">
+    <value>Espace gérant : {0} alerte(s)</value>
+  </data>
+  <data name="DashboardAlerts" xml:space="preserve">
+    <value>Espace utilisateur : {0} alerte(s)</value>
+  </data>
 </root>

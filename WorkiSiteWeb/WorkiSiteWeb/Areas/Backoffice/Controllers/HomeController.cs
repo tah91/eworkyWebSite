@@ -52,8 +52,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
 				var quotations = qRepo.GetMany(q => q.Offer.Localisation.OwnerID == id);
-				var news = ModelHelper.GetNews(id, bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
-				news = news.Concat(ModelHelper.GetNews(id, quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
+				var news = ModelHelper.GetNews(id, bookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id)); });
+				news = news.Concat(ModelHelper.GetNews(id, quotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id)); })).ToList();
 
 				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
@@ -159,6 +159,50 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 return View(MVC.Shared.Views.Error);
             }
         }
+
+		/// <summary>
+		/// Get action method to get read booking log
+		/// </summary>
+		/// <returns>redirect to booking detail</returns>
+		public virtual ActionResult GetAlertSummary()
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+
+				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId);
+				var quotations = qRepo.GetMany(q => q.Offer.Localisation.OwnerID == memberId);
+				var news = ModelHelper.GetNews(memberId, bookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id)); });
+				news = news.Concat(ModelHelper.GetNews(memberId, quotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id)); })).ToList();
+
+				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
+
+				var count = news.Count(n => !n.Read);
+				var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+				var boHomeUrl = urlHelper.Action(MVC.Backoffice.Home.Index());
+
+				var model = new AlertSumaryModel
+				{
+					AlertCount = count,
+					AlertLink = boHomeUrl,
+					AlertTitle = string.Format(Worki.Resources.Views.BackOffice.BackOfficeString.BOAlerts, count)
+				};
+
+				return PartialView(MVC.Backoffice.Shared.Views._AlertSummary, model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("GetAlertSummary", ex);
+				return null;
+			}
+		}
 
     }
 }

@@ -49,8 +49,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
 				var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id);
 
-				var news = ModelHelper.GetNews(memberId, bookings, mb => { return Url.Action(MVC.Backoffice.Localisation.BookingDetail(mb.Id)); });
-				news = news.Concat(ModelHelper.GetNews(memberId, quotations, q => { return Url.Action(MVC.Backoffice.Localisation.QuotationDetail(q.Id)); })).ToList();
+				var news = ModelHelper.GetNews(memberId, bookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id)); });
+				news = news.Concat(ModelHelper.GetNews(memberId, quotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id)); })).ToList();
 
 				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
@@ -411,6 +411,39 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		}
 
 		/// <summary>
+		/// Get action method to read booking log
+		/// </summary>
+		/// <returns>redirect to booking detail</returns>
+		public virtual ActionResult ReadBookingLog(int id, bool forBO = true)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var blRepo = ModelFactory.GetRepository<IBookingLogRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				var bookingLog = blRepo.Get(id);
+				if (!bookingLog.Read)
+				{
+					bookingLog.Read = true;
+					context.Commit();
+				}
+
+				return forBO ? RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(bookingLog.MemberBookingId))
+							 : RedirectToAction(MVC.Dashboard.Home.BookingDetail(bookingLog.MemberBookingId));
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("ReadBookingLog", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
 		/// GET Action result to confirm booking
 		/// </summary>
 		/// <param name="id">id of booking to confirm</param>
@@ -668,6 +701,39 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 return View(MVC.Shared.Views.Error);
             }
         }
+
+		/// <summary>
+		/// Get action method to read quotation log
+		/// </summary>
+		/// <returns>redirect to quotation detail</returns>
+		public virtual ActionResult ReadQuotationLog(int id, bool forBO = true)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var qlRepo = ModelFactory.GetRepository<IQuotationLogRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				var quotationLog = qlRepo.Get(id);
+				if (!quotationLog.Read)
+				{
+					quotationLog.Read = true;
+					context.Commit();
+				}
+
+				return forBO ? RedirectToAction(MVC.Backoffice.Localisation.QuotationDetail(quotationLog.MemberQuotationId))
+							 : RedirectToAction(MVC.Dashboard.Home.QuotationDetail(quotationLog.MemberQuotationId));
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("ReadQuotationLog", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
 
         /// <summary>
         /// Get action method to show quotation is paid

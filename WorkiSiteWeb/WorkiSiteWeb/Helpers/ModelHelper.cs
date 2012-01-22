@@ -117,7 +117,7 @@ namespace Worki.Web.Helpers
 			return rvd;
 		}
 
-		public static List<NewsItem> GetNews(int memberId, IEnumerable<MemberBooking> bookings, Func<MemberBooking, string> linkFunction)
+		public static List<NewsItem> GetNews(int memberId, IEnumerable<MemberBooking> bookings, Func<MemberBookingLog, string> linkFunction)
 		{
 			var toRet = new List<NewsItem>();
 			foreach (var booking in bookings)
@@ -134,7 +134,8 @@ namespace Worki.Web.Helpers
 					{
 						Date = log.CreatedDate,
 						DisplayName = log.GetDisplay(),
-						Link = linkFunction(booking)
+						Link = linkFunction(log),
+						Read = log.Read
 					});
 				}
 			}
@@ -142,7 +143,7 @@ namespace Worki.Web.Helpers
 			return toRet;
 		}
 
-        public static List<NewsItem> GetNews(int memberId, IEnumerable<MemberQuotation> quotations, Func<MemberQuotation, string> linkFunction)
+        public static List<NewsItem> GetNews(int memberId, IEnumerable<MemberQuotation> quotations, Func<MemberQuotationLog, string> linkFunction)
         {
             var toRet = new List<NewsItem>();
             foreach (var quotation in quotations)
@@ -159,7 +160,8 @@ namespace Worki.Web.Helpers
                     {
                         Date = log.CreatedDate,
                         DisplayName = log.GetDisplay(),
-                        Link = linkFunction(quotation)
+						Link = linkFunction(log),
+						Read = log.Read
                     });
                 }
             }
