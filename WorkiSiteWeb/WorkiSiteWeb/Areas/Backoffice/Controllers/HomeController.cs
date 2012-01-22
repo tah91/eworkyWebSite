@@ -164,6 +164,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// Get action method to get read booking log
 		/// </summary>
 		/// <returns>redirect to booking detail</returns>
+		[DontRequireHttps]
 		public virtual ActionResult GetAlertSummary()
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
@@ -185,6 +186,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
 				var count = news.Count(n => !n.Read);
+				if (count == 0)
+					return null;
+
 				var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 				var boHomeUrl = urlHelper.Action(MVC.Backoffice.Home.Index());
 
