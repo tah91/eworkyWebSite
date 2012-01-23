@@ -74,8 +74,10 @@
 			    var mail = $("#Localisation_Mail").val().replace(/ /g,'');
                 $("#Localisation_Mail").val(mail);
                 var coffeePrice = $("#f_CoffeePrice").val();
-			    var newCoffeePrice = coffeePrice.replace(",", ".");
-                $("#f_CoffeePrice").val(newCoffeePrice);
+                if(coffeePrice != null) {
+			        var newCoffeePrice = coffeePrice.replace(",", ".");
+                    $("#f_CoffeePrice").val(newCoffeePrice);
+                }
                 return true;
             });
         });
