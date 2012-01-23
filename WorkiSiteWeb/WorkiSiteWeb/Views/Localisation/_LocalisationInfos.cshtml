@@ -27,7 +27,7 @@
     }
 </div>
 
-@if (!Model.IsSharedOffice() && Model.CanHaveBooking())
+@*@if (!Model.IsSharedOffice() && Model.CanHaveBooking())
 {
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Booking</h3>
@@ -36,7 +36,7 @@
 		</div>
 		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction, MVC.Localisation.BookableOffers(Model.ID))</div>
 	</div> 
-}
+}*@
 
 @*<div class="contentBlock">
 	<h3 class="blue">Tarifs</h3>
