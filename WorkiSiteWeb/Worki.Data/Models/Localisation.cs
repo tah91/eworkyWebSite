@@ -52,6 +52,8 @@ namespace Worki.Data.Models
         public string PublicTransportation { get; set; }
         public string Station { get; set; }
         public string RoadAccess { get; set; }
+        public decimal BookingCom { get; set; }
+        public decimal QuotationPrice { get; set; }
     
         // Navigation properties
     

@@ -151,7 +151,8 @@
   </data>
   <data name="PublicSpace" xml:space="preserve">
     <value>Espace public numérique / Cybercafé</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="SpotWifi" xml:space="preserve">
     <value>Spot Wifi</value>
     <comment>SearchCriteria</comment>
@@ -165,7 +166,8 @@
   </data>
   <data name="WorkingHotel" xml:space="preserve">
     <value>Pépinière / Incubateur</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="SeminarRoom" xml:space="preserve">
     <value>Caractéristiques des salles de conférence / séminaire</value>
   </data>
@@ -219,13 +221,15 @@
   </data>
   <data name="TravelerSpace" xml:space="preserve">
     <value>Espace voyageurs</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="RatingDispo" xml:space="preserve">
     <value>Disponibilité / calme</value>
   </data>
   <data name="RatingPrice" xml:space="preserve">
     <value>Rapport qualité / prix</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="RatingWelcome" xml:space="preserve">
     <value>Accueil</value>
   </data>
@@ -255,7 +259,8 @@
   </data>
   <data name="Bookable" xml:space="preserve">
     <value>Je souhaite proposer la réservation ligne sur eworky.com !</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="Facebook" xml:space="preserve">
     <value>Facebook</value>
   </data>
@@ -267,7 +272,8 @@
   </data>
   <data name="UsefulHandicap" xml:space="preserve">
     <value>Adapté pour personnes à mobilité réduite</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="FriCloseAfter" xml:space="preserve">
     <value>Fermeture Vendredi soir</value>
   </data>
@@ -366,5 +372,11 @@
   </data>
   <data name="OtherTypes" xml:space="preserve">
     <value>Autres lieux</value>
+  </data>
+  <data name="BookingCom" xml:space="preserve">
+    <value>Commission (en %)</value>
+  </data>
+  <data name="QuotationPrice" xml:space="preserve">
+    <value>Prix du devis</value>
   </data>
 </root>

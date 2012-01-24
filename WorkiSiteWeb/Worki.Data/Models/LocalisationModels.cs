@@ -976,6 +976,12 @@ namespace Worki.Data.Models
 
         [Display(Name = "Twitter", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         public string Twitter { get; set; }
+
+        [Display(Name = "BookingCom", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public decimal BookingCom { get; set; }
+
+        [Display(Name = "QuotationPrice", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public decimal QuotationPrice { get; set; }
 	}
 
 	public class LocalisationFormViewModel

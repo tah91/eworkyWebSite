@@ -88,6 +88,15 @@ namespace Worki.Resources.Models.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commission (en %).
+        /// </summary>
+        public static string BookingCom {
+            get {
+                return ResourceManager.GetString("BookingCom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Centre d&apos;affaires.
         /// </summary>
         public static string BuisnessCenter {
@@ -399,6 +408,15 @@ namespace Worki.Resources.Models.Localisation {
         public static string PublicTransportation {
             get {
                 return ResourceManager.GetString("PublicTransportation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prix du devis.
+        /// </summary>
+        public static string QuotationPrice {
+            get {
+                return ResourceManager.GetString("QuotationPrice", resourceCulture);
             }
         }
         

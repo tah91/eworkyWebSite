@@ -24,19 +24,45 @@
         {
             <div class="contentBlock">
                 <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Admin</h3>
-                <div class="adminBlock">
+                <div class="adminBlock float-left">
                     @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsMain)
 				    @Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Main)
                 </div>
-                <div class="adminBlock">
+                <div class="adminBlock float-left">
                     @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsOffline)
 				    @Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Offline)
                 </div>
-                <div class="adminBlock">
+                <div class="adminBlock float-left">
                     @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.HasSticker)
 				    @Html.Label(Worki.Resources.Views.Admin.AdminString.Stickers)
                 </div>
                 <div class="clear"></div>
+                <table class="">
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Localisation.BookingCom)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Localisation.BookingCom)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Localisation.QuotationPrice)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Localisation.QuotationPrice)
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         }
             <div class="contentBlock">
