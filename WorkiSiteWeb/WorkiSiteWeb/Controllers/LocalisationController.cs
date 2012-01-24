@@ -88,22 +88,23 @@ namespace Worki.Web.Controllers
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id);
 
-			var container = new LocalisationOfferViewModel { Localisation = localisation };
-			container.Offers = localisation.Offers.Where(o => o.CanHaveBooking && o.IsBookable);
-			if (container.Offers.Count() == 0)
-			{
-				container.Message = Worki.Resources.Views.Localisation.LocalisationString.BookingAvailableSoon;
-				//send mail to team
-				dynamic teamMail = new Email(MVC.Emails.Views.Email);
-				teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-				teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-				teamMail.Subject = Worki.Resources.Email.BookingString.AlertBookingNeedSubject;
-				teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-				teamMail.Content = string.Format(Worki.Resources.Email.BookingString.AlertBookingNeed,localisation.Name);
-				teamMail.Send();
-			}
-			container.Title = localisation.Name + " - " + Worki.Resources.Views.Localisation.LocalisationString.Booking;
-			return View(MVC.Localisation.Views.Offers, container);
+			return Redirect(localisation.GetDetailFullUrl(Url));
+			//var container = new LocalisationOfferViewModel { Localisation = localisation };
+			//container.Offers = localisation.Offers.Where(o => o.CanHaveBooking && o.IsBookable);
+			//if (container.Offers.Count() == 0)
+			//{
+			//    container.Message = Worki.Resources.Views.Localisation.LocalisationString.BookingAvailableSoon;
+			//    //send mail to team
+			//    dynamic teamMail = new Email(MVC.Emails.Views.Email);
+			//    teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+			//    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
+			//    teamMail.Subject = Worki.Resources.Email.BookingString.AlertBookingNeedSubject;
+			//    teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
+			//    teamMail.Content = string.Format(Worki.Resources.Email.BookingString.AlertBookingNeed,localisation.Name);
+			//    teamMail.Send();
+			//}
+			//container.Title = localisation.Name + " - " + Worki.Resources.Views.Localisation.LocalisationString.Booking;
+			//return View(MVC.Localisation.Views.Offers, container);
 		}
 
         /// <summary>
