@@ -47,8 +47,7 @@ namespace Worki.Infrastructure
                 throw new ArgumentNullException("filterContext");
             }
 
-			if(true)
-            //if (filterContext.HttpContext != null && filterContext.HttpContext.Request.IsLocal)
+			if (filterContext.HttpContext != null && filterContext.HttpContext.Request.IsLocal)
             {
                 return;
             }
