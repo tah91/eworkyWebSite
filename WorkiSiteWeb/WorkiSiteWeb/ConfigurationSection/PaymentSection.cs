@@ -7,35 +7,12 @@ namespace Worki.Section
 {
     public sealed class PaymentConfiguration : ConfigurationSection
     {
-        public const string CommissionString = "commission";
-        public const string QuotationFeeString = "quotationFee";
-
         public const string UserNameString = "userName";
         public const string PasswordString = "password";
         public const string SignatureString = "signature";
         public const string ApplicationIdString = "appId";
 
 		public const string PaypalMailString = "paypalMail";
-
-
-        [ConfigurationProperty(CommissionString, IsRequired = true)]
-        public decimal Commission
-        {
-            get { return (decimal)base[CommissionString]; }
-            set { base[CommissionString] = value; }
-        }
-
-		public decimal CommissionPercent
-		{
-			get { return Commission * 100; }
-		}
-
-        [ConfigurationProperty(QuotationFeeString, IsRequired = true)]
-        public decimal QuotationFee
-        {
-            get { return (decimal)base[QuotationFeeString]; }
-            set { base[QuotationFeeString] = value; }
-        }
 
         [ConfigurationProperty(UserNameString, IsRequired = true)]
         public string UserName

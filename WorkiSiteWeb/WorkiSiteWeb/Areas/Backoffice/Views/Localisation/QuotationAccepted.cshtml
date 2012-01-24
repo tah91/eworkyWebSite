@@ -6,17 +6,12 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Dashboard.Shared.Views._DashboardMenu, DashboardMenu.Home)
+@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Offer.Id));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
-		{ 
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Dashboard.Home.Index())} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Dashboard.Home.Booking())} ,
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Dashboard.Home.Quotation())}
-		})
+		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Offer.Id, (int)OfferMenuType.Quotation));}
 	</div>
 
 	<div class="blockContainer float-left contentRight">

@@ -870,6 +870,34 @@ namespace Worki.Data.Models
 			return Offers.Where(o => o.Price != 0);
 		}
 
+		/// <summary>
+		/// Get amounts after commission processing
+		/// </summary>
+		/// <param name="totalAmount">total amount</param>
+		/// <param name="ownerAmount">amount for owner</param>
+		/// <param name="eworkyAmount">amount for eworky</param>
+		public void GetAmounts(decimal totalAmount, out decimal ownerAmount, out decimal eworkyAmount)
+		{
+			ownerAmount = (1 - BookingCom / 100) * totalAmount;
+			eworkyAmount = BookingCom / 100 * totalAmount;
+		}
+
+		/// <summary>
+		/// Tell if Quotation should be paid
+		/// </summary>
+		public bool ShouldPayQuotation()
+		{
+			return QuotationPrice != 0;
+		}
+
+		/// <summary>
+		/// Get price of a quotation
+		/// </summary>
+		public decimal GetQuotationPrice()
+		{
+			return QuotationPrice;
+		}
+
 		#endregion
 
         #region Availability

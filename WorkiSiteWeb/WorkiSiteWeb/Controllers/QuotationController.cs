@@ -55,17 +55,8 @@ namespace Worki.Web.Controllers
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var offer = oRepo.Get(id);
             var member = mRepo.Get(memberId);
-            var membetExists = member != null;
-            var formModel = new MemberQuotationFormViewModel
-            {
-                PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty,
-                NeedNewAccount = (memberId == 0),
-                FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty,
-                LastName = membetExists ? member.MemberMainData.LastName : string.Empty,
-                Email = membetExists ? member.Email : string.Empty,
-                LocalisationName = offer.Localisation.Name,
-                OfferName = offer.Name
-            };
+
+			var formModel = new MemberQuotationFormViewModel(member, offer);
 
             return View(formModel);
         }
@@ -78,9 +69,15 @@ namespace Worki.Web.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		public virtual ActionResult Create(int id, MemberQuotationFormViewModel formData)
 		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var member = mRepo.Get(memberId);
+			var offer = oRepo.Get(id);
+
 			if (ModelState.IsValid)
 			{
-				var memberId = WebHelper.GetIdentityId(User.Identity);
 				var sendNewAccountMail = false;
 				try
 				{
@@ -92,11 +89,6 @@ namespace Worki.Web.Controllers
 					};
 					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
 
-					var context = ModelFactory.GetUnitOfWork();
-					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-					var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-					var member = mRepo.Get(memberId);
-					var offer = oRepo.Get(id);
 					var locName = offer.Localisation.Name;
 					try
 					{
@@ -217,6 +209,7 @@ namespace Worki.Web.Controllers
 					ModelState.AddModelError("", ex.Message);
 				}
 			}
+			formData.QuotationOffer = offer;
 			return View(formData);
 		}
 
@@ -238,14 +231,19 @@ namespace Worki.Web.Controllers
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int id)
         {
+			var context = ModelFactory.GetUnitOfWork();
+			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+
+			var quotation = qRepo.Get(id);
+			var localisation = quotation.Offer.Localisation;
+
             string returnUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationAccepted(id));
 			string cancelUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationCancelled(id));
-            //string returnUrl = Url.ActionAbsolute(MVC.Payment.PayPalAccepted(memberBookingId));
-            //string cancelUrl = Url.ActionAbsolute(MVC.Payment.PayPalCancelled(memberBookingId));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
-            decimal eworkyAmount = PaymentConfiguration.Instance.QuotationFee;
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Quotation) as MemberQuotationPaymentHandler;
+
+			decimal eworkyAmount = localisation.GetQuotationPrice();
             var payments = new List<PaymentItem>
             {
                 new PaymentItem{  Index = 0, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail},

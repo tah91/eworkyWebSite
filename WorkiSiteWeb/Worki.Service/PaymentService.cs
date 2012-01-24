@@ -276,22 +276,22 @@ namespace Worki.Service
 							requestId = paypalRequest.Form["pay_key"];
 
                             string tr1 = paypalRequest["transaction[0].id"];
-                            string tr2 = paypalRequest["transaction[1].id"];
-                            //Check it...
-                            //decimal tr1Amount, tr2Amount;
-							//decimal.TryParse(paypalRequest["transaction[0].amount"], NumberStyles.Currency, null, out tr1Amount);
-							//decimal.TryParse(paypalRequest["transaction[1].amount"], NumberStyles.Currency, null, out tr2Amount);
-                            string tr1Str = paypalRequest["transaction[0].amount"].Split()[1];
-							string tr2Str = paypalRequest["transaction[1].amount"].Split()[1];
+							string tr1Str = paypalRequest["transaction[0].amount"].Split()[1];
 							var tr1Amount = decimal.Parse(tr1Str);
-							var tr2Amount = decimal.Parse(tr2Str);
-
-                            var payments = new List<PaymentItem>
+							//decimal.TryParse(paypalRequest["transaction[0].amount"], NumberStyles.Currency, null, out tr1Amount);
+							var payments = new List<PaymentItem>
                             {
-                                new PaymentItem{  Index = 0, Amount = tr1Amount, TransactionId = tr1},
-                                new PaymentItem{  Index = 1, Amount = tr2Amount, TransactionId = tr2},
+                                new PaymentItem{  Index = 0, Amount = tr1Amount, TransactionId = tr1}
                             };
 
+                            string tr2 = paypalRequest["transaction[1].id"];
+							if (tr2 != null)
+							{
+								string tr2Str = paypalRequest["transaction[1].amount"].Split()[1];
+								var tr2Amount = decimal.Parse(tr2Str);
+								payments.Add(new PaymentItem { Index = 1, Amount = tr2Amount, TransactionId = tr2 });
+							}
+                            
 							var context = ModelFactory.GetUnitOfWork();
 							var tRepo = ModelFactory.GetRepository<ITransactionRepository>(context);
 

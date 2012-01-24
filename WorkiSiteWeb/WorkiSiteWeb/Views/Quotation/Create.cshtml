@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.BookIt) </title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.Booking) </title>
 	<link href="@Url.VersionedContent(Links.Content.Booking_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -10,185 +10,151 @@
 
 <div class="detailContent">
     <div class="blockContainer">
-	    <div class="bookingFormDiv">
+	<div class="contentBlock">
+		<div class="bookingDesc float-left">
+			<div class="innerContentBlock bookingLocalisation">
+				<h3 class="blue">@Model.QuotationOffer.Localisation.Name - @Model.QuotationOffer.Name</h3>
+				<div class="bookingImg borderedImg float-left">
+					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.QuotationOffer.Localisation.GetMainPic(), true), Model.QuotationOffer.Localisation.Name)
+				</div>
+				<div class="bookingPrices float-left">
+					<ul>
+						@foreach (var price in Model.QuotationOffer.OfferPrices)
+						{
+						<li class="bold orange">@price.GetPriceDisplay()</li>	
+						}
+					</ul>
+				</div>
+				<div class="clear">
+				</div>
+			</div>
+			<div class="innerContentBlock borderOrange bookingSteps">
+				<h3 class="orange">@Worki.Resources.Views.Booking.BookingString.HowItWorks</h3>
+				<ul>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks1</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks2</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks3</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks4</li>
+				</ul>
+			</div>
+		</div>
+	    <div class="bookingFormDiv float-right">
 			@using (Html.BeginForm())
             {
-                <div class="contentBlock">
-                    <div>
-                        @Worki.Resources.Views.Booking.BookingString.QuotationSpeech<br/>
-                        @Worki.Resources.Views.Booking.BookingString.EndQuotationSpeech
-                    </div>
-                    <div class="clear"></div>
-				    @Html.AntiForgeryToken()
-                    @Html.HiddenFor(m => m.NeedNewAccount)
-					@Html.HiddenFor(m => m.LocalisationName)
-					@Html.HiddenFor(m => m.OfferName)
-				    <table>
-                        @if (Model.NeedNewAccount)
-                        {
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.LastName)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.LastName)
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.FirstName)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.FirstName)
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.Email)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.Email)
-							    </div>
-						    </td>
-					    </tr>
-                        }
-                        else
-                        {
-                            @Html.HiddenFor(m => m.LastName)
-                            @Html.HiddenFor(m => m.FirstName)  
-                            @Html.HiddenFor(m => m.Email) 
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.LastName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.LastName
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.FirstName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.FirstName
-							    </div>
-						    </td>
-					    </tr>
-                        }
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.LocalisationName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.LocalisationName
-							    </div>
-						    </td>
-					    </tr>
-                        <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.OfferName)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field description">
-								    @Model.OfferName
-							    </div>
-						    </td>
-					    </tr>
-					    <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.PhoneNumber)<span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.PhoneNumber)
-							    </div>
-						    </td>
-					    </tr>
-					    <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.MemberQuotation.Surface) <span class="blue">*</span>
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextBoxFor(m => m.MemberQuotation.Surface, new { placeholder = "Ex : 40" })
-							    </div>
-						    </td>
-					    </tr>
-					    <tr>
-						    <td>
-							    <div class="editor-label">
-								    @Html.LabelFor(m => m.MemberQuotation.VisitNeeded)
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.CheckBoxFor(m => m.MemberQuotation.VisitNeeded)
-							    </div>
-						    </td>
-					    </tr>
-					    <tr>
-						    <td class="verticalAlignTop">
-							    <div class="editor-label ">
-								    @Html.LabelFor(Worki.Resources.Views.Booking.BookingString.MessageToOwner, "MemberQuotation_Message")
-							    </div>
-						    </td>
-						    <td>
-							    <div class="editor-field">
-								    @Html.TextAreaFor(m => m.MemberQuotation.Message)
-							    </div>
-						    </td>
-					    </tr>
-				    </table>
-                </div>
+				@Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.NeedNewAccount)
+				<table>
+                    @if (Model.NeedNewAccount)
+                    {
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.LastName)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.LastName)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.FirstName)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.FirstName)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Email)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Email)
+							</div>
+						</td>
+					</tr>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.LastName)
+                        @Html.HiddenFor(m => m.FirstName)  
+                        @Html.HiddenFor(m => m.Email)
+                    }
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.PhoneNumber)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.PhoneNumber)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.MemberQuotation.Surface) <span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.MemberQuotation.Surface, new { placeholder = "Ex : 40" })
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.MemberQuotation.VisitNeeded)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.CheckBoxFor(m => m.MemberQuotation.VisitNeeded)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="verticalAlignTop">
+							<div class="editor-label ">
+								@Html.LabelFor(Worki.Resources.Views.Booking.BookingString.MessageToOwner, "MemberQuotation_Message")
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextAreaFor(m => m.MemberQuotation.Message)
+							</div>
+						</td>
+					</tr>
+				</table>
 				<div class="editor-field float-right">
 					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ValidateQuotation"/>
 				</div>
 				<div class="clear"></div>
             }
 	    </div>
+		<div class="clear">
+		</div>
+	</div>
     </div>
 </div>
 
 @section ScriptContent
 {
 	<script type="text/javascript">
-
-	    function init() {
-	        if ($("#MemberQuotation_Surface").attr("value") == 0)
-	            $("#MemberQuotation_Surface").attr("value", null);
-	    };
-
-	    $(document).ready(function () {
-	        init();
-	    });
-
+	    if ($("#MemberQuotation_Surface").attr("value") == 0)
+	        $("#MemberQuotation_Surface").attr("value", null);
     </script>
 }
 

@@ -15,6 +15,19 @@ namespace Worki.Data.Models
 		}
 
 		public MemberQuotation MemberQuotation { get; set; }
+		public Offer QuotationOffer { get; set; }
+
+		public MemberQuotationFormViewModel(Member member, Offer offer)
+        {
+			MemberQuotation = new MemberQuotation();
+			QuotationOffer = offer;
+            var membetExists = member != null;
+            PhoneNumber = membetExists ? member.MemberMainData.PhoneNumber : string.Empty;
+            NeedNewAccount = !membetExists;
+            FirstName = membetExists ? member.MemberMainData.FirstName : string.Empty;
+            LastName = membetExists ? member.MemberMainData.LastName : string.Empty;
+            Email = membetExists ? member.Email : string.Empty;
+        }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "PhoneNumber", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
@@ -85,7 +98,7 @@ namespace Worki.Data.Models
         /// </summary>
         public bool Paid
         {
-            get { return StatusId == (int)Status.Paid; }
+			get { return StatusId == (int)Status.Paid || (Offer != null && Offer.Localisation != null && !Offer.Localisation.ShouldPayQuotation()); }
         }
 
         /// <summary>
@@ -125,7 +138,7 @@ namespace Worki.Data.Models
         /// </summary>
         public bool OwnerCanPay
         {
-            get { return Unknown; }
+			get { return Unknown && (Offer != null && Offer.Localisation != null && Offer.Localisation.ShouldPayQuotation()); }
         }
 
         /// <summary>
