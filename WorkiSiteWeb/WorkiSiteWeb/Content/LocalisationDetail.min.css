@@ -23,3 +23,6 @@
 .priceDisplay{padding:10px 10px 0 0}
 .priceDisplay .featureTag ul li{background:#FFF4C7}
 .offerPrice ul li{margin:5px 0}
+.bookingFormTable td{height:30px}
+.bookingFormTable td:first-child{padding-right:50px}
+.bookingFormTable input[type="text"],.bookingFormTable textarea{width:400px}

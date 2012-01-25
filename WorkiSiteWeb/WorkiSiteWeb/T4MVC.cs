@@ -1186,6 +1186,16 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AskBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AskBooking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult AskContact() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AskContact);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Edit() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
         }
@@ -1261,6 +1271,8 @@ namespace Worki.Web.Controllers {
             public readonly string Details = "details";
             public readonly string Offers = "offres";
             public readonly string BookableOffers = "reservation";
+            public readonly string AskBooking = "AskBooking";
+            public readonly string AskContact = "AskContact";
             public readonly string CreateFree = "ajouter-lieu-gratuit";
             public readonly string CreateNotFree = "ajouter-lieu-payant";
             public readonly string CreateSharedOffice = "ajouter-espace-partagé";
@@ -1288,6 +1300,7 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _AskContact = "~/Views/Localisation/_AskContact.cshtml";
             public readonly string _CommentForm = "~/Views/Localisation/_CommentForm.cshtml";
             public readonly string _CommentFormScript = "~/Views/Localisation/_CommentFormScript.cshtml";
             public readonly string _DirectAccess = "~/Views/Localisation/_DirectAccess.cshtml";
@@ -1300,6 +1313,7 @@ namespace Worki.Web.Controllers {
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
             public readonly string _Suggestions = "~/Views/Localisation/_Suggestions.cshtml";
+            public readonly string AskBooking = "~/Views/Localisation/AskBooking.cshtml";
             public readonly string editer = "~/Views/Localisation/editer.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
             public readonly string Offers = "~/Views/Localisation/Offers.cshtml";
@@ -1335,6 +1349,25 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult BookableOffers(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookableOffers);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AskBooking(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AskBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AskBooking(int id, Worki.Data.Models.LocalisationAskBookingFormModel formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AskBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AskContact(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AskContact);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }

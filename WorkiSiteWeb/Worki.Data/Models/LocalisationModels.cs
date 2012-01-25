@@ -1101,6 +1101,31 @@ namespace Worki.Data.Models
 		#endregion
 	}
 
+	public class LocalisationAskBookingFormModel
+	{
+		#region Properties
+
+		public Localisation Localisation { get; set; }
+		public Contact Contact { get; set; }
+
+		#endregion
+
+		#region Ctor
+
+		public LocalisationAskBookingFormModel()
+		{
+
+		}
+
+		public LocalisationAskBookingFormModel(Localisation localisation, Member member)
+		{
+			Localisation = localisation;
+			Contact = new Contact { FirstName = member.MemberMainData.FirstName, LastName = member.MemberMainData.LastName, EMail = member.Email };
+		}
+
+		#endregion
+	}
+
 	#region Data Containers
 
 	#endregion

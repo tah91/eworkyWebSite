@@ -97,7 +97,7 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demande de devis.
+        ///   Looks up a localized string similar to Demander un devis.
         /// </summary>
         public static string AskQuotation {
             get {

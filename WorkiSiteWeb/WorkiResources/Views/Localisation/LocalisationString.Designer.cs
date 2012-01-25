@@ -124,6 +124,24 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demande de réservation.
+        /// </summary>
+        public static string BookingForm {
+            get {
+                return ResourceManager.GetString("BookingForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Veuillez indiquer précisément votre requête, ainsi que vos coordonnées. Votre message sera transmis directement au propriétaire du lieu..
+        /// </summary>
+        public static string BookingFormHelp {
+            get {
+                return ResourceManager.GetString("BookingFormHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réserver.
         /// </summary>
         public static string BookIt {
@@ -138,6 +156,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string ComfirmDelete {
             get {
                 return ResourceManager.GetString("ComfirmDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacter cet espace.
+        /// </summary>
+        public static string ContactThisSpaceAction {
+            get {
+                return ResourceManager.GetString("ContactThisSpaceAction", resourceCulture);
             }
         }
         
@@ -462,6 +489,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string Schedule {
             get {
                 return ResourceManager.GetString("Schedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Afficher les informations.
+        /// </summary>
+        public static string ShowContactInfo {
+            get {
+                return ResourceManager.GetString("ShowContactInfo", resourceCulture);
             }
         }
         

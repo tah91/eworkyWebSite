@@ -1,0 +1,69 @@
+﻿@model Worki.Data.Models.LocalisationAskBookingFormModel
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Localisation.LocalisationString.BookingForm)</title>
+    <link href="@Url.VersionedContent(Links.Content.LocalisationDetail_min_css)" rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />	    
+}
+
+<a class="blue" href="@Model.Localisation.GetDetailFullUrl(Url)">@Worki.Resources.Views.Offer.OfferString.BackToLocalisation</a>
+
+<div class="detailContent">
+	<div class="localisationDetailLeft blockContainer float-left">
+		@using (Html.BeginForm()) 
+        {
+        <div class="contentBlock">
+            @Html.AntiForgeryToken()
+			@Html.HiddenFor(model => model.Contact.FirstName)
+			@Html.HiddenFor(model => model.Contact.LastName)
+			@Html.HiddenFor(model => model.Contact.EMail)
+			<div class="italic marginb15">
+				@Worki.Resources.Views.Localisation.LocalisationString.BookingFormHelp
+			</div>
+            <table class="bookingFormTable">
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Contact.Subject) <span class="blue">*</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Contact.Subject)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="verticalAlignTop">
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Contact.Message) <span class="blue">*</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextAreaFor(model => model.Contact.Message)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+			<div class="clear"></div>
+        </div>
+        <div class="float-right">
+            <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
+        </div>
+        <div class="clear"></div>
+		}
+	</div>
+	<div class="localisationDetailRight blockContainer float-right">
+	@Html.Partial(MVC.Localisation.Views._LocalisationInfos, Model.Localisation)
+	</div>
+	<div class="clear"></div>
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+    	require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"]);
+    </script>
+}

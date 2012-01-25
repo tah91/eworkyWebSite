@@ -88,23 +88,85 @@ namespace Worki.Web.Controllers
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id);
 
-			return Redirect(localisation.GetDetailFullUrl(Url));
-			//var container = new LocalisationOfferViewModel { Localisation = localisation };
-			//container.Offers = localisation.Offers.Where(o => o.CanHaveBooking && o.IsBookable);
-			//if (container.Offers.Count() == 0)
-			//{
-			//    container.Message = Worki.Resources.Views.Localisation.LocalisationString.BookingAvailableSoon;
-			//    //send mail to team
-			//    dynamic teamMail = new Email(MVC.Emails.Views.Email);
-			//    teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-			//    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-			//    teamMail.Subject = Worki.Resources.Email.BookingString.AlertBookingNeedSubject;
-			//    teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-			//    teamMail.Content = string.Format(Worki.Resources.Email.BookingString.AlertBookingNeed,localisation.Name);
-			//    teamMail.Send();
-			//}
-			//container.Title = localisation.Name + " - " + Worki.Resources.Views.Localisation.LocalisationString.Booking;
-			//return View(MVC.Localisation.Views.Offers, container);
+			var container = new LocalisationOfferViewModel { Localisation = localisation };
+			container.Offers = localisation.Offers.Where(o => o.CanHaveBooking && o.IsBookable);
+			if (container.Offers.Count() == 0)
+			{
+				return RedirectToAction(MVC.Localisation.AskBooking(id));
+			}
+			container.Title = localisation.Name + " - " + Worki.Resources.Views.Localisation.LocalisationString.Booking;
+			return View(MVC.Localisation.Views.Offers, container);
+		}
+
+		/// <summary>
+		/// Get action resulta to show form to ask booking via form
+		/// </summary>
+		/// <param name="id">id of the localisation</param>
+		/// <returns>booking form</returns>
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		public virtual ActionResult AskBooking(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var localisation = lRepo.Get(id);
+			var member = mRepo.Get(memberId);
+
+			var container = new LocalisationAskBookingFormModel(localisation, member);
+			return View(container);
+		}
+
+		/// <summary>
+		/// Get action resulta to show form to ask booking via form
+		/// </summary>
+		/// <param name="id">id of the localisation</param>
+		/// <returns>booking form</returns>
+		[AcceptVerbs(HttpVerbs.Post), Authorize]
+		public virtual ActionResult AskBooking(int id, LocalisationAskBookingFormModel formData)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					dynamic contactMail = new Email(MVC.Emails.Views.Email);
+					contactMail.From = formData.Contact.FirstName + " " + formData.Contact.LastName + "<" + formData.Contact.EMail + ">";
+					contactMail.To = MiscHelpers.EmailConstants.ContactMail;
+					contactMail.Subject = formData.Contact.Subject;
+					contactMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
+					contactMail.Content = formData.Contact.Message;
+					contactMail.Send();
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("AskBooking", ex);
+				}
+
+				TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent;
+
+				return Redirect(localisation.GetDetailFullUrl(Url));
+			}
+			formData.Localisation = localisation;
+			return View(formData);
+		}
+
+		/// <summary>
+		/// Get action result to show contact partial view
+		/// </summary>
+		/// <param name="id">id of the localisation</param>
+		/// <returns>contact info</returns>
+		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		public virtual PartialViewResult AskContact(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
+
+			return PartialView(MVC.Localisation.Views._AskContact,localisation);
 		}
 
         /// <summary>

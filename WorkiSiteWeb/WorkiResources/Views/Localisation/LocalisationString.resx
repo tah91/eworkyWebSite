@@ -281,4 +281,16 @@
   <data name="NeedThisSpaceAction" xml:space="preserve">
     <value>Réserver en ligne</value>
   </data>
+  <data name="BookingForm" xml:space="preserve">
+    <value>Demande de réservation</value>
+  </data>
+  <data name="BookingFormHelp" xml:space="preserve">
+    <value>Veuillez indiquer précisément votre requête, ainsi que vos coordonnées. Votre message sera transmis directement au propriétaire du lieu.</value>
+  </data>
+  <data name="ContactThisSpaceAction" xml:space="preserve">
+    <value>Contacter cet espace</value>
+  </data>
+  <data name="ShowContactInfo" xml:space="preserve">
+    <value>Afficher les informations</value>
+  </data>
 </root>
