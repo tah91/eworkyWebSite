@@ -367,7 +367,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Réservez en ligne.
+        ///   Looks up a localized string similar to Réserver en ligne.
         /// </summary>
         public static string NeedThisSpaceAction {
             get {
