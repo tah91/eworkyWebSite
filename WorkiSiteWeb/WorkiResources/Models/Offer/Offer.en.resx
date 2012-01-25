@@ -225,4 +225,7 @@
   <data name="SingleYear" xml:space="preserve">
     <value>year</value>
   </data>
+  <data name="PluralHalfDay" xml:space="preserve">
+    <value>half-day(s)</value>
+  </data>
 </root>
