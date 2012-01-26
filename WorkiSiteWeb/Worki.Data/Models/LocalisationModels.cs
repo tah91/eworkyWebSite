@@ -760,15 +760,6 @@ namespace Worki.Data.Models
         }
 
 		/// <summary>
-		/// true if one offer can have products
-		/// </summary>
-		/// <returns></returns>
-		public bool CanHaveProducts()
-		{
-			return Offers.Count(o => o.CanHaveProduct) > 0;
-		}
-
-		/// <summary>
 		/// true if one offer can be bookable
 		/// </summary>
 		/// <returns></returns>

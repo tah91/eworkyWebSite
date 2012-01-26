@@ -148,11 +148,6 @@ namespace Worki.Data.Models
 
 		#region Booking Possibility
 
-		public static bool OfferCanHaveProduct(LocalisationOffer type)
-		{
-			return OfferCanHaveBooking(type) || OfferCanHaveQuotation(type);
-		}
-
         public static bool OfferCanHaveQuotation(LocalisationOffer type)
         {
             return type == LocalisationOffer.Desktop;
@@ -165,14 +160,6 @@ namespace Worki.Data.Models
                     type == LocalisationOffer.SeminarRoom ||
                     type == LocalisationOffer.VisioRoom;
         }
-
-		/// <summary>
-		/// True if offer can have a product feature activated
-		/// </summary>
-		public bool CanHaveProduct
-		{
-            get { return OfferCanHaveProduct((LocalisationOffer)Type); }			
-		}
 
 		/// <summary>
 		/// True if offer can have quotation feature activated

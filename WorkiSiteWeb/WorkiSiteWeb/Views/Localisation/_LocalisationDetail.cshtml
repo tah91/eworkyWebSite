@@ -10,16 +10,13 @@
 		var features = localisation.GetOfferFeatures(offerType);
         var title = Localisation.GetOfferType((int)offerType, false);
 		var text = Worki.Resources.Views.Offer.OfferString.OffersDetail;
-		if (Offer.OfferCanHaveProduct(offerType) )
+        if (Offer.OfferCanHaveQuotation(offerType) && localisation.Offers.Where(x => x.Type == (int)offerType).Count(y => y.IsQuotable) != 0)
 		{
-            if (Offer.OfferCanHaveQuotation(offerType) && localisation.Offers.Where(x => x.Type == (int)offerType).Count(y => y.IsQuotable) != 0)
-			{
-				text = Worki.Resources.Views.Booking.BookingString.AskQuotation;
-			}
-            else if (Offer.OfferCanHaveBooking(offerType) && localisation.Offers.Where(x => x.Type == (int)offerType).Count(y => y.IsBookable) != 0)
-			{ 
-				text = Worki.Resources.Views.Localisation.LocalisationString.BookIt;
-			}
+			text = Worki.Resources.Views.Booking.BookingString.AskQuotation;
+		}
+        else if (Offer.OfferCanHaveBooking(offerType) && localisation.Offers.Where(x => x.Type == (int)offerType).Count(y => y.IsBookable) != 0)
+		{ 
+			text = Worki.Resources.Views.Localisation.LocalisationString.BookIt;
 		}
 		<div class="contentBlock">
             <div class="float-left">
