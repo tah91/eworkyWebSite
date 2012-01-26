@@ -159,7 +159,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of the localisation</param>
 		/// <returns>contact info</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize]
+		[AcceptVerbs(HttpVerbs.Get)]
 		public virtual PartialViewResult AskContact(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
