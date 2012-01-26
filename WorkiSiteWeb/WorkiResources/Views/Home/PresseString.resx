@@ -119,17 +119,17 @@
   </resheader>
   <data name="Articles" xml:space="preserve">
     <value>Ils parlent de nous</value>
-  </data>
+  <comment>Modif Jm L8</comment></data>
   <data name="ContactUs" xml:space="preserve">
     <value>Contactez-nous !</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Vous trouverez ici un dossier de presse sur eWorky.</value>
-  </data>
+  <comment>?</comment></data>
   <data name="OnJT" xml:space="preserve">
     <value>eWorky au JT national de France 3</value>
-  </data>
+  <comment>Il faudra mettre que la presse anglophone</comment></data>
   <data name="VideoDesc" xml:space="preserve">
     <value>Un reportage du 19/20 national de France 3 diffusé le 10 août 2011 consacré à eWorky (eworky.com), le premier portail français de référencement des espaces de travail (wifi gratuit, coworking, télécentres, centres d'affaires, hôtels, etc.)</value>
-  </data>
+  <comment>Il faudra mettre que la presse anglophone</comment></data>
 </root>

@@ -251,8 +251,8 @@
   </data>
   <data name="Work" xml:space="preserve">
     <value>eWorky vous aide à trouver un lieu de travail mais pas à travailler, alors au boulot !</value>
-  </data>
+  <comment>Jm Modif L13</comment></data>
   <data name="WorkTitle" xml:space="preserve">
     <value>Au travail</value>
-  </data>
+  <comment>Jm Modif L13</comment></data>
 </root>

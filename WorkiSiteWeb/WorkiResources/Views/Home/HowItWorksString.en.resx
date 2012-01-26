@@ -253,9 +253,9 @@
     <value>Welcome</value>
   </data>
   <data name="Work" xml:space="preserve">
-    <value>eWorky helps you finding a workplace but not working, so good luck in your job!</value>
-  </data>
+    <value>eWorky helps you finding a workplace but won't work for you, so good luck in your job!</value>
+  <comment>Jm Modif L13</comment></data>
   <data name="WorkTitle" xml:space="preserve">
-    <value>At work!</value>
-  </data>
+    <value>Set to work!</value>
+  <comment>Jm Modif L13</comment></data>
 </root>
