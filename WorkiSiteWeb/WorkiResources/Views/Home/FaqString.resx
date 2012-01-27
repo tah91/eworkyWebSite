@@ -152,7 +152,7 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
   <data name="ForRateComment" xml:space="preserve">
     <value>Pour commenter ou noter un lieu de travail, vous devez être connecté sur votre compte eWorky. Une fois
         connecté, il vous suffit de vous rendre sur la fiche du lieu pour commenter et/ou noter le lieu.</value>
-  </data>
+  <comment>Jm modif L25</comment></data>
   <data name="Glossary" xml:space="preserve">
     <value>Lexique</value>
   </data>
@@ -339,7 +339,7 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
   </data>
   <data name="YourPossiblilitiesOnForm" xml:space="preserve">
     <value>Dans le formulaire d'ajout du lieu de travail, vous avez la possibilité de choisir des photos à joindre à la description de votre lieu de travail. Pour cela, il vous suffit de glisser vos images sur « + ajouter vos images » ou de cliquer sur ce même bouton pour choisir votre fichier, puis de cliquer sur Télécharger pour nous envoyer ce fichier. La taille de chaque image ne doit pas excéder 3 Mo et vous pouvez ajouter au maximum 10 photos. Assurez-vous que vous respectez ces limites et si le problème persiste, vous pouvez nous contacter par e-mail à support@eworky.com.</value>
-  </data>
+  <comment>Jm modif L26</comment></data>
   <data name="CouldNotEditLocation" xml:space="preserve">
     <value>Je n’arrive plus à modifier un lieu</value>
   </data>

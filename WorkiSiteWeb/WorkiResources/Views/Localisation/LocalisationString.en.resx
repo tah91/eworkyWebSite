@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
-  </data>
+    <value>Add a workspace</value>
+  <comment>Jm modil L.12</comment></data>
   <data name="ComfirmDelete" xml:space="preserve">
     <value>Confirm the deletion:</value>
   </data>

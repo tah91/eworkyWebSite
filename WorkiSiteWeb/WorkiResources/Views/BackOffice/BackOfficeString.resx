@@ -188,7 +188,7 @@
   </data>
   <data name="NoCurrentQuotation" xml:space="preserve">
     <value>Vous n'avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
-  </data>
+  <comment>Jm Correct l27</comment></data>
   <data name="NotDefined" xml:space="preserve">
     <value>Non fixé</value>
   </data>

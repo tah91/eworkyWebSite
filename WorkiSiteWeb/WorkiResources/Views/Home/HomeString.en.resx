@@ -271,8 +271,8 @@
     <value>Amongst &lt;em&gt;{0:### ### ###}&lt;/em&gt; coworking spaces, WiFi cafes, business centers, shared offices</value>
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
-    <value>They're talking about us</value>
-  </data>
+    <value>As seen on</value>
+  <comment>Jm Modif l.17</comment></data>
   <data name="FindTheBesPlace1" xml:space="preserve">
     <value>Find the best place to work</value>
   </data>

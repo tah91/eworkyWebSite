@@ -187,8 +187,8 @@
     <value>You do not have any pending booking request. To have a look at your archived bookings, please go to {0}.</value>
   </data>
   <data name="NoCurrentQuotation" xml:space="preserve">
-    <value>You do not have any pending quote request. To have a look at your archived quotes, please go to {0}.</value>
-  </data>
+    <value>You do not have any pending quote request. To take a look at your archived quotes, please go to {0}.</value>
+  <comment>Jm Correct l27</comment></data>
   <data name="NotDefined" xml:space="preserve">
     <value>Not defined</value>
   </data>

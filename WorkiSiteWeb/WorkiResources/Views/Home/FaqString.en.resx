@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddPage" xml:space="preserve">
-    <value>Propose a workspace</value>
+    <value>Add a workspace</value>
   </data>
   <data name="Bugs" xml:space="preserve">
     <value>Bugs</value>
@@ -143,8 +143,8 @@
     <value>The form located on the {0} of the website enables you to easily look for a workplace given a place and a type of workplace (WiFi hotspot, coworking space, etc.). A detailed search </value>
   <comment>toujours identique ?</comment></data>
   <data name="ForRateComment" xml:space="preserve">
-    <value>To comment or add a mark to a workplace, you must be connected with your eWorky account. Once connected, you then need to go to the workplace profile to comment and/or add a mark.</value>
-  </data>
+    <value>To comment or add a mark to a workplace, you must be connected with your eWorky account. Once connected, you need to go to the workplace profile to comment and/or add a mark.</value>
+  <comment>Jm modif L25</comment></data>
   <data name="Glossary" xml:space="preserve">
     <value>Glossary</value>
   </data>
@@ -291,8 +291,8 @@ Moreover, pictures are particularly obvious on workspaces profiles therefore we 
     <value>Whether you're looking for business centers, hotels, cafes, telecottages or offices buiding, whether you want to find, book, buy, rent, sell or share workspaces, eWorky will be there for you. You will find on eWorky the workspace you need, you will be able to comment your favorite workspace profile, to book it online, to add other workspaces or to find offices to rent or buy. By adapting to your new way of working, eWorky is for sure the best place to work!</value>
   </data>
   <data name="YourPossiblilitiesOnForm" xml:space="preserve">
-    <value>In the "Propose a workplace" form, you will be able to choose pictures to illustrate your workplace description. To do so, you need to put your pictures on "+ add your pictures" or click on this button to choose your file, then click on Download to send it to us. The size of each picture should not exceed 3 Mo and you cannot add more than 10 pictures. Please make sure that you respect these limits and if the problem persists, you can contact us by email at support@eworky.com.</value>
-  </data>
+    <value>In the "Add a workplace" form, you will be able to choose pictures to illustrate your workplace description. To do so, you need to put your pictures on "+ add your pictures" or click on this button to choose your file, then click on Download to send it to us. The size of each picture should not exceed 3 Mo and you cannot add more than 10 pictures. Please make sure that you respect these limits and if the problem persists, you can contact us by email at support@eworky.com.</value>
+  <comment>Jm modif L26</comment></data>
   <data name="CouldNotEditLocation" xml:space="preserve">
     <value>I don't manage to edit a workplace profile.</value>
   </data>
@@ -325,5 +325,8 @@ Moreover, pictures are particularly obvious on workspaces profiles therefore we 
   </data>
   <data name="ViaViadeo" xml:space="preserve">
     <value>From Viadeo</value>
+  </data>
+  <data name="OnEWTeleRoom" xml:space="preserve">
+    <value>On eWorky, a telepresence room is a room that gives to the participants of a videoconference the feeling that they are in the same room. It is equiped of cameras and micros, so that participants have real size persons around them.</value>
   </data>
 </root>

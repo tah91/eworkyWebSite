@@ -205,8 +205,8 @@
     <value>Pay online</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Create {0} for free precising you are the owner</value>
-  </data>
+    <value>Create {0} for free specifying you are the owner</value>
+  <comment>JM Modif l.22</comment></data>
   <data name="ReferenceLink" xml:space="preserve">
     <value>A page for your workplace</value>
   </data>

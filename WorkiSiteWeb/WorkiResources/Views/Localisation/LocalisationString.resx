@@ -119,7 +119,7 @@
   </resheader>
   <data name="Add" xml:space="preserve">
     <value>Ajouter un espace</value>
-  </data>
+  <comment>Jm modil L.12</comment></data>
   <data name="ComfirmDelete" xml:space="preserve">
     <value>Confirmer la suppression:</value>
   </data>

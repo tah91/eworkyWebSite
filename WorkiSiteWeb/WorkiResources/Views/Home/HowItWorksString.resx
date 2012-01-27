@@ -203,7 +203,7 @@
   </data>
   <data name="Reference" xml:space="preserve">
     <value>Créez gratuitement {0} en précisant que vous en êtes propriétaire</value>
-  </data>
+  <comment>JM Modif l.22</comment></data>
   <data name="ReferenceLink" xml:space="preserve">
     <value>une fiche pour votre lieu</value>
   </data>

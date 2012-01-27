@@ -140,7 +140,7 @@
   </data>
   <data name="MinimumLength" xml:space="preserve">
     <value>Les mots de passe doivent comporter au minimum {0} caractères.</value>
-  </data>
+  <comment>modif L.28</comment></data>
   <data name="NewOldPassword" xml:space="preserve">
     <value>Entrez votre mot de passe actuel et le nouveau mot de passe souhaité.</value>
   </data>
