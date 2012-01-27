@@ -367,4 +367,10 @@
   <data name="OtherTypes" xml:space="preserve">
     <value>Other workplaces</value>
   </data>
+  <data name="BookingCom" xml:space="preserve">
+    <value>Commission (in %)</value>
+  </data>
+  <data name="QuotationPrice" xml:space="preserve">
+    <value>Price of the quotation</value>
+  </data>
 </root>

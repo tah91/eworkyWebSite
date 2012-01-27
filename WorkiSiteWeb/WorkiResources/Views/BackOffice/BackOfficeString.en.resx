@@ -289,4 +289,13 @@
   <data name="DoNotHaveOnlineQuotation" xml:space="preserve">
     <value>This workplace has no offer yet where you can request a quote.</value>
   </data>
+  <data name="PriceConfiguration" xml:space="preserve">
+    <value>Price configuration</value>
+  </data>
+  <data name="BOAlerts" xml:space="preserve">
+    <value>Manager space : {0} alert(s)</value>
+  </data>
+  <data name="DashboardAlerts" xml:space="preserve">
+    <value>User space : {0} alert(s)</value>
+  </data>
 </root>

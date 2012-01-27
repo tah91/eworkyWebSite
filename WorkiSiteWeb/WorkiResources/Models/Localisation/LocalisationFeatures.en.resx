@@ -403,4 +403,13 @@
   <data name="SharedMeetingRoom" xml:space="preserve">
     <value>Meeting room</value>
   </data>
+  <data name="DesktopSearch" xml:space="preserve">
+    <value>Office (business centers, incubators, etc...)</value>
+  </data>
+  <data name="WorkstationSearch" xml:space="preserve">
+    <value>Desk (coworking, shared office, etc ...)</value>
+  </data>
+  <data name="Lift" xml:space="preserve">
+    <value>Lift</value>
+  </data>
 </root>

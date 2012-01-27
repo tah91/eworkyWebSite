@@ -261,4 +261,22 @@
   <data name="ModifiedThe" xml:space="preserve">
     <value>Updated on {0}</value>
   </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Booking</value>
+  </data>
+  <data name="BookingAvailableSoon" xml:space="preserve">
+    <value>This place will soon be offering booking opportunities</value>
+  </data>
+  <data name="NeedThisSpace" xml:space="preserve">
+    <value>You are interested in this space?</value>
+  </data>
+  <data name="NeedContactOfPlace" xml:space="preserve">
+    <value>You are interested in this space</value>
+  </data>
+  <data name="NeedContactOfPlaceAction" xml:space="preserve">
+    <value>Contact the manager space</value>
+  </data>
+  <data name="NeedThisSpaceAction" xml:space="preserve">
+    <value>Book online</value>
+  </data>
 </root>

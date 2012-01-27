@@ -228,4 +228,13 @@
   <data name="PluralHalfDay" xml:space="preserve">
     <value>half-day(s)</value>
   </data>
+  <data name="HalfDay" xml:space="preserve">
+    <value>Half-day</value>
+  </data>
+  <data name="PriceType" xml:space="preserve">
+    <value>Timeframe</value>
+  </data>
+  <data name="SingleHalfDay" xml:space="preserve">
+    <value>half a day</value>
+  </data>
 </root>

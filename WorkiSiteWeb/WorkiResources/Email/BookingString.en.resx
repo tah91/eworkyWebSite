@@ -213,7 +213,7 @@ Message: &lt;b&gt;{6}&lt;/b&gt;</value>
 
 Your login is &lt;b&gt;{4}&lt;/b&gt; and your temporary password is &lt;b&gt;{5}&lt;/b&gt;. You can change your password by visiting your profile: &lt;b&gt;{6}&lt;/b&gt;
 
-Moreover we invite you to complete your profile by going to this address: &lt;b&gt;{7}&lt;/b&gt;</value>
+Moreover we invite you to complete your profile details by going to this address: &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="QuotationNewMemberSubject" xml:space="preserve">
     <value>eWorky - An account was created following your price request</value>
@@ -239,5 +239,56 @@ The manager invites you to try again at another period or for another offer.</va
     <value>You received a booking request for a {0} in the workplace {1} ({2}). 
 
 See you in your {3} to confirm/refuse this booking request as soon as possible.</value>
+  </data>
+  <data name="AlertBookingNeed" xml:space="preserve">
+    <comment>jm</comment>
+    <value>Please contact the following place as the place you requested a bookingfor does not offer this possibility yet: name of the place : &lt;b&gt;{0}&lt;/b&gt; </value>
+  </data>
+  <data name="AlertBookingNeedSubject" xml:space="preserve">
+    <comment>jm</comment>
+    <value>Request possibility of reservation</value>
+  </data>
+  <data name="CalandarBookingCreationSubject" xml:space="preserve">
+    <comment>jm</comment>
+    <value>Your booking at {0} has been successfully saved on eWorky</value>
+  </data>
+  <data name="CalandarBookingModificationSubject" xml:space="preserve">
+    <value>Your booking to {0} was modified</value>
+  </data>
+  <data name="ClientCreationAccountSubject" xml:space="preserve">
+    <value>An account was created to manage your booking</value>
+  </data>
+  <data name="BookingNewMember" xml:space="preserve">
+    <value>Following your request for a booking of a(n) &lt;b&gt;{0}&lt;/b&gt; from &lt;b&gt;{1}&lt;/b&gt; to &lt;b&gt;{2}&lt;/b&gt; in the organization &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;), an eWorky account was created. It will allow you to follow your historic and the status of your booking.
+
+Your login is "&lt;b&gt;{5}&lt;/b&gt;" and your temporary password is &lt;b&gt;"{6}"&lt;/b&gt;. You can change your password by visiting your profile : &lt;b&gt;{7}&lt;/b&gt; 
+
+We invite you to complete your profile  details by visiting this adress : &lt;b&gt;{8}&lt;/b&gt;</value>
+  </data>
+  <data name="CalandarBookingCreation" xml:space="preserve">
+    <value>The manager of &lt;b&gt;{0}&lt;/b&gt; added your booking for a(n) &lt;b&gt;{1}&lt;/b&gt; from &lt;b&gt;{2}&lt;/b&gt; to &lt;b&gt;{3}&lt;/b&gt; on his eWorky's schedule.
+
+You can consult this booking from now on your user space &lt;b&gt;{4}&lt;/b&gt;.
+
+The cost of this booking is &lt;b&gt;{5}&lt;/b&gt;, we also invite you to pay online via Paypal.
+for your next booking do not hesitate, use directly eWorky for your convenience!
+
+If this space satisfied you, do not hesitate to rate and comment it on its eWorky form &lt;b&gt;{6}&lt;/b&gt;.</value>
+  </data>
+  <data name="CalandarBookingModification" xml:space="preserve">
+    <value>The manager of &lt;b&gt;{0}&lt;/b&gt; modified your booking of his eWorky schedule !
+Your booking is now saved from &lt;b&gt;{1}&lt;/b&gt; to &lt;b&gt;{2}&lt;/b&gt;.
+
+You can consult your different booking on your user space &lt;b&gt;{3}&lt;/b&gt;.
+For your next booking, do not hesitate, use directly eWorky for your convenience !
+
+If this space satisfied you, do not hesitate to rate and comment it on its eWorky form &lt;b&gt;{4}&lt;/b&gt;.</value>
+  </data>
+  <data name="ClientCreationAccount" xml:space="preserve">
+    <value>A space manager added you on his client file, and an eWorky account was created. It will allow you to follow the historic and the status of your booking.
+
+Your login is "&lt;b&gt;{0}&lt;/b&gt;" and your temporary password is &lt;b&gt;"{1}"&lt;/b&gt;. You can change your password by visiting your profile : &lt;b&gt;{2}&lt;/b&gt;
+
+We invite you to complete your profile by visiting this adress : &lt;b&gt;{3}&lt;/b&gt; </value>
   </data>
 </root>

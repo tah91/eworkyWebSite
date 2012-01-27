@@ -162,4 +162,7 @@
   <data name="Prices" xml:space="preserve">
     <value>Rates</value>
   </data>
+  <data name="AddPrice" xml:space="preserve">
+    <value>Add a price</value>
+  </data>
 </root>

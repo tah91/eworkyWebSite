@@ -131,10 +131,10 @@ Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} po
   <data name="AlertBookingNeed" xml:space="preserve">
     <value>Contacter le lieu suivant car une demande de réservation a été faite, alors que le lieu ne propose pas encore de réservation :
 Nom du lieu : &lt;b&gt;{0}&lt;/b&gt;</value>
-  </data>
+  <comment>jm</comment></data>
   <data name="AlertBookingNeedSubject" xml:space="preserve">
     <value>Demande de possibilité de réservation</value>
-  </data>
+  <comment>jm</comment></data>
   <data name="BookingMailBody" xml:space="preserve">
     <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
 Téléphone : &lt;b&gt;{1}&lt;/b&gt;
@@ -178,7 +178,7 @@ Si cet espace vous a plu n’hésitez pas à le noter et commenter sur sa fiche 
   </data>
   <data name="CalandarBookingCreationSubject" xml:space="preserve">
     <value>Votre réservation chez {0} a été enregistrée sur eWorky</value>
-  </data>
+  <comment>jm</comment></data>
   <data name="CalandarBookingModification" xml:space="preserve">
     <value>Le gérant de &lt;b&gt;{0}&lt;/b&gt; a modifié votre réservation sur son agenda eWorky !
 Votre réservation est désormais enregistrée du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt;.

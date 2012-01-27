@@ -171,4 +171,7 @@
   <data name="VisitNeeded" xml:space="preserve">
     <value>Visit wanted</value>
   </data>
+  <data name="TimeUnits" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
 </root>
