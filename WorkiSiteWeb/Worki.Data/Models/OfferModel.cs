@@ -15,14 +15,14 @@ namespace Worki.Data.Models
             Init();
 		}
 
-        public OfferFormViewModel(bool isShared)
-        {
-            Init(isShared);
-        }
+		public OfferFormViewModel(bool isShared, bool needPartyOffer)
+		{
+			Init(isShared, needPartyOffer);
+		}
 
-        void Init(bool isShared = false)
+		void Init(bool isShared = false, bool needPartyOffer = false)
         {
-            var offers = Localisation.GetOfferTypeDict(isShared);
+			var offers = Localisation.GetOfferTypeDict(isShared, needPartyOffer);
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);

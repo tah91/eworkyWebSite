@@ -91,6 +91,7 @@
 					}
 				}
 			}
+			var partyOffer = Model.GetOffers(LocalisationOffer.Party).FirstOrDefault();
 		}
 			<div id="fb-root">
 			</div>
@@ -166,6 +167,23 @@
 					</div>
 				}
 			</div>
+			@if (partyOffer != null)
+			{
+				<div class="contentBlock">
+					<div class="float-left">
+						<h3 class="blue">@partyOffer.Name</h3>
+					</div>
+					<div class="clear">
+					</div>
+					<div class="float-right">
+						<div class="buttonStd buttonBlue linkImg float-right"><a>plop</a></div>
+						<div class="clear">
+						</div>
+					</div>
+					<div class="clear">
+					</div>
+				</div> 
+			}
 			@AggregatedOfferBlock(Model, LocalisationOffer.BuisnessLounge)
 			@AggregatedOfferBlock(Model, LocalisationOffer.Workstation)
 			@AggregatedOfferBlock(Model, LocalisationOffer.Desktop)

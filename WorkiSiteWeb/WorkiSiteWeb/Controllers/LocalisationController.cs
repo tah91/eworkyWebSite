@@ -188,7 +188,7 @@ namespace Worki.Web.Controllers
 		[ActionName("ajouter-lieu-payant")]
 		public virtual ActionResult CreateNotFree()
 		{
-			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false));
+			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
 		}
 
 		/// <summary>
@@ -223,7 +223,7 @@ namespace Worki.Web.Controllers
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
-            return View(new LocalisationFormViewModel(localisation));
+			return View(new LocalisationFormViewModel(localisation, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
         }
 
 		const string LocalisationPrefix = "Localisation";
@@ -312,7 +312,7 @@ namespace Worki.Web.Controllers
 				context.Complete();
                 ModelState.AddModelError(field, error);
 			}
-            return View(new LocalisationFormViewModel(localisationForm.Localisation));
+			return View(new LocalisationFormViewModel(localisationForm.Localisation, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
 		}
 
         const string returnUrlPostComment = "returnUrlPostComment";

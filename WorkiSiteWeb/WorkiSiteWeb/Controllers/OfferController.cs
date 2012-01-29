@@ -11,6 +11,7 @@ using Worki.Infrastructure;
 using Postal;
 using System.Linq;
 using Worki.Memberships;
+using System.Web.Security;
 
 namespace Worki.Web.Controllers
 {
@@ -39,7 +40,7 @@ namespace Worki.Web.Controllers
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var loc = lRepo.Get(id);
 
-            return View(new OfferFormViewModel(loc.IsSharedOffice()) { Offer = new Offer { LocalisationId = id, Type = type } });
+			return View(new OfferFormViewModel(loc.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = new Offer { LocalisationId = id, Type = type } });
 		}
 
 		/// <summary>
@@ -107,7 +108,7 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var offer = oRepo.Get(id);
-            return View(MVC.Offer.Views.Create, new OfferFormViewModel(offer.Localisation.IsSharedOffice()) { Offer = offer });
+			return View(MVC.Offer.Views.Create, new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer });
 		}
 
 		/// <summary>
