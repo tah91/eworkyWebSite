@@ -345,4 +345,13 @@
   <data name="Booking" xml:space="preserve">
     <value>Réservation</value>
   </data>
+  <data name="HowItWorksQuotation1" xml:space="preserve">
+    <value>Vous remplissez la demande de devis, et posez vos questions éventuelles</value>
+  </data>
+  <data name="HowItWorksQuotation2" xml:space="preserve">
+    <value>Votre demande est alors immédiatement transmise au gérant</value>
+  </data>
+  <data name="HowItWorksQuotation3" xml:space="preserve">
+    <value>Vous recevez une réponse dans les plus brefs délais</value>
+  </data>
 </root>

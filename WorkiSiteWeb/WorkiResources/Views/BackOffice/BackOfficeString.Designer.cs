@@ -286,7 +286,7 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans votre Profil..
+        ///   Looks up a localized string similar to Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans l&apos;onglet Option de votre espace gérant..
         /// </summary>
         public static string NeedInfoPaypal {
             get {

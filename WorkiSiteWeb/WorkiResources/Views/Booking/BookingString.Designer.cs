@@ -484,6 +484,33 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous remplissez la demande de devis, et posez vos questions éventuelles.
+        /// </summary>
+        public static string HowItWorksQuotation1 {
+            get {
+                return ResourceManager.GetString("HowItWorksQuotation1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande est alors immédiatement transmise au gérant.
+        /// </summary>
+        public static string HowItWorksQuotation2 {
+            get {
+                return ResourceManager.GetString("HowItWorksQuotation2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous recevez une réponse dans les plus brefs délais.
+        /// </summary>
+        public static string HowItWorksQuotation3 {
+            get {
+                return ResourceManager.GetString("HowItWorksQuotation3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lieu.
         /// </summary>
         public static string Localisation {

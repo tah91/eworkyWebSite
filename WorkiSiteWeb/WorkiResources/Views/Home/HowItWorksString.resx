@@ -175,7 +175,7 @@
     <value>Comment ça marche</value>
   </data>
   <data name="HowItWorksHead" xml:space="preserve">
-    <value>eWorky est un marché ouvert du lieu de travail</value>
+    <value>eWorky est un marché collaboratif du lieu de travail</value>
   </data>
   <data name="Join" xml:space="preserve">
     <value>Ajoutez, notez et commentez les lieux de travail pour aider toute la communauté dans ses recherches</value>
@@ -190,7 +190,7 @@
     <value>Faire connaître</value>
   </data>
   <data name="OwnerTitle" xml:space="preserve">
-    <value>Gérant</value>
+    <value>Je propose un espace de travail</value>
   </data>
   <data name="OwnerTutorial" xml:space="preserve">
     <value>Je suis gérant</value>
@@ -238,7 +238,7 @@
     <value>Rechercher</value>
   </data>
   <data name="UserTitle" xml:space="preserve">
-    <value>Utilisateur</value>
+    <value>Je cherche un espace de travail</value>
   </data>
   <data name="UserTutorial" xml:space="preserve">
     <value>Je suis utilisateur</value>

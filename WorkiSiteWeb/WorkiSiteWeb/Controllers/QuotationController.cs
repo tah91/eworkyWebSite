@@ -88,6 +88,7 @@ namespace Worki.Web.Controllers
 						PhoneNumber = formData.PhoneNumber,
 					};
 					sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
+					member = mRepo.Get(memberId);
 
 					var locName = offer.Localisation.Name;
 					try

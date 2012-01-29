@@ -52,18 +52,17 @@
 
 .bookingFormDiv
 {
-	margin-top:0!important;
-    width:55%;
+	margin-left:30px;
+}
+
+.bookingFormDiv table
+{
+	margin-bottom:10px;
 }
 
 .bookingFormDiv table td
 {
 	height : 30px;
-}
-
-.bookingFormDiv .description
-{
-	padding: 5px;
 }
 
 .bookingFormDiv table td:first-child

@@ -232,7 +232,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eWorky est un marché ouvert du lieu de travail.
+        ///   Looks up a localized string similar to eWorky est un marché collaboratif du lieu de travail.
         /// </summary>
         public static string HowItWorksHead {
             get {
@@ -277,7 +277,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gérant.
+        ///   Looks up a localized string similar to Je propose un espace de travail.
         /// </summary>
         public static string OwnerTitle {
             get {
@@ -421,7 +421,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utilisateur.
+        ///   Looks up a localized string similar to Je cherche un espace de travail.
         /// </summary>
         public static string UserTitle {
             get {

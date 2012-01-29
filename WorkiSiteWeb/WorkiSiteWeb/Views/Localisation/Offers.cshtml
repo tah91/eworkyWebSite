@@ -78,7 +78,7 @@
 						if (offer.CanHaveQuotation && offer.IsQuotable)
 						{
 							<div class="buttonStd buttonBlue linkImg float-right">
-								@Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AskDevis, MVC.Quotation.Create(offer.Id))
+								@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
 							</div>
 						}
 						else if (offer.CanHaveBooking && offer.IsBookable)

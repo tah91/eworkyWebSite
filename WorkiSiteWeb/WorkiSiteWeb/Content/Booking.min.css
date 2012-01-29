@@ -8,9 +8,9 @@
 .bookingSteps ul{margin-left:30px}
 .borderOrange{border-color:#f7a33a!important}
 .bookingSteps ul li{list-style:disc;margin:5px 0}
-.bookingFormDiv{margin-top:0!important;width:55%}
+.bookingFormDiv{margin-left:30px}
+.bookingFormDiv table{margin-bottom:10px}
 .bookingFormDiv table td{height:30px}
-.bookingFormDiv .description{padding:5px}
 .bookingFormDiv table td:first-child{width:130px}
 .bookingEndRow{margin:5px 0 0 0}
 .bookingEndSelection{margin-left:30px}

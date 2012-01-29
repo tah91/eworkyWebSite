@@ -490,7 +490,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				try
 				{
 					var booking = bRepo.Get(id);
-					UpdateModel(booking, "InnerModel");
+					TryUpdateModel(booking, "InnerModel");
 					booking.StatusId = (int)MemberBooking.Status.Accepted;
 					booking.MemberBookingLogs.Add(new MemberBookingLog
 					{

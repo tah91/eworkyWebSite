@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.Booking) </title>
+    <title>@Worki.Resources.Views.Booking.BookingString.Quotation </title>
 	<link href="@Url.VersionedContent(Links.Content.Booking_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -31,14 +31,13 @@
 			<div class="innerContentBlock borderOrange bookingSteps">
 				<h3 class="orange">@Worki.Resources.Views.Booking.BookingString.HowItWorks</h3>
 				<ul>
-					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks1</li>
-					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks2</li>
-					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks3</li>
-					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorks4</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorksQuotation1</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorksQuotation2</li>
+					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorksQuotation3</li>
 				</ul>
 			</div>
 		</div>
-	    <div class="bookingFormDiv float-right">
+	    <div class="bookingFormDiv float-left">
 			@using (Html.BeginForm())
             {
 				@Html.AntiForgeryToken()
