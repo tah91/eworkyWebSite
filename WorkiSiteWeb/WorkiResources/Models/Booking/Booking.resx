@@ -120,8 +120,14 @@
   <data name="Confirmed" xml:space="preserve">
     <value>Confirmation</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Présentation en 160 caractères</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Adresse électronique</value>
+  </data>
+  <data name="FavoritePlaceId" xml:space="preserve">
+    <value>Espace de coworking favori</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>Prénom</value>

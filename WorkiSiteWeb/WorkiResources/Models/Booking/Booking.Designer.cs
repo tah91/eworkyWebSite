@@ -70,11 +70,29 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Présentation en 160 caractères.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adresse électronique.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Espace de coworking favori.
+        /// </summary>
+        public static string FavoritePlaceId {
+            get {
+                return ResourceManager.GetString("FavoritePlaceId", resourceCulture);
             }
         }
         

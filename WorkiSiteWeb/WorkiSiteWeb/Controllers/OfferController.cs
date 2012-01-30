@@ -20,12 +20,15 @@ namespace Worki.Web.Controllers
 		#region Private
 
 		ILogger _Logger;
+        IMembershipService _MembershipService;
 
 		#endregion
 
-		public OfferController(ILogger logger)
+		public OfferController( ILogger logger,
+                                IMembershipService membershipService)
 		{
 			_Logger = logger;
+            _MembershipService = membershipService;
 		}
 
 		/// <summary>
@@ -204,5 +207,169 @@ namespace Worki.Web.Controllers
 		{
 			return PartialView(MVC.Offer.Views._OfferPrice, new OfferPrice());
 		}
+
+        void SetFavoritePlaces(PartyRegisterFormViewModel model)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var admin = mRepo.Get(mRepo.GetAdminId());
+            var locDict = admin.FavoriteLocalisations.ToDictionary(fl => fl.LocalisationId, fl => fl.Localisation.Name);
+
+            model.FavoritePlaceNames = string.Join(", ", locDict.Values);
+
+            locDict.Add(-1, "eWorker du dimanche");
+
+            model.FavoritePlaces= new SelectList(locDict, "Key", "Value");
+        }
+
+        /// <summary>
+        /// GET Action result to show join party form
+        /// </summary>
+        /// <param name="id">id of offer to join</param>
+        /// <returns>View containing join party form</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult JoinParty(int id)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var offer = oRepo.Get(id);
+            var member = mRepo.Get(memberId);
+
+            var formModel = new PartyRegisterFormViewModel(member, offer);
+            SetFavoritePlaces(formModel);
+
+            return View(formModel);
+        }
+
+        /// <summary>
+        /// Post Action result to add join party request
+        /// </summary>
+        /// <returns>View containing join party form</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult JoinParty(int id, PartyRegisterFormViewModel formData)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            var member = mRepo.Get(memberId);
+            var offer = oRepo.Get(id);
+
+            if (ModelState.IsValid)
+            {
+                var sendNewAccountMail = false;
+                try
+                {
+                    var memberData = new MemberMainData
+                    {
+                        FirstName = formData.FirstName,
+                        LastName = formData.LastName,
+                        PhoneNumber = formData.PhoneNumber,
+                    };
+                    sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
+                    member = mRepo.Get(memberId);
+
+                    var locName = offer.Localisation.Name;
+                    try
+                    {
+                        formData.MemberQuotation.MemberId = memberId;
+                        formData.MemberQuotation.OfferId = id;
+
+                        //set member data
+                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
+                        member.MemberMainData.Description = formData.Description;
+                        var favLoc = lRepo.Get(formData.FavoritePlaceId);
+                        if (favLoc != null && member.FavoriteLocalisations.Count(fl => fl.LocalisationId == favLoc.ID) == 0)
+                        {
+                            member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = favLoc.ID });
+                        }
+                        member.MemberQuotations.Add(formData.MemberQuotation);
+
+                        dynamic newMemberMail = null;
+                        if (sendNewAccountMail)
+                        {
+                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                            var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+                            TagBuilder profilLink = new TagBuilder("a");
+                            profilLink.MergeAttribute("href", editprofilUrl);
+                            profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
+
+                            var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
+                            TagBuilder passwordLink = new TagBuilder("a");
+                            passwordLink.MergeAttribute("href", editpasswordUrl);
+                            passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
+
+                            newMemberMail = new Email(MVC.Emails.Views.Email);
+                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                            newMemberMail.To = formData.Email;
+                            newMemberMail.ToName = formData.FirstName;
+
+                            newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
+                            newMemberMail.Content = "TODO";
+                        }
+
+                        //send mail to team
+                        dynamic teamMail = new Email(MVC.Emails.Views.Email);
+                        teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                        teamMail.To = MiscHelpers.EmailConstants.BookingMail;
+                        teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+                        teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
+                        teamMail.Content = "TODO";
+
+                        //send mail to booking member
+                        dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                        clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                        clientMail.To = member.Email;
+                        clientMail.Subject = Worki.Resources.Email.BookingString.CreateBookingClientSubject;
+                        clientMail.ToName = member.MemberMainData.FirstName;
+                        clientMail.Content = "TODO";
+
+                        //send mail to localisation member
+                        var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+                        var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Booking());
+                        TagBuilder ownerLink = new TagBuilder("a");
+                        ownerLink.MergeAttribute("href", ownerUrl);
+                        ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
+
+                        dynamic ownerMail = new Email(MVC.Emails.Views.Email);
+                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                        ownerMail.To = offer.Localisation.Member.Email;
+                        ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName);
+                        ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
+                        ownerMail.Content = "TODO";
+
+                        context.Commit();
+
+                        if (sendNewAccountMail)
+                        {
+                            newMemberMail.Send();
+                        }
+                        clientMail.Send();
+                        teamMail.Send();
+                        ownerMail.Send();
+                    }
+                    catch (Exception ex)
+                    {
+                        _Logger.Error(ex.Message);
+                        context.Complete();
+                        throw ex;
+                    }
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
+                    return Redirect(offer.Localisation.GetDetailFullUrl(Url));
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("Create", ex);
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            SetFavoritePlaces(formData);
+            formData.QuotationOffer = offer;
+            return View(formData);
+        }
     }
 }

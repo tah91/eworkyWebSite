@@ -1,0 +1,141 @@
+﻿@model Worki.Data.Models.PartyRegisterFormViewModel
+
+@section HeadContent
+{
+    <title>@Worki.Resources.Views.Booking.BookingString.RegisterParty </title>
+	<link href="@Url.VersionedContent(Links.Content.Booking_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.RegisterParty, "Blue")
+
+<div class="detailContent">
+    <div class="blockContainer">
+	<div class="contentBlock">
+		<div class="bookingDesc float-left">
+			<div class="innerContentBlock bookingLocalisation">
+				<h3 class="blue">@Model.QuotationOffer.Localisation.Name - @Model.QuotationOffer.Name</h3>
+				<div class="bookingImg borderedImg float-left">
+                    @{
+                        var offerFile = Model.QuotationOffer.GetMainPic();
+                        var hasOfferFile = true;
+                        if (string.IsNullOrEmpty(offerFile))
+                        { 
+                            offerFile = Model.QuotationOffer.Localisation.GetMainPic();
+                            hasOfferFile = false;
+                        }
+                    }
+					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.QuotationOffer.GetMainPic(), true, hasOfferFile ? PictureData.GetFolder(ProviderType.Offer) : null), Model.QuotationOffer.Name)
+				</div>
+				<div class="clear">
+				</div>
+			</div>
+			<div class="innerContentBlock borderOrange bookingSteps">
+				<h3 class="orange">@Worki.Resources.Views.Booking.BookingString.HowItWorks</h3>
+                <ul>
+                    <li>@Worki.Resources.Views.Booking.BookingString.HowItWorksParty1</li>
+                    <li>@Worki.Resources.Views.Booking.BookingString.HowItWorksParty2</li>
+                    <li>@string.Format(Worki.Resources.Views.Booking.BookingString.HowItWorksParty3, Model.FavoritePlaceNames)</li>
+                    <li>@string.Format(Worki.Resources.Views.Booking.BookingString.HowItWorksParty4, Model.QuotationOffer.Localisation.Name)</li>
+                </ul>
+			</div>
+		</div>
+	    <div class="bookingFormDiv float-left">
+			@using (Html.BeginForm())
+            {
+				@Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.NeedNewAccount)
+				<table>
+                    @if (Model.NeedNewAccount)
+                    {
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.LastName)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.LastName)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.FirstName)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.FirstName)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.Email)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.Email)
+							</div>
+						</td>
+					</tr>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.LastName)
+                        @Html.HiddenFor(m => m.FirstName)  
+                        @Html.HiddenFor(m => m.Email)
+                    }
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.PhoneNumber)<span class="blue">*</span>
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBoxFor(m => m.PhoneNumber)
+							</div>
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.FavoritePlaceId)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m => m.FavoritePlaceId, Model.FavoritePlaces)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="verticalAlignTop">
+							<div class="editor-label ">
+								@Html.LabelFor(m => m.Description)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextAreaFor(m => m.Description)
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="editor-field float-right">
+					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.RegisterParty"/>
+				</div>
+				<div class="clear"></div>
+            }
+	    </div>
+		<div class="clear">
+		</div>
+	</div>
+    </div>
+</div>
+

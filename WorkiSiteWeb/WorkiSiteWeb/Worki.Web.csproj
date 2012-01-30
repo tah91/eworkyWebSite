@@ -870,6 +870,7 @@
     <Content Include="Views\Offer\_OfferPriceList.cshtml" />
     <Content Include="Views\Localisation\AskBooking.cshtml" />
     <Content Include="Views\Localisation\_AskContact.cshtml" />
+    <Content Include="Views\Offer\JoinParty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -86,6 +86,7 @@ namespace Worki.Data.Models
 		public string GetMainPic()
 		{
 			var main = (from item in OfferFiles where item.IsDefault orderby item.Id select item.FileName).FirstOrDefault();
+
 			return main;
 		}
 
@@ -95,6 +96,7 @@ namespace Worki.Data.Models
 			var count = list.Count();
 			if (count == 0 || index < 0 || index >= count)
 				return string.Empty;
+
 			return list[index];
 		}
 

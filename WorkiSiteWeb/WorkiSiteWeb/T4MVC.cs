@@ -1535,6 +1535,11 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult Delete() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult JoinParty() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public OfferController Actions { get { return MVC.Offer; } }
@@ -1553,6 +1558,7 @@ namespace Worki.Web.Controllers {
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
             public readonly string AddOfferPrice = "AddOfferPrice";
+            public readonly string JoinParty = "JoinParty";
         }
 
 
@@ -1566,6 +1572,7 @@ namespace Worki.Web.Controllers {
             public readonly string Create = "~/Views/Offer/Create.cshtml";
             public readonly string Delete = "~/Views/Offer/Delete.cshtml";
             public readonly string Details = "~/Views/Offer/Details.cshtml";
+            public readonly string JoinParty = "~/Views/Offer/JoinParty.cshtml";
         }
     }
 
@@ -1621,6 +1628,19 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.PartialViewResult AddOfferPrice() {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddOfferPrice);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult JoinParty(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult JoinParty(int id, Worki.Data.Models.PartyRegisterFormViewModel formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }
 

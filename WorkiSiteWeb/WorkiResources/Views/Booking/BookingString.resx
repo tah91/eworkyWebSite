@@ -354,4 +354,20 @@
   <data name="HowItWorksQuotation3" xml:space="preserve">
     <value>Vous recevez une réponse dans les plus brefs délais</value>
   </data>
+  <data name="HowItWorksParty1" xml:space="preserve">
+    <value>Cet évènement networking est l’occasion pour tous les coworkaholics, indépendants et entrepreneurs de se rencontrer, de tisser des liens et découvrir les espaces de coworking parisiens.</value>
+  </data>
+  <data name="HowItWorksParty2" xml:space="preserve">
+    <value>Durant cette soirée vous aurez la possibilité de faire un pitch de 45 secondes pour vous présenter et parler de vos projets.</value>
+  </data>
+  <data name="HowItWorksParty3" xml:space="preserve">
+    <value>La soirée est organisée par eworky.com et par les espaces de coworkings {0}. </value>
+  </data>
+  <data name="HowItWorksParty4" xml:space="preserve">
+    <value>L'entrée est gratuite, {0} a le plaisir de vous accueillir et eWorky de payer sa tournée ;) 
+Inscrivez-vous rapidement, les places sont limitées !</value>
+  </data>
+  <data name="RegisterParty" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
 </root>
