@@ -360,4 +360,7 @@
   <data name="OwnersHasChanged" xml:space="preserve">
     <value>Les gérants ont été modifiés.</value>
   </data>
+  <data name="ExactOffer" xml:space="preserve">
+    <value>Nom exact de l'offre</value>
+  </data>
 </root>

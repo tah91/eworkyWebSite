@@ -31,7 +31,7 @@
                          @Worki.Resources.Views.Admin.AdminString.ID
                     </th> 
                     <th>
-                         @Worki.Resources.Models.Contact.Contact.Email
+                         @Worki.Resources.Views.Admin.AdminString.Name
                     </th>
                     <th>
                          @Worki.Resources.Views.Localisation.LocalisationString.Online
@@ -49,7 +49,7 @@
                     @item.Id
                 </td>
                 <td align="center">
-                    @item.Member.Username
+                    @item.Offer.Localisation.Name
                 </td>
                 <td align="center">
                     @(!item.Online ? Html.ActionLink(Worki.Resources.Views.Shared.SharedString.No, MVC.Admin.Activity.OnOffline(item.Id)) : Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Activity.OnOffline(item.Id)))

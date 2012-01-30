@@ -21,6 +21,7 @@ namespace Worki.Data.Models
             this.OfferFiles = new HashSet<OfferFile>();
             this.MemberQuotations = new HashSet<MemberQuotation>();
             this.OfferPrices = new HashSet<OfferPrice>();
+            this.WelcomePeoples = new HashSet<WelcomePeople>();
     		OnInitialized();
         }
     
@@ -54,6 +55,7 @@ namespace Worki.Data.Models
         public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
         public virtual Localisation Localisation { get; set; }
         public virtual ICollection<OfferPrice> OfferPrices { get; set; }
+        public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
     
     }
 }

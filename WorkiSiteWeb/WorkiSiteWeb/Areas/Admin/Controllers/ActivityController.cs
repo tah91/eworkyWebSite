@@ -115,6 +115,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 var context = ModelFactory.GetUnitOfWork();
                 var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
                 var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+                var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
                 var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
                 try
                 {
@@ -127,12 +128,10 @@ namespace Worki.Web.Areas.Admin.Controllers
                         var uploadedFileName = this.UploadFile(postedFile);
                         formModel.WelcomePeople.LocalisationPicture = uploadedFileName;
                     }
-                    //get member
-                    var member = mRepo.GetMember(formModel.Email);
-                    formModel.WelcomePeople.MemberId = member.MemberId;
                     //get localisation
                     var loc = lRepo.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
-                    formModel.WelcomePeople.LocalisationId = loc.ID;
+                    var offer = loc.Offers.FirstOrDefault(o => string.Compare(o.Name, formModel.OfferName, StringComparison.InvariantCultureIgnoreCase) == 0);
+                    formModel.WelcomePeople.OfferId = offer.Id;
                     wpRepo.Add(formModel.WelcomePeople);
                     context.Commit();
 
@@ -199,12 +198,10 @@ namespace Worki.Web.Areas.Admin.Controllers
                     var wp = wpRepo.Get(id);
 
                     UpdateModel(wp, "WelcomePeople");
-                    //get member
-                    var member = mRepo.GetMember(formModel.Email);
-                    wp.MemberId = member.MemberId;
                     //get localisation
                     var loc = lRepo.Get(l => string.Compare(l.Name, formModel.LocalisationName, StringComparison.InvariantCultureIgnoreCase) == 0);
-                    wp.LocalisationId = loc.ID;
+                    var offer = loc.Offers.FirstOrDefault(o => string.Compare(o.Name, formModel.OfferName, StringComparison.InvariantCultureIgnoreCase) == 0);
+                    wp.OfferId = offer.Id;
 
                     if (!string.IsNullOrEmpty(formModel.WelcomePeople.LocalisationPicture))
                         wp.LocalisationPicture = formModel.WelcomePeople.LocalisationPicture;
@@ -289,10 +286,10 @@ namespace Worki.Web.Areas.Admin.Controllers
                 try
                 {
                     var listCollection = collection.AllKeys;
-                    foreach (var username in listCollection)
+                    foreach (var placeName in listCollection)
                     {
-                        var onlineCheck = collection[username].ToLower();
-                        var welcomeppl = wRepo.GetWelcomePeople(username);
+                        var onlineCheck = collection[placeName].ToLower();
+                        var welcomeppl = wRepo.Get(wp => string.Compare(wp.Offer.Localisation.Name, onlineCheck, StringComparison.InvariantCultureIgnoreCase) == 0);
                         if (welcomeppl == null)
                             continue;
                         welcomeppl.Online = onlineCheck.Contains("true");

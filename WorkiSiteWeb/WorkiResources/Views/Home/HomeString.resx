@@ -179,7 +179,8 @@
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
     <value>Fonctionnement d’eWorky</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="VeryGenerous" xml:space="preserve">
     <value>Et surtout beaucoup beaucoup de générosité</value>
   </data>
@@ -212,7 +213,8 @@
   </data>
   <data name="RentSpeech" xml:space="preserve">
     <value>- bureaux professionnels&lt;br /&gt;- fond de commerce&lt;br /&gt;- local commercial, etc.</value>
-  <comment>A compléter</comment></data>
+    <comment>A compléter</comment>
+  </data>
   <data name="Reserve" xml:space="preserve">
     <value>Réservation</value>
   </data>
@@ -251,7 +253,8 @@
   </data>
   <data name="CostSpace" xml:space="preserve">
     <value>Un lieu de travail payant</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="FreeSpace" xml:space="preserve">
     <value>Un lieu de travail gratuit</value>
   </data>
@@ -272,5 +275,8 @@
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
     <value>Ils en parlent</value>
+  </data>
+  <data name="SliderItemDesc" xml:space="preserve">
+    <value>{0} à {1}</value>
   </data>
 </root>

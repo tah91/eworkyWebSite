@@ -22,7 +22,6 @@ namespace Worki.Data.Models
             this.LocalisationFiles = new HashSet<LocalisationFile>();
             this.MemberEditions = new HashSet<MemberEdition>();
             this.Offers = new HashSet<Offer>();
-            this.WelcomePeoples = new HashSet<WelcomePeople>();
     		OnInitialized();
         }
     
@@ -65,7 +64,6 @@ namespace Worki.Data.Models
         public virtual MainLocalisation MainLocalisation { get; set; }
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
-        public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
         public virtual Member Member { get; set; }
     
     }

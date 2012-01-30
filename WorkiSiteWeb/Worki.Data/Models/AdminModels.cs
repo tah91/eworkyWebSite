@@ -59,17 +59,16 @@ namespace Worki.Data.Models
 		public WelcomePeopleFormViewModel(WelcomePeople people)
 		{
 			WelcomePeople = people;
-			Email = people.Member.Username;
-			LocalisationName = people.Localisation.Name;
+			LocalisationName = people.Offer.Localisation.Name;
 		}
 
 		public WelcomePeople WelcomePeople { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		public string Email { get; set; }
+		public string OfferName { get; set; }
 
-		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		public string LocalisationName { get; set; }
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string LocalisationName { get; set; }
 	}
 
 	#endregion

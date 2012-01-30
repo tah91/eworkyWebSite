@@ -153,12 +153,12 @@
 .caption {
 	z-index:500;
 	position:absolute;
-	bottom:0;
+	bottom:10px;
 	left:0;
 	height:40px;
 	width:440px;
-	padding:10px;
-	background:#4E5A68;
+	padding:5px 10px;
+	background:white;
 	opacity: 0.8;
     font-size: 1.1em;
 }
@@ -185,6 +185,11 @@
 {
 	color: #93c8e7;
 	text-decoration:none;
+}
+
+.captionPrice
+{
+    text-align:right;
 }
 
 .slide_image img

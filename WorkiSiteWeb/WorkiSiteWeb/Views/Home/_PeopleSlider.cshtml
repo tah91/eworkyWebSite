@@ -7,18 +7,20 @@
 	        <div class="slides_container">
                 @foreach (var item in MiscHelpers.Shuffle(Model))
                 {
-			        var localisationLink = item.Localisation.GetDetailFullUrl(Url);
-			        var memberLink = Url.Action(MVC.Account.Public(item.MemberId));
-			        var age = item.Member.GetAge();
+			        var localisationLink = item.Offer.Localisation.GetDetailFullUrl(Url);
                 <div class="slide">
-                    <a href="@localisationLink" title="@item.Localisation.Name" class="slide_image">
-                        <img src="@ControllerHelpers.GetUserImagePath(item.LocalisationPicture)" alt="@item.Localisation.Name"/>
+                    <a href="@localisationLink" title="@item.Offer.Localisation.Name" class="slide_image">
+                        <img src="@ControllerHelpers.GetUserImagePath(item.LocalisationPicture)" alt="@item.Offer.Localisation.Name"/>
                     </a>
 			        <div class="caption noUnderline">
-                        <a href="@localisationLink">
-                            <span class="white italic">@string.Format("\"{0}\"", item.Description)</span>
-                            <span class="blue">@item.Member.MemberMainData.FirstName @item.Member.MemberMainData.LastName</span>
-                        </a>
+                        <div class="darkblue float-left">
+                            <p class="bold">@item.Offer.Localisation.Name</p>
+                            <p>@string.Format(Worki.Resources.Views.Home.HomeString.SliderItemDesc, Localisation.GetLocalisationType(item.Offer.Localisation.TypeValue), item.Offer.Localisation.City)</p>
+                        </div>
+                        <div class="captionPrice orange float-right">
+                            <p>@Localisation.GetOfferType(item.Offer.Type)</p>
+                            <p class="bold">@item.Offer.GetMinPrice()</p>
+                        </div>
 			        </div>
                 </div>
 		        }
