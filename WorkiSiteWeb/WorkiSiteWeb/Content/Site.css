@@ -2184,6 +2184,11 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 	padding: 0 10px;
 }
 
+.howitWorksTuto li
+{
+	width: 320px;
+}
+
 .howitWorks li
 {
 	margin: 20px 0;
@@ -2235,13 +2240,13 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .sharedOfficePart
 {
     width:28%;
-    height:420px;
+    height:380px;
     margin:10px 0px!important;
 }
 
 .sharedOfficePartMiddle
 {
-   margin: 45px 20px 0 20px!important;
+   margin: 40px 20px 0 20px!important;
    height:auto;
 }
 

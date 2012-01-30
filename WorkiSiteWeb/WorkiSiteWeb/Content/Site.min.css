@@ -322,6 +322,7 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .howitWorks h1{font-size:14px}
 .howitWorks h2{font-size:14px}
 .howitWorksTuto{padding:0 10px}
+.howitWorksTuto li{width:320px}
 .howitWorks li{margin:20px 0}
 .howitWorksHeader{background-color:#5dafde;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#449ed2);background-image:-moz-linear-gradient(top,#5DAFDE,#449ed2);background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2);background-image:linear-gradient(top,#5DAFDE,#449ed2);color:White;padding:5px;text-align:center}
 .howitworksLogo{width:60px;height:60px}
@@ -342,8 +343,8 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .hiw_Join{background-image:url('images/howitworks.png');background-position:0 -1365px;width:55px;height:55px}
 .hiw_Book{background-image:url('images/howitworks.png');background-position:0 -1470px;width:55px;height:55px}
 .hiw_Work{background-image:url('images/howitworks.png');background-position:0 -1575px;width:55px;height:55px}
-.sharedOfficePart{width:28%;height:420px;margin:10px 0!important}
-.sharedOfficePartMiddle{margin:45px 20px 0 20px!important;height:auto}
+.sharedOfficePart{width:28%;height:380px;margin:10px 0!important}
+.sharedOfficePartMiddle{margin:40px 20px 0 20px!important;height:auto}
 .sharedOfficePart h2{font-size:14px}
 .sharedOfficePart li{margin:20px 10px 20px 20px;list-style:disc;font-size:11px}
 .sharedOfficeHead{margin:10px 0}

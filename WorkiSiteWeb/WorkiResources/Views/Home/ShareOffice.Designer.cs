@@ -133,7 +133,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proposez votre espace sur eWorky et optimisez votre taux d’occupation.
+        ///   Looks up a localized string similar to Proposez gratuitement et en quelques clics votre espace sur eWorky.
         /// </summary>
         public static string ForOwner1 {
             get {
@@ -142,7 +142,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gagnez jusqu’à 10 000 euros de revenus annuels supplémentaires.
+        ///   Looks up a localized string similar to Gagnez plusieurs milliers d&apos;euros par an et par poste de travail.
         /// </summary>
         public static string ForOwner2 {
             get {
@@ -151,7 +151,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nous nous occupons de tout ! Tout est automatique, de la recherche d’occupants aux modalités juridiques, en passant par l’encaissement des fonds.
+        ///   Looks up a localized string similar to Nous nous occupons de tout ! Tout est automatique, de la recherche d’occupants à l’encaissement des fonds.
         /// </summary>
         public static string ForOwner3 {
             get {
@@ -160,7 +160,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous disposez de bureaux inoccupés au sein de vos locaux ?.
+        ///   Looks up a localized string similar to Vous disposez de bureaux inoccupés ?.
         /// </summary>
         public static string ForOwnerHead1 {
             get {
@@ -169,7 +169,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous préférez en tirer un revenu plutôt que d’y entasser vos vieilles factures ?.
+        ///   Looks up a localized string similar to Vous préféreriez en tirer un revenu plutôt que d’y entasser vos vieilles factures ?.
         /// </summary>
         public static string ForOwnerHead2 {
             get {
@@ -187,7 +187,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trouvez jusqu’à deux fois moins cher qu’une location traditionnelle ou qu’un centre d’affaires.
+        ///   Looks up a localized string similar to Trouvez un poste de travail jusqu’à cinq fois moins cher qu’en location traditionnelle ou qu’en centre d’affaires.
         /// </summary>
         public static string ForTenant1 {
             get {
