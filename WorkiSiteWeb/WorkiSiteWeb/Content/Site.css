@@ -1519,7 +1519,7 @@ html ul.tabs li.active a:hover
 
 .contentRight
 {
-    width: 70%;
+    width: 71%;
 }
 
 .emptyContent
@@ -2166,7 +2166,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .howitWorks
 {
-	margin-top: 0!important;
+	margin: 10px 0!important;
 }
 
 .howitWorks h1
@@ -2210,7 +2210,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .hoitworksDesc
 {
 	width:250px;
-	margin-left: 10px;
+	/*margin-left: 10px;*/
 }
 
 .hiw_BO{ background-image:url('images/howitworks.png'); background-position: 0 0; width: 55px; height: 55px; } 
