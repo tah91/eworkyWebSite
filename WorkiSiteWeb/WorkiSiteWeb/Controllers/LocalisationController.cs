@@ -188,7 +188,7 @@ namespace Worki.Web.Controllers
 		[ActionName("ajouter-lieu-payant")]
 		public virtual ActionResult CreateNotFree()
 		{
-			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
+            return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false, false, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
 		}
 
 		/// <summary>
