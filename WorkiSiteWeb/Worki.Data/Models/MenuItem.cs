@@ -21,7 +21,8 @@ namespace Worki.Data.Models
 		HowItWorks,
 		UserTutorial,
 		OwnerTutorial,
-		Faq
+        SharedOffice,
+        Faq
 	}
 
     public enum DashboardMenu

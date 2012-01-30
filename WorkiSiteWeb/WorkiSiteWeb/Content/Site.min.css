@@ -149,6 +149,18 @@ table tr.row-alternate{background-color:#E4E4E4}
 .titleBlue:after{border-color:#5DAFDE transparent}
 .titleRed{background-color:#D35758}
 .titleRed:after{border-color:#D35758 transparent}
+.borderBlue{border-color:#5dafde!important}
+.borderRed{border-color:#d25657!important}
+.borderOrange{border-color:#f7a33a!important}
+.borderGreen{border-color:#47a000!important}
+.backgroundBlue,.backgroundBlue a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#5DAFDE!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#449ed2)!important;background-image:-moz-linear-gradient(top,#5DAFDE,#449ed2)!important;background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2)!important;background-image:linear-gradient(top,#5DAFDE,#449ed2)!important}
+.backgroundBlue a:hover{background-color:#379ed6!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#379ed6,endColorstr=#4787ed)!important;background-image:-moz-linear-gradient(top,#379ed6,#4787ed)!important;background-image:-webkit-linear-gradient(top,#379ed6,#4787ed)!important;background-image:linear-gradient(top,#379ed6,#4787ed)!important}
+.backgroundOrange,.backgroundOrange a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#f7a33a!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f9af52,endColorstr=#eb9916)!important;background-image:-moz-linear-gradient(top,#f9af52,#eb9916)!important;background-image:-webkit-linear-gradient(top,#f9af52,#eb9916)!important;background-image:linear-gradient(top,#f9af52,#eb9916)!important}
+.backgroundOrange a:hover{background-color:#e6a14a!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e6a14a,endColorstr=#e2941a)!important;background-image:-moz-linear-gradient(top,#e6a14a,#e2941a)!important;background-image:-webkit-linear-gradient(top,#e6a14a,#e2941a)!important;background-image:linear-gradient(top,#e6a14a,#e2941a)!important}
+.backgroundRed,.backgroundRed a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#d45558!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#d45558,endColorstr=#a42e2f)!important;background-image:-moz-linear-gradient(top,#d45558,#a42e2f)!important;background-image:-webkit-linear-gradient(top,#d45558,#a42e2f)!important;background-image:linear-gradient(top,#d45558,#a42e2f)!important}
+.backgroundRed a:hover{background-color:#e96063!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e96063,endColorstr=#c63132)!important;background-image:-moz-linear-gradient(top,#e96063,#c63132)!important;background-image:-webkit-linear-gradient(top,#e96063,#c63132)!important;background-image:linear-gradient(top,#e96063,#c63132)!important}
+.backgroundGreen,.backgroundGreen a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#bbd31f!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bbd31f,endColorstr=#d4f500)!important;background-image:-moz-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:-webkit-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:linear-gradient(top,#bbd31f,#d4f500)!important}
+.backgroundGreen a:hover{background-color:#bde185!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bde185,endColorstr=#a2bb54)!important;background-image:-moz-linear-gradient(top,#bde185,#a2bb54)!important;background-image:-webkit-linear-gradient(top,#bde185,#a2bb54)!important;background-image:linear-gradient(top,#bde185,#a2bb54)!important}
 .generalTextContent{width:72%}
 .generalTextContent p{padding-bottom:25px}
 .generalTextContent ul{margin:10px 30px}
@@ -330,3 +342,10 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .hiw_Join{background-image:url('images/howitworks.png');background-position:0 -1365px;width:55px;height:55px}
 .hiw_Book{background-image:url('images/howitworks.png');background-position:0 -1470px;width:55px;height:55px}
 .hiw_Work{background-image:url('images/howitworks.png');background-position:0 -1575px;width:55px;height:55px}
+.sharedOfficePart{width:28%;height:420px;margin:10px 0!important}
+.sharedOfficePartMiddle{margin:45px 20px 0 20px!important;height:auto}
+.sharedOfficePart h2{font-size:14px}
+.sharedOfficePart li{margin:20px 10px 20px 20px;list-style:disc;font-size:11px}
+.sharedOfficeHead{margin:10px 0}
+.sharedOfficeLegally{margin:10px 0!important}
+.sharedOfficeAction{margin:0 80px}

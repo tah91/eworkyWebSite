@@ -1020,6 +1020,7 @@ namespace Worki.Web.Controllers {
             public readonly string HowItWorks = "comment-ça-marche";
             public readonly string OwnerTutorial = "mode-d'emploi-gérant";
             public readonly string UserTutorial = "mode-d'emploi-utilisateur";
+            public readonly string ShareOffice = "partager-un-bureau";
             public readonly string ChangeCulture = "ChangeCulture";
             public readonly string AddSpace = "ajouter-espace";
         }
@@ -1047,6 +1048,7 @@ namespace Worki.Web.Controllers {
             public readonly string mentions_legales = "~/Views/Home/mentions-legales.cshtml";
             public readonly string OwnerTutorial = "~/Views/Home/OwnerTutorial.cshtml";
             public readonly string presse = "~/Views/Home/presse.cshtml";
+            public readonly string ShareOffice = "~/Views/Home/ShareOffice.cshtml";
             public readonly string UserTutorial = "~/Views/Home/UserTutorial.cshtml";
         }
     }
@@ -1135,6 +1137,11 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult UserTutorial() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UserTutorial);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ShareOffice() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ShareOffice);
             return callInfo;
         }
 

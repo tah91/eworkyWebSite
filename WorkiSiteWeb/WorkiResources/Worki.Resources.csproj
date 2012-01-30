@@ -203,6 +203,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Home\ShareOffice.Designer.cs">
+      <DependentUpon>ShareOffice.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Home\HowItWorksString.Designer.cs">
       <DependentUpon>HowItWorksString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -442,6 +447,11 @@
     <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
+    <EmbeddedResource Include="Views\Home\ShareOffice.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ShareOffice.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\HowItWorksString.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

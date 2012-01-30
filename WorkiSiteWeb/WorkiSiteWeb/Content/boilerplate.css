@@ -374,6 +374,11 @@ td { vertical-align: top; }
 	vertical-align:top;
 }
 
+.centerAlign
+{
+	text-align:center;
+}
+
 /* Button and link classes
 ----------------------------------------------------------*/
 .linkImg a

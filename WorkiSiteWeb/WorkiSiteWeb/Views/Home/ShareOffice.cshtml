@@ -1,0 +1,93 @@
+﻿@section HeadContent
+{
+	<meta name="Description" content="@Worki.Resources.Views.Home.ContactString.Description"/>
+	<title>@Html.WorkiTitle(Worki.Resources.Views.Home.ShareOffice.ShareOfficeMenu)</title>
+}
+
+<div class="detailContent">
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Home.Views._HowItWorksMenu, TutorialPages.SharedOffice)
+	</div>
+
+    <div class="float-left blockContainer contentRight">
+        <div class="contentBlock">
+        
+            <h1 class="howitWorksHead blue">@Worki.Resources.Views.Home.ShareOffice.ShareOfficeTitle</h1>
+		    <div class="innerContentBlock sharedOfficePart float-left">
+			    <h2 class="howitWorksHeader marginb20 borderRadius">@Worki.Resources.Views.Home.ShareOffice.ForOwner</h2>
+
+                <div class="sharedOfficeHead bold orange centerAlign">@Worki.Resources.Views.Home.ShareOffice.ForOwnerHead1</div>
+                <div class="sharedOfficeHead bold orange centerAlign">@Worki.Resources.Views.Home.ShareOffice.ForOwnerHead2</div>
+			    <ul>
+				    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForOwner1
+				    </li>
+                    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForOwner2
+				    </li>
+                    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForOwner3
+				    </li>
+			    </ul>
+		    </div>
+            <div class="innerContentBlock borderOrange sharedOfficePart sharedOfficePartMiddle float-left">
+                <div class="sharedOfficeHead bold orange centerAlign">@Worki.Resources.Views.Home.ShareOffice.ForBothHead1</div>
+                <div class="sharedOfficeHead bold orange centerAlign">@Worki.Resources.Views.Home.ShareOffice.ForBothHead2</div>
+			    <ul>
+				    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForBoth1
+				    </li>
+                    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForBoth2
+				    </li>
+                    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForBoth3
+				    </li>
+			    </ul>
+		    </div>
+            <div class="innerContentBlock sharedOfficePart float-right">
+			    <h2 class="howitWorksHeader marginb20 borderRadius">@Worki.Resources.Views.Home.ShareOffice.ForTenant</h2>
+
+                <div class="sharedOfficeHead bold orange centerAlign">@Worki.Resources.Views.Home.ShareOffice.ForTenantHead1</div>
+                <div class="sharedOfficeHead bold orange centerAlign">@Worki.Resources.Views.Home.ShareOffice.ForTenantHead2</div>
+			    <ul>
+				    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForTenant1
+				    </li>
+                    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForTenant2
+				    </li>
+                    <li>
+                        @Worki.Resources.Views.Home.ShareOffice.ForTenant3
+				    </li>
+			    </ul>
+		    </div>
+            <div class="clear">
+	        </div>
+
+            <div class="sharedOfficeLegally innerContentBlock">
+                <h2 class="blue centerAlign">@Worki.Resources.Views.Home.ShareOffice.LegallyTitle</h2>
+			    <p>
+                    @Html.Raw(Worki.Resources.Views.Home.ShareOffice.Legally1)
+			    </p><br />
+                <p>
+                    @Html.Raw(Worki.Resources.Views.Home.ShareOffice.Legally2)
+			    </p><br />
+                <p>
+                    @Html.Raw(Worki.Resources.Views.Home.ShareOffice.Legally3)
+			    </p><br />
+                <p>
+                    @Html.Raw(Worki.Resources.Views.Home.ShareOffice.Legally4)
+			    </p><br />
+		    </div>
+
+            <div class="sharedOfficeAction buttonStd buttonBlue linkImg float-left">@Html.ActionLink(Worki.Resources.Views.Home.ShareOffice.AccessBO, MVC.Home.Contact())</div>
+            <div class="sharedOfficeAction buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Home.ShareOffice.AddSpace, MVC.Localisation.CreateSharedOffice())</div>
+            <div class="clear">
+	        </div>
+        </div>
+    </div>
+
+	<div class="clear">
+	</div>   
+</div>

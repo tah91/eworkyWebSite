@@ -297,6 +297,16 @@ namespace Worki.Web.Controllers
 		}
 
         /// <summary>
+        /// Prepares the share office page
+        /// </summary>
+        /// <returns>The action result.</returns>
+        [ActionName("partager-un-bureau")]
+        public virtual ActionResult ShareOffice()
+        {
+            return View(MVC.Home.Views.ShareOffice);
+        }
+
+        /// <summary>
         /// It's just setting new culture to session dictionary
         /// </summary>
         /// <param name="lang"></param>
