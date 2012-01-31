@@ -199,7 +199,7 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .blockContainer{padding:10px;line-height:1.6}
 .dashedRight{border-right:1px dashed #CCC}
 .dashedLeft{border-left:1px dashed #CCC}
-.contentLeft{width:25%}
+.contentLeft{width:24.5%}
 .contentRight{width:71%}
 .emptyContent{height:200px}
 .contentBlock{padding:10px;border:1px solid #CCC;margin:10px 0;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD}
@@ -349,4 +349,4 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .sharedOfficePart li{margin:20px 10px 20px 20px;list-style:disc;font-size:11px}
 .sharedOfficeHead{margin:10px 0}
 .sharedOfficeLegally{margin:10px 0!important}
-.sharedOfficeAction{margin:0 80px}
+.sharedOfficeAction{width:300px;margin:auto}
