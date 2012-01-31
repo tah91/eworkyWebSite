@@ -323,6 +323,69 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suite à votre inscription au Networking des coworkers, nous avons le plaisir de vous annoncer qu’un compte eWorky vous a été créé !
+        ///
+        ///Votre login est &quot;&lt;b&gt;{0}&lt;/b&gt;&quot; et votre mot de passe temporaire est &lt;b&gt;&quot;{1}&quot;&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{2}&lt;/b&gt;
+        ///
+        ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{3}&lt;/b&gt;.
+        /// </summary>
+        public static string PartyCreateAccount {
+            get {
+                return ResourceManager.GetString("PartyCreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre compte eWorky a été créé !.
+        /// </summary>
+        public static string PartyCreateAccountSubject {
+            get {
+                return ResourceManager.GetString("PartyCreateAccountSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre inscription à la soirée Networking coworkers a bien été enregistrée !
+        ///Nous vous attendons dans les locaux de &lt;b&gt;{0}&lt;/b&gt; (&lt;b&gt;{1}&lt;/b&gt;) pour rencontrer autour d’un verre les coworkers et les espace de coworking parisiens. Vous aurez également la possibilité de faire un pitch de présentation de 45 secondes.
+        ///N’hésitez pas à noter et commenter vos espaces préférés sur eWorky..
+        /// </summary>
+        public static string PartyRegister {
+            get {
+                return ResourceManager.GetString("PartyRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre inscription au networking des coworkers est bien enregistrée !.
+        /// </summary>
+        public static string PartyRegisterSubject {
+            get {
+                return ResourceManager.GetString("PartyRegisterSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom : &lt;b&gt;{0}&lt;/b&gt;
+        ///Téléphone : &lt;b&gt;{1}&lt;/b&gt;
+        ///Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;
+        ///Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;.
+        /// </summary>
+        public static string PartyRegisterTeam {
+            get {
+                return ResourceManager.GetString("PartyRegisterTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alerte eWorky – Inscription networking.
+        /// </summary>
+        public static string PartyRegisterTeamSubject {
+            get {
+                return ResourceManager.GetString("PartyRegisterTeamSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La réservation n°{0} a été réglé par le client. Vous pouvez consulter les réservations confirmées dans votre espace gérant..
         /// </summary>
         public static string PayementOwner {

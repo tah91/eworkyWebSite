@@ -307,39 +307,35 @@ namespace Worki.Web.Controllers
                             newMemberMail.To = formData.Email;
                             newMemberMail.ToName = formData.FirstName;
 
-                            newMemberMail.Subject = Worki.Resources.Email.BookingString.BookingNewMemberSubject;
-                            newMemberMail.Content = "TODO";
+                            newMemberMail.Subject = Worki.Resources.Email.BookingString.PartyCreateAccountSubject;
+							newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.PartyCreateAccount,
+																	formData.Email,
+																	_MembershipService.GetPassword(formData.Email, null),
+																	passwordLink,
+																	profilLink);
                         }
 
                         //send mail to team
                         dynamic teamMail = new Email(MVC.Emails.Views.Email);
                         teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-                        teamMail.Subject = Worki.Resources.Email.BookingString.BookingMailSubject;
+                        teamMail.Subject = Worki.Resources.Email.BookingString.PartyRegisterTeamSubject;
                         teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-                        teamMail.Content = "TODO";
+						teamMail.Content = string.Format(Worki.Resources.Email.BookingString.PartyRegisterTeam,
+														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
+														 formData.PhoneNumber,
+														 member.Email,
+														 locName);
 
                         //send mail to booking member
                         dynamic clientMail = new Email(MVC.Emails.Views.Email);
                         clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
                         clientMail.To = member.Email;
-                        clientMail.Subject = Worki.Resources.Email.BookingString.CreateBookingClientSubject;
+                        clientMail.Subject = Worki.Resources.Email.BookingString.PartyRegisterSubject;
                         clientMail.ToName = member.MemberMainData.FirstName;
-                        clientMail.Content = "TODO";
-
-                        //send mail to localisation member
-                        var urlHelp = new UrlHelper(ControllerContext.RequestContext);
-                        var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Booking());
-                        TagBuilder ownerLink = new TagBuilder("a");
-                        ownerLink.MergeAttribute("href", ownerUrl);
-                        ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
-
-                        dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-                        ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        ownerMail.To = offer.Localisation.Member.Email;
-                        ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.BookingOwnerSubject, locName);
-                        ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-                        ownerMail.Content = "TODO";
+						clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PartyRegister,
+															locName,
+															offer.Localisation.Adress);
 
                         context.Commit();
 
@@ -349,7 +345,6 @@ namespace Worki.Web.Controllers
                         }
                         clientMail.Send();
                         teamMail.Send();
-                        ownerMail.Send();
                     }
                     catch (Exception ex)
                     {
@@ -358,7 +353,7 @@ namespace Worki.Web.Controllers
                         throw ex;
                     }
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.Confirmed;
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.PartyRegisterConfirmation;
                     return Redirect(offer.Localisation.GetDetailFullUrl(Url));
                 }
                 catch (Exception ex)
