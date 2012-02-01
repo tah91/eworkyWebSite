@@ -315,7 +315,11 @@ namespace Worki.Web.Controllers
         public virtual ActionResult ChangeCulture(string lang, string returnUrl)
         {
             Session["Culture"] = new CultureInfo(lang);
-            return Redirect(returnUrl);
+            if (returnUrl.Length >= 3)
+            {
+                returnUrl = returnUrl.Substring(3);
+            }
+            return Redirect("/" + lang.ToString() + returnUrl);
         }
 
         [ActionName("ajouter-espace")]

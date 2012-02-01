@@ -11,10 +11,41 @@ namespace Worki.Infrastructure
     {
         protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-            var culture = requestContext.RouteData.Values["culture"].ToString();
-            var ci = new CultureInfo(culture);
+            string langName = "fr";
+
+            //first look in url
+            var culture = requestContext.RouteData.Values["culture"];
+
+            //then in session
+            if (culture==null && requestContext.HttpContext.Session != null)
+            {
+                culture = requestContext.HttpContext.Session["Culture"];
+                //Checking first if there is no value in session
+                //and set default language
+                //this can happen for first user's request
+                if (culture == null)
+                {
+                    //Sets default culture to french invariant
+                    
+                    //Try to get values from Accept lang HTTP header
+                    //if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
+                    //{
+                    //    //Gets accepted list
+                    //    langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
+                    //}
+                    requestContext.HttpContext.Session["Culture"] = langName;
+                }
+            }
+
+            //set it
+            if (culture != null)
+            {
+                langName = culture.ToString();
+            }
+            var ci = new CultureInfo(langName);
             Thread.CurrentThread.CurrentUICulture = ci;
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
+            Thread.CurrentThread.CurrentCulture.NumberFormat = CultureInfo.InvariantCulture.NumberFormat;
             return base.GetHttpHandler(requestContext);
         }
 
@@ -49,7 +80,7 @@ namespace Worki.Infrastructure
         fr = 2
     }
 
-    class SingleCultureMvcRouteHandler
+    public class SingleCultureMvcRouteHandler
     {
         public SingleCultureMvcRouteHandler()
         {
