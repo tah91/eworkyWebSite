@@ -119,5 +119,5 @@
   </resheader>
   <data name="Description" xml:space="preserve">
     <value>Raison sociale, adresse du siège, numéro d'inscription au registre du commerce et capital social.</value>
-  </data>
+  <comment>?</comment></data>
 </root>
