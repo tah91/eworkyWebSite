@@ -128,18 +128,18 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 		/// <param name="locId">Id of the favorite localisation</param>
 		/// <param name="returnUrl">Url to redirect when action done</param>
 		/// <returns>Redirect to returnUrl</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual PartialViewResult AddToFavorite( int locId)
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
+		public virtual PartialViewResult AddToFavorite(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			try
 			{
-				var id = WebHelper.GetIdentityId(User.Identity);
-				var member = mRepo.Get(id);
+				var memberId = WebHelper.GetIdentityId(User.Identity);
+                var member = mRepo.Get(memberId);
 				if (member == null)
 					return null;
-				member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = locId });
+                member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = id });
 
 				context.Commit();
 			}
@@ -148,6 +148,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			{
 				context.Complete();
 				_Logger.Error("AddToFavorite", ex);
+                return null;
 			}
 			ViewData[ProfilConstants.AddToFavorite] = false;
 			ViewData[ProfilConstants.DelFavorite] = true;
@@ -161,20 +162,20 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 		/// <param name="returnUrl">Url to redirect when action done</param>
 		/// <returns>Redirect to returnUrl</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual PartialViewResult RemoveFromFavorite(int locId)
+		public virtual PartialViewResult RemoveFromFavorite(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			try
 			{
-				var id = WebHelper.GetIdentityId(User.Identity);
-				var member = mRepo.Get(id);
+				var memberId = WebHelper.GetIdentityId(User.Identity);
+                var member = mRepo.Get(memberId);
 				if (member == null)
 					return null;
 
 				foreach (var fav in member.FavoriteLocalisations.ToList())
 				{
-					if (fav.LocalisationId == locId)
+                    if (fav.LocalisationId == id)
 					{
 						member.FavoriteLocalisations.Remove(fav);
 					}
@@ -185,6 +186,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			{
 				context.Complete();
 				_Logger.Error("RemoveFromFavorite", ex);
+                return null;
 			}
 
 

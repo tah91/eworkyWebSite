@@ -71,8 +71,7 @@
         //favorites
         $("#favLinkAddButton").live("click", function () {
 			$.ajax({
-					url: "@Url.Action(MVC.Dashboard.Profil.ActionNames.AddToFavorite,MVC.Dashboard.Profil.Name)",
-					data: { "locId" : @Model.Localisation.ID },
+					url: '@Url.Action(MVC.Dashboard.Profil.AddToFavorite(Model.Localisation.ID))',
 					success: function (data) {
 						$("#favLink").html(data);
 					}
@@ -80,8 +79,7 @@
 		});
 		$("#favLinkDelButton").live("click", function () {
 			$.ajax({
-					url: "@Url.Action(MVC.Dashboard.Profil.ActionNames.RemoveFromFavorite,MVC.Dashboard.Profil.Name)",
-					data: { "locId" : @Model.Localisation.ID },
+                    url: '@Url.Action(MVC.Dashboard.Profil.RemoveFromFavorite(Model.Localisation.ID))',
 					success: function (data) {
 						$("#favLink").html(data);
 					}

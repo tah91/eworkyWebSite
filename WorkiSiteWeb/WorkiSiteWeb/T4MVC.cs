@@ -4056,15 +4056,15 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AddToFavorite(int locId) {
+        public override System.Web.Mvc.PartialViewResult AddToFavorite(int id) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddToFavorite);
-            callInfo.RouteValueDictionary.Add("locId", locId);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult RemoveFromFavorite(int locId) {
+        public override System.Web.Mvc.PartialViewResult RemoveFromFavorite(int id) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
-            callInfo.RouteValueDictionary.Add("locId", locId);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
