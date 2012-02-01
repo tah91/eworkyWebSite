@@ -602,6 +602,15 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre inscription a été prise en compte, la date de l&apos;évenement vous sera communiquée par mail..
+        /// </summary>
+        public static string PartyRegisterConfirmation {
+            get {
+                return ResourceManager.GetString("PartyRegisterConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Régler.
         /// </summary>
         public static string Pay {

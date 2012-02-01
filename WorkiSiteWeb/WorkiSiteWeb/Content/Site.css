@@ -1514,7 +1514,7 @@ html ul.tabs li.active a:hover
 
 .contentLeft
 {
-    width: 25%;
+    width: 24.5%;
 }
 
 .contentRight
@@ -2274,5 +2274,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .sharedOfficeAction
 {
-    margin: 0 80px;
+    width:300px;
+    margin:auto;
 }

@@ -121,7 +121,7 @@
     <value>Obtenir l'espace gérant</value>
   </data>
   <data name="AddSpace" xml:space="preserve">
-    <value>Ajouter un espace partagé</value>
+    <value>Partager immédiatement mes bureaux</value>
   </data>
   <data name="ForBoth1" xml:space="preserve">
     <value>Choisissez de collaborer et d’échanger avec votre hôte et bénéficiez ainsi de l’apport mutuel et de l’enrichissement collectif</value>

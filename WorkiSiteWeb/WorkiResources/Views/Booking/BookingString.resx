@@ -370,4 +370,7 @@ Inscrivez-vous rapidement, les places sont limitées !</value>
   <data name="RegisterParty" xml:space="preserve">
     <value>S'inscrire</value>
   </data>
+  <data name="PartyRegisterConfirmation" xml:space="preserve">
+    <value>Votre inscription a été prise en compte, la date de l'évenement vous sera communiquée par mail.</value>
+  </data>
 </root>

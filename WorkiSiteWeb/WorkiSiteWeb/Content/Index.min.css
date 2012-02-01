@@ -20,7 +20,7 @@
 #slides{z-index:100}
 .slides_container{overflow:hidden;position:relative;display:none}
 .slides_container div.slide{width:460px;height:310px;display:block}
-.caption{z-index:500;position:absolute;bottom:10px;left:0;height:40px;width:440px;padding:5px 10px;background:white;opacity:.7;font-size:1.1em}
+.caption{z-index:500;position:absolute;bottom:10px;left:0;height:40px;width:440px;padding:5px 10px;background:white;opacity:.8;font-size:1.1em}
 .caption_avatar{width:80px;height:80px;margin-right:10px}
 .caption_avatar img{max-height:80px}
 .caption_name{font-size:1.2em;color:#93c8e7}

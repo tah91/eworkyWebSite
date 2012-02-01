@@ -70,7 +70,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajouter un espace partagé.
+        ///   Looks up a localized string similar to Partager immédiatement mes bureaux.
         /// </summary>
         public static string AddSpace {
             get {
