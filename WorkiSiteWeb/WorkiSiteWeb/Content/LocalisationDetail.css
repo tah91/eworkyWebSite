@@ -131,3 +131,23 @@
 {
 	margin:5px 0;
 }
+
+/* BOOKING FORM
+----------------------------------------------------------*/
+.bookingFormHelp
+{
+}
+.bookingFormTable td
+{
+	height : 30px;
+}
+
+.bookingFormTable td:first-child
+{
+	padding-right:50px;
+}
+
+.bookingFormTable input[type="text"], .bookingFormTable textarea
+{
+	width: 400px;
+}

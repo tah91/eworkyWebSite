@@ -209,16 +209,16 @@ namespace Worki.Data.Models
 
         #region Ctor
 
-		void Init(bool allOffers = false)
-		{
-			List = new List<Localisation>();
-			DistanceFromLocalisation = new Dictionary<int, double>();
-			Criteria = new SearchCriteria();
-			var toExclude = new List<LocalisationOffer> { LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom };
-			var offers = allOffers ? Localisation.GetOfferTypes(true)
-									: Localisation.GetOfferTypeDict(toExclude, true);
-			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
-		}
+        void Init(bool allOffers = false)
+        {
+            List = new List<Localisation>();
+            DistanceFromLocalisation = new Dictionary<int, double>();
+            Criteria = new SearchCriteria();
+            var toExclude = allOffers ? new List<LocalisationOffer> { LocalisationOffer.Party }
+                : new List<LocalisationOffer> { LocalisationOffer.Party, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom };
+            var offers = Localisation.GetOfferTypeDict(toExclude, true);
+            Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
+        }
 
         public SearchCriteriaFormViewModel(SearchCriteria criteria, bool allOffers = false)
         {

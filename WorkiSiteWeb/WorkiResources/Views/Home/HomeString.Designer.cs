@@ -421,6 +421,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} à {1}.
+        /// </summary>
+        public static string SliderItemDesc {
+            get {
+                return ResourceManager.GetString("SliderItemDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Et bientôt plein d’autres fonctionnalités..
         /// </summary>
         public static string SoonLotofFeatures {

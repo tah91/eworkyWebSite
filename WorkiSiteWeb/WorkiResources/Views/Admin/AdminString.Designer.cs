@@ -322,6 +322,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nom exact de l&apos;offre.
+        /// </summary>
+        public static string ExactOffer {
+            get {
+                return ResourceManager.GetString("ExactOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Le fichier comporte une ligne d&apos;en-tête.
         /// </summary>
         public static string FileGotHeader {

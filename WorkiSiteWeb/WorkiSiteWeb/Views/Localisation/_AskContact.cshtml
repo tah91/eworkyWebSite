@@ -1,0 +1,39 @@
+﻿@model Localisation
+		   
+@if (!Model.ContactEmpty())
+{
+	if (!string.IsNullOrEmpty(Model.Mail))
+	{
+		@Html.Mailto(Model.Mail, Model.Mail, new { itemprop = "email" })<br />
+	}
+	if (!string.IsNullOrEmpty(Model.WebSite))
+	{
+		<a href="@WebHelper.GetWebsite(Model.WebSite)" title="@Model.WebSite" target="_blank" itemprop="url" class="orange">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
+	}
+	if (!string.IsNullOrEmpty(Model.Facebook))
+	{
+		<a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank" class="orange"><span>@Worki.Resources.Views.Localisation.LocalisationString.FacebookPage</span></a><br />
+	}
+	if (!string.IsNullOrEmpty(Model.Twitter))
+	{
+		<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank" class="orange"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
+	}
+	if (!Model.HasOwner())
+	{
+		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID), new { @class = "orange" })<br />
+	}
+	if (!string.IsNullOrEmpty(Model.PhoneNumber))
+	{
+		<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
+		<span itemprop="telephone">@Html.GetPhoneFormat(Model.PhoneNumber)</span><br />
+	}
+	if (!string.IsNullOrEmpty(Model.Fax))
+	{
+		<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
+		<span itemprop="faxNumber">@Html.GetPhoneFormat(Model.Fax)</span><br />
+	}
+}
+else
+{
+	<span>@Worki.Resources.Views.Localisation.LocalisationString.YouKnowContactUs</span>
+}

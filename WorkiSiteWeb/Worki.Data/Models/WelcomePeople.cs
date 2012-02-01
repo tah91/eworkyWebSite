@@ -17,16 +17,14 @@ namespace Worki.Data.Models
         // Primitive properties
     
         public int Id { get; set; }
-        public int MemberId { get; set; }
-        public int LocalisationId { get; set; }
+        public int OfferId { get; set; }
         public string Description { get; set; }
         public string LocalisationPicture { get; set; }
         public bool Online { get; set; }
     
         // Navigation properties
     
-        public virtual Localisation Localisation { get; set; }
-        public virtual Member Member { get; set; }
+        public virtual Offer Offer { get; set; }
     
     }
 }

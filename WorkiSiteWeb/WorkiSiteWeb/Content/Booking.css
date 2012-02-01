@@ -5,7 +5,7 @@
 
 .bookingLocalisation
 {
-	margin:0!important;
+	/*margin:0!important;*/
 }
 
 .bookingPrices
@@ -31,7 +31,7 @@
 
 .bookingSteps
 {
-	margin:10px 0 0 0!important;
+	/*margin:10px 0 0 0!important;*/
 }
 
 .bookingSteps ul
@@ -52,8 +52,12 @@
 
 .bookingFormDiv
 {
-	margin-top:0!important;
-    width:55%;
+	margin:10px 30px;
+}
+
+.bookingFormDiv table
+{
+	margin-bottom:10px;
 }
 
 .bookingFormDiv table td
@@ -61,14 +65,9 @@
 	height : 30px;
 }
 
-.bookingFormDiv .description
-{
-	padding: 5px;
-}
-
 .bookingFormDiv table td:first-child
 {
-	width:130px;
+	width:160px;
 }
 
 .bookingEndRow

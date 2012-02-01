@@ -3,18 +3,6 @@
 .indexHeader h1{font-size:2.7em;margin-bottom:-3px}
 .indexHeader h2{font-size:1.2em;font-weight:normal}
 .indexHeader em{font-weight:bold;font-style:normal}
-.borderBlue{border-color:#5dafde!important}
-.borderRed{border-color:#d25657!important}
-.borderOrange{border-color:#f7a33a!important}
-.borderGreen{border-color:#47a000!important}
-.backgroundBlue,.backgroundBlue a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#5DAFDE!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#449ed2)!important;background-image:-moz-linear-gradient(top,#5DAFDE,#449ed2)!important;background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2)!important;background-image:linear-gradient(top,#5DAFDE,#449ed2)!important}
-.backgroundBlue a:hover{background-color:#379ed6!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#379ed6,endColorstr=#4787ed)!important;background-image:-moz-linear-gradient(top,#379ed6,#4787ed)!important;background-image:-webkit-linear-gradient(top,#379ed6,#4787ed)!important;background-image:linear-gradient(top,#379ed6,#4787ed)!important}
-.backgroundOrange,.backgroundOrange a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#f7a33a!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f9af52,endColorstr=#eb9916)!important;background-image:-moz-linear-gradient(top,#f9af52,#eb9916)!important;background-image:-webkit-linear-gradient(top,#f9af52,#eb9916)!important;background-image:linear-gradient(top,#f9af52,#eb9916)!important}
-.backgroundOrange a:hover{background-color:#e6a14a!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e6a14a,endColorstr=#e2941a)!important;background-image:-moz-linear-gradient(top,#e6a14a,#e2941a)!important;background-image:-webkit-linear-gradient(top,#e6a14a,#e2941a)!important;background-image:linear-gradient(top,#e6a14a,#e2941a)!important}
-.backgroundRed,.backgroundRed a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#d45558!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#d45558,endColorstr=#a42e2f)!important;background-image:-moz-linear-gradient(top,#d45558,#a42e2f)!important;background-image:-webkit-linear-gradient(top,#d45558,#a42e2f)!important;background-image:linear-gradient(top,#d45558,#a42e2f)!important}
-.backgroundRed a:hover{background-color:#e96063!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e96063,endColorstr=#c63132)!important;background-image:-moz-linear-gradient(top,#e96063,#c63132)!important;background-image:-webkit-linear-gradient(top,#e96063,#c63132)!important;background-image:linear-gradient(top,#e96063,#c63132)!important}
-.backgroundGreen,.backgroundGreen a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#bbd31f!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bbd31f,endColorstr=#d4f500)!important;background-image:-moz-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:-webkit-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:linear-gradient(top,#bbd31f,#d4f500)!important}
-.backgroundGreen a:hover{background-color:#bde185!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bde185,endColorstr=#a2bb54)!important;background-image:-moz-linear-gradient(top,#bde185,#a2bb54)!important;background-image:-webkit-linear-gradient(top,#bde185,#a2bb54)!important;background-image:linear-gradient(top,#bde185,#a2bb54)!important}
 .index_slides_container{width:49%}
 .index_slides_block{margin:0!important}
 .index_slides_container h3{font-size:1.3em}
@@ -32,11 +20,12 @@
 #slides{z-index:100}
 .slides_container{overflow:hidden;position:relative;display:none}
 .slides_container div.slide{width:460px;height:310px;display:block}
-.caption{z-index:500;position:absolute;bottom:0;left:0;height:40px;width:440px;padding:10px;background:#4E5A68;opacity:.8;font-size:1.1em}
+.caption{z-index:500;position:absolute;bottom:10px;left:0;height:40px;width:440px;padding:5px 10px;background:white;opacity:.7;font-size:1.1em}
 .caption_avatar{width:80px;height:80px;margin-right:10px}
 .caption_avatar img{max-height:80px}
 .caption_name{font-size:1.2em;color:#93c8e7}
 .caption_name a{color:#93c8e7;text-decoration:none}
+.captionPrice{text-align:right}
 .slide_image img{width:100%;height:100%}
 .indexLogos{margin:20px 0}
 .indexLogoH2{font-size:16px}

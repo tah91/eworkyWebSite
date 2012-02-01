@@ -1,12 +1,12 @@
-﻿@model Worki.Data.Models.MemberQuotationFormViewModel
+﻿@model Worki.Data.Models.PartyRegisterFormViewModel
 
 @section HeadContent
 {
-    <title>@Worki.Resources.Views.Booking.BookingString.Quotation </title>
+    <title>@Worki.Resources.Views.Booking.BookingString.RegisterParty </title>
 	<link href="@Url.VersionedContent(Links.Content.Booking_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.Quotation, "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.RegisterParty, "Blue")
 
 <div class="detailContent">
     <div class="blockContainer">
@@ -15,26 +15,28 @@
 			<div class="innerContentBlock bookingLocalisation">
 				<h3 class="blue">@Model.QuotationOffer.Localisation.Name - @Model.QuotationOffer.Name</h3>
 				<div class="bookingImg borderedImg float-left">
-					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.QuotationOffer.Localisation.GetMainPic(), true), Model.QuotationOffer.Localisation.Name)
-				</div>
-				<div class="bookingPrices float-left">
-					<ul>
-						@foreach (var price in Model.QuotationOffer.OfferPrices)
-						{
-						<li class="bold orange">@price.GetPriceDisplay()</li>	
-						}
-					</ul>
+                    @{
+                        var offerFile = Model.QuotationOffer.GetMainPic();
+                        var hasOfferFile = true;
+                        if (string.IsNullOrEmpty(offerFile))
+                        { 
+                            offerFile = Model.QuotationOffer.Localisation.GetMainPic();
+                            hasOfferFile = false;
+                        }
+                    }
+					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.QuotationOffer.GetMainPic(), true, hasOfferFile ? PictureData.GetFolder(ProviderType.Offer) : null), Model.QuotationOffer.Name)
 				</div>
 				<div class="clear">
 				</div>
 			</div>
 			<div class="innerContentBlock borderOrange bookingSteps">
 				<h3 class="orange">@Worki.Resources.Views.Booking.BookingString.HowItWorks</h3>
-				<ul>
-					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorksQuotation1</li>
-					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorksQuotation2</li>
-					<li>@Worki.Resources.Views.Booking.BookingString.HowItWorksQuotation3</li>
-				</ul>
+                <ul>
+                    <li>@Worki.Resources.Views.Booking.BookingString.HowItWorksParty1</li>
+                    <li>@Worki.Resources.Views.Booking.BookingString.HowItWorksParty2</li>
+                    <li>@string.Format(Worki.Resources.Views.Booking.BookingString.HowItWorksParty3, Model.FavoritePlaceNames)</li>
+                    <li>@string.Format(Worki.Resources.Views.Booking.BookingString.HowItWorksParty4, Model.QuotationOffer.Localisation.Name)</li>
+                </ul>
 			</div>
 		</div>
 	    <div class="bookingFormDiv float-left">
@@ -100,45 +102,33 @@
 							</div>
 						</td>
 					</tr>
-					<tr>
+                    <tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.MemberQuotation.Surface) <span class="blue">*</span>
+								@Html.LabelFor(m => m.FavoritePlaceId)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBoxFor(m => m.MemberQuotation.Surface, new { placeholder = "Ex : 40" })
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.MemberQuotation.VisitNeeded)
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.CheckBoxFor(m => m.MemberQuotation.VisitNeeded)
+								@Html.DropDownListFor(m => m.FavoritePlaceId, Model.FavoritePlaces)
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td class="verticalAlignTop">
 							<div class="editor-label ">
-								@Html.LabelFor(Worki.Resources.Views.Booking.BookingString.MessageToOwner, "MemberQuotation_Message")
+								@Html.LabelFor(m => m.Description)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextAreaFor(m => m.MemberQuotation.Message)
+								@Html.TextAreaFor(m => m.Description)
 							</div>
 						</td>
 					</tr>
 				</table>
 				<div class="editor-field float-right">
-					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ValidateQuotation"/>
+					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.RegisterParty"/>
 				</div>
 				<div class="clear"></div>
             }
@@ -148,12 +138,4 @@
 	</div>
     </div>
 </div>
-
-@section ScriptContent
-{
-	<script type="text/javascript">
-	    if ($("#MemberQuotation_Surface").attr("value") == 0)
-	        $("#MemberQuotation_Surface").attr("value", null);
-    </script>
-}
 

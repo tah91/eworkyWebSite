@@ -117,70 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Confirmed" xml:space="preserve">
-    <value>Confirmation</value>
+  <data name="AccessBO" xml:space="preserve">
+    <value>Obtenir l'espace gérant</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Présentation en 160 caractères</value>
+  <data name="AddSpace" xml:space="preserve">
+    <value>Ajouter un espace partagé</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Adresse électronique</value>
+  <data name="ForBoth1" xml:space="preserve">
+    <value>Choisissez de collaborer et d’échanger avec votre hôte et bénéficiez ainsi de l’apport mutuel et de l’enrichissement collectif</value>
   </data>
-  <data name="FavoritePlaceId" xml:space="preserve">
-    <value>Espace de coworking favori</value>
+  <data name="ForBoth2" xml:space="preserve">
+    <value>Découvrez au contact des autres structures des opportunités de nouveaux marchés, partagez des ressources et des prospects</value>
   </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>Prénom</value>
+  <data name="ForBoth3" xml:space="preserve">
+    <value>Développez un environnement dynamique et créatif pour vos deux structures</value>
   </data>
-  <data name="FromDate" xml:space="preserve">
-    <value>Début souhaité</value>
+  <data name="ForBothHead1" xml:space="preserve">
+    <value>Enrichissez-vous d’échanges !</value>
   </data>
-  <data name="Handled" xml:space="preserve">
-    <value>Prise en charge</value>
+  <data name="ForBothHead2" xml:space="preserve">
+    <value>Construisez votre réseau !</value>
   </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Nom</value>
+  <data name="ForOwner" xml:space="preserve">
+    <value>Propriétaire</value>
   </data>
-  <data name="LocalisationName" xml:space="preserve">
-    <value>Etablissement</value>
+  <data name="ForOwner1" xml:space="preserve">
+    <value>Proposez gratuitement et en quelques clics votre espace sur eWorky</value>
   </data>
-  <data name="Message" xml:space="preserve">
-    <value>Message</value>
+  <data name="ForOwner2" xml:space="preserve">
+    <value>Gagnez plusieurs milliers d'euros par an et par poste de travail</value>
   </data>
-  <data name="Offer" xml:space="preserve">
-    <value>Besoin</value>
+  <data name="ForOwner3" xml:space="preserve">
+    <value>Nous nous occupons de tout ! Tout est automatique, de la recherche d’occupants à l’encaissement des fonds</value>
   </data>
-  <data name="OfferName" xml:space="preserve">
-    <value>Offre </value>
+  <data name="ForOwnerHead1" xml:space="preserve">
+    <value>Vous disposez de bureaux inoccupés ?</value>
   </data>
-  <data name="PaymentMail" xml:space="preserve">
-    <value>Adresse URL de paiement PayPal</value>
+  <data name="ForOwnerHead2" xml:space="preserve">
+    <value>Vous préféreriez en tirer un revenu plutôt que d’y entasser vos vieilles factures ?</value>
   </data>
-  <data name="PhoneInfo" xml:space="preserve">
-    <value>vous serez contacté à ce numéro</value>
+  <data name="ForTenant" xml:space="preserve">
+    <value>Locataire</value>
   </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Téléphone</value>
+  <data name="ForTenant1" xml:space="preserve">
+    <value>Trouvez un poste de travail jusqu’à cinq fois moins cher qu’en location traditionnelle ou qu’en centre d’affaires</value>
   </data>
-  <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+  <data name="ForTenant2" xml:space="preserve">
+    <value>Profitez de la flexibilité du partage, avec des locations à la journée, à la semaine, au mois…</value>
   </data>
-  <data name="Response" xml:space="preserve">
-    <value>Réponse</value>
+  <data name="ForTenant3" xml:space="preserve">
+    <value>Réservez votre espace et payez en quelques clics !</value>
   </data>
-  <data name="Surface" xml:space="preserve">
-    <value>Surface de bureaux souhaitée (en m2)</value>
+  <data name="ForTenantHead1" xml:space="preserve">
+    <value>Vous êtes une TPE ou un indépendant ?</value>
   </data>
-  <data name="TimeType" xml:space="preserve">
-    <value>Facturation</value>
+  <data name="ForTenantHead2" xml:space="preserve">
+    <value>Vous recherchez un espace pour votre activité ?</value>
   </data>
-  <data name="TimeUnits" xml:space="preserve">
-    <value>Quantité</value>
+  <data name="Legally1" xml:space="preserve">
+    <value>Le partage s’effectue généralement sous forme de &lt;b&gt;sous-location&lt;/b&gt; : une société loue l'ensemble des bureaux et sous-loue ensuite à d'autres sociétés. Une société souhaitant proposer une sous location doit obtenir un accord écrit de son propriétaire à défaut de l'avoir prévu dans le bail.</value>
   </data>
-  <data name="ToDate" xml:space="preserve">
-    <value>Fin souhaitée</value>
+  <data name="Legally2" xml:space="preserve">
+    <value>Mais chez eWorky nous recommandons une solution, plus souple : &lt;b&gt;le contrat de prestation de service&lt;/b&gt;. Il s’agit d’un acte par lequel une personne s’oblige, contre rémunération,  à effectuer pour une autre personne une prestation de services.</value>
   </data>
-  <data name="VisitNeeded" xml:space="preserve">
-    <value>Demande de visite</value>
+  <data name="Legally3" xml:space="preserve">
+    <value>Dans le cas présent il s’agit de la mise à disposition d’un local et de l’équipement qui lui est rattaché, voire d’autres services (ménage, etc.). Et pour vous aider, &lt;b&gt;eWorky&lt;/b&gt; met à votre disposition des &lt;b&gt;contrats types&lt;/b&gt;, et vous propose de les &lt;b&gt;gérer directement&lt;/b&gt; à partir du site !</value>
+  </data>
+  <data name="Legally4" xml:space="preserve">
+    <value>A noter que les deux types de contrats peuvent également s’accompagner d’une domiciliation de l’entreprise.</value>
+  </data>
+  <data name="LegallyTitle" xml:space="preserve">
+    <value>Et juridiquement, ça se passe comment ?</value>
+  </data>
+  <data name="ShareOfficeMenu" xml:space="preserve">
+    <value>Partager un bureau</value>
+  </data>
+  <data name="ShareOfficeTitle" xml:space="preserve">
+    <value>Partager son bureau : pourquoi et comment ?</value>
   </data>
 </root>

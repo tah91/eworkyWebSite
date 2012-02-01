@@ -97,7 +97,7 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Demande de devis.
+        ///   Looks up a localized string similar to Demander un devis.
         /// </summary>
         public static string AskQuotation {
             get {
@@ -484,6 +484,70 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cet évènement networking est l’occasion pour tous les coworkaholics, indépendants et entrepreneurs de se rencontrer, de tisser des liens et découvrir les espaces de coworking parisiens..
+        /// </summary>
+        public static string HowItWorksParty1 {
+            get {
+                return ResourceManager.GetString("HowItWorksParty1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Durant cette soirée vous aurez la possibilité de faire un pitch de 45 secondes pour vous présenter et parler de vos projets..
+        /// </summary>
+        public static string HowItWorksParty2 {
+            get {
+                return ResourceManager.GetString("HowItWorksParty2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La soirée est organisée par eworky.com et par les espaces de coworkings {0}. .
+        /// </summary>
+        public static string HowItWorksParty3 {
+            get {
+                return ResourceManager.GetString("HowItWorksParty3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;entrée est gratuite, {0} a le plaisir de vous accueillir et eWorky de payer sa tournée ;) 
+        ///Inscrivez-vous rapidement, les places sont limitées !.
+        /// </summary>
+        public static string HowItWorksParty4 {
+            get {
+                return ResourceManager.GetString("HowItWorksParty4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous remplissez la demande de devis, et posez vos questions éventuelles.
+        /// </summary>
+        public static string HowItWorksQuotation1 {
+            get {
+                return ResourceManager.GetString("HowItWorksQuotation1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande est alors immédiatement transmise au gérant.
+        /// </summary>
+        public static string HowItWorksQuotation2 {
+            get {
+                return ResourceManager.GetString("HowItWorksQuotation2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous recevez une réponse dans les plus brefs délais.
+        /// </summary>
+        public static string HowItWorksQuotation3 {
+            get {
+                return ResourceManager.GetString("HowItWorksQuotation3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lieu.
         /// </summary>
         public static string Localisation {
@@ -651,6 +715,15 @@ namespace Worki.Resources.Views.Booking {
         public static string RefuseStatus {
             get {
                 return ResourceManager.GetString("RefuseStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S&apos;inscrire.
+        /// </summary>
+        public static string RegisterParty {
+            get {
+                return ResourceManager.GetString("RegisterParty", resourceCulture);
             }
         }
         

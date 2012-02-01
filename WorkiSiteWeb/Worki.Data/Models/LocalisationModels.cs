@@ -200,7 +200,8 @@ namespace Worki.Data.Models
 			(int)LocalisationOffer.Desktop,
             (int)LocalisationOffer.MeetingRoom,
             (int)LocalisationOffer.SeminarRoom,
-            (int)LocalisationOffer.VisioRoom
+            (int)LocalisationOffer.VisioRoom,
+			(int)LocalisationOffer.Party
         };
 
 		public static string GetOfferType(int type, bool single = true, bool forSearch = false)
@@ -226,6 +227,8 @@ namespace Worki.Data.Models
 					return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom;
 				case LocalisationOffer.VisioRoom:
 					return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom;
+				case LocalisationOffer.Party:
+					return "Soirée networking coworkers";
 				default:
 					return string.Empty;
 			}
@@ -289,10 +292,15 @@ namespace Worki.Data.Models
 			return toRet;
 		}
 
-        public static Dictionary<int, string> GetOfferTypeDict(bool isShared)
+        public static Dictionary<int, string> GetOfferTypeDict(bool isShared, bool needPartyOffer)
         {
             var offersToExclude = isShared ? new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom }
                                            : new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea };
+
+			if (!needPartyOffer)
+			{
+				offersToExclude.Add(LocalisationOffer.Party);
+			}
 
             return Localisation.GetOfferTypeDict(offersToExclude);
         }
@@ -760,15 +768,6 @@ namespace Worki.Data.Models
         }
 
 		/// <summary>
-		/// true if one offer can have products
-		/// </summary>
-		/// <returns></returns>
-		public bool CanHaveProducts()
-		{
-			return Offers.Count(o => o.CanHaveProduct) > 0;
-		}
-
-		/// <summary>
 		/// true if one offer can be bookable
 		/// </summary>
 		/// <returns></returns>
@@ -1037,20 +1036,20 @@ namespace Worki.Data.Models
 			Init();
 		}
 
-		public LocalisationFormViewModel(bool isFree, bool isShared = false)
+		public LocalisationFormViewModel(bool isFree, bool isShared = false, bool needPartyOffer = false)
 		{
 			Localisation = new Localisation();
 			Localisation.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
-			Init(isFree, isShared);
+			Init(isFree, isShared, needPartyOffer);
 		}
 
-		public LocalisationFormViewModel(Localisation localisation)
+		public LocalisationFormViewModel(Localisation localisation, bool needPartyOffer = false)
 		{
 			Localisation = localisation;
-			Init(localisation.IsFreeLocalisation(), localisation.IsSharedOffice());
+			Init(localisation.IsFreeLocalisation(), localisation.IsSharedOffice(), needPartyOffer);
 		}
 
-		void Init(bool isFree = true, bool isShared = false)
+		void Init(bool isFree = true, bool isShared = false, bool needPartyOffer = false)
 		{
 			IsFreeLocalisation = isFree;
 			IsSharedOffice = isShared;
@@ -1062,7 +1061,7 @@ namespace Worki.Data.Models
 
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes(isShared);
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
-            var offers = Localisation.GetOfferTypeDict(isShared);
+			var offers = Localisation.GetOfferTypeDict(isShared, needPartyOffer);
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             if (Localisation.LocalisationData == null)
                 Localisation.LocalisationData = new LocalisationData();
@@ -1096,6 +1095,31 @@ namespace Worki.Data.Models
 			Localisation = localisation;
 			Offers = Localisation.GetOffers(offerType);
             Title = Localisation.Name + " - " + Localisation.GetOfferType((int)offerType, false);
+		}
+
+		#endregion
+	}
+
+	public class LocalisationAskBookingFormModel
+	{
+		#region Properties
+
+		public Localisation Localisation { get; set; }
+		public Contact Contact { get; set; }
+
+		#endregion
+
+		#region Ctor
+
+		public LocalisationAskBookingFormModel()
+		{
+
+		}
+
+		public LocalisationAskBookingFormModel(Localisation localisation, Member member)
+		{
+			Localisation = localisation;
+			Contact = new Contact { FirstName = member.MemberMainData.FirstName, LastName = member.MemberMainData.LastName, EMail = member.Email };
 		}
 
 		#endregion
@@ -1288,7 +1312,8 @@ namespace Worki.Data.Models
 		Desktop,
 		MeetingRoom,
 		SeminarRoom,
-		VisioRoom
+		VisioRoom,
+		Party
 	}
 
 	#endregion

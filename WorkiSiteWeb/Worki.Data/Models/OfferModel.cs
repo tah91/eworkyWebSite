@@ -15,14 +15,14 @@ namespace Worki.Data.Models
             Init();
 		}
 
-        public OfferFormViewModel(bool isShared)
-        {
-            Init(isShared);
-        }
+		public OfferFormViewModel(bool isShared, bool needPartyOffer)
+		{
+			Init(isShared, needPartyOffer);
+		}
 
-        void Init(bool isShared = false)
+		void Init(bool isShared = false, bool needPartyOffer = false)
         {
-            var offers = Localisation.GetOfferTypeDict(isShared);
+			var offers = Localisation.GetOfferTypeDict(isShared, needPartyOffer);
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
@@ -86,6 +86,7 @@ namespace Worki.Data.Models
 		public string GetMainPic()
 		{
 			var main = (from item in OfferFiles where item.IsDefault orderby item.Id select item.FileName).FirstOrDefault();
+
 			return main;
 		}
 
@@ -95,6 +96,7 @@ namespace Worki.Data.Models
 			var count = list.Count();
 			if (count == 0 || index < 0 || index >= count)
 				return string.Empty;
+
 			return list[index];
 		}
 
@@ -148,11 +150,6 @@ namespace Worki.Data.Models
 
 		#region Booking Possibility
 
-		public static bool OfferCanHaveProduct(LocalisationOffer type)
-		{
-			return OfferCanHaveBooking(type) || OfferCanHaveQuotation(type);
-		}
-
         public static bool OfferCanHaveQuotation(LocalisationOffer type)
         {
             return type == LocalisationOffer.Desktop;
@@ -165,14 +162,6 @@ namespace Worki.Data.Models
                     type == LocalisationOffer.SeminarRoom ||
                     type == LocalisationOffer.VisioRoom;
         }
-
-		/// <summary>
-		/// True if offer can have a product feature activated
-		/// </summary>
-		public bool CanHaveProduct
-		{
-            get { return OfferCanHaveProduct((LocalisationOffer)Type); }			
-		}
 
 		/// <summary>
 		/// True if offer can have quotation feature activated
@@ -364,6 +353,22 @@ namespace Worki.Data.Models
 		{
 			return OfferPrices.ToLookup(op => op.PriceType).Select(g => g.Key);
 		}
+
+        /// <summary>
+        /// Get the min price of the offer, empty if no price
+        /// </summary>
+        /// <returns>the min price string</returns>
+        public string GetMinPrice()
+        {
+            if (OfferPrices.Count() == 0)
+                return string.Empty;
+
+            var minPrice = OfferPrices.Min();
+            if (minPrice == null)
+                return string.Empty;
+
+            return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minPrice.GetPriceDisplay());
+        }
 
         #endregion
 
