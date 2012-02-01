@@ -276,4 +276,7 @@
   <data name="FindTheBesPlace1" xml:space="preserve">
     <value>Find the best place to work</value>
   </data>
+  <data name="SliderItemDesc" xml:space="preserve">
+    <value>{0} to {1}</value>
+  </data>
 </root>

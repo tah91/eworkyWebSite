@@ -345,4 +345,33 @@
   <data name="Booking" xml:space="preserve">
     <value>Booking</value>
   </data>
+  <data name="HowItWorksQuotation1" xml:space="preserve">
+    <value>Fill in the quotation request, and ask for potential questions</value>
+  </data>
+  <data name="HowItWorksQuotation2" xml:space="preserve">
+    <comment>? pas sur</comment>
+    <value>Your request is then immediately submitted to the owner</value>
+  </data>
+  <data name="HowItWorksQuotation3" xml:space="preserve">
+    <value>We will answer you as promptly as we can</value>
+  </data>
+  <data name="HowItWorksParty1" xml:space="preserve">
+    <value>This networking event is the opportunity for every coworkaholics, freelance and entrepreneurs, to meet up, connect and discover Parisien coworking spaces.</value>
+  </data>
+  <data name="HowItWorksParty2" xml:space="preserve">
+    <value>During this night, you will be offered the opportunity to make a 45 sec elevator pitch to introduce yourself and explain your project to us.</value>
+  </data>
+  <data name="HowItWorksParty3" xml:space="preserve">
+    <value>This event is co-organized by eWorky.com and the coworking spaces {0}.</value>
+  </data>
+  <data name="HowItWorksParty4" xml:space="preserve">
+    <value>Free admittance, {0} have the pleasure to welcome you, and eWorky to pay you a round ;)
+Register promptly, there is a limited amount of tickets</value>
+  </data>
+  <data name="RegisterParty" xml:space="preserve">
+    <value>Subscribe</value>
+  </data>
+  <data name="PartyRegisterConfirmation" xml:space="preserve">
+    <value>Your subscription has been successfully saved, the event date will be communicated to you by Email</value>
+  </data>
 </root>
