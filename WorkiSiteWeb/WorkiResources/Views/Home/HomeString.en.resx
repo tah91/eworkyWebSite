@@ -247,7 +247,7 @@
     <value>eWorky blog</value>
   </data>
   <data name="AddPlaceTitle" xml:space="preserve">
-    <value>Propose a new workspace</value>
+    <value>Add a new workspace</value>
   </data>
   <data name="CostSpace" xml:space="preserve">
     <value>A subscription workspace</value>
@@ -275,5 +275,8 @@
   <comment>Jm Modif l.17</comment></data>
   <data name="FindTheBesPlace1" xml:space="preserve">
     <value>Find the best place to work</value>
+  </data>
+  <data name="SliderItemDesc" xml:space="preserve">
+    <value>{0} to {1}</value>
   </data>
 </root>

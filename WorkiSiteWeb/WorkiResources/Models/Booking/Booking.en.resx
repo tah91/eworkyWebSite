@@ -174,4 +174,13 @@
   <data name="TimeUnits" xml:space="preserve">
     <value>Quantity</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>160 characters description</value>
+  </data>
+  <data name="FavoritePlaceId" xml:space="preserve">
+    <value>Favorite coworking space</value>
+  </data>
+  <data name="TimeType" xml:space="preserve">
+    <value>Invoicing</value>
+  </data>
 </root>

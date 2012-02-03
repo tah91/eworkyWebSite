@@ -299,7 +299,7 @@
     <value>Welcoming</value>
   </data>
   <data name="Wifi_Free" xml:space="preserve">
-    <value>free WiFi</value>
+    <value>Free WiFi</value>
   </data>
   <data name="Wifi_Not_Free" xml:space="preserve">
     <value>WiFi</value>

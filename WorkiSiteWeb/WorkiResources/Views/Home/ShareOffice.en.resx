@@ -117,7 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>Raison sociale, adresse du siège, numéro d'inscription au registre du commerce et capital social.</value>
-  <comment>?</comment></data>
+  <data name="AccessBO" xml:space="preserve">
+    <value>Obtain owner space</value>
+  </data>
+  <data name="AddSpace" xml:space="preserve">
+    <value>Share your desks, now !</value>
+  </data>
+  <data name="ForBoth1" xml:space="preserve">
+    <value>Cowork and exchange with your host to benefit from mutual contribution and collective enrichment</value>
+  </data>
+  <data name="ForBoth2" xml:space="preserve">
+    <value>Explore new market opportunities, share resources and prospects</value>
+  </data>
+  <data name="ForBoth3" xml:space="preserve">
+    <value>Develop a dynamic and creative environment for your both strurctures</value>
+  </data>
+  <data name="ForBothHead1" xml:space="preserve">
+    <value>Enrich with exchanges ! </value>
+  </data>
+  <data name="ForBothHead2" xml:space="preserve">
+    <value>Build your network !</value>
+  </data>
+  <data name="ForOwner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="ForOwner1" xml:space="preserve">
+    <value>Add your space on eWorky for free, just in a few clicks</value>
+  </data>
+  <data name="ForOwner2" xml:space="preserve">
+    <value>Earn several thousand euros per year and desk</value>
+  </data>
+  <data name="ForOwner3" xml:space="preserve">
+    <value>We deal with everything ! It is all automatic, from tenant searching to fund collecting</value>
+  </data>
+  <data name="ForOwnerHead1" xml:space="preserve">
+    <value>You have unoccupied desks in your office ?</value>
+  </data>
+  <data name="ForOwnerHead2" xml:space="preserve">
+    <value>You would prefer getting money from those rather than using them for your invoices collection ?</value>
+  </data>
+  <data name="ForTenant" xml:space="preserve">
+    <value>Tenant</value>
+  </data>
+  <data name="ForTenant1" xml:space="preserve">
+    <value>Find a desk sometimes 5 time cheaper than traditional location or business centers</value>
+  </data>
+  <data name="ForTenant2" xml:space="preserve">
+    <value>Enjoy the flexibility of dsek sharing, with monthly, weekly, or daily booking...</value>
+  </data>
+  <data name="ForTenant3" xml:space="preserve">
+    <value>Book and pay your space just in a few clicks !</value>
+  </data>
+  <data name="ForTenantHead1" xml:space="preserve">
+    <value>You are a small company or a freelance ?</value>
+  </data>
+  <data name="ForTenantHead2" xml:space="preserve">
+    <value>You are searching for a space for your activity ?</value>
+  </data>
+  <data name="ShareOfficeMenu" xml:space="preserve">
+    <value>Desk sharing</value>
+  </data>
+  <data name="ShareOfficeTitle" xml:space="preserve">
+    <value>Desk sharing : why and how ?</value>
+  </data>
 </root>

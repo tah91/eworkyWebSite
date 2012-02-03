@@ -206,7 +206,7 @@ Surface: &lt;b&gt;{5}&lt;/b&gt;
 Message: &lt;b&gt;{6}&lt;/b&gt;</value>
   </data>
   <data name="QuotationMailSubject" xml:space="preserve">
-    <value>eWorky aler - Quote request</value>
+    <value>eWorky alert - Quote request</value>
   </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
     <value>Following your quote request for a &lt;b&gt;{0}&lt;/b&gt; of &lt;b&gt;{1}&lt;/b&gt; square meters in the workplace &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), an eWorky account was created. It will enable you to follow the history and news about your booking requests and your bookings.
@@ -290,5 +290,33 @@ If this space satisfied you, do not hesitate to rate and comment it on its eWork
 Your login is "&lt;b&gt;{0}&lt;/b&gt;" and your temporary password is &lt;b&gt;"{1}"&lt;/b&gt;. You can change your password by visiting your profile : &lt;b&gt;{2}&lt;/b&gt;
 
 We invite you to complete your profile by visiting this adress : &lt;b&gt;{3}&lt;/b&gt; </value>
+  </data>
+  <data name="PartyCreateAccount" xml:space="preserve">
+    <value>Following your subscription to the Coworkers networking event, we are pleased to tell you that an eWorky account was created for you ! 
+
+Your login is "&lt;b&gt;{0}&lt;/b&gt;" and your temporary password is &lt;b&gt;"{1}"&lt;/b&gt;. You can change it by visiting your profile : &lt;b&gt;{2}&lt;/b&gt;
+
+We invite you to complete your profile  details by visiting this adress : &lt;b&gt;{3}&lt;/b&gt;</value>
+  </data>
+  <data name="PartyCreateAccountSubject" xml:space="preserve">
+    <value>Your eWorky account was created !</value>
+  </data>
+  <data name="PartyRegister" xml:space="preserve">
+    <value>Your subscription has been successfully saved !
+We are expecting you in &lt;b&gt;{0}&lt;/b&gt; (&lt;b&gt;{1}&lt;/b&gt;) offices to meet up and have a few drinks with the Parisian coworkers. You will also be offered the opportunity to make a quick (45 sec) elevator pitch.
+Feel free to rate and comment your favourite spaces on eWorky.</value>
+  </data>
+  <data name="PartyRegisterSubject" xml:space="preserve">
+    <value>Your subscription has been successfully saved !</value>
+  </data>
+  <data name="PartyRegisterTeam" xml:space="preserve">
+    <value>Name : &lt;b&gt;{0}&lt;/b&gt;
+Phone Number : &lt;b&gt;{1}&lt;/b&gt;
+Email address: &lt;b&gt;{3}&lt;/b&gt;
+Workplace name : &lt;b&gt;{4}&lt;/b&gt;
+</value>
+  </data>
+  <data name="PartyRegisterTeamSubject" xml:space="preserve">
+    <value>eWorky alert - Join networking</value>
   </data>
 </root>

@@ -279,4 +279,17 @@
   <data name="NeedThisSpaceAction" xml:space="preserve">
     <value>Book online</value>
   </data>
+  <data name="BookingForm" xml:space="preserve">
+    <value>Booking request</value>
+  </data>
+  <data name="BookingFormHelp" xml:space="preserve">
+    <value>Please indicate your exact request, as well as your contact details.
+Your message will be directly  forwarded to the space owner.</value>
+  </data>
+  <data name="ContactThisSpaceAction" xml:space="preserve">
+    <value>Contact this space</value>
+  </data>
+  <data name="ShowContactInfo" xml:space="preserve">
+    <value>Show details</value>
+  </data>
 </root>
