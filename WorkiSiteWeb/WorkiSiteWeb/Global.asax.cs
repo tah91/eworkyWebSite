@@ -157,14 +157,14 @@ namespace Worki.Web
             #region Home
 
             //home index
-            routes.MapRoute(
+			routes.CultureMapRoute(
                 "",
                 "",
                 new { controller = "Home", action = "Index" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "accueil/{action}/",
                 new { controller = "Home", action = "Default" },
@@ -175,7 +175,7 @@ namespace Worki.Web
 
             #region Profil
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "profil/{action}/{id}",
                 new { controller = "Profil", action = "Default", id = UrlParameter.Optional },
@@ -186,7 +186,7 @@ namespace Worki.Web
 
             #region Account
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "compte/{action}/{id}",
                 new { controller = "Account", action = "Default", id = UrlParameter.Optional },
@@ -199,7 +199,7 @@ namespace Worki.Web
 
             var localisationTypes = (from t in Localisation.GetLocalisationTypes().Values select MiscHelpers.GetSeoString(t));
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "{type}/{id}/{name}", // URL avec des paramètres
                 new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
@@ -207,7 +207,7 @@ namespace Worki.Web
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "{type}/{lieu}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByTypeSeo" }, // Paramètres par défaut
@@ -215,7 +215,7 @@ namespace Worki.Web
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "{offerType}/{lieu}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByOfferSeo" }, // Paramètres par défaut
@@ -223,14 +223,14 @@ namespace Worki.Web
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/{order}/",
                 new { controller = "Localisation", action = "Default" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "lieu-de-travail/{action}/{lieu}/{page}/{offer-type}/{tout}/{order}/",
                 new { controller = "Localisation", action = "Default" },
@@ -238,49 +238,49 @@ namespace Worki.Web
             );
 
             //old urls
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "recherche/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
                 new { controller = "Localisation", action = "Default" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "recherche/{action}/{lieu}/{page}/{offer-type}/{tout}/",
                 new { controller = "Localisation", action = "Default" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            //routes.MapRoute(
+            //routes.CultureMapRoute(
             //    "",
             //    "lieu-de-travail/{action}/{type}/",
             //    new { controller = "Localisation", action = "Default" },
             //    new string[] { "Worki.Web.Controllers" }
             //);
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "lieu-de-travail/details/{id}/{name}", // URL avec des paramètres
-                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
+				new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "lieu-de-travail/{action}/{id}/{type}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Offers" }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "lieu-de-travail/{action}/{id}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "recherche/{action}/{id}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
@@ -291,7 +291,7 @@ namespace Worki.Web
 
             #region Rental
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "annonces/{action}/{id}", // URL avec des paramètres
                 new { controller = "Rental", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
@@ -302,7 +302,7 @@ namespace Worki.Web
 
             #region Booking
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "reservation/{action}/{id}/{localisationId}", // URL avec des paramètres
                 new { controller = "Booking", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
@@ -313,7 +313,7 @@ namespace Worki.Web
 
             #region Offer
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "offre/{action}/{id}/{localisationId}", // URL avec des paramètres
                 new { controller = "Offer", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
@@ -323,28 +323,28 @@ namespace Worki.Web
             #endregion
 
             // MQP 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "paywithpaypal/{memberBookingId}",
                 new { controller = "Payment", action = "PayWithPayPal" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "paypalaccepted/{memberBookingId}",
                 new { controller = "Payment", action = "PayPalAccepted" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "paypalcancelled/{memberBookingId}",
                 new { controller = "Payment", action = "PayPalCancelled" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "",
                 "paypalnotification",
                 new { controller = "Payment", action = "PayPalInstantNotification" },
@@ -352,7 +352,7 @@ namespace Worki.Web
             );
 
 
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
@@ -360,52 +360,58 @@ namespace Worki.Web
             );
 
             //routing error handling
-            routes.MapRoute(
+            routes.CultureMapRoute(
                 "Error",
                 "{*url}",
                 new { controller = "Home", action = "Error" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            var toAdd = new List<Route>();
+			//var toAdd = new List<Route>();
 
-            foreach (Route r in routes)
-            {
-                if (r.RouteHandler is SingleCultureMvcRouteHandler)
-                    continue;
+			//foreach (Route r in routes)
+			//{
+			//    if (r.RouteHandler is SingleCultureMvcRouteHandler)
+			//        continue;
 
-                var newRoute = new Route(r.Url, r.Defaults, r.Constraints, r.DataTokens, r.RouteHandler);
+			//    var newRoute = new Route(r.Url, r.Defaults != null ? new RouteValueDictionary(r.Defaults) : null, r.Constraints, r.DataTokens, r.RouteHandler);
 
-                newRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-                newRoute.Url = "{culture}/" + newRoute.Url;
-                //Adding default culture 
-                if (newRoute.Defaults == null)
-                {
-                    newRoute.Defaults = new RouteValueDictionary();
-                }
-                newRoute.Defaults.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
+			//    newRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+			//    newRoute.Url = "{culture}/" + newRoute.Url;
+			//    //Adding default culture 
+			//    if (newRoute.Defaults == null)
+			//    {
+			//        newRoute.Defaults = new RouteValueDictionary();
+			//    }
+			//    newRoute.Defaults.Add("culture", Worki.Infrastructure.Culture.en.ToString());
 
-                //Adding constraint for culture param
-                if (newRoute.Constraints == null)
-                {
-                    newRoute.Constraints = new RouteValueDictionary();
-                }
-                newRoute.Constraints.Add("culture", new Worki.Infrastructure.CultureConstraint(
-                    Worki.Infrastructure.Culture.fr.ToString(),
-                    Worki.Infrastructure.Culture.en.ToString()));
+			//    //if (r.Defaults == null)
+			//    //{
+			//    //    r.Defaults = new RouteValueDictionary();
+			//    //}
+			//    //r.Defaults.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
 
-                toAdd.Add(newRoute);
-            }
+			//    //Adding constraint for culture param
+			//    //if (newRoute.Constraints == null)
+			//    //{
+			//    //    newRoute.Constraints = new RouteValueDictionary();
+			//    //}
+			//    //newRoute.Constraints.Add("culture", new Worki.Infrastructure.CultureConstraint(
+			//    //    Worki.Infrastructure.Culture.fr.ToString(),
+			//    //    Worki.Infrastructure.Culture.en.ToString()));
 
-            foreach (var newRoute in toAdd)
-            {
-                routes.MapRoute(
-                "",
-                newRoute.Url,
-                newRoute.Defaults,
-                newRoute.Constraints);
+			//    toAdd.Add(newRoute);
+			//}
 
-            }
+			//foreach (var newRoute in toAdd)
+			//{
+			//    routes.MapRoute(
+			//    "",
+			//    newRoute.Url,
+			//    newRoute.Defaults,
+			//    newRoute.Constraints);
+
+			//}
         }
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());
@@ -430,6 +436,7 @@ namespace Worki.Web
 			XmlSiteMapController.RegisterRoutes(RouteTable.Routes);
             GlobalFilters.Filters.Add(new RedirectMobileDevicesToMobileAreaAttribute(), 1);
             RegisterRoutes(RouteTable.Routes);
+			//RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
 
 			//model binder
             var defaultBinder = new DefaultModelBinder();

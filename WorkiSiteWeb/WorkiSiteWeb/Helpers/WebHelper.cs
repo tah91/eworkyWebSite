@@ -179,6 +179,81 @@ namespace Worki.Web.Helpers
         public static string DisplaySurface(decimal surface, bool b = true)
         {
             return ((surface - decimal.Truncate(surface) == 0 ? decimal.Truncate(surface) : surface) + (b == true ? " m²" : ""));
-        }
-    }
+		}
+
+		#region Routes
+
+		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, string[] namespaces)
+		{
+			return routes.CultureMapRoute(
+				name,
+				url,
+				defaults,
+				null,
+				namespaces
+			);
+		}
+		//
+		// Summary:
+		//     Maps the specified URL route and sets default route values, constraints,
+		//     and namespaces.
+		//
+		// Parameters:
+		//   routes:
+		//     A collection of routes for the application.
+		//
+		//   name:
+		//     The name of the route to map.
+		//
+		//   url:
+		//     The URL pattern for the route.
+		//
+		//   defaults:
+		//     An object that contains default route values.
+		//
+		//   constraints:
+		//     A set of expressions that specify values for the url parameter.
+		//
+		//   namespaces:
+		//     A set of namespaces for the application.
+		//
+		// Returns:
+		//     A reference to the mapped route.
+		//
+		// Exceptions:
+		//   System.ArgumentNullException:
+		//     The routes or url parameter is null.
+		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
+		{
+			//other languages
+			var enUrl = "{culture}/" + url;
+			var enDefault = defaults != null ? new RouteValueDictionary(defaults) : new RouteValueDictionary();
+			enDefault.Add("culture", Worki.Infrastructure.Culture.en.ToString());
+			var enRoute = routes.MapRoute(
+				name,
+				enUrl,
+				defaults,
+				constraints,
+				namespaces
+			);
+			enRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+			//enRoute.Defaults = enDefault;
+
+			//default language
+			var frDefault = defaults != null ? new RouteValueDictionary(defaults) : new RouteValueDictionary();
+			frDefault.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
+			var frRoute = routes.MapRoute(
+				"",
+				url,
+				defaults,
+				constraints,
+				namespaces
+			);
+			frRoute.Defaults = frDefault;
+			frRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+			return frRoute;
+		}
+
+		#endregion
+	}
 }

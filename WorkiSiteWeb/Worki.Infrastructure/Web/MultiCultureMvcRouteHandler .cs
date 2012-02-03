@@ -4,6 +4,7 @@ using System.Web.Routing;
 using System.Globalization;
 using System.Threading;
 using System.Linq;
+using System;
 
 namespace Worki.Infrastructure 
 {
@@ -28,11 +29,11 @@ namespace Worki.Infrastructure
                     //Sets default culture to french invariant
                     
                     //Try to get values from Accept lang HTTP header
-                    //if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
-                    //{
-                    //    //Gets accepted list
-                    //    langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
-                    //}
+                    if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
+					{
+						//Gets accepted list
+						langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
+					}
                     requestContext.HttpContext.Session["Culture"] = langName;
                 }
             }
@@ -42,14 +43,19 @@ namespace Worki.Infrastructure
             {
                 langName = culture.ToString();
             }
-            var ci = new CultureInfo(langName);
-            Thread.CurrentThread.CurrentUICulture = ci;
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
-            Thread.CurrentThread.CurrentCulture.NumberFormat = CultureInfo.InvariantCulture.NumberFormat;
+			try
+			{
+				var ci = new CultureInfo(langName);
+				Thread.CurrentThread.CurrentUICulture = ci;
+				Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
+				Thread.CurrentThread.CurrentCulture.NumberFormat = CultureInfo.InvariantCulture.NumberFormat;
+			}
+			catch (Exception)
+			{
+
+			}
             return base.GetHttpHandler(requestContext);
         }
-
-
     }
 
     public class CultureConstraint : IRouteConstraint
