@@ -247,7 +247,7 @@
     <value>eWorky blog</value>
   </data>
   <data name="AddPlaceTitle" xml:space="preserve">
-    <value>Propose a new workspace</value>
+    <value>Add a new workspace</value>
   </data>
   <data name="CostSpace" xml:space="preserve">
     <value>A subscription workspace</value>

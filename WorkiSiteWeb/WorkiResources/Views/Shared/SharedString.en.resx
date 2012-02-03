@@ -149,7 +149,7 @@
     <value>Administrator</value>
   </data>
   <data name="CGU" xml:space="preserve">
-    <value>Terms of Services</value>
+    <value>TOS</value>
   </data>
   <data name="CorrectThenTryAgain" xml:space="preserve">
     <value>Oops ! An error occurred. Please check and try again. If problem persists, contact us : support</value>
@@ -260,7 +260,7 @@
     <value>Sign in</value>
   </data>
   <data name="FastLogonFb" xml:space="preserve">
-    <value>To get some time, please log in using your Facebook account.</value>
+    <value>To save time, please log in using your Facebook account.</value>
   </data>
   <data name="FastLogonFb2" xml:space="preserve">
     <value>Log in to eWorky in a few seconds using your Facebook account! </value>
