@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Dashboard
 {
@@ -14,7 +15,7 @@ namespace Worki.Web.Areas.Dashboard
 
 		public override void RegisterArea(AreaRegistrationContext context)
 		{
-			context.MapRoute(
+			context.CultureMapRoute(
 				"Dashboard_default",
 				"Dashboard/{controller}/{action}/{id}",
 				new { action = "Index", id = UrlParameter.Optional }

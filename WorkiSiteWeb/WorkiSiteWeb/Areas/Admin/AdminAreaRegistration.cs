@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Admin
 {
@@ -14,7 +15,7 @@ namespace Worki.Web.Areas.Admin
 
 		public override void RegisterArea(AreaRegistrationContext context)
 		{
-			context.MapRoute(
+			context.CultureMapRoute(
 				"Admin_default",
 				"Admin/{controller}/{action}/{id}",
 				new { action = "Index", id = UrlParameter.Optional }

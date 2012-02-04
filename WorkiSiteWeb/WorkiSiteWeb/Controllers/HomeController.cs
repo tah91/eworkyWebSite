@@ -314,11 +314,10 @@ namespace Worki.Web.Controllers
         /// <returns></returns>
         public virtual ActionResult ChangeCulture(string lang, string returnUrl)
         {
-            Session["Culture"] = new CultureInfo(lang);
-            if (returnUrl.Length >= 3)
-            {
-                returnUrl = returnUrl.Substring(3);
-            }
+			if (!string.IsNullOrEmpty(MultiCultureMvcRouteHandler.ExtractCultureFromUrl(returnUrl)))
+			{
+				returnUrl = returnUrl.Substring(3);
+			}
             return Redirect("/" + lang.ToString() + returnUrl);
         }
 

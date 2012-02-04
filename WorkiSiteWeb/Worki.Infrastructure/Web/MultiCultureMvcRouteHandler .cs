@@ -5,44 +5,59 @@ using System.Globalization;
 using System.Threading;
 using System.Linq;
 using System;
+using System.Web.SessionState;
+using System.Collections.Generic;
 
 namespace Worki.Infrastructure 
 {
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
+		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
+		public const string ConnexionPath = "/compte/connexion";
+
+		public static string ExtractCultureFromUrl(string url)
+		{
+			if (string.IsNullOrEmpty(url))
+				return null;
+
+			var lang = url.Split('/').FirstOrDefault(str => _Languages.Contains(str));
+			if (string.IsNullOrEmpty(lang))
+				return null;
+
+			return lang;
+		}
+
         protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
             string langName = "fr";
 
-            //first look in url
-            var culture = requestContext.RouteData.Values["culture"];
-
-            //then in session
-            if (culture==null && requestContext.HttpContext.Session != null)
-            {
-                culture = requestContext.HttpContext.Session["Culture"];
-                //Checking first if there is no value in session
-                //and set default language
-                //this can happen for first user's request
-                if (culture == null)
-                {
-                    //Sets default culture to french invariant
-                    
-                    //Try to get values from Accept lang HTTP header
-                    if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
+			//check if culture in path
+			var fromUrl = ExtractCultureFromUrl(HttpContext.Current.Request.Url.PathAndQuery);
+			if (!string.IsNullOrEmpty(fromUrl))
+			{
+				langName = fromUrl;
+			}
+			else
+			{
+				//check if it is connexion path
+				if (HttpContext.Current.Request.Path == ConnexionPath)
+				{
+					var returnUrl = HttpContext.Current.Request.Params["ReturnUrl"];
+					//check if culture in returnUrl
+					fromUrl = ExtractCultureFromUrl(returnUrl);
+					if (!string.IsNullOrEmpty(fromUrl))
 					{
-						//Gets accepted list
-						langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
+						langName = fromUrl;
 					}
-                    requestContext.HttpContext.Session["Culture"] = langName;
-                }
-            }
+				}
+				//take culture from navi language
+				else if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
+				{
+					langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
+				}
+			}
 
             //set it
-            if (culture != null)
-            {
-                langName = culture.ToString();
-            }
 			try
 			{
 				var ci = new CultureInfo(langName);
@@ -82,8 +97,8 @@ namespace Worki.Infrastructure
 
     public enum Culture
     {
-        en = 1,
-        fr = 2
+        fr = 1,
+        en = 2
     }
 
     public class SingleCultureMvcRouteHandler

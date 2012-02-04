@@ -366,52 +366,6 @@ namespace Worki.Web
                 new { controller = "Home", action = "Error" },
                 new string[] { "Worki.Web.Controllers" }
             );
-
-			//var toAdd = new List<Route>();
-
-			//foreach (Route r in routes)
-			//{
-			//    if (r.RouteHandler is SingleCultureMvcRouteHandler)
-			//        continue;
-
-			//    var newRoute = new Route(r.Url, r.Defaults != null ? new RouteValueDictionary(r.Defaults) : null, r.Constraints, r.DataTokens, r.RouteHandler);
-
-			//    newRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-			//    newRoute.Url = "{culture}/" + newRoute.Url;
-			//    //Adding default culture 
-			//    if (newRoute.Defaults == null)
-			//    {
-			//        newRoute.Defaults = new RouteValueDictionary();
-			//    }
-			//    newRoute.Defaults.Add("culture", Worki.Infrastructure.Culture.en.ToString());
-
-			//    //if (r.Defaults == null)
-			//    //{
-			//    //    r.Defaults = new RouteValueDictionary();
-			//    //}
-			//    //r.Defaults.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
-
-			//    //Adding constraint for culture param
-			//    //if (newRoute.Constraints == null)
-			//    //{
-			//    //    newRoute.Constraints = new RouteValueDictionary();
-			//    //}
-			//    //newRoute.Constraints.Add("culture", new Worki.Infrastructure.CultureConstraint(
-			//    //    Worki.Infrastructure.Culture.fr.ToString(),
-			//    //    Worki.Infrastructure.Culture.en.ToString()));
-
-			//    toAdd.Add(newRoute);
-			//}
-
-			//foreach (var newRoute in toAdd)
-			//{
-			//    routes.MapRoute(
-			//    "",
-			//    newRoute.Url,
-			//    newRoute.Defaults,
-			//    newRoute.Constraints);
-
-			//}
         }
 
 		private IKernel _kernel = new StandardKernel(new WorkiInjectModule());

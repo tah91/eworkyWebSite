@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Mobile
 {
@@ -15,21 +16,21 @@ namespace Worki.Web.Areas.Mobile
         public override void RegisterArea(AreaRegistrationContext context)
         {
             //home mobile
-            context.MapRoute(
+			context.CultureMapRoute(
                 "",
                 "mobile",
                 new { controller = "Home", action = "Index" },
                 new string[] { "Worki.Web.Areas.Mobile.Controllers" }
             );
 
-            context.MapRoute(
+			context.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "mobile/lieu-de-travail/{action}/{id}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Areas.Mobile.Controllers" }
             );
 
-            context.MapRoute(
+			context.CultureMapRoute(
                 "Mobile_default",
                 "mobile/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }

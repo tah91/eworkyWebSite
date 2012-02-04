@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Backoffice
 {
@@ -12,13 +13,13 @@ namespace Worki.Web.Areas.Backoffice
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context)
-        {
-            context.MapRoute(
-                "Backoffice_default",
-                "Backoffice/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
-        }
+		public override void RegisterArea(AreaRegistrationContext context)
+		{
+			context.CultureMapRoute(
+				"Backoffice_default",
+				"Backoffice/{controller}/{action}/{id}",
+				new { action = "Index", id = UrlParameter.Optional }
+			);
+		}
     }
 }
