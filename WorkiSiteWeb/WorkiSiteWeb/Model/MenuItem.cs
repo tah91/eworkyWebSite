@@ -51,6 +51,7 @@ namespace Worki.Web.Model
 	public enum OfferMenuType
 	{
 		Config,
+		Edit,
 		Booking,
 		Quotation,
         Schedule

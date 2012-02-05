@@ -723,6 +723,8 @@
     <Content Include="Views\Offer\_OfferPrice.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\SharedOffice.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_AlertSummary.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\EditLocalisation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\EditOffer.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -875,6 +877,9 @@
     <Content Include="Views\Localisation\_AskContact.cshtml" />
     <Content Include="Views\Offer\JoinParty.cshtml" />
     <Content Include="Views\Home\ShareOffice.cshtml" />
+    <Content Include="Views\Localisation\_LocalisationForm.cshtml" />
+    <Content Include="Views\Offer\_CreateOffer.cshtml" />
+    <Content Include="Views\Offer\_CreateOfferScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

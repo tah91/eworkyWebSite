@@ -11,6 +11,7 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
 using Postal;
 using Worki.Web.Model;
+using System.Web.Security;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -108,6 +109,191 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		}
 
 		/// <summary>
+		/// GET action to adit an existing localisation
+		/// </summary>
+		/// <returns>The form to fill</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult EditLocalisation(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				var loc = lRepo.Get(id);
+				Member.ValidateOwner(member, loc);
+
+				return View(new LocalisationFormViewModel(loc));
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("EditLocalisation", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		const string LocalisationPrefix = "Localisation";
+
+		/// <summary>
+		/// POST action to edit a localisation from bo
+		/// </summary>
+		/// <param name="localisation">The localisation data from the form (provided from custom model binder)</param>
+		/// <param name="id">The id of the edited localisation</param>
+		/// <returns>the detail view of localistion if ok, the form with errors else</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult EditLocalisation(LocalisationFormViewModel localisationForm, int id, string addOffer)
+		{
+			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+			var field = string.Empty;
+			//to keep files state in case of error
+			TempData[PictureData.PictureDataString] = new PictureDataContainer(localisationForm.Localisation);
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			try
+			{
+				var member = mRepo.GetMember(User.Identity.Name);
+				Member.Validate(member);
+				if (ModelState.IsValid)
+				{
+					var loc = lRepo.Get(id);
+					UpdateModel(loc, LocalisationPrefix);
+					loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
+					loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
+					var offerCount = loc.Offers.Count;
+
+					if (string.IsNullOrEmpty(addOffer) && !localisationForm.IsFreeLocalisation && offerCount == 0)
+					{
+						error = Worki.Resources.Views.Localisation.LocalisationString.MustAddOffer;
+						field = "NewOfferType";
+						throw new Exception(error);
+					}
+					context.Commit();
+					TempData.Remove(PictureData.PictureDataString);
+
+					if (!string.IsNullOrEmpty(addOffer))
+					{
+						return RedirectToAction(MVC.Offer.Create(id, localisationForm.NewOfferType,Url.Action(MVC.Backoffice.Localisation.Index(id))));
+					}
+					else
+					{
+						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
+						return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Edit", ex);
+				context.Complete();
+				ModelState.AddModelError(field, error);
+			}
+			return View(new LocalisationFormViewModel(localisationForm.Localisation));
+		}
+
+		/// <summary>
+		/// GET Action result to edit offer data
+		/// </summary>
+		/// <param name="id">id of localisation</param>
+		/// <param name="offerId">id of offer</param>
+		/// <returns>View containing offer data</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult EditOffer(int id, int offerId = 0)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				Offer offer;
+				//case no offer selected, take the first one
+				if (offerId == 0)
+				{
+					var loc = lRepo.Get(id);
+					offer = loc.Offers.FirstOrDefault();
+					if (offer == null)
+					{
+						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
+						return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id, offer.Id));
+					}
+				}
+				else
+				{
+					offer = oRepo.Get(offerId);
+				}
+				Member.ValidateOwner(member, offer.Localisation);
+
+				return View(new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer });
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("EditOffer", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Post Action result to edit offer data
+		/// </summary>
+		/// <param name="id">id of offer</param>
+		/// <returns>View containing localisation data</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult EditOffer(int id, int offerId, OfferFormViewModel formData)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			TempData[PictureData.PictureDataString] = new PictureDataContainer(formData.Offer);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			Offer offer;
+			//case no offer selected, take the first one
+			if (offerId == 0)
+			{
+				var loc = lRepo.Get(id);
+				offer = loc.Offers.FirstOrDefault();
+				if (offer == null)
+				{
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
+					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+				}
+			}
+			else
+			{
+				offer = oRepo.Get(offerId);
+			}
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					
+					UpdateModel(offer, "Offer");
+					context.Commit();
+					TempData.Remove(PictureData.PictureDataString);
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
+					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("EditOffer", ex);
+					context.Complete();
+					ModelState.AddModelError("", ex.Message);
+				}
+			}
+			formData.Offer = offer;
+			return View(formData);
+		}
+
+		/// <summary>
 		/// GET Action result to configure offer
 		/// </summary>
 		/// <param name="id">id of localisation</param>
@@ -202,6 +388,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
             var model = new List<OfferMenuItem>();
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId)) });
+			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Edit == selected, Text = Worki.Resources.Menu.Menu.EditOffer, Link = Url.Action(MVC.Backoffice.Localisation.EditOffer(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId)) });
             model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId)) });
 			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Schedule == selected, Text = Worki.Resources.Menu.Menu.Schedule, Link = Url.Action(MVC.Backoffice.Localisation.OfferSchedule(offer.LocalisationId)) });
@@ -232,6 +419,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				case OfferMenuType.Config:
 					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(o.LocalisationId, o.Id));
+					model.Filter = OfferDropDownFilter.None;
+					break;
+				case OfferMenuType.Edit:
+					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.EditOffer(o.LocalisationId, o.Id));
 					model.Filter = OfferDropDownFilter.None;
 					break;
 				case OfferMenuType.Booking:

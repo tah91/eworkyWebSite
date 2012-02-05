@@ -196,11 +196,29 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edition.
+        /// </summary>
+        public static string EditOffer {
+            get {
+                return ResourceManager.GetString("EditOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mot de passe.
         /// </summary>
         public static string EditPassword {
             get {
                 return ResourceManager.GetString("EditPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edition du lieu.
+        /// </summary>
+        public static string EditPlace {
+            get {
+                return ResourceManager.GetString("EditPlace", resourceCulture);
             }
         }
         

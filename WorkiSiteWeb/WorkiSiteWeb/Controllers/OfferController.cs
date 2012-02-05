@@ -37,7 +37,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of the offer localisation</param>
 		/// <returns>View containing offer form</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual ActionResult Create(int id, int type)
+		public virtual ActionResult Create(int id, int type, string returnUrl=null)
 		{
             var context = ModelFactory.GetUnitOfWork();
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
@@ -52,7 +52,7 @@ namespace Worki.Web.Controllers
 		/// <returns>View containing localisation form</returns>
         [AcceptVerbs(HttpVerbs.Post), Authorize]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Create(int id, OfferFormViewModel offerFormViewModel)
+		public virtual ActionResult Create(int id, string returnUrl, OfferFormViewModel offerFormViewModel)
         {
             TempData[PictureData.PictureDataString] = new PictureDataContainer(offerFormViewModel.Offer);
             if (ModelState.IsValid)
@@ -75,7 +75,14 @@ namespace Worki.Web.Controllers
                         throw ex;
                     }
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferCreated;
-					return RedirectToAction(MVC.Localisation.Edit(offerFormViewModel.Offer.LocalisationId));
+					if (!string.IsNullOrEmpty(returnUrl))
+					{
+						return Redirect(returnUrl);
+					}
+					else
+					{
+						return RedirectToAction(MVC.Localisation.Edit(offerFormViewModel.Offer.LocalisationId));
+					}
                 }
                 catch (Exception ex)
                 {

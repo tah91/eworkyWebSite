@@ -302,6 +302,15 @@ namespace Worki.Web.Helpers
 			return true;
 		}
 
+		public static bool IsInArea(this UrlHelper instance, string area)
+		{
+			if (!instance.RequestContext.RouteData.DataTokens.ContainsKey(_AreaString))
+				return false;
+
+			var areaFromUrl = ((string)instance.RequestContext.RouteData.DataTokens[_AreaString]);
+			return string.Compare(areaFromUrl, area, StringComparison.InvariantCultureIgnoreCase) == 0;
+		}
+
 		/// <summary>
 		/// Display date with specified format
 		/// </summary>

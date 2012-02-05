@@ -30,26 +30,29 @@
 				    @:$.post(action, { latitude: currentLatitude, longitude: currentLongitude }, checkIfExist, "json");
 			    }
 		    }
-		    var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, null, null ,'#Localisation_City','#Localisation_PostalCode','#Localisation_Country');
-		    var workiMap = new WorkiMap('editMapDiv','#Localisation_Latitude', '#Localisation_Longitude');
-		    var latitude = @Model.Localisation.Latitude;
-		    var longitude = @Model.Localisation.Longitude;
-		    var title = "@Model.Localisation.Name";
-		    workiMap.LoadDetailMap(latitude,longitude,title,true);
-		    FindAddress = function (evt) {
-			    var addressValue = jQuery.trim($("#Localisation_Adress").val());
-			    var postalCodeValue = jQuery.trim($("#Localisation_PostalCode").val());
-			    var cityValue = jQuery.trim($("#Localisation_City").val());
-			    if( addressValue === "" || cityValue === "" )
-				    return;
-			    var address = addressValue + ' ' + postalCodeValue + ' ' + cityValue;
-			    if (address.length < 1)
-				    return;
+			@if(!Url.IsInArea("Backoffice"))
+			{
+				@:var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, null, null ,'#Localisation_City','#Localisation_PostalCode','#Localisation_Country');
+				@:var workiMap = new WorkiMap('editMapDiv','#Localisation_Latitude', '#Localisation_Longitude');
+				@:var latitude = @Model.Localisation.Latitude;
+				@:var longitude = @Model.Localisation.Longitude;
+				@:var title = "@Model.Localisation.Name";
+				@:workiMap.LoadDetailMap(latitude,longitude,title,true);
+				@:FindAddress = function (evt) {
+					@:var addressValue = jQuery.trim($("#Localisation_Adress").val());
+					@:var postalCodeValue = jQuery.trim($("#Localisation_PostalCode").val());
+					@:var cityValue = jQuery.trim($("#Localisation_City").val());
+					@:if( addressValue === "" || cityValue === "" )
+						@:return;
+					@:var address = addressValue + ' ' + postalCodeValue + ' ' + cityValue;
+					@:if (address.length < 1)
+						@:return;
 				
-			    workiGeoCoder.GeocodeAddress(address, GetSimilarLocalisation);
-			    workiMap.ClearMap();
-			    workiMap.FindAddressOnMap(address);
-		    }
+					@:workiGeoCoder.GeocodeAddress(address, GetSimilarLocalisation);
+					@:workiMap.ClearMap();
+					@:workiMap.FindAddressOnMap(address);
+				@:}
+			}
 
 		    $("#Localisation_Adress").blur(function (evt) {
 			    FindAddress(evt);

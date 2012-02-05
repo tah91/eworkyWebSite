@@ -1,0 +1,734 @@
+﻿@model Worki.Data.Models.LocalisationFormViewModel
+
+@{
+	var controller = Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.Name : MVC.Localisation.Name;
+	var action = Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.ActionNames.EditLocalisation : MVC.Localisation.ActionNames.Edit;
+}
+@using (Html.BeginForm(action, controller, FormMethod.Post, new { enctype = "multipart/form-data", id = "localisationEditForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Localisation.Latitude)
+    @Html.HiddenFor(model => model.Localisation.Longitude)
+    @Html.HiddenFor(model => model.IsFreeLocalisation)
+	@Html.HiddenFor(model => model.IsSharedOffice)
+	@Html.HiddenFor(model => model.Localisation.MainLocalisation.IsOffline)
+        
+    if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+    {
+        <div class="contentBlock">
+            <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Admin</h3>
+            <div class="adminBlock float-left">
+                @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsMain)
+				@Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Main)
+            </div>
+            <div class="adminBlock float-left">
+                @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.IsOffline)
+				@Html.Label(Worki.Resources.Views.Localisation.LocalisationString.Offline)
+            </div>
+            <div class="adminBlock float-left">
+                @Html.CheckBoxFor(m => m.Localisation.MainLocalisation.HasSticker)
+				@Html.Label(Worki.Resources.Views.Admin.AdminString.Stickers)
+            </div>
+            <div class="clear"></div>
+            <table class="">
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Localisation.BookingCom)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Localisation.BookingCom)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Localisation.QuotationPrice)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Localisation.QuotationPrice)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+        <div class="contentBlock">
+            <div class="dataEdition">
+                <div class="generalInfos float-left">
+                    <h3 class="blue inline">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3>
+                    <span>&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
+                    <table class="generalInfosTable editionTable">
+                        @if (Model.Localisation.ID == 0 && !Model.IsSharedOffice)
+                        { 
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <div class="editor-label localisationOwnerField">
+                                    @Html.CheckBoxFor(m => m.IsOwner)
+						            @Html.LabelFor(Worki.Resources.Models.Localisation.LocalisationFeatures.LocalisationOwner, "IsOwner")
+                                </div>
+                            </td>
+                        </tr>
+                        }
+						@if (!Model.IsSharedOffice || Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+						{
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.TypeValue)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.DropDownList("Localisation.TypeValue", Model.Types, new { @class = "typeSelect" })
+                                </div>
+                            </td>
+                        </tr>
+						}
+						else
+						{
+							@Html.HiddenFor(m => m.Localisation.TypeValue)
+							@Html.HiddenFor(m => m.IsOwner)
+						}
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.Name)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.Name, new { placeholder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeExemple : Worki.Resources.Views.Localisation.LocalisationFormString.PlacesExample })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <div class="field-validation-error">
+                                    <div id="localisationAtSamePlaceReplace">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.Adress)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.Adress)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.City)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.City)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.PostalCode)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.PostalCode)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.Country)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.Country)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table class="phoneNumberRow">
+                                    <tr>
+                                        <td>
+                                            <div class="editor-label phoneNumberCol">
+                                                @Html.LabelFor(model => model.Localisation.PhoneNumber)
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="editor-field">
+                                                @Html.TextBoxFor(model => model.Localisation.PhoneNumber)
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="editor-label faxCol">
+                                                @Html.LabelFor(model => model.Localisation.Fax)
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="editor-field">
+                                                @Html.TextBoxFor(model => model.Localisation.Fax)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.Mail)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.Mail)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.WebSite)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.WebSite)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.Facebook)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.Facebook, new { placeHolder = Worki.Resources.Views.Localisation.LocalisationFormString.LinkToFB })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.Twitter)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.Twitter, new { placeHolder = Worki.Resources.Views.Localisation.LocalisationFormString.LinkToTwitter })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="verticalAlignTop">
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.Description)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextAreaFor(model => model.Localisation.Description, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+				@if(!Url.IsInArea("Backoffice"))
+				{
+				<div class="editPlace float-right borderRadius">
+					<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
+					<span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
+					<div id="editMapDiv">
+					</div>
+					<button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
+				</div>
+				}	
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="contentBlock">
+            <div id="fileupload" class="borderRadius">
+                <div class="fileupload-buttonbar">
+                    <label class="fileinput-button">
+                        <span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
+                        <input type="file" name="files[]" accept="image/*" />
+                    </label>
+                </div>
+                <div class="fileupload-content">
+                    <table class="files">
+                    </table>
+                    <div class="fileupload-progressbar">
+                    </div>
+                </div>
+            </div>
+        </div>
+		if (Model.IsFreeLocalisation)
+		{
+        <div class="contentBlock">
+            <h3 class="blue">@Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea</h3>
+            <div class="serviceContainer">
+                <div class="subserviceContainer float-left">
+                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods</h4>
+                    <ul>
+                        <li>
+                            @Html.FeatureChecboxLabel(Feature.AvoidMorning, Model.Localisation)
+                        </li>
+                        <li>
+                            @Html.FeatureChecboxLabel(Feature.AvoidLunch, Model.Localisation)
+                        </li>
+                        <li>
+                            @Html.FeatureChecboxLabel(Feature.AvoidAfternoom, Model.Localisation)
+                        </li>
+                        <li>
+                            @Html.FeatureChecboxLabel(Feature.AvoidEvening, Model.Localisation)
+                        </li>
+                    </ul>
+                </div>
+                <div class="subserviceContainer float-left">
+                    <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Tariffs</h4>
+                    <ul>
+                        <li>
+                            <div class="coffeePrice editor-label">
+                                @Html.FeatureLabelFor(Feature.CoffeePrice, Model.Localisation)
+                                @Html.FeatureNumberTextBox(Feature.CoffeePrice, Model.Localisation, new { placeholder = "Ex : 1.20" })&nbsp;&nbsp;&#8364;
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+		}
+		<div class="serviceContainer contentBlock">
+            <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.PlaceDetails</h3>
+            <div class="subserviceContainer float-left">
+                <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Facilities</h4>
+                <ul>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Handicap, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Wifi_Free, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Wifi_Not_Free, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Parking, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Lift, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.FastInternet, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.SafeStorage, Model.Localisation)
+                    </li>
+                </ul>
+            </div>
+            <div class="subserviceContainer float-left">
+                <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.Comfort</h4>
+                <ul>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Coffee, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.AC, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.ErgonomicFurniture, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Shower, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Newspaper, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.TV, Model.Localisation)
+                    </li>
+					@if (!Model.IsSharedOffice)
+					{ 
+		            <li>
+                        @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
+                    </li>
+					}
+                </ul>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+		if (!Model.IsFreeLocalisation)
+		{ 
+        <div class="serviceContainer contentBlock">
+            <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.WorkingPlace</h3>
+            <div class="subserviceContainer float-left">
+                <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
+				@if (Model.IsSharedOffice)
+				{
+                <ul>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.PhoneLine, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Kitchen, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.SharedMeetingRoom, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Printer, Model.Localisation)
+                    </li>
+					<li>
+                        @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
+                    </li>
+                </ul>
+				}
+				else
+				{
+				<ul>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Domiciliation, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Secretariat, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Courier, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Printer, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Archiving, Model.Localisation)
+                    </li>
+                </ul>
+				}
+            </div>
+            @if (!Model.IsSharedOffice)
+			{
+            <div class="subserviceContainer float-left">
+                <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.UserServices</h4>
+                <ul>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Concierge, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Pressing, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.ComputerHelp, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.RoomService, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Community, Model.Localisation)
+                    </li>
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
+                    </li>
+                </ul>
+            </div>
+			}
+            <div class="clear">
+            </div>
+        </div>
+		<div class="contentBlock">
+			<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
+			<div class="offersTable">
+				<table>
+				@foreach (var item in Model.Localisation.Offers)
+				{
+					<tr>
+						<td>@item.Name</td>
+						<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.EditOffer(item.LocalisationId, item.Id) : MVC.Offer.Edit(item.Id))</td>
+						<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id))</div></td>
+					</tr>
+				}
+				</table>
+			</div>
+			@Html.DropDownListFor(m => m.NewOfferType, Model.Offers)
+			<input  type="submit" class="buttonStd buttonBlue imageBtn" 
+					name="addOffer" value="@Worki.Resources.Views.Shared.SharedString.Adds"/>
+		</div>
+		}
+        <div class="contentBlock">
+            <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
+            <table class="generalInfosTable editionTable">
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Localisation.PublicTransportation)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Localisation.PublicTransportation, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.SubwayExample })
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Localisation.Station)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Localisation.Station, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.SncfExample })
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Localisation.RoadAccess)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Localisation.RoadAccess, new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.RoadExample })
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contentBlock">
+            <h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Hourly</h3>
+            <div class="serviceContainer">
+                <div class="subserviceContainer float-left">
+                    <ul>
+                        <li>
+                            @Html.FeatureChecboxLabel(Feature.Access24, Model.Localisation)
+                        </li>
+                        <li id="lunchCloseChecked">
+                            @Html.FeatureChecboxLabel(Feature.LunchClose, Model.Localisation)
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="editOpenning">
+                <table class="editionTable">
+                    <tr>
+                        <td>
+                            @Worki.Resources.Views.Localisation.LocalisationFormString.Monday
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.MonOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonOpenMorning, CultureHelpers.TimeFormat.Time), new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.MondayMorningOpen })
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.MonCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonCloseMorning, CultureHelpers.TimeFormat.Time), new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.MondayMorningClose })
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.MonOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonOpenAfter, CultureHelpers.TimeFormat.Time), new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.MondayAfterOpen })
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.MonCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.MonCloseAfter, CultureHelpers.TimeFormat.Time), new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.MondayAfterClose })
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            @Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.TueOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueOpenMorning, CultureHelpers.TimeFormat.Time), new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.TuesdayMorningOpen })
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.TueCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueCloseMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.TueOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueOpenAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.TueCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.TueCloseAfter, CultureHelpers.TimeFormat.Time), new { placeholder = Worki.Resources.Views.Localisation.LocalisationFormString.TuesdayAfterClose })
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            @Worki.Resources.Views.Localisation.LocalisationFormString.Wednesday
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.WedOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedOpenMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.WedCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedCloseMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.WedOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedOpenAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.WedCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.WedCloseAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            @Worki.Resources.Views.Localisation.LocalisationFormString.Thursday
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.ThuOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuOpenMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.ThuCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuCloseMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.ThuOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuOpenAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.ThuCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.ThuCloseAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            @Worki.Resources.Views.Localisation.LocalisationFormString.Friday
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.FriOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriOpenMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.FriCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriCloseMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.FriOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriOpenAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.FriCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.FriCloseAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            @Worki.Resources.Views.Localisation.LocalisationFormString.Saturday
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.SatOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatOpenMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.SatCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatCloseMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.SatOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatOpenAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.SatCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SatCloseAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            @Worki.Resources.Views.Localisation.LocalisationFormString.Sunday
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.SunOpenMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunOpenMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.SunCloseMorning", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunCloseMorning, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td class="lunchclose">
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample1">
+                                @Html.TextBox("Localisation.LocalisationData.SunOpenAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunOpenAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field" title="@Worki.Resources.Views.Localisation.LocalisationFormString.TimeExample2">
+                                @Html.TextBox("Localisation.LocalisationData.SunCloseAfter", CultureHelpers.GetSpecificFormat(Model.Localisation.LocalisationData.SunCloseAfter, CultureHelpers.TimeFormat.Time))
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="float-right">
+            <input  type="submit" class="buttonStd buttonBlue imageBtn" 
+					name="valid" id="submit_add" value="@(Model.Localisation.ID == 0 ? Worki.Resources.Views.Shared.SharedString.Adds : Worki.Resources.Views.Shared.SharedString.Valid)"/>
+        </div>
+        <div class="clear">
+        </div>
+}

@@ -276,4 +276,10 @@
   <data name="SharedOfficeFr" xml:space="preserve">
     <value>Partage Fr</value>
   </data>
+  <data name="EditOffer" xml:space="preserve">
+    <value>Edition</value>
+  </data>
+  <data name="EditPlace" xml:space="preserve">
+    <value>Edition du lieu</value>
+  </data>
 </root>

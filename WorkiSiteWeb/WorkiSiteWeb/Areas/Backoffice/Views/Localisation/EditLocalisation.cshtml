@@ -1,0 +1,40 @@
+﻿@model LocalisationFormViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Configure)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.VersionedContent(Links.Content.LocalisationForm_min_css)" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css"
+        id="theme">
+    <link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
+}
+
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID, Title = Model.Localisation.Name })
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))},
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Localisation.ID))}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+	@Html.Partial(MVC.Localisation.Views._LocalisationForm)
+	</div>
+	<div class="clear">
+	</div>
+</div>
+
+@section ScriptContent
+{
+    @Html.Partial(MVC.Localisation.Views._LocalisationFormScript)
+    @Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Localisation)
+}
+
+

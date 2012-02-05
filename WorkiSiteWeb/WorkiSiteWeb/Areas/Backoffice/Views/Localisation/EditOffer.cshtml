@@ -1,0 +1,40 @@
+﻿@model OfferFormViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Configure)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.VersionedContent(Links.Content.LocalisationForm_min_css)" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
+	<link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
+}
+
+@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Offer.Id));}
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Offer.Id, (int)OfferMenuType.Edit));}
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.Offer.Id, (int)OfferMenuType.Edit));}
+
+		@Html.Partial(MVC.Offer.Views._CreateOffer)
+	</div>
+	<div class="clear">
+	</div>
+</div>
+
+@section ScriptContent
+{
+	@Html.Partial(MVC.Offer.Views._CreateOfferScript, Model)
+	@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
+	@Html.Partial(MVC.Shared.Views._DatePickerScript)
+	<script type="text/javascript">
+		require(["@Links.Scripts.dropdown_js"], function () {
+			InitDropdown("#@DropDownModel.OfferDD");
+		});
+	</script>
+}
+
