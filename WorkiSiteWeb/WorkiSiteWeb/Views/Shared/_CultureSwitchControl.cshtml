@@ -1,3 +1,6 @@
-﻿@Html.ActionLink("Français", MVC.Home.ChangeCulture("fr", this.Request.RawUrl))
+﻿@{
+	var isFr = Url.IsFrench();
+}
+@Html.ActionLink("Fr", MVC.Home.ChangeCulture("fr", this.Request.RawUrl), new { @class = !isFr ? "orange noUnderline" : "orange" })
 
-@Html.ActionLink("English", MVC.Home.ChangeCulture("en", this.Request.RawUrl))
+@Html.ActionLink("En", MVC.Home.ChangeCulture("en", this.Request.RawUrl), new { @class = isFr ? "orange noUnderline" : "orange" })

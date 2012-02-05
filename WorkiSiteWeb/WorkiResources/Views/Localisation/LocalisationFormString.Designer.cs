@@ -187,6 +187,42 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ex : 18:00.
+        /// </summary>
+        public static string MondayAfterClose {
+            get {
+                return ResourceManager.GetString("MondayAfterClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 14:00.
+        /// </summary>
+        public static string MondayAfterOpen {
+            get {
+                return ResourceManager.GetString("MondayAfterOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 12:30.
+        /// </summary>
+        public static string MondayMorningClose {
+            get {
+                return ResourceManager.GetString("MondayMorningClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 9:00.
+        /// </summary>
+        public static string MondayMorningOpen {
+            get {
+                return ResourceManager.GetString("MondayMorningOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offre.
         /// </summary>
         public static string Offers {
@@ -399,6 +435,24 @@ namespace Worki.Resources.Views.Localisation {
         public static string Tuesday {
             get {
                 return ResourceManager.GetString("Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 22:00.
+        /// </summary>
+        public static string TuesdayAfterClose {
+            get {
+                return ResourceManager.GetString("TuesdayAfterClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ex : 9:00.
+        /// </summary>
+        public static string TuesdayMorningOpen {
+            get {
+                return ResourceManager.GetString("TuesdayMorningOpen", resourceCulture);
             }
         }
         

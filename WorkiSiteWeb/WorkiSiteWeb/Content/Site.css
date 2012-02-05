@@ -303,6 +303,12 @@ page width. Or, you can specify an exact pixel width. */
     font-size: 14px;
 }
 
+.headerMenu .buttonStd a
+{
+    width: 88px;
+}
+
+
 .ie7 .headerMenu .buttonStd
 {
     margin-left:5px;
@@ -329,6 +335,11 @@ page width. Or, you can specify an exact pixel width. */
 {
 	/*background-color:whiteSmoke;*/
 	padding:5px 10px 10px 10px;
+}
+
+.languageSwitch
+{
+	margin-top:-5px;
 }
 
 .loginTitle
@@ -450,9 +461,13 @@ page width. Or, you can specify an exact pixel width. */
 
 .follow_footer
 {
-	background:url('images/followUs_footer.png') no-repeat;
 	width:249px;
 	height:45px;
+}
+
+.follow_footer_fr
+{
+	background:url('images/followUs_footer.png') no-repeat;
 }
 
 .footerTop
@@ -2275,5 +2290,5 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .sharedOfficeAction
 {
     width:300px;
-    margin:auto;
+    margin:10px auto;
 }

@@ -14,7 +14,7 @@ http://plugins.jquery.com/project/jquery-dateFormat
 
 			// get provided date
 			var tagText = $(this).html();
-			var givenDate = new Date(tagText);
+			var givenDate = Date.parse(tagText, format);// new Date(tagText);
 
 			// apply offset
 			var hours = givenDate.getHours();

@@ -219,10 +219,10 @@
     <value>Thursday</value>
   </data>
   <data name="TimeExample1" xml:space="preserve">
-    <value>Please enter an hour with hh:mm format, for instance 9:30</value>
+    <value>Please enter an hour with hh:mm format, for instance 9:30am</value>
   </data>
   <data name="TimeExample2" xml:space="preserve">
-    <value>Please enter an hour with hh:mm format, for instance 19:30</value>
+    <value>Please enter an hour with hh:mm format, for instance 07:30pm</value>
   <comment>Problème des pm en Angleterre</comment></data>
   <data name="Tuesday" xml:space="preserve">
     <value>Tuesday</value>
@@ -238,5 +238,23 @@
   </data>
   <data name="SharedOfficeExemple" xml:space="preserve">
     <value>Ex: Luxury offices, Workspace to share with a start-up, Desktop in a lumiinous open-space</value>
+  </data>
+  <data name="MondayAfterClose" xml:space="preserve">
+    <value>Ex : 6:00pm</value>
+  </data>
+  <data name="MondayAfterOpen" xml:space="preserve">
+    <value>Ex : 2:00pm</value>
+  </data>
+  <data name="MondayMorningClose" xml:space="preserve">
+    <value>Ex : 12:30am</value>
+  </data>
+  <data name="MondayMorningOpen" xml:space="preserve">
+    <value>Ex : 9:00am</value>
+  </data>
+  <data name="TuesdayAfterClose" xml:space="preserve">
+    <value>Ex : 10:00pm</value>
+  </data>
+  <data name="TuesdayMorningOpen" xml:space="preserve">
+    <value>Ex : 9:00am</value>
   </data>
 </root>

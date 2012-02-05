@@ -298,4 +298,13 @@
   <data name="DashboardAlerts" xml:space="preserve">
     <value>User space : {0} alert(s)</value>
   </data>
+  <data name="CreateBooking" xml:space="preserve">
+    <value>Create booking</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Perdiod</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
 </root>

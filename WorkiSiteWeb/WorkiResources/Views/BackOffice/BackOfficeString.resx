@@ -188,7 +188,8 @@
   </data>
   <data name="NoCurrentQuotation" xml:space="preserve">
     <value>Vous n'avez aucune demande de devis en cours. Pour consulter vos demandes de devis archivées, allez dans la section {0}.</value>
-  <comment>Jm Correct l27</comment></data>
+    <comment>Jm Correct l27</comment>
+  </data>
   <data name="NotDefined" xml:space="preserve">
     <value>Non fixé</value>
   </data>
@@ -296,5 +297,14 @@
   </data>
   <data name="DashboardAlerts" xml:space="preserve">
     <value>Espace utilisateur : {0} alerte(s)</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Créer</value>
+  </data>
+  <data name="CreateBooking" xml:space="preserve">
+    <value>Créer une réservation</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Période</value>
   </data>
 </root>

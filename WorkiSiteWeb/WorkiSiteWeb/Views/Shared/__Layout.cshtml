@@ -49,14 +49,18 @@
 				<div class="loginContainer detailContent float-right borderRadiusBottom">
 					<div  class="logindisplay sizeHeaderConnexion">
 						@Html.Partial(MVC.Shared.Views._LogOnUserControl)
-                        @if (WebHelper.IsDebug())
-                        {
-						    @Html.Partial(MVC.Shared.Views._CultureSwitchControl)
-                        }
 					</div>
 				</div>
 				<div class="clear">
 				</div>
+				@if (WebHelper.IsDebug())
+                {
+					<div class="languageSwitch float-right">
+						@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
+					</div>
+					<div class="clear">
+					</div>
+                }
 			</div>
 		</div>
 		<div class="page">
@@ -105,7 +109,7 @@
 					</div>
 				</div>
 				<div class="float-right">
-					<div class="follow_footer">
+					<div class="follow_footer @(Url.IsFrench() ? "follow_footer_fr" : "")">
 					</div>
 					<div class="social_logo">  
 						<div class="linkImg fb_footer float-left">
@@ -139,6 +143,10 @@
 		</div>
 	</div>
     @RenderSection("ScriptContent", false)
+	@{
+		var frLocalDate = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? Links.Scripts.jquery_localdate_fr_js : "";
+		var localDateFormat = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? "dd/MM/yyyy HH:mm:ss" : "MM/dd/yyyy hh:mm:ss tt";
+	}
 	@if (!Url.IsSecuredUrl())
 	{
 	<script type="text/javascript">
@@ -168,8 +176,8 @@
 
     	require(["@Links.Scripts.date_js"], function () {
     		require(["@Links.Scripts.jquery_localdate_js"], function () {
-    			require(["@Links.Scripts.jquery_localdate_fr_js"], function () {
-    				$('.utcdate').localTimeFromUTC('dd/MM/yyyy HH:mm:ss');
+    			require(["@frLocalDate"], function () {
+    				$('.utcdate').localTimeFromUTC('@localDateFormat');
     				$('.timeago').timeago();
     			});
     		});

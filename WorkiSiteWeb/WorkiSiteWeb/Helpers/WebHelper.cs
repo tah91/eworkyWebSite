@@ -292,6 +292,17 @@ namespace Worki.Web.Helpers
 			);
 		}
 
+		public static Worki.Infrastructure.Culture GetCulture(this UrlHelper instance)
+		{
+			var url = instance.RequestContext.HttpContext.Request.Url.PathAndQuery;
+			return Worki.Infrastructure.MultiCultureMvcRouteHandler.GetCulture(url);
+		}
+
+		public static bool IsFrench(this UrlHelper instance)
+		{
+			return GetCulture(instance) == Infrastructure.Culture.fr;
+		}
+
 		#endregion
 	}
 }

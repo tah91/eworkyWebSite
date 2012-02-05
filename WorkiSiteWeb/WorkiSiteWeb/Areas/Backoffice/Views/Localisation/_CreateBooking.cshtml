@@ -1,7 +1,7 @@
 ﻿@model CreateBookingModel
 
 <div class="contentBlock createBooking">
-	<h3 class="blue">Créer une réservation</h3>
+	<h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.CreateBooking</h3>
     <div class="cross float-right">
     </div>
     <div class="clear">
@@ -14,7 +14,7 @@
 			<tr>
 				<td>
 					<div class="editor-label">
-						@Html.Label("Période")
+						@Html.Label(@Worki.Resources.Views.BackOffice.BackOfficeString.Period)
 					</div>
 				</td>
 				<td>
@@ -51,7 +51,7 @@
 		<div id="createBookingError">
 		</div>
 		<div class="editor-field float-right">
-			<input type="submit" class="buttonStd buttonBlue" value="Créer"/>
+			<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.BackOffice.BackOfficeString.Create"/>
 		</div>
 		<div class="clear"></div>
 	</form>

@@ -523,8 +523,9 @@ namespace Worki.Data.Models
 		/// <returns>the date string</returns>
 		public string RenderDate(DateTime date)
 		{
-			var temp = string.Format("{0:H:mm}", date);
-			return temp;
+			return CultureHelpers.GetSpecificFormat(date, CultureHelpers.TimeFormat.Time);
+			//var temp = string.Format("{0:H:mm}", date);
+			//return temp;
 		}
 
 		string GetOpenningTime(DateTime? openAM, DateTime? closeAM, DateTime? openPM, DateTime? closePM)
@@ -568,7 +569,7 @@ namespace Worki.Data.Models
 				}
 			}
 
-			return toRet.Replace(':', 'h');
+			return toRet;//.Replace(':', 'h');
 		}
 
 		public string GetOpenningTime(DayOfWeek day)

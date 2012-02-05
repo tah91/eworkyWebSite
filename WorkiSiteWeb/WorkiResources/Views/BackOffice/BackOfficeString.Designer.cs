@@ -115,6 +115,24 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Créer.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Créer une réservation.
+        /// </summary>
+        public static string CreateBooking {
+            get {
+                return ResourceManager.GetString("CreateBooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fiche client.
         /// </summary>
         public static string CustomerSheet {
@@ -417,6 +435,15 @@ namespace Worki.Resources.Views.BackOffice {
         public static string PaypalIdentity {
             get {
                 return ResourceManager.GetString("PaypalIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Période.
+        /// </summary>
+        public static string Period {
+            get {
+                return ResourceManager.GetString("Period", resourceCulture);
             }
         }
         

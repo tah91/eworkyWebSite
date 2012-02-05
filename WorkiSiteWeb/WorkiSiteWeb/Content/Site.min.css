@@ -48,10 +48,12 @@ html,body{margin:0;padding:0;height:100%}
 .headerMenu{width:39%;text-align:center}
 .ie7 .headerMenu{width:24%;text-align:center}
 .headerMenu .buttonStd{width:90px;height:40px;margin:0;font-size:14px}
+.headerMenu .buttonStd a{width:88px}
 .ie7 .headerMenu .buttonStd{margin-left:5px}
 .loginContainer{width:auto;background-color:white!important;margin-top:0!important;height:50px}
 .ie7 .loginContainer{width:32%;background-color:white!important;margin-top:0!important;height:50px}
 .logindisplay{padding:5px 10px 10px 10px}
+.languageSwitch{margin-top:-5px}
 .loginTitle{font-size:.9em;margin-bottom:3px}
 .welcome{margin-top:5px}
 .alertSummaryContainer{padding:10px 0}
@@ -68,7 +70,8 @@ html,body{margin:0;padding:0;height:100%}
 .footer h1{color:#f6f6f6;font-weight:bold}
 .footer ul,ol{margin:0;list-style-position:inside}
 .worki_footer{background:url('images/worki_footer.png') no-repeat;width:141px;height:47px;padding-right:480px}
-.follow_footer{background:url('images/followUs_footer.png') no-repeat;width:249px;height:45px}
+.follow_footer{width:249px;height:45px}
+.follow_footer_fr{background:url('images/followUs_footer.png') no-repeat}
 .footerTop{margin:30px auto 0 auto;width:1000px;height:210px;border-bottom:2px solid silver}
 .footerBottom{margin:2px auto 0 auto;width:1000px}
 .footerLinks{padding-top:15px;width:200px}
@@ -349,4 +352,4 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .sharedOfficePart li{margin:20px 10px 20px 20px;list-style:disc;font-size:11px}
 .sharedOfficeHead{margin:10px 0}
 .sharedOfficeLegally{margin:10px 0!important}
-.sharedOfficeAction{width:300px;margin:auto}
+.sharedOfficeAction{width:300px;margin:10px auto}

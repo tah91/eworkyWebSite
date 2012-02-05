@@ -1,6 +1,6 @@
 ﻿<script type="text/javascript">
     require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
-        require(["@Url.VersionedContent((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "fr-FR") ? Links.Scripts.jquery_ui_datepicker_fr_js : Links.Scripts.jquery_ui_datepicker_en_js)"], function () {
+    	require(["@Url.VersionedContent((Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? Links.Scripts.jquery_ui_datepicker_fr_js : Links.Scripts.jquery_ui_datepicker_en_js)"], function () {
             $(".dp").datepicker({
                 changeMonth: true,
                 changeYear: true,

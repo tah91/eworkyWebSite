@@ -15,6 +15,23 @@ namespace Worki.Infrastructure
 		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
 		public const string ConnexionPath = "/compte/connexion";
 
+		/// <summary>
+		/// Get culture type from url
+		/// </summary>
+		/// <param name="url">the url</param>
+		/// <returns>the culture type</returns>
+		public static Culture GetCulture(string url)
+		{
+			var cultureStr = ExtractCultureFromUrl(url);
+			Culture culture;
+			return Enum.TryParse<Culture>(cultureStr, out culture) ? culture : Culture.fr;
+		}
+
+		/// <summary>
+		/// Extract culture from an url
+		/// </summary>
+		/// <param name="url">the url</param>
+		/// <returns>the culture, null if no culture found</returns>
 		public static string ExtractCultureFromUrl(string url)
 		{
 			if (string.IsNullOrEmpty(url))

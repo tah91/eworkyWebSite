@@ -135,9 +135,12 @@
 				var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
 			}
 			<div class="localisationDescription contentBlock">
+				@if (Url.IsFrench())
+				{
 				<div class="localisationDesc" itemprop="description">
 					@Html.Nl2Br(Model.Description)
 				</div>
+				}
 				@if (generalFeatures.Count > 0)
 				{
 					<h4 class="servicesBlock">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>

@@ -64,7 +64,8 @@
 		    </div>
             <div class="clear">
 	        </div>
-
+			@if (Url.IsFrench())
+			{
             <div class="sharedOfficeLegally innerContentBlock">
                 <h2 class="blue centerAlign">@Worki.Resources.Views.Home.ShareOffice.LegallyTitle</h2>
 			    <p>
@@ -80,6 +81,7 @@
                     @Html.Raw(Worki.Resources.Views.Home.ShareOffice.Legally4)
 			    </p><br />
 		    </div>
+			}
 
             <div class="sharedOfficeAction bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Home.ShareOffice.AddSpace, MVC.Localisation.CreateSharedOffice())</div>
 

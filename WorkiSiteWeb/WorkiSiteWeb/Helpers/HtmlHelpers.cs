@@ -323,7 +323,7 @@ namespace Worki.Web.Helpers
 		{
 			if (!date.HasValue)
 				return null;
-			var str = date.Value.ToString("MM/dd/yyyy HH:mm:ss"); 
+			var str = CultureHelpers.GetSpecificFormat(date, CultureHelpers.TimeFormat.LongGeneral);//.Value.ToString("MM/dd/yyyy HH:mm:ss"); 
 			var tag = new TagBuilder("span");
 			tag.AddCssClass("utcdate");
 			if (relative)

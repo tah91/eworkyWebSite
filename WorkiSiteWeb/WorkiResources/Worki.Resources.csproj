@@ -198,6 +198,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BackOfficeString.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BackOffice\FullCalandar.Designer.cs">
+      <DependentUpon>FullCalandar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Booking\BookingString.Designer.cs">
       <DependentUpon>BookingString.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -438,6 +443,12 @@
       <LastGenOutput>BackOfficeString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\BackOffice\FullCalandar.en.resx" />
+    <EmbeddedResource Include="Views\BackOffice\FullCalandar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FullCalandar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Booking\BookingString.en.resx" />
     <EmbeddedResource Include="Views\Booking\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -447,6 +458,7 @@
     <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
+    <EmbeddedResource Include="Views\Home\ShareOffice.en.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ShareOffice.Designer.cs</LastGenOutput>
@@ -461,7 +473,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\FaqString.en.resx" />
-    <EmbeddedResource Include="Views\Home\HomeString.en.resx" />
+    <EmbeddedResource Include="Views\Home\HomeString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\JobString.en.resx" />
     <EmbeddedResource Include="Views\Home\MentionLegaleString.en.resx" />
     <EmbeddedResource Include="Views\Home\PresseString.en.resx" />
