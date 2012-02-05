@@ -53,9 +53,9 @@
 				</div>
 				<div class="clear">
 				</div>
-				@if (WebHelper.IsDebug())
+				@if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
                 {
-					<div class="languageSwitch float-right">
+					<div class="languageSwitch orange bold float-right">
 						@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
 					</div>
 					<div class="clear">
