@@ -126,9 +126,12 @@
 			</div>
 		</div>
         @{
-			if(Url.IsFrench())
+            var isFrench = Url.IsFrench();
+            var fbCulture = "en_US";
+            if (isFrench)
 			{
 				Html.RenderAction(MVC.Home.BlogContainer());
+                fbCulture = "fr_FR";
 			}
 		}
 		<div class="contentBlock">
@@ -137,7 +140,7 @@
 					var js, fjs = d.getElementsByTagName(s)[0];
 					if (d.getElementById(id)) { return; }
 					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=@WebHelper.GetFacebookId()";
+					js.src = "//connect.facebook.net/@fbCulture/all.js#xfbml=1&appId=@WebHelper.GetFacebookId()";
 					fjs.parentNode.insertBefore(js, fjs);
 				} (document, 'script', 'facebook-jssdk'));
 			</script>

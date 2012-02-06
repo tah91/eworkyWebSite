@@ -85,11 +85,13 @@ namespace Worki.Web.Helpers
 
         public static string GetDetailFullUrl(this Localisation loc, UrlHelper urlHelper)
         {
-            if (loc == null || urlHelper==null)
+            if (loc == null || urlHelper == null)
                 return null;
 
-			var type = MiscHelpers.GetSeoString(Localisation.GetLocalisationType(loc.TypeValue));
-			var name = MiscHelpers.GetSeoString(loc.Name);
+            string typeStr;
+            Localisation.GetStaticLocalisationTypes().TryGetValue(loc.TypeValue, out typeStr);
+            var type = MiscHelpers.GetSeoString(typeStr);
+            var name = MiscHelpers.GetSeoString(loc.Name);
             return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "" });
         }
 

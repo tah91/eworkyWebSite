@@ -149,10 +149,20 @@ namespace Worki.Data.Models
 			}
 		}
 
-		public static Dictionary<int, string> GetLocalisationTypes()
+        static Dictionary<int, string> _LocalisationTypes = null;
+		public static Dictionary<int, string> GetStaticLocalisationTypes()
 		{
-			return LocalisationTypes.ToDictionary(t => t, t => GetLocalisationType(t));
+            if(_LocalisationTypes == null)
+            {
+                _LocalisationTypes= LocalisationTypes.ToDictionary(t => t, t => GetLocalisationType(t));
+            }
+			return _LocalisationTypes;
 		}
+
+        public static Dictionary<int, string> GetLocalisationTypes()
+        {
+            return LocalisationTypes.ToDictionary(t => t, t => GetLocalisationType(t));
+        }
 
 		public static Dictionary<int, string> GetFreeLocalisationTypes()
 		{
