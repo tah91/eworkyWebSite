@@ -53,7 +53,7 @@
 				</div>
 				<div class="clear">
 				</div>
-				@if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
+				@if (Request.IsAuthenticated)
                 {
 					<div class="languageSwitch orange bold float-right">
 						@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
