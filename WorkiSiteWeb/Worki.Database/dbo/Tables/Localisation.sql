@@ -13,6 +13,7 @@
 	[Facebook]             NVARCHAR (256)  NULL,
 	[Twitter]              NVARCHAR (256)  NULL,
     [Description]          NVARCHAR (MAX) NULL,
+	[DescriptionEn]        NVARCHAR (MAX) NULL,
     [Latitude]             FLOAT (53)     NOT NULL,
     [Longitude]            FLOAT (53)     NOT NULL,
     [OwnerID]              INT            CONSTRAINT [DF__Localisat__Owner__5535A963] DEFAULT ((0)) NULL,

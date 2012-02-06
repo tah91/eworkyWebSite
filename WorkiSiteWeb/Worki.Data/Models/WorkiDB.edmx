@@ -190,6 +190,7 @@
           <Property Name="PostUserID" Type="int" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Post" Type="nvarchar(max)" />
+          <Property Name="PostEn" Type="nvarchar(max)" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="RatingPrice" Type="int" Nullable="false" />
           <Property Name="RatingWifi" Type="int" Nullable="false" />
@@ -231,6 +232,7 @@
           <Property Name="Facebook" Type="nvarchar" MaxLength="256" />
           <Property Name="Twitter" Type="nvarchar" MaxLength="256" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DescriptionEn" Type="nvarchar(max)" />
           <Property Name="Latitude" Type="float" Nullable="false" />
           <Property Name="Longitude" Type="float" Nullable="false" />
           <Property Name="OwnerID" Type="int" />
@@ -1271,6 +1273,7 @@
 					<Property Type="Int32" Name="RatingWelcome" Nullable="false" />
 					<NavigationProperty Name="Localisation" Relationship="WorkiDBModel.FK_Comment_Localisation" FromRole="Comment" ToRole="Localisation" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_Comment_Member" FromRole="Comment" ToRole="Member" />
+          <Property Type="String" Name="PostEn" MaxLength="Max" FixedLength="false" Unicode="true" />
 				</EntityType>
 				<EntityType Name="FavoriteLocalisation">
 					<Key>
@@ -1799,6 +1802,7 @@
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_Localisation_Member" FromRole="Localisation" ToRole="Member" />
           <Property Type="Decimal" Name="BookingCom" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="QuotationPrice" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="DescriptionEn" MaxLength="Max" FixedLength="false" Unicode="true" />
 				</EntityType>
 				<Association Name="FK_Comment_Localisation">
 					<End Type="WorkiDBModel.Localisation" Role="Localisation" Multiplicity="1" />
@@ -2175,7 +2179,8 @@
 					<EntitySetMapping Name="Comments">
 						<EntityTypeMapping TypeName="WorkiDBModel.Comment">
 							<MappingFragment StoreEntitySet="Comment">
-								<ScalarProperty Name="RatingWelcome" ColumnName="RatingWelcome" />
+								<ScalarProperty Name="PostEn" ColumnName="PostEn" />
+                <ScalarProperty Name="RatingWelcome" ColumnName="RatingWelcome" />
 								<ScalarProperty Name="RatingDispo" ColumnName="RatingDispo" />
 								<ScalarProperty Name="RatingWifi" ColumnName="RatingWifi" />
 								<ScalarProperty Name="RatingPrice" ColumnName="RatingPrice" />
@@ -2526,7 +2531,8 @@
 					<EntitySetMapping Name="Localisations">
 						<EntityTypeMapping TypeName="WorkiDBModel.Localisation">
 							<MappingFragment StoreEntitySet="Localisation">
-								<ScalarProperty Name="QuotationPrice" ColumnName="QuotationPrice" />
+								<ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="QuotationPrice" ColumnName="QuotationPrice" />
                 <ScalarProperty Name="BookingCom" ColumnName="BookingCom" />
                 <ScalarProperty Name="RoadAccess" ColumnName="RoadAccess" />
 								<ScalarProperty Name="Station" ColumnName="Station" />

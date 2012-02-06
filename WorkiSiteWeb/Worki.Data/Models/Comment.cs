@@ -26,6 +26,7 @@ namespace Worki.Data.Models
         public int RatingWifi { get; set; }
         public int RatingDispo { get; set; }
         public int RatingWelcome { get; set; }
+        public string PostEn { get; set; }
     
         // Navigation properties
     

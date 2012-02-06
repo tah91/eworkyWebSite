@@ -4,6 +4,7 @@
     [PostUserID]     INT            CONSTRAINT [DF_Comment_PostUserID] DEFAULT ((0)) NULL,
     [Date]           DATETIME       NOT NULL,
     [Post]           NVARCHAR (MAX) NULL,
+	[PostEn]         NVARCHAR (MAX) NULL,
     [Rating]         INT            NOT NULL,
     [RatingPrice]    INT            CONSTRAINT [DF_Comment_RatingPrice] DEFAULT ((-1)) NOT NULL,
     [RatingWifi]     INT            CONSTRAINT [DF_Comment_RatingWifi] DEFAULT ((-1)) NOT NULL,

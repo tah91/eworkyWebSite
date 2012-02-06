@@ -53,6 +53,7 @@ namespace Worki.Data.Models
         public string RoadAccess { get; set; }
         public decimal BookingCom { get; set; }
         public decimal QuotationPrice { get; set; }
+        public string DescriptionEn { get; set; }
     
         // Navigation properties
     
