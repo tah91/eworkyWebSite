@@ -124,25 +124,25 @@
     <value>Book</value>
   </data>
   <data name="AccessBO" xml:space="preserve">
-    <value>To manage your space on eWorky, please ask {0}</value>
+    <value>To manage your space on eWorky and access important information, you can use the {0}</value>
   </data>
   <data name="AccessBOLink" xml:space="preserve">
     <value>using the contact form</value>
   </data>
   <data name="AccessBOTitle" xml:space="preserve">
-    <value>Access to manager space</value>
+    <value>Manage your space</value>
   </data>
   <data name="Book" xml:space="preserve">
-    <value>Book and pay online your meeting room or your coworking space subscription</value>
+    <value>Book and pay your meeting room or your coworking space subscription online</value>
   </data>
   <data name="BookUser" xml:space="preserve">
-    <value>Every workplace propose different offers. Consult them and book the one you need!</value>
+    <value>Every workplace proposes different offers. Consult them and book the ones you need!</value>
   </data>
   <data name="BookUserTitle" xml:space="preserve">
     <value>Book</value>
   </data>
   <data name="Commercialize" xml:space="preserve">
-    <value>Answer quickly to the booking and quote requests and get the money directly on your account</value>
+    <value>Answer booking requests and send quotes quickly. You will receive the money directly on your account</value>
   </data>
   <data name="CommercializeTitle" xml:space="preserve">
     <value>Sell</value>
@@ -154,7 +154,7 @@
     <value>Talk with your coworkers</value>
   </data>
   <data name="Go" xml:space="preserve">
-    <value>Once your request is validated, make the most of all management of your space features</value>
+    <value>Once your request is validated, make the most of your space management functionalities</value>
   </data>
   <data name="GoTitle" xml:space="preserve">
     <value>Go!</value>
@@ -166,7 +166,7 @@
     <value>Manage your clients</value>
   </data>
   <data name="HandleSpace" xml:space="preserve">
-    <value>Manage for free your bookings, plannings, extra intakes, rates and subscription offers</value>
+    <value>Manage your bookings, schedules, additional services, rates and subscription offers for free</value>
   </data>
   <data name="HandleSpaceTitle" xml:space="preserve">
     <value>Manage your space</value>
@@ -181,16 +181,16 @@
     <value>eWorky is an open marketplace for workspaces</value>
   </data>
   <data name="Join" xml:space="preserve">
-    <value>Add, mark and comment workplaces to help eWorky community in its searches</value>
+    <value>Add, mark and comment on workplaces to help the eWorky community in its searches</value>
   </data>
   <data name="JoinTitle" xml:space="preserve">
     <value>Join the community</value>
   </data>
   <data name="MakeFamous" xml:space="preserve">
-    <value>Join for free the largest workplaces database in Europe with a complete description page with all your offers and services</value>
+    <value>Join the largest workplace database in Europe for free offering a complete description page of your space and all of your services</value>
   </data>
   <data name="MakeFamousTitle" xml:space="preserve">
-    <value>Make famous</value>
+    <value>Advertise your workspace</value>
   </data>
   <data name="OwnerTitle" xml:space="preserve">
     <value>Manager</value>
@@ -208,10 +208,10 @@
     <value>Create {0} for free specifying you are the owner</value>
   <comment>JM Modif l.22</comment></data>
   <data name="ReferenceLink" xml:space="preserve">
-    <value>A page for your workplace</value>
+    <value>a page for your workplace</value>
   </data>
   <data name="RefererenceTitle" xml:space="preserve">
-    <value>Reference</value>
+    <value>Add your workplace</value>
   </data>
   <data name="RegisterLink" xml:space="preserve">
     <value>Sign up for free</value>
@@ -229,13 +229,13 @@
     <value>Sign up</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Find a WiFi cafe, a meeting room or a coworking space amongst the largest workplaces database in Europe</value>
+    <value>Find a WiFi cafe, a meeting room or a coworking space amongst the largest workplace database in Europe</value>
   </data>
   <data name="SearchTitle" xml:space="preserve">
     <value>Look for</value>
   </data>
   <data name="SearchUser" xml:space="preserve">
-    <value>Look for the workspace you need by location, name, services or workplace type</value>
+    <value>Look for the workspace you need by location, name, services or type of workplace</value>
   </data>
   <data name="SearchUserTitle" xml:space="preserve">
     <value>Look for</value>
@@ -247,14 +247,14 @@
     <value>I am a user</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>eWorky helps you to manage your workplace but will never replace your warm welcome!</value>
+    <value>eWorky helps you manage your workplace but can never replace your unique warm welcome!</value>
   </data>
   <data name="WelcomeTitle" xml:space="preserve">
     <value>Welcome</value>
   </data>
   <data name="Work" xml:space="preserve">
-    <value>eWorky helps you finding a workplace but won't work for you, so good luck in your job!</value>
-  <comment>Jm Modif L13</comment></data>
+    <value>eWorky helps you find a workplace that fits your needs but leaves the work to you, so good luck!</value>
+  </data>
   <data name="WorkTitle" xml:space="preserve">
     <value>Set to work!</value>
   <comment>Jm Modif L13</comment></data>
