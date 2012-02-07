@@ -316,17 +316,20 @@
 
 .bfm{ background-image:url('images/mediaBanner.png'); background-position: 0 0; width: 86px; height: 32px; } 
 .bfm:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -82px; width: 86px; height: 32px; } 
-.fr3{ background-image:url('images/mediaBanner.png'); background-position: 0 -164px; width: 110px; height: 32px; } 
-.fr3:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -246px; width: 110px; height: 32px; } 
-.franceinfo{ background-image:url('images/mediaBanner.png'); background-position: 0 -328px; width: 49px; height: 32px; } 
-.franceinfo:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -410px; width: 49px; height: 32px; } 
-.frenchweb{ background-image:url('images/mediaBanner.png'); background-position: 0 -492px; width: 164px; height: 32px; } 
-.frenchweb:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -574px; width: 164px; height: 32px; } 
-.jdn{ background-image:url('images/mediaBanner.png'); background-position: 0 -656px; width: 213px; height: 32px; } 
-.jdn:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -738px; width: 213px; height: 32px; } 
-.parisien{ background-image:url('images/mediaBanner.png'); background-position: 0 -820px; width: 134px; height: 32px; } 
-.parisien:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -902px; width: 134px; height: 32px; } 
-
+.citron{ background-image:url('images/mediaBanner.png'); background-position: 0 -164px; width: 79px; height: 32px; } 
+.citron:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -246px; width: 79px; height: 32px; } 
+.echos{ background-image:url('images/mediaBanner.png'); background-position: 0 -328px; width: 104px; height: 32px; } 
+.echos:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -410px; width: 104px; height: 32px; } 
+.fr3{ background-image:url('images/mediaBanner.png'); background-position: 0 -492px; width: 110px; height: 32px; } 
+.fr3:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -574px; width: 110px; height: 32px; } 
+.franceinfo{ background-image:url('images/mediaBanner.png'); background-position: 0 -656px; width: 49px; height: 32px; } 
+.franceinfo:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -738px; width: 49px; height: 32px; } 
+.frenchweb{ background-image:url('images/mediaBanner.png'); background-position: 0 -820px; width: 164px; height: 32px; } 
+.frenchweb:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -902px; width: 164px; height: 32px; } 
+.jdn{ background-image:url('images/mediaBanner.png'); background-position: 0 -984px; width: 213px; height: 32px; } 
+.jdn:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -1066px; width: 213px; height: 32px; } 
+.parisien{ background-image:url('images/mediaBanner.png'); background-position: 0 -1148px; width: 134px; height: 32px; } 
+.parisien:hover{ background-image:url('images/mediaBanner.png'); background-position: 0 -1230px; width: 134px; height: 32px; } 
 
 /* Rental Tab
 ----------------------------------------------------------*/
