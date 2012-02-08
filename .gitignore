@@ -30,6 +30,8 @@ obj/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+csx/
+_UpgradeReport_Files/
 
 #Tooling
 _ReSharper*/
@@ -55,3 +57,4 @@ WorkiSiteWeb/WorkiSiteWeb/Users/thumbnail/
 
 *.orig
 WorkiSiteWeb/WorkiSiteWeb/App_Data/Log.txt
+UpgradeLog.XML
