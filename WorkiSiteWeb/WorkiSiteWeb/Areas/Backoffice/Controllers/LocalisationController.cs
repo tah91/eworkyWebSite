@@ -280,7 +280,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					context.Commit();
 					TempData.Remove(PictureData.PictureDataString);
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
-					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+					return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id, offer.Id));
 				}
 				catch (Exception ex)
 				{
