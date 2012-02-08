@@ -117,4 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BestWorkspace" xml:space="preserve">
+    <value>Coworking, compartir despacho, café wifi</value>
+  </data>
+  <data name="UsingOfEWorky" xml:space="preserve">
+    <comment>?</comment>
+    <value>
+    </value>
+  </data>
+  <data name="RentSpeech" xml:space="preserve">
+    <comment>A compléter</comment>
+    <value>
+    </value>
+  </data>
+  <data name="CostSpace" xml:space="preserve">
+    <comment>?</comment>
+    <value>
+    </value>
+  </data>
+  <data name="TalkAboutUs" xml:space="preserve">
+    <comment>Jm Modif l.17</comment>
+    <value>
+    </value>
+  </data>
 </root>
