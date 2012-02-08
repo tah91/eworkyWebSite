@@ -458,6 +458,7 @@
     <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
+    <EmbeddedResource Include="Views\Home\HomeString.es.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.en.resx" />
     <EmbeddedResource Include="Views\Home\ShareOffice.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
