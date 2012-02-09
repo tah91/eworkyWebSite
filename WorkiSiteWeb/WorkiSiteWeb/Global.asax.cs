@@ -166,10 +166,84 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "",
-                "accueil/{action}/",
+                "home/{action}/",
                 new { controller = "Home", action = "Default" },
                 new string[] { "Worki.Web.Controllers" }
             );
+
+            #region Old Routes
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/presse/",
+                new { controller = "Home", action = "presse" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/jobs/",
+                new { controller = "Home", action = "Jobs" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/a-propos/",
+                new { controller = "Home", action = "About" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/mentions-legales/",
+                new { controller = "Home", action = "Legal" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/comment-ça-marche/",
+                new { controller = "Home", action = "HowItWorks" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/mode-d'emploi-gérant/",
+                new { controller = "Home", action = "OwnerTutorial" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/mode-d'emploi-utilisateur/",
+                new { controller = "Home", action = "UserTutorial" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/partager-un-bureau/",
+                new { controller = "Home", action = "ShareOffice" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/ajouter-espace/",
+                new { controller = "Home", action = "AddSpace" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/{action}/",
+                new { controller = "Home", action = "Index" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            #endregion
 
             #endregion
 
@@ -188,10 +262,57 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "",
+                "account/{action}/{id}",
+                new { controller = "Account", action = "Default", id = UrlParameter.Optional },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            #region Old Routes
+
+            routes.CultureMapRoute(
+                "",
+                "compte/connexion/{id}",
+                new { controller = "Account", action = "LogOn", id = UrlParameter.Optional },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "compte/deconnexion/{id}",
+                new { controller = "Account", action = "LogOff", id = UrlParameter.Optional },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "compte/inscription/{id}",
+                new { controller = "Account", action = "Register", id = UrlParameter.Optional },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "compte/activer/{id}",
+                new { controller = "Account", action = "Activate", id = UrlParameter.Optional },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "compte/reset-mdp/{id}",
+                new { controller = "Account", action = "ResetPassword", id = UrlParameter.Optional },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
                 "compte/{action}/{id}",
                 new { controller = "Account", action = "Default", id = UrlParameter.Optional },
                 new string[] { "Worki.Web.Controllers" }
             );
+
+            #endregion
+            
 
             #endregion
 
@@ -203,7 +324,7 @@ namespace Worki.Web
                 "", // Nom d'itinéraire
                 "{type}/{id}/{name}", // URL avec des paramètres
                 new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
-                new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
+                new { id = @"\d+", type = new FromValuesListConstraint(Localisation.GetLocalisationSeoTypes().Values) },
                 new string[] { "Worki.Web.Controllers" }
             );
 
@@ -225,44 +346,46 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "",
-                "lieu-de-travail/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/{order}/",
-                new { controller = "Localisation", action = "Default" },
+                "places/{action}/{lieu}/{lat}/{lng}/{type}/{offerType}/{page}/{order}/{index}",
+                new { controller = "Localisation", action = "FullSearch" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
-                "",
-                "lieu-de-travail/{action}/{lieu}/{page}/{offer-type}/{tout}/{order}/",
-                new { controller = "Localisation", action = "Default" },
-                new string[] { "Worki.Web.Controllers" }
-            );
-
-            //old urls
-            routes.CultureMapRoute(
-                "",
-                "recherche/{action}/{lieu}/{page}/{index}/{offer-type}/{tout}/",
-                new { controller = "Localisation", action = "Default" },
+                "", // Nom d'itinéraire
+                "places/details/{id}/{name}", // URL avec des paramètres
+                new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
-                "",
-                "recherche/{action}/{lieu}/{page}/{offer-type}/{tout}/",
-                new { controller = "Localisation", action = "Default" },
+                "", // Nom d'itinéraire
+                "places/{action}/{id}/{type}", // URL avec des paramètres
+                new { controller = "Localisation", action = "Offers" }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            //routes.CultureMapRoute(
-            //    "",
-            //    "lieu-de-travail/{action}/{type}/",
-            //    new { controller = "Localisation", action = "Default" },
-            //    new string[] { "Worki.Web.Controllers" }
-            //);
+            routes.CultureMapRoute(
+                "", // Nom d'itinéraire
+                "places/{action}/{id}", // URL avec des paramètres
+                new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            #region Old Routes
+
+            routes.CultureMapRoute(
+                "", // Nom d'itinéraire
+                "{type}/{id}/{name}", // URL avec des paramètres
+                new { area = "", controller = "Localisation", action = "DetailsOld" }, // Paramètres par défaut
+                new { id = @"\d+", type = new FromValuesListConstraint(localisationTypes) },
+                new string[] { "Worki.Web.Controllers" }
+            );
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
                 "lieu-de-travail/details/{id}/{name}", // URL avec des paramètres
-				new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
+                new { area = "", controller = "Localisation", action = "DetailsOld" }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
@@ -280,12 +403,7 @@ namespace Worki.Web
                 new string[] { "Worki.Web.Controllers" }
             );
 
-            routes.CultureMapRoute(
-                "", // Nom d'itinéraire
-                "recherche/{action}/{id}", // URL avec des paramètres
-                new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
-                new string[] { "Worki.Web.Controllers" }
-            );
+            #endregion
 
             #endregion
 
@@ -293,7 +411,7 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "annonces/{action}/{id}", // URL avec des paramètres
+                "rental/{action}/{id}", // URL avec des paramètres
                 new { controller = "Rental", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
@@ -304,7 +422,7 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "reservation/{action}/{id}/{localisationId}", // URL avec des paramètres
+                "booking/{action}/{id}/{localisationId}", // URL avec des paramètres
                 new { controller = "Booking", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
@@ -315,14 +433,15 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "offre/{action}/{id}/{localisationId}", // URL avec des paramètres
+                "offer/{action}/{id}/{localisationId}", // URL avec des paramètres
                 new { controller = "Offer", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
             #endregion
 
-            // MQP 
+            #region Paypal
+
             routes.CultureMapRoute(
                 "",
                 "paywithpaypal/{memberBookingId}",
@@ -351,6 +470,7 @@ namespace Worki.Web
                 new string[] { "Worki.Web.Controllers" }
             );
 
+            #endregion
 
             routes.CultureMapRoute(
                 "Default", // Route name

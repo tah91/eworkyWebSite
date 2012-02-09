@@ -41,18 +41,18 @@ namespace Worki.Infrastructure.Helpers
         public static class SeoConstants
         {
             public const string FreeAreas = "lieux-gratuits";
-            public const string Telecentre = "telecentre";
-            public const string BuisnessCenter = "centre-affaire";
-            public const string CoworkingSpace = "coworking";
-            public const string OtherPlaces = "autres-lieux";
-			public const string SharedOffice = "espace-partagé";
-            public const string SpotWifi = "spot-wifi";
-            public const string CoffeeResto = "café";
-            public const string Biblio = "biblio";
-            public const string TravelerSpace = "voyageur";
-            public const string WorkingHotel = "pepiniere";
-            public const string PrivateArea = "prive";
-            public const string PublicSpace = "epn";
+            public const string Telecentre = "smart-workcenter";
+            public const string BuisnessCenter = "business-center";
+            public const string CoworkingSpace = "coworking-space";
+            public const string OtherPlaces = "other-places";
+			public const string SharedOffice = "shared-office";
+            public const string SpotWifi = "wifi-hotspot";
+            public const string CoffeeResto = "pub-resto";
+            public const string Biblio = "library";
+            public const string TravelerSpace = "travel-lounge";
+            public const string WorkingHotel = "incubator";
+            public const string PrivateArea = "private-place";
+            public const string PublicSpace = "cyber";
             public const string Hotel = "hotel";
             public const string Type = "type";
 
@@ -80,7 +80,15 @@ namespace Worki.Infrastructure.Helpers
                 BuisnessCenter ,
                 CoworkingSpace ,
                 OtherPlaces ,
-                SharedOffice 
+                SharedOffice ,
+                SpotWifi ,
+                CoffeeResto ,
+                Biblio ,
+                TravelerSpace,
+                WorkingHotel,
+                PrivateArea,
+                PublicSpace,
+                Hotel
             };
 
             public const string FreeArea = "espace-gratuit";

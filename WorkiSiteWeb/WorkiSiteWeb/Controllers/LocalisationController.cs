@@ -39,25 +39,38 @@ namespace Worki.Web.Controllers
         /// The view containing the details of a localisation
         /// </summary>
         /// <returns>The action result.</returns>
-		[ActionName("details")]
-		public virtual ActionResult Details(int id, string name)
+		public virtual ActionResult DetailsOld(int id, string name)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id);
+
+            return RedirectPermanent(localisation.GetDetailFullUrl(Url));
+		}
+
+        /// <summary>
+        /// The view containing the details of a localisation
+        /// </summary>
+        /// <returns>The action result.</returns>
+        [ActionName("details")]
+        public virtual ActionResult Details(int id, string name)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisation = lRepo.Get(id);
             var nameToMatch = MiscHelpers.GetSeoString(localisation.Name);
 
-			if (localisation == null || string.IsNullOrEmpty(name) /*|| string.Compare(nameToMatch, name, true) != 0*/)
+            if (localisation == null || string.IsNullOrEmpty(name) /*|| string.Compare(nameToMatch, name, true) != 0*/)
             {
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
-			else
-			{
-				var container = new SearchSingleResultViewModel { Localisation = localisation };
-				return View(MVC.Localisation.Views.resultats_detail, container);
-			}
-		}
+            else
+            {
+                var container = new SearchSingleResultViewModel { Localisation = localisation };
+                return View(MVC.Localisation.Views.FullSearchResultDetail, container);
+            }
+        }
 
 		/// <summary>
 		/// The view containing the offers of a localisation
@@ -65,7 +78,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of the localisation</param>
 		/// <param name="type">offer type</param>
 		/// <returns>The action result.</returns>
-		[ActionName("offres")]
+		[ActionName("offers")]
 		public virtual ActionResult Offers(int id, int type)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -81,7 +94,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of the localisation</param>
 		/// <returns>The action result.</returns>
-		[ActionName("reservation")]
+		[ActionName("bookable-offers")]
 		public virtual ActionResult BookableOffers(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -174,10 +187,10 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>The form to fill</returns>
         [AcceptVerbs(HttpVerbs.Get), Authorize]
-        [ActionName("ajouter-lieu-gratuit")]
+        [ActionName("add-free-place")]
         public virtual ActionResult CreateFree()
         {
-			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(true));
+			return View(MVC.Localisation.Views.Edit, new LocalisationFormViewModel(true));
         }
 
 		/// <summary>
@@ -185,10 +198,10 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>The form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		[ActionName("ajouter-lieu-payant")]
+		[ActionName("add-place")]
 		public virtual ActionResult CreateNotFree()
 		{
-            return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false, false, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
+            return View(MVC.Localisation.Views.Edit, new LocalisationFormViewModel(false, false, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
 		}
 
 		/// <summary>
@@ -196,10 +209,10 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>The form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		[ActionName("ajouter-espace-partagé")]
+		[ActionName("add-shared-office")]
 		public virtual ActionResult CreateSharedOffice()
 		{
-			return View(MVC.Localisation.Views.editer, new LocalisationFormViewModel(false, true));
+			return View(MVC.Localisation.Views.Edit, new LocalisationFormViewModel(false, true));
 		}
 
         /// <summary>
@@ -207,7 +220,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>The form to fill</returns>
         [AcceptVerbs(HttpVerbs.Get), Authorize]
-        [ActionName("editer")]
+        [ActionName("edit")]
         public virtual ActionResult Edit(int? id)
         {
             if (!id.HasValue)
@@ -237,7 +250,7 @@ namespace Worki.Web.Controllers
         /// <param name="id">The id of the edited localisation</param>
         /// <returns>the detail view of localistion if ok, the form with errors else</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
-		[ActionName("editer")]
+		[ActionName("edit")]
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int? id, string addOffer)
 		{
@@ -398,7 +411,7 @@ namespace Worki.Web.Controllers
 		}
 
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-        [ActionName("devenir-proprietaire")]
+        [ActionName("set-ownership")]
 		public virtual ActionResult SetOwnership(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -528,28 +541,28 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>the form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("recherche")]
+		[ActionName("search")]
 		public virtual ActionResult FullSearch()
 		{
 			var criteria = new SearchCriteria(true);
-            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
+            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
 		}
 
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("recherche-par-type")]
+        [ActionName("search-per-type")]
 		public virtual ActionResult FullSearchPerType()
 		{
             var criteria = SearchCriteria.CreateSearchCriteria(eDirectAccessType.eNone);
-            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
+            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
 		}
 
 
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("recherche-par-nom")]
+        [ActionName("search-per-name")]
         public virtual ActionResult FullSearchPerName()
         {
             var criteria = new SearchCriteria(true, eSearchType.ePerName, eOrderBy.Rating);
-            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
+            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
         }
 
 		/// <summary>
@@ -559,11 +572,11 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>the form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("recherche-special")]
+		[ActionName("search-special")]
 		public virtual ActionResult FullSearchPerTypeSpecial(int type)
 		{
             var criteria = SearchCriteria.CreateSearchCriteria((eDirectAccessType)type);
-			return View(MVC.Localisation.Views.recherche, new SearchCriteriaFormViewModel(criteria));
+			return View(MVC.Localisation.Views.FullSearch, new SearchCriteriaFormViewModel(criteria));
 		}
 
         /// <summary>
@@ -603,7 +616,7 @@ namespace Worki.Web.Controllers
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo();
-			return View(MVC.Localisation.Views.resultats_liste, criteriaViewModel);
+			return View(MVC.Localisation.Views.FullSearchResult, criteriaViewModel);
         }
 
         /// <summary>
@@ -622,7 +635,7 @@ namespace Worki.Web.Controllers
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo();
-			return View(MVC.Localisation.Views.resultats_liste, criteriaViewModel);
+			return View(MVC.Localisation.Views.FullSearchResult, criteriaViewModel);
         }
 
 		/// <summary>
@@ -634,7 +647,7 @@ namespace Worki.Web.Controllers
 		/// <param name="criteria">The criteria data from the form</param>
 		/// <returns>redirect to the list of results</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
-		[ActionName("recherche")]
+		[ActionName("search")]
 		[ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
 		public virtual ActionResult FullSearch(SearchCriteria criteria)
@@ -652,7 +665,7 @@ namespace Worki.Web.Controllers
 					ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.CheckCriterias);
 				}
 			}
-            return View(MVC.Home.Views.index, new SearchCriteriaFormViewModel(criteria));
+            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
 		}
 
 		/// <summary>
@@ -668,7 +681,7 @@ namespace Worki.Web.Controllers
 		/// <param name="page">the page to display</param>
 		/// <returns>the list of results in the page</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("resultats-liste")]
+		[ActionName("search-results")]
 		public virtual ActionResult FullSearchResult(int? page)
 		{
 			var pageValue = page ?? 1;
@@ -676,7 +689,7 @@ namespace Worki.Web.Controllers
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo(pageValue);
-			return View(criteriaViewModel);
+			return View(MVC.Localisation.Views.FullSearchResult, criteriaViewModel);
 		}
 
 		/// <summary>
@@ -685,7 +698,7 @@ namespace Worki.Web.Controllers
 		/// <param name="index">the index of th localisation in the list of results</param>
 		/// <returns>a view of the details of the selected localisation</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("resultats-detail")]
+		[ActionName("search-detail")]
 		public virtual ActionResult FullSearchResultDetail(int? index)
 		{
 			var itemIndex = index ?? 0;
@@ -693,7 +706,7 @@ namespace Worki.Web.Controllers
 
 			if (detailModel == null)
 				return View(MVC.Shared.Views.Error);
-			return View(MVC.Localisation.Views.resultats_detail, detailModel);
+			return View(MVC.Localisation.Views.FullSearchResultDetail, detailModel);
 		}
 
 		[ChildActionOnly]

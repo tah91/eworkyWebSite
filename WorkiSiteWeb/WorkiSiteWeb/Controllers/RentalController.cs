@@ -54,7 +54,7 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>The form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		[ActionName("ajouter")]
+		[ActionName("add")]
 		public virtual ActionResult Create()
 		{
 			return View(MVC.Rental.Views.editer, new RentalFormViewModel());
@@ -66,7 +66,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of the rental</param>
 		/// <returns>the form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		[ActionName("editer")]
+		[ActionName("edit")]
 		public virtual ActionResult Edit(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -86,7 +86,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">The id of the edited localisation</param>
 		/// <returns>the detail view of localistion if ok, the form with errors else</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
-		[ActionName("editer")]
+		[ActionName("edit")]
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Edit(Rental rental, int? id)
 		{
@@ -153,7 +153,7 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns>the form to fill</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("recherche")]
+        [ActionName("search")]
         public virtual ActionResult RentalSearch()
         {
             return View(new RentalSearchCriteria());
@@ -166,7 +166,7 @@ namespace Worki.Web.Controllers
         /// <param name="criteria">The criteria data from the form</param>
         /// <returns>redirect to the list of results</returns>
         [AcceptVerbs(HttpVerbs.Post)]
-        [ActionName("recherche")]
+        [ActionName("search")]
         [ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues(Exclude = "Type,LeaseType", Prefix="RentalData")]
         public virtual ActionResult RentalSearch(RentalSearchCriteria rentalSearchCriteria)
@@ -196,7 +196,7 @@ namespace Worki.Web.Controllers
         /// <param name="page">the page to display</param>
         /// <returns>the list of results in the page</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("resultats-annonces")]
+        [ActionName("results")]
         public virtual ActionResult FullSearchResult(int? page)
         {
             var pageValue = page ?? 1;
@@ -214,7 +214,7 @@ namespace Worki.Web.Controllers
         /// <param name="index">the index of th rental in the list of results</param>
         /// <returns>a view of the details of the selected rental</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("resultats-annonces-detail")]
+        [ActionName("results-detail")]
         public virtual ActionResult FullSearchResultDetail(int? index)
         {
             var itemIndex = index ?? 0;
@@ -231,7 +231,6 @@ namespace Worki.Web.Controllers
         /// <param name="id">id coming from the rental's detail page.</param>
         /// <returns>The contact form to fill.</returns>
 		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		[ActionName("envoyer-email-propriétaire")]
 		public virtual ActionResult SendMailOwner(int id)
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
@@ -272,7 +271,6 @@ namespace Worki.Web.Controllers
         /// <param name="friend"></param>
         /// <returns>The contact form to fill.</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("envoyer-email-ami")]
         public virtual ActionResult SendMailFriend(int id, string friend)
         {
             var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
@@ -312,7 +310,6 @@ namespace Worki.Web.Controllers
         /// <returns>message sent view if ok, the form with errors else </returns>
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        [ActionName("envoyer-email")]
         public virtual ActionResult SendMail(Contact contact)
         {
             if (ModelState.IsValid)

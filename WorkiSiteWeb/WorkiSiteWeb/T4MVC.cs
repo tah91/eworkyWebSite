@@ -738,11 +738,11 @@ namespace Worki.Web.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string LogOn = "connexion";
-            public readonly string LogOff = "deconnexion";
-            public readonly string Register = "inscription";
-            public readonly string Activate = "activer";
-            public readonly string ResetPassword = "reset-mdp";
+            public readonly string LogOn = "logon";
+            public readonly string LogOff = "logoff";
+            public readonly string Register = "register";
+            public readonly string Activate = "activate";
+            public readonly string ResetPassword = "reset-password";
             public readonly string Public = "public";
             public readonly string AjaxDashboard = "AjaxDashboard";
             public readonly string FacebookLogOn = "facebook-logon";
@@ -755,10 +755,10 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string connexion = "~/Views/Account/connexion.cshtml";
-            public readonly string inscription = "~/Views/Account/inscription.cshtml";
+            public readonly string LogOn = "~/Views/Account/LogOn.cshtml";
             public readonly string @public = "~/Views/Account/public.cshtml";
-            public readonly string reset_mdp = "~/Views/Account/reset-mdp.cshtml";
+            public readonly string Register = "~/Views/Account/Register.cshtml";
+            public readonly string ResetPassword = "~/Views/Account/ResetPassword.cshtml";
         }
     }
 
@@ -1012,17 +1012,17 @@ namespace Worki.Web.Controllers {
             public readonly string Index = "index";
             public readonly string Contact = "contact";
             public readonly string Faq = "faq";
-            public readonly string Press = "presse";
+            public readonly string Press = "press";
             public readonly string Jobs = "jobs";
-            public readonly string About = "a-propos";
-            public readonly string CGU = "cgu";
-            public readonly string Legal = "mentions-legales";
-            public readonly string HowItWorks = "comment-ça-marche";
-            public readonly string OwnerTutorial = "mode-d'emploi-gérant";
-            public readonly string UserTutorial = "mode-d'emploi-utilisateur";
-            public readonly string ShareOffice = "partager-un-bureau";
+            public readonly string About = "about";
+            public readonly string CGU = "tos";
+            public readonly string Legal = "legal";
+            public readonly string HowItWorks = "how-it-works";
+            public readonly string OwnerTutorial = "owner-notice";
+            public readonly string UserTutorial = "user-notice";
+            public readonly string ShareOffice = "share-office";
             public readonly string ChangeCulture = "ChangeCulture";
-            public readonly string AddSpace = "ajouter-espace";
+            public readonly string AddSpace = "add-space";
         }
 
 
@@ -1037,17 +1037,17 @@ namespace Worki.Web.Controllers {
             public readonly string _IndexHead = "~/Views/Home/_IndexHead.cshtml";
             public readonly string _PeopleSlider = "~/Views/Home/_PeopleSlider.cshtml";
             public readonly string _RentalTab = "~/Views/Home/_RentalTab.cshtml";
-            public readonly string a_propos = "~/Views/Home/a-propos.cshtml";
-            public readonly string ajouter_espace = "~/Views/Home/ajouter-espace.cshtml";
-            public readonly string cgu = "~/Views/Home/cgu.cshtml";
-            public readonly string contact = "~/Views/Home/contact.cshtml";
-            public readonly string faq = "~/Views/Home/faq.cshtml";
+            public readonly string About = "~/Views/Home/About.cshtml";
+            public readonly string AddSpace = "~/Views/Home/AddSpace.cshtml";
+            public readonly string CGU = "~/Views/Home/CGU.cshtml";
+            public readonly string Contact = "~/Views/Home/Contact.cshtml";
+            public readonly string Faq = "~/Views/Home/Faq.cshtml";
             public readonly string HowItWorks = "~/Views/Home/HowItWorks.cshtml";
-            public readonly string index = "~/Views/Home/index.cshtml";
-            public readonly string jobs = "~/Views/Home/jobs.cshtml";
-            public readonly string mentions_legales = "~/Views/Home/mentions-legales.cshtml";
+            public readonly string Index = "~/Views/Home/Index.cshtml";
+            public readonly string Jobs = "~/Views/Home/Jobs.cshtml";
+            public readonly string Legal = "~/Views/Home/Legal.cshtml";
             public readonly string OwnerTutorial = "~/Views/Home/OwnerTutorial.cshtml";
-            public readonly string presse = "~/Views/Home/presse.cshtml";
+            public readonly string Press = "~/Views/Home/Press.cshtml";
             public readonly string ShareOffice = "~/Views/Home/ShareOffice.cshtml";
             public readonly string UserTutorial = "~/Views/Home/UserTutorial.cshtml";
         }
@@ -1178,6 +1178,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DetailsOld() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DetailsOld);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Details() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
         }
@@ -1275,29 +1280,30 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string DetailsOld = "DetailsOld";
             public readonly string Details = "details";
-            public readonly string Offers = "offres";
-            public readonly string BookableOffers = "reservation";
+            public readonly string Offers = "offers";
+            public readonly string BookableOffers = "bookable-offers";
             public readonly string AskBooking = "AskBooking";
             public readonly string AskContact = "AskContact";
-            public readonly string CreateFree = "ajouter-lieu-gratuit";
-            public readonly string CreateNotFree = "ajouter-lieu-payant";
-            public readonly string CreateSharedOffice = "ajouter-espace-partagé";
-            public readonly string Edit = "editer";
+            public readonly string CreateFree = "add-free-place";
+            public readonly string CreateNotFree = "add-place";
+            public readonly string CreateSharedOffice = "add-shared-office";
+            public readonly string Edit = "edit";
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
-            public readonly string SetOwnership = "devenir-proprietaire";
+            public readonly string SetOwnership = "set-ownership";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string SearchForm = "SearchForm";
-            public readonly string FullSearch = "recherche";
-            public readonly string FullSearchPerType = "recherche-par-type";
-            public readonly string FullSearchPerName = "recherche-par-nom";
-            public readonly string FullSearchPerTypeSpecial = "recherche-special";
+            public readonly string FullSearch = "search";
+            public readonly string FullSearchPerType = "search-per-type";
+            public readonly string FullSearchPerName = "search-per-name";
+            public readonly string FullSearchPerTypeSpecial = "search-special";
             public readonly string FullSearchByTypeSeo = "FullSearchByTypeSeo";
             public readonly string FullSearchByOfferSeo = "FullSearchByOfferSeo";
-            public readonly string FullSearchResult = "resultats-liste";
-            public readonly string FullSearchResultDetail = "resultats-detail";
+            public readonly string FullSearchResult = "search-results";
+            public readonly string FullSearchResultDetail = "search-detail";
             public readonly string Suggestions = "Suggestions";
         }
 
@@ -1322,12 +1328,12 @@ namespace Worki.Web.Controllers {
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
             public readonly string _Suggestions = "~/Views/Localisation/_Suggestions.cshtml";
             public readonly string AskBooking = "~/Views/Localisation/AskBooking.cshtml";
-            public readonly string editer = "~/Views/Localisation/editer.cshtml";
+            public readonly string Edit = "~/Views/Localisation/Edit.cshtml";
+            public readonly string FullSearch = "~/Views/Localisation/FullSearch.cshtml";
+            public readonly string FullSearchResult = "~/Views/Localisation/FullSearchResult.cshtml";
+            public readonly string FullSearchResultDetail = "~/Views/Localisation/FullSearchResultDetail.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
             public readonly string Offers = "~/Views/Localisation/Offers.cshtml";
-            public readonly string recherche = "~/Views/Localisation/recherche.cshtml";
-            public readonly string resultats_detail = "~/Views/Localisation/resultats-detail.cshtml";
-            public readonly string resultats_liste = "~/Views/Localisation/resultats-liste.cshtml";
         }
     }
 
@@ -1338,6 +1344,13 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult Index(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DetailsOld(int id, string name) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DetailsOld);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("name", name);
             return callInfo;
         }
 
@@ -1854,15 +1867,15 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Detail = "details";
-            public readonly string Create = "ajouter";
-            public readonly string Edit = "editer";
+            public readonly string Create = "add";
+            public readonly string Edit = "edit";
             public readonly string AddRentalAccess = "AddRentalAccess";
-            public readonly string RentalSearch = "recherche";
-            public readonly string FullSearchResult = "resultats-annonces";
-            public readonly string FullSearchResultDetail = "resultats-annonces-detail";
-            public readonly string SendMailOwner = "envoyer-email-propriétaire";
-            public readonly string SendMailFriend = "envoyer-email-ami";
-            public readonly string SendMail = "envoyer-email";
+            public readonly string RentalSearch = "search";
+            public readonly string FullSearchResult = "results";
+            public readonly string FullSearchResultDetail = "results-detail";
+            public readonly string SendMailOwner = "SendMailOwner";
+            public readonly string SendMailFriend = "SendMailFriend";
+            public readonly string SendMail = "SendMail";
         }
 
 

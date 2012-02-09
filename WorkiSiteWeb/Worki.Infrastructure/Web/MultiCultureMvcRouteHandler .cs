@@ -13,7 +13,7 @@ namespace Worki.Infrastructure
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
 		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
-		public const string ConnexionPath = "/compte/connexion";
+		public const string ConnexionPath = "/account/logon";
 
 		/// <summary>
 		/// Get culture type from url

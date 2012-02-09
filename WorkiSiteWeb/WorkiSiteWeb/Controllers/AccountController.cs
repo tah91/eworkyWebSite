@@ -40,7 +40,7 @@ namespace Worki.Web.Controllers
         /// GET action method to login to an account
         /// </summary>
         /// <returns>The form to fill to logon</returns>
-        [ActionName("connexion")]
+        [ActionName("logon")]
         public virtual ActionResult LogOn()
         {
             if (TempData.ContainsKey("AlreadyRegistered"))
@@ -56,7 +56,7 @@ namespace Worki.Web.Controllers
         /// <returns>Redirect to return url if any, if not to home page</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("connexion")]
+        [ActionName("logon")]
         public virtual ActionResult LogOn(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
@@ -104,7 +104,7 @@ namespace Worki.Web.Controllers
         /// Action method to login off, remove the cookie of display name
         /// </summary>
         /// <returns>Redirect to home page</returns>
-        [ActionName("deconnexion")]
+        [ActionName("logoff")]
         public virtual ActionResult LogOff()
         {
             _FormsService.SignOut();
@@ -121,7 +121,7 @@ namespace Worki.Web.Controllers
         /// GET action method to create a new account
         /// </summary>
         /// <returns>The form to fill to create the account</returns>
-        [ActionName("inscription")]
+        [ActionName("register")]
         public virtual ActionResult Register()
         {
             return View(new RegisterModel());
@@ -137,7 +137,7 @@ namespace Worki.Web.Controllers
         /// <returns>Redirect to register succes page if succes, the form with errors if not</returns>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		[ActionName("inscription")]
+        [ActionName("register")]
 		public virtual ActionResult Register(RegisterModel model, string myCaptcha, string attempt)
 		{
 			//check capatcha
@@ -234,7 +234,7 @@ namespace Worki.Web.Controllers
         /// <param name="username">The username to activate</param>
         /// <param name="returnUrl">The key provided by the user via email link</param>
         /// <returns>Redirect to Logon page if the key provided is matching the one in db, if not return to home page</returns>
-        [ActionName("activer")]
+        [ActionName("activate")]
         public virtual ActionResult Activate(string username, string key)
         {
             if (_MembershipService.ActivateMember(username, key) == false)
@@ -253,10 +253,10 @@ namespace Worki.Web.Controllers
         /// GET Action method to reset password
         /// </summary>
         /// <returns>the form to fill</returns>
-        [ActionName("reset-mdp")]
+        [ActionName("reset-password")]
         public virtual ActionResult ResetPassword()
         {
-            return View();
+            return View(MVC.Account.Views.ResetPassword);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Worki.Web.Controllers
         /// <returns>Password reset succes page if ok, the form with error if not</returns>
         [HttpPost] 
         [ValidateAntiForgeryToken]
-        [ActionName("reset-mdp")]
+        [ActionName("reset-password")]
         public virtual ActionResult ResetPassword(ResetPasswordModel model)
         {
             if (ModelState.IsValid)

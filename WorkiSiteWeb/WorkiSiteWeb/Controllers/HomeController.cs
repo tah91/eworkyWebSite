@@ -149,7 +149,7 @@ namespace Worki.Web.Controllers
         [ActionName("index")]
         public virtual ActionResult Index()
         {
-            return View(new SearchCriteriaFormViewModel());
+            return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel());
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Worki.Web.Controllers
         [ActionName("contact")]
         public virtual ActionResult Contact()
         {
-            return View(new Contact());
+            return View(MVC.Home.Views.Contact, new Contact());
         }
 
         /// <summary>
@@ -217,13 +217,13 @@ namespace Worki.Web.Controllers
         /// Prepares the press page
         /// </summary>
         /// <returns>The action result.</returns>
-        [ActionName("presse")]
+        [ActionName("press")]
         public virtual ActionResult Press()
         {
 			var context = ModelFactory.GetUnitOfWork();
 			var pRepo = ModelFactory.GetRepository<IPressRepository>(context);
 			var pressList = pRepo.GetAll().OrderByDescending(p => p.Date).ToList();
-            return View(pressList);
+            return View(MVC.Home.Views.Press, pressList);
         }
 
         /// <summary>
@@ -233,44 +233,44 @@ namespace Worki.Web.Controllers
         [ActionName("jobs")]
         public virtual ActionResult Jobs()
         {
-            return View();
+            return View(MVC.Home.Views.Jobs);
         }
 
         /// <summary>
         /// Prepares the about page
         /// </summary>
         /// <returns>The action result.</returns>
-        [ActionName("a-propos")]
+        [ActionName("about")]
         public virtual ActionResult About()
         {
-            return View();
+            return View(MVC.Home.Views.About);
         }
 
         /// <summary>
         /// Prepares the cgu page
         /// </summary>
         /// <returns>The action result.</returns>
-        [ActionName("cgu")]
+        [ActionName("tos")]
         public virtual ActionResult CGU()
         {
-            return View();
+            return View(MVC.Home.Views.CGU);
         }
 
         /// <summary>
         /// Prepares the legal page
         /// </summary>
         /// <returns>The action result.</returns>
-        [ActionName("mentions-legales")]
+        [ActionName("legal")]
         public virtual ActionResult Legal()
         {
-            return View();
+            return View(MVC.Home.Views.Legal);
         }
 
 		/// <summary>
 		/// Prepares the how it works page
 		/// </summary>
 		/// <returns>The action result.</returns>
-		[ActionName("comment-ça-marche")]
+		[ActionName("how-it-works")]
 		public virtual ActionResult HowItWorks()
 		{
 			return View(MVC.Home.Views.HowItWorks);
@@ -280,7 +280,7 @@ namespace Worki.Web.Controllers
 		/// Prepares the owner tutorial page
 		/// </summary>
 		/// <returns>The action result.</returns>
-		[ActionName("mode-d'emploi-gérant")]
+		[ActionName("owner-notice")]
 		public virtual ActionResult OwnerTutorial()
 		{
 			return View(MVC.Home.Views.OwnerTutorial);
@@ -290,7 +290,7 @@ namespace Worki.Web.Controllers
 		/// Prepares the user tutorial page
 		/// </summary>
 		/// <returns>The action result.</returns>
-		[ActionName("mode-d'emploi-utilisateur")]
+		[ActionName("user-notice")]
 		public virtual ActionResult UserTutorial()
 		{
 			return View(MVC.Home.Views.UserTutorial);
@@ -300,7 +300,7 @@ namespace Worki.Web.Controllers
         /// Prepares the share office page
         /// </summary>
         /// <returns>The action result.</returns>
-        [ActionName("partager-un-bureau")]
+        [ActionName("share-office")]
         public virtual ActionResult ShareOffice()
         {
             return View(MVC.Home.Views.ShareOffice);
@@ -321,10 +321,10 @@ namespace Worki.Web.Controllers
             return Redirect("/" + lang.ToString() + returnUrl);
         }
 
-        [ActionName("ajouter-espace")]
+        [ActionName("add-space")]
         public virtual ActionResult AddSpace()
         {
-            return View();
+            return View(MVC.Home.Views.AddSpace);
         }
 
         //public virtual ActionResult Partners()

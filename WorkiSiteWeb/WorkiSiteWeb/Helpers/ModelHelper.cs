@@ -88,8 +88,7 @@ namespace Worki.Web.Helpers
             if (loc == null || urlHelper == null)
                 return null;
 
-            string typeStr;
-            Localisation.GetStaticLocalisationTypes().TryGetValue(loc.TypeValue, out typeStr);
+            string typeStr = Localisation.GetLocalisationSeoType(loc.TypeValue);
             var type = MiscHelpers.GetSeoString(typeStr);
             var name = MiscHelpers.GetSeoString(loc.Name);
             return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "" });

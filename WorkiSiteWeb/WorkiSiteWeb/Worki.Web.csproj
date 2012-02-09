@@ -729,7 +729,7 @@
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
     </Content>
-    <Content Include="Views\Account\reset-mdp.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Moderation\IndexImport.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Member\IndexUser.cshtml" />
@@ -742,27 +742,27 @@
     <Content Include="Views\Visitor\_LogOnForm.cshtml" />
     <Content Include="Views\Visitor\_VisitorForm.cshtml" />
     <Content Include="Views\Visitor\Index.cshtml" />
-    <Content Include="Views\Home\cgu.cshtml" />
-    <Content Include="Views\Home\mentions-legales.cshtml" />
-    <Content Include="Views\Home\faq.cshtml" />
-    <Content Include="Views\Home\presse.cshtml" />
-    <Content Include="Views\Home\jobs.cshtml" />
+    <Content Include="Views\Home\CGU.cshtml" />
+    <Content Include="Views\Home\Legal.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
+    <Content Include="Views\Home\Press.cshtml" />
+    <Content Include="Views\Home\Jobs.cshtml" />
     <Content Include="Views\Localisation\_ServicesSelector.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\_IndexGalleryScript.cshtml" />
     <Content Include="Views\Shared\_MetaDataHeader.cshtml" />
     <Content Include="Views\Localisation\_DirectAccess.cshtml" />
     <Content Include="Views\Shared\_PictureContainer.cshtml" />
-    <Content Include="Views\Home\contact.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Localisation\_CommentForm.cshtml" />
     <Content Include="Views\Localisation\_SearchResultSummary.cshtml" />
     <Content Include="Views\Localisation\_IconeServices.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\DeleteLocalisation.cshtml" />
-    <Content Include="Views\Localisation\editer.cshtml" />
+    <Content Include="Views\Localisation\Edit.cshtml" />
     <Content Include="Views\Localisation\Index.cshtml" />
     <Content Include="Views\Shared\_Map.cshtml" />
-    <Content Include="Views\Localisation\recherche.cshtml" />
-    <Content Include="Views\Localisation\resultats-liste.cshtml" />
+    <Content Include="Views\Localisation\FullSearch.cshtml" />
+    <Content Include="Views\Localisation\FullSearchResult.cshtml" />
     <Content Include="Views\Shared\_IndexGallery.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -775,10 +775,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Areas\Dashboard\Views\Profil\changer-mdp.cshtml" />
-    <Content Include="Views\Account\connexion.cshtml" />
-    <Content Include="Views\Account\inscription.cshtml" />
-    <Content Include="Views\Home\a-propos.cshtml" />
-    <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LogOnUserControl.cshtml" />
     <Content Include="Views\Web.config" />
@@ -813,7 +813,7 @@
     <Content Include="Areas\Admin\Views\Activity\DeleteWelcomePeople.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_LocalisationTab.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_CommentTab.cshtml" />
-    <Content Include="Views\Localisation\resultats-detail.cshtml" />
+    <Content Include="Views\Localisation\FullSearchResultDetail.cshtml" />
     <Content Include="Views\Shared\_AddToFavorite.cshtml" />
     <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
     <Content Include="Views\Localisation\_CommentFormScript.cshtml" />
@@ -849,7 +849,7 @@
     <Content Include="Views\Rental\_RentalSeachFormScript.cshtml" />
     <Content Include="Views\Offer\Create.cshtml" />
     <Content Include="Views\Offer\Details.cshtml" />
-    <Content Include="Views\Home\ajouter-espace.cshtml" />
+    <Content Include="Views\Home\AddSpace.cshtml" />
     <Content Include="Views\Localisation\_Suggestions.cshtml" />
     <Content Include="Views\Offer\Delete.cshtml" />
     <Content Include="Views\Localisation\Offers.cshtml" />

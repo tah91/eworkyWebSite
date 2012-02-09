@@ -116,6 +116,40 @@ namespace Worki.Data.Models
 			(int)LocalisationType.SharedOffice
         };
 
+        public static string GetLocalisationSeoType(int type)
+        {
+            var enumType = (LocalisationType)type;
+            switch (enumType)
+            {
+                case LocalisationType.SpotWifi:
+                    return MiscHelpers.SeoConstants.SpotWifi;
+                case LocalisationType.CoffeeResto:
+                    return MiscHelpers.SeoConstants.CoffeeResto;
+                case LocalisationType.Biblio:
+                    return MiscHelpers.SeoConstants.Biblio;
+                case LocalisationType.PublicSpace:
+                    return MiscHelpers.SeoConstants.PublicSpace;
+                case LocalisationType.TravelerSpace:
+                    return MiscHelpers.SeoConstants.TravelerSpace;
+                case LocalisationType.Hotel:
+                    return MiscHelpers.SeoConstants.Hotel;
+                case LocalisationType.Telecentre:
+                    return MiscHelpers.SeoConstants.Telecentre;
+                case LocalisationType.BuisnessCenter:
+                    return MiscHelpers.SeoConstants.BuisnessCenter;
+                case LocalisationType.CoworkingSpace:
+                    return MiscHelpers.SeoConstants.CoworkingSpace;
+                case LocalisationType.WorkingHotel:
+                    return MiscHelpers.SeoConstants.WorkingHotel;
+                case LocalisationType.PrivateArea:
+                    return MiscHelpers.SeoConstants.PrivateArea;
+                case LocalisationType.SharedOffice:
+                    return MiscHelpers.SeoConstants.SharedOffice;
+                default:
+                    return string.Empty;
+            }
+        }
+
 		public static string GetLocalisationType(int type)
 		{
 			var enumType = (LocalisationType)type;
@@ -150,14 +184,9 @@ namespace Worki.Data.Models
 			}
 		}
 
-        static Dictionary<int, string> _LocalisationTypes = null;
-		public static Dictionary<int, string> GetStaticLocalisationTypes()
+        public static Dictionary<int, string> GetLocalisationSeoTypes()
 		{
-            if(_LocalisationTypes == null)
-            {
-                _LocalisationTypes= LocalisationTypes.ToDictionary(t => t, t => GetLocalisationType(t));
-            }
-			return _LocalisationTypes;
+            return LocalisationTypes.ToDictionary(t => t, t => GetLocalisationSeoType(t));
 		}
 
         public static Dictionary<int, string> GetLocalisationTypes()
