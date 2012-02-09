@@ -1,0 +1,31 @@
+﻿@section HeadContent
+{
+	<meta name="Description" content="@Worki.Resources.Views.Home.AProposString.Description"/>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.WhoAreWe)</title>
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.WhoAreWe, "Blue")
+<div class="detailContent generalTextContainer">
+	<div class="blockContainer float-left">
+		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.WhoAreWe)
+	</div>
+
+	<div class="float-right generalTextContent blockContainer">
+		<div class="contentBlock">
+			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.ATeam</h3>
+			<p>@Worki.Resources.Views.Home.HomeString.AllSupelecNeedWifi 
+			</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.ANeed</h3>
+			<p>@Worki.Resources.Views.Home.HomeString.HowCameTheIdea 
+			</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Fun</h3>
+			<p>@Worki.Resources.Views.Home.HomeString.CreateTheWebSite 
+			</p>
+			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.VeryGenerous</h3>
+			<p>@Worki.Resources.Views.Home.HomeString.ShareWithYou
+			</p>
+		</div>
+	</div>
+    <div class="clear">
+	</div>
+</div>
