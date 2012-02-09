@@ -48,7 +48,7 @@
 			<div class="localisationDescription contentBlock">
 				@*<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Description</h3>*@
 				<div class="localisationDesc" itemprop="description">
-					@Html.Nl2Br(Model.Description)
+					@Html.Nl2Br(Model.GetDescription())
 				</div>
 				@if (generalFeatures.Count > 0)
 				{

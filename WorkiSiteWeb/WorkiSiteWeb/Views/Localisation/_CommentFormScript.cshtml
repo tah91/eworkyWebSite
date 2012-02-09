@@ -43,6 +43,8 @@
 				//clear data
 				$('span.field-validation-error').remove();
 				$('#Post').val('');
+				$('#PostEn').val('');
+				$('#PostEs').val('');
 				$('#Rating').val(-1);
 				$('#rateItRating').rateit('value', '0');
 				//refresh
@@ -51,6 +53,8 @@
 			function (data) {
 				$('span.field-validation-error').remove();
 				$('label[for="Post"]').append('<span class="field-validation-error">&nbsp;&nbsp;&nbsp;' + data + '</span>');
+				$('label[for="PostEn"]').append('<span class="field-validation-error">&nbsp;&nbsp;&nbsp;' + data + '</span>');
+				$('label[for="PostEs"]').append('<span class="field-validation-error">&nbsp;&nbsp;&nbsp;' + data + '</span>');
 			}
 		);
 		return false;

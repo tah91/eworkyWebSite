@@ -9,6 +9,7 @@ using Worki.Infrastructure;
 using System.Runtime.Serialization;
 using Worki.Infrastructure.Helpers;
 using System.Reflection;
+using System.Threading;
 
 namespace Worki.Data.Models
 {
@@ -29,7 +30,7 @@ namespace Worki.Data.Models
                 latitude = Latitude,
                 longitude = Longitude,
                 name = Name,
-                description = Description,
+				description = GetDescription(),
                 address = Adress,
                 city = City,
                 rating = GetRatingAverage(RatingType.General),
@@ -407,13 +408,13 @@ namespace Worki.Data.Models
 		{
 			var withComm = (from item
 						   in Comments
-							where !string.IsNullOrEmpty(item.Post)
+							where item.HasPost()
 							orderby item.Date descending
 							select item);
 
 			var withoutComm = (from item
 								 in Comments
-							   where string.IsNullOrEmpty(item.Post)
+							   where !item.HasPost()
 							   orderby item.Date descending
 							   select item);
 
@@ -669,7 +670,16 @@ namespace Worki.Data.Models
 
         public string GetDescription()
         {
-            return Description;
+			switch(Thread.CurrentThread.CurrentUICulture.Name)
+			{
+				case "en":
+					return DescriptionEn;
+				case "es":
+					return DescriptionEs;
+				case "fr":
+				default:
+					return Description;
+			}
         }
 
         #endregion
@@ -992,6 +1002,14 @@ namespace Worki.Data.Models
         [Display(Name = "Description", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Description { get; set; }
+
+		[Display(Name = "Description", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string DescriptionEn { get; set; }
+
+		[Display(Name = "Description", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string DescriptionEs { get; set; }
 
 		public double Latitude { get; set; }
 
@@ -1349,7 +1367,7 @@ namespace Worki.Data.Models
 			{
 				id = ID,
 				date = Date,
-				post = Post,
+				post = GetPost(),
 				rating = Rating,
 				ratingWifi = RatingWifi,
 				ratingDispo = RatingDispo,
@@ -1413,6 +1431,24 @@ namespace Worki.Data.Models
 			}
 		}
 
+		public string GetPost()
+		{
+			switch (Thread.CurrentThread.CurrentUICulture.Name)
+			{
+				case "en":
+					return PostEn;
+				case "es":
+					return PostEs;
+				case "fr":
+				default:
+					return Post;
+			}
+		}
+
+		public bool HasPost()
+		{
+			return !string.IsNullOrEmpty(Post) || !string.IsNullOrEmpty(PostEn) || !string.IsNullOrEmpty(PostEs);
+		}
 		/// <summary>
 		/// Validate object, thow exception if not valid
 		/// </summary>
@@ -1421,7 +1457,7 @@ namespace Worki.Data.Models
 			string commentError = Worki.Resources.Validation.ValidationString.AlreadyRateThis;
 			if (!Localisation.IsFreeLocalisation())
 			{
-				if (Rating < 0 && string.IsNullOrEmpty(Post))
+				if (Rating < 0 && !HasPost())
 				{
 					error = commentError;
 					throw new Exception(error);
@@ -1429,7 +1465,7 @@ namespace Worki.Data.Models
 			}
 			else
 			{
-                if (RatingDispo < 0 && RatingPrice < 0 && RatingWelcome < 0 && RatingWifi < 0 && string.IsNullOrEmpty(Post))
+                if (RatingDispo < 0 && RatingPrice < 0 && RatingWelcome < 0 && RatingWifi < 0 && !HasPost())
 				{
 					error = commentError;
 					throw new Exception(error);
@@ -1444,6 +1480,14 @@ namespace Worki.Data.Models
 		[Display(Name = "Post", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Post { get; set; }
+
+		[Display(Name = "Post", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string PostEn { get; set; }
+
+		[Display(Name = "Post", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string PostEs { get; set; }
 
 		[Range(-1, 5)]
 		[Display(Name = "Rating", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]

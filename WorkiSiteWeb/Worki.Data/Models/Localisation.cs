@@ -54,6 +54,7 @@ namespace Worki.Data.Models
         public decimal BookingCom { get; set; }
         public decimal QuotationPrice { get; set; }
         public string DescriptionEn { get; set; }
+        public string DescriptionEs { get; set; }
     
         // Navigation properties
     

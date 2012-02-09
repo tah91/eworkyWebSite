@@ -114,8 +114,9 @@ namespace Worki.Infrastructure
 
     public enum Culture
     {
-        fr = 1,
-        en = 2
+        fr,
+        en,
+		es
     }
 
     public class SingleCultureMvcRouteHandler

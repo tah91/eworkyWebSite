@@ -250,9 +250,31 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="editor-field">
-                                    @Html.TextAreaFor(model => model.Localisation.Description, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
-                                </div>
+								@switch (Url.GetCulture())
+								{
+		   							case Worki.Infrastructure.Culture.es:
+										{
+								<div class="editor-field">
+									@Html.TextAreaFor(model => model.Localisation.DescriptionEs, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
+								</div>
+										}
+										break;
+									case Worki.Infrastructure.Culture.en:
+										{
+								<div class="editor-field">
+									@Html.TextAreaFor(model => model.Localisation.DescriptionEn, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
+								</div>
+										}
+										break;
+									case Worki.Infrastructure.Culture.fr:
+									default:
+										{ 
+								<div class="editor-field">
+									@Html.TextAreaFor(model => model.Localisation.Description, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
+								</div>
+										}
+										break;
+								}
                             </td>
                         </tr>
                     </table>

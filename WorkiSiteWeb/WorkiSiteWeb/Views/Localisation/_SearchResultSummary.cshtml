@@ -19,7 +19,7 @@
         </p>
         <span class="itemAddress">@Html.TruncateAtWord(Model.Localisation.Adress, 30)&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>
 		<div>
-			<span class="bold orange">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.Description, 120)</span>
+			<span class="bold orange">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.GetDescription(), 120)</span>
 		</div>
         <div class="itemLogos bottom">
 			<div class="float-left">
@@ -52,7 +52,7 @@
 				</div>
 				@foreach (var com in Model.Localisation.GetCommentSummary())
                 {
-					<p>&laquo; @Html.TruncateAtWord(com.Post, 60)&raquo; <span class="commentUser bold">@com.Member.GetDisplayName()</span>
+					<p>&laquo; @Html.TruncateAtWord(com.GetPost(), 60)&raquo; <span class="commentUser bold">@com.Member.GetDisplayName()</span>
 					</p>
 				}
 			</div>

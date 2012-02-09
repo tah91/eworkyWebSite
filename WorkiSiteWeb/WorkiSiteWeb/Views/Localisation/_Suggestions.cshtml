@@ -13,7 +13,7 @@
             <div class="suggestiondesc float-right">
                 <a class="bold orange" href="@item.GetDetailFullUrl(Url)">@item.Name</a>
                 <div class="clear"></div>
-                @Html.TruncateAtWord(item.Description, 40)
+                @Html.TruncateAtWord(item.GetDescription(), 40)
             </div>
             <div class="clear"></div>
         </div>

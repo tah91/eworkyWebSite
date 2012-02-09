@@ -244,7 +244,7 @@ namespace Worki.Data.Models
                 toRet += 10;
 
             //comments
-            var com = (from item in Comments where string.IsNullOrEmpty(item.Post) select 1).Count();
+			var com = Comments.Count(c => c.HasPost());
             toRet += com;
 
             //rating

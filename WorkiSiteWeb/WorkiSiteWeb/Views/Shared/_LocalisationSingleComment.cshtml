@@ -26,7 +26,7 @@
     @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
     </div>
     <div class="commentContent float-left" style=@(displayLoc ? "width:70%" : "")>
-        <p itemprop="description">@Html.Nl2Br(Model.Post)</p>
+        <p itemprop="description">@Html.Nl2Br(Model.GetPost())</p>
         <p class="commentDate">@Html.DisplayLocalDate(Model.Date, true)</p>
 		<meta  itemprop="datePublished" content="@Model.Date.ToString("yyyy-MM-dd")" />
     </div>
