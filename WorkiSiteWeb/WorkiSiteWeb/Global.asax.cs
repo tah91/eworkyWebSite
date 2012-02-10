@@ -176,63 +176,70 @@ namespace Worki.Web
             routes.CultureMapRoute(
                 "",
                 "accueil/presse/",
-                new { controller = "Home", action = "presse" },
+                new { controller = "Home", action = "press" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/jobs/",
-                new { controller = "Home", action = "Jobs" },
+                new { controller = "Home", action = "jobs" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/a-propos/",
-                new { controller = "Home", action = "About" },
+                new { controller = "Home", action = "about" },
+                new string[] { "Worki.Web.Controllers" }
+            );
+
+            routes.CultureMapRoute(
+                "",
+                "accueil/cgu/",
+                new { controller = "Home", action = "tos" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/mentions-legales/",
-                new { controller = "Home", action = "Legal" },
+                new { controller = "Home", action = "legal" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/comment-ça-marche/",
-                new { controller = "Home", action = "HowItWorks" },
+                new { controller = "Home", action = "how-it-works" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/mode-d'emploi-gérant/",
-                new { controller = "Home", action = "OwnerTutorial" },
+                new { controller = "Home", action = "owner-notice" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/mode-d'emploi-utilisateur/",
-                new { controller = "Home", action = "UserTutorial" },
+                new { controller = "Home", action = "user-notice" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/partager-un-bureau/",
-                new { controller = "Home", action = "ShareOffice" },
+                new { controller = "Home", action = "share-office" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "",
                 "accueil/ajouter-espace/",
-                new { controller = "Home", action = "AddSpace" },
+                new { controller = "Home", action = "add-space" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
