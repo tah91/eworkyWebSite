@@ -385,11 +385,8 @@ namespace Worki.Web.Controllers
         {
             string returnUrl = Request.UrlReferrer.AbsoluteUri;
 
-			if ( Request.UrlReferrer.AbsolutePath == MultiCultureMvcRouteHandler.ConnexionPath
-				|| Request.UrlReferrer.AbsolutePath == Url.Action(MVC.Account.ActionNames.LogOn,MVC.Account.Name, new { culture="fr" })
-				|| Request.UrlReferrer.AbsolutePath == Url.Action(MVC.Account.ActionNames.LogOn, MVC.Account.Name, new { culture = "en" })
-				|| Request.UrlReferrer.AbsolutePath == Url.Action(MVC.Account.ActionNames.Register, MVC.Account.Name, new { culture = "en" })
-				|| Request.UrlReferrer.AbsolutePath == Url.Action(MVC.Account.ActionNames.Register, MVC.Account.Name, new { culture = "fr" }))
+			if ( Request.UrlReferrer.AbsolutePath == Url.Action(MVC.Account.ActionNames.LogOn,MVC.Account.Name)
+				|| Request.UrlReferrer.AbsolutePath == Url.Action(MVC.Account.ActionNames.Register, MVC.Account.Name))
 			{
 				var parameters = HttpUtility.ParseQueryString(Request.UrlReferrer.Query);
 				if (!string.IsNullOrEmpty(parameters["returnUrl"]))

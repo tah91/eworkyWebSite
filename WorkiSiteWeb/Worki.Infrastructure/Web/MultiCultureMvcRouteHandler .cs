@@ -13,66 +13,162 @@ namespace Worki.Infrastructure
     public class MultiCultureMvcRouteHandler : MvcRouteHandler
     {
 		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
-		public const string ConnexionPath = "/account/logon";
+
+		public const Culture DefaultCulture = Culture.en;
 
 		/// <summary>
 		/// Get culture type from url
 		/// </summary>
 		/// <param name="url">the url</param>
 		/// <returns>the culture type</returns>
-		public static Culture GetCulture(string url)
+		public static Culture GetCulture(Uri url)
 		{
-			var cultureStr = ExtractCultureFromUrl(url);
-			Culture culture;
-			return Enum.TryParse<Culture>(cultureStr, out culture) ? culture : Culture.fr;
+			var suffix = ExtractDomainSuffix(url);
+
+			switch(suffix)
+			{
+				case ".fr":
+					return Culture.fr;
+				case ".es":
+					return Culture.es;
+				case ".com":
+					return Culture.en;
+				default:
+					return DefaultCulture;
+			}
+		}
+
+		/// <summary>
+		/// Get culture type from user language
+		/// </summary>
+		/// <param name="url">the url</param>
+		/// <returns>the culture type</returns>
+		public static Culture GetCulture(string[] userLanguages)
+		{
+			if (userLanguages == null || userLanguages.Length == 0)
+				return DefaultCulture;
+
+			var langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
+
+			Culture culture = DefaultCulture;
+			Enum.TryParse<Culture>(langName, out culture);
+
+			return culture;
+		}
+
+		/// <summary>
+		/// Get suffix from culture
+		/// </summary>
+		/// <param name="lang">the lang</param>
+		/// <returns>the suffix</returns>
+		public static string GetSuffix(string lang)
+		{
+			Culture culture = DefaultCulture;
+			Enum.TryParse<Culture>(lang, out culture);
+
+			switch (culture)
+			{
+				case Culture.fr:
+					return ".fr";
+				case Culture.es:
+					return ".es";
+				case Culture.en:
+				default:
+					return ".com";
+			}
 		}
 
 		/// <summary>
 		/// Extract culture from an url
 		/// </summary>
 		/// <param name="url">the url</param>
-		/// <returns>the culture, null if no culture found</returns>
-		public static string ExtractCultureFromUrl(string url)
+		/// <returns>the domain suffix, null if no culture found</returns>
+		public static string ExtractDomainSuffix(Uri url)
 		{
-			if (string.IsNullOrEmpty(url))
+			if (string.IsNullOrEmpty(url.Host))
 				return null;
 
-			var lang = url.Split('/').FirstOrDefault(str => _Languages.Contains(str));
-			if (string.IsNullOrEmpty(lang))
+			var lastDot = url.Host.LastIndexOf(".");
+			if (lastDot == -1)
 				return null;
 
-			return lang;
+			return url.Host.Substring(lastDot);
+		}
+
+		/// <summary>
+		/// Replace the suffix of an url
+		/// </summary>
+		/// <param name="url">the url</param>
+		/// <param name="lang">the lang of the suffix</param>
+		/// <returns>the new url</returns>
+		public static string SetDomainSuffix(Uri url, string lang, bool addLocal = true)
+		{
+			if (string.IsNullOrEmpty(url.Host))
+				return url.PathAndQuery;
+
+			var suffix = GetSuffix(lang);
+
+			var lastDot = url.Host.LastIndexOf(".");
+			if (lastDot == -1)
+				return null;
+
+			var newHost = url.Host.Substring(0, lastDot) + suffix;
+
+			var newUrl = url.Scheme + System.Uri.SchemeDelimiter + newHost + (url.IsDefaultPort ? "" : ":" + url.Port) + url.PathAndQuery;
+			if (addLocal)
+			{
+				newUrl += "?" + _LocalQuery + "=" + lang;
+			}
+
+			return newUrl;
+		}
+
+		const string _CultureChanged = "CultureChanged";
+		const string _LocalQuery = "local";
+
+		bool ShouldSetCulture()
+		{
+			if (HttpContext.Current.Request.Cookies.AllKeys.Contains(_CultureChanged))
+				return false;
+
+			var query = HttpUtility.ParseQueryString(HttpContext.Current.Request.Url.Query);
+			if (query != null && query.AllKeys.Contains(_LocalQuery))
+				return false;
+
+			return true;
+		}
+
+		void TryAddCultureChangedCookie()
+		{
+			if (HttpContext.Current.Request.Cookies.AllKeys.Contains(_CultureChanged))
+				return;
+
+			HttpCookie cookie = new HttpCookie(_CultureChanged);
+			cookie.Value = "Hello Cookie! CreatedOn: " + DateTime.Now.ToShortTimeString();
+
+			HttpContext.Current.Response.Cookies.Add(cookie);
 		}
 
         protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-            string langName = "fr";
+			var urlCulture = GetCulture(HttpContext.Current.Request.Url);
 
-			//check if culture in path
-			var fromUrl = ExtractCultureFromUrl(HttpContext.Current.Request.Url.PathAndQuery);
-			if (!string.IsNullOrEmpty(fromUrl))
+			//check has cookie to tell no redirect
+			if (ShouldSetCulture())
 			{
-				langName = fromUrl;
+				var userCulture = GetCulture(HttpContext.Current.Request.UserLanguages);
+				if (userCulture != urlCulture)
+				{
+					var correctUrl = SetDomainSuffix(HttpContext.Current.Request.Url, userCulture.ToString(), false);
+					HttpContext.Current.Response.Redirect(correctUrl);
+				}
 			}
 			else
 			{
-				//check if it is connexion path
-				if (HttpContext.Current.Request.Path == ConnexionPath)
-				{
-					var returnUrl = HttpContext.Current.Request.Params["ReturnUrl"];
-					//check if culture in returnUrl
-					fromUrl = ExtractCultureFromUrl(returnUrl);
-					if (!string.IsNullOrEmpty(fromUrl))
-					{
-						langName = fromUrl;
-					}
-				}
-				//take culture from navi language
-				else if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
-				{
-					langName = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
-				}
+				TryAddCultureChangedCookie();
 			}
+
+			string langName = urlCulture.ToString();
 
             //set it
 			try
