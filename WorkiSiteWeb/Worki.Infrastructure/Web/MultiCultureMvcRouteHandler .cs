@@ -135,6 +135,9 @@ namespace Worki.Infrastructure
 			if (query != null && query.AllKeys.Contains(_LocalQuery))
 				return false;
 
+			if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com")
+				return false;
+
 			return true;
 		}
 
