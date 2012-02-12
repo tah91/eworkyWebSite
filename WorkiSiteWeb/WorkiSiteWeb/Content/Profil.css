@@ -240,7 +240,7 @@
 
 .teamMemberPhoto
 {
-    min-height:180px;
+    min-height:150px;
     min-width: 180px;
 }
 
@@ -255,9 +255,8 @@
     float: left;
     margin-right: 5px;
     border-right-color: #5DAFDE;
-    border-right-width: 1px;
     border-right-style: dashed;
-    
+    border-right-width: 1px;
 }
   
 .innerContentBlock div[position="right"] 
@@ -265,7 +264,6 @@
     float: right;
     margin-left: 5px;
     border-left-color: #5DAFDE;
-    border-left-width: 1px;
     border-left-style: dashed;
-
+    border-left-width: 1px;
 }

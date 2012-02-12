@@ -322,4 +322,7 @@
   <data name="Team_Member_3_Text" xml:space="preserve">
     <value>Tahir est LE spécialiste du développement et dispose d’une excellente maîtrise des technologies .NET. Il maîtrise d’ailleurs tellement bien qu’on a parfois du mal à comprendre ce qu’il nous dit. Lecteur de Cioran et Dostoïevski, il est aussi à l’aise dans la programmation que dans l’engloutissement constant de gâteaux et barres chocolatées en tout genre. Habitant Gentilly, il pratique la capoeira, et sa propension à semer les fautes d’orthographe comme les paquets de biscuits vide derrière lui compense le zèle avec lequel Olivier les corrige.</value>
   </data>
+  <data name="HisMailAdress" xml:space="preserve">
+    <value>Son adresse mail</value>
+  </data>
 </root>
