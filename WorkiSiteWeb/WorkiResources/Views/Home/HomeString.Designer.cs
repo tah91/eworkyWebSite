@@ -412,6 +412,60 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Olivier Brun.
+        /// </summary>
+        public static string Team_Member_1 {
+            get {
+                return ResourceManager.GetString("Team_Member_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Habitant à Paris, Olivier s’occupe chez eWorky de la stratégie et du storyboarding. En plus d’être aussi discret dans ses échanges en open-space qu’un poissonnier un samedi matin à 5h du mat à Rungis, Olivier est un grand fan de marche à pied et un végétarien convaincu. Mais par-dessus tout, Olivier glorifie les designs épurés et voue un culte à la suppression des boutons inutiles et des fautes d’orthographe..
+        /// </summary>
+        public static string Team_Member_1_Text {
+            get {
+                return ResourceManager.GetString("Team_Member_1_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cécilia Durieu.
+        /// </summary>
+        public static string Team_Member_2 {
+            get {
+                return ResourceManager.GetString("Team_Member_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cécilia s&apos;occupe du développement commercial, des relations presse et du financement d&apos;eWorky. Elle travaille depuis Grenoble et attention, elle ne supporte pas qu&apos;on dise du mal de sa région montagnarde ! Optimiste, hyperactive et grande fan des agendas pleins à craquer et des deadlines serrées, elle est très impliquée dans la promotion du numérique et de l&apos;entrepreneuriat, en tant que co-présidente du Cercle des Jeunes Entrepreneurs notamment. Lorsqu&apos;elle parvient à trouver un peu de temps libre, elle aim [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Team_Member_2_Text {
+            get {
+                return ResourceManager.GetString("Team_Member_2_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tahir Iftikhar.
+        /// </summary>
+        public static string Team_Member_3 {
+            get {
+                return ResourceManager.GetString("Team_Member_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tahir est LE spécialiste du développement et dispose d’une excellente maîtrise des technologies .NET. Il maîtrise d’ailleurs tellement bien qu’on a parfois du mal à comprendre ce qu’il nous dit. Lecteur de Cioran et Dostoïevski, il est aussi à l’aise dans la programmation que dans l’engloutissement constant de gâteaux et barres chocolatées en tout genre. Habitant Gentilly, il pratique la capoeira, et sa propension à semer les fautes d’orthographe comme les paquets de biscuits vide derrière lui compense le z [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Team_Member_3_Text {
+            get {
+                return ResourceManager.GetString("Team_Member_3_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc..
         /// </summary>
         public static string Teamworky {
@@ -457,7 +511,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;Si vous pensez ainsi, rejoignez-nous !&lt;/b&gt;.
+        ///   Looks up a localized string similar to Si vous pensez ainsi, rejoignez-nous !.
         /// </summary>
         public static string WeThinkThat_Text10 {
             get {

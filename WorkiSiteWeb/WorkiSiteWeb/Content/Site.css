@@ -1554,6 +1554,7 @@ html ul.tabs li.active a:hover
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	box-shadow: 4px 4px 10px #DDD;
+	overflow: hidden;
 }
 
 .contentBlock:first-child
@@ -1578,6 +1579,7 @@ html ul.tabs li.active a:hover
 	-webkit-box-shadow: 0 0 5px 1px #DDD;
 	-moz-box-shadow: 0 0 5px 1px #DDD;
     box-shadow: 0 0 5px 1px #DDD;
+    overflow:hidden;
 }
 
 /*FEATURE TAG

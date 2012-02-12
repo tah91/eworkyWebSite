@@ -205,10 +205,10 @@ html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTra
 .contentLeft{width:24.5%}
 .contentRight{width:71%}
 .emptyContent{height:200px}
-.contentBlock{padding:10px;border:1px solid #CCC;margin:10px 0;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD}
+.contentBlock{padding:10px;border:1px solid #CCC;margin:10px 0;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;box-shadow:4px 4px 10px #DDD;overflow:hidden}
 .contentBlock:first-child{margin-top:0}
 .contentBlock:last-child{margin-bottom:0}
-.innerContentBlock{border:1px solid #CCC;padding:10px;margin:10px;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 0 5px 1px #DDD;-moz-box-shadow:0 0 5px 1px #DDD;box-shadow:0 0 5px 1px #DDD}
+.innerContentBlock{border:1px solid #CCC;padding:10px;margin:10px;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 0 5px 1px #DDD;-moz-box-shadow:0 0 5px 1px #DDD;box-shadow:0 0 5px 1px #DDD;overflow:hidden}
 .featureTag ul{margin:0;padding:0}
 .featureTag li{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:3px 10px;margin:0 3px 6px 0;background-color:#EEE;float:left}
 .generalInfosTable{margin-top:5px}

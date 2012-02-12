@@ -1,29 +1,41 @@
 ﻿@section HeadContent
 {
 	<meta name="Description" content="@Worki.Resources.Views.Home.AProposString.Description"/>
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.WhoAreWe)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.Team)</title>
+    <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.WhoAreWe, "Blue")
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.Team, "Blue")
 <div class="detailContent generalTextContainer">
 	<div class="blockContainer float-left">
-		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.WhoAreWe)
+		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.Team)
 	</div>
 
 	<div class="float-right generalTextContent blockContainer">
 		<div class="contentBlock">
-			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.ATeam</h3>
-			<p>@Worki.Resources.Views.Home.HomeString.AllSupelecNeedWifi 
-			</p>
-			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.ANeed</h3>
-			<p>@Worki.Resources.Views.Home.HomeString.HowCameTheIdea 
-			</p>
-			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Fun</h3>
-			<p>@Worki.Resources.Views.Home.HomeString.CreateTheWebSite 
-			</p>
-			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.VeryGenerous</h3>
-			<p>@Worki.Resources.Views.Home.HomeString.ShareWithYou
-			</p>
+            <div class="innerContentBlock">
+                <div class="teamMemberPhoto" position="right">PHOTO</div>
+                <div class="teamMemberDescription">
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Team_Member_1</h3>
+                    <p>@Worki.Resources.Views.Home.HomeString.Team_Member_1_Text</p>
+                </div>
+            </div>
+
+            <div class="innerContentBlock">
+                <div class="teamMemberPhoto" position="left">PHOTO</div>
+                <div class="teamMemberDescription">
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Team_Member_2</h3>
+                    <p>@Worki.Resources.Views.Home.HomeString.Team_Member_2_Text</p>
+                </div>
+            </div>
+
+            <div class="innerContentBlock">
+                <div class="teamMemberPhoto" position="right">PHOTO</div>
+                <div class="teamMemberDescription">
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Team_Member_3</h3>
+                    <p>@Worki.Resources.Views.Home.HomeString.Team_Member_3_Text</p>
+                </div>
+            </div>
 		</div>
 	</div>
     <div class="clear">

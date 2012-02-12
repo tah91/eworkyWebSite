@@ -237,3 +237,35 @@
 {
     vertical-align: text-bottom;
 }
+
+.teamMemberPhoto
+{
+    min-height:180px;
+    min-width: 180px;
+}
+
+.teamMemberDescription
+{
+    display: table;
+    max-width: 460px;
+}
+
+.innerContentBlock div[position="left"]
+{ 
+    float: left;
+    margin-right: 5px;
+    border-right-color: #5DAFDE;
+    border-right-width: 1px;
+    border-right-style: dashed;
+    
+}
+  
+.innerContentBlock div[position="right"] 
+{
+    float: right;
+    margin-left: 5px;
+    border-left-color: #5DAFDE;
+    border-left-width: 1px;
+    border-left-style: dashed;
+
+}

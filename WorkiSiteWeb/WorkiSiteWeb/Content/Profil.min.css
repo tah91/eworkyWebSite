@@ -40,3 +40,7 @@
 .commentContent:after{content:"";position:absolute;border-style:solid;border-color:#f6f6f6 transparent;display:block;width:0;top:10px;left:-10px;bottom:auto;border-width:0 0 10px 10px}
 .commentDate{color:#bbb}
 .memberLink{vertical-align:text-bottom}
+.teamMemberPhoto{min-height:180px;min-width:180px}
+.teamMemberDescription{display:table;max-width:460px}
+.innerContentBlock div[position="left"]{float:left;margin-right:5px;border-right-color:#5DAFDE;border-right-width:1px;border-right-style:dashed}
+.innerContentBlock div[position="right"]{float:right;margin-left:5px;border-left-color:#5DAFDE;border-left-width:1px;border-left-style:dashed}
