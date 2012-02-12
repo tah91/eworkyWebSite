@@ -14,7 +14,7 @@ namespace Worki.Infrastructure
     {
 		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
 
-		public const Culture DefaultCulture = Culture.en;
+		public const Culture DefaultCulture = Culture.fr;
 
 		/// <summary>
 		/// Get culture type from url
@@ -160,7 +160,14 @@ namespace Worki.Infrastructure
 				if (userCulture != urlCulture)
 				{
 					var correctUrl = SetDomainSuffix(HttpContext.Current.Request.Url, userCulture.ToString(), false);
-					HttpContext.Current.Response.Redirect(correctUrl);
+					if (!string.IsNullOrEmpty(correctUrl))
+					{
+						HttpContext.Current.Response.Redirect(correctUrl);
+					}
+					else
+					{
+						TryAddCultureChangedCookie();
+					}
 				}
 			}
 			else
