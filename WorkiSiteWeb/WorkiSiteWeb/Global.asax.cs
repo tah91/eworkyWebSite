@@ -333,7 +333,7 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "{type}/{lieu}", // URL avec des paramètres
+                "{type}/{place}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByTypeSeo" }, // Paramètres par défaut
                 new { type = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationTypes) },
                 new string[] { "Worki.Web.Controllers" }
@@ -341,7 +341,7 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "{offerType}/{lieu}", // URL avec des paramètres
+                "{offerType}/{place}", // URL avec des paramètres
                 new { controller = "Localisation", action = "FullSearchByOfferSeo" }, // Paramètres par défaut
                 new { offerType = new FromValuesListConstraint(MiscHelpers.SeoConstants.LocalisationOfferTypes) },
                 new string[] { "Worki.Web.Controllers" }
@@ -349,28 +349,28 @@ namespace Worki.Web
 
             routes.CultureMapRoute(
                 "",
-                "places/{action}/{lieu}/{lat}/{lng}/{type}/{offerType}/{page}/{order}/{index}",
+				"workspaces/{action}/{place}/{lat}/{lng}/{type}/{offerType}/{page}/{order}/{index}",
                 new { controller = "Localisation", action = "FullSearch" },
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "places/details/{id}/{name}", // URL avec des paramètres
+				"workspaces/details/{id}/{name}", // URL avec des paramètres
                 new { area = "", controller = "Localisation", action = "Details" }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "places/{action}/{id}/{type}", // URL avec des paramètres
+				"workspaces/{action}/{id}/{type}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Offers" }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );
 
             routes.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "places/{action}/{id}", // URL avec des paramètres
+				"workspaces/{action}/{id}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Controllers" }
             );

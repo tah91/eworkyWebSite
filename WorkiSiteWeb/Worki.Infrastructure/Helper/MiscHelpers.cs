@@ -40,7 +40,7 @@ namespace Worki.Infrastructure.Helpers
 
         public static class SeoConstants
         {
-            public const string FreeAreas = "lieux-gratuits";
+            public const string FreeAreas = "free-areas";
             public const string Telecentre = "smart-workcenter";
             public const string BuisnessCenter = "business-center";
             public const string CoworkingSpace = "coworking-space";
@@ -91,13 +91,13 @@ namespace Worki.Infrastructure.Helpers
                 Hotel
             };
 
-            public const string FreeArea = "espace-gratuit";
-            public const string BuisnessLounge = "salon-d'affaire";
-            public const string Workstation = "poste-de-travail";
-            public const string Desktop = "bureau";
-            public const string MeetingRoom = "salle-de-reunion";
-            public const string SeminarRoom = "salle-de-conference";
-            public const string VisioRoom = "salle-de-visioconférence";
+            public const string FreeArea = "free-area";
+            public const string BuisnessLounge = "buisness-lounge";
+            public const string Workstation = "workstation";
+            public const string Desktop = "desktop";
+            public const string MeetingRoom = "meeting-room";
+            public const string SeminarRoom = "conf-room";
+            public const string VisioRoom = "visio-room";
 
             public static List<string> LocalisationOfferTypes = new List<string>
             {
@@ -111,7 +111,7 @@ namespace Worki.Infrastructure.Helpers
             };
 
             public const string Page = "page";
-            public const string Place = "lieu";
+            public const string Place = "place";
             public const string OfferType = "offerType";
             public const string Latitude = "lat";
             public const string Longitude = "lng";

@@ -586,10 +586,10 @@ namespace Worki.Web.Controllers
         /// <param name="localisationPlace">localisation place</param>
         /// <returns>redirect to corresponding results</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult FullSearchByTypeSeo(string type, string lieu)
+        public virtual ActionResult FullSearchByTypeSeo(string type, string place)
         {
             var criteria = new SearchCriteria();
-            criteria.Place = lieu;
+			criteria.Place = place;
             switch (type)
             {
                 case MiscHelpers.SeoConstants.CoworkingSpace:
@@ -626,10 +626,10 @@ namespace Worki.Web.Controllers
         /// <param name="localisationPlace">localisation place</param>
         /// <returns>redirect to corresponding results</returns>
         [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult FullSearchByOfferSeo(string offerType, string lieu)
+		public virtual ActionResult FullSearchByOfferSeo(string offerType, string place)
         {
             var criteria = new SearchCriteria();
-            criteria.Place = lieu;
+			criteria.Place = place;
             criteria.OfferData.Type = Localisation.GetOfferTypeFromSeoString(offerType);
 
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
