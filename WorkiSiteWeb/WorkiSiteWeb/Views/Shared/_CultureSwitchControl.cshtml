@@ -1,6 +1,6 @@
 ﻿@{
 	var isFr = Url.IsFrench();
 }
-@Html.ActionLink("Fr", MVC.Home.ChangeCulture("fr"), new { @class = !isFr ? "noUnderline" : "" })
+@Html.ActionLink("Fr", MVC.Home.ChangeCulture("fr"), new { @class = isFr ? "noUnderline" : "", @ref="nofollow" })
 
-@Html.ActionLink("En", MVC.Home.ChangeCulture("en"), new { @class = isFr ? "noUnderline" : "" })
+@Html.ActionLink("En", MVC.Home.ChangeCulture("en"), new { @class = !isFr ? "noUnderline" : "", @ref = "nofollow" })
