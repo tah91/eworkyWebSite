@@ -118,12 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BestWorkspace" xml:space="preserve">
-    <value>Coworking, compartir despacho, café wifi</value>
+    <value>eWorky | Espacios de coworking, Cafés Wifi, Centros de negocio, alquiler y reservas de salas de reunión /formación</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
     <comment>?</comment>
-    <value>
-    </value>
+    <value>¿Cómo funciona eWorky?</value>
   </data>
   <data name="RentSpeech" xml:space="preserve">
     <comment>A compléter</comment>
@@ -132,12 +131,157 @@
   </data>
   <data name="CostSpace" xml:space="preserve">
     <comment>?</comment>
-    <value>
-    </value>
+    <value>Un sitio de pago</value>
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
     <comment>Jm Modif l.17</comment>
-    <value>
-    </value>
+    <value>Visto en </value>
+  </data>
+  <data name="AllSupelecNeedWifi" xml:space="preserve">
+    <value>Somos los tres muy trabajadores y casi todos ya emprendedores (Greenworking) por lo que muchas veces hemos tenido la necesidad de acceder a una red wifi, de alquilar una sala de reunión o incluso una sala de formación.</value>
+  </data>
+  <data name="ANeed" xml:space="preserve">
+    <value>Una necesidad</value>
+  </data>
+  <data name="ATeam" xml:space="preserve">
+    <value>Un equipo</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contacta con nosotros</value>
+  </data>
+  <data name="CreateTheWebSite" xml:space="preserve">
+    <value>Por lo tanto hemos creado una página web para compartir entre amigos, ideas y trucos referentes a lugares de trabajo. Eso fue muy útil.</value>
+  </data>
+  <data name="ExampleLocation" xml:space="preserve">
+    <value>Ejemplo: Madrid, Aragón, Plaza mayor, etc.</value>
+  </data>
+  <data name="Fun" xml:space="preserve">
+    <value>Placer</value>
+  </data>
+  <data name="HowCameTheIdea" xml:space="preserve">
+    <value>Generalmente, conseguíamos encontrarlos por el boca a boca, pero faltaba algo para ganar tiempo y conseguir la mejor información: una plataforma colaborativa para la búsqueda de sitios de trabajo.</value>
+  </data>
+  <data name="Imprint" xml:space="preserve">
+    <value>Aviso legal</value>
+  </data>
+  <data name="ImprintDescription" xml:space="preserve">
+    <value>Esta página es editada por:&lt;br /&gt;
+        Omnicentre SAS&lt;br /&gt;
+        Société par actions simplifiée au capital de 20 740 € - RCS NANTERRE 529 309 668&lt;br /&gt;
+        Sede social : 57 rue de Lille, 75007 PARIS, FRANCE&lt;br /&gt;
+        &lt;br /&gt;
+        Contact :&lt;br /&gt;
+        {0}&lt;br /&gt;
+        &lt;br /&gt;
+        Hosted by :&lt;br /&gt;
+        Microsoft Windows Azure</value>
+  </data>
+  <data name="MailWellSent" xml:space="preserve">
+    <value>Tu mensaje ha sido enviado con éxito, nuestro equipo te contestará lo antes posible.</value>
+  </data>
+  <data name="MoreCriterias" xml:space="preserve">
+    <value>Más criterios</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Prensa</value>
+  </data>
+  <data name="ShareWithYou" xml:space="preserve">
+    <value>Y luego nos sentimos mal, y pensamos que era una pena no compartirlo con vosotros. ¡Bienvenidos a la comunidad de eWorky!</value>
+  </data>
+  <data name="SpeechForJournalists" xml:space="preserve">
+    <value>¿Eres periodista y te gustaría redactar un artículo o realizar un reportaje sobre eWorky? ¿Necesitas información sobre el desarrollo del teletrabajo? ¿Estás buscando a Directores de RRHH para entrevistarlos sobre estos temas? Contacta con nosotros a {0}.</value>
+  </data>
+  <data name="VeryGenerous" xml:space="preserve">
+    <value>Pero sobre todo mucha generosidad</value>
+  </data>
+  <data name="What" xml:space="preserve">
+    <value>¿Qué estás buscando?</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>¿Dónde estás buscando?</value>
+  </data>
+  <data name="WhoAreWe" xml:space="preserve">
+    <value>¿Quién somos?</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Encuentra un lugar de trabajo donde quieras: Despachos compartidos, Centros de negocios, espacios de coworking, café wifi, sala de reunión o de conferencia.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="eWorky" xml:space="preserve">
+    <value>2012 eWorky</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenid@</value>
+  </data>
+  <data name="MailWellSent2" xml:space="preserve">
+    <value>¡Tu mensaje ha sido mandado con éxito!</value>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>Alquiler</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>Reserva</value>
+  </data>
+  <data name="ReserveSpeech" xml:space="preserve">
+    <value>- Centros de negocios, Salas lounge &lt;br/&gt;- Espacios de coworking &lt;br/&gt;- centro de teletrabajo, etc.</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Búsqueda</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="SearchSpeech" xml:space="preserve">
+    <value>- Café wifi, puntos wifi &lt;br/&gt;- Espacio público digital &lt;br/&gt;- Biblioteca, museo, etc.</value>
+  </data>
+  <data name="SoonLotofFeatures" xml:space="preserve">
+    <value>Y pronto muchas otras funcionalidades.</value>
+  </data>
+  <data name="Teamworky" xml:space="preserve">
+    <value>El equipo de eWorky tiene muchos proyectos bajo la manga para simplificar el trabajo! Entonces sigue nuestra actualidad en Facebook, Twitter, Google+, etc.</value>
+  </data>
+  <data name="FindTheBesPlace1" xml:space="preserve">
+    <value>Encontrar el mejor sitio para trabajar</value>
+  </data>
+  <data name="MaxRate" xml:space="preserve">
+    <value>Presupuesto máximo (€)</value>
+  </data>
+  <data name="MinSurface" xml:space="preserve">
+    <value>Superficie mínima (m²)</value>
+  </data>
+  <data name="BlogTitle" xml:space="preserve">
+    <value>El blog eWorky</value>
+  </data>
+  <data name="AddPlaceTitle" xml:space="preserve">
+    <value>Proponer un nuevo espacio de trabajo</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Un sitio grátis</value>
+  </data>
+  <data name="RentalAd" xml:space="preserve">
+    <value>Un anuncio de alquiler de locales</value>
+  </data>
+  <data name="ChooseForm" xml:space="preserve">
+    <value>Selecciona el tipo de espacio que quieres añadir.</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Un espacio compartido</value>
+  </data>
+  <data name="SharedOfficeSpeach" xml:space="preserve">
+    <value>¿Tienes puestos de trabajo desocupados en tu empresa? ¡Compartelos en eWorky y disfruta de ingresos extras!</value>
+  </data>
+  <data name="FindTheBesPlace2" xml:space="preserve">
+    <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; espacios de coworking, cafés WiFi, centros de negocio, oficinas compartidas</value>
+  </data>
+  <data name="SliderItemDesc" xml:space="preserve">
+    <value>{0} hasta {1}</value>
+  </data>
+  <data name="FindTheBesPlace" xml:space="preserve">
+    <value>Encuentra el mejor espacio para trabajar entre {0:### ### ###} referencias</value>
   </data>
 </root>

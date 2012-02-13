@@ -53,14 +53,11 @@
 				</div>
 				<div class="clear">
 				</div>
-				@if (Request.IsAuthenticated)
-                {
-					<div class="languageSwitch orange bold float-right">
-						@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
-					</div>
-					<div class="clear">
-					</div>
-                }
+				<div class="languageSwitch orange bold float-right">
+					@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
+				</div>
+				<div class="clear">
+				</div>
 			</div>
 		</div>
 		<div class="page">

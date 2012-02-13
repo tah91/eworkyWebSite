@@ -16,6 +16,7 @@ using Worki.Infrastructure.Repository;
 using Microsoft.ApplicationServer.Caching;
 using Worki.Web.Singletons;
 using Worki.Web.Helpers;
+using System.Web;
 
 namespace Worki.Web.Controllers
 {
@@ -312,13 +313,14 @@ namespace Worki.Web.Controllers
         /// <param name="lang"></param>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
-        public virtual ActionResult ChangeCulture(string lang, string returnUrl)
+        public virtual ActionResult ChangeCulture(string lang)
         {
-			if (!string.IsNullOrEmpty(MultiCultureMvcRouteHandler.ExtractCultureFromUrl(returnUrl)))
+			var newUrl = MultiCultureMvcRouteHandler.SetDomainSuffix(Request.UrlReferrer, lang);
+			if (string.IsNullOrEmpty(newUrl))
 			{
-				returnUrl = returnUrl.Substring(3);
+				return Redirect(Request.UrlReferrer.PathAndQuery);
 			}
-            return Redirect("/" + lang.ToString() + returnUrl);
+			return Redirect(newUrl);
         }
 
         [ActionName("add-space")]

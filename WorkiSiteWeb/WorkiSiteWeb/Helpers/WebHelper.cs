@@ -195,35 +195,17 @@ namespace Worki.Web.Helpers
 		/// <returns>A reference to the mapped route.</returns>
 		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
 		{
-			//other languages
-			var clUrl = "{culture}/" + url;
-			var clConstraint = constraints != null ? new RouteValueDictionary(constraints) : new RouteValueDictionary();
-			clConstraint.Add("culture", new Worki.Infrastructure.CultureConstraint(
-				Worki.Infrastructure.Culture.fr.ToString(),
-				Worki.Infrastructure.Culture.en.ToString()));
-			var clRoute = routes.MapRoute(
-				name,
-				clUrl,
-				defaults,
-				constraints,
-				namespaces
-			);
-			clRoute.Constraints = clConstraint;
-			clRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-
-			//default language
-			var frDefault = defaults != null ? new RouteValueDictionary(defaults) : new RouteValueDictionary();
-			frDefault.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
-			var frRoute = routes.MapRoute(
+			var route = routes.MapRoute(
 				"",
 				url,
 				defaults,
 				constraints,
 				namespaces
 			);
-			frRoute.Defaults = frDefault;
-			frRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-			return frRoute;
+
+			route.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+
+			return route;
 		}
 
 		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, string[] namespaces)
@@ -239,35 +221,17 @@ namespace Worki.Web.Helpers
 
 		public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, object constraints, string[] namespaces)
 		{
-			//other languages
-			var clUrl = "{culture}/" + url;
-			var clConstraint = constraints != null ? new RouteValueDictionary(constraints) : new RouteValueDictionary();
-			clConstraint.Add("culture", new Worki.Infrastructure.CultureConstraint(
-				Worki.Infrastructure.Culture.fr.ToString(),
-				Worki.Infrastructure.Culture.en.ToString()));
-			var clRoute = areaContext.MapRoute(
-				name,
-				clUrl,
-				defaults,
-				constraints,
-				namespaces
-			);
-			clRoute.Constraints = clConstraint;
-			clRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-
-			//default language
-			var frDefault = defaults != null ? new RouteValueDictionary(defaults) : new RouteValueDictionary();
-			frDefault.Add("culture", Worki.Infrastructure.Culture.fr.ToString());
-			var frRoute = areaContext.MapRoute(
+			var route = areaContext.MapRoute(
 				"",
 				url,
 				defaults,
 				constraints,
 				namespaces
 			);
-			frRoute.Defaults = frDefault;
-			frRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
-			return frRoute;
+
+			route.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+
+			return route;
 		}
 
 		public static Route CultureMapRoute(this AreaRegistrationContext areaContext, string name, string url, object defaults, string[] namespaces)
@@ -294,8 +258,7 @@ namespace Worki.Web.Helpers
 
 		public static Worki.Infrastructure.Culture GetCulture(this UrlHelper instance)
 		{
-			var url = instance.RequestContext.HttpContext.Request.Url.PathAndQuery;
-			return Worki.Infrastructure.MultiCultureMvcRouteHandler.GetCulture(url);
+			return Worki.Infrastructure.MultiCultureMvcRouteHandler.GetCulture(instance.RequestContext.HttpContext.Request.Url);
 		}
 
 		public static bool IsFrench(this UrlHelper instance)
