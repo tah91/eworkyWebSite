@@ -195,6 +195,8 @@ namespace Worki.Web.Helpers
 		/// <returns>A reference to the mapped route.</returns>
 		public static Route CultureMapRoute(this RouteCollection routes, string name, string url, object defaults, object constraints, string[] namespaces)
 		{
+
+
 			var route = routes.MapRoute(
 				"",
 				url,
@@ -204,6 +206,17 @@ namespace Worki.Web.Helpers
 			);
 
 			route.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
+
+			//other languages
+			var clUrl = "fr/" + url;
+			var clRoute = routes.MapRoute(
+				"",
+				clUrl,
+				defaults,
+				constraints,
+				namespaces
+			);
+			clRoute.RouteHandler = new Worki.Infrastructure.MultiCultureMvcRouteHandler();
 
 			return route;
 		}
