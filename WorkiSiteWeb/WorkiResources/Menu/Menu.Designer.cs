@@ -106,6 +106,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Facturation.
+        /// </summary>
+        public static string Billing {
+            get {
+                return ResourceManager.GetString("Billing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espace.
         /// </summary>
         public static string BOHome {
@@ -277,7 +286,7 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Informations de paiement.
+        ///   Looks up a localized string similar to Réglement.
         /// </summary>
         public static string ModifyPayement {
             get {

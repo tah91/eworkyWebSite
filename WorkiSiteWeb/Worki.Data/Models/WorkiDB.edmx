@@ -414,6 +414,9 @@
           <Property Name="Viadeo" Type="nvarchar" MaxLength="256" />
           <Property Name="Website" Type="nvarchar" MaxLength="256" />
           <Property Name="PaymentAddress" Type="nvarchar" MaxLength="256" />
+          <Property Name="SiretNumber" Type="nvarchar" MaxLength="256" />
+          <Property Name="TaxNumber" Type="nvarchar" MaxLength="256" />
+          <Property Name="TaxRate" Type="decimal" Nullable="false" Scale="2" />
         </EntityType>
         <EntityType Name="MemberQuotation">
           <Key>
@@ -1425,6 +1428,9 @@
 					<Property Type="String" Name="Website" MaxLength="256" FixedLength="false" Unicode="true" />
 					<Property Type="String" Name="PaymentAddress" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_MemberMainData_Member" FromRole="MemberMainData" ToRole="Member" />
+          <Property Type="String" Name="SiretNumber" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TaxNumber" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TaxRate" Nullable="false" Precision="18" Scale="2" />
 				</EntityType>
 				<EntityType Name="MembersInGroup">
 					<Key>
@@ -2314,7 +2320,10 @@
 					<EntitySetMapping Name="MemberMainDatas">
 						<EntityTypeMapping TypeName="WorkiDBModel.MemberMainData">
 							<MappingFragment StoreEntitySet="MemberMainData">
-								<ScalarProperty Name="PaymentAddress" ColumnName="PaymentAddress" />
+								<ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="SiretNumber" ColumnName="SiretNumber" />
+                <ScalarProperty Name="PaymentAddress" ColumnName="PaymentAddress" />
 								<ScalarProperty Name="Website" ColumnName="Website" />
 								<ScalarProperty Name="Viadeo" ColumnName="Viadeo" />
 								<ScalarProperty Name="Linkedin" ColumnName="Linkedin" />

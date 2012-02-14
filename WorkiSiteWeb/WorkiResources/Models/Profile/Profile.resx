@@ -167,12 +167,22 @@
   </data>
   <data name="PunctualUser" xml:space="preserve">
     <value>Utilisateur du dimanche</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
+  <data name="SiretNumber" xml:space="preserve">
+    <value>N° SIRET</value>
+  </data>
   <data name="Startup" xml:space="preserve">
     <value>Entrepreneur / TPE</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Etudiant</value>
+  </data>
+  <data name="TaxNumber" xml:space="preserve">
+    <value>N° TVA intracommunautaire</value>
+  </data>
+  <data name="TaxRate" xml:space="preserve">
+    <value>Taux de TVA applicable dans le pays de facturation</value>
   </data>
   <data name="Teleworker" xml:space="preserve">
     <value>Télétravailleur</value>

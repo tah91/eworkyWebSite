@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.PaymentInfoModel
+﻿@model Worki.Data.Models.Member
 
 @section HeadContent
 {  
@@ -14,8 +14,8 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.ModifyPayement, MVC.Backoffice.Profil.ChangePaymentInformation())},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Billing, MVC.Backoffice.Profil.ChangeBillingInformation())} 
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.ModifyPayement, MVC.Backoffice.Profil.ChangePaymentInformation())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Billing, MVC.Backoffice.Profil.ChangeBillingInformation())}
 		})
 	</div>
 	
@@ -23,30 +23,31 @@
         @using (Html.BeginForm())
 	    {
             <div class="contentBlock">
-                <h3 class="blue marginb10">@Worki.Resources.Views.BackOffice.BackOfficeString.WorkingPrinciple</h3>
-                <div class="marginb10">
-                    @Html.Raw(string.Format(Worki.Resources.Views.Profile.ProfileString.HeadModifyPayment, MiscHelpers.UrlConstants.paypal))
-                </div>
-                <div class="marginb15">
-                    @Worki.Resources.Views.Profile.ProfileString.EndModifyPayment
-                </div>
                 @Html.AntiForgeryToken()
-                <h3 class="blue margint15">@Worki.Resources.Views.BackOffice.BackOfficeString.PaypalIdentity</h3>
+                <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.BillingInfo</h3>
                 <table class="confirmbooktable">
                     <tr>
                         <td>
-                            @Worki.Resources.Views.Profile.ProfileString.MailPayment <span class="blue">*</span> :
+							@Html.LabelFor(m => m.MemberMainData.SiretNumber)
                         </td>
                         <td>
-                            @Html.TextBoxFor(m => m.PaymentAddress)
+                            @Html.TextBoxFor(m => m.MemberMainData.SiretNumber)
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            @Worki.Resources.Views.Profile.ProfileString.PasswordEworky <span class="blue">*</span> :
+                            @Html.LabelFor(m => m.MemberMainData.TaxNumber)
                         </td>
                         <td>
-                            @Html.PasswordFor(m => m.WorkiPassword)
+                            @Html.TextBoxFor(m => m.MemberMainData.TaxNumber)
+                        </td>
+                    </tr>
+					<tr>
+                        <td>
+                            @Html.LabelFor(m => m.MemberMainData.TaxRate)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.MemberMainData.TaxRate)
                         </td>
                     </tr>
                 </table>
@@ -58,4 +59,4 @@
         }
     </div>
 	<div class="clear"></div>
-</div>
+</div

@@ -88,6 +88,15 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Informations de facturation.
+        /// </summary>
+        public static string BillingInfo {
+            get {
+                return ResourceManager.GetString("BillingInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espace gérant : {0} alerte(s).
         /// </summary>
         public static string BOAlerts {

@@ -214,6 +214,15 @@ namespace Worki.Resources.Models.Profile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to N° SIRET.
+        /// </summary>
+        public static string SiretNumber {
+            get {
+                return ResourceManager.GetString("SiretNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entrepreneur / TPE.
         /// </summary>
         public static string Startup {
@@ -228,6 +237,24 @@ namespace Worki.Resources.Models.Profile {
         public static string Student {
             get {
                 return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to N° TVA intracommunautaire.
+        /// </summary>
+        public static string TaxNumber {
+            get {
+                return ResourceManager.GetString("TaxNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taux de TVA applicable dans le pays de facturation.
+        /// </summary>
+        public static string TaxRate {
+            get {
+                return ResourceManager.GetString("TaxRate", resourceCulture);
             }
         }
         

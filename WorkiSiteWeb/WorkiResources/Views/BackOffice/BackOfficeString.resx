@@ -307,4 +307,7 @@
   <data name="Period" xml:space="preserve">
     <value>Période</value>
   </data>
+  <data name="BillingInfo" xml:space="preserve">
+    <value>Informations de facturation</value>
+  </data>
 </root>
