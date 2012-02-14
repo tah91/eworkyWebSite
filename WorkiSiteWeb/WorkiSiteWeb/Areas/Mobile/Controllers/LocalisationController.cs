@@ -34,7 +34,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 		/// <param name="criteria">The criteria data from the form</param>
 		/// <returns>redirect to the list of results</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
-		[ActionName("recherche")]
+		[ActionName("search")]
 		[ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
 		public virtual ActionResult FullSearch(SearchCriteria criteria)
@@ -68,7 +68,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 		/// <param name="page">the page to display</param>
 		/// <returns>the list of results in the page</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("resultats-liste")]
+		[ActionName("search-results")]
 		public virtual ActionResult FullSearchResult(int? page)
 		{
 			var pageValue = page ?? 1;
@@ -76,7 +76,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo(pageValue, 10);
-			return View(criteriaViewModel);
+			return View(MVC.Mobile.Localisation.Views.FullSearchResult, criteriaViewModel);
 		}
 
 		/// <summary>
@@ -85,7 +85,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 		/// <param name="index">the index of th localisation in the list of results</param>
 		/// <returns>a view of the details of the selected localisation</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("resultats-detail")]
+		[ActionName("search-detail")]
 		public virtual ActionResult FullSearchResultDetail(int? index)
 		{
 			var itemIndex = index ?? 0;
@@ -93,7 +93,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 
 			if (detailModel == null)
 				return View(MVC.Shared.Views.Error);
-			return View(MVC.Mobile.Localisation.Views.resultats_detail, detailModel);
+			return View(MVC.Mobile.Localisation.Views.FullSearchResultDetail, detailModel);
 		}
 
 		/// <summary>
@@ -111,7 +111,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 				return null;
 
 			var model = new SearchSingleResultViewModel { Localisation = localisation };
-			return View(MVC.Mobile.Localisation.Views.resultats_detail, model);
+			return View(MVC.Mobile.Localisation.Views.FullSearchResultDetail, model);
 		}
 
 		/// <summary>

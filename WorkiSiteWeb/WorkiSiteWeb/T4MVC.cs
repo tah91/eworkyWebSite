@@ -1483,17 +1483,17 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FullSearchByTypeSeo(string type, string lieu) {
+        public override System.Web.Mvc.ActionResult FullSearchByTypeSeo(string type, string place) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByTypeSeo);
             callInfo.RouteValueDictionary.Add("type", type);
-            callInfo.RouteValueDictionary.Add("lieu", lieu);
+            callInfo.RouteValueDictionary.Add("place", place);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FullSearchByOfferSeo(string offerType, string lieu) {
+        public override System.Web.Mvc.ActionResult FullSearchByOfferSeo(string offerType, string place) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchByOfferSeo);
             callInfo.RouteValueDictionary.Add("offerType", offerType);
-            callInfo.RouteValueDictionary.Add("lieu", lieu);
+            callInfo.RouteValueDictionary.Add("place", place);
             return callInfo;
         }
 
@@ -4328,9 +4328,9 @@ namespace Worki.Web.Areas.Mobile.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string FullSearch = "recherche";
-            public readonly string FullSearchResult = "resultats-liste";
-            public readonly string FullSearchResultDetail = "resultats-detail";
+            public readonly string FullSearch = "search";
+            public readonly string FullSearchResult = "search-results";
+            public readonly string FullSearchResultDetail = "search-detail";
             public readonly string LocalisationDetail = "LocalisationDetail";
             public readonly string LocalisationDescription = "LocalisationDescription";
         }
@@ -4344,8 +4344,8 @@ namespace Worki.Web.Areas.Mobile.Controllers {
             public readonly string _CommentSummary = "~/Areas/Mobile/Views/Localisation/_CommentSummary.cshtml";
             public readonly string _LocalisationDetail = "~/Areas/Mobile/Views/Localisation/_LocalisationDetail.cshtml";
             public readonly string _SearchResultSummary = "~/Areas/Mobile/Views/Localisation/_SearchResultSummary.cshtml";
-            public readonly string resultats_detail = "~/Areas/Mobile/Views/Localisation/resultats-detail.cshtml";
-            public readonly string resultats_liste = "~/Areas/Mobile/Views/Localisation/resultats-liste.cshtml";
+            public readonly string FullSearchResult = "~/Areas/Mobile/Views/Localisation/FullSearchResult.cshtml";
+            public readonly string FullSearchResultDetail = "~/Areas/Mobile/Views/Localisation/FullSearchResultDetail.cshtml";
         }
     }
 

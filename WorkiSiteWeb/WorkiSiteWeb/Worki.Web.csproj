@@ -637,12 +637,12 @@
     <Content Include="Areas\Api\Views\Web.config" />
     <Content Include="Areas\Mobile\Views\Web.config" />
     <Content Include="Areas\Mobile\Views\Home\index.cshtml" />
-    <Content Include="Areas\Mobile\Views\Localisation\resultats-liste.cshtml" />
+    <Content Include="Areas\Mobile\Views\Localisation\FullSearchResult.cshtml" />
     <Content Include="Areas\Mobile\Views\Localisation\_SearchResultSummary.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\__Layout.cshtml" />
     <Content Include="Areas\Mobile\Views\Localisation\_CommentSummary.cshtml" />
     <Content Include="Areas\Mobile\Views\Localisation\_LocalisationDetail.cshtml" />
-    <Content Include="Areas\Mobile\Views\Localisation\resultats-detail.cshtml" />
+    <Content Include="Areas\Mobile\Views\Localisation\FullSearchResultDetail.cshtml" />
     <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\_Connexion.cshtml" />
     <Content Include="App_Data\51Degrees.mobi.config">

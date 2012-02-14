@@ -25,7 +25,7 @@ namespace Worki.Web.Areas.Mobile
 
 			context.CultureMapRoute(
                 "", // Nom d'itinéraire
-                "mobile/lieu-de-travail/{action}/{id}", // URL avec des paramètres
+                "mobile/workplaces/{action}/{id}", // URL avec des paramètres
                 new { controller = "Localisation", action = "Index", id = UrlParameter.Optional }, // Paramètres par défaut
                 new string[] { "Worki.Web.Areas.Mobile.Controllers" }
             );
