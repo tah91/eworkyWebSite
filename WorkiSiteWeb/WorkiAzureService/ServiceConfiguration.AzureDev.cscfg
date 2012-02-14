@@ -10,7 +10,7 @@
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="tahir" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEHkN79/huGGVQGl8I7Ba4j4wDQYJKoZIhvcNAQEBBQAEggEAJxzdhW+xRLc37o2jYZKg1rhvcjDZYhu/4p7fXvMBA9JCluuOTJ+TZwYpXBj3qTIWvlUB7S6Rlg3rEKdrToJYspbT+oO934RO7OtCLfxEK3osNV4iYobXaa2aArDPJbvyxPSQ6Lm1rAwDDKOSe1HedZ/apE6AqGdCHdM06/YOfLBX7BEZL57K2dg1yVrDMaxXLMvToeT1IuoadeoELG/Caf7a3mkBbXVPk6XpVG+X25vu3nbzPDLr1sYF0HpN/q9CiSn2wm+wgNW+RtO2kUP98xR9D8ePFhBxgeMDDhwFueVFgOdVqVsY9J7bGs1P68K1znKUfrQ3b4k2vCZpJwys0zAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECC47933bv14KgBC8HNPJJu+LwiqrxqZZyyHb" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2012-01-31T23:59:59.0000000+01:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2013-01-31T23:59:59.0000000+01:00" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
     </ConfigurationSettings>
     <Certificates>
