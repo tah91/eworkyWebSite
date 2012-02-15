@@ -1408,6 +1408,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
 					log.Event = "Booking Created From Calandar";
 					createBookingModel.Booking.MemberBookingLogs.Add(log);
+                    createBookingModel.Booking.StatusId = (int)MemberBooking.Status.Accepted;
 
 					offer.MemberBookings.Add(createBookingModel.Booking);
 

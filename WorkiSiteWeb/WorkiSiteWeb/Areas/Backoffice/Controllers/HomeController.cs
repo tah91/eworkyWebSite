@@ -236,8 +236,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					monthYear = MonthYear.Parse(id);
 				}
 
-				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId && b.StatusId == (int)MemberBooking.Status.Paid);
-				var initial = bookings.Select(b => b.CreationDate).Min();
+                var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId && b.StatusId == (int)MemberBooking.Status.Accepted);
+                var initial = bookings.Count != 0 ? bookings.Where(b => b.CreationDate != DateTime.MinValue).Select(b => b.CreationDate).Min() : DateTime.Now;
+
 				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
 
 				var model = new MonthYearList<MemberBooking>
