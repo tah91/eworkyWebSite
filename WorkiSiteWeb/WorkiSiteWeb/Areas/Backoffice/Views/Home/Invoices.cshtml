@@ -1,0 +1,88 @@
+﻿@model MonthYearList<MemberBooking>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Invoices)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.BackOffice.BackOfficeString.OwnerSpace, "Blue")
+@Html.Partial(MVC.Backoffice.Shared.Views._BackofficeMenu, BackofficeMenu.Home)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.News, MVC.Backoffice.Home.Index())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Places, MVC.Backoffice.Home.Localisations())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Home.Booking())} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Home.Quotation())} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Home.Invoices())}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+		<div class="contentBlock tableStyle">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceId
+                        </th>
+                        <th>
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceDate
+                        </th>
+                        <th>
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoicePlace
+                        </th>
+                        <th>
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceClient
+                        </th>
+                        <th>
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoicePrice
+                        </th>
+						<th>
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceAction
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.List)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @CultureHelpers.GetSpecificFormat(item.PaidDate, CultureHelpers.TimeFormat.Date)
+                        </td>
+                        <td>
+                            @item.Offer.Localisation.Name
+                        </td>
+                        <td>
+                            @item.Client.GetFullDisplayName()
+                        </td>
+						<td>
+                            @item.Price €
+                        </td>
+                        <td>
+                            <a href=#>plop</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+			@if (Model.List.Count == 0)
+			{
+			<div class="emptyContent italic">
+				@Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceEmpty
+			</div>	
+			}
+			<div class="pager">
+                @Html.MonthYearLinks(Model.Current, Model.Initial, x => Url.Action(MVC.Backoffice.Home.Invoices(x)))
+            </div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

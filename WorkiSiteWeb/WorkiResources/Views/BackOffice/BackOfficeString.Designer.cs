@@ -250,6 +250,69 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string InvoiceAction {
+            get {
+                return ResourceManager.GetString("InvoiceAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client.
+        /// </summary>
+        public static string InvoiceClient {
+            get {
+                return ResourceManager.GetString("InvoiceClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string InvoiceDate {
+            get {
+                return ResourceManager.GetString("InvoiceDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Il n&apos;y a pas de facture pour ce mois..
+        /// </summary>
+        public static string InvoiceEmpty {
+            get {
+                return ResourceManager.GetString("InvoiceEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to N°.
+        /// </summary>
+        public static string InvoiceId {
+            get {
+                return ResourceManager.GetString("InvoiceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lieu.
+        /// </summary>
+        public static string InvoicePlace {
+            get {
+                return ResourceManager.GetString("InvoicePlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prix.
+        /// </summary>
+        public static string InvoicePrice {
+            get {
+                return ResourceManager.GetString("InvoicePrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nom.
         /// </summary>
         public static string LastName {

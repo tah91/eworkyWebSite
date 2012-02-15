@@ -282,4 +282,7 @@
   <data name="EditPlace" xml:space="preserve">
     <value>Edition du lieu</value>
   </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>Factures client</value>
+  </data>
 </root>

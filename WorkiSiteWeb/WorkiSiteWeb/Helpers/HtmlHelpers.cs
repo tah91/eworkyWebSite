@@ -91,6 +91,79 @@ namespace Worki.Web.Helpers
 			return MvcHtmlString.Create(result.ToString());
 		}
 
+		static string MonthYearPageLink(MonthYear pageIndex, MonthYear currentPage, Func<string, string> pageUrl)
+		{
+			TagBuilder tag = new TagBuilder("a");
+			var link = "javascript:void();";
+			if (pageUrl != null)
+				link = pageUrl(pageIndex.ToString());
+			tag.MergeAttribute("href", link);
+			tag.InnerHtml = pageIndex.ToString();
+			if (pageIndex == currentPage)
+				tag.AddCssClass("selected");
+			return tag.ToString();
+		}
+
+		static string MonthYearNextLink(MonthYear pageIndex, bool next, Func<string, string> pageUrl)
+		{
+			TagBuilder tag = new TagBuilder("a");
+			var link = "javascript:void();";
+			if (pageUrl != null)
+				link = pageUrl(pageIndex.ToString());
+			tag.MergeAttribute("href", link);
+			tag.InnerHtml = next ? ">" : "<";
+			return tag.ToString();
+		}
+
+		public static MvcHtmlString MonthYearLinks(this HtmlHelper html, MonthYear current, MonthYear initial, Func<string, string> pageUrl)
+		{
+			StringBuilder result = new StringBuilder();
+			var today = MonthYear.GetCurrent();
+
+			var total = MonthYear.GetMonthYearBetween(initial, today);
+			if (total < 2)
+				return MvcHtmlString.Create(result.ToString());
+
+
+			//previous
+			if (current < today)
+				result.AppendLine(MonthYearNextLink(current.Add(1), false, pageUrl));
+
+			//print first
+			result.AppendLine(MonthYearPageLink(today, current, pageUrl));
+
+			//far from first
+			if (current < today.Add(-1))
+			{
+				result.AppendLine("...");
+				if (current ==  today && total > 3)
+					result.AppendLine(MonthYearPageLink(current.Add(2), current, pageUrl));
+				result.AppendLine(MonthYearPageLink(current.Add(1), current, pageUrl));
+			}
+
+			//current
+			if (current != today && current != initial)
+				result.AppendLine(MonthYearPageLink(current, current, pageUrl));
+
+			//far from last
+			if (current > initial.Add(1))
+			{
+				result.AppendLine(MonthYearPageLink(current.Add(-1), current, pageUrl));
+				if (current == initial && total > 3)
+					result.AppendLine(MonthYearPageLink(current.Add(-2), current, pageUrl));
+				result.AppendLine("...");
+			}
+
+			//last
+			result.AppendLine(MonthYearPageLink(initial, current, pageUrl));
+
+			//next
+			if (current > initial)
+				result.AppendLine(MonthYearNextLink(current.Add(-1), true, pageUrl));
+
+			return MvcHtmlString.Create(result.ToString());
+		}
+
         public static MvcHtmlString PageDetailLinks(this HtmlHelper html, int currentIndex, int itemCount, Func<int, string> pageUrl, string previous, string next, string divClass)
         {
             StringBuilder result = new StringBuilder();

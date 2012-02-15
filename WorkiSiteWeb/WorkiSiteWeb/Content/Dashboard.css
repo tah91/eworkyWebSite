@@ -26,7 +26,7 @@
 
 .tableStyle tbody tr:nth-child(odd)
 {
-    background:#ffffff;
+    background:#f9f9f9;
 }
 
 .tableStyle tbody tr:nth-child(even)

@@ -10,11 +10,26 @@ namespace Worki.Infrastructure.Helpers
         // Format ==> FR / EN
         public enum TimeFormat
         {
-            Time,           // Format ==> HH:mm / HH:MM [AM/PM]
-            Date,           // Format ==> dd/MM/yyyy / MM/dd/yyyy
-            General,        // Format ==> dd/MM/yyyy HH:mm / MM/dd/yyyy HH:mm [AM/PM]
-            LongGeneral,    // Format ==> dd/MM/yyyy HH:mm:ss / MM/dd/yyyy HH:mm:ss [AM/PM]
-            LongFull        // Format ==> Day dd Month yyyy HH:mm:ss / Day, Month dd, yyyy HH:mm:ss [AM/PM]
+			/// <summary>
+			/// HH:mm / HH:MM [AM/PM]
+			/// </summary>
+            Time,         
+  			/// <summary>
+			/// dd/MM/yyyy / MM/dd/yyyy
+  			/// </summary>
+            Date,  
+         	/// <summary>
+			/// dd/MM/yyyy HH:mm / MM/dd/yyyy HH:mm [AM/PM]
+         	/// </summary>
+            General,     
+			/// <summary>
+			/// dd/MM/yyyy HH:mm:ss / MM/dd/yyyy HH:mm:ss [AM/PM]
+			/// </summary>
+            LongGeneral,  
+			/// <summary>
+			/// Day dd Month yyyy HH:mm:ss / Day, Month dd, yyyy HH:mm:ss [AM/PM]
+			/// </summary>
+            LongFull
         }
 
         /// <summary>

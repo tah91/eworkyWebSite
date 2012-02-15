@@ -1541,6 +1541,7 @@ html ul.tabs li.active a:hover
 
 .emptyContent
 {
+	margin:10px 0;
 	height:200px;
 }
 

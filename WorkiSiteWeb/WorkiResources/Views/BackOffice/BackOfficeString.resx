@@ -307,4 +307,25 @@
   <data name="Period" xml:space="preserve">
     <value>Période</value>
   </data>
+  <data name="InvoiceAction" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="InvoiceClient" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="InvoiceDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="InvoiceEmpty" xml:space="preserve">
+    <value>Il n'y a pas de facture pour ce mois.</value>
+  </data>
+  <data name="InvoiceId" xml:space="preserve">
+    <value>N°</value>
+  </data>
+  <data name="InvoicePlace" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="InvoicePrice" xml:space="preserve">
+    <value>Prix</value>
+  </data>
 </root>

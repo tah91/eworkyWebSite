@@ -3106,6 +3106,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string Booking = "Booking";
             public readonly string Quotation = "Quotation";
             public readonly string GetAlertSummary = "GetAlertSummary";
+            public readonly string Invoices = "Invoices";
         }
 
 
@@ -3116,6 +3117,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ViewNames {
             public readonly string Booking = "~/Areas/Backoffice/Views/Home/Booking.cshtml";
             public readonly string Index = "~/Areas/Backoffice/Views/Home/Index.cshtml";
+            public readonly string Invoices = "~/Areas/Backoffice/Views/Home/Invoices.cshtml";
             public readonly string Localisations = "~/Areas/Backoffice/Views/Home/Localisations.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Home/Quotation.cshtml";
         }
@@ -3150,6 +3152,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         public override System.Web.Mvc.ActionResult GetAlertSummary() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetAlertSummary);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Invoices(string id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Invoices);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

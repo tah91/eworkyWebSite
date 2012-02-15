@@ -208,5 +208,49 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Get action method to show invoices of the owner
+		/// </summary>
+		/// <returns>View containing the invoices</returns>
+		public virtual ActionResult Invoices(string id = "")
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				MonthYear monthYear;
+				if (string.IsNullOrEmpty(id))
+				{
+					monthYear = MonthYear.GetCurrent();
+				}
+				else
+				{
+					monthYear = MonthYear.Parse(id);
+				}
+
+				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId && b.StatusId == (int)MemberBooking.Status.Paid);
+				var initial = bookings.Select(b => b.CreationDate).Min();
+				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
+
+				var model = new MonthYearList<MemberBooking>
+				{
+					List = bookings,
+					Current = monthYear,
+					Initial = MonthYear.FromDateTime(initial)
+				};
+				return View(model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Invoices", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
     }
 }
