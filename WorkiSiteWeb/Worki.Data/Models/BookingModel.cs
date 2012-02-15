@@ -351,6 +351,11 @@ namespace Worki.Data.Models
             }
         }
 
+		public string GetPriceDisplay()
+		{
+			return Price + " €";
+		}
+
 		#endregion
 
         #region Booking Modification

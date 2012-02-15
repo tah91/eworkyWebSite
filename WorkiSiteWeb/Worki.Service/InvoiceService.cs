@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.Text;
 
 namespace Worki.Service
 {
@@ -35,142 +36,158 @@ namespace Worki.Service
             _Logger = logger;
 		}
 
-        public void BookingInvoice(MemoryStream stream, MemberBooking booking)
-		{
-            new PDFCreator().Build(stream);
-		}
-	}
-
-	public class PDFCreator
-	{
 		// Set up the fonts to be used on the pages
-		private iTextSharp.text.Font _largeFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.BLACK);
-		private iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
-		private iTextSharp.text.Font _smallFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
+		const Font.FontFamily _family = Font.FontFamily.UNDEFINED;
+		Font _largeFont = new Font(_family, 18, Font.BOLD, BaseColor.BLACK);
+		Font _standardFont = new Font(_family, 14, Font.NORMAL, BaseColor.BLACK);
+		Font _standardFontBold = new Font(_family, 14, Font.BOLD, BaseColor.BLACK);
+		Font _standardFontWhite = new Font(_family, 12, Font.NORMAL, BaseColor.WHITE);
+		Font _smallFont = new Font(_family, 10, Font.NORMAL, BaseColor.BLACK);
+		Font _smallFontBold = new Font(_family, 10, Font.BOLD, BaseColor.BLACK);
 
-        public void Build(MemoryStream ms)
+		public void BookingInvoice(MemoryStream stream, MemberBooking booking)
 		{
-			iTextSharp.text.Document doc = null;
+			Document doc = null;
 
 			try
 			{
 				// Initialize the PDF document
 				doc = new Document();
-                iTextSharp.text.pdf.PdfWriter writer = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
+				PdfWriter writer = PdfWriter.GetInstance(doc, stream);
 
 				// Set the margins and page size
 				this.SetStandardPageSize(doc);
 
-				// Add metadata to the document.  This information is visible when viewing the 
-				// document properities within Adobe Reader.
-				doc.AddTitle("My Science Report");
-				doc.AddHeader("title", "My Science Report");
-				doc.AddHeader("author", "M. Lichtenberg");
-				doc.AddCreator("M. Lichtenberg");
-				doc.AddKeywords("paper airplanes");
-				doc.AddHeader("subject", "paper airplanes");
-
 				// Open the document for writing content
 				doc.Open();
 
-				this.AddPageWithTable(doc);
+				this.AddPageWithTable(doc, booking);
 
 				// Add a final page
 				this.SetStandardPageSize(doc);  // Reset the margins and page size
 			}
-			catch (iTextSharp.text.DocumentException)
+			catch (DocumentException ex)
 			{
 				// Handle iTextSharp errors
+				_Logger.Error("BookingInvoice", ex);
 			}
-            finally
-            {
-                // Clean up
-                doc.Close();
-                doc = null;
-            }
+			finally
+			{
+				// Clean up
+				doc.Close();
+				doc = null;
+			}
 		}
 
-		BaseColor HeaderColor = new BaseColor(79, 129, 189);
-		BaseColor CellColor = new BaseColor(219, 229, 241);
+		BaseColor HeaderColor = new BaseColor(78, 165, 215);
 
-		void AddCell(PdfPTable table, string text, BaseColor color, int align)
+		void AddCellHeader(PdfPTable table, string text)
 		{
-			table.AddCell(new PdfPCell { Phrase = new Phrase(text), BackgroundColor = color, HorizontalAlignment = align });
+			table.AddCell(new PdfPCell
+			{
+				Phrase = new Phrase(text, _standardFontWhite),
+				BackgroundColor = HeaderColor,
+				HorizontalAlignment = Element.ALIGN_CENTER,
+				Border = 0,
+				VerticalAlignment = Element.ALIGN_MIDDLE,
+				FixedHeight = 20f
+			});
+		}
+
+		void AddCell(PdfPTable table, string text, int align,int border, int colspan = 1, float borderWidth=0.5f, Font font = null)
+		{
+			table.AddCell(new PdfPCell 
+			{
+				Phrase = new Phrase(text, font??_smallFont), 
+				HorizontalAlignment = align, 
+				Colspan = colspan ,
+				Border = border,
+				BorderWidth = borderWidth,
+				BorderColor = HeaderColor,
+				VerticalAlignment = Element.ALIGN_MIDDLE,
+				FixedHeight = 25f
+			});
 		}
 
 		/// <summary>
-		/// Add a page that includes a table.
+		/// Add all the booking content
 		/// </summary>
 		/// <param name="doc"></param>
-		private void AddPageWithTable(iTextSharp.text.Document doc)
+		void AddPageWithTable(Document doc,MemberBooking booking)
 		{
 			// Add a new page to the document
 			doc.NewPage();
 
-			// The header at the top of the page is an anchor linked to by the table of contents.
-			iTextSharp.text.Anchor contentsAnchor = new iTextSharp.text.Anchor("Facture\n\n", _largeFont);
-			contentsAnchor.Name = "facture";
+			var bookingOwner = new StringBuilder();
+			bookingOwner.AppendLine(booking.Offer.Localisation.Name);
+			bookingOwner.AppendLine(booking.Owner.GetFullDisplayName());
+			bookingOwner.AppendLine(booking.Owner.MemberMainData.PhoneNumber);
+			bookingOwner.AppendLine(booking.Owner.Email);
+			bookingOwner.AppendLine(booking.Owner.MemberMainData.TaxNumber);
+			bookingOwner.AppendLine(booking.Owner.MemberMainData.SiretNumber);
 
-			// Add the header anchor to the page
-			this.AddParagraph(doc, iTextSharp.text.Element.ALIGN_CENTER, _standardFont, contentsAnchor);
+			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk(bookingOwner.ToString()));
 
-			this.AddParagraph(doc, iTextSharp.text.Element.ALIGN_LEFT, _standardFont, new Chunk("La Cantine\nTahir Iftikhar\n06 50 63 58 15\ntahir@eworky.com\n"));
+			var bookingClient = new StringBuilder();
+			bookingClient.AppendLine(booking.Client.GetFullDisplayName());
+			bookingClient.AppendLine(booking.Client.MemberMainData.PostalCode + " " + booking.Client.MemberMainData.City);
+			bookingClient.AppendLine(booking.Client.MemberMainData.Country);
 
-			this.AddParagraph(doc, iTextSharp.text.Element.ALIGN_RIGHT, _standardFont, new Chunk("Tahir Iftikhar\nLa Daunière Bat.C\nN° Client 35435\n\n\n\n"));
+			this.AddParagraph(doc, Element.ALIGN_RIGHT, _standardFont, new Chunk(bookingClient.ToString()));
 
-			this.AddParagraph(doc, iTextSharp.text.Element.ALIGN_LEFT, _standardFont, new Chunk("Facture n° 25445 Date : " + DateTime.Now.ToString("dd/mm/yyyy") + "\n\n\n"));
+			var billingDesc = new StringBuilder();
+			billingDesc.AppendLine("Facture n° " + booking.Id);
+			billingDesc.AppendLine("Date : " + DateTime.Now.ToString("dd/MM/yyyy"));
 
-			PdfPTable table = new PdfPTable(3);
-			float[] widths = new float[] { 4f, 1f, 3f };
+			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk(billingDesc.ToString()));
+
+			PdfPTable table = new PdfPTable(4);
+			float[] widths = new float[] { 3f, 1f, 1f, 1f };
 			table.SetWidths(widths);
-			this.AddCell(table, "Libellé de l'offre", HeaderColor, Element.ALIGN_CENTER);
-			this.AddCell(table, "Quantité", HeaderColor, Element.ALIGN_CENTER);
-			this.AddCell(table, "Prix HT (dont commission)", HeaderColor, Element.ALIGN_CENTER);
+			table.WidthPercentage = 100f;
+			table.SpacingBefore = 20f;
 
-			this.AddCell(table, "Offre 1", CellColor, Element.ALIGN_LEFT);
-			this.AddCell(table, "1", CellColor, Element.ALIGN_RIGHT);
-			this.AddCell(table, "30.50", CellColor, Element.ALIGN_RIGHT);
+			//headers
+			this.AddCellHeader(table, "Description");
+			this.AddCellHeader(table, "Quantité");
+			this.AddCellHeader(table, "Prix HT");
+			this.AddCellHeader(table, "Total");
 
-			this.AddCell(table, "Offre 2", CellColor, Element.ALIGN_LEFT);
-			this.AddCell(table, "1", CellColor, Element.ALIGN_RIGHT);
-			this.AddCell(table, "54.50", CellColor, Element.ALIGN_RIGHT);
+			//offer
+			this.AddCell(table, booking.Offer.Name, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER);
+			this.AddCell(table, "1", Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+			this.AddCell(table, booking.GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+			this.AddCell(table, booking.GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 
-			this.AddCell(table, "Offre 3", CellColor, Element.ALIGN_LEFT);
-			this.AddCell(table, "1", CellColor, Element.ALIGN_RIGHT);
-			this.AddCell(table, "54.50", CellColor, Element.ALIGN_RIGHT);
+			//total
+			this.AddCell(table, "Total HT", Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER , 3);
+			this.AddCell(table, booking.GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+
+			this.AddCell(table, "TVA", Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER, 3);
+			this.AddCell(table, booking.GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+
+			this.AddCell(table, "Total TTC", Element.ALIGN_LEFT, Rectangle.TOP_BORDER, 3, 2f, _smallFontBold);
+			this.AddCell(table, booking.GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.TOP_BORDER, 1, 2f,_smallFontBold);
 
 			doc.Add(table);  // Add the list to the page
 
-			this.AddParagraph(doc, iTextSharp.text.Element.ALIGN_LEFT, _standardFont, new Chunk("\n\n\nMode de réglement :\nPaypal\n\n\n"));
+			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk("\n\n\nMode de réglement :\nPaypal\n\n\n"));
 
-			PdfPTable table2 = new PdfPTable(2);
-
-			this.AddCell(table2, "Total HT", HeaderColor, Element.ALIGN_LEFT);
-			this.AddCell(table2, "525", CellColor, Element.ALIGN_RIGHT);
-
-			this.AddCell(table2, "TVA A 19.6%", HeaderColor, Element.ALIGN_LEFT);
-			this.AddCell(table2, "45", CellColor, Element.ALIGN_RIGHT);
-
-			this.AddCell(table2, "TOTAL TTC Euros", HeaderColor, Element.ALIGN_LEFT);
-			this.AddCell(table2, "658", CellColor, Element.ALIGN_RIGHT);
-
-			doc.Add(table2);  // Add the list to the page
-
-			this.AddParagraph(doc, iTextSharp.text.Element.ALIGN_LEFT, _standardFont, new Chunk("\n\n\nA bientôt chez La Cantine"));
+			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk("A bientôt chez " + booking.Offer.Localisation.Name));
 		}
 
 		/// <summary>
 		/// Set margins and page size for the document
 		/// </summary>
 		/// <param name="doc"></param>
-		private void SetStandardPageSize(iTextSharp.text.Document doc)
+		void SetStandardPageSize(Document doc)
 		{
 			// Set margins and page size for the document
 			doc.SetMargins(50, 50, 50, 50);
 			// There are a huge number of possible page sizes, including such sizes as
 			// EXECUTIVE, POSTCARD, LEDGER, LEGAL, LETTER_LANDSCAPE, and NOTE
-			doc.SetPageSize(new iTextSharp.text.Rectangle(iTextSharp.text.PageSize.LETTER.Width,
-				iTextSharp.text.PageSize.LETTER.Height));
+			doc.SetPageSize(new Rectangle(PageSize.LETTER.Width,
+				PageSize.LETTER.Height));
 		}
 
 		/// <summary>
@@ -180,7 +197,7 @@ namespace Worki.Service
 		/// <param name="alignment">Alignment of the paragraph.</param>
 		/// <param name="font">Font to assign to the paragraph.</param>
 		/// <param name="content">Object that is the content of the paragraph.</param>
-		private void AddParagraph(Document doc, int alignment, iTextSharp.text.Font font, iTextSharp.text.IElement content)
+		void AddParagraph(Document doc, int alignment, Font font, IElement content)
 		{
 			Paragraph paragraph = new Paragraph();
 			paragraph.SetLeading(0f, 1.2f);

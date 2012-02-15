@@ -67,7 +67,7 @@
                             @item.Price €
                         </td>
                         <td>
-                            @Html.ActionLink("Pdf",MVC.Backoffice.Home.GetInvoice())
+                            @Html.ActionLink("Pdf",MVC.Backoffice.Home.GetInvoice(item.Id))
                         </td>
                     </tr>
                 }
