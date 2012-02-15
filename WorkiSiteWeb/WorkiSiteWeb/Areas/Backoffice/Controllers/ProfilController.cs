@@ -235,5 +235,64 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
             return View(model);
         }
+
+		/// <summary>
+		/// GET Action method to change billing information
+		/// </summary>
+		/// <returns>the form to fill</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult ChangeBillingInformation()
+		{
+			var id = WebHelper.GetIdentityId(User.Identity);
+			if (id == 0)
+				return View(MVC.Shared.Views.Error);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
+
+			return View(member);
+		}
+
+		/// <summary>
+		/// POST Action method to change billing information
+		/// </summary>
+		/// <param name="model">The change billing information data from the form</param>
+		/// <returns>Back office home page if ok, the form with error if not</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateOnlyIncomingValues]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult ChangeBillingInformation(Member model)
+		{
+			var id = WebHelper.GetIdentityId(User.Identity);
+			if (id == 0)
+				return View(MVC.Shared.Views.Error);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var member = mRepo.Get(id);
+
+			if (member == null)
+				return View(MVC.Shared.Views.Error);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					TryUpdateModel(member);
+					context.Commit();
+
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PaymentInfoModified;
+					return RedirectToAction(MVC.Backoffice.Home.Index());
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("ChangeBillingInformation", ex);
+					context.Complete();
+				}
+			}
+
+			return View(model);
+		}
 	}
 }

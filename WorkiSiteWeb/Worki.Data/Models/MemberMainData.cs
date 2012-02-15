@@ -40,6 +40,9 @@ namespace Worki.Data.Models
         public string Viadeo { get; set; }
         public string Website { get; set; }
         public string PaymentAddress { get; set; }
+        public string SiretNumber { get; set; }
+        public string TaxNumber { get; set; }
+        public decimal TaxRate { get; set; }
     
         // Navigation properties
     

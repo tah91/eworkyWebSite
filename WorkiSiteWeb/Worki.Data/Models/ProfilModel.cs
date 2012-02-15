@@ -586,6 +586,17 @@ namespace Worki.Data.Models
         [Display(Name = "PaymentAddress", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
         [Email(ErrorMessageResourceName = "PatternEmail", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string PaymentAddress { get; set; }
+
+		[Display(Name = "SiretNumber", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string SiretNumber { get; set; }
+
+		[Display(Name = "TaxNumber", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string TaxNumber { get; set; }
+
+		[Display(Name = "TaxRate", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+		public decimal TaxRate { get; set; }
     }
 
     #endregion

@@ -196,7 +196,7 @@
     <comment>Mika</comment>
   </data>
   <data name="ModifyPayement" xml:space="preserve">
-    <value>Informations de paiement</value>
+    <value>Réglement</value>
     <comment>Mika</comment>
   </data>
   <data name="News" xml:space="preserve">
@@ -281,6 +281,9 @@
   </data>
   <data name="EditPlace" xml:space="preserve">
     <value>Edition du lieu</value>
+  </data>
+  <data name="Billing" xml:space="preserve">
+    <value>Facturation</value>
   </data>
   <data name="Invoices" xml:space="preserve">
     <value>Factures client</value>

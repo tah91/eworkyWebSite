@@ -22,7 +22,10 @@
     [Linkedin]       NVARCHAR (256) NULL,
     [Viadeo]         NVARCHAR (256) NULL,
 	[Website]        NVARCHAR (256) NULL,
-    PaymentAddress NVARCHAR(256) NULL, 
+    [PaymentAddress] NVARCHAR (256) NULL, 
+	[SiretNumber]    NVARCHAR (256) NULL, 
+	[TaxNumber]      NVARCHAR (256) NULL, 
+	[TaxRate]        decimal(18,2)  NOT NULL DEFAULT 0, 
     CONSTRAINT [PK_MemberMainData] PRIMARY KEY CLUSTERED ([MemberId] ASC),
     CONSTRAINT [FK_MemberMainData_Member] FOREIGN KEY ([MemberId]) REFERENCES [dbo].[Member] ([MemberId]) ON DELETE CASCADE ON UPDATE NO ACTION
 );
