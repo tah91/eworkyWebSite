@@ -279,6 +279,11 @@ namespace Worki.Web.Helpers
 			return GetCulture(instance) == Infrastructure.Culture.fr;
 		}
 
+        public static string GetSuffix(this UrlHelper instance)
+        {
+            return Worki.Infrastructure.MultiCultureMvcRouteHandler.ExtractDomainSuffix(instance.RequestContext.HttpContext.Request.Url);
+        }
+
 		#endregion
 	}
 }
