@@ -11,6 +11,7 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
 using Worki.Web.Model;
 using Worki.Service;
+using System.IO;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -256,11 +257,26 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 		}
 
-		public virtual ActionResult GetInvoice()
+		public virtual ActionResult GetInvoice(int id)
 		{
-			_InvoiceService.Build();
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 
-			return RedirectToAction(MVC.Backoffice.Home.Invoices());
+            try
+            {
+                var booking = bRepo.Get(id);
+                using (var stream = new MemoryStream())
+                {
+                    _InvoiceService.BookingInvoice(stream, booking);
+                    return File(stream.ToArray(), "application/pdf", "test.pdf");
+                }
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("GetInvoice", ex);
+                return View(MVC.Shared.Views.Error);
+            }
 		}
 
     }

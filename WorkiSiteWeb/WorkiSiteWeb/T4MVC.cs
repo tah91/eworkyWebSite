@@ -3088,6 +3088,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public System.Web.Mvc.ActionResult Quotation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult GetInvoice() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Backoffice.Home; } }
@@ -3162,8 +3167,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult GetInvoice() {
+        public override System.Web.Mvc.ActionResult GetInvoice(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
