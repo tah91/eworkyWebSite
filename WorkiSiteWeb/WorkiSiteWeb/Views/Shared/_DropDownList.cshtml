@@ -12,7 +12,7 @@
 		<ul>
 			@foreach (var item in Model.Items)
 			{
-				<li><a href="@item.Link" id="@item.Id">@item.DisplayName</a></li>	
+				<li><a href="@item.Link" id="@item.Id" class="@item.Css">@item.DisplayName</a></li>	
 			}
 		</ul>
 	</dd>

@@ -20,6 +20,7 @@ namespace Worki.Web.Model
 	{
 		public string DisplayName { get; set; }
 		public string Link { get; set; }
+        public string Css { get; set; }
         public string Id { get; set; }
 	}
 
@@ -30,7 +31,7 @@ namespace Worki.Web.Model
         public const string AdvancedSearchDD = "advancedSearchDropdown";
 
 		public string Id { get; set; }
-		public string Title { get; set; }
+        public string Title { get; set; }
 		public List<DropDownItem> Items { get; set; }
 	}
 

@@ -3,12 +3,12 @@
 
     var LanguageSwitcher = new DropDownModel
     {
-        Id = DropDownModel.ProfilDD,
+        Id = string.Format("CultureSwitcher"),
         Title = string.Format("FR = {0}", isFr),
         Items = new List<DropDownItem>
 		{
-			new DropDownItem { DisplayName = "FR", Link = Url.Action(MVC.Home.ChangeCulture("fr", this.Request.RawUrl)) },
-            new DropDownItem { DisplayName = "EN", Link = Url.Action(MVC.Home.ChangeCulture("en", this.Request.RawUrl)) }
+			new DropDownItem { DisplayName = "FR", Css = "flags france", Link = Url.Action(MVC.Home.ChangeCulture("fr", this.Request.RawUrl)) },
+            new DropDownItem { DisplayName = "EN", Css = "flags royaume-uni", Link = Url.Action(MVC.Home.ChangeCulture("en", this.Request.RawUrl)) }
 		}
     };
     @Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)

@@ -262,18 +262,18 @@ page width. Or, you can specify an exact pixel width. */
 	margin-right: auto;
 }
 
-.flags { background: url(images/header_imgs.png) no-repeat top left; }
+.flags { background: url(images/flags.png) no-repeat top left; }
 
-.allemagne{ background-position: 0 0; width: 16px; height: 11px; } s
-.espagne{ background-position: -21px 0; width: 16px; height: 11px; } 
-.etats-unis{ background-position: -42px 0; width: 16px; height: 11px; } 
-.france{ background-position: -63px 0; width: 16px; height: 11px; } 
-.italie{ background-position: -84px 0; width: 16px; height: 11px; } 
-.maroc{ background-position: -105px 0; width: 16px; height: 11px; } 
-.mexique{ background-position: -126px 0; width: 16px; height: 11px; } 
-.portugal{ background-position: -147px 0; width: 16px; height: 11px; } 
-.royaume-uni{ background-position: -168px 0; width: 16px; height: 11px; } 
-.turquie{ background-position: -189px 0; width: 16px; height: 11px; } 
+.allemagne{ background-position: 0 0; width: 16px;}
+.espagne{ background-position: -21px 0; width: 16px;} 
+.etats-unis{ background-position: -42px 0; width: 16px;} 
+.france{ background-position: -63px 0; width: 16px;} 
+.italie{ background-position: -84px 0; width: 16px;} 
+.maroc{ background-position: -105px 0; width: 16px;} 
+.mexique{ background-position: -126px 0; width: 16px;} 
+.portugal{ background-position: -147px 0; width: 16px;} 
+.royaume-uni{ background-position: -168px 0; width: 16px;} 
+.turquie{ background-position: -189px 0; width: 16px;}
 
 .headerOption
 {
@@ -392,6 +392,11 @@ page width. Or, you can specify an exact pixel width. */
     border-left-style: solid;
     border-left-width: 1px;
     border-left-color: #f3f3f3;
+}
+
+.languageSwitch .dropdown dd ul
+{
+    min-width: 56px;
 }
 
 .loginTitle
@@ -2138,8 +2143,8 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .dropdown dd, .dropdown dt, .dropdown ul 
 { 
 	margin: 10px;
-	width: 170px;
 	line-height: 25px;
+	/*min-width: 170px;*/
 }
 
 .dropdown dd 
@@ -2155,6 +2160,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .dropdown-triangle
 {
+    margin-left: 10px;
 	font-size: 18px;
 	/*line-height: 14px;*/
 }
@@ -2168,8 +2174,8 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .dropdown dt a 
 {
 	/*background:#e4dfcb url(arrow.png) no-repeat scroll right center;
-    border:1px solid #CCC; */
-    width: 170px;
+    border:1px solid #CCC;
+    width: 170px; */
 	display: block;
 }
 .dropdown dt a span 
@@ -2181,12 +2187,12 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .dropdown dd ul 
 {
 	background: white;
-	border: 1px solid #DDD; 
+	border: 1px solid #DDD;
 	display: none;
 	position: absolute;
 	top: -3px;
 	left: -22px;
-	min-width: 200px;
+	min-width:  170px;
 	list-style: none;
 	z-index: 500;
 	box-shadow: 2px 2px 5px #DDD;
@@ -2196,13 +2202,17 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 {
 	display: block;
 	font-weight: bold;
-	padding: 5px 20px 5px;
+	padding: 5px 20px 5px 20px;
 }
+
 .dropdown dd ul li a:hover 
+{
+    color: white;
+}
+
+.dropdown dd ul li:hover 
 { 
 	background-color: #5DAFDE;
-	color: white;
-	width: 160px;
 }
 
 /* CONTACT LAYOUT
