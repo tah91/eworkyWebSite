@@ -10,6 +10,7 @@ using Worki.Data.Models;
 using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
 using Worki.Web.Model;
+using Worki.Service;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -26,10 +27,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 	public partial class HomeController : BackofficeControllerBase
     {
         ILogger _Logger;
+		IInvoiceService _InvoiceService;
 
-        public HomeController(ILogger logger)
+		public HomeController(ILogger logger, IInvoiceService invoiceService)
         {
             _Logger = logger;
+			_InvoiceService = invoiceService;
         }
 
         /// <summary>
@@ -250,6 +253,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				_Logger.Error("Invoices", ex);
 				return View(MVC.Shared.Views.Error);
 			}
+		}
+
+		public virtual ActionResult GetInvoice()
+		{
+			_InvoiceService.Build();
+
+			return RedirectToAction(MVC.Backoffice.Home.Invoices());
 		}
 
     }

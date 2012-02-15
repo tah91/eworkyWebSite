@@ -3107,6 +3107,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string Quotation = "Quotation";
             public readonly string GetAlertSummary = "GetAlertSummary";
             public readonly string Invoices = "Invoices";
+            public readonly string GetInvoice = "GetInvoice";
         }
 
 
@@ -3158,6 +3159,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public override System.Web.Mvc.ActionResult Invoices(string id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Invoices);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetInvoice() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
             return callInfo;
         }
 
