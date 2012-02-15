@@ -1,6 +1,15 @@
 ﻿@{
-	var isFr = Url.IsFrench();
-}
-@Html.ActionLink("Fr", MVC.Home.ChangeCulture("fr", this.Request.RawUrl), new { @class = !isFr ? "noUnderline" : "" })
+    var isFr = Url.IsFrench();
 
-@Html.ActionLink("En", MVC.Home.ChangeCulture("en", this.Request.RawUrl), new { @class = isFr ? "noUnderline" : "" })
+    var LanguageSwitcher = new DropDownModel
+    {
+        Id = DropDownModel.ProfilDD,
+        Title = string.Format("FR = {0}", isFr),
+        Items = new List<DropDownItem>
+		{
+			new DropDownItem { DisplayName = "FR", Link = Url.Action(MVC.Home.ChangeCulture("fr", this.Request.RawUrl)) },
+            new DropDownItem { DisplayName = "EN", Link = Url.Action(MVC.Home.ChangeCulture("en", this.Request.RawUrl)) }
+		}
+    };
+    @Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)
+}
