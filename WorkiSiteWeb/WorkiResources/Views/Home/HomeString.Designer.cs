@@ -187,15 +187,6 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Son adresse mail.
-        /// </summary>
-        public static string HisMailAdress {
-            get {
-                return ResourceManager.GetString("HisMailAdress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mentions légales.
         /// </summary>
         public static string Imprint {
