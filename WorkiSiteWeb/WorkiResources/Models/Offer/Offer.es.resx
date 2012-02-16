@@ -117,11 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>Sign in to get all eWorky features. If you do not have an account yet, please register.</value>
+  <data name="AvailabilityDate" xml:space="preserve">
+    <value>Fecha de disponibilidad</value>
   </data>
-  <data name="AlreadyRegistered" xml:space="preserve">
-    
-    <value>You're already registered!</value>
+  <data name="AvailabilityPeriod" xml:space="preserve">
+    <value>Tiempo de disponibilidad</value>
+  </data>
+  <data name="AvailabilityPeriodType" xml:space="preserve">
+    <value>Unidad de tiempo</value>
+  </data>
+  <data name="AvailableAt" xml:space="preserve">
+    <value>Disponible el {0}</value>
+  </data>
+  <data name="AvailableAtFor" xml:space="preserve">
+    <value>Disponible el {0} para {1} {2}</value>
+  </data>
+  <data name="AvailableFor" xml:space="preserve">
+    <value>Disponible para {1} {2}</value>
+  </data>
+  <data name="AvailableFrom" xml:space="preserve">
+    <value>Disponible a partir del {0}</value>
+  </data>
+  <data name="AvailableFromFor" xml:space="preserve">
+    <value>Disponible a partir del {0} para {1} {2}</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Divisa</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="Euro" xml:space="preserve">
+    <value>EUR</value>
+  </data>
+  <data name="HalfDay" xml:space="preserve">
+    <value>Media jornada</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="IsBookable" xml:space="preserve">
+    <value>Reserva online</value>
+  </data>
+  <data name="IsOnline" xml:space="preserve">
+    <value>Oferta online</value>
+  </data>
+  <data name="IsQuotable" xml:space="preserve">
+    <value>Solicitud de presupuesto online</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre de la oferta</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Medio de pago propuesto</value>
+  </data>
+  <data name="Paypal" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Unidad de tiempo</value>
+  </data>
+  <data name="PluralDay" xml:space="preserve">
+    <value>día(s)</value>
+  </data>
+  <data name="PluralHalfDay" xml:space="preserve">
+    <value>media jornada(s)</value>
+  </data>
+  <data name="PluralHour" xml:space="preserve">
+    <value>hora(s)</value>
+  </data>
+  <data name="PluralMonth" xml:space="preserve">
+    <value>mes</value>
+  </data>
+  <data name="PluralWeek" xml:space="preserve">
+    <value>semana(s)</value>
+  </data>
+  <data name="PluralYear" xml:space="preserve">
+    <value>Año(s)</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="PriceFrom" xml:space="preserve">
+    <value>A partir del {0}</value>
+  </data>
+  <data name="PricePerPeriod" xml:space="preserve">
+    <value>{0} € / {1}</value>
+  </data>
+  <data name="PriceType" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
+  <data name="SingleDay" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="SingleHalfDay" xml:space="preserve">
+    <value>Media jornada</value>
+  </data>
+  <data name="SingleHour" xml:space="preserve">
+    <value>hora</value>
+  </data>
+  <data name="SingleMonth" xml:space="preserve">
+    <value>mes</value>
+  </data>
+  <data name="SingleWeek" xml:space="preserve">
+    <value>semana</value>
+  </data>
+  <data name="SingleYear" xml:space="preserve">
+    <value>año</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo de oferta</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Semana</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Año</value>
   </data>
 </root>

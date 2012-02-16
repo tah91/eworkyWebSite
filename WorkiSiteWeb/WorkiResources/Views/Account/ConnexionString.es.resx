@@ -117,11 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>Sign in to get all eWorky features. If you do not have an account yet, please register.</value>
-  </data>
   <data name="AlreadyRegistered" xml:space="preserve">
-    
-    <value>You're already registered!</value>
+    <value>¡Ya estás registrado!</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Conéctate para beneficiar de todas las funcionalidades de eWorky. Si no tienes cuenta aún, regístrate.</value>
   </data>
 </root>

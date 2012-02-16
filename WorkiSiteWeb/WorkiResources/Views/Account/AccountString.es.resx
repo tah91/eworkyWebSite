@@ -117,11 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>Sign in to get all eWorky features. If you do not have an account yet, please register.</value>
+  <data name="ConfirmationMail" xml:space="preserve">
+    <value>Gracias, ahora recibirás un correo electrónico que te permita confirmar tu registro.</value>
   </data>
-  <data name="AlreadyRegistered" xml:space="preserve">
-    
-    <value>You're already registered!</value>
+  <data name="EWorkyRegister" xml:space="preserve">
+    <value>Registarse en eWorky</value>
+  </data>
+  <data name="FillInscription" xml:space="preserve">
+    <value>Para registrate, por favor, rellena la información siguiente.</value>
+  </data>
+  <data name="ForgottenPassword" xml:space="preserve">
+    <value>Contraseña olvidada</value>
+  </data>
+  <data name="Inscription" xml:space="preserve">
+    <value>Registrarse</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Conectarse</value>
+  </data>
+  <data name="LoginToEWorky" xml:space="preserve">
+    <value>Conéctate a eWorky</value>
+  </data>
+  <data name="MinimumLength" xml:space="preserve">
+    <value>Las contraseñas tienen que contener al menos {0} carácteres.</value>
+  <comment>modif L.28</comment></data>
+  <data name="NewOldPassword" xml:space="preserve">
+    <value>Entra tu contraseña actual y la nueva contraseña.</value>
+  </data>
+  <data name="QualityOfProfils" xml:space="preserve">
+    <value>Con el fin de garantizar la calidad de los perfiles de nuestra comunidad, eWorky es susceptible pedirte</value>
+  </data>
+  <data name="RequiredFields" xml:space="preserve">
+    <value>Los campos marcados con asterisco son obligatorios.</value>
+  </data>
+  <data name="SetMailInscription" xml:space="preserve">
+    <value>Introduce la dirección de correo electrónico que usaste cuando de te registraste en eWorky. Tus datos de conexión te serán mandados a está dirección.</value>
+  </data>
+  <data name="SocialNetworkSoon" xml:space="preserve">
+    <value>En breves podrás conectarte a tu perfil a través de una red social.</value>
+  </data>
+  <data name="ValidationLetter" xml:space="preserve">
+    <value>Letras de validación</value>
+  </data>
+  <data name="EnterFollowingLetters" xml:space="preserve">
+    <value>Por favor, introduce las siguientes letras.</value>
+  </data>
+  <data name="AgreeWithCGU" xml:space="preserve">
+    <value>He leído y acepto las Condiciones Generales de Uso de eWorky ({0}).</value>
+  </data>
+  <data name="PasswordHaveBeenChanged" xml:space="preserve">
+    <value>Tu contraseña ha sido mandada a la dirección de correo electrónico indicada. </value>
+  </data>
+  <data name="YouChangeYourPassword" xml:space="preserve">
+    <value>La contaseña ha sido modificada.</value>
+  </data>
+  <data name="ChangeMyPassword" xml:space="preserve">
+    <value>Cambiar mi contraseña</value>
+  </data>
+  <data name="EditMyProfile" xml:space="preserve">
+    <value>Editar mi perfíl</value>
+  </data>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value>Espacio gerente</value>
   </data>
 </root>

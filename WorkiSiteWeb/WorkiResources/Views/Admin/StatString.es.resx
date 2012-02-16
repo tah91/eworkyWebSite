@@ -117,11 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>Sign in to get all eWorky features. If you do not have an account yet, please register.</value>
+  <data name="Biblio" xml:space="preserve">
+    <value>Biblio / Museo</value>
   </data>
-  <data name="AlreadyRegistered" xml:space="preserve">
-    
-    <value>You're already registered!</value>
+  <data name="BuisnessCenter" xml:space="preserve">
+    <value>Centro negocios</value>
+  </data>
+  <data name="CoffeeResto" xml:space="preserve">
+    <value>Café / Restaurante</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="CoworkingSpace" xml:space="preserve">
+    <value>Esp. cowork.</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Creación</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha / Hora</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edición</value>
+  </data>
+  <data name="EworkerName" xml:space="preserve">
+    <value>eWorker</value>
+  </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
+  <data name="LastCreate" xml:space="preserve">
+    <value>Creaciones</value>
+  </data>
+  <data name="LastModif" xml:space="preserve">
+    <value>Modificaciones</value>
+  </data>
+  <data name="NbByCountry" xml:space="preserve">
+    <value>Total por país</value>
+  </data>
+  <data name="PlaceName" xml:space="preserve">
+    <value>Nombre del espacio</value>
+  </data>
+  <data name="PrivateArea" xml:space="preserve">
+    <value>Espacio privado</value>
+  </data>
+  <data name="PublicSpace" xml:space="preserve">
+    <value>Cibercafé</value>
+  </data>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Oficina compartida</value>
+  </data>
+  <data name="StatTitle" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Telecentre" xml:space="preserve">
+    <value>Centro de teletrabajo</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TravelerSpace" xml:space="preserve">
+    <value>Esp. viajeros</value>
+  </data>
+  <data name="Wifi" xml:space="preserve">
+    <value>Punto Wifi</value>
+  </data>
+  <data name="WorkingHotel" xml:space="preserve">
+    <value>Hotel empresas</value>
   </data>
 </root>
