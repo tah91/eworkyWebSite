@@ -1,0 +1,51 @@
+﻿@section HeadContent
+{
+	<meta name="Description" content="@Worki.Resources.Views.Home.AProposString.Description"/>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HomeString.Team)</title>
+    <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.Team, "Blue")
+<div class="detailContent generalTextContainer">
+	<div class="blockContainer float-left">
+		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.Team)
+	</div>
+
+	<div class="float-right generalTextContent blockContainer">
+		<div class="contentBlock">
+            <div class="innerContentBlock">
+                <div class="teamMemberPhoto" position="right"><img position="right" class="polaroid transition" src="../../Content/images/olivier.png" /></div>
+                <div class="teamMemberDescription">
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Team_Member_1</h3>
+                    <p>@Worki.Resources.Views.Home.HomeString.Team_Member_1_Text</p>
+                </div>
+                <a class="float-left networks e-mail" href="mailto:olivier@eworky.com">olivier@eworky.com</a>
+                <a class="float-right networks facebook" href="http://www.facebook.com/olvbrun"></a>
+                <a class="float-right networks twitter" href="http://twitter.com/olvbrun"></a>
+            </div>
+
+            <div class="innerContentBlock">
+                <div class="teamMemberPhoto" position="left"><img position="left" class="polaroid transition" src="../../Content/images/avatar.png" /></div>
+                <div class="teamMemberDescription">
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Team_Member_2</h3>
+                    <p>@Worki.Resources.Views.Home.HomeString.Team_Member_2_Text</p>
+                </div>
+                <a class="float-left networks e-mail" href="mailto:cecilia@eworky.com">cecilia@eworky.com</a>
+                <a class="float-right networks facebook" href="http://www.facebook.com/cecilia38"></a>
+                <a class="float-right networks twitter" href="http://twitter.com/CeciliaDurieu"></a>
+            </div>
+
+            <div class="innerContentBlock">
+                <div class="teamMemberPhoto" position="right"><img position="right" class="polaroid transition" src="../../Content/images/avatar.png" /></div>
+                <div class="teamMemberDescription">
+                    <h3 class="blue">@Worki.Resources.Views.Home.HomeString.Team_Member_3</h3>
+                    <p>@Worki.Resources.Views.Home.HomeString.Team_Member_3_Text</p>
+                </div>
+                <a class="float-left networks e-mail" href="mailto:tahir@eworky.com">tahir@eworky.com</a>
+                <a class="float-right networks facebook" href="http://www.facebook.com/tah.iftikhar"></a>
+            </div>
+		</div>
+	</div>
+    <div class="clear">
+	</div>
+</div>

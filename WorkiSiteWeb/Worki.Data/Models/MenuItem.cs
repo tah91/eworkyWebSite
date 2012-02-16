@@ -13,7 +13,8 @@ namespace Worki.Data.Models
 		Jobs,
 		Cgu,
 		Legal,
-		Contact
+        Contact,
+        Team
 	}
 
 	public enum TutorialPages

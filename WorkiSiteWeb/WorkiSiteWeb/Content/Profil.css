@@ -237,3 +237,105 @@
 {
     vertical-align: text-bottom;
 }
+
+.teamMemberPhoto
+{
+    min-height:150px;
+    min-width: 180px;
+}
+
+.teamMemberDescription
+{
+    display: table;
+    max-width: 460px;
+}
+
+.innerContentBlock div[position="left"]
+{ 
+    float: left;
+    margin-right: 5px;
+    border-right-color: #5DAFDE;
+    border-right-style: dashed;
+    border-right-width: 1px;
+}
+  
+.innerContentBlock div[position="right"] 
+{
+    float: right;
+    margin-left: 5px;
+    border-left-color: #5DAFDE;
+    border-left-style: dashed;
+    border-left-width: 1px;
+}
+
+/* POLAROID IMAGE
+----------------------------------------------------------*/
+
+.polaroid[position="right"] 
+{
+    -webkit-transform: rotate(2deg);  /* Saf2.1+, Chrome */
+       -moz-transform: rotate(2deg);  /* FF2.2+ */
+        -ms-transform: rotate(2deg);  /* IE9 */
+         -o-transform: rotate(2deg);  /* Opera 10.2 */
+            transform: rotate(2deg);
+}
+
+.polaroid[position="right"]:hover
+{
+    -webkit-transform: rotate(-2deg);  /* Saf-2.1+, Chrome */
+       -moz-transform: rotate(-2deg);  /* FF-2.-2+ */
+        -ms-transform: rotate(-2deg);  /* IE9 */
+         -o-transform: rotate(-2deg);  /* Opera 10.-2 */
+            transform: rotate(-2deg);
+}
+
+.polaroid[position="left"] 
+{
+    -webkit-transform: rotate(-2deg);  /* Saf-2.1+, Chrome */
+       -moz-transform: rotate(-2deg);  /* FF-2.-2+ */
+        -ms-transform: rotate(-2deg);  /* IE9 */
+         -o-transform: rotate(-2deg);  /* Opera 10.-2 */
+            transform: rotate(-2deg);
+}
+
+.polaroid[position="left"]:hover
+{
+        -webkit-transform: rotate(2deg);  /* Saf4.1+, Chrome */
+       -moz-transform: rotate(2deg);  /* FF4.4+ */
+        -ms-transform: rotate(2deg);  /* IE9 */
+         -o-transform: rotate(2deg);  /* Opera 10.4 */
+            transform: rotate(2deg);
+}
+
+.polaroid[position="left"] { margin-right: 10px; }
+.polaroid[position="right"] { margin-left: 10px; }
+
+.transition 
+{
+    border: 1px solid #BBB;
+    padding: 14px 14px 45px;
+    
+  -webkit-transition: all 0.3s ease-out;  /* Saf3.2+, Chrome */
+     -moz-transition: all 0.3s ease-out;  /* FF4+ */
+      -ms-transition: all 0.3s ease-out;  /* IE10 */
+       -o-transition: all 0.3s ease-out;  /* Opera 10.5+ */
+          transition: all 0.3s ease-out;
+          
+       -moz-box-shadow: 2px 2px 6px rgba(0,0,0, .1);
+	-webkit-box-shadow: 2px 2px 6px rgba(0,0,0, .1);
+	        box-shadow: 2px 2px 6px rgba(0,0,0, .1);
+}
+
+
+/* SOCIAL NETWORK LOGOS
+----------------------------------------------------------*/
+
+.networks { background: url(images/networks.png) no-repeat top left; }
+
+.e-mail{ background-position: 0 0; width: 30px; height: 29px; text-decoration: none; padding-left: 35px; line-height: 29px; }
+.facebook{ background-position: 0 -39px; width: 30px; height: 30px; }
+.google-plus{ background-position: 0 -79px; width: 30px; height: 30px; }
+.linkedin{ background-position: 0 -119px; width: 30px; height: 30px; }
+.rss{ background-position: 0 -159px; width: 30px; height: 30px; }
+.tumblr{ background-position: 0 -199px; width: 30px; height: 30px; }
+.twitter{ background-position: 0 -239px; width: 30px; height: 30px; }

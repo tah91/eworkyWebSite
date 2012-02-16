@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllSupelecNeedWifi" xml:space="preserve">
-    <value>Tous les trois très travailleurs, presque tous déjà entrepreneurs (Greenworking), on avait régulièrement besoin d’accéder à un wifi, de louer une salle de réunion ou même une salle de formation.</value>
-  </data>
-  <data name="ANeed" xml:space="preserve">
-    <value>Un besoin</value>
-  </data>
-  <data name="ATeam" xml:space="preserve">
-    <value>Une équipe</value>
-  </data>
   <data name="BestWorkspace" xml:space="preserve">
     <value>Coworking, partage de bureaux, cafés wifi</value>
   </data>
@@ -135,17 +126,8 @@
   <data name="ContactUs" xml:space="preserve">
     <value>Contactez-nous</value>
   </data>
-  <data name="CreateTheWebSite" xml:space="preserve">
-    <value>On a donc créé un site pour partager entre amis des bons plans en matière de lieux de travail. Cela nous a bien servi.</value>
-  </data>
   <data name="ExampleLocation" xml:space="preserve">
     <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, ...</value>
-  </data>
-  <data name="Fun" xml:space="preserve">
-    <value>Du plaisir</value>
-  </data>
-  <data name="HowCameTheIdea" xml:space="preserve">
-    <value>En général on parvenait à en trouver par le bouche à oreille, mais il manquait quelque chose pour gagner du temps et obtenir les meilleures informations : une plate-forme collaborative de recherche de lieu de travail.</value>
   </data>
   <data name="Imprint" xml:space="preserve">
     <value>Mentions légales</value>
@@ -171,18 +153,12 @@
   <data name="News" xml:space="preserve">
     <value>Presse</value>
   </data>
-  <data name="ShareWithYou" xml:space="preserve">
-    <value>Puis on a eu mauvaise conscience, on s’est dit que c’était dommage de ne pas vous en faire profiter aussi. Soyez donc les bienvenus dans la communauté eWorky !</value>
-  </data>
   <data name="SpeechForJournalists" xml:space="preserve">
     <value>Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d'un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez-nous à {0}.</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
     <value>Fonctionnement d’eWorky</value>
     <comment>?</comment>
-  </data>
-  <data name="VeryGenerous" xml:space="preserve">
-    <value>Et surtout beaucoup beaucoup de générosité</value>
   </data>
   <data name="What" xml:space="preserve">
     <value>Que cherchez-vous ?</value>
@@ -275,8 +251,75 @@
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
     <value>Ils en parlent</value>
-  <comment>Jm Modif l.17</comment></data>
+    <comment>Jm Modif l.17</comment>
+  </data>
   <data name="SliderItemDesc" xml:space="preserve">
     <value>{0} à {1}</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>L'équipe</value>
+  </data>
+  <data name="IntroWhoAreWe" xml:space="preserve">
+    <value>eWorky est le portail du lieu de travail en France</value>
+  </data>
+  <data name="WeThinkThat" xml:space="preserve">
+    <value>Nous croyons que :</value>
+  </data>
+  <data name="WeThinkThat_Text1" xml:space="preserve">
+    <value>Le lieu de travail de demain se recentrera sur l’humain plus que sur l’entreprise, et sera un endroit convivial, propice aux échanges. On prendra du plaisir à aller travailler.</value>
+  </data>
+  <data name="WeThinkThat_Text10" xml:space="preserve">
+    <value>Si vous pensez ainsi, rejoignez-nous !</value>
+  </data>
+  <data name="WeThinkThat_Text2" xml:space="preserve">
+    <value>Pour inventer ensemble le lieu de travail de demain, il est nécessaire d’explorer, de tester, d’échanger et surtout de se lancer à l’eau.</value>
+  </data>
+  <data name="WeThinkThat_Text3" xml:space="preserve">
+    <value>L’avènement de nouveaux modes de travail est une opportunité pour un nouveau contrat social dans lequel l’autonomie succède à la subordination, la créativité à l’obéissance, la responsabilité au contrôle hiérarchique.</value>
+  </data>
+  <data name="WeThinkThat_Text4" xml:space="preserve">
+    <value>L’ouverture aux autres, le partage et la collaboration sont essentiels à l’épanouissement personnel et au bon équilibre d’un lieu de travail.</value>
+  </data>
+  <data name="WeThinkThat_Text5" xml:space="preserve">
+    <value>Les travailleurs ont besoin de moments de contact et d’échanges plus humains dans leur journée. Il faut décloisonner nos activités, remplacer la contrainte par la coopération et la co-création en créant des collectifs de travail virtuels.</value>
+  </data>
+  <data name="WeThinkThat_Text6" xml:space="preserve">
+    <value>Le lieu de travail ne sera plus unique mais multiple, parfois dématérialisé et le plus souvent adapté à la tâche, au secteur et à la personnalité du travailleur.</value>
+  </data>
+  <data name="WeThinkThat_Text7" xml:space="preserve">
+    <value>Le développement durable est une priorité non pas de demain mais d’aujourd’hui, c’est pourquoi nos nouveaux lieux et modes de travail doivent naturellement prendre en compte le respect de notre planète.</value>
+  </data>
+  <data name="WeThinkThat_Text8" xml:space="preserve">
+    <value>Le monde évolue à une vitesse vertigineuse sous l’impulsion des technologies de l’information. L’organisation du travail, immuable depuis des décennies, doit elle aussi connaître sa révolution.</value>
+  </data>
+  <data name="WeThinkThat_Text9" xml:space="preserve">
+    <value>En repensant l’espace de travail grâce aux lieux de coworking et aux espaces partagés, on peut transformer le travail au quotidien, notre rapport aux autres et notre monde. Le lieu de travail doit être le théâtre mais aussi l’acteur de ce changement.</value>
+  </data>
+  <data name="WhoAreWe_Text1" xml:space="preserve">
+    <value>eWorky a été créé en 2011 par trois jeunes entrepreneurs, en réponse à un besoin simple : pouvoir accéder à un wifi, louer une salle de réunion ou de formation, de façon ponctuelle, et dans des villes différentes. L’idée d’une plate-forme collaborative de recherche du lieu de travail a ensuite rapidement fait son chemin.</value>
+  </data>
+  <data name="WhoAreWe_Text2" xml:space="preserve">
+    <value>eWorky, c’est donc le plaisir de partager des lieux de travail en tout genre, et d’échanger sur les différentes expériences vécues dans ces lieux. Notre communauté est composée d’utilisateurs passionnés, voulant découvrir ou proposer une grande diversité d’espaces, adaptés à chaque besoin.</value>
+  </data>
+  <data name="WhoAreWe_Text3" xml:space="preserve">
+    <value>À votre tour, rejoignez la communauté eWorky ! </value>
+  </data>
+  <data name="Team_Member_1" xml:space="preserve">
+    <value>Olivier Brun</value>
+  </data>
+  <data name="Team_Member_1_Text" xml:space="preserve">
+    <value>Habitant à Paris, Olivier s’occupe chez eWorky de la stratégie et du storyboarding. En plus d’être aussi discret dans ses échanges en open-space qu’un poissonnier un samedi matin à 5h du mat à Rungis, Olivier est un grand fan de marche à pied et un végétarien convaincu. Mais par-dessus tout, Olivier glorifie les designs épurés et voue un culte à la suppression des boutons inutiles et des fautes d’orthographe.</value>
+  </data>
+  <data name="Team_Member_2" xml:space="preserve">
+    <value>Cécilia Durieu</value>
+  </data>
+  <data name="Team_Member_2_Text" xml:space="preserve">
+    <value>Cécilia s'occupe du développement commercial, des relations presse et du financement d'eWorky. Elle travaille depuis Grenoble et attention, elle ne supporte pas qu'on dise du mal de sa région montagnarde ! Optimiste, hyperactive et grande fan des agendas pleins à craquer et des deadlines serrées, elle est très impliquée dans la promotion du numérique et de l'entrepreneuriat, en tant que co-présidente du Cercle des Jeunes Entrepreneurs notamment. Lorsqu'elle parvient à trouver un peu de temps libre, elle aime se balader en chaussures de ville, de rando ou à cheval.</value>
+  </data>
+  <data name="Team_Member_3" xml:space="preserve">
+    <value>Tahir Iftikhar</value>
+  </data>
+  <data name="Team_Member_3_Text" xml:space="preserve">
+    <value>Tahir est LE spécialiste du développement et dispose d’une excellente maîtrise des technologies .NET. Il maîtrise d’ailleurs tellement bien qu’on a parfois du mal à comprendre ce qu’il nous dit. Lecteur de Cioran et Dostoïevski, il est aussi à l’aise dans la programmation que dans l’engloutissement constant de gâteaux et barres chocolatées en tout genre. Habitant Gentilly, il pratique la capoeira, et sa propension à semer les fautes d’orthographe comme les paquets de biscuits vide derrière lui compense le zèle avec lequel Olivier les corrige.</value>
   </data>
 </root>

@@ -40,26 +40,13 @@
 
 <body>
 	<div class="wrapper">
-		<div class="headerContainer">
+		<div class="headerContainer headerGradient">
 			<div class="header">
 				<div class="logo linkImg float-left">@Html.ActionLink(" ", MVC.Home.Index())</div>
-				<div class="headerMenu float-left">
-					<div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSearch, MVC.Home.Index())</div>
-                    <div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
-					<div class="buttonStd buttonBlue linkImg inline-block">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</div>
-				</div>
-				<div class="loginContainer detailContent float-right borderRadiusBottom">
-					<div  class="logindisplay sizeHeaderConnexion">
-						@Html.Partial(MVC.Shared.Views._LogOnUserControl)
-					</div>
-				</div>
-				<div class="clear">
-				</div>
-				<div class="languageSwitch orange bold float-right">
-					@Html.Partial(MVC.Shared.Views._CultureSwitchControl)
-				</div>
-				<div class="clear">
-				</div>
+                <div class="float-left headerOption blue linkImg">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</div>
+                @Html.Partial(MVC.Shared.Views._LogOnUserControl)
+                <div class="float-right headerButton buttonBlue">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
+                <div class="languageSwitch float-right">@Html.Partial(MVC.Shared.Views._CultureSwitchControl)</div>
 			</div>
 		</div>
 		<div class="page">
@@ -99,6 +86,7 @@
 					<div class="footerLinks float-left">
 						<ul>
 							<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())</li>
+                            <li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.Team, MVC.Home.Team())</li>
 							<li>@Html.ActionLink(Worki.Resources.Views.Home.HomeString.News, MVC.Home.Press())</li>
 							<li>@Html.ActionLink(Worki.Resources.Views.Home.JobString.Jobs, MVC.Home.Jobs())</li>
 							<li>@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.CGU, MVC.Home.CGU())</li>
@@ -170,7 +158,7 @@
     		}
     	});
     	require(["@Links.Scripts.dropdown_js"], function () {
-    		InitDropdown("#@DropDownModel.ProfilDD");
+    	    InitDropdown("#@DropDownModel.ProfilDD"), InitDropdown("#CultureSwitcher")
     	});
 
     	require(["@Links.Scripts.date_js"], function () {

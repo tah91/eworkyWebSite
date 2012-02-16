@@ -247,6 +247,11 @@ namespace Worki.Web.Controllers
             return View(MVC.Home.Views.About);
         }
 
+        public virtual ActionResult Team()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Prepares the cgu page
         /// </summary>

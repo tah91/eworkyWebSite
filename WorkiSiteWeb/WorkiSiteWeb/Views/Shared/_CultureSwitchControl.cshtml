@@ -1,6 +1,26 @@
 ﻿@{
-	var isFr = Url.IsFrench();
+    var isFr = Url.IsFrench();
+    var Current = string.Format("");
+    
+    if (isFr)
+    {
+        Current = string.Format("flags france");
+    }
+    else
+    {
+        Current = string.Format("flags royaume-uni");
+    }
+    
+    var LanguageSwitcher = new DropDownModel
+    {
+        Id = string.Format("CultureSwitcher"),
+        Title = string.Format("d"),
+        TitleCss = Current,
+        Items = new List<DropDownItem>
+		{
+			new DropDownItem { DisplayName = "", Css = "flags france", Link = Url.Action(MVC.Home.ChangeCulture("fr", this.Request.RawUrl)) },
+            new DropDownItem { DisplayName = "", Css = "flags royaume-uni", Link = Url.Action(MVC.Home.ChangeCulture("en", this.Request.RawUrl)) }
+		}
+    };
+    @Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)
 }
-@Html.ActionLink("Fr", MVC.Home.ChangeCulture("fr"), new { @class = isFr ? "noUnderline" : "", @ref="nofollow" })
-
-@Html.ActionLink("En", MVC.Home.ChangeCulture("en"), new { @class = !isFr ? "noUnderline" : "", @ref = "nofollow" })

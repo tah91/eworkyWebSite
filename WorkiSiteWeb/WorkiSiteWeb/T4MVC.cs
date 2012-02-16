@@ -1015,6 +1015,7 @@ namespace Worki.Web.Controllers {
             public readonly string Press = "press";
             public readonly string Jobs = "jobs";
             public readonly string About = "about";
+            public readonly string Team = "Team";
             public readonly string CGU = "tos";
             public readonly string Legal = "legal";
             public readonly string HowItWorks = "how-it-works";
@@ -1049,6 +1050,7 @@ namespace Worki.Web.Controllers {
             public readonly string OwnerTutorial = "~/Views/Home/OwnerTutorial.cshtml";
             public readonly string Press = "~/Views/Home/Press.cshtml";
             public readonly string ShareOffice = "~/Views/Home/ShareOffice.cshtml";
+            public readonly string Team = "~/Views/Home/Team.cshtml";
             public readonly string UserTutorial = "~/Views/Home/UserTutorial.cshtml";
         }
     }
@@ -1112,6 +1114,11 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult About() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.About);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Team() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Team);
             return callInfo;
         }
 

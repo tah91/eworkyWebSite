@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllSupelecNeedWifi" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ANeed" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="ATeam" xml:space="preserve">
-    <value> </value>
-  </data>
   <data name="BestWorkspace" xml:space="preserve">
     <value>eWorky | Coworking spaces, WiFi cafes, business centers, rental and booking of meeting rooms and workspaces</value>
   </data>
@@ -179,9 +170,7 @@
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
     <value>How does eWorky work?</value>
-  <comment>?</comment></data>
-  <data name="VeryGenerous" xml:space="preserve">
-    <value> </value>
+    <comment>?</comment>
   </data>
   <data name="What" xml:space="preserve">
     <value>What are you looking for?</value>
@@ -212,7 +201,8 @@
   </data>
   <data name="RentSpeech" xml:space="preserve">
     <value>- professionnal offices&lt;br /&gt;- </value>
-  <comment>A compléter</comment></data>
+    <comment>A compléter</comment>
+  </data>
   <data name="Reserve" xml:space="preserve">
     <value>Booking</value>
   </data>
@@ -251,7 +241,8 @@
   </data>
   <data name="CostSpace" xml:space="preserve">
     <value>A subscription workspace</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="FreeSpace" xml:space="preserve">
     <value>A free of charge workspace</value>
   </data>
@@ -272,7 +263,8 @@
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
     <value>As seen on</value>
-  <comment>Jm Modif l.17</comment></data>
+    <comment>Jm Modif l.17</comment>
+  </data>
   <data name="FindTheBesPlace1" xml:space="preserve">
     <value>Find the best place to work</value>
   </data>

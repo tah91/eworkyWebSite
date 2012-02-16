@@ -3,6 +3,7 @@
 @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 { 
 	new MenuItem{ Selected = AboutPages.WhoAreWe == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HomeString.WhoAreWe, MVC.Home.About())} ,
+    new MenuItem{ Selected = AboutPages.Team == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HomeString.Team, MVC.Home.Team())} ,
 	new MenuItem{ Selected = AboutPages.Press == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.HomeString.News, MVC.Home.Press())} ,
 	new MenuItem{ Selected = AboutPages.Jobs == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.JobString.Jobs, MVC.Home.Jobs())},
 	new MenuItem{ Selected = AboutPages.Cgu == Model, Link= Html.ActionLink(Worki.Resources.Views.Home.CguString.TermsOfUse, MVC.Home.CGU())},

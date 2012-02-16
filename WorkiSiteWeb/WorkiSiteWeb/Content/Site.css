@@ -239,10 +239,20 @@ page width. Or, you can specify an exact pixel width. */
 ----------------------------------------------------------*/
 .headerContainer
 {
-	margin-bottom:30px;
-    background: whiteSmoke;
+	margin-bottom: 30px;
 	border-bottom: 1px solid #E5E5E5;
-	height: 75px;
+	font-size: 1em;
+	height: 56px;
+	/*background: whiteSmoke;*/
+}
+
+.headerGradient
+{
+    background: -webkit-gradient(linear,left top, left bottom,from(#ffffff), to(#f3f3f3));
+    background: -webkit-linear-gradient(top, #ffffff, #f3f3f3);
+    background: -moz-linear-gradient(top, #ffffff, #f3f3f3);
+    background: -o-linear-gradient(top, #ffffff, #f3f3f3);
+    background: linear-gradient(top, #ffffff, #f3f3f3);
 }
 
 .header
@@ -252,14 +262,56 @@ page width. Or, you can specify an exact pixel width. */
 	margin-right: auto;
 }
 
+.flags { background: url(images/flags.png) no-repeat top left; }
+
+
+.allemagne{ background-position: 0 0; width: 16px; height: 11px; } 
+.espagne{ background-position: -66px 0; width: 16px; height: 11px; } 
+.etats-unis{ background-position: -132px 0; width: 16px; height: 11px; } 
+.france{ background-position: -198px 0; width: 16px; height: 11px; } 
+.italie{ background-position: -264px 0; width: 16px; height: 11px; } 
+.maroc{ background-position: -330px 0; width: 16px; height: 11px; } 
+.mexique{ background-position: -396px 0; width: 16px; height: 11px; } 
+.portugal{ background-position: -462px 0; width: 16px; height: 11px; } 
+.royaume-uni{ background-position: -528px 0; width: 16px; height: 11px; } 
+.turquie{ background-position: -594px 0; width: 16px; height: 11px; } 
+
+
+.headerOption
+{
+    line-height: 56px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #f3f3f3;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.headerButton, .headerButton a
+{
+    color: white;
+    margin: 13px;
+    text-decoration: none;
+    padding: 7px 10px 7px 10px;
+    overflow: visible;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-image: initial;
+	font-weight: bold;
+}
+
+.headerOption, .headerButton { text-decoration: none; }
+.headerOption:hover, .headerButton:hover { text-decoration: underline; }
+
 .logo
 {
 	background-image: url('images/logo.png');
-	/*width: 147px;*/
-	width:30%;
-	height: 47px;
 	background-repeat: no-repeat;
-	margin-top:15px;
+	margin-right: 10px;
+	margin-top: 5px;
+	width: 147px;
+	height: 47px;
 }
 
 .ie7 .logo
@@ -339,7 +391,32 @@ page width. Or, you can specify an exact pixel width. */
 
 .languageSwitch
 {
-	margin-top:-5px;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: #f3f3f3;
+}
+
+.languageSwitch .dropdown
+{
+    margin-top: 18px;
+    margin-right: 5px;
+}
+
+.languageSwitch .dropdown dd ul
+{
+    min-width: 56px;
+}
+
+.languageSwitch .dropdown dd ul li a
+{
+    margin-left: 10px;
+    padding: 5px 5px 5px 20px;
+}
+
+.languageSwitch .flags
+{
+    height: 21px;
+    width: 45px;
 }
 
 .loginTitle
@@ -1555,6 +1632,7 @@ html ul.tabs li.active a:hover
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	box-shadow: 4px 4px 10px #DDD;
+	overflow: hidden;
 }
 
 .contentBlock:first-child
@@ -1579,6 +1657,7 @@ html ul.tabs li.active a:hover
 	-webkit-box-shadow: 0 0 5px 1px #DDD;
 	-moz-box-shadow: 0 0 5px 1px #DDD;
     box-shadow: 0 0 5px 1px #DDD;
+    overflow:hidden;
 }
 
 /*FEATURE TAG
@@ -1907,7 +1986,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 /* OFFERS SECTION
 ----------------------------------------------------------*/
 
-.li_ForCardOwner
 {
     width: 439px;
 }
@@ -2084,75 +2162,109 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 ----------------------------------------------------------*/        
 .dropdown dd, .dropdown dt, .dropdown ul 
 { 
-	margin:0px; padding:0px; 
-	line-height:18px;
+	line-height: 25px;
+	/*	margin: 10px;
+    min-width: 170px;*/
 }
 
 .dropdown dd 
 { 
-	position:relative; 
+	position: relative;
 }
 
 .dropdown a, .dropdown a:visited 
-{ 
-	text-decoration:none; outline:none;
-}
-
-.dropdown a:hover 
-{ 
-	color:#999999;
-}
-.dropdown dt a:hover 
-{ 
-	color:#999999; 
-	border: 1px solid #d0c9af;
-}
-
-.dropdown dt a 
 {
-	/*background:#e4dfcb url(arrow.png) no-repeat scroll right center; */
-	display:block; 	
-    border:1px solid #CCC; 
-    min-width:170px;
-}
-.dropdown dt a span 
-{
-	cursor:pointer; 
-	display:block; 
-	padding:5px;
+	text-decoration: none; outline: none;
 }
 
 .dropdown-triangle
 {
+    margin-left: 10px;
 	font-size: 18px;
 	/*line-height: 14px;*/
 }
 
+.dropdown dt a:hover 
+{ 
+	color: #999999; 
+	border: 1px solid #d0c9af;
+}
+
+
+
+.dropdown dt a 
+{
+	/*background:#e4dfcb url(arrow.png) no-repeat scroll right center;*/
+    min-width: 170px;
+    border: 1px solid #CCC;
+	display: block;
+}
+
+.header .dropdown dt a 
+{
+    min-width: inherit;
+}
+
+.header .dropdown a, .dropdown a:visited { font-weight: bold; }
+.header .dropdown dd, .dropdown dt, .dropdown ul { margin: 10px; }
+.header .dropdown dt a { border: none; }
+.header .dropdown dt a span { padding: 0px; }
+
+.header .dropdown dt a:hover 
+{ 
+	color: inherit;
+	border: none;
+}
+
+.header .dropdown[id="profilDropdown"] dd ul li a 
+{
+	display: block;
+	padding: 5px 20px 5px 20px;
+}
+
+.header .dropdown dd ul 
+{
+    top: -3px;
+	left: -22px;
+	border: 1px solid #CCC;
+	box-shadow: 2px 2px 5px #DDD;
+}
+
+.dropdown dt a span 
+{
+	cursor: pointer;
+	display: block;
+	padding: 5px;
+}
+
 .dropdown dd ul 
 {
-	background:white none repeat scroll 0 0; 
-	border:1px solid #ccc; 
-	display:none;
-	left:0px; 
-	padding:5px 0px;
-	position:absolute; 
-	top:2px; 
-	width:auto; 
-	min-width:170px; 
-	list-style:none;
-	z-index:500;
+	background: white;
+	border: 1px solid #CCC;
+	display: none;
+	position: absolute;
+	top: 2px;
+	left: 0px;
+	padding: 5px 0;
+	min-width:  170px;
+	list-style: none;
+	z-index: 500;
 }
 
 .dropdown dd ul li a 
-{ 
-	padding:5px; 
-	display:block;
+{
+	display: block;
+	padding: 5px;
 }
+
 .dropdown dd ul li a:hover 
+{
+    color: white;
+}
+
+.dropdown dd ul li:hover 
 { 
-	background-color:#5DAFDE;
-	color:White;
-	font-weight:bold;
+	background-color: #5DAFDE;
 }
 
 /* CONTACT LAYOUT
