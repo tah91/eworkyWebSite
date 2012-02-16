@@ -16,7 +16,9 @@
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Localisation.ID))}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Localisation.ID))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.Invoices(Model.Localisation.ID))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.CreateInvoice(Model.Localisation.ID))} , 
 		})
 	</div>
 

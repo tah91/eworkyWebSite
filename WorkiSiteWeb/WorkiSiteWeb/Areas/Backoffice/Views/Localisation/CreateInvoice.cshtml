@@ -1,0 +1,76 @@
+﻿@model InvoiceFormViewModel
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.BONews)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID, Title = Model.Localisation.Name })
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Localisation.ID))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.Invoices(Model.Localisation.ID))} , 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.CreateInvoice(Model.Localisation.ID))}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+		@using (Html.BeginForm())
+		{
+		    <div class="contentBlock configOffer">
+	   		    @Html.AntiForgeryToken()
+				<table class="configoffertable">
+                    <tr>
+						<td>
+						    @Html.LabelFor(m => m.ClientId)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.ClientId, Model.Clients)
+						</td>
+					</tr>
+				</table>
+				<div class="invoiceItemRows">
+					@foreach (var item in Model.Items)
+					{
+						@Html.Partial(MVC.Backoffice.Localisation.Views._InvoiceItem, item)
+					}
+				</div>
+				@Html.ActionLink("ajouter un truc", MVC.Backoffice.Localisation.AddInvoiceItem(), new { @class = "orange", id = "addItem" })
+		    </div>
+
+		    <div class="editor-field float-right">
+			    <input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
+		    </div>
+		    <div class="clear"></div>
+		}
+	</div>
+	<div class="clear">
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#addItem").click(function () {
+		$.ajax({
+			url: this.href,
+			cache: false,
+			success: function (html) {
+				$(".invoiceItemRows").append(html);
+			}
+		});
+		return false;
+	});
+
+	$("button.deleteRow").live("click", function () {
+		$(this).parents(".invoiceItemRow:first").remove();
+		return false;
+	});
+
+</script>

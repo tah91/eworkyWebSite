@@ -489,4 +489,59 @@ namespace Worki.Data.Models
     public class OfferBookingViewModel : MasterViewModel<MemberBooking, Offer>
     {
     }
+
+	public class InvoiceListViewModel
+	{
+		public MonthYearList<MemberBooking> Bookings { get; set; }
+		public Localisation Localisation { get; set; }
+	}
+
+	public class InvoiceItem
+	{
+		public InvoiceItem()
+		{
+			Price = 0;
+			Quantity = 1;
+		}
+
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public string Description { get; set; }
+
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public decimal Price { get; set; }
+
+		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+		public int Quantity { get; set; }
+	}
+
+	public class InvoiceFormViewModel
+	{
+		public InvoiceFormViewModel()
+		{
+			Items = new List<InvoiceItem>();
+		}
+
+		public InvoiceFormViewModel(MemberBooking booking)
+		{
+			ClientId = booking.Client.MemberId;
+			Localisation = booking.Offer.Localisation;
+			Items = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price } };
+			InvoiceId = booking.Id;
+		}
+
+		public InvoiceFormViewModel(Localisation localisation, IEnumerable<InvoiceItem> items = null)
+		{
+			Localisation = localisation;
+			var clients = Localisation.Member.MemberClients.ToDictionary(mc => mc.ClientId, mc => mc.Client.GetFullDisplayName());
+			Clients = new SelectList(clients, "Key", "Value");
+			Items = items ?? new List<InvoiceItem>();
+		}
+
+		public SelectList Clients { get; set; }
+		public int ClientId { get; set; }
+		public IEnumerable<InvoiceItem> Items { get; set; }
+		public Localisation Localisation { get; set; }
+		public int InvoiceId { get; set; }
+	}
 }

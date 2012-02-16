@@ -728,7 +728,9 @@
     <Content Include="Areas\Backoffice\Views\Localisation\EditLocalisation.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\EditOffer.cshtml" />
     <Content Include="Areas\Backoffice\Views\Profil\ChangeBillingInformation.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Home\Invoices.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\Invoices.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\CreateInvoice.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\_InvoiceItem.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

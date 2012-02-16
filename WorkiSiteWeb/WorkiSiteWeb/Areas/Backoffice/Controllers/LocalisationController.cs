@@ -12,16 +12,20 @@ using Worki.Infrastructure.Helpers;
 using Postal;
 using Worki.Web.Model;
 using System.Web.Security;
+using System.IO;
+using Worki.Service;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class LocalisationController : BackofficeControllerBase
     {
         ILogger _Logger;
+		IInvoiceService _InvoiceService;
 
-        public LocalisationController(ILogger logger)
+		public LocalisationController(ILogger logger, IInvoiceService invoiceService)
         {
             _Logger = logger;
+			_InvoiceService = invoiceService;
         }
 
 		#region Index
@@ -1464,5 +1468,164 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		#endregion
 
 		#endregion		
-    }
+
+		#region Invoices
+
+		/// <summary>
+		/// Get action method to show invoices of the owner
+		/// </summary>
+		/// <returns>View containing the invoices</returns>
+		public virtual ActionResult Invoices(int id, string date = "")
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				MonthYear monthYear;
+				if (string.IsNullOrEmpty(date))
+				{
+					monthYear = MonthYear.GetCurrent();
+				}
+				else
+				{
+					monthYear = MonthYear.Parse(date);
+				}
+
+				var localisation = lRepo.Get(id);
+				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId && b.StatusId == (int)MemberBooking.Status.Accepted);
+				var initial = bookings.Count != 0 ? bookings.Where(b => b.CreationDate != DateTime.MinValue).Select(b => b.CreationDate).Min() : DateTime.Now;
+
+				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
+
+				var model = new InvoiceListViewModel
+				{
+					Bookings = new MonthYearList<MemberBooking>
+					{
+						List = bookings,
+						Current = monthYear,
+						Initial = MonthYear.FromDateTime(initial)
+					},
+					Localisation = localisation
+				};
+				return View(model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Invoices", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		public virtual ActionResult GetInvoice(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+
+			try
+			{
+				var booking = bRepo.Get(id);
+				using (var stream = new MemoryStream())
+				{
+					_InvoiceService.GenerateInvoice(stream, new InvoiceFormViewModel(booking));
+					return File(stream.ToArray(), "application/pdf", "test.pdf");
+				}
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("GetInvoice", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// GET Action method to create invoice
+		/// </summary>
+		/// <returns>the form to fill</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult CreateInvoice(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			if (memberId == 0)
+				return View(MVC.Shared.Views.Error);
+
+			try
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+				var member = mRepo.Get(memberId);
+				var localisation = lRepo.Get(id);
+				Member.Validate(member);
+
+				var model = new InvoiceFormViewModel(localisation);
+
+				return View(model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("CreateInvoice", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// POST Action method to create invoice
+		/// </summary>
+		/// <param name="model">The invoice data from the form</param>
+		/// <returns>Back office home page if ok, the form with error if not</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult CreateInvoice(int id, InvoiceFormViewModel model)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			if (memberId == 0)
+				return View(MVC.Shared.Views.Error);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+			var member = mRepo.Get(memberId);
+			var localisation = lRepo.Get(id);
+			if (member == null)
+				return View(MVC.Shared.Views.Error);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PaymentInfoModified;
+					using (var stream = new MemoryStream())
+					{
+						_InvoiceService.GenerateInvoice(stream, new InvoiceFormViewModel(localisation, model.Items));
+						return File(stream.ToArray(), "application/pdf", "test.pdf");
+					}
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("CreateInvoice", ex);
+				}
+			}
+
+			return View(new InvoiceFormViewModel(localisation, model.Items));
+		}
+
+		/// <summary>
+		/// Action result to return invoice item
+		/// </summary>
+		/// <returns>a partial view</returns>
+		public virtual PartialViewResult AddInvoiceItem()
+		{
+			return PartialView(MVC.Backoffice.Localisation.Views._InvoiceItem, new InvoiceItem());
+		}
+
+		#endregion
+	}
 }

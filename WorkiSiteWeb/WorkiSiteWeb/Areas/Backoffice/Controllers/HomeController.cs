@@ -11,7 +11,6 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
 using Worki.Web.Model;
 using Worki.Service;
-using System.IO;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -28,12 +27,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 	public partial class HomeController : BackofficeControllerBase
     {
         ILogger _Logger;
-		IInvoiceService _InvoiceService;
 
-		public HomeController(ILogger logger, IInvoiceService invoiceService)
+		public HomeController(ILogger logger)
         {
             _Logger = logger;
-			_InvoiceService = invoiceService;
         }
 
         /// <summary>
@@ -211,73 +208,5 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				return null;
 			}
 		}
-
-		/// <summary>
-		/// Get action method to show invoices of the owner
-		/// </summary>
-		/// <returns>View containing the invoices</returns>
-		public virtual ActionResult Invoices(string id = "")
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-				MonthYear monthYear;
-				if (string.IsNullOrEmpty(id))
-				{
-					monthYear = MonthYear.GetCurrent();
-				}
-				else
-				{
-					monthYear = MonthYear.Parse(id);
-				}
-
-                var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId && b.StatusId == (int)MemberBooking.Status.Accepted);
-                var initial = bookings.Count != 0 ? bookings.Where(b => b.CreationDate != DateTime.MinValue).Select(b => b.CreationDate).Min() : DateTime.Now;
-
-				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
-
-				var model = new MonthYearList<MemberBooking>
-				{
-					List = bookings,
-					Current = monthYear,
-					Initial = MonthYear.FromDateTime(initial)
-				};
-				return View(model);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Invoices", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		public virtual ActionResult GetInvoice(int id)
-		{
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-
-            try
-            {
-                var booking = bRepo.Get(id);
-                using (var stream = new MemoryStream())
-                {
-                    _InvoiceService.BookingInvoice(stream, booking);
-                    return File(stream.ToArray(), "application/pdf", "test.pdf");
-                }
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("GetInvoice", ex);
-                return View(MVC.Shared.Views.Error);
-            }
-		}
-
     }
 }

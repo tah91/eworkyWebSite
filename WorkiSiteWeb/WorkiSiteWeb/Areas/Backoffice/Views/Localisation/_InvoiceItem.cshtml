@@ -1,0 +1,14 @@
+﻿@model InvoiceItem
+
+<div class="invoiceItemRow">
+	@using (Html.BeginCollectionItem("Items"))
+	{
+		@Html.LabelFor(m => m.Description)
+		@Html.TextBoxFor(m => m.Description)
+		@Html.LabelFor(m => m.Quantity)
+		@Html.TextBoxFor(m => m.Quantity)
+		@Html.LabelFor(m => m.Price)
+		@Html.TextBoxFor(m => m.Price)
+		<button class="deleteRow crossButton cross"></button>
+	}
+</div>

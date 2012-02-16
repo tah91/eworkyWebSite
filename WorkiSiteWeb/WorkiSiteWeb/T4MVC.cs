@@ -3095,11 +3095,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public System.Web.Mvc.ActionResult Quotation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Quotation);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult GetInvoice() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Backoffice.Home; } }
@@ -3118,8 +3113,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string Booking = "Booking";
             public readonly string Quotation = "Quotation";
             public readonly string GetAlertSummary = "GetAlertSummary";
-            public readonly string Invoices = "Invoices";
-            public readonly string GetInvoice = "GetInvoice";
         }
 
 
@@ -3130,7 +3123,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ViewNames {
             public readonly string Booking = "~/Areas/Backoffice/Views/Home/Booking.cshtml";
             public readonly string Index = "~/Areas/Backoffice/Views/Home/Index.cshtml";
-            public readonly string Invoices = "~/Areas/Backoffice/Views/Home/Invoices.cshtml";
             public readonly string Localisations = "~/Areas/Backoffice/Views/Home/Localisations.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Home/Quotation.cshtml";
         }
@@ -3165,18 +3157,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         public override System.Web.Mvc.ActionResult GetAlertSummary() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetAlertSummary);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Invoices(string id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Invoices);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult GetInvoice(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -3334,6 +3314,21 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public System.Web.Mvc.PartialViewResult BookingSummary() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.BookingSummary);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Invoices() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Invoices);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult GetInvoice() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult CreateInvoice() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.CreateInvoice);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public LocalisationController Actions { get { return MVC.Backoffice.Localisation; } }
@@ -3375,6 +3370,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string ResizeEvent = "ResizeEvent";
             public readonly string CreateEvent = "CreateEvent";
             public readonly string BookingSummary = "BookingSummary";
+            public readonly string Invoices = "Invoices";
+            public readonly string GetInvoice = "GetInvoice";
+            public readonly string CreateInvoice = "CreateInvoice";
+            public readonly string AddInvoiceItem = "AddInvoiceItem";
         }
 
 
@@ -3385,6 +3384,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ViewNames {
             public readonly string _BookingSummary = "~/Areas/Backoffice/Views/Localisation/_BookingSummary.cshtml";
             public readonly string _CreateBooking = "~/Areas/Backoffice/Views/Localisation/_CreateBooking.cshtml";
+            public readonly string _InvoiceItem = "~/Areas/Backoffice/Views/Localisation/_InvoiceItem.cshtml";
             public readonly string _LocalisationCalendar = "~/Areas/Backoffice/Views/Localisation/_LocalisationCalendar.cshtml";
             public readonly string _LocalisationMenu = "~/Areas/Backoffice/Views/Localisation/_LocalisationMenu.cshtml";
             public readonly string _LocalisationNavigation = "~/Areas/Backoffice/Views/Localisation/_LocalisationNavigation.cshtml";
@@ -3394,9 +3394,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string BookingDetail = "~/Areas/Backoffice/Views/Localisation/BookingDetail.cshtml";
             public readonly string ConfigureOffer = "~/Areas/Backoffice/Views/Localisation/ConfigureOffer.cshtml";
             public readonly string ConfirmBooking = "~/Areas/Backoffice/Views/Localisation/ConfirmBooking.cshtml";
+            public readonly string CreateInvoice = "~/Areas/Backoffice/Views/Localisation/CreateInvoice.cshtml";
             public readonly string EditLocalisation = "~/Areas/Backoffice/Views/Localisation/EditLocalisation.cshtml";
             public readonly string EditOffer = "~/Areas/Backoffice/Views/Localisation/EditOffer.cshtml";
             public readonly string Index = "~/Areas/Backoffice/Views/Localisation/Index.cshtml";
+            public readonly string Invoices = "~/Areas/Backoffice/Views/Localisation/Invoices.cshtml";
             public readonly string OfferBooking = "~/Areas/Backoffice/Views/Localisation/OfferBooking.cshtml";
             public readonly string OfferIndex = "~/Areas/Backoffice/Views/Localisation/OfferIndex.cshtml";
             public readonly string OfferQuotation = "~/Areas/Backoffice/Views/Localisation/OfferQuotation.cshtml";
@@ -3651,6 +3653,37 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public override System.Web.Mvc.ActionResult CreateEvent(Worki.Data.Models.CreateBookingModel createBookingModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateEvent);
             callInfo.RouteValueDictionary.Add("createBookingModel", createBookingModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Invoices(int id, string date) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Invoices);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("date", date);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetInvoice(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreateInvoice(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateInvoice);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreateInvoice(int id, Worki.Data.Models.InvoiceFormViewModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateInvoice);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AddInvoiceItem() {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddInvoiceItem);
             return callInfo;
         }
 
