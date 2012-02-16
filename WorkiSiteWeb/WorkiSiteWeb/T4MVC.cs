@@ -3681,8 +3681,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string Edit = "editer";
-            public readonly string ChangePassword = "changer-mdp";
             public readonly string ChangePaymentInformation = "ChangePaymentInformation";
             public readonly string ChangeBillingInformation = "ChangeBillingInformation";
         }
@@ -3694,37 +3692,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string ChangeBillingInformation = "~/Areas/Backoffice/Views/Profil/ChangeBillingInformation.cshtml";
-            public readonly string ChangePassword = "~/Areas/Backoffice/Views/Profil/ChangePassword.cshtml";
             public readonly string ChangePaymentInformation = "~/Areas/Backoffice/Views/Profil/ChangePaymentInformation.cshtml";
-            public readonly string Edit = "~/Areas/Backoffice/Views/Profil/Edit.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class T4MVC_ProfilController: Worki.Web.Areas.Backoffice.Controllers.ProfilController {
         public T4MVC_ProfilController() : base(Dummy.Instance) { }
-
-        public override System.Web.Mvc.ActionResult Edit() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Member member) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            callInfo.RouteValueDictionary.Add("member", member);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult ChangePassword() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult ChangePassword(Worki.Data.Models.ChangePasswordModel model) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePassword);
-            callInfo.RouteValueDictionary.Add("model", model);
-            return callInfo;
-        }
 
         public override System.Web.Mvc.ActionResult ChangePaymentInformation() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ChangePaymentInformation);

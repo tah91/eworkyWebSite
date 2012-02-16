@@ -674,8 +674,6 @@
     <Content Include="Areas\Backoffice\Views\Localisation\Quotation.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\OfferBooking.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\OfferQuotation.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Profil\ChangePassword.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Profil\Edit.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_BackofficeMenu.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationMenu.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\Index.cshtml" />
