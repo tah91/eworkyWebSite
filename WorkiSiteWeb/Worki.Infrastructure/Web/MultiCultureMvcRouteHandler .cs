@@ -70,8 +70,8 @@ namespace Worki.Infrastructure
 			{
 				case Culture.fr:
 					return ".fr";
-				case Culture.es:
-					return ".es";
+				//case Culture.es:
+					//return ".es";
 				case Culture.en:
 				default:
 					return ".com";
