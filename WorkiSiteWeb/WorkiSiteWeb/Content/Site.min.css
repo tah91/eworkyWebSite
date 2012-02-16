@@ -39,7 +39,7 @@ h5,h6{font-size:1em}
 html,body{margin:0;padding:0;height:100%}
 .page{width:1000px;margin-left:auto;margin-right:auto;min-height:100%;padding-bottom:300px}
 .wrapper{position:relative;min-height:100%}
-.headerContainer{margin-bottom:30px;border-bottom:1px solid #E5E5E5;font-size:1em;height:56px}
+.headerContainer{margin-bottom:30px;border-bottom:1px solid #E5E5E5;font-size:1em;height:56px;padding-top:5px}
 .headerGradient{background:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#f3f3f3));background:-webkit-linear-gradient(top,#fff,#f3f3f3);background:-moz-linear-gradient(top,#fff,#f3f3f3);background:-o-linear-gradient(top,#fff,#f3f3f3);background:linear-gradient(top,#fff,#f3f3f3)}
 .header{width:1000px;margin-left:auto;margin-right:auto}
 .flags{background:url(images/flags.png) no-repeat top left}
@@ -53,11 +53,11 @@ html,body{margin:0;padding:0;height:100%}
 .portugal{background-position:-462px 0;width:16px;height:11px}
 .royaume-uni{background-position:-528px 0;width:16px;height:11px}
 .turquie{background-position:-594px 0;width:16px;height:11px}
-.headerOption{line-height:56px;border-right-style:solid;border-right-width:1px;border-right-color:#f3f3f3;padding-right:20px;padding-left:20px;font-weight:bold}
+.headerOption{border-right-style:solid;border-right-width:1px;border-right-color:#f3f3f3;padding:20px}
 .headerButton,.headerButton a{color:white;margin:13px;text-decoration:none;padding:7px 10px 7px 10px;overflow:visible;-moz-border-radius:3px;border-radius:3px;border-image:initial;font-weight:bold}
 .headerOption,.headerButton{text-decoration:none}
 .headerOption:hover,.headerButton:hover{text-decoration:underline}
-.logo{background-image:url('images/logo.png');background-repeat:no-repeat;margin-right:10px;margin-top:5px;width:147px;height:47px}
+.logo{background-image:url('images/logo.png');background-repeat:no-repeat;width:147px;height:47px}
 .ie7 .logo{background-image:url('images/logo.png');width:38%;height:47px;background-repeat:no-repeat;margin-top:15px}
 .logo_beta{background-image:url('images/logo.png')}
 .logo_nobeta{background-image:url('images/logo_nobeta.png')}

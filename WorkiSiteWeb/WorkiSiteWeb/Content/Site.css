@@ -243,6 +243,7 @@ page width. Or, you can specify an exact pixel width. */
 	border-bottom: 1px solid #E5E5E5;
 	font-size: 1em;
 	height: 56px;
+	padding-top: 5px;
 	/*background: whiteSmoke;*/
 }
 
@@ -279,13 +280,10 @@ page width. Or, you can specify an exact pixel width. */
 
 .headerOption
 {
-    line-height: 56px;
     border-right-style: solid;
     border-right-width: 1px;
     border-right-color: #f3f3f3;
-    padding-right: 20px;
-    padding-left: 20px;
-    font-weight: bold;
+    padding:20px;
 }
 
 .headerButton, .headerButton a
@@ -301,15 +299,20 @@ page width. Or, you can specify an exact pixel width. */
 	font-weight: bold;
 }
 
-.headerOption, .headerButton { text-decoration: none; }
-.headerOption:hover, .headerButton:hover { text-decoration: underline; }
+.headerOption, .headerButton 
+{ 
+    text-decoration: none; 
+}
+
+.headerOption:hover, .headerButton:hover 
+{ 
+    text-decoration: underline; 
+}
 
 .logo
 {
 	background-image: url('images/logo.png');
 	background-repeat: no-repeat;
-	margin-right: 10px;
-	margin-top: 5px;
 	width: 147px;
 	height: 47px;
 }

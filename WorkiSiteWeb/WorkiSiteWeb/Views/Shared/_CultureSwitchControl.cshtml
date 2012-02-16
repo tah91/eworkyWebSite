@@ -1,25 +1,25 @@
 ﻿@{
     var isFr = Url.IsFrench();
-    var Current = string.Format("");
+    var Current = string.Empty;
     
     if (isFr)
     {
-        Current = string.Format("flags france");
+        Current = "flags france";
     }
     else
     {
-        Current = string.Format("flags royaume-uni");
+        Current = "flags royaume-uni";
     }
     
     var LanguageSwitcher = new DropDownModel
     {
-        Id = string.Format("CultureSwitcher"),
-        Title = string.Format("d"),
+        Id = "CultureSwitcher",
+        Title = "",
         TitleCss = Current,
         Items = new List<DropDownItem>
 		{
-			new DropDownItem { DisplayName = "", Css = "flags france", Link = Url.Action(MVC.Home.ChangeCulture("fr", this.Request.RawUrl)) },
-            new DropDownItem { DisplayName = "", Css = "flags royaume-uni", Link = Url.Action(MVC.Home.ChangeCulture("en", this.Request.RawUrl)) }
+			new DropDownItem { DisplayName = "", Css = "flags france", Link = Url.Action(MVC.Home.ChangeCulture("fr")) },
+            new DropDownItem { DisplayName = "", Css = "flags royaume-uni", Link = Url.Action(MVC.Home.ChangeCulture("en")) }
 		}
     };
     @Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)

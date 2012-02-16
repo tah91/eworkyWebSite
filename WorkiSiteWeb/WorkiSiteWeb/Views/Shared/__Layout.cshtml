@@ -43,9 +43,9 @@
 		<div class="headerContainer headerGradient">
 			<div class="header">
 				<div class="logo linkImg float-left">@Html.ActionLink(" ", MVC.Home.Index())</div>
-                <div class="float-left headerOption blue linkImg">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</div>
+                <div class="float-left headerOption bold blue linkImg noUnderline">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</div>
                 @Html.Partial(MVC.Shared.Views._LogOnUserControl)
-                <div class="float-right headerButton buttonBlue">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
+                <div class="buttonBlue buttonStd linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
                 <div class="languageSwitch float-right">@Html.Partial(MVC.Shared.Views._CultureSwitchControl)</div>
 			</div>
 		</div>
