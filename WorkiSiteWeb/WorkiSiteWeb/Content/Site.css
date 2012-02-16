@@ -264,16 +264,18 @@ page width. Or, you can specify an exact pixel width. */
 
 .flags { background: url(images/flags.png) no-repeat top left; }
 
-.allemagne{ background-position: 0 0; width: 16px;}
-.espagne{ background-position: -21px 0; width: 16px;} 
-.etats-unis{ background-position: -42px 0; width: 16px;} 
-.france{ background-position: -63px 0; width: 16px;} 
-.italie{ background-position: -84px 0; width: 16px;} 
-.maroc{ background-position: -105px 0; width: 16px;} 
-.mexique{ background-position: -126px 0; width: 16px;} 
-.portugal{ background-position: -147px 0; width: 16px;} 
-.royaume-uni{ background-position: -168px 0; width: 16px;} 
-.turquie{ background-position: -189px 0; width: 16px;}
+
+.allemagne{ background-position: 0 0; width: 16px; height: 11px; } 
+.espagne{ background-position: -66px 0; width: 16px; height: 11px; } 
+.etats-unis{ background-position: -132px 0; width: 16px; height: 11px; } 
+.france{ background-position: -198px 0; width: 16px; height: 11px; } 
+.italie{ background-position: -264px 0; width: 16px; height: 11px; } 
+.maroc{ background-position: -330px 0; width: 16px; height: 11px; } 
+.mexique{ background-position: -396px 0; width: 16px; height: 11px; } 
+.portugal{ background-position: -462px 0; width: 16px; height: 11px; } 
+.royaume-uni{ background-position: -528px 0; width: 16px; height: 11px; } 
+.turquie{ background-position: -594px 0; width: 16px; height: 11px; } 
+
 
 .headerOption
 {
@@ -394,9 +396,27 @@ page width. Or, you can specify an exact pixel width. */
     border-left-color: #f3f3f3;
 }
 
+.languageSwitch .dropdown
+{
+    margin-top: 18px;
+    margin-right: 5px;
+}
+
 .languageSwitch .dropdown dd ul
 {
     min-width: 56px;
+}
+
+.languageSwitch .dropdown dd ul li a
+{
+    margin-left: 10px;
+    padding: 5px 5px 5px 20px;
+}
+
+.languageSwitch .flags
+{
+    height: 21px;
+    width: 45px;
 }
 
 .loginTitle

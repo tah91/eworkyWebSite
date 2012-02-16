@@ -39,9 +39,25 @@ h5,h6{font-size:1em}
 html,body{margin:0;padding:0;height:100%}
 .page{width:1000px;margin-left:auto;margin-right:auto;min-height:100%;padding-bottom:300px}
 .wrapper{position:relative;min-height:100%}
-.headerContainer{margin-bottom:30px;background:whiteSmoke;border-bottom:1px solid #E5E5E5;height:75px}
+.headerContainer{margin-bottom:30px;border-bottom:1px solid #E5E5E5;font-size:1em;height:56px}
+.headerGradient{background:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#f3f3f3));background:-webkit-linear-gradient(top,#fff,#f3f3f3);background:-moz-linear-gradient(top,#fff,#f3f3f3);background:-o-linear-gradient(top,#fff,#f3f3f3);background:linear-gradient(top,#fff,#f3f3f3)}
 .header{width:1000px;margin-left:auto;margin-right:auto}
-.logo{background-image:url('images/logo.png');width:30%;height:47px;background-repeat:no-repeat;margin-top:15px}
+.flags{background:url(images/flags.png) no-repeat top left}
+.allemagne{background-position:0 0;width:16px;height:11px}
+.espagne{background-position:-66px 0;width:16px;height:11px}
+.etats-unis{background-position:-132px 0;width:16px;height:11px}
+.france{background-position:-198px 0;width:16px;height:11px}
+.italie{background-position:-264px 0;width:16px;height:11px}
+.maroc{background-position:-330px 0;width:16px;height:11px}
+.mexique{background-position:-396px 0;width:16px;height:11px}
+.portugal{background-position:-462px 0;width:16px;height:11px}
+.royaume-uni{background-position:-528px 0;width:16px;height:11px}
+.turquie{background-position:-594px 0;width:16px;height:11px}
+.headerOption{line-height:56px;border-right-style:solid;border-right-width:1px;border-right-color:#f3f3f3;padding-right:20px;padding-left:20px;font-weight:bold}
+.headerButton,.headerButton a{color:white;margin:13px;text-decoration:none;padding:7px 10px 7px 10px;overflow:visible;-moz-border-radius:3px;border-radius:3px;border-image:initial;font-weight:bold}
+.headerOption,.headerButton{text-decoration:none}
+.headerOption:hover,.headerButton:hover{text-decoration:underline}
+.logo{background-image:url('images/logo.png');background-repeat:no-repeat;margin-right:10px;margin-top:5px;width:147px;height:47px}
 .ie7 .logo{background-image:url('images/logo.png');width:38%;height:47px;background-repeat:no-repeat;margin-top:15px}
 .logo_beta{background-image:url('images/logo.png')}
 .logo_nobeta{background-image:url('images/logo_nobeta.png')}
@@ -53,7 +69,11 @@ html,body{margin:0;padding:0;height:100%}
 .loginContainer{width:auto;background-color:white!important;margin-top:0!important;height:50px}
 .ie7 .loginContainer{width:32%;background-color:white!important;margin-top:0!important;height:50px}
 .logindisplay{padding:5px 10px 10px 10px}
-.languageSwitch{margin-top:-5px}
+.languageSwitch{border-left-style:solid;border-left-width:1px;border-left-color:#f3f3f3}
+.languageSwitch .dropdown{margin-top:18px;margin-right:5px}
+.languageSwitch .dropdown dd ul{min-width:56px}
+.languageSwitch .dropdown dd ul li a{margin-left:10px;padding:5px 5px 5px 20px}
+.languageSwitch .flags{height:21px;width:45px}
 .loginTitle{font-size:.9em;margin-bottom:3px}
 .welcome{margin-top:5px}
 .alertSummaryContainer{padding:10px 0}
@@ -306,17 +326,16 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .verticalMenu li:hover{border:1px solid rgba(0,0,0,0.1);background-image:-webkit-linear-gradient(top,whitesmoke,#f8f8f8);background-image:-moz-linear-gradient(top,whitesmoke,#f8f8f8);background-image:linear-gradient(top,whitesmoke,#f8f8f8)}
 .verticalMenu li.selected{border:1px solid rgba(0,0,0,0.1);border-left:4px solid #5dafde;background-image:-webkit-linear-gradient(top,whitesmoke,#f8f8f8);background-image:-moz-linear-gradient(top,whitesmoke,#f8f8f8);background-image:linear-gradient(top,whitesmoke,#f8f8f8)}
 .verticalMenu li.selected a{color:Gray}
-.dropdown dd,.dropdown dt,.dropdown ul{margin:0;padding:0;line-height:18px}
+.dropdown dd,.dropdown dt,.dropdown ul{margin:10px;line-height:25px}
 .dropdown dd{position:relative}
-.dropdown a,.dropdown a:visited{text-decoration:none;outline:0}
-.dropdown a:hover{color:#999}
-.dropdown dt a:hover{color:#999;border:1px solid #d0c9af}
-.dropdown dt a{display:block;border:1px solid #CCC;min-width:170px}
-.dropdown dt a span{cursor:pointer;display:block;padding:5px}
-.dropdown-triangle{font-size:18px}
-.dropdown dd ul{background:white none repeat scroll 0 0;border:1px solid #ccc;display:none;left:0;padding:5px 0;position:absolute;top:2px;width:auto;min-width:170px;list-style:none;z-index:500}
-.dropdown dd ul li a{padding:5px;display:block}
-.dropdown dd ul li a:hover{background-color:#5DAFDE;color:White;font-weight:bold}
+.dropdown a,.dropdown a:visited{font-weight:bold;text-decoration:none;outline:0}
+.dropdown-triangle{margin-left:10px;font-size:18px}
+.dropdown dt a{display:block}
+.dropdown dt a span{cursor:pointer;display:block}
+.dropdown dd ul{background:white;border:1px solid #DDD;display:none;position:absolute;top:-3px;left:-22px;min-width:170px;list-style:none;z-index:500;box-shadow:2px 2px 5px #DDD}
+.dropdown dd ul li a{display:block;font-weight:bold;padding:5px 20px 5px 20px}
+.dropdown dd ul li a:hover{color:white}
+.dropdown dd ul li:hover{background-color:#5DAFDE}
 .contactTable td{height:30px}
 .contactTable td:first-child{padding-right:50px}
 .howitWorksPart{width:46%}

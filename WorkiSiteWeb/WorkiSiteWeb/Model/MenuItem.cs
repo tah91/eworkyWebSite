@@ -32,6 +32,7 @@ namespace Worki.Web.Model
 
 		public string Id { get; set; }
         public string Title { get; set; }
+        public string TitleCss { get; set; }
 		public List<DropDownItem> Items { get; set; }
 	}
 
