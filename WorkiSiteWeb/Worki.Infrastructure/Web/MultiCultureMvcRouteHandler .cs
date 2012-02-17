@@ -14,7 +14,7 @@ namespace Worki.Infrastructure
     {
 		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
 
-		public const Culture DefaultCulture = Culture.fr;
+		public const Culture DefaultCulture = Culture.en;
 
 		/// <summary>
 		/// Get culture type from url
@@ -135,8 +135,8 @@ namespace Worki.Infrastructure
 			if (query != null && query.AllKeys.Contains(_LocalQuery))
 				return false;
 
-			if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com")
-				return false;
+            if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com" || GetCulture(HttpContext.Current.Request.UserLanguages) == Culture.es)
+                return false;
 
 			return true;
 		}
