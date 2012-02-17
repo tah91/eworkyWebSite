@@ -141,6 +141,7 @@ namespace Worki.Web
 				//    throw new Exception(string.Format(Constants.AmountIncorrectError, payKey, eworky.TransactionId, eworky.Amount, eworkyTransaction.Amount));
 				//}
 
+                booking.PaymentType = (int)Offer.PaymentTypeEnum.Paypal;
 				booking.StatusId = (int)MemberBooking.Status.Paid;
 
 				booking.MemberBookingLogs.Add(new MemberBookingLog

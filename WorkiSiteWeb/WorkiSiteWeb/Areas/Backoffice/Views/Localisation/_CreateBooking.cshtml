@@ -26,12 +26,36 @@
 			<tr>
 				<td>
 					<div class="editor-label">
-						@Html.Label("Booking.MemberId", "Client")
+						@Html.LabelFor(m => m.Booking.MemberId)
 					</div>
 				</td>
 				<td>
 					<div class="editor-field">
 						@Html.DropDownListFor(m => m.Booking.MemberId, Model.Clients)
+					</div>
+				</td>
+			</tr>
+            <tr>
+				<td>
+					<div class="editor-label">
+						@Html.LabelFor(m => m.Booking.PaymentType)
+					</div>
+				</td>
+				<td>
+					<div class="editor-field">
+						@Html.DropDownListFor(m => m.Booking.PaymentType, Model.PaymentTypes)
+					</div>
+				</td>
+			</tr>
+            <tr>
+				<td>
+					<div class="editor-label">
+						@Html.LabelFor(m => m.Booking.StatusId)
+					</div>
+				</td>
+				<td>
+					<div class="editor-field">
+						@Html.DropDownListFor(m => m.Booking.StatusId, Model.Statuses)
 					</div>
 				</td>
 			</tr>

@@ -39,6 +39,7 @@ namespace Worki.Data.Models
         public int TimeUnits { get; set; }
         public int TimeType { get; set; }
         public int PeriodType { get; set; }
+        public int PaymentType { get; set; }
     
         // Navigation properties
     

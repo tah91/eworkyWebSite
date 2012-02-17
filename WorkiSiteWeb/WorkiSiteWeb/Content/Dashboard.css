@@ -336,3 +336,36 @@
 {
 	width:100px;
 }
+
+/* INVOICE LAYOUT
+----------------------------------------------------------*/
+
+.invoiceForm
+{
+    
+}
+
+.invoiceForm select, .invoiceForm input[type="text"]
+{
+	width:120px;
+}
+
+.invoiceFormtable
+{
+    margin-top:10px;
+}
+
+.invoiceFormtable td:first-child
+{
+    width:120px;
+}
+
+.invoiceItemRow
+{
+    margin:10px 0;
+}   
+
+.invoiceItemRows select, .invoiceItemRows input[type="text"]
+{
+    margin:0 10px;
+}

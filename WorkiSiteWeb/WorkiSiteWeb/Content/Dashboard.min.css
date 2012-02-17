@@ -48,3 +48,8 @@
 .createBooking h3{display:inline}
 .createBooking table{margin-top:5px}
 .createBooking table td:first-child{width:100px}
+.invoiceForm select,.invoiceForm input[type="text"]{width:120px}
+.invoiceFormtable{margin-top:10px}
+.invoiceFormtable td:first-child{width:120px}
+.invoiceItemRow{margin:10px 0}
+.invoiceItemRows select,.invoiceItemRows input[type="text"]{margin:0 10px}

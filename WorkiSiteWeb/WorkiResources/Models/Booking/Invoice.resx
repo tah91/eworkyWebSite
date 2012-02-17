@@ -117,79 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Confirmed" xml:space="preserve">
-    <value>Confirmation</value>
+  <data name="AddInvoiceItem" xml:space="preserve">
+    <value>Ajouter un élément</value>
+  </data>
+  <data name="BeforeCreateInvoice" xml:space="preserve">
+    <value>Avant de créer une facture, vous pouvez compléter vos informations de facturation {0}</value>
+  </data>
+  <data name="BeforeCreateInvoiceLink" xml:space="preserve">
+    <value>ici.</value>
+  </data>
+  <data name="ClientId" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date : {0}</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Adresse électronique</value>
+  <data name="InvoiceId" xml:space="preserve">
+    <value>N° de facture</value>
   </data>
-  <data name="FavoritePlaceId" xml:space="preserve">
-    <value>Espace de coworking favori</value>
+  <data name="InvoiceNumber" xml:space="preserve">
+    <value>Facture n° {0}</value>
   </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-  <data name="FromDate" xml:space="preserve">
-    <value>Début souhaité</value>
-  </data>
-  <data name="Handled" xml:space="preserve">
-    <value>Prise en charge</value>
-  </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Nom</value>
-  </data>
-  <data name="LocalisationName" xml:space="preserve">
-    <value>Etablissement</value>
-  </data>
-  <data name="MemberId" xml:space="preserve">
-    <value>Client</value>
-  </data>
-  <data name="Message" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="Offer" xml:space="preserve">
-    <value>Besoin</value>
-  </data>
-  <data name="OfferName" xml:space="preserve">
-    <value>Offre </value>
-  </data>
-  <data name="PaymentMail" xml:space="preserve">
-    <value>Adresse URL de paiement PayPal</value>
+  <data name="PaymentBy" xml:space="preserve">
+    <value>Mode de réglement : {0}</value>
   </data>
   <data name="PaymentType" xml:space="preserve">
     <value>Moyen de paiement</value>
   </data>
-  <data name="PhoneInfo" xml:space="preserve">
-    <value>vous serez contacté à ce numéro</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Téléphone</value>
-  </data>
   <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+    <value>Prix HT</value>
   </data>
-  <data name="Response" xml:space="preserve">
-    <value>Réponse</value>
-  </data>
-  <data name="StatusId" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="Surface" xml:space="preserve">
-    <value>Surface de bureaux souhaitée (en m2)</value>
-  </data>
-  <data name="TimeType" xml:space="preserve">
-    <value>Facturation</value>
-  </data>
-  <data name="TimeUnits" xml:space="preserve">
+  <data name="Quantity" xml:space="preserve">
     <value>Quantité</value>
   </data>
-  <data name="ToDate" xml:space="preserve">
-    <value>Fin souhaitée</value>
+  <data name="SeeYouSoon" xml:space="preserve">
+    <value>A bientôt chez {0}</value>
   </data>
-  <data name="VisitNeeded" xml:space="preserve">
-    <value>Demande de visite</value>
+  <data name="SiretNumber" xml:space="preserve">
+    <value>N° Siret : {0}</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TaxNumber" xml:space="preserve">
+    <value>N° TVA : {0}</value>
+  </data>
+  <data name="TaxRate" xml:space="preserve">
+    <value>Taux de TVA</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total TTC</value>
+  </data>
+  <data name="TotalTax" xml:space="preserve">
+    <value>TVA</value>
+  </data>
+  <data name="TotalWithoutTax" xml:space="preserve">
+    <value>Total HT</value>
   </data>
 </root>

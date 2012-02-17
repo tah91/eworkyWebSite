@@ -350,7 +350,8 @@
   </data>
   <data name="HowItWorksQuotation2" xml:space="preserve">
     <value>Votre demande est alors immédiatement transmise au gérant</value>
-  <comment>? pas sur</comment></data>
+    <comment>? pas sur</comment>
+  </data>
   <data name="HowItWorksQuotation3" xml:space="preserve">
     <value>Vous recevez une réponse dans les plus brefs délais</value>
   </data>
@@ -372,5 +373,20 @@ Inscrivez-vous rapidement, les places sont limitées !</value>
   </data>
   <data name="PartyRegisterConfirmation" xml:space="preserve">
     <value>Votre inscription a été prise en compte, la date de l'évenement vous sera communiquée par mail.</value>
+  </data>
+  <data name="StatusAccepted" xml:space="preserve">
+    <value>Accepté</value>
+  </data>
+  <data name="StatusCancelled" xml:space="preserve">
+    <value>Annulé</value>
+  </data>
+  <data name="StatusPaid" xml:space="preserve">
+    <value>Payé</value>
+  </data>
+  <data name="StatusRefused" xml:space="preserve">
+    <value>Refusé</value>
+  </data>
+  <data name="StatusUnknown" xml:space="preserve">
+    <value>Inconnu</value>
   </data>
 </root>

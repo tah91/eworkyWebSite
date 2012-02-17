@@ -147,6 +147,30 @@ namespace Worki.Data.Models
 			Paid
 		}
 
+        public static string GetStatusType(Status type)
+        {
+            switch (type)
+            {
+                case Status.Unknown:
+                    return Worki.Resources.Views.Booking.BookingString.StatusUnknown;
+                case Status.Accepted:
+                    return Worki.Resources.Views.Booking.BookingString.StatusAccepted;
+                case Status.Refused:
+                    return Worki.Resources.Views.Booking.BookingString.StatusRefused;
+                case Status.Cancelled:
+                    return Worki.Resources.Views.Booking.BookingString.StatusCancelled;
+                case Status.Paid:
+                    return Worki.Resources.Views.Booking.BookingString.StatusPaid;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public static Dictionary<int, string> GetStatusTypes(List<Status> statuses)
+        {
+            return statuses.ToDictionary(p => (int)p, p => GetStatusType(p));
+        }
+
 		#region IDataErrorInfo
 
 		public string Error
@@ -353,7 +377,7 @@ namespace Worki.Data.Models
 
 		public string GetPriceDisplay()
 		{
-			return Price + " €";
+			return Price.GetPriceDisplay();
 		}
 
 		#endregion
@@ -404,13 +428,24 @@ namespace Worki.Data.Models
 
 	public class CreateBookingModel
 	{
+        public CreateBookingModel()
+        {
+            PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
+            Statuses = new SelectList(MemberBooking.GetStatusTypes(new List<MemberBooking.Status> { MemberBooking.Status.Accepted, MemberBooking.Status.Paid }), "Key", "Value", MemberBooking.Status.Paid);
+        }
+
 		public MemberBooking Booking { get; set; }
 		public SelectList Clients { get; set; }
+        public SelectList PaymentTypes { get; set; }
+        public SelectList Statuses { get; set; }
 	}
 
 	[Bind(Exclude = "Id")]
 	public class MemberBooking_Validation
 	{
+        [Display(Name = "MemberId", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public int MemberId { get; set; }
+
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "FromDate", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
 		public DateTime FromDate { get; set; }
@@ -433,6 +468,12 @@ namespace Worki.Data.Models
 
         [Display(Name = "TimeType", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public int TimeType { get; set; }
+
+        [Display(Name = "PaymentType", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public int PaymentType { get; set; }
+
+        [Display(Name = "StatusId", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        public int StatusId { get; set; }
 	}
 
 	public partial class MemberBookingLog
@@ -506,42 +547,131 @@ namespace Worki.Data.Models
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Description", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
 		public string Description { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Price", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
 		public decimal Price { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Quantity", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
 		public int Quantity { get; set; }
 	}
 
 	public class InvoiceFormViewModel
-	{
-		public InvoiceFormViewModel()
-		{
-			Items = new List<InvoiceItem>();
-		}
+    {
+        #region Ctor
 
-		public InvoiceFormViewModel(MemberBooking booking)
-		{
-			ClientId = booking.Client.MemberId;
-			Localisation = booking.Offer.Localisation;
-			Items = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price } };
-			InvoiceId = booking.Id;
-		}
+        public InvoiceFormViewModel()
+        {
+            Invoice = new InvoiceModel();
+        }
 
-		public InvoiceFormViewModel(Localisation localisation, IEnumerable<InvoiceItem> items = null)
-		{
-			Localisation = localisation;
-			var clients = Localisation.Member.MemberClients.ToDictionary(mc => mc.ClientId, mc => mc.Client.GetFullDisplayName());
-			Clients = new SelectList(clients, "Key", "Value");
-			Items = items ?? new List<InvoiceItem>();
-		}
+        public InvoiceFormViewModel(Localisation localisation, InvoiceFormViewModel model = null)
+        {
+            Invoice = new InvoiceModel(localisation);
+            var clients = localisation.Member.MemberClients.ToDictionary(mc => mc.ClientId, mc => mc.Client.GetFullDisplayName());
+            Clients = new SelectList(clients, "Key", "Value");
+            PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
+        }
 
-		public SelectList Clients { get; set; }
-		public int ClientId { get; set; }
-		public IEnumerable<InvoiceItem> Items { get; set; }
-		public Localisation Localisation { get; set; }
-		public int InvoiceId { get; set; }
-	}
+        #endregion
+
+        #region Properties
+
+        public SelectList Clients { get; set; }
+        public SelectList PaymentTypes { get; set; }
+        public InvoiceModel Invoice { get; set; }
+
+        #endregion
+
+        public InvoiceModel GetInvoiceModel(Localisation localisation)
+        {
+            Invoice.Localisation = localisation;
+            return Invoice;
+        }
+    }
+
+    public class InvoiceModel
+    {
+        #region Ctor
+
+        public InvoiceModel()
+        {
+            Items = new List<InvoiceItem>();
+        }
+
+        public InvoiceModel(Localisation localisation)
+        {
+            Localisation = localisation;
+            TaxRate = localisation.Member.MemberMainData.TaxRate;
+            Items = new List<InvoiceItem>();
+            Title = localisation.Name;
+        }
+
+        public InvoiceModel(MemberBooking booking)
+        {
+            ClientId = booking.Client.MemberId;
+            Localisation = booking.Offer.Localisation;
+            TaxRate = Localisation.Member.MemberMainData.TaxRate;
+            Items = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price } };
+            InvoiceId = booking.Id;
+            Title = booking.Offer.Name;
+        }
+
+        #endregion
+
+        #region Properties
+
+        [Display(Name = "ClientId", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
+        public int ClientId { get; set; }
+
+        [Display(Name = "InvoiceId", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
+        public int InvoiceId { get; set; }
+
+        [Display(Name = "PaymentType", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
+        public Offer.PaymentTypeEnum PaymentType { get; set; }
+
+        [Display(Name = "TaxRate", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
+        public decimal TaxRate { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "Title", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
+        public string Title { get; set; }
+
+        public IEnumerable<InvoiceItem> Items { get; set; }
+
+        public Localisation Localisation { get; set; }
+
+        #endregion
+
+        #region Utils
+
+        public decimal GetTotalWithoutTax()
+        {
+            return Items.Sum(i => i.Price * i.Quantity);
+        }
+
+        public decimal GetTotalTax()
+        {
+            return Items.Sum(i => i.Price * i.Quantity) * TaxRate / 100;
+        }
+
+        public decimal GetTotal()
+        {
+            return Items.Sum(i => i.Price * i.Quantity) * (1 + TaxRate / 100);
+        }
+
+        #endregion
+    }
+
+    public static class PriceHelper
+    {
+        public static string GetPriceDisplay(this decimal price)
+        {
+            return price.ToString("0.00") + " €";
+        }
+    }
 }

@@ -196,6 +196,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Créer une facture.
+        /// </summary>
+        public static string CreateInvoice {
+            get {
+                return ResourceManager.GetString("CreateInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Réservations.
         /// </summary>
         public static string CurrentBookings {

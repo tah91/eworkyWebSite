@@ -1335,6 +1335,29 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             }
         }
 
+        /// <summary>
+        /// Action to show booking summary
+        /// </summary>
+        /// <param name="id">id of the booking</param>
+        /// <returns></returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual PartialViewResult BookingSummary(int id)
+        {
+            try
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+                var booking = bRepo.Get(id);
+
+                return PartialView(MVC.Backoffice.Localisation.Views._BookingSummary, booking);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("BookingSummary", ex);
+                return null;
+            }
+        }
+
 		/// <summary>
 		/// Action to create booking creation partial view for an offer
 		/// </summary>
@@ -1365,29 +1388,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		}
 
 		/// <summary>
-		/// Action to show booking summary
-		/// </summary>
-		/// <param name="id">id of the booking</param>
-		/// <returns></returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual PartialViewResult BookingSummary(int id)
-		{
-			try
-			{
-				var context = ModelFactory.GetUnitOfWork();
-				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-				var booking = bRepo.Get(id);
-
-				return PartialView(MVC.Backoffice.Localisation.Views._BookingSummary, booking);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("BookingSummary", ex);
-				return null;
-			}
-		}
-
-		/// <summary>
 		/// Ajax action to handle Create event
 		/// </summary>
 		/// <param name="id">id of the booking</param>
@@ -1412,7 +1412,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
 					log.Event = "Booking Created From Calandar";
 					createBookingModel.Booking.MemberBookingLogs.Add(log);
-                    createBookingModel.Booking.StatusId = (int)MemberBooking.Status.Accepted;
 
 					offer.MemberBookings.Add(createBookingModel.Booking);
 
@@ -1533,8 +1532,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var booking = bRepo.Get(id);
 				using (var stream = new MemoryStream())
 				{
-					_InvoiceService.GenerateInvoice(stream, new InvoiceFormViewModel(booking));
-					return File(stream.ToArray(), "application/pdf", "test.pdf");
+                    var invoiceData = new InvoiceModel(booking);
+                    _InvoiceService.GenerateInvoice(stream, invoiceData);
+                    return File(stream.ToArray(), "application/pdf", invoiceData.Title);
 				}
 			}
 			catch (Exception ex)
@@ -1580,42 +1580,42 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// </summary>
 		/// <param name="model">The invoice data from the form</param>
 		/// <returns>Back office home page if ok, the form with error if not</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		[ValidateAntiForgeryToken]
-		public virtual ActionResult CreateInvoice(int id, InvoiceFormViewModel model)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-			if (memberId == 0)
-				return View(MVC.Shared.Views.Error);
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult CreateInvoice(int id, InvoiceFormViewModel model)
+        {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
+            if (memberId == 0)
+                return View(MVC.Shared.Views.Error);
 
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 
-			var member = mRepo.Get(memberId);
-			var localisation = lRepo.Get(id);
-			if (member == null)
-				return View(MVC.Shared.Views.Error);
+            var member = mRepo.Get(memberId);
+            var localisation = lRepo.Get(id);
+            if (member == null)
+                return View(MVC.Shared.Views.Error);
 
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PaymentInfoModified;
-					using (var stream = new MemoryStream())
-					{
-						_InvoiceService.GenerateInvoice(stream, new InvoiceFormViewModel(localisation, model.Items));
-						return File(stream.ToArray(), "application/pdf", "test.pdf");
-					}
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("CreateInvoice", ex);
-				}
-			}
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        var invoiceData = model.GetInvoiceModel(localisation);
+                        _InvoiceService.GenerateInvoice(stream, invoiceData);
+                        return File(stream.ToArray(), "application/pdf", invoiceData.Title);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("CreateInvoice", ex);
+                }
+            }
 
-			return View(new InvoiceFormViewModel(localisation, model.Items));
-		}
+            return View(new InvoiceFormViewModel(localisation, model));
+        }
 
 		/// <summary>
 		/// Action result to return invoice item

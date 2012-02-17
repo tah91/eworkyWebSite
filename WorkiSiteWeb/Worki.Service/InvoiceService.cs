@@ -20,7 +20,7 @@ namespace Worki.Service
 {
 	public interface IInvoiceService
 	{
-		void GenerateInvoice(MemoryStream stream, InvoiceFormViewModel invoiceData);
+		void GenerateInvoice(MemoryStream stream, InvoiceModel invoiceData);
 	}
 
 	public class InvoiceService : IInvoiceService
@@ -45,7 +45,7 @@ namespace Worki.Service
 		Font _smallFont = new Font(_family, 10, Font.NORMAL, BaseColor.BLACK);
 		Font _smallFontBold = new Font(_family, 10, Font.BOLD, BaseColor.BLACK);
 
-		public void GenerateInvoice(MemoryStream stream, InvoiceFormViewModel invoiceData)
+        public void GenerateInvoice(MemoryStream stream, InvoiceModel invoiceData)
 		{
 			Document doc = null;
 
@@ -113,7 +113,7 @@ namespace Worki.Service
 		/// Add all the booking content
 		/// </summary>
 		/// <param name="doc"></param>
-		void AddPageWithTable(Document doc, InvoiceFormViewModel invoiceData)
+        void AddPageWithTable(Document doc, InvoiceModel invoiceData)
 		{
 			// Add a new page to the document
 			doc.NewPage();
@@ -123,21 +123,27 @@ namespace Worki.Service
 			bookingOwner.AppendLine(invoiceData.Localisation.Member.GetFullDisplayName());
 			bookingOwner.AppendLine(invoiceData.Localisation.Member.MemberMainData.PhoneNumber);
 			bookingOwner.AppendLine(invoiceData.Localisation.Member.Email);
-			bookingOwner.AppendLine(invoiceData.Localisation.Member.MemberMainData.TaxNumber);
-			bookingOwner.AppendLine(invoiceData.Localisation.Member.MemberMainData.SiretNumber);
+            if (!string.IsNullOrEmpty(invoiceData.Localisation.Member.MemberMainData.TaxNumber))
+			    bookingOwner.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.TaxNumber,invoiceData.Localisation.Member.MemberMainData.TaxNumber));
+            if (!string.IsNullOrEmpty(invoiceData.Localisation.Member.MemberMainData.SiretNumber))
+                bookingOwner.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.SiretNumber, invoiceData.Localisation.Member.MemberMainData.SiretNumber));
 
 			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk(bookingOwner.ToString()));
 
-			//var bookingClient = new StringBuilder();
-			//bookingClient.AppendLine(booking.Client.GetFullDisplayName());
-			//bookingClient.AppendLine(booking.Client.MemberMainData.PostalCode + " " + booking.Client.MemberMainData.City);
-			//bookingClient.AppendLine(booking.Client.MemberMainData.Country);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var client = mRepo.Get(invoiceData.ClientId);
 
-			//this.AddParagraph(doc, Element.ALIGN_RIGHT, _standardFont, new Chunk(bookingClient.ToString()));
+            var bookingClient = new StringBuilder();
+            bookingClient.AppendLine(client.GetFullDisplayName());
+            bookingClient.AppendLine(client.MemberMainData.PostalCode + " " + client.MemberMainData.City);
+            bookingClient.AppendLine(client.MemberMainData.Country);
+
+			this.AddParagraph(doc, Element.ALIGN_RIGHT, _standardFont, new Chunk(bookingClient.ToString()));
 
 			var billingDesc = new StringBuilder();
-			billingDesc.AppendLine("Facture n° " + invoiceData.InvoiceId);
-			billingDesc.AppendLine("Date : " + DateTime.Now.ToString("dd/MM/yyyy"));
+			billingDesc.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.InvoiceNumber,invoiceData.InvoiceId));
+            billingDesc.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.Date, CultureHelpers.GetSpecificFormat(DateTime.Now, CultureHelpers.TimeFormat.Date)));
 
 			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk(billingDesc.ToString()));
 
@@ -146,37 +152,39 @@ namespace Worki.Service
 			table.SetWidths(widths);
 			table.WidthPercentage = 100f;
 			table.SpacingBefore = 20f;
+            table.SpacingAfter = 10f;
 
 			//headers
-			this.AddCellHeader(table, "Description");
-			this.AddCellHeader(table, "Quantité");
-			this.AddCellHeader(table, "Prix HT");
-			this.AddCellHeader(table, "Total");
+            this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.Description);
+            this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.Quantity);
+            this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.Price);
+            this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.SubTotal);
 
 			//offer
 			foreach (var item in invoiceData.Items)
 			{
 				this.AddCell(table, item.Description, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER);
 				this.AddCell(table, item.Quantity.ToString(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
-				this.AddCell(table, item.Price.ToString(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
-				this.AddCell(table, (item.Price*item.Quantity).ToString(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+                this.AddCell(table, item.Price.GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+                this.AddCell(table, (item.Price * item.Quantity).GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 			}
 
 			//total
-			this.AddCell(table, "Total HT", Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER , 3);
-			this.AddCell(table, "33", Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+			this.AddCell(table, Worki.Resources.Models.Booking.Invoice.TotalWithoutTax, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER , 3);
+			this.AddCell(table, invoiceData.GetTotalWithoutTax().GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 
-			this.AddCell(table, "TVA", Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER, 3);
-			this.AddCell(table, "33", Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+            this.AddCell(table, Worki.Resources.Models.Booking.Invoice.TotalTax, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER, 3);
+            this.AddCell(table, invoiceData.GetTotalTax().GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 
-			this.AddCell(table, "Total TTC", Element.ALIGN_LEFT, Rectangle.TOP_BORDER, 3, 2f, _smallFontBold);
-			this.AddCell(table, "33", Element.ALIGN_RIGHT, Rectangle.TOP_BORDER, 1, 2f,_smallFontBold);
+            this.AddCell(table, Worki.Resources.Models.Booking.Invoice.Total, Element.ALIGN_LEFT, Rectangle.TOP_BORDER, 3, 2f, _smallFontBold);
+            this.AddCell(table, invoiceData.GetTotal().GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.TOP_BORDER, 1, 2f, _smallFontBold);
 
 			doc.Add(table);  // Add the list to the page
 
-			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk("\n\n\nMode de réglement :\nPaypal\n\n\n"));
+            this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk(string.Format(Worki.Resources.Models.Booking.Invoice.PaymentBy, Offer.GetPaymentTypeEnumType((int)invoiceData.PaymentType))));
 
-			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk("A bientôt chez " + invoiceData.Localisation.Name));
+            this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk("\n\n"));
+            this.AddParagraph(doc, Element.ALIGN_RIGHT, _standardFont, new Chunk(string.Format(Worki.Resources.Models.Booking.Invoice.SeeYouSoon, invoiceData.Localisation.Name)));
 		}
 
 		/// <summary>

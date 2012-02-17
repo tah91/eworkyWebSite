@@ -211,7 +211,8 @@ namespace Worki.Data.Models
 
         public enum PaymentTypeEnum
         {
-            Paypal
+            Paypal,
+            Check
         }
 
         public static List<int> PaymentPeriodTypes = new List<int>()
@@ -231,7 +232,8 @@ namespace Worki.Data.Models
 
         public static List<int> PaymentTypeEnumTypes = new List<int>()
         {
-            (int)PaymentTypeEnum.Paypal
+            (int)PaymentTypeEnum.Paypal,
+            (int)PaymentTypeEnum.Check
         };
 
         public static string GetPaymentPeriodType(int type)
@@ -275,6 +277,8 @@ namespace Worki.Data.Models
             {
                 case PaymentTypeEnum.Paypal:
                     return Worki.Resources.Models.Offer.Offer.Paypal;
+                case PaymentTypeEnum.Check:
+                    return Worki.Resources.Models.Offer.Offer.Check;
                 default:
                     return string.Empty;
             }

@@ -764,6 +764,51 @@ namespace Worki.Resources.Views.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accepté.
+        /// </summary>
+        public static string StatusAccepted {
+            get {
+                return ResourceManager.GetString("StatusAccepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annulé.
+        /// </summary>
+        public static string StatusCancelled {
+            get {
+                return ResourceManager.GetString("StatusCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payé.
+        /// </summary>
+        public static string StatusPaid {
+            get {
+                return ResourceManager.GetString("StatusPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refusé.
+        /// </summary>
+        public static string StatusRefused {
+            get {
+                return ResourceManager.GetString("StatusRefused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inconnu.
+        /// </summary>
+        public static string StatusUnknown {
+            get {
+                return ResourceManager.GetString("StatusUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Surface.
         /// </summary>
         public static string Surface {

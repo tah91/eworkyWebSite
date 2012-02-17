@@ -70,7 +70,7 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Présentation en 160 caractères.
+        ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description {
             get {
@@ -142,6 +142,15 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Client.
+        /// </summary>
+        public static string MemberId {
+            get {
+                return ResourceManager.GetString("MemberId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Message.
         /// </summary>
         public static string Message {
@@ -178,6 +187,15 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Moyen de paiement.
+        /// </summary>
+        public static string PaymentType {
+            get {
+                return ResourceManager.GetString("PaymentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to vous serez contacté à ce numéro.
         /// </summary>
         public static string PhoneInfo {
@@ -210,6 +228,15 @@ namespace Worki.Resources.Models.Booking {
         public static string Response {
             get {
                 return ResourceManager.GetString("Response", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string StatusId {
+            get {
+                return ResourceManager.GetString("StatusId", resourceCulture);
             }
         }
         

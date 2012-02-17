@@ -116,6 +116,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Booking\Invoice.Designer.cs">
+      <DependentUpon>Invoice.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\Offer\Offer.Designer.cs">
       <DependentUpon>Offer.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -352,6 +357,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Booking\Booking.en.resx" />
+    <EmbeddedResource Include="Models\Booking\Invoice.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Invoice.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Contact\Contact.en.resx" />
     <EmbeddedResource Include="Models\Contact\Contact.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -2,48 +2,76 @@
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.BONews)</title>
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.CreateInvoice)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID, Title = Model.Localisation.Name })
+@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Invoice.Localisation.ID, Title = Model.Invoice.Localisation.Name })
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Localisation.ID))},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.Invoices(Model.Localisation.ID))} , 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.CreateInvoice(Model.Localisation.ID))}
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Invoice.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Invoice.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Invoice.Localisation.ID))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Invoice.Localisation.ID))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.Invoices(Model.Invoice.Localisation.ID))} , 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CreateInvoice, MVC.Backoffice.Localisation.CreateInvoice(Model.Invoice.Localisation.ID))}
 		})
 	</div>
 
 	<div class="blockContainer float-left contentRight">
 		@using (Html.BeginForm())
 		{
-		    <div class="contentBlock configOffer">
+		    <div class="contentBlock invoiceForm">
 	   		    @Html.AntiForgeryToken()
-				<table class="configoffertable">
+                @Html.HiddenFor(m => m.Invoice.TaxRate)
+                <div class="italic">
+                    @Html.Raw(string.Format(Worki.Resources.Models.Booking.Invoice.BeforeCreateInvoice, Html.ActionLink(Worki.Resources.Models.Booking.Invoice.BeforeCreateInvoiceLink, MVC.Backoffice.Profil.ChangeBillingInformation(), new { @class = "orange" })))
+                </div>
+				<table class="invoiceFormtable">
                     <tr>
 						<td>
-						    @Html.LabelFor(m => m.ClientId)
+						    @Html.LabelFor(m => m.Invoice.Title)
 						</td>
 						<td>
-							@Html.DropDownListFor(m => m.ClientId, Model.Clients)
+							@Html.TextBoxFor(m => m.Invoice.Title)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+						    @Html.LabelFor(m => m.Invoice.ClientId)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Invoice.ClientId, Model.Clients)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+						    @Html.LabelFor(m => m.Invoice.PaymentType)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Invoice.PaymentType, Model.PaymentTypes)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+						    @Html.LabelFor(m => m.Invoice.InvoiceId)
+						</td>
+						<td>
+							@Html.TextBoxFor(m => m.Invoice.InvoiceId)
 						</td>
 					</tr>
 				</table>
 				<div class="invoiceItemRows">
-					@foreach (var item in Model.Items)
+					@foreach (var item in Model.Invoice.Items)
 					{
 						@Html.Partial(MVC.Backoffice.Localisation.Views._InvoiceItem, item)
 					}
 				</div>
-				@Html.ActionLink("ajouter un truc", MVC.Backoffice.Localisation.AddInvoiceItem(), new { @class = "orange", id = "addItem" })
+				@Html.ActionLink(Worki.Resources.Models.Booking.Invoice.AddInvoiceItem, MVC.Backoffice.Localisation.AddInvoiceItem(), new { @class = "orange", id = "addItem" })
 		    </div>
 
 		    <div class="editor-field float-right">

@@ -234,6 +234,7 @@
     <Build Include="dbo\Tables\MemberQuotationTransaction.sql" />
     <Build Include="dbo\Tables\MemberClient.sql" />
     <Build Include="dbo\Tables\OfferPrice.sql" />
+    <Build Include="dbo\Tables\LocalisationClient.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Worki.Database.refactorlog" />

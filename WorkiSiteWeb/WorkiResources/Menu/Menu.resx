@@ -288,4 +288,7 @@
   <data name="Invoices" xml:space="preserve">
     <value>Factures client</value>
   </data>
+  <data name="CreateInvoice" xml:space="preserve">
+    <value>Créer une facture</value>
+  </data>
 </root>
