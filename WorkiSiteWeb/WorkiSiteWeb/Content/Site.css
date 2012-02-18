@@ -874,6 +874,11 @@ div.pagerTop
     margin-top:10px;
 }
 
+.margint13
+{
+    margin-top:13px;
+}
+
 .margint15
 {
     margin-top:15px;
@@ -2148,7 +2153,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     border-right-width: 1px;
     border-right-color: #f3f3f3;
     border: 1px solid transparent;
-    padding: 8px;
+    padding: 8px 8px 6px 8px;
 }
 
 .header .dropdown a[href="#"]:hover
@@ -2160,32 +2165,31 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     -webkit-border-radius: 4px;
 }
 
-.header .dropdown[id="profilDropdown"] dd ul li a 
+.header .dropdown[id="profilDropdown"] dd ul
 {
-	display: block;
-	padding: 5px 20px 5px 20px;
+   padding: 10px;
 }
 
 .header .dropdown dd ul 
 {
-    top: 0px;
+    top: 2px;
 	left: -5px;
 	border: 1px solid #CCC;
 	box-shadow: 2px 2px 5px #DDD;
 }
 
-.header .dropdown dt a 
+.header .dropdown dt a
 {
     min-width: inherit;
 }
 
-.languageSwitch .dropdown,
+.languageSwitch .dropdown
 {
-    margin-top: 18px;
+    margin-top: 10px;
     margin-right: 5px;
 }
 
-.languageSwitch .dropdown dd ul
+.languageSwitch .dropdown dd ul 
 {
     top: 2px;
     min-width: 56px;
@@ -2193,13 +2197,12 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .languageSwitch .dropdown dd ul li a
 {
-    margin-left: 10px;
-    padding: 5px 5px 5px 20px;
+    padding: 5px 1px 5px 13px;
 }
 
 .languageSwitch .flags
 {
-    height: 21px;
+    height: 18px;
     width: 45px;
 }
 

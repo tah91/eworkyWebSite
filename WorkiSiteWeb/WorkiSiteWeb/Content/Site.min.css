@@ -129,6 +129,7 @@ div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
 .marginr10{margin-right:10px}
 .margint5{margin-top:5px}
 .margint10{margin-top:10px}
+.margint13{margin-top:13px}
 .margint15{margin-top:15px}
 .mapContainer{border:solid 1px #63b3eb}
 #detailMap{height:220px}
@@ -336,15 +337,15 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .header .dropdown dd,.header .dropdown dt,.header .dropdown ul{margin:5px}
 .header .dropdown dt a span{padding:0}
 .header .dropdown-triangle{margin-left:10px}
-.header .dropdown a[href="#"]{border-right-style:solid;border-right-width:1px;border-right-color:#f3f3f3;border:1px solid transparent;padding:8px}
+.header .dropdown a[href="#"]{border-right-style:solid;border-right-width:1px;border-right-color:#f3f3f3;border:1px solid transparent;padding:8px 8px 6px 8px}
 .header .dropdown a[href="#"]:hover{color:inherit;border:1px solid #CCC;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px}
-.header .dropdown[id="profilDropdown"] dd ul li a{display:block;padding:5px 20px 5px 20px}
-.header .dropdown dd ul{top:0;left:-5px;border:1px solid #CCC;box-shadow:2px 2px 5px #DDD}
+.header .dropdown[id="profilDropdown"] dd ul{padding:10px}
+.header .dropdown dd ul{top:2px;left:-5px;border:1px solid #CCC;box-shadow:2px 2px 5px #DDD}
 .header .dropdown dt a{min-width:inherit}
-.languageSwitch .dropdown,{margin-top:18px;margin-right:5px}
+.languageSwitch .dropdown{margin-top:10px;margin-right:5px}
 .languageSwitch .dropdown dd ul{top:2px;min-width:56px}
-.languageSwitch .dropdown dd ul li a{margin-left:10px;padding:5px 5px 5px 20px}
-.languageSwitch .flags{height:21px;width:45px}
+.languageSwitch .dropdown dd ul li a{padding:5px 1px 5px 13px}
+.languageSwitch .flags{height:18px;width:45px}
 .contactTable td{height:30px}
 .contactTable td:first-child{padding-right:50px}
 .howitWorksPart{width:46%}
