@@ -251,6 +251,8 @@
     <Compile Include="Areas\Api\Routing\RestRoutes.cs" />
     <Compile Include="Areas\Backoffice\BackofficeAreaRegistration.cs" />
     <Compile Include="Areas\Backoffice\Controllers\ClientController.cs" />
+    <Compile Include="Areas\Backoffice\Controllers\ScheduleController.cs" />
+    <Compile Include="Areas\Backoffice\Controllers\OfferController.cs" />
     <Compile Include="Areas\Backoffice\Controllers\HomeController.cs" />
     <Compile Include="Areas\Backoffice\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Backoffice\Controllers\ProfilController.cs" />
@@ -672,12 +674,12 @@
     <Content Include="Areas\Backoffice\Views\Home\Quotation.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\Booking.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\Quotation.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\OfferBooking.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\OfferQuotation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Offer\Booking.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Offer\Quotation.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_BackofficeMenu.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationMenu.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\Index.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\OfferIndex.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Offer\Index.cshtml" />
     <Content Include="Areas\Backoffice\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Backoffice\Views\Client\List.cshtml" />
     <Content Include="Areas\Dashboard\Views\Home\Booking.cshtml" />
@@ -692,8 +694,7 @@
     <Content Include="Areas\Dashboard\Views\Shared\_SummaryContent.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_QuotationItem.cshtml" />
     <Content Include="Areas\Backoffice\Views\Home\Localisations.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\ConfigureOffer.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationNavigation.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Offer\Configure.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\ConfirmBooking.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\RefuseBooking.cshtml" />
     <Content Include="Areas\Dashboard\Views\Home\BookingPaymentAccepted.cshtml" />
@@ -705,7 +706,7 @@
     <Content Include="Areas\Dashboard\Views\Shared\_NewsContent.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_LocalisationItem.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_BookingList.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\_OfferDropDown.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Offer\_OfferDropDown.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\QuotationDetail.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\QuotationCancelled.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\QuotationAccepted.cshtml" />
@@ -713,24 +714,27 @@
     <Content Include="Areas\Dashboard\Views\Shared\_QuotationList.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_BookingList.cshtml" />
     <Content Include="Areas\Backoffice\Views\Localisation\RefuseQuotation.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\_OfferMenu.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Shared\_LinkVerticalMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Member\IndexOwner.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\OfferSchedule.cshtml">
+    <Content Include="Areas\Backoffice\Views\Schedule\OfferSchedule.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Areas\Backoffice\Views\Localisation\_LocalisationCalendar.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\_CreateBooking.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\_BookingSummary.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Schedule\LocalisationSchedule.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Schedule\_CreateBooking.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Schedule\_BookingSummary.cshtml" />
     <Content Include="Areas\Backoffice\Views\Client\Add.cshtml" />
     <Content Include="Views\Offer\_OfferPrice.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\SharedOffice.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_AlertSummary.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\EditLocalisation.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\EditOffer.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Localisation\Edit.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Offer\Edit.cshtml" />
     <Content Include="Areas\Backoffice\Views\Profil\ChangeBillingInformation.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\Invoices.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\CreateInvoice.cshtml" />
-    <Content Include="Areas\Backoffice\Views\Localisation\_InvoiceItem.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Client\Invoices.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Client\CreateInvoice.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Client\_InvoiceItem.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Schedule\CreateBooking.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Client\_Clients.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Client\LocalisationList.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

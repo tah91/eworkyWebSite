@@ -2,7 +2,7 @@
 
 @{
 	var controller = Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.Name : MVC.Localisation.Name;
-	var action = Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.ActionNames.EditLocalisation : MVC.Localisation.ActionNames.Edit;
+	var action = Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.ActionNames.Edit : MVC.Localisation.ActionNames.Edit;
 }
 @using (Html.BeginForm(action, controller, FormMethod.Post, new { enctype = "multipart/form-data", id = "localisationEditForm" }))
 {
@@ -499,7 +499,7 @@
 				{
 					<tr>
 						<td>@item.Name</td>
-						<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.EditOffer(item.LocalisationId, item.Id) : MVC.Offer.Edit(item.Id))</td>
+						<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, Url.IsInArea("Backoffice") ? MVC.Backoffice.Offer.Edit(item.LocalisationId, item.Id) : MVC.Offer.Edit(item.Id))</td>
 						<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id))</div></td>
 					</tr>
 				}

@@ -782,6 +782,16 @@ namespace Worki.Data.Models
             return (OwnerID == memberid);
         }
 
+		/// <summary>
+		/// tell if the owner has the specified client
+		/// </summary>
+		/// <param name="clientId">id of the client</param>
+		/// <returns>true if is already a client</returns>
+		public bool HasClient(int clientId)
+		{
+			return LocalisationClients.Where(mc => mc.ClientId == clientId).Count() > 0;
+		}
+
         #endregion
 
         #region MainLocalisation

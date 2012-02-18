@@ -8,18 +8,23 @@
 	<link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Id));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Localisation.ID, LocalisationMainMenu.Schedule));}
 
 <div class="detailContent">
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Id, (int)OfferMenuType.Schedule));}
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.LocalisationSchedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model.Localisation.ID))} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.OfferSchedule, MVC.Backoffice.Schedule.OfferSchedule(Model.Localisation.ID))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Schedule, MVC.Backoffice.Schedule.CreateBooking(Model.Localisation.ID))}
+		})
 	</div>
 	<div class="blockContainer float-left contentRight">
-		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferSchedule(o.LocalisationId, o.Id)), Filter = OfferDropDownFilter.Booking })
+		@{Html.RenderAction(MVC.Backoffice.Offer.OfferDropdown(Model.Id, (int)OfferMenu.Schedule));}
 		<div class="contentBlock">
             <div id='calendar'>
             </div>
-			@{Html.RenderAction(MVC.Backoffice.Localisation.CreateEvent(Model.Id));}
+			@{Html.RenderAction(MVC.Backoffice.Schedule.CreateEvent(Model.Id));}
         </div>
 	</div>
 	<div class="clear"></div>
@@ -34,7 +39,7 @@
 		$('#createEventForm').submit(function () {
 			$.ajax({
 				type: 'POST',
-				url: '@Url.Action(MVC.Backoffice.Localisation.CreateEvent())',
+				url: '@Url.Action(MVC.Backoffice.Schedule.CreateEvent())',
 				data: $(this).serializeArray(),
 				error: function (xhr, status, err) {
 					if (xhr.status == 400) {
@@ -138,7 +143,7 @@
 					editable: true,
 					eventSources: [
 						{
-							url: '@Url.Action(MVC.Backoffice.Localisation.BookingEvents(Model.Id))',
+							url: '@Url.Action(MVC.Backoffice.Schedule.BookingEvents(Model.Id))',
 							type: 'POST',
 							error: function () {
 								alert('@Worki.Resources.Views.BackOffice.FullCalandar.ErrorWhileLoading');
@@ -150,7 +155,7 @@
 					eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view) {
 						$.ajax({
 							type: 'POST',
-							url: '@Url.Action(MVC.Backoffice.Localisation.DropEvent())',
+							url: '@Url.Action(MVC.Backoffice.Schedule.DropEvent())',
 							data: ({ id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta }),
 							error: function (xhr, status, err) {
 								if (xhr.status == 400) {
@@ -162,7 +167,7 @@
 					eventResize: function (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
 						$.ajax({
 							type: 'POST',
-							url: '@Url.Action(MVC.Backoffice.Localisation.ResizeEvent())',
+							url: '@Url.Action(MVC.Backoffice.Schedule.ResizeEvent())',
 							data: ({ id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta }),
 							error: function (xhr, status, err) {
 								if (xhr.status == 400) {
@@ -187,7 +192,7 @@
 //					}
 //					eventMouseover: function (calEvent, jsEvent, view) {
 //						$.ajax({
-//							url: '@Url.Action(MVC.Backoffice.Localisation.BookingSummary())',
+//							url: '@Url.Action(MVC.Backoffice.Schedule.BookingSummary())',
 //							data: { 'id': calEvent.id },
 //							success: function (data) {
 //								$('#bookingSummary').html(data);

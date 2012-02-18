@@ -6,22 +6,22 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Item.Id));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Item.LocalisationId, LocalisationMainMenu.Offers));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Item.Id, (int)OfferMenuType.Booking));}
+		@{Html.RenderAction(MVC.Backoffice.Offer.VerticalMenu(Model.Item.Id, (int)OfferMenu.Booking));}
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model.Item, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.LocalisationId, o.Id)), Filter = OfferDropDownFilter.Booking })
+		@{Html.RenderAction(MVC.Backoffice.Offer.OfferDropdown(Model.Item.Id, (int)OfferMenu.Booking));}
 		<div class="contentBlock">
             @Html.Partial(MVC.Backoffice.Shared.Views._BookingList, new BookingListViewModel
             {
                 Bookings = Model.List,
                 Title = Model.Item.Name,
-                UrlMaker = x => Url.Action(MVC.Backoffice.Localisation.OfferBooking(Model.Item.LocalisationId, Model.Item.Id, x)),
+				UrlMaker = x => Url.Action(MVC.Backoffice.Offer.Booking(Model.Item.LocalisationId, Model.Item.Id, x)),
                 EmptyMessage = Worki.Resources.Views.BackOffice.BackOfficeString.NoWorkingBooking
             })
 

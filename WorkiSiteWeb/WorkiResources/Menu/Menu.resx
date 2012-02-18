@@ -291,4 +291,10 @@
   <data name="CreateInvoice" xml:space="preserve">
     <value>Créer une facture</value>
   </data>
+  <data name="LocalisationSchedule" xml:space="preserve">
+    <value>Planning global</value>
+  </data>
+  <data name="OfferSchedule" xml:space="preserve">
+    <value>Planning par offre</value>
+  </data>
 </root>

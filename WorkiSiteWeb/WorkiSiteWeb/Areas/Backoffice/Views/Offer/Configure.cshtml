@@ -6,24 +6,25 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.OfferModelId));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationId, LocalisationMainMenu.Offers));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.OfferModelId, (int)OfferMenuType.Config));}
+		@{Html.RenderAction(MVC.Backoffice.Offer.VerticalMenu(Model.OfferId, (int)OfferMenu.Config));}
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.OfferModelId, (int)OfferMenuType.Config));}
-        @using (Html.BeginForm(MVC.Backoffice.Localisation.ActionNames.ConfigureOffer, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "configureOfferForm" }))
+		@{Html.RenderAction(MVC.Backoffice.Offer.OfferDropdown(Model.OfferId, (int)OfferMenu.Config));}
+        @using (Html.BeginForm(MVC.Backoffice.Offer.ActionNames.Configure, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "configureOfferForm" }))
 		{
 		    <div class="contentBlock configOffer">
 				<h3 class="blue">@Model.InnerModel.Offer.Name</h3>
 	   		    @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.InnerModel.Offer.Name)
                 @Html.HiddenFor(m => m.InnerModel.Offer.Type)
-				@Html.HiddenFor(m => m.OfferModelId)
+				@Html.HiddenFor(m => m.OfferId)
+				@Html.HiddenFor(m => m.LocalisationId)
 				<table class="configoffertable">
                     <tr>
 						<td>

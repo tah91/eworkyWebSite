@@ -10,6 +10,8 @@
 
 @Html.Partial(MVC.Shared.Views._HorizontalMenu, new List<MenuItem> 
 { 
-	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BOHome, MVC.Backoffice.Localisation.Index(Model.Id))} ,
-	new MenuItem{ Selected = Model.MenuItem == LocalisationMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Localisation.ConfigureOffer(Model.Id))}
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMainMenu.Home, Link= Html.ActionLink(Worki.Resources.Menu.Menu.BOHome, MVC.Backoffice.Localisation.Index(Model.Id))} ,
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMainMenu.Schedule, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Schedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model.Id))} ,
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMainMenu.Clients, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Clients, MVC.Backoffice.Client.LocalisationList(Model.Id,null))} ,
+	new MenuItem{ Selected = Model.MenuItem == LocalisationMainMenu.Offers, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Offers, MVC.Backoffice.Offer.Configure(Model.Id))}
 })

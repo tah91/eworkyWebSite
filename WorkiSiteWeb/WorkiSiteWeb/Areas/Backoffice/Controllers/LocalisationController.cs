@@ -20,12 +20,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 	public partial class LocalisationController : BackofficeControllerBase
     {
         ILogger _Logger;
-		IInvoiceService _InvoiceService;
 
-		public LocalisationController(ILogger logger, IInvoiceService invoiceService)
+		public LocalisationController(ILogger logger)
         {
             _Logger = logger;
-			_InvoiceService = invoiceService;
         }
 
 		#region Index
@@ -69,55 +67,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		}
 
 		/// <summary>
-		/// Get action result to show recent activities of the owner localisation
-		/// </summary>
-		/// <returns>View with recent activities</returns>
-		public virtual ActionResult OfferIndex(int id, int offerid = 0)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-
-				Offer offer;
-				//case no offer selected, take the first one
-				if (offerid == 0)
-				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.FirstOrDefault();
-                    if (offer == null)
-                    {
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-                        return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
-                    }
-				}
-				else
-				{
-					offer = oRepo.Get(offerid);
-				}
-				Member.ValidateOwner(member, offer.Localisation);
-
-				return View(offer);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Index", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		/// <summary>
 		/// GET action to adit an existing localisation
 		/// </summary>
 		/// <returns>The form to fill</returns>
 		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult EditLocalisation(int id)
+		public virtual ActionResult Edit(int id)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -135,7 +89,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 			catch (Exception ex)
 			{
-				_Logger.Error("EditLocalisation", ex);
+				_Logger.Error("Edit", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}
@@ -150,7 +104,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>the detail view of localistion if ok, the form with errors else</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult EditLocalisation(LocalisationFormViewModel localisationForm, int id, string addOffer)
+		public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int id, string addOffer)
 		{
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			var field = string.Empty;
@@ -200,248 +154,28 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			return View(new LocalisationFormViewModel(localisationForm.Localisation));
 		}
 
-		/// <summary>
-		/// GET Action result to edit offer data
-		/// </summary>
-		/// <param name="id">id of localisation</param>
-		/// <param name="offerId">id of offer</param>
-		/// <returns>View containing offer data</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult EditOffer(int id, int offerId = 0)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-				Offer offer;
-				//case no offer selected, take the first one
-				if (offerId == 0)
-				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.FirstOrDefault();
-					if (offer == null)
-					{
-						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-						return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id, offer.Id));
-					}
-				}
-				else
-				{
-					offer = oRepo.Get(offerId);
-				}
-				Member.ValidateOwner(member, offer.Localisation);
-
-				return View(new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer });
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("EditOffer", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		/// <summary>
-		/// Post Action result to edit offer data
-		/// </summary>
-		/// <param name="id">id of offer</param>
-		/// <returns>View containing localisation data</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		[ValidateAntiForgeryToken]
-		public virtual ActionResult EditOffer(int id, int offerId, OfferFormViewModel formData)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			TempData[PictureData.PictureDataString] = new PictureDataContainer(formData.Offer);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			Offer offer;
-			//case no offer selected, take the first one
-			if (offerId == 0)
-			{
-				var loc = lRepo.Get(id);
-				offer = loc.Offers.FirstOrDefault();
-				if (offer == null)
-				{
-					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
-				}
-			}
-			else
-			{
-				offer = oRepo.Get(offerId);
-			}
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					
-					UpdateModel(offer, "Offer");
-					context.Commit();
-					TempData.Remove(PictureData.PictureDataString);
-					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
-					return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id, offer.Id));
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("EditOffer", ex);
-					context.Complete();
-					ModelState.AddModelError("", ex.Message);
-				}
-			}
-			formData.Offer = offer;
-			return View(formData);
-		}
-
-		/// <summary>
-		/// GET Action result to configure offer
-		/// </summary>
-		/// <param name="id">id of localisation</param>
-		/// <param name="offerId">offer id</param>
-		/// <returns>View containing offer data</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult ConfigureOffer(int id, int offerId = 0)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-				Offer offer;
-				//case no offer selected, take the first one
-				if (offerId == 0)
-				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.FirstOrDefault();
-					if (offer == null)
-					{
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-						return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
-					}
-				}
-				else
-				{
-					offer = oRepo.Get(offerId);
-				}
-				Member.ValidateOwner(member, offer.Localisation);
-
-				return View(new OfferModel<OfferFormViewModel> { InnerModel = new OfferFormViewModel { Offer = offer }, OfferModelId = offer.Id });
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("ConfigureOffer", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		/// <summary>
-		/// Post Action result to configure offer
-		/// </summary>
-		/// <param name="id">id of offer</param>
-		/// <returns>View containing localisation data</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		[ValidateAntiForgeryToken]
-		public virtual ActionResult ConfigureOffer(int id, OfferModel<OfferFormViewModel> formData)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					var member = mRepo.Get(memberId);
-					if (formData.InnerModel.Offer.HasProduct && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
-					{
-						throw new Exception(Worki.Resources.Views.BackOffice.BackOfficeString.NeedInfoPaypal);
-					}
-
-					var o = oRepo.Get(formData.OfferModelId);
-					UpdateModel(o, "InnerModel.Offer");
-					o.Validate();
-					context.Commit();
-					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
-					return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(o.LocalisationId, o.Id));
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("Edit", ex);
-					context.Complete();
-					ModelState.AddModelError("", ex.Message);
-				}
-			}
-			return View(formData);
-		}
-
-        [ChildActionOnly]
-        public virtual ActionResult OfferVerticalMenu(int id, int selected)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-            var offer = oRepo.Get(id);
-
-            var model = new List<OfferMenuItem>();
-            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(offer.LocalisationId)) });
-			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Edit == selected, Text = Worki.Resources.Menu.Menu.EditOffer, Link = Url.Action(MVC.Backoffice.Localisation.EditOffer(offer.LocalisationId)) });
-            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId)) });
-            model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId)) });
-			model.Add(new OfferMenuItem { Selected = (int)OfferMenuType.Schedule == selected, Text = Worki.Resources.Menu.Menu.Schedule, Link = Url.Action(MVC.Backoffice.Localisation.OfferSchedule(offer.LocalisationId)) });
-
-            return PartialView(MVC.Backoffice.Localisation.Views._OfferMenu, model);
-        }
-
 		[ChildActionOnly]
-		public virtual ActionResult OfferHorizontalMenu(int id)
+		public virtual ActionResult HorizontalMenu(int id, LocalisationMainMenu selected)
 		{
 			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var offer = oRepo.Get(id);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var loc = lRepo.Get(id);
 
-			return PartialView(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Offers, Id = offer.LocalisationId, Title = offer.Localisation.Name });
+			var model = new LocalisationMenuIndex { MenuItem = selected, Id = loc.ID, Title = loc.Name };
+
+			return PartialView(MVC.Backoffice.Localisation.Views._LocalisationMenu, model);
 		}
 
 		[ChildActionOnly]
-		public virtual ActionResult OfferDropdown(int id, int selected)
+		public virtual ActionResult VerticalMenu(int id, int selected)
 		{
-			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var offer = oRepo.Get(id);
+			var model = new List<LinkMenuItem>();
+			model.Add(new LinkMenuItem { Selected = (int)LocalisationMenu.Home == selected, Text = Worki.Resources.Menu.Menu.BONews, Link = Url.Action(MVC.Backoffice.Localisation.Index(id)) });
+			model.Add(new LinkMenuItem { Selected = (int)LocalisationMenu.Bookings == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Localisation.Booking(id)) });
+			model.Add(new LinkMenuItem { Selected = (int)LocalisationMenu.Quotations == selected, Text = Worki.Resources.Menu.Menu.WorkingQuotation, Link = Url.Action(MVC.Backoffice.Localisation.Quotation(id)) });
+			model.Add(new LinkMenuItem { Selected = (int)LocalisationMenu.Edit == selected, Text = Worki.Resources.Menu.Menu.EditPlace, Link = Url.Action(MVC.Backoffice.Localisation.Edit(id)) });
 
-			var model = new OfferDropDownModel { Offer = offer  };
-			var type = (OfferMenuType)selected;
-			switch(type)
-			{
-				case OfferMenuType.Config:
-					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.ConfigureOffer(o.LocalisationId, o.Id));
-					model.Filter = OfferDropDownFilter.None;
-					break;
-				case OfferMenuType.Edit:
-					model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.EditOffer(o.LocalisationId, o.Id));
-					model.Filter = OfferDropDownFilter.None;
-					break;
-				case OfferMenuType.Booking:
-                    model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(offer.LocalisationId, o.Id));
-					model.Filter = OfferDropDownFilter.Booking;
-					break;
-				case OfferMenuType.Quotation:
-                    model.UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferQuotation(offer.LocalisationId, o.Id));
-					model.Filter = OfferDropDownFilter.Quotation;
-					break;
-				default:
-					break;
-			}
-			
-			return PartialView(MVC.Backoffice.Localisation.Views._OfferDropDown, model);
+			return PartialView(MVC.Backoffice.Shared.Views._LinkVerticalMenu, model);
 		}
 
 		#endregion
@@ -484,97 +218,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			catch (Exception ex)
 			{
 				_Logger.Error("Booking", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-        public virtual ActionResult Localisation_Schedule(int id)
-        {
-            var memberId = WebHelper.GetIdentityId(User.Identity);
-
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-            var p = 1;
-            try
-            {
-                var member = mRepo.Get(memberId);
-                Member.Validate(member);
-                var loc = lRepo.Get(id);
-                Member.ValidateOwner(member, loc);
-
-                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
-                var model = new LocalisationBookingViewModel
-                {
-                    Item = loc,
-                    List = new PagingList<MemberBooking>
-                    {
-                        List = bookings.ToList(),
-                        PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
-                    }
-                };
-                return View(MVC.Backoffice.Localisation.Views._LocalisationCalendar, model);
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("Localisation_Schedule", ex);
-                return View(MVC.Shared.Views.Error);
-            }
-        }
-
-		/// <summary>
-		/// Get action method to show bookings of the owner, for a given localisation and offer
-		/// </summary>
-		/// <param name="offerid">id of the localisation</param>
-        /// <param name="offerId">id of the offer</param>
-		/// <returns>View containing the bookings</returns>
-		public virtual ActionResult OfferBooking(int id,int offerId = 0, int page = 1)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var p = page;
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-                Offer offer;
-                //case no offer selected, take the first one
-                if (offerId == 0)
-                {
-                    var loc = lRepo.Get(id);
-                    offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
-                    if (offer == null)
-                    {
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
-                        return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
-                    }
-                }
-                else
-                {
-                    offer = oRepo.Get(offerId);
-                }
-
-				Member.ValidateOwner(member, offer.Localisation);
-
-				var model = new OfferBookingViewModel
-				{
-					Item = offer,
-					List = new PagingList<MemberBooking>
-					{
-                        List = offer.MemberBookings.OrderByDescending(mb => mb.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberBookings.Count }
-					}
-				};
-				return View(model);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("OfferBooking", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}
@@ -657,7 +300,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var booking = bRepo.Get(id);
 				Member.Validate(member);
 				Member.ValidateOwner(member, booking.Offer.Localisation);
-				return View(new OfferModel<MemberBooking> { InnerModel = booking, OfferModelId = booking.OfferId });
+				return View(new LocalisationModel<MemberBooking> { InnerModel = booking, LocalisationId = booking.Offer.LocalisationId });
 			}
 			catch (Exception ex)
 			{
@@ -674,7 +317,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
 		[ValidateOnlyIncomingValues]
-		public virtual ActionResult ConfirmBooking(int id, OfferModel<MemberBooking> memberBooking)
+		public virtual ActionResult ConfirmBooking(int id, LocalisationModel<MemberBooking> memberBooking)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
@@ -756,7 +399,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				Member.ValidateOwner(member, booking.Offer.Localisation);
 
                 var model = new RefuseBookingModel { BookingId = id, ReturnUrl = returnUrl };
-                return View(new OfferModel<RefuseBookingModel> { InnerModel = model, OfferModelId = booking.OfferId });
+                return View(new LocalisationModel<RefuseBookingModel> { InnerModel = model, LocalisationId = booking.Offer.LocalisationId });
 			}
 			catch (Exception ex)
 			{
@@ -772,7 +415,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>View to fill booking data</returns>
 		[AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
-        public virtual ActionResult RefuseBooking(int id, OfferModel<RefuseBookingModel> formModel, string confirm)
+		public virtual ActionResult RefuseBooking(int id, LocalisationModel<RefuseBookingModel> formModel, string confirm)
 		{
             if (string.IsNullOrEmpty(confirm))
             {
@@ -986,61 +629,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             }
         }
 
-		/// <summary>
-		/// Get action method to show quotation of the owner, for a given localisation and offer
-		/// </summary>
-		/// <param name="id">id of the localisation</param>
-        /// <param name="offerId">id of the offer</param>
-		/// <returns>View containing the quotations</returns>
-        public virtual ActionResult OfferQuotation(int id, int offerId = 0, int page = 1)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			var p = page;
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-                Offer offer;
-                //case no offer selected, take the first one
-                if (offerId == 0)
-                {
-                    var loc = lRepo.Get(id);
-                    offer = loc.Offers.Where(o => o.CanHaveQuotation).FirstOrDefault();
-                    if (offer == null)
-                    {
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineQuotation;
-                        return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
-                    }
-                }
-                else
-                {
-                    offer = oRepo.Get(offerId);
-                }
-				Member.ValidateOwner(member, offer.Localisation);
-
-				var model = new OfferQuotationViewModel
-				{
-					Item = offer,
-					List = new PagingList<MemberQuotation>
-					{
-                        List = offer.MemberQuotations.OrderByDescending(mq => mq.CreationDate).Skip((p - 1) * PagedListViewModel.PageSize).Take(PagedListViewModel.PageSize).ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = offer.MemberQuotations.Count }
-					}
-				};
-				return View(model);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("OfferQuotation", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
         /// <summary>
         /// GET Action result to refuse quotation
         /// </summary>
@@ -1062,7 +650,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 Member.ValidateOwner(member, quotation.Offer.Localisation);
 
 				var model = new RefuseQuotationModel { QuotationId = id, ReturnUrl = returnUrl };
-				return View(new OfferModel<RefuseQuotationModel> { InnerModel = model, OfferModelId = quotation.OfferId });
+				return View(new LocalisationModel<RefuseQuotationModel> { InnerModel = model, LocalisationId = quotation.Offer.LocalisationId });
             }
             catch (Exception ex)
             {
@@ -1078,7 +666,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <returns>View to fill quotation data</returns>
         [AcceptVerbs(HttpVerbs.Post)]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult RefuseQuotation(int id, OfferModel<RefuseQuotationModel> formModel, string confirm)
+		public virtual ActionResult RefuseQuotation(int id, LocalisationModel<RefuseQuotationModel> formModel, string confirm)
         {
 			if (string.IsNullOrEmpty(confirm))
 			{
@@ -1120,511 +708,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             }
             return View(formModel);
         }
-
-		#endregion
-
-		#region Schedule
-
-		/// <summary>
-		/// Get action method to show offer schedule
-		/// </summary>
-		/// <param name="id">localisation id</param>
-		/// <param name="offerId">offer id</param>
-		/// <returns>view with a calandar</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult OfferSchedule(int id, int offerId = 0)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-				Offer offer;
-				//case no offer selected, take the first one
-				if (offerId == 0)
-				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
-					if (offer == null)
-					{
-						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
-						return RedirectToAction(MVC.Backoffice.Localisation.ConfigureOffer(id));
-					}
-				}
-				else
-				{
-					offer = oRepo.Get(offerId);
-				}
-
-				Member.ValidateOwner(member, offer.Localisation);
-
-				return View(offer);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("OfferBooking", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		#region Event feed
-
-		/// <summary>
-		/// provid a json array of all booking events
-		/// </summary>
-		/// <param name="id">id of the offer</param>
-		/// <returns>json of booking events</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult BookingEvents(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-
-			var offer = oRepo.Get(id);
-
-			var events = new List<CalandarJson>();
-			foreach (var item in offer.MemberBookings)
-			{
-				events.Add(item.GetCalandarEvent(Url));
-			}
-
-			return Json(events);
-		}
-
-		#endregion
-
-		#region Handlers
-
-		/// <summary>
-		/// Ajax action to handle dropevent
-		/// </summary>
-		/// <param name="id">id of the booking</param>
-		/// <param name="dayDelta">day delta</param>
-		/// <param name="minuteDelta">minute delta</param>
-		[AcceptVerbs(HttpVerbs.Post)]
-		[HandleModelStateException]
-		public virtual ActionResult DropEvent(int id, int dayDelta, int minuteDelta)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var booking = bRepo.Get(id);
-
-			if (booking != null)
-            {
-                var newFromDate = booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta);
-                if (!booking.CanModify(newFromDate))
-                    throw new ModelStateException(ModelState);
-
-				try
-				{
-					booking.FromDate = booking.FromDate.AddDays(dayDelta).AddMinutes(minuteDelta);
-					booking.ToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
-
-					//send mail to booking client
-					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
-					TagBuilder dashboardLink = new TagBuilder("a");
-					dashboardLink.MergeAttribute("href", dashboardUrl);
-					dashboardLink.InnerHtml = dashboardUrl;
-
-					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
-					TagBuilder localisationLink = new TagBuilder("a");
-					localisationLink.MergeAttribute("href", localisationUrl);
-					localisationLink.InnerHtml = localisationUrl;
-
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name);
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModification,
-														booking.Offer.Localisation.Name,
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														dashboardLink,
-														localisationLink);
-
-					context.Commit();
-
-					clientMail.Send();
-
-					return Json("Drop success");
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("DropEvent", ex);
-					context.Complete();
-					throw new ModelStateException(ModelState);
-				}
-			}
-			else
-			{
-				throw new ModelStateException(ModelState);
-			}
-		}
-
-		/// <summary>
-		/// Ajax action to handle Resizeevent
-		/// </summary>
-		/// <param name="id">id of the booking</param>
-		/// <param name="dayDelta">day delta</param>
-		/// <param name="minuteDelta">minute delta</param>
-        [AcceptVerbs(HttpVerbs.Post)]
-        [HandleModelStateException]
-        public virtual ActionResult ResizeEvent(int id, int dayDelta, int minuteDelta)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-            var booking = bRepo.Get(id);
-
-            if (booking != null)
-            {
-                var newToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
-                if (!booking.CanModify(newToDate))
-                    throw new ModelStateException(ModelState);
-
-                try
-                {
-                    booking.ToDate = booking.ToDate.AddDays(dayDelta).AddMinutes(minuteDelta);
-
-					//send mail to booking client
-					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
-					TagBuilder dashboardLink = new TagBuilder("a");
-					dashboardLink.MergeAttribute("href", dashboardUrl);
-					dashboardLink.InnerHtml = dashboardUrl;
-
-					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
-					TagBuilder localisationLink = new TagBuilder("a");
-					localisationLink.MergeAttribute("href", localisationUrl);
-					localisationLink.InnerHtml = localisationUrl;
-
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingModificationSubject, booking.Offer.Localisation.Name);
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(	Worki.Resources.Email.BookingString.CalandarBookingModification,
-														booking.Offer.Localisation.Name,
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														dashboardLink,
-														localisationLink);
-
-                    context.Commit();
-
-					clientMail.Send();
-
-                    return Json("Resize success");
-                }
-                catch (Exception ex)
-                {
-                    _Logger.Error("ResizeEvent", ex);
-                    context.Complete();
-                    throw new ModelStateException(ModelState);
-                }
-            }
-            else
-            {
-                throw new ModelStateException(ModelState);
-            }
-        }
-
-        /// <summary>
-        /// Action to show booking summary
-        /// </summary>
-        /// <param name="id">id of the booking</param>
-        /// <returns></returns>
-        [AcceptVerbs(HttpVerbs.Get)]
-        public virtual PartialViewResult BookingSummary(int id)
-        {
-            try
-            {
-                var context = ModelFactory.GetUnitOfWork();
-                var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-                var booking = bRepo.Get(id);
-
-                return PartialView(MVC.Backoffice.Localisation.Views._BookingSummary, booking);
-            }
-            catch (Exception ex)
-            {
-                _Logger.Error("BookingSummary", ex);
-                return null;
-            }
-        }
-
-		/// <summary>
-		/// Action to create booking creation partial view for an offer
-		/// </summary>
-		/// <param name="id">id of the offer</param>
-		/// <returns></returns>
-		[ChildActionOnly]
-		public virtual ActionResult CreateEvent(int id)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-
-			try
-			{
-				var context = ModelFactory.GetUnitOfWork();
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-
-                var clients = member.MemberClients.ToDictionary(mc => mc.ClientId, mc => mc.Client.GetFullDisplayName());
-				var model = new CreateBookingModel { Booking = new MemberBooking { OfferId = id }, Clients = new SelectList(clients, "Key", "Value") };
-
-				return PartialView(MVC.Backoffice.Localisation.Views._CreateBooking, model);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("CreateEvent", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		/// <summary>
-		/// Ajax action to handle Create event
-		/// </summary>
-		/// <param name="id">id of the booking</param>
-		/// <param name="start">start date</param>
-		/// <param name="end">end date</param>
-		[AcceptVerbs(HttpVerbs.Post)]
-		[HandleModelStateException]
-		[ValidateOnlyIncomingValues]
-		public virtual ActionResult CreateEvent(CreateBookingModel createBookingModel)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					var offer = oRepo.Get(createBookingModel.Booking.OfferId);
-
-					MemberBookingLog log = new MemberBookingLog();
-					log.CreatedDate = DateTime.UtcNow;
-					log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
-					log.Event = "Booking Created From Calandar";
-					createBookingModel.Booking.MemberBookingLogs.Add(log);
-
-					offer.MemberBookings.Add(createBookingModel.Booking);
-
-					context.Commit();
-
-					var newContext = ModelFactory.GetUnitOfWork();
-					var bRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
-					var booking = bRepo.Get(createBookingModel.Booking.Id);
-
-					//send mail to client
-					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
-					TagBuilder dashboardLink = new TagBuilder("a");
-					dashboardLink.MergeAttribute("href", dashboardUrl);
-					dashboardLink.InnerHtml = dashboardUrl;
-
-					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
-					TagBuilder localisationLink = new TagBuilder("a");
-					localisationLink.MergeAttribute("href", localisationUrl);
-					localisationLink.InnerHtml = localisationUrl;
-
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreationSubject, booking.Offer.Localisation.Name);
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreation,
-														Localisation.GetOfferType(booking.Offer.Type),
-														booking.Offer.Localisation.Name,
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														dashboardLink,
-														booking.Price,
-														localisationLink);
-
-					clientMail.Send();
-
-					return Json(booking.GetCalandarEvent(Url));
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("CreateEvent", ex);
-					context.Complete();
-					throw new ModelStateException(ModelState);
-				}
-			}
-			else
-			{
-				throw new ModelStateException(ModelState);
-			}
-		}
-
-		#endregion
-
-		#endregion		
-
-		#region Invoices
-
-		/// <summary>
-		/// Get action method to show invoices of the owner
-		/// </summary>
-		/// <returns>View containing the invoices</returns>
-		public virtual ActionResult Invoices(int id, string date = "")
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			try
-			{
-				var member = mRepo.Get(memberId);
-				Member.Validate(member);
-				MonthYear monthYear;
-				if (string.IsNullOrEmpty(date))
-				{
-					monthYear = MonthYear.GetCurrent();
-				}
-				else
-				{
-					monthYear = MonthYear.Parse(date);
-				}
-
-				var localisation = lRepo.Get(id);
-				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId && b.StatusId == (int)MemberBooking.Status.Accepted);
-				var initial = bookings.Count != 0 ? bookings.Where(b => b.CreationDate != DateTime.MinValue).Select(b => b.CreationDate).Min() : DateTime.Now;
-
-				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
-
-				var model = new InvoiceListViewModel
-				{
-					Bookings = new MonthYearList<MemberBooking>
-					{
-						List = bookings,
-						Current = monthYear,
-						Initial = MonthYear.FromDateTime(initial)
-					},
-					Localisation = localisation
-				};
-				return View(model);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Invoices", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		public virtual ActionResult GetInvoice(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-
-			try
-			{
-				var booking = bRepo.Get(id);
-				using (var stream = new MemoryStream())
-				{
-                    var invoiceData = new InvoiceModel(booking);
-                    _InvoiceService.GenerateInvoice(stream, invoiceData);
-                    return File(stream.ToArray(), "application/pdf", invoiceData.Title);
-				}
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("GetInvoice", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		/// <summary>
-		/// GET Action method to create invoice
-		/// </summary>
-		/// <returns>the form to fill</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		public virtual ActionResult CreateInvoice(int id)
-		{
-			var memberId = WebHelper.GetIdentityId(User.Identity);
-			if (memberId == 0)
-				return View(MVC.Shared.Views.Error);
-
-			try
-			{
-				var context = ModelFactory.GetUnitOfWork();
-				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-				var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-				var member = mRepo.Get(memberId);
-				var localisation = lRepo.Get(id);
-				Member.Validate(member);
-
-				var model = new InvoiceFormViewModel(localisation);
-
-				return View(model);
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("CreateInvoice", ex);
-				return View(MVC.Shared.Views.Error);
-			}
-		}
-
-		/// <summary>
-		/// POST Action method to create invoice
-		/// </summary>
-		/// <param name="model">The invoice data from the form</param>
-		/// <returns>Back office home page if ok, the form with error if not</returns>
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult CreateInvoice(int id, InvoiceFormViewModel model)
-        {
-            var memberId = WebHelper.GetIdentityId(User.Identity);
-            if (memberId == 0)
-                return View(MVC.Shared.Views.Error);
-
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-
-            var member = mRepo.Get(memberId);
-            var localisation = lRepo.Get(id);
-            if (member == null)
-                return View(MVC.Shared.Views.Error);
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    using (var stream = new MemoryStream())
-                    {
-                        var invoiceData = model.GetInvoiceModel(localisation);
-                        _InvoiceService.GenerateInvoice(stream, invoiceData);
-                        return File(stream.ToArray(), "application/pdf", invoiceData.Title);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _Logger.Error("CreateInvoice", ex);
-                }
-            }
-
-            return View(new InvoiceFormViewModel(localisation, model));
-        }
-
-		/// <summary>
-		/// Action result to return invoice item
-		/// </summary>
-		/// <returns>a partial view</returns>
-		public virtual PartialViewResult AddInvoiceItem()
-		{
-			return PartialView(MVC.Backoffice.Localisation.Views._InvoiceItem, new InvoiceItem());
-		}
 
 		#endregion
 	}

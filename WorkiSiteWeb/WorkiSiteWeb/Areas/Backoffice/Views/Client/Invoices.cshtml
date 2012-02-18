@@ -6,18 +6,17 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID, Title = Model.Localisation.Name })
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Localisation.ID, LocalisationMainMenu.Clients));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Localisation.ID))},
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Localisation.Invoices(Model.Localisation.ID))}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Clients, MVC.Backoffice.Client.LocalisationList(Model.Localisation.ID,null))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add(Model.Localisation.ID))},
+			new MenuItem{ Selected=true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Client.Invoices(Model.Localisation.ID))} , 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CreateInvoice, MVC.Backoffice.Client.CreateInvoice(Model.Localisation.ID))}
 		})
 	</div>
 
@@ -66,7 +65,7 @@
                             @item.GetPriceDisplay()
                         </td>
                         <td>
-                            @Html.ActionLink("Pdf",MVC.Backoffice.Localisation.GetInvoice(item.Id))
+                            @Html.ActionLink("Pdf",MVC.Backoffice.Client.GetInvoice(item.Id))
                         </td>
                     </tr>
                 }
@@ -79,7 +78,7 @@
 			</div>	
 			}
 			<div class="pager">
-                @Html.MonthYearLinks(Model.Bookings.Current, Model.Bookings.Initial, x => Url.Action(MVC.Backoffice.Localisation.Invoices(Model.Localisation.ID, x)))
+                @Html.MonthYearLinks(Model.Bookings.Current, Model.Bookings.Initial, x => Url.Action(MVC.Backoffice.Client.Invoices(Model.Localisation.ID, x)))
             </div>
 		</div>
 	</div>

@@ -10,18 +10,12 @@
     <link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
 }
 
-@Html.Partial(MVC.Backoffice.Localisation.Views._LocalisationMenu, new LocalisationMenuIndex { MenuItem = LocalisationMenu.Home, Id = Model.Localisation.ID, Title = Model.Localisation.Name })
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Localisation.ID, LocalisationMainMenu.Home));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
-		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.BONews, MVC.Backoffice.Localisation.Index(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Bookings, MVC.Backoffice.Localisation.Booking(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Quoations, MVC.Backoffice.Localisation.Quotation(Model.Localisation.ID))},
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.EditPlace, MVC.Backoffice.Localisation.EditLocalisation(Model.Localisation.ID))}
-		})
+		@{Html.RenderAction(MVC.Backoffice.Localisation.VerticalMenu(Model.Localisation.ID, (int)LocalisationMenu.Edit));}
 	</div>
 
 	<div class="blockContainer float-left contentRight dashedLeft">

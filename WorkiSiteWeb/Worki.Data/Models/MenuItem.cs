@@ -49,9 +49,28 @@ namespace Worki.Data.Models
         Profil
     }
 
+	public enum LocalisationMainMenu
+	{
+		Home,
+		Schedule,
+		Clients,
+		Offers
+	}
+
 	public enum LocalisationMenu
 	{
 		Home,
-		Offers
+		Bookings,
+		Quotations,
+		Edit
+	}
+
+	public enum OfferMenu
+	{
+		Config,
+		Edit,
+		Booking,
+		Quotation,
+		Schedule
 	}
 }

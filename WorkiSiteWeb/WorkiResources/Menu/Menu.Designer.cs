@@ -286,6 +286,15 @@ namespace Worki.Resources.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Planning global.
+        /// </summary>
+        public static string LocalisationSchedule {
+            get {
+                return ResourceManager.GetString("LocalisationSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to eWorkers.
         /// </summary>
         public static string Members {
@@ -336,6 +345,15 @@ namespace Worki.Resources.Menu {
         public static string Offers {
             get {
                 return ResourceManager.GetString("Offers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Planning par offre.
+        /// </summary>
+        public static string OfferSchedule {
+            get {
+                return ResourceManager.GetString("OfferSchedule", resourceCulture);
             }
         }
         

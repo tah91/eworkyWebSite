@@ -430,14 +430,32 @@ namespace Worki.Data.Models
 	{
         public CreateBookingModel()
         {
-            PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
-            Statuses = new SelectList(MemberBooking.GetStatusTypes(new List<MemberBooking.Status> { MemberBooking.Status.Accepted, MemberBooking.Status.Paid }), "Key", "Value", MemberBooking.Status.Paid);
+			Init();
         }
 
+		public CreateBookingModel(Localisation localisation)
+		{
+			Init();
+			Localisation = localisation;
+			var clients = localisation.LocalisationClients.ToDictionary(mc => mc.ClientId, mc => mc.Member.GetFullDisplayName());
+			Clients = new SelectList(clients, "Key", "Value");
+			var offers = localisation.Offers.ToDictionary(o => o.Id, o => o.Name);
+			Offers = new SelectList(offers, "Key", "Value");
+		}
+
+		void Init()
+		{
+			PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
+			Statuses = new SelectList(MemberBooking.GetStatusTypes(new List<MemberBooking.Status> { MemberBooking.Status.Accepted, MemberBooking.Status.Paid }), "Key", "Value", MemberBooking.Status.Paid);
+			Booking = new MemberBooking();
+		}
+
 		public MemberBooking Booking { get; set; }
+		public Localisation Localisation { get; set; }
 		public SelectList Clients { get; set; }
         public SelectList PaymentTypes { get; set; }
         public SelectList Statuses { get; set; }
+		public SelectList Offers { get; set; }
 	}
 
 	[Bind(Exclude = "Id")]
@@ -512,7 +530,7 @@ namespace Worki.Data.Models
 
     public class LocalisationMenuIndex
     {
-        public LocalisationMenu MenuItem { get; set; }
+		public LocalisationMainMenu MenuItem { get; set; }
 		public string Title { get; set; }
         public int Id { get; set; }
     }
@@ -571,7 +589,7 @@ namespace Worki.Data.Models
         public InvoiceFormViewModel(Localisation localisation, InvoiceFormViewModel model = null)
         {
             Invoice = new InvoiceModel(localisation);
-            var clients = localisation.Member.MemberClients.ToDictionary(mc => mc.ClientId, mc => mc.Client.GetFullDisplayName());
+            var clients = localisation.LocalisationClients.ToDictionary(mc => mc.ClientId, mc => mc.Member.GetFullDisplayName());
             Clients = new SelectList(clients, "Key", "Value");
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
         }

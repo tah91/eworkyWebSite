@@ -14,59 +14,16 @@
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.MyClients, MVC.Backoffice.Client.List())},
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add())}
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.MyClients, MVC.Backoffice.Client.List())}
 		})
 	</div>
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock tableStyle">
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.Names
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.NumberBooking
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.PhoneNumber
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.Email
-                        </th>
-                        <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.CustomerSheet
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach (var item in Model.List)
-                {
-                    <tr>
-                        <td>
-                            @string.Format("{0}, {1}", item.MemberMainData.LastName, item.MemberMainData.FirstName)
-                        </td>
-                        <td>
-                            @item.MemberBookings.Count
-                        </td>
-                        <td>
-                            @Html.GetPhoneFormat(item.MemberMainData.PhoneNumber)
-                        </td>
-                        <td>
-                            @item.Email
-                        </td>
-                        <td>
-                            @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Access, MVC.Account.Public(item.MemberId), new { @class = "blue" })
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-            <div class="pager">
-                @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Client.List(x)))
-            </div>
+			@Html.Partial(MVC.Backoffice.Client.Views._Clients, Model.List)
+			<div class="pager">
+				@Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Backoffice.Client.List(x)))
+			</div>
 		</div>
 	</div>
 	<div class="clear">

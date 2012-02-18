@@ -1,0 +1,33 @@
+﻿@model LocalisationModel<PagingList<Member>>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Clients)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationId, LocalisationMainMenu.Clients));}
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Selected=true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Clients, MVC.Backoffice.Client.LocalisationList(Model.LocalisationId,null))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add(Model.LocalisationId))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Client.Invoices(Model.LocalisationId))} , 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CreateInvoice, MVC.Backoffice.Client.CreateInvoice(Model.LocalisationId))}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+		<div class="contentBlock tableStyle">
+			@Html.Partial(MVC.Backoffice.Client.Views._Clients, Model.InnerModel.List)
+			<div class="pager">
+				@Html.PageLinks(Model.InnerModel.PagingInfo, x => Url.Action(MVC.Backoffice.Client.LocalisationList(Model.LocalisationId, x)))
+			</div>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

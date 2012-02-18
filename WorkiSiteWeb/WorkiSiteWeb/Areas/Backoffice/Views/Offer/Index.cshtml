@@ -6,16 +6,16 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Id));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationId, LocalisationMainMenu.Offers));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Id, (int)OfferMenuType.Config));}
+		@{Html.RenderAction(MVC.Backoffice.Offer.VerticalMenu(Model.Id, (int)OfferMenu.Edit));}
 	</div>
 
 	<div class="blockContainer float-left contentRight">
-		@Html.Partial(MVC.Backoffice.Localisation.Views._OfferDropDown, new OfferDropDownModel { Offer = Model, UrlMaker = o => Url.Action(MVC.Backoffice.Localisation.OfferBooking(o.LocalisationId, o.Id)) })
+		@{Html.RenderAction(MVC.Backoffice.Offer.OfferDropdown(Model.Id, (int)OfferMenu.Edit));}
 		<div class="contentBlock">
             <table class="offerindextable margint10">
                 <tr>

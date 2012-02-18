@@ -158,9 +158,9 @@ namespace Worki.Web
 					LoggerId = clientId
 				});
 
-				if (!booking.Owner.HasClient(clientId))
+				if (!localisation.HasClient(clientId))
 				{
-					booking.Owner.MemberClients.Add(new MemberClient { ClientId = clientId });
+					localisation.LocalisationClients.Add(new LocalisationClient { ClientId = clientId });
 				}
 
 				//send mail to owner

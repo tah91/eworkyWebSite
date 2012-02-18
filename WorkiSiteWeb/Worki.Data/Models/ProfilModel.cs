@@ -348,19 +348,19 @@ namespace Worki.Data.Models
 			return true;
         }
 
-        #region Owner
+		//#region Owner
 
-        /// <summary>
-        /// tell if the owner has the specified client
-        /// </summary>
-        /// <param name="clientId">id of the client</param>
-        /// <returns>true if is already a client</returns>
-        public bool HasClient(int clientId)
-        {
-            return MemberClients.Where(mc => mc.ClientId == clientId).Count() > 0;
-        }
+		///// <summary>
+		///// tell if the owner has the specified client
+		///// </summary>
+		///// <param name="clientId">id of the client</param>
+		///// <returns>true if is already a client</returns>
+		//public bool HasClient(int clientId)
+		//{
+		//    return MemberClients.Where(mc => mc.ClientId == clientId).Count() > 0;
+		//}
 
-        #endregion
+		//#endregion
     }
 
 	public class NewsItem

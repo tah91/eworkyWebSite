@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Member>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Worki.Resources.Views.BackOffice.BackOfficeString.Names
+            </th>
+            <th>
+                @Worki.Resources.Views.BackOffice.BackOfficeString.NumberBooking
+            </th>
+            <th>
+                @Worki.Resources.Views.BackOffice.BackOfficeString.PhoneNumber
+            </th>
+            <th>
+                @Worki.Resources.Views.BackOffice.BackOfficeString.Email
+            </th>
+            <th>
+                @Worki.Resources.Views.BackOffice.BackOfficeString.CustomerSheet
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @string.Format("{0}, {1}", item.MemberMainData.LastName, item.MemberMainData.FirstName)
+            </td>
+            <td>
+                @item.MemberBookings.Count
+            </td>
+            <td>
+                @Html.GetPhoneFormat(item.MemberMainData.PhoneNumber)
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Access, MVC.Account.Public(item.MemberId), new { @class = "blue" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

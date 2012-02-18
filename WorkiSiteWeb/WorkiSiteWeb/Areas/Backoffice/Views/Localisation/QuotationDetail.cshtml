@@ -1,4 +1,5 @@
 ﻿@model	MemberQuotation
+		   
 @section HeadContent
 {
 	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Quoations)</title>
@@ -12,12 +13,12 @@
 	Model.GetStatus(out statusText, out color, out statusDate);
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Offer.Id));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Offer.LocalisationId, LocalisationMainMenu.Home));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Offer.Id, (int)OfferMenuType.Quotation));}
+		@{Html.RenderAction(MVC.Backoffice.Localisation.VerticalMenu(Model.Offer.LocalisationId, (int)LocalisationMenu.Quotations));}
 	</div>
 
 	<div class="blockContainer float-left contentRight">

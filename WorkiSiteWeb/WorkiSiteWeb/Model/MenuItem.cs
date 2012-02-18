@@ -50,16 +50,7 @@ namespace Worki.Web.Model
 		public OfferDropDownFilter Filter { get; set; }
 	}
 
-	public enum OfferMenuType
-	{
-		Config,
-		Edit,
-		Booking,
-		Quotation,
-        Schedule
-	}
-
-	public class OfferMenuItem
+	public class LinkMenuItem
 	{
 		public string Link { get; set; }
 		public string Text { get; set; }
@@ -69,6 +60,13 @@ namespace Worki.Web.Model
 	public class OfferModel<T>
 	{
 		public T InnerModel { get; set; }
-		public int OfferModelId { get; set; }
+		public int LocalisationId { get; set; }
+		public int OfferId { get; set; }
+	}
+
+	public class LocalisationModel<T>
+	{
+		public T InnerModel { get; set; }
+		public int LocalisationId { get; set; }
 	}
 }

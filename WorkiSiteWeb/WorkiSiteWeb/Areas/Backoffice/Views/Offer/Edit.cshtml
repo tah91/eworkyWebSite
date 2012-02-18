@@ -9,16 +9,16 @@
 	<link rel="stylesheet" href="@Url.VersionedContent(Links.Content.jquery_fileupload_ui_min_css)" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.OfferHorizontalMenu(Model.Offer.Id));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Offer.LocalisationId, LocalisationMainMenu.Offers));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferVerticalMenu(Model.Offer.Id, (int)OfferMenuType.Edit));}
+		@{Html.RenderAction(MVC.Backoffice.Offer.VerticalMenu(Model.Offer.Id, (int)OfferMenu.Edit));}
 	</div>
 
 	<div class="blockContainer float-left contentRight dashedLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.OfferDropdown(Model.Offer.Id, (int)OfferMenuType.Edit));}
+		@{Html.RenderAction(MVC.Backoffice.Offer.OfferDropdown(Model.Offer.Id, (int)OfferMenu.Edit));}
 
 		@Html.Partial(MVC.Offer.Views._CreateOffer)
 	</div>
