@@ -242,8 +242,8 @@ page width. Or, you can specify an exact pixel width. */
 	margin-bottom: 30px;
 	border-bottom: 1px solid #E5E5E5;
 	font-size: 1em;
-	height: 56px;
-	padding-top: 5px;
+	height: 40px;
+	padding: 10px;
 	/*background: whiteSmoke;*/
 }
 
@@ -276,14 +276,21 @@ page width. Or, you can specify an exact pixel width. */
 .royaume-uni{ background-position: -528px 0; width: 16px; height: 11px; } 
 .turquie{ background-position: -594px 0; width: 16px; height: 11px; } 
 
+.headerOptionNoHover
+{
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid transparent;
+}
+
 .headerOption
 {
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-right-color: #f3f3f3;
     padding: 8px;
-    margin: 10px;
+    margin: 5px;
     border: 1px solid transparent;
+    /*border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #f3f3f3;*/
 }
 
 .headerOption:hover, .headerButton:hover 
@@ -299,12 +306,99 @@ page width. Or, you can specify an exact pixel width. */
     text-decoration: none; 
 }
 
+/* HEADER LAYOUT
+----------------------------------------------------------*/
+
+.header .dropdown a, .header .dropdown a:visited 
+{ 
+	font-weight: bold; 
+}
+
+.header .dropdown dd, .header .dropdown dt, .header .dropdown ul 
+{ 
+	margin: 5px; 
+}
+
+.header .dropdown dt a span 
+{ 
+	padding: 0px; 
+}
+
+.header .dropdown-triangle
+{ 
+	/*margin-left: 10px; */
+}
+
+.header .dropdown a[href="#"]
+{
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #f3f3f3;
+    border: 1px solid transparent;
+    padding: 8px 8px 6px 8px;
+}
+
+.header .dropdown a[href="#"]:hover
+{
+    color: inherit;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.header .dropdown[id="profilDropdown"] dd ul
+{
+   padding-right: 10px;
+}
+
+.header .dropdown dd ul 
+{
+    top: 2px;
+	left: -5px;
+	border: 1px solid #CCC;
+	box-shadow: 2px 2px 5px #DDD;
+}
+
+.header .dropdown dt a
+{
+    min-width: inherit;
+}
+
+.languageSwitch .dropdown
+{
+    /*margin-top: 10px;
+    margin-right: 5px;*/
+}
+
+.languageSwitch .dropdown dd ul 
+{
+    top: 2px;
+    min-width: 56px;
+}
+
+.languageSwitch .dropdown dd ul li a
+{
+    padding: 5px 1px 5px 13px;
+}
+
+.languageSwitch .flags
+{
+    height: 18px;
+    width: 45px;
+}
+
+.addPlaceHeader
+{
+    padding: 8px 10px!important;
+}
+
 .logo
 {
-	background-image: url('images/logo.png');
+	background-image: url('images/logo2.png');
 	background-repeat: no-repeat;
-	width: 147px;
-	height: 47px;
+	width: 125px;
+	height: 40px;
 	margin-right: 20px;
 }
 
@@ -392,7 +486,7 @@ page width. Or, you can specify an exact pixel width. */
 
 .welcome
 {
-	margin-top:5px;
+	/*margin-top:5px;*/
 }
 
 .alertSummaryContainer
@@ -761,51 +855,6 @@ div.pagerTop
 	background-image: linear-gradient(top,#e96063,#c63132);
 }
 
-/*.btn_text
-{
-	color: white;
-	text-align: center;
-	padding: 4px 0 0 7px;
-	font-size: 14px;
-}
-
-.btn_text a
-{
-	color: white;
-	text-align: center;
-	padding: 4px 0 0 7px;
-	font-size: 14px;
-}*/
-
-/*.btn_orange_plus_right
-{
-	padding: 0 0 0 20px;
-}*/
-
-/*.btn_green_check
-{
-	color: white;
-	text-align: center;
-	padding-left: 20px;
-	font-size: 14px;
-}*/
-
-/*.editionLink
-{
-    background: #DDD;
-    padding: 5px;
-}
-
-.editionLink:hover
-{
-    background: #ccc;
-}
-
-.editionLink a
-{
-    text-decoration: none;
-}*/
-
 .boldLink
 {
     font-weight:bold;
@@ -872,11 +921,6 @@ div.pagerTop
 .margint10
 {
     margin-top:10px;
-}
-
-.margint13
-{
-    margin-top:13px;
 }
 
 .margint15
@@ -1356,43 +1400,6 @@ ul.tabs li:first-child
 {
     margin:0 5px 0 0;
 }
-
-/*.buttonStd
-{
-	overflow: visible;
-	padding: 5px 15px;
-	color: white;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	border-image: initial;
-	font-weight:bold;
-	margin: 3px;
-}
-
-.buttonStd a
-{
-	color: white;
-	text-align: center;
-}
-
-.buttonBlue
-{
-	border: 1px solid #5DAFDE;
-	background-color: #5dafde;
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
-	background-image: -moz-linear-gradient(top,#5DAFDE,#4787ed);
-	background-image: -webkit-linear-gradient(top,#5DAFDE,#449ed2);
-	background-image: linear-gradient(top,#5DAFDE,#4787ed);
-}
-
-.buttonBlue:hover
-{
-	background-color: #379ed6;
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);
-	background-image: -moz-linear-gradient(top,#379ed6,#4787ed);
-	background-image: -webkit-linear-gradient(top,#88c7ec,#74b7de);
-	background-image: linear-gradient(top,#379ed6,#4787ed);
-}*/
 
 ul.tabs li
 {
@@ -1956,10 +1963,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 /* OFFERS SECTION
 ----------------------------------------------------------*/
 
-{
-    width: 439px;
-}
-
 .li_Sector
 {
     width: 266px;
@@ -2130,81 +2133,82 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 /* DROPDOWN LAYOUT
 ----------------------------------------------------------*/        
-.dropdown dd,.dropdown dt,.dropdown ul{margin:0;padding:0;line-height:18px}
-.dropdown dd{position:relative}
-.dropdown a,.dropdown a:visited{text-decoration:none;outline:0}
-.dropdown a:hover{color:#999}
-.dropdown dt a:hover{color:#999;border:1px solid #d0c9af}
-.dropdown dt a{display:block;border:1px solid #CCC;min-width:170px}
-.dropdown dt a span{cursor:pointer;display:block;padding:5px}
-.dropdown-triangle{font-size:18px}
-.dropdown dd ul{background:white none repeat scroll 0 0;border:1px solid #ccc;display:none;left:0;padding:5px 0;position:absolute;top:2px;width:auto;min-width:170px;list-style:none;z-index:500}
-.dropdown dd ul li a{padding:5px;display:block}
-.dropdown dd ul li a:hover{background-color:#5DAFDE;color:White;font-weight:bold}
-
-.header .dropdown a, .header .dropdown a:visited { font-weight: bold; }
-.header .dropdown dd, .header .dropdown dt, .header .dropdown ul { margin: 5px; }
-.header .dropdown dt a span { padding: 0px; }
-.header .dropdown-triangle{ margin-left: 10px; }
-
-.header .dropdown a[href="#"]
+.dropdown dd,.dropdown dt,.dropdown ul
 {
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-right-color: #f3f3f3;
-    border: 1px solid transparent;
-    padding: 8px 8px 6px 8px;
+	margin:0;
+	padding:0;
+	line-height:18px
 }
 
-.header .dropdown a[href="#"]:hover
+.dropdown dd
 {
-    color: inherit;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
+	position:relative
 }
 
-.header .dropdown[id="profilDropdown"] dd ul
+.dropdown a,.dropdown a:visited
 {
-   padding: 10px;
+	text-decoration:none;
+	outline:0
 }
 
-.header .dropdown dd ul 
+.dropdown a:hover
 {
-    top: 2px;
-	left: -5px;
-	border: 1px solid #CCC;
-	box-shadow: 2px 2px 5px #DDD;
+	color:#999
 }
 
-.header .dropdown dt a
+.dropdown dt a:hover
 {
-    min-width: inherit;
+	color:#999;
+	border:1px solid #d0c9af
 }
 
-.languageSwitch .dropdown
+.dropdown dt a
 {
-    margin-top: 10px;
-    margin-right: 5px;
+	display:block;
+	border:1px solid #CCC;
+	min-width:170px
 }
 
-.languageSwitch .dropdown dd ul 
+.dropdown dt a span
 {
-    top: 2px;
-    min-width: 56px;
+	cursor:pointer;
+	display:block;
+	padding:5px
 }
 
-.languageSwitch .dropdown dd ul li a
+.dropdown-triangle
 {
-    padding: 5px 1px 5px 13px;
+	font-size:18px
 }
 
-.languageSwitch .flags
+.dropdown dd ul
 {
-    height: 18px;
-    width: 45px;
+	background:white none repeat scroll 0 0;
+	border:1px solid #ccc;
+	display:none;
+	left:0;
+	padding:5px 0;
+	position:absolute;
+	top:2px;
+	width:auto;
+	min-width:170px;
+	list-style:none;
+	z-index:500
 }
+
+.dropdown dd ul li a
+{
+	padding:5px;
+	display:block
+}
+
+.dropdown dd ul li a:hover
+{
+	background-color:#5DAFDE;
+	color:White;
+	font-weight:bold
+}
+
 
 /* CONTACT LAYOUT
 ----------------------------------------------------------*/
