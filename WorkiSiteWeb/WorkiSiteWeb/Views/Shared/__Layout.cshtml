@@ -43,9 +43,18 @@
 		<div class="headerContainer headerGradient">
 			<div class="header">
 				<div class="logo linkImg float-left">@Html.ActionLink(" ", MVC.Home.Index())</div>
-                <div class="float-left headerOption bold blue linkImg noUnderline">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</div>
+				<ul>
+					<li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</li>
+					@if (!Request.IsAuthenticated)
+					{
+					<li class="float-left headerOptionNoHover darkblue">|</li>
+					<li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</li>
+					<li class="float-left headerOptionNoHover darkblue">|</li>
+					<li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())</li>
+					}
+				</ul>
                 @Html.Partial(MVC.Shared.Views._LogOnUserControl)
-                <div class="buttonBlue buttonStd linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
+                <div class="float-right addPlaceHeader buttonBlue buttonStd noUnderline">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
                 <div class="languageSwitch float-right">@Html.Partial(MVC.Shared.Views._CultureSwitchControl)</div>
 			</div>
 		</div>
@@ -53,11 +62,11 @@
 			<div id="main" class="clearfix">
 				@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain, new { @class = "borderRadius" })
 				@if (ViewContext.TempData[MiscHelpers.TempDataConstants.Info] != null)
-				{
+	{
 				<div class="informationContainer borderRadius bold">
 					<span>@ViewContext.TempData[MiscHelpers.TempDataConstants.Info]</span>
 				</div>
-				}
+	}
 				@*@Html.MvcSiteMap().SiteMapPath()*@
 				@RenderBody()
 			</div>
@@ -135,13 +144,13 @@
 		var localDateFormat = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? "dd/MM/yyyy HH:mm:ss" : "MM/dd/yyyy hh:mm:ss tt";
 	}
 	@if (!Url.IsSecuredUrl())
-	{
+ {
 	<script type="text/javascript">
 	 	require.ready(function () {
 	 		require(["http://widget.uservoice.com/QRiGQmvm2Qq2VarJYV0ghQ.js"]);
 	 	});
 	</script>
-	}
+ }
     <script type="text/javascript">
     	require.ready(function () {
     		$('.informationContainer').delay(8000).slideUp();

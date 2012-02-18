@@ -52,12 +52,7 @@
 				});
 		</script>
 	</div>
-    <div class="welcome float-left blue linkImg">
+    <div class="float-left darkblue linkImg">
 		@Html.Partial(MVC.Shared.Views._DropDownList, dropDown)
     </div>
-}
-else
-{
-    <div class="float-left headerOption bold blue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</div>
-    <div class="float-left headerOption bold blue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())</div>
 }
