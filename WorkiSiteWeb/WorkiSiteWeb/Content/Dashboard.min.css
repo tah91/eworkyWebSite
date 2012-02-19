@@ -11,6 +11,10 @@
 .newsListLeft{width:20%}
 .newsListRight{width:80%}
 .newsBottom{margin-top:10px;padding:0!important}
+.homeButtons{padding:0 8px}
+.homePlus{font-size:16px;margin-right:10px}
+.homeText{font-size:13px;margin-top:2px}
+.homeButton{width:300px}
 .summaryContainer{width:25%}
 .summaryImage{height:200px}
 .summaryImage img{max-height:200px}

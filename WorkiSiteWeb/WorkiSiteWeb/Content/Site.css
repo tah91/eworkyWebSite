@@ -798,6 +798,25 @@ div.pagerTop
 	background-image: linear-gradient(top,#88c7ec,#74b7de);
 }
 
+.buttonDarkBlue
+{
+	border: 1px solid #36485c;
+	background-color: #36485c;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#36485c, endColorstr=#1f334a);
+	background-image: -moz-linear-gradient(top,#36485c,#1f334a);
+	background-image: -webkit-linear-gradient(top,#36485c,#1f334a);
+	background-image: linear-gradient(top,#36485c,#1f334a);
+}
+
+.buttonDarkBlue:hover
+{
+	background-color: #2a3848;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#2a3848, endColorstr=#142231);
+	background-image: -moz-linear-gradient(top,#2a3848,#142231);
+	background-image: -webkit-linear-gradient(top,#2a3848,#142231);
+	background-image: linear-gradient(top,#2a3848,#142231);
+}
+
 .buttonOrange
 {
 	border: 1px solid #f9af52;

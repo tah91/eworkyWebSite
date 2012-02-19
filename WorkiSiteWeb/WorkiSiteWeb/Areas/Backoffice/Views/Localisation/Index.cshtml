@@ -32,6 +32,41 @@
             @Html.Partial(MVC.Dashboard.Shared.Views._NewsContent,Model.News)
             <div class="clear">
 	        </div>
+			<div class="homeButtons">
+				<div class="float-left homeButton buttonDarkBlue buttonStd noUnderline">
+					<a href="@Url.Action(MVC.Backoffice.Schedule.CreateBooking(Model.Localisation.ID))">
+						<div class="float-left homePlus">+</div> 
+						<div class="float-left homeText">@Worki.Resources.Views.BackOffice.BackOfficeString.CreateBooking</div> 						
+						<div class="clear"></div>
+					</a>
+				</div>
+				<div class="float-right homeButton buttonDarkBlue buttonStd noUnderline">
+					<a href="@Url.Action(MVC.Backoffice.Client.CreateInvoice(Model.Localisation.ID))">
+						<div class="float-left homePlus">+</div> 
+						<div class="float-left homeText">@Worki.Resources.Menu.Menu.CreateInvoice</div> 						
+						<div class="clear"></div>
+					</a>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="float-left homeButton buttonDarkBlue buttonStd noUnderline">
+					<a href="@Url.Action(MVC.Backoffice.Client.Add(Model.Localisation.ID))">
+						<div class="float-left homePlus">+</div> 
+						<div class="float-left homeText">@Worki.Resources.Menu.Menu.AddClient</div> 						
+						<div class="clear"></div>
+					</a>
+				</div>
+				<div class="float-right homeButton buttonDarkBlue buttonStd noUnderline">
+					<a href="@Url.Action(MVC.Backoffice.Offer.Prices(Model.Localisation.ID))">
+						<div class="float-left homePlus">+</div> 
+						<div class="float-left homeText">@Worki.Resources.Menu.Menu.Prices</div> 						
+						<div class="clear"></div>
+					</a>
+				</div>
+				<div class="clear">
+				</div>
+			</div>
+			
             <div class="newsBottom innerContentBlock">
                 <div class="newsHeader">
                     @Worki.Resources.Views.BackOffice.BackOfficeString.OffersDirectAccess

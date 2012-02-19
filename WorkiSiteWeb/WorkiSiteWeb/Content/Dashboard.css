@@ -103,6 +103,31 @@
     padding:0!important;
 }
 
+/*HOME BUTTON
+----------------------------------------------------------*/
+.homeButtons
+{
+	padding:0 8px;
+}
+
+.homePlus
+{
+	font-size:16px;
+	margin-right:10px;
+}
+
+.homeText
+{
+	font-size: 13px;
+	margin-top: 2px;
+}
+
+.homeButton
+{
+	width:300px;
+}
+
+
 /*SUMMARY
 ----------------------------------------------------------*/
 
