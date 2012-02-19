@@ -117,194 +117,144 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Accept" xml:space="preserve">
-    <value>Aceptar</value>
-  </data>
   <data name="Access" xml:space="preserve">
     <value>Acceso</value>
   </data>
-  <data name="BackToOwnerSpace" xml:space="preserve">
-    <value>Volver al espacio gerente</value>
+  <data name="Admin" xml:space="preserve">
+    <value>Fucionalidades de moderación</value>
   </data>
-  <data name="Booking" xml:space="preserve">
-    <value>Reserva</value>
+  <data name="AvoidPeriods" xml:space="preserve">
+    <value>Evitar los periodos</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contactar</value>
+  <data name="Comfort" xml:space="preserve">
+    <value>Comodidad</value>
   </data>
-  <data name="CustomerSheet" xml:space="preserve">
-    <value>Ficha cliente</value>
+  <data name="EquipementsServices" xml:space="preserve">
+    <value>Material &amp; Servicios</value>
   </data>
-  <data name="Demand" xml:space="preserve">
-    <value>Solicitud</value>
+  <data name="Facilities" xml:space="preserve">
+    <value>Material</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Detalles</value>
+  <data name="FreeWorkplace" xml:space="preserve">
+    <value>Espacio de trabajo gratuito</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Correo electrónico</value>
+  <data name="Friday" xml:space="preserve">
+    <value>Viernes</value>
   </data>
-  <data name="EmptyBookHistoric" xml:space="preserve">
-    <value>No tienes ninguna reserva. Para solicitar una reserva, ve a la ficha del espacio deseado.</value>
+  <data name="GlobalInformations" xml:space="preserve">
+    <value>Informaciones Generales</value>
+    <comment>LocalisationForm</comment>
   </data>
-  <data name="EmptyNews" xml:space="preserve">
-    <value>Has recibido una notificación.</value>
+  <data name="GoogleMapsLocalisation" xml:space="preserve">
+    <value>Ubicación Google maps</value>
   </data>
-  <data name="EmptyQuotationHistoric" xml:space="preserve">
-    <value>No has solicitado ningún presupuesto. Para tramitar una solicitud, ve a la ficha del espacio deseado.</value>
+  <data name="LinkToFB" xml:space="preserve">
+    <value>Enlace a la página de Facebook</value>
   </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>Nombre</value>
+  <data name="LinkToTwitter" xml:space="preserve">
+    <value>Enlace al perfíl Twitter</value>
   </data>
-  <data name="Historic" xml:space="preserve">
-    <value>Histórico</value>
+  <data name="MandatoryFields" xml:space="preserve">
+    <value>Campos obligatorios</value>
   </data>
-  <data name="Inline" xml:space="preserve">
-    <value>Conectado</value>
+  <data name="Monday" xml:space="preserve">
+    <value>Lunes</value>
   </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Apellido</value>
+  <data name="MondayAfterClose" xml:space="preserve">
+    <value>Ej: 18:00</value>
   </data>
-  <data name="LastNews" xml:space="preserve">
-    <value>Últimas noticias</value>
+  <data name="MondayAfterOpen" xml:space="preserve">
+    <value>Ej: 14:00</value>
   </data>
-  <data name="ManagementTitle" xml:space="preserve">
-    <value>Interfase de gestión de {0}</value>
+  <data name="MondayMorningClose" xml:space="preserve">
+    <value>Ej: 12:30</value>
   </data>
-  <data name="Member" xml:space="preserve">
-    <value>Miembro</value>
-  </data>
-  <data name="Message" xml:space="preserve">
-    <value>Mensaje</value>
-  </data>
-  <data name="Names" xml:space="preserve">
-    <value>Identidad</value>
-  </data>
-  <data name="NoCurrentBooking" xml:space="preserve">
-    <value>No tienes ninguna solicitud de reserva en curso. Para consultar las reservas archivadas, ve a la sección {0}.</value>
-  </data>
-  <data name="NoCurrentQuotation" xml:space="preserve">
-    <value>No tienes ninguna solicitud de presupuesto en curso. Para consultar las solicitudes de presupuesto archivadas, ve a la sección {0}.</value>
-    <comment>Jm Correct l27</comment>
-  </data>
-  <data name="NotDefined" xml:space="preserve">
-    <value>No definido</value>
-  </data>
-  <data name="NoWorkingBooking" xml:space="preserve">
-    <value>Ninguna solicitud de reserva ha sido archivada.</value>
-  </data>
-  <data name="NoWorkingQuotation" xml:space="preserve">
-    <value>Ninguna solicitud de presupuesto ha sido archivada.</value>
-  </data>
-  <data name="NumberBooking" xml:space="preserve">
-    <value>Número de reservas.</value>
-  </data>
-  <data name="Offer" xml:space="preserve">
-    <value>Oferta</value>
+  <data name="MondayMorningOpen" xml:space="preserve">
+    <value>Ej: 9:00</value>
   </data>
   <data name="Offers" xml:space="preserve">
-    <value>Ofertas</value>
-  </data>
-  <data name="OffersDirectAccess" xml:space="preserve">
-    <value>Acceso directo a la gestión de las ofertas</value>
-  </data>
-  <data name="Offline" xml:space="preserve">
-    <value>No conectado</value>
+    <value>Oferta</value>
   </data>
   <data name="Owner" xml:space="preserve">
-    <value>Gerente</value>
+    <value>Funcionalidades reservadas al gerente del espacio</value>
   </data>
-  <data name="OwnerSpace" xml:space="preserve">
-    <value>Espacio Gerente</value>
+  <data name="PlaceDetails" xml:space="preserve">
+    <value>Características del espacio</value>
   </data>
-  <data name="PaymentInfoModified" xml:space="preserve">
-    <value>Los datos de pago han sido actualizados.</value>
+  <data name="PlacesExample" xml:space="preserve">
+    <value>Ej: Regus London, the Hub Amsterdam, Club Office Berlin</value>
   </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Teléfono</value>
+  <data name="ProfessionalServices" xml:space="preserve">
+    <value>Servicios profesionales</value>
   </data>
-  <data name="Place" xml:space="preserve">
-    <value>Espacio</value>
+  <data name="ProposedTechnology" xml:space="preserve">
+    <value>Tecnología propuesta</value>
   </data>
-  <data name="PlaceDoNotHaveOffer" xml:space="preserve">
-    <value>Este espacio no tiene ofertas todavía.</value>
+  <data name="RefineLocation" xml:space="preserve">
+    <value>Para modificar la ubicación, mueve el cursor</value>
   </data>
-  <data name="Refuse" xml:space="preserve">
-    <value>Rechazar</value>
+  <data name="ResetPosition" xml:space="preserve">
+    <value>Reiniciar mi posición</value>
   </data>
-  <data name="RefuseBooking" xml:space="preserve">
-    <value>¿Estás seguro de querer rechazar esta reserva?</value>
+  <data name="RoadExample" xml:space="preserve">
+    <value>Ej: Acceso por la AP2</value>
   </data>
-  <data name="RefuseQuotation" xml:space="preserve">
-    <value>¿Estás seguro de querer rechazar está solicitud de presupuesto? Ya no podrás acceder a los datos de este cliente.</value>
+  <data name="RoomCapacity" xml:space="preserve">
+    <value>Capacidad de las salas propuestas</value>
   </data>
-  <data name="Return" xml:space="preserve">
-    <value>Volver</value>
+  <data name="Saturday" xml:space="preserve">
+    <value>Sábado</value>
   </data>
-  <data name="Score" xml:space="preserve">
-    <value>Puntuación</value>
+  <data name="Services" xml:space="preserve">
+    <value>Servicios</value>
   </data>
-  <data name="SeeClientProfile" xml:space="preserve">
-    <value>Ver el perfíl del cliente</value>
+  <data name="SharedOfficeDesc" xml:space="preserve">
+    <value>Ej: Dos puestos de trabajo en un espacion diáfano en una empresa jóven del sector de tecnologías de la información. Espacio tranquilo y luminoso dónde estamos favorables a compartir y ayudar. Acceso a dos salas de reunión, un espacio de relajación con máquina Nespresso. Larga duración deseada (al menos 6 meses).</value>
   </data>
-  <data name="Status" xml:space="preserve">
-    <value>Estatus</value>
+  <data name="SharedOfficeExemple" xml:space="preserve">
+    <value>Ej: Oficinas de lujo, puestos para compartir con una start-up. Puestos de trabajo en espacio diáfano, etc.</value>
   </data>
-  <data name="Surface" xml:space="preserve">
-    <value>Superficie</value>
+  <data name="SncfExample" xml:space="preserve">
+    <value>Ej: Estación de Atocha</value>
   </data>
-  <data name="Tariff" xml:space="preserve">
-    <value>Tarifa</value>
+  <data name="SubwayExample" xml:space="preserve">
+    <value>Ej: A 3 minutos de parada de Atocha Renfe, línea 1</value>
   </data>
-  <data name="TariffByPeriod" xml:space="preserve">
-    <value>&lt;b&gt;{0} {1}&lt;/b&gt; por &lt;b&gt;{2}&lt;/b&gt;</value>
+  <data name="Sunday" xml:space="preserve">
+    <value>Domingo</value>
   </data>
-  <data name="Tel" xml:space="preserve">
-    <value>Teléfono</value>
+  <data name="Tariffs" xml:space="preserve">
+    <value>Tarifas</value>
   </data>
-  <data name="Town" xml:space="preserve">
-    <value>Ciudad</value>
+  <data name="ThePlace1" xml:space="preserve">
+    <value>El espacio "</value>
   </data>
-  <data name="TTC" xml:space="preserve">
-    <value>Tasas incluidas, excepto comisiones</value>
+  <data name="ThePlace2" xml:space="preserve">
+    <value>" está ubicado a la misma dirección que el espacio que estás intentando añadir</value>
   </data>
-  <data name="VisitNeeded" xml:space="preserve">
-    <value>Solicitud de visita</value>
+  <data name="Thursday" xml:space="preserve">
+    <value>Jueves</value>
   </data>
-  <data name="WorkplacesDirectAccess" xml:space="preserve">
-    <value>Acceso directo a la gestión de los espacios</value>
+  <data name="TimeExample1" xml:space="preserve">
+    <value>Por favor, indica una hora con el formato hh:mm, por ejemplo 9:30</value>
   </data>
-  <data name="PaypalIdentity" xml:space="preserve">
-    <value>Identificador Paypal</value>
+  <data name="TimeExample2" xml:space="preserve">
+    <value>Por favor, indica una hora con el formato hh:mm, por ejemplo 17:30</value>
+    <comment>Problème des pm en Angleterre</comment>
   </data>
-  <data name="WorkingPrinciple" xml:space="preserve">
-    <value>Principio de funcionamiento</value>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Martes</value>
   </data>
-  <data name="DoNotHaveOnlineBooking" xml:space="preserve">
-    <value>Este espacio no tiene ninguna oferta que se pueda reservar online todavía.</value>
+  <data name="TuesdayAfterClose" xml:space="preserve">
+    <value>Ej: 22:00</value>
   </data>
-  <data name="DoNotHaveOnlineQuotation" xml:space="preserve">
-    <value>Este espacio no tiene ninguna oferta que permita solicitar un presupuesto todavía.</value>
+  <data name="TuesdayMorningOpen" xml:space="preserve">
+    <value>Ej: 9:00</value>
   </data>
-  <data name="PriceConfiguration" xml:space="preserve">
-    <value>Parametrización de las tarifas</value>
+  <data name="UserServices" xml:space="preserve">
+    <value>Servicios al usuario</value>
   </data>
-  <data name="BOAlerts" xml:space="preserve">
-    <value>Espacio gerente : {0} alerta(s)</value>
-  </data>
-  <data name="DashboardAlerts" xml:space="preserve">
-    <value>Espacio usuario : {0} alerta(s)</value>
-  </data>
-  <data name="Create" xml:space="preserve">
-    <value>Crear</value>
-  </data>
-  <data name="CreateBooking" xml:space="preserve">
-    <value>Crear una reserva</value>
-  </data>
-  <data name="Period" xml:space="preserve">
-    <value>Periodo</value>
-  </data>
-  <data name="NeedInfoPaypal" xml:space="preserve">
-    <value>Para proponer una oferta, tienes que indicar previamente la dirección de correo electrónico asociada a tu cuenta PayPal en el apartado Opción de tu perfíl de gerente.</value>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Miércoles</value>
   </data>
 </root>

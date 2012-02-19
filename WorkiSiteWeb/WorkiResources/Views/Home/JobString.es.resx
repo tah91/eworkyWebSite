@@ -117,142 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessBO" xml:space="preserve">
-    <value>Para gestionar tu espacio en eWorky, solicita {0}</value>
+  <data name="Commercial" xml:space="preserve">
+    <value>Comerciales: Toma de contacto con hoteles, centros de negocio, etc.</value>
+  <comment>pas à traduire ?</comment></data>
+  <data name="CommunicationIntern" xml:space="preserve">
+    <value>En estos momentos, eWorky está buscando un becario en comunicación para realizar tareas muy variadas:</value>
   </data>
-  <data name="AccessBOLink" xml:space="preserve">
-    <value>A través del formulario de contacto</value>
+  <data name="CommunityManagement" xml:space="preserve">
+    <value>Community management (Twitter y otras redes sociales)</value>
   </data>
-  <data name="AccessBOTitle" xml:space="preserve">
-    <value>Acceder a la zona de gerentes</value>
+  <data name="Event" xml:space="preserve">
+    <value>Gestión de eventos: Organización de juegos, fiestas, etc.</value>
   </data>
-  <data name="Book" xml:space="preserve">
-    <value>Reserva y realiza el pago online de una sala de reunión o de la cuota de tu espacio de coworking</value>
+  <data name="EWProject" xml:space="preserve">
+    <value>Pero eWorky es un proyecto muy prometedor que ha sido seleccionado por Microsoft para formar parte del programa Bizspark destinado a promover las Pequeñas y Medianas Empresas innovadoras así como por el Elíseo para participar en el lanzamiento del Consejo Nacional Digital en abril del 2011 y del e-G8 en mayo del 2011.</value>
   </data>
-  <data name="BookTitle" xml:space="preserve">
-    <value>Reservar</value>
+  <data name="EWSearchEveryProfil" xml:space="preserve">
+    <value>En estos momentos, eWorky está buscando desarroladores web C# de todo tipo de perfil:</value>
   </data>
-  <data name="BookUser" xml:space="preserve">
-    <value>Cada espacio ofrece ofertas distintas. ¡Consultalas y reserva la que necesitas!</value>
+  <data name="EWSearchStudents" xml:space="preserve">
+    <value>Para acompañar su crecimiento, eWorky busca jóvenes (y menos jóvenes) desarrolladores y desarrolladores de negocio. Entonces, si quieres unirte a nuestro proyecto, mándanos tu curriculum y tu carta de motivación a contact@eworky.com</value>
   </data>
-  <data name="BookUserTitle" xml:space="preserve">
-    <value>Reservar</value>
+  <data name="EWSpirit" xml:space="preserve">
+    <value>El espíritu eWorky</value>
   </data>
-  <data name="Commercialize" xml:space="preserve">
-    <value>Contesta en un click a las solicitudes de reserva y de presupuestos de los usuarios y cobralas directamente en tu cuenta</value>
+  <data name="EWTeam" xml:space="preserve">
+    <value>eWorky es ante todo un equipo muy motivado de tres emprendedores dinámicos y tres asalariados excepcionales que trabajan en un ambiente amistoso y estimulante. Espíritu Start-up e ingenio garantizados. ¡Satisfecho o le devolvemos su dinero!</value>
   </data>
-  <data name="CommercializeTitle" xml:space="preserve">
-    <value>Comercializar</value>
+  <data name="InternGoodUniversity" xml:space="preserve">
+    <value>Estamos buscando un becario (prácticas o excedencia &gt;3 meses) con un perfil de Escuela de negocios o ingeniería. Una gran autonomía, un espíritu emprendedor, mucha creatividad y agilidad en la comunicación verbal como escrita son indispensables para esta oferta. El becario estará remunerado con el "salario mínimo subvencionado".</value>
   </data>
-  <data name="Exchange" xml:space="preserve">
-    <value>Intercambia, charla y anima tu espacio gracias a páginas dedicadas a los espacios de coworking</value>
+  <data name="Jobs" xml:space="preserve">
+    <value>Trabajos</value>
+    <comment>JOBS</comment>
   </data>
-  <data name="ExchangeTitle" xml:space="preserve">
-    <value>Intercambia con tus coworkers</value>
+  <data name="JuniorDev" xml:space="preserve">
+    <value>Desarrollador junior para unas prácticas o una excendecia de más de 3 meses y &lt;/br&gt;con conocimiento en desarrollo web. El becario será&lt;/br&gt; remunerado con una cantidad que dependerá de su perfil.</value>
   </data>
-  <data name="Go" xml:space="preserve">
-    <value>Una vez validada tu solicitud, podrás disfrutar gratuitamente de todas funcionalidades de gestión de tu espacio</value>
+  <data name="LikeDev" xml:space="preserve">
+    <value>¿Te gusta desarrollar? ¿Eres jóven, motivado, autónomo y te gustan los retos? ¿Atraido por una aventura con una start-up web? ¡Unete a eWorky!</value>
   </data>
-  <data name="GoTitle" xml:space="preserve">
-    <value>¡Allá vamos!</value>
+  <data name="Marketing" xml:space="preserve">
+    <value>Marketing: marketing web (Adword), marketing viral, etc.</value>
   </data>
-  <data name="HandleClients" xml:space="preserve">
-    <value>Realiza el seguimiento comercial, emite facturas y pilota la actividad de tu espacio de trabajo</value>
+  <data name="MoreThings" xml:space="preserve">
+    <value>¡Y muchas otras cosas!</value>
   </data>
-  <data name="HandleClientsTitle" xml:space="preserve">
-    <value>Gestiona tus cliente</value>
+  <data name="PressRelation" xml:space="preserve">
+    <value>Relación con la prensa: Contacto/Contestaciones</value>
   </data>
-  <data name="HandleSpace" xml:space="preserve">
-    <value>Gestiona gratuitamente las reservas, los plannings, los consumos anexos y las tarifas y cuotas de tus ofertas</value>
+  <data name="SearchInternShip" xml:space="preserve">
+    <value>¿Buscas unas prácticas? ¿Te gusta la comunicación, el marketing y lo comercial? ¿Eres jóven, motivado, autónomo y te gustan los retos? ¿Atraído por una aventura con una start-up web? ¡Entonces, únete a eWorky!</value>
   </data>
-  <data name="HandleSpaceTitle" xml:space="preserve">
-    <value>Gestiona tu espacio</value>
+  <data name="SendUsCV" xml:space="preserve">
+    <value>No pierdas ni un segundo y manda tu cirriculum y carta de motivación a {0}.</value>
   </data>
-  <data name="HowDoIt" xml:space="preserve">
-    <value>¿Cómo hacerlo?</value>
+  <data name="SeniorDev" xml:space="preserve">
+    <value>Desarrollador senior en free lance (autoemprendedor, etc.) remunerado en función de sus referencias.</value>
   </data>
-  <data name="HowItWorks" xml:space="preserve">
-    <value>El funcionamiento</value>
+  <data name="SoulBuisnessDev" xml:space="preserve">
+    <value>¿Llevas el "desarrollo de negocios" en la sangre?</value>
   </data>
-  <data name="HowItWorksHead" xml:space="preserve">
-    <value>eWorky es un mercado colaborativo de espacios de trabajo</value>
+  <data name="YouAreDev" xml:space="preserve">
+    <value>¿Eres desarrollador?</value>
   </data>
-  <data name="Join" xml:space="preserve">
-    <value>Añade, puntua y comenta los espacios de trabajo para ayudar a toda la comunidad en su búsqueda</value>
+  <data name="Description" xml:space="preserve">
+    <value>Para acompañar su crecimiento, eWorky busca jóvenes talentos dispuestos a unirse a la aventura de una start-up prometedora.</value>
   </data>
-  <data name="JoinTitle" xml:space="preserve">
-    <value>Unirse a la comunidad</value>
-  </data>
-  <data name="MakeFamous" xml:space="preserve">
-    <value>Integra gratuitamente la mayor base de datos de espacios de trabajo en Europa con una ficha completa describiendo tus ofertas y servicios</value>
-  </data>
-  <data name="MakeFamousTitle" xml:space="preserve">
-    <value>Darse a conocer</value>
-  </data>
-  <data name="OwnerTitle" xml:space="preserve">
-    <value>Propongo un espacio de trabajo</value>
-  </data>
-  <data name="OwnerTutorial" xml:space="preserve">
-    <value>Soy Gerente</value>
-  </data>
-  <data name="Pay" xml:space="preserve">
-    <value>Una vez el gerente del espacio haya confirmado tu solicitud de reserva, podrás pagar directamente online con tu tarjeta de crédito</value>
-  </data>
-  <data name="PayTitle" xml:space="preserve">
-    <value>Pagar online</value>
-  </data>
-  <data name="Reference" xml:space="preserve">
-    <value>Crear gratuitamente {0} especificando que eres propietario</value>
-  <comment>JM Modif l.22</comment></data>
-  <data name="ReferenceLink" xml:space="preserve">
-    <value>una ficha para tu espacio</value>
-  </data>
-  <data name="RefererenceTitle" xml:space="preserve">
-    <value>Añadir tu espacio</value>
-  </data>
-  <data name="RegisterLink" xml:space="preserve">
-    <value>registrarse gratuitamente</value>
-  </data>
-  <data name="RegisterOwner" xml:space="preserve">
-    <value>Para gestionar un espacio en eWorky, tienes que {0} creando una cuenta o identificándote en Facebook</value>
-  </data>
-  <data name="RegisterOwnerTitle" xml:space="preserve">
-    <value>Registrarse</value>
-  </data>
-  <data name="RegisterUser" xml:space="preserve">
-    <value>Para disfrutar plenamente de eWorky, tienes que {0} creando una cuenta o identificándote en Facebook</value>
-  </data>
-  <data name="RegisterUserTitle" xml:space="preserve">
-    <value>Registrarse</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Encontrar un café wifi, una sala de reunión o un espacio de coworking en la mayor base de datos de espacios de trabajo de toda Europa</value>
-  </data>
-  <data name="SearchTitle" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="SearchUser" xml:space="preserve">
-    <value>Buscar el espacio de trabajo que necesitas por ubicación, nombre, servicio o tipo de espacio</value>
-  </data>
-  <data name="SearchUserTitle" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="UserTitle" xml:space="preserve">
-    <value>Busco un espacio de trabajo</value>
-  </data>
-  <data name="UserTutorial" xml:space="preserve">
-    <value>Soy usuario</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>¡eWorky te ayuda a gestionar un espacio de trabajo pero nunca reemplazará tu convicialidad y tu cálida bienvenida!</value>
-  </data>
-  <data name="WelcomeTitle" xml:space="preserve">
-    <value>Recibir</value>
-  </data>
-  <data name="Work" xml:space="preserve">
-    <value>¡eWorky te ayuda a encontrar un espacio de trabajo pero a trabajar así que manos a la obra!</value>
-  </data>
-  <data name="WorkTitle" xml:space="preserve">
-    <value>A trabajar</value>
-  <comment>Jm Modif L13</comment></data>
 </root>

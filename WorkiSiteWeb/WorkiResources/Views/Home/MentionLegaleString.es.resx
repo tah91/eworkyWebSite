@@ -117,70 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BirthDate" xml:space="preserve">
-    <value>Fecha de nacimiento</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Actividad profesional</value>
-  </data>
   <data name="Description" xml:space="preserve">
-    <value>Descríbete en 140 carácteres</value>
-  </data>
-  <data name="Facebook" xml:space="preserve">
-    <value>Facebook</value>
-  </data>
-  <data name="FavoritePlaces" xml:space="preserve">
-    <value>Donde me gusta trabajar</value>
-  </data>
-  <data name="Independant" xml:space="preserve">
-    <value>Independiente (auto-emprendedor)</value>
-  </data>
-  <data name="Linkedin" xml:space="preserve">
-    <value>LinkedIn</value>
-  </data>
-  <data name="LocalisationOwner" xml:space="preserve">
-    <value>Propietario del espacio</value>
-  </data>
-  <data name="Nomad" xml:space="preserve">
-    <value>Trabajador nómada</value>
-  </data>
-  <data name="NotSelected" xml:space="preserve">
-    <value>Selecciona tu perfíl</value>
-  </data>
-  <data name="Other" xml:space="preserve">
-    <value>Otros</value>
-  </data>
-  <data name="PaymentAddress" xml:space="preserve">
-    <value>Dirección URL para el pago Paypal</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Teléfono móvil</value>
-  </data>
-  <data name="ProfileString" xml:space="preserve">
-    <value>Perfil</value>
-  </data>
-  <data name="PunctualUser" xml:space="preserve">
-    <value>Usuario puntual</value>
+    <value></value>
   <comment>?</comment></data>
-  <data name="Startup" xml:space="preserve">
-    <value>Emprendedor / Pequeñas empresas</value>
-  </data>
-  <data name="Student" xml:space="preserve">
-    <value>Estudiante</value>
-  </data>
-  <data name="Teleworker" xml:space="preserve">
-    <value>Teletrabajador</value>
-  </data>
-  <data name="Twitter" xml:space="preserve">
-    <value>Twitter</value>
-  </data>
-  <data name="Viadeo" xml:space="preserve">
-    <value>Viadeo</value>
-  </data>
-  <data name="Website" xml:space="preserve">
-    <value>Página Web</value>
-  </data>
-  <data name="Company" xml:space="preserve">
-    <value>Gran cliente</value>
-  </data>
 </root>

@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BookIt" xml:space="preserve">
+    <value>Reservar</value>
+  </data>
+  <data name="BackToUrl" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="BookingIntro" xml:space="preserve">
+    <value>Rellena los campos para realizar la reserva, un correo electrónico te será mandado</value>
+  </data>
+  <data name="BookingDetails" xml:space="preserve">
+    <value>Detalles de la reserva</value>
+  </data>
+  <data name="ConfirmIt" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="HandleIt" xml:space="preserve">
+    <value>Encargarse</value>
+  </data>
+  <data name="RefuseIt" xml:space="preserve">
+    <value>Denegar</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Tu solicitud de reserva ha sido tomada en cuenta correctamente. El precio y la disponibilidad te serán confirmados por el gerente.</value>
+  </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>Solicitud de presupuesto</value>
+  </data>
+  <data name="BookSpeech" xml:space="preserve">
+    <value>Para solicitar una reserva, por favor, rellena los siguientes campos</value>
+  </data>
+  <data name="QuotationSpeech" xml:space="preserve">
+    <value>Para solicitar un presupuesto, por favor, rellena los siguientes campos.</value>
+  </data>
+  <data name="BeginSpeech" xml:space="preserve">
+    <value>Por favor, indica la fecha y la hora de inicio y fin de tu reserva.</value>
+  </data>
+  <data name="ValidateQuotation" xml:space="preserve">
+    <value>Validar la solicitud de presupuesto</value>
+  </data>
+  <data name="AskQuotation" xml:space="preserve">
+    <value>Solicitar un presupuesto</value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value>Superficie</value>
+  </data>
+  <data name="Asked" xml:space="preserve">
+    <value>Solicitado el</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Lugar</value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value>Oferta</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pagar</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="SeeCustomerSheet" xml:space="preserve">
+    <value>Ver la ficha del cliente</value>
+  </data>
+  <data name="SeeLocSheet" xml:space="preserve">
+    <value>Ver la ficha del espacio</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="WaitingForPayement" xml:space="preserve">
+    <value>En espera del pago</value>
+  </data>
+  <data name="BookPaid" xml:space="preserve">
+    <value>¡La reserva para el espacio {0} ha sido pagada!</value>
+  </data>
+  <data name="AskingQuotation" xml:space="preserve">
+    <value>Solicitud de presupuesto para {0}</value>
+  </data>
+  <data name="PayFail" xml:space="preserve">
+    <value>¡El pago no ha sido tomado en cuenta!</value>
+  </data>
+  <data name="BookingRefused" xml:space="preserve">
+    <value>La solicitud de reserva ha sido rechazada</value>
+  </data>
+  <data name="QuotationConfirmed" xml:space="preserve">
+    <value>Tu solicitud de presupuesto ha sido tomada en cuenta.</value>
+  </data>
+  <data name="BookingAccepted" xml:space="preserve">
+    <value>La solicitud de confirmación ha sido confirmada.</value>
+  </data>
+  <data name="BookingCanceled" xml:space="preserve">
+    <value>Tu solicitud de reserva ha sido cancelada.</value>
+  </data>
+  <data name="QuotationCanceled" xml:space="preserve">
+    <value>Y solicitud de presupuesto ha sido cancelada.</value>
+  </data>
+  <data name="BookingBeforeToday" xml:space="preserve">
+    <value>Tu reserva no puede iniciarse antes de hoy.</value>
+  </data>
+  <data name="EndBookingBeforeStart" xml:space="preserve">
+    <value>La fecha de fin de tu reserva tiene que ser posterior a la fecha de inicio.</value>
+  </data>
+  <data name="EndQuotationSpeech" xml:space="preserve">
+    <value>El gerente del espacio se pondrá en contacto contigo lo antes posible.</value>
+  </data>
+  <data name="QuotationRefused" xml:space="preserve">
+    <value>La solicitud de presupuesto ha sido rechazada.</value>
+  </data>
+  <data name="EndSpeech" xml:space="preserve">
+    <value>La disponibilidad y el precio para tu solicitud de reserva te serán confirmados por el gerente en tu Zona de usuario. Una vez confirmada, ya podrás realizar el pago online.</value>
+  </data>
+  <data name="Achieved" xml:space="preserve">
+    <value>Terminada el</value>
+  </data>
+  <data name="CancelStatus" xml:space="preserve">
+    <value>Cancelada el</value>
+  </data>
+  <data name="ContactStatus" xml:space="preserve">
+    <value>Contacto establecido el </value>
+  </data>
+  <data name="HasAcceptBooking" xml:space="preserve">
+    <value>{0} ha aceptado la solicitud de reserva para {1}</value>
+  </data>
+  <data name="HasAskBooking" xml:space="preserve">
+    <value>{0} ha solicitado una reserva para {1}</value>
+  </data>
+  <data name="HasAskQuotation" xml:space="preserve">
+    <value>{0} ha solicidato un presupuesto para {1}</value>
+  </data>
+  <data name="HasCancelBooking" xml:space="preserve">
+    <value>{0} ha anulado una reserva para {1}</value>
+  </data>
+  <data name="HasCancelQuotation" xml:space="preserve">
+    <value>{0} ha anulado una solicitud de presupuesto para {1}</value>
+  </data>
+  <data name="HasPaidBooking" xml:space="preserve">
+    <value>{0} ha pagado la solicitud de reserva para {1}</value>
+  </data>
+  <data name="HasPaidQuotation" xml:space="preserve">
+    <value>{0} ha pagado la solicitud de presupuesto para {1}</value>
+  </data>
+  <data name="HasRefuseBooking" xml:space="preserve">
+    <value>{0} ha denegado la solicitud de reserva para {1}</value>
+  </data>
+  <data name="HasRefuseQuotation" xml:space="preserve">
+    <value>{0} ha denegado la solicitud de presupuesto para {1}</value>
+  </data>
+  <data name="PaidStatus" xml:space="preserve">
+    <value>Pagado el </value>
+  </data>
+  <data name="QuotationCancel" xml:space="preserve">
+    <value>Solicitud de presupuesto cancelada el</value>
+  </data>
+  <data name="QuotationRefuse" xml:space="preserve">
+    <value>Solicitud de presupuesto denegada el </value>
+  </data>
+  <data name="RefuseStatus" xml:space="preserve">
+    <value>Denegada el</value>
+  </data>
+  <data name="WaitingConfirm" xml:space="preserve">
+    <value>En espera de confirmación</value>
+  </data>
+  <data name="WaitingPayment" xml:space="preserve">
+    <value>En espera de pago</value>
+  </data>
+  <data name="WaitingStatus" xml:space="preserve">
+    <value>En espera de cargo</value>
+  </data>
+  <data name="PaymentError" xml:space="preserve">
+    <value>Un error impide la realización del pago, por favor ponte en contacto con nosotros a support@eworky.com</value>
+  </data>
+  <data name="MessageToOwner" xml:space="preserve">
+    <value>Mensaje al gerente</value>
+  </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>Tarde</value>
+  </data>
+  <data name="ChooseDay" xml:space="preserve">
+    <value>Seleccionar un número de días</value>
+  </data>
+  <data name="ChooseHalfDay" xml:space="preserve">
+    <value>Seleccionar un número de media jornadas</value>
+  </data>
+  <data name="ChooseHours" xml:space="preserve">
+    <value>Seleccionar un número de horas</value>
+  </data>
+  <data name="ChooseMonth" xml:space="preserve">
+    <value>Seleccionar un número de meses</value>
+  </data>
+  <data name="ChooseWeek" xml:space="preserve">
+    <value>Seleccionar un número de semanas</value>
+  </data>
+  <data name="ChooseYear" xml:space="preserve">
+    <value>Seleccionar un número de años</value>
+  </data>
+  <data name="HowItWorks" xml:space="preserve">
+    <value>¿Cómo funciona?</value>
+  </data>
+  <data name="HowItWorks1" xml:space="preserve">
+    <value>Indicas los detalles de tu reserva</value>
+  </data>
+  <data name="HowItWorks2" xml:space="preserve">
+    <value>Tu solicitud será enviada inmediatamente al gerente</value>
+  </data>
+  <data name="HowItWorks3" xml:space="preserve">
+    <value>Recibirás una confirmación del precio y de la disponibilidad en tu zona de usuario</value>
+  </data>
+  <data name="HowItWorks4" xml:space="preserve">
+    <value>Entonces, podrás realizar el pago online de tu reserva</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>Mañana</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>Hasta el</value>
+  </data>
+  <data name="NotNullQuantity" xml:space="preserve">
+    <value>Indica una nueva cantidad no nula</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Reserva</value>
+  </data>
+  <data name="HowItWorksQuotation1" xml:space="preserve">
+    <value>Rellenas la solicitud de presupuesto y haces las preguntas que te surgen</value>
+  </data>
+  <data name="HowItWorksQuotation2" xml:space="preserve">
+    <value>Tu solicitud está enviada al gerente inmediatamente</value>
+  <comment>? pas sur</comment></data>
+  <data name="HowItWorksQuotation3" xml:space="preserve">
+    <value>Recibirás una respuesta lo antes posible</value>
+  </data>
+  <data name="HowItWorksParty1" xml:space="preserve">
+    <value>Este evento networking es la ocasión para todos los coworkaholics, independientes y emprendedores para conocer, crear vínculos y descubrir los espacios de coworking parisinos.</value>
+  </data>
+  <data name="HowItWorksParty2" xml:space="preserve">
+    <value>Durante esta noche, tendrás la oportunidad de realizar una presentación de 45 segundos para introducirte y hablar de tus proyectos.</value>
+  </data>
+  <data name="HowItWorksParty3" xml:space="preserve">
+    <value>El evento está co-organizado por eWorky.com y por los espacios de coworking  {0}.</value>
+  </data>
+  <data name="HowItWorksParty4" xml:space="preserve">
+    <value>La entrada es gratuita, {0} tiene el placer recibirte e eWorky invitarte a tomar algo ;) 
+¡Apúntate cuanto antes, el número de entradas está limitado !</value>
+  </data>
+  <data name="RegisterParty" xml:space="preserve">
+    <value>Apuntarse</value>
+  </data>
+  <data name="PartyRegisterConfirmation" xml:space="preserve">
+    <value>Tu inscripción ha sido realizada con éxito, la fecha del evento te será comunicada por correo electrónico.</value>
+  </data>
+</root>

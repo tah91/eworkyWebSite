@@ -292,7 +292,7 @@
     <value>En attente de prise en charge</value>
   </data>
   <data name="PaymentError" xml:space="preserve">
-    <value>Une erreur emepeche le paymenent, veuillez nous contacter à support@eworky.com.</value>
+    <value>Une erreur empêche le payement, veuillez nous contacter à support@eworky.com.</value>
   </data>
   <data name="MessageToOwner" xml:space="preserve">
     <value>Message au gérant</value>
