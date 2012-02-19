@@ -340,4 +340,7 @@
   <data name="InvoiceOffer" xml:space="preserve">
     <value>Offre</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editer</value>
+  </data>
 </root>

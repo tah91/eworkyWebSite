@@ -169,6 +169,15 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offre.
+        /// </summary>
+        public static string OfferId {
+            get {
+                return ResourceManager.GetString("OfferId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offre .
         /// </summary>
         public static string OfferName {

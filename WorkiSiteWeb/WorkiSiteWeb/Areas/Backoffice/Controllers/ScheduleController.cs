@@ -71,8 +71,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-			var p = 1;
 			try
 			{
 				var member = mRepo.Get(memberId);
@@ -80,17 +78,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
-				var model = new LocalisationBookingViewModel
-				{
-					Item = loc,
-					List = new PagingList<MemberBooking>
-					{
-						List = bookings.ToList(),
-						PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PagedListViewModel.PageSize, TotalItems = bookings.Count() }
-					}
-				};
-				return View(model);
+				return View(id);
 			}
 			catch (Exception ex)
 			{
@@ -100,6 +88,28 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		}
 
 		#region Event feed
+
+		/// <summary>
+		/// provid a json array of all booking events of a localisation
+		/// </summary>
+		/// <param name="id">id of the localisation</param>
+		/// <returns>json of booking events</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult AllBookingEvents(int id)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+			var localisation = lRepo.Get(id);
+
+			var events = new List<CalandarJson>();
+			foreach (var item in localisation.GetBookings())
+			{
+				events.Add(item.GetCalandarEvent(Url));
+			}
+
+			return Json(events);
+		}
 
 		/// <summary>
 		/// provid a json array of all booking events
@@ -285,6 +295,80 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             }
         }
 
+		MemberBooking InternalCreateBooking(CreateBookingModel createBookingModel)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var offer = oRepo.Get(createBookingModel.Booking.OfferId);
+
+			try
+			{
+				createBookingModel.Booking.MemberBookingLogs.Add(new MemberBookingLog
+				{
+					CreatedDate = DateTime.UtcNow,
+					EventType = (int)MemberBookingLog.BookingEvent.Creation,
+					Event = "Booking Created From Calandar",
+				}
+				);
+
+				if (createBookingModel.Booking.Paid)
+				{
+					createBookingModel.Booking.MemberBookingLogs.Add(new MemberBookingLog
+					{
+						CreatedDate = DateTime.UtcNow,
+						Event = "Payment completed",
+						EventType = (int)MemberBookingLog.BookingEvent.Payment,
+						LoggerId = memberId
+					});
+				}
+
+				offer.MemberBookings.Add(createBookingModel.Booking);
+
+				context.Commit();
+
+				var newContext = ModelFactory.GetUnitOfWork();
+				var bRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
+				var booking = bRepo.Get(createBookingModel.Booking.Id);
+
+				//send mail to client
+				var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+				var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
+				TagBuilder dashboardLink = new TagBuilder("a");
+				dashboardLink.MergeAttribute("href", dashboardUrl);
+				dashboardLink.InnerHtml = dashboardUrl;
+
+				var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
+				TagBuilder localisationLink = new TagBuilder("a");
+				localisationLink.MergeAttribute("href", localisationUrl);
+				localisationLink.InnerHtml = localisationUrl;
+
+				dynamic clientMail = new Email(MVC.Emails.Views.Email);
+				clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+				clientMail.To = booking.Client.Email;
+				clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreationSubject, booking.Offer.Localisation.Name);
+				clientMail.ToName = booking.Client.MemberMainData.FirstName;
+				clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreation,
+													Localisation.GetOfferType(booking.Offer.Type),
+													booking.Offer.Localisation.Name,
+													booking.GetStartDate(),
+													booking.GetEndDate(),
+													dashboardLink,
+													booking.Price,
+													localisationLink);
+
+				clientMail.Send();
+
+				return booking;
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("CreateEvent", ex);
+				context.Complete();
+				throw new ModelStateException(ModelState);
+			}
+		}
+
 		/// <summary>
 		/// Action to create booking creation partial view for an offer
 		/// </summary>
@@ -301,7 +385,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 
 				var offer = oRepo.Get(id);
-				var clients = offer.Localisation.LocalisationClients.ToDictionary(mc => mc.ClientId, mc => mc.Member.GetFullDisplayName());
 				var model = new CreateBookingModel(offer.Localisation);
 				model.Booking.OfferId = id;
 
@@ -330,60 +413,33 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 			if (ModelState.IsValid)
 			{
-				try
-				{
-					var offer = oRepo.Get(createBookingModel.Booking.OfferId);
+				var booking = InternalCreateBooking(createBookingModel);
+				return Json(booking.GetCalandarEvent(Url));
+			}
+			else
+			{
+				throw new ModelStateException(ModelState);
+			}
+		}
 
-					MemberBookingLog log = new MemberBookingLog();
-					log.CreatedDate = DateTime.UtcNow;
-					log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
-					log.Event = "Booking Created From Calandar";
-					createBookingModel.Booking.MemberBookingLogs.Add(log);
+		/// <summary>
+		/// Ajax action to handle Create event then edit
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		/// <param name="start">start date</param>
+		/// <param name="end">end date</param>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[HandleModelStateException]
+		[ValidateOnlyIncomingValues]
+		public virtual ActionResult CreateAndEditEvent(CreateBookingModel createBookingModel)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 
-					offer.MemberBookings.Add(createBookingModel.Booking);
-
-					context.Commit();
-
-					var newContext = ModelFactory.GetUnitOfWork();
-					var bRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
-					var booking = bRepo.Get(createBookingModel.Booking.Id);
-
-					//send mail to client
-					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
-					TagBuilder dashboardLink = new TagBuilder("a");
-					dashboardLink.MergeAttribute("href", dashboardUrl);
-					dashboardLink.InnerHtml = dashboardUrl;
-
-					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
-					TagBuilder localisationLink = new TagBuilder("a");
-					localisationLink.MergeAttribute("href", localisationUrl);
-					localisationLink.InnerHtml = localisationUrl;
-
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreationSubject, booking.Offer.Localisation.Name);
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreation,
-														Localisation.GetOfferType(booking.Offer.Type),
-														booking.Offer.Localisation.Name,
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														dashboardLink,
-														booking.Price,
-														localisationLink);
-
-					clientMail.Send();
-
-					return Json(booking.GetCalandarEvent(Url));
-				}
-				catch (Exception ex)
-				{
-					_Logger.Error("CreateEvent", ex);
-					context.Complete();
-					throw new ModelStateException(ModelState);
-				}
+			if (ModelState.IsValid)
+			{
+				var booking = InternalCreateBooking(createBookingModel);
+				return Json(new { redirectToUrl = Url.Action(MVC.Backoffice.Schedule.EditBooking(booking.Id)) });
 			}
 			else
 			{
@@ -410,7 +466,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var localisation = lRepo.Get(id);
 				Member.Validate(member);
 
-				var model = new CreateBookingModel(localisation);
+				var model = new LocalisationModel<CreateBookingModel> { InnerModel = new CreateBookingModel(localisation), LocalisationModelId = id };
 				return View(model);
 			}
 			catch (Exception ex)
@@ -421,7 +477,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		}
 
 		/// <summary>
-		/// Ajax action to handle Create event
+		/// action to handle Create booking
 		/// </summary>
 		/// <param name="id">id of the booking</param>
 		/// <param name="start">start date</param>
@@ -429,68 +485,167 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		[HandleModelStateException]
 		[ValidateOnlyIncomingValues]
-		public virtual ActionResult CreateBooking(CreateBookingModel createBookingModel)
+		public virtual ActionResult CreateBooking(LocalisationModel<CreateBookingModel> createBookingModel)
+		{
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var booking = InternalCreateBooking(createBookingModel.InnerModel);
+					return RedirectToAction(MVC.Backoffice.Schedule.OfferSchedule(booking.Offer.LocalisationId, booking.OfferId));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("CreateBooking", ex);
+				}
+			}
+			return View(createBookingModel);
+		}
+
+		/// <summary>
+		/// Action to create booking
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		/// <returns></returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult EditBooking(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			try
+			{
+				var context = ModelFactory.GetUnitOfWork();
+				var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+				var booking = bRepo.Get(id);
+
+				var model = new LocalisationModel<CreateBookingModel> { InnerModel = new CreateBookingModel(booking.Offer.Localisation, booking), LocalisationModelId = booking.Offer.LocalisationId };
+				return View(MVC.Backoffice.Schedule.Views.CreateBooking, model);
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("EditBooking", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// action to handle Create booking
+		/// </summary>
+		/// <param name="id">id of the booking</param>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[HandleModelStateException]
+		[ValidateOnlyIncomingValues]
+		public virtual ActionResult EditBooking(int id, LocalisationModel<CreateBookingModel> createBookingModel)
 		{
 			var context = ModelFactory.GetUnitOfWork();
-			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var booking = bRepo.Get(id);
 
 			if (ModelState.IsValid)
 			{
 				try
 				{
-					var offer = oRepo.Get(createBookingModel.Booking.OfferId);
+					TryUpdateModel(booking, "InnerModel.Booking");
 
-					MemberBookingLog log = new MemberBookingLog();
-					log.CreatedDate = DateTime.UtcNow;
-					log.EventType = (int)MemberBookingLog.BookingEvent.Creation;
-					log.Event = "Booking Created From Calandar";
-					createBookingModel.Booking.MemberBookingLogs.Add(log);
-
-					offer.MemberBookings.Add(createBookingModel.Booking);
+					if (booking.Paid)
+					{
+						booking.MemberBookingLogs.Add(new MemberBookingLog
+						{
+							CreatedDate = DateTime.UtcNow,
+							Event = "Payment completed",
+							EventType = (int)MemberBookingLog.BookingEvent.Payment,
+							LoggerId = memberId
+						});
+					}
 
 					context.Commit();
 
 					var newContext = ModelFactory.GetUnitOfWork();
-					var bRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
-					var booking = bRepo.Get(createBookingModel.Booking.Id);
+					var newRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
+					var newBooking = newRepo.Get(id);
 
-					//send mail to client
-					var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-					var dashboardUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Home.Index());
-					TagBuilder dashboardLink = new TagBuilder("a");
-					dashboardLink.MergeAttribute("href", dashboardUrl);
-					dashboardLink.InnerHtml = dashboardUrl;
-
-					var localisationUrl = booking.Offer.Localisation.GetDetailFullUrl(Url);
-					TagBuilder localisationLink = new TagBuilder("a");
-					localisationLink.MergeAttribute("href", localisationUrl);
-					localisationLink.InnerHtml = localisationUrl;
-
-					dynamic clientMail = new Email(MVC.Emails.Views.Email);
-					clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-					clientMail.To = booking.Client.Email;
-					clientMail.Subject = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreationSubject, booking.Offer.Localisation.Name);
-					clientMail.ToName = booking.Client.MemberMainData.FirstName;
-					clientMail.Content = string.Format(Worki.Resources.Email.BookingString.CalandarBookingCreation,
-														Localisation.GetOfferType(booking.Offer.Type),
-														booking.Offer.Localisation.Name,
-														booking.GetStartDate(),
-														booking.GetEndDate(),
-														dashboardLink,
-														booking.Price,
-														localisationLink);
-
-					clientMail.Send();
-
-					return RedirectToAction(MVC.Backoffice.Schedule.CreateBooking(createBookingModel.Booking.Offer.LocalisationId));
+					return RedirectToAction(MVC.Backoffice.Schedule.OfferSchedule(newBooking.Offer.LocalisationId, newBooking.OfferId));
 				}
 				catch (Exception ex)
 				{
-					_Logger.Error("CreateBooking", ex);
+					_Logger.Error("CreateEvent", ex);
 					context.Complete();
 				}
 			}
-			return View(createBookingModel);
+			createBookingModel.InnerModel.InitSelectLists(booking.Offer.Localisation);
+			return View(MVC.Backoffice.Schedule.Views.CreateBooking, createBookingModel);
+		}
+
+		/// <summary>
+		/// GET Action result to delete booking
+		/// </summary>
+		/// <param name="id">id of booking to delete</param>
+		/// <returns>View to fill booking data</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult DeleteBooking(int id, string returnUrl)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+
+			try
+			{
+				var member = mRepo.Get(memberId);
+				var booking = bRepo.Get(id);
+				Member.Validate(member);
+				Member.ValidateOwner(member, booking.Offer.Localisation);
+
+				var model = new RefuseBookingModel { BookingId = id, ReturnUrl = returnUrl };
+				return View(new LocalisationModel<RefuseBookingModel> { InnerModel = model, LocalisationModelId = booking.Offer.LocalisationId });
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("RefuseBooking", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// POST Action result to confirm booking
+		/// </summary>
+		/// <param name="id">id of booking to confirm</param>
+		/// <returns>View to fill booking data</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult DeleteBooking(int id, LocalisationModel<RefuseBookingModel> formModel, string confirm)
+		{
+			if (string.IsNullOrEmpty(confirm))
+			{
+				return Redirect(formModel.InnerModel.ReturnUrl);
+			}
+
+			var context = ModelFactory.GetUnitOfWork();
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var booking = bRepo.Get(id);
+					var offerId = booking.OfferId;
+					var locId = booking.Offer.LocalisationId;
+					bRepo.Delete(id);
+					context.Commit();
+
+					TempData[MiscHelpers.TempDataConstants.Info] = "Résa supprimée";
+
+					return RedirectToAction(MVC.Backoffice.Schedule.OfferSchedule(locId, offerId));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("DeleteBooking", ex);
+					context.Complete();
+				}
+			}
+			return View(formModel);
 		}
 
 		#endregion	

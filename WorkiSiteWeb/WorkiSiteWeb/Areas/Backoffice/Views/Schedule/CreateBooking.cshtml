@@ -1,22 +1,26 @@
-﻿@model CreateBookingModel
+﻿@model LocalisationModel<CreateBookingModel>
+
+@{
+	var title = Model.InnerModel.Booking.Id != 0 ? Worki.Resources.Views.BackOffice.BackOfficeString.Edit : Worki.Resources.Views.BackOffice.BackOfficeString.CreateBooking;
+}
 
 @section HeadContent
 {
-	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Configure)</title>
+	<title>@Html.WorkiTitle(title)</title>
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 	<link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Localisation.ID, LocalisationMainMenu.Schedule));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationModelId, LocalisationMainMenu.Schedule));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.LocalisationSchedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.OfferSchedule, MVC.Backoffice.Schedule.OfferSchedule(Model.Localisation.ID))} ,
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Schedule, MVC.Backoffice.Schedule.CreateBooking(Model.Localisation.ID))}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.LocalisationSchedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model.LocalisationModelId))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.OfferSchedule, MVC.Backoffice.Schedule.OfferSchedule(Model.LocalisationModelId))} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink(title, MVC.Backoffice.Schedule.CreateBooking(Model.LocalisationModelId))}
 		})
 	</div>
 
@@ -25,88 +29,96 @@
 		{
 		    <div class="contentBlock">
 	   		    @Html.AntiForgeryToken()
+				@Html.HiddenFor(m => m.LocalisationModelId)
 				<table class="configoffertable">
                     <tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Booking.OfferId)
+								@Html.LabelFor(m => m.InnerModel.Booking.OfferId)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.DropDownListFor(m => m.Booking.OfferId, Model.Offers)
+								@Html.DropDownListFor(m => m.InnerModel.Booking.OfferId, Model.InnerModel.Offers)
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Booking.MemberId)
+								@Html.LabelFor(m => m.InnerModel.Booking.MemberId)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.DropDownListFor(m => m.Booking.MemberId, Model.Clients)
+								@Html.DropDownListFor(m => m.InnerModel.Booking.MemberId, Model.InnerModel.Clients)
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Booking.PaymentType)
+								@Html.LabelFor(m => m.InnerModel.Booking.PaymentType)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.DropDownListFor(m => m.Booking.PaymentType, Model.PaymentTypes)
+								@Html.DropDownListFor(m => m.InnerModel.Booking.PaymentType, Model.InnerModel.PaymentTypes)
+							</div>
+						</td>
+					</tr>
+					@if (!Model.InnerModel.Booking.Paid)
+					{ 
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.InnerModel.Booking.StatusId)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(m => m.InnerModel.Booking.StatusId, Model.InnerModel.Statuses)
+							</div>
+						</td>
+					</tr>
+					}
+					else
+					{
+						@Html.HiddenFor(m => m.InnerModel.Booking.StatusId)
+					}
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Html.LabelFor(m => m.InnerModel.Booking.FromDate)
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.TextBox("InnerModel.Booking.FromDate", CultureHelpers.GetSpecificFormat(Model.InnerModel.Booking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Booking.StatusId)
+								@Html.LabelFor(m => m.InnerModel.Booking.ToDate)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.DropDownListFor(m => m.Booking.StatusId, Model.Statuses)
+								@Html.TextBox("InnerModel.Booking.ToDate", CultureHelpers.GetSpecificFormat(Model.InnerModel.Booking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="editor-label">
-								@Html.LabelFor(m => m.Booking.FromDate)
+								@Html.LabelFor(m => m.InnerModel.Booking.Price)
 							</div>
 						</td>
 						<td>
 							<div class="editor-field">
-								@Html.TextBox("Booking.FromDate", CultureHelpers.GetSpecificFormat(Model.Booking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Booking.ToDate)
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.TextBox("Booking.ToDate", CultureHelpers.GetSpecificFormat(Model.Booking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="editor-label">
-								@Html.LabelFor(m => m.Booking.Price)
-							</div>
-						</td>
-						<td>
-							<div class="editor-field">
-								@Html.TextBoxFor(m => m.Booking.Price)
+								@Html.TextBoxFor(m => m.InnerModel.Booking.Price)
 							</div>
 						</td>
 					</tr>

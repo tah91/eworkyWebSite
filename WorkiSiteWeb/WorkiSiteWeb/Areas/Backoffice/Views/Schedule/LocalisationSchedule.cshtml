@@ -1,4 +1,4 @@
-﻿@model	LocalisationBookingViewModel
+﻿@model	int
 
 @section HeadContent
 {
@@ -7,16 +7,16 @@
     <link rel='stylesheet' type='text/css' href="@Url.VersionedContent(Links.Content.fullcalendar_min_css)" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Item.ID, LocalisationMainMenu.Schedule));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model, LocalisationMainMenu.Schedule));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.LocalisationSchedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model.Item.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.OfferSchedule, MVC.Backoffice.Schedule.OfferSchedule(Model.Item.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.CreateBooking, MVC.Backoffice.Schedule.CreateBooking(Model.Item.ID))}
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.LocalisationSchedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.OfferSchedule, MVC.Backoffice.Schedule.OfferSchedule(Model))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.CreateBooking, MVC.Backoffice.Schedule.CreateBooking(Model))}
 		})
 	</div>
 
@@ -31,118 +31,5 @@
 </div>
 @section ScriptContent
 {
-    <script type='text/javascript' src='@Links.Scripts.jquery_ui_1_8_12_custom_min_js'></script>
-    <script type='text/javascript'>
-
-        require(["@Links.Scripts.fullcalendar_min_js"], function () {
-            $(document).ready(function () {
-            
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prevYear,prev,next,nextYear today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet',
-                             'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun',
-                                  'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
-                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi',
-                           'Jeudi', 'Vendredi', 'Samedi'],
-                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-                timeFormat: {
-                                // for agendaWeek and agendaDay
-                                agenda: 'HH:mm{ - HH:mm}', // 17:00 - 18:30
-
-                                // for all other views
-                                '': 'HH:mm' // 17:00
-                            },
-                axisFormat: 'HH:mm',
-                slotMinutes: 15,
-                allDaySlot: false,
-                titleFormat: {
-                                month: 'MMMM yyyy',                             // Septembre 2009
-                                week: "MMM dd[ yyyy]{ '&#8212;'[ MMM] dd yyyy}", // Sep 07 - 13 2009
-                                day: 'dddd dd MMMM yyyy'                  // Mardi 08 Septembre 2009
-                            },
-                columnFormat: {
-                                month: 'ddd',    // Lun
-                                week: 'ddd dd/MM', // Lun 07/09
-                                day: 'dddd dd/MM'  // Lundi 07/09
-                            },
-                buttonText: {
-                                prev:     '&nbsp;&#9668;&nbsp;',  // left triangle
-                                next:     '&nbsp;&#9658;&nbsp;',  // right triangle
-                                prevYear: '&nbsp;&lt;&lt;&nbsp;', // <<
-                                nextYear: '&nbsp;&gt;&gt;&nbsp;', // >>
-                                today:    'aujourd\'hui',
-                                month:    'mois',
-                                week:     'semaine',
-                                day:      'jour'
-                            },
-                editable: true,
-                events: [
-                @{
-                    var orange = "#f7a33a";
-                    var red = "#d25657";
-                    var yellow = "#ffcc00";
-                    var grey = "#808080";
-                    var colored = "";
-                }
-                    @foreach (var item in Model.List.List)
-                    {
-                        if (item.Expired || item.Cancelled)
-                        {
-                            colored = grey;
-                        }
-                        else if (item.Refused)
-                        {
-                            colored = red;
-                        }
-                        else if (item.Waiting)
-                        {
-                            colored = orange;
-                        }
-                        else if (item.Unknown)
-                        {
-                            colored = yellow;
-                        }
-
-                        @:{ id: '@item.Id', title: '@Html.Raw(item.Offer.Name) - @Html.Raw(item.Member.GetFullDisplayName())', start: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.FromDate)', end: '@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.ToDate)', color: '@colored', url: '@Url.AbsoluteAction(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = item.Id })', allDay: false },
-                    }
-			    ],
-                selectable: true,
-		        selectHelper: true,
-                eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
-                    $.ajax({
-                        type: "GET",
-                        url: "/Backoffice/Localisation/DropEvent",
-                        data: ({ id : event.id, dayDelta : dayDelta, minuteDelta : minuteDelta}),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-			                error: function (xhr, status, err) {
-				                if (xhr.status == 400) {
-					                revertFunc();
-				                }
-                            }
-                    });
-                },
-                eventResize: function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) {
-                    $.ajax({
-                            type: "GET",
-                            url: "/Backoffice/Localisation/ResizeEvent",
-                            data: ({ id : event.id, dayDelta : dayDelta, minuteDelta : minuteDelta}),
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-			                error: function (xhr, status, err) {
-				                if (xhr.status == 400) {
-					                revertFunc();
-				                }
-                            }
-                        });
-                }
-			});
-        });
-    });
-    </script>
+    @Html.Partial(MVC.Backoffice.Schedule.Views._ScheduleScript, new ScheduleModel { IsEditable = "false", SourceFeed = Url.Action(MVC.Backoffice.Schedule.AllBookingEvents(Model)) })
 }

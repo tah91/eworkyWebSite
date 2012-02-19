@@ -16,7 +16,7 @@
 		{ 
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.LocalisationSchedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model.Localisation.ID))} ,
 			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.OfferSchedule, MVC.Backoffice.Schedule.OfferSchedule(Model.Localisation.ID))} ,
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Schedule, MVC.Backoffice.Schedule.CreateBooking(Model.Localisation.ID))}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.CreateBooking, MVC.Backoffice.Schedule.CreateBooking(Model.Localisation.ID))}
 		})
 	</div>
 	<div class="blockContainer float-left contentRight">
@@ -36,10 +36,18 @@
 			InitDropdown("#@DropDownModel.OfferDD");
 		});
 
-		$('#createEventForm').submit(function () {
+		$("#createEventForm input[type=submit]").click(function () {
+			$("input[type=submit]", $(this).parents("form")).removeAttr("clicked");
+			$(this).attr("clicked", "true");
+		});
+
+		$('#createEventForm').submit(function (e) {
+			var idbouton = $("input[type=submit][clicked=true]").attr('id');
+			var onlyCreate = (idbouton == null || idbouton == 'createBooking');
+			var submitUrl = onlyCreate ? '@Url.Action(MVC.Backoffice.Schedule.CreateEvent())' : '@Url.Action(MVC.Backoffice.Schedule.CreateAndEditEvent())'
 			$.ajax({
 				type: 'POST',
-				url: '@Url.Action(MVC.Backoffice.Schedule.CreateEvent())',
+				url: submitUrl,
 				data: $(this).serializeArray(),
 				error: function (xhr, status, err) {
 					if (xhr.status == 400) {
@@ -49,10 +57,15 @@
 					}
 				},
 				success: function (data, textStatus, jqXHR) {
-					$('#calendar').fullCalendar('renderEvent', data, true);
-					$('#calendar').fullCalendar('unselect');
-					$('div.field-validation-error').remove();
-					$('.createBooking').fadeOut("slow");
+					if (onlyCreate) {
+						$('#calendar').fullCalendar('renderEvent', data, true);
+						$('#calendar').fullCalendar('unselect');
+						$('div.field-validation-error').remove();
+						$('.createBooking').fadeOut("slow");
+					}
+					else {
+						window.location.href = data.redirectToUrl;
+					}
 				}
 			});
 			return false;
@@ -60,152 +73,9 @@
 
         $('.cross').click(function () {
             $('.createBooking').hide();
-        });
+           });
 
-		require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
+	</script>
 
-			require(["@Links.Scripts.fullcalendar_js"], function () {
-				$('#calendar').fullCalendar({
-					header: {
-						left: 'prev,next today',
-						center: 'title',
-						right: 'month,agendaWeek,agendaDay'
-					},
-					monthNames:['@Worki.Resources.Views.BackOffice.FullCalandar.January',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.February',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.March',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.April',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.May',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.June',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.July',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.August',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.September',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.October',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.November',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.December'],
-					monthNamesShort:['@Worki.Resources.Views.BackOffice.FullCalandar.JanuaryShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.FebruaryShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.MarchShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.AprilShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.MayShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.JuneShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.JulyShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.AugustShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.SeptemberShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.OctoberShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.NovemberShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.DecemberShort'],
-					dayNames: [	'@Worki.Resources.Views.BackOffice.FullCalandar.Sunday',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.Monday',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.Tuesday',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.Wednesday',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.Thursday',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.Friday',
-								'@Worki.Resources.Views.BackOffice.FullCalandar.Saturday'],
-					dayNamesShort: ['@Worki.Resources.Views.BackOffice.FullCalandar.SundayShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.MondayShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.TuesdayShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.WednesdayShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.ThursdayShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.FridayShort',
-									'@Worki.Resources.Views.BackOffice.FullCalandar.SaturdayShort'],
-					timeFormat: {
-						// for agendaWeek and agendaDay
-						agenda: '@Worki.Resources.Views.BackOffice.FullCalandar.AgendaDayTimeFormat', // 17:00 - 18:30
-
-						// for all other views
-						'': '@Worki.Resources.Views.BackOffice.FullCalandar.AgendaTimeFormat' // 17:00
-					},
-					axisFormat: '@Worki.Resources.Views.BackOffice.FullCalandar.AxisFormat',
-					slotMinutes: 15,
-					allDaySlot: true,
-					allDayText: '',
-					titleFormat: {
-						month: 'MMMM yyyy',                             // Septembre 2009
-						week: "MMM dd[ yyyy]{ '&#8212;'[ MMM] dd yyyy}", // Sep 07 - 13 2009
-						day: 'dddd dd MMMM yyyy'                  // Mardi 08 Septembre 2009
-					},
-					columnFormat: {
-						month: 'ddd',    // Lun
-						week: 'ddd dd/MM', // Lun 07/09
-						day: 'dddd dd/MM'  // Lundi 07/09
-					},
-					buttonText: {
-						prev: '&nbsp;&#9668;&nbsp;',  // left triangle
-						next: '&nbsp;&#9658;&nbsp;',  // right triangle
-						prevYear: '&nbsp;&lt;&lt;&nbsp;', // <<
-						nextYear: '&nbsp;&gt;&gt;&nbsp;', // >>
-						today: '@Worki.Resources.Views.BackOffice.FullCalandar.Today',
-						month: '@Worki.Resources.Views.BackOffice.FullCalandar.Month',
-						week: '@Worki.Resources.Views.BackOffice.FullCalandar.Week',
-						day: '@Worki.Resources.Views.BackOffice.FullCalandar.Day'
-					},
-					editable: true,
-					eventSources: [
-						{
-							url: '@Url.Action(MVC.Backoffice.Schedule.BookingEvents(Model.Id))',
-							type: 'POST',
-							error: function () {
-								alert('@Worki.Resources.Views.BackOffice.FullCalandar.ErrorWhileLoading');
-							}
-						}
-					],
-					selectable: true,
-					selectHelper: true,
-					eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view) {
-						$.ajax({
-							type: 'POST',
-							url: '@Url.Action(MVC.Backoffice.Schedule.DropEvent())',
-							data: ({ id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta }),
-							error: function (xhr, status, err) {
-								if (xhr.status == 400) {
-									revertFunc();
-								}
-							}
-						});
-					},
-					eventResize: function (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
-						$.ajax({
-							type: 'POST',
-							url: '@Url.Action(MVC.Backoffice.Schedule.ResizeEvent())',
-							data: ({ id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta }),
-							error: function (xhr, status, err) {
-								if (xhr.status == 400) {
-									revertFunc();
-								}
-							}
-						});
-					},
-					select: function (startDate, endDate, allDay, jsEvent, view) {
-						var start = (new Date(startDate)).toString('dd/MM/yy HH:mm');
-						var end = (new Date(endDate)).toString('dd/MM/yy HH:mm');
-						$('#Booking_FromDate').val(start);
-						$('#Booking_ToDate').val(end);
-						$('#eventPeriod').html(start + ' - ' + end);
-						$('#Booking_Price').val('');
-						$('div.field-validation-error').remove(); 
-						$('.createBooking').css({ left: jsEvent.pageX, top: jsEvent.pageY });
-						$('.createBooking').fadeIn("slow");
-					}
-//					unselect: function (jsEvent, view) {
-//						$('.createBooking').hide();
-//					}
-//					eventMouseover: function (calEvent, jsEvent, view) {
-//						$.ajax({
-//							url: '@Url.Action(MVC.Backoffice.Schedule.BookingSummary())',
-//							data: { 'id': calEvent.id },
-//							success: function (data) {
-//								$('#bookingSummary').html(data);
-//								$('#bookingSummary').css({ left: jsEvent.pageX, top: jsEvent.pageY });
-//								$('#bookingSummary').fadeIn("slow");
-//							}
-//						});
-//					},
-//					eventMouseout: function (calEvent, jsEvent, view) {
-//						$('#bookingSummary').hide();
-//					}
-				});
-			});
-		});
-    </script>
+	@Html.Partial(MVC.Backoffice.Schedule.Views._ScheduleScript, new ScheduleModel { IsEditable = "true", SourceFeed = Url.Action(MVC.Backoffice.Schedule.BookingEvents(Model.Id)) })
 }

@@ -58,6 +58,12 @@
 					@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Refuse, MVC.Backoffice.Localisation.RefuseBooking(Model.Id, Request.Url.PathAndQuery))
 				</div>
 			}
+			<div class="buttonStd buttonBlue linkImg inline-block">
+				@Html.ActionLink("Editer", MVC.Backoffice.Schedule.EditBooking(Model.Id))
+			</div>
+			@*<div class="buttonStd buttonBlue linkImg inline-block">
+				@Html.ActionLink("Supprimer", MVC.Backoffice.Schedule.DeleteBooking(Model.Id, Request.Url.PathAndQuery))
+			</div>*@
 		</div>
 		<div class="clear">
         </div>

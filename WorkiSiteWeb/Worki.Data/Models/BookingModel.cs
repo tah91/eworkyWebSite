@@ -228,12 +228,23 @@ namespace Worki.Data.Models
 		{
 			get { return string.Format("du {0} au {1}", CultureHelpers.GetSpecificFormat(FromDate, CultureHelpers.TimeFormat.General), CultureHelpers.GetSpecificFormat(ToDate, CultureHelpers.TimeFormat.General)); }
 		}
+
+		bool IsStatus(Status status)
+		{
+			return StatusId == (int)status;
+		}
+
+		DateTime GetEventDate(MemberBookingLog.BookingEvent eventType)
+		{
+			return (from item in MemberBookingLogs where item.EventType == (int)eventType select item.CreatedDate).FirstOrDefault();
+		}
+
 		/// <summary>
 		/// Created but not handled by owner yet
 		/// </summary>
 		public bool Unknown
 		{
-			get { return StatusId == (int)Status.Unknown; }
+			get { return IsStatus(Status.Unknown); }
 		}
 
 
@@ -242,7 +253,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Refused
 		{
-			get { return StatusId == (int)Status.Refused; }
+			get { return IsStatus(Status.Refused); }
 		}
 
         /// <summary>
@@ -250,7 +261,7 @@ namespace Worki.Data.Models
         /// </summary>
         public bool Cancelled
         {
-            get { return StatusId == (int)Status.Cancelled; }
+            get { return IsStatus(Status.Cancelled); }
         }
 
 		/// <summary>
@@ -258,7 +269,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Waiting
 		{
-			get { return StatusId == (int)Status.Accepted; }
+			get { return IsStatus(Status.Accepted); }
 		}
 
 
@@ -267,7 +278,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public bool Paid
 		{
-			get { return StatusId == (int)Status.Paid; }
+			get { return IsStatus(Status.Paid); }
 		}
 
 		/// <summary>
@@ -283,7 +294,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public DateTime PaidDate
 		{
-			get { return (from item in Transactions where item.UpdatedDate.HasValue select item.UpdatedDate.Value).FirstOrDefault(); }
+			get { return GetEventDate(MemberBookingLog.BookingEvent.Payment); }
 		}
 
 		/// <summary>
@@ -291,7 +302,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public DateTime CreationDate
 		{
-			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Creation select item.CreatedDate).FirstOrDefault(); }
+			get { return GetEventDate(MemberBookingLog.BookingEvent.Creation); }
 		}
 
 		/// <summary>
@@ -299,7 +310,7 @@ namespace Worki.Data.Models
 		/// </summary>
 		public DateTime RefusalDate
 		{
-			get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Refusal select item.CreatedDate).FirstOrDefault(); }
+			get { return GetEventDate(MemberBookingLog.BookingEvent.Refusal); }
 		}
 
         /// <summary>
@@ -307,7 +318,7 @@ namespace Worki.Data.Models
         /// </summary>
         public DateTime CancellationDate
         {
-            get { return (from item in MemberBookingLogs where item.EventType == (int)MemberBookingLog.BookingEvent.Cancellation select item.CreatedDate).FirstOrDefault(); }
+            get { return GetEventDate(MemberBookingLog.BookingEvent.Cancellation); }
         }
 
 		/// <summary>
@@ -433,25 +444,32 @@ namespace Worki.Data.Models
 			Init();
         }
 
-		public CreateBookingModel(Localisation localisation)
+		public CreateBookingModel(Localisation localisation, MemberBooking booking = null)
 		{
-			Init();
-			Localisation = localisation;
-			var clients = localisation.LocalisationClients.ToDictionary(mc => mc.ClientId, mc => mc.Member.GetFullDisplayName());
-			Clients = new SelectList(clients, "Key", "Value");
-			var offers = localisation.Offers.ToDictionary(o => o.Id, o => o.Name);
-			Offers = new SelectList(offers, "Key", "Value");
+			Init(localisation, booking);
 		}
 
-		void Init()
+		void Init(Localisation localisation = null, MemberBooking booking = null)
+		{
+			Booking = booking ?? new MemberBooking();
+			InitSelectLists(localisation);
+		}
+
+		public void InitSelectLists(Localisation localisation = null)
 		{
 			PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
 			Statuses = new SelectList(MemberBooking.GetStatusTypes(new List<MemberBooking.Status> { MemberBooking.Status.Accepted, MemberBooking.Status.Paid }), "Key", "Value", MemberBooking.Status.Paid);
-			Booking = new MemberBooking();
+			
+			if (localisation != null)
+			{
+				var clients = localisation.LocalisationClients.ToDictionary(mc => mc.ClientId, mc => mc.Member.GetFullDisplayName());
+				Clients = new SelectList(clients, "Key", "Value");
+				var offers = localisation.Offers.ToDictionary(o => o.Id, o => o.Name);
+				Offers = new SelectList(offers, "Key", "Value");
+			}
 		}
 
 		public MemberBooking Booking { get; set; }
-		public Localisation Localisation { get; set; }
 		public SelectList Clients { get; set; }
         public SelectList PaymentTypes { get; set; }
         public SelectList Statuses { get; set; }
@@ -461,6 +479,9 @@ namespace Worki.Data.Models
 	[Bind(Exclude = "Id")]
 	public class MemberBooking_Validation
 	{
+		[Display(Name = "OfferId", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+		public int OfferId { get; set; }
+
         [Display(Name = "MemberId", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
         public int MemberId { get; set; }
 

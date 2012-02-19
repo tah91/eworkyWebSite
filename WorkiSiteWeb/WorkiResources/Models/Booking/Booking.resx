@@ -153,6 +153,9 @@
   <data name="Offer" xml:space="preserve">
     <value>Besoin</value>
   </data>
+  <data name="OfferId" xml:space="preserve">
+    <value>Offre</value>
+  </data>
   <data name="OfferName" xml:space="preserve">
     <value>Offre </value>
   </data>

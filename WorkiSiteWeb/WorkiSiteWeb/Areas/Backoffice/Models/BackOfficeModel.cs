@@ -87,4 +87,10 @@ namespace Worki.Web.Model
 		public string AlertLink { get; set; }
 		public string AlertTitle { get; set; }
 	}
+
+	public class ScheduleModel
+	{
+		public string SourceFeed { get; set; }
+		public string IsEditable { get; set; }
+	}
 }

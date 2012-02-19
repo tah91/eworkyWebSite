@@ -3788,6 +3788,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AllBookingEvents() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AllBookingEvents);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult BookingEvents() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.BookingEvents);
         }
@@ -3813,8 +3818,23 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult CreateAndEditEvent() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.CreateAndEditEvent);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult CreateBooking() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.CreateBooking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult EditBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.EditBooking);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DeleteBooking() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteBooking);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -3831,12 +3851,16 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ActionNamesClass {
             public readonly string OfferSchedule = "OfferSchedule";
             public readonly string LocalisationSchedule = "LocalisationSchedule";
+            public readonly string AllBookingEvents = "AllBookingEvents";
             public readonly string BookingEvents = "BookingEvents";
             public readonly string DropEvent = "DropEvent";
             public readonly string ResizeEvent = "ResizeEvent";
             public readonly string BookingSummary = "BookingSummary";
             public readonly string CreateEvent = "CreateEvent";
+            public readonly string CreateAndEditEvent = "CreateAndEditEvent";
             public readonly string CreateBooking = "CreateBooking";
+            public readonly string EditBooking = "EditBooking";
+            public readonly string DeleteBooking = "DeleteBooking";
         }
 
 
@@ -3847,7 +3871,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public class ViewNames {
             public readonly string _BookingSummary = "~/Areas/Backoffice/Views/Schedule/_BookingSummary.cshtml";
             public readonly string _CreateBooking = "~/Areas/Backoffice/Views/Schedule/_CreateBooking.cshtml";
+            public readonly string _ScheduleScript = "~/Areas/Backoffice/Views/Schedule/_ScheduleScript.cshtml";
             public readonly string CreateBooking = "~/Areas/Backoffice/Views/Schedule/CreateBooking.cshtml";
+            public readonly string DeleteBooking = "~/Areas/Backoffice/Views/Schedule/DeleteBooking.cshtml";
             public readonly string LocalisationSchedule = "~/Areas/Backoffice/Views/Schedule/LocalisationSchedule.cshtml";
             public readonly string OfferSchedule = "~/Areas/Backoffice/Views/Schedule/OfferSchedule.cshtml";
         }
@@ -3866,6 +3892,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         public override System.Web.Mvc.ActionResult LocalisationSchedule(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LocalisationSchedule);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AllBookingEvents(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AllBookingEvents);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
@@ -3910,15 +3942,49 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult CreateAndEditEvent(Worki.Data.Models.CreateBookingModel createBookingModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateAndEditEvent);
+            callInfo.RouteValueDictionary.Add("createBookingModel", createBookingModel);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult CreateBooking(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateBooking);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateBooking(Worki.Data.Models.CreateBookingModel createBookingModel) {
+        public override System.Web.Mvc.ActionResult CreateBooking(Worki.Web.Model.LocalisationModel<Worki.Data.Models.CreateBookingModel> createBookingModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateBooking);
             callInfo.RouteValueDictionary.Add("createBookingModel", createBookingModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditBooking(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult EditBooking(int id, Worki.Web.Model.LocalisationModel<Worki.Data.Models.CreateBookingModel> createBookingModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.EditBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("createBookingModel", createBookingModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DeleteBooking(int id, string returnUrl) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DeleteBooking(int id, Worki.Web.Model.LocalisationModel<Worki.Web.Model.RefuseBookingModel> formModel, string confirm) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteBooking);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formModel", formModel);
+            callInfo.RouteValueDictionary.Add("confirm", confirm);
             return callInfo;
         }
 

@@ -1,0 +1,43 @@
+﻿@model LocalisationModel<RefuseBookingModel>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle("Supprimer")</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationModelId, LocalisationMainMenu.Schedule));}
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{ 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.LocalisationSchedule, MVC.Backoffice.Schedule.LocalisationSchedule(Model.LocalisationModelId))} ,
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.OfferSchedule, MVC.Backoffice.Schedule.OfferSchedule(Model.LocalisationModelId))} ,
+			new MenuItem{ Selected = true, Link= Html.ActionLink("Supprimer", MVC.Backoffice.Schedule.CreateBooking(Model.LocalisationModelId))}
+		})
+	</div>
+
+	<div class="blockContainer float-left contentRight">
+		@using (Html.BeginForm())
+        {
+			@Html.AntiForgeryToken()
+			@Html.HiddenFor(m => m.LocalisationModelId)
+            @Html.HiddenFor(m => m.InnerModel.ReturnUrl)
+			<div class="contentBlock emptyContent">
+			    @Worki.Resources.Views.BackOffice.BackOfficeString.RefuseBooking
+			</div>
+			<div class="float-right">
+				<div class="inline-block">
+					<input type="submit" name="confirm" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Booking.BookingString.ConfirmIt"/>
+				</div>
+				<div class="inline-block">
+					<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.BackOffice.BackOfficeString.Return"/>
+				</div>
+			</div>
+			<div class="clear"></div>
+        }
+	</div>
+	<div class="clear"></div>
+</div>
