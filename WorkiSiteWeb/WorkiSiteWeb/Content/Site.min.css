@@ -55,18 +55,18 @@ html,body{margin:0;padding:0;height:100%}
 .turquie{background-position:-594px 0;width:16px;height:11px}
 .headerOptionNoHover{padding:8px;margin:5px;border:1px solid transparent}
 .headerOption{padding:8px;margin:5px;border:1px solid transparent}
-.headerOption:hover,.headerButton:hover{border:1px solid #CCC;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px}
+.headerOption:hover,.headerButton:hover{border:1px solid #CCC;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}
 .headerOption,.headerButton{text-decoration:none}
 .header .dropdown a,.header .dropdown a:visited{font-weight:bold}
 .header .dropdown dd,.header .dropdown dt,.header .dropdown ul{margin:5px}
 .header .dropdown dt a span{padding:0}
 .header .dropdown a[href="#"]{border-right-style:solid;border-right-width:1px;border-right-color:#f3f3f3;border:1px solid transparent;padding:8px 8px 6px 8px}
-.header .dropdown a[href="#"]:hover{color:inherit;border:1px solid #CCC;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px}
+.header .dropdown a[href="#"]:hover{color:inherit;border:1px solid #CCC;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}
 .header .dropdown[id="profilDropdown"] dd ul{padding-right:10px}
 .header .dropdown dd ul{top:2px;left:-5px;border:1px solid #CCC;box-shadow:2px 2px 5px #DDD}
 .header .dropdown dt a{min-width:inherit}
 .languageSwitch .dropdown dd ul{top:2px;min-width:56px}
-.languageSwitch .dropdown dd ul li a{padding:5px 1px 5px 13px}
+.languageSwitch .dropdown dd ul li a{padding:5px 1px 9px 13px}
 .languageSwitch .flags{height:18px;width:45px}
 .addPlaceHeader{padding:8px 10px!important}
 .logo{background-image:url('images/logo2.png');background-repeat:no-repeat;width:125px;height:40px;margin-right:20px}
