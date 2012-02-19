@@ -284,7 +284,7 @@ namespace Worki.Data.Models
 					   where item.Offer.Localisation.OwnerID == memberId
 					   group item by item.Offer.LocalisationId into bookings
 					   where bookings.Count() > 0
-					   orderby bookings.Count()
+					   orderby bookings.Count() descending
 					   select new { LocalisationId = bookings.Key, BookingCount = bookings.Count() }).Take(count);
 
             var ids = locBookings.Select(r => r.LocalisationId).ToList();

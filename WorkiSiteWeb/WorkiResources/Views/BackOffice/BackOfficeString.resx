@@ -331,4 +331,13 @@
   <data name="InvoicePrice" xml:space="preserve">
     <value>Prix</value>
   </data>
+  <data name="ClientAdded" xml:space="preserve">
+    <value>Le client a bien été ajouté</value>
+  </data>
+  <data name="ClientAlreadyExists" xml:space="preserve">
+    <value>Vous avez déjà ce client</value>
+  </data>
+  <data name="InvoiceOffer" xml:space="preserve">
+    <value>Offre</value>
+  </data>
 </root>

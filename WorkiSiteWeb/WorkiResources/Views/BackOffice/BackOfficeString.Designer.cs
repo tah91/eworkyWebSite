@@ -115,6 +115,24 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Le client a bien été ajouté.
+        /// </summary>
+        public static string ClientAdded {
+            get {
+                return ResourceManager.GetString("ClientAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous avez déjà ce client.
+        /// </summary>
+        public static string ClientAlreadyExists {
+            get {
+                return ResourceManager.GetString("ClientAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacter.
         /// </summary>
         public static string Contact {
@@ -300,6 +318,15 @@ namespace Worki.Resources.Views.BackOffice {
         public static string InvoiceId {
             get {
                 return ResourceManager.GetString("InvoiceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offre.
+        /// </summary>
+        public static string InvoiceOffer {
+            get {
+                return ResourceManager.GetString("InvoiceOffer", resourceCulture);
             }
         }
         

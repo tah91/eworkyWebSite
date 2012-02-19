@@ -32,7 +32,7 @@
                             @Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceDate
                         </th>
                         <th>
-                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoicePlace
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceOffer
                         </th>
                         <th>
                             @Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceClient
@@ -56,7 +56,7 @@
                             @CultureHelpers.GetSpecificFormat(item.CreationDate, CultureHelpers.TimeFormat.Date)
                         </td>
                         <td>
-                            @item.Offer.Localisation.Name
+                            @item.Offer.Name
                         </td>
                         <td>
                             @item.Client.GetFullDisplayName()

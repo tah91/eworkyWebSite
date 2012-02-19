@@ -135,7 +135,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     var client = mRepo.Get(clientId);
 					if (localisation.HasClient(clientId))
                     {
-                        throw new Exception("Vous avez déjà ce client");
+                        throw new Exception(Worki.Resources.Views.BackOffice.BackOfficeString.ClientAlreadyExists);
                     }
                     try
                     {
@@ -182,7 +182,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                         throw ex;
                     }
 
-                    TempData[MiscHelpers.TempDataConstants.Info] = "Le client a bien été ajouté.";
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.ClientAdded;
                     return RedirectToAction(MVC.Backoffice.Client.List());
                 }
                 catch (Exception ex)
@@ -340,7 +340,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				}
 			}
 
-			return View(new InvoiceFormViewModel(localisation, model));
+			return View(new InvoiceFormViewModel(localisation, model.Invoice));
 		}
 
 		/// <summary>

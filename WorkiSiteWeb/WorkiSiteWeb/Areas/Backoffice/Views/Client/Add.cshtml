@@ -25,6 +25,7 @@
         @using (Html.BeginForm(MVC.Backoffice.Client.ActionNames.Add, MVC.Backoffice.Client.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
         {
             @Html.AntiForgeryToken()
+			@Html.HiddenFor(m => m.LocalisationId)
             <div class="profilData">
                 <div class="contentBlock">
 			        <h3 class="blue">Informations du client</h3>

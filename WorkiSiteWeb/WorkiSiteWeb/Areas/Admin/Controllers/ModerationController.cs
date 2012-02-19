@@ -434,6 +434,48 @@ namespace Worki.Web.Areas.Admin.Controllers
 			return Content(message);
 		}
 
+		public virtual ActionResult MigrateClients()
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+
+			var memberWithClients = mRepo.GetMany(m => m.MemberClients.Count != 0);
+
+			var message = "";
+			try
+			{
+				var count = 0;
+				foreach (var item in memberWithClients)
+				{
+					var localisations = lRepo.GetMostBooked(item.MemberId, 1);
+					if (localisations.Count == 0)
+						continue;
+
+					var loc = localisations[0];
+					if (loc == null)
+						continue;
+
+					foreach (var client in item.MemberClients)
+					{
+						loc.LocalisationClients.Add(new LocalisationClient { ClientId = client.ClientId });
+					}
+					count++;
+				}
+
+				message = string.Format("addition of clients to {0} localisations", count);
+
+				context.Commit();
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("MigrateClients", ex);
+				context.Complete();
+				Content(ex.Message);
+			}
+			return Content(message);
+		}
+
 		#endregion
 	}
 }

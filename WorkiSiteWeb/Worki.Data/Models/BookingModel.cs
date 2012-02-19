@@ -586,9 +586,10 @@ namespace Worki.Data.Models
             Invoice = new InvoiceModel();
         }
 
-        public InvoiceFormViewModel(Localisation localisation, InvoiceFormViewModel model = null)
+        public InvoiceFormViewModel(Localisation localisation, InvoiceModel model = null)
         {
-            Invoice = new InvoiceModel(localisation);
+            Invoice = model ?? new InvoiceModel(localisation);
+			Invoice.Localisation = localisation;
             var clients = localisation.LocalisationClients.ToDictionary(mc => mc.ClientId, mc => mc.Member.GetFullDisplayName());
             Clients = new SelectList(clients, "Key", "Value");
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
