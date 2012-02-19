@@ -1007,6 +1007,7 @@ namespace Worki.Web.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
+            public readonly string UserMenu = "UserMenu";
             public readonly string Error = "Error";
             public readonly string IndexHead = "IndexHead";
             public readonly string PeopleSlider = "PeopleSlider";
@@ -1060,6 +1061,11 @@ namespace Worki.Web.Controllers {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class T4MVC_HomeController: Worki.Web.Controllers.HomeController {
         public T4MVC_HomeController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult UserMenu() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UserMenu);
+            return callInfo;
+        }
 
         public override System.Web.Mvc.ActionResult Error() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Error);

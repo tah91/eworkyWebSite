@@ -17,6 +17,8 @@ using Microsoft.ApplicationServer.Caching;
 using Worki.Web.Singletons;
 using Worki.Web.Helpers;
 using System.Web;
+using System.Web.Security;
+using Worki.Web.Model;
 
 namespace Worki.Web.Controllers
 {
@@ -39,6 +41,47 @@ namespace Worki.Web.Controllers
             this._Logger = logger;
             this._EmailService = emailService;
         }
+
+		[ChildActionOnly]
+		public virtual ActionResult UserMenu()
+		{
+			var displayName = User.Identity.Name;
+			var memberId = 0;
+			FormsIdentity ident = User.Identity as FormsIdentity;
+			if (ident != null)
+			{
+				displayName = WebHelper.GetIdentityDisplayName(User.Identity);
+				memberId = WebHelper.GetIdentityId(User.Identity);
+			}
+			var dropDown = new DropDownModel
+			{
+				Id = DropDownModel.ProfilDD,
+				Title = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", displayName),
+				Items = new List<DropDownItem>
+				{
+					new DropDownItem{ DisplayName = Worki.Resources.Menu.Menu.UserSpace, Link = Url.Action(MVC.Dashboard.Home.Index())}
+				}
+			};
+			if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
+			{
+				dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.OwnerSpace, Link = Url.Action(MVC.Backoffice.Home.Index()) });
+				var context = ModelFactory.GetUnitOfWork();
+				var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+				var member = mRepo.Get(memberId);
+
+				foreach (var item in member.Localisations)
+				{
+					dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = Url.Action(MVC.Backoffice.Localisation.Index(item.ID)) });
+				}
+			}
+			if (User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
+			{
+				dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Menu.Menu.AdminSpace, Link = Url.Action(MVC.Admin.Sheet.Index()) });
+			}
+			dropDown.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Shared.SharedString.Deconnect, Link = Url.Action(MVC.Account.LogOff()) });
+
+			return PartialView(MVC.Shared.Views._DropDownList, dropDown);
+		}
 
         /// <summary>
         /// Return view of error
