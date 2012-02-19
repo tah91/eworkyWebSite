@@ -45,22 +45,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
+
 				Offer offer;
-				//case no offer selected, take the first one
-				if (offerId == 0)
+				OfferController.GetOffer(id, offerId, out offer, lRepo, oRepo, () =>
 				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
-					if (offer == null)
-					{
-						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
-						return RedirectToAction(MVC.Backoffice.Offer.Configure(id));
-					}
-				}
-				else
-				{
-					offer = oRepo.Get(offerId);
-				}
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
+					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+				});
 
 				Member.ValidateOwner(member, offer.Localisation);
 

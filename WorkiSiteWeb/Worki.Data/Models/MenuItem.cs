@@ -71,6 +71,7 @@ namespace Worki.Data.Models
 		Edit,
 		Booking,
 		Quotation,
-		Schedule
+		Schedule,
+		Prices
 	}
 }

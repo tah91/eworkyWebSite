@@ -7,17 +7,17 @@
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationId, LocalisationMainMenu.Clients));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationModelId, LocalisationMainMenu.Clients));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{ 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Clients, MVC.Backoffice.Client.LocalisationList(Model.LocalisationId,null))},
-			new MenuItem{ Selected=true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add(Model.LocalisationId))},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Client.Invoices(Model.LocalisationId))} , 
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CreateInvoice, MVC.Backoffice.Client.CreateInvoice(Model.LocalisationId))}
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Clients, MVC.Backoffice.Client.LocalisationList(Model.LocalisationModelId,null))},
+			new MenuItem{ Selected=true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.AddClient, MVC.Backoffice.Client.Add(Model.LocalisationModelId))},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Invoices, MVC.Backoffice.Client.Invoices(Model.LocalisationModelId))} , 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.CreateInvoice, MVC.Backoffice.Client.CreateInvoice(Model.LocalisationModelId))}
 		})
 	</div>
 
@@ -25,7 +25,7 @@
         @using (Html.BeginForm(MVC.Backoffice.Client.ActionNames.Add, MVC.Backoffice.Client.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
         {
             @Html.AntiForgeryToken()
-			@Html.HiddenFor(m => m.LocalisationId)
+			@Html.HiddenFor(m => m.LocalisationModelId)
             <div class="profilData">
                 <div class="contentBlock">
 			        <h3 class="blue">Informations du client</h3>

@@ -300,7 +300,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var booking = bRepo.Get(id);
 				Member.Validate(member);
 				Member.ValidateOwner(member, booking.Offer.Localisation);
-				return View(new LocalisationModel<MemberBooking> { InnerModel = booking, LocalisationId = booking.Offer.LocalisationId });
+				return View(new LocalisationModel<MemberBooking> { InnerModel = booking, LocalisationModelId = booking.Offer.LocalisationId });
 			}
 			catch (Exception ex)
 			{
@@ -399,7 +399,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				Member.ValidateOwner(member, booking.Offer.Localisation);
 
                 var model = new RefuseBookingModel { BookingId = id, ReturnUrl = returnUrl };
-                return View(new LocalisationModel<RefuseBookingModel> { InnerModel = model, LocalisationId = booking.Offer.LocalisationId });
+                return View(new LocalisationModel<RefuseBookingModel> { InnerModel = model, LocalisationModelId = booking.Offer.LocalisationId });
 			}
 			catch (Exception ex)
 			{
@@ -650,7 +650,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 Member.ValidateOwner(member, quotation.Offer.Localisation);
 
 				var model = new RefuseQuotationModel { QuotationId = id, ReturnUrl = returnUrl };
-				return View(new LocalisationModel<RefuseQuotationModel> { InnerModel = model, LocalisationId = quotation.Offer.LocalisationId });
+				return View(new LocalisationModel<RefuseQuotationModel> { InnerModel = model, LocalisationModelId = quotation.Offer.LocalisationId });
             }
             catch (Exception ex)
             {

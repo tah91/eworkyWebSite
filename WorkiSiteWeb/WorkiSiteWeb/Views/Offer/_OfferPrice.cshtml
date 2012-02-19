@@ -2,7 +2,7 @@
 		   
 @{
 	var select = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Model.PriceType);
-	var bciName = Url.IsSecuredUrl() ? "InnerModel.Offer.OfferPrices" : "Offer.OfferPrices";
+	var bciName = Url.IsInArea("Backoffice") ? "InnerModel.Offer.OfferPrices" : "Offer.OfferPrices";
 }
 
 <div class="offerPricesRow">

@@ -32,9 +32,12 @@
 			</tr>
 		</table>
     </div>
+	if (!Url.IsInArea("Backoffice"))
+	{ 
     <div class="contentBlock configOffer">
 		@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
     </div> 
+	}
     if (Model.IsSharedOffice)
     {
     <div class="contentBlock">

@@ -1,0 +1,47 @@
+﻿@model OfferModel<OfferFormViewModel>
+
+@section HeadContent
+{
+	<title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.Prices)</title>
+	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
+	<link href="@Url.VersionedContent(Links.Content.LocalisationForm_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationModelId, LocalisationMainMenu.Offers));}
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left contentLeft">
+		@{Html.RenderAction(MVC.Backoffice.Offer.VerticalMenu(Model.OfferModelId, (int)OfferMenu.Prices));}
+	</div>
+
+	<div class="blockContainer float-left contentRight dashedLeft">
+		@{Html.RenderAction(MVC.Backoffice.Offer.OfferDropdown(Model.OfferModelId, (int)OfferMenu.Prices));}
+
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+			@Html.HiddenFor(m => m.OfferModelId)
+			@Html.HiddenFor(m => m.LocalisationModelId)
+			@Html.HiddenFor(m => m.InnerModel.IsSharedOffice)
+			<div class="contentBlock configOffer">
+				@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.InnerModel.Offer.OfferPrices)
+			</div> 
+			<div class="editor-field float-right">
+				<input type="submit" class="buttonStd buttonBlue" value="@Worki.Resources.Views.Shared.SharedString.Valid"/>
+			</div>
+			<div class="clear"></div>
+		}
+	</div>
+	<div class="clear"></div>
+</div>
+
+@section ScriptContent
+{
+	<script type="text/javascript">
+		require(["@Links.Scripts.dropdown_js"], function () {
+			InitDropdown("#@DropDownModel.OfferDD");
+		});
+	</script>
+}
+

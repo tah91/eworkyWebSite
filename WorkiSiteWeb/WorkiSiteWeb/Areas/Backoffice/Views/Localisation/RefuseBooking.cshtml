@@ -6,19 +6,19 @@
 	<link href="@Url.VersionedContent(Links.Content.Dashboard_min_css)" rel="stylesheet" type="text/css" />
 }
 
-@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationId, LocalisationMainMenu.Home));}
+@{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.LocalisationModelId, LocalisationMainMenu.Home));}
 
 <div class="detailContent">
 
 	<div class="blockContainer float-left contentLeft">
-		@{Html.RenderAction(MVC.Backoffice.Localisation.VerticalMenu(Model.LocalisationId, (int)LocalisationMenu.Bookings));}
+		@{Html.RenderAction(MVC.Backoffice.Localisation.VerticalMenu(Model.LocalisationModelId, (int)LocalisationMenu.Bookings));}
 	</div>
 
 	<div class="blockContainer float-left contentRight">
 		@using (Html.BeginForm())
         {
 			@Html.AntiForgeryToken()
-			@Html.HiddenFor(m => m.LocalisationId)
+			@Html.HiddenFor(m => m.LocalisationModelId)
             @Html.HiddenFor(m => m.InnerModel.ReturnUrl)
 			<div class="contentBlock emptyContent">
 			    @Worki.Resources.Views.BackOffice.BackOfficeString.RefuseBooking

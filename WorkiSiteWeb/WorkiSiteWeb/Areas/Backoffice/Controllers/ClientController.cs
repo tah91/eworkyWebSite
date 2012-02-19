@@ -91,7 +91,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					List = clients.Skip((p - 1) * PageSize).Take(PageSize).ToList(),
 					PagingInfo = new PagingInfo { CurrentPage = p, ItemsPerPage = PageSize, TotalItems = clients.Count() }
 				};
-				return View(new LocalisationModel<PagingList<Member>> { InnerModel = model, LocalisationId = id });
+				return View(new LocalisationModel<PagingList<Member>> { InnerModel = model, LocalisationModelId = id });
 			}
 			catch (Exception ex)
 			{
@@ -108,7 +108,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult Add(int id)
         {
-			return View(new LocalisationModel<ProfilFormViewModel> { InnerModel = new ProfilFormViewModel(), LocalisationId = id });
+			return View(new LocalisationModel<ProfilFormViewModel> { InnerModel = new ProfilFormViewModel(), LocalisationModelId = id });
         }
 
         /// <summary>

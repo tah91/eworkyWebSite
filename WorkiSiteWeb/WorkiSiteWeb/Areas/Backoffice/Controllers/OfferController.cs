@@ -28,11 +28,29 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 		#region Index
 
+		public static void GetOffer(int id, int offerId, out Offer offer, ILocalisationRepository lRepo, IOfferRepository oRepo, Func<ActionResult> caseError)
+		{
+			//case no offer selected, take the first one
+			if (offerId == 0)
+			{
+				var loc = lRepo.Get(id);
+				offer = loc.Offers.FirstOrDefault();
+				if (offer == null)
+				{
+					caseError.Invoke();
+				}
+			}
+			else
+			{
+				offer = oRepo.Get(offerId);
+			}
+		}
+
 		/// <summary>
 		/// Get action result to show recent activities of the owner localisation
 		/// </summary>
 		/// <returns>View with recent activities</returns>
-		public virtual ActionResult Index(int id, int offerid = 0)
+		public virtual ActionResult Index(int id, int offerId = 0)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -44,23 +62,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
-
 				Offer offer;
-				//case no offer selected, take the first one
-				if (offerid == 0)
+				GetOffer(id, offerId, out offer, lRepo, oRepo, () => 
 				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.FirstOrDefault();
-                    if (offer == null)
-                    {
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-                        return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
-                    }
-				}
-				else
-				{
-					offer = oRepo.Get(offerid);
-				}
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
+					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+				});
+				
 				Member.ValidateOwner(member, offer.Localisation);
 
 				return View(offer);
@@ -91,22 +99,14 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
+
 				Offer offer;
-				//case no offer selected, take the first one
-				if (offerId == 0)
+				GetOffer(id, offerId, out offer, lRepo, oRepo, () =>
 				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.FirstOrDefault();
-					if (offer == null)
-					{
-						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-						return RedirectToAction(MVC.Backoffice.Offer.Configure(id, offer.Id));
-					}
-				}
-				else
-				{
-					offer = oRepo.Get(offerId);
-				}
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
+					return RedirectToAction(MVC.Backoffice.Offer.Configure(id));
+				});
+
 				Member.ValidateOwner(member, offer.Localisation);
 
 				return View(new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer });
@@ -132,21 +132,12 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			Offer offer;
-			//case no offer selected, take the first one
-			if (offerId == 0)
+			GetOffer(id, offerId, out offer, lRepo, oRepo, () =>
 			{
-				var loc = lRepo.Get(id);
-				offer = loc.Offers.FirstOrDefault();
-				if (offer == null)
-				{
-					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
-				}
-			}
-			else
-			{
-				offer = oRepo.Get(offerId);
-			}
+				TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
+				return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+			});
+
 			if (ModelState.IsValid)
 			{
 				try
@@ -155,7 +146,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					context.Commit();
 					TempData.Remove(PictureData.PictureDataString);
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
-					return RedirectToAction(MVC.Backoffice.Offer.Configure(id, offer.Id));
+					return RedirectToAction(MVC.Backoffice.Offer.Edit(id, offer.Id));
 				}
 				catch (Exception ex)
 				{
@@ -187,25 +178,17 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
+
 				Offer offer;
-				//case no offer selected, take the first one
-				if (offerId == 0)
+				GetOffer(id, offerId, out offer, lRepo, oRepo, () =>
 				{
-					var loc = lRepo.Get(id);
-					offer = loc.Offers.FirstOrDefault();
-					if (offer == null)
-					{
-                        TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
-						return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
-					}
-				}
-				else
-				{
-					offer = oRepo.Get(offerId);
-				}
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
+					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+				});
+
 				Member.ValidateOwner(member, offer.Localisation);
 
-				return View(new OfferModel<OfferFormViewModel> { InnerModel = new OfferFormViewModel { Offer = offer }, OfferId = offer.Id, LocalisationId = id });
+				return View(new OfferModel<OfferFormViewModel> { InnerModel = new OfferFormViewModel { Offer = offer }, OfferModelId = offer.Id, LocalisationModelId = id });
 			}
 			catch (Exception ex)
 			{
@@ -237,7 +220,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						throw new Exception(Worki.Resources.Views.BackOffice.BackOfficeString.NeedInfoPaypal);
 					}
 
-					var o = oRepo.Get(formData.OfferId);
+					var o = oRepo.Get(formData.OfferModelId);
 					UpdateModel(o, "InnerModel.Offer");
 					o.Validate();
 					context.Commit();
@@ -254,6 +237,85 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			return View(formData);
 		}
 
+		/// <summary>
+		/// GET Action result to  offer prices
+		/// </summary>
+		/// <param name="id">id of localisation</param>
+		/// <param name="offerId">offer id</param>
+		/// <returns>View containing offer prices</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult Prices(int id, int offerId = 0)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+
+				Offer offer;
+				GetOffer(id, offerId, out offer, lRepo, oRepo, () =>
+				{
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.PlaceDoNotHaveOffer;
+					return RedirectToAction(MVC.Backoffice.Localisation.Index(id));
+				});
+
+				Member.ValidateOwner(member, offer.Localisation);
+
+				return View(new OfferModel<OfferFormViewModel>
+				{
+					InnerModel = new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer },
+					OfferModelId = offer.Id,
+					LocalisationModelId = id
+				});
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("Prices", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Post Action result to edit offer prices
+		/// </summary>
+		/// <param name="id">id of localisation</param>
+		/// <param name="offerId">offer id</param>
+		/// <returns>View containing offer prices</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateOnlyIncomingValues]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult Prices(int id, int offerId, OfferModel<OfferFormViewModel> formData)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var offer = oRepo.Get(formData.OfferModelId);
+					UpdateModel(offer, "InnerModel.Offer");
+					context.Commit();
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
+					return RedirectToAction(MVC.Backoffice.Offer.Prices(id, offer.Id));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("Prices", ex);
+					context.Complete();
+					ModelState.AddModelError("", ex.Message);
+				}
+			}
+			
+			return View(formData);
+		}
+
         [ChildActionOnly]
         public virtual ActionResult VerticalMenu(int id, int selected)
         {
@@ -262,10 +324,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             var offer = oRepo.Get(id);
 
             var model = new List<LinkMenuItem>();
+			model.Add(new LinkMenuItem { Selected = (int)OfferMenu.Prices == selected, Text = Worki.Resources.Menu.Menu.Prices, Link = Url.Action(MVC.Backoffice.Offer.Prices(offer.LocalisationId)) });
 			model.Add(new LinkMenuItem { Selected = (int)OfferMenu.Config == selected, Text = Worki.Resources.Menu.Menu.Configure, Link = Url.Action(MVC.Backoffice.Offer.Configure(offer.LocalisationId)) });
 			model.Add(new LinkMenuItem { Selected = (int)OfferMenu.Edit == selected, Text = Worki.Resources.Menu.Menu.EditOffer, Link = Url.Action(MVC.Backoffice.Offer.Edit(offer.LocalisationId)) });
-			model.Add(new LinkMenuItem { Selected = (int)OfferMenu.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Offer.Booking(offer.LocalisationId)) });
-			model.Add(new LinkMenuItem { Selected = (int)OfferMenu.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Offer.Quotation(offer.LocalisationId)) });
+			//model.Add(new LinkMenuItem { Selected = (int)OfferMenu.Booking == selected, Text = Worki.Resources.Menu.Menu.CurrentBookings, Link = Url.Action(MVC.Backoffice.Offer.Booking(offer.LocalisationId)) });
+			//model.Add(new LinkMenuItem { Selected = (int)OfferMenu.Quotation == selected, Text = Worki.Resources.Menu.Menu.Quoations, Link = Url.Action(MVC.Backoffice.Offer.Quotation(offer.LocalisationId)) });
 
 			return PartialView(MVC.Backoffice.Shared.Views._LinkVerticalMenu, model);
         }
@@ -299,6 +362,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					break;
 				case OfferMenu.Schedule:
 					model.UrlMaker = o => Url.Action(MVC.Backoffice.Schedule.OfferSchedule(offer.LocalisationId, o.Id));
+					model.Filter = OfferDropDownFilter.None;
+					break;
+				case OfferMenu.Prices:
+					model.UrlMaker = o => Url.Action(MVC.Backoffice.Offer.Prices(offer.LocalisationId, o.Id));
 					model.Filter = OfferDropDownFilter.None;
 					break;
 				default:

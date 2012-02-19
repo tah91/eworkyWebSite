@@ -2613,6 +2613,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string MigrateOfferPrices = "MigrateOfferPrices";
+            public readonly string MigrateClients = "MigrateClients";
         }
 
 
@@ -2682,6 +2683,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult MigrateOfferPrices() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MigrateOfferPrices);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult MigrateClients() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MigrateClients);
             return callInfo;
         }
 
@@ -3541,6 +3547,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Prices() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Prices);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult VerticalMenu() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.VerticalMenu);
         }
@@ -3575,6 +3586,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string Index = "Index";
             public readonly string Edit = "Edit";
             public readonly string Configure = "Configure";
+            public readonly string Prices = "Prices";
             public readonly string VerticalMenu = "VerticalMenu";
             public readonly string OfferDropdown = "OfferDropdown";
             public readonly string Booking = "Booking";
@@ -3592,6 +3604,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string Configure = "~/Areas/Backoffice/Views/Offer/Configure.cshtml";
             public readonly string Edit = "~/Areas/Backoffice/Views/Offer/Edit.cshtml";
             public readonly string Index = "~/Areas/Backoffice/Views/Offer/Index.cshtml";
+            public readonly string Prices = "~/Areas/Backoffice/Views/Offer/Prices.cshtml";
             public readonly string Quotation = "~/Areas/Backoffice/Views/Offer/Quotation.cshtml";
         }
     }
@@ -3600,10 +3613,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
     public class T4MVC_OfferController: Worki.Web.Areas.Backoffice.Controllers.OfferController {
         public T4MVC_OfferController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Index(int id, int offerid) {
+        public override System.Web.Mvc.ActionResult Index(int id, int offerId) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("offerid", offerid);
+            callInfo.RouteValueDictionary.Add("offerId", offerId);
             return callInfo;
         }
 
@@ -3632,6 +3645,21 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public override System.Web.Mvc.ActionResult Configure(int id, Worki.Web.Model.OfferModel<Worki.Data.Models.OfferFormViewModel> formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Configure);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Prices(int id, int offerId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Prices);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerId", offerId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Prices(int id, int offerId, Worki.Web.Model.OfferModel<Worki.Data.Models.OfferFormViewModel> formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Prices);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerId", offerId);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }

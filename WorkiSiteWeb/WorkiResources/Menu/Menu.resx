@@ -297,4 +297,7 @@
   <data name="OfferSchedule" xml:space="preserve">
     <value>Planning par offre</value>
   </data>
+  <data name="Prices" xml:space="preserve">
+    <value>Tarifs</value>
+  </data>
 </root>

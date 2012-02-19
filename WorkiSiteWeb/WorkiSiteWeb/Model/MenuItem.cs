@@ -60,13 +60,13 @@ namespace Worki.Web.Model
 	public class OfferModel<T>
 	{
 		public T InnerModel { get; set; }
-		public int LocalisationId { get; set; }
-		public int OfferId { get; set; }
+		public int LocalisationModelId { get; set; }
+		public int OfferModelId { get; set; }
 	}
 
 	public class LocalisationModel<T>
 	{
 		public T InnerModel { get; set; }
-		public int LocalisationId { get; set; }
+		public int LocalisationModelId { get; set; }
 	}
 }

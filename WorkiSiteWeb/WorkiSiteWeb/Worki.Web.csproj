@@ -735,6 +735,7 @@
     <Content Include="Areas\Backoffice\Views\Schedule\CreateBooking.cshtml" />
     <Content Include="Areas\Backoffice\Views\Client\_Clients.cshtml" />
     <Content Include="Areas\Backoffice\Views\Client\LocalisationList.cshtml" />
+    <Content Include="Areas\Backoffice\Views\Offer\Prices.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
