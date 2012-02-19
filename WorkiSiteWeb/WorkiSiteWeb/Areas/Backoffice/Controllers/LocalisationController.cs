@@ -203,7 +203,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id && b.StatusId == (int)MemberBooking.Status.Unknown).Where(b => !b.Expired).OrderByDescending(b => b.CreationDate);
+                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id).OrderByDescending(b => b.CreationDate);
 				var model = new LocalisationBookingViewModel
 				{
 					Item = loc,
@@ -495,7 +495,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-                var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id && q.StatusId == (int)MemberQuotation.Status.Unknown).OrderByDescending(q => q.CreationDate);
+                var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id).OrderByDescending(q => q.CreationDate);
 				var model = new LocalisationQuotationViewModel
 				{
 					Item = loc,

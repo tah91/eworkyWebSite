@@ -42,7 +42,7 @@
                     	<ul>
 			            @foreach (var item in Model.Localisation.Offers)
 			            {
-                            <a href="@Url.Action(MVC.Backoffice.Offer.Configure(item.Localisation.ID, item.Id))">
+                            <a href="@Url.Action(MVC.Backoffice.Offer.Prices(item.Localisation.ID, item.Id))">
                                 <div class="localisationTag float-left">
                                     <div class="localisationImgDiv borderedImg">
                                         @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true, PictureData.GetFolder(ProviderType.Offer)), item.Name)
