@@ -18,7 +18,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 	[CompressFilter(Order = 1)]
 	[CacheFilter(Order = 2)]
 	[Authorize]
-	[RequireHttpsRemote]
+	//[RequireHttpsRemote]
 	public abstract class DashboardControllerBase : Controller
 	{
 

@@ -341,6 +341,7 @@
     <Content Include="Content\images\avatar.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\fb_sprite.png" />
+    <Content Include="Content\images\flags.png" />
     <Content Include="Content\images\geoloc.png" />
     <Content Include="Content\images\homeLogo1.png" />
     <Content Include="Content\images\homeLogo2.png" />
@@ -350,6 +351,7 @@
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
     <Content Include="Content\images\jelly.png" />
+    <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\mediaBanner.png" />
