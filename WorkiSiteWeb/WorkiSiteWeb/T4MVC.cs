@@ -531,6 +531,7 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avatar_png = Url("avatar.png");
+            public static readonly string cecilia_png = Url("cecilia.png");
             public static readonly string comm_content_png = Url("comm_content.png");
             public static readonly string cross_png = Url("cross.png");
             public static readonly string csv_import_png = Url("csv-import.png");
@@ -539,6 +540,7 @@ namespace Links {
             public static readonly string favicon_png = Url("favicon.png");
             public static readonly string favorite_png = Url("favorite.png");
             public static readonly string fb_sprite_png = Url("fb_sprite.png");
+            public static readonly string flags_png = Url("flags.png");
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
             public static readonly string geoloc_png = Url("geoloc.png");
@@ -556,11 +558,13 @@ namespace Links {
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
+            public static readonly string logo2_png = Url("logo2.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
             public static readonly string mediaBanner_png = Url("mediaBanner.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
+            public static readonly string olivier_png = Url("olivier.png");
             public static readonly string pbar_ani_gif = Url("pbar-ani.gif");
             public static readonly string photo1_jpg = Url("photo1.jpg");
             public static readonly string photo2_jpg = Url("photo2.jpg");
@@ -578,6 +582,7 @@ namespace Links {
             public static readonly string star_png = Url("star.png");
             public static readonly string startup_png = Url("startup.png");
             public static readonly string student_png = Url("student.png");
+            public static readonly string tahir_png = Url("tahir.png");
             public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
             public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
             public static readonly string ui_bg_glass_55_fbf9ee_1x400_png = Url("ui-bg_glass_55_fbf9ee_1x400.png");

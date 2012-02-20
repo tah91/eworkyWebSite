@@ -339,6 +339,7 @@
     <Content Include="Content\images\addPlace.png" />
     <Content Include="Content\images\arrow_red.png" />
     <Content Include="Content\images\avatar.png" />
+    <Content Include="Content\images\cecilia.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\fb_sprite.png" />
     <Content Include="Content\images\flags.png" />
@@ -355,8 +356,10 @@
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\mediaBanner.png" />
+    <Content Include="Content\images\olivier.png" />
     <Content Include="Content\images\retour.png" />
     <Content Include="Content\images\signin_facebook.png" />
+    <Content Include="Content\images\tahir.png" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\jquery.qtip.css" />
     <Content Include="Content\jquery.qtip.min.css">
