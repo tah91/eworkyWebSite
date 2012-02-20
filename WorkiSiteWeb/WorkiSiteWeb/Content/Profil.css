@@ -350,12 +350,12 @@
     background-repeat: no-repeat;
 }
 
-.uvFeatureGrid 
+.offerGrid 
 {
     width: 100%;
 }
 
-.uvFeatureGrid th
+.offerGrid th
 {
     border-top: 1px solid #ececec;
     border-right: 1px solid #ececec;
@@ -377,27 +377,25 @@
   border-right: 1px solid #ececec;
 }
 
-.uvFeatureGrid td
+.offerGrid td
 {
     height: 24px;
     width: 200px;
-    padding: 9px 30px;
+    
     vertical-align: top;
+}
+
+.offerGrid td span
+{
+    padding: 0px 30px 10px;
+    width: inherit;
+    float: none;
 }
 
 .offerContent 
 {
     color: #717B80;
-    display: block;
-    font-size: 11px;
-    margin-top: 3px;
-    padding: 0px !important;
-}
-
-.service
-{
-    background-repeat: no-repeat;
-    background-position: 0px -55px !important;
+    padding:5px !important;
 }
 
 .separatorCol
@@ -413,5 +411,6 @@
     border: none;
     width: 500px;
     text-align: center;
+    vertical-align: middle !important;
     background-color: #f5f5f5 !important;
 }
