@@ -131,7 +131,7 @@
   </data>
   <data name="Edit24Hours" xml:space="preserve">
     <value>Vous ne pouvez pas éditer plus de {0} en moins de 24h</value>
-  </data>
+  <comment>times ? fois ?</comment></data>
   <data name="EditProfile" xml:space="preserve">
     <value>Editer mon profil</value>
   </data>
@@ -209,7 +209,7 @@
   </data>
   <data name="YourCompanyFunction" xml:space="preserve">
     <value>Ex : fonction, entreprise, etc.</value>
-  </data>
+  <comment>? etc. =&gt; ?</comment></data>
   <data name="YourFacebook" xml:space="preserve">
     <value>Votre page Facebook</value>
   </data>

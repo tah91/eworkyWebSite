@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyRateThis" xml:space="preserve">
+    <value>¡Parece que se te ha olvidado puntuar!</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anular</value>
+  </data>
+  <data name="CannotBeEmpty" xml:space="preserve">
+    <value>El valor no puede ser nulo o vacío.</value>
+  </data>
+  <data name="CheckCriterias" xml:space="preserve">
+    <value>Por favor, comprueba  los criterios.</value>
+  </data>
+  <data name="CreateUsernameFail" xml:space="preserve">
+    <value>La solicitud de creación de usuario ha sido anulada. Verifica los datos y vuelvelo a intentar. Si el problema persiste, ponte en contacto con tu administrador de sistema.</value>
+  </data>
+  <data name="DuplicateName" xml:space="preserve">
+    <value>Ya existe un espacio con el mismo nombre y la misma dirección.</value>
+  </data>
+  <data name="EmptyFileUpload" xml:space="preserve">
+    <value>Empty file upload result</value>
+  </data>
+  <data name="ErrorWhenSave" xml:space="preserve">
+    <value>Un error ha impedido la grabación</value>
+  </data>
+  <data name="FailWriteToDisk" xml:space="preserve">
+    <value>Error al grabar el archivo en el disco</value>
+  </data>
+  <data name="FileTooBig" xml:space="preserve">
+    <value>El archivo es demasiado grande</value>
+  </data>
+  <data name="FileTooSmall" xml:space="preserve">
+    <value>El archivo es demasiado pequeño</value>
+  </data>
+  <data name="GetBackPasswordMailNotValide" xml:space="preserve">
+    <value>La respuesta a la pregunta de seguridad es errónea. Verifica el dato introducido y prueba de nuevo.</value>
+  </data>
+  <data name="GetBackPasswordQuestionNotValide" xml:space="preserve">
+    <value>La respuesta a la pregunta de seguridad es errónea. Verifica el dato introducido y prueba de nuevo.</value>
+  </data>
+  <data name="GiveMinADate" xml:space="preserve">
+    <value>Tienes que indicar al menos una oferta.</value>
+  </data>
+  <data name="GivenPasswordNotValide" xml:space="preserve">
+    <value>La contraseña introducida es errónea. Entra una contraseña válida</value>
+  </data>
+  <data name="UnknowError" xml:space="preserve">
+    <value>Un error desconocido a ocurrido.</value>
+  </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>¡Usuario no válido!</value>
+  </data>
+  <data name="MailDoNotMatch" xml:space="preserve">
+    <value>La dirección de correo electrónico no corresponde con ningún usuario.</value>
+  </data>
+  <data name="MailHaveNotGoodPattern" xml:space="preserve">
+    <value>La dirección de correo electrónico no tiene el formato adecuado.</value>
+  <comment>?</comment></data>
+  <data name="MailNotValide" xml:space="preserve">
+    <value>La dirección de correo introducida no es válida. Comprueba el valor y prueba de nuevo.</value>
+  </data>
+  <data name="MailOrPasswordNotCorrect" xml:space="preserve">
+    <value>La dirección de correo electrónico o la contraseña es incorrecta.</value>
+  </data>
+  <data name="MatchPassword" xml:space="preserve">
+    <value>Ojo, has introducido una contraseña de confirmación diferente. Prueba de nuevo.</value>
+  </data>
+  <data name="MaxFileSize" xml:space="preserve">
+    <value>File exceeds MAX_FILE_SIZE (HTML form directive)</value>
+  </data>
+  <data name="MaxLength" xml:space="preserve">
+    <value>El campo "{0}" tiene que contener al menos {1} carácteres.</value>
+  </data>
+  <data name="MinLength" xml:space="preserve">
+    <value>El campo "{0}" tiene que contener al menos {1} carácteres.</value>
+  </data>
+  <data name="MinMaxLength" xml:space="preserve">
+    <value>El campo "{0}" tiene que contener entre {2} y {1} carácteres.</value>
+  </data>
+  <data name="MustAgreeCGU" xml:space="preserve">
+    <value>Tienes que aceptar las Condiciones Generales de Uso para poder registrarte en eWorky.</value>
+  </data>
+  <data name="NoFileUploaded" xml:space="preserve">
+    <value>No File was uploaded</value>
+  </data>
+  <data name="NoValideDate" xml:space="preserve">
+    <value>El campo {0} no corresponde a una fecha válida.</value>
+  </data>
+  <data name="NumberFileExceeded" xml:space="preserve">
+    <value>Max number of files exceeded</value>
+  </data>
+  <data name="PartialUpload" xml:space="preserve">
+    <value>File was only partially uploaded</value>
+  </data>
+  <data name="PasswordNotValide" xml:space="preserve">
+    <value>La contraseña actual es incorrecta o la nueva contraseña no es válida.</value>
+  </data>
+  <data name="PatternEmail" xml:space="preserve">
+    <value>Tu correo electrónico no es válido. Por favor vuelvelo a intentar.</value>
+  </data>
+  <data name="PictureTooBig" xml:space="preserve">
+    <value>&lt;br/&gt;1 Mo max</value>
+  </data>
+  <data name="PictureTooMuch" xml:space="preserve">
+    <value>&lt;br/&gt;Maximun&lt;br/&gt;Alcanzado</value>
+  </data>
+  <data name="PictureTooSmall" xml:space="preserve">
+    <value>&lt;br/&gt;Demasiado pequeño</value>
+  </data>
+  <data name="PictureWrongExtention" xml:space="preserve">
+    <value>Extensión&lt;br/&gt;errónea&lt;br/&gt;</value>
+  </data>
+  <data name="PleaseSelectProfile" xml:space="preserve">
+    <value>Tienes que seleccionar un perfíl.</value>
+  </data>
+  <data name="Range" xml:space="preserve">
+    <value>El campo "{0}" tiene que estar entre {1} y {2}.</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Tienes que marcar un(a) "{0}".</value>
+  </data>
+  <data name="ReturnErrorTryAgain" xml:space="preserve">
+    <value>El proveedor de autentificaciones ha reportado un error. Por favor, comprueba los datos introducidos y prueba de nuevo. Si el problema persiste, ponte en contacto con tu administrador de sistema.</value>
+  </data>
+  <data name="SelectOne" xml:space="preserve">
+    <value>Tienes que seleccionar un valor para el campo "{0}".</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Empezar</value>
+  </data>
+  <data name="TempFolderMissing" xml:space="preserve">
+    <value>Missing a temporary folder</value>
+  </data>
+  <data name="TheTwoNotMatch" xml:space="preserve">
+    <value>Ojo, has introducido una contraseña de confirmación diferente. Prueba de nuevo.</value>
+  </data>
+  <data name="TypeNotAllowed" xml:space="preserve">
+    <value>Filetype not allowed</value>
+  </data>
+  <data name="UploadedBytesExceedFileSize" xml:space="preserve">
+    <value>Uploaded bytes exceed file size</value>
+  </data>
+  <data name="UploadMaxFileSize" xml:space="preserve">
+    <value>File exceeds upload_max_filesize (php.ini directive)</value>
+  </data>
+  <data name="UploadStopExtension" xml:space="preserve">
+    <value>File upload stopped by extension</value>
+  </data>
+  <data name="UsernameExist" xml:space="preserve">
+    <value>Este nombre de usuario ya existe. Por favor, introduce un nombre de usuario distinto.</value>
+  </data>
+  <data name="UsernameExistForThisMail" xml:space="preserve">
+    <value>Ya existe una cuenta asociada a esta dirección de correo eletrónico. Por favor, conéctate con la cuenta existente o introduce una dirección de correo electrónico distinta.</value>
+  </data>
+  <data name="UsernameNotValide" xml:space="preserve">
+    <value>El nombre de usuario introducido no es válido. Verifica el valor y prueba de nuevo.</value>
+  </data>
+  <data name="VerificationLettersWrong" xml:space="preserve">
+    <value>Las letras de verificación no son incorrectas.</value>
+  <comment>?</comment></data>
+  <data name="WebsiteNotGoodPattern" xml:space="preserve">
+    <value>La dirección de la página web introducida no tiene el formato correcto.</value>
+  </data>
+  <data name="AccountInactive" xml:space="preserve">
+    <value>Tu cuenta no está activa aún. Para continuar, tienes que hacer click en el enlace que te ha sido mandado por correo electrónico.</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Cuidado, Tu cuenta ha sido objeto de numerosos intentos fallidos de conexión. Para preservar la seguridad de tu cuenta, eWorky lo ha bloqueado temporalmente. Para volver a activarlo, ponte en contacto con nosotros.</value>
+  </data>
+</root>

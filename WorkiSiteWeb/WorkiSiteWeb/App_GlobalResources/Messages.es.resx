@@ -117,11 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description" xml:space="preserve">
-    <value>Sign in to get all eWorky features. If you do not have an account yet, please register.</value>
-  </data>
-  <data name="AlreadyRegistered" xml:space="preserve">
-    
-    <value>You're already registered!</value>
+  <data name="PropertyValueInvalid" xml:space="preserve">
+    <value>El valor "{0}" no es válido para el campo "{1}".</value>
   </data>
 </root>

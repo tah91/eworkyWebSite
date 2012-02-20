@@ -119,7 +119,7 @@
   </resheader>
   <data name="AlertSearch" xml:space="preserve">
     <value>Essayer de rechercher en entrant un lieu</value>
-  </data>
+  <comment>?</comment></data>
   <data name="ClassicVersion" xml:space="preserve">
     <value>Version classique</value>
   </data>

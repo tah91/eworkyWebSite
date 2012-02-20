@@ -122,7 +122,7 @@
   </data>
   <data name="AvailableDate" xml:space="preserve">
     <value>Date de disponibilité</value>
-  </data>
+  <comment>?</comment></data>
   <data name="AvailableNow" xml:space="preserve">
     <value>Disponibilité immédiate</value>
   </data>
@@ -134,7 +134,7 @@
   </data>
   <data name="Commercial" xml:space="preserve">
     <value>Local commercial</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Country" xml:space="preserve">
     <value>Pays</value>
   </data>
@@ -152,16 +152,16 @@
   </data>
   <data name="Farm" xml:space="preserve">
     <value>Exploitations agricoles</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Franchise" xml:space="preserve">
     <value>Gérance - franchise</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Gas" xml:space="preserve">
     <value>Gaz</value>
-  </data>
+  <comment>?</comment></data>
   <data name="GreenHouse" xml:space="preserve">
     <value>Diagnostic énergétique</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Ground" xml:space="preserve">
     <value>Local d'activité, terrain</value>
   </data>
@@ -173,10 +173,10 @@
   </data>
   <data name="Leasehold" xml:space="preserve">
     <value>Fonds de commerce</value>
-  </data>
+  <comment>?</comment></data>
   <data name="LeaseType" xml:space="preserve">
     <value>Type de bail</value>
-  </data>
+  <comment>?</comment></data>
   <data name="LocalNetwork" xml:space="preserve">
     <value>Réseau local préinstallé</value>
   </data>
@@ -185,7 +185,7 @@
   </data>
   <data name="New" xml:space="preserve">
     <value>Etat neuf</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Parking" xml:space="preserve">
     <value>Parking</value>
   </data>
@@ -233,7 +233,7 @@
   </data>
   <data name="RentalAccessType" xml:space="preserve">
     <value>Type de transport</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Station" xml:space="preserve">
     <value>Station</value>
   </data>
@@ -260,7 +260,7 @@
   </data>
   <data name="TypeAccess" xml:space="preserve">
     <value>Type de transport</value>
-  </data>
+  <comment>?</comment></data>
   <data name="Bus" xml:space="preserve">
     <value>Bus</value>
   </data>
@@ -272,5 +272,5 @@
   </data>
   <data name="Tram" xml:space="preserve">
     <value>Tram</value>
-  </data>
+  <comment>?</comment></data>
 </root>

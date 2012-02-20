@@ -173,7 +173,7 @@
   </data>
   <data name="MailHaveNotGoodPattern" xml:space="preserve">
     <value>L'adresse électronique entrée n'est pas au bon format.</value>
-  </data>
+  <comment>?</comment></data>
   <data name="MailNotValide" xml:space="preserve">
     <value>L'adresse électronique fournie n'est pas valide. Vérifiez la valeur et réessayez.</value>
   </data>
@@ -275,7 +275,7 @@
   </data>
   <data name="VerificationLettersWrong" xml:space="preserve">
     <value>Les lettres vérification saisies sont incorrectes.</value>
-  </data>
+  <comment>?</comment></data>
   <data name="WebsiteNotGoodPattern" xml:space="preserve">
     <value>L'adresse web entrée n'est pas au bon format.</value>
   </data>

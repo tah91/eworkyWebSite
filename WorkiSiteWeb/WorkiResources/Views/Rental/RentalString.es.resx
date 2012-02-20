@@ -117,142 +117,214 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessBO" xml:space="preserve">
-    <value>Para gestionar tu espacio en eWorky, solicita {0}</value>
+  <data name="Access" xml:space="preserve">
+    <value>Ubicación</value>
   </data>
-  <data name="AccessBOLink" xml:space="preserve">
-    <value>A través del formulario de contacto</value>
+  <data name="AccurateSearch" xml:space="preserve">
+    <value>Acotar la búsqueda</value>
   </data>
-  <data name="AccessBOTitle" xml:space="preserve">
-    <value>Acceder a la zona de gerentes</value>
+  <data name="AddAnother" xml:space="preserve">
+    <value>Añadir un acceso en transporte público</value>
   </data>
-  <data name="Book" xml:space="preserve">
-    <value>Reserva y realiza el pago online de una sala de reunión o de la cuota de tu espacio de coworking</value>
+  <data name="AddRental" xml:space="preserve">
+    <value>Añadir un anuncio</value>
   </data>
-  <data name="BookTitle" xml:space="preserve">
-    <value>Reservar</value>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección:</value>
   </data>
-  <data name="BookUser" xml:space="preserve">
-    <value>Cada espacio ofrece ofertas distintas. ¡Consultalas y reserva la que necesitas!</value>
+  <data name="And" xml:space="preserve">
+    <value>y</value>
   </data>
-  <data name="BookUserTitle" xml:space="preserve">
-    <value>Reservar</value>
+  <data name="Area" xml:space="preserve">
+    <value>Superficie</value>
   </data>
-  <data name="Commercialize" xml:space="preserve">
-    <value>Contesta en un click a las solicitudes de reserva y de presupuestos de los usuarios y cobralas directamente en tu cuenta</value>
+  <data name="AreaUnit" xml:space="preserve">
+    <value>(m²)</value>
   </data>
-  <data name="CommercializeTitle" xml:space="preserve">
-    <value>Comercializar</value>
+  <data name="Availability" xml:space="preserve">
+    <value>Disponibilidad</value>
   </data>
-  <data name="Exchange" xml:space="preserve">
-    <value>Intercambia, charla y anima tu espacio gracias a páginas dedicadas a los espacios de coworking</value>
+  <data name="AvailableDate" xml:space="preserve">
+    <value>Fecha de disponibilidad</value>
   </data>
-  <data name="ExchangeTitle" xml:space="preserve">
-    <value>Intercambia con tus coworkers</value>
+  <data name="BeginResultAnswer" xml:space="preserve">
+    <value>Resultado(s) de la búsqueda:</value>
   </data>
-  <data name="Go" xml:space="preserve">
-    <value>Una vez validada tu solicitud, podrás disfrutar gratuitamente de todas funcionalidades de gestión de tu espacio</value>
+  <data name="Between" xml:space="preserve">
+    <value>Entre:</value>
   </data>
-  <data name="GoTitle" xml:space="preserve">
-    <value>¡Allá vamos!</value>
+  <data name="CheckProfile" xml:space="preserve">
+    <value>Consultar el perfíl:</value>
   </data>
-  <data name="HandleClients" xml:space="preserve">
-    <value>Realiza el seguimiento comercial, emite facturas y pilota la actividad de tu espacio de trabajo</value>
+  <data name="CheckThisOut" xml:space="preserve">
+    <value>Te recomiendo que descubras ésta oferta:</value>
   </data>
-  <data name="HandleClientsTitle" xml:space="preserve">
-    <value>Gestiona tus cliente</value>
+  <data name="ChooseDate" xml:space="preserve">
+    <value>Elegir una fecha</value>
   </data>
-  <data name="HandleSpace" xml:space="preserve">
-    <value>Gestiona gratuitamente las reservas, los plannings, los consumos anexos y las tarifas y cuotas de tus ofertas</value>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad:</value>
   </data>
-  <data name="HandleSpaceTitle" xml:space="preserve">
-    <value>Gestiona tu espacio</value>
+  <data name="CommonTransportAccess" xml:space="preserve">
+    <value>Acceso en transporte público</value>
   </data>
-  <data name="HowDoIt" xml:space="preserve">
-    <value>¿Cómo hacerlo?</value>
+  <data name="ContractType" xml:space="preserve">
+    <value>Tipo de contrato</value>
   </data>
-  <data name="HowItWorks" xml:space="preserve">
-    <value>El funcionamiento</value>
+  <data name="CreateAlert" xml:space="preserve">
+    <value>Crear una alerta por correo electrónico</value>
   </data>
-  <data name="HowItWorksHead" xml:space="preserve">
-    <value>eWorky es un mercado colaborativo de espacios de trabajo</value>
+  <data name="DateDrop" xml:space="preserve">
+    <value>Fecha de depósito:</value>
   </data>
-  <data name="Join" xml:space="preserve">
-    <value>Añade, puntua y comenta los espacios de trabajo para ayudar a toda la comunidad en su búsqueda</value>
+  <data name="DateExample" xml:space="preserve">
+    <value>Ej : 31/12/2011</value>
   </data>
-  <data name="JoinTitle" xml:space="preserve">
-    <value>Unirse a la comunidad</value>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
   </data>
-  <data name="MakeFamous" xml:space="preserve">
-    <value>Integra gratuitamente la mayor base de datos de espacios de trabajo en Europa con una ficha completa describiendo tus ofertas y servicios</value>
+  <data name="Detail" xml:space="preserve">
+    <value>Detalle</value>
   </data>
-  <data name="MakeFamousTitle" xml:space="preserve">
-    <value>Darse a conocer</value>
+  <data name="DiagnosticRate" xml:space="preserve">
+    <value>Evaluación:</value>
   </data>
-  <data name="OwnerTitle" xml:space="preserve">
-    <value>Propongo un espacio de trabajo</value>
+  <data name="EditRental" xml:space="preserve">
+    <value>Editar un anuncio</value>
   </data>
-  <data name="OwnerTutorial" xml:space="preserve">
-    <value>Soy Gerente</value>
+  <data name="Email" xml:space="preserve">
+    <value>Dirección de correo electrónico:</value>
   </data>
-  <data name="Pay" xml:space="preserve">
-    <value>Una vez el gerente del espacio haya confirmado tu solicitud de reserva, podrás pagar directamente online con tu tarjeta de crédito</value>
+  <data name="EndResultAnswer" xml:space="preserve">
+    <value>anuncio(s) encontrado(s)</value>
   </data>
-  <data name="PayTitle" xml:space="preserve">
-    <value>Pagar online</value>
+  <data name="ExMaxArea" xml:space="preserve">
+    <value>Ej: 150</value>
+  </data>
+  <data name="ExMaxRate" xml:space="preserve">
+    <value>Ej: 5000</value>
+  </data>
+  <data name="ExMinArea" xml:space="preserve">
+    <value>Ej: 25</value>
+  </data>
+  <data name="ExMinRate" xml:space="preserve">
+    <value>Ej: 400</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Características</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="HeatingType" xml:space="preserve">
+    <value>Tipo de calefacción:</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Fotos</value>
+  </data>
+  <data name="InfoAdmin" xml:space="preserve">
+    <value>Infos Admin</value>
+  </data>
+  <data name="Infos" xml:space="preserve">
+    <value>Informaciones generales</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellido:</value>
+  </data>
+  <data name="LeaseType" xml:space="preserve">
+    <value>Tipo de contrato:</value>
+  </data>
+  <data name="Localisation" xml:space="preserve">
+    <value>Ubicación</value>
+  </data>
+  <data name="MaxArea" xml:space="preserve">
+    <value>Superficie máxima</value>
+  </data>
+  <data name="MaxPrice" xml:space="preserve">
+    <value>Precio máximo</value>
+  </data>
+  <data name="MinArea" xml:space="preserve">
+    <value>Superficie mínima</value>
+  </data>
+  <data name="MinPrice" xml:space="preserve">
+    <value>Precio mínimo</value>
+  </data>
+  <data name="MoneyUnit" xml:space="preserve">
+    <value>(€ todo inlcuido)</value>
+  </data>
+  <data name="MoreDetail" xml:space="preserve">
+    <value>Más detalles</value>
+  </data>
+  <data name="Now" xml:space="preserve">
+    <value>Inmediatamente</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Otros</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Propietario</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Nº de teléfono:</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Espacio</value>
+  </data>
+  <data name="PlaceExemple" xml:space="preserve">
+    <value>Ej: Madrid, Zaragoza, etc.</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Código postal:</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Imprimir el anuncio</value>
+  </data>
+  <data name="Ref" xml:space="preserve">
+    <value>Referencia</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Crear gratuitamente {0} especificando que eres propietario</value>
-  <comment>JM Modif l.22</comment></data>
-  <data name="ReferenceLink" xml:space="preserve">
-    <value>una ficha para tu espacio</value>
+    <value>Referencia eWorky :</value>
   </data>
-  <data name="RefererenceTitle" xml:space="preserve">
-    <value>Añadir tu espacio</value>
+  <data name="Rental" xml:space="preserve">
+    <value>Anuncio</value>
   </data>
-  <data name="RegisterLink" xml:space="preserve">
-    <value>registrarse gratuitamente</value>
+  <data name="RentalEdit" xml:space="preserve">
+    <value>Editar el anuncio</value>
   </data>
-  <data name="RegisterOwner" xml:space="preserve">
-    <value>Para gestionar un espacio en eWorky, tienes que {0} creando una cuenta o identificándote en Facebook</value>
+  <data name="RentalHaveBeenCreate" xml:space="preserve">
+    <value>El anuncio ha sido creado.</value>
   </data>
-  <data name="RegisterOwnerTitle" xml:space="preserve">
-    <value>Registrarse</value>
+  <data name="RentalHaveBeenDel" xml:space="preserve">
+    <value>El anuncio ha sido eliminado.</value>
   </data>
-  <data name="RegisterUser" xml:space="preserve">
-    <value>Para disfrutar plenamente de eWorky, tienes que {0} creando una cuenta o identificándote en Facebook</value>
+  <data name="RentalHaveBeenEdit" xml:space="preserve">
+    <value>El anuncio ha sido editado</value>
   </data>
-  <data name="RegisterUserTitle" xml:space="preserve">
-    <value>Registrarse</value>
+  <data name="RentalSuppress" xml:space="preserve">
+    <value>Eliminar el anuncio</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Encontrar un café wifi, una sala de reunión o un espacio de coworking en la mayor base de datos de espacios de trabajo de toda Europa</value>
+  <data name="RentalType" xml:space="preserve">
+    <value>Tipo de anuncio</value>
   </data>
-  <data name="SearchTitle" xml:space="preserve">
-    <value>Buscar</value>
+  <data name="SaveSearch" xml:space="preserve">
+    <value>Gardar la búsqueda</value>
   </data>
-  <data name="SearchUser" xml:space="preserve">
-    <value>Buscar el espacio de trabajo que necesitas por ubicación, nombre, servicio o tipo de espacio</value>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Enviar un correo electrónico al propietario</value>
   </data>
-  <data name="SearchUserTitle" xml:space="preserve">
-    <value>Buscar</value>
+  <data name="SendToFriend" xml:space="preserve">
+    <value>Recomendar a un amigo</value>
   </data>
-  <data name="UserTitle" xml:space="preserve">
-    <value>Busco un espacio de trabajo</value>
+  <data name="Submit" xml:space="preserve">
+    <value>Validar</value>
   </data>
-  <data name="UserTutorial" xml:space="preserve">
-    <value>Soy usuario</value>
+  <data name="UpdatedAt" xml:space="preserve">
+    <value>Anuncio actualizado el </value>
   </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>¡eWorky te ayuda a gestionar un espacio de trabajo pero nunca reemplazará tu convicialidad y tu cálida bienvenida!</value>
+  <data name="Usefull" xml:space="preserve">
+    <value>Práctico</value>
   </data>
-  <data name="WelcomeTitle" xml:space="preserve">
-    <value>Recibir</value>
-  </data>
-  <data name="Work" xml:space="preserve">
-    <value>¡eWorky te ayuda a encontrar un espacio de trabajo pero a trabajar así que manos a la obra!</value>
-  </data>
-  <data name="WorkTitle" xml:space="preserve">
-    <value>A trabajar</value>
-  <comment>Jm Modif L13</comment></data>
 </root>
