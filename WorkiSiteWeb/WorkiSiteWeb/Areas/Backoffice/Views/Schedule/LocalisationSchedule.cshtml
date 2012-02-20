@@ -31,5 +31,5 @@
 </div>
 @section ScriptContent
 {
-    @Html.Partial(MVC.Backoffice.Schedule.Views._ScheduleScript, new ScheduleModel { IsEditable = "false", SourceFeed = Url.Action(MVC.Backoffice.Schedule.AllBookingEvents(Model)) })
+    @Html.Partial(MVC.Backoffice.Schedule.Views._ScheduleScript, new ScheduleModel { IsEditable = false, SourceFeed = Url.Action(MVC.Backoffice.Schedule.AllBookingEvents(Model)) })
 }

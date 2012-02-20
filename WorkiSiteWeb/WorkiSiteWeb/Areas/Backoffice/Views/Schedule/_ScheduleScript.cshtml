@@ -80,7 +80,7 @@
 					week: '@Worki.Resources.Views.BackOffice.FullCalandar.Week',
 					day: '@Worki.Resources.Views.BackOffice.FullCalandar.Day'
 				},
-				editable: @Model.IsEditable,
+				editable: @(Model.IsEditable?"true":"false"),
 				eventSources: [
 					{
 						url: '@Model.SourceFeed',
@@ -90,8 +90,9 @@
 						}
 					}
 				],
-				selectable: true,
+				selectable: @(Model.IsEditable?"true":"false"),
 				selectHelper: true,
+				disableDragging: @(!Model.IsEditable?"true":"false"),
 				eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view) {
 					$.ajax({
 						type: 'POST',
@@ -104,6 +105,7 @@
 						}
 					});
 				},
+				disableResizing: @(!Model.IsEditable?"true":"false"),
 				eventResize: function (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
 					$.ajax({
 						type: 'POST',

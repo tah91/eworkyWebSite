@@ -252,7 +252,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// Get action method to read booking log
 		/// </summary>
 		/// <returns>redirect to booking detail</returns>
-		public virtual ActionResult ReadBookingLog(int id, bool forBO = true)
+		public virtual ActionResult ReadBookingLog(int id)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -270,8 +270,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					context.Commit();
 				}
 
-				return forBO ? RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(bookingLog.MemberBookingId))
-							 : RedirectToAction(MVC.Dashboard.Home.BookingDetail(bookingLog.MemberBookingId));
+				return RedirectToAction(MVC.Backoffice.Localisation.BookingDetail(bookingLog.MemberBookingId));
 			}
 			catch (Exception ex)
 			{
@@ -544,7 +543,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// Get action method to read quotation log
 		/// </summary>
 		/// <returns>redirect to quotation detail</returns>
-		public virtual ActionResult ReadQuotationLog(int id, bool forBO = true)
+		public virtual ActionResult ReadQuotationLog(int id)
 		{
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -562,8 +561,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					context.Commit();
 				}
 
-				return forBO ? RedirectToAction(MVC.Backoffice.Localisation.QuotationDetail(quotationLog.MemberQuotationId))
-							 : RedirectToAction(MVC.Dashboard.Home.QuotationDetail(quotationLog.MemberQuotationId));
+				return RedirectToAction(MVC.Backoffice.Localisation.QuotationDetail(quotationLog.MemberQuotationId));
 			}
 			catch (Exception ex)
 			{

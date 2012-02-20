@@ -91,6 +91,6 @@ namespace Worki.Web.Model
 	public class ScheduleModel
 	{
 		public string SourceFeed { get; set; }
-		public string IsEditable { get; set; }
+		public bool IsEditable { get; set; }
 	}
 }

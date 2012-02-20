@@ -183,7 +183,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     }
 
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.ClientAdded;
-                    return RedirectToAction(MVC.Backoffice.Client.List());
+					return RedirectToAction(MVC.Backoffice.Client.LocalisationList(id, null));
                 }
                 catch (Exception ex)
                 {

@@ -77,5 +77,5 @@
 
 	</script>
 
-	@Html.Partial(MVC.Backoffice.Schedule.Views._ScheduleScript, new ScheduleModel { IsEditable = "true", SourceFeed = Url.Action(MVC.Backoffice.Schedule.BookingEvents(Model.Id)) })
+	@Html.Partial(MVC.Backoffice.Schedule.Views._ScheduleScript, new ScheduleModel { IsEditable = true, SourceFeed = Url.Action(MVC.Backoffice.Schedule.BookingEvents(Model.Id)) })
 }

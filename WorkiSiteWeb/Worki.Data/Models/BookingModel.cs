@@ -451,7 +451,7 @@ namespace Worki.Data.Models
 
 		void Init(Localisation localisation = null, MemberBooking booking = null)
 		{
-			Booking = booking ?? new MemberBooking();
+			Booking = booking ?? new MemberBooking { PeriodType = (int)MemberBooking.ePeriodType.EndDate };
 			InitSelectLists(localisation);
 		}
 
@@ -657,7 +657,7 @@ namespace Worki.Data.Models
             TaxRate = Localisation.Member.MemberMainData.TaxRate;
             Items = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price } };
             InvoiceId = booking.Id;
-            Title = booking.Offer.Name;
+			Title = booking.Offer.Name + " - " + booking.Id.ToString();
         }
 
         #endregion

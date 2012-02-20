@@ -305,11 +305,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			try
 			{
 				createBookingModel.Booking.MemberBookingLogs.Add(new MemberBookingLog
-				{
-					CreatedDate = DateTime.UtcNow,
-					EventType = (int)MemberBookingLog.BookingEvent.Creation,
-					Event = "Booking Created From Calandar",
-				}
+					{
+						CreatedDate = DateTime.UtcNow,
+						EventType = (int)MemberBookingLog.BookingEvent.Creation,
+						Event = "Booking Created From Calandar",
+					}
 				);
 
 				if (createBookingModel.Booking.Paid)
@@ -485,7 +485,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		[HandleModelStateException]
 		[ValidateOnlyIncomingValues]
-		public virtual ActionResult CreateBooking(LocalisationModel<CreateBookingModel> createBookingModel)
+		public virtual ActionResult CreateBooking(int id, LocalisationModel<CreateBookingModel> createBookingModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -499,6 +499,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					_Logger.Error("CreateBooking", ex);
 				}
 			}
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
+			createBookingModel.InnerModel.InitSelectLists(localisation);
 			return View(createBookingModel);
 		}
 

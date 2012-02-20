@@ -45,8 +45,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
 			var member = mRepo.Get(id);
-			var news = ModelHelper.GetNews(id, member.MemberBookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id, false)); });
-			news = news.Concat(ModelHelper.GetNews(id, member.MemberQuotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id, false)); })).ToList();
+			var news = ModelHelper.GetNews(id, member.MemberBookings, mbl => { return Url.Action(MVC.Dashboard.Home.ReadBookingLog(mbl.Id)); });
+			news = news.Concat(ModelHelper.GetNews(id, member.MemberQuotations, ql => { return Url.Action(MVC.Dashboard.Home.ReadQuotationLog(ql.Id)); })).ToList();
 
 			news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 			return View(new DashoboardHomeViewModel { News = news, Member = member });
@@ -68,8 +68,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
 
-				var news = ModelHelper.GetNews(memberId, member.MemberBookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id, false)); });
-				news = news.Concat(ModelHelper.GetNews(memberId, member.MemberQuotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id, false)); })).ToList();
+				var news = ModelHelper.GetNews(memberId, member.MemberBookings, mbl => { return Url.Action(MVC.Dashboard.Home.ReadBookingLog(mbl.Id)); });
+				news = news.Concat(ModelHelper.GetNews(memberId, member.MemberQuotations, ql => { return Url.Action(MVC.Dashboard.Home.ReadQuotationLog(ql.Id)); })).ToList();
 
 				news = news.OrderByDescending(n => n.Date).Take(BackOfficeConstants.NewsCount).ToList();
 
@@ -124,6 +124,38 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			catch (Exception ex)
 			{
 				_Logger.Error("Booking", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Get action method to read booking log
+		/// </summary>
+		/// <returns>redirect to booking detail</returns>
+		public virtual ActionResult ReadBookingLog(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var blRepo = ModelFactory.GetRepository<IBookingLogRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				var bookingLog = blRepo.Get(id);
+				if (!bookingLog.Read)
+				{
+					bookingLog.Read = true;
+					context.Commit();
+				}
+
+				return RedirectToAction(MVC.Dashboard.Home.BookingDetail(bookingLog.MemberBookingId));
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("ReadBookingLog", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}
@@ -286,6 +318,38 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 			catch (Exception ex)
 			{
 				_Logger.Error("Quotation", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Get action method to read quotation log
+		/// </summary>
+		/// <returns>redirect to quotation detail</returns>
+		public virtual ActionResult ReadQuotationLog(int id)
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var qlRepo = ModelFactory.GetRepository<IQuotationLogRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				var quotationLog = qlRepo.Get(id);
+				if (!quotationLog.Read)
+				{
+					quotationLog.Read = true;
+					context.Commit();
+				}
+
+				return RedirectToAction(MVC.Dashboard.Home.QuotationDetail(quotationLog.MemberQuotationId));
+			}
+			catch (Exception ex)
+			{
+				context.Complete();
+				_Logger.Error("ReadQuotationLog", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}
