@@ -374,4 +374,19 @@ Register promptly, there is a limited amount of tickets</value>
   <data name="PartyRegisterConfirmation" xml:space="preserve">
     <value>Your subscription has been successfully saved, the event date will be communicated to you by Email</value>
   </data>
+  <data name="StatusAccepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+  <data name="StatusCancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="StatusPaid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="StatusRefused" xml:space="preserve">
+    <value>Refused</value>
+  </data>
+  <data name="StatusUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
 </root>

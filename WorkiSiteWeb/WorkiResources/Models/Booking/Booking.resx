@@ -178,7 +178,7 @@
     <value>Réponse</value>
   </data>
   <data name="StatusId" xml:space="preserve">
-    <value>Status</value>
+    <value>Statut</value>
   </data>
   <data name="Surface" xml:space="preserve">
     <value>Surface de bureaux souhaitée (en m2)</value>

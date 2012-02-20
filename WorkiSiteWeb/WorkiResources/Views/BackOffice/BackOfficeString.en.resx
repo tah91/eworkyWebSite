@@ -307,4 +307,40 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="BillingInfo" xml:space="preserve">
+    <value>Billing information</value>
+  </data>
+  <data name="InvoiceAction" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="InvoiceClient" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="InvoiceDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="InvoiceEmpty" xml:space="preserve">
+    <value>No invoice for this month</value>
+  </data>
+  <data name="InvoiceId" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="InvoicePlace" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="InvoicePrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="ClientAdded" xml:space="preserve">
+    <value>The client was successfully added</value>
+  </data>
+  <data name="ClientAlreadyExists" xml:space="preserve">
+    <value>This client is already on your base</value>
+  </data>
+  <data name="InvoiceOffer" xml:space="preserve">
+    <value>Offer</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
 </root>

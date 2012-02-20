@@ -271,4 +271,61 @@
   <data name="SliderItemDesc" xml:space="preserve">
     <value>{0} in {1}</value>
   </data>
+  <data name="Team" xml:space="preserve">
+    <value>The team</value>
+  </data>
+  <data name="IntroWhoAreWe" xml:space="preserve">
+    <value>eWorky is the workplace portal</value>
+  </data>
+  <data name="WeThinkThat" xml:space="preserve">
+    <value>We believe that: </value>
+  </data>
+  <data name="WeThinkThat_Text1" xml:space="preserve">
+    <value>Tomorrow's workplace will focus on human more than companies, and will be a friendly place, encouraging exchanges. People will enjoy going to work.</value>
+  </data>
+  <data name="WeThinkThat_Text10" xml:space="preserve">
+    <value>If you believe the same, join us!</value>
+  </data>
+  <data name="WeThinkThat_Text2" xml:space="preserve">
+    <value>To create tomorrow's workplace together, it is necessary to explore, test, exchange, and aboce all, take the plunge</value>
+  </data>
+  <data name="WeThinkThat_Text3" xml:space="preserve">
+    <value>The coming of new work modes is an opportunity for a new social contract where autonomy succeed to subordination, creativity to obedience, responsability to hierarchical control.</value>
+  </data>
+  <data name="WeThinkThat_Text4" xml:space="preserve">
+    <value>Openess, sharing and collaboration are essential to self-fulfillment and good workplace balance.</value>
+  </data>
+  <data name="WeThinkThat_Text5" xml:space="preserve">
+    <value>Workers need more contact times and human exchanges in their day. We must decompartmentalize our activities, replace constraint by cooperation and co-creation, by creating virtual work collectives.</value>
+  </data>
+  <data name="WeThinkThat_Text6" xml:space="preserve">
+    <value>The workplace will not be unique but multiple, sometimes dematerialized and more often adapted to the task, the sector and the workers personnality.</value>
+  </data>
+  <data name="WeThinkThat_Text7" xml:space="preserve">
+    <value>Sustainable development is not tomorrows but todays priority, that's why our new work places and modes must naturally take our earth into account.</value>
+  </data>
+  <data name="WeThinkThat_Text8" xml:space="preserve">
+    <value>The world is chaging at high speed instigated by information technologies. Work organization, unchaged for decades, most experience its revolution too.</value>
+  </data>
+  <data name="WeThinkThat_Text9" xml:space="preserve">
+    <value>By rethinking workplaces thanks coworking places and shared spaces, we can change our daily work, our relationships with people and our world too. The work place must be the theatre bust also the actor of this change.</value>
+  </data>
+  <data name="WhoAreWe_Text1" xml:space="preserve">
+    <value>eWorky was created by three french young engineers, almost all entrepreneur before. They often needed to access a WiFi, to rent a meeting room or even a training room. That is how they got the idea to create a marketplace for workplaces.</value>
+  </data>
+  <data name="WhoAreWe_Text2" xml:space="preserve">
+    <value>So, eWorky is the pleasure of sharing different kind of workplaces, and exchange about the different experiences lived in those places. Our community is made up of passionate users, willing to discover or suggest a broad variety of places, adapted to each one's needs.</value>
+  </data>
+  <data name="WhoAreWe_Text3" xml:space="preserve">
+    <value>You too, join the eWorky community now!</value>
+  </data>
+  <data name="Team_Member_1" xml:space="preserve">
+    <value>Olivier Brun</value>
+  </data>
+  <data name="Team_Member_2" xml:space="preserve">
+    <value>Cecilia Durieu</value>
+  </data>
+  <data name="Team_Member_3" xml:space="preserve">
+    <value>Tahir Iftikhar</value>
+  </data>
 </root>
