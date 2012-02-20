@@ -84,8 +84,8 @@ html,body{margin:0;padding:0;height:100%}
 .ie7 .loginContainer{width:32%;background-color:white!important;margin-top:0!important;height:50px}
 .logindisplay{padding:5px 10px 10px 10px}
 .loginTitle{font-size:.9em;margin-bottom:3px}
-.alertSummaryContainer{padding:10px 0 10px 10px}
-.alertSummary{background:#f88f1e;color:White;font-weight:bold;text-decoration:none;width:15px;height:15px;-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;padding:5px;margin-right:5px;text-align:center}
+.alertSummaryContainer{padding:10px 0}
+.alertSummary{background:#f88f1e;color:White;font-weight:bold;text-decoration:none;width:15px;height:15px;-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;padding:5px;margin-left:5px;text-align:center}
 .alertSummary a{color:White;text-decoration:none}
 .createAccount{margin-top:10px}
 .connectEworky{padding:3px 0 3px 10px}
