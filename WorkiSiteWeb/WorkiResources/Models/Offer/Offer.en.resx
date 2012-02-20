@@ -237,4 +237,7 @@
   <data name="SingleHalfDay" xml:space="preserve">
     <value>half a day</value>
   </data>
+  <data name="Check" xml:space="preserve">
+    <value>Cheque</value>
+  </data>
 </root>

@@ -253,11 +253,11 @@
     <comment>Mika</comment>
   </data>
   <data name="WorkingQuotation" xml:space="preserve">
-    <value>Demandes de devis cours</value>
+    <value>Demandes de devis en cours</value>
     <comment>Mika</comment>
   </data>
   <data name="Options" xml:space="preserve">
-    <value>Options</value>
+    <value>Mon profil</value>
     <comment>Mika</comment>
   </data>
   <data name="Owner" xml:space="preserve">
