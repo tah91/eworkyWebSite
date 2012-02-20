@@ -209,4 +209,29 @@
   <data name="YourSearchResult" xml:space="preserve">
     <value>Tus resultados de búsqueda : {0} espacio(s) encontrado(s)</value>
   </data>
+  <data name="SpeechForIndependent" xml:space="preserve">
+    <value>&lt;p&gt;¿Eres auto emprendedor o ejerces una profesión liberal y buscas un despacho, una sala de reunión o un rinción de mesa para trabajar?&lt;/p&gt;
+&lt;p&gt;eWorky te permite ganar tiempo y te encuentra "el" depacho de tus sueños. Gracias a los consejos de los demás que encontrarás en las puntuaciones y comentarios de cada ficha de resultado, ya no te podrás equivocar. Para ello, sólo necesitas indicar una dirección, un tipo de espacio e indicar los servicios deseados en la pestaña «Buscar».&lt;/p&gt;
+&lt;p&gt;Puedes ayudar a los demás sugeriendo tus espacios de trabajo favoritos en la pestaña « Añadir » así como puntuando y comentando los espacios que has probado.&lt;/p&gt;</value>
+  </data>
+  <data name="SpeechForNomad" xml:space="preserve">
+    <value>&lt;p&gt;¿A menudo estás fuera de tu oficina y buscas un lugar para trabajar en una ciudad que no conoces?&lt;/p&gt;
+&lt;p&gt;eWorky está hecho para ti y te puede ayudar poponiendote los mejores espacios para trabajar a proximidad de tu destino. Que busques un espacio gratuito y agradable (café wifi, parque o biblioteca) o un espacio profesional (centro de negocios, centro de teletrabajo, etc.) encontrarás lo que buscas, estés donde estés: para ello, sólo necesitas indicar una dirección y un tipo de espacio en la pestaña « Buscar ».&lt;/p&gt;
+&lt;p&gt;Puedes ayudar a los demás sugeriendo tus espacios de trabajo favoritos en la pestaña « Añadir » así como puntuando y comentando los espacios que has probado.&lt;/p&gt;</value>
+  </data>
+  <data name="SpeechForStartUp" xml:space="preserve">
+    <value>&lt;p&gt;¿Eres emprendedor y buscas un sitio para domiciliar tu empresa, un local para instalarte, una sala de reunión para reuinirte o una sala grande para organizar formaciones?&lt;/p&gt;
+&lt;p&gt;eWorky te va a echar una mano en tu desarrollo ayudándote a encontrar el sitio que necesitas, que se trate de un hotel de empresas, de un espacio de coworking o de una biblioteca con wifi. Podrás saber cuales son los espacios preferidos de otras start-up gracias a las puntuaciones y comentarios de cada ficha de resultado. Para ello, sólo necesitas indicar una dirección, un tipo de espacio así como los servicios deseados en la pestaña « Buscar ».&lt;/p&gt;
+&lt;p&gt;Puedes ayudar a otros emprendedores sugeriendo tus espacios de trabajo favoritos en la pestaña « Añadir » así como puntuando y comentando los espacios que has probado.&lt;/p&gt;</value>
+  </data>
+  <data name="SpeechForStudent" xml:space="preserve">
+    <value>&lt;p&gt;¿Eres estudiante y buscas un espacio tranquilo y gratuito para estudiar o un espacio agradable para poder realizar trabajos en grupo?&lt;/p&gt;
+&lt;p&gt;eWorky te puede ayudar proponiendote los mejores bares, cafés, restaurantes, bibliotecas o parques con wifi donde podrás estudiar a gusto: para ello, sólo necesitas indicar una dirección y un tipo de espacio en la pestaña « Buscar ».&lt;/p&gt;
+&lt;p&gt;Puedes ayudar a otros estudiantes sugeriendo tus espacios de trabajo favoritos en la pestaña « Añadir » así como puntuando y comentando los espacios que has probado.&lt;/p&gt;</value>
+  </data>
+  <data name="SpeechForTeleworker" xml:space="preserve">
+    <value>&lt;p&gt;¿Eres teletrabajador y buscas un lugar de trabajo regular o una sala de reunión cerca de tu domicilio?&lt;/p&gt;
+&lt;p&gt;eWorky te va a simplificar la vida listando para ti todos los espacios de coworking o centros de teletrabajo a proximidad del lugar indicado. Podrás saber cuales son los favoritos de los demás miembros teletrabajadores gracias a las puntuaciones y comentarios de cada ficha de resultado. Para ello, sólo necesitas indicar una dirección, un tipo de espacio así como los servicios deseados en la pestaña « Buscar».&lt;/p&gt;
+&lt;p&gt;Puedes ayudar a otros teletrabajadores sugeriendo tus espacios de trabajo favoritos en la pestaña « Añadir » así como puntuando y comentando los espacios que has probado.&lt;/p&gt;</value>
+  </data>
 </root>
