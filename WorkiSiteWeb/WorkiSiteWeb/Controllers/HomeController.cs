@@ -252,6 +252,11 @@ namespace Worki.Web.Controllers
             return View();
         }
 
+        public virtual ActionResult Pricing()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Prepares the cgu page
         /// </summary>

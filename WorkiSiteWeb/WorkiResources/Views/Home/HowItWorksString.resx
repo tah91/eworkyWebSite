@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccessBO" xml:space="preserve">
-    <value>Pour gérer votre espace sur eWorky, faites la demande {0}</value>
+    <value>Pour gérer simplement votre espace sur eWorky, découvrez gratuitement les fonctionnalités de l’{0}</value>
   </data>
   <data name="AccessBOLink" xml:space="preserve">
-    <value>via le formulaire de contact</value>
+    <value>espace gérant</value>
   </data>
   <data name="AccessBOTitle" xml:space="preserve">
     <value>Accéder à l'espace gérant</value>
@@ -163,10 +163,13 @@
     <value>Gérer vos clients</value>
   </data>
   <data name="HandleSpace" xml:space="preserve">
-    <value>Gérez gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres</value>
+    <value>Gérez gratuitement les réservations, les plannings, les consommations annexes, les tarifs et les abonnements de vos offres, {0}.</value>
   </data>
   <data name="HandleSpaceTitle" xml:space="preserve">
     <value>Gérer votre espace</value>
+  </data>
+  <data name="Here" xml:space="preserve">
+    <value>ici</value>
   </data>
   <data name="HowDoIt" xml:space="preserve">
     <value>Comment faire ?</value>
@@ -201,9 +204,49 @@
   <data name="PayTitle" xml:space="preserve">
     <value>Payer en ligne</value>
   </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>Espace gérant</value>
+  </data>
+  <data name="PricingSubTitle" xml:space="preserve">
+    <value>Découvrez notre espace gérant.</value>
+  </data>
+  <data name="PricingTitle" xml:space="preserve">
+    <value>Vous souhaitez gérez votre espace de façon simple, sûre et sans frais ?</value>
+  </data>
+  <data name="PrincingFeature_1" xml:space="preserve">
+    <value>Gestion des demandes de réservation</value>
+  </data>
+  <data name="PrincingFeature_1_Text" xml:space="preserve">
+    <value>Vos clients peuvent directement effectuer une demande de devis ou de réservation sur votre fiche eWorky. Vous recevez immédiatement une notification par e-mail et n’avez plus qu’à accepter ou refuser.</value>
+  </data>
+  <data name="PrincingFeature_2" xml:space="preserve">
+    <value>Gestion du planning des espaces</value>
+  </data>
+  <data name="PrincingFeature_2_Text" xml:space="preserve">
+    <value>Vous disposez d’un agenda par offre pour suivre en direct l’occupation de votre espace. L’agenda se remplit automatiquement avec les réservations en ligne mais vous pouvez bien sûr ajouter toutes les réservations obtenues par d’autres canaux (téléphone, fax, site internet, etc.). Vos clients sont automatiquement avertis par e-mails de toute création/modification de réservation.</value>
+  </data>
+  <data name="PrincingFeature_3" xml:space="preserve">
+    <value>Paiement sécurisé en ligne</value>
+  </data>
+  <data name="PrincingFeature_3_Text" xml:space="preserve">
+    <value>Les paiements sont encaissés de manière sécurisée via la plateforme de paiement Paypal.  Pour connaitre les conditions de vente de Paypal, cliquez {0}.</value>
+  </data>
+  <data name="PrincingFeature_4" xml:space="preserve">
+    <value>Edition automatique de factures</value>
+  </data>
+  <data name="PrincingFeature_4_Text" xml:space="preserve">
+    <value>Vos factures clients sont éditées automatiquement pour chaque réservation réglée et sont archivées dans votre espace gérant.</value>
+  </data>
+  <data name="PrincingFeature_5" xml:space="preserve">
+    <value>Hotline de 9h à 20h, 7j/7</value>
+  </data>
+  <data name="PrincingFeature_5_Text" xml:space="preserve">
+    <value>Notre service client est disponible 7J/7 de 9h à 20h pour vous assister en cas de problème ou répondre à vos questions.</value>
+  </data>
   <data name="Reference" xml:space="preserve">
     <value>Créez gratuitement {0} en précisant que vous en êtes propriétaire</value>
-  <comment>JM Modif l.22</comment></data>
+    <comment>JM Modif l.22</comment>
+  </data>
   <data name="ReferenceLink" xml:space="preserve">
     <value>une fiche pour votre lieu</value>
   </data>
@@ -254,5 +297,6 @@
   </data>
   <data name="WorkTitle" xml:space="preserve">
     <value>Au travail</value>
-  <comment>Jm Modif L13</comment></data>
+    <comment>Jm Modif L13</comment>
+  </data>
 </root>

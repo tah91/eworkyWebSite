@@ -339,3 +339,79 @@
 .rss{ background-position: 0 -159px; width: 30px; height: 30px; }
 .tumblr{ background-position: 0 -199px; width: 30px; height: 30px; }
 .twitter{ background-position: 0 -239px; width: 30px; height: 30px; }
+
+/* SERVICES PANEL
+----------------------------------------------------------*/
+
+.checked
+{
+    background-image: url(images/checked.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.uvFeatureGrid 
+{
+    width: 100%;
+}
+
+.uvFeatureGrid th
+{
+    border-top: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+    border-left: 1px solid #ececec;
+    background-color: #f5f5f5;
+    padding: 10px;;
+    
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 20px;
+}
+
+.offerCol
+{
+  background-color: #f5f5f5 !important;
+  border-left: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+}
+
+.uvFeatureGrid td
+{
+    height: 24px;
+    width: 200px;
+    padding: 9px 30px;
+    vertical-align: top;
+}
+
+.offerContent 
+{
+    color: #717B80;
+    display: block;
+    font-size: 11px;
+    margin-top: 3px;
+    padding: 0px !important;
+}
+
+.service
+{
+    background-repeat: no-repeat;
+    background-position: 0px -55px !important;
+}
+
+.separatorCol
+{
+  padding: inherit !important;;
+  border: none !important;
+  width: 10px !important;
+  background-color: #FFF !important;;
+}
+
+.lastCol
+{
+    border: none;
+    width: 500px;
+    text-align: center;
+    background-color: #f5f5f5 !important;
+}

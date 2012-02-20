@@ -99,7 +99,7 @@
 					    <div class="howitworksLogo hiw_BO float-left">
 					    </div>
 					    <div class="hoitworksDesc float-right">
-						    @Worki.Resources.Views.Home.HowItWorksString.HandleSpace
+                            @Html.Raw(string.Format(Worki.Resources.Views.Home.HowItWorksString.HandleSpace, Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.Here, MVC.Home.Pricing())))
 					    </div>
 					    <div class="clear">
 					    </div>
