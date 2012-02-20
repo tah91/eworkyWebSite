@@ -16,7 +16,7 @@
 
 	<div class="blockContainer float-left contentRight">
 		@{Html.RenderAction(MVC.Backoffice.Offer.OfferDropdown(Model.OfferModelId, (int)OfferMenu.Config));}
-        @using (Html.BeginForm(MVC.Backoffice.Offer.ActionNames.Configure, MVC.Backoffice.Localisation.Name, FormMethod.Post, new { id = "configureOfferForm" }))
+        @using (Html.BeginForm(MVC.Backoffice.Offer.ActionNames.Configure, MVC.Backoffice.Offer.Name, FormMethod.Post, new { id = "configureOfferForm" }))
 		{
 		    <div class="contentBlock configOffer">
 				<h3 class="blue">@Model.InnerModel.Offer.Name</h3>

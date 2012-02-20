@@ -397,7 +397,7 @@ namespace Worki.Data.Models
 
         public bool CanModify(DateTime newDate)
         {
-            return Unknown && (newDate > DateTime.UtcNow);
+            return !(Cancelled || Expired) && (newDate > DateTime.UtcNow);
         }
 
         #endregion
