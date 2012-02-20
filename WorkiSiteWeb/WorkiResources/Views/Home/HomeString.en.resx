@@ -166,7 +166,7 @@
     <value> </value>
   </data>
   <data name="SpeechForJournalists" xml:space="preserve">
-    <value>You're a journalist and you would like to write an article or make a video coverage on eWorky? You need some informations about the developpement of teleworking? You are looking to interview some Human Resources Directors on these subjects? Contact us at {0}.</value>
+    <value>You're a journalist and you would like to write an article or make a video coverage on eWorky? You need some information about the development of teleworking? You would like to interview some Human Resources Directors on these subjects? Contact us at {0}.</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
     <value>How does eWorky work?</value>
@@ -179,7 +179,7 @@
     <value>Where are you looking?</value>
   </data>
   <data name="WhoAreWe" xml:space="preserve">
-    <value>Who are we?</value>
+    <value>About us</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Find a workplace wherever you want : offices to rent, business center, coworking spaces, WiFi cafe, meeting or seminar room.</value>
@@ -213,7 +213,7 @@
     <value>Search</value>
   </data>
   <data name="Searching" xml:space="preserve">
-    <value>Searching</value>
+    <value>Search</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
     <value>- WiFi cafes, WiFi hotspots&lt;br /&gt;- public digital space&lt;br /&gt;- library, museum, etc.</value>
@@ -244,13 +244,13 @@
     <comment>?</comment>
   </data>
   <data name="FreeSpace" xml:space="preserve">
-    <value>A free of charge workspace</value>
+    <value>A free workspace</value>
   </data>
   <data name="RentalAd" xml:space="preserve">
     <value>A rental ads</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>You want to find a worskpace? Choose the form that corresponds to the workplace type you want to add</value>
+    <value>You want to find a worskpace? Select the type of workplace you would like to add</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>A shared office</value>

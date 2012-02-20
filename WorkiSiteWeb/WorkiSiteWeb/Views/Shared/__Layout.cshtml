@@ -21,6 +21,11 @@
 	<link href="@Url.VersionedContent(Links.Content.Site_min_css)" rel="stylesheet" type="text/css"/>
 	<link rel="icon" type="image/png" href="@Links.Content.images.favicon_png" />
     <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
+    @{
+        var suffix = Url.GetSuffix();
+    }
+    @if (suffix == ".com")
+    { 
     <script type="text/javascript">
 
     	var _gaq = _gaq || [];
@@ -36,6 +41,25 @@
     	})();
 
     </script>
+    }
+    else if (suffix == ".fr")
+    { 
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21890480-4']);
+        _gaq.push(['_setDomainName', 'eworky.fr']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    }
 </head>
 
 <body>
@@ -140,8 +164,8 @@
 	</div>
     @RenderSection("ScriptContent", false)
 	@{
-		var frLocalDate = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? Links.Scripts.jquery_localdate_fr_js : "";
-		var localDateFormat = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? "dd/MM/yyyy HH:mm:ss" : "MM/dd/yyyy hh:mm:ss tt";
+        var frLocalDate = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? Links.Scripts.jquery_localdate_fr_js : "";
+        var localDateFormat = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? "dd/MM/yyyy HH:mm:ss" : "MM/dd/yyyy hh:mm:ss tt";
 	}
 	@if (!Url.IsSecuredUrl())
  {

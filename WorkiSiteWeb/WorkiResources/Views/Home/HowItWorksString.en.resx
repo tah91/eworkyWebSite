@@ -127,7 +127,7 @@
     <value>To manage your space on eWorky and access important information, you can use the {0}</value>
   </data>
   <data name="AccessBOLink" xml:space="preserve">
-    <value>using the contact form</value>
+    <value>contact form</value>
   </data>
   <data name="AccessBOTitle" xml:space="preserve">
     <value>Manage your space</value>

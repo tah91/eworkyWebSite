@@ -362,10 +362,10 @@
     <value>Shared space</value>
   </data>
   <data name="FreeAreas" xml:space="preserve">
-    <value>Free workplaces</value>
+    <value>Free places</value>
   </data>
   <data name="OtherTypes" xml:space="preserve">
-    <value>Other workplaces</value>
+    <value>Other places</value>
   </data>
   <data name="BookingCom" xml:space="preserve">
     <value>Commission (in %)</value>

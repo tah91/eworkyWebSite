@@ -344,7 +344,7 @@
     <value>Single workstation</value>
   </data>
   <data name="AllOffers" xml:space="preserve">
-    <value>Select an offer</value>
+    <value>All spaces</value>
   </data>
   <data name="AllInclusive" xml:space="preserve">
     <value>All included (charges, taxes, cleaning, etc.)</value>
