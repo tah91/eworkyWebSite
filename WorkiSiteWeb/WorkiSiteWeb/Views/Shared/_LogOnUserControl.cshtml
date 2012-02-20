@@ -1,31 +1,26 @@
-﻿@if (Request.IsAuthenticated)
-{       
-	<div class="alertSummaryContainer float-left">
-		@if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
-		{
-	 		<div class="boSummary float-left"></div>
-			<script type='text/javascript'>
-				$.ajax({
-					type: 'POST',
-					url: '@Url.Action(MVC.Backoffice.Home.GetAlertSummary())',
-					success: function (data, textStatus, jqXHR) {
-						$('.boSummary').html(data);
-					}
-				});
-			</script>
-		}
-		<div class="dashboardSummary float-left"></div>
+﻿<div class="alertSummaryContainer float-left">
+	@if (User.IsInRole(MiscHelpers.BackOfficeConstants.BackOfficeRole))
+	{
+	 	<div class="boSummary float-left"></div>
 		<script type='text/javascript'>
-				$.ajax({
-					type: 'POST',
-					url: '@Url.Action(MVC.Dashboard.Home.GetAlertSummary())',
-					success: function (data, textStatus, jqXHR) {
-						$('.dashboardSummary').html(data);
-					}
-				});
+			$.ajax({
+			    type: 'POST',
+			    url: '@Url.Action(MVC.Backoffice.Home.GetAlertSummary())',
+			    success: function (data, textStatus, jqXHR) {
+			        $('.boSummary').html(data);
+			    }
+			});
 		</script>
-	</div>
-    <div class="float-left darkblue linkImg">
-		@{Html.RenderAction(MVC.Home.UserMenu());}
-    </div>
-}
+	}
+	<div class="dashboardSummary float-left"></div>
+	<script type='text/javascript'>
+		$.ajax({
+		    type: 'POST',
+		    url: '@Url.Action(MVC.Dashboard.Home.GetAlertSummary())',
+		    success: function (data, textStatus, jqXHR) {
+		        $('.dashboardSummary').html(data);
+		    }
+		});
+	</script>
+</div>
+<li class="float-left headerOptionDD darkblue linkImg">@{Html.RenderAction(MVC.Home.UserMenu());}</li>

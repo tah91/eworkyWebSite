@@ -22,8 +22,8 @@ input:-moz-placeholder,textarea:-moz-placeholder{color:#999!important}
 .darkblue a{color:#2c3c4c}
 .green{color:#47a000}
 .green a{color:#47a000}
-.orange{color:#fa993b}
-.orange a{color:#fa993b}
+.orange{color:#f88f1e}
+.orange a{color:#f88f1e}
 .grey{color:#a1a1a1}
 .grey a{color:#a1a1a1}
 .red{color:#d25657}
@@ -46,16 +46,17 @@ html,body{margin:0;padding:0;height:100%}
 .allemagne{background-position:0 0;width:16px;height:11px}
 .espagne{background-position:-66px 0;width:16px;height:11px}
 .etats-unis{background-position:-132px 0;width:16px;height:11px}
-.france{background-position:-198px 0;width:16px;height:11px}
+.france{background-position:-211px 0;width:16px;height:11px}
 .italie{background-position:-264px 0;width:16px;height:11px}
 .maroc{background-position:-330px 0;width:16px;height:11px}
 .mexique{background-position:-396px 0;width:16px;height:11px}
 .portugal{background-position:-462px 0;width:16px;height:11px}
-.royaume-uni{background-position:-528px 0;width:16px;height:11px}
+.royaume-uni{background-position:-542px 0;width:16px;height:11px}
 .turquie{background-position:-594px 0;width:16px;height:11px}
-.headerOptionNoHover{padding:8px;margin:5px;border:1px solid transparent}
+.headerOptionNoHover{padding:8px;margin:5px 0;border:1px solid transparent}
+.headerOptionDD{margin-right:20px}
 .headerOption{padding:8px;margin:5px;border:1px solid transparent}
-.headerOption:hover,.headerButton:hover{border:1px solid #CCC;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}
+.headerOption:hover,.headerButton:hover,.headerOptionCircle:hover{border:1px solid #CCC;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}
 .headerOption,.headerButton{text-decoration:none}
 .header .dropdown a,.header .dropdown a:visited{font-weight:bold}
 .header .dropdown dd,.header .dropdown dt,.header .dropdown ul{margin:5px}
@@ -65,10 +66,11 @@ html,body{margin:0;padding:0;height:100%}
 .header .dropdown[id="profilDropdown"] dd ul{padding-right:10px}
 .header .dropdown dd ul{top:2px;left:-5px;border:1px solid #CCC;box-shadow:2px 2px 5px #DDD}
 .header .dropdown dt a{min-width:inherit}
-.languageSwitch .dropdown dd ul{top:2px;min-width:56px}
-.languageSwitch .dropdown dd ul li a{padding:5px 1px 9px 13px}
-.languageSwitch .flags{height:18px;width:45px}
-.addPlaceHeader{padding:8px 10px!important}
+.languageSwitch .dropdown dd ul{top:2px;min-width:70px}
+.languageSwitch .flags{height:18px;width:40px}
+.addPlaceHeader{padding:5px 10px 4px 10px!important;margin-top:5px!important}
+.addPlaceHeaderPlus{font-size:16px;margin-right:10px}
+.addPlaceHeaderText{margin-top:3px}
 .logo{background-image:url('images/logo2.png');background-repeat:no-repeat;width:125px;height:40px;margin-right:20px}
 .ie7 .logo{background-image:url('images/logo.png');width:38%;height:47px;background-repeat:no-repeat;margin-top:15px}
 .logo_beta{background-image:url('images/logo.png')}
@@ -82,8 +84,8 @@ html,body{margin:0;padding:0;height:100%}
 .ie7 .loginContainer{width:32%;background-color:white!important;margin-top:0!important;height:50px}
 .logindisplay{padding:5px 10px 10px 10px}
 .loginTitle{font-size:.9em;margin-bottom:3px}
-.alertSummaryContainer{padding:10px 0}
-.alertSummary{background:#FA993B;color:White;font-weight:bold;text-decoration:none;width:15px;height:15px;-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;padding:5px;margin-right:5px;text-align:center}
+.alertSummaryContainer{padding:10px 0 10px 10px}
+.alertSummary{background:#f88f1e;color:White;font-weight:bold;text-decoration:none;width:15px;height:15px;-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;padding:5px;margin-right:5px;text-align:center}
 .alertSummary a{color:White;text-decoration:none}
 .createAccount{margin-top:10px}
 .connectEworky{padding:3px 0 3px 10px}
@@ -114,7 +116,7 @@ div.pager A{font-size:1.1em;color:#666;text-decoration:none;padding:0 .4em 0 .4e
 div.pager A:hover{background-color:Silver}
 div.pager A.selected{background-color:#353535;color:White}
 div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
-.informationContainer{text-align:center;background:#FFF4C7;border:1px solid #FA993B;padding:10px;margin:5px 0 15px 0;color:#FA993B}
+.informationContainer{text-align:center;background:#FFF4C7;border:1px solid #f88f1e;padding:10px;margin:5px 0 15px 0;color:#f88f1e}
 .borderRadius{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
 .borderRadiusBottom{-webkit-border-bottom-left-radius:4px 4px;-webkit-border-bottom-right-radius:4px 4px;-moz-border-bottom-left-radius:4px 4px;-moz-border-bottom-right-radius:4px 4px;border-bottom-left-radius:4px 4px;border-bottom-right-radius:4px 4px}
 .buttonStd{overflow:visible;padding:5px 10px;color:white;-moz-border-radius:3px;border-radius:3px;border-image:initial;font-weight:bold;margin:3px}
@@ -124,8 +126,8 @@ div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
 .buttonBlue:hover{background-color:#379ed6;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#88c7ec,endColorstr=#74b7de);background-image:-moz-linear-gradient(top,#88c7ec,#74b7de);background-image:-webkit-linear-gradient(top,#88c7ec,#74b7de);background-image:linear-gradient(top,#88c7ec,#74b7de)}
 .buttonDarkBlue{border:1px solid #36485c;background-color:#36485c;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#36485c,endColorstr=#1f334a);background-image:-moz-linear-gradient(top,#36485c,#1f334a);background-image:-webkit-linear-gradient(top,#36485c,#1f334a);background-image:linear-gradient(top,#36485c,#1f334a)}
 .buttonDarkBlue:hover{background-color:#2a3848;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#2a3848,endColorstr=#142231);background-image:-moz-linear-gradient(top,#2a3848,#142231);background-image:-webkit-linear-gradient(top,#2a3848,#142231);background-image:linear-gradient(top,#2a3848,#142231)}
-.buttonOrange{border:1px solid #f9af52;background-color:#f9af52;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f9af52,endColorstr=#eb9916);background-image:-moz-linear-gradient(top,#f9af52,#eb9916);background-image:-webkit-linear-gradient(top,#f9af52,#eb9916);background-image:linear-gradient(top,#f9af52,#eb9916)}
-.buttonOrange:hover{background-color:#e6a14a;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e6a14a,endColorstr=#e2941a);background-image:-moz-linear-gradient(top,#e6a14a,#e2941a);background-image:-webkit-linear-gradient(top,#e6a14a,#e2941a);background-image:linear-gradient(top,#e6a14a,#e2941a)}
+.buttonOrange{border:1px solid #f88f1e;background-color:#f88f1e;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f88f1e,endColorstr=#f88e1e);background-image:-moz-linear-gradient(top,#f88f1e,#f88e1e);background-image:-webkit-linear-gradient(top,#f88f1e,#f88e1e);background-image:linear-gradient(top,#f88f1e,#f88e1e)}
+.buttonOrange:hover{background-color:#f99e10;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f99e10,endColorstr=#f0a13d);background-image:-moz-linear-gradient(top,#f99e10,#f0a13d);background-image:-webkit-linear-gradient(top,#f99e10,#f0a13d);background-image:linear-gradient(top,#f99e10,#f0a13d)}
 .buttonGreen{border:1px solid #390;background-color:#390;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#339900,endColorstr=#66cc00);background-image:-moz-linear-gradient(top,#390,#6c0);background-image:-webkit-linear-gradient(top,#390,#3f8b01);background-image:linear-gradient(top,#390,#6c0)}
 .buttonGreen:hover{background-color:#4ba800;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4ba800,endColorstr=#59c700);background-image:-moz-linear-gradient(top,#4ba800,#59c700);background-image:-webkit-linear-gradient(top,#4ba800,#59c700);background-image:linear-gradient(top,#4ba800,#59c700)}
 .buttonRed{border:1px solid #d45558;background-color:#d45558;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#d45558,endColorstr=#a42e2f);background-image:-moz-linear-gradient(top,#d45558,#a42e2f);background-image:-webkit-linear-gradient(top,#d45558,#a42e2f);background-image:linear-gradient(top,#d45558,#a42e2f)}

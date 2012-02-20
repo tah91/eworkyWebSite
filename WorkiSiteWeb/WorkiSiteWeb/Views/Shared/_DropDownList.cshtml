@@ -3,7 +3,9 @@
 <dl class="dropdown" id="@Model.Id">
 	<dt>
         @if (@Model.Id == "CultureSwitcher") {
-            <a href="#" class="@Model.TitleCss"></a>
+            <a href="#" class="@Model.TitleCss">
+            <span class="float-right dropdown-triangle">▾</span>
+            </a>
         } else {
             <a href="#">
 			    <span class="float-left">@Model.Title</span>

@@ -67,30 +67,44 @@
 		<div class="headerContainer headerGradient">
 			<div class="header">
 				<div class="logo linkImg float-left">@Html.ActionLink(" ", MVC.Home.Index())</div>
-				<ul>
-					<li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</li>
-					@if (!Request.IsAuthenticated)
-					{
-					<li class="float-left headerOptionNoHover darkblue">|</li>
-					<li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</li>
-					<li class="float-left headerOptionNoHover darkblue">|</li>
-					<li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())</li>
-					}
-				</ul>
-                @Html.Partial(MVC.Shared.Views._LogOnUserControl)
-                <div class="float-right addPlaceHeader buttonBlue buttonStd noUnderline">@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.HeaderSuggest, MVC.Home.AddSpace())</div>
-                <div class="languageSwitch float-right">@Html.Partial(MVC.Shared.Views._CultureSwitchControl)</div>
+                <div class="float-right">
+                	<ul>
+					    <li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.HowItWorks, MVC.Home.HowItWorks())</li>
+                        <li class="float-left headerOptionNoHover darkblue">|</li>
+					    @if (!Request.IsAuthenticated)
+					    {
+					    <li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.Register())</li>
+					    <li class="float-left headerOptionNoHover darkblue">|</li>
+					    <li class="float-left headerOption bold darkblue noUnderline">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn())</li>
+                        }
+                        else
+                        {
+                            @Html.Partial(MVC.Shared.Views._LogOnUserControl)
+                        }
+                        <li class="float-left headerOptionNoHover darkblue">|</li>
+                        <li class="float-left languageSwitch darkblue">@Html.Partial(MVC.Shared.Views._CultureSwitchControl)</li>
+                        <li class="float-left headerOptionNoHover darkblue">|</li>
+                        <li class="float-left addPlaceHeader buttonOrange buttonStd noUnderline">
+					        <a href="@Url.Action(MVC.Home.AddSpace())">
+						        <div class="float-left addPlaceHeaderPlus">+</div> 
+						        <div class="float-left addPlaceHeaderText">@Worki.Resources.Views.Shared.SharedString.HeaderSuggest</div> 						
+						        <div class="clear"></div>
+					        </a>
+				        </li>
+				    </ul>                    
+                </div>
+                <div class="clear"></div>
 			</div>
 		</div>
 		<div class="page">
 			<div id="main" class="clearfix">
 				@Html.ValidationSummary(Worki.Resources.Views.Shared.SharedString.CorrectThenTryAgain, new { @class = "borderRadius" })
 				@if (ViewContext.TempData[MiscHelpers.TempDataConstants.Info] != null)
-	{
+    {
 				<div class="informationContainer borderRadius bold">
 					<span>@ViewContext.TempData[MiscHelpers.TempDataConstants.Info]</span>
 				</div>
-	}
+    }
 				@*@Html.MvcSiteMap().SiteMapPath()*@
 				@RenderBody()
 			</div>

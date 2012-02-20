@@ -134,12 +134,12 @@ input:-moz-placeholder, textarea:-moz-placeholder
 
 .orange
 {
-	color:#fa993b;
+	color:#f88f1e;
 }
 
 .orange a
 {
-	color:#fa993b;
+	color:#f88f1e;
 }
 
 .grey
@@ -268,19 +268,24 @@ page width. Or, you can specify an exact pixel width. */
 .allemagne{ background-position: 0 0; width: 16px; height: 11px; } 
 .espagne{ background-position: -66px 0; width: 16px; height: 11px; } 
 .etats-unis{ background-position: -132px 0; width: 16px; height: 11px; } 
-.france{ background-position: -198px 0; width: 16px; height: 11px; } 
+.france{ background-position: -211px 0; width: 16px; height: 11px; } 
 .italie{ background-position: -264px 0; width: 16px; height: 11px; } 
 .maroc{ background-position: -330px 0; width: 16px; height: 11px; } 
 .mexique{ background-position: -396px 0; width: 16px; height: 11px; } 
 .portugal{ background-position: -462px 0; width: 16px; height: 11px; } 
-.royaume-uni{ background-position: -528px 0; width: 16px; height: 11px; } 
+.royaume-uni{ background-position: -542px 0; width: 16px; height: 11px; } 
 .turquie{ background-position: -594px 0; width: 16px; height: 11px; } 
 
 .headerOptionNoHover
 {
     padding: 8px;
-    margin: 5px;
+    margin: 5px 0;
     border: 1px solid transparent;
+}
+
+.headerOptionDD
+{
+    margin-right: 20px;
 }
 
 .headerOption
@@ -293,7 +298,7 @@ page width. Or, you can specify an exact pixel width. */
     border-right-color: #f3f3f3;*/
 }
 
-.headerOption:hover, .headerButton:hover 
+.headerOption:hover, .headerButton:hover, .headerOptionCircle:hover
 { 
     border: 1px solid #CCC;
     border-radius: 3px;
@@ -374,23 +379,35 @@ page width. Or, you can specify an exact pixel width. */
 .languageSwitch .dropdown dd ul 
 {
     top: 2px;
-    min-width: 56px;
+    min-width: 70px;
 }
 
 .languageSwitch .dropdown dd ul li a
 {
-    padding: 5px 1px 9px 13px;
+    /*padding: 5px 1px 9px 13px;*/
 }
 
 .languageSwitch .flags
 {
     height: 18px;
-    width: 45px;
+    width: 40px;
 }
 
 .addPlaceHeader
 {
-    padding: 8px 10px!important;
+    padding: 5px 10px 4px 10px!important;
+    margin-top: 5px!important;
+}
+
+.addPlaceHeaderPlus
+{
+	font-size:16px;
+	margin-right:10px;
+}
+
+.addPlaceHeaderText
+{
+	margin-top: 3px;
 }
 
 .logo
@@ -491,12 +508,12 @@ page width. Or, you can specify an exact pixel width. */
 
 .alertSummaryContainer
 {
-	padding:10px 0;
+	padding:10px 0 10px 10px;
 }
 
 .alertSummary
 {
-	background: #FA993B;
+	background: #f88f1e;
 	color: White;
 	font-weight:bold;
 	text-decoration:none;
@@ -727,10 +744,10 @@ div.pagerTop
 {
 	text-align:center;
 	background:#FFF4C7;
-	border: 1px solid #FA993B;
+	border: 1px solid #f88f1e;
 	padding: 10px;
 	margin: 5px 0px 15px 0px;
-	color:#FA993B;
+	color:#f88f1e;
 }
 
 /* BORDER
@@ -817,23 +834,35 @@ div.pagerTop
 	background-image: linear-gradient(top,#2a3848,#142231);
 }
 
-.buttonOrange
+/*.buttonOrange
 {
-	border: 1px solid #f9af52;
-	background-color: #f9af52;
+	border: 1px solid #faa841;
+	background-color: #faa841;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f9af52, endColorstr=#eb9916);
 	background-image: -moz-linear-gradient(top,#f9af52,#eb9916);
 	background-image: -webkit-linear-gradient(top,#f9af52,#eb9916);
-	background-image: linear-gradient(top,#f9af52,#eb9916);
+	background-image: linear-gradient(top,#faa841,#eb9916);
+}*/
+
+.buttonOrange
+{
+	border: 1px solid #f88f1e;
+	background-color: #f88f1e;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f88f1e, endColorstr=#f88e1e);
+	background-image: -moz-linear-gradient(top,#f88f1e,#f88e1e);
+	background-image: -webkit-linear-gradient(top,#f88f1e,#f88e1e);
+	background-image: linear-gradient(top,#f88f1e,#f88e1e);
 }
+
+
 
 .buttonOrange:hover
 {
-	background-color: #e6a14a;
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e6a14a, endColorstr=#e2941a);
-	background-image: -moz-linear-gradient(top,#e6a14a,#e2941a);
-	background-image: -webkit-linear-gradient(top,#e6a14a,#e2941a);
-	background-image: linear-gradient(top,#e6a14a,#e2941a);
+	background-color: #f99e10;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f99e10, endColorstr=#f0a13d);
+	background-image: -moz-linear-gradient(top,#f99e10,#f0a13d);
+	background-image: -webkit-linear-gradient(top,#f99e10,#f0a13d);
+	background-image: linear-gradient(top,#f99e10,#f0a13d);
 }
 
 .buttonGreen
@@ -2369,3 +2398,4 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     width:300px;
     margin:10px auto;
 }
+

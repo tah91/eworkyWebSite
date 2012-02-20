@@ -142,6 +142,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Anglais.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 2012 eWorky.
         /// </summary>
         public static string eWorky {
@@ -183,6 +192,15 @@ namespace Worki.Resources.Views.Home {
         public static string FreeSpace {
             get {
                 return ResourceManager.GetString("FreeSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Français.
+        /// </summary>
+        public static string French {
+            get {
+                return ResourceManager.GetString("French", resourceCulture);
             }
         }
         

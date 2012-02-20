@@ -18,8 +18,8 @@
         TitleCss = Current,
         Items = new List<DropDownItem>
 		{
-			new DropDownItem { DisplayName = "", Css = "flags france", Link = Url.Action(MVC.Home.ChangeCulture("fr")) },
-            new DropDownItem { DisplayName = "", Css = "flags royaume-uni", Link = Url.Action(MVC.Home.ChangeCulture("en")) }
+			new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.French,  Link = Url.Action(MVC.Home.ChangeCulture("fr")) },
+            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.English,  Link = Url.Action(MVC.Home.ChangeCulture("en")) }
 		}
     };
     @Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)
