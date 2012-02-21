@@ -1,17 +1,17 @@
 ﻿@section HeadContent
 {
-	<meta name="Description" content="@Worki.Resources.Views.Home.AProposString.Description"/>
+	<meta name="Description" content="@Worki.Resources.Views.Home.HomeString.PricingDescription"/>
     <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HowItWorksString.Pricing)</title>
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
 }
 
-@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HowItWorksString.Pricing, "Blue")
-<div class="detailContent generalTextContainer">
-	<div class="blockContainer float-left">
-		@Html.Partial(MVC.Home.Views._HowItWorksMenu, TutorialPages.Pricing)
-	</div>
+<div class="detailContent">
+    <div class="blockContainer float-left contentLeft">
+	    @Html.Partial(MVC.Home.Views._HowItWorksMenu, TutorialPages.Pricing)
+    </div>
 
-	<div class="float-right generalTextContent blockContainer">
+
+    <div class="float-left blockContainer contentRight">
 		<div class="contentBlock">
             <h3 class="howitWorksHeader borderRadius">@Worki.Resources.Views.Home.HowItWorksString.PricingTitle</h3>
             <h4>@Worki.Resources.Views.Home.HowItWorksString.PricingSubTitle</h4>
