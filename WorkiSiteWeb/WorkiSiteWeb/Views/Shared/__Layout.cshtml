@@ -82,8 +82,6 @@
                             @Html.Partial(MVC.Shared.Views._LogOnUserControl)
                         }
                         <li class="float-left headerOptionNoHover darkblue">|</li>
-                        <li class="float-left languageSwitch darkblue">@Html.Partial(MVC.Shared.Views._CultureSwitchControl)</li>
-                        <li class="float-left headerOptionNoHover darkblue">|</li>
                         <li class="float-left addPlaceHeader buttonOrange buttonStd noUnderline">
 					        <a href="@Url.Action(MVC.Home.AddSpace())">
 						        <div class="float-left addPlaceHeaderPlus">+</div> 
@@ -91,6 +89,7 @@
 						        <div class="clear"></div>
 					        </a>
 				        </li>
+                        <li class="float-left languageSwitch darkblue">@Html.Partial(MVC.Shared.Views._CultureSwitchControl)</li>
 				    </ul>                    
                 </div>
                 <div class="clear"></div>
