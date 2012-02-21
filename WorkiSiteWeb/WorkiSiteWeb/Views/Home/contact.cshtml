@@ -10,11 +10,11 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.ContactUs, "Blue")
 
 <div class="detailContent">
-	<div class="blockContainer float-left">
+	<div class="blockContainer contentLeft float-left">
 		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.Contact)
 	</div>
 
-    <div class="float-right generalTextContent blockContainer">
+    <div class="float-right contentRight generalTextContent blockContainer">
             @using (Html.BeginForm()) 
             {
                 <div class="contentBlock">

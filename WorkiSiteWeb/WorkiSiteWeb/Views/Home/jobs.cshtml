@@ -8,21 +8,20 @@
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.JobString.Jobs, "Blue")
 
 <div class="detailContent generalTextContainer">
-	<div class="blockContainer float-left">
+	<div class="blockContainer contentLeft float-left">
 		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.Jobs)
 	</div>
 	
-	<div class="float-right generalTextContent blockContainer"> 
+	<div class="float-right contentRight generalTextContent blockContainer"> 
 		<div class="contentBlock">
 
 			<h3 class="blue">@Worki.Resources.Views.Home.JobString.EWSpirit</h3>
 			<p>
 			@Worki.Resources.Views.Home.JobString.EWTeam
-
 			</p>
-			<p>
+@*			<p>
 			@Worki.Resources.Views.Home.JobString.EWProject
-			</p>
+			</p>*@
 			<p>
 			@Worki.Resources.Views.Home.JobString.EWSearchStudents
 			</p>
@@ -41,8 +40,9 @@
 								</p>
 				
 								<ul>
-									<li>@Html.Raw(Worki.Resources.Views.Home.JobString.JuniorDev)</li>
-									<li>@Html.Raw(Worki.Resources.Views.Home.JobString.SeniorDev)</li>
+									<li>@Worki.Resources.Views.Home.JobString.DevReason1</li>
+									<li>@Worki.Resources.Views.Home.JobString.DevReason2</li>
+									<li>@Worki.Resources.Views.Home.JobString.DevReason3</li>
 								</ul>
 							</td>
 							<td>

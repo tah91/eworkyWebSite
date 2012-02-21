@@ -290,9 +290,10 @@ namespace Worki.Web.Controllers
             return View(MVC.Home.Views.About);
         }
 
+		[ActionName("team")]
         public virtual ActionResult Team()
         {
-            return View();
+			return View(MVC.Home.Views.Team);
         }
 
         /// <summary>

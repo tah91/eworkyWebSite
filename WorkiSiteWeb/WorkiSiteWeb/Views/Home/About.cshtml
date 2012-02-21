@@ -7,15 +7,14 @@
 
 @RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HomeString.WhoAreWe, "Blue")
 <div class="detailContent generalTextContainer">
-	<div class="blockContainer float-left">
+	<div class="blockContainer contentLeft float-left">
 		@Html.Partial(MVC.Home.Views._AboutMenu, AboutPages.WhoAreWe)
 	</div>
 
-	<div class="float-right generalTextContent blockContainer">
+	<div class="float-right contentRight generalTextContent blockContainer">
 		<div class="contentBlock">
-            <h1 class="blue" style="text-align:center;">@Worki.Resources.Views.Home.HomeString.IntroWhoAreWe</h3>
 
-			<h3 class="blue">@Worki.Resources.Views.Home.HomeString.WhoAreWe</h3>
+			<h2 class="blue">@Worki.Resources.Views.Home.HomeString.IntroWhoAreWe</h2>
 			<p>@Worki.Resources.Views.Home.HomeString.WhoAreWe_Text1</p>
             <p>@Worki.Resources.Views.Home.HomeString.WhoAreWe_Text2</p>
             <p>@Worki.Resources.Views.Home.HomeString.WhoAreWe_Text3</p>

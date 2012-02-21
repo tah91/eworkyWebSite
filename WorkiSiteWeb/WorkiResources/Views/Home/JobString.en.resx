@@ -184,4 +184,13 @@
   <data name="Description" xml:space="preserve">
     <value>To help us growing, we are looking for young talents ready to join the adventure.</value>
   </data>
+  <data name="DevReason1" xml:space="preserve">
+    <value>You love websites that looks great</value>
+  </data>
+  <data name="DevReason2" xml:space="preserve">
+    <value>You want to apply the latest CSS3 /HTML5 tricks</value>
+  </data>
+  <data name="DevReason3" xml:space="preserve">
+    <value>You can spend hours tweaking a website to make it perfect</value>
+  </data>
 </root>

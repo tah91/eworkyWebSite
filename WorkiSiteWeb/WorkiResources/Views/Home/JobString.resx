@@ -119,7 +119,8 @@
   </resheader>
   <data name="Commercial" xml:space="preserve">
     <value>Du commercial : démarchage d’hôtels, centres d’affaires, etc.</value>
-  <comment>pas à traduire ?</comment></data>
+    <comment>pas à traduire ?</comment>
+  </data>
   <data name="CommunicationIntern" xml:space="preserve">
     <value>En ce moment, eWorky recherche un stagiaire en communication pour effectuer un panel de tâches
         très variées, dont :</value>
@@ -136,7 +137,7 @@
         lancement du Conseil National du Numérique en Avril 2011 et à l'e-G8 en Mai 2011 !</value>
   </data>
   <data name="EWSearchEveryProfil" xml:space="preserve">
-    <value>En ce moment, eWorky recherche des développeurs web C# de tout profil :</value>
+    <value>En ce moment, eWorky recherche des développeurs web de tout profil.</value>
   </data>
   <data name="EWSearchStudents" xml:space="preserve">
     <value>Pour accompagner sa croissance, eWorky cherche de jeunes (ou moins jeunes) développeurs et
@@ -192,9 +193,18 @@
     <value>Tu as l’âme d’un « business developer » ?</value>
   </data>
   <data name="YouAreDev" xml:space="preserve">
-    <value>Tu es développeur ?</value>
+    <value>Tu aimes coder ?</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Pour accompagner sa croissance, eWorky cherche de jeunes talents près à se lancer dans l'aventure d'une start-up prometteuse.</value>
+  </data>
+  <data name="DevReason1" xml:space="preserve">
+    <value>Tu aimes les sites bien faits.</value>
+  </data>
+  <data name="DevReason2" xml:space="preserve">
+    <value>Tu aimes appliquer les derniers trucs CSS3 / HTML5.</value>
+  </data>
+  <data name="DevReason3" xml:space="preserve">
+    <value>Tu es capable de passer des heures à peaufiner une page web pour la rendre parfaite.</value>
   </data>
 </root>

@@ -194,7 +194,6 @@ table tr.row-alternate{background-color:#E4E4E4}
 .backgroundRed a:hover{background-color:#e96063!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e96063,endColorstr=#c63132)!important;background-image:-moz-linear-gradient(top,#e96063,#c63132)!important;background-image:-webkit-linear-gradient(top,#e96063,#c63132)!important;background-image:linear-gradient(top,#e96063,#c63132)!important}
 .backgroundGreen,.backgroundGreen a{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-color:#bbd31f!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bbd31f,endColorstr=#d4f500)!important;background-image:-moz-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:-webkit-linear-gradient(top,#bbd31f,#d4f500)!important;background-image:linear-gradient(top,#bbd31f,#d4f500)!important}
 .backgroundGreen a:hover{background-color:#bde185!important;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bde185,endColorstr=#a2bb54)!important;background-image:-moz-linear-gradient(top,#bde185,#a2bb54)!important;background-image:-webkit-linear-gradient(top,#bde185,#a2bb54)!important;background-image:linear-gradient(top,#bde185,#a2bb54)!important}
-.generalTextContent{width:72%}
 .generalTextContent p{padding-bottom:25px}
 .generalTextContent ul{margin:10px 30px}
 .generalTextContent li{list-style:disc;margin-bottom:10px}
