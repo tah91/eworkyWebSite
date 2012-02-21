@@ -15,7 +15,7 @@ namespace Worki.Web.Areas.Admin.Controllers
 	[Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
 	[CompressFilter(Order = 1)]
 	[CacheFilter(Order = 2)]
-	//[RequireHttpsRemote]
+	[RequireHttpsRemote]
 	public abstract class AdminControllerBase : Controller
 	{
 

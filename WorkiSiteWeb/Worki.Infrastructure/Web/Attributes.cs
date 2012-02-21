@@ -40,12 +40,17 @@ namespace Worki.Infrastructure
     /// </summary>
     public class RequireHttpsRemoteAttribute : RequireHttpsAttribute
     {
+        static bool _DisableHttps = true;
+
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext == null)
             {
                 throw new ArgumentNullException("filterContext");
             }
+
+            if (_DisableHttps)
+                return;
 
 			if (filterContext.HttpContext != null && filterContext.HttpContext.Request.IsLocal)
             {

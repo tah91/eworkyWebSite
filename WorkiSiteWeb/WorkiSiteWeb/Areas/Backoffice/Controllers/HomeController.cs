@@ -18,7 +18,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 	[CompressFilter(Order = 1)]
 	[CacheFilter(Order = 2)]
 	[Authorize(Roles = MiscHelpers.BackOfficeConstants.BackOfficeRole)]
-	//[RequireHttpsRemote]
+	[RequireHttpsRemote]
 	public abstract class BackofficeControllerBase : Controller
 	{
 
