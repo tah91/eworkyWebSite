@@ -14,7 +14,7 @@ namespace Worki.Infrastructure
     {
 		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
 
-		public const Culture DefaultCulture = Culture.fr;
+		public const Culture DefaultCulture = Culture.en;
 
 		/// <summary>
 		/// Get culture type from url
@@ -70,8 +70,8 @@ namespace Worki.Infrastructure
 			{
 				case Culture.fr:
 					return ".fr";
-				case Culture.es:
-					return ".es";
+				//case Culture.es:
+					//return ".es";
 				case Culture.en:
 				default:
 					return ".com";
@@ -101,7 +101,7 @@ namespace Worki.Infrastructure
 		/// <param name="url">the url</param>
 		/// <param name="lang">the lang of the suffix</param>
 		/// <returns>the new url</returns>
-		public static string SetDomainSuffix(Uri url, string lang, bool addLocal = true)
+		public static string SetDomainSuffix(Uri url, string lang)
 		{
 			if (string.IsNullOrEmpty(url.Host))
 				return url.PathAndQuery;
@@ -115,28 +115,25 @@ namespace Worki.Infrastructure
 			var newHost = url.Host.Substring(0, lastDot) + suffix;
 
 			var newUrl = url.Scheme + System.Uri.SchemeDelimiter + newHost + (url.IsDefaultPort ? "" : ":" + url.Port) + url.PathAndQuery;
-			if (addLocal)
-			{
-				newUrl += "?" + _LocalQuery + "=" + lang;
-			}
 
 			return newUrl;
 		}
 
 		const string _CultureChanged = "CultureChanged";
-		const string _LocalQuery = "local";
 
 		bool ShouldSetCulture()
 		{
+			//already have switched
 			if (HttpContext.Current.Request.Cookies.AllKeys.Contains(_CultureChanged))
 				return false;
 
-			var query = HttpUtility.ParseQueryString(HttpContext.Current.Request.Url.Query);
-			if (query != null && query.AllKeys.Contains(_LocalQuery))
+			//comming from a link of the site
+			if (HttpContext.Current.Request.UrlReferrer != null)
 				return false;
 
-			if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com")
-				return false;
+			//comming from a .fr or so, mean that the language is already defined
+            if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com" || GetCulture(HttpContext.Current.Request.UserLanguages) == Culture.es)
+                return false;
 
 			return true;
 		}
@@ -162,7 +159,7 @@ namespace Worki.Infrastructure
 				var userCulture = GetCulture(HttpContext.Current.Request.UserLanguages);
 				if (userCulture != urlCulture)
 				{
-					var correctUrl = SetDomainSuffix(HttpContext.Current.Request.Url, userCulture.ToString(), false);
+					var correctUrl = SetDomainSuffix(HttpContext.Current.Request.Url, userCulture.ToString());
 					if (!string.IsNullOrEmpty(correctUrl))
 					{
 						HttpContext.Current.Response.Redirect(correctUrl);
