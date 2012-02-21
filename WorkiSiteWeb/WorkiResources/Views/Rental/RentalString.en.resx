@@ -127,7 +127,7 @@
     <value>Add a public tranport access</value>
   </data>
   <data name="AddRental" xml:space="preserve">
-    <value>Add an ads</value>
+    <value>Add an ad</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Address:</value>
@@ -157,7 +157,7 @@
     <value>Consult the profile:</value>
   </data>
   <data name="CheckThisOut" xml:space="preserve">
-    <value>I recommand you to discover this ads:</value>
+    <value>I recommand you to discover this ad:</value>
   </data>
   <data name="ChooseDate" xml:space="preserve">
     <value>Pick up a date</value>
@@ -271,7 +271,7 @@
     <value>Venue</value>
   </data>
   <data name="PlaceExemple" xml:space="preserve">
-    <value>Ex: Amsterdam, Manhattan, City of London, etc.</value>
+    <value>Ex: Seattle, NYC, Manhattan, City of London, etc.</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>Postcode:</value>
@@ -322,7 +322,7 @@
     <value>Validate</value>
   </data>
   <data name="UpdatedAt" xml:space="preserve">
-    <value>Ads updated on</value>
+    <value>Ad updated on</value>
   </data>
   <data name="Usefull" xml:space="preserve">
     <value>Useful</value>
