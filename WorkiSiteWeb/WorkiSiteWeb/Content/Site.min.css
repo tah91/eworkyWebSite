@@ -155,7 +155,7 @@ textarea{display:block;height:100px}
 input,select,textarea{margin:3px}
 li{list-style:none}
 table{border:solid 1px transparent}
-table td{padding:0;border:solid 1px transparent;vertical-align:middle}
+table[class!="offerGrid"] td{padding:0;border:solid 1px transparent;vertical-align:middle}
 table tr.row-alternate{background-color:#E4E4E4}
 .error{color:#f00}
 .field-validation-error{color:#f00}

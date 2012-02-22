@@ -1045,7 +1045,7 @@ table
 	border: solid 1px transparent;
 }
 
-table td 
+table[class!="offerGrid"] td 
 {
 	padding: 0px;   
 	border: solid 1px transparent;

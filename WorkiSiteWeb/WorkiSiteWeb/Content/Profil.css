@@ -355,39 +355,64 @@
     width: 100%;
 }
 
-.offerGrid th
+.offerTitleCol
 {
-    border-top: 1px solid #ececec;
-    border-right: 1px solid #ececec;
-    border-left: 1px solid #ececec;
     background-color: #f5f5f5;
-    padding: 10px;;
-    
     font-weight: bold;
     font-size: 14px;
     text-align: center;
     vertical-align: middle;
-    margin-bottom: 20px;
+    height: 100% !important;
+}
+
+.offerInCol
+{
+    background-color: #f5f5f5;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
 }
 
 .offerCol
 {
-  background-color: #f5f5f5 !important;
-  border-left: 1px solid #ececec;
-  border-right: 1px solid #ececec;
+    border-top: none;
+    border-left: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+    padding: 0px 5px 0px 5px;
+}
+
+.offerGrid thead th
+{
+   padding: 5px 5px 0px 5px;
+   border-top: 1px solid #ececec;
+   border-left: 1px solid #ececec;
+   border-right: 1px solid #ececec;
+
+       -moz-box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
+	-webkit-box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
+	        box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
+}
+
+.offerGrid thead tr
+{
+    margin-bottom: 20px;
 }
 
 .offerGrid td
 {
     height: 24px;
     width: 200px;
-    
     vertical-align: top;
+    border-bottom: 1px dashed #CCC !important;
 }
 
-.offerGrid td span
+.offerGrid td[scope="row"] span
 {
-    padding: 0px 30px 10px;
+    background-position: 0px -60px;
+    padding: 10px 30px 15px;
+    cursor: pointer;
     width: inherit;
     float: none;
 }
@@ -395,22 +420,30 @@
 .offerContent 
 {
     color: #717B80;
-    padding:5px !important;
+    padding: 10px !important;
 }
 
 .separatorCol
 {
-  padding: inherit !important;;
-  border: none !important;
-  width: 10px !important;
-  background-color: #FFF !important;;
+    padding: inherit !important;;
+    border: none !important;
+    width: 20px !important;
+    background-color: #FFF !important;
+    
+   -moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+	    box-shadow: none !important;
 }
 
 .lastCol
 {
-    border: none;
-    width: 500px;
-    text-align: center;
-    vertical-align: middle !important;
-    background-color: #f5f5f5 !important;
+    border-top: none;
+    border-left: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+    padding: 0px 5px 0px 5px;
+}
+
+.offerGrid thead tr th
+{
+    border-bottom: 1px dashed #5DAFDE !important;
 }
