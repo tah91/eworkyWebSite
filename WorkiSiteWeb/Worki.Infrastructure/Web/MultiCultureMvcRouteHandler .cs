@@ -130,7 +130,7 @@ namespace Worki.Infrastructure
 			//comming from a link of the site
 			if (HttpContext.Current.Request.UrlReferrer != null 
 				&& !string.IsNullOrEmpty(HttpContext.Current.Request.UrlReferrer.Host) 
-				&& !HttpContext.Current.Request.UrlReferrer.Host.Split('.').Contains("eworky"))
+				&& HttpContext.Current.Request.UrlReferrer.Host.Split('.').Contains("eworky"))
 				return false;
 
 			//comming from a .fr or so, mean that the language is already defined
