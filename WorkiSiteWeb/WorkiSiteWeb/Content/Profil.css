@@ -405,7 +405,7 @@
     height: 24px;
     width: 200px;
     vertical-align: top;
-    border-bottom: 1px dashed #CCC !important;
+    border-bottom: 1px dashed #CCC;
 }
 
 .offerGrid td[scope="row"] span
@@ -440,7 +440,27 @@
     border-top: none;
     border-left: 1px solid #ececec;
     border-right: 1px solid #ececec;
-    padding: 0px 5px 0px 5px;
+    margin-top: 200px;
+}
+
+.endCol
+{
+    padding: 0px 5px 5px 5px;
+    border-bottom: 1px solid #ececec  !important;
+    
+       -moz-box-shadow: 0 5px 10px -6px rgba(0,0,0,.9);
+	-webkit-box-shadow: 0 5px 10px -6px rgba(0,0,0,.9);
+	        box-shadow: 0 5px 10px -6px rgba(0,0,0,.9);
+}
+
+.noCol
+{
+    padding: inherit !important;;
+    border: none !important;
+    
+   -moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+	    box-shadow: none !important;
 }
 
 .offerGrid thead tr th

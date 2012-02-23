@@ -124,6 +124,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CHOISIR.
+        /// </summary>
+        public static string Choose {
+            get {
+                return ResourceManager.GetString("Choose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Répondez en un clic aux demandes de réservation et de devis des utilisateurs et encaissez directement sur votre compte.
         /// </summary>
         public static string Commercialize {
@@ -142,6 +151,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OFFRE DÉCOUVERTE.
+        /// </summary>
+        public static string DiscoveryOffer {
+            get {
+                return ResourceManager.GetString("DiscoveryOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Echangez, discutez et animez son espace grâce aux pages dédiées aux espaces de coworking.
         /// </summary>
         public static string Exchange {
@@ -156,6 +174,15 @@ namespace Worki.Resources.Views.Home {
         public static string ExchangeTitle {
             get {
                 return ResourceManager.GetString("ExchangeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        public static string Features {
+            get {
+                return ResourceManager.GetString("Features", resourceCulture);
             }
         }
         
