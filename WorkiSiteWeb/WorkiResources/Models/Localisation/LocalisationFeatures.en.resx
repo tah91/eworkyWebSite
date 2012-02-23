@@ -329,7 +329,7 @@
     <value>Sound control</value>
   </data>
   <data name="SingleMeetingRoom" xml:space="preserve">
-    <value>Meeting / training room</value>
+    <value>Meeting room</value>
   </data>
   <data name="SingleSeminarRoom" xml:space="preserve">
     <value>Conference / seminar room</value>

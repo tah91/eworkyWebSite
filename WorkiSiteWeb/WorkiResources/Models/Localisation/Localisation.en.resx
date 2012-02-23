@@ -236,7 +236,7 @@
     <value>Global rating</value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
-    <value>Caracteristics of meeting / training rooms</value>
+    <value>Caracteristics of meeting rooms</value>
   </data>
   <data name="WorkCity" xml:space="preserve">
     <value>City</value>
