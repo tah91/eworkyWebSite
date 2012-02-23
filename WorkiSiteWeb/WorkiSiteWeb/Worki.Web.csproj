@@ -339,6 +339,7 @@
     <Content Include="Content\images\addPlace.png" />
     <Content Include="Content\images\arrow_red.png" />
     <Content Include="Content\images\avatar.png" />
+    <Content Include="Content\images\checked.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\fb_sprite.png" />
     <Content Include="Content\images\geoloc.png" />
@@ -355,6 +356,7 @@
     <Content Include="Content\images\mediaBanner.png" />
     <Content Include="Content\images\retour.png" />
     <Content Include="Content\images\signin_facebook.png" />
+    <Content Include="Content\images\tampon.png" />
     <Content Include="Content\images\vu-tele.png" />
     <Content Include="Content\jquery.qtip.css" />
     <Content Include="Content\jquery.qtip.min.css">
@@ -891,6 +893,7 @@
     <Content Include="Views\Offer\_CreateOffer.cshtml" />
     <Content Include="Views\Offer\_CreateOfferScript.cshtml" />
     <Content Include="Views\Home\Team.cshtml" />
+    <Content Include="Views\Home\Pricing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
