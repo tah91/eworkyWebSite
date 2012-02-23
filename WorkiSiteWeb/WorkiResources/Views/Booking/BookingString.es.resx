@@ -328,7 +328,7 @@
     <value>Tu solicitud será enviada inmediatamente al gerente</value>
   </data>
   <data name="HowItWorks3" xml:space="preserve">
-    <value>Recibirás una confirmación del precio y de la disponibilidad en tu zona de usuario</value>
+    <value>Recibirás una confirmación del precio y de la disponibilidad en tu acceso usuario</value>
   </data>
   <data name="HowItWorks4" xml:space="preserve">
     <value>Entonces, podrás realizar el pago online de tu reserva</value>
@@ -372,5 +372,20 @@
   </data>
   <data name="PartyRegisterConfirmation" xml:space="preserve">
     <value>Tu inscripción ha sido realizada con éxito, la fecha del evento te será comunicada por correo electrónico.</value>
+  </data>
+  <data name="StatusAccepted" xml:space="preserve">
+    <value>Aceptado</value>
+  </data>
+  <data name="StatusCancelled" xml:space="preserve">
+    <value>Cancelado</value>
+  </data>
+  <data name="StatusPaid" xml:space="preserve">
+    <value>Pagado</value>
+  </data>
+  <data name="StatusRefused" xml:space="preserve">
+    <value>Denegado</value>
+  </data>
+  <data name="StatusUnknown" xml:space="preserve">
+    <value>Desconocido</value>
   </data>
 </root>

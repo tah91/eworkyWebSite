@@ -129,7 +129,7 @@
     <comment>Mika</comment>
   </data>
   <data name="AdminSpace" xml:space="preserve">
-    <value>Espacio administradores</value>
+    <value>Acceso administradores</value>
     <comment>Mika</comment>
   </data>
   <data name="BOHome" xml:space="preserve">
@@ -212,7 +212,7 @@
     <comment>Mika</comment>
   </data>
   <data name="OwnerSpace" xml:space="preserve">
-    <value>Espacio gerente</value>
+    <value>Acceso gerente</value>
     <comment>Mika</comment>
   </data>
   <data name="Places" xml:space="preserve">
@@ -245,7 +245,7 @@
     <comment>Mika</comment>
   </data>
   <data name="UserSpace" xml:space="preserve">
-    <value>Espacio usuario</value>
+    <value>Acceso usuario</value>
     <comment>Mika</comment>
   </data>
   <data name="WorkingBook" xml:space="preserve">
@@ -278,5 +278,23 @@
   </data>
   <data name="EditPlace" xml:space="preserve">
     <value>Edición del espacio</value>
+  </data>
+  <data name="Billing" xml:space="preserve">
+    <value>Facturación</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>Facturas de clientes</value>
+  </data>
+  <data name="CreateInvoice" xml:space="preserve">
+    <value>Crear una factura</value>
+  </data>
+  <data name="LocalisationSchedule" xml:space="preserve">
+    <value>Planning general</value>
+  </data>
+  <data name="OfferSchedule" xml:space="preserve">
+    <value>Planning por oferta</value>
+  </data>
+  <data name="Prices" xml:space="preserve">
+    <value>Precios</value>
   </data>
 </root>

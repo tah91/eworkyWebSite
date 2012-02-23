@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccessBO" xml:space="preserve">
-    <value>Conseguir la zona gerente</value>
+    <value>Conseguir el acceso gerente</value>
   </data>
   <data name="AddSpace" xml:space="preserve">
     <value>¡Compartir mi oficina ya!</value>
@@ -133,7 +133,7 @@
     <value>Desarrolla un entorno dinámico y creativo para ambas estructuras</value>
   </data>
   <data name="ForBothHead1" xml:space="preserve">
-    <value>¡Gana con intercambios!</value>
+    <value>¡Gana gracias a los intercambios!</value>
   </data>
   <data name="ForBothHead2" xml:space="preserve">
     <value>¡Construye tu red!</value>
@@ -187,10 +187,10 @@
     <value>En cuanto a aspecto jurídicos ¿Cómo funciona?</value>
   </data>
   <data name="ShareOfficeMenu" xml:space="preserve">
-    <value>Partager un bureau</value>
+    <value>Compartir una oficina</value>
   </data>
   <data name="ShareOfficeTitle" xml:space="preserve">
-    <value>Partager son bureau : pourquoi et comment ?</value>
+    <value>Compartir su oficina: ¿Por qué? y ¿cómo?</value>
   </data>
   <data name="ForTenantHead2" xml:space="preserve">
     <value>¿Estás buscando un espacio para tu actividad?</value>
