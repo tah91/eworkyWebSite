@@ -43,6 +43,7 @@ namespace Worki.Data.Models
         public string SiretNumber { get; set; }
         public string TaxNumber { get; set; }
         public decimal TaxRate { get; set; }
+        public int BOStatus { get; set; }
     
         // Navigation properties
     

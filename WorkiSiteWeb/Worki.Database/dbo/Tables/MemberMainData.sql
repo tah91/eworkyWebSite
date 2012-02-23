@@ -26,6 +26,7 @@
 	[SiretNumber]    NVARCHAR (256) NULL, 
 	[TaxNumber]      NVARCHAR (256) NULL, 
 	[TaxRate]        decimal(18,2)  NOT NULL DEFAULT 0, 
+	[BOStatus]       INT            NOT NULL DEFAULT 0,
     CONSTRAINT [PK_MemberMainData] PRIMARY KEY CLUSTERED ([MemberId] ASC),
     CONSTRAINT [FK_MemberMainData_Member] FOREIGN KEY ([MemberId]) REFERENCES [dbo].[Member] ([MemberId]) ON DELETE CASCADE ON UPDATE NO ACTION
 );
