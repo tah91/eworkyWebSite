@@ -2,7 +2,6 @@
 {
 	<meta name="Description" content="@Worki.Resources.Views.Home.HomeString.PricingDescription"/>
     <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HowItWorksString.Pricing)</title>
-    <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 <div class="detailContent">
@@ -34,7 +33,7 @@
             </td>
             <td class="checked offerCol"><span class="offerInCol block checked"></span></td>
             <td class="separatorCol" rowspan="6"></td>
-            <td class="lastCol endCol" rowspan="6"><span class="offerInCol block"><img src="../../Content/images/tampon.png" /></span></td>
+            <td class="lastCol endCol" rowspan="6"><span class="offerInCol block"><img src="@Links.Content.images.tampon_png" /></span></td>
           </tr>
 
           <tr>
@@ -48,7 +47,8 @@
           <tr>
             <td scope="row">
                 <span class="toogle_trigger toogle_trigger_click blue bold block">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_3</span>
-              	<div class="offerContent toogle_container">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_3_Text</div>
+              	<div class="offerContent toogle_container">@Html.Raw(string.Format(Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_3_Text, Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.Here, Worki.Resources.Views.Home.HowItWorksString.PayPalCGULink)))</div>
+
             </td>
             <td class="checked offerCol"><span class="offerInCol block checked"></span></td>
           </tr>

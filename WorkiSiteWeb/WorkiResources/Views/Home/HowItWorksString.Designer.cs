@@ -340,6 +340,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://cms.paypal.com/fr/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=fr_FR.
+        /// </summary>
+        public static string PayPalCGULink {
+            get {
+                return ResourceManager.GetString("PayPalCGULink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payer en ligne.
         /// </summary>
         public static string PayTitle {

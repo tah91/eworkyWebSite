@@ -210,6 +210,9 @@
   <data name="Pay" xml:space="preserve">
     <value>Une fois votre demande de réservation confirmée par le gérant de l’espace, vous pouvez directement payer en ligne avec votre carte de paiement</value>
   </data>
+  <data name="PayPalCGULink" xml:space="preserve">
+    <value>https://cms.paypal.com/fr/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=fr_FR</value>
+  </data>
   <data name="PayTitle" xml:space="preserve">
     <value>Payer en ligne</value>
   </data>
