@@ -531,6 +531,7 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avatar_png = Url("avatar.png");
+            public static readonly string checked_png = Url("checked.png");
             public static readonly string cecilia_png = Url("cecilia.png");
             public static readonly string comm_content_png = Url("comm_content.png");
             public static readonly string cross_png = Url("cross.png");
@@ -582,6 +583,7 @@ namespace Links {
             public static readonly string star_png = Url("star.png");
             public static readonly string startup_png = Url("startup.png");
             public static readonly string student_png = Url("student.png");
+            public static readonly string tampon_png = Url("tampon.png");
             public static readonly string tahir_png = Url("tahir.png");
             public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
             public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
@@ -1024,6 +1026,7 @@ namespace Worki.Web.Controllers {
             public readonly string Jobs = "jobs";
             public readonly string About = "about";
             public readonly string Team = "team";
+            public readonly string Pricing = "Pricing";
             public readonly string CGU = "tos";
             public readonly string Legal = "legal";
             public readonly string HowItWorks = "how-it-works";
@@ -1057,6 +1060,7 @@ namespace Worki.Web.Controllers {
             public readonly string Legal = "~/Views/Home/Legal.cshtml";
             public readonly string OwnerTutorial = "~/Views/Home/OwnerTutorial.cshtml";
             public readonly string Press = "~/Views/Home/Press.cshtml";
+            public readonly string Pricing = "~/Views/Home/Pricing.cshtml";
             public readonly string ShareOffice = "~/Views/Home/ShareOffice.cshtml";
             public readonly string Team = "~/Views/Home/Team.cshtml";
             public readonly string UserTutorial = "~/Views/Home/UserTutorial.cshtml";
@@ -1132,6 +1136,11 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult Team() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Team);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Pricing() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Pricing);
             return callInfo;
         }
 
