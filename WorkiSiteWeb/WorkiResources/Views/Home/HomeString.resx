@@ -328,4 +328,10 @@
   <data name="French" xml:space="preserve">
     <value>Français</value>
   </data>
+  <data name="PricingDescription" xml:space="preserve">
+    <value>Présentation des options de l'espace gérant sur eWorky.</value>
+  </data>
+  <data name="TeamDescription" xml:space="preserve">
+    <value>Page présentant l'equipe d'eWorky !</value>
+  </data>
 </root>

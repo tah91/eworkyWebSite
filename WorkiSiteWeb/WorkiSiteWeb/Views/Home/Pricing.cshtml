@@ -1,0 +1,95 @@
+﻿@section HeadContent
+{
+	<meta name="Description" content="@Worki.Resources.Views.Home.HomeString.PricingDescription"/>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HowItWorksString.Pricing)</title>
+}
+
+<div class="detailContent">
+    <div class="blockContainer float-left contentLeft">
+	    @Html.Partial(MVC.Home.Views._HowItWorksMenu, TutorialPages.Pricing)
+    </div>
+
+
+    <div class="float-left blockContainer contentRight">
+		<div class="contentBlock">
+            <h3 class="howitWorksHeader borderRadius">@Worki.Resources.Views.Home.HowItWorksString.PricingTitle</h3>
+            <h4>@Worki.Resources.Views.Home.HowItWorksString.PricingSubTitle</h4>
+
+
+    <table class="offerGrid">
+        <thead>
+          <tr>
+            <th scope="col" class="noCol"><span class="offerTitleCol block">@Worki.Resources.Views.Home.HowItWorksString.Features<br /><br /></span></th>
+            <th scope="col"><span class="offerTitleCol block">@Worki.Resources.Views.Home.HowItWorksString.DiscoveryOffer</span></th>
+            <th scope="col" class="separatorCol"></th>
+            <th scope="col"><span class="offerTitleCol block"><br /><br /></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">
+                <span class="toogle_trigger toogle_trigger_click blue bold block">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_1</span>
+              	<div class="offerContent toogle_container">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_1_Text</div>
+            </td>
+            <td class="checked offerCol"><span class="offerInCol block checked"></span></td>
+            <td class="separatorCol" rowspan="6"></td>
+            <td class="lastCol endCol" rowspan="6"><span class="offerInCol block"><img src="@Links.Content.images.tampon_png" /></span></td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <span class="toogle_trigger toogle_trigger_click blue bold block">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_2</span>
+              	<div class="offerContent toogle_container">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_2_Text</div>
+            </td>
+            <td class="checked offerCol"><span class="offerInCol block checked"></span></td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <span class="toogle_trigger toogle_trigger_click blue bold block">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_3</span>
+              	<div class="offerContent toogle_container">@Html.Raw(string.Format(Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_3_Text, Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.Here, Worki.Resources.Views.Home.HowItWorksString.PayPalCGULink)))</div>
+
+            </td>
+            <td class="checked offerCol"><span class="offerInCol block checked"></span></td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <span class="toogle_trigger toogle_trigger_click blue bold block">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_4</span>
+              	<div class="offerContent toogle_container">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_4_Text</div>
+            </td>
+            <td class="checked offerCol"><span class="offerInCol block checked"></span></td>
+          </tr>
+
+          <tr>
+            <td scope="row">
+                <span class="toogle_trigger toogle_trigger_click blue bold block">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_5</span>
+              	<div class="offerContent toogle_container">@Worki.Resources.Views.Home.HowItWorksString.PrincingFeature_5_Text</div>
+            </td>
+            <td class="checked offerCol"><span class="offerInCol block checked"></span></td>
+          </tr>
+
+          <tr>
+            <td scope="row"></td>
+            <td class="offerCol endCol">
+                <span class="offerInCol block">
+                    <div class="buttonBlue buttonStd noUnderline">@Worki.Resources.Views.Home.HowItWorksString.Choose</div>
+                 </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+		</div>
+	</div>
+    <div class="clear"></div>
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
+            InitTab(".contentBlock");
+        });
+    </script>
+}

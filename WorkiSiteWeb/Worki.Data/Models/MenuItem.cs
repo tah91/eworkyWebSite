@@ -23,7 +23,8 @@ namespace Worki.Data.Models
 		UserTutorial,
 		OwnerTutorial,
         SharedOffice,
-        Faq
+        Faq,
+        Pricing
 	}
 
     public enum DashboardMenu
