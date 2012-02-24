@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System;
 using System.Linq;
+using System.ComponentModel;
 
 namespace Worki.Data.Models
 {
@@ -22,6 +23,46 @@ namespace Worki.Data.Models
         public int Score { get; set; }
         public bool Locked { get; set; }
         public string LastName { get; set; }
+    }
+
+    public class BOAccept : IDataErrorInfo
+    {
+        public bool IsRead { get; set; }
+
+        public BOAccept()
+        {
+           IsRead = true;
+        }
+
+        #region IDataErrorInfo
+
+        public string Error
+        {
+            get { return string.Empty; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch (columnName)
+                {
+                    case "IsRead":
+                        {
+                            if (!IsRead)
+                            {
+                                return @Worki.Resources.Views.Home.CguString.MustAcceptCGU;
+                            }
+                            else
+                                return string.Empty;
+                        }
+                    default:
+                        return string.Empty;
+                }
+            }
+        }
+
+        #endregion
     }
 
 	#endregion

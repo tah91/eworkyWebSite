@@ -10,6 +10,7 @@ using Worki.Infrastructure;
 using Worki.Data.Models;
 using Worki.Memberships;
 using System.Web.Security;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
@@ -226,15 +227,19 @@ namespace Worki.Web.Areas.Admin.Controllers
 				var hasRole = Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
 				if (!hasRole)
 				{
+                    member.MemberMainData.BOStatus = (int)eBOStatus.Done;
 					Roles.AddUserToRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
 				}
 				else
 				{
+                    member.MemberMainData.BOStatus = (int)eBOStatus.None;
 					Roles.RemoveUserFromRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
 				}
+                context.Commit();
 			}
 			catch (Exception ex)
 			{
+                context.Complete();
 				_Logger.Error("SetBackoffice", ex);
 			}
 
@@ -266,6 +271,36 @@ namespace Worki.Web.Areas.Admin.Controllers
                 }
             };
             return View(MVC.Admin.Member.Views.UsersLeaderboard, viewModel);
+        }
+
+        #endregion
+
+        #region Member PendingBO
+
+        public enum eBOStatus
+        {
+            None,
+            Pending,
+            Done
+        };
+
+        public virtual ActionResult PendingBO(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            int pageValue = page ?? 1;
+            var askers = mRepo.GetMany(m => m.MemberMainData.BOStatus == (int)eBOStatus.Pending);
+            var viewModel = new PagingList<Member>()
+            {
+                List = askers.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = MiscHelpers.Constants.PageSize,
+                    TotalItems = askers.Count()
+                }
+            };
+            return View(viewModel);
         }
 
         #endregion

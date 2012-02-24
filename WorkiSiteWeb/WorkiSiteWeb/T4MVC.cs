@@ -531,8 +531,8 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avatar_png = Url("avatar.png");
-            public static readonly string checked_png = Url("checked.png");
             public static readonly string cecilia_png = Url("cecilia.png");
+            public static readonly string checked_png = Url("checked.png");
             public static readonly string comm_content_png = Url("comm_content.png");
             public static readonly string cross_png = Url("cross.png");
             public static readonly string csv_import_png = Url("csv-import.png");
@@ -562,6 +562,7 @@ namespace Links {
             public static readonly string logo2_png = Url("logo2.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
             public static readonly string mediaBanner_png = Url("mediaBanner.png");
+            public static readonly string networks_png = Url("networks.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
@@ -583,8 +584,8 @@ namespace Links {
             public static readonly string star_png = Url("star.png");
             public static readonly string startup_png = Url("startup.png");
             public static readonly string student_png = Url("student.png");
-            public static readonly string tampon_png = Url("tampon.png");
             public static readonly string tahir_png = Url("tahir.png");
+            public static readonly string tampon_png = Url("tampon.png");
             public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
             public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
             public static readonly string ui_bg_glass_55_fbf9ee_1x400_png = Url("ui-bg_glass_55_fbf9ee_1x400.png");
@@ -1141,6 +1142,12 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult Pricing() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Pricing);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Pricing(Worki.Data.Models.BOAccept model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Pricing);
+            callInfo.RouteValueDictionary.Add("model", model);
             return callInfo;
         }
 
@@ -2474,6 +2481,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public System.Web.Mvc.ActionResult Leaderboard() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Leaderboard);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PendingBO() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PendingBO);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MemberController Actions { get { return MVC.Admin.Member; } }
@@ -2495,6 +2507,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string IndexOwner = "IndexOwner";
             public readonly string SetBackoffice = "SetBackoffice";
             public readonly string Leaderboard = "Leaderboard";
+            public readonly string PendingBO = "PendingBO";
         }
 
 
@@ -2506,6 +2519,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string Admins = "~/Areas/Admin/Views/Member/Admins.cshtml";
             public readonly string IndexOwner = "~/Areas/Admin/Views/Member/IndexOwner.cshtml";
             public readonly string IndexUser = "~/Areas/Admin/Views/Member/IndexUser.cshtml";
+            public readonly string PendingBO = "~/Areas/Admin/Views/Member/PendingBO.cshtml";
             public readonly string supprimer_utilisateur = "~/Areas/Admin/Views/Member/supprimer-utilisateur.cshtml";
             public readonly string UsersLeaderboard = "~/Areas/Admin/Views/Member/UsersLeaderboard.cshtml";
         }
@@ -2569,6 +2583,12 @@ namespace Worki.Web.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult Leaderboard(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Leaderboard);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult PendingBO(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PendingBO);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }

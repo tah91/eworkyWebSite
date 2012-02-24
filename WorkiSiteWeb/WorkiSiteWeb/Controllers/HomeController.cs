@@ -296,9 +296,39 @@ namespace Worki.Web.Controllers
 			return View(MVC.Home.Views.Team);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult Pricing()
         {
-            return View();
+            return View(new BOAccept());
+        }
+
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        public virtual ActionResult Pricing(BOAccept model)
+        {
+            var id = WebHelper.GetIdentityId(User.Identity);
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var member = mRepo.Get(id);
+            if (member == null)
+                return View(MVC.Shared.Views.Error);
+
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    member.MemberMainData.BOStatus = (int)Worki.Web.Areas.Admin.Controllers.MemberController.eBOStatus.Pending;
+                    context.Commit();
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.BackOfficeAsked;
+                    return RedirectToAction(MVC.Home.Index());
+                }
+                catch (Exception ex)
+                {
+                    context.Complete();
+                    _Logger.Error("Pricing", ex);
+                }
+            }
+            return View(model);
         }
 
         /// <summary>

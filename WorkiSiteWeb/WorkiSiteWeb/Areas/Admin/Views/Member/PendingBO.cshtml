@@ -15,9 +15,9 @@
 		{
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Owner, MVC.Admin.Member.IndexOwner())},
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.PendingBO, MVC.Admin.Member.PendingBO())}
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Owner, MVC.Admin.Member.IndexOwner())},
+			new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.PendingBO, MVC.Admin.Member.PendingBO())}
 		})
 	</div>
 
@@ -32,7 +32,7 @@
                         @Worki.Resources.Views.Admin.AdminString.EmailAddress
                     </th>
 					<th>
-                        @Worki.Resources.Views.Admin.AdminString.ManagerRole
+                        @Worki.Resources.Views.Shared.SharedString.Valid @Worki.Resources.Menu.Menu.OwnerSpace
                     </th>
                 </tr>
             </thead>
@@ -46,8 +46,8 @@
                         <td align="right">
 							@Html.ActionLink(item.Email, MVC.Account.Public(item.MemberId)) 
                         </td>
-						<td align="center">
-                            @Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Yes, MVC.Admin.Member.ChangeUserRole(Model.PagingInfo.CurrentPage, item.MemberId))
+						<td align="right">
+							@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Valid, MVC.Admin.Member.SetBackoffice(item.MemberId)) 
                         </td>
                     </tr>
 				} 
@@ -55,7 +55,7 @@
             <tfoot> </tfoot>
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Member.AdminList(x)))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Member.PendingBO(x)))
         </div>
 	</div>
 	<div class="clear"></div>

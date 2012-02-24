@@ -245,4 +245,13 @@ Toutes les photographies utilisées sur ce site Web sont présentées uniquement
   <data name="Description" xml:space="preserve">
     <value>Conditions générales d'utilisation, c'est à dire ce à quoi vous vous engagez en utilisant eWorky.</value>
   </data>
+  <data name="cgu" xml:space="preserve">
+    <value>conditions générales de ventes des services</value>
+  </data>
+  <data name="ReadAndAccept" xml:space="preserve">
+    <value>J’ai lu et j’accepte les {0}.</value>
+  </data>
+  <data name="MustAcceptCGU" xml:space="preserve">
+    <value>Vous devez acceptez les conditions d'utilisation.</value>
+  </data>
 </root>

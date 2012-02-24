@@ -300,4 +300,8 @@
   <data name="Prices" xml:space="preserve">
     <value>Tarifs</value>
   </data>
+  <data name="PendingBO" xml:space="preserve">
+    <value>BO en attente</value>
+    <comment>Steeve</comment>
+  </data>
 </root>

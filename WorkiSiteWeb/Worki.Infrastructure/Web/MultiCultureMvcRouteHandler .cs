@@ -14,7 +14,7 @@ namespace Worki.Infrastructure
     {
 		static List<string> _Languages = new List<string>() { Culture.fr.ToString(), Culture.en.ToString() };
 
-		public const Culture DefaultCulture = Culture.en;
+		public const Culture DefaultCulture = Culture.fr;
 
 		/// <summary>
 		/// Get culture type from url
