@@ -346,4 +346,13 @@
   <data name="French" xml:space="preserve">
     <value>Francés</value>
   </data>
+  <data name="Team_Member_1_Text" xml:space="preserve">
+    <value>Habitante de Paris, Olivier se encarga en eWorky de la estrategia y del storyboarding. A parte de ser igual de discreto en sus intercambios en espacios diáfanos que un pescadero en una lonja, Olivier es un gran aficionado al senderismo y un vegetariano convencido. Pero por encima de todo, Olivier glorifica los diseños depurados e idólatra la supresión de los botones inútiles y de las faltas ortográficas.</value>
+  </data>
+  <data name="Team_Member_2_Text" xml:space="preserve">
+    <value>Cécilia se encarga del desarrollo comercial, de las relaciones con la prensa y de la financiación de eWorky. Trabaja desde Grenoble (Francia) y ¡ojo!, no soporta que se hable mal de su región montañesa! Optimista, hiperactiva y aficionada a las agendas a rebosar así como de los plazos ajustados, está muy implicada en la promoción de lo digital y del emprendimiento, entre otras, en cualidad de co-presidente del "Cercle des jeunes entrepreneurs". Cuando consigue algún momento de libertad, le gusta pasear con zapatos de vestir, botas de montaña o a caballo.</value>
+  </data>
+  <data name="Team_Member_3_Text" xml:space="preserve">
+    <value>Tahir es EL especialista del desarrollo, tan especialista que a veces es complicado entender lo que no está contando. Lector de Dostoïevski y de Camus, está tan cómodo programando que engullendo constantemente cafés, pastelitos o chocolatinas de todo tipo. Originario de "Les Ulis" (al igual que Thierry Henry), ya ha hecho capoeira, buceo, y su capacidad de sembrar faltas de ortografía como envoltorios de galletas vaciós a su paso, compensa el celo con el que Olivier las corrige.</value>
+  </data>
 </root>

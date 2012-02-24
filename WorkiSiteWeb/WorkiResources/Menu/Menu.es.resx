@@ -241,7 +241,7 @@
     <comment>Mika</comment>
   </data>
   <data name="TopMember" xml:space="preserve">
-    <value>Top 50</value>
+    <value>50 mejores</value>
     <comment>Mika</comment>
   </data>
   <data name="UserSpace" xml:space="preserve">
