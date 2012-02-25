@@ -3,7 +3,7 @@
 @section HeadContent
 {
 	<meta name="Description" content="@Worki.Resources.Views.Home.HomeString.PricingDescription"/>
-    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HowItWorksString.Pricing)</title>
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HowItWorksString.PricingHeaderTitle)</title>
 }
 
 <div class="detailContent">
@@ -16,15 +16,22 @@
      {
 		    <div class="contentBlock">
                 <h3 class="howitWorksHeader borderRadius">@Worki.Resources.Views.Home.HowItWorksString.PricingTitle</h3>
-                <h4>@Worki.Resources.Views.Home.HowItWorksString.PricingSubTitle</h4>
 
-                <table class="offerGrid">
+                <table class="offerGrid margint15">
                     <thead>
                       <tr>
-                        <th scope="col" class="noCol"><span class="offerTitleCol block">@Worki.Resources.Views.Home.HowItWorksString.Features<br /><br /></span></th>
-                        <th scope="col"><span class="offerTitleCol block">@Worki.Resources.Views.Home.HowItWorksString.DiscoveryOffer</span></th>
-                        <th scope="col" class="separatorCol"></th>
-                        <th scope="col"><span class="offerTitleCol block"><br /><br /></span></th>
+                        <th scope="col" class="noCol">
+                            <div class="offerTitleCol">@Worki.Resources.Views.Home.HowItWorksString.Features</div>
+                        </th>
+                        <th scope="col">
+                            <div class="offerTitleCol">@Worki.Resources.Views.Home.HowItWorksString.DiscoveryOffer</div>
+                        </th>
+                        <th scope="col" class="noCol">
+                            <div class="offerTitleCol"></div>
+                        </th>
+                        <th scope="col">
+                            <div class="offerTitleCol"><br /><br /></div>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -75,8 +82,7 @@
                         <td scope="row"></td>
                         <td class="offerCol endCol">
                             <span class="offerInCol block">
-                                <div class="buttonBlue buttonStd noUnderline">
-                                <input type=submit value=choisir /></div>
+                                <input class="buttonBlue buttonStd howitWorksHeader borderRadius noUnderline" type="submit" value="@Worki.Resources.Views.Shared.SharedString.Choose" />
                              </span>
                         </td>
                       </tr>

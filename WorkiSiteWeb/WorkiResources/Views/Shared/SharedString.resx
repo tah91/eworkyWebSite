@@ -128,7 +128,6 @@
   </data>
   <data name="Hourly" xml:space="preserve">
     <value>Horaires</value>
-    
   </data>
   <data name="KnowHouly" xml:space="preserve">
     <value>Si vous connaissez les horaires d'ouverture de ce lieu, saisissez-les grâce au formulaire d'édition ou contactez-nous : </value>
@@ -297,5 +296,11 @@
   </data>
   <data name="SpaceUser" xml:space="preserve">
     <value>espace utilisateur</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accepter</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Choisir</value>
   </data>
 </root>

@@ -124,15 +124,6 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CHOISIR.
-        /// </summary>
-        public static string Choose {
-            get {
-                return ResourceManager.GetString("Choose", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Répondez en un clic aux demandes de réservation et de devis des utilisateurs et encaissez directement sur votre compte.
         /// </summary>
         public static string Commercialize {
@@ -369,9 +360,9 @@ namespace Worki.Resources.Views.Home {
         /// <summary>
         ///   Looks up a localized string similar to Découvrez notre espace gérant..
         /// </summary>
-        public static string PricingSubTitle {
+        public static string PricingHeaderTitle {
             get {
-                return ResourceManager.GetString("PricingSubTitle", resourceCulture);
+                return ResourceManager.GetString("PricingHeaderTitle", resourceCulture);
             }
         }
         
@@ -385,7 +376,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gestion des demandes de réservation.
+        ///   Looks up a localized string similar to Gestion des réservations.
         /// </summary>
         public static string PrincingFeature_1 {
             get {

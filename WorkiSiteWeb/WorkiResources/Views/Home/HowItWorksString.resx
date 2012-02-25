@@ -138,9 +138,6 @@
   <data name="BookUserTitle" xml:space="preserve">
     <value>Réserver</value>
   </data>
-  <data name="Choose" xml:space="preserve">
-    <value>CHOISIR</value>
-  </data>
   <data name="Commercialize" xml:space="preserve">
     <value>Répondez en un clic aux demandes de réservation et de devis des utilisateurs et encaissez directement sur votre compte</value>
   </data>
@@ -219,14 +216,14 @@
   <data name="Pricing" xml:space="preserve">
     <value>Espace gérant</value>
   </data>
-  <data name="PricingSubTitle" xml:space="preserve">
+  <data name="PricingHeaderTitle" xml:space="preserve">
     <value>Découvrez notre espace gérant.</value>
   </data>
   <data name="PricingTitle" xml:space="preserve">
     <value>Vous souhaitez gérez votre espace de façon simple, sûre et sans frais ?</value>
   </data>
   <data name="PrincingFeature_1" xml:space="preserve">
-    <value>Gestion des demandes de réservation</value>
+    <value>Gestion des réservations</value>
   </data>
   <data name="PrincingFeature_1_Text" xml:space="preserve">
     <value>Vos clients peuvent directement effectuer une demande de devis ou de réservation sur votre fiche eWorky. Vous recevez immédiatement une notification par e-mail et n’avez plus qu’à accepter ou refuser.</value>
