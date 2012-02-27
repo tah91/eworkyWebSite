@@ -131,10 +131,12 @@ Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} po
   <data name="AlertBookingNeed" xml:space="preserve">
     <value>Contacter le lieu suivant car une demande de réservation a été faite, alors que le lieu ne propose pas encore de réservation :
 Nom du lieu : &lt;b&gt;{0}&lt;/b&gt;</value>
-  <comment>jm</comment></data>
+    <comment>jm</comment>
+  </data>
   <data name="AlertBookingNeedSubject" xml:space="preserve">
     <value>Demande de possibilité de réservation</value>
-  <comment>jm</comment></data>
+    <comment>jm</comment>
+  </data>
   <data name="BookingMailBody" xml:space="preserve">
     <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
 Téléphone : &lt;b&gt;{1}&lt;/b&gt;
@@ -151,7 +153,7 @@ Message : &lt;b&gt;{7}&lt;/b&gt;</value>
   <data name="BookingNewMember" xml:space="preserve">
     <value>Suite à votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;), un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
 
-Votre login est "&lt;b&gt;{5}&lt;/b&gt;" et votre mot de passe temporaire est &lt;b&gt;"{6}"&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{7}&lt;/b&gt;
+Votre login est "&lt;b&gt;{5}&lt;/b&gt;" et votre mot de passe temporaire est "&lt;b&gt;{6}&lt;/b&gt;". Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{7}&lt;/b&gt;
 
 Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
@@ -178,7 +180,8 @@ Si cet espace vous a plu n’hésitez pas à le noter et commenter sur sa fiche 
   </data>
   <data name="CalandarBookingCreationSubject" xml:space="preserve">
     <value>Votre réservation chez {0} a été enregistrée sur eWorky</value>
-  <comment>jm</comment></data>
+    <comment>jm</comment>
+  </data>
   <data name="CalandarBookingModification" xml:space="preserve">
     <value>Le gérant de &lt;b&gt;{0}&lt;/b&gt; a modifié votre réservation sur son agenda eWorky !
 Votre réservation est désormais enregistrée du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt;.

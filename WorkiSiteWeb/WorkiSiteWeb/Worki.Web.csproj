@@ -355,6 +355,7 @@
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
+    <Content Include="Content\images\marc.png" />
     <Content Include="Content\images\mediaBanner.png" />
     <Content Include="Content\images\networks.png" />
     <Content Include="Content\images\olivier.png" />

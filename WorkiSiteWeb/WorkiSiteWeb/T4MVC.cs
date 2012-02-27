@@ -560,7 +560,9 @@ namespace Links {
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
             public static readonly string logo2_png = Url("logo2.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
+            public static readonly string marc_png = Url("marc.png");
             public static readonly string mediaBanner_png = Url("mediaBanner.png");
+            public static readonly string networks_png = Url("networks.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");

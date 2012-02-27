@@ -493,6 +493,24 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Marc Labrude.
+        /// </summary>
+        public static string Team_Member_4 {
+            get {
+                return ResourceManager.GetString("Team_Member_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marc est en charge du business development sur les marchés hispanophones. &quot;Marco&quot; est basé à Saragosse dans cette ville qui l&apos;a séduit par sa douceur de vivre et son exceptionnelle densité de bar à tapas. Marc est à l&apos;image du pays dans lequel il a choisi de poser ses valises : chaleureux, fêtard, gourmand, sportif. D&apos;ailleurs, on ne sait pas exactement à quoi il se dope pour apporter tant de dynamisme à l&apos;équipe mais on suspecte un savant mélange de Cacique, d&apos;huile d&apos;olive et de chorizo..
+        /// </summary>
+        public static string Team_Member_4_Text {
+            get {
+                return ResourceManager.GetString("Team_Member_4_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L’équipe eWorky a plein de projets dans les cartons pour simplifier le travail ! Alors suivez-nos actualités sur Facebook, Twitter, Google+, etc..
         /// </summary>
         public static string Teamworky {
