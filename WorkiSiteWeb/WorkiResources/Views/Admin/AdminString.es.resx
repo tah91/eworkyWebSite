@@ -136,7 +136,7 @@
     <value>Volver a la lista</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
-    <value>Confirmar eliminación</value>
+    <value>Por favor, confirma la eliminación:</value>
   </data>
   <data name="ConfirmDeletePress" xml:space="preserve">
     <value>Por favor, confirmar la eliminación del artículo :</value>
