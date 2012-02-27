@@ -74,31 +74,13 @@
 	<div class="editor-label">
 		@Html.LabelFor(model => model.PostEs)
 	</div>          
-	@switch (Url.GetCulture())
-	{
-		case Worki.Infrastructure.Culture.es:
-			{
-	<div class="editor-field">
-		@Html.TextAreaFor(model => model.PostEs)
-	</div>
-			}
-			break;
-		case Worki.Infrastructure.Culture.en:
-			{
-	<div class="editor-field">
-		@Html.TextAreaFor(model => model.PostEn)
-	</div>
-			}
-			break;
-		case Worki.Infrastructure.Culture.fr:
-		default:
-			{ 
-	<div class="editor-field">
-		@Html.TextAreaFor(model => model.Post)
-	</div>
-			}
-			break;
+	@{
+        Model.PostLanguage = (int)Url.GetCulture();
 	} 
+    @Html.HiddenFor(model => model.PostLanguage)
+    <div class="editor-field">
+        @Html.TextAreaFor(model => model.Post)
+    </div>
 
     <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
 </form>	

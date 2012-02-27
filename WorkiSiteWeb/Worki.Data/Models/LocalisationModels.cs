@@ -433,13 +433,13 @@ namespace Worki.Data.Models
 
 		#region Comments
 
-		public IEnumerable<Comment> GetOrderedComments()
+        public IEnumerable<Comment> GetOrderedComments(Culture culture)
 		{
-			var withComm = (from item
-						   in Comments
-							where item.HasPost()
-							orderby item.Date descending
-							select item);
+            var withComm = (from item
+                           in Comments
+                            where item.HasPost()
+                             orderby item.HasPost(culture) descending, item.Date descending
+                            select item);
 
 			var withoutComm = (from item
 								 in Comments
@@ -451,12 +451,12 @@ namespace Worki.Data.Models
 			return toRet;
 		}
 
-		public IEnumerable<Comment> GetCommentSummary()
+		public IEnumerable<Comment> GetCommentSummary(Culture culture)
 		{
 			var toRet = (from item
 						   in Comments
-						 where item.Member != null
-						 orderby item.Date descending
+                         where item.Member != null && item.HasPost()
+                         orderby item.HasPost(culture) descending, item.Date descending
 						 select item).Take(2);
 			return toRet;
 		}
@@ -1470,23 +1470,19 @@ namespace Worki.Data.Models
 			}
 		}
 
-		public string GetPost()
-		{
-			switch (Thread.CurrentThread.CurrentUICulture.Name)
-			{
-				case "en":
-					return PostEn;
-				case "es":
-					return PostEs;
-				case "fr":
-				default:
-					return Post;
-			}
-		}
+        public string GetPost()
+        {
+            return Post;
+        }
+
+        public bool HasPost(Culture culture)
+        {
+            return PostLanguage == (int)culture;
+        }
 
 		public bool HasPost()
 		{
-			return !string.IsNullOrEmpty(Post) || !string.IsNullOrEmpty(PostEn) || !string.IsNullOrEmpty(PostEs);
+			return !string.IsNullOrEmpty(Post);
 		}
 		/// <summary>
 		/// Validate object, thow exception if not valid

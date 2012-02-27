@@ -50,7 +50,7 @@
 					<div class="clear">
 					</div> 
 				</div>
-				@foreach (var com in Model.Localisation.GetCommentSummary())
+				@foreach (var com in Model.Localisation.GetCommentSummary(Url.GetCulture()))
                 {
 					<p>&laquo; @Html.TruncateAtWord(com.GetPost(), 60)&raquo; <span class="commentUser bold">@com.Member.GetDisplayName()</span>
 					</p>
