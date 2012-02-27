@@ -172,4 +172,7 @@ No olvides recordar a tus clientes que pueden comentar y puntuar tu espacio, ¡m
   <data name="OwnershipSubject" xml:space="preserve">
     <value>¡Enhorabuena! Ahora eres gerente de {0} !</value>
   </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>http://www.twitter.com/#!/eWorky_es</value>
+  </data>
 </root>

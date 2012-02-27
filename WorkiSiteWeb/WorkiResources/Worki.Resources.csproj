@@ -314,6 +314,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Email\Activation.es.resx" />
+    <EmbeddedResource Include="Email\Common.es.resx" />
+    <EmbeddedResource Include="Email\FacebookRegistration.es.resx" />
+    <EmbeddedResource Include="Email\ResetPassword.es.resx" />
     <EmbeddedResource Include="Menu\Menu.en.resx" />
     <EmbeddedResource Include="Menu\Menu.es.resx" />
     <EmbeddedResource Include="Menu\Menu.resx">
@@ -360,6 +364,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Booking\Booking.en.resx" />
     <EmbeddedResource Include="Models\Booking\Booking.es.resx" />
+    <EmbeddedResource Include="Models\Booking\Invoice.en.resx" />
+    <EmbeddedResource Include="Models\Booking\Invoice.es.resx" />
     <EmbeddedResource Include="Models\Booking\Invoice.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Invoice.Designer.cs</LastGenOutput>

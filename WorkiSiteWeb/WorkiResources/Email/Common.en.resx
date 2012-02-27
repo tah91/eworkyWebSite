@@ -173,4 +173,7 @@ Don't forget to ask your customers to comment and put a mark on your place, this
   <data name="OwnershipSubject" xml:space="preserve">
     <value>Congratulations ! You are now manager of {0} !</value>
   </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>http://www.twitter.com/#!/eWorky</value>
+  </data>
 </root>

@@ -23,6 +23,7 @@
     <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
     @{
         var suffix = Url.GetSuffix();
+        var culture = Url.GetCulture();
     }
     @if (suffix == ".com")
     { 
@@ -49,6 +50,24 @@
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-21890480-4']);
         _gaq.push(['_setDomainName', 'eworky.fr']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    }
+    else if (suffix == ".es")
+    { 
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21890480-5']);
+        _gaq.push(['_setDomainName', 'eworky.es']);
         _gaq.push(['_setAllowLinker', true]);
         _gaq.push(['_trackPageview']);
 
@@ -142,14 +161,14 @@
 					</div>
 				</div>
 				<div class="float-right">
-					<div class="follow_footer @(Url.IsFrench() ? "follow_footer_fr" : "")">
+					<div class="follow_footer @(culture == Worki.Infrastructure.Culture.fr ? "follow_footer_fr" : "")">
 					</div>
 					<div class="social_logo">  
 						<div class="linkImg fb_footer float-left">
 							<a href="@MiscHelpers.UrlConstants.eWorkyFacebook" target="_blank"></a>
 						</div>
 						<div class="linkImg tw_footer logo-middle float-left">
-							<a href="@MiscHelpers.UrlConstants.eWorkyTwitter" target="_blank"></a>
+							<a href="@Worki.Resources.Email.Common.Twitter" target="_blank"></a>
 						</div>
 						<div class="linkImg in_footer logo-middle float-left">
 							<a href="http://www.linkedin.com/company/eworky" target="_blank"></a>
