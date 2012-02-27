@@ -197,7 +197,7 @@
     <value>Ninguna solicitud de presupuesto ha sido archivada.</value>
   </data>
   <data name="NumberBooking" xml:space="preserve">
-    <value>Número de reservas.</value>
+    <value>Número de reservas</value>
   </data>
   <data name="Offer" xml:space="preserve">
     <value>Oferta</value>
@@ -320,7 +320,7 @@
     <value>Fecha</value>
   </data>
   <data name="InvoiceEmpty" xml:space="preserve">
-    <value>No hay factura para este mes</value>
+    <value>No hay factura para este mes.</value>
   </data>
   <data name="InvoiceId" xml:space="preserve">
     <value>Número</value>
