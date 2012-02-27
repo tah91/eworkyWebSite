@@ -129,12 +129,23 @@
 			</div>
 		</div>
         @{
-            var isFrench = Url.IsFrench();
-            var fbCulture = "en_US";
-            if (isFrench)
+            var culture = Url.GetCulture();
+            var fbCulture = string.Empty;
+            switch (culture)
+            {
+                case Worki.Infrastructure.Culture.en:
+                    fbCulture = "en_US";
+                    break;
+                case Worki.Infrastructure.Culture.fr:
+                    fbCulture = "fr_FR";
+                    break;
+                case Worki.Infrastructure.Culture.es:
+                    fbCulture = "es_ES";
+                    break;
+            }
+            if (culture == Worki.Infrastructure.Culture.fr)
 			{
 				Html.RenderAction(MVC.Home.BlogContainer());
-                fbCulture = "fr_FR";
 			}
 		}
 		<div class="contentBlock">
@@ -179,7 +190,7 @@
 
         var workiGeoCoder = null;
         function resetGeocoder() {
-			@if(isFrench)
+			@if(culture == Worki.Infrastructure.Culture.fr)
 			{
 			@:var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
 			@:workiAutocomplete.SetAutocomplete();

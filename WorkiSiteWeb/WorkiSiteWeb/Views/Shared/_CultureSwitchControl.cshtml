@@ -1,14 +1,17 @@
 ﻿@{
-    var isFr = Url.IsFrench();
     var Current = string.Empty;
     
-    if (isFr)
+    switch(Url.GetCulture())
     {
-        Current = "flags france";
-    }
-    else
-    {
-        Current = "flags royaume-uni";
+        case Worki.Infrastructure.Culture.en:
+            Current = "flags royaume-uni";
+            break;
+        case Worki.Infrastructure.Culture.fr:
+            Current = "flags france";
+            break;
+        case Worki.Infrastructure.Culture.es:
+            Current = "flags espagne";
+            break;
     }
     
     var LanguageSwitcher = new DropDownModel
@@ -19,7 +22,8 @@
         Items = new List<DropDownItem>
 		{
 			new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.French,  Link = Url.Action(MVC.Home.ChangeCulture("fr")) },
-            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.English,  Link = Url.Action(MVC.Home.ChangeCulture("en")) }
+            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.English,  Link = Url.Action(MVC.Home.ChangeCulture("en")) },
+            new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.Spanish,  Link = Url.Action(MVC.Home.ChangeCulture("es")) },
 		}
     };
     @Html.Partial(MVC.Shared.Views._DropDownList, LanguageSwitcher)

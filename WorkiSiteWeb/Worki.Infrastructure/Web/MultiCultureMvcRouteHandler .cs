@@ -38,6 +38,28 @@ namespace Worki.Infrastructure
 			}
 		}
 
+        /// <summary>
+        /// Get suffix from culture
+        /// </summary>
+        /// <param name="lang">the lang</param>
+        /// <returns>the suffix</returns>
+        public static string GetSuffix(string lang)
+        {
+            Culture culture = DefaultCulture;
+            Enum.TryParse<Culture>(lang, out culture);
+
+            switch (culture)
+            {
+                case Culture.fr:
+                    return ".fr";
+                case Culture.es:
+                    return ".es";
+                case Culture.en:
+                default:
+                    return ".com";
+            }
+        }
+
 		/// <summary>
 		/// Get culture type from user language
 		/// </summary>
@@ -54,28 +76,6 @@ namespace Worki.Infrastructure
 			Enum.TryParse<Culture>(langName, out culture);
 
 			return culture;
-		}
-
-		/// <summary>
-		/// Get suffix from culture
-		/// </summary>
-		/// <param name="lang">the lang</param>
-		/// <returns>the suffix</returns>
-		public static string GetSuffix(string lang)
-		{
-			Culture culture = DefaultCulture;
-			Enum.TryParse<Culture>(lang, out culture);
-
-			switch (culture)
-			{
-				case Culture.fr:
-					return ".fr";
-				//case Culture.es:
-					//return ".es";
-				case Culture.en:
-				default:
-					return ".com";
-			}
 		}
 
 		/// <summary>
@@ -134,7 +134,7 @@ namespace Worki.Infrastructure
 				return false;
 
 			//comming from a .fr or so, mean that the language is already defined
-            if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com" || GetCulture(HttpContext.Current.Request.UserLanguages) == Culture.es)
+            if (ExtractDomainSuffix(HttpContext.Current.Request.Url) != ".com")
                 return false;
 
 			return true;

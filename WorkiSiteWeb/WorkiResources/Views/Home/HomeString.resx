@@ -328,4 +328,7 @@
   <data name="French" xml:space="preserve">
     <value>Français</value>
   </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Espagnol</value>
+  </data>
 </root>

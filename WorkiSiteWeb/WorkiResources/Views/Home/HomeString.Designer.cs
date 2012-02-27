@@ -403,6 +403,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Espagnol.
+        /// </summary>
+        public static string Spanish {
+            get {
+                return ResourceManager.GetString("Spanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d&apos;un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez-nous à {0}..
         /// </summary>
         public static string SpeechForJournalists {
