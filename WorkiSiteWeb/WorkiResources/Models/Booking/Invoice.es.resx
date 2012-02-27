@@ -117,10 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Everything" xml:space="preserve">
-    <value>Todos</value>
+  <data name="AddInvoiceItem" xml:space="preserve">
+    <value>Añadir un elemento</value>
   </data>
-  <data name="Place" xml:space="preserve">
-    <value>Espacio</value>
+  <data name="BeforeCreateInvoice" xml:space="preserve">
+    <value>Antes de crear una factura, puedes completar tus datos de facturación {0}</value>
+  </data>
+  <data name="BeforeCreateInvoiceLink" xml:space="preserve">
+    <value>aquí.</value>
+  </data>
+  <data name="ClientId" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha: {0}</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="InvoiceId" xml:space="preserve">
+    <value>Nº de factura</value>
+  </data>
+  <data name="InvoiceNumber" xml:space="preserve">
+    <value>Factura n° {0}</value>
+  </data>
+  <data name="PaymentBy" xml:space="preserve">
+    <value>Modo de pago: {0}</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Medio de pago</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Pecio sin IVA</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="SeeYouSoon" xml:space="preserve">
+    <value>Hasta pronto en {0}</value>
+  </data>
+  <data name="SiretNumber" xml:space="preserve">
+    <value>N° Siret : {0}</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TaxNumber" xml:space="preserve">
+    <value>N° IVA : {0}</value>
+  </data>
+  <data name="TaxRate" xml:space="preserve">
+    <value>% de IVA</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total con IVA</value>
+  </data>
+  <data name="TotalTax" xml:space="preserve">
+    <value>IVA</value>
+  </data>
+  <data name="TotalWithoutTax" xml:space="preserve">
+    <value>Total sin IVA</value>
   </data>
 </root>

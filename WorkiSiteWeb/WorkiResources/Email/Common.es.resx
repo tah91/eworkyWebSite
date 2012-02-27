@@ -117,10 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Everything" xml:space="preserve">
-    <value>Todos</value>
+  <data name="From" xml:space="preserve">
+    <value>Desde:</value>
   </data>
-  <data name="Place" xml:space="preserve">
-    <value>Espacio</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Hola {0}</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensaje:</value>
+  </data>
+  <data name="MP" xml:space="preserve">
+    <value>Mensaje privado:</value>
+  </data>
+  <data name="SeeYouSoon" xml:space="preserve">
+    <value>Hasta pronto en eWorky,&lt;br /&gt;El equipo eWorky&lt;br /&gt;</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>A :</value>
+  </data>
+  <data name="Friend" xml:space="preserve">
+    <value>Enviar a un amigo</value>
+  </data>
+  <data name="ConsultHere" xml:space="preserve">
+    <value>Consultar un anuncio aquí ==&gt;</value>
+  </data>
+  <data name="Concern" xml:space="preserve">
+    <value>Con respecto al anuncio: </value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Solicitud de información - {0}</value>
+  </data>
+  <data name="Ownership" xml:space="preserve">
+    <value>Nos has indicado que eres gerente de {0}, ¡Bienvenid@ es eWorky! Debido a tu condición de gerente, 
+- puedes editar la ficha del espacio y mejorar la calidad de la información pulsando aquí {1};
+- además tienes la posibilidad de colocar en la entrada de tu establecimiento una pegatina que señala que tu espacio es propicio al trabajo y está recomendado por eWorky. No dudes en solicitar tu pegatina gratuitamente por correo electrónico.
+
+No olvides recordar a tus clientes que pueden comentar y puntuar tu espacio, ¡mejorará tu visibilidad en eWorky!</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>¡Bienvenido en eWorky!</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>{0}&lt;br /&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Síguenos en Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Síguenos en Twitter&lt;/a&gt;</value>
+  </data>
+  <data name="FollowFacebook" xml:space="preserve">
+    <value>Seguidnos en Facebook</value>
+  </data>
+  <data name="FollowTwitter" xml:space="preserve">
+    <value>Seguidnos en Twitter</value>
+  </data>
+  <data name="Hey" xml:space="preserve">
+    <value>Hola</value>
+  </data>
+  <data name="OwnershipSubject" xml:space="preserve">
+    <value>¡Enhorabuena! Ahora eres gerente de {0} !</value>
   </data>
 </root>

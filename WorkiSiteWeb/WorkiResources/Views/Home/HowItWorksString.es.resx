@@ -133,7 +133,7 @@
     <value>Reservar</value>
   </data>
   <data name="BookUser" xml:space="preserve">
-    <value>Cada espacio ofrece ofertas distintas. ¡Consultalas y reserva la que necesitas!</value>
+    <value>Cada espacio propone ofertas distintas. ¡Consultalas y reserva la que necesitas!</value>
   </data>
   <data name="BookUserTitle" xml:space="preserve">
     <value>Reservar</value>
@@ -211,7 +211,7 @@
     <value>Añadir tu espacio</value>
   </data>
   <data name="RegisterLink" xml:space="preserve">
-    <value>registrarse gratuitamente</value>
+    <value>regístrarte gratuitamente</value>
   </data>
   <data name="RegisterOwner" xml:space="preserve">
     <value>Para gestionar un espacio en eWorky, tienes que {0} creando una cuenta o identificándote en Facebook</value>

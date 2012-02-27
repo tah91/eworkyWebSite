@@ -126,8 +126,7 @@
   </data>
   <data name="RentSpeech" xml:space="preserve">
     <comment>A compléter</comment>
-    <value>
-    </value>
+    <value>    - oficinas profesionales&lt;br /&gt;- local comercial, etc.</value>
   </data>
   <data name="CostSpace" xml:space="preserve">
     <comment>?</comment>
@@ -279,9 +278,81 @@
     <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; espacios de coworking, cafés WiFi, centros de negocio, oficinas compartidas</value>
   </data>
   <data name="SliderItemDesc" xml:space="preserve">
-    <value>{0} hasta {1}</value>
+    <value>{0} en {1}</value>
   </data>
   <data name="FindTheBesPlace" xml:space="preserve">
     <value>Encuentra el mejor espacio para trabajar entre {0:### ### ###} referencias</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>El equipo</value>
+  </data>
+  <data name="IntroWhoAreWe" xml:space="preserve">
+    <value>eWorky el portal de los espacios de trabajo</value>
+  </data>
+  <data name="WeThinkThat" xml:space="preserve">
+    <value>Creemos que:</value>
+  </data>
+  <data name="WeThinkThat_Text1" xml:space="preserve">
+    <value>El espacio de trabajo de mañana se centrará en el ser humano más en la empresa y será un lugar agradable y propicio a los intercambios. Nos encantará ir a trabajar allí.</value>
+  </data>
+  <data name="WeThinkThat_Text10" xml:space="preserve">
+    <value>Si piensas así, ¡unete a nosotros!</value>
+  </data>
+  <data name="WeThinkThat_Text2" xml:space="preserve">
+    <value>Para inventar juntos el espacio de trabajo de mañana, es necesario explorar, probar, intercambiar pero sobre todo tirarse al agua.</value>
+  </data>
+  <data name="WeThinkThat_Text3" xml:space="preserve">
+    <value>La llegada de nuevas formas formas de trabajar es una oportunidad para el contacto social en el que la autonomía sucede a la subordinación, la creatividad a obediencia, la responsabilidad al control jerarquico.</value>
+  </data>
+  <data name="WeThinkThat_Text4" xml:space="preserve">
+    <value>Abrirse hacia los demás, compartir y colabrorar son esenciales para la realización personal y alcanzar el equilibrio en un espacio de trabajo.</value>
+  </data>
+  <data name="WeThinkThat_Text5" xml:space="preserve">
+    <value>Los trabajadores necesitan momentos de contacto y de intercambios durante su jornada. Es necesario romper las barreras entre actividades, reemplazar la coacción por la cooperación y la co-creación creando colectivos de trabajo virtuales.</value>
+  </data>
+  <data name="WeThinkThat_Text6" xml:space="preserve">
+    <value>El lugar de trabajo ya no será único sino múltiple, a veces desmaterializado y a menudo adaptado a la tarea, al sector y a la personalidad del trabajador.</value>
+  </data>
+  <data name="WeThinkThat_Text7" xml:space="preserve">
+    <value>El desarrollo sostenible es una prioridad, no para mañana sino para hoy y por eso nuestros espacios de trabajo y modos de trabajar tienen que tomar en cuenta naturalmente el respeto a nuestro planeta.</value>
+  </data>
+  <data name="WeThinkThat_Text8" xml:space="preserve">
+    <value>El mundo evoluciona a una velocidad vertiginosa bajo el impulso de las tecnologías de la infromación. Así mismo, la organización del trabajo, inmutable desde hace décadas, necesita experimentar su propia revolución.</value>
+  </data>
+  <data name="WeThinkThat_Text9" xml:space="preserve">
+    <value>Replanteándose el lugar de trabajo gracias a los espacios de coworking y a los espacios compartidos, podemos tranformar el trabajo cotidiano, nuestra relación con los demás y nuestro mundo. El espacio de  trabajo ha de ser el teatro pero también el actor de este cambio.</value>
+  </data>
+  <data name="WhoAreWe_Text1" xml:space="preserve">
+    <value>eWorky ha sido creada en 2011 por tres emprendedores jóvenes, en respuesta a una necesidad simple: poder acceder a una red wifi, alquilar una sala de reunión o de formación, de forma puntua y en ciudades distintas. Así es como tuvieron la idea de una plataforma colaborativa de búsqueda de espacios de trabajo.</value>
+  </data>
+  <data name="WhoAreWe_Text2" xml:space="preserve">
+    <value>Por tanto, eWorky es el placer de compartir espacios de trabajo de varios tipos e intercambiar experiencias vividas en ellos. Nuestra comunidad se compone de usuarios apasionados, con ganas de descubrir o proponer una gran diversidad de espacios adaptados a cada necesidad. </value>
+  </data>
+  <data name="WhoAreWe_Text3" xml:space="preserve">
+    <value>A tu vez, ¡únete a la comunidad eWorky!</value>
+  </data>
+  <data name="Team_Member_1" xml:space="preserve">
+    <value>Olivier Brun</value>
+  </data>
+  <data name="Team_Member_2" xml:space="preserve">
+    <value>Cécilia Durieu</value>
+  </data>
+  <data name="Team_Member_3" xml:space="preserve">
+    <value>Tahir Iftikhar</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value>Francés</value>
+  </data>
+  <data name="Team_Member_1_Text" xml:space="preserve">
+    <value>Habitante de Paris, Olivier se encarga en eWorky de la estrategia y del storyboarding. A parte de ser igual de discreto en sus intercambios en espacios diáfanos que un pescadero en una lonja, Olivier es un gran aficionado al senderismo y un vegetariano convencido. Pero por encima de todo, Olivier glorifica los diseños depurados e idólatra la supresión de los botones inútiles y de las faltas ortográficas.</value>
+  </data>
+  <data name="Team_Member_2_Text" xml:space="preserve">
+    <value>Cécilia se encarga del desarrollo comercial, de las relaciones con la prensa y de la financiación de eWorky. Trabaja desde Grenoble (Francia) y ¡ojo!, no soporta que se hable mal de su región montañesa! Optimista, hiperactiva y aficionada a las agendas a rebosar así como de los plazos ajustados, está muy implicada en la promoción de lo digital y del emprendimiento, entre otras, en cualidad de co-presidente del "Cercle des jeunes entrepreneurs". Cuando consigue algún momento de libertad, le gusta pasear con zapatos de vestir, botas de montaña o a caballo.</value>
+  </data>
+  <data name="Team_Member_3_Text" xml:space="preserve">
+    <value>Tahir es EL especialista del desarrollo, tan especialista que a veces es complicado entender lo que no está contando. Lector de Dostoïevski y de Camus, está tan cómodo programando que engullendo constantemente cafés, pastelitos o chocolatinas de todo tipo. Originario de "Les Ulis" (al igual que Thierry Henry), ya ha hecho capoeira, buceo, y su capacidad de sembrar faltas de ortografía como envoltorios de galletas vaciós a su paso, compensa el celo con el que Olivier las corrige.</value>
   </data>
 </root>

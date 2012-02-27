@@ -178,6 +178,6 @@
     <value>Editar mi perfíl</value>
   </data>
   <data name="OwnerSpace" xml:space="preserve">
-    <value>Espacio gerente</value>
+    <value>Acceso gerente</value>
   </data>
 </root>
