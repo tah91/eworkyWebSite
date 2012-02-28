@@ -208,7 +208,7 @@
     <value>From {0}</value>
   </data>
   <data name="PricePerPeriod" xml:space="preserve">
-    <value>{0} € / {1}</value>
+    <value>{0} / {1}</value>
   </data>
   <data name="SingleDay" xml:space="preserve">
     <value>day</value>

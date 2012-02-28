@@ -388,7 +388,7 @@ namespace Worki.Data.Models
 
 		public string GetPriceDisplay()
 		{
-			return Price.GetPriceDisplay();
+            return Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency);
 		}
 
 		#endregion
@@ -582,6 +582,7 @@ namespace Worki.Data.Models
 		{
 			Price = 0;
 			Quantity = 1;
+            Currency = Offer.CurrencyEnum.EUR;
 		}
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -596,6 +597,8 @@ namespace Worki.Data.Models
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Quantity", ResourceType = typeof(Worki.Resources.Models.Booking.Invoice))]
 		public int Quantity { get; set; }
+
+        public Offer.CurrencyEnum Currency { get; set; }
 	}
 
 	public class InvoiceFormViewModel
@@ -640,6 +643,7 @@ namespace Worki.Data.Models
         public InvoiceModel()
         {
             Items = new List<InvoiceItem>();
+            Currency = Offer.CurrencyEnum.EUR;
         }
 
         public InvoiceModel(Localisation localisation)
@@ -648,6 +652,7 @@ namespace Worki.Data.Models
             TaxRate = localisation.Member.MemberMainData.TaxRate;
             Items = new List<InvoiceItem>();
             Title = localisation.Name;
+            Currency = Offer.CurrencyEnum.EUR;
         }
 
         public InvoiceModel(MemberBooking booking)
@@ -655,9 +660,10 @@ namespace Worki.Data.Models
             ClientId = booking.Client.MemberId;
             Localisation = booking.Offer.Localisation;
             TaxRate = Localisation.Member.MemberMainData.TaxRate;
-            Items = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price } };
+            Items = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price, Currency = Offer.CurrencyEnum.EUR } };
             InvoiceId = booking.Id;
 			Title = booking.Offer.Name + " - " + booking.Id.ToString();
+            Currency = (Offer.CurrencyEnum)booking.Offer.Currency;
         }
 
         #endregion
@@ -685,6 +691,8 @@ namespace Worki.Data.Models
 
         public Localisation Localisation { get; set; }
 
+        public Offer.CurrencyEnum Currency { get; set; }
+
         #endregion
 
         #region Utils
@@ -709,9 +717,19 @@ namespace Worki.Data.Models
 
     public static class PriceHelper
     {
-        public static string GetPriceDisplay(this decimal price)
+        public static string GetPriceDisplay(this decimal price, Offer.CurrencyEnum currency)
         {
-            return price.ToString("0.00") + " €";
+            var str = price.ToString("0.00");
+            switch(currency)
+            {
+                case Offer.CurrencyEnum.USD:
+                    return str + " $";
+                case Offer.CurrencyEnum.GBP:
+                    return str + " £";
+                case Offer.CurrencyEnum.EUR:
+                default:
+                    return str + " €";
+            }
         }
     }
 }

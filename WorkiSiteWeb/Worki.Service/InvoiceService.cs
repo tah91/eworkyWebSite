@@ -165,19 +165,19 @@ namespace Worki.Service
 			{
 				this.AddCell(table, item.Description, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER);
 				this.AddCell(table, item.Quantity.ToString(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
-                this.AddCell(table, item.Price.GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
-                this.AddCell(table, (item.Price * item.Quantity).GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+                this.AddCell(table, item.Price.GetPriceDisplay(item.Currency), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+                this.AddCell(table, (item.Price * item.Quantity).GetPriceDisplay(item.Currency), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 			}
 
 			//total
 			this.AddCell(table, Worki.Resources.Models.Booking.Invoice.TotalWithoutTax, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER , 3);
-			this.AddCell(table, invoiceData.GetTotalWithoutTax().GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+            this.AddCell(table, invoiceData.GetTotalWithoutTax().GetPriceDisplay(invoiceData.Currency), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 
             this.AddCell(table, Worki.Resources.Models.Booking.Invoice.TotalTax, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER, 3);
-            this.AddCell(table, invoiceData.GetTotalTax().GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+            this.AddCell(table, invoiceData.GetTotalTax().GetPriceDisplay(invoiceData.Currency), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 
             this.AddCell(table, Worki.Resources.Models.Booking.Invoice.Total, Element.ALIGN_LEFT, Rectangle.TOP_BORDER, 3, 2f, _smallFontBold);
-            this.AddCell(table, invoiceData.GetTotal().GetPriceDisplay(), Element.ALIGN_RIGHT, Rectangle.TOP_BORDER, 1, 2f, _smallFontBold);
+            this.AddCell(table, invoiceData.GetTotal().GetPriceDisplay(invoiceData.Currency), Element.ALIGN_RIGHT, Rectangle.TOP_BORDER, 1, 2f, _smallFontBold);
 
 			doc.Add(table);  // Add the list to the page
 

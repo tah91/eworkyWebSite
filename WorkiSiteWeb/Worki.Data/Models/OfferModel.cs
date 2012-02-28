@@ -26,7 +26,7 @@ namespace Worki.Data.Models
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
-            Currencies = new SelectList(Offer.GetCurrencyEnumTypes(), "Key", "Value", Offer.CurrencyEnum.Euro);
+            Currencies = new SelectList(Offer.GetCurrencyEnumTypes(), "Key", "Value", Offer.CurrencyEnum.EUR);
             IsSharedOffice = isShared;
             Offer = new Offer();
         }
@@ -206,7 +206,9 @@ namespace Worki.Data.Models
 
         public enum CurrencyEnum
         {
-            Euro
+            EUR,
+            USD,
+            GBP
         }
 
         public enum PaymentTypeEnum
@@ -227,7 +229,9 @@ namespace Worki.Data.Models
 
         public static List<int> CurrencyEnumTypes = new List<int>()
         {
-            (int)CurrencyEnum.Euro
+            (int)CurrencyEnum.EUR,
+            (int)CurrencyEnum.USD,
+            (int)CurrencyEnum.GBP
         };
 
         public static List<int> PaymentTypeEnumTypes = new List<int>()
@@ -261,13 +265,7 @@ namespace Worki.Data.Models
         public static string GetCurrencyEnumType(int type)
         {
             var enumType = (CurrencyEnum)type;
-            switch (enumType)
-            {
-                case CurrencyEnum.Euro:
-                    return Worki.Resources.Models.Offer.Offer.Euro;
-                default:
-                    return string.Empty;
-            }
+            return enumType.ToString();
         }
 
         public static string GetPaymentTypeEnumType(int type)
@@ -525,7 +523,7 @@ namespace Worki.Data.Models
 			if (Price == 0)
 				return string.Empty;
 
-			var priceStr = Price.ToString("### ### ###");
+            var priceStr = Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency);
 			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
 		}
 

@@ -333,7 +333,9 @@
       <LastGenOutput>Activation.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\BookingString.en.resx" />
+    <EmbeddedResource Include="Email\BookingString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\BookingString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookingString.Designer.cs</LastGenOutput>
@@ -387,8 +389,12 @@
     <EmbeddedResource Include="Models\Localisation\Localisation.es.resx" />
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.en.resx" />
     <EmbeddedResource Include="Models\Localisation\LocalisationFeatures.es.resx" />
-    <EmbeddedResource Include="Models\Offer\Offer.en.resx" />
-    <EmbeddedResource Include="Models\Offer\Offer.es.resx" />
+    <EmbeddedResource Include="Models\Offer\Offer.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Offer\Offer.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Offer\Offer.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Offer.Designer.cs</LastGenOutput>
@@ -547,8 +553,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Profile\ProfileString.en.resx" />
     <EmbeddedResource Include="Views\Profile\ProfileString.es.resx" />
-    <EmbeddedResource Include="Views\Rental\RentalString.en.resx" />
-    <EmbeddedResource Include="Views\Rental\RentalString.es.resx" />
+    <EmbeddedResource Include="Views\Rental\RentalString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rental\RentalString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Rental\RentalString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RentalString.Designer.cs</LastGenOutput>
