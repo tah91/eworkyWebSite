@@ -11,6 +11,7 @@ using Worki.Data.Models;
 using Worki.Memberships;
 using System.Web.Security;
 using Worki.Web.Helpers;
+using Postal;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
@@ -224,8 +225,8 @@ namespace Worki.Web.Areas.Admin.Controllers
 			var member = mRepo.Get(id);
 			try
 			{
-				var hasRole = Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
-				if (!hasRole)
+				var roleToGive = !Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+				if (roleToGive)
 				{
                     member.MemberMainData.BOStatus = (int)eBOStatus.Done;
 					Roles.AddUserToRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
@@ -236,6 +237,23 @@ namespace Worki.Web.Areas.Admin.Controllers
 					Roles.RemoveUserFromRole(member.Username,MiscHelpers.BackOfficeConstants.BackOfficeRole);
 				}
                 context.Commit();
+                //email to tell bo has been given
+                if (roleToGive)
+                {
+                    var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+                    var boHomeUrl = urlHelper.ActionAbsolute(MVC.Backoffice.Home.Index());
+                    TagBuilder boHomeLink = new TagBuilder("a");
+                    boHomeLink.MergeAttribute("href", boHomeUrl);
+                    boHomeLink.InnerHtml = Worki.Resources.Email.Activation.BOLink;
+
+                    dynamic confirmationMail = new Email(MVC.Emails.Views.Email);
+                    confirmationMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    confirmationMail.To = member.Email;
+                    confirmationMail.ToName = member.GetDisplayName();
+                    confirmationMail.Subject = Worki.Resources.Email.Activation.BOConfirmSubject;
+                    confirmationMail.Content = string.Format(Worki.Resources.Email.Activation.BOConfirmContent, boHomeLink);
+                    confirmationMail.Send();
+                }
 			}
 			catch (Exception ex)
 			{
@@ -276,13 +294,6 @@ namespace Worki.Web.Areas.Admin.Controllers
         #endregion
 
         #region Member PendingBO
-
-        public enum eBOStatus
-        {
-            None,
-            Pending,
-            Done
-        };
 
         public virtual ActionResult PendingBO(int? page)
         {

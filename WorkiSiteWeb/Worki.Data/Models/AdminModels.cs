@@ -25,6 +25,13 @@ namespace Worki.Data.Models
         public string LastName { get; set; }
     }
 
+    public enum eBOStatus
+    {
+        None,
+        Pending,
+        Done
+    };
+
     public class BOAccept : IDataErrorInfo
     {
         public bool IsRead { get; set; }

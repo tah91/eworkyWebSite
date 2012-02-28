@@ -127,4 +127,30 @@ Vous pourrez ensuite vous connecter facilement avec votre identifiant " {1} "</v
   <data name="ActivationSubject" xml:space="preserve">
     <value>Bienvenue dans la communauté eWorky !</value>
   </data>
+  <data name="BOAskContent" xml:space="preserve">
+    <value>Votre demande d’accès à l’espace gérant a bien été prise en compte.
+
+Elle sera validée sous 48h, vous pourrez alors accéder à l’interface de gestion de votre lieu en vous connectant sur www.eworky.fr avec vos identifiants habituels.
+Pour toute question concernant les fonctionnalités de cet outil ou sa prise en main, n’hésitez pas à nous appeler au +33 1 77 17 04 21.
+
+Nous vous invitons de plus à proposer à vos clients de noter et de commenter votre établissement, cela améliorera son référencement et sa visibilité sur le site.</value>
+  </data>
+  <data name="BOAskSubject" xml:space="preserve">
+    <value>Votre demande d'accès à l'espace gérant a été prise en compte</value>
+  </data>
+  <data name="BOConfirmContent" xml:space="preserve">
+    <value>Toutes nos félicitations, nous tenons à vous informer que l’accès à votre espace gérant a été validé par l’équipe eWorky.
+
+Vous pouvez désormais accéder à {0} en vous connectant sur www.eworky.fr avec vos identifiants habituels, et commencer à gérer votre espace en ligne.
+La première étape pour faciliter la prise en main sera de rentrer vos identifiants Paypal pour vous faire régler puis de rendre vos offres réservables en ligne. 
+Pour toute question concernant les fonctionnalités de cet outil ou sa prise en main, n’hésitez pas à nous appeler au +33 1 77 17 04 21.
+
+Nous vous invitons de plus à proposer à vos clients de noter et de commenter votre établissement, cela améliorera son référencement et sa visibilité sur le site.</value>
+  </data>
+  <data name="BOConfirmSubject" xml:space="preserve">
+    <value>L'accès à votre espace gérant eWorky a été accepté !</value>
+  </data>
+  <data name="BOLink" xml:space="preserve">
+    <value>l’interface de gestion de votre lieu</value>
+  </data>
 </root>

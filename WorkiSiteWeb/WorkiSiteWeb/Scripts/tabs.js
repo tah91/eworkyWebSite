@@ -12,12 +12,17 @@ $('.acc_trigger').click(function () {
 });
 
 //Hide (Collapse) the toggle containers on load
-   $(".toogle_container:not(.active)").hide();
+$(".toogle_container:not(.active)").hide();
 
 //$('.toogle_trigger_click:first').addClass('active').next().show();
 //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+//$(".toogle_trigger_click").click(function () {
+//    $(this).toggleClass("active").next().slideToggle();
+//    return false; //Prevent the browser jump to the link anchor
+//});
+
 $(".toogle_trigger_click").click(function () {
-    $(this).toggleClass("active").next().slideToggle();
+    $(this).toggleClass("active").next().fadeToggle();
     return false; //Prevent the browser jump to the link anchor
 });
 

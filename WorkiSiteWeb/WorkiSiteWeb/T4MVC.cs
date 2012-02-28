@@ -1028,7 +1028,7 @@ namespace Worki.Web.Controllers {
             public readonly string Jobs = "jobs";
             public readonly string About = "about";
             public readonly string Team = "team";
-            public readonly string Pricing = "Pricing";
+            public readonly string Pricing = "pricing";
             public readonly string CGU = "tos";
             public readonly string Legal = "legal";
             public readonly string HowItWorks = "how-it-works";

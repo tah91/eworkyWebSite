@@ -81,5 +81,59 @@ namespace Worki.Resources.Email {
                 return ResourceManager.GetString("ActivationSubject", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande d’accès à l’espace gérant a bien été prise en compte.
+        ///
+        ///Elle sera validée sous 48h, vous pourrez alors accéder à l’interface de gestion de votre lieu en vous connectant sur www.eworky.fr avec vos identifiants habituels.
+        ///Pour toute question concernant les fonctionnalités de cet outil ou sa prise en main, n’hésitez pas à nous appeler au +33 1 77 17 04 21.
+        ///
+        ///Nous vous invitons de plus à proposer à vos clients de noter et de commenter votre établissement, cela améliorera son référencement et sa [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string BOAskContent {
+            get {
+                return ResourceManager.GetString("BOAskContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre demande d&apos;accès à l&apos;espace gérant a été prise en compte.
+        /// </summary>
+        public static string BOAskSubject {
+            get {
+                return ResourceManager.GetString("BOAskSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toutes nos félicitations, nous tenons à vous informer que l’accès à votre espace gérant a été validé par l’équipe eWorky.
+        ///
+        ///Vous pouvez désormais accéder à {0} en vous connectant sur www.eworky.fr avec vos identifiants habituels, et commencer à gérer votre espace en ligne.
+        ///La première étape pour faciliter la prise en main sera de rentrer vos identifiants Paypal pour vous faire régler puis de rendre vos offres réservables en ligne. 
+        ///Pour toute question concernant les fonctionnalités de cet outil ou sa pri [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string BOConfirmContent {
+            get {
+                return ResourceManager.GetString("BOConfirmContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;accès à votre espace gérant eWorky a été accepté !.
+        /// </summary>
+        public static string BOConfirmSubject {
+            get {
+                return ResourceManager.GetString("BOConfirmSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l’interface de gestion de votre lieu.
+        /// </summary>
+        public static string BOLink {
+            get {
+                return ResourceManager.GetString("BOLink", resourceCulture);
+            }
+        }
     }
 }

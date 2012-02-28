@@ -297,12 +297,14 @@ namespace Worki.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("pricing")]
         public virtual ActionResult Pricing()
         {
-            return View(new BOAccept());
+            return View(MVC.Home.Views.Pricing, new BOAccept());
         }
 
         [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [ActionName("pricing")]
         public virtual ActionResult Pricing(BOAccept model)
         {
             var id = WebHelper.GetIdentityId(User.Identity);
@@ -317,8 +319,20 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    member.MemberMainData.BOStatus = (int)Worki.Web.Areas.Admin.Controllers.MemberController.eBOStatus.Pending;
+                    if (member.MemberMainData.BOStatus == (int)eBOStatus.None && !Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole))
+                        member.MemberMainData.BOStatus = (int)eBOStatus.Pending;
+
                     context.Commit();
+
+                    //email to tell ask is pending
+                    dynamic confirmationMail = new Email(MVC.Emails.Views.Email);
+                    confirmationMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    confirmationMail.To = member.Email;
+                    confirmationMail.ToName = member.GetDisplayName();
+                    confirmationMail.Subject = Worki.Resources.Email.Activation.BOAskSubject;
+                    confirmationMail.Content = Worki.Resources.Email.Activation.BOAskContent;
+                    confirmationMail.Send();
+
                     TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.BackOfficeAsked;
                     return RedirectToAction(MVC.Home.Index());
                 }
@@ -328,7 +342,7 @@ namespace Worki.Web.Controllers
                     _Logger.Error("Pricing", ex);
                 }
             }
-            return View(model);
+            return View(MVC.Home.Views.Pricing, model);
         }
 
         /// <summary>

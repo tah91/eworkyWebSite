@@ -2459,6 +2459,11 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     height: 100%;
 }
 
+.offerInCol .buttonStd
+{
+    width : 100px;
+}
+
 .offerCol
 {
     border-top: none;
@@ -2473,10 +2478,9 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
    border-top: 1px solid #ececec;
    border-left: 1px solid #ececec;
    border-right: 1px solid #ececec;
-
-       -moz-box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
-	-webkit-box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
-	        box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
+   -moz-box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
+   -webkit-box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
+   box-shadow: 0px -1px 10px -2px rgba(0,0,0,.1);
 }
 
 .offerGrid td
@@ -2489,12 +2493,12 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .offerGrid td[scope="row"] span
 {
-    background-position: 0px -60px;
+    background-position: 0px -62px;
     padding: 10px 30px 5px;
     cursor: pointer;
     width: inherit;
     float: none;
-   
+    margin-bottom:5px;
 }
 
 .offerContent 

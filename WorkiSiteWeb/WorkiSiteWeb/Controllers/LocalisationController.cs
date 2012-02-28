@@ -450,7 +450,7 @@ namespace Worki.Web.Controllers
 				_Logger.Error("SetOwnership", ex);
 			}
 
-			return Redirect(localisation.GetDetailFullUrl(Url));
+            return RedirectToAction(MVC.Home.Pricing());
 		}
 
 		#region Search

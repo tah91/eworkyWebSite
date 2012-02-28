@@ -252,6 +252,12 @@
   <data name="PrincingFeature_5_Text" xml:space="preserve">
     <value>Notre service client est disponible 7J/7 de 9h à 20h pour vous assister en cas de problème ou répondre à vos questions.</value>
   </data>
+  <data name="PrincingFeature_6" xml:space="preserve">
+    <value>Espace sécurisé par SSL</value>
+  </data>
+  <data name="PrincingFeature_6_Text" xml:space="preserve">
+    <value>L'ensemble des informations sont cryptées par un certificat SSL. Personne d'autre que vous n'a accès aux informations de votre espace.</value>
+  </data>
   <data name="Reference" xml:space="preserve">
     <value>Créez gratuitement {0} en précisant que vous en êtes propriétaire</value>
     <comment>JM Modif l.22</comment>
