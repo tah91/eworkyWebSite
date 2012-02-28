@@ -5,13 +5,14 @@
 		var rvd = WebHelper.GetRVD(this);
         rvd["index"] = Model.Index;
         ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
+		var fullName = Model.Localisation.GetFullName();
     }
     <div class="resultItemGallery picBack borderRadius float-left">
-		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), fullName)
     </div>
     <div class="itemDetailsDiv float-left relative">
         <p class="blue noUnderline">
-            <span class="itemName">@Html.ActionLink(Html.TruncateAtWord(Model.Localisation.Name, 30).ToString(), MVC.Localisation.ActionNames.FullSearchResultDetail, rvd, new Dictionary<string, object> { { "title", Model.Localisation.Name } })</span>
+            <span class="itemName">@Html.ActionLink(Html.TruncateAtWord(fullName, 40).ToString(), MVC.Localisation.ActionNames.FullSearchResultDetail, rvd, new Dictionary<string, object> { { "title", fullName } })</span>
             @if (Model.Distance < 1000)
             {
                 <span>&nbsp; -&nbsp;@String.Format("{0:0.##} km", Model.Distance) </span>
@@ -21,7 +22,7 @@
 		<div>
 			<span class="bold orange">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.GetDescription(), 120)</span>
 		</div>
-        <div class="itemLogos bottom">
+        <div class="itemLogos itemLogosBottom bottom">
 			<div class="float-left">
 				@if (!Model.Localisation.IsSharedOffice())
 				{

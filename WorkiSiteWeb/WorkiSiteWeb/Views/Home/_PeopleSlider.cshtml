@@ -8,13 +8,14 @@
                 @foreach (var item in MiscHelpers.Shuffle(Model))
                 {
 			        var localisationLink = item.Offer.Localisation.GetDetailFullUrl(Url);
+					var fullName = item.Offer.Localisation.GetFullName();
                 <div class="slide">
-                    <a href="@localisationLink" title="@item.Offer.Localisation.Name" class="slide_image">
+                    <a href="@localisationLink" title="@fullName" class="slide_image">
                         <img src="@ControllerHelpers.GetUserImagePath(item.LocalisationPicture)" alt="@item.Offer.Localisation.Name"/>
                     </a>
 			        <div class="caption noUnderline">
                         <div class="darkblue float-left">
-                            <p class="bold">@item.Offer.Localisation.Name</p>
+                            <p class="bold">@fullName</p>
                             <p>@string.Format(Worki.Resources.Views.Home.HomeString.SliderItemDesc, Localisation.GetLocalisationType(item.Offer.Localisation.TypeValue), item.Offer.Localisation.City)</p>
                         </div>
                         <div class="captionPrice orange float-right">

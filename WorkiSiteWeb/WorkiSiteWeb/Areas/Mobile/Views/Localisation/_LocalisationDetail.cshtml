@@ -1,14 +1,18 @@
 ﻿@model Worki.Data.Models.Localisation
 
+@{
+	var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
+	var fullName = Model.GetFullName();
+}
+
 <div class="localisationDetail">
     <div class="localisationDetailHead">
         <div class="localisationTitle">
             <div class="blue bold">
-                <span class="localisationName">@Model.Name</span>
+                <span class="localisationName">@fullName</span>
             </div>
             <div class="localisationSubtitle">
                 <span class="localisationCity blue">@Localisation.GetLocalisationType(Model.TypeValue)</span>&nbsp;&nbsp;
-                @{var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;}
                 <a href="@itinLink" target="_blank">
                     @Model.Adress - @Model.PostalCode @Model.City
                 </a>
@@ -35,7 +39,7 @@
                     @foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
                     {
                         <a href="@ControllerHelpers.GetUserImagePath(item.FileName, true)">
-            	            <img title="@Model.Name" alt="@Model.Name" src="@ControllerHelpers.GetUserImagePath(item.FileName, true)"/>
+            	            <img title="@fullName" alt="@fullName" src="@ControllerHelpers.GetUserImagePath(item.FileName, true)"/>
         	            </a>                        
                     }
                 </div>

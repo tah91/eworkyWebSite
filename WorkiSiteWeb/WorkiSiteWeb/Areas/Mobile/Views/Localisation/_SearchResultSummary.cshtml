@@ -10,6 +10,7 @@
 	{
 		ViewData["link"] = Url.Action(MVC.Mobile.Localisation.LocalisationDetail(Model.Localisation.ID));
 	}
+	var fullName = Model.Localisation.GetFullName();
 }
 
 <div class="contentBlock resultItem relative noUnderline">
@@ -17,18 +18,18 @@
 	    <div class="resultItemGallery picBack borderRadius float-left">
 		    @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))
 		    {
-			    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Model.Localisation.Name)
+			    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), fullName)
 		    }
 	    </div>
 	    <div class="itemDesc float-right">
 		    <div class="blue noUnderline">
 			@if (Model.Distance == 0)
 			{
-				<span class="bold">@Model.Localisation.Name</span>
+				<span class="bold">@fullName</span>
 			}
 			else
 			{
-				<span class="bold">@Model.Localisation.Name&nbsp;-&nbsp;</span>@String.Format("{0:0.##} km", Model.Distance)
+				<span class="bold">@fullName&nbsp;-&nbsp;</span>@String.Format("{0:0.##} km", Model.Distance)
 			}			    
 		    </div>
 		    <div class="itemCommDiv float-left">

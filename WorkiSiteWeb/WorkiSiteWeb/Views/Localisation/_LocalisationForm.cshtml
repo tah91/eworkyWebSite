@@ -97,6 +97,8 @@
 							@Html.HiddenFor(m => m.Localisation.TypeValue)
 							@Html.HiddenFor(m => m.IsOwner)
 						}
+						@if (!Model.IsSharedOffice)
+						{
                         <tr>
                             <td>
                                 <div class="editor-label">
@@ -119,6 +121,36 @@
                                 </div>
                             </td>
                         </tr>
+						}
+						else
+						{
+							Model.Localisation.Name = Localisation.DefaultSharedOfficeName;
+							@Html.HiddenFor(model => model.Localisation.Name)
+						<tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.CompanyName)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Localisation.CompanyName)
+                                </div>
+                            </td>
+                        </tr>	
+		                          <tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.CompanyType)<span class="blue">*</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.DropDownListFor(model => model.Localisation.CompanyType, Model.CompanyTypes)
+                                </div>
+                            </td>
+                        </tr>
+						}
                         <tr>
                             <td>
                                 <div class="editor-label">
@@ -251,36 +283,36 @@
                             </td>
                             <td>
 								@switch (Url.GetCulture())
-								{
-		   							case Worki.Infrastructure.Culture.es:
-										{
+		{
+			case Worki.Infrastructure.Culture.es:
+				{
 								<div class="editor-field">
 									@Html.TextAreaFor(model => model.Localisation.DescriptionEs, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
 								</div>
-										}
-										break;
-									case Worki.Infrastructure.Culture.en:
-										{
+				}
+				break;
+			case Worki.Infrastructure.Culture.en:
+				{
 								<div class="editor-field">
 									@Html.TextAreaFor(model => model.Localisation.DescriptionEn, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
 								</div>
-										}
-										break;
-									case Worki.Infrastructure.Culture.fr:
-									default:
-										{ 
+				}
+				break;
+			case Worki.Infrastructure.Culture.fr:
+			default:
+				{ 
 								<div class="editor-field">
 									@Html.TextAreaFor(model => model.Localisation.Description, new { placeHolder = Model.IsSharedOffice ? Worki.Resources.Views.Localisation.LocalisationFormString.SharedOfficeDesc : "" })
 								</div>
-										}
-										break;
-								}
+				}
+				break;
+		}
                             </td>
                         </tr>
                     </table>
                 </div>
-				@if(!Url.IsInArea("Backoffice"))
-				{
+				@if (!Url.IsInArea("Backoffice"))
+	{
 				<div class="editPlace float-right borderRadius">
 					<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
 					<span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
@@ -288,7 +320,7 @@
 					</div>
 					<button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
 				</div>
-				}	
+	}	
             </div>
             <div class="clear">
             </div>
@@ -309,8 +341,8 @@
                 </div>
             </div>
         </div>
-		if (Model.IsFreeLocalisation)
-		{
+	if (Model.IsFreeLocalisation)
+	{
         <div class="contentBlock">
             <h3 class="blue">@Worki.Resources.Models.Localisation.LocalisationFeatures.FreeArea</h3>
             <div class="serviceContainer">
@@ -348,7 +380,7 @@
             <div class="clear">
             </div>
         </div>
-		}
+	}
 		<div class="serviceContainer contentBlock">
             <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.PlaceDetails</h3>
             <div class="subserviceContainer float-left">
@@ -399,24 +431,24 @@
                         @Html.FeatureChecboxLabel(Feature.TV, Model.Localisation)
                     </li>
 					@if (!Model.IsSharedOffice)
-					{ 
+	 { 
 		            <li>
                         @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
                     </li>
-					}
+	 }
                 </ul>
             </div>
             <div class="clear">
             </div>
         </div>
-		if (!Model.IsFreeLocalisation)
-		{ 
+	 if (!Model.IsFreeLocalisation)
+	 { 
         <div class="serviceContainer contentBlock">
             <h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.WorkingPlace</h3>
             <div class="subserviceContainer float-left">
                 <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
 				@if (Model.IsSharedOffice)
-				{
+	{
                 <ul>
                     <li>
                         @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
@@ -437,9 +469,9 @@
                         @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
                     </li>
                 </ul>
-				}
-				else
-				{
+	}
+	else
+	{
 				<ul>
                     <li>
                         @Html.FeatureChecboxLabel(Feature.Domiciliation, Model.Localisation)
@@ -460,7 +492,7 @@
                         @Html.FeatureChecboxLabel(Feature.Archiving, Model.Localisation)
                     </li>
                 </ul>
-				}
+	}
             </div>
             @if (!Model.IsSharedOffice)
 			{
@@ -496,20 +528,20 @@
 			<div class="offersTable">
 				<table>
 				@foreach (var item in Model.Localisation.Offers)
-				{
+	{
 					<tr>
 						<td>@item.Name</td>
 						<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, Url.IsInArea("Backoffice") ? MVC.Backoffice.Offer.Edit(item.LocalisationId, item.Id) : MVC.Offer.Edit(item.Id))</td>
 						<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.Delete(item.Id))</div></td>
 					</tr>
-				}
+	}
 				</table>
 			</div>
 			@Html.DropDownListFor(m => m.NewOfferType, Model.Offers)
 			<input  type="submit" class="buttonStd buttonBlue imageBtn" 
 					name="addOffer" value="@Worki.Resources.Views.Shared.SharedString.Adds"/>
 		</div>
-		}
+	 }
         <div class="contentBlock">
             <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
             <table class="generalInfosTable editionTable">

@@ -167,6 +167,11 @@
     width:100%;
 }
 
+.itemLogosBottom
+{
+    bottom:-6px!important;
+}
+
 .itemPriceDisplay
 {
 	padding-top:5px;

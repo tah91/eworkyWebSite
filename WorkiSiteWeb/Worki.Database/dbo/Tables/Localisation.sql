@@ -2,6 +2,8 @@
     [ID]                   INT            IDENTITY (1, 1) NOT NULL,
     [Name]                 NVARCHAR (256) NOT NULL,
     [TypeValue]            INT            CONSTRAINT [DF__Localisat__TypeV__4D94879B] DEFAULT ((0)) NOT NULL,
+	[CompanyName]		   NVARCHAR (256) NULL,
+	[CompanyType]         INT            NOT NULL DEFAULT 0,
     [Adress]               NVARCHAR (256) NOT NULL,
     [PostalCode]           NVARCHAR (10)   NOT NULL,
     [City]                 NVARCHAR (256)  NOT NULL,

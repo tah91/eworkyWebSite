@@ -694,7 +694,7 @@ namespace Worki.Data.Models
 
         public string GetDisplayName()
         {
-			return string.Format(Worki.Resources.Models.Localisation.Localisation.DisplayName, Name, Localisation.GetLocalisationType(TypeValue), City);
+			return string.Format(Worki.Resources.Models.Localisation.Localisation.DisplayName, GetFullName(), Localisation.GetLocalisationType(TypeValue), City);
         }
 
         public string GetDescription()
@@ -986,7 +986,107 @@ namespace Worki.Data.Models
         }
 
         #endregion
-    }
+
+		#region Shared Office
+
+		public const string DefaultSharedOfficeName = "Shared Office";
+
+		public static List<int> CompanyTypes = new List<int>()
+        {
+			(int)eCompanyType.StartUp,
+            (int)eCompanyType.CreativeAgency,
+            (int)eCompanyType.Consulting,
+            (int)eCompanyType.BigCompany,
+            (int)eCompanyType.Independent,
+			(int)eCompanyType.Association,
+			(int)eCompanyType.SmallBusiness
+        };
+
+		public static string GetCompanyType(int type)
+		{
+			var enumType = (eCompanyType)type;
+			switch (enumType)
+			{
+				case eCompanyType.StartUp:
+					return Worki.Resources.Models.Localisation.Localisation.StartUp;
+				case eCompanyType.CreativeAgency:
+					return Worki.Resources.Models.Localisation.Localisation.CreativeAgency;
+				case eCompanyType.Consulting:
+					return Worki.Resources.Models.Localisation.Localisation.Consulting;
+				case eCompanyType.BigCompany:
+					return Worki.Resources.Models.Localisation.Localisation.BigCompany;
+				case eCompanyType.Independent:
+					return Worki.Resources.Models.Localisation.Localisation.Independent;
+				case eCompanyType.Association:
+					return Worki.Resources.Models.Localisation.Localisation.Association;
+				case eCompanyType.SmallBusiness:
+					return Worki.Resources.Models.Localisation.Localisation.SmallBusiness;
+				default:
+					return string.Empty;
+			}
+		}
+
+		public static string GetInCompanyType(eCompanyType type)
+		{
+			switch (type)
+			{
+				case eCompanyType.StartUp:
+					return Worki.Resources.Models.Localisation.Localisation.InStartUp;
+				case eCompanyType.CreativeAgency:
+					return Worki.Resources.Models.Localisation.Localisation.InCreativeAgency;
+				case eCompanyType.Consulting:
+					return Worki.Resources.Models.Localisation.Localisation.InConsulting;
+				case eCompanyType.BigCompany:
+					return Worki.Resources.Models.Localisation.Localisation.InBigCompany;
+				case eCompanyType.Independent:
+					return Worki.Resources.Models.Localisation.Localisation.InIndependent;
+				case eCompanyType.Association:
+					return Worki.Resources.Models.Localisation.Localisation.InAssociation;
+				case eCompanyType.SmallBusiness:
+					return Worki.Resources.Models.Localisation.Localisation.InSmallBusiness;
+				default:
+					return string.Empty;
+			}
+		}
+
+		public static Dictionary<int, string> GetCompanyTypes()
+		{
+			return CompanyTypes.ToDictionary(t => t, t => GetCompanyType(t));
+		}
+
+		public string GetFullName()
+		{
+			if (!IsSharedOffice())
+				return Name;
+			else
+			{
+				var offerPart = string.Empty;
+				var atPart = string.Empty;
+				var offer = Offers.FirstOrDefault();
+				if (offer != null)
+				{
+					offerPart = GetOfferType(offer.Type);
+				}
+				else
+				{
+					offerPart = GetOfferType((int)LocalisationOffer.Workstation);
+				}
+
+				if (string.IsNullOrEmpty(CompanyName))
+				{
+					atPart = GetInCompanyType((eCompanyType)CompanyType);
+				}
+				else
+				{
+					atPart = string.Format(Worki.Resources.Models.Localisation.Localisation.InCompany, CompanyName);
+				}
+
+				return offerPart + " " + atPart;
+			}
+		}
+
+		#endregion
+	}
 
 	[Bind(Exclude = "Id,OwnerId")]
 	public class Localisation_Validation
@@ -999,6 +1099,12 @@ namespace Worki.Data.Models
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "TypeValue", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		public int TypeValue { get; set; }
+
+		[Display(Name = "CompanyName", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		public string CompanyName { get; set; }
+
+		[Display(Name = "CompanyType", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+		public int CompanyType { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		[Display(Name = "Adress", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
@@ -1085,6 +1191,7 @@ namespace Worki.Data.Models
 
 		public Localisation Localisation { get; private set; }
 		public SelectList Types { get; private set; }
+		public SelectList CompanyTypes { get; private set; }
 		public bool IsFreeLocalisation { get; set; }
         public bool IsOwner { get; set; }
 		public int NewOfferType { get; set; }
@@ -1131,6 +1238,7 @@ namespace Worki.Data.Models
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
 			var offers = Localisation.GetOfferTypeDict(isShared, needPartyOffer);
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
+			CompanyTypes = new SelectList(Localisation.GetCompanyTypes(), "Key", "Value", eCompanyType.StartUp);
             if (Localisation.LocalisationData == null)
                 Localisation.LocalisationData = new LocalisationData();
             if (Localisation.MainLocalisation == null)
@@ -1253,6 +1361,20 @@ namespace Worki.Data.Models
 		WorkingHotel,
 		PrivateArea,
 		SharedOffice
+	}
+
+	/// <summary>
+	/// Company Type, correspond to the field CompanyType of Localisation, for shared office
+	/// </summary>
+	public enum eCompanyType
+	{
+		StartUp,
+		CreativeAgency,
+		Consulting,
+		BigCompany,
+		Independent,
+		Association,
+		SmallBusiness
 	}
 
 	/// <summary>
