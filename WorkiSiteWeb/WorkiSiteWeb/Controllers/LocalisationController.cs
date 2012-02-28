@@ -315,7 +315,10 @@ namespace Worki.Web.Controllers
 					else
 					{
 						TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
-						return Redirect(localisationForm.Localisation.GetDetailFullUrl(Url));
+                        if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
+                            return RedirectToAction(MVC.Home.Pricing());
+                        else
+                            return Redirect(localisationForm.Localisation.GetDetailFullUrl(Url));
 					}
 				}
 			}
