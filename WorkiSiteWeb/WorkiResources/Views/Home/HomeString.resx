@@ -329,7 +329,7 @@
     <value>Français</value>
   </data>
   <data name="Spanish" xml:space="preserve">
-    <value>Espagnol</value>
+    <value>Español</value>
   </data>
   <data name="Team_Member_4" xml:space="preserve">
     <value>Marc Labrude</value>
@@ -342,8 +342,5 @@
   </data>
   <data name="TeamDescription" xml:space="preserve">
     <value>Page présentant l'equipe d'eWorky !</value>
-  </data>
-  <data name="Français" xml:space="preserve">
-    <value>Français</value>
   </data>
 </root>

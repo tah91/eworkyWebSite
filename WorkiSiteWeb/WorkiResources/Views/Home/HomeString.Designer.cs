@@ -142,7 +142,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Anglais.
+        ///   Looks up a localized string similar to English.
         /// </summary>
         public static string English {
             get {
@@ -412,7 +412,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Espagnol.
+        ///   Looks up a localized string similar to Español.
         /// </summary>
         public static string Spanish {
             get {
@@ -493,7 +493,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tahir est LE spécialiste du développement, tellement spécialiste qu’on a parfois du mal à comprendre tout ce qu’il nous dit. Lecteur de Dostoïevski et de Camus, il est aussi à l’aise dans la programmation que dans l’engloutissement constant de cafés, gâteaux et barres chocolatées en tout genre. Originiaire des Ulis (oui comme Thierry Henry), il a déjà fait de la capoeira, de la plongée, et sa propension à semer les fautes d’orthographe comme les paquets de biscuits vide derrière lui compense le zèle avec le [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Tahir est LE spécialiste du développement, tellement spécialiste qu’on a parfois du mal à comprendre tout ce qu’il nous dit. Lecteur de Dostoïevski et de Camus, il est aussi à l’aise dans la programmation que dans l’engloutissement constant de cafés, gâteaux et barres chocolatées en tout genre. Originiaire des Ulis (oui comme Thierry Henry), il a déjà fait de la capoeira, de la plongée, et sa propension à semer les fautes d’orthographe comme les paquets de biscuits vides derrière lui compense le zèle avec l [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Team_Member_3_Text {
             get {
@@ -511,20 +511,20 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Page présentant l&apos;equipe d&apos;eWorky !.
-        /// </summary>
-        public static string TeamDescription {
-            get {
-                return ResourceManager.GetString("TeamDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Marc est en charge du business development sur les marchés hispanophones. &quot;Marco&quot; est basé à Saragosse dans cette ville qui l&apos;a séduit par sa douceur de vivre et son exceptionnelle densité de bar à tapas. Marc est à l&apos;image du pays dans lequel il a choisi de poser ses valises : chaleureux, fêtard, gourmand, sportif. D&apos;ailleurs, on ne sait pas exactement à quoi il se dope pour apporter tant de dynamisme à l&apos;équipe mais on suspecte un savant mélange de Cacique, d&apos;huile d&apos;olive et de chorizo..
         /// </summary>
         public static string Team_Member_4_Text {
             get {
                 return ResourceManager.GetString("Team_Member_4_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page présentant l&apos;equipe d&apos;eWorky !.
+        /// </summary>
+        public static string TeamDescription {
+            get {
+                return ResourceManager.GetString("TeamDescription", resourceCulture);
             }
         }
         
