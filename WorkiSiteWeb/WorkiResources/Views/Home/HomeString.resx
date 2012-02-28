@@ -334,4 +334,7 @@
   <data name="TeamDescription" xml:space="preserve">
     <value>Page présentant l'equipe d'eWorky !</value>
   </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
+  </data>
 </root>

@@ -284,4 +284,10 @@
   <data name="FindTheBesPlace" xml:space="preserve">
     <value>Encuentra el mejor espacio para trabajar entre {0:### ### ###} referencias</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
+  </data>
 </root>

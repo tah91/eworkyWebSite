@@ -341,4 +341,7 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
+  </data>
 </root>
