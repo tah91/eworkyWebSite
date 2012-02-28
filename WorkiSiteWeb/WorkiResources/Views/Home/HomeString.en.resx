@@ -256,7 +256,7 @@
     <value>A shared office</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>You have free desktops in your offices ? Share them on eWorky and get some extra income!</value>
+    <value>You have free desktops in your offices ? Share them on eWorky for free and get some extra income!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
     <value>Amongst &lt;em&gt;{0:### ### ###}&lt;/em&gt; coworking spaces, WiFi cafes, business centers, shared offices</value>
@@ -275,49 +275,50 @@
     <value>The team</value>
   </data>
   <data name="IntroWhoAreWe" xml:space="preserve">
-    <value>eWorky is the workplace portal</value>
+    <value>eWorky is the portal to workspaces</value>
   </data>
   <data name="WeThinkThat" xml:space="preserve">
     <value>We believe that: </value>
   </data>
   <data name="WeThinkThat_Text1" xml:space="preserve">
-    <value>Tomorrow's workplace will focus on human more than companies, and will be a friendly place, encouraging exchanges. People will enjoy going to work.</value>
+    <value>Tomorrow’s workspace will be human-centric more than company-based and will be an interactive space suitable for exchange and collaboration: a place where we’re happy to be at work.</value>
   </data>
   <data name="WeThinkThat_Text10" xml:space="preserve">
-    <value>If you believe the same, join us!</value>
+    <value> If you think like us, come join us!</value>
   </data>
   <data name="WeThinkThat_Text2" xml:space="preserve">
-    <value>To create tomorrow's workplace together, it is necessary to explore, test, exchange, and aboce all, take the plunge</value>
+    <value>In order to collectively reinvent tomorrow’s workplace, it’s necessary to explore, to test, to discuss and above all jump right in.</value>
   </data>
   <data name="WeThinkThat_Text3" xml:space="preserve">
-    <value>The coming of new work modes is an opportunity for a new social contract where autonomy succeed to subordination, creativity to obedience, responsability to hierarchical control.</value>
+    <value>The advent of new ways of working is an opportunity to establish a new social norm in which autonomy overtakes subordination, creativity overtakes obedience and responsibility overtakes controlled hierarchy.</value>
   </data>
   <data name="WeThinkThat_Text4" xml:space="preserve">
-    <value>Openess, sharing and collaboration are essential to self-fulfillment and good workplace balance.</value>
+    <value>The opening to others, sharing and collaboration are essential to personal development and to a comfortable workspace.</value>
   </data>
   <data name="WeThinkThat_Text5" xml:space="preserve">
-    <value>Workers need more contact times and human exchanges in their day. We must decompartmentalize our activities, replace constraint by cooperation and co-creation, by creating virtual work collectives.</value>
+    <value>Workers need social experiences and human exchange during their day.  Our work lives need to be more open, replacing constraints with cooperatives and co-creation in building collectivities of virtual work.</value>
   </data>
   <data name="WeThinkThat_Text6" xml:space="preserve">
-    <value>The workplace will not be unique but multiple, sometimes dematerialized and more often adapted to the task, the sector and the workers personnality.</value>
+    <value>The workplace is no longer standalone, but rather collaborative, at times even non-physical et more adapted to specific tasks, a sector or to the worker’s personality.</value>
   </data>
   <data name="WeThinkThat_Text7" xml:space="preserve">
-    <value>Sustainable development is not tomorrows but todays priority, that's why our new work places and modes must naturally take our earth into account.</value>
+    <value>Sustainable development is a priority… not tomorrow, but today. For this reason, our new workspaces and work habits must inherently take into account respect for our planet and environment.</value>
   </data>
   <data name="WeThinkThat_Text8" xml:space="preserve">
-    <value>The world is chaging at high speed instigated by information technologies. Work organization, unchaged for decades, most experience its revolution too.</value>
+    <value>The word is changing at an accelerating pace fueled by new technologies and faster exchanges of information.</value>
   </data>
   <data name="WeThinkThat_Text9" xml:space="preserve">
-    <value>By rethinking workplaces thanks coworking places and shared spaces, we can change our daily work, our relationships with people and our world too. The work place must be the theatre bust also the actor of this change.</value>
+    <value>In rethinking the workspace thanks largely to the idea of co-working spaces and shared workspaces, we can transform daily work life, our interaction with others and the world. The workspace must not only be a platform for change, but also the impulse behind change.</value>
   </data>
   <data name="WhoAreWe_Text1" xml:space="preserve">
-    <value>eWorky was created by three french young engineers, almost all entrepreneur before. They often needed to access a WiFi, to rent a meeting room or even a training room. That is how they got the idea to create a marketplace for workplaces.</value>
+    <value>eWorky was created in 2011 by 3 young entrepreneurs in response to a simple need: the ability to access a wifi connection and renting a meeting room for precise times and in different cities. The idea of a collaborative search platform for workspaces, thus rapidly took off.</value>
   </data>
   <data name="WhoAreWe_Text2" xml:space="preserve">
-    <value>So, eWorky is the pleasure of sharing different kind of workplaces, and exchange about the different experiences lived in those places. Our community is made up of passionate users, willing to discover or suggest a broad variety of places, adapted to each one's needs.</value>
+    <value>eWorky is thus the enjoyment of all types of shared workspaces and an exchange of experiences in these workspaces. Our community is made up of passionate users willing to discover or propose a diverse set of workspaces adapted to specific needs.
+</value>
   </data>
   <data name="WhoAreWe_Text3" xml:space="preserve">
-    <value>You too, join the eWorky community now!</value>
+    <value>Now it’s your turn. Join the eWorky community now!</value>
   </data>
   <data name="Team_Member_1" xml:space="preserve">
     <value>Olivier Brun</value>
@@ -327,5 +328,20 @@
   </data>
   <data name="Team_Member_3" xml:space="preserve">
     <value>Tahir Iftikhar</value>
+  </data>
+  <data name="Team_Member_1_Text" xml:space="preserve">
+    <value>Living in Paris, Olivier is responsible for eWorky’s strategy and storyboarding. In addition to being discrete in his open space interactions as well as a fish vendor on Saturday mornings at 5am in Rungis market, Olivier is a big fan of walking and is a hardcore vegetarian. But above all, Olivier emphasizes pure design and is dedicated to removing unnecessary buttons and spelling mistakes.</value>
+  </data>
+  <data name="Team_Member_2_Text" xml:space="preserve">
+    <value>Cécilia is in charge of business development, PR, and finance for eWorky. She works from Grenoble and watch out, because she won’t deal with negative comments about her mountainous region! Optimistic, hyperactive and a big fan of full schedules and tight deadlines, she is implicated heavily in promoting digital culture and entrepreneurship as co-president of notably, the Young Entrepreneurs Circle (CJE). When she finds the time, she likes strolling around in her street shoes, rock climbing and horseback riding.</value>
+  </data>
+  <data name="Team_Member_3_Text" xml:space="preserve">
+    <value>Tahir is THE development specialist, so much so that it can sometimes be hard to understand everything he’s talking about. An avid reader of Dostoïevski and Camus, he is also comfortable with programming as immersing himself in coffee, cake and all types of chocolate bars. Originally from Ulis (like Thierry Henry), he has already worked with poultry, been scuba diving and a drive to correct spelling mistakes is as evident as the empty packs of cookies behind him compensates the zeal with which Olivier makes corrections.</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
   </data>
 </root>

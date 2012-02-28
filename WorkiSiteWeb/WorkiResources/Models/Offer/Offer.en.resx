@@ -130,7 +130,7 @@
     <value>Hours</value>
   </data>
   <data name="IsBookable" xml:space="preserve">
-    <value>Online booking</value>
+    <value>Enable online booking</value>
   </data>
   <data name="IsOnline" xml:space="preserve">
     <value>Online offer</value>

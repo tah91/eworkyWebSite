@@ -121,7 +121,7 @@
     <value>Ajouter un élément</value>
   </data>
   <data name="BeforeCreateInvoice" xml:space="preserve">
-    <value>Avant de créer une facture, vous pouvez compléter vos informations de facturation {0}</value>
+    <value>Before you create an invoice, you can add your billing information {0}</value>
   </data>
   <data name="BeforeCreateInvoiceLink" xml:space="preserve">
     <value>ici.</value>

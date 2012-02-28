@@ -320,10 +320,10 @@
     <value>Tahir Iftikhar</value>
   </data>
   <data name="Team_Member_3_Text" xml:space="preserve">
-    <value>Tahir est LE spécialiste du développement, tellement spécialiste qu’on a parfois du mal à comprendre tout ce qu’il nous dit. Lecteur de Dostoïevski et de Camus, il est aussi à l’aise dans la programmation que dans l’engloutissement constant de cafés, gâteaux et barres chocolatées en tout genre. Originiaire des Ulis (oui comme Thierry Henry), il a déjà fait de la capoeira, de la plongée, et sa propension à semer les fautes d’orthographe comme les paquets de biscuits vide derrière lui compense le zèle avec lequel Olivier les corrige.</value>
+    <value>Tahir est LE spécialiste du développement, tellement spécialiste qu’on a parfois du mal à comprendre tout ce qu’il nous dit. Lecteur de Dostoïevski et de Camus, il est aussi à l’aise dans la programmation que dans l’engloutissement constant de cafés, gâteaux et barres chocolatées en tout genre. Originiaire des Ulis (oui comme Thierry Henry), il a déjà fait de la capoeira, de la plongée, et sa propension à semer les fautes d’orthographe comme les paquets de biscuits vides derrière lui compense le zèle avec lequel Olivier les corrige.</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>Anglais</value>
+    <value>English</value>
   </data>
   <data name="French" xml:space="preserve">
     <value>Français</value>
@@ -342,5 +342,8 @@
   </data>
   <data name="TeamDescription" xml:space="preserve">
     <value>Page présentant l'equipe d'eWorky !</value>
+  </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
   </data>
 </root>

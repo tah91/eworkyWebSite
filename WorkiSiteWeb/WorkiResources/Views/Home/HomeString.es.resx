@@ -355,4 +355,10 @@
   <data name="Team_Member_3_Text" xml:space="preserve">
     <value>Tahir es EL especialista del desarrollo, tan especialista que a veces es complicado entender lo que no está contando. Lector de Dostoïevski y de Camus, está tan cómodo programando que engullendo constantemente cafés, pastelitos o chocolatinas de todo tipo. Originario de "Les Ulis" (al igual que Thierry Henry), ya ha hecho capoeira, buceo, y su capacidad de sembrar faltas de ortografía como envoltorios de galletas vaciós a su paso, compensa el celo con el que Olivier las corrige.</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
+  </data>
 </root>
