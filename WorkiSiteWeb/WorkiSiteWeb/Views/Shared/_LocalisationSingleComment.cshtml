@@ -2,6 +2,7 @@
 
 @{
 	var displayLoc = false;
+    var avatarPath = ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true);
 	if (ViewData.ContainsKey(Comment.DisplayRelatedLocalisation))
 	{ 
 		displayLoc = (bool)ViewData[Comment.DisplayRelatedLocalisation];
@@ -23,7 +24,7 @@
         </span>
     </div>
     <div class="commentAvatar borderedImg float-left">
-    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
+    @RazorHelpers.CenterImage(avatarPath != null ? avatarPath : @Links.Content.images.avatar_png, Model.Member.GetDisplayName())
     </div>
     <div class="commentContent float-left" style=@(displayLoc ? "width:70%" : "")>
         <p itemprop="description">@Html.Nl2Br(Model.GetPost())</p>
