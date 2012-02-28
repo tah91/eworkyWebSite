@@ -52,13 +52,13 @@ $(document).ready(function () {
     $(".navigation .toggleSubMenu").click(function () {
         // Si le sous-menu était déjà ouvert, on le referme :
         if ($(this).next(".subMenu:visible").length != 0) {
-            $(this).next(".subMenu").slideUp("normal");
+            $(this).next(".subMenu").fadeToggle("normal");
             $(this).removeClass("active");
         }
         // Si le sous-menu est caché, on ferme les autres et on l'affiche :
         else {
             // $(".navigation .subMenu").slideUp("normal", function () { $(this).parent().removeClass("active") });
-            $(this).next(".subMenu").slideDown("normal");
+            $(this).next(".subMenu").fadeToggle("normal");
             $(this).addClass("active");
         }
         // On empêche le navigateur de suivre le lien :

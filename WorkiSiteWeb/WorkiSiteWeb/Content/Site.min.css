@@ -386,12 +386,14 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .offerGrid{width:100%}
 .noCol .offerTitleCol{min-height:50px;line-height:50px}
 .noCol{vertical-align:bottom;padding:inherit!important;border:none!important;-moz-box-shadow:none!important;-webkit-box-shadow:none!important;box-shadow:none!important}
-.offerTitleCol{background-color:#f5f5f5;font-weight:bold;font-size:14px;text-align:center;line-height:30px;min-height:30px;background-image:-webkit-gradient(linear,top,bottom,from(#F0F0F0),to(#F8F8F8));background-image:-webkit-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-moz-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-ms-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-o-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:linear-gradient(to bottom,#F0F0F0,#F8F8F8)}
+.offerTitleCol{background-color:#f5f5f5;font-weight:bold;font-size:14px;text-align:center;line-height:30px;min-height:30px}
+.noCol .offerTitleCol{background-image:-webkit-gradient(linear,top,bottom,from(#F0F0F0),to(#F8F8F8));background-image:-webkit-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-moz-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-ms-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-o-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:linear-gradient(to bottom,#F0F0F0,#F8F8F8)}
 .offerInCol{background-color:#f5f5f5;font-weight:bold;font-size:14px;text-align:center;vertical-align:middle;padding:5px;height:100%}
 .offerCol{border-top:0;border-left:1px solid #ececec;border-right:1px solid #ececec;padding:0 5px 0 5px}
 .offerGrid thead th{padding:5px 5px 0 5px;border-top:1px solid #ececec;border-left:1px solid #ececec;border-right:1px solid #ececec;-moz-box-shadow:0 -1px 10px -2px rgba(0,0,0,.1);-webkit-box-shadow:0 -1px 10px -2px rgba(0,0,0,.1);box-shadow:0 -1px 10px -2px rgba(0,0,0,.1)}
 .offerGrid td{height:24px;width:200px;vertical-align:top;border-bottom:1px dashed #CCC}
-.offerGrid td[scope="row"] span{background-position:0 -60px;padding:10px 30px 5px;cursor:pointer;width:inherit;float:none}
+.offerGrid td[scope="row"] span{background-position:0 -60px;padding:13px 30px 5px;cursor:pointer;width:inherit;float:none}
+.offerGrid .active{background-position:0 12px!important}
 .offerContent{color:#717B80;padding:0 10px 10px 10px!important}
 .separatorCol{padding:inherit!important;border:none!important;width:20px!important;content:normal;background-color:#FFF!important;-moz-box-shadow:none!important;-webkit-box-shadow:none!important;box-shadow:none!important}
 .lastCol{border-top:0;border-left:1px solid #ececec;border-right:1px solid #ececec}

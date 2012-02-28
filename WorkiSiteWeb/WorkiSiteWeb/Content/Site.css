@@ -2439,7 +2439,10 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     text-align: center;
     line-height: 30px;
     min-height: 30px;
-    
+}
+
+.noCol .offerTitleCol
+{
   background-image: -webkit-gradient(linear, top, bottom, from(#F0F0F0), to(#F8F8F8)); /* Saf4+, Chrome */
   background-image: -webkit-linear-gradient(top, #F0F0F0, #F8F8F8); /* Chrome 10+, Saf5.1+, iOS 5+ */
   background-image:    -moz-linear-gradient(top, #F0F0F0, #F8F8F8); /* FF3.6 */
@@ -2490,11 +2493,15 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 .offerGrid td[scope="row"] span
 {
     background-position: 0px -60px;
-    padding: 10px 30px 5px;
+    padding: 13px 30px 5px;
     cursor: pointer;
     width: inherit;
     float: none;
-   
+}
+
+.offerGrid .active
+{
+    background-position: 0px 12px !important;
 }
 
 .offerContent 
@@ -2543,3 +2550,5 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     border-bottom: 1px dashed #5DAFDE !important;
 }
 
+/* ACCODEON PANEL
+----------------------------------------------------------*/
