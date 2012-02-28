@@ -1,5 +1,5 @@
 ﻿//Set default open/close settings
-$('.acc_container').hide(); //Hide/close all containers
+$('.acc_container').hide();  //Hide/close all containers
 //$('.acc_trigger:first').addClass('active').next().show(); //Add "active" class to first trigger, then show/open the immediate next container
 
 //On Click
@@ -40,3 +40,29 @@ function InitTab(tabId) {
         return false;
     });
 };
+
+$(document).ready(function () {
+    // On cache les sous-menus
+    // sauf celui qui porte la classe "open_at_load" :
+    $(".navigation .subMenu:not('.open_at_load')").hide();
+    // On sélectionne tous les items de liste portant la classe "toggleSubMenu"
+
+    // On modifie l'évènement "click" sur les liens dans les items de liste
+    // qui portent la classe "toggleSubMenu" :
+    $(".navigation .toggleSubMenu").click(function () {
+        // Si le sous-menu était déjà ouvert, on le referme :
+        if ($(this).next(".subMenu:visible").length != 0) {
+            $(this).next(".subMenu").slideUp("normal");
+            $(this).removeClass("active");
+        }
+        // Si le sous-menu est caché, on ferme les autres et on l'affiche :
+        else {
+            // $(".navigation .subMenu").slideUp("normal", function () { $(this).parent().removeClass("active") });
+            $(this).next(".subMenu").slideDown("normal");
+            $(this).addClass("active");
+        }
+        // On empêche le navigateur de suivre le lien :
+        return false;
+    });
+
+});
