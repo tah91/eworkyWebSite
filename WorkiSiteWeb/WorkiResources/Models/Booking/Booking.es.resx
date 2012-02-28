@@ -183,4 +183,16 @@
   <data name="VisitNeeded" xml:space="preserve">
     <value>Solicitud de visita</value>
   </data>
+  <data name="MemberId" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="OfferId" xml:space="preserve">
+    <value>Oferta</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Medio de pago</value>
+  </data>
+  <data name="StatusId" xml:space="preserve">
+    <value>Status</value>
+  </data>
 </root>

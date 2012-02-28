@@ -237,4 +237,7 @@
   <data name="Year" xml:space="preserve">
     <value>Año</value>
   </data>
+  <data name="Check" xml:space="preserve">
+    <value>Cheque</value>
+  </data>
 </root>

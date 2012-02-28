@@ -118,62 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="From" xml:space="preserve">
-    <value>From : </value>
+    <value>Desde:</value>
   </data>
   <data name="Hello" xml:space="preserve">
-    <value>Hi {0}</value>
+    <value>Hola {0}</value>
   </data>
   <data name="Message" xml:space="preserve">
-    <value>Message : </value>
+    <value>Mensaje:</value>
   </data>
   <data name="MP" xml:space="preserve">
-    <value>Private message</value>
+    <value>Mensaje privado:</value>
   </data>
   <data name="SeeYouSoon" xml:space="preserve">
-    <value>&lt;p&gt;See you soon on eWorky,&lt;/p&gt;
-&lt;p&gt;eWorky Team&lt;/p&gt;</value>
+    <value>Hasta pronto en eWorky,&lt;br /&gt;El equipo eWorky&lt;br /&gt;</value>
   </data>
   <data name="To" xml:space="preserve">
-    <value>To :</value>
+    <value>A :</value>
   </data>
   <data name="Friend" xml:space="preserve">
-    <value>Send to a friend</value>
+    <value>Enviar a un amigo</value>
   </data>
   <data name="ConsultHere" xml:space="preserve">
-    <value>Read the add here ==&gt;</value>
+    <value>Consultar un anuncio aquí ==&gt;</value>
   </data>
   <data name="Concern" xml:space="preserve">
-    <value>Concerning the add : </value>
+    <value>Con respecto al anuncio: </value>
   </data>
   <data name="Info" xml:space="preserve">
-    <value>Ask for information - {0}</value>
+    <value>Solicitud de información - {0}</value>
   </data>
   <data name="Ownership" xml:space="preserve">
-    <value>You reported that you are manager of {0}, welcome to eWorky! As manager of this place,
-- you will be able to edit its description and improve the quality of the information by clicking here {1};
-- you also have the possibility of sticking a see-through sticker at the entrance of your workspace to indicate that your space is nomad friendly and recommended by eWorky. This sticker will be provided free of charge, do not hesitate to ask for it by sending us an email.
+    <value>Nos has indicado que eres gerente de {0}, ¡Bienvenid@ es eWorky! Debido a tu condición de gerente, 
+- puedes editar la ficha del espacio y mejorar la calidad de la información pulsando aquí {1};
+- además tienes la posibilidad de colocar en la entrada de tu establecimiento una pegatina que señala que tu espacio es propicio al trabajo y está recomendado por eWorky. No dudes en solicitar tu pegatina gratuitamente por correo electrónico.
 
-Don't forget to ask your customers to comment and put a mark on your place, this will improve your SEO and your visibility on eWorky!</value>
+No olvides recordar a tus clientes que pueden comentar y puntuar tu espacio, ¡mejorará tu visibilidad en eWorky!</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome to eWorky!</value>
+    <value>¡Bienvenido en eWorky!</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>{0}&lt;br/&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Follow us on Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Follow us on twitter&lt;/a&gt;</value>
+    <value>{0}&lt;br /&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Síguenos en Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Síguenos en Twitter&lt;/a&gt;</value>
   </data>
   <data name="FollowFacebook" xml:space="preserve">
-    <value>Follow us on Facebook</value>
+    <value>Seguidnos en Facebook</value>
   </data>
   <data name="FollowTwitter" xml:space="preserve">
-    <value>Follow us on Twitter</value>
+    <value>Seguidnos en Twitter</value>
   </data>
   <data name="Hey" xml:space="preserve">
-    <value>Hey</value>
+    <value>Hola</value>
   </data>
   <data name="OwnershipSubject" xml:space="preserve">
-    <value>Congratulations ! You are now manager of {0} !</value>
+    <value>¡Enhorabuena! Ahora eres gerente de {0} !</value>
   </data>
   <data name="Twitter" xml:space="preserve">
-    <value>http://www.twitter.com/#!/eWorky</value>
+    <value>http://www.twitter.com/#!/eWorky_es</value>
   </data>
 </root>

@@ -127,7 +127,7 @@
     <value>Modificar mi contraseña</value>
   </data>
   <data name="CommentsEmpy" xml:space="preserve">
-    <value>No has comentado ningún espacio. Para dar tu opinión sobre un espacio, ve a la parte de abajo de su ficha de descripción.</value>
+    <value>No has dejado ningún comentario. Para dar tu opinión sobre un espacio, ve a la parte de abajo de su ficha de descripción.</value>
   </data>
   <data name="Edit24Hours" xml:space="preserve">
     <value>No puedes editar más de {0} en menos de 24h</value>
@@ -166,7 +166,7 @@
     <value>Actividad profesional</value>
   </data>
   <data name="MyCompanyPublic" xml:space="preserve">
-    <value>n'a pas renseigné cette information.</value>
+    <value>no ha informado esos datos.</value>
   </data>
   <data name="MyFavoritePlaces" xml:space="preserve">
     <value>Ambiente de trabajo deseada</value>

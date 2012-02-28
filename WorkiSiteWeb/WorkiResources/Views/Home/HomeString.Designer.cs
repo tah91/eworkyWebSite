@@ -412,6 +412,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Espagnol.
+        /// </summary>
+        public static string Spanish {
+            get {
+                return ResourceManager.GetString("Spanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous êtes journaliste et vous souhaitez rédiger un article ou réaliser un reportage sur eWorky ? Vous avez besoin d&apos;un dossier sur le développement du télétravail en France ? Vous cherchez des DRH à interviewer sur ces sujets ? Contactez-nous à {0}..
         /// </summary>
         public static string SpeechForJournalists {
@@ -493,11 +502,29 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Marc Labrude.
+        /// </summary>
+        public static string Team_Member_4 {
+            get {
+                return ResourceManager.GetString("Team_Member_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page présentant l&apos;equipe d&apos;eWorky !.
         /// </summary>
         public static string TeamDescription {
             get {
                 return ResourceManager.GetString("TeamDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marc est en charge du business development sur les marchés hispanophones. &quot;Marco&quot; est basé à Saragosse dans cette ville qui l&apos;a séduit par sa douceur de vivre et son exceptionnelle densité de bar à tapas. Marc est à l&apos;image du pays dans lequel il a choisi de poser ses valises : chaleureux, fêtard, gourmand, sportif. D&apos;ailleurs, on ne sait pas exactement à quoi il se dope pour apporter tant de dynamisme à l&apos;équipe mais on suspecte un savant mélange de Cacique, d&apos;huile d&apos;olive et de chorizo..
+        /// </summary>
+        public static string Team_Member_4_Text {
+            get {
+                return ResourceManager.GetString("Team_Member_4_Text", resourceCulture);
             }
         }
         

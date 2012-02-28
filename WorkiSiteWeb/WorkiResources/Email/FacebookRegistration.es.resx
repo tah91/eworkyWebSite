@@ -117,10 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Everything" xml:space="preserve">
-    <value>Todos</value>
-  </data>
-  <data name="Place" xml:space="preserve">
-    <value>Espacio</value>
+  <data name="Content" xml:space="preserve">
+    <value>Tenemos el placer de confirmarte que formas parte de la comunidad de eWorkers y que ya puedes acceder a todas las funcionalidades de eWorky y completar tu perfil que encontrarás a la dirección siguiente: {0}
+
+A partir de ahora podrás conectarte indistintamente con Facebook o con los datos que te recopilamos a continuación:
+
+Usuario: {1}
+Contraseña: {2} (Te recomendamos que cambies tu contraseña la proxima vez que te conectes)</value>
   </data>
 </root>

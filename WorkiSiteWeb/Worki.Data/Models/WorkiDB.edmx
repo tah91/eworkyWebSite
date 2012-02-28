@@ -199,6 +199,7 @@
           <Property Name="PostUserID" Type="int" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Post" Type="nvarchar(max)" />
+          <Property Name="PostLanguage" Type="int" Nullable="false" />
           <Property Name="PostEn" Type="nvarchar(max)" />
           <Property Name="PostEs" Type="nvarchar(max)" />
           <Property Name="Rating" Type="int" Nullable="false" />
@@ -1337,6 +1338,7 @@
           <NavigationProperty Name="Member" Relationship="WorkiDBModel.FK_Comment_Member" FromRole="Comment" ToRole="Member" />
           <Property Type="String" Name="PostEn" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PostEs" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PostLanguage" Nullable="false" />
 				</EntityType>
 				<EntityType Name="FavoriteLocalisation">
 					<Key>
@@ -2285,7 +2287,8 @@
 					<EntitySetMapping Name="Comments">
 						<EntityTypeMapping TypeName="WorkiDBModel.Comment">
 							<MappingFragment StoreEntitySet="Comment">
-								<ScalarProperty Name="PostEs" ColumnName="PostEs" />
+								<ScalarProperty Name="PostLanguage" ColumnName="PostLanguage" />
+                <ScalarProperty Name="PostEs" ColumnName="PostEs" />
                 <ScalarProperty Name="PostEn" ColumnName="PostEn" />
                 <ScalarProperty Name="RatingWelcome" ColumnName="RatingWelcome" />
 								<ScalarProperty Name="RatingDispo" ColumnName="RatingDispo" />

@@ -124,7 +124,7 @@
     <value>Acceso</value>
   </data>
   <data name="BackToOwnerSpace" xml:space="preserve">
-    <value>Volver al espacio gerente</value>
+    <value>Volver al acceso gerente</value>
   </data>
   <data name="Booking" xml:space="preserve">
     <value>Reserva</value>
@@ -197,7 +197,7 @@
     <value>Ninguna solicitud de presupuesto ha sido archivada.</value>
   </data>
   <data name="NumberBooking" xml:space="preserve">
-    <value>Número de reservas.</value>
+    <value>Número de reservas</value>
   </data>
   <data name="Offer" xml:space="preserve">
     <value>Oferta</value>
@@ -215,7 +215,7 @@
     <value>Gerente</value>
   </data>
   <data name="OwnerSpace" xml:space="preserve">
-    <value>Espacio Gerente</value>
+    <value>Acceso gerente</value>
   </data>
   <data name="PaymentInfoModified" xml:space="preserve">
     <value>Los datos de pago han sido actualizados.</value>
@@ -290,10 +290,10 @@
     <value>Parametrización de las tarifas</value>
   </data>
   <data name="BOAlerts" xml:space="preserve">
-    <value>Espacio gerente : {0} alerta(s)</value>
+    <value>Acceso gerente : {0} alerta(s)</value>
   </data>
   <data name="DashboardAlerts" xml:space="preserve">
-    <value>Espacio usuario : {0} alerta(s)</value>
+    <value>Acceso usuario : {0} alerta(s)</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Crear</value>
@@ -306,5 +306,41 @@
   </data>
   <data name="NeedInfoPaypal" xml:space="preserve">
     <value>Para proponer una oferta, tienes que indicar previamente la dirección de correo electrónico asociada a tu cuenta PayPal en el apartado Opción de tu perfíl de gerente.</value>
+  </data>
+  <data name="BillingInfo" xml:space="preserve">
+    <value>Información de facturación</value>
+  </data>
+  <data name="InvoiceAction" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="InvoiceClient" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="InvoiceDate" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="InvoiceEmpty" xml:space="preserve">
+    <value>No hay factura para este mes.</value>
+  </data>
+  <data name="InvoiceId" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="InvoicePlace" xml:space="preserve">
+    <value>Espacio</value>
+  </data>
+  <data name="InvoicePrice" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="ClientAdded" xml:space="preserve">
+    <value>El cliente ha sido añadido correctamente</value>
+  </data>
+  <data name="ClientAlreadyExists" xml:space="preserve">
+    <value>Este cliente ya está en tu base</value>
+  </data>
+  <data name="InvoiceOffer" xml:space="preserve">
+    <value>Oferta</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
   </data>
 </root>

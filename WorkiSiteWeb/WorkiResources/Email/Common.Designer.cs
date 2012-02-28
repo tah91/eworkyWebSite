@@ -210,6 +210,15 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://www.twitter.com/#!/eWorky_fr.
+        /// </summary>
+        public static string Twitter {
+            get {
+                return ResourceManager.GetString("Twitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bienvenue sur eWorky !.
         /// </summary>
         public static string Welcome {

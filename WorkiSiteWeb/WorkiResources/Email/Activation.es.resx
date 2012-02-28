@@ -117,10 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Everything" xml:space="preserve">
-    <value>Todos</value>
+  <data name="ActivationContent" xml:space="preserve">
+    <value>Una vez activada tu cuenta, serás oficialmente miembro de la comunidad eWorky... y tenemos el placer de anunciarte que ¡casi hemos terminado!
+
+Para validar tu inscripción en eWorky, sólo necesitas hacer click sobre el enlace siguiente: {0}
+
+A continuación te podrás conectar con tu usuario " {1} "</value>
   </data>
-  <data name="Place" xml:space="preserve">
-    <value>Espacio</value>
+  <data name="ActivationSubject" xml:space="preserve">
+    <value>¡Bienvenid@ a la comunidad eWorky !</value>
   </data>
 </root>

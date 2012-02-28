@@ -200,7 +200,7 @@
     <value>Agregar eWorky a favoritos</value>
   </data>
   <data name="DelFromFav" xml:space="preserve">
-    <value>Quitar eWorky de favoritos</value>
+    <value>Eliminar eWorky de favoritos</value>
   </data>
   <data name="Adds" xml:space="preserve">
     <value>Añadir</value>
@@ -296,6 +296,6 @@
     <value>Por favor, cambia la información siguiente :</value>
   </data>
   <data name="SpaceUser" xml:space="preserve">
-    <value>Zona de usuario</value>
+    <value>Acceso usuario</value>
   </data>
 </root>

@@ -4,6 +4,7 @@
     [PostUserID]     INT            CONSTRAINT [DF_Comment_PostUserID] DEFAULT ((0)) NULL,
     [Date]           DATETIME       NOT NULL,
     [Post]           NVARCHAR (MAX) NULL,
+	[PostLanguage]   INT			NOT NULL DEFAULT 0,
 	[PostEn]         NVARCHAR (MAX) NULL,
 	[PostEs]         NVARCHAR (MAX) NULL,
     [Rating]         INT            NOT NULL,

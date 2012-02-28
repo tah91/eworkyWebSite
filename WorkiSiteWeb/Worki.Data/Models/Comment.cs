@@ -28,6 +28,7 @@ namespace Worki.Data.Models
         public int RatingWelcome { get; set; }
         public string PostEn { get; set; }
         public string PostEs { get; set; }
+        public int PostLanguage { get; set; }
     
         // Navigation properties
     

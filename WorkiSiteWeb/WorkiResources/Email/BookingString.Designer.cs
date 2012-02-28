@@ -136,7 +136,7 @@ namespace Worki.Resources.Email {
         /// <summary>
         ///   Looks up a localized string similar to Suite à votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;), un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
         ///
-        ///Votre login est &quot;&lt;b&gt;{5}&lt;/b&gt;&quot; et votre mot de passe temporaire est &lt;b&gt;&quot;{6}&quot;&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{7}&lt;/b&gt;
+        ///Votre login est &quot;&lt;b&gt;{5}&lt;/b&gt;&quot; et votre mot de passe temporaire est &quot;&lt;b&gt;{6}&lt;/b&gt;&quot;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{7}&lt;/b&gt;
         ///
         ///Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{8}&lt;/b&gt;.
         /// </summary>

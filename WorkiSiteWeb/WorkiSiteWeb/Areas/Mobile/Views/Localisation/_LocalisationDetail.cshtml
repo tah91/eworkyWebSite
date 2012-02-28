@@ -94,7 +94,7 @@
                 @{
 					ViewData[Comment.DisplayRelatedLocalisation] = false;
                 }
-				@foreach (var com in Model.GetOrderedComments())
+				@foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
 				{
 					if (com.Member == null)
 					{

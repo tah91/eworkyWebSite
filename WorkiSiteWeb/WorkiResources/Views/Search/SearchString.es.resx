@@ -172,13 +172,13 @@
     <value>Por ubicación</value>
   </data>
   <data name="SearchByPlaceName" xml:space="preserve">
-    <value>Por nombre del espacio</value>
+    <value>Por nombre</value>
   </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value>Por tipo de espacio</value>
+    <value>Por tipo</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
-    <value>Por necesidad</value>
+    <value>Por servicio</value>
   </data>
   <data name="SearchResult" xml:space="preserve">
     <value>Resultado(s) de la búsqueda:</value>
