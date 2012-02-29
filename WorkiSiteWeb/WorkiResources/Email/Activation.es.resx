@@ -127,4 +127,30 @@ A continuación te podrás conectar con tu usuario " {1} "</value>
   <data name="ActivationSubject" xml:space="preserve">
     <value>¡Bienvenid@ a la comunidad eWorky !</value>
   </data>
+  <data name="BOAskContent" xml:space="preserve">
+    <value>Tu solicitud de autorización de acceso como gerente ha sido registrada. 
+
+Será validada en las proximas 48h. Podrás entonces acceder a la interfaz de gestión de tu espacio conectándote a www.eworky.es con tus datos de conexión habituales.
+Para cualquier pregunta relativa a las funcionalidades de la herramienta o su manejo, no dudes en ponerte en contacto con nostros a contacto@eworky.com.
+
+Te invitamos a proponer a tus clientes puntuar y dejar un comentario sobre tu establecimiento ya que mejorará tu posición y visibilidad en nuestra página.</value>
+  </data>
+  <data name="BOAskSubject" xml:space="preserve">
+    <value>Tu solicitud de acceso como gerente ha sido registrada</value>
+  </data>
+  <data name="BOConfirmContent" xml:space="preserve">
+    <value>¡Enhorabuen! Es un placer comunicarte que tu acceso como gerente ha sido validado por el equipo de eWorky.
+
+A partir de ahora puedes acceder a {0} conectándote a www.eworky.es con tus datos de conexion habituales y empezar a gestionar tu espacio online.
+El primer paso para empezar a familiarizarte con la herramienta será introducir tus datos Paypal para poder cobrar los servicios y dejar que tus ofertas se puedan reservar online.
+Para cualquier pregunta sobre las funcionalidades de la herramienta o su manejo, no dudes en ponerte en contacto con nosotros a contacto@eworky.com.
+
+Te invitamos a proponer a tus clientes puntuar y dejar un comentario sobre tu establecimiento ya que mejorará tu posición y visibilidad en nuestra página.</value>
+  </data>
+  <data name="BOConfirmSubject" xml:space="preserve">
+    <value>¡Tu acceso como gerente de espacio ha sido aceptado!</value>
+  </data>
+  <data name="BOLink" xml:space="preserve">
+    <value>la interfaz de gestión de tu espacio</value>
+  </data>
 </root>

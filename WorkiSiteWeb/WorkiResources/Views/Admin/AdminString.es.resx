@@ -334,7 +334,7 @@
     <value>Conectado/No conectado</value>
   </data>
   <data name="Unlock" xml:space="preserve">
-    <value>Unlocker</value>
+    <value>Desbloquear</value>
   </data>
   <data name="Owner" xml:space="preserve">
     <value>Gerente</value>

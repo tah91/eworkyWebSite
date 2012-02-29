@@ -267,4 +267,9 @@
   <data name="Prices" xml:space="preserve">
     <value>Prices</value>
   </data>
+  <data name="PendingBO" xml:space="preserve">
+    <comment>Steeve</comment>
+    <value>
+    </value>
+  </data>
 </root>

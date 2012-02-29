@@ -162,7 +162,7 @@ Ve a tu {3} para confirmar/denegar esta solicitud de reserva cuanto antes.</valu
   <data name="CalandarBookingCreation" xml:space="preserve">
     <value>El gerente de &lt;b&gt;{0}&lt;/b&gt; ha añadido tu reserva para un(a) &lt;b&gt;{1}&lt;/b&gt; del &lt;b&gt;{2}&lt;/b&gt; al &lt;b&gt;{3}&lt;/b&gt; a su agenda eWorky. 
 
-Ya puedes consultar esta reserva en tu zona de usuario &lt;b&gt;{4}&lt;/b&gt;. 
+Ya puedes consultar esta reserva en tu perfíl de usuario &lt;b&gt;{4}&lt;/b&gt;. 
 
 El importe de tu reserva es de &lt;b&gt;{5} €&lt;/b&gt;, te invitamos a realizar el pago online directamente vía Paypal.
 Para tu proxima reserva, ¡simplificate la vida y pasa directamente por eworky.com!
@@ -176,7 +176,7 @@ Si este espacio te ha gustado, no dudes en puntuarlo y dejar un comentario en su
     <value>El gerente de &lt;b&gt;{0}&lt;/b&gt; a modificado tu reserva en su agenda eWorky !
 Tu reserva está registrada del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt;.
 
-Puedes consultar tus distintas reservas en tu zona de usuario &lt;b&gt;{3}&lt;/b&gt;.
+Puedes consultar tus distintas reservas en tu perfíl de usuario &lt;b&gt;{3}&lt;/b&gt;.
 Para tu proxima reserva, ¡simplificate la vida y pasa directamente por eworky.com!
 
 Si este espacio te ha gustado, no dudes en puntuarlo y dejar un comentario en su ficha en eWorky &lt;b&gt;{4}&lt;/b&gt;.</value>
@@ -258,7 +258,7 @@ Nombre del espacio: &lt;b&gt;{3}&lt;/b&gt;</value>
     <value>Alerta eWorky – Inscripción networking</value>
   </data>
   <data name="PayementOwner" xml:space="preserve">
-    <value>La reserva n°{0} ha sido abonada por el cliente. Puedes consultar las reservas confirmadas en tu zona de gerente.</value>
+    <value>La reserva n°{0} ha sido abonada por el cliente. Puedes consultar las reservas confirmadas en tu perfíl de gerente.</value>
   </data>
   <data name="PayementSubject" xml:space="preserve">
     <value>La reserva n°{0} ha sido abonada</value>

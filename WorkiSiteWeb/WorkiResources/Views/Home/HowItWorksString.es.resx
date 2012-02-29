@@ -121,10 +121,10 @@
     <value>Para gestionar tu espacio en eWorky, solicita {0}</value>
   </data>
   <data name="AccessBOLink" xml:space="preserve">
-    <value>A través del formulario de contacto</value>
+    <value>formulario de contacto</value>
   </data>
   <data name="AccessBOTitle" xml:space="preserve">
-    <value>Acceder a la zona de gerentes</value>
+    <value>Acceso para gerentes</value>
   </data>
   <data name="Book" xml:space="preserve">
     <value>Reserva y realiza el pago online de una sala de reunión o de la cuota de tu espacio de coworking</value>
@@ -160,7 +160,7 @@
     <value>Realiza el seguimiento comercial, emite facturas y pilota la actividad de tu espacio de trabajo</value>
   </data>
   <data name="HandleClientsTitle" xml:space="preserve">
-    <value>Gestiona tus cliente</value>
+    <value>Gestiona tus clientes</value>
   </data>
   <data name="HandleSpace" xml:space="preserve">
     <value>Gestiona gratuitamente las reservas, los plannings, los consumos anexos y las tarifas y cuotas de tus ofertas</value>
@@ -255,4 +255,61 @@
   <data name="WorkTitle" xml:space="preserve">
     <value>A trabajar</value>
   <comment>Jm Modif L13</comment></data>
+  <data name="DiscoveryOffer" xml:space="preserve">
+    <value>OFERTA DE LANZAMIENTO</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Servicios</value>
+  </data>
+  <data name="Here" xml:space="preserve">
+    <value>aquí</value>
+  </data>
+  <data name="PayPalCGULink" xml:space="preserve">
+    <value>https://cms.paypal.com/es/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=es_ES</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>Acceso gerente</value>
+  </data>
+  <data name="PricingHeaderTitle" xml:space="preserve">
+    <value>Descubre nuestro acceso para gerentes.</value>
+  </data>
+  <data name="PricingTitle" xml:space="preserve">
+    <value>¿Quieres poder gestionar tu espacio de forma sencilla, segura y sin gastos?</value>
+  </data>
+  <data name="PrincingFeature_1" xml:space="preserve">
+    <value>Gestión de las reservas</value>
+  </data>
+  <data name="PrincingFeature_1_Text" xml:space="preserve">
+    <value>Tus clientes pueden realizar una solicitud de presupuesto o de reserva directamente en tu ficha eWorky. Recibirás de forma inmediata una notificación por correo electrónico y sólo te quedará aceptar o rechazar.</value>
+  </data>
+  <data name="PrincingFeature_2" xml:space="preserve">
+    <value>Gestión de la ocupación de los espacios</value>
+  </data>
+  <data name="PrincingFeature_2_Text" xml:space="preserve">
+    <value>Dispones de una agenda por oferta para seguir en directo la ocupación de tu espacio. La agence se rellena de forma automática con las reservas online pero te permite añadir reservas conseguidas a través de otras fuentes (teléfono, fax, página web, etc.). Se les avisa a tus clientes por correo electrónico de cualquier creación /modificación de la reserva.</value>
+  </data>
+  <data name="PrincingFeature_3" xml:space="preserve">
+    <value>Pago seguro online</value>
+  </data>
+  <data name="PrincingFeature_3_Text" xml:space="preserve">
+    <value>Los pagos se cobran de forma segura a través de la plataforma de pago Paypal. Para conocer las condiciones de venta de Paypal, haz clic {0}.</value>
+  </data>
+  <data name="PrincingFeature_4" xml:space="preserve">
+    <value>Edición automática de las facturas</value>
+  </data>
+  <data name="PrincingFeature_4_Text" xml:space="preserve">
+    <value>Tus facturas se editan automaticamente para cada reserva abonada y se archivan en tu perfíl de gerente.</value>
+  </data>
+  <data name="PrincingFeature_5" xml:space="preserve">
+    <value>Atención al cliente de 9h a 20h, 7d/7</value>
+  </data>
+  <data name="PrincingFeature_5_Text" xml:space="preserve">
+    <value>Nuestro servicio de atención al cliente está disponible 7 días a la semana de 9h a 20h para asistirte en caso de problemas o para contestar a cualquier pregunta.</value>
+  </data>
+  <data name="PrincingFeature_6" xml:space="preserve">
+    <value>Espacio seguro mediante la tecnología SSL</value>
+  </data>
+  <data name="PrincingFeature_6_Text" xml:space="preserve">
+    <value>La totalidad de la información está encriptada mediante un certificado SSL. Nadie más que tú tendrá acceso tu información.</value>
+  </data>
 </root>

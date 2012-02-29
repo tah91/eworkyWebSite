@@ -232,7 +232,7 @@
     <value>La solicitud de presupuesto ha sido rechazada.</value>
   </data>
   <data name="EndSpeech" xml:space="preserve">
-    <value>La disponibilidad y el precio para tu solicitud de reserva te serán confirmados por el gerente en tu Zona de usuario. Una vez confirmada, ya podrás realizar el pago online.</value>
+    <value>La disponibilidad y el precio para tu solicitud de reserva te serán confirmados por el gerente en tu perfíl de usuario. Una vez confirmada, ya podrás realizar el pago online.</value>
   </data>
   <data name="Achieved" xml:space="preserve">
     <value>Terminada el</value>

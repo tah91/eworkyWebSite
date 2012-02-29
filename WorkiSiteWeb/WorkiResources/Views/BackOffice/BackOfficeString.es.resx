@@ -343,4 +343,10 @@
   <data name="Edit" xml:space="preserve">
     <value>Editar</value>
   </data>
+  <data name="BackOfficeAsked" xml:space="preserve">
+    <value>Tu solicitud ha sido registrada. Por seguridad, nuestro equipo de moderación va a proceder a la verificación de tu identidad y te habilitará el acceso como gerente en la proximas 48 horas.</value>
+  </data>
+  <data name="BackofficeDemand" xml:space="preserve">
+    <value>Solicitud de acceso como gerente</value>
+  </data>
 </root>
