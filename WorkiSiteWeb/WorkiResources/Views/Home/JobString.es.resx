@@ -184,4 +184,13 @@
   <data name="Description" xml:space="preserve">
     <value>Para acompañar su crecimiento, eWorky busca jóvenes talentos dispuestos a unirse a la aventura de una start-up prometedora.</value>
   </data>
+  <data name="DevReason1" xml:space="preserve">
+    <value>Te gustan las páginas web bien hechas</value>
+  </data>
+  <data name="DevReason2" xml:space="preserve">
+    <value>Te gusta aplicar los últimos trucos de CSS3 / HTML5.</value>
+  </data>
+  <data name="DevReason3" xml:space="preserve">
+    <value>Eres capaz de estar horas con una página web para dejarla perfecta.</value>
+  </data>
 </root>
