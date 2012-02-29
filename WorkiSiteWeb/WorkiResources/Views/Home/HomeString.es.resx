@@ -341,10 +341,10 @@
     <value>Tahir Iftikhar</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>Inglés</value>
+    <value>English</value>
   </data>
   <data name="French" xml:space="preserve">
-    <value>Francés</value>
+    <value>Français</value>
   </data>
   <data name="Team_Member_1_Text" xml:space="preserve">
     <value>Habitante de Paris, Olivier se encarga en eWorky de la estrategia y del storyboarding. A parte de ser igual de discreto en sus intercambios en espacios diáfanos que un pescadero en una lonja, Olivier es un gran aficionado al senderismo y un vegetariano convencido. Pero por encima de todo, Olivier glorifica los diseños depurados e idólatra la supresión de los botones inútiles y de las faltas ortográficas.</value>
@@ -360,5 +360,8 @@
   </data>
   <data name="Français" xml:space="preserve">
     <value>Français</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Español</value>
   </data>
 </root>
