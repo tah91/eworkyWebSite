@@ -373,4 +373,55 @@
   <data name="QuotationPrice" xml:space="preserve">
     <value>Price of the quotation</value>
   </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company name</value>
+  </data>
+  <data name="CompanyType" xml:space="preserve">
+    <value>Company type</value>
+  </data>
+  <data name="Association" xml:space="preserve">
+    <value>Nonprofit organization</value>
+  </data>
+  <data name="BigCompany" xml:space="preserve">
+    <value>Corporation</value>
+  </data>
+  <data name="Consulting" xml:space="preserve">
+    <value>Consulting firm</value>
+  </data>
+  <data name="CreativeAgency" xml:space="preserve">
+    <value>Design agency</value>
+  </data>
+  <data name="InAssociation" xml:space="preserve">
+    <value>in a nonprofit organization</value>
+  </data>
+  <data name="InBigCompany" xml:space="preserve">
+    <value>in a corporation</value>
+  </data>
+  <data name="InCompany" xml:space="preserve">
+    <value>in a {0}</value>
+  </data>
+  <data name="InConsulting" xml:space="preserve">
+    <value>in a consulting firm</value>
+  </data>
+  <data name="InCreativeAgency" xml:space="preserve">
+    <value>in a design agency</value>
+  </data>
+  <data name="Independent" xml:space="preserve">
+    <value>Freelancer</value>
+  </data>
+  <data name="InIndependent" xml:space="preserve">
+    <value>Freelancer</value>
+  </data>
+  <data name="InSmallBusiness" xml:space="preserve">
+    <value>in a small business</value>
+  </data>
+  <data name="InStartUp" xml:space="preserve">
+    <value>in a start up</value>
+  </data>
+  <data name="SmallBusiness" xml:space="preserve">
+    <value>Small business</value>
+  </data>
+  <data name="StartUp" xml:space="preserve">
+    <value>Start Up</value>
+  </data>
 </root>
