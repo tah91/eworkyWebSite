@@ -1072,14 +1072,16 @@ namespace Worki.Data.Models
 					offerPart = GetOfferType((int)LocalisationOffer.Workstation);
 				}
 
-				if (string.IsNullOrEmpty(CompanyName))
-				{
-					atPart = GetInCompanyType((eCompanyType)CompanyType);
-				}
-				else
-				{
-					atPart = string.Format(Worki.Resources.Models.Localisation.Localisation.InCompany, CompanyName);
-				}
+				atPart = GetInCompanyType((eCompanyType)CompanyType);
+
+				//if (string.IsNullOrEmpty(CompanyName))
+				//{
+				//    atPart = GetInCompanyType((eCompanyType)CompanyType);
+				//}
+				//else
+				//{
+				//    atPart = string.Format(Worki.Resources.Models.Localisation.Localisation.InCompany, CompanyName);
+				//}
 
 				return offerPart + " " + atPart;
 			}
