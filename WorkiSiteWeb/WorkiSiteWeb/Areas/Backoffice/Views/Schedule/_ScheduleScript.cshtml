@@ -119,8 +119,8 @@
 					});
 				},
 				select: function (startDate, endDate, allDay, jsEvent, view) {
-					var start = (new Date(startDate)).toString('dd/MM/yy HH:mm');
-					var end = (new Date(endDate)).toString('dd/MM/yy HH:mm');
+					var start = (new Date(startDate)).toString('@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.General)');
+					var end = (new Date(endDate)).toString('@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.General)');
 					$('#Booking_FromDate').val(start);
 					$('#Booking_ToDate').val(end);
 					$('#eventPeriod').html(start + ' - ' + end);

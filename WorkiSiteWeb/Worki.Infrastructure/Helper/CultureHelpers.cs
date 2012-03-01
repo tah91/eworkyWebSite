@@ -58,5 +58,39 @@ namespace Worki.Infrastructure.Helpers
 
             return "";
         }
+
+		/// <summary>
+		/// Get Format for javascript date, depending on culture
+		/// </summary>
+		/// <param name="format">Format desired</param>
+		/// <returns>Formatted datetime</returns>
+		public static string GetFormat(TimeFormat format = TimeFormat.Date)
+		{
+			var isoName = System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+
+			switch (isoName)
+			{
+				case "en":
+					{
+						if (format == TimeFormat.Date)
+							return "MM/dd/yyyy";
+						if (format == TimeFormat.General)
+							return "MM/dd/yyyy hh:mm tt";
+					}
+					break;
+				case "fr":
+				case "es":
+				default:
+					{
+						if (format == TimeFormat.Date)
+							return "dd/MM/yyyy";
+						if (format == TimeFormat.General)
+							return "dd/MM/yyyy hh:mm";
+					}
+					break;
+			}
+
+			return "";
+		}
     }
 }
