@@ -32,7 +32,7 @@
 		    }
 			@if(!Url.IsInArea("Backoffice"))
 			{
-				@:var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, null, null ,'#Localisation_City','#Localisation_PostalCode','#Localisation_Country');
+				@:var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, null, null ,'#Localisation_City','#Localisation_PostalCode', null);
 				@:var workiMap = new WorkiMap('editMapDiv','#Localisation_Latitude', '#Localisation_Longitude');
 				@:var latitude = @Model.Localisation.Latitude;
 				@:var longitude = @Model.Localisation.Longitude;

@@ -30,26 +30,27 @@ namespace Worki.Web.Areas.Admin.Controllers
             var all = lRepo.GetAll();
 
             var req = from p in all
-                      group p by new { p.Country } into g
-                      select new { Count = g.Count(), Country = g.Key.Country };
+                      group p by new { p.CountryId } into g
+					  select new { Count = g.Count(), Country = g.Key.CountryId };
 
             IList<StateItem> list = new List<StateItem>();
+			var countries = Localisation.GetCountries();
 
             foreach (var item in req)
             {
-                StateItem item_stat = new StateItem(item.Country, item.Count);
-                item_stat.SpotWifi = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.SpotWifi).Count();
-                item_stat.CoffeeResto = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.CoffeeResto).Count();
-                item_stat.Biblio = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.Biblio).Count();
-                item_stat.PublicSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.PublicSpace).Count();
-                item_stat.TravelerSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.TravelerSpace).Count();
-                item_stat.Hotel = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.Hotel).Count();
-                item_stat.Telecentre = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.Telecentre).Count();
-                item_stat.BuisnessCenter = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.BuisnessCenter).Count();
-                item_stat.CoworkingSpace = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.CoworkingSpace).Count();
-                item_stat.WorkingHotel = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.WorkingHotel).Count();
-                item_stat.PrivateArea = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.PrivateArea).Count();
-				item_stat.SharedOffice = all.Where(x => item_stat.Country_Name == x.Country && x.TypeValue == (int)LocalisationType.SharedOffice).Count();
+				StateItem item_stat = new StateItem(countries[item.Country], item.Count);
+				item_stat.SpotWifi = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.SpotWifi).Count();
+				item_stat.CoffeeResto = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.CoffeeResto).Count();
+				item_stat.Biblio = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.Biblio).Count();
+				item_stat.PublicSpace = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.PublicSpace).Count();
+				item_stat.TravelerSpace = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.TravelerSpace).Count();
+				item_stat.Hotel = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.Hotel).Count();
+				item_stat.Telecentre = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.Telecentre).Count();
+				item_stat.BuisnessCenter = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.BuisnessCenter).Count();
+				item_stat.CoworkingSpace = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.CoworkingSpace).Count();
+				item_stat.WorkingHotel = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.WorkingHotel).Count();
+				item_stat.PrivateArea = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.PrivateArea).Count();
+				item_stat.SharedOffice = all.Where(x => item_stat.Country_Name == x.CountryId && x.TypeValue == (int)LocalisationType.SharedOffice).Count();
                 list.Add(item_stat);
             }
 
