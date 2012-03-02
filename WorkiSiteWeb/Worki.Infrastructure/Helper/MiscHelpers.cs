@@ -206,6 +206,34 @@ namespace Worki.Infrastructure.Helpers
             return toRet;
         }
 
+        /// <summary>
+        /// Get the display name of enums, from resource file
+        /// </summary>
+        /// <param name="enumType">the Type of the enum</param>
+        /// <param name="resourceType">the Type of the resource</param>
+        /// <returns>a dictionary key : enum, value : displayName</returns>
+        public static Dictionary<string, string> GetEnumDisplayName(Type enumType, Type resourceType, string emptyOne)
+        {
+            if (!enumType.IsEnum)
+                throw new ApplicationException("GetEnumDisplayName does not support non-enum types");
+
+            var toRet = new Dictionary<string, string> { { "", emptyOne } };
+
+            foreach (var field in enumType.GetFields(BindingFlags.Static | BindingFlags.GetField | BindingFlags.Public))
+            {
+                var enumVal = field.GetValue(null);
+                var enumStr = Enum.GetName(enumType, enumVal);
+
+                var nameProperty = resourceType.GetProperty(enumStr, BindingFlags.Static | BindingFlags.Public);
+                if (nameProperty != null)
+                {
+                    enumStr = (string)nameProperty.GetValue(nameProperty.DeclaringType, null);
+                }
+                toRet.Add(enumVal.ToString(), enumStr);
+            }
+            return toRet;
+        }
+
 		/// <summary>
 		/// Resize a file stream of image to desired height and width
 		/// </summary>

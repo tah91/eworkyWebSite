@@ -250,6 +250,24 @@ namespace Worki.Infrastructure
         }
     }
 
+    public class SelectStringValidationAttribute : ValidationAttribute
+    {
+        public SelectStringValidationAttribute()
+            : base()
+        {
+
+        }
+
+        public override bool IsValid(object value)
+        {
+            if (!(value is string))
+                return false;
+            if (string.IsNullOrEmpty((string)value))
+                return false;
+            return true;
+        }
+    }
+
     public class DateTimeStringAttribute : ValidationAttribute
     {
         public override string FormatErrorMessage(string name)

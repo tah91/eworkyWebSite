@@ -121,6 +121,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Localisation\LocalisationCountry.Designer.cs">
+      <DependentUpon>LocalisationCountry.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\Offer\Offer.Designer.cs">
       <DependentUpon>Offer.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -383,6 +388,11 @@
     <EmbeddedResource Include="Models\Booking\Booking.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Booking.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalisationCountry.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Localisation\Localisation.en.resx" />

@@ -3,6 +3,10 @@
 @{
 	var controller = Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.Name : MVC.Localisation.Name;
 	var action = Url.IsInArea("Backoffice") ? MVC.Backoffice.Localisation.ActionNames.Edit : MVC.Localisation.ActionNames.Edit;
+    if (string.IsNullOrEmpty(Model.Localisation.Country))
+    { 
+        Model.Localisation.Country = "None";
+    }
 }
 @using (Html.BeginForm(action, controller, FormMethod.Post, new { enctype = "multipart/form-data", id = "localisationEditForm" }))
 {
@@ -187,27 +191,28 @@
                                 </div>
                             </td>
                         </tr>
+                        @Html.HiddenFor(model => model.Localisation.Country)
                         <tr>
                             <td>
                                 <div class="editor-label">
-                                    @Html.LabelFor(model => model.Localisation.Country)<span class="blue">*</span>
+                                    @Html.LabelFor(model => model.Localisation.CountryId)<span class="blue">*</span>
                                 </div>
                             </td>
                             <td>
                                 <div class="editor-field">
-                                    @Html.TextBoxFor(model => model.Localisation.Country)
+                                    @Html.DropDownListFor(model => model.Localisation.CountryId, Model.Countries)
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Localisation.PhoneNumber)
+                                </div>
+                            </td>
+                            <td>
                                 <table class="phoneNumberRow">
                                     <tr>
-                                        <td>
-                                            <div class="editor-label phoneNumberCol">
-                                                @Html.LabelFor(model => model.Localisation.PhoneNumber)
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="editor-field">
                                                 @Html.TextBoxFor(model => model.Localisation.PhoneNumber)
@@ -222,6 +227,7 @@
                                             <div class="editor-field">
                                                 @Html.TextBoxFor(model => model.Localisation.Fax)
                                             </div>
+
                                         </td>
                                     </tr>
                                 </table>
