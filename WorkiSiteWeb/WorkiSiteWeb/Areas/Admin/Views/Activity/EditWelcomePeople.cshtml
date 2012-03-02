@@ -25,6 +25,18 @@
                 <div class="contentBlock">
                 @Html.AntiForgeryToken()
                 <table>
+					<tr>
+						<td>
+							<div class="editor-label">
+								@Worki.Resources.Views.Admin.AdminString.SiteVersion
+							</div>
+						</td>
+						<td>
+							<div class="editor-field">
+								@Html.DropDownListFor(model => model.WelcomePeople.SiteVersion, Model.SiteVersions)
+							</div>
+						</td>
+					</tr>
                     <tr>
                         <td>
                             <div class="editor-label">

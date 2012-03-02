@@ -638,6 +638,7 @@
           <Property Name="OfferId" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="LocalisationPicture" Type="nvarchar" MaxLength="256" />
+          <Property Name="SiteVersion" Type="int" Nullable="false" />
           <Property Name="Online" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Comment_Localisation">
@@ -2079,6 +2080,7 @@
           <Property Type="String" Name="LocalisationPicture" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="Online" Nullable="false" />
           <NavigationProperty Name="Offer" Relationship="WorkiDBModel.FK_WelcomePeople_Offer" FromRole="WelcomePeople" ToRole="Offer" />
+          <Property Type="Int32" Name="SiteVersion" Nullable="false" />
         </EntityType>
         <Association Name="FK_WelcomePeople_Offer">
           <End Type="WorkiDBModel.Offer" Role="Offer" Multiplicity="1" />
@@ -2710,6 +2712,7 @@
           <EntitySetMapping Name="WelcomePeoples">
             <EntityTypeMapping TypeName="WorkiDBModel.WelcomePeople">
               <MappingFragment StoreEntitySet="WelcomePeople">
+                <ScalarProperty Name="SiteVersion" ColumnName="SiteVersion" />
                 <ScalarProperty Name="Online" ColumnName="Online" />
                 <ScalarProperty Name="LocalisationPicture" ColumnName="LocalisationPicture" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

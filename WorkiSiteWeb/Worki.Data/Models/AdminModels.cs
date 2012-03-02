@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System;
 using System.Linq;
 using System.ComponentModel;
+using Worki.Infrastructure;
 
 namespace Worki.Data.Models
 {
@@ -89,6 +90,25 @@ namespace Worki.Data.Models
 	[MetadataType(typeof(WelcomePeople_Validation))]
 	public partial class WelcomePeople
 	{
+		public static Dictionary<int, string> SiteVersions = new Dictionary<int, string> 
+		{ 
+			{ (int)eSiteVersion.fr, "fr" }, 
+			{ (int)eSiteVersion.com, "com" }, 
+			{ (int)eSiteVersion.es, "es" } 
+		};
+
+		public static eSiteVersion GetVersion(Culture culture)
+		{
+			switch(culture)
+			{
+				case Culture.fr:
+					return eSiteVersion.fr;
+				case Culture.en:
+				case Culture.es:
+				default:
+					return eSiteVersion.com;
+			}
+		}
 	}
 
 	[Bind(Exclude = "Id,LocalisationPicture")]
@@ -97,19 +117,30 @@ namespace Worki.Data.Models
 
 	}
 
+	public enum eSiteVersion
+	{
+		fr,
+		com,
+		es
+	}
+
 	public class WelcomePeopleFormViewModel
 	{
 		public WelcomePeopleFormViewModel()
 		{
 			WelcomePeople = new WelcomePeople();
+			SiteVersions = new SelectList(WelcomePeople.SiteVersions, "Key", "Value");
 		}
 
 		public WelcomePeopleFormViewModel(WelcomePeople people)
 		{
 			WelcomePeople = people;
 			LocalisationName = people.Offer.Localisation.Name;
+			OfferName = people.Offer.Name;
+			SiteVersions = new SelectList(WelcomePeople.SiteVersions, "Key", "Value");
 		}
 
+		public SelectList SiteVersions { get; private set; }
 		public WelcomePeople WelcomePeople { get; set; }
 
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]

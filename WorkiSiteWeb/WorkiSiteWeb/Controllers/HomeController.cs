@@ -167,12 +167,13 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [ChildActionOnly]
-        public virtual ActionResult PeopleSlider()
+        public virtual ActionResult PeopleSlider(Culture culture)
         {
             var context = ModelFactory.GetUnitOfWork();
             var wpRepo = ModelFactory.GetRepository<IWelcomePeopleRepository>(context);
+			var siteVersion = (int)WelcomePeople.GetVersion(culture);
 
-            return PartialView(MVC.Home.Views._PeopleSlider, wpRepo.GetMany(wp => wp.Online == true).OrderByDescending(wp => wp.Id).ToList());
+			return PartialView(MVC.Home.Views._PeopleSlider, wpRepo.GetMany(wp => wp.Online == true && wp.SiteVersion == siteVersion).OrderByDescending(wp => wp.Id).ToList());
         }
 
         /// <summary>
