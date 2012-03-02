@@ -258,4 +258,40 @@
   <data name="WorkTitle" xml:space="preserve">
     <value>Set to work!</value>
   <comment>Jm Modif L13</comment></data>
+  <data name="PrincingFeature_1" xml:space="preserve">
+    <value>Manage your reservation</value>
+  </data>
+  <data name="PrincingFeature_1_Text" xml:space="preserve">
+    <value>People can ask you for a quote or proceed to booking directly from your eWorky listing. You receive an email request that you can accept, or decline.</value>
+  </data>
+  <data name="PrincingFeature_2" xml:space="preserve">
+    <value>Manage your calendar</value>
+  </data>
+  <data name="PrincingFeature_2_Text" xml:space="preserve">
+    <value>Online bookings are updated in real time in your calendar, space by space.  People also booked over the phone, by fax or from other websites ? You can add them as well. Send automatic email notifications to your customers when you add or modify their reservations.</value>
+  </data>
+  <data name="PrincingFeature_3" xml:space="preserve">
+    <value>Secure payment</value>
+  </data>
+  <data name="PrincingFeature_3_Text" xml:space="preserve">
+    <value>Payments are collected securely via Paypal. For more info on Paypal's terms of service, click here.</value>
+  </data>
+  <data name="PrincingFeature_4" xml:space="preserve">
+    <value>Automtic invoice system</value>
+  </data>
+  <data name="PrincingFeature_4_Text" xml:space="preserve">
+    <value>For every booking, an invoice is automatically generated and stored in your management account.</value>
+  </data>
+  <data name="PrincingFeature_5" xml:space="preserve">
+    <value>Customer support 7 days a week</value>
+  </data>
+  <data name="PrincingFeature_5_Text" xml:space="preserve">
+    <value>Our customer support is available 7 days a week, from 9am to 8pm to assist you.</value>
+  </data>
+  <data name="PrincingFeature_6" xml:space="preserve">
+    <value>SSL-secure website</value>
+  </data>
+  <data name="PrincingFeature_6_Text" xml:space="preserve">
+    <value>All the information is encrypted by SSL so that nobody but you access your account information.</value>
+  </data>
 </root>
