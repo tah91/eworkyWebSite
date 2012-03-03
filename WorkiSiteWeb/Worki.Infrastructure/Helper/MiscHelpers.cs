@@ -13,8 +13,24 @@ using System.Security.Cryptography;
 namespace Worki.Infrastructure.Helpers
 {
     public static class MiscHelpers
-    {
-        #region Email
+	{
+		#region Uri
+
+		public const string ThisSite = "eworky";
+
+		public static bool IsFromThisSite(this Uri url)
+		{
+			if (url != null &&
+				!string.IsNullOrEmpty(url.Host) &&
+				url.Host.Split('.').Contains(ThisSite))
+				return true;
+
+			return false;
+		}
+
+		#endregion
+
+		#region Email
 
 		public static class EmailConstants
 		{

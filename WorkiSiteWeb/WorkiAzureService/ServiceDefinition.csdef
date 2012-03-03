@@ -15,7 +15,7 @@
     </Sites>
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
-      <InputEndpoint name="Endpoint2" protocol="https" port="443" certificate="eworky" />
+      <InputEndpoint name="Endpoint2" protocol="https" port="443" certificate="startcom" />
     </Endpoints>
     <Imports>
       <Import moduleName="Diagnostics" />
@@ -27,9 +27,9 @@
     </ConfigurationSettings>
     <Certificates>
       <Certificate name="azureconfig" storeLocation="LocalMachine" storeName="My" />
-      <Certificate name="eworky" storeLocation="LocalMachine" storeName="My" />
-      <Certificate name="MyRoot" storeLocation="LocalMachine" storeName="CA" />
-      <Certificate name="MyIntermediate" storeLocation="LocalMachine" storeName="CA" />
+      <Certificate name="startcom" storeLocation="LocalMachine" storeName="My" />
+      <Certificate name="startcomIntermediate" storeLocation="LocalMachine" storeName="CA" />
+      <Certificate name="startcomRoot" storeLocation="LocalMachine" storeName="CA" />
     </Certificates>
   </WebRole>
 </ServiceDefinition>

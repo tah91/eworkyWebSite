@@ -14,9 +14,9 @@
     <Certificates>
       <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="668A12BB1DC08D7E95BCD7A98CA3316A73D0C3B9" thumbprintAlgorithm="sha1" />
       <Certificate name="azureconfig" thumbprint="29F3D8B901F6EC1AA11ED1081E157E2E81859FB8" thumbprintAlgorithm="sha1" />
-      <Certificate name="eworky" thumbprint="04EB2E011389B1AEBE762F765359FC61B999260A" thumbprintAlgorithm="sha1" />
-      <Certificate name="MyRoot" thumbprint="DE28F4A4FFE5B92FA3C503D1A349A7F9962A8212" thumbprintAlgorithm="sha1" />
-      <Certificate name="MyIntermediate" thumbprint="BAE30B15DBB1544CF194D076B75B7BB9E3D6B760" thumbprintAlgorithm="sha1" />
+      <Certificate name="startcom" thumbprint="2225396FBD3E2CE3A690297B453C02DEFF8D1B25" thumbprintAlgorithm="sha1" />
+      <Certificate name="startcomIntermediate" thumbprint="A1ACE4046B6E332232B87ECFB6F37A0763720147" thumbprintAlgorithm="sha1" />
+      <Certificate name="startcomRoot" thumbprint="3E2BF7F2031B96F38CE6C4D8A85D3E2D58476A0F" thumbprintAlgorithm="sha1" />
     </Certificates>
   </Role>
 </ServiceConfiguration>

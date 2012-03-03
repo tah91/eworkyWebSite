@@ -38,28 +38,28 @@ namespace Worki.Infrastructure
     /// <summary>
     /// Remote only require https
     /// </summary>
-    public class RequireHttpsRemoteAttribute : RequireHttpsAttribute
-    {
-        static bool _DisableHttps = true;
+	public class RequireHttpsRemoteAttribute : RequireHttpsAttribute
+	{
+		static bool _DisableHttps = false;
 
-        public override void OnAuthorization(AuthorizationContext filterContext)
-        {
-            if (filterContext == null)
-            {
-                throw new ArgumentNullException("filterContext");
-            }
+		public override void OnAuthorization(AuthorizationContext filterContext)
+		{
+			if (_DisableHttps)
+				return;
 
-            if (_DisableHttps)
-                return;
+			if (filterContext == null || filterContext.HttpContext == null)
+			{
+				throw new ArgumentNullException("filterContext");
+			}
 
-			if (filterContext.HttpContext != null && filterContext.HttpContext.Request.IsLocal)
-            {
-                return;
-            }
+			if (filterContext.IsChildAction || filterContext.HttpContext.Request.IsAjaxRequest() || filterContext.HttpContext.Request.IsLocal)
+			{
+				return;
+			}
 
-            base.OnAuthorization(filterContext);
-        }
-    }
+			base.OnAuthorization(filterContext);
+		}
+	}
 
     /// <summary>
     /// Don't require https
@@ -68,14 +68,22 @@ namespace Worki.Infrastructure
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var request = filterContext.HttpContext.Request;
-            var response = filterContext.HttpContext.Response;
+			if (filterContext == null || filterContext.HttpContext == null)
+			{
+				throw new ArgumentNullException("filterContext");
+			}
 
-            if (request.IsSecureConnection && !request.IsLocal && !request.IsAjaxRequest())
-            {
-                string redirectUrl = request.Url.ToString().Replace("https:", "http:");
-                response.Redirect(redirectUrl);
-            }
+			if (!filterContext.IsChildAction)
+			{
+				var request = filterContext.HttpContext.Request;
+				var response = filterContext.HttpContext.Response;
+
+				if (request.IsSecureConnection && !request.IsLocal && !request.IsAjaxRequest())
+				{
+					string redirectUrl = request.Url.ToString().Replace("https:", "http:");
+					response.Redirect(redirectUrl);
+				}
+			}
             base.OnActionExecuting(filterContext);
         }
     }
@@ -107,6 +115,10 @@ namespace Worki.Infrastructure
             // Don't redirect requests for the Mobile area
 			if (Regex.IsMatch(httpContext.Request.Url.PathAndQuery, "/mobile($|/)") || Regex.IsMatch(httpContext.Request.Url.PathAndQuery, "/account($|/)"))
                 return true;
+
+			// Don't redirect requests from eworky
+			if (httpContext.Request.UrlReferrer != null && httpContext.Request.UrlReferrer.IsFromThisSite())
+				return true;
 
             return false;
         }

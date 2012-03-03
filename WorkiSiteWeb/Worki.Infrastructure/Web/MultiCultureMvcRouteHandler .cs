@@ -7,6 +7,7 @@ using System.Linq;
 using System;
 using System.Web.SessionState;
 using System.Collections.Generic;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Infrastructure 
 {
@@ -128,9 +129,7 @@ namespace Worki.Infrastructure
 				return false;
 
 			//comming from a link of the site
-			if (HttpContext.Current.Request.UrlReferrer != null 
-				&& !string.IsNullOrEmpty(HttpContext.Current.Request.UrlReferrer.Host) 
-				&& HttpContext.Current.Request.UrlReferrer.Host.Split('.').Contains("eworky"))
+			if (HttpContext.Current.Request.UrlReferrer != null && HttpContext.Current.Request.UrlReferrer.IsFromThisSite())
 				return false;
 
 			//comming from a .fr or so, mean that the language is already defined
