@@ -80,8 +80,11 @@ namespace Worki.Infrastructure
 
 				if (request.IsSecureConnection && !request.IsLocal && !request.IsAjaxRequest())
 				{
-					string redirectUrl = request.Url.ToString().Replace("https:", "http:");
-					response.Redirect(redirectUrl);
+					if(!Regex.IsMatch(request.Url.PathAndQuery, @"/home/ChangeCulture\?.+()"))
+					{
+						string redirectUrl = request.Url.ToString().Replace("https:", "http:");
+						response.Redirect(redirectUrl);
+					}
 				}
 			}
             base.OnActionExecuting(filterContext);
