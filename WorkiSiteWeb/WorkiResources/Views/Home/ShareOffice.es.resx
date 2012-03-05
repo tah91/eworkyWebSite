@@ -121,7 +121,7 @@
     <value>Conseguir el acceso gerente</value>
   </data>
   <data name="AddSpace" xml:space="preserve">
-    <value>¡Compartir mi oficina ya!</value>
+    <value>¡Quiero compartir mi oficina ya!</value>
   </data>
   <data name="ForBoth1" xml:space="preserve">
     <value>Eligiendo colaborar e intercambiar con tu anfitrión beneficiarás de una aportación mutua y de un enriquecimiento colectivo</value>
@@ -142,34 +142,34 @@
     <value>Propietario</value>
   </data>
   <data name="ForOwner1" xml:space="preserve">
-    <value>Crea tu espacio en eWorky en unos clicks</value>
+    <value>Crea tu espacio en eWorky en unos clics</value>
   </data>
   <data name="ForOwner2" xml:space="preserve">
     <value>Gana miles de euros anuales por puesto de trabajo</value>
   </data>
   <data name="ForOwner3" xml:space="preserve">
-    <value>¡Nos encargamos de todo! Tos es automático, desde la búsqueda de ocupantes hasta el ingreso de los fondos</value>
+    <value>¡Nos encargamos de todo! Todo es automático, desde la búsqueda de ocupantes hasta el ingreso de los fondos</value>
   </data>
   <data name="ForOwnerHead1" xml:space="preserve">
-    <value>¿Dispones de mesas o despachos sin ocupar?</value>
+    <value>¿Tienes de un despacho libre o unas mesas sin ocupar?</value>
   </data>
   <data name="ForOwnerHead2" xml:space="preserve">
-    <value>¿Quizás prefieras sacarle rendimiento en lugar de almacenar viejos trastos?</value>
+    <value>¿Quizás prefieras sacarle rendimiento en lugar de almacenar ahí viejos trastos?</value>
   </data>
   <data name="ForTenant" xml:space="preserve">
     <value>Inquilino</value>
   </data>
   <data name="ForTenant1" xml:space="preserve">
-    <value>Encuentra un puesto de trabajo hasta 5 veces más barato que en un alquiler tradicional o en centros de negocio</value>
+    <value>Encuentra un puesto de trabajo hasta 5 veces más barato que en un alquiler tradicional o en un centro de negocios</value>
   </data>
   <data name="ForTenant2" xml:space="preserve">
     <value>Disfruta de la flexibilidad compartiendo despacho, con alquieres diarios, semanales, mensuales...</value>
   </data>
   <data name="ForTenant3" xml:space="preserve">
-    <value>¡Reserva tu espacio y paga en unos pocos clicks!</value>
+    <value>¡Reserva tu espacio y paga en unos pocos clics!</value>
   </data>
   <data name="ForTenantHead1" xml:space="preserve">
-    <value>¿Eres una empresa pequeña o un freelance?</value>
+    <value>¿Tienes una empresa pequeña o eres un freelance?</value>
   </data>
   <data name="Legally1" xml:space="preserve">
     <value>Generalmente, se comparte mediante &lt;b&gt;subarrendamiento&lt;/b&gt; : Una sociedad alquila una oficina en su totalidad y la subarrienda a otras. Una sociedad que desea subarrendar tiene que obtener el acuerdo escrito de su propietario a no ser que se haya previsto en el contrato de arrendamiento. </value>

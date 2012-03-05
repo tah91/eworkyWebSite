@@ -421,7 +421,7 @@
     <value>Sala de reunión</value>
   </data>
   <data name="DesktopSearch" xml:space="preserve">
-    <value>Despacho (centro de negocio, hotel de empresas, etc.)</value>
+    <value>Despacho (centro de negocios, hotel de empresas, etc.)</value>
   </data>
   <data name="WorkstationSearch" xml:space="preserve">
     <value>Puesto de trabajo (oficina de coworking, etc.)</value>

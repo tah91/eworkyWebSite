@@ -136,11 +136,11 @@
     <value>Si observas un bug o problemas para navegar en la página web, no dudes en comunicarnoslo mandando un correo electrónico a support@eworky.com.</value>
   </data>
   <data name="FAQ" xml:space="preserve">
-    <value>FAQ</value>
+    <value>Preguntas frecuentes</value>
     <comment>FAQ</comment>
   </data>
   <data name="FormForSearch" xml:space="preserve">
-    <value>El formulario situado a la {0} de la página web permite efectuar búsquedas sencillas a partir del lugar y del tipo de espacio buscado (espacio público, café Wifi, etc.). Una búsqueda más detallada puede realizarse a través del enlace {1}. Se pueden seleccionar más criterios tal y como los servicios propuestos en el espacio (Wifi, restauración, aparcamiento, etc.), el tipo de espacio (gratuito, centro de negocio, etc.) o utilizar búsquedas ya ya parametrizadas según tu perfíl (estudiante, trabajador nomada, etc.).</value>
+    <value>El formulario situado a la {0} de la página web permite efectuar búsquedas sencillas a partir del lugar y del tipo de espacio buscado (espacio público, café Wifi, etc.). Una búsqueda más detallada puede realizarse a través del enlace {1}. Se pueden seleccionar más criterios tal y como los servicios propuestos en el espacio (Wifi, restauración, aparcamiento, etc.), el tipo de espacio (gratuito, centro de negocios, etc.) o utilizar búsquedas ya ya parametrizadas según tu perfíl (estudiante, trabajador nomada, etc.).</value>
     <comment>toujours identique ?</comment>
   </data>
   <data name="ForRateComment" xml:space="preserve">
@@ -156,7 +156,7 @@
     <value>¿Cómo añadir un espacio de trabajo?</value>
   </data>
   <data name="HowCreateAccount" xml:space="preserve">
-    <value>¿Cómo crear una cuenta?¿Por qué me debería de registrar?</value>
+    <value>¿Cómo crear una cuenta?¿Por qué registrarme?</value>
   </data>
   <data name="HowEdit" xml:space="preserve">
     <value>La ficha de un espacio contiene información errónea, ¿Cómo puedo corregirla?</value>
@@ -177,7 +177,7 @@
     <value>¿Cómo invitar a tus amigos a unirse a la comunidad eWorky?</value>
   </data>
   <data name="OnEWBuisnessCenter" xml:space="preserve">
-    <value>En eWorky, un centro de negocio es un inmueble totalmente equipado, que alquila oficinas individuales para un periodo limitado. Los contratos de arrendamiento son más flexibles y de una duración más corta que los contratos tradicionales.</value>
+    <value>En eWorky, un centro de negocios es un inmueble totalmente equipado, que alquila oficinas individuales para un periodo limitado. Los contratos de arrendamiento son más flexibles y de una duración más corta que los contratos tradicionales.</value>
   </data>
   <data name="OnEWBuisnessHotel" xml:space="preserve">
     <value>En eWorky, un hotel de empresa es un lugar que alberga empresas jovenes por un coste reducido y propone servicios mutualizados. Las empresas están acompañadas en sus fases de creación, crecimiento y maduración.</value>
@@ -239,7 +239,7 @@
     <value>Inscripción</value>
   </data>
   <data name="WhatIsBuisnessCenter" xml:space="preserve">
-    <value>¿Qué es un centro de negocio?</value>
+    <value>¿Qué es un centro de negocios?</value>
   </data>
   <data name="WhatIsBuisnessHotel" xml:space="preserve">
     <value>¿Qué es un hotel de empresas?</value>
@@ -289,7 +289,7 @@
     <value>Gestionas un centro de negocios o un centro de teletrabajo y te gustaría proponerlo online a través de eWorky? Te puedes poner en contacto con nosotros a través de nuestro correo: contact@eworky.com</value>
   </data>
   <data name="YourPossiblilitiesOnForm" xml:space="preserve">
-    <value>En el formulario para añadir un espacio de trabajo, tienes la posibilidad de elegir fotos para adjuntarlas a la descripción del esapcio. Para ello, simplemente arrastra tu imagen a « + añadir tus imágenes » o haz click en el mismo botón para elegir el fichero y luego pulsa Descargar para mandarnos el archivo. El tamaño de cada imagen no puede superar los 3Mb y puedes añadir un máximo de 10 imágenes. Asegurate de no rebasar los límites y si el problema persiste, te puedes poner en contacto con nosotros por correo a support@eworky.com.</value>
+    <value>En el formulario para añadir un espacio de trabajo, tienes la posibilidad de elegir fotos para adjuntarlas a la descripción del esapcio. Para ello, simplemente arrastra tu imagen a « + añadir tus imágenes » o haz clic en el mismo botón para elegir el fichero y luego pulsa Descargar para mandarnos el archivo. El tamaño de cada imagen no puede superar los 3Mb y puedes añadir un máximo de 10 imágenes. Asegurate de no rebasar los límites y si el problema persiste, te puedes poner en contacto con nosotros por correo a support@eworky.com.</value>
   <comment>Jm modif L26</comment></data>
   <data name="CouldNotEditLocation" xml:space="preserve">
     <value>No consigo modificar un espacio.</value>
@@ -332,12 +332,12 @@
 Estar registrado en eWorky te permite añadir espacios, así como puntuar y comentar espacios existentes.</value>
   </data>
   <data name="SuggestWorkplace" xml:space="preserve">
-    <value>La pestaña « {0} » permite proponer un espacio de trabajo a los usuarios de eWorky. Sólo unos campos son obligatorios para poder dejar accesible tu espacio de trabajo en eWorky, pero te recomendamos que informes el máximo número posible de datos para facilitar el acceso a los demás usuarios. Además, las fotos ocupan una buena parte de la ficha del espacio por lo que te recomendamos que pongas al menos cuatro fotos de buena calidad. Para añadir fotos, arrastra la imagen al campo « Añadir imágenes » o haz click en el mismo botón y elige la que será la foto principal para tu espacio.</value>
+    <value>La pestaña « {0} » permite proponer un espacio de trabajo a los usuarios de eWorky. Sólo unos campos son obligatorios para poder dejar accesible tu espacio de trabajo en eWorky, pero te recomendamos que informes el máximo número posible de datos para facilitar el acceso a los demás usuarios. Además, las fotos ocupan una buena parte de la ficha del espacio por lo que te recomendamos que pongas al menos cuatro fotos de buena calidad. Para añadir fotos, arrastra la imagen al campo « Añadir imágenes » o haz clic en el mismo botón y elige la que será la foto principal para tu espacio.</value>
   </data>
   <data name="YouCanFindAll" xml:space="preserve">
     <value>Que se trate de centros de negocio, de hoteles, de cafés, de centros de teletrabajo o de inmuebles de oficinas, si quieres encontrar, reservar, comprar, alquilar, vender o compartir, eWorky te ayudará. Puedes encontrar en nuestra página el espacio de trabajo que te conviene, puntuarlo, reservarlo online, añadir tus espacios de trabajo favoritos o incluso encontrar oficinas para alquilar o comprar. Adaptándose a tu nueva forma de trabajar, ¡eWorky es sin duda el mejor sitio para trabajar!</value>
   </data>
   <data name="ForEditProfil" xml:space="preserve">
-    <value>Puedes acceder a tu perfíl desde cualquier página de nuestra web pulsando « Mi perfíl » en la barra de enlaces arriba a la derecha (tienes que estar conectado). Para editar tu perfíl, haz click en el enlace « Editar mi perfíl » debajo de tu nombre en la parte izquiera de tu perfíl. Cuanto más lo completes, más favorecerás los intercambios con los demás eWorkers y más puntos obtendrás.</value>
+    <value>Puedes acceder a tu perfíl desde cualquier página de nuestra web pulsando « Mi perfíl » en la barra de enlaces arriba a la derecha (tienes que estar conectado). Para editar tu perfíl, haz clic en el enlace « Editar mi perfíl » debajo de tu nombre en la parte izquiera de tu perfíl. Cuanto más lo completes, más favorecerás los intercambios con los demás eWorkers y más puntos obtendrás.</value>
   </data>
 </root>

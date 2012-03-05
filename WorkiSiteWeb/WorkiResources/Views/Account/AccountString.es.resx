@@ -145,22 +145,22 @@
     <value>Entra tu contraseña actual y la nueva contraseña.</value>
   </data>
   <data name="QualityOfProfils" xml:space="preserve">
-    <value>Con el fin de garantizar la calidad de los perfiles de nuestra comunidad, eWorky es susceptible pedirte</value>
+    <value>Con el fin de garantizar la calidad de los perfiles de nuestra comunidad, eWorky es susceptible de pedirte</value>
   </data>
   <data name="RequiredFields" xml:space="preserve">
-    <value>Los campos marcados con asterisco son obligatorios.</value>
+    <value>Los campos con * son obligatorios.</value>
   </data>
   <data name="SetMailInscription" xml:space="preserve">
     <value>Introduce la dirección de correo electrónico que usaste cuando de te registraste en eWorky. Tus datos de conexión te serán mandados a está dirección.</value>
   </data>
   <data name="SocialNetworkSoon" xml:space="preserve">
-    <value>En breves podrás conectarte a tu perfil a través de una red social.</value>
+    <value>que te conectes a tu perfil a través de una red social.</value>
   </data>
   <data name="ValidationLetter" xml:space="preserve">
     <value>Letras de validación</value>
   </data>
   <data name="EnterFollowingLetters" xml:space="preserve">
-    <value>Por favor, introduce las siguientes letras.</value>
+    <value>Introduce las siguientes letras.</value>
   </data>
   <data name="AgreeWithCGU" xml:space="preserve">
     <value>He leído y acepto las Condiciones Generales de Uso de eWorky ({0}).</value>
