@@ -280,7 +280,7 @@
     <value>La dirección de la página web introducida no tiene el formato correcto.</value>
   </data>
   <data name="AccountInactive" xml:space="preserve">
-    <value>Tu cuenta no está activa aún. Para continuar, tienes que hacer click en el enlace que te ha sido mandado por correo electrónico.</value>
+    <value>Tu cuenta no está activa aún. Para continuar, tienes que hacer clic en el enlace que te ha sido mandado por correo electrónico.</value>
   </data>
   <data name="AccountLocked" xml:space="preserve">
     <value>Cuidado, Tu cuenta ha sido objeto de numerosos intentos fallidos de conexión. Para preservar la seguridad de tu cuenta, eWorky lo ha bloqueado temporalmente. Para volver a activarlo, ponte en contacto con nosotros.</value>

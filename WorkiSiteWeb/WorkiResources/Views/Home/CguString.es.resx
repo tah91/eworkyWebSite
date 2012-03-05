@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptCGU" xml:space="preserve">
+    <value>5.2 Capacidad a aceptar las CGU</value>
+  </data>
+  <data name="AccuracyInformations" xml:space="preserve">
+    <value>3. Exactitud de la información en la página Web y disponibilidades.</value>
+  </data>
+  <data name="AimsOfTreatment" xml:space="preserve">
+    <value>6.3 Finalidad de los tratamientos</value>
+  </data>
+  <data name="AllFonctionality" xml:space="preserve">
+    <value>Con el fin de beneficiar de las funcionalidades de la página, tienes que crear una cuenta por medio del formulario online. En cada momento, eres libre de modificar los datos personales comunicados en esta ocasión. El acceso a tu cuenta puede realizarse introduciendo tu usuario y contraseña asociada, cuya confidencialidad depende de ti únicamente. El uso de la pagina tràs tu registro es válido para una duración indeterminada. No obstante, nos reservamos la posibilidad de ponerle fin en cualquier momento, mediante un correo electrónico de preaviso enviado en un plazo razonable. En caso de no respetar las obligaciones inherentes a tu responsabilidad comentadas anteriormente, el acceso a tu perfíl personal puede ser provisionalmente o definivamnete suspendido, de forma inmediata y sin preaviso, por medio de la desactivación de tu cuenta sin que se vean afectadon nuestros derechos.</value>
+  </data>
+  <data name="Changes" xml:space="preserve">
+    <value>4. Modificaciones</value>
+  </data>
+  <data name="ChangesCgu" xml:space="preserve">
+    <value>Podemos modificar las presentes condiciones de uso en cualquier momento y sin previo aviso. Cuando modificamos las condiciones generales, las secciones enmendadas son aplicables en el momento de su publicación en la página. Cada uso de esta página Web se realizará bajo las condiciones de uso aplicables en el momento.</value>
+  </data>
+  <data name="CollectedDatas" xml:space="preserve">
+    <value>6.2 Datos recogidos</value>
+  </data>
+  <data name="CommintmentEWorky" xml:space="preserve">
+    <value>Esta sección ilustra el compromiso de eWorky referente al respecto a tu vida privada y a la protección de tus datos personales, recogidos y tratados a través de tu uso de nuestra página Web.</value>
+  </data>
+  <data name="CopyrightTrademarks" xml:space="preserve">
+    <value>2. Uso de la página Web, derechos de autor y marcas registradas</value>
+  </data>
+  <data name="DataRetention" xml:space="preserve">
+    <value>6.6 Conservación de los datos</value>
+  </data>
+  <data name="EWorkySupportYourProduct" xml:space="preserve">
+    <value>Dar la impresión, de cualquier forma, que eWorky apoya tus productos o servicio;</value>
+  </data>
+  <data name="FakeRevervations" xml:space="preserve">
+    <value>Realizar reservas falsas, fraudulentas o espaculativas, o reservas en anticipación a una posible demanda;</value>
+  </data>
+  <data name="FalseInformations" xml:space="preserve">
+    <value>Introducir información falsa o no pertinente sobre nuestra página Web;</value>
+  </data>
+  <data name="GoodFaithInformation" xml:space="preserve">
+    <value>La información publicada en esta página es publicada de buena fe y es verificada y actualizada con frecuencia. No obstante, no podemos garantizar que sea completa y exacta. No podemos verificar, ni hemos verificado la infomación provista por los prestatarios. No podremos ser responsabes de errores u omisiones en esta página, ni hacia ti, ni hacia terceros. Es nuestro derecho poder modificar, actualizar o borrar cualquier información de esta página sin previo aviso. No garantizamos que esta Web funcione de forma ininterrumpida y sin errores, ni que la información o cualquier contenido accesible a partir de esta página sea exento de virus u otros componentes peligrosos. No garantizamos ni certificamos la adecuación de la información, producto o servicio en esta página para un objetivo cualquiera. La pégina web eWorky está puesta a disposición tal cual y según su disponibilidad. Asumes todos los riesgos relacionados con el uso de esta Web. No respondemos de errores, omisiones o información engañosa y declinamos toda responsabilidad referente a esta información dentro de los limites admitidos por la ley. Todas las fotografías usadas en esta Web son presentadas a título de ilustración y no podrán ser consideradas como representaciones exactas de las instalaciones, alojamientos o servicios realmente propuestos.</value>
+  </data>
+  <data name="Inscription" xml:space="preserve">
+    <value>5. Registro</value>
+  </data>
+  <data name="InscriptionChild" xml:space="preserve">
+    <value>5.1 Registro</value>
+  </data>
+  <data name="MandatoryInscription" xml:space="preserve">
+    <value>Los datos identificados como obligatorios en el momento del registro son necesarios para beneficiar de las funcionalidades de la página. Los datos recogidos de forma automática por la página nos permiten elaborar estadísticas de consulta de las distintas páginas así como realizar una localización geográfica parcial de los usuarios.</value>
+  </data>
+  <data name="NegativeEffectForWebsite" xml:space="preserve">
+    <value>Usar esta página Web de forma que, desde nuestro punto de vista, las prestaciones o las funcionalidades de la página o de cualquier otro sistema informático o red usado por eWorky, sean impactados negativamente o que los usuarios/clientes registrados en eWorky sean afectados negativamente;</value>
+  </data>
+  <data name="NoHacking" xml:space="preserve">
+    <value>Cargar o transmitir en la página o usar cualquier material, programa o rutina que contenga virús, troyano, gusanos u otros programas y procesos destinados a dañar, interferir o intentar interferir con el funcionamiento normal de esta página Web o cualquier otro sistema, o recurrir a cualquier medio para causar una saturación de nuestro sistema o ir en contra de los derechos de terceros;</value>
+  </data>
+  <data name="NotForChild" xml:space="preserve">
+    <value>Mediante la aceptación del presente contrato, usted declara:
+- Que es una persona mayor de edad y con capacidad para contratar,
+- Que ha leído y acepta los presentes Términos Generales de uso.
+
+Estos Términos Generales de Usos, regulan la relación jurídica que emana de los procesos de contratación realizados entre los Usuarios-Clientes de la página Web ubicada en la url http://www.eworky.es. Los Usuarios-Clientes aceptan los Términos Generales de Uso desde el instante que utilicen contraten o adquieran cualquier producto. Este documento puede ser impreso y almacenado por los Usuarios-Clientes. eWorky pone a disposición de estos, la dirección de e-mail contacto@eworky.com, para que puedan plantear cualquier duda acerca de los Términos Generales de Uso.</value>
+  </data>
+  <data name="NotLegalPublication" xml:space="preserve">
+    <value>Publicar o transmitir por medio de nuestra página contenidos (fotografías, videos, comentarios, etc.) de carácter ilícito, amenazador, humillante, difamatorio, obseno, pornográfico o blasfematorio, o cualquier otro mensaje que pueda constituir un crimen o delito, involucrar la responsabilidad cívil, ir en contra de la legislación o incitar a hacerlo, o contenidos que puedan ser usados para fines contrarios a la ley o a las presentes condiciones de uso;</value>
+  </data>
+  <data name="NoUseWithoutYourConsentement" xml:space="preserve">
+    <value>Tus datos no serán objeto de ninguna comunicación a terceros sin tu autorización. No obstante, te informamos que podrán ser divulgados por la aplicación de una ley, un regalmento o por una decisión de una autoridad reglamentaria o judicial competente o en caso de ser necesario, por eWorky con el fin de preservar sus derechos e intereses propios.</value>
+  </data>
+  <data name="Objet" xml:space="preserve">
+    <value>6.1 Objeto</value>
+  </data>
+  <data name="PersonneDatas" xml:space="preserve">
+    <value>6. Datos personales</value>
+  </data>
+  <data name="ReciptionsOfDatas" xml:space="preserve">
+    <value>6.4 Destinatarios de los datos</value>
+  </data>
+  <data name="RectificationYourData" xml:space="preserve">
+    <value>Dispones del derecho de acceso y de rectificación de tus datos enviándonos una solicitud: {0}</value>
+  </data>
+  <data name="SafeData" xml:space="preserve">
+    <value>6.5 Seguridad de los datos</value>
+  </data>
+  <data name="SafeDataForEWorky" xml:space="preserve">
+    <value>eWorky da especial importancia a la seguridad de tus datos y desplega todas las medidas apropiadas para disminuir el riesgo de pérdida, deterioro o mal uso de los mismos.</value>
+  </data>
+  <data name="SaturationOfTheSite" xml:space="preserve">
+    <value>Usar programas, rutinas o equipos impidiendo el funcionamiento de esta página Web o tratando de hacerlo, realizar todo tipo de acción que pueda saturar nuestro sistema, u ocultar el origen de los datos provistos en nuestra página.</value>
+  </data>
+  <data name="ServerDataRetention" xml:space="preserve">
+    <value>Los datos son almacenados en la entidad identificada en el párrafo 1 y son conservados para una duración estrictamente necesaria para la finalidad mencionada anteriormente. Pasado este periodo, serán conconservados para fines estadísticos exclusivamente y no darán lugar a ningún otro tipo de explotación.</value>
+  </data>
+  <data name="SpeechCgu" xml:space="preserve">
+    <value>Visitando y/o usando esta página Web, aceptas las presentes condiciones de uso. Te recomendamos leerlas atentamente. Si no estás de acuerdo con un de las estipulaciones de las presentes condiciones de uso, no debes visitar y/o usar está Web.
+      El nombre y el logotipo de eWorky, así como todos los elementos gráficos y esloganes asociados, son marcas registradas y signos distintivos de eWorky o de las empresas del grupo. Todos los demás nombres y logotipos y todos los nombres de productos y servicios asociados, así como los elementos gráficos y esloganes usados en esta Web son marcas registradas y/o signos distintivos de su propietario. Así todos los derechos son reservados. 
+      Todos los derechos de autor y otros derechos de propiedad intelectual relativos al contenido de esta página, incluyendo los códigos HTML, textos, fotografías y otras imágenes, son propiedad de eWorky o su propietario nos ha concedido una licencia para hacer uso de ellos. Si deseas usar información o contenidos presentados en nuestra Web, tienes que conseguir previamente nuestra autorización por escrito o la del propietario de los derechos del contenido en cuestión. Está prohibido, modificar, copiar, transmitir, presentar, ejecutar, publicar, conceder bajo licencia cualquier programa o información obtenida a partir de esta página, así como crear obras derivadas de los elementos citados anteriormente. En el caso en que se haya concedido expresamente el derecho de realizar copias o transmisiones, está prohibido modificar o eliminar cualquier mención relativa al autor o a los derechos de propiedad intelectual.
+      Cualquier referencia hecha en esta página, a productos, servicios, procesos, signos distintivos, marcas registradas o cualquier otra información relativa a un tercero no implica ni constituye una aprobación, recomentación o apoyo por nuestra parte. Los enlaces externos explotados por otras entidades son para tu comodidad únicamente. eWorky no es responsable de los productos, servicios, procesos, signos distintivos, marcas registradas u otra información puesta a disposición por terceros en su página Web o por cualquier otro medio.
+El hecho de que nuestra página Web contenga enlaces a tales sitios no implica la aprobación del contenido presentado en estas páginas Web ni ningún tipo de asociación con sus propietarios.
+      Está prohibido usar esta Web para actividades que van en contra de la ley, de los derechos de terceros o infringen estándares, exigencias relativas al contenido o disposiciones adoptadas por autoridades competentes. Está prohibido usar nuestra página de forma que se importune, ofenda, difame o amenace terceros. Nos exonarás de toda responsabilidad y nos garantizarás por cualquier solicitud, proceso judicial, obligaciones, acciones de reparación, costes y gastos derivados del uso de la página Web por ti o un tercero usando tu usuario o tu contraseña.
+      Si eWorky no te ha concedido autorización expresa o si la legislación aplicable no impone a eWorky concederte tal autorización, está prohibido, sin el acuerdo previo y por escrito de eWorky:</value>
+  </data>
+  <data name="TermsOfUse" xml:space="preserve">
+    <value>Condiciones generales de uso</value>
+    <comment>CGU</comment>
+  </data>
+  <data name="TraitedCollectedDatas" xml:space="preserve">
+    <value>Los datos recogidos y tratados posteriormente por nosotros son los que nos transmites voluntariamente y son, como mínimo, tu identificador de usuario y una dirección de correo electrónico válida. Los datos recogidos de forma automática por nuestra página Web son tu dirección IP (dirección de tu ordenador) excluyendo cualquier otro dato. Te informamos que la página Web es susceptible de usar el proceso automático de trazabilidad (cookie), el cual podrás desactivar en los parametros oportunos de tu navegador en caso de ser un usuario no registrado.</value>
+  </data>
+  <data name="UseRobots" xml:space="preserve">
+    <value>Usar robots, spider u otros procesos automáticos o manuales para examinar las páginas de esta Web;</value>
+  </data>
+  <data name="VendorInformations" xml:space="preserve">
+    <value>1. Información sobre el proveedor</value>
+  </data>
+  <data name="WebSiteOfOmnicentre" xml:space="preserve">
+    <value>Esta página web está explotada por Omnicentre SAS, Sociedad por acciones simplificada con un capital de 20.740 euros, cuya sede social está ubicada en la calle de Lille, nº57, 75007 Paris, registrada en la Cámara de Comercio y de Sociedades de Paris bajo el número 529 309 668. Esta Web está albergada por Microsoft Windows Azure.</value>
+  </data>
+  <data name="YourRight" xml:space="preserve">
+    <value>6.7 Tus derechos</value>
+  </data>
+  <data name="ApplicalbleLaws" xml:space="preserve">
+    <value>7. Legislación aplicable y jurisdicción competente</value>
+  </data>
+  <data name="ApplicalbleLawsValue" xml:space="preserve">
+    <value>Los presentes Términos Generales de Uso se regirán e interpretarán de acuerdo con las Leyes de España.</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Condiciones generales de uso, en otros términos, a lo que te comprometes al usar eWorky.</value>
+  </data>
+  <data name="cgu" xml:space="preserve">
+    <value>condiciones generales de venta de los servicios</value>
+  </data>
+  <data name="ReadAndAccept" xml:space="preserve">
+    <value>He leído y acepto las {0}.</value>
+  </data>
+  <data name="MustAcceptCGU" xml:space="preserve">
+    <value>Tienes que aceptar las Condiciones Generales de Uso.</value>
+  </data>
+</root>

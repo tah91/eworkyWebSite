@@ -124,7 +124,7 @@
     <value>Nombre</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Apellido</value>
+    <value>Apellidos</value>
   </data>
   <data name="Link" xml:space="preserve">
     <value>Enlace</value>

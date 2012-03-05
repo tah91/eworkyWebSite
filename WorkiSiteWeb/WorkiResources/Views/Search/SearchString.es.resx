@@ -216,7 +216,7 @@
   </data>
   <data name="SpeechForNomad" xml:space="preserve">
     <value>&lt;p&gt;¿A menudo estás fuera de tu oficina y buscas un lugar para trabajar en una ciudad que no conoces?&lt;/p&gt;
-&lt;p&gt;eWorky está hecho para ti y te puede ayudar poponiendote los mejores espacios para trabajar a proximidad de tu destino. Que busques un espacio gratuito y agradable (café wifi, parque o biblioteca) o un espacio profesional (centro de negocios, centro de teletrabajo, etc.) encontrarás lo que buscas, estés donde estés: para ello, sólo necesitas indicar una dirección y un tipo de espacio en la pestaña « Buscar ».&lt;/p&gt;
+&lt;p&gt;eWorky está hecho para ti y te puede ayudar proponiéndote los mejores espacios para trabajar a proximidad de tu destino. Que busques un espacio gratuito y agradable (café wifi, parque o biblioteca) o un espacio profesional (centro de negocios, centro de teletrabajo, etc.) encontrarás lo que buscas, estés donde estés: para ello, sólo necesitas indicar una dirección y un tipo de espacio en la pestaña « Buscar ».&lt;/p&gt;
 &lt;p&gt;Puedes ayudar a los demás sugeriendo tus espacios de trabajo favoritos en la pestaña « Añadir » así como puntuando y comentando los espacios que has probado.&lt;/p&gt;</value>
   </data>
   <data name="SpeechForStartUp" xml:space="preserve">
@@ -226,7 +226,7 @@
   </data>
   <data name="SpeechForStudent" xml:space="preserve">
     <value>&lt;p&gt;¿Eres estudiante y buscas un espacio tranquilo y gratuito para estudiar o un espacio agradable para poder realizar trabajos en grupo?&lt;/p&gt;
-&lt;p&gt;eWorky te puede ayudar proponiendote los mejores bares, cafés, restaurantes, bibliotecas o parques con wifi donde podrás estudiar a gusto: para ello, sólo necesitas indicar una dirección y un tipo de espacio en la pestaña « Buscar ».&lt;/p&gt;
+&lt;p&gt;eWorky te puede ayudar proponiéndote los mejores bares, cafés, restaurantes, bibliotecas o parques con wifi donde podrás estudiar a gusto: para ello, sólo necesitas indicar una dirección y un tipo de espacio en la pestaña « Buscar ».&lt;/p&gt;
 &lt;p&gt;Puedes ayudar a otros estudiantes sugeriendo tus espacios de trabajo favoritos en la pestaña « Añadir » así como puntuando y comentando los espacios que has probado.&lt;/p&gt;</value>
   </data>
   <data name="SpeechForTeleworker" xml:space="preserve">

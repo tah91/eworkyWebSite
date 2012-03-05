@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccessBO" xml:space="preserve">
-    <value>Para gestionar tu espacio en eWorky, solicita {0}</value>
+    <value>Para gestionar tu espacio de forma sencilla en eWorky, solicita tu {0}</value>
   </data>
   <data name="AccessBOLink" xml:space="preserve">
-    <value>formulario de contacto</value>
+    <value>Acceso gerente</value>
   </data>
   <data name="AccessBOTitle" xml:space="preserve">
     <value>Acceso para gerentes</value>
@@ -133,13 +133,13 @@
     <value>Reservar</value>
   </data>
   <data name="BookUser" xml:space="preserve">
-    <value>Cada espacio propone ofertas distintas. ¡Consultalas y reserva la que necesitas!</value>
+    <value>Cada espacio propone ofertas distintas. ¡Consúltalas y reserva la que necesitas!</value>
   </data>
   <data name="BookUserTitle" xml:space="preserve">
     <value>Reservar</value>
   </data>
   <data name="Commercialize" xml:space="preserve">
-    <value>Contesta en un click a las solicitudes de reserva y de presupuestos de los usuarios y cobralas directamente en tu cuenta</value>
+    <value>Contesta en un clic a las solicitudes de reserva y de presupuestos de los usuarios y cobralas directamente en tu cuenta</value>
   </data>
   <data name="CommercializeTitle" xml:space="preserve">
     <value>Comercializar</value>
@@ -172,7 +172,7 @@
     <value>¿Cómo hacerlo?</value>
   </data>
   <data name="HowItWorks" xml:space="preserve">
-    <value>El funcionamiento</value>
+    <value>¿Cómo funciona?</value>
   </data>
   <data name="HowItWorksHead" xml:space="preserve">
     <value>eWorky es un mercado colaborativo de espacios de trabajo</value>
@@ -202,7 +202,7 @@
     <value>Pagar online</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Crear gratuitamente {0} especificando que eres propietario</value>
+    <value>Crea gratuitamente {0} especificando que eres propietario</value>
   <comment>JM Modif l.22</comment></data>
   <data name="ReferenceLink" xml:space="preserve">
     <value>una ficha para tu espacio</value>
@@ -283,10 +283,10 @@
     <value>Tus clientes pueden realizar una solicitud de presupuesto o de reserva directamente en tu ficha eWorky. Recibirás de forma inmediata una notificación por correo electrónico y sólo te quedará aceptar o rechazar.</value>
   </data>
   <data name="PrincingFeature_2" xml:space="preserve">
-    <value>Gestión de la ocupación de los espacios</value>
+    <value>Gestión de tus agendas</value>
   </data>
   <data name="PrincingFeature_2_Text" xml:space="preserve">
-    <value>Dispones de una agenda por oferta para seguir en directo la ocupación de tu espacio. La agence se rellena de forma automática con las reservas online pero te permite añadir reservas conseguidas a través de otras fuentes (teléfono, fax, página web, etc.). Se les avisa a tus clientes por correo electrónico de cualquier creación /modificación de la reserva.</value>
+    <value>Dispones de una agenda por oferta para seguir en directo la ocupación de tu espacio. La agenda se rellena de forma automática con las reservas online pero te permite añadir reservas conseguidas a través de otras fuentes (teléfono, fax, página web, etc.). Se les avisa a tus clientes por correo electrónico de cualquier creación o modificación de la reserva.</value>
   </data>
   <data name="PrincingFeature_3" xml:space="preserve">
     <value>Pago seguro online</value>
@@ -301,13 +301,13 @@
     <value>Tus facturas se editan automaticamente para cada reserva abonada y se archivan en tu perfíl de gerente.</value>
   </data>
   <data name="PrincingFeature_5" xml:space="preserve">
-    <value>Atención al cliente de 9h a 20h, 7d/7</value>
+    <value>Atención al cliente 9h-20h, 7d/7</value>
   </data>
   <data name="PrincingFeature_5_Text" xml:space="preserve">
     <value>Nuestro servicio de atención al cliente está disponible 7 días a la semana de 9h a 20h para asistirte en caso de problemas o para contestar a cualquier pregunta.</value>
   </data>
   <data name="PrincingFeature_6" xml:space="preserve">
-    <value>Espacio seguro mediante la tecnología SSL</value>
+    <value>Un espacio seguro (SSL)</value>
   </data>
   <data name="PrincingFeature_6_Text" xml:space="preserve">
     <value>La totalidad de la información está encriptada mediante un certificado SSL. Nadie más que tú tendrá acceso tu información.</value>

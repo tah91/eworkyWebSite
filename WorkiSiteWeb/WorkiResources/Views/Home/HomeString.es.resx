@@ -172,7 +172,7 @@
         Société par actions simplifiée au capital de 20 740 € - RCS NANTERRE 529 309 668&lt;br /&gt;
         Sede social : 57 rue de Lille, 75007 PARIS, FRANCE&lt;br /&gt;
         &lt;br /&gt;
-        Contact :&lt;br /&gt;
+        Contacto :&lt;br /&gt;
         {0}&lt;br /&gt;
         &lt;br /&gt;
         Hosted by :&lt;br /&gt;
@@ -203,7 +203,7 @@
     <value>¿Dónde estás buscando?</value>
   </data>
   <data name="WhoAreWe" xml:space="preserve">
-    <value>¿Quién somos?</value>
+    <value>¿Quiénes somos?</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Encuentra un lugar de trabajo donde quieras: Despachos compartidos, Centros de negocios, espacios de coworking, café wifi, sala de reunión o de conferencia.</value>
@@ -227,7 +227,7 @@
     <value>Reserva</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>- Centros de negocios, Salas lounge &lt;br/&gt;- Espacios de coworking &lt;br/&gt;- centro de teletrabajo, etc.</value>
+    <value>- Centros de negocios, Salas lounge &lt;br/&gt;- Espacios de coworking &lt;br/&gt;- Centro de teletrabajo, etc.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Búsqueda</value>
@@ -272,7 +272,7 @@
     <value>Un espacio compartido</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>¿Tienes puestos de trabajo desocupados en tu empresa? ¡Compartelos en eWorky y disfruta de ingresos extras!</value>
+    <value>¿Tienes puestos de trabajo desocupados en tu empresa? ¡Compártelos en eWorky y disfruta de ingresos adicionales!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
     <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; espacios de coworking, cafés WiFi, centros de negocio, oficinas compartidas</value>
@@ -296,7 +296,7 @@
     <value>El espacio de trabajo de mañana se centrará en el ser humano más en la empresa y será un lugar agradable y propicio a los intercambios. Nos encantará ir a trabajar allí.</value>
   </data>
   <data name="WeThinkThat_Text10" xml:space="preserve">
-    <value>Si piensas así, ¡unete a nosotros!</value>
+    <value>Si piensas así, ¡Únete a nosotros!</value>
   </data>
   <data name="WeThinkThat_Text2" xml:space="preserve">
     <value>Para inventar juntos el espacio de trabajo de mañana, es necesario explorar, probar, intercambiar pero sobre todo tirarse al agua.</value>
@@ -329,7 +329,7 @@
     <value>Por tanto, eWorky es el placer de compartir espacios de trabajo de varios tipos e intercambiar experiencias vividas en ellos. Nuestra comunidad se compone de usuarios apasionados, con ganas de descubrir o proponer una gran diversidad de espacios adaptados a cada necesidad. </value>
   </data>
   <data name="WhoAreWe_Text3" xml:space="preserve">
-    <value>A tu vez, ¡únete a la comunidad eWorky!</value>
+    <value>A tu vez, ¡Únete a la comunidad eWorky!</value>
   </data>
   <data name="Team_Member_1" xml:space="preserve">
     <value>Olivier Brun</value>

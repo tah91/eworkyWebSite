@@ -193,7 +193,7 @@
     <value>Editar un anuncio</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Dirección de correo electrónico:</value>
+    <value>Correo electrónico:</value>
   </data>
   <data name="EndResultAnswer" xml:space="preserve">
     <value>anuncio(s) encontrado(s)</value>
@@ -229,7 +229,7 @@
     <value>Informaciones generales</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Apellido:</value>
+    <value>Apellidos:</value>
   </data>
   <data name="LeaseType" xml:space="preserve">
     <value>Tipo de contrato:</value>

@@ -139,7 +139,7 @@
     <value>Espacios favoritos</value>
   </data>
   <data name="FavoriteSpacesEmpty" xml:space="preserve">
-    <value>No has añadido ningún espacio a tus favoritos. Para añadir un espacio a tus favoritos, haz click en el botón de eWorky+ en la parte de arriba de su ficha de descripción.</value>
+    <value>No has añadido ningún espacio a tus favoritos. Para añadir un espacio a tus favoritos, haz clic en el botón de eWorky+ en la parte de arriba de su ficha de descripción.</value>
   </data>
   <data name="FavoriteSpacesEmptyPublic" xml:space="preserve">
     <value>no ha añadido espacio a sus favoritos.</value>
