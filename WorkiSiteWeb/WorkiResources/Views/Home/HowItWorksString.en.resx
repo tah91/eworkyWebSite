@@ -187,7 +187,7 @@
     <value>Join the community</value>
   </data>
   <data name="MakeFamous" xml:space="preserve">
-    <value>Join the largest workplace database in Europe for free offering a complete description page of your space and all of your services</value>
+    <value>Join the largest workplace database for free offering a complete description page of your space and all of your services</value>
   </data>
   <data name="MakeFamousTitle" xml:space="preserve">
     <value>Advertise your workspace</value>
@@ -296,5 +296,8 @@
   </data>
   <data name="Here" xml:space="preserve">
     <value>here</value>
+  </data>
+  <data name="PricingTitle" xml:space="preserve">
+    <value>You want to manage your space in a simple and secure way, without any fee?</value>
   </data>
 </root>
