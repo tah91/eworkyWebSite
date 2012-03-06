@@ -298,4 +298,10 @@
   <data name="SpaceUser" xml:space="preserve">
     <value>user space</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Select</value>
+  </data>
 </root>
