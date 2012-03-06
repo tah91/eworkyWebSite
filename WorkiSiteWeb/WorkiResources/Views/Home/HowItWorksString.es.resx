@@ -284,10 +284,10 @@
     <value>Tus clientes pueden realizar una solicitud de presupuesto o de reserva directamente en tu ficha eWorky. Recibirás de forma inmediata una notificación por correo electrónico y sólo te quedará aceptar o rechazar.</value>
   </data>
   <data name="PrincingFeature_2" xml:space="preserve">
-    <value>Gestión de la ocupación de los espacios</value>
+    <value>Gestión de tus agendas</value>
   </data>
   <data name="PrincingFeature_2_Text" xml:space="preserve">
-    <value>Dispones de una agenda por oferta para seguir en directo la ocupación de tu espacio. La agence se rellena de forma automática con las reservas online pero te permite añadir reservas conseguidas a través de otras fuentes (teléfono, fax, página web, etc.). Se les avisa a tus clientes por correo electrónico de cualquier creación /modificación de la reserva.</value>
+    <value>Dispones de una agenda por oferta para seguir en directo la ocupación de tu espacio. La agenda se rellena de forma automática con las reservas online pero te permite añadir reservas conseguidas a través de otras fuentes (teléfono, fax, página web, etc.). Se les avisa a tus clientes por correo electrónico de cualquier creación o modificación de la reserva.</value>
   </data>
   <data name="PrincingFeature_3" xml:space="preserve">
     <value>Pago seguro online</value>
@@ -302,13 +302,13 @@
     <value>Tus facturas se editan automaticamente para cada reserva abonada y se archivan en tu perfíl de gerente.</value>
   </data>
   <data name="PrincingFeature_5" xml:space="preserve">
-    <value>Atención al cliente de 9h a 20h, 7d/7</value>
+    <value>Atención al cliente 9h-20h, 7d/7</value>
   </data>
   <data name="PrincingFeature_5_Text" xml:space="preserve">
     <value>Nuestro servicio de atención al cliente está disponible 7 días a la semana de 9h a 20h para asistirte en caso de problemas o para contestar a cualquier pregunta.</value>
   </data>
   <data name="PrincingFeature_6" xml:space="preserve">
-    <value>Espacio seguro mediante la tecnología SSL</value>
+    <value>Un espacio seguro (SSL)</value>
   </data>
   <data name="PrincingFeature_6_Text" xml:space="preserve">
     <value>La totalidad de la información está encriptada mediante un certificado SSL. Nadie más que tú tendrá acceso tu información.</value>

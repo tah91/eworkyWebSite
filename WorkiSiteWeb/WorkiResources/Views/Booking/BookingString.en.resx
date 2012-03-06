@@ -193,7 +193,7 @@
     <value>Start</value>
   </data>
   <data name="WaitingForPayement" xml:space="preserve">
-    <value>Waiting payment</value>
+    <value>Waiting for payment</value>
   </data>
   <data name="BookPaid" xml:space="preserve">
     <value>The booking for workplace {0} was paid !</value>
