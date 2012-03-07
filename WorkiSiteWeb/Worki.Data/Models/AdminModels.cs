@@ -103,8 +103,9 @@ namespace Worki.Data.Models
 			{
 				case Culture.fr:
 					return eSiteVersion.fr;
-				case Culture.en:
 				case Culture.es:
+					return eSiteVersion.es;
+				case Culture.en:
 				default:
 					return eSiteVersion.com;
 			}
