@@ -240,4 +240,10 @@
   <data name="Description" xml:space="preserve">
     <value>By accessing and using the Web Site, User accepts and agrees to be bound, without modification, limitation or qualification, by these Terms. </value>
   </data>
+  <data name="cgu" xml:space="preserve">
+    <value>terms of service</value>
+  </data>
+  <data name="ReadAndAccept" xml:space="preserve">
+    <value>I have read and agree to the {0}</value>
+  </data>
 </root>

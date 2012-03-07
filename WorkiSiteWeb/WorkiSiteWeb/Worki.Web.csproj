@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -360,6 +360,7 @@
     <Content Include="Content\images\mediaBanner.png" />
     <Content Include="Content\images\networks.png" />
     <Content Include="Content\images\olivier.png" />
+    <Content Include="Content\images\pinterest.png" />
     <Content Include="Content\images\retour.png" />
     <Content Include="Content\images\signin_facebook.png" />
     <Content Include="Content\images\tampon.png" />

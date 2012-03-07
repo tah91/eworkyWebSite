@@ -374,6 +374,11 @@ td { vertical-align: top; }
 	vertical-align:top;
 }
 
+.verticalAlignMiddle
+{
+	vertical-align:middle;
+}
+
 .centerAlign
 {
 	text-align:center;

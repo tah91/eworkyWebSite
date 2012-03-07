@@ -111,6 +111,7 @@ html,body{margin:0;padding:0;height:100%}
 .rss_footer{background-image:url('images/logo_footer.png');background-position:0 -327px;width:39px;height:59px}
 .tw_footer{background-image:url('images/logo_footer.png');background-position:0 -436px;width:39px;height:59px}
 .viadeo_footer{background-image:url('images/logo_footer.png');background-position:0 -545px;width:39px;height:59px}
+.pinterest_footer{background-image:url('images/pinterest.png');width:39px;height:47px;margin-top:6px}
 div.pager{text-align:right;border-top:2px solid #CCC;padding:.5em 0 0 0;margin:1em 0 0 0}
 div.pager A{font-size:1.1em;color:#666;text-decoration:none;padding:0 .4em 0 .4em;font-style:normal}
 div.pager A:hover{background-color:Silver}
@@ -386,6 +387,7 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .offerGrid{width:100%}
 .noCol .offerTitleCol{min-height:50px;line-height:50px}
 .noCol{vertical-align:bottom;padding:inherit!important;border:none!important;-moz-box-shadow:none!important;-webkit-box-shadow:none!important;box-shadow:none!important}
+.offerItemTitleCol{padding:15px 0;text-transform:uppercase}
 .offerTitleCol{background-color:#f5f5f5;font-weight:bold;font-size:14px;text-align:center;line-height:30px;min-height:30px;background-image:-webkit-gradient(linear,top,bottom,from(#F0F0F0),to(#F8F8F8));background-image:-webkit-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-moz-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-ms-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:-o-linear-gradient(top,#F0F0F0,#F8F8F8);background-image:linear-gradient(to bottom,#F0F0F0,#F8F8F8)}
 .offerInCol{background-color:#f5f5f5;font-weight:bold;font-size:14px;text-align:center;vertical-align:middle;padding:5px;height:100%}
 .offerInCol .buttonStd{width:100px}

@@ -660,6 +660,7 @@ page width. Or, you can specify an exact pixel width. */
 .rss_footer{ background-image:url('images/logo_footer.png'); background-position: 0 -327px; width: 39px; height: 59px; } 
 .tw_footer{ background-image:url('images/logo_footer.png'); background-position: 0 -436px; width: 39px; height: 59px; } 
 .viadeo_footer{ background-image:url('images/logo_footer.png'); background-position: 0 -545px; width: 39px; height: 59px; }
+.pinterest_footer{ background-image:url('images/pinterest.png'); width: 39px; height: 47px; margin-top: 6px;} 
 
 
 /* OTHER HTML TAGS  
@@ -2425,10 +2426,15 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     vertical-align: bottom;
     padding: inherit !important;
     border: none !important;
-    
    -moz-box-shadow: none !important;
--webkit-box-shadow: none !important;
-	    box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.offerItemTitleCol
+{
+	padding:15px 0;
+	text-transform:uppercase;
 }
 
 .offerTitleCol
@@ -2439,13 +2445,12 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     text-align: center;
     line-height: 30px;
     min-height: 30px;
-    
-  background-image: -webkit-gradient(linear, top, bottom, from(#F0F0F0), to(#F8F8F8)); /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #F0F0F0, #F8F8F8); /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image:    -moz-linear-gradient(top, #F0F0F0, #F8F8F8); /* FF3.6 */
-  background-image:     -ms-linear-gradient(top, #F0F0F0, #F8F8F8); /* IE10 */
-  background-image:      -o-linear-gradient(top, #F0F0F0, #F8F8F8); /* Opera 11.10+ */
-  background-image:         linear-gradient(to bottom, #F0F0F0, #F8F8F8);
+	background-image: -webkit-gradient(linear, top, bottom, from(#F0F0F0), to(#F8F8F8)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #F0F0F0, #F8F8F8); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(top, #F0F0F0, #F8F8F8); /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, #F0F0F0, #F8F8F8); /* IE10 */
+	background-image:      -o-linear-gradient(top, #F0F0F0, #F8F8F8); /* Opera 11.10+ */
+	background-image:         linear-gradient(to bottom, #F0F0F0, #F8F8F8);
 }
 
 .offerInCol

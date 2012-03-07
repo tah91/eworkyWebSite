@@ -127,7 +127,7 @@
     <value>To manage your space on eWorky and access important information, you can use the {0}</value>
   </data>
   <data name="AccessBOLink" xml:space="preserve">
-    <value>contact form</value>
+    <value>eWorky Office manager</value>
   </data>
   <data name="AccessBOTitle" xml:space="preserve">
     <value>Access to your space</value>
@@ -301,9 +301,15 @@
     <value>You want to manage your space in a simple and secure way, without any fee?</value>
   </data>
   <data name="DiscoveryOffer" xml:space="preserve">
-    <value>TRIAL OFFER</value>
+    <value>Basic</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Features</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>eWorky Office manager</value>
+  </data>
+  <data name="PricingHeaderTitle" xml:space="preserve">
+    <value>Discover eWorky Office manager</value>
   </data>
 </root>
