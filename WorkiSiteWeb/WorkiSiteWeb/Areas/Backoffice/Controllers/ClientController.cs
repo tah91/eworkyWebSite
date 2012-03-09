@@ -14,6 +14,7 @@ using Postal;
 using System.IO;
 using Worki.Service;
 using Worki.Web.Model;
+using System.Web.UI;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -243,6 +244,61 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			catch (Exception ex)
 			{
 				_Logger.Error("Invoices", ex);
+				return View(MVC.Shared.Views.Error);
+			}
+		}
+
+		/// <summary>
+		/// Get action method to export invoices summary
+		/// </summary>
+		/// <returns>Excel file containing summary</returns>
+		public virtual ActionResult GetMonthSummary(int id, string date = "")
+		{
+			var memberId = WebHelper.GetIdentityId(User.Identity);
+
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+			try
+			{
+				var member = mRepo.Get(memberId);
+				Member.Validate(member);
+				MonthYear monthYear;
+				if (string.IsNullOrEmpty(date))
+				{
+					monthYear = MonthYear.GetCurrent();
+				}
+				else
+				{
+					monthYear = MonthYear.Parse(date);
+				}
+
+				var localisation = lRepo.Get(id);
+				var bookings = localisation.GetBookings().Where(b => b.StatusId == (int)MemberBooking.Status.Accepted).ToList();
+
+				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
+
+				var grid = new System.Web.UI.WebControls.GridView();
+
+				grid.DataSource = bookings.Select(mb => new InvoiceSummary(mb));
+				grid.DataBind();
+
+				Response.ClearContent();
+				Response.AddHeader("content-disposition", "attachment; filename=YourFileName.xls");
+				Response.Charset = "";
+				Response.ContentType = "application/excel";
+				StringWriter sw = new StringWriter();
+				HtmlTextWriter htw = new HtmlTextWriter(sw);
+				grid.RenderControl(htw);
+				Response.Write(sw.ToString());
+				Response.End();
+
+				return Content("plop");
+			}
+			catch (Exception ex)
+			{
+				_Logger.Error("GetMonthSummary", ex);
 				return View(MVC.Shared.Views.Error);
 			}
 		}

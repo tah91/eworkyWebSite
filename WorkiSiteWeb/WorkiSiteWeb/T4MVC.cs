@@ -573,6 +573,7 @@ namespace Links {
             public static readonly string photo2_jpg = Url("photo2.jpg");
             public static readonly string photo3_jpg = Url("photo3.jpg");
             public static readonly string photo4_jpg = Url("photo4.jpg");
+            public static readonly string pinterest_png = Url("pinterest.png");
             public static readonly string prev_horizontal_png = Url("prev-horizontal.png");
             public static readonly string prev_vertical_png = Url("prev-vertical.png");
             public static readonly string profil_social_png = Url("profil_social.png");
@@ -3089,6 +3090,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult GetMonthSummary() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetMonthSummary);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult GetInvoice() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
         }
@@ -3114,6 +3120,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string LocalisationList = "LocalisationList";
             public readonly string Add = "Add";
             public readonly string Invoices = "Invoices";
+            public readonly string GetMonthSummary = "GetMonthSummary";
             public readonly string GetInvoice = "GetInvoice";
             public readonly string CreateInvoice = "CreateInvoice";
             public readonly string AddInvoiceItem = "AddInvoiceItem";
@@ -3167,6 +3174,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
 
         public override System.Web.Mvc.ActionResult Invoices(int id, string date) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Invoices);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("date", date);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetMonthSummary(int id, string date) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMonthSummary);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("date", date);
             return callInfo;

@@ -715,6 +715,59 @@ namespace Worki.Data.Models
         #endregion
     }
 
+	public class InvoiceSummary
+	{
+		#region Properties
+
+		public string LastName { get; set; }
+
+		public string FirstName { get; set; }
+
+		public string InvoiceNumber { get; set; }
+
+		public bool Paid { get; set; }
+
+		public decimal Amount { get; set; }
+
+		public decimal Tax { get; set; }
+
+		public string Description { get; set; }
+
+		public string Date { get; set; }
+
+		public string PaymentType { get; set; }
+
+		public string Company { get; set; }
+
+		public string Address { get; set; }
+
+		public string TaxNumber { get; set; }
+
+		public string SiretNumber { get; set; }
+
+		#endregion
+
+		public InvoiceSummary(InvoiceModel invoice)
+		{
+
+		}
+
+		public InvoiceSummary(MemberBooking booking)
+		{
+			LastName = booking.Client.MemberMainData.LastName;
+			FirstName = booking.Client.MemberMainData.FirstName;
+			Address = booking.Client.MemberMainData.City;
+			TaxNumber = booking.Client.MemberMainData.TaxNumber;
+			SiretNumber = booking.Client.MemberMainData.SiretNumber;
+			PaymentType = Offer.GetPaymentTypeEnumType(booking.PaymentType);
+			InvoiceNumber = booking.Id.ToString();
+			Description = booking.Offer.Name;
+			Amount = booking.Price;
+			Tax = Amount * booking.Offer.Localisation.Member.MemberMainData.TaxRate / 100;
+			Paid = booking.Paid;
+		}
+	}
+
     public static class PriceHelper
     {
         public static string GetPriceDisplay(this decimal price, Offer.CurrencyEnum currency)
