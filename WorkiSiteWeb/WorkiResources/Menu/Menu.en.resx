@@ -166,7 +166,7 @@
     <value>Edit</value>
   <comment>Mika</comment></data>
   <data name="FavoritePlaces" xml:space="preserve">
-    <value>Favorited venues</value>
+    <value>Favorite places</value>
   <comment>Mika</comment></data>
   <data name="Historic" xml:space="preserve">
     <value>History</value>

@@ -148,7 +148,7 @@
     <value>Workplace owner</value>
   </data>
   <data name="Nomad" xml:space="preserve">
-    <value>Nomade</value>
+    <value>Nomad</value>
   </data>
   <data name="NotSelected" xml:space="preserve">
     <value>Select your profile</value>
@@ -185,5 +185,11 @@
   </data>
   <data name="Website" xml:space="preserve">
     <value>Website</value>
+  </data>
+  <data name="TaxNumber" xml:space="preserve">
+    <value>Intracommunity VAT number</value>
+  </data>
+  <data name="TaxRate" xml:space="preserve">
+    <value>Tax rate </value>
   </data>
 </root>

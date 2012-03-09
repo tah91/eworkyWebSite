@@ -292,7 +292,7 @@
     <value>Waiting for handling</value>
   </data>
   <data name="PaymentError" xml:space="preserve">
-    <value>An error is preventing payment to take place, please contact us at support@eworky.com.</value>
+    <value>An error is preventing payment to occur, please contact us at support@eworky.com.</value>
   </data>
   <data name="MessageToOwner" xml:space="preserve">
     <value>Message to owner (optional)</value>
@@ -353,7 +353,7 @@
     <value>Your request is then immediately submitted to the owner</value>
   </data>
   <data name="HowItWorksQuotation3" xml:space="preserve">
-    <value>We will answer you as promptly as we can</value>
+    <value>We will answer to you as promptly as we can</value>
   </data>
   <data name="HowItWorksParty1" xml:space="preserve">
     <value>This networking event is the opportunity for every coworkaholics, freelance and entrepreneurs, to meet up, connect and discover Parisien coworking spaces.</value>

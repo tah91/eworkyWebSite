@@ -127,13 +127,13 @@
     <value>Immediately available</value>
   </data>
   <data name="Charges" xml:space="preserve">
-    <value>Mensual charges</value>
+    <value>Monthly charges</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
   <data name="Commercial" xml:space="preserve">
-    <value>Commercial </value>
+    <value>Commercial premise</value>
   <comment>?</comment></data>
   <data name="Country" xml:space="preserve">
     <value>Country</value>
@@ -160,7 +160,7 @@
     <value>Gas</value>
   <comment>?</comment></data>
   <data name="GreenHouse" xml:space="preserve">
-    <value>Energetical diagnosis</value>
+    <value>Energetic diagnosis</value>
   <comment>?</comment></data>
   <data name="Ground" xml:space="preserve">
     <value>Ground</value>
@@ -196,7 +196,7 @@
     <value>Calm environment</value>
   </data>
   <data name="Rate" xml:space="preserve">
-    <value>Mensual rent excluding charges</value>
+    <value>Monthly rent excluding charges</value>
   </data>
   <data name="Reference" xml:space="preserve">
     <value>Reference</value>

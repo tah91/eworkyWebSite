@@ -363,4 +363,7 @@
   <data name="ExactOffer" xml:space="preserve">
     <value>Exact name of the offer</value>
   </data>
+  <data name="SiteVersion" xml:space="preserve">
+    <value>Site version</value>
+  </data>
 </root>

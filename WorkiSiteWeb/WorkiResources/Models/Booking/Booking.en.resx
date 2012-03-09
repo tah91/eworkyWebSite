@@ -169,7 +169,7 @@
     <value>End </value>
   </data>
   <data name="VisitNeeded" xml:space="preserve">
-    <value>Visit wanted</value>
+    <value>Visit request</value>
   </data>
   <data name="TimeUnits" xml:space="preserve">
     <value>Quantity</value>

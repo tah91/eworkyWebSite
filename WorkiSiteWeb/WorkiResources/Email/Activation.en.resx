@@ -122,9 +122,40 @@
 
 To validate your subscription on eWorky, thanks for clicking on the following validation link: {0}
 
-You will then be able to connect easily with you login " {1} "</value>
+You will then be able to connect easily with your login " {1} "</value>
   </data>
   <data name="ActivationSubject" xml:space="preserve">
     <value>Welcome to the eWorky community!</value>
+  </data>
+  <data name="BOAskContent" xml:space="preserve">
+    <value>Your access request to the office manager has been taken into account.
+
+It will be confirmed within 48hours, you will then be able to access your office manager interface, by connecting on www.eworky.com with your identifiers.
+
+If you have any question concerning this tool functionalities or its handling, don't hesitate to give us a call at + 33 1 77 17 04 21.
+
+We also recommend you invite your clients to rate and comment your place, this will improve its referencing and visibility online.
+
+</value>
+  </data>
+  <data name="BOAskSubject" xml:space="preserve">
+    <value>Your access request to the office manager has been taken into account.</value>
+  </data>
+  <data name="BOConfirmContent" xml:space="preserve">
+    <value>Congratulations, your access to the office manager has been confirmed by the eWorky team.
+
+You can now access {0} by connecting on www.eworky.com with your identifiers, and start managing your space online.
+
+The first step to facilitate its handling will be to enter your Paypal identifiers to get paid, then make your offers bookable online.
+
+If you have any question concerning this tool functionalities or its handling, don't hesitate to give us a call at + 33 1 77 17 04 21.
+
+We recommend you invite your clients to rate and comment your place, this will improve its referencing and visibility online.</value>
+  </data>
+  <data name="BOConfirmSubject" xml:space="preserve">
+    <value>The access to your eWorky office manager has been accepted !</value>
+  </data>
+  <data name="BOLink" xml:space="preserve">
+    <value>your office manager interface </value>
   </data>
 </root>
