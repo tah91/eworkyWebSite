@@ -2,9 +2,7 @@
 
 <div class="contentBlock resultItem">
     @{  
-		var rvd = WebHelper.GetRVD(this);
-        rvd["index"] = Model.Index;
-        ViewData["link"] = Url.Action(MVC.Localisation.ActionNames.FullSearchResultDetail, MVC.Localisation.Name, rvd);
+		var link = Model.Localisation.GetDetailFullUrl(Url);
 		var fullName = Model.Localisation.GetFullName();
     }
     <div class="resultItemGallery picBack borderRadius float-left">
@@ -12,7 +10,7 @@
     </div>
     <div class="itemDetailsDiv float-left relative">
         <p class="blue noUnderline">
-            <span class="itemName">@Html.ActionLink(Html.TruncateAtWord(fullName, 40).ToString(), MVC.Localisation.ActionNames.FullSearchResultDetail, rvd, new Dictionary<string, object> { { "title", fullName } })</span>
+            <span class="itemName"><a href="@link" title="@fullName">@Html.TruncateAtWord(fullName, 40).ToString()</a></span>
             @if (Model.Distance < 1000)
             {
                 <span>&nbsp; -&nbsp;@String.Format("{0:0.##} km", Model.Distance) </span>
@@ -47,7 +45,7 @@
 		<div class="commentBgd">
 			<div class="commentContainer">
 				<div class="ratingContainer">
-					@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="blue noUnderline"><a href="@(ViewData["link"] + "#commentFormDiv")">@(string.Format("{0} {1}", Model.Localisation.Comments.Count, Worki.Resources.Views.Search.SearchString.Opinion))</a></span>
+					@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="blue noUnderline"><a href="@(link + "#commentFormDiv")">@(string.Format("{0} {1}", Model.Localisation.Comments.Count, Worki.Resources.Views.Search.SearchString.Opinion))</a></span>
 					<div class="clear">
 					</div> 
 				</div>
