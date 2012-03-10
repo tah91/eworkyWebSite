@@ -588,6 +588,8 @@ namespace Worki.Web
 					MiscHelpers.EmailConstants.ContactMail = email;
 					MiscHelpers.EmailConstants.BookingMail = email;
 				}
+
+				MultiCultureMvcRouteHandler.DefaultCulture = Culture.fr;
 			}
             _AdminInitialized = true;
         }
