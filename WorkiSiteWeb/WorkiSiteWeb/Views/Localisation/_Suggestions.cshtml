@@ -5,10 +5,8 @@
     foreach (var item in Model)
     {
         <div class="suggestion">
-            <div class="float-left">
-                <div class="suggestionImage borderRadius">
-		            <a href="@item.GetDetailFullUrl(Url)">@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)</a>
-                </div>
+            <div class="suggestionImage borderRadius float-left">
+		        <a href="@item.GetDetailFullUrl(Url)">@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)</a>
             </div>
             <div class="suggestiondesc float-right">
                 <a class="bold orange" href="@item.GetDetailFullUrl(Url)">@item.Name</a>

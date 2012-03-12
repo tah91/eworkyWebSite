@@ -2,7 +2,7 @@
 
 @if (!Model.IsSharedOffice() && Model.CanHaveBooking())
 {
-	<div class="contentBlock">
+	<div class="bookingCallAction">
 		@if (Model.IsBookable())
 		{
 		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction, MVC.Localisation.BookableOffers(Model.ID))</div>
@@ -14,52 +14,6 @@
 	</div> 
 }
 
-@*            <div class="contentBlock">
-	<h3 class="blue">Recommendé par</h3>
-	<div class="commentAvatar borderedImg float-left">
-	@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
-	</div>
-	<span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
-	@if (Model.HasFeature(Feature.LocalisationOwner))
-	{	 
-		<span>@FeatureHelper.Display(Feature.LocalisationOwner,Model)</span>
-	}
-	<div class="clear">
-	</div>
-</div>*@
-@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
-{
-   
-	<div class="contentBlock">
-		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
-		@{
-	        var lastEdition = Model.GetLastEdition();
-	        var creation = Model.GetCreation();
-		}
-		@if (creation != null)
-        {
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
-        }
-        else
-        { 
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
-        }
-		@if (lastEdition != null)
-        {
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
-			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
-        }
-        @if (Model.HasOwner() && Model.OwnerID.HasValue)
-		{
-            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
-		}
-        @if (Model.MainLocalisation != null)
-		{
-            <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)</span><br />
-		}
-	</div>
-}
 <div class="localisationMiscRatings contentBlock">
 	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.EworkersOpinion</h3>
 	<table>
@@ -119,32 +73,71 @@
 		}
 	}
 </div>
+<div class="contentBlock">
+	<h3 class="blue">Contact</h3>
+	<div class="commentAvatar borderedImg float-left">
+	@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Model.Member.GetDisplayName())
+	</div>
+    <div class="float-left">
+        <div class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</div>
+        <div id="contactContent">
+		    <a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
+		    <script type="text/javascript">
+			    require.ready(function () {
+				    $("#showContactContent").click(function () {
+					    $.ajax({
+						    url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
+						    data: { 'id': @Model.ID },
+						    success: function (data) {
+							    $("#contactContent").hide().html(data).fadeIn();
+						    }
+					    });
+				    });
+			    });
+		    </script>
+	    </div>
+    </div>
+	<div class="clear">
+	</div>
+</div>
+@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+{
+   
+	<div class="contentBlock">
+		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
+		@{
+	        var lastEdition = Model.GetLastEdition();
+	        var creation = Model.GetCreation();
+		}
+		@if (creation != null)
+        {
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
+        }
+        else
+        { 
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
+        }
+		@if (lastEdition != null)
+        {
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
+			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
+        }
+        @if (Model.HasOwner() && Model.OwnerID.HasValue)
+		{
+            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
+		}
+        @if (Model.MainLocalisation != null)
+		{
+            <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)</span><br />
+		}
+	</div>
+}
+
 @if (Model.IsSharedOffice() && !Request.IsAuthenticated)
 {
 	<div class="contentBlock">
 		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedContactOfPlaceAction, MVC.Account.LogOn(null, Request.RawUrl))</div>
-	</div>
-}
-else if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
-{
-	<div class="localisationGeneralInfo contentBlock">
-		<h3 class="blue">@Worki.Resources.Views.Home.HomeString.Contact</h3>
-		<div id="contactContent">
-			<a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
-			<script type="text/javascript">
-				require.ready(function () {
-					$("#showContactContent").click(function () {
-						$.ajax({
-							url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
-							data: { 'id': @Model.ID },
-							success: function (data) {
-								$("#contactContent").hide().html(data).fadeIn();
-							}
-						});
-					});
-				});
-			</script>
-		</div>
 	</div>
 }
 

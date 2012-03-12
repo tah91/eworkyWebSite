@@ -10,8 +10,8 @@
 .localisationCity{font-size:1.2em}
 .localisationShare{margin-top:10px}
 #favLink{margin-left:10px;display:inline-block}
-.localisationDetailLeft{width:65.5%}
-.localisationDetailRight{width:30%}
+.localisationDetailLeft{width:68.5%}
+.localisationDetailRight{width:27%}
 .localisationMap{padding:2px;border:1px solid #5dafde}
 .localisationGallery{height:350px}
 .favoris_add{background-image:url('images/favorite.png');background-position:0 0;width:20px;height:21px;display:inline-block}
@@ -21,16 +21,21 @@
 .servicesBlock{margin-bottom:5px}
 .priceDisplay{padding:10px 10px 0 0}
 .priceDisplay .featureTag ul li{background:#FFF4C7}
+.detailTabs .horizontalMenu li{background:0}
+.detailTabs .horizontalMenu li.selected{background:0}
 .detailTabContent{margin-top:10px}
-.detailMenu a{text-decoration:none;display:block;font-weight:bold;color:#aaa}
+.detailMenu a{text-decoration:none;display:block;color:gray}
 .detailMenu li{vertical-align:middle;height:20px;padding:5px;margin:5px 0;text-align:center;border:1px solid white}
 .detailMenuEmpty{height:0!important;padding:0!important;border-top:1px dashed #CCC!important}
-.detailMenu li:hover a,.detailMenu li.selected a{color:#015b8d}
+.detailMenu li:hover a,.detailMenu li.selected a{font-weight:bold}
 .offerPrice ul li{margin:5px 0}
-.offerTab{width:19%;margin-right:15px}
+.offerTab{width:19%;margin-right:15px;border-right:1px dashed #CCC!important}
 .offerTabs .tab_container{width:78%;clear:none;float:right}
-.offerTabContent .innerContentBlock{margin-left:0;margin-right:0}
-.offerTabContent .innerContentBlock:first-child{margin-top:0}
+.offerTabContainer .innerContentBlock{margin-left:0;margin-right:0}
+.offerTabContainer .innerContentBlock:first-child{margin-top:0}
+.communityTab{width:19%;margin-right:15px;border-right:1px dashed #CCC!important}
+.communityTabs .tab_container{width:78%;clear:none;float:right}
+.bookingCallAction .buttonStd{margin:0}
 .bookingFormTable td{height:30px}
 .bookingFormTable td:first-child{padding-right:50px}
 .bookingFormTable input[type="text"],.bookingFormTable textarea{width:400px}

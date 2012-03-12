@@ -253,20 +253,20 @@
 						<div class="offerTabs">
 							<div class="detailMenu">
 								<ul class="offerTab float-left">
-									<li><a href="#buisnessLounge" class="bold">Salon d'affaire</a></li>
+									<li><a href="#buisnessLounge">Salon d'affaire</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#workstation" class="bold">Postes de travail</a></li>
+									<li><a href="#workstation">Postes de travail</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#desktop" class="bold">Bureaux</a></li>
+									<li><a href="#desktop">Bureaux</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#meetingRoom" class="bold">Salle de réunion</a></li>
+									<li><a href="#meetingRoom">Salle de réunion</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#seminarRoom" class="bold">Salle de séminaire</a></li>
+									<li><a href="#seminarRoom">Salle de séminaire</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#visioRoom" class="bold">Salle de visio</a></li>
+									<li><a href="#visioRoom">Salle de visio</a></li>
 								</ul>
 							</div>
-							<div class="tab_container offerTabContent float-right">
+							<div class="tab_container offerTabContainer float-right">
 								<div id="buisnessLounge" class="offerTab_content">
 									@OfferBlock(Model, LocalisationOffer.BuisnessLounge)
 								</div>
@@ -290,28 +290,49 @@
 						</div>
 					</div>
 					<div  id="community" class="tab_content localisationComments">
-						<h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
-						<div id="commentFormDiv">
-							@if (Request.IsAuthenticated)
-							{
-								@Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
-							}
-							else
-							{	
-								@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl), new { @class = "orange" })
-							}
+                        <div class="communityTabs">
+							<div class="detailMenu">
+								<ul class="communityTab float-left">
+									<li><a href="#comments">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</a></li>
+									<li class="detailMenuEmpty"></li>
+									<li><a href="#eworkers">eWorkers</a></li>
+									<li class="detailMenuEmpty"></li>
+									<li><a href="#social">Réseaux sociaux</a></li>
+								</ul>
+							</div>
+							<div class="tab_container communityTabContainer float-right">
+								<div id="comments" class="communityTab_content">
+									<div id="commentFormDiv">
+							            @if (Request.IsAuthenticated)
+							            {
+								            @Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
+							            }
+							            else
+							            {	
+								            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl), new { @class = "orange" })
+							            }
+						            </div>
+						            @{
+							            ViewData[Comment.DisplayRelatedLocalisation] = false;
+						            }
+						            @foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
+						            {
+							            if (com.Member == null)
+							            {
+								            continue;
+							            }
+							            @Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
+						            }
+								</div>
+								<div id="eworkers" class="communityTab_content">
+									plop
+								</div>
+								<div id="social" class="communityTab_content">
+									plop
+								</div>
+							</div>
+							<div class="clear"></div>
 						</div>
-						@{
-							ViewData[Comment.DisplayRelatedLocalisation] = false;
-						}
-						@foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
-						{
-							if (com.Member == null)
-							{
-								continue;
-							}
-							@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
-						}
 					</div>
 				</div>
 				<div class="clear">

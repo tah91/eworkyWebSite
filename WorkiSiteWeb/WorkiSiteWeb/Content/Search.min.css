@@ -49,6 +49,6 @@ div.acc_container,div.toogle_container{margin-bottom:20px}
 .order a:hover{text-decoration:none}
 .suggestion{margin:10px 0;padding:5px}
 .suggestion:hover{background-color:Whitesmoke}
-.suggestionImage{width:100px;height:70px}
+.suggestionImage{width:90px;height:70px}
 .suggestionImage img{max-height:70px}
 .suggestiondesc{width:60%}

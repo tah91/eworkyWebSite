@@ -79,12 +79,12 @@
 
 .localisationDetailLeft
 {
-    width:65.5%;
+    width:68.5%;
 }
 
 .localisationDetailRight
 {
-    width:30%;
+    width:27%;
 }
 
 .localisationMap
@@ -127,6 +127,16 @@
 	background:#FFF4C7;
 }
 
+.detailTabs .horizontalMenu li
+{
+    background : none;
+}
+
+.detailTabs .horizontalMenu li.selected
+{
+    background : none;
+}
+
 .detailTabContent
 {
 	margin-top:10px;
@@ -141,15 +151,12 @@
 {
 	text-decoration:none;
 	display: block;
-	font-weight:bold;
-	color:#aaa;
+	color: gray;
 }
 
 .detailMenu ul
 {
-	/*width: 100%;*/
-    /*display: table;
-    table-layout: fixed*/
+
 }
 
 .detailMenu li
@@ -172,13 +179,8 @@
 .detailMenu li:hover a, .detailMenu li.selected a
 {
 	/*color:#f88f1e;*/
-	color:#015b8d;
-}
-
-.detailMenu li.selected
-{
-	/*border-top: 1px dashed #CCC;
-	border-bottom: 1px dashed #CCC;*/
+	/*color:#015b8d;*/
+	font-weight:bold;
 }
 
 .offerPrice ul li
@@ -190,6 +192,7 @@
 {
 	width:19%;
 	margin-right: 15px;
+	border-right: 1px dashed #CCC!important;
 }
 
 .offerTabs .tab_container
@@ -197,17 +200,37 @@
 	width: 78%;
 	clear: none;
 	float: right;
+	/*padding-left: 15px;*/
 }
 
-.offerTabContent .innerContentBlock
+.offerTabContainer .innerContentBlock
 {
 	margin-left:0;
 	margin-right:0;
 }
 
-.offerTabContent .innerContentBlock:first-child
+.offerTabContainer .innerContentBlock:first-child
 {
 	margin-top:0;
+}
+
+.communityTab
+{
+	width:19%;
+	margin-right: 15px;
+	border-right: 1px dashed #CCC!important;
+}
+
+.communityTabs .tab_container
+{
+	width: 78%;
+	clear: none;
+	float: right;
+}
+
+.bookingCallAction .buttonStd
+{
+    margin : 0;
 }
 
 
