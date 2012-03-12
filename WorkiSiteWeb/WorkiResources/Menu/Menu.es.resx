@@ -129,7 +129,7 @@
     <comment>Mika</comment>
   </data>
   <data name="AdminSpace" xml:space="preserve">
-    <value>Acceso administradores</value>
+    <value>Acceso admin.</value>
     <comment>Mika</comment>
   </data>
   <data name="BOHome" xml:space="preserve">
@@ -144,7 +144,7 @@
     <comment>Mika</comment>
   </data>
   <data name="BusinessCenterFr" xml:space="preserve">
-    <value>Centros de negocios</value>
+    <value>Centros negocio</value>
   </data>
   <data name="Clients" xml:space="preserve">
     <value>Clientes</value>
@@ -158,11 +158,11 @@
     <comment>Mika</comment>
   </data>
   <data name="Configure" xml:space="preserve">
-    <value>Parametrización</value>
+    <value>Configuración</value>
     <comment>Mika</comment>
   </data>
   <data name="CoworkingSpaceFr" xml:space="preserve">
-    <value>Coworking Fr</value>
+    <value>Coworking</value>
   </data>
   <data name="CurrentBookings" xml:space="preserve">
     <value>Reservas</value>
@@ -219,7 +219,7 @@
     <value>Mis espacios online</value>
   </data>
   <data name="Profil" xml:space="preserve">
-    <value>Perfil</value>
+    <value>Perfíl</value>
     <comment>Mika</comment>
   </data>
   <data name="Quoations" xml:space="preserve">
@@ -253,7 +253,7 @@
     <comment>Mika</comment>
   </data>
   <data name="WorkingQuotation" xml:space="preserve">
-    <value>Solicitudes de presupuesto en curso</value>
+    <value>Solicitudes de ppto en curso</value>
     <comment>Mika</comment>
   </data>
   <data name="Options" xml:space="preserve">
@@ -265,7 +265,7 @@
     <comment>Mika</comment>
   </data>
   <data name="Schedule" xml:space="preserve">
-    <value>Planning</value>
+    <value>Agenda</value>
   </data>
   <data name="AddClient" xml:space="preserve">
     <value>Añadir un cliente</value>
@@ -289,17 +289,20 @@
     <value>Crear una factura</value>
   </data>
   <data name="LocalisationSchedule" xml:space="preserve">
-    <value>Planning general</value>
+    <value>Agenda general</value>
   </data>
   <data name="OfferSchedule" xml:space="preserve">
-    <value>Planning por oferta</value>
+    <value>Agenda por oferta</value>
   </data>
   <data name="Prices" xml:space="preserve">
-    <value>Precios</value>
+    <value>Tarifas</value>
   </data>
   <data name="PendingBO" xml:space="preserve">
     <comment>Steeve</comment>
     <value>
     </value>
+  </data>
+  <data name="SharedOfficeFr" xml:space="preserve">
+    <value>Ofi. compartida</value>
   </data>
 </root>

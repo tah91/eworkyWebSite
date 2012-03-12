@@ -157,10 +157,10 @@
     <value>que te conectes a tu perfil a través de una red social.</value>
   </data>
   <data name="ValidationLetter" xml:space="preserve">
-    <value>Letras de validación</value>
+    <value>Código de validación</value>
   </data>
   <data name="EnterFollowingLetters" xml:space="preserve">
-    <value>Introduce las siguientes letras.</value>
+    <value>Introduce el siguiente código.</value>
   </data>
   <data name="AgreeWithCGU" xml:space="preserve">
     <value>He leído y acepto las Condiciones Generales de Uso de eWorky ({0}).</value>

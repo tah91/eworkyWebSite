@@ -274,7 +274,7 @@
     <value>El nombre de usuario introducido no es válido. Verifica el valor y prueba de nuevo.</value>
   </data>
   <data name="VerificationLettersWrong" xml:space="preserve">
-    <value>Las letras de verificación no son incorrectas.</value>
+    <value>El código de verificación es incorrecto.</value>
   <comment>?</comment></data>
   <data name="WebsiteNotGoodPattern" xml:space="preserve">
     <value>La dirección de la página web introducida no tiene el formato correcto.</value>

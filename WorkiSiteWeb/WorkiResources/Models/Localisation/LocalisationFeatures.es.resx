@@ -205,7 +205,7 @@
     <comment>?</comment>
   </data>
   <data name="LunchClose" xml:space="preserve">
-    <value>Cierra durante el almuerzo</value>
+    <value>Cierra al medio día</value>
   </data>
   <data name="Micro" xml:space="preserve">
     <value>Micro</value>
@@ -224,7 +224,7 @@
     <comment>?</comment>
   </data>
   <data name="PhoneJack" xml:space="preserve">
-    <value>Enchufe para teléfono</value>
+    <value>Toma de teléfono</value>
     <comment>?</comment>
   </data>
   <data name="Picturesque" xml:space="preserve">

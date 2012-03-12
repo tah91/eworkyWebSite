@@ -157,13 +157,13 @@
     <value>Hasta pronto en {0}</value>
   </data>
   <data name="SiretNumber" xml:space="preserve">
-    <value>N° Siret : {0}</value>
+    <value>CIF : {0}</value>
   </data>
   <data name="SubTotal" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="TaxNumber" xml:space="preserve">
-    <value>N° IVA : {0}</value>
+    <value>Indic. IVA : {0}</value>
   </data>
   <data name="TaxRate" xml:space="preserve">
     <value>% de IVA</value>
