@@ -32,23 +32,23 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-        require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
-            // Load the classic theme
-            Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
+    	require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
+    		// Load the classic theme
+    		Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
 
-            // Initialize Galleria
-            $('.gallery').galleria({
-                //width: 600,
-                height: 350,
-                showInfo: false
-            });
+    		// Initialize Galleria
+    		$('.gallery').galleria({
+    			//width: 600,
+    			height: 350,
+    			showInfo: false
+    		});
 
-			$('.offerGallery').galleria({
-                //width: 600,
-                height: 150,
-                showInfo: false
-            });
-        });
+    		$('.offerGallery').galleria({
+    			width: 450,
+    			height: 300,
+    			showInfo: false
+    		});
+    	});
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {
             //rateit
             BindRateIt = function (name) {
@@ -66,7 +66,10 @@
             BindRateIt("RatingWelcome");
         });
 
-        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"]);
+        require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
+        	InitTab(".detailTabs", ".detailTab");
+        	InitTab(".offerTabs", ".offerTab", ".offerTab_content");
+        });
             
         //favorites
         $("#favLinkAddButton").live("click", function () {

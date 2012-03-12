@@ -148,7 +148,7 @@ div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
 .margint10{margin-top:10px}
 .margint15{margin-top:15px}
 .mapContainer{border:solid 1px #63b3eb}
-#detailMap{height:220px}
+#detailMap{width:625px;height:280px}
 span.pinTitle{color:blue}
 .tooltip{position:absolute;top:0;left:0;z-index:3;display:none}
 #searchTooltip{height:100px;width:320px;border:thick black solid;border:5px;background:#0F0;color:#fff;-moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px}
@@ -212,8 +212,8 @@ ul.tabs li:first-child{margin:0 5px 0 0}
 ul.tabs li{float:left;margin:0 5px;padding:0;height:30px;line-height:30px;overflow:hidden;position:relative;background:#e0e0e0;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e0e0e0,endColorstr=#cac8c8);background-image:-moz-linear-gradient(top,#e0e0e0,#cac8c8);background-image:-webkit-linear-gradient(top,#e0e0e0,#cac8c8);background-image:linear-gradient(top,#e0e0e0,#cac8c8);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-align:center;color:White}
 ul.tabs li a{text-decoration:none;display:block;padding:0 10px;outline:0;color:White}
 ul.tabs li a:hover{background:#ccc;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ccc,endColorstr=#a8a8a8);background-image:-moz-linear-gradient(top,#ccc,#a8a8a8);background-image:-webkit-linear-gradient(top,#ccc,#a8a8a8);background-image:linear-gradient(top,#ccc,#a8a8a8);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
-ul.tabs li.active,ul.tabs li.active a{background-color:#5dafde;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#4787ed);background-image:-moz-linear-gradient(top,#5DAFDE,#4787ed);background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2);background-image:linear-gradient(top,#5DAFDE,#4787ed);color:White;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
-html ul.tabs li.active a:hover{background-color:#379ed6;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#379ed6,endColorstr=#4787ed);background-image:-moz-linear-gradient(top,#379ed6,#4787ed);background-image:-webkit-linear-gradient(top,#88c7ec,#74b7de);background-image:linear-gradient(top,#379ed6,#4787ed)}
+ul.tabs li.selected,ul.tabs li.selected a{background-color:#5dafde;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5DAFDE,endColorstr=#4787ed);background-image:-moz-linear-gradient(top,#5DAFDE,#4787ed);background-image:-webkit-linear-gradient(top,#5DAFDE,#449ed2);background-image:linear-gradient(top,#5DAFDE,#4787ed);color:White;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
+html ul.tabs li.selected a:hover{background-color:#379ed6;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#379ed6,endColorstr=#4787ed);background-image:-moz-linear-gradient(top,#379ed6,#4787ed);background-image:-webkit-linear-gradient(top,#88c7ec,#74b7de);background-image:linear-gradient(top,#379ed6,#4787ed)}
 .tab_container{clear:both;float:left;width:100%}
 .tab_content{padding:10px 0}
 .arrow_down{background-image:url('images/arrow.png');background-position:0 0;width:22px;height:22px}

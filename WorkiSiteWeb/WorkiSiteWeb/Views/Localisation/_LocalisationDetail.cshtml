@@ -1,33 +1,25 @@
 ﻿@model Worki.Data.Models.Localisation
 
-@helper AggregatedOfferBlock(Localisation localisation, LocalisationOffer offerType)
+@helper OfferBlock(Localisation localisation, LocalisationOffer offerType)
+{
+	var offers = localisation.GetOffers(offerType);
+	foreach (var offer in offers)
 	{
-		if (!localisation.HasOffer(offerType))
-		{
-			return;
-		}
-		var files = localisation.GetOfferFiles(offerType);
-		var features = localisation.GetOfferFeatures(offerType);
-        var title = Localisation.GetOfferType((int)offerType, false);
-		var text = Worki.Resources.Views.Offer.OfferString.OffersDetail;
-        if (Offer.OfferCanHaveQuotation(offerType) && localisation.Offers.Where(x => x.Type == (int)offerType).Count(y => y.IsQuotable) != 0)
-		{
-			text = Worki.Resources.Views.Booking.BookingString.AskQuotation;
-		}
-        else if (Offer.OfferCanHaveBooking(offerType) && localisation.Offers.Where(x => x.Type == (int)offerType).Count(y => y.IsBookable) != 0)
-		{ 
-			text = Worki.Resources.Views.Localisation.LocalisationString.BookIt;
-		}
-		<div class="contentBlock">
-            <div class="float-left">
-                <h3 class="blue">@title</h3>
-            </div>
-            <div class="float-right bold orange">
-                @Model.GetMinAvailability((int)offerType)
-            </div>
-            <div class="clear">
-            </div>
-			@if (features.Count() == 0)
+	  	<div class="innerContentBlock">
+            <h3 class="blue">@offer.Name</h3>
+			@if (offer.OfferFiles.Count > 0)
+			{
+			<div class="offerGallery">
+				@foreach (var item in offer.OfferFiles)
+				{
+					<a href="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Offer))" class="hidden">
+            			<img title="@offer.Name" alt="@offer.Name" src="@ControllerHelpers.GetUserImagePath(item.FileName, false, PictureData.GetFolder(ProviderType.Offer))"/>
+        			</a>                        
+				}
+			</div>
+			<div class="clear"></div>
+			}
+			@if (offer.OfferFeatures.Count() == 0)
 			{
 				<div class="italic">@Worki.Resources.Views.Offer.OfferString.InfoUnknown</div>
 			}
@@ -35,26 +27,54 @@
 			{
 			<div class="featureTag">
 				<ul>
-				@foreach (var item in features)
+				@foreach (var item in offer.OfferFeatures)
 				{
 					<li>@FeatureHelper.Display(item)</li>
 				}
 				</ul>
 			</div> 
-			<div class="clear">
-			</div>
+			<div class="clear"></div>
 			}
 			<div class="float-right">
 				<div class="priceDisplay float-left bold orange">
-					@localisation.GetMinPrice((int)offerType)
+                    <div class="featureTag">
+					    <ul>
+                        @if (!string.IsNullOrEmpty(offer.GetAvailabilityDisplay()))
+                        {
+                            <li>@offer.GetAvailabilityDisplay()</li>   
+                        }
+					    @foreach (var price in offer.OfferPrices)
+					    {
+                            var priceDisplay = price.GetPriceDisplay();
+                            if (!string.IsNullOrEmpty(priceDisplay))
+                            {
+                                <li>@priceDisplay</li> 
+                            }
+					    }
+					    </ul>
+				    </div> 
+				    <div class="clear"></div>
 				</div>
-				<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(text, MVC.Localisation.Offers(localisation.ID, (int)offerType))</div>
-				<div class="clear">
-				</div>
+				@if (offer.HasProduct)
+				{
+					if (offer.CanHaveQuotation && offer.IsQuotable)
+					{
+						<div class="buttonStd buttonBlue linkImg float-right">
+							@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
+						</div>
+					}
+					else if (offer.CanHaveBooking && offer.IsBookable)
+					{
+						<div class="buttonStd buttonBlue linkImg float-right">
+							@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
+						</div>
+					}
+					<div class="clear"></div>
+				}
 			</div>
-			<div class="clear">
-			</div>
-		</div> 
+			<div class="clear"></div>
+		</div>
+	}	
 }
 
 @{
@@ -94,7 +114,6 @@
 					}
 				}
 			}
-			var partyOffer = Model.GetOffers(LocalisationOffer.Party).FirstOrDefault();
 		}
 			<div id="fb-root">
 			</div>
@@ -119,121 +138,207 @@
 		</div>
 	</div>
 	<div class="detailContent">
-		<div class="localisationDetailLeft blockContainer float-left">
-			@if (Model.LocalisationFiles.Count > 0)
-			{
-			<div class="localisationGallery contentBlock">
-				<div class="gallery">
-					@foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
-					{
-						<a href="@ControllerHelpers.GetUserImagePath(item.FileName)" class="hidden">
-            				<img title="@fullName" alt="@fullName" src="@ControllerHelpers.GetUserImagePath(item.FileName)" itemprop="image"/>
-        				</a>                        
-					}
+		<div class="detailTabs localisationDetailLeft blockContainer float-left">
+			<div class="contentBlock">
+				<div class="horizontalMenu">
+					<ul class="detailTab">
+						<li><a href="#overview" class="bold">Vue d'ens</a></li>
+						<li><a href="#acces" class="bold">Accès</a></li>
+						<li><a href="#offers" class="bold">Offres</a></li>
+						<li><a href="#community" class="bold">Communauté</a></li>
+					</ul>
 				</div>
-			</div>
-			}
-			@{
-				var generalFeatures = Model.GetFeaturesWithin(FeatureHelper.Characteristics);
-				var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
-			}
-			<div class="localisationDescription contentBlock">
-				<div class="localisationDesc" itemprop="description">
-					@Html.Nl2Br(Model.GetDescription())
-				</div>
-				@if (generalFeatures.Count > 0)
-				{
-					<h4 class="servicesBlock">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
-					<div class="featureTag">
-						<ul>
-						@foreach (var item in generalFeatures)
+				<div class="detailTabContent tab_container">
+					<div id="overview" class="tab_content">
+						@if (Model.LocalisationFiles.Count > 0)
 						{
-							<li>@FeatureHelper.Display(item)</li>
-						}       
-						</ul>
-					</div>
-					<div class="clear">
-					</div>
-				}
-				@if (workingPlaceFeatures.Count > 0)
-				{
-					<h4 class="servicesBlock margint10">@Worki.Resources.Views.Shared.SharedString.Services</h4>
-					<div class="featureTag">
-						<ul>
-						@foreach (var item in workingPlaceFeatures)
-						{
-							<li>@FeatureHelper.Display(item)</li>
+						<div class="localisationGallery">
+							<div class="gallery">
+								@foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
+								{
+									<a href="@ControllerHelpers.GetUserImagePath(item.FileName)" class="hidden">
+            							<img title="@fullName" alt="@fullName" src="@ControllerHelpers.GetUserImagePath(item.FileName)" itemprop="image"/>
+        							</a>                        
+								}
+							</div>
+						</div>
 						}
-						</ul>
-					</div> 
-					<div class="clear">
-					</div>
-				}
-			</div>
-			@if (partyOffer != null)
-			{
-				<div class="contentBlock">
-					<div class="float-left">
-						<h3 class="blue">@partyOffer.Name</h3>
-					</div>
-					<div class="clear">
-					</div>
-					<div class="float-right">
-						<div class="buttonStd buttonBlue linkImg float-right">@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.RegisterParty, MVC.Offer.JoinParty(partyOffer.Id))</div>
-						<div class="clear">
+						@{
+							var generalFeatures = Model.GetFeaturesWithin(FeatureHelper.Characteristics);
+							var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
+						}
+						<div class="localisationDescription margint10">
+							<div class="localisationDesc" itemprop="description">
+								@Html.Nl2Br(Model.GetDescription())
+							</div>
+							@if (generalFeatures.Count > 0)
+							{
+								<h4 class="orange servicesBlock">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
+								<div class="featureTag">
+									<ul>
+									@foreach (var item in generalFeatures)
+									{
+										<li>@FeatureHelper.Display(item)</li>
+									}       
+									</ul>
+								</div>
+								<div class="clear">
+								</div>
+							}
+							@if (workingPlaceFeatures.Count > 0)
+							{
+								<h4 class="orange servicesBlock margint10">@Worki.Resources.Views.Shared.SharedString.Services</h4>
+								<div class="featureTag">
+									<ul>
+									@foreach (var item in workingPlaceFeatures)
+									{
+										<li>@FeatureHelper.Display(item)</li>
+									}
+									</ul>
+								</div> 
+								<div class="clear">
+								</div>
+							}
 						</div>
 					</div>
-					<div class="clear">
+					<div id="acces" class="tab_content">
+						<div class="localisationMap">
+							@Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
+						</div>
+						@if (Model.HasAccesField())
+						{
+							<h3 class="blue margint10">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
+							<div class="localisationAccessDetail">
+							@if (!string.IsNullOrEmpty(Model.PublicTransportation))
+							{
+								<span class="bold">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
+								@Model.PublicTransportation<br />
+							}
+							@if (!string.IsNullOrEmpty(Model.RoadAccess))
+							{
+								<span class="bold">@Worki.Resources.Models.Localisation.Localisation.RoadAccess : </span>
+								@Model.RoadAccess<br />
+							}
+							@if (!string.IsNullOrEmpty(Model.Station))
+							{
+								<span class="bold">@Worki.Resources.Models.Localisation.Localisation.Station : </span>
+								@Model.Station<br />
+							}
+							</div>
+						}
+					
+						<h3 class="blue margint10">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
+						@if (Model.HasFeature(Feature.Access24))
+						{
+							@Html.FeatureLabelFor(Feature.Access24, Model)
+						}
+						else if (Model.HasOpenningTimes())
+						{
+						<table>
+							@RazorHelpers.OpenningRow(Model, DayOfWeek.Monday, Worki.Resources.Views.Localisation.LocalisationFormString.Monday)
+							@RazorHelpers.OpenningRow(Model, DayOfWeek.Tuesday, Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday)
+							@RazorHelpers.OpenningRow(Model, DayOfWeek.Wednesday, Worki.Resources.Views.Localisation.LocalisationFormString.Wednesday)
+							@RazorHelpers.OpenningRow(Model, DayOfWeek.Thursday, Worki.Resources.Views.Localisation.LocalisationFormString.Thursday)
+							@RazorHelpers.OpenningRow(Model, DayOfWeek.Friday, Worki.Resources.Views.Localisation.LocalisationFormString.Friday)
+							@RazorHelpers.OpenningRow(Model, DayOfWeek.Saturday, Worki.Resources.Views.Localisation.LocalisationFormString.Saturday)
+							@RazorHelpers.OpenningRow(Model, DayOfWeek.Sunday, Worki.Resources.Views.Localisation.LocalisationFormString.Sunday)
+						</table>
+						}
+						else
+						{
+							@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.EmailConstants.ContactMail
+						}
 					</div>
-				</div> 
-			}
-			@AggregatedOfferBlock(Model, LocalisationOffer.BuisnessLounge)
-			@AggregatedOfferBlock(Model, LocalisationOffer.Workstation)
-			@AggregatedOfferBlock(Model, LocalisationOffer.Desktop)
-			@AggregatedOfferBlock(Model, LocalisationOffer.MeetingRoom)
-			@AggregatedOfferBlock(Model, LocalisationOffer.SeminarRoom)
-			@AggregatedOfferBlock(Model, LocalisationOffer.VisioRoom)
-			<div class="localisationComments contentBlock">
-				<h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
-				<div id="commentFormDiv">
-					@if (Request.IsAuthenticated)
-					{
-						@Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
-					}
-					else
-					{	
-						@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl), new { @class = "orange" })
-					}
+					<div id="offers" class="tab_content">
+						<div class="offerTabs">
+							<div class="detailMenu">
+								<ul class="offerTab float-left">
+									<li><a href="#buisnessLounge" class="bold">Salon d'affaire</a></li>
+									<li class="detailMenuEmpty"></li>
+									<li><a href="#workstation" class="bold">Postes de travail</a></li>
+									<li class="detailMenuEmpty"></li>
+									<li><a href="#desktop" class="bold">Bureaux</a></li>
+									<li class="detailMenuEmpty"></li>
+									<li><a href="#meetingRoom" class="bold">Salle de réunion</a></li>
+									<li class="detailMenuEmpty"></li>
+									<li><a href="#seminarRoom" class="bold">Salle de séminaire</a></li>
+									<li class="detailMenuEmpty"></li>
+									<li><a href="#visioRoom" class="bold">Salle de visio</a></li>
+								</ul>
+							</div>
+							<div class="tab_container offerTabContent float-right">
+								<div id="buisnessLounge" class="offerTab_content">
+									@OfferBlock(Model, LocalisationOffer.BuisnessLounge)
+								</div>
+								<div id="workstation" class="offerTab_content">
+									@OfferBlock(Model, LocalisationOffer.Workstation)
+								</div>
+								<div id="desktop" class="offerTab_content">
+									@OfferBlock(Model, LocalisationOffer.Desktop)
+								</div>
+								<div id="meetingRoom" class="offerTab_content">
+									@OfferBlock(Model, LocalisationOffer.MeetingRoom)
+								</div>
+								<div id="seminarRoom" class="offerTab_content">
+									@OfferBlock(Model, LocalisationOffer.SeminarRoom)
+								</div>
+								<div id="visioRoom" class="offerTab_content">
+									@OfferBlock(Model, LocalisationOffer.VisioRoom)
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div  id="community" class="tab_content localisationComments">
+						<h3 class="blue">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</h3>
+						<div id="commentFormDiv">
+							@if (Request.IsAuthenticated)
+							{
+								@Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
+							}
+							else
+							{	
+								@Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl), new { @class = "orange" })
+							}
+						</div>
+						@{
+							ViewData[Comment.DisplayRelatedLocalisation] = false;
+						}
+						@foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
+						{
+							if (com.Member == null)
+							{
+								continue;
+							}
+							@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
+						}
+					</div>
 				</div>
-				@{
-					ViewData[Comment.DisplayRelatedLocalisation] = false;
-				}
-				@foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
-				{
-					if (com.Member == null)
-					{
-						continue;
-					}
-					@Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
-				}
+				<div class="clear">
+				</div>
 			</div>
 		</div>
 		<div class="localisationDetailRight blockContainer float-right">
-		@Html.Partial(MVC.Localisation.Views._LocalisationInfos)
+			<div class="">
+				@Html.Partial(MVC.Localisation.Views._LocalisationInfos)
+			</div>		
 		</div>
 		<div class="clear">
 		</div>
 	</div>
 </div>
 
-<div class="buttonStd buttonBlue linkImg float-right">
-@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
-</div>
-@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
-{
+<div class="margint10">
 	<div class="buttonStd buttonBlue linkImg float-right">
-	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
+	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 	</div>
-}
-<div class="clear">
+	@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+	{
+		<div class="buttonStd buttonBlue linkImg float-right">
+		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
+		</div>
+	}
+	<div class="clear">
+	</div>
 </div>
+

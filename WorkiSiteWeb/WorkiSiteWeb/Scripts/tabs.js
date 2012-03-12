@@ -26,22 +26,26 @@ $(".toogle_trigger_click").click(function () {
     return false; //Prevent the browser jump to the link anchor
 });
 
-function InitTab(tabId) {
+function InitTab(tabId, tabItem, tabContent) {
+
+	var tabItemClass = (tabItem || ".tabs");
+	var tabContentClass = (tabContent || ".tab_content");
 	//When page loads...
 	var hiddenClass = "visuallyhidden";
-	$(tabId + " .tab_content").addClass(hiddenClass); //.hide(); //Hide all content
-    $(tabId + " ul.tabs li:first").addClass("active");//.show(); //Activate first tab
-    $(tabId + " .tab_content:first").removeClass(hiddenClass); //.show(); //Show first tab content
+	$(tabId + " " + tabContentClass).addClass(hiddenClass); //.hide(); //Hide all content
+	$(tabId + " ul" + tabItemClass + " li:first").addClass("selected"); //.show(); //Activate first tab
+	$(tabId + " " + tabContentClass + ":first").removeClass(hiddenClass); //.show(); //Show first tab content
 
     //On Click Event
-    $(tabId + " ul.tabs li").click(function () {
+	$(tabId + " ul" + tabItemClass + " li").click(function () {
 
-        $(tabId + " ul.tabs li").removeClass("active"); //Remove any "active" class
-        $(this).addClass("active"); //Add "active" class to selected tab
-        $(tabId + " .tab_content").addClass(hiddenClass); //hide(); //Hide all tab content
+		$(tabId + " ul" + tabItemClass + " li").removeClass("selected"); //Remove any "active" class
+		$(this).addClass("selected"); //Add "active" class to selected tab
+        $(tabId + " " + tabContentClass).addClass(hiddenClass); //hide(); //Hide all tab content
 
         var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
         $(activeTab).removeClass(hiddenClass);//.fadeIn(); //Fade in the active ID content
         return false;
     });
+
 };

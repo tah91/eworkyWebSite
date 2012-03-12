@@ -2,7 +2,7 @@
 ----------------------------------------------------------*/
 .localisationAccessDetail
 {
-    margin-top:10px;
+    /*margin-top:10px;*/
 }
 
 .dayOfWeek
@@ -109,7 +109,7 @@
 .offerGallery
 {
 	margin:10px 0;
-	height: 350px;
+	height: 300px;
 }
 
 .servicesBlock
@@ -127,10 +127,89 @@
 	background:#FFF4C7;
 }
 
+.detailTabContent
+{
+	margin-top:10px;
+}
+
+.detailMenu
+{
+    /*text-align:center;*/
+}
+
+.detailMenu a
+{
+	text-decoration:none;
+	display: block;
+	font-weight:bold;
+	color:#aaa;
+}
+
+.detailMenu ul
+{
+	/*width: 100%;*/
+    /*display: table;
+    table-layout: fixed*/
+}
+
+.detailMenu li
+{
+	vertical-align:middle;
+    height: 20px;
+    padding:5px;
+    margin:5px 0;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.detailMenuEmpty
+{
+	height: 0!important;
+	padding: 0!important;
+	border-top: 1px dashed #CCC!important;
+}
+
+.detailMenu li:hover a, .detailMenu li.selected a
+{
+	/*color:#f88f1e;*/
+	color:#015b8d;
+}
+
+.detailMenu li.selected
+{
+	/*border-top: 1px dashed #CCC;
+	border-bottom: 1px dashed #CCC;*/
+}
+
 .offerPrice ul li
 {
 	margin:5px 0;
 }
+
+.offerTab
+{
+	width:19%;
+	margin-right: 15px;
+}
+
+.offerTabs .tab_container
+{
+	width: 78%;
+	clear: none;
+	float: right;
+}
+
+.offerTabContent .innerContentBlock
+{
+	margin-left:0;
+	margin-right:0;
+}
+
+.offerTabContent .innerContentBlock:first-child
+{
+	margin-top:0;
+}
+
 
 /* BOOKING FORM
 ----------------------------------------------------------*/

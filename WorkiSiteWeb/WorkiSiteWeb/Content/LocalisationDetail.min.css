@@ -1,5 +1,4 @@
-﻿.localisationAccessDetail{margin-top:10px}
-.dayOfWeek{width:60px;padding-right:20px}
+﻿.dayOfWeek{width:60px;padding-right:20px}
 .commentFormRating td:first-child{width:100px}
 .localisationLogo{height:70px;width:90px}
 .localisationLogo img{max-height:70px}
@@ -18,11 +17,20 @@
 .favoris_add{background-image:url('images/favorite.png');background-position:0 0;width:20px;height:21px;display:inline-block}
 .favoris_del{background-image:url('images/favorite.png');background-position:0 -71px;width:20px;height:21px;display:inline-block}
 #commentFormDiv textarea{width:98.5%}
-.offerGallery{margin:10px 0;height:350px}
+.offerGallery{margin:10px 0;height:300px}
 .servicesBlock{margin-bottom:5px}
 .priceDisplay{padding:10px 10px 0 0}
 .priceDisplay .featureTag ul li{background:#FFF4C7}
+.detailTabContent{margin-top:10px}
+.detailMenu a{text-decoration:none;display:block;font-weight:bold;color:#aaa}
+.detailMenu li{vertical-align:middle;height:20px;padding:5px;margin:5px 0;text-align:center;border:1px solid white}
+.detailMenuEmpty{height:0!important;padding:0!important;border-top:1px dashed #CCC!important}
+.detailMenu li:hover a,.detailMenu li.selected a{color:#015b8d}
 .offerPrice ul li{margin:5px 0}
+.offerTab{width:19%;margin-right:15px}
+.offerTabs .tab_container{width:78%;clear:none;float:right}
+.offerTabContent .innerContentBlock{margin-left:0;margin-right:0}
+.offerTabContent .innerContentBlock:first-child{margin-top:0}
 .bookingFormTable td{height:30px}
 .bookingFormTable td:first-child{padding-right:50px}
 .bookingFormTable input[type="text"],.bookingFormTable textarea{width:400px}

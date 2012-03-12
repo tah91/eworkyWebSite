@@ -986,9 +986,9 @@ div.pagerTop
 
 #detailMap 
 {
-	/*position: relative; 
-	width: 220px;*/ 
-	height: 220px;
+	/*position: relative; */
+	width: 625px;
+	height: 280px;
 }
 
 span.pinTitle { color: blue; }
@@ -1493,7 +1493,7 @@ ul.tabs li a:hover
 	border-radius: 3px;
 }
 
-ul.tabs li.active, ul.tabs li.active a
+ul.tabs li.selected, ul.tabs li.selected a
 { /*--Makes sure that the active tab does not listen to the hover properties--*/
   	background-color: #5dafde;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#5DAFDE, endColorstr=#4787ed);
@@ -1506,7 +1506,7 @@ ul.tabs li.active, ul.tabs li.active a
 	border-radius: 3px;
 }
 
-html ul.tabs li.active a:hover
+html ul.tabs li.selected a:hover
 { /*--Makes sure that the active tab does not listen to the hover properties--*/
 	background-color: #379ed6;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);

@@ -1,32 +1,5 @@
 ﻿@model Worki.Data.Models.Localisation
 
-<div class="contentBlock">
-	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</h3>
-	<div class="localisationMap">
-		@Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
-	</div>
-	@if (Model.HasAccesField())
-    {
-		<div class="localisationAccessDetail">
-		@if (!string.IsNullOrEmpty(Model.PublicTransportation))
-        {
-			<span class="bold">@Worki.Resources.Models.Localisation.Localisation.PublicTransportation : </span>
-			@Model.PublicTransportation<br />
-        }
-		@if (!string.IsNullOrEmpty(Model.RoadAccess))
-        {
-			<span class="bold">@Worki.Resources.Models.Localisation.Localisation.RoadAccess : </span>
-			@Model.RoadAccess<br />
-        }
-		@if (!string.IsNullOrEmpty(Model.Station))
-        {
-			<span class="bold">@Worki.Resources.Models.Localisation.Localisation.Station : </span>
-			@Model.Station<br />
-        }
-		</div>
-    }
-</div>
-
 @if (!Model.IsSharedOffice() && Model.CanHaveBooking())
 {
 	<div class="contentBlock">
@@ -41,26 +14,6 @@
 	</div> 
 }
 
-@*<div class="contentBlock">
-	<h3 class="blue">Tarifs</h3>
-	<div class="offerPrice">
-		<ul>
-			@foreach (var item in Model.GetPricedOffers())
-			{
-				<li>
-					<div class="float-left">
-						@Html.ActionLink(item.Name, MVC.Localisation.Offers(item.LocalisationId, (int)item.Type))
-					</div>
-					<div class="float-right">
-						@item.GetPriceDisplay()
-					</div>
-					<div class="clear">
-					</div>
-				</li>
-			}
-		</ul>
-	</div>
-</div>*@
 @*            <div class="contentBlock">
 	<h3 class="blue">Recommendé par</h3>
 	<div class="commentAvatar borderedImg float-left">
@@ -194,29 +147,6 @@ else if (!(Model.IsFreeLocalisation() && Model.ContactEmpty()))
 		</div>
 	</div>
 }
-<div class="localisationSchedule contentBlock">
-	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Schedule</h3>
-	@if (Model.HasFeature(Feature.Access24))
-    {
-		@Html.FeatureLabelFor(Feature.Access24, Model)
-    }
-    else if (Model.HasOpenningTimes())
-    {
-	<table>
-		@RazorHelpers.OpenningRow(Model, DayOfWeek.Monday, Worki.Resources.Views.Localisation.LocalisationFormString.Monday)
-		@RazorHelpers.OpenningRow(Model, DayOfWeek.Tuesday, Worki.Resources.Views.Localisation.LocalisationFormString.Tuesday)
-		@RazorHelpers.OpenningRow(Model, DayOfWeek.Wednesday, Worki.Resources.Views.Localisation.LocalisationFormString.Wednesday)
-		@RazorHelpers.OpenningRow(Model, DayOfWeek.Thursday, Worki.Resources.Views.Localisation.LocalisationFormString.Thursday)
-		@RazorHelpers.OpenningRow(Model, DayOfWeek.Friday, Worki.Resources.Views.Localisation.LocalisationFormString.Friday)
-		@RazorHelpers.OpenningRow(Model, DayOfWeek.Saturday, Worki.Resources.Views.Localisation.LocalisationFormString.Saturday)
-		@RazorHelpers.OpenningRow(Model, DayOfWeek.Sunday, Worki.Resources.Views.Localisation.LocalisationFormString.Sunday)
-	</table>
-    }
- else
- {
-		@Worki.Resources.Views.Shared.SharedString.KnowHouly @MiscHelpers.EmailConstants.ContactMail
- }
-</div>
 
 <div class="contentBlock">
 	<h3 class="blue marginb10">@Worki.Resources.Views.Localisation.LocalisationString.Suggestion</h3>

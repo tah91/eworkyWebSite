@@ -228,6 +228,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
 
         _detailMap.setCenter(center);
         LoadPin(center, title, editable, _detailMap);
+        google.maps.event.trigger(_detailMap, 'resize');
     }
 
     ClearMap = function () {
