@@ -196,7 +196,7 @@
     <value>Manager</value>
   </data>
   <data name="OwnerTutorial" xml:space="preserve">
-    <value>I am the Manager</value>
+    <value>I want to list my workspace</value>
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Once your booking is confirmed by the space owner, you can directly pay online with your debit/credit card</value>
@@ -244,7 +244,7 @@
     <value>User</value>
   </data>
   <data name="UserTutorial" xml:space="preserve">
-    <value>I am a user</value>
+    <value>I'm looking for a workspace</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>eWorky helps you manage your place but can never replace your unique warm welcome!</value>
