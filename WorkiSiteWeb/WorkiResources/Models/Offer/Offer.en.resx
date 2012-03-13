@@ -121,13 +121,13 @@
     <value>Currency</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Days</value>
+    <value>Day</value>
   </data>
   <data name="Euro" xml:space="preserve">
     <value>EUR</value>
   </data>
   <data name="Hour" xml:space="preserve">
-    <value>Hours</value>
+    <value>Hour</value>
   </data>
   <data name="IsBookable" xml:space="preserve">
     <value>Enable online booking</value>

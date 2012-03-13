@@ -157,7 +157,7 @@
     <value>Consult the profile:</value>
   </data>
   <data name="CheckThisOut" xml:space="preserve">
-    <value>I recommand you to discover this ad:</value>
+    <value>I recommend you discover this ad:</value>
   </data>
   <data name="ChooseDate" xml:space="preserve">
     <value>Pick up a date</value>
@@ -190,7 +190,7 @@
     <value>Rating:</value>
   </data>
   <data name="EditRental" xml:space="preserve">
-    <value>Edit an ads</value>
+    <value>Edit an ad</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email address:</value>
@@ -304,7 +304,7 @@
     <value>The advert was edited.</value>
   </data>
   <data name="RentalSuppress" xml:space="preserve">
-    <value>Erase the ads</value>
+    <value>Erase the ad</value>
   </data>
   <data name="RentalType" xml:space="preserve">
     <value>Ads type</value>

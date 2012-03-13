@@ -133,7 +133,7 @@
     <value>The user creation request was cancelled. Please check your entry and try again. If the problem persists, contact your system administrator.</value>
   </data>
   <data name="DuplicateName" xml:space="preserve">
-    <value>A workplace with the same name and located at the same place already exists.</value>
+    <value>There is already a workplace with the same name and located at the same place.</value>
   </data>
   <data name="EmptyFileUpload" xml:space="preserve">
     <value>Empty file upload result</value>
@@ -157,10 +157,10 @@
     <value>The question to retrieve your password is not valid. Please check the value and try again.</value>
   </data>
   <data name="GiveMinADate" xml:space="preserve">
-    <value>You must indicate at least an offer.</value>
+    <value>You must indicate at least one offer.</value>
   </data>
   <data name="GivenPasswordNotValide" xml:space="preserve">
-    <value>The indicated password is not valid. Please enter a valid value for the password.</value>
+    <value>The password you gave is not valid. Please enter a valid value for the password.</value>
   </data>
   <data name="UnknowError" xml:space="preserve">
     <value>An unknown error occurred.</value>
@@ -172,7 +172,7 @@
     <value>The email address does not match any user account.</value>
   </data>
   <data name="MailHaveNotGoodPattern" xml:space="preserve">
-    <value>The email address is not the right format.</value>
+    <value>The email address does not have the right format.</value>
   <comment>?</comment></data>
   <data name="MailNotValide" xml:space="preserve">
     <value>The email address is not valid. Please check the value and try again.</value>
@@ -277,7 +277,7 @@
     <value>The checking letters are not correct.</value>
   <comment>?</comment></data>
   <data name="WebsiteNotGoodPattern" xml:space="preserve">
-    <value>The website address is not the right format.</value>
+    <value>The website address does not have the right format.</value>
   </data>
   <data name="AccountInactive" xml:space="preserve">
     <value>Your account is not activated yet. To carry on, you must first activate your account by clicking on the link that was sent to you by email following your subscription.</value>
