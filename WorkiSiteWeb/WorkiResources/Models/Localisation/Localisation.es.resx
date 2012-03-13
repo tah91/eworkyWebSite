@@ -377,7 +377,7 @@
     <value>Comisión (en %)</value>
   </data>
   <data name="QuotationPrice" xml:space="preserve">
-    <value>Precio del presupuesto</value>
+    <value>Importe del presupuesto</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
     <value>Nombre de la empresa</value>

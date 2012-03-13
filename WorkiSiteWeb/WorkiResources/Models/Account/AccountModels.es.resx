@@ -121,10 +121,10 @@
     <value>Confirmar la contraseña</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Dirección de correo electrónico</value>
+    <value>Correo electrónico</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Dirección de correo electrónico</value>
+    <value>Correo electrónico</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Nueva contaseña</value>
@@ -163,6 +163,6 @@
     <value>Teléfono móvil</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value>Perfil</value>
+    <value>Perfíl</value>
   </data>
 </root>

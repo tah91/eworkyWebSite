@@ -184,7 +184,7 @@
     <value>Gran cliente</value>
   </data>
   <data name="TaxNumber" xml:space="preserve">
-    <value>Nº de IVA intracomunitario</value>
+    <value>Incid. de IVA intracomunitario</value>
   </data>
   <data name="TaxRate" xml:space="preserve">
     <value>% de IVA a aplicar en el país de facturación</value>

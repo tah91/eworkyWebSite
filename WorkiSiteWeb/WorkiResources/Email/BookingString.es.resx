@@ -276,7 +276,7 @@ Mensaje: &lt;b&gt;{6}&lt;/b&gt;</value>
     <value>Alerta eWorky – Solicitud de presupuesto</value>
   </data>
   <data name="QuotationNewMemberBody" xml:space="preserve">
-    <value>A raís de tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 en el establecimiento &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), una cuenta eWorky ha sido creada. Te permitirá seguir el historial y el estado de tus solicitudes de presupuesto y reservas. 
+    <value>A raíz de tu solicitud de presupuesto para un(a) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 en el establecimiento &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), una cuenta eWorky ha sido creada. Te permitirá seguir el historial y el estado de tus solicitudes de presupuesto y reservas. 
 
 Tu usuario es &lt;b&gt;{4}&lt;/b&gt; y tu contraseña provisional es &lt;b&gt;{5}&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfíl: &lt;b&gt;{6}&lt;/b&gt;
 
