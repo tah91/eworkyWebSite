@@ -80,6 +80,16 @@
 @{
 	var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
 	var fullName = Model.GetFullName();
+    var link = Model.GetDetailFullUrl(Url);
+    var isFav = false;
+    if (Request.IsAuthenticated)
+    {
+        var id = WebHelper.GetIdentityId(User.Identity);
+        if (id != 0)
+        {
+            isFav = Model.FavoriteLocalisations.Where(f => f.MemberId == id).Count() > 0;
+        }
+    }
 }
 <div itemscope itemtype="http://schema.org/LocalBusiness">
 	<div class="localisationDetailHead">
@@ -96,44 +106,35 @@
 				<meta itemprop="longitude" content="@Model.Longitude" />
 			</div>
 		</div>
-		<div class="localisationShare float-right">
-		@{
-			var link = Model.GetDetailFullUrl(Url);
-			if (Request.IsAuthenticated)
-			{
-				var id = WebHelper.GetIdentityId(User.Identity);
-				if (id != 0)
-				{
-					if (Model.FavoriteLocalisations.Where(f => f.MemberId == id).Count() > 0)
-					{
-						ViewData[ProfilConstants.DelFavorite] = true;
-					}
-					else
-					{
-						ViewData[ProfilConstants.AddToFavorite] = true;
-					}
-				}
-			}
-		}
-			<div id="fb-root">
-			</div>
-			<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
-			<fb:like href="@link" layout="button_count" show_faces="false" font="arial" style="vertical-align: top;">
-			</fb:like>
-			<!-- Placez cette balise à l'endroit où vous souhaitez que le bouton +1 s'affiche --> 
-			<g:plusone size="medium" href="@link"></g:plusone>                       
-			<a  href="http://twitter.com/share" 
-				class="twitter-share-button"
-				data-text="@String.Format(Worki.Resources.Views.Localisation.LocalisationString.Recommendation, fullName)" 
-				data-count="horizontal" 
-				data-via="eWorky"
-				data-counturl="@link">
-					@Worki.Resources.Views.Localisation.LocalisationString.Tweet</a>
-			<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  
-			<div id="favLink">
-				@Html.Partial(MVC.Shared.Views._AddToFavorite)
-			</div>              
-		</div>
+		<ul class="like-buttons float-right">
+            <li>
+                <a href="http://pinterest.com/pin/create/button/?url=www.eworky.com&media=plop&description=plop" class="pin-it-button" count-layout="none">Pin It</a>
+                <script type="text/javascript" src="http://assets.pinterest.com/js/pinit.js"></script>
+            </li>
+            <li>
+                <!-- Placez cette balise à l'endroit où vous souhaitez que le bouton +1 s'affiche --> 
+                <g:plusone size="medium" annotation="none" href="@link"></g:plusone>     
+            </li>
+			<li>
+                <a  href="http://twitter.com/share" 
+				    class="twitter-share-button"
+				    data-text="@String.Format(Worki.Resources.Views.Localisation.LocalisationString.Recommendation, fullName)" 
+				    data-count="none" 
+				    data-via="eWorky"
+				    data-counturl="@link">
+				    @Worki.Resources.Views.Localisation.LocalisationString.Tweet</a>
+                <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+            </li>
+			<li>
+                <div class="fb-like" 
+                     data-href="@link" 
+                     data-send="false" 
+                     data-layout="button_count" 
+                     data-width="50" 
+                     data-show-faces="false">
+                </div>
+            </li>         
+		</ul>
 		<div class="clear">
 		</div>
 	</div>
@@ -142,10 +143,10 @@
 			<div class="contentBlock">
 				<div class="horizontalMenu">
 					<ul class="detailTab">
-						<li><a href="#overview" class="bold">Vue d'ens</a></li>
-						<li><a href="#acces" class="bold">Accès</a></li>
-						<li><a href="#offers" class="bold">Offres</a></li>
-						<li><a href="#community" class="bold">Communauté</a></li>
+						<li><a href="#overview" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Overview</a></li>
+						<li><a href="#acces" class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</a></li>
+						<li><a href="#offers" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Offers</a></li>
+						<li><a href="#community" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Community</a></li>
 					</ul>
 				</div>
 				<div class="detailTabContent tab_container">
@@ -173,7 +174,7 @@
 							</div>
 							@if (generalFeatures.Count > 0)
 							{
-								<h4 class="orange servicesBlock">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
+								<h4 class="blue servicesBlock">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
 								<div class="featureTag">
 									<ul>
 									@foreach (var item in generalFeatures)
@@ -187,7 +188,7 @@
 							}
 							@if (workingPlaceFeatures.Count > 0)
 							{
-								<h4 class="orange servicesBlock margint10">@Worki.Resources.Views.Shared.SharedString.Services</h4>
+								<h4 class="blue servicesBlock margint10">@Worki.Resources.Views.Shared.SharedString.Services</h4>
 								<div class="featureTag">
 									<ul>
 									@foreach (var item in workingPlaceFeatures)
@@ -250,20 +251,20 @@
 						}
 					</div>
 					<div id="offers" class="tab_content">
-						<div class="offerTabs">
+						<div class="offerTabs innerDetailTabs">
 							<div class="detailMenu">
-								<ul class="offerTab float-left">
-									<li><a href="#buisnessLounge">Salon d'affaire</a></li>
+								<ul class="offerTab innerDetailTab float-left">
+									<li><a href="#buisnessLounge">@Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#workstation">Postes de travail</a></li>
+									<li><a href="#workstation">@Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#desktop">Bureaux</a></li>
+									<li><a href="#desktop">@Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#meetingRoom">Salle de réunion</a></li>
+									<li><a href="#meetingRoom">@Worki.Resources.Models.Localisation.LocalisationFeatures.MeetingRoom</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#seminarRoom">Salle de séminaire</a></li>
+									<li><a href="#seminarRoom">@Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#visioRoom">Salle de visio</a></li>
+									<li><a href="#visioRoom">@Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom</a></li>
 								</ul>
 							</div>
 							<div class="tab_container offerTabContainer float-right">
@@ -290,45 +291,71 @@
 						</div>
 					</div>
 					<div  id="community" class="tab_content localisationComments">
-                        <div class="communityTabs">
+                        <div class="communityTabs innerDetailTabs">
 							<div class="detailMenu">
-								<ul class="communityTab float-left">
+								<ul class="communityTab innerDetailTab float-left">
 									<li><a href="#comments">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#eworkers">eWorkers</a></li>
+									<li><a href="#eworkers">@Worki.Resources.Views.Localisation.LocalisationString.Eworkers</a></li>
 									<li class="detailMenuEmpty"></li>
-									<li><a href="#social">Réseaux sociaux</a></li>
+									<li><a href="#social">@Worki.Resources.Views.Localisation.LocalisationString.Socials</a></li>
 								</ul>
 							</div>
 							<div class="tab_container communityTabContainer float-right">
 								<div id="comments" class="communityTab_content">
 									<div id="commentFormDiv">
 							            @if (Request.IsAuthenticated)
-							            {
+                                        {
 								            @Html.Partial(MVC.Localisation.Views._CommentForm, new Comment { LocalisationID = Model.ID, Localisation = Model })
-							            }
-							            else
-							            {	
+                                        }
+                                        else
+                                        {	
 								            @Html.ActionLink(Worki.Resources.Views.Account.AccountString.Login, MVC.Account.LogOn(null, Request.RawUrl), new { @class = "orange" })
-							            }
+                                        }
 						            </div>
 						            @{
-							            ViewData[Comment.DisplayRelatedLocalisation] = false;
+                                        ViewData[Comment.DisplayRelatedLocalisation] = false;
 						            }
 						            @foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
-						            {
-							            if (com.Member == null)
-							            {
-								            continue;
-							            }
+                                    {
+                                        if (com.Member == null)
+                                        {
+                                            continue;
+                                        }
 							            @Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
-						            }
+                                    }
 								</div>
 								<div id="eworkers" class="communityTab_content">
-									plop
+                                    <ul>
+									@foreach (var fav in Model.FavoriteLocalisations)
+                                    {
+                                        <li class="innerContentBlock float-left">
+                                            <div class="eworkerImage borderedImg float-left">
+                                                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(fav.Member.MemberMainData.Avatar, true) ?? @Links.Content.images.avatar_png, Model.Member.GetDisplayName())
+                                            </div>
+                                            <div class="eworkerDesc marginl10 float-left">
+                                                <div class="boldLink blue">@Html.ActionLink(fav.Member.GetAnonymousDisplayName(), MVC.Account.Public(fav.Member.MemberId))</div>
+                                                @fav.Member.MemberMainData.GetProfile()<br />
+                                                @Html.Partial(MVC.Dashboard.Shared.Views._SocialLinks, fav.Member.MemberMainData)
+                                            </div>  
+                                            <div class="clear">
+                                            </div>                                          
+                                        </li>
+                                    }
+                                    <div class="clear"></div>
+                                    </ul>
 								</div>
 								<div id="social" class="communityTab_content">
-									plop
+									<div class="fb-comments" data-href="@link" data-num-posts="2" data-width="475"></div>
+                                    <div id="fb-root"></div>
+                                    <script>    (function (d, s, id) {
+                                            var js, fjs = d.getElementsByTagName(s)[0];
+                                            if (d.getElementById(id)) return;
+                                            js = d.createElement(s); js.id = id;
+                                            js.src = "//connect.facebook.net/@Url.GetFBCulture()/all.js#xfbml=1&appId=@WebHelper.GetFacebookId()";
+                                            fjs.parentNode.insertBefore(js, fjs);
+                                        } (document, 'script', 'facebook-jssdk'));
+                                    </script>
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -349,16 +376,18 @@
 	</div>
 </div>
 
-<div class="margint10">
-	<div class="buttonStd buttonBlue linkImg float-right">
+<div class="margint10 float-right">
+	<div class="buttonStd buttonBlue linkImg float-left">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 	</div>
 	@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
-	{
-		<div class="buttonStd buttonBlue linkImg float-right">
+    {
+		<div class="buttonStd buttonBlue linkImg float-left">
 		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
 		</div>
-	}
+    }
+    <div class="buttonStd buttonOrange linkImg float-left">
+        @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.IWorkHere, MVC.Dashboard.Profil.AddToFavorite(Model.ID))</div>
 	<div class="clear">
 	</div>
 </div>

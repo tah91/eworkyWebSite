@@ -66,9 +66,18 @@
     font-size:1.2em;
 }
 
-.localisationShare
+ul.like-buttons
 {
-	margin-top: 10px;
+    list-style: none;
+    padding: 0;
+    margin-top: 30px; 
+}
+
+ul.like-buttons li
+{
+    display: block;
+    float: left;
+    margin-right: 10px;
 }
 
 #favLink
@@ -163,8 +172,8 @@
 {
 	vertical-align:middle;
     height: 20px;
-    padding:5px;
-    margin:5px 0;
+    padding:10px 5px;
+    /*margin:5px 0;*/
     text-align: center;
     border: 1px solid white;
 }
@@ -174,9 +183,17 @@
 	height: 0!important;
 	padding: 0!important;
 	border-top: 1px dashed #CCC!important;
+	margin:0px!important;
 }
 
-.detailMenu li:hover a, .detailMenu li.selected a
+.detailMenu li:hover
+{
+	background-image: -webkit-linear-gradient(top,whiteSmoke,#F8F8F8);
+    background-image: -moz-linear-gradient(top,whiteSmoke,#F8F8F8);
+    background-image: linear-gradient(top,whiteSmoke,#F8F8F8);
+}
+
+.detailMenu li.selected a
 {
 	/*color:#f88f1e;*/
 	/*color:#015b8d;*/
@@ -188,19 +205,18 @@
 	margin:5px 0;
 }
 
-.offerTab
+.innerDetailTab
 {
-	width:19%;
+	width:25%;
 	margin-right: 15px;
 	border-right: 1px dashed #CCC!important;
 }
 
-.offerTabs .tab_container
+.innerDetailTabs .tab_container
 {
-	width: 78%;
+	width: 72%;
 	clear: none;
 	float: right;
-	/*padding-left: 15px;*/
 }
 
 .offerTabContainer .innerContentBlock
@@ -214,25 +230,37 @@
 	margin-top:0;
 }
 
-.communityTab
-{
-	width:19%;
-	margin-right: 15px;
-	border-right: 1px dashed #CCC!important;
-}
-
-.communityTabs .tab_container
-{
-	width: 78%;
-	clear: none;
-	float: right;
-}
-
 .bookingCallAction .buttonStd
 {
     margin : 0;
 }
 
+.workHere
+{
+    width:100px;
+}
+
+#eworkers .innerContentBlock
+{
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.eworkerImage
+{
+    height:64px;
+    width:64px;
+}
+
+.eworkerImage img
+{
+    max-height:64px;
+}
+
+.eworkerDesc
+{
+    width:125px;
+}
 
 /* BOOKING FORM
 ----------------------------------------------------------*/

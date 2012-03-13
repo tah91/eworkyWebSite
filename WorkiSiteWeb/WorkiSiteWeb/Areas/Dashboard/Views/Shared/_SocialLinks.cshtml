@@ -1,0 +1,37 @@
+﻿@model MemberMainData
+
+<ul>
+@if (!string.IsNullOrEmpty(Model.Facebook))
+{   
+	<li class="profil_social float-left">
+		<div class="profil_fb linkImg" title="@Worki.Resources.Views.Profile.ProfileString.FBProfile">
+			<a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank"></a>
+		</div>
+	</li>
+}
+@if (!string.IsNullOrEmpty(Model.Twitter))
+{   
+	<li class="profil_social float-left">
+		<div class="profil_tw linkImg" title="@Worki.Resources.Views.Profile.ProfileString.TwitterProfile">
+			<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank"></a>
+		</div>
+	</li>
+}
+@if (!string.IsNullOrEmpty(Model.Linkedin))
+{   
+	<li class="profil_social float-left">
+		<div class="profil_in linkImg" title="@Worki.Resources.Views.Profile.ProfileString.LinkedInProfile">
+			<a href="@WebHelper.GetWebsite(Model.Linkedin)" target="_blank"></a>
+		</div>
+	</li>
+}
+@if (!string.IsNullOrEmpty(Model.Viadeo))
+{   
+	<li class="profil_social float-left">
+		<div class="profil_viadeo linkImg" title="@Worki.Resources.Views.Profile.ProfileString.ViadeoProfile">
+			<a href="@WebHelper.GetWebsite(Model.Viadeo)" target="_blank"></a>
+		</div>
+	</li>
+}
+<li class="clear"></li>
+</ul>

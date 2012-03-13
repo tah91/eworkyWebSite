@@ -129,19 +129,23 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 		/// <param name="returnUrl">Url to redirect when action done</param>
 		/// <returns>Redirect to returnUrl</returns>
         [AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual PartialViewResult AddToFavorite(int id)
+		public virtual ActionResult AddToFavorite(int id)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var loc = lRepo.Get(id);
 			try
 			{
 				var memberId = WebHelper.GetIdentityId(User.Identity);
                 var member = mRepo.Get(memberId);
 				if (member == null)
 					return null;
-                member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = id });
-
-				context.Commit();
+                if (member.FavoriteLocalisations.Count(fl => fl.LocalisationId == id) == 0)
+                {
+                    member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = id });
+                    context.Commit();
+                }
 			}
 
 			catch (Exception ex)
@@ -150,9 +154,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				_Logger.Error("AddToFavorite", ex);
                 return null;
 			}
-			ViewData[ProfilConstants.AddToFavorite] = false;
-			ViewData[ProfilConstants.DelFavorite] = true;
-			return PartialView(MVC.Shared.Views._AddToFavorite);
+            return Redirect(loc.GetDetailFullUrl(Url));
 		}
 
 		/// <summary>
@@ -189,10 +191,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
                 return null;
 			}
 
-
-			ViewData[ProfilConstants.AddToFavorite] = true;
-			ViewData[ProfilConstants.DelFavorite] = false;
-			return PartialView(MVC.Shared.Views._AddToFavorite);
+			return PartialView(MVC.Shared.Views._AddToFavorite, false);
 		}
 
 		// **************************************

@@ -64,7 +64,7 @@ namespace Worki.Web.Helpers
 		public static string GetUserImagePath(string image, bool thumb = false, string folder = null)
         {
             if (string.IsNullOrEmpty(image))
-                return string.Empty;
+                return null;
 
             if (image.StartsWith("http://") || image.StartsWith("https://"))
             {
@@ -76,7 +76,7 @@ namespace Worki.Web.Helpers
             {
                 var blobContainer = CloudBlobContainerSingleton.Instance.BlobContainer;
                 if (blobContainer == null)
-                    return string.Empty;
+                    return null;
                 var blob = blobContainer.GetBlobReference(fileName);
                 return blob.Uri.AbsoluteUri;
             }

@@ -749,6 +749,7 @@
     <Content Include="Areas\Backoffice\Views\Schedule\DeleteBooking.cshtml" />
     <Content Include="Areas\Backoffice\Views\Schedule\_ScheduleScript.cshtml" />
     <Content Include="Areas\Admin\Views\Member\PendingBO.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_SocialLinks.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>
@@ -972,7 +973,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>8288</DevelopmentServerPort>
+          <DevelopmentServerPort>16280</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

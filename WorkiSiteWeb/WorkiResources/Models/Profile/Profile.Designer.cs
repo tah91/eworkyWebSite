@@ -124,7 +124,7 @@ namespace Worki.Resources.Models.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indépendant (auto-entrepreneur, libéral).
+        ///   Looks up a localized string similar to Indépendant.
         /// </summary>
         public static string Independant {
             get {

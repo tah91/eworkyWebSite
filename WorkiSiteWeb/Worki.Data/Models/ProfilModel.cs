@@ -493,6 +493,11 @@ namespace Worki.Data.Models
             }
         }
 
+        public string GetProfile()
+        {
+            return MemberMainData.GetProfileType(Profile);
+        }
+
         public static Dictionary<int, string> GetProfileTypes()
         {
             return ProfileTypes.ToDictionary(t => t, t => GetProfileType(t));
@@ -651,9 +656,6 @@ namespace Worki.Data.Models
 			FavLoc,
 			AddedLoc
 		}
-
-		public const string AddToFavorite = "AddToFavorite";
-		public const string DelFavorite = "DelFavorite";
 
 		public enum ProfilItem
 		{

@@ -160,6 +160,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Communauté.
+        /// </summary>
+        public static string Community {
+            get {
+                return ResourceManager.GetString("Community", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacter cet espace.
         /// </summary>
         public static string ContactThisSpaceAction {
@@ -223,6 +232,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eWorkers.
+        /// </summary>
+        public static string Eworkers {
+            get {
+                return ResourceManager.GetString("Eworkers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L&apos;avis des eWorkers.
         /// </summary>
         public static string EworkersOpinion {
@@ -273,6 +291,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string Index {
             get {
                 return ResourceManager.GetString("Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Je travailles ici.
+        /// </summary>
+        public static string IWorkHere {
+            get {
+                return ResourceManager.GetString("IWorkHere", resourceCulture);
             }
         }
         
@@ -439,6 +466,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offres.
+        /// </summary>
+        public static string Offers {
+            get {
+                return ResourceManager.GetString("Offers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hors ligne.
         /// </summary>
         public static string Offline {
@@ -453,6 +489,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string Online {
             get {
                 return ResourceManager.GetString("Online", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vue d&apos;ensemble.
+        /// </summary>
+        public static string Overview {
+            get {
+                return ResourceManager.GetString("Overview", resourceCulture);
             }
         }
         
@@ -498,6 +543,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string ShowContactInfo {
             get {
                 return ResourceManager.GetString("ShowContactInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Réseaux sociaux.
+        /// </summary>
+        public static string Socials {
+            get {
+                return ResourceManager.GetString("Socials", resourceCulture);
             }
         }
         

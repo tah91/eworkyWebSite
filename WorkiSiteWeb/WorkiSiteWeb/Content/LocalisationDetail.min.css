@@ -8,7 +8,8 @@
 .localisationName{font-size:2em}
 .localisationDesc{margin-bottom:10px}
 .localisationCity{font-size:1.2em}
-.localisationShare{margin-top:10px}
+ul.like-buttons{list-style:none;padding:0;margin-top:30px}
+ul.like-buttons li{display:block;float:left;margin-right:10px}
 #favLink{margin-left:10px;display:inline-block}
 .localisationDetailLeft{width:68.5%}
 .localisationDetailRight{width:27%}
@@ -25,17 +26,21 @@
 .detailTabs .horizontalMenu li.selected{background:0}
 .detailTabContent{margin-top:10px}
 .detailMenu a{text-decoration:none;display:block;color:gray}
-.detailMenu li{vertical-align:middle;height:20px;padding:5px;margin:5px 0;text-align:center;border:1px solid white}
-.detailMenuEmpty{height:0!important;padding:0!important;border-top:1px dashed #CCC!important}
-.detailMenu li:hover a,.detailMenu li.selected a{font-weight:bold}
+.detailMenu li{vertical-align:middle;height:20px;padding:10px 5px;text-align:center;border:1px solid white}
+.detailMenuEmpty{height:0!important;padding:0!important;border-top:1px dashed #CCC!important;margin:0!important}
+.detailMenu li:hover{background-image:-webkit-linear-gradient(top,whiteSmoke,#F8F8F8);background-image:-moz-linear-gradient(top,whiteSmoke,#F8F8F8);background-image:linear-gradient(top,whiteSmoke,#F8F8F8)}
+.detailMenu li.selected a{font-weight:bold}
 .offerPrice ul li{margin:5px 0}
-.offerTab{width:19%;margin-right:15px;border-right:1px dashed #CCC!important}
-.offerTabs .tab_container{width:78%;clear:none;float:right}
+.innerDetailTab{width:25%;margin-right:15px;border-right:1px dashed #CCC!important}
+.innerDetailTabs .tab_container{width:72%;clear:none;float:right}
 .offerTabContainer .innerContentBlock{margin-left:0;margin-right:0}
 .offerTabContainer .innerContentBlock:first-child{margin-top:0}
-.communityTab{width:19%;margin-right:15px;border-right:1px dashed #CCC!important}
-.communityTabs .tab_container{width:78%;clear:none;float:right}
 .bookingCallAction .buttonStd{margin:0}
+.workHere{width:100px}
+#eworkers .innerContentBlock{margin-top:0;margin-left:0}
+.eworkerImage{height:64px;width:64px}
+.eworkerImage img{max-height:64px}
+.eworkerDesc{width:125px}
 .bookingFormTable td{height:30px}
 .bookingFormTable td:first-child{padding-right:50px}
 .bookingFormTable input[type="text"],.bookingFormTable textarea{width:400px}

@@ -130,19 +130,6 @@
 		</div>
         @{
             var culture = Url.GetCulture();
-            var fbCulture = string.Empty;
-            switch (culture)
-            {
-                case Worki.Infrastructure.Culture.en:
-                    fbCulture = "en_US";
-                    break;
-                case Worki.Infrastructure.Culture.fr:
-                    fbCulture = "fr_FR";
-                    break;
-                case Worki.Infrastructure.Culture.es:
-                    fbCulture = "es_ES";
-                    break;
-            }
             if (culture == Worki.Infrastructure.Culture.fr)
 			{
 				Html.RenderAction(MVC.Home.BlogContainer());
@@ -154,7 +141,7 @@
 					var js, fjs = d.getElementsByTagName(s)[0];
 					if (d.getElementById(id)) { return; }
 					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/@fbCulture/all.js#xfbml=1&appId=@WebHelper.GetFacebookId()";
+					js.src = "//connect.facebook.net/@Url.GetFBCulture()/all.js#xfbml=1&appId=@WebHelper.GetFacebookId()";
 					fjs.parentNode.insertBefore(js, fjs);
 				} (document, 'script', 'facebook-jssdk'));
 			</script>

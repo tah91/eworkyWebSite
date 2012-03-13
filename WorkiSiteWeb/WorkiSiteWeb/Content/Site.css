@@ -987,7 +987,7 @@ div.pagerTop
 #detailMap 
 {
 	/*position: relative; */
-	width: 625px;
+	width: 655px;
 	height: 280px;
 }
 
@@ -2551,4 +2551,3 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 {
     border-bottom: 1px dashed #5DAFDE !important;
 }
-

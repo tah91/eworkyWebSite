@@ -4427,8 +4427,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.PartialViewResult AddToFavorite() {
-            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AddToFavorite);
+        public System.Web.Mvc.ActionResult AddToFavorite() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AddToFavorite);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -4481,8 +4481,8 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AddToFavorite(int id) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AddToFavorite);
+        public override System.Web.Mvc.ActionResult AddToFavorite(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddToFavorite);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
@@ -4524,6 +4524,7 @@ namespace T4MVC.Dashboard {
             public readonly string _NewsContent = "~/Areas/Dashboard/Views/Shared/_NewsContent.cshtml";
             public readonly string _QuotationItem = "~/Areas/Dashboard/Views/Shared/_QuotationItem.cshtml";
             public readonly string _QuotationList = "~/Areas/Dashboard/Views/Shared/_QuotationList.cshtml";
+            public readonly string _SocialLinks = "~/Areas/Dashboard/Views/Shared/_SocialLinks.cshtml";
             public readonly string _SummaryContent = "~/Areas/Dashboard/Views/Shared/_SummaryContent.cshtml";
         }
     }

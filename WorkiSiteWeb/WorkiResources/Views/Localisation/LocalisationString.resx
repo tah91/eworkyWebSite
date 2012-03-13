@@ -119,7 +119,8 @@
   </resheader>
   <data name="Add" xml:space="preserve">
     <value>Ajouter un espace</value>
-  <comment>Jm modil L.12</comment></data>
+    <comment>Jm modil L.12</comment>
+  </data>
   <data name="ComfirmDelete" xml:space="preserve">
     <value>Confirmer la suppression:</value>
   </data>
@@ -292,5 +293,23 @@
   </data>
   <data name="ShowContactInfo" xml:space="preserve">
     <value>Afficher les informations</value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value>Communauté</value>
+  </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
+  <data name="IWorkHere" xml:space="preserve">
+    <value>Je travailles ici</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Offres</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Vue d'ensemble</value>
+  </data>
+  <data name="Socials" xml:space="preserve">
+    <value>Réseaux sociaux</value>
   </data>
 </root>

@@ -1,25 +1,13 @@
-﻿@{
-	var add = false;
-	var del = false;
-	if (ViewData.ContainsKey(ProfilConstants.AddToFavorite))
-	{
-		add = (bool)ViewData[ProfilConstants.AddToFavorite]; 
-	}
-	if (ViewData.ContainsKey(ProfilConstants.DelFavorite))
-	{
-		del = (bool)ViewData[ProfilConstants.DelFavorite];
-	}
-}
+﻿@model bool
 
-
-@if (add)
+@if (!Model)
 { 
 <div class="favoris_add linkImg" title="@Worki.Resources.Views.Shared.SharedString.AddToFav">
 	<a id="favLinkAddButton" href="javascript:void(0)"></a>
 	@*@Html.ActionLink(" ", MVC.Profil.AddToFavorite(User.Identity.Name, Model.ID, ViewContext.HttpContext.Request.Url.PathAndQuery), new { @class =  })*@
 </div>
 }
-@if (del)
+else
 { 
 <div class="favoris_del linkImg" title="@Worki.Resources.Views.Shared.SharedString.DelFromFav">
 	<a id="favLinkDelButton" href="javascript:void(0)"></a>
