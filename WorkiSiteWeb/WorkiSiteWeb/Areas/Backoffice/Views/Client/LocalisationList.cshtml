@@ -22,6 +22,9 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock tableStyle">
+			@{
+				ViewData["LocId"] = Model.LocalisationModelId;
+			}
 			@Html.Partial(MVC.Backoffice.Client.Views._Clients, Model.InnerModel.List)
 			<div class="pager">
 				@Html.PageLinks(Model.InnerModel.PagingInfo, x => Url.Action(MVC.Backoffice.Client.LocalisationList(Model.LocalisationModelId, x)))

@@ -531,6 +531,9 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avatar_png = Url("avatar.png");
+            public static readonly string bandeLeft_png = Url("bandeLeft.png");
+            public static readonly string bandeMiddle_png = Url("bandeMiddle.png");
+            public static readonly string bandeRight_png = Url("bandeRight.png");
             public static readonly string cecilia_png = Url("cecilia.png");
             public static readonly string checked_png = Url("checked.png");
             public static readonly string comm_content_png = Url("comm_content.png");
@@ -544,6 +547,7 @@ namespace Links {
             public static readonly string flags_png = Url("flags.png");
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
+            public static readonly string footernew_png = Url("footernew.png");
             public static readonly string geoloc_png = Url("geoloc.png");
             public static readonly string homeLogo1_png = Url("homeLogo1.png");
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
@@ -3085,6 +3089,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Edit() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Invoices() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Invoices);
         }
@@ -3119,6 +3128,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             public readonly string List = "List";
             public readonly string LocalisationList = "LocalisationList";
             public readonly string Add = "Add";
+            public readonly string Edit = "Edit";
             public readonly string Invoices = "Invoices";
             public readonly string GetMonthSummary = "GetMonthSummary";
             public readonly string GetInvoice = "GetInvoice";
@@ -3168,6 +3178,21 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
         public override System.Web.Mvc.ActionResult Add(int id, Worki.Web.Model.LocalisationModel<Worki.Data.Models.ProfilFormViewModel> formData) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Add);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id, int clientId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("clientId", clientId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id, int clientId, Worki.Web.Model.LocalisationModel<Worki.Data.Models.ProfilFormViewModel> formData) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("clientId", clientId);
             callInfo.RouteValueDictionary.Add("formData", formData);
             return callInfo;
         }

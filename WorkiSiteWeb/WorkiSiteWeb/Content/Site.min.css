@@ -176,7 +176,7 @@ table tr.row-alternate{background-color:#E4E4E4}
 .titleDivLeft{background:url(images/bandeLeft.png) no-repeat;height:44px;width:25px}
 .titleDiv{background:url(images/bandeMiddle.png) repeat no-repeat;height:44px;min-width:120px;color:white;padding-right:20px;padding-top:2px}
 .titleDivRight{background:url(images/bandeRight.png) no-repeat;height:44px;width:20px}
-.titleDiv h1{margin:0;font-size:1.6em;text-shadow:2px -2px 1px #5DAFDE}
+.titleDiv h1{margin:0;font-size:1.5em;text-shadow:2px -2px 1px #5DAFDE}
 .titleGreen{background-color:#bbd31f}
 .titleGreen:after{border-color:#bbd31f transparent}
 .titleOrange{background-color:#f7a33a}

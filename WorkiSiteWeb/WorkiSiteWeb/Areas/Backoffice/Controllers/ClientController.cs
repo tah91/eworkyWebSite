@@ -195,6 +195,68 @@ namespace Worki.Web.Areas.Backoffice.Controllers
             return View(formData);
         }
 
+		/// <summary>
+		/// Get action method to edit a client
+		/// </summary>
+		/// <param name="id">localisation id</param>
+		/// <param name="clientId">client id</param>
+		/// <returns>View containing the client data</returns>
+		[AcceptVerbs(HttpVerbs.Get)]
+		public virtual ActionResult Edit(int id, int clientId)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var client = mRepo.Get(clientId);
+			if (client == null)
+			{
+				return View(MVC.Shared.Views.Error);
+			}
+			var innerModel = new ProfilFormViewModel { Member = client };
+			return View(MVC.Backoffice.Client.Views.Add, new LocalisationModel<ProfilFormViewModel> { InnerModel = innerModel, LocalisationModelId = id });
+		}
+
+		/// <summary>
+		/// Post action method to edit a client
+		/// </summary>
+		/// <returns>Redirect to client list if ok</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		[ValidateOnlyIncomingValues]
+		public virtual ActionResult Edit(int id, int clientId, LocalisationModel<ProfilFormViewModel> formData)
+		{
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					var context = ModelFactory.GetUnitOfWork();
+					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+					var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+					var localisation = lRepo.Get(id);
+					var client = mRepo.Get(clientId);
+					try
+					{
+						UpdateModel(client, "InnerModel.Member");
+						context.Commit();
+					}
+					catch (Exception ex)
+					{
+						_Logger.Error(ex.Message);
+						context.Complete();
+						throw ex;
+					}
+
+					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.ClientAdded;
+					return RedirectToAction(MVC.Backoffice.Client.LocalisationList(id, null));
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("Edit", ex);
+					ModelState.AddModelError("", ex.Message);
+				}
+			}
+			return View(MVC.Backoffice.Client.Views.Add, formData);
+		}
+
 		#region Invoices
 
 		/// <summary>

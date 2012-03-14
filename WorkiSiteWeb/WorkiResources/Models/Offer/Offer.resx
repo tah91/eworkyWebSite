@@ -141,6 +141,9 @@
   <data name="AvailableFromFor" xml:space="preserve">
     <value>Disponible à partir du {0} pour {1} {2}</value>
   </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Espèces</value>
+  </data>
   <data name="Check" xml:space="preserve">
     <value>Chèque</value>
   </data>
@@ -230,6 +233,9 @@
   </data>
   <data name="SingleYear" xml:space="preserve">
     <value>an</value>
+  </data>
+  <data name="Transfert" xml:space="preserve">
+    <value>Virement</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type d'offre</value>

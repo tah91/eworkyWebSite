@@ -22,7 +22,11 @@
 	</div>
 
 	<div class="contentRight blockContainer float-left">
-        @using (Html.BeginForm(MVC.Backoffice.Client.ActionNames.Add, MVC.Backoffice.Client.Name, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))
+		@{
+			var edit = Model.InnerModel.Member.MemberId != 0;
+		}
+        @*@using (Html.BeginForm(edit ? MVC.Backoffice.Client.ActionNames.Edit : MVC.Backoffice.Client.ActionNames.Add, MVC.Backoffice.Client.Name, FormMethod.Post, new { enctype = "multipart/form-data", id = "profilEditForm" }))*@
+		@using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 			@Html.HiddenFor(m => m.LocalisationModelId)
@@ -123,6 +127,30 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBoxFor(m => m.InnerModel.Member.MemberMainData.Country)
+                                </div>
+                            </td>
+                        </tr>
+						<tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.InnerModel.Member.MemberMainData.CompanyName)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.InnerModel.Member.MemberMainData.CompanyName)
+                                </div>
+                            </td>
+                        </tr>
+						<tr>
+                            <td>
+                                <div class="editor-label">
+                                    @Html.LabelFor(m => m.InnerModel.Member.MemberMainData.TaxNumber)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.InnerModel.Member.MemberMainData.TaxNumber)
                                 </div>
                             </td>
                         </tr>

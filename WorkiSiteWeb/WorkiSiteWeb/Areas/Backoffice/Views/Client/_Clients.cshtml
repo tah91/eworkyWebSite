@@ -21,6 +21,9 @@
         </tr>
     </thead>
     <tbody>
+	@{
+		var locId = ViewData.ContainsKey("LocId") ? (int)ViewData["LocId"] : -1;
+	}
     @foreach (var item in Model)
     {
         <tr>
@@ -38,6 +41,11 @@
             </td>
             <td>
                 @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Access, MVC.Account.Public(item.MemberId), new { @class = "blue" })
+				@if (locId != -1)
+				{
+					<span> | </span>
+					@Html.ActionLink("Editer", MVC.Backoffice.Client.Edit(locId, item.MemberId), new { @class = "blue" });
+				}
             </td>
         </tr>
     }
