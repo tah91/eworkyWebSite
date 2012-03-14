@@ -5,6 +5,8 @@
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Home.ShareOffice.ShareOfficeMenu)</title>
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.ShareOffice.ShareOfficeTitle, "Blue")
+
 <div class="detailContent">
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Home.Views._HowItWorksMenu, TutorialPages.SharedOffice)
@@ -12,8 +14,7 @@
 
     <div class="float-left blockContainer contentRight">
         <div class="contentBlock">
-        
-            <h1 class="howitWorksHead blue">@Worki.Resources.Views.Home.ShareOffice.ShareOfficeTitle</h1>
+
 		    <div class="innerContentBlock sharedOfficePart float-left">
 			    <h2 class="howitWorksHeader marginb20 borderRadius">@Worki.Resources.Views.Home.ShareOffice.ForOwner</h2>
 

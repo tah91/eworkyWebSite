@@ -145,7 +145,10 @@
 					<ul class="detailTab">
 						<li><a href="#overview" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Overview</a></li>
 						<li><a href="#acces" class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</a></li>
-						<li><a href="#offers" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Offers</a></li>
+						@if (!Model.IsFreeLocalisation())
+						{
+							<li><a href="#offers" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Offers</a></li>
+						}
 						<li><a href="#community" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Community</a></li>
 					</ul>
 				</div>

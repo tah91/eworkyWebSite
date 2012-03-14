@@ -1172,7 +1172,7 @@ table tr.row-alternate
 
 /* TITLE  
 ----------------------------------------------------------*/
-.titleDiv
+/*.titleDiv
 {
     position:relative;
 	color:White;
@@ -1193,12 +1193,47 @@ table tr.row-alternate
     border-style: solid;
     display: block;
     width: 0;
+}*/
+
+.titleDivContainer
+{
+	border-bottom:1px dashed #ccc;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+}
+
+.titleDivLeft
+{
+	background: url(images/bandeLeft.png) no-repeat;
+	height:44px;
+	width:25px;
+}
+
+.titleDiv
+{
+	background: url(images/bandeMiddle.png) repeat no-repeat;
+	height:44px;
+	min-width: 120px;
+	color: white;
+	padding-right: 20px;
+	padding-top: 2px;
+}
+
+.titleDivRight
+{
+	background: url(images/bandeRight.png) no-repeat;
+	height:44px;
+	width:20px;
 }
 
 .titleDiv h1
 {
-	font-size:1.2em;
-	margin:0;
+	/*font-size:1.2em;*/
+	margin: 0;
+	font-size: 1.6em;
+	text-shadow: 2px -2px 1px #5DAFDE;
+	/*font-family: georgia;
+	text-transform: uppercase;*/
 }
 
 .titleGreen

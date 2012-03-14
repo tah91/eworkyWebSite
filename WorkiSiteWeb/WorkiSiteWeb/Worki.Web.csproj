@@ -339,11 +339,15 @@
     <Content Include="Content\images\addPlace.png" />
     <Content Include="Content\images\arrow_red.png" />
     <Content Include="Content\images\avatar.png" />
+    <Content Include="Content\images\bandeLeft.png" />
+    <Content Include="Content\images\bandeMiddle.png" />
+    <Content Include="Content\images\bandeRight.png" />
     <Content Include="Content\images\checked.png" />
     <Content Include="Content\images\cecilia.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\fb_sprite.png" />
     <Content Include="Content\images\flags.png" />
+    <Content Include="Content\images\footernew.png" />
     <Content Include="Content\images\geoloc.png" />
     <Content Include="Content\images\homeLogo1.png" />
     <Content Include="Content\images\homeLogo2.png" />

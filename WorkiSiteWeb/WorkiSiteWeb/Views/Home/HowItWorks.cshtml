@@ -5,6 +5,8 @@
 	<title>@Html.WorkiTitle(Worki.Resources.Views.Home.HowItWorksString.HowItWorks)</title>
 }
 
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Home.HowItWorksString.HowItWorksHead, "Blue")
+
 <div class="detailContent">
 	<div class="blockContainer float-left contentLeft">
 		@Html.Partial(MVC.Home.Views._HowItWorksMenu, TutorialPages.HowItWorks)
@@ -13,7 +15,6 @@
     <div class="float-left blockContainer contentRight">
         <div class="contentBlock">
         
-            <h1 class="howitWorksHead blue">@Worki.Resources.Views.Home.HowItWorksString.HowItWorksHead</h1>
 		    <div class="innerContentBlock howitWorks howitWorksPart float-left">
 			    <h2 class="howitWorksHeader borderRadius">@Worki.Resources.Views.Home.HowItWorksString.UserTitle</h2>
 
