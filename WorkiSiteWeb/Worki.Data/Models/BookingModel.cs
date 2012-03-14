@@ -743,8 +743,6 @@ namespace Worki.Data.Models
 
 		public string TaxNumber { get; set; }
 
-		public string SiretNumber { get; set; }
-
 		#endregion
 
 		public InvoiceSummary(InvoiceModel invoice)
@@ -758,7 +756,6 @@ namespace Worki.Data.Models
 			FirstName = booking.Client.MemberMainData.FirstName;
 			Address = booking.Client.MemberMainData.City;
 			TaxNumber = booking.Client.MemberMainData.TaxNumber;
-			SiretNumber = booking.Client.MemberMainData.SiretNumber;
 			PaymentType = Offer.GetPaymentTypeEnumType(booking.PaymentType);
 			InvoiceNumber = booking.Id.ToString();
 			Description = booking.Offer.Name;

@@ -341,22 +341,26 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
 
-				var grid = new System.Web.UI.WebControls.GridView();
-
-				grid.DataSource = bookings.Select(mb => new InvoiceSummary(mb));
-				grid.DataBind();
-
-				Response.ClearContent();
-				Response.AddHeader("content-disposition", "attachment; filename=YourFileName.xls");
-				Response.Charset = "";
-				Response.ContentType = "application/excel";
 				StringWriter sw = new StringWriter();
-				HtmlTextWriter htw = new HtmlTextWriter(sw);
-				grid.RenderControl(htw);
-				Response.Write(sw.ToString());
-				Response.End();
 
-				return Content("plop");
+				//First line for column names
+				sw.WriteLine("\"ID\";\"Date\";\"Description\"");
+
+				foreach (var item in bookings.Select(mb => new InvoiceSummary(mb)))
+				{
+					sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\"",
+											   item.InvoiceNumber,
+											   item.Date,
+											   item.Description));
+				}
+
+				Response.AddHeader("Content-Disposition", "attachment; filename=test.csv");
+				Response.ContentType = "text/csv";
+				Response.ContentEncoding = System.Text.Encoding.GetEncoding("utf-8");
+				Response.Write(sw);
+				Response.End(); 
+
+				return Content("GetMonthSummary");
 			}
 			catch (Exception ex)
 			{
