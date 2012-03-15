@@ -293,4 +293,22 @@
   <data name="ShowContactInfo" xml:space="preserve">
     <value>Consultar los detalles</value>
   </data>
+  <data name="Community" xml:space="preserve">
+    <value>Comunidad</value>
+  </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
+  <data name="IWorkHere" xml:space="preserve">
+    <value>Trabajo  aquí</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Oferta</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Descripción general</value>
+  </data>
+  <data name="Socials" xml:space="preserve">
+    <value>Redes sociales</value>
+  </data>
 </root>

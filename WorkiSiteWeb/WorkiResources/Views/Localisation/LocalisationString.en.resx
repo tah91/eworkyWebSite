@@ -292,4 +292,22 @@ Your message will be directly  forwarded to the space owner.</value>
   <data name="ShowContactInfo" xml:space="preserve">
     <value>Show details</value>
   </data>
+  <data name="Community" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
+  </data>
+  <data name="IWorkHere" xml:space="preserve">
+    <value>I work here</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Offers</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>General view</value>
+  </data>
+  <data name="Socials" xml:space="preserve">
+    <value>Social networks</value>
+  </data>
 </root>
