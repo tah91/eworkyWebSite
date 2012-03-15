@@ -1197,8 +1197,8 @@ table tr.row-alternate
 
 .titleDivContainer
 {
-	border-bottom:1px dashed #ccc;
-	padding-bottom: 5px;
+	/*border-bottom:1px dashed #ccc;
+	padding-bottom: 5px;*/
 	margin-bottom: 20px;
 }
 
@@ -1211,12 +1211,11 @@ table tr.row-alternate
 
 .titleDiv
 {
-	background: url(images/bandeMiddle.png) repeat no-repeat;
-	height:44px;
+	background: #68bdda;/*url(images/bandeMiddle.png) repeat no-repeat;*/
+	height:30px;
 	min-width: 120px;
 	color: white;
-	padding-right: 20px;
-	padding-top: 2px;
+	padding:4px 10px 0 10px;
 }
 
 .titleDivRight
