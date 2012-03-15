@@ -26,7 +26,7 @@ $(".toogle_trigger_click").click(function () {
     return false; //Prevent the browser jump to the link anchor
 });
 
-function InitTab(tabId, tabItem, tabContent) {
+function InitTab(tabId, tabItem, tabContent, callback) {
 
 	var tabItemClass = (tabItem || ".tabs");
 	var tabContentClass = (tabContent || ".tab_content");
@@ -39,13 +39,18 @@ function InitTab(tabId, tabItem, tabContent) {
     //On Click Event
 	$(tabId + " ul" + tabItemClass + " li").click(function () {
 
-		$(tabId + " ul" + tabItemClass + " li").removeClass("selected"); //Remove any "active" class
-		$(this).addClass("selected"); //Add "active" class to selected tab
-        $(tabId + " " + tabContentClass).addClass(hiddenClass); //hide(); //Hide all tab content
+	    $(tabId + " ul" + tabItemClass + " li").removeClass("selected"); //Remove any "active" class
+	    $(this).addClass("selected"); //Add "active" class to selected tab
+	    $(tabId + " " + tabContentClass).addClass(hiddenClass); //hide(); //Hide all tab content
 
-        var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-        $(activeTab).removeClass(hiddenClass);//.fadeIn(); //Fade in the active ID content
-        return false;
-    });
+	    var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+	    $(activeTab).removeClass(hiddenClass); //.fadeIn(); //Fade in the active ID content
+
+	    if (callback != null) {
+	        callback.call();
+	    }
+
+	    return false;
+	});
 
 };

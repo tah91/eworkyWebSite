@@ -66,14 +66,30 @@
             BindRateIt("RatingWelcome");
         });
 
+        var resetDashed = function () {
+            var count = $('.blockContainer').size();
+            if (count > 1) {
+                $('.blockContainer').removeClass('dashedRight');
+                $('.blockContainer').removeClass('dashedLeft');
+                var firstHeight = $('.blockContainer').first().height();
+                var lastHeight = $('.blockContainer').last().height();
+                if (firstHeight > lastHeight) {
+                    $('.blockContainer').first().addClass('dashedRight');
+                }
+                else {
+                    $('.blockContainer').last().addClass('dashedLeft');
+                }
+            }
+        }; 
+ 
         require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
-        	InitTab(".detailTabs", ".detailTab");
-        	InitTab(".offerTabs", ".offerTab", ".offerTab_content");
-        	InitTab(".communityTabs", ".communityTab", ".communityTab_content");
+            InitTab(".detailTabs", ".detailTab", null, resetDashed);
+            InitTab(".offerTabs", ".offerTab", ".offerTab_content", resetDashed);
+            InitTab(".communityTabs", ".communityTab", ".communityTab_content", resetDashed);
         });
 
         require(["https://apis.google.com/js/plusone.js"], function () {
-            { lang: 'fr' }
+            { lang: '@Url.GetCulture().ToString()' }
         });
     </script>
 	@Html.Partial(MVC.Localisation.Views._CommentFormScript, Model.Localisation)

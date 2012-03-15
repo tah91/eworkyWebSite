@@ -75,12 +75,36 @@
 </div>
 <div class="contentBlock">
 	<h3 class="blue">Contact</h3>
-	<div class="commentAvatar borderedImg float-left">
-	@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true) ?? @Links.Content.images.avatar_png, Model.Member.GetDisplayName())
-	</div>
-    <div class="float-left">
-        <div class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</div>
-        <div id="contactContent">
+    @if (Model.HasOwner())
+    {
+     	<div class="commentAvatar borderedImg float-left">
+	    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true) ?? @Links.Content.images.avatar_png, Model.Member.GetDisplayName())
+	    </div>
+        <div class="float-left">
+            <div class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</div>
+            <div id="contactContent">
+		        <a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
+		        <script type="text/javascript">
+			        require.ready(function () {
+				        $("#showContactContent").click(function () {
+					        $.ajax({
+						        url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
+						        data: { 'id': @Model.ID },
+						        success: function (data) {
+							        $("#contactContent").hide().html(data).fadeIn();
+						        }
+					        });
+				        });
+			        });
+		        </script>
+	        </div>
+        </div>
+	    <div class="clear">
+	    </div>    
+    }
+    else
+    {
+         <div id="contactContent">
 		    <a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
 		    <script type="text/javascript">
 			    require.ready(function () {
@@ -96,9 +120,8 @@
 			    });
 		    </script>
 	    </div>
-    </div>
-	<div class="clear">
-	</div>
+    }
+
 </div>
 @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 {

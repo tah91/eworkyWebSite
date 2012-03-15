@@ -35,5 +35,9 @@
 }
 else
 {
-	<span>@Worki.Resources.Views.Localisation.LocalisationString.YouKnowContactUs</span>
+	<span>@Worki.Resources.Views.Localisation.LocalisationString.YouKnowContactUs</span><br />
+    if (!Model.HasOwner())
+	{
+		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID), new { @class = "orange" })<br />
+    }
 }
