@@ -827,6 +827,12 @@ namespace Worki.Data.Models
             return toRet;
         }
 
+        public IList<MemberBooking> GetPaidBookings()
+        {
+            var bookings = GetBookings();
+            return bookings.Where(b => b.StatusId == (int)MemberBooking.Status.Paid).ToList();
+        }
+
 		/// <summary>
 		/// true if one offer can be bookable
 		/// </summary>

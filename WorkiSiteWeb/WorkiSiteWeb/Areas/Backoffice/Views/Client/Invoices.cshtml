@@ -22,7 +22,7 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock tableStyle">
-			@Html.ActionLink("plop", MVC.Backoffice.Client.GetMonthSummary(Model.Localisation.ID, Model.Bookings.Current.ToString()))
+            @Html.ActionLink(Worki.Resources.Models.Booking.Invoice.GenerateArchive, MVC.Backoffice.Client.GetMonthSummary(Model.Localisation.ID, Model.Bookings.Current.ToString()), new { @class = "orange" })
             <table>
                 <thead>
                     <tr>
@@ -78,6 +78,7 @@
 				@Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceEmpty
 			</div>	
 			}
+            
 			<div class="pager">
                 @Html.MonthYearLinks(Model.Bookings.Current, Model.Bookings.Initial, x => Url.Action(MVC.Backoffice.Client.Invoices(Model.Localisation.ID, x)))
             </div>

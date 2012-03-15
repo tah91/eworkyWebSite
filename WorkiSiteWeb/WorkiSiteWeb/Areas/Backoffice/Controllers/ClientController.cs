@@ -286,7 +286,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				}
 
 				var localisation = lRepo.Get(id);
-				var bookings = localisation.GetBookings().Where(b => b.StatusId == (int)MemberBooking.Status.Accepted).ToList();
+                var bookings = localisation.GetPaidBookings();
 				var initial = bookings.Count != 0 ? bookings.Where(b => b.CreationDate != DateTime.MinValue).Select(b => b.CreationDate).Min() : DateTime.Now;
 
 				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
@@ -337,26 +337,52 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				}
 
 				var localisation = lRepo.Get(id);
-				var bookings = localisation.GetBookings().Where(b => b.StatusId == (int)MemberBooking.Status.Accepted).ToList();
+                var bookings = localisation.GetPaidBookings();
 
 				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
 
 				StringWriter sw = new StringWriter();
 
 				//First line for column names
-				sw.WriteLine("\"ID\";\"Date\";\"Description\"");
+                var columns = "\""+Worki.Resources.Models.Contact.Contact.LastName+"\";";
+                columns+=  "\""+Worki.Resources.Models.Contact.Contact.FirstName+"\";";
+                columns += "\"" + Worki.Resources.Models.Booking.Invoice.InvoiceId + "\";";
+                columns += "\"" + Worki.Resources.Models.Booking.Invoice.Paid + "\";";
+                columns += "\"" + Worki.Resources.Models.Booking.Invoice.Price + "\";";
+                columns += "\"" + Worki.Resources.Models.Booking.Invoice.TaxRate + "\";";
+                columns += "\"" + Worki.Resources.Models.Booking.Invoice.Description + "\";";
+                columns += "\"" + Worki.Resources.Models.Booking.Invoice.DateColumn + "\";";
+                columns += "\"" + Worki.Resources.Models.Booking.Invoice.PaymentType + "\";";
+                columns += "\"" + Worki.Resources.Models.Profile.Profile.CompanyName + "\";";
+                columns += "\"" + Worki.Resources.Models.Profile.Profile.Address + "\";";
+                columns += "\"" + Worki.Resources.Models.Profile.Profile.TaxNumber + "\";";
+
+                sw.WriteLine(columns);
 
 				foreach (var item in bookings.Select(mb => new InvoiceSummary(mb)))
 				{
-					sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\"",
-											   item.InvoiceNumber,
-											   item.Date,
-											   item.Description));
+                    sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";",
+											   item.LastName,
+                                               item.FirstName,
+                                               item.InvoiceNumber,
+                                               item.Paid,
+                                               item.Amount.ToString("0.00"),
+                                               item.Tax.ToString("0.00"),
+                                               item.Description,
+                                               item.Date,
+                                               item.PaymentType,
+                                               item.Company,
+                                               item.Address,
+                                               item.TaxNumber));
 				}
 
-				Response.AddHeader("Content-Disposition", "attachment; filename=test.csv");
+                sw.Write('\r');
+                sw.Write('\n');
+
+                var name = string.Format(Worki.Resources.Models.Booking.Invoice.Archive, date);
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + name + ".csv");
 				Response.ContentType = "text/csv";
-				Response.ContentEncoding = System.Text.Encoding.GetEncoding("utf-8");
+				Response.ContentEncoding = System.Text.Encoding.Unicode;
 				Response.Write(sw);
 				Response.End(); 
 

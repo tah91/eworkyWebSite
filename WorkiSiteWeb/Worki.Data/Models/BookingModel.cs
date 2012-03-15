@@ -725,7 +725,7 @@ namespace Worki.Data.Models
 
 		public string InvoiceNumber { get; set; }
 
-		public bool Paid { get; set; }
+		public string Paid { get; set; }
 
 		public decimal Amount { get; set; }
 
@@ -754,14 +754,15 @@ namespace Worki.Data.Models
 		{
 			LastName = booking.Client.MemberMainData.LastName;
 			FirstName = booking.Client.MemberMainData.FirstName;
-			Address = booking.Client.MemberMainData.City;
+            Address = booking.Client.MemberMainData.Address + " " + booking.Client.MemberMainData.City;
 			TaxNumber = booking.Client.MemberMainData.TaxNumber;
+            Date = CultureHelpers.GetSpecificFormat(booking.PaidDate, CultureHelpers.TimeFormat.Date);
 			PaymentType = Offer.GetPaymentTypeEnumType(booking.PaymentType);
 			InvoiceNumber = booking.Id.ToString();
 			Description = booking.Offer.Name;
-			Amount = booking.Price;
+            Amount = booking.Price;
 			Tax = Amount * booking.Offer.Localisation.Member.MemberMainData.TaxRate / 100;
-			Paid = booking.Paid;
+            Paid = booking.Paid ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No;
 		}
 	}
 

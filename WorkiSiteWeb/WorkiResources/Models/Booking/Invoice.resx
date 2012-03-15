@@ -120,6 +120,9 @@
   <data name="AddInvoiceItem" xml:space="preserve">
     <value>Ajouter un élément</value>
   </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archive {0}</value>
+  </data>
   <data name="BeforeCreateInvoice" xml:space="preserve">
     <value>Avant de créer une facture, vous pouvez compléter vos informations de facturation {0}</value>
   </data>
@@ -132,14 +135,23 @@
   <data name="Date" xml:space="preserve">
     <value>Date : {0}</value>
   </data>
+  <data name="DateColumn" xml:space="preserve">
+    <value>Date</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="GenerateArchive" xml:space="preserve">
+    <value>Archive facturation</value>
   </data>
   <data name="InvoiceId" xml:space="preserve">
     <value>N° de facture</value>
   </data>
   <data name="InvoiceNumber" xml:space="preserve">
     <value>Facture n° {0}</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Payé</value>
   </data>
   <data name="PaymentBy" xml:space="preserve">
     <value>Mode de réglement : {0}</value>

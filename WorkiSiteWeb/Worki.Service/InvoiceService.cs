@@ -136,8 +136,13 @@ namespace Worki.Service
 
             var bookingClient = new StringBuilder();
             bookingClient.AppendLine(client.GetFullDisplayName());
+            if (!string.IsNullOrEmpty(client.MemberMainData.CompanyName))
+                bookingClient.AppendLine(client.MemberMainData.CompanyName);
+            bookingClient.AppendLine(client.MemberMainData.Address);
             bookingClient.AppendLine(client.MemberMainData.PostalCode + " " + client.MemberMainData.City);
             bookingClient.AppendLine(client.MemberMainData.Country);
+            if (!string.IsNullOrEmpty(client.MemberMainData.TaxNumber))
+                bookingClient.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.TaxNumber, client.MemberMainData.TaxNumber));
 
 			this.AddParagraph(doc, Element.ALIGN_RIGHT, _standardFont, new Chunk(bookingClient.ToString()));
 

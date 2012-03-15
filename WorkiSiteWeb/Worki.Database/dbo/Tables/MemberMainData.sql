@@ -6,6 +6,7 @@
     [LastName]       NVARCHAR (256) NOT NULL,
     [Avatar]         NVARCHAR (256) NULL,
     [CompanyName]    NVARCHAR (256) NULL,
+	[Address]        NVARCHAR (256)  NULL,
     [City]           NVARCHAR (50)  NULL,
     [PostalCode]     NVARCHAR (10)  NULL,
     [Country]        NVARCHAR (256) NULL,

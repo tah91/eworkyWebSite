@@ -525,6 +525,10 @@ namespace Worki.Data.Models
         [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string CompanyName { get; set; }
 
+        [Display(Name = "Address", ResourceType = typeof(Worki.Resources.Models.Profile.Profile))]
+        [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        public string Address { get; set; }
+
         [Display(Name = "City", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         [StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public string City { get; set; }
