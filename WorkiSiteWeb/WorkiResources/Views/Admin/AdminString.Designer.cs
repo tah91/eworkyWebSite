@@ -646,6 +646,15 @@ namespace Worki.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Traduction.
+        /// </summary>
+        public static string Translate {
+            get {
+                return ResourceManager.GetString("Translate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unlocker.
         /// </summary>
         public static string Unlock {

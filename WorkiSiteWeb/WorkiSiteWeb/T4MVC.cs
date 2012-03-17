@@ -2666,6 +2666,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string MigrateOfferPrices = "MigrateOfferPrices";
             public readonly string MigrateClients = "MigrateClients";
+            public readonly string CheckResources = "CheckResources";
         }
 
 
@@ -2740,6 +2741,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult MigrateClients() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MigrateClients);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CheckResources() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CheckResources);
             return callInfo;
         }
 

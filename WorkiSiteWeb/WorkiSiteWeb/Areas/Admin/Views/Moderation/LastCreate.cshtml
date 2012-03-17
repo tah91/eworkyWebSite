@@ -18,7 +18,8 @@
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Quotations, MVC.Admin.Moderation.IndexQuotation())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastModif, MVC.Admin.Moderation.Last100Modif())} ,
             new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Views.Admin.StatString.LastCreate, MVC.Admin.Moderation.LastCreate())} ,
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.ImportLocalisations, MVC.Admin.Moderation.IndexImport())}
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Shared.SharedString.ImportLocalisations, MVC.Admin.Moderation.IndexImport())}, 
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Translate, MVC.Admin.Moderation.CheckResources())}
 		})
 	</div>
 

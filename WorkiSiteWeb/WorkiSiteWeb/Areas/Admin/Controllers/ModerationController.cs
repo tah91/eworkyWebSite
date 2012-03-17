@@ -9,6 +9,11 @@ using Worki.Infrastructure.Helpers;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure;
 using Worki.Data.Models;
+using System.Resources;
+using System.Reflection;
+using System.Globalization;
+using System.Collections;
+using System.Text;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
@@ -478,5 +483,104 @@ namespace Worki.Web.Areas.Admin.Controllers
 		}
 
 		#endregion
+		
+		public class ResourceValue
+		{
+			public string FrValue { get; set; }
+			public string EnValue { get; set; }
+			public string EsValue { get; set; }
+
+			public void SetValue(string culture, string value)
+			{
+				switch (culture)
+				{
+					case "fr":
+						FrValue = value;
+						break;
+					case "en":
+						EnValue = value;
+						break;
+					case "es":
+						EsValue = value;
+						break;
+
+				}
+			}
+
+			public bool CompareValue(string culture)
+			{
+				switch (culture)
+				{
+					case "en":
+						return string.Compare(FrValue, EnValue, false) == 0;
+					case "es":
+						return string.Compare(FrValue, EsValue, false) == 0;
+					default:
+						return false;
+				}
+			}
+		}
+
+		void FillOutput(ref Dictionary<string, ResourceValue> output, Type t, string culture)
+		{
+			var r = new ResourceManager(t);
+			var set = r.GetResourceSet(CultureInfo.CreateSpecificCulture(culture), true, true);
+			foreach (DictionaryEntry s in set)
+			{
+				var key = t.Namespace + "." + s.Key.ToString();
+				if (output.ContainsKey(key))
+				{
+					var res = output[key];
+					res.SetValue(culture, s.Value.ToString());
+				}
+				else
+				{
+					var res = new ResourceValue();
+					res.SetValue(culture, s.Value.ToString());
+					output.Add(key, res);
+				}
+			}
+		}
+
+		void WriteDuplicates(Dictionary<string, ResourceValue> output, StringBuilder builder, string culture)
+		{
+			foreach (var item in output)
+			{
+				if (item.Value.CompareValue(culture))
+				{
+					builder.AppendLine(item.Key + " value : " + item.Value.FrValue);
+				}
+			}
+		}
+
+		public virtual ActionResult CheckResources()
+		{
+			var assembly = Assembly.GetAssembly(typeof(Worki.Resources.Email.Activation));
+			var types = assembly.GetTypes();
+			var output = new Dictionary<string, ResourceValue>();
+			foreach (var t in types)
+			{
+				FillOutput(ref output, t, "fr");
+				FillOutput(ref output, t, "en");
+				FillOutput(ref output, t, "es");
+			}
+
+			var builder = new StringBuilder();
+
+			builder.AppendLine("Anglais : ");
+			builder.AppendLine();
+			WriteDuplicates(output, builder, "en");
+
+			builder.AppendLine();
+			builder.AppendLine();
+			builder.AppendLine();
+
+			builder.AppendLine("Espagnol : ");
+			builder.AppendLine();
+			WriteDuplicates(output, builder, "es");
+
+			var content = MiscHelpers.Nl2Br(builder.ToString());
+			return Content(content);
+		}
 	}
 }
