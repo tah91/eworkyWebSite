@@ -130,7 +130,7 @@
     <value>Para acceder a eWorky, rellena los datos de conexión que has recibido por correo electrónico.</value>
   </data>
   <data name="SugestBug" xml:space="preserve">
-    <value>Si quieres indicarnos una mejora o un error en la página, una sóla dirección:</value>
+    <value>Si quieres indicarnos una mejora o un error en la página, una única dirección:</value>
   </data>
   <data name="UserName" xml:space="preserve">
     <value>Nombre de usuario</value>

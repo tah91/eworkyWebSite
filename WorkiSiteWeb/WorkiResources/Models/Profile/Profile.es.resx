@@ -189,4 +189,10 @@
   <data name="TaxRate" xml:space="preserve">
     <value>% de IVA a aplicar en el país de facturación</value>
   </data>
+  <data name="Civility" xml:space="preserve">
+    <value>Sr, Sra, Srta</value>
+  </data>
+  <data name="SiretNumber" xml:space="preserve">
+    <value>CIF</value>
+  </data>
 </root>

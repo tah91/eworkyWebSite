@@ -263,7 +263,7 @@
     <value>Gestión de las reservas</value>
   </data>
   <data name="DiscoveryOffer" xml:space="preserve">
-    <value>Basic</value>
+    <value>Sencilla</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Servicios</value>
@@ -312,5 +312,8 @@
   </data>
   <data name="PrincingFeature_6_Text" xml:space="preserve">
     <value>La totalidad de la información está encriptada mediante un certificado SSL. Nadie más que tú tendrá acceso tu información.</value>
+  </data>
+  <data name="PayPalCGULink" xml:space="preserve">
+    <value>https://cms.paypal.com/es/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=ua/Legal_Hub_full&amp;locale.x=es_ES</value>
   </data>
 </root>

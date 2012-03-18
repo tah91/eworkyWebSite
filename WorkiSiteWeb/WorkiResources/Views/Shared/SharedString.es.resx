@@ -224,7 +224,7 @@
     <value>&lt; Ficha anterior</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Refinar</value>
+    <value>Buscar</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Guardar</value>
@@ -278,7 +278,7 @@
     <value>Sí</value>
   </data>
   <data name="ActivationCongratz" xml:space="preserve">
-    <value>¡Enhorabuena!, tu cuenta ha sido activada.</value>
+    <value>¡Enhorabuena! Tu cuenta ha sido activada.</value>
   </data>
   <data name="Quotations" xml:space="preserve">
     <value>Presupuesto</value>

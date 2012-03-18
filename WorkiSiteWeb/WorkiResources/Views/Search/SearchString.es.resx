@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdvancedSearch" xml:space="preserve">
-    <value>Búsqueda avanzada</value>
+    <value>Buscar por:</value>
   </data>
   <data name="DistanceOrdered" xml:space="preserve">
     <value>Ordenar por distancia</value>
@@ -169,16 +169,16 @@
     <value>Buscar</value>
   </data>
   <data name="SearchByPlace" xml:space="preserve">
-    <value>Por ubicación</value>
+    <value>Ubicación</value>
   </data>
   <data name="SearchByPlaceName" xml:space="preserve">
-    <value>Por nombre</value>
+    <value>Nombre</value>
   </data>
   <data name="SearchByPlaceType" xml:space="preserve">
-    <value>Por tipo</value>
+    <value>Tipo de espacio</value>
   </data>
   <data name="SearchByServiceType" xml:space="preserve">
-    <value>Por servicio</value>
+    <value>Tipo de servicio</value>
   </data>
   <data name="SearchResult" xml:space="preserve">
     <value>Resultado(s) de la búsqueda:</value>
@@ -201,7 +201,7 @@
     <value>¿Cuál es el nombre del espacio?</value>
   </data>
   <data name="VenueNameExample" xml:space="preserve">
-    <value>Ej: Regus, Opéra, etc.</value>
+    <value>Ej: Working Space, Utopic_US, 021Espai, ...</value>
   </data>
   <data name="Where" xml:space="preserve">
     <value>¿Dónde está el espacio? (Opcional)</value>
