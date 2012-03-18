@@ -35,11 +35,13 @@ namespace Worki.Web.Controllers
     {
         ILogger _Logger;
         IEmailService _EmailService;
+		IBlogService _IBlogService;
 
-        public HomeController(ILogger logger, IEmailService emailService)
+		public HomeController(ILogger logger, IEmailService emailService, IBlogService blogService)
         {
             this._Logger = logger;
             this._EmailService = emailService;
+			this._IBlogService = blogService;
         }
 
 		[ChildActionOnly]
@@ -94,57 +96,23 @@ namespace Worki.Web.Controllers
 
         public const string IndexViewModelContent = "IndexViewModel";
 
-		IEnumerable<BlogPost> GetBlogPostsFromApi()
-		{
-			var toRet = new List<BlogPost>();
-
-			using (var client = new WebClient())
-			{
-				try
-				{
-					string textString = client.DownloadString(MiscHelpers.UrlConstants.BlogApiPath);
-					JObject blogJson = JObject.Parse(textString);
-					var posts = blogJson["posts"];
-					var added = 0;
-					foreach (var item in posts)
-					{
-						toRet.Add(new BlogPost()
-						{
-							Url = (string)item["url"],
-							Title = (string)item["title"],
-							Content = (string)item["excerpt"],
-							Image = item["attachments"].Count() != 0 ? (string)item["attachments"][0]["images"]["medium"]["url"] : (string)item["thumbnail"],
-							PublicationDate = DateTime.Parse((string)item["date"])
-						});
-						if (++added >= MiscHelpers.BlogConstants.MaxBlogItem)
-							break;
-					}
-					_Logger.Info("blog get_recent_posts ");
-				}
-				catch (WebException ex)
-				{
-					_Logger.Error("GetBlogPostsFromApi", ex);
-				}
-				return toRet;
-			}
-		}
-
-        IEnumerable<BlogPost> GetBlogPosts()
+        IEnumerable<BlogPost> GetBlogPosts(Culture culture)
         {
 			try
 			{
-				var fromCache = DataCacheSingleton.Instance.Cache.Get(MiscHelpers.BlogConstants.BlogCacheKey);
+				var key = BlogService.GetBlogCacheKey(culture);
+				object fromCache = DataCacheSingleton.Instance.Cache.Get(key);
 				if (fromCache != null)
 					return (IEnumerable<BlogPost>)fromCache;
 
-				var toRet = GetBlogPostsFromApi();
-				DataCacheSingleton.Instance.Cache.Add(MiscHelpers.BlogConstants.BlogCacheKey, toRet, new TimeSpan(MiscHelpers.BlogConstants.CacheDaySpan, 0, 0, 0));
+				var toRet = _IBlogService.GetBlogPosts(culture);
+				DataCacheSingleton.Instance.Cache.Add(key, toRet, new TimeSpan(MiscHelpers.BlogConstants.CacheDaySpan, 0, 0, 0));
 				return toRet;
 			}
 			catch (Exception ex)
 			{
 				_Logger.Error("GetBlogPosts", ex);
-				return GetBlogPostsFromApi();
+				return _IBlogService.GetBlogPosts(culture);
 			}
         }
 
@@ -181,9 +149,9 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [ChildActionOnly]
-        public virtual ActionResult BlogContainer()
+		public virtual ActionResult BlogContainer(Culture culture)
         {
-            return PartialView(MVC.Home.Views._BlogContainer, GetBlogPosts());
+			return PartialView(MVC.Home.Views._BlogContainer, GetBlogPosts(culture));
         }
 
 

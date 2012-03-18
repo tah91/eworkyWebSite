@@ -21,85 +21,14 @@
 					@Html.Partial(MVC.Localisation.Views._SearchForm)
 				</div>
 			</div>
-@*          TO USE WHEN LOCATION IS READY  
-			<ul class="tabs">
-                <li class="backgroundBlue"><a href="#searchTab" class="bold">@Worki.Resources.Views.Home.HomeString.Search</a></li>
-                <li class="backgroundOrange"><a href="#bookingTab" class="bold">@Worki.Resources.Views.Home.HomeString.Reserve</a></li>
-                <li class="backgroundRed"><a href="#locationTab" class="bold">@Worki.Resources.Views.Home.HomeString.Rent</a></li>
-            </ul>
-            <div class="tab_container">
-                <div id="searchTab" class="tab_content contentBlock borderBlue">
-                    <div class="indexSearchFormDiv darkblue">
-                        @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch,MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                            <div class="indexSearchFormLabel">
-                                <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
-                            </div>
-                            <div class="editor-field indexSearchFormField">
-                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
-                            </div>
-                            <div class="indexSearchFormLabel">
-                                <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
-                            </div>
-                            <div class="editor-field indexSearchFormField">
-                                @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers)
-                            </div>
-
-                            <div class="indexSearchIndexLinks relative">
-                                <div class="indexSearchIndexLinksLeft float-left">
-                                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
-                                </div>
-                                <div class="indexSearchIndexLinksRight float-right">
-                                    <input type="submit" class="buttonStd buttonBlue" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
-                                </div>
-                                <div class="clear">
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-                <div id="bookingTab" class="tab_content contentBlock borderOrange visuallyhidden">
-                    <div class="indexSearchFormDiv darkblue">
-                        @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-                            @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-                            <div class="indexSearchFormLabel">
-                                <h3>@Worki.Resources.Views.Home.HomeString.Where</h3>
-                            </div>
-                            <div class="editor-field indexSearchFormField">
-                                @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation })
-                            </div>
-                            <div class="indexSearchFormLabel">
-                                <h3>@Worki.Resources.Views.Home.HomeString.What</h3>
-                            </div>
-                            <div class="editor-field indexSearchFormField">
-                                @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers)
-                            </div>
-
-                            <div class="indexSearchIndexLinks relative">
-                                <div class="indexSearchIndexLinksLeft float-left">
-                                @Html.ActionLink(Worki.Resources.Views.Home.HomeString.MoreCriterias, MVC.Localisation.FullSearch())
-                                </div>
-                                <div class="indexSearchIndexLinksRight float-right">
-                                    <input type="submit" class="buttonStd buttonOrange" id="btn_searchIndex" value="@Worki.Resources.Views.Home.HomeString.Searching" />
-                                </div>
-                                <div class="clear">
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-                @Html.Partial(MVC.Home.Views._RentalTab, new Worki.Data.Models.RentalSearchCriteria())
-            </div>*@
         </div>
         <div class="clear">
         </div>
-
+		@{
+			var culture = Url.GetCulture();
+		}
+		@if (culture == Worki.Infrastructure.Culture.fr)
+		{
 		<div class="contentBlock bannerBlock">
 			<div class="bannerDesc float-left">
 				@Worki.Resources.Views.Home.HomeString.TalkAboutUs &nbsp;&nbsp;>>
@@ -128,13 +57,8 @@
 			<div class="clear">
 			</div>
 		</div>
-        @{
-            var culture = Url.GetCulture();
-            if (culture == Worki.Infrastructure.Culture.fr)
-			{
-				Html.RenderAction(MVC.Home.BlogContainer());
-			}
 		}
+        @{Html.RenderAction(MVC.Home.BlogContainer(culture));}
 		<div class="contentBlock">
 			<div id="fb-root"></div>
 			<script>	(function (d, s, id) {

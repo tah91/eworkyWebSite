@@ -1010,6 +1010,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BlogContainer() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BlogContainer);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult ChangeCulture() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ChangeCulture);
         }
@@ -1104,8 +1109,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult BlogContainer() {
+        public override System.Web.Mvc.ActionResult BlogContainer(Worki.Infrastructure.Culture culture) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BlogContainer);
+            callInfo.RouteValueDictionary.Add("culture", culture);
             return callInfo;
         }
 

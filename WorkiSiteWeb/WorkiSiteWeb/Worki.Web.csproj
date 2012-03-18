@@ -127,16 +127,14 @@
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Facebook, Version=5.2.1.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Externals\facebooksdk\net40-client\Facebook.dll</HintPath>
+    <Reference Include="Facebook">
+      <HintPath>..\Externals\facebooksdk\net40-client\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="FiftyOne.Foundation">
       <HintPath>..\packages\51Degrees.mobi.1.2.0.5\lib\NET40\FiftyOne.Foundation.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Externals\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\Externals\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=101.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.5\Assemblies\NET4.0\Cache\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
@@ -151,9 +149,8 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Externals\Microsoft.Web.Mvc.dll</HintPath>
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\Externals\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
@@ -164,9 +161,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject, Version=2.1.0.67, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Externals\Ninject.dll</HintPath>
+    <Reference Include="Ninject">
+      <HintPath>..\Externals\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="PKCS12ProtectedConfigurationProvider, Version=1.0.0.0, Culture=neutral, PublicKeyToken=34da007ac91f901d, processorArchitecture=MSIL">
       <HintPath>..\Externals\PKCS12ProtectedConfigurationProvider.dll</HintPath>

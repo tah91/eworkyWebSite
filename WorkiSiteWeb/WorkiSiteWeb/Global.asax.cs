@@ -83,6 +83,9 @@ namespace Worki.Web
 			Bind<IGeocodeService>()
 				.To<GeocodeService>();
 
+			Bind<IBlogService>()
+				.To<BlogService>();
+
 			Bind<IUnitOfWork>()
 				.To<WorkiDBEntities>();
 
@@ -589,7 +592,7 @@ namespace Worki.Web
 					MiscHelpers.EmailConstants.BookingMail = email;
 				}
 
-				MultiCultureMvcRouteHandler.DefaultCulture = Culture.fr;
+				//MultiCultureMvcRouteHandler.DefaultCulture = Culture.fr;
 			}
             _AdminInitialized = true;
         }

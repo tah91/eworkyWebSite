@@ -301,6 +301,11 @@
     width:67%;
 }
 
+.blogContent p
+{
+	display: inline;
+}
+
 /* Media Banner
 ----------------------------------------------------------*/
 .bannerBlock

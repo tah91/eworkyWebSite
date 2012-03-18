@@ -62,6 +62,9 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\Externals\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\Externals\itextsharp.dll</HintPath>
     </Reference>
@@ -78,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogService.cs" />
     <Compile Include="InvoiceService.cs" />
     <Compile Include="PaymentService.cs" />
     <Compile Include="RentalSearchService.cs" />

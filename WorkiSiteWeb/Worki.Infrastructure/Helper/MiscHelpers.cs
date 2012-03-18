@@ -137,8 +137,6 @@ namespace Worki.Infrastructure.Helpers
 
 		public static class UrlConstants
 		{
-			public const string BlogApiPath = "http://blog.eworky.com/api/get_recent_posts/";
-			public const string BlogUrl = "http://blog.eworky.com";
 			public const string JTPath = "http://vimeo.com/29038745";
 			public const string eWorkyFacebook = "http://www.facebook.com/eWorkypage";
 			public const string eWorkyTwitter = "http://www.twitter.com/#!/eWorky";
@@ -149,7 +147,6 @@ namespace Worki.Infrastructure.Helpers
 
 		public static class BlogConstants
 		{
-			public const string BlogCacheKey = "BlogCacheKey";
 			public const int CacheDaySpan = 1;
 			public const int MaxBlogItem = 4;
 		}

@@ -10,6 +10,7 @@ using Worki.Infrastructure;
 using Worki.Data.Models;
 using Worki.Web.Singletons;
 using Worki.Web.Helpers;
+using Worki.Service;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
@@ -514,7 +515,8 @@ namespace Worki.Web.Areas.Admin.Controllers
         {
             try
             {
-                DataCacheSingleton.Instance.Cache.Remove(MiscHelpers.BlogConstants.BlogCacheKey);
+				DataCacheSingleton.Instance.Cache.Remove(BlogService.FrBlogCacheKey);
+				DataCacheSingleton.Instance.Cache.Remove(BlogService.EnBlogCacheKey);
             }
             catch (Exception ex)
             {
