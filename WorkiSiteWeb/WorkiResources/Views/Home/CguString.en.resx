@@ -246,4 +246,7 @@
   <data name="ReadAndAccept" xml:space="preserve">
     <value>I have read and agree to the {0}</value>
   </data>
+  <data name="MustAcceptCGU" xml:space="preserve">
+    <value>You must accept the General Terms of Use.</value>
+  </data>
 </root>

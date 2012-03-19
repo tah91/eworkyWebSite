@@ -136,32 +136,14 @@
     <comment>Jm Modif l.17</comment>
     <value>Visto en </value>
   </data>
-  <data name="AllSupelecNeedWifi" xml:space="preserve">
-    <value>Somos los tres muy trabajadores y casi todos ya emprendedores (Greenworking) por lo que muchas veces hemos tenido la necesidad de acceder a una red wifi, de alquilar una sala de reunión o incluso una sala de formación.</value>
-  </data>
-  <data name="ANeed" xml:space="preserve">
-    <value>Una necesidad</value>
-  </data>
-  <data name="ATeam" xml:space="preserve">
-    <value>Un equipo</value>
-  </data>
   <data name="Contact" xml:space="preserve">
     <value>Contacto</value>
   </data>
   <data name="ContactUs" xml:space="preserve">
     <value>Contacta con nosotros</value>
   </data>
-  <data name="CreateTheWebSite" xml:space="preserve">
-    <value>Por lo tanto hemos creado una página web para compartir entre amigos, ideas y trucos referentes a lugares de trabajo. Eso fue muy útil.</value>
-  </data>
   <data name="ExampleLocation" xml:space="preserve">
     <value>Ejemplo: Madrid, Aragón, Plaza mayor, etc.</value>
-  </data>
-  <data name="Fun" xml:space="preserve">
-    <value>Placer</value>
-  </data>
-  <data name="HowCameTheIdea" xml:space="preserve">
-    <value>Generalmente, conseguíamos encontrarlos por el boca a boca, pero faltaba algo para ganar tiempo y conseguir la mejor información: una plataforma colaborativa para la búsqueda de sitios de trabajo.</value>
   </data>
   <data name="Imprint" xml:space="preserve">
     <value>Aviso legal</value>
@@ -187,14 +169,8 @@
   <data name="News" xml:space="preserve">
     <value>Prensa</value>
   </data>
-  <data name="ShareWithYou" xml:space="preserve">
-    <value>Y luego nos sentimos mal, y pensamos que era una pena no compartirlo con vosotros. ¡Bienvenidos a la comunidad de eWorky!</value>
-  </data>
   <data name="SpeechForJournalists" xml:space="preserve">
     <value>¿Eres periodista y te gustaría redactar un artículo o realizar un reportaje sobre eWorky? ¿Necesitas información sobre el desarrollo del teletrabajo? ¿Estás buscando a Directores de RRHH para entrevistarlos sobre estos temas? Contacta con nosotros a {0}.</value>
-  </data>
-  <data name="VeryGenerous" xml:space="preserve">
-    <value>Pero sobre todo mucha generosidad</value>
   </data>
   <data name="What" xml:space="preserve">
     <value>¿Qué estás buscando?</value>

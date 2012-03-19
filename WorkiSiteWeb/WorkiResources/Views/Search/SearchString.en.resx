@@ -171,25 +171,6 @@
   <data name="SearchResult" xml:space="preserve">
     <value>Search result(s)</value>
   </data>
-  <data name="SpeechForBuisnessman" xml:space="preserve">
-    <value> </value>
-    <comment>ascx</comment>
-  </data>
-  <data name="SpeechForIndependent" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="SpeechForNomad" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="SpeechForStartUp" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="SpeechForStudent" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="SpeechForTeleworker" xml:space="preserve">
-    <value> </value>
-  </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
   </data>

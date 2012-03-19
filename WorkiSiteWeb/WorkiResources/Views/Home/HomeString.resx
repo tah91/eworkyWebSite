@@ -337,10 +337,4 @@
   <data name="Team_Member_4_Text" xml:space="preserve">
     <value>Marc est en charge du business development sur les marchés hispanophones. "Marco" est basé à Saragosse dans cette ville qui l'a séduit par sa douceur de vivre et son exceptionnelle densité de bar à tapas. Marc est à l'image du pays dans lequel il a choisi de poser ses valises : chaleureux, fêtard, gourmand, sportif. D'ailleurs, on ne sait pas exactement à quoi il se dope pour apporter tant de dynamisme à l'équipe mais on suspecte un savant mélange de Cacique, d'huile d'olive et de chorizo.</value>
   </data>
-  <data name="PricingDescription" xml:space="preserve">
-    <value>Présentation des options de l'espace gérant sur eWorky.</value>
-  </data>
-  <data name="TeamDescription" xml:space="preserve">
-    <value>Page présentant l'equipe d'eWorky !</value>
-  </data>
 </root>

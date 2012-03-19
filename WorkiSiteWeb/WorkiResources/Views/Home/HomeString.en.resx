@@ -126,17 +126,8 @@
   <data name="ContactUs" xml:space="preserve">
     <value>Contact us</value>
   </data>
-  <data name="CreateTheWebSite" xml:space="preserve">
-    <value> </value>
-  </data>
   <data name="ExampleLocation" xml:space="preserve">
     <value>Example: Amsterdam, Downing street London, Brooklyn NY, etc.</value>
-  </data>
-  <data name="Fun" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="HowCameTheIdea" xml:space="preserve">
-    <value> </value>
   </data>
   <data name="Imprint" xml:space="preserve">
     <value>Legal mentions</value>
@@ -161,9 +152,6 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>Press</value>
-  </data>
-  <data name="ShareWithYou" xml:space="preserve">
-    <value> </value>
   </data>
   <data name="SpeechForJournalists" xml:space="preserve">
     <value>You're a journalist and you would like to write an article or make a video coverage on eWorky? You need some information about the development of teleworking? You would like to interview some Human Resources Directors on these subjects? Contact us at {0}.</value>
