@@ -5,13 +5,18 @@
 	<div class="bookingCallAction">
 		@if (Model.IsBookable())
 		{
-		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction, MVC.Localisation.BookableOffers(Model.ID))</div>
+		<div class="bigButtonStd buttonStd buttonBlue linkImg"><a href="#offers" id="bookItNow">@Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction</a></div>
 		}
 		else
 		{
 		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.ContactThisSpaceAction, MVC.Localisation.AskBooking(Model.ID))</div>
 		}
 	</div> 
+}
+
+@if (Model.IsSharedOffice() && !Request.IsAuthenticated)
+{
+	<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedContactOfPlaceAction, MVC.Account.LogOn(null, Request.RawUrl))</div>
 }
 
 <div class="localisationMiscRatings contentBlock">
@@ -73,6 +78,9 @@
 		}
 	}
 </div>
+
+@if (!Model.IsSharedOffice() || Request.IsAuthenticated)
+{ 
 <div class="contentBlock">
 	<h3 class="blue">Contact</h3>
     @if (Model.HasOwner())
@@ -123,6 +131,8 @@
     }
 
 </div>
+}
+
 @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 {
    
@@ -154,13 +164,6 @@
 		{
             <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)</span><br />
 		}
-	</div>
-}
-
-@if (Model.IsSharedOffice() && !Request.IsAuthenticated)
-{
-	<div class="contentBlock">
-		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedContactOfPlaceAction, MVC.Account.LogOn(null, Request.RawUrl))</div>
 	</div>
 }
 

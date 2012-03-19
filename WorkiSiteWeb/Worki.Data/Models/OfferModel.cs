@@ -458,6 +458,28 @@ namespace Worki.Data.Models
 			}
 		}
 
+        List<string> _StandardNames = new List<string> 
+        {
+            "Salon d'affaires 1", 
+            "Poste de travail 1", 
+            "Bureau 1", 
+            "Salle de réunion / formation 1",
+            "Salle de conférence / séminaire 1",
+            "Salle de visio / téléprésence 1",
+            "poste de travail",
+            "salle de réunion",
+            "poste de coworking",
+            "Bureau",
+            "Salon d'affaires",
+            "salle de conférence",
+            "salle de conférence/séminaire" 
+        };
+
+        public bool HasSpecificName()
+        {
+            return !_StandardNames.Contains(Name);   
+        }
+
 		#endregion
 	}
 

@@ -592,7 +592,7 @@ namespace Worki.Web
 					MiscHelpers.EmailConstants.BookingMail = email;
 				}
 
-				//MultiCultureMvcRouteHandler.DefaultCulture = Culture.fr;
+				MultiCultureMvcRouteHandler.DefaultCulture = Culture.fr;
 			}
             _AdminInitialized = true;
         }

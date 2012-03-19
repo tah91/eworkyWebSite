@@ -6,7 +6,10 @@
 	foreach (var offer in offers)
 	{
 	  	<div class="innerContentBlock">
+            @if (offer.HasSpecificName())
+            { 
             <h3 class="blue">@offer.Name</h3>
+            }
 			@if (offer.OfferFiles.Count > 0)
 			{
 			<div class="offerGallery">
@@ -147,7 +150,7 @@
 						<li><a href="#acces" class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.Access</a></li>
 						@if (!Model.IsFreeLocalisation())
 						{
-							<li><a href="#offers" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Offers</a></li>
+							<li><a href="#offers" id="offerTabLink" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Offers</a></li>
 						}
 						<li><a href="#community" class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Community</a></li>
 					</ul>
@@ -294,24 +297,42 @@
 								</ul>
 							</div>
 							<div class="tab_container offerTabContainer float-right">
+                                @if (Model.HasOffer(LocalisationOffer.BuisnessLounge))
+                                {
 								<div id="buisnessLounge" class="offerTab_content">
 									@OfferBlock(Model, LocalisationOffer.BuisnessLounge)
 								</div>
+                                }
+                                @if (Model.HasOffer(LocalisationOffer.Workstation))
+                                {
 								<div id="workstation" class="offerTab_content">
 									@OfferBlock(Model, LocalisationOffer.Workstation)
 								</div>
+                               }
+                                @if (Model.HasOffer(LocalisationOffer.Desktop))
+                                { 
 								<div id="desktop" class="offerTab_content">
 									@OfferBlock(Model, LocalisationOffer.Desktop)
 								</div>
+                                }
+                                @if (Model.HasOffer(LocalisationOffer.MeetingRoom))
+                                {
 								<div id="meetingRoom" class="offerTab_content">
 									@OfferBlock(Model, LocalisationOffer.MeetingRoom)
 								</div>
+                                }
+                                @if (Model.HasOffer(LocalisationOffer.SeminarRoom))
+                                {
 								<div id="seminarRoom" class="offerTab_content">
 									@OfferBlock(Model, LocalisationOffer.SeminarRoom)
 								</div>
+                                }
+                                @if (Model.HasOffer(LocalisationOffer.VisioRoom))
+                                {
 								<div id="visioRoom" class="offerTab_content">
 									@OfferBlock(Model, LocalisationOffer.VisioRoom)
 								</div>
+                                }
 							</div>
 							<div class="clear"></div>
 						</div>
