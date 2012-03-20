@@ -192,4 +192,10 @@
   <data name="TaxRate" xml:space="preserve">
     <value>Tax rate </value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="SiretNumber" xml:space="preserve">
+    <value>Company Registration Number</value>
+  </data>
 </root>

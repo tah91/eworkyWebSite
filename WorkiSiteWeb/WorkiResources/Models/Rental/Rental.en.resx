@@ -220,10 +220,10 @@
     <value>Workplace type</value>
   </data>
   <data name="Type_24" xml:space="preserve">
-    <value>short term contracts</value>
+    <value>Short term contract</value>
   </data>
   <data name="Type_369" xml:space="preserve">
-    <value>long term contracts</value>
+    <value>Long term contract</value>
   </data>
   <data name="NotDefined" xml:space="preserve">
     <value>Choose...</value>
@@ -265,12 +265,12 @@
     <value>Bus</value>
   </data>
   <data name="Metro" xml:space="preserve">
-    <value>Metro</value>
+    <value>Subway</value>
   </data>
   <data name="Train" xml:space="preserve">
     <value>Train </value>
   </data>
   <data name="Tram" xml:space="preserve">
-    <value>Tram</value>
+    <value>Tramway</value>
   <comment>?</comment></data>
 </root>

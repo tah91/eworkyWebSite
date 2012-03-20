@@ -180,4 +180,13 @@
   <data name="TotalWithoutTax" xml:space="preserve">
     <value>Total without taxes</value>
   </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archive {0}</value>
+  </data>
+  <data name="DateColumn" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
 </root>
