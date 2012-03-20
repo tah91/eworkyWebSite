@@ -266,13 +266,13 @@
     <value>Un anuncio de alquiler de locales</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>Selecciona el tipo de espacio que quieres añadir.</value>
+    <value>Selecciona el tipo de espacio que quieres añadir</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>Un espacio compartido</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>¿Tienes puestos de trabajo desocupados en tu empresa? ¡Compártelos en eWorky y disfruta de ingresos adicionales!</value>
+    <value>¿Tienes mesas sin ocupar en tu oficina? ¡Compártelas en eWorky y consigue ingresos adicionales!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
     <value>Entre &lt;em&gt;{0:### ### ###}&lt;/em&gt; espacios de coworking, cafés WiFi, centros de negocio, oficinas compartidas</value>
@@ -372,5 +372,11 @@
   </data>
   <data name="Team_Member_4_Text" xml:space="preserve">
     <value>Marc está al cargo del desarrollo de negocios en los paises de habla hispana. "Marco" está ubicado en Zaragoza (España) en esa ciudad que le ha seducido por su calidad de vida y su excepcional densidad de bar de tapas. Marc es a la imagen del país en el que ha decidido establecerse: caluroso, fiestero, aficionado a la buena comida y al deporte. Bueno, y no sabemos exactamente con lo que se dopa para aportar tanto dinamismo al grupo, pero sospechamos una sabia mezcla de Cacique, de aceite de oliva virgen y un toque de chorizo.</value>
+  </data>
+  <data name="PricingDescription" xml:space="preserve">
+    <value>Presentación de las características del acceso para gerentes en eWorkyl</value>
+  </data>
+  <data name="TeamDescription" xml:space="preserve">
+    <value>¡Página de presentación del equipo!</value>
   </data>
 </root>

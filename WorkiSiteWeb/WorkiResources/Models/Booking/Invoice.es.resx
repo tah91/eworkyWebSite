@@ -180,4 +180,16 @@
   <data name="TotalWithoutTax" xml:space="preserve">
     <value>Total sin IVA</value>
   </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archivo {0}</value>
+  </data>
+  <data name="DateColumn" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="GenerateArchive" xml:space="preserve">
+    <value>Archivo de facturación</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Pagado</value>
+  </data>
 </root>

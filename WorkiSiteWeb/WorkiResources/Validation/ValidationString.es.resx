@@ -136,7 +136,7 @@
     <value>Ya existe un espacio con el mismo nombre y la misma dirección.</value>
   </data>
   <data name="EmptyFileUpload" xml:space="preserve">
-    <value>Empty file upload result</value>
+    <value>Carga de un fichero vacío</value>
   </data>
   <data name="ErrorWhenSave" xml:space="preserve">
     <value>Un error ha impedido la grabación</value>
@@ -184,7 +184,7 @@
     <value>Ojo, has introducido una contraseña de confirmación diferente. Prueba de nuevo.</value>
   </data>
   <data name="MaxFileSize" xml:space="preserve">
-    <value>File exceeds MAX_FILE_SIZE (HTML form directive)</value>
+    <value>El fichero supera MAX_FILE_SIZE (HTML form directive)</value>
   </data>
   <data name="MaxLength" xml:space="preserve">
     <value>El campo "{0}" tiene que contener al menos {1} carácteres.</value>
@@ -199,16 +199,16 @@
     <value>Tienes que aceptar las Condiciones Generales de Uso para poder registrarte en eWorky.</value>
   </data>
   <data name="NoFileUploaded" xml:space="preserve">
-    <value>No File was uploaded</value>
+    <value>No se ha cargado ningún fichero</value>
   </data>
   <data name="NoValideDate" xml:space="preserve">
     <value>El campo {0} no corresponde a una fecha válida.</value>
   </data>
   <data name="NumberFileExceeded" xml:space="preserve">
-    <value>Max number of files exceeded</value>
+    <value>Número máximo de líneas excedido</value>
   </data>
   <data name="PartialUpload" xml:space="preserve">
-    <value>File was only partially uploaded</value>
+    <value>El fichero ha sido cargado parcialmente</value>
   </data>
   <data name="PasswordNotValide" xml:space="preserve">
     <value>La contraseña actual es incorrecta o la nueva contraseña no es válida.</value>
@@ -247,22 +247,22 @@
     <value>Empezar</value>
   </data>
   <data name="TempFolderMissing" xml:space="preserve">
-    <value>Missing a temporary folder</value>
+    <value>Falta la carpeta de ficheros temporales</value>
   </data>
   <data name="TheTwoNotMatch" xml:space="preserve">
     <value>Ojo, has introducido una contraseña de confirmación diferente. Prueba de nuevo.</value>
   </data>
   <data name="TypeNotAllowed" xml:space="preserve">
-    <value>Filetype not allowed</value>
+    <value>Tipo de fichero no permitido</value>
   </data>
   <data name="UploadedBytesExceedFileSize" xml:space="preserve">
-    <value>Uploaded bytes exceed file size</value>
+    <value>El volumen de datos cargado supera el tamaño del fichero</value>
   </data>
   <data name="UploadMaxFileSize" xml:space="preserve">
-    <value>File exceeds upload_max_filesize (php.ini directive)</value>
+    <value>El fichero supera el upload_max_filesize (php.ini directive)</value>
   </data>
   <data name="UploadStopExtension" xml:space="preserve">
-    <value>File upload stopped by extension</value>
+    <value>Carga del fichero cancelada por extensión</value>
   </data>
   <data name="UsernameExist" xml:space="preserve">
     <value>Este nombre de usuario ya existe. Por favor, introduce un nombre de usuario distinto.</value>

@@ -299,8 +299,7 @@
   </data>
   <data name="PendingBO" xml:space="preserve">
     <comment>Steeve</comment>
-    <value>
-    </value>
+    <value>BO pendiente</value>
   </data>
   <data name="SharedOfficeFr" xml:space="preserve">
     <value>Ofi. compartida</value>

@@ -202,7 +202,7 @@
     <value>Precio</value>
   </data>
   <data name="PriceFrom" xml:space="preserve">
-    <value>A partir del {0}</value>
+    <value>A partir de {0}</value>
   </data>
   <data name="PricePerPeriod" xml:space="preserve">
     <value>{0} / {1}</value>
@@ -239,5 +239,11 @@
   </data>
   <data name="Check" xml:space="preserve">
     <value>Cheque</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Metálico</value>
+  </data>
+  <data name="Transfert" xml:space="preserve">
+    <value>Transferencia</value>
   </data>
 </root>
