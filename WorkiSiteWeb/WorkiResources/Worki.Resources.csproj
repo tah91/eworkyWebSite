@@ -390,6 +390,8 @@
       <LastGenOutput>Booking.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.en.resx" />
+    <EmbeddedResource Include="Models\Localisation\LocalisationCountry.es.resx" />
     <EmbeddedResource Include="Models\Localisation\LocalisationCountry.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalisationCountry.Designer.cs</LastGenOutput>
