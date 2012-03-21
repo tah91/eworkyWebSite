@@ -277,7 +277,7 @@
     <value>Payments are collected securely via Paypal. For more information on Paypal's terms of service, click here.</value>
   </data>
   <data name="PrincingFeature_4" xml:space="preserve">
-    <value>Automtic invoice system</value>
+    <value>Automatic invoice system</value>
   </data>
   <data name="PrincingFeature_4_Text" xml:space="preserve">
     <value>For every booking, an invoice is automatically generated and stored in your management account.</value>
