@@ -124,7 +124,7 @@
     <value>Bugs</value>
   </data>
   <data name="ClickEdit" xml:space="preserve">
-    <value>You can modify the profile page of all workplaces by clicking on "Edit" button at the right low corner of it. In order to avoid vandalism, the number of modifications is limited to 15 a day.</value>
+    <value>Modify the profile page of your workspace by clicking on the "edit" button at the bottom right corner of your workspace page. To help keep your page secure, the number of modifications is limited to 15 a day. </value>
   </data>
   <data name="ClickHere" xml:space="preserve">
     <value>Click here</value>
@@ -143,7 +143,7 @@
     <value>The form located on the {0} of the website enables you to easily look for a workplace given a place and a type of workplace (WiFi hotspot, coworking space, etc.). A detailed search </value>
   <comment>toujours identique ?</comment></data>
   <data name="ForRateComment" xml:space="preserve">
-    <value>To comment or add a mark to a workplace, you must be connected with your eWorky account. Once connected, you need to go to the workplace profile to comment and/or add a mark.</value>
+    <value>To comment or rate a workplace, you must be logged in to your eWorky account. Once you are logged in, go to the workspace profile to comment and/or rate. </value>
   <comment>Jm modif L25</comment></data>
   <data name="Glossary" xml:space="preserve">
     <value>Glossary</value>
@@ -194,7 +194,7 @@
     <value>On eWorky, a digital public space is a non profit structure that offers WiFi access and that aims at teaching ICT.</value>
   <comment>Existe dans les autres pays ?</comment></data>
   <data name="OnEWOffice" xml:space="preserve">
-    <value>On eWorky, an office is a closed room with one or more desks. "Office" refers to all offices with a flexible or mid-term contract, without any rental agreement, in a business center, a telecottage or an incubator.</value>
+    <value>On eWorky, an office is a closed room with one or more desks. "Office" refers to all offices with a flexible or mid-term contract, without any rental agreement, in a business center, a smart work center or an incubator.</value>
   </data>
   <data name="OnEWorkyMeetingRoom" xml:space="preserve">
     <value>On eWorky, a meeting room is a room that can welcome at least two seating people. The proposed equipments (videoprojector, paperboard, microphone, etc.) are described in the "meeting room services and equipments" part.</value>
@@ -285,10 +285,10 @@ Moreover, pictures are particularly obvious on workspaces profiles therefore we 
     <value>What is a desk?</value>
   </data>
   <data name="WorkplaceManager" xml:space="preserve">
-    <value>You manage a business center or a telecottage and want to enable eWorkers to book your desks online? You can send us an email at contact@eworky.com</value>
+    <value>You manage a business center or a smart work center and want to enable eWorkers to book your desks online? You can send us an email at contact@eworky.com</value>
   </data>
   <data name="YouCanFindAll" xml:space="preserve">
-    <value>Whether you're looking for business centers, hotels, cafes, telecottages or offices buiding, whether you want to find, book, buy, rent, sell or share workspaces, eWorky will be there for you. You will find on eWorky the workspace you need, you will be able to comment your favorite workspace profile, to book it online, to add other workspaces or to find offices to rent or buy. By adapting to your new way of working, eWorky is for sure the best place to work!</value>
+    <value>Whether you're looking for business centers, hotels, cafes, smart work centers or offices buiding, whether you want to find, book, buy, rent, sell or share workspaces, eWorky will be there for you. You will find on eWorky the workspace you need, you will be able to comment your favorite workspace profile, to book it online, to add other workspaces or to find offices to rent or buy. By adapting to your new way of working, eWorky is for sure the best place to work!</value>
   </data>
   <data name="YourPossiblilitiesOnForm" xml:space="preserve">
     <value>In the "Add a workplace" form, you will be able to choose pictures to illustrate your workplace description. To do so, you need to put your pictures on "+ add your pictures" or click on this button to choose your file, then click on Download to send it to us. The size of each picture should not exceed 3 Mo and you cannot add more than 10 pictures. Please make sure that you respect these limits and if the problem persists, you can contact us by email at support@eworky.com.</value>
@@ -312,7 +312,7 @@ Moreover, pictures are particularly obvious on workspaces profiles therefore we 
     <value>What is telecommuting?</value>
   </data>
   <data name="WhyThereArePoint" xml:space="preserve">
-    <value>By helping eWorky community, you get some points that will enable you to take part to games and get some discounts. You earn points by adding workplaces, by editing or commenting existing ones or even by completing your profile.</value>
+    <value>By helping the eWorky community, you earn points that will allow you to participate in contests and receive discounts. You can earn points by adding, editing or commenting on workspaces, or by completing your profile. </value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>All answers to questions you're asking yourself on eWorky.</value>
