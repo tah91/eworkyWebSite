@@ -272,7 +272,6 @@
     <Compile Include="Controllers\UploadImageController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\ProfilController.cs" />
-    <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalisationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -345,11 +344,10 @@
     <Content Include="Content\images\border.png" />
     <Content Include="Content\images\checked.png" />
     <Content Include="Content\images\cecilia.png" />
-    <Content Include="Content\images\controls.png" />
+    <Content Include="Content\images\close.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\fb_sprite.png" />
     <Content Include="Content\images\flags.png" />
-    <Content Include="Content\images\footernew.png" />
     <Content Include="Content\images\geoloc.png" />
     <Content Include="Content\images\homeLogo1.png" />
     <Content Include="Content\images\homeLogo2.png" />
@@ -358,12 +356,9 @@
     <Content Include="Content\images\howitworks.png" />
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
-    <Content Include="Content\images\jelly.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_background.png" />
-    <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logoMobile.png" />
-    <Content Include="Content\images\logo_nobeta.png" />
     <Content Include="Content\images\marc.png" />
     <Content Include="Content\images\mediaBanner.png" />
     <Content Include="Content\images\networks.png" />
@@ -371,10 +366,10 @@
     <Content Include="Content\images\overlay.png" />
     <Content Include="Content\images\pinterest.png" />
     <Content Include="Content\images\retour.png" />
-    <Content Include="Content\images\signin_facebook.png" />
     <Content Include="Content\images\tampon.png" />
     <Content Include="Content\images\tahir.png" />
     <Content Include="Content\images\vu-tele.png" />
+    <Content Include="Content\images\worki_fb.jpg" />
     <Content Include="Content\jquery.qtip.css" />
     <Content Include="Content\jquery.qtip.min.css">
       <DependentUpon>jquery.qtip.css</DependentUpon>
@@ -396,7 +391,6 @@
       <DependentUpon>galleria.classic.js</DependentUpon>
     </Content>
     <Content Include="Content\images\arrow.png" />
-    <Content Include="Content\images\csv-import.png" />
     <Content Include="Content\images\favorite.png" />
     <Content Include="Content\images\profil_social.png" />
     <Content Include="Content\Index.min.css">
@@ -425,12 +419,8 @@
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\jobs_mark.jpeg" />
     <Content Include="Content\images\pbar-ani.gif" />
-    <Content Include="Content\images\photo2.jpg" />
-    <Content Include="Content\images\photo3.jpg" />
     <Content Include="Content\images\jobs_steve.jpg" />
-    <Content Include="Content\images\scoop.jpg" />
     <Content Include="Content\images\serviceIcones.png" />
-    <Content Include="Content\images\visitor.jpg" />
     <Content Include="Content\jquery.fileupload-ui.css" />
     <Content Include="Content\Profil.min.css">
       <DependentUpon>Profil.css</DependentUpon>
@@ -529,8 +519,6 @@
     <Content Include="Content\images\next-horizontal.png" />
     <Content Include="Content\images\next-vertical.png" />
     <Content Include="Content\images\nomad.png" />
-    <Content Include="Content\images\photo1.jpg" />
-    <Content Include="Content\images\photo4.jpg" />
     <Content Include="Content\images\prev-horizontal.png" />
     <Content Include="Content\images\prev-vertical.png" />
     <Content Include="Content\images\recherche-min.png" />
@@ -551,9 +539,7 @@
     <Content Include="Content\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\images\users.jpg" />
     <Content Include="Content\images\worker.png" />
-    <Content Include="Content\images\worki_fb.jpg" />
     <Content Include="Content\images\worki_footer.png" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\jquery-ui-1.8.12.custom.css" />
@@ -776,10 +762,6 @@
     <Content Include="Views\Localisation\_LocalisationFormScript.cshtml" />
     <Content Include="Views\Localisation\_SelectSearchScript.cshtml" />
     <Content Include="Views\Shared\_CultureSwitchControl.cshtml" />
-    <Content Include="Views\Visitor\demande-reussie.cshtml" />
-    <Content Include="Views\Visitor\_LogOnForm.cshtml" />
-    <Content Include="Views\Visitor\_VisitorForm.cshtml" />
-    <Content Include="Views\Visitor\Index.cshtml" />
     <Content Include="Views\Home\CGU.cshtml" />
     <Content Include="Views\Home\Legal.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />

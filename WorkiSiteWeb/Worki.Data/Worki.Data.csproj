@@ -202,9 +202,6 @@
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TransactionModel.cs" />
-    <Compile Include="Models\Visitor.cs">
-      <DependentUpon>WorkiDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\VisitorModels.cs" />
     <Compile Include="Models\WelcomePeople.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
@@ -236,7 +233,6 @@
     <Compile Include="Repository\LocalisationRepository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="Repository\TransactionRepository.cs" />
-    <Compile Include="Repository\VisitorRepository.cs" />
     <Compile Include="Repository\WelcomePeopleRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>

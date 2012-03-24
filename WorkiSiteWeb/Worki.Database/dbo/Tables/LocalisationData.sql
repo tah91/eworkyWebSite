@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [dbo].[LocalisationData] (
     [ID]				INT             IDENTITY (1, 1) NOT NULL,
     [LocalisationID]	INT             NOT NULL,
-    [CoffeePrice]		DECIMAL (18, 2) NULL,
     [MonOpenMorning]	SMALLDATETIME NULL,
 	[MonCloseMorning]	SMALLDATETIME NULL, 
 	[MonOpenAfter]		SMALLDATETIME NULL, 

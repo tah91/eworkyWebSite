@@ -43,7 +43,6 @@ public static class MVC {
     public static Worki.Web.Controllers.QuotationController Quotation = new Worki.Web.Controllers.T4MVC_QuotationController();
     public static Worki.Web.Controllers.RentalController Rental = new Worki.Web.Controllers.T4MVC_RentalController();
     public static Worki.Web.Controllers.UploadImageController UploadImage = new Worki.Web.Controllers.T4MVC_UploadImageController();
-    public static Worki.Web.Controllers.VisitorController Visitor = new Worki.Web.Controllers.T4MVC_VisitorController();
     public static T4MVC.EmailsController Emails = new T4MVC.EmailsController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -542,10 +541,9 @@ namespace Links {
             public static readonly string border_png = Url("border.png");
             public static readonly string cecilia_png = Url("cecilia.png");
             public static readonly string checked_png = Url("checked.png");
+            public static readonly string close_png = Url("close.png");
             public static readonly string comm_content_png = Url("comm_content.png");
-            public static readonly string controls_png = Url("controls.png");
             public static readonly string cross_png = Url("cross.png");
-            public static readonly string csv_import_png = Url("csv-import.png");
             public static readonly string delete_gif = Url("delete.gif");
             public static readonly string drh_png = Url("drh.png");
             public static readonly string favicon_png = Url("favicon.png");
@@ -554,7 +552,6 @@ namespace Links {
             public static readonly string flags_png = Url("flags.png");
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
-            public static readonly string footernew_png = Url("footernew.png");
             public static readonly string geoloc_png = Url("geoloc.png");
             public static readonly string homeLogo1_png = Url("homeLogo1.png");
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
@@ -564,15 +561,12 @@ namespace Links {
             public static readonly string iconeMap_png = Url("iconeMap.png");
             public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
             public static readonly string independant_png = Url("independant.png");
-            public static readonly string jelly_png = Url("jelly.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
             public static readonly string loading_gif = Url("loading.gif");
             public static readonly string loading_background_png = Url("loading_background.png");
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
-            public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
-            public static readonly string logo2_png = Url("logo2.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
             public static readonly string marc_png = Url("marc.png");
             public static readonly string mediaBanner_png = Url("mediaBanner.png");
@@ -583,10 +577,6 @@ namespace Links {
             public static readonly string olivier_png = Url("olivier.png");
             public static readonly string overlay_png = Url("overlay.png");
             public static readonly string pbar_ani_gif = Url("pbar-ani.gif");
-            public static readonly string photo1_jpg = Url("photo1.jpg");
-            public static readonly string photo2_jpg = Url("photo2.jpg");
-            public static readonly string photo3_jpg = Url("photo3.jpg");
-            public static readonly string photo4_jpg = Url("photo4.jpg");
             public static readonly string pinterest_png = Url("pinterest.png");
             public static readonly string prev_horizontal_png = Url("prev-horizontal.png");
             public static readonly string prev_vertical_png = Url("prev-vertical.png");
@@ -594,9 +584,7 @@ namespace Links {
             public static readonly string recherche_min_png = Url("recherche-min.png");
             public static readonly string rechercher2_png = Url("rechercher2.png");
             public static readonly string retour_png = Url("retour.png");
-            public static readonly string scoop_jpg = Url("scoop.jpg");
             public static readonly string serviceIcones_png = Url("serviceIcones.png");
-            public static readonly string signin_facebook_png = Url("signin_facebook.png");
             public static readonly string star_png = Url("star.png");
             public static readonly string startup_png = Url("startup.png");
             public static readonly string student_png = Url("student.png");
@@ -615,8 +603,6 @@ namespace Links {
             public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
             public static readonly string ui_icons_888888_256x240_png = Url("ui-icons_888888_256x240.png");
             public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
-            public static readonly string users_jpg = Url("users.jpg");
-            public static readonly string visitor_jpg = Url("visitor.jpg");
             public static readonly string vu_tele_png = Url("vu-tele.png");
             public static readonly string worker_png = Url("worker.png");
             public static readonly string worki_fb_jpg = Url("worki_fb.jpg");
@@ -2112,70 +2098,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult DeleteImage(string fileName) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteImage);
             callInfo.RouteValueDictionary.Add("fileName", fileName);
-            return callInfo;
-        }
-
-    }
-}
-
-namespace Worki.Web.Controllers {
-    public partial class VisitorController {
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected VisitorController(Dummy d) { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
-            var callInfo = result.GetT4MVCResult();
-            return RedirectToRoute(callInfo.RouteValueDictionary);
-        }
-
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public VisitorController Actions { get { return MVC.Visitor; } }
-        [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "";
-        [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Visitor";
-
-        static readonly ActionNamesClass s_actions = new ActionNamesClass();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionNamesClass ActionNames { get { return s_actions; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionNamesClass {
-            public readonly string Index = "Index";
-            public readonly string AskForAccountSuccess = "demande-reussie";
-        }
-
-
-        static readonly ViewNames s_views = new ViewNames();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ViewNames Views { get { return s_views; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ViewNames {
-            public readonly string _LogOnForm = "~/Views/Visitor/_LogOnForm.cshtml";
-            public readonly string _VisitorForm = "~/Views/Visitor/_VisitorForm.cshtml";
-            public readonly string demande_reussie = "~/Views/Visitor/demande-reussie.cshtml";
-            public readonly string Index = "~/Views/Visitor/Index.cshtml";
-        }
-    }
-
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_VisitorController: Worki.Web.Controllers.VisitorController {
-        public T4MVC_VisitorController() : base(Dummy.Instance) { }
-
-        public override System.Web.Mvc.ActionResult Index() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Index(Worki.Data.Models.Visitor visitor) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
-            callInfo.RouteValueDictionary.Add("visitor", visitor);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult AskForAccountSuccess() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AskForAccountSuccess);
             return callInfo;
         }
 

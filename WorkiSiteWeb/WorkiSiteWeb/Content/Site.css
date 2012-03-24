@@ -412,31 +412,11 @@ page width. Or, you can specify an exact pixel width. */
 
 .logo
 {
-	background-image: url('images/logo2.png');
+	background-image: url('images/logo.png');
 	background-repeat: no-repeat;
 	width: 125px;
 	height: 40px;
 	margin-right: 20px;
-}
-
-.ie7 .logo
-{
-	background-image: url('images/logo.png');
-	/*width: 147px;*/
-	width:38%;
-	height: 47px;
-	background-repeat: no-repeat;
-	margin-top:15px;
-}
-
-.logo_beta
-{
-	background-image: url('images/logo.png');
-}
-
-.logo_nobeta
-{
-	background-image: url('images/logo_nobeta.png');
 }
 
 .headerMenu

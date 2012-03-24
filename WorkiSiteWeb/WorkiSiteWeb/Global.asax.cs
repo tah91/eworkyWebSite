@@ -42,9 +42,6 @@ namespace Worki.Web
 			Bind<IMembershipService>()
 				.To<AccountMembershipService>();
 
-			Bind<IVisitorRepository>()
-				.To<VisitorRepository>();
-
 			Bind<IMemberRepository>()
 				.To<MemberRepository>();
 

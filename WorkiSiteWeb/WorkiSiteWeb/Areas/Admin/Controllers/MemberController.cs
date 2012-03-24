@@ -145,7 +145,6 @@ namespace Worki.Web.Areas.Admin.Controllers
         {
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var vRepo = ModelFactory.GetRepository<IVisitorRepository>(context);
             var member = mRepo.GetMember(user.UserName);
             if (member == null)
             {
@@ -157,7 +156,6 @@ namespace Worki.Web.Areas.Admin.Controllers
                 try
                 {
                     mRepo.Delete(member.MemberId);
-                    vRepo.Delete(item => string.Compare(item.Email, user.UserName, StringComparison.InvariantCultureIgnoreCase) == 0);
                     context.Commit();
                 }
                 catch (Exception ex)

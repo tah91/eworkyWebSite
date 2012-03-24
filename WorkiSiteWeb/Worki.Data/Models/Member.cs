@@ -16,7 +16,6 @@ namespace Worki.Data.Models
     {
         public Member()
         {
-            this.Comments = new HashSet<Comment>();
             this.FavoriteLocalisations = new HashSet<FavoriteLocalisation>();
             this.MemberBookings = new HashSet<MemberBooking>();
             this.MemberClients = new HashSet<MemberClient>();
@@ -27,6 +26,7 @@ namespace Worki.Data.Models
             this.Rentals = new HashSet<Rental>();
             this.Transactions = new HashSet<Transaction>();
             this.LocalisationClients = new HashSet<LocalisationClient>();
+            this.Comments = new HashSet<Comment>();
             this.Localisations = new HashSet<Localisation>();
     		OnInitialized();
         }
@@ -60,7 +60,6 @@ namespace Worki.Data.Models
     
         // Navigation properties
     
-        public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<FavoriteLocalisation> FavoriteLocalisations { get; set; }
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
         public virtual ICollection<MemberClient> MemberClients { get; set; }
@@ -72,6 +71,7 @@ namespace Worki.Data.Models
         public virtual ICollection<Rental> Rentals { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<LocalisationClient> LocalisationClients { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Localisation> Localisations { get; set; }
     
     }

@@ -18,7 +18,6 @@ namespace Worki.Data.Models
     
         public int ID { get; set; }
         public int LocalisationID { get; set; }
-        public Nullable<decimal> CoffeePrice { get; set; }
         public Nullable<System.DateTime> MonOpenMorning { get; set; }
         public Nullable<System.DateTime> MonCloseMorning { get; set; }
         public Nullable<System.DateTime> MonOpenAfter { get; set; }

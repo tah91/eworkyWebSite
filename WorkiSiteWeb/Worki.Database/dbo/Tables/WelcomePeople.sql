@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [dbo].[WelcomePeople] (
     [Id]                  INT            IDENTITY (1, 1) NOT NULL,
 	[OfferId]			  INT		     NOT NULL DEFAULT 0, 
-    [Description]         NVARCHAR (256) NOT NULL,
     [LocalisationPicture] NVARCHAR (256) NULL,
 	[SiteVersion]		  INT		     NOT NULL DEFAULT 0, 
     [Online]			  BIT NOT NULL DEFAULT 1, 

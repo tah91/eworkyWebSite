@@ -20,10 +20,8 @@ namespace Worki.Data.Models
         }
     
         public DbSet<C__RefactorLog> C__RefactorLog { get; set; }
-        public DbSet<Comment> Comments { get; set; }
         public DbSet<FavoriteLocalisation> FavoriteLocalisations { get; set; }
         public DbSet<Group> Groups { get; set; }
-        public DbSet<LocalisationData> LocalisationDatas { get; set; }
         public DbSet<LocalisationFeature> LocalisationFeatures { get; set; }
         public DbSet<LocalisationFile> LocalisationFiles { get; set; }
         public DbSet<MainLocalisation> MainLocalisations { get; set; }
@@ -37,7 +35,6 @@ namespace Worki.Data.Models
         public DbSet<RentalFeature> RentalFeatures { get; set; }
         public DbSet<RentalFile> RentalFiles { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Visitor> Visitors { get; set; }
         public DbSet<OfferFeature> OfferFeatures { get; set; }
         public DbSet<OfferFile> OfferFiles { get; set; }
         public DbSet<MemberQuotationTransaction> MemberQuotationTransactions { get; set; }
@@ -48,8 +45,10 @@ namespace Worki.Data.Models
         public DbSet<MemberClient> MemberClients { get; set; }
         public DbSet<OfferPrice> OfferPrices { get; set; }
         public DbSet<MemberQuotationLog> MemberQuotationLogs { get; set; }
-        public DbSet<WelcomePeople> WelcomePeoples { get; set; }
         public DbSet<LocalisationClient> LocalisationClients { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Localisation> Localisations { get; set; }
+        public DbSet<LocalisationData> LocalisationDatas { get; set; }
+        public DbSet<WelcomePeople> WelcomePeoples { get; set; }
     }
 }

@@ -21,19 +21,17 @@ namespace Worki.Data.Models
         public Nullable<int> PostUserID { get; set; }
         public System.DateTime Date { get; set; }
         public string Post { get; set; }
+        public int PostLanguage { get; set; }
         public int Rating { get; set; }
         public int RatingPrice { get; set; }
         public int RatingWifi { get; set; }
         public int RatingDispo { get; set; }
         public int RatingWelcome { get; set; }
-        public string PostEn { get; set; }
-        public string PostEs { get; set; }
-        public int PostLanguage { get; set; }
     
         // Navigation properties
     
-        public virtual Member Member { get; set; }
         public virtual Localisation Localisation { get; set; }
+        public virtual Member Member { get; set; }
     
     }
 }
