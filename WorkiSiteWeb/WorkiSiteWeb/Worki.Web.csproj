@@ -321,6 +321,10 @@
       <DependentUpon>Booking.css</DependentUpon>
     </Content>
     <Content Include="Content\boilerplate.css" />
+    <Content Include="Content\colorbox.css" />
+    <Content Include="Content\colorbox.min.css">
+      <DependentUpon>colorbox.css</DependentUpon>
+    </Content>
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\Dashboard.min.css">
       <DependentUpon>Dashboard.css</DependentUpon>
@@ -338,8 +342,10 @@
     <Content Include="Content\images\bandeLeft.png" />
     <Content Include="Content\images\bandeMiddle.png" />
     <Content Include="Content\images\bandeRight.png" />
+    <Content Include="Content\images\border.png" />
     <Content Include="Content\images\checked.png" />
     <Content Include="Content\images\cecilia.png" />
+    <Content Include="Content\images\controls.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\fb_sprite.png" />
     <Content Include="Content\images\flags.png" />
@@ -353,6 +359,8 @@
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
     <Content Include="Content\images\jelly.png" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\loading_background.png" />
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\logo_nobeta.png" />
@@ -360,6 +368,7 @@
     <Content Include="Content\images\mediaBanner.png" />
     <Content Include="Content\images\networks.png" />
     <Content Include="Content\images\olivier.png" />
+    <Content Include="Content\images\overlay.png" />
     <Content Include="Content\images\pinterest.png" />
     <Content Include="Content\images\retour.png" />
     <Content Include="Content\images\signin_facebook.png" />
@@ -451,6 +460,10 @@
     <Content Include="Scripts\gcal.js" />
     <Content Include="Scripts\gcal.min.js">
       <DependentUpon>gcal.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.colorbox.js" />
+    <Content Include="Scripts\jquery.colorbox.min.js">
+      <DependentUpon>jquery.colorbox.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.localdate-fr.js" />
     <Content Include="Scripts\jquery.localdate-fr.min.js">
@@ -907,6 +920,7 @@
     <Content Include="Views\Offer\_CreateOfferScript.cshtml" />
     <Content Include="Views\Home\Team.cshtml" />
     <Content Include="Views\Home\Pricing.cshtml" />
+    <Content Include="Views\Localisation\_AddPlaceFacebook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

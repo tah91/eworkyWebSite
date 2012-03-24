@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Globalization;
+using System.Configuration;
 using System.Linq;
-using System.Threading;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
@@ -24,9 +22,6 @@ using Worki.Service;
 using Worki.SiteMap;
 using Worki.Web.Helpers;
 using Worki.Web.ModelBinder;
-using System.Configuration;
-using Worki.Section;
-using System.Collections.Generic;
 
 namespace Worki.Web
 {

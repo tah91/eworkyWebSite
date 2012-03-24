@@ -397,6 +397,9 @@ namespace Links {
         public static readonly string jquery_ui_timepicker_addon_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-timepicker-addon.min.js") ? Url("jquery-ui-timepicker-addon.min.js") : Url("jquery-ui-timepicker-addon.js");
                       
         public static readonly string jquery_ui_timepicker_addon_min_js = Url("jquery-ui-timepicker-addon.min.js");
+        public static readonly string jquery_colorbox_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.colorbox.min.js") ? Url("jquery.colorbox.min.js") : Url("jquery.colorbox.js");
+                      
+        public static readonly string jquery_colorbox_min_js = Url("jquery.colorbox.min.js");
         public static readonly string jquery_fileupload_ui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.fileupload-ui.min.js") ? Url("jquery.fileupload-ui.min.js") : Url("jquery.fileupload-ui.js");
                       
         public static readonly string jquery_fileupload_ui_min_js = Url("jquery.fileupload-ui.min.js");
@@ -491,6 +494,8 @@ namespace Links {
         public static readonly string boilerplate_min_css = Url("boilerplate.min.css");
         public static readonly string Booking_css = Url("Booking.css");
         public static readonly string Booking_min_css = Url("Booking.min.css");
+        public static readonly string colorbox_css = Url("colorbox.css");
+        public static readonly string colorbox_min_css = Url("colorbox.min.css");
         public static readonly string Dashboard_css = Url("Dashboard.css");
         public static readonly string Dashboard_min_css = Url("Dashboard.min.css");
         public static readonly string fullcalendar_css = Url("fullcalendar.css");
@@ -534,9 +539,11 @@ namespace Links {
             public static readonly string bandeLeft_png = Url("bandeLeft.png");
             public static readonly string bandeMiddle_png = Url("bandeMiddle.png");
             public static readonly string bandeRight_png = Url("bandeRight.png");
+            public static readonly string border_png = Url("border.png");
             public static readonly string cecilia_png = Url("cecilia.png");
             public static readonly string checked_png = Url("checked.png");
             public static readonly string comm_content_png = Url("comm_content.png");
+            public static readonly string controls_png = Url("controls.png");
             public static readonly string cross_png = Url("cross.png");
             public static readonly string csv_import_png = Url("csv-import.png");
             public static readonly string delete_gif = Url("delete.gif");
@@ -560,6 +567,8 @@ namespace Links {
             public static readonly string jelly_png = Url("jelly.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
+            public static readonly string loading_gif = Url("loading.gif");
+            public static readonly string loading_background_png = Url("loading_background.png");
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logo_nobeta_png = Url("logo_nobeta.png");
@@ -572,6 +581,7 @@ namespace Links {
             public static readonly string next_vertical_png = Url("next-vertical.png");
             public static readonly string nomad_png = Url("nomad.png");
             public static readonly string olivier_png = Url("olivier.png");
+            public static readonly string overlay_png = Url("overlay.png");
             public static readonly string pbar_ani_gif = Url("pbar-ani.gif");
             public static readonly string photo1_jpg = Url("photo1.jpg");
             public static readonly string photo2_jpg = Url("photo2.jpg");
@@ -1366,6 +1376,7 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _AddPlaceFacebook = "~/Views/Localisation/_AddPlaceFacebook.cshtml";
             public readonly string _AskContact = "~/Views/Localisation/_AskContact.cshtml";
             public readonly string _CommentForm = "~/Views/Localisation/_CommentForm.cshtml";
             public readonly string _CommentFormScript = "~/Views/Localisation/_CommentFormScript.cshtml";

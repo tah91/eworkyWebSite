@@ -1,0 +1,63 @@
+﻿ @model Worki.Data.Models.Localisation
+            
+ <script type="text/javascript">
+     function postCook() {
+         FB.api(
+        '/me/eworky_localhost:work_in?workspace=@Model.GetDetailFullUrl(Url)',
+        'post',
+        function (response) {
+            if (!response || response.error) {
+                alert('Error occured');
+            } else {
+                alert('Cook was successful! Action ID: ' + response.id);
+            }
+        });
+     }
+  </script>
+  <div id="fb-root"></div>
+  <script>
+      window.fbAsyncInit = function () {
+          FB.init({
+              appId: '@WebHelper.GetFacebookId()', // App ID
+              status: true, // check login status
+              cookie: true, // enable cookies to allow the server to access the session
+              xfbml: true,  // parse XFBML
+              oauth: true
+          });
+
+          FB.getLoginStatus(function (response) {
+              if (response.status === 'connected') {
+                  // the user is logged in and has authenticated your
+                  // app, and response.authResponse supplies
+                  // the user's ID, a valid access token, a signed
+                  // request, and the time the access token 
+                  // and signed request each expire
+                  var uid = response.authResponse.userID;
+                  var accessToken = response.authResponse.accessToken;
+                  alert(accessToken);
+              } else if (response.status === 'not_authorized') {
+                  // the user is logged in to Facebook, 
+                  // but has not authenticated your app
+                  alert(response.status);
+              } else {
+                  // the user isn't logged in to Facebook.
+                  alert(response.status);
+              }
+          });
+      };
+
+      // Load the SDK Asynchronously
+      (function (d) {
+          var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
+          js = d.createElement('script'); js.id = id; js.async = true;
+          js.src = "//connect.facebook.net/en_US/all.js";
+          d.getElementsByTagName('head')[0].appendChild(js);
+      } (document));
+  </script>
+
+  <fb:add-to-timeline></fb:add-to-timeline>
+<form>
+    <input type="button" value="Cook" onclick="postCook()" />
+  </form>
+
+  <fb:activity actions="eworky_localhost:work_in"></fb:activity>
