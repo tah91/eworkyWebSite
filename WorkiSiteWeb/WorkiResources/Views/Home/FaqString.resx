@@ -347,7 +347,7 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
     <value>Votre profil est accessible depuis n’importe quelle page du site en cliquant sur le lien « Mon profil » dans la barre  en haut à droite (vous devez être connecté). Pour éditer votre profil, cliquez sur le lien « Editer mon profil » sous votre nom à gauche sur la page de votre profil. Complétez-le au maximum pour favoriser les échanges entre eWorkers et obtenir des points supplémentaires.</value>
   </data>
   <data name="HowEditLocation" xml:space="preserve">
-    <value>Le nombre de modifications est limité à 15 par jour. Si vous n’arrivez plus à modifier à éditer des lieux, vérifier que vous n’avez pas dépassé la limite. Si le problème persiste, vous pouvez nous contacter par e-mail à support@eworky.com.</value>
+    <value>Le nombre de modifications est limité à 15 par jour. Si vous n’arrivez plus à éditer un lieu, vérifiez que vous n’avez pas dépassé la limite. Si le problème persiste, vous pouvez nous contacter par e-mail à support@eworky.com.</value>
   </data>
   <data name="HowEditProfil" xml:space="preserve">
     <value>Comment éditer mon profil ?</value>
