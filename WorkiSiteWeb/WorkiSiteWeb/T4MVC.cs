@@ -1625,11 +1625,6 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult JoinParty() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult AjaxAdd() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
         }
@@ -1661,7 +1656,6 @@ namespace Worki.Web.Controllers {
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
             public readonly string AddOfferPrice = "AddOfferPrice";
-            public readonly string JoinParty = "JoinParty";
             public readonly string AjaxAdd = "AjaxAdd";
             public readonly string AjaxEdit = "AjaxEdit";
             public readonly string AjaxDelete = "AjaxDelete";
@@ -1673,9 +1667,11 @@ namespace Worki.Web.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _AjaxAdd = "~/Views/Offer/_AjaxAdd.cshtml";
             public readonly string _CreateOffer = "~/Views/Offer/_CreateOffer.cshtml";
             public readonly string _CreateOfferScript = "~/Views/Offer/_CreateOfferScript.cshtml";
             public readonly string _OfferItem = "~/Views/Offer/_OfferItem.cshtml";
+            public readonly string _OfferList = "~/Views/Offer/_OfferList.cshtml";
             public readonly string _OfferPrice = "~/Views/Offer/_OfferPrice.cshtml";
             public readonly string _OfferPriceList = "~/Views/Offer/_OfferPriceList.cshtml";
             public readonly string Create = "~/Views/Offer/Create.cshtml";
@@ -1742,19 +1738,6 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult JoinParty(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult JoinParty(int id, Worki.Data.Models.PartyRegisterFormViewModel formData) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
-            callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("formData", formData);
-            return callInfo;
-        }
-
         public override System.Web.Mvc.PartialViewResult AjaxAdd(int id) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
             callInfo.RouteValueDictionary.Add("id", id);
@@ -1771,6 +1754,13 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.PartialViewResult AjaxEdit(int id) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AjaxEdit(int id, Worki.Data.Models.OfferFormViewModel offerFormViewModel) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerFormViewModel", offerFormViewModel);
             return callInfo;
         }
 

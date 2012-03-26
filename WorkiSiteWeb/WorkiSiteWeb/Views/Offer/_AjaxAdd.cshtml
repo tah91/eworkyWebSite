@@ -104,3 +104,38 @@
 	</div>
 	<div class="clear"></div>
 }
+
+@Html.Partial(MVC.Offer.Views._CreateOfferScript)
+@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
+@Html.Partial(MVC.Shared.Views._DatePickerScript)
+
+<script type="text/javascript">
+
+    var action = "";
+    var succes = $.noop;
+    var error = $.noop;
+    @if (Model.Offer.Id == 0)
+    {
+        @:action = '@Url.Action(MVC.Offer.AjaxAdd(Model.LocId, null))';
+        @:succes = function (data) { $('.offersTable > tbody:last').append(data); };
+        @:error = function (data) { $('#offerFormContainer').append(data); };
+    }
+    else
+    {
+        @:action = '@Url.Action(MVC.Offer.AjaxEdit(Model.Offer.Id, null))';
+        @:succes = function (data) { $('.offersTable').replaceWith(data); };
+        @:error = function (data) { $('#offerFormContainer').append(data); };
+    }
+    require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+        $("#offerFormContainer form").submit( function () {
+            AppAjax(
+			    action,
+			    "POST",
+			    $(this).serializeArray(),
+                succes,
+                error
+		    );
+            return false;
+        });
+    });
+</script>

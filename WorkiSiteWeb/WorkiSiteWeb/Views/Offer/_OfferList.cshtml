@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Offer>
+
+<table class="offersTable">
+    <tr></tr>
+@foreach (var item in Model)
+{
+    @Html.Partial(MVC.Offer.Views._OfferItem, item)
+}
+</table>

@@ -320,7 +320,7 @@ namespace Worki.Web.Controllers
                     ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailDoNotMatch);
                 }
             }
-            return View(model);
+            return View(MVC.Account.Views.ResetPassword, model);
         }
 
 		/// <summary>

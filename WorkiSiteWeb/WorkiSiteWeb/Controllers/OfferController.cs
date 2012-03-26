@@ -216,182 +216,41 @@ namespace Worki.Web.Controllers
 			return PartialView(MVC.Offer.Views._OfferPrice, new OfferPrice());
 		}
 
-        void SetFavoritePlaces(PartyRegisterFormViewModel model)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var admin = mRepo.Get(mRepo.GetAdminId());
-            var locDict = admin.FavoriteLocalisations.ToDictionary(fl => fl.LocalisationId, fl => fl.Localisation.Name);
-
-            model.FavoritePlaceNames = string.Join(", ", locDict.Values);
-
-            locDict.Add(-1, "eWorker du dimanche");
-
-            model.FavoritePlaces= new SelectList(locDict, "Key", "Value");
-        }
-
-        /// <summary>
-        /// GET Action result to show join party form
-        /// </summary>
-        /// <param name="id">id of offer to join</param>
-        /// <returns>View containing join party form</returns>
-        [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult JoinParty(int id)
-        {
-            var memberId = WebHelper.GetIdentityId(User.Identity);
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-            var offer = oRepo.Get(id);
-            var member = mRepo.Get(memberId);
-
-            var formModel = new PartyRegisterFormViewModel(member, offer);
-            SetFavoritePlaces(formModel);
-
-            return View(formModel);
-        }
-
-        /// <summary>
-        /// Post Action result to add join party request
-        /// </summary>
-        /// <returns>View containing join party form</returns>
-        [AcceptVerbs(HttpVerbs.Post)]
-        public virtual ActionResult JoinParty(int id, PartyRegisterFormViewModel formData)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-            var memberId = WebHelper.GetIdentityId(User.Identity);
-            var member = mRepo.Get(memberId);
-            var offer = oRepo.Get(id);
-
-            if (ModelState.IsValid)
-            {
-                var sendNewAccountMail = false;
-                try
-                {
-                    var memberData = new MemberMainData
-                    {
-                        FirstName = formData.FirstName,
-                        LastName = formData.LastName,
-                        PhoneNumber = formData.PhoneNumber,
-                    };
-                    sendNewAccountMail = _MembershipService.TryCreateAccount(formData.Email, memberData, out memberId);
-                    member = mRepo.Get(memberId);
-
-                    var locName = offer.Localisation.Name;
-                    try
-                    {
-                        formData.MemberQuotation.MemberId = memberId;
-                        formData.MemberQuotation.OfferId = id;
-
-                        //set member data
-                        member.MemberMainData.PhoneNumber = formData.PhoneNumber;
-                        member.MemberMainData.Description = formData.Description;
-                        var favLoc = lRepo.Get(formData.FavoritePlaceId);
-                        if (favLoc != null && member.FavoriteLocalisations.Count(fl => fl.LocalisationId == favLoc.ID) == 0)
-                        {
-                            member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = favLoc.ID });
-                        }
-                        member.MemberQuotations.Add(formData.MemberQuotation);
-
-                        dynamic newMemberMail = null;
-                        if (sendNewAccountMail)
-                        {
-                            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-                            var editprofilUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
-                            TagBuilder profilLink = new TagBuilder("a");
-                            profilLink.MergeAttribute("href", editprofilUrl);
-                            profilLink.InnerHtml = Worki.Resources.Views.Account.AccountString.EditMyProfile;
-
-                            var editpasswordUrl = urlHelper.ActionAbsolute(MVC.Dashboard.Profil.Edit());
-                            TagBuilder passwordLink = new TagBuilder("a");
-                            passwordLink.MergeAttribute("href", editpasswordUrl);
-                            passwordLink.InnerHtml = Worki.Resources.Views.Account.AccountString.ChangeMyPassword;
-
-                            newMemberMail = new Email(MVC.Emails.Views.Email);
-                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                            newMemberMail.To = formData.Email;
-                            newMemberMail.ToName = formData.FirstName;
-
-                            newMemberMail.Subject = Worki.Resources.Email.BookingString.PartyCreateAccountSubject;
-							newMemberMail.Content = string.Format(Worki.Resources.Email.BookingString.PartyCreateAccount,
-																	formData.Email,
-																	_MembershipService.GetPassword(formData.Email, null),
-																	passwordLink,
-																	profilLink);
-                        }
-
-                        //send mail to team
-                        dynamic teamMail = new Email(MVC.Emails.Views.Email);
-                        teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        teamMail.To = MiscHelpers.EmailConstants.BookingMail;
-                        teamMail.Subject = Worki.Resources.Email.BookingString.PartyRegisterTeamSubject;
-                        teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
-						teamMail.Content = string.Format(Worki.Resources.Email.BookingString.PartyRegisterTeam,
-														 string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
-														 formData.PhoneNumber,
-														 member.Email,
-														 locName);
-
-                        //send mail to booking member
-                        dynamic clientMail = new Email(MVC.Emails.Views.Email);
-                        clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                        clientMail.To = member.Email;
-                        clientMail.Subject = Worki.Resources.Email.BookingString.PartyRegisterSubject;
-                        clientMail.ToName = member.MemberMainData.FirstName;
-						clientMail.Content = string.Format(Worki.Resources.Email.BookingString.PartyRegister,
-															locName,
-															offer.Localisation.Adress);
-
-                        context.Commit();
-
-                        if (sendNewAccountMail)
-                        {
-                            newMemberMail.Send();
-                        }
-                        clientMail.Send();
-                        teamMail.Send();
-                    }
-                    catch (Exception ex)
-                    {
-                        _Logger.Error(ex.Message);
-                        context.Complete();
-                        throw ex;
-                    }
-
-					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.PartyRegisterConfirmation;
-                    return Redirect(offer.Localisation.GetDetailFullUrl(Url));
-                }
-                catch (Exception ex)
-                {
-                    _Logger.Error("Create", ex);
-                    ModelState.AddModelError("", ex.Message);
-                }
-            }
-            SetFavoritePlaces(formData);
-            formData.QuotationOffer = offer;
-            return View(formData);
-		}
-
 		#region Ajax Offer
 
+        Offer GetOffer(int offerId)
+        {
+            Offer offer = null;
+            if (offerId > 0)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                offer = oRepo.Get(offerId);
+            }
+            else
+            {
+                var offerList = TempData["OfferList"] as List<Offer>;
+                offer = offerList.FirstOrDefault(o => o.Id == offerId);
+            }
+
+            return offer;
+        }
+        
 		/// <summary>
-		/// Action result to return offerprice item for edition
+		/// Action result to return offer creation form
 		/// </summary>
 		/// <returns>a partial view</returns>
 		public virtual PartialViewResult AjaxAdd(int id)
 		{
-			return PartialView(MVC.Offer.Views._CreateOffer, new OfferFormViewModel { LocId = id });
+			return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel { LocId = id });
 		}
 
 		/// <summary>
-		/// POST Action result to post a comment on a localisation
+		/// POST Action result add an offer via ajax
 		/// </summary>
-		/// <param name="id">The id of the comment's localisation</param>
-		/// <param name="com">The comment data from the form</param>
-		/// <returns>redirect to the return urlif ok, show errors else</returns>
+		/// <param name="id">localisation id</param>
+        /// <param name="offerFormViewModel">offer data</param>
+		/// <returns>exception if error, partial view if added</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
 		//[ValidateAntiForgeryToken]
 		[HandleModelStateException]
@@ -426,15 +285,20 @@ namespace Worki.Web.Controllers
 						var offerList = TempData["OfferList"] as List<Offer>;
 						if (offerList == null)
 							offerList = new List<Offer>();
+                        //negative id to set the order
+                        var minId = offerList.Min(o => (int?)o.Id) ?? -1;
+                        offerFormViewModel.Offer.Id = minId;
+
 						offerList.Add(offerFormViewModel.Offer);
 						TempData["OfferList"] = offerList;
 					}
+
 					TempData.Remove(PictureData.PictureDataString);
 					return PartialView(MVC.Offer.Views._OfferItem, offerFormViewModel.Offer);
 				}
 				catch (Exception ex)
 				{
-					_Logger.Error("Create", ex);
+                    _Logger.Error("AjaxAdd", ex);
 					ModelState.AddModelError("", ex.Message);
 					throw new ModelStateException(ModelState);
 				}
@@ -442,32 +306,128 @@ namespace Worki.Web.Controllers
 			throw new ModelStateException(ModelState);
 		}
 
-		/// <summary>
-		/// POST Action result to post a comment on a localisation
-		/// </summary>
-		/// <param name="id">The id of the comment's localisation</param>
-		/// <param name="com">The comment data from the form</param>
-		/// <returns>redirect to the return urlif ok, show errors else</returns>
-		//[AcceptVerbs(HttpVerbs.Post), Authorize]
-		//[ValidateAntiForgeryToken]
-		//[HandleModelStateException]
-		public virtual PartialViewResult AjaxEdit(int id)
-		{
-			throw new ModelStateException(ModelState);
-		}
+        /// <summary>
+        /// Action result to return offer edition form
+        /// </summary>
+        /// <param name="id">id of offer if any</param>
+        /// <returns>a partial view</returns>
+        public virtual PartialViewResult AjaxEdit(int id)
+        {
+            Offer offer = GetOffer(id);
+            return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(offer.Localisation.IsSharedOffice()) { Offer = offer });
+        }
 
-		/// <summary>
-		/// POST Action result to post a comment on a localisation
-		/// </summary>
-		/// <param name="id">The id of the comment's localisation</param>
-		/// <param name="com">The comment data from the form</param>
-		/// <returns>redirect to the return urlif ok, show errors else</returns>
-		//[AcceptVerbs(HttpVerbs.Post), Authorize]
-		//[ValidateAntiForgeryToken]
-		//[HandleModelStateException]
+        /// <summary>
+        /// POST Action result edit an offer via ajax
+        /// </summary>
+        /// <param name="id">offer id</param>
+        /// <param name="offerFormViewModel">offer data</param>
+        /// <returns>exception if error, partial view if added</returns>
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        //[ValidateAntiForgeryToken]
+        [HandleModelStateException]
+        public virtual PartialViewResult AjaxEdit(int id, OfferFormViewModel offerFormViewModel)
+        {
+            TempData[PictureData.PictureDataString] = new PictureDataContainer(offerFormViewModel.Offer);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var offers = new List<Offer>();
+                    //case loc exists
+                    if (id != 0)
+                    {
+                        var context = ModelFactory.GetUnitOfWork();
+                        var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                        var offer = oRepo.Get(id);
+                        try
+                        {
+                            var locId = offer.LocalisationId;
+                            UpdateModel(offer, "Offer");
+                            context.Commit();
+                            var newContext = ModelFactory.GetUnitOfWork();
+                            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
+                            var loc = lRepo.Get(locId);
+                            offers = loc.Offers.ToList();
+                        }
+                        catch (Exception ex)
+                        {
+                            _Logger.Error(ex.Message);
+                            context.Complete();
+                            throw ex;
+                        }
+                    }
+                    else
+                    //add to temp data, to be processed later
+                    {
+                        Offer offer = GetOffer(id);
+                        UpdateModel(offer, "Offer");
+                        offers = TempData["OfferList"] as List<Offer>;
+                    }
+
+                    TempData.Remove(PictureData.PictureDataString);
+                    return PartialView(MVC.Offer.Views._OfferList, offers);
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("AjaxEdit", ex);
+                    ModelState.AddModelError("", ex.Message);
+                    throw new ModelStateException(ModelState);
+                }
+            }
+            throw new ModelStateException(ModelState);
+        }
+
+        /// <summary>
+        /// Action result to delete offer
+        /// </summary>
+        /// <param name="id">id of offer if any</param>
+        /// <returns>a partial view</returns>
 		public virtual PartialViewResult AjaxDelete(int id)
 		{
-			throw new ModelStateException(ModelState);
+            try
+            {
+                var offers = new List<Offer>();
+                //case loc exists
+                if (id != 0)
+                {
+                    var context = ModelFactory.GetUnitOfWork();
+                    var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                    try
+                    {
+                        var offer = oRepo.Get(id);
+                        var locId = offer.LocalisationId;
+                        oRepo.Delete(id);
+                        context.Commit();
+                        var newContext = ModelFactory.GetUnitOfWork();
+                        var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
+                        var loc = lRepo.Get(locId);
+                        offers = loc.Offers.ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        _Logger.Error("AjaxDelete", ex);
+                        context.Complete();
+                        throw ex;
+                    }
+                }
+                else
+                //add to temp data, to be processed later
+                {
+                    var offerList = TempData["OfferList"] as List<Offer>;
+                    offerList = offerList.Where(o => o.Id != id).ToList();
+                    TempData["OfferList"] = offerList;
+                    offers = offerList;
+                }
+
+                return PartialView(MVC.Offer.Views._OfferList, offers);
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("AjaxDelete", ex);
+                ModelState.AddModelError("", ex.Message);
+                throw new ModelStateException(ModelState);
+            }
 		}
 
 		#endregion

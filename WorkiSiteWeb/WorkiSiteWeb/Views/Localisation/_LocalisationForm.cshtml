@@ -773,21 +773,14 @@
     {
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
-		<div class="offersTable">
-			<table id="plop">
-                <tr></tr>
-			@foreach (var item in Model.Localisation.Offers)
-            {
-                @Html.Partial(MVC.Offer.Views._OfferItem, item)
-            }
-			</table>
+		<div class="marginb5">
+            @Html.Partial(MVC.Offer.Views._OfferList, Model.Localisation.Offers)
 		</div>
-		@*@Html.DropDownListFor(m => m.NewOfferType, Model.Offers)*@
         <div class="buttonStd buttonBlue linkImg float-left">
             @Html.ActionLink("Ajouter une offre", MVC.Offer.AjaxAdd(Model.Localisation.ID), new { id = "addOffer" })
 		</div>
         <div class="clear"></div>
-        <div id="offerPriceFormContainer">
+        <div id="offerFormContainer">
         </div>
         <script type="text/javascript">
             $("#addOffer").click(function () {
@@ -795,20 +788,34 @@
                     url: this.href,
                     cache: false,
                     success: function (html) {
-                        $("#offerPriceFormContainer").html(html);
-                        InitializeFileUpload('#@PictureData.GetFileUploaderId(ProviderType.Offer)');
+                        $("#offerFormContainer").html(html);
                     }
                 });
                 return false;
             });
 
-            $("button.deleteRow").live("click", function () {
-                $(this).parents(".offerPricesRow:first").remove();
+            $(".editOffer").live('click', function () {
+                $.ajax({
+                    url: this.href,
+                    cache: false,
+                    success: function (html) {
+                        $("#offerFormContainer").html(html);
+                    }
+                });
+                return false;
+            });
+
+            $(".deleteOffer").live('click', function () {
+                $.ajax({
+                    url: this.href,
+                    cache: false,
+                    success: function (html) {
+                        $(".offersTable").replaceWith(html);
+                    }
+                });
                 return false;
             });
         </script>
-		@*<input  type="submit" class="buttonStd buttonBlue imageBtn" 
-				name="addOffer" value="@Worki.Resources.Views.Shared.SharedString.Adds"/>*@
 	</div>
 	}
         

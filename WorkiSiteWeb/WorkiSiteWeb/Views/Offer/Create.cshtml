@@ -23,6 +23,8 @@
 
 @section ScriptContent
 {
-	
+	@Html.Partial(MVC.Offer.Views._CreateOfferScript)
+	@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
+	@Html.Partial(MVC.Shared.Views._DatePickerScript)
 }
 
