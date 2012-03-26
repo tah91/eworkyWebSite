@@ -136,7 +136,7 @@
     <value>Edit</value>
   </data>
   <data name="EditPlace" xml:space="preserve">
-    <value>Edit the workplace</value>
+    <value>Edit this workspace</value>
   </data>
   <data name="NotAccessToWorkplace" xml:space="preserve">
     <value>Error to access the workplace</value>
@@ -178,7 +178,7 @@
     <value>Fax:</value>
   </data>
   <data name="GeneralOpinion" xml:space="preserve">
-    <value>General opinion</value>
+    <value>Overall rating</value>
   </data>
   <data name="LastEditBy" xml:space="preserve">
     <value>Last edition by:</value>
@@ -220,7 +220,7 @@
     <value>Location</value>
   </data>
   <data name="Suggestion" xml:space="preserve">
-    <value>Suggestion(s)</value>
+    <value>Similar workspace(s)</value>
   </data>
   <data name="execError" xml:space="preserve">
     <value>An error occurred.</value>
@@ -253,7 +253,7 @@
     <value>Facebook page</value>
   </data>
   <data name="NoSuggestions" xml:space="preserve">
-    <value>eWorky has no close similar workspace to suggest.</value>
+    <value>eWorky has no similar workspace to recommend.</value>
   </data>
   <data name="MustAddOffer" xml:space="preserve">
     <value>Watch out, you did not add any offer for this space. Please add at least one offer.</value>
@@ -305,7 +305,7 @@ Your message will be directly  forwarded to the space owner.</value>
     <value>Offers</value>
   </data>
   <data name="Overview" xml:space="preserve">
-    <value>General view</value>
+    <value>Overview</value>
   </data>
   <data name="Socials" xml:space="preserve">
     <value>Social networks</value>

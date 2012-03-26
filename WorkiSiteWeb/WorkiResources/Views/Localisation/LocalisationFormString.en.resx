@@ -133,7 +133,7 @@
     <value>Facilities &amp; Services</value>
   </data>
   <data name="Facilities" xml:space="preserve">
-    <value>Facilities</value>
+    <value>Amenities</value>
   </data>
   <data name="FreeWorkplace" xml:space="preserve">
     <value>Free workspace</value>
@@ -174,7 +174,7 @@
     <value>Ex: Regus London, the Hub Amsterdam, Club Office Berlin</value>
   </data>
   <data name="ProfessionalServices" xml:space="preserve">
-    <value>Professional services</value>
+    <value>Services</value>
   </data>
   <data name="ProposedTechnology" xml:space="preserve">
     <value>Offered technology</value>

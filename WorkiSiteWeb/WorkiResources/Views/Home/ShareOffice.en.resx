@@ -133,10 +133,10 @@
     <value>Develop a dynamic and creative environment for your both strurctures</value>
   </data>
   <data name="ForBothHead1" xml:space="preserve">
-    <value>Enrich with exchanges ! </value>
+    <value>Grow by sharing and collaborating !</value>
   </data>
   <data name="ForBothHead2" xml:space="preserve">
-    <value>Build your network !</value>
+    <value>Develop your network !</value>
   </data>
   <data name="ForOwner" xml:space="preserve">
     <value>Owner</value>
@@ -148,7 +148,7 @@
     <value>Earn several thousand euros per year and desk</value>
   </data>
   <data name="ForOwner3" xml:space="preserve">
-    <value>We take care of everything ! It is all automatic, from tenant searching to fund collecting</value>
+    <value>We take care of everything, from finding renters to billing !</value>
   </data>
   <data name="ForOwnerHead1" xml:space="preserve">
     <value>You have unoccupied desks in your office ?</value>
@@ -160,7 +160,7 @@
     <value>Tenant</value>
   </data>
   <data name="ForTenant1" xml:space="preserve">
-    <value>Find a desk up to 5 times cheaper than traditional locations or business centers</value>
+    <value>Shared offices can be up to five times cheaper than traditional office space or business centers</value>
   </data>
   <data name="ForTenant2" xml:space="preserve">
     <value>Enjoy the flexibility of desk sharing, with monthly, weekly, or daily booking...</value>
@@ -169,10 +169,10 @@
     <value>Book and pay your space just in a few clicks !</value>
   </data>
   <data name="ForTenantHead1" xml:space="preserve">
-    <value>You are a small company or a freelance ?</value>
+    <value>You are a small business or a freelancer ?</value>
   </data>
   <data name="ForTenantHead2" xml:space="preserve">
-    <value>You are looking for a workspace for your activity ?</value>
+    <value>You are looking for office space for your activity ?</value>
   </data>
   <data name="ShareOfficeMenu" xml:space="preserve">
     <value>Desk sharing</value>

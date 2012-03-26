@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AC" xml:space="preserve">
-    <value>AC</value>
+    <value>Air conditioning</value>
     <comment>Features</comment>
   </data>
   <data name="Access24" xml:space="preserve">
@@ -179,7 +179,7 @@
     <value>Ergonomic furniture</value>
   <comment>?</comment></data>
   <data name="FastInternet" xml:space="preserve">
-    <value>Superfast broadband access</value>
+    <value>High speed broadband internet</value>
   <comment>?</comment></data>
   <data name="Handicap" xml:space="preserve">
     <value>Disabled access</value>
@@ -206,7 +206,7 @@
     <value>Newspapers</value>
   </data>
   <data name="Outlet" xml:space="preserve">
-    <value>Socket</value>
+    <value>Electric plug</value>
   </data>
   <data name="Paperboard" xml:space="preserve">
     <value>Paper-board</value>

@@ -175,7 +175,7 @@
     <value>Quantity</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>160 characters description</value>
+    <value>Description</value>
   </data>
   <data name="FavoritePlaceId" xml:space="preserve">
     <value>Favorite coworking space</value>
