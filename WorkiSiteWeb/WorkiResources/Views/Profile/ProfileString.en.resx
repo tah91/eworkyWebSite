@@ -232,7 +232,7 @@
     <value>Your clients will pay you through the Paypal plateform. To be able to be paid, you must own a Paypal account (to open a Paypal account, click &lt;a href="{0}" target="_blank"&gt;here&lt;/a&gt;).</value>
   </data>
   <data name="EndModifyPayment" xml:space="preserve">
-    <value>We remind you that a fee of {0}% and a PayPal fee will be taken from all bookings going through eWorky. For all questions, please contact us: contact@eworky.com.</value>
+    <value>We remind you that a fee of 3,2 % and a PayPal fee will be taken from all bookings going through eWorky. For all questions, please contact us: contact@eworky.com.</value>
   </data>
   <data name="MailPayment" xml:space="preserve">
     <value>Email address linked to your Paypal account</value>
