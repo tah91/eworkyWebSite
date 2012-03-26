@@ -41,39 +41,40 @@
 			$(this).attr("clicked", "true");
 		});
 
-		$('#createEventForm').submit(function (e) {
-			var idbouton = $("input[type=submit][clicked=true]").attr('id');
-			var onlyCreate = (idbouton == null || idbouton == 'createBooking');
-			var submitUrl = onlyCreate ? '@Url.Action(MVC.Backoffice.Schedule.CreateEvent())' : '@Url.Action(MVC.Backoffice.Schedule.CreateAndEditEvent())'
-			$.ajax({
-				type: 'POST',
-				url: submitUrl,
-				data: $(this).serializeArray(),
-				error: function (xhr, status, err) {
-					if (xhr.status == 400) {
-						$('#calendar').fullCalendar('unselect');
-						$('div.field-validation-error').remove();
-						$('#createBookingError').append('<div class="field-validation-error">' + xhr.responseText + '</div>');
-					}
-				},
-				success: function (data, textStatus, jqXHR) {
-					if (onlyCreate) {
-						$('#calendar').fullCalendar('renderEvent', data, true);
-						$('#calendar').fullCalendar('unselect');
-						$('div.field-validation-error').remove();
-						$('.createBooking').fadeOut("slow");
-					}
-					else {
-						window.location.href = data.redirectToUrl;
-					}
-				}
-			});
-			return false;
-		});
+
+        require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+            $('#createEventForm').submit(function (e) {
+                var idbouton = $("input[type=submit][clicked=true]").attr('id');
+                var onlyCreate = (idbouton == null || idbouton == 'createBooking');
+                var submitUrl = onlyCreate ? '@Url.Action(MVC.Backoffice.Schedule.CreateEvent())' : '@Url.Action(MVC.Backoffice.Schedule.CreateAndEditEvent())'
+                AppAjax(
+                    submitUrl,
+                    'POST',
+                    $(this).serializeArray(),
+                    function (data) {
+                        if (onlyCreate) {
+                            $('#calendar').fullCalendar('renderEvent', data, true);
+                            $('#calendar').fullCalendar('unselect');
+                            $('div.field-validation-error').remove();
+                            $('.createBooking').fadeOut("slow");
+                        }
+                        else {
+                            window.location.href = data.redirectToUrl;
+                        }
+                    },
+                    function (data) {
+                        $('#calendar').fullCalendar('unselect');
+                        $('div.field-validation-error').remove();
+                        $('#createBookingError').append('<div class="field-validation-error">' + xhr.responseText + '</div>');
+                    }
+                });
+                return false;
+            });
+        });
 
         $('.cross').click(function () {
             $('.createBooking').hide();
-           });
+        });
 
 	</script>
 

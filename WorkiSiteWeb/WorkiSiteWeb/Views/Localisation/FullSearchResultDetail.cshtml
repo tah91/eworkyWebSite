@@ -28,21 +28,16 @@
 <div class="clear">
 </div>
 }
+
+@Html.Partial(MVC.Localisation.Views._AddPlaceFacebook, Model.Localisation)
+
 @Html.Partial(MVC.Localisation.Views._LocalisationDetail, Model.Localisation)
-
-<a class="inline" href="#inline_content">Inline HTML</a>
-<div style="display:none">
-    <div id='inline_content'>
-        @Html.Partial(MVC.Localisation.Views._AddPlaceFacebook, Model.Localisation)
-    </div>
-</div>
-
 
 @section ScriptContent
 {
     <script type="text/javascript">
         require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
-            $(".inline").colorbox({ inline: true });
+            //$(".inline").colorbox({ inline: true });
             
         });
 

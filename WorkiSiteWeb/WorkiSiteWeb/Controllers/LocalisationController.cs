@@ -11,6 +11,7 @@ using Worki.Service;
 using Worki.Infrastructure.Repository;
 using Postal;
 using System.Collections.Generic;
+using Facebook;
 
 namespace Worki.Web.Controllers
 {
@@ -454,6 +455,31 @@ namespace Worki.Web.Controllers
 			}
 
             return RedirectToAction(MVC.Home.Pricing());
+		}
+
+		/// <summary>
+		/// POST action to publish facebook opengraph action
+		/// </summary>
+		/// <param name="id">The id of the localisation</param>
+		/// <param name="accessToken">fb access token</param>
+		/// <returns>localisation image desc in json format</returns>
+		[AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult PublishOpenGraph(int id, string accessToken, string type)
+		{
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var localisation = lRepo.Get(id);
+
+			try
+			{
+				FacebookClient fbClient = new FacebookClient(accessToken);
+				fbClient.Post("/me/eworky_localhost:work_in", new Dictionary<string, object> { { "workspace", localisation.GetDetailFullUrl(Url) } });
+				return Json("posted");
+			}
+			catch (Exception ex)
+			{
+				return Json(ex.Message);
+			}
 		}
 
 		#region Search

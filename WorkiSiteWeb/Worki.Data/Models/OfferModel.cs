@@ -15,14 +15,14 @@ namespace Worki.Data.Models
             Init();
 		}
 
-		public OfferFormViewModel(bool isShared, bool needPartyOffer)
+		public OfferFormViewModel(bool isShared)
 		{
-			Init(isShared, needPartyOffer);
+			Init(isShared);
 		}
 
-		void Init(bool isShared = false, bool needPartyOffer = false)
+		void Init(bool isShared = false)
         {
-			var offers = Localisation.GetOfferTypeDict(isShared, needPartyOffer);
+			var offers = Localisation.GetOfferTypeDict(isShared);
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
@@ -36,6 +36,7 @@ namespace Worki.Data.Models
         public SelectList Periods { get; set; }
         public SelectList PaymentTypes { get; set; }
         public SelectList Currencies { get; set; }
+		public int LocId { get; set; }
         public bool IsSharedOffice { get; set; }
 	}
 

@@ -430,12 +430,13 @@
 	</div>
 	@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
     {
-		<div class="buttonStd buttonBlue linkImg float-left">
-		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
-		</div>
+	<div class="buttonStd buttonBlue linkImg float-left">
+	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.DeletePlace, MVC.Admin.Sheet.DeleteLocalisation(Model.ID))
+	</div>
     }
     <div class="buttonStd buttonOrange linkImg float-left">
-        @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.IWorkHere, MVC.Dashboard.Profil.AddToFavorite(Model.ID))</div>
+        @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.IWorkHere, MVC.Dashboard.Profil.AddToFavorite(Model.ID))
+	</div>
 	<div class="clear">
 	</div>
 </div>

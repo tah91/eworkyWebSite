@@ -214,8 +214,8 @@ namespace Worki.Data.Models
             List = new List<Localisation>();
             DistanceFromLocalisation = new Dictionary<int, double>();
             Criteria = new SearchCriteria();
-            var toExclude = allOffers ? new List<LocalisationOffer> { LocalisationOffer.Party }
-                : new List<LocalisationOffer> { LocalisationOffer.Party, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom };
+            var toExclude = allOffers ? new List<LocalisationOffer> ()
+                : new List<LocalisationOffer> { LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom };
             var offers = Localisation.GetOfferTypeDict(toExclude, true);
             Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.FreeArea);
         }

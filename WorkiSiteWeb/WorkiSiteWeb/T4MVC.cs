@@ -474,6 +474,9 @@ namespace Links {
         public static readonly string tabs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tabs.min.js") ? Url("tabs.min.js") : Url("tabs.js");
                       
         public static readonly string tabs_min_js = Url("tabs.min.js");
+        public static readonly string Utils_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Utils.min.js") ? Url("Utils.min.js") : Url("Utils.js");
+                      
+        public static readonly string Utils_min_js = Url("Utils.min.js");
         public static readonly string WorkiAutocomplete_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiAutocomplete.min.js") ? Url("WorkiAutocomplete.min.js") : Url("WorkiAutocomplete.js");
                       
         public static readonly string WorkiAutocomplete_min_js = Url("WorkiAutocomplete.min.js");
@@ -563,8 +566,8 @@ namespace Links {
             public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
+            public static readonly string listing_png = Url("listing.png");
             public static readonly string loading_gif = Url("loading.gif");
-            public static readonly string loading_background_png = Url("loading_background.png");
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");
@@ -1277,6 +1280,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult PublishOpenGraph() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.PublishOpenGraph);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
         }
@@ -1342,6 +1350,7 @@ namespace Worki.Web.Controllers {
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
             public readonly string SetOwnership = "set-ownership";
+            public readonly string PublishOpenGraph = "PublishOpenGraph";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string SearchForm = "SearchForm";
@@ -1493,6 +1502,14 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult PublishOpenGraph(int id, string accessToken, string type) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PublishOpenGraph);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("accessToken", accessToken);
+            callInfo.RouteValueDictionary.Add("type", type);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult FindSimilarLocalisation(float latitude, float longitude) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
             callInfo.RouteValueDictionary.Add("latitude", latitude);
@@ -1611,6 +1628,21 @@ namespace Worki.Web.Controllers {
         public System.Web.Mvc.ActionResult JoinParty() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult AjaxAdd() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult AjaxEdit() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult AjaxDelete() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDelete);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public OfferController Actions { get { return MVC.Offer; } }
@@ -1630,6 +1662,9 @@ namespace Worki.Web.Controllers {
             public readonly string Delete = "Delete";
             public readonly string AddOfferPrice = "AddOfferPrice";
             public readonly string JoinParty = "JoinParty";
+            public readonly string AjaxAdd = "AjaxAdd";
+            public readonly string AjaxEdit = "AjaxEdit";
+            public readonly string AjaxDelete = "AjaxDelete";
         }
 
 
@@ -1640,6 +1675,7 @@ namespace Worki.Web.Controllers {
         public class ViewNames {
             public readonly string _CreateOffer = "~/Views/Offer/_CreateOffer.cshtml";
             public readonly string _CreateOfferScript = "~/Views/Offer/_CreateOfferScript.cshtml";
+            public readonly string _OfferItem = "~/Views/Offer/_OfferItem.cshtml";
             public readonly string _OfferPrice = "~/Views/Offer/_OfferPrice.cshtml";
             public readonly string _OfferPriceList = "~/Views/Offer/_OfferPriceList.cshtml";
             public readonly string Create = "~/Views/Offer/Create.cshtml";
@@ -1716,6 +1752,31 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.JoinParty);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("formData", formData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AjaxAdd(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AjaxAdd(int id, Worki.Data.Models.OfferFormViewModel offerFormViewModel) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("offerFormViewModel", offerFormViewModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AjaxEdit(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult AjaxDelete(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxDelete);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

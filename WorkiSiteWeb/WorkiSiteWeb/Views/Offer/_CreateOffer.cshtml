@@ -4,6 +4,7 @@
 {
 	@Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.IsSharedOffice)
+    @Html.HiddenFor(m => m.LocId)
     <div class="contentBlock">
 		<table class="offerTable">
 			<tr>
@@ -83,7 +84,7 @@
     }
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Rental.RentalString.Images</h3>
-		<div id="fileupload" class="borderRadius">
+		<div id="@PictureData.GetFileUploaderId(ProviderType.Offer)" class="fileupload borderRadius">
 			<div class="fileupload-buttonbar">
 				<label class="fileinput-button">
 					<span>@Worki.Resources.Views.Localisation.LocalisationString.AddPicture</span>
@@ -103,3 +104,26 @@
 	</div>
 	<div class="clear"></div>
 }
+
+@Html.Partial(MVC.Offer.Views._CreateOfferScript)
+@Html.Partial(MVC.Shared.Views._UploadGalleryScript, Model.Offer)
+@Html.Partial(MVC.Shared.Views._DatePickerScript)
+
+<script type="text/javascript">
+    require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+        $("#offerPriceFormContainer form").submit(function () {
+            AppAjax(
+			    "@Url.Action(MVC.Offer.AjaxAdd(Model.LocId,null))",
+			    "POST",
+			    $(this).serializeArray(),
+			    function (data) {
+			        $("#plop > tbody:last").append(data);
+			    },
+			    function (data) {
+			        $("#offerPriceFormContainer").append(data);
+			    }
+		    );
+            return false;
+        });
+    });
+</script>

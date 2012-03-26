@@ -78,6 +78,10 @@ namespace Worki.Data.Models
 		const string _RentalFolder = "rental";
 		const string _OfferFolder = "offer";
 
+		const string _RentalId = "fileuploadRental";
+		const string _OfferId = "fileuploadOffer";
+		const string _LocalisationId = "fileuploadLocalisation";
+
 		public static string GetFolder(ProviderType type)
 		{
 			switch (type)
@@ -89,6 +93,20 @@ namespace Worki.Data.Models
 				case ProviderType.Localisation:
 				default:
 					return null;
+			}
+		}
+
+		public static string GetFileUploaderId(ProviderType type)
+		{
+			switch (type)
+			{
+				case ProviderType.Rental:
+					return _RentalId;
+				case ProviderType.Offer:
+					return _OfferId;
+				case ProviderType.Localisation:
+				default:
+					return _LocalisationId;
 			}
 		}
     }

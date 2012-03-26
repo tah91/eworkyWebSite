@@ -1,5 +1,8 @@
 ﻿@model Worki.Data.Models.IPictureDataProvider
 
+@{
+    var id = PictureData.GetFileUploaderId(Model.GetProviderType());
+}
 <script type="text/javascript">
     require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
         require(["https://www.google.com/jsapi?key=ABQIAAAAdG7nmLSCLLMyUXmPZDmWpBRTF5xuOK5bddqYLfHtIQ9yoLhushTMhg-RXHVzuHh7Q9kwhnxfM_kDtQ",
@@ -7,9 +10,9 @@
                 "@Url.VersionedContent(Links.Scripts.jquery_iframe_transport_js)",
                 "@Url.VersionedContent(Links.Scripts.jquery_fileupload_js)"], function () {
 					require(["@Url.VersionedContent(Links.Scripts.jquery_fileupload_ui_js)"], function () {
-						require.ready(function () {
-							// Initialize the jQuery File Upload widget:
-							$('#fileupload').fileupload({
+                        InitializeFileUpload = function(id) {
+                            // Initialize the jQuery File Upload widget:
+							$(id).fileupload({
 								'url': '@Url.Action(MVC.UploadImage.UploadFiles(Model.GetProviderType()))',
 								'autoUpload': 'true',
 								'maxNumberOfFiles': 10,
@@ -18,10 +21,10 @@
 							});
 
 							_renderFiles = function (files) {
-								var fu = $('#fileupload').data('fileupload');
+								var fu = $(id).data('fileupload');
 								fu._adjustMaxNumberOfFiles(-files.length);
 								fu._renderDownload(files)
-									.appendTo($('#fileupload .files'))
+									.appendTo($(id +' .files'))
 									.fadeIn(function () {
 										// Fix for IE7 and lower:
 										$(this).show();
@@ -33,13 +36,14 @@
 
 							// Open download dialogs via iframes,
 							// to prevent aborting current uploads:
-							$('#fileupload .files a:not([target^=_blank])').live('click', function (e) {
+							$(id + ' .files a:not([target^=_blank])').live('click', function (e) {
 								e.preventDefault();
 								$('<iframe style="display:none;"></iframe>')
 									.prop('src', this.href)
 									.appendTo('body');
 							});
-						});
+                        }
+                        InitializeFileUpload('#@id');
 					});
 		});
     });

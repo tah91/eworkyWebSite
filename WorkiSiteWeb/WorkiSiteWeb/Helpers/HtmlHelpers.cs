@@ -301,19 +301,6 @@ namespace Worki.Web.Helpers
             return MvcHtmlString.Create(anchorHtml);
         }
 
-
-        public static string GetFileFullUrl(this HtmlHelper html, string path, bool forceHttps)
-        {
-            try
-            {
-				return WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(path), forceHttps);
-            }
-            catch (Exception)
-            {
-                return path;
-            }
-        }
-
         public static string GetPhoneFormat(this HtmlHelper html, string number)
         {
             try

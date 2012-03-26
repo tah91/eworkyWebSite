@@ -12,6 +12,7 @@ using Postal;
 using System.Linq;
 using Worki.Memberships;
 using System.Web.Security;
+using System.Collections.Generic;
 
 namespace Worki.Web.Controllers
 {
@@ -43,7 +44,7 @@ namespace Worki.Web.Controllers
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var loc = lRepo.Get(id);
 
-			return View(new OfferFormViewModel(loc.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = new Offer { LocalisationId = id, Type = type } });
+			return View(new OfferFormViewModel(loc.IsSharedOffice()) { Offer = new Offer { LocalisationId = id, Type = type } });
 		}
 
 		/// <summary>
@@ -118,7 +119,7 @@ namespace Worki.Web.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var offer = oRepo.Get(id);
-			return View(MVC.Offer.Views.Create, new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer });
+			return View(MVC.Offer.Views.Create, new OfferFormViewModel(offer.Localisation.IsSharedOffice()) { Offer = offer });
 		}
 
 		/// <summary>
@@ -372,6 +373,103 @@ namespace Worki.Web.Controllers
             SetFavoritePlaces(formData);
             formData.QuotationOffer = offer;
             return View(formData);
-        }
-    }
+		}
+
+		#region Ajax Offer
+
+		/// <summary>
+		/// Action result to return offerprice item for edition
+		/// </summary>
+		/// <returns>a partial view</returns>
+		public virtual PartialViewResult AjaxAdd(int id)
+		{
+			return PartialView(MVC.Offer.Views._CreateOffer, new OfferFormViewModel { LocId = id });
+		}
+
+		/// <summary>
+		/// POST Action result to post a comment on a localisation
+		/// </summary>
+		/// <param name="id">The id of the comment's localisation</param>
+		/// <param name="com">The comment data from the form</param>
+		/// <returns>redirect to the return urlif ok, show errors else</returns>
+		[AcceptVerbs(HttpVerbs.Post), Authorize]
+		//[ValidateAntiForgeryToken]
+		[HandleModelStateException]
+		public virtual PartialViewResult AjaxAdd(int id, OfferFormViewModel offerFormViewModel)
+		{
+			TempData[PictureData.PictureDataString] = new PictureDataContainer(offerFormViewModel.Offer);
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					//case loc exists
+					if (id != 0)
+					{
+						var context = ModelFactory.GetUnitOfWork();
+						var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+						var loc = lRepo.Get(id);
+						try
+						{
+							loc.Offers.Add(offerFormViewModel.Offer);
+							context.Commit();
+						}
+						catch (Exception ex)
+						{
+							_Logger.Error(ex.Message);
+							context.Complete();
+							throw ex;
+						}
+					}
+					else
+					//add to temp data, to be processed later
+					{
+						var offerList = TempData["OfferList"] as List<Offer>;
+						if (offerList == null)
+							offerList = new List<Offer>();
+						offerList.Add(offerFormViewModel.Offer);
+						TempData["OfferList"] = offerList;
+					}
+					TempData.Remove(PictureData.PictureDataString);
+					return PartialView(MVC.Offer.Views._OfferItem, offerFormViewModel.Offer);
+				}
+				catch (Exception ex)
+				{
+					_Logger.Error("Create", ex);
+					ModelState.AddModelError("", ex.Message);
+					throw new ModelStateException(ModelState);
+				}
+			}
+			throw new ModelStateException(ModelState);
+		}
+
+		/// <summary>
+		/// POST Action result to post a comment on a localisation
+		/// </summary>
+		/// <param name="id">The id of the comment's localisation</param>
+		/// <param name="com">The comment data from the form</param>
+		/// <returns>redirect to the return urlif ok, show errors else</returns>
+		//[AcceptVerbs(HttpVerbs.Post), Authorize]
+		//[ValidateAntiForgeryToken]
+		//[HandleModelStateException]
+		public virtual PartialViewResult AjaxEdit(int id)
+		{
+			throw new ModelStateException(ModelState);
+		}
+
+		/// <summary>
+		/// POST Action result to post a comment on a localisation
+		/// </summary>
+		/// <param name="id">The id of the comment's localisation</param>
+		/// <param name="com">The comment data from the form</param>
+		/// <returns>redirect to the return urlif ok, show errors else</returns>
+		//[AcceptVerbs(HttpVerbs.Post), Authorize]
+		//[ValidateAntiForgeryToken]
+		//[HandleModelStateException]
+		public virtual PartialViewResult AjaxDelete(int id)
+		{
+			throw new ModelStateException(ModelState);
+		}
+
+		#endregion
+	}
 }

@@ -544,7 +544,9 @@
     <EmbeddedResource Include="Views\Home\PresseString.en.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.en.resx" />
     <EmbeddedResource Include="Views\Localisation\LocalisationFormString.es.resx" />
-    <EmbeddedResource Include="Views\Localisation\LocalisationString.en.resx" />
+    <EmbeddedResource Include="Views\Localisation\LocalisationString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Localisation\LocalisationString.es.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.en.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.es.resx" />

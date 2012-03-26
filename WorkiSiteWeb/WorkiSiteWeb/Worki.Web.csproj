@@ -356,8 +356,8 @@
     <Content Include="Content\images\howitworks.png" />
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
+    <Content Include="Content\images\listing.png" />
     <Content Include="Content\images\loading.gif" />
-    <Content Include="Content\images\loading_background.png" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\marc.png" />
     <Content Include="Content\images\mediaBanner.png" />
@@ -443,6 +443,7 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\Utils.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js">
       <DependentUpon>fullcalendar.js</DependentUpon>
@@ -490,6 +491,9 @@
     </Content>
     <Content Include="Scripts\order.min.js">
       <DependentUpon>order.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Utils.min.js">
+      <DependentUpon>Utils.js</DependentUpon>
     </Content>
     <Content Include="Scripts\WorkiAutocomplete.js" />
     <Content Include="Scripts\require-jquery.js" />
@@ -903,6 +907,7 @@
     <Content Include="Views\Home\Team.cshtml" />
     <Content Include="Views\Home\Pricing.cshtml" />
     <Content Include="Views\Localisation\_AddPlaceFacebook.cshtml" />
+    <Content Include="Views\Offer\_OfferItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

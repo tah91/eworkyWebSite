@@ -109,7 +109,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				Member.ValidateOwner(member, offer.Localisation);
 
-				return View(new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer });
+				return View(new OfferFormViewModel(offer.Localisation.IsSharedOffice()) { Offer = offer });
 			}
 			catch (Exception ex)
 			{
@@ -268,7 +268,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 				return View(new OfferModel<OfferFormViewModel>
 				{
-					InnerModel = new OfferFormViewModel(offer.Localisation.IsSharedOffice(), Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)) { Offer = offer },
+					InnerModel = new OfferFormViewModel(offer.Localisation.IsSharedOffice()) { Offer = offer },
 					OfferModelId = offer.Id,
 					LocalisationModelId = id
 				});

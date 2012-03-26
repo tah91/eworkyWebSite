@@ -100,34 +100,34 @@
 }
 
 /*jQuery file upload*/
-#fileupload
+.fileupload
 {
     background: #F1F2F3;
     padding:5px;
 }
 
-#fileupload .files
+.fileupload .files
 {
     margin: 5px 0;
 }
 
-#fileupload img
+.fileupload img
 {
     max-height:50px;
     max-width:50px;
 }
 
-/*#fileupload td
+/*.fileupload td
 {
     padding: 2px;
 }*/
 
-/*#fileupload td label
+/*.fileupload td label
 {
     font-size:11px;
 }*/
 
-/*#fileupload td input[type="radio"]
+/*.fileupload td input[type="radio"]
 {
     width: 100%;
     padding: 0;
@@ -140,14 +140,14 @@
     font-size: inherit;
 }
 
-#fileupload .ui-state-hover .ui-icon, .ui-state-focus .ui-icon,.ui-state-default .ui-icon, .ui-widget-header .ui-icon 
+.fileupload .ui-state-hover .ui-icon, .ui-state-focus .ui-icon,.ui-state-default .ui-icon, .ui-widget-header .ui-icon 
 {
     background-image:none;
     width: 0;
     height: 0;
 }
 
-#fileupload .ui-state-default
+.fileupload .ui-state-default
 {
 	overflow: visible;
 	padding: 5px 10px;
@@ -165,7 +165,7 @@
 	background-image: linear-gradient(top,#5DAFDE,#4787ed);
 }
 
-#fileupload .ui-state-hover
+.fileupload .ui-state-hover
 {
 	background-color: #379ed6;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#379ed6, endColorstr=#4787ed);
@@ -174,18 +174,18 @@
 	background-image: linear-gradient(top,#379ed6,#4787ed);
 }
 
-#fileupload .ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text
+.fileupload .ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text
 {
     padding: 0;
     line-height: inherit;
 }
 
-#fileupload .fileupload-progressbar
+.fileupload .fileupload-progressbar
 {
     width: auto;
 }
 
-#fileupload .fileupload-buttonbar
+.fileupload .fileupload-buttonbar
 {
     background: inherit;
     color:inherit;
@@ -193,7 +193,7 @@
     border:0;
 }
 
-#fileupload .fileupload-content
+.fileupload .fileupload-content
 {
     background: inherit;
     color:inherit;
@@ -201,7 +201,7 @@
     border:0;
 }
 
-#fileupload .radioDiv
+.fileupload .radioDiv
 {
     text-align:center;
 }

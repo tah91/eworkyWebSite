@@ -303,6 +303,22 @@ namespace Worki.Web.Helpers
             return Worki.Infrastructure.MultiCultureMvcRouteHandler.ExtractDomainSuffix(instance.RequestContext.HttpContext.Request.Url);
         }
 
+		public static string GetFileFullUrl(this UrlHelper html, string path, bool forceHttps = false)
+		{
+			try
+			{
+				if (path.StartsWith("http://") || path.StartsWith("https://"))
+				{
+					return path;
+				}
+				return WebHelper.ResolveServerUrl(VirtualPathUtility.ToAbsolute(path), forceHttps);
+			}
+			catch (Exception)
+			{
+				return path;
+			}
+		}
+
 		#endregion
 	}
 }

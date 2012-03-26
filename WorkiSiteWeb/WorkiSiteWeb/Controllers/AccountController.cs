@@ -400,7 +400,7 @@ namespace Worki.Web.Controllers
             
             // Liste des permissions demandées par eWorky sur le profil facebook du user
             // Pour la liste exhaustives des permissions, voir http://developers.facebook.com/docs/reference/api/permissions/
-            string[] permissions = new[] { "user_location", "email", "offline_access" };
+            string[] permissions = new[] { "user_location", "email", "user_birthday" };
 
             var oAuthClient = new FacebookOAuthClient(FacebookApplication.Current);
             oAuthClient.RedirectUri = new Uri(redirectUrl);
@@ -446,12 +446,13 @@ namespace Worki.Web.Controllers
 					//}
 
 					FacebookClient fbClient = new FacebookClient(accessToken);
-					dynamic me = fbClient.Get("me?fields=id,name,email,first_name,last_name,link");
+					dynamic me = fbClient.Get("me?fields=id,name,email,first_name,last_name,link,birthday");
 					long facebookId = Convert.ToInt64(me.id);
 					string faceBookEmail = ((string)me.email).ToString();
 					string faceBookFirstName = ((string)me.first_name).ToString();
 					string faceBookLastName = ((string)me.last_name).ToString();
 					string faceBookLink = ((string)me.link).ToString();
+					var facebookBirthday = DateTime.Parse((string)me.birthday, new System.Globalization.CultureInfo("en"));
 
 					var context = ModelFactory.GetUnitOfWork();
 					var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
@@ -468,7 +469,8 @@ namespace Worki.Web.Controllers
 								Avatar = string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, facebookId),
 								Facebook = faceBookLink,//string.Format(MiscHelpers.FaceBookConstants.FacebookProfileViewPattern, facebookId, facebookId),
 								FirstName = faceBookFirstName,
-								LastName = faceBookLastName
+								LastName = faceBookLastName,
+								BirthDate = facebookBirthday
 							};
 							created = _MembershipService.TryCreateAccount(faceBookEmail, memberData, out memberId);
 						}

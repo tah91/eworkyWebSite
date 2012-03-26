@@ -5,8 +5,7 @@
 <title>@Html.WorkiTitle(Model.Title)</title>     
 <meta property="og:title" content="@Model.Title" />
 <meta property="og:type" content="eworky_localhost:workspace" /> 
-@*<meta property="og:type" content="article" />*@
 <meta property="og:url" content="@Model.Url" />
-<meta property="og:image" content="@Model.Image" />
+<meta property="og:image" content="@Url.GetFileFullUrl(Model.Image)" />
 <meta property="og:site_name" content="eWorky" />
 <meta property="og:description" content="@Html.TruncateAtWord(Model.Description, 150)"/>

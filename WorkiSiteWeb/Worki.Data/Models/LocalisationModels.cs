@@ -240,8 +240,7 @@ namespace Worki.Data.Models
 			(int)LocalisationOffer.Desktop,
             (int)LocalisationOffer.MeetingRoom,
             (int)LocalisationOffer.SeminarRoom,
-            (int)LocalisationOffer.VisioRoom,
-			(int)LocalisationOffer.Party
+            (int)LocalisationOffer.VisioRoom
         };
 
 		public static string GetOfferType(int type, bool single = true, bool forSearch = false)
@@ -267,8 +266,6 @@ namespace Worki.Data.Models
 					return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleSeminarRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.SeminarRoom;
 				case LocalisationOffer.VisioRoom:
 					return single ? Worki.Resources.Models.Localisation.LocalisationFeatures.SingleVisioRoom : Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom;
-				case LocalisationOffer.Party:
-					return "Soirée networking coworkers";
 				default:
 					return string.Empty;
 			}
@@ -332,15 +329,10 @@ namespace Worki.Data.Models
 			return toRet;
 		}
 
-        public static Dictionary<int, string> GetOfferTypeDict(bool isShared, bool needPartyOffer)
+        public static Dictionary<int, string> GetOfferTypeDict(bool isShared)
         {
             var offersToExclude = isShared ? new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea, LocalisationOffer.BuisnessLounge, LocalisationOffer.SeminarRoom, LocalisationOffer.VisioRoom }
                                            : new List<LocalisationOffer> { LocalisationOffer.AllOffers, LocalisationOffer.FreeArea };
-
-			if (!needPartyOffer)
-			{
-				offersToExclude.Add(LocalisationOffer.Party);
-			}
 
             return Localisation.GetOfferTypeDict(offersToExclude);
         }
@@ -1138,11 +1130,6 @@ namespace Worki.Data.Models
 		[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string City { get; set; }
 
-        //[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        //[Display(Name = "Country", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
-        //[StringLength(MiscHelpers.Constants.MaxLengh, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-        //public string Country { get; set; }
-
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         [Display(Name = "Country", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
         [SelectStringValidation(ErrorMessageResourceName = "SelectOne", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
@@ -1260,7 +1247,7 @@ namespace Worki.Data.Models
 
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes(isShared);
 			Types = new SelectList(dict, "Key", "Value", LocalisationType.SpotWifi);
-			var offers = Localisation.GetOfferTypeDict(isShared, needPartyOffer);
+			var offers = Localisation.GetOfferTypeDict(isShared);
 			Offers = new SelectList(offers, "Key", "Value", LocalisationOffer.AllOffers);
 			CompanyTypes = new SelectList(Localisation.GetCompanyTypes(), "Key", "Value", eCompanyType.StartUp);
             Countries = new SelectList(Localisation.GetCountries(), "Key", "Value");
@@ -1527,8 +1514,7 @@ namespace Worki.Data.Models
 		Desktop,
 		MeetingRoom,
 		SeminarRoom,
-		VisioRoom,
-		Party
+		VisioRoom
 	}
 
     public enum CountryId
@@ -1910,14 +1896,6 @@ namespace Worki.Data.Models
 		[Display(Name = "Post", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
 		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
 		public string Post { get; set; }
-
-		[Display(Name = "Post", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
-		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		public string PostEn { get; set; }
-
-		[Display(Name = "Post", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
-		[StringLength(2000, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
-		public string PostEs { get; set; }
 
 		[Range(-1, 5)]
 		[Display(Name = "Rating", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
