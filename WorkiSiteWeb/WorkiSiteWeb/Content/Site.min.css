@@ -400,3 +400,4 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .lastCol img{margin-top:60px}
 .endCol{padding:0 5px 5px 5px;border-bottom:1px solid #ececec!important;-moz-box-shadow:0 5px 10px -6px rgba(0,0,0,.9);-webkit-box-shadow:0 5px 10px -6px rgba(0,0,0,.9);box-shadow:0 5px 10px -6px rgba(0,0,0,.9)}
 .offerGrid thead tr th{border-bottom:1px dashed #5DAFDE!important}
+.formSeparator{padding:0 30px;border-top:1px dashed #CCC;width:50%;text-align:center;margin:15px auto}

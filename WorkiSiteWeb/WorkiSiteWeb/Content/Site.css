@@ -2565,3 +2565,12 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 {
     border-bottom: 1px dashed #5DAFDE !important;
 }
+
+.formSeparator
+{
+	padding: 0 30px;
+	border-top: 1px dashed #CCC;
+	width: 50%;
+	text-align: center;
+	margin: 15px auto;
+}

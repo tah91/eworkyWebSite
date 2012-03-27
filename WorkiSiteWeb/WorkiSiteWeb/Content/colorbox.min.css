@@ -17,7 +17,6 @@
 #colorbox #cboxContent{border:2px solid black;overflow:visible;padding:20px;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;background:#EFEFEF;background:-webkit-gradient(linear,center top,center bottom,from(white),to(#EFEFEF));background:-moz-linear-gradient(top,white,#EFEFEF);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffefefef',GradientType=0);-o-box-shadow:inset 0 1px 0 rgba(255,255,255,0.8),inset 0 -1px 0 rgba(255,255,255,0.4),0 2px 8px 0 rgba(0,0,0,0.9);-moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.8),inset 0 -1px 0 rgba(255,255,255,0.4),0 2px 8px 0 rgba(0,0,0,0.9);-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.8),inset 0 -1px 0 rgba(255,255,255,0.4),0 2px 8px 0 rgba(0,0,0,0.9);box-shadow:inset 0 1px 0 rgba(255,255,255,0.8),inset 0 -1px 0 rgba(255,255,255,0.4),0 2px 8px 0 rgba(0,0,0,0.9)}
 #cboxContent{position:relative;overflow:hidden}
 #cboxContent{background:white}
-#cboxLoadedContent{overflow:visible!important}
 #cboxLoadedContent{margin-bottom:28px}
 #colorbox #cboxLoadedContent{margin-bottom:0}
 #cboxTitle{position:absolute;bottom:5px;left:0;text-align:center;width:100%;color:#949494}
