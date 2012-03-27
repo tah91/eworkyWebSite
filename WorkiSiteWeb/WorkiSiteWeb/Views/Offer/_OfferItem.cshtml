@@ -1,7 +1,7 @@
-﻿@model Worki.Data.Models.Offer
+﻿@model OfferFormListModelItem
 
 <tr>
-	<td>@Model.Name</td>
-	<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, Url.IsInArea("Backoffice") ? MVC.Backoffice.Offer.Edit(Model.LocalisationId, Model.Id) : MVC.Offer.AjaxEdit(Model.Id), new { @class = "editOffer" })</td>
-	<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.AjaxDelete(Model.Id), new { @class = "deleteOffer" })</div></td>
+	<td>@Model.Offer.Name</td>
+	<td>@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.Edit, Url.IsInArea("Backoffice") ? MVC.Backoffice.Offer.Edit(Model.Offer.LocalisationId, Model.Offer.Id) : MVC.Offer.AjaxEdit(Model.Offer.Id, Model.IsSharedOffice), new { @class = "editOffer" })</td>
+	<td><div class="cross linkImg" title="@Worki.Resources.Views.Shared.SharedString.Delete">@Html.ActionLink(" ", MVC.Offer.AjaxDelete(Model.Offer.Id), new { @class = "deleteOffer" })</div></td>
 </tr>

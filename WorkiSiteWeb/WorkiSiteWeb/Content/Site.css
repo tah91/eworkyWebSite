@@ -2568,9 +2568,9 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .formSeparator
 {
-	padding: 0 30px;
+	/*padding: 0 30px;
 	border-top: 1px dashed #CCC;
 	width: 50%;
 	text-align: center;
-	margin: 15px auto;
+	margin: 15px auto;*/
 }

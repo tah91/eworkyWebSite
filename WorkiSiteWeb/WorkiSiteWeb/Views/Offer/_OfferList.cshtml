@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Offer>
+﻿@model OfferFormListModel
 
 <table class="offersTable">
     <tr></tr>
-@foreach (var item in Model)
+@foreach (var item in Model.Offers)
 {
-    @Html.Partial(MVC.Offer.Views._OfferItem, item)
+    @Html.Partial(MVC.Offer.Views._OfferItem, new OfferFormListModelItem { Offer = item, IsSharedOffice = Model.IsSharedOffice })
 }
 </table>

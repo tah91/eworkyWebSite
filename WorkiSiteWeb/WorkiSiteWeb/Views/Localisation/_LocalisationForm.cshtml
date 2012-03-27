@@ -795,10 +795,10 @@
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.Offers</h3>
 		<div class="marginb5">
-            @Html.Partial(MVC.Offer.Views._OfferList, Model.Localisation.Offers)
+            @Html.Partial(MVC.Offer.Views._OfferList, new OfferFormListModel { Offers = Model.Localisation.Offers.ToList(), IsSharedOffice = Model.IsSharedOffice })
 		</div>
         <div class="buttonStd buttonBlue linkImg float-left">
-            @Html.ActionLink("Ajouter une offre", MVC.Offer.AjaxAdd(Model.Localisation.ID), new { id = "addOffer" })
+            @Html.ActionLink("Ajouter une offre", MVC.Offer.AjaxAdd(Model.Localisation.ID, Model.IsSharedOffice), new { id = "addOffer" })
 		</div>
         <div class="clear"></div>
         

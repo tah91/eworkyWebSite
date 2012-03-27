@@ -1738,9 +1738,10 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AjaxAdd(int id) {
+        public override System.Web.Mvc.PartialViewResult AjaxAdd(int id, bool isShared) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxAdd);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("isShared", isShared);
             return callInfo;
         }
 
@@ -1751,9 +1752,10 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult AjaxEdit(int id) {
+        public override System.Web.Mvc.PartialViewResult AjaxEdit(int id, bool isShared) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AjaxEdit);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("isShared", isShared);
             return callInfo;
         }
 

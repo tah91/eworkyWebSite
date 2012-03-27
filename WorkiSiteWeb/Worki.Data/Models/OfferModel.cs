@@ -40,6 +40,23 @@ namespace Worki.Data.Models
         public bool IsSharedOffice { get; set; }
 	}
 
+    public class OfferFormListModel
+    {
+        public OfferFormListModel()
+        {
+            Offers = new List<Offer>();
+        }
+
+        public IList<Offer> Offers { get; set; }
+        public bool IsSharedOffice { get; set; }
+    }
+
+    public class OfferFormListModelItem
+    {
+        public Offer Offer { get; set; }
+        public bool IsSharedOffice { get; set; }
+    }
+
 	public class OfferFeatureEqualityComparer : IEqualityComparer<OfferFeature>
 	{
 		#region IEqualityComparer<OfferFeature> Members

@@ -218,6 +218,17 @@ namespace Worki.Web.Controllers
 
 		#region Ajax Offer
 
+        OfferFormListModel GetOfferList()
+        {
+            var offerList = Session["OfferList"] as OfferFormListModel;
+            return offerList;
+        }
+
+        void SetOfferList(OfferFormListModel offerList)
+        {
+            Session["OfferList"] = offerList;
+        }
+
         Offer GetOffer(int offerId)
         {
             Offer offer = null;
@@ -229,8 +240,8 @@ namespace Worki.Web.Controllers
             }
             else
             {
-                var offerList = TempData["OfferList"] as List<Offer>;
-                offer = offerList.FirstOrDefault(o => o.Id == offerId);
+                var offerList = GetOfferList();
+                offer = offerList.Offers.FirstOrDefault(o => o.Id == offerId);
             }
 
             return offer;
@@ -240,9 +251,9 @@ namespace Worki.Web.Controllers
 		/// Action result to return offer creation form
 		/// </summary>
 		/// <returns>a partial view</returns>
-		public virtual PartialViewResult AjaxAdd(int id)
+		public virtual PartialViewResult AjaxAdd(int id, bool isShared)
 		{
-			return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel { LocId = id });
+			return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { LocId = id });
 		}
 
 		/// <summary>
@@ -262,7 +273,7 @@ namespace Worki.Web.Controllers
 				try
 				{
 					//case loc exists
-					if (id != 0)
+					if (id > 0)
 					{
 						var context = ModelFactory.GetUnitOfWork();
 						var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
@@ -282,19 +293,19 @@ namespace Worki.Web.Controllers
 					else
 					//add to temp data, to be processed later
 					{
-						var offerList = TempData["OfferList"] as List<Offer>;
+                        var offerList = GetOfferList();
 						if (offerList == null)
-							offerList = new List<Offer>();
+                            offerList = new OfferFormListModel { IsSharedOffice = offerFormViewModel.IsSharedOffice };
                         //negative id to set the order
-                        var minId = offerList.Min(o => (int?)o.Id) ?? -1;
+                        var minId = offerList.Offers.Min(o => (int?)o.Id) ?? -1;
                         offerFormViewModel.Offer.Id = minId;
 
-						offerList.Add(offerFormViewModel.Offer);
-						TempData["OfferList"] = offerList;
+						offerList.Offers.Add(offerFormViewModel.Offer);
+                        SetOfferList(offerList);
 					}
 
 					TempData.Remove(PictureData.PictureDataString);
-					return PartialView(MVC.Offer.Views._OfferItem, offerFormViewModel.Offer);
+                    return PartialView(MVC.Offer.Views._OfferItem, new OfferFormListModelItem { Offer = offerFormViewModel.Offer, IsSharedOffice = offerFormViewModel.IsSharedOffice });
 				}
 				catch (Exception ex)
 				{
@@ -311,10 +322,10 @@ namespace Worki.Web.Controllers
         /// </summary>
         /// <param name="id">id of offer if any</param>
         /// <returns>a partial view</returns>
-        public virtual PartialViewResult AjaxEdit(int id)
+        public virtual PartialViewResult AjaxEdit(int id, bool isShared)
         {
             Offer offer = GetOffer(id);
-            return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(offer.Localisation.IsSharedOffice()) { Offer = offer });
+            return PartialView(MVC.Offer.Views._AjaxAdd, new OfferFormViewModel(isShared) { Offer = offer });
         }
 
         /// <summary>
@@ -333,9 +344,9 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    var offers = new List<Offer>();
+                    var offers = new OfferFormListModel();
                     //case loc exists
-                    if (id != 0)
+                    if (id > 0)
                     {
                         var context = ModelFactory.GetUnitOfWork();
                         var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
@@ -348,7 +359,7 @@ namespace Worki.Web.Controllers
                             var newContext = ModelFactory.GetUnitOfWork();
                             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
                             var loc = lRepo.Get(locId);
-                            offers = loc.Offers.ToList();
+                            offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = offerFormViewModel.IsSharedOffice };
                         }
                         catch (Exception ex)
                         {
@@ -362,7 +373,7 @@ namespace Worki.Web.Controllers
                     {
                         Offer offer = GetOffer(id);
                         UpdateModel(offer, "Offer");
-                        offers = TempData["OfferList"] as List<Offer>;
+                        offers = GetOfferList();
                     }
 
                     TempData.Remove(PictureData.PictureDataString);
@@ -387,9 +398,9 @@ namespace Worki.Web.Controllers
 		{
             try
             {
-                var offers = new List<Offer>();
+                var offers = new OfferFormListModel();
                 //case loc exists
-                if (id != 0)
+                if (id > 0)
                 {
                     var context = ModelFactory.GetUnitOfWork();
                     var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
@@ -397,12 +408,13 @@ namespace Worki.Web.Controllers
                     {
                         var offer = oRepo.Get(id);
                         var locId = offer.LocalisationId;
+                        var isShared = offer.Localisation.IsSharedOffice();
                         oRepo.Delete(id);
                         context.Commit();
                         var newContext = ModelFactory.GetUnitOfWork();
                         var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(newContext);
                         var loc = lRepo.Get(locId);
-                        offers = loc.Offers.ToList();
+                        offers = new OfferFormListModel { Offers = loc.Offers.ToList(), IsSharedOffice = isShared };
                     }
                     catch (Exception ex)
                     {
@@ -414,9 +426,9 @@ namespace Worki.Web.Controllers
                 else
                 //add to temp data, to be processed later
                 {
-                    var offerList = TempData["OfferList"] as List<Offer>;
-                    offerList = offerList.Where(o => o.Id != id).ToList();
-                    TempData["OfferList"] = offerList;
+                    var offerList = GetOfferList();
+                    offerList.Offers = offerList.Offers.Where(o => o.Id != id).ToList();
+                    SetOfferList(offerList);
                     offers = offerList;
                 }
 
