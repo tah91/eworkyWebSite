@@ -85,7 +85,7 @@ namespace Worki.Infrastructure.Helpers
 						if (format == TimeFormat.Date)
 							return "dd/MM/yyyy";
 						if (format == TimeFormat.General)
-							return "dd/MM/yyyy hh:mm";
+							return "dd/MM/yyyy HH:mm";
 					}
 					break;
 			}
