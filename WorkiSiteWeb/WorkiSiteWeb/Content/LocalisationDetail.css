@@ -91,6 +91,16 @@ ul.like-buttons li
     width:68.5%;
 }
 
+.localisationDetailLeftContainer
+{
+    padding:0!important;
+}
+
+.localisationDetailLeftContent
+{
+    padding:10px;
+}
+
 .localisationDetailRight
 {
     width:27%;
@@ -139,6 +149,23 @@ ul.like-buttons li
 .detailTabs .horizontalMenu li
 {
     background : none;
+    border-top:none;
+    border-left:none;
+}
+
+.detailTabs .horizontalMenu li:first-child 
+{
+	-moz-border-bottom-left-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.detailTabs .horizontalMenu li:last-child 
+{
+	-moz-border-bottom-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right:none;
 }
 
 .detailTabs .horizontalMenu li.selected

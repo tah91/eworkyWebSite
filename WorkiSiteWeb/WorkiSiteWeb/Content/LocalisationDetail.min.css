@@ -12,6 +12,8 @@ ul.like-buttons{list-style:none;padding:0;margin-top:30px}
 ul.like-buttons li{display:block;float:left;margin-right:10px}
 #favLink{margin-left:10px;display:inline-block}
 .localisationDetailLeft{width:68.5%}
+.localisationDetailLeftContainer{padding:0!important}
+.localisationDetailLeftContent{padding:10px}
 .localisationDetailRight{width:27%}
 .localisationMap{padding:2px;border:1px solid #5dafde}
 .localisationGallery{height:350px}
@@ -22,7 +24,9 @@ ul.like-buttons li{display:block;float:left;margin-right:10px}
 .servicesBlock{margin-bottom:5px}
 .priceDisplay{padding:10px 10px 0 0}
 .priceDisplay .featureTag ul li{background:#FFF4C7}
-.detailTabs .horizontalMenu li{background:0}
+.detailTabs .horizontalMenu li{background:0;border-top:0;border-left:none}
+.detailTabs .horizontalMenu li:first-child{-moz-border-bottom-left-radius:0;-webkit-border-bottom-left-radius:0;border-bottom-left-radius:0}
+.detailTabs .horizontalMenu li:last-child{-moz-border-bottom-right-radius:0;-webkit-border-bottom-right-radius:0;border-bottom-right-radius:0;border-right:0}
 .detailTabs .horizontalMenu li.selected{background:0}
 .detailTabContent{margin-top:10px}
 .detailMenu a{text-decoration:none;display:block;color:gray}
