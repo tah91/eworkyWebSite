@@ -11,6 +11,7 @@ using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
 using System.Web.Security;
 using Worki.Memberships;
+using Facebook;
 
 namespace Worki.Web.Areas.Dashboard.Controllers
 {
@@ -120,78 +121,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 				}
 			}
 			return View(new ProfilFormViewModel { Member = member });
-		}
-
-		/// <summary>
-		/// Action to add a localisation to member favorites
-		/// </summary>
-		/// <param name="locId">Id of the favorite localisation</param>
-		/// <param name="returnUrl">Url to redirect when action done</param>
-		/// <returns>Redirect to returnUrl</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual ActionResult AddToFavorite(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var loc = lRepo.Get(id);
-			try
-			{
-				var memberId = WebHelper.GetIdentityId(User.Identity);
-                var member = mRepo.Get(memberId);
-				if (member == null)
-					return null;
-                if (member.FavoriteLocalisations.Count(fl => fl.LocalisationId == id) == 0)
-                {
-                    member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = id });
-                    context.Commit();
-                }
-			}
-
-			catch (Exception ex)
-			{
-				context.Complete();
-				_Logger.Error("AddToFavorite", ex);
-                return null;
-			}
-            return Redirect(loc.GetDetailFullUrl(Url));
-		}
-
-		/// <summary>
-		/// Action to remove a localisation from member favorites
-		/// </summary>
-		/// <param name="locId">Id of the favorite localisation to remove</param>
-		/// <param name="returnUrl">Url to redirect when action done</param>
-		/// <returns>Redirect to returnUrl</returns>
-		[AcceptVerbs(HttpVerbs.Get), Authorize]
-		public virtual PartialViewResult RemoveFromFavorite(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			try
-			{
-				var memberId = WebHelper.GetIdentityId(User.Identity);
-                var member = mRepo.Get(memberId);
-				if (member == null)
-					return null;
-
-				foreach (var fav in member.FavoriteLocalisations.ToList())
-				{
-                    if (fav.LocalisationId == id)
-					{
-						member.FavoriteLocalisations.Remove(fav);
-					}
-				}
-				context.Commit();
-			}
-			catch (Exception ex)
-			{
-				context.Complete();
-				_Logger.Error("RemoveFromFavorite", ex);
-                return null;
-			}
-
-			return PartialView(MVC.Shared.Views._AddToFavorite, false);
 		}
 
 		// **************************************

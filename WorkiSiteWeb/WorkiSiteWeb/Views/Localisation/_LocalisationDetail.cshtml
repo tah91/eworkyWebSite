@@ -395,15 +395,6 @@
 								</div>
 								<div id="social" class="communityTab_content">
 									<div class="fb-comments" data-href="@link" data-num-posts="2" data-width="475"></div>
-                                    <div id="fb-root"></div>
-                                    <script>    (function (d, s, id) {
-                                            var js, fjs = d.getElementsByTagName(s)[0];
-                                            if (d.getElementById(id)) return;
-                                            js = d.createElement(s); js.id = id;
-                                            js.src = "//connect.facebook.net/@Url.GetFBCulture()/all.js#xfbml=1&appId=@WebHelper.GetFacebookId()";
-                                            fjs.parentNode.insertBefore(js, fjs);
-                                        } (document, 'script', 'facebook-jssdk'));
-                                    </script>
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -435,7 +426,20 @@
 	</div>
     }
     <div class="buttonStd buttonOrange linkImg float-left">
-        @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.IWorkHere, MVC.Dashboard.Profil.AddToFavorite(Model.ID))
+        <a href="#" id="addToFavorite">@Worki.Resources.Views.Localisation.LocalisationString.IWorkHere</a>
+        <script type="text/javascript">
+        	require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+				$('#addToFavorite').click(function () {
+					_callback = function (content) {
+			            alert(content);
+					}
+                    $.post('@Url.Action(MVC.Localisation.AddFavorite())',{ id: @Model.GetId() }, _callback, "json");
+					InitOpenGraph(function (response) {
+                        $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'work' }, _callback, "json");
+					});
+				}); 	
+			});
+        </script>
 	</div>
 	<div class="clear">
 	</div>

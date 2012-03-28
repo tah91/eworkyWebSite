@@ -838,7 +838,6 @@
     <Content Include="Areas\Dashboard\Views\Shared\_LocalisationTab.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_CommentTab.cshtml" />
     <Content Include="Views\Localisation\FullSearchResultDetail.cshtml" />
-    <Content Include="Views\Shared\_AddToFavorite.cshtml" />
     <Content Include="Views\Shared\_LocalisationSingleComment.cshtml" />
     <Content Include="Views\Localisation\_CommentFormScript.cshtml" />
     <Content Include="Views\Booking\Create.cshtml" />

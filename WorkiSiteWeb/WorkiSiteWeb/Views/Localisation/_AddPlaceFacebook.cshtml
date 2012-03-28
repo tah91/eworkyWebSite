@@ -1,61 +1,38 @@
 ﻿@model Worki.Data.Models.Localisation
 
-<a class="inline" href="#inline_content">Inline HTML</a>
-@*<div style="display:none">*@
-    <div id='inline_content'>            
-		@RazorHelpers.TitleDiv("Votre espace a été ajouté avec succès !", "Blue")
+<div id='inline_content'>            
+	@RazorHelpers.TitleDiv(Worki.Resources.Views.Localisation.LocalisationString.SuccessfullyAdded, "Blue")
 
+	<div>
 		<div>
-			<div>
-				Voulez vous le partager avec vos amis sur Facebook, afin d’améliorer sa visibilité ?
-			</div>
-			<img src="@Links.Content.images.listing_png" alt="listing" style ="height:247px;max-width:475px;margin:10px 0;"/>
+			@Worki.Resources.Views.Localisation.LocalisationString.ImproveVisibility
 		</div>
-
-		<div class="buttonStd buttonOrange linkImg float-left">
-			<a href="#" id="open-graph-button-yes">Partager sur Facebook</a>
-		</div>
-		<div class="buttonStd buttonBlue linkImg float-left">
-			<a href="#" id="open-graph-button-skip">Non merci</a>
-		</div>
-		<div class="clear">
-		</div>
-
-		<script type="text/javascript">
-			require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
-				$('#open-graph-button-yes').click(function () {
-					_callback = function (content) {
-			
-					}
-					InitOpenGraph(function (response) {
-						$.post('@Url.Action(MVC.Localisation.PublishOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'list' }, _callback, "json");
-					});
-				}); 	
-			});
-		</script>
-
-		<div id="fb-root"></div>
-		<script>
-			window.fbAsyncInit = function () {
-				FB.init({
-					appId: '@WebHelper.GetFacebookId()', // App ID
-					status: true, // check login status
-					cookie: true, // enable cookies to allow the server to access the session
-					xfbml: true,  // parse XFBML
-					oauth: true
-				});
-			};
-
-			// Load the SDK Asynchronously
-			(function (d) {
-				var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
-				js = d.createElement('script'); js.id = id; js.async = true;
-				js.src = "//connect.facebook.net/en_US/all.js";
-				d.getElementsByTagName('head')[0].appendChild(js);
-			} (document));
-		</script>
-
-		@*<fb:activity actions="eworky_localhost:work_in"></fb:activity>*@
-
+		<img src="@Links.Content.images.listing_png" alt="listing" style ="height:247px;max-width:475px;margin:10px 0;"/>
 	</div>
-@*</div>*@
+
+	<div class="buttonStd buttonOrange linkImg float-left">
+		<a href="#" id="open-graph-button-yes">@Worki.Resources.Views.Localisation.LocalisationString.ShareOnFb</a>
+	</div>
+	<div class="buttonStd buttonBlue linkImg float-left">
+		<a href="#" id="open-graph-button-skip">@Worki.Resources.Views.Localisation.LocalisationString.NoThanks</a>
+	</div>
+	<div class="clear">
+	</div>
+
+	<script type="text/javascript">
+		require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+			$('#open-graph-button-yes').click(function () {
+				_callback = function (content) {
+			        $.colorbox.close();
+				}
+				InitOpenGraph(function (response) {
+                    $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'list' }, _callback, "json");
+				});
+			}); 	
+
+            $('#open-graph-button-skip').click(function () {
+                $.colorbox.close();
+			}); 
+		});
+	</script>
+</div>

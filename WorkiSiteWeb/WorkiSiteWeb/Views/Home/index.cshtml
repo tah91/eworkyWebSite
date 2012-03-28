@@ -60,15 +60,6 @@
 		}
         @{Html.RenderAction(MVC.Home.BlogContainer(culture));}
 		<div class="contentBlock">
-			<div id="fb-root"></div>
-			<script>	(function (d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id)) { return; }
-					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/@Url.GetFBCulture()/all.js#xfbml=1&appId=@WebHelper.GetFacebookId()";
-					fjs.parentNode.insertBefore(js, fjs);
-				} (document, 'script', 'facebook-jssdk'));
-			</script>
 			<div class="fb-like-box" data-href="http://www.facebook.com/pages/eWorky/226917517335276" data-width="940" data-height="180" data-show-faces="true" data-border-color="white" data-stream="false" data-header="false"></div>
 		</div>
     </div>

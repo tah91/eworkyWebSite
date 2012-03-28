@@ -169,6 +169,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacter cet espace.
         /// </summary>
         public static string ContactThisSpaceAction {
@@ -192,6 +201,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string DeletePlace {
             get {
                 return ResourceManager.GetString("DeletePlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -282,6 +300,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string GeneralOpinion {
             get {
                 return ResourceManager.GetString("GeneralOpinion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voulez vous le partager avec vos amis sur Facebook, afin d’améliorer sa visibilité ?.
+        /// </summary>
+        public static string ImproveVisibility {
+            get {
+                return ResourceManager.GetString("ImproveVisibility", resourceCulture);
             }
         }
         
@@ -403,7 +430,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contactez le gérant.
+        ///   Looks up a localized string similar to Contacter le gérant.
         /// </summary>
         public static string NeedContactOfPlaceAction {
             get {
@@ -453,6 +480,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string NotAccessToWorkplace {
             get {
                 return ResourceManager.GetString("NotAccessToWorkplace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non merci.
+        /// </summary>
+        public static string NoThanks {
+            get {
+                return ResourceManager.GetString("NoThanks", resourceCulture);
             }
         }
         
@@ -538,6 +574,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Partager sur Facebook.
+        /// </summary>
+        public static string ShareOnFb {
+            get {
+                return ResourceManager.GetString("ShareOnFb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Afficher les informations.
         /// </summary>
         public static string ShowContactInfo {
@@ -552,6 +597,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string Socials {
             get {
                 return ResourceManager.GetString("Socials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre espace a été ajouté avec succès !.
+        /// </summary>
+        public static string SuccessfullyAdded {
+            get {
+                return ResourceManager.GetString("SuccessfullyAdded", resourceCulture);
             }
         }
         

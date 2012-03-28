@@ -234,7 +234,7 @@
                 <div class="formSeparator">
                 </div>
 
-                <h3 class="blue">Coordonées</h3>
+                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Contact</h3>
                 <table class="generalInfosTable editionTable">
                     <tr>
                         <td>
@@ -318,7 +318,7 @@
                 <div class="formSeparator">
                 </div>
 
-                <h3 class="blue">Description</h3>
+                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Description</h3>
                 <table class="generalInfosTable editionTable">
                     <tr>
                         <td class="verticalAlignTop">
@@ -798,15 +798,13 @@
             @Html.Partial(MVC.Offer.Views._OfferList, new OfferFormListModel { Offers = Model.Localisation.Offers.ToList(), IsSharedOffice = Model.IsSharedOffice })
 		</div>
         <div class="buttonStd buttonBlue linkImg float-left">
-            @Html.ActionLink("Ajouter une offre", MVC.Offer.AjaxAdd(Model.Localisation.ID, Model.IsSharedOffice), new { id = "addOffer" })
+            @Html.ActionLink(Worki.Resources.Views.Offer.OfferString.AddOffer, MVC.Offer.AjaxAdd(Model.Localisation.ID, Model.IsSharedOffice), new { id = "addOffer" })
 		</div>
         <div class="clear"></div>
-        
-            
-        
         <script type="text/javascript">
             $(".deleteOffer").live('click', function () {
                 $.ajax({
+                    type: 'POST',
                     url: this.href,
                     cache: false,
                     success: function (html) {

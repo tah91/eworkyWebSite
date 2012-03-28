@@ -263,10 +263,13 @@ namespace Worki.Web.Controllers
             if (modifType == EditionType.Creation)
             {
                 var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
-                localisationForm.Localisation.Offers.Clear();
-                foreach (var offer in offerList.Offers)
+                if (offerList != null)
                 {
-                    localisationForm.Localisation.Offers.Add(offer);
+                    localisationForm.Localisation.Offers.Clear();
+                    foreach (var offer in offerList.Offers)
+                    {
+                        localisationForm.Localisation.Offers.Add(offer);
+                    }
                 }
             }
 
@@ -285,8 +288,6 @@ namespace Worki.Web.Controllers
                     var offerCount = 0;
                     if (modifType == EditionType.Creation)
                     {
-                        //update
-                        //UpdateModel(localisationToAdd, LocalisationPrefix);
                         localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : mRepo.GetAdminId());
                         //validate
                         _SearchService.ValidateLocalisation(localisationToAdd, ref error);
@@ -323,6 +324,10 @@ namespace Worki.Web.Controllers
                     localisationForm.Localisation.ID = idToRedirect;
 
                     TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
+                    if (modifType == EditionType.Creation)
+                    {
+                        TempData[MiscHelpers.TempDataConstants.NewLocalisationId] = idToRedirect;
+                    }
                     if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
                         return RedirectToAction(MVC.Home.Pricing());
                     else
@@ -464,30 +469,93 @@ namespace Worki.Web.Controllers
             return RedirectToAction(MVC.Home.Pricing());
 		}
 
+        /// <summary>
+        /// action to ask for gb publish
+        /// </summary>
+        /// <param name="id">The id of the localisation</param>
+        /// <returns>view containing ask</returns>
+        public virtual ActionResult OpenGraphInvitation(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisation = lRepo.Get(id);
+
+            return PartialView(MVC.Localisation.Views._AddPlaceFacebook, localisation);
+        }
+
 		/// <summary>
 		/// POST action to publish facebook opengraph action
 		/// </summary>
 		/// <param name="id">The id of the localisation</param>
 		/// <param name="accessToken">fb access token</param>
-		/// <returns>localisation image desc in json format</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult PublishOpenGraph(int id, string accessToken, string type)
+        /// <param name="type">type of action</param>
+		/// <returns>success if ok</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+		public virtual ActionResult AddToOpenGraph(int id, string accessToken, string type)
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id);
 
+            var action = string.Empty;
+            switch(type)
+            {
+                case "list":
+                    action = "/me/eworky_localhost:work_in";
+                    break;
+                case "work":
+                    action = "/me/eworky_localhost:work_in";
+                    break;
+            }
+
 			try
 			{
 				FacebookClient fbClient = new FacebookClient(accessToken);
-				fbClient.Post("/me/eworky_localhost:work_in", new Dictionary<string, object> { { "workspace", localisation.GetDetailFullUrl(Url) } });
+                fbClient.Post(action, new Dictionary<string, object> { { "workspace", localisation.GetDetailFullUrl(Url) } });
 				return Json("posted");
 			}
 			catch (Exception ex)
 			{
+                _Logger.Error("AddToOpenGraph", ex);
 				return Json(ex.Message);
 			}
 		}
+
+        /// <summary>
+        /// Action to add a localisation to member favorites
+        /// </summary>
+        /// <param name="locId">Id of the favorite localisation</param>
+        /// <param name="returnUrl">Url to redirect when action done</param>
+        /// <returns>Redirect to returnUrl</returns>
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        public virtual ActionResult AddFavorite(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var loc = lRepo.Get(id);
+            try
+            {
+                var memberId = WebHelper.GetIdentityId(User.Identity);
+                var member = mRepo.Get(memberId);
+                if (member == null)
+                    return null;
+                if (member.FavoriteLocalisations.Count(fl => fl.LocalisationId == id) == 0)
+                {
+                    member.FavoriteLocalisations.Add(new FavoriteLocalisation { LocalisationId = id });
+                    context.Commit();
+                }
+
+                return Json("added");
+            }
+
+            catch (Exception ex)
+            {
+                context.Complete();
+                _Logger.Error("AddFavorite", ex);
+                return Json(ex.Message);
+            }
+        }
 
 		#region Search
 

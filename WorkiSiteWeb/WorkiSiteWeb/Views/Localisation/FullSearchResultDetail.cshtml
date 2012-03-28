@@ -29,18 +29,23 @@
 </div>
 }
 
-@Html.Partial(MVC.Localisation.Views._AddPlaceFacebook, Model.Localisation)
-
 @Html.Partial(MVC.Localisation.Views._LocalisationDetail, Model.Localisation)
+
+@{
+    if(TempData.ContainsKey(MiscHelpers.TempDataConstants.NewLocalisationId))
+    {
+        var id = (int)TempData[MiscHelpers.TempDataConstants.NewLocalisationId];
+        <script type="text/javascript">
+            require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
+                $.colorbox({ href: '@Url.Action(MVC.Localisation.OpenGraphInvitation(id))', width: "580px" })
+            });
+        </script>
+    }
+}
 
 @section ScriptContent
 {
     <script type="text/javascript">
-        require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
-            //$(".inline").colorbox({ inline: true });
-            
-        });
-
     	require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
     		// Load the classic theme
     		Galleria.loadTheme('/Content/Galleria/galleria.classic.js');

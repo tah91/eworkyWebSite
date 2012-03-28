@@ -184,6 +184,7 @@ namespace Worki.Infrastructure.Helpers
 		public static class TempDataConstants
 		{
 			public const string Info = "info";
+            public const string NewLocalisationId = "NewLocalisationId";
 		}
 
         /// <summary>

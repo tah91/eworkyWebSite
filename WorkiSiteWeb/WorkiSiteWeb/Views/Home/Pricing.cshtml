@@ -4,6 +4,7 @@
 {
 	<meta name="Description" content="@Worki.Resources.Views.Home.HomeString.PricingDescription"/>
     <title>@Html.WorkiTitle(Worki.Resources.Views.Home.HowItWorksString.PricingHeaderTitle)</title>
+    <link href="@Url.VersionedContent(Links.Content.colorbox_css)" rel="stylesheet" type="text/css"/>
 }
 
 <div class="detailContent">
@@ -105,6 +106,18 @@
 	</div>
     <div class="clear"></div>
 </div>
+
+@{
+    if(TempData.ContainsKey(MiscHelpers.TempDataConstants.NewLocalisationId))
+    {
+        var id = (int)TempData[MiscHelpers.TempDataConstants.NewLocalisationId];
+        <script type="text/javascript">
+            require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
+                $.colorbox({ href: '@Url.Action(MVC.Localisation.OpenGraphInvitation(id))', width: "580px" })
+            });
+        </script>
+    }
+}
 
 @section ScriptContent
 {

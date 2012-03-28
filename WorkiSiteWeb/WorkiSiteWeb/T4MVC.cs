@@ -1280,8 +1280,18 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult PublishOpenGraph() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.PublishOpenGraph);
+        public System.Web.Mvc.ActionResult OpenGraphInvitation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.OpenGraphInvitation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AddToOpenGraph() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AddToOpenGraph);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AddFavorite() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AddFavorite);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1350,7 +1360,9 @@ namespace Worki.Web.Controllers {
             public readonly string PostComment = "PostComment";
             public readonly string DeleteComment = "DeleteComment";
             public readonly string SetOwnership = "set-ownership";
-            public readonly string PublishOpenGraph = "PublishOpenGraph";
+            public readonly string OpenGraphInvitation = "OpenGraphInvitation";
+            public readonly string AddToOpenGraph = "AddToOpenGraph";
+            public readonly string AddFavorite = "AddFavorite";
             public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
             public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string SearchForm = "SearchForm";
@@ -1501,11 +1513,23 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult PublishOpenGraph(int id, string accessToken, string type) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PublishOpenGraph);
+        public override System.Web.Mvc.ActionResult OpenGraphInvitation(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OpenGraphInvitation);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddToOpenGraph(int id, string accessToken, string type) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddToOpenGraph);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("accessToken", accessToken);
             callInfo.RouteValueDictionary.Add("type", type);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AddFavorite(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddFavorite);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
@@ -2182,7 +2206,6 @@ namespace T4MVC {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string @__Layout = "~/Views/Shared/__Layout.cshtml";
-            public readonly string _AddToFavorite = "~/Views/Shared/_AddToFavorite.cshtml";
             public readonly string _CultureSwitchControl = "~/Views/Shared/_CultureSwitchControl.cshtml";
             public readonly string _DatePickerScript = "~/Views/Shared/_DatePickerScript.cshtml";
             public readonly string _DropDownList = "~/Views/Shared/_DropDownList.cshtml";
@@ -4447,16 +4470,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult AddToFavorite() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.AddToFavorite);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.PartialViewResult RemoveFromFavorite() {
-            return new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProfilController Actions { get { return MVC.Dashboard.Profil; } }
@@ -4471,8 +4484,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Edit = "editer";
-            public readonly string AddToFavorite = "AddToFavorite";
-            public readonly string RemoveFromFavorite = "RemoveFromFavorite";
             public readonly string ChangePassword = "changer-mdp";
         }
 
@@ -4500,18 +4511,6 @@ namespace Worki.Web.Areas.Dashboard.Controllers {
         public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.Member member) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("member", member);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult AddToFavorite(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddToFavorite);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.PartialViewResult RemoveFromFavorite(int id) {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.RemoveFromFavorite);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

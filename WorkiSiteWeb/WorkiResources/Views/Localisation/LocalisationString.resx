@@ -277,7 +277,7 @@
     <value>Cet espace vous intéresse ?</value>
   </data>
   <data name="NeedContactOfPlaceAction" xml:space="preserve">
-    <value>Contactez le gérant</value>
+    <value>Contacter le gérant</value>
   </data>
   <data name="NeedThisSpaceAction" xml:space="preserve">
     <value>Réserver en ligne</value>
@@ -311,5 +311,23 @@
   </data>
   <data name="Socials" xml:space="preserve">
     <value>Réseaux sociaux</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ImproveVisibility" xml:space="preserve">
+    <value>Voulez vous le partager avec vos amis sur Facebook, afin d’améliorer sa visibilité ?</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+    <value>Non merci</value>
+  </data>
+  <data name="ShareOnFb" xml:space="preserve">
+    <value>Partager sur Facebook</value>
+  </data>
+  <data name="SuccessfullyAdded" xml:space="preserve">
+    <value>Votre espace a été ajouté avec succès !</value>
   </data>
 </root>
