@@ -19,11 +19,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class LocalisationController : BackofficeControllerBase
     {
-        ILogger _Logger;
-
-		public LocalisationController(ILogger logger)
+        public LocalisationController(ILogger logger, IObjectStore objectStore)
+            : base(logger, objectStore)
         {
-            _Logger = logger;
+            
         }
 
 		#region Index
@@ -109,7 +108,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
 			var field = string.Empty;
 			//to keep files state in case of error
-			TempData[PictureData.PictureDataString] = new PictureDataContainer(localisationForm.Localisation);
+            _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Localisation), new PictureDataContainer(localisationForm.Localisation));
+			
 			var context = ModelFactory.GetUnitOfWork();
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
@@ -132,7 +132,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						throw new Exception(error);
 					}
 					context.Commit();
-					TempData.Remove(PictureData.PictureDataString);
+                    _ObjectStore.Delete(PictureData.GetKey(ProviderType.Localisation));
 
 					if (!string.IsNullOrEmpty(addOffer))
 					{

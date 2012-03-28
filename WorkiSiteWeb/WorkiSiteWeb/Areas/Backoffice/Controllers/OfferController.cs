@@ -19,11 +19,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class OfferController : BackofficeControllerBase
     {
-        ILogger _Logger;
-
-		public OfferController(ILogger logger)
+        public OfferController(ILogger logger, IObjectStore objectStore)
+            : base(logger, objectStore)
         {
-            _Logger = logger;
+            
         }
 
 		#region Index
@@ -127,8 +126,9 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Edit(int id, int offerId, OfferFormViewModel formData)
 		{
+            _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(formData.Offer));
+
 			var context = ModelFactory.GetUnitOfWork();
-			TempData[PictureData.PictureDataString] = new PictureDataContainer(formData.Offer);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			Offer offer;
@@ -144,7 +144,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				{
 					UpdateModel(offer, "Offer");
 					context.Commit();
-					TempData.Remove(PictureData.PictureDataString);
+                    _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Backoffice.Offer.Edit(id, offer.Id));
 				}

@@ -21,16 +21,26 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 	[RequireHttpsRemote]
 	public abstract class BackofficeControllerBase : Controller
 	{
+        protected ILogger _Logger;
+        protected IObjectStore _ObjectStore;
 
+        public BackofficeControllerBase()
+        {
+        }
+
+        public BackofficeControllerBase(ILogger logger, IObjectStore objectStore)
+        {
+            this._Logger = logger;
+            this._ObjectStore = objectStore;
+        }
 	}
 
 	public partial class HomeController : BackofficeControllerBase
     {
-        ILogger _Logger;
-
-		public HomeController(ILogger logger)
+        public HomeController(ILogger logger, IObjectStore objectStore)
+            : base(logger, objectStore)
         {
-            _Logger = logger;
+
         }
 
         /// <summary>

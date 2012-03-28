@@ -19,11 +19,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class ScheduleController : BackofficeControllerBase
     {
-        ILogger _Logger;
-
-		public ScheduleController(ILogger logger)
+        public ScheduleController(ILogger logger, IObjectStore objectStore)
+            : base(logger, objectStore)
         {
-            _Logger = logger;
+            
         }
 
 		/// <summary>

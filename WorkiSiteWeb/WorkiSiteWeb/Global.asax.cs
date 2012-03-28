@@ -99,6 +99,9 @@ namespace Worki.Web
 			Bind<IQuotationLogRepository>()
 				.To<QuotationLogRepository>();
 
+            Bind<IObjectStore>()
+                .To<SessionStore>();
+
             Bind<IPaymentHandler>()
                 .To<MemberBookingPaymentHandler>().WithMetadata(PaymentHandlerFactory.Constants.HandlerTypeString, PaymentHandlerFactory.HandlerType.Booking);
 

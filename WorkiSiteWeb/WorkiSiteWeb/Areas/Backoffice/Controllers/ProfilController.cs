@@ -18,16 +18,16 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 	{
 		#region Private
 
-		ILogger _Logger;
 		IMembershipService _MembershipService;
 
 		#endregion
 
 		public ProfilController(ILogger logger,
-								IMembershipService membershipService)
+                                IObjectStore objectStore,
+                                IMembershipService membershipService)
+            : base(logger, objectStore)
 		{
 			_MembershipService = membershipService;
-			_Logger = logger;
 		}
 
         /// <summary>

@@ -28,18 +28,28 @@ namespace Worki.Web.Controllers
 	[DontRequireHttps]
 	public abstract class ControllerBase : Controller
 	{
+        protected ILogger _Logger;
+        protected IObjectStore _ObjectStore;
 
+        public ControllerBase()
+        {
+        }
+
+        public ControllerBase(ILogger logger,IObjectStore objectStore)
+        {
+            this._Logger = logger;
+            this._ObjectStore = objectStore;
+        }
 	}
 
 	public partial class HomeController : ControllerBase
     {
-        ILogger _Logger;
         IEmailService _EmailService;
 		IBlogService _IBlogService;
 
-		public HomeController(ILogger logger, IEmailService emailService, IBlogService blogService)
+        public HomeController(ILogger logger, IObjectStore objectStore, IEmailService emailService, IBlogService blogService)
+            : base(logger,objectStore)
         {
-            this._Logger = logger;
             this._EmailService = emailService;
 			this._IBlogService = blogService;
         }

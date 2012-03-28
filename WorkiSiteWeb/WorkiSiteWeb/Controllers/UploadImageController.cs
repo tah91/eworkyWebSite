@@ -4,22 +4,26 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using Worki.Web.Helpers;
 using Worki.Data.Models;
 using System.Collections.Generic;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
+using Worki.Infrastructure;
 
 namespace Worki.Web.Controllers
 {
     public partial class UploadImageController : Controller
     {
         ILogger _Logger;
+        IObjectStore _ObjectStore;
 
-        public UploadImageController(ILogger logger)
+        public UploadImageController(ILogger logger, IObjectStore objectStore)
 		{
 			_Logger = logger;
+            _ObjectStore = objectStore;
 		}
 
 		IPictureDataProvider GetProvider(ProviderType type, int id)
@@ -34,8 +38,18 @@ namespace Worki.Web.Controllers
 				}
 				case ProviderType.Offer:
 				{
-					var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
-					return oRepo.Get(o => o.Id == id);
+                    if (id > 0)
+                    {
+                        var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
+                        return oRepo.Get(o => o.Id == id);
+                    }
+                    else
+                    {
+                        var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
+                        if (offerList == null)
+                            return null;
+                        return offerList.Offers.FirstOrDefault(o => o.Id == id);
+                    }
 				}
 				case ProviderType.Localisation:
 				default:
@@ -101,7 +115,8 @@ namespace Worki.Web.Controllers
         {
             var toRet = new List<ImageJson>();
             //to recover files state in case of error
-            var filesFromCache = TempData[PictureData.PictureDataString] as PictureDataContainer;
+            var filesFromCache = _ObjectStore.Get<PictureDataContainer>(PictureData.GetKey(type));
+
             if (filesFromCache == null)
             {
                 var provider = GetProvider(type, id);

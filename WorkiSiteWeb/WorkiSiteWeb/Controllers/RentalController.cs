@@ -14,16 +14,15 @@ namespace Worki.Web.Controllers
 	{
 		#region Private
 
-		ILogger _Logger;
 		IGeocodeService _GeocodeService;
         IRentalSearchService _RentalSearchService;
         IEmailService _EmailService;
 
 		#endregion
 
-        public RentalController(ILogger logger, IGeocodeService geocodeService, IRentalSearchService rentalSearchService, IEmailService emailService)
+        public RentalController(ILogger logger, IObjectStore objectStore, IGeocodeService geocodeService, IRentalSearchService rentalSearchService, IEmailService emailService)
+            : base(logger, objectStore)
 		{
-			_Logger = logger;
 			_GeocodeService = geocodeService;
             _RentalSearchService = rentalSearchService;
             _EmailService = emailService;

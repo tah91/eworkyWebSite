@@ -17,12 +17,11 @@ namespace Worki.Web.Controllers
 {
 	public partial class PaymentController : ControllerBase
     {
-        ILogger _Logger;
         IPaymentService _PaymentService;
 
-        public PaymentController(ILogger logger, IPaymentService paymentService)
+        public PaymentController(ILogger logger, IObjectStore objectStore, IPaymentService paymentService)
+            : base(logger, objectStore)
         {
-            this._Logger = logger;
             this._PaymentService = paymentService;
         }
 

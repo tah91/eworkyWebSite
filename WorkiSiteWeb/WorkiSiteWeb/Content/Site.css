@@ -1728,6 +1728,11 @@ html ul.tabs li.selected a:hover
     margin-top:5px;
 }
 
+.generalInfosTable td:first-child
+{
+    width:150px;
+}
+
 .generalInfosTable input[type="text"], .generalInfosTable input[type="password"]
 {
     width:400px;

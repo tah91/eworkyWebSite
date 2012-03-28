@@ -17,14 +17,13 @@ namespace Worki.Web.Controllers
 {
 	public partial class LocalisationController : ControllerBase
     {
-        ILogger _Logger;
 		ISearchService _SearchService;
 
-		public LocalisationController(ILogger logger, ISearchService searchService)
-		{
-			_Logger = logger;
-			_SearchService = searchService;
-		}
+        public LocalisationController(ILogger logger, IObjectStore objectStore, ISearchService searchService)
+            : base(logger, objectStore)
+        {
+            _SearchService = searchService;
+        }
 
         /// <summary>
         /// Deprecated
@@ -250,87 +249,95 @@ namespace Worki.Web.Controllers
         /// <param name="localisation">The localisation data from the form (provided from custom model binder)</param>
         /// <param name="id">The id of the edited localisation</param>
         /// <returns>the detail view of localistion if ok, the form with errors else</returns>
-		[AcceptVerbs(HttpVerbs.Post), Authorize]
-		[ActionName("edit")]
-		[ValidateAntiForgeryToken]
-		public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int? id, string addOffer)
-		{
-			var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
+        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [ActionName("edit")]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult Edit(LocalisationFormViewModel localisationForm, int? id)
+        {
+            var error = Worki.Resources.Validation.ValidationString.ErrorWhenSave;
             var field = string.Empty;
-			//to keep files state in case of error
-			TempData[PictureData.PictureDataString] = new PictureDataContainer(localisationForm.Localisation);
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			try
-			{
-				var member = mRepo.GetMember(User.Identity.Name);
-				Member.Validate(member);
-				if (ModelState.IsValid)
-				{
-					var localisationToAdd = new Localisation();
-					var idToRedirect = 0;
-					var modifType = (!id.HasValue || id.Value == 0) ? EditionType.Creation : EditionType.Edition;
+            var modifType = (!id.HasValue || id.Value == 0) ? EditionType.Creation : EditionType.Edition;
+            //to keep files state in case of error
+            _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Localisation), new PictureDataContainer(localisationForm.Localisation));
+
+            if (modifType == EditionType.Creation)
+            {
+                var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
+                localisationForm.Localisation.Offers.Clear();
+                foreach (var offer in offerList.Offers)
+                {
+                    localisationForm.Localisation.Offers.Add(offer);
+                }
+            }
+
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            try
+            {
+                var member = mRepo.GetMember(User.Identity.Name);
+                Member.Validate(member);
+                if (ModelState.IsValid)
+                {
+                    var localisationToAdd = localisationForm.Localisation;
+                    var idToRedirect = 0;
+                    
                     var offerCount = 0;
-					if (modifType == EditionType.Creation)
-					{
-						//update
-						UpdateModel(localisationToAdd, LocalisationPrefix);
-						localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : mRepo.GetAdminId());
-						//validate
-						_SearchService.ValidateLocalisation(localisationToAdd, ref error);
-						//save
-						localisationToAdd.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Creation });
-						lRepo.Add(localisationToAdd);
+                    if (modifType == EditionType.Creation)
+                    {
+                        //update
+                        //UpdateModel(localisationToAdd, LocalisationPrefix);
+                        localisationToAdd.SetOwner(localisationForm.IsOwner ? member.MemberId : mRepo.GetAdminId());
+                        //validate
+                        _SearchService.ValidateLocalisation(localisationToAdd, ref error);
+                        //save
+                        localisationToAdd.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Creation });
+                        lRepo.Add(localisationToAdd);
                         offerCount = localisationToAdd.Offers.Count;
-					}
-					else
-					{
-						var editionAccess = member.HasEditionAccess(Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole));
-						if (!string.IsNullOrEmpty(editionAccess))
-						{
-							error = editionAccess;
-							throw new Exception(editionAccess);
-						}
-						var loc = lRepo.Get(id.Value);
-						UpdateModel(loc, LocalisationPrefix);
+                    }
+                    else
+                    {
+                        var editionAccess = member.HasEditionAccess(Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole));
+                        if (!string.IsNullOrEmpty(editionAccess))
+                        {
+                            error = editionAccess;
+                            throw new Exception(editionAccess);
+                        }
+                        var loc = lRepo.Get(id.Value);
+                        UpdateModel(loc, LocalisationPrefix);
                         loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
-						loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
+                        loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
                         offerCount = loc.Offers.Count;
-					}
-                    if (string.IsNullOrEmpty(addOffer) && !localisationForm.IsFreeLocalisation && offerCount == 0)
+                    }
+                    if (!localisationForm.IsFreeLocalisation && offerCount == 0)
                     {
                         error = Worki.Resources.Views.Localisation.LocalisationString.MustAddOffer;
                         field = "NewOfferType";
                         throw new Exception(error);
                     }
-					context.Commit();
-					TempData.Remove(PictureData.PictureDataString);
+                    context.Commit();
+                    _ObjectStore.Delete(PictureData.GetKey(ProviderType.Localisation));
+                    _ObjectStore.Delete("OfferList");
 
-					idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
-					localisationForm.Localisation.ID = idToRedirect;
-					if (!string.IsNullOrEmpty(addOffer))
-					{
-						return RedirectToAction(MVC.Offer.Create(idToRedirect, localisationForm.NewOfferType));
-					}
-					else
-					{
-						TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
-                        if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
-                            return RedirectToAction(MVC.Home.Pricing());
-                        else
-                            return Redirect(localisationForm.Localisation.GetDetailFullUrl(Url));
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				_Logger.Error("Edit", ex);
-				context.Complete();
+                    idToRedirect = modifType == EditionType.Creation ? localisationToAdd.ID : id.Value;
+                    localisationForm.Localisation.ID = idToRedirect;
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
+                    if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
+                        return RedirectToAction(MVC.Home.Pricing());
+                    else
+                        return Redirect(localisationForm.Localisation.GetDetailFullUrl(Url));
+
+                }
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("Edit", ex);
+                context.Complete();
                 ModelState.AddModelError(field, error);
-			}
-			return View(new LocalisationFormViewModel(localisationForm.Localisation, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
-		}
+            }
+            return View(new LocalisationFormViewModel(localisationForm.Localisation, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
+        }
 
         const string returnUrlPostComment = "returnUrlPostComment";
 

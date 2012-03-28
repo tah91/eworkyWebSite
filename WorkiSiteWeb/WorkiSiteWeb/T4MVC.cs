@@ -1473,11 +1473,10 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.LocalisationFormViewModel localisationForm, int? id, string addOffer) {
+        public override System.Web.Mvc.ActionResult Edit(Worki.Data.Models.LocalisationFormViewModel localisationForm, int? id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("localisationForm", localisationForm);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("addOffer", addOffer);
             return callInfo;
         }
 

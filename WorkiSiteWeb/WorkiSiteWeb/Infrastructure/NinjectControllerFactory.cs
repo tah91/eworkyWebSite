@@ -1,21 +1,50 @@
 ﻿using System;
 using System.Web.Mvc;
 using Ninject;
+using Worki.Infrastructure;
+using System.Web;
+using System.Collections.Generic;
 
-public class NinjectControlerFactory : DefaultControllerFactory
+namespace Worki.Web
 {
-	private IKernel _Kernel;
-
-	public NinjectControlerFactory(IKernel kernel)
+    public class NinjectControlerFactory : DefaultControllerFactory
     {
-		_Kernel = kernel;
+        private IKernel _Kernel;
+
+        public NinjectControlerFactory(IKernel kernel)
+        {
+            _Kernel = kernel;
+        }
+
+        protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
+        {
+            if (controllerType == null)
+                return null;
+
+            return (IController)_Kernel.Get(controllerType);
+        }
     }
 
-    protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
+    public class SessionStore : IObjectStore
     {
-        if (controllerType == null)
-            return null;
+        public void Delete(string key)
+        {
+            HttpContext.Current.Session.Remove(key);
+        }
 
-		return (IController)_Kernel.Get(controllerType);
+        public T Get<T>(string key)
+        {
+            return (T)HttpContext.Current.Session[key];
+        }
+
+        public void Store<T>(string key, T value)
+        {
+            HttpContext.Current.Session[key] = value;
+        }
+
+        public IList<T> GetList<T>(string key)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

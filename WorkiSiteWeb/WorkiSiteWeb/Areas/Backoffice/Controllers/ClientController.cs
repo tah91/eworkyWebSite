@@ -20,15 +20,15 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 {
 	public partial class ClientController : BackofficeControllerBase
     {
-        ILogger _Logger;
         IMembershipService _MembershipService;
 		IInvoiceService _InvoiceService;
 
         public ClientController(ILogger logger,
+                                IObjectStore objectStore,
                                 IMembershipService membershipService,
-								IInvoiceService invoiceService)
+                                IInvoiceService invoiceService)
+            : base(logger, objectStore)
         {
-            _Logger = logger;
             _MembershipService = membershipService;
 			_InvoiceService  = invoiceService;
         }

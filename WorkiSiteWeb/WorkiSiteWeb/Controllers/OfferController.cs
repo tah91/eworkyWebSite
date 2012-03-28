@@ -20,15 +20,15 @@ namespace Worki.Web.Controllers
 	{
 		#region Private
 
-		ILogger _Logger;
         IMembershipService _MembershipService;
 
 		#endregion
 
-		public OfferController( ILogger logger,
+        public OfferController( ILogger logger, 
+                                IObjectStore objectStore,
                                 IMembershipService membershipService)
+            : base(logger, objectStore)
 		{
-			_Logger = logger;
             _MembershipService = membershipService;
 		}
 
@@ -55,7 +55,8 @@ namespace Worki.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Create(int id, string returnUrl, OfferFormViewModel offerFormViewModel)
         {
-            TempData[PictureData.PictureDataString] = new PictureDataContainer(offerFormViewModel.Offer);
+            _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
+
             if (ModelState.IsValid)
             {
                 try
@@ -67,7 +68,7 @@ namespace Worki.Web.Controllers
                     {
 						loc.Offers.Add(offerFormViewModel.Offer);
                         context.Commit();
-						TempData.Remove(PictureData.PictureDataString);
+                        _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
                     }
                     catch (Exception ex)
                     {
@@ -131,8 +132,9 @@ namespace Worki.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Edit(int id, OfferFormViewModel formData)
 		{
+            _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(formData.Offer));
+
 			var context = ModelFactory.GetUnitOfWork();
-            TempData[PictureData.PictureDataString] = new PictureDataContainer(formData.Offer);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
 			if (ModelState.IsValid)
 			{
@@ -141,7 +143,7 @@ namespace Worki.Web.Controllers
 					var o = oRepo.Get(id);
 					UpdateModel(o, "Offer");
 					context.Commit();
-					TempData.Remove(PictureData.PictureDataString);
+                    _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
 					TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Offer.OfferString.OfferEdited;
 					return RedirectToAction(MVC.Localisation.Edit(o.LocalisationId));
 				}
@@ -218,17 +220,6 @@ namespace Worki.Web.Controllers
 
 		#region Ajax Offer
 
-        OfferFormListModel GetOfferList()
-        {
-            var offerList = Session["OfferList"] as OfferFormListModel;
-            return offerList;
-        }
-
-        void SetOfferList(OfferFormListModel offerList)
-        {
-            Session["OfferList"] = offerList;
-        }
-
         Offer GetOffer(int offerId)
         {
             Offer offer = null;
@@ -240,7 +231,7 @@ namespace Worki.Web.Controllers
             }
             else
             {
-                var offerList = GetOfferList();
+                var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
                 offer = offerList.Offers.FirstOrDefault(o => o.Id == offerId);
             }
 
@@ -267,7 +258,8 @@ namespace Worki.Web.Controllers
 		[HandleModelStateException]
 		public virtual PartialViewResult AjaxAdd(int id, OfferFormViewModel offerFormViewModel)
 		{
-			TempData[PictureData.PictureDataString] = new PictureDataContainer(offerFormViewModel.Offer);
+            _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
+
 			if (ModelState.IsValid)
 			{
 				try
@@ -293,7 +285,7 @@ namespace Worki.Web.Controllers
 					else
 					//add to temp data, to be processed later
 					{
-                        var offerList = GetOfferList();
+                        var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
 						if (offerList == null)
                             offerList = new OfferFormListModel { IsSharedOffice = offerFormViewModel.IsSharedOffice };
                         //negative id to set the order
@@ -301,10 +293,10 @@ namespace Worki.Web.Controllers
                         offerFormViewModel.Offer.Id = minId;
 
 						offerList.Offers.Add(offerFormViewModel.Offer);
-                        SetOfferList(offerList);
+                        _ObjectStore.Store<OfferFormListModel>("OfferList", offerList);
 					}
 
-					TempData.Remove(PictureData.PictureDataString);
+                    _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
                     return PartialView(MVC.Offer.Views._OfferItem, new OfferFormListModelItem { Offer = offerFormViewModel.Offer, IsSharedOffice = offerFormViewModel.IsSharedOffice });
 				}
 				catch (Exception ex)
@@ -339,7 +331,8 @@ namespace Worki.Web.Controllers
         [HandleModelStateException]
         public virtual PartialViewResult AjaxEdit(int id, OfferFormViewModel offerFormViewModel)
         {
-            TempData[PictureData.PictureDataString] = new PictureDataContainer(offerFormViewModel.Offer);
+            _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Offer), new PictureDataContainer(offerFormViewModel.Offer));
+
             if (ModelState.IsValid)
             {
                 try
@@ -373,10 +366,10 @@ namespace Worki.Web.Controllers
                     {
                         Offer offer = GetOffer(id);
                         UpdateModel(offer, "Offer");
-                        offers = GetOfferList();
+                        offers = _ObjectStore.Get<OfferFormListModel>("OfferList");
                     }
 
-                    TempData.Remove(PictureData.PictureDataString);
+                    _ObjectStore.Delete(PictureData.GetKey(ProviderType.Offer));
                     return PartialView(MVC.Offer.Views._OfferList, offers);
                 }
                 catch (Exception ex)
@@ -426,9 +419,9 @@ namespace Worki.Web.Controllers
                 else
                 //add to temp data, to be processed later
                 {
-                    var offerList = GetOfferList();
+                    var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
                     offerList.Offers = offerList.Offers.Where(o => o.Id != id).ToList();
-                    SetOfferList(offerList);
+                    _ObjectStore.Store<OfferFormListModel>("OfferList", offerList); 
                     offers = offerList;
                 }
 

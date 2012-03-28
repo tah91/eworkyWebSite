@@ -69,8 +69,6 @@ namespace Worki.Data.Models
         public const string IsDefaultPrefix = "IsDefault_";
         public const string IsLogoPrefix = "IsLogo_";
 
-        public const string PictureDataString = "PictureData";
-
         public string FileName { get; set; }
         public bool IsDefault { get; set; }
         public bool IsLogo { get; set; }
@@ -81,6 +79,24 @@ namespace Worki.Data.Models
 		const string _RentalId = "fileuploadRental";
 		const string _OfferId = "fileuploadOffer";
 		const string _LocalisationId = "fileuploadLocalisation";
+
+        const string _LocalisationPictureDataKey = "LocalisationPictureData";
+        const string _RentalPictureDataKey = "RentalPictureData";
+        const string _OfferPictureDataKey = "OfferPictureData";
+
+        public static string GetKey(ProviderType type)
+        {
+            switch (type)
+            {
+                case ProviderType.Rental:
+                    return _RentalPictureDataKey;
+                case ProviderType.Offer:
+                    return _OfferPictureDataKey;
+                case ProviderType.Localisation:
+                default:
+                    return _LocalisationPictureDataKey;
+            }
+        }
 
 		public static string GetFolder(ProviderType type)
 		{

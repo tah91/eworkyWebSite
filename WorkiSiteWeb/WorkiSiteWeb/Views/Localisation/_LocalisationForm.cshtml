@@ -450,11 +450,11 @@
                         @Html.FeatureChecboxLabel(Feature.TV, Model.Localisation)
                     </li>
 					@if (!Model.IsSharedOffice)
-     { 
+                    { 
 		            <li>
                         @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
                     </li>
-     }
+                    }
                 </ul>
             </div>
             <div class="clear">
@@ -805,28 +805,6 @@
             
         
         <script type="text/javascript">
-//            $("#addOffer").click(function () {
-//                $.ajax({
-//                    url: this.href,
-//                    cache: false,
-//                    success: function (html) {
-//                        $("#offerFormContainer").html(html);
-//                    }
-//                });
-//                return false;
-//            });
-
-//            $(".editOffer").live('click', function () {
-//                $.ajax({
-//                    url: this.href,
-//                    cache: false,
-//                    success: function (html) {
-//                        //$("#offerFormContainer").html(html);
-//                    }
-//                });
-//                return false;
-//            });
-
             $(".deleteOffer").live('click', function () {
                 $.ajax({
                     url: this.href,
