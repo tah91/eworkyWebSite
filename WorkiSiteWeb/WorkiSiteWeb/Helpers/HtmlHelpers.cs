@@ -11,6 +11,7 @@ using Worki.Infrastructure.Helpers;
 using System.Configuration;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Worki.Web.Helpers
 {
@@ -362,8 +363,12 @@ namespace Worki.Web.Helpers
 			return true;
 		}
 
-		public static bool IsInArea(this UrlHelper instance, string area)
+		public static bool IsInArea(this UrlHelper instance, string area, bool referer = false)
 		{
+			if (referer && instance.RequestContext.HttpContext.Request.UrlReferrer!=null)
+			{
+				return instance.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery.Split('/').Contains(area);
+			}
 			if (!instance.RequestContext.RouteData.DataTokens.ContainsKey(_AreaString))
 				return false;
 

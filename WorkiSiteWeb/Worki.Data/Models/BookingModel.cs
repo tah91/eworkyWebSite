@@ -770,7 +770,7 @@ namespace Worki.Data.Models
     {
         public static string GetPriceDisplay(this decimal price, Offer.CurrencyEnum currency)
         {
-            var str = price.ToString("0.00");
+            var str = price.ToString("0");
             switch(currency)
             {
                 case Offer.CurrencyEnum.USD:

@@ -97,6 +97,18 @@
                         <tr>
                             <td>
                                 <div class="editor-label">
+                                    @Html.LabelFor(m => m.InnerModel.Member.MemberMainData.CompanyName)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(m => m.InnerModel.Member.MemberMainData.CompanyName)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="editor-label">
                                     @Html.LabelFor(m => m.InnerModel.Member.MemberMainData.Address)
                                 </div>
                             </td>
@@ -139,18 +151,6 @@
                             <td>
                                 <div class="editor-field">
                                     @Html.TextBoxFor(m => m.InnerModel.Member.MemberMainData.Country)
-                                </div>
-                            </td>
-                        </tr>
-						<tr>
-                            <td>
-                                <div class="editor-label">
-                                    @Html.LabelFor(m => m.InnerModel.Member.MemberMainData.CompanyName)
-                                </div>
-                            </td>
-                            <td>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(m => m.InnerModel.Member.MemberMainData.CompanyName)
                                 </div>
                             </td>
                         </tr>
