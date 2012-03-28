@@ -127,7 +127,7 @@
     <value>Back to the Owner space</value>
   </data>
   <data name="Booking" xml:space="preserve">
-    <value>Booking</value>
+    <value>Bookings</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -145,13 +145,13 @@
     <value>E-mail</value>
   </data>
   <data name="EmptyBookHistoric" xml:space="preserve">
-    <value>You do not have any booking. To request a booking, please go to the workplace page. </value>
+    <value>You don't have any upcoming reservation. To make one, go to the profile page of the workspace you are interested in.</value>
   </data>
   <data name="EmptyNews" xml:space="preserve">
     <value>You have not received notification.</value>
   </data>
   <data name="EmptyQuotationHistoric" xml:space="preserve">
-    <value>You did not ask for a quote. To ask for an estimate, please go to the workplace page.</value>
+    <value>You don't have any pending inquiry. To request information, go to the profile page of the workspace you are interested in.</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
@@ -184,10 +184,10 @@
     <value>To offer booking for a workplace, you must first indicate the email address associated to your PayPal account in your profile.</value>
   </data>
   <data name="NoCurrentBooking" xml:space="preserve">
-    <value>You do not have any pending booking request. To have a look at your archived bookings, please go to {0}.</value>
+    <value>You do not have any pending booking request. To view your recent booking history, please go to {0}.</value>
   </data>
   <data name="NoCurrentQuotation" xml:space="preserve">
-    <value>You do not have any pending quote request. To take a look at your archived quotes, please go to {0}.</value>
+    <value>You do not have any pending inquiry. To view your previous inquiries and bookings, go to {0}.</value>
   <comment>Jm Correct l27</comment></data>
   <data name="NotDefined" xml:space="preserve">
     <value>Not defined</value>

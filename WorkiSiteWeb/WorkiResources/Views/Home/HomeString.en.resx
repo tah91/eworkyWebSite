@@ -130,7 +130,7 @@
     <value>Example: Amsterdam, Downing street London, Brooklyn NY, etc.</value>
   </data>
   <data name="Imprint" xml:space="preserve">
-    <value>Legal mentions</value>
+    <value>Legal disclaimer</value>
   </data>
   <data name="ImprintDescription" xml:space="preserve">
     <value>This website is edited by:&lt;br /&gt;
@@ -222,7 +222,7 @@
     <value>Minimal surface (m²)</value>
   </data>
   <data name="BlogTitle" xml:space="preserve">
-    <value>eWorky blog</value>
+    <value>Blog</value>
   </data>
   <data name="AddPlaceTitle" xml:space="preserve">
     <value>Add a new workspace</value>
@@ -244,7 +244,7 @@
     <value>A shared office</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
-    <value>You have free desktops in your offices ? Share them on eWorky for free and get some extra income!</value>
+    <value>You have free desks in your offices ? Share them on eWorky for free and get some extra income!</value>
   </data>
   <data name="FindTheBesPlace2" xml:space="preserve">
     <value>More than &lt;em&gt;{0:### ### ###}&lt;/em&gt; coworking spaces, WiFi cafes, business centers, shared offices</value>
@@ -339,7 +339,7 @@
     <value>Español</value>
   </data>
   <data name="Team_Member_4_Text" xml:space="preserve">
-    <value>Marc is the head of Business Development for Spanish-speaking countries. He is based in Saragossa, Spain, and enjoys the lifestyle and extraordinary density of tapas bars the city has to offer. Marc is like the country where he settled down: friendly and passionate about good food, sport, and fiesta. We still haven’t figured out what drug is on to bring so much energy to the team. But we suspect a secret mix of Cacique, olive oil and chorizo.</value>
+    <value>Marc is the head of Business Development for Spanish-speaking countries. He is based in Saragossa, Spain, and enjoys the lifestyle and extraordinary density of tapas bars the city has to offer. Marc is like the country where he settled down: friendly and passionate about good food, sport, and fiesta. We still haven’t figured out what drug he is on to bring so much energy to the team. But we suspect a secret mix of Cacique, olive oil and chorizo.</value>
   </data>
   <data name="Team_Member_4" xml:space="preserve">
     <value>Marc Labrude</value>

@@ -118,37 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BirthDate" xml:space="preserve">
-    <value>Birth date</value>
+    <value>Date of birth</value>
   </data>
   <data name="Civility" xml:space="preserve">
     <value>Civility</value>
   </data>
   <data name="Company" xml:space="preserve">
-    <value>Large cap</value>
+    <value>Corporation</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
     <value>Professional activity</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Describe yourself in 140 caracters</value>
+    <value>Tell us about yourself (max 140 caracters)</value>
   </data>
   <data name="Facebook" xml:space="preserve">
     <value>Facebook</value>
   </data>
   <data name="FavoritePlaces" xml:space="preserve">
-    <value>Where do I like to work?</value>
+    <value>Where I like to work</value>
   </data>
   <data name="Independant" xml:space="preserve">
-    <value>Independent</value>
+    <value>Freelancer</value>
   </data>
   <data name="Linkedin" xml:space="preserve">
     <value>LinkedIn</value>
   </data>
   <data name="LocalisationOwner" xml:space="preserve">
-    <value>Workplace owner</value>
+    <value>Workspace owner</value>
   </data>
   <data name="Nomad" xml:space="preserve">
-    <value>Nomad</value>
+    <value>Nomad worker</value>
   </data>
   <data name="NotSelected" xml:space="preserve">
     <value>Select your profile</value>
@@ -160,16 +160,16 @@
     <value>URL address for Paypal payment </value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Mobile phone</value>
+    <value>Cell phone</value>
   </data>
   <data name="ProfileString" xml:space="preserve">
     <value>Profile</value>
   </data>
   <data name="PunctualUser" xml:space="preserve">
-    <value>Punctual user</value>
+    <value>Just passing by</value>
   <comment>?</comment></data>
   <data name="Startup" xml:space="preserve">
-    <value>Entrepreneur / Small company</value>
+    <value>Entrepreneur / Small business</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>

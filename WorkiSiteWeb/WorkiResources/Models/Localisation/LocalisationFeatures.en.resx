@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AC" xml:space="preserve">
-    <value>AC</value>
+    <value>Air conditioning</value>
     <comment>Features</comment>
   </data>
   <data name="Access24" xml:space="preserve">
@@ -179,7 +179,7 @@
     <value>Ergonomic furniture</value>
   <comment>?</comment></data>
   <data name="FastInternet" xml:space="preserve">
-    <value>Superfast broadband access</value>
+    <value>High speed broadband internet</value>
   <comment>?</comment></data>
   <data name="Handicap" xml:space="preserve">
     <value>Disabled access</value>
@@ -206,7 +206,7 @@
     <value>Newspapers</value>
   </data>
   <data name="Outlet" xml:space="preserve">
-    <value>Socket</value>
+    <value>Electric plug</value>
   </data>
   <data name="Paperboard" xml:space="preserve">
     <value>Paper-board</value>
@@ -290,10 +290,10 @@
     <value>Videoprojector</value>
   <comment>?</comment></data>
   <data name="Visio" xml:space="preserve">
-    <value>Visioconference</value>
+    <value>Videoconference</value>
   </data>
   <data name="VisioHD" xml:space="preserve">
-    <value>Visioconference HD</value>
+    <value>Videoconference HD</value>
   </data>
   <data name="Welcoming" xml:space="preserve">
     <value>Welcoming</value>
@@ -320,7 +320,7 @@
     <value>Telepresence rooms</value>
   </data>
   <data name="Workstation" xml:space="preserve">
-    <value>Workstations</value>
+    <value>Desks</value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
     <value>Meeting rooms</value>
@@ -335,7 +335,7 @@
     <value>Conference / seminar room</value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Closed desktop</value>
+    <value>Private office</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
     <value>Visioconference / telepresence room</value>

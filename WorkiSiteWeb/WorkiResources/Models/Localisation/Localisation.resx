@@ -419,13 +419,13 @@
     <value>chez un indépendant</value>
   </data>
   <data name="InSmallBusiness" xml:space="preserve">
-    <value>dans une petite entreprise</value>
+    <value>dans une PME</value>
   </data>
   <data name="InStartUp" xml:space="preserve">
     <value>dans une start-up </value>
   </data>
   <data name="SmallBusiness" xml:space="preserve">
-    <value>Petite entreprise</value>
+    <value>PME</value>
   </data>
   <data name="StartUp" xml:space="preserve">
     <value>Start-up </value>

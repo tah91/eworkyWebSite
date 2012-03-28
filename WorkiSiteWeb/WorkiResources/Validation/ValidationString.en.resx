@@ -196,7 +196,7 @@
     <value>The field "{0}" must be between {2} and {1} characters.</value>
   </data>
   <data name="MustAgreeCGU" xml:space="preserve">
-    <value>You must agree to our General terms of services to sign up on eWorky.</value>
+    <value>You must agree to our Terms of Service to sign up on eWorky.</value>
   </data>
   <data name="NoFileUploaded" xml:space="preserve">
     <value>No File was uploaded</value>
@@ -235,7 +235,7 @@
     <value>The field "{0}" must be between {1} and {2}.</value>
   </data>
   <data name="Required" xml:space="preserve">
-    <value>You must type a "{0}".</value>
+    <value>You must enter a "{0}".</value>
   </data>
   <data name="ReturnErrorTryAgain" xml:space="preserve">
     <value>The authentification supplier reported an error. Please check your entry and try again. If the problem persists, please contact your system administrator.</value>
@@ -274,13 +274,13 @@
     <value>The user name is not valid. Please check the value and try again.</value>
   </data>
   <data name="VerificationLettersWrong" xml:space="preserve">
-    <value>The checking letters are not correct.</value>
+    <value>The validation letters are not correct.</value>
   <comment>?</comment></data>
   <data name="WebsiteNotGoodPattern" xml:space="preserve">
     <value>The website address does not have the right format.</value>
   </data>
   <data name="AccountInactive" xml:space="preserve">
-    <value>Your account is not activated yet. To carry on, you must first activate your account by clicking on the link that was sent to you by email following your subscription.</value>
+    <value>You will receive an email confirmation.  Please click the link in the email to validate your account !</value>
   </data>
   <data name="AccountLocked" xml:space="preserve">
     <value>Watch out, there was a large number of attempts to connect to your account. To make sure your account is safe, eWorky temporarily blocked it. To reactive it, please contact us.</value>

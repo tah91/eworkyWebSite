@@ -149,10 +149,10 @@
     <value>Administrator</value>
   </data>
   <data name="CGU" xml:space="preserve">
-    <value>Terms of Use</value>
+    <value>Terms of Service</value>
   </data>
   <data name="CorrectThenTryAgain" xml:space="preserve">
-    <value>Oops ! An error occurred. Please check and try again. If problem persists, contact us : support</value>
+    <value>Oops ! An error occurred. Please check and try again. If problem persists, contact us : support@eworky.com</value>
   </data>
   <data name="Deconnect" xml:space="preserve">
     <value>Sign out</value>
@@ -194,7 +194,7 @@
     <value>Offers</value>
   </data>
   <data name="Services" xml:space="preserve">
-    <value>Professional services</value>
+    <value>Services</value>
   </data>
   <data name="AddToFav" xml:space="preserve">
     <value>Add to eWorky favorites</value>
@@ -278,7 +278,7 @@
     <value>Yes</value>
   </data>
   <data name="ActivationCongratz" xml:space="preserve">
-    <value>Your account has just been activated, congratulations!</value>
+    <value>Congratulations, your account has been activated !</value>
   </data>
   <data name="Quotations" xml:space="preserve">
     <value>Quote</value>

@@ -127,7 +127,7 @@
     <value>To sign up, please answer the following questions.</value>
   </data>
   <data name="ForgottenPassword" xml:space="preserve">
-    <value>Forbidden password</value>
+    <value>I forgot my password</value>
   </data>
   <data name="Inscription" xml:space="preserve">
     <value>Sign up</value>
@@ -145,7 +145,7 @@
     <value>Please enter your current password and your new password.</value>
   </data>
   <data name="QualityOfProfils" xml:space="preserve">
-    <value>To make sure profiles are not fake, eWorky is likely to ask you to</value>
+    <value>To ensure that all profiles are real, eWorky may ask you to</value>
   </data>
   <data name="RequiredFields" xml:space="preserve">
     <value>Fields followed by an asterisk are mandatory.</value>
@@ -175,7 +175,7 @@
     <value>Edit my profile</value>
   </data>
   <data name="OwnerSpace" xml:space="preserve">
-    <value>backoffice</value>
+    <value>Back office</value>
   </data>
   <data name="ChangeMyPassword" xml:space="preserve">
     <value>Change my password</value>

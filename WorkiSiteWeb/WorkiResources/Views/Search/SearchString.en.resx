@@ -124,7 +124,7 @@
     <value>Entrepreneur</value>
   </data>
   <data name="Equipments" xml:space="preserve">
-    <value>Facilities</value>
+    <value>Amenities</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Features</value>
@@ -151,7 +151,7 @@
     <value>Refine search</value>
   </data>
   <data name="ResultOfSearch" xml:space="preserve">
-    <value>Search result(s):</value>
+    <value>Your search result(s):</value>
   </data>
   <data name="ResultOnMap" xml:space="preserve">
     <value>Your results on a map</value>

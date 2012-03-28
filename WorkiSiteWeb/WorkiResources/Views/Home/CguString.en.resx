@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptCGU" xml:space="preserve">
-    <value>5.2 Ability to accept General Terms of Use</value>
+    <value>5.2 Ability to accept Terms of Service</value>
   </data>
   <data name="AccuracyInformations" xml:space="preserve">
     <value>3. Accuracy of the information on the website and availability</value>
@@ -235,18 +235,18 @@
     <value>7. Applicable law</value>
   </data>
   <data name="ApplicalbleLawsValue" xml:space="preserve">
-    <value>The present terms of use are governed by French law. Any difficulty related to validity and /or application and /or interpretation of the present terms of use will be submitted, if no mutual agreement, to the jurisdiction of French court to which parties attribute territorial competencies wherever the use of the service or the domicile of the defender may be. International laws are not applicable.</value>
+    <value>The present terms of service are governed by French law. Any difficulty related to validity and /or application and /or interpretation of the present terms of use will be submitted, if no mutual agreement, to the jurisdiction of French court to which parties attribute territorial competencies wherever the use of the service or the domicile of the defender may be. International laws are not applicable.</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>By accessing and using the Web Site, User accepts and agrees to be bound, without modification, limitation or qualification, by these Terms. </value>
   </data>
   <data name="cgu" xml:space="preserve">
-    <value>terms of service</value>
+    <value>Terms of Service</value>
   </data>
   <data name="ReadAndAccept" xml:space="preserve">
     <value>I have read and agree to the {0}</value>
   </data>
   <data name="MustAcceptCGU" xml:space="preserve">
-    <value>You must accept the General Terms of Use.</value>
+    <value>You must accept the Terms of Service.</value>
   </data>
 </root>

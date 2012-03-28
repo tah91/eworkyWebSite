@@ -140,7 +140,7 @@
     <comment>FAQ</comment>
   </data>
   <data name="FormForSearch" xml:space="preserve">
-    <value>The form located on the {0} of the website enables you to easily look for a workplace given a place and a type of workplace (WiFi hotspot, coworking space, etc.). A detailed search </value>
+    <value>Use the search bar located on the homepage to easily search by location and type of workspace (WiFi hotspot, coworking space, etc.). Click on the “advanced search” button to refine your search, filtering by workspace type, need and name.</value>
   <comment>toujours identique ?</comment></data>
   <data name="ForRateComment" xml:space="preserve">
     <value>To comment or rate a workplace, you must be logged in to your eWorky account. Once you are logged in, go to the workspace profile to comment and/or rate. </value>
@@ -155,7 +155,7 @@
     <value>How to add a workplace?</value>
   </data>
   <data name="HowCreateAccount" xml:space="preserve">
-    <value>How to create an account? Why should I sign up?</value>
+    <value>How do I register ? Is it necessary ?</value>
   </data>
   <data name="HowEdit" xml:space="preserve">
     <value>The workplace profile contains incorrect information, how to correct it?</value>
@@ -173,7 +173,7 @@
     <value>sign up</value>
   </data>
   <data name="InviteFriends" xml:space="preserve">
-    <value>How to invite my friends to join eWorky community?</value>
+    <value>How can I invite my friends to join the eWorky community ?</value>
   </data>
   <data name="OnEWBuisnessCenter" xml:space="preserve">
     <value>On eWorky, a business center is a furnished offices building, that rents its individual offices for a limited period. The proposed rental agreements are more flexible and shorter than traditional rental agreements.</value>
@@ -218,16 +218,16 @@
     <value>On eWorky, a desk corresponds to a furnished space of a few square meters. An open space usually groups several dozens of workspaces. </value>
   </data>
   <data name="PasswordLost" xml:space="preserve">
-    <value>If you lost your password, {0} and your password will be sent to you by email.</value>
+    <value>If you forgot you password, {0} click here to receive a new password by email</value>
   </data>
   <data name="ProposeWorkplaceAfterInscription" xml:space="preserve">
-    <value>If you want to propose a workspace or to join our community, you can {0}. By signing up on eWorky, you can add and comment workspaces.</value>
+    <value>To be able to list of workspace or simply to join our community, you need to create an account. You account will allow you to list new spaces, and edit/review other workspaces.</value>
   </data>
   <data name="ReportBug" xml:space="preserve">
     <value>How to report a bug?</value>
   </data>
   <data name="RetrivePassword" xml:space="preserve">
-    <value>How to retrieve my password?</value>
+    <value>I forgot my password. How can I retrieve it ?</value>
   </data>
   <data name="SearchPage" xml:space="preserve">
     <value>Search page</value>
@@ -324,7 +324,7 @@ Moreover, pictures are particularly obvious on workspaces profiles therefore we 
     <value>From Twitter</value>
   </data>
   <data name="ViaViadeo" xml:space="preserve">
-    <value>From Viadeo</value>
+    <value>From Viadeo &amp; Linkedin</value>
   </data>
   <data name="OnEWTeleRoom" xml:space="preserve">
     <value>On eWorky, a telepresence room is a room that gives to the participants of a videoconference the feeling that they are in the same room. It is equiped of cameras and micros, so that participants have real size persons around them.</value>
