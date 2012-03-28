@@ -498,13 +498,13 @@ namespace Worki.Web.Controllers
 			var localisation = lRepo.Get(id);
 
             var action = string.Empty;
-            switch(type)
+            switch (type)
             {
                 case "list":
-                    action = "/me/eworky_localhost:work_in";
+                    action = string.Format("/me/{0}:work_in", WebHelper.GetFacebookNamespace());
                     break;
                 case "work":
-                    action = "/me/eworky_localhost:work_in";
+                    action = string.Format("/me/{0}:work_in", WebHelper.GetFacebookNamespace());
                     break;
             }
 

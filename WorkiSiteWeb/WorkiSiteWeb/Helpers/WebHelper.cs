@@ -106,6 +106,18 @@ namespace Worki.Web.Helpers
 			return _FacebookId;
 		}
 
+        /// <summary>
+        /// Get facebook namespace
+        /// </summary>
+        /// <returns>facebook namespace</returns>
+        public static string GetFacebookNamespace()
+        {
+            if (IsDebug())
+                return "eworky_localhost";
+            else
+                return "eworky";
+        }
+
 		public static RouteValueDictionary GetRVD(WebViewPage page)
 		{
 			RouteValueDictionary rvd = new RouteValueDictionary(page.ViewContext.RouteData.Values);
