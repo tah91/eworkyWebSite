@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BirthDate" xml:space="preserve">
-    <value>Birth date</value>
+    <value>Date of birth</value>
   </data>
   <data name="Civility" xml:space="preserve">
     <value>Civility</value>
@@ -160,7 +160,7 @@
     <value>URL address for Paypal payment </value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Mobile phone</value>
+    <value>Cell phone</value>
   </data>
   <data name="ProfileString" xml:space="preserve">
     <value>Profile</value>

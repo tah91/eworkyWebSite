@@ -147,10 +147,10 @@
     <value>Postcode</value>
   </data>
   <data name="PrivateArea" xml:space="preserve">
-    <value>Private place</value>
+    <value>Private space</value>
   </data>
   <data name="PublicSpace" xml:space="preserve">
-    <value>Public numeric space / cybercafe</value>
+    <value>Public internet space / cybercafe</value>
   <comment>?</comment></data>
   <data name="SpotWifi" xml:space="preserve">
     <value>WiFi hotspot</value>
@@ -164,7 +164,7 @@
     <value>Website</value>
   </data>
   <data name="WorkingHotel" xml:space="preserve">
-    <value>Incubator</value>
+    <value>Incubator / Accelerator</value>
   <comment>?</comment></data>
   <data name="SeminarRoom" xml:space="preserve">
     <value>Caracteristics of conference / seminar rooms</value>
@@ -215,10 +215,10 @@
     <value>Train stations</value>
   </data>
   <data name="Telecentre" xml:space="preserve">
-    <value>Smart work center</value>
+    <value>Remote work center</value>
   </data>
   <data name="TravelerSpace" xml:space="preserve">
-    <value>Travel lounge</value>
+    <value>Traveler lounge</value>
   <comment>?</comment></data>
   <data name="RatingDispo" xml:space="preserve">
     <value>Disponibility / calm</value>
@@ -359,10 +359,10 @@
     <value>{0}, {1} to {2}</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
-    <value>Shared space</value>
+    <value>Shared offices</value>
   </data>
   <data name="FreeAreas" xml:space="preserve">
-    <value>Free places</value>
+    <value>Free workspace</value>
   </data>
   <data name="OtherTypes" xml:space="preserve">
     <value>Other places</value>

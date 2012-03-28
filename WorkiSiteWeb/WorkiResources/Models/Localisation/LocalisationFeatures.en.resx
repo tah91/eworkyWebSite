@@ -290,10 +290,10 @@
     <value>Videoprojector</value>
   <comment>?</comment></data>
   <data name="Visio" xml:space="preserve">
-    <value>Visioconference</value>
+    <value>Videoconference</value>
   </data>
   <data name="VisioHD" xml:space="preserve">
-    <value>Visioconference HD</value>
+    <value>Videoconference HD</value>
   </data>
   <data name="Welcoming" xml:space="preserve">
     <value>Welcoming</value>
@@ -320,7 +320,7 @@
     <value>Telepresence rooms</value>
   </data>
   <data name="Workstation" xml:space="preserve">
-    <value>Workstations</value>
+    <value>Desks</value>
   </data>
   <data name="MeetingRoom" xml:space="preserve">
     <value>Meeting rooms</value>
@@ -335,7 +335,7 @@
     <value>Conference / seminar room</value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Closed desktop</value>
+    <value>Private office</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
     <value>Visioconference / telepresence room</value>

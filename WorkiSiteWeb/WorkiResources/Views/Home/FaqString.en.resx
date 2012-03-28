@@ -173,7 +173,7 @@
     <value>sign up</value>
   </data>
   <data name="InviteFriends" xml:space="preserve">
-    <value>How to invite my friends to join eWorky community?</value>
+    <value>How can I invite my friends to join the eWorky community ?</value>
   </data>
   <data name="OnEWBuisnessCenter" xml:space="preserve">
     <value>On eWorky, a business center is a furnished offices building, that rents its individual offices for a limited period. The proposed rental agreements are more flexible and shorter than traditional rental agreements.</value>
@@ -218,10 +218,10 @@
     <value>On eWorky, a desk corresponds to a furnished space of a few square meters. An open space usually groups several dozens of workspaces. </value>
   </data>
   <data name="PasswordLost" xml:space="preserve">
-    <value>If you lost your password, {0} and your password will be sent to you by email.</value>
+    <value>If you forgot you password, {0} click here to receive a new password by email</value>
   </data>
   <data name="ProposeWorkplaceAfterInscription" xml:space="preserve">
-    <value>If you want to propose a workspace or to join our community, you can {0}. By signing up on eWorky, you can add and comment workspaces.</value>
+    <value>To be able to list of workspace or simply to join our community, you need to create an account. You account will allow you to list new spaces, and edit/review other workspaces.</value>
   </data>
   <data name="ReportBug" xml:space="preserve">
     <value>How to report a bug?</value>

@@ -199,7 +199,7 @@
     <value>Tweet</value>
   </data>
   <data name="Equipments" xml:space="preserve">
-    <value>Facilities</value>
+    <value>Amenities</value>
   </data>
   <data name="ListLocSent" xml:space="preserve">
     <value>The locations list was sent to you</value>
