@@ -115,7 +115,7 @@ namespace Worki.Web.Helpers
             if (IsDebug())
                 return "eworky_localhost";
             else
-                return "eworky";
+                return "eworky_ns";
         }
 
 		public static RouteValueDictionary GetRVD(WebViewPage page)
