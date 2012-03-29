@@ -356,13 +356,13 @@
     <Content Include="Content\images\howitworks.png" />
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
-    <Content Include="Content\images\listing.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\marc.png" />
     <Content Include="Content\images\mediaBanner.png" />
     <Content Include="Content\images\networks.png" />
     <Content Include="Content\images\olivier.png" />
+    <Content Include="Content\images\listing.png" />
     <Content Include="Content\images\overlay.png" />
     <Content Include="Content\images\pinterest.png" />
     <Content Include="Content\images\retour.png" />
