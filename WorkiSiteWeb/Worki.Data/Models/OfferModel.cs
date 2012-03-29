@@ -194,7 +194,7 @@ namespace Worki.Data.Models
 		/// </summary>
         public bool CanHaveBooking
         {
-			get { return OfferCanHaveBooking((LocalisationOffer)Type) /*&& Localisation != null && !Localisation.IsSharedOffice()*/; }
+            get { return OfferCanHaveBooking((LocalisationOffer)Type) && OfferPrices != null && OfferPrices.Count != 0;/*&& Localisation != null && !Localisation.IsSharedOffice()*/; }
         }
 
 		/// <summary>
