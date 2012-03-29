@@ -235,7 +235,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					var client = mRepo.Get(clientId);
 					try
 					{
-						UpdateModel(client, "InnerModel.Member");
+                        TryUpdateModel(client, "InnerModel.Member");
 						context.Commit();
 					}
 					catch (Exception ex)
