@@ -9,7 +9,7 @@
 .ui-progressbar-value{background:url(images/pbar-ani.gif)}
 .fileupload-progressbar{width:400px;margin:10px 0}
 .files{margin:10px 0;border-collapse:collapse}
-.files td{padding:5px;border-spacing:5px}
+.files td{padding:5px;border-spacing:5px;vertical-align:middle}
 .files img{border:0}
 .files .name{padding:0 10px}
 .files .size{padding:0 10px 0 0;text-align:right;white-space:nowrap}
