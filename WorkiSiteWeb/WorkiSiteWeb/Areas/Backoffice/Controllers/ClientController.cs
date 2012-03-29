@@ -259,11 +259,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 		#region Invoices
 
-        IList<Invoice> GetInvoices(MonthYear monthYear)
-        {
-            return null;
-        }
-
 		/// <summary>
 		/// Get action method to show invoices of the owner
 		/// </summary>
