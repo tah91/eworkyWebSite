@@ -231,7 +231,7 @@ namespace Worki.Web.Helpers
             {
                 color = CalandarJson.Green;
             }
-			var allDay = (booking.ToDate - booking.FromDate).TotalDays >= 1;
+			var allDay = (booking.ToDate - booking.FromDate).TotalHours >= 23;
 			var toRet = new CalandarJson
 				{
 					id = booking.Id,

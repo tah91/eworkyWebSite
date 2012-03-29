@@ -119,12 +119,15 @@
 					});
 				},
 				select: function (startDate, endDate, allDay, jsEvent, view) {
+                    if(view.name == "month" && allDay == true) {
+                        endDate.setHours(endDate.getHours()+23);
+                    }
 					var start = (new Date(startDate)).toString('@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.General)');
 					var end = (new Date(endDate)).toString('@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.General)');
 					$('#Booking_FromDate').val(start);
 					$('#Booking_ToDate').val(end);
 					$('#eventPeriod').html(start + ' - ' + end);
-					$('#Booking_Price').val('');
+					$('#Booking_Price').val('0');
 					$('div.field-validation-error').remove(); 
 					$('.createBooking').css({ left: jsEvent.pageX, top: jsEvent.pageY });
 					$('.createBooking').fadeIn("slow");
