@@ -3231,9 +3231,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult GetInvoice(int id) {
+        public override System.Web.Mvc.ActionResult GetInvoice(int id, bool fromBooking) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetInvoice);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("fromBooking", fromBooking);
             return callInfo;
         }
 

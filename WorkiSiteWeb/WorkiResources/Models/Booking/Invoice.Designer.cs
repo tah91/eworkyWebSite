@@ -106,6 +106,15 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Devise.
+        /// </summary>
+        public static string Currency {
+            get {
+                return ResourceManager.GetString("Currency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date : {0}.
         /// </summary>
         public static string Date {

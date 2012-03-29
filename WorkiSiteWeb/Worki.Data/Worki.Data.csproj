@@ -92,6 +92,13 @@
     <Compile Include="Models\Comment.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\InvoiceModel.cs" />
+    <Compile Include="Models\Invoice.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InvoiceItem.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LocalisationClient.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
@@ -223,6 +230,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BookingLogRepository.cs" />
+    <Compile Include="Repository\InvoiceRepository.cs" />
     <Compile Include="Repository\QuotationRepository.cs" />
     <Compile Include="Repository\OfferRepository.cs" />
     <Compile Include="Repository\PressRepository.cs" />

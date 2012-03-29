@@ -22,7 +22,7 @@
 
 	<div class="blockContainer float-left contentRight">
 		<div class="contentBlock tableStyle">
-            @Html.ActionLink(Worki.Resources.Models.Booking.Invoice.GenerateArchive, MVC.Backoffice.Client.GetMonthSummary(Model.Localisation.ID, Model.Bookings.Current.ToString()), new { @class = "orange" })
+            @Html.ActionLink(Worki.Resources.Models.Booking.Invoice.GenerateArchive, MVC.Backoffice.Client.GetMonthSummary(Model.Localisation.ID, Model.Invoices.Current.ToString()), new { @class = "orange" })
             <table>
                 <thead>
                     <tr>
@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in Model.Bookings.List)
+                @foreach (var item in Model.Invoices.List)
                 {
                     <tr>
                         <td>
@@ -57,22 +57,22 @@
                             @CultureHelpers.GetSpecificFormat(item.CreationDate, CultureHelpers.TimeFormat.Date)
                         </td>
                         <td>
-                            @item.Offer.Name
+                            @item.Title
                         </td>
                         <td>
-                            @item.Client.GetFullDisplayName()
+                            @item.Member.GetFullDisplayName()
                         </td>
 						<td>
-                            @item.GetPriceDisplay()
+                            @item.GetTotalDisplay()
                         </td>
                         <td>
-                            @Html.ActionLink("Pdf",MVC.Backoffice.Client.GetInvoice(item.Id))
+                            @Html.ActionLink("Pdf",MVC.Backoffice.Client.GetInvoice(item.Id, item.IsFromBooking))
                         </td>
                     </tr>
                 }
                 </tbody>
             </table>
-			@if (Model.Bookings.List.Count == 0)
+			@if (Model.Invoices.List.Count == 0)
 			{
 			<div class="emptyContent italic">
 				@Worki.Resources.Views.BackOffice.BackOfficeString.InvoiceEmpty
@@ -80,7 +80,7 @@
 			}
             
 			<div class="pager">
-                @Html.MonthYearLinks(Model.Bookings.Current, Model.Bookings.Initial, x => Url.Action(MVC.Backoffice.Client.Invoices(Model.Localisation.ID, x)))
+                @Html.MonthYearLinks(Model.Invoices.Current, Model.Invoices.Initial, x => Url.Action(MVC.Backoffice.Client.Invoices(Model.Localisation.ID, x)))
             </div>
 		</div>
 	</div>

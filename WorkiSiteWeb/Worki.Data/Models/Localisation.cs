@@ -23,6 +23,7 @@ namespace Worki.Data.Models
             this.LocalisationFiles = new HashSet<LocalisationFile>();
             this.MemberEditions = new HashSet<MemberEdition>();
             this.Offers = new HashSet<Offer>();
+            this.Invoices = new HashSet<Invoice>();
     		OnInitialized();
         }
     
@@ -71,6 +72,7 @@ namespace Worki.Data.Models
         public virtual MainLocalisation MainLocalisation { get; set; }
         public virtual ICollection<MemberEdition> MemberEditions { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
     
     }
 }

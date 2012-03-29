@@ -108,6 +108,9 @@ namespace Worki.Web
 			Bind<IPaymentHandler>()
 				.To<MemberQuotationPaymentHandler>().WithMetadata(PaymentHandlerFactory.Constants.HandlerTypeString, PaymentHandlerFactory.HandlerType.Quotation);
 
+            Bind<IInvoiceRepository>()
+                .To<InvoiceRepository>();
+
 			Bind<IInvoiceService>()
 				.To<InvoiceService>();
 

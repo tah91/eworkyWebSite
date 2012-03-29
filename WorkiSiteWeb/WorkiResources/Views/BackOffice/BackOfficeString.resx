@@ -338,7 +338,7 @@
     <value>Vous avez déjà ce client</value>
   </data>
   <data name="InvoiceOffer" xml:space="preserve">
-    <value>Offre</value>
+    <value>Description</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editer</value>

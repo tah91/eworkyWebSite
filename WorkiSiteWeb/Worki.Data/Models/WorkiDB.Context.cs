@@ -50,5 +50,7 @@ namespace Worki.Data.Models
         public DbSet<Localisation> Localisations { get; set; }
         public DbSet<LocalisationData> LocalisationDatas { get; set; }
         public DbSet<WelcomePeople> WelcomePeoples { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceItem> InvoiceItems { get; set; }
     }
 }

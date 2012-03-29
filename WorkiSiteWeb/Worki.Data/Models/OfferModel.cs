@@ -571,7 +571,7 @@ namespace Worki.Data.Models
 			if (Price == 0)
 				return string.Empty;
 
-            var priceStr = Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency);
+            var priceStr = Price.GetPriceDisplay((Offer.CurrencyEnum)Offer.Currency, false);
 			return string.Format(Worki.Resources.Models.Offer.Offer.PricePerPeriod, priceStr, Offer.GetPricingPeriod((Offer.PaymentPeriod)PriceType));
 		}
 

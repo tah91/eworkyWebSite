@@ -25,7 +25,7 @@
 		{
 		    <div class="contentBlock invoiceForm">
 	   		    @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => m.Invoice.TaxRate)
+                @Html.HiddenFor(m => m.Invoice.LocalisationId)
                 <div class="italic">
                     @Html.Raw(string.Format(Worki.Resources.Models.Booking.Invoice.BeforeCreateInvoice, Html.ActionLink(Worki.Resources.Models.Booking.Invoice.BeforeCreateInvoiceLink, MVC.Backoffice.Profil.ChangeBillingInformation(), new { @class = "orange" })))
                 </div>
@@ -40,10 +40,18 @@
 					</tr>
                     <tr>
 						<td>
-						    @Html.LabelFor(m => m.Invoice.ClientId)
+						    @Html.LabelFor(m => m.Invoice.MemberId)
 						</td>
 						<td>
-							@Html.DropDownListFor(m => m.Invoice.ClientId, Model.Clients)
+							@Html.DropDownListFor(m => m.Invoice.MemberId, Model.Clients)
+						</td>
+					</tr>
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.Invoice.Currency)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.Invoice.Currency, Model.Currencies)
 						</td>
 					</tr>
                     <tr>
@@ -56,15 +64,15 @@
 					</tr>
                     <tr>
 						<td>
-						    @Html.LabelFor(m => m.Invoice.InvoiceId)
+						    @Html.LabelFor(m => m.Invoice.TaxRate)
 						</td>
 						<td>
-							@Html.TextBoxFor(m => m.Invoice.InvoiceId)
+							@Html.TextBoxFor(m => m.Invoice.TaxRate)
 						</td>
 					</tr>
 				</table>
 				<div class="invoiceItemRows">
-					@foreach (var item in Model.Invoice.Items)
+					@foreach (var item in Model.Invoice.InvoiceItems)
 					{
 						@Html.Partial(MVC.Backoffice.Client.Views._InvoiceItem, item)
 					}

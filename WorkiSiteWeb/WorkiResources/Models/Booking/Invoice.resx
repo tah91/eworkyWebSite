@@ -132,6 +132,9 @@
   <data name="ClientId" xml:space="preserve">
     <value>Client</value>
   </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Devise</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date : {0}</value>
   </data>

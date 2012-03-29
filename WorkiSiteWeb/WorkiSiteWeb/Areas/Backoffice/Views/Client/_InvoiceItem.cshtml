@@ -1,7 +1,7 @@
 ﻿@model InvoiceItem
 
 <div class="invoiceItemRow">
-	@using (Html.BeginCollectionItem("Invoice.Items"))
+	@using (Html.BeginCollectionItem("Invoice.InvoiceItems"))
 	{
 		@Html.LabelFor(m => m.Description)
 		@Html.TextBoxFor(m => m.Description)

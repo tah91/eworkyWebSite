@@ -259,6 +259,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 		#region Invoices
 
+        IList<Invoice> GetInvoices(MonthYear monthYear)
+        {
+            return null;
+        }
+
 		/// <summary>
 		/// Get action method to show invoices of the owner
 		/// </summary>
@@ -269,8 +274,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var iRepo = ModelFactory.GetRepository<IInvoiceRepository>(context);
 			try
 			{
 				var member = mRepo.Get(memberId);
@@ -285,17 +290,16 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					monthYear = MonthYear.Parse(date);
 				}
 
-				var localisation = lRepo.Get(id);
-                var bookings = localisation.GetPaidBookings();
-				var initial = bookings.Count != 0 ? bookings.Where(b => b.CreationDate != DateTime.MinValue).Select(b => b.CreationDate).Min() : DateTime.Now;
+                var localisation = lRepo.Get(id);
 
-				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
+                DateTime initial;
+                var invoices = iRepo.GetInvoices(id, monthYear, out initial).ToList();
 
 				var model = new InvoiceListViewModel
 				{
-					Bookings = new MonthYearList<MemberBooking>
+					Invoices = new MonthYearList<Invoice>
 					{
-						List = bookings,
+                        List = invoices,
 						Current = monthYear,
 						Initial = MonthYear.FromDateTime(initial)
 					},
@@ -320,8 +324,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
+            var iRepo = ModelFactory.GetRepository<IInvoiceRepository>(context);
 			try
 			{
 				var member = mRepo.Get(memberId);
@@ -336,10 +339,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					monthYear = MonthYear.Parse(date);
 				}
 
-				var localisation = lRepo.Get(id);
-                var bookings = localisation.GetPaidBookings();
-
-				bookings = bookings.Where(b => monthYear.EqualDate(b.CreationDate)).OrderByDescending(mb => mb.CreationDate).ToList();
+                DateTime initial;
+                var invoices = iRepo.GetInvoices(id, monthYear, out initial).ToList();
 
 				StringWriter sw = new StringWriter();
 
@@ -359,7 +360,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 
                 sw.WriteLine(columns);
 
-				foreach (var item in bookings.Select(mb => new InvoiceSummary(mb)))
+                foreach (var item in invoices.Select(i => new InvoiceSummary(i)))
 				{
                     sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";",
 											   item.LastName,
@@ -395,18 +396,30 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			}
 		}
 
-		public virtual ActionResult GetInvoice(int id)
+        /// <summary>
+        /// Get action method to get invoice pdf
+        /// </summary>
+        /// <returns>Pdf file containing summary</returns>
+		public virtual ActionResult GetInvoice(int id, bool fromBooking)
 		{
 			var context = ModelFactory.GetUnitOfWork();
-			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
-
+            var iRepo = ModelFactory.GetRepository<IInvoiceRepository>(context);
 			try
 			{
-				var booking = bRepo.Get(id);
+                Invoice invoiceData = null;
+                if (fromBooking)
+                {
+                    var booking = bRepo.Get(id);
+                    invoiceData = new Invoice(booking);
+                }
+                else
+                {
+                    invoiceData = iRepo.Get(id);
+                }
+				
 				using (var stream = new MemoryStream())
 				{
-					var invoiceData = new InvoiceModel(booking);
 					_InvoiceService.GenerateInvoice(stream, invoiceData);
 					return File(stream.ToArray(), "application/pdf", invoiceData.Title);
 				}
@@ -465,6 +478,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var iRepo = ModelFactory.GetRepository<IInvoiceRepository>(context);
 
 			var member = mRepo.Get(memberId);
 			var localisation = lRepo.Get(id);
@@ -475,6 +489,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			{
 				try
 				{
+                    model.Invoice.CreationDate = DateTime.UtcNow;
+                    iRepo.Add(model.Invoice);
+                    context.Commit();
+
 					using (var stream = new MemoryStream())
 					{
 						var invoiceData = model.GetInvoiceModel(localisation);
@@ -484,6 +502,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				}
 				catch (Exception ex)
 				{
+                    context.Complete();
 					_Logger.Error("CreateInvoice", ex);
 				}
 			}
