@@ -359,16 +359,16 @@
     <value>Coworking atmosphere</value>
   </data>
   <data name="Desktop100Plus" xml:space="preserve">
-    <value>&gt; 100 m2</value>
+    <value>&gt; 1000 Sq. ft.</value>
   </data>
   <data name="Desktop10_25" xml:space="preserve">
-    <value>From 10 to 25 m2</value>
+    <value>From 100 to 300 Sq. ft.</value>
   </data>
   <data name="Desktop25_50" xml:space="preserve">
-    <value>From 25 to 50 m2</value>
+    <value>From 300 to 500 Sq. ft.</value>
   </data>
   <data name="Desktop50_100" xml:space="preserve">
-    <value>From 50 to 100 m2</value>
+    <value>From 500 to 1000 Sq. ft.</value>
   </data>
   <data name="Equipped" xml:space="preserve">
     <value>Fully furnished</value>
