@@ -497,16 +497,7 @@ namespace Worki.Web.Controllers
 			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var localisation = lRepo.Get(id);
 
-            var action = string.Empty;
-            switch (type)
-            {
-                case "list":
-                    action = string.Format("/me/{0}:work_in", WebHelper.GetFacebookNamespace());
-                    break;
-                case "work":
-                    action = string.Format("/me/{0}:work_in", WebHelper.GetFacebookNamespace());
-                    break;
-            }
+			var action = string.Format("/me/{0}:{1}", WebHelper.GetFacebookNamespace(), type);
 
 			try
 			{
