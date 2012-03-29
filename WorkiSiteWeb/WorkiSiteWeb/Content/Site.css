@@ -2066,6 +2066,11 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
     height : 30px;
 }
 
+.configCurrency td:first-child
+{
+    width:100px;
+}
+
 .offerPricesRow
 {
     margin:10px 0;

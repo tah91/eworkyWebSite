@@ -56,14 +56,6 @@
 						</td>
 					</tr>
 					}
-                    <tr>
-						<td>
-							@Html.LabelFor(m => m.InnerModel.Offer.Currency)
-						</td>
-						<td>
-							@Html.DropDownListFor(m => m.InnerModel.Offer.Currency, Model.InnerModel.Currencies)
-						</td>
-					</tr>
                     @if (Model.InnerModel.Offer.CanHaveBooking)
 					{
                     <tr>

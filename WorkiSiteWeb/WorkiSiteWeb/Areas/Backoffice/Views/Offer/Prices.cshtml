@@ -25,6 +25,17 @@
 			@Html.HiddenFor(m => m.LocalisationModelId)
 			@Html.HiddenFor(m => m.InnerModel.IsSharedOffice)
 			<div class="contentBlock configOffer">
+                <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
+                <table class="configCurrency">
+                    <tr>
+						<td>
+							@Html.LabelFor(m => m.InnerModel.Offer.Currency)
+						</td>
+						<td>
+							@Html.DropDownListFor(m => m.InnerModel.Offer.Currency, Model.InnerModel.Currencies)
+						</td>
+					</tr>
+                </table>
 				@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.InnerModel.Offer.OfferPrices)
 			</div> 
 			<div class="editor-field float-right">

@@ -34,11 +34,22 @@
 		</table>
     </div>
 	if (!Url.IsInArea("Backoffice"))
-	{ 
+	{
     <div class="contentBlock configOffer">
+        <h3 class="blue">@Worki.Resources.Views.BackOffice.BackOfficeString.PriceConfiguration</h3>
+        <table class="configCurrency">
+            <tr>
+			    <td>
+				    @Html.LabelFor(m => m.Offer.Currency)
+			    </td>
+			    <td>
+				    @Html.DropDownListFor(m => m.Offer.Currency, Model.Currencies)
+			    </td>
+		    </tr>
+        </table>
 		@Html.Partial(MVC.Offer.Views._OfferPriceList, Model.Offer.OfferPrices)
     </div> 
-	}
+    }
     if (Model.IsSharedOffice)
     {
     <div class="contentBlock">

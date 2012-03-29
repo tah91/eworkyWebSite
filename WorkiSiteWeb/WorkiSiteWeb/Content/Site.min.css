@@ -318,6 +318,7 @@ a.fb_button,a.fb_button_rtl,.fb_button,.fb_button_rtl{text-decoration:none}
 .configOffer select,.configOffer input[type="text"]{width:100px}
 .configoffertable td:first-child{width:180px}
 .configoffertable td{height:30px}
+.configCurrency td:first-child{width:100px}
 .offerPricesRow{margin:10px 0}
 .offerPricesRows select,.offerPricesRows input[type="text"]{margin:0 20px}
 .horizontalMenu{text-align:center}
