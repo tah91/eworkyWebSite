@@ -305,10 +305,20 @@ namespace Worki.Web.Helpers
             return fbCulture;
         }
 
+        public static bool IsOfCulture(this UrlHelper instance, Infrastructure.Culture culture)
+        {
+            return GetCulture(instance) == culture;
+        }
+
 		public static bool IsFrench(this UrlHelper instance)
 		{
-			return GetCulture(instance) == Infrastructure.Culture.fr;
+            return instance.IsOfCulture(Infrastructure.Culture.fr);
 		}
+
+        public static bool IsEnglish(this UrlHelper instance)
+        {
+            return instance.IsOfCulture(Infrastructure.Culture.en);
+        }
 
         public static string GetSuffix(this UrlHelper instance)
         {

@@ -182,7 +182,7 @@
     @Html.Partial(MVC.Shared.Views._DatePickerScript)
 	<script type="text/javascript">
 	    require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
-	    	require(["@Url.VersionedContent((Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? Links.Scripts.jquery_ui_datepicker_fr_js : Links.Scripts.jquery_ui_datepicker_en_js)", "@Links.Scripts.date_js"], function () {
+	        require(["@Url.VersionedContent(Url.IsEnglish() ? Links.Scripts.jquery_ui_datepicker_en_js : Links.Scripts.jquery_ui_datepicker_fr_js)", "@Links.Scripts.date_js"], function () {
 				require.ready(function () {
 					SelectPeriodType = function () {
 						var currentPeriodType = jQuery.trim($("#MemberBooking_TimeType").val());

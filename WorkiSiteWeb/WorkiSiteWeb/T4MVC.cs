@@ -411,9 +411,6 @@ namespace Links {
         public static readonly string jquery_jcarousel_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jcarousel.min.js") ? Url("jquery.jcarousel.min.js") : Url("jquery.jcarousel.js");
                       
         public static readonly string jquery_jcarousel_min_js = Url("jquery.jcarousel.min.js");
-        public static readonly string jquery_localdate_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.localdate-fr.min.js") ? Url("jquery.localdate-fr.min.js") : Url("jquery.localdate-fr.js");
-                      
-        public static readonly string jquery_localdate_fr_min_js = Url("jquery.localdate-fr.min.js");
         public static readonly string jquery_localdate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.localdate.min.js") ? Url("jquery.localdate.min.js") : Url("jquery.localdate.js");
                       
         public static readonly string jquery_localdate_min_js = Url("jquery.localdate.min.js");

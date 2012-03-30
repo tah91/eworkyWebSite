@@ -456,10 +456,6 @@
     <Content Include="Scripts\jquery.colorbox.min.js">
       <DependentUpon>jquery.colorbox.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery.localdate-fr.js" />
-    <Content Include="Scripts\jquery.localdate-fr.min.js">
-      <DependentUpon>jquery.localdate-fr.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\jquery.localdate.js" />
     <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\dropdown.min.js">

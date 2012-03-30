@@ -337,4 +337,43 @@
   <data name="Team_Member_4_Text" xml:space="preserve">
     <value>Marc est en charge du business development sur les marchés hispanophones. "Marco" est basé à Saragosse dans cette ville qui l'a séduit par sa douceur de vivre et son exceptionnelle densité de bar à tapas. Marc est à l'image du pays dans lequel il a choisi de poser ses valises : chaleureux, fêtard, gourmand, sportif. D'ailleurs, on ne sait pas exactement à quoi il se dope pour apporter tant de dynamisme à l'équipe mais on suspecte un savant mélange de Cacique, d'huile d'olive et de chorizo.</value>
   </data>
+  <data name="TimeAgo_day" xml:space="preserve">
+    <value>un jour</value>
+  </data>
+  <data name="TimeAgo_days" xml:space="preserve">
+    <value>%d jours</value>
+  </data>
+  <data name="TimeAgo_hour" xml:space="preserve">
+    <value>une heure</value>
+  </data>
+  <data name="TimeAgo_hours" xml:space="preserve">
+    <value>%d heures</value>
+  </data>
+  <data name="TimeAgo_minute" xml:space="preserve">
+    <value>une minute</value>
+  </data>
+  <data name="TimeAgo_minutes" xml:space="preserve">
+    <value>%d minutes</value>
+  </data>
+  <data name="TimeAgo_month" xml:space="preserve">
+    <value>un mois</value>
+  </data>
+  <data name="TimeAgo_months" xml:space="preserve">
+    <value>%d mois</value>
+  </data>
+  <data name="TimeAgo_prefixAgo" xml:space="preserve">
+    <value>Il y a</value>
+  </data>
+  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
+    <value>d'ici</value>
+  </data>
+  <data name="TimeAgo_seconds" xml:space="preserve">
+    <value>moins d'une minute</value>
+  </data>
+  <data name="TimeAgo_year" xml:space="preserve">
+    <value>un an</value>
+  </data>
+  <data name="TimeAgo_years" xml:space="preserve">
+    <value>%d ans</value>
+  </data>
 </root>

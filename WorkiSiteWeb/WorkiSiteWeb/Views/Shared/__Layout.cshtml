@@ -217,17 +217,17 @@
 	</div>
     @RenderSection("ScriptContent", false)
 	@{
-        var frLocalDate = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? Links.Scripts.jquery_localdate_fr_js : "";
-        var localDateFormat = (Url.GetCulture() == Worki.Infrastructure.Culture.fr) ? "dd/MM/yyyy HH:mm:ss" : "MM/dd/yyyy hh:mm:ss tt";
+        var localDateFormat = (culture == Worki.Infrastructure.Culture.en) ? "MM/dd/yyyy hh:mm:ss tt" : "dd/MM/yyyy HH:mm:ss";
 	}
 	@if (!Url.IsSecuredUrl())
- {
+    {
 	<script type="text/javascript">
 	 	require.ready(function () {
 	 		require(["http://widget.uservoice.com/QRiGQmvm2Qq2VarJYV0ghQ.js"]);
 	 	});
 	</script>
- }
+    }
+    
     <script type="text/javascript">
     	require.ready(function () {
     		$('.informationContainer').delay(8000).slideUp();
@@ -248,11 +248,25 @@
     	});
 
     	require(["@Links.Scripts.date_js"], function () {
-    		require(["@Links.Scripts.jquery_localdate_js"], function () {
-    			require(["@frLocalDate"], function () {
-    				$('.utcdate').localTimeFromUTC('@localDateFormat');
-    				$('.timeago').timeago();
-    			});
+    	    require(["@Links.Scripts.jquery_localdate_js"], function () {
+                jQuery.timeago.settings.strings = {
+	                // environ ~= about, it's optional
+	                prefixAgo: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_prefixAgo)',
+	                prefixFromNow: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_prefixFromNow)',
+	                seconds: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_seconds)',
+	                minute: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_minute)',
+	                minutes: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_minutes)',
+	                hour: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_hour)',
+	                hours: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_hours)',
+	                day: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_day)',
+	                days: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_days)',
+	                month: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_month)',
+	                months: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_months)',
+	                year: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_year)',
+	                years: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_years)'
+                };
+    			$('.utcdate').localTimeFromUTC('@localDateFormat');
+    			$('.timeago').timeago();
     		});
     	});
 
