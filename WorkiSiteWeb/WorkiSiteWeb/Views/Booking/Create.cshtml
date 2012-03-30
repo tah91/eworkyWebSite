@@ -196,31 +196,31 @@
 								canChooseHour = true;
 								canChooseEndDate = false;
 								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseHours)';
-								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralHour';
+								periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralHour)';
 								break;
 							case '@((int)Offer.PaymentPeriod.Day)':
 								canChooseHour = false;
 								canChooseEndDate = true;
-								periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseDay';
-								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralDay';
+								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseDay)';
+								periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralDay)';
 								break;
 							case '@((int)Offer.PaymentPeriod.Week)':
 								canChooseHour = false;
 								canChooseEndDate = false;
-								periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseWeek';
-								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralWeek';
+								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseWeek)';
+								periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralWeek)';
 								break;
 							case '@((int)Offer.PaymentPeriod.Month)':
 								canChooseHour = false;
 								canChooseEndDate = false;
-								periodLabel = '@Worki.Resources.Views.Booking.BookingString.ChooseMonth';
-								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralMonth';
+								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseMonth)';
+								periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralMonth)';
 								break;
 							case '@((int)Offer.PaymentPeriod.Year)':
 								canChooseHour = false;
 								canChooseEndDate = false;
 								periodLabel = '@Html.JSEscape(Worki.Resources.Views.Booking.BookingString.ChooseYear)';
-								periodUnitText = '@Worki.Resources.Models.Offer.Offer.PluralYear';
+								periodUnitText = '@Html.JSEscape(Worki.Resources.Models.Offer.Offer.PluralYear)';
 								break;
 							case '@((int)Offer.PaymentPeriod.HalfDay)':
 								canChooseHour = false;
