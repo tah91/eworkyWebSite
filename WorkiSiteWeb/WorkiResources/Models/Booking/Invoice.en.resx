@@ -157,7 +157,7 @@
     <value>See you soon at {0}</value>
   </data>
   <data name="SiretNumber" xml:space="preserve">
-    <value>N° Siret : {0}</value>
+    <value>Comp. Registration Number : {0}</value>
   </data>
   <data name="SubTotal" xml:space="preserve">
     <value>Total</value>

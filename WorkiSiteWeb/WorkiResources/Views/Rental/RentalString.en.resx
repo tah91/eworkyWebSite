@@ -139,7 +139,7 @@
     <value>Surface</value>
   </data>
   <data name="AreaUnit" xml:space="preserve">
-    <value>(m²)</value>
+    <value>(Sq. ft.)</value>
   </data>
   <data name="Availability" xml:space="preserve">
     <value>Availability</value>

@@ -219,7 +219,7 @@
     <value>Maximal budget (€)</value>
   </data>
   <data name="MinSurface" xml:space="preserve">
-    <value>Minimal surface (m²)</value>
+    <value>Minimal surface (Sq. ft.)</value>
   </data>
   <data name="BlogTitle" xml:space="preserve">
     <value>Blog</value>
