@@ -310,4 +310,22 @@ Your message will be directly  forwarded to the space owner.</value>
   <data name="Socials" xml:space="preserve">
     <value>Social networks</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ImproveVisibility" xml:space="preserve">
+    <value>Do you want to share this with your friends on Facebook, so that you improve its visibility?</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+    <value>No thanks</value>
+  </data>
+  <data name="ShareOnFb" xml:space="preserve">
+    <value>Share on Facebook</value>
+  </data>
+  <data name="SuccessfullyAdded" xml:space="preserve">
+    <value>Your space was successfully added !</value>
+  </data>
 </root>
