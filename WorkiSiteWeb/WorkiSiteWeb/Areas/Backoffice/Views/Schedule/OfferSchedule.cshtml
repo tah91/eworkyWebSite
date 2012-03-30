@@ -65,9 +65,9 @@
                     function (data) {
                         $('#calendar').fullCalendar('unselect');
                         $('div.field-validation-error').remove();
-                        $('#createBookingError').append('<div class="field-validation-error">' + xhr.responseText + '</div>');
+                        $('#createBookingError').append('<div class="field-validation-error">' + data + '</div>');
                     }
-                });
+                );
                 return false;
             });
         });
