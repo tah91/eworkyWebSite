@@ -315,6 +315,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Email\Activation.es.resx" />
+    <EmbeddedResource Include="Email\BookingString.es.resx" />
     <EmbeddedResource Include="Email\Common.es.resx" />
     <EmbeddedResource Include="Email\FacebookRegistration.es.resx" />
     <EmbeddedResource Include="Email\ResetPassword.es.resx" />
