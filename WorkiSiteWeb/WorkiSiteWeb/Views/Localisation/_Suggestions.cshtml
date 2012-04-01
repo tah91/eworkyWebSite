@@ -5,7 +5,7 @@
     foreach (var item in Model)
     {
         <div class="suggestion">
-            <div class="suggestionImage borderRadius float-left">
+            <div class="suggestionImage float-left">
 		        <a href="@item.GetDetailFullUrl(Url)">
                     <img src="@ControllerHelpers.GetUserImagePath(item.GetMainPic(), true)" alt="@item.Name"/>
                 </a>
