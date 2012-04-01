@@ -45,7 +45,7 @@
     </div>
 
     <div class="searchFormBlock float-right blockContainer">
-		<div class="contentBlock">
+		<div class="contentBlock" id="shopping-cart">
 			<div class="resultsMapDiv">
                 <span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
                 <div class="mapContainer" id="resultsMap">
@@ -197,6 +197,20 @@
                 workiAutocomplete.SetAutocomplete();
             });   
         }
+
+        // check where the shoppingcart-div is  
+        var offset = $('#shopping-cart').offset();  
+        var width = $('#shopping-cart').width();  
+        $(window).scroll(function () {  
+            var scrollTop = $(window).scrollTop(); // check the visible top of the browser  
+            var scrollBottom = $(window).scrollTop() + $(window).height(); // check the visible top of the browser 
+            if (offset.top < scrollTop) {
+                $('#shopping-cart').addClass('fixed').width(width);  
+            }
+            else {
+                $('#shopping-cart').removeClass('fixed');  
+            }
+        });
     </script>
     @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
 }

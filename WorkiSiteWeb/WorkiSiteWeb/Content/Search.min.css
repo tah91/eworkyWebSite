@@ -51,3 +51,4 @@ div.acc_container,div.toogle_container{margin-bottom:20px}
 .suggestionImage{width:100px;height:70px}
 .suggestionImage img{width:100px;height:70px}
 .suggestiondesc{width:55%}
+.fixed{position:fixed;top:10px}

@@ -317,3 +317,9 @@ div.acc_container, div.toogle_container
 {
     width:55%;
 }
+
+.fixed
+{  
+    position: fixed;   
+    top: 10px;
+} 
