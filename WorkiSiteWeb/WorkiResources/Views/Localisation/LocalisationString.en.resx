@@ -328,4 +328,7 @@ Your message will be directly  forwarded to the space owner.</value>
   <data name="SuccessfullyAdded" xml:space="preserve">
     <value>Your space was successfully added !</value>
   </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>More details</value>
+  </data>
 </root>
