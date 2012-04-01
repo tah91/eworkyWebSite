@@ -145,10 +145,10 @@
     <value>Correo electrónico</value>
   </data>
   <data name="EmptyBookHistoric" xml:space="preserve">
-    <value>No tienes ninguna reserva. Para solicitar una reserva, ve a la ficha del espacio deseado.</value>
+    <value>No has realizardo ninguna reserva. Para solicitar una, ve a la ficha del espacio que quieres reservar.</value>
   </data>
   <data name="EmptyNews" xml:space="preserve">
-    <value>Has recibido una notificación.</value>
+    <value>No has recibido ninguna notificación.</value>
   </data>
   <data name="EmptyQuotationHistoric" xml:space="preserve">
     <value>No has solicitado ningún presupuesto. Para tramitar una solicitud, ve a la ficha del espacio deseado.</value>

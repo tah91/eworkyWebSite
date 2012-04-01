@@ -220,7 +220,7 @@
     <value>Ubicación</value>
   </data>
   <data name="Suggestion" xml:space="preserve">
-    <value>Sugestión(es)</value>
+    <value>Sugerencia(s)</value>
   </data>
   <data name="execError" xml:space="preserve">
     <value>Un error ha ocurrido.</value>
