@@ -33,7 +33,7 @@
 							<a href="@Url.Action(MVC.Backoffice.Localisation.Index(loc.ID))">
 								<div class="localisationTag float-left">
 									<div class="localisationImgDiv borderedImg">
-									@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic(), true), loc.Name)
+									@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(loc.GetMainPic(), true), Links.Content.images.no_image_png, loc.Name)
 									</div>
 									<div class="localisationImgDesc">
 										<span class="bold">@loc.Name</span><br />

@@ -13,10 +13,10 @@ ul.like-buttons li{display:block;float:left;margin-right:10px}
 #favLink{margin-left:10px;display:inline-block}
 .localisationDetailLeft{width:68.5%}
 .localisationDetailLeftContainer{padding:0!important}
-.localisationDetailLeftContent{padding:10px}
+.localisationDetailLeftContent{padding:0 10px 10px 10px}
 .localisationDetailRight{width:27%}
 .localisationMap{padding:2px;border:1px solid #5dafde}
-.localisationGallery{height:350px}
+.localisationGallery{height:500px}
 .favoris_add{background-image:url('images/favorite.png');background-position:0 0;width:20px;height:21px;display:inline-block}
 .favoris_del{background-image:url('images/favorite.png');background-position:0 -71px;width:20px;height:21px;display:inline-block}
 #commentFormDiv textarea{width:98.5%}
@@ -28,7 +28,6 @@ ul.like-buttons li{display:block;float:left;margin-right:10px}
 .detailTabs .horizontalMenu li:first-child{-moz-border-bottom-left-radius:0;-webkit-border-bottom-left-radius:0;border-bottom-left-radius:0}
 .detailTabs .horizontalMenu li:last-child{-moz-border-bottom-right-radius:0;-webkit-border-bottom-right-radius:0;border-bottom-right-radius:0;border-right:0}
 .detailTabs .horizontalMenu li.selected{background:0}
-.detailTabContent{margin-top:10px}
 .detailMenu a{text-decoration:none;display:block;color:gray}
 .detailMenu li{vertical-align:middle;height:20px;padding:10px 5px;text-align:center;border:1px solid white}
 .detailMenuEmpty{height:0!important;padding:0!important;border-top:1px dashed #CCC!important;margin:0!important}
@@ -43,7 +42,7 @@ ul.like-buttons li{display:block;float:left;margin-right:10px}
 .workHere{width:100px}
 #eworkers .innerContentBlock{margin-top:0;margin-left:0}
 .eworkerImage{height:64px;width:64px}
-.eworkerImage img{max-height:64px}
+.eworkerImage img{height:64px;width:64px}
 .eworkerDesc{width:125px}
 .bookingFormTable td{height:30px}
 .bookingFormTable td:first-child{padding-right:50px}

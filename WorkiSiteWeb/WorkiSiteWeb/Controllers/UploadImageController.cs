@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Worki.Infrastructure.Logging;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Web.Controllers
 {
@@ -60,6 +61,14 @@ namespace Worki.Web.Controllers
 			}
 		}
 
+		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
+		{
+			Width = 600,
+			Height = 400,
+			TWidth = 180,
+			THeight = 120
+		};
+
         /// <summary>
         /// Action method to handle the json upload of files
         /// </summary>
@@ -77,7 +86,7 @@ namespace Worki.Web.Controllers
                     var postedFile = Request.Files[name];
                     if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
                         continue;
-					var uploadedFileName = this.UploadFile(postedFile, folder);
+					var uploadedFileName = this.UploadFile(postedFile, _ImageSize, folder);
 					var url = ControllerHelpers.GetUserImagePath(uploadedFileName, true, folder);
                     var deleteUrl = urlHelper.Action(MVC.UploadImage.DeleteImage(uploadedFileName));
 
@@ -94,7 +103,7 @@ namespace Worki.Web.Controllers
                 }
                 catch (Exception ex)
                 {
-                    _Logger.Error("Edit", ex);
+					_Logger.Error("UploadFiles", ex);
                     ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.ErrorWhenSave);
                 }
             }

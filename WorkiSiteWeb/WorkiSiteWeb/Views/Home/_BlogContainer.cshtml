@@ -8,7 +8,7 @@
             <li class="blogItem borderRadius noUnderline float-left">
                 <a href="@item.Url" target="_blank" title="@Html.Raw(item.Title)">
                     <div class="blogImg borderedImg borderRadius float-left">
-                        @RazorHelpers.CenterImage(item.Image, item.Title)
+                        @RazorHelpers.CenterImage(item.Image,null, item.Title)
                     </div>
                     <div class="blogContent float-left">
                         <h4 class="orange">@Html.Raw(item.Title)</h4>

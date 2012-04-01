@@ -352,6 +352,11 @@ namespace Worki.Data.Models
 			return Offers.Where(o => o.IsOnline && o.Type == (int)offerType);
 		}
 
+		public IEnumerable<string> GetOfferTypeList()
+		{
+			return Offers.Where(o => o.IsOnline).GroupBy(o => o.Type).Select(g => Localisation.GetOfferType(g.Key));
+		}
+
 		/// <summary>
 		/// Check if localisation have an offer
 		/// </summary>
@@ -1222,20 +1227,20 @@ namespace Worki.Data.Models
 			Init();
 		}
 
-		public LocalisationFormViewModel(bool isFree, bool isShared = false, bool needPartyOffer = false)
+		public LocalisationFormViewModel(bool isFree, bool isShared = false)
 		{
 			Localisation = new Localisation();
 			Localisation.LocalisationFeatures.Add(new LocalisationFeature { FeatureID = (int)Feature.Wifi_Free });
-			Init(isFree, isShared, needPartyOffer);
+			Init(isFree, isShared);
 		}
 
-		public LocalisationFormViewModel(Localisation localisation, bool needPartyOffer = false)
+		public LocalisationFormViewModel(Localisation localisation)
 		{
 			Localisation = localisation;
-			Init(localisation.IsFreeLocalisation(), localisation.IsSharedOffice(), needPartyOffer);
+			Init(localisation.IsFreeLocalisation(), localisation.IsSharedOffice());
 		}
 
-		void Init(bool isFree = true, bool isShared = false, bool needPartyOffer = false)
+		void Init(bool isFree = true, bool isShared = false)
 		{
 			IsFreeLocalisation = isFree;
 			IsSharedOffice = isShared;

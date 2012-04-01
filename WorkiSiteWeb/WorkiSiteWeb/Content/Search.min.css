@@ -18,18 +18,17 @@
 .searchResultFormDiv input[type="text"]{width:190px}
 .searchResultFormDiv select{width:195px}
 .resetSearch{margin:20px 0 0 40px}
-.resultItem{margin-bottom:10px;overflow:auto;height:135px;padding:10px}
-.resultItemGallery{width:20%;height:100%}
-.resultItemGallery img{max-height:135px}
-.itemDetailsDiv{height:100%;width:43%;padding-left:10px}
-.itemName{font-weight:bold;font-size:1.2em}
-.itemAddress{margin-bottom:3px;display:block}
-.itemLogos{width:100%}
-.itemLogosBottom{bottom:-6px!important}
+.resultItem{margin-bottom:10px;overflow:auto;height:150px;padding:10px}
+.resultItemGallery{padding-right:10px}
+.resultItemGallery img{width:170px;height:115px}
+.itemDetailsDiv{height:100%;width:71%}
+.itemBottom{width:100%}
+.itemBottom .buttonStd{margin-top:-2px;margin-left:10px}
 .itemPriceDisplay{padding-top:5px}
 .itemCommDiv{height:100%}
 .commentBgd{background:url('images/comm_content.png') no-repeat;width:220px;height:130px;padding:5px 5px 0 5px}
 .commentContainer{height:110px}
+.ratingContainer{height:14px}
 .ratingContainer span{padding-left:10px;vertical-align:25%}
 .commentText{margin:5px 0}
 .addCommLink{padding-top:2px}
@@ -45,10 +44,9 @@
 .directAccessDrh{width:35%;background-image:url('images/drh.png')}
 .directAccessIndependant{width:35%;background-image:url('images/independant.png')}
 div.acc_container,div.toogle_container{margin-bottom:20px}
-.order{margin-top:20px;width:43%}
+.order{margin-top:20px}
 .order a:hover{text-decoration:none}
 .suggestion{margin:10px 0;padding:5px}
 .suggestion:hover{background-color:Whitesmoke}
-.suggestionImage{width:90px;height:70px}
-.suggestionImage img{max-height:70px}
+.suggestionImage img{width:90px;height:60px}
 .suggestiondesc{width:60%}

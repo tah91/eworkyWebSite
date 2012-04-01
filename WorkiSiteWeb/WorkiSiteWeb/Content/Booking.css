@@ -21,12 +21,13 @@
 .bookingImg
 {
     width: 200px;
-    height: 140px;
+    height: 135px;
 }
 
 .bookingImg img
 {
-    max-height: 140px;
+	width: 200px;
+    height: 135px;
 }
 
 .bookingSteps

@@ -20,6 +20,7 @@
                 var summaryModel = new SummaryViewModel
                 {
                     ImagePath = Model.Localisation.GetMainPic(),
+                    NoImagePath = Links.Content.images.no_image_png,
                     ImageAlt = Model.Localisation.Name,
                     Descriptions = new List<DescriptionItem>
                     {
@@ -80,7 +81,7 @@
                             <a href="@Url.Action(MVC.Backoffice.Offer.Prices(item.Localisation.ID, item.Id))">
                                 <div class="localisationTag float-left">
                                     <div class="localisationImgDiv borderedImg">
-                                        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true, PictureData.GetFolder(ProviderType.Offer)), item.Name)
+                                        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true, PictureData.GetFolder(ProviderType.Offer)), Links.Content.images.no_image_png, item.Name)
                                     </div>
                                     <div class="localisationImgDesc">
                                         <span class="bold">@item.Name</span>

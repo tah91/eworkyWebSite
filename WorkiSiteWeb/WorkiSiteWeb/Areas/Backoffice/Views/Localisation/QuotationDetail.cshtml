@@ -27,6 +27,7 @@
                 var summaryModel = new SummaryViewModel
                 {
                     ImagePath = Model.Offer.Localisation.GetMainPic(),
+                    NoImagePath = Links.Content.images.no_image_png,
                     ImageAlt = Model.Offer.Localisation.Name,
                     Descriptions = new List<DescriptionItem>
                     {

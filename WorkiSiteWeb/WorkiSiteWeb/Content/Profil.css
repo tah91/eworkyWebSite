@@ -112,12 +112,14 @@
 
 .profilAvatar
 {
+	width:220px;
     height: 200px;
 }
 
 .profilAvatar img
 {
-    max-height: 200px;
+    width:220px;
+    height: 200px;
 }
 
 .profilAvatar .picBackEmpty
@@ -183,23 +185,25 @@
     width:64px;
     /*margin-top: 20px;*/
     margin-right: 15px;
-    font-size: 10px;
 }
 
 .commentAvatar img
 {
-    max-height:64px;
+    height:64px;
+    width:64px;
 }
 
 .commentLocAvatar
 {
 	margin-left: 10px;
 	width:75px;
+	height:50px;
 }
 
 .commentLocAvatar img
 {
-    max-height:70px;
+    width:75px;
+    height:50px;
 }
 
 .commentContent

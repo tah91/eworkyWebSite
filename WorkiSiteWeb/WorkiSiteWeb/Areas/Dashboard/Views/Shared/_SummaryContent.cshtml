@@ -1,10 +1,13 @@
 ﻿@model SummaryViewModel
 
+@{
+    var css = Model.NoImagePath == Links.Content.images.no_image_png ? "summaryImage" : "summaryImageProfil";
+}
 <div class="summaryContainer innerContentBlock float-left">
-    <div class="summaryImage">
-        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.ImagePath), Model.ImageAlt)
+    <div class="@css">
+        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.ImagePath), Model.NoImagePath, Model.ImageAlt)
     </div>
-    <div class="summaryIntro">
+    <div class="summaryIntro margint10">
         @foreach (var item in Model.Descriptions)
         {
             var bold = item.Bold ? "bold" : "";

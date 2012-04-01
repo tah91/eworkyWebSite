@@ -10,7 +10,7 @@
 <li class="bookingItem">
     <div class="innerContentBlock">
         <div class="bookingGallery float-left">
-            @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Offer.Localisation.GetMainPic(), true), Model.Offer.Localisation.Name)
+            @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Offer.Localisation.GetMainPic(), true), Links.Content.images.no_image_png, Model.Offer.Localisation.Name)
         </div>
         <div class="bookingDesc float-left">
             @RazorHelpers.Description(Worki.Resources.Views.Booking.BookingString.Localisation, Model.Offer.Localisation.Name)

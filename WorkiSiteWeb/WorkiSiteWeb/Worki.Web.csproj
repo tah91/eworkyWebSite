@@ -361,6 +361,7 @@
     <Content Include="Content\images\marc.png" />
     <Content Include="Content\images\mediaBanner.png" />
     <Content Include="Content\images\networks.png" />
+    <Content Include="Content\images\no_image.png" />
     <Content Include="Content\images\olivier.png" />
     <Content Include="Content\images\listing.png" />
     <Content Include="Content\images\overlay.png" />
@@ -894,7 +895,6 @@
     <Content Include="Views\Offer\_OfferPriceList.cshtml" />
     <Content Include="Views\Localisation\AskBooking.cshtml" />
     <Content Include="Views\Localisation\_AskContact.cshtml" />
-    <Content Include="Views\Offer\JoinParty.cshtml" />
     <Content Include="Views\Home\ShareOffice.cshtml" />
     <Content Include="Views\Localisation\_LocalisationForm.cshtml" />
     <Content Include="Views\Offer\_CreateOffer.cshtml" />

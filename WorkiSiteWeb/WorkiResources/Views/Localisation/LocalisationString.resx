@@ -330,4 +330,7 @@
   <data name="SuccessfullyAdded" xml:space="preserve">
     <value>Votre espace a été ajouté avec succès !</value>
   </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>Plus de détails</value>
+  </data>
 </root>

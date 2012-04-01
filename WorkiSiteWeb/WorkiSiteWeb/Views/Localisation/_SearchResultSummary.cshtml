@@ -5,58 +5,74 @@
 		var link = Model.Localisation.GetDetailFullUrl(Url);
 		var fullName = Model.Localisation.GetFullName();
     }
-    <div class="resultItemGallery picBack borderRadius float-left">
-		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), fullName)
+    <div class="resultItemGallery float-left">
+        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Links.Content.images.no_image_png, fullName)
+        <div class="ratingContainer margint5">
+			@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="blue noUnderline"><a href="@(link + "#commentFormDiv")">@(string.Format("{0} {1}", Model.Localisation.Comments.Count, Worki.Resources.Views.Search.SearchString.Opinion))</a></span>
+			<div class="clear">
+			</div> 
+		</div>
     </div>
     <div class="itemDetailsDiv float-left relative">
-        <p class="blue noUnderline">
-            <span class="itemName"><a href="@link" title="@fullName">@Html.TruncateAtWord(fullName, 40).ToString()</a></span>
+        <h3 class="bold blue noUnderline">
+            <a href="@link" title="@fullName">@fullName</a>
             @if (Model.Distance < 1000)
             {
-                <span>&nbsp; -&nbsp;@String.Format("{0:0.##} km", Model.Distance) </span>
-            }            
-        </p>
-        <span class="itemAddress">@Html.TruncateAtWord(Model.Localisation.Adress, 30)&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</span>
-		<div>
-			<span class="bold orange">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - <span class="itemDesc">@Html.TruncateAtWord(Model.Localisation.GetDescription(), 120)</span>
-		</div>
-        <div class="itemLogos itemLogosBottom bottom">
-			<div class="float-left">
-				@if (!Model.Localisation.IsSharedOffice())
-				{
-					@Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
-				}
-				else
-				{
-					<div class="itemPriceDisplay italic">
-						@string.Format(Worki.Resources.Views.Localisation.LocalisationString.ModifiedThe, CultureHelpers.GetSpecificFormat(Model.Localisation.GetLastModificationDate(), CultureHelpers.TimeFormat.Date))
-					</div>
-				}
-			</div>
-			<div class="itemPriceDisplay float-right bold orange">
-				@Model.Localisation.GetMinPrice()
-			</div>
-			<div class="clear">
-			</div>
+                <span>&nbsp;-&nbsp;@String.Format("{0:0.##} km", Model.Distance) </span>
+            }
+        </h3>
+        <div>
+            <span class="bold orange">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - @Model.Localisation.Adress&nbsp; - &nbsp;@Model.Localisation.PostalCode @Model.Localisation.City
         </div>
-    </div>
-
-    <div class="itemCommDiv float-right">
-		<div class="commentBgd">
-			<div class="commentContainer">
-				<div class="ratingContainer">
-					@RazorHelpers.ReadOnlyRating(Model.Localisation.GetRatingAverage(RatingType.General))<span class="blue noUnderline"><a href="@(link + "#commentFormDiv")">@(string.Format("{0} {1}", Model.Localisation.Comments.Count, Worki.Resources.Views.Search.SearchString.Opinion))</a></span>
-					<div class="clear">
-					</div> 
-				</div>
-				@foreach (var com in Model.Localisation.GetCommentSummary(Url.GetCulture()))
-                {
-					<p>&laquo; @Html.TruncateAtWord(com.GetPost(), 60)&raquo; <span class="commentUser bold">@com.Member.GetDisplayName()</span>
-					</p>
-				}
-			</div>
-			<div class="clear">
-			</div>
-		</div>
+        @*<div class="margint5">
+            @if (Model.Localisation.HasOffer())
+            {
+                <div class="featureTag">
+                    <ul>
+                    @foreach (var item in Model.Localisation.GetOfferTypeList())
+                    {
+                        <li>@item</li>
+                    } 
+                    </ul>
+                </div>
+                <div class="clear">
+                </div>
+            }
+        </div>*@
+        <div class="margint5">
+            @Html.TruncateAtWord(Model.Localisation.GetDescription(), 160)
+        </div>
+        <div class="itemBottom bottom">
+            <div class="float-left">
+                @Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
+            </div>
+            <div class="float-right">
+                @*@if (Model.Localisation.IsSharedOffice())
+			    {
+                    <div class="itemPriceDisplay float-left">
+					    @string.Format(Worki.Resources.Views.Localisation.LocalisationString.ModifiedThe, CultureHelpers.GetSpecificFormat(Model.Localisation.GetLastModificationDate(), CultureHelpers.TimeFormat.Date))
+				    </div>
+			    }*@
+                <div class="itemPriceDisplay float-left bold orange">
+				    @Model.Localisation.GetMinPrice()
+			    </div>
+                @if (Model.Localisation.IsBookable())
+                {                
+			    <div class="buttonStd buttonBlue linkImg float-left">
+                    <a href="@link">@Worki.Resources.Views.Localisation.LocalisationString.BookIt</a>
+			    </div>
+                }
+                else
+                { 
+                <div class="buttonStd buttonBlue linkImg float-left">
+                    <a href="@link">@Worki.Resources.Views.Localisation.LocalisationString.MoreDetails</a>
+			    </div>
+                }
+                <div class="clear">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
     </div>
 </div>

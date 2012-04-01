@@ -18,7 +18,7 @@
 	    <div class="resultItemGallery picBack borderRadius float-left">
 		    @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))
 		    {
-			    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), fullName)
+			    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Links.Content.images.no_image_png, fullName)
 		    }
 	    </div>
 	    <div class="itemDesc float-right">

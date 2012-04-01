@@ -6,7 +6,9 @@
     {
         <div class="suggestion">
             <div class="suggestionImage borderRadius float-left">
-		        <a href="@item.GetDetailFullUrl(Url)">@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(item.GetMainPic(), true), item.Name)</a>
+		        <a href="@item.GetDetailFullUrl(Url)">
+                    <img src="@ControllerHelpers.GetUserImagePath(item.GetMainPic(), true)" alt="@item.Name"/>
+                </a>
             </div>
             <div class="suggestiondesc float-right">
                 <a class="bold orange" href="@item.GetDetailFullUrl(Url)">@item.Name</a>

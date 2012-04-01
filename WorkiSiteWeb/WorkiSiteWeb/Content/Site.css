@@ -1928,8 +1928,7 @@ html ul.tabs li.selected a:hover
 
 .searchFormBlock
 {
-	/*padding:10px;*/
-    width:23.5%;
+    width:27.5%;
 }
 
 .ie7 .searchFormBlock
@@ -1939,7 +1938,7 @@ html ul.tabs li.selected a:hover
 
 .resultDiv
 {
-    width: 72%;
+    width: 68%;
 }
 
 /* IMPORTANT SECTION

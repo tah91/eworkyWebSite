@@ -15,7 +15,7 @@
 			<div class="innerContentBlock bookingLocalisation">
 				<h3 class="blue">@Model.QuotationOffer.Localisation.Name - @Model.QuotationOffer.Name</h3>
 				<div class="bookingImg borderedImg float-left">
-					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.QuotationOffer.Localisation.GetMainPic(), true), Model.QuotationOffer.Localisation.Name)
+					@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.QuotationOffer.Localisation.GetMainPic(), true), Links.Content.images.no_image_png, Model.QuotationOffer.Localisation.Name)
 				</div>
 				<div class="bookingPrices float-left">
 					<ul>

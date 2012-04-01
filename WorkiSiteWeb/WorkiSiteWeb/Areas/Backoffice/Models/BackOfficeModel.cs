@@ -47,6 +47,7 @@ namespace Worki.Web.Model
 	public class SummaryViewModel
 	{
 		public string ImagePath { get; set; }
+		public string NoImagePath { get; set; }
 		public string ImageAlt { get; set; }
 		public IEnumerable<DescriptionItem> Descriptions { get; set; }
 	}

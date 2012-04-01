@@ -16,8 +16,10 @@
 .homeText{font-size:13px;margin-top:2px}
 .homeButton{width:300px}
 .summaryContainer{width:25%}
-.summaryImage{height:200px}
-.summaryImage img{max-height:200px}
+.summaryImage{width:170px;height:115px}
+.summaryImage img{width:170px;height:115px}
+.summaryImageProfil{width:170px;height:170px}
+.summaryImageProfil img{width:170px;height:170px}
 .summaryIntro{text-align:center}
 .summaryDetail{width:62%}
 .summaryDescription{width:65%;padding:0!important}
@@ -26,14 +28,14 @@
 .localisationsTagContainer ul li a{text-decoration:none;display:block}
 .ie7 .localisationsTagContainer ul li a{text-decoration:none;display:inline}
 .localisationTag{padding:5px 10px 5px 0;padding-left:0;text-align:right;height:200px}
-.localisationImgDiv{width:190px;height:140px}
-.localisationImgDiv img{max-height:140px}
+.localisationImgDiv{height:130px}
+.localisationImgDiv img{width:190px;height:130px}
 .localisationImgDesc{width:190px}
 .bookingItem{margin:10px 0}
 .bookingItem:first-child{margin-top:0}
 .bookingItem:last-child{margin-bottom:0}
-.bookingGallery{width:25%;height:120px;margin-right:10px}
-.bookingGallery img{max-height:100px}
+.bookingGallery{width:160px;height:130px;margin-right:10px}
+.bookingGallery img{width:160px;height:130px}
 .bookingDesc{width:25%;margin-right:10px}
 .bookingStatus{width:27%;text-align:center;border:3px solid;height:120px;background:whitesmoke;font-weight:bold;display:table}
 .bookingStatusYellow{border-color:#fc0}

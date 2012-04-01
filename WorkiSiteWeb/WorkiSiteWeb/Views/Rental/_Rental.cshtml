@@ -9,7 +9,7 @@
     <div class="rentalItemGallery picBack float-left">
     @if (!string.IsNullOrEmpty(Model.Rental.GetMainPic()))
     {
-		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Rental.GetMainPic(), true, PictureData.GetFolder(ProviderType.Rental)), Model.Rental.GetDisplayName())
+		@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Rental.GetMainPic(), true, PictureData.GetFolder(ProviderType.Rental)), Links.Content.images.no_image_png, Model.Rental.GetDisplayName())
     }
     </div>
 

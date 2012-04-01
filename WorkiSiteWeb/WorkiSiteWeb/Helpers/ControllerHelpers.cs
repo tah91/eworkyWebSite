@@ -16,6 +16,7 @@ using Worki.Infrastructure.Email;
 using Worki.Infrastructure.Helpers;
 using Worki.Service;
 using Worki.Web.Singletons;
+using System.Drawing;
 
 namespace Worki.Web.Helpers
 {
@@ -92,26 +93,28 @@ namespace Worki.Web.Helpers
         /// </summary>
         /// <param name="postedFile">file to upload</param>
         /// <returns>the file name</returns>
-        public static string UploadFile(this Controller controller, HttpPostedFileBase postedFile, string folder = null)
+        public static string UploadFile(this Controller controller, HttpPostedFileBase postedFile, MiscHelpers.ImageSize imageSize, string folder = null)
         {
             if (postedFile == null)
                 return string.Empty;
+
             var ext = Path.GetExtension(postedFile.FileName);
-            var nameToSave = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.UtcNow) + ext;
+            var fileName = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.UtcNow) + ext;
             using (var fs = postedFile.InputStream)
             {
-				SaveFile(controller, fs, nameToSave, ext, postedFile.ContentType, folder);
-                SaveFile(controller, fs, nameToSave, ext, postedFile.ContentType,folder, true);
+				SaveFile(controller, fs, fileName, ext, postedFile.ContentType, folder, imageSize.Width, imageSize.Height);
+				SaveFile(controller, fs, fileName, ext, postedFile.ContentType, folder, imageSize.TWidth, imageSize.THeight, true);
             }
-            return nameToSave;
+			return fileName;
         }
 
-        static void SaveFile(Controller controller, Stream fs, string nameToSave, string ext, string contentType,string folder, bool thumb = false)
+		static void SaveFile(Controller controller, Stream stream, string nameToSave, string ext, string contentType, string folder, int width, int height, bool thumb = false)
         {
-            var width = thumb ? _ThumbMaxWidth : _MaxWidth;
 			var fileName = BuildPath(nameToSave, folder, thumb);
-            using (var bmp = MiscHelpers.Resize(fs, width, width))
+            using (var image = Image.FromStream(stream))
             {
+				var formatted = MiscHelpers.Format(image, width, height);
+
                 if (RoleEnvironment.IsAvailable)
                 {
                     if (CloudBlobContainerSingleton.Instance.BlobContainer == null)
@@ -119,15 +122,17 @@ namespace Worki.Web.Helpers
 
                     var blob = CloudBlobContainerSingleton.Instance.BlobContainer.GetBlobReference(fileName);
 
-                    var ms = new MemoryStream();
-                    bmp.Save(ms, _JpegCodecInfo, _EncoderParameters);
-                    ms.Seek(0, SeekOrigin.Begin);
-                    blob.UploadFromStream(ms);
-                    blob.Metadata["FileName"] = fileName;
-                    blob.Metadata["FileExtension"] = ext;
-                    blob.SetMetadata();
-                    blob.Properties.ContentType = contentType;
-                    blob.SetProperties();
+					using (var ms = new MemoryStream())
+					{
+						formatted.Save(ms, _JpegCodecInfo, _EncoderParameters);
+						ms.Seek(0, SeekOrigin.Begin);
+						blob.UploadFromStream(ms);
+						blob.Metadata["FileName"] = fileName;
+						blob.Metadata["FileExtension"] = ext;
+						blob.SetMetadata();
+						blob.Properties.ContentType = contentType;
+						blob.SetProperties();
+					}
                 }
                 else
                 {
@@ -135,7 +140,7 @@ namespace Worki.Web.Helpers
 					var path = string.Join(_PathSeparator, destinationFolder, fileName);
 					var dir = Path.GetDirectoryName(path);
 					Directory.CreateDirectory(dir);
-                    bmp.Save(path, _JpegCodecInfo, _EncoderParameters);
+					formatted.Save(path, _JpegCodecInfo, _EncoderParameters);
                 }
             }
         }

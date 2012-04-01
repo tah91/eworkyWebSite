@@ -122,54 +122,36 @@
 {   
     margin-bottom: 10px;
     overflow:auto;
-    height: 135px;
+    height: 150px;
     padding:10px;
 }
 
 .resultItemGallery
 {
-    width:20%;
-    height: 100%;
+	padding-right: 10px;
 }
 
 .resultItemGallery img
 {
-    max-height: 135px;
+	width: 170px;
+    height: 115px;
 }
 
 .itemDetailsDiv
 {
-    height: 100%; 
-    width:43%;
-    padding-left:10px;
+    height: 100%;
+    width:71%;
 }
 
-
-.itemDetailsDiv p
+.itemBottom
 {
-    /*height: 38px;*/
+   width:100%;
 }
 
-.itemName
+.itemBottom .buttonStd
 {
-    font-weight:bold;
-    font-size:1.2em;
-}
-
-.itemAddress
-{
-    margin-bottom:3px;
-    display:block;
-}
-
-.itemLogos
-{
-    width:100%;
-}
-
-.itemLogosBottom
-{
-    bottom:-6px!important;
+	margin-top: -2px;
+	margin-left: 10px;
 }
 
 .itemPriceDisplay
@@ -193,6 +175,11 @@
 .commentContainer
 { 
     height: 110px;
+}
+
+.ratingContainer
+{
+    height:14px;
 }
 
 .ratingContainer span
@@ -292,7 +279,6 @@ div.acc_container, div.toogle_container
 .order
 {
     margin-top:20px;
-    width: 43%;
 }
 
 .order a:hover
@@ -316,13 +302,13 @@ div.acc_container, div.toogle_container
 
 .suggestionImage
 {
-    width: 90px;
-    height: 70px;
+
 }
 
 .suggestionImage img 
 {
-    max-height: 70px;
+	width: 90px;
+    height: 60px;
 }
 
 .suggestiondesc

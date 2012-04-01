@@ -248,50 +248,6 @@ namespace Worki.Infrastructure.Helpers
             return toRet;
         }
 
-		/// <summary>
-		/// Resize a file stream of image to desired height and width
-		/// </summary>
-		/// <param name="fs">stream containing the image</param>
-		/// <param name="width">target width</param>
-		/// <param name="height">target height</param>
-		/// <returns>resized image</returns>
-		public static Image Resize(Stream fs, int width, int height)
-		{
-			float scale;
-			var image = Image.FromStream(fs);
-			float scaleWidth = image.Width < width ? 1 : ((float)width / (float)image.Width);
-			float scaleHeight = image.Height < height ? 1 : ((float)height / (float)image.Height);
-			if (scaleHeight < scaleWidth)
-			{
-				scale = scaleHeight;
-			}
-			else
-			{
-				scale = scaleWidth;
-			}
-
-			if (scale == 1.0 && fs.Length < Constants.OneMo)
-				return new Bitmap(image);
-
-			int destWidth = (int)((image.Width * scale) + 0.5);
-			int destHeight = (int)((image.Height * scale) + 0.5);
-
-			Bitmap bitmap = new Bitmap(destWidth, destHeight, PixelFormat.Format24bppRgb);
-			bitmap.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-			using (Graphics graphics = Graphics.FromImage(bitmap))
-			{
-				graphics.Clear(Color.White);
-				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-				graphics.DrawImage(image,
-						new Rectangle(0, 0, destWidth, destHeight),
-						new Rectangle(0, 0, image.Width, image.Height),
-						GraphicsUnit.Pixel);
-			}
-			return bitmap;
-		}
-
         public const double EarthRadius = 6376.5; //kms
 
         /// <summary>
@@ -429,6 +385,80 @@ namespace Worki.Infrastructure.Helpers
                 list[n] = value;
             }
             return list;
-        }
-    }
+		}
+
+		#region Image
+
+		public class ImageSize
+		{
+			public int Width { get; set; }
+			public int Height { get; set; }
+			public int TWidth { get; set; }
+			public int THeight { get; set; }
+		}
+		/// <summary>
+		/// Crop image to fit a rectangle
+		/// </summary>
+		/// <param name="img">image to crop</param>
+		/// <param name="cropArea">rectangle to fit</param>
+		/// <returns>cropped image</returns>
+		static Image Crop(Image img, Rectangle cropArea)
+		{
+			Bitmap bmpImage = new Bitmap(img);
+			Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
+			return (Image)(bmpCrop);
+		}
+
+		/// <summary>
+		/// Resize an image to desired height and width
+		/// </summary>
+		/// <param name="fs">he image to resize</param>
+		/// <param name="width">target width</param>
+		/// <param name="height">target height</param>
+		/// <returns>resized image</returns>
+		public static Image Resize(Image image, int width, int height)
+		{
+			float scaleWidth = ((float)width / (float)image.Width);
+			float scaleHeight = ((float)height / (float)image.Height);
+			var scale = Math.Max(scaleWidth, scaleHeight);
+
+			int destWidth = (int)((image.Width * scale) + 0.5);
+			int destHeight = (int)((image.Height * scale) + 0.5);
+
+			Bitmap bitmap = new Bitmap(destWidth, destHeight, PixelFormat.Format24bppRgb);
+			bitmap.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+			using (Graphics graphics = Graphics.FromImage(bitmap))
+			{
+				graphics.Clear(Color.White);
+				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+				graphics.DrawImage(image,
+						new Rectangle(0, 0, destWidth, destHeight),
+						new Rectangle(0, 0, image.Width, image.Height),
+						GraphicsUnit.Pixel);
+			}
+			return bitmap;
+		}
+
+		/// <summary>
+		/// format image to specified dimentions
+		/// </summary>
+		/// <param name="image">image to format</param>
+		/// <param name="width">desired width</param>
+		/// <param name="height">desired height</param>
+		/// <returns>formated image</returns>
+		public static Image Format(Image image, int width, int height)
+		{
+			//resize
+			var resized = Resize(image, width, height);
+
+			//crop
+			var cropped = Crop(resized, new Rectangle(0, 0, width, height));
+
+			return cropped;
+		}
+
+		#endregion
+	}
 }

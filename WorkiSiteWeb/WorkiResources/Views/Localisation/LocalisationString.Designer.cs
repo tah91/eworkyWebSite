@@ -169,7 +169,7 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {
             get {
@@ -408,6 +408,15 @@ namespace Worki.Resources.Views.Localisation {
         public static string ModifiedThe {
             get {
                 return ResourceManager.GetString("ModifiedThe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plus de détails.
+        /// </summary>
+        public static string MoreDetails {
+            get {
+                return ResourceManager.GetString("MoreDetails", resourceCulture);
             }
         }
         

@@ -573,6 +573,7 @@ namespace Links {
             public static readonly string networks_png = Url("networks.png");
             public static readonly string next_horizontal_png = Url("next-horizontal.png");
             public static readonly string next_vertical_png = Url("next-vertical.png");
+            public static readonly string no_image_png = Url("no_image.png");
             public static readonly string nomad_png = Url("nomad.png");
             public static readonly string olivier_png = Url("olivier.png");
             public static readonly string overlay_png = Url("overlay.png");
@@ -1697,7 +1698,6 @@ namespace Worki.Web.Controllers {
             public readonly string Create = "~/Views/Offer/Create.cshtml";
             public readonly string Delete = "~/Views/Offer/Delete.cshtml";
             public readonly string Details = "~/Views/Offer/Details.cshtml";
-            public readonly string JoinParty = "~/Views/Offer/JoinParty.cshtml";
         }
     }
 

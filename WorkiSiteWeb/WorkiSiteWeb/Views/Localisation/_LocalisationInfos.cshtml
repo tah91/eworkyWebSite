@@ -86,7 +86,7 @@
     @if (Model.HasOwner())
     {
      	<div class="commentAvatar borderedImg float-left">
-	    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true) ?? @Links.Content.images.avatar_png, Model.Member.GetDisplayName())
+	    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true), Links.Content.images.avatar_png, Model.Member.GetDisplayName())
 	    </div>
         <div class="float-left">
             <div class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</div>

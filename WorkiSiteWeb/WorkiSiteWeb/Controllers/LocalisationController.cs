@@ -201,7 +201,7 @@ namespace Worki.Web.Controllers
 		[ActionName("add-place")]
 		public virtual ActionResult CreateNotFree()
 		{
-            return View(MVC.Localisation.Views.Edit, new LocalisationFormViewModel(false, false, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
+            return View(MVC.Localisation.Views.Edit, new LocalisationFormViewModel(false, false));
 		}
 
 		/// <summary>
@@ -236,7 +236,7 @@ namespace Worki.Web.Controllers
                 TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Localisation.LocalisationString.WorkplaceNotFound;
                 return RedirectToAction(MVC.Home.Index());
             }
-			return View(new LocalisationFormViewModel(localisation, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
+			return View(new LocalisationFormViewModel(localisation));
         }
 
 		const string LocalisationPrefix = "Localisation";
@@ -260,22 +260,32 @@ namespace Worki.Web.Controllers
             //to keep files state in case of error
             _ObjectStore.Store<PictureDataContainer>(PictureData.GetKey(ProviderType.Localisation), new PictureDataContainer(localisationForm.Localisation));
 
-            if (modifType == EditionType.Creation)
-            {
-                var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
-                if (offerList != null)
-                {
-                    localisationForm.Localisation.Offers.Clear();
-                    foreach (var offer in offerList.Offers)
-                    {
-                        localisationForm.Localisation.Offers.Add(offer);
-                    }
-                }
-            }
+			var context = ModelFactory.GetUnitOfWork();
+			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
-            var context = ModelFactory.GetUnitOfWork();
-            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			if (modifType == EditionType.Creation)
+			{
+				var offerList = _ObjectStore.Get<OfferFormListModel>("OfferList");
+				if (offerList != null)
+				{
+					localisationForm.Localisation.Offers.Clear();
+					foreach (var offer in offerList.Offers)
+					{
+						localisationForm.Localisation.Offers.Add(offer);
+					}
+				}
+			}
+			else
+			{
+				var locFromDb = lRepo.Get(id.Value);
+				localisationForm.Localisation.Offers.Clear();
+				foreach (var offer in locFromDb.Offers)
+				{
+					localisationForm.Localisation.Offers.Add(offer);
+				}
+			}
+
             try
             {
                 var member = mRepo.GetMember(User.Identity.Name);
@@ -341,7 +351,7 @@ namespace Worki.Web.Controllers
                 context.Complete();
                 ModelState.AddModelError(field, error);
             }
-            return View(new LocalisationFormViewModel(localisationForm.Localisation, Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole)));
+			return View(new LocalisationFormViewModel(localisationForm.Localisation));
         }
 
         const string returnUrlPostComment = "returnUrlPostComment";
