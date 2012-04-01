@@ -105,12 +105,12 @@
 
 .searchResultFormDiv input[type="text"] 
 {
-  width: 190px;
+  width: 100%;
 }
 
 .searchResultFormDiv select
 {
-  width: 195px;
+  width: 103%;
 }
 
 .resetSearch
