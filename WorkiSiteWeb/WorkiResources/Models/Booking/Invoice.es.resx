@@ -192,4 +192,7 @@
   <data name="Paid" xml:space="preserve">
     <value>Pagado</value>
   </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Divisa</value>
+  </data>
 </root>

@@ -366,4 +366,7 @@
   <data name="SiteVersion" xml:space="preserve">
     <value>Site version</value>
   </data>
+  <data name="Translate" xml:space="preserve">
+    <value>Translation</value>
+  </data>
 </root>

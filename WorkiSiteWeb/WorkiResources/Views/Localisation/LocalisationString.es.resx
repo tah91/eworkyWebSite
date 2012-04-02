@@ -311,4 +311,25 @@
   <data name="Socials" xml:space="preserve">
     <value>Redes sociales</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="ImproveVisibility" xml:space="preserve">
+    <value>¿Quieres compartirlo con tus amigos en Facebook para mejorar su visibilidad?</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+    <value>No gracias</value>
+  </data>
+  <data name="ShareOnFb" xml:space="preserve">
+    <value>Compartir en Facebook</value>
+  </data>
+  <data name="SuccessfullyAdded" xml:space="preserve">
+    <value>¡Tu espacio ha sido agregado con éxito!</value>
+  </data>
+  <data name="MoreDetails" xml:space="preserve">
+    <value>Más detalles</value>
+  </data>
 </root>

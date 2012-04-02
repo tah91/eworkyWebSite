@@ -231,7 +231,7 @@ Accediendo a tu {3} podrás confirmar / denegar esta solicitud de reserva en cua
     <value>Solicitud de presupuesto - {0}</value>
   </data>
   <data name="PartyCreateAccount" xml:space="preserve">
-    <value>A raís de tu registro al Networking de los coworkers, ¡Nos alegramos anunciarte que te hemos creado una cuenta eWorky!
+    <value>A raíz de tu registro al Networking de los coworkers, ¡Nos alegramos anunciarte que te hemos creado una cuenta eWorky!
 
 Tu usuario es "&lt;b&gt;{0}&lt;/b&gt;" y tu contraseña provisional es &lt;b&gt;"{1}"&lt;/b&gt;. Puedes cambiar tu contraseña accediendo a tu perfíl: &lt;b&gt;{2}&lt;/b&gt;
 

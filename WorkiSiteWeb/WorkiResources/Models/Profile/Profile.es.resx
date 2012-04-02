@@ -195,4 +195,7 @@
   <data name="SiretNumber" xml:space="preserve">
     <value>CIF</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
 </root>

@@ -355,4 +355,43 @@
   <data name="TeamDescription" xml:space="preserve">
     <value>¡Página de presentación del equipo!</value>
   </data>
+  <data name="TimeAgo_day" xml:space="preserve">
+    <value>un día</value>
+  </data>
+  <data name="TimeAgo_days" xml:space="preserve">
+    <value>%d días</value>
+  </data>
+  <data name="TimeAgo_hour" xml:space="preserve">
+    <value>una hora</value>
+  </data>
+  <data name="TimeAgo_hours" xml:space="preserve">
+    <value>%d horas</value>
+  </data>
+  <data name="TimeAgo_minute" xml:space="preserve">
+    <value>un minuto</value>
+  </data>
+  <data name="TimeAgo_minutes" xml:space="preserve">
+    <value>%d minutos</value>
+  </data>
+  <data name="TimeAgo_month" xml:space="preserve">
+    <value>un mes</value>
+  </data>
+  <data name="TimeAgo_months" xml:space="preserve">
+    <value>&amp;d meses</value>
+  </data>
+  <data name="TimeAgo_prefixAgo" xml:space="preserve">
+    <value>Hace</value>
+  </data>
+  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
+    <value>dentro de</value>
+  </data>
+  <data name="TimeAgo_seconds" xml:space="preserve">
+    <value>menos de un minuto</value>
+  </data>
+  <data name="TimeAgo_year" xml:space="preserve">
+    <value>un año</value>
+  </data>
+  <data name="TimeAgo_years" xml:space="preserve">
+    <value>&amp;d años</value>
+  </data>
 </root>
