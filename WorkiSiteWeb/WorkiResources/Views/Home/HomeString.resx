@@ -376,4 +376,10 @@
   <data name="TimeAgo_years" xml:space="preserve">
     <value>%d ans</value>
   </data>
+  <data name="PricingDescription" xml:space="preserve">
+    <value>Présentation des options de l'espace gérant sur eWorky.</value>
+  </data>
+  <data name="TeamDescription" xml:space="preserve">
+    <value>Présentation de l'equipe d'eWorky !</value>
+  </data>
 </root>

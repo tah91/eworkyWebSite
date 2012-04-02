@@ -295,6 +295,15 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Présentation des options de l&apos;espace gérant sur eWorky..
+        /// </summary>
+        public static string PricingDescription {
+            get {
+                return ResourceManager.GetString("PricingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location.
         /// </summary>
         public static string Rent {
@@ -507,6 +516,15 @@ namespace Worki.Resources.Views.Home {
         public static string Team_Member_4_Text {
             get {
                 return ResourceManager.GetString("Team_Member_4_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Présentation de l&apos;equipe d&apos;eWorky !.
+        /// </summary>
+        public static string TeamDescription {
+            get {
+                return ResourceManager.GetString("TeamDescription", resourceCulture);
             }
         }
         
