@@ -2,10 +2,11 @@
 
 @{
     var css = Model.NoImagePath == Links.Content.images.no_image_png ? "summaryImage" : "summaryImageProfil";
+    var folder = Model.NoImagePath == Links.Content.images.no_image_png ? "" : Member.AvatarFolder;
 }
 <div class="summaryContainer innerContentBlock float-left">
     <div class="@css">
-        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.ImagePath), Model.NoImagePath, Model.ImageAlt)
+        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.ImagePath, false, folder), Model.NoImagePath, Model.ImageAlt)
     </div>
     <div class="summaryIntro margint10">
         @foreach (var item in Model.Descriptions)
