@@ -326,6 +326,6 @@ div.acc_container, div.toogle_container
 
 .newbottom 
 {
-    top: auto;
     bottom: 10px;
+	position: absolute;
 }

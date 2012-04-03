@@ -233,7 +233,7 @@ namespace Worki.Data.Models
 
         #endregion
 
-		public const int PageSize = 5; // Will change this later
+		public const int PageSize = 15; // Will change this later
 
 		/// <summary>
 		/// fill page info from page index

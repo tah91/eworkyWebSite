@@ -29,7 +29,7 @@
 </div>
 @RazorHelpers.TitleDiv(string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, Model.List.Count), "Blue")
 
-<div class="detailContent" id="globalContainer">
+<div class="detailContent relative" id="globalContainer">
     <div class="resultDiv float-left blockContainer">
         <div class="searchFormBlockLeft">
             @for (int i = 0; i < Model.PageResults.Count; ++i)
@@ -199,31 +199,26 @@
         }
 
         // check where the shoppingcart-div is  
-//        var offset = $('#resultSearchBlock').offset();  
-//        var width = $('#resultSearchBlock').width();  
+        var offset = $('#resultSearchBlock').offset();  
+        var width = $('#resultSearchBlock').width();  
 
-//        $(window).scroll(function () {  
-//            var searchBlock = $('#resultSearchBlock');
-//            var container = $('#globalContainer');
-//            var scrollTop = $(window).scrollTop(); // check the visible top of the browser  
-//            var scrollBottom = $(window).scrollTop() + $(window).height(); // check the visible top of the browser 
-
-//            var yo = offset.top;
-//            var At= container.offset().top + container.outerHeight();
-//            var Bt = searchBlock.offset().top +  searchBlock.outerHeight();
-//            console.log('yo : ' + yo);
-//            console.log('At : ' + At);
-//            console.log('Bt : ' + Bt);
-//            if (yo < scrollTop && At  < Bt) {
-//                searchBlock.addClass('fixed').width(width);  
-//            }
-//            else if(yo < scrollTop && At  < Bt){
-//                searchBlock.removeClass('fixed').addClass('newbottom');  
-//            }
-//            else {
-//                searchBlock.removeClass('fixed').removeClass('newbottom');  
-//            }
-//        });
+        $(window).scroll(function () {  
+            var searchBlock = $('#resultSearchBlock');
+            var container = $('#globalContainer');
+            var y = $(window).scrollTop();
+            var yo = offset.top;
+            var searchBottom= y + searchBlock.outerHeight();
+            var containerBottom = yo + container.outerHeight();
+            if (y < yo) {
+                searchBlock.removeClass('fixed').removeClass('newbottom');  
+            }
+            else if (y > yo && y + searchBlock.outerHeight()  < yo + container.outerHeight()) {
+                searchBlock.removeClass('newbottom').addClass('fixed').width(width);  
+            }
+            else {
+                searchBlock.removeClass('fixed').addClass('newbottom');
+            }
+        });
     </script>
     @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
 }
