@@ -323,3 +323,9 @@ div.acc_container, div.toogle_container
     position: fixed;   
     top: 10px;
 } 
+
+.newbottom 
+{
+    top: auto;
+    bottom: 10px;
+}
