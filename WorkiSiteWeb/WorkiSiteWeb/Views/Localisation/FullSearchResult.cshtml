@@ -199,31 +199,31 @@
         }
 
         // check where the shoppingcart-div is  
-        var offset = $('#resultSearchBlock').offset();  
-        var width = $('#resultSearchBlock').width();  
+//        var offset = $('#resultSearchBlock').offset();  
+//        var width = $('#resultSearchBlock').width();  
 
-        $(window).scroll(function () {  
-            var searchBlock = $('#resultSearchBlock');
-            var container = $('#globalContainer');
-            var scrollTop = $(window).scrollTop(); // check the visible top of the browser  
-            var scrollBottom = $(window).scrollTop() + $(window).height(); // check the visible top of the browser 
+//        $(window).scroll(function () {  
+//            var searchBlock = $('#resultSearchBlock');
+//            var container = $('#globalContainer');
+//            var scrollTop = $(window).scrollTop(); // check the visible top of the browser  
+//            var scrollBottom = $(window).scrollTop() + $(window).height(); // check the visible top of the browser 
 
-            var yo = offset.top;
-            var At= container.offset().top + container.outerHeight();
-            var Bt = searchBlock.offset().top +  searchBlock.outerHeight();
-            console.log('yo : ' + yo);
-            console.log('At : ' + At);
-            console.log('Bt : ' + Bt);
-            if (yo < scrollTop && At  < Bt) {
-                searchBlock.addClass('fixed').width(width);  
-            }
-            else if(yo < scrollTop && At  < Bt){
-                searchBlock.removeClass('fixed').addClass('newbottom');  
-            }
-            else {
-                searchBlock.removeClass('fixed').removeClass('newbottom');  
-            }
-        });
+//            var yo = offset.top;
+//            var At= container.offset().top + container.outerHeight();
+//            var Bt = searchBlock.offset().top +  searchBlock.outerHeight();
+//            console.log('yo : ' + yo);
+//            console.log('At : ' + At);
+//            console.log('Bt : ' + Bt);
+//            if (yo < scrollTop && At  < Bt) {
+//                searchBlock.addClass('fixed').width(width);  
+//            }
+//            else if(yo < scrollTop && At  < Bt){
+//                searchBlock.removeClass('fixed').addClass('newbottom');  
+//            }
+//            else {
+//                searchBlock.removeClass('fixed').removeClass('newbottom');  
+//            }
+//        });
     </script>
     @Html.Partial(MVC.Localisation.Views._SelectSearchScript, Model.Criteria, ViewData)
 }

@@ -351,6 +351,7 @@ namespace Worki.Web.Controllers
                 context.Complete();
                 ModelState.AddModelError(field, error);
             }
+			localisationForm.Localisation.ID = id ?? 0;
 			return View(new LocalisationFormViewModel(localisationForm.Localisation));
         }
 
