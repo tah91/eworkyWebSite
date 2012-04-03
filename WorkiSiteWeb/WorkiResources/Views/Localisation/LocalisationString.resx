@@ -333,4 +333,7 @@
   <data name="MoreDetails" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
+  <data name="FacebookUpdated" xml:space="preserve">
+    <value>Votre Timeline Facebook a été mise à jour</value>
+  </data>
 </root>

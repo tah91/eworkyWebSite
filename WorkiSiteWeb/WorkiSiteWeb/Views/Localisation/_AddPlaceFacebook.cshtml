@@ -24,9 +24,11 @@
 			$('#open-graph-button-yes').click(function () {
 				_callback = function (content) {
 			        $.colorbox.close();
+                    $('#main').prepend(content);
+                    $('.informationContainer').delay(8000).slideUp();
 				}
 				InitOpenGraph(function (response) {
-                    $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'list' }, _callback, "json");
+                    $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'list' }, _callback, "html");
 				});
 			}); 	
 

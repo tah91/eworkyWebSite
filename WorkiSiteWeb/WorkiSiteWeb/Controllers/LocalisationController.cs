@@ -514,7 +514,7 @@ namespace Worki.Web.Controllers
 			{
 				FacebookClient fbClient = new FacebookClient(accessToken);
                 fbClient.Post(action, new Dictionary<string, object> { { "workspace", localisation.GetDetailFullUrl(Url) } });
-				return Json("posted");
+                return PartialView(MVC.Shared.Views._InfoMessage, Worki.Resources.Views.Localisation.LocalisationString.FacebookUpdated);
 			}
 			catch (Exception ex)
 			{

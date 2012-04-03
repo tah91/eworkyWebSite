@@ -427,10 +427,12 @@
 				$('#addToFavorite').click(function () {
 					_callback = function (content) {
 			            //alert(content);
+                        $('#main').prepend(content);
+                        $('.informationContainer').delay(8000).slideUp();
 					}
                     $.post('@Url.Action(MVC.Localisation.AddFavorite())',{ id: @Model.GetId() }, _callback, "json");
 					InitOpenGraph(function (response) {
-                        $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'work_in' }, _callback, "json");
+                        $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'work_in' }, _callback, "html");
 					});
 				}); 	
 			});

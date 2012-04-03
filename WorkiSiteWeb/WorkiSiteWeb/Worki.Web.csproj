@@ -905,6 +905,7 @@
     <Content Include="Views\Offer\_OfferItem.cshtml" />
     <Content Include="Views\Offer\_AjaxAdd.cshtml" />
     <Content Include="Views\Offer\_OfferList.cshtml" />
+    <Content Include="Views\Shared\_InfoMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

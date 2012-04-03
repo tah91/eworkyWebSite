@@ -2209,6 +2209,7 @@ namespace T4MVC {
             public readonly string _HorizontalMenu = "~/Views/Shared/_HorizontalMenu.cshtml";
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";
+            public readonly string _InfoMessage = "~/Views/Shared/_InfoMessage.cshtml";
             public readonly string _LocalisationSingleComment = "~/Views/Shared/_LocalisationSingleComment.cshtml";
             public readonly string _LogOnUserControl = "~/Views/Shared/_LogOnUserControl.cshtml";
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";

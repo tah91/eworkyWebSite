@@ -286,6 +286,15 @@ namespace Worki.Resources.Views.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre Timeline Facebook a été mise à jour.
+        /// </summary>
+        public static string FacebookUpdated {
+            get {
+                return ResourceManager.GetString("FacebookUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fax : .
         /// </summary>
         public static string Fax {
