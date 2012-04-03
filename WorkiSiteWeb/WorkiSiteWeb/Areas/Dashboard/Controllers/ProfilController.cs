@@ -95,7 +95,7 @@ namespace Worki.Web.Areas.Dashboard.Controllers
 							var postedFile = Request.Files[name];
 							if (postedFile == null || string.IsNullOrEmpty(postedFile.FileName))
 								continue;
-							var uploadedFileName = this.UploadFile(postedFile, _ImageSize);
+							var uploadedFileName = this.UploadFile(postedFile, _ImageSize, Member.AvatarFolder);
 							switch (name)
 							{
 								case "Avatar":

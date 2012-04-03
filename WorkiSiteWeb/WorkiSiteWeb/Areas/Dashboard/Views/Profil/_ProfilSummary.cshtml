@@ -3,7 +3,7 @@
 <div class="profilDetailLeft blockContainer float-left">
     <div class="contentBlock">
         <div class="profilAvatar borderedImg">
-            @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.MemberMainData.Avatar), Links.Content.images.avatar_png, Model.GetDisplayName())
+            @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.MemberMainData.Avatar, false, Member.AvatarFolder), Links.Content.images.avatar_png, Model.GetDisplayName())
         </div>
         <div class="profilName">
 			@{

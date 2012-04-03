@@ -47,6 +47,8 @@ namespace Worki.Data.Models
     {
         public const char UserDataSeparator = '|';
 
+        public const string AvatarFolder = "avatar";
+
         #region IJsonProvider
 
         public MemberJson GetJson()
