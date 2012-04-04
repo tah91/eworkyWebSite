@@ -425,14 +425,17 @@
         <script type="text/javascript">
         	require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
 				$('#addToFavorite').click(function () {
-					_callback = function (content) {
+                    _callbackFb = function (content) {
 			            //alert(content);
                         $('#main').prepend(content);
                         $('.informationContainer').delay(8000).slideUp();
 					}
+					_callback = function (content) {
+			            //alert(content);
+					}
                     $.post('@Url.Action(MVC.Localisation.AddFavorite())',{ id: @Model.GetId() }, _callback, "json");
 					InitOpenGraph(function (response) {
-                        $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'work_in' }, _callback, "html");
+                        $.post('@Url.Action(MVC.Localisation.AddToOpenGraph())',{ id: @Model.GetId(), accessToken: FB.getAccessToken(), type: 'work_in' }, _callbackFb, "html");
 					});
 				}); 	
 			});
