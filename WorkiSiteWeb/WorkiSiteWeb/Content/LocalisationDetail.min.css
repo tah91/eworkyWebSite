@@ -44,6 +44,7 @@ ul.like-buttons li{display:block;float:left;margin-right:10px}
 .eworkerImage{height:64px;width:64px}
 .eworkerImage img{height:64px;width:64px}
 .eworkerDesc{width:125px}
+.bookingFormHelp{width:550px}
 .bookingFormTable td{height:30px}
 .bookingFormTable td:first-child{padding-right:50px}
 .bookingFormTable input[type="text"],.bookingFormTable textarea{width:400px}

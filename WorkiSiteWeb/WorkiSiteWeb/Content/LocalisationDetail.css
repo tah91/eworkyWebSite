@@ -294,7 +294,9 @@ ul.like-buttons li
 ----------------------------------------------------------*/
 .bookingFormHelp
 {
+    width: 550px;
 }
+
 .bookingFormTable td
 {
 	height : 30px;

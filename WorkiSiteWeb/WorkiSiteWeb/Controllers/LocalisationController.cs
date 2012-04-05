@@ -127,7 +127,7 @@ namespace Worki.Web.Controllers
 			var member = mRepo.Get(memberId);
 
 			var container = new LocalisationAskBookingFormModel(localisation, member);
-			return View(container);
+            return PartialView(MVC.Localisation.Views._AskBooking, container);
 		}
 
 		/// <summary>
@@ -136,6 +136,7 @@ namespace Worki.Web.Controllers
 		/// <param name="id">id of the localisation</param>
 		/// <returns>booking form</returns>
 		[AcceptVerbs(HttpVerbs.Post), Authorize]
+        [HandleModelStateException]
 		public virtual ActionResult AskBooking(int id, LocalisationAskBookingFormModel formData)
 		{
 			var context = ModelFactory.GetUnitOfWork();
@@ -157,14 +158,13 @@ namespace Worki.Web.Controllers
 				catch (Exception ex)
 				{
 					_Logger.Error("AskBooking", ex);
+                    ModelState.AddModelError("", ex.Message);
+                    throw new ModelStateException(ModelState);
 				}
 
-				TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Home.HomeString.MailWellSent;
-
-				return Redirect(localisation.GetDetailFullUrl(Url));
+				return PartialView(MVC.Shared.Views._InfoMessage, Worki.Resources.Views.Home.HomeString.MailWellSent);
 			}
-			formData.Localisation = localisation;
-			return View(formData);
+            throw new ModelStateException(ModelState);
 		}
 
 		/// <summary>

@@ -1382,6 +1382,7 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _AddPlaceFacebook = "~/Views/Localisation/_AddPlaceFacebook.cshtml";
+            public readonly string _AskBooking = "~/Views/Localisation/_AskBooking.cshtml";
             public readonly string _AskContact = "~/Views/Localisation/_AskContact.cshtml";
             public readonly string _CommentForm = "~/Views/Localisation/_CommentForm.cshtml";
             public readonly string _CommentFormScript = "~/Views/Localisation/_CommentFormScript.cshtml";
@@ -1396,7 +1397,6 @@ namespace Worki.Web.Controllers {
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
             public readonly string _Suggestions = "~/Views/Localisation/_Suggestions.cshtml";
-            public readonly string AskBooking = "~/Views/Localisation/AskBooking.cshtml";
             public readonly string Edit = "~/Views/Localisation/Edit.cshtml";
             public readonly string FullSearch = "~/Views/Localisation/FullSearch.cshtml";
             public readonly string FullSearchResult = "~/Views/Localisation/FullSearchResult.cshtml";

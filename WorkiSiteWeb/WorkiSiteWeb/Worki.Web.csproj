@@ -893,7 +893,7 @@
     <Content Include="Views\Home\_IndexHead.cshtml" />
     <Content Include="Views\Home\_BlogContainer.cshtml" />
     <Content Include="Views\Offer\_OfferPriceList.cshtml" />
-    <Content Include="Views\Localisation\AskBooking.cshtml" />
+    <Content Include="Views\Localisation\_AskBooking.cshtml" />
     <Content Include="Views\Localisation\_AskContact.cshtml" />
     <Content Include="Views\Home\ShareOffice.cshtml" />
     <Content Include="Views\Localisation\_LocalisationForm.cshtml" />

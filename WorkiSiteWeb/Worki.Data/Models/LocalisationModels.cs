@@ -854,7 +854,7 @@ namespace Worki.Data.Models
 		/// <returns></returns>
 		public bool IsBookable()
 		{
-			return Offers.Count(o => o.IsBookable) != 0;
+            return Offers.Count(o => o.IsBookable && o.OfferPrices != null && o.OfferPrices.Count != 0) != 0;
 		}
 
 		/// <summary>

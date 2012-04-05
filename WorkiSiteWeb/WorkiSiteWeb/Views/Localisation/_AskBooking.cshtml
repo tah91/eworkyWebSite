@@ -1,0 +1,72 @@
+﻿@model Worki.Data.Models.LocalisationAskBookingFormModel
+
+<div id="askBookingForm">
+    @using (Html.BeginForm()) 
+    {
+    <div class="contentBlock">
+        @Html.AntiForgeryToken()
+	    @Html.HiddenFor(model => model.Contact.FirstName)
+	    @Html.HiddenFor(model => model.Contact.LastName)
+	    @Html.HiddenFor(model => model.Contact.EMail)
+	    <div class="bookingFormHelp italic marginb15">
+		    @Worki.Resources.Views.Localisation.LocalisationString.BookingFormHelp
+	    </div>
+        <table class="bookingFormTable">
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Contact.Subject) <span class="blue">*</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Contact.Subject)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="verticalAlignTop">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Contact.Message) <span class="blue">*</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.TextAreaFor(model => model.Contact.Message)
+                    </div>
+                </td>
+            </tr>
+        </table>
+	    <div class="clear"></div>
+    </div>
+    <div class="float-right">
+        <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
+    </div>
+    <div class="clear"></div>
+    }
+</div>
+
+<script type="text/javascript">
+
+    require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+        $("#askBookingForm form").submit(function () {
+
+            var successFunc = function (data) {
+                $.colorbox.close();
+                $('#main').prepend(data);
+                $('.informationContainer').delay(8000).slideUp();
+            }
+
+            var errorBuilder = new ErrorBuilder('askBookingForm', 'askBookingError');
+
+            AppAjax(
+			    '@Url.Action(MVC.Localisation.AskBooking(Model.Localisation.ID, null))',
+			    "POST",
+			    $(this).serializeArray(),
+                successFunc,
+                errorBuilder.ErrorFunc
+		    );
+            return false;
+        });
+    });
+</script>

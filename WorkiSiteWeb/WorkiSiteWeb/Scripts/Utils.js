@@ -1,5 +1,4 @@
-﻿
-InitOpenGraph = function (callback) {
+﻿InitOpenGraph = function (callback) {
 	//check if user has athorized the app
 	FB.getLoginStatus(function (response) {
 		if (response.status != 'connected') {
@@ -49,4 +48,22 @@ AppAjax = function (url, type, datagetter, onsuccess, onerror) {
 			}, 10);
 		}
 	});
+}
+
+function ErrorBuilder(id, errorId) {
+    //properties
+    var _errorId = errorId;
+    var _id = id;
+
+    _BuildError = function (error, id) {
+        return '<div id="' + id + '" class="validation-summary-errors borderRadius">' + error + '</div>';
+    }
+
+    ErrorFunc = function (data) {
+        $('#' + errorId).remove();
+        $('#' + id).prepend($(_BuildError(data, errorId)));
+    }
+
+    //public methods
+    this.ErrorFunc = ErrorFunc;
 }

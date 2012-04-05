@@ -5,12 +5,21 @@
 	<div class="bookingCallAction">
 		@if (Model.IsBookable())
 		{
-		<div class="bigButtonStd buttonStd buttonBlue linkImg"><a href="#offers" id="bookItNow">@Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction</a></div>
+		<div class="bigButtonStd buttonStd buttonBlue linkImg">
+            <a href="#offers" id="bookItNow">@Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction</a>
+        </div>
 		}
 		else
 		{
-		<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.ContactThisSpaceAction, MVC.Localisation.AskBooking(Model.ID))</div>
-		}
+		<div class="bigButtonStd buttonStd buttonBlue linkImg">
+            @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.ContactThisSpaceAction, MVC.Localisation.AskBooking(Model.ID), new { id = "askBooking" })
+        </div>
+        <script type="text/javascript">
+            require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
+                $("#askBooking").colorbox({ width: "700px" });
+            });
+        </script>
+        }
 	</div> 
 }
 
@@ -35,7 +44,7 @@
 			</td>                    
 		</tr>
 		@if (Model.IsFreeLocalisation())
-        {
+  {
 		<tr>
 			<td>
 				@RazorHelpers.ReadOnlyRating(Model.GetRatingAverage(RatingType.Price))&nbsp;&nbsp;
@@ -68,14 +77,14 @@
 				@Worki.Resources.Models.Localisation.Localisation.RatingWelcome
 			</td>                    
 		</tr>
-        }
+  }
 	</table>
 	@{
-		var haveAvoid = Model.GetAvoidString();
-		if (!string.IsNullOrEmpty(haveAvoid))
-		{
+        var haveAvoid = Model.GetAvoidString();
+        if (!string.IsNullOrEmpty(haveAvoid))
+        {
 		<span class="bold">@Worki.Resources.Views.Localisation.LocalisationFormString.AvoidPeriods : </span>@haveAvoid
-		}
+        }
 	}
 </div>
 
@@ -139,31 +148,31 @@
 	<div class="contentBlock">
 		<h3 class="blue">@Worki.Resources.Views.Shared.SharedString.InfoAdmin</h3>
 		@{
-	        var lastEdition = Model.GetLastEdition();
-	        var creation = Model.GetCreation();
+    var lastEdition = Model.GetLastEdition();
+    var creation = Model.GetCreation();
 		}
 		@if (creation != null)
-        {
+  {
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(creation.Member.GetDisplayName(), MVC.Account.Public(creation.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(creation.ModificationDate)<br />
-        }
-        else
-        { 
+  }
+  else
+  { 
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.AddBy</span><span class="boldLink blue">@Html.ActionLink(Model.Member.GetDisplayName(), MVC.Account.Public(Model.Member.MemberId))</span><br />
-        }
+  }
 		@if (lastEdition != null)
-        {
+  {
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.LastEditBy</span><span class="boldLink blue">@Html.ActionLink(lastEdition.Member.GetDisplayName(), MVC.Account.Public(lastEdition.Member.MemberId))</span><br />
 			<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.TheDate</span>@Html.DisplayLocalDate(lastEdition.ModificationDate)<br />
-        }
+  }
         @if (Model.HasOwner() && Model.OwnerID.HasValue)
-		{
+        {
             <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.OwnerIdentity</span><span class="boldLink blue">@Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Owner, MVC.Account.Public(Model.OwnerID.Value))</span><br />
-		}
+        }
         @if (Model.MainLocalisation != null)
-		{
+        {
             <span class="bold">@Worki.Resources.Views.Admin.AdminString.Stickers : </span><span class="boldLink blue">@(Model.MainLocalisation.HasSticker ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No)</span><br />
-		}
+        }
 	</div>
 }
 

@@ -141,14 +141,7 @@
                 @:succes = function (data) { $('.offersTable').replaceWith(data); };
             }
 
-            var BuildError = function (error) {
-                return '<div id="offerErrorContainer" class="validation-summary-errors borderRadius">'+error+'</div>';
-            }
-
-            var error = function (data) { 
-                $("#offerErrorContainer").remove(); 
-                $('#offerFormContainer').prepend($(BuildError(data))); 
-            };
+            var errorBuilder = new ErrorBuilder('offerFormContainer', 'offerErrorContainer');
 
             var successFunc = function (data) {
                 succes(data);
@@ -161,7 +154,7 @@
 			    "POST",
 			    $(this).serializeArray(),
                 successFunc,
-                error
+                errorBuilder.ErrorFunc
 		    );
             return false;
         });
