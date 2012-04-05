@@ -3,7 +3,8 @@ select{height:25px}
 input[type="text"],input[type="password"]{height:20px}
 select,input[type="text"],input[type="password"]{width:100%}
 button,input[type="submit"]{width:50%}
-.blockContainer{padding:10px}
+.blockContainer{padding:5px}
+.contentBlock{padding:5px}
 .placeInput{width:85%;margin-right:5px}
 .currentPosButton .buttonStd{width:15px;height:26px;background:#5DAFDE url('images/geoloc.png') no-repeat center center;margin-right:-3px}
 html,body{margin:0;padding:0;height:100%}
@@ -18,11 +19,10 @@ html,body{margin:0;padding:0;height:100%}
 #listTabLi{margin:0 0 0 .5%}
 #mapTabLi,#listTabLi{width:49.5%}
 .facebookConnect{margin-top:10px}
-.resultItem{text-align:left;height:auto;font-size:.9em}
-.resultItemGallery{margin-right:10px;width:26%;height:120px}
-.resultItemGallery img{max-height:100px}
-.itemDesc{width:70%}
-.itemCommDiv{margin:5px 5px 0 0}
+.resultItem{text-align:left;min-height:95px;height:auto;font-size:.9em}
+.resultItemGallery img{width:110px;height:74px}
+.itemDesc{width:65%}
+.itemCommDiv{margin:auto}
 .itemLogos{width:auto}
 .localisationGallery{height:200px}
 .localisationDetailHead{padding:0 10px}

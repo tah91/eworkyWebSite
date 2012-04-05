@@ -16,10 +16,10 @@
 <div class="contentBlock resultItem relative noUnderline">
 	<a href="@ViewData["link"]">
 	    <div class="resultItemGallery picBack borderRadius float-left">
-		    @if (!string.IsNullOrEmpty(Model.Localisation.GetMainPic()))
-		    {
-			    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Links.Content.images.no_image_png, fullName)
-		    }
+			@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Links.Content.images.no_image_png, fullName)
+            <div class="itemCommDiv">
+			    @Html.Partial(MVC.Mobile.Localisation.Views._CommentSummary, Model.Localisation)
+		    </div>
 	    </div>
 	    <div class="itemDesc float-right">
 		    <div class="blue noUnderline">
@@ -32,18 +32,16 @@
 				<span class="bold">@fullName&nbsp;-&nbsp;</span>@String.Format("{0:0.##} km", Model.Distance)
 			}			    
 		    </div>
-		    <div class="itemCommDiv float-left">
-			    @Html.Partial(MVC.Mobile.Localisation.Views._CommentSummary, Model.Localisation)
-		    </div>
-            <div class="itemLogos float-left">
+            <div>@Model.Localisation.Adress&nbsp;-&nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</div>
+            <div>
+                <div class="bold orange float-left">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="itemLogos">
 			    @Html.Partial(MVC.Localisation.Views._IconeServices, Model.Localisation)
 		    </div>
-            <div class="clear">
-	        </div>
-		    <div>@Model.Localisation.Adress&nbsp;-&nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</div>
-		    <div>
-			    <span class="bold blue">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</span> - @Html.TruncateAtWord(Model.Localisation.GetDescription(), 80)
-		    </div>
+            <div class="clear"></div>
 	    </div>
 	    <div class="clear">
 	    </div>

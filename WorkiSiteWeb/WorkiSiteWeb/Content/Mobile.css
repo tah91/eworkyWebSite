@@ -28,7 +28,12 @@ button, input[type="submit"]
 
 .blockContainer
 {
-	padding:10px;
+	padding:5px;
+}
+
+.contentBlock 
+{
+    padding:5px;
 }
 
 .placeInput
@@ -138,30 +143,32 @@ body
 .resultItem
 {
     text-align:left;
+    min-height: 95px;
     height: auto;
     font-size:0.9em;
 }
 
 .resultItemGallery
 {
-    margin-right:10px;
-    width:26%;
-    height: 120px;
+    /*margin-right:5px;*/
+    /*width:110px;*/
+    /*height: 120px;*/
 }
 
 .resultItemGallery img 
 {
-    max-height: 100px;
+    width:110px;
+    height: 74px;
 }
 
 .itemDesc
 {
-    width:70%;
+    width:65%;
 }
 
 .itemCommDiv
 {
-    margin: 5px 5px 0 0;
+    margin: auto;
 }
 
 .itemLogos 
