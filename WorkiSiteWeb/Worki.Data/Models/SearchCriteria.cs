@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using Worki.Infrastructure;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Data.Models
 {
@@ -34,6 +35,78 @@ namespace Worki.Data.Models
             SearchType = searchType;
             OrderBy = orderBy;
             DirectAccessType = eDirectAccessType.eNone;
+        }
+
+        public Dictionary<string, object> GetDictionnary(int page = 1)
+        {
+            var toRet = new Dictionary<string, object>();
+
+            toRet[MiscHelpers.SeoConstants.Page] = page;
+            toRet[MiscHelpers.SeoConstants.Place] = Place;
+            toRet[MiscHelpers.SeoConstants.OfferType] = Localisation.GetSeoStringOfferFromType(OfferData.Type);
+            toRet[MiscHelpers.SeoConstants.Latitude] = LocalisationData.Latitude;
+            toRet[MiscHelpers.SeoConstants.Longitude] = LocalisationData.Longitude;
+            toRet[MiscHelpers.SeoConstants.PlaceName] = LocalisationData.Name;
+
+            toRet[MiscHelpers.SeoConstants.Order] = (int)OrderBy;
+
+            if (FreeAreas)
+            {
+                SpotWifi = true;
+                CoffeeResto = true;
+                Biblio = true;
+                TravelerSpace = true;
+            }
+
+            if (OtherTypes)
+            {
+                PrivateArea = true;
+                WorkingHotel = true;
+                PublicSpace = true;
+                Hotel = true;
+            }
+
+            var localisationTypes = new List<string>();
+            if (Telecentre)
+                localisationTypes.Add(MiscHelpers.SeoConstants.Telecentre);
+            if (BuisnessCenter)
+                localisationTypes.Add(MiscHelpers.SeoConstants.BuisnessCenter);
+            if (CoworkingSpace)
+                localisationTypes.Add(MiscHelpers.SeoConstants.CoworkingSpace);
+            if (SharedOffice)
+                localisationTypes.Add(MiscHelpers.SeoConstants.SharedOffice);
+            if (SpotWifi)
+                localisationTypes.Add(MiscHelpers.SeoConstants.SpotWifi);
+            if (CoffeeResto)
+                localisationTypes.Add(MiscHelpers.SeoConstants.CoffeeResto);
+            if (Biblio)
+                localisationTypes.Add(MiscHelpers.SeoConstants.Biblio);
+            if (TravelerSpace)
+                localisationTypes.Add(MiscHelpers.SeoConstants.TravelerSpace);
+            if (WorkingHotel)
+                localisationTypes.Add(MiscHelpers.SeoConstants.WorkingHotel);
+            if (PrivateArea)
+                localisationTypes.Add(MiscHelpers.SeoConstants.PrivateArea);
+            if (PublicSpace)
+                localisationTypes.Add(MiscHelpers.SeoConstants.PublicSpace);
+            if (Hotel)
+                localisationTypes.Add(MiscHelpers.SeoConstants.Hotel);
+
+            toRet[MiscHelpers.SeoConstants.Type] = string.Join(",", localisationTypes);
+
+            foreach (var neededFeature in LocalisationData.LocalisationFeatures)
+            {
+                var display = FeatureHelper.FeatureToString(neededFeature.FeatureID, FeatureHelper.LocalisationPrefix);
+                toRet[display] = true;
+            }
+
+            foreach (var offerFeature in OfferData.OfferFeatures)
+            {
+                var display = FeatureHelper.FeatureToString(offerFeature.FeatureId, FeatureHelper.OfferPrefix);
+                toRet[display] = true;
+            }
+
+            return toRet;
         }
 
         #region Direct Access

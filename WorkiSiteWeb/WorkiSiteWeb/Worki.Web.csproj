@@ -906,6 +906,9 @@
     <Content Include="Views\Offer\_AjaxAdd.cshtml" />
     <Content Include="Views\Offer\_OfferList.cshtml" />
     <Content Include="Views\Shared\_InfoMessage.cshtml" />
+    <Content Include="Views\Localisation\_SearchResults.cshtml" />
+    <Content Include="Views\Localisation\_SearchPanel.cshtml" />
+    <Content Include="Views\Localisation\_SearchMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

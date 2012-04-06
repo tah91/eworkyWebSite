@@ -282,35 +282,45 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
 
     //load an pin with address, nam and desc
     LoadPin = function (LL, name, dragable, theMap, clickHandler, currentPosition) {
-    	if (dragable == null)
-    		dragable = false;
-    	if (theMap == null)
-    		theMap = _searchMap;
-    	var title = "<span class=\"pinTitle\"> " + name + "</span>";
-    	var image = '/Content/images/iconeMap.png';
-    	if (currentPosition != null)
-    	    image = '/Content/images/iconeMapRed.png';
-    	var marker = new google.maps.Marker({
-    		position: LL,
-    		map: theMap,
-    		title: name,
-    		icon: image
-    	});
-    	if (dragable == true)
-    		_markersArray.push(marker);
+        if (dragable == null)
+            dragable = false;
+        if (theMap == null)
+            theMap = _searchMap;
+        var title = "<span class=\"pinTitle\"> " + name + "</span>";
+        var image = '/Content/images/iconeMap.png';
+        if (currentPosition != null)
+            image = '/Content/images/iconeMapRed.png';
+        var marker = new google.maps.Marker({
+            position: LL,
+            map: theMap,
+            title: name,
+            icon: image
+        });
+        //if (dragable == true)
 
-    	marker.setDraggable(dragable);
-    	if (dragable) {
-    		google.maps.event.addListener(marker, 'dragend', function () {
-    			//alert(marker.getPosition().lng());
-    			$(_latitudeField).val(marker.getPosition().lat());
-    			$(_longitudeField).val(marker.getPosition().lng());
-    		});
-    	}
-    	if (clickHandler != null) {
-    		google.maps.event.addListener(marker, 'click', clickHandler);
-    	}
+        _markersArray.push(marker);
 
+        marker.setDraggable(dragable);
+        if (dragable) {
+            google.maps.event.addListener(marker, 'dragend', function () {
+                //alert(marker.getPosition().lng());
+                $(_latitudeField).val(marker.getPosition().lat());
+                $(_longitudeField).val(marker.getPosition().lng());
+            });
+        }
+        if (clickHandler != null) {
+            google.maps.event.addListener(marker, 'click', clickHandler);
+        }
+        else {
+            google.maps.event.addListener(marker, 'click', function () { });
+        }
+
+    }
+
+    AddMarker = function (latitude, longitude, name, bounds) {
+        var LL = new google.maps.LatLng(latitude, longitude);
+        LoadPin(LL, name);
+        bounds.extend(LL);
     }
 
     //ajust zoom of the search map on an address
@@ -342,6 +352,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     this.LoadDetailMap = LoadDetailMap;
     this.ClearMap = ClearMap;
     this.LoadPin = LoadPin;
+    this.AddMarker = AddMarker;
     this.FindAddressOnMap = FindAddressOnMap;
     this.FitBoundsSearchResults = FitBoundsSearchResults;
 }

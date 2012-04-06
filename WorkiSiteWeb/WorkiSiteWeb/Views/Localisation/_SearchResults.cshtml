@@ -1,0 +1,42 @@
+﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
+
+@{
+    var dict = Model.Criteria.GetDictionnary();
+    var rvd = new RouteValueDictionary(dict);
+	int order = 0;
+	int.TryParse(rvd["order"].ToString(), out order);
+	bool byDistance = order == (int)eOrderBy.Distance;
+	var distRvd = WebHelper.GetRVD(this);
+	var ratingRvd = WebHelper.GetRVD(this);
+	distRvd["order"] = (int)eOrderBy.Distance;
+	ratingRvd["order"] = (int)eOrderBy.Rating;
+}
+
+@*<div class="float-right blue order">
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new Dictionary<string, object> { { "class", byDistance ? "noUnderline" : null } }) <text>|</text>
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new Dictionary<string, object> { { "class", !byDistance ? "noUnderline" : null } }) 
+</div>*@
+
+<div class="searchFormBlockLeft" id="searchResults">
+    @for (int i = 0; i < Model.PageResults.Count; ++i)
+	{
+		var index = Model.PagingInfo.GlobalIndex(i);
+        @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
+	}
+
+	<div class="pager">
+		@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult, rvd); })
+	</div>
+</div>  
+
+<script type="text/javascript">
+    $(".pager a").click(function () {
+        $.ajax({
+            url: this.href,
+            success: function (data) {
+                $("#searchResults").replaceWith(data);
+            }
+        });
+        return false;
+    });
+</script>
