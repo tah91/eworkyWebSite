@@ -1323,6 +1323,16 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AjaxFullSearch() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearch);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AjaxFullSearchResult() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearchResult);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult FullSearchResultDetail() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
         }
@@ -1371,6 +1381,8 @@ namespace Worki.Web.Controllers {
             public readonly string FullSearchByTypeSeo = "FullSearchByTypeSeo";
             public readonly string FullSearchByOfferSeo = "FullSearchByOfferSeo";
             public readonly string FullSearchResult = "search-results";
+            public readonly string AjaxFullSearch = "AjaxFullSearch";
+            public readonly string AjaxFullSearchResult = "AjaxFullSearchResult";
             public readonly string FullSearchResultDetail = "search-detail";
             public readonly string Suggestions = "Suggestions";
         }
@@ -1393,6 +1405,9 @@ namespace Worki.Web.Controllers {
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
             public readonly string _LocalisationInfos = "~/Views/Localisation/_LocalisationInfos.cshtml";
             public readonly string _SearchForm = "~/Views/Localisation/_SearchForm.cshtml";
+            public readonly string _SearchMap = "~/Views/Localisation/_SearchMap.cshtml";
+            public readonly string _SearchPanel = "~/Views/Localisation/_SearchPanel.cshtml";
+            public readonly string _SearchResults = "~/Views/Localisation/_SearchResults.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
             public readonly string _SelectSearchScript = "~/Views/Localisation/_SelectSearchScript.cshtml";
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
@@ -1594,6 +1609,18 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult FullSearchResult(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResult);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AjaxFullSearch(Worki.Data.Models.SearchCriteria criteria) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearch);
+            callInfo.RouteValueDictionary.Add("criteria", criteria);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AjaxFullSearchResult(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearchResult);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }

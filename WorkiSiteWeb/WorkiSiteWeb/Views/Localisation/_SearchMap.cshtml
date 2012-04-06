@@ -1,0 +1,37 @@
+﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
+
+<div id="mapContainer">
+    <span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
+    <div class="mapContainer" id="resultsMap">
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+
+    });
+
+    var resultsMap = null;
+    var bounds = null;
+    function initialize() {
+        require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+            resultsMap = new WorkiMap('resultsMap');
+            var where = "@Model.Criteria.Place";
+            resultsMap.LoadSearchMap(where);
+            bounds = new google.maps.LatLngBounds();
+				
+            @foreach (var localisation in Model.PageResults)
+			{
+				@:resultsMap.AddMarker(@localisation.Latitude, @localisation.Longitude, "@Html.Raw(localisation.Name)", bounds);
+            }
+            @if (Model.PageResults.Count >= 2)
+			{
+                <text>
+                resultsMap.FitBoundsSearchResults(bounds);
+                </text>
+			}
+            var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
+            workiAutocomplete.SetAutocomplete();
+        });   
+    }
+</script>

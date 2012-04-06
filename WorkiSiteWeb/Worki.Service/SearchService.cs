@@ -222,71 +222,9 @@ namespace Worki.Service
 		/// <returns>the created RouteValueDictionary</returns>
 		public RouteValueDictionary GetRVD(SearchCriteria criteria, int page = 1)
 		{
-			var rvd = new RouteValueDictionary();
-			rvd[MiscHelpers.SeoConstants.Page] = page;
-			rvd[MiscHelpers.SeoConstants.Place] = criteria.Place;
-			rvd[MiscHelpers.SeoConstants.OfferType] = Localisation.GetSeoStringOfferFromType(criteria.OfferData.Type);
-            rvd[MiscHelpers.SeoConstants.Latitude] = criteria.LocalisationData.Latitude;
-            rvd[MiscHelpers.SeoConstants.Longitude] = criteria.LocalisationData.Longitude;
-            rvd[MiscHelpers.SeoConstants.PlaceName] = criteria.LocalisationData.Name;
+            var dict = criteria.GetDictionnary(page);
+            var rvd = new RouteValueDictionary(dict);
 
-            rvd[MiscHelpers.SeoConstants.Order] = (int)criteria.OrderBy;
-
-            if (criteria.FreeAreas)
-            {
-                criteria.SpotWifi = true;
-                criteria.CoffeeResto = true;
-                criteria.Biblio = true;
-                criteria.TravelerSpace = true;
-            }
-
-            if (criteria.OtherTypes)
-            {
-                criteria.PrivateArea = true;
-                criteria.WorkingHotel = true;
-                criteria.PublicSpace = true;
-                criteria.Hotel = true;
-            }
-
-            var localisationTypes = new List<string>();
-            if (criteria.Telecentre)
-                localisationTypes.Add(MiscHelpers.SeoConstants.Telecentre);
-            if (criteria.BuisnessCenter)
-                localisationTypes.Add(MiscHelpers.SeoConstants.BuisnessCenter);
-            if (criteria.CoworkingSpace)
-                localisationTypes.Add(MiscHelpers.SeoConstants.CoworkingSpace);
-			if (criteria.SharedOffice)
-				localisationTypes.Add(MiscHelpers.SeoConstants.SharedOffice);
-            if (criteria.SpotWifi)
-                localisationTypes.Add(MiscHelpers.SeoConstants.SpotWifi);
-            if (criteria.CoffeeResto)
-                localisationTypes.Add(MiscHelpers.SeoConstants.CoffeeResto);
-            if (criteria.Biblio)
-                localisationTypes.Add(MiscHelpers.SeoConstants.Biblio);
-            if (criteria.TravelerSpace)
-                localisationTypes.Add(MiscHelpers.SeoConstants.TravelerSpace);
-            if (criteria.WorkingHotel)
-                localisationTypes.Add(MiscHelpers.SeoConstants.WorkingHotel);
-            if (criteria.PrivateArea)
-                localisationTypes.Add(MiscHelpers.SeoConstants.PrivateArea);
-            if (criteria.PublicSpace)
-                localisationTypes.Add(MiscHelpers.SeoConstants.PublicSpace);
-            if (criteria.Hotel)
-                localisationTypes.Add(MiscHelpers.SeoConstants.Hotel);
-
-            rvd[MiscHelpers.SeoConstants.Type] = string.Join(",", localisationTypes);
-
-			foreach (var neededFeature in criteria.LocalisationData.LocalisationFeatures)
-			{
-				var display = FeatureHelper.FeatureToString(neededFeature.FeatureID, FeatureHelper.LocalisationPrefix);
-				rvd[display] = true;
-			}
-
-			foreach (var offerFeature in criteria.OfferData.OfferFeatures)
-			{
-				var display = FeatureHelper.FeatureToString(offerFeature.FeatureId, FeatureHelper.OfferPrefix);
-				rvd[display] = true;
-			}
 			return rvd;
 		}
 
