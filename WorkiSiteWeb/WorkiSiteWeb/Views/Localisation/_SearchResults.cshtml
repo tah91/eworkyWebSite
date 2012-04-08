@@ -13,8 +13,8 @@
 }
 
 @*<div class="float-right blue order">
-    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.FullSearchResult, distRvd, new Dictionary<string, object> { { "class", byDistance ? "noUnderline" : null } }) <text>|</text>
-    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.FullSearchResult, ratingRvd, new Dictionary<string, object> { { "class", !byDistance ? "noUnderline" : null } }) 
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.AjaxFullSearchResult, distRvd, new Dictionary<string, object> { { "class", byDistance ? "noUnderline orderBy" : "orderBy" } }) <text>|</text>
+    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.AjaxFullSearchResult, ratingRvd, new Dictionary<string, object> { { "class", !byDistance ? "noUnderline orderBy" : "orderBy" } }) 
 </div>*@
 
 <div class="searchFormBlockLeft" id="searchResults">
@@ -30,7 +30,7 @@
 </div>  
 
 <script type="text/javascript">
-    $(".pager a").click(function () {
+    $(".pager a, .order a").click(function () {
         $.ajax({
             url: this.href,
             success: function (data) {
