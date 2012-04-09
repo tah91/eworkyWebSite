@@ -114,6 +114,15 @@ namespace Worki.Web
 			Bind<IInvoiceService>()
 				.To<InvoiceService>();
 
+			Bind<INonceRepository>()
+				.To<DatabaseKeyNonceStore>();
+
+			Bind<IApiClientRepository>()
+				.To<ApiClientRepository>();
+
+			Bind<IApiClientAuthorizationRepository>()
+				.To<ApiClientAuthorizationRepository>();
+
 			Bind<ILogger>().
 				To<Log4NetLogger>()
 				.InSingletonScope();

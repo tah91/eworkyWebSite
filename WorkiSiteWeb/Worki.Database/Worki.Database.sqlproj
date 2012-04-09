@@ -233,6 +233,10 @@
     <Build Include="dbo\Tables\LocalisationClient.sql" />
     <Build Include="dbo\Tables\Invoice.sql" />
     <Build Include="dbo\Tables\InvoiceItem.sql" />
+    <Build Include="dbo\Tables\ApiClient.sql" />
+    <Build Include="dbo\Tables\ApiClientAuthorization.sql" />
+    <Build Include="dbo\Tables\ApiNonce.sql" />
+    <Build Include="dbo\Tables\ApiSymmetricCryptoKey.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Worki.Database.refactorlog" />

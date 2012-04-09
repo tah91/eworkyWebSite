@@ -29,6 +29,7 @@ namespace Worki.Data.Models
             this.Comments = new HashSet<Comment>();
             this.Localisations = new HashSet<Localisation>();
             this.Invoices = new HashSet<Invoice>();
+            this.ApiClientAuthorizations = new HashSet<ApiClientAuthorization>();
     		OnInitialized();
         }
     
@@ -75,6 +76,7 @@ namespace Worki.Data.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Localisation> Localisations { get; set; }
         public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual ICollection<ApiClientAuthorization> ApiClientAuthorizations { get; set; }
     
     }
 }

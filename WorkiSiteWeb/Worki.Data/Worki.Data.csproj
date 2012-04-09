@@ -69,6 +69,9 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetOpenAuth">
+      <HintPath>..\Externals\DotNetOpenAuth.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -89,9 +92,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ApiClientAuthorization.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiNonce.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiSymmetricCryptoKey.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApiClient.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiClientModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\Invoice.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
@@ -230,6 +246,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BookingLogRepository.cs" />
+    <Compile Include="Repository\DatabaseKeyNonceStore.cs" />
     <Compile Include="Repository\InvoiceRepository.cs" />
     <Compile Include="Repository\QuotationRepository.cs" />
     <Compile Include="Repository\OfferRepository.cs" />

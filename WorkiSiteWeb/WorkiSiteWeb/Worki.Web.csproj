@@ -124,6 +124,9 @@
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetOpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\Externals\DotNetOpenAuth.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -266,6 +269,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CapatchaImageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Controllers\QuotationController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
@@ -282,6 +286,7 @@
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\OAuth2AuthorizationServer.cs" />
     <Compile Include="PaymentHandler\BookingPaymentHandler.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Logging\AzureAppender.cs" />
@@ -909,6 +914,7 @@
     <Content Include="Views\Localisation\_SearchResults.cshtml" />
     <Content Include="Views\Localisation\_SearchPanel.cshtml" />
     <Content Include="Views\Localisation\_SearchMap.cshtml" />
+    <Content Include="Views\OAuth\Authorize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

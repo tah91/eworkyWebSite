@@ -52,5 +52,9 @@ namespace Worki.Data.Models
         public DbSet<WelcomePeople> WelcomePeoples { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceItem> InvoiceItems { get; set; }
+        public DbSet<ApiClient> ApiClients { get; set; }
+        public DbSet<ApiClientAuthorization> ApiClientAuthorizations { get; set; }
+        public DbSet<ApiNonce> ApiNonces { get; set; }
+        public DbSet<ApiSymmetricCryptoKey> ApiSymmetricCryptoKeys { get; set; }
     }
 }
