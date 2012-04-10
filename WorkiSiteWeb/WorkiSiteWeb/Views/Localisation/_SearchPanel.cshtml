@@ -102,6 +102,8 @@
             </div>
         </div>
     </div>
+    
+    <div class="clear"></div>
     @*<div class="resetSearch">
         <input type="submit" class="buttonBlue buttonStd imageBtn float-right" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
         <div class="clear"></div>
@@ -137,14 +139,17 @@
         success: function () { }
     });
 
+    var isGeocoding = false;
+    var isGeocodingAvailable = true;
     var refreshResults = function (data) {
         $("#searchResults").replaceWith(data.list);
         $('div.rateit').rateit();
         $("#mapContainer").replaceWith(data.map);
         $("#searchSelectorContainer").replaceWith(data.order);
-        $(".titleDivContainer h1").html(data.title);        
+        $(".titleDivContainer h1").html(data.title);
         initialize();
         $('.loaderBlock').addClass(hiddenClass);   // hide it initially
+        isGeocodingAvailable = true;
     };
 
     $(".pager a, #orderByDistance, #orderByRating").live('click', function () {
@@ -157,7 +162,7 @@
     });
 
     require(["@Url.VersionedContent(Links.Scripts.Utils_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-        $("#searchFormReset form").submit(function () {
+        $("#searchFormReset form").submit(function (evt) {
             goToTop.apply();
 
             var errorBuilder = new ErrorBuilder('searchFormReset', 'searchFormError');
@@ -168,7 +173,8 @@
 			    $(this).serializeArray(),
                 refreshResults,
                 errorBuilder.ErrorFunc
-		        );
+		    );
+
             return false;
         });
     });
@@ -190,7 +196,7 @@
         else if (y > yo && y + searchBlock.outerHeight() < yo + container.outerHeight()) {
             searchBlock.removeClass('newbottom').addClass('fixed').width(width);
         }
-        else {
+        else if (container.outerHeight() - searchBlock.outerHeight() > 30) {
             searchBlock.removeClass('fixed').addClass('newbottom');
         }
     });

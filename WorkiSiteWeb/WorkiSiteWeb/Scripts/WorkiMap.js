@@ -100,6 +100,7 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
     var _evt = evt;
     var _geocoder = new google.maps.Geocoder();
     var _checkSimilarLocalisation = null;
+    var _handler = null;
 
     //Geocode from an address
     SearchFormSubmit = function (evt) {
@@ -109,6 +110,17 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
         if (address.length < 1)
             return;
         GeocodeAddress(address);
+    }
+
+    //Geocode from an address
+    SearchHandler = function (evt, handler) {
+       	evt.preventDefault();
+       	$(_form).unbind('submit');
+		var address = jQuery.trim($(_addressField).val());
+		if (address.length < 1)
+       		return;
+		_handler = handler;
+		GeocodeAddress(address);
     }
 
     //Geocode from an address
@@ -147,9 +159,14 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
                 _checkSimilarLocalisation.call(null, latToFill, lngToFill);
             }
         }
-        if (form != null) {
-            $(form).trigger('submit');
+
+        if (_handler != null) {
+			_handler.call();
         }
+        if (form != null && _handler == null) {
+            $(form).submit();
+        }
+
         //        else {
         //            //alert("La géolocalisation de votre lieu a échouée");
         //            return;
@@ -159,6 +176,7 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
     //public methods
     this.SearchFormSubmit = SearchFormSubmit;
     this.GeocodeAddress = GeocodeAddress;
+    this.SearchHandler = SearchHandler;
 }
 
 function WorkiMap(mapDivId, latitudeField, longitudeField) {
