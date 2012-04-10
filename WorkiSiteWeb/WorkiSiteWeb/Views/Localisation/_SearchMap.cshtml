@@ -1,9 +1,10 @@
 ﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
 
-<div id="mapContainer">
-    <span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>
+<div id="mapContainer" class="relative">
+    @*<span class="blue">@Worki.Resources.Views.Search.SearchString.ResultOnMap</span>*@
     <div class="mapContainer" id="resultsMap">
     </div>
+    @Html.Partial(MVC.Shared.Views._LoaderBlock, "small")
 </div>
 
 <script type="text/javascript">

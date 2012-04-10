@@ -188,6 +188,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         _initialWhere = where;
         _CenterSearchResults(where);
         _SetResetControl();
+        this.Map = _searchMap
     }
 
     //center the search map on an address
@@ -321,6 +322,10 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         var LL = new google.maps.LatLng(latitude, longitude);
         LoadPin(LL, name);
         bounds.extend(LL);
+       }
+
+    AddHandler = function (event, handler) {
+    	google.maps.event.addListener(_searchMap, event, handler);
     }
 
     //ajust zoom of the search map on an address
@@ -355,4 +360,6 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     this.AddMarker = AddMarker;
     this.FindAddressOnMap = FindAddressOnMap;
     this.FitBoundsSearchResults = FitBoundsSearchResults;
+    this.AddHandler = AddHandler;
+    this.Map = _searchMap;
 }

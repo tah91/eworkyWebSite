@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DistanceOrdered" xml:space="preserve">
-    <value>Sort by distance</value>
+    <value>Distance</value>
   </data>
   <data name="Entrepreneur" xml:space="preserve">
     <value>Entrepreneur</value>
@@ -145,7 +145,7 @@
     <value>venue(s) found</value>
   </data>
   <data name="RateOrdered" xml:space="preserve">
-    <value>Sort by rating</value>
+    <value>Rating</value>
   </data>
   <data name="RefineSearch" xml:space="preserve">
     <value>Refine search</value>

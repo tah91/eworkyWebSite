@@ -88,6 +88,12 @@
     width: 210px;
     margin:5px 0 5px 0;
 }
+
+#resultsMapBig
+{
+    height:300px;
+}
+
 .searchResultFormDiv
 {
     margin-top:10px;
@@ -105,12 +111,17 @@
 
 .searchResultFormDiv input[type="text"] 
 {
-  width: 100%;
+  width: 155px;
 }
 
 .searchResultFormDiv select
 {
-  width: 103%;
+	width: 103%;
+}
+
+.refineSubmit
+{
+	margin-right: -5px!important;
 }
 
 .resetSearch
@@ -284,6 +295,16 @@ div.acc_container, div.toogle_container
 .order a:hover
 {
     text-decoration:none;
+}
+
+#searchSelectorContainer .dropdown dt a
+{
+	min-width: 100px;
+}
+
+#searchSelectorContainer .dropdown dd ul
+{
+	min-width: 100px;
 }
 
 /* Suggestion block

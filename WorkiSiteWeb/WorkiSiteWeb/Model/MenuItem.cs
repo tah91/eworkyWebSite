@@ -29,6 +29,7 @@ namespace Worki.Web.Model
 		public const string ProfilDD = "profilDropdown";
 		public const string OfferDD = "offerDropdown";
         public const string AdvancedSearchDD = "advancedSearchDropdown";
+		public const string OrderByDD = "orderByDropdown";
 
 		public string Id { get; set; }
         public string Title { get; set; }

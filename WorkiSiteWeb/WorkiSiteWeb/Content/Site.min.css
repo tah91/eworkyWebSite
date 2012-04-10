@@ -239,6 +239,12 @@ html ul.tabs li.selected a:hover{background-color:#379ed6;filter:progid:DXImageT
 .contentBlock:last-child{margin-bottom:0}
 .innerContentBlock{border:1px solid #CCC;padding:10px;margin:10px;background-color:White;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
 .hiddenOverflow{overflow:hidden}
+.loaderBlock{position:absolute;z-index:999999999}
+.loaderBlock img{padding-right:12px;vertical-align:middle}
+.loaderBlockBig{top:75px;left:200px;padding:50px;font-size:30px}
+.loaderBlockBig img{width:64px;height:64px}
+.loaderBlockSmall{top:50px;left:60px;padding:10px;font-size:1.2em}
+.loaderBlockSmall img{width:32px;height:32px}
 .featureTag ul{margin:0;padding:0}
 .featureTag li{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:3px 10px;margin:0 3px 6px 0;background-color:#EEE;float:left}
 .generalInfosTable{margin-top:5px}

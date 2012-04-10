@@ -798,6 +798,16 @@ namespace Worki.Web.Controllers
 			return View(MVC.Localisation.Views.FullSearchResult, criteriaViewModel);
 		}
 
+		JsonResult GetSearchResult(SearchCriteriaFormViewModel criteriaViewModel)
+		{
+			var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
+			var mapResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchMap, criteriaViewModel);
+			var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
+			var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
+			//var locList = (from item in criteriaViewModel.List select item.GetJson());
+			return Json(new { list = listResult, map = mapResult, order = orderResult, title = titleResult/*, localisations = locList*/ }, JsonRequestBehavior.AllowGet);
+		}
+
         /// <summary>
         /// POST Action result to search localisations from a SearchCriteria
         /// it remove the cached result from session store
@@ -820,9 +830,8 @@ namespace Worki.Web.Controllers
                     var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
                     //criteriaViewModel.FillPageInfo(pageValue);
-                    var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
-                    var mapResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchMap, criteriaViewModel);
-                    return Json(new { list = listResult, map = mapResult });
+
+					return GetSearchResult(criteriaViewModel);
                 }
                 catch (Exception ex)
                 {
@@ -854,7 +863,7 @@ namespace Worki.Web.Controllers
             var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
             criteriaViewModel.FillPageInfo(pageValue);
-            return PartialView(MVC.Localisation.Views._SearchResults, criteriaViewModel);
+			return GetSearchResult(criteriaViewModel);
         }
 
 		/// <summary>

@@ -35,6 +35,7 @@ namespace Worki.Data.Models
             SearchType = searchType;
             OrderBy = orderBy;
             DirectAccessType = eDirectAccessType.eNone;
+			ResultView = eResultView.List;
         }
 
         public Dictionary<string, object> GetDictionnary(int page = 1)
@@ -49,6 +50,7 @@ namespace Worki.Data.Models
             toRet[MiscHelpers.SeoConstants.PlaceName] = LocalisationData.Name;
 
             toRet[MiscHelpers.SeoConstants.Order] = (int)OrderBy;
+			toRet[MiscHelpers.SeoConstants.Result] = (int)ResultView;
 
             if (FreeAreas)
             {
@@ -108,6 +110,20 @@ namespace Worki.Data.Models
 
             return toRet;
         }
+
+		public bool HasBounds()
+		{
+			return NorthEastLat != 0 &&
+				   NorthEastLng != 0 &&
+				   SouthWestLat != 0 &&
+				   SouthWestLng != 0;
+		}
+
+		public bool WithinBounds(float lat, float lng)
+		{
+			return SouthWestLat < lat && lat < NorthEastLat
+				&& SouthWestLng < lng && lng < NorthEastLng;
+		}
 
         #region Direct Access
 
@@ -231,6 +247,12 @@ namespace Worki.Data.Models
 		public eOrderBy OrderBy { get; set; }
         public eSearchType SearchType { get; set; }
         public eDirectAccessType DirectAccessType { get; set; }
+		public eResultView ResultView { get; set; }
+
+		public float NorthEastLat { get; set; }
+		public float NorthEastLng { get; set; }
+		public float SouthWestLat { get; set; }
+		public float SouthWestLng { get; set; }
 
         #endregion
     }
@@ -259,6 +281,12 @@ namespace Worki.Data.Models
         Rating,
         Distance
     }
+
+	public enum eResultView
+	{
+		List,
+		Map
+	}
 
     public class SearchCriteriaFormViewModel : PagingList<Localisation>
     {
@@ -335,6 +363,19 @@ namespace Worki.Data.Models
 				FromSearch = true
 			};
 			return detailModel;
+		}
+
+		public string GetOrderName()
+		{
+			switch ((eOrderBy)Criteria.OrderBy)
+			{
+				case eOrderBy.Distance:
+					return Worki.Resources.Views.Search.SearchString.DistanceOrdered;
+				case eOrderBy.Rating:
+					return Worki.Resources.Views.Search.SearchString.RateOrdered;
+				default:
+					return string.Empty;
+			}
 		}
     }
 

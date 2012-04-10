@@ -361,6 +361,9 @@
     <Content Include="Content\images\howitworks.png" />
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
+    <Content Include="Content\images\loaderbig.gif" />
+    <Content Include="Content\images\loadermedium.gif" />
+    <Content Include="Content\images\loadersmall.gif" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\marc.png" />
@@ -915,6 +918,8 @@
     <Content Include="Views\Localisation\_SearchPanel.cshtml" />
     <Content Include="Views\Localisation\_SearchMap.cshtml" />
     <Content Include="Views\OAuth\Authorize.cshtml" />
+    <Content Include="Views\Localisation\_SearchOrderSelector.cshtml" />
+    <Content Include="Views\Shared\_LoaderBlock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -981,7 +986,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>9105</DevelopmentServerPort>
+          <DevelopmentServerPort>15157</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Worki.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -1,0 +1,38 @@
+﻿@model Worki.Data.Models.SearchCriteriaFormViewModel
+
+@{
+    var dict = Model.Criteria.GetDictionnary();
+    var distRvd = new RouteValueDictionary(dict);
+    var ratingRvd = new RouteValueDictionary(dict);
+    distRvd[MiscHelpers.SeoConstants.Order] = (int)eOrderBy.Distance;
+    ratingRvd[MiscHelpers.SeoConstants.Order] = (int)eOrderBy.Rating;
+
+    //var listRvd = new RouteValueDictionary(dict);
+    //var mapRvd = new RouteValueDictionary(dict);
+    //listRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.List;
+    //mapRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.Map;
+      
+    var dropDown = new DropDownModel
+    {
+        Id = DropDownModel.OrderByDD,
+        Title = Model.GetOrderName(),
+        Items = new List<DropDownItem>
+        {
+			new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.DistanceOrdered, Link = Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult,distRvd), Id="orderByDistance"},
+            new DropDownItem{ DisplayName = Worki.Resources.Views.Search.SearchString.RateOrdered, Link = Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult,ratingRvd), Id="orderByRating"}
+		}
+    };
+}
+
+<div id="searchSelectorContainer" class="marginb10" >
+@*    @Html.ActionLink("map", MVC.Localisation.ActionNames.FullSearchResult, mapRvd)
+    @Html.ActionLink("list", MVC.Localisation.ActionNames.FullSearchResult, listRvd)*@
+    <div class="float-left margint5 bold blue marginr10">
+        @Worki.Resources.Views.Search.SearchString.OrderBy
+    </div>
+    <div class="float-left">
+        @Html.Partial(MVC.Shared.Views._DropDownList, dropDown)
+    </div>
+    <div class="clear">
+    </div>
+</div>

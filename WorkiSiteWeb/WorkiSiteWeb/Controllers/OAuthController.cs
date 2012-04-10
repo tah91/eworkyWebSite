@@ -26,7 +26,7 @@ namespace Worki.Web.Controllers
 		/// The OAuth 2.0 token endpoint.
 		/// </summary>
 		/// <returns>The response to the Client.</returns>
-		public ActionResult Token()
+		public virtual ActionResult Token()
 		{
 			return this.authorizationServer.HandleTokenRequest(this.Request).AsActionResult();
 		}
@@ -37,7 +37,7 @@ namespace Worki.Web.Controllers
 		/// <returns>The browser HTML response that prompts the user to authorize the client.</returns>
 		[Authorize, AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
 		[HttpHeader("x-frame-options", "SAMEORIGIN")] // mitigates clickjacking
-		public ActionResult Authorize()
+		public virtual ActionResult Authorize()
 		{
 			var pendingRequest = this.authorizationServer.ReadAuthorizationRequest();
 			if (pendingRequest == null)
@@ -73,7 +73,7 @@ namespace Worki.Web.Controllers
 		/// <param name="isApproved">if set to <c>true</c>, the user has authorized the Client; <c>false</c> otherwise.</param>
 		/// <returns>HTML response that redirects the browser to the Client.</returns>
 		[Authorize, HttpPost, ValidateAntiForgeryToken]
-		public ActionResult AuthorizeResponse(bool isApproved)
+		public virtual ActionResult AuthorizeResponse(bool isApproved)
 		{
 			var pendingRequest = this.authorizationServer.ReadAuthorizationRequest();
 			if (pendingRequest == null)

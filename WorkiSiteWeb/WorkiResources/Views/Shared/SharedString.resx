@@ -303,4 +303,7 @@
   <data name="Choose" xml:space="preserve">
     <value>Choisir</value>
   </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Chargement...</value>
+  </data>
 </root>

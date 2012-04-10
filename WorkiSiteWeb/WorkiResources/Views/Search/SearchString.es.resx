@@ -121,7 +121,7 @@
     <value>Buscar por:</value>
   </data>
   <data name="DistanceOrdered" xml:space="preserve">
-    <value>Ordenar por distancia</value>
+    <value>Distancia</value>
   </data>
   <data name="Entrepreneur" xml:space="preserve">
     <value>Emprendedor</value>
@@ -151,7 +151,7 @@
     <value>Espacio(s) encontrado(s)</value>
   </data>
   <data name="RateOrdered" xml:space="preserve">
-    <value>Ordenar por puntuación</value>
+    <value>Puntuación</value>
   </data>
   <data name="RefineSearch" xml:space="preserve">
     <value>Acotar la búsqueda</value>

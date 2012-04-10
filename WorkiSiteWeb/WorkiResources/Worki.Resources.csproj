@@ -625,8 +625,12 @@
       <LastGenOutput>ProfileString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Search\SearchString.en.resx" />
-    <EmbeddedResource Include="Views\Search\SearchString.es.resx" />
+    <EmbeddedResource Include="Views\Search\SearchString.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Search\SearchString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Search\SearchString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SearchString.Designer.cs</LastGenOutput>

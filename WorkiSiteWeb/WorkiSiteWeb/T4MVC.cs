@@ -38,6 +38,7 @@ public static class MVC {
     public static Worki.Web.Controllers.CaptchaImageController CaptchaImage = new Worki.Web.Controllers.T4MVC_CaptchaImageController();
     public static Worki.Web.Controllers.HomeController Home = new Worki.Web.Controllers.T4MVC_HomeController();
     public static Worki.Web.Controllers.LocalisationController Localisation = new Worki.Web.Controllers.T4MVC_LocalisationController();
+    public static Worki.Web.Controllers.OAuthController OAuth = new Worki.Web.Controllers.T4MVC_OAuthController();
     public static Worki.Web.Controllers.OfferController Offer = new Worki.Web.Controllers.T4MVC_OfferController();
     public static Worki.Web.Controllers.PaymentController Payment = new Worki.Web.Controllers.T4MVC_PaymentController();
     public static Worki.Web.Controllers.QuotationController Quotation = new Worki.Web.Controllers.T4MVC_QuotationController();
@@ -564,6 +565,9 @@ namespace Links {
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
             public static readonly string listing_png = Url("listing.png");
+            public static readonly string loaderbig_gif = Url("loaderbig.gif");
+            public static readonly string loadermedium_gif = Url("loadermedium.gif");
+            public static readonly string loadersmall_gif = Url("loadersmall.gif");
             public static readonly string loading_gif = Url("loading.gif");
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
@@ -1406,6 +1410,7 @@ namespace Worki.Web.Controllers {
             public readonly string _LocalisationInfos = "~/Views/Localisation/_LocalisationInfos.cshtml";
             public readonly string _SearchForm = "~/Views/Localisation/_SearchForm.cshtml";
             public readonly string _SearchMap = "~/Views/Localisation/_SearchMap.cshtml";
+            public readonly string _SearchOrderSelector = "~/Views/Localisation/_SearchOrderSelector.cshtml";
             public readonly string _SearchPanel = "~/Views/Localisation/_SearchPanel.cshtml";
             public readonly string _SearchResults = "~/Views/Localisation/_SearchResults.cshtml";
             public readonly string _SearchResultSummary = "~/Views/Localisation/_SearchResultSummary.cshtml";
@@ -1634,6 +1639,73 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult Suggestions(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Controllers {
+    public partial class OAuthController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected OAuthController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AuthorizeResponse() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AuthorizeResponse);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public OAuthController Actions { get { return MVC.OAuth; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "OAuth";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Token = "Token";
+            public readonly string Authorize = "Authorize";
+            public readonly string AuthorizeResponse = "AuthorizeResponse";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Authorize = "~/Views/OAuth/Authorize.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_OAuthController: Worki.Web.Controllers.OAuthController {
+        public T4MVC_OAuthController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Token() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Token);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Authorize() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Authorize);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AuthorizeResponse(bool isApproved) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AuthorizeResponse);
+            callInfo.RouteValueDictionary.Add("isApproved", isApproved);
             return callInfo;
         }
 
@@ -2237,6 +2309,7 @@ namespace T4MVC {
             public readonly string _IndexGallery = "~/Views/Shared/_IndexGallery.cshtml";
             public readonly string _IndexGalleryScript = "~/Views/Shared/_IndexGalleryScript.cshtml";
             public readonly string _InfoMessage = "~/Views/Shared/_InfoMessage.cshtml";
+            public readonly string _LoaderBlock = "~/Views/Shared/_LoaderBlock.cshtml";
             public readonly string _LocalisationSingleComment = "~/Views/Shared/_LocalisationSingleComment.cshtml";
             public readonly string _LogOnUserControl = "~/Views/Shared/_LogOnUserControl.cshtml";
             public readonly string _Map = "~/Views/Shared/_Map.cshtml";

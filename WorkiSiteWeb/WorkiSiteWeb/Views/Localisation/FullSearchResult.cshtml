@@ -20,10 +20,13 @@
 
     <div class="searchFormBlock float-right blockContainer">
 		<div class="contentBlock" id="resultSearchBlock">
+            @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
+            @if (Model.Criteria.ResultView == eResultView.List)
+            { 
 			<div class="resultsMapDiv">
                 @Html.Partial(MVC.Localisation.Views._SearchMap)
             </div> 
-        
+            }
             <div class="searchResultFormDiv" id="searchFormReset">
                 @Html.Partial(MVC.Localisation.Views._SearchPanel)
             </div>

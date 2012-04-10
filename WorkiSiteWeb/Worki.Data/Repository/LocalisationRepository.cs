@@ -59,14 +59,27 @@ namespace Worki.Data.Models
 			var localisations = _Context.Localisations.AsQueryable();
 			//exclude offline ones
 			localisations = localisations.Where(loc => loc.MainLocalisation != null && !loc.MainLocalisation.IsOffline);
+
 			//matching address
-			var critLat = (float)criteria.LocalisationData.Latitude;
-			var critLng = (float)criteria.LocalisationData.Longitude;
-			if (critLat != 0 && critLng != 0)
+			//if NorthEast and SouthWest given
+			if (criteria.ResultView == eResultView.Map && criteria.HasBounds())
+			{
 				localisations = from loc
-									 in localisations
-								where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude) < BoundDistance
+										in localisations
+								where criteria.SouthWestLat < (float)loc.Latitude && (float)loc.Latitude < criteria.NorthEastLat
+										&& criteria.SouthWestLng < (float)loc.Longitude && (float)loc.Longitude < criteria.NorthEastLng
 								select loc;
+			}
+			else
+			{
+				var critLat = (float)criteria.LocalisationData.Latitude;
+				var critLng = (float)criteria.LocalisationData.Longitude;
+				if (critLat != 0 && critLng != 0)
+					localisations = from loc
+										 in localisations
+									where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude) < BoundDistance
+									select loc;
+			}
 
 			if (criteria.FreeAreas)
 			{

@@ -1,0 +1,9 @@
+﻿@model string
+           
+@{
+    var css = Model == "big" ? "loaderBlockBig" : "loaderBlockSmall";
+}
+<div class="loaderBlock @css contentBlock">
+    <img alt="loading" src="@Links.Content.images.loaderbig_gif" />
+    @Worki.Resources.Views.Shared.SharedString.Loading
+</div>

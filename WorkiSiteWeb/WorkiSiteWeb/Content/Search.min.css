@@ -12,11 +12,13 @@
 .resultsMapDiv{height:auto}
 #resultsMap{height:180px;margin:5px 0 5px 0}
 *:first-child+html #resultsMap{height:180px;width:210px;margin:5px 0 5px 0}
+#resultsMapBig{height:300px}
 .searchResultFormDiv{margin-top:10px}
 .searchResultFormDiv h3{margin-bottom:10px}
 .searchResultFormDiv p{margin:10px 0 5px 0}
-.searchResultFormDiv input[type="text"]{width:100%}
+.searchResultFormDiv input[type="text"]{width:155px}
 .searchResultFormDiv select{width:103%}
+.refineSubmit{margin-right:-5px!important}
 .resetSearch{margin:20px 0 0 40px}
 .resultItem{margin-bottom:10px;overflow:auto;height:150px;padding:10px}
 .resultItemGallery{padding-right:10px}
@@ -46,6 +48,8 @@
 div.acc_container,div.toogle_container{margin-bottom:20px}
 .order{margin-top:20px}
 .order a:hover{text-decoration:none}
+#searchSelectorContainer .dropdown dt a{min-width:100px}
+#searchSelectorContainer .dropdown dd ul{min-width:100px}
 .suggestion{margin:10px 0;padding:5px 0;font-size:11px}
 .suggestion:hover{background-color:Whitesmoke}
 .suggestionImage{width:100px;height:70px}

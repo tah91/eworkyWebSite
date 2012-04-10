@@ -4,14 +4,20 @@
 @using (Html.BeginForm(MVC.Localisation.ActionNames.FullSearch, MVC.Localisation.Name, FormMethod.Post, new { id = "searchform" }))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Criteria.NorthEastLat)
+    @Html.HiddenFor(model => model.Criteria.NorthEastLng)
+    @Html.HiddenFor(model => model.Criteria.SouthWestLat)
+    @Html.HiddenFor(model => model.Criteria.SouthWestLng)
 	@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
     @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
     <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
     <div class="toogle_container active">
         <div class="block">
-            <div class="editor-field">
+            <div class="editor-field float-left">
                 @Html.TextBoxFor(model => model.Criteria.Place)
             </div>
+            <input type="submit" class="buttonBlue buttonStd imageBtn refineSubmit float-right" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
+            <div class="clear"></div>
         </div>
     </div>
                     
@@ -19,7 +25,7 @@
     <div class="toogle_container active">
         <div class="block">
             <div class="editor-field">
-                @Html.DropDownListFor(m=>m.Criteria.OfferData.Type, Model.Offers, new { @class = "offerSelect" })
+                @Html.DropDownListFor(m => m.Criteria.OfferData.Type, Model.Offers, new { @class = "offerSelect" })
             </div>
         </div>
 	</div>
@@ -96,13 +102,17 @@
             </div>
         </div>
     </div>
-    <div class="resetSearch">
+    @*<div class="resetSearch">
         <input type="submit" class="buttonBlue buttonStd imageBtn float-right" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
         <div class="clear"></div>
-    </div>
+    </div>*@
 }
 
 <script type="text/javascript">
+    require(["@Links.Scripts.dropdown_js"], function () {
+        InitDropdown("#@DropDownModel.OrderByDD");
+    });
+
     $('#searchFormReset input:checkbox, #serviceSelector a').live('click', function () {
         $("#searchFormReset form").submit();
     });
@@ -111,19 +121,44 @@
         $("#searchFormReset form").submit();
     });
 
-    $(".pager a").click(function () {
-        $("#searchFormReset form").submit();
+    var goToTop = function () {
+        $('html, body').animate({ scrollTop: 0 }, 0);
+    }
+
+    var hiddenClass = "visuallyhidden";
+    $('.loaderBlock').addClass(hiddenClass);   // hide it initially
+    jQuery.ajaxSetup({
+        beforeSend: function () {
+            $('.loaderBlock').removeClass(hiddenClass);
+        },
+        complete: function () {
+            $('.loaderBlock').addClass(hiddenClass);
+        },
+        success: function () { }
+    });
+
+    var refreshResults = function (data) {
+        $("#searchResults").replaceWith(data.list);
+        $('div.rateit').rateit();
+        $("#mapContainer").replaceWith(data.map);
+        $("#searchSelectorContainer").replaceWith(data.order);
+        $(".titleDivContainer h1").html(data.title);        
+        initialize();
+        $('.loaderBlock').addClass(hiddenClass);   // hide it initially
+    };
+
+    $(".pager a, #orderByDistance, #orderByRating").live('click', function () {
+        goToTop.apply();
+        $.ajax({
+            url: this.href,
+            success: refreshResults
+        });
         return false;
     });
 
     require(["@Url.VersionedContent(Links.Scripts.Utils_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
         $("#searchFormReset form").submit(function () {
-            var successFunc = function (data) {
-                $("#searchResults").replaceWith(data.list);
-                $('div.rateit').rateit();
-                $("#mapContainer").replaceWith(data.map);
-                initialize();
-            }
+            goToTop.apply();
 
             var errorBuilder = new ErrorBuilder('searchFormReset', 'searchFormError');
 
@@ -131,7 +166,7 @@
 			    '@Url.Action(MVC.Localisation.AjaxFullSearch(null))',
 			    "POST",
 			    $(this).serializeArray(),
-                successFunc,
+                refreshResults,
                 errorBuilder.ErrorFunc
 		        );
             return false;

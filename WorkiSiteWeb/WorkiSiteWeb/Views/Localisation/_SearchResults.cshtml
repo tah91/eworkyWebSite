@@ -3,40 +3,76 @@
 @{
     var dict = Model.Criteria.GetDictionnary();
     var rvd = new RouteValueDictionary(dict);
-	int order = 0;
-	int.TryParse(rvd["order"].ToString(), out order);
-	bool byDistance = order == (int)eOrderBy.Distance;
-	var distRvd = WebHelper.GetRVD(this);
-	var ratingRvd = WebHelper.GetRVD(this);
-	distRvd["order"] = (int)eOrderBy.Distance;
-	ratingRvd["order"] = (int)eOrderBy.Rating;
 }
 
-@*<div class="float-right blue order">
-    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.DistanceOrdered, MVC.Localisation.ActionNames.AjaxFullSearchResult, distRvd, new Dictionary<string, object> { { "class", byDistance ? "noUnderline orderBy" : "orderBy" } }) <text>|</text>
-    @Html.ActionLink(Worki.Resources.Views.Search.SearchString.RateOrdered, MVC.Localisation.ActionNames.AjaxFullSearchResult, ratingRvd, new Dictionary<string, object> { { "class", !byDistance ? "noUnderline orderBy" : "orderBy" } }) 
-</div>*@
-
 <div class="searchFormBlockLeft" id="searchResults">
-    @for (int i = 0; i < Model.PageResults.Count; ++i)
-	{
-		var index = Model.PagingInfo.GlobalIndex(i);
-        @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
-	}
+    @if (Model.Criteria.ResultView == eResultView.List)
+    {
+        for (int i = 0; i < Model.PageResults.Count; ++i)
+        {
+            var index = Model.PagingInfo.GlobalIndex(i);
+            @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
+        }
 
-	<div class="pager">
-		@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult, rvd); })
-	</div>
-</div>  
+	    <div class="pager">
+		    @Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult, rvd); })
+	    </div>
+    }
+    else
+    {
+        <div class="contentBlock">
+            <div class="mapContainer" id="resultsMapBig">
+            </div>
+        </div>
 
-<script type="text/javascript">
-    $(".pager a, .order a").click(function () {
-        $.ajax({
-            url: this.href,
-            success: function (data) {
-                $("#searchResults").replaceWith(data);
+        <script type="text/javascript">
+            require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+
+            });
+
+            var resultsMap = null;
+            var bounds = null;
+            function initialize() {
+                require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+                    resultsMap = new WorkiMap('resultsMapBig');
+                    var where = "@Model.Criteria.Place";
+                    resultsMap.LoadSearchMap(where);
+                    var handler = function() {
+                        if(resultsMap.Map!=null){
+                            var bounds =  resultsMap.Map.getBounds();
+                            var nelat = bounds.getNorthEast().lat();
+                            var nelng = bounds.getNorthEast().lng();
+                            var swlat = bounds.getSouthWest().lat();
+                            var swlng = bounds.getSouthWest().lng();
+
+                            $('#Criteria_NorthEastLat').val(nelat);
+                            $('#Criteria_NorthEastLng').val(nelng);
+                            $('#Criteria_SouthWestLat').val(swlat);
+                            $('#Criteria_SouthWestLng').val(swlng);
+
+                            //$("#searchFormReset form").submit();
+                        }
+                
+                        //alert(event);
+                    }
+                    resultsMap.AddHandler('bounds_changed', handler);
+                    bounds = new google.maps.LatLngBounds();
+				
+                    @foreach (var localisation in Model.PageResults)
+                    {
+				        @:resultsMap.AddMarker(@localisation.Latitude, @localisation.Longitude, "@Html.Raw(localisation.Name)", bounds);
+                    }
+                    @if (Model.PageResults.Count >= 2)
+                    {
+                        <text>
+                        resultsMap.FitBoundsSearchResults(bounds);
+                        </text>
+                    }
+                    var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
+                    workiAutocomplete.SetAutocomplete();
+                });   
             }
-        });
-        return false;
-    });
-</script>
+        </script> 
+    }
+    @Html.Partial(MVC.Shared.Views._LoaderBlock, "big")
+</div>  

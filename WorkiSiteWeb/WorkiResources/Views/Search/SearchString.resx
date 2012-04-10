@@ -121,7 +121,7 @@
     <value>Recherche avancée</value>
   </data>
   <data name="DistanceOrdered" xml:space="preserve">
-    <value>Tri par distance</value>
+    <value>Distance</value>
   </data>
   <data name="Entrepreneur" xml:space="preserve">
     <value>Entrepreneur</value>
@@ -144,6 +144,9 @@
   <data name="Opinion" xml:space="preserve">
     <value>Avis</value>
   </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Trier par :</value>
+  </data>
   <data name="PlaceExamples" xml:space="preserve">
     <value>Ex : Pau, Oise, rue Rivoli Paris, 92200, etc.</value>
   </data>
@@ -151,7 +154,7 @@
     <value>lieu(x) trouvé(s)</value>
   </data>
   <data name="RateOrdered" xml:space="preserve">
-    <value>Tri par note</value>
+    <value>Note</value>
   </data>
   <data name="RefineSearch" xml:space="preserve">
     <value>Affiner la recherche</value>
