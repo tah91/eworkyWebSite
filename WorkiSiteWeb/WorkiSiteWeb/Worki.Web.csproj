@@ -362,8 +362,6 @@
     <Content Include="Content\images\iconeMap.png" />
     <Content Include="Content\images\iconeMapRed.png" />
     <Content Include="Content\images\loaderbig.gif" />
-    <Content Include="Content\images\loadermedium.gif" />
-    <Content Include="Content\images\loadersmall.gif" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logoMobile.png" />
     <Content Include="Content\images\marc.png" />
