@@ -362,7 +362,7 @@
     <value>Shared offices</value>
   </data>
   <data name="FreeAreas" xml:space="preserve">
-    <value>Free workspace</value>
+    <value>Free space</value>
   </data>
   <data name="OtherTypes" xml:space="preserve">
     <value>Other places</value>
