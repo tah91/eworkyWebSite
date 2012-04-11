@@ -85,7 +85,7 @@
             if (val == "" && searchType != '@eSearchType.ePerName') {
                 $("#Criteria_Place").val('@SearchService.DefaultSearchPlace');
             }
-            workiGeoCoder.SearchFormSubmit(evt);
+            workiGeoCoder.SearchFormSubmit(evt, '#searchform');
             processed = true;
             return false;
         });
@@ -97,7 +97,7 @@
 			@:var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
 			@:workiAutocomplete.SetAutocomplete();
 			}
-            workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', '#searchform');
+            workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
         }
 
         function initialize() {

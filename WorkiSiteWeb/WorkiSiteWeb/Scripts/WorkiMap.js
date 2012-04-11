@@ -88,23 +88,22 @@ function WorkiAutoComplete(textField) {
     this.SetAutocomplete = SetAutocomplete;
 }
 
-function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, cityField, postalCodeField, countryField) {
+function WorkiGeocoder(latitudeField, longitudeField, addressField, cityField, postalCodeField) {
     //properties
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
     var _addressField = addressField;
     var _cityField = cityField;
     var _postalCodeField = postalCodeField;
-    var _countryField = countryField;
-    var _form = form;
-    var _evt = evt;
     var _geocoder = new google.maps.Geocoder();
-    var _checkSimilarLocalisation = null;
     var _handler = null;
+    var _form = null;
 
     //Geocode from an address
-    SearchFormSubmit = function (evt) {
-        evt.preventDefault();
+    SearchFormSubmit = function (evt, form) {
+        _form = form;
+        _evt = evt;
+        _evt.preventDefault();
         $(_form).unbind('submit');
         var address = jQuery.trim($(_addressField).val());
         if (address.length < 1)
@@ -115,7 +114,6 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
     //Geocode from an address
     SearchHandler = function (evt, handler) {
        	evt.preventDefault();
-       	$(_form).unbind('submit');
 		var address = jQuery.trim($(_addressField).val());
 		if (address.length < 1)
        		return;
@@ -124,10 +122,9 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
     }
 
     //Geocode from an address
-    GeocodeAddress = function (address, checkSimilarLocalisation) {
+    GeocodeAddress = function (address) {
         $(_latitudeField).val("0");
         $(_longitudeField).val("0");
-        _checkSimilarLocalisation = checkSimilarLocalisation;
         _geocoder.geocode({ 'address': address, 'region': 'FR' }, _callbackForGeocode);
     }
 
@@ -137,15 +134,12 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
             var lngToFill = results[0].geometry.location.lng();
             $(_latitudeField).val(latToFill);
             $(_longitudeField).val(lngToFill);
-            if (_countryField != null || _postalCodeField != null) {
+            if (_postalCodeField != null) {
                 for (var addComponent in results[0].address_components) {
                     var component = results[0].address_components[addComponent];
                     for (typeIndex in component.types) {
                         if (component.long_name == null)
                             continue;
-                        if (component.types[typeIndex] == 'country') {
-                            $(_countryField).val(component.long_name);
-                        }
                         else if (component.types[typeIndex] == 'postal_code') {
                             $(_postalCodeField).val(component.long_name);
                         }
@@ -155,22 +149,14 @@ function WorkiGeocoder(latitudeField, longitudeField, addressField, form, evt, c
                     }
                 }
             }
-            if (_checkSimilarLocalisation != null) {
-                _checkSimilarLocalisation.call(null, latToFill, lngToFill);
+            if (_handler != null) {
+                _handler.call();
             }
         }
 
-        if (_handler != null) {
-			_handler.call();
+        if (_form != null) {
+            $(_form).submit();
         }
-        if (form != null && _handler == null) {
-            $(form).submit();
-        }
-
-        //        else {
-        //            //alert("La géolocalisation de votre lieu a échouée");
-        //            return;
-        //        }
     }
 
     //public methods
@@ -204,13 +190,13 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         var center = new google.maps.LatLng(48, 2); //Paris...
         _searchMap.setCenter(center);
         _initialWhere = where;
-        _CenterSearchResults(where);
+        CenterSearchResults(where);
         _SetResetControl();
         this.Map = _searchMap
     }
 
     //center the search map on an address
-    _CenterSearchResults = function (where) {
+    CenterSearchResults = function (where) {
         _geocoder.geocode({ 'address': where }, _callbackForCenterSearchResults);
     }
 
@@ -218,13 +204,6 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         if (status == google.maps.GeocoderStatus.OK) {
             _searchMap.setCenter(results[0].geometry.location);
             LoadPin(results[0].geometry.location, "Votre recherche", false, _searchMap, null, true);
-            //_map.setZoom(9);
-            //alert(results[0].geometry.location);
-            //LoadPin(results[0].geometry.location, 'Votre recherche');
-        }
-        else {
-            //alert("La géolocalisation de votre lieu a échouée");
-            return;
         }
     }
 
@@ -291,7 +270,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
 
         // Setup the click event listeners: simply set the map to Chicago
         google.maps.event.addDomListener(controlUI, 'click', function () {
-            _CenterSearchResults(_initialWhere);
+            CenterSearchResults(_initialWhere);
             if (_initialBounds != null)
                 FitBoundsSearchResults(_initialBounds);
         });
@@ -374,6 +353,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     this.LoadSearchMap = LoadSearchMap;
     this.LoadDetailMap = LoadDetailMap;
     this.ClearMap = ClearMap;
+    this.CenterSearchResults = CenterSearchResults;
     this.LoadPin = LoadPin;
     this.AddMarker = AddMarker;
     this.FindAddressOnMap = FindAddressOnMap;

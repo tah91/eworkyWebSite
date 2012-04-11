@@ -99,7 +99,7 @@
                     $('#Criteria_LocalisationData_Longitude').val(longitude);
                     var workiReverseGeoCoder = new ReverseGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
                     workiReverseGeoCoder.ReverseGeocodeAddress();
-                    workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', '#searchform');
+                    workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
                 }
 
                 function errorCallback() {
@@ -119,7 +119,7 @@
                     if (val == "") {
                         $("#Criteria_Place").val('@SearchService.DefaultSearchPlace');
                     }
-                    workiGeoCoder.SearchFormSubmit(evt);
+                    workiGeoCoder.SearchFormSubmit(evt, '#searchform');
                     return false;
                 });
             });

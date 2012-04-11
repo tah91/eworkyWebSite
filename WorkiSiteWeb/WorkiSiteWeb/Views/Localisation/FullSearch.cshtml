@@ -46,7 +46,7 @@
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
                 var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
                 workiAutocomplete.SetAutocomplete();
-                workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place', '#searchform');
+                workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
             });
         }
 
@@ -57,7 +57,7 @@
             if (val == "" && searchType != 'ePerName') {
                 $("#Criteria_Place").val('@SearchService.DefaultSearchPlace');
             }
-            workiGeoCoder.SearchFormSubmit(evt);
+            workiGeoCoder.SearchFormSubmit(evt, '#searchform');
             return false;
         });
     </script>

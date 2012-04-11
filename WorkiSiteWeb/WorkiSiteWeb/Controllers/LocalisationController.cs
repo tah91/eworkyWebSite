@@ -801,11 +801,10 @@ namespace Worki.Web.Controllers
 		JsonResult GetSearchResult(SearchCriteriaFormViewModel criteriaViewModel)
 		{
 			var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
-			var mapResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchMap, criteriaViewModel);
 			var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
 			var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
-			//var locList = (from item in criteriaViewModel.List select item.GetJson());
-			return Json(new { list = listResult, map = mapResult, order = orderResult, title = titleResult/*, localisations = locList*/ }, JsonRequestBehavior.AllowGet);
+			var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
+			return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
 		}
 
         /// <summary>

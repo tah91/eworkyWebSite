@@ -23,16 +23,19 @@
                     $("#localisationAtSamePlaceReplace").replaceWith('<div id="localisationAtSamePlaceReplace"><div class="localisationAtSamePlace">' + message + '</div></div>');
 				    //alert(message);
 		    }
-		    GetSimilarLocalisation = function(currentLatitude,currentLongitude){
+
+		    getSimilarLocalisation = function() {
 			    @if (Model.Localisation.ID == 0)
 			    {
+                    @:var lat = $('#Localisation_Latitude').val();
+                    @:var lng = $('#Localisation_Longitude').val();
 				    @:var action = '@Url.Action(MVC.Localisation.ActionNames.FindSimilarLocalisation,MVC.Localisation.Name)';
-				    @:$.post(action, { latitude: currentLatitude, longitude: currentLongitude }, checkIfExist, "json");
+				    @:$.post(action, { latitude: lat, longitude: lng }, checkIfExist, "json");
 			    }
 		    }
 			@if(!Url.IsInArea("Backoffice"))
 			{
-				@:var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, null, null ,'#Localisation_City','#Localisation_PostalCode', null);
+				@:var workiGeoCoder = new WorkiGeocoder('#Localisation_Latitude', '#Localisation_Longitude', null, '#Localisation_City','#Localisation_PostalCode');
 				@:var workiMap = new WorkiMap('editMapDiv','#Localisation_Latitude', '#Localisation_Longitude');
 				@:var latitude = @Model.Localisation.Latitude;
 				@:var longitude = @Model.Localisation.Longitude;
@@ -48,7 +51,7 @@
 					@:if (address.length < 1)
 						@:return;
 				
-					@:workiGeoCoder.GeocodeAddress(address, GetSimilarLocalisation);
+					@:workiGeoCoder.GeocodeAddress(address, getSimilarLocalisation);
 					@:workiMap.ClearMap();
 					@:workiMap.FindAddressOnMap(address);
 				@:}
