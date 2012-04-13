@@ -308,7 +308,7 @@
     <value>Business lounge</value>
   </data>
   <data name="FreeArea" xml:space="preserve">
-    <value>Free workspace</value>
+    <value>Free space</value>
   </data>
   <data name="SeminarRoom" xml:space="preserve">
     <value>Conference rooms</value>

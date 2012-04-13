@@ -157,7 +157,7 @@
     <value>Payé</value>
   </data>
   <data name="PaymentBy" xml:space="preserve">
-    <value>Mode de réglement : {0}</value>
+    <value>Mode de règlement : {0}</value>
   </data>
   <data name="PaymentType" xml:space="preserve">
     <value>Moyen de paiement</value>
