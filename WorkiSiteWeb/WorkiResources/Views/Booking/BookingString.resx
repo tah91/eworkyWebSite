@@ -163,7 +163,7 @@
     <value>Surface</value>
   </data>
   <data name="Asked" xml:space="preserve">
-    <value>Demandé le</value>
+    <value>Demandée le</value>
   </data>
   <data name="Customer" xml:space="preserve">
     <value>Client(e)</value>
@@ -193,7 +193,7 @@
     <value>Début</value>
   </data>
   <data name="WaitingForPayement" xml:space="preserve">
-    <value>En attente de payment</value>
+    <value>En attente de paiement</value>
   </data>
   <data name="BookPaid" xml:space="preserve">
     <value>La réservation pour le lieu {0} à été payée !</value>
@@ -202,7 +202,7 @@
     <value>Demande de devis pour {0}</value>
   </data>
   <data name="PayFail" xml:space="preserve">
-    <value>Le payment n'a pas été pris en compte !</value>
+    <value>Le paiement n'a pas été pris en compte !</value>
   </data>
   <data name="BookingRefused" xml:space="preserve">
     <value>La demande de réservation a été refusée.</value>
@@ -271,10 +271,10 @@
     <value>{0} a refusé la demande de devis pour {1}</value>
   </data>
   <data name="PaidStatus" xml:space="preserve">
-    <value>Payé le </value>
+    <value>Payée le </value>
   </data>
   <data name="QuotationCancel" xml:space="preserve">
-    <value>Demande de devis annulé le </value>
+    <value>Demande de devis annulée le </value>
   </data>
   <data name="QuotationRefuse" xml:space="preserve">
     <value>Demande de devis refusée le </value>
@@ -286,7 +286,7 @@
     <value>En attente de confirmation</value>
   </data>
   <data name="WaitingPayment" xml:space="preserve">
-    <value>En attente de réglement</value>
+    <value>En attente de règlement</value>
   </data>
   <data name="WaitingStatus" xml:space="preserve">
     <value>En attente de prise en charge</value>
@@ -375,16 +375,16 @@ Inscrivez-vous rapidement, les places sont limitées !</value>
     <value>Votre inscription a été prise en compte, la date de l'évenement vous sera communiquée par mail.</value>
   </data>
   <data name="StatusAccepted" xml:space="preserve">
-    <value>Accepté</value>
+    <value>Acceptée</value>
   </data>
   <data name="StatusCancelled" xml:space="preserve">
-    <value>Annulé</value>
+    <value>Annulée</value>
   </data>
   <data name="StatusPaid" xml:space="preserve">
-    <value>Payé</value>
+    <value>Payée</value>
   </data>
   <data name="StatusRefused" xml:space="preserve">
-    <value>Refusé</value>
+    <value>Refusée</value>
   </data>
   <data name="StatusUnknown" xml:space="preserve">
     <value>Inconnu</value>

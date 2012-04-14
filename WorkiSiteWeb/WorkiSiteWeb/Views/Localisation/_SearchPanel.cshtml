@@ -139,17 +139,48 @@
         success: function () { }
     });
 
-    var isGeocoding = false;
-    var isGeocodingAvailable = true;
+    require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+
+    });
+
+    var resultsMap = null;
+    var workiGeoCoder = null;
+    function initialize() {
+        require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+            resultsMap = new WorkiMap('resultsMap');
+            var where = "@Model.Criteria.Place";
+            resultsMap.LoadSearchMap(where);
+
+            var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
+            workiAutocomplete.SetAutocomplete();
+
+            workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
+
+            $("#searchFormReset form").submit();
+        });
+    }
+
+    function pushResults(place, results) {
+        resultsMap.ClearMap();
+        var bounds = new google.maps.LatLngBounds();
+        resultsMap.CenterSearchResults(place);
+        for (var loc in results) {
+            resultsMap.AddMarker(results[loc].latitude, results[loc].longitude, results[loc].name, bounds);
+        }
+
+        if (results.length >= 2) {
+            resultsMap.FitBoundsSearchResults(bounds);
+        }
+    }
+
     var refreshResults = function (data) {
         $("#searchResults").replaceWith(data.list);
         $('div.rateit').rateit();
-        $("#mapContainer").replaceWith(data.map);
+        //$("#mapContainer").replaceWith(data.map);
         $("#searchSelectorContainer").replaceWith(data.order);
         $(".titleDivContainer h1").html(data.title);
-        initialize();
-        $('.loaderBlock').addClass(hiddenClass);   // hide it initially
-        isGeocodingAvailable = true;
+        $('.loaderBlock').addClass(hiddenClass);
+        pushResults(data.place, data.localisations);
     };
 
     $(".pager a, #orderByDistance, #orderByRating").live('click', function () {
@@ -162,20 +193,28 @@
     });
 
     require(["@Url.VersionedContent(Links.Scripts.Utils_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-        $("#searchFormReset form").submit(function (evt) {
-            goToTop.apply();
-
-            var errorBuilder = new ErrorBuilder('searchFormReset', 'searchFormError');
-
+        var errorBuilder = new ErrorBuilder('searchFormReset', 'searchFormError');
+        var submitData = function () {
             AppAjax(
 			    '@Url.Action(MVC.Localisation.AjaxFullSearch(null))',
 			    "POST",
-			    $(this).serializeArray(),
+			    $('#searchFormReset form').serializeArray(),
                 refreshResults,
                 errorBuilder.ErrorFunc
 		    );
+        }
 
+        $("#searchFormReset form").submit(function (evt) {
+            goToTop.apply();
+
+            submitData();
             return false;
+        });
+
+        $('#Criteria_Place').blur(function (evt) {
+            workiGeoCoder.SearchHandler(evt, function () {
+                submitData();
+            });
         });
     });
 
