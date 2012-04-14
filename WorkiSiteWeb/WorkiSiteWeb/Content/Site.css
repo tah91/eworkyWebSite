@@ -1430,6 +1430,20 @@ h2.faqTitle
 	text-align: center;
 }
 
+.imageContainer
+{
+	overflow: hidden;
+}
+
+.imageContainer img
+{
+	min-height : 100%;
+	min-width : 100%;
+	height : auto;
+	width : auto;
+}
+
+
 .picBack
 {
 	background: #fdfdfd;
@@ -1835,13 +1849,13 @@ html ul.tabs li.selected a:hover
 	padding: 15px;
 }
 
-.imageContainer
+.indexImageContainer
 {
    width: 130px;
    height: 120px;
 }
 
-.imageContainer img
+.indexImageContainer img
 {
     max-height:120px;
 }

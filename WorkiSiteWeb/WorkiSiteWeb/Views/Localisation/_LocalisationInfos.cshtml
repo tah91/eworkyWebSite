@@ -94,7 +94,7 @@
 	<h3 class="blue">Contact</h3>
     @if (Model.HasOwner())
     {
-     	<div class="commentAvatar borderedImg float-left">
+     	<div class="commentAvatar imageContainer borderedImg float-left">
 	    @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true, Member.AvatarFolder), Links.Content.images.avatar_png, Model.Member.GetDisplayName())
 	    </div>
         <div class="float-left">

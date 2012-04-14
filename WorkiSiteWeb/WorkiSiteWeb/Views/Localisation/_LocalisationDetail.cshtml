@@ -370,7 +370,7 @@
 									    @foreach (var fav in Model.FavoriteLocalisations)
                                         {
                                             <li class="innerContentBlock float-left">
-                                                <div class="eworkerImage borderedImg float-left">
+                                                <div class="eworkerImage imageContainer borderedImg float-left">
                                                     @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(fav.Member.MemberMainData.Avatar, true, Member.AvatarFolder), Links.Content.images.avatar_png, Model.Member.GetDisplayName())
                                                 </div>
                                                 <div class="eworkerDesc marginl10 float-left">

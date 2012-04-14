@@ -72,7 +72,7 @@
 
 .avatarContainer img
 {
-    max-height: 180px;
+    /*max-height: 180px;*/
 }
 
 .profilData table td:first-child
@@ -189,8 +189,8 @@
 
 .commentAvatar img
 {
-    height:64px;
-    width:64px;
+    /*height:64px;
+    width:64px;*/
 }
 
 .commentLocAvatar

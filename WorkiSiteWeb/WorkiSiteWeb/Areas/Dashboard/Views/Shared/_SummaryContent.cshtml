@@ -5,7 +5,7 @@
     var folder = Model.NoImagePath == Links.Content.images.no_image_png ? "" : Member.AvatarFolder;
 }
 <div class="summaryContainer innerContentBlock float-left">
-    <div class="@css">
+    <div class="@css imageContainer">
         @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.ImagePath, false, folder), Model.NoImagePath, Model.ImageAlt)
     </div>
     <div class="summaryIntro margint10">
