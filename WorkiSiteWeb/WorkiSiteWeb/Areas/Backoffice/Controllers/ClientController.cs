@@ -487,12 +487,16 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				try
 				{
                     model.Invoice.CreationDate = DateTime.UtcNow;
+					model.Invoice.InvoiceNumber = new InvoiceNumber();
                     iRepo.Add(model.Invoice);
-                    context.Commit();
+					context.Commit();
 
 					using (var stream = new MemoryStream())
 					{
-						var invoiceData = model.GetInvoiceModel(localisation);
+						context = ModelFactory.GetUnitOfWork();
+						iRepo = ModelFactory.GetRepository<IInvoiceRepository>(context);
+						var invoiceData = iRepo.Get(model.Invoice.Id);
+
 						_InvoiceService.GenerateInvoice(stream, invoiceData);
 						return File(stream.ToArray(), "application/pdf", invoiceData.GetFileName() + ".pdf");
 					}
@@ -501,9 +505,13 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				{
                     context.Complete();
 					_Logger.Error("CreateInvoice", ex);
+					ModelState.AddModelError("", ex.Message);
 				}
 			}
 
+			context = ModelFactory.GetUnitOfWork();
+			lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+			localisation = lRepo.Get(id);
 			return View(new InvoiceFormViewModel(localisation, model.Invoice));
 		}
 

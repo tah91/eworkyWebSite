@@ -115,6 +115,9 @@
     <Compile Include="Models\InvoiceItem.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\InvoiceNumber.cs">
+      <DependentUpon>WorkiDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LocalisationClient.cs">
       <DependentUpon>WorkiDB.tt</DependentUpon>
     </Compile>

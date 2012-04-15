@@ -311,6 +311,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					}
 				);
 
+				createBookingModel.Booking.InvoiceNumber = new InvoiceNumber();
+
 				if (createBookingModel.Booking.Paid)
 				{
 					createBookingModel.Booking.MemberBookingLogs.Add(new MemberBookingLog

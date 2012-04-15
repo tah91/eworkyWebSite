@@ -35,6 +35,7 @@ namespace Worki.Data.Models
             CreationDate = booking.CreationDate;
             TaxRate = booking.Owner.MemberMainData.TaxRate;
             IsFromBooking = true;
+			InvoiceNumber = booking.InvoiceNumber;
         }
 
         #endregion
@@ -153,9 +154,10 @@ namespace Worki.Data.Models
 
         #endregion
 
-        public Invoice GetInvoiceModel(Localisation localisation)
+        public Invoice GetInvoiceModel(Localisation localisation, Member member)
         {
             Invoice.Localisation = localisation;
+			Invoice.Member = member;
             return Invoice;
         }
     }
@@ -204,6 +206,14 @@ namespace Worki.Data.Models
             Tax = Amount * invoice.TaxRate / 100;
             //Paid = true ? Worki.Resources.Views.Shared.SharedString.Yes : Worki.Resources.Views.Shared.SharedString.No;
             Paid = Worki.Resources.Views.Shared.SharedString.Yes;
+		}
+	}
+
+	public partial class InvoiceNumber
+	{
+		public string DisplayName()
+		{
+			return Id.ToString("000000");
 		}
 	}
 }

@@ -12,11 +12,12 @@ namespace Worki.Data.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Invoice
+    public partial class InvoiceNumber
     {
-        public Invoice()
+        public InvoiceNumber()
         {
-            this.InvoiceItems = new HashSet<InvoiceItem>();
+            this.Invoices = new HashSet<Invoice>();
+            this.MemberBookings = new HashSet<MemberBooking>();
     		OnInitialized();
         }
     
@@ -27,21 +28,11 @@ namespace Worki.Data.Models
         // Primitive properties
     
         public int Id { get; set; }
-        public int LocalisationId { get; set; }
-        public int MemberId { get; set; }
-        public string Title { get; set; }
-        public int Currency { get; set; }
-        public int PaymentType { get; set; }
-        public decimal TaxRate { get; set; }
-        public System.DateTime CreationDate { get; set; }
-        public int InvoiceNumberId { get; set; }
     
         // Navigation properties
     
-        public virtual Localisation Localisation { get; set; }
-        public virtual Member Member { get; set; }
-        public virtual ICollection<InvoiceItem> InvoiceItems { get; set; }
-        public virtual InvoiceNumber InvoiceNumber { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual ICollection<MemberBooking> MemberBookings { get; set; }
     
     }
 }

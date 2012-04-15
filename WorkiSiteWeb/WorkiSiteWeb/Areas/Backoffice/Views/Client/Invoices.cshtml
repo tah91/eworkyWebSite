@@ -51,7 +51,7 @@
                 {
                     <tr>
                         <td>
-                            @item.Id
+                            @item.InvoiceNumber.DisplayName()
                         </td>
                         <td>
                             @CultureHelpers.GetSpecificFormat(item.CreationDate, CultureHelpers.TimeFormat.Date)

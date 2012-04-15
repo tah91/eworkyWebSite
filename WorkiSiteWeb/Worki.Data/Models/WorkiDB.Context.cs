@@ -56,5 +56,6 @@ namespace Worki.Data.Models
         public DbSet<ApiClientAuthorization> ApiClientAuthorizations { get; set; }
         public DbSet<ApiNonce> ApiNonces { get; set; }
         public DbSet<ApiSymmetricCryptoKey> ApiSymmetricCryptoKeys { get; set; }
+        public DbSet<InvoiceNumber> InvoiceNumbers { get; set; }
     }
 }

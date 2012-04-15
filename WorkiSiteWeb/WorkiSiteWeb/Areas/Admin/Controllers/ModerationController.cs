@@ -454,6 +454,8 @@ namespace Worki.Web.Areas.Admin.Controllers
 		{
 			var context = ModelFactory.GetUnitOfWork();
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+			var iRepo = ModelFactory.GetRepository<IInvoiceRepository>(context);
+			var bRepo = ModelFactory.GetRepository<IBookingRepository>(context);
 
 			var memberWithImage = mRepo.GetMany(m => !string.IsNullOrEmpty(m.MemberMainData.Avatar) && m.MemberMainData.Avatar.StartsWith("http"));
 
@@ -469,6 +471,18 @@ namespace Worki.Web.Areas.Admin.Controllers
 				}
 
 				message = string.Format("modification of {0} members", count);
+
+				var bookings = bRepo.GetAll();
+				foreach (var b in bookings)
+				{
+					b.InvoiceNumber = new InvoiceNumber();
+				}
+
+				var invoices = iRepo.GetAll();
+				foreach (var i in invoices)
+				{
+					i.InvoiceNumber = new InvoiceNumber();
+				}
 
 				context.Commit();
 			}

@@ -152,7 +152,7 @@ namespace Worki.Service
 			this.AddParagraph(doc, Element.ALIGN_RIGHT, _standardFont, new Chunk(bookingClient.ToString()));
 
 			var billingDesc = new StringBuilder();
-			billingDesc.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.InvoiceNumber,invoiceData.Id));
+			billingDesc.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.InvoiceNumber,invoiceData.InvoiceNumber.DisplayName()));
             billingDesc.AppendLine(string.Format(Worki.Resources.Models.Booking.Invoice.Date, CultureHelpers.GetSpecificFormat(DateTime.Now, CultureHelpers.TimeFormat.Date)));
 
 			this.AddParagraph(doc, Element.ALIGN_LEFT, _standardFont, new Chunk(billingDesc.ToString()));

@@ -40,6 +40,7 @@ namespace Worki.Data.Models
         public int TimeType { get; set; }
         public int PeriodType { get; set; }
         public int PaymentType { get; set; }
+        public int InvoiceNumberId { get; set; }
     
         // Navigation properties
     
@@ -47,6 +48,7 @@ namespace Worki.Data.Models
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual Offer Offer { get; set; }
         public virtual Member Member { get; set; }
+        public virtual InvoiceNumber InvoiceNumber { get; set; }
     
     }
 }
