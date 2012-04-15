@@ -259,7 +259,7 @@ namespace Worki.Resources.Models.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taux de TVA applicable dans le pays de facturation.
+        ///   Looks up a localized string similar to Taux de TVA applicable dans le pays de facturation (%).
         /// </summary>
         public static string TaxRate {
             get {

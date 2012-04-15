@@ -205,7 +205,7 @@ namespace Worki.Web.Helpers
 			return dropDown;
 		}
 
-		public static CalandarJson GetCalandarEvent(this MemberBooking booking, UrlHelper url)
+		public static CalandarJson GetCalandarEvent(this MemberBooking booking, UrlHelper url, bool showOffer = false)
 		{
 			if (booking == null)
 				return null;
@@ -232,10 +232,15 @@ namespace Worki.Web.Helpers
                 color = CalandarJson.Green;
             }
 			var allDay = (booking.ToDate - booking.FromDate).TotalHours >= 23;
+			var title = booking.Member.GetFullDisplayName();
+			if (showOffer)
+			{
+				title += " - " + booking.Offer.Name;
+			}
 			var toRet = new CalandarJson
 				{
 					id = booking.Id,
-					title = booking.Member.GetFullDisplayName(),
+					title = title,
 					start = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.FromDate),
 					end = string.Format("{0:yyyy-MM-dd HH:mm:ss}", booking.ToDate),
 					url = url.Action(MVC.Backoffice.Localisation.ActionNames.BookingDetail, MVC.Backoffice.Localisation.Name, new { id = booking.Id }),

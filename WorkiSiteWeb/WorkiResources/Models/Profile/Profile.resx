@@ -185,7 +185,7 @@
     <value>N° TVA intracommunautaire</value>
   </data>
   <data name="TaxRate" xml:space="preserve">
-    <value>Taux de TVA applicable dans le pays de facturation</value>
+    <value>Taux de TVA applicable dans le pays de facturation (%)</value>
   </data>
   <data name="Teleworker" xml:space="preserve">
     <value>Télétravailleur</value>

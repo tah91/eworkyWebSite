@@ -178,7 +178,7 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mode de réglement : {0}.
+        ///   Looks up a localized string similar to Mode de règlement : {0}.
         /// </summary>
         public static string PaymentBy {
             get {
@@ -196,11 +196,20 @@ namespace Worki.Resources.Models.Booking {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prix HT.
+        ///   Looks up a localized string similar to Prix.
         /// </summary>
         public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prix HT.
+        /// </summary>
+        public static string PriceWT {
+            get {
+                return ResourceManager.GetString("PriceWT", resourceCulture);
             }
         }
         

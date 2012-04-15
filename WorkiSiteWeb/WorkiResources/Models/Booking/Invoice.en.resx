@@ -148,7 +148,7 @@
     <value>Payment mean</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Price without taxes</value>
+    <value>Price</value>
   </data>
   <data name="Quantity" xml:space="preserve">
     <value>Quantity</value>

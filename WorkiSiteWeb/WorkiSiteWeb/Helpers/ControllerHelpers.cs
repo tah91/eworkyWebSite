@@ -17,6 +17,7 @@ using Worki.Infrastructure.Helpers;
 using Worki.Service;
 using Worki.Web.Singletons;
 using System.Drawing;
+using System.Net;
 
 namespace Worki.Web.Helpers
 {
@@ -86,6 +87,56 @@ namespace Worki.Web.Helpers
 				return string.Join(_PathSeparator, _UserImgFolder, fileName);
             }
         }
+
+		static Stream CopyAndClose(Stream inputStream)
+		{
+			const int readSize = 256;
+			byte[] buffer = new byte[readSize];
+			MemoryStream ms = new MemoryStream();
+
+			int count = inputStream.Read(buffer, 0, readSize);
+			while (count > 0)
+			{
+				ms.Write(buffer, 0, count);
+				count = inputStream.Read(buffer, 0, readSize);
+			}
+			ms.Position = 0;
+			inputStream.Close();
+			return ms;
+		}
+
+		/// <summary>
+		/// Upload file to server (file system or blob if azure)
+		/// and return the name of the file created
+		/// </summary>
+		/// <param name="stream">stream to upload</param>
+		/// <returns>the file name</returns>
+		public static string UploadFile(this Controller controller, string url, MiscHelpers.ImageSize imageSize, string folder = null)
+		{
+			if (string.IsNullOrEmpty(url))
+				return string.Empty;
+
+			var ext = ".jpg";
+			var contentType = "image/jpeg";
+			var fileName = String.Format("{0:yyyy-MM-dd_hh-mm-ss-ffff}", DateTime.UtcNow) + ext;
+
+			//Create a WebRequest to get the file
+			HttpWebRequest fileReq = (HttpWebRequest)HttpWebRequest.Create(url);
+
+			//Create a response for this request
+			HttpWebResponse fileResp = (HttpWebResponse)fileReq.GetResponse();
+
+			if (fileReq.ContentLength > 0)
+				fileResp.ContentLength = fileReq.ContentLength;
+
+			using (var fs = CopyAndClose(fileResp.GetResponseStream()))
+			{
+				SaveFile(controller, fs, fileName, ext, contentType, folder, imageSize.Width, imageSize.Height);
+				fs.Position = 0;
+				SaveFile(controller, fs, fileName, ext, contentType, folder, imageSize.TWidth, imageSize.THeight, true);
+			}
+			return fileName;
+		}
 
         /// <summary>
         /// Upload file to server (file system or blob if azure)

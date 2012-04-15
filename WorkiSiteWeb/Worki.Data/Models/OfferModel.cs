@@ -205,6 +205,14 @@ namespace Worki.Data.Models
 			get { return IsBookable || IsQuotable; }
 		}
 
+		/// <summary>
+		/// True if offer can be booked
+		/// </summary>
+		public bool IsReallyBookable()
+		{
+			return CanHaveBooking && OfferPrices != null && OfferPrices.Count != 0;
+		}
+
 		#endregion
 
         #region Payment

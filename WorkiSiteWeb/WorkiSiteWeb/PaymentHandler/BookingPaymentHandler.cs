@@ -158,11 +158,6 @@ namespace Worki.Web
 					LoggerId = clientId
 				});
 
-				if (!localisation.HasClient(clientId))
-				{
-					localisation.LocalisationClients.Add(new LocalisationClient { ClientId = clientId });
-				}
-
 				//send mail to owner
 				dynamic ownerMail = new Email(MVC.Emails.Views.Email);
 				ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";

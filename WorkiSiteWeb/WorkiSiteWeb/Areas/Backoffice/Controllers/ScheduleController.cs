@@ -104,7 +104,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 			var events = new List<CalandarJson>();
 			foreach (var item in localisation.GetBookings())
 			{
-				events.Add(item.GetCalandarEvent(Url));
+				events.Add(item.GetCalandarEvent(Url, true));
 			}
 
 			return Json(events);

@@ -46,7 +46,7 @@
                         {
                             <li>@offer.GetAvailabilityDisplay()</li>   
                         }
-					    @foreach (var price in offer.OfferPrices)
+					    @foreach (var price in offer.OfferPrices.OrderBy(op => op.Price))
 					    {
                             var priceDisplay = price.GetPriceDisplay();
                             if (!string.IsNullOrEmpty(priceDisplay))
@@ -66,7 +66,7 @@
 							@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
 						</div>
 					}
-					else if (offer.CanHaveBooking && offer.IsBookable)
+                    else if (offer.CanHaveBooking && offer.IsReallyBookable())
 					{
 						<div class="buttonStd buttonBlue linkImg float-right">
 							@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
@@ -257,19 +257,9 @@
 						    <div class="offerTabs innerDetailTabs">
 							    <div class="detailMenu">
 								    <ul class="offerTab innerDetailTab float-left">
-                                        @if (Model.HasOffer(LocalisationOffer.BuisnessLounge))
-                                        {
-                                            <li><a href="#buisnessLounge">@Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge</a></li>
-									        <li class="detailMenuEmpty"></li>
-                                        }
                                         @if (Model.HasOffer(LocalisationOffer.Workstation))
                                         {
                                             <li><a href="#workstation">@Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation</a></li>
-									        <li class="detailMenuEmpty"></li>
-                                        }
-                                        @if (Model.HasOffer(LocalisationOffer.Desktop))
-                                        {
-                                            <li><a href="#desktop">@Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop</a></li>
 									        <li class="detailMenuEmpty"></li>
                                         }
                                         @if (Model.HasOffer(LocalisationOffer.MeetingRoom))
@@ -287,25 +277,23 @@
                                             <li><a href="#visioRoom">@Worki.Resources.Models.Localisation.LocalisationFeatures.VisioRoom</a></li>
 									        <li class="detailMenuEmpty"></li>
                                         }
+                                        @if (Model.HasOffer(LocalisationOffer.BuisnessLounge))
+                                        {
+                                            <li><a href="#buisnessLounge">@Worki.Resources.Models.Localisation.LocalisationFeatures.BuisnessLounge</a></li>
+									        <li class="detailMenuEmpty"></li>
+                                        }
+                                        @if (Model.HasOffer(LocalisationOffer.Desktop))
+                                        {
+                                            <li><a href="#desktop">@Worki.Resources.Models.Localisation.LocalisationFeatures.Desktop</a></li>
+									        <li class="detailMenuEmpty"></li>
+                                        }
 								    </ul>
 							    </div>
 							    <div class="tab_container offerTabContainer float-right">
-                                    @if (Model.HasOffer(LocalisationOffer.BuisnessLounge))
-                                    {
-								    <div id="buisnessLounge" class="offerTab_content">
-									    @OfferBlock(Model, LocalisationOffer.BuisnessLounge)
-								    </div>
-                                    }
                                     @if (Model.HasOffer(LocalisationOffer.Workstation))
                                     {
 								    <div id="workstation" class="offerTab_content">
 									    @OfferBlock(Model, LocalisationOffer.Workstation)
-								    </div>
-                                   }
-                                    @if (Model.HasOffer(LocalisationOffer.Desktop))
-                                    { 
-								    <div id="desktop" class="offerTab_content">
-									    @OfferBlock(Model, LocalisationOffer.Desktop)
 								    </div>
                                     }
                                     @if (Model.HasOffer(LocalisationOffer.MeetingRoom))
@@ -324,6 +312,18 @@
                                     {
 								    <div id="visioRoom" class="offerTab_content">
 									    @OfferBlock(Model, LocalisationOffer.VisioRoom)
+								    </div>
+                                    }
+                                    @if (Model.HasOffer(LocalisationOffer.BuisnessLounge))
+                                    {
+								    <div id="buisnessLounge" class="offerTab_content">
+									    @OfferBlock(Model, LocalisationOffer.BuisnessLounge)
+								    </div>
+                                    }
+                                    @if (Model.HasOffer(LocalisationOffer.Desktop))
+                                    { 
+								    <div id="desktop" class="offerTab_content">
+									    @OfferBlock(Model, LocalisationOffer.Desktop)
 								    </div>
                                     }
 							    </div>
@@ -370,7 +370,7 @@
 									    @foreach (var fav in Model.FavoriteLocalisations)
                                         {
                                             <li class="innerContentBlock float-left">
-                                                <div class="eworkerImage imageContainer borderedImg float-left">
+                                                <div class="eworkerImage borderedImg float-left">
                                                     @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(fav.Member.MemberMainData.Avatar, true, Member.AvatarFolder), Links.Content.images.avatar_png, Model.Member.GetDisplayName())
                                                 </div>
                                                 <div class="eworkerDesc marginl10 float-left">

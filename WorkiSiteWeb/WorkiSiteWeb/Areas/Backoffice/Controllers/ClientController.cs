@@ -142,6 +142,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                     {
 						localisation.LocalisationClients.Add(new LocalisationClient { ClientId = clientId });
 
+						TryUpdateModel(client, "InnerModel.Member");
+
                         dynamic newMemberMail = null;
                         if (sendNewAccountMail)
                         {
@@ -416,7 +418,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				using (var stream = new MemoryStream())
 				{
 					_InvoiceService.GenerateInvoice(stream, invoiceData);
-					return File(stream.ToArray(), "application/pdf", invoiceData.Title);
+					return File(stream.ToArray(), "application/pdf", invoiceData.GetFileName() + ".pdf");
 				}
 			}
 			catch (Exception ex)
@@ -492,7 +494,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 					{
 						var invoiceData = model.GetInvoiceModel(localisation);
 						_InvoiceService.GenerateInvoice(stream, invoiceData);
-						return File(stream.ToArray(), "application/pdf", invoiceData.Title);
+						return File(stream.ToArray(), "application/pdf", invoiceData.GetFileName() + ".pdf");
 					}
 				}
 				catch (Exception ex)

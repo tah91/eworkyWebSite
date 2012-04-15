@@ -637,6 +637,24 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TimeAgo_suffixAgo {
+            get {
+                return ResourceManager.GetString("TimeAgo_suffixAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TimeAgo_suffixFromNow {
+            get {
+                return ResourceManager.GetString("TimeAgo_suffixFromNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to un an.
         /// </summary>
         public static string TimeAgo_year {

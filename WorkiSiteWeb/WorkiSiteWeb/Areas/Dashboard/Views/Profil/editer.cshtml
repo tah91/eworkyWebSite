@@ -28,7 +28,7 @@
                 <div class="contentBlock">
 			        <h3 class="blue">@Worki.Resources.Views.Profile.ProfileString.PersonalInfo</h3>
 					<div class="avatarEditor float-right">
-						<div class="avatarContainer imageContainer borderedImg">
+						<div class="avatarContainer borderedImg">
 							@RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, false, Member.AvatarFolder), Links.Content.images.avatar_png, Model.Member.GetDisplayName())
 						</div>
 						<input type="file" name="Avatar" accept="image/*"/>

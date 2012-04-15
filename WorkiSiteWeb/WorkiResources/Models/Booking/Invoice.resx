@@ -163,6 +163,9 @@
     <value>Moyen de paiement</value>
   </data>
   <data name="Price" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="PriceWT" xml:space="preserve">
     <value>Prix HT</value>
   </data>
   <data name="Quantity" xml:space="preserve">

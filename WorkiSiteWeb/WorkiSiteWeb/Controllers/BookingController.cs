@@ -114,6 +114,11 @@ namespace Worki.Web.Controllers
 							LoggerId = memberId
 						});
 
+						if (!offer.Localisation.HasClient(memberId))
+						{
+							offer.Localisation.LocalisationClients.Add(new LocalisationClient { ClientId = memberId });
+						}
+
 						dynamic newMemberMail = null;
 						if (sendNewAccountMail)
 						{

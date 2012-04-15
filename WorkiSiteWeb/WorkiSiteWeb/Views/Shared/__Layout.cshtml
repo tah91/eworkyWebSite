@@ -215,7 +215,7 @@
 	</div>
     @RenderSection("ScriptContent", false)
 	@{
-        var localDateFormat = (culture == Worki.Infrastructure.Culture.en) ? "MM/dd/yyyy hh:mm:ss tt" : "dd/MM/yyyy HH:mm:ss";
+        var localDateFormat = (culture == Worki.Infrastructure.Culture.en) ? "MM/dd/yyyy hh:mm tt" : "dd/MM/yyyy HH:mm";
 	}
 	@if (!Url.IsSecuredUrl())
     {
@@ -251,6 +251,8 @@
 	                // environ ~= about, it's optional
 	                prefixAgo: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_prefixAgo)',
 	                prefixFromNow: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_prefixFromNow)',
+	                suffixAgo: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_suffixAgo)',
+	                suffixFromNow: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_suffixFromNow)',
 	                seconds: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_seconds)',
 	                minute: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_minute)',
 	                minutes: '@Html.JSEscape(Worki.Resources.Views.Home.HomeString.TimeAgo_minutes)',

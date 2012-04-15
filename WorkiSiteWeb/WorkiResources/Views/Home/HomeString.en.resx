@@ -351,36 +351,42 @@
     <value>%d days</value>
   </data>
   <data name="TimeAgo_hour" xml:space="preserve">
-    <value>about an hour</value>
+    <value>an hour</value>
   </data>
   <data name="TimeAgo_hours" xml:space="preserve">
-    <value>about %d hours</value>
+    <value>%d hours</value>
   </data>
   <data name="TimeAgo_minute" xml:space="preserve">
-    <value>about a minute</value>
+    <value>a minute</value>
   </data>
   <data name="TimeAgo_minutes" xml:space="preserve">
     <value>%d minutes</value>
   </data>
   <data name="TimeAgo_month" xml:space="preserve">
-    <value>about a month</value>
+    <value>a month</value>
   </data>
   <data name="TimeAgo_months" xml:space="preserve">
     <value>%d months</value>
   </data>
   <data name="TimeAgo_prefixAgo" xml:space="preserve">
-    <value>ago</value>
+    <value />
   </data>
   <data name="TimeAgo_prefixFromNow" xml:space="preserve">
-    <value>from now</value>
+    <value />
   </data>
   <data name="TimeAgo_seconds" xml:space="preserve">
     <value>less than a minute</value>
   </data>
   <data name="TimeAgo_year" xml:space="preserve">
-    <value>about a year</value>
+    <value>a year</value>
   </data>
   <data name="TimeAgo_years" xml:space="preserve">
     <value>%d years</value>
+  </data>
+  <data name="TimeAgo_suffixAgo" xml:space="preserve">
+    <value>ago</value>
+  </data>
+  <data name="TimeAgo_suffixFromNow" xml:space="preserve">
+    <value>from now</value>
   </data>
 </root>

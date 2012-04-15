@@ -167,7 +167,8 @@
   </data>
   <data name="PunctualUser" xml:space="preserve">
     <value>Just passing by</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="Startup" xml:space="preserve">
     <value>Entrepreneur / Small business</value>
   </data>
@@ -190,7 +191,7 @@
     <value>Intracommunity VAT number</value>
   </data>
   <data name="TaxRate" xml:space="preserve">
-    <value>Tax rate </value>
+    <value>Tax rate (%)</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Address</value>

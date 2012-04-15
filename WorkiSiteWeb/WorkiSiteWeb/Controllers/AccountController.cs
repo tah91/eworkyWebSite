@@ -416,6 +416,13 @@ namespace Worki.Web.Controllers
             return Redirect(loginUri.AbsoluteUri);
         }
 
+		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
+		{
+			Width = 250,
+			Height = 250,
+			TWidth = 80,
+			THeight = 80
+		};
 
         /// <summary>
         /// Callback appelé après l'authentification réussie via le Auth Dialog de Facebook Connect
@@ -464,9 +471,10 @@ namespace Worki.Web.Controllers
 						int memberId = 0;
 						try
 						{
+							var uploadedFileName = this.UploadFile(string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, facebookId), _ImageSize, Member.AvatarFolder);
 							var memberData = new MemberMainData
 							{
-								Avatar = string.Format(MiscHelpers.FaceBookConstants.FacebookProfilePictureUrlPattern, facebookId),
+								Avatar = uploadedFileName,
 								Facebook = faceBookLink,//string.Format(MiscHelpers.FaceBookConstants.FacebookProfileViewPattern, facebookId, facebookId),
 								FirstName = faceBookFirstName,
 								LastName = faceBookLastName,

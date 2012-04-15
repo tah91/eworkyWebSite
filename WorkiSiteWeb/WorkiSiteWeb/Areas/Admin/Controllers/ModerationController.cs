@@ -14,6 +14,8 @@ using System.Reflection;
 using System.Globalization;
 using System.Collections;
 using System.Text;
+using System.Net;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
@@ -440,36 +442,33 @@ namespace Worki.Web.Areas.Admin.Controllers
 			return Content(message);
 		}
 
+		static MiscHelpers.ImageSize _ImageSize = new MiscHelpers.ImageSize
+		{
+			Width = 250,
+			Height = 250,
+			TWidth = 80,
+			THeight = 80
+		};	
+
 		public virtual ActionResult MigrateClients()
 		{
 			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
 			var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
-			var memberWithClients = mRepo.GetMany(m => m.MemberClients.Count != 0);
+			var memberWithImage = mRepo.GetMany(m => !string.IsNullOrEmpty(m.MemberMainData.Avatar) && m.MemberMainData.Avatar.StartsWith("http"));
 
 			var message = "";
 			try
 			{
 				var count = 0;
-				foreach (var item in memberWithClients)
+				foreach (var item in memberWithImage)
 				{
-					var localisations = lRepo.GetMostBooked(item.MemberId, 1);
-					if (localisations.Count == 0)
-						continue;
-
-					var loc = localisations[0];
-					if (loc == null)
-						continue;
-
-					foreach (var client in item.MemberClients)
-					{
-						loc.LocalisationClients.Add(new LocalisationClient { ClientId = client.ClientId });
-					}
+					var uploadedFileName = this.UploadFile(item.MemberMainData.Avatar, _ImageSize, Member.AvatarFolder);
+					item.MemberMainData.Avatar = uploadedFileName;
 					count++;
 				}
 
-				message = string.Format("addition of clients to {0} localisations", count);
+				message = string.Format("modification of {0} members", count);
 
 				context.Commit();
 			}

@@ -19,7 +19,7 @@
 				</div>
 				<div class="bookingPrices float-left">
 					<ul>
-						@foreach (var price in Model.QuotationOffer.OfferPrices)
+						@foreach (var price in Model.QuotationOffer.OfferPrices.OrderBy(op => op.Price))
 						{
 						<li class="bold orange">@price.GetPriceDisplay()</li>	
 						}

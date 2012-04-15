@@ -22,7 +22,7 @@
             }
         </span>
     </div>
-    <div class="commentAvatar imageContainer borderedImg float-left">
+    <div class="commentAvatar borderedImg float-left">
     @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Member.MemberMainData.Avatar, true, Member.AvatarFolder), Links.Content.images.avatar_png, Model.Member.GetDisplayName())
     </div>
     <div class="commentContent float-left" style=@(displayLoc ? "width:70%" : "")>

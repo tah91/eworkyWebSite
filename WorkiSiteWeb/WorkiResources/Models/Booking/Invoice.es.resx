@@ -148,7 +148,7 @@
     <value>Medio de pago</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Pecio sin IVA</value>
+    <value>Pecio</value>
   </data>
   <data name="Quantity" xml:space="preserve">
     <value>Cantidad</value>

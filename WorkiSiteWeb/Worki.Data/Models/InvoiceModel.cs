@@ -28,9 +28,9 @@ namespace Worki.Data.Models
             LocalisationId = booking.Offer.Localisation.ID;
             Member = booking.Client;
             Localisation = booking.Offer.Localisation;
-            InvoiceItems = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price } };
+            InvoiceItems = new List<InvoiceItem> { new InvoiceItem { Description = booking.Offer.Name, Quantity = 1, Price = booking.Price, Invoice = this } };
             Id = booking.Id;
-			Title = booking.Offer.Name + " - " + booking.Id.ToString();
+			Title = booking.Offer.Name;
             Currency = booking.Offer.Currency;
             CreationDate = booking.CreationDate;
             TaxRate = booking.Owner.MemberMainData.TaxRate;
@@ -43,9 +43,14 @@ namespace Worki.Data.Models
 
         #region Utils
 
+		public string GetFileName()
+		{
+			return CultureHelpers.GetSpecificFormat(CreationDate, CultureHelpers.TimeFormat.Date) + " - " + Localisation.Name + " - " + Member.GetFullDisplayName();
+		}
+
         public decimal GetTotalWithoutTax()
         {
-            return InvoiceItems.Sum(i => i.Price * i.Quantity);
+			return InvoiceItems.Sum(i => i.Price * i.Quantity) * (1 - TaxRate / 100);
         }
 
         public decimal GetTotalTax()
@@ -55,7 +60,7 @@ namespace Worki.Data.Models
 
         public decimal GetTotal()
         {
-            return InvoiceItems.Sum(i => i.Price * i.Quantity) * (1 + TaxRate / 100);
+            return InvoiceItems.Sum(i => i.Price * i.Quantity);
         }
 
         public string GetTotalDisplay()
@@ -90,7 +95,10 @@ namespace Worki.Data.Models
     [MetadataType(typeof(InvoiceItem_Validation))]
     public partial class InvoiceItem
     {
-
+		public decimal GetWithoutTax()
+		{
+			return Price * (1 - Invoice.TaxRate / 100);
+		}
     }
 
     public class InvoiceItem_Validation

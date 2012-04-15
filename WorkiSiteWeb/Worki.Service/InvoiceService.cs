@@ -167,7 +167,7 @@ namespace Worki.Service
 			//headers
             this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.Description);
             this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.Quantity);
-            this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.Price);
+            this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.PriceWT);
             this.AddCellHeader(table, Worki.Resources.Models.Booking.Invoice.SubTotal);
 
             var currency = (Offer.CurrencyEnum)invoiceData.Currency;
@@ -177,7 +177,7 @@ namespace Worki.Service
 			{
 				this.AddCell(table, item.Description, Element.ALIGN_LEFT, Rectangle.BOTTOM_BORDER);
 				this.AddCell(table, item.Quantity.ToString(), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
-                this.AddCell(table, item.Price.GetPriceDisplay(currency), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
+				this.AddCell(table, item.GetWithoutTax().GetPriceDisplay(currency), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
                 this.AddCell(table, (item.Price * item.Quantity).GetPriceDisplay(currency), Element.ALIGN_RIGHT, Rectangle.BOTTOM_BORDER);
 			}
 
