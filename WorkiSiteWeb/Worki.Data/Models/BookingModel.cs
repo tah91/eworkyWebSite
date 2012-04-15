@@ -576,16 +576,16 @@ namespace Worki.Data.Models
         {
             string format = displayDecimals ? "0.00" : "0";
             var str = price.ToString(format);
-            switch(currency)
-            {
-                case Offer.CurrencyEnum.USD:
-                    return str + " $";
-                case Offer.CurrencyEnum.GBP:
-                    return str + " £";
-                case Offer.CurrencyEnum.EUR:
-                default:
-                    return str + " €";
-            }
+			switch (currency)
+			{
+				case Offer.CurrencyEnum.USD:
+					return "$" + str;
+				case Offer.CurrencyEnum.GBP:
+					return "£" + str;
+				case Offer.CurrencyEnum.EUR:
+				default:
+					return str + " €";
+			}
         }
     }
 }

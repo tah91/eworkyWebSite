@@ -10,6 +10,7 @@ using System.Linq;
 using System.Data.Entity;
 using Worki.Data.Repository;
 using Worki.Infrastructure.UnitOfWork;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Data.Models
 {
@@ -38,17 +39,21 @@ namespace Worki.Data.Models
 		//the radius of circle within which two localisation are considered same (in km)
 		public const float SeparationDistance = 0.01F;
 
+		public const float EarthRadius = 6376.5F;
+
 		public IList<Localisation> FindByLocation(float latitude, float longitude)
 		{
+			var factor = CultureHelpers.GetDistanceFactor();
 			return (from localisation in _Context.Localisations
-					where EdmMethods.DistanceBetween(latitude, longitude, (float)localisation.Latitude, (float)localisation.Longitude) < BoundDistance
+					where EdmMethods.DistanceBetween(latitude, longitude, (float)localisation.Latitude, (float)localisation.Longitude, EarthRadius * factor) < BoundDistance * factor
 					select localisation).ToList();
 		}
 
 		public IList<Localisation> FindSimilarLocalisation(float latitude, float longitude)
 		{
+			var factor = CultureHelpers.GetDistanceFactor();
 			return (from localisation in _Context.Localisations
-					where EdmMethods.DistanceBetween(latitude, longitude, (float)localisation.Latitude, (float)localisation.Longitude) < SeparationDistance
+					where EdmMethods.DistanceBetween(latitude, longitude, (float)localisation.Latitude, (float)localisation.Longitude, EarthRadius * factor) < SeparationDistance * factor
 					select localisation).ToList();
 		}
 
@@ -59,6 +64,8 @@ namespace Worki.Data.Models
 			var localisations = _Context.Localisations.AsQueryable();
 			//exclude offline ones
 			localisations = localisations.Where(loc => loc.MainLocalisation != null && !loc.MainLocalisation.IsOffline);
+
+			var factor = CultureHelpers.GetDistanceFactor();
 
 			//matching address
 			//if NorthEast and SouthWest given
@@ -77,7 +84,7 @@ namespace Worki.Data.Models
 				if (critLat != 0 && critLng != 0)
 					localisations = from loc
 										 in localisations
-									where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude) < BoundDistance
+									where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude, EarthRadius * factor) < BoundDistance * factor
 									select loc;
 			}
 
@@ -268,10 +275,11 @@ namespace Worki.Data.Models
 
 		public float DistanceBetween(float latitude, float longitude, int localisationId)
 		{
+			var factor = CultureHelpers.GetDistanceFactor();
 			var loc = _Context.Localisations.SingleOrDefault(d => d.ID == localisationId);
 			if (loc == null)
 				return 0;
-			return EdmMethods.DistanceBetween((float)loc.Latitude, (float)loc.Longitude, latitude, longitude) ?? 0;
+			return EdmMethods.DistanceBetween((float)loc.Latitude, (float)loc.Longitude, latitude, longitude, EarthRadius * factor) ?? 0;
 		}
 
         /// <summary>

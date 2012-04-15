@@ -1,5 +1,5 @@
 ﻿
-CREATE FUNCTION [dbo].[DistanceBetween](@Lat1 [real], @Long1 [real], @Lat2 [real], @Long2 [real])
+CREATE FUNCTION [dbo].[DistanceBetween](@Lat1 [real], @Long1 [real], @Lat2 [real], @Long2 [real], @Radius [real])
 RETURNS [real] WITH EXECUTE AS CALLER
 AS 
 BEGIN
@@ -25,9 +25,9 @@ DECLARE @c as real;
 SET @c = 2.0 * ATN2 (SQRT (@a), SQRT (1.0 - @a));
 DECLARE @kEarthRadius as real;
 /* SET kEarthRadius = 3956.0 miles */
-SET @kEarthRadius = 6376.5; /* kms */
+/*SET @kEarthRadius = 6376.5; kms */
 DECLARE @dDistance as real;
-SET @dDistance = @kEarthRadius * @c;
+SET @dDistance = @Radius * @c;
 return (@dDistance);
 END
 

@@ -336,4 +336,7 @@
   <data name="FacebookUpdated" xml:space="preserve">
     <value>Votre Timeline Facebook a été mise à jour</value>
   </data>
+  <data name="Distance" xml:space="preserve">
+    <value>{0:0.##} km</value>
+  </data>
 </root>

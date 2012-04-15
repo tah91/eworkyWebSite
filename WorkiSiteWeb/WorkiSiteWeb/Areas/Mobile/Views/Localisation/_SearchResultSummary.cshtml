@@ -29,7 +29,7 @@
 			}
 			else
 			{
-				<span class="bold">@fullName&nbsp;-&nbsp;</span>@String.Format("{0:0.##} km", Model.Distance)
+				<span class="bold">@fullName&nbsp;-&nbsp;</span>@String.Format(Worki.Resources.Views.Localisation.LocalisationString.Distance, Model.Distance)
 			}			    
 		    </div>
             <div>@Model.Localisation.Adress&nbsp;-&nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</div>

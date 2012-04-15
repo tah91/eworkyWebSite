@@ -274,7 +274,7 @@ namespace Worki.Infrastructure.Helpers
             /* Intermediate result c (great circle distance in Radians). */
             var c = 2.0 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1.0 - a));
 
-            var dDistance = EarthRadius * c;
+            var dDistance = EarthRadius * CultureHelpers.GetDistanceFactor() * c;
             return dDistance;
         }
 

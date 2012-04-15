@@ -18,7 +18,7 @@
             <a href="@link" title="@fullName">@fullName</a>
             @if (Model.Distance < 1000)
             {
-                <span>&nbsp;-&nbsp;@String.Format("{0:0.##} km", Model.Distance) </span>
+                <span>&nbsp;-&nbsp;@String.Format(Worki.Resources.Views.Localisation.LocalisationString.Distance, Model.Distance) </span>
             }
         </h3>
         <div>

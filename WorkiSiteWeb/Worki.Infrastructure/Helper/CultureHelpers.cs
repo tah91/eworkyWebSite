@@ -92,5 +92,22 @@ namespace Worki.Infrastructure.Helpers
 
 			return "";
 		}
+
+		/// <summary>
+		/// Get factor to convert into miles if needed, depending on culture
+		/// </summary>
+		/// <returns>conversion factor</returns>
+		public static float GetDistanceFactor()
+		{
+			switch(System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName)
+			{
+				case "en":
+					return 1 / 1.609F;
+				case "fr":
+				case "es":
+				default:
+					return 1;
+			}
+		}
     }
 }

@@ -199,10 +199,6 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="dbo\Functions\NearestLocalisations.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
     <Build Include="dbo\Tables\Press.sql" />
     <Build Include="dbo\Tables\RentalFile.sql">
       <AnsiNulls>On</AnsiNulls>

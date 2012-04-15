@@ -1327,6 +1327,7 @@
           <Parameter Name="Long1" Type="real" Mode="In" />
           <Parameter Name="Lat2" Type="real" Mode="In" />
           <Parameter Name="Long2" Type="real" Mode="In" />
+          <Parameter Name="Radius" Type="real" Mode="In" />
         </Function>
       </Schema></edmx:StorageModels>
 		<!-- CSDL content -->
