@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Zugang</value>
+  </data>
+  <data name="BackToOwnerSpace" xml:space="preserve">
+    <value>Zurück zu dem Office Manager</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Buchung</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontaktieren</value>
+  </data>
+  <data name="CustomerSheet" xml:space="preserve">
+    <value>Kundenformular</value>
+  </data>
+  <data name="Demand" xml:space="preserve">
+    <value>Antrag</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Mailbox</value>
+  </data>
+  <data name="EmptyBookHistoric" xml:space="preserve">
+    <value>Vous n'avez aucune réservation. Pour effectuer une demande de réservation, allez sur la fiche du lieu souhaité.</value>
+  </data>
+  <data name="EmptyNews" xml:space="preserve">
+    <value>Sie haben keine Benachrichtigung bekommen</value>
+  </data>
+  <data name="EmptyQuotationHistoric" xml:space="preserve">
+    <value>Vous n'avez fait aucune demande de devis. Pour effectuer une demande de devis, allez sur la fiche du lieu souhaité.</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="Historic" xml:space="preserve">
+    <value>Überblick</value>
+  </data>
+  <data name="Inline" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="LastNews" xml:space="preserve">
+    <value>Aktuelle Nachrichten</value>
+  </data>
+  <data name="ManagementTitle" xml:space="preserve">
+    <value>{0}s Schnittstellenmanagement</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Mitglied</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Nachricht</value>
+  </data>
+  <data name="Names" xml:space="preserve">
+    <value>Identität</value>
+  </data>
+  <data name="NeedInfoPaypal" xml:space="preserve">
+    <value>Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans l'onglet Option de votre espace gérant.</value>
+  </data>
+  <data name="NoCurrentBooking" xml:space="preserve">
+    <value>Sie haben keine ausstehende Buchungsanforderung. Um Ihre archivierten Buchungen zu befragen begeben Sie sich zu Angebote.</value>
+  </data>
+  <data name="NoCurrentQuotation" xml:space="preserve">
+    <value>Sie haben keine ausstehende Kostenanfrage. Um Ihre archivierten Kostenanfragen zu befragen begeben Sie sich zu Angebote.</value>
+    <comment>Jm Correct l27</comment>
+  </data>
+  <data name="NotDefined" xml:space="preserve">
+    <value>Nicht fixiert</value>
+  </data>
+  <data name="NoWorkingBooking" xml:space="preserve">
+    <value>Keine Buchungsanforderungen wurden archiviert</value>
+  </data>
+  <data name="NoWorkingQuotation" xml:space="preserve">
+    <value>Keine Kostenanfragen wurden archiviert</value>
+  </data>
+  <data name="NumberBooking" xml:space="preserve">
+    <value>Anzahl der Buchungen</value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value>Angebot</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Angebote</value>
+  </data>
+  <data name="OffersDirectAccess" xml:space="preserve">
+    <value>Accès direct à la gestion des offres</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value>Office Manager</value>
+  </data>
+  <data name="PaymentInfoModified" xml:space="preserve">
+    <value>Zahlungsinformationen wurden aktualisiert</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Tél.</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="PlaceDoNotHaveOffer" xml:space="preserve">
+    <value>Dieser Raum hat noch keine Angebote</value>
+  </data>
+  <data name="Refuse" xml:space="preserve">
+    <value>Ablehnen</value>
+  </data>
+  <data name="RefuseBooking" xml:space="preserve">
+    <value>Wollen Sie wirklich diese Buchungsanforderung ablehnen ?</value>
+  </data>
+  <data name="RefuseQuotation" xml:space="preserve">
+    <value>Wollen Sie wirklich diese Kostenanfrage ablehnen ? Es wird dann unmöglich, die Kontaktdaten des potentiellen Kunden zu befragen</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Ergebnis</value>
+  </data>
+  <data name="SeeClientProfile" xml:space="preserve">
+    <value>Kundenprofil anschauen</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value>Fläche</value>
+  </data>
+  <data name="Tariff" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="TariffByPeriod" xml:space="preserve">
+    <value>&lt;b&gt;{0} {1}&lt;/b&gt; par &lt;b&gt;{2}&lt;/b&gt;</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="Town" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="TTC" xml:space="preserve">
+    <value>einschließlich Steuern, ohne Provision</value>
+  </data>
+  <data name="VisitNeeded" xml:space="preserve">
+    <value>Besuchsanfrage</value>
+  </data>
+  <data name="WorkplacesDirectAccess" xml:space="preserve">
+    <value>Direkter Zugang zu dem Workplace Management</value>
+  </data>
+  <data name="PaypalIdentity" xml:space="preserve">
+    <value>Paypal-Zugangsdaten</value>
+  </data>
+  <data name="WorkingPrinciple" xml:space="preserve">
+    <value>Funktionsprinzip</value>
+  </data>
+  <data name="DoNotHaveOnlineBooking" xml:space="preserve">
+    <value>Dieser Raum hat noch kein Angebot, das Online-Buchungen bieten kann</value>
+  </data>
+  <data name="DoNotHaveOnlineQuotation" xml:space="preserve">
+    <value>Dieser Raum hat noch kein Angebot, das Online-Kostenanfragen bieten kann</value>
+  </data>
+  <data name="PriceConfiguration" xml:space="preserve">
+    <value>Einstellung der Preisparameter</value>
+  </data>
+  <data name="BOAlerts" xml:space="preserve">
+    <value>Office Manager : Benachrichtigung(en)</value>
+  </data>
+  <data name="DashboardAlerts" xml:space="preserve">
+    <value>User space : Benachrichtigung(en)</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="CreateBooking" xml:space="preserve">
+    <value>Buchung erstellen</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Zeitraum</value>
+  </data>
+  <data name="BillingInfo" xml:space="preserve">
+    <value>Rechnungsinformationen</value>
+  </data>
+  <data name="InvoiceAction" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="InvoiceClient" xml:space="preserve">
+    <value>Kunde</value>
+  </data>
+  <data name="InvoiceDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="InvoiceEmpty" xml:space="preserve">
+    <value>Für diesen Monat gibt es noch keine Rechnung</value>
+  </data>
+  <data name="InvoiceId" xml:space="preserve">
+    <value>N°</value>
+  </data>
+  <data name="InvoicePlace" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="InvoicePrice" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="ClientAdded" xml:space="preserve">
+    <value>Der Kunde wurde erfolgreich hinzugefügt</value>
+  </data>
+  <data name="ClientAlreadyExists" xml:space="preserve">
+    <value>Sie haben schon diesen Kunden</value>
+  </data>
+  <data name="InvoiceOffer" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="BackOfficeAsked" xml:space="preserve">
+    <value>Ihre Anfrage wurde berücksichtigt. Aus Sicherheitsgründen werden unsere Moderatoren eine Identitätsüberprüfung durchführen und den Zugang zu dem Office Manager innerhalb von 48 Stunden ermöglichen.</value>
+  </data>
+  <data name="BackofficeDemand" xml:space="preserve">
+    <value>Office Manager Antrag</value>
+  </data>
+</root>

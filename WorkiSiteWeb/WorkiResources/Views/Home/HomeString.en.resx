@@ -368,12 +368,6 @@
   <data name="TimeAgo_months" xml:space="preserve">
     <value>%d months</value>
   </data>
-  <data name="TimeAgo_prefixAgo" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TimeAgo_prefixFromNow" xml:space="preserve">
-    <value />
-  </data>
   <data name="TimeAgo_seconds" xml:space="preserve">
     <value>less than a minute</value>
   </data>

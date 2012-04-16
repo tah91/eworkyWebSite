@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessBO" xml:space="preserve">
+    <value>Obtenir l'espace gérant</value>
+  </data>
+  <data name="AddSpace" xml:space="preserve">
+    <value>Meine Büros sofort teilen</value>
+  </data>
+  <data name="ForBoth1" xml:space="preserve">
+    <value>Entscheiden Sie mit Ihrem Gastgeber zusammenzuarbeiten und auszutauschen und profitieren Sie vom gegenseitigen Beitrag und der kollektiven Bereicherung</value>
+  </data>
+  <data name="ForBoth2" xml:space="preserve">
+    <value>Entdecken Sie neue Marktgelegenheiten durch den Kontakt mit anderen Strukturen, teilen Sie Ressourcen und Aussichten</value>
+  </data>
+  <data name="ForBoth3" xml:space="preserve">
+    <value>Entwickeln Sie ein dynamisches und kreatives Umfeld für Ihre zwei Strukturen</value>
+  </data>
+  <data name="ForBothHead1" xml:space="preserve">
+    <value>Enrichissez-vous d’échanges !</value>
+  </data>
+  <data name="ForBothHead2" xml:space="preserve">
+    <value>Bilden Sie Ihr Netz !</value>
+  </data>
+  <data name="ForOwner" xml:space="preserve">
+    <value>Propriétaire</value>
+  </data>
+  <data name="ForOwner1" xml:space="preserve">
+    <value>Proposez gratuitement et en quelques clics votre espace sur eWorky</value>
+  </data>
+  <data name="ForOwner2" xml:space="preserve">
+    <value>Gagnez plusieurs milliers d'euros par an et par poste de travail</value>
+  </data>
+  <data name="ForOwner3" xml:space="preserve">
+    <value>Nous nous occupons de tout ! Tout est automatique, de la recherche d’occupants à l’encaissement des fonds</value>
+  </data>
+  <data name="ForOwnerHead1" xml:space="preserve">
+    <value>Vous disposez de bureaux inoccupés ?</value>
+  </data>
+  <data name="ForOwnerHead2" xml:space="preserve">
+    <value>Vous préféreriez en tirer un revenu plutôt que d’y entasser vos vieilles factures ?</value>
+  </data>
+  <data name="ForTenant" xml:space="preserve">
+    <value>Mieter</value>
+  </data>
+  <data name="ForTenant1" xml:space="preserve">
+    <value>Finden Sie einen Arbeitsplatz bis zu fünfmal günstiger als bei traditionnellen Vermietungen oder in Business Centers</value>
+  </data>
+  <data name="ForTenant2" xml:space="preserve">
+    <value>Profitieren Sie von der Sharing-Flexibilität mit täglichen, wöchentlichen oder monatlichen Buchungen…</value>
+  </data>
+  <data name="ForTenant3" xml:space="preserve">
+    <value>Buchen Sie Ihren Raum und zahlen Sie in wenigen Sekunden !</value>
+  </data>
+  <data name="ForTenantHead1" xml:space="preserve">
+    <value>Sind Sie ein Kleinstunternehmen oder selbständig ?</value>
+  </data>
+  <data name="ForTenantHead2" xml:space="preserve">
+    <value>Vous recherchez un espace pour votre activité ?</value>
+  </data>
+  <data name="Legally1" xml:space="preserve">
+    <value>Le partage s’effectue généralement sous forme de &lt;b&gt;sous-location&lt;/b&gt; : une société loue l'ensemble des bureaux et sous-loue ensuite à d'autres sociétés. Une société souhaitant proposer une sous location doit obtenir un accord écrit de son propriétaire à défaut de l'avoir prévu dans le bail.</value>
+  </data>
+  <data name="Legally2" xml:space="preserve">
+    <value>Mais chez eWorky nous recommandons une solution, plus souple : &lt;b&gt;le contrat de prestation de service&lt;/b&gt;. Il s’agit d’un acte par lequel une personne s’oblige, contre rémunération,  à effectuer pour une autre personne une prestation de services.</value>
+  </data>
+  <data name="Legally3" xml:space="preserve">
+    <value>Dans le cas présent il s’agit de la mise à disposition d’un local et de l’équipement qui lui est rattaché, voire d’autres services (ménage, etc.). Et pour vous aider, &lt;b&gt;eWorky&lt;/b&gt; met à votre disposition des &lt;b&gt;contrats types&lt;/b&gt;, et vous propose de les &lt;b&gt;gérer directement&lt;/b&gt; à partir du site !</value>
+  </data>
+  <data name="Legally4" xml:space="preserve">
+    <value>A noter que les deux types de contrats peuvent également s’accompagner d’une domiciliation de l’entreprise.</value>
+  </data>
+  <data name="LegallyTitle" xml:space="preserve">
+    <value>Et juridiquement, ça se passe comment ?</value>
+  </data>
+  <data name="ShareOfficeMenu" xml:space="preserve">
+    <value>Partager un bureau</value>
+  </data>
+  <data name="ShareOfficeTitle" xml:space="preserve">
+    <value>Partager son bureau : pourquoi et comment ?</value>
+  </data>
+</root>
