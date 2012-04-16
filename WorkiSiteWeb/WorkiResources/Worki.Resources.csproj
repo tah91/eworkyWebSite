@@ -515,6 +515,9 @@
     <EmbeddedResource Include="Views\Home\CguString.es.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.es.resx" />
+    <EmbeddedResource Include="Views\Home\HomeString.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\FaqString.es.resx" />
     <EmbeddedResource Include="Views\Home\HomeString.es.resx" />
     <EmbeddedResource Include="Views\Home\HowItWorksString.es.resx" />
