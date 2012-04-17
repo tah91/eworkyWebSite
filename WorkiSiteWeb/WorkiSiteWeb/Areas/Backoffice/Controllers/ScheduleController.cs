@@ -564,7 +564,35 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 						});
 					}
 
+                    dynamic clientMail = new Email(MVC.Emails.Views.Email);
+                    if (booking.StatusId == (int)MemberBooking.Status.Accepted)
+                    {
+                        //send mail to client
+                        var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+                        var userUrl = urlHelp.ActionAbsolute(MVC.Dashboard.Home.Booking());
+                        TagBuilder userLink = new TagBuilder("a");
+                        userLink.MergeAttribute("href", userUrl);
+                        userLink.InnerHtml = Worki.Resources.Views.Shared.SharedString.SpaceUser;
+                        clientMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.BookingMail + ">";
+                        clientMail.To = booking.Client.Email;
+                        clientMail.Subject = Worki.Resources.Email.BookingString.AcceptBookingClientSubject;
+                        clientMail.ToName = booking.Client.MemberMainData.FirstName;
+                        clientMail.Content = string.Format(Worki.Resources.Email.BookingString.AcceptBookingClient,
+                                                            Localisation.GetOfferType(booking.Offer.Type),
+                                                            booking.GetStartDate(),
+                                                            booking.GetEndDate(),
+                                                            booking.Offer.Localisation.Name,
+                                                            booking.Offer.Localisation.Adress + ", " + booking.Offer.Localisation.PostalCode + " " + booking.Offer.Localisation.City,
+                                                            booking.Price,
+                                                            userLink);
+                    }
+
 					context.Commit();
+
+                    if (booking.StatusId == (int)MemberBooking.Status.Accepted)
+                    {
+                        clientMail.Send();
+                    }
 
 					var newContext = ModelFactory.GetUnitOfWork();
 					var newRepo = ModelFactory.GetRepository<IBookingRepository>(newContext);
