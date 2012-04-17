@@ -50,6 +50,7 @@ namespace Worki.Data.Models
             toRet[MiscHelpers.SeoConstants.PlaceName] = LocalisationData.Name;
 
             toRet[MiscHelpers.SeoConstants.Order] = (int)OrderBy;
+            toRet[MiscHelpers.SeoConstants.Search] = (int)SearchType;
 			toRet[MiscHelpers.SeoConstants.Result] = (int)ResultView;
 
             if (FreeAreas)

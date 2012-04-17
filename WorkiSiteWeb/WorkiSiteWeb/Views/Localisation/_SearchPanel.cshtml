@@ -8,7 +8,11 @@
     @Html.HiddenFor(model => model.Criteria.NorthEastLng)
     @Html.HiddenFor(model => model.Criteria.SouthWestLat)
     @Html.HiddenFor(model => model.Criteria.SouthWestLng)
+    @Html.HiddenFor(model => model.Criteria.SearchType)
+    if (Model.Criteria.SearchType == eSearchType.ePerName)
+    { 
     @Html.HiddenFor(model => model.Criteria.LocalisationData.Name)
+    }
 	@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
     @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
     <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
