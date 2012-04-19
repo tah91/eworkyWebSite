@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activity" xml:space="preserve">
+    <value>Vie du site</value>
+  </data>
+  <data name="AddedPlaces" xml:space="preserve">
+    <value>Espaces ajoutés</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Administrateurs</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="AdminSpace" xml:space="preserve">
+    <value>Espace administrateur</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="BOHome" xml:space="preserve">
+    <value>Espace</value>
+  </data>
+  <data name="BONews" xml:space="preserve">
+    <value>Bienvenue</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Bookings" xml:space="preserve">
+    <value>Demandes de réservation</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="BusinessCenterFr" xml:space="preserve">
+    <value>Business Fr</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Clients</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="CommentedPlaces" xml:space="preserve">
+    <value>Espaces commentés</value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value>Activité communautaire</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Configure" xml:space="preserve">
+    <value>Paramétrage</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="CoworkingSpaceFr" xml:space="preserve">
+    <value>Coworking Fr</value>
+  </data>
+  <data name="CurrentBookings" xml:space="preserve">
+    <value>Réservations</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="EditPassword" xml:space="preserve">
+    <value>Mot de passe</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="EditProfil" xml:space="preserve">
+    <value>Edition</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="FavoritePlaces" xml:space="preserve">
+    <value>Espaces favoris</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Historic" xml:space="preserve">
+    <value>Historique</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>eWorkers</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Moderation" xml:space="preserve">
+    <value>Modération</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="ModifyPayement" xml:space="preserve">
+    <value>Informations de règlement</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Actualités</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Offres</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="OnlineRental" xml:space="preserve">
+    <value>Annonces en ligne</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="OwnerSpace" xml:space="preserve">
+    <value>Espace gérant</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Places" xml:space="preserve">
+    <value>Mes espaces en ligne</value>
+  </data>
+  <data name="Profil" xml:space="preserve">
+    <value>Profil</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Quoations" xml:space="preserve">
+    <value>Demandes de devis</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="RefreshBlog" xml:space="preserve">
+    <value>Rafraichir blog</value>
+  </data>
+  <data name="Rentals" xml:space="preserve">
+    <value>Annonces</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Sheet" xml:space="preserve">
+    <value>Fiches</value>
+  </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>Abonnements</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="TopMember" xml:space="preserve">
+    <value>Top 50</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="UserSpace" xml:space="preserve">
+    <value>Espace utilisateur</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="WorkingBook" xml:space="preserve">
+    <value>Réservations en cours</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="WorkingQuotation" xml:space="preserve">
+    <value>Demandes de devis en cours</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Mon profil</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Gérants</value>
+    <comment>Mika</comment>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Planning</value>
+  </data>
+  <data name="AddClient" xml:space="preserve">
+    <value>Ajouter un client</value>
+  </data>
+  <data name="MyClients" xml:space="preserve">
+    <value>Mes clients</value>
+  </data>
+  <data name="SharedOfficeFr" xml:space="preserve">
+    <value>Partage Fr</value>
+  </data>
+  <data name="EditOffer" xml:space="preserve">
+    <value>Edition</value>
+  </data>
+  <data name="EditPlace" xml:space="preserve">
+    <value>Edition du lieu</value>
+  </data>
+  <data name="Billing" xml:space="preserve">
+    <value>Coordonnées de facturation</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>Factures client</value>
+  </data>
+  <data name="CreateInvoice" xml:space="preserve">
+    <value>Créer une facture</value>
+  </data>
+  <data name="LocalisationSchedule" xml:space="preserve">
+    <value>Planning global</value>
+  </data>
+  <data name="OfferSchedule" xml:space="preserve">
+    <value>Planning par offre</value>
+  </data>
+  <data name="Prices" xml:space="preserve">
+    <value>Preise</value>
+  </data>
+  <data name="PendingBO" xml:space="preserve">
+    <value>BO en attente</value>
+    <comment>Steeve</comment>
+  </data>
+</root>
