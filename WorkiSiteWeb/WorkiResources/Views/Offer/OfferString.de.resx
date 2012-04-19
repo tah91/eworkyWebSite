@@ -139,7 +139,7 @@
     <value>Les nouveaux paramètres ont bien été pris en compte.</value>
   </data>
   <data name="OfferCharacteristics" xml:space="preserve">
-    <value>Caractéristiques de l'offre</value>
+    <value>Angebotseigenschaften</value>
   </data>
   <data name="AskDevis" xml:space="preserve">
     <value>Demande de devis</value>
@@ -163,6 +163,6 @@
     <value>Preise</value>
   </data>
   <data name="AddPrice" xml:space="preserve">
-    <value>Ajouter un tarif</value>
+    <value>Preis hinzufügen</value>
   </data>
 </root>

@@ -128,7 +128,7 @@
     <value>Hébergement</value>
   </data>
   <data name="Archiving" xml:space="preserve">
-    <value>Stockage / archivage</value>
+    <value>Archivierung</value>
   </data>
   <data name="Audio" xml:space="preserve">
     <value>Audioconférence</value>
@@ -152,21 +152,21 @@
     <value>Café / Bar</value>
   </data>
   <data name="Community" xml:space="preserve">
-    <value>Activités communautaires</value>
+    <value>Gemeinschaftliche Aktivitäten</value>
   </data>
   <data name="Courier" xml:space="preserve">
-    <value>Gestion du courrier</value>
+    <value>Postverbindung</value>
     <comment>?</comment>
   </data>
   <data name="ComputerHelp" xml:space="preserve">
-    <value>Assistance informatique</value>
+    <value>EDV-Unterstützung</value>
   </data>
   <data name="Computers" xml:space="preserve">
-    <value>Mise à disposition d'ordinateurs</value>
+    <value>Computer-Bereitstellung</value>
     <comment>?</comment>
   </data>
   <data name="Concierge" xml:space="preserve">
-    <value>Conciergerie</value>
+    <value>Hausmeister</value>
     <comment>?</comment>
   </data>
   <data name="Description" xml:space="preserve">
@@ -232,16 +232,16 @@
     <comment>?</comment>
   </data>
   <data name="Pressing" xml:space="preserve">
-    <value>Pressing</value>
+    <value>Reinigung</value>
   </data>
   <data name="Printer" xml:space="preserve">
-    <value>Copie, impression, fax</value>
+    <value>Kopieren, Ausdrucken, Faxen</value>
   </data>
   <data name="Projector" xml:space="preserve">
     <value>Rétroprojecteur</value>
   </data>
   <data name="RelaxingArea" xml:space="preserve">
-    <value>Espace de détente</value>
+    <value>Ruhebereich</value>
   </data>
   <data name="Restauration" xml:space="preserve">
     <value>Restaurant</value>
@@ -277,7 +277,7 @@
     <value>De 8 à 20 personnes</value>
   </data>
   <data name="RoomService" xml:space="preserve">
-    <value>Room service bureau</value>
+    <value>Büro Room Service</value>
   </data>
   <data name="SafeStorage" xml:space="preserve">
     <value>Rangement sécurisé</value>
@@ -286,7 +286,7 @@
     <value>Scène</value>
   </data>
   <data name="Secretariat" xml:space="preserve">
-    <value>Secrétariat</value>
+    <value>Sekretariat</value>
     <comment>?</comment>
   </data>
   <data name="Shower" xml:space="preserve">
@@ -319,7 +319,7 @@
     <comment>?</comment>
   </data>
   <data name="BuisnessLounge" xml:space="preserve">
-    <value>Salon d'affaires</value>
+    <value>Business Lounge</value>
   </data>
   <data name="FreeArea" xml:space="preserve">
     <value>Kostenloser Raum (Hot Spot, Cafe, usw.)</value>
@@ -328,7 +328,7 @@
     <value>Salles de séminaire</value>
   </data>
   <data name="Desktop" xml:space="preserve">
-    <value>Bureaux</value>
+    <value>Räume</value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
     <value>Salles de visioconférence</value>
@@ -343,40 +343,40 @@
     <value>Régie son</value>
   </data>
   <data name="SingleMeetingRoom" xml:space="preserve">
-    <value>Salle de réunion</value>
+    <value>Meetingraum</value>
   </data>
   <data name="SingleSeminarRoom" xml:space="preserve">
-    <value>Salle de séminaire</value>
+    <value>Seminarraum</value>
   </data>
   <data name="SingleDesktop" xml:space="preserve">
-    <value>Bureau</value>
+    <value>Raum</value>
   </data>
   <data name="SingleVisioRoom" xml:space="preserve">
-    <value>Salle de visioconférence</value>
+    <value>Raum für Visiokonferenzen</value>
   </data>
   <data name="SingleWorkstation" xml:space="preserve">
-    <value>Poste de travail</value>
+    <value>Arbeitsplatz</value>
   </data>
   <data name="AllOffers" xml:space="preserve">
     <value>Tous les espaces</value>
   </data>
   <data name="AllInclusive" xml:space="preserve">
-    <value>Tout compris (charges, taxes, nettoyage, etc.)</value>
+    <value>Alles inklusive (Nebenskosten, Gebühren, Reinigung, usw.)</value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
-    <value>Disponibilité immédiate</value>
+    <value>Sofortige Verfügbarkeit</value>
   </data>
   <data name="CoffeePrice" xml:space="preserve">
     <value>Kaffeepreis</value>
   </data>
   <data name="CoworkingVibe" xml:space="preserve">
-    <value>Ambiance coworking</value>
+    <value>Coworking Stimmung</value>
   </data>
   <data name="Desktop100Plus" xml:space="preserve">
     <value>&gt; 100 m2</value>
   </data>
   <data name="Desktop10_25" xml:space="preserve">
-    <value>De 10 à 25 m2</value>
+    <value>Von 10 bis 25 m²</value>
   </data>
   <data name="Desktop25_50" xml:space="preserve">
     <value>De 25 à 50 m2</value>
@@ -385,10 +385,10 @@
     <value>De 50 à 100 m2</value>
   </data>
   <data name="Equipped" xml:space="preserve">
-    <value>Equipé et câblé</value>
+    <value>Ausgestattet und kabliert</value>
   </data>
   <data name="FlexibleContract" xml:space="preserve">
-    <value>Contrat flexible</value>
+    <value>Flexibler Vertrag</value>
     <comment>?</comment>
   </data>
   <data name="ForCardOwner" xml:space="preserve">
@@ -396,10 +396,10 @@
     <comment>?</comment>
   </data>
   <data name="MinimalPeriod" xml:space="preserve">
-    <value>Durée minimale de location</value>
+    <value>Minimale Vertragslaufzeit</value>
   </data>
   <data name="NotSectorial" xml:space="preserve">
-    <value>Non sectoriel</value>
+    <value>Nicht-sektoriel</value>
   </data>
   <data name="OpenToAll" xml:space="preserve">
     <value>Ouvert à tous</value>
@@ -408,7 +408,7 @@
     <value>Accès réservé aux clients</value>
   </data>
   <data name="Sector" xml:space="preserve">
-    <value>Secteur</value>
+    <value>Sektor</value>
     <comment>?</comment>
   </data>
   <data name="Kitchen" xml:space="preserve">
@@ -418,7 +418,7 @@
     <value>Ligne téléphonique</value>
   </data>
   <data name="SharedMeetingRoom" xml:space="preserve">
-    <value>Salle de réunion</value>
+    <value>Meetingraum</value>
   </data>
   <data name="DesktopSearch" xml:space="preserve">
     <value>Bureaux (centre d'affaires, pépinière, etc.)</value>

@@ -252,7 +252,7 @@
     <value>Ex : 9:00</value>
   </data>
   <data name="UserServices" xml:space="preserve">
-    <value>Services à l'usager</value>
+    <value>Benutzer Service</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>Mittwoch</value>
