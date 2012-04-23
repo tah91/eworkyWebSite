@@ -450,6 +450,14 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\markerclusterer.js" />
+    <Content Include="Scripts\markerclusterer.min.js">
+      <DependentUpon>markerclusterer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\markerclusterer_compiled.js" />
+    <Content Include="Scripts\markerclusterer_compiled.min.js">
+      <DependentUpon>markerclusterer_compiled.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\Utils.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js">

@@ -800,11 +800,24 @@ namespace Worki.Web.Controllers
 
 		JsonResult GetSearchResult(SearchCriteriaFormViewModel criteriaViewModel)
 		{
-			var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
-			var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
-			var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
-			var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
-			return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+            var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
+            var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
+            switch (criteriaViewModel.Criteria.ResultView)
+            {
+                case eResultView.Map:
+                    {
+                        var locList = (from item in criteriaViewModel.Criteria.Projection select item.GetJson());
+                        return Json(new { order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                    }
+                case eResultView.List:
+                default:
+                    {
+                        var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
+                        var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
+                        return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                    }
+            }
+
 		}
 
         /// <summary>

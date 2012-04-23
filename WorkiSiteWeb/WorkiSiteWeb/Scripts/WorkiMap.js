@@ -195,6 +195,10 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         this.Map = _searchMap
     }
 
+    SetCluster = function () {
+        var markerCluster = new MarkerClusterer(_searchMap, _markersArray);
+    }
+
     //center the search map on an address
     CenterSearchResults = function (where) {
         _geocoder.geocode({ 'address': where }, _callbackForCenterSearchResults);
@@ -351,6 +355,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
 
     //public methods
     this.LoadSearchMap = LoadSearchMap;
+    this.SetCluster = SetCluster;
     this.LoadDetailMap = LoadDetailMap;
     this.ClearMap = ClearMap;
     this.CenterSearchResults = CenterSearchResults;

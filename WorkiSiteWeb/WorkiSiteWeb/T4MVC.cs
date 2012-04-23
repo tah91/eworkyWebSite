@@ -448,6 +448,12 @@ namespace Links {
         public static readonly string main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/main.min.js") ? Url("main.min.js") : Url("main.js");
                       
         public static readonly string main_min_js = Url("main.min.js");
+        public static readonly string markerclusterer_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/markerclusterer.min.js") ? Url("markerclusterer.min.js") : Url("markerclusterer.js");
+                      
+        public static readonly string markerclusterer_min_js = Url("markerclusterer.min.js");
+        public static readonly string markerclusterer_compiled_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/markerclusterer_compiled.min.js") ? Url("markerclusterer_compiled.min.js") : Url("markerclusterer_compiled.js");
+                      
+        public static readonly string markerclusterer_compiled_min_js = Url("markerclusterer_compiled.min.js");
         public static readonly string MicrosoftAjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftAjax.min.js") ? Url("MicrosoftAjax.min.js") : Url("MicrosoftAjax.js");
                       
         public static readonly string MicrosoftAjax_min_js = Url("MicrosoftAjax.min.js");
@@ -566,8 +572,6 @@ namespace Links {
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
             public static readonly string listing_png = Url("listing.png");
             public static readonly string loaderbig_gif = Url("loaderbig.gif");
-            public static readonly string loadermedium_gif = Url("loadermedium.gif");
-            public static readonly string loadersmall_gif = Url("loadersmall.gif");
             public static readonly string loading_gif = Url("loading.gif");
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");

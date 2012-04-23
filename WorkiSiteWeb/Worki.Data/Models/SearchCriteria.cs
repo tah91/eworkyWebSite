@@ -249,6 +249,7 @@ namespace Worki.Data.Models
         public eSearchType SearchType { get; set; }
         public eDirectAccessType DirectAccessType { get; set; }
 		public eResultView ResultView { get; set; }
+        public IEnumerable<LocalisationProjection> Projection { get; set; }
 
 		public float NorthEastLat { get; set; }
 		public float NorthEastLng { get; set; }

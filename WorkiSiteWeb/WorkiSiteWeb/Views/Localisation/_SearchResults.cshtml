@@ -5,74 +5,14 @@
     var rvd = new RouteValueDictionary(dict);
 }
 
-<div class="searchFormBlockLeft" id="searchResults">
-    @if (Model.Criteria.ResultView == eResultView.List)
+<div id="searchResults">
+    @for (int i = 0; i < Model.PageResults.Count; ++i)
     {
-        for (int i = 0; i < Model.PageResults.Count; ++i)
-        {
-            var index = Model.PagingInfo.GlobalIndex(i);
-            @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
-        }
-
-	    <div class="pager">
-		    @Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult, rvd); })
-	    </div>
+        var index = Model.PagingInfo.GlobalIndex(i);
+        @Html.Partial(MVC.Localisation.Views._SearchResultSummary, Model.GetSingleResult(index))
     }
-    else
-    {
-        <div class="contentBlock">
-            <div class="mapContainer" id="resultsMapBig">
-            </div>
-        </div>
 
-        <script type="text/javascript">
-            require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
-
-            });
-
-            var resultsMap = null;
-            var bounds = null;
-            function initialize() {
-                require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-                    resultsMap = new WorkiMap('resultsMapBig');
-                    var where = "@Model.Criteria.Place";
-                    resultsMap.LoadSearchMap(where);
-                    var handler = function() {
-                        if(resultsMap.Map!=null){
-                            var bounds =  resultsMap.Map.getBounds();
-                            var nelat = bounds.getNorthEast().lat();
-                            var nelng = bounds.getNorthEast().lng();
-                            var swlat = bounds.getSouthWest().lat();
-                            var swlng = bounds.getSouthWest().lng();
-
-                            $('#Criteria_NorthEastLat').val(nelat);
-                            $('#Criteria_NorthEastLng').val(nelng);
-                            $('#Criteria_SouthWestLat').val(swlat);
-                            $('#Criteria_SouthWestLng').val(swlng);
-
-                            //$("#searchFormReset form").submit();
-                        }
-                
-                        //alert(event);
-                    }
-                    resultsMap.AddHandler('bounds_changed', handler);
-                    bounds = new google.maps.LatLngBounds();
-				
-                    @foreach (var localisation in Model.PageResults)
-                    {
-				        @:resultsMap.AddMarker(@localisation.Latitude, @localisation.Longitude, "@Html.Raw(localisation.Name)", bounds);
-                    }
-                    @if (Model.PageResults.Count >= 2)
-                    {
-                        <text>
-                        resultsMap.FitBoundsSearchResults(bounds);
-                        </text>
-                    }
-                    var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
-                    workiAutocomplete.SetAutocomplete();
-                });   
-            }
-        </script> 
-    }
-    @Html.Partial(MVC.Shared.Views._LoaderBlock, "big")
+	<div class="pager">
+		@Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Localisation.ActionNames.AjaxFullSearchResult, rvd); })
+	</div>
 </div>  
