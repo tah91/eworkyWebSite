@@ -184,7 +184,7 @@
     <value>Wie funktionniert es ?</value>
   </data>
   <data name="HowItWorksHead" xml:space="preserve">
-    <value>eWorky est un marché collaboratif du lieu de travail</value>
+    <value>eWorky ist ein kollaborativer Markt für Arbeitsplätze</value>
   </data>
   <data name="Join" xml:space="preserve">
     <value>Addieren, bewerten und kommentieren Sie die Arbeitsplätze, um den Recherchen der ganzen Gemeinschaft zu helfen</value>
@@ -296,7 +296,7 @@
     <value>Suchen</value>
   </data>
   <data name="UserTitle" xml:space="preserve">
-    <value>Je cherche un espace de travail</value>
+    <value>User</value>
   </data>
   <data name="UserTutorial" xml:space="preserve">
     <value>Ich suche einen Arbeitsraum</value>

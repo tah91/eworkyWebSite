@@ -326,10 +326,10 @@
     <value>N°</value>
   </data>
   <data name="InvoicePlace" xml:space="preserve">
-    <value>Lieu</value>
+    <value>Ort</value>
   </data>
   <data name="InvoicePrice" xml:space="preserve">
-    <value>Prix</value>
+    <value>Preis</value>
   </data>
   <data name="ClientAdded" xml:space="preserve">
     <value>Der Kunde wurde erfolgreich hinzugefügt</value>

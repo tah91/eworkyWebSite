@@ -320,4 +320,10 @@
   <data name="OnEWTeleRoom" xml:space="preserve">
     <value>Auf eWorky ist ein Telepräsenzraum ein Raum, der den Teilnehmern, einer Videokonferenz das Gefühl gibt, dass Sie im gleichen Raum sind. Er ist mit Filmkameras und Mikrofonen ausgestattet, so sehen die Teilnehmer die anderen Personen in Lebensgröße. </value>
   </data>
+  <data name="ClickHere" xml:space="preserve">
+    <value>Klicken Sie hier</value>
+  </data>
+  <data name="SearchPage" xml:space="preserve">
+    <value>Rechercheseite</value>
+  </data>
 </root>

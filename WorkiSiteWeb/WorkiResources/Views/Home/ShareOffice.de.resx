@@ -139,22 +139,22 @@
     <value>Bilden Sie Ihr Netz !</value>
   </data>
   <data name="ForOwner" xml:space="preserve">
-    <value>Propriétaire</value>
+    <value>Vermieter</value>
   </data>
   <data name="ForOwner1" xml:space="preserve">
     <value>Proposez gratuitement et en quelques clics votre espace sur eWorky</value>
   </data>
   <data name="ForOwner2" xml:space="preserve">
-    <value>Gagnez plusieurs milliers d'euros par an et par poste de travail</value>
+    <value>Verdienen Sie mehrere tausend Euro pro Jahr und pro Arbeitsraum</value>
   </data>
   <data name="ForOwner3" xml:space="preserve">
-    <value>Nous nous occupons de tout ! Tout est automatique, de la recherche d’occupants à l’encaissement des fonds</value>
+    <value>Wir kümmern uns um alles ! Von der Vermieter-Suche bis zum Einkassieren, alles ist automatisch</value>
   </data>
   <data name="ForOwnerHead1" xml:space="preserve">
-    <value>Vous disposez de bureaux inoccupés ?</value>
+    <value>Sie haben unbesetzte Büros ?</value>
   </data>
   <data name="ForOwnerHead2" xml:space="preserve">
-    <value>Vous préféreriez en tirer un revenu plutôt que d’y entasser vos vieilles factures ?</value>
+    <value>Sie ziehen es vor, ein Einkommen davon zuziehen und nicht mehr Ihre alten Rechnungen darin aufzuschichten ?</value>
   </data>
   <data name="ForTenant" xml:space="preserve">
     <value>Mieter</value>
@@ -190,7 +190,7 @@
     <value>Et juridiquement, ça se passe comment ?</value>
   </data>
   <data name="ShareOfficeMenu" xml:space="preserve">
-    <value>Partager un bureau</value>
+    <value>Desk-Sharing</value>
   </data>
   <data name="ShareOfficeTitle" xml:space="preserve">
     <value>Partager son bureau : pourquoi et comment ?</value>
