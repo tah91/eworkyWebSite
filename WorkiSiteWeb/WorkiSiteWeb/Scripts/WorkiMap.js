@@ -172,16 +172,21 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     var _detailMap = null;
     var _markersArray = [];
     var _geocoder = new google.maps.Geocoder();
+    var _markerCluster = null;
     var _latitudeField = latitudeField;
     var _longitudeField = longitudeField;
     var _initialBounds = null;
     var _initialWhere = null;
+    var _markerIcon = '/Content/images/iconeMap.png';
+    var _markerIconRed = '/Content/images/iconeMapRed.png';
+    var _markerIconOrange = '/Content/images/iconeMapOrange.png';
 
     //methods
     //load an empty map to fill
-    LoadSearchMap = function (where) {
+    LoadSearchMap = function (where, resetControl) {
         var options = {
-            zoom: 9,
+            scrollwheel: false,
+            zoom: 13,
             mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -191,12 +196,28 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         _searchMap.setCenter(center);
         _initialWhere = where;
         CenterSearchResults(where);
-        _SetResetControl();
+        if (resetControl) {
+            _SetResetControl();
+        }
         this.Map = _searchMap
     }
 
     SetCluster = function () {
-        var markerCluster = new MarkerClusterer(_searchMap, _markersArray);
+        var styles = [{
+            url: '/Content/images/circle.png',
+            height: 25,
+            width: 25,
+            textColor: 'white',
+            textSize: 10
+        }, {
+            url: '/Content/images/circleBig.png',
+            height: 35,
+            width: 35,
+            textColor: 'white',
+            textSize: 12
+        }];
+        var mcOptions = { gridSize: 40, maxZoom: 13, styles: styles };
+        _markerCluster = new MarkerClusterer(_searchMap, _markersArray, mcOptions);
     }
 
     //center the search map on an address
@@ -207,7 +228,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     _callbackForCenterSearchResults = function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             _searchMap.setCenter(results[0].geometry.location);
-            LoadPin(results[0].geometry.location, "Votre recherche", false, _searchMap, null, true);
+            LoadPin(results[0].geometry.location, "Votre recherche", 0, false, _searchMap, null, true);
         }
     }
 
@@ -229,7 +250,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         }
 
         _detailMap.setCenter(center);
-        LoadPin(center, title, editable, _detailMap);
+        LoadPin(center, title, 0, editable, _detailMap);
         google.maps.event.trigger(_detailMap, 'resize');
     }
 
@@ -240,6 +261,10 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
             }
             _markersArray.length = 0;
         }
+        if (_markerCluster) {
+            _markerCluster.clearMarkers();
+        }
+
     }
 
     _SetResetControl = function () {
@@ -262,16 +287,6 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         controlUI.title = 'Cliquer pour revenir à la position initial';
         controlDiv.appendChild(controlUI);
 
-        // Set CSS for the control interior
-        //        var controlText = document.createElement('DIV');
-        //        controlText.style.fontFamily = 'Arial,sans-serif';
-        //        controlText.style.fontSize = '11px';
-        //        controlText.style.color = 'white';
-        //        controlText.style.paddingLeft = '4px';
-        //        controlText.style.paddingRight = '4px';
-        //        controlText.innerHTML = 'Reset';
-        //        controlUI.appendChild(controlText);
-
         // Setup the click event listeners: simply set the map to Chicago
         google.maps.event.addDomListener(controlUI, 'click', function () {
             CenterSearchResults(_initialWhere);
@@ -283,29 +298,27 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
     }
 
     //load an pin with address, nam and desc
-    LoadPin = function (LL, name, dragable, theMap, clickHandler, currentPosition) {
+    LoadPin = function (LL, name, id,  dragable, theMap, clickHandler, currentPosition) {
         if (dragable == null)
             dragable = false;
         if (theMap == null)
             theMap = _searchMap;
-        var title = "<span class=\"pinTitle\"> " + name + "</span>";
-        var image = '/Content/images/iconeMap.png';
+        var image = _markerIcon;
         if (currentPosition != null)
-            image = '/Content/images/iconeMapRed.png';
+            image = _markerIconRed;
         var marker = new google.maps.Marker({
             position: LL,
             map: theMap,
             title: name,
             icon: image
         });
-        //if (dragable == true)
 
+        marker.set("id", id);
         _markersArray.push(marker);
 
         marker.setDraggable(dragable);
         if (dragable) {
             google.maps.event.addListener(marker, 'dragend', function () {
-                //alert(marker.getPosition().lng());
                 $(_latitudeField).val(marker.getPosition().lat());
                 $(_longitudeField).val(marker.getPosition().lng());
             });
@@ -317,11 +330,19 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
             google.maps.event.addListener(marker, 'click', function () { });
         }
 
+        google.maps.event.addListener(marker, 'mouseover', function () {
+            marker.setIcon(_markerIconOrange)
+        });
+
+        google.maps.event.addListener(marker, 'mouseout', function () {
+            marker.setIcon(_markerIcon)
+        });
+
     }
 
-    AddMarker = function (latitude, longitude, name, bounds) {
+    AddMarker = function (latitude, longitude, name, id, bounds, handler) {
         var LL = new google.maps.LatLng(latitude, longitude);
-        LoadPin(LL, name);
+        LoadPin(LL, name, id, null, null, handler);
         bounds.extend(LL);
        }
 
@@ -344,11 +365,9 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         if (status == google.maps.GeocoderStatus.OK) {
             _detailMap.setCenter(results[0].geometry.location);
             _detailMap.setZoom(15);
-            //alert(results[0].geometry.location);
-            LoadPin(results[0].geometry.location, 'Votre choix', true, _detailMap);
+            LoadPin(results[0].geometry.location, 'Votre choix', 0, true, _detailMap);
         }
         else {
-            //alert("La géolocalisation de votre lieu a échouée");
             return;
         }
     }

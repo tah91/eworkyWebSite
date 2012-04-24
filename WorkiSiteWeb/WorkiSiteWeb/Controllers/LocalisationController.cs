@@ -72,6 +72,40 @@ namespace Worki.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Action to get localisation description
+        /// </summary>
+        /// <param name="id">Id of the localisation</param>
+        /// <returns>Redirect to returnUrl</returns>
+        public virtual PartialViewResult MapItemSummary(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+            var localisation = lRepo.Get(id);
+            if (localisation == null)
+                return null;
+
+            return PartialView(MVC.Localisation.Views._MapItemSummary, localisation);
+        }
+
+        /// <summary>
+        /// Action to get localisation description
+        /// </summary>
+        /// <param name="id">Id of the localisation</param>
+        /// <returns>Redirect to returnUrl</returns>
+        public virtual ActionResult MapItemLink(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+            var localisation = lRepo.Get(id);
+            if (localisation == null)
+                return null;
+
+            return Json(localisation.GetDetailFullUrl(Url), JsonRequestBehavior.AllowGet);
+        }
+
 		/// <summary>
 		/// The view containing the offers of a localisation
 		/// </summary>

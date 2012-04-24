@@ -448,12 +448,15 @@ namespace Links {
         public static readonly string main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/main.min.js") ? Url("main.min.js") : Url("main.js");
                       
         public static readonly string main_min_js = Url("main.min.js");
-        public static readonly string markerclusterer_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/markerclusterer.min.js") ? Url("markerclusterer.min.js") : Url("markerclusterer.js");
+        public static readonly string map_infobox_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/map.infobox.min.js") ? Url("map.infobox.min.js") : Url("map.infobox.js");
                       
-        public static readonly string markerclusterer_min_js = Url("markerclusterer.min.js");
-        public static readonly string markerclusterer_compiled_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/markerclusterer_compiled.min.js") ? Url("markerclusterer_compiled.min.js") : Url("markerclusterer_compiled.js");
+        public static readonly string map_infobox_min_js = Url("map.infobox.min.js");
+        public static readonly string map_markerclusterer_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/map.markerclusterer.min.js") ? Url("map.markerclusterer.min.js") : Url("map.markerclusterer.js");
                       
-        public static readonly string markerclusterer_compiled_min_js = Url("markerclusterer_compiled.min.js");
+        public static readonly string map_markerclusterer_min_js = Url("map.markerclusterer.min.js");
+        public static readonly string map_markerclusterer_compiled_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/map.markerclusterer_compiled.min.js") ? Url("map.markerclusterer_compiled.min.js") : Url("map.markerclusterer_compiled.js");
+                      
+        public static readonly string map_markerclusterer_compiled_min_js = Url("map.markerclusterer_compiled.min.js");
         public static readonly string MicrosoftAjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftAjax.min.js") ? Url("MicrosoftAjax.min.js") : Url("MicrosoftAjax.js");
                       
         public static readonly string MicrosoftAjax_min_js = Url("MicrosoftAjax.min.js");
@@ -548,6 +551,8 @@ namespace Links {
             public static readonly string border_png = Url("border.png");
             public static readonly string cecilia_png = Url("cecilia.png");
             public static readonly string checked_png = Url("checked.png");
+            public static readonly string circle_png = Url("circle.png");
+            public static readonly string circleBig_png = Url("circleBig.png");
             public static readonly string close_png = Url("close.png");
             public static readonly string comm_content_png = Url("comm_content.png");
             public static readonly string cross_png = Url("cross.png");
@@ -566,6 +571,7 @@ namespace Links {
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
             public static readonly string howitworks_png = Url("howitworks.png");
             public static readonly string iconeMap_png = Url("iconeMap.png");
+            public static readonly string iconeMapOrange_png = Url("iconeMapOrange.png");
             public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
             public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
@@ -1246,6 +1252,16 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult MapItemSummary() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.MapItemSummary);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult MapItemLink() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.MapItemLink);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Offers() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Offers);
         }
@@ -1365,6 +1381,8 @@ namespace Worki.Web.Controllers {
             public readonly string Index = "Index";
             public readonly string DetailsOld = "DetailsOld";
             public readonly string Details = "details";
+            public readonly string MapItemSummary = "MapItemSummary";
+            public readonly string MapItemLink = "MapItemLink";
             public readonly string Offers = "offers";
             public readonly string BookableOffers = "bookable-offers";
             public readonly string AskBooking = "AskBooking";
@@ -1412,6 +1430,7 @@ namespace Worki.Web.Controllers {
             public readonly string _LocalisationForm = "~/Views/Localisation/_LocalisationForm.cshtml";
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
             public readonly string _LocalisationInfos = "~/Views/Localisation/_LocalisationInfos.cshtml";
+            public readonly string _MapItemSummary = "~/Views/Localisation/_MapItemSummary.cshtml";
             public readonly string _SearchForm = "~/Views/Localisation/_SearchForm.cshtml";
             public readonly string _SearchMap = "~/Views/Localisation/_SearchMap.cshtml";
             public readonly string _SearchOrderSelector = "~/Views/Localisation/_SearchOrderSelector.cshtml";
@@ -1451,6 +1470,18 @@ namespace Worki.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("name", name);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult MapItemSummary(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.MapItemSummary);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult MapItemLink(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MapItemLink);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

@@ -23,7 +23,7 @@
             else
             {
                 <div class="contentBlock">
-                    <div class="mapContainer" id="resultsMap">
+                    <div class="mapContainer bigResultsMap" id="resultsMap">
                     </div>
                 </div>
             }
@@ -33,12 +33,22 @@
 
     <div class="searchFormBlock float-right blockContainer">
 		<div class="contentBlock" id="resultSearchBlock">
-            @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
+            <div class="marginb10" >
+                <div class="float-left">
+                    <a href=# id="resultByMap">map</a>
+                </div>
+                <div class="float-right">
+                    <a href=# id="resultByList">list</a>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
             @if (Model.Criteria.ResultView == eResultView.List)
             { 
+            @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
 			<div class="resultsMapDiv">
-                <div id="mapContainer" class="relative">
-                    <div class="mapContainer" id="resultsMap">
+                <div class="relative">
+                    <div class="mapContainer smallResultsMap" id="resultsMap">
                     </div>
                     @Html.Partial(MVC.Shared.Views._LoaderBlock, "small")
                 </div>

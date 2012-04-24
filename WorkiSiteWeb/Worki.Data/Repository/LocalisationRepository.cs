@@ -210,7 +210,8 @@ namespace Worki.Data.Models
             {
                 var offers = _Context.Offers.AsQueryable();
                 //all offers from the localisations that are online
-                offers = offers.Where(o => o.IsOnline && locProjectionList.Select(loc => loc.ID).Contains(o.LocalisationId));
+                var correctIds = locProjectionList.Select(loc => loc.ID).ToList();
+                offers = offers.Where(o => o.IsOnline && correctIds.Contains(o.LocalisationId));
 
                 var offerProjectionList = (from item in offers
                                            select new
