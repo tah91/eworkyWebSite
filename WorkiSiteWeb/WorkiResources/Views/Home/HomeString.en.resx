@@ -228,7 +228,7 @@
     <value>Add a new workspace</value>
   </data>
   <data name="CostSpace" xml:space="preserve">
-    <value>A subscription workspace</value>
+    <value>A paid workspace</value>
     <comment>?</comment>
   </data>
   <data name="FreeSpace" xml:space="preserve">

@@ -117,82 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessBO" xml:space="preserve">
-    <value>Obtenir l'espace gérant</value>
+  <data name="Biblio" xml:space="preserve">
+    <value>Biblio / Musée</value>
   </data>
-  <data name="AddSpace" xml:space="preserve">
-    <value>Meine Büros sofort teilen</value>
+  <data name="BuisnessCenter" xml:space="preserve">
+    <value>Centre d'aff.</value>
   </data>
-  <data name="ForBoth1" xml:space="preserve">
-    <value>Entscheiden Sie mit Ihrem Gastgeber zusammenzuarbeiten und auszutauschen und profitieren Sie vom gegenseitigen Beitrag und der kollektiven Bereicherung</value>
+  <data name="CoffeeResto" xml:space="preserve">
+    <value>Cafe / Restaurant</value>
   </data>
-  <data name="ForBoth2" xml:space="preserve">
-    <value>Entdecken Sie neue Marktgelegenheiten durch den Kontakt mit anderen Strukturen, teilen Sie Ressourcen und Aussichten</value>
+  <data name="Country" xml:space="preserve">
+    <value>Pays</value>
   </data>
-  <data name="ForBoth3" xml:space="preserve">
-    <value>Entwickeln Sie ein dynamisches und kreatives Umfeld für Ihre zwei Strukturen</value>
+  <data name="CoworkingSpace" xml:space="preserve">
+    <value>Esp. cowork.</value>
   </data>
-  <data name="ForBothHead1" xml:space="preserve">
-    <value>Enrichissez-vous d’échanges !</value>
+  <data name="Create" xml:space="preserve">
+    <value>Création</value>
   </data>
-  <data name="ForBothHead2" xml:space="preserve">
-    <value>Bilden Sie Ihr Netz !</value>
+  <data name="Date" xml:space="preserve">
+    <value>Date / Heure</value>
   </data>
-  <data name="ForOwner" xml:space="preserve">
-    <value>Vermieter</value>
+  <data name="Edit" xml:space="preserve">
+    <value>Edition</value>
   </data>
-  <data name="ForOwner1" xml:space="preserve">
-    <value>Proposez gratuitement et en quelques clics votre espace sur eWorky</value>
+  <data name="EworkerName" xml:space="preserve">
+    <value>eWorker</value>
   </data>
-  <data name="ForOwner2" xml:space="preserve">
-    <value>Verdienen Sie mehrere tausend Euro pro Jahr und pro Arbeitsraum</value>
+  <data name="Eworkers" xml:space="preserve">
+    <value>eWorkers</value>
   </data>
-  <data name="ForOwner3" xml:space="preserve">
-    <value>Wir kümmern uns um alles ! Von der Vermieter-Suche bis zum Einkassieren, alles ist automatisch</value>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hôtel</value>
   </data>
-  <data name="ForOwnerHead1" xml:space="preserve">
-    <value>Sie haben unbesetzte Büros ?</value>
+  <data name="LastCreate" xml:space="preserve">
+    <value>Créations</value>
   </data>
-  <data name="ForOwnerHead2" xml:space="preserve">
-    <value>Sie ziehen es vor, ein Einkommen davon zuziehen und nicht mehr Ihre alten Rechnungen darin aufzuschichten ?</value>
+  <data name="LastModif" xml:space="preserve">
+    <value>Modifications</value>
   </data>
-  <data name="ForTenant" xml:space="preserve">
-    <value>Mieter</value>
+  <data name="NbByCountry" xml:space="preserve">
+    <value>Total par pays</value>
   </data>
-  <data name="ForTenant1" xml:space="preserve">
-    <value>Finden Sie einen Arbeitsplatz bis zu fünfmal günstiger als bei traditionnellen Vermietungen oder in Business Centers</value>
+  <data name="PlaceName" xml:space="preserve">
+    <value>Nom du lieu</value>
   </data>
-  <data name="ForTenant2" xml:space="preserve">
-    <value>Profitieren Sie von der Sharing-Flexibilität mit täglichen, wöchentlichen oder monatlichen Buchungen…</value>
+  <data name="PrivateArea" xml:space="preserve">
+    <value>Lieu privé</value>
   </data>
-  <data name="ForTenant3" xml:space="preserve">
-    <value>Buchen Sie Ihren Raum und zahlen Sie in wenigen Sekunden !</value>
+  <data name="PublicSpace" xml:space="preserve">
+    <value>EPN / Cyber</value>
   </data>
-  <data name="ForTenantHead1" xml:space="preserve">
-    <value>Sind Sie ein Kleinstunternehmen oder selbständig ?</value>
+  <data name="SharedOffice" xml:space="preserve">
+    <value>Partage</value>
   </data>
-  <data name="ForTenantHead2" xml:space="preserve">
-    <value>Vous recherchez un espace pour votre activité ?</value>
+  <data name="StatTitle" xml:space="preserve">
+    <value>Statistiques</value>
   </data>
-  <data name="Legally1" xml:space="preserve">
-    <value>Le partage s’effectue généralement sous forme de &lt;b&gt;sous-location&lt;/b&gt; : une société loue l'ensemble des bureaux et sous-loue ensuite à d'autres sociétés. Une société souhaitant proposer une sous location doit obtenir un accord écrit de son propriétaire à défaut de l'avoir prévu dans le bail.</value>
+  <data name="Status" xml:space="preserve">
+    <value>Type</value>
   </data>
-  <data name="Legally2" xml:space="preserve">
-    <value>Mais chez eWorky nous recommandons une solution, plus souple : &lt;b&gt;le contrat de prestation de service&lt;/b&gt;. Il s’agit d’un acte par lequel une personne s’oblige, contre rémunération,  à effectuer pour une autre personne une prestation de services.</value>
+  <data name="Telecentre" xml:space="preserve">
+    <value>Télécentre</value>
   </data>
-  <data name="Legally3" xml:space="preserve">
-    <value>Dans le cas présent il s’agit de la mise à disposition d’un local et de l’équipement qui lui est rattaché, voire d’autres services (ménage, etc.). Et pour vous aider, &lt;b&gt;eWorky&lt;/b&gt; met à votre disposition des &lt;b&gt;contrats types&lt;/b&gt;, et vous propose de les &lt;b&gt;gérer directement&lt;/b&gt; à partir du site !</value>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
   </data>
-  <data name="Legally4" xml:space="preserve">
-    <value>A noter que les deux types de contrats peuvent également s’accompagner d’une domiciliation de l’entreprise.</value>
+  <data name="TravelerSpace" xml:space="preserve">
+    <value>Esp. voyag.</value>
   </data>
-  <data name="LegallyTitle" xml:space="preserve">
-    <value>Et juridiquement, ça se passe comment ?</value>
+  <data name="Wifi" xml:space="preserve">
+    <value>Hot Spot</value>
   </data>
-  <data name="ShareOfficeMenu" xml:space="preserve">
-    <value>Desk-Sharing</value>
-  </data>
-  <data name="ShareOfficeTitle" xml:space="preserve">
-    <value>Partager son bureau : pourquoi et comment ?</value>
+  <data name="WorkingHotel" xml:space="preserve">
+    <value>Hôtel d'ent.</value>
   </data>
 </root>

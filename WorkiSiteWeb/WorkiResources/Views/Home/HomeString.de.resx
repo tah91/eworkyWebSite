@@ -195,7 +195,7 @@
     <value>Booking</value>
   </data>
   <data name="ReserveSpeech" xml:space="preserve">
-    <value>- Business centers, business lounges&lt;br /&gt;- Coworking space&lt;br /&gt;- Smart Work Centers, etc.</value>
+    <value>- Business centers, business lounges&lt;br /&gt;- Coworking space&lt;br /&gt;- Telecentres, usw.</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
@@ -204,7 +204,7 @@
     <value>Search</value>
   </data>
   <data name="SearchSpeech" xml:space="preserve">
-    <value>- WiFi cafes, WiFi hotspots&lt;br /&gt;- Public digital space&lt;br /&gt;- Library, museum, etc.</value>
+    <value>- Internet cafe, hotspot&lt;br /&gt;- Public digital space&lt;br /&gt;- Bibliothek, Museum, usw.</value>
   </data>
   <data name="SoonLotofFeatures" xml:space="preserve">
     <value>And soon many other featrues.</value>

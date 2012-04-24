@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptBookingClient" xml:space="preserve">
+    <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été accepté pour la somme de &lt;b&gt;{5}&lt;/b&gt; €.
+
+Pour confirmer définitivement votre réservation, rendez-vous dans votre {6} pour régler votre réservation.</value>
+  </data>
+  <data name="AcceptBookingClientSubject" xml:space="preserve">
+    <value>Votre demande de réservation a été validée par le gérant</value>
+  </data>
+  <data name="AcceptBookingOwner" xml:space="preserve">
+    <value>Vous avez accepté la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) pour la somme de &lt;b&gt;{5}&lt;/b&gt;</value>
+  </data>
+  <data name="AlertBookingNeed" xml:space="preserve">
+    <value>Contacter le lieu suivant car une demande de réservation a été faite, alors que le lieu ne propose pas encore de réservation :
+Nom du lieu : &lt;b&gt;{0}&lt;/b&gt;</value>
+    <comment>jm</comment>
+  </data>
+  <data name="AlertBookingNeedSubject" xml:space="preserve">
+    <value>Demande de possibilité de réservation</value>
+    <comment>jm</comment>
+  </data>
+  <data name="BookingMailBody" xml:space="preserve">
+    <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
+Téléphone : &lt;b&gt;{1}&lt;/b&gt;
+Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;
+Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;
+Besoin : &lt;b&gt;{4}&lt;/b&gt;
+Début : &lt;b&gt;{5}&lt;/b&gt;
+Fin : &lt;b&gt;{6}&lt;/b&gt;
+Message : &lt;b&gt;{7}&lt;/b&gt;</value>
+  </data>
+  <data name="BookingMailSubject" xml:space="preserve">
+    <value>Alerte eWorky – Demande de réservation</value>
+  </data>
+  <data name="BookingNewMember" xml:space="preserve">
+    <value>Suite à votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;), un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
+
+Votre login est "&lt;b&gt;{5}&lt;/b&gt;" et votre mot de passe temporaire est &lt;b&gt;"{6}"&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{7}&lt;/b&gt;
+
+Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{8}&lt;/b&gt;</value>
+  </data>
+  <data name="BookingNewMemberSubject" xml:space="preserve">
+    <value>Un compte a été créé suite à votre demande de réservation</value>
+  </data>
+  <data name="BookingOwnerBody" xml:space="preserve">
+    <value>Vous avez reçu une demande de réservation pour un(e) {0} dans l'établissement {1} ({2}). 
+
+Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation dans les meilleurs délais.</value>
+  </data>
+  <data name="BookingOwnerSubject" xml:space="preserve">
+    <value>Demande de réservation - {0}</value>
+  </data>
+  <data name="CalandarBookingCreation" xml:space="preserve">
+    <value>Le gérant de &lt;b&gt;{0}&lt;/b&gt; a ajouté votre réservation pour un(e) &lt;b&gt;{1}&lt;/b&gt; du &lt;b&gt;{2}&lt;/b&gt; au &lt;b&gt;{3}&lt;/b&gt; sur son agenda eWorky. 
+
+Vous pouvez dès à présent consulter cette réservation dans votre espace utilisateur &lt;b&gt;{4}&lt;/b&gt;. 
+
+Le montant de cette réservation est de &lt;b&gt;{5} €&lt;/b&gt;, nous vous invitons également à effectuer ce règlement en ligne via Paypal.
+Pour votre prochaine réservation, n’hésitez pas à passer directement par eworky.com pour plus de simplicité !
+
+Si cet espace vous a plu n’hésitez pas à le noter et commenter sur sa fiche eWorky &lt;b&gt;{6}&lt;/b&gt;.</value>
+  </data>
+  <data name="CalandarBookingCreationSubject" xml:space="preserve">
+    <value>Votre réservation chez {0} a été enregistrée sur eWorky</value>
+    <comment>jm</comment>
+  </data>
+  <data name="CalandarBookingModification" xml:space="preserve">
+    <value>Le gérant de &lt;b&gt;{0}&lt;/b&gt; a modifié votre réservation sur son agenda eWorky !
+Votre réservation est désormais enregistrée du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt;.
+
+Vous pouvez consulter vos différentes réservations dans votre espace utilisateur &lt;b&gt;{3}&lt;/b&gt;.
+Pour votre prochaine réservation, n’hésitez pas à passer directement par eworky.com pour plus de simplicité !
+
+Si cet espace vous a plu n’hésitez pas à le noter et commenter sur sa fiche eWorky &lt;b&gt;{4}&lt;/b&gt;.</value>
+  </data>
+  <data name="CalandarBookingModificationSubject" xml:space="preserve">
+    <value>Votre réservation chez {0} a été modifiée</value>
+  </data>
+  <data name="ClientCreationAccount" xml:space="preserve">
+    <value>Un gérant d'espace vous a rajouté dans son fichier client, et un compte eWorky a été créé. Il vous permettra de suivre  l’historique et l’état de vos réservations.
+
+Votre login est "&lt;b&gt;{0}&lt;/b&gt;" et votre mot de passe temporaire est &lt;b&gt;"{1}"&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{2}&lt;/b&gt;
+
+Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{3}&lt;/b&gt;</value>
+  </data>
+  <data name="ClientCreationAccountSubject" xml:space="preserve">
+    <value>Un compte a été crée pour gérer vos réservations</value>
+  </data>
+  <data name="CreateBookingClient" xml:space="preserve">
+    <value>Votre demande de réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) a été prise en compte. 
+Le gérant de l'espace confirmera votre réservation dès que possible.</value>
+  </data>
+  <data name="CreateBookingClientSubject" xml:space="preserve">
+    <value>Votre demande de réservation a bien été prise en compte</value>
+  </data>
+  <data name="CreateBookingTeam" xml:space="preserve">
+    <value>&lt;b&gt;Création&lt;/b&gt;
+
+Nom : &lt;b&gt;{0}&lt;/b&gt;
+Téléphone : &lt;b&gt;{1}&lt;/b&gt;
+Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;
+Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;
+Besoin : &lt;b&gt;{4}&lt;/b&gt;
+Début : &lt;b&gt;{5}&lt;/b&gt;
+Fin : &lt;b&gt;{6}&lt;/b&gt;
+Message : &lt;b&gt;{7}&lt;/b&gt;</value>
+  </data>
+  <data name="CreateQuotationClient" xml:space="preserve">
+    <value>Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m² dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) a été prise en compte. 
+Le gérant de l'espace confirmera votre demande de devis dès que possible.</value>
+  </data>
+  <data name="CreateQuotationClientSubject" xml:space="preserve">
+    <value>Votre demande de devis a bien été prise en compte</value>
+  </data>
+  <data name="CreateQuotationOwner" xml:space="preserve">
+    <value>Vous avez reçu une demande de devis pour un(e) {0} dans l'établissement {1} ({2}). 
+
+Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation dans les meilleurs délais.</value>
+  </data>
+  <data name="CreateQuotationOwnerSubject" xml:space="preserve">
+    <value>Demande de devis - {0}</value>
+  </data>
+  <data name="PartyCreateAccount" xml:space="preserve">
+    <value>Suite à votre inscription au Networking des coworkers, nous avons le plaisir de vous annoncer qu’un compte eWorky vous a été créé !
+
+Votre login est "&lt;b&gt;{0}&lt;/b&gt;" et votre mot de passe temporaire est &lt;b&gt;"{1}"&lt;/b&gt;. Vous pouvez changer votre mot de passe allant sur votre profil : &lt;b&gt;{2}&lt;/b&gt;
+
+Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{3}&lt;/b&gt;</value>
+  </data>
+  <data name="PartyCreateAccountSubject" xml:space="preserve">
+    <value>Votre compte eWorky a été créé !</value>
+  </data>
+  <data name="PartyRegister" xml:space="preserve">
+    <value>Votre inscription à la soirée Networking coworkers a bien été enregistrée !
+Nous vous attendons dans les locaux de &lt;b&gt;{0}&lt;/b&gt; (&lt;b&gt;{1}&lt;/b&gt;) pour rencontrer autour d’un verre les coworkers et les espace de coworking parisiens. Vous aurez également la possibilité de faire un pitch de présentation de 45 secondes.
+N’hésitez pas à noter et commenter vos espaces préférés sur eWorky.</value>
+  </data>
+  <data name="PartyRegisterSubject" xml:space="preserve">
+    <value>Votre inscription au networking des coworkers est bien enregistrée !</value>
+  </data>
+  <data name="PartyRegisterTeam" xml:space="preserve">
+    <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
+Téléphone : &lt;b&gt;{1}&lt;/b&gt;
+Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;
+Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;</value>
+  </data>
+  <data name="PartyRegisterTeamSubject" xml:space="preserve">
+    <value>Alerte eWorky – Inscription networking</value>
+  </data>
+  <data name="PayementOwner" xml:space="preserve">
+    <value>La réservation n°{0} a été réglé par le client. Vous pouvez consulter les réservations confirmées dans votre espace gérant.</value>
+  </data>
+  <data name="PayementSubject" xml:space="preserve">
+    <value>La réservation n°{0} a été réglée</value>
+  </data>
+  <data name="QuotationMailBody" xml:space="preserve">
+    <value>Nom : &lt;b&gt;{0}&lt;/b&gt;
+Téléphone : &lt;b&gt;{1}&lt;/b&gt;
+Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;
+Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;
+Besoin : &lt;b&gt;{4}&lt;/b&gt;
+Surface : &lt;b&gt;{5}&lt;/b&gt;
+Message : &lt;b&gt;{6}&lt;/b&gt;</value>
+  </data>
+  <data name="QuotationMailSubject" xml:space="preserve">
+    <value>Alerte eWorky – Demande de devis</value>
+  </data>
+  <data name="QuotationNewMemberBody" xml:space="preserve">
+    <value>Suite à votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m2 dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;), un compte eWorky a été créé. Il vous, permettra de suivre  l’historique et l’état de vos demandes de devis et de vos réservations.
+
+Votre login est &lt;b&gt;{4}&lt;/b&gt; et votre mot de passe temporaire est &lt;b&gt;{5}&lt;/b&gt;. Vous pouvez changer votre mot de passe en allant sur votre profil : &lt;b&gt;{6}&lt;/b&gt;
+
+Nous vous invitons de plus à compléter votre profil en vous rendant à cette adresse : &lt;b&gt;{7}&lt;/b&gt;</value>
+  </data>
+  <data name="QuotationNewMemberSubject" xml:space="preserve">
+    <value>eWorky – Un compte a été créé suite à votre demande de devis</value>
+  </data>
+  <data name="RefuseBookingClient" xml:space="preserve">
+    <value>Malheureusement, votre demande de réservation pour un(e) {0} du {1} au {2}  dans l’établissement {3} ({4}) a été refusée, faute de disponibilité.
+
+Le gérant vous invite à réitérer votre demande à un autre moment ou pour une autre offre.</value>
+  </data>
+  <data name="RefuseBookingClientSubject" xml:space="preserve">
+    <value>Votre demande de réservation a été refusée par le gérant</value>
+  </data>
+  <data name="RefuseBookingOwner" xml:space="preserve">
+    <value>Vous avez refusé la réservation pour un(e) &lt;b&gt;{0}&lt;/b&gt; du &lt;b&gt;{1}&lt;/b&gt; au &lt;b&gt;{2}&lt;/b&gt; dans l’établissement &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) pour la raison suivante : &lt;b&gt;{5}&lt;/b&gt;</value>
+  </data>
+  <data name="RefuseQuotationClient" xml:space="preserve">
+    <value>Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; dans l’établissement &lt;b&gt;{1}&lt;/b&gt; (&lt;b&gt;{2}&lt;/b&gt;) a été refusé pour la raison suivante : {3}</value>
+  </data>
+</root>

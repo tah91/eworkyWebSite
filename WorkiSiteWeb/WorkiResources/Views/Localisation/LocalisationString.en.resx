@@ -337,4 +337,7 @@ Your message will be directly  forwarded to the space owner.</value>
   <data name="Distance" xml:space="preserve">
     <value>{0:0.##} miles</value>
   </data>
+  <data name="FacebookUpdated" xml:space="preserve">
+    <value>Your Facebook Timeline was updated</value>
+  </data>
 </root>

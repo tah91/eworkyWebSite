@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AC" xml:space="preserve">
+    <value>Climatisation</value>
+    <comment>Features</comment>
+  </data>
+  <data name="Access24" xml:space="preserve">
+    <value>Zugang 24/7</value>
+  </data>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Hébergement</value>
+  </data>
+  <data name="Archiving" xml:space="preserve">
+    <value>Archivierung</value>
+  </data>
+  <data name="Audio" xml:space="preserve">
+    <value>Audioconférence</value>
+  </data>
+  <data name="AvoidAfternoom" xml:space="preserve">
+    <value>Nachmittag</value>
+  </data>
+  <data name="AvoidEvening" xml:space="preserve">
+    <value>Abend</value>
+  </data>
+  <data name="AvoidLunch" xml:space="preserve">
+    <value>Mittag</value>
+  </data>
+  <data name="AvoidMorning" xml:space="preserve">
+    <value>Vormittag</value>
+  </data>
+  <data name="Catering" xml:space="preserve">
+    <value>Traiteur</value>
+  </data>
+  <data name="Coffee" xml:space="preserve">
+    <value>Café / Bar</value>
+  </data>
+  <data name="Community" xml:space="preserve">
+    <value>Gemeinschaftliche Aktivitäten</value>
+  </data>
+  <data name="Courier" xml:space="preserve">
+    <value>Postverbindung</value>
+    <comment>?</comment>
+  </data>
+  <data name="ComputerHelp" xml:space="preserve">
+    <value>EDV-Unterstützung</value>
+  </data>
+  <data name="Computers" xml:space="preserve">
+    <value>Computer-Bereitstellung</value>
+    <comment>?</comment>
+  </data>
+  <data name="Concierge" xml:space="preserve">
+    <value>Hausmeister</value>
+    <comment>?</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Domiciliation" xml:space="preserve">
+    <value>Domizilierung</value>
+  </data>
+  <data name="Drinks" xml:space="preserve">
+    <value>Service de boissons</value>
+  </data>
+  <data name="ErgonomicFurniture" xml:space="preserve">
+    <value>Mobilier ergonomique</value>
+    <comment>?</comment>
+  </data>
+  <data name="FastInternet" xml:space="preserve">
+    <value>Internet-Hochleistungsanschluß</value>
+    <comment>?</comment>
+  </data>
+  <data name="Handicap" xml:space="preserve">
+    <value>Behindertengerechter Zugang</value>
+    <comment>?</comment>
+  </data>
+  <data name="Internet" xml:space="preserve">
+    <value>Connexion Internet</value>
+  </data>
+  <data name="Lighting" xml:space="preserve">
+    <value>Régie lumière</value>
+    <comment>?</comment>
+  </data>
+  <data name="LocalisationOwner" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+    <comment>?</comment>
+  </data>
+  <data name="LunchClose" xml:space="preserve">
+    <value>Mittags geschloßen</value>
+  </data>
+  <data name="Micro" xml:space="preserve">
+    <value>Micro</value>
+  </data>
+  <data name="Newspaper" xml:space="preserve">
+    <value>Zeitschrift</value>
+  </data>
+  <data name="Outlet" xml:space="preserve">
+    <value>Prise de courant</value>
+  </data>
+  <data name="Paperboard" xml:space="preserve">
+    <value>Paper-board</value>
+  </data>
+  <data name="Parking" xml:space="preserve">
+    <value>Parkplatz</value>
+    <comment>?</comment>
+  </data>
+  <data name="PhoneJack" xml:space="preserve">
+    <value>Prise téléphonique</value>
+    <comment>?</comment>
+  </data>
+  <data name="Picturesque" xml:space="preserve">
+    <value>Cadre pittoresque</value>
+    <comment>?</comment>
+  </data>
+  <data name="Pressing" xml:space="preserve">
+    <value>Reinigung</value>
+  </data>
+  <data name="Printer" xml:space="preserve">
+    <value>Kopieren, Ausdrucken, Faxen</value>
+  </data>
+  <data name="Projector" xml:space="preserve">
+    <value>Rétroprojecteur</value>
+  </data>
+  <data name="RelaxingArea" xml:space="preserve">
+    <value>Ruhebereich</value>
+  </data>
+  <data name="Restauration" xml:space="preserve">
+    <value>Restaurant</value>
+  </data>
+  <data name="Room1000_plus" xml:space="preserve">
+    <value>Supérieure à 1000 personnes</value>
+  </data>
+  <data name="Room100_250" xml:space="preserve">
+    <value>De 100 à 250 personnes</value>
+  </data>
+  <data name="Room10_Plus" xml:space="preserve">
+    <value>Supérieure à 10 personnes</value>
+  </data>
+  <data name="Room1_4" xml:space="preserve">
+    <value>De 1 à 4 personnes</value>
+  </data>
+  <data name="Room20_100" xml:space="preserve">
+    <value>De 20 à 100 personnes</value>
+  </data>
+  <data name="Room20_plus" xml:space="preserve">
+    <value>Supérieure à 20 personnes</value>
+  </data>
+  <data name="Room250_1000" xml:space="preserve">
+    <value>De 250 à 1000 personnes</value>
+  </data>
+  <data name="Room2_7" xml:space="preserve">
+    <value>De 2 à 7 personnes</value>
+  </data>
+  <data name="Room5_10" xml:space="preserve">
+    <value>De 5 à 10 personnes</value>
+  </data>
+  <data name="Room7_20" xml:space="preserve">
+    <value>De 8 à 20 personnes</value>
+  </data>
+  <data name="RoomService" xml:space="preserve">
+    <value>Büro Room Service</value>
+  </data>
+  <data name="SafeStorage" xml:space="preserve">
+    <value>Rangement sécurisé</value>
+  </data>
+  <data name="Scene" xml:space="preserve">
+    <value>Scène</value>
+  </data>
+  <data name="Secretariat" xml:space="preserve">
+    <value>Sekretariat</value>
+    <comment>?</comment>
+  </data>
+  <data name="Shower" xml:space="preserve">
+    <value>Dusche</value>
+  </data>
+  <data name="Telepresence" xml:space="preserve">
+    <value>Téléprésence</value>
+  </data>
+  <data name="TV" xml:space="preserve">
+    <value>TV</value>
+  </data>
+  <data name="VideoProj" xml:space="preserve">
+    <value>Vidéoprojecteur</value>
+    <comment>?</comment>
+  </data>
+  <data name="Visio" xml:space="preserve">
+    <value>Visioconférence</value>
+  </data>
+  <data name="VisioHD" xml:space="preserve">
+    <value>Visioconférence HD</value>
+  </data>
+  <data name="Welcoming" xml:space="preserve">
+    <value>Accueil des invités</value>
+  </data>
+  <data name="Wifi_Free" xml:space="preserve">
+    <value>Kostenloses WLAN</value>
+  </data>
+  <data name="Wifi_Not_Free" xml:space="preserve">
+    <value>Kostenpflichtiges WLAN</value>
+    <comment>?</comment>
+  </data>
+  <data name="BuisnessLounge" xml:space="preserve">
+    <value>Business Lounge</value>
+  </data>
+  <data name="FreeArea" xml:space="preserve">
+    <value>Kostenloser Raum (Hot Spot, Cafe, usw.)</value>
+  </data>
+  <data name="SeminarRoom" xml:space="preserve">
+    <value>Salles de séminaire</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Räume</value>
+  </data>
+  <data name="VisioRoom" xml:space="preserve">
+    <value>Salles de visioconférence</value>
+  </data>
+  <data name="Workstation" xml:space="preserve">
+    <value>Postes de travail</value>
+  </data>
+  <data name="MeetingRoom" xml:space="preserve">
+    <value>Salles de réunion</value>
+  </data>
+  <data name="Sound" xml:space="preserve">
+    <value>Régie son</value>
+  </data>
+  <data name="SingleMeetingRoom" xml:space="preserve">
+    <value>Meetingraum</value>
+  </data>
+  <data name="SingleSeminarRoom" xml:space="preserve">
+    <value>Seminarraum</value>
+  </data>
+  <data name="SingleDesktop" xml:space="preserve">
+    <value>Raum</value>
+  </data>
+  <data name="SingleVisioRoom" xml:space="preserve">
+    <value>Raum für Visiokonferenzen</value>
+  </data>
+  <data name="SingleWorkstation" xml:space="preserve">
+    <value>Arbeitsplatz</value>
+  </data>
+  <data name="AllOffers" xml:space="preserve">
+    <value>Tous les espaces</value>
+  </data>
+  <data name="AllInclusive" xml:space="preserve">
+    <value>Alles inklusive (Nebenskosten, Gebühren, Reinigung, usw.)</value>
+  </data>
+  <data name="AvailableNow" xml:space="preserve">
+    <value>Sofortige Verfügbarkeit</value>
+  </data>
+  <data name="CoffeePrice" xml:space="preserve">
+    <value>Kaffeepreis</value>
+  </data>
+  <data name="CoworkingVibe" xml:space="preserve">
+    <value>Coworking Stimmung</value>
+  </data>
+  <data name="Desktop100Plus" xml:space="preserve">
+    <value>&gt; 100 m2</value>
+  </data>
+  <data name="Desktop10_25" xml:space="preserve">
+    <value>Von 10 bis 25 m²</value>
+  </data>
+  <data name="Desktop25_50" xml:space="preserve">
+    <value>De 25 à 50 m2</value>
+  </data>
+  <data name="Desktop50_100" xml:space="preserve">
+    <value>De 50 à 100 m2</value>
+  </data>
+  <data name="Equipped" xml:space="preserve">
+    <value>Ausgestattet und kabliert</value>
+  </data>
+  <data name="FlexibleContract" xml:space="preserve">
+    <value>Flexibler Vertrag</value>
+    <comment>?</comment>
+  </data>
+  <data name="ForCardOwner" xml:space="preserve">
+    <value>Accès réservé aux détenteurs de la carte</value>
+    <comment>?</comment>
+  </data>
+  <data name="MinimalPeriod" xml:space="preserve">
+    <value>Minimale Vertragslaufzeit</value>
+  </data>
+  <data name="NotSectorial" xml:space="preserve">
+    <value>Nicht-sektoriel</value>
+  </data>
+  <data name="OpenToAll" xml:space="preserve">
+    <value>Ouvert à tous</value>
+  </data>
+  <data name="ReservedToClients" xml:space="preserve">
+    <value>Accès réservé aux clients</value>
+  </data>
+  <data name="Sector" xml:space="preserve">
+    <value>Sektor</value>
+    <comment>?</comment>
+  </data>
+  <data name="Kitchen" xml:space="preserve">
+    <value>Cuisine / kitchenette</value>
+  </data>
+  <data name="PhoneLine" xml:space="preserve">
+    <value>Ligne téléphonique</value>
+  </data>
+  <data name="SharedMeetingRoom" xml:space="preserve">
+    <value>Meetingraum</value>
+  </data>
+  <data name="DesktopSearch" xml:space="preserve">
+    <value>Bureaux (centre d'affaires, pépinière, etc.)</value>
+  </data>
+  <data name="WorkstationSearch" xml:space="preserve">
+    <value>Poste de travail (coworking, partage, etc.)</value>
+  </data>
+  <data name="Lift" xml:space="preserve">
+    <value>Aufzug</value>
+  </data>
+</root>
