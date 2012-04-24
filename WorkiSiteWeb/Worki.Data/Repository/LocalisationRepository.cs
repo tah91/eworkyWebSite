@@ -18,7 +18,8 @@ namespace Worki.Data.Models
 	{
 		IList<Localisation> FindByLocation(float latitude, float longitude);
 		IList<Localisation> FindSimilarLocalisation(float latitude, float longitude);
-		IList<Localisation> FindByCriteria(SearchCriteria criteria);
+        IList<Localisation> FindByCriteria(SearchCriteria criteria);
+        void FillCriteriaProjection(SearchCriteria criteria);
 		float DistanceBetween(float latitude, float longitude, int localisationId);
 		Comment GetComment(int comId);
 		IList<MemberEdition> GetLatestModifications(int count, EditionType type);
@@ -57,154 +58,196 @@ namespace Worki.Data.Models
 					select localisation).ToList();
 		}
 
-		public IList<Localisation> FindByCriteria(SearchCriteria criteria)
+        public void FillCriteriaProjection(SearchCriteria criteria)
+        {
+            //all
+            var localisations = _Context.Localisations.AsQueryable();
+            //exclude offline ones
+            localisations = localisations.Where(loc => loc.MainLocalisation != null && !loc.MainLocalisation.IsOffline);
+
+            var factor = CultureHelpers.GetDistanceFactor();
+
+            //matching address
+            //if NorthEast and SouthWest given
+            if (criteria.ResultView == eResultView.Map && criteria.HasBounds())
+            {
+                localisations = from loc
+                                        in localisations
+                                where criteria.SouthWestLat < (float)loc.Latitude && (float)loc.Latitude < criteria.NorthEastLat
+                                        && criteria.SouthWestLng < (float)loc.Longitude && (float)loc.Longitude < criteria.NorthEastLng
+                                select loc;
+            }
+            else
+            {
+                var critLat = (float)criteria.LocalisationData.Latitude;
+                var critLng = (float)criteria.LocalisationData.Longitude;
+                if (critLat != 0 && critLng != 0)
+                    localisations = from loc
+                                         in localisations
+                                    where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude, EarthRadius * factor) < BoundDistance * factor
+                                    select loc;
+            }
+
+            if (criteria.FreeAreas)
+            {
+                criteria.SpotWifi = true;
+                criteria.CoffeeResto = true;
+                criteria.Biblio = true;
+                criteria.TravelerSpace = true;
+            }
+
+            if (criteria.OtherTypes)
+            {
+                criteria.PrivateArea = true;
+                criteria.WorkingHotel = true;
+                criteria.PublicSpace = true;
+                criteria.Hotel = true;
+            }
+
+            //matching type
+            var allowedTypes = new List<int>();
+            if (criteria.SpotWifi)
+                allowedTypes.Add((int)LocalisationType.SpotWifi);
+            if (criteria.CoffeeResto)
+                allowedTypes.Add((int)LocalisationType.CoffeeResto);
+            if (criteria.Biblio)
+                allowedTypes.Add((int)LocalisationType.Biblio);
+            if (criteria.PublicSpace)
+                allowedTypes.Add((int)LocalisationType.PublicSpace);
+            if (criteria.TravelerSpace)
+                allowedTypes.Add((int)LocalisationType.TravelerSpace);
+            if (criteria.Hotel)
+                allowedTypes.Add((int)LocalisationType.Hotel);
+            if (criteria.Telecentre)
+                allowedTypes.Add((int)LocalisationType.Telecentre);
+            if (criteria.BuisnessCenter)
+                allowedTypes.Add((int)LocalisationType.BuisnessCenter);
+            if (criteria.CoworkingSpace)
+                allowedTypes.Add((int)LocalisationType.CoworkingSpace);
+            if (criteria.WorkingHotel)
+                allowedTypes.Add((int)LocalisationType.WorkingHotel);
+            if (criteria.PrivateArea)
+                allowedTypes.Add((int)LocalisationType.PrivateArea);
+            if (criteria.SharedOffice)
+                allowedTypes.Add((int)LocalisationType.SharedOffice);
+            if (allowedTypes.Count > 0)
+                localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));
+
+            //retrieve list from db, then filter it
+            var locProjectionList = (from item in localisations
+                                     select new LocalisationProjection
+                                     {
+                                         ID = item.ID,
+                                         Latitude = (float)item.Latitude,
+                                         Longitude = (float)item.Longitude,
+                                         LocalisationType = item.TypeValue,
+                                         LocalisationName = item.Name,
+                                         Features = (from f in item.LocalisationFeatures select f.FeatureID),
+                                         OfferTypes = (from o in item.Offers where o.IsOnline select o.Type),
+                                         Ratings = (from c in item.Comments select new CommentProjection  { Price = c.RatingPrice, Wifi = c.RatingWifi, Dispo = c.RatingDispo, Welcome = c.RatingWelcome, Rating = c.Rating })
+                                     }).ToList();
+
+            //match name if needed
+            if (!string.IsNullOrEmpty(criteria.LocalisationData.Name))
+            {
+                var nameToSearch = criteria.LocalisationData.Name.ToLower().Split(' ');
+                var nameIds = new List<int>();
+                foreach (var item in nameToSearch)
+                {
+                    var containItem = locProjectionList.Where(p => p.LocalisationName.ToLower().Contains(item)).Select(p => p.ID);
+                    nameIds = nameIds.Concat(containItem).ToList();
+                }
+
+                locProjectionList = locProjectionList.Where(p => nameIds.Contains(p.ID)).ToList();
+            }
+
+            //match offer type
+            var offerType = (LocalisationOffer)criteria.OfferData.Type;
+            switch (offerType)
+            {
+                case LocalisationOffer.FreeArea:
+                    {
+                        locProjectionList = locProjectionList.Where(p => Localisation.FreeLocalisationTypes.Contains(p.LocalisationType)).ToList();
+                        break;
+                    }
+                case LocalisationOffer.BuisnessLounge:
+                case LocalisationOffer.Desktop:
+                case LocalisationOffer.Workstation:
+                case LocalisationOffer.MeetingRoom:
+                case LocalisationOffer.SeminarRoom:
+                case LocalisationOffer.VisioRoom:
+                    {
+                        locProjectionList = locProjectionList.Where(p => p.OfferTypes.Contains((int)offerType)).ToList();
+                        break;
+                    }
+                case LocalisationOffer.AllOffers:
+                default:
+                    break;
+            }
+
+            //match localisation features
+            var neededLocalisationFeatures = (from item in criteria.LocalisationData.LocalisationFeatures select item.FeatureID).ToList();
+            locProjectionList = locProjectionList.Where(loc =>
+            {
+                foreach (var item in neededLocalisationFeatures)
+                {
+                    //if we search wifi, it is for not free as well
+                    if (item == (int)Feature.Wifi_Free)
+                    {
+                        if (!loc.Features.Contains(item) && !loc.Features.Contains((int)Feature.Wifi_Not_Free))
+                            return false;
+                        continue;
+                    }
+
+                    if (!loc.Features.Contains(item))
+                        return false;
+                }
+                return true;
+            }).ToList();
+
+            //build an offerlist which contains correct ids
+            if (criteria.OfferData.OfferFeatures.Count != 0)
+            {
+                var offers = _Context.Offers.AsQueryable();
+                //all offers from the localisations that are online
+                var correctIds = locProjectionList.Select(loc => loc.ID).ToList();
+                offers = offers.Where(o => o.IsOnline && correctIds.Contains(o.LocalisationId));
+
+                var offerProjectionList = (from item in offers
+                                           select new
+                                           {
+                                               ID = item.Id,
+                                               LocID = item.LocalisationId,
+                                               OfferType = item.Type,
+                                               Features = (from f in item.OfferFeatures select f.FeatureId)
+                                           }).ToList();
+
+                var neededOfferFeatures = (from item in criteria.OfferData.OfferFeatures select item.FeatureId).ToList();
+
+                //all localisation which offer match needed features
+                var idsToLoad = offerProjectionList.Where(offer =>
+                {
+                    foreach (var item in neededOfferFeatures)
+                    {
+                        if (!offer.Features.Contains(item))
+                            return false;
+                    }
+                    return true;
+                }).Select(offer => offer.LocID).ToList();
+
+                locProjectionList = locProjectionList.Where(loc => idsToLoad.Contains(loc.ID)).ToList();
+            }
+
+            criteria.Projection = locProjectionList;
+        }
+
+        public IList<Localisation> FindByCriteria(SearchCriteria criteria)
 		{
-			var idsToLoad = new List<int>();
-			//all
-			var localisations = _Context.Localisations.AsQueryable();
-			//exclude offline ones
-			localisations = localisations.Where(loc => loc.MainLocalisation != null && !loc.MainLocalisation.IsOffline);
+            FillCriteriaProjection(criteria);
 
-			var factor = CultureHelpers.GetDistanceFactor();
-
-			//matching address
-			//if NorthEast and SouthWest given
-			if (criteria.ResultView == eResultView.Map && criteria.HasBounds())
-			{
-				localisations = from loc
-										in localisations
-								where criteria.SouthWestLat < (float)loc.Latitude && (float)loc.Latitude < criteria.NorthEastLat
-										&& criteria.SouthWestLng < (float)loc.Longitude && (float)loc.Longitude < criteria.NorthEastLng
-								select loc;
-			}
-			else
-			{
-				var critLat = (float)criteria.LocalisationData.Latitude;
-				var critLng = (float)criteria.LocalisationData.Longitude;
-				if (critLat != 0 && critLng != 0)
-					localisations = from loc
-										 in localisations
-									where EdmMethods.DistanceBetween(critLat, critLng, (float)loc.Latitude, (float)loc.Longitude, EarthRadius * factor) < BoundDistance * factor
-									select loc;
-			}
-
-			if (criteria.FreeAreas)
-			{
-				criteria.SpotWifi = true;
-				criteria.CoffeeResto = true;
-				criteria.Biblio = true;
-				criteria.TravelerSpace = true;
-			}
-
-			if (criteria.OtherTypes)
-			{
-				criteria.PrivateArea = true;
-				criteria.WorkingHotel = true;
-				criteria.PublicSpace = true;
-				criteria.Hotel = true;
-			}
-
-			//matching type
-			var allowedTypes = new List<int>();
-			if (criteria.SpotWifi)
-				allowedTypes.Add((int)LocalisationType.SpotWifi);
-			if (criteria.CoffeeResto)
-				allowedTypes.Add((int)LocalisationType.CoffeeResto);
-			if (criteria.Biblio)
-				allowedTypes.Add((int)LocalisationType.Biblio);
-			if (criteria.PublicSpace)
-				allowedTypes.Add((int)LocalisationType.PublicSpace);
-			if (criteria.TravelerSpace)
-				allowedTypes.Add((int)LocalisationType.TravelerSpace);
-			if (criteria.Hotel)
-				allowedTypes.Add((int)LocalisationType.Hotel);
-			if (criteria.Telecentre)
-				allowedTypes.Add((int)LocalisationType.Telecentre);
-			if (criteria.BuisnessCenter)
-				allowedTypes.Add((int)LocalisationType.BuisnessCenter);
-			if (criteria.CoworkingSpace)
-				allowedTypes.Add((int)LocalisationType.CoworkingSpace);
-			if (criteria.WorkingHotel)
-				allowedTypes.Add((int)LocalisationType.WorkingHotel);
-			if (criteria.PrivateArea)
-				allowedTypes.Add((int)LocalisationType.PrivateArea);
-			if (criteria.SharedOffice)
-				allowedTypes.Add((int)LocalisationType.SharedOffice);
-			if (allowedTypes.Count > 0)
-				localisations = localisations.Where(loc => allowedTypes.Contains(loc.TypeValue));
-
-			//retrieve list from db, then filter it
-			var locProjectionList = (from item in localisations
-									 select new
-									 {
-										 ID = item.ID,
-										 LocalisationType = item.TypeValue,
-										 LocalisationName = item.Name,
-										 Features = (from f in item.LocalisationFeatures select f.FeatureID),
-										 OfferTypes = (from o in item.Offers where o.IsOnline select o.Type),
-										 Ratings = (from c in item.Comments select new { Price = c.RatingPrice, Wifi = c.RatingWifi, Dispo = c.RatingDispo, Welcome = c.RatingWelcome, Rating = c.Rating })
-									 }).ToList();
-
-			//match name if needed
-			if (!string.IsNullOrEmpty(criteria.LocalisationData.Name))
-			{
-				var nameToSearch = criteria.LocalisationData.Name.ToLower().Split(' ');
-				var nameIds = new List<int>();
-				foreach (var item in nameToSearch)
-				{
-					var containItem = locProjectionList.Where(p => p.LocalisationName.ToLower().Contains(item)).Select(p => p.ID);
-					nameIds = nameIds.Concat(containItem).ToList();
-				}
-
-				locProjectionList = locProjectionList.Where(p => nameIds.Contains(p.ID)).ToList();
-			}
-
-			//match offer type
-			var offerType = (LocalisationOffer)criteria.OfferData.Type;
-			switch (offerType)
-			{
-				case LocalisationOffer.FreeArea:
-					{
-						locProjectionList = locProjectionList.Where(p => Localisation.FreeLocalisationTypes.Contains(p.LocalisationType)).ToList();
-						break;
-					}
-				case LocalisationOffer.BuisnessLounge:
-				case LocalisationOffer.Desktop:
-				case LocalisationOffer.Workstation:
-				case LocalisationOffer.MeetingRoom:
-				case LocalisationOffer.SeminarRoom:
-				case LocalisationOffer.VisioRoom:
-					{
-						locProjectionList = locProjectionList.Where(p => p.OfferTypes.Contains((int)offerType)).ToList();
-						break;
-					}
-				case LocalisationOffer.AllOffers:
-				default:
-					break;
-			}
-
-			var neededLocalisationFeatures = (from item in criteria.LocalisationData.LocalisationFeatures select item.FeatureID).ToList();
-
-			idsToLoad = locProjectionList.Where(loc =>
-				{
-					foreach (var item in neededLocalisationFeatures)
-					{
-						//if we search wifi, it is for not free as well
-						if (item == (int)Feature.Wifi_Free)
-						{
-							if (!loc.Features.Contains(item) && !loc.Features.Contains((int)Feature.Wifi_Not_Free))
-								return false;
-							continue;
-						}
-
-						if (!loc.Features.Contains(item))
-							return false;
-					}
-					return true;
-				}).Select(loc => loc.ID).ToList();
-
+            //to order by ratings
 			var ratingDict = new Dictionary<int, double>();
-			foreach (var item in locProjectionList)
+            foreach (var item in criteria.Projection)
 			{
 				if (item.Ratings.Count() == 0)
 				{
@@ -235,37 +278,8 @@ namespace Worki.Data.Models
 				}
 			}
 
-			//build an offerlist which contains correct ids
-			if (criteria.OfferData.OfferFeatures.Count != 0)
-			{
-				var offers = _Context.Offers.AsQueryable();
-				//all offers from the localisations that are online
-				offers = offers.Where(o => o.IsOnline && idsToLoad.Contains(o.LocalisationId));
-
-				var offerProjectionList = (from item in offers
-										   select new
-										   {
-											   ID = item.Id,
-											   LocID = item.LocalisationId,
-											   OfferType = item.Type,
-											   Features = (from f in item.OfferFeatures select f.FeatureId)
-										   }).ToList();
-
-				var neededOfferFeatures = (from item in criteria.OfferData.OfferFeatures select item.FeatureId).ToList();
-
-				//all localisation which offer match needed features
-				idsToLoad = offerProjectionList.Where(offer =>
-				{
-					foreach (var item in neededOfferFeatures)
-					{
-						if (!offer.Features.Contains(item))
-							return false;
-					}
-					return true;
-				}).Select(offer => offer.LocID).ToList();
-			}
-
-			return _Context.Localisations.Where(loc => idsToLoad.Contains(loc.ID)).ToList().OrderByDescending(loc => ratingDict[loc.ID]).ToList();
+            var ids = criteria.Projection.Select(p => p.ID);
+            return _Context.Localisations.Where(loc => ids.Contains(loc.ID)).ToList().OrderByDescending(loc => ratingDict[loc.ID]).ToList();
 		}
 
 		public Comment GetComment(int comId)

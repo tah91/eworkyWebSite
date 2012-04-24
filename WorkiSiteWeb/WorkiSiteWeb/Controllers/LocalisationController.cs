@@ -72,6 +72,40 @@ namespace Worki.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Action to get localisation description
+        /// </summary>
+        /// <param name="id">Id of the localisation</param>
+        /// <returns>Redirect to returnUrl</returns>
+        public virtual PartialViewResult MapItemSummary(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+            var localisation = lRepo.Get(id);
+            if (localisation == null)
+                return null;
+
+            return PartialView(MVC.Localisation.Views._MapItemSummary, localisation);
+        }
+
+        /// <summary>
+        /// Action to get localisation description
+        /// </summary>
+        /// <param name="id">Id of the localisation</param>
+        /// <returns>Redirect to returnUrl</returns>
+        public virtual ActionResult MapItemLink(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+            var localisation = lRepo.Get(id);
+            if (localisation == null)
+                return null;
+
+            return Json(localisation.GetDetailFullUrl(Url), JsonRequestBehavior.AllowGet);
+        }
+
 		/// <summary>
 		/// The view containing the offers of a localisation
 		/// </summary>
@@ -800,11 +834,24 @@ namespace Worki.Web.Controllers
 
 		JsonResult GetSearchResult(SearchCriteriaFormViewModel criteriaViewModel)
 		{
-			var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
-			var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
-			var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
-			var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
-			return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+            var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
+            var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
+            switch (criteriaViewModel.Criteria.ResultView)
+            {
+                case eResultView.Map:
+                    {
+                        var locList = (from item in criteriaViewModel.Criteria.Projection select item.GetJson());
+                        return Json(new { order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                    }
+                case eResultView.List:
+                default:
+                    {
+                        var listResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchResults, criteriaViewModel);
+                        var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
+                        return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                    }
+            }
+
 		}
 
         /// <summary>

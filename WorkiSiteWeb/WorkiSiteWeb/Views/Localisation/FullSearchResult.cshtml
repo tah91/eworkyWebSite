@@ -15,16 +15,43 @@
 
 <div class="detailContent relative" id="globalContainer">
     <div class="resultDiv float-left blockContainer">
-        @Html.Partial(MVC.Localisation.Views._SearchResults)
+        <div class="searchFormBlockLeft">
+            @if (Model.Criteria.ResultView == eResultView.List)
+            {
+                @Html.Partial(MVC.Localisation.Views._SearchResults)
+            }
+            else
+            {
+                <div class="contentBlock">
+                    <div class="mapContainer bigResultsMap" id="resultsMap">
+                    </div>
+                </div>
+            }
+            @Html.Partial(MVC.Shared.Views._LoaderBlock, "big")
+        </div>  
     </div>
 
     <div class="searchFormBlock float-right blockContainer">
 		<div class="contentBlock" id="resultSearchBlock">
-            @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
+            <div class="marginb10" >
+                <div class="float-left">
+                    <a href=# id="resultByMap">map</a>
+                </div>
+                <div class="float-right">
+                    <a href=# id="resultByList">list</a>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
             @if (Model.Criteria.ResultView == eResultView.List)
             { 
+            @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
 			<div class="resultsMapDiv">
-                @Html.Partial(MVC.Localisation.Views._SearchMap)
+                <div class="relative">
+                    <div class="mapContainer smallResultsMap" id="resultsMap">
+                    </div>
+                    @Html.Partial(MVC.Shared.Views._LoaderBlock, "small")
+                </div>
             </div> 
             }
             <div class="searchResultFormDiv" id="searchFormReset">

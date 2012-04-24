@@ -458,7 +458,7 @@ namespace Worki.Data.Models
 		public void InitSelectLists(Localisation localisation = null)
 		{
 			PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
-			Statuses = new SelectList(MemberBooking.GetStatusTypes(new List<MemberBooking.Status> { MemberBooking.Status.Accepted, MemberBooking.Status.Paid }), "Key", "Value", MemberBooking.Status.Paid);
+            Statuses = new SelectList(MemberBooking.GetStatusTypes(new List<MemberBooking.Status> { MemberBooking.Status.Unknown, MemberBooking.Status.Accepted, MemberBooking.Status.Paid }), "Key", "Value", MemberBooking.Status.Paid);
 			
 			if (localisation != null)
 			{

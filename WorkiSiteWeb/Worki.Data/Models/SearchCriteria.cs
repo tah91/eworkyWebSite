@@ -50,6 +50,7 @@ namespace Worki.Data.Models
             toRet[MiscHelpers.SeoConstants.PlaceName] = LocalisationData.Name;
 
             toRet[MiscHelpers.SeoConstants.Order] = (int)OrderBy;
+            toRet[MiscHelpers.SeoConstants.Search] = (int)SearchType;
 			toRet[MiscHelpers.SeoConstants.Result] = (int)ResultView;
 
             if (FreeAreas)
@@ -248,6 +249,7 @@ namespace Worki.Data.Models
         public eSearchType SearchType { get; set; }
         public eDirectAccessType DirectAccessType { get; set; }
 		public eResultView ResultView { get; set; }
+        public IEnumerable<LocalisationProjection> Projection { get; set; }
 
 		public float NorthEastLat { get; set; }
 		public float NorthEastLng { get; set; }

@@ -1200,6 +1200,42 @@ namespace Worki.Data.Models
         public decimal QuotationPrice { get; set; }
 	}
 
+    public class CommentProjection
+    {
+        public int Price { get; set; }
+        public int Wifi { get; set; }
+        public int Dispo { get; set; }
+        public int Welcome { get; set; }
+        public int Rating { get; set; }
+    }
+
+    public class LocalisationProjection :  IJsonProvider<LocalisationJson>
+    {
+        public int ID { get; set; }
+        public int LocalisationType { get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
+        public string LocalisationName { get; set; }
+        public IEnumerable<int> Features { get; set; }
+        public IEnumerable<int> OfferTypes { get; set; }
+        public IEnumerable<CommentProjection> Ratings { get; set; }
+
+        #region IJsonProvider
+
+        public LocalisationJson GetJson()
+        {
+            return new LocalisationJson
+            {
+                id = ID,
+                latitude = Latitude,
+                longitude = Longitude,
+                name = LocalisationName
+            };
+        }
+
+        #endregion
+    }
+
 	public class LocalisationFormViewModel
 	{
 		#region Properties

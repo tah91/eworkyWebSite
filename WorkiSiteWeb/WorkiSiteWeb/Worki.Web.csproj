@@ -349,6 +349,8 @@
     <Content Include="Content\images\border.png" />
     <Content Include="Content\images\checked.png" />
     <Content Include="Content\images\cecilia.png" />
+    <Content Include="Content\images\circle.png" />
+    <Content Include="Content\images\circleBig.png" />
     <Content Include="Content\images\close.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\fb_sprite.png" />
@@ -360,6 +362,7 @@
     <Content Include="Content\images\homeLogo4.png" />
     <Content Include="Content\images\howitworks.png" />
     <Content Include="Content\images\iconeMap.png" />
+    <Content Include="Content\images\iconeMapOrange.png" />
     <Content Include="Content\images\iconeMapRed.png" />
     <Content Include="Content\images\loaderbig.gif" />
     <Content Include="Content\images\loading.gif" />
@@ -449,6 +452,18 @@
     </Content>
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
+    </Content>
+    <Content Include="Scripts\map.infobox.js" />
+    <Content Include="Scripts\map.infobox.min.js">
+      <DependentUpon>map.infobox.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\map.markerclusterer.js" />
+    <Content Include="Scripts\map.markerclusterer.min.js">
+      <DependentUpon>map.markerclusterer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\map.markerclusterer_compiled.js" />
+    <Content Include="Scripts\map.markerclusterer_compiled.min.js">
+      <DependentUpon>map.markerclusterer_compiled.js</DependentUpon>
     </Content>
     <Content Include="Scripts\Utils.js" />
     <Content Include="Scripts\fullcalendar.js" />
@@ -918,6 +933,7 @@
     <Content Include="Views\OAuth\Authorize.cshtml" />
     <Content Include="Views\Localisation\_SearchOrderSelector.cshtml" />
     <Content Include="Views\Shared\_LoaderBlock.cshtml" />
+    <Content Include="Views\Localisation\_MapItemSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -8,7 +8,12 @@
     @Html.HiddenFor(model => model.Criteria.NorthEastLng)
     @Html.HiddenFor(model => model.Criteria.SouthWestLat)
     @Html.HiddenFor(model => model.Criteria.SouthWestLng)
+    @Html.HiddenFor(model => model.Criteria.SearchType)
+    @Html.HiddenFor(model => model.Criteria.ResultView)
+    if (Model.Criteria.SearchType == eSearchType.ePerName)
+    { 
     @Html.HiddenFor(model => model.Criteria.LocalisationData.Name)
+    }
 	@Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
     @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
     <h4 class="toogle_item toogle_trigger toogle_trigger_click active"><span class="blue">@Worki.Resources.Views.Localisation.LocalisationString.Localisation</span></h4>
@@ -17,7 +22,10 @@
             <div class="editor-field float-left">
                 @Html.TextBoxFor(model => model.Criteria.Place)
             </div>
-            <input type="submit" class="buttonBlue buttonStd imageBtn refineSubmit float-right" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
+            <div class="buttonStd buttonBlue refineSubmit linkImg float-right">
+                <a href="#" id="resetPlace">@Worki.Resources.Views.Shared.SharedString.Reset</a>
+            </div>
+            @*<input type="submit" class="buttonBlue buttonStd imageBtn refineSubmit float-right" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>*@
             <div class="clear"></div>
         </div>
     </div>
@@ -105,10 +113,6 @@
     </div>
     
     <div class="clear"></div>
-    @*<div class="resetSearch">
-        <input type="submit" class="buttonBlue buttonStd imageBtn float-right" value="@Worki.Resources.Views.Shared.SharedString.Reset"/>
-        <div class="clear"></div>
-    </div>*@
 }
 
 <script type="text/javascript">
@@ -116,18 +120,7 @@
         InitDropdown("#@DropDownModel.OrderByDD");
     });
 
-    $('#searchFormReset input:checkbox, #serviceSelector a').live('click', function () {
-        $("#searchFormReset form").submit();
-    });
-
-    $('#searchFormReset select').live('change', function () {
-        $("#searchFormReset form").submit();
-    });
-
-    var goToTop = function () {
-        $('html, body').animate({ scrollTop: 0 }, 0);
-    }
-
+    //ajax load pending
     var hiddenClass = "visuallyhidden";
     $('.loaderBlock').addClass(hiddenClass);   // hide it initially
     jQuery.ajaxSetup({
@@ -140,50 +133,139 @@
         success: function () { }
     });
 
-    require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+    //map initialization
+    require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {
 
     });
 
+    var bigMap = false;
+    @if (Model.Criteria.ResultView == eResultView.Map)
+    {
+        @:bigMap = true;
+    }
+
     var resultsMap = null;
     var workiGeoCoder = null;
+    var newResultsPushed = false;
     function initialize() {
-        require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+        require(["@Links.Scripts.map_infobox_js", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
             resultsMap = new WorkiMap('resultsMap');
             var where = "@Model.Criteria.Place";
-            resultsMap.LoadSearchMap(where);
+            resultsMap.LoadSearchMap(where, !bigMap);
 
             var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
             workiAutocomplete.SetAutocomplete();
 
             workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
 
+            var bounds_changed = function () {
+                if (resultsMap.Map != null) {
+                    var bounds = resultsMap.Map.getBounds();
+                    var nelat = bounds.getNorthEast().lat();
+                    var nelng = bounds.getNorthEast().lng();
+                    var swlat = bounds.getSouthWest().lat();
+                    var swlng = bounds.getSouthWest().lng();
+
+                    $('#Criteria_NorthEastLat').val(nelat);
+                    $('#Criteria_NorthEastLng').val(nelng);
+                    $('#Criteria_SouthWestLat').val(swlat);
+                    $('#Criteria_SouthWestLng').val(swlng);
+
+                    if (!newResultsPushed) {
+                        $("#searchFormReset form").submit();
+                    }
+                }
+            }
+
+            if(bigMap){
+                resultsMap.AddHandler('idle', bounds_changed);
+
+                var askForResults = function () {
+                    newResultsPushed = false;
+                }
+                resultsMap.AddHandler('dragend', askForResults);
+                resultsMap.AddHandler('zoom_changed', askForResults);
+            }
+
+            //relaod it first time
             $("#searchFormReset form").submit();
         });
     }
 
+    var infowindow = null;
+    //fill the map
     function pushResults(place, results) {
         resultsMap.ClearMap();
         var bounds = new google.maps.LatLngBounds();
-        resultsMap.CenterSearchResults(place);
-        for (var loc in results) {
-            resultsMap.AddMarker(results[loc].latitude, results[loc].longitude, results[loc].name, bounds);
+
+        if(!bigMap){
+            resultsMap.CenterSearchResults(place);
         }
 
-        if (results.length >= 2) {
+        var markerDetailPopUp = function () {
+            var map = this.map;
+            var marker = this;
+            $.ajax({
+                url: '@Url.Action(MVC.Localisation.ActionNames.MapItemSummary, MVC.Localisation.Name)',
+                data: { "id": this.get("id") },
+                success: function (data) {
+                    if (infowindow) {
+                        infowindow.close();
+                    }
+
+                    infowindow = new google.maps.InfoWindow({
+                        content: data
+                    });
+
+                    infowindow.open(map, marker);
+                    $('div.rateit').rateit();
+                }
+            });
+
+        }
+
+        var markerDetailPage = function () {
+            var map = this.map;
+            var marker = this;
+            $.ajax({
+                url: '@Url.Action(MVC.Localisation.ActionNames.MapItemLink, MVC.Localisation.Name)',
+                data: { "id": this.get("id") },
+                success: function (data) {
+                    window.location.href = data;
+                }
+            });
+
+        }
+        for (var loc in results) {
+            var markerHandler = bigMap ? markerDetailPopUp : markerDetailPage;
+            resultsMap.AddMarker(results[loc].latitude, results[loc].longitude, results[loc].name, results[loc].id, bounds, markerHandler);
+        }
+
+        if (results.length >= 2 && !bigMap) {
             resultsMap.FitBoundsSearchResults(bounds);
         }
+
+        if(bigMap){
+            resultsMap.SetCluster();
+        }
+        newResultsPushed = true;
     }
 
+    //fill result after ajax submit
     var refreshResults = function (data) {
         $("#searchResults").replaceWith(data.list);
+        pushResults(data.place, data.localisations);
         $('div.rateit').rateit();
-        //$("#mapContainer").replaceWith(data.map);
         $("#searchSelectorContainer").replaceWith(data.order);
         $(".titleDivContainer h1").html(data.title);
         $('.loaderBlock').addClass(hiddenClass);
-        pushResults(data.place, data.localisations);
     };
 
+    var goToTop = function () {
+        $('html, body').animate({ scrollTop: 0 }, 0);
+    }
+
+    //load results via link
     $(".pager a, #orderByDistance, #orderByRating").live('click', function () {
         goToTop.apply();
         $.ajax({
@@ -193,6 +275,30 @@
         return false;
     });
 
+    //ajax reload when action on form
+    $('#searchFormReset input:checkbox, #serviceSelector a').live('click', function () {
+        $("#searchFormReset form").submit();
+    });
+
+    $('#searchFormReset select').live('change', function () {
+        $("#searchFormReset form").submit();
+    });
+
+    var ajaxSubmit = true;
+    //result view changed
+    $('#resultByMap').click(function () {
+        $('#Criteria_ResultView').val('@eResultView.Map');
+        ajaxSubmit = false;
+        $("#searchFormReset form").submit();
+    });
+
+    $('#resultByList').click(function () {
+        $('#Criteria_ResultView').val('@eResultView.List');
+        ajaxSubmit = false;
+        $("#searchFormReset form").submit();
+    });
+
+    //submit handler
     require(["@Url.VersionedContent(Links.Scripts.Utils_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
         var errorBuilder = new ErrorBuilder('searchFormReset', 'searchFormError');
         var submitData = function () {
@@ -206,15 +312,22 @@
         }
 
         $("#searchFormReset form").submit(function (evt) {
-            goToTop.apply();
+            if(ajaxSubmit){
+                goToTop.apply();
 
-            submitData();
-            return false;
+                submitData();
+                return false;
+            }
         });
 
         $('#Criteria_Place').blur(function (evt) {
             workiGeoCoder.SearchHandler(evt, function () {
+                $('#Criteria_NorthEastLat').val(0);
+                $('#Criteria_NorthEastLng').val(0);
+                $('#Criteria_SouthWestLat').val(0);
+                $('#Criteria_SouthWestLng').val(0);
                 submitData();
+                resultsMap.CenterSearchResults($('#Criteria_Place').val());
             });
         });
     });

@@ -158,6 +158,9 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Order, ref value) && int.TryParse(value, out intVal))
                 criteria.OrderBy = (eOrderBy)intVal;
 
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Search, ref value) && int.TryParse(value, out intVal))
+                criteria.SearchType = (eSearchType)intVal;
+
 			if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Result, ref value) && int.TryParse(value, out intVal))
 				criteria.ResultView = (eResultView)intVal;
 
