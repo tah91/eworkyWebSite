@@ -217,7 +217,7 @@
     <value>Toma de corriente</value>
   </data>
   <data name="Paperboard" xml:space="preserve">
-    <value>Paper-board</value>
+    <value>Pizarra</value>
   </data>
   <data name="Parking" xml:space="preserve">
     <value>Aparcamiento</value>
@@ -238,7 +238,7 @@
     <value>Copias, impresión, fax</value>
   </data>
   <data name="Projector" xml:space="preserve">
-    <value>Videoproyector</value>
+    <value>Retroproyector</value>
   </data>
   <data name="RelaxingArea" xml:space="preserve">
     <value>Espacio de descanso</value>
@@ -331,7 +331,7 @@
     <value>Despachos</value>
   </data>
   <data name="VisioRoom" xml:space="preserve">
-    <value>Salas de videoconferencias</value>
+    <value>Salas de videoconferencia</value>
   </data>
   <data name="Workstation" xml:space="preserve">
     <value>Puestos de trabajo</value>

@@ -195,4 +195,7 @@
   <data name="Currency" xml:space="preserve">
     <value>Divisa</value>
   </data>
+  <data name="PriceWT" xml:space="preserve">
+    <value>Precio sin impuestos</value>
+  </data>
 </root>

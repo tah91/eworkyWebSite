@@ -193,7 +193,7 @@
     <value>Tfno:</value>
   </data>
   <data name="TheDate" xml:space="preserve">
-    <value>El:</value>
+    <value>el:</value>
   </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweet</value>
@@ -331,5 +331,11 @@
   </data>
   <data name="MoreDetails" xml:space="preserve">
     <value>Más detalles</value>
+  </data>
+  <data name="FacebookUpdated" xml:space="preserve">
+    <value>Tu Timeline Facebook ha sido actualizado</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>{0:0.##} km</value>
   </data>
 </root>

@@ -133,7 +133,7 @@
     <value>Características</value>
   </data>
   <data name="Independant" xml:space="preserve">
-    <value>Independiente</value>
+    <value>Freelance</value>
   </data>
   <data name="KindOfLocation" xml:space="preserve">
     <value>Tipo de espacio</value>
@@ -203,5 +203,8 @@
   </data>
   <data name="YourSearchResult" xml:space="preserve">
     <value>Tus resultados de búsqueda : {0} espacio(s) encontrado(s)</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Ordenar por:</value>
   </data>
 </root>
