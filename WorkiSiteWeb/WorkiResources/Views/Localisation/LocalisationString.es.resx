@@ -160,7 +160,7 @@
     <value>Índice</value>
   </data>
   <data name="YouKnowContactUs" xml:space="preserve">
-    <value>Si conoces los datos de contacto de este espacio de trabajo, infórmalos gracias al formulario de edición o ponte en contacto con nosotros: contacto@eworky.com</value>
+    <value>Si conoces los datos de contacto de este espacio de trabajo, infórmalos gracias al formulario de edición o ponte en contacto con nosotros: contacto@eworky.es</value>
   </data>
   <data name="BookIt" xml:space="preserve">
     <value>Reservar</value>
@@ -193,7 +193,7 @@
     <value>Tfno:</value>
   </data>
   <data name="TheDate" xml:space="preserve">
-    <value>El:</value>
+    <value>el:</value>
   </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweet</value>
@@ -300,7 +300,7 @@
     <value>eWorkers</value>
   </data>
   <data name="IWorkHere" xml:space="preserve">
-    <value>Trabajo  aquí</value>
+    <value>Trabajo aquí</value>
   </data>
   <data name="Offers" xml:space="preserve">
     <value>Oferta</value>
@@ -331,5 +331,11 @@
   </data>
   <data name="MoreDetails" xml:space="preserve">
     <value>Más detalles</value>
+  </data>
+  <data name="FacebookUpdated" xml:space="preserve">
+    <value>Tu Timeline Facebook ha sido actualizado</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>{0:0.##} km</value>
   </data>
 </root>

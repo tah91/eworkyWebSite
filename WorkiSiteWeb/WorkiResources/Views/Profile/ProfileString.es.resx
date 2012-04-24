@@ -232,7 +232,7 @@
     <value>Tus clientes deberán realizar el pago a través de la plataforma PayPal. Para poder cobrar las operaciones, deberás de dispnoner de una cuenta PayPal (Para abrir una cuenta, &lt;a href="{0}" target="_blank"&gt;aquí&lt;/a&gt;).</value>
   </data>
   <data name="EndModifyPayment" xml:space="preserve">
-    <value>Te recordamos que te será aplicada una comisión PayPal sobre todas las transacciones. Para cualquier duda, ponte en contacto con nosotros: contact@eworky.com.</value>
+    <value>Te recordamos que te será aplicada una comisión PayPal sobre todas las transacciones. Para cualquier duda, ponte en contacto con nosotros: contacto@eworky.es.</value>
   </data>
   <data name="MailPayment" xml:space="preserve">
     <value>Dirección de correo electrónico asociada a tu cuenta PayPal</value>
