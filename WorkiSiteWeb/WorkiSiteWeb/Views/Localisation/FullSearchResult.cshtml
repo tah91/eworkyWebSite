@@ -34,18 +34,23 @@
     <div class="searchFormBlock float-right blockContainer">
 		<div class="contentBlock" id="resultSearchBlock">
             <div class="marginb10" >
-                <div class="float-left">
-                    <a href=# id="resultByMap">map</a>
+                <div class="float-left bold noUnderline">
+                    <div class="float-left resultViewSelect @(Model.Criteria.ResultView == eResultView.Map ? "orange" : "")">
+                        <a href=# id="resultByMap">Carte</a>
+                    </div>
+                    <div class="float-right resultViewSelect @(Model.Criteria.ResultView == eResultView.List ? "orange" : "")">
+                        <a href=# id="resultByList">Liste</a>
+                    </div>
                 </div>
-                <div class="float-right">
-                    <a href=# id="resultByList">list</a>
-                </div>
+                @if (Model.Criteria.ResultView == eResultView.List)
+                {
+                    @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
+                }
                 <div class="clear">
                 </div>
             </div>
             @if (Model.Criteria.ResultView == eResultView.List)
             { 
-            @Html.Partial(MVC.Localisation.Views._SearchOrderSelector)
 			<div class="resultsMapDiv">
                 <div class="relative">
                     <div class="mapContainer smallResultsMap" id="resultsMap">

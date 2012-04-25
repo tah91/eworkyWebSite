@@ -49,6 +49,9 @@
 div.acc_container,div.toogle_container{margin-bottom:20px}
 .order{margin-top:20px}
 .order a:hover{text-decoration:none}
+#searchSelectorContainer .dropdown dt a{min-width:90px}
+#searchSelectorContainer .dropdown dd ul{min-width:90px}
+.resultViewSelect{padding:5px 10px 0 0}
 .suggestion{margin:10px 0;padding:5px 0;font-size:11px}
 .suggestion:hover{background-color:Whitesmoke}
 .suggestionImage{width:100px;height:70px}

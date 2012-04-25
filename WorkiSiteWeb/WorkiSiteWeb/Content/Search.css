@@ -310,12 +310,17 @@ div.acc_container, div.toogle_container
 
 #searchSelectorContainer .dropdown dt a
 {
-	/*min-width: 150px;*/
+	min-width: 90px;
 }
 
 #searchSelectorContainer .dropdown dd ul
 {
-	/*min-width: 150px;*/
+	min-width: 90px;
+}
+
+.resultViewSelect
+{
+    padding:5px 10px 0 0
 }
 
 /* Suggestion block

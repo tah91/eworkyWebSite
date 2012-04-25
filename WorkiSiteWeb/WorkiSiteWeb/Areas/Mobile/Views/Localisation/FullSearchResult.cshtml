@@ -60,10 +60,6 @@
 
     	require(["@Url.VersionedContent(Links.Scripts.tabs_js)"], function () {
     		InitTab(".indexTabs");
-//			var page = @Request.QueryString["page"].ToString();
-//			if(page>1){
-//				$('#listTabLi').click();
-//			}
     	});
 
 		require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
@@ -76,7 +72,7 @@
         function initialize() {
             require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
                 resultsMap = new WorkiMap('mobileMap');
-                resultsMap.LoadSearchMap(where);
+                resultsMap.LoadSearchMap(where, true);
                 bounds = new google.maps.LatLngBounds();
 				var extendCount = 0;
 				var extendMax = 7;
@@ -93,11 +89,12 @@
 							data: { "id": localisationId },
 							success: function (data) {
 								$("#currentLoc").html(data);
+                                $('div.rateit').rateit();
 							}
 						});
 					}
                     var LL = new google.maps.LatLng(latitude,longitude);
-                    resultsMap.LoadPin(LL, name, null, null, handler);
+                    resultsMap.LoadPin(LL, name, localisationId, null, null, handler);
 					extendCount++;
 					if(extendCount < extendMax){
 						bounds.extend(LL);
