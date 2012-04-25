@@ -382,4 +382,10 @@
   <data name="TeamDescription" xml:space="preserve">
     <value>Présentation de l'equipe d'eWorky !</value>
   </data>
+  <data name="TimeAgo_suffixAgo" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="TimeAgo_suffixFromNow" xml:space="preserve">
+    <value> </value>
+  </data>
 </root>

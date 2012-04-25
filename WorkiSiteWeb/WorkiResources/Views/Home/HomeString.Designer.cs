@@ -637,7 +637,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to  .
         /// </summary>
         public static string TimeAgo_suffixAgo {
             get {
@@ -646,7 +646,7 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to  .
         /// </summary>
         public static string TimeAgo_suffixFromNow {
             get {
