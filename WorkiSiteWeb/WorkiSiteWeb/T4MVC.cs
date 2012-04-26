@@ -1252,6 +1252,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Suggestions() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult MapItemSummary() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.MapItemSummary);
         }
@@ -1259,16 +1264,6 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult MapItemLink() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.MapItemLink);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Offers() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Offers);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult BookableOffers() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.BookableOffers);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1317,18 +1312,8 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult SearchForm() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.SearchForm);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FullSearchPerTypeSpecial() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerTypeSpecial);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1347,6 +1332,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult FindSimilarLocalisation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult AjaxFullSearch() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearch);
         }
@@ -1354,16 +1344,6 @@ namespace Worki.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult AjaxFullSearchResult() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearchResult);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult FullSearchResultDetail() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Suggestions() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -1381,10 +1361,9 @@ namespace Worki.Web.Controllers {
             public readonly string Index = "Index";
             public readonly string DetailsOld = "DetailsOld";
             public readonly string Details = "details";
+            public readonly string Suggestions = "Suggestions";
             public readonly string MapItemSummary = "MapItemSummary";
             public readonly string MapItemLink = "MapItemLink";
-            public readonly string Offers = "offers";
-            public readonly string BookableOffers = "bookable-offers";
             public readonly string AskBooking = "AskBooking";
             public readonly string AskContact = "AskContact";
             public readonly string CreateFree = "add-free-place";
@@ -1397,20 +1376,17 @@ namespace Worki.Web.Controllers {
             public readonly string OpenGraphInvitation = "OpenGraphInvitation";
             public readonly string AddToOpenGraph = "AddToOpenGraph";
             public readonly string AddFavorite = "AddFavorite";
-            public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
-            public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string SearchForm = "SearchForm";
             public readonly string FullSearch = "search";
             public readonly string FullSearchPerType = "search-per-type";
             public readonly string FullSearchPerName = "search-per-name";
-            public readonly string FullSearchPerTypeSpecial = "search-special";
             public readonly string FullSearchByTypeSeo = "FullSearchByTypeSeo";
             public readonly string FullSearchByOfferSeo = "FullSearchByOfferSeo";
             public readonly string FullSearchResult = "search-results";
+            public readonly string FindSimilarLocalisation = "FindSimilarLocalisation";
+            public readonly string GetMainLocalisations = "GetMainLocalisations";
             public readonly string AjaxFullSearch = "AjaxFullSearch";
             public readonly string AjaxFullSearchResult = "AjaxFullSearchResult";
-            public readonly string FullSearchResultDetail = "search-detail";
-            public readonly string Suggestions = "Suggestions";
         }
 
 
@@ -1424,7 +1400,6 @@ namespace Worki.Web.Controllers {
             public readonly string _AskContact = "~/Views/Localisation/_AskContact.cshtml";
             public readonly string _CommentForm = "~/Views/Localisation/_CommentForm.cshtml";
             public readonly string _CommentFormScript = "~/Views/Localisation/_CommentFormScript.cshtml";
-            public readonly string _DirectAccess = "~/Views/Localisation/_DirectAccess.cshtml";
             public readonly string _IconeServices = "~/Views/Localisation/_IconeServices.cshtml";
             public readonly string _LocalisationDetail = "~/Views/Localisation/_LocalisationDetail.cshtml";
             public readonly string _LocalisationForm = "~/Views/Localisation/_LocalisationForm.cshtml";
@@ -1441,11 +1416,9 @@ namespace Worki.Web.Controllers {
             public readonly string _ServicesSelector = "~/Views/Localisation/_ServicesSelector.cshtml";
             public readonly string _Suggestions = "~/Views/Localisation/_Suggestions.cshtml";
             public readonly string Edit = "~/Views/Localisation/Edit.cshtml";
-            public readonly string FullSearch = "~/Views/Localisation/FullSearch.cshtml";
             public readonly string FullSearchResult = "~/Views/Localisation/FullSearchResult.cshtml";
             public readonly string FullSearchResultDetail = "~/Views/Localisation/FullSearchResultDetail.cshtml";
             public readonly string Index = "~/Views/Localisation/Index.cshtml";
-            public readonly string Offers = "~/Views/Localisation/Offers.cshtml";
         }
     }
 
@@ -1473,6 +1446,12 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult Suggestions(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.PartialViewResult MapItemSummary(int id) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.MapItemSummary);
             callInfo.RouteValueDictionary.Add("id", id);
@@ -1481,19 +1460,6 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult MapItemLink(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MapItemLink);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Offers(int id, int type) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Offers);
-            callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("type", type);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult BookableOffers(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BookableOffers);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
@@ -1586,18 +1552,6 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult FindSimilarLocalisation(float latitude, float longitude) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
-            callInfo.RouteValueDictionary.Add("latitude", latitude);
-            callInfo.RouteValueDictionary.Add("longitude", longitude);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult GetMainLocalisations() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMainLocalisations);
-            return callInfo;
-        }
-
         public override System.Web.Mvc.PartialViewResult SearchForm(string searchType, string directAccessType, string place) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.SearchForm);
             callInfo.RouteValueDictionary.Add("searchType", searchType);
@@ -1618,12 +1572,6 @@ namespace Worki.Web.Controllers {
 
         public override System.Web.Mvc.ActionResult FullSearchPerName() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerName);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchPerTypeSpecial(int type) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchPerTypeSpecial);
-            callInfo.RouteValueDictionary.Add("type", type);
             return callInfo;
         }
 
@@ -1653,6 +1601,18 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult FindSimilarLocalisation(float latitude, float longitude) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FindSimilarLocalisation);
+            callInfo.RouteValueDictionary.Add("latitude", latitude);
+            callInfo.RouteValueDictionary.Add("longitude", longitude);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetMainLocalisations() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMainLocalisations);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.ActionResult AjaxFullSearch(Worki.Data.Models.SearchCriteria criteria) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearch);
             callInfo.RouteValueDictionary.Add("criteria", criteria);
@@ -1662,18 +1622,6 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult AjaxFullSearchResult(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxFullSearchResult);
             callInfo.RouteValueDictionary.Add("page", page);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult FullSearchResultDetail(int? index) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.FullSearchResultDetail);
-            callInfo.RouteValueDictionary.Add("index", index);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Suggestions(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Suggestions);
-            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

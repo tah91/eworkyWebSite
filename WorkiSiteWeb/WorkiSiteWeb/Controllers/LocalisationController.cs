@@ -72,6 +72,19 @@ namespace Worki.Web.Controllers
             }
         }
 
+        [ChildActionOnly]
+        public virtual ActionResult Suggestions(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var original = lRepo.Get(id);
+            var suggestions = lRepo.GetMany(loc => (loc.ID != id) && (loc.TypeValue == original.TypeValue) && (loc.PostalCode == original.PostalCode));
+            suggestions = MiscHelpers.Shuffle(suggestions.Where(loc => !string.IsNullOrEmpty(loc.GetMainPic()) && !loc.IsOffline).ToList());
+            suggestions = suggestions.Take(5).OrderBy(x => x.Name).ToList();
+
+            return PartialView(MVC.Localisation.Views._Suggestions, suggestions);
+        }
+
         /// <summary>
         /// Action to get localisation description
         /// </summary>
@@ -105,45 +118,6 @@ namespace Worki.Web.Controllers
 
             return Json(localisation.GetDetailFullUrl(Url), JsonRequestBehavior.AllowGet);
         }
-
-		/// <summary>
-		/// The view containing the offers of a localisation
-		/// </summary>
-		/// <param name="id">id of the localisation</param>
-		/// <param name="type">offer type</param>
-		/// <returns>The action result.</returns>
-		[ActionName("offers")]
-		public virtual ActionResult Offers(int id, int type)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var localisation = lRepo.Get(id);
-
-			var container = new LocalisationOfferViewModel(localisation, (LocalisationOffer)type);
-			return View(MVC.Localisation.Views.Offers, container);
-		}
-
-		/// <summary>
-		/// The view containing the bookable offers of a localisation
-		/// </summary>
-		/// <param name="id">id of the localisation</param>
-		/// <returns>The action result.</returns>
-		[ActionName("bookable-offers")]
-		public virtual ActionResult BookableOffers(int id)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var localisation = lRepo.Get(id);
-
-			var container = new LocalisationOfferViewModel { Localisation = localisation };
-			container.Offers = localisation.Offers.Where(o => o.CanHaveBooking && o.IsBookable);
-			if (container.Offers.Count() == 0)
-			{
-				return RedirectToAction(MVC.Localisation.AskBooking(id));
-			}
-			container.Title = localisation.Name + " - " + Worki.Resources.Views.Localisation.LocalisationString.Booking;
-			return View(MVC.Localisation.Views.Offers, container);
-		}
 
 		/// <summary>
 		/// Get action resulta to show form to ask booking via form
@@ -595,43 +569,6 @@ namespace Worki.Web.Controllers
 
 		#region Search
 
-		/// <summary>
-		/// POST Action result to get localisations very close to given coordinates
-		/// it returns json data
-		/// </summary>
-		/// <param name="latitude">coordinates latitude</param>
-		/// <param name="longitude">coordinates longitude</param>
-		/// <returns>list of localisations in json format</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult FindSimilarLocalisation(float latitude, float longitude)
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-			var localisations = lRepo.FindSimilarLocalisation(latitude, longitude);
-			var jsonLocalisations = (from item
-										 in localisations
-									 select item.GetJson());
-			return Json(jsonLocalisations.ToList());
-		}
-
-		/// <summary>
-		/// POST Action result to get main localisations
-		/// it returns json data
-		/// </summary>
-		/// <returns>list of localisations in json format</returns>
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual ActionResult GetMainLocalisations()
-		{
-			var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var localisations = lRepo.GetMany(item => (item.MainLocalisation.IsMain && !item.MainLocalisation.IsOffline && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
-			var jsonLocalisations = localisations.Select(item =>
-			{
-				return item.GetJson(this);
-			});
-			return Json(jsonLocalisations.ToList());
-		}
-
         /// <summary>
         /// Action to get partial view of search form
         /// </summary>
@@ -704,20 +641,6 @@ namespace Worki.Web.Controllers
             var criteria = new SearchCriteria(true, eSearchType.ePerName, eOrderBy.Rating);
             return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
         }
-
-		/// <summary>
-		/// GET Action result to search localisations from a SearchCriteria
-		/// the search is per localisation type (wifi spot, hotel, resto etc...)
-		/// the SearchCriteria is pre filled according to the profile (students, teleworker etc...)
-		/// </summary>
-		/// <returns>the form to fill</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("search-special")]
-		public virtual ActionResult FullSearchPerTypeSpecial(int type)
-		{
-            var criteria = SearchCriteria.CreateSearchCriteria((eDirectAccessType)type);
-			return View(MVC.Localisation.Views.FullSearch, new SearchCriteriaFormViewModel(criteria));
-		}
 
         /// <summary>
         /// action which redirect to search results, for seo purpose
@@ -832,6 +755,45 @@ namespace Worki.Web.Controllers
 			return View(MVC.Localisation.Views.FullSearchResult, criteriaViewModel);
 		}
 
+        #region Ajax
+
+        /// <summary>
+        /// POST Action result to get localisations very close to given coordinates
+        /// it returns json data
+        /// </summary>
+        /// <param name="latitude">coordinates latitude</param>
+        /// <param name="longitude">coordinates longitude</param>
+        /// <returns>list of localisations in json format</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult FindSimilarLocalisation(float latitude, float longitude)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisations = lRepo.FindSimilarLocalisation(latitude, longitude);
+            var jsonLocalisations = (from item
+                                         in localisations
+                                     select item.GetJson());
+            return Json(jsonLocalisations.ToList());
+        }
+
+        /// <summary>
+        /// POST Action result to get main localisations
+        /// it returns json data
+        /// </summary>
+        /// <returns>list of localisations in json format</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult GetMainLocalisations()
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisations = lRepo.GetMany(item => (item.MainLocalisation.IsMain && !item.MainLocalisation.IsOffline && item.LocalisationFiles.Where(f => f.IsDefault == true).Count() != 0));
+            var jsonLocalisations = localisations.Select(item =>
+            {
+                return item.GetJson(this);
+            });
+            return Json(jsonLocalisations.ToList());
+        }
+
 		JsonResult GetSearchResult(SearchCriteriaFormViewModel criteriaViewModel)
 		{
             var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
@@ -855,13 +817,10 @@ namespace Worki.Web.Controllers
 		}
 
         /// <summary>
-        /// POST Action result to search localisations from a SearchCriteria
-        /// it remove the cached result from session store
-        /// then it create the route data from SearchCriteria and redirect to result page
-        /// the SearchCriteria is pre filled according to the profile (students, teleworker etc...)
+        /// Ajax POST Action result to search localisations from a SearchCriteria
         /// </summary>
         /// <param name="criteria">The criteria data from the form</param>
-        /// <returns>redirect to the list of results</returns>
+        /// <returns>json containing results</returns>
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         [ValidateOnlyIncomingValues(Exclude = "Type", Prefix = "criteria.OfferData")]
@@ -874,8 +833,6 @@ namespace Worki.Web.Controllers
                 {
                     var rvd = _SearchService.GetRVD(criteria);
                     var criteriaViewModel = _SearchService.FillSearchResults(criteria);
-
-                    //criteriaViewModel.FillPageInfo(pageValue);
 
 					return GetSearchResult(criteriaViewModel);
                 }
@@ -890,17 +847,10 @@ namespace Worki.Web.Controllers
         }
 
         /// <summary>
-        /// GET Action result to show paginated search results from a SearchCriteria
-        /// if results in cache
-        ///     get it
-        /// else
-        ///     build searchcriteria from url
-        ///     with this, search matchings localisations in repository
-        ///     fill the session store with computed results
-        /// and display results
+        /// Ajax GET Action result to show paginated search results from a SearchCriteria
         /// </summary>
         /// <param name="page">the page to display</param>
-        /// <returns>the list of results in the page</returns>
+        /// <returns>JSON of the list of results in the page</returns>
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult AjaxFullSearchResult(int? page)
         {
@@ -912,35 +862,8 @@ namespace Worki.Web.Controllers
 			return GetSearchResult(criteriaViewModel);
         }
 
-		/// <summary>
-		/// GET Action result to show detailed localisation from search results
-		/// </summary>
-		/// <param name="index">the index of th localisation in the list of results</param>
-		/// <returns>a view of the details of the selected localisation</returns>
-		[AcceptVerbs(HttpVerbs.Get)]
-		[ActionName("search-detail")]
-		public virtual ActionResult FullSearchResultDetail(int? index)
-		{
-			var itemIndex = index ?? 0;
-			var detailModel = _SearchService.GetSingleResult(Request, itemIndex);
 
-			if (detailModel == null)
-				return View(MVC.Shared.Views.Error);
-			return View(MVC.Localisation.Views.FullSearchResultDetail, detailModel);
-		}
-
-		[ChildActionOnly]
-		public virtual ActionResult Suggestions(int id)
-        {
-            var context = ModelFactory.GetUnitOfWork();
-			var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
-            var original = lRepo.Get(id);
-            var suggestions = lRepo.GetMany(loc => (loc.ID != id) && (loc.TypeValue == original.TypeValue) && (loc.PostalCode == original.PostalCode));
-            suggestions = MiscHelpers.Shuffle(suggestions.Where(loc => !string.IsNullOrEmpty(loc.GetMainPic()) && !loc.IsOffline).ToList());
-            suggestions = suggestions.Take(5).OrderBy(x => x.Name).ToList();
-
-			return PartialView(MVC.Localisation.Views._Suggestions, suggestions);
-        }
+        #endregion
 
 		#endregion
 	}
