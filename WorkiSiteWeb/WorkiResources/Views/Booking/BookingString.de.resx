@@ -121,64 +121,64 @@
     <value>Reservieren</value>
   </data>
   <data name="BackToUrl" xml:space="preserve">
-    <value>Retour</value>
+    <value>Zurück</value>
   </data>
   <data name="BookingIntro" xml:space="preserve">
-    <value>Remplir les champs pour réserver, un e-mail vous sera envoyé</value>
+    <value>Füllen Sie die Felder für eine Reservierung aus, eine E-Mail wird Ihnen zugeschickt.</value>
   </data>
   <data name="BookingDetails" xml:space="preserve">
-    <value>Détails de la réservation</value>
+    <value>Details der Reservierung</value>
   </data>
   <data name="ConfirmIt" xml:space="preserve">
     <value>Bestätigen</value>
   </data>
   <data name="HandleIt" xml:space="preserve">
-    <value>Prendre en charge</value>
+    <value>übernehmen</value>
   </data>
   <data name="RefuseIt" xml:space="preserve">
     <value>Ablehnen</value>
   </data>
   <data name="Confirmed" xml:space="preserve">
-    <value>Votre demande de réservation a été correctement prise en compte. Le prix et la disponibilité vont être confirmés par le gérant.</value>
+    <value>Ihr Reservierungsantrag wurde richtig berücksichtigt. Preis und Verfügbarkeit werden von dem Manager bestätigt.</value>
   </data>
   <data name="Quotation" xml:space="preserve">
     <value>Kostenanfrage</value>
   </data>
   <data name="BookSpeech" xml:space="preserve">
-    <value>Pour effectuer une demande de réservation, remplissez les champs suivants.</value>
+    <value>Um einen Reservierungsantrag zu beginnen, füllen Sie die folgenden Felder aus.</value>
   </data>
   <data name="QuotationSpeech" xml:space="preserve">
     <value>Pour effectuer une demande de devis, remplissez les champs suivants.</value>
   </data>
   <data name="BeginSpeech" xml:space="preserve">
-    <value>Veuillez indiquer les date et heure de début et de fin de votre réservation.</value>
+    <value>Bitte geben Sie die Beginn- und Endezeiten Ihrer Reservierung an.</value>
   </data>
   <data name="ValidateQuotation" xml:space="preserve">
-    <value>Valider la demande de devis</value>
+    <value>Kostenvorschlag bestätigen</value>
   </data>
   <data name="AskQuotation" xml:space="preserve">
-    <value>Demander un devis</value>
+    <value>Kostenanschlag nachfragen</value>
   </data>
   <data name="Surface" xml:space="preserve">
     <value>Fläche</value>
   </data>
   <data name="Asked" xml:space="preserve">
-    <value>Demandée le</value>
+    <value>Am  {date} nachgefragt</value>
   </data>
   <data name="Customer" xml:space="preserve">
     <value>Kunde</value>
   </data>
   <data name="End" xml:space="preserve">
-    <value>Fin</value>
+    <value>Ende</value>
   </data>
   <data name="Localisation" xml:space="preserve">
-    <value>Lieu</value>
+    <value>Ort</value>
   </data>
   <data name="Offer" xml:space="preserve">
     <value>Angebot</value>
   </data>
   <data name="Pay" xml:space="preserve">
-    <value>Régler</value>
+    <value>Zahlen</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Preis</value>
@@ -187,173 +187,173 @@
     <value>Kundenprofil anschauen</value>
   </data>
   <data name="SeeLocSheet" xml:space="preserve">
-    <value>Voir la fiche du lieu</value>
+    <value>Ort-Seite anschauen</value>
   </data>
   <data name="Start" xml:space="preserve">
-    <value>Début</value>
+    <value>Anfang</value>
   </data>
   <data name="WaitingForPayement" xml:space="preserve">
-    <value>En attente de paiement</value>
+    <value>In Erwartung der Zahlung</value>
   </data>
   <data name="BookPaid" xml:space="preserve">
-    <value>La réservation pour le lieu {0} à été payée !</value>
+    <value>Die Reservierung für den Ort {0} wurde bezahlt.</value>
   </data>
   <data name="AskingQuotation" xml:space="preserve">
-    <value>Demande de devis pour {0}</value>
+    <value>Kostenanschlag für {0}</value>
   </data>
   <data name="PayFail" xml:space="preserve">
-    <value>Le paiement n'a pas été pris en compte !</value>
+    <value>Die Zahlung wurde nicht erfasst !</value>
   </data>
   <data name="BookingRefused" xml:space="preserve">
-    <value>La demande de réservation a été refusée.</value>
+    <value>Der Reservierungsantrag wurde abgelehnt.</value>
   </data>
   <data name="QuotationConfirmed" xml:space="preserve">
-    <value>Votre demande de devis a correctement été prise en compte.</value>
+    <value>Ihr Kostenvorschlag wurde richtig berücksichtigt.</value>
   </data>
   <data name="BookingAccepted" xml:space="preserve">
-    <value>La demande de réservation a été confirmée.</value>
+    <value>Der Reservierungsantrag wurde bestätigt.</value>
   </data>
   <data name="BookingCanceled" xml:space="preserve">
-    <value>Votre demande de réservation a été annulée.</value>
+    <value>Ihr Reservierungsantrag wurde abgelehnt.</value>
   </data>
   <data name="QuotationCanceled" xml:space="preserve">
-    <value>Votre demande de devis a été annulée.</value>
+    <value>Ihr Kostenvorschlag wurde storniert.</value>
   </data>
   <data name="BookingBeforeToday" xml:space="preserve">
-    <value>Votre réservation ne peut pas débuter avant aujourd'hui.</value>
+    <value>Ihre Reservierung kann nicht vor Heute anfangen.</value>
   </data>
   <data name="EndBookingBeforeStart" xml:space="preserve">
-    <value>La date de fin de votre réservation doit être postérieure à la date de début.</value>
+    <value>Das Enddatum Ihrer Reservierung muss nach dem Startdatum sein.</value>
   </data>
   <data name="EndQuotationSpeech" xml:space="preserve">
-    <value>Vous serez contacté dans les meilleurs délais par le gérant du lieu.</value>
+    <value>Sie werden in kürzer Zeit von dem Manager dieses Ortes kontaktiert. </value>
   </data>
   <data name="QuotationRefused" xml:space="preserve">
-    <value>La demande de devis a été refusée.</value>
+    <value>Der Kostenanschlag wurde abgelehnt.</value>
   </data>
   <data name="EndSpeech" xml:space="preserve">
-    <value>La disponibilité et le prix pour cette demande de réservation vous seront confirmés par le gérant dans votre Espace utilisateur. Une fois confirmée, vous pourrez alors régler en ligne votre réservation.</value>
+    <value>Die Verfügbarkeit und der Preis Ihrer Anfrage werden Ihnen von dem Manager in Ihrem Konto bestätigt. Sobald die Reservierung bestätigt ist, wird es für Sie möglich sein, Ihre Reservierung online zu zahlen.</value>
   </data>
   <data name="Achieved" xml:space="preserve">
     <value>Achevée le </value>
   </data>
   <data name="CancelStatus" xml:space="preserve">
-    <value>Annulée le </value>
+    <value>Storniert am</value>
   </data>
   <data name="ContactStatus" xml:space="preserve">
     <value>Contact établi le </value>
   </data>
   <data name="HasAcceptBooking" xml:space="preserve">
-    <value>{0} a accepté la demande de réservation pour {1}</value>
+    <value>{0} hat den Reservierungsantrag für {1} akzeptiert</value>
   </data>
   <data name="HasAskBooking" xml:space="preserve">
-    <value>{0} a fait une demande de réservation pour {1}</value>
+    <value>{0} hat einen Reservierungsantrag für {1} gemacht</value>
   </data>
   <data name="HasAskQuotation" xml:space="preserve">
-    <value>{0} a fait une demande de devis pour {1}</value>
+    <value>{0} hat einen Kostenanschlag für {1} nachgefragt</value>
   </data>
   <data name="HasCancelBooking" xml:space="preserve">
-    <value>{0} a annulé la demande de réservation pour {1}</value>
+    <value>{0} hat den Reservierungsantrag für {1} storniert</value>
   </data>
   <data name="HasCancelQuotation" xml:space="preserve">
-    <value>{0} a annulé la demande de devis pour {1}</value>
+    <value>{0} hat den Kostenanschlag für {1} storniert</value>
   </data>
   <data name="HasPaidBooking" xml:space="preserve">
-    <value>{0} a payé la demande de réservation pour {1}</value>
+    <value>{0} hat den Reservierungsantrag für {1} bezahlt</value>
   </data>
   <data name="HasPaidQuotation" xml:space="preserve">
-    <value>{0} a payé la demande de devis pour {1}</value>
+    <value>{0} hat den Kostenanschlag für {1} bezahlt</value>
   </data>
   <data name="HasRefuseBooking" xml:space="preserve">
-    <value>{0} a refusé la demande de réservation pour {1}</value>
+    <value>{0} hat den Reservierungsantrag für {1} abgelehnt</value>
   </data>
   <data name="HasRefuseQuotation" xml:space="preserve">
-    <value>{0} a refusé la demande de devis pour {1}</value>
+    <value>{0} hat den Kostenanschlag für {1} abgelehnt</value>
   </data>
   <data name="PaidStatus" xml:space="preserve">
-    <value>Payée le </value>
+    <value>Bezahlt am</value>
   </data>
   <data name="QuotationCancel" xml:space="preserve">
-    <value>Demande de devis annulée le </value>
+    <value>Kostenanschlag am {date} storniert </value>
   </data>
   <data name="QuotationRefuse" xml:space="preserve">
-    <value>Demande de devis refusée le </value>
+    <value>Kostenanschlag am {date} abgelehnt</value>
   </data>
   <data name="RefuseStatus" xml:space="preserve">
-    <value>Refusée le </value>
+    <value>Abgelehnt am</value>
   </data>
   <data name="WaitingConfirm" xml:space="preserve">
-    <value>En attente de confirmation</value>
+    <value>In Erwartung der Bestätigung</value>
   </data>
   <data name="WaitingPayment" xml:space="preserve">
-    <value>En attente de règlement</value>
+    <value>In Erwartung der Zahlung</value>
   </data>
   <data name="WaitingStatus" xml:space="preserve">
-    <value>En attente de prise en charge</value>
+    <value>In Erwartung einer Wahrnehmung</value>
   </data>
   <data name="PaymentError" xml:space="preserve">
-    <value>Une erreur empêche le payement, veuillez nous contacter à support@eworky.com.</value>
+    <value>Ein Fehler verhindert die Zahlung, bitte kontaktieren Sie uns : support@eworky.com</value>
   </data>
   <data name="MessageToOwner" xml:space="preserve">
-    <value>Message au gérant</value>
+    <value>Nachricht für den Manager</value>
   </data>
   <data name="Afternoon" xml:space="preserve">
-    <value>après-midi</value>
+    <value>Nachmittag</value>
   </data>
   <data name="ChooseDay" xml:space="preserve">
-    <value>choisir un nombre de jours</value>
+    <value>Anzahl der Tage auswählen</value>
   </data>
   <data name="ChooseHalfDay" xml:space="preserve">
-    <value>choisir un nombre de demi-journées</value>
+    <value>Anzahl der Halbtage auswählen</value>
   </data>
   <data name="ChooseHours" xml:space="preserve">
-    <value>choisir un nombre d'heures</value>
+    <value>Anzahl der Stunden auswählen</value>
   </data>
   <data name="ChooseMonth" xml:space="preserve">
-    <value>choisir un nombre de mois</value>
+    <value>Anzahl der Monate auswählen</value>
   </data>
   <data name="ChooseWeek" xml:space="preserve">
-    <value>choisir un nombre de semaines</value>
+    <value>Anzahl der Wochen auswählen</value>
   </data>
   <data name="ChooseYear" xml:space="preserve">
-    <value>choisir un nombre d'années</value>
+    <value>Anzahl der Jahre auswählen</value>
   </data>
   <data name="HowItWorks" xml:space="preserve">
     <value>Wie funktioniert es?</value>
   </data>
   <data name="HowItWorks1" xml:space="preserve">
-    <value>Vous indiquez les détails de votre réservation</value>
+    <value>Bitte geben Sie die Details Ihrer Reservierung an</value>
   </data>
   <data name="HowItWorks2" xml:space="preserve">
-    <value>Votre demande sera alors immédiatement transmise au gérant</value>
+    <value>Ihr Antrag wird dann sofort dem Manager zugeschickt.</value>
   </data>
   <data name="HowItWorks3" xml:space="preserve">
-    <value>Vous recevrez ainsi dans votre espace utilisateur une confirmation du prix et des disponibilités</value>
+    <value>Sie werden in Ihrem Konto eine Bestätigung für den Preis und die Verfügbarkeit Ihrer Reservierung bekommen.</value>
   </data>
   <data name="HowItWorks4" xml:space="preserve">
-    <value>Vous pourrez alors régler en ligne votre réservation</value>
+    <value>Sie können dann Ihre Reservierung online bezahlen</value>
   </data>
   <data name="Morning" xml:space="preserve">
-    <value>matin</value>
+    <value>Morgen</value>
   </data>
   <data name="Until" xml:space="preserve">
-    <value>jusqu'au</value>
+    <value>bis zu dem</value>
   </data>
   <data name="NotNullQuantity" xml:space="preserve">
-    <value>Veuillez indiquer une quantité non nulle</value>
+    <value>Bitte geben Sie eine Menge (nicht Null)</value>
   </data>
   <data name="Booking" xml:space="preserve">
-    <value>Réservation</value>
+    <value>Reservierung</value>
   </data>
   <data name="HowItWorksQuotation1" xml:space="preserve">
-    <value>Vous remplissez la demande de devis, et posez vos questions éventuelles</value>
+    <value>Geben Sie Ihren Kostenvorschlag an und stellen Sie Ihre Fragen.</value>
   </data>
   <data name="HowItWorksQuotation2" xml:space="preserve">
-    <value>Votre demande est alors immédiatement transmise au gérant</value>
+    <value>Ihr Antrag wurde bereits dem Manager zugeschickt.</value>
     <comment>? pas sur</comment>
   </data>
   <data name="HowItWorksQuotation3" xml:space="preserve">
-    <value>Vous recevez une réponse dans les plus brefs délais</value>
+    <value>Sie bekommen eine Antwort in kürzer Zeit.</value>
   </data>
   <data name="HowItWorksParty1" xml:space="preserve">
     <value>Cet évènement networking est l’occasion pour tous les coworkaholics, indépendants et entrepreneurs de se rencontrer, de tisser des liens et découvrir les espaces de coworking parisiens.</value>
@@ -369,22 +369,22 @@
 Inscrivez-vous rapidement, les places sont limitées !</value>
   </data>
   <data name="RegisterParty" xml:space="preserve">
-    <value>S'inscrire</value>
+    <value>Registrieren</value>
   </data>
   <data name="PartyRegisterConfirmation" xml:space="preserve">
     <value>Votre inscription a été prise en compte, la date de l'évenement vous sera communiquée par mail.</value>
   </data>
   <data name="StatusAccepted" xml:space="preserve">
-    <value>Acceptée</value>
+    <value>Akzeptiert</value>
   </data>
   <data name="StatusCancelled" xml:space="preserve">
-    <value>Annulée</value>
+    <value>Storniert</value>
   </data>
   <data name="StatusPaid" xml:space="preserve">
-    <value>Payée</value>
+    <value>Bezahlt</value>
   </data>
   <data name="StatusRefused" xml:space="preserve">
-    <value>Refusée</value>
+    <value>Abgelehnt</value>
   </data>
   <data name="StatusUnknown" xml:space="preserve">
     <value>Inconnu</value>
