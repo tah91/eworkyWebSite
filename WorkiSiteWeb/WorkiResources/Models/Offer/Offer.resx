@@ -141,6 +141,9 @@
   <data name="AvailableFromFor" xml:space="preserve">
     <value>Disponible à partir du {0} pour {1} {2}</value>
   </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Réservation en ligne</value>
+  </data>
   <data name="Cash" xml:space="preserve">
     <value>Espèces</value>
   </data>
@@ -215,6 +218,12 @@
   </data>
   <data name="PriceType" xml:space="preserve">
     <value>Période</value>
+  </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Gestion des demandes</value>
+  </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>Demande de devis</value>
   </data>
   <data name="SingleDay" xml:space="preserve">
     <value>jour</value>

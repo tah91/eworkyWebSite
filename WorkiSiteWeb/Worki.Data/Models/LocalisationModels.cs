@@ -831,39 +831,21 @@ namespace Worki.Data.Models
         }
 
 		/// <summary>
-		/// true if one offer can be bookable
-		/// </summary>
-		/// <returns></returns>
-		public bool CanHaveBooking()
-		{
-			return Offers.Count(o => o.CanHaveBooking) != 0;
-		}
-
-		/// <summary>
-		/// true if one offer can be quotable
-		/// </summary>
-		/// <returns></returns>
-		public bool CanHaveQuotation()
-		{
-			return Offers.Count(o => o.CanHaveQuotation) != 0;
-		}
-
-		/// <summary>
 		/// true if one offer is bookable
 		/// </summary>
 		/// <returns></returns>
-		public bool IsBookable()
+        public bool AcceptBooking()
 		{
-            return Offers.Count(o => o.IsBookable && o.OfferPrices != null && o.OfferPrices.Count != 0) != 0;
+            return Offers.Count(o => o.IsReallyBookable()) != 0;
 		}
 
 		/// <summary>
 		/// true if one offer is quotable
 		/// </summary>
 		/// <returns></returns>
-		public bool IsQuotable()
+        public bool AcceptQuotation()
 		{
-			return Offers.Count(o => o.IsQuotable) != 0;
+            return Offers.Count(o => o.AcceptQuotation()) != 0;
 		}
 
         #endregion

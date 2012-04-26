@@ -58,22 +58,19 @@
 				    </div> 
 				    <div class="clear"></div>
 				</div>
-				@if (offer.HasProduct)
+				@if (offer.AcceptQuotation())
 				{
-					if (offer.CanHaveQuotation && offer.IsQuotable)
-					{
-						<div class="buttonStd buttonBlue linkImg float-right">
-							@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
-						</div>
-					}
-                    else if (offer.CanHaveBooking && offer.IsReallyBookable())
-					{
-						<div class="buttonStd buttonBlue linkImg float-right">
-							@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
-						</div>
-					}
-					<div class="clear"></div>
+					<div class="buttonStd buttonBlue linkImg float-right">
+						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
+					</div>
 				}
+                else if (offer.AcceptQuotation() && offer.IsReallyBookable())
+				{
+					<div class="buttonStd buttonBlue linkImg float-right">
+						@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
+					</div>
+				}
+				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
 		</div>

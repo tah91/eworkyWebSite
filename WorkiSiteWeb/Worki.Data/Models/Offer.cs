@@ -17,9 +17,9 @@ namespace Worki.Data.Models
         public Offer()
         {
             this.MemberBookings = new HashSet<MemberBooking>();
+            this.MemberQuotations = new HashSet<MemberQuotation>();
             this.OfferFeatures = new HashSet<OfferFeature>();
             this.OfferFiles = new HashSet<OfferFile>();
-            this.MemberQuotations = new HashSet<MemberQuotation>();
             this.OfferPrices = new HashSet<OfferPrice>();
             this.WelcomePeoples = new HashSet<WelcomePeople>();
     		OnInitialized();
@@ -40,21 +40,22 @@ namespace Worki.Data.Models
         public int Period { get; set; }
         public bool IsOnline { get; set; }
         public bool IsBookable { get; set; }
+        public bool IsQuotable { get; set; }
         public int PaymentType { get; set; }
         public int Currency { get; set; }
-        public bool IsQuotable { get; set; }
         public Nullable<System.DateTime> AvailabilityDate { get; set; }
         public int AvailabilityPeriod { get; set; }
         public int AvailabilityPeriodType { get; set; }
+        public int ProductType { get; set; }
     
         // Navigation properties
     
+        public virtual Localisation Localisation { get; set; }
         public virtual ICollection<MemberBooking> MemberBookings { get; set; }
+        public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
         public virtual ICollection<OfferFeature> OfferFeatures { get; set; }
         public virtual ICollection<OfferFile> OfferFiles { get; set; }
-        public virtual ICollection<MemberQuotation> MemberQuotations { get; set; }
         public virtual ICollection<OfferPrice> OfferPrices { get; set; }
-        public virtual Localisation Localisation { get; set; }
         public virtual ICollection<WelcomePeople> WelcomePeoples { get; set; }
     
     }

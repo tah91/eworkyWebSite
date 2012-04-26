@@ -39,7 +39,6 @@ namespace Worki.Data.Models
         public DbSet<OfferFile> OfferFiles { get; set; }
         public DbSet<MemberQuotationTransaction> MemberQuotationTransactions { get; set; }
         public DbSet<MemberBooking> MemberBookings { get; set; }
-        public DbSet<Offer> Offers { get; set; }
         public DbSet<MemberQuotation> MemberQuotations { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<MemberClient> MemberClients { get; set; }
@@ -57,5 +56,6 @@ namespace Worki.Data.Models
         public DbSet<ApiNonce> ApiNonces { get; set; }
         public DbSet<ApiSymmetricCryptoKey> ApiSymmetricCryptoKeys { get; set; }
         public DbSet<InvoiceNumber> InvoiceNumbers { get; set; }
+        public DbSet<Offer> Offers { get; set; }
     }
 }

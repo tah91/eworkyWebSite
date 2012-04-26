@@ -184,13 +184,13 @@ namespace Worki.Web.Helpers
                 {
                     case OfferDropDownFilter.Quotation:
                         {
-                            if (item.CanHaveQuotation)
+                            if (item.AcceptQuotation())
                                 dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
                             break;
                         }
                     case OfferDropDownFilter.Booking:
                         {
-                            if (item.CanHaveBooking)
+                            if (item.AcceptBooking())
                                 dropDown.Items.Add(new DropDownItem { DisplayName = item.Name, Link = urlMaker(item) });
                             break;
                         }

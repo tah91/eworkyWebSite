@@ -215,7 +215,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				try
 				{
 					var member = mRepo.Get(memberId);
-					if (formData.InnerModel.Offer.HasProduct && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
+                    if (formData.InnerModel.Offer.AcceptBooking() && string.IsNullOrEmpty(member.MemberMainData.PaymentAddress))
 					{
 						throw new Exception(Worki.Resources.Views.BackOffice.BackOfficeString.NeedInfoPaypal);
 					}
@@ -401,7 +401,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				if (offerId == 0)
 				{
 					var loc = lRepo.Get(id);
-					offer = loc.Offers.Where(o => o.CanHaveBooking).FirstOrDefault();
+                    offer = loc.Offers.Where(o => o.AcceptBooking()).FirstOrDefault();
 					if (offer == null)
 					{
 						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineBooking;
@@ -457,7 +457,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				if (offerId == 0)
 				{
 					var loc = lRepo.Get(id);
-					offer = loc.Offers.Where(o => o.CanHaveQuotation).FirstOrDefault();
+					offer = loc.Offers.Where(o => o.AcceptQuotation()).FirstOrDefault();
 					if (offer == null)
 					{
 						TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.BackOffice.BackOfficeString.DoNotHaveOnlineQuotation;

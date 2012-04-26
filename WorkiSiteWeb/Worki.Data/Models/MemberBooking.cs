@@ -46,9 +46,9 @@ namespace Worki.Data.Models
     
         public virtual ICollection<MemberBookingLog> MemberBookingLogs { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
-        public virtual Offer Offer { get; set; }
         public virtual Member Member { get; set; }
         public virtual InvoiceNumber InvoiceNumber { get; set; }
+        public virtual Offer Offer { get; set; }
     
     }
 }

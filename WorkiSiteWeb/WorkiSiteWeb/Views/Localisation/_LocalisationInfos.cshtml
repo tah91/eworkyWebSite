@@ -1,9 +1,9 @@
 ﻿@model Worki.Data.Models.Localisation
 
-@if (!Model.IsSharedOffice() && Model.CanHaveBooking())
+@if (!Model.IsSharedOffice())
 {
 	<div class="bookingCallAction">
-		@if (Model.IsBookable())
+		@if (Model.AcceptBooking())
 		{
 		<div class="bigButtonStd buttonStd buttonBlue linkImg">
             <a href="#offers" id="bookItNow">@Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction</a>

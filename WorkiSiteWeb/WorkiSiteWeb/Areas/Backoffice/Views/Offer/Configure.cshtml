@@ -34,30 +34,14 @@
 							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsOnline)
 						</td>
 					</tr>
-                    @if (Model.InnerModel.Offer.CanHaveBooking)
-					{ 
                     <tr>
 						<td>
-						    @Html.LabelFor(m => m.InnerModel.Offer.IsBookable)
+						    @Html.LabelFor(m => m.InnerModel.Offer.ProductType)
 						</td>
 						<td>
-							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsBookable)
+							@Html.DropDownListFor(m => m.InnerModel.Offer.ProductType, Model.InnerModel.ProductTypes)
 						</td>
-					</tr>
-					}
-                    @if (Model.InnerModel.Offer.CanHaveQuotation)
-					{ 
-                    <tr>
-						<td>
-						    @Html.LabelFor(m => m.InnerModel.Offer.IsQuotable)
-						</td>
-						<td>
-							@Html.CheckBoxFor(m => m.InnerModel.Offer.IsQuotable)
-						</td>
-					</tr>
-					}
-                    @if (Model.InnerModel.Offer.CanHaveBooking)
-					{
+					</tr> 
                     <tr>
 						<td>
 							@Html.LabelFor(m => m.InnerModel.Offer.PaymentType)
@@ -66,7 +50,6 @@
 							@Html.DropDownListFor(m => m.InnerModel.Offer.PaymentType, Model.InnerModel.PaymentTypes)
 						</td>
 					</tr>
-					}
 				</table>
 		    </div>
 

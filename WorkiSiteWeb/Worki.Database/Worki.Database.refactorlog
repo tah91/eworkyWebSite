@@ -42,4 +42,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="IsOnline" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6a0100e4-4bae-4401-9a09-0e0bdc7fbb57" ChangeDateTime="04/26/2012 14:32:14">
+    <Property Name="ElementName" Value="[dbo].[Offer].[OrderType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Offer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductType" />
+  </Operation>
 </Operations>

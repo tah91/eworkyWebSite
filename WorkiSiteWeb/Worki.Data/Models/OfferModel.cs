@@ -27,6 +27,7 @@ namespace Worki.Data.Models
             Periods = new SelectList(Offer.GetPaymentPeriodTypes(), "Key", "Value", Offer.PaymentPeriod.Hour);
             PaymentTypes = new SelectList(Offer.GetPaymentTypeEnumTypes(), "Key", "Value", Offer.PaymentTypeEnum.Paypal);
             Currencies = new SelectList(Offer.GetCurrencyEnumTypes(), "Key", "Value", Offer.CurrencyEnum.EUR);
+            ProductTypes = new SelectList(Offer.GetProductTypes(), "Key", "Value", Offer.eProductType.Quotation);
             IsSharedOffice = isShared;
             Offer = new Offer();
         }
@@ -36,6 +37,7 @@ namespace Worki.Data.Models
         public SelectList Periods { get; set; }
         public SelectList PaymentTypes { get; set; }
         public SelectList Currencies { get; set; }
+        public SelectList ProductTypes { get; set; }
 		public int LocId { get; set; }
         public bool IsSharedOffice { get; set; }
 	}
@@ -168,49 +170,56 @@ namespace Worki.Data.Models
 
 		#region Booking Possibility
 
-        public static bool OfferCanHaveQuotation(LocalisationOffer type)
+        /// <summary>
+        /// King of product this offer is
+        /// </summary>
+        public enum eProductType
         {
-            return type == LocalisationOffer.Desktop;
+            Quotation,
+            Booking
         }
 
-        public static bool OfferCanHaveBooking(LocalisationOffer type)
+        public static List<int> ProductTypes = new List<int>()
         {
-            return type == LocalisationOffer.Workstation ||
-                    type == LocalisationOffer.MeetingRoom ||
-                    type == LocalisationOffer.SeminarRoom ||
-                    type == LocalisationOffer.VisioRoom;
+            (int)eProductType.Quotation,
+            (int)eProductType.Booking
+        };
+
+        public static string GetProductTypes(int type)
+        {
+            var enumType = (eProductType)type;
+            switch (enumType)
+            {
+                case eProductType.Quotation:
+                    return Worki.Resources.Models.Offer.Offer.Quotation;
+                case eProductType.Booking:
+                    return Worki.Resources.Models.Offer.Offer.Booking;
+                default:
+                    return string.Empty;
+            }
         }
 
-		/// <summary>
-		/// True if offer can have quotation feature activated
-		/// </summary>
-		public bool CanHaveQuotation
-		{
-            get { return OfferCanHaveQuotation((LocalisationOffer)Type); }
-		}
-
-		/// <summary>
-		/// True if offer can have booking feature activated
-		/// </summary>
-        public bool CanHaveBooking
+        public static Dictionary<int, string> GetProductTypes()
         {
-            get { return OfferCanHaveBooking((LocalisationOffer)Type);/*&& Localisation != null && !Localisation.IsSharedOffice()*/; }
+            return ProductTypes.ToDictionary(p => p, p => GetProductTypes(p));
         }
 
-		/// <summary>
-		/// True if offer has product feature activated
-		/// </summary>
-		public bool HasProduct
-		{
-			get { return IsBookable || IsQuotable; }
-		}
+        public bool AcceptBooking()
+        {
+            return ProductType == (int)eProductType.Booking;
+        }
+
+        public bool AcceptQuotation()
+        {
+            return ProductType == (int)eProductType.Quotation;
+        }
 
 		/// <summary>
 		/// True if offer can be booked
 		/// </summary>
 		public bool IsReallyBookable()
 		{
-			return CanHaveBooking && OfferPrices != null && OfferPrices.Count != 0;
+            return AcceptBooking() && OfferPrices != null && OfferPrices.Count != 0;
 		}
 
 		#endregion
@@ -557,6 +566,10 @@ namespace Worki.Data.Models
 
         [Display(Name = "AvailabilityPeriodType", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
         public int AvailabilityPeriodType { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
+        [Display(Name = "ProductType", ResourceType = typeof(Worki.Resources.Models.Offer.Offer))]
+        public int ProductType { get; set; }
 	}
 
 	public partial class OfferFeature : IFeatureContainer

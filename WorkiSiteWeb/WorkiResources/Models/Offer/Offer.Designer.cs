@@ -133,6 +133,15 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Réservation en ligne.
+        /// </summary>
+        public static string Booking {
+            get {
+                return ResourceManager.GetString("Booking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Espèces.
         /// </summary>
         public static string Cash {
@@ -349,11 +358,29 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Periode.
+        ///   Looks up a localized string similar to Période.
         /// </summary>
         public static string PriceType {
             get {
                 return ResourceManager.GetString("PriceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gestion des demandes.
+        /// </summary>
+        public static string ProductType {
+            get {
+                return ResourceManager.GetString("ProductType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demande de devis.
+        /// </summary>
+        public static string Quotation {
+            get {
+                return ResourceManager.GetString("Quotation", resourceCulture);
             }
         }
         
