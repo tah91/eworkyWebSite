@@ -1039,6 +1039,10 @@ namespace Worki.Data.Models
 			return CompanyTypes.ToDictionary(t => t, t => GetCompanyType(t));
 		}
 
+        /// <summary>
+        /// Get name of the place
+        /// </summary>
+        /// <returns>name</returns>
 		public string GetFullName()
 		{
 			if (!IsSharedOffice())
@@ -1059,14 +1063,14 @@ namespace Worki.Data.Models
 
 				atPart = GetInCompanyType((eCompanyType)CompanyType);
 
-				//if (string.IsNullOrEmpty(CompanyName))
-				//{
-				//    atPart = GetInCompanyType((eCompanyType)CompanyType);
-				//}
-				//else
-				//{
-				//    atPart = string.Format(Worki.Resources.Models.Localisation.Localisation.InCompany, CompanyName);
-				//}
+                if (string.IsNullOrEmpty(CompanyName))
+                {
+                    atPart = GetInCompanyType((eCompanyType)CompanyType);
+                }
+                else
+                {
+                    atPart = string.Format(Worki.Resources.Models.Localisation.Localisation.InCompany, CompanyName);
+                }
 
 				return offerPart + " " + atPart;
 			}

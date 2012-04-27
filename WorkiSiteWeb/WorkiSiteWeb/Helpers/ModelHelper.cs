@@ -90,7 +90,7 @@ namespace Worki.Web.Helpers
 
             string typeStr = Localisation.GetLocalisationSeoType(loc.TypeValue);
             var type = MiscHelpers.GetSeoString(typeStr);
-            var name = MiscHelpers.GetSeoString(loc.Name);
+            var name = MiscHelpers.GetSeoString(loc.GetFullName());
             return urlHelper.AbsoluteAction(MVC.Localisation.ActionNames.Details, MVC.Localisation.Name, new { type = type, id = loc.ID, name = name, area = "" });
         }
 
