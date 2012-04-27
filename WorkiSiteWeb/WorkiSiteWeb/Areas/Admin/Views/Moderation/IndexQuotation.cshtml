@@ -37,8 +37,8 @@
                          @Worki.Resources.Models.Booking.Booking.Handled
                     </th>
 					<th>
-                         @Worki.Resources.Views.Booking.BookingString.Surface
-                    </th>
+                        @Worki.Resources.Models.Booking.Booking.Confirmed
+                   </th>
                 </tr>
             </thead>
         <tbody>
@@ -49,13 +49,24 @@
                     @Html.ActionLink(item.Id.ToString(), MVC.Quotation.Details(item.Id))
                 </td>
                 <td align="center">
-                    @Html.ActionLink(item.Member.Email,MVC.Account.Public(item.MemberId))
+                    @Html.ActionLink(item.Member.Email, MVC.Account.Public(item.MemberId))
                 </td>
 				<td align="center">
+                    @item.GetStatus()
                 </td>
+                @if (item.Pending)
+                {
 				<td align="center">
-					@*@Html.ActionLink(item.Surface.ToString(), MVC.Quotation.Edit(item.Id, item.MemberId, ViewContext.HttpContext.Request.Url.PathAndQuery))*@
+
+					    @Html.ActionLink("Transferer", MVC.Admin.Moderation.TransferQuotation(item.Id, Model.PagingInfo.CurrentPage)) |
+                        @Html.ActionLink("Supprimer", MVC.Admin.Moderation.DeleteQuotation(item.Id, Model.PagingInfo.CurrentPage))                                                                  
                 </td>
+                }
+                else
+                {
+                <td align="center">                                                             
+                </td>
+                }
             </tr>
         }
         </tbody>

@@ -389,4 +389,7 @@ Inscrivez-vous rapidement, les places sont limitées !</value>
   <data name="StatusUnknown" xml:space="preserve">
     <value>Inconnu</value>
   </data>
+  <data name="StatusPending" xml:space="preserve">
+    <value>Non validé</value>
+  </data>
 </root>

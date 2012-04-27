@@ -64,7 +64,7 @@
 						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
 					</div>
 				}
-                else if (offer.AcceptQuotation() && offer.IsReallyBookable())
+                else if (offer.AcceptBooking() && offer.IsReallyBookable())
 				{
 					<div class="buttonStd buttonBlue linkImg float-right">
 						@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))

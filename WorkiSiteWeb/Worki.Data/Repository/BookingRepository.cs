@@ -7,7 +7,24 @@ using System.Linq;
 
 namespace Worki.Data.Models
 {
-	public interface IBookingRepository : IRepository<MemberBooking>
+    public interface IProductRepository<T>
+    {
+        /// <summary>
+        /// Get all the products of an owner
+        /// </summary>
+        /// <param name="id">owner id</param>
+        /// <returns>list of the elements</returns>
+        IList<T> GetOwnerProducts(int id);
+
+        /// <summary>
+        /// Get all the products of a localisation
+        /// </summary>
+        /// <param name="id">localisation id</param>
+        /// <returns>list of the elements</returns>
+        IList<T> GetLocalisationProducts(int id);
+    }
+
+    public interface IBookingRepository : IRepository<MemberBooking>, IProductRepository<MemberBooking>
 	{
 
  	}
@@ -18,5 +35,15 @@ namespace Worki.Data.Models
 			: base(logger, context)
 		{
 		}
+
+        public IList<MemberBooking> GetOwnerProducts(int id)
+        {
+            return GetMany(q => q.Offer.Localisation.OwnerID == id && q.StatusId != (int)MemberQuotation.Status.Pending);
+        }
+
+        public IList<MemberBooking> GetLocalisationProducts(int id)
+        {
+            return GetMany(q => q.Offer.LocalisationId == id && q.StatusId != (int)MemberQuotation.Status.Pending);
+        }
     }
 }

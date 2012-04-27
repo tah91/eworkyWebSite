@@ -158,6 +158,61 @@ namespace Worki.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// GET Action result to Transfer quotation to owner
+        /// </summary>
+        /// <param name="id">id of Quotation</param>
+        /// <returns>View containing Quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult TransferQuotation(int id, int page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+
+            try
+            {
+                var quotation  = qRepo.Get(id);
+                quotation.StatusId = (int)MemberQuotation.Status.Unknown;
+                TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a bien été transférée";
+                context.Commit();
+
+                //send mail to owner
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("TransferQuotation", ex);
+                context.Complete();
+            }
+
+            return RedirectToAction(MVC.Admin.Moderation.IndexQuotation(page));
+        }
+
+        /// <summary>
+        /// GET Action result to Delete quotation
+        /// </summary>
+        /// <param name="id">id of Quotation</param>
+        /// <returns>View containing Quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult DeleteQuotation(int id, int page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+
+            try
+            {
+                qRepo.Delete(id);
+                context.Commit();
+                TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a bien été effacée";
+            }
+            catch (Exception ex)
+            {
+                _Logger.Error("DeleteQuotation", ex);
+                context.Complete();
+            }
+
+            return RedirectToAction(MVC.Admin.Moderation.IndexQuotation(page));
+        }
+
         #endregion
 
         #region Import csv

@@ -2736,6 +2736,16 @@ namespace Worki.Web.Areas.Admin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult TransferQuotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.TransferQuotation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DeleteQuotation() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteQuotation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult IndexImportValidate() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.IndexImportValidate);
         }
@@ -2757,6 +2767,8 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string LastCreate = "LastCreate";
             public readonly string IndexBooking = "IndexBooking";
             public readonly string IndexQuotation = "IndexQuotation";
+            public readonly string TransferQuotation = "TransferQuotation";
+            public readonly string DeleteQuotation = "DeleteQuotation";
             public readonly string IndexImport = "IndexImport";
             public readonly string IndexImportValidate = "IndexImportValidate";
             public readonly string MigrateOfferPrices = "MigrateOfferPrices";
@@ -2808,6 +2820,20 @@ namespace Worki.Web.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult IndexQuotation(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.IndexQuotation);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult TransferQuotation(int id, int page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.TransferQuotation);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DeleteQuotation(int id, int page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteQuotation);
+            callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }

@@ -102,22 +102,6 @@ namespace Worki.Web.Helpers
             return urlHelper.AbsoluteAction(MVC.Rental.ActionNames.Detail, MVC.Rental.Name, new { id = rental.Id });
         }
 
-		public static RouteValueDictionary GetOrderCrit(this RouteValueDictionary rvd, eOrderBy order)
-		{
-			switch (order)
-			{
-				case eOrderBy.Distance:
-					rvd["order"] = (int)eOrderBy.Distance;
-					break;
-				case eOrderBy.Rating:
-					rvd["order"] = (int)eOrderBy.Rating;
-					break;
-				default:
-					break;
-			}
-			return rvd;
-		}
-
 		public static List<NewsItem> GetNews(int memberId, IEnumerable<MemberBooking> bookings, Func<MemberBookingLog, string> linkFunction)
 		{
 			var toRet = new List<NewsItem>();

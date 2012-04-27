@@ -76,11 +76,46 @@ namespace Worki.Data.Models
 
         public enum Status
         {
+            Pending,
             Unknown,
             Accepted,
             Refused,
             Cancelled,
 			Paid
+        }
+
+        public static string GetStatusType(Status type)
+        {
+            switch (type)
+            {
+                case Status.Pending:
+                    return Worki.Resources.Views.Booking.BookingString.StatusPending;
+                case Status.Unknown:
+                    return Worki.Resources.Views.Booking.BookingString.StatusUnknown;
+                case Status.Accepted:
+                    return Worki.Resources.Views.Booking.BookingString.StatusAccepted;
+                case Status.Refused:
+                    return Worki.Resources.Views.Booking.BookingString.StatusRefused;
+                case Status.Cancelled:
+                    return Worki.Resources.Views.Booking.BookingString.StatusCancelled;
+                case Status.Paid:
+                    return Worki.Resources.Views.Booking.BookingString.StatusPaid;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public string GetStatus()
+        {
+            return GetStatusType((Status)StatusId);
+        }
+
+        /// <summary>
+        /// Created but not validated by moderation
+        /// </summary>
+        public bool Pending
+        {
+            get { return StatusId == (int)Status.Pending; }
         }
 
         /// <summary>

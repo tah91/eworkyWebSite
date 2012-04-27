@@ -166,6 +166,11 @@ namespace Worki.Data.Models
             }
         }
 
+        public string GetStatus()
+        {
+            return GetStatusType((Status)StatusId);
+        }
+
         public static Dictionary<int, string> GetStatusTypes(List<Status> statuses)
         {
             return statuses.ToDictionary(p => (int)p, p => GetStatusType(p));

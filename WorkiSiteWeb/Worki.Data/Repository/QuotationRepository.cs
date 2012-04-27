@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Worki.Data.Models
 {
-	public interface IQuotationRepository : IRepository<MemberQuotation>
+    public interface IQuotationRepository : IRepository<MemberQuotation>, IProductRepository<MemberQuotation>
 	{
 
 	}
@@ -18,5 +18,15 @@ namespace Worki.Data.Models
 			: base(logger, context)
 		{
 		}
+
+        public IList<MemberQuotation> GetOwnerProducts(int id)
+        {
+            return GetMany(b => b.Offer.Localisation.OwnerID == id);
+        }
+
+        public IList<MemberQuotation> GetLocalisationProducts(int id)
+        {
+            return GetMany(b => b.Offer.LocalisationId == id);
+        }
 	}
 }

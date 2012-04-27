@@ -48,8 +48,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-				var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id);
-				var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id);
+				var bookings = bRepo.GetLocalisationProducts(id);
+                var quotations = qRepo.GetLocalisationProducts(id);
 
 				var news = ModelHelper.GetNews(memberId, bookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id)); });
 				news = news.Concat(ModelHelper.GetNews(memberId, quotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id)); })).ToList();
@@ -203,7 +203,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-                var bookings = bRepo.GetMany(b => b.Offer.LocalisationId == id).OrderByDescending(b => b.CreationDate);
+                var bookings = bRepo.GetLocalisationProducts(id).OrderByDescending(b => b.CreationDate);
 				var model = new LocalisationBookingViewModel
 				{
 					Item = loc,
@@ -494,7 +494,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var loc = lRepo.Get(id);
 				Member.ValidateOwner(member, loc);
 
-                var quotations = qRepo.GetMany(q => q.Offer.LocalisationId == id).OrderByDescending(q => q.CreationDate);
+                var quotations = qRepo.GetLocalisationProducts(id).OrderByDescending(q => q.CreationDate);
 				var model = new LocalisationQuotationViewModel
 				{
 					Item = loc,
@@ -688,9 +688,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                         EventType = (int)MemberQuotationLog.QuotationEvent.Refusal,
 						LoggerId = memberId
                     });
-
-                    //send mail to owner
-                    //useless
 
                     context.Commit();
 

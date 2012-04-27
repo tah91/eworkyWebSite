@@ -11,6 +11,7 @@ using Worki.Infrastructure;
 using Worki.Infrastructure.Helpers;
 using Worki.Web.Model;
 using Worki.Service;
+using System.Linq.Expressions;
 
 namespace Worki.Web.Areas.Backoffice.Controllers
 {
@@ -61,8 +62,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var member = mRepo.Get(id);
 				Member.Validate(member);
 
-				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == id);
-				var quotations = qRepo.GetMany(q => q.Offer.Localisation.OwnerID == id);
+				var bookings = bRepo.GetOwnerProducts(id);
+                var quotations = qRepo.GetOwnerProducts(id);
 				var news = ModelHelper.GetNews(id, bookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id)); });
 				news = news.Concat(ModelHelper.GetNews(id, quotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id)); })).ToList();
 
@@ -189,8 +190,8 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				var member = mRepo.Get(memberId);
 				Member.Validate(member);
 
-				var bookings = bRepo.GetMany(b => b.Offer.Localisation.OwnerID == memberId);
-				var quotations = qRepo.GetMany(q => q.Offer.Localisation.OwnerID == memberId);
+				var bookings = bRepo.GetOwnerProducts(memberId);
+                var quotations = qRepo.GetOwnerProducts(memberId);
 				var news = ModelHelper.GetNews(memberId, bookings, mbl => { return Url.Action(MVC.Backoffice.Localisation.ReadBookingLog(mbl.Id)); });
 				news = news.Concat(ModelHelper.GetNews(memberId, quotations, ql => { return Url.Action(MVC.Backoffice.Localisation.ReadQuotationLog(ql.Id)); })).ToList();
 
