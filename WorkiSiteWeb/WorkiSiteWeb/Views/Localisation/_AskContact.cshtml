@@ -2,7 +2,7 @@
 		   
 @if (!Model.ContactEmpty())
 {
-	if (!string.IsNullOrEmpty(Model.Mail))
+    if (!string.IsNullOrEmpty(Model.Mail) && Model.ShowContactInfo())
 	{
 		@Html.Mailto(Model.Mail, Model.Mail, new { itemprop = "email" })<br />
 	}
@@ -22,12 +22,12 @@
 	{
 		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID), new { @class = "orange" })<br />
 	}
-	if (!string.IsNullOrEmpty(Model.PhoneNumber))
+    if (!string.IsNullOrEmpty(Model.PhoneNumber) && Model.ShowContactInfo())
 	{
 		<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
 		<span itemprop="telephone">@Html.GetPhoneFormat(Model.PhoneNumber)</span><br />
 	}
-	if (!string.IsNullOrEmpty(Model.Fax))
+    if (!string.IsNullOrEmpty(Model.Fax) && Model.ShowContactInfo())
 	{
 		<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
 		<span itemprop="faxNumber">@Html.GetPhoneFormat(Model.Fax)</span><br />

@@ -227,6 +227,11 @@ namespace Worki.Data.Models
 			return (int)LocalisationType.SharedOffice == TypeValue;
 		}
 
+        public bool IsPaidLocalisation()
+        {
+            return !IsFreeLocalisation() && !IsSharedOffice();
+        }
+
 		#endregion
 
 		#region Localisation Offers
@@ -549,6 +554,15 @@ namespace Worki.Data.Models
             return (string.IsNullOrEmpty(Fax) && string.IsNullOrEmpty(PhoneNumber) && string.IsNullOrEmpty(WebSite) && string.IsNullOrEmpty(Mail) && string.IsNullOrEmpty(Facebook) && string.IsNullOrEmpty(Twitter));
 		}
 
+        /// <summary>
+        /// show contact or not
+        /// </summary>
+        /// <returns>true if free, or shared, or paid with no owner</returns>
+        public bool ShowContactInfo()
+        {
+            return IsFreeLocalisation() || IsSharedOffice() || (IsPaidLocalisation() && !HasOwner());
+        }
+
 		#endregion
 
 		#region Render strings
@@ -847,6 +861,27 @@ namespace Worki.Data.Models
 		{
             return Offers.Count(o => o.AcceptQuotation()) != 0;
 		}
+
+        public bool AcceptProduct()
+        {
+            return AcceptBooking() || AcceptQuotation();
+        }
+
+        public string NeedTheLocalisation()
+        {
+            if (AcceptBooking())
+            {
+                return Worki.Resources.Views.Localisation.LocalisationString.NeedThisSpaceAction;
+            }
+            else if (AcceptQuotation())
+            {
+                return Worki.Resources.Views.Booking.BookingString.AskQuotation;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
 
         #endregion
 

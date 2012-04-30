@@ -95,7 +95,7 @@ namespace Worki.Web.Controllers
 					{
 						formData.MemberQuotation.MemberId = memberId;
 						formData.MemberQuotation.OfferId = id;
-						formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Unknown;
+						formData.MemberQuotation.StatusId = (int)MemberQuotation.Status.Pending;
 
 						//set phone number to the one from form
 						member.MemberMainData.PhoneNumber = formData.PhoneNumber;
@@ -166,24 +166,6 @@ namespace Worki.Web.Controllers
                                                          locName,
                                                          offer.Localisation.Adress);
 
-                        //send mail to quotation owner
-                        var urlHelp = new UrlHelper(ControllerContext.RequestContext);
-                        var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Quotation());
-						TagBuilder ownerLink = new TagBuilder("a");
-                        ownerLink.MergeAttribute("href", ownerUrl);
-                        ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
-
-						dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-						ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-						ownerMail.To = offer.Localisation.Member.Email;
-						ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, locName);
-						ownerMail.ToName = offer.Localisation.Member.MemberMainData.FirstName;
-						ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
-														Localisation.GetOfferType(offer.Type),
-														locName,
-														offer.Localisation.Adress,
-                                                        ownerLink);
-
 						context.Commit();
 
 						if (sendNewAccountMail)
@@ -192,7 +174,6 @@ namespace Worki.Web.Controllers
 						}
 						clientMail.Send();
 						teamMail.Send();
-						ownerMail.Send();
 					}
 					catch (Exception ex)
 					{
