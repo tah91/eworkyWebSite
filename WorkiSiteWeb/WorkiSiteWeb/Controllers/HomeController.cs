@@ -359,9 +359,9 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <returns>The action result.</returns>
 		[ActionName("owner-notice")]
-		public virtual ActionResult OwnerTutorial()
+		public virtual ActionResult OwnerTutorial(bool boLink = false)
 		{
-			return View(MVC.Home.Views.OwnerTutorial);
+			return View(MVC.Home.Views.OwnerTutorial, boLink);
 		}
 
 		/// <summary>

@@ -1195,8 +1195,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult OwnerTutorial() {
+        public override System.Web.Mvc.ActionResult OwnerTutorial(bool boLink) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.OwnerTutorial);
+            callInfo.RouteValueDictionary.Add("boLink", boLink);
             return callInfo;
         }
 

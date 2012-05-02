@@ -43,13 +43,10 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of localisation to book</param>
 		/// <returns>View containing Quotation form</returns>
-		//[AcceptVerbs(HttpVerbs.Get), Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
 		public virtual ActionResult Create(int id)
         {
 			var memberId = WebHelper.GetIdentityId(User.Identity);
-            //if (memberId == 0)
-            //    return View(MVC.Shared.Views.Error);
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
@@ -209,14 +206,47 @@ namespace Worki.Web.Controllers
 			return View(quotation);
 		}
 
-        [AcceptVerbs(HttpVerbs.Get)]
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int id)
         {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
 			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
-			var quotation = qRepo.Get(id);
+            var member = mRepo.Get(memberId);
+            var quotation = qRepo.Get(id);
+
+            //case of first quotation, give it for free
+            var first = qRepo.GetOwnerProducts(memberId).OrderBy(q => q.CreationDate).FirstOrDefault();
+            if (first != null && first.Id == id)
+            {
+                try
+                {
+                    quotation.StatusId = (int)MemberQuotation.Status.Paid;
+
+                    quotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                    {
+                        CreatedDate = DateTime.UtcNow,
+                        Event = "Payment completed",
+                        EventType = (int)MemberQuotationLog.QuotationEvent.Payment,
+                        LoggerId = memberId
+                    });
+
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("PayWithPayPal", ex);
+                    context.Complete();
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.PaymentError;
+                }
+
+                return RedirectToAction(MVC.Backoffice.Localisation.QuotationDetail(id));
+            }
+			
 			var localisation = quotation.Offer.Localisation;
 
             string returnUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationAccepted(id));

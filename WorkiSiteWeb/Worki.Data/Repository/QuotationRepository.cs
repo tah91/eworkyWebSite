@@ -21,12 +21,12 @@ namespace Worki.Data.Models
 
         public IList<MemberQuotation> GetOwnerProducts(int id)
         {
-            return GetMany(b => b.Offer.Localisation.OwnerID == id);
+            return GetMany(q => q.Offer.Localisation.OwnerID == id && q.StatusId != (int)MemberQuotation.Status.Pending);
         }
 
         public IList<MemberQuotation> GetLocalisationProducts(int id)
         {
-            return GetMany(b => b.Offer.LocalisationId == id);
+            return GetMany(q => q.Offer.LocalisationId == id && q.StatusId != (int)MemberQuotation.Status.Pending);
         }
 	}
 }
