@@ -118,64 +118,64 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DeleteComment" xml:space="preserve">
-    <value>Effacer le commentaire</value>
+    <value>Kommentar auslöschen</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Erreur</value>
+    <value>Fehler</value>
   </data>
   <data name="ErrorWhenYouAsk" xml:space="preserve">
-    <value>Désolé, une erreur s'est produite lors du traitement de votre demande. Vous pouvez retourner sur la page d'accueil : {0} ou nous contacter si le problème persiste : support@eworky.com</value>
+    <value>Leider ist ein Fehler beim Verarbeiten Ihrer Anforderung aufgetreten. Sie können auf die Startseite zurückkehren : {0} oder kontaktieren Sie uns, wenn das Problem weiterhin besteht : support@eworky.com</value>
   </data>
   <data name="Hourly" xml:space="preserve">
     <value>Öffnungszeiten</value>
   </data>
   <data name="KnowHouly" xml:space="preserve">
-    <value>Si vous connaissez les horaires d'ouverture de ce lieu, saisissez-les grâce au formulaire d'édition ou contactez-nous : </value>
+    <value>Wenn Ihnen die Öffnungszeiten dieses Ortes bekannt sind, bitte erfassen Sie sie anhand des Bearbeitungsformulars oder kontaktieren Sie uns : </value>
   </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweet</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Utilisateurs</value>
+    <value>Users</value>
   </data>
   <data name="WhatEWorkyCouldDo" xml:space="preserve">
-    <value>Découvrez tout ce que eWorky peut faire pour vous</value>
+    <value>Entdecken Sie alles, was eWorky für Sie machen kann</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Ajout</value>
+    <value>Hinzufügen</value>
   </data>
   <data name="Admin" xml:space="preserve">
-    <value>Administrateur</value>
+    <value>Administrator</value>
   </data>
   <data name="CGU" xml:space="preserve">
-    <value>CGU</value>
+    <value>Allgemeine Nutzungsbedingungen</value>
   </data>
   <data name="CorrectThenTryAgain" xml:space="preserve">
-    <value>Oups ! Une erreur a été rencontrée. Vérifiez votre saisie et réessayez. Si le problème persiste, contactez-nous : support@eworky.com.</value>
+    <value>Ein Fehler ist aufgetreten ! Bitte überprüfen Sie Ihre Erfassung. Wenn das Problem weiterhin besteht, kontaktieren Sie uns : support@eworky.com</value>
   </data>
   <data name="Deconnect" xml:space="preserve">
-    <value>Déconnexion</value>
+    <value>Abmelden</value>
   </data>
   <data name="Workplace" xml:space="preserve">
-    <value>Lieux de travail</value>
+    <value>Arbeitsörter</value>
   </data>
   <data name="ImportLocalisations" xml:space="preserve">
-    <value>Importer</value>
+    <value>Importieren</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Profil accueil</value>
+    <value>Profil</value>
   </data>
   <data name="Bookings" xml:space="preserve">
-    <value>Réservations</value>
+    <value>Reservierungen</value>
   </data>
   <data name="Press" xml:space="preserve">
     <value>Presse</value>
   </data>
   <data name="DirectAccess" xml:space="preserve">
-    <value>Accès direct</value>
+    <value>Direkter Zugang</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Supprimer</value>
+    <value>Löschen</value>
   </data>
   <data name="Logo" xml:space="preserve">
     <value>Logo</value>
@@ -184,126 +184,126 @@
     <value>Titelbild</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschreibung</value>
   </data>
   <data name="InfoAdmin" xml:space="preserve">
-    <value>Infos Admin</value>
+    <value>Administrator Information</value>
   </data>
   <data name="Offers" xml:space="preserve">
     <value>Angebote</value>
   </data>
   <data name="Services" xml:space="preserve">
-    <value>Services professionnels</value>
+    <value>Professional Services</value>
   </data>
   <data name="AddToFav" xml:space="preserve">
-    <value>Ajouter aux favoris eWorky</value>
+    <value>Zu den Favoriten hinufügen</value>
   </data>
   <data name="DelFromFav" xml:space="preserve">
-    <value>Retirer des favoris eWorky</value>
+    <value>Von den Favoriten ausziehen</value>
   </data>
   <data name="Adds" xml:space="preserve">
-    <value>Ajouter</value>
+    <value>Hinzufügen</value>
   </data>
   <data name="Connect" xml:space="preserve">
-    <value>Connexion</value>
+    <value>Anmelden</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Se connecter</value>
+    <value>Sich Anmelden</value>
   </data>
   <data name="MinChar" xml:space="preserve">
-    <value>caractères min.</value>
+    <value>Mindestanzahl der Schriftzeichen</value>
   </data>
   <data name="Modify" xml:space="preserve">
-    <value>Modifier</value>
+    <value>Bearbeiten</value>
   </data>
   <data name="NextDesc" xml:space="preserve">
-    <value>Fiche Suivante &gt;</value>
+    <value>Weiter &gt;</value>
   </data>
   <data name="PrevDesc" xml:space="preserve">
-    <value>&lt; Fiche Précédente</value>
+    <value>&lt; Zurück</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Affiner</value>
+    <value>Verfeinern</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Rechercher</value>
+    <value>Suchen</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Envoyer</value>
+    <value>Zuschicken</value>
   </data>
   <data name="Subscribe" xml:space="preserve">
-    <value>S'inscrire</value>
+    <value>Registrieren</value>
   </data>
   <data name="Suppress" xml:space="preserve">
-    <value>Supprimer</value>
+    <value>Löschen</value>
   </data>
   <data name="Valid" xml:space="preserve">
-    <value>Valider</value>
+    <value>Bestätigen</value>
   </data>
   <data name="HeaderSearch" xml:space="preserve">
-    <value>Rechercher un espace</value>
+    <value>Raum suchen</value>
   </data>
   <data name="HeaderSuggest" xml:space="preserve">
-    <value>Proposer un espace</value>
+    <value>Raum hinzufügen</value>
   </data>
   <data name="StarPlaces" xml:space="preserve">
     <value>Auf erster Seite</value>
   </data>
   <data name="FbConnexionText" xml:space="preserve">
-    <value>Nouveau ! Connectez-vous avec Facebook !</value>
+    <value>Neu ! Melden Sie sich mit Facebook an !</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>S'identifier</value>
+    <value>Anmelden</value>
   </data>
   <data name="FastLogonFb" xml:space="preserve">
-    <value>Pour gagner du temps, connectez-vous grâce à votre compte Facebook.</value>
+    <value>Um Zeit zu gewinnen, melden Sie sich mit Ihrem Facebook-Konto.</value>
   </data>
   <data name="FastLogonFb2" xml:space="preserve">
-    <value>Connectez-vous en quelques secondes à eWorky grâce à votre compte Facebook !</value>
+    <value>Melden Sie sich in wenigen Sekungen an eWorky mit Ihrem Facebook-Konto an !</value>
   </data>
   <data name="SignViaFB" xml:space="preserve">
-    <value>Inscrivez-vous avec Facebook</value>
+    <value>Registrieren Sie sich mit Facebook</value>
   </data>
   <data name="Or" xml:space="preserve">
-    <value>ou</value>
+    <value>oder</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>Non</value>
+    <value>Nein</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Oui</value>
+    <value>Ja</value>
   </data>
   <data name="ActivationCongratz" xml:space="preserve">
-    <value>Votre compte vient d'être activé, félicitations !</value>
+    <value>Ihr Konto wurde bereits aktiviert !</value>
   </data>
   <data name="Quotations" xml:space="preserve">
-    <value>Devis</value>
+    <value>Kostenvorschlag</value>
   </data>
   <data name="AddLocError" xml:space="preserve">
-    <value>Une erreur a eu lieu ({0} lieux de travail ont été ajoutés) =&gt; {1}</value>
+    <value>Ein Fehler ist aufgetreten ({0} Räume wurden hinzugefügt) =&gt; {1}</value>
   </data>
   <data name="LocAdded" xml:space="preserve">
-    <value>{0} lieux ajoutés.</value>
+    <value>{0} Räume hinzugefügt.</value>
   </data>
   <data name="PleaseFillInfos" xml:space="preserve">
-    <value>Veuillez confirmer le prix TTC à régler pour une réservation du {0} à {1} jusqu'au {2} à {3}</value>
+    <value>Bitte bestätigen Sie den Preis (einschl. Steuern) für eine Reservierung von dem {0} um {1} bis zum {3} um {4}</value>
   </data>
   <data name="PleaseChangeInfos" xml:space="preserve">
-    <value>Veuillez changer les informations suivantes :</value>
+    <value>Bitte ändern Sie die folgenden Informationen:</value>
   </data>
   <data name="SpaceUser" xml:space="preserve">
-    <value>espace utilisateur</value>
+    <value>Mein Konto</value>
   </data>
   <data name="Accept" xml:space="preserve">
-    <value>Accepter</value>
+    <value>Akzeptieren</value>
   </data>
   <data name="Choose" xml:space="preserve">
-    <value>Choisir</value>
+    <value>Auswählen</value>
   </data>
   <data name="Loading" xml:space="preserve">
-    <value>Chargement...</value>
+    <value>Hochladen...</value>
   </data>
 </root>

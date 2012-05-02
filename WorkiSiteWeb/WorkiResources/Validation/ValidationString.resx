@@ -124,7 +124,7 @@
     <value>Annuler</value>
   </data>
   <data name="CannotBeEmpty" xml:space="preserve">
-    <value>La valeur ne peut pas être null ou vide.</value>
+    <value>La valeur ne peut pas être nulle ou vide.</value>
   </data>
   <data name="CheckCriterias" xml:space="preserve">
     <value>Veuillez verifier vos critères.</value>
