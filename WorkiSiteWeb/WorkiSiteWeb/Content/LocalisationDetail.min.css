@@ -20,6 +20,7 @@ ul.like-buttons li{display:block;float:left;margin-right:10px}
 .favoris_add{background-image:url('images/favorite.png');background-position:0 0;width:20px;height:21px;display:inline-block}
 .favoris_del{background-image:url('images/favorite.png');background-position:0 -71px;width:20px;height:21px;display:inline-block}
 #commentFormDiv textarea{width:98.5%}
+#comments .innerContentBlock{margin:10px 0}
 .offerGallery{margin:10px 0;height:300px}
 .servicesBlock{margin-bottom:5px}
 .priceDisplay{padding:10px 10px 0 0}
@@ -29,7 +30,7 @@ ul.like-buttons li{display:block;float:left;margin-right:10px}
 .detailTabs .horizontalMenu li:last-child{-moz-border-bottom-right-radius:0;-webkit-border-bottom-right-radius:0;border-bottom-right-radius:0;border-right:0}
 .detailTabs .horizontalMenu li.selected{background:0}
 .detailMenu a{text-decoration:none;display:block;color:gray}
-.detailMenu li{vertical-align:middle;height:20px;padding:10px 5px;text-align:center;border:1px solid white}
+.detailMenu li{vertical-align:middle;height:20px;padding:10px 5px;text-align:center;border:1px solid white;border-left:1px dashed #CCC!important}
 .detailMenuEmpty{height:0!important;padding:0!important;border-top:1px dashed #CCC!important;margin:0!important}
 .detailMenu li:hover{background-image:-webkit-linear-gradient(top,whiteSmoke,#F8F8F8);background-image:-moz-linear-gradient(top,whiteSmoke,#F8F8F8);background-image:linear-gradient(top,whiteSmoke,#F8F8F8)}
 .detailMenu li.selected a{font-weight:bold}

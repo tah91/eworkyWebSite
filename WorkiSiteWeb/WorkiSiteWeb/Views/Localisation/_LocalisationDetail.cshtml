@@ -331,11 +331,13 @@
                             <div class="communityTabs innerDetailTabs">
 							    <div class="detailMenu">
 								    <ul class="communityTab innerDetailTab float-left">
+                                        <li class="detailMenuEmpty"></li>
 									    <li><a href="#comments">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</a></li>
 									    <li class="detailMenuEmpty"></li>
 									    <li><a href="#eworkers">@Worki.Resources.Views.Localisation.LocalisationString.Eworkers</a></li>
 									    <li class="detailMenuEmpty"></li>
 									    <li><a href="#social">@Worki.Resources.Views.Localisation.LocalisationString.Socials</a></li>
+                                        <li class="detailMenuEmpty"></li>
 								    </ul>
 							    </div>
 							    <div class="tab_container communityTabContainer float-right">
@@ -353,6 +355,7 @@
 						                @{
                                             ViewData[Comment.DisplayRelatedLocalisation] = false;
 						                }
+                                        <div class="innerContentBlock">
 						                @foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
                                         {
                                             if (com.Member == null)
@@ -361,6 +364,7 @@
                                             }
 							                @Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
                                         }
+                                        </div>
 								    </div>
 								    <div id="eworkers" class="communityTab_content">
                                         <ul>
@@ -423,12 +427,11 @@
         	require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
 				$('#addToFavorite').click(function () {
                     _callbackFb = function (content) {
-			            //alert(content);
                         $('#main').prepend(content);
                         $('.informationContainer').delay(8000).slideUp();
 					}
 					_callback = function (content) {
-			            //alert(content);
+
 					}
                     $.post('@Url.Action(MVC.Localisation.AddFavorite())',{ id: @Model.GetId() }, _callback, "json");
 					InitOpenGraph(function (response) {
