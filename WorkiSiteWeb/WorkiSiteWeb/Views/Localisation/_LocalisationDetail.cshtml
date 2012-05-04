@@ -254,6 +254,7 @@
 						    <div class="offerTabs innerDetailTabs">
 							    <div class="detailMenu">
 								    <ul class="offerTab innerDetailTab float-left">
+                                        <li class="detailMenuEmpty"></li>
                                         @if (Model.HasOffer(LocalisationOffer.Workstation))
                                         {
                                             <li><a href="#workstation">@Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation</a></li>
@@ -354,8 +355,9 @@
 						                </div>
 						                @{
                                             ViewData[Comment.DisplayRelatedLocalisation] = false;
+                                            var comments = Model.GetOrderedComments(Url.GetCulture());
 						                }
-                                        <div class="innerContentBlock">
+                                        <div class="@(comments.Count() > 0 ? "innerContentBlock" : "")">
 						                @foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
                                         {
                                             if (com.Member == null)

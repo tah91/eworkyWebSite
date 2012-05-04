@@ -56,7 +56,7 @@
                 <div class="itemPriceDisplay float-left bold orange">
 				    @Model.Localisation.GetMinPrice()
 			    </div>
-                @if (Model.Localisation.IsBookable())
+                @if (Model.Localisation.AcceptBooking())
                 {                
 			    <div class="buttonStd buttonBlue linkImg float-left">
                     <a href="@link">@Worki.Resources.Views.Localisation.LocalisationString.BookIt</a>

@@ -921,23 +921,61 @@ namespace Worki.Data.Models
             return toRet;
         }
 
-		/// <summary>
-		/// Get the min price of the localisation, empty if no price
-		/// filter by offerType if needed
-		/// </summary>
-		/// <returns>the min price string</returns>
-        public string GetMinPrice(int offerType = -1)
+        /// <summary>
+        /// Get the min price of the localisation, empty if no price
+        /// filter by offerType if needed
+        /// </summary>
+        /// <returns>the min price string</returns>
+        public OfferPrice GetMinPrice(int offerType = -1)
         {
             var offerPrices = GetAllPrices(offerType);
 
             if (offerPrices.Count() == 0)
-                return string.Empty;
+                return null;
 
             var minPrice = offerPrices.Min();
-            if (minPrice == null)
+            return minPrice;
+        }
+
+        /// <summary>
+        /// Get the min price of the localisation, empty if no price
+        /// filter by offerType if needed
+        /// </summary>
+        /// <returns>the min price string</returns>
+        public string GetMinPriceString(int offerType = -1)
+        {
+            var price = GetMinPrice(offerType);
+            if (price == null)
                 return string.Empty;
 
-            return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minPrice.GetPriceDisplay());
+            return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, price.GetPriceDisplay());
+        }
+
+        static IEnumerable<LocalisationOffer> _OfferTypes = new List<LocalisationOffer> 
+        {
+            LocalisationOffer.BuisnessLounge,
+		    LocalisationOffer.Workstation,
+		    LocalisationOffer.Desktop,
+		    LocalisationOffer.MeetingRoom,
+		    LocalisationOffer.SeminarRoom,
+		    LocalisationOffer.VisioRoom
+        };
+
+        /// <summary>
+        /// Get the min price list, for each type of offer
+        /// </summary>
+        /// <returns>the min price list</returns>
+        public IEnumerable<OfferPrice> GetMinPrices()
+        {
+            var toRet = new List<OfferPrice> ();
+            foreach (var item in _OfferTypes)
+            {
+                var price = GetMinPrice((int)item);
+                if (price != null)
+                    toRet.Add(price);
+            }
+
+            return toRet;
         }
 
 		/// <summary>
