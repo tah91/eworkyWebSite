@@ -67,6 +67,28 @@ namespace Worki.Data.Models
 			Feature.RelaxingArea
 		};
 
+        public static List<Feature> Sectors = new List<Feature>()
+		{
+			Feature.Architects,
+			Feature.Associative,
+			Feature.Artists,
+			Feature.Lawyers,
+			Feature.BusinessDevelopers,
+			Feature.Commercial,
+			Feature.CommunicationMedia,
+			Feature.Accountants,
+			Feature.Consultants,
+			Feature.Designers,
+			Feature.Developers,
+			Feature.Writers,
+            Feature.Contractors,
+			Feature.Independent,
+			Feature.Investors,
+			Feature.Journalists,
+			Feature.Photographers,
+			Feature.Nomads
+		};
+
 		public static List<Feature> BuisnessLounge = new List<Feature>()
         {
             Feature.OpenToAll,

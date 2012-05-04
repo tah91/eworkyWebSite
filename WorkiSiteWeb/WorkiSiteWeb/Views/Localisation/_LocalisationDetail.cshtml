@@ -163,6 +163,7 @@
 						    @{
 							    var generalFeatures = Model.GetFeaturesWithin(FeatureHelper.Characteristics);
 							    var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
+                                var sectorsFeatures = Model.GetFeaturesWithin(FeatureHelper.Sectors);
 						    }
 						    <div class="localisationDescription margint10">
                                 @if (!string.IsNullOrEmpty(Model.GetDescription()))
@@ -172,6 +173,20 @@
 								        @Html.Nl2Br(Model.GetDescription())
 							        </div> 
                                 }
+                                @if (sectorsFeatures.Count > 0)
+							    {
+								    <h4 class="blue servicesBlock margint10">@Worki.Resources.Views.Localisation.LocalisationFormString.Sectors</h4>
+								    <div class="featureTag">
+									    <ul>
+									    @foreach (var item in sectorsFeatures)
+									    {
+										    <li>@FeatureHelper.Display(item)</li>
+									    }       
+									    </ul>
+								    </div>
+								    <div class="clear">
+								    </div>
+							    }
 							    @if (generalFeatures.Count > 0)
 							    {
 								    <h4 class="blue servicesBlock margint10">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>

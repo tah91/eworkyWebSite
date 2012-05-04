@@ -429,4 +429,61 @@
   <data name="Lift" xml:space="preserve">
     <value>Ascenseur</value>
   </data>
+  <data name="Accountants" xml:space="preserve">
+    <value>Comptables</value>
+  </data>
+  <data name="Architects" xml:space="preserve">
+    <value>Architectes</value>
+  </data>
+  <data name="Artists" xml:space="preserve">
+    <value>Artistes</value>
+  </data>
+  <data name="Associative" xml:space="preserve">
+    <value>Associatifs </value>
+  </data>
+  <data name="BusinessDevelopers" xml:space="preserve">
+    <value>Business developers</value>
+  </data>
+  <data name="Commercial" xml:space="preserve">
+    <value>Commerciaux</value>
+  </data>
+  <data name="CommunicationMedia" xml:space="preserve">
+    <value>Communication / médias</value>
+  </data>
+  <data name="Consultants" xml:space="preserve">
+    <value>Consultants</value>
+  </data>
+  <data name="Contractors" xml:space="preserve">
+    <value>Entrepreneurs</value>
+  </data>
+  <data name="Designers" xml:space="preserve">
+    <value>Designers</value>
+  </data>
+  <data name="Developers" xml:space="preserve">
+    <value>Développeurs (IT)</value>
+  </data>
+  <data name="Heater" xml:space="preserve">
+    <value>Chauffage</value>
+  </data>
+  <data name="Independent" xml:space="preserve">
+    <value>Indépendants (autres)</value>
+  </data>
+  <data name="Investors" xml:space="preserve">
+    <value>Investisseurs</value>
+  </data>
+  <data name="Journalists" xml:space="preserve">
+    <value>Journalistes</value>
+  </data>
+  <data name="Lawyers" xml:space="preserve">
+    <value>Avocats</value>
+  </data>
+  <data name="Nomads" xml:space="preserve">
+    <value>Salariés nomades</value>
+  </data>
+  <data name="Photographers" xml:space="preserve">
+    <value>Photographes</value>
+  </data>
+  <data name="Writers" xml:space="preserve">
+    <value>Écrivains</value>
+  </data>
 </root>

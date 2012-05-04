@@ -1155,7 +1155,7 @@ namespace Worki.Data.Models
 
         public static Dictionary<string, string> GetCountries()
         {
-            return MiscHelpers.GetEnumDisplayName(typeof(CountryId), typeof(Worki.Resources.Models.Localisation.LocalisationCountry), Worki.Resources.Models.Localisation.LocalisationCountry.PickOne);
+            return MiscHelpers.GetEnumDisplayName(typeof(CountryId), typeof(Worki.Resources.Models.Localisation.LocalisationCountry), Worki.Resources.Models.Localisation.LocalisationCountry.PickOne).OrderBy(kp => kp.Key == "" ? "" : kp.Value).ToDictionary(kp => kp.Key, kp => kp.Value);
         }
 
         #endregion
@@ -1592,6 +1592,25 @@ namespace Worki.Data.Models
 		Kitchen,
 		SharedMeetingRoom,
 		Lift,
+        Heater,
+        Architects,
+        Associative,
+        Artists,
+        Lawyers,
+        BusinessDevelopers,
+        Commercial,
+        CommunicationMedia,
+        Accountants,
+        Consultants,
+        Designers,
+        Developers,
+        Writers,
+        Contractors,
+        Independent,
+        Investors,
+        Journalists,
+        Photographers,
+        Nomads,
 
 		//string features start from 1000, put bool features before this
 		Sector = 1000,
