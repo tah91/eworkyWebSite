@@ -512,7 +512,9 @@
     <EmbeddedResource Include="Views\Home\AProposString.en.resx" />
     <EmbeddedResource Include="Views\Home\AProposString.es.resx" />
     <EmbeddedResource Include="Views\Home\CguString.en.resx" />
-    <EmbeddedResource Include="Views\Home\CguString.es.resx" />
+    <EmbeddedResource Include="Views\Home\CguString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\ContactString.en.resx" />
     <EmbeddedResource Include="Views\Home\ContactString.es.resx" />
     <EmbeddedResource Include="Views\Home\HomeString.de.resx">
@@ -551,7 +553,9 @@
     <EmbeddedResource Include="Views\Localisation\LocalisationString.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Localisation\LocalisationString.es.resx" />
+    <EmbeddedResource Include="Views\Localisation\LocalisationString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Mobile\MobileString.en.resx" />
     <EmbeddedResource Include="Views\Mobile\MobileString.es.resx" />
     <EmbeddedResource Include="Views\Offer\OfferString.en.resx" />
@@ -566,7 +570,9 @@
       <LastGenOutput>MobileString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Profile\ProfileString.en.resx" />
-    <EmbeddedResource Include="Views\Profile\ProfileString.es.resx" />
+    <EmbeddedResource Include="Views\Profile\ProfileString.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Rental\RentalString.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

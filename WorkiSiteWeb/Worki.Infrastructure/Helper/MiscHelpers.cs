@@ -36,7 +36,22 @@ namespace Worki.Infrastructure.Helpers
 		{
 			public const string ContactDisplayName = "eWorky";
 			public const string WebsiteAddress = "www.eworky.com";
-			public static string ContactMail = "contact@eworky.com";
+            public static string _ContactMail = null;
+            public static string ContactMail
+            {
+                get 
+                {
+                    if (!string.IsNullOrEmpty(_ContactMail))
+                        return _ContactMail;
+                    return Worki.Resources.Views.Shared.SharedString.ContactMail; 
+                }
+
+                set
+                {
+                    _ContactMail = value;
+                }
+            }
+
 			public static string BookingMail = "team@eworky.com";
             public const string Tel = "01 77 17 04 21";
 		}
