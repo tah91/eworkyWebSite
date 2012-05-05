@@ -303,6 +303,17 @@ namespace Worki.Web.Controllers
 
                     context.Commit();
 
+                    //send mail to team
+                    dynamic teamMail = new Email(MVC.Emails.Views.Email);
+                    teamMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    teamMail.To = MiscHelpers.EmailConstants.BookingMail;
+                    teamMail.Subject = Worki.Resources.Email.Activation.BOTeamAskSubject;
+                    teamMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
+                    teamMail.Content = string.Format(Worki.Resources.Email.Activation.BOTeamAsk,
+                                                     string.Format("{0} {1}", member.MemberMainData.FirstName, member.MemberMainData.LastName),
+                                                     member.Email);
+                    teamMail.Send();
+
                     //email to tell ask is pending
                     dynamic confirmationMail = new Email(MVC.Emails.Views.Email);
                     confirmationMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
