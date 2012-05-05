@@ -771,6 +771,7 @@
     <Content Include="Areas\Backoffice\Views\Schedule\_ScheduleScript.cshtml" />
     <Content Include="Areas\Admin\Views\Member\PendingBO.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_SocialLinks.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\ActivatedBO.cshtml" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

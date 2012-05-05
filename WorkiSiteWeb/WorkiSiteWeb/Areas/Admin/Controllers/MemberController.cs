@@ -312,6 +312,25 @@ namespace Worki.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
+        public virtual ActionResult ActivatedBO(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            int pageValue = page ?? 1;
+            var activated = mRepo.GetMany(m => m.MemberMainData.BOStatus == (int)eBOStatus.Done);
+            var viewModel = new PagingList<Member>()
+            {
+                List = activated.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = MiscHelpers.Constants.PageSize,
+                    TotalItems = activated.Count()
+                }
+            };
+            return View(viewModel);
+        }
+
         #endregion
     }
 }

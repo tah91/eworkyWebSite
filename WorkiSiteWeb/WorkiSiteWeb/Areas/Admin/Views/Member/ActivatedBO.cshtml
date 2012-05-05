@@ -1,4 +1,4 @@
-﻿@model Worki.Data.Models.PagingList<MemberAdminModel>
+﻿@model Worki.Data.Models.PagingList<Member>
            
 @section HeadContent
 {
@@ -14,11 +14,11 @@
     @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
 		{
 			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
-            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
             new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
-			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Owner, MVC.Admin.Member.IndexOwner())},
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.PendingBO, MVC.Admin.Member.PendingBO())},
-            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.ActivatedBO, MVC.Admin.Member.ActivatedBO())}
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Owner, MVC.Admin.Member.IndexOwner())},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.PendingBO, MVC.Admin.Member.PendingBO())},
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.ActivatedBO, MVC.Admin.Member.ActivatedBO())}
 		})
 	</div>
 
@@ -32,8 +32,8 @@
                     <th>
                         @Worki.Resources.Views.Admin.AdminString.EmailAddress
                     </th>
-                    <th>
-                       @Worki.Resources.Views.Admin.AdminString.Score
+					<th>
+                        @Worki.Resources.Views.Shared.SharedString.Delete @Worki.Resources.Menu.Menu.OwnerSpace
                     </th>
                 </tr>
             </thead>
@@ -42,21 +42,21 @@
                 { 
                     <tr>
                         <td align="right">
-                            @item.LastName
+                            @item.GetFullDisplayName()
                         </td>
                         <td align="right">
-							@Html.ActionLink(item.UserName, MVC.Account.Public(item.MemberId)) 
+							@Html.ActionLink(item.Email, MVC.Account.Public(item.MemberId)) 
                         </td>
-                        <td align="center">
-                            @item.Score
+						<td align="right">
+							@Html.ActionLink(Worki.Resources.Views.Shared.SharedString.Delete, MVC.Admin.Member.SetBackoffice(item.MemberId)) 
                         </td>
                     </tr>
-                }
+				} 
             </tbody>
             <tfoot> </tfoot>
         </table>
         <div class="pager">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Leaderboard", new { page = x }))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(MVC.Admin.Member.PendingBO(x)))
         </div>
 	</div>
 	<div class="clear"></div>

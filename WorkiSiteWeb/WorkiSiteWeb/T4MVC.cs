@@ -2594,6 +2594,11 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public System.Web.Mvc.ActionResult PendingBO() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.PendingBO);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ActivatedBO() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.ActivatedBO);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MemberController Actions { get { return MVC.Admin.Member; } }
@@ -2616,6 +2621,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string SetBackoffice = "SetBackoffice";
             public readonly string Leaderboard = "Leaderboard";
             public readonly string PendingBO = "PendingBO";
+            public readonly string ActivatedBO = "ActivatedBO";
         }
 
 
@@ -2624,6 +2630,7 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string ActivatedBO = "~/Areas/Admin/Views/Member/ActivatedBO.cshtml";
             public readonly string Admins = "~/Areas/Admin/Views/Member/Admins.cshtml";
             public readonly string IndexOwner = "~/Areas/Admin/Views/Member/IndexOwner.cshtml";
             public readonly string IndexUser = "~/Areas/Admin/Views/Member/IndexUser.cshtml";
@@ -2697,6 +2704,12 @@ namespace Worki.Web.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult PendingBO(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.PendingBO);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ActivatedBO(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ActivatedBO);
             callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
