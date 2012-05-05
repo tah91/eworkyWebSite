@@ -398,7 +398,7 @@
     <value>in a corporation</value>
   </data>
   <data name="InCompany" xml:space="preserve">
-    <value>in a {0}</value>
+    <value>at {0}</value>
   </data>
   <data name="InConsulting" xml:space="preserve">
     <value>in a consulting firm</value>

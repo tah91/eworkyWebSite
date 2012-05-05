@@ -157,7 +157,7 @@
     <value>Note</value>
   </data>
   <data name="RefineSearch" xml:space="preserve">
-    <value>Affiner la recherche</value>
+    <value>Suche verfeinern</value>
   </data>
   <data name="ResultOfSearch" xml:space="preserve">
     <value>Résultat(s) de votre recherche :</value>
@@ -169,7 +169,7 @@
     <value>Retour aux résultats</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Recherche</value>
+    <value>Suche</value>
   </data>
   <data name="SearchByPlace" xml:space="preserve">
     <value>Par localisation</value>
