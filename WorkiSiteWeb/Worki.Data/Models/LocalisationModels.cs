@@ -1057,7 +1057,9 @@ namespace Worki.Data.Models
             (int)eCompanyType.BigCompany,
             (int)eCompanyType.Independent,
 			(int)eCompanyType.Association,
-			(int)eCompanyType.SmallBusiness
+			(int)eCompanyType.SmallBusiness,
+            (int)eCompanyType.Attorney,
+            (int)eCompanyType.Medical
         };
 
 		public static string GetCompanyType(int type)
@@ -1079,6 +1081,10 @@ namespace Worki.Data.Models
 					return Worki.Resources.Models.Localisation.Localisation.Association;
 				case eCompanyType.SmallBusiness:
 					return Worki.Resources.Models.Localisation.Localisation.SmallBusiness;
+                case eCompanyType.Attorney:
+                    return Worki.Resources.Models.Localisation.Localisation.Attorney;
+                case eCompanyType.Medical:
+                    return Worki.Resources.Models.Localisation.Localisation.Medical;
 				default:
 					return string.Empty;
 			}
@@ -1102,6 +1108,10 @@ namespace Worki.Data.Models
 					return Worki.Resources.Models.Localisation.Localisation.InAssociation;
 				case eCompanyType.SmallBusiness:
 					return Worki.Resources.Models.Localisation.Localisation.InSmallBusiness;
+                case eCompanyType.Attorney:
+                    return Worki.Resources.Models.Localisation.Localisation.InAttorney;
+                case eCompanyType.Medical:
+                    return Worki.Resources.Models.Localisation.Localisation.InMedical;
 				default:
 					return string.Empty;
 			}
@@ -1486,7 +1496,9 @@ namespace Worki.Data.Models
 		BigCompany,
 		Independent,
 		Association,
-		SmallBusiness
+		SmallBusiness,
+        Attorney,
+        Medical
 	}
 
 	/// <summary>

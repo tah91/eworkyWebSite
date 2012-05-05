@@ -243,7 +243,23 @@ namespace Worki.Data.Models
         {
             EUR,
             USD,
-            GBP
+            GBP,
+            BRL,
+            CAD,
+            CHF,
+            CZK,
+            DKK,
+            HKD,
+            HUF,
+            ILS,
+            INR,
+            JPY,
+            NOK,
+            NZD,
+            PLN,
+            RUB,
+            SEK,
+            ZAR
         }
 
         public enum PaymentTypeEnum
@@ -268,7 +284,23 @@ namespace Worki.Data.Models
         {
             (int)CurrencyEnum.EUR,
             (int)CurrencyEnum.USD,
-            (int)CurrencyEnum.GBP
+            (int)CurrencyEnum.GBP,
+            (int)CurrencyEnum.BRL,
+            (int)CurrencyEnum.CAD,
+            (int)CurrencyEnum.CHF,
+            (int)CurrencyEnum.CZK,
+            (int)CurrencyEnum.DKK,
+            (int)CurrencyEnum.HKD,
+            (int)CurrencyEnum.HUF,
+            (int)CurrencyEnum.ILS,
+            (int)CurrencyEnum.INR,
+            (int)CurrencyEnum.JPY,
+            (int)CurrencyEnum.NOK,
+            (int)CurrencyEnum.NZD,
+            (int)CurrencyEnum.PLN,
+            (int)CurrencyEnum.RUB,
+            (int)CurrencyEnum.SEK,
+            (int)CurrencyEnum.ZAR
         };
 
         public static List<int> PaymentTypeEnumTypes = new List<int>()

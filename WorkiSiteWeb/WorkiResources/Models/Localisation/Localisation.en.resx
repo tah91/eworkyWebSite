@@ -151,7 +151,8 @@
   </data>
   <data name="PublicSpace" xml:space="preserve">
     <value>Public internet space / cybercafe</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="SpotWifi" xml:space="preserve">
     <value>WiFi hotspot</value>
     <comment>SearchCriteria</comment>
@@ -165,7 +166,8 @@
   </data>
   <data name="WorkingHotel" xml:space="preserve">
     <value>Incubator / Accelerator</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="SeminarRoom" xml:space="preserve">
     <value>Caracteristics of conference / seminar rooms</value>
   </data>
@@ -219,13 +221,15 @@
   </data>
   <data name="TravelerSpace" xml:space="preserve">
     <value>Traveler lounge</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="RatingDispo" xml:space="preserve">
     <value>Disponibility / calm</value>
   </data>
   <data name="RatingPrice" xml:space="preserve">
     <value>Quality / price ratio</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="RatingWelcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
@@ -255,7 +259,8 @@
   </data>
   <data name="Bookable" xml:space="preserve">
     <value>Propose online booking</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="Facebook" xml:space="preserve">
     <value>Facebook</value>
   </data>
@@ -267,7 +272,8 @@
   </data>
   <data name="UsefulHandicap" xml:space="preserve">
     <value>Disabled access</value>
-  <comment>?</comment></data>
+    <comment>?</comment>
+  </data>
   <data name="FriCloseAfter" xml:space="preserve">
     <value>Closed on friday evening</value>
   </data>
@@ -423,5 +429,11 @@
   </data>
   <data name="StartUp" xml:space="preserve">
     <value>Start Up</value>
+  </data>
+  <data name="Attorney" xml:space="preserve">
+    <value>Attorney / Law professional</value>
+  </data>
+  <data name="Medical" xml:space="preserve">
+    <value>Medical practice</value>
   </data>
 </root>
