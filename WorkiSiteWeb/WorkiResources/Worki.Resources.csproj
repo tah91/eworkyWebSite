@@ -319,8 +319,12 @@
     <EmbeddedResource Include="Email\Common.es.resx" />
     <EmbeddedResource Include="Email\FacebookRegistration.es.resx" />
     <EmbeddedResource Include="Email\ResetPassword.es.resx" />
-    <EmbeddedResource Include="Menu\Menu.en.resx" />
-    <EmbeddedResource Include="Menu\Menu.es.resx" />
+    <EmbeddedResource Include="Menu\Menu.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\Menu.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu\Menu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Menu.Designer.cs</LastGenOutput>

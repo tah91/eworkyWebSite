@@ -268,8 +268,6 @@
     <value>Prices</value>
   </data>
   <data name="PendingBO" xml:space="preserve">
-    <comment>Steeve</comment>
-    <value>
-    </value>
+    <value>Pending BO</value>
   </data>
 </root>
