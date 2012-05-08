@@ -238,7 +238,7 @@
     <value>A rental ads</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>You want to find a worskpace? Select the type of workplace you would like to add</value>
+    <value>Select the type of workplace you would like to add</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>A shared office</value>

@@ -436,4 +436,10 @@
   <data name="Medical" xml:space="preserve">
     <value>Medical practice</value>
   </data>
+  <data name="InAttorney" xml:space="preserve">
+    <value>in an attorney office</value>
+  </data>
+  <data name="InMedical" xml:space="preserve">
+    <value>in a medical practice</value>
+  </data>
 </root>
