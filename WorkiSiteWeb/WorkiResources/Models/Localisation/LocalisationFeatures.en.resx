@@ -428,7 +428,7 @@
     <value>Business developers</value>
   </data>
   <data name="Commercial" xml:space="preserve">
-    <value>Commercials</value>
+    <value>Sales &amp; Account Managers</value>
   </data>
   <data name="CommunicationMedia" xml:space="preserve">
     <value>Communication / Media</value>
@@ -446,7 +446,7 @@
     <value>Developers (IT)</value>
   </data>
   <data name="Heater" xml:space="preserve">
-    <value>Heat</value>
+    <value>Heating</value>
   </data>
   <data name="Independent" xml:space="preserve">
     <value>Independants (others)</value>
