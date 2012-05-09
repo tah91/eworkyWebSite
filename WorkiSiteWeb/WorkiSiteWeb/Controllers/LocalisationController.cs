@@ -158,7 +158,7 @@ namespace Worki.Web.Controllers
 					dynamic contactMail = new Email(MVC.Emails.Views.Email);
 					contactMail.From = formData.Contact.FirstName + " " + formData.Contact.LastName + "<" + formData.Contact.EMail + ">";
 					contactMail.To = MiscHelpers.EmailConstants.ContactMail;
-					contactMail.Subject = string.Format("{0} - {1}", formData.Contact.Subject, localisation.Name);
+					contactMail.Subject = string.Format("{0} - {1}", formData.Contact.Subject, localisation.GetDetailFullUrl(Url));
 					contactMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
 					contactMail.Content = formData.Contact.Message;
 					contactMail.Send();
