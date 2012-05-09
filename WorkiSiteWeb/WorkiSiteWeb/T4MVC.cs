@@ -576,6 +576,7 @@ namespace Links {
             public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
+            public static readonly string jonathan_png = Url("jonathan.png");
             public static readonly string listing_png = Url("listing.png");
             public static readonly string loaderbig_gif = Url("loaderbig.gif");
             public static readonly string loading_gif = Url("loading.gif");

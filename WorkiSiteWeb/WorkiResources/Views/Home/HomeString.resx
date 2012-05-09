@@ -388,4 +388,10 @@
   <data name="TimeAgo_suffixFromNow" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="Team_Member_5" xml:space="preserve">
+    <value>Jonathan Bourguignon</value>
+  </data>
+  <data name="Team_Member_5_Text" xml:space="preserve">
+    <value>Jonathan aide eWorky à trouver sa place sur la scène technologique californienne depuis San Francisco, la ville dont il rêve depuis la première fois qu'il a entendu la voix de Janis Joplin. Et après tout, quel meilleur endroit pour le coworking que cette Baie où convergent tous les talents et tous les centres d'intérêt, où se côtoient les plus grandes multinationales et les modes de vie les plus alternatifs?</value>
+  </data>
 </root>
