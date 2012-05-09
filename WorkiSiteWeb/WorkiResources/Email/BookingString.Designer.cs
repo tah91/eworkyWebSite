@@ -284,11 +284,10 @@ namespace Worki.Resources.Email {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous avez reçu une demande de devis pour un(e) {0} dans l&apos;établissement {1} ({2}). 
+        ///   Looks up a localized string similar to Vous avez reçu une demande de devis pour un(e) {0} dans l&apos;établissement {1} ({2}).
+        ///La consultation de la première demande de devis est sans frais. Rendez vous donc au plus vite dans votre espace gérant, grâce auquel vous rendez gratuitement votre lieu plus visible, et bénéficiez d’outils de gestion simples et indispensables (Réservation, paiement sécurisé, planning, factures automatisées, CRM). 
         ///
-        ///Grace à votre {3}, vous rendez gratuitement votre lieu plus visible, et bénéficiez d’outils de gestion simples et indispensables (Réservation, paiement sécurisé, planning, factures automatisées, CRM).
-        ///
-        ///Rendez-vous dans votre {4} pour confirmer/refuser cette demande de réservation dans les meilleurs délais..
+        ///Rendez-vous dans votre {3} pour consulter cette demande de devis, y répondre ou la refuser dans les meilleurs [rest of string was truncated]&quot;;.
         /// </summary>
         public static string CreateQuotationAndBOOwner {
             get {

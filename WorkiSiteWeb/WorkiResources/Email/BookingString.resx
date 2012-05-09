@@ -224,11 +224,10 @@ Fin : &lt;b&gt;{6}&lt;/b&gt;
 Message : &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="CreateQuotationAndBOOwner" xml:space="preserve">
-    <value>Vous avez reçu une demande de devis pour un(e) {0} dans l'établissement {1} ({2}). 
+    <value>Vous avez reçu une demande de devis pour un(e) {0} dans l'établissement {1} ({2}).
+La consultation de la première demande de devis est sans frais. Rendez vous donc au plus vite dans votre espace gérant, grâce auquel vous rendez gratuitement votre lieu plus visible, et bénéficiez d’outils de gestion simples et indispensables (Réservation, paiement sécurisé, planning, factures automatisées, CRM). 
 
-Grace à votre {3}, vous rendez gratuitement votre lieu plus visible, et bénéficiez d’outils de gestion simples et indispensables (Réservation, paiement sécurisé, planning, factures automatisées, CRM).
-
-Rendez-vous dans votre {4} pour confirmer/refuser cette demande de réservation dans les meilleurs délais.</value>
+Rendez-vous dans votre {3} pour consulter cette demande de devis, y répondre ou la refuser dans les meilleurs délais.</value>
   </data>
   <data name="CreateQuotationClient" xml:space="preserve">
     <value>Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m² dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) a été prise en compte. 

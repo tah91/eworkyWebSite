@@ -565,6 +565,25 @@ namespace Worki.Resources.Views.BackOffice {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Voir les coordonnées.
+        /// </summary>
+        public static string PayQuotation {
+            get {
+                return ResourceManager.GetString("PayQuotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notre service de gestion et de référencement est 100% gratuit, nous facturons uniquement la mise en relation qui vous apporte de nouveaux clients. Ainsi vous ne payez que si notre service vous est utile. En cliquant sur Voir les coordonnées vous allez être redirigé vers une page Paypal, afin de sécuriser le paiement.
+        ///La première consultation est offerte !.
+        /// </summary>
+        public static string PayQuotationDesc {
+            get {
+                return ResourceManager.GetString("PayQuotationDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Période.
         /// </summary>
         public static string Period {

@@ -187,7 +187,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                 if (Roles.IsUserInRole(localisation.Member.Email, MiscHelpers.BackOfficeConstants.BackOfficeRole))
                 {
                     var urlHelp = new UrlHelper(ControllerContext.RequestContext);
-                    var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Quotation());
+                    var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(quotation.Id));
                     TagBuilder ownerLink = new TagBuilder("a");
                     ownerLink.MergeAttribute("href", ownerUrl);
                     ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
@@ -210,12 +210,7 @@ namespace Worki.Web.Areas.Admin.Controllers
                     //send specific mail
                     var urlHelp = new UrlHelper(ControllerContext.RequestContext);
 
-                    var discoverUrl = urlHelp.ActionAbsolute(MVC.Home.OwnerTutorial(true));
-                    TagBuilder discoverLink = new TagBuilder("a");
-                    discoverLink.MergeAttribute("href", discoverUrl);
-                    discoverLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
-
-                    var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Quotation());
+                    var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(quotation.Id));
                     TagBuilder ownerLink = new TagBuilder("a");
                     ownerLink.MergeAttribute("href", ownerUrl);
                     ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
@@ -228,7 +223,6 @@ namespace Worki.Web.Areas.Admin.Controllers
                                                     Localisation.GetOfferType(offer.Type),
                                                     localisation.Name,
                                                     localisation.Adress,
-                                                    discoverLink,
                                                     ownerUrl);
                 }
 
