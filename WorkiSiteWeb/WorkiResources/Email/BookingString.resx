@@ -221,7 +221,8 @@ Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;
 Besoin : &lt;b&gt;{4}&lt;/b&gt;
 Début : &lt;b&gt;{5}&lt;/b&gt;
 Fin : &lt;b&gt;{6}&lt;/b&gt;
-Message : &lt;b&gt;{7}&lt;/b&gt;</value>
+Message : &lt;b&gt;{7}&lt;/b&gt;
+Url : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="CreateQuotationAndBOOwner" xml:space="preserve">
     <value>Vous avez reçu une demande de devis pour un(e) {0} dans l'établissement {1} ({2}).
@@ -284,7 +285,8 @@ Adresse électronique : &lt;b&gt;{2}&lt;/b&gt;
 Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;
 Besoin : &lt;b&gt;{4}&lt;/b&gt;
 Surface : &lt;b&gt;{5}&lt;/b&gt;
-Message : &lt;b&gt;{6}&lt;/b&gt;</value>
+Message : &lt;b&gt;{6}&lt;/b&gt;
+Url : &lt;b&gt;{7}&lt;/b&gt;</value>
   </data>
   <data name="QuotationMailSubject" xml:space="preserve">
     <value>Alerte eWorky – Demande de devis</value>

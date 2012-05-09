@@ -429,9 +429,12 @@
 </div>
 
 <div class="margint10 float-right">
+	@if (!Model.HasOwner() || Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+    {
 	<div class="buttonStd buttonBlue linkImg float-left">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 	</div>
+    }
 	@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
     {
 	<div class="buttonStd buttonBlue linkImg float-left">

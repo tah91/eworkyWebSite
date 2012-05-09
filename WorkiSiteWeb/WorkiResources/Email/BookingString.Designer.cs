@@ -275,7 +275,8 @@ namespace Worki.Resources.Email {
         ///Besoin : &lt;b&gt;{4}&lt;/b&gt;
         ///Début : &lt;b&gt;{5}&lt;/b&gt;
         ///Fin : &lt;b&gt;{6}&lt;/b&gt;
-        ///Message : &lt;b&gt;{7}&lt;/b&gt;.
+        ///Message : &lt;b&gt;{7}&lt;/b&gt;
+        ///Url : &lt;b&gt;{8}&lt;/b&gt;.
         /// </summary>
         public static string CreateBookingTeam {
             get {
@@ -422,7 +423,8 @@ namespace Worki.Resources.Email {
         ///Nom du lieu : &lt;b&gt;{3}&lt;/b&gt;
         ///Besoin : &lt;b&gt;{4}&lt;/b&gt;
         ///Surface : &lt;b&gt;{5}&lt;/b&gt;
-        ///Message : &lt;b&gt;{6}&lt;/b&gt;.
+        ///Message : &lt;b&gt;{6}&lt;/b&gt;
+        ///Url : &lt;b&gt;{7}&lt;/b&gt;.
         /// </summary>
         public static string QuotationMailBody {
             get {

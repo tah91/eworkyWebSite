@@ -48,7 +48,8 @@ namespace Worki.Data.Models
 			Feature.Shower,
 			Feature.Newspaper,
 			Feature.TV,
-			Feature.CoffeePrice
+			Feature.CoffeePrice,
+            Feature.Heater
 		};
 
 		public static List<Feature> Services = new List<Feature>()
@@ -98,7 +99,6 @@ namespace Worki.Data.Models
 
 		public static List<Feature> Workstation = new List<Feature>()
         {
-            Feature.Sector,
             Feature.NotSectorial,
             Feature.CoworkingVibe
         };
@@ -282,7 +282,6 @@ namespace Worki.Data.Models
 			{
 				case Feature.CoffeePrice:
 					return FeatureHelper.GetFeatureDisplayName(feature.Feature) + " : " + string.Format(new System.Globalization.CultureInfo("fr-FR", false), "{0:C}", feature.DecimalValue);
-				case Feature.Sector:
 				case Feature.MinimalPeriod:
 				case Feature.ForCardOwner:
 					return FeatureHelper.GetFeatureDisplayName(feature.Feature) + " : " + feature.StringValue;

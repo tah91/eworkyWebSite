@@ -88,6 +88,7 @@ namespace Worki.Web.Controllers
 					member = mRepo.Get(memberId);
 
 					var locName = offer.Localisation.Name;
+                    var locUrl = offer.Localisation.GetDetailFullUrl(Url);
 					try
 					{
 						formData.MemberQuotation.MemberId = memberId;
@@ -149,7 +150,8 @@ namespace Worki.Web.Controllers
 														 locName,
 														 Localisation.GetOfferType(offer.Type),
 														 formData.MemberQuotation.Surface,
-														 formData.MemberQuotation.Message);
+														 formData.MemberQuotation.Message,
+                                                         locUrl);
 
 						//send mail to quoation client
                         dynamic clientMail = new Email(MVC.Emails.Views.Email);
