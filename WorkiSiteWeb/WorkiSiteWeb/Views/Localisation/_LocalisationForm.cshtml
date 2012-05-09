@@ -277,6 +277,16 @@
                             </div>
                         </td>
                     </tr>
+                    @if (Model.Localisation.ID == 0)
+                    { 
+                    <tr>
+                        <td colspan=2>
+                            <div class="editor-label margint5 marginb5">
+                                @Html.CheckBoxFor(model => model.SendMailToOwner) @Html.LabelFor(model => model.SendMailToOwner)
+                            </div>
+                        </td>
+                    </tr>
+                    }
                     <tr>
                         <td>
                             <div class="editor-label">
@@ -401,7 +411,7 @@
                 </div>
             </div>
 			@if (!Url.IsInArea("Backoffice"))
-	        {
+   {
 			<div class="editPlace float-right borderRadius">
 				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
 				<span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
@@ -409,7 +419,7 @@
 				</div>
 				<button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
 			</div>
-	        }	
+   }	
             <div class="clear">
             </div>
             <div id="@PictureData.GetFileUploaderId(ProviderType.Localisation)" class="fileupload borderRadius">
@@ -518,11 +528,11 @@
                         @Html.FeatureChecboxLabel(Feature.TV, Model.Localisation)
                     </li>
 					@if (!Model.IsSharedOffice)
-                    { 
+     { 
 		            <li>
                         @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
                     </li>
-                    }
+     }
                 </ul>
             </div>
             <div class="clear">
@@ -539,7 +549,7 @@
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
 				    @if (Model.IsSharedOffice)
-                    {
+        {
                     <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
@@ -560,9 +570,9 @@
                             @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
                         </li>
                     </ul>
-                    }
-                    else
-                    {
+        }
+        else
+        {
 				    <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Domiciliation, Model.Localisation)
@@ -583,7 +593,7 @@
                             @Html.FeatureChecboxLabel(Feature.Archiving, Model.Localisation)
                         </li>
                     </ul>
-                    }
+        }
                 </div>
                 @if (!Model.IsSharedOffice)
                 {

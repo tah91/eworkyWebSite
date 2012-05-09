@@ -1319,6 +1319,9 @@ namespace Worki.Data.Models
 		public SelectList Offers { get; set; }
 		public bool IsSharedOffice { get; set; }
 
+        [Display(Name = "SendMailToOwner", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public bool SendMailToOwner { get; set; }
+
 		#endregion
 
 		#region Ctor
@@ -1347,6 +1350,7 @@ namespace Worki.Data.Models
 
 		void Init(bool isFree = true, bool isShared = false)
 		{
+            SendMailToOwner = true;
 			IsFreeLocalisation = isFree;
 			IsSharedOffice = isShared;
 			if (isShared)

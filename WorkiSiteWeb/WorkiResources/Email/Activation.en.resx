@@ -158,4 +158,27 @@ We recommend you invite your clients to rate and comment your place, this will i
   <data name="BOLink" xml:space="preserve">
     <value>your office manager interface </value>
   </data>
+  <data name="LocalisationCreate" xml:space="preserve">
+    <value>Welcome to {0} on eWorky !</value>
+  </data>
+  <data name="LocalisationCreateContent" xml:space="preserve">
+    <value>Congratulations ! &lt;b&gt;{0} was added to eWorky as a new {1} in {2} !&lt;/b&gt; Click on the link below to access your listing on eWorky :
+{3}
+
+&lt;u&gt;&lt;b&gt;What does it mean ?&lt;/b&gt;&lt;/u&gt;
+
+eWorky is a collaborative marketplace for workspaces : we help people find the best place to work. From now on, eWorkers will be able to find {4} when searching on our marketplace. It is 100%y free.
+
+&lt;u&gt;&lt;b&gt;What should I do ?&lt;/b&gt;&lt;/u&gt;
+
+&lt;b&gt;Become the administrator of your page!&lt;/b&gt; You will get access to advanced features to promote your workspace.
+
+&lt;b&gt;Update your info!&lt;/b&gt; Upload new pictures, tell eWorkers about your offers, and gain visibility.
+
+&lt;b&gt;Ask for reviews !&lt;/b&gt; Let eWorkers know how great {5} is ! Ratings and reviews will increase your ranking in search results.
+
+If you have any question, please send us an email at support@eworky.com , we are always happy to help !
+
+Welcome to eWorky !</value>
+  </data>
 </root>

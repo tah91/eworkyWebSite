@@ -344,6 +344,25 @@ namespace Worki.Web.Controllers
                     TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
                     if (modifType == EditionType.Creation)
                     {
+                        //send welcome mail
+                        if (localisationForm.SendMailToOwner && !string.IsNullOrEmpty(localisationForm.Localisation.Mail))
+                        {
+                            dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
+                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                            newMemberMail.To = localisationForm.Localisation.Mail;
+                            newMemberMail.ToName = "";
+
+                            newMemberMail.Subject = string.Format(Worki.Resources.Email.Activation.LocalisationCreate, localisationForm.Localisation.GetFullName());
+                            newMemberMail.Content = string.Format(Worki.Resources.Email.Activation.LocalisationCreateContent,
+                                                                    localisationForm.Localisation.GetFullName(),
+                                                                    Localisation.GetOfferType(localisationForm.Localisation.TypeValue),
+                                                                    localisationForm.Localisation.City,
+                                                                    localisationForm.Localisation.GetDetailFullUrl(Url),
+                                                                    localisationForm.Localisation.GetFullName(),
+                                                                    localisationForm.Localisation.GetFullName());
+
+                            newMemberMail.Send();
+                        }
                         TempData[MiscHelpers.TempDataConstants.NewLocalisationId] = idToRedirect;
                     }
                     if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
