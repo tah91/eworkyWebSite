@@ -220,9 +220,9 @@ namespace Worki.Web.Controllers
             var member = mRepo.Get(memberId);
             var quotation = qRepo.Get(id);
 
-            //case of first quotation, give it for free
+            //case of first quotation, give it for free, or if it is shared office
             var first = qRepo.GetOwnerProducts(memberId).OrderBy(q => q.CreationDate).FirstOrDefault();
-            if (first != null && first.Id == id)
+            if ((first != null && first.Id == id) || quotation.Offer.Localisation.IsSharedOffice())
             {
                 try
                 {

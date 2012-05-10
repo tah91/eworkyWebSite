@@ -850,7 +850,7 @@ namespace Worki.Data.Models
 		/// <returns></returns>
         public bool AcceptBooking()
 		{
-            return Offers.Count(o => o.IsReallyBookable()) != 0;
+            return Offers.Count(o => o.IsReallyBookable()) != 0 && HasOwner();
 		}
 
 		/// <summary>
@@ -859,7 +859,7 @@ namespace Worki.Data.Models
 		/// <returns></returns>
         public bool AcceptQuotation()
 		{
-            return Offers.Count(o => o.AcceptQuotation()) != 0;
+            return Offers.Count(o => o.AcceptQuotation()) != 0 && HasOwner();
 		}
 
         public bool AcceptProduct()
@@ -1353,10 +1353,10 @@ namespace Worki.Data.Models
             SendMailToOwner = true;
 			IsFreeLocalisation = isFree;
 			IsSharedOffice = isShared;
+            IsOwner = true;
 			if (isShared)
 			{
 				Localisation.TypeValue = (int)LocalisationType.SharedOffice;
-				IsOwner = true;
 			}
 
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes(isShared);

@@ -84,6 +84,16 @@
 	var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
 	var fullName = Model.GetFullName();
     var link = Model.GetDetailFullUrl(Url);
+    var canEdit = false;
+    if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+    {
+        canEdit = true;
+    }
+    else if (Request.IsAuthenticated)
+    {
+        var memberId = WebHelper.GetIdentityId(User.Identity);
+        canEdit = Model.IsOwner(memberId);
+    }
 }
 
 <div itemscope itemtype="http://schema.org/LocalBusiness">
@@ -432,7 +442,7 @@
 </div>
 
 <div class="margint10 float-right">
-	@if (!Model.HasOwner() || Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+	@if (!Model.HasOwner() || canEdit)
     {
 	<div class="buttonStd buttonBlue linkImg float-left">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))

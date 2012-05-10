@@ -58,7 +58,7 @@
                     @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.SeeClientProfile, MVC.Account.Public(Model.MemberId))
                 </div>
             }
-            else
+            else if (!Model.Offer.Localisation.IsSharedOffice())
             { 
                 <div class="clear"></div>
                 <div class="innerContentBlock italic">

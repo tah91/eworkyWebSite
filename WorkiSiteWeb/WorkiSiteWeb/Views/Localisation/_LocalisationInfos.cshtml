@@ -28,7 +28,7 @@
         </ul>
         }
 	    <div class="bookingCallAction">
-		    @if (Model.AcceptProduct() && !Model.IsSharedOffice())
+		    @if (Model.AcceptProduct())
 		    {
 		    <div class="bigButtonStd buttonStd buttonBlue linkImg">
                 <a href="#offers" id="bookItNow">@Model.NeedTheLocalisation()</a>
