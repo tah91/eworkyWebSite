@@ -442,4 +442,7 @@
   <data name="InMedical" xml:space="preserve">
     <value>in a medical practice</value>
   </data>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Send a welcome message to this space</value>
+  </data>
 </root>
