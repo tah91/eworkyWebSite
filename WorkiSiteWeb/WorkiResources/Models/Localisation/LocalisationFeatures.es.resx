@@ -408,7 +408,7 @@
     <value>Acceso reservado a clientes</value>
   </data>
   <data name="Sector" xml:space="preserve">
-    <value>Sector</value>
+    <value>Sector de actividad</value>
     <comment>?</comment>
   </data>
   <data name="Kitchen" xml:space="preserve">
@@ -430,7 +430,7 @@
     <value>Ascensor</value>
   </data>
   <data name="Accountants" xml:space="preserve">
-    <value>Perito contable</value>
+    <value>Péritos contables</value>
   </data>
   <data name="Architects" xml:space="preserve">
     <value>Arquitectos</value>
@@ -451,16 +451,16 @@
     <value>Comunicación / medias</value>
   </data>
   <data name="Consultants" xml:space="preserve">
-    <value>Consultor</value>
+    <value>Consultores</value>
   </data>
   <data name="Contractors" xml:space="preserve">
-    <value>Emprendedor</value>
+    <value>Emprendedores</value>
   </data>
   <data name="Designers" xml:space="preserve">
-    <value>Diseñador</value>
+    <value>Diseñadores</value>
   </data>
   <data name="Developers" xml:space="preserve">
-    <value>Desarrollador (TI)</value>
+    <value>Desarrolladores (TI)</value>
   </data>
   <data name="Heater" xml:space="preserve">
     <value>Calefacción</value>
