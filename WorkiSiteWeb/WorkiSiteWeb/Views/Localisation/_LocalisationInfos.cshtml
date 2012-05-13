@@ -175,6 +175,14 @@
 			    });
 		    </script>
 	    </div>
+        if (!Model.HasOwner())
+	    {
+            <div class="bookingCallAction margint10">
+                <div class="bigButtonStd buttonStd buttonBlue linkImg">
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID))
+                </div>
+            </div>
+        }
     }
 
 </div>

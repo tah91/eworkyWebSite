@@ -227,7 +227,7 @@
     <value>Une erreur est survenue.</value>
   </data>
   <data name="AreYouOwner" xml:space="preserve">
-    <value>Vous êtes le gérant de ce lieu ?</value>
+    <value>Je suis le gérant du lieu</value>
   </data>
   <data name="YouAreOwner" xml:space="preserve">
     <value>Vous êtes désormais gérant de ce lieu !</value>
