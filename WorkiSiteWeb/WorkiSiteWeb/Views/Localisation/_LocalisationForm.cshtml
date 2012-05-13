@@ -125,10 +125,7 @@
 	                else
 	                {
 						@Html.HiddenFor(m => m.Localisation.TypeValue)
-						@Html.HiddenFor(m => m.IsOwner)
 	                }
-					@if (!Model.IsSharedOffice)
-	                {
                     <tr>
                         <td>
                             <div class="editor-label">
@@ -151,11 +148,8 @@
                             </div>
                         </td>
                     </tr>
-	                }
-	                else
+	                @if (Model.IsSharedOffice)
 	                {
-		                Model.Localisation.Name = Localisation.DefaultSharedOfficeName;
-						@Html.HiddenFor(model => model.Localisation.Name)
 					<tr>
                         <td>
                             <div class="editor-label">

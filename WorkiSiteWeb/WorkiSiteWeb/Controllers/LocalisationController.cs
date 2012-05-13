@@ -324,7 +324,6 @@ namespace Worki.Web.Controllers
                         }
                         var loc = lRepo.Get(id.Value);
                         UpdateModel(loc, LocalisationPrefix);
-                        loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
                         loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
                         offerCount = loc.Offers.Count;
                     }

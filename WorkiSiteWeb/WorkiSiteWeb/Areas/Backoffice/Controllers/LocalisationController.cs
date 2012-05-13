@@ -121,7 +121,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				{
 					var loc = lRepo.Get(id);
 					UpdateModel(loc, LocalisationPrefix);
-					loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
 					loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
 					var offerCount = loc.Offers.Count;
 
