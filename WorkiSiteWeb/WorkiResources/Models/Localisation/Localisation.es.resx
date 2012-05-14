@@ -359,7 +359,7 @@
     <value>Abre el miércoles por la mañana</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Descipción del espacio</value>
+    <value>Descripción del espacio</value>
   </data>
   <data name="DisplayName" xml:space="preserve">
     <value>{0}, {1} a {2}</value>
