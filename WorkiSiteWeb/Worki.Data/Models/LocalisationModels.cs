@@ -1475,17 +1475,17 @@ namespace Worki.Data.Models
 	/// </summary>
 	public enum LocalisationType
 	{
-		SpotWifi,
+		SpotWifi,           //0
 		CoffeeResto,
 		Biblio,
 		PublicSpace,
 		TravelerSpace,
-		Hotel,
+		Hotel,              //5
 		Telecentre,
 		BuisnessCenter,
 		CoworkingSpace,
 		WorkingHotel,
-		PrivateArea,
+		PrivateArea,        //10
 		SharedOffice
 	}
 

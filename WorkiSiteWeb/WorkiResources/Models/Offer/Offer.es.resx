@@ -133,7 +133,7 @@
     <value>Disponible el {0} para {1} {2}</value>
   </data>
   <data name="AvailableFor" xml:space="preserve">
-    <value>Disponible para {1} {2}</value>
+    <value>Disponible para {0} {1}</value>
   </data>
   <data name="AvailableFrom" xml:space="preserve">
     <value>Disponible a partir del {0}</value>
