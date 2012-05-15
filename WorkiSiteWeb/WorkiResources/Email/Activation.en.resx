@@ -181,4 +181,11 @@ If you have any question, please send us an email at support@eworky.com , we are
 
 Welcome to eWorky !</value>
   </data>
+  <data name="BOTeamAsk" xml:space="preserve">
+    <value>Name : &lt;b&gt;{0}&lt;/b&gt;
+E-mail : &lt;b&gt;{1}&lt;/b&gt;</value>
+  </data>
+  <data name="BOTeamAskSubject" xml:space="preserve">
+    <value>Office manager request</value>
+  </data>
 </root>
