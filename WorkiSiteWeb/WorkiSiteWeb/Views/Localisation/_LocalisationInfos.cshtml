@@ -126,8 +126,6 @@
 	}
 </div>
 
-@if (!Model.IsSharedOffice() || Request.IsAuthenticated)
-{ 
 <div class="contentBlock">
 	<h3 class="blue">Contact</h3>
     @if (Model.HasOwner())
@@ -186,7 +184,6 @@
     }
 
 </div>
-}
 
 @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 {

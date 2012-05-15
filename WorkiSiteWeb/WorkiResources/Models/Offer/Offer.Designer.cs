@@ -331,7 +331,7 @@ namespace Worki.Resources.Models.Offer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prix.
+        ///   Looks up a localized string similar to Prix TTC.
         /// </summary>
         public static string Price {
             get {

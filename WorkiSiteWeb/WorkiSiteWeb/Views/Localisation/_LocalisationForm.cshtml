@@ -521,11 +521,14 @@
                         @Html.FeatureChecboxLabel(Feature.TV, Model.Localisation)
                     </li>
 					@if (!Model.IsSharedOffice)
-     { 
+                    { 
 		            <li>
                         @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
                     </li>
-     }
+                    }
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Heater, Model.Localisation)
+                    </li>
                 </ul>
             </div>
             <div class="clear">
@@ -542,7 +545,7 @@
                 <div class="subserviceContainer float-left">
                     <h4>@Worki.Resources.Views.Localisation.LocalisationFormString.ProfessionalServices</h4>
 				    @if (Model.IsSharedOffice)
-        {
+                    {
                     <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Computers, Model.Localisation)
@@ -563,9 +566,9 @@
                             @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Localisation)
                         </li>
                     </ul>
-        }
-        else
-        {
+                    }
+                    else
+                    {
 				    <ul>
                         <li>
                             @Html.FeatureChecboxLabel(Feature.Domiciliation, Model.Localisation)
@@ -586,7 +589,7 @@
                             @Html.FeatureChecboxLabel(Feature.Archiving, Model.Localisation)
                         </li>
                     </ul>
-        }
+                    }
                 </div>
                 @if (!Model.IsSharedOffice)
                 {

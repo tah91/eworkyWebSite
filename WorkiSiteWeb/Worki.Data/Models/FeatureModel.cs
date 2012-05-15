@@ -65,7 +65,10 @@ namespace Worki.Data.Models
 			Feature.ComputerHelp,
 			Feature.RoomService, 
 			Feature.Community,
-			Feature.RelaxingArea
+			Feature.RelaxingArea,
+            Feature.PhoneLine,
+            Feature.Kitchen,
+            Feature.SharedMeetingRoom
 		};
 
         public static List<Feature> Sectors = new List<Feature>()
