@@ -208,6 +208,53 @@ namespace Worki.Web.Controllers
 			return View(quotation);
 		}
 
+        /// <summary>
+        /// GET Action result to edit Quotation data
+        /// </summary>
+        /// <param name="id">id of Quotation</param>
+        /// <returns>View containing Quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+        public virtual ActionResult Edit(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            var quotation = qRepo.Get(id);
+            return View(quotation);
+        }
+
+        /// <summary>
+        /// POST Action result to edit Quotation data
+        /// </summary>
+        /// <param name="id">id of Quotation</param>
+        /// <returns>View containing Quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult Edit(int id, MemberQuotation formModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+                try
+                {
+                    var quotation = qRepo.Get(id);
+                    UpdateModel(quotation);
+
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    context.Complete();
+                    ModelState.AddModelError("", ex.Message);
+                }
+
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.QuotationEdited;
+
+                return RedirectToAction(MVC.Quotation.Details(id));
+            }
+            return View(formModel);
+        }
+
         [AcceptVerbs(HttpVerbs.Get), Authorize]
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int id)
@@ -251,7 +298,7 @@ namespace Worki.Web.Controllers
 			
 			var localisation = quotation.Offer.Localisation;
 
-            string returnUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationAccepted(id));
+            string returnUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(id, true));
 			string cancelUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationCancelled(id));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 

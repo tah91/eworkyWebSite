@@ -1950,6 +1950,11 @@ namespace Worki.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Edit() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult PayWithPayPal() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.PayWithPayPal);
         }
@@ -1968,6 +1973,7 @@ namespace Worki.Web.Controllers {
         public class ActionNamesClass {
             public readonly string Create = "Create";
             public readonly string Details = "Details";
+            public readonly string Edit = "Edit";
             public readonly string PayWithPayPal = "paywithpaypal";
         }
 
@@ -1979,6 +1985,7 @@ namespace Worki.Web.Controllers {
         public class ViewNames {
             public readonly string Create = "~/Views/Quotation/Create.cshtml";
             public readonly string Details = "~/Views/Quotation/Details.cshtml";
+            public readonly string Edit = "~/Views/Quotation/Edit.cshtml";
         }
     }
 
@@ -2002,6 +2009,19 @@ namespace Worki.Web.Controllers {
         public override System.Web.Mvc.ActionResult Details(int id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
             callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Edit(int id, Worki.Data.Models.MemberQuotation formModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
+            callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("formModel", formModel);
             return callInfo;
         }
 
@@ -3704,9 +3724,10 @@ namespace Worki.Web.Areas.Backoffice.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult QuotationDetail(int id) {
+        public override System.Web.Mvc.ActionResult QuotationDetail(int id, bool paypal) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.QuotationDetail);
             callInfo.RouteValueDictionary.Add("id", id);
+            callInfo.RouteValueDictionary.Add("paypal", paypal);
             return callInfo;
         }
 

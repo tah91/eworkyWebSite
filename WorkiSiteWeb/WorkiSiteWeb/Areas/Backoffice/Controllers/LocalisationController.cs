@@ -516,7 +516,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// Get action method to show quotation detail
         /// </summary>
         /// <returns>View containing the quotation</returns>
-        public virtual ActionResult QuotationDetail(int id)
+        public virtual ActionResult QuotationDetail(int id, bool paypal = false)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -528,6 +528,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var member = mRepo.Get(memberId);
                 Member.Validate(member);
                 var quotation = qRepo.Get(id);
+
+                if (paypal)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = string.Format(Worki.Resources.Views.Booking.BookingString.ContactAvailable, quotation.Offer.Name);
+                }
 
                 return View(quotation);
             }

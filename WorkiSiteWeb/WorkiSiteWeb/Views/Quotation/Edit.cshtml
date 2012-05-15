@@ -10,6 +10,9 @@
 <div class="detailContent">
         <div class="blockContainer">
             <div class="contentBlock">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
             <table>
                 <tr>
                     <td>
@@ -91,13 +94,18 @@
                     </td>
                     <td>
                         <div class="editor-field">
-                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Message)
+                            &nbsp;&nbsp;&nbsp;@Html.TextAreaFor(model => model.Message)
                         </div>
                     </td>
                 </tr>
             </table>
-
-            @Html.ActionLink(Worki.Resources.Views.Admin.AdminString.Edit, MVC.Quotation.Edit(Model.Id))
+                
+            <div class="float-right">
+                <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Save"/>
+            </div>
+                
+            <div class="clear"></div>
+            }
         </div>
     </div>   
 </div>

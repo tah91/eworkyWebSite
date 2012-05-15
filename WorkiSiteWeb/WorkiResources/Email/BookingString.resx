@@ -225,10 +225,10 @@ Message : &lt;b&gt;{7}&lt;/b&gt;
 Url : &lt;b&gt;{8}&lt;/b&gt;</value>
   </data>
   <data name="CreateQuotationAndBOOwner" xml:space="preserve">
-    <value>Vous avez reçu une demande de devis pour un(e) {0} dans l'établissement {1} ({2}).
-La consultation de la première demande de devis est sans frais. Rendez vous donc au plus vite dans votre espace gérant, grâce auquel vous rendez gratuitement votre lieu plus visible, et bénéficiez d’outils de gestion simples et indispensables (Réservation, paiement sécurisé, planning, factures automatisées, CRM). 
+    <value>Vous avez reçu une demande de contact pour un(e) {0} dans l'établissement {1} ({2}).
+La consultation de la première demande de contact est sans frais. Rendez vous donc au plus vite dans votre espace gérant, grâce auquel vous rendez gratuitement votre lieu plus visible, et bénéficiez d’outils de gestion simples et indispensables (Réservation, paiement sécurisé, planning, factures automatisées, CRM). 
 
-Rendez-vous dans votre {3} pour consulter cette demande de devis, y répondre ou la refuser dans les meilleurs délais.</value>
+Rendez-vous dans votre {3} pour consulter cette demande, y répondre ou la refuser dans les meilleurs délais.</value>
   </data>
   <data name="CreateQuotationClient" xml:space="preserve">
     <value>Votre demande de devis pour un(e) &lt;b&gt;{0}&lt;/b&gt; de &lt;b&gt;{1}&lt;/b&gt; m² dans l’établissement &lt;b&gt;{2}&lt;/b&gt; (&lt;b&gt;{3}&lt;/b&gt;) a été prise en compte. 
@@ -238,12 +238,12 @@ Le gérant de l'espace confirmera votre demande de devis dès que possible.</val
     <value>Votre demande de devis a bien été prise en compte</value>
   </data>
   <data name="CreateQuotationOwner" xml:space="preserve">
-    <value>Vous avez reçu une demande de devis pour un(e) {0} dans l'établissement {1} ({2}). 
+    <value>Vous avez reçu une demande de contact pour un(e) {0} dans l'établissement {1} ({2}). 
 
 Rendez-vous dans votre {3} pour confirmer/refuser cette demande de réservation dans les meilleurs délais.</value>
   </data>
   <data name="CreateQuotationOwnerSubject" xml:space="preserve">
-    <value>Demande de devis - {0}</value>
+    <value>Demande de contact - {0}</value>
   </data>
   <data name="PartyCreateAccount" xml:space="preserve">
     <value>Suite à votre inscription au Networking des coworkers, nous avons le plaisir de vous annoncer qu’un compte eWorky vous a été créé !

@@ -933,6 +933,7 @@
     <Content Include="Views\Localisation\_SearchOrderSelector.cshtml" />
     <Content Include="Views\Shared\_LoaderBlock.cshtml" />
     <Content Include="Views\Localisation\_MapItemSummary.cshtml" />
+    <Content Include="Views\Quotation\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
