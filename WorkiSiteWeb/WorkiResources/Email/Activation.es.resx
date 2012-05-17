@@ -153,4 +153,17 @@ Te invitamos a proponer a tus clientes puntuar y dejar un comentario sobre tu es
   <data name="BOLink" xml:space="preserve">
     <value>la interfaz de gestión de tu espacio</value>
   </data>
+  <data name="BOTeamAsk" xml:space="preserve">
+    <value>Nombre: &lt;b&gt;{0}&lt;/b&gt;
+Dirección de correo:  &lt;b&gt;{1}&lt;/b&gt;</value>
+  </data>
+  <data name="BOTeamAskSubject" xml:space="preserve">
+    <value>Solicitud del Acceso Gerente</value>
+  </data>
+  <data name="LocalisationCreate" xml:space="preserve">
+    <value>{0}, ¡Bienvenido a eWorky !</value>
+  </data>
+  <data name="LocalisationCreateContent" xml:space="preserve">
+    <value>¡Enhorabuena! &lt;b&gt;{0} ha sido añadido en eWorky como {1} en {2} ! Puedes hacer clic en el enlace siguiente para acceder a tu perfíl en eWorky: {3} </value>
+  </data>
 </root>

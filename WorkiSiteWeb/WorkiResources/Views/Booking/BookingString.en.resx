@@ -389,4 +389,7 @@ Register promptly, there is a limited amount of tickets</value>
   <data name="StatusUnknown" xml:space="preserve">
     <value>Unknown</value>
   </data>
+  <data name="StatusPending" xml:space="preserve">
+    <value>Not validated</value>
+  </data>
 </root>
