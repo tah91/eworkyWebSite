@@ -120,10 +120,10 @@
   <data name="AcceptBookingClient" xml:space="preserve">
     <value>Tu solicitud de reserva para un(a) &lt;b&gt;{0}&lt;/b&gt; del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt; en el espacio &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) ha sido aceptado por una cantidad de &lt;b&gt;{5}&lt;/b&gt; €.
 
-Para confirmar definitivamente tu reserva, ve a tu {6} para realizar el pago.</value>
+Entrando a {6} podrás realizar el pago y así confirmar definitivamente tu reserva.</value>
   </data>
   <data name="AcceptBookingClientSubject" xml:space="preserve">
-    <value>Tu solicitud de reserva ha sido validada por el gerente.</value>
+    <value>Tu solicitud de reserva ha sido aceptada por el gerente.</value>
   </data>
   <data name="AcceptBookingOwner" xml:space="preserve">
     <value>Has aceptado la reserva para un(a) &lt;b&gt;{0}&lt;/b&gt; del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt; en el espacio &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) por una cantidad de &lt;b&gt;{5}&lt;/b&gt; €.</value>
@@ -196,10 +196,10 @@ Te invitamos a completar tu perfíl a la dirección que te indicamos a continuac
   </data>
   <data name="CreateBookingClient" xml:space="preserve">
     <value>Tu solicitud de reserva para un(a) &lt;b&gt;{0}&lt;/b&gt; del &lt;b&gt;{1}&lt;/b&gt; al &lt;b&gt;{2}&lt;/b&gt; en el establecimiento &lt;b&gt;{3}&lt;/b&gt; (&lt;b&gt;{4}&lt;/b&gt;) ha sido tomada en cuenta. 
-El gerente del espacio te confirmará la reserva en cuanto le sea posible.</value>
+En breves, el gerente del espacio te mandará una confirmación de la reserva.</value>
   </data>
   <data name="CreateBookingClientSubject" xml:space="preserve">
-    <value>Tu solicitud de reserva ha sido tomada en cuenta</value>
+    <value>Tu solicitud de reserva ha sido registrada</value>
   </data>
   <data name="CreateBookingTeam" xml:space="preserve">
     <value>&lt;b&gt;Creación&lt;/b&gt;

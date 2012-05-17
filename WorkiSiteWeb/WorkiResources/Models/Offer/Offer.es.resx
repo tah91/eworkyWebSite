@@ -246,4 +246,13 @@
   <data name="Transfert" xml:space="preserve">
     <value>Transferencia</value>
   </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Reserva online</value>
+  </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Gestión de solicitudes</value>
+  </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>Solicitud de presupuesto</value>
+  </data>
 </root>

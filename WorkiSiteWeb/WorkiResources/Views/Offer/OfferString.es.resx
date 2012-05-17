@@ -136,7 +136,7 @@
     <value>La oferta ha sido añadida correctamente.</value>
   </data>
   <data name="OfferEdited" xml:space="preserve">
-    <value>Los nuevos parámetros han sido tomado en cuenta.</value>
+    <value>Los nuevos parámetros han sido actualizados.</value>
   </data>
   <data name="OfferCharacteristics" xml:space="preserve">
     <value>Características de la oferta</value>
