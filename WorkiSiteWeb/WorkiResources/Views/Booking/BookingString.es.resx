@@ -139,7 +139,7 @@
     <value>Denegar</value>
   </data>
   <data name="Confirmed" xml:space="preserve">
-    <value>Tu solicitud de reserva ha sido tomada en cuenta correctamente. El precio y la disponibilidad te serán confirmados por el gerente.</value>
+    <value>Tu solicitud ha sido mandada al gerente que te confirmará el precio y la disponibilidad.</value>
   </data>
   <data name="Quotation" xml:space="preserve">
     <value>Solicitud de presupuesto</value>
@@ -211,7 +211,7 @@
     <value>Tu solicitud de presupuesto ha sido tomada en cuenta.</value>
   </data>
   <data name="BookingAccepted" xml:space="preserve">
-    <value>La solicitud de confirmación ha sido confirmada.</value>
+    <value>La solicitud de reserva ha sido confirmada.</value>
   </data>
   <data name="BookingCanceled" xml:space="preserve">
     <value>Tu solicitud de reserva ha sido cancelada.</value>
