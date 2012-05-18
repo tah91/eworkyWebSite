@@ -50,6 +50,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// <returns>View with recent activities</returns>
 		public virtual ActionResult Index()
 		{
+            _Logger.Error("BO INDEX");
 			var id = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();

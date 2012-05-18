@@ -34,6 +34,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>View with recent activities</returns>
 		public virtual ActionResult Index(int id)
 		{
+            _Logger.Error("BO LOCALISATION INDEX");
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
