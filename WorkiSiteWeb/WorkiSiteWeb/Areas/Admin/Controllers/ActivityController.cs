@@ -525,6 +525,7 @@ namespace Worki.Web.Areas.Admin.Controllers
             {
 				DataCacheSingleton.Instance.Cache.Remove(BlogService.FrBlogCacheKey);
 				DataCacheSingleton.Instance.Cache.Remove(BlogService.EnBlogCacheKey);
+                DataCacheSingleton.Instance.Cache.Remove(BlogService.EsBlogCacheKey);
             }
             catch (Exception ex)
             {
