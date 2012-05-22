@@ -287,7 +287,7 @@
     <value>Este espacio no tiene ninguna oferta que permita solicitar un presupuesto todavía.</value>
   </data>
   <data name="PriceConfiguration" xml:space="preserve">
-    <value>Parametrización de las tarifas</value>
+    <value>Configuración de las tarifas</value>
   </data>
   <data name="BOAlerts" xml:space="preserve">
     <value>Acceso gerente : {0} alerta(s)</value>
