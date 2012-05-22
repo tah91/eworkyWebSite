@@ -262,7 +262,7 @@
     <value>{0} ha pagado la solicitud de reserva para {1}</value>
   </data>
   <data name="HasPaidQuotation" xml:space="preserve">
-    <value>{0} ha pagado la solicitud de presupuesto para {1}</value>
+    <value>{0} ha contestado a la solicitud de presupuesto para {1}</value>
   </data>
   <data name="HasRefuseBooking" xml:space="preserve">
     <value>{0} ha denegado la solicitud de reserva para {1}</value>

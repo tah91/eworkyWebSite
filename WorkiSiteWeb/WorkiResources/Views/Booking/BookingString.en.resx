@@ -262,7 +262,7 @@
     <value>{0} paid his booking request for {1}</value>
   </data>
   <data name="HasPaidQuotation" xml:space="preserve">
-    <value>{0} paid his quote request for {1}</value>
+    <value>{0} answered to the quote request for {1}</value>
   </data>
   <data name="HasRefuseBooking" xml:space="preserve">
     <value>{0} refused your booking request for {1}</value>
