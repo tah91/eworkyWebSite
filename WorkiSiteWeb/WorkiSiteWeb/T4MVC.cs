@@ -33,6 +33,8 @@ public static class MVC {
     public static DashboardClass Dashboard { get { return s_Dashboard; } }
     static readonly MobileClass s_Mobile = new MobileClass();
     public static MobileClass Mobile { get { return s_Mobile; } }
+    static readonly WidgetClass s_Widget = new WidgetClass();
+    public static WidgetClass Widget { get { return s_Widget; } }
     public static Worki.Web.Controllers.AccountController Account = new Worki.Web.Controllers.T4MVC_AccountController();
     public static Worki.Web.Controllers.BookingController Booking = new Worki.Web.Controllers.T4MVC_BookingController();
     public static Worki.Web.Controllers.CaptchaImageController CaptchaImage = new Worki.Web.Controllers.T4MVC_CaptchaImageController();
@@ -91,6 +93,12 @@ namespace T4MVC {
         public Worki.Web.Areas.Mobile.Controllers.HomeController Home = new Worki.Web.Areas.Mobile.Controllers.T4MVC_HomeController();
         public Worki.Web.Areas.Mobile.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Mobile.Controllers.T4MVC_LocalisationController();
         public T4MVC.Mobile.SharedController Shared = new T4MVC.Mobile.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class WidgetClass {
+        public readonly string Name = "Widget";
+        public Worki.Web.Areas.Widget.Controllers.SearchController Search = new Worki.Web.Areas.Widget.Controllers.T4MVC_SearchController();
+        public T4MVC.Widget.SharedController Shared = new T4MVC.Widget.SharedController();
     }
 }
 
@@ -4927,6 +4935,71 @@ namespace T4MVC.Mobile {
         public class ViewNames {
             public readonly string @__Layout = "~/Areas/Mobile/Views/Shared/__Layout.cshtml";
             public readonly string _Connexion = "~/Areas/Mobile/Views/Shared/_Connexion.cshtml";
+        }
+    }
+
+}
+
+namespace Worki.Web.Areas.Widget.Controllers {
+    public partial class SearchController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public SearchController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected SearchController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public SearchController Actions { get { return MVC.Widget.Search; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Widget";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Search";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string Index = "~/Areas/Widget/Views/Search/Index.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_SearchController: Worki.Web.Areas.Widget.Controllers.SearchController {
+        public T4MVC_SearchController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace T4MVC.Widget {
+    public class SharedController {
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
         }
     }
 

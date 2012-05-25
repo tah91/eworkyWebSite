@@ -849,7 +849,6 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    var rvd = _SearchService.GetRVD(criteria);
                     var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 					return GetSearchResult(criteriaViewModel);
