@@ -358,6 +358,8 @@
     <Content Include="Content\images\fb_sprite.png" />
     <Content Include="Content\images\flags.png" />
     <Content Include="Content\images\geoloc.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\homeLogo1.png" />
     <Content Include="Content\images\homeLogo2.png" />
     <Content Include="Content\images\homeLogo3.png" />
@@ -447,6 +449,12 @@
     <Content Include="Content\RentalForm.min.css">
       <DependentUpon>RentalForm.css</DependentUpon>
     </Content>
+    <Content Include="Content\scss\bootstrap.css">
+      <DependentUpon>bootstrap.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\responsive.css">
+      <DependentUpon>responsive.scss</DependentUpon>
+    </Content>
     <Content Include="Content\Search.min.css">
       <DependentUpon>Search.css</DependentUpon>
     </Content>
@@ -455,6 +463,54 @@
     </Content>
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-alert.js" />
+    <Content Include="Scripts\bootstrap-alert.min.js">
+      <DependentUpon>bootstrap-alert.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-button.js" />
+    <Content Include="Scripts\bootstrap-button.min.js">
+      <DependentUpon>bootstrap-button.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-carousel.js" />
+    <Content Include="Scripts\bootstrap-carousel.min.js">
+      <DependentUpon>bootstrap-carousel.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-collapse.js" />
+    <Content Include="Scripts\bootstrap-collapse.min.js">
+      <DependentUpon>bootstrap-collapse.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-dropdown.js" />
+    <Content Include="Scripts\bootstrap-dropdown.min.js">
+      <DependentUpon>bootstrap-dropdown.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-modal.js" />
+    <Content Include="Scripts\bootstrap-modal.min.js">
+      <DependentUpon>bootstrap-modal.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-popover.js" />
+    <Content Include="Scripts\bootstrap-popover.min.js">
+      <DependentUpon>bootstrap-popover.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-scrollspy.js" />
+    <Content Include="Scripts\bootstrap-scrollspy.min.js">
+      <DependentUpon>bootstrap-scrollspy.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-tab.js" />
+    <Content Include="Scripts\bootstrap-tab.min.js">
+      <DependentUpon>bootstrap-tab.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-tooltip.js" />
+    <Content Include="Scripts\bootstrap-tooltip.min.js">
+      <DependentUpon>bootstrap-tooltip.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-transition.js" />
+    <Content Include="Scripts\bootstrap-transition.min.js">
+      <DependentUpon>bootstrap-transition.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-typeahead.js" />
+    <Content Include="Scripts\bootstrap-typeahead.min.js">
+      <DependentUpon>bootstrap-typeahead.js</DependentUpon>
     </Content>
     <Content Include="Scripts\map.infobox.js" />
     <Content Include="Scripts\map.infobox.min.js">
@@ -779,6 +835,46 @@
     <Content Include="Areas\Widget\Views\Search\Index.cshtml" />
     <Content Include="Areas\Widget\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Widget\Views\Search\_Results.cshtml" />
+    <None Include="Content\scss\bootstrap.scss" />
+    <None Include="Content\scss\responsive.scss" />
+    <None Include="Content\scss\_accordion.scss" />
+    <None Include="Content\scss\_alerts.scss" />
+    <None Include="Content\scss\_breadcrumbs.scss" />
+    <None Include="Content\scss\_button-groups.scss" />
+    <None Include="Content\scss\_buttons.scss" />
+    <None Include="Content\scss\_carousel.scss" />
+    <None Include="Content\scss\_close.scss" />
+    <None Include="Content\scss\_code.scss" />
+    <None Include="Content\scss\_component-animations.scss" />
+    <None Include="Content\scss\_dropdowns.scss" />
+    <None Include="Content\scss\_forms.scss" />
+    <None Include="Content\scss\_grid.scss" />
+    <None Include="Content\scss\_hero-unit.scss" />
+    <None Include="Content\scss\_labels-badges.scss" />
+    <None Include="Content\scss\_layouts.scss" />
+    <None Include="Content\scss\_mixins.scss" />
+    <None Include="Content\scss\_modals.scss" />
+    <None Include="Content\scss\_navbar.scss" />
+    <None Include="Content\scss\_navs.scss" />
+    <None Include="Content\scss\_pager.scss" />
+    <None Include="Content\scss\_pagination.scss" />
+    <None Include="Content\scss\_popovers.scss" />
+    <None Include="Content\scss\_progress-bars.scss" />
+    <None Include="Content\scss\_reset.scss" />
+    <None Include="Content\scss\_responsive-1200px-min.scss" />
+    <None Include="Content\scss\_responsive-767px-max.scss" />
+    <None Include="Content\scss\_responsive-768px-979px.scss" />
+    <None Include="Content\scss\_responsive-navbar.scss" />
+    <None Include="Content\scss\_responsive-utilities.scss" />
+    <None Include="Content\scss\_scaffolding.scss" />
+    <None Include="Content\scss\_sprites.scss" />
+    <None Include="Content\scss\_tables.scss" />
+    <None Include="Content\scss\_thumbnails.scss" />
+    <None Include="Content\scss\_tooltip.scss" />
+    <None Include="Content\scss\_type.scss" />
+    <None Include="Content\scss\_utilities.scss" />
+    <None Include="Content\scss\_variables.scss" />
+    <None Include="Content\scss\_wells.scss" />
     <None Include="Startup\AspNetMVC3Setup.exe" />
     <Content Include="Scripts\WorkiMap.min.js">
       <DependentUpon>WorkiMap.js</DependentUpon>

@@ -378,6 +378,42 @@ namespace Links {
         private const string URLPATH = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+        public static readonly string bootstrap_alert_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-alert.min.js") ? Url("bootstrap-alert.min.js") : Url("bootstrap-alert.js");
+                      
+        public static readonly string bootstrap_alert_min_js = Url("bootstrap-alert.min.js");
+        public static readonly string bootstrap_button_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-button.min.js") ? Url("bootstrap-button.min.js") : Url("bootstrap-button.js");
+                      
+        public static readonly string bootstrap_button_min_js = Url("bootstrap-button.min.js");
+        public static readonly string bootstrap_carousel_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-carousel.min.js") ? Url("bootstrap-carousel.min.js") : Url("bootstrap-carousel.js");
+                      
+        public static readonly string bootstrap_carousel_min_js = Url("bootstrap-carousel.min.js");
+        public static readonly string bootstrap_collapse_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-collapse.min.js") ? Url("bootstrap-collapse.min.js") : Url("bootstrap-collapse.js");
+                      
+        public static readonly string bootstrap_collapse_min_js = Url("bootstrap-collapse.min.js");
+        public static readonly string bootstrap_dropdown_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-dropdown.min.js") ? Url("bootstrap-dropdown.min.js") : Url("bootstrap-dropdown.js");
+                      
+        public static readonly string bootstrap_dropdown_min_js = Url("bootstrap-dropdown.min.js");
+        public static readonly string bootstrap_modal_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-modal.min.js") ? Url("bootstrap-modal.min.js") : Url("bootstrap-modal.js");
+                      
+        public static readonly string bootstrap_modal_min_js = Url("bootstrap-modal.min.js");
+        public static readonly string bootstrap_popover_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-popover.min.js") ? Url("bootstrap-popover.min.js") : Url("bootstrap-popover.js");
+                      
+        public static readonly string bootstrap_popover_min_js = Url("bootstrap-popover.min.js");
+        public static readonly string bootstrap_scrollspy_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-scrollspy.min.js") ? Url("bootstrap-scrollspy.min.js") : Url("bootstrap-scrollspy.js");
+                      
+        public static readonly string bootstrap_scrollspy_min_js = Url("bootstrap-scrollspy.min.js");
+        public static readonly string bootstrap_tab_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-tab.min.js") ? Url("bootstrap-tab.min.js") : Url("bootstrap-tab.js");
+                      
+        public static readonly string bootstrap_tab_min_js = Url("bootstrap-tab.min.js");
+        public static readonly string bootstrap_tooltip_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-tooltip.min.js") ? Url("bootstrap-tooltip.min.js") : Url("bootstrap-tooltip.js");
+                      
+        public static readonly string bootstrap_tooltip_min_js = Url("bootstrap-tooltip.min.js");
+        public static readonly string bootstrap_transition_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-transition.min.js") ? Url("bootstrap-transition.min.js") : Url("bootstrap-transition.js");
+                      
+        public static readonly string bootstrap_transition_min_js = Url("bootstrap-transition.min.js");
+        public static readonly string bootstrap_typeahead_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-typeahead.min.js") ? Url("bootstrap-typeahead.min.js") : Url("bootstrap-typeahead.js");
+                      
+        public static readonly string bootstrap_typeahead_min_js = Url("bootstrap-typeahead.min.js");
         public static readonly string date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/date.min.js") ? Url("date.min.js") : Url("date.js");
                       
         public static readonly string date_min_js = Url("date.min.js");
@@ -573,6 +609,8 @@ namespace Links {
             public static readonly string followUs_footer_png = Url("followUs_footer.png");
             public static readonly string footer_jpg = Url("footer.jpg");
             public static readonly string geoloc_png = Url("geoloc.png");
+            public static readonly string glyphicons_halflings_white_png = Url("glyphicons-halflings-white.png");
+            public static readonly string glyphicons_halflings_png = Url("glyphicons-halflings.png");
             public static readonly string homeLogo1_png = Url("homeLogo1.png");
             public static readonly string homeLogo2_png = Url("homeLogo2.png");
             public static readonly string homeLogo3_png = Url("homeLogo3.png");
@@ -659,6 +697,55 @@ namespace Links {
         public static readonly string RentalDetail_min_css = Url("RentalDetail.min.css");
         public static readonly string RentalForm_css = Url("RentalForm.css");
         public static readonly string RentalForm_min_css = Url("RentalForm.min.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class scss {
+            private const string URLPATH = "~/Content/scss";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string _accordion_scss = Url("_accordion.scss");
+            public static readonly string _alerts_scss = Url("_alerts.scss");
+            public static readonly string _breadcrumbs_scss = Url("_breadcrumbs.scss");
+            public static readonly string _button_groups_scss = Url("_button-groups.scss");
+            public static readonly string _buttons_scss = Url("_buttons.scss");
+            public static readonly string _carousel_scss = Url("_carousel.scss");
+            public static readonly string _close_scss = Url("_close.scss");
+            public static readonly string _code_scss = Url("_code.scss");
+            public static readonly string _component_animations_scss = Url("_component-animations.scss");
+            public static readonly string _dropdowns_scss = Url("_dropdowns.scss");
+            public static readonly string _forms_scss = Url("_forms.scss");
+            public static readonly string _grid_scss = Url("_grid.scss");
+            public static readonly string _hero_unit_scss = Url("_hero-unit.scss");
+            public static readonly string _labels_badges_scss = Url("_labels-badges.scss");
+            public static readonly string _layouts_scss = Url("_layouts.scss");
+            public static readonly string _mixins_scss = Url("_mixins.scss");
+            public static readonly string _modals_scss = Url("_modals.scss");
+            public static readonly string _navbar_scss = Url("_navbar.scss");
+            public static readonly string _navs_scss = Url("_navs.scss");
+            public static readonly string _pager_scss = Url("_pager.scss");
+            public static readonly string _pagination_scss = Url("_pagination.scss");
+            public static readonly string _popovers_scss = Url("_popovers.scss");
+            public static readonly string _progress_bars_scss = Url("_progress-bars.scss");
+            public static readonly string _reset_scss = Url("_reset.scss");
+            public static readonly string _responsive_1200px_min_scss = Url("_responsive-1200px-min.scss");
+            public static readonly string _responsive_767px_max_scss = Url("_responsive-767px-max.scss");
+            public static readonly string _responsive_768px_979px_scss = Url("_responsive-768px-979px.scss");
+            public static readonly string _responsive_navbar_scss = Url("_responsive-navbar.scss");
+            public static readonly string _responsive_utilities_scss = Url("_responsive-utilities.scss");
+            public static readonly string _scaffolding_scss = Url("_scaffolding.scss");
+            public static readonly string _sprites_scss = Url("_sprites.scss");
+            public static readonly string _tables_scss = Url("_tables.scss");
+            public static readonly string _thumbnails_scss = Url("_thumbnails.scss");
+            public static readonly string _tooltip_scss = Url("_tooltip.scss");
+            public static readonly string _type_scss = Url("_type.scss");
+            public static readonly string _utilities_scss = Url("_utilities.scss");
+            public static readonly string _variables_scss = Url("_variables.scss");
+            public static readonly string _wells_scss = Url("_wells.scss");
+            public static readonly string bootstrap_scss = Url("bootstrap.scss");
+            public static readonly string bootstrap_css = Url("bootstrap.css");
+            public static readonly string responsive_scss = Url("responsive.scss");
+            public static readonly string responsive_css = Url("responsive.css");
+        }
+    
         public static readonly string Search_css = Url("Search.css");
         public static readonly string Search_min_css = Url("Search.min.css");
         public static readonly string Site_css = Url("Site.css");
@@ -4943,9 +5030,6 @@ namespace T4MVC.Mobile {
 namespace Worki.Web.Areas.Widget.Controllers {
     public partial class SearchController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public SearchController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected SearchController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -4954,6 +5038,11 @@ namespace Worki.Web.Areas.Widget.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AjaxSearch() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearch);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SearchController Actions { get { return MVC.Widget.Search; } }
@@ -4968,6 +5057,7 @@ namespace Worki.Web.Areas.Widget.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string AjaxSearch = "AjaxSearch";
         }
 
 
@@ -4976,6 +5066,7 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _Results = "~/Areas/Widget/Views/Search/_Results.cshtml";
             public readonly string Index = "~/Areas/Widget/Views/Search/Index.cshtml";
         }
     }
@@ -4986,6 +5077,12 @@ namespace Worki.Web.Areas.Widget.Controllers {
 
         public override System.Web.Mvc.ActionResult Index() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AjaxSearch(Worki.Data.Models.SearchCriteria criteria) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearch);
+            callInfo.RouteValueDictionary.Add("criteria", criteria);
             return callInfo;
         }
 
