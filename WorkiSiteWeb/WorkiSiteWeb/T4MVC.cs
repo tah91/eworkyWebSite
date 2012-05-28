@@ -519,6 +519,9 @@ namespace Links {
             public static readonly string galleria_1_2_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/galleria-1.2.4.min.js") ? Url("galleria-1.2.4.min.js") : Url("galleria-1.2.4.js");
                           
             public static readonly string galleria_1_2_4_min_js = Url("galleria-1.2.4.min.js");
+            public static readonly string galleria_1_2_7_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/galleria-1.2.7.min.js") ? Url("galleria-1.2.7.min.js") : Url("galleria-1.2.7.js");
+                          
+            public static readonly string galleria_1_2_7_min_js = Url("galleria-1.2.7.min.js");
             public static readonly string galleria_classic_css = Url("galleria.classic.css");
             public static readonly string galleria_classic_min_css = Url("galleria.classic.min.css");
             public static readonly string galleria_classic_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/galleria.classic.min.js") ? Url("galleria.classic.min.js") : Url("galleria.classic.js");

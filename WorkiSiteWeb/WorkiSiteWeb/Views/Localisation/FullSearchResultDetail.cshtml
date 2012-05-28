@@ -12,6 +12,7 @@
     <link href="@Url.VersionedContent(Links.Content.rateit_min_css)" rel="stylesheet" type="text/css" />	
     <link href="@Url.VersionedContent(Links.Content.Profil_min_css)" rel="stylesheet" type="text/css"/>
     <link href="@Url.VersionedContent(Links.Content.colorbox_css)" rel="stylesheet" type="text/css"/>
+    <link href="@Url.VersionedContent(Links.Content.galleria.galleria_classic_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 @Html.Partial(MVC.Localisation.Views._LocalisationDetail, Model.Localisation)
@@ -31,22 +32,24 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-    	require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
-    		// Load the classic theme
-    		Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
+        require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_7_js)"], function () {
+            require(["@Url.VersionedContent(Links.Content.galleria.galleria_classic_js)"], function () {
+    		    // Load the classic theme
+    		    //Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
 
-    		// Initialize Galleria
-    		$('.gallery').galleria({
-    			//width: 600,
-    			height: 500,
-    			showInfo: false
-    		});
+    		    // Initialize Galleria
+    		    $('.gallery').galleria({
+    			    //width: 600,
+    			    height: 500,
+    			    showInfo: false
+    		    });
 
-    		$('.offerGallery').galleria({
-    			width: 450,
-    			height: 300,
-    			showInfo: false
-    		});
+    		    $('.offerGallery').galleria({
+    			    width: 450,
+    			    height: 300,
+    			    showInfo: false
+    		    });
+            });
     	});
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {
             //rateit

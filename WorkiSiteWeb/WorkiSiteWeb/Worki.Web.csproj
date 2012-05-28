@@ -337,8 +337,17 @@
     <Content Include="Content\fullcalendar.min.css">
       <DependentUpon>fullcalendar.css</DependentUpon>
     </Content>
+    <Content Include="Content\galleria\galleria-1.2.7.js" />
+    <Content Include="Content\galleria\galleria-1.2.7.min.js">
+      <DependentUpon>galleria-1.2.7.js</DependentUpon>
+    </Content>
+    <Content Include="Content\galleria\galleria.classic.css" />
+    <Content Include="Content\galleria\galleria.classic.js" />
     <Content Include="Content\galleria\galleria.classic.min.css">
       <DependentUpon>galleria.classic.css</DependentUpon>
+    </Content>
+    <Content Include="Content\galleria\galleria.classic.min.js">
+      <DependentUpon>galleria.classic.js</DependentUpon>
     </Content>
     <Content Include="Content\images\addPlace.png" />
     <Content Include="Content\images\arrow_red.png" />
@@ -398,9 +407,6 @@
     <Content Include="Content\galleria\galleria-1.2.4.min.js">
       <DependentUpon>galleria-1.2.4.js</DependentUpon>
     </Content>
-    <Content Include="Content\galleria\galleria.classic.min.js">
-      <DependentUpon>galleria.classic.js</DependentUpon>
-    </Content>
     <Content Include="Content\images\arrow.png" />
     <Content Include="Content\images\favorite.png" />
     <Content Include="Content\images\profil_social.png" />
@@ -426,7 +432,6 @@
     <Content Include="Content\Profil.css" />
     <Content Include="Content\galleria\classic-loader.gif" />
     <Content Include="Content\galleria\classic-map.png" />
-    <Content Include="Content\galleria\galleria.classic.css" />
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\jobs_mark.jpeg" />
     <Content Include="Content\images\pbar-ani.gif" />
@@ -582,7 +587,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\galleria\galleria-1.2.4.js" />
-    <Content Include="Content\galleria\galleria.classic.js" />
     <Content Include="Scripts\date.js" />
     <Content Include="Scripts\date.min.js">
       <DependentUpon>date.js</DependentUpon>
