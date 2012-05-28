@@ -34,23 +34,25 @@
     <script type="text/javascript">
         require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_7_js)"], function () {
             require(["@Url.VersionedContent(Links.Content.galleria.galleria_classic_js)"], function () {
-    		    // Load the classic theme
-    		    //Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
 
-    		    // Initialize Galleria
-    		    $('.gallery').galleria({
-    			    //width: 600,
-    			    height: 500,
-    			    showInfo: false
-    		    });
+                // Initialize Galleria
+                if ($('.gallery').length) {
+                    $('.gallery').galleria({
+                        //width: 600,
+                        height: 500,
+                        showInfo: false
+                    });
+                }
 
-    		    $('.offerGallery').galleria({
-    			    width: 450,
-    			    height: 300,
-    			    showInfo: false
-    		    });
+                if ($('.offerGallery').length) {
+                    $('.offerGallery').galleria({
+                        width: 450,
+                        height: 300,
+                        showInfo: false
+                    });
+                }
             });
-    	});
+        });
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {
             //rateit
             BindRateIt = function (name) {
