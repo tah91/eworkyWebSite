@@ -1652,10 +1652,9 @@ namespace Worki.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.PartialViewResult SearchForm(string searchType, string directAccessType, string place) {
+        public override System.Web.Mvc.PartialViewResult SearchForm(string searchType, string place) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.SearchForm);
             callInfo.RouteValueDictionary.Add("searchType", searchType);
-            callInfo.RouteValueDictionary.Add("directAccessType", directAccessType);
             callInfo.RouteValueDictionary.Add("place", place);
             return callInfo;
         }

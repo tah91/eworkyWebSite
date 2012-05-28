@@ -1,40 +1,50 @@
-﻿<!DOCTYPE html>
+﻿@model SearchCriteriaFormViewModel
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>search a place</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <meta charset="utf-8">
+        <title>search a place</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="@Links.Content.scss.bootstrap_css" type="text/css" rel="stylesheet">
-    <link href="@Links.Content.scss.responsive_css " type="text/css" rel="stylesheet">
+        <!-- Le styles -->
+        <link href="@Links.Content.scss.bootstrap_css" type="text/css" rel="stylesheet">
+        <link href="@Links.Content.scss.responsive_css " type="text/css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-  </head>
+    </head>
 
-  <body>
+    <body>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    @using(Html.BeginForm(MVC.Widget.Search.ActionNames.AjaxSearch, MVC.Widget.Name, FormMethod.Post, new { @class = "well" }))
+                    {
+                        @Html.AntiForgeryToken()
+		                @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+		                @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+		                @Html.HiddenFor(m => m.Criteria.SearchType)
+		                @Html.HiddenFor(m => m.Criteria.OrderBy)
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <form class="well">
-            <label>Label name</label>
-            <input type="text" class="span3" placeholder="Type something…">
-            <span class="help-block">Example block-level help text here.</span>
-            <label class="checkbox">
-            <input type="checkbox"> Check me out
-            </label>
-            <button type="submit" class="btn">Submit</button>
-        </form>
+                        @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place")
+					    @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span3" })
+		 
+                        @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
+					    @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class="span3"})
+
+                        <a class="btn btn-large btn-info" href="">
+                            <i class="icon-search icon-white"></i>
+                            Rechercher
+                        </a>
+                    }
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-  </body>
+    </body>
 </html>

@@ -127,14 +127,14 @@
 
         initializeSearchForm();
 
-        SelectForm = function (event, searchType, directAccessType) {
+        SelectForm = function (event, searchType) {
             event.preventDefault();
             var place = $("#Criteria_Place").val();
             if (place == '@Worki.Resources.Views.Home.HomeString.ExampleLocation')
                 place = '';
             $.ajax({
                 url: '@Url.Action(MVC.Localisation.ActionNames.SearchForm, MVC.Localisation.Name)',
-                data: { 'searchType': searchType, 'directAccessType': directAccessType, 'place': place },
+                data: { 'searchType': searchType, 'place': place },
                 success: function (data) {
                     $('#searchFormPartialContainer').replaceWith(data);
                     initializeSearchForm();
@@ -144,15 +144,15 @@
         }
 
         $('#searchPerType').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerType', '@eDirectAccessType.eNone');
+            SelectForm(event, '@eSearchType.ePerType');
         });
 
         $('#searchPerNeed').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerOffer', '@eDirectAccessType.eNone');
+            SelectForm(event, '@eSearchType.ePerOffer');
         });
 
         $('#searchPerName').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerName', '@eDirectAccessType.eNone');
+            SelectForm(event, '@eSearchType.ePerName');
         });
 
         require(["@Links.Scripts.dropdown_js"], function () {
