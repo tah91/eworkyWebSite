@@ -33,12 +33,12 @@
 		                @Html.HiddenFor(m => m.Criteria.OrderBy)
 
                         @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place")
-					    @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span3" })
+					    @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span12" })
 		 
                         @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
-					    @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class="span3"})
+					    @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "span12" })
 
-                        <a class="btn btn-large btn-info" href="">
+                        <a class="btn btn-info" href="">
                             <i class="icon-search icon-white"></i>
                             Rechercher
                         </a>
