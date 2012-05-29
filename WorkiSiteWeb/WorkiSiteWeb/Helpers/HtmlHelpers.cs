@@ -19,28 +19,54 @@ namespace Worki.Web.Helpers
     {
 		static string PageLink(int pageIndex, int currentPage, Func<int, string> pageUrl, string a_class)
 		{
-			TagBuilder tag = new TagBuilder("a");
+            TagBuilder li = new TagBuilder("li");
+
+            if (pageIndex == currentPage)
+                li.AddCssClass("active");
+
+			TagBuilder a = new TagBuilder("a");
 			var link = "javascript:void();";
 			if (pageUrl != null)
 				link = pageUrl(pageIndex);
-			tag.MergeAttribute("href", link);
+			a.MergeAttribute("href", link);
 			if (!string.IsNullOrEmpty(a_class))
-				tag.AddCssClass(a_class);
-			tag.InnerHtml = pageIndex.ToString();
+				a.AddCssClass(a_class);
+			a.InnerHtml = pageIndex.ToString();
 			if (pageIndex == currentPage)
-				tag.AddCssClass("selected");
-			return tag.ToString();
+                a.AddCssClass("active");
+
+            li.InnerHtml = a.ToString();
+
+            return li.ToString();
 		}
+
+        static string EmptyLink()
+        {
+            TagBuilder li = new TagBuilder("li");
+            li.AddCssClass("disabled");
+
+            TagBuilder a = new TagBuilder("a");
+            var link = "javascript:void();";
+            a.MergeAttribute("href", link);
+            a.InnerHtml = "...";
+
+            li.InnerHtml = a.ToString();
+            return li.ToString();
+        }
 
 		static string NextLink(int pageIndex, bool next, Func<int, string> pageUrl, string a_class)
 		{
-			TagBuilder tag = new TagBuilder("a");
+            TagBuilder li = new TagBuilder("li");
+
+			TagBuilder a = new TagBuilder("a");
 			var link = "javascript:void();";
 			if (pageUrl != null)
 				link = pageUrl(pageIndex);
-			tag.MergeAttribute("href", link);
-			tag.InnerHtml = next ? ">" : "<";
-			return tag.ToString();
+			a.MergeAttribute("href", link);
+			a.InnerHtml = next ? ">" : "<";
+
+            li.InnerHtml = a.ToString();
+            return li.ToString();
 		}
 
 		public static MvcHtmlString PageLinks(this HtmlHelper html, PagingInfo pagingInfo, Func<int, string> pageUrl, string a_class = null)
@@ -63,7 +89,7 @@ namespace Worki.Web.Helpers
 			//far from first
 			if (current > 2)
 			{
-				result.AppendLine("...");
+                result.AppendLine(EmptyLink());
 				if (current == total && total > 3)
 					result.AppendLine(PageLink(current - 2, current, pageUrl, a_class));
 				result.AppendLine(PageLink(current - first, current, pageUrl, a_class));
@@ -79,7 +105,7 @@ namespace Worki.Web.Helpers
 				result.AppendLine(PageLink(current + 1, current, pageUrl, a_class));
 				if (current == first && total > 3)
 					result.AppendLine(PageLink(current + 2, current, pageUrl, a_class));
-				result.AppendLine("...");
+                result.AppendLine(EmptyLink());
 			}
 
 			//last
@@ -89,7 +115,11 @@ namespace Worki.Web.Helpers
 			if (current < total && string.IsNullOrEmpty(a_class))
 				result.AppendLine(NextLink(current + 1, true, pageUrl, a_class));
 
-			return MvcHtmlString.Create(result.ToString());
+            //embed in ul
+            TagBuilder ul = new TagBuilder("ul");
+            ul.InnerHtml = result.ToString();
+
+            return MvcHtmlString.Create(ul.ToString());
 		}
 
 		static string MonthYearPageLink(MonthYear pageIndex, MonthYear currentPage, Func<string, string> pageUrl)
@@ -101,7 +131,7 @@ namespace Worki.Web.Helpers
 			tag.MergeAttribute("href", link);
 			tag.InnerHtml = pageIndex.ToString();
 			if (pageIndex == currentPage)
-				tag.AddCssClass("selected");
+                tag.AddCssClass("active");
 			return tag.ToString();
 		}
 

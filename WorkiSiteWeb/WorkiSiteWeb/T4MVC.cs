@@ -5042,8 +5042,13 @@ namespace Worki.Web.Areas.Widget.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult AjaxSearch() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearch);
+        public System.Web.Mvc.ActionResult Search() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Search);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SearchResult() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SearchResult);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -5059,7 +5064,8 @@ namespace Worki.Web.Areas.Widget.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
-            public readonly string AjaxSearch = "AjaxSearch";
+            public readonly string Search = "Search";
+            public readonly string SearchResult = "SearchResult";
         }
 
 
@@ -5068,8 +5074,8 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string _Results = "~/Areas/Widget/Views/Search/_Results.cshtml";
             public readonly string Index = "~/Areas/Widget/Views/Search/Index.cshtml";
+            public readonly string SearchResult = "~/Areas/Widget/Views/Search/SearchResult.cshtml";
         }
     }
 
@@ -5082,9 +5088,15 @@ namespace Worki.Web.Areas.Widget.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult AjaxSearch(Worki.Data.Models.SearchCriteria criteria) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearch);
+        public override System.Web.Mvc.ActionResult Search(Worki.Data.Models.SearchCriteria criteria) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
             callInfo.RouteValueDictionary.Add("criteria", criteria);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SearchResult(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SearchResult);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
@@ -5099,6 +5111,7 @@ namespace T4MVC.Widget {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string @__Layout = "~/Areas/Widget/Views/Shared/__Layout.cshtml";
         }
     }
 

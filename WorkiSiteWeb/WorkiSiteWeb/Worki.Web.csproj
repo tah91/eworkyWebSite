@@ -838,7 +838,8 @@
     <Content Include="Areas\Widget\Views\Web.config" />
     <Content Include="Areas\Widget\Views\Search\Index.cshtml" />
     <Content Include="Areas\Widget\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Widget\Views\Search\_Results.cshtml" />
+    <Content Include="Areas\Widget\Views\Shared\__Layout.cshtml" />
+    <Content Include="Areas\Widget\Views\Search\SearchResult.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
     <None Include="Content\scss\responsive.scss" />
     <None Include="Content\scss\_accordion.scss" />
@@ -1091,7 +1092,6 @@
     <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Widget\Models\" />
-    <Folder Include="Areas\Widget\Views\Shared\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

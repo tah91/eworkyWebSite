@@ -708,7 +708,7 @@ div.pager A:hover
 	background-color: Silver; 
 }
 
-div.pager A.selected 
+div.pager A.active 
 { 
 	background-color: #353535; 
 	color: White;

@@ -1,50 +1,41 @@
 ﻿@model SearchCriteriaFormViewModel
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>search a place</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+@section HeadContent
+{
+    <title>search a place</title>
+}
 
-        <!-- Le styles -->
-        <link href="@Links.Content.scss.bootstrap_css" type="text/css" rel="stylesheet">
-        <link href="@Links.Content.scss.responsive_css " type="text/css" rel="stylesheet">
+<div class="row-fluid">
+    <div class="span12">
+        @using (Html.BeginForm(MVC.Widget.Search.ActionNames.Search, MVC.Widget.Search.Name, FormMethod.Post, new { @class = "well", id = "searchForm" }))
+        {
+            @Html.AntiForgeryToken()
+		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+		    @Html.HiddenFor(m => m.Criteria.SearchType)
+		    @Html.HiddenFor(m => m.Criteria.OrderBy)
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-    </head>
-
-    <body>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span12">
-                    @using(Html.BeginForm(MVC.Widget.Search.ActionNames.AjaxSearch, MVC.Widget.Name, FormMethod.Post, new { @class = "well" }))
-                    {
-                        @Html.AntiForgeryToken()
-		                @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
-		                @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
-		                @Html.HiddenFor(m => m.Criteria.SearchType)
-		                @Html.HiddenFor(m => m.Criteria.OrderBy)
-
-                        @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place")
-					    @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span12" })
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place")
+			@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span12" })
 		 
-                        @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
-					    @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "span12" })
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
+			@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "span12" })
 
-                        <a class="btn btn-info" href="">
-                            <i class="icon-search icon-white"></i>
-                            Rechercher
-                        </a>
-                    }
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+            <a class="btn btn-info" href="" id="submitSearch">
+                <i class="icon-search icon-white"></i>
+                Rechercher
+            </a>
+        }
+    </div>
+
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        $('#submitSearch').click(function () {
+            $('#searchForm').submit();
+            return false;
+        });
+    </script>
+}

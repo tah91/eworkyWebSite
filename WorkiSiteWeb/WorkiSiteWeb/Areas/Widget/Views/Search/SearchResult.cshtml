@@ -1,0 +1,131 @@
+﻿@model SearchCriteriaFormViewModel
+
+@section HeadContent
+{
+    <title>search a place</title>
+}
+
+@{
+    var dict = Model.Criteria.GetDictionnary();
+    var listRvd = new RouteValueDictionary(dict);
+    var mapRvd = new RouteValueDictionary(dict);
+    listRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.List;
+    mapRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.Map;
+    var rvd = new RouteValueDictionary(dict);
+}
+
+<div class="row-fluid">
+    <div class="span12">
+        @using (Html.BeginForm(MVC.Widget.Search.ActionNames.Search, MVC.Widget.Search.Name, FormMethod.Post, new { @class = "well", id = "searchForm" }))
+        {
+            @Html.AntiForgeryToken()
+		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+		    @Html.HiddenFor(m => m.Criteria.SearchType)
+		    @Html.HiddenFor(m => m.Criteria.OrderBy)
+
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place")
+			@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span12" })
+		 
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
+			@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "span12" })
+
+            <a class="btn btn-info" href="" id="submitSearch">
+                <i class="icon-search icon-white"></i>
+                Rechercher
+            </a>
+        }
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class=@(Model.Criteria.ResultView == eResultView.List ? "active" : "")><a href="@Url.Action(MVC.Widget.Search.ActionNames.SearchResult, listRvd)">Liste</a></li>
+        <li class=@(Model.Criteria.ResultView == eResultView.Map ? "active" : "")><a href="@Url.Action(MVC.Widget.Search.ActionNames.SearchResult, mapRvd)">Carte</a></li>
+    </ul>
+
+    @if (Model.Criteria.ResultView == eResultView.List)
+    {
+        for (int i = 0; i < Model.PageResults.Count; ++i)
+		{ 
+			var index = Model.PagingInfo.GlobalIndex(i);
+            var item = Model.GetSingleResult(index);
+            <div>
+                @item.Localisation.Name
+            </div>
+		}
+        <div class="pagination">
+		    @Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Widget.Search.ActionNames.SearchResult, rvd); })
+	    </div>
+    }
+    else if (Model.Criteria.ResultView == eResultView.Map)
+    {
+    <div>
+        <div id="mobileMap" style="height:300px">
+		</div>
+    </div>  
+    }
+
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        //submit link action
+        $('#submitSearch').click(function () {
+            $('#searchForm').submit();
+            return false;
+        });
+
+        //map
+        require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize"], function () {
+
+        });
+
+		var resultsMap = null;
+		var where = "@Model.Criteria.Place";
+		var bounds = null;
+        function initialize() {
+            require(["@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+                resultsMap = new WorkiMap('mobileMap');
+                resultsMap.LoadSearchMap(where, true);
+                bounds = new google.maps.LatLngBounds();
+				var extendCount = 0;
+				var extendMax = 7;
+				var addedCount = 0;
+				var addedMax = 50;
+				function addMarker(latitude, longitude, name, localisationId)
+				{
+					if(addedCount++>addedMax){
+						return;
+					}
+					var handler = function () {
+						$.ajax({
+							url: "@Url.Action(MVC.Mobile.Localisation.ActionNames.LocalisationDescription, MVC.Mobile.Localisation.Name)",
+							data: { "id": localisationId },
+							success: function (data) {
+								$("#currentLoc").html(data);
+                                $('div.rateit').rateit();
+							}
+						});
+					}
+                    var LL = new google.maps.LatLng(latitude,longitude);
+                    resultsMap.LoadPin(LL, name, localisationId, null, null, handler);
+					extendCount++;
+					if(extendCount < extendMax){
+						bounds.extend(LL);
+					}
+				}
+
+                @foreach (var localisation in Model.List)
+                {
+					@:addMarker(@localisation.Latitude, @localisation.Longitude, "@Html.Raw(localisation.Name)", @localisation.ID);
+                }
+                @if (Model.List.Count >= 2)
+                {
+                    <text>
+                    resultsMap.FitBoundsSearchResults(bounds);
+                    </text>
+                }
+            });   
+        }
+    </script>
+}
