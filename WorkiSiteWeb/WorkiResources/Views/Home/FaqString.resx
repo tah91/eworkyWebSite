@@ -222,7 +222,7 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
         partie « Services et équipements de la salle de réunion ».</value>
   </data>
   <data name="OnEWPrivatePlace" xml:space="preserve">
-    <value>Sur eWorky, un lieu privé est une propriété ou un bien privé proposé à la location pour des durées variables.</value>
+    <value>Sur eWorky, un espace évènementiel est une propriété ou un bien privé proposé à la location pour des durées variables.</value>
   </data>
   <data name="OnEWTelecenter" xml:space="preserve">
     <value>Sur eWorky, un télécentre est un espace de travail destiné aux télétravailleurs, proposant des bureaux ainsi que
@@ -312,7 +312,7 @@ selon votre profil (étudiant, nomade, télétravailleur, etc.).</value>
     <value>Que sont des bureaux ?</value>
   </data>
   <data name="WhatIsPrivatePlace" xml:space="preserve">
-    <value>Qu’est-ce qu’un lieu privé ?</value>
+    <value>Qu’est-ce qu’un espace évènementiel ?</value>
   </data>
   <data name="WhatIsTelecenter" xml:space="preserve">
     <value>Qu’est-ce qu’un télécentre ?</value>
