@@ -5060,6 +5060,11 @@ namespace Worki.Web.Areas.Widget.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.PartialViewResult MapItemSummary() {
+            return new T4MVC_PartialViewResult(Area, Name, ActionNames.MapItemSummary);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult SearchResult() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.SearchResult);
         }
@@ -5080,6 +5085,7 @@ namespace Worki.Web.Areas.Widget.Controllers {
             public readonly string Search = "Search";
             public readonly string AjaxSearch = "AjaxSearch";
             public readonly string AjaxSearchResult = "AjaxSearchResult";
+            public readonly string MapItemSummary = "MapItemSummary";
             public readonly string SearchResult = "SearchResult";
         }
 
@@ -5119,6 +5125,12 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public override System.Web.Mvc.ActionResult AjaxSearchResult(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearchResult);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult MapItemSummary(int id) {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.MapItemSummary);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

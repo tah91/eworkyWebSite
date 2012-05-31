@@ -32,7 +32,7 @@
 
     //load results via link
     $(".pager a, .pagination a, #orderByDistance, #orderByRating").live('click', function () {
-        mapSearch.ApplyResults();
+        mapSearch.ApplyResults(this);
         return false;
     });
 

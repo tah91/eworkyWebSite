@@ -8,6 +8,7 @@ using Worki.Infrastructure;
 using Worki.Service;
 using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
+using Worki.Infrastructure.Repository;
 
 namespace Worki.Web.Areas.Widget.Controllers
 {
@@ -81,21 +82,19 @@ namespace Worki.Web.Areas.Widget.Controllers
 
         JsonResult GetSearchResult(SearchCriteriaFormViewModel criteriaViewModel)
         {
-            var orderResult = this.RenderRazorViewToString(MVC.Localisation.Views._SearchOrderSelector, criteriaViewModel);
-            var titleResult = string.Format(Worki.Resources.Views.Search.SearchString.YourSearchResult, criteriaViewModel.List.Count);
             switch (criteriaViewModel.Criteria.ResultView)
             {
                 case eResultView.Map:
                     {
                         var locList = (from item in criteriaViewModel.Criteria.Projection select item.GetJson());
-                        return Json(new { order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                        return Json(new { localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
                     }
                 case eResultView.List:
                 default:
                     {
                         var listResult = this.RenderRazorViewToString(MVC.Widget.Search.Views._Results, criteriaViewModel);
                         var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
-                        return Json(new { list = listResult, order = orderResult, title = titleResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                        return Json(new { list = listResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
                     }
             }
 
@@ -143,6 +142,23 @@ namespace Worki.Web.Areas.Widget.Controllers
 
             criteriaViewModel.FillPageInfo(pageValue);
             return GetSearchResult(criteriaViewModel);
+        }
+
+        /// <summary>
+        /// Action to get localisation description
+        /// </summary>
+        /// <param name="id">Id of the localisation</param>
+        /// <returns>Redirect to returnUrl</returns>
+        public virtual PartialViewResult MapItemSummary(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+
+            var localisation = lRepo.Get(id);
+            if (localisation == null)
+                return null;
+
+            return PartialView(MVC.Localisation.Views._MapItemSummary, localisation);
         }
 
         /// <summary>

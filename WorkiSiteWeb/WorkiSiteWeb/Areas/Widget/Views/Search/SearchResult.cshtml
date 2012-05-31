@@ -76,17 +76,19 @@
             require(["@Url.VersionedContent(Links.Scripts.WorkiSearchMap_js)"], function () {
                 refreshResults = function (data) {
                     $("#searchResults").replaceWith(data.list);
-                    //mapSearch.PushResults(data.place, data.localisations);
+                    if(mapSearch.NeedMap) {
+                        mapSearch.PushResults(data.place, data.localisations);
+                    }
                     $('.loaderBlock').addClass("visuallyhidden");
                 };
 
-                mapSearch = new WorkiMapSearch('@Url.Action(MVC.Localisation.ActionNames.MapItemSummary, MVC.Localisation.Name)', 
+                mapSearch = new WorkiMapSearch('@Url.Action(MVC.Widget.Search.ActionNames.MapItemSummary, MVC.Widget.Search.Name)', 
                 '@Url.Action(MVC.Localisation.ActionNames.MapItemLink, MVC.Localisation.Name)',
                 '@Url.Action(MVC.Widget.Search.AjaxSearch(null))', 
                 @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"),
                 refreshResults,
                 false,
-                false);
+                @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"));
 
                 //map initialization
                 require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {

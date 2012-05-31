@@ -10,7 +10,6 @@
     var _resultsMap = null;
     var _workiGeoCoder = null;
     var _infowindow = null;
-    var _workiGeoCoder = null;
     var _newResultsPushed = false;
 
     _bounds_changed = function () {
@@ -38,15 +37,15 @@
             url: _markerPopupUrl,
             data: { "id": this.get("id") },
             success: function (data) {
-                if (infowindow) {
-                    infowindow.close();
+                if (_infowindow) {
+                    _infowindow.close();
                 }
 
-                infowindow = new google.maps.InfoWindow({
+                _infowindow = new google.maps.InfoWindow({
                     content: data
                 });
 
-                infowindow.open(map, marker);
+                _infowindow.open(map, marker);
                 $('div.rateit').rateit();
             }
         });
@@ -96,10 +95,10 @@
         _newResultsPushed = true;
     }
 
-    _applyResults = function () {
+    _applyResults = function (link) {
         _goToTop.apply();
         $.ajax({
-            url: this.href,
+            url: link.href,
             success: _refreshResults
         });
     }

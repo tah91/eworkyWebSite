@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Widget
 {
@@ -14,7 +15,7 @@ namespace Worki.Web.Areas.Widget
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
+            context.CultureMapRoute(
                 "Widget_default",
                 "Widget/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
