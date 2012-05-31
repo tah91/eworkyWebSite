@@ -9,8 +9,10 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <link href="@Links.Content.scss.bootstrap_css" type="text/css" rel="stylesheet">
-        <link href="@Links.Content.scss.responsive_css " type="text/css" rel="stylesheet">
+        <link href="@Url.VersionedContent(Links.Content.boilerplate_min_css)" rel="stylesheet" type="text/css"/>
+        <link href="@Url.VersionedContent(Links.Content.scss.bootstrap_css)" type="text/css" rel="stylesheet">
+        <link href="@Url.VersionedContent(Links.Content.scss.responsive_css)" type="text/css" rel="stylesheet">
+        <link href="@Url.VersionedContent(Links.Content.Widget_min_css)" rel="stylesheet" type="text/css"/>
 
         <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
         @RenderSection("HeadContent", true)

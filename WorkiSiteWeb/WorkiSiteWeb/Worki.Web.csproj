@@ -331,6 +331,7 @@
     <Content Include="Content\colorbox.min.css">
       <DependentUpon>colorbox.css</DependentUpon>
     </Content>
+    <Content Include="Content\Widget.css" />
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\Dashboard.min.css">
       <DependentUpon>Dashboard.css</DependentUpon>
@@ -469,6 +470,9 @@
     <Content Include="Content\skin.min.css">
       <DependentUpon>skin.css</DependentUpon>
     </Content>
+    <Content Include="Content\Widget.min.css">
+      <DependentUpon>Widget.css</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap-alert.js" />
     <Content Include="Scripts\bootstrap-alert.min.js">
       <DependentUpon>bootstrap-alert.js</DependentUpon>
@@ -517,10 +521,7 @@
     <Content Include="Scripts\bootstrap-typeahead.min.js">
       <DependentUpon>bootstrap-typeahead.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\map.infobox.js" />
-    <Content Include="Scripts\map.infobox.min.js">
-      <DependentUpon>map.infobox.js</DependentUpon>
-    </Content>
+    <Content Include="Scripts\WorkiSearchMap.js" />
     <Content Include="Scripts\map.markerclusterer.js" />
     <Content Include="Scripts\map.markerclusterer.min.js">
       <DependentUpon>map.markerclusterer.js</DependentUpon>
@@ -817,6 +818,9 @@
     <Content Include="Areas\Backoffice\Views\Schedule\_CreateBooking.cshtml" />
     <Content Include="Areas\Backoffice\Views\Schedule\_BookingSummary.cshtml" />
     <Content Include="Areas\Backoffice\Views\Client\Add.cshtml" />
+    <Content Include="Scripts\WorkiSearchMap.min.js">
+      <DependentUpon>WorkiSearchMap.js</DependentUpon>
+    </Content>
     <Content Include="Views\Offer\_OfferPrice.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\SharedOffice.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_AlertSummary.cshtml" />
@@ -840,6 +844,7 @@
     <Content Include="Areas\Widget\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Widget\Views\Shared\__Layout.cshtml" />
     <Content Include="Areas\Widget\Views\Search\SearchResult.cshtml" />
+    <Content Include="Areas\Widget\Views\Search\_Results.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
     <None Include="Content\scss\responsive.scss" />
     <None Include="Content\scss\_accordion.scss" />
@@ -1041,6 +1046,7 @@
     <Content Include="Views\Shared\_LoaderBlock.cshtml" />
     <Content Include="Views\Localisation\_MapItemSummary.cshtml" />
     <Content Include="Views\Quotation\Edit.cshtml" />
+    <Content Include="Views\Localisation\_MapScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

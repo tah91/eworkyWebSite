@@ -714,6 +714,11 @@ div.pager A.active
 	color: White;
 }
 
+div.pager li
+{
+    display: inline;
+}
+
 div.pagerTop
 { 
 	padding: 0;

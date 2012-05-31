@@ -492,9 +492,6 @@ namespace Links {
         public static readonly string main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/main.min.js") ? Url("main.min.js") : Url("main.js");
                       
         public static readonly string main_min_js = Url("main.min.js");
-        public static readonly string map_infobox_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/map.infobox.min.js") ? Url("map.infobox.min.js") : Url("map.infobox.js");
-                      
-        public static readonly string map_infobox_min_js = Url("map.infobox.min.js");
         public static readonly string map_markerclusterer_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/map.markerclusterer.min.js") ? Url("map.markerclusterer.min.js") : Url("map.markerclusterer.js");
                       
         public static readonly string map_markerclusterer_min_js = Url("map.markerclusterer.min.js");
@@ -534,6 +531,9 @@ namespace Links {
         public static readonly string WorkiMap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiMap.min.js") ? Url("WorkiMap.min.js") : Url("WorkiMap.js");
                       
         public static readonly string WorkiMap_min_js = Url("WorkiMap.min.js");
+        public static readonly string WorkiSearchMap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiSearchMap.min.js") ? Url("WorkiSearchMap.min.js") : Url("WorkiSearchMap.js");
+                      
+        public static readonly string WorkiSearchMap_min_js = Url("WorkiSearchMap.min.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -793,6 +793,8 @@ namespace Links {
     
         public static readonly string Visitor_css = Url("Visitor.css");
         public static readonly string Visitor_min_css = Url("Visitor.min.css");
+        public static readonly string Widget_css = Url("Widget.css");
+        public static readonly string Widget_min_css = Url("Widget.min.css");
     }
 
 }
@@ -1506,6 +1508,7 @@ namespace Worki.Web.Controllers {
             public readonly string _LocalisationFormScript = "~/Views/Localisation/_LocalisationFormScript.cshtml";
             public readonly string _LocalisationInfos = "~/Views/Localisation/_LocalisationInfos.cshtml";
             public readonly string _MapItemSummary = "~/Views/Localisation/_MapItemSummary.cshtml";
+            public readonly string _MapScript = "~/Views/Localisation/_MapScript.cshtml";
             public readonly string _SearchForm = "~/Views/Localisation/_SearchForm.cshtml";
             public readonly string _SearchMap = "~/Views/Localisation/_SearchMap.cshtml";
             public readonly string _SearchOrderSelector = "~/Views/Localisation/_SearchOrderSelector.cshtml";
@@ -5047,6 +5050,16 @@ namespace Worki.Web.Areas.Widget.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AjaxSearch() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearch);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult AjaxSearchResult() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearchResult);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult SearchResult() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.SearchResult);
         }
@@ -5065,6 +5078,8 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string Search = "Search";
+            public readonly string AjaxSearch = "AjaxSearch";
+            public readonly string AjaxSearchResult = "AjaxSearchResult";
             public readonly string SearchResult = "SearchResult";
         }
 
@@ -5074,6 +5089,7 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _Results = "~/Areas/Widget/Views/Search/_Results.cshtml";
             public readonly string Index = "~/Areas/Widget/Views/Search/Index.cshtml";
             public readonly string SearchResult = "~/Areas/Widget/Views/Search/SearchResult.cshtml";
         }
@@ -5091,6 +5107,18 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public override System.Web.Mvc.ActionResult Search(Worki.Data.Models.SearchCriteria criteria) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Search);
             callInfo.RouteValueDictionary.Add("criteria", criteria);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AjaxSearch(Worki.Data.Models.SearchCriteria criteria) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearch);
+            callInfo.RouteValueDictionary.Add("criteria", criteria);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult AjaxSearchResult(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AjaxSearchResult);
+            callInfo.RouteValueDictionary.Add("page", page);
             return callInfo;
         }
 
