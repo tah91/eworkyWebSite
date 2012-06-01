@@ -37,3 +37,8 @@
 	width:32px;
 	height:32px;
 }
+
+#resultsMap img 
+{
+    max-width: none;
+}

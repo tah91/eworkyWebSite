@@ -1,0 +1,12 @@
+﻿@model SearchSingleResultViewModel
+
+@{  
+    var dict = Model.Criteria.GetDictionnary();
+    var rvd = new RouteValueDictionary(dict);
+    rvd["index"] = Model.Index;
+    var link = Url.Action(MVC.Widget.Search.ActionNames.SearchResultDetail, MVC.Widget.Search.Name, rvd);
+}
+
+<div>
+    <a href="@link">@Model.Localisation.Name</a>
+</div>

@@ -10,9 +10,7 @@
     {
         var index = Model.PagingInfo.GlobalIndex(i);
         var item = Model.GetSingleResult(index);
-        <div>
-            @item.Localisation.Name
-        </div>
+        @Html.Partial(MVC.Widget.Search.Views._ResultsItem, item)
     }
     <div class="pagination">
 	    @Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Widget.Search.ActionNames.AjaxSearchResult, rvd); })

@@ -286,7 +286,8 @@ namespace Worki.Data.Models
 				Index = index,
 				TotalItems = PagingInfo.TotalItems,
 				Distance = DistanceFromLocalisation[List[index].ID],
-				FromSearch = true
+				FromSearch = true,
+                Criteria = this.Criteria
 			};
 			return detailModel;
 		}
@@ -314,6 +315,7 @@ namespace Worki.Data.Models
 		public int TotalItems { get; set; }
 		public double Distance { get; set; }
 		public Localisation Localisation { get; set; }
+        public SearchCriteria Criteria { get; set; }
 
         #endregion
 

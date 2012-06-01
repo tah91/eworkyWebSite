@@ -4,3 +4,4 @@
 .loaderBlockBig img{width:64px;height:64px}
 .loaderBlockSmall{top:50px;left:60px;padding:10px;font-size:1.2em}
 .loaderBlockSmall img{width:32px;height:32px}
+#resultsMap img{max-width:none}

@@ -521,6 +521,18 @@
     <Content Include="Scripts\bootstrap-typeahead.min.js">
       <DependentUpon>bootstrap-typeahead.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.cookie.min.js">
+      <DependentUpon>jquery.cookie.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.history.js" />
+    <Content Include="Scripts\jquery.history.min.js">
+      <DependentUpon>jquery.history.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.pjax.js" />
+    <Content Include="Scripts\jquery.pjax.min.js">
+      <DependentUpon>jquery.pjax.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\WorkiSearchMap.js" />
     <Content Include="Scripts\map.markerclusterer.js" />
     <Content Include="Scripts\map.markerclusterer.min.js">
@@ -845,6 +857,10 @@
     <Content Include="Areas\Widget\Views\Shared\__Layout.cshtml" />
     <Content Include="Areas\Widget\Views\Search\SearchResult.cshtml" />
     <Content Include="Areas\Widget\Views\Search\_Results.cshtml" />
+    <Content Include="Areas\Widget\Views\Search\_MapItemSummary.cshtml" />
+    <Content Include="Areas\Widget\Views\Search\_SearchForm.cshtml" />
+    <Content Include="Areas\Widget\Views\Search\_ResultsItem.cshtml" />
+    <Content Include="Areas\Widget\Views\Search\Detail.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
     <None Include="Content\scss\responsive.scss" />
     <None Include="Content\scss\_accordion.scss" />

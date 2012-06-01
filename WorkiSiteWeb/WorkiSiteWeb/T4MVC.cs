@@ -444,12 +444,18 @@ namespace Links {
         public static readonly string jquery_colorbox_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.colorbox.min.js") ? Url("jquery.colorbox.min.js") : Url("jquery.colorbox.js");
                       
         public static readonly string jquery_colorbox_min_js = Url("jquery.colorbox.min.js");
+        public static readonly string jquery_cookie_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.cookie.min.js") ? Url("jquery.cookie.min.js") : Url("jquery.cookie.js");
+                      
+        public static readonly string jquery_cookie_min_js = Url("jquery.cookie.min.js");
         public static readonly string jquery_fileupload_ui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.fileupload-ui.min.js") ? Url("jquery.fileupload-ui.min.js") : Url("jquery.fileupload-ui.js");
                       
         public static readonly string jquery_fileupload_ui_min_js = Url("jquery.fileupload-ui.min.js");
         public static readonly string jquery_fileupload_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.fileupload.min.js") ? Url("jquery.fileupload.min.js") : Url("jquery.fileupload.js");
                       
         public static readonly string jquery_fileupload_min_js = Url("jquery.fileupload.min.js");
+        public static readonly string jquery_history_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.history.min.js") ? Url("jquery.history.min.js") : Url("jquery.history.js");
+                      
+        public static readonly string jquery_history_min_js = Url("jquery.history.min.js");
         public static readonly string jquery_iframe_transport_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.iframe-transport.min.js") ? Url("jquery.iframe-transport.min.js") : Url("jquery.iframe-transport.js");
                       
         public static readonly string jquery_iframe_transport_min_js = Url("jquery.iframe-transport.min.js");
@@ -459,6 +465,9 @@ namespace Links {
         public static readonly string jquery_localdate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.localdate.min.js") ? Url("jquery.localdate.min.js") : Url("jquery.localdate.js");
                       
         public static readonly string jquery_localdate_min_js = Url("jquery.localdate.min.js");
+        public static readonly string jquery_pjax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.pjax.min.js") ? Url("jquery.pjax.min.js") : Url("jquery.pjax.js");
+                      
+        public static readonly string jquery_pjax_min_js = Url("jquery.pjax.min.js");
         public static readonly string jquery_placeholder_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.placeholder.min.js") ? Url("jquery.placeholder.min.js") : Url("jquery.placeholder.js");
                       
         public static readonly string jquery_placeholder_min_js = Url("jquery.placeholder.min.js");
@@ -5068,6 +5077,11 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public System.Web.Mvc.ActionResult SearchResult() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.SearchResult);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult SearchResultDetail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.SearchResultDetail);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SearchController Actions { get { return MVC.Widget.Search; } }
@@ -5087,6 +5101,7 @@ namespace Worki.Web.Areas.Widget.Controllers {
             public readonly string AjaxSearchResult = "AjaxSearchResult";
             public readonly string MapItemSummary = "MapItemSummary";
             public readonly string SearchResult = "SearchResult";
+            public readonly string SearchResultDetail = "SearchResultDetail";
         }
 
 
@@ -5095,7 +5110,11 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _MapItemSummary = "~/Areas/Widget/Views/Search/_MapItemSummary.cshtml";
             public readonly string _Results = "~/Areas/Widget/Views/Search/_Results.cshtml";
+            public readonly string _ResultsItem = "~/Areas/Widget/Views/Search/_ResultsItem.cshtml";
+            public readonly string _SearchForm = "~/Areas/Widget/Views/Search/_SearchForm.cshtml";
+            public readonly string Detail = "~/Areas/Widget/Views/Search/Detail.cshtml";
             public readonly string Index = "~/Areas/Widget/Views/Search/Index.cshtml";
             public readonly string SearchResult = "~/Areas/Widget/Views/Search/SearchResult.cshtml";
         }
@@ -5137,6 +5156,12 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public override System.Web.Mvc.ActionResult SearchResult(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SearchResult);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult SearchResultDetail(int? index) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SearchResultDetail);
+            callInfo.RouteValueDictionary.Add("index", index);
             return callInfo;
         }
 

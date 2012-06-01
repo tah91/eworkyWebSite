@@ -9,6 +9,7 @@ using Worki.Service;
 using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Repository;
+using System.Web.Routing;
 
 namespace Worki.Web.Areas.Widget.Controllers
 {
@@ -94,7 +95,10 @@ namespace Worki.Web.Areas.Widget.Controllers
                     {
                         var listResult = this.RenderRazorViewToString(MVC.Widget.Search.Views._Results, criteriaViewModel);
                         var locList = (from item in criteriaViewModel.PageResults select item.GetJson());
-                        return Json(new { list = listResult, localisations = locList, place = criteriaViewModel.Criteria.Place }, JsonRequestBehavior.AllowGet);
+                        var dict = criteriaViewModel.Criteria.GetDictionnary();
+                        var rvd = new RouteValueDictionary(dict);
+                        var link = Url.Action(MVC.Widget.Search.ActionNames.SearchResult, MVC.Widget.Search.Name, rvd);
+                        return Json(new { list = listResult, localisations = locList, place = criteriaViewModel.Criteria.Place, link = link }, JsonRequestBehavior.AllowGet);
                     }
             }
 
@@ -158,7 +162,7 @@ namespace Worki.Web.Areas.Widget.Controllers
             if (localisation == null)
                 return null;
 
-            return PartialView(MVC.Localisation.Views._MapItemSummary, localisation);
+            return PartialView(MVC.Widget.Search.Views._MapItemSummary, localisation);
         }
 
         /// <summary>
@@ -175,6 +179,22 @@ namespace Worki.Web.Areas.Widget.Controllers
 
             criteriaViewModel.FillPageInfo(pageValue);
             return View(criteriaViewModel);
+        }
+
+        /// <summary>
+        /// GET Action result to show detailed localisation from search results
+        /// </summary>
+        /// <param name="index">the index of th localisation in the list of results</param>
+        /// <returns>a view of the details of the selected localisation</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult SearchResultDetail(int? index)
+        {
+            var itemIndex = index ?? 0;
+            var detailModel = _SearchService.GetSingleResult(Request, itemIndex);
+
+            if (detailModel == null)
+                return View(MVC.Shared.Views.Error);
+            return View(MVC.Widget.Search.Views.Detail, detailModel);
         }
 
     }

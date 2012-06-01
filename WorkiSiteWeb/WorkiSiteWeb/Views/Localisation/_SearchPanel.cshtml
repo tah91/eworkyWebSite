@@ -125,7 +125,7 @@
     });
 
     var mapSearch = null;
-    require(["@Url.VersionedContent(Links.Scripts.Utils_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+    require(["@Url.VersionedContent(Links.Scripts.Utils_js)","@Url.VersionedContent(Links.Scripts.jquery_rateit_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
         require(["@Url.VersionedContent(Links.Scripts.WorkiSearchMap_js)"], function () {
             refreshResults = function (data) {
                 $("#searchResults").replaceWith(data.list);
