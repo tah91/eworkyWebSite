@@ -22,16 +22,16 @@
                     mapSearch.Map.AddHandler('dragend', mapSearch.AskForResults);
                     mapSearch.Map.AddHandler('zoom_changed', mapSearch.AskForResults);
                 }
-            }
 
-            //relaod it first time
-            $("#searchFormReset form").submit();
+                //relaod it first time
+                $("#searchFormReset form").submit();
+            }
         });
     }
 
 
     //load results via link
-    $(".pager a, .pagination a, #orderByDistance, #orderByRating").live('click', function () {
+    $(".pager a, #orderByDistance, #orderByRating").live('click', function () {
         mapSearch.ApplyResults(this);
         return false;
     });
