@@ -126,12 +126,6 @@ namespace Worki.Web
 					LoggerId = ownerId
 				});
 
-				//send mail to owner 
-				//useless
-
-				//send mail to client 
-				//useless
-
                 context.Commit();
 				completed = true;
 

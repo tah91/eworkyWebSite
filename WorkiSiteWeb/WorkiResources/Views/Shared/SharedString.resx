@@ -226,13 +226,13 @@
     <value>Affiner</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Enregistrer</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Rechercher</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Envoyer</value>
+    <value>Poster</value>
   </data>
   <data name="Subscribe" xml:space="preserve">
     <value>S'inscrire</value>
@@ -305,5 +305,8 @@
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Chargement...</value>
+  </data>
+  <data name="ContactMail" xml:space="preserve">
+    <value>contact@eworky.com</value>
   </data>
 </root>

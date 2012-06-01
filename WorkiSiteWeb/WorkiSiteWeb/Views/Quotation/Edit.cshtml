@@ -1,0 +1,111 @@
+﻿@model Worki.Data.Models.MemberQuotation
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Views.Booking.BookingString.BookingDetails) </title>
+}
+
+@RazorHelpers.TitleDiv(Worki.Resources.Views.Booking.BookingString.BookingDetails, "Blue")   
+
+<div class="detailContent">
+        <div class="blockContainer">
+            <div class="contentBlock">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+            <table>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+							@Html.LabelFor(model => model.Member.MemberMainData.FirstName)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.MemberMainData.FirstName)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Member.MemberMainData.LastName)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.MemberMainData.LastName)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Member.Email)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.Email)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Member.MemberMainData.PhoneNumber)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Member.MemberMainData.PhoneNumber)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Offer.Name)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Offer.Name)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Surface)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Surface)
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Message)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            &nbsp;&nbsp;&nbsp;@Html.TextAreaFor(model => model.Message)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+                
+            <div class="float-right">
+                <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Save"/>
+            </div>
+                
+            <div class="clear"></div>
+            }
+        </div>
+    </div>   
+</div>

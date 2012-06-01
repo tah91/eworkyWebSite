@@ -128,7 +128,6 @@
   </data>
   <data name="Hourly" xml:space="preserve">
     <value>Horarios</value>
-    
   </data>
   <data name="KnowHouly" xml:space="preserve">
     <value>Si conoces los horarios de apertura de este espacio, los puedes introducir gracias al formulario de edición o contactándonos :</value>
@@ -306,5 +305,8 @@
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Cargando...</value>
+  </data>
+  <data name="ContactMail" xml:space="preserve">
+    <value>contacto@eworky.es</value>
   </data>
 </root>

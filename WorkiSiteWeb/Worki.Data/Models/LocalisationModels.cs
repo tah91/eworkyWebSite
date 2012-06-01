@@ -850,7 +850,7 @@ namespace Worki.Data.Models
 		/// <returns></returns>
         public bool AcceptBooking()
 		{
-            return Offers.Count(o => o.IsReallyBookable()) != 0;
+            return Offers.Count(o => o.IsReallyBookable()) != 0 && HasOwner();
 		}
 
 		/// <summary>
@@ -859,7 +859,7 @@ namespace Worki.Data.Models
 		/// <returns></returns>
         public bool AcceptQuotation()
 		{
-            return Offers.Count(o => o.AcceptQuotation()) != 0;
+            return Offers.Count(o => o.AcceptQuotation()) != 0 && HasOwner();
 		}
 
         public bool AcceptProduct()
@@ -921,23 +921,61 @@ namespace Worki.Data.Models
             return toRet;
         }
 
-		/// <summary>
-		/// Get the min price of the localisation, empty if no price
-		/// filter by offerType if needed
-		/// </summary>
-		/// <returns>the min price string</returns>
-        public string GetMinPrice(int offerType = -1)
+        /// <summary>
+        /// Get the min price of the localisation, empty if no price
+        /// filter by offerType if needed
+        /// </summary>
+        /// <returns>the min price string</returns>
+        public OfferPrice GetMinPrice(int offerType = -1)
         {
             var offerPrices = GetAllPrices(offerType);
 
             if (offerPrices.Count() == 0)
-                return string.Empty;
+                return null;
 
             var minPrice = offerPrices.Min();
-            if (minPrice == null)
+            return minPrice;
+        }
+
+        /// <summary>
+        /// Get the min price of the localisation, empty if no price
+        /// filter by offerType if needed
+        /// </summary>
+        /// <returns>the min price string</returns>
+        public string GetMinPriceString(int offerType = -1)
+        {
+            var price = GetMinPrice(offerType);
+            if (price == null)
                 return string.Empty;
 
-            return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minPrice.GetPriceDisplay());
+            return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, price.GetPriceDisplay());
+        }
+
+        static IEnumerable<LocalisationOffer> _OfferTypes = new List<LocalisationOffer> 
+        {
+            LocalisationOffer.BuisnessLounge,
+		    LocalisationOffer.Workstation,
+		    LocalisationOffer.Desktop,
+		    LocalisationOffer.MeetingRoom,
+		    LocalisationOffer.SeminarRoom,
+		    LocalisationOffer.VisioRoom
+        };
+
+        /// <summary>
+        /// Get the min price list, for each type of offer
+        /// </summary>
+        /// <returns>the min price list</returns>
+        public IEnumerable<OfferPrice> GetMinPrices()
+        {
+            var toRet = new List<OfferPrice> ();
+            foreach (var item in _OfferTypes)
+            {
+                var price = GetMinPrice((int)item);
+                if (price != null)
+                    toRet.Add(price);
+            }
+
+            return toRet;
         }
 
 		/// <summary>
@@ -1019,7 +1057,9 @@ namespace Worki.Data.Models
             (int)eCompanyType.BigCompany,
             (int)eCompanyType.Independent,
 			(int)eCompanyType.Association,
-			(int)eCompanyType.SmallBusiness
+			(int)eCompanyType.SmallBusiness,
+            (int)eCompanyType.Attorney,
+            (int)eCompanyType.Medical
         };
 
 		public static string GetCompanyType(int type)
@@ -1041,6 +1081,10 @@ namespace Worki.Data.Models
 					return Worki.Resources.Models.Localisation.Localisation.Association;
 				case eCompanyType.SmallBusiness:
 					return Worki.Resources.Models.Localisation.Localisation.SmallBusiness;
+                case eCompanyType.Attorney:
+                    return Worki.Resources.Models.Localisation.Localisation.Attorney;
+                case eCompanyType.Medical:
+                    return Worki.Resources.Models.Localisation.Localisation.Medical;
 				default:
 					return string.Empty;
 			}
@@ -1064,6 +1108,10 @@ namespace Worki.Data.Models
 					return Worki.Resources.Models.Localisation.Localisation.InAssociation;
 				case eCompanyType.SmallBusiness:
 					return Worki.Resources.Models.Localisation.Localisation.InSmallBusiness;
+                case eCompanyType.Attorney:
+                    return Worki.Resources.Models.Localisation.Localisation.InAttorney;
+                case eCompanyType.Medical:
+                    return Worki.Resources.Models.Localisation.Localisation.InMedical;
 				default:
 					return string.Empty;
 			}
@@ -1117,7 +1165,7 @@ namespace Worki.Data.Models
 
         public static Dictionary<string, string> GetCountries()
         {
-            return MiscHelpers.GetEnumDisplayName(typeof(CountryId), typeof(Worki.Resources.Models.Localisation.LocalisationCountry), Worki.Resources.Models.Localisation.LocalisationCountry.PickOne);
+            return MiscHelpers.GetEnumDisplayName(typeof(CountryId), typeof(Worki.Resources.Models.Localisation.LocalisationCountry), Worki.Resources.Models.Localisation.LocalisationCountry.PickOne).OrderBy(kp => kp.Key == "" ? "" : kp.Value).ToDictionary(kp => kp.Key, kp => kp.Value);
         }
 
         #endregion
@@ -1271,6 +1319,9 @@ namespace Worki.Data.Models
 		public SelectList Offers { get; set; }
 		public bool IsSharedOffice { get; set; }
 
+        [Display(Name = "SendMailToOwner", ResourceType = typeof(Worki.Resources.Models.Localisation.Localisation))]
+        public bool SendMailToOwner { get; set; }
+
 		#endregion
 
 		#region Ctor
@@ -1299,12 +1350,13 @@ namespace Worki.Data.Models
 
 		void Init(bool isFree = true, bool isShared = false)
 		{
+            SendMailToOwner = true;
 			IsFreeLocalisation = isFree;
 			IsSharedOffice = isShared;
+            IsOwner = true;
 			if (isShared)
 			{
 				Localisation.TypeValue = (int)LocalisationType.SharedOffice;
-				IsOwner = true;
 			}
 
 			var dict = isFree ? Localisation.GetFreeLocalisationTypes() : Localisation.GetNotFreeLocalisationTypes(isShared);
@@ -1423,17 +1475,17 @@ namespace Worki.Data.Models
 	/// </summary>
 	public enum LocalisationType
 	{
-		SpotWifi,
+		SpotWifi,           //0
 		CoffeeResto,
 		Biblio,
 		PublicSpace,
 		TravelerSpace,
-		Hotel,
+		Hotel,              //5
 		Telecentre,
 		BuisnessCenter,
 		CoworkingSpace,
 		WorkingHotel,
-		PrivateArea,
+		PrivateArea,        //10
 		SharedOffice
 	}
 
@@ -1448,7 +1500,9 @@ namespace Worki.Data.Models
 		BigCompany,
 		Independent,
 		Association,
-		SmallBusiness
+		SmallBusiness,
+        Attorney,
+        Medical
 	}
 
 	/// <summary>
@@ -1554,6 +1608,25 @@ namespace Worki.Data.Models
 		Kitchen,
 		SharedMeetingRoom,
 		Lift,
+        Heater,
+        Architects,
+        Associative,
+        Artists,
+        Lawyers,
+        BusinessDevelopers,
+        Commercial,
+        CommunicationMedia,
+        Accountants,
+        Consultants,
+        Designers,
+        Developers,
+        Writers,
+        Contractors,
+        Independent,
+        Investors,
+        Journalists,
+        Photographers,
+        Nomads,
 
 		//string features start from 1000, put bool features before this
 		Sector = 1000,

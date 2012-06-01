@@ -41,7 +41,6 @@
     @Html.HiddenFor(model => model.Localisation.Longitude)
     @Html.HiddenFor(model => model.IsFreeLocalisation)
 	@Html.HiddenFor(model => model.IsSharedOffice)
-	@Html.HiddenFor(model => model.Localisation.MainLocalisation.IsOffline)
         
 	if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 	{
@@ -94,7 +93,7 @@
                 <h3 class="blue inline">@Worki.Resources.Views.Localisation.LocalisationFormString.GlobalInformations</h3>
                 <span>&nbsp;&nbsp;(<span class="blue">*</span>@Worki.Resources.Views.Localisation.LocalisationFormString.MandatoryFields)</span>
                 <table class="generalInfosTable editionTable">
-                    @if (Model.Localisation.ID == 0 && !Model.IsSharedOffice)
+                    @if (Model.Localisation.ID == 0)
 					{ 
                     <tr>
                         <td>
@@ -125,10 +124,7 @@
 	                else
 	                {
 						@Html.HiddenFor(m => m.Localisation.TypeValue)
-						@Html.HiddenFor(m => m.IsOwner)
 	                }
-					@if (!Model.IsSharedOffice)
-	                {
                     <tr>
                         <td>
                             <div class="editor-label">
@@ -151,11 +147,8 @@
                             </div>
                         </td>
                     </tr>
-	                }
-	                else
+	                @if (Model.IsSharedOffice)
 	                {
-		                Model.Localisation.Name = Localisation.DefaultSharedOfficeName;
-						@Html.HiddenFor(model => model.Localisation.Name)
 					<tr>
                         <td>
                             <div class="editor-label">
@@ -277,6 +270,16 @@
                             </div>
                         </td>
                     </tr>
+                    @if (Model.Localisation.ID == 0)
+                    { 
+                    <tr>
+                        <td colspan=2>
+                            <div class="editor-label margint5 marginb5">
+                                @Html.CheckBoxFor(model => model.SendMailToOwner) @Html.LabelFor(model => model.SendMailToOwner)
+                            </div>
+                        </td>
+                    </tr>
+                    }
                     <tr>
                         <td>
                             <div class="editor-label">
@@ -331,9 +334,77 @@
                         </td>
                     </tr>
                 </table>
+
+                <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Sectors</h3>
+                <div class="serviceContainer">
+                    <div class="subserviceContainer float-left">
+                        <ul>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Architects, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Associative, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Artists, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Lawyers, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.BusinessDevelopers, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Commercial, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.CommunicationMedia, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Accountants, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Consultants, Model.Localisation)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="subserviceContainer float-left">
+                        <ul>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Designers, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Developers, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Writers, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Contractors, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Independent, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Investors, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Journalists, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Photographers, Model.Localisation)
+                            </li>
+                            <li>
+                                @Html.FeatureChecboxLabel(Feature.Nomads, Model.Localisation)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
             </div>
 			@if (!Url.IsInArea("Backoffice"))
-	        {
+   {
 			<div class="editPlace float-right borderRadius">
 				<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.GoogleMapsLocalisation</h3>
 				<span class="block">@Worki.Resources.Views.Localisation.LocalisationFormString.RefineLocation</span>
@@ -341,7 +412,7 @@
 				</div>
 				<button class="buttonStd buttonBlue" type="button" id="resetPos">@Worki.Resources.Views.Localisation.LocalisationFormString.ResetPosition</button>
 			</div>
-	        }	
+   }	
             <div class="clear">
             </div>
             <div id="@PictureData.GetFileUploaderId(ProviderType.Localisation)" class="fileupload borderRadius">
@@ -455,6 +526,9 @@
                         @Html.FeatureChecboxLabel(Feature.Restauration, Model.Localisation)
                     </li>
                     }
+                    <li>
+                        @Html.FeatureChecboxLabel(Feature.Heater, Model.Localisation)
+                    </li>
                 </ul>
             </div>
             <div class="clear">

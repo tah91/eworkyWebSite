@@ -43,13 +43,10 @@ namespace Worki.Web.Controllers
 		/// </summary>
 		/// <param name="id">id of localisation to book</param>
 		/// <returns>View containing Quotation form</returns>
-		//[AcceptVerbs(HttpVerbs.Get), Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
 		public virtual ActionResult Create(int id)
         {
 			var memberId = WebHelper.GetIdentityId(User.Identity);
-            //if (memberId == 0)
-            //    return View(MVC.Shared.Views.Error);
             var context = ModelFactory.GetUnitOfWork();
             var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 			var oRepo = ModelFactory.GetRepository<IOfferRepository>(context);
@@ -91,6 +88,7 @@ namespace Worki.Web.Controllers
 					member = mRepo.Get(memberId);
 
 					var locName = offer.Localisation.Name;
+                    var locUrl = offer.Localisation.GetDetailFullUrl(Url);
 					try
 					{
 						formData.MemberQuotation.MemberId = memberId;
@@ -152,7 +150,8 @@ namespace Worki.Web.Controllers
 														 locName,
 														 Localisation.GetOfferType(offer.Type),
 														 formData.MemberQuotation.Surface,
-														 formData.MemberQuotation.Message);
+														 formData.MemberQuotation.Message,
+                                                         locUrl);
 
 						//send mail to quoation client
                         dynamic clientMail = new Email(MVC.Emails.Views.Email);
@@ -209,23 +208,103 @@ namespace Worki.Web.Controllers
 			return View(quotation);
 		}
 
-        [AcceptVerbs(HttpVerbs.Get)]
+        /// <summary>
+        /// GET Action result to edit Quotation data
+        /// </summary>
+        /// <param name="id">id of Quotation</param>
+        /// <returns>View containing Quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Get), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+        public virtual ActionResult Edit(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            var quotation = qRepo.Get(id);
+            return View(quotation);
+        }
+
+        /// <summary>
+        /// POST Action result to edit Quotation data
+        /// </summary>
+        /// <param name="id">id of Quotation</param>
+        /// <returns>View containing Quotation data</returns>
+        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = MiscHelpers.AdminConstants.AdminRole)]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult Edit(int id, MemberQuotation formModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+                try
+                {
+                    var quotation = qRepo.Get(id);
+                    UpdateModel(quotation);
+
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    context.Complete();
+                    ModelState.AddModelError("", ex.Message);
+                }
+
+                TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Admin.AdminString.QuotationEdited;
+
+                return RedirectToAction(MVC.Quotation.Details(id));
+            }
+            return View(formModel);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get), Authorize]
         [ActionName("paywithpaypal")]
         public virtual ActionResult PayWithPayPal(int id)
         {
+            var memberId = WebHelper.GetIdentityId(User.Identity);
 			var context = ModelFactory.GetUnitOfWork();
 			var qRepo = ModelFactory.GetRepository<IQuotationRepository>(context);
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
 
-			var quotation = qRepo.Get(id);
+            var member = mRepo.Get(memberId);
+            var quotation = qRepo.Get(id);
+
+            //case of first quotation, give it for free, or if it is shared office
+            var first = qRepo.GetOwnerProducts(memberId).OrderBy(q => q.CreationDate).FirstOrDefault();
+            if ((first != null && first.Id == id) || quotation.Offer.Localisation.IsSharedOffice())
+            {
+                try
+                {
+                    quotation.StatusId = (int)MemberQuotation.Status.Paid;
+
+                    quotation.MemberQuotationLogs.Add(new MemberQuotationLog
+                    {
+                        CreatedDate = DateTime.UtcNow,
+                        Event = "Payment completed",
+                        EventType = (int)MemberQuotationLog.QuotationEvent.Payment,
+                        LoggerId = memberId
+                    });
+
+                    context.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("PayWithPayPal", ex);
+                    context.Complete();
+
+                    TempData[MiscHelpers.TempDataConstants.Info] = Worki.Resources.Views.Booking.BookingString.PaymentError;
+                }
+
+                return RedirectToAction(MVC.Backoffice.Localisation.QuotationDetail(id));
+            }
+			
 			var localisation = quotation.Offer.Localisation;
 
-            string returnUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationAccepted(id));
+            string returnUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(id, true));
 			string cancelUrl = Url.ActionAbsolute(MVC.Backoffice.Localisation.QuotationCancelled(id));
             string ipnUrl = Url.ActionAbsolute(MVC.Payment.PayPalInstantNotification());
 
             var paymentHandler = PaymentHandlerFactory.GetHandler(PaymentHandlerFactory.HandlerType.Quotation) as MemberQuotationPaymentHandler;
 
-			decimal eworkyAmount = localisation.GetQuotationPrice();
+            decimal eworkyAmount = localisation.GetQuotationPrice() == 0 ? 5 : localisation.GetQuotationPrice();
             var payments = new List<PaymentItem>
             {
                 new PaymentItem{  Index = 0, Amount = eworkyAmount, Email = PaymentConfiguration.Instance.PaypalMail},

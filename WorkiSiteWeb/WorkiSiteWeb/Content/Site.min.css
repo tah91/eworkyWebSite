@@ -112,7 +112,8 @@ html,body{margin:0;padding:0;height:100%}
 div.pager{text-align:right;border-top:2px solid #CCC;padding:.5em 0 0 0;margin:1em 0 0 0}
 div.pager A{font-size:1.1em;color:#666;text-decoration:none;padding:0 .4em 0 .4em;font-style:normal}
 div.pager A:hover{background-color:Silver}
-div.pager A.selected{background-color:#353535;color:White}
+div.pager A.active{background-color:#353535;color:White}
+div.pager li{display:inline}
 div.pagerTop{padding:0;margin:0 0 1em 0;border-top:0}
 .informationContainer{text-align:center;background:#FFF4C7;border:1px solid #f88f1e;padding:10px;margin:5px 0 15px 0;color:#f88f1e}
 .borderRadius{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}

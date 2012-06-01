@@ -408,7 +408,7 @@
     <value>Acceso reservado a clientes</value>
   </data>
   <data name="Sector" xml:space="preserve">
-    <value>Sector</value>
+    <value>Sector de actividad</value>
     <comment>?</comment>
   </data>
   <data name="Kitchen" xml:space="preserve">
@@ -428,5 +428,62 @@
   </data>
   <data name="Lift" xml:space="preserve">
     <value>Ascensor</value>
+  </data>
+  <data name="Accountants" xml:space="preserve">
+    <value>Péritos contables</value>
+  </data>
+  <data name="Architects" xml:space="preserve">
+    <value>Arquitectos</value>
+  </data>
+  <data name="Artists" xml:space="preserve">
+    <value>Artistas</value>
+  </data>
+  <data name="Associative" xml:space="preserve">
+    <value>Organizaciones no lucrativas</value>
+  </data>
+  <data name="BusinessDevelopers" xml:space="preserve">
+    <value>Desarrolladores de negocios</value>
+  </data>
+  <data name="Commercial" xml:space="preserve">
+    <value>Comerciales</value>
+  </data>
+  <data name="CommunicationMedia" xml:space="preserve">
+    <value>Comunicación / medias</value>
+  </data>
+  <data name="Consultants" xml:space="preserve">
+    <value>Consultores</value>
+  </data>
+  <data name="Contractors" xml:space="preserve">
+    <value>Emprendedores</value>
+  </data>
+  <data name="Designers" xml:space="preserve">
+    <value>Diseñadores</value>
+  </data>
+  <data name="Developers" xml:space="preserve">
+    <value>Desarrolladores (TI)</value>
+  </data>
+  <data name="Heater" xml:space="preserve">
+    <value>Calefacción</value>
+  </data>
+  <data name="Independent" xml:space="preserve">
+    <value>Autónomos</value>
+  </data>
+  <data name="Investors" xml:space="preserve">
+    <value>Inversores</value>
+  </data>
+  <data name="Journalists" xml:space="preserve">
+    <value>Periodistas</value>
+  </data>
+  <data name="Lawyers" xml:space="preserve">
+    <value>Abogados</value>
+  </data>
+  <data name="Nomads" xml:space="preserve">
+    <value>Asalariados nómadas</value>
+  </data>
+  <data name="Photographers" xml:space="preserve">
+    <value>Fotógrafos</value>
+  </data>
+  <data name="Writers" xml:space="preserve">
+    <value>Escritores</value>
   </data>
 </root>

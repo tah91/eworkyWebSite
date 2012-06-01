@@ -1,0 +1,102 @@
+﻿@model SearchCriteriaFormViewModel
+
+@section HeadContent
+{
+    <title>search a place</title>
+}
+
+@{
+    var dict = Model.Criteria.GetDictionnary();
+    var listRvd = new RouteValueDictionary(dict);
+    var mapRvd = new RouteValueDictionary(dict);
+    listRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.List;
+    mapRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.Map;
+}
+
+<div class="row-fluid">
+    <div class="span12" id="searchFormReset">
+        @using (Html.BeginForm(MVC.Widget.Search.ActionNames.Search, MVC.Widget.Search.Name, FormMethod.Post, new { @class = "well", id = "searchForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Criteria.NorthEastLat)
+            @Html.HiddenFor(model => model.Criteria.NorthEastLng)
+            @Html.HiddenFor(model => model.Criteria.SouthWestLat)
+            @Html.HiddenFor(model => model.Criteria.SouthWestLng)
+            @Html.HiddenFor(model => model.Criteria.SearchType)
+            @Html.HiddenFor(model => model.Criteria.ResultView)
+		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
+		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place")
+			@Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span12" })
+		 
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
+			@Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "span12" })
+
+            <a class="btn btn-info" href="" id="submitSearch">
+                <i class="icon-search icon-white"></i>
+                Rechercher
+            </a>
+        }
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class=@(Model.Criteria.ResultView == eResultView.List ? "active" : "")><a href="@Url.Action(MVC.Widget.Search.ActionNames.SearchResult, listRvd)">Liste</a></li>
+        <li class=@(Model.Criteria.ResultView == eResultView.Map ? "active" : "")><a href="@Url.Action(MVC.Widget.Search.ActionNames.SearchResult, mapRvd)">Carte</a></li>
+    </ul>
+
+    <div>
+        @if (Model.Criteria.ResultView == eResultView.List)
+        {
+            @Html.Partial(MVC.Widget.Search.Views._Results)
+        }
+        else if (Model.Criteria.ResultView == eResultView.Map)
+        {
+        <div>
+            <div id="resultsMap" style="height:300px">
+		    </div>
+        </div>  
+        }
+        @Html.Partial(MVC.Shared.Views._LoaderBlock, "small")
+    </div>
+
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        //submit link action
+        $('#submitSearch').click(function () {
+            $('#searchForm').submit();
+            return false;
+        });
+
+        var mapSearch = null;
+        require(["@Url.VersionedContent(Links.Scripts.Utils_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+            require(["@Url.VersionedContent(Links.Scripts.WorkiSearchMap_js)"], function () {
+                refreshResults = function (data) {
+                    $("#searchResults").replaceWith(data.list);
+                    if(mapSearch.NeedMap) {
+                        mapSearch.PushResults(data.place, data.localisations);
+                    }
+                    $('.loaderBlock').addClass("visuallyhidden");
+                };
+
+                mapSearch = new WorkiMapSearch('@Url.Action(MVC.Widget.Search.ActionNames.MapItemSummary, MVC.Widget.Search.Name)', 
+                '@Url.Action(MVC.Localisation.ActionNames.MapItemLink, MVC.Localisation.Name)',
+                '@Url.Action(MVC.Widget.Search.AjaxSearch(null))', 
+                @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"),
+                refreshResults,
+                false,
+                @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"));
+
+                //map initialization
+                require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {
+
+                });
+            });
+        });
+    </script>
+
+    @Html.Partial(MVC.Localisation.Views._MapScript)
+}

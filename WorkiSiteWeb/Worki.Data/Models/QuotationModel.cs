@@ -148,7 +148,7 @@ namespace Worki.Data.Models
         /// </summary>
         public bool Paid
         {
-			get { return StatusId == (int)Status.Paid || (Offer != null && Offer.Localisation != null && !Offer.Localisation.ShouldPayQuotation()); }
+			get { return StatusId == (int)Status.Paid /*|| (Offer != null && Offer.Localisation != null && !Offer.Localisation.ShouldPayQuotation())*/; }
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Worki.Data.Models
         /// </summary>
         public bool OwnerCanPay
         {
-			get { return Unknown && (Offer != null && Offer.Localisation != null && Offer.Localisation.ShouldPayQuotation()); }
+			get { return Unknown /*&& (Offer != null && Offer.Localisation != null && Offer.Localisation.ShouldPayQuotation())*/; }
         }
 
         /// <summary>

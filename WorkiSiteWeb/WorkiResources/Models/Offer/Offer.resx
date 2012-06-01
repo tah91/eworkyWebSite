@@ -133,7 +133,7 @@
     <value>Disponible le {0} pour {1} {2}</value>
   </data>
   <data name="AvailableFor" xml:space="preserve">
-    <value>Disponible pour {1} {2}</value>
+    <value>Disponible pour {0} {1}</value>
   </data>
   <data name="AvailableFrom" xml:space="preserve">
     <value>Disponible à partir du {0}</value>
@@ -208,7 +208,7 @@
     <value>an(s)</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+    <value>Prix TTC</value>
   </data>
   <data name="PriceFrom" xml:space="preserve">
     <value>A partir de {0}</value>

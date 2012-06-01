@@ -1,32 +1,70 @@
 ﻿@model Worki.Data.Models.Localisation
 
-@if (!Model.IsSharedOffice())
+@{
+    var minPrices = Model.GetMinPrices();
+    var hasPrices = minPrices.Count() > 0;
+}
+
+@if (!Model.IsFreeLocalisation())
 {
-	<div class="bookingCallAction">
-		@if (Model.AcceptBooking())
-		{
-		<div class="bigButtonStd buttonStd buttonBlue linkImg">
-            <a href="#offers" id="bookItNow">@Model.NeedTheLocalisation()</a>
-        </div>
-		}
-		else
-		{
-		<div class="bigButtonStd buttonStd buttonBlue linkImg">
-            @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.ContactThisSpaceAction, MVC.Localisation.AskBooking(Model.ID), new { id = "askBooking" })
-        </div>
+    <div class="@(hasPrices ? "contentBlock" : "")">
+        @if (hasPrices)
+        { 
+        <h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationFormString.Tariffs</h3>
+        <ul class="marginb10">
+            @foreach (var item in minPrices)
+            { 
+            <li>
+                <div class="float-left">
+                    @item.Offer.Name
+                </div>
+                <div class="float-right bold orange">
+                    @item.GetPriceDisplay()
+                </div>
+                <div class="clear">
+                </div>
+            </li>
+            }
+        </ul>
+        }
+	    <div class="bookingCallAction">
+		    @if (Model.AcceptProduct())
+		    {
+		    <div class="bigButtonStd buttonStd buttonBlue linkImg">
+                <a href="#offers" id="bookItNow">@Model.NeedTheLocalisation()</a>
+            </div>
+		    }
+		    else
+		    {
+		    <div class="bigButtonStd buttonStd buttonBlue linkImg">
+                @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.ContactThisSpaceAction, MVC.Localisation.AskBooking(Model.ID), new { id = "askBooking" })
+            </div>
+            }
+	    </div>
+        @if (Request.IsAuthenticated)
+        { 
         <script type="text/javascript">
             require(["@Url.VersionedContent(Links.Scripts.jquery_colorbox_js)"], function () {
                 $("#askBooking").colorbox({ width: "700px" });
             });
         </script>
         }
-	</div> 
+        else
+        { 
+        <script type="text/javascript">
+            $("#askBooking").click(function () {
+                window.location.href = '@Url.Action(MVC.Account.LogOn(null, Request.RawUrl))';
+                return false;
+            });
+        </script> 
+        }
+    </div>
 }
 
-@if (Model.IsSharedOffice() && !Request.IsAuthenticated)
+@*@if (Model.IsSharedOffice() && !Request.IsAuthenticated)
 {
 	<div class="bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.NeedContactOfPlaceAction, MVC.Account.LogOn(null, Request.RawUrl))</div>
-}
+}*@
 
 <div class="localisationMiscRatings contentBlock">
 	<h3 class="blue">@Worki.Resources.Views.Localisation.LocalisationString.EworkersOpinion</h3>
@@ -88,8 +126,6 @@
 	}
 </div>
 
-@if (!Model.IsSharedOffice() || Request.IsAuthenticated)
-{ 
 <div class="contentBlock">
 	<h3 class="blue">Contact</h3>
     @if (Model.HasOwner())
@@ -137,10 +173,17 @@
 			    });
 		    </script>
 	    </div>
+        if (!Model.HasOwner())
+	    {
+            <div class="bookingCallAction margint10">
+                <div class="bigButtonStd buttonStd buttonBlue linkImg">
+                    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID))
+                </div>
+            </div>
+        }
     }
 
 </div>
-}
 
 @if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
 {

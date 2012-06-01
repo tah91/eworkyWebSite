@@ -58,18 +58,21 @@
 				    </div> 
 				    <div class="clear"></div>
 				</div>
-				@if (offer.AcceptQuotation())
-				{
-					<div class="buttonStd buttonBlue linkImg float-right">
-						@Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
-					</div>
-				}
-                else if (offer.AcceptBooking() && offer.IsReallyBookable())
-				{
-					<div class="buttonStd buttonBlue linkImg float-right">
-						@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
-					</div>
-				}
+                @if (offer.Localisation.HasOwner())
+                {
+                    if (offer.AcceptQuotation())
+				    {
+					    <div class="buttonStd buttonBlue linkImg float-right">
+						    @Html.ActionLink(Worki.Resources.Views.Booking.BookingString.AskQuotation, MVC.Quotation.Create(offer.Id))
+					    </div>
+				    }
+                    else if (offer.AcceptBooking() && offer.IsReallyBookable())
+				    {
+					    <div class="buttonStd buttonBlue linkImg float-right">
+						    @Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.BookIt, MVC.Booking.Create(offer.Id))
+					    </div>
+				    }
+                }
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
@@ -81,6 +84,16 @@
 	var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
 	var fullName = Model.GetFullName();
     var link = Model.GetDetailFullUrl(Url);
+    var canEdit = false;
+    if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
+    {
+        canEdit = true;
+    }
+    else if (Request.IsAuthenticated)
+    {
+        var memberId = WebHelper.GetIdentityId(User.Identity);
+        canEdit = Model.IsOwner(memberId);
+    }
 }
 
 <div itemscope itemtype="http://schema.org/LocalBusiness">
@@ -163,6 +176,7 @@
 						    @{
 							    var generalFeatures = Model.GetFeaturesWithin(FeatureHelper.Characteristics);
 							    var workingPlaceFeatures = Model.GetFeaturesWithin(FeatureHelper.Services);
+                                var sectorsFeatures = Model.GetFeaturesWithin(FeatureHelper.Sectors);
 						    }
 						    <div class="localisationDescription margint10">
                                 @if (!string.IsNullOrEmpty(Model.GetDescription()))
@@ -172,6 +186,20 @@
 								        @Html.Nl2Br(Model.GetDescription())
 							        </div> 
                                 }
+                                @if (sectorsFeatures.Count > 0)
+							    {
+								    <h4 class="blue servicesBlock margint10">@Worki.Resources.Views.Localisation.LocalisationFormString.Sectors</h4>
+								    <div class="featureTag">
+									    <ul>
+									    @foreach (var item in sectorsFeatures)
+									    {
+										    <li>@FeatureHelper.Display(item)</li>
+									    }       
+									    </ul>
+								    </div>
+								    <div class="clear">
+								    </div>
+							    }
 							    @if (generalFeatures.Count > 0)
 							    {
 								    <h4 class="blue servicesBlock margint10">@Worki.Resources.Views.Localisation.LocalisationString.Equipments</h4>
@@ -254,6 +282,7 @@
 						    <div class="offerTabs innerDetailTabs">
 							    <div class="detailMenu">
 								    <ul class="offerTab innerDetailTab float-left">
+                                        <li class="detailMenuEmpty"></li>
                                         @if (Model.HasOffer(LocalisationOffer.Workstation))
                                         {
                                             <li><a href="#workstation">@Worki.Resources.Models.Localisation.LocalisationFeatures.Workstation</a></li>
@@ -331,11 +360,13 @@
                             <div class="communityTabs innerDetailTabs">
 							    <div class="detailMenu">
 								    <ul class="communityTab innerDetailTab float-left">
+                                        <li class="detailMenuEmpty"></li>
 									    <li><a href="#comments">@Worki.Resources.Models.Localisation.Localisation.GiveYourAdvice</a></li>
 									    <li class="detailMenuEmpty"></li>
 									    <li><a href="#eworkers">@Worki.Resources.Views.Localisation.LocalisationString.Eworkers</a></li>
 									    <li class="detailMenuEmpty"></li>
 									    <li><a href="#social">@Worki.Resources.Views.Localisation.LocalisationString.Socials</a></li>
+                                        <li class="detailMenuEmpty"></li>
 								    </ul>
 							    </div>
 							    <div class="tab_container communityTabContainer float-right">
@@ -352,7 +383,9 @@
 						                </div>
 						                @{
                                             ViewData[Comment.DisplayRelatedLocalisation] = false;
+                                            var comments = Model.GetOrderedComments(Url.GetCulture());
 						                }
+                                        <div class="@(comments.Count() > 0 ? "innerContentBlock" : "")">
 						                @foreach (var com in Model.GetOrderedComments(Url.GetCulture()))
                                         {
                                             if (com.Member == null)
@@ -361,6 +394,7 @@
                                             }
 							                @Html.Partial(MVC.Shared.Views._LocalisationSingleComment, com, ViewData)
                                         }
+                                        </div>
 								    </div>
 								    <div id="eworkers" class="communityTab_content">
                                         <ul>
@@ -408,9 +442,12 @@
 </div>
 
 <div class="margint10 float-right">
+	@if (!Model.HasOwner() || canEdit)
+    {
 	<div class="buttonStd buttonBlue linkImg float-left">
 	@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.EditPlace, MVC.Localisation.Edit(Model.ID))
 	</div>
+    }
 	@if (Roles.IsUserInRole(MiscHelpers.AdminConstants.AdminRole))
     {
 	<div class="buttonStd buttonBlue linkImg float-left">
@@ -423,12 +460,11 @@
         	require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
 				$('#addToFavorite').click(function () {
                     _callbackFb = function (content) {
-			            //alert(content);
                         $('#main').prepend(content);
                         $('.informationContainer').delay(8000).slideUp();
 					}
 					_callback = function (content) {
-			            //alert(content);
+
 					}
                     $.post('@Url.Action(MVC.Localisation.AddFavorite())',{ id: @Model.GetId() }, _callback, "json");
 					InitOpenGraph(function (response) {

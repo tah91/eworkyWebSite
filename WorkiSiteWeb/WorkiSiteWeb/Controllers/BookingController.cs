@@ -91,6 +91,7 @@ namespace Worki.Web.Controllers
 					member = mRepo.Get(memberId);
 
 					var locName = offer.Localisation.Name;
+                    var locUrl = offer.Localisation.GetDetailFullUrl(Url);
 					try
 					{
 						formData.MemberBooking.MemberId = memberId;
@@ -167,7 +168,8 @@ namespace Worki.Web.Controllers
 														 Localisation.GetOfferType(offer.Type),
 														 formData.MemberBooking.GetStartDate(),
 														 formData.MemberBooking.GetEndDate(),
-														 formData.MemberBooking.Message);
+														 formData.MemberBooking.Message,
+                                                         locUrl);
 
 						//send mail to booking member
 						dynamic clientMail = new Email(MVC.Emails.Views.Email);

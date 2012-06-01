@@ -67,3 +67,41 @@ function ErrorBuilder(id, errorId) {
     //public methods
     this.ErrorFunc = ErrorFunc;
 }
+
+function InitLoadPending() {
+    //ajax load pending
+    $('.loaderBlock').addClass('visuallyhidden');   // hide it initially
+    jQuery.ajaxSetup({
+        beforeSend: function () {
+            $('.loaderBlock').removeClass('visuallyhidden');
+        },
+        complete: function () {
+            $('.loaderBlock').addClass('visuallyhidden');
+        },
+        success: function () { }
+    });
+}
+
+function InitScroller() {
+    //keep search panel visible 
+    var offset = $('#resultSearchBlock').offset();
+    var width = $('#resultSearchBlock').width();
+
+    $(window).scroll(function () {
+        var searchBlock = $('#resultSearchBlock');
+        var container = $('#globalContainer');
+        var y = $(window).scrollTop();
+        var yo = offset.top;
+        var searchBottom = y + searchBlock.outerHeight();
+        var containerBottom = yo + container.outerHeight();
+        if (y < yo) {
+            searchBlock.removeClass('fixed').removeClass('newbottom');
+        }
+        else if (y > yo && y + searchBlock.outerHeight() < yo + container.outerHeight()) {
+            searchBlock.removeClass('newbottom').addClass('fixed').width(width);
+        }
+        else if (container.outerHeight() - searchBlock.outerHeight() > 30) {
+            searchBlock.removeClass('fixed').addClass('newbottom');
+        }
+    });
+}

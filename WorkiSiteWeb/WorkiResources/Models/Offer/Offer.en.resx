@@ -181,7 +181,7 @@
     <value>Available on {0} for {1} {2}</value>
   </data>
   <data name="AvailableFor" xml:space="preserve">
-    <value>Available for {1} {2}</value>
+    <value>Available for {0} {1}</value>
   </data>
   <data name="AvailableFrom" xml:space="preserve">
     <value>Available from {0}</value>

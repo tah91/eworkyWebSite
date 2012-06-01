@@ -119,237 +119,35 @@
         InitDropdown("#@DropDownModel.OrderByDD");
     });
 
-    //ajax load pending
-    var hiddenClass = "visuallyhidden";
-    $('.loaderBlock').addClass(hiddenClass);   // hide it initially
-    jQuery.ajaxSetup({
-        beforeSend: function () {
-            $('.loaderBlock').removeClass(hiddenClass);
-        },
-        complete: function () {
-            $('.loaderBlock').addClass(hiddenClass);
-        },
-        success: function () { }
+    require(["@Links.Scripts.Utils_js"], function () {
+        InitLoadPending();
+        InitScroller();
     });
 
-    //map initialization
-    require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {
-
-    });
-
-    var bigMap = false;
-    @if (Model.Criteria.ResultView == eResultView.Map)
-    {
-        @:bigMap = true;
-    }
-
-    var resultsMap = null;
-    var workiGeoCoder = null;
-    var newResultsPushed = false;
-    function initialize() {
-        require(["@Links.Scripts.map_infobox_js", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-            resultsMap = new WorkiMap('resultsMap');
-            var where = "@Model.Criteria.Place";
-            resultsMap.LoadSearchMap(where, !bigMap);
-
-            var workiAutocomplete = new WorkiAutoComplete('#Criteria_Place');
-            workiAutocomplete.SetAutocomplete();
-
-            workiGeoCoder = new WorkiGeocoder('#Criteria_LocalisationData_Latitude', '#Criteria_LocalisationData_Longitude', '#Criteria_Place');
-
-            var bounds_changed = function () {
-                if (resultsMap.Map != null) {
-                    var bounds = resultsMap.Map.getBounds();
-                    var nelat = bounds.getNorthEast().lat();
-                    var nelng = bounds.getNorthEast().lng();
-                    var swlat = bounds.getSouthWest().lat();
-                    var swlng = bounds.getSouthWest().lng();
-
-                    $('#Criteria_NorthEastLat').val(nelat);
-                    $('#Criteria_NorthEastLng').val(nelng);
-                    $('#Criteria_SouthWestLat').val(swlat);
-                    $('#Criteria_SouthWestLng').val(swlng);
-
-                    if (!newResultsPushed) {
-                        $("#searchFormReset form").submit();
-                    }
-                }
-            }
-
-            if(bigMap){
-                resultsMap.AddHandler('idle', bounds_changed);
-
-                var askForResults = function () {
-                    newResultsPushed = false;
-                }
-                resultsMap.AddHandler('dragend', askForResults);
-                resultsMap.AddHandler('zoom_changed', askForResults);
-            }
-
-            //relaod it first time
-            $("#searchFormReset form").submit();
-        });
-    }
-
-    var infowindow = null;
-    //fill the map
-    function pushResults(place, results) {
-        resultsMap.ClearMap();
-        var bounds = new google.maps.LatLngBounds();
-
-        if(!bigMap){
-            resultsMap.CenterSearchResults(place);
-        }
-
-        var markerDetailPopUp = function () {
-            var map = this.map;
-            var marker = this;
-            $.ajax({
-                url: '@Url.Action(MVC.Localisation.ActionNames.MapItemSummary, MVC.Localisation.Name)',
-                data: { "id": this.get("id") },
-                success: function (data) {
-                    if (infowindow) {
-                        infowindow.close();
-                    }
-
-                    infowindow = new google.maps.InfoWindow({
-                        content: data
-                    });
-
-                    infowindow.open(map, marker);
-                    $('div.rateit').rateit();
-                }
-            });
-
-        }
-
-        var markerDetailPage = function () {
-            var map = this.map;
-            var marker = this;
-            $.ajax({
-                url: '@Url.Action(MVC.Localisation.ActionNames.MapItemLink, MVC.Localisation.Name)',
-                data: { "id": this.get("id") },
-                success: function (data) {
-                    window.location.href = data;
-                }
-            });
-
-        }
-        for (var loc in results) {
-            var markerHandler = bigMap ? markerDetailPopUp : markerDetailPage;
-            resultsMap.AddMarker(results[loc].latitude, results[loc].longitude, results[loc].name, results[loc].id, bounds, markerHandler);
-        }
-
-        if (results.length >= 2 && !bigMap) {
-            resultsMap.FitBoundsSearchResults(bounds);
-        }
-
-        if(bigMap){
-            resultsMap.SetCluster();
-        }
-        newResultsPushed = true;
-    }
-
-    //fill result after ajax submit
-    var refreshResults = function (data) {
-        $("#searchResults").replaceWith(data.list);
-        pushResults(data.place, data.localisations);
-        $('div.rateit').rateit();
-        $("#searchSelectorContainer").replaceWith(data.order);
-        $(".titleDivContainer h1").html(data.title);
-        $('.loaderBlock').addClass(hiddenClass);
-    };
-
-    var goToTop = function () {
-        $('html, body').animate({ scrollTop: 0 }, 0);
-    }
-
-    //load results via link
-    $(".pager a, #orderByDistance, #orderByRating").live('click', function () {
-        goToTop.apply();
-        $.ajax({
-            url: this.href,
-            success: refreshResults
-        });
-        return false;
-    });
-
-    //ajax reload when action on form
-    $('#searchFormReset input:checkbox, #serviceSelector a').live('click', function () {
-        $("#searchFormReset form").submit();
-    });
-
-    $('#searchFormReset select').live('change', function () {
-        $("#searchFormReset form").submit();
-    });
-
-    var ajaxSubmit = true;
-    //result view changed
-    $('#resultByMap').click(function () {
-        $('#Criteria_ResultView').val('@eResultView.Map');
-        ajaxSubmit = false;
-        $("#searchFormReset form").submit();
-    });
-
-    $('#resultByList').click(function () {
-        $('#Criteria_ResultView').val('@eResultView.List');
-        ajaxSubmit = false;
-        $("#searchFormReset form").submit();
-    });
-
-    //submit handler
+    var mapSearch = null;
     require(["@Url.VersionedContent(Links.Scripts.Utils_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
-        var errorBuilder = new ErrorBuilder('searchFormReset', 'searchFormError');
-        var submitData = function () {
-            AppAjax(
-			    '@Url.Action(MVC.Localisation.AjaxFullSearch(null))',
-			    "POST",
-			    $('#searchFormReset form').serializeArray(),
-                refreshResults,
-                errorBuilder.ErrorFunc
-		    );
-        }
+        require(["@Url.VersionedContent(Links.Scripts.WorkiSearchMap_js)"], function () {
+            refreshResults = function (data) {
+                $("#searchResults").replaceWith(data.list);
+                mapSearch.PushResults(data.place, data.localisations);
+                $('div.rateit').rateit();
+                $("#searchSelectorContainer").replaceWith(data.order);
+                $(".titleDivContainer h1").html(data.title);
+                $('.loaderBlock').addClass("visuallyhidden");
+            };
 
-        $("#searchFormReset form").submit(function (evt) {
-            if(ajaxSubmit){
-                goToTop.apply();
+            mapSearch = new WorkiMapSearch('@Url.Action(MVC.Localisation.ActionNames.MapItemSummary, MVC.Localisation.Name)', 
+            '@Url.Action(MVC.Localisation.ActionNames.MapItemLink, MVC.Localisation.Name)',
+            '@Url.Action(MVC.Localisation.AjaxFullSearch(null))', 
+            @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"),
+            refreshResults);
 
-                submitData();
-                return false;
-            }
-        });
+            //map initialization
+            require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {
 
-        $('#Criteria_Place').blur(function (evt) {
-            workiGeoCoder.SearchHandler(evt, function () {
-                $('#Criteria_NorthEastLat').val(0);
-                $('#Criteria_NorthEastLng').val(0);
-                $('#Criteria_SouthWestLat').val(0);
-                $('#Criteria_SouthWestLng').val(0);
-                submitData();
-                resultsMap.CenterSearchResults($('#Criteria_Place').val());
             });
         });
-    });
-
-    //keep search panel visible 
-    var offset = $('#resultSearchBlock').offset();
-    var width = $('#resultSearchBlock').width();
-
-    $(window).scroll(function () {
-        var searchBlock = $('#resultSearchBlock');
-        var container = $('#globalContainer');
-        var y = $(window).scrollTop();
-        var yo = offset.top;
-        var searchBottom = y + searchBlock.outerHeight();
-        var containerBottom = yo + container.outerHeight();
-        if (y < yo) {
-            searchBlock.removeClass('fixed').removeClass('newbottom');
-        }
-        else if (y > yo && y + searchBlock.outerHeight() < yo + container.outerHeight()) {
-            searchBlock.removeClass('newbottom').addClass('fixed').width(width);
-        }
-        else if (container.outerHeight() - searchBlock.outerHeight() > 30) {
-            searchBlock.removeClass('fixed').addClass('newbottom');
-        }
     });
 </script>
+
+@Html.Partial(MVC.Localisation.Views._MapScript)

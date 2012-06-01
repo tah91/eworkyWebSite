@@ -18,10 +18,6 @@
 	{
 		<a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank" class="orange"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
 	}
-	if (!Model.HasOwner())
-	{
-		@Html.ActionLink(Worki.Resources.Views.Localisation.LocalisationString.AreYouOwner, MVC.Localisation.SetOwnership(Model.ID), new { @class = "orange" })<br />
-	}
     if (!string.IsNullOrEmpty(Model.PhoneNumber) && Model.ShowContactInfo())
 	{
 		<span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>

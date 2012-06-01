@@ -121,20 +121,20 @@
     <value>eWorky | Espacios de coworking, Cafés Wifi, Centros de negocio, alquiler y reservas de salas de reunión /formación</value>
   </data>
   <data name="UsingOfEWorky" xml:space="preserve">
-    <comment>?</comment>
     <value>¿Cómo funciona eWorky?</value>
+    <comment>?</comment>
   </data>
   <data name="RentSpeech" xml:space="preserve">
-    <comment>A compléter</comment>
     <value>    - oficinas profesionales&lt;br /&gt;- local comercial, etc.</value>
+    <comment>A compléter</comment>
   </data>
   <data name="CostSpace" xml:space="preserve">
-    <comment>?</comment>
     <value>Un sitio de pago</value>
+    <comment>?</comment>
   </data>
   <data name="TalkAboutUs" xml:space="preserve">
-    <comment>Jm Modif l.17</comment>
     <value>Visto en </value>
+    <comment>Jm Modif l.17</comment>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contacto</value>
@@ -331,14 +331,8 @@
   <data name="Team_Member_3_Text" xml:space="preserve">
     <value>Tahir es EL especialista del desarrollo, tan especialista que a veces es complicado entender lo que no está contando. Lector de Dostoïevski y de Camus, está tan cómodo programando que engullendo constantemente cafés, pastelitos o chocolatinas de todo tipo. Originario de "Les Ulis" (al igual que Thierry Henry), ya ha hecho capoeira, buceo, y su capacidad de sembrar faltas de ortografía como envoltorios de galletas vaciós a su paso, compensa el celo con el que Olivier las corrige.</value>
   </data>
-  <data name="English" xml:space="preserve">
-    <value>English</value>
-  </data>
   <data name="Français" xml:space="preserve">
     <value>Français</value>
-  </data>
-  <data name="Spanish" xml:space="preserve">
-    <value>Español</value>
   </data>
   <data name="Spanish" xml:space="preserve">
     <value>Español</value>
@@ -393,5 +387,11 @@
   </data>
   <data name="TimeAgo_years" xml:space="preserve">
     <value>&amp;d años</value>
+  </data>
+  <data name="Team_Member_5" xml:space="preserve">
+    <value>Jonathan Bourguignon</value>
+  </data>
+  <data name="Team_Member_5_Text" xml:space="preserve">
+    <value>Jonathan contribuye a que eWorky encuentre su sitio en el escenario tecnológico californiano desde San Francisco, ciudad con la que sueña desde el primer día que oyó la voz de Janis Joplin. Y después de todo, ¿qué mejor sitio para el coworking que esta Bahía en la que convergen todos los talentos y todos los centros de interés y en la que se codean las más grandes multinacionales con los estilos de vida los más alternativos?</value>
   </data>
 </root>

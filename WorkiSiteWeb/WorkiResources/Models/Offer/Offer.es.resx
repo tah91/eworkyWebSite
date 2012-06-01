@@ -133,7 +133,7 @@
     <value>Disponible el {0} para {1} {2}</value>
   </data>
   <data name="AvailableFor" xml:space="preserve">
-    <value>Disponible para {1} {2}</value>
+    <value>Disponible para {0} {1}</value>
   </data>
   <data name="AvailableFrom" xml:space="preserve">
     <value>Disponible a partir del {0}</value>
@@ -245,5 +245,14 @@
   </data>
   <data name="Transfert" xml:space="preserve">
     <value>Transferencia</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Reserva online</value>
+  </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Gestión de solicitudes</value>
+  </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>Solicitud de presupuesto</value>
   </data>
 </root>

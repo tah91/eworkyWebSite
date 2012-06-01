@@ -38,12 +38,12 @@ namespace Worki.Data.Models
 
         public IList<MemberBooking> GetOwnerProducts(int id)
         {
-            return GetMany(q => q.Offer.Localisation.OwnerID == id && q.StatusId != (int)MemberQuotation.Status.Pending);
+            return GetMany(b => b.Offer.Localisation.OwnerID == id);
         }
 
         public IList<MemberBooking> GetLocalisationProducts(int id)
         {
-            return GetMany(q => q.Offer.LocalisationId == id && q.StatusId != (int)MemberQuotation.Status.Pending);
+            return GetMany(b => b.Offer.LocalisationId == id);
         }
     }
 }

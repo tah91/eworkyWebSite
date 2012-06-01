@@ -1,4 +1,6 @@
-﻿@section HeadContent
+﻿@model bool
+
+@section HeadContent
 {
     <link rel="canonical" href="@Url.ActionAbsolute(MVC.Home.OwnerTutorial())"/>
 	<meta name="Description" content="@Worki.Resources.Views.Home.ContactString.Description"/>
@@ -60,6 +62,11 @@
 				<li class="clear">
 				</li> 
 			</ul>
+
+            @if (Model)
+            { 
+            <div class="sharedOfficeAction bigButtonStd buttonStd buttonBlue linkImg">@Html.ActionLink(Worki.Resources.Views.Home.HowItWorksString.DiscoverBO, MVC.Backoffice.Home.Index())</div>
+            }
 		</div>
     </div>
 	<div class="clear">

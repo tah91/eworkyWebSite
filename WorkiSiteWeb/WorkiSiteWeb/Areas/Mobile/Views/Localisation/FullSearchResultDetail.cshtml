@@ -7,9 +7,10 @@
         metaData.Url = Model.Localisation.GetDetailFullUrl(Url);
     }
     @Html.Partial(MVC.Shared.Views._MetaDataHeader, metaData) 
-    <link href="@Url.Content(Links.Content.LocalisationDetail_css) " rel="stylesheet" type="text/css" />
-    <link href="@Url.Content(Links.Content.rateit_css) " rel="stylesheet" type="text/css" />	
-    <link href="@Url.Content(Links.Content.Profil_css) " rel="stylesheet" type="text/css"/>
+    <link href="@Url.VersionedContent(Links.Content.LocalisationDetail_css) " rel="stylesheet" type="text/css" />
+    <link href="@Url.VersionedContent(Links.Content.rateit_css) " rel="stylesheet" type="text/css" />	
+    <link href="@Url.VersionedContent(Links.Content.Profil_css) " rel="stylesheet" type="text/css"/>
+    <link href="@Url.VersionedContent(Links.Content.galleria.galleria_classic_min_css)" rel="stylesheet" type="text/css"/>
 }
 
 @if (Model.FromSearch)
@@ -29,17 +30,14 @@
 @section ScriptContent
 {
     <script type="text/javascript">
-        require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_4_js)"], function () {
-            require.ready(function () {
-                // Load the classic theme
-                Galleria.loadTheme('/Content/Galleria/galleria.classic.js');
-
+        require(["@Url.VersionedContent(Links.Content.galleria.galleria_1_2_7_js)"], function () {
+            require(["@Url.VersionedContent(Links.Content.galleria.galleria_classic_js)"], function () {
                 // Initialize Galleria
                 $('#gallery').galleria({
                     //width: 600,
                     height: 200,
                     showInfo: false
-                });
+                });            
             });
         });
         require(["@Url.VersionedContent(Links.Scripts.jquery_rateit_js)"], function () {

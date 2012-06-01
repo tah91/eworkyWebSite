@@ -17,6 +17,7 @@ using System.Text;
 using System.Net;
 using Worki.Web.Helpers;
 using Postal;
+using System.Web.Security;
 
 namespace Worki.Web.Areas.Admin.Controllers
 {
@@ -177,25 +178,54 @@ namespace Worki.Web.Areas.Admin.Controllers
                 TempData[MiscHelpers.TempDataConstants.Info] = "La demande de devis a bien été transférée";
 
                 //send mail to quotation owner
+
                 var offer = quotation.Offer;
                 var localisation = offer.Localisation;
-
-                var urlHelp = new UrlHelper(ControllerContext.RequestContext);
-                var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Home.Quotation());
-                TagBuilder ownerLink = new TagBuilder("a");
-                ownerLink.MergeAttribute("href", ownerUrl);
-                ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
-
                 dynamic ownerMail = new Email(MVC.Emails.Views.Email);
-                ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
-                ownerMail.To = localisation.Member.Email;
-                ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation.Name);
-                ownerMail.ToName = localisation.Member.MemberMainData.FirstName;
-                ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
-                                                Localisation.GetOfferType(offer.Type),
-                                                localisation.Name,
-                                                localisation.Adress,
-                                                ownerLink);
+
+
+                if (Roles.IsUserInRole(localisation.Member.Email, MiscHelpers.BackOfficeConstants.BackOfficeRole))
+                {
+                    var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+                    var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(quotation.Id));
+                    TagBuilder ownerLink = new TagBuilder("a");
+                    ownerLink.MergeAttribute("href", ownerUrl);
+                    ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
+
+                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    ownerMail.To = localisation.Member.Email;
+                    ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation.Name);
+                    ownerMail.ToName = localisation.Member.MemberMainData.FirstName;
+                    ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwner,
+                                                    Localisation.GetOfferType(offer.Type),
+                                                    localisation.Name,
+                                                    localisation.Adress,
+                                                    ownerLink);
+                }
+                else
+                {
+                    //add backoffice
+                    Roles.AddUserToRole(localisation.Member.Email, MiscHelpers.BackOfficeConstants.BackOfficeRole);
+
+                    //send specific mail
+                    var urlHelp = new UrlHelper(ControllerContext.RequestContext);
+
+                    var ownerUrl = urlHelp.ActionAbsolute(MVC.Backoffice.Localisation.QuotationDetail(quotation.Id));
+                    TagBuilder ownerLink = new TagBuilder("a");
+                    ownerLink.MergeAttribute("href", ownerUrl);
+                    ownerLink.InnerHtml = Worki.Resources.Views.Account.AccountString.OwnerSpace;
+
+                    ownerMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                    ownerMail.To = localisation.Member.Email;
+                    ownerMail.Subject = string.Format(Worki.Resources.Email.BookingString.CreateQuotationOwnerSubject, localisation.Name);
+                    ownerMail.ToName = localisation.Member.MemberMainData.FirstName;
+                    ownerMail.Content = string.Format(Worki.Resources.Email.BookingString.CreateQuotationAndBOOwner,
+                                                    Localisation.GetOfferType(offer.Type),
+                                                    localisation.Name,
+                                                    localisation.Adress,
+                                                    ownerUrl);
+                }
+
 
                 context.Commit();
 

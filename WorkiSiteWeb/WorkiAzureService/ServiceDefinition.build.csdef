@@ -9,7 +9,7 @@
   **********************************************************************************************
 -->
 <ServiceDefinition name="Worki.AzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
-  <WebRole name="Worki.Web">
+  <WebRole name="Worki.Web" vmsize="Medium">
     <!--<Runtime executionContext="elevated"/>-->
     <!--<Startup>
       <Task commandLine="Startup\installmvc.cmd" executionContext="elevated" />

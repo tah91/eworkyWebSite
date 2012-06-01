@@ -430,4 +430,19 @@
   <data name="StartUp" xml:space="preserve">
     <value>Start-up </value>
   </data>
+  <data name="Attorney" xml:space="preserve">
+    <value>Cabinet d'avocat</value>
+  </data>
+  <data name="InAttorney" xml:space="preserve">
+    <value>dans un cabinet d'avocat</value>
+  </data>
+  <data name="InMedical" xml:space="preserve">
+    <value>dans un cabinet médical</value>
+  </data>
+  <data name="Medical" xml:space="preserve">
+    <value>Cabinet médical</value>
+  </data>
+  <data name="SendMailToOwner" xml:space="preserve">
+    <value>Envoyer un message de bienvenue à cette adresse</value>
+  </data>
 </root>

@@ -43,8 +43,6 @@
 				@Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.NeedNewAccount)
 				<table>
-                    @if (Model.NeedNewAccount)
-                    {
                     <tr>
 						<td>
 							<div class="editor-label">
@@ -69,6 +67,8 @@
 							</div>
 						</td>
 					</tr>
+                    @if (Model.NeedNewAccount)
+                    {
                     <tr>
 						<td>
 							<div class="editor-label">
@@ -84,8 +84,6 @@
                     }
                     else
                     {
-                        @Html.HiddenFor(m => m.LastName)
-                        @Html.HiddenFor(m => m.FirstName)  
                         @Html.HiddenFor(m => m.Email)
                     }
 					<tr>

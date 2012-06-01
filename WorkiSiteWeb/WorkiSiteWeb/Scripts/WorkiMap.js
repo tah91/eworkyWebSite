@@ -284,7 +284,7 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
         controlUI.style.cursor = 'pointer';
         controlUI.style.width = '20px';
         controlUI.style.height = '20px';
-        controlUI.title = 'Cliquer pour revenir à la position initial';
+        controlUI.title = 'Cliquer pour revenir à la position initiale';
         controlDiv.appendChild(controlUI);
 
         // Setup the click event listeners: simply set the map to Chicago

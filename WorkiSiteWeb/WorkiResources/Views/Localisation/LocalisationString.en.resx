@@ -227,7 +227,7 @@
     <value>An error occurred.</value>
   </data>
   <data name="AreYouOwner" xml:space="preserve">
-    <value>Are you the manager of this workspace ?</value>
+    <value>I'm the workspace manager</value>
   </data>
   <data name="YouAreOwner" xml:space="preserve">
     <value>You are now the manager of this workspace !</value>

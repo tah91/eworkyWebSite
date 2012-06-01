@@ -9,8 +9,8 @@
 @{
     var statusText = "";
     var color = "";
-	DateTime? statusDate = null;
-	Model.GetStatus(out statusText, out color, out statusDate);
+    DateTime? statusDate = null;
+    Model.GetStatus(out statusText, out color, out statusDate);
 }
 
 @{Html.RenderAction(MVC.Backoffice.Localisation.HorizontalMenu(Model.Offer.LocalisationId, LocalisationMainMenu.Home));}
@@ -36,7 +36,7 @@
                     }
                 };
             }
-            @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent,summaryModel)
+            @Html.Partial(MVC.Dashboard.Shared.Views._SummaryContent, summaryModel)
             <div class="innerContentBlock summaryDetail float-right">
                 @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Demand, string.Format("n° {0}", Model.Id))
                 @RazorHelpers.Description(Worki.Resources.Views.BackOffice.BackOfficeString.Place, Model.Offer.Localisation.Name)
@@ -58,13 +58,20 @@
                     @Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.SeeClientProfile, MVC.Account.Public(Model.MemberId))
                 </div>
             }
+            else if (!Model.Offer.Localisation.IsSharedOffice())
+            { 
+                <div class="clear"></div>
+                <div class="innerContentBlock italic">
+                    @Worki.Resources.Views.BackOffice.BackOfficeString.PayQuotationDesc
+                </div>
+            }
             <div class="clear"></div>
         </div>
 		<div class="float-right">
         @if (Model.OwnerCanPay)
         { 
             <div class="buttonStd buttonBlue linkImg inline-block">
-				@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.Contact, MVC.Quotation.PayWithPayPal(Model.Id))
+				@Html.ActionLink(Worki.Resources.Views.BackOffice.BackOfficeString.PayQuotation, MVC.Quotation.PayWithPayPal(Model.Id))
 			</div>
         }
         @if (Model.OwnerCanRefuse)

@@ -241,7 +241,7 @@
     <value>Choisissez le type d'espace que vous voulez ajouter.</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
-    <value>Un espace partagé</value>
+    <value>Un bureau à partager</value>
   </data>
   <data name="SharedOfficeSpeach" xml:space="preserve">
     <value>Vous avez des postes de travail inutilisés dans votre entreprise ? Partagez-les sur eWorky et profitez de revenus supplémentaires !</value>
@@ -387,5 +387,11 @@
   </data>
   <data name="TimeAgo_suffixFromNow" xml:space="preserve">
     <value> </value>
+  </data>
+  <data name="Team_Member_5" xml:space="preserve">
+    <value>Jonathan Bourguignon</value>
+  </data>
+  <data name="Team_Member_5_Text" xml:space="preserve">
+    <value>Jonathan aide eWorky à trouver sa place sur la scène technologique californienne depuis San Francisco, la ville dont il rêve depuis la première fois qu'il a entendu la voix de Janis Joplin. Et après tout, quel meilleur endroit pour le coworking que cette Baie où convergent tous les talents et tous les centres d'intérêt, où se côtoient les plus grandes multinationales et les modes de vie les plus alternatifs?</value>
   </data>
 </root>

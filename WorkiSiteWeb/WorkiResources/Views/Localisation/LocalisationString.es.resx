@@ -226,7 +226,7 @@
     <value>Un error ha ocurrido.</value>
   </data>
   <data name="AreYouOwner" xml:space="preserve">
-    <value>¿Eres gerente de este espacio?</value>
+    <value>Soy gerente de este espacio</value>
   </data>
   <data name="YouAreOwner" xml:space="preserve">
     <value>¡Ya eres gerente de este espacio!</value>

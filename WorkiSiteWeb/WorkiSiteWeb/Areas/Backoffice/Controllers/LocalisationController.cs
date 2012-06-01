@@ -34,6 +34,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 		/// <returns>View with recent activities</returns>
 		public virtual ActionResult Index(int id)
 		{
+            _Logger.Error("BO LOCALISATION INDEX");
 			var memberId = WebHelper.GetIdentityId(User.Identity);
 
 			var context = ModelFactory.GetUnitOfWork();
@@ -121,7 +122,6 @@ namespace Worki.Web.Areas.Backoffice.Controllers
 				{
 					var loc = lRepo.Get(id);
 					UpdateModel(loc, LocalisationPrefix);
-					loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
 					loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
 					var offerCount = loc.Offers.Count;
 
@@ -517,7 +517,7 @@ namespace Worki.Web.Areas.Backoffice.Controllers
         /// Get action method to show quotation detail
         /// </summary>
         /// <returns>View containing the quotation</returns>
-        public virtual ActionResult QuotationDetail(int id)
+        public virtual ActionResult QuotationDetail(int id, bool paypal = false)
         {
             var memberId = WebHelper.GetIdentityId(User.Identity);
 
@@ -529,6 +529,11 @@ namespace Worki.Web.Areas.Backoffice.Controllers
                 var member = mRepo.Get(memberId);
                 Member.Validate(member);
                 var quotation = qRepo.Get(id);
+
+                if (paypal)
+                {
+                    TempData[MiscHelpers.TempDataConstants.Info] = string.Format(Worki.Resources.Views.Booking.BookingString.ContactAvailable, quotation.Offer.Name);
+                }
 
                 return View(quotation);
             }

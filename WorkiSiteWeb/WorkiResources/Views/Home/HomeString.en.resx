@@ -238,7 +238,7 @@
     <value>A rental ads</value>
   </data>
   <data name="ChooseForm" xml:space="preserve">
-    <value>You want to find a worskpace? Select the type of workplace you would like to add</value>
+    <value>Select the type of workplace you would like to add</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>A shared office</value>
@@ -382,5 +382,11 @@
   </data>
   <data name="TimeAgo_suffixFromNow" xml:space="preserve">
     <value>from now</value>
+  </data>
+  <data name="Team_Member_5" xml:space="preserve">
+    <value>Jonathan Bourguignon</value>
+  </data>
+  <data name="Team_Member_5_Text" xml:space="preserve">
+    <value>Jonathan is currently helping eWorky to develop on the west coast of the US. He just left France to live in San Francisco, the city he's been dreaming of since the first time he heard Janis Joplin's voice. The only problem he's going to have now is to focus despite the many musical, filmic, technological, and outdoors experiences the Bay Area has to offer. But hey, that's what the whole coworking idea is about : encouraging eclectic areas of interest to converge !</value>
   </data>
 </root>

@@ -304,4 +304,7 @@
     <value>BO en attente</value>
     <comment>Steeve</comment>
   </data>
+  <data name="ActivatedBO" xml:space="preserve">
+    <value>BO activé</value>
+  </data>
 </root>

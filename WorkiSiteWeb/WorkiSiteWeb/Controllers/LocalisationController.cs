@@ -158,7 +158,7 @@ namespace Worki.Web.Controllers
 					dynamic contactMail = new Email(MVC.Emails.Views.Email);
 					contactMail.From = formData.Contact.FirstName + " " + formData.Contact.LastName + "<" + formData.Contact.EMail + ">";
 					contactMail.To = MiscHelpers.EmailConstants.ContactMail;
-					contactMail.Subject = string.Format("{0} - {1}", formData.Contact.Subject, localisation.Name);
+					contactMail.Subject = string.Format("{0} - {1}", formData.Contact.Subject, localisation.GetDetailFullUrl(Url));
 					contactMail.ToName = MiscHelpers.EmailConstants.ContactDisplayName;
 					contactMail.Content = formData.Contact.Message;
 					contactMail.Send();
@@ -324,7 +324,6 @@ namespace Worki.Web.Controllers
                         }
                         var loc = lRepo.Get(id.Value);
                         UpdateModel(loc, LocalisationPrefix);
-                        loc.SetOwner(localisationForm.IsOwner ? member.MemberId : -1);
                         loc.MemberEditions.Add(new MemberEdition { ModificationDate = DateTime.UtcNow, MemberId = member.MemberId, ModificationType = (int)EditionType.Edition });
                         offerCount = loc.Offers.Count;
                     }
@@ -344,6 +343,25 @@ namespace Worki.Web.Controllers
                     TempData[MiscHelpers.TempDataConstants.Info] = modifType == EditionType.Creation ? Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenCreate : Worki.Resources.Views.Localisation.LocalisationString.LocHaveBeenEdit;
                     if (modifType == EditionType.Creation)
                     {
+                        //send welcome mail
+                        if (localisationForm.SendMailToOwner && !string.IsNullOrEmpty(localisationForm.Localisation.Mail))
+                        {
+                            dynamic newMemberMail = new Email(MVC.Emails.Views.Email);
+                            newMemberMail.From = MiscHelpers.EmailConstants.ContactDisplayName + "<" + MiscHelpers.EmailConstants.ContactMail + ">";
+                            newMemberMail.To = localisationForm.Localisation.Mail;
+                            newMemberMail.ToName = "";
+
+                            newMemberMail.Subject = string.Format(Worki.Resources.Email.Activation.LocalisationCreate, localisationForm.Localisation.GetFullName());
+                            newMemberMail.Content = string.Format(Worki.Resources.Email.Activation.LocalisationCreateContent,
+                                                                    localisationForm.Localisation.GetFullName(),
+                                                                    Localisation.GetOfferType(localisationForm.Localisation.TypeValue),
+                                                                    localisationForm.Localisation.City,
+                                                                    localisationForm.Localisation.GetDetailFullUrl(Url),
+                                                                    localisationForm.Localisation.GetFullName(),
+                                                                    localisationForm.Localisation.GetFullName());
+
+                            newMemberMail.Send();
+                        }
                         TempData[MiscHelpers.TempDataConstants.NewLocalisationId] = idToRedirect;
                     }
                     if (!Roles.IsUserInRole(member.Username, MiscHelpers.BackOfficeConstants.BackOfficeRole) && !localisationForm.IsFreeLocalisation && !localisationForm.IsSharedOffice)
@@ -573,12 +591,10 @@ namespace Worki.Web.Controllers
         /// Action to get partial view of search form
         /// </summary>
         /// <param name="searchType">enum within eSearchType</param>
-        /// <param name="directAccessType">enum within eDirectAccessType</param>
         /// <returns>corresponding partial form</returns>
-        public virtual PartialViewResult SearchForm(string searchType, string directAccessType, string place)
+        public virtual PartialViewResult SearchForm(string searchType, string place)
         {
             var searchEnum = (eSearchType)Enum.Parse(typeof(eSearchType), searchType);
-            var directAccessEnum = (eDirectAccessType)Enum.Parse(typeof(eDirectAccessType), directAccessType);
 
             SearchCriteriaFormViewModel model = null;
             switch (searchEnum)
@@ -592,7 +608,7 @@ namespace Worki.Web.Controllers
                     break;
                 case eSearchType.ePerType:
                     {
-                        var criteria = SearchCriteria.CreateSearchCriteria(directAccessEnum);
+                        var criteria = new SearchCriteria { SearchType = eSearchType.ePerType };
                         criteria.Place = place;
                         model = new SearchCriteriaFormViewModel(criteria);
                     }
@@ -629,7 +645,7 @@ namespace Worki.Web.Controllers
         [ActionName("search-per-type")]
 		public virtual ActionResult FullSearchPerType()
 		{
-            var criteria = SearchCriteria.CreateSearchCriteria(eDirectAccessType.eNone);
+            var criteria = new SearchCriteria { SearchType = eSearchType.ePerType };
             return View(MVC.Home.Views.Index, new SearchCriteriaFormViewModel(criteria));
 		}
 
@@ -831,7 +847,6 @@ namespace Worki.Web.Controllers
             {
                 try
                 {
-                    var rvd = _SearchService.GetRVD(criteria);
                     var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 					return GetSearchResult(criteriaViewModel);

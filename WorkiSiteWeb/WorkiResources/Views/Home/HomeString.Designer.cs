@@ -520,6 +520,24 @@ namespace Worki.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jonathan Bourguignon.
+        /// </summary>
+        public static string Team_Member_5 {
+            get {
+                return ResourceManager.GetString("Team_Member_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jonathan aide eWorky à trouver sa place sur la scène technologique californienne depuis San Francisco, la ville dont il rêve depuis la première fois qu&apos;il a entendu la voix de Janis Joplin. Et après tout, quel meilleur endroit pour le coworking que cette Baie où convergent tous les talents et tous les centres d&apos;intérêt, où se côtoient les plus grandes multinationales et les modes de vie les plus alternatifs?.
+        /// </summary>
+        public static string Team_Member_5_Text {
+            get {
+                return ResourceManager.GetString("Team_Member_5_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Présentation de l&apos;equipe d&apos;eWorky !.
         /// </summary>
         public static string TeamDescription {

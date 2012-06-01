@@ -33,25 +33,34 @@
 			<div class="bannerDesc float-left">
 				@Worki.Resources.Views.Home.HomeString.TalkAboutUs &nbsp;&nbsp;>>
 			</div>
-			<div class="fr3 linkImg float-left">
+			<div class="20min linkImg float-left">
 				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
-			<div class="parisien linkImg float-left">
+			<div class="marginl10 bfm linkImg float-left">
 				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
-			<div class="frenchweb linkImg float-left">
+			<div class="marginl10 citron linkImg float-left">
 				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
-			<div class="citron linkImg float-left">
+			<div class="marginl10 echos linkImg float-left">
 				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
-			<div class="echos linkImg float-left">
+			<div class="marginl10 europe1 linkImg float-left">
 				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
-			<div class="franceinfo linkImg float-left">
+			<div class="marginl10 fr2new linkImg float-left">
 				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
-			<div class="bfm linkImg float-left">
+			<div class="marginl10 fr3new linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press())
+			</div>
+            <div class="marginl10 frweb linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press())
+			</div>
+            <div class="marginl10 info linkImg float-left">
+				@Html.ActionLink(" ", MVC.Home.Press())
+			</div>
+            <div class="marginl10 parisien linkImg float-left">
 				@Html.ActionLink(" ", MVC.Home.Press())
 			</div>
 			<div class="clear">
@@ -118,14 +127,14 @@
 
         initializeSearchForm();
 
-        SelectForm = function (event, searchType, directAccessType) {
+        SelectForm = function (event, searchType) {
             event.preventDefault();
             var place = $("#Criteria_Place").val();
             if (place == '@Worki.Resources.Views.Home.HomeString.ExampleLocation')
                 place = '';
             $.ajax({
                 url: '@Url.Action(MVC.Localisation.ActionNames.SearchForm, MVC.Localisation.Name)',
-                data: { 'searchType': searchType, 'directAccessType': directAccessType, 'place': place },
+                data: { 'searchType': searchType, 'place': place },
                 success: function (data) {
                     $('#searchFormPartialContainer').replaceWith(data);
                     initializeSearchForm();
@@ -135,15 +144,15 @@
         }
 
         $('#searchPerType').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerType', '@eDirectAccessType.eNone');
+            SelectForm(event, '@eSearchType.ePerType');
         });
 
         $('#searchPerNeed').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerOffer', '@eDirectAccessType.eNone');
+            SelectForm(event, '@eSearchType.ePerOffer');
         });
 
         $('#searchPerName').live('click', function (event) {
-            SelectForm(event, '@eSearchType.ePerName', '@eDirectAccessType.eNone');
+            SelectForm(event, '@eSearchType.ePerName');
         });
 
         require(["@Links.Scripts.dropdown_js"], function () {

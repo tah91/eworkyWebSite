@@ -588,8 +588,9 @@ namespace Worki.Data.Models
 				case Offer.CurrencyEnum.GBP:
 					return "£" + str;
 				case Offer.CurrencyEnum.EUR:
-				default:
 					return str + " €";
+                default:
+                    return str + " " + currency.ToString();
 			}
         }
     }

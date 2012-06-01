@@ -205,6 +205,9 @@
   <data name="Saturday" xml:space="preserve">
     <value>Samedi</value>
   </data>
+  <data name="Sectors" xml:space="preserve">
+    <value>Secteur d'activité</value>
+  </data>
   <data name="Services" xml:space="preserve">
     <value>Services</value>
   </data>
@@ -224,7 +227,7 @@
     <value>Dimanche</value>
   </data>
   <data name="Tariffs" xml:space="preserve">
-    <value>Tarifs</value>
+    <value>Tarifs TTC</value>
   </data>
   <data name="ThePlace1" xml:space="preserve">
     <value>Le lieu "</value>

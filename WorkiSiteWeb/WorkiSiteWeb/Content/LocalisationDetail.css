@@ -125,6 +125,11 @@ ul.like-buttons li
 	width:98.5%;
 }
 
+#comments .innerContentBlock
+{
+    margin: 10px 0;
+}
+
 .offerGallery
 {
 	margin:10px 0;
@@ -203,6 +208,7 @@ ul.like-buttons li
     /*margin:5px 0;*/
     text-align: center;
     border: 1px solid white;
+    border-left: 1px dashed #CCC!important;
 }
 
 .detailMenuEmpty
