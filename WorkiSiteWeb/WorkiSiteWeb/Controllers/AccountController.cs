@@ -43,8 +43,6 @@ namespace Worki.Web.Controllers
         [ActionName("logon")]
         public virtual ActionResult LogOn()
         {
-            if (TempData.ContainsKey("AlreadyRegistered"))
-                ViewBag.AlreadyRegistered = TempData["AlreadyRegistered"];
             return View();
         }
 

@@ -149,7 +149,7 @@ namespace Worki.Infrastructure.Helpers
             public const string PlaceName = "name";
             public const string Order = "order";
             public const string Search = "search";
-			public const string Result = "result";
+			public const string View = "view";
         }
 
 		public static class UrlConstants

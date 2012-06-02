@@ -1,0 +1,45 @@
+﻿@model Worki.Data.Models.LogOnModel
+       
+<div class="modal hide" id="loginPopup">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h3>Connexion</h3>
+  </div>
+  <div class="modal-body">
+    @using (Html.BeginForm(MVC.Widget.Search.ActionNames.LogOn, MVC.Widget.Search.Name, FormMethod.Post, new { @class = "well", id="loginForm" }))
+    { 
+        @Html.AntiForgeryToken()
+
+        @Html.LabelFor(m => m.Login) 
+        @Html.TextBoxFor(m => m.Login)
+        @Html.LabelFor(m => m.Password) 
+        @Html.PasswordFor(m => m.Password)
+        @Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
+
+        <input type="submit" value="se connecter" class="btn btn-info"/>
+    }
+  </div>
+</div>  
+
+<script type="text/javascript">
+    require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+        var errorHandler = function (data) {
+            $('#loginError').remove();
+            $('#loginForm').before('<div id="loginError" class="alert alert-error">' + data + '</div>');
+        }
+        var successHandler = function (data) {
+            window.location = data;
+        };
+        $('#loginForm').submit(function () {
+            AppAjax(
+		        '@Url.Action(MVC.Widget.Search.LogOn(null))',
+		        "POST",
+		        $('#loginForm').serializeArray(),
+                successHandler,
+                errorHandler
+	        );
+            return false;
+        });
+    });
+
+</script>

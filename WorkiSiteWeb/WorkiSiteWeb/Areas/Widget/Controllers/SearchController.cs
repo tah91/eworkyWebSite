@@ -10,6 +10,7 @@ using Worki.Infrastructure.Logging;
 using Worki.Web.Helpers;
 using Worki.Infrastructure.Repository;
 using System.Web.Routing;
+using Worki.Memberships;
 
 namespace Worki.Web.Areas.Widget.Controllers
 {
@@ -36,11 +37,19 @@ namespace Worki.Web.Areas.Widget.Controllers
     public partial class SearchController : ControllerBase
     {
         ISearchService _SearchService;
+        IFormsAuthenticationService _FormsService;
+        IMembershipService _MembershipService;
 
-        public SearchController(ILogger logger, IObjectStore objectStore, ISearchService searchService)
+        public SearchController(ILogger logger,
+                                IObjectStore objectStore, 
+                                ISearchService searchService,
+                                IFormsAuthenticationService formsService, 
+                                IMembershipService membershipService)
             : base(logger, objectStore)
         {
             _SearchService = searchService;
+           _FormsService = formsService;
+           _MembershipService = membershipService;
         }
 
         /// <summary>
@@ -141,7 +150,7 @@ namespace Worki.Web.Areas.Widget.Controllers
         public virtual ActionResult AjaxSearchResult(int? page)
         {
             var pageValue = page ?? 1;
-            var criteria = _SearchService.GetCriteria(Request);
+            var criteria = _SearchService.GetCriteria(Request, pageValue);
             var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
             criteriaViewModel.FillPageInfo(pageValue);
@@ -174,7 +183,7 @@ namespace Worki.Web.Areas.Widget.Controllers
         public virtual ActionResult SearchResult(int? page)
         {
             var pageValue = page ?? 1;
-            var criteria = _SearchService.GetCriteria(Request);
+            var criteria = _SearchService.GetCriteria(Request, pageValue);
             var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
             criteriaViewModel.FillPageInfo(pageValue);
@@ -197,5 +206,82 @@ namespace Worki.Web.Areas.Widget.Controllers
             return View(MVC.Widget.Search.Views.Detail, detailModel);
         }
 
+        /// <summary>
+        /// GET Action result to show detailed localisation
+        /// </summary>
+        /// <param name="index">the index of th localisation in the list of results</param>
+        /// <returns>a view of the details of the selected localisation</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult Detail(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
+            var localisation = lRepo.Get(id);
+
+            var detailModel = new SearchSingleResultViewModel { Localisation = localisation };
+            return View(MVC.Widget.Search.Views.Detail, detailModel);
+        }
+
+        public virtual ActionResult LogOn()
+        {
+            return PartialView(MVC.Widget.Shared.Views._Login, new LogOnModel());
+        }
+
+        /// <summary>
+        /// POST action method to login to an account, add cookie for display name
+        /// </summary>
+        /// <param name="model">The logon data from the form</param>
+        /// <param name="returnUrl">The url to redirect to in case of sucess</param>
+        /// <returns>Redirect to return url if any, if not to home page</returns>
+        [HttpPost]
+        [HandleModelStateException]
+        public virtual ActionResult LogOn(LogOnModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (_MembershipService.ValidateUser(model.Login, model.Password))
+                    {
+                        var context = ModelFactory.GetUnitOfWork();
+                        var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                        var member = mRepo.GetMember(model.Login);
+                        var userData = member.GetUserData();
+                        _FormsService.SignIn(model.Login, userData, /*model.RememberMe*/true, ControllerContext.HttpContext.Response);
+
+                        return Json(Url.RequestContext.HttpContext.Request.UrlReferrer);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
+                    }
+                }
+                catch (Member.ValidationException ex)
+                {
+                    _Logger.Error("LogOn", ex);
+                    ModelState.AddModelError("", ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    _Logger.Error("LogOn", ex);
+                    ModelState.AddModelError("", Worki.Resources.Validation.ValidationString.MailOrPasswordNotCorrect);
+                }
+            }
+            throw new ModelStateException(ModelState);
+        }
+
+        const string MemberDisplayNameString = "MemberDisplayName";
+
+        public virtual ActionResult LogOff()
+        {
+            _FormsService.SignOut();
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains(MemberDisplayNameString))
+            {
+                HttpCookie cookie = ControllerContext.HttpContext.Request.Cookies[MemberDisplayNameString];
+                cookie.Expires = DateTime.UtcNow.AddDays(-1);
+                this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            }
+            return RedirectToAction(MVC.Widget.Search.Index());
+        }
     }
 }

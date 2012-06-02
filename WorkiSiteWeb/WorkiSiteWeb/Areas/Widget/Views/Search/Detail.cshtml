@@ -1,5 +1,11 @@
 ﻿@model SearchSingleResultViewModel
 
+@{  
+    //var dict = Model.Criteria.GetDictionnary();
+    //var rvd = new RouteValueDictionary(dict);
+    var back = Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery;
+}
+
 @section HeadContent
 {
     <title>search a place</title>
@@ -8,3 +14,5 @@
 <div>
     @Model.Localisation.Name
 </div>
+
+<a href="@back">retour</a>

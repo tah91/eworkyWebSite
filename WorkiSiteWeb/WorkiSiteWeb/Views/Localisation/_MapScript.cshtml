@@ -32,8 +32,10 @@
 
     //load results via link
     $(".pager a, #orderByDistance, #orderByRating").live('click', function () {
-        mapSearch.ApplyResults(this);
-        return false;
+        if (mapSearch.AjaxSubmit) {
+            mapSearch.ApplyResults(this);
+            return false;
+        }
     });
 
     //ajax reload when action on form
@@ -60,7 +62,7 @@
     });
 
     $("#searchFormReset form").submit(function (evt) {
-        if(ajaxSubmit){
+        if (ajaxSubmit && (mapSearch.AjaxSubmit || mapSearch.NeedMap)) {
             mapSearch.SubmitData();
             return false;
         }
@@ -72,7 +74,7 @@
             $('#Criteria_NorthEastLng').val(0);
             $('#Criteria_SouthWestLat').val(0);
             $('#Criteria_SouthWestLng').val(0);
-            mapSearch.SubmitData();
+            $("#searchFormReset form").submit();
             mapSearch.Map.CenterSearchResults($('#Criteria_Place').val());
         });
     });

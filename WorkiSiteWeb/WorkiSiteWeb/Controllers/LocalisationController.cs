@@ -764,7 +764,7 @@ namespace Worki.Web.Controllers
 		public virtual ActionResult FullSearchResult(int? page)
 		{
 			var pageValue = page ?? 1;
-			var criteria = _SearchService.GetCriteria(Request);
+            var criteria = _SearchService.GetCriteria(Request, pageValue);
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo(pageValue);
@@ -870,7 +870,7 @@ namespace Worki.Web.Controllers
         public virtual ActionResult AjaxFullSearchResult(int? page)
         {
             var pageValue = page ?? 1;
-            var criteria = _SearchService.GetCriteria(Request);
+            var criteria = _SearchService.GetCriteria(Request, pageValue);
             var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
             criteriaViewModel.FillPageInfo(pageValue);

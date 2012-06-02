@@ -24,9 +24,34 @@
     </head>
 
     <body>
+        @if (!Request.IsAuthenticated)
+        {
+            @Html.ActionLink("login", MVC.Widget.Search.LogOn(), new { id = "loginBtn" })
+        }
+        else
+        {
+            @Html.ActionLink("logout", MVC.Widget.Search.LogOff())
+        }
+        
+        <div id="login-container">
+        </div>
         <div class="container-fluid">
             @RenderBody()
 	    </div>
         @RenderSection("ScriptContent", false)
+        <script type="text/javascript">
+            require(["@Url.VersionedContent(@Links.Scripts.bootstrap_modal_js)"], function () {
+                $('#loginBtn').click(function () {
+                    $.ajax({
+                        url: this.href,
+                        success: function (data) {
+                            $('#login-container').html(data);
+                            $('#loginPopup').modal();
+                        }
+                    });
+                    return false;
+                });
+            });
+        </script> 
     </body>
 </html>

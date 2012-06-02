@@ -861,6 +861,7 @@
     <Content Include="Areas\Widget\Views\Search\_SearchForm.cshtml" />
     <Content Include="Areas\Widget\Views\Search\_ResultsItem.cshtml" />
     <Content Include="Areas\Widget\Views\Search\Detail.cshtml" />
+    <Content Include="Areas\Widget\Views\Shared\_Login.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
     <None Include="Content\scss\responsive.scss" />
     <None Include="Content\scss\_accordion.scss" />

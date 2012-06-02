@@ -5082,6 +5082,11 @@ namespace Worki.Web.Areas.Widget.Controllers {
         public System.Web.Mvc.ActionResult SearchResultDetail() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.SearchResultDetail);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Detail() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Detail);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SearchController Actions { get { return MVC.Widget.Search; } }
@@ -5102,6 +5107,9 @@ namespace Worki.Web.Areas.Widget.Controllers {
             public readonly string MapItemSummary = "MapItemSummary";
             public readonly string SearchResult = "SearchResult";
             public readonly string SearchResultDetail = "SearchResultDetail";
+            public readonly string Detail = "Detail";
+            public readonly string LogOn = "LogOn";
+            public readonly string LogOff = "LogOff";
         }
 
 
@@ -5165,6 +5173,28 @@ namespace Worki.Web.Areas.Widget.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.ActionResult Detail(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Detail);
+            callInfo.RouteValueDictionary.Add("id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LogOn() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LogOn(Worki.Data.Models.LogOnModel model) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+            callInfo.RouteValueDictionary.Add("model", model);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LogOff() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOff);
+            return callInfo;
+        }
+
     }
 }
 
@@ -5177,6 +5207,7 @@ namespace T4MVC.Widget {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string @__Layout = "~/Areas/Widget/Views/Shared/__Layout.cshtml";
+            public readonly string _Login = "~/Areas/Widget/Views/Shared/_Login.cshtml";
         }
     }
 

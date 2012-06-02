@@ -1,4 +1,4 @@
-﻿function WorkiMapSearch(markerPopupUrl, markerLinkUrl, ajaxSubmitUrl, bigMap, refreshResults, needAutocomplete, needMap) {
+﻿function WorkiMapSearch(markerPopupUrl, markerLinkUrl, ajaxSubmitUrl, bigMap, refreshResults, needAutocomplete, needMap, ajaxSubmit) {
     var _markerPopupUrl = markerPopupUrl;
     var _markerLinkUrl = markerLinkUrl;
     var _ajaxSubmitUrl = ajaxSubmitUrl;
@@ -6,6 +6,7 @@
     var _refreshResults = refreshResults;
     var _needAutocomplete = needAutocomplete == null ? true : needAutocomplete;
     var _needMap = needMap == null ? true : needMap;
+    var _ajaxSubmit = ajaxSubmit == null ? true : ajaxSubmit;
 
     var _resultsMap = null;
     var _workiGeoCoder = null;
@@ -108,12 +109,12 @@
     _submitData = function () {
         _goToTop.apply();
         AppAjax(
-			    _ajaxSubmitUrl,
-			    "POST",
-			    $('#searchFormReset form').serializeArray(),
-                _refreshResults,
-                errorBuilder.ErrorFunc
-		    );
+			_ajaxSubmitUrl,
+			"POST",
+			$('#searchFormReset form').serializeArray(),
+            _refreshResults,
+            errorBuilder.ErrorFunc
+		);
     }
 
     this.Map = _resultsMap;
@@ -126,4 +127,5 @@
     this.PushResults = _pushResults;
     this.NeedAutocomplete = _needAutocomplete;
     this.NeedMap = _needMap;
+    this.AjaxSubmit = _ajaxSubmit;
 }

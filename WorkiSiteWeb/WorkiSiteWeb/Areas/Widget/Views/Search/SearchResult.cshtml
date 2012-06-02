@@ -9,8 +9,8 @@
     var dict = Model.Criteria.GetDictionnary();
     var listRvd = new RouteValueDictionary(dict);
     var mapRvd = new RouteValueDictionary(dict);
-    listRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.List;
-    mapRvd[MiscHelpers.SeoConstants.Result] = (int)eResultView.Map;
+    listRvd[MiscHelpers.SeoConstants.View] = (int)eResultView.List;
+    mapRvd[MiscHelpers.SeoConstants.View] = (int)eResultView.Map;
 }
 
 <div class="row-fluid">
@@ -33,7 +33,6 @@
 		    </div>
         </div>  
         }
-        @*@Html.Partial(MVC.Shared.Views._LoaderBlock, "small")*@
     </div>
 
 </div>
@@ -64,7 +63,8 @@
                 @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"),
                 refreshResults,
                 false,
-                @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"));
+                @(Model.Criteria.ResultView == eResultView.Map ? "true" : "false"),
+                false);
 
                 //map initialization
                 require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {

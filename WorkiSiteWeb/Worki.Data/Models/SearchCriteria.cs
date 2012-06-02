@@ -37,11 +37,13 @@ namespace Worki.Data.Models
 			ResultView = eResultView.List;
         }
 
-        public Dictionary<string, object> GetDictionnary(int page = 1)
+        public Dictionary<string, object> GetDictionnary()
         {
             var toRet = new Dictionary<string, object>();
 
-            toRet[MiscHelpers.SeoConstants.Page] = page;
+            if (Page > 0)
+                toRet[MiscHelpers.SeoConstants.Page] = Page;
+
             toRet[MiscHelpers.SeoConstants.Place] = Place;
             toRet[MiscHelpers.SeoConstants.OfferType] = Localisation.GetSeoStringOfferFromType(OfferData.Type);
             toRet[MiscHelpers.SeoConstants.Latitude] = (float)LocalisationData.Latitude;
@@ -50,7 +52,7 @@ namespace Worki.Data.Models
 
             toRet[MiscHelpers.SeoConstants.Order] = (int)OrderBy;
             toRet[MiscHelpers.SeoConstants.Search] = (int)SearchType;
-			toRet[MiscHelpers.SeoConstants.Result] = (int)ResultView;
+            toRet[MiscHelpers.SeoConstants.View] = (int)ResultView;
 
             if (FreeAreas)
             {
@@ -184,6 +186,7 @@ namespace Worki.Data.Models
 		public eOrderBy OrderBy { get; set; }
         public eSearchType SearchType { get; set; }
 		public eResultView ResultView { get; set; }
+        public int Page { get; set; }
         public IEnumerable<LocalisationProjection> Projection { get; set; }
 
 		public float NorthEastLat { get; set; }

@@ -17,8 +17,8 @@ namespace Worki.Service
 	public interface ISearchService
 	{
         SearchCriteriaFormViewModel FillSearchResults(SearchCriteria parameters);
-        SearchCriteria GetCriteria(HttpRequestBase parameters);
-		RouteValueDictionary GetRVD(SearchCriteria criteria, int page = 1);
+        SearchCriteria GetCriteria(HttpRequestBase parameters, int page = 1);
+		RouteValueDictionary GetRVD(SearchCriteria criteria);
         SearchSingleResultViewModel GetSingleResult(HttpRequestBase parameters, int index);
 		void ValidateLocalisation(Localisation toValidate, ref string error);
 	}
@@ -143,10 +143,15 @@ namespace Worki.Service
 		/// used to create search criteria from an url
 		/// </summary>
 		/// <returns>the created SearchCriteria</returns>
-        public SearchCriteria GetCriteria(HttpRequestBase parameters)
+        public SearchCriteria GetCriteria(HttpRequestBase parameters, int page = 1)
         {
             var criteria = new SearchCriteria();
             var value = string.Empty;
+
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Page, ref value))
+                criteria.Page = int.Parse(value);
+            else
+                criteria.Page = page;
 
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Place, ref value))
                 criteria.Place = value;
@@ -161,7 +166,7 @@ namespace Worki.Service
             if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Search, ref value) && int.TryParse(value, out intVal))
                 criteria.SearchType = (eSearchType)intVal;
 
-			if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.Result, ref value) && int.TryParse(value, out intVal))
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.SeoConstants.View, ref value) && int.TryParse(value, out intVal))
 				criteria.ResultView = (eResultView)intVal;
 
             float floatVal;
@@ -226,9 +231,9 @@ namespace Worki.Service
 		/// used to pass search criteria in url
 		/// </summary>
 		/// <returns>the created RouteValueDictionary</returns>
-		public RouteValueDictionary GetRVD(SearchCriteria criteria, int page = 1)
+		public RouteValueDictionary GetRVD(SearchCriteria criteria)
 		{
-            var dict = criteria.GetDictionnary(page);
+            var dict = criteria.GetDictionnary();
             var rvd = new RouteValueDictionary(dict);
 
 			return rvd;

@@ -72,7 +72,7 @@ namespace Worki.Web.Areas.Mobile.Controllers
 		public virtual ActionResult FullSearchResult(int? page)
 		{
 			var pageValue = page ?? 1;
-			var criteria = _SearchService.GetCriteria(Request);
+            var criteria = _SearchService.GetCriteria(Request, pageValue);
 			var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
 			criteriaViewModel.FillPageInfo(pageValue, 10);
