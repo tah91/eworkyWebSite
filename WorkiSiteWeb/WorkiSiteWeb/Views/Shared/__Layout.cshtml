@@ -220,27 +220,24 @@
 	@if (!Url.IsSecuredUrl())
     {
 	<script type="text/javascript">
-	 	require.ready(function () {
-	 		require(["http://widget.uservoice.com/QRiGQmvm2Qq2VarJYV0ghQ.js"]);
-	 	});
+	 	require(["http://widget.uservoice.com/QRiGQmvm2Qq2VarJYV0ghQ.js"]);
 	</script>
     }
     
     <script type="text/javascript">
-    	require.ready(function () {
-    		$('.informationContainer').delay(8000).slideUp();
-    		var count = $('.blockContainer').size();
-    		if (count > 1) {
-    			var firstHeight = $('.blockContainer').first().height();
-    			var lastHeight = $('.blockContainer').last().height();
-    			if (firstHeight > lastHeight) {
-    				$('.blockContainer').first().addClass('dashedRight');
-    			}
-    			else {
-    				$('.blockContainer').last().addClass('dashedLeft');
-    			}
+    	$('.informationContainer').delay(8000).slideUp();
+    	var count = $('.blockContainer').size();
+    	if (count > 1) {
+    		var firstHeight = $('.blockContainer').first().height();
+    		var lastHeight = $('.blockContainer').last().height();
+    		if (firstHeight > lastHeight) {
+    			$('.blockContainer').first().addClass('dashedRight');
     		}
-    	});
+    		else {
+    			$('.blockContainer').last().addClass('dashedLeft');
+    		}
+        }
+
     	require(["@Links.Scripts.dropdown_js"], function () {
     	    InitDropdown("#@DropDownModel.ProfilDD"), InitDropdown("#CultureSwitcher")
     	});

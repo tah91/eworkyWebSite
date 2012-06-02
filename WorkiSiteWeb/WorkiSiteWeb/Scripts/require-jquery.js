@@ -1,54 +1,98 @@
 ﻿/** vim: et:ts=4:sw=4:sts=4
-* @license RequireJS 0.26.0 Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
+* @license RequireJS 2.0.1 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
 * Available via the MIT or new BSD license.
 * see: http://github.com/jrburke/requirejs for details
 */
-/*jslint strict: false, plusplus: false */
-/*global window: false, navigator: false, document: false, importScripts: false,
-jQuery: false, clearInterval: false, setInterval: false, self: false,
-setTimeout: false, opera: false */
+/*jslint regexp: true, nomen: true */
+/*global window, navigator, document, importScripts, jQuery, setTimeout, opera */
 
 var requirejs, require, define;
-(function () {
-    //Change this version number for each release.
-    var version = "0.26.0",
-        commentRegExp = /(\/\*([\s\S]*?)\*\/|\/\/(.*)$)/mg,
-        cjsRequireRegExp = /require\(\s*["']([^'"\s]+)["']\s*\)/g,
-        currDirRegExp = /^\.\//,
+(function (global) {
+    'use strict';
+
+    var version = '2.0.1',
+        commentRegExp = /(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/mg,
+        cjsRequireRegExp = /require\s*\(\s*["']([^'"\s]+)["']\s*\)/g,
         jsSuffixRegExp = /\.js$/,
+        currDirRegExp = /^\.\//,
         ostring = Object.prototype.toString,
         ap = Array.prototype,
         aps = ap.slice,
         apsp = ap.splice,
-        isBrowser = !!(typeof window !== "undefined" && navigator && document),
-        isWebWorker = !isBrowser && typeof importScripts !== "undefined",
+        isBrowser = !!(typeof window !== 'undefined' && navigator && document),
+        isWebWorker = !isBrowser && typeof importScripts !== 'undefined',
     //PS3 indicates loaded and complete, but need to wait for complete
-    //specifically. Sequence is "loading", "loaded", execution,
-    // then "complete". The UA check is unfortunate, but not sure how
+    //specifically. Sequence is 'loading', 'loaded', execution,
+    // then 'complete'. The UA check is unfortunate, but not sure how
     //to feature test w/o causing perf issues.
         readyRegExp = isBrowser && navigator.platform === 'PLAYSTATION 3' ?
                       /^complete$/ : /^(complete|loaded)$/,
-        defContextName = "_",
+        defContextName = '_',
     //Oh the tragedy, detecting opera. See the usage of isOpera for reason.
-        isOpera = typeof opera !== "undefined" && opera.toString() === "[object Opera]",
-        reqWaitIdPrefix = "_r@@",
-        empty = {},
+        isOpera = typeof opera !== 'undefined' && opera.toString() === '[object Opera]',
         contexts = {},
+        cfg = {},
         globalDefQueue = [],
-        interactiveScript = null,
-        isDone = false,
-        checkLoadedDepth = 0,
         useInteractive = false,
-        req, cfg = {}, currentlyAddingScript, s, head, baseElement, scripts, script,
-        src, subPath, mainScript, dataMain, i, scrollIntervalId, setReadyState, ctx,
-        jQueryCheck, checkLoadedTimeoutId;
+        req, s, head, baseElement, dataMain, src,
+        interactiveScript, currentlyAddingScript, mainScript, subPath;
 
     function isFunction(it) {
-        return ostring.call(it) === "[object Function]";
+        return ostring.call(it) === '[object Function]';
     }
 
     function isArray(it) {
-        return ostring.call(it) === "[object Array]";
+        return ostring.call(it) === '[object Array]';
+    }
+
+    /**
+    * Helper function for iterating over an array. If the func returns
+    * a true value, it will break out of the loop.
+    */
+    function each(ary, func) {
+        if (ary) {
+            var i;
+            for (i = 0; i < ary.length; i += 1) {
+                if (func(ary[i], i, ary)) {
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+    * Helper function for iterating over an array backwards. If the func
+    * returns a true value, it will break out of the loop.
+    */
+    function eachReverse(ary, func) {
+        if (ary) {
+            var i;
+            for (i = ary.length - 1; i > -1; i -= 1) {
+                if (func(ary[i], i, ary)) {
+                    break;
+                }
+            }
+        }
+    }
+
+    function hasProp(obj, prop) {
+        return obj.hasOwnProperty(prop);
+    }
+
+    /**
+    * Cycles over properties in an object and calls a function for each
+    * property value. If the function returns a truthy value, then the
+    * iteration is stopped.
+    */
+    function eachProp(obj, func) {
+        var prop;
+        for (prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                if (func(obj[prop], prop)) {
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -59,12 +103,64 @@ var requirejs, require, define;
     * trigger a problem related to that.
     */
     function mixin(target, source, force) {
-        for (var prop in source) {
-            if (!(prop in empty) && (!(prop in target) || force)) {
-                target[prop] = source[prop];
-            }
+        if (source) {
+            eachProp(source, function (value, prop) {
+                if (force || !hasProp(target, prop)) {
+                    target[prop] = value;
+                }
+            });
         }
-        return req;
+    }
+
+    //Similar to Function.prototype.bind, but the 'this' object is specified
+    //first, since it is easier to read/figure out what 'this' will be.
+    function bind(obj, fn) {
+        return function () {
+            return fn.apply(obj, arguments);
+        };
+    }
+
+    function scripts() {
+        return document.getElementsByTagName('script');
+    }
+
+    //Allow getting a global that expressed in
+    //dot notation, like 'a.b.c'.
+    function getGlobal(value) {
+        if (!value) {
+            return value;
+        }
+        var g = global;
+        each(value.split('.'), function (part) {
+            g = g[part];
+        });
+        return g;
+    }
+
+    function makeContextModuleFunc(func, relMap, enableBuildCallback) {
+        return function () {
+            //A version of a require function that passes a moduleName
+            //value for items that may need to
+            //look up paths relative to the moduleName
+            var args = aps.call(arguments, 0), lastArg;
+            if (enableBuildCallback &&
+                isFunction((lastArg = args[args.length - 1]))) {
+                lastArg.__requireJsBuild = true;
+            }
+            args.push(relMap);
+            return func.apply(null, args);
+        };
+    }
+
+    function addRequireMethods(req, context, relMap) {
+        each([
+            ['toUrl'],
+            ['undef'],
+            ['defined', 'requireDefined'],
+            ['specified', 'requireSpecified']
+        ], function (item) {
+            req[item[0]] = makeContextModuleFunc(context[item[1] || item[0]], relMap);
+        });
     }
 
     /**
@@ -75,125 +171,61 @@ var requirejs, require, define;
     *
     * @returns {Error}
     */
-    function makeError(id, msg, err) {
+    function makeError(id, msg, err, requireModules) {
         var e = new Error(msg + '\nhttp://requirejs.org/docs/errors.html#' + id);
+        e.requireType = id;
+        e.requireModules = requireModules;
         if (err) {
             e.originalError = err;
         }
         return e;
     }
 
-    /**
-    * Used to set up package paths from a packagePaths or packages config object.
-    * @param {Object} pkgs the object to store the new package config
-    * @param {Array} currentPackages an array of packages to configure
-    * @param {String} [dir] a prefix dir to use.
-    */
-    function configurePackageDir(pkgs, currentPackages, dir) {
-        var i, location, pkgObj;
-
-        for (i = 0; (pkgObj = currentPackages[i]); i++) {
-            pkgObj = typeof pkgObj === "string" ? { name: pkgObj} : pkgObj;
-            location = pkgObj.location;
-
-            //Add dir to the path, but avoid paths that start with a slash
-            //or have a colon (indicates a protocol)
-            if (dir && (!location || (location.indexOf("/") !== 0 && location.indexOf(":") === -1))) {
-                location = dir + "/" + (location || pkgObj.name);
-            }
-
-            //Create a brand new object on pkgs, since currentPackages can
-            //be passed in again, and config.pkgs is the internal transformed
-            //state for all package configs.
-            pkgs[pkgObj.name] = {
-                name: pkgObj.name,
-                location: location || pkgObj.name,
-                //Remove leading dot in main, so main paths are normalized,
-                //and remove any trailing .js, since different package
-                //envs have different conventions: some use a module name,
-                //some use a file name.
-                main: (pkgObj.main || "main")
-                      .replace(currDirRegExp, '')
-                      .replace(jsSuffixRegExp, '')
-            };
-        }
-    }
-
-    /**
-    * jQuery 1.4.3-1.5.x use a readyWait/ready() pairing to hold DOM
-    * ready callbacks, but jQuery 1.6 supports a holdReady() API instead.
-    * At some point remove the readyWait/ready() support and just stick
-    * with using holdReady.
-    */
-    function jQueryHoldReady($, shouldHold) {
-        if ($.holdReady) {
-            $.holdReady(shouldHold);
-        } else if (shouldHold) {
-            $.readyWait += 1;
-        } else {
-            $.ready(true);
-        }
-    }
-
-    if (typeof define !== "undefined") {
+    if (typeof define !== 'undefined') {
         //If a define is already in play via another AMD loader,
         //do not overwrite.
         return;
     }
 
-    if (typeof requirejs !== "undefined") {
+    if (typeof requirejs !== 'undefined') {
         if (isFunction(requirejs)) {
             //Do not overwrite and existing requirejs instance.
             return;
-        } else {
-            cfg = requirejs;
-            requirejs = undefined;
         }
+        cfg = requirejs;
+        requirejs = undefined;
     }
 
     //Allow for a require config object
-    if (typeof require !== "undefined" && !isFunction(require)) {
+    if (typeof require !== 'undefined' && !isFunction(require)) {
         //assume it is a config object.
         cfg = require;
         require = undefined;
     }
 
-    /**
-    * Creates a new context for use in require and define calls.
-    * Handle most of the heavy lifting. Do not want to use an object
-    * with prototype here to avoid using "this" in require, in case it
-    * needs to be used in more super secure envs that do not want this.
-    * Also there should not be that many contexts in the page. Usually just
-    * one for the default context, but could be extra for multiversion cases
-    * or if a package needs a special context for a dependency that conflicts
-    * with the standard context.
-    */
     function newContext(contextName) {
-        var context, resume,
-            config = {
-                waitSeconds: 7,
-                baseUrl: s.baseUrl || "./",
-                paths: {},
-                pkgs: {},
-                catchError: {}
-            },
+        var config = {
+            waitSeconds: 7,
+            baseUrl: './',
+            paths: {},
+            pkgs: {},
+            shim: {}
+        },
+            registry = {},
+            undefEvents = {},
             defQueue = [],
-            specified = {
-                "require": true,
-                "exports": true,
-                "module": true
-            },
-            urlMap = {},
             defined = {},
-            loaded = {},
-            waiting = {},
+            urlMap = {},
+            urlFetched = {},
+            requireCounter = 1,
+            unnormalizedCounter = 1,
+        //Used to track the order in which modules
+        //should be executed, by the order they
+        //load. Important for consistent cycle resolution
+        //behavior.
             waitAry = [],
-            waitIdCounter = 0,
-            managerCallbacks = {},
-            plugins = {},
-            pluginsQueue = {},
-            resumeDepth = 0,
-            normalizedWaiting = {};
+            inCheckLoaded, Module, context, handlers,
+            checkLoadedTimeoutId;
 
         /**
         * Trims the . and .. from an array of path segments.
@@ -206,11 +238,12 @@ var requirejs, require, define;
         */
         function trimDots(ary) {
             var i, part;
-            for (i = 0; (part = ary[i]); i++) {
-                if (part === ".") {
+            for (i = 0; ary[i]; i += 1) {
+                part = ary[i];
+                if (part === '.') {
                     ary.splice(i, 1);
                     i -= 1;
-                } else if (part === "..") {
+                } else if (part === '..') {
                     if (i === 1 && (ary[2] === '..' || ary[0] === '..')) {
                         //End of the line. Keep at least one non-dot
                         //path segment at the front so it can be mapped
@@ -233,13 +266,19 @@ var requirejs, require, define;
         * @param {String} name the relative name
         * @param {String} baseName a real name that the name arg is relative
         * to.
+        * @param {Boolean} applyMap apply the map config to the value. Should
+        * only be done if this normalization is for a dependency ID.
         * @returns {String} normalized name
         */
-        function normalize(name, baseName) {
-            var pkgName, pkgConfig;
+        function normalize(name, baseName, applyMap) {
+            var baseParts = baseName && baseName.split('/'),
+                map = config.map,
+                starMap = map && map['*'],
+                pkgName, pkgConfig, mapValue, nameParts, i, j, nameSegment,
+                foundMap;
 
             //Adjust any relative paths.
-            if (name && name.charAt(0) === ".") {
+            if (name && name.charAt(0) === '.') {
                 //If have a base name, try to normalize against it,
                 //otherwise, assume it is a top-level require that will
                 //be relative to baseUrl in the end.
@@ -247,30 +286,97 @@ var requirejs, require, define;
                     if (config.pkgs[baseName]) {
                         //If the baseName is a package name, then just treat it as one
                         //name to concat the name with.
-                        baseName = [baseName];
+                        baseParts = [baseName];
                     } else {
                         //Convert baseName to array, and lop off the last part,
-                        //so that . matches that "directory" and not name of the baseName's
-                        //module. For instance, baseName of "one/two/three", maps to
-                        //"one/two/three.js", but we want the directory, "one/two" for
+                        //so that . matches that 'directory' and not name of the baseName's
+                        //module. For instance, baseName of 'one/two/three', maps to
+                        //'one/two/three.js', but we want the directory, 'one/two' for
                         //this normalization.
-                        baseName = baseName.split("/");
-                        baseName = baseName.slice(0, baseName.length - 1);
+                        baseParts = baseParts.slice(0, baseParts.length - 1);
                     }
 
-                    name = baseName.concat(name.split("/"));
+                    name = baseParts.concat(name.split('/'));
                     trimDots(name);
 
                     //Some use of packages may use a . path to reference the
-                    //"main" module name, so normalize for that.
+                    //'main' module name, so normalize for that.
                     pkgConfig = config.pkgs[(pkgName = name[0])];
-                    name = name.join("/");
+                    name = name.join('/');
                     if (pkgConfig && name === pkgName + '/' + pkgConfig.main) {
                         name = pkgName;
                     }
+                } else if (name.indexOf('./') === 0) {
+                    // No baseName, so this is ID is resolved relative
+                    // to baseUrl, pull off the leading dot.
+                    name = name.substring(2);
                 }
             }
+
+            //Apply map config if available.
+            if (applyMap && (baseParts || starMap) && map) {
+                nameParts = name.split('/');
+
+                for (i = nameParts.length; i > 0; i -= 1) {
+                    nameSegment = nameParts.slice(0, i).join('/');
+
+                    if (baseParts) {
+                        //Find the longest baseName segment match in the config.
+                        //So, do joins on the biggest to smallest lengths of baseParts.
+                        for (j = baseParts.length; j > 0; j -= 1) {
+                            mapValue = map[baseParts.slice(0, j).join('/')];
+
+                            //baseName segment has  config, find if it has one for
+                            //this name.
+                            if (mapValue) {
+                                mapValue = mapValue[nameSegment];
+                                if (mapValue) {
+                                    //Match, update name to the new value.
+                                    foundMap = mapValue;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!foundMap && starMap && starMap[nameSegment]) {
+                        foundMap = starMap[nameSegment];
+                    }
+
+                    if (foundMap) {
+                        nameParts.splice(0, i, foundMap);
+                        name = nameParts.join('/');
+                        break;
+                    }
+                }
+            }
+
             return name;
+        }
+
+        function removeScript(name) {
+            if (isBrowser) {
+                each(scripts(), function (scriptNode) {
+                    if (scriptNode.getAttribute('data-requiremodule') === name &&
+                        scriptNode.getAttribute('data-requirecontext') === context.contextName) {
+                        scriptNode.parentNode.removeChild(scriptNode);
+                        return true;
+                    }
+                });
+            }
+        }
+
+        function hasPathFallback(id) {
+            var pathConfig = config.paths[id];
+            if (pathConfig && isArray(pathConfig) && pathConfig.length > 1) {
+                removeScript(id);
+                //Pop off the first array value, since it failed, and
+                //retry
+                pathConfig.shift();
+                context.undef(id);
+                context.require([id]);
+                return true;
+            }
         }
 
         /**
@@ -281,15 +387,28 @@ var requirejs, require, define;
         * @param {String} name the module name
         * @param {String} [parentModuleMap] parent module map
         * for the module name, used to resolve relative names.
+        * @param {Boolean} isNormalized: is the ID already normalized.
+        * This is true if this call is done for a define() module ID.
+        * @param {Boolean} applyMap: apply the map config to the ID.
+        * Should only be true if this map is for a dependency.
         *
         * @returns {Object}
         */
-        function makeModuleMap(name, parentModuleMap) {
-            var index = name ? name.indexOf("!") : -1,
+        function makeModuleMap(name, parentModuleMap, isNormalized, applyMap) {
+            var index = name ? name.indexOf('!') : -1,
                 prefix = null,
                 parentName = parentModuleMap ? parentModuleMap.name : null,
                 originalName = name,
-                normalizedName, url, pluginModule;
+                isDefine = true,
+                normalizedName = '',
+                url, pluginModule, suffix;
+
+            //If no name, then it means it is a require call, generate an
+            //internal name.
+            if (!name) {
+                isDefine = false;
+                name = '_@r' + (requireCounter += 1);
+            }
 
             if (index !== -1) {
                 prefix = name.substring(0, index);
@@ -297,106 +416,129 @@ var requirejs, require, define;
             }
 
             if (prefix) {
-                prefix = normalize(prefix, parentName);
+                prefix = normalize(prefix, parentName, applyMap);
+                pluginModule = defined[prefix];
             }
 
             //Account for relative paths if there is a base name.
             if (name) {
                 if (prefix) {
-                    pluginModule = defined[prefix];
-                    if (pluginModule) {
-                        //Plugin is loaded, use its normalize method, otherwise,
-                        //normalize name as usual.
-                        if (pluginModule.normalize) {
-                            normalizedName = pluginModule.normalize(name, function (name) {
-                                return normalize(name, parentName);
-                            });
-                        } else {
-                            normalizedName = normalize(name, parentName);
-                        }
+                    if (pluginModule && pluginModule.normalize) {
+                        //Plugin is loaded, use its normalize method.
+                        normalizedName = pluginModule.normalize(name, function (name) {
+                            return normalize(name, parentName, applyMap);
+                        });
                     } else {
-                        //Plugin is not loaded yet, so do not normalize
-                        //the name, wait for plugin to load to see if
-                        //it has a normalize method. To avoid possible
-                        //ambiguity with relative names loaded from another
-                        //plugin, use the parent's name as part of this name.
-                        normalizedName = '__$p' + parentName + '@' + (name || '');
+                        normalizedName = normalize(name, parentName, applyMap);
                     }
                 } else {
-                    normalizedName = normalize(name, parentName);
-                }
+                    //A regular module.
+                    normalizedName = normalize(name, parentName, applyMap);
 
-                url = urlMap[normalizedName];
-                if (!url) {
-                    //Calculate url for the module, if it has a name.
-                    if (req.toModuleUrl) {
-                        //Special logic required for a particular engine,
-                        //like Node.
-                        url = req.toModuleUrl(context, normalizedName, parentModuleMap);
-                    } else {
-                        url = context.nameToUrl(normalizedName, null, parentModuleMap);
+                    url = urlMap[normalizedName];
+                    if (!url) {
+                        //Calculate url for the module, if it has a name.
+                        //Use name here since nameToUrl also calls normalize,
+                        //and for relative names that are outside the baseUrl
+                        //this causes havoc. Was thinking of just removing
+                        //parentModuleMap to avoid extra normalization, but
+                        //normalize() still does a dot removal because of
+                        //issue #142, so just pass in name here and redo
+                        //the normalization. Paths outside baseUrl are just
+                        //messy to support.
+                        url = context.nameToUrl(name, null, parentModuleMap);
+
+                        //Store the URL mapping for later.
+                        urlMap[normalizedName] = url;
                     }
-
-                    //Store the URL mapping for later.
-                    urlMap[normalizedName] = url;
                 }
             }
+
+            //If the id is a plugin id that cannot be determined if it needs
+            //normalization, stamp it with a unique ID so two matching relative
+            //ids that may conflict can be separate.
+            suffix = prefix && !pluginModule && !isNormalized ?
+                     '_unnormalized' + (unnormalizedCounter += 1) :
+                     '';
 
             return {
                 prefix: prefix,
                 name: normalizedName,
                 parentMap: parentModuleMap,
+                unnormalized: !!suffix,
                 url: url,
                 originalName: originalName,
-                fullName: prefix ? prefix + "!" + (normalizedName || '') : normalizedName
+                isDefine: isDefine,
+                id: (prefix ?
+                    prefix + '!' + normalizedName :
+                    normalizedName) + suffix
             };
         }
 
-        /**
-        * Determine if priority loading is done. If so clear the priorityWait
-        */
-        function isPriorityDone() {
-            var priorityDone = true,
-                priorityWait = config.priorityWait,
-                priorityName, i;
-            if (priorityWait) {
-                for (i = 0; (priorityName = priorityWait[i]); i++) {
-                    if (!loaded[priorityName]) {
-                        priorityDone = false;
-                        break;
-                    }
+        function getModule(depMap) {
+            var id = depMap.id,
+                mod = registry[id];
+
+            if (!mod) {
+                mod = registry[id] = new context.Module(depMap);
+            }
+
+            return mod;
+        }
+
+        function on(depMap, name, fn) {
+            var id = depMap.id,
+                mod = registry[id];
+
+            if (hasProp(defined, id) &&
+                (!mod || mod.defineEmitComplete)) {
+                if (name === 'defined') {
+                    fn(defined[id]);
                 }
-                if (priorityDone) {
-                    delete config.priorityWait;
+            } else {
+                getModule(depMap).on(name, fn);
+            }
+        }
+
+        function onError(err, errback) {
+            var ids = err.requireModules,
+                notified = false;
+
+            if (errback) {
+                errback(err);
+            } else {
+                each(ids, function (id) {
+                    var mod = registry[id];
+                    if (mod) {
+                        //Set error on module, so it skips timeout checks.
+                        mod.error = err;
+                        if (mod.events.error) {
+                            notified = true;
+                            mod.emit('error', err);
+                        }
+                    }
+                });
+
+                if (!notified) {
+                    req.onError(err);
                 }
             }
-            return priorityDone;
         }
 
         /**
-        * Helper function that creates a setExports function for a "module"
-        * CommonJS dependency. Do this here to avoid creating a closure that
-        * is part of a loop.
+        * Internal method to transfer globalQueue items to this context's
+        * defQueue.
         */
-        function makeSetExports(moduleObj) {
-            return function (exports) {
-                moduleObj.exports = exports;
-            };
-        }
-
-        function makeContextModuleFunc(func, relModuleMap, enableBuildCallback) {
-            return function () {
-                //A version of a require function that passes a moduleName
-                //value for items that may need to
-                //look up paths relative to the moduleName
-                var args = [].concat(aps.call(arguments, 0)), lastArg;
-                if (enableBuildCallback &&
-                    isFunction((lastArg = args[args.length - 1]))) {
-                    lastArg.__requireJsBuild = true;
-                }
-                args.push(relModuleMap);
-                return func.apply(null, args);
-            };
+        function takeGlobalQueue() {
+            //Push all the globalDefQueue items into the context's defQueue
+            if (globalDefQueue.length) {
+                //Array splice in the values since the context code has a
+                //local var ref to defQueue, so cannot just reassign the one
+                //on context.
+                apsp.apply(defQueue,
+                           [defQueue.length - 1, 0].concat(globalDefQueue));
+                globalDefQueue = [];
+            }
         }
 
         /**
@@ -405,475 +547,240 @@ var requirejs, require, define;
         * per module because of the implication of path mappings that may
         * need to be relative to the module name.
         */
-        function makeRequire(relModuleMap, enableBuildCallback) {
-            var modRequire = makeContextModuleFunc(context.require, relModuleMap, enableBuildCallback);
+        function makeRequire(mod, enableBuildCallback, altRequire) {
+            var relMap = mod && mod.map,
+                modRequire = makeContextModuleFunc(altRequire || context.require,
+                                                   relMap,
+                                                   enableBuildCallback);
 
-            mixin(modRequire, {
-                nameToUrl: makeContextModuleFunc(context.nameToUrl, relModuleMap),
-                toUrl: makeContextModuleFunc(context.toUrl, relModuleMap),
-                defined: makeContextModuleFunc(context.requireDefined, relModuleMap),
-                specified: makeContextModuleFunc(context.requireSpecified, relModuleMap),
-                ready: req.ready,
-                isBrowser: req.isBrowser
-            });
-            //Something used by node.
-            if (req.paths) {
-                modRequire.paths = req.paths;
-            }
+            addRequireMethods(modRequire, context, relMap);
+            modRequire.isBrowser = isBrowser;
+
             return modRequire;
         }
 
-        /**
-        * Used to update the normalized name for plugin-based dependencies
-        * after a plugin loads, since it can have its own normalization structure.
-        * @param {String} pluginName the normalized plugin module name.
-        */
-        function updateNormalizedNames(pluginName) {
-
-            var oldFullName, oldModuleMap, moduleMap, fullName, callbacks,
-                i, j, k, depArray, existingCallbacks,
-                maps = normalizedWaiting[pluginName];
-
-            if (maps) {
-                for (i = 0; (oldModuleMap = maps[i]); i++) {
-                    oldFullName = oldModuleMap.fullName;
-                    moduleMap = makeModuleMap(oldModuleMap.originalName, oldModuleMap.parentMap);
-                    fullName = moduleMap.fullName;
-                    //Callbacks could be undefined if the same plugin!name was
-                    //required twice in a row, so use empty array in that case.
-                    callbacks = managerCallbacks[oldFullName] || [];
-                    existingCallbacks = managerCallbacks[fullName];
-
-                    if (fullName !== oldFullName) {
-                        //Update the specified object, but only if it is already
-                        //in there. In sync environments, it may not be yet.
-                        if (oldFullName in specified) {
-                            delete specified[oldFullName];
-                            specified[fullName] = true;
-                        }
-
-                        //Update managerCallbacks to use the correct normalized name.
-                        //If there are already callbacks for the normalized name,
-                        //just add to them.
-                        if (existingCallbacks) {
-                            managerCallbacks[fullName] = existingCallbacks.concat(callbacks);
-                        } else {
-                            managerCallbacks[fullName] = callbacks;
-                        }
-                        delete managerCallbacks[oldFullName];
-
-                        //In each manager callback, update the normalized name in the depArray.
-                        for (j = 0; j < callbacks.length; j++) {
-                            depArray = callbacks[j].depArray;
-                            for (k = 0; k < depArray.length; k++) {
-                                if (depArray[k] === oldFullName) {
-                                    depArray[k] = fullName;
-                                }
-                            }
-                        }
-                    }
+        handlers = {
+            'require': function (mod) {
+                return makeRequire(mod);
+            },
+            'exports': function (mod) {
+                mod.usingExports = true;
+                if (mod.map.isDefine) {
+                    return (mod.exports = defined[mod.map.id] = {});
                 }
-            }
-
-            delete normalizedWaiting[pluginName];
-        }
-
-        /*
-        * Queues a dependency for checking after the loader is out of a
-        * "paused" state, for example while a script file is being loaded
-        * in the browser, where it may have many modules defined in it.
-        *
-        * depName will be fully qualified, no relative . or .. path.
-        */
-        function queueDependency(dep) {
-            //Make sure to load any plugin and associate the dependency
-            //with that plugin.
-            var prefix = dep.prefix,
-                fullName = dep.fullName;
-
-            //Do not bother if the depName is already in transit
-            if (specified[fullName] || fullName in defined) {
-                return;
-            }
-
-            if (prefix && !plugins[prefix]) {
-                //Queue up loading of the dependency, track it
-                //via context.plugins. Mark it as a plugin so
-                //that the build system will know to treat it
-                //special.
-                plugins[prefix] = undefined;
-
-                //Remember this dep that needs to have normaliztion done
-                //after the plugin loads.
-                (normalizedWaiting[prefix] || (normalizedWaiting[prefix] = []))
-                    .push(dep);
-
-                //Register an action to do once the plugin loads, to update
-                //all managerCallbacks to use a properly normalized module
-                //name.
-                (managerCallbacks[prefix] ||
-                (managerCallbacks[prefix] = [])).push({
-                    onDep: function (name, value) {
-                        if (name === prefix) {
-                            updateNormalizedNames(prefix);
-                        }
-                    }
+            },
+            'module': function (mod) {
+                return (mod.module = {
+                    id: mod.map.id,
+                    uri: mod.map.url,
+                    config: function () {
+                        return (config.config && config.config[mod.map.id]) || {};
+                    },
+                    exports: defined[mod.map.id]
                 });
-
-                queueDependency(makeModuleMap(prefix));
-            }
-
-            context.paused.push(dep);
-        }
-
-        function execManager(manager) {
-            var i, ret, waitingCallbacks, err, errFile,
-                cb = manager.callback,
-                fullName = manager.fullName,
-                args = [],
-                ary = manager.depArray;
-
-            //Call the callback to define the module, if necessary.
-            if (cb && isFunction(cb)) {
-                //Pull out the defined dependencies and pass the ordered
-                //values to the callback.
-                if (ary) {
-                    for (i = 0; i < ary.length; i++) {
-                        args.push(manager.deps[ary[i]]);
-                    }
-                }
-
-                if (config.catchError.define) {
-                    try {
-                        ret = req.execCb(fullName, manager.callback, args, defined[fullName]);
-                    } catch (e) {
-                        err = e;
-                    }
-                } else {
-                    ret = req.execCb(fullName, manager.callback, args, defined[fullName]);
-                }
-
-                if (fullName) {
-                    //If setting exports via "module" is in play,
-                    //favor that over return value and exports. After that,
-                    //favor a non-undefined return value over exports use.
-                    if (manager.cjsModule && manager.cjsModule.exports !== undefined) {
-                        ret = defined[fullName] = manager.cjsModule.exports;
-                    } else if (ret === undefined && manager.usingExports) {
-                        //exports already set the defined value.
-                        ret = defined[fullName];
-                    } else {
-                        //Use the return value from the function.
-                        defined[fullName] = ret;
-                    }
-                }
-            } else if (fullName) {
-                //May just be an object definition for the module. Only
-                //worry about defining if have a module name.
-                ret = defined[fullName] = cb;
-            }
-
-            //Clean up waiting. Do this before error calls, and before
-            //calling back waitingCallbacks, so that bookkeeping is correct
-            //in the event of an error and error is reported in correct order,
-            //since the waitingCallbacks will likely have errors if the
-            //onError function does not throw.
-            if (waiting[manager.waitId]) {
-                delete waiting[manager.waitId];
-                manager.isDone = true;
-                context.waitCount -= 1;
-                if (context.waitCount === 0) {
-                    //Clear the wait array used for cycles.
-                    waitAry = [];
-                }
-            }
-
-            if (err) {
-                errFile = (fullName ? makeModuleMap(fullName).url : '') ||
-                           err.fileName || err.sourceURL;
-                err = makeError('defineerror', 'Error evaluating ' +
-                                'module "' + fullName + '" at location "' +
-                                errFile + '":\n' +
-                                err + '\nfileName:' + errFile +
-                                '\nlineNumber: ' + (err.lineNumber || err.line), err);
-                err.moduleName = fullName;
-                return req.onError(err);
-            }
-
-            if (fullName) {
-                //If anything was waiting for this module to be defined,
-                //notify them now.
-                waitingCallbacks = managerCallbacks[fullName];
-                if (waitingCallbacks) {
-                    for (i = 0; i < waitingCallbacks.length; i++) {
-                        waitingCallbacks[i].onDep(fullName, ret);
-                    }
-                    delete managerCallbacks[fullName];
-                }
-            }
-
-            return undefined;
-        }
-
-        function main(inName, depArray, callback, relModuleMap) {
-            var moduleMap = makeModuleMap(inName, relModuleMap),
-                name = moduleMap.name,
-                fullName = moduleMap.fullName,
-                uniques = {},
-                manager = {
-                    //Use a wait ID because some entries are anon
-                    //async require calls.
-                    waitId: name || reqWaitIdPrefix + (waitIdCounter++),
-                    depCount: 0,
-                    depMax: 0,
-                    prefix: moduleMap.prefix,
-                    name: name,
-                    fullName: fullName,
-                    deps: {},
-                    depArray: depArray,
-                    callback: callback,
-                    onDep: function (depName, value) {
-                        if (!(depName in manager.deps)) {
-                            manager.deps[depName] = value;
-                            manager.depCount += 1;
-                            if (manager.depCount === manager.depMax) {
-                                //All done, execute!
-                                execManager(manager);
-                            }
-                        }
-                    }
-                },
-                i, depArg, depName, cjsMod;
-
-            if (fullName) {
-                //If module already defined for context, or already loaded,
-                //then leave. Also leave if jQuery is registering but it does
-                //not match the desired version number in the config.
-                if (fullName in defined || loaded[fullName] === true ||
-                    (fullName === "jquery" && config.jQuery &&
-                     config.jQuery !== callback().fn.jquery)) {
-                    return;
-                }
-
-                //Set specified/loaded here for modules that are also loaded
-                //as part of a layer, where onScriptLoad is not fired
-                //for those cases. Do this after the inline define and
-                //dependency tracing is done.
-                specified[fullName] = true;
-                loaded[fullName] = true;
-
-                //If module is jQuery set up delaying its dom ready listeners.
-                if (fullName === "jquery" && callback) {
-                    jQueryCheck(callback());
-                }
-            }
-
-            //Add the dependencies to the deps field, and register for callbacks
-            //on the dependencies.
-            for (i = 0; i < depArray.length; i++) {
-                depArg = depArray[i];
-                //There could be cases like in IE, where a trailing comma will
-                //introduce a null dependency, so only treat a real dependency
-                //value as a dependency.
-                if (depArg) {
-                    //Split the dependency name into plugin and name parts
-                    depArg = makeModuleMap(depArg, (name ? moduleMap : relModuleMap));
-                    depName = depArg.fullName;
-
-                    //Fix the name in depArray to be just the name, since
-                    //that is how it will be called back later.
-                    depArray[i] = depName;
-
-                    //Fast path CommonJS standard dependencies.
-                    if (depName === "require") {
-                        manager.deps[depName] = makeRequire(moduleMap);
-                    } else if (depName === "exports") {
-                        //CommonJS module spec 1.1
-                        manager.deps[depName] = defined[fullName] = {};
-                        manager.usingExports = true;
-                    } else if (depName === "module") {
-                        //CommonJS module spec 1.1
-                        manager.cjsModule = cjsMod = manager.deps[depName] = {
-                            id: name,
-                            uri: name ? context.nameToUrl(name, null, relModuleMap) : undefined,
-                            exports: defined[fullName]
-                        };
-                        cjsMod.setExports = makeSetExports(cjsMod);
-                    } else if (depName in defined && !(depName in waiting)) {
-                        //Module already defined, no need to wait for it.
-                        manager.deps[depName] = defined[depName];
-                    } else if (!uniques[depName]) {
-
-                        //A dynamic dependency.
-                        manager.depMax += 1;
-
-                        queueDependency(depArg);
-
-                        //Register to get notification when dependency loads.
-                        (managerCallbacks[depName] ||
-                        (managerCallbacks[depName] = [])).push(manager);
-
-                        uniques[depName] = true;
-                    }
-                }
-            }
-
-            //Do not bother tracking the manager if it is all done.
-            if (manager.depCount === manager.depMax) {
-                //All done, execute!
-                execManager(manager);
-            } else {
-                waiting[manager.waitId] = manager;
-                waitAry.push(manager);
-                context.waitCount += 1;
-            }
-        }
-
-        /**
-        * Convenience method to call main for a define call that was put on
-        * hold in the defQueue.
-        */
-        function callDefMain(args) {
-            main.apply(null, args);
-            //Mark the module loaded. Must do it here in addition
-            //to doing it in define in case a script does
-            //not call define
-            loaded[args[0]] = true;
-        }
-
-        /**
-        * jQuery 1.4.3+ supports ways to hold off calling
-        * calling jQuery ready callbacks until all scripts are loaded. Be sure
-        * to track it if the capability exists.. Also, since jQuery 1.4.3 does
-        * not register as a module, need to do some global inference checking.
-        * Even if it does register as a module, not guaranteed to be the precise
-        * name of the global. If a jQuery is tracked for this context, then go
-        * ahead and register it as a module too, if not already in process.
-        */
-        jQueryCheck = function (jqCandidate) {
-            if (!context.jQuery) {
-                var $ = jqCandidate || (typeof jQuery !== "undefined" ? jQuery : null);
-
-                if ($) {
-                    //If a specific version of jQuery is wanted, make sure to only
-                    //use this jQuery if it matches.
-                    if (config.jQuery && $.fn.jquery !== config.jQuery) {
-                        return;
-                    }
-
-                    if ("holdReady" in $ || "readyWait" in $) {
-                        context.jQuery = $;
-
-                        //Manually create a "jquery" module entry if not one already
-                        //or in process. Note this could trigger an attempt at
-                        //a second jQuery registration, but does no harm since
-                        //the first one wins, and it is the same value anyway.
-                        callDefMain(["jquery", [], function () {
-                            return jQuery;
-                        } ]);
-
-                        //Ask jQuery to hold DOM ready callbacks.
-                        if (context.scriptCount) {
-                            jQueryHoldReady($, true);
-                            context.jQueryIncremented = true;
-                        }
-                    }
-                }
             }
         };
 
-        function forceExec(manager, traced) {
-            if (manager.isDone) {
-                return undefined;
-            }
+        function removeWaiting(id) {
+            //Clean up machinery used for waiting modules.
+            delete registry[id];
 
-            var fullName = manager.fullName,
-                depArray = manager.depArray,
-                depName, i;
-            if (fullName) {
-                if (traced[fullName]) {
-                    return defined[fullName];
-                }
-
-                traced[fullName] = true;
-            }
-
-            //forceExec all of its dependencies.
-            for (i = 0; i < depArray.length; i++) {
-                //Some array members may be null, like if a trailing comma
-                //IE, so do the explicit [i] access and check if it has a value.
-                depName = depArray[i];
-                if (depName) {
-                    if (!manager.deps[depName] && waiting[depName]) {
-                        manager.onDep(depName, forceExec(waiting[depName], traced));
+            each(waitAry, function (mod, i) {
+                if (mod.map.id === id) {
+                    waitAry.splice(i, 1);
+                    if (!mod.defined) {
+                        context.waitCount -= 1;
                     }
+                    return true;
                 }
-            }
-
-            return fullName ? defined[fullName] : undefined;
+            });
         }
 
-        /**
-        * Checks if all modules for a context are loaded, and if so, evaluates the
-        * new ones in right dependency order.
-        *
-        * @private
-        */
+        function findCycle(mod, traced) {
+            var id = mod.map.id,
+                depArray = mod.depMaps,
+                foundModule;
+
+            //Do not bother with unitialized modules or not yet enabled
+            //modules.
+            if (!mod.inited) {
+                return;
+            }
+
+            //Found the cycle.
+            if (traced[id]) {
+                return mod;
+            }
+
+            traced[id] = true;
+
+            //Trace through the dependencies.
+            each(depArray, function (depMap) {
+                var depId = depMap.id,
+                    depMod = registry[depId];
+
+                if (!depMod) {
+                    return;
+                }
+
+                if (!depMod.inited || !depMod.enabled) {
+                    //Dependency is not inited, so this cannot
+                    //be used to determine a cycle.
+                    foundModule = null;
+                    delete traced[id];
+                    return true;
+                }
+
+                return (foundModule = findCycle(depMod, traced));
+            });
+
+            return foundModule;
+        }
+
+        function forceExec(mod, traced, uninited) {
+            var id = mod.map.id,
+                depArray = mod.depMaps;
+
+            if (!mod.inited || !mod.map.isDefine) {
+                return;
+            }
+
+            if (traced[id]) {
+                return defined[id];
+            }
+
+            traced[id] = mod;
+
+            each(depArray, function (depMap) {
+                var depId = depMap.id,
+                    depMod = registry[depId],
+                    value;
+
+                if (handlers[depId]) {
+                    return;
+                }
+
+                if (depMod) {
+                    if (!depMod.inited || !depMod.enabled) {
+                        //Dependency is not inited,
+                        //so this module cannot be
+                        //given a forced value yet.
+                        uninited[id] = true;
+                        return;
+                    }
+
+                    //Get the value for the current dependency
+                    value = forceExec(depMod, traced, uninited);
+
+                    //Even with forcing it may not be done,
+                    //in particular if the module is waiting
+                    //on a plugin resource.
+                    if (!uninited[depId]) {
+                        mod.defineDepById(depId, value);
+                    }
+                }
+            });
+
+            mod.check(true);
+
+            return defined[id];
+        }
+
+        function modCheck(mod) {
+            mod.check();
+        }
+
         function checkLoaded() {
             var waitInterval = config.waitSeconds * 1000,
             //It is possible to disable the wait interval by using waitSeconds of 0.
                 expired = waitInterval && (context.startTime + waitInterval) < new Date().getTime(),
-                noLoads = "", hasLoadedProp = false, stillLoading = false, prop,
-                err, manager;
+                noLoads = [],
+                stillLoading = false,
+                needCycleCheck = true,
+                map, modId, err, usingPathFallback;
 
-            //If there are items still in the paused queue processing wait.
-            //This is particularly important in the sync case where each paused
-            //item is processed right away but there may be more waiting.
-            if (context.pausedCount > 0) {
-                return undefined;
+            //Do not bother if this call was a result of a cycle break.
+            if (inCheckLoaded) {
+                return;
             }
 
-            //Determine if priority loading is done. If so clear the priority. If
-            //not, then do not check
-            if (config.priorityWait) {
-                if (isPriorityDone()) {
-                    //Call resume, since it could have
-                    //some waiting dependencies to trace.
-                    resume();
-                } else {
-                    return undefined;
+            inCheckLoaded = true;
+
+            //Figure out the state of all the modules.
+            eachProp(registry, function (mod) {
+                map = mod.map;
+                modId = map.id;
+
+                //Skip things that are not enabled or in error state.
+                if (!mod.enabled) {
+                    return;
                 }
-            }
 
-            //See if anything is still in flight.
-            for (prop in loaded) {
-                if (!(prop in empty)) {
-                    hasLoadedProp = true;
-                    if (!loaded[prop]) {
-                        if (expired) {
-                            noLoads += prop + " ";
-                        } else {
+                if (!mod.error) {
+                    //If the module should be executed, and it has not
+                    //been inited and time is up, remember it.
+                    if (!mod.inited && expired) {
+                        if (hasPathFallback(modId)) {
+                            usingPathFallback = true;
                             stillLoading = true;
-                            break;
+                        } else {
+                            noLoads.push(modId);
+                            removeScript(modId);
+                        }
+                    } else if (!mod.inited && mod.fetched && map.isDefine) {
+                        stillLoading = true;
+                        if (!map.prefix) {
+                            //No reason to keep looking for unfinished
+                            //loading. If the only stillLoading is a
+                            //plugin resource though, keep going,
+                            //because it may be that a plugin resource
+                            //is waiting on a non-plugin cycle.
+                            return (needCycleCheck = false);
                         }
                     }
                 }
+            });
+
+            if (expired && noLoads.length) {
+                //If wait time expired, throw error of unloaded modules.
+                err = makeError('timeout', 'Load timeout for modules: ' + noLoads, null, noLoads);
+                err.contextName = context.contextName;
+                return onError(err);
             }
 
-            //Check for exit conditions.
-            if (!hasLoadedProp && !context.waitCount) {
-                //If the loaded object had no items, then the rest of
-                //the work below does not need to be done.
-                return undefined;
+            //Not expired, check for a cycle.
+            if (needCycleCheck) {
+
+                each(waitAry, function (mod) {
+                    if (mod.defined) {
+                        return;
+                    }
+
+                    var cycleMod = findCycle(mod, {}),
+                        traced = {};
+
+                    if (cycleMod) {
+                        forceExec(cycleMod, traced, {});
+
+                        //traced modules may have been
+                        //removed from the registry, but
+                        //their listeners still need to
+                        //be called.
+                        eachProp(traced, modCheck);
+                    }
+                });
+
+                //Now that dependencies have
+                //been satisfied, trigger the
+                //completion check that then
+                //notifies listeners.
+                eachProp(registry, modCheck);
             }
-            if (expired && noLoads) {
-                //If wait time expired, throw error of unloaded modules.
-                err = makeError("timeout", "Load timeout for modules: " + noLoads);
-                err.requireType = "timeout";
-                err.requireModules = noLoads;
-                return req.onError(err);
-            }
-            if (stillLoading || context.scriptCount) {
+
+            //If still waiting on loads, and the waiting load is something
+            //other than a plugin resource, or there are still outstanding
+            //scripts, then just try back later.
+            if ((!expired || usingPathFallback) && stillLoading) {
                 //Something is still waiting to load. Wait for it, but only
                 //if a timeout is not already in effect.
                 if ((isBrowser || isWebWorker) && !checkLoadedTimeoutId) {
@@ -882,328 +789,541 @@ var requirejs, require, define;
                         checkLoaded();
                     }, 50);
                 }
-                return undefined;
             }
 
-            //If still have items in the waiting cue, but all modules have
-            //been loaded, then it means there are some circular dependencies
-            //that need to be broken.
-            //However, as a waiting thing is fired, then it can add items to
-            //the waiting cue, and those items should not be fired yet, so
-            //make sure to redo the checkLoaded call after breaking a single
-            //cycle, if nothing else loaded then this logic will pick it up
-            //again.
-            if (context.waitCount) {
-                //Cycle through the waitAry, and call items in sequence.
-                for (i = 0; (manager = waitAry[i]); i++) {
-                    forceExec(manager, {});
-                }
-
-                //Only allow this recursion to a certain depth. Only
-                //triggered by errors in calling a module in which its
-                //modules waiting on it cannot finish loading, or some circular
-                //dependencies that then may add more dependencies.
-                //The value of 5 is a bit arbitrary. Hopefully just one extra
-                //pass, or two for the case of circular dependencies generating
-                //more work that gets resolved in the sync node case.
-                if (checkLoadedDepth < 5) {
-                    checkLoadedDepth += 1;
-                    checkLoaded();
-                }
-            }
-
-            checkLoadedDepth = 0;
-
-            //Check for DOM ready, and nothing is waiting across contexts.
-            req.checkReadyState();
-
-            return undefined;
+            inCheckLoaded = false;
         }
 
-        function callPlugin(pluginName, dep) {
-            var name = dep.name,
-                fullName = dep.fullName,
-                load;
+        Module = function (map) {
+            this.events = undefEvents[map.id] || {};
+            this.map = map;
+            this.shim = config.shim[map.id];
+            this.depExports = [];
+            this.depMaps = [];
+            this.depMatched = [];
+            this.pluginMaps = {};
+            this.depCount = 0;
 
-            //Do not bother if plugin is already defined or being loaded.
-            if (fullName in defined || fullName in loaded) {
-                return;
-            }
+            /* this.exports this.factory
+            this.depMaps = [],
+            this.enabled, this.fetched
+            */
+        };
 
-            if (!plugins[pluginName]) {
-                plugins[pluginName] = defined[pluginName];
-            }
+        Module.prototype = {
+            init: function (depMaps, factory, errback, options) {
+                options = options || {};
 
-            //Only set loaded to false for tracking if it has not already been set.
-            if (!loaded[fullName]) {
-                loaded[fullName] = false;
-            }
-
-            load = function (ret) {
-                //Allow the build process to register plugin-loaded dependencies.
-                if (req.onPluginLoad) {
-                    req.onPluginLoad(context, pluginName, name, ret);
+                //Do not do more inits if already done. Can happen if there
+                //are multiple define calls for the same module. That is not
+                //a normal, common case, but it is also not unexpected.
+                if (this.inited) {
+                    return;
                 }
 
-                execManager({
-                    prefix: dep.prefix,
-                    name: dep.name,
-                    fullName: dep.fullName,
-                    callback: function () {
-                        return ret;
+                this.factory = factory;
+
+                if (errback) {
+                    //Register for errors on this module.
+                    this.on('error', errback);
+                } else if (this.events.error) {
+                    //If no errback already, but there are error listeners
+                    //on this module, set up an errback to pass to the deps.
+                    errback = bind(this, function (err) {
+                        this.emit('error', err);
+                    });
+                }
+
+                each(depMaps, bind(this, function (depMap, i) {
+                    if (typeof depMap === 'string') {
+                        depMap = makeModuleMap(depMap,
+                                               (this.map.isDefine ? this.map : this.map.parentMap),
+                                               false,
+                                               true);
+                        this.depMaps.push(depMap);
+                    }
+
+                    var handler = handlers[depMap.id];
+
+                    if (handler) {
+                        this.depExports[i] = handler(this);
+                        return;
+                    }
+
+                    this.depCount += 1;
+
+                    on(depMap, 'defined', bind(this, function (depExports) {
+                        this.defineDep(i, depExports);
+                        this.check();
+                    }));
+
+                    if (errback) {
+                        on(depMap, 'error', errback);
+                    }
+                }));
+
+                //Indicate this module has be initialized
+                this.inited = true;
+
+                this.ignore = options.ignore;
+
+                //Could have option to init this module in enabled mode,
+                //or could have been previously marked as enabled. However,
+                //the dependencies are not known until init is called. So
+                //if enabled previously, now trigger dependencies as enabled.
+                if (options.enabled || this.enabled) {
+                    //Enable this module and dependencies.
+                    //Will call this.check()
+                    this.enable();
+                } else {
+                    this.check();
+                }
+            },
+
+            defineDepById: function (id, depExports) {
+                var i;
+
+                //Find the index for this dependency.
+                each(this.depMaps, function (map, index) {
+                    if (map.id === id) {
+                        i = index;
+                        return true;
                     }
                 });
-                loaded[fullName] = true;
-            };
 
-            //Allow plugins to load other code without having to know the
-            //context or how to "complete" the load.
-            load.fromText = function (moduleName, text) {
-                /*jslint evil: true */
-                var hasInteractive = useInteractive;
+                return this.defineDep(i, depExports);
+            },
 
-                //Indicate a the module is in process of loading.
-                context.loaded[moduleName] = false;
-                context.scriptCount += 1;
-
-                //Turn off interactive script matching for IE for any define
-                //calls in the text, then turn it back on at the end.
-                if (hasInteractive) {
-                    useInteractive = false;
+            defineDep: function (i, depExports) {
+                //Because of cycles, defined callback for a given
+                //export can be called more than once.
+                if (!this.depMatched[i]) {
+                    this.depMatched[i] = true;
+                    this.depCount -= 1;
+                    this.depExports[i] = depExports;
                 }
+            },
 
-                req.exec(text);
-
-                if (hasInteractive) {
-                    useInteractive = true;
+            fetch: function () {
+                if (this.fetched) {
+                    return;
                 }
+                this.fetched = true;
 
-                //Support anonymous modules.
-                context.completeLoad(moduleName);
-            };
+                context.startTime = (new Date()).getTime();
 
-            //Use parentName here since the plugin's name is not reliable,
-            //could be some weird string with no path that actually wants to
-            //reference the parentName's path.
-            plugins[pluginName].load(name, makeRequire(dep.parentMap, true), load, config);
-        }
+                var map = this.map;
 
-        function loadPaused(dep) {
-            //Renormalize dependency if its name was waiting on a plugin
-            //to load, which as since loaded.
-            if (dep.prefix && dep.name && dep.name.indexOf('__$p') === 0 && defined[dep.prefix]) {
-                dep = makeModuleMap(dep.originalName, dep.parentMap);
-            }
-
-            var pluginName = dep.prefix,
-                fullName = dep.fullName,
-                urlFetched = context.urlFetched;
-
-            //Do not bother if the dependency has already been specified.
-            if (specified[fullName] || loaded[fullName]) {
-                return;
-            } else {
-                specified[fullName] = true;
-            }
-
-            if (pluginName) {
-                //If plugin not loaded, wait for it.
-                //set up callback list. if no list, then register
-                //managerCallback for that plugin.
-                if (defined[pluginName]) {
-                    callPlugin(pluginName, dep);
+                //If the manager is for a plugin managed resource,
+                //ask the plugin to load it now.
+                if (map.prefix) {
+                    this.callPlugin();
+                } else if (this.shim) {
+                    makeRequire(this, true)(this.shim.deps || [], bind(this, function () {
+                        this.load();
+                    }));
                 } else {
-                    if (!pluginsQueue[pluginName]) {
-                        pluginsQueue[pluginName] = [];
-                        (managerCallbacks[pluginName] ||
-                        (managerCallbacks[pluginName] = [])).push({
-                            onDep: function (name, value) {
-                                if (name === pluginName) {
-                                    var i, oldModuleMap, ary = pluginsQueue[pluginName];
+                    //Regular dependency.
+                    this.load();
+                }
+            },
 
-                                    //Now update all queued plugin actions.
-                                    for (i = 0; i < ary.length; i++) {
-                                        oldModuleMap = ary[i];
-                                        //Update the moduleMap since the
-                                        //module name may be normalized
-                                        //differently now.
-                                        callPlugin(pluginName,
-                                                   makeModuleMap(oldModuleMap.originalName, oldModuleMap.parentMap));
-                                    }
-                                    delete pluginsQueue[pluginName];
+            load: function () {
+                var url = this.map.url;
+
+                //Regular dependency.
+                if (!urlFetched[url]) {
+                    urlFetched[url] = true;
+                    context.load(this.map.id, url);
+                }
+            },
+
+            /**
+            * Checks is the module is ready to define itself, and if so,
+            * define it. If the silent argument is true, then it will just
+            * define, but not notify listeners, and not ask for a context-wide
+            * check of all loaded modules. That is useful for cycle breaking.
+            */
+            check: function (silent) {
+                if (!this.enabled) {
+                    return;
+                }
+
+                var id = this.map.id,
+                    depExports = this.depExports,
+                    exports = this.exports,
+                    factory = this.factory,
+                    err, cjsModule;
+
+                if (!this.inited) {
+                    this.fetch();
+                } else if (this.error) {
+                    this.emit('error', this.error);
+                } else if (!this.defining) {
+                    //The factory could trigger another require call
+                    //that would result in checking this module to
+                    //define itself again. If already in the process
+                    //of doing that, skip this work.
+                    this.defining = true;
+
+                    if (this.depCount < 1 && !this.defined) {
+                        if (isFunction(factory)) {
+                            //If there is an error listener, favor passing
+                            //to that instead of throwing an error.
+                            if (this.events.error) {
+                                try {
+                                    exports = context.execCb(id, factory, depExports, exports);
+                                } catch (e) {
+                                    err = e;
+                                }
+                            } else {
+                                exports = context.execCb(id, factory, depExports, exports);
+                            }
+
+                            if (this.map.isDefine) {
+                                //If setting exports via 'module' is in play,
+                                //favor that over return value and exports. After that,
+                                //favor a non-undefined return value over exports use.
+                                cjsModule = this.module;
+                                if (cjsModule &&
+                                    cjsModule.exports !== undefined &&
+                                //Make sure it is not already the exports value
+                                    cjsModule.exports !== this.exports) {
+                                    exports = cjsModule.exports;
+                                } else if (exports === undefined && this.usingExports) {
+                                    //exports already set the defined value.
+                                    exports = this.exports;
                                 }
                             }
-                        });
+
+                            if (err) {
+                                err.requireMap = this.map;
+                                err.requireModules = [this.map.id];
+                                err.requireType = 'define';
+                                return onError((this.error = err));
+                            }
+
+                        } else {
+                            //Just a literal value
+                            exports = factory;
+                        }
+
+                        this.exports = exports;
+
+                        if (this.map.isDefine && !this.ignore) {
+                            defined[id] = exports;
+
+                            if (req.onResourceLoad) {
+                                req.onResourceLoad(context, this.map, this.depMaps);
+                            }
+                        }
+
+                        //Clean up
+                        delete registry[id];
+
+                        this.defined = true;
+                        context.waitCount -= 1;
+                        if (context.waitCount === 0) {
+                            //Clear the wait array used for cycles.
+                            waitAry = [];
+                        }
                     }
-                    pluginsQueue[pluginName].push(dep);
+
+                    //Finished the define stage. Allow calling check again
+                    //to allow define notifications below in the case of a
+                    //cycle.
+                    this.defining = false;
+
+                    if (!silent) {
+                        if (this.defined && !this.defineEmitted) {
+                            this.defineEmitted = true;
+                            this.emit('defined', this.exports);
+                            this.defineEmitComplete = true;
+                        }
+                    }
+                }
+            },
+
+            callPlugin: function () {
+                var map = this.map,
+                    id = map.id,
+                    pluginMap = makeModuleMap(map.prefix, null, false, true);
+
+                on(pluginMap, 'defined', bind(this, function (plugin) {
+                    var name = this.map.name,
+                        parentName = this.map.parentMap ? this.map.parentMap.name : null,
+                        load, normalizedMap, normalizedMod;
+
+                    //If current map is not normalized, wait for that
+                    //normalized name to load instead of continuing.
+                    if (this.map.unnormalized) {
+                        //Normalize the ID if the plugin allows it.
+                        if (plugin.normalize) {
+                            name = plugin.normalize(name, function (name) {
+                                return normalize(name, parentName, true);
+                            }) || '';
+                        }
+
+                        normalizedMap = makeModuleMap(map.prefix + '!' + name);
+                        on(normalizedMap,
+                           'defined', bind(this, function (value) {
+                               this.init([], function () { return value; }, null, {
+                                   enabled: true,
+                                   ignore: true
+                               });
+                           }));
+                        normalizedMod = registry[normalizedMap.id];
+                        if (normalizedMod) {
+                            if (this.events.error) {
+                                normalizedMod.on('error', bind(this, function (err) {
+                                    this.emit('error', err);
+                                }));
+                            }
+                            normalizedMod.enable();
+                        }
+
+                        return;
+                    }
+
+                    load = bind(this, function (value) {
+                        this.init([], function () { return value; }, null, {
+                            enabled: true
+                        });
+                    });
+
+                    load.error = bind(this, function (err) {
+                        this.inited = true;
+                        this.error = err;
+                        err.requireModules = [id];
+
+                        //Remove temp unnormalized modules for this module,
+                        //since they will never be resolved otherwise now.
+                        eachProp(registry, function (mod) {
+                            if (mod.map.id.indexOf(id + '_unnormalized') === 0) {
+                                removeWaiting(mod.map.id);
+                            }
+                        });
+
+                        onError(err);
+                    });
+
+                    //Allow plugins to load other code without having to know the
+                    //context or how to 'complete' the load.
+                    load.fromText = function (moduleName, text) {
+                        /*jslint evil: true */
+                        var hasInteractive = useInteractive;
+
+                        //Turn off interactive script matching for IE for any define
+                        //calls in the text, then turn it back on at the end.
+                        if (hasInteractive) {
+                            useInteractive = false;
+                        }
+
+                        req.exec(text);
+
+                        if (hasInteractive) {
+                            useInteractive = true;
+                        }
+
+                        //Support anonymous modules.
+                        context.completeLoad(moduleName);
+                    };
+
+                    //Use parentName here since the plugin's name is not reliable,
+                    //could be some weird string with no path that actually wants to
+                    //reference the parentName's path.
+                    plugin.load(map.name, makeRequire(map.parentMap, true, function (deps, cb) {
+                        return context.require(deps, cb);
+                    }), load, config);
+                }));
+
+                context.enable(pluginMap, this);
+                this.pluginMaps[pluginMap.id] = pluginMap;
+            },
+
+            enable: function () {
+                this.enabled = true;
+
+                if (!this.waitPushed) {
+                    waitAry.push(this);
+                    context.waitCount += 1;
+                    this.waitPushed = true;
+                }
+
+                //Enable each dependency
+                each(this.depMaps, bind(this, function (map) {
+                    var id = map.id,
+                        mod = registry[id];
+                    //Skip special modules like 'require', 'exports', 'module'
+                    //Also, don't call enable if it is already enabled,
+                    //important in circular dependency cases.
+                    if (!handlers[id] && mod && !mod.enabled) {
+                        context.enable(map, this);
+                    }
+                }));
+
+                //Enable each plugin that is used in
+                //a dependency
+                eachProp(this.pluginMaps, bind(this, function (pluginMap) {
+                    var mod = registry[pluginMap.id];
+                    if (mod && !mod.enabled) {
+                        context.enable(pluginMap, this);
+                    }
+                }));
+
+                this.check();
+            },
+
+            on: function (name, cb) {
+                var cbs = this.events[name];
+                if (!cbs) {
+                    cbs = this.events[name] = [];
+                }
+                cbs.push(cb);
+            },
+
+            emit: function (name, evt) {
+                each(this.events[name], function (cb) {
+                    cb(evt);
+                });
+                if (name === 'error') {
+                    //Now that the error handler was triggered, remove
+                    //the listeners, since this broken Module instance
+                    //can stay around for a while in the registry/waitAry.
+                    delete this.events[name];
+                }
+            }
+        };
+
+        function callGetModule(args) {
+            getModule(makeModuleMap(args[0], null, true)).init(args[1], args[2]);
+        }
+
+        function removeListener(node, func, name, ieName) {
+            //Favor detachEvent because of IE9
+            //issue, see attachEvent/addEventListener comment elsewhere
+            //in this file.
+            if (node.detachEvent && !isOpera) {
+                //Probably IE. If not it will throw an error, which will be
+                //useful to know.
+                if (ieName) {
+                    node.detachEvent(ieName, func);
                 }
             } else {
-                if (!urlFetched[dep.url]) {
-                    req.load(context, fullName, dep.url);
-                    urlFetched[dep.url] = true;
-                }
+                node.removeEventListener(name, func, false);
             }
         }
 
         /**
-        * Resumes tracing of dependencies and then checks if everything is loaded.
+        * Given an event from a script node, get the requirejs info from it,
+        * and then removes the event listeners on the node.
+        * @param {Event} evt
+        * @returns {Object}
         */
-        resume = function () {
-            var args, i, p;
+        function getScriptData(evt) {
+            //Using currentTarget instead of target for Firefox 2.0's sake. Not
+            //all old browsers will be supported, but this one was easy enough
+            //to support and still makes sense.
+            var node = evt.currentTarget || evt.srcElement;
 
-            resumeDepth += 1;
+            //Remove the listeners once here.
+            removeListener(node, context.onScriptLoad, 'load', 'onreadystatechange');
+            removeListener(node, context.onScriptError, 'error');
 
-            if (context.scriptCount <= 0) {
-                //Synchronous envs will push the number below zero with the
-                //decrement above, be sure to set it back to zero for good measure.
-                //require() calls that also do not end up loading scripts could
-                //push the number negative too.
-                context.scriptCount = 0;
-            }
+            return {
+                node: node,
+                id: node && node.getAttribute('data-requiremodule')
+            };
+        }
 
-            //Make sure any remaining defQueue items get properly processed.
-            while (defQueue.length) {
-                args = defQueue.shift();
-                if (args[0] === null) {
-                    return req.onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
-                } else {
-                    callDefMain(args);
-                }
-            }
-
-            //Skip the resume of paused dependencies
-            //if current context is in priority wait.
-            if (!config.priorityWait || isPriorityDone()) {
-                while (context.paused.length) {
-                    p = context.paused;
-                    context.pausedCount += p.length;
-                    //Reset paused list
-                    context.paused = [];
-
-                    for (i = 0; (args = p[i]); i++) {
-                        loadPaused(args);
-                    }
-                    //Move the start time for timeout forward.
-                    context.startTime = (new Date()).getTime();
-                    context.pausedCount -= p.length;
-                }
-            }
-
-            //Only check if loaded when resume depth is 1. It is likely that
-            //it is only greater than 1 in sync environments where a factory
-            //function also then calls the callback-style require. In those
-            //cases, the checkLoaded should not occur until the resume
-            //depth is back at the top level.
-            if (resumeDepth === 1) {
-                checkLoaded();
-            }
-
-            resumeDepth -= 1;
-
-            return undefined;
-        };
-
-        //Define the context object. Many of these fields are on here
-        //just to make debugging easier.
-        context = {
-            contextName: contextName,
+        return (context = {
             config: config,
-            defQueue: defQueue,
-            waiting: waiting,
-            waitCount: 0,
-            specified: specified,
-            loaded: loaded,
-            urlMap: urlMap,
-            scriptCount: 0,
-            urlFetched: {},
+            contextName: contextName,
+            registry: registry,
             defined: defined,
-            paused: [],
-            pausedCount: 0,
-            plugins: plugins,
-            managerCallbacks: managerCallbacks,
+            urlMap: urlMap,
+            urlFetched: urlFetched,
+            waitCount: 0,
+            defQueue: defQueue,
+            Module: Module,
             makeModuleMap: makeModuleMap,
-            normalize: normalize,
+
             /**
             * Set a configuration for the context.
             * @param {Object} cfg config object to integrate.
             */
             configure: function (cfg) {
-                var paths, prop, packages, pkgs, packagePaths, requireWait;
-
                 //Make sure the baseUrl ends in a slash.
                 if (cfg.baseUrl) {
-                    if (cfg.baseUrl.charAt(cfg.baseUrl.length - 1) !== "/") {
-                        cfg.baseUrl += "/";
+                    if (cfg.baseUrl.charAt(cfg.baseUrl.length - 1) !== '/') {
+                        cfg.baseUrl += '/';
                     }
                 }
 
                 //Save off the paths and packages since they require special processing,
                 //they are additive.
-                paths = config.paths;
-                packages = config.packages;
-                pkgs = config.pkgs;
+                var paths = config.paths,
+                    pkgs = config.pkgs,
+                    shim = config.shim,
+                    map = config.map || {};
 
                 //Mix in the config values, favoring the new values over
                 //existing ones in context.config.
                 mixin(config, cfg, true);
 
-                //Adjust paths if necessary.
-                if (cfg.paths) {
-                    for (prop in cfg.paths) {
-                        if (!(prop in empty)) {
-                            paths[prop] = cfg.paths[prop];
-                        }
-                    }
-                    config.paths = paths;
+                //Merge paths.
+                mixin(paths, cfg.paths, true);
+                config.paths = paths;
+
+                //Merge map
+                if (cfg.map) {
+                    mixin(map, cfg.map, true);
+                    config.map = map;
                 }
 
-                packagePaths = cfg.packagePaths;
-                if (packagePaths || cfg.packages) {
-                    //Convert packagePaths into a packages config.
-                    if (packagePaths) {
-                        for (prop in packagePaths) {
-                            if (!(prop in empty)) {
-                                configurePackageDir(pkgs, packagePaths[prop], prop);
-                            }
+                //Merge shim
+                if (cfg.shim) {
+                    eachProp(cfg.shim, function (value, id) {
+                        //Normalize the structure
+                        if (isArray(value)) {
+                            value = {
+                                deps: value
+                            };
                         }
-                    }
+                        if (value.exports && !value.exports.__buildReady) {
+                            value.exports = context.makeShimExports(value.exports);
+                        }
+                        shim[id] = value;
+                    });
+                    config.shim = shim;
+                }
 
-                    //Adjust packages if necessary.
-                    if (cfg.packages) {
-                        configurePackageDir(pkgs, cfg.packages);
-                    }
+                //Adjust packages if necessary.
+                if (cfg.packages) {
+                    each(cfg.packages, function (pkgObj) {
+                        var location;
+
+                        pkgObj = typeof pkgObj === 'string' ? { name: pkgObj} : pkgObj;
+                        location = pkgObj.location;
+
+                        //Create a brand new object on pkgs, since currentPackages can
+                        //be passed in again, and config.pkgs is the internal transformed
+                        //state for all package configs.
+                        pkgs[pkgObj.name] = {
+                            name: pkgObj.name,
+                            location: location || pkgObj.name,
+                            //Remove leading dot in main, so main paths are normalized,
+                            //and remove any trailing .js, since different package
+                            //envs have different conventions: some use a module name,
+                            //some use a file name.
+                            main: (pkgObj.main || 'main')
+                                  .replace(currDirRegExp, '')
+                                  .replace(jsSuffixRegExp, '')
+                        };
+                    });
 
                     //Done with modifications, assing packages back to context config
                     config.pkgs = pkgs;
-                }
-
-                //If priority loading is in effect, trigger the loads now
-                if (cfg.priority) {
-                    //Hold on to requireWait value, and reset it after done
-                    requireWait = context.requireWait;
-
-                    //Allow tracing some require calls to allow the fetching
-                    //of the priority config.
-                    context.requireWait = false;
-
-                    //But first, call resume to register any defined modules that may
-                    //be in a data-main built file before the priority config
-                    //call. Also grab any waiting define calls for this context.
-                    context.takeGlobalQueue();
-                    resume();
-
-                    context.require(cfg.priority);
-
-                    //Trigger a resume right away, for the case when
-                    //the script with the priority load is done as part
-                    //of a data-main call. In that case the normal resume
-                    //call will not happen because the scriptCount will be
-                    //at 1, since the script for data-main is being processed.
-                    resume();
-
-                    //Restore previous state.
-                    context.requireWait = requireWait;
-                    config.priorityWait = cfg.priority;
                 }
 
                 //If a deps array or a config callback is specified, then call
@@ -1212,80 +1332,135 @@ var requirejs, require, define;
                 if (cfg.deps || cfg.callback) {
                     context.require(cfg.deps || [], cfg.callback);
                 }
+            },
 
-                //Set up ready callback, if asked. Useful when require is defined as a
-                //config object before require.js is loaded.
-                if (cfg.ready) {
-                    req.ready(cfg.ready);
+            makeShimExports: function (exports) {
+                var func;
+                if (typeof exports === 'string') {
+                    func = function () {
+                        return getGlobal(exports);
+                    };
+                    //Save the exports for use in nodefine checking.
+                    func.exports = exports;
+                    return func;
+                } else {
+                    return function () {
+                        return exports.apply(global, arguments);
+                    };
                 }
             },
 
-            requireDefined: function (moduleName, relModuleMap) {
-                return makeModuleMap(moduleName, relModuleMap).fullName in defined;
+            requireDefined: function (id, relMap) {
+                return hasProp(defined, makeModuleMap(id, relMap, false, true).id);
             },
 
-            requireSpecified: function (moduleName, relModuleMap) {
-                return makeModuleMap(moduleName, relModuleMap).fullName in specified;
+            requireSpecified: function (id, relMap) {
+                id = makeModuleMap(id, relMap, false, true).id;
+                return hasProp(defined, id) || hasProp(registry, id);
             },
 
-            require: function (deps, callback, relModuleMap) {
-                var moduleName, fullName, moduleMap;
-                if (typeof deps === "string") {
+            require: function (deps, callback, errback, relMap) {
+                var moduleName, id, map, requireMod, args;
+                if (typeof deps === 'string') {
+                    if (isFunction(callback)) {
+                        //Invalid call
+                        return onError(makeError('requireargs', 'Invalid require call'), errback);
+                    }
+
                     //Synchronous access to one module. If require.get is
                     //available (as in the Node adapter), prefer that.
                     //In this case deps is the moduleName and callback is
-                    //the relModuleMap
+                    //the relMap
                     if (req.get) {
                         return req.get(context, deps, callback);
                     }
 
                     //Just return the module wanted. In this scenario, the
-                    //second arg (if passed) is just the relModuleMap.
+                    //second arg (if passed) is just the relMap.
                     moduleName = deps;
-                    relModuleMap = callback;
+                    relMap = callback;
 
                     //Normalize module name, if it contains . or ..
-                    moduleMap = makeModuleMap(moduleName, relModuleMap);
-                    fullName = moduleMap.fullName;
+                    map = makeModuleMap(moduleName, relMap, false, true);
+                    id = map.id;
 
-                    if (!(fullName in defined)) {
-                        return req.onError(makeError("notloaded", "Module name '" +
-                                    moduleMap.fullName +
-                                    "' has not been loaded yet for context: " +
+                    if (!hasProp(defined, id)) {
+                        return onError(makeError('notloaded', 'Module name "' +
+                                    id +
+                                    '" has not been loaded yet for context: ' +
                                     contextName));
                     }
-                    return defined[fullName];
+                    return defined[id];
                 }
 
-                main(null, deps, callback, relModuleMap);
+                //Callback require. Normalize args. if callback or errback is
+                //not a function, it means it is a relMap. Test errback first.
+                if (errback && !isFunction(errback)) {
+                    relMap = errback;
+                    errback = undefined;
+                }
+                if (callback && !isFunction(callback)) {
+                    relMap = callback;
+                    callback = undefined;
+                }
 
-                //If the require call does not trigger anything new to load,
-                //then resume the dependency processing.
-                if (!context.requireWait) {
-                    while (!context.scriptCount && context.paused.length) {
-                        //For built layers, there can be some defined
-                        //modules waiting for intake into the context,
-                        //in particular module plugins. Take them.
-                        context.takeGlobalQueue();
-                        resume();
+                //Any defined modules in the global queue, intake them now.
+                takeGlobalQueue();
+
+                //Make sure any remaining defQueue items get properly processed.
+                while (defQueue.length) {
+                    args = defQueue.shift();
+                    if (args[0] === null) {
+                        return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
+                    } else {
+                        //args are id, deps, factory. Should be normalized by the
+                        //define() function.
+                        callGetModule(args);
                     }
                 }
+
+                //Mark all the dependencies as needing to be loaded.
+                requireMod = getModule(makeModuleMap(null, relMap));
+
+                requireMod.init(deps, callback, errback, {
+                    enabled: true
+                });
+
+                checkLoaded();
+
                 return context.require;
             },
 
+            undef: function (id) {
+                var map = makeModuleMap(id, null, true),
+                    mod = registry[id];
+
+                delete defined[id];
+                delete urlMap[id];
+                delete urlFetched[map.url];
+                delete undefEvents[id];
+
+                if (mod) {
+                    //Hold on to listeners in case the
+                    //module will be attempted to be reloaded
+                    //using a different config.
+                    if (mod.events.defined) {
+                        undefEvents[id] = mod.events;
+                    }
+
+                    removeWaiting(id);
+                }
+            },
+
             /**
-            * Internal method to transfer globalQueue items to this context's
-            * defQueue.
+            * Called to enable a module if it is still in the registry
+            * awaiting enablement. parent module is passed in for context,
+            * used by the optimizer.
             */
-            takeGlobalQueue: function () {
-                //Push all the globalDefQueue items into the context's defQueue
-                if (globalDefQueue.length) {
-                    //Array splice in the values since the context code has a
-                    //local var ref to defQueue, so cannot just reassign the one
-                    //on context.
-                    apsp.apply(context.defQueue,
-                               [context.defQueue.length - 1, 0].concat(globalDefQueue));
-                    globalDefQueue = [];
+            enable: function (depMap, parent) {
+                var mod = registry[depMap.id];
+                if (mod) {
+                    getModule(depMap).enable();
                 }
             },
 
@@ -1296,61 +1471,55 @@ var requirejs, require, define;
             * @param {String} moduleName the name of the module to potentially complete.
             */
             completeLoad: function (moduleName) {
-                var args;
+                var shim = config.shim[moduleName] || {},
+                shExports = shim.exports && shim.exports.exports,
+                found, args, mod;
 
-                context.takeGlobalQueue();
+                takeGlobalQueue();
 
                 while (defQueue.length) {
                     args = defQueue.shift();
-
                     if (args[0] === null) {
                         args[0] = moduleName;
-                        break;
+                        //If already found an anonymous module and bound it
+                        //to this name, then this is some other anon module
+                        //waiting for its completeLoad to fire.
+                        if (found) {
+                            break;
+                        }
+                        found = true;
                     } else if (args[0] === moduleName) {
                         //Found matching define call for this script!
-                        break;
+                        found = true;
+                    }
+
+                    callGetModule(args);
+                }
+
+                //Do this after the cycle of callGetModule in case the result
+                //of those calls/init calls changes the registry.
+                mod = registry[moduleName];
+
+                if (!found &&
+                    !defined[moduleName] &&
+                    mod && !mod.inited) {
+                    if (config.enforceDefine && (!shExports || !getGlobal(shExports))) {
+                        if (hasPathFallback(moduleName)) {
+                            return;
+                        } else {
+                            return onError(makeError('nodefine',
+                                             'No define call for ' + moduleName,
+                                             null,
+                                             [moduleName]));
+                        }
                     } else {
-                        //Some other named define call, most likely the result
-                        //of a build layer that included many define calls.
-                        callDefMain(args);
-                        args = null;
+                        //A script that does not call define(), so just simulate
+                        //the call for it.
+                        callGetModule([moduleName, (shim.deps || []), shim.exports]);
                     }
                 }
-                if (args) {
-                    callDefMain(args);
-                } else {
-                    //A script that does not call define(), so just simulate
-                    //the call for it. Special exception for jQuery dynamic load.
-                    callDefMain([moduleName, [],
-                                moduleName === "jquery" && typeof jQuery !== "undefined" ?
-                                function () {
-                                    return jQuery;
-                                } : null]);
-                }
 
-                //Mark the script as loaded. Note that this can be different from a
-                //moduleName that maps to a define call. This line is important
-                //for traditional browser scripts.
-                loaded[moduleName] = true;
-
-                //If a global jQuery is defined, check for it. Need to do it here
-                //instead of main() since stock jQuery does not register as
-                //a module via define.
-                jQueryCheck();
-
-                //Doing this scriptCount decrement branching because sync envs
-                //need to decrement after resume, otherwise it looks like
-                //loading is complete after the first dependency is fetched.
-                //For browsers, it works fine to decrement after, but it means
-                //the checkLoaded setTimeout 50 ms cost is taken. To avoid
-                //that cost, decrement beforehand.
-                if (req.isAsync) {
-                    context.scriptCount -= 1;
-                }
-                resume();
-                if (!req.isAsync) {
-                    context.scriptCount -= 1;
-                }
+                checkLoaded();
             },
 
             /**
@@ -1359,7 +1528,7 @@ var requirejs, require, define;
             * plain URLs like nameToUrl.
             */
             toUrl: function (moduleNamePlusExt, relModuleMap) {
-                var index = moduleNamePlusExt.lastIndexOf("."),
+                var index = moduleNamePlusExt.lastIndexOf('.'),
                     ext = null;
 
                 if (index !== -1) {
@@ -1376,34 +1545,42 @@ var requirejs, require, define;
             */
             nameToUrl: function (moduleName, ext, relModuleMap) {
                 var paths, pkgs, pkg, pkgPath, syms, i, parentModule, url,
-                    config = context.config;
+                    parentPath;
 
                 //Normalize module name if have a base relative module name to work from.
-                moduleName = normalize(moduleName, relModuleMap && relModuleMap.fullName);
+                moduleName = normalize(moduleName, relModuleMap && relModuleMap.id, true);
 
                 //If a colon is in the URL, it indicates a protocol is used and it is just
-                //an URL to a file, or if it starts with a slash or ends with .js, it is just a plain file.
+                //an URL to a file, or if it starts with a slash, contains a query arg (i.e. ?)
+                //or ends with .js, then assume the user meant to use an url and not a module id.
                 //The slash is important for protocol-less URLs as well as full paths.
                 if (req.jsExtRegExp.test(moduleName)) {
                     //Just a plain path, not module name lookup, so just return it.
                     //Add extension if it is included. This is a bit wonky, only non-.js things pass
                     //an extension, this method probably needs to be reworked.
-                    url = moduleName + (ext ? ext : "");
+                    url = moduleName + (ext || '');
                 } else {
                     //A module that needs to be converted to a path.
                     paths = config.paths;
                     pkgs = config.pkgs;
 
-                    syms = moduleName.split("/");
+                    syms = moduleName.split('/');
                     //For each module name segment, see if there is a path
                     //registered for it. Start with most specific name
                     //and work up from it.
-                    for (i = syms.length; i > 0; i--) {
-                        parentModule = syms.slice(0, i).join("/");
-                        if (paths[parentModule]) {
-                            syms.splice(0, i, paths[parentModule]);
+                    for (i = syms.length; i > 0; i -= 1) {
+                        parentModule = syms.slice(0, i).join('/');
+                        pkg = pkgs[parentModule];
+                        parentPath = paths[parentModule];
+                        if (parentPath) {
+                            //If an array, it means there are a few choices,
+                            //Choose the one that is desired
+                            if (isArray(parentPath)) {
+                                parentPath = parentPath[0];
+                            }
+                            syms.splice(0, i, parentPath);
                             break;
-                        } else if ((pkg = pkgs[parentModule])) {
+                        } else if (pkg) {
                             //If module name is just the package name, then looking
                             //for the main module.
                             if (moduleName === pkg.name) {
@@ -1417,22 +1594,64 @@ var requirejs, require, define;
                     }
 
                     //Join the path parts together, then figure out if baseUrl is needed.
-                    url = syms.join("/") + (ext || ".js");
-                    url = (url.charAt(0) === '/' || url.match(/^\w+:/) ? "" : config.baseUrl) + url;
+                    url = syms.join('/') + (ext || '.js');
+                    url = (url.charAt(0) === '/' || url.match(/^[\w\+\.\-]+:/) ? '' : config.baseUrl) + url;
                 }
 
                 return config.urlArgs ? url +
                                         ((url.indexOf('?') === -1 ? '?' : '&') +
                                          config.urlArgs) : url;
+            },
+
+            //Delegates to req.load. Broken out as a separate function to
+            //allow overriding in the optimizer.
+            load: function (id, url) {
+                req.load(context, id, url);
+            },
+
+            /**
+            * Executes a module callack function. Broken out as a separate function
+            * solely to allow the build system to sequence the files in the built
+            * layer in the right sequence.
+            *
+            * @private
+            */
+            execCb: function (name, callback, args, exports) {
+                return callback.apply(exports, args);
+            },
+
+            /**
+            * callback for script loads, used to check status of loading.
+            *
+            * @param {Event} evt the event from the browser for the script
+            * that was loaded.
+            */
+            onScriptLoad: function (evt) {
+                //Using currentTarget instead of target for Firefox 2.0's sake. Not
+                //all old browsers will be supported, but this one was easy enough
+                //to support and still makes sense.
+                if (evt.type === 'load' ||
+                    (readyRegExp.test((evt.currentTarget || evt.srcElement).readyState))) {
+                    //Reset interactive script so a script node is not held onto for
+                    //to long.
+                    interactiveScript = null;
+
+                    //Pull out the name of the module and the context.
+                    var data = getScriptData(evt);
+                    context.completeLoad(data.id);
+                }
+            },
+
+            /**
+            * Callback for script errors.
+            */
+            onScriptError: function (evt) {
+                var data = getScriptData(evt);
+                if (!hasPathFallback(data.id)) {
+                    return onError(makeError('scripterror', 'Script error', evt, [data.id]));
+                }
             }
-        };
-
-        //Make these visible on the context so can be called at the very
-        //end of the file to bootstrap
-        context.jQueryCheck = jQueryCheck;
-        context.resume = resume;
-
-        return context;
+        });
     }
 
     /**
@@ -1449,20 +1668,21 @@ var requirejs, require, define;
     * on a require that are not standardized), and to give a short
     * name for minification/local scope use.
     */
-    req = requirejs = function (deps, callback) {
+    req = requirejs = function (deps, callback, errback, optional) {
 
         //Find the right context, use default
         var contextName = defContextName,
             context, config;
 
         // Determine if have config object in the call.
-        if (!isArray(deps) && typeof deps !== "string") {
+        if (!isArray(deps) && typeof deps !== 'string') {
             // deps is a config object
             config = deps;
             if (isArray(callback)) {
                 // Adjust args if there are dependencies
                 deps = callback;
-                callback = arguments[2];
+                callback = errback;
+                errback = optional;
             } else {
                 deps = [];
             }
@@ -1472,14 +1692,16 @@ var requirejs, require, define;
             contextName = config.context;
         }
 
-        context = contexts[contextName] ||
-                  (contexts[contextName] = newContext(contextName));
+        context = contexts[contextName];
+        if (!context) {
+            context = contexts[contextName] = req.s.newContext(contextName);
+        }
 
         if (config) {
             context.configure(config);
         }
 
-        return context.require(deps, callback);
+        return context.require(deps, callback, errback);
     };
 
     /**
@@ -1493,39 +1715,33 @@ var requirejs, require, define;
     /**
     * Export require as a global, but only if it does not already exist.
     */
-    if (typeof require === "undefined") {
+    if (!require) {
         require = req;
     }
 
-    /**
-    * Global require.toUrl(), to match global require, mostly useful
-    * for debugging/work in the global space.
-    */
-    req.toUrl = function (moduleNamePlusExt) {
-        return contexts[defContextName].toUrl(moduleNamePlusExt);
-    };
-
     req.version = version;
-    req.isArray = isArray;
-    req.isFunction = isFunction;
-    req.mixin = mixin;
+
     //Used to filter out dependencies that are already paths.
     req.jsExtRegExp = /^\/|:|\?|\.js$/;
+    req.isBrowser = isBrowser;
     s = req.s = {
         contexts: contexts,
-        //Stores a list of URLs that should not get async script tag treatment.
-        skipAsync: {},
-        isPageLoaded: !isBrowser,
-        readyCalls: []
+        newContext: newContext
     };
 
-    req.isAsync = req.isBrowser = isBrowser;
+    //Create default context.
+    req({});
+
+    //Exports some context-sensitive methods on global require, using
+    //default context if no context specified.
+    addRequireMethods(req, contexts[defContextName]);
+
     if (isBrowser) {
-        head = s.head = document.getElementsByTagName("head")[0];
+        head = s.head = document.getElementsByTagName('head')[0];
         //If BASE tag is in play, using appendChild is a problem for IE6.
         //When that browser dies, this can be removed. Details in this jQuery bug:
         //http://dev.jquery.com/ticket/2709
-        baseElement = document.getElementsByTagName("base")[0];
+        baseElement = document.getElementsByTagName('base')[0];
         if (baseElement) {
             head = s.head = baseElement.parentNode;
         }
@@ -1550,215 +1766,18 @@ var requirejs, require, define;
     * @param {Object} url the URL to the module.
     */
     req.load = function (context, moduleName, url) {
-        var loaded = context.loaded;
-
-        isDone = false;
-
-        //Only set loaded to false for tracking if it has not already been set.
-        if (!loaded[moduleName]) {
-            loaded[moduleName] = false;
-        }
-
-        context.scriptCount += 1;
-        req.attach(url, context, moduleName);
-
-        //If tracking a jQuery, then make sure its ready callbacks
-        //are put on hold to prevent its ready callbacks from
-        //triggering too soon.
-        if (context.jQuery && !context.jQueryIncremented) {
-            jQueryHoldReady(context.jQuery, true);
-            context.jQueryIncremented = true;
-        }
-    };
-
-    function getInteractiveScript() {
-        var scripts, i, script;
-        if (interactiveScript && interactiveScript.readyState === 'interactive') {
-            return interactiveScript;
-        }
-
-        scripts = document.getElementsByTagName('script');
-        for (i = scripts.length - 1; i > -1 && (script = scripts[i]); i--) {
-            if (script.readyState === 'interactive') {
-                return (interactiveScript = script);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-    * The function that handles definitions of modules. Differs from
-    * require() in that a string for the module should be the first argument,
-    * and the function to execute after dependencies are loaded should
-    * return a value to define the module corresponding to the first argument's
-    * name.
-    */
-    define = req.def = function (name, deps, callback) {
-        var node, context;
-
-        //Allow for anonymous functions
-        if (typeof name !== 'string') {
-            //Adjust args appropriately
-            callback = deps;
-            deps = name;
-            name = null;
-        }
-
-        //This module may not have dependencies
-        if (!req.isArray(deps)) {
-            callback = deps;
-            deps = [];
-        }
-
-        //If no name, and callback is a function, then figure out if it a
-        //CommonJS thing with dependencies.
-        if (!name && !deps.length && req.isFunction(callback)) {
-            //Remove comments from the callback string,
-            //look for require calls, and pull them into the dependencies,
-            //but only if there are function args.
-            if (callback.length) {
-                callback
-                    .toString()
-                    .replace(commentRegExp, "")
-                    .replace(cjsRequireRegExp, function (match, dep) {
-                        deps.push(dep);
-                    });
-
-                //May be a CommonJS thing even without require calls, but still
-                //could use exports, and module. Avoid doing exports and module
-                //work though if it just needs require.
-                //REQUIRES the function to expect the CommonJS variables in the
-                //order listed below.
-                deps = (callback.length === 1 ? ["require"] : ["require", "exports", "module"]).concat(deps);
-            }
-        }
-
-        //If in IE 6-8 and hit an anonymous define() call, do the interactive
-        //work.
-        if (useInteractive) {
-            node = currentlyAddingScript || getInteractiveScript();
-            if (node) {
-                if (!name) {
-                    name = node.getAttribute("data-requiremodule");
-                }
-                context = contexts[node.getAttribute("data-requirecontext")];
-            }
-        }
-
-        //Always save off evaluating the def call until the script onload handler.
-        //This allows multiple modules to be in a file without prematurely
-        //tracing dependencies, and allows for anonymous module support,
-        //where the module name is not known until the script onload event
-        //occurs. If no context, use the global queue, and get it processed
-        //in the onscript load callback.
-        (context ? context.defQueue : globalDefQueue).push([name, deps, callback]);
-
-        return undefined;
-    };
-
-    define.amd = {
-        multiversion: true,
-        plugins: true,
-        jQuery: true
-    };
-
-    /**
-    * Executes the text. Normally just uses eval, but can be modified
-    * to use a more environment specific call.
-    * @param {String} text the text to execute/evaluate.
-    */
-    req.exec = function (text) {
-        return eval(text);
-    };
-
-    /**
-    * Executes a module callack function. Broken out as a separate function
-    * solely to allow the build system to sequence the files in the built
-    * layer in the right sequence.
-    *
-    * @private
-    */
-    req.execCb = function (name, callback, args, exports) {
-        return callback.apply(exports, args);
-    };
-
-    /**
-    * callback for script loads, used to check status of loading.
-    *
-    * @param {Event} evt the event from the browser for the script
-    * that was loaded.
-    *
-    * @private
-    */
-    req.onScriptLoad = function (evt) {
-        //Using currentTarget instead of target for Firefox 2.0's sake. Not
-        //all old browsers will be supported, but this one was easy enough
-        //to support and still makes sense.
-        var node = evt.currentTarget || evt.srcElement, contextName, moduleName,
-            context;
-
-        if (evt.type === "load" || readyRegExp.test(node.readyState)) {
-            //Reset interactive script so a script node is not held onto for
-            //to long.
-            interactiveScript = null;
-
-            //Pull out the name of the module and the context.
-            contextName = node.getAttribute("data-requirecontext");
-            moduleName = node.getAttribute("data-requiremodule");
-            context = contexts[contextName];
-
-            contexts[contextName].completeLoad(moduleName);
-
-            //Clean up script binding. Favor detachEvent because of IE9
-            //issue, see attachEvent/addEventListener comment elsewhere
-            //in this file.
-            if (node.detachEvent && !isOpera) {
-                //Probably IE. If not it will throw an error, which will be
-                //useful to know.
-                node.detachEvent("onreadystatechange", req.onScriptLoad);
-            } else {
-                node.removeEventListener("load", req.onScriptLoad, false);
-            }
-        }
-    };
-
-    /**
-    * Attaches the script represented by the URL to the current
-    * environment. Right now only supports browser loading,
-    * but can be redefined in other environments to do the right thing.
-    * @param {String} url the url of the script to attach.
-    * @param {Object} context the context that wants the script.
-    * @param {moduleName} the name of the module that is associated with the script.
-    * @param {Function} [callback] optional callback, defaults to require.onScriptLoad
-    * @param {String} [type] optional type, defaults to text/javascript
-    */
-    req.attach = function (url, context, moduleName, callback, type) {
-        var node, loaded;
+        var config = (context && context.config) || {},
+            node;
         if (isBrowser) {
             //In the browser so use a script tag
-            callback = callback || req.onScriptLoad;
-            node = context && context.config && context.config.xhtml ?
-                    document.createElementNS("http://www.w3.org/1999/xhtml", "html:script") :
-                    document.createElement("script");
-            node.type = type || "text/javascript";
-            node.charset = "utf-8";
-            //Use async so Gecko does not block on executing the script if something
-            //like a long-polling comet tag is being run first. Gecko likes
-            //to evaluate scripts in DOM order, even for dynamic scripts.
-            //It will fetch them async, but only evaluate the contents in DOM
-            //order, so a long-polling script tag can delay execution of scripts
-            //after it. But telling Gecko we expect async gets us the behavior
-            //we want -- execute it whenever it is finished downloading. Only
-            //Helps Firefox 3.6+
-            //Allow some URLs to not be fetched async. Mostly helps the order!
-            //plugin
-            node.async = !s.skipAsync[url];
+            node = config.xhtml ?
+                   document.createElementNS('http://www.w3.org/1999/xhtml', 'html:script') :
+                   document.createElement('script');
+            node.type = config.scriptType || 'text/javascript';
+            node.charset = 'utf-8';
 
-            if (context) {
-                node.setAttribute("data-requirecontext", context.contextName);
-            }
-            node.setAttribute("data-requiremodule", moduleName);
+            node.setAttribute('data-requirecontext', context.contextName);
+            node.setAttribute('data-requiremodule', moduleName);
 
             //Set up load listener. Test attachEvent first because IE9 has
             //a subtle issue in its addEventListener and script onload firings
@@ -1768,16 +1787,38 @@ var requirejs, require, define;
             //https://connect.microsoft.com/IE/feedback/details/648057/script-onload-event-is-not-fired-immediately-after-script-execution
             //UNFORTUNATELY Opera implements attachEvent but does not follow the script
             //script execution mode.
-            if (node.attachEvent && !isOpera) {
+            if (node.attachEvent &&
+            //Check if node.attachEvent is artificially added by custom script or
+            //natively supported by browser
+            //read https://github.com/jrburke/requirejs/issues/187
+            //if we can NOT find [native code] then it must NOT natively supported.
+            //in IE8, node.attachEvent does not have toString()
+            //Note the test for "[native code" with no closing brace, see:
+            //https://github.com/jrburke/requirejs/issues/273
+                !(node.attachEvent.toString && node.attachEvent.toString().indexOf('[native code') < 0) &&
+                !isOpera) {
                 //Probably IE. IE (at least 6-8) do not fire
                 //script onload right after executing the script, so
                 //we cannot tie the anonymous define call to a name.
-                //However, IE reports the script as being in "interactive"
+                //However, IE reports the script as being in 'interactive'
                 //readyState at the time of the define call.
                 useInteractive = true;
-                node.attachEvent("onreadystatechange", callback);
+
+                node.attachEvent('onreadystatechange', context.onScriptLoad);
+                //It would be great to add an error handler here to catch
+                //404s in IE9+. However, onreadystatechange will fire before
+                //the error handler, so that does not help. If addEvenListener
+                //is used, then IE will fire error before load, but we cannot
+                //use that pathway given the connect.microsoft.com issue
+                //mentioned above about not doing the 'script execute,
+                //then fire the script load event listener before execute
+                //next script' that other browsers do.
+                //Best hope: IE10 fixes the issues,
+                //and then destroys all installs of IE 6-9.
+                //node.attachEvent('onerror', context.onScriptError);
             } else {
-                node.addEventListener("load", callback, false);
+                node.addEventListener('load', context.onScriptLoad, false);
+                node.addEventListener('error', context.onScriptError, false);
             }
             node.src = url;
 
@@ -1792,6 +1833,7 @@ var requirejs, require, define;
                 head.appendChild(node);
             }
             currentlyAddingScript = null;
+
             return node;
         } else if (isWebWorker) {
             //In a web worker, use importScripts. This is not a very
@@ -1800,24 +1842,31 @@ var requirejs, require, define;
             //are in play, the expectation that a build has been done so that
             //only one script needs to be loaded anyway. This may need to be
             //reevaluated if other use cases become common.
-            loaded = context.loaded;
-            loaded[moduleName] = false;
-
             importScripts(url);
 
             //Account for anonymous modules
             context.completeLoad(moduleName);
         }
-        return null;
     };
+
+    function getInteractiveScript() {
+        if (interactiveScript && interactiveScript.readyState === 'interactive') {
+            return interactiveScript;
+        }
+
+        eachReverse(scripts(), function (script) {
+            if (script.readyState === 'interactive') {
+                return (interactiveScript = script);
+            }
+        });
+        return interactiveScript;
+    }
 
     //Look for a data-main script attribute, which could also adjust the baseUrl.
     if (isBrowser) {
         //Figure out baseUrl. Get it from the script tag with require.js in it.
-        scripts = document.getElementsByTagName("script");
-
-        for (i = scripts.length - 1; i > -1 && (script = scripts[i]); i--) {
-            //Set the "head" where we can append children by
+        eachReverse(scripts(), function (script) {
+            //Set the 'head' where we can append children by
             //using the script's parent.
             if (!head) {
                 head = script.parentNode;
@@ -1826,7 +1875,8 @@ var requirejs, require, define;
             //Look for a data-main attribute to set main script for the page
             //to load. If it is there, the path to data main becomes the
             //baseUrl, if it is not already set.
-            if ((dataMain = script.getAttribute('data-main'))) {
+            dataMain = script.getAttribute('data-main');
+            if (dataMain) {
                 if (!cfg.baseUrl) {
                     //Pull off the directory of data-main for use as the
                     //baseUrl.
@@ -1844,174 +1894,100 @@ var requirejs, require, define;
                 //Put the data-main script in the files to load.
                 cfg.deps = cfg.deps ? cfg.deps.concat(dataMain) : [dataMain];
 
-                break;
+                return true;
             }
-        }
+        });
     }
 
-    //Set baseUrl based on config.
-    s.baseUrl = cfg.baseUrl;
-
-    //****** START page load functionality ****************
     /**
-    * Sets the page as loaded and triggers check for all modules loaded.
+    * The function that handles definitions of modules. Differs from
+    * require() in that a string for the module should be the first argument,
+    * and the function to execute after dependencies are loaded should
+    * return a value to define the module corresponding to the first argument's
+    * name.
     */
-    req.pageLoaded = function () {
-        if (!s.isPageLoaded) {
-            s.isPageLoaded = true;
-            if (scrollIntervalId) {
-                clearInterval(scrollIntervalId);
-            }
+    define = function (name, deps, callback) {
+        var node, context;
 
-            //Part of a fix for FF < 3.6 where readyState was not set to
-            //complete so libraries like jQuery that check for readyState
-            //after page load where not getting initialized correctly.
-            //Original approach suggested by Andrea Giammarchi:
-            //http://webreflection.blogspot.com/2009/11/195-chars-to-help-lazy-loading.html
-            //see other setReadyState reference for the rest of the fix.
-            if (setReadyState) {
-                document.readyState = "complete";
-            }
-
-            req.callReady();
+        //Allow for anonymous functions
+        if (typeof name !== 'string') {
+            //Adjust args appropriately
+            callback = deps;
+            deps = name;
+            name = null;
         }
-    };
 
-    //See if there is nothing waiting across contexts, and if not, trigger
-    //callReady.
-    req.checkReadyState = function () {
-        var contexts = s.contexts, prop;
-        for (prop in contexts) {
-            if (!(prop in empty)) {
-                if (contexts[prop].waitCount) {
-                    return;
+        //This module may not have dependencies
+        if (!isArray(deps)) {
+            callback = deps;
+            deps = [];
+        }
+
+        //If no name, and callback is a function, then figure out if it a
+        //CommonJS thing with dependencies.
+        if (!deps.length && isFunction(callback)) {
+            //Remove comments from the callback string,
+            //look for require calls, and pull them into the dependencies,
+            //but only if there are function args.
+            if (callback.length) {
+                callback
+                    .toString()
+                    .replace(commentRegExp, '')
+                    .replace(cjsRequireRegExp, function (match, dep) {
+                        deps.push(dep);
+                    });
+
+                //May be a CommonJS thing even without require calls, but still
+                //could use exports, and module. Avoid doing exports and module
+                //work though if it just needs require.
+                //REQUIRES the function to expect the CommonJS variables in the
+                //order listed below.
+                deps = (callback.length === 1 ? ['require'] : ['require', 'exports', 'module']).concat(deps);
+            }
+        }
+
+        //If in IE 6-8 and hit an anonymous define() call, do the interactive
+        //work.
+        if (useInteractive) {
+            node = currentlyAddingScript || getInteractiveScript();
+            if (node) {
+                if (!name) {
+                    name = node.getAttribute('data-requiremodule');
                 }
+                context = contexts[node.getAttribute('data-requirecontext')];
             }
         }
-        s.isDone = true;
-        req.callReady();
+
+        //Always save off evaluating the def call until the script onload handler.
+        //This allows multiple modules to be in a file without prematurely
+        //tracing dependencies, and allows for anonymous module support,
+        //where the module name is not known until the script onload event
+        //occurs. If no context, use the global queue, and get it processed
+        //in the onscript load callback.
+        (context ? context.defQueue : globalDefQueue).push([name, deps, callback]);
     };
+
+    define.amd = {
+        jQuery: true
+    };
+
 
     /**
-    * Internal function that calls back any ready functions. If you are
-    * integrating RequireJS with another library without require.ready support,
-    * you can define this method to call your page ready code instead.
+    * Executes the text. Normally just uses eval, but can be modified
+    * to use a better, environment-specific call. Only used for transpiling
+    * loader plugins, not for plain JS modules.
+    * @param {String} text the text to execute/evaluate.
     */
-    req.callReady = function () {
-        var callbacks = s.readyCalls, i, callback, contexts, context, prop;
-
-        if (s.isPageLoaded && s.isDone) {
-            if (callbacks.length) {
-                s.readyCalls = [];
-                for (i = 0; (callback = callbacks[i]); i++) {
-                    callback();
-                }
-            }
-
-            //If jQuery with DOM ready delayed, release it now.
-            contexts = s.contexts;
-            for (prop in contexts) {
-                if (!(prop in empty)) {
-                    context = contexts[prop];
-                    if (context.jQueryIncremented) {
-                        jQueryHoldReady(context.jQuery, false);
-                        context.jQueryIncremented = false;
-                    }
-                }
-            }
-        }
+    req.exec = function (text) {
+        /*jslint evil: true */
+        return eval(text);
     };
 
-    /**
-    * Registers functions to call when the page is loaded
-    */
-    req.ready = function (callback) {
-        if (s.isPageLoaded && s.isDone) {
-            callback();
-        } else {
-            s.readyCalls.push(callback);
-        }
-        return req;
-    };
-
-    if (isBrowser) {
-        if (document.addEventListener) {
-            //Standards. Hooray! Assumption here that if standards based,
-            //it knows about DOMContentLoaded.
-            document.addEventListener("DOMContentLoaded", req.pageLoaded, false);
-            window.addEventListener("load", req.pageLoaded, false);
-            //Part of FF < 3.6 readystate fix (see setReadyState refs for more info)
-            if (!document.readyState) {
-                setReadyState = true;
-                document.readyState = "loading";
-            }
-        } else if (window.attachEvent) {
-            window.attachEvent("onload", req.pageLoaded);
-
-            //DOMContentLoaded approximation, as found by Diego Perini:
-            //http://javascript.nwbox.com/IEContentLoaded/
-            if (self === self.top) {
-                scrollIntervalId = setInterval(function () {
-                    try {
-                        //From this ticket:
-                        //http://bugs.dojotoolkit.org/ticket/11106,
-                        //In IE HTML Application (HTA), such as in a selenium test,
-                        //javascript in the iframe can't see anything outside
-                        //of it, so self===self.top is true, but the iframe is
-                        //not the top window and doScroll will be available
-                        //before document.body is set. Test document.body
-                        //before trying the doScroll trick.
-                        if (document.body) {
-                            document.documentElement.doScroll("left");
-                            req.pageLoaded();
-                        }
-                    } catch (e) { }
-                }, 30);
-            }
-        }
-
-        //Check if document already complete, and if so, just trigger page load
-        //listeners. NOTE: does not work with Firefox before 3.6. To support
-        //those browsers, manually call require.pageLoaded().
-        if (document.readyState === "complete") {
-            req.pageLoaded();
-        }
-    }
-    //****** END page load functionality ****************
-
-    //Set up default context. If require was a configuration object, use that as base config.
+    //Set up with config info.
     req(cfg);
-
-    //If modules are built into require.js, then need to make sure dependencies are
-    //traced. Use a setTimeout in the browser world, to allow all the modules to register
-    //themselves. In a non-browser env, assume that modules are not built into require.js,
-    //which seems odd to do on the server.
-    if (req.isAsync && typeof setTimeout !== "undefined") {
-        ctx = s.contexts[(cfg.context || defContextName)];
-        //Indicate that the script that includes require() is still loading,
-        //so that require()'d dependencies are not traced until the end of the
-        //file is parsed (approximated via the setTimeout call).
-        ctx.requireWait = true;
-        setTimeout(function () {
-            ctx.requireWait = false;
-
-            //Any modules included with the require.js file will be in the
-            //global queue, assign them to this context.
-            ctx.takeGlobalQueue();
-
-            //Allow for jQuery to be loaded/already in the page, and if jQuery 1.4.3,
-            //make sure to hold onto it for readyWait triggering.
-            ctx.jQueryCheck();
-
-            if (!ctx.scriptCount) {
-                ctx.resume();
-            }
-            req.checkReadyState();
-        }, 0);
-    }
-} ());
+} (this));
 /*!
-* jQuery JavaScript Library v1.6.2
+* jQuery JavaScript Library v1.7.2
 * http://jquery.com/
 *
 * Copyright 2011, John Resig
@@ -2023,7 +1999,7 @@ var requirejs, require, define;
 * Copyright 2011, The Dojo Foundation
 * Released under the MIT, BSD, and GPL Licenses.
 *
-* Date: Thu Jun 30 14:16:56 2011 -0400
+* Date: Wed Mar 21 12:46:34 2012 -0700
 */
 (function (window, undefined) {
 
@@ -2049,8 +2025,8 @@ var requirejs, require, define;
 	rootjQuery,
 
         // A simple way to check for HTML strings or ID strings
-        // (both of which we optimize for)
-	quickExpr = /^(?:[^<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/,
+        // Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
+	quickExpr = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/,
 
         // Check if a string has a non-whitespace character in it
 	rnotwhite = /\S/,
@@ -2058,9 +2034,6 @@ var requirejs, require, define;
         // Used for trimming whitespace
 	trimLeft = /^\s+/,
 	trimRight = /\s+$/,
-
-        // Check for digits
-	rdigit = /\d/,
 
         // Match a standalone tag
 	rsingleTag = /^<(\w+)\s*\/?>(?:<\/\1>)?$/,
@@ -2078,11 +2051,12 @@ var requirejs, require, define;
 	rmozilla = /(mozilla)(?:.*? rv:([\w.]+))?/,
 
         // Matches dashed string for camelizing
-	rdashAlpha = /-([a-z])/ig,
+	rdashAlpha = /-([a-z]|[0-9])/ig,
+	rmsPrefix = /^-ms-/,
 
         // Used by jQuery.camelCase as callback to replace()
 	fcamelCase = function (all, letter) {
-	    return letter.toUpperCase();
+	    return (letter + "").toUpperCase();
 	},
 
         // Keep a UserAgent string for use with jQuery.browser
@@ -2224,7 +2198,7 @@ var requirejs, require, define;
             selector: "",
 
             // The current version of jQuery being used
-            jquery: "1.6.2",
+            jquery: "1.7.2",
 
             // The default length of a jQuery object is 0
             length: 0,
@@ -2290,15 +2264,16 @@ var requirejs, require, define;
                 jQuery.bindReady();
 
                 // Add the callback
-                readyList.done(fn);
+                readyList.add(fn);
 
                 return this;
             },
 
             eq: function (i) {
+                i = +i;
                 return i === -1 ?
 			this.slice(i) :
-			this.slice(i, +i + 1);
+			this.slice(i, i + 1);
             },
 
             first: function () {
@@ -2445,11 +2420,11 @@ var requirejs, require, define;
                     }
 
                     // If there are functions bound, to execute
-                    readyList.resolveWith(document, [jQuery]);
+                    readyList.fireWith(document, [jQuery]);
 
                     // Trigger any bound ready events
                     if (jQuery.fn.trigger) {
-                        jQuery(document).trigger("ready").unbind("ready");
+                        jQuery(document).trigger("ready").off("ready");
                     }
                 }
             },
@@ -2459,7 +2434,7 @@ var requirejs, require, define;
                     return;
                 }
 
-                readyList = jQuery._Deferred();
+                readyList = jQuery.Callbacks("once memory");
 
                 // Catch cases where $(document).ready() is called after the
                 // browser event has already occurred.
@@ -2510,13 +2485,12 @@ var requirejs, require, define;
                 return jQuery.type(obj) === "array";
             },
 
-            // A crude way of determining if an object is a window
             isWindow: function (obj) {
-                return obj && typeof obj === "object" && "setInterval" in obj;
+                return obj != null && obj == obj.window;
             },
 
-            isNaN: function (obj) {
-                return obj == null || !rdigit.test(obj) || isNaN(obj);
+            isNumeric: function (obj) {
+                return !isNaN(parseFloat(obj)) && isFinite(obj);
             },
 
             type: function (obj) {
@@ -2533,10 +2507,15 @@ var requirejs, require, define;
                     return false;
                 }
 
-                // Not own constructor property must be Object
-                if (obj.constructor &&
-			!hasOwn.call(obj, "constructor") &&
-			!hasOwn.call(obj.constructor.prototype, "isPrototypeOf")) {
+                try {
+                    // Not own constructor property must be Object
+                    if (obj.constructor &&
+				!hasOwn.call(obj, "constructor") &&
+				!hasOwn.call(obj.constructor.prototype, "isPrototypeOf")) {
+                        return false;
+                    }
+                } catch (e) {
+                    // IE8,9 Will throw exceptions on certain host objects #9897
                     return false;
                 }
 
@@ -2557,7 +2536,7 @@ var requirejs, require, define;
             },
 
             error: function (msg) {
-                throw msg;
+                throw new Error(msg);
             },
 
             parseJSON: function (data) {
@@ -2586,24 +2565,26 @@ var requirejs, require, define;
             },
 
             // Cross-browser xml parsing
-            // (xml & tmp used internally)
-            parseXML: function (data, xml, tmp) {
-
-                if (window.DOMParser) { // Standard
-                    tmp = new DOMParser();
-                    xml = tmp.parseFromString(data, "text/xml");
-                } else { // IE
-                    xml = new ActiveXObject("Microsoft.XMLDOM");
-                    xml.async = "false";
-                    xml.loadXML(data);
+            parseXML: function (data) {
+                if (typeof data !== "string" || !data) {
+                    return null;
                 }
-
-                tmp = xml.documentElement;
-
-                if (!tmp || !tmp.nodeName || tmp.nodeName === "parsererror") {
+                var xml, tmp;
+                try {
+                    if (window.DOMParser) { // Standard
+                        tmp = new DOMParser();
+                        xml = tmp.parseFromString(data, "text/xml");
+                    } else { // IE
+                        xml = new ActiveXObject("Microsoft.XMLDOM");
+                        xml.async = "false";
+                        xml.loadXML(data);
+                    }
+                } catch (e) {
+                    xml = undefined;
+                }
+                if (!xml || !xml.documentElement || xml.getElementsByTagName("parsererror").length) {
                     jQuery.error("Invalid XML: " + data);
                 }
-
                 return xml;
             },
 
@@ -2623,10 +2604,10 @@ var requirejs, require, define;
                 }
             },
 
-            // Converts a dashed string to camelCased string;
-            // Used by both the css and data modules
+            // Convert dashed to camelCase; used by the css and data modules
+            // Microsoft forgot to hump their vendor prefix (#9572)
             camelCase: function (string) {
-                return string.replace(rdashAlpha, fcamelCase);
+                return string.replace(rmsPrefix, "ms-").replace(rdashAlpha, fcamelCase);
             },
 
             nodeName: function (elem, name) {
@@ -2695,8 +2676,6 @@ var requirejs, require, define;
 
                 if (array != null) {
                     // The window, strings (and functions) also have 'length'
-                    // The extra typeof function check is to prevent crashes
-                    // in Safari 2 (See: #3039)
                     // Tweaked logic slightly to handle Blackberry 4.7 RegExp issues #6930
                     var type = jQuery.type(array);
 
@@ -2710,15 +2689,22 @@ var requirejs, require, define;
                 return ret;
             },
 
-            inArray: function (elem, array) {
+            inArray: function (elem, array, i) {
+                var len;
 
-                if (indexOf) {
-                    return indexOf.call(array, elem);
-                }
+                if (array) {
+                    if (indexOf) {
+                        return indexOf.call(array, elem, i);
+                    }
 
-                for (var i = 0, length = array.length; i < length; i++) {
-                    if (array[i] === elem) {
-                        return i;
+                    len = array.length;
+                    i = i ? i < 0 ? Math.max(0, len + i) : i : 0;
+
+                    for (; i < len; i++) {
+                        // Skip accessing in sparse arrays
+                        if (i in array && array[i] === elem) {
+                            return i;
+                        }
                     }
                 }
 
@@ -2826,31 +2812,55 @@ var requirejs, require, define;
 
             // Mutifunctional method to get and set values to a collection
             // The value/s can optionally be executed if it's a function
-            access: function (elems, key, value, exec, fn, pass) {
-                var length = elems.length;
+            access: function (elems, fn, key, value, chainable, emptyGet, pass) {
+                var exec,
+			bulk = key == null,
+			i = 0,
+			length = elems.length;
 
-                // Setting many attributes
-                if (typeof key === "object") {
-                    for (var k in key) {
-                        jQuery.access(elems, k, key[k], exec, fn, value);
+                // Sets many values
+                if (key && typeof key === "object") {
+                    for (i in key) {
+                        jQuery.access(elems, fn, i, key[i], 1, emptyGet, value);
                     }
-                    return elems;
-                }
+                    chainable = 1;
 
-                // Setting one attribute
-                if (value !== undefined) {
+                    // Sets one value
+                } else if (value !== undefined) {
                     // Optionally, function values get executed if exec is true
-                    exec = !pass && exec && jQuery.isFunction(value);
+                    exec = pass === undefined && jQuery.isFunction(value);
 
-                    for (var i = 0; i < length; i++) {
-                        fn(elems[i], key, exec ? value.call(elems[i], i, fn(elems[i], key)) : value, pass);
+                    if (bulk) {
+                        // Bulk operations only iterate when executing function values
+                        if (exec) {
+                            exec = fn;
+                            fn = function (elem, key, value) {
+                                return exec.call(jQuery(elem), value);
+                            };
+
+                            // Otherwise they run against the entire set
+                        } else {
+                            fn.call(elems, value);
+                            fn = null;
+                        }
                     }
 
-                    return elems;
+                    if (fn) {
+                        for (; i < length; i++) {
+                            fn(elems[i], key, exec ? value.call(elems[i], i, fn(elems[i], key)) : value, pass);
+                        }
+                    }
+
+                    chainable = 1;
                 }
 
-                // Getting an attribute
-                return length ? fn(elems[0], key) : undefined;
+                return chainable ?
+			elems :
+
+                // Gets
+			bulk ?
+				fn.call(elems) :
+				length ? fn(elems[0], key) : emptyGet;
             },
 
             now: function () {
@@ -2961,188 +2971,363 @@ var requirejs, require, define;
     })();
 
 
-    var // Promise methods
-	promiseMethods = "done fail isResolved isRejected promise then always pipe".split(" "),
-    // Static reference to slice
+    // String to Object flags format cache
+    var flagsCache = {};
+
+    // Convert String-formatted flags into Object-formatted ones and store in cache
+    function createFlags(flags) {
+        var object = flagsCache[flags] = {},
+		i, length;
+        flags = flags.split(/\s+/);
+        for (i = 0, length = flags.length; i < length; i++) {
+            object[flags[i]] = true;
+        }
+        return object;
+    }
+
+    /*
+    * Create a callback list using the following parameters:
+    *
+    *	flags:	an optional list of space-separated flags that will change how
+    *			the callback list behaves
+    *
+    * By default a callback list will act like an event callback list and can be
+    * "fired" multiple times.
+    *
+    * Possible flags:
+    *
+    *	once:			will ensure the callback list can only be fired once (like a Deferred)
+    *
+    *	memory:			will keep track of previous values and will call any callback added
+    *					after the list has been fired right away with the latest "memorized"
+    *					values (like a Deferred)
+    *
+    *	unique:			will ensure a callback can only be added once (no duplicate in the list)
+    *
+    *	stopOnFalse:	interrupt callings when a callback returns false
+    *
+    */
+    jQuery.Callbacks = function (flags) {
+
+        // Convert flags from String-formatted to Object-formatted
+        // (we check in cache first)
+        flags = flags ? (flagsCache[flags] || createFlags(flags)) : {};
+
+        var // Actual callback list
+		list = [],
+        // Stack of fire calls for repeatable lists
+		stack = [],
+        // Last fire value (for non-forgettable lists)
+		memory,
+        // Flag to know if list was already fired
+		fired,
+        // Flag to know if list is currently firing
+		firing,
+        // First callback to fire (used internally by add and fireWith)
+		firingStart,
+        // End of the loop when firing
+		firingLength,
+        // Index of currently firing callback (modified by remove if needed)
+		firingIndex,
+        // Add one or several callbacks to the list
+		add = function (args) {
+		    var i,
+				length,
+				elem,
+				type,
+				actual;
+		    for (i = 0, length = args.length; i < length; i++) {
+		        elem = args[i];
+		        type = jQuery.type(elem);
+		        if (type === "array") {
+		            // Inspect recursively
+		            add(elem);
+		        } else if (type === "function") {
+		            // Add if not in unique mode and callback is not in
+		            if (!flags.unique || !self.has(elem)) {
+		                list.push(elem);
+		            }
+		        }
+		    }
+		},
+        // Fire callbacks
+		fire = function (context, args) {
+		    args = args || [];
+		    memory = !flags.memory || [context, args];
+		    fired = true;
+		    firing = true;
+		    firingIndex = firingStart || 0;
+		    firingStart = 0;
+		    firingLength = list.length;
+		    for (; list && firingIndex < firingLength; firingIndex++) {
+		        if (list[firingIndex].apply(context, args) === false && flags.stopOnFalse) {
+		            memory = true; // Mark as halted
+		            break;
+		        }
+		    }
+		    firing = false;
+		    if (list) {
+		        if (!flags.once) {
+		            if (stack && stack.length) {
+		                memory = stack.shift();
+		                self.fireWith(memory[0], memory[1]);
+		            }
+		        } else if (memory === true) {
+		            self.disable();
+		        } else {
+		            list = [];
+		        }
+		    }
+		},
+        // Actual Callbacks object
+		self = {
+		    // Add a callback or a collection of callbacks to the list
+		    add: function () {
+		        if (list) {
+		            var length = list.length;
+		            add(arguments);
+		            // Do we need to add the callbacks to the
+		            // current firing batch?
+		            if (firing) {
+		                firingLength = list.length;
+		                // With memory, if we're not firing then
+		                // we should call right away, unless previous
+		                // firing was halted (stopOnFalse)
+		            } else if (memory && memory !== true) {
+		                firingStart = length;
+		                fire(memory[0], memory[1]);
+		            }
+		        }
+		        return this;
+		    },
+		    // Remove a callback from the list
+		    remove: function () {
+		        if (list) {
+		            var args = arguments,
+						argIndex = 0,
+						argLength = args.length;
+		            for (; argIndex < argLength; argIndex++) {
+		                for (var i = 0; i < list.length; i++) {
+		                    if (args[argIndex] === list[i]) {
+		                        // Handle firingIndex and firingLength
+		                        if (firing) {
+		                            if (i <= firingLength) {
+		                                firingLength--;
+		                                if (i <= firingIndex) {
+		                                    firingIndex--;
+		                                }
+		                            }
+		                        }
+		                        // Remove the element
+		                        list.splice(i--, 1);
+		                        // If we have some unicity property then
+		                        // we only need to do this once
+		                        if (flags.unique) {
+		                            break;
+		                        }
+		                    }
+		                }
+		            }
+		        }
+		        return this;
+		    },
+		    // Control if a given callback is in the list
+		    has: function (fn) {
+		        if (list) {
+		            var i = 0,
+						length = list.length;
+		            for (; i < length; i++) {
+		                if (fn === list[i]) {
+		                    return true;
+		                }
+		            }
+		        }
+		        return false;
+		    },
+		    // Remove all callbacks from the list
+		    empty: function () {
+		        list = [];
+		        return this;
+		    },
+		    // Have the list do nothing anymore
+		    disable: function () {
+		        list = stack = memory = undefined;
+		        return this;
+		    },
+		    // Is it disabled?
+		    disabled: function () {
+		        return !list;
+		    },
+		    // Lock the list in its current state
+		    lock: function () {
+		        stack = undefined;
+		        if (!memory || memory === true) {
+		            self.disable();
+		        }
+		        return this;
+		    },
+		    // Is it locked?
+		    locked: function () {
+		        return !stack;
+		    },
+		    // Call all callbacks with the given context and arguments
+		    fireWith: function (context, args) {
+		        if (stack) {
+		            if (firing) {
+		                if (!flags.once) {
+		                    stack.push([context, args]);
+		                }
+		            } else if (!(flags.once && memory)) {
+		                fire(context, args);
+		            }
+		        }
+		        return this;
+		    },
+		    // Call all the callbacks with the given arguments
+		    fire: function () {
+		        self.fireWith(this, arguments);
+		        return this;
+		    },
+		    // To know if the callbacks have already been called at least once
+		    fired: function () {
+		        return !!fired;
+		    }
+		};
+
+        return self;
+    };
+
+
+
+
+    var // Static reference to slice
 	sliceDeferred = [].slice;
 
     jQuery.extend({
-        // Create a simple deferred (one callbacks list)
-        _Deferred: function () {
-            var // callbacks list
-			callbacks = [],
-            // stored [ context , args ]
-			fired,
-            // to avoid firing when already doing so
-			firing,
-            // flag to know if the deferred has been cancelled
-			cancelled,
-            // the deferred itself
-			deferred = {
 
-			    // done( f1, f2, ...)
-			    done: function () {
-			        if (!cancelled) {
-			            var args = arguments,
-							i,
-							length,
-							elem,
-							type,
-							_fired;
-			            if (fired) {
-			                _fired = fired;
-			                fired = 0;
-			            }
-			            for (i = 0, length = args.length; i < length; i++) {
-			                elem = args[i];
-			                type = jQuery.type(elem);
-			                if (type === "array") {
-			                    deferred.done.apply(deferred, elem);
-			                } else if (type === "function") {
-			                    callbacks.push(elem);
-			                }
-			            }
-			            if (_fired) {
-			                deferred.resolveWith(_fired[0], _fired[1]);
-			            }
-			        }
-			        return this;
-			    },
-
-			    // resolve with given context and args
-			    resolveWith: function (context, args) {
-			        if (!cancelled && !fired && !firing) {
-			            // make sure args are available (#8421)
-			            args = args || [];
-			            firing = 1;
-			            try {
-			                while (callbacks[0]) {
-			                    callbacks.shift().apply(context, args);
-			                }
-			            }
-			            finally {
-			                fired = [context, args];
-			                firing = 0;
-			            }
-			        }
-			        return this;
-			    },
-
-			    // resolve with this as context and given arguments
-			    resolve: function () {
-			        deferred.resolveWith(this, arguments);
-			        return this;
-			    },
-
-			    // Has this deferred been resolved?
-			    isResolved: function () {
-			        return !!(firing || fired);
-			    },
-
-			    // Cancel
-			    cancel: function () {
-			        cancelled = 1;
-			        callbacks = [];
-			        return this;
-			    }
-			};
-
-            return deferred;
-        },
-
-        // Full fledged deferred (two callbacks list)
         Deferred: function (func) {
-            var deferred = jQuery._Deferred(),
-			failDeferred = jQuery._Deferred(),
-			promise;
-            // Add errorDeferred methods, then and promise
-            jQuery.extend(deferred, {
-                then: function (doneCallbacks, failCallbacks) {
-                    deferred.done(doneCallbacks).fail(failCallbacks);
-                    return this;
-                },
-                always: function () {
-                    return deferred.done.apply(deferred, arguments).fail.apply(this, arguments);
-                },
-                fail: failDeferred.done,
-                rejectWith: failDeferred.resolveWith,
-                reject: failDeferred.resolve,
-                isRejected: failDeferred.isResolved,
-                pipe: function (fnDone, fnFail) {
-                    return jQuery.Deferred(function (newDefer) {
-                        jQuery.each({
-                            done: [fnDone, "resolve"],
-                            fail: [fnFail, "reject"]
-                        }, function (handler, data) {
-                            var fn = data[0],
-							action = data[1],
-							returned;
-                            if (jQuery.isFunction(fn)) {
-                                deferred[handler](function () {
-                                    returned = fn.apply(this, arguments);
-                                    if (returned && jQuery.isFunction(returned.promise)) {
-                                        returned.promise().then(newDefer.resolve, newDefer.reject);
-                                    } else {
-                                        newDefer[action](returned);
-                                    }
-                                });
-                            } else {
-                                deferred[handler](newDefer[action]);
-                            }
-                        });
-                    }).promise();
-                },
-                // Get a promise for this deferred
-                // If obj is provided, the promise aspect is added to the object
-                promise: function (obj) {
-                    if (obj == null) {
-                        if (promise) {
-                            return promise;
-                        }
-                        promise = obj = {};
-                    }
-                    var i = promiseMethods.length;
-                    while (i--) {
-                        obj[promiseMethods[i]] = deferred[promiseMethods[i]];
-                    }
-                    return obj;
-                }
-            });
-            // Make sure only one callback list will be used
-            deferred.done(failDeferred.cancel).fail(deferred.cancel);
-            // Unexpose cancel
-            delete deferred.cancel;
+            var doneList = jQuery.Callbacks("once memory"),
+			failList = jQuery.Callbacks("once memory"),
+			progressList = jQuery.Callbacks("memory"),
+			state = "pending",
+			lists = {
+			    resolve: doneList,
+			    reject: failList,
+			    notify: progressList
+			},
+			promise = {
+			    done: doneList.add,
+			    fail: failList.add,
+			    progress: progressList.add,
+
+			    state: function () {
+			        return state;
+			    },
+
+			    // Deprecated
+			    isResolved: doneList.fired,
+			    isRejected: failList.fired,
+
+			    then: function (doneCallbacks, failCallbacks, progressCallbacks) {
+			        deferred.done(doneCallbacks).fail(failCallbacks).progress(progressCallbacks);
+			        return this;
+			    },
+			    always: function () {
+			        deferred.done.apply(deferred, arguments).fail.apply(deferred, arguments);
+			        return this;
+			    },
+			    pipe: function (fnDone, fnFail, fnProgress) {
+			        return jQuery.Deferred(function (newDefer) {
+			            jQuery.each({
+			                done: [fnDone, "resolve"],
+			                fail: [fnFail, "reject"],
+			                progress: [fnProgress, "notify"]
+			            }, function (handler, data) {
+			                var fn = data[0],
+								action = data[1],
+								returned;
+			                if (jQuery.isFunction(fn)) {
+			                    deferred[handler](function () {
+			                        returned = fn.apply(this, arguments);
+			                        if (returned && jQuery.isFunction(returned.promise)) {
+			                            returned.promise().then(newDefer.resolve, newDefer.reject, newDefer.notify);
+			                        } else {
+			                            newDefer[action + "With"](this === deferred ? newDefer : this, [returned]);
+			                        }
+			                    });
+			                } else {
+			                    deferred[handler](newDefer[action]);
+			                }
+			            });
+			        }).promise();
+			    },
+			    // Get a promise for this deferred
+			    // If obj is provided, the promise aspect is added to the object
+			    promise: function (obj) {
+			        if (obj == null) {
+			            obj = promise;
+			        } else {
+			            for (var key in promise) {
+			                obj[key] = promise[key];
+			            }
+			        }
+			        return obj;
+			    }
+			},
+			deferred = promise.promise({}),
+			key;
+
+            for (key in lists) {
+                deferred[key] = lists[key].fire;
+                deferred[key + "With"] = lists[key].fireWith;
+            }
+
+            // Handle state
+            deferred.done(function () {
+                state = "resolved";
+            }, failList.disable, progressList.lock).fail(function () {
+                state = "rejected";
+            }, doneList.disable, progressList.lock);
+
             // Call given func if any
             if (func) {
                 func.call(deferred, deferred);
             }
+
+            // All done!
             return deferred;
         },
 
         // Deferred helper
         when: function (firstParam) {
-            var args = arguments,
+            var args = sliceDeferred.call(arguments, 0),
 			i = 0,
 			length = args.length,
+			pValues = new Array(length),
 			count = length,
+			pCount = length,
 			deferred = length <= 1 && firstParam && jQuery.isFunction(firstParam.promise) ?
 				firstParam :
-				jQuery.Deferred();
+				jQuery.Deferred(),
+			promise = deferred.promise();
             function resolveFunc(i) {
                 return function (value) {
                     args[i] = arguments.length > 1 ? sliceDeferred.call(arguments, 0) : value;
                     if (!(--count)) {
-                        // Strange bug in FF4:
-                        // Values changed onto the arguments object sometimes end up as undefined values
-                        // outside the $.when method. Cloning the object into a fresh array solves the issue
-                        deferred.resolveWith(deferred, sliceDeferred.call(args, 0));
+                        deferred.resolveWith(deferred, args);
                     }
+                };
+            }
+            function progressFunc(i) {
+                return function (value) {
+                    pValues[i] = arguments.length > 1 ? sliceDeferred.call(arguments, 0) : value;
+                    deferred.notifyWith(promise, pValues);
                 };
             }
             if (length > 1) {
                 for (; i < length; i++) {
-                    if (args[i] && jQuery.isFunction(args[i].promise)) {
-                        args[i].promise().then(resolveFunc(i), deferred.reject);
+                    if (args[i] && args[i].promise && jQuery.isFunction(args[i].promise)) {
+                        args[i].promise().then(resolveFunc(i), deferred.reject, progressFunc(i));
                     } else {
                         --count;
                     }
@@ -3153,33 +3338,29 @@ var requirejs, require, define;
             } else if (deferred !== firstParam) {
                 deferred.resolveWith(deferred, length ? [firstParam] : []);
             }
-            return deferred.promise();
+            return promise;
         }
     });
 
 
 
+
     jQuery.support = (function () {
 
-        var div = document.createElement("div"),
-		documentElement = document.documentElement,
+        var support,
 		all,
 		a,
 		select,
 		opt,
 		input,
-		marginDiv,
-		support,
 		fragment,
-		body,
-		testElementParent,
-		testElement,
-		testElementStyle,
 		tds,
 		events,
 		eventName,
 		i,
-		isSupported;
+		isSupported,
+		div = document.createElement("div"),
+		documentElement = document.documentElement;
 
         // Preliminary tests
         div.setAttribute("className", "t");
@@ -3221,7 +3402,7 @@ var requirejs, require, define;
             // Make sure that element opacity exists
             // (IE uses filter instead)
             // Use a regex to work around a WebKit issue. See #5145
-            opacity: /^0.55$/.test(a.style.opacity),
+            opacity: /^0.55/.test(a.style.opacity),
 
             // Verify style float existence
             // (IE uses styleFloat instead of cssFloat)
@@ -3239,6 +3420,13 @@ var requirejs, require, define;
             // Test setAttribute on camelCase class. If it works, we need attrFixes when doing get/setAttribute (ie6/7)
             getSetAttribute: div.className !== "t",
 
+            // Tests for enctype support on a form(#6743)
+            enctype: !!document.createElement("form").enctype,
+
+            // Makes sure cloning an html5 element does not cause problems
+            // Where outerHTML is undefined, this still works
+            html5Clone: document.createElement("nav").cloneNode(true).outerHTML !== "<:nav></:nav>",
+
             // Will be defined later
             submitBubbles: true,
             changeBubbles: true,
@@ -3247,8 +3435,12 @@ var requirejs, require, define;
             noCloneEvent: true,
             inlineBlockNeedsLayout: false,
             shrinkWrapBlocks: false,
-            reliableMarginRight: true
+            reliableMarginRight: true,
+            pixelMargin: true
         };
+
+        // jQuery.boxModel DEPRECATED in 1.3, use jQuery.support.boxModel instead
+        jQuery.boxModel = support.boxModel = (document.compatMode === "CSS1Compat");
 
         // Make sure checked status is properly cloned
         input.checked = true;
@@ -3276,7 +3468,7 @@ var requirejs, require, define;
             div.cloneNode(true).fireEvent("onclick");
         }
 
-        // Check if a radio maintains it's value
+        // Check if a radio maintains its value
         // after being appended to the DOM
         input = document.createElement("input");
         input.value = "t";
@@ -3284,105 +3476,26 @@ var requirejs, require, define;
         support.radioValue = input.value === "t";
 
         input.setAttribute("checked", "checked");
+
+        // #11217 - WebKit loses check when the name is after the checked attribute
+        input.setAttribute("name", "t");
+
         div.appendChild(input);
         fragment = document.createDocumentFragment();
-        fragment.appendChild(div.firstChild);
+        fragment.appendChild(div.lastChild);
 
         // WebKit doesn't clone checked state correctly in fragments
         support.checkClone = fragment.cloneNode(true).cloneNode(true).lastChild.checked;
-
-        div.innerHTML = "";
-
-        // Figure out if the W3C box model works as expected
-        div.style.width = div.style.paddingLeft = "1px";
-
-        body = document.getElementsByTagName("body")[0];
-        // We use our own, invisible, body unless the body is already present
-        // in which case we use a div (#9239)
-        testElement = document.createElement(body ? "div" : "body");
-        testElementStyle = {
-            visibility: "hidden",
-            width: 0,
-            height: 0,
-            border: 0,
-            margin: 0
-        };
-        if (body) {
-            jQuery.extend(testElementStyle, {
-                position: "absolute",
-                left: -1000,
-                top: -1000
-            });
-        }
-        for (i in testElementStyle) {
-            testElement.style[i] = testElementStyle[i];
-        }
-        testElement.appendChild(div);
-        testElementParent = body || documentElement;
-        testElementParent.insertBefore(testElement, testElementParent.firstChild);
 
         // Check if a disconnected checkbox will retain its checked
         // value of true after appended to the DOM (IE6/7)
         support.appendChecked = input.checked;
 
-        support.boxModel = div.offsetWidth === 2;
-
-        if ("zoom" in div.style) {
-            // Check if natively block-level elements act like inline-block
-            // elements when setting their display to 'inline' and giving
-            // them layout
-            // (IE < 8 does this)
-            div.style.display = "inline";
-            div.style.zoom = 1;
-            support.inlineBlockNeedsLayout = (div.offsetWidth === 2);
-
-            // Check if elements with layout shrink-wrap their children
-            // (IE 6 does this)
-            div.style.display = "";
-            div.innerHTML = "<div style='width:4px;'></div>";
-            support.shrinkWrapBlocks = (div.offsetWidth !== 2);
-        }
-
-        div.innerHTML = "<table><tr><td style='padding:0;border:0;display:none'></td><td>t</td></tr></table>";
-        tds = div.getElementsByTagName("td");
-
-        // Check if table cells still have offsetWidth/Height when they are set
-        // to display:none and there are still other visible table cells in a
-        // table row; if so, offsetWidth/Height are not reliable for use when
-        // determining if an element has been hidden directly using
-        // display:none (it is still safe to use offsets if a parent element is
-        // hidden; don safety goggles and see bug #4512 for more information).
-        // (only IE 8 fails this test)
-        isSupported = (tds[0].offsetHeight === 0);
-
-        tds[0].style.display = "";
-        tds[1].style.display = "none";
-
-        // Check if empty table cells still have offsetWidth/Height
-        // (IE < 8 fail this test)
-        support.reliableHiddenOffsets = isSupported && (tds[0].offsetHeight === 0);
-        div.innerHTML = "";
-
-        // Check if div with explicit width and no margin-right incorrectly
-        // gets computed margin-right based on width of container. For more
-        // info see bug #3333
-        // Fails in WebKit before Feb 2011 nightlies
-        // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
-        if (document.defaultView && document.defaultView.getComputedStyle) {
-            marginDiv = document.createElement("div");
-            marginDiv.style.width = "0";
-            marginDiv.style.marginRight = "0";
-            div.appendChild(marginDiv);
-            support.reliableMarginRight =
-			(parseInt((document.defaultView.getComputedStyle(marginDiv, null) || { marginRight: 0 }).marginRight, 10) || 0) === 0;
-        }
-
-        // Remove the body element we added
-        testElement.innerHTML = "";
-        testElementParent.removeChild(testElement);
+        fragment.removeChild(input);
+        fragment.appendChild(div);
 
         // Technique from Juriy Zaytsev
-        // http://thinkweb2.com/projects/prototype/detecting-event-support-without-browser-sniffing/
+        // http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
         // We only care about the case where non-standard event systems
         // are used, namely in IE. Short-circuiting here helps us to
         // avoid an eval call (in setAttribute) which can cause CSP
@@ -3403,20 +3516,143 @@ var requirejs, require, define;
             }
         }
 
-        // Null connected elements to avoid leaks in IE
-        testElement = fragment = select = opt = body = marginDiv = div = input = null;
+        fragment.removeChild(div);
+
+        // Null elements to avoid leaks in IE
+        fragment = select = opt = div = input = null;
+
+        // Run tests that need a body at doc ready
+        jQuery(function () {
+            var container, outer, inner, table, td, offsetSupport,
+			marginDiv, conMarginTop, style, html, positionTopLeftWidthHeight,
+			paddingMarginBorderVisibility, paddingMarginBorder,
+			body = document.getElementsByTagName("body")[0];
+
+            if (!body) {
+                // Return for frameset docs that don't have a body
+                return;
+            }
+
+            conMarginTop = 1;
+            paddingMarginBorder = "padding:0;margin:0;border:";
+            positionTopLeftWidthHeight = "position:absolute;top:0;left:0;width:1px;height:1px;";
+            paddingMarginBorderVisibility = paddingMarginBorder + "0;visibility:hidden;";
+            style = "style='" + positionTopLeftWidthHeight + paddingMarginBorder + "5px solid #000;";
+            html = "<div " + style + "display:block;'><div style='" + paddingMarginBorder + "0;display:block;overflow:hidden;'></div></div>" +
+			"<table " + style + "' cellpadding='0' cellspacing='0'>" +
+			"<tr><td></td></tr></table>";
+
+            container = document.createElement("div");
+            container.style.cssText = paddingMarginBorderVisibility + "width:0;height:0;position:static;top:0;margin-top:" + conMarginTop + "px";
+            body.insertBefore(container, body.firstChild);
+
+            // Construct the test element
+            div = document.createElement("div");
+            container.appendChild(div);
+
+            // Check if table cells still have offsetWidth/Height when they are set
+            // to display:none and there are still other visible table cells in a
+            // table row; if so, offsetWidth/Height are not reliable for use when
+            // determining if an element has been hidden directly using
+            // display:none (it is still safe to use offsets if a parent element is
+            // hidden; don safety goggles and see bug #4512 for more information).
+            // (only IE 8 fails this test)
+            div.innerHTML = "<table><tr><td style='" + paddingMarginBorder + "0;display:none'></td><td>t</td></tr></table>";
+            tds = div.getElementsByTagName("td");
+            isSupported = (tds[0].offsetHeight === 0);
+
+            tds[0].style.display = "";
+            tds[1].style.display = "none";
+
+            // Check if empty table cells still have offsetWidth/Height
+            // (IE <= 8 fail this test)
+            support.reliableHiddenOffsets = isSupported && (tds[0].offsetHeight === 0);
+
+            // Check if div with explicit width and no margin-right incorrectly
+            // gets computed margin-right based on width of container. For more
+            // info see bug #3333
+            // Fails in WebKit before Feb 2011 nightlies
+            // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+            if (window.getComputedStyle) {
+                div.innerHTML = "";
+                marginDiv = document.createElement("div");
+                marginDiv.style.width = "0";
+                marginDiv.style.marginRight = "0";
+                div.style.width = "2px";
+                div.appendChild(marginDiv);
+                support.reliableMarginRight =
+				(parseInt((window.getComputedStyle(marginDiv, null) || { marginRight: 0 }).marginRight, 10) || 0) === 0;
+            }
+
+            if (typeof div.style.zoom !== "undefined") {
+                // Check if natively block-level elements act like inline-block
+                // elements when setting their display to 'inline' and giving
+                // them layout
+                // (IE < 8 does this)
+                div.innerHTML = "";
+                div.style.width = div.style.padding = "1px";
+                div.style.border = 0;
+                div.style.overflow = "hidden";
+                div.style.display = "inline";
+                div.style.zoom = 1;
+                support.inlineBlockNeedsLayout = (div.offsetWidth === 3);
+
+                // Check if elements with layout shrink-wrap their children
+                // (IE 6 does this)
+                div.style.display = "block";
+                div.style.overflow = "visible";
+                div.innerHTML = "<div style='width:5px;'></div>";
+                support.shrinkWrapBlocks = (div.offsetWidth !== 3);
+            }
+
+            div.style.cssText = positionTopLeftWidthHeight + paddingMarginBorderVisibility;
+            div.innerHTML = html;
+
+            outer = div.firstChild;
+            inner = outer.firstChild;
+            td = outer.nextSibling.firstChild.firstChild;
+
+            offsetSupport = {
+                doesNotAddBorder: (inner.offsetTop !== 5),
+                doesAddBorderForTableAndCells: (td.offsetTop === 5)
+            };
+
+            inner.style.position = "fixed";
+            inner.style.top = "20px";
+
+            // safari subtracts parent border width here which is 5px
+            offsetSupport.fixedPosition = (inner.offsetTop === 20 || inner.offsetTop === 15);
+            inner.style.position = inner.style.top = "";
+
+            outer.style.overflow = "hidden";
+            outer.style.position = "relative";
+
+            offsetSupport.subtractsBorderForOverflowNotVisible = (inner.offsetTop === -5);
+            offsetSupport.doesNotIncludeMarginInBodyOffset = (body.offsetTop !== conMarginTop);
+
+            if (window.getComputedStyle) {
+                div.style.marginTop = "1%";
+                support.pixelMargin = (window.getComputedStyle(div, null) || { marginTop: 0 }).marginTop !== "1%";
+            }
+
+            if (typeof container.style.zoom !== "undefined") {
+                container.style.zoom = 1;
+            }
+
+            body.removeChild(container);
+            marginDiv = div = container = null;
+
+            jQuery.extend(support, offsetSupport);
+        });
 
         return support;
     })();
-
-    // Keep track of boxModel
-    jQuery.boxModel = jQuery.support.boxModel;
 
 
 
 
     var rbrace = /^(?:\{.*\}|\[.*\])$/,
-	rmultiDash = /([a-z])([A-Z])/g;
+	rmultiDash = /([A-Z])/g;
 
     jQuery.extend({
         cache: {},
@@ -3439,7 +3675,6 @@ var requirejs, require, define;
 
         hasData: function (elem) {
             elem = elem.nodeType ? jQuery.cache[elem[jQuery.expando]] : elem[jQuery.expando];
-
             return !!elem && !isEmptyDataObject(elem);
         },
 
@@ -3448,7 +3683,9 @@ var requirejs, require, define;
                 return;
             }
 
-            var internalKey = jQuery.expando, getByName = typeof name === "string", thisCache,
+            var privateCache, thisCache, ret,
+			internalKey = jQuery.expando,
+			getByName = typeof name === "string",
 
             // We have to handle DOM nodes and JS objects differently because IE6-7
             // can't GC object references properly across the DOM-JS boundary
@@ -3460,11 +3697,12 @@ var requirejs, require, define;
 
             // Only defining an ID for JS objects if its cache already exists allows
             // the code to shortcut on the same path as a DOM node with no cache
-			id = isNode ? elem[jQuery.expando] : elem[jQuery.expando] && jQuery.expando;
+			id = isNode ? elem[internalKey] : elem[internalKey] && internalKey,
+			isEvents = name === "events";
 
             // Avoid doing any more work than we need to when trying to get data on an
             // object that has no data at all
-            if ((!id || (pvt && id && !cache[id][internalKey])) && getByName && data === undefined) {
+            if ((!id || !cache[id] || (!isEvents && !pvt && !cache[id].data)) && getByName && data === undefined) {
                 return;
             }
 
@@ -3472,18 +3710,17 @@ var requirejs, require, define;
                 // Only DOM nodes need a new unique ID for each element since their data
                 // ends up in the global cache
                 if (isNode) {
-                    elem[jQuery.expando] = id = ++jQuery.uuid;
+                    elem[internalKey] = id = ++jQuery.uuid;
                 } else {
-                    id = jQuery.expando;
+                    id = internalKey;
                 }
             }
 
             if (!cache[id]) {
                 cache[id] = {};
 
-                // TODO: This is a hack for 1.5 ONLY. Avoids exposing jQuery
-                // metadata on plain JS objects when the object is serialized using
-                // JSON.stringify
+                // Avoids exposing jQuery metadata on plain JS objects when the object
+                // is serialized using JSON.stringify
                 if (!isNode) {
                     cache[id].toJSON = jQuery.noop;
                 }
@@ -3493,40 +3730,53 @@ var requirejs, require, define;
             // shallow copied over onto the existing cache
             if (typeof name === "object" || typeof name === "function") {
                 if (pvt) {
-                    cache[id][internalKey] = jQuery.extend(cache[id][internalKey], name);
-                } else {
                     cache[id] = jQuery.extend(cache[id], name);
+                } else {
+                    cache[id].data = jQuery.extend(cache[id].data, name);
                 }
             }
 
-            thisCache = cache[id];
+            privateCache = thisCache = cache[id];
 
-            // Internal jQuery data is stored in a separate object inside the object's data
+            // jQuery data() is stored in a separate object inside the object's internal data
             // cache in order to avoid key collisions between internal data and user-defined
-            // data
-            if (pvt) {
-                if (!thisCache[internalKey]) {
-                    thisCache[internalKey] = {};
+            // data.
+            if (!pvt) {
+                if (!thisCache.data) {
+                    thisCache.data = {};
                 }
 
-                thisCache = thisCache[internalKey];
+                thisCache = thisCache.data;
             }
 
             if (data !== undefined) {
                 thisCache[jQuery.camelCase(name)] = data;
             }
 
-            // TODO: This is a hack for 1.5 ONLY. It will be removed in 1.6. Users should
-            // not attempt to inspect the internal events object using jQuery.data, as this
-            // internal data object is undocumented and subject to change.
-            if (name === "events" && !thisCache[name]) {
-                return thisCache[internalKey] && thisCache[internalKey].events;
+            // Users should not attempt to inspect the internal events object using jQuery.data,
+            // it is undocumented and subject to change. But does anyone listen? No.
+            if (isEvents && !thisCache[name]) {
+                return privateCache.events;
             }
 
-            return getByName ?
             // Check for both converted-to-camel and non-converted data property names
-			thisCache[jQuery.camelCase(name)] || thisCache[name] :
-			thisCache;
+            // If a data property was specified
+            if (getByName) {
+
+                // First Try to find as-is property data
+                ret = thisCache[name];
+
+                // Test for null|undefined property data
+                if (ret == null) {
+
+                    // Try to find the camelCased property
+                    ret = thisCache[jQuery.camelCase(name)];
+                }
+            } else {
+                ret = thisCache;
+            }
+
+            return ret;
         },
 
         removeData: function (elem, name, pvt /* Internal Use Only */) {
@@ -3534,13 +3784,18 @@ var requirejs, require, define;
                 return;
             }
 
-            var internalKey = jQuery.expando, isNode = elem.nodeType,
+            var thisCache, i, l,
+
+            // Reference to internal data cache key
+			internalKey = jQuery.expando,
+
+			isNode = elem.nodeType,
 
             // See jQuery.data for more information
 			cache = isNode ? jQuery.cache : elem,
 
             // See jQuery.data for more information
-			id = isNode ? elem[jQuery.expando] : jQuery.expando;
+			id = isNode ? elem[internalKey] : internalKey;
 
             // If there is already no cache entry for this object, there is no
             // purpose in continuing
@@ -3549,22 +3804,44 @@ var requirejs, require, define;
             }
 
             if (name) {
-                var thisCache = pvt ? cache[id][internalKey] : cache[id];
+
+                thisCache = pvt ? cache[id] : cache[id].data;
 
                 if (thisCache) {
-                    delete thisCache[name];
+
+                    // Support array or space separated string names for data keys
+                    if (!jQuery.isArray(name)) {
+
+                        // try the string as a key before any manipulation
+                        if (name in thisCache) {
+                            name = [name];
+                        } else {
+
+                            // split the camel cased version by spaces unless a key with the spaces exists
+                            name = jQuery.camelCase(name);
+                            if (name in thisCache) {
+                                name = [name];
+                            } else {
+                                name = name.split(" ");
+                            }
+                        }
+                    }
+
+                    for (i = 0, l = name.length; i < l; i++) {
+                        delete thisCache[name[i]];
+                    }
 
                     // If there is no data left in the cache, we want to continue
                     // and let the cache object itself get destroyed
-                    if (!isEmptyDataObject(thisCache)) {
+                    if (!(pvt ? isEmptyDataObject : jQuery.isEmptyObject)(thisCache)) {
                         return;
                     }
                 }
             }
 
             // See jQuery.data for more information
-            if (pvt) {
-                delete cache[id][internalKey];
+            if (!pvt) {
+                delete cache[id].data;
 
                 // Don't destroy the parent cache unless the internal data object
                 // had been the only thing left in it
@@ -3573,43 +3850,28 @@ var requirejs, require, define;
                 }
             }
 
-            var internalCache = cache[id][internalKey];
-
             // Browsers that fail expando deletion also refuse to delete expandos on
             // the window, but it will allow it on all other JS objects; other browsers
             // don't care
-            if (jQuery.support.deleteExpando || cache != window) {
+            // Ensure that `cache` is not a window object #10080
+            if (jQuery.support.deleteExpando || !cache.setInterval) {
                 delete cache[id];
             } else {
                 cache[id] = null;
             }
 
-            // We destroyed the entire user cache at once because it's faster than
-            // iterating through each key, but we need to continue to persist internal
-            // data if it existed
-            if (internalCache) {
-                cache[id] = {};
-                // TODO: This is a hack for 1.5 ONLY. Avoids exposing jQuery
-                // metadata on plain JS objects when the object is serialized using
-                // JSON.stringify
-                if (!isNode) {
-                    cache[id].toJSON = jQuery.noop;
-                }
-
-                cache[id][internalKey] = internalCache;
-
-                // Otherwise, we need to eliminate the expando on the node to avoid
-                // false lookups in the cache for entries that no longer exist
-            } else if (isNode) {
+            // We destroyed the cache and need to eliminate the expando on the node to avoid
+            // false lookups in the cache for entries that no longer exist
+            if (isNode) {
                 // IE does not allow us to delete expando properties from nodes,
                 // nor does it have a removeAttribute function on Document nodes;
                 // we must handle all of these cases
                 if (jQuery.support.deleteExpando) {
-                    delete elem[jQuery.expando];
+                    delete elem[internalKey];
                 } else if (elem.removeAttribute) {
-                    elem.removeAttribute(jQuery.expando);
+                    elem.removeAttribute(internalKey);
                 } else {
-                    elem[jQuery.expando] = null;
+                    elem[internalKey] = null;
                 }
             }
         },
@@ -3635,60 +3897,70 @@ var requirejs, require, define;
 
     jQuery.fn.extend({
         data: function (key, value) {
-            var data = null;
+            var parts, part, attr, name, l,
+			elem = this[0],
+			i = 0,
+			data = null;
 
-            if (typeof key === "undefined") {
+            // Gets all values
+            if (key === undefined) {
                 if (this.length) {
-                    data = jQuery.data(this[0]);
+                    data = jQuery.data(elem);
 
-                    if (this[0].nodeType === 1) {
-                        var attr = this[0].attributes, name;
-                        for (var i = 0, l = attr.length; i < l; i++) {
+                    if (elem.nodeType === 1 && !jQuery._data(elem, "parsedAttrs")) {
+                        attr = elem.attributes;
+                        for (l = attr.length; i < l; i++) {
                             name = attr[i].name;
 
                             if (name.indexOf("data-") === 0) {
                                 name = jQuery.camelCase(name.substring(5));
 
-                                dataAttr(this[0], name, data[name]);
+                                dataAttr(elem, name, data[name]);
                             }
                         }
+                        jQuery._data(elem, "parsedAttrs", true);
                     }
                 }
 
                 return data;
+            }
 
-            } else if (typeof key === "object") {
+            // Sets multiple values
+            if (typeof key === "object") {
                 return this.each(function () {
                     jQuery.data(this, key);
                 });
             }
 
-            var parts = key.split(".");
+            parts = key.split(".", 2);
             parts[1] = parts[1] ? "." + parts[1] : "";
+            part = parts[1] + "!";
 
-            if (value === undefined) {
-                data = this.triggerHandler("getData" + parts[1] + "!", [parts[0]]);
+            return jQuery.access(this, function (value) {
 
-                // Try to fetch any internally stored data first
-                if (data === undefined && this.length) {
-                    data = jQuery.data(this[0], key);
-                    data = dataAttr(this[0], key, data);
+                if (value === undefined) {
+                    data = this.triggerHandler("getData" + part, [parts[0]]);
+
+                    // Try to fetch any internally stored data first
+                    if (data === undefined && elem) {
+                        data = jQuery.data(elem, key);
+                        data = dataAttr(elem, key, data);
+                    }
+
+                    return data === undefined && parts[1] ?
+					this.data(parts[0]) :
+					data;
                 }
 
-                return data === undefined && parts[1] ?
-				this.data(parts[0]) :
-				data;
+                parts[1] = value;
+                this.each(function () {
+                    var self = jQuery(this);
 
-            } else {
-                return this.each(function () {
-                    var $this = jQuery(this),
-					args = [parts[0], value];
-
-                    $this.triggerHandler("setData" + parts[1] + "!", args);
+                    self.triggerHandler("setData" + part, parts);
                     jQuery.data(this, key, value);
-                    $this.triggerHandler("changeData" + parts[1] + "!", args);
+                    self.triggerHandler("changeData" + part, parts);
                 });
-            }
+            }, null, value, arguments.length > 1, null, false);
         },
 
         removeData: function (key) {
@@ -3702,7 +3974,8 @@ var requirejs, require, define;
         // If nothing was found internally, try to fetch any
         // data from the HTML5 data-* attribute
         if (data === undefined && elem.nodeType === 1) {
-            var name = "data-" + key.replace(rmultiDash, "$1-$2").toLowerCase();
+
+            var name = "data-" + key.replace(rmultiDash, "-$1").toLowerCase();
 
             data = elem.getAttribute(name);
 
@@ -3711,7 +3984,7 @@ var requirejs, require, define;
                     data = data === "true" ? true :
 				data === "false" ? false :
 				data === "null" ? null :
-				!jQuery.isNaN(data) ? parseFloat(data) :
+				jQuery.isNumeric(data) ? +data :
 					rbrace.test(data) ? jQuery.parseJSON(data) :
 					data;
                 } catch (e) { }
@@ -3727,11 +4000,14 @@ var requirejs, require, define;
         return data;
     }
 
-    // TODO: This is a hack for 1.5 ONLY to allow objects with a single toJSON
-    // property to be considered empty objects; this property always exists in
-    // order to make sure JSON.stringify does not expose internal metadata
+    // checks a cache object for emptiness
     function isEmptyDataObject(obj) {
         for (var name in obj) {
+
+            // if the public data object is empty, the private is still empty
+            if (name === "data" && jQuery.isEmptyObject(obj[name])) {
+                continue;
+            }
             if (name !== "toJSON") {
                 return false;
             }
@@ -3747,17 +4023,17 @@ var requirejs, require, define;
         var deferDataKey = type + "defer",
 		queueDataKey = type + "queue",
 		markDataKey = type + "mark",
-		defer = jQuery.data(elem, deferDataKey, undefined, true);
+		defer = jQuery._data(elem, deferDataKey);
         if (defer &&
-		(src === "queue" || !jQuery.data(elem, queueDataKey, undefined, true)) &&
-		(src === "mark" || !jQuery.data(elem, markDataKey, undefined, true))) {
+		(src === "queue" || !jQuery._data(elem, queueDataKey)) &&
+		(src === "mark" || !jQuery._data(elem, markDataKey))) {
             // Give room for hard-coded callbacks to fire first
             // and eventually mark/queue something else on the element
             setTimeout(function () {
-                if (!jQuery.data(elem, queueDataKey, undefined, true) &&
-				!jQuery.data(elem, markDataKey, undefined, true)) {
+                if (!jQuery._data(elem, queueDataKey) &&
+				!jQuery._data(elem, markDataKey)) {
                     jQuery.removeData(elem, deferDataKey, true);
-                    defer.resolve();
+                    defer.fire();
                 }
             }, 0);
         }
@@ -3768,7 +4044,7 @@ var requirejs, require, define;
         _mark: function (elem, type) {
             if (elem) {
                 type = (type || "fx") + "mark";
-                jQuery.data(elem, type, (jQuery.data(elem, type, undefined, true) || 0) + 1, true);
+                jQuery._data(elem, type, (jQuery._data(elem, type) || 0) + 1);
             }
         },
 
@@ -3781,9 +4057,9 @@ var requirejs, require, define;
             if (elem) {
                 type = type || "fx";
                 var key = type + "mark",
-				count = force ? 0 : ((jQuery.data(elem, key, undefined, true) || 1) - 1);
+				count = force ? 0 : ((jQuery._data(elem, key) || 1) - 1);
                 if (count) {
-                    jQuery.data(elem, key, count, true);
+                    jQuery._data(elem, key, count);
                 } else {
                     jQuery.removeData(elem, key, true);
                     handleQueueMarkDefer(elem, type, "mark");
@@ -3792,13 +4068,15 @@ var requirejs, require, define;
         },
 
         queue: function (elem, type, data) {
+            var q;
             if (elem) {
                 type = (type || "fx") + "queue";
-                var q = jQuery.data(elem, type, undefined, true);
+                q = jQuery._data(elem, type);
+
                 // Speed up dequeue by getting out quickly if this is just a lookup
                 if (data) {
                     if (!q || jQuery.isArray(data)) {
-                        q = jQuery.data(elem, type, jQuery.makeArray(data), true);
+                        q = jQuery._data(elem, type, jQuery.makeArray(data));
                     } else {
                         q.push(data);
                     }
@@ -3812,7 +4090,7 @@ var requirejs, require, define;
 
             var queue = jQuery.queue(elem, type),
 			fn = queue.shift(),
-			defer;
+			hooks = {};
 
             // If the fx queue is dequeued, always remove the progress sentinel
             if (fn === "inprogress") {
@@ -3826,13 +4104,14 @@ var requirejs, require, define;
                     queue.unshift("inprogress");
                 }
 
+                jQuery._data(elem, type + ".run", hooks);
                 fn.call(elem, function () {
                     jQuery.dequeue(elem, type);
-                });
+                }, hooks);
             }
 
             if (!queue.length) {
-                jQuery.removeData(elem, type + "queue", true);
+                jQuery.removeData(elem, type + "queue " + type + ".run", true);
                 handleQueueMarkDefer(elem, type, "queue");
             }
         }
@@ -3840,21 +4119,27 @@ var requirejs, require, define;
 
     jQuery.fn.extend({
         queue: function (type, data) {
+            var setter = 2;
+
             if (typeof type !== "string") {
                 data = type;
                 type = "fx";
+                setter--;
             }
 
-            if (data === undefined) {
+            if (arguments.length < setter) {
                 return jQuery.queue(this[0], type);
             }
-            return this.each(function () {
-                var queue = jQuery.queue(this, type, data);
 
-                if (type === "fx" && queue[0] !== "inprogress") {
-                    jQuery.dequeue(this, type);
-                }
-            });
+            return data === undefined ?
+			this :
+			this.each(function () {
+			    var queue = jQuery.queue(this, type, data);
+
+			    if (type === "fx" && queue[0] !== "inprogress") {
+			        jQuery.dequeue(this, type);
+			    }
+			});
         },
         dequeue: function (type) {
             return this.each(function () {
@@ -3867,11 +4152,11 @@ var requirejs, require, define;
             time = jQuery.fx ? jQuery.fx.speeds[time] || time : time;
             type = type || "fx";
 
-            return this.queue(type, function () {
-                var elem = this;
-                setTimeout(function () {
-                    jQuery.dequeue(elem, type);
-                }, time);
+            return this.queue(type, function (next, hooks) {
+                var timeout = setTimeout(next, time);
+                hooks.stop = function () {
+                    clearTimeout(timeout);
+                };
             });
         },
         clearQueue: function (type) {
@@ -3902,13 +4187,13 @@ var requirejs, require, define;
                 if ((tmp = jQuery.data(elements[i], deferDataKey, undefined, true) ||
 					(jQuery.data(elements[i], queueDataKey, undefined, true) ||
 						jQuery.data(elements[i], markDataKey, undefined, true)) &&
-					jQuery.data(elements[i], deferDataKey, jQuery._Deferred(), true))) {
+					jQuery.data(elements[i], deferDataKey, jQuery.Callbacks("once memory"), true))) {
                     count++;
-                    tmp.done(resolve);
+                    tmp.add(resolve);
                 }
             }
             resolve();
-            return defer.promise();
+            return defer.promise(object);
         }
     });
 
@@ -3922,12 +4207,12 @@ var requirejs, require, define;
 	rfocusable = /^(?:button|input|object|select|textarea)$/i,
 	rclickable = /^a(?:rea)?$/i,
 	rboolean = /^(?:autofocus|autoplay|async|checked|controls|defer|disabled|hidden|loop|multiple|open|readonly|required|scoped|selected)$/i,
-	rinvalidChar = /\:|^on/,
-	formHook, boolHook;
+	getSetAttribute = jQuery.support.getSetAttribute,
+	nodeHook, boolHook, fixSpecified;
 
     jQuery.fn.extend({
         attr: function (name, value) {
-            return jQuery.access(this, name, value, true, jQuery.attr);
+            return jQuery.access(this, jQuery.attr, name, value, arguments.length > 1);
         },
 
         removeAttr: function (name) {
@@ -3937,7 +4222,7 @@ var requirejs, require, define;
         },
 
         prop: function (name, value) {
-            return jQuery.access(this, name, value, true, jQuery.prop);
+            return jQuery.access(this, jQuery.prop, name, value, arguments.length > 1);
         },
 
         removeProp: function (name) {
@@ -4059,9 +4344,11 @@ var requirejs, require, define;
         },
 
         hasClass: function (selector) {
-            var className = " " + selector + " ";
-            for (var i = 0, l = this.length; i < l; i++) {
-                if ((" " + this[i].className + " ").replace(rclass, " ").indexOf(className) > -1) {
+            var className = " " + selector + " ",
+			i = 0,
+			l = this.length;
+            for (; i < l; i++) {
+                if (this[i].nodeType === 1 && (" " + this[i].className + " ").replace(rclass, " ").indexOf(className) > -1) {
                     return true;
                 }
             }
@@ -4070,12 +4357,12 @@ var requirejs, require, define;
         },
 
         val: function (value) {
-            var hooks, ret,
+            var hooks, ret, isFunction,
 			elem = this[0];
 
             if (!arguments.length) {
                 if (elem) {
-                    hooks = jQuery.valHooks[elem.nodeName.toLowerCase()] || jQuery.valHooks[elem.type];
+                    hooks = jQuery.valHooks[elem.type] || jQuery.valHooks[elem.nodeName.toLowerCase()];
 
                     if (hooks && "get" in hooks && (ret = hooks.get(elem, "value")) !== undefined) {
                         return ret;
@@ -4090,10 +4377,10 @@ var requirejs, require, define;
 					ret == null ? "" : ret;
                 }
 
-                return undefined;
+                return;
             }
 
-            var isFunction = jQuery.isFunction(value);
+            isFunction = jQuery.isFunction(value);
 
             return this.each(function (i) {
                 var self = jQuery(this), val;
@@ -4119,7 +4406,7 @@ var requirejs, require, define;
                     });
                 }
 
-                hooks = jQuery.valHooks[this.nodeName.toLowerCase()] || jQuery.valHooks[this.type];
+                hooks = jQuery.valHooks[this.type] || jQuery.valHooks[this.nodeName.toLowerCase()];
 
                 // If set returns undefined, fall back to normal setting
                 if (!hooks || !("set" in hooks) || hooks.set(this, val, "value") === undefined) {
@@ -4141,7 +4428,7 @@ var requirejs, require, define;
             },
             select: {
                 get: function (elem) {
-                    var value,
+                    var value, i, max, option,
 					index = elem.selectedIndex,
 					values = [],
 					options = elem.options,
@@ -4153,8 +4440,10 @@ var requirejs, require, define;
                     }
 
                     // Loop through all the selected options
-                    for (var i = one ? index : 0, max = one ? index + 1 : options.length; i < max; i++) {
-                        var option = options[i];
+                    i = one ? index : 0;
+                    max = one ? index + 1 : options.length;
+                    for (; i < max; i++) {
+                        option = options[i];
 
                         // Don't return options that are disabled or in a disabled optgroup
                         if (option.selected && (jQuery.support.optDisabled ? !option.disabled : option.getAttribute("disabled") === null) &&
@@ -4207,17 +4496,13 @@ var requirejs, require, define;
             offset: true
         },
 
-        attrFix: {
-            // Always normalize to ensure hook usage
-            tabindex: "tabIndex"
-        },
-
         attr: function (elem, name, value, pass) {
-            var nType = elem.nodeType;
+            var ret, hooks, notxml,
+			nType = elem.nodeType;
 
             // don't get/set attributes on text, comment and attribute nodes
             if (!elem || nType === 3 || nType === 8 || nType === 2) {
-                return undefined;
+                return;
             }
 
             if (pass && name in jQuery.attrFn) {
@@ -4225,39 +4510,24 @@ var requirejs, require, define;
             }
 
             // Fallback to prop when attributes are not supported
-            if (!("getAttribute" in elem)) {
+            if (typeof elem.getAttribute === "undefined") {
                 return jQuery.prop(elem, name, value);
             }
 
-            var ret, hooks,
-			notxml = nType !== 1 || !jQuery.isXMLDoc(elem);
+            notxml = nType !== 1 || !jQuery.isXMLDoc(elem);
 
-            // Normalize the name if needed
+            // All attributes are lowercase
+            // Grab necessary hook if one is defined
             if (notxml) {
-                name = jQuery.attrFix[name] || name;
-
-                hooks = jQuery.attrHooks[name];
-
-                if (!hooks) {
-                    // Use boolHook for boolean attributes
-                    if (rboolean.test(name)) {
-
-                        hooks = boolHook;
-
-                        // Use formHook for forms and if the name contains certain characters
-                    } else if (formHook && name !== "className" &&
-					(jQuery.nodeName(elem, "form") || rinvalidChar.test(name))) {
-
-                        hooks = formHook;
-                    }
-                }
+                name = name.toLowerCase();
+                hooks = jQuery.attrHooks[name] || (rboolean.test(name) ? boolHook : nodeHook);
             }
 
             if (value !== undefined) {
 
                 if (value === null) {
                     jQuery.removeAttr(elem, name);
-                    return undefined;
+                    return;
 
                 } else if (hooks && "set" in hooks && notxml && (ret = hooks.set(elem, value, name)) !== undefined) {
                     return ret;
@@ -4281,22 +4551,33 @@ var requirejs, require, define;
             }
         },
 
-        removeAttr: function (elem, name) {
-            var propName;
-            if (elem.nodeType === 1) {
-                name = jQuery.attrFix[name] || name;
+        removeAttr: function (elem, value) {
+            var propName, attrNames, name, l, isBool,
+			i = 0;
 
-                if (jQuery.support.getSetAttribute) {
-                    // Use removeAttribute in browsers that support it
-                    elem.removeAttribute(name);
-                } else {
-                    jQuery.attr(elem, name, "");
-                    elem.removeAttributeNode(elem.getAttributeNode(name));
-                }
+            if (value && elem.nodeType === 1) {
+                attrNames = value.toLowerCase().split(rspace);
+                l = attrNames.length;
 
-                // Set corresponding property to false for boolean attributes
-                if (rboolean.test(name) && (propName = jQuery.propFix[name] || name) in elem) {
-                    elem[propName] = false;
+                for (; i < l; i++) {
+                    name = attrNames[i];
+
+                    if (name) {
+                        propName = jQuery.propFix[name] || name;
+                        isBool = rboolean.test(name);
+
+                        // See #9699 for explanation of this approach (setting first, then removal)
+                        // Do not do this for boolean attributes (see #10870)
+                        if (!isBool) {
+                            jQuery.attr(elem, name, "");
+                        }
+                        elem.removeAttribute(getSetAttribute ? name : propName);
+
+                        // Set corresponding property to false for boolean attributes
+                        if (isBool && propName in elem) {
+                            elem[propName] = false;
+                        }
+                    }
                 }
             }
         },
@@ -4320,33 +4601,20 @@ var requirejs, require, define;
                     }
                 }
             },
-            tabIndex: {
-                get: function (elem) {
-                    // elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
-                    // http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
-                    var attributeNode = elem.getAttributeNode("tabIndex");
-
-                    return attributeNode && attributeNode.specified ?
-					parseInt(attributeNode.value, 10) :
-					rfocusable.test(elem.nodeName) || rclickable.test(elem.nodeName) && elem.href ?
-						0 :
-						undefined;
-                }
-            },
             // Use the value property for back compat
-            // Use the formHook for button elements in IE6/7 (#1954)
+            // Use the nodeHook for button elements in IE6/7 (#1954)
             value: {
                 get: function (elem, name) {
-                    if (formHook && jQuery.nodeName(elem, "button")) {
-                        return formHook.get(elem, name);
+                    if (nodeHook && jQuery.nodeName(elem, "button")) {
+                        return nodeHook.get(elem, name);
                     }
                     return name in elem ?
 					elem.value :
 					null;
                 },
                 set: function (elem, value, name) {
-                    if (formHook && jQuery.nodeName(elem, "button")) {
-                        return formHook.set(elem, value, name);
+                    if (nodeHook && jQuery.nodeName(elem, "button")) {
+                        return nodeHook.set(elem, value, name);
                     }
                     // Does not return so that setAttribute is also used
                     elem.value = value;
@@ -4370,15 +4638,15 @@ var requirejs, require, define;
         },
 
         prop: function (elem, name, value) {
-            var nType = elem.nodeType;
+            var ret, hooks, notxml,
+			nType = elem.nodeType;
 
             // don't get/set properties on text, comment and attribute nodes
             if (!elem || nType === 3 || nType === 8 || nType === 2) {
-                return undefined;
+                return;
             }
 
-            var ret, hooks,
-			notxml = nType !== 1 || !jQuery.isXMLDoc(elem);
+            notxml = nType !== 1 || !jQuery.isXMLDoc(elem);
 
             if (notxml) {
                 // Fix name and attach hooks
@@ -4395,7 +4663,7 @@ var requirejs, require, define;
                 }
 
             } else {
-                if (hooks && "get" in hooks && (ret = hooks.get(elem, name)) !== undefined) {
+                if (hooks && "get" in hooks && (ret = hooks.get(elem, name)) !== null) {
                     return ret;
 
                 } else {
@@ -4404,14 +4672,34 @@ var requirejs, require, define;
             }
         },
 
-        propHooks: {}
+        propHooks: {
+            tabIndex: {
+                get: function (elem) {
+                    // elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
+                    // http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+                    var attributeNode = elem.getAttributeNode("tabindex");
+
+                    return attributeNode && attributeNode.specified ?
+					parseInt(attributeNode.value, 10) :
+					rfocusable.test(elem.nodeName) || rclickable.test(elem.nodeName) && elem.href ?
+						0 :
+						undefined;
+                }
+            }
+        }
     });
+
+    // Add the tabIndex propHook to attrHooks for back-compat (different case is intentional)
+    jQuery.attrHooks.tabindex = jQuery.propHooks.tabIndex;
 
     // Hook for boolean attributes
     boolHook = {
         get: function (elem, name) {
             // Align boolean attributes with corresponding properties
-            return jQuery.prop(elem, name) ?
+            // Fall back to attribute presence where some booleans are not supported
+            var attrNode,
+			property = jQuery.prop(elem, name);
+            return property === true || typeof property !== "boolean" && (attrNode = elem.getAttributeNode(name)) && attrNode.nodeValue !== false ?
 			name.toLowerCase() :
 			undefined;
         },
@@ -4436,31 +4724,37 @@ var requirejs, require, define;
     };
 
     // IE6/7 do not support getting/setting some attributes with get/setAttribute
-    if (!jQuery.support.getSetAttribute) {
+    if (!getSetAttribute) {
 
-        // propFix is more comprehensive and contains all fixes
-        jQuery.attrFix = jQuery.propFix;
+        fixSpecified = {
+            name: true,
+            id: true,
+            coords: true
+        };
 
-        // Use this for any attribute on a form in IE6/7
-        formHook = jQuery.attrHooks.name = jQuery.attrHooks.title = jQuery.valHooks.button = {
+        // Use this for any attribute in IE6/7
+        // This fixes almost every IE6/7 issue
+        nodeHook = jQuery.valHooks.button = {
             get: function (elem, name) {
                 var ret;
                 ret = elem.getAttributeNode(name);
-                // Return undefined if nodeValue is empty string
-                return ret && ret.nodeValue !== "" ?
+                return ret && (fixSpecified[name] ? ret.nodeValue !== "" : ret.specified) ?
 				ret.nodeValue :
 				undefined;
             },
             set: function (elem, value, name) {
-                // Check form objects in IE (multiple bugs related)
-                // Only use nodeValue if the attribute node exists on the form
+                // Set the existing or create a new attribute node
                 var ret = elem.getAttributeNode(name);
-                if (ret) {
-                    ret.nodeValue = value;
-                    return value;
+                if (!ret) {
+                    ret = document.createAttribute(name);
+                    elem.setAttributeNode(ret);
                 }
+                return (ret.nodeValue = value + "");
             }
         };
+
+        // Apply the nodeHook to tabindex
+        jQuery.attrHooks.tabindex.set = nodeHook.set;
 
         // Set width and height to auto instead of 0 on empty string( Bug #8150 )
         // This is for removals
@@ -4474,6 +4768,18 @@ var requirejs, require, define;
                 }
             });
         });
+
+        // Set contenteditable to false on removals(#10429)
+        // Setting to empty string throws an error as an invalid value
+        jQuery.attrHooks.contenteditable = {
+            get: nodeHook.get,
+            set: function (elem, value, name) {
+                if (value === "") {
+                    value = "false";
+                }
+                nodeHook.set(elem, value, name);
+            }
+        };
     }
 
 
@@ -4517,8 +4823,14 @@ var requirejs, require, define;
                         parent.parentNode.selectedIndex;
                     }
                 }
+                return null;
             }
         });
+    }
+
+    // IE6/7 call enctype encoding
+    if (!jQuery.support.enctype) {
+        jQuery.propFix.enctype = "encoding";
     }
 
     // Radios and checkboxes getter/setter
@@ -4545,116 +4857,119 @@ var requirejs, require, define;
 
 
 
-    var rnamespaces = /\.(.*)$/,
-	rformElems = /^(?:textarea|input|select)$/i,
-	rperiod = /\./g,
-	rspaces = / /g,
-	rescape = /[^\w\s.|`]/g,
-	fcleanup = function (nm) {
-	    return nm.replace(rescape, "\\$&");
+    var rformElems = /^(?:textarea|input|select)$/i,
+	rtypenamespace = /^([^\.]*)?(?:\.(.+))?$/,
+	rhoverHack = /(?:^|\s)hover(\.\S+)?\b/,
+	rkeyEvent = /^key/,
+	rmouseEvent = /^(?:mouse|contextmenu)|click/,
+	rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
+	rquickIs = /^(\w*)(?:#([\w\-]+))?(?:\.([\w\-]+))?$/,
+	quickParse = function (selector) {
+	    var quick = rquickIs.exec(selector);
+	    if (quick) {
+	        //   0  1    2   3
+	        // [ _, tag, id, class ]
+	        quick[1] = (quick[1] || "").toLowerCase();
+	        quick[3] = quick[3] && new RegExp("(?:^|\\s)" + quick[3] + "(?:\\s|$)");
+	    }
+	    return quick;
+	},
+	quickIs = function (elem, m) {
+	    var attrs = elem.attributes || {};
+	    return (
+			(!m[1] || elem.nodeName.toLowerCase() === m[1]) &&
+			(!m[2] || (attrs.id || {}).value === m[2]) &&
+			(!m[3] || m[3].test((attrs["class"] || {}).value))
+		);
+	},
+	hoverHack = function (events) {
+	    return jQuery.event.special.hover ? events : events.replace(rhoverHack, "mouseenter$1 mouseleave$1");
 	};
 
     /*
-    * A number of helper functions used for managing events.
-    * Many of the ideas behind this code originated from
-    * Dean Edwards' addEvent library.
+    * Helper functions for managing events -- not part of the public interface.
+    * Props to Dean Edwards' addEvent library for many of the ideas.
     */
     jQuery.event = {
 
-        // Bind an event to an element
-        // Original by Dean Edwards
-        add: function (elem, types, handler, data) {
-            if (elem.nodeType === 3 || elem.nodeType === 8) {
+        add: function (elem, types, handler, data, selector) {
+
+            var elemData, eventHandle, events,
+			t, tns, type, namespaces, handleObj,
+			handleObjIn, quick, handlers, special;
+
+            // Don't attach events to noData or text/comment nodes (allow plain objects tho)
+            if (elem.nodeType === 3 || elem.nodeType === 8 || !types || !handler || !(elemData = jQuery._data(elem))) {
                 return;
             }
 
-            if (handler === false) {
-                handler = returnFalse;
-            } else if (!handler) {
-                // Fixes bug #7229. Fix recommended by jdalton
-                return;
-            }
-
-            var handleObjIn, handleObj;
-
+            // Caller can pass in an object of custom data in lieu of the handler
             if (handler.handler) {
                 handleObjIn = handler;
                 handler = handleObjIn.handler;
+                selector = handleObjIn.selector;
             }
 
-            // Make sure that the function being executed has a unique ID
+            // Make sure that the handler has a unique ID, used to find/remove it later
             if (!handler.guid) {
                 handler.guid = jQuery.guid++;
             }
 
-            // Init the element's event structure
-            var elemData = jQuery._data(elem);
-
-            // If no elemData is found then we must be trying to bind to one of the
-            // banned noData elements
-            if (!elemData) {
-                return;
-            }
-
-            var events = elemData.events,
-			eventHandle = elemData.handle;
-
+            // Init the element's event structure and main handler, if this is the first
+            events = elemData.events;
             if (!events) {
                 elemData.events = events = {};
             }
-
+            eventHandle = elemData.handle;
             if (!eventHandle) {
                 elemData.handle = eventHandle = function (e) {
                     // Discard the second event of a jQuery.event.trigger() and
                     // when an event is called after a page has unloaded
                     return typeof jQuery !== "undefined" && (!e || jQuery.event.triggered !== e.type) ?
-					jQuery.event.handle.apply(eventHandle.elem, arguments) :
+					jQuery.event.dispatch.apply(eventHandle.elem, arguments) :
 					undefined;
                 };
+                // Add elem as a property of the handle fn to prevent a memory leak with IE non-native events
+                eventHandle.elem = elem;
             }
-
-            // Add elem as a property of the handle function
-            // This is to prevent a memory leak with non-native events in IE.
-            eventHandle.elem = elem;
 
             // Handle multiple events separated by a space
             // jQuery(...).bind("mouseover mouseout", fn);
-            types = types.split(" ");
+            types = jQuery.trim(hoverHack(types)).split(" ");
+            for (t = 0; t < types.length; t++) {
 
-            var type, i = 0, namespaces;
+                tns = rtypenamespace.exec(types[t]) || [];
+                type = tns[1];
+                namespaces = (tns[2] || "").split(".").sort();
 
-            while ((type = types[i++])) {
-                handleObj = handleObjIn ?
-				jQuery.extend({}, handleObjIn) :
-				{ handler: handler, data: data };
+                // If event changes its type, use the special event handlers for the changed type
+                special = jQuery.event.special[type] || {};
 
-                // Namespaced event handlers
-                if (type.indexOf(".") > -1) {
-                    namespaces = type.split(".");
-                    type = namespaces.shift();
-                    handleObj.namespace = namespaces.slice(0).sort().join(".");
+                // If selector defined, determine special event api type, otherwise given type
+                type = (selector ? special.delegateType : special.bindType) || type;
 
-                } else {
-                    namespaces = [];
-                    handleObj.namespace = "";
-                }
+                // Update special based on newly reset type
+                special = jQuery.event.special[type] || {};
 
-                handleObj.type = type;
-                if (!handleObj.guid) {
-                    handleObj.guid = handler.guid;
-                }
+                // handleObj is passed to all event handlers
+                handleObj = jQuery.extend({
+                    type: type,
+                    origType: tns[1],
+                    data: data,
+                    handler: handler,
+                    guid: handler.guid,
+                    selector: selector,
+                    quick: selector && quickParse(selector),
+                    namespace: namespaces.join(".")
+                }, handleObjIn);
 
-                // Get the current list of functions bound to this event
-                var handlers = events[type],
-				special = jQuery.event.special[type] || {};
-
-                // Init the event handler queue
+                // Init the event handler queue if we're the first
+                handlers = events[type];
                 if (!handlers) {
                     handlers = events[type] = [];
+                    handlers.delegateCount = 0;
 
-                    // Check for a special event handler
-                    // Only use addEventListener/attachEvent if the special
-                    // events handler returns false
+                    // Only use addEventListener/attachEvent if the special events handler returns false
                     if (!special.setup || special.setup.call(elem, data, namespaces, eventHandle) === false) {
                         // Bind the global event handler to the element
                         if (elem.addEventListener) {
@@ -4674,10 +4989,14 @@ var requirejs, require, define;
                     }
                 }
 
-                // Add the function to the element's handler list
-                handlers.push(handleObj);
+                // Add to the element's handler list, delegates in front
+                if (selector) {
+                    handlers.splice(handlers.delegateCount++, 0, handleObj);
+                } else {
+                    handlers.push(handleObj);
+                }
 
-                // Keep track of which events have been used, for event optimization
+                // Keep track of which events have ever been used, for event optimization
                 jQuery.event.global[type] = true;
             }
 
@@ -4688,126 +5007,77 @@ var requirejs, require, define;
         global: {},
 
         // Detach an event or set of events from an element
-        remove: function (elem, types, handler, pos) {
-            // don't do events on text and comment nodes
-            if (elem.nodeType === 3 || elem.nodeType === 8) {
+        remove: function (elem, types, handler, selector, mappedTypes) {
+
+            var elemData = jQuery.hasData(elem) && jQuery._data(elem),
+			t, tns, type, origType, namespaces, origCount,
+			j, events, special, handle, eventType, handleObj;
+
+            if (!elemData || !(events = elemData.events)) {
                 return;
             }
 
-            if (handler === false) {
-                handler = returnFalse;
-            }
+            // Once for each type.namespace in types; type may be omitted
+            types = jQuery.trim(hoverHack(types || "")).split(" ");
+            for (t = 0; t < types.length; t++) {
+                tns = rtypenamespace.exec(types[t]) || [];
+                type = origType = tns[1];
+                namespaces = tns[2];
 
-            var ret, type, fn, j, i = 0, all, namespaces, namespace, special, eventType, handleObj, origType,
-			elemData = jQuery.hasData(elem) && jQuery._data(elem),
-			events = elemData && elemData.events;
-
-            if (!elemData || !events) {
-                return;
-            }
-
-            // types is actually an event object here
-            if (types && types.type) {
-                handler = types.handler;
-                types = types.type;
-            }
-
-            // Unbind all events for the element
-            if (!types || typeof types === "string" && types.charAt(0) === ".") {
-                types = types || "";
-
-                for (type in events) {
-                    jQuery.event.remove(elem, type + types);
-                }
-
-                return;
-            }
-
-            // Handle multiple events separated by a space
-            // jQuery(...).unbind("mouseover mouseout", fn);
-            types = types.split(" ");
-
-            while ((type = types[i++])) {
-                origType = type;
-                handleObj = null;
-                all = type.indexOf(".") < 0;
-                namespaces = [];
-
-                if (!all) {
-                    // Namespaced event handlers
-                    namespaces = type.split(".");
-                    type = namespaces.shift();
-
-                    namespace = new RegExp("(^|\\.)" +
-					jQuery.map(namespaces.slice(0).sort(), fcleanup).join("\\.(?:.*\\.)?") + "(\\.|$)");
-                }
-
-                eventType = events[type];
-
-                if (!eventType) {
-                    continue;
-                }
-
-                if (!handler) {
-                    for (j = 0; j < eventType.length; j++) {
-                        handleObj = eventType[j];
-
-                        if (all || namespace.test(handleObj.namespace)) {
-                            jQuery.event.remove(elem, origType, handleObj.handler, j);
-                            eventType.splice(j--, 1);
-                        }
+                // Unbind all events (on this namespace, if provided) for the element
+                if (!type) {
+                    for (type in events) {
+                        jQuery.event.remove(elem, type + types[t], handler, selector, true);
                     }
-
                     continue;
                 }
 
                 special = jQuery.event.special[type] || {};
+                type = (selector ? special.delegateType : special.bindType) || type;
+                eventType = events[type] || [];
+                origCount = eventType.length;
+                namespaces = namespaces ? new RegExp("(^|\\.)" + namespaces.split(".").sort().join("\\.(?:.*\\.)?") + "(\\.|$)") : null;
 
-                for (j = pos || 0; j < eventType.length; j++) {
+                // Remove matching events
+                for (j = 0; j < eventType.length; j++) {
                     handleObj = eventType[j];
 
-                    if (handler.guid === handleObj.guid) {
-                        // remove the given handler for the given type
-                        if (all || namespace.test(handleObj.namespace)) {
-                            if (pos == null) {
-                                eventType.splice(j--, 1);
-                            }
+                    if ((mappedTypes || origType === handleObj.origType) &&
+					 (!handler || handler.guid === handleObj.guid) &&
+					 (!namespaces || namespaces.test(handleObj.namespace)) &&
+					 (!selector || selector === handleObj.selector || selector === "**" && handleObj.selector)) {
+                        eventType.splice(j--, 1);
 
-                            if (special.remove) {
-                                special.remove.call(elem, handleObj);
-                            }
+                        if (handleObj.selector) {
+                            eventType.delegateCount--;
                         }
-
-                        if (pos != null) {
-                            break;
+                        if (special.remove) {
+                            special.remove.call(elem, handleObj);
                         }
                     }
                 }
 
-                // remove generic event handler if no more handlers exist
-                if (eventType.length === 0 || pos != null && eventType.length === 1) {
+                // Remove generic event handler if we removed something and no more handlers exist
+                // (avoids potential for endless recursion during removal of special event handlers)
+                if (eventType.length === 0 && origCount !== eventType.length) {
                     if (!special.teardown || special.teardown.call(elem, namespaces) === false) {
                         jQuery.removeEvent(elem, type, elemData.handle);
                     }
 
-                    ret = null;
                     delete events[type];
                 }
             }
 
             // Remove the expando if it's no longer used
             if (jQuery.isEmptyObject(events)) {
-                var handle = elemData.handle;
+                handle = elemData.handle;
                 if (handle) {
                     handle.elem = null;
                 }
 
-                delete elemData.events;
-                delete elemData.handle;
-
-                if (jQuery.isEmptyObject(elemData)) {
-                    jQuery.removeData(elem, undefined, true);
-                }
+                // removeData also checks for emptiness and clears the expando if empty
+                // so use it instead of delete
+                jQuery.removeData(elem, ["events", "handle"], true);
             }
         },
 
@@ -4820,10 +5090,20 @@ var requirejs, require, define;
         },
 
         trigger: function (event, data, elem, onlyHandlers) {
+            // Don't do events on text and comment nodes
+            if (elem && (elem.nodeType === 3 || elem.nodeType === 8)) {
+                return;
+            }
+
             // Event object or event type
             var type = event.type || event,
 			namespaces = [],
-			exclusive;
+			cache, exclusive, i, cur, old, ontype, special, handle, eventPath, bubbleType;
+
+            // focus/blur morphs to focusin/out; ensure we're not firing them right now
+            if (rfocusMorph.test(type + jQuery.event.triggered)) {
+                return;
+            }
 
             if (type.indexOf("!") >= 0) {
                 // Exclusive events trigger only for the exact event (no namespaces)
@@ -4853,230 +5133,314 @@ var requirejs, require, define;
 			new jQuery.Event(type);
 
             event.type = type;
+            event.isTrigger = true;
             event.exclusive = exclusive;
             event.namespace = namespaces.join(".");
-            event.namespace_re = new RegExp("(^|\\.)" + namespaces.join("\\.(?:.*\\.)?") + "(\\.|$)");
-
-            // triggerHandler() and global events don't bubble or run the default action
-            if (onlyHandlers || !elem) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
+            event.namespace_re = event.namespace ? new RegExp("(^|\\.)" + namespaces.join("\\.(?:.*\\.)?") + "(\\.|$)") : null;
+            ontype = type.indexOf(":") < 0 ? "on" + type : "";
 
             // Handle a global trigger
             if (!elem) {
-                // TODO: Stop taunting the data cache; remove global events and always attach to document
-                jQuery.each(jQuery.cache, function () {
-                    // internalKey variable is just used to make it easier to find
-                    // and potentially change this stuff later; currently it just
-                    // points to jQuery.expando
-                    var internalKey = jQuery.expando,
-					internalCache = this[internalKey];
-                    if (internalCache && internalCache.events && internalCache.events[type]) {
-                        jQuery.event.trigger(event, data, internalCache.handle.elem);
-                    }
-                });
-                return;
-            }
 
-            // Don't do events on text and comment nodes
-            if (elem.nodeType === 3 || elem.nodeType === 8) {
+                // TODO: Stop taunting the data cache; remove global events and always attach to document
+                cache = jQuery.cache;
+                for (i in cache) {
+                    if (cache[i].events && cache[i].events[type]) {
+                        jQuery.event.trigger(event, data, cache[i].handle.elem, true);
+                    }
+                }
                 return;
             }
 
             // Clean up the event in case it is being reused
             event.result = undefined;
-            event.target = elem;
+            if (!event.target) {
+                event.target = elem;
+            }
 
             // Clone any incoming data and prepend the event, creating the handler arg list
             data = data != null ? jQuery.makeArray(data) : [];
             data.unshift(event);
 
-            var cur = elem,
-            // IE doesn't like method names with a colon (#3533, #8272)
-			ontype = type.indexOf(":") < 0 ? "on" + type : "";
+            // Allow special events to draw outside the lines
+            special = jQuery.event.special[type] || {};
+            if (special.trigger && special.trigger.apply(elem, data) === false) {
+                return;
+            }
 
-            // Fire event on the current element, then bubble up the DOM tree
-            do {
-                var handle = jQuery._data(cur, "handle");
+            // Determine event propagation path in advance, per W3C events spec (#9951)
+            // Bubble up to document, then to window; watch for a global ownerDocument var (#9724)
+            eventPath = [[elem, special.bindType || type]];
+            if (!onlyHandlers && !special.noBubble && !jQuery.isWindow(elem)) {
 
-                event.currentTarget = cur;
+                bubbleType = special.delegateType || type;
+                cur = rfocusMorph.test(bubbleType + type) ? elem : elem.parentNode;
+                old = null;
+                for (; cur; cur = cur.parentNode) {
+                    eventPath.push([cur, bubbleType]);
+                    old = cur;
+                }
+
+                // Only add window if we got to document (e.g., not plain obj or detached DOM)
+                if (old && old === elem.ownerDocument) {
+                    eventPath.push([old.defaultView || old.parentWindow || window, bubbleType]);
+                }
+            }
+
+            // Fire handlers on the event path
+            for (i = 0; i < eventPath.length && !event.isPropagationStopped(); i++) {
+
+                cur = eventPath[i][0];
+                event.type = eventPath[i][1];
+
+                handle = (jQuery._data(cur, "events") || {})[event.type] && jQuery._data(cur, "handle");
                 if (handle) {
                     handle.apply(cur, data);
                 }
-
-                // Trigger an inline bound script
-                if (ontype && jQuery.acceptData(cur) && cur[ontype] && cur[ontype].apply(cur, data) === false) {
-                    event.result = false;
+                // Note that this is a bare JS function and not a jQuery handler
+                handle = ontype && cur[ontype];
+                if (handle && jQuery.acceptData(cur) && handle.apply(cur, data) === false) {
                     event.preventDefault();
                 }
-
-                // Bubble up to document, then to window
-                cur = cur.parentNode || cur.ownerDocument || cur === event.target.ownerDocument && window;
-            } while (cur && !event.isPropagationStopped());
+            }
+            event.type = type;
 
             // If nobody prevented the default action, do it now
-            if (!event.isDefaultPrevented()) {
-                var old,
-				special = jQuery.event.special[type] || {};
+            if (!onlyHandlers && !event.isDefaultPrevented()) {
 
-                if ((!special._default || special._default.call(elem.ownerDocument, event) === false) &&
+                if ((!special._default || special._default.apply(elem.ownerDocument, data) === false) &&
 				!(type === "click" && jQuery.nodeName(elem, "a")) && jQuery.acceptData(elem)) {
 
                     // Call a native DOM method on the target with the same name name as the event.
-                    // Can't use an .isFunction)() check here because IE6/7 fails that test.
-                    // IE<9 dies on focus to hidden element (#1486), may want to revisit a try/catch.
-                    try {
-                        if (ontype && elem[type]) {
-                            // Don't re-trigger an onFOO event when we call its FOO() method
-                            old = elem[ontype];
+                    // Can't use an .isFunction() check here because IE6/7 fails that test.
+                    // Don't do default actions on window, that's where global variables be (#6170)
+                    // IE<9 dies on focus/blur to hidden element (#1486)
+                    if (ontype && elem[type] && ((type !== "focus" && type !== "blur") || event.target.offsetWidth !== 0) && !jQuery.isWindow(elem)) {
 
-                            if (old) {
-                                elem[ontype] = null;
-                            }
+                        // Don't re-trigger an onFOO event when we call its FOO() method
+                        old = elem[ontype];
 
-                            jQuery.event.triggered = type;
-                            elem[type]();
+                        if (old) {
+                            elem[ontype] = null;
                         }
-                    } catch (ieError) { }
 
-                    if (old) {
-                        elem[ontype] = old;
+                        // Prevent re-triggering of the same event, since we already bubbled it above
+                        jQuery.event.triggered = type;
+                        elem[type]();
+                        jQuery.event.triggered = undefined;
+
+                        if (old) {
+                            elem[ontype] = old;
+                        }
                     }
-
-                    jQuery.event.triggered = undefined;
                 }
             }
 
             return event.result;
         },
 
-        handle: function (event) {
+        dispatch: function (event) {
+
+            // Make a writable jQuery.Event from the native event object
             event = jQuery.event.fix(event || window.event);
-            // Snapshot the handlers list since a called handler may add/remove events.
-            var handlers = ((jQuery._data(this, "events") || {})[event.type] || []).slice(0),
+
+            var handlers = ((jQuery._data(this, "events") || {})[event.type] || []),
+			delegateCount = handlers.delegateCount,
+			args = [].slice.call(arguments, 0),
 			run_all = !event.exclusive && !event.namespace,
-			args = Array.prototype.slice.call(arguments, 0);
+			special = jQuery.event.special[event.type] || {},
+			handlerQueue = [],
+			i, j, cur, jqcur, ret, selMatch, matched, matches, handleObj, sel, related;
 
-            // Use the fix-ed Event rather than the (read-only) native event
+            // Use the fix-ed jQuery.Event rather than the (read-only) native event
             args[0] = event;
-            event.currentTarget = this;
+            event.delegateTarget = this;
 
-            for (var j = 0, l = handlers.length; j < l; j++) {
-                var handleObj = handlers[j];
+            // Call the preDispatch hook for the mapped type, and let it bail if desired
+            if (special.preDispatch && special.preDispatch.call(this, event) === false) {
+                return;
+            }
 
-                // Triggered event must 1) be non-exclusive and have no namespace, or
-                // 2) have namespace(s) a subset or equal to those in the bound event.
-                if (run_all || event.namespace_re.test(handleObj.namespace)) {
-                    // Pass in a reference to the handler function itself
-                    // So that we can later remove it
-                    event.handler = handleObj.handler;
-                    event.data = handleObj.data;
-                    event.handleObj = handleObj;
+            // Determine handlers that should run if there are delegated events
+            // Avoid non-left-click bubbling in Firefox (#3861)
+            if (delegateCount && !(event.button && event.type === "click")) {
 
-                    var ret = handleObj.handler.apply(this, args);
+                // Pregenerate a single jQuery object for reuse with .is()
+                jqcur = jQuery(this);
+                jqcur.context = this.ownerDocument || this;
 
-                    if (ret !== undefined) {
-                        event.result = ret;
-                        if (ret === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
+                for (cur = event.target; cur != this; cur = cur.parentNode || this) {
+
+                    // Don't process events on disabled elements (#6911, #8165)
+                    if (cur.disabled !== true) {
+                        selMatch = {};
+                        matches = [];
+                        jqcur[0] = cur;
+                        for (i = 0; i < delegateCount; i++) {
+                            handleObj = handlers[i];
+                            sel = handleObj.selector;
+
+                            if (selMatch[sel] === undefined) {
+                                selMatch[sel] = (
+								handleObj.quick ? quickIs(cur, handleObj.quick) : jqcur.is(sel)
+							);
+                            }
+                            if (selMatch[sel]) {
+                                matches.push(handleObj);
+                            }
                         }
-                    }
-
-                    if (event.isImmediatePropagationStopped()) {
-                        break;
+                        if (matches.length) {
+                            handlerQueue.push({ elem: cur, matches: matches });
+                        }
                     }
                 }
             }
+
+            // Add the remaining (directly-bound) handlers
+            if (handlers.length > delegateCount) {
+                handlerQueue.push({ elem: this, matches: handlers.slice(delegateCount) });
+            }
+
+            // Run delegates first; they may want to stop propagation beneath us
+            for (i = 0; i < handlerQueue.length && !event.isPropagationStopped(); i++) {
+                matched = handlerQueue[i];
+                event.currentTarget = matched.elem;
+
+                for (j = 0; j < matched.matches.length && !event.isImmediatePropagationStopped(); j++) {
+                    handleObj = matched.matches[j];
+
+                    // Triggered event must either 1) be non-exclusive and have no namespace, or
+                    // 2) have namespace(s) a subset or equal to those in the bound event (both can have no namespace).
+                    if (run_all || (!event.namespace && !handleObj.namespace) || event.namespace_re && event.namespace_re.test(handleObj.namespace)) {
+
+                        event.data = handleObj.data;
+                        event.handleObj = handleObj;
+
+                        ret = ((jQuery.event.special[handleObj.origType] || {}).handle || handleObj.handler)
+							.apply(matched.elem, args);
+
+                        if (ret !== undefined) {
+                            event.result = ret;
+                            if (ret === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Call the postDispatch hook for the mapped type
+            if (special.postDispatch) {
+                special.postDispatch.call(this, event);
+            }
+
             return event.result;
         },
 
-        props: "altKey attrChange attrName bubbles button cancelable charCode clientX clientY ctrlKey currentTarget data detail eventPhase fromElement handler keyCode layerX layerY metaKey newValue offsetX offsetY pageX pageY prevValue relatedNode relatedTarget screenX screenY shiftKey srcElement target toElement view wheelDelta which".split(" "),
+        // Includes some event props shared by KeyEvent and MouseEvent
+        // *** attrChange attrName relatedNode srcElement  are not normalized, non-W3C, deprecated, will be removed in 1.8 ***
+        props: "attrChange attrName relatedNode srcElement altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),
+
+        fixHooks: {},
+
+        keyHooks: {
+            props: "char charCode key keyCode".split(" "),
+            filter: function (event, original) {
+
+                // Add which for key events
+                if (event.which == null) {
+                    event.which = original.charCode != null ? original.charCode : original.keyCode;
+                }
+
+                return event;
+            }
+        },
+
+        mouseHooks: {
+            props: "button buttons clientX clientY fromElement offsetX offsetY pageX pageY screenX screenY toElement".split(" "),
+            filter: function (event, original) {
+                var eventDoc, doc, body,
+				button = original.button,
+				fromElement = original.fromElement;
+
+                // Calculate pageX/Y if missing and clientX/Y available
+                if (event.pageX == null && original.clientX != null) {
+                    eventDoc = event.target.ownerDocument || document;
+                    doc = eventDoc.documentElement;
+                    body = eventDoc.body;
+
+                    event.pageX = original.clientX + (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
+                    event.pageY = original.clientY + (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
+                }
+
+                // Add relatedTarget, if necessary
+                if (!event.relatedTarget && fromElement) {
+                    event.relatedTarget = fromElement === event.target ? original.toElement : fromElement;
+                }
+
+                // Add which for click: 1 === left; 2 === middle; 3 === right
+                // Note: button is not normalized, so don't use it
+                if (!event.which && button !== undefined) {
+                    event.which = (button & 1 ? 1 : (button & 2 ? 3 : (button & 4 ? 2 : 0)));
+                }
+
+                return event;
+            }
+        },
 
         fix: function (event) {
             if (event[jQuery.expando]) {
                 return event;
             }
 
-            // store a copy of the original event object
-            // and "clone" to set read-only properties
-            var originalEvent = event;
+            // Create a writable copy of the event object and normalize some properties
+            var i, prop,
+			originalEvent = event,
+			fixHook = jQuery.event.fixHooks[event.type] || {},
+			copy = fixHook.props ? this.props.concat(fixHook.props) : this.props;
+
             event = jQuery.Event(originalEvent);
 
-            for (var i = this.props.length, prop; i; ) {
-                prop = this.props[--i];
+            for (i = copy.length; i; ) {
+                prop = copy[--i];
                 event[prop] = originalEvent[prop];
             }
 
-            // Fix target property, if necessary
+            // Fix target property, if necessary (#1925, IE 6/7/8 & Safari2)
             if (!event.target) {
-                // Fixes #1925 where srcElement might not be defined either
-                event.target = event.srcElement || document;
+                event.target = originalEvent.srcElement || document;
             }
 
-            // check if target is a textnode (safari)
+            // Target should not be a text node (#504, Safari)
             if (event.target.nodeType === 3) {
                 event.target = event.target.parentNode;
             }
 
-            // Add relatedTarget, if necessary
-            if (!event.relatedTarget && event.fromElement) {
-                event.relatedTarget = event.fromElement === event.target ? event.toElement : event.fromElement;
-            }
-
-            // Calculate pageX/Y if missing and clientX/Y available
-            if (event.pageX == null && event.clientX != null) {
-                var eventDocument = event.target.ownerDocument || document,
-				doc = eventDocument.documentElement,
-				body = eventDocument.body;
-
-                event.pageX = event.clientX + (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
-                event.pageY = event.clientY + (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
-            }
-
-            // Add which for key events
-            if (event.which == null && (event.charCode != null || event.keyCode != null)) {
-                event.which = event.charCode != null ? event.charCode : event.keyCode;
-            }
-
-            // Add metaKey to non-Mac browsers (use ctrl for PC's and Meta for Macs)
-            if (!event.metaKey && event.ctrlKey) {
+            // For mouse/key events; add metaKey if it's not there (#3368, IE6/7/8)
+            if (event.metaKey === undefined) {
                 event.metaKey = event.ctrlKey;
             }
 
-            // Add which for click: 1 === left; 2 === middle; 3 === right
-            // Note: button is not normalized, so don't use it
-            if (!event.which && event.button !== undefined) {
-                event.which = (event.button & 1 ? 1 : (event.button & 2 ? 3 : (event.button & 4 ? 2 : 0)));
-            }
-
-            return event;
+            return fixHook.filter ? fixHook.filter(event, originalEvent) : event;
         },
-
-        // Deprecated, use jQuery.guid instead
-        guid: 1E8,
-
-        // Deprecated, use jQuery.proxy instead
-        proxy: jQuery.proxy,
 
         special: {
             ready: {
                 // Make sure the ready event is setup
-                setup: jQuery.bindReady,
-                teardown: jQuery.noop
+                setup: jQuery.bindReady
             },
 
-            live: {
-                add: function (handleObj) {
-                    jQuery.event.add(this,
-					liveConvert(handleObj.origType, handleObj.selector),
-					jQuery.extend({}, handleObj, { handler: liveHandler, guid: handleObj.handler.guid }));
-                },
+            load: {
+                // Prevent triggered image.load events from bubbling to window.load
+                noBubble: true
+            },
 
-                remove: function (handleObj) {
-                    jQuery.event.remove(this, liveConvert(handleObj.origType, handleObj.selector), handleObj);
-                }
+            focus: {
+                delegateType: "focusin"
+            },
+            blur: {
+                delegateType: "focusout"
             },
 
             beforeunload: {
@@ -5093,8 +5457,34 @@ var requirejs, require, define;
                     }
                 }
             }
+        },
+
+        simulate: function (type, elem, event, bubble) {
+            // Piggyback on a donor event to simulate a different one.
+            // Fake originalEvent to avoid donor's stopPropagation, but if the
+            // simulated event prevents default then we do the same on the donor.
+            var e = jQuery.extend(
+			new jQuery.Event(),
+			event,
+			{ type: type,
+			    isSimulated: true,
+			    originalEvent: {}
+			}
+		);
+            if (bubble) {
+                jQuery.event.trigger(e, null, elem);
+            } else {
+                jQuery.event.dispatch.call(elem, e);
+            }
+            if (e.isDefaultPrevented()) {
+                event.preventDefault();
+            }
         }
     };
+
+    // Some plugins are using, but it's undocumented/deprecated and will be removed.
+    // The 1.7 special event interface should provide all the hooks needed now.
+    jQuery.event.handle = jQuery.event.dispatch;
 
     jQuery.removeEvent = document.removeEventListener ?
 	function (elem, type, handle) {
@@ -5110,7 +5500,7 @@ var requirejs, require, define;
 
     jQuery.Event = function (src, props) {
         // Allow instantiation without the 'new' keyword
-        if (!this.preventDefault) {
+        if (!(this instanceof jQuery.Event)) {
             return new jQuery.Event(src, props);
         }
 
@@ -5134,9 +5524,8 @@ var requirejs, require, define;
             jQuery.extend(this, props);
         }
 
-        // timeStamp is buggy for some events on Firefox(#3843)
-        // So we won't rely on the native value
-        this.timeStamp = jQuery.now();
+        // Create a timestamp if incoming event doesn't have one
+        this.timeStamp = src && src.timeStamp || jQuery.now();
 
         // Mark it as fixed
         this[jQuery.expando] = true;
@@ -5192,214 +5581,137 @@ var requirejs, require, define;
         isImmediatePropagationStopped: returnFalse
     };
 
-    // Checks if an event happened on an element within another element
-    // Used in jQuery.event.special.mouseenter and mouseleave handlers
-    var withinElement = function (event) {
-
-        // Check if mouse(over|out) are still within the same parent element
-        var related = event.relatedTarget,
-		inside = false,
-		eventType = event.type;
-
-        event.type = event.data;
-
-        if (related !== this) {
-
-            if (related) {
-                inside = jQuery.contains(this, related);
-            }
-
-            if (!inside) {
-
-                jQuery.event.handle.apply(this, arguments);
-
-                event.type = eventType;
-            }
-        }
-    },
-
-    // In case of event delegation, we only need to rename the event.type,
-    // liveHandler will take care of the rest.
-delegate = function (event) {
-    event.type = event.data;
-    jQuery.event.handle.apply(this, arguments);
-};
-
-    // Create mouseenter and mouseleave events
+    // Create mouseenter/leave events using mouseover/out and event-time checks
     jQuery.each({
         mouseenter: "mouseover",
         mouseleave: "mouseout"
     }, function (orig, fix) {
         jQuery.event.special[orig] = {
-            setup: function (data) {
-                jQuery.event.add(this, fix, data && data.selector ? delegate : withinElement, orig);
-            },
-            teardown: function (data) {
-                jQuery.event.remove(this, fix, data && data.selector ? delegate : withinElement);
+            delegateType: fix,
+            bindType: fix,
+
+            handle: function (event) {
+                var target = this,
+				related = event.relatedTarget,
+				handleObj = event.handleObj,
+				selector = handleObj.selector,
+				ret;
+
+                // For mousenter/leave call the handler if related is outside the target.
+                // NB: No relatedTarget if the mouse left/entered the browser window
+                if (!related || (related !== target && !jQuery.contains(target, related))) {
+                    event.type = handleObj.origType;
+                    ret = handleObj.handler.apply(this, arguments);
+                    event.type = fix;
+                }
+                return ret;
             }
         };
     });
 
-    // submit delegation
+    // IE submit delegation
     if (!jQuery.support.submitBubbles) {
 
         jQuery.event.special.submit = {
-            setup: function (data, namespaces) {
-                if (!jQuery.nodeName(this, "form")) {
-                    jQuery.event.add(this, "click.specialSubmit", function (e) {
-                        var elem = e.target,
-						type = elem.type;
-
-                        if ((type === "submit" || type === "image") && jQuery(elem).closest("form").length) {
-                            trigger("submit", this, arguments);
-                        }
-                    });
-
-                    jQuery.event.add(this, "keypress.specialSubmit", function (e) {
-                        var elem = e.target,
-						type = elem.type;
-
-                        if ((type === "text" || type === "password") && jQuery(elem).closest("form").length && e.keyCode === 13) {
-                            trigger("submit", this, arguments);
-                        }
-                    });
-
-                } else {
+            setup: function () {
+                // Only need this for delegated form submit events
+                if (jQuery.nodeName(this, "form")) {
                     return false;
+                }
+
+                // Lazy-add a submit handler when a descendant form may potentially be submitted
+                jQuery.event.add(this, "click._submit keypress._submit", function (e) {
+                    // Node name check avoids a VML-related crash in IE (#9807)
+                    var elem = e.target,
+					form = jQuery.nodeName(elem, "input") || jQuery.nodeName(elem, "button") ? elem.form : undefined;
+                    if (form && !form._submit_attached) {
+                        jQuery.event.add(form, "submit._submit", function (event) {
+                            event._submit_bubble = true;
+                        });
+                        form._submit_attached = true;
+                    }
+                });
+                // return undefined since we don't need an event listener
+            },
+
+            postDispatch: function (event) {
+                // If form was submitted by the user, bubble the event up the tree
+                if (event._submit_bubble) {
+                    delete event._submit_bubble;
+                    if (this.parentNode && !event.isTrigger) {
+                        jQuery.event.simulate("submit", this.parentNode, event, true);
+                    }
                 }
             },
 
-            teardown: function (namespaces) {
-                jQuery.event.remove(this, ".specialSubmit");
+            teardown: function () {
+                // Only need this for delegated form submit events
+                if (jQuery.nodeName(this, "form")) {
+                    return false;
+                }
+
+                // Remove delegated handlers; cleanData eventually reaps submit handlers attached above
+                jQuery.event.remove(this, "._submit");
             }
         };
-
     }
 
-    // change delegation, happens here so we have bind.
+    // IE change delegation and checkbox/radio fix
     if (!jQuery.support.changeBubbles) {
 
-        var changeFilters,
-
-	getVal = function (elem) {
-	    var type = elem.type, val = elem.value;
-
-	    if (type === "radio" || type === "checkbox") {
-	        val = elem.checked;
-
-	    } else if (type === "select-multiple") {
-	        val = elem.selectedIndex > -1 ?
-				jQuery.map(elem.options, function (elem) {
-				    return elem.selected;
-				}).join("-") :
-				"";
-
-	    } else if (jQuery.nodeName(elem, "select")) {
-	        val = elem.selectedIndex;
-	    }
-
-	    return val;
-	},
-
-	testChange = function testChange(e) {
-	    var elem = e.target, data, val;
-
-	    if (!rformElems.test(elem.nodeName) || elem.readOnly) {
-	        return;
-	    }
-
-	    data = jQuery._data(elem, "_change_data");
-	    val = getVal(elem);
-
-	    // the current data will be also retrieved by beforeactivate
-	    if (e.type !== "focusout" || elem.type !== "radio") {
-	        jQuery._data(elem, "_change_data", val);
-	    }
-
-	    if (data === undefined || val === data) {
-	        return;
-	    }
-
-	    if (data != null || val) {
-	        e.type = "change";
-	        e.liveFired = undefined;
-	        jQuery.event.trigger(e, arguments[1], elem);
-	    }
-	};
-
         jQuery.event.special.change = {
-            filters: {
-                focusout: testChange,
 
-                beforedeactivate: testChange,
+            setup: function () {
 
-                click: function (e) {
-                    var elem = e.target, type = jQuery.nodeName(elem, "input") ? elem.type : "";
-
-                    if (type === "radio" || type === "checkbox" || jQuery.nodeName(elem, "select")) {
-                        testChange.call(this, e);
+                if (rformElems.test(this.nodeName)) {
+                    // IE doesn't fire change on a check/radio until blur; trigger it on click
+                    // after a propertychange. Eat the blur-change in special.change.handle.
+                    // This still fires onchange a second time for check/radio after blur.
+                    if (this.type === "checkbox" || this.type === "radio") {
+                        jQuery.event.add(this, "propertychange._change", function (event) {
+                            if (event.originalEvent.propertyName === "checked") {
+                                this._just_changed = true;
+                            }
+                        });
+                        jQuery.event.add(this, "click._change", function (event) {
+                            if (this._just_changed && !event.isTrigger) {
+                                this._just_changed = false;
+                                jQuery.event.simulate("change", this, event, true);
+                            }
+                        });
                     }
-                },
-
-                // Change has to be called before submit
-                // Keydown will be called before keypress, which is used in submit-event delegation
-                keydown: function (e) {
-                    var elem = e.target, type = jQuery.nodeName(elem, "input") ? elem.type : "";
-
-                    if ((e.keyCode === 13 && !jQuery.nodeName(elem, "textarea")) ||
-					(e.keyCode === 32 && (type === "checkbox" || type === "radio")) ||
-					type === "select-multiple") {
-                        testChange.call(this, e);
-                    }
-                },
-
-                // Beforeactivate happens also before the previous element is blurred
-                // with this event you can't trigger a change event, but you can store
-                // information
-                beforeactivate: function (e) {
-                    var elem = e.target;
-                    jQuery._data(elem, "_change_data", getVal(elem));
-                }
-            },
-
-            setup: function (data, namespaces) {
-                if (this.type === "file") {
                     return false;
                 }
+                // Delegated event; lazy-add a change handler on descendant inputs
+                jQuery.event.add(this, "beforeactivate._change", function (e) {
+                    var elem = e.target;
 
-                for (var type in changeFilters) {
-                    jQuery.event.add(this, type + ".specialChange", changeFilters[type]);
-                }
-
-                return rformElems.test(this.nodeName);
+                    if (rformElems.test(elem.nodeName) && !elem._change_attached) {
+                        jQuery.event.add(elem, "change._change", function (event) {
+                            if (this.parentNode && !event.isSimulated && !event.isTrigger) {
+                                jQuery.event.simulate("change", this.parentNode, event, true);
+                            }
+                        });
+                        elem._change_attached = true;
+                    }
+                });
             },
 
-            teardown: function (namespaces) {
-                jQuery.event.remove(this, ".specialChange");
+            handle: function (event) {
+                var elem = event.target;
+
+                // Swallow native change events from checkbox/radio, we already triggered them above
+                if (this !== elem || event.isSimulated || event.isTrigger || (elem.type !== "radio" && elem.type !== "checkbox")) {
+                    return event.handleObj.handler.apply(this, arguments);
+                }
+            },
+
+            teardown: function () {
+                jQuery.event.remove(this, "._change");
 
                 return rformElems.test(this.nodeName);
             }
         };
-
-        changeFilters = jQuery.event.special.change.filters;
-
-        // Handle when the input is .focus()'d
-        changeFilters.focus = changeFilters.beforeactivate;
-    }
-
-    function trigger(type, elem, args) {
-        // Piggyback on a donor event to simulate a different one.
-        // Fake originalEvent to avoid donor's stopPropagation, but if the
-        // simulated event prevents default then we do the same on the donor.
-        // Don't pass args or remember liveFired; they apply to the donor event.
-        var event = jQuery.extend({}, args[0]);
-        event.type = type;
-        event.originalEvent = {};
-        event.liveFired = undefined;
-        jQuery.event.handle.call(elem, event);
-        if (event.isDefaultPrevented()) {
-            args[0].preventDefault();
-        }
     }
 
     // Create "bubbling" focus and blur events
@@ -5407,7 +5719,10 @@ delegate = function (event) {
         jQuery.each({ focus: "focusin", blur: "focusout" }, function (orig, fix) {
 
             // Attach a single capturing handler while someone wants focusin/focusout
-            var attaches = 0;
+            var attaches = 0,
+			handler = function (event) {
+			    jQuery.event.simulate(fix, event.target, jQuery.event.fix(event), true);
+			};
 
             jQuery.event.special[fix] = {
                 setup: function () {
@@ -5421,89 +5736,120 @@ delegate = function (event) {
                     }
                 }
             };
-
-            function handler(donor) {
-                // Donor event is always a native one; fix it and switch its type.
-                // Let focusin/out handler cancel the donor focus/blur event.
-                var e = jQuery.event.fix(donor);
-                e.type = fix;
-                e.originalEvent = {};
-                jQuery.event.trigger(e, null, e.target);
-                if (e.isDefaultPrevented()) {
-                    donor.preventDefault();
-                }
-            }
         });
     }
 
-    jQuery.each(["bind", "one"], function (i, name) {
-        jQuery.fn[name] = function (type, data, fn) {
-            var handler;
+    jQuery.fn.extend({
 
-            // Handle object literals
-            if (typeof type === "object") {
-                for (var key in type) {
-                    this[name](key, data, type[key], fn);
+        on: function (types, selector, data, fn, /*INTERNAL*/one) {
+            var origFn, type;
+
+            // Types can be a map of types/handlers
+            if (typeof types === "object") {
+                // ( types-Object, selector, data )
+                if (typeof selector !== "string") { // && selector != null
+                    // ( types-Object, data )
+                    data = data || selector;
+                    selector = undefined;
+                }
+                for (type in types) {
+                    this.on(type, selector, data, types[type], one);
                 }
                 return this;
             }
 
-            if (arguments.length === 2 || data === false) {
-                fn = data;
-                data = undefined;
+            if (data == null && fn == null) {
+                // ( types, fn )
+                fn = selector;
+                data = selector = undefined;
+            } else if (fn == null) {
+                if (typeof selector === "string") {
+                    // ( types, selector, fn )
+                    fn = data;
+                    data = undefined;
+                } else {
+                    // ( types, data, fn )
+                    fn = data;
+                    data = selector;
+                    selector = undefined;
+                }
+            }
+            if (fn === false) {
+                fn = returnFalse;
+            } else if (!fn) {
+                return this;
             }
 
-            if (name === "one") {
-                handler = function (event) {
-                    jQuery(this).unbind(event, handler);
-                    return fn.apply(this, arguments);
+            if (one === 1) {
+                origFn = fn;
+                fn = function (event) {
+                    // Can use an empty set, since event contains the info
+                    jQuery().off(event);
+                    return origFn.apply(this, arguments);
                 };
-                handler.guid = fn.guid || jQuery.guid++;
-            } else {
-                handler = fn;
+                // Use same guid so caller can remove using origFn
+                fn.guid = origFn.guid || (origFn.guid = jQuery.guid++);
             }
-
-            if (type === "unload" && name !== "one") {
-                this.one(type, data, fn);
-
-            } else {
-                for (var i = 0, l = this.length; i < l; i++) {
-                    jQuery.event.add(this[i], type, handler, data);
+            return this.each(function () {
+                jQuery.event.add(this, types, fn, data, selector);
+            });
+        },
+        one: function (types, selector, data, fn) {
+            return this.on(types, selector, data, fn, 1);
+        },
+        off: function (types, selector, fn) {
+            if (types && types.preventDefault && types.handleObj) {
+                // ( event )  dispatched jQuery.Event
+                var handleObj = types.handleObj;
+                jQuery(types.delegateTarget).off(
+				handleObj.namespace ? handleObj.origType + "." + handleObj.namespace : handleObj.origType,
+				handleObj.selector,
+				handleObj.handler
+			);
+                return this;
+            }
+            if (typeof types === "object") {
+                // ( types-object [, selector] )
+                for (var type in types) {
+                    this.off(type, selector, types[type]);
                 }
+                return this;
             }
+            if (selector === false || typeof selector === "function") {
+                // ( types [, fn] )
+                fn = selector;
+                selector = undefined;
+            }
+            if (fn === false) {
+                fn = returnFalse;
+            }
+            return this.each(function () {
+                jQuery.event.remove(this, types, fn, selector);
+            });
+        },
 
+        bind: function (types, data, fn) {
+            return this.on(types, null, data, fn);
+        },
+        unbind: function (types, fn) {
+            return this.off(types, null, fn);
+        },
+
+        live: function (types, data, fn) {
+            jQuery(this.context).on(types, this.selector, data, fn);
             return this;
-        };
-    });
-
-    jQuery.fn.extend({
-        unbind: function (type, fn) {
-            // Handle object literals
-            if (typeof type === "object" && !type.preventDefault) {
-                for (var key in type) {
-                    this.unbind(key, type[key]);
-                }
-
-            } else {
-                for (var i = 0, l = this.length; i < l; i++) {
-                    jQuery.event.remove(this[i], type, fn);
-                }
-            }
-
+        },
+        die: function (types, fn) {
+            jQuery(this.context).off(types, this.selector || "**", fn);
             return this;
         },
 
         delegate: function (selector, types, data, fn) {
-            return this.live(types, data, fn, selector);
+            return this.on(types, selector, data, fn);
         },
-
         undelegate: function (selector, types, fn) {
-            if (arguments.length === 0) {
-                return this.unbind("live");
-
-            } else {
-                return this.die(types, null, fn, selector);
-            }
+            // ( namespace ) or ( selector, types [, fn] )
+            return arguments.length == 1 ? this.off(selector, "**") : this.off(types, selector, fn);
         },
 
         trigger: function (type, data) {
@@ -5511,7 +5857,6 @@ delegate = function (event) {
                 jQuery.event.trigger(type, data, this);
             });
         },
-
         triggerHandler: function (type, data) {
             if (this[0]) {
                 return jQuery.event.trigger(type, data, this[0], true);
@@ -5525,8 +5870,8 @@ delegate = function (event) {
 			i = 0,
 			toggler = function (event) {
 			    // Figure out which function to execute
-			    var lastToggle = (jQuery.data(this, "lastToggle" + fn.guid) || 0) % i;
-			    jQuery.data(this, "lastToggle" + fn.guid, lastToggle + 1);
+			    var lastToggle = (jQuery._data(this, "lastToggle" + fn.guid) || 0) % i;
+			    jQuery._data(this, "lastToggle" + fn.guid, lastToggle + 1);
 
 			    // Make sure that clicks stop
 			    event.preventDefault();
@@ -5549,178 +5894,9 @@ delegate = function (event) {
         }
     });
 
-    var liveMap = {
-        focus: "focusin",
-        blur: "focusout",
-        mouseenter: "mouseover",
-        mouseleave: "mouseout"
-    };
-
-    jQuery.each(["live", "die"], function (i, name) {
-        jQuery.fn[name] = function (types, data, fn, origSelector /* Internal Use Only */) {
-            var type, i = 0, match, namespaces, preType,
-			selector = origSelector || this.selector,
-			context = origSelector ? this : jQuery(this.context);
-
-            if (typeof types === "object" && !types.preventDefault) {
-                for (var key in types) {
-                    context[name](key, data, types[key], selector);
-                }
-
-                return this;
-            }
-
-            if (name === "die" && !types &&
-					origSelector && origSelector.charAt(0) === ".") {
-
-                context.unbind(origSelector);
-
-                return this;
-            }
-
-            if (data === false || jQuery.isFunction(data)) {
-                fn = data || returnFalse;
-                data = undefined;
-            }
-
-            types = (types || "").split(" ");
-
-            while ((type = types[i++]) != null) {
-                match = rnamespaces.exec(type);
-                namespaces = "";
-
-                if (match) {
-                    namespaces = match[0];
-                    type = type.replace(rnamespaces, "");
-                }
-
-                if (type === "hover") {
-                    types.push("mouseenter" + namespaces, "mouseleave" + namespaces);
-                    continue;
-                }
-
-                preType = type;
-
-                if (liveMap[type]) {
-                    types.push(liveMap[type] + namespaces);
-                    type = type + namespaces;
-
-                } else {
-                    type = (liveMap[type] || type) + namespaces;
-                }
-
-                if (name === "live") {
-                    // bind live handler
-                    for (var j = 0, l = context.length; j < l; j++) {
-                        jQuery.event.add(context[j], "live." + liveConvert(type, selector),
-						{ data: data, selector: selector, handler: fn, origType: type, origHandler: fn, preType: preType });
-                    }
-
-                } else {
-                    // unbind live handler
-                    context.unbind("live." + liveConvert(type, selector), fn);
-                }
-            }
-
-            return this;
-        };
-    });
-
-    function liveHandler(event) {
-        var stop, maxLevel, related, match, handleObj, elem, j, i, l, data, close, namespace, ret,
-		elems = [],
-		selectors = [],
-		events = jQuery._data(this, "events");
-
-        // Make sure we avoid non-left-click bubbling in Firefox (#3861) and disabled elements in IE (#6911)
-        if (event.liveFired === this || !events || !events.live || event.target.disabled || event.button && event.type === "click") {
-            return;
-        }
-
-        if (event.namespace) {
-            namespace = new RegExp("(^|\\.)" + event.namespace.split(".").join("\\.(?:.*\\.)?") + "(\\.|$)");
-        }
-
-        event.liveFired = this;
-
-        var live = events.live.slice(0);
-
-        for (j = 0; j < live.length; j++) {
-            handleObj = live[j];
-
-            if (handleObj.origType.replace(rnamespaces, "") === event.type) {
-                selectors.push(handleObj.selector);
-
-            } else {
-                live.splice(j--, 1);
-            }
-        }
-
-        match = jQuery(event.target).closest(selectors, event.currentTarget);
-
-        for (i = 0, l = match.length; i < l; i++) {
-            close = match[i];
-
-            for (j = 0; j < live.length; j++) {
-                handleObj = live[j];
-
-                if (close.selector === handleObj.selector && (!namespace || namespace.test(handleObj.namespace)) && !close.elem.disabled) {
-                    elem = close.elem;
-                    related = null;
-
-                    // Those two events require additional checking
-                    if (handleObj.preType === "mouseenter" || handleObj.preType === "mouseleave") {
-                        event.type = handleObj.preType;
-                        related = jQuery(event.relatedTarget).closest(handleObj.selector)[0];
-
-                        // Make sure not to accidentally match a child element with the same selector
-                        if (related && jQuery.contains(elem, related)) {
-                            related = elem;
-                        }
-                    }
-
-                    if (!related || related !== elem) {
-                        elems.push({ elem: elem, handleObj: handleObj, level: close.level });
-                    }
-                }
-            }
-        }
-
-        for (i = 0, l = elems.length; i < l; i++) {
-            match = elems[i];
-
-            if (maxLevel && match.level > maxLevel) {
-                break;
-            }
-
-            event.currentTarget = match.elem;
-            event.data = match.handleObj.data;
-            event.handleObj = match.handleObj;
-
-            ret = match.handleObj.origHandler.apply(match.elem, arguments);
-
-            if (ret === false || event.isPropagationStopped()) {
-                maxLevel = match.level;
-
-                if (ret === false) {
-                    stop = false;
-                }
-                if (event.isImmediatePropagationStopped()) {
-                    break;
-                }
-            }
-        }
-
-        return stop;
-    }
-
-    function liveConvert(type, selector) {
-        return (type && type !== "*" ? type + "." : "") + selector.replace(rperiod, "`").replace(rspaces, "&");
-    }
-
     jQuery.each(("blur focus focusin focusout load resize scroll unload click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
-	"change select submit keydown keypress keyup error").split(" "), function (i, name) {
+	"change select submit keydown keypress keyup error contextmenu").split(" "), function (i, name) {
 
 	    // Handle event binding
 	    jQuery.fn[name] = function (data, fn) {
@@ -5730,12 +5906,20 @@ delegate = function (event) {
 	        }
 
 	        return arguments.length > 0 ?
-			this.bind(name, data, fn) :
+			this.on(name, null, data, fn) :
 			this.trigger(name);
 	    };
 
 	    if (jQuery.attrFn) {
 	        jQuery.attrFn[name] = true;
+	    }
+
+	    if (rkeyEvent.test(name)) {
+	        jQuery.event.fixHooks[name] = jQuery.event.keyHooks;
+	    }
+
+	    if (rmouseEvent.test(name)) {
+	        jQuery.event.fixHooks[name] = jQuery.event.mouseHooks;
 	    }
 	});
 
@@ -5750,11 +5934,13 @@ delegate = function (event) {
     (function () {
 
         var chunker = /((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,
+	expando = "sizcache" + (Math.random() + '').replace('.', ''),
 	done = 0,
 	toString = Object.prototype.toString,
 	hasDuplicate = false,
 	baseHasDuplicate = true,
 	rBackslash = /\\/g,
+	rReturn = /\r\n/g,
 	rNonWord = /\W/;
 
         // Here we check if the JavaScript engine is using some sort of
@@ -5806,7 +5992,7 @@ delegate = function (event) {
             if (parts.length > 1 && origPOS.exec(selector)) {
 
                 if (parts.length === 2 && Expr.relative[parts[0]]) {
-                    set = posProcess(parts[0] + parts[1], context);
+                    set = posProcess(parts[0] + parts[1], context, seed);
 
                 } else {
                     set = Expr.relative[parts[0]] ?
@@ -5820,7 +6006,7 @@ delegate = function (event) {
                             selector += parts.shift();
                         }
 
-                        set = posProcess(selector, set);
+                        set = posProcess(selector, set, seed);
                     }
                 }
 
@@ -5939,18 +6125,17 @@ delegate = function (event) {
         };
 
         Sizzle.find = function (expr, context, isXML) {
-            var set;
+            var set, i, len, match, type, left;
 
             if (!expr) {
                 return [];
             }
 
-            for (var i = 0, l = Expr.order.length; i < l; i++) {
-                var match,
-			type = Expr.order[i];
+            for (i = 0, len = Expr.order.length; i < len; i++) {
+                type = Expr.order[i];
 
                 if ((match = Expr.leftMatch[type].exec(expr))) {
-                    var left = match[1];
+                    left = match[1];
                     match.splice(1, 1);
 
                     if (left.substr(left.length - 1) !== "\\") {
@@ -5976,17 +6161,18 @@ delegate = function (event) {
 
         Sizzle.filter = function (expr, set, inplace, not) {
             var match, anyFound,
+		type, found, item, filter, left,
+		i, pass,
 		old = expr,
 		result = [],
 		curLoop = set,
 		isXMLFilter = set && set[0] && Sizzle.isXML(set[0]);
 
             while (expr && set.length) {
-                for (var type in Expr.filter) {
+                for (type in Expr.filter) {
                     if ((match = Expr.leftMatch[type].exec(expr)) != null && match[2]) {
-                        var found, item,
-					filter = Expr.filter[type],
-					left = match[1];
+                        filter = Expr.filter[type];
+                        left = match[1];
 
                         anyFound = false;
 
@@ -6012,10 +6198,10 @@ delegate = function (event) {
                         }
 
                         if (match) {
-                            for (var i = 0; (item = curLoop[i]) != null; i++) {
+                            for (i = 0; (item = curLoop[i]) != null; i++) {
                                 if (item) {
                                     found = filter(item, match, i, curLoop);
-                                    var pass = not ^ !!found;
+                                    pass = not ^ found;
 
                                     if (inplace && found != null) {
                                         if (pass) {
@@ -6066,7 +6252,46 @@ delegate = function (event) {
         };
 
         Sizzle.error = function (msg) {
-            throw "Syntax error, unrecognized expression: " + msg;
+            throw new Error("Syntax error, unrecognized expression: " + msg);
+        };
+
+        /**
+        * Utility function for retreiving the text value of an array of DOM nodes
+        * @param {Array|Element} elem
+        */
+        var getText = Sizzle.getText = function (elem) {
+            var i, node,
+		nodeType = elem.nodeType,
+		ret = "";
+
+            if (nodeType) {
+                if (nodeType === 1 || nodeType === 9 || nodeType === 11) {
+                    // Use textContent || innerText for elements
+                    if (typeof elem.textContent === 'string') {
+                        return elem.textContent;
+                    } else if (typeof elem.innerText === 'string') {
+                        // Replace IE's carriage returns
+                        return elem.innerText.replace(rReturn, '');
+                    } else {
+                        // Traverse it's children
+                        for (elem = elem.firstChild; elem; elem = elem.nextSibling) {
+                            ret += getText(elem);
+                        }
+                    }
+                } else if (nodeType === 3 || nodeType === 4) {
+                    return elem.nodeValue;
+                }
+            } else {
+
+                // If no nodeType, this is expected to be an array
+                for (i = 0; (node = elem[i]); i++) {
+                    // Do not traverse comment nodes
+                    if (node.nodeType !== 8) {
+                        ret += getText(node);
+                    }
+                }
+            }
+            return ret;
         };
 
         var Expr = Sizzle.selectors = {
@@ -6366,7 +6591,7 @@ delegate = function (event) {
 
                 text: function (elem) {
                     var attr = elem.getAttribute("type"), type = elem.type;
-                    // IE6 and 7 will map elem.type to 'text' for new HTML5 types (search, etc) 
+                    // IE6 and 7 will map elem.type to 'text' for new HTML5 types (search, etc)
                     // use getAttribute instead to test this case
                     return elem.nodeName.toLowerCase() === "input" && "text" === type && (attr === type || attr === null);
                 },
@@ -6456,7 +6681,7 @@ delegate = function (event) {
                         return filter(elem, i, match, array);
 
                     } else if (name === "contains") {
-                        return (elem.textContent || elem.innerText || Sizzle.getText([elem]) || "").indexOf(match[3]) >= 0;
+                        return (elem.textContent || elem.innerText || getText([elem]) || "").indexOf(match[3]) >= 0;
 
                     } else if (name === "not") {
                         var not = match[3];
@@ -6475,7 +6700,10 @@ delegate = function (event) {
                 },
 
                 CHILD: function (elem, match) {
-                    var type = match[1],
+                    var first, last,
+				doneName, parent, cache,
+				count, diff,
+				type = match[1],
 				node = elem;
 
                     switch (type) {
@@ -6493,6 +6721,7 @@ delegate = function (event) {
 
                             node = elem;
 
+                            /* falls through */
                         case "last":
                             while ((node = node.nextSibling)) {
                                 if (node.nodeType === 1) {
@@ -6503,18 +6732,18 @@ delegate = function (event) {
                             return true;
 
                         case "nth":
-                            var first = match[2],
-						last = match[3];
+                            first = match[2];
+                            last = match[3];
 
                             if (first === 1 && last === 0) {
                                 return true;
                             }
 
-                            var doneName = match[0],
-						parent = elem.parentNode;
+                            doneName = match[0];
+                            parent = elem.parentNode;
 
-                            if (parent && (parent.sizcache !== doneName || !elem.nodeIndex)) {
-                                var count = 0;
+                            if (parent && (parent[expando] !== doneName || !elem.nodeIndex)) {
+                                count = 0;
 
                                 for (node = parent.firstChild; node; node = node.nextSibling) {
                                     if (node.nodeType === 1) {
@@ -6522,10 +6751,10 @@ delegate = function (event) {
                                     }
                                 }
 
-                                parent.sizcache = doneName;
+                                parent[expando] = doneName;
                             }
 
-                            var diff = elem.nodeIndex - last;
+                            diff = elem.nodeIndex - last;
 
                             if (first === 0) {
                                 return diff === 0;
@@ -6541,7 +6770,7 @@ delegate = function (event) {
                 },
 
                 TAG: function (elem, match) {
-                    return (match === "*" && elem.nodeType === 1) || elem.nodeName.toLowerCase() === match;
+                    return (match === "*" && elem.nodeType === 1) || !!elem.nodeName && elem.nodeName.toLowerCase() === match;
                 },
 
                 CLASS: function (elem, match) {
@@ -6551,7 +6780,9 @@ delegate = function (event) {
 
                 ATTR: function (elem, match) {
                     var name = match[1],
-				result = Expr.attrHandle[name] ?
+				result = Sizzle.attr ?
+					Sizzle.attr(elem, name) :
+					Expr.attrHandle[name] ?
 					Expr.attrHandle[name](elem) :
 					elem[name] != null ?
 						elem[name] :
@@ -6562,6 +6793,8 @@ delegate = function (event) {
 
                     return result == null ?
 				type === "!=" :
+				!type && Sizzle.attr ?
+				result != null :
 				type === "=" ?
 				value === check :
 				type === "*=" ?
@@ -6601,6 +6834,9 @@ delegate = function (event) {
             Expr.match[type] = new RegExp(Expr.match[type].source + (/(?![^\[]*\])(?![^\(]*\))/.source));
             Expr.leftMatch[type] = new RegExp(/(^(?:.|\r|\n)*?)/.source + Expr.match[type].source.replace(/\\(\d+)/g, fescape));
         }
+        // Expose origPOS
+        // "global" as in regardless of relation to brackets/parens
+        Expr.match.globalPOS = origPOS;
 
         var makeArray = function (array, results) {
             array = Array.prototype.slice.call(array, 0);
@@ -6741,26 +6977,6 @@ delegate = function (event) {
                 return 1;
             };
         }
-
-        // Utility function for retreiving the text value of an array of DOM nodes
-        Sizzle.getText = function (elems) {
-            var ret = "", elem;
-
-            for (var i = 0; elems[i]; i++) {
-                elem = elems[i];
-
-                // Get the text from text nodes and CDATA nodes
-                if (elem.nodeType === 3 || elem.nodeType === 4) {
-                    ret += elem.nodeValue;
-
-                    // Traverse everything else, except comment nodes
-                } else if (elem.nodeType !== 8) {
-                    ret += Sizzle.getText(elem.childNodes);
-                }
-            }
-
-            return ret;
-        };
 
         // Check to see if the browser returns elements by name when
         // querying by getElementById (and provide a workaround)
@@ -7039,13 +7255,13 @@ delegate = function (event) {
                     elem = elem[dir];
 
                     while (elem) {
-                        if (elem.sizcache === doneName) {
+                        if (elem[expando] === doneName) {
                             match = checkSet[elem.sizset];
                             break;
                         }
 
                         if (elem.nodeType === 1 && !isXML) {
-                            elem.sizcache = doneName;
+                            elem[expando] = doneName;
                             elem.sizset = i;
                         }
 
@@ -7072,14 +7288,14 @@ delegate = function (event) {
                     elem = elem[dir];
 
                     while (elem) {
-                        if (elem.sizcache === doneName) {
+                        if (elem[expando] === doneName) {
                             match = checkSet[elem.sizset];
                             break;
                         }
 
                         if (elem.nodeType === 1) {
                             if (!isXML) {
-                                elem.sizcache = doneName;
+                                elem[expando] = doneName;
                                 elem.sizset = i;
                             }
 
@@ -7121,13 +7337,13 @@ delegate = function (event) {
 
         Sizzle.isXML = function (elem) {
             // documentElement is verified for cases where it doesn't yet exist
-            // (such as loading iframes in IE - #4833) 
+            // (such as loading iframes in IE - #4833)
             var documentElement = (elem ? elem.ownerDocument || elem : 0).documentElement;
 
             return documentElement ? documentElement.nodeName !== "HTML" : false;
         };
 
-        var posProcess = function (selector, context) {
+        var posProcess = function (selector, context, seed) {
             var match,
 		tmpSet = [],
 		later = "",
@@ -7143,13 +7359,16 @@ delegate = function (event) {
             selector = Expr.relative[selector] ? selector + "*" : selector;
 
             for (var i = 0, l = root.length; i < l; i++) {
-                Sizzle(selector, root[i], tmpSet);
+                Sizzle(selector, root[i], tmpSet, seed);
             }
 
             return Sizzle.filter(later, tmpSet);
         };
 
         // EXPOSE
+        // Override sizzle attribute retrieval
+        Sizzle.attr = jQuery.attr;
+        Sizzle.selectors.attrMap = {};
         jQuery.find = Sizzle;
         jQuery.expr = Sizzle.selectors;
         jQuery.expr[":"] = jQuery.expr.filters;
@@ -7168,7 +7387,7 @@ delegate = function (event) {
 	rmultiselector = /,/,
 	isSimple = /^.[^:#\[\.,]*$/,
 	slice = Array.prototype.slice,
-	POS = jQuery.expr.match.POS,
+	POS = jQuery.expr.match.globalPOS,
     // methods guaranteed to produce a unique set when starting from a unique set
 	guaranteedUnique = {
 	    children: true,
@@ -7235,43 +7454,33 @@ delegate = function (event) {
         },
 
         is: function (selector) {
-            return !!selector && (typeof selector === "string" ?
-			jQuery.filter(selector, this).length > 0 :
-			this.filter(selector).length > 0);
+            return !!selector && (
+			typeof selector === "string" ?
+            // If this is a positional selector, check membership in the returned set
+            // so $("p:first").is("p:last") won't return true for a doc with two "p".
+				POS.test(selector) ?
+					jQuery(selector, this.context).index(this[0]) >= 0 :
+					jQuery.filter(selector, this).length > 0 :
+				this.filter(selector).length > 0);
         },
 
         closest: function (selectors, context) {
             var ret = [], i, l, cur = this[0];
 
-            // Array
+            // Array (deprecated as of jQuery 1.7)
             if (jQuery.isArray(selectors)) {
-                var match, selector,
-				matches = {},
-				level = 1;
+                var level = 1;
 
-                if (cur && selectors.length) {
-                    for (i = 0, l = selectors.length; i < l; i++) {
-                        selector = selectors[i];
+                while (cur && cur.ownerDocument && cur !== context) {
+                    for (i = 0; i < selectors.length; i++) {
 
-                        if (!matches[selector]) {
-                            matches[selector] = POS.test(selector) ?
-							jQuery(selector, context || this.context) :
-							selector;
+                        if (jQuery(cur).is(selectors[i])) {
+                            ret.push({ selector: selectors[i], elem: cur, level: level });
                         }
                     }
 
-                    while (cur && cur.ownerDocument && cur !== context) {
-                        for (selector in matches) {
-                            match = matches[selector];
-
-                            if (match.jquery ? match.index(cur) > -1 : jQuery(cur).is(match)) {
-                                ret.push({ selector: selector, elem: cur, level: level });
-                            }
-                        }
-
-                        cur = cur.parentNode;
-                        level++;
-                    }
+                    cur = cur.parentNode;
+                    level++;
                 }
 
                 return ret;
@@ -7307,12 +7516,17 @@ delegate = function (event) {
         // Determine the position of an element within
         // the matched set of elements
         index: function (elem) {
-            if (!elem || typeof elem === "string") {
-                return jQuery.inArray(this[0],
-                // If it receives a string, the selector is used
-                // If it receives nothing, the siblings are used
-				elem ? jQuery(elem) : this.parent().children());
+
+            // No argument, return index in parent
+            if (!elem) {
+                return (this[0] && this[0].parentNode) ? this.prevAll().length : -1;
             }
+
+            // index in selector
+            if (typeof elem === "string") {
+                return jQuery.inArray(this[0], jQuery(elem));
+            }
+
             // Locate the position of the desired element
             return jQuery.inArray(
             // If it receives a jQuery object, the first element is used
@@ -7371,7 +7585,7 @@ delegate = function (event) {
             return jQuery.dir(elem, "previousSibling", until);
         },
         siblings: function (elem) {
-            return jQuery.sibling(elem.parentNode.firstChild, elem);
+            return jQuery.sibling((elem.parentNode || {}).firstChild, elem);
         },
         children: function (elem) {
             return jQuery.sibling(elem.firstChild);
@@ -7383,12 +7597,7 @@ delegate = function (event) {
         }
     }, function (name, fn) {
         jQuery.fn[name] = function (until, selector) {
-            var ret = jQuery.map(this, fn, until),
-            // The variable 'args' was introduced in
-            // https://github.com/jquery/jquery/commit/52a0238
-            // to work around a bug in Chrome 10 (Dev) and should be removed when the bug is fixed.
-            // http://code.google.com/p/v8/issues/detail?id=1050
-			args = slice.call(arguments);
+            var ret = jQuery.map(this, fn, until);
 
             if (!runtil.test(name)) {
                 selector = until;
@@ -7404,7 +7613,7 @@ delegate = function (event) {
                 ret = ret.reverse();
             }
 
-            return this.pushStack(ret, name, args.join(","));
+            return this.pushStack(ret, name, slice.call(arguments).join(","));
         };
     });
 
@@ -7496,13 +7705,31 @@ delegate = function (event) {
 
 
 
-    var rinlinejQuery = / jQuery\d+="(?:\d+|null)"/g,
+    function createSafeFragment(document) {
+        var list = nodeNames.split("|"),
+	safeFrag = document.createDocumentFragment();
+
+        if (safeFrag.createElement) {
+            while (list.length) {
+                safeFrag.createElement(
+				list.pop()
+			);
+            }
+        }
+        return safeFrag;
+    }
+
+    var nodeNames = "abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|" +
+		"header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",
+	rinlinejQuery = / jQuery\d+="(?:\d+|null)"/g,
 	rleadingWhitespace = /^\s+/,
 	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,
 	rtagName = /<([\w:]+)/,
 	rtbody = /<tbody/i,
 	rhtml = /<|&#?\w+;/,
+	rnoInnerhtml = /<(?:script|style)/i,
 	rnocache = /<(?:script|object|embed|option|style)/i,
+	rnoshimcache = new RegExp("<(?:" + nodeNames + ")[\\s/>]", "i"),
     // checked="checked" or checked
 	rchecked = /checked\s*(?:[^=]|=\s*.checked.)/i,
 	rscriptType = /\/(java|ecma)script/i,
@@ -7516,7 +7743,8 @@ delegate = function (event) {
 	    col: [2, "<table><tbody></tbody><colgroup>", "</colgroup></table>"],
 	    area: [1, "<map>", "</map>"],
 	    _default: [0, "", ""]
-	};
+	},
+	safeFragment = createSafeFragment(document);
 
     wrapMap.optgroup = wrapMap.option;
     wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
@@ -7528,20 +7756,12 @@ delegate = function (event) {
     }
 
     jQuery.fn.extend({
-        text: function (text) {
-            if (jQuery.isFunction(text)) {
-                return this.each(function (i) {
-                    var self = jQuery(this);
-
-                    self.text(text.call(this, i, self.text()));
-                });
-            }
-
-            if (typeof text !== "object" && text !== undefined) {
-                return this.empty().append((this[0] && this[0].ownerDocument || document).createTextNode(text));
-            }
-
-            return jQuery.text(this);
+        text: function (value) {
+            return jQuery.access(this, function (value) {
+                return value === undefined ?
+				jQuery.text(this) :
+				this.empty().append((this[0] && this[0].ownerDocument || document).createTextNode(value));
+            }, null, value, arguments.length);
         },
 
         wrapAll: function (html) {
@@ -7594,8 +7814,10 @@ delegate = function (event) {
         },
 
         wrap: function (html) {
-            return this.each(function () {
-                jQuery(this).wrapAll(html);
+            var isFunction = jQuery.isFunction(html);
+
+            return this.each(function (i) {
+                jQuery(this).wrapAll(isFunction ? html.call(this, i) : html);
             });
         },
 
@@ -7629,7 +7851,7 @@ delegate = function (event) {
                     this.parentNode.insertBefore(elem, this);
                 });
             } else if (arguments.length) {
-                var set = jQuery(arguments[0]);
+                var set = jQuery.clean(arguments);
                 set.push.apply(set, this.toArray());
                 return this.pushStack(set, "before", arguments);
             }
@@ -7642,7 +7864,7 @@ delegate = function (event) {
                 });
             } else if (arguments.length) {
                 var set = this.pushStack(this, "after", arguments);
-                set.push.apply(set, jQuery(arguments[0]).toArray());
+                set.push.apply(set, jQuery.clean(arguments));
                 return set;
             }
         },
@@ -7691,44 +7913,44 @@ delegate = function (event) {
         },
 
         html: function (value) {
-            if (value === undefined) {
-                return this[0] && this[0].nodeType === 1 ?
-				this[0].innerHTML.replace(rinlinejQuery, "") :
-				null;
+            return jQuery.access(this, function (value) {
+                var elem = this[0] || {},
+				i = 0,
+				l = this.length;
 
-                // See if we can take a shortcut and just use innerHTML
-            } else if (typeof value === "string" && !rnocache.test(value) &&
-			(jQuery.support.leadingWhitespace || !rleadingWhitespace.test(value)) &&
-			!wrapMap[(rtagName.exec(value) || ["", ""])[1].toLowerCase()]) {
-
-                value = value.replace(rxhtmlTag, "<$1></$2>");
-
-                try {
-                    for (var i = 0, l = this.length; i < l; i++) {
-                        // Remove element nodes and prevent memory leaks
-                        if (this[i].nodeType === 1) {
-                            jQuery.cleanData(this[i].getElementsByTagName("*"));
-                            this[i].innerHTML = value;
-                        }
-                    }
-
-                    // If using innerHTML throws an exception, use the fallback method
-                } catch (e) {
-                    this.empty().append(value);
+                if (value === undefined) {
+                    return elem.nodeType === 1 ?
+					elem.innerHTML.replace(rinlinejQuery, "") :
+					null;
                 }
 
-            } else if (jQuery.isFunction(value)) {
-                this.each(function (i) {
-                    var self = jQuery(this);
 
-                    self.html(value.call(this, i, self.html()));
-                });
+                if (typeof value === "string" && !rnoInnerhtml.test(value) &&
+				(jQuery.support.leadingWhitespace || !rleadingWhitespace.test(value)) &&
+				!wrapMap[(rtagName.exec(value) || ["", ""])[1].toLowerCase()]) {
 
-            } else {
-                this.empty().append(value);
-            }
+                    value = value.replace(rxhtmlTag, "<$1></$2>");
 
-            return this;
+                    try {
+                        for (; i < l; i++) {
+                            // Remove element nodes and prevent memory leaks
+                            elem = this[i] || {};
+                            if (elem.nodeType === 1) {
+                                jQuery.cleanData(elem.getElementsByTagName("*"));
+                                elem.innerHTML = value;
+                            }
+                        }
+
+                        elem = 0;
+
+                        // If using innerHTML throws an exception, use the fallback method
+                    } catch (e) { }
+                }
+
+                if (elem) {
+                    this.empty().append(value);
+                }
+            }, null, value, arguments.length);
         },
 
         replaceWith: function (value) {
@@ -7831,7 +8053,23 @@ delegate = function (event) {
                 }
 
                 if (scripts.length) {
-                    jQuery.each(scripts, evalScript);
+                    jQuery.each(scripts, function (i, elem) {
+                        if (elem.src) {
+                            jQuery.ajax({
+                                type: "GET",
+                                global: false,
+                                url: elem.src,
+                                async: false,
+                                dataType: "script"
+                            });
+                        } else {
+                            jQuery.globalEval((elem.text || elem.textContent || elem.innerHTML || "").replace(rcleanScript, "/*$0*/"));
+                        }
+
+                        if (elem.parentNode) {
+                            elem.parentNode.removeChild(elem);
+                        }
+                    });
                 }
             }
 
@@ -7852,26 +8090,25 @@ delegate = function (event) {
             return;
         }
 
-        var internalKey = jQuery.expando,
-		oldData = jQuery.data(src),
-		curData = jQuery.data(dest, oldData);
+        var type, i, l,
+		oldData = jQuery._data(src),
+		curData = jQuery._data(dest, oldData),
+		events = oldData.events;
 
-        // Switch to use the internal data object, if it exists, for the next
-        // stage of data copying
-        if ((oldData = oldData[internalKey])) {
-            var events = oldData.events;
-            curData = curData[internalKey] = jQuery.extend({}, oldData);
+        if (events) {
+            delete curData.handle;
+            curData.events = {};
 
-            if (events) {
-                delete curData.handle;
-                curData.events = {};
-
-                for (var type in events) {
-                    for (var i = 0, l = events[type].length; i < l; i++) {
-                        jQuery.event.add(dest, type + (events[type][i].namespace ? "." : "") + events[type][i].namespace, events[type][i], events[type][i].data);
-                    }
+            for (type in events) {
+                for (i = 0, l = events[type].length; i < l; i++) {
+                    jQuery.event.add(dest, type, events[type][i]);
                 }
             }
+        }
+
+        // make the cloned public data object a copy from the original
+        if (curData.data) {
+            curData.data = jQuery.extend({}, curData.data);
         }
     }
 
@@ -7926,15 +8163,25 @@ delegate = function (event) {
             // cloning other types of input fields
         } else if (nodeName === "input" || nodeName === "textarea") {
             dest.defaultValue = src.defaultValue;
+
+            // IE blanks contents when cloning scripts
+        } else if (nodeName === "script" && dest.text !== src.text) {
+            dest.text = src.text;
         }
 
         // Event data gets referenced instead of copied if the expando
         // gets copied too
         dest.removeAttribute(jQuery.expando);
+
+        // Clear flags for bubbling special change/submit events, they must
+        // be reattached when the newly cloned events are first activated
+        dest.removeAttribute("_submit_attached");
+        dest.removeAttribute("_change_attached");
     }
 
     jQuery.buildFragment = function (args, nodes, scripts) {
-        var fragment, cacheable, cacheresults, doc;
+        var fragment, cacheable, cacheresults, doc,
+	first = args[0];
 
         // nodes may contain either an explicit document object,
         // a jQuery collection or context object.
@@ -7954,12 +8201,15 @@ delegate = function (event) {
         // Cloning options loses the selected state, so don't cache them
         // IE 6 doesn't like it when you put <object> or <embed> elements in a fragment
         // Also, WebKit does not clone 'checked' attributes on cloneNode, so don't cache
-        if (args.length === 1 && typeof args[0] === "string" && args[0].length < 512 && doc === document &&
-		args[0].charAt(0) === "<" && !rnocache.test(args[0]) && (jQuery.support.checkClone || !rchecked.test(args[0]))) {
+        // Lastly, IE6,7,8 will not correctly reuse cached fragments that were created from unknown elems #10501
+        if (args.length === 1 && typeof first === "string" && first.length < 512 && doc === document &&
+		first.charAt(0) === "<" && !rnocache.test(first) &&
+		(jQuery.support.checkClone || !rchecked.test(first)) &&
+		(jQuery.support.html5Clone || !rnoshimcache.test(first))) {
 
             cacheable = true;
 
-            cacheresults = jQuery.fragments[args[0]];
+            cacheresults = jQuery.fragments[first];
             if (cacheresults && cacheresults !== 1) {
                 fragment = cacheresults;
             }
@@ -7971,7 +8221,7 @@ delegate = function (event) {
         }
 
         if (cacheable) {
-            jQuery.fragments[args[0]] = cacheresults ? fragment : 1;
+            jQuery.fragments[first] = cacheresults ? fragment : 1;
         }
 
         return { fragment: fragment, cacheable: cacheable };
@@ -8008,10 +8258,10 @@ delegate = function (event) {
     });
 
     function getAll(elem) {
-        if ("getElementsByTagName" in elem) {
+        if (typeof elem.getElementsByTagName !== "undefined") {
             return elem.getElementsByTagName("*");
 
-        } else if ("querySelectorAll" in elem) {
+        } else if (typeof elem.querySelectorAll !== "undefined") {
             return elem.querySelectorAll("*");
 
         } else {
@@ -8027,19 +8277,33 @@ delegate = function (event) {
     }
     // Finds all inputs and passes them to fixDefaultChecked
     function findInputs(elem) {
-        if (jQuery.nodeName(elem, "input")) {
+        var nodeName = (elem.nodeName || "").toLowerCase();
+        if (nodeName === "input") {
             fixDefaultChecked(elem);
-        } else if ("getElementsByTagName" in elem) {
+            // Skip scripts, get other children
+        } else if (nodeName !== "script" && typeof elem.getElementsByTagName !== "undefined") {
             jQuery.grep(elem.getElementsByTagName("input"), fixDefaultChecked);
         }
     }
 
+    // Derived From: http://www.iecss.com/shimprove/javascript/shimprove.1-0-1.js
+    function shimCloneNode(elem) {
+        var div = document.createElement("div");
+        safeFragment.appendChild(div);
+
+        div.innerHTML = elem.outerHTML;
+        return div.firstChild;
+    }
+
     jQuery.extend({
         clone: function (elem, dataAndEvents, deepDataAndEvents) {
-            var clone = elem.cloneNode(true),
-				srcElements,
-				destElements,
-				i;
+            var srcElements,
+			destElements,
+			i,
+            // IE<=8 does not properly clone detached, unknown element nodes
+			clone = jQuery.support.html5Clone || jQuery.isXMLDoc(elem) || !rnoshimcache.test("<" + elem.nodeName + ">") ?
+				elem.cloneNode(true) :
+				shimCloneNode(elem);
 
             if ((!jQuery.support.noCloneEvent || !jQuery.support.noCloneChecked) &&
 				(elem.nodeType === 1 || elem.nodeType === 11) && !jQuery.isXMLDoc(elem)) {
@@ -8051,8 +8315,7 @@ delegate = function (event) {
 
                 cloneFixAttributes(elem, clone);
 
-                // Using Sizzle here is crazy slow, so we use getElementsByTagName
-                // instead
+                // Using Sizzle here is crazy slow, so we use getElementsByTagName instead
                 srcElements = getAll(elem);
                 destElements = getAll(clone);
 
@@ -8060,7 +8323,10 @@ delegate = function (event) {
                 // with an element if you are cloning the body and one of the
                 // elements on the page has a name or id of "length"
                 for (i = 0; srcElements[i]; ++i) {
-                    cloneFixAttributes(srcElements[i], destElements[i]);
+                    // Ensure that the destination node is not null; Fixes #9587
+                    if (destElements[i]) {
+                        cloneFixAttributes(srcElements[i], destElements[i]);
+                    }
                 }
             }
 
@@ -8085,7 +8351,8 @@ delegate = function (event) {
         },
 
         clean: function (elems, context, fragment, scripts) {
-            var checkScriptType;
+            var checkScriptType, script, j,
+				ret = [];
 
             context = context || document;
 
@@ -8093,8 +8360,6 @@ delegate = function (event) {
             if (typeof context.createElement === "undefined") {
                 context = context.ownerDocument || context[0] && context[0].ownerDocument || document;
             }
-
-            var ret = [], j;
 
             for (var i = 0, elem; (elem = elems[i]) != null; i++) {
                 if (typeof elem === "number") {
@@ -8117,7 +8382,18 @@ delegate = function (event) {
                         var tag = (rtagName.exec(elem) || ["", ""])[1].toLowerCase(),
 						wrap = wrapMap[tag] || wrapMap._default,
 						depth = wrap[0],
-						div = context.createElement("div");
+						div = context.createElement("div"),
+						safeChildNodes = safeFragment.childNodes,
+						remove;
+
+                        // Append wrapper element to unknown element safe doc fragment
+                        if (context === document) {
+                            // Use the fragment we've already created for this document
+                            safeFragment.appendChild(div);
+                        } else {
+                            // Use a fragment created with the owner document
+                            createSafeFragment(context).appendChild(div);
+                        }
 
                         // Go to html and back, then peel off extra wrappers
                         div.innerHTML = wrap[1] + elem + wrap[2];
@@ -8153,6 +8429,21 @@ delegate = function (event) {
                         }
 
                         elem = div.childNodes;
+
+                        // Clear elements from DocumentFragment (safeFragment or otherwise)
+                        // to avoid hoarding elements. Fixes #11356
+                        if (div) {
+                            div.parentNode.removeChild(div);
+
+                            // Guard against -1 index exceptions in FF3.6
+                            if (safeChildNodes.length > 0) {
+                                remove = safeChildNodes[safeChildNodes.length - 1];
+
+                                if (remove && remove.parentNode) {
+                                    remove.parentNode.removeChild(remove);
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -8181,16 +8472,17 @@ delegate = function (event) {
                     return !elem.type || rscriptType.test(elem.type);
                 };
                 for (i = 0; ret[i]; i++) {
-                    if (scripts && jQuery.nodeName(ret[i], "script") && (!ret[i].type || ret[i].type.toLowerCase() === "text/javascript")) {
-                        scripts.push(ret[i].parentNode ? ret[i].parentNode.removeChild(ret[i]) : ret[i]);
+                    script = ret[i];
+                    if (scripts && jQuery.nodeName(script, "script") && (!script.type || rscriptType.test(script.type))) {
+                        scripts.push(script.parentNode ? script.parentNode.removeChild(script) : script);
 
                     } else {
-                        if (ret[i].nodeType === 1) {
-                            var jsTags = jQuery.grep(ret[i].getElementsByTagName("script"), checkScriptType);
+                        if (script.nodeType === 1) {
+                            var jsTags = jQuery.grep(script.getElementsByTagName("script"), checkScriptType);
 
                             ret.splice.apply(ret, [i + 1, 0].concat(jsTags));
                         }
-                        fragment.appendChild(ret[i]);
+                        fragment.appendChild(script);
                     }
                 }
             }
@@ -8199,7 +8491,9 @@ delegate = function (event) {
         },
 
         cleanData: function (elems) {
-            var data, id, cache = jQuery.cache, internalKey = jQuery.expando, special = jQuery.event.special,
+            var data, id,
+			cache = jQuery.cache,
+			special = jQuery.event.special,
 			deleteExpando = jQuery.support.deleteExpando;
 
             for (var i = 0, elem; (elem = elems[i]) != null; i++) {
@@ -8210,7 +8504,7 @@ delegate = function (event) {
                 id = elem[jQuery.expando];
 
                 if (id) {
-                    data = cache[id] && cache[id][internalKey];
+                    data = cache[id];
 
                     if (data && data.events) {
                         for (var type in data.events) {
@@ -8242,21 +8536,6 @@ delegate = function (event) {
         }
     });
 
-    function evalScript(i, elem) {
-        if (elem.src) {
-            jQuery.ajax({
-                url: elem.src,
-                async: false,
-                dataType: "script"
-            });
-        } else {
-            jQuery.globalEval((elem.text || elem.textContent || elem.innerHTML || "").replace(rcleanScript, "/*$0*/"));
-        }
-
-        if (elem.parentNode) {
-            elem.parentNode.removeChild(elem);
-        }
-    }
 
 
 
@@ -8264,30 +8543,27 @@ delegate = function (event) {
 	ropacity = /opacity=([^)]*)/,
     // fixed for IE9, see #8346
 	rupper = /([A-Z]|^ms)/g,
-	rnumpx = /^-?\d+(?:px)?$/i,
-	rnum = /^-?\d/,
-	rrelNum = /^[+\-]=/,
-	rrelNumFilter = /[^+\-\.\de]+/g,
+	rnum = /^[\-+]?(?:\d*\.)?\d+$/i,
+	rnumnonpx = /^-?(?:\d*\.)?\d+(?!px)[^\d\s]+$/i,
+	rrelNum = /^([\-+])=([\-+.\de]+)/,
+	rmargin = /^margin/,
 
 	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
-	cssWidth = ["Left", "Right"],
-	cssHeight = ["Top", "Bottom"],
+
+    // order is important!
+	cssExpand = ["Top", "Right", "Bottom", "Left"],
+
 	curCSS,
 
 	getComputedStyle,
 	currentStyle;
 
     jQuery.fn.css = function (name, value) {
-        // Setting 'undefined' is a no-op
-        if (arguments.length === 2 && value === undefined) {
-            return this;
-        }
-
-        return jQuery.access(this, name, value, true, function (elem, name, value) {
+        return jQuery.access(this, function (elem, name, value) {
             return value !== undefined ?
 			jQuery.style(elem, name, value) :
 			jQuery.css(elem, name);
-        });
+        }, name, value, arguments.length > 1);
     };
 
     jQuery.extend({
@@ -8298,7 +8574,7 @@ delegate = function (event) {
                 get: function (elem, computed) {
                     if (computed) {
                         // We should always get a number back from opacity
-                        var ret = curCSS(elem, "opacity", "opacity");
+                        var ret = curCSS(elem, "opacity");
                         return ret === "" ? "1" : ret;
 
                     } else {
@@ -8344,16 +8620,16 @@ delegate = function (event) {
             if (value !== undefined) {
                 type = typeof value;
 
-                // Make sure that NaN and null values aren't set. See: #7116
-                if (type === "number" && isNaN(value) || value == null) {
-                    return;
-                }
-
                 // convert relative number strings (+= or -=) to relative numbers. #7345
-                if (type === "string" && rrelNum.test(value)) {
-                    value = +value.replace(rrelNumFilter, "") + parseFloat(jQuery.css(elem, name));
+                if (type === "string" && (ret = rrelNum.exec(value))) {
+                    value = (+(ret[1] + 1) * +ret[2]) + parseFloat(jQuery.css(elem, name));
                     // Fixes bug #9237
                     type = "number";
+                }
+
+                // Make sure that NaN and null values aren't set. See: #7116
+                if (value == null || type === "number" && isNaN(value)) {
+                    return;
                 }
 
                 // If a number was passed in, add 'px' to the (except for certain CSS properties)
@@ -8406,127 +8682,53 @@ delegate = function (event) {
 
         // A method for quickly swapping in/out CSS properties to get correct calculations
         swap: function (elem, options, callback) {
-            var old = {};
+            var old = {},
+			ret, name;
 
             // Remember the old values, and insert the new ones
-            for (var name in options) {
+            for (name in options) {
                 old[name] = elem.style[name];
                 elem.style[name] = options[name];
             }
 
-            callback.call(elem);
+            ret = callback.call(elem);
 
             // Revert the old values
             for (name in options) {
                 elem.style[name] = old[name];
             }
+
+            return ret;
         }
     });
 
-    // DEPRECATED, Use jQuery.css() instead
+    // DEPRECATED in 1.3, Use jQuery.css() instead
     jQuery.curCSS = jQuery.css;
-
-    jQuery.each(["height", "width"], function (i, name) {
-        jQuery.cssHooks[name] = {
-            get: function (elem, computed, extra) {
-                var val;
-
-                if (computed) {
-                    if (elem.offsetWidth !== 0) {
-                        return getWH(elem, name, extra);
-                    } else {
-                        jQuery.swap(elem, cssShow, function () {
-                            val = getWH(elem, name, extra);
-                        });
-                    }
-
-                    return val;
-                }
-            },
-
-            set: function (elem, value) {
-                if (rnumpx.test(value)) {
-                    // ignore negative width and height values #1599
-                    value = parseFloat(value);
-
-                    if (value >= 0) {
-                        return value + "px";
-                    }
-
-                } else {
-                    return value;
-                }
-            }
-        };
-    });
-
-    if (!jQuery.support.opacity) {
-        jQuery.cssHooks.opacity = {
-            get: function (elem, computed) {
-                // IE uses filters for opacity
-                return ropacity.test((computed && elem.currentStyle ? elem.currentStyle.filter : elem.style.filter) || "") ?
-				(parseFloat(RegExp.$1) / 100) + "" :
-				computed ? "1" : "";
-            },
-
-            set: function (elem, value) {
-                var style = elem.style,
-				currentStyle = elem.currentStyle;
-
-                // IE has trouble with opacity if it does not have layout
-                // Force it by setting the zoom level
-                style.zoom = 1;
-
-                // Set the alpha filter to set the opacity
-                var opacity = jQuery.isNaN(value) ?
-				"" :
-				"alpha(opacity=" + value * 100 + ")",
-				filter = currentStyle && currentStyle.filter || style.filter || "";
-
-                style.filter = ralpha.test(filter) ?
-				filter.replace(ralpha, opacity) :
-				filter + " " + opacity;
-            }
-        };
-    }
-
-    jQuery(function () {
-        // This hook cannot be added until DOM ready because the support test
-        // for it is not run until after DOM ready
-        if (!jQuery.support.reliableMarginRight) {
-            jQuery.cssHooks.marginRight = {
-                get: function (elem, computed) {
-                    // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
-                    // Work around by temporarily setting element display to inline-block
-                    var ret;
-                    jQuery.swap(elem, { "display": "inline-block" }, function () {
-                        if (computed) {
-                            ret = curCSS(elem, "margin-right", "marginRight");
-                        } else {
-                            ret = elem.style.marginRight;
-                        }
-                    });
-                    return ret;
-                }
-            };
-        }
-    });
 
     if (document.defaultView && document.defaultView.getComputedStyle) {
         getComputedStyle = function (elem, name) {
-            var ret, defaultView, computedStyle;
+            var ret, defaultView, computedStyle, width,
+			style = elem.style;
 
             name = name.replace(rupper, "-$1").toLowerCase();
 
-            if (!(defaultView = elem.ownerDocument.defaultView)) {
-                return undefined;
-            }
+            if ((defaultView = elem.ownerDocument.defaultView) &&
+				(computedStyle = defaultView.getComputedStyle(elem, null))) {
 
-            if ((computedStyle = defaultView.getComputedStyle(elem, null))) {
                 ret = computedStyle.getPropertyValue(name);
                 if (ret === "" && !jQuery.contains(elem.ownerDocument.documentElement, elem)) {
                     ret = jQuery.style(elem, name);
                 }
+            }
+
+            // A tribute to the "awesome hack by Dean Edwards"
+            // WebKit uses "computed value (percentage if specified)" instead of "used value" for margins
+            // which is against the CSSOM draft spec: http://dev.w3.org/csswg/cssom/#resolved-values
+            if (!jQuery.support.pixelMargin && computedStyle && rmargin.test(name) && rnumnonpx.test(ret)) {
+                width = style.width;
+                style.width = ret;
+                ret = computedStyle.width;
+                style.width = width;
             }
 
             return ret;
@@ -8535,25 +8737,32 @@ delegate = function (event) {
 
     if (document.documentElement.currentStyle) {
         currentStyle = function (elem, name) {
-            var left,
+            var left, rsLeft, uncomputed,
 			ret = elem.currentStyle && elem.currentStyle[name],
-			rsLeft = elem.runtimeStyle && elem.runtimeStyle[name],
 			style = elem.style;
+
+            // Avoid setting ret to empty string here
+            // so we don't default to auto
+            if (ret == null && style && (uncomputed = style[name])) {
+                ret = uncomputed;
+            }
 
             // From the awesome hack by Dean Edwards
             // http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
 
             // If we're not dealing with a regular pixel number
             // but a number that has a weird ending, we need to convert it to pixels
-            if (!rnumpx.test(ret) && rnum.test(ret)) {
+            if (rnumnonpx.test(ret)) {
+
                 // Remember the original values
                 left = style.left;
+                rsLeft = elem.runtimeStyle && elem.runtimeStyle.left;
 
                 // Put in the new values to get a computed value out
                 if (rsLeft) {
                     elem.runtimeStyle.left = elem.currentStyle.left;
                 }
-                style.left = name === "fontSize" ? "1em" : (ret || 0);
+                style.left = name === "fontSize" ? "1em" : ret;
                 ret = style.pixelLeft + "px";
 
                 // Revert the changed values
@@ -8569,65 +8778,180 @@ delegate = function (event) {
 
     curCSS = getComputedStyle || currentStyle;
 
-    function getWH(elem, name, extra) {
+    function getWidthOrHeight(elem, name, extra) {
 
         // Start with offset property
         var val = name === "width" ? elem.offsetWidth : elem.offsetHeight,
-		which = name === "width" ? cssWidth : cssHeight;
+		i = name === "width" ? 1 : 0,
+		len = 4;
 
         if (val > 0) {
             if (extra !== "border") {
-                jQuery.each(which, function () {
+                for (; i < len; i += 2) {
                     if (!extra) {
-                        val -= parseFloat(jQuery.css(elem, "padding" + this)) || 0;
+                        val -= parseFloat(jQuery.css(elem, "padding" + cssExpand[i])) || 0;
                     }
                     if (extra === "margin") {
-                        val += parseFloat(jQuery.css(elem, extra + this)) || 0;
+                        val += parseFloat(jQuery.css(elem, extra + cssExpand[i])) || 0;
                     } else {
-                        val -= parseFloat(jQuery.css(elem, "border" + this + "Width")) || 0;
+                        val -= parseFloat(jQuery.css(elem, "border" + cssExpand[i] + "Width")) || 0;
                     }
-                });
+                }
             }
 
             return val + "px";
         }
 
         // Fall back to computed then uncomputed css if necessary
-        val = curCSS(elem, name, name);
+        val = curCSS(elem, name);
         if (val < 0 || val == null) {
-            val = elem.style[name] || 0;
+            val = elem.style[name];
         }
+
+        // Computed unit is not pixels. Stop here and return.
+        if (rnumnonpx.test(val)) {
+            return val;
+        }
+
         // Normalize "", auto, and prepare for extra
         val = parseFloat(val) || 0;
 
         // Add padding, border, margin
         if (extra) {
-            jQuery.each(which, function () {
-                val += parseFloat(jQuery.css(elem, "padding" + this)) || 0;
+            for (; i < len; i += 2) {
+                val += parseFloat(jQuery.css(elem, "padding" + cssExpand[i])) || 0;
                 if (extra !== "padding") {
-                    val += parseFloat(jQuery.css(elem, "border" + this + "Width")) || 0;
+                    val += parseFloat(jQuery.css(elem, "border" + cssExpand[i] + "Width")) || 0;
                 }
                 if (extra === "margin") {
-                    val += parseFloat(jQuery.css(elem, extra + this)) || 0;
+                    val += parseFloat(jQuery.css(elem, extra + cssExpand[i])) || 0;
                 }
-            });
+            }
         }
 
         return val + "px";
     }
+
+    jQuery.each(["height", "width"], function (i, name) {
+        jQuery.cssHooks[name] = {
+            get: function (elem, computed, extra) {
+                if (computed) {
+                    if (elem.offsetWidth !== 0) {
+                        return getWidthOrHeight(elem, name, extra);
+                    } else {
+                        return jQuery.swap(elem, cssShow, function () {
+                            return getWidthOrHeight(elem, name, extra);
+                        });
+                    }
+                }
+            },
+
+            set: function (elem, value) {
+                return rnum.test(value) ?
+				value + "px" :
+				value;
+            }
+        };
+    });
+
+    if (!jQuery.support.opacity) {
+        jQuery.cssHooks.opacity = {
+            get: function (elem, computed) {
+                // IE uses filters for opacity
+                return ropacity.test((computed && elem.currentStyle ? elem.currentStyle.filter : elem.style.filter) || "") ?
+				(parseFloat(RegExp.$1) / 100) + "" :
+				computed ? "1" : "";
+            },
+
+            set: function (elem, value) {
+                var style = elem.style,
+				currentStyle = elem.currentStyle,
+				opacity = jQuery.isNumeric(value) ? "alpha(opacity=" + value * 100 + ")" : "",
+				filter = currentStyle && currentStyle.filter || style.filter || "";
+
+                // IE has trouble with opacity if it does not have layout
+                // Force it by setting the zoom level
+                style.zoom = 1;
+
+                // if setting opacity to 1, and no other filters exist - attempt to remove filter attribute #6652
+                if (value >= 1 && jQuery.trim(filter.replace(ralpha, "")) === "") {
+
+                    // Setting style.filter to null, "" & " " still leave "filter:" in the cssText
+                    // if "filter:" is present at all, clearType is disabled, we want to avoid this
+                    // style.removeAttribute is IE Only, but so apparently is this code path...
+                    style.removeAttribute("filter");
+
+                    // if there there is no filter style applied in a css rule, we are done
+                    if (currentStyle && !currentStyle.filter) {
+                        return;
+                    }
+                }
+
+                // otherwise, set new filter values
+                style.filter = ralpha.test(filter) ?
+				filter.replace(ralpha, opacity) :
+				filter + " " + opacity;
+            }
+        };
+    }
+
+    jQuery(function () {
+        // This hook cannot be added until DOM ready because the support test
+        // for it is not run until after DOM ready
+        if (!jQuery.support.reliableMarginRight) {
+            jQuery.cssHooks.marginRight = {
+                get: function (elem, computed) {
+                    // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+                    // Work around by temporarily setting element display to inline-block
+                    return jQuery.swap(elem, { "display": "inline-block" }, function () {
+                        if (computed) {
+                            return curCSS(elem, "margin-right");
+                        } else {
+                            return elem.style.marginRight;
+                        }
+                    });
+                }
+            };
+        }
+    });
 
     if (jQuery.expr && jQuery.expr.filters) {
         jQuery.expr.filters.hidden = function (elem) {
             var width = elem.offsetWidth,
 			height = elem.offsetHeight;
 
-            return (width === 0 && height === 0) || (!jQuery.support.reliableHiddenOffsets && (elem.style.display || jQuery.css(elem, "display")) === "none");
+            return (width === 0 && height === 0) || (!jQuery.support.reliableHiddenOffsets && ((elem.style && elem.style.display) || jQuery.css(elem, "display")) === "none");
         };
 
         jQuery.expr.filters.visible = function (elem) {
             return !jQuery.expr.filters.hidden(elem);
         };
     }
+
+    // These hooks are used by animate to expand properties
+    jQuery.each({
+        margin: "",
+        padding: "",
+        border: "Width"
+    }, function (prefix, suffix) {
+
+        jQuery.cssHooks[prefix + suffix] = {
+            expand: function (value) {
+                var i,
+
+                // assumes a single number if not a string
+				parts = typeof value === "string" ? value.split(" ") : [value],
+				expanded = {};
+
+                for (i = 0; i < 4; i++) {
+                    expanded[prefix + cssExpand[i] + suffix] =
+					parts[i] || parts[i - 2] || parts[0];
+                }
+
+                return expanded;
+            }
+        };
+    });
 
 
 
@@ -8637,9 +8961,9 @@ delegate = function (event) {
 	rCRLF = /\r?\n/g,
 	rhash = /#.*$/,
 	rheaders = /^(.*?):[ \t]*([^\r\n]*)\r?$/mg, // IE leaves an \r character at EOL
-	rinput = /^(?:color|date|datetime|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,
+	rinput = /^(?:color|date|datetime|datetime-local|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,
     // #7653, #8125, #8152: local protocol detection
-	rlocalProtocol = /^(?:about|app|app\-storage|.+\-extension|file|widget):$/,
+	rlocalProtocol = /^(?:about|app|app\-storage|.+\-extension|file|res|widget):$/,
 	rnoContent = /^(?:GET|HEAD)$/,
 	rprotocol = /^\/\//,
 	rquery = /\?/,
@@ -8674,7 +8998,10 @@ delegate = function (event) {
 	ajaxLocation,
 
     // Document location segments
-	ajaxLocParts;
+	ajaxLocParts,
+
+    // Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
+	allTypes = ["*/"] + ["*"];
 
     // #8138, IE may throw an exception when accessing
     // a field from window.location if document.domain has been set
@@ -8765,6 +9092,22 @@ delegate = function (event) {
         // unnecessary when only executing (prefilters)
         // but it'll be ignored by the caller in that case
         return selection;
+    }
+
+    // A special extend for ajax options
+    // that takes "flat" options (not to be deep extended)
+    // Fixes #9887
+    function ajaxExtend(target, src) {
+        var key, deep,
+		flatOptions = jQuery.ajaxSettings.flatOptions || {};
+        for (key in src) {
+            if (src[key] !== undefined) {
+                (flatOptions[key] ? target : (deep || (deep = {})))[key] = src[key];
+            }
+        }
+        if (deep) {
+            jQuery.extend(true, target, deep);
+        }
     }
 
     jQuery.fn.extend({
@@ -8874,7 +9217,7 @@ delegate = function (event) {
     // Attach a bunch of functions for handling common AJAX events
     jQuery.each("ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxSend".split(" "), function (i, o) {
         jQuery.fn[o] = function (f) {
-            return this.bind(o, f);
+            return this.on(o, f);
         };
     });
 
@@ -8911,22 +9254,15 @@ delegate = function (event) {
         // with both ajaxSettings and settings fields.
         // If target is omitted, writes into ajaxSettings.
         ajaxSetup: function (target, settings) {
-            if (!settings) {
-                // Only one parameter, we extend ajaxSettings
-                settings = target;
-                target = jQuery.extend(true, jQuery.ajaxSettings, settings);
+            if (settings) {
+                // Building a settings object
+                ajaxExtend(target, jQuery.ajaxSettings);
             } else {
-                // target was provided, we extend into it
-                jQuery.extend(true, target, jQuery.ajaxSettings, settings);
+                // Extending ajaxSettings
+                settings = target;
+                target = jQuery.ajaxSettings;
             }
-            // Flatten fields we don't want deep extended
-            for (var field in { context: 1, url: 1 }) {
-                if (field in settings) {
-                    target[field] = settings[field];
-                } else if (field in jQuery.ajaxSettings) {
-                    target[field] = jQuery.ajaxSettings[field];
-                }
-            }
+            ajaxExtend(target, settings);
             return target;
         },
 
@@ -8935,7 +9271,7 @@ delegate = function (event) {
             isLocal: rlocalProtocol.test(ajaxLocParts[1]),
             global: true,
             type: "GET",
-            contentType: "application/x-www-form-urlencoded",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             processData: true,
             async: true,
             /*
@@ -8954,7 +9290,7 @@ delegate = function (event) {
                 html: "text/html",
                 text: "text/plain",
                 json: "application/json, text/javascript",
-                "*": "*/*"
+                "*": allTypes
             },
 
             contents: {
@@ -8984,6 +9320,15 @@ delegate = function (event) {
 
                 // Parse text as xml
                 "text xml": jQuery.parseXML
+            },
+
+            // For options that shouldn't be deep extended:
+            // you can add your own custom options here if
+            // and when you create one that shouldn't be
+            // deep extended (see ajaxExtend)
+            flatOptions: {
+                context: true,
+                url: true
             }
         },
 
@@ -9014,7 +9359,7 @@ delegate = function (event) {
 						jQuery(callbackContext) : jQuery.event,
             // Deferreds
 			deferred = jQuery.Deferred(),
-			completeDeferred = jQuery._Deferred(),
+			completeDeferred = jQuery.Callbacks("once memory"),
             // Status-dependent callbacks
 			statusCode = s.statusCode || {},
             // ifModified key
@@ -9094,7 +9439,7 @@ delegate = function (event) {
             // Callback for when everything is done
             // It is defined here because jslint complains if it is declared
             // at the end of the function (which would be more logical and readable)
-            function done(status, statusText, responses, headers) {
+            function done(status, nativeStatusText, responses, headers) {
 
                 // Called once
                 if (state === 2) {
@@ -9117,11 +9462,12 @@ delegate = function (event) {
                 responseHeadersString = headers || "";
 
                 // Set readyState
-                jqXHR.readyState = status ? 4 : 0;
+                jqXHR.readyState = status > 0 ? 4 : 0;
 
                 var isSuccess,
 				success,
 				error,
+				statusText = nativeStatusText,
 				response = responses ? ajaxHandleResponses(s, jqXHR, responses) : undefined,
 				lastModified,
 				etag;
@@ -9173,7 +9519,7 @@ delegate = function (event) {
 
                 // Set data for the fake xhr object
                 jqXHR.status = status;
-                jqXHR.statusText = statusText;
+                jqXHR.statusText = "" + (nativeStatusText || statusText);
 
                 // Success/Error
                 if (isSuccess) {
@@ -9192,7 +9538,7 @@ delegate = function (event) {
                 }
 
                 // Complete
-                completeDeferred.resolveWith(callbackContext, [jqXHR, statusText]);
+                completeDeferred.fireWith(callbackContext, [jqXHR, statusText]);
 
                 if (fireGlobals) {
                     globalEventContext.trigger("ajaxComplete", [jqXHR, s]);
@@ -9207,7 +9553,7 @@ delegate = function (event) {
             deferred.promise(jqXHR);
             jqXHR.success = jqXHR.done;
             jqXHR.error = jqXHR.fail;
-            jqXHR.complete = completeDeferred.done;
+            jqXHR.complete = completeDeferred.add;
 
             // Status-dependent callbacks
             jqXHR.statusCode = function (map) {
@@ -9251,7 +9597,7 @@ delegate = function (event) {
             // Apply prefilters
             inspectPrefiltersOrTransports(prefilters, s, options, jqXHR);
 
-            // If request was aborted inside a prefiler, stop there
+            // If request was aborted inside a prefilter, stop there
             if (state === 2) {
                 return false;
             }
@@ -9276,6 +9622,8 @@ delegate = function (event) {
                 // If data is available, append data to url
                 if (s.data) {
                     s.url += (rquery.test(s.url) ? "&" : "?") + s.data;
+                    // #9682: remove data so that it's not used in an eventual retry
+                    delete s.data;
                 }
 
                 // Get ifModifiedKey before adding the anti-cache parameter
@@ -9313,7 +9661,7 @@ delegate = function (event) {
             jqXHR.setRequestHeader(
 			"Accept",
 			s.dataTypes[0] && s.accepts[s.dataTypes[0]] ?
-				s.accepts[s.dataTypes[0]] + (s.dataTypes[0] !== "*" ? ", */*; q=0.01" : "") :
+				s.accepts[s.dataTypes[0]] + (s.dataTypes[0] !== "*" ? ", " + allTypes + "; q=0.01" : "") :
 				s.accepts["*"]
 		);
 
@@ -9359,11 +9707,11 @@ delegate = function (event) {
                     transport.send(requestHeaders, done);
                 } catch (e) {
                     // Propagate exception as error if not done
-                    if (status < 2) {
+                    if (state < 2) {
                         done(-1, e);
                         // Simply rethrow otherwise
                     } else {
-                        jQuery.error(e);
+                        throw e;
                     }
                 }
             }
@@ -9422,11 +9770,11 @@ delegate = function (event) {
                     // a server error. Possible fixes are to modify rack's
                     // deserialization algorithm or to provide an option or flag
                     // to force array serialization to be shallow.
-                    buildParams(prefix + "[" + (typeof v === "object" || jQuery.isArray(v) ? i : "") + "]", v, traditional, add);
+                    buildParams(prefix + "[" + (typeof v === "object" ? i : "") + "]", v, traditional, add);
                 }
             });
 
-        } else if (!traditional && obj != null && typeof obj === "object") {
+        } else if (!traditional && jQuery.type(obj) === "object") {
             // Serialize object item.
             for (var name in obj) {
                 buildParams(prefix + "[" + name + "]", obj[name], traditional, add);
@@ -9622,8 +9970,7 @@ delegate = function (event) {
     // Detect, normalize options and install callbacks for jsonp requests
     jQuery.ajaxPrefilter("json jsonp", function (s, originalSettings, jqXHR) {
 
-        var inspectData = s.contentType === "application/x-www-form-urlencoded" &&
-		(typeof s.data === "string");
+        var inspectData = (typeof s.data === "string") && /^application\/x\-www\-form\-urlencoded/.test(s.contentType);
 
         if (s.dataTypes[0] === "jsonp" ||
 		s.jsonp !== false && (jsre.test(s.url) ||
@@ -9924,7 +10271,13 @@ delegate = function (event) {
                                         if (xml && xml.documentElement /* #4958 */) {
                                             responses.xml = xml;
                                         }
-                                        responses.text = xhr.responseText;
+
+                                        // When requesting binary data, IE6-9 will throw an exception
+                                        // on any attempt to access responseText (#11426)
+                                        try {
+                                            responses.text = xhr.responseText;
+                                        } catch (_) {
+                                        }
 
                                         // Firefox throws an exception when accessing
                                         // statusText for faulty cross-domain requests
@@ -10007,10 +10360,7 @@ delegate = function (event) {
     // opacity animations
 		["opacity"]
 	],
-	fxNow,
-	requestAnimationFrame = window.webkitRequestAnimationFrame ||
-		window.mozRequestAnimationFrame ||
-		window.oRequestAnimationFrame;
+	fxNow;
 
     jQuery.fn.extend({
         show: function (speed, easing, callback) {
@@ -10035,7 +10385,8 @@ delegate = function (event) {
                         // Set elements which have been overridden with display: none
                         // in a stylesheet to whatever the default browser style is
                         // for such an element
-                        if (display === "" && jQuery.css(elem, "display") === "none") {
+                        if ((display === "" && jQuery.css(elem, "display") === "none") ||
+						!jQuery.contains(elem.ownerDocument.documentElement, elem)) {
                             jQuery._data(elem, "olddisplay", defaultDisplay(elem.nodeName));
                         }
                     }
@@ -10064,12 +10415,17 @@ delegate = function (event) {
                 return this.animate(genFx("hide", 3), speed, easing, callback);
 
             } else {
-                for (var i = 0, j = this.length; i < j; i++) {
-                    if (this[i].style) {
-                        var display = jQuery.css(this[i], "display");
+                var elem, display,
+				i = 0,
+				j = this.length;
 
-                        if (display !== "none" && !jQuery._data(this[i], "olddisplay")) {
-                            jQuery._data(this[i], "olddisplay", display);
+                for (; i < j; i++) {
+                    elem = this[i];
+                    if (elem.style) {
+                        display = jQuery.css(elem, "display");
+
+                        if (display !== "none" && !jQuery._data(elem, "olddisplay")) {
+                            jQuery._data(elem, "olddisplay", display);
                         }
                     }
                 }
@@ -10123,7 +10479,7 @@ delegate = function (event) {
             // Do not change referenced properties as per-property easing will be lost
             prop = jQuery.extend({}, prop);
 
-            return this[optall.queue === false ? "each" : "queue"](function () {
+            function doAnimation() {
                 // XXX 'this' does not always have a nodeName when running the
                 // test suite
 
@@ -10134,24 +10490,37 @@ delegate = function (event) {
                 var opt = jQuery.extend({}, optall),
 				isElement = this.nodeType === 1,
 				hidden = isElement && jQuery(this).is(":hidden"),
-				name, val, p,
-				display, e,
-				parts, start, end, unit;
+				name, val, p, e, hooks, replace,
+				parts, start, end, unit,
+				method;
 
                 // will store per property easing and be used to determine when an animation is complete
                 opt.animatedProperties = {};
 
+                // first pass over propertys to expand / normalize
                 for (p in prop) {
-
-                    // property name normalization
                     name = jQuery.camelCase(p);
                     if (p !== name) {
                         prop[name] = prop[p];
                         delete prop[p];
                     }
 
-                    val = prop[name];
+                    if ((hooks = jQuery.cssHooks[name]) && "expand" in hooks) {
+                        replace = hooks.expand(prop[name]);
+                        delete prop[name];
 
+                        // not quite $.extend, this wont overwrite keys already present.
+                        // also - reusing 'p' from above because we have the correct "name"
+                        for (p in replace) {
+                            if (!(p in prop)) {
+                                prop[p] = replace[p];
+                            }
+                        }
+                    }
+                }
+
+                for (name in prop) {
+                    val = prop[name];
                     // easing resolution: per property > opt.specialEasing > opt.easing > 'swing' (default)
                     if (jQuery.isArray(val)) {
                         opt.animatedProperties[name] = val[1];
@@ -10172,25 +10541,17 @@ delegate = function (event) {
                         opt.overflow = [this.style.overflow, this.style.overflowX, this.style.overflowY];
 
                         // Set display property to inline-block for height/width
-                        // animations on inline elements that are having width/height
-                        // animated
+                        // animations on inline elements that are having width/height animated
                         if (jQuery.css(this, "display") === "inline" &&
 							jQuery.css(this, "float") === "none") {
-                            if (!jQuery.support.inlineBlockNeedsLayout) {
+
+                            // inline-level elements accept inline-block;
+                            // block-level elements need to be inline with layout
+                            if (!jQuery.support.inlineBlockNeedsLayout || defaultDisplay(this.nodeName) === "inline") {
                                 this.style.display = "inline-block";
 
                             } else {
-                                display = defaultDisplay(this.nodeName);
-
-                                // inline-level elements accept inline-block;
-                                // block-level elements need to be inline with layout
-                                if (display === "inline") {
-                                    this.style.display = "inline-block";
-
-                                } else {
-                                    this.style.display = "inline";
-                                    this.style.zoom = 1;
-                                }
+                                this.style.zoom = 1;
                             }
                         }
                     }
@@ -10205,7 +10566,16 @@ delegate = function (event) {
                     val = prop[p];
 
                     if (rfxtypes.test(val)) {
-                        e[val === "toggle" ? hidden ? "show" : "hide" : val]();
+
+                        // Tracks whether to show or hide based on private
+                        // data attached to the element
+                        method = jQuery._data(this, "toggle" + p) || (val === "toggle" ? hidden ? "show" : "hide" : 0);
+                        if (method) {
+                            jQuery._data(this, "toggle" + p, method === "show" ? "hide" : "show");
+                            e[method]();
+                        } else {
+                            e[val]();
+                        }
 
                     } else {
                         parts = rfxnum.exec(val);
@@ -10237,39 +10607,71 @@ delegate = function (event) {
 
                 // For JS strict compliance
                 return true;
-            });
-        },
-
-        stop: function (clearQueue, gotoEnd) {
-            if (clearQueue) {
-                this.queue([]);
             }
 
-            this.each(function () {
-                var timers = jQuery.timers,
-				i = timers.length;
+            return optall.queue === false ?
+			this.each(doAnimation) :
+			this.queue(optall.queue, doAnimation);
+        },
+
+        stop: function (type, clearQueue, gotoEnd) {
+            if (typeof type !== "string") {
+                gotoEnd = clearQueue;
+                clearQueue = type;
+                type = undefined;
+            }
+            if (clearQueue && type !== false) {
+                this.queue(type || "fx", []);
+            }
+
+            return this.each(function () {
+                var index,
+				hadTimers = false,
+				timers = jQuery.timers,
+				data = jQuery._data(this);
+
                 // clear marker counters if we know they won't be
                 if (!gotoEnd) {
                     jQuery._unmark(true, this);
                 }
-                while (i--) {
-                    if (timers[i].elem === this) {
-                        if (gotoEnd) {
-                            // force the next step to be the last
-                            timers[i](true);
-                        }
 
-                        timers.splice(i, 1);
+                function stopQueue(elem, data, index) {
+                    var hooks = data[index];
+                    jQuery.removeData(elem, index, true);
+                    hooks.stop(gotoEnd);
+                }
+
+                if (type == null) {
+                    for (index in data) {
+                        if (data[index] && data[index].stop && index.indexOf(".run") === index.length - 4) {
+                            stopQueue(this, data, index);
+                        }
+                    }
+                } else if (data[index = type + ".run"] && data[index].stop) {
+                    stopQueue(this, data, index);
+                }
+
+                for (index = timers.length; index--; ) {
+                    if (timers[index].elem === this && (type == null || timers[index].queue === type)) {
+                        if (gotoEnd) {
+
+                            // force the next step to be the last
+                            timers[index](true);
+                        } else {
+                            timers[index].saveState();
+                        }
+                        hadTimers = true;
+                        timers.splice(index, 1);
                     }
                 }
+
+                // start the next in the queue if the last step wasn't forced
+                // timers currently will call their complete callbacks, which will dequeue
+                // but only if they were gotoEnd
+                if (!(gotoEnd && hadTimers)) {
+                    jQuery.dequeue(this, type);
+                }
             });
-
-            // start the next in the queue if the last step wasn't forced
-            if (!gotoEnd) {
-                this.dequeue();
-            }
-
-            return this;
         }
 
     });
@@ -10321,15 +10723,21 @@ delegate = function (event) {
             opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
 			opt.duration in jQuery.fx.speeds ? jQuery.fx.speeds[opt.duration] : jQuery.fx.speeds._default;
 
+            // normalize opt.queue - true/undefined/null -> "fx"
+            if (opt.queue == null || opt.queue === true) {
+                opt.queue = "fx";
+            }
+
             // Queueing
             opt.old = opt.complete;
+
             opt.complete = function (noUnmark) {
                 if (jQuery.isFunction(opt.old)) {
                     opt.old.call(this);
                 }
 
-                if (opt.queue !== false) {
-                    jQuery.dequeue(this);
+                if (opt.queue) {
+                    jQuery.dequeue(this, opt.queue);
                 } else if (noUnmark !== false) {
                     jQuery._unmark(this);
                 }
@@ -10339,11 +10747,11 @@ delegate = function (event) {
         },
 
         easing: {
-            linear: function (p, n, firstNum, diff) {
-                return firstNum + diff * p;
+            linear: function (p) {
+                return p;
             },
-            swing: function (p, n, firstNum, diff) {
-                return ((-Math.cos(p * Math.PI) / 2) + 0.5) * diff + firstNum;
+            swing: function (p) {
+                return (-Math.cos(p * Math.PI) / 2) + 0.5;
             }
         },
 
@@ -10386,50 +10794,51 @@ delegate = function (event) {
         // Start an animation from one number to another
         custom: function (from, to, unit) {
             var self = this,
-			fx = jQuery.fx,
-			raf;
+			fx = jQuery.fx;
 
             this.startTime = fxNow || createFxNow();
-            this.start = from;
             this.end = to;
-            this.unit = unit || this.unit || (jQuery.cssNumber[this.prop] ? "" : "px");
-            this.now = this.start;
+            this.now = this.start = from;
             this.pos = this.state = 0;
+            this.unit = unit || this.unit || (jQuery.cssNumber[this.prop] ? "" : "px");
 
             function t(gotoEnd) {
                 return self.step(gotoEnd);
             }
 
+            t.queue = this.options.queue;
             t.elem = this.elem;
+            t.saveState = function () {
+                if (jQuery._data(self.elem, "fxshow" + self.prop) === undefined) {
+                    if (self.options.hide) {
+                        jQuery._data(self.elem, "fxshow" + self.prop, self.start);
+                    } else if (self.options.show) {
+                        jQuery._data(self.elem, "fxshow" + self.prop, self.end);
+                    }
+                }
+            };
 
             if (t() && jQuery.timers.push(t) && !timerId) {
-                // Use requestAnimationFrame instead of setInterval if available
-                if (requestAnimationFrame) {
-                    timerId = true;
-                    raf = function () {
-                        // When timerId gets set to null at any point, this stops
-                        if (timerId) {
-                            requestAnimationFrame(raf);
-                            fx.tick();
-                        }
-                    };
-                    requestAnimationFrame(raf);
-                } else {
-                    timerId = setInterval(fx.tick, fx.interval);
-                }
+                timerId = setInterval(fx.tick, fx.interval);
             }
         },
 
         // Simple 'show' function
         show: function () {
+            var dataShow = jQuery._data(this.elem, "fxshow" + this.prop);
+
             // Remember where we started, so that we can go back to it later
-            this.options.orig[this.prop] = jQuery.style(this.elem, this.prop);
+            this.options.orig[this.prop] = dataShow || jQuery.style(this.elem, this.prop);
             this.options.show = true;
 
             // Begin the animation
-            // Make sure that we start at a small width/height to avoid any
-            // flash of content
-            this.custom(this.prop === "width" || this.prop === "height" ? 1 : 0, this.cur());
+            // Make sure that we start at a small width/height to avoid any flash of content
+            if (dataShow !== undefined) {
+                // This show is picking up where a previous hide or show left off
+                this.custom(this.cur(), dataShow);
+            } else {
+                this.custom(this.prop === "width" || this.prop === "height" ? 1 : 0, this.cur());
+            }
 
             // Start by showing the element
             jQuery(this.elem).show();
@@ -10438,7 +10847,7 @@ delegate = function (event) {
         // Simple 'hide' function
         hide: function () {
             // Remember where we started, so that we can go back to it later
-            this.options.orig[this.prop] = jQuery.style(this.elem, this.prop);
+            this.options.orig[this.prop] = jQuery._data(this.elem, "fxshow" + this.prop) || jQuery.style(this.elem, this.prop);
             this.options.hide = true;
 
             // Begin the animation
@@ -10447,11 +10856,11 @@ delegate = function (event) {
 
         // Each step of an animation
         step: function (gotoEnd) {
-            var t = fxNow || createFxNow(),
+            var p, n, complete,
+			t = fxNow || createFxNow(),
 			done = true,
 			elem = this.elem,
-			options = this.options,
-			i, n;
+			options = this.options;
 
             if (gotoEnd || t >= options.duration + this.startTime) {
                 this.now = this.end;
@@ -10460,8 +10869,8 @@ delegate = function (event) {
 
                 options.animatedProperties[this.prop] = true;
 
-                for (i in options.animatedProperties) {
-                    if (options.animatedProperties[i] !== true) {
+                for (p in options.animatedProperties) {
+                    if (options.animatedProperties[p] !== true) {
                         done = false;
                     }
                 }
@@ -10482,13 +10891,24 @@ delegate = function (event) {
 
                     // Reset the properties, if the item has been hidden or shown
                     if (options.hide || options.show) {
-                        for (var p in options.animatedProperties) {
+                        for (p in options.animatedProperties) {
                             jQuery.style(elem, p, options.orig[p]);
+                            jQuery.removeData(elem, "fxshow" + p, true);
+                            // Toggle data is no longer needed
+                            jQuery.removeData(elem, "toggle" + p, true);
                         }
                     }
 
                     // Execute the complete function
-                    options.complete.call(elem);
+                    // in the event that the complete function throws an exception
+                    // we must ensure it won't be called twice. #5684
+
+                    complete = options.complete;
+                    if (complete) {
+
+                        options.complete = false;
+                        complete.call(elem);
+                    }
                 }
 
                 return false;
@@ -10515,8 +10935,14 @@ delegate = function (event) {
 
     jQuery.extend(jQuery.fx, {
         tick: function () {
-            for (var timers = jQuery.timers, i = 0; i < timers.length; ++i) {
-                if (!timers[i]()) {
+            var timer,
+			timers = jQuery.timers,
+			i = 0;
+
+            for (; i < timers.length; i++) {
+                timer = timers[i];
+                // Checks the timer has not already been removed
+                if (!timer() && timers[i] === timer) {
                     timers.splice(i--, 1);
                 }
             }
@@ -10547,11 +10973,21 @@ delegate = function (event) {
 
             _default: function (fx) {
                 if (fx.elem.style && fx.elem.style[fx.prop] != null) {
-                    fx.elem.style[fx.prop] = (fx.prop === "width" || fx.prop === "height" ? Math.max(0, fx.now) : fx.now) + fx.unit;
+                    fx.elem.style[fx.prop] = fx.now + fx.unit;
                 } else {
                     fx.elem[fx.prop] = fx.now;
                 }
             }
+        }
+    });
+
+    // Ensure props that can't be negative don't go there on undershoot easing
+    jQuery.each(fxAttrs.concat.apply([], fxAttrs), function (i, prop) {
+        // exclude marginTop, marginLeft, marginBottom and marginRight from this list
+        if (prop.indexOf("margin")) {
+            jQuery.fx.step[prop] = function (fx) {
+                jQuery.style(fx.elem, prop, Math.max(0, fx.now) + fx.unit);
+            };
         }
     });
 
@@ -10571,7 +11007,6 @@ delegate = function (event) {
             var body = document.body,
 			elem = jQuery("<" + nodeName + ">").appendTo(body),
 			display = elem.css("display");
-
             elem.remove();
 
             // If the simple way fails,
@@ -10590,7 +11025,7 @@ delegate = function (event) {
                 // document to it; WebKit & Firefox won't allow reusing the iframe document.
                 if (!iframeDoc || !iframe.createElement) {
                     iframeDoc = (iframe.contentWindow || iframe.contentDocument).document;
-                    iframeDoc.write((document.compatMode === "CSS1Compat" ? "<!doctype html>" : "") + "<html><body>");
+                    iframeDoc.write((jQuery.support.boxModel ? "<!doctype html>" : "") + "<html><body>");
                     iframeDoc.close();
                 }
 
@@ -10599,7 +11034,6 @@ delegate = function (event) {
                 iframeDoc.body.appendChild(elem);
 
                 display = jQuery.css(elem, "display");
-
                 body.removeChild(iframe);
             }
 
@@ -10613,33 +11047,15 @@ delegate = function (event) {
 
 
 
-    var rtable = /^t(?:able|d|h)$/i,
+    var getOffset,
+	rtable = /^t(?:able|d|h)$/i,
 	rroot = /^(?:body|html)$/i;
 
     if ("getBoundingClientRect" in document.documentElement) {
-        jQuery.fn.offset = function (options) {
-            var elem = this[0], box;
-
-            if (options) {
-                return this.each(function (i) {
-                    jQuery.offset.setOffset(this, options, i);
-                });
-            }
-
-            if (!elem || !elem.ownerDocument) {
-                return null;
-            }
-
-            if (elem === elem.ownerDocument.body) {
-                return jQuery.offset.bodyOffset(elem);
-            }
-
+        getOffset = function (elem, doc, docElem, box) {
             try {
                 box = elem.getBoundingClientRect();
             } catch (e) { }
-
-            var doc = elem.ownerDocument,
-			docElem = doc.documentElement;
 
             // Make sure we're not dealing with a disconnected DOM node
             if (!box || !jQuery.contains(docElem, elem)) {
@@ -10659,30 +11075,10 @@ delegate = function (event) {
         };
 
     } else {
-        jQuery.fn.offset = function (options) {
-            var elem = this[0];
-
-            if (options) {
-                return this.each(function (i) {
-                    jQuery.offset.setOffset(this, options, i);
-                });
-            }
-
-            if (!elem || !elem.ownerDocument) {
-                return null;
-            }
-
-            if (elem === elem.ownerDocument.body) {
-                return jQuery.offset.bodyOffset(elem);
-            }
-
-            jQuery.offset.initialize();
-
+        getOffset = function (elem, doc, docElem) {
             var computedStyle,
 			offsetParent = elem.offsetParent,
 			prevOffsetParent = elem,
-			doc = elem.ownerDocument,
-			docElem = doc.documentElement,
 			body = doc.body,
 			defaultView = doc.defaultView,
 			prevComputedStyle = defaultView ? defaultView.getComputedStyle(elem, null) : elem.currentStyle,
@@ -10690,7 +11086,7 @@ delegate = function (event) {
 			left = elem.offsetLeft;
 
             while ((elem = elem.parentNode) && elem !== body && elem !== docElem) {
-                if (jQuery.offset.supportsFixedPosition && prevComputedStyle.position === "fixed") {
+                if (jQuery.support.fixedPosition && prevComputedStyle.position === "fixed") {
                     break;
                 }
 
@@ -10702,7 +11098,7 @@ delegate = function (event) {
                     top += elem.offsetTop;
                     left += elem.offsetLeft;
 
-                    if (jQuery.offset.doesNotAddBorder && !(jQuery.offset.doesAddBorderForTableAndCells && rtable.test(elem.nodeName))) {
+                    if (jQuery.support.doesNotAddBorder && !(jQuery.support.doesAddBorderForTableAndCells && rtable.test(elem.nodeName))) {
                         top += parseFloat(computedStyle.borderTopWidth) || 0;
                         left += parseFloat(computedStyle.borderLeftWidth) || 0;
                     }
@@ -10711,7 +11107,7 @@ delegate = function (event) {
                     offsetParent = elem.offsetParent;
                 }
 
-                if (jQuery.offset.subtractsBorderForOverflowNotVisible && computedStyle.overflow !== "visible") {
+                if (jQuery.support.subtractsBorderForOverflowNotVisible && computedStyle.overflow !== "visible") {
                     top += parseFloat(computedStyle.borderTopWidth) || 0;
                     left += parseFloat(computedStyle.borderLeftWidth) || 0;
                 }
@@ -10724,7 +11120,7 @@ delegate = function (event) {
                 left += body.offsetLeft;
             }
 
-            if (jQuery.offset.supportsFixedPosition && prevComputedStyle.position === "fixed") {
+            if (jQuery.support.fixedPosition && prevComputedStyle.position === "fixed") {
                 top += Math.max(docElem.scrollTop, body.scrollTop);
                 left += Math.max(docElem.scrollLeft, body.scrollLeft);
             }
@@ -10733,47 +11129,36 @@ delegate = function (event) {
         };
     }
 
+    jQuery.fn.offset = function (options) {
+        if (arguments.length) {
+            return options === undefined ?
+			this :
+			this.each(function (i) {
+			    jQuery.offset.setOffset(this, options, i);
+			});
+        }
+
+        var elem = this[0],
+		doc = elem && elem.ownerDocument;
+
+        if (!doc) {
+            return null;
+        }
+
+        if (elem === doc.body) {
+            return jQuery.offset.bodyOffset(elem);
+        }
+
+        return getOffset(elem, doc, doc.documentElement);
+    };
+
     jQuery.offset = {
-        initialize: function () {
-            var body = document.body, container = document.createElement("div"), innerDiv, checkDiv, table, td, bodyMarginTop = parseFloat(jQuery.css(body, "marginTop")) || 0,
-			html = "<div style='position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;'><div></div></div><table style='position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>";
-
-            jQuery.extend(container.style, { position: "absolute", top: 0, left: 0, margin: 0, border: 0, width: "1px", height: "1px", visibility: "hidden" });
-
-            container.innerHTML = html;
-            body.insertBefore(container, body.firstChild);
-            innerDiv = container.firstChild;
-            checkDiv = innerDiv.firstChild;
-            td = innerDiv.nextSibling.firstChild.firstChild;
-
-            this.doesNotAddBorder = (checkDiv.offsetTop !== 5);
-            this.doesAddBorderForTableAndCells = (td.offsetTop === 5);
-
-            checkDiv.style.position = "fixed";
-            checkDiv.style.top = "20px";
-
-            // safari subtracts parent border width here which is 5px
-            this.supportsFixedPosition = (checkDiv.offsetTop === 20 || checkDiv.offsetTop === 15);
-            checkDiv.style.position = checkDiv.style.top = "";
-
-            innerDiv.style.overflow = "hidden";
-            innerDiv.style.position = "relative";
-
-            this.subtractsBorderForOverflowNotVisible = (checkDiv.offsetTop === -5);
-
-            this.doesNotIncludeMarginInBodyOffset = (body.offsetTop !== bodyMarginTop);
-
-            body.removeChild(container);
-            jQuery.offset.initialize = jQuery.noop;
-        },
 
         bodyOffset: function (body) {
             var top = body.offsetTop,
 			left = body.offsetLeft;
 
-            jQuery.offset.initialize();
-
-            if (jQuery.offset.doesNotIncludeMarginInBodyOffset) {
+            if (jQuery.support.doesNotIncludeMarginInBodyOffset) {
                 top += parseFloat(jQuery.css(body, "marginTop")) || 0;
                 left += parseFloat(jQuery.css(body, "marginLeft")) || 0;
             }
@@ -10827,6 +11212,7 @@ delegate = function (event) {
 
 
     jQuery.fn.extend({
+
         position: function () {
             if (!this[0]) {
                 return null;
@@ -10871,42 +11257,30 @@ delegate = function (event) {
 
 
     // Create scrollLeft and scrollTop methods
-    jQuery.each(["Left", "Top"], function (i, name) {
-        var method = "scroll" + name;
+    jQuery.each({ scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function (method, prop) {
+        var top = /Y/.test(prop);
 
         jQuery.fn[method] = function (val) {
-            var elem, win;
+            return jQuery.access(this, function (elem, method, val) {
+                var win = getWindow(elem);
 
-            if (val === undefined) {
-                elem = this[0];
-
-                if (!elem) {
-                    return null;
+                if (val === undefined) {
+                    return win ? (prop in win) ? win[prop] :
+					jQuery.support.boxModel && win.document.documentElement[method] ||
+						win.document.body[method] :
+					elem[method];
                 }
-
-                win = getWindow(elem);
-
-                // Return the scroll offset
-                return win ? ("pageXOffset" in win) ? win[i ? "pageYOffset" : "pageXOffset"] :
-				jQuery.support.boxModel && win.document.documentElement[method] ||
-					win.document.body[method] :
-				elem[method];
-            }
-
-            // Set the scroll offset
-            return this.each(function () {
-                win = getWindow(this);
 
                 if (win) {
                     win.scrollTo(
-					!i ? val : jQuery(win).scrollLeft(),
-					 i ? val : jQuery(win).scrollTop()
+					!top ? val : jQuery(win).scrollLeft(),
+					 top ? val : jQuery(win).scrollTop()
 				);
 
                 } else {
-                    this[method] = val;
+                    elem[method] = val;
                 }
-            });
+            }, method, val, arguments.length, null);
         };
     });
 
@@ -10922,77 +11296,97 @@ delegate = function (event) {
 
 
     // Create width, height, innerHeight, innerWidth, outerHeight and outerWidth methods
-    jQuery.each(["Height", "Width"], function (i, name) {
-
-        var type = name.toLowerCase();
+    jQuery.each({ Height: "height", Width: "width" }, function (name, type) {
+        var clientProp = "client" + name,
+		scrollProp = "scroll" + name,
+		offsetProp = "offset" + name;
 
         // innerHeight and innerWidth
         jQuery.fn["inner" + name] = function () {
             var elem = this[0];
-            return elem && elem.style ?
+            return elem ?
+			elem.style ?
 			parseFloat(jQuery.css(elem, type, "padding")) :
+			this[type]() :
 			null;
         };
 
         // outerHeight and outerWidth
         jQuery.fn["outer" + name] = function (margin) {
             var elem = this[0];
-            return elem && elem.style ?
+            return elem ?
+			elem.style ?
 			parseFloat(jQuery.css(elem, type, margin ? "margin" : "border")) :
+			this[type]() :
 			null;
         };
 
-        jQuery.fn[type] = function (size) {
-            // Get window width or height
-            var elem = this[0];
-            if (!elem) {
-                return size == null ? null : this;
-            }
+        jQuery.fn[type] = function (value) {
+            return jQuery.access(this, function (elem, type, value) {
+                var doc, docElemProp, orig, ret;
 
-            if (jQuery.isFunction(size)) {
-                return this.each(function (i) {
-                    var self = jQuery(this);
-                    self[type](size.call(this, i, self[type]()));
-                });
-            }
-
-            if (jQuery.isWindow(elem)) {
-                // Everyone else use document.documentElement or document.body depending on Quirks vs Standards mode
-                // 3rd condition allows Nokia support, as it supports the docElem prop but not CSS1Compat
-                var docElemProp = elem.document.documentElement["client" + name];
-                return elem.document.compatMode === "CSS1Compat" && docElemProp ||
-				elem.document.body["client" + name] || docElemProp;
+                if (jQuery.isWindow(elem)) {
+                    // 3rd condition allows Nokia support, as it supports the docElem prop but not CSS1Compat
+                    doc = elem.document;
+                    docElemProp = doc.documentElement[clientProp];
+                    return jQuery.support.boxModel && docElemProp ||
+					doc.body && doc.body[clientProp] || docElemProp;
+                }
 
                 // Get document width or height
-            } else if (elem.nodeType === 9) {
-                // Either scroll[Width/Height] or offset[Width/Height], whichever is greater
-                return Math.max(
-				elem.documentElement["client" + name],
-				elem.body["scroll" + name], elem.documentElement["scroll" + name],
-				elem.body["offset" + name], elem.documentElement["offset" + name]
-			);
+                if (elem.nodeType === 9) {
+                    // Either scroll[Width/Height] or offset[Width/Height], whichever is greater
+                    doc = elem.documentElement;
 
-                // Get or set width or height on the element
-            } else if (size === undefined) {
-                var orig = jQuery.css(elem, type),
-				ret = parseFloat(orig);
+                    // when a window > document, IE6 reports a offset[Width/Height] > client[Width/Height]
+                    // so we can't use max, as it'll choose the incorrect offset[Width/Height]
+                    // instead we use the correct client[Width/Height]
+                    // support:IE6
+                    if (doc[clientProp] >= doc[scrollProp]) {
+                        return doc[clientProp];
+                    }
 
-                return jQuery.isNaN(ret) ? orig : ret;
+                    return Math.max(
+					elem.body[scrollProp], doc[scrollProp],
+					elem.body[offsetProp], doc[offsetProp]
+				);
+                }
 
-                // Set the width or height on the element (default to pixels if value is unitless)
-            } else {
-                return this.css(type, typeof size === "string" ? size : size + "px");
-            }
+                // Get width or height on the element
+                if (value === undefined) {
+                    orig = jQuery.css(elem, type);
+                    ret = parseFloat(orig);
+                    return jQuery.isNumeric(ret) ? ret : orig;
+                }
+
+                // Set the width or height on the element
+                jQuery(elem).css(type, value);
+            }, type, value, arguments.length, null);
         };
-
     });
+
+
 
 
     // Expose jQuery to the global object
     window.jQuery = window.$ = jQuery;
-})(window);
 
-//Register jQuery as a module.
-if (typeof define !== "undefined" && define.amd) {
-    define('jquery', [], function () { return jQuery });
-}
+    // Expose jQuery as an AMD module, but only for AMD loaders that
+    // understand the issues with loading multiple versions of jQuery
+    // in a page that all might call define(). The loader will indicate
+    // they have special allowances for multiple jQuery versions by
+    // specifying define.amd.jQuery = true. Register as a named module,
+    // since jQuery can be concatenated with other files that may use define,
+    // but not use a proper concatenation script that understands anonymous
+    // AMD modules. A named AMD is safest and most robust way to register.
+    // Lowercase jquery is used because AMD module names are derived from
+    // file names, and jQuery is normally delivered in a lowercase file name.
+    // Do this after creating the global so that if an AMD module wants to call
+    // noConflict to hide this version of jQuery, it will work.
+    if (typeof define === "function" && define.amd && define.amd.jQuery) {
+        define("jquery", [], function () { return jQuery; });
+    }
+
+
+
+})(window);

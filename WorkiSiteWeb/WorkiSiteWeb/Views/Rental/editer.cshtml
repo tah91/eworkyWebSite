@@ -265,21 +265,18 @@
     @Html.Partial(MVC.Shared.Views._DatePickerScript)
 
 	<script type="text/javascript">
-
-		require.ready(function () {
-			$("#addItem").click(function () {
-				$.ajax({
-					url: this.href,
-					cache: false,
-					success: function (html) { $(".rentalAccessRows").append(html); }
-				});
-				return false;
+		$("#addItem").click(function () {
+			$.ajax({
+				url: this.href,
+				cache: false,
+				success: function (html) { $(".rentalAccessRows").append(html); }
 			});
+			return false;
+		});
 
-			$("button.deleteRow").live("click", function () {
-				$(this).parents(".rentalAccessRow:first").remove();
-				return false;
-			});
+		$("button.deleteRow").live("click", function () {
+			$(this).parents(".rentalAccessRow:first").remove();
+			return false;
 		});
 
         $("#Rental_AvailableNow").click(function () {

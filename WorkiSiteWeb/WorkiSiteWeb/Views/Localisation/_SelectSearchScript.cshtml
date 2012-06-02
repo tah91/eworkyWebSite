@@ -75,48 +75,46 @@
 }
 
 <script type="text/javascript">
-    require.ready(function () {
-        var offer0 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea).ToString())';
-        var offer1 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessLounge).ToString())';
-        var offer2 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Workstation).ToString())';
-        var offer3 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Desktop).ToString())';
-        var offer4 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.MeetingRoom).ToString())';
-        var offer5 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SeminarRoom).ToString())';
-        var offer6 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.VisioRoom).ToString())';
-        //show correct search pane
-        SelectSearch = function () {
-            //reset
-            var currentOffer = jQuery.trim($("#Criteria_OfferData_Type").val());
-            var newDivContent = '';
-            switch (currentOffer) {
-                case "-1":
-                case "0":
-                    newDivContent = offer0;
-                    break;
-                case "1":
-                    newDivContent = offer1;
-                    break;
-                case "2":
-                    newDivContent = offer2;
-                    break;
-                case "3":
-                    newDivContent = offer3;
-                    break;
-                case "4":
-                    newDivContent = offer4;
-                    break;
-                case "5":
-                    newDivContent = offer5;
-                    break;
-                case "6":
-                    newDivContent = offer6;
-                    break;
-            }
-            $("#searchOptionToReplace").replaceWith(newDivContent);
+    var offer0 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.FreeArea).ToString())';
+    var offer1 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.BuisnessLounge).ToString())';
+    var offer2 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Workstation).ToString())';
+    var offer3 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.Desktop).ToString())';
+    var offer4 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.MeetingRoom).ToString())';
+    var offer5 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.SeminarRoom).ToString())';
+    var offer6 = '@Html.JSEscape(SelectFeatures(Model, LocalisationOffer.VisioRoom).ToString())';
+    //show correct search pane
+    SelectSearch = function () {
+        //reset
+        var currentOffer = jQuery.trim($("#Criteria_OfferData_Type").val());
+        var newDivContent = '';
+        switch (currentOffer) {
+            case "-1":
+            case "0":
+                newDivContent = offer0;
+                break;
+            case "1":
+                newDivContent = offer1;
+                break;
+            case "2":
+                newDivContent = offer2;
+                break;
+            case "3":
+                newDivContent = offer3;
+                break;
+            case "4":
+                newDivContent = offer4;
+                break;
+            case "5":
+                newDivContent = offer5;
+                break;
+            case "6":
+                newDivContent = offer6;
+                break;
         }
+        $("#searchOptionToReplace").replaceWith(newDivContent);
+    }
+    SelectSearch();
+    $('.offerSelect').live('change', function () {
         SelectSearch();
-        $('.offerSelect').live('change', function () {
-            SelectSearch();
-        });
     });
 </script>

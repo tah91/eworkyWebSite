@@ -138,17 +138,15 @@
             <div id="contactContent">
 		        <a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
 		        <script type="text/javascript">
-			        require.ready(function () {
-				        $("#showContactContent").click(function () {
-					        $.ajax({
-						        url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
-						        data: { 'id': @Model.ID },
-						        success: function (data) {
-							        $("#contactContent").hide().html(data).fadeIn();
-						        }
-					        });
-				        });
-			        });
+				    $("#showContactContent").click(function () {
+					    $.ajax({
+						    url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
+						    data: { 'id': @Model.ID },
+						    success: function (data) {
+							    $("#contactContent").hide().html(data).fadeIn();
+						    }
+					    });
+				    });
 		        </script>
 	        </div>
         </div>
@@ -160,17 +158,15 @@
          <div id="contactContent">
 		    <a id="showContactContent" href="javascript:void(0)" class="orange">@Worki.Resources.Views.Localisation.LocalisationString.ShowContactInfo</a>
 		    <script type="text/javascript">
-			    require.ready(function () {
-				    $("#showContactContent").click(function () {
-					    $.ajax({
-						    url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
-						    data: { 'id': @Model.ID },
-						    success: function (data) {
-							    $("#contactContent").hide().html(data).fadeIn();
-						    }
-					    });
-				    });
-			    });
+				$("#showContactContent").click(function () {
+					$.ajax({
+						url: '@Url.Action(MVC.Localisation.ActionNames.AskContact, MVC.Localisation.Name)',
+						data: { 'id': @Model.ID },
+						success: function (data) {
+							$("#contactContent").hide().html(data).fadeIn();
+						}
+					});
+				});
 		    </script>
 	    </div>
         if (!Model.HasOwner())
