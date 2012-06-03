@@ -1,0 +1,20 @@
+﻿@model SearchCriteriaFormViewModel
+
+@section HeadContent
+{
+    <title>search a place</title>
+}
+
+<div class="row-fluid">
+    @Html.Partial(MVC.Widget.Localisation.Views._SearchForm)
+</div>
+
+@section ScriptContent
+{
+    <script type="text/javascript">
+        $('#submitSearch').click(function () {
+            $('#searchForm').submit();
+            return false;
+        });
+    </script>
+}

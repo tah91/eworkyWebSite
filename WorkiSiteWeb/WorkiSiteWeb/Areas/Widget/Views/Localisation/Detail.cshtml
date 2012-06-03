@@ -1,0 +1,45 @@
+﻿@model SearchSingleResultViewModel
+
+@{  
+    //var dict = Model.Criteria.GetDictionnary();
+    //var rvd = new RouteValueDictionary(dict);
+    var back = Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery;
+}
+
+@section HeadContent
+{
+    <title>search a place</title>
+    <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
+}
+
+<div>
+    @Model.Localisation.Name
+</div>
+<ul>
+    @foreach (var offer in Model.Localisation.GetBookableOffers())
+    {
+        <li>
+            @offer.Name
+            @Html.ActionLink("réserver", MVC.Widget.Localisation.CreateBooking(offer.Id), new { @class = "btn booking-btn" })
+        </li>
+    }
+</ul>
+
+<a href="@back">retour</a>
+<div id="booking-container">
+</div>
+
+<script type="text/javascript">
+    require(["@Url.VersionedContent(@Links.Scripts.bootstrap_modal_js)"], function () {
+        $('.booking-btn').click(function () {
+            $.ajax({
+                url: this.href,
+                success: function (data) {
+                    $('#booking-container').html(data);
+                    $('#booking-popup').modal();
+                }
+            });
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,75 @@
+﻿@model Worki.Data.Models.MemberBookingFormViewModel
+        
+<div class="modal hide" id="booking-popup">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Réserver</h3>
+    </div>
+    <div class="modal-body">   
+        @using (Html.BeginForm(MVC.Widget.Localisation.ActionNames.CreateBooking, MVC.Widget.Localisation.Name, FormMethod.Post, new { @class = "well", id = "booking-form" }))
+        {
+	        @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.LastName)
+            @Html.HiddenFor(m => m.FirstName)  
+            @Html.HiddenFor(m => m.Email)
+
+	        @Html.LabelFor(m => m.PhoneNumber)
+	        @Html.TextBoxFor(m => m.PhoneNumber)
+	        @Html.LabelFor(m => m.MemberBooking.TimeType)
+	        @Html.DropDownListFor(m => m.MemberBooking.TimeType, Model.Periods)
+	        @Html.LabelFor(m => m.MemberBooking.FromDate)
+	        @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
+               
+            <div class="halfDaySelector">
+            @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Morning, "HalfDay_Morning") 
+            @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Afternoon, "HalfDay_Afternoon")
+            </div>
+
+	        <div class="bookingEndRow">
+		        @Worki.Resources.Models.Booking.Booking.ToDate
+	        </div>
+
+	        <div class="bookingEndRow">
+		        @Html.RadioButtonFor(m => m.MemberBooking.PeriodType, (int)MemberBooking.ePeriodType.SpendUnit, new { id = "PeriodType_SpendUnit" }) @Html.LabelFor("", "PeriodType_SpendUnit", "PeriodType_SpendUnitLabel")
+	        </div>
+	        <div class="bookingEndSelection marginb5">
+		        @Html.TextBoxFor(m => m.MemberBooking.TimeUnits) <span id="periodUnit"></span>
+	        </div>
+	        <div class="bookingEndRow endDateSelect">
+		        @Html.RadioButtonFor(m => m.MemberBooking.PeriodType, (int)MemberBooking.ePeriodType.EndDate, new { id = "PeriodType_EndDate" }) @Html.LabelFor("choisir une date de fin", "PeriodType_EndDate")
+	        </div>
+	        <div class="bookingEndSelection endDateSelect marginb5">
+		        @Worki.Resources.Views.Booking.BookingString.Until @Html.TextBox("MemberBooking.ToDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.ToDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" })
+	        </div>
+
+	        @Html.LabelFor(Worki.Resources.Views.Booking.BookingString.MessageToOwner, "MemberBooking_Message")
+	        @Html.TextAreaFor(m => m.MemberBooking.Message)
+
+	        <input type="submit" class="btn" value="@Worki.Resources.Views.Booking.BookingString.BookIt"/>
+        }
+    </div>
+</div>
+
+@Html.Partial(MVC.Booking.Views._CreateScript)
+<script type="text/javascript">
+    require(["@Url.VersionedContent(Links.Scripts.Utils_js)"], function () {
+        var errorHandler = function (data) {
+            $('#booking-error').remove();
+            $('#booking-form').before('<div id="booking-error" class="alert alert-error">' + data + '</div>');
+        }
+        var successHandler = function (data) {
+            window.location = data;
+        };
+        $('#booking-form').submit(function () {
+            AppAjax(
+		        $(this).attr("action"),
+		        "POST",
+		        $('#booking-form').serializeArray(),
+                successHandler,
+                errorHandler
+	        );
+            return false;
+        });
+    });
+
+</script>
