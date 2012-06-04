@@ -757,6 +757,9 @@ namespace Links {
             public static readonly string bootstrap_css = Url("bootstrap.css");
             public static readonly string responsive_scss = Url("responsive.scss");
             public static readonly string responsive_css = Url("responsive.css");
+            public static readonly string widget_scss = Url("widget.scss");
+            public static readonly string widget_css = Url("widget.css");
+            public static readonly string widget_min_css = Url("widget.min.css");
         }
     
         public static readonly string Search_css = Url("Search.css");

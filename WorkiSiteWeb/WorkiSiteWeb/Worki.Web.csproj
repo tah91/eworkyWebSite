@@ -332,6 +332,12 @@
     <Content Include="Content\colorbox.min.css">
       <DependentUpon>colorbox.css</DependentUpon>
     </Content>
+    <Content Include="Content\scss\widget.css">
+      <DependentUpon>widget.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\widget.min.css">
+      <DependentUpon>widget.css</DependentUpon>
+    </Content>
     <Content Include="Content\Widget.css" />
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\Dashboard.min.css">
@@ -865,6 +871,7 @@
     <Content Include="Areas\Widget\Views\Account\_Login.cshtml" />
     <Content Include="Areas\Widget\Views\Localisation\_CreateBooking.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
+    <None Include="Content\scss\widget.scss" />
     <None Include="Content\scss\responsive.scss" />
     <None Include="Content\scss\_accordion.scss" />
     <None Include="Content\scss\_alerts.scss" />

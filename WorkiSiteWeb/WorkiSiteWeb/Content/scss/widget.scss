@@ -1,0 +1,62 @@
+// Core variables and mixins
+//@import "variables"; // Modify this for custom colors, font-sizes, etc
+@import "mixins";
+
+.loaderBlock
+{
+	position: absolute;
+	z-index: 999999999;
+}
+
+.loaderBlock img
+{
+	padding-right: 12px; 
+	vertical-align: middle;
+}
+
+.loaderBlockBig
+{
+	top: 75px;
+	left: 200px;
+	padding: 50px;
+	font-size: 30px;
+}
+
+.loaderBlockBig img
+{
+	width:64px;
+	height:64px;
+}
+
+.loaderBlockSmall
+{
+	top: 50px;
+	left: 60px;
+	padding: 10px;
+	font-size: 1.2em;
+}
+
+.loaderBlockSmall img
+{
+	width:32px;
+	height:32px;
+}
+
+#resultsMap img 
+{
+    max-width: none;
+}
+
+.result-item
+{
+	border: 1px solid rgba(0, 0, 0, .1);
+	@include border-radius(6px);
+	margin: 8px 0;
+	padding: 9px 12px;
+}
+
+.result-item:hover
+{
+	background-color: whiteSmoke;
+}
+
