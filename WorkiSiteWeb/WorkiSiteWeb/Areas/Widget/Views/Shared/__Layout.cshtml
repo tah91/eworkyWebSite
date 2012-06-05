@@ -39,52 +39,54 @@
         
         <div id="login-container">
         </div>
-        <div class="container-fluid">
-            <div class="btn-toolbar">
-                <div class="row">
-                    <div class="btn-group pull-right">
-                        <button class="btn">@loginText</button>
-                        <button class="btn dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            @if (!Request.IsAuthenticated)
-                            {
+        <div style="width:750px;">
+            <div class="container-fluid">
+                <div class="btn-toolbar">
+                    <div class="row">
+                        <div class="btn-group pull-right">
+                            <button class="btn">@loginText</button>
+                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @if (!Request.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="@Url.Action(MVC.Widget.Account.LogOn())" id = "login-btn">
+                                            <i class="icon-home"></i>
+                                            login
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="@Url.Action(MVC.Dashboard.Home.Index())">
+                                            <i class="icon-user"></i>
+                                            dashboard
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action(MVC.Widget.Account.LogOff())" target = "blank">
+                                            <i class="icon-off"></i>
+                                            logout
+                                        </a>
+                                    </li>
+                                }
+                                <li class="divider"></li>
                                 <li>
-                                    <a href="@Url.Action(MVC.Widget.Account.LogOn())" id = "login-btn">
-                                        <i class="icon-home"></i>
-                                        login
+                                    <a href="http://www.eworky.com" target = "blank">
+                                        <i class="icon-globe"></i>
+                                        à propos d'eWorky
                                     </a>
                                 </li>
-                            }
-                            else
-                            {
-                                <li>
-                                    <a href="@Url.Action(MVC.Dashboard.Home.Index())">
-                                        <i class="icon-user"></i>
-                                        dashboard
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action(MVC.Widget.Account.LogOff())" target = "blank">
-                                        <i class="icon-off"></i>
-                                        logout
-                                    </a>
-                                </li>
-                            }
-                            <li class="divider"></li>
-                            <li>
-                                <a href="http://www.eworky.com" target = "blank">
-                                    <i class="icon-globe"></i>
-                                    à propos d'eWorky
-                                </a>
-                            </li>
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @RenderBody()
-	    </div>
+                @RenderBody()
+	        </div>
+        </div>
         @RenderSection("ScriptContent", false)
         <script type="text/javascript">
             require(["@Url.VersionedContent(@Links.Scripts.bootstrap_dropdown_js)"]);

@@ -2,6 +2,16 @@
 //@import "variables"; // Modify this for custom colors, font-sizes, etc
 @import "mixins";
 
+.orange
+{
+	color:#f88f1e;
+}
+
+li
+{
+	list-style:none;
+}
+
 .loaderBlock
 {
 	position: absolute;
@@ -58,5 +68,36 @@
 .result-item:hover
 {
 	background-color: whiteSmoke;
+}
+
+.result-item img 
+{
+	width: 170px;
+	height: 115px;
+}
+
+.result-info
+{
+	height: 115px;
+	border-right: 1px dashed #CCC;
+}
+
+.result-features
+{
+	position: absolute;
+	bottom: 0px;
+}
+
+.result-offers ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+.result-offers li
+{
+	border-bottom:1px solid #ccc;
+	margin: 5px 0;
+	padding: 5px 0;
 }
 

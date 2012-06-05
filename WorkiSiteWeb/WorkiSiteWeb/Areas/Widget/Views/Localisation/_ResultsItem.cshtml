@@ -5,8 +5,40 @@
     var rvd = new RouteValueDictionary(dict);
     rvd["index"] = Model.Index;
     var link = Url.Action(MVC.Widget.Localisation.ActionNames.SearchResultDetail, MVC.Widget.Localisation.Name, rvd);
+    var fullName = Model.Localisation.GetFullName();
+    var generalFeatures = Model.Localisation.GetFeaturesWithin(FeatureHelper.Characteristics);
 }
 
-<div class="result-item">
-    <a href="@link">@Model.Localisation.Name</a>
+<div class="result-item row">
+    <div class="span3">
+        @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.Localisation.GetMainPic(), true), Links.Content.images.no_image_png, fullName)    
+    </div>
+    <div class="span5 result-info relative">
+        <h4>
+            <a href="@link">@Model.Localisation.Name</a>
+        </h4>
+        <div class="bold orange">@Localisation.GetLocalisationType(Model.Localisation.TypeValue)</div>
+        <div>@Model.Localisation.Adress&nbsp;-&nbsp;@Model.Localisation.PostalCode @Model.Localisation.City</div>
+        <div class="result-features">
+			@foreach (var item in generalFeatures.Take(3))
+			{
+                <span class="badge badge-info">@FeatureHelper.Display(item)</span>
+            }
+        </div>
+    </div>
+    <div class="span4 result-offers">
+        <ul>
+            @foreach (var offer in Model.Localisation.Offers.Take(3))
+            {
+                var firstPrice = offer.GetFirstPrice();
+                <li>
+                    @offer.Name
+                    @if (!string.IsNullOrEmpty(firstPrice))
+                    {
+                    <span class="badge badge-warning">@firstPrice</span>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
 </div>

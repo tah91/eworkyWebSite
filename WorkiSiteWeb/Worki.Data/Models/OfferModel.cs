@@ -447,6 +447,22 @@ namespace Worki.Data.Models
             return string.Format(Worki.Resources.Models.Offer.Offer.PriceFrom, minPrice.GetPriceDisplay());
         }
 
+        /// <summary>
+        /// Get the min price of the offer, empty if no price
+        /// </summary>
+        /// <returns>the min price string</returns>
+        public string GetFirstPrice()
+        {
+            if (OfferPrices.Count() == 0)
+                return string.Empty;
+
+            var firstPrice = OfferPrices.FirstOrDefault();
+            if (firstPrice == null)
+                return string.Empty;
+
+            return firstPrice.GetPriceDisplay();
+        }
+
         #endregion
 
 		#region Availability
