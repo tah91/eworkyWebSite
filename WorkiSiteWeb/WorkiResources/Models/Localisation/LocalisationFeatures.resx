@@ -361,7 +361,7 @@
     <value>Tous les espaces</value>
   </data>
   <data name="AllInclusive" xml:space="preserve">
-    <value>Tout compris (charges, taxes, nettoyage, etc.)</value>
+    <value>Tout compris</value>
   </data>
   <data name="AvailableNow" xml:space="preserve">
     <value>Disponibilité immédiate</value>

@@ -59,6 +59,13 @@ li {
   width: 32px;
   height: 32px; }
 
+#search-more input[type="checkbox"] {
+  margin-top: 0;
+  margin-right: 3px; }
+
+#search-more label {
+  display: inline; }
+
 #resultsMap img {
   max-width: none; }
 

@@ -7,13 +7,3 @@
 
 
 @Html.Partial(MVC.Widget.Localisation.Views._SearchForm)
-
-@section ScriptContent
-{
-    <script type="text/javascript">
-        $('#submitSearch').click(function () {
-            $('#searchForm').submit();
-            return false;
-        });
-    </script>
-}

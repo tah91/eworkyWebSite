@@ -12,7 +12,9 @@
         var item = Model.GetSingleResult(index);
         @Html.Partial(MVC.Widget.Localisation.Views._ResultsItem, item)
     }
-    <div class="pagination">
+
+    <div class="pagination pagination-right">
 	    @Html.PageLinks(Model.PagingInfo, x => { rvd["page"] = x; return Url.Action(MVC.Widget.Localisation.ActionNames.SearchResult, rvd); })
     </div>
+
 </div>

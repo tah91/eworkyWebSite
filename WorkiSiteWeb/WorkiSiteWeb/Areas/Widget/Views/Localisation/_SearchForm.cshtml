@@ -19,8 +19,43 @@
 		 
             @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
 		    @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "span12" })
-
+ 
+            <div id="search-more" class="collapse">
+                <div class="row-fluid">
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.Restauration, Model.Criteria.LocalisationData)
+                    </div>
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.Coffee, Model.Criteria.LocalisationData)
+                    </div>
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.Parking, Model.Criteria.LocalisationData)
+                    </div>
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.Handicap, Model.Criteria.LocalisationData)
+                    </div>
+                </div>  
+                <div class="row-fluid">
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.FastInternet, Model.Criteria.LocalisationData)
+                    </div>
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.Outlet, Model.Criteria.LocalisationData)
+                    </div>
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.Printer, Model.Criteria.LocalisationData)
+                    </div>
+                    <div class="span3">
+                        @Html.FeatureChecboxLabel(Feature.RelaxingArea, Model.Criteria.LocalisationData)
+                    </div>
+                </div>               
+            </div>
+            
             <div class="btn-group">
+                <a class="btn" href="#" data-toggle="collapse" data-target="#search-more" title="Plus de critères">
+                    <i class="icon-wrench"></i>
+                    Plus de critères
+                </a>
                 <div class=" pull-right">
                     <a class="btn btn-info" href="" id="submitSearch">
                         <i class="icon-search icon-white"></i>
@@ -31,3 +66,12 @@
         }
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#submitSearch').click(function () {
+        $('#searchForm').submit();
+        return false;
+    });
+
+    require(["@Url.VersionedContent(@Links.Scripts.bootstrap_collapse_js)", "@Url.VersionedContent(@Links.Scripts.bootstrap_transition_js)"]);
+</script>

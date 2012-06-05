@@ -1,5 +1,22 @@
 ﻿@model Worki.Data.Models.LogOnModel
-       
+    
+@*    <form class="form-horizontal">
+  <fieldset>
+    <legend>Legend text</legend>
+    <div class="control-group">
+      <label class="control-label" for="input01">Text input</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="input01">
+        <p class="help-block">Supporting help text</p>
+      </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button class="btn">Cancel</button>
+    </div>
+  </fieldset>
+</form>*@
+   
 <div class="modal hide" id="login-popup">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -8,6 +25,7 @@
   <div class="modal-body">
     @using (Html.BeginForm(MVC.Widget.Account.ActionNames.LogOn, MVC.Widget.Account.Name, FormMethod.Post, new { @class = "well", id = "login-form" }))
     { 
+        <fieldset>
         @Html.AntiForgeryToken()
 
         @Html.LabelFor(m => m.Login) 
@@ -18,6 +36,7 @@
 
         <a href="http://www.eworky.com" target=_blank>Creer un compte</a>
         <input type="submit" value="se connecter" class="btn btn-info"/>
+        </fieldset>
     }
   </div>
 </div>  

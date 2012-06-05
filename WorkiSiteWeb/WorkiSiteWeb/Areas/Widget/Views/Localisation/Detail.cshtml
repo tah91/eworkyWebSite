@@ -60,7 +60,7 @@
     <div class="result-item">
         <div class="row-fluid">
             <div class="span3">
-                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(offer.GetMainPic(), true), Links.Content.images.no_image_png, offer.Name)
+                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(offer.GetMainPic(), true, PictureData.GetFolder(ProviderType.Offer)), Links.Content.images.no_image_png, offer.Name)
             </div>
             <div class="span6 offer-item relative">
                 <h4 class="blue">@offer.Name</h4>    
@@ -85,14 +85,26 @@
                     }
                 </ul>
                 <div class="pull-right">
-                    @Html.ActionLink("Réserver", MVC.Widget.Localisation.CreateBooking(offer.Id), new { @class = "btn btn-info booking-btn" })    
+                    <a href="@MVC.Widget.Localisation.CreateBooking(offer.Id)" class="btn btn-info booking-btn">
+                        <i class="icon-ok icon-white"></i>
+                        Réserver
+                    </a>  
                 </div>
             </div>
         </div>
     </div>
 }
 
-<a href="@back">retour</a>
+<div class="row">
+    <div class="pull-right">
+        <a href="@back" class="btn">
+            <i class="icon-step-backward"></i>
+            Retour
+        </a>
+    </div>
+</div>
+
+
 <div id="booking-container">
 </div>
 
