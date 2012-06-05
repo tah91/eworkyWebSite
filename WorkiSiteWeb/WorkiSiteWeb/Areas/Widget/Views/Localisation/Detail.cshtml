@@ -1,9 +1,11 @@
-﻿@model SearchSingleResultViewModel
+﻿@model Localisation
 
 @{  
     //var dict = Model.Criteria.GetDictionnary();
     //var rvd = new RouteValueDictionary(dict);
     var back = Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery;
+    var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
+    var fullName = Model.GetFullName();
 }
 
 @section HeadContent
@@ -12,24 +14,94 @@
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
-<div>
-    @Model.Localisation.Name
+<div class="detail-main">
+    <div class="well">
+        <div class="row-fluid">
+            <div class="span6">
+                @if (Model.LocalisationFiles.Count > 0)
+                {
+                    <div id="detail-gallery" class="carousel slide">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            @foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
+                            {
+                                <div class="item @(item.IsDefault ? "active" : "")">
+                                    <img title="@fullName" alt="@fullName" src="@ControllerHelpers.GetUserImagePath(item.FileName)"/>
+                                </div>
+                            }
+                        </div>
+                        <!-- Carousel nav -->
+                        <a class="carousel-control left" href="#detail-gallery" data-slide="prev">&lsaquo;</a>
+                        <a class="carousel-control right" href="#detail-gallery" data-slide="next">&rsaquo;</a>
+                    </div>
+                }
+            </div>
+            <div class="span6 detail-description relative">
+                <h2 class="blue">@Model.Name</h2>
+                <p class="bold orange">@Localisation.GetLocalisationType(Model.TypeValue)</p>
+                <p>
+                    <a href="@itinLink" target="_blank">
+                        @Model.Adress - @Model.PostalCode @Model.City
+                    </a>
+                </p>
+                <div class="detail-map">
+                    @Html.Partial(MVC.Shared.Views._Map, Model.GetMapModel())
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.Nl2Br(Model.GetDescription())
+        </div>
+    </div>
 </div>
-<ul>
-    @foreach (var offer in Model.Localisation.GetBookableOffers())
-    {
-        <li>
-            @offer.Name
-            @Html.ActionLink("réserver", MVC.Widget.Localisation.CreateBooking(offer.Id), new { @class = "btn booking-btn" })
-        </li>
-    }
-</ul>
+
+@foreach (var offer in Model.GetBookableOffers())
+{
+    <div class="result-item">
+        <div class="row-fluid">
+            <div class="span3">
+                @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(offer.GetMainPic(), true), Links.Content.images.no_image_png, offer.Name)
+            </div>
+            <div class="span6 offer-item relative">
+                <h4 class="blue">@offer.Name</h4>    
+                <div class="result-features">
+			        @foreach (var item in offer.OfferFeatures.Take(5))
+			        {
+                        <span class="badge badge-info">@FeatureHelper.Display(item)</span>
+                    }
+                </div>
+            </div>
+            <div class="span3 offer-prices relative">
+                <ul>
+                    @foreach (var price in offer.OfferPrices.OrderBy(op => op.Price))
+                    {
+                        var priceDisplay = price.GetPriceDisplay();
+                        if (!string.IsNullOrEmpty(priceDisplay))
+                        {
+                            <li>
+                                <span class="badge badge-warning">@priceDisplay</span>
+                            </li>
+                        }
+                    }
+                </ul>
+                <div class="pull-right">
+                    @Html.ActionLink("Réserver", MVC.Widget.Localisation.CreateBooking(offer.Id), new { @class = "btn btn-info booking-btn" })    
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 <a href="@back">retour</a>
 <div id="booking-container">
 </div>
 
 <script type="text/javascript">
+    require(["@Url.VersionedContent(@Links.Scripts.bootstrap_carousel_js)", "@Url.VersionedContent(@Links.Scripts.bootstrap_transition_js)"], function () {
+        $('.carousel').carousel({
+          interval: null
+        });
+    });
     require(["@Url.VersionedContent(@Links.Scripts.bootstrap_modal_js)"], function () {
         $('.booking-btn').click(function () {
             $.ajax({

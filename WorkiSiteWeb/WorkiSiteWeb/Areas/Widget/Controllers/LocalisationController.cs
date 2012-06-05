@@ -60,8 +60,8 @@ namespace Worki.Web.Areas.Widget.Controllers
             var lRepo = ModelFactory.GetRepository<ILocalisationRepository>(context);
             var localisation = lRepo.Get(id);
 
-            var detailModel = new SearchSingleResultViewModel { Localisation = localisation };
-            return View(MVC.Widget.Localisation.Views.Detail, detailModel);
+            //var detailModel = new SearchSingleResultViewModel { Localisation = localisation };
+            return View(MVC.Widget.Localisation.Views.Detail, localisation);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Worki.Web.Areas.Widget.Controllers
 
             if (detailModel == null)
                 return View(MVC.Shared.Views.Error);
-            return View(MVC.Widget.Localisation.Views.Detail, detailModel);
+            return View(MVC.Widget.Localisation.Views.Detail, detailModel.Localisation);
         }
 
         #region Ajax Search

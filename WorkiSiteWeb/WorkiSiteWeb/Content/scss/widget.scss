@@ -7,6 +7,11 @@
 	color:#f88f1e;
 }
 
+.blue
+{
+	color:#5dafde;
+}
+
 li
 {
 	list-style:none;
@@ -97,7 +102,71 @@ li
 .result-offers li
 {
 	border-bottom:1px solid #ccc;
-	margin: 5px 0;
-	padding: 5px 0;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
 }
 
+.result-offers li:last-child
+{
+	margin-bottom: 0;
+}
+
+#detail-gallery img
+{
+	width: 400px;
+	height: 260px;
+}
+
+#detail-gallery .carousel-control
+{
+	top:50%;
+}
+
+.detail-description
+{
+	height:260px;
+}
+
+.detail-map
+{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+#detailMap 
+{
+	position: relative;
+	height: 150px;
+}
+
+.offer-item
+{
+	height:115px;
+	border-right: 1px dashed #CCC;
+}
+
+.offer-prices
+{
+	height:115px;
+}
+
+.offer-prices ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+.offer-prices li
+{
+	border-bottom:1px solid #ccc;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+.offer-prices .btn
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
