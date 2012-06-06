@@ -3,7 +3,7 @@
 @{  
     //var dict = Model.Criteria.GetDictionnary();
     //var rvd = new RouteValueDictionary(dict);
-    var back = Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery;
+    //var back = Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery;
     var itinLink = "http://maps.google.com/maps?daddr=" + Model.Adress + " " + Model.PostalCode + " " + Model.City;
     var fullName = Model.GetFullName();
 }
@@ -95,20 +95,11 @@
     </div>
 }
 
-<div class="row">
-    <div class="pull-right">
-        <a href="@back" class="btn">
-            <i class="icon-step-backward"></i>
-            Retour
-        </a>
-    </div>
-</div>
-
-
 <div id="booking-container">
 </div>
 
 <script type="text/javascript">
+    var isConnected = @(Request.IsAuthenticated ? "true" : "false");
     require(["@Url.VersionedContent(@Links.Scripts.bootstrap_carousel_js)", "@Url.VersionedContent(@Links.Scripts.bootstrap_transition_js)"], function () {
         $('.carousel').carousel({
           interval: null
@@ -116,13 +107,18 @@
     });
     require(["@Url.VersionedContent(@Links.Scripts.bootstrap_modal_js)"], function () {
         $('.booking-btn').click(function () {
-            $.ajax({
-                url: this.href,
-                success: function (data) {
-                    $('#booking-container').html(data);
-                    $('#booking-popup').modal();
-                }
-            });
+            if(isConnected){
+                $.ajax({
+                    url: this.href,
+                    success: function (data) {
+                        $('#booking-container').html(data);
+                        $('#booking-popup').modal();
+                    }
+                });
+            }
+            else{
+                $('#login-btn').click();
+            }
             return false;
         });
     });

@@ -35,6 +35,15 @@ body {
 .modal form {
   margin: 0; }
 
+.halfDaySelector label {
+  display: inline; }
+
+.halfDaySelector input[type="radio"] {
+  margin: 0; }
+
+#MemberBooking_TimeUnits {
+  width: 120px; }
+
 .orange {
   color: #f88f1e; }
 
@@ -79,7 +88,7 @@ li {
 #search-more label {
   display: inline; }
 
-#resultsMap img {
+#resultsMap img, #detailMap img {
   max-width: none; }
 
 .result-item {
