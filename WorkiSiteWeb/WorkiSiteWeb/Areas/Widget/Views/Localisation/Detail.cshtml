@@ -73,7 +73,7 @@
             </div>
             <div class="span3 offer-prices relative">
                 <ul>
-                    @foreach (var price in offer.OfferPrices.OrderBy(op => op.Price))
+                    @foreach (var price in offer.OfferPrices.OrderBy(op => op.Price).Take(3))
                     {
                         var priceDisplay = price.GetPriceDisplay();
                         if (!string.IsNullOrEmpty(priceDisplay))
