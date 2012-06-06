@@ -1,6 +1,5 @@
 ﻿@model Worki.Data.Models.MemberBookingFormViewModel
 
-
 @Html.Partial(MVC.Shared.Views._DatePickerScript)
 <script type="text/javascript">
 	require(["@MiscHelpers.UrlConstants.jqueryui"], function () {
@@ -58,14 +57,32 @@
 
 	                    break;
 	            }
+
 	            if (showHalfDay) {
 	                $('.halfDaySelector').show();
 	            }
 	            else {
 	                $('.halfDaySelector').hide();
 	            }
-	            $('#PeriodType_SpendUnitLabel').text(periodLabel);
+
+                if(canChooseEndDate){
+                    $('#MemberBooking_PeriodType').val('@((int)MemberBooking.ePeriodType.EndDate)');
+                    $('#MemberBooking_ToDate').show();
+                    $('#MemberBooking_TimeUnits').val('0');
+                    $('#MemberBooking_TimeUnits').hide();
+                    $('#periodUnit').hide();
+                }
+                else {
+                    $('#MemberBooking_PeriodType').val('@((int)MemberBooking.ePeriodType.SpendUnit)');
+                    $('#MemberBooking_ToDate').hide();
+                    $('#MemberBooking_TimeUnits').val('');
+                    $('#MemberBooking_TimeUnits').show();
+                    $('#periodUnit').show();
+                }
+
+	            $('#MemberBooking_TimeUnits').attr('title',periodLabel);
 	            $('#periodUnit').text(periodUnitText);
+
 	            var timeClass = canChooseHour ? 'dtp' : 'dp';
                 var generalFormat = '@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.General)';
                 var dateFormat = '@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.Date)';
@@ -86,20 +103,6 @@
 
 	            $('#MemberBooking_FromDate').val(fromDate.toString(timeFormat));
 	            $('#MemberBooking_ToDate').val(toDate.toString(timeFormat));
-
-	            if (canChooseEndDate) {
-	                $('#PeriodType_EndDate').removeAttr("disabled");
-	                $('#MemberBooking_ToDate').removeAttr("disabled");
-	                $('.endDateSelect').show();
-	            }
-	            else {
-	                $('#PeriodType_EndDate').attr("disabled", true);
-	                $('#MemberBooking_ToDate').attr("disabled", true);
-	                $('.endDateSelect').hide();
-	            }
-
-	            $('#PeriodType_SpendUnit').prop('checked', true);
-	            $('#PeriodType_EndDate').prop('checked', false);
 
 	            $(".dp").datepicker({
 	                changeMonth: true,

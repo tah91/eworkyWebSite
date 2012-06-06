@@ -508,6 +508,7 @@ namespace Worki.Data.Models
         public decimal Price { get; set; }
 
         [Display(Name = "TimeUnits", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Worki.Resources.Validation.ValidationString))]
         public int TimeUnits { get; set; }
 
         [Display(Name = "TimeType", ResourceType = typeof(Worki.Resources.Models.Booking.Booking))]

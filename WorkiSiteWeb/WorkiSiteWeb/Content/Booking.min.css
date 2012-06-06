@@ -10,6 +10,4 @@
 .bookingFormDiv table{margin-bottom:10px}
 .bookingFormDiv table td{height:30px}
 .bookingFormDiv table td:first-child{width:160px}
-.bookingEndRow{margin:5px 0 0 0}
-.bookingEndSelection{margin-left:30px}
 .bookingEndSelection input[type="text"]{width:100px}
