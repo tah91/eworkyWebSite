@@ -2,6 +2,27 @@
 //@import "variables"; // Modify this for custom colors, font-sizes, etc
 @import "mixins";
 
+body 
+{
+	font-family: 'PT Sans', Helvetica, sans-serif;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+[class^="icon-"], [class*=" icon-"] 
+{
+	vertical-align: -15%;
+}
+
+.modal-open .dropdown-menu 
+{
+	z-index: 1030;
+}
+
+.modal form
+{
+	margin: 0;
+}
+
 .orange
 {
 	color:#f88f1e;
@@ -55,6 +76,17 @@ li
 {
 	width:32px;
 	height:32px;
+}
+
+#search-more input[type="checkbox"]
+{
+	margin-top:0;
+	margin-right: 5px;
+}
+
+#search-more label
+{
+	display: inline;
 }
 
 #resultsMap img 

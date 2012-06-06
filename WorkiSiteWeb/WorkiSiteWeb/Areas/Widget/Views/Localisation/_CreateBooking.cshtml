@@ -5,24 +5,36 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h3>Réserver</h3>
     </div>
-    <div class="modal-body">   
-        @using (Html.BeginForm(MVC.Widget.Localisation.ActionNames.CreateBooking, MVC.Widget.Localisation.Name, FormMethod.Post, new { @class = "well", id = "booking-form" }))
-        {
+     
+    @using (Html.BeginForm(MVC.Widget.Localisation.ActionNames.CreateBooking, MVC.Widget.Localisation.Name, FormMethod.Post, new { @class="form-horizontal", id = "booking-form" }))
+    {
+        <div class="modal-body">  
 	        @Html.AntiForgeryToken()
             @Html.HiddenFor(m => m.LastName)
             @Html.HiddenFor(m => m.FirstName)  
             @Html.HiddenFor(m => m.Email)
 
-	        @Html.LabelFor(m => m.PhoneNumber)
-	        @Html.TextBoxFor(m => m.PhoneNumber)
-	        @Html.LabelFor(m => m.MemberBooking.TimeType)
-	        @Html.DropDownListFor(m => m.MemberBooking.TimeType, Model.Periods)
-	        @Html.LabelFor(m => m.MemberBooking.FromDate)
-	        @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
-               
-            <div class="halfDaySelector">
-            @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Morning, "HalfDay_Morning") 
-            @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Afternoon, "HalfDay_Afternoon")
+            <div class="control-group">
+                @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" }) 
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.PhoneNumber)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.MemberBooking.TimeType, new { @class = "control-label" }) 
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.MemberBooking.TimeType, Model.Periods)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.MemberBooking.FromDate, new { @class = "control-label" }) 
+                <div class="controls">
+                    @Html.TextBox("MemberBooking.FromDate", CultureHelpers.GetSpecificFormat(Model.MemberBooking.FromDate, CultureHelpers.TimeFormat.General), new { @class = "dtp" }) 
+                    <p class="help-block halfDaySelector">
+                        @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Morning, new { id = "HalfDay_Morning" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Morning, "HalfDay_Morning") 
+                        @Html.RadioButtonFor(m => m.HalfDay, MemberBookingFormViewModel.eHalfDay.Afternoon, new { id = "HalfDay_Afternoon" }) @Html.LabelFor(@Worki.Resources.Views.Booking.BookingString.Afternoon, "HalfDay_Afternoon")
+                    </p>
+                </div>
             </div>
 
 	        <div class="bookingEndRow">
@@ -46,8 +58,9 @@
 	        @Html.TextAreaFor(m => m.MemberBooking.Message)
 
 	        <input type="submit" class="btn" value="@Worki.Resources.Views.Booking.BookingString.BookIt"/>
-        }
-    </div>
+            
+        </div>
+    }
 </div>
 
 @Html.Partial(MVC.Booking.Views._CreateScript)

@@ -68,11 +68,22 @@
 	            $('#periodUnit').text(periodUnitText);
 	            var timeClass = canChooseHour ? 'dtp' : 'dp';
                 var generalFormat = '@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.General)';
-	            var timeFormat = canChooseHour ? '@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.General)' : '@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.Date)';
+                var dateFormat = '@CultureHelpers.GetFormat(CultureHelpers.TimeFormat.Date)';
+	            var timeFormat = canChooseHour ? generalFormat : dateFormat;
 	            $('#MemberBooking_FromDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
 	            $('#MemberBooking_ToDate').removeClass('dp hasDatepicker dtp').addClass(timeClass);
-	            var fromDate = Date.parseExact($('#MemberBooking_FromDate').val(), generalFormat);
+                var fromDateStr = $('#MemberBooking_FromDate').val()
+	            var fromDate = Date.parseExact(fromDateStr, generalFormat);
+                if(fromDate==null){
+                    fromDate = Date.parseExact(fromDateStr, dateFormat);
+                }
+
+                var toDateStr = $('#MemberBooking_ToDate').val();
 	            var toDate = Date.parseExact($('#MemberBooking_ToDate').val(), generalFormat);
+                if(toDate==null){
+                    toDate = Date.parseExact(toDateStr, dateFormat);
+                }
+
 	            $('#MemberBooking_FromDate').val(fromDate.toString(timeFormat));
 	            $('#MemberBooking_ToDate').val(toDate.toString(timeFormat));
 

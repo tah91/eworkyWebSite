@@ -1,44 +1,37 @@
 ﻿@model Worki.Data.Models.LogOnModel
-    
-@*    <form class="form-horizontal">
-  <fieldset>
-    <legend>Legend text</legend>
-    <div class="control-group">
-      <label class="control-label" for="input01">Text input</label>
-      <div class="controls">
-        <input type="text" class="input-xlarge" id="input01">
-        <p class="help-block">Supporting help text</p>
-      </div>
-    </div>
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        <button class="btn">Cancel</button>
-    </div>
-  </fieldset>
-</form>*@
    
 <div class="modal hide" id="login-popup">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h3>Connexion</h3>
-  </div>
-  <div class="modal-body">
-    @using (Html.BeginForm(MVC.Widget.Account.ActionNames.LogOn, MVC.Widget.Account.Name, FormMethod.Post, new { @class = "well", id = "login-form" }))
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Connexion</h3>
+    </div>
+  
+    @using (Html.BeginForm(MVC.Widget.Account.ActionNames.LogOn, MVC.Widget.Account.Name, FormMethod.Post, new { id = "login-form" , @class="form-horizontal"}))
     { 
-        <fieldset>
-        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            @Html.AntiForgeryToken()
 
-        @Html.LabelFor(m => m.Login) 
-        @Html.TextBoxFor(m => m.Login)
-        @Html.LabelFor(m => m.Password) 
-        @Html.PasswordFor(m => m.Password)
-        @Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword())
+            <div class="control-group">
+                @Html.LabelFor(m => m.Login, new { @class = "control-label" }) 
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Login)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" }) 
+                <div class="controls">
+                    @Html.PasswordFor(m => m.Password)
+                    <p class="help-block">@Html.ActionLink(Worki.Resources.Views.Account.AccountString.ForgottenPassword, MVC.Account.ResetPassword(), new { target = "blank" })</p>
+                </div>
+            </div>
 
-        <a href="http://www.eworky.com" target=_blank>Creer un compte</a>
-        <input type="submit" value="se connecter" class="btn btn-info"/>
-        </fieldset>
+        </div>
+        <div class="modal-footer">
+            @Html.ActionLink("Creer un compte", MVC.Account.ResetPassword(), new { @class="btn btn-warning", target = "blank" })
+            <input type="submit" value="Se connecter" class="btn btn-info"/>
+        </div>
     }
-  </div>
+  
 </div>  
 
 <script type="text/javascript">
@@ -61,5 +54,4 @@
             return false;
         });
     });
-
 </script>

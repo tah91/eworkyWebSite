@@ -25,14 +25,14 @@
 
     <body>
         @{
-            var loginText = "login";
+            var loginText = "Se connecter";
             if (Request.IsAuthenticated)
             {
                 loginText = User.Identity.Name;
                 FormsIdentity ident = User.Identity as FormsIdentity;
                 if (ident != null)
                 {
-                    loginText = WebHelper.GetIdentityDisplayName(User.Identity);
+                    loginText = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", WebHelper.GetIdentityDisplayName(ident));
                 }
             }
         }
@@ -45,10 +45,10 @@
                 <div class="btn-toolbar">
                     <div class="row">
                         <div class="btn-group pull-right">
-                            <button class="btn">@loginText</button>
-                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                @loginText
                                 <span class="caret"></span>
-                            </button>
+                            </a>
                             <ul class="dropdown-menu">
                                 @if (!Request.IsAuthenticated)
                                 {

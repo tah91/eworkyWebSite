@@ -12,6 +12,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Worki.Web.Helpers
 {
@@ -242,6 +243,28 @@ namespace Worki.Web.Helpers
             tag.InnerHtml = content;
             result.AppendLine(tag.ToString());
             return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString LabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes)
+        {
+            return LabelFor(html, expression, new RouteValueDictionary(htmlAttributes));
+        }
+
+        public static MvcHtmlString LabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, IDictionary<string, object> htmlAttributes)
+        {
+            ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, html.ViewData);
+            string htmlFieldName = ExpressionHelper.GetExpressionText(expression);
+            string labelText = metadata.DisplayName ?? metadata.PropertyName ?? htmlFieldName.Split('.').Last();
+            if (String.IsNullOrEmpty(labelText))
+            {
+                return MvcHtmlString.Empty;
+            }
+
+            TagBuilder tag = new TagBuilder("label");
+            tag.MergeAttributes(htmlAttributes);
+            tag.Attributes.Add("for", html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(htmlFieldName));
+            tag.SetInnerText(labelText);
+            return MvcHtmlString.Create(tag.ToString(TagRenderMode.Normal));
         }
 
 		public static MvcHtmlString FeatureLabelFor(this HtmlHelper html, Feature value, IFeatureProvider offer)
