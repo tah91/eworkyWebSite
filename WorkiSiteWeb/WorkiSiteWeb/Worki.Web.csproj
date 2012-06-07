@@ -840,6 +840,10 @@
     <Content Include="Scripts\WorkiSearchMap.min.js">
       <DependentUpon>WorkiSearchMap.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\WorkiWidget.js" />
+    <Content Include="Scripts\WorkiWidget.min.js">
+      <DependentUpon>WorkiWidget.js</DependentUpon>
+    </Content>
     <Content Include="Views\Offer\_OfferPrice.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\SharedOffice.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_AlertSummary.cshtml" />
