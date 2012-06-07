@@ -362,7 +362,7 @@
     <value>Description</value>
   </data>
   <data name="DisplayName" xml:space="preserve">
-    <value>{0}, {1} to {2}</value>
+    <value>{0}, {1} in {2}</value>
   </data>
   <data name="SharedOffice" xml:space="preserve">
     <value>Shared offices</value>
