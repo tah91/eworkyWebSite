@@ -528,6 +528,11 @@
     <Content Include="Scripts\bootstrap-typeahead.min.js">
       <DependentUpon>bootstrap-typeahead.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\easyXDM.debug.js" />
+    <Content Include="Scripts\easyXDM.js" />
+    <Content Include="Scripts\easyXDM.min.js">
+      <DependentUpon>easyXDM.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.cookie.min.js">
       <DependentUpon>jquery.cookie.js</DependentUpon>

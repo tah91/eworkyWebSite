@@ -111,6 +111,18 @@
                     return false;
                 });
             });
+            require(["@Url.VersionedContent(@Links.Scripts.easyXDM_debug_js)"], function () {
+                var socket = new easyXDM.Socket({
+                    onReady: function () {
+                        alert('plop');
+                        socket.postMessage(document.body.scrollHeight);
+                    }/*,
+                    onMessage: function (message, origin) {
+                        alert("Received '" + message + "' from '" + origin + "'");
+                        socket.postMessage(document.body.scrollHeight);
+                    }*/
+                });
+            });
         </script> 
     </body>
 </html>

@@ -421,6 +421,11 @@ namespace Links {
         public static readonly string dropdown_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dropdown.min.js") ? Url("dropdown.min.js") : Url("dropdown.js");
                       
         public static readonly string dropdown_min_js = Url("dropdown.min.js");
+        public static readonly string easyXDM_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/easyXDM.debug.min.js") ? Url("easyXDM.debug.min.js") : Url("easyXDM.debug.js");
+                      
+        public static readonly string easyXDM_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/easyXDM.min.js") ? Url("easyXDM.min.js") : Url("easyXDM.js");
+                      
+        public static readonly string easyXDM_min_js = Url("easyXDM.min.js");
         public static readonly string fullcalendar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/fullcalendar.min.js") ? Url("fullcalendar.min.js") : Url("fullcalendar.js");
                       
         public static readonly string fullcalendar_min_js = Url("fullcalendar.min.js");
@@ -544,6 +549,9 @@ namespace Links {
         public static readonly string WorkiSearchMap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiSearchMap.min.js") ? Url("WorkiSearchMap.min.js") : Url("WorkiSearchMap.js");
                       
         public static readonly string WorkiSearchMap_min_js = Url("WorkiSearchMap.min.js");
+        public static readonly string WorkiWidget_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiWidget.min.js") ? Url("WorkiWidget.min.js") : Url("WorkiWidget.js");
+                      
+        public static readonly string WorkiWidget_min_js = Url("WorkiWidget.min.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
