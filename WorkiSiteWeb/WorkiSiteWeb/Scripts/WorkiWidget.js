@@ -4,25 +4,27 @@
 eworkyClass.prototype = {
     initialize: function () {
         this.widgetDict = {};
-        this.iframeDomain = "http://taff.coworky.fr/widget/localisation";
+        this.root = 'http://ti.coworky.fr';
+        this.iframeIntermediateDomain = this.root + '/widget/intermediate';
+        this.iframeDomain = this.root + '/widget/intermediate/dispatch';
     },
     postInitialize: function () {
         this.initializeWidgets()
     },
     initializeWidgets: function () {
         var widgets = this.findWidgets();
-        for (var i = 0; i < widgets.length; d++) {
+        for (var i = 0; i < widgets.length; i++) {
             var widget = widgets[i];
             var index = i + 1;
-            this.widgetDict[index] = new eworkyButtonClass(widget, index, this.iframeDomain)
+            this.widgetDict[index] = new eworkyWidgetClass(widget, index, this.iframeIntermediateDomain, this.iframeDomain)
         }
     },
     findWidgets: function () {
-        var links = document.links;
+        var divs = document.getElementsByTagName('div');
         var toFind = "eworky-widget";
         var toRet = [];
-        for (var i = 0; i < links.length; i++) {
-            var elem = links[i];
+        for (var i = 0; i < divs.length; i++) {
+            var elem = divs[i];
             if (elem.className.indexOf(toFind) >= 0) {
                 toRet.push(elem)
             }
@@ -124,29 +126,29 @@ eworkyUtilsClass.prototype = {
     }
 };
 eworkyUtils = new eworkyUtilsClass();
-var eworkyButtonClass = function () {
+var eworkyWidgetClass = function () {
     this.initialize.apply(this, arguments)
 };
-eworkyButtonClass.prototype = {
-    initialize: function (elem, id, domain) {
+eworkyWidgetClass.prototype = {
+    initialize: function (elem, id, intermediateDomain, domain) {
         this.element = elem;
         this.data = eworkyUtils.parseData(this.element);
-        this.buttonId = id;
-        var elems = this.element.className.split(" ");
-        var widgetType = elems[1].replace("eworky-", "");
-        this.type = widgetType;
+        this.widgetId = id;
+        this.type = this.data['kind'];
+        this.iframeIntermediateDomain = intermediateDomain;
         this.iframeDomain = domain;
         eworkyUtils.fire("pre_button_init", this.type, this.data, this);
-        if (widgetType == "finder" || widgetType == "detail") {
-            this.width = 800;
-            this.height = 7500
+        this.width = this.data['width'];
+        if (this.type == "finder" || this.type == "detail") {
+            if (this.width < 780)
+                this.width = 780;
         }
         this.baseFormat();
-        eworkyUtils.fire("post_button_init", this, elem, id, domain)
     },
     getIframeUrl: function () {
-        var toRet = this.iframeDomain + "/?widget_type=" + this.type + this.getPopupQueryString();
-        return toRet
+        var intermediate = this.iframeIntermediateDomain + '?width=' + this.width + '&id=eworky_widget_' + this.widgetId + '&name=eworky_widget_' + this.widgetId;
+        var url = this.iframeDomain + this.getPopupQueryString();
+        return intermediate + '&url=' + url;
     },
     getPopupQueryString: function () {
         var toRet = '';
@@ -159,18 +161,17 @@ eworkyButtonClass.prototype = {
         return toRet
     },
     baseFormat: function () {
-        var frame = document.createElement("IFRAME");
-        frame.src = this.getIframeUrl();
-        frame.frameBorder = 0;
-        frame.marginWidth = 0;
-        frame.marginHeight = 0;
-        frame.width = this.width + "px";
-        frame.height = this.height + "px";
-        frame.scrolling = "yes";
-        frame.id = "eworky_widget_" + this.buttonId;
-        frame.name = "eworky_widget_" + this.buttonId;
-        this.element.parentNode.replaceChild(frame, this.element);
-        this.element = frame
+        var width = this.width;
+        var transport = new easyXDM.Socket({
+            remote: this.getIframeUrl(),
+            container: this.element,
+            onMessage: function (message, origin) {
+                this.container.getElementsByTagName("iframe")[0].style.height = message + "px";
+            },
+            onReady: function () {
+                this.container.getElementsByTagName("iframe")[0].style.width = width + "px";
+            }
+        });
     }
 };
 if (document.addEventListener) {
@@ -218,8 +219,8 @@ function loadScript(url, callback) {
 }
 
 
-var myPrettyCode = function () {
+var initializeFrames = function () {
     eworkyUtils.bindReady();
 };
 
-loadScript("http://taff.coworky.fr/Scripts/easyXDM.js", myPrettyCode);
+loadScript("http://ti.coworky.fr/Scripts/easyXDM.js", initializeFrames);

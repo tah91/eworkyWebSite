@@ -204,6 +204,13 @@ namespace Worki.Infrastructure.Helpers
             public const string NewLocalisationId = "NewLocalisationId";
 		}
 
+        public static class WidgetConstants
+        {
+            public const string Theme = "theme";
+            public const string AppKey = "app-key";
+            public const string ParamToKeep = "theme,app-key";
+        }
+
         /// <summary>
         /// Get the display name of enums, from resource file
         /// </summary>

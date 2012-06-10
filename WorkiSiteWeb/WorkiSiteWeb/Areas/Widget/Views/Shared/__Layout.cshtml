@@ -36,12 +36,14 @@
                 }
             }
             var back = Url.RequestContext.HttpContext.Request.UrlReferrer != null ? Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery : null;
+
+            var theme = Url.GetQueryParam(MiscHelpers.WidgetConstants.Theme);
         }
         
         <div id="login-container">
         </div>
-        <div style="width:750px;">
-        @*<div>*@
+        @*<div style="width:750px;">*@
+        <div class="@theme">
             <div class="container-fluid">
                 <div class="btn-toolbar">
                     <div class="row-fluid">
@@ -109,18 +111,6 @@
                         }
                     });
                     return false;
-                });
-            });
-            require(["@Url.VersionedContent(@Links.Scripts.easyXDM_debug_js)"], function () {
-                var socket = new easyXDM.Socket({
-                    onReady: function () {
-                        alert('plop');
-                        socket.postMessage(document.body.scrollHeight);
-                    }/*,
-                    onMessage: function (message, origin) {
-                        alert("Received '" + message + "' from '" + origin + "'");
-                        socket.postMessage(document.body.scrollHeight);
-                    }*/
                 });
             });
         </script> 

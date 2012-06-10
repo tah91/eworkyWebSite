@@ -1,20 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
-using System.Configuration;
 using System.Globalization;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
-using System.IO.Compression;
-using System.Reflection;
-using Worki.Infrastructure.Helpers;
 using System.Web.Routing;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
+using Worki.Infrastructure.Helpers;
 
 namespace Worki.Infrastructure
 {
+    public static class AttributeHelpers
+    {
+        public static string GetAreaToken(this RouteBase r)
+        {
+            var route = r as Route;
+            if (route != null && route.DataTokens != null && route.DataTokens.ContainsKey("area"))
+            {
+                return (route.DataTokens["area"] as string);
+            }
+            return null;
+        }
+    }
+
 	//public class PrivateBetaAttribute : AuthorizeAttribute
 	//{
 	//    public bool AlwaysAllow = bool.Parse(ConfigurationManager.AppSettings["AlwaysAllow"]);
@@ -469,4 +481,110 @@ namespace Worki.Infrastructure
 			base.OnResultExecuted(filterContext);
 		}
 	}
+
+    public class PreserveQueryStringAttribute : ActionFilterAttribute
+    {
+        /// <summary>
+        /// Gets or sets a comma-delimited list of parameters names to preserve
+        /// </summary>
+        public string ToKeep { get; set; }
+
+        IEnumerable<string> _ToKeepList;
+        public IEnumerable<string> ToKeepList 
+        {
+            get
+            {
+                if (_ToKeepList != null)
+                    return _ToKeepList;
+                _ToKeepList = ToKeep.Split(',').ToList();
+                return _ToKeepList;
+            }
+        }
+
+        void FillRouteValues(NameValueCollection query, RedirectToRouteResult redirectResult)
+        {
+            foreach (string key in query.Keys)
+            {
+                if (!ToKeepList.Contains(key))
+                    continue;
+
+                if (!redirectResult.RouteValues.ContainsKey(key))
+                {
+                    redirectResult.RouteValues.Add(key, query[key]);
+                }
+            }
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            var redirectResult = filterContext.Result as RedirectToRouteResult;
+            if (redirectResult == null)
+            {
+                return;
+            }
+
+            var query = filterContext.HttpContext.Request.QueryString;
+
+            FillRouteValues(query, redirectResult);
+
+            if (filterContext.HttpContext.Request.UrlReferrer != null)
+            {
+                var oldQuery = HttpUtility.ParseQueryString(filterContext.HttpContext.Request.UrlReferrer.Query);
+                FillRouteValues(oldQuery, redirectResult);
+            }
+        }
+    }
+
+    public class QueryPropagatingRoute : RouteBase, IRouteWithArea
+    {
+        private readonly RouteBase target;
+        private readonly string[] queryStringKeys;
+
+        public QueryPropagatingRoute(RouteBase target, string queryStringKeys)
+        {
+            this.target = target;
+            this.queryStringKeys = queryStringKeys.Split(',');
+        }
+
+        public override VirtualPathData GetVirtualPath(RequestContext requestContext, RouteValueDictionary values)
+        {
+            foreach (var key in this.queryStringKeys)
+            {
+                if (values.ContainsKey(key))
+                    continue;
+
+                values.Add(key, requestContext.HttpContext.Request.QueryString[key]);
+            }
+            var path = target.GetVirtualPath(requestContext, values);
+
+            return path;
+        }
+
+        public override RouteData GetRouteData(HttpContextBase httpContext)
+        {
+            return target.GetRouteData(httpContext);
+        }
+
+        public RouteBase InnerRoute
+        {
+            get
+            {
+                return target;
+            }
+        }
+
+        public string Area
+        {
+            get
+            {
+                RouteBase r = target;
+                while (r is QueryPropagatingRoute)
+                    r = ((QueryPropagatingRoute)r).InnerRoute;
+                string s = r.GetAreaToken();
+                if (s != null) 
+                    return s;
+                return null;
+            }
+        }
+    }
 }

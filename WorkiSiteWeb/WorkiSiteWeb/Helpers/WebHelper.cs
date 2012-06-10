@@ -341,6 +341,11 @@ namespace Worki.Web.Helpers
 			}
 		}
 
+        public static string GetQueryParam(this UrlHelper instance, string key)
+        {
+            return instance.RequestContext.HttpContext.Request.QueryString[key];
+        }
+
 		#endregion
 	}
 }

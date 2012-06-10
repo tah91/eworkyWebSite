@@ -98,6 +98,7 @@ namespace T4MVC {
     public class WidgetClass {
         public readonly string Name = "Widget";
         public Worki.Web.Areas.Widget.Controllers.AccountController Account = new Worki.Web.Areas.Widget.Controllers.T4MVC_AccountController();
+        public Worki.Web.Areas.Widget.Controllers.IntermediateController Intermediate = new Worki.Web.Areas.Widget.Controllers.T4MVC_IntermediateController();
         public Worki.Web.Areas.Widget.Controllers.LocalisationController Localisation = new Worki.Web.Areas.Widget.Controllers.T4MVC_LocalisationController();
         public T4MVC.Widget.SharedController Shared = new T4MVC.Widget.SharedController();
     }
@@ -552,6 +553,9 @@ namespace Links {
         public static readonly string WorkiWidget_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiWidget.min.js") ? Url("WorkiWidget.min.js") : Url("WorkiWidget.js");
                       
         public static readonly string WorkiWidget_min_js = Url("WorkiWidget.min.js");
+        public static readonly string WorkiWidgetIntermediate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/WorkiWidgetIntermediate.min.js") ? Url("WorkiWidgetIntermediate.min.js") : Url("WorkiWidgetIntermediate.js");
+                      
+        public static readonly string WorkiWidgetIntermediate_min_js = Url("WorkiWidgetIntermediate.min.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -776,6 +780,14 @@ namespace Links {
         public static readonly string Site_min_css = Url("Site.min.css");
         public static readonly string skin_css = Url("skin.css");
         public static readonly string skin_min_css = Url("skin.min.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class swf {
+            private const string URLPATH = "~/Content/swf";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string easyxdm_swf = Url("easyxdm.swf");
+        }
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class themes {
             private const string URLPATH = "~/Content/themes";
@@ -5109,6 +5121,68 @@ namespace Worki.Web.Areas.Widget.Controllers {
 
         public override System.Web.Mvc.ActionResult LogOff() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOff);
+            return callInfo;
+        }
+
+    }
+}
+
+namespace Worki.Web.Areas.Widget.Controllers {
+    public partial class IntermediateController {
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected IntermediateController(Dummy d) { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+            var callInfo = result.GetT4MVCResult();
+            return RedirectToRoute(callInfo.RouteValueDictionary);
+        }
+
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Dispatch() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Dispatch);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public IntermediateController Actions { get { return MVC.Widget.Intermediate; } }
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Area = "Widget";
+        [GeneratedCode("T4MVC", "2.0")]
+        public readonly string Name = "Intermediate";
+
+        static readonly ActionNamesClass s_actions = new ActionNamesClass();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionNamesClass ActionNames { get { return s_actions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNamesClass {
+            public readonly string Index = "Index";
+            public readonly string Dispatch = "Dispatch";
+        }
+
+
+        static readonly ViewNames s_views = new ViewNames();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ViewNames Views { get { return s_views; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ViewNames {
+            public readonly string _ViewStart = "~/Areas/Widget/Views/Intermediate/_ViewStart.cshtml";
+            public readonly string Index = "~/Areas/Widget/Views/Intermediate/Index.cshtml";
+        }
+    }
+
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class T4MVC_IntermediateController: Worki.Web.Areas.Widget.Controllers.IntermediateController {
+        public T4MVC_IntermediateController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Dispatch(string kind) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Dispatch);
+            callInfo.RouteValueDictionary.Add("kind", kind);
             return callInfo;
         }
 

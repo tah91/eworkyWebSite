@@ -266,6 +266,7 @@
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
     <Compile Include="Areas\Mobile\Models\MobileHelpers.cs" />
     <Compile Include="Areas\Widget\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Widget\Controllers\IntermediateController.cs" />
     <Compile Include="Areas\Widget\Controllers\LocalisationController.cs" />
     <Compile Include="Areas\Widget\WidgetAreaRegistration.cs" />
     <Compile Include="ConfigurationSection\PaymentSection.cs" />
@@ -338,6 +339,7 @@
     <Content Include="Content\scss\widget.min.css">
       <DependentUpon>widget.css</DependentUpon>
     </Content>
+    <Content Include="Content\swf\easyxdm.swf" />
     <Content Include="Content\Widget.css" />
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\Dashboard.min.css">
@@ -528,6 +530,7 @@
     <Content Include="Scripts\bootstrap-typeahead.min.js">
       <DependentUpon>bootstrap-typeahead.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\WorkiWidgetIntermediate.js" />
     <Content Include="Scripts\easyXDM.debug.js" />
     <Content Include="Scripts\easyXDM.js" />
     <Content Include="Scripts\easyXDM.min.js">
@@ -849,6 +852,9 @@
     <Content Include="Scripts\WorkiWidget.min.js">
       <DependentUpon>WorkiWidget.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\WorkiWidgetIntermediate.min.js">
+      <DependentUpon>WorkiWidgetIntermediate.js</DependentUpon>
+    </Content>
     <Content Include="Views\Offer\_OfferPrice.cshtml" />
     <Content Include="Areas\Admin\Views\Sheet\SharedOffice.cshtml" />
     <Content Include="Areas\Backoffice\Views\Shared\_AlertSummary.cshtml" />
@@ -879,6 +885,8 @@
     <Content Include="Areas\Widget\Views\Localisation\Detail.cshtml" />
     <Content Include="Areas\Widget\Views\Account\_Login.cshtml" />
     <Content Include="Areas\Widget\Views\Localisation\_CreateBooking.cshtml" />
+    <Content Include="Areas\Widget\Views\Intermediate\Index.cshtml" />
+    <Content Include="Areas\Widget\Views\Intermediate\_ViewStart.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
     <None Include="Content\scss\widget.scss" />
     <None Include="Content\scss\responsive.scss" />

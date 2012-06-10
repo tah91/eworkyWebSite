@@ -36,6 +36,7 @@ namespace Worki.Web.Areas.Widget.Controllers
         }
     }
 
+    [PreserveQueryString(ToKeep = MiscHelpers.WidgetConstants.ParamToKeep)]
     public partial class LocalisationController : ControllerBase
     {
         ISearchService _SearchService;
