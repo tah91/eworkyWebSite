@@ -36,10 +36,10 @@
             <div class="marginb10" >
                 <div class="float-left bold noUnderline">
                     <div class="float-left resultViewSelect @(Model.Criteria.ResultView == eResultView.Map ? "orange" : "")">
-                        <a href=# id="resultByMap">Carte</a>
+                        <a href=# id="resultByMap">@Worki.Resources.Views.Mobile.MobileString.Map</a>
                     </div>
                     <div class="float-right resultViewSelect @(Model.Criteria.ResultView == eResultView.List ? "orange" : "")">
-                        <a href=# id="resultByList">Liste</a>
+                        <a href=# id="resultByList">@Worki.Resources.Views.Mobile.MobileString.List</a>
                     </div>
                 </div>
                 @if (Model.Criteria.ResultView == eResultView.List)

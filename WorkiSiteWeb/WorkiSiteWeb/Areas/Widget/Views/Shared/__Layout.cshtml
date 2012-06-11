@@ -4,17 +4,16 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>search a place</title>
+        <title>@Worki.Resources.Views.Widget.WidgetString.WidgetTitle</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <link href="@Url.VersionedContent(Links.Content.boilerplate_min_css)" rel="stylesheet" type="text/css"/>
         <link href="@Url.VersionedContent(Links.Content.scss.bootstrap_css)" type="text/css" rel="stylesheet">
         <link href="@Url.VersionedContent(Links.Content.scss.responsive_css)" type="text/css" rel="stylesheet">
         <link href="@Url.VersionedContent(Links.Content.scss.widget_css)" rel="stylesheet" type="text/css"/>
 
-        <script src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
+        <script type="text/javascript" src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
         @RenderSection("HeadContent", true)
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -25,7 +24,7 @@
 
     <body>
         @{
-            var loginText = "Se connecter";
+            var loginText = Worki.Resources.Views.Shared.SharedString.LogIn;
             if (Request.IsAuthenticated)
             {
                 loginText = User.Identity.Name;
@@ -65,7 +64,7 @@
                                     <li>
                                         <a href="@Url.Action(MVC.Widget.Account.LogOn())" id = "login-btn">
                                             <i class="icon-home"></i>
-                                            login
+                                            @Worki.Resources.Views.Shared.SharedString.LogIn
                                         </a>
                                     </li>
                                 }
@@ -74,13 +73,13 @@
                                     <li>
                                         <a href="@Url.Action(MVC.Dashboard.Home.Index())">
                                             <i class="icon-user"></i>
-                                            dashboard
+                                            @Worki.Resources.Menu.Menu.UserSpace
                                         </a>
                                     </li>
                                     <li>
                                         <a href="@Url.Action(MVC.Widget.Account.LogOff())">
                                             <i class="icon-off"></i>
-                                            logout
+                                            @Worki.Resources.Views.Shared.SharedString.Deconnect
                                         </a>
                                     </li>
                                 }
@@ -88,7 +87,7 @@
                                 <li>
                                     <a href="http://www.eworky.com" target = "blank">
                                         <i class="icon-globe"></i>
-                                        à propos d'eWorky
+                                        @Worki.Resources.Views.Widget.WidgetString.AboutEworky
                                     </a>
                                 </li>
                             </ul>

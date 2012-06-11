@@ -312,6 +312,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Widget\WidgetString.Designer.cs">
+      <DependentUpon>WidgetString.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Email\Activation.es.resx" />
@@ -654,6 +659,11 @@
     <EmbeddedResource Include="Views\Shared\SharedString.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedString.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Widget\WidgetString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WidgetString.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

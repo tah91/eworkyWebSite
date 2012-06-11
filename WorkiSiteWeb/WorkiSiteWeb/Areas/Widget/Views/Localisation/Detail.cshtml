@@ -10,7 +10,6 @@
 
 @section HeadContent
 {
-    <title>search a place</title>
     <link href="@Url.VersionedContent(Links.Content.jquery_ui_1_8_12_custom_min_css)" rel="stylesheet" type="text/css" />
 }
 
@@ -21,7 +20,6 @@
                 @if (Model.LocalisationFiles.Count > 0)
                 {
                     <div id="detail-gallery" class="carousel slide">
-                        <!-- Carousel items -->
                         <div class="carousel-inner">
                             @foreach (var item in Model.LocalisationFiles.OrderBy(f => !f.IsDefault))
                             {
@@ -30,7 +28,6 @@
                                 </div>
                             }
                         </div>
-                        <!-- Carousel nav -->
                         <a class="carousel-control left" href="#detail-gallery" data-slide="prev">&lsaquo;</a>
                         <a class="carousel-control right" href="#detail-gallery" data-slide="next">&rsaquo;</a>
                     </div>

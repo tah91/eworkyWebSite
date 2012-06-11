@@ -2,7 +2,7 @@
 
 @section HeadContent
 {
-    <title>search a place</title>
+
 }
 
 @{
@@ -17,8 +17,8 @@
     @Html.Partial(MVC.Widget.Localisation.Views._SearchForm)
 
     <ul class="nav nav-tabs">
-        <li class=@(Model.Criteria.ResultView == eResultView.List ? "active" : "")><a href="@Url.Action(MVC.Widget.Localisation.ActionNames.SearchResult, listRvd)">Liste</a></li>
-        <li class=@(Model.Criteria.ResultView == eResultView.Map ? "active" : "")><a href="@Url.Action(MVC.Widget.Localisation.ActionNames.SearchResult, mapRvd)">Carte</a></li>
+        <li class=@(Model.Criteria.ResultView == eResultView.List ? "active" : "")><a href="@Url.Action(MVC.Widget.Localisation.ActionNames.SearchResult, listRvd)">@Worki.Resources.Views.Mobile.MobileString.List</a></li>
+        <li class=@(Model.Criteria.ResultView == eResultView.Map ? "active" : "")><a href="@Url.Action(MVC.Widget.Localisation.ActionNames.SearchResult, mapRvd)">@Worki.Resources.Views.Mobile.MobileString.Map</a></li>
     </ul>
 
     <div>

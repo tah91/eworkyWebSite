@@ -3,7 +3,7 @@
 <div class="modal hide" id="login-popup">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3>Connexion</h3>
+        <h3>@Worki.Resources.Views.Shared.SharedString.Connect</h3>
     </div>
   
     @using (Html.BeginForm(MVC.Widget.Account.ActionNames.LogOn, MVC.Widget.Account.Name, FormMethod.Post, new { id = "login-form" , @class="form-horizontal"}))
@@ -27,8 +27,8 @@
 
         </div>
         <div class="modal-footer">
-            @Html.ActionLink("Creer un compte", MVC.Account.ResetPassword(), new { @class="btn btn-warning", target = "blank" })
-            <input type="submit" value="Se connecter" class="btn btn-info"/>
+            @Html.ActionLink(@Worki.Resources.Views.Account.AccountString.Inscription, MVC.Account.ResetPassword(), new { @class="btn btn-warning", target = "blank" })
+            <input type="submit" value="@Worki.Resources.Views.Account.AccountString.Login" class="btn btn-info"/>
         </div>
     }
   
