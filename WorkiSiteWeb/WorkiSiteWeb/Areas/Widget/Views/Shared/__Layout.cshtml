@@ -37,12 +37,17 @@
             var back = Url.RequestContext.HttpContext.Request.UrlReferrer != null ? Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery : null;
 
             var theme = Url.GetQueryParam(MiscHelpers.WidgetConstants.Theme);
+            if (string.IsNullOrEmpty(theme))
+            {
+                theme = "swc";
+                //theme = "eworky-widget";
+            }
         }
-        
-        <div id="login-container">
-        </div>
+
         @*<div style="width:750px;">*@
-        <div class="@theme">
+        <div class="@theme" style="width:750px;">       
+            <div id="login-container">
+            </div>
             <div class="container-fluid">
                 <div class="btn-toolbar">
                     <div class="row-fluid">
@@ -50,7 +55,7 @@
                         {
                         <a href="javascript:self.history.go(-1)" id="go-back" class="btn">
                             <i class="icon-step-backward"></i>
-                            Retour
+                            @Worki.Resources.Views.BackOffice.BackOfficeString.Return
                         </a>
                         }
                         <div class="btn-group pull-right">

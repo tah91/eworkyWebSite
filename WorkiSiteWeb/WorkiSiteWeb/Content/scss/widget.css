@@ -22,36 +22,16 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box; }
 
+/*************************************************/
+/*General style*/
+/*************************************************/
 body {
   font-family: 'PT Sans', Helvetica, sans-serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); }
 
-[class^="icon-"], [class*=" icon-"] {
-  vertical-align: -15%; }
-
-.modal-open .dropdown-menu {
-  z-index: 1030; }
-
-.modal form {
-  margin: 0; }
-
-.halfDaySelector label {
-  display: inline; }
-
-.halfDaySelector input[type="radio"] {
-  margin: 0; }
-
-#MemberBooking_TimeUnits {
-  width: 120px; }
-
-.orange {
-  color: #f88f1e; }
-
-.swc .orange {
-  color: #5dafde; }
-
-.blue {
-  color: #5dafde; }
+ul {
+  margin: 0;
+  padding: 0; }
 
 li {
   list-style: none; }
@@ -59,41 +39,129 @@ li {
 .loaderBlock {
   position: absolute;
   z-index: 999999999; }
-
-.loaderBlock img {
-  padding-right: 12px;
-  vertical-align: middle; }
+  .loaderBlock img {
+    padding-right: 12px;
+    vertical-align: middle; }
 
 .loaderBlockBig {
   top: 75px;
   left: 200px;
   padding: 50px;
   font-size: 30px; }
-
-.loaderBlockBig img {
-  width: 64px;
-  height: 64px; }
+  .loaderBlockBig img {
+    width: 64px;
+    height: 64px; }
 
 .loaderBlockSmall {
   top: 50px;
   left: 60px;
   padding: 10px;
   font-size: 1.2em; }
+  .loaderBlockSmall img {
+    width: 32px;
+    height: 32px; }
 
-.loaderBlockSmall img {
-  width: 32px;
-  height: 32px; }
+/*************************************************/
+/*Override style*/
+/*************************************************/
+.eworky-widget .blue {
+  color: #5dafde; }
+  .eworky-widget .blue:hover {
+    color: #5dafde; }
+  .eworky-widget .blue a, .eworky-widget .blue a:hover {
+    color: #5dafde; }
+.eworky-widget .orange {
+  color: #f88f1e; }
+  .eworky-widget .orange:hover {
+    color: #f88f1e; }
+  .eworky-widget .orange a, .eworky-widget .orange a:hover {
+    color: #f88f1e; }
+.eworky-widget .dark-blue {
+  color: #2c3c4c; }
+  .eworky-widget .dark-blue:hover {
+    color: #2c3c4c; }
+  .eworky-widget .dark-blue a, .eworky-widget .dark-blue a:hover {
+    color: #2c3c4c; }
+.eworky-widget a:hover {
+  text-decoration: none; }
+.eworky-widget [class^="icon-"], .eworky-widget [class*=" icon-"] {
+  vertical-align: -15%; }
+.eworky-widget .modal-open .dropdown-menu {
+  z-index: 1030; }
+.eworky-widget .modal form {
+  margin: 0; }
+.eworky-widget .btn-primary {
+  background-color: #4da8da;
+  background-image: -ms-linear-gradient(top, #5dafde, #379ed6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5dafde), to(#379ed6));
+  background-image: -webkit-linear-gradient(top, #5dafde, #379ed6);
+  background-image: -o-linear-gradient(top, #5dafde, #379ed6);
+  background-image: -moz-linear-gradient(top, #5dafde, #379ed6);
+  background-image: linear-gradient(top, #5dafde, #379ed6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5dafde', endColorstr='#379ed6', GradientType=0);
+  border-color: #379ed6 #379ed6 #2173a0;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #379ed6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .eworky-widget .btn-primary:hover, .eworky-widget .btn-primary:active, .eworky-widget .btn-primary.active, .eworky-widget .btn-primary.disabled, .eworky-widget .btn-primary[disabled] {
+    background-color: #379ed6;
+    *background-color: #2991ca; }
+  .eworky-widget .btn-primary:active, .eworky-widget .btn-primary.active {
+    background-color: #2582b5 \9; }
+.eworky-widget .btn-warning {
+  background-color: #f89518;
+  background-image: -ms-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f88f1e), to(#f99e10));
+  background-image: -webkit-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: -o-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: -moz-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: linear-gradient(top, #f88f1e, #f99e10);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88f1e', endColorstr='#f99e10', GradientType=0);
+  border-color: #f99e10 #f99e10 #b87205;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #f99e10;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .eworky-widget .btn-warning:hover, .eworky-widget .btn-warning:active, .eworky-widget .btn-warning.active, .eworky-widget .btn-warning.disabled, .eworky-widget .btn-warning[disabled] {
+    background-color: #f99e10;
+    *background-color: #ea9106; }
+  .eworky-widget .btn-warning:active, .eworky-widget .btn-warning.active {
+    background-color: #d18105 \9; }
+.eworky-widget .label-info, .eworky-widget .badge-info {
+  background-color: #5dafde; }
+.eworky-widget .label-warning, .eworky-widget .badge-warning {
+  background-color: #f88f1e; }
+.eworky-widget .well {
+  background: #f9f9f9; }
 
+/*************************************************/
+/*Index style*/
+/*************************************************/
 #search-more input[type="checkbox"] {
   margin-top: 0;
   margin-right: 5px; }
-
 #search-more label {
   display: inline; }
 
+/*************************************************/
+/*Map style*/
+/*************************************************/
 #resultsMap img, #detailMap img {
   max-width: none; }
 
+.map-item {
+  width: 370px;
+  height: 120px; }
+  .map-item img {
+    width: 180px;
+    height: 120px; }
+
+/*************************************************/
+/*Result list style*/
+/*************************************************/
 .result-item {
   border: 1px solid rgba(0, 0, 0, 0.1);
   -webkit-border-radius: 6px;
@@ -101,13 +169,11 @@ li {
   border-radius: 6px;
   margin: 8px 0;
   padding: 9px 12px; }
-
-.result-item:hover {
-  background-color: whiteSmoke; }
-
-.result-item img {
-  width: 170px;
-  height: 115px; }
+  .result-item:hover {
+    background-color: #f9f9f9; }
+  .result-item img {
+    width: 170px;
+    height: 115px; }
 
 .result-info {
   height: 115px;
@@ -117,22 +183,19 @@ li {
   position: absolute;
   bottom: 0px; }
 
-.result-offers ul {
-  margin: 0;
-  padding: 0; }
-
 .result-offers li {
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
   padding-bottom: 5px; }
+  .result-offers li:last-child {
+    margin-bottom: 0; }
 
-.result-offers li:last-child {
-  margin-bottom: 0; }
-
+/*************************************************/
+/*Detail style*/
+/*************************************************/
 #detail-gallery img {
   width: 400px;
   height: 260px; }
-
 #detail-gallery .carousel-control {
   top: 50%; }
 
@@ -144,14 +207,6 @@ li {
   bottom: 0px;
   width: 100%; }
 
-.map-item {
-  width: 370px;
-  height: 120px; }
-
-.map-item img {
-  width: 180px;
-  height: 120px; }
-
 #detailMap {
   position: relative;
   height: 150px; }
@@ -162,17 +217,98 @@ li {
 
 .offer-prices {
   height: 115px; }
+  .offer-prices li {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+    padding-bottom: 5px; }
+  .offer-prices .btn {
+    position: absolute;
+    bottom: 0;
+    right: 0; }
 
-.offer-prices ul {
-  margin: 0;
-  padding: 0; }
+/*************************************************/
+/*Booking style*/
+/*************************************************/
+.halfDaySelector label {
+  display: inline; }
+.halfDaySelector input[type="radio"] {
+  margin: 0; }
 
-.offer-prices li {
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 5px;
-  padding-bottom: 5px; }
+#MemberBooking_TimeUnits {
+  width: 120px; }
 
-.offer-prices .btn {
-  position: absolute;
-  bottom: 0;
-  right: 0; }
+/*************************************************/
+/*SWC style*/
+/*************************************************/
+.swc .blue {
+  color: #3b9505; }
+  .swc .blue:hover {
+    color: #3b9505; }
+  .swc .blue a, .swc .blue a:hover {
+    color: #3b9505; }
+.swc .orange {
+  color: #363c42; }
+  .swc .orange:hover {
+    color: #363c42; }
+  .swc .orange a, .swc .orange a:hover {
+    color: #363c42; }
+.swc .dark-blue {
+  color: #2c3c4c; }
+  .swc .dark-blue:hover {
+    color: #2c3c4c; }
+  .swc .dark-blue a, .swc .dark-blue a:hover {
+    color: #2c3c4c; }
+.swc a:hover {
+  text-decoration: none; }
+.swc [class^="icon-"], .swc [class*=" icon-"] {
+  vertical-align: -15%; }
+.swc .modal-open .dropdown-menu {
+  z-index: 1030; }
+.swc .modal form {
+  margin: 0; }
+.swc .btn-primary {
+  background-color: #419d07;
+  background-image: -ms-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3b9505), to(#4ba90a));
+  background-image: -webkit-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: -o-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: -moz-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: linear-gradient(top, #3b9505, #4ba90a);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3b9505', endColorstr='#4ba90a', GradientType=0);
+  border-color: #4ba90a #4ba90a #2b6106;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #4ba90a;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .swc .btn-primary:hover, .swc .btn-primary:active, .swc .btn-primary.active, .swc .btn-primary.disabled, .swc .btn-primary[disabled] {
+    background-color: #4ba90a;
+    *background-color: #409109; }
+  .swc .btn-primary:active, .swc .btn-primary.active {
+    background-color: #367907 \9; }
+.swc .btn-warning {
+  background-color: #444a50;
+  background-image: -ms-linear-gradient(top, #363c42, #595f65);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#363c42), to(#595f65));
+  background-image: -webkit-linear-gradient(top, #363c42, #595f65);
+  background-image: -o-linear-gradient(top, #363c42, #595f65);
+  background-image: -moz-linear-gradient(top, #363c42, #595f65);
+  background-image: linear-gradient(top, #363c42, #595f65);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#363c42', endColorstr='#595f65', GradientType=0);
+  border-color: #595f65 #595f65 #35393c;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #595f65;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .swc .btn-warning:hover, .swc .btn-warning:active, .swc .btn-warning.active, .swc .btn-warning.disabled, .swc .btn-warning[disabled] {
+    background-color: #595f65;
+    *background-color: #4d5257; }
+  .swc .btn-warning:active, .swc .btn-warning.active {
+    background-color: #41464a \9; }
+.swc .label-info, .swc .badge-info {
+  background-color: #3b9505; }
+.swc .label-warning, .swc .badge-warning {
+  background-color: #363c42; }
+.swc .well {
+  background: #f9f9f9; }

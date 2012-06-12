@@ -2,55 +2,107 @@
 //@import "variables"; // Modify this for custom colors, font-sizes, etc
 @import "mixins";
 
+/*************************************************/
+/*General style*/
+/*************************************************/
 body 
 {
 	font-family: 'PT Sans', Helvetica, sans-serif;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-[class^="icon-"], [class*=" icon-"] 
-{
-	vertical-align: -15%;
+$blue: #5dafde;
+$blueh: #379ED6;
+$orange: #f88f1e;
+$orangeh: #F99E10;
+$darkBlue: #2C3C4C;
+$lightColor: #f9f9f9;
+
+@mixin text-color($color) {
+	color: $color;
+
+	&:hover
+	{
+		color: $color;
+	}
+
+	a, a:hover 
+	{	
+		color: $color;
+	}
 }
 
-.modal-open .dropdown-menu 
-{
-	z-index: 1030;
+@mixin override-theme($color1, $color1h, $color2, $color2h) {
+
+	$btnPrimaryBackground:              $color1;
+	$btnPrimaryBackgroundHighlight:     $color1h;
+
+	$btnWarningBackground:              $color2;
+	$btnWarningBackgroundHighlight:     $color2h;
+
+	.blue
+	{
+		@include text-color($color1);
+	}
+
+	.orange
+	{
+		@include text-color($color2);
+	}
+
+	.dark-blue
+	{
+		@include text-color($darkBlue);
+	}
+
+	a:hover
+	{
+		text-decoration:none;
+	}
+
+	[class^="icon-"], [class*=" icon-"] 
+	{
+		vertical-align: -15%;
+	}
+
+	.modal-open .dropdown-menu 
+	{
+		z-index: 1030;
+	}
+
+	.modal form
+	{
+		margin: 0;
+	}
+
+	.btn-primary {
+		@include buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
+	}
+	
+	.btn-warning {
+		@include buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
+	}
+
+	.label-info, .badge-info 
+	{
+		background-color: $color1;
+	}
+
+	.label-warning, .badge-warning
+	{
+		background-color: $color2;
+	}
+
+	.well
+	{
+		background: $lightColor;
+	}
 }
 
-.modal form
+ul
 {
-	margin: 0;
-}
-
-.halfDaySelector label
-{
-	display: inline;
-}
-
-.halfDaySelector input[type="radio"]
-{
-	margin: 0;
-}
-
-#MemberBooking_TimeUnits
-{
-	width: 120px;
-}
-
-.orange
-{
-	color:#f88f1e;
-}
-
-.swc .orange
-{
-	color: #5dafde;
-}
-
-.blue
-{
-	color:#5dafde;
+    margin: 0;
+    padding: 0;
 }
 
 li
@@ -62,12 +114,12 @@ li
 {
 	position: absolute;
 	z-index: 999999999;
-}
 
-.loaderBlock img
-{
-	padding-right: 12px; 
-	vertical-align: middle;
+	img
+	{
+		padding-right: 12px; 
+		vertical-align: middle;
+	}
 }
 
 .loaderBlockBig
@@ -76,12 +128,12 @@ li
 	left: 200px;
 	padding: 50px;
 	font-size: 30px;
-}
 
-.loaderBlockBig img
-{
-	width:64px;
-	height:64px;
+	img
+	{
+		width:64px;
+		height:64px;
+	}
 }
 
 .loaderBlockSmall
@@ -90,29 +142,65 @@ li
 	left: 60px;
 	padding: 10px;
 	font-size: 1.2em;
+
+	img
+	{
+		width:32px;
+		height:32px;
+	}
 }
 
-.loaderBlockSmall img
+/*************************************************/
+/*Override style*/
+/*************************************************/
+
+.eworky-widget
 {
-	width:32px;
-	height:32px;
+	@include override-theme($blue,$blueh,$orange,$orangeh);
 }
 
-#search-more input[type="checkbox"]
-{
-	margin-top:0;
-	margin-right: 5px;
-}
+/*************************************************/
+/*Index style*/
+/*************************************************/
 
-#search-more label
+#search-more
 {
-	display: inline;
+	input[type="checkbox"]
+	{
+		margin-top:0;
+		margin-right: 5px;
+	}
+
+	label
+	{
+		display: inline;
+	}
 }
+ 
+/*************************************************/
+/*Map style*/
+/*************************************************/
 
 #resultsMap img,  #detailMap img 
 {
     max-width: none;
 }
+
+.map-item
+{
+	width: 370px;
+	height: 120px;
+
+	img 
+	{
+		width: 180px;
+		height: 120px;
+	}
+}
+
+/*************************************************/
+/*Result list style*/
+/*************************************************/
 
 .result-item
 {
@@ -120,17 +208,17 @@ li
 	@include border-radius(6px);
 	margin: 8px 0;
 	padding: 9px 12px;
-}
 
-.result-item:hover
-{
-	background-color: whiteSmoke;
-}
+	&:hover 
+	{ 
+		background-color: $lightColor; 
+	}
 
-.result-item img 
-{
-	width: 170px;
-	height: 115px;
+	img
+	{
+		width: 170px;
+		height: 115px;
+	}
 }
 
 .result-info
@@ -145,33 +233,34 @@ li
 	bottom: 0px;
 }
 
-.result-offers ul
-{
-    margin: 0;
-    padding: 0;
-}
-
 .result-offers li
 {
 	border-bottom:1px solid #ccc;
 	margin-bottom: 10px;
 	padding-bottom: 5px;
+
+	&:last-child
+	{
+		margin-bottom: 0;
+	} 
 }
 
-.result-offers li:last-child
-{
-	margin-bottom: 0;
-}
+/*************************************************/
+/*Detail style*/
+/*************************************************/
 
-#detail-gallery img
+#detail-gallery
 {
-	width: 400px;
-	height: 260px;
-}
+	img
+	{
+		width: 400px;
+		height: 260px;
+	}
 
-#detail-gallery .carousel-control
-{
-	top:50%;
+	.carousel-control
+	{
+		top:50%;
+	}
 }
 
 .detail-description
@@ -184,18 +273,6 @@ li
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-}
-
-.map-item
-{
-	width: 370px;
-	height: 120px;
-}
-
-.map-item img
-{
-	width: 180px;
-	height: 120px;
 }
 
 #detailMap 
@@ -213,24 +290,53 @@ li
 .offer-prices
 {
 	height:115px;
+
+	li
+	{
+		border-bottom:1px solid #ccc;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+	}
+
+	.btn
+	{
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
 }
 
-.offer-prices ul
+/*************************************************/
+/*Booking style*/
+/*************************************************/
+
+.halfDaySelector
 {
-    margin: 0;
-    padding: 0;
+	label
+	{
+		display: inline;
+	}
+
+	input[type="radio"]
+	{
+		margin: 0;
+	}
 }
 
-.offer-prices li
+#MemberBooking_TimeUnits
 {
-	border-bottom:1px solid #ccc;
-	margin-bottom: 5px;
-	padding-bottom: 5px;
+	width: 120px;
 }
 
-.offer-prices .btn
+/*************************************************/
+/*SWC style*/
+/*************************************************/
+
+.swc
 {
-	position: absolute;
-	bottom: 0;
-	right: 0;
+	$swcgreen: #3b9505;
+	$swcgreenh: #4ba90a;
+	$swcgray: #363c42;
+	$swcgrayh: #595f65;
+	@include override-theme($swcgreen, $swcgreenh ,$swcgray, $swcgrayh);
 }

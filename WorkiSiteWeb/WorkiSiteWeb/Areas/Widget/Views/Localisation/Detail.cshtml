@@ -37,7 +37,7 @@
                 <h2 class="blue">@Model.Name</h2>
                 <p class="bold orange">@Localisation.GetLocalisationType(Model.TypeValue)</p>
                 <p>
-                    <a href="@itinLink" target="_blank">
+                    <a href="@itinLink" target="_blank" class="blue">
                         @Model.Adress - @Model.PostalCode @Model.City
                     </a>
                 </p>
@@ -64,7 +64,7 @@
                 <div class="result-features">
 			        @foreach (var item in offer.OfferFeatures.Take(5))
 			        {
-                        <span class="badge badge-info">@FeatureHelper.Display(item)</span>
+                        <span class="badge">@FeatureHelper.Display(item)</span>
                     }
                 </div>
             </div>
@@ -82,7 +82,7 @@
                     }
                 </ul>
                 <div class="pull-right">
-                    <a href="@Url.Action(MVC.Widget.Localisation.CreateBooking(offer.Id))" class="btn btn-info booking-btn">
+                    <a href="@Url.Action(MVC.Widget.Localisation.CreateBooking(offer.Id))" class="btn btn-primary booking-btn">
                         <i class="icon-ok icon-white"></i>
                         Réserver
                     </a>  

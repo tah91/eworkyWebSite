@@ -14,10 +14,10 @@
 		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
 		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
 
-            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place")
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place", null, "bold darkBlue")
 		    @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span12" })
 		 
-            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type")
+            @Html.LabelFor(Worki.Resources.Views.Home.HomeString.What, "Criteria_OfferData_Type", null, "bold darkBlue")
 		    @Html.DropDownListFor(model => model.Criteria.OfferData.Type, Model.Offers, new { @class = "span12" })
  
             <div id="search-more" class="collapse">
@@ -57,7 +57,7 @@
                     @Worki.Resources.Views.Home.HomeString.MoreCriterias
                 </a>
                 <div class=" pull-right">
-                    <a class="btn btn-info" href="" id="submitSearch">
+                    <a class="btn btn-primary" href="" id="submitSearch">
                         <i class="icon-search icon-white"></i>
                         @Worki.Resources.Views.Home.HomeString.Searching
                     </a>

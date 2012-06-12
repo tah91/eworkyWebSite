@@ -233,13 +233,15 @@ namespace Worki.Web.Helpers
 		/// <param name="content">content of the label</param>
 		/// <param name="forContent">id of the for field</param>
 		/// <returns>the build label</returns>
-        public static MvcHtmlString LabelFor(this HtmlHelper html, string content, string forContent, string id = "")
+        public static MvcHtmlString LabelFor(this HtmlHelper html, string content, string forContent, string id = "", string _class = "")
         {
             StringBuilder result = new StringBuilder();
             TagBuilder tag = new TagBuilder("label");
             tag.MergeAttribute("for", forContent);
             if (!string.IsNullOrEmpty(id))
                 tag.MergeAttribute("id", id);
+            if (!string.IsNullOrEmpty(_class))
+                tag.AddCssClass(_class);
             tag.InnerHtml = content;
             result.AppendLine(tag.ToString());
             return MvcHtmlString.Create(result.ToString());
