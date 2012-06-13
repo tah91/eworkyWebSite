@@ -117,22 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Civility" xml:space="preserve">
+    <value>Anrede</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Bitte bestätigen Sie Ihr Passwort</value>
+  </data>
   <data name="Email" xml:space="preserve">
-    <value>E-Mail-Adresse</value>
-  </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>Vorname</value>
-  </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Link" xml:space="preserve">
-    <value>Link</value>
-  </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Objekt</value>
-  </data>
-  <data name="ToEmail" xml:space="preserve">
     <value>Email-Adresse</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Email-Adresse</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Aktuelles Passwort</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Passwort speichern ?</value>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter </value>
+  </data>
+  <data name="ChangeThePassword" xml:space="preserve">
+    <value>Passwort bearbeiten</value>
+  </data>
+  <data name="ResetThePassword" xml:space="preserve">
+    <value>Passwort zurücksetzen</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Gebutsdatum</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Name des Unternehmens</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreiben Sie sich</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Mobiltelefon</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
   </data>
 </root>

@@ -118,84 +118,84 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddInvoiceItem" xml:space="preserve">
-    <value>Ajouter un élément</value>
+    <value>Element hinzufügen</value>
   </data>
   <data name="Archive" xml:space="preserve">
-    <value>Archive {0}</value>
+    <value>Archiv {0}</value>
   </data>
   <data name="BeforeCreateInvoice" xml:space="preserve">
-    <value>Avant de créer une facture, vous pouvez compléter vos informations de facturation {0}</value>
+    <value>Bevor eine Rechnung hergestellt wird können Sie die Rechnungsinformationen ergänzen {0}.</value>
   </data>
   <data name="BeforeCreateInvoiceLink" xml:space="preserve">
-    <value>ici.</value>
+    <value>hier.</value>
   </data>
   <data name="ClientId" xml:space="preserve">
-    <value>Client</value>
+    <value>Kunde</value>
   </data>
   <data name="Currency" xml:space="preserve">
     <value>Devise</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date : {0}</value>
+    <value>Datum : {0}</value>
   </data>
   <data name="DateColumn" xml:space="preserve">
-    <value>Date</value>
+    <value>Datum </value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschreibung</value>
   </data>
   <data name="GenerateArchive" xml:space="preserve">
-    <value>Archive facturation</value>
+    <value>Rechnungsarchiv</value>
   </data>
   <data name="InvoiceId" xml:space="preserve">
-    <value>N° de facture</value>
+    <value>Rechnungsnummer</value>
   </data>
   <data name="InvoiceNumber" xml:space="preserve">
-    <value>Facture n° {0}</value>
+    <value>Rechnung Nr. {0}</value>
   </data>
   <data name="Paid" xml:space="preserve">
-    <value>Payé</value>
+    <value>gezahlt</value>
   </data>
   <data name="PaymentBy" xml:space="preserve">
-    <value>Mode de règlement : {0}</value>
+    <value>Zahlungsart : {0}</value>
   </data>
   <data name="PaymentType" xml:space="preserve">
-    <value>Moyen de paiement</value>
+    <value>Zahlungsart</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+    <value>Preis</value>
   </data>
   <data name="PriceWT" xml:space="preserve">
-    <value>Prix HT</value>
+    <value>Nettopreis</value>
   </data>
   <data name="Quantity" xml:space="preserve">
-    <value>Quantité</value>
+    <value>Quantität</value>
   </data>
   <data name="SeeYouSoon" xml:space="preserve">
-    <value>A bientôt chez {0}</value>
+    <value>Bis bald bei {0}</value>
   </data>
   <data name="SiretNumber" xml:space="preserve">
-    <value>N° Siret : {0}</value>
+    <value>D-U-N-S : {0}</value>
   </data>
   <data name="SubTotal" xml:space="preserve">
-    <value>Total</value>
+    <value>Summe</value>
   </data>
   <data name="TaxNumber" xml:space="preserve">
-    <value>N° TVA : {0}</value>
+    <value>USt-IdNr. : {0}</value>
   </data>
   <data name="TaxRate" xml:space="preserve">
-    <value>Taux de TVA</value>
+    <value>Mehrwertsteuersatz  </value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Titre</value>
-  </data>
-  <data name="Total" xml:space="preserve">
-    <value>Total TTC</value>
+    <value>Titel</value>
   </data>
   <data name="TotalTax" xml:space="preserve">
-    <value>TVA</value>
+    <value>USt</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Summe einschließlich Steuern</value>
   </data>
   <data name="TotalWithoutTax" xml:space="preserve">
-    <value>Total HT</value>
+    <value>Summe ohne Steuern</value>
   </data>
 </root>

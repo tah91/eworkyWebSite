@@ -118,73 +118,73 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Activity" xml:space="preserve">
-    <value>Vie du site</value>
+    <value>News</value>
   </data>
   <data name="AddedPlaces" xml:space="preserve">
-    <value>Espaces ajoutés</value>
+    <value>Neue Arbeitsplätze</value>
     <comment>Mika</comment>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Administrateurs</value>
+    <value>Administratoren</value>
     <comment>Mika</comment>
   </data>
   <data name="AdminSpace" xml:space="preserve">
-    <value>Espace administrateur</value>
+    <value>Raum-Administrator</value>
     <comment>Mika</comment>
   </data>
   <data name="BOHome" xml:space="preserve">
-    <value>Espace</value>
+    <value>Arbeitsplatz</value>
   </data>
   <data name="BONews" xml:space="preserve">
-    <value>Bienvenue</value>
+    <value>Willkommen</value>
     <comment>Mika</comment>
   </data>
   <data name="Bookings" xml:space="preserve">
-    <value>Demandes de réservation</value>
+    <value>Reservierungsantrag</value>
     <comment>Mika</comment>
   </data>
   <data name="BusinessCenterFr" xml:space="preserve">
-    <value>Business Fr</value>
+    <value>Business Centers</value>
   </data>
   <data name="Clients" xml:space="preserve">
-    <value>Clients</value>
+    <value>Kunden</value>
     <comment>Mika</comment>
   </data>
   <data name="CommentedPlaces" xml:space="preserve">
-    <value>Espaces commentés</value>
+    <value>Kommentierte Räume</value>
   </data>
   <data name="Community" xml:space="preserve">
-    <value>Activité communautaire</value>
+    <value>Gemeinschaftsaktivität</value>
     <comment>Mika</comment>
   </data>
   <data name="Configure" xml:space="preserve">
-    <value>Paramétrage</value>
+    <value>Konfiguration</value>
     <comment>Mika</comment>
   </data>
   <data name="CoworkingSpaceFr" xml:space="preserve">
     <value>Coworking Fr</value>
   </data>
   <data name="CurrentBookings" xml:space="preserve">
-    <value>Réservations</value>
+    <value>Reservierung</value>
     <comment>Mika</comment>
   </data>
   <data name="EditPassword" xml:space="preserve">
-    <value>Mot de passe</value>
+    <value>Passwort</value>
     <comment>Mika</comment>
   </data>
   <data name="EditProfil" xml:space="preserve">
-    <value>Edition</value>
+    <value>Bearbeiten</value>
     <comment>Mika</comment>
   </data>
   <data name="FavoritePlaces" xml:space="preserve">
-    <value>Espaces favoris</value>
+    <value>Lieblingsräume</value>
     <comment>Mika</comment>
   </data>
   <data name="Historic" xml:space="preserve">
-    <value>Historique</value>
+    <value>Verlauf</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Accueil</value>
+    <value>Home</value>
     <comment>Mika</comment>
   </data>
   <data name="Members" xml:space="preserve">
@@ -192,15 +192,15 @@
     <comment>Mika</comment>
   </data>
   <data name="Moderation" xml:space="preserve">
-    <value>Modération</value>
+    <value>Moderation</value>
     <comment>Mika</comment>
   </data>
   <data name="ModifyPayement" xml:space="preserve">
-    <value>Informations de règlement</value>
+    <value>Zahlungsinformatinen</value>
     <comment>Mika</comment>
   </data>
   <data name="News" xml:space="preserve">
-    <value>Actualités</value>
+    <value>News</value>
     <comment>Mika</comment>
   </data>
   <data name="Offers" xml:space="preserve">
@@ -208,33 +208,24 @@
     <comment>Mika</comment>
   </data>
   <data name="OnlineRental" xml:space="preserve">
-    <value>Annonces en ligne</value>
+    <value>Online Anzeigen</value>
     <comment>Mika</comment>
   </data>
   <data name="OwnerSpace" xml:space="preserve">
-    <value>Espace gérant</value>
+    <value>Office Manager</value>
     <comment>Mika</comment>
-  </data>
-  <data name="Places" xml:space="preserve">
-    <value>Mes espaces en ligne</value>
   </data>
   <data name="Profil" xml:space="preserve">
     <value>Profil</value>
     <comment>Mika</comment>
   </data>
   <data name="Quoations" xml:space="preserve">
-    <value>Demandes de devis</value>
+    <value>Kostenanfrage</value>
     <comment>Mika</comment>
-  </data>
-  <data name="RefreshBlog" xml:space="preserve">
-    <value>Rafraichir blog</value>
   </data>
   <data name="Rentals" xml:space="preserve">
-    <value>Annonces</value>
+    <value>Anzeigen</value>
     <comment>Mika</comment>
-  </data>
-  <data name="Sheet" xml:space="preserve">
-    <value>Fiches</value>
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Abonnements</value>
@@ -245,63 +236,75 @@
     <comment>Mika</comment>
   </data>
   <data name="UserSpace" xml:space="preserve">
-    <value>Espace utilisateur</value>
+    <value>Mein Konto</value>
     <comment>Mika</comment>
   </data>
   <data name="WorkingBook" xml:space="preserve">
-    <value>Réservations en cours</value>
+    <value>Aktuelle Reservierungen</value>
     <comment>Mika</comment>
   </data>
   <data name="WorkingQuotation" xml:space="preserve">
-    <value>Demandes de devis en cours</value>
+    <value>Aktuelle Kostenanfragen</value>
     <comment>Mika</comment>
   </data>
   <data name="Options" xml:space="preserve">
-    <value>Mon profil</value>
+    <value>Mein Profil</value>
     <comment>Mika</comment>
   </data>
   <data name="Owner" xml:space="preserve">
-    <value>Gérants</value>
+    <value>Managers</value>
     <comment>Mika</comment>
   </data>
-  <data name="Schedule" xml:space="preserve">
-    <value>Planning</value>
+  <data name="PendingBO" xml:space="preserve">
+    <value>BO in Erwartung</value>
+    <comment>Steeve</comment>
+  </data>
+  <data name="Places" xml:space="preserve">
+    <value>Meine online Räume</value>
+  </data>
+  <data name="RefreshBlog" xml:space="preserve">
+    <value>Blog auffrischen</value>
+  </data>
+  <data name="Sheet" xml:space="preserve">
+    <value>Seiten</value>
   </data>
   <data name="AddClient" xml:space="preserve">
-    <value>Ajouter un client</value>
+    <value>Kunde hinzufügen</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Planung</value>
   </data>
   <data name="MyClients" xml:space="preserve">
-    <value>Mes clients</value>
+    <value>Meine Kunde</value>
   </data>
   <data name="SharedOfficeFr" xml:space="preserve">
-    <value>Partage Fr</value>
+    <value>Teilen Fr</value>
   </data>
   <data name="EditOffer" xml:space="preserve">
-    <value>Edition</value>
+    <value>Bearbeitung</value>
   </data>
   <data name="EditPlace" xml:space="preserve">
-    <value>Edition du lieu</value>
+    <value>Ortbearbeitung</value>
   </data>
   <data name="Billing" xml:space="preserve">
-    <value>Coordonnées de facturation</value>
+    <value>Rechnungsdaten</value>
   </data>
   <data name="Invoices" xml:space="preserve">
-    <value>Factures client</value>
+    <value>Kundenrechnung</value>
   </data>
   <data name="CreateInvoice" xml:space="preserve">
-    <value>Créer une facture</value>
+    <value>Rechnung herstellen</value>
   </data>
   <data name="LocalisationSchedule" xml:space="preserve">
-    <value>Planning global</value>
+    <value>Gesamte Planung</value>
   </data>
   <data name="OfferSchedule" xml:space="preserve">
-    <value>Planning par offre</value>
+    <value>Planung nach Angeboten</value>
   </data>
   <data name="Prices" xml:space="preserve">
     <value>Preise</value>
   </data>
-  <data name="PendingBO" xml:space="preserve">
-    <value>BO en attente</value>
-    <comment>Steeve</comment>
+  <data name="ActivatedBO" xml:space="preserve">
+    <value>BO aktiviert</value>
   </data>
 </root>

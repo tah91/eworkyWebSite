@@ -117,22 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Email" xml:space="preserve">
-    <value>E-Mail-Adresse</value>
+  <data name="From" xml:space="preserve">
+    <value>Von :</value>
   </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>Vorname</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Guten Tag {0}</value>
   </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Name</value>
+  <data name="Message" xml:space="preserve">
+    <value>Nachricht :</value>
   </data>
-  <data name="Link" xml:space="preserve">
-    <value>Link</value>
+  <data name="MP" xml:space="preserve">
+    <value>Private Nachricht</value>
   </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Objekt</value>
+  <data name="SeeYouSoon" xml:space="preserve">
+    <value>Bis bald auf eWorky ,&lt;br /&gt;Das eWorky Team&lt;br /&gt;</value>
   </data>
-  <data name="ToEmail" xml:space="preserve">
-    <value>Email-Adresse</value>
+  <data name="To" xml:space="preserve">
+    <value>An :</value>
+  </data>
+  <data name="Friend" xml:space="preserve">
+    <value>Einem Freund zuschicken</value>
+  </data>
+  <data name="ConsultHere" xml:space="preserve">
+    <value>Anzeige hier anschauen ==&gt;</value>
+  </data>
+  <data name="Concern" xml:space="preserve">
+    <value>Bezüglich der Anzeige :</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Informationen - {0}</value>
+  </data>
+  <data name="Ownership" xml:space="preserve">
+    <value>Sie haben uns gekündigt, dass Sie der Manager von {0} sind, willkommen auf eWorky ! Als Manager dieses Ortes werden Sie die deskriptive Seite bearbeiten und die Informationsqualität verbessern können, indem Sie hier klicken {1} ; Sie werden auch die Möglichkeit haben  ein eWorky-Sticker an dem Eintritt Ihrer Büros anzukleben ! Dieses Sticker wird Ihnen kostenlos zugeschikt, bitte fragen Sie danach per Email. Es bedeutet nämlich, dass Ihre Büros zum Arbeiten günstig und von eWorky empfohlen sind.
+
+Vergessen Sie nicht Ihre Kunden anzubieten, dass Sie Ihren Ort auf eWorky kommentieren und benoten. Dies wird Ihre Suchmaschine und Ihre Sichtbarkeit auf eWorky verbessern.
+</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Willkommen auf eWorky !</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>{0}&lt;br /&gt;{1}&lt;br /&gt;&lt;a href="{2}"&gt;Folgen Sie uns auf Facebook&lt;/a&gt;&lt;br /&gt;&lt;a href="{3}"&gt;Folgen Sie uns auf Twitter&lt;/a&gt;</value>
+  </data>
+  <data name="FollowFacebook" xml:space="preserve">
+    <value>Folgen Sie uns auf Facebook</value>
+  </data>
+  <data name="FollowTwitter" xml:space="preserve">
+    <value>Folgen Sie uns auf Twitter</value>
+  </data>
+  <data name="Hey" xml:space="preserve">
+    <value>Guten Tag</value>
+  </data>
+  <data name="OwnershipSubject" xml:space="preserve">
+    <value>Glückwünsche ! Sie sind jetzt Manager von {0} !</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>http://www.twitter.com/#!/eWorky_de</value>
   </data>
 </root>

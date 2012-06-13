@@ -121,70 +121,37 @@
     <value>Adresse</value>
   </data>
   <data name="AvailableDate" xml:space="preserve">
-    <value>Date de disponibilité</value>
+    <value>Verfügbarkeitsdatum</value>
   <comment>?</comment></data>
-  <data name="AvailableNow" xml:space="preserve">
-    <value>Disponibilité immédiate</value>
-  </data>
-  <data name="Charges" xml:space="preserve">
-    <value>Charges mensuelles</value>
-  </data>
-  <data name="City" xml:space="preserve">
-    <value>Ville</value>
-  </data>
   <data name="Commercial" xml:space="preserve">
-    <value>Local commercial</value>
+    <value>Geschäftsraum</value>
   <comment>?</comment></data>
   <data name="Country" xml:space="preserve">
     <value>Land</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="Desk" xml:space="preserve">
-    <value>Bureaux &amp; locaux professionnels</value>
-  </data>
-  <data name="Electric" xml:space="preserve">
-    <value>Electrique</value>
-  </data>
-  <data name="Energy" xml:space="preserve">
-    <value>Consommation énergétique</value>
-  </data>
   <data name="Farm" xml:space="preserve">
-    <value>Exploitations agricoles</value>
+    <value>Bauernhöfe</value>
   <comment>?</comment></data>
   <data name="Franchise" xml:space="preserve">
-    <value>Gérance - franchise</value>
+    <value>Franchise</value>
   <comment>?</comment></data>
   <data name="Gas" xml:space="preserve">
-    <value>Gaz</value>
+    <value>Gas</value>
   <comment>?</comment></data>
   <data name="GreenHouse" xml:space="preserve">
-    <value>Diagnostic énergétique</value>
+    <value>Energetische Diagnose</value>
   <comment>?</comment></data>
-  <data name="Ground" xml:space="preserve">
-    <value>Local d'activité, terrain</value>
-  </data>
-  <data name="HeatingType" xml:space="preserve">
-    <value>Chauffage</value>
-  </data>
-  <data name="Kitchen" xml:space="preserve">
-    <value>Cuisine</value>
-  </data>
   <data name="Leasehold" xml:space="preserve">
-    <value>Fonds de commerce</value>
+    <value>Geschäft</value>
   <comment>?</comment></data>
   <data name="LeaseType" xml:space="preserve">
-    <value>Type de bail</value>
+    <value>Leasing-Art</value>
   <comment>?</comment></data>
-  <data name="LocalNetwork" xml:space="preserve">
-    <value>Réseau local préinstallé</value>
-  </data>
   <data name="MeetingRoom" xml:space="preserve">
     <value>Meetingraum</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value>Etat neuf</value>
+    <value>Renoviert</value>
   <comment>?</comment></data>
   <data name="Parking" xml:space="preserve">
     <value>Parkplatz</value>
@@ -192,85 +159,115 @@
   <data name="PostalCode" xml:space="preserve">
     <value>Postleitzahl</value>
   </data>
+  <data name="RentalAccessType" xml:space="preserve">
+    <value>Verkehrsmittel</value>
+  <comment>?</comment></data>
+  <data name="TypeAccess" xml:space="preserve">
+    <value>Verkehrsmittel</value>
+  <comment>?</comment></data>
+  <data name="Tram" xml:space="preserve">
+    <value>Straßenbahn</value>
+  <comment>?</comment></data>
+  <data name="AvailableNow" xml:space="preserve">
+    <value>Sofort verfügbar</value>
+  </data>
+  <data name="Charges" xml:space="preserve">
+    <value>monatliche Grundgebühren</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="Desk" xml:space="preserve">
+    <value>Büros und professionelle Räume</value>
+  </data>
+  <data name="Electric" xml:space="preserve">
+    <value>Elektronisch</value>
+  </data>
+  <data name="Energy" xml:space="preserve">
+    <value>Energieverbrauch</value>
+  </data>
+  <data name="Ground" xml:space="preserve">
+    <value>Grundstück</value>
+  </data>
+  <data name="HeatingType" xml:space="preserve">
+    <value>Heizung</value>
+  </data>
+  <data name="Kitchen" xml:space="preserve">
+    <value>Küche</value>
+  </data>
+  <data name="LocalNetwork" xml:space="preserve">
+    <value>Lokales Netzwerk </value>
+  </data>
   <data name="Quiet" xml:space="preserve">
-    <value>Environnement calme</value>
+    <value>Ruhige Umwelt</value>
   </data>
   <data name="Rate" xml:space="preserve">
-    <value>Loyer mensuel hors charges</value>
+    <value>monatliche Kaltmiete</value>
   </data>
   <data name="Reference" xml:space="preserve">
-    <value>Référence</value>
-  </data>
-  <data name="StartUpFriendly" xml:space="preserve">
-    <value>Start-up friendly</value>
+    <value>Referenz</value>
   </data>
   <data name="Surface" xml:space="preserve">
-    <value>Surface</value>
+    <value>Fläche</value>
   </data>
   <data name="TimeStamp" xml:space="preserve">
-    <value>Date de mise à jour</value>
+    <value>Updatedatum</value>
   </data>
   <data name="Toilets" xml:space="preserve">
-    <value>Toilettes</value>
+    <value>WC</value>
   </data>
   <data name="Transport" xml:space="preserve">
-    <value>Accès transport en commun</value>
+    <value>Zugang zu öffentlichen Verkehrsmitteln</value>
   </data>
   <data name="Type" xml:space="preserve">
-    <value>Type de lieu</value>
+    <value>Raumtyp</value>
   </data>
   <data name="Type_24" xml:space="preserve">
-    <value>Bail précaire 24 mois</value>
+    <value>Kurzfristige Miete</value>
   </data>
   <data name="Type_369" xml:space="preserve">
-    <value>Bail 3/6/9</value>
+    <value>Langfristige Miete</value>
   </data>
   <data name="NotDefined" xml:space="preserve">
-    <value>Choisir...</value>
+    <value>Auswählen...</value>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Ligne</value>
+    <value>Linie</value>
   </data>
-  <data name="RentalAccessType" xml:space="preserve">
-    <value>Type de transport</value>
-  <comment>?</comment></data>
   <data name="Station" xml:space="preserve">
-    <value>Station</value>
+    <value>Haltestelle</value>
   </data>
   <data name="Availability" xml:space="preserve">
-    <value>Disponibilité</value>
+    <value>Verfügbarkeit</value>
   </data>
   <data name="Max" xml:space="preserve">
-    <value>Max</value>
+    <value>Max.</value>
   </data>
   <data name="Min" xml:space="preserve">
-    <value>Min</value>
+    <value>Min.</value>
   </data>
   <data name="MaxRate" xml:space="preserve">
-    <value>Prix Maximum</value>
+    <value>Maximaler Preis</value>
   </data>
   <data name="MaxSurface" xml:space="preserve">
-    <value>Surface Maximum</value>
+    <value>Maximale Fläche</value>
   </data>
   <data name="MinRate" xml:space="preserve">
-    <value>Prix Minimum</value>
+    <value>Minimaler Preis</value>
   </data>
   <data name="MinSurface" xml:space="preserve">
-    <value>Surface Minimum</value>
+    <value>Minimale Fläche</value>
   </data>
-  <data name="TypeAccess" xml:space="preserve">
-    <value>Type de transport</value>
-  <comment>?</comment></data>
   <data name="Bus" xml:space="preserve">
     <value>Bus</value>
   </data>
   <data name="Metro" xml:space="preserve">
-    <value>Métro</value>
+    <value>U-Bahn</value>
   </data>
   <data name="Train" xml:space="preserve">
-    <value>Train</value>
+    <value>Zug</value>
   </data>
-  <data name="Tram" xml:space="preserve">
-    <value>Tram</value>
-  <comment>?</comment></data>
 </root>
