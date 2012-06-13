@@ -22,11 +22,17 @@
         <div class="result-features">
 			@foreach (var item in generalFeatures.Take(3))
 			{
-                <span class="badge badge-info">@FeatureHelper.Display(item)</span>
+                <span class="badge">@FeatureHelper.Display(item)</span>
             }
         </div>
     </div>
     <div class="span4 result-offers">
+        @if (Model.Localisation.IsFreeLocalisation())
+        {
+            <span>@Html.TruncateAtWord(Model.Localisation.GetDescription(), 200)</span>
+        }
+        else
+        {
         <ul>
             @foreach (var offer in Model.Localisation.Offers.Take(3))
             {
@@ -40,5 +46,6 @@
                 </li>
             }
         </ul>
+        }
     </div>
 </div>

@@ -40,10 +40,11 @@ namespace Worki.Web.Areas.Widget.Controllers
     public partial class LocalisationController : ControllerBase
     {
         ISearchService _SearchService;
+        int _PageSize = 6;
 
-        public LocalisationController(ILogger logger,
-                                IObjectStore objectStore, 
-                                ISearchService searchService)
+        public LocalisationController(  ILogger logger,
+                                        IObjectStore objectStore, 
+                                        ISearchService searchService)
             : base(logger, objectStore)
         {
             _SearchService = searchService;
@@ -115,7 +116,7 @@ namespace Worki.Web.Areas.Widget.Controllers
             var criteria = _SearchService.GetCriteria(Request, pageValue);
             var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
-            criteriaViewModel.FillPageInfo(pageValue);
+            criteriaViewModel.FillPageInfo(pageValue, _PageSize);
             return View(criteriaViewModel);
         }
 
@@ -200,7 +201,7 @@ namespace Worki.Web.Areas.Widget.Controllers
             var criteria = _SearchService.GetCriteria(Request, pageValue);
             var criteriaViewModel = _SearchService.FillSearchResults(criteria);
 
-            criteriaViewModel.FillPageInfo(pageValue);
+            criteriaViewModel.FillPageInfo(pageValue, _PageSize);
             return GetSearchResult(criteriaViewModel);
         }
 

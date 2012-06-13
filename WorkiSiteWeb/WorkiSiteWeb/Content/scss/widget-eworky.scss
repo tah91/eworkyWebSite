@@ -1,0 +1,22 @@
+// Core variables and mixins
+@import "widget-mixins";
+
+/*************************************************/
+/*Override style*/
+/*************************************************/
+
+a
+{
+	color: $blue;
+}
+
+a:hover
+{
+	color: $blueh;
+	text-decoration:none;
+}
+
+.eworky-widget
+{
+	@include override-theme($blue,$blueh,$orange,$orangeh);
+}

@@ -1,6 +1,6 @@
 // Core variables and mixins
 //@import "variables"; // Modify this for custom colors, font-sizes, etc
-@import "mixins";
+@import "widget-mixins";
 
 /*************************************************/
 /*General style*/
@@ -9,94 +9,6 @@ body
 {
 	font-family: 'PT Sans', Helvetica, sans-serif;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-$blue: #5dafde;
-$blueh: #379ED6;
-$orange: #f88f1e;
-$orangeh: #F99E10;
-$darkBlue: #2C3C4C;
-$lightColor: #f9f9f9;
-
-@mixin text-color($color) {
-	color: $color;
-
-	&:hover
-	{
-		color: $color;
-	}
-
-	a, a:hover 
-	{	
-		color: $color;
-	}
-}
-
-@mixin override-theme($color1, $color1h, $color2, $color2h) {
-
-	$btnPrimaryBackground:              $color1;
-	$btnPrimaryBackgroundHighlight:     $color1h;
-
-	$btnWarningBackground:              $color2;
-	$btnWarningBackgroundHighlight:     $color2h;
-
-	.blue
-	{
-		@include text-color($color1);
-	}
-
-	.orange
-	{
-		@include text-color($color2);
-	}
-
-	.dark-blue
-	{
-		@include text-color($darkBlue);
-	}
-
-	a:hover
-	{
-		text-decoration:none;
-	}
-
-	[class^="icon-"], [class*=" icon-"] 
-	{
-		vertical-align: -15%;
-	}
-
-	.modal-open .dropdown-menu 
-	{
-		z-index: 1030;
-	}
-
-	.modal form
-	{
-		margin: 0;
-	}
-
-	.btn-primary {
-		@include buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
-	}
-	
-	.btn-warning {
-		@include buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
-	}
-
-	.label-info, .badge-info 
-	{
-		background-color: $color1;
-	}
-
-	.label-warning, .badge-warning
-	{
-		background-color: $color2;
-	}
-
-	.well
-	{
-		background: $lightColor;
-	}
 }
 
 ul
@@ -148,15 +60,6 @@ li
 		width:32px;
 		height:32px;
 	}
-}
-
-/*************************************************/
-/*Override style*/
-/*************************************************/
-
-.eworky-widget
-{
-	@include override-theme($blue,$blueh,$orange,$orangeh);
 }
 
 /*************************************************/
@@ -254,7 +157,7 @@ li
 	img
 	{
 		width: 400px;
-		height: 260px;
+		height: 280px;
 	}
 
 	.carousel-control
@@ -265,7 +168,7 @@ li
 
 .detail-description
 {
-	height:260px;
+	height:280px;
 }
 
 .detail-map
@@ -326,17 +229,4 @@ li
 #MemberBooking_TimeUnits
 {
 	width: 120px;
-}
-
-/*************************************************/
-/*SWC style*/
-/*************************************************/
-
-.swc
-{
-	$swcgreen: #3b9505;
-	$swcgreenh: #4ba90a;
-	$swcgray: #363c42;
-	$swcgrayh: #595f65;
-	@include override-theme($swcgreen, $swcgreenh ,$swcgray, $swcgrayh);
 }

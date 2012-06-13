@@ -4,7 +4,7 @@
 eworkyClass.prototype = {
     initialize: function () {
         this.widgetDict = {};
-        this.root = 'http://taff.coworky.fr';
+        this.root = 'http://taff2.coworky.fr';
         this.iframeIntermediateDomain = this.root + '/widget/intermediate';
         this.iframeDomain = this.root + '/widget/intermediate/dispatch';
     },
@@ -223,4 +223,4 @@ var initializeFrames = function () {
     eworkyUtils.bindReady();
 };
 
-loadScript("http://taff.coworky.fr/Scripts/easyXDM.js", initializeFrames);
+loadScript("http://taff2.coworky.fr/Scripts/easyXDM.js", initializeFrames);

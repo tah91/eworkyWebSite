@@ -1,5 +1,26 @@
 ﻿@inherits System.Web.Mvc.WebViewPage
 
+@{
+    var loginText = Worki.Resources.Views.Shared.SharedString.LogIn;
+    if (Request.IsAuthenticated)
+    {
+        loginText = User.Identity.Name;
+        FormsIdentity ident = User.Identity as FormsIdentity;
+        if (ident != null)
+        {
+            loginText = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", WebHelper.GetIdentityDisplayName(ident));
+        }
+    }
+    var back = Url.RequestContext.HttpContext.Request.UrlReferrer != null ? Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery : null;
+
+    var theme = Url.GetQueryParam(MiscHelpers.WidgetConstants.Theme);
+    if (string.IsNullOrEmpty(theme))
+    {
+        //theme = MiscHelpers.WidgetConstants.SwcClass;
+        theme = MiscHelpers.WidgetConstants.EworkyClass;
+    }
+}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +32,8 @@
         <link href="@Url.VersionedContent(Links.Content.boilerplate_min_css)" rel="stylesheet" type="text/css"/>
         <link href="@Url.VersionedContent(Links.Content.scss.bootstrap_css)" type="text/css" rel="stylesheet">
         <link href="@Url.VersionedContent(Links.Content.scss.responsive_css)" type="text/css" rel="stylesheet">
-        <link href="@Url.VersionedContent(Links.Content.scss.widget_css)" rel="stylesheet" type="text/css"/>
+        <link href="@Url.VersionedContent(Links.Content.scss.widget_css)" type="text/css" rel="stylesheet">
+        <link href="@Url.VersionedContent(Url.GetThemeCss(theme))" rel="stylesheet" type="text/css"/>
 
         <script type="text/javascript" src="@Url.VersionedContent(Links.Scripts.require_jquery_js)"></script>
         @RenderSection("HeadContent", true)
@@ -23,27 +45,6 @@
     </head>
 
     <body>
-        @{
-            var loginText = Worki.Resources.Views.Shared.SharedString.LogIn;
-            if (Request.IsAuthenticated)
-            {
-                loginText = User.Identity.Name;
-                FormsIdentity ident = User.Identity as FormsIdentity;
-                if (ident != null)
-                {
-                    loginText = string.Format(Worki.Resources.Views.Home.HomeString.Welcome + " {0} !", WebHelper.GetIdentityDisplayName(ident));
-                }
-            }
-            var back = Url.RequestContext.HttpContext.Request.UrlReferrer != null ? Url.RequestContext.HttpContext.Request.UrlReferrer.PathAndQuery : null;
-
-            var theme = Url.GetQueryParam(MiscHelpers.WidgetConstants.Theme);
-            if (string.IsNullOrEmpty(theme))
-            {
-                theme = "swc";
-                //theme = "eworky-widget";
-            }
-        }
-
         @*<div style="width:750px;">*@
         <div class="@theme" style="width:750px;">       
             <div id="login-container">

@@ -333,6 +333,18 @@
     <Content Include="Content\colorbox.min.css">
       <DependentUpon>colorbox.css</DependentUpon>
     </Content>
+    <Content Include="Content\scss\widget-eworky.css">
+      <DependentUpon>widget-eworky.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\widget-eworky.min.css">
+      <DependentUpon>widget-eworky.css</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\widget-swc.css">
+      <DependentUpon>widget-swc.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\widget-swc.min.css">
+      <DependentUpon>widget-swc.css</DependentUpon>
+    </Content>
     <Content Include="Content\scss\widget.css">
       <DependentUpon>widget.scss</DependentUpon>
     </Content>
@@ -888,6 +900,9 @@
     <Content Include="Areas\Widget\Views\Intermediate\Index.cshtml" />
     <Content Include="Areas\Widget\Views\Intermediate\_ViewStart.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
+    <None Include="Content\scss\widget-eworky.scss" />
+    <None Include="Content\scss\_widget-mixins.scss" />
+    <None Include="Content\scss\widget-swc.scss" />
     <None Include="Content\scss\widget.scss" />
     <None Include="Content\scss\responsive.scss" />
     <None Include="Content\scss\_accordion.scss" />

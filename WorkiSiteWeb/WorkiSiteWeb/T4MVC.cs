@@ -765,10 +765,17 @@ namespace Links {
             public static readonly string _utilities_scss = Url("_utilities.scss");
             public static readonly string _variables_scss = Url("_variables.scss");
             public static readonly string _wells_scss = Url("_wells.scss");
+            public static readonly string _widget_mixins_scss = Url("_widget-mixins.scss");
             public static readonly string bootstrap_scss = Url("bootstrap.scss");
             public static readonly string bootstrap_css = Url("bootstrap.css");
             public static readonly string responsive_scss = Url("responsive.scss");
             public static readonly string responsive_css = Url("responsive.css");
+            public static readonly string widget_eworky_scss = Url("widget-eworky.scss");
+            public static readonly string widget_eworky_css = Url("widget-eworky.css");
+            public static readonly string widget_eworky_min_css = Url("widget-eworky.min.css");
+            public static readonly string widget_swc_scss = Url("widget-swc.scss");
+            public static readonly string widget_swc_css = Url("widget-swc.css");
+            public static readonly string widget_swc_min_css = Url("widget-swc.min.css");
             public static readonly string widget_scss = Url("widget.scss");
             public static readonly string widget_css = Url("widget.css");
             public static readonly string widget_min_css = Url("widget.min.css");

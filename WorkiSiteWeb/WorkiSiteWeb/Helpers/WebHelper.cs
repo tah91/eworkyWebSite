@@ -347,5 +347,20 @@ namespace Worki.Web.Helpers
         }
 
 		#endregion
-	}
+
+        #region Theme
+
+        public static string GetThemeCss(this UrlHelper html, string theme)
+        {
+            switch (theme)
+            {
+                case MiscHelpers.WidgetConstants.SwcClass:
+                    return Links.Content.scss.widget_swc_css;
+                case MiscHelpers.WidgetConstants.EworkyClass:
+                default:
+                    return Links.Content.scss.widget_eworky_css;
+            }
+        }
+        #endregion
+    }
 }

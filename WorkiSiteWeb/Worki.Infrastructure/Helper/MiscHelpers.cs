@@ -206,9 +206,31 @@ namespace Worki.Infrastructure.Helpers
 
         public static class WidgetConstants
         {
+            #region Widget kind
+
+            public const string KindFinder = "finder";
+            public const string KindFinderFiltered = "finder-filtered";
+            public const string KindDetail = "detail";
+
+            #endregion
+
+            #region Data Keys
+
             public const string Theme = "theme";
             public const string AppKey = "app-key";
-            public const string ParamToKeep = "theme,app-key";
+            public const string Type = "filter-type";
+            public const string Country = "filter-country";
+            public const string ItemId = "item-id";
+            public const string ParamToKeep = "theme,app-key,filter-type,filter-country,item-id";
+
+            #endregion
+
+            #region Themes
+
+            public const string EworkyClass = "eworky-widget";
+            public const string SwcClass = "swc";
+
+            #endregion
         }
 
         /// <summary>

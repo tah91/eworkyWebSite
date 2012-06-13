@@ -1,0 +1,110 @@
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    display: table;
+    content: ""; }
+  .clearfix:after {
+    clear: both; }
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0; }
+
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/*************************************************/
+/*Variables*/
+/*************************************************/
+/*************************************************/
+/*Mixins*/
+/*************************************************/
+/*************************************************/
+/*SWC style*/
+/*************************************************/
+a {
+  color: #3b9505; }
+
+a:hover {
+  color: #4ba90a;
+  text-decoration: none; }
+
+.swc .blue {
+  color: #3b9505; }
+  .swc .blue:hover {
+    color: #3b9505; }
+  .swc .blue a, .swc .blue a:hover {
+    color: #3b9505; }
+.swc .orange {
+  color: #363c42; }
+  .swc .orange:hover {
+    color: #363c42; }
+  .swc .orange a, .swc .orange a:hover {
+    color: #363c42; }
+.swc .dark-blue {
+  color: #2c3c4c; }
+  .swc .dark-blue:hover {
+    color: #2c3c4c; }
+  .swc .dark-blue a, .swc .dark-blue a:hover {
+    color: #2c3c4c; }
+.swc [class^="icon-"], .swc [class*=" icon-"] {
+  vertical-align: -15%; }
+.swc .modal-open .dropdown-menu {
+  z-index: 1030; }
+.swc .modal form {
+  margin: 0; }
+.swc .btn-primary {
+  background-color: #419d07;
+  background-image: -ms-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3b9505), to(#4ba90a));
+  background-image: -webkit-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: -o-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: -moz-linear-gradient(top, #3b9505, #4ba90a);
+  background-image: linear-gradient(top, #3b9505, #4ba90a);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3b9505', endColorstr='#4ba90a', GradientType=0);
+  border-color: #4ba90a #4ba90a #2b6106;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #4ba90a;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .swc .btn-primary:hover, .swc .btn-primary:active, .swc .btn-primary.active, .swc .btn-primary.disabled, .swc .btn-primary[disabled] {
+    background-color: #4ba90a;
+    *background-color: #409109; }
+  .swc .btn-primary:active, .swc .btn-primary.active {
+    background-color: #367907 \9; }
+.swc .btn-warning {
+  background-color: #444a50;
+  background-image: -ms-linear-gradient(top, #363c42, #595f65);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#363c42), to(#595f65));
+  background-image: -webkit-linear-gradient(top, #363c42, #595f65);
+  background-image: -o-linear-gradient(top, #363c42, #595f65);
+  background-image: -moz-linear-gradient(top, #363c42, #595f65);
+  background-image: linear-gradient(top, #363c42, #595f65);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#363c42', endColorstr='#595f65', GradientType=0);
+  border-color: #595f65 #595f65 #35393c;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #595f65;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .swc .btn-warning:hover, .swc .btn-warning:active, .swc .btn-warning.active, .swc .btn-warning.disabled, .swc .btn-warning[disabled] {
+    background-color: #595f65;
+    *background-color: #4d5257; }
+  .swc .btn-warning:active, .swc .btn-warning.active {
+    background-color: #41464a \9; }
+.swc .label-info, .swc .badge-info {
+  background-color: #3b9505; }
+.swc .label-warning, .swc .badge-warning {
+  background-color: #363c42; }
+.swc .well {
+  background: #f9f9f9; }

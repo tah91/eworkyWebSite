@@ -1,0 +1,110 @@
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    display: table;
+    content: ""; }
+  .clearfix:after {
+    clear: both; }
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0; }
+
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/*************************************************/
+/*Variables*/
+/*************************************************/
+/*************************************************/
+/*Mixins*/
+/*************************************************/
+/*************************************************/
+/*Override style*/
+/*************************************************/
+a {
+  color: #5dafde; }
+
+a:hover {
+  color: #379ed6;
+  text-decoration: none; }
+
+.eworky-widget .blue {
+  color: #5dafde; }
+  .eworky-widget .blue:hover {
+    color: #5dafde; }
+  .eworky-widget .blue a, .eworky-widget .blue a:hover {
+    color: #5dafde; }
+.eworky-widget .orange {
+  color: #f88f1e; }
+  .eworky-widget .orange:hover {
+    color: #f88f1e; }
+  .eworky-widget .orange a, .eworky-widget .orange a:hover {
+    color: #f88f1e; }
+.eworky-widget .dark-blue {
+  color: #2c3c4c; }
+  .eworky-widget .dark-blue:hover {
+    color: #2c3c4c; }
+  .eworky-widget .dark-blue a, .eworky-widget .dark-blue a:hover {
+    color: #2c3c4c; }
+.eworky-widget [class^="icon-"], .eworky-widget [class*=" icon-"] {
+  vertical-align: -15%; }
+.eworky-widget .modal-open .dropdown-menu {
+  z-index: 1030; }
+.eworky-widget .modal form {
+  margin: 0; }
+.eworky-widget .btn-primary {
+  background-color: #4da8da;
+  background-image: -ms-linear-gradient(top, #5dafde, #379ed6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5dafde), to(#379ed6));
+  background-image: -webkit-linear-gradient(top, #5dafde, #379ed6);
+  background-image: -o-linear-gradient(top, #5dafde, #379ed6);
+  background-image: -moz-linear-gradient(top, #5dafde, #379ed6);
+  background-image: linear-gradient(top, #5dafde, #379ed6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5dafde', endColorstr='#379ed6', GradientType=0);
+  border-color: #379ed6 #379ed6 #2173a0;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #379ed6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .eworky-widget .btn-primary:hover, .eworky-widget .btn-primary:active, .eworky-widget .btn-primary.active, .eworky-widget .btn-primary.disabled, .eworky-widget .btn-primary[disabled] {
+    background-color: #379ed6;
+    *background-color: #2991ca; }
+  .eworky-widget .btn-primary:active, .eworky-widget .btn-primary.active {
+    background-color: #2582b5 \9; }
+.eworky-widget .btn-warning {
+  background-color: #f89518;
+  background-image: -ms-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f88f1e), to(#f99e10));
+  background-image: -webkit-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: -o-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: -moz-linear-gradient(top, #f88f1e, #f99e10);
+  background-image: linear-gradient(top, #f88f1e, #f99e10);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88f1e', endColorstr='#f99e10', GradientType=0);
+  border-color: #f99e10 #f99e10 #b87205;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #f99e10;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .eworky-widget .btn-warning:hover, .eworky-widget .btn-warning:active, .eworky-widget .btn-warning.active, .eworky-widget .btn-warning.disabled, .eworky-widget .btn-warning[disabled] {
+    background-color: #f99e10;
+    *background-color: #ea9106; }
+  .eworky-widget .btn-warning:active, .eworky-widget .btn-warning.active {
+    background-color: #d18105 \9; }
+.eworky-widget .label-info, .eworky-widget .badge-info {
+  background-color: #5dafde; }
+.eworky-widget .label-warning, .eworky-widget .badge-warning {
+  background-color: #f88f1e; }
+.eworky-widget .well {
+  background: #f9f9f9; }

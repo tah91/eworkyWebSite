@@ -10,16 +10,20 @@ using Worki.Infrastructure;
 using Worki.Data.Models;
 using Worki.Infrastructure.Repository;
 using Worki.Infrastructure.Helpers;
+using Worki.Web.Helpers;
 
 namespace Worki.Web.Areas.Widget.Controllers
 {
     public partial class IntermediateController : ControllerBase
     {
+        ISearchService _SearchService;
+
         public IntermediateController(  ILogger logger,
-                                        IObjectStore objectStore)
+                                        IObjectStore objectStore,
+                                        ISearchService searchService)
             : base(logger, objectStore)
         {
-
+            _SearchService = searchService;
         }
 
         /// <summary>
@@ -42,10 +46,10 @@ namespace Worki.Web.Areas.Widget.Controllers
         {
             switch (kind)
             {
-                case "detail":
+                case MiscHelpers.WidgetConstants.KindDetail:
                     {
                         int id;
-                        if (int.TryParse(Request.QueryString["item-id"], out id))
+                        if (int.TryParse(Url.GetQueryParam(MiscHelpers.WidgetConstants.ItemId), out id))
                         {
                             return RedirectToAction(MVC.Widget.Localisation.Detail(id));
                         }
@@ -54,7 +58,15 @@ namespace Worki.Web.Areas.Widget.Controllers
                             return RedirectToAction(MVC.Widget.Localisation.Index());
                         }
                     }
-                case "finder":
+                case MiscHelpers.WidgetConstants.KindFinderFiltered:
+                    {
+                        var type = Url.GetQueryParam(MiscHelpers.WidgetConstants.Type);
+                        var country = Url.GetQueryParam(MiscHelpers.WidgetConstants.Country);
+                        var criteria = new SearchCriteria();
+                        var rvd = _SearchService.GetRVD(criteria);
+                        return RedirectToAction(MVC.Widget.Localisation.ActionNames.SearchResult, rvd);
+                    }
+                case MiscHelpers.WidgetConstants.KindFinder:
                 default:
                     return RedirectToAction(MVC.Widget.Localisation.Index());
             }

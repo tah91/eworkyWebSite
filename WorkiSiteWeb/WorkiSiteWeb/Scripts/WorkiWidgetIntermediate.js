@@ -1,4 +1,9 @@
 ﻿var iframe;
+if (typeof String.prototype.startsWith != 'function') {
+    String.prototype.startsWith = function (str) {
+        return this.indexOf(str) == 0;
+    };
+}
 var socket = new easyXDM.Socket({
     swf: "../easyxdm.swf",
     onReady: function () {
@@ -11,7 +16,18 @@ var socket = new easyXDM.Socket({
         iframe.name = easyXDM.query.name;
         iframe.scrolling = "no";
         document.body.appendChild(iframe);
-        iframe.src = easyXDM.query.url + '?kind=' + easyXDM.query.kind + '&countries=' + easyXDM.query.countries + '&type=' + easyXDM.query.type;
+
+        var query = '?';
+        for (var param in easyXDM.query) {
+            if (param == 'url')
+                continue;
+            if (param.startsWith('xdm'))
+                continue;
+            query += param + "=" + easyXDM.query[param] + '&';
+        }
+        query = query.replace(/(\s+)?.$/, "");
+        alert(query);
+        iframe.src = easyXDM.query.url + query;
 
         var timer;
         iframe.onload = function () {

@@ -1,0 +1,93 @@
+// Widget variables and mixins
+@import "mixins";
+
+/*************************************************/
+/*Variables*/
+/*************************************************/
+
+$blue: #5dafde;
+$blueh: #379ED6;
+$orange: #f88f1e;
+$orangeh: #F99E10;
+$darkBlue: #2C3C4C;
+$lightColor: #f9f9f9;
+
+/*************************************************/
+/*Mixins*/
+/*************************************************/
+
+@mixin text-color($color) {
+	color: $color;
+
+	&:hover
+	{
+		color: $color;
+	}
+
+	a, a:hover 
+	{	
+		color: $color;
+	}
+}
+
+@mixin override-theme($color1, $color1h, $color2, $color2h) {
+
+	$btnPrimaryBackground:              $color1;
+	$btnPrimaryBackgroundHighlight:     $color1h;
+
+	$btnWarningBackground:              $color2;
+	$btnWarningBackgroundHighlight:     $color2h;
+
+	.blue
+	{
+		@include text-color($color1);
+	}
+
+	.orange
+	{
+		@include text-color($color2);
+	}
+
+	.dark-blue
+	{
+		@include text-color($darkBlue);
+	}
+
+	[class^="icon-"], [class*=" icon-"] 
+	{
+		vertical-align: -15%;
+	}
+
+	.modal-open .dropdown-menu 
+	{
+		z-index: 1030;
+	}
+
+	.modal form
+	{
+		margin: 0;
+	}
+
+	.btn-primary {
+		@include buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
+	}
+	
+	.btn-warning {
+		@include buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
+	}
+
+	.label-info, .badge-info 
+	{
+		background-color: $color1;
+	}
+
+	.label-warning, .badge-warning
+	{
+		background-color: $color2;
+	}
+
+	.well
+	{
+		background: $lightColor;
+	}
+}

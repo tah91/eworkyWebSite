@@ -1,0 +1,26 @@
+// Core variables and mixins
+@import "widget-mixins";
+
+/*************************************************/
+/*SWC style*/
+/*************************************************/
+$swcgreen: #3b9505;
+$swcgreenh: #4ba90a;
+$swcgray: #363c42;
+$swcgrayh: #595f65;
+
+a
+{
+	color: $swcgreen;
+}
+
+a:hover
+{
+	color: $swcgreenh;
+	text-decoration:none;
+}
+
+.swc
+{
+	@include override-theme($swcgreen, $swcgreenh ,$swcgray, $swcgrayh);
+}

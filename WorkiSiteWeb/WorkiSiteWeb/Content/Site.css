@@ -2597,7 +2597,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl
 
 .separatorCol
 {
-    padding: inherit !important;;
+    padding: inherit !important;
     border: none !important;
     width: 20px !important;
     content:normal;
