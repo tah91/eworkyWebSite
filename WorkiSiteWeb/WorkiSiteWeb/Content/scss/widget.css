@@ -67,6 +67,16 @@ li {
     width: 32px;
     height: 32px; }
 
+.powered {
+  margin: 5px 0;
+  font-size: 0.8em; }
+  .powered a, .powered a:hover {
+    vertical-align: bottom;
+    color: #a8b8b8; }
+
+.modal-open .dropdown-menu {
+  z-index: 1030; }
+
 /*************************************************/
 /*Index style*/
 /*************************************************/

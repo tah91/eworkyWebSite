@@ -651,6 +651,7 @@ namespace Links {
             public static readonly string listing_png = Url("listing.png");
             public static readonly string loaderbig_gif = Url("loaderbig.gif");
             public static readonly string loading_gif = Url("loading.gif");
+            public static readonly string logo_small_png = Url("logo-small.png");
             public static readonly string logo_png = Url("logo.png");
             public static readonly string logo_footer_png = Url("logo_footer.png");
             public static readonly string logoMobile_png = Url("logoMobile.png");

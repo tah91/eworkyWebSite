@@ -58,12 +58,28 @@ namespace Worki.Data.Models
 					select localisation).ToList();
 		}
 
+        void FilterList(SearchCriteria.Filter filter, ref IQueryable<Localisation> localisations)
+        {
+            if (filter == null)
+                return;
+
+            var countries = filter.GetCountries();
+            if (countries.Count() > 0)
+                localisations = localisations.Where(loc => countries.Contains(loc.CountryId));
+
+            var types = filter.GetTypes();
+            if (types.Count() > 0)
+                localisations = localisations.Where(loc => types.Contains(loc.TypeValue));
+        }
+
         public void FillCriteriaProjection(SearchCriteria criteria)
         {
             //all
             var localisations = _Context.Localisations.AsQueryable();
             //exclude offline ones
             localisations = localisations.Where(loc => loc.MainLocalisation != null && !loc.MainLocalisation.IsOffline);
+
+            FilterList(criteria.PreFilter, ref localisations);
 
             var factor = CultureHelpers.GetDistanceFactor();
 

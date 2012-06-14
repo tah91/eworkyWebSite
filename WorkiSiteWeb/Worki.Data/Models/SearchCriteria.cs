@@ -10,6 +10,29 @@ namespace Worki.Data.Models
 {
     public class SearchCriteria
     {
+        /// <summary>
+        /// class used to prefilter widget
+        /// </summary>
+        public class Filter
+        {
+            public IEnumerable<string> GetCountries()
+            {
+                if (string.IsNullOrEmpty(Countries))
+                    return new List<string>();
+                return Countries.Split(',').ToList();
+            }
+
+            public IEnumerable<int> GetTypes()
+            {
+                if (string.IsNullOrEmpty(Types))
+                    return new List<int>();
+                return Types.Split(',').Select(t => (int)Localisation.GetLocalisationType(t)).ToList();
+            }
+
+            public string Countries { get; set; }
+            public string Types { get; set; }
+        }
+
         #region Ctor
 
         public SearchCriteria()
@@ -110,6 +133,12 @@ namespace Worki.Data.Models
                 toRet[display] = true;
             }
 
+            if (PreFilter != null)
+            {
+                toRet[MiscHelpers.WidgetConstants.Country] = PreFilter.Countries;
+                toRet[MiscHelpers.WidgetConstants.Type] = PreFilter.Types;
+            }
+
             return toRet;
         }
 
@@ -188,6 +217,7 @@ namespace Worki.Data.Models
 		public eResultView ResultView { get; set; }
         public int Page { get; set; }
         public IEnumerable<LocalisationProjection> Projection { get; set; }
+        public Filter PreFilter { get; set; }
 
 		public float NorthEastLat { get; set; }
 		public float NorthEastLng { get; set; }
@@ -204,7 +234,6 @@ namespace Worki.Data.Models
         ePerName
     }
 
-    /* Enum of the different ordered type */
     public enum eOrderBy
     {
         Rating,

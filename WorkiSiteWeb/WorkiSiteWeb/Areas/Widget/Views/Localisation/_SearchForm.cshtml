@@ -13,6 +13,8 @@
             @Html.HiddenFor(model => model.Criteria.ResultView)
 		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Latitude)
 		    @Html.HiddenFor(model => model.Criteria.LocalisationData.Longitude)
+            @Html.HiddenFor(model => model.Criteria.PreFilter.Countries)
+            @Html.HiddenFor(model => model.Criteria.PreFilter.Types)
 
             @Html.LabelFor(Worki.Resources.Views.Home.HomeString.Where, "Criteria_Place", null, "bold darkBlue")
 		    @Html.TextBoxFor(model => model.Criteria.Place, new { placeHolder = Worki.Resources.Views.Home.HomeString.ExampleLocation, @class = "span12" })

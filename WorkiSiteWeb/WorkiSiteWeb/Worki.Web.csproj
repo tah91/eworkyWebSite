@@ -333,6 +333,7 @@
     <Content Include="Content\colorbox.min.css">
       <DependentUpon>colorbox.css</DependentUpon>
     </Content>
+    <Content Include="Content\images\logo-small.png" />
     <Content Include="Content\scss\widget-eworky.css">
       <DependentUpon>widget-eworky.scss</DependentUpon>
     </Content>

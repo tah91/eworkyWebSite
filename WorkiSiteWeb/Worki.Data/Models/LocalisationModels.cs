@@ -116,6 +116,39 @@ namespace Worki.Data.Models
 			(int)LocalisationType.SharedOffice
         };
 
+        public static LocalisationType GetLocalisationType(string seoType)
+        {
+            switch (seoType)
+            {
+                case MiscHelpers.SeoConstants.SpotWifi:
+                    return LocalisationType.SpotWifi;
+                case MiscHelpers.SeoConstants.CoffeeResto:
+                    return LocalisationType.CoffeeResto;
+                case MiscHelpers.SeoConstants.Biblio:
+                    return LocalisationType.Biblio;
+                case MiscHelpers.SeoConstants.PublicSpace:
+                    return LocalisationType.PublicSpace;
+                case MiscHelpers.SeoConstants.TravelerSpace:
+                    return LocalisationType.TravelerSpace;
+                case MiscHelpers.SeoConstants.Hotel:
+                    return LocalisationType.Hotel;
+                case MiscHelpers.SeoConstants.Telecentre:
+                    return LocalisationType.Telecentre;
+                case MiscHelpers.SeoConstants.BuisnessCenter:
+                    return LocalisationType.BuisnessCenter;
+                case MiscHelpers.SeoConstants.CoworkingSpace:
+                    return LocalisationType.CoworkingSpace;
+                case MiscHelpers.SeoConstants.WorkingHotel:
+                    return LocalisationType.WorkingHotel;
+                case MiscHelpers.SeoConstants.PrivateArea:
+                    return LocalisationType.PrivateArea;
+                case MiscHelpers.SeoConstants.SharedOffice:
+                    return LocalisationType.SharedOffice;
+                default:
+                    return LocalisationType.SpotWifi;
+            }
+        }
+
         public static string GetLocalisationSeoType(int type)
         {
             var enumType = (LocalisationType)type;

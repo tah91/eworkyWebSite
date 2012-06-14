@@ -26,14 +26,17 @@ var socket = new easyXDM.Socket({
             query += param + "=" + easyXDM.query[param] + '&';
         }
         query = query.replace(/(\s+)?.$/, "");
-        alert(query);
+        //alert(query);
         iframe.src = easyXDM.query.url + query;
 
+        computeHeight = function (d) {
+            var height = d.body.clientHeight || d.body.offsetHeight || d.body.scrollHeight;
+            return height + 10;
+        }
         var timer;
         iframe.onload = function () {
             var d = iframe.contentWindow.document;
-            var originalHeight = d.body.clientHeight || d.body.offsetHeight || d.body.scrollHeight;
-
+            var originalHeight = computeHeight(d);
             // We want to monitor the document for resize events in case of the use of accordions and such,
             // but unfortunately only the window node emits the resize event, and we need the body's.
             // The only solution then is to use polling..
@@ -43,7 +46,7 @@ var socket = new easyXDM.Socket({
                 timer = setInterval(function () {
                     try {
                         var d = iframe.contentWindow.document;
-                        var newHeight = d.body.clientHeight || d.body.offsetHeight || d.body.scrollHeight;
+                        var newHeight = computeHeight(d);
                         if (newHeight != originalHeight) {
                             // The height has changed since last we checked
                             originalHeight = newHeight;

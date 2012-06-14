@@ -209,7 +209,7 @@ namespace Worki.Infrastructure.Helpers
             #region Widget kind
 
             public const string KindFinder = "finder";
-            public const string KindFinderFiltered = "finder-filtered";
+            public const string KindFinderFetched = "finder-fetched";
             public const string KindDetail = "detail";
 
             #endregion

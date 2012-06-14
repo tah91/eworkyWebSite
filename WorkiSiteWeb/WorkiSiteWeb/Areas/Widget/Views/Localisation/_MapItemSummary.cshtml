@@ -6,9 +6,7 @@
             @RazorHelpers.CenterImage(ControllerHelpers.GetUserImagePath(Model.GetMainPic(), true), Links.Content.images.no_image_png, Model.Name)
         </div>
         <div class="span6">
-            <p class="bold">
-                @Html.ActionLink(Model.Name, MVC.Widget.Localisation.Detail(Model.ID))
-            </p>
+            @Html.ActionLink(Model.Name, MVC.Widget.Localisation.Detail(Model.ID), new { @class = "bold" })
             <p class="bold orange">@Localisation.GetLocalisationType(Model.TypeValue)</p>
             <div>
                 @Html.TruncateAtWord(Model.GetDescription(), 100)

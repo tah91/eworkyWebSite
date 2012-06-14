@@ -223,6 +223,19 @@ namespace Worki.Service
             {
                 criteria.OfferData.OfferFeatures.Add(new OfferFeature { FeatureId = key });
             }
+
+            var countries = "";
+            var types = "";
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.WidgetConstants.Country, ref value))
+                countries = value;
+            if (MiscHelpers.GetRequestValue(parameters, MiscHelpers.WidgetConstants.Type, ref value))
+                types = value;
+
+            if (!string.IsNullOrEmpty(countries) || !string.IsNullOrEmpty(types))
+            {
+                criteria.PreFilter = new SearchCriteria.Filter { Countries = countries, Types = types };
+            }
+
             return criteria;
         }
 

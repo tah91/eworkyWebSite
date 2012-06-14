@@ -58,13 +58,13 @@ namespace Worki.Web.Areas.Widget.Controllers
                             return RedirectToAction(MVC.Widget.Localisation.Index());
                         }
                     }
-                case MiscHelpers.WidgetConstants.KindFinderFiltered:
+                case MiscHelpers.WidgetConstants.KindFinderFetched:
                     {
-                        var type = Url.GetQueryParam(MiscHelpers.WidgetConstants.Type);
-                        var country = Url.GetQueryParam(MiscHelpers.WidgetConstants.Country);
-                        var criteria = new SearchCriteria();
+                        //var place = Url.GetQueryParam(MiscHelpers.SeoConstants.Place);
+                        //var country = Url.GetQueryParam(MiscHelpers.WidgetConstants.Country);
+                        var criteria = _SearchService.GetCriteria(Request);
                         var rvd = _SearchService.GetRVD(criteria);
-                        return RedirectToAction(MVC.Widget.Localisation.ActionNames.SearchResult, rvd);
+                        return RedirectToAction(MVC.Widget.Localisation.ActionNames.SearchResult, MVC.Widget.Localisation.Name, rvd);
                     }
                 case MiscHelpers.WidgetConstants.KindFinder:
                 default:

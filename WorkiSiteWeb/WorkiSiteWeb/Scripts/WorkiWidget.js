@@ -1,12 +1,13 @@
-﻿var eworkyClass = function () {
+﻿var root = 'http://taff2.coworky.fr';
+var eworkyClass = function () {
     this.initialize.apply(this, arguments)
 };
 eworkyClass.prototype = {
     initialize: function () {
         this.widgetDict = {};
-        this.root = 'http://taff2.coworky.fr';
-        this.iframeIntermediateDomain = this.root + '/widget/intermediate';
-        this.iframeDomain = this.root + '/widget/intermediate/dispatch';
+        //this.root = 'http://taff2.coworky.fr';
+        this.iframeIntermediateDomain = root + '/widget/intermediate';
+        this.iframeDomain = root + '/widget/intermediate/dispatch';
     },
     postInitialize: function () {
         this.initializeWidgets()
@@ -223,4 +224,4 @@ var initializeFrames = function () {
     eworkyUtils.bindReady();
 };
 
-loadScript("http://taff2.coworky.fr/Scripts/easyXDM.js", initializeFrames);
+loadScript(root + '/Scripts/easyXDM.js', initializeFrames);

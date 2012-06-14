@@ -74,7 +74,7 @@ namespace Worki.Web.Areas.Widget.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult Index()
         {
-            var criteria = new SearchCriteria(true);
+            var criteria = _SearchService.GetCriteria(Request);
             return View(new SearchCriteriaFormViewModel(criteria));
         }
 
