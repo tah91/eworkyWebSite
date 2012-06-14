@@ -2762,6 +2762,16 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public System.Web.Mvc.ActionResult ActivatedBO() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.ActivatedBO);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult MemberWithApi() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.MemberWithApi);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DeleteMemberApi() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DeleteMemberApi);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MemberController Actions { get { return MVC.Admin.Member; } }
@@ -2785,6 +2795,9 @@ namespace Worki.Web.Areas.Admin.Controllers {
             public readonly string Leaderboard = "Leaderboard";
             public readonly string PendingBO = "PendingBO";
             public readonly string ActivatedBO = "ActivatedBO";
+            public readonly string MemberWithApi = "MemberWithApi";
+            public readonly string CreateMemberApi = "CreateMemberApi";
+            public readonly string DeleteMemberApi = "DeleteMemberApi";
         }
 
 
@@ -2795,8 +2808,10 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public class ViewNames {
             public readonly string ActivatedBO = "~/Areas/Admin/Views/Member/ActivatedBO.cshtml";
             public readonly string Admins = "~/Areas/Admin/Views/Member/Admins.cshtml";
+            public readonly string CreateMemberApi = "~/Areas/Admin/Views/Member/CreateMemberApi.cshtml";
             public readonly string IndexOwner = "~/Areas/Admin/Views/Member/IndexOwner.cshtml";
             public readonly string IndexUser = "~/Areas/Admin/Views/Member/IndexUser.cshtml";
+            public readonly string MemberWithApi = "~/Areas/Admin/Views/Member/MemberWithApi.cshtml";
             public readonly string PendingBO = "~/Areas/Admin/Views/Member/PendingBO.cshtml";
             public readonly string supprimer_utilisateur = "~/Areas/Admin/Views/Member/supprimer-utilisateur.cshtml";
             public readonly string UsersLeaderboard = "~/Areas/Admin/Views/Member/UsersLeaderboard.cshtml";
@@ -2874,6 +2889,29 @@ namespace Worki.Web.Areas.Admin.Controllers {
         public override System.Web.Mvc.ActionResult ActivatedBO(int? page) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ActivatedBO);
             callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult MemberWithApi(int? page) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MemberWithApi);
+            callInfo.RouteValueDictionary.Add("page", page);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreateMemberApi() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateMemberApi);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CreateMemberApi(Worki.Data.Models.User formModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateMemberApi);
+            callInfo.RouteValueDictionary.Add("formModel", formModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult DeleteMemberApi(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DeleteMemberApi);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 

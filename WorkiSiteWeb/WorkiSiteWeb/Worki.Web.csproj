@@ -900,6 +900,8 @@
     <Content Include="Areas\Widget\Views\Localisation\_CreateBooking.cshtml" />
     <Content Include="Areas\Widget\Views\Intermediate\Index.cshtml" />
     <Content Include="Areas\Widget\Views\Intermediate\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\MemberWithApi.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\CreateMemberApi.cshtml" />
     <None Include="Content\scss\bootstrap.scss" />
     <None Include="Content\scss\widget-eworky.scss" />
     <None Include="Content\scss\_widget-mixins.scss" />

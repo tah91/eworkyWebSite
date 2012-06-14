@@ -45,6 +45,7 @@ namespace Worki.Data.Models
         public decimal TaxRate { get; set; }
         public int BOStatus { get; set; }
         public string Address { get; set; }
+        public string ApiKey { get; set; }
     
         // Navigation properties
     

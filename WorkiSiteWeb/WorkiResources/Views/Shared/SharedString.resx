@@ -309,4 +309,7 @@
   <data name="ContactMail" xml:space="preserve">
     <value>contact@eworky.com</value>
   </data>
+  <data name="Create" xml:space="preserve">
+    <value>Créer</value>
+  </data>
 </root>

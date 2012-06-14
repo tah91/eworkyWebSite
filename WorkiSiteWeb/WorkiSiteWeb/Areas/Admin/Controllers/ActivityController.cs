@@ -86,7 +86,6 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="page">id of the WelcomePeople</param>
         /// <returns>The action result.</returns>
-        [Authorize]
         public virtual ActionResult DetailWelcomePeople(int id)
         {
             var context = ModelFactory.GetUnitOfWork();
@@ -104,7 +103,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// Prepares a web page containing the form to create a new WelcomePeople
         /// </summary>
         /// <returns>The action result.</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult CreateWelcomePeople()
         {
             return View(new WelcomePeopleFormViewModel());
@@ -115,7 +114,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="welcomePeople">data from the form</param>
         /// <returns>redirect to index</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public virtual ActionResult CreateWelcomePeople(WelcomePeopleFormViewModel formModel)
         {
@@ -162,7 +161,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of the welcomePeople to edit</param>
         /// <returns>the form</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult EditWelcomePeople(int id)
         {
             var context = ModelFactory.GetUnitOfWork();
@@ -181,7 +180,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="welcomePeople">data from the form</param>
         /// <returns>redirect to index</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public virtual ActionResult EditWelcomePeople(int id, WelcomePeopleFormViewModel formModel)
         {
@@ -352,7 +351,6 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="page">id of the Press</param>
         /// <returns>The action result.</returns>
-        [Authorize]
         public virtual ActionResult DetailPress(int id)
         {
             var context = ModelFactory.GetUnitOfWork();
@@ -371,7 +369,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// Prepares a web page containing the form to create a new Press
         /// </summary>
         /// <returns>The action result.</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult CreatePress()
         {
             return View(new Press());
@@ -382,7 +380,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="press">data from the form</param>
         /// <returns>redirect to index</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public virtual ActionResult CreatePress(Press formModel)
         {
@@ -413,7 +411,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id">id of the press to edit</param>
         /// <returns>the form</returns>
-        [AcceptVerbs(HttpVerbs.Get), Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult EditPress(int id)
         {
             var context = ModelFactory.GetUnitOfWork();
@@ -433,7 +431,7 @@ namespace Worki.Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="press">data from the form</param>
         /// <returns>redirect to index</returns>
-        [AcceptVerbs(HttpVerbs.Post), Authorize]
+        [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public virtual ActionResult EditPress(int id, Press formModel)
         {

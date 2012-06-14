@@ -1,0 +1,53 @@
+﻿@model Worki.Data.Models.User
+
+@section HeadContent
+{
+    <title>@Html.WorkiTitle(Worki.Resources.Menu.Menu.MemberWithApi) </title>
+    <link href="@Url.VersionedContent(Links.Content.Admin_min_css)" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial(MVC.Admin.Shared.Views._AdminMenu, AdminMenu.Member)
+
+<div class="detailContent">
+
+	<div class="blockContainer float-left">
+    @Html.Partial(MVC.Shared.Views._VerticalMenu, new List<MenuItem> 
+		{
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Members, MVC.Admin.Member.IndexUser())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.TopMember, MVC.Admin.Member.Leaderboard())} ,
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Admins, MVC.Admin.Member.AdminList())},
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.Owner, MVC.Admin.Member.IndexOwner())},
+			new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.PendingBO, MVC.Admin.Member.PendingBO())},
+            new MenuItem{ Link= Html.ActionLink(Worki.Resources.Menu.Menu.ActivatedBO, MVC.Admin.Member.ActivatedBO())},
+            new MenuItem{ Selected = true, Link= Html.ActionLink(Worki.Resources.Menu.Menu.MemberWithApi, MVC.Admin.Member.MemberWithApi())}
+		})
+	</div>
+
+	<div class="blockContainer float-left adminDetailBlock">
+		@using (Html.BeginForm())
+        {
+            <div class="contentBlock">
+            @Html.AntiForgeryToken()
+            <table>
+				<tr>
+                    <td>
+                        <div class="editor-label">
+                            @Worki.Resources.Views.Admin.AdminString.EmailAddress
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.UserName)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <div class="float-right">
+                <input type="submit" class="buttonStd buttonBlue margint10" value="@Worki.Resources.Views.Shared.SharedString.Send"/>
+            </div>
+            <div class="clear"></div>
+        }
+	</div>
+	<div class="clear"></div>
+</div>

@@ -332,5 +332,98 @@ namespace Worki.Web.Areas.Admin.Controllers
         }
 
         #endregion
+
+        #region Member API
+
+        public virtual ActionResult MemberWithApi(int? page)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            int pageValue = page ?? 1;
+            var members = mRepo.GetMany(m => !string.IsNullOrEmpty(m.MemberMainData.ApiKey));
+            var viewModel = new PagingList<Member>()
+            {
+                List = members.Skip((pageValue - 1) * MiscHelpers.Constants.PageSize).Take(MiscHelpers.Constants.PageSize).ToList(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageValue,
+                    ItemsPerPage = MiscHelpers.Constants.PageSize,
+                    TotalItems = members.Count()
+                }
+            };
+            return View(viewModel);
+        }
+
+        /// <summary>
+        /// Prepares a web page containing the form to create a new member api
+        /// </summary>
+        /// <returns>The action result.</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult CreateMemberApi()
+        {
+            return View(new User());
+        }
+
+        /// <summary>
+        /// Add the member api from the form to the repository, then redirect to index
+        /// </summary>
+        /// <param name="welcomePeople">data from the form</param>
+        /// <returns>redirect to index</returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult CreateMemberApi(User formModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = ModelFactory.GetUnitOfWork();
+                var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+                try
+                {
+                    var member = mRepo.GetMember(formModel.UserName);
+                    if (member == null)
+                        throw new NullReferenceException();
+
+                    member.MemberMainData.ApiKey = Guid.NewGuid().ToString();
+                    context.Commit();
+
+                    return RedirectToAction(MVC.Admin.Member.MemberWithApi());
+                }
+                catch (Exception ex)
+                {
+                    context.Complete();
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View(formModel);
+        }
+
+        /// <summary>
+        /// Remove the member api from the form to the repository, then redirect to index
+        /// </summary>
+        /// <param name="welcomePeople">data from the form</param>
+        /// <returns>redirect to index</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult DeleteMemberApi(int id)
+        {
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+            try
+            {
+                var member = mRepo.Get(id);
+                if (member == null)
+                    throw new NullReferenceException();
+
+                member.MemberMainData.ApiKey = null;
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                context.Complete();
+                ModelState.AddModelError("", ex.Message);
+            }
+            return RedirectToAction(MVC.Admin.Member.MemberWithApi());
+        }
+
+        #endregion
     }
 }
