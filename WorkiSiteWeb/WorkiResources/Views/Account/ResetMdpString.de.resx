@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>Bitte geben Sie uns Ihre E-Mail-Adresse. Ihre neuen Anmeldeinformationen wurden umgehend an diese E-Mail-Adresse zugeschickt.</value>
+    <value>Bitte geben Sie uns Ihre Email-Adresse. Ihre neuen Anmeldeinformationen wurden umgehend an diese Email-Adresse zugeschickt.</value>
   </data>
 </root>

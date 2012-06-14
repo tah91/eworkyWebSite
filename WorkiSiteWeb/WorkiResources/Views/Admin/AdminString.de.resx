@@ -117,256 +117,259 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url</value>
+  </data>
   <data name="Action" xml:space="preserve">
-    <value>Action</value>
+    <value>Aktion</value>
   </data>
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
   </data>
   <data name="AdminRental" xml:space="preserve">
-    <value>Administration des Locations</value>
+    <value>Mietverwaltung</value>
   </data>
   <data name="AlreadyAdded" xml:space="preserve">
-    <value>&lt;b&gt;Attention : Les lieux de travail suivant n'ont pas été ajoutés car ils existaient déjà dans la base de donnée &lt;br /&gt;&lt;/b&gt; {0}</value>
+    <value>&lt;b&gt;Hinweis : Die folgenden Arbeitsplätze wurden nicht gespeichert, weil sie in der Datenbank schon existierten &lt;br /&gt;&lt;/b&gt; {0}</value>
   </data>
   <data name="AlreadyRegistered" xml:space="preserve">
-    <value>Déjà inscrit</value>
+    <value>Schon eingeschrieben</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value>Retour a la liste</value>
+    <value>Zurück zur Liste</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
-    <value>Confirmer la suppression : </value>
+    <value>Bitte bestätigen Sie die Löschung :</value>
   </data>
   <data name="ConfirmDeletePress" xml:space="preserve">
-    <value>Veuillez confirmer la suppression de l'article :</value>
+    <value>Bitte bestätigen Sie die Löschung dieses Artikels :</value>
   </data>
   <data name="ConfirmDeleteUser" xml:space="preserve">
-    <value>Veuillez confirmer la suppression de l'utilisateur :</value>
+    <value>Bitte bestätigen Sie die Löschung des Benutzers :</value>
   </data>
   <data name="ConfirmDeleteWelcome" xml:space="preserve">
-    <value>Veuillez confirmer la suppression d'une personne de la page d'accueil :</value>
+    <value>Bitte bestätigen Sie die Löschung dieser Person auf der Homepage :</value>
   </data>
   <data name="CreateNewPress" xml:space="preserve">
-    <value>Ajouter un nouvel article</value>
+    <value>Neues Artikel hinzufügen</value>
   </data>
   <data name="CreateNewWelcomePeople" xml:space="preserve">
-    <value>Créer un nouveau profil</value>
+    <value>Neues Profil erschaffen</value>
   </data>
   <data name="CreateWelcomePeople" xml:space="preserve">
-    <value>Créer profil page d'accueil</value>
+    <value>Homepage Profil erschaffen</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Datum</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Supprimer</value>
+    <value>Löschen</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschreibung</value>
   </data>
   <data name="DetailPress" xml:space="preserve">
-    <value>Détail d'un article</value>
+    <value>Detailansicht der Artikel</value>
   </data>
   <data name="DetailWelcomePeople" xml:space="preserve">
-    <value>Détail d'un personne de la page d'accueil</value>
+    <value>Detailansicht der Person von der Homepage</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Editer</value>
+    <value>Bearbeiten</value>
   </data>
   <data name="EditPress" xml:space="preserve">
-    <value>Editer un article</value>
+    <value>Artikel bearbeiten</value>
   </data>
   <data name="EditWelcomePeople" xml:space="preserve">
-    <value>Editer une personne de la page d'accueil</value>
+    <value>Person von der Homepage bearbeiten</value>
   </data>
   <data name="EmailAddress" xml:space="preserve">
-    <value>E-Mail-Adresse</value>
+    <value>Email-Adresse</value>
   </data>
   <data name="FileGotHeader" xml:space="preserve">
-    <value>Le fichier comporte une ligne d'en-tête</value>
-  </data>
-  <data name="ID" xml:space="preserve">
-    <value>ID</value>
+    <value>Die Datei hat eine Kopfzeile</value>
   </data>
   <data name="IndexBooking" xml:space="preserve">
-    <value>Gestion des réservations</value>
+    <value>Reservierungsmanagement</value>
   </data>
   <data name="IndexPress" xml:space="preserve">
-    <value>Gestion des articles</value>
-  </data>
-  <data name="IndexWelcomePeople" xml:space="preserve">
-    <value>Gestion des entrepreneurs stars</value>
+    <value>Artikelmanagement</value>
   </data>
   <data name="InexistingPress" xml:space="preserve">
-    <value>Article Inexistant</value>
+    <value>Artikel nicht gefunden</value>
   </data>
   <data name="IsRegistered" xml:space="preserve">
-    <value>Inscrit(e)</value>
+    <value>Eingeschrieben</value>
   </data>
   <data name="ListPress" xml:space="preserve">
-    <value>Liste des articles répertoriés sur eWorky :</value>
+    <value>Liste der referenzierten Artikel auf eWorky :</value>
   </data>
   <data name="Localisation" xml:space="preserve">
-    <value>Localisation</value>
+    <value>Lokalisierung</value>
   </data>
   <data name="LocalisationPicture" xml:space="preserve">
-    <value>Photo du lieu</value>
+    <value>Foto des Ortes</value>
   </data>
   <data name="LocalisationsAdmin" xml:space="preserve">
-    <value>Gestion de lieux de travail</value>
+    <value>Workplace Management</value>
   </data>
   <data name="ManagerRole" xml:space="preserve">
-    <value>Administrateur</value>
+    <value>Administrator</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Nom</value>
+    <value>Name</value>
   </data>
   <data name="Picture" xml:space="preserve">
-    <value>Photo</value>
+    <value>Foto</value>
   </data>
   <data name="PlaceDeletedSorry" xml:space="preserve">
-    <value>Nous sommes désolés, le lieu de travail séléctionné n'existe pas ou a été effacé.</value>
+    <value>Wir bedauern, dass der ausgewählte Arbeitsplatz nicht existiert oder gelöscht wurde.</value>
   </data>
   <data name="Points" xml:space="preserve">
-    <value>Point(s)</value>
+    <value>Punkt(e)</value>
   </data>
   <data name="Rentals" xml:space="preserve">
-    <value>Locations</value>
+    <value>Mieten</value>
   </data>
   <data name="PressDeleted" xml:space="preserve">
-    <value>Nous sommes désolés, l'article séléctionné n'existe pas ou a été effacé.</value>
+    <value>Wir bedauern, dass das ausgewählte Artikel nicht existiert oder gelöscht wurde.</value>
   </data>
   <data name="PressNotFound" xml:space="preserve">
-    <value>Article non trouvé.</value>
+    <value>Artikel nicht gefunden.</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>envoyer</value>
+    <value>senden</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
-    <value>Envoi e-mail</value>
+    <value>Email senden</value>
   </data>
   <data name="TheTop" xml:space="preserve">
-    <value>la une</value>
+    <value>Top</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Titre</value>
+    <value>Titel</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Mise à jour</value>
+    <value>Aktualisiserung</value>
   </data>
   <data name="UpdateRole" xml:space="preserve">
-    <value>Mise à jour des rôles</value>
-  </data>
-  <data name="Url" xml:space="preserve">
-    <value>Url</value>
+    <value>Aktualisierung der Rollen</value>
   </data>
   <data name="User" xml:space="preserve">
-    <value>Utilisateur</value>
+    <value>Benutzer</value>
   </data>
   <data name="UserAdmin" xml:space="preserve">
-    <value>Gestion des utilisateurs</value>
+    <value>Users Managemen</value>
   </data>
   <data name="UserAdministration" xml:space="preserve">
-    <value>Administration des Utilisateurs</value>
+    <value>Users Verwaltung</value>
   </data>
   <data name="ValidationSend" xml:space="preserve">
-    <value>validation d'envoi</value>
+    <value>Validierungsmitteilung</value>
   </data>
   <data name="VisitorAdministration" xml:space="preserve">
-    <value>Gestion de la bêta privée</value>
+    <value>Private Beta Management</value>
   </data>
   <data name="WaitInscription" xml:space="preserve">
-    <value>En attente d'inscription</value>
+    <value>In Erwartung einer Einschreibung</value>
   </data>
   <data name="WorkspaceNotFound" xml:space="preserve">
-    <value>Lieu de travail non trouvé.</value>
+    <value>Arbeitsplatz nicht gefunden.</value>
   </data>
   <data name="ConfirmDeleteRental" xml:space="preserve">
-    <value>Veuillez confirmer la suppression de l'annonce :</value>
+    <value>Bitte bestätigen Sie die Löschung dieser Anzeige :</value>
   </data>
   <data name="CreateRental" xml:space="preserve">
-    <value>Ajouter une annonce</value>
+    <value>Anzeige hinzufügen</value>
   </data>
   <data name="MailHaveBeenSent" xml:space="preserve">
-    <value>L'e-mail a été envoyé avec succès.</value>
+    <value>Email wurde erfolgreich zugeschickt.</value>
   </data>
   <data name="PressHaveBeenDel" xml:space="preserve">
-    <value>L'article de presse a été supprimé.</value>
+    <value>Das Presseartikel wurde gelöscht.</value>
   </data>
   <data name="PressHaveBeenEdit" xml:space="preserve">
-    <value>L'article de presse a été édité.</value>
+    <value>Das Presseartikel wurde bearbeitet.</value>
   </data>
   <data name="RoleHaveBeenSet" xml:space="preserve">
-    <value>Les rôles ont été changés.</value>
+    <value>Die Rollen wurden geändert.</value>
   </data>
   <data name="UserHaveBeenDel" xml:space="preserve">
-    <value>L'utilisateur a été supprimé.</value>
+    <value>Der Benutzer wurde gelöscht.</value>
+  </data>
+  <data name="IndexWelcomePeople" xml:space="preserve">
+    <value>Topunternehmer Management</value>
   </data>
   <data name="WelcomePeopleHaveBeenDel" xml:space="preserve">
-    <value>L'entrepreneur star a été supprimé.</value>
+    <value>Der Topunternehmen wurde gelöscht.</value>
   </data>
   <data name="WelcomePeopleHaveBeenEdit" xml:space="preserve">
-    <value>L'entrepreneur star a été édité.</value>
+    <value>Der Topunternehmen wurde bearbeitet</value>
   </data>
   <data name="PressHaveBeenCreate" xml:space="preserve">
-    <value>L'article de presse a été créé.</value>
+    <value>Das Presseartikel wurde erschafft</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
-    <value>Utilisateur non trouvé.</value>
+    <value>Benutzer nicht gefunden.</value>
   </data>
   <data name="VisitorNotFound" xml:space="preserve">
-    <value>Visiteur non trouvé.</value>
+    <value>Besucher nicht gefunden</value>
   </data>
   <data name="WelcomePeopleHaveBeenCreate" xml:space="preserve">
-    <value>L'entrepreneur star a été créé.</value>
+    <value>Der Topunternehmer wurde erschafft.</value>
   </data>
   <data name="WelcomePeopleNotFound" xml:space="preserve">
-    <value>L'entrepreneur star non trouvé.</value>
+    <value>Topunternehmer nicht gefunden.</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>eWorker E-Mail-Adresse</value>
+    <value>eWorker Email-Adresse</value>
   </data>
   <data name="ExactLoc" xml:space="preserve">
-    <value>Nom exact du lieu</value>
+    <value>Exakter Name des Ortes</value>
   </data>
   <data name="OnOffLine" xml:space="preserve">
     <value>Online/Offline</value>
   </data>
   <data name="Unlock" xml:space="preserve">
-    <value>Unlocker</value>
+    <value>Unlock</value>
   </data>
   <data name="Owner" xml:space="preserve">
-    <value>Gérant</value>
+    <value>Manager</value>
   </data>
   <data name="AdminSpace" xml:space="preserve">
-    <value>Espace administrateur</value>
+    <value>Admin space</value>
   </data>
   <data name="IndexQuotation" xml:space="preserve">
-    <value>Gestion des devis</value>
+    <value>Management der Kostenanfragen</value>
   </data>
   <data name="Score" xml:space="preserve">
-    <value>Score</value>
+    <value>Ergebnis</value>
   </data>
   <data name="BORole" xml:space="preserve">
-    <value>Rôle BackOffice</value>
+    <value>Backoffice Rolle</value>
   </data>
   <data name="Stickers" xml:space="preserve">
     <value>Sticker</value>
   </data>
   <data name="BackOfficeRoleUpdated" xml:space="preserve">
-    <value>Rôle BackOffice Mis à jour.</value>
+    <value>Backoffice Rolle aktualisiert</value>
   </data>
   <data name="OwnersHasChanged" xml:space="preserve">
-    <value>Les gérants ont été modifiés.</value>
+    <value>Managers wurden geändert.</value>
   </data>
   <data name="ExactOffer" xml:space="preserve">
-    <value>Nom exact de l'offre</value>
+    <value>Exakter Name des Angebots</value>
   </data>
   <data name="SiteVersion" xml:space="preserve">
-    <value>Version du site</value>
+    <value>Website Version</value>
   </data>
   <data name="Translate" xml:space="preserve">
-    <value>Traduction</value>
+    <value>Übersetzung</value>
+  </data>
+  <data name="QuotationEdited" xml:space="preserve">
+    <value>Die Kostenanfrage wurde bearbeitet.</value>
   </data>
 </root>

@@ -118,57 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlertSearch" xml:space="preserve">
-    <value>Essayer de rechercher en entrant un lieu</value>
+    <value></value>
   <comment>?</comment></data>
-  <data name="ClassicVersion" xml:space="preserve">
-    <value>Version classique</value>
-  </data>
-  <data name="Connection" xml:space="preserve">
-    <value>Se connecter</value>
-  </data>
-  <data name="ConnectNow" xml:space="preserve">
-    <value>Connectez-vous</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Description</value>
-  </data>
   <data name="Go" xml:space="preserve">
     <value>Go !</value>
   </data>
-  <data name="Near" xml:space="preserve">
-    <value>près de</value>
-  </data>
-  <data name="NearMyPosition" xml:space="preserve">
-    <value>Près de ma position</value>
-  </data>
   <data name="Offers" xml:space="preserve">
     <value>Angebote</value>
-  </data>
-  <data name="OrNear" xml:space="preserve">
-    <value>ou près de</value>
-  </data>
-  <data name="PlaceToWork" xml:space="preserve">
-    <value>lieux pour travailler</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="Services" xml:space="preserve">
-    <value>Services</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Bienvenue</value>
-  </data>
-  <data name="Call" xml:space="preserve">
-    <value>Appeler</value>
-  </data>
-  <data name="List" xml:space="preserve">
-    <value>Liste</value>
-  </data>
-  <data name="Map" xml:space="preserve">
-    <value>Carte</value>
-  </data>
-  <data name="OrViaFB" xml:space="preserve">
-    <value>Ou avec votre compte Facebook</value>
   </data>
 </root>

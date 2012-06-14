@@ -144,14 +144,8 @@
   <data name="Email" xml:space="preserve">
     <value>Mailbox</value>
   </data>
-  <data name="EmptyBookHistoric" xml:space="preserve">
-    <value>Vous n'avez aucune réservation. Pour effectuer une demande de réservation, allez sur la fiche du lieu souhaité.</value>
-  </data>
   <data name="EmptyNews" xml:space="preserve">
     <value>Sie haben keine Benachrichtigung bekommen</value>
-  </data>
-  <data name="EmptyQuotationHistoric" xml:space="preserve">
-    <value>Vous n'avez fait aucune demande de devis. Pour effectuer une demande de devis, allez sur la fiche du lieu souhaité.</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>Vorname</value>
@@ -180,9 +174,6 @@
   <data name="Names" xml:space="preserve">
     <value>Identität</value>
   </data>
-  <data name="NeedInfoPaypal" xml:space="preserve">
-    <value>Pour proposer une offre à la réservation, vous devez préalablement indiquer l’adresse électronique associée à votre compte PayPal dans l'onglet Option de votre espace gérant.</value>
-  </data>
   <data name="NoCurrentBooking" xml:space="preserve">
     <value>Sie haben keine ausstehende Buchungsanforderung. Um Ihre archivierten Buchungen zu befragen begeben Sie sich zu Angebote.</value>
   </data>
@@ -208,9 +199,6 @@
   <data name="Offers" xml:space="preserve">
     <value>Angebote</value>
   </data>
-  <data name="OffersDirectAccess" xml:space="preserve">
-    <value>Accès direct à la gestion des offres</value>
-  </data>
   <data name="Offline" xml:space="preserve">
     <value>Offline</value>
   </data>
@@ -222,12 +210,6 @@
   </data>
   <data name="PaymentInfoModified" xml:space="preserve">
     <value>Zahlungsinformationen wurden aktualisiert</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Tél.</value>
-  </data>
-  <data name="Place" xml:space="preserve">
-    <value>Lieu</value>
   </data>
   <data name="PlaceDoNotHaveOffer" xml:space="preserve">
     <value>Dieser Raum hat noch keine Angebote</value>
@@ -258,9 +240,6 @@
   </data>
   <data name="Tariff" xml:space="preserve">
     <value>Preis</value>
-  </data>
-  <data name="TariffByPeriod" xml:space="preserve">
-    <value>&lt;b&gt;{0} {1}&lt;/b&gt; par &lt;b&gt;{2}&lt;/b&gt;</value>
   </data>
   <data name="Tel" xml:space="preserve">
     <value>Tel</value>
@@ -296,7 +275,7 @@
     <value>Office Manager : Benachrichtigung(en)</value>
   </data>
   <data name="DashboardAlerts" xml:space="preserve">
-    <value>User space : Benachrichtigung(en)</value>
+    <value>User Space : Benachrichtigung(en)</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Erstellen</value>
@@ -316,14 +295,8 @@
   <data name="InvoiceClient" xml:space="preserve">
     <value>Kunde</value>
   </data>
-  <data name="InvoiceDate" xml:space="preserve">
-    <value>Date</value>
-  </data>
   <data name="InvoiceEmpty" xml:space="preserve">
     <value>Für diesen Monat gibt es noch keine Rechnung</value>
-  </data>
-  <data name="InvoiceId" xml:space="preserve">
-    <value>N°</value>
   </data>
   <data name="InvoicePlace" xml:space="preserve">
     <value>Ort</value>
@@ -348,5 +321,39 @@
   </data>
   <data name="BackofficeDemand" xml:space="preserve">
     <value>Office Manager Antrag</value>
+  </data>
+  <data name="EmptyBookHistoric" xml:space="preserve">
+    <value>Sie haben keine Reservierung. Um einen Reservierungsantrag zu machen, bitte gehen Sie zu der Seite des gewünschten Ortes.</value>
+  </data>
+  <data name="EmptyQuotationHistoric" xml:space="preserve">
+    <value>Sie haben keine Kostenanfrage. Um eine Kostenanfrage zu machen, bitte gehen Sie zu der Seite des gewünschten Ortes.</value>
+  </data>
+  <data name="InvoiceDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="InvoiceId" xml:space="preserve">
+    <value>Nr.</value>
+  </data>
+  <data name="NeedInfoPaypal" xml:space="preserve">
+    <value>Um eine Reservierung anzubieten, müssen Sie zuerst Ihre Paypal Email-Adresse im Tab "Optionen" von Ihrem Office Manager</value>
+  </data>
+  <data name="OffersDirectAccess" xml:space="preserve">
+    <value>Direkter Zugang zu dem Angebotsmanagement</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Tel.</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="TariffByPeriod" xml:space="preserve">
+    <value>&lt;b&gt;{0} {1}&lt;/b&gt; pro &lt;b&gt;{2}&lt;/b&gt;</value>
+  </data>
+  <data name="PayQuotation" xml:space="preserve">
+    <value>Kontaktdaten anschauen</value>
+  </data>
+  <data name="PayQuotationDesc" xml:space="preserve">
+    <value>Unser Management und SEO Service ist 100% kostenlos. Rechnungen entstehen nur, wenn der Kontaktaufbau sich zu neuen Kunden entwickelt hat. So bezahlen Sie nur, wenn unser Service Ihnen geholfen hat. Wenn Sie auf "Kontaktdaten anschauen" klicken, werden Sie auf eine Paypal Seite weitergeleitet werden, um den Zahlungsprozess zu sichern.
+Die erste Anzeige ist Ihnen geschenkt !</value>
   </data>
 </root>

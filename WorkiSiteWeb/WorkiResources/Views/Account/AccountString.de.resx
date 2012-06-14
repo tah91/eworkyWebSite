@@ -145,16 +145,16 @@
     <value>Geben Sie Ihr aktuelles und Ihr gewünschtes neues Passwort ein.</value>
   </data>
   <data name="QualityOfProfils" xml:space="preserve">
-    <value>Um die Qualität unserer Community-Profil zu gewährleisten wird eWorky Sie wahrscheinlich bald fragen Ihr</value>
+    <value>Um die Profilqualität unserer Gemeinschaftsmitglieder zu gewährleisten wird eWorky Sie wahrscheinlich bald fragen Ihr</value>
   </data>
   <data name="RequiredFields" xml:space="preserve">
     <value>* Pflichtfelder</value>
   </data>
   <data name="SetMailInscription" xml:space="preserve">
-    <value>Geben Sie die E-Mail-Adresse ein, die Sie für Ihre Anmeldung benutzt haben. Ihre Zugangsdaten werden an diese Emailadresse zugeschickt.</value>
+    <value>Geben Sie die Email-Adresse ein, die Sie für Ihre Anmeldung benutzt haben. Ihre Zugangsdaten werden an diese Emailadresse zugeschickt.</value>
   </data>
   <data name="SocialNetworkSoon" xml:space="preserve">
-    <value>Profil durch ein soziales Netzwerk zu identifizieren.</value>
+    <value>Profil durch ein soziales Netzwerk identifizieren</value>
   </data>
   <data name="ValidationLetter" xml:space="preserve">
     <value>Buchstaben für die Bestätigung</value>
@@ -166,7 +166,7 @@
     <value>Ich erkläre eWorkys Nutzungsbedingungen gelesen und verstanden zu haben und akzeptiere sie ({0}).</value>
   </data>
   <data name="PasswordHaveBeenChanged" xml:space="preserve">
-    <value>Sie bekommen umgehend Ihr aktuelles Passwort an Ihre angegebene E-Mail-Adresse zugeschickt. </value>
+    <value>Sie bekommen umgehend Ihr aktuelles Passwort an Ihre angegebene Email-Adresse zugeschickt. </value>
   </data>
   <data name="YouChangeYourPassword" xml:space="preserve">
     <value>Ihr Passwort wurde bereits geändert.</value>
