@@ -614,9 +614,6 @@ namespace Links {
             public static readonly string arrow_png = Url("arrow.png");
             public static readonly string arrow_red_png = Url("arrow_red.png");
             public static readonly string avatar_png = Url("avatar.png");
-            public static readonly string bandeLeft_png = Url("bandeLeft.png");
-            public static readonly string bandeMiddle_png = Url("bandeMiddle.png");
-            public static readonly string bandeRight_png = Url("bandeRight.png");
             public static readonly string border_png = Url("border.png");
             public static readonly string cecilia_png = Url("cecilia.png");
             public static readonly string checked_png = Url("checked.png");
@@ -626,7 +623,6 @@ namespace Links {
             public static readonly string comm_content_png = Url("comm_content.png");
             public static readonly string cross_png = Url("cross.png");
             public static readonly string delete_gif = Url("delete.gif");
-            public static readonly string drh_png = Url("drh.png");
             public static readonly string favicon_png = Url("favicon.png");
             public static readonly string favorite_png = Url("favorite.png");
             public static readonly string fb_sprite_png = Url("fb_sprite.png");
@@ -642,9 +638,10 @@ namespace Links {
             public static readonly string homeLogo4_png = Url("homeLogo4.png");
             public static readonly string howitworks_png = Url("howitworks.png");
             public static readonly string iconeMap_png = Url("iconeMap.png");
+            public static readonly string iconeMapBig_png = Url("iconeMapBig.png");
+            public static readonly string iconeMapMedium_png = Url("iconeMapMedium.png");
             public static readonly string iconeMapOrange_png = Url("iconeMapOrange.png");
             public static readonly string iconeMapRed_png = Url("iconeMapRed.png");
-            public static readonly string independant_png = Url("independant.png");
             public static readonly string jobs_mark_jpeg = Url("jobs_mark.jpeg");
             public static readonly string jobs_steve_jpg = Url("jobs_steve.jpg");
             public static readonly string jonathan_png = Url("jonathan.png");
@@ -669,13 +666,10 @@ namespace Links {
             public static readonly string prev_horizontal_png = Url("prev-horizontal.png");
             public static readonly string prev_vertical_png = Url("prev-vertical.png");
             public static readonly string profil_social_png = Url("profil_social.png");
-            public static readonly string recherche_min_png = Url("recherche-min.png");
             public static readonly string rechercher2_png = Url("rechercher2.png");
             public static readonly string retour_png = Url("retour.png");
             public static readonly string serviceIcones_png = Url("serviceIcones.png");
             public static readonly string star_png = Url("star.png");
-            public static readonly string startup_png = Url("startup.png");
-            public static readonly string student_png = Url("student.png");
             public static readonly string tahir_png = Url("tahir.png");
             public static readonly string tampon_png = Url("tampon.png");
             public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
@@ -692,7 +686,6 @@ namespace Links {
             public static readonly string ui_icons_888888_256x240_png = Url("ui-icons_888888_256x240.png");
             public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
             public static readonly string vu_tele_png = Url("vu-tele.png");
-            public static readonly string worker_png = Url("worker.png");
             public static readonly string worki_fb_jpg = Url("worki_fb.jpg");
             public static readonly string worki_footer_png = Url("worki_footer.png");
         }
@@ -5184,11 +5177,6 @@ namespace Worki.Web.Areas.Widget.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Dispatch() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Dispatch);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public IntermediateController Actions { get { return MVC.Widget.Intermediate; } }
@@ -5203,6 +5191,7 @@ namespace Worki.Web.Areas.Widget.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string Error = "Error";
             public readonly string Dispatch = "Dispatch";
         }
 
@@ -5213,6 +5202,7 @@ namespace Worki.Web.Areas.Widget.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _ViewStart = "~/Areas/Widget/Views/Intermediate/_ViewStart.cshtml";
+            public readonly string Error = "~/Areas/Widget/Views/Intermediate/Error.cshtml";
             public readonly string Index = "~/Areas/Widget/Views/Intermediate/Index.cshtml";
         }
     }
@@ -5226,9 +5216,13 @@ namespace Worki.Web.Areas.Widget.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Dispatch(string kind) {
+        public override System.Web.Mvc.ActionResult Error() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Error);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Dispatch() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Dispatch);
-            callInfo.RouteValueDictionary.Add("kind", kind);
             return callInfo;
         }
 

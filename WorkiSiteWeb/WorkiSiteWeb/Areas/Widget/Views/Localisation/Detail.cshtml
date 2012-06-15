@@ -46,8 +46,41 @@
                 </div>
             </div>
         </div>
-        <div>
-            @Html.Nl2Br(Model.GetDescription())
+        <div class="row-fluid">
+            <div class="span9">
+                @Html.Nl2Br(Model.GetDescription())
+            </div>
+            <div class="span3 detail-contact">
+                @if (!Model.ContactEmpty())
+                {
+                    if (!string.IsNullOrEmpty(Model.Mail))
+                    {
+		            @Html.Mailto("E-mail", Model.Mail, new { itemprop = "email" })<br />
+                    }
+                    if (!string.IsNullOrEmpty(Model.WebSite))
+                    {
+		            <a href="@WebHelper.GetWebsite(Model.WebSite)" title="@Model.WebSite" target="_blank" itemprop="url">@Worki.Resources.Models.Localisation.Localisation.WebSite</a><br />
+                    }
+                    if (!string.IsNullOrEmpty(Model.Facebook))
+                    {
+		            <a href="@WebHelper.GetWebsite(Model.Facebook)" target="_blank"><span>@Worki.Resources.Views.Localisation.LocalisationString.FacebookPage</span></a><br />
+                    }
+                    if (!string.IsNullOrEmpty(Model.Twitter))
+                    {
+		            <a href="@WebHelper.GetTwitter(Model.Twitter)" target="_blank"><span>@WebHelper.GetLoginTwitter(Model.Twitter)</span></a><br />
+                    }
+                    if (!string.IsNullOrEmpty(Model.PhoneNumber))
+                    {
+		            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Tel</span>
+		            <span itemprop="telephone">@Html.GetPhoneFormat(Model.PhoneNumber)</span><br />
+                    }
+                    if (!string.IsNullOrEmpty(Model.Fax))
+                    {
+		            <span class="bold">@Worki.Resources.Views.Localisation.LocalisationString.Fax</span>
+		            <span itemprop="faxNumber">@Html.GetPhoneFormat(Model.Fax)</span><br />
+                    }
+                }
+            </div>
         </div>
     </div>
 </div>
@@ -84,7 +117,7 @@
                 <div class="pull-right">
                     <a href="@Url.Action(MVC.Widget.Localisation.CreateBooking(offer.Id))" class="btn btn-primary booking-btn">
                         <i class="icon-ok icon-white"></i>
-                        Réserver
+                        @Worki.Resources.Views.Booking.BookingString.BookIt
                     </a>  
                 </div>
             </div>

@@ -55,7 +55,14 @@
 *       'anchor': (Array) The anchor position of the label text.
 *       'textColor': (string) The text color.
 *       'textSize': (number) The text size.
+*       'textAlign' : (string) The text alignment to use, e.g.: 'center'
+*       'fontFamily' : (string) A CSS font-family string to use for the label.
+*       'fontWeight' : (string) A CSS font-weight string to use for the label.
 *       'backgroundPosition': (string) The position of the backgound x, y.
+*       'offsetX': (number) The number of pixels to offset a cluster
+*                  marker in the X axis, from being centered over its point.
+*       'offsetY': (number) The number of pixels to offset a cluster
+*                  marker in the Y axis, from being centered over its point.
 * @constructor
 * @extends google.maps.OverlayView
 */
@@ -161,10 +168,14 @@ function MarkerClusterer(map, opt_markers, opt_options) {
     // Add the map event listeners
     var that = this;
     google.maps.event.addListener(this.map_, 'zoom_changed', function () {
+        var maxZoom = that.map_.maxZoom;
         var zoom = that.map_.getZoom();
+        if (zoom < 0 || zoom > maxZoom) {
+            return;
+        }
 
         if (that.prevZoom_ != zoom) {
-            that.prevZoom_ = zoom;
+            that.prevZoom_ = that.map_.getZoom();
             that.resetViewport();
         }
     });
@@ -340,7 +351,7 @@ MarkerClusterer.prototype.setMaxZoom = function (maxZoom) {
 *  @return {number} The max zoom level.
 */
 MarkerClusterer.prototype.getMaxZoom = function () {
-    return this.maxZoom_;
+    return this.maxZoom_ || this.map_.maxZoom;
 };
 
 
@@ -984,7 +995,7 @@ Cluster.prototype.updateIcon = function () {
     var zoom = this.map_.getZoom();
     var mz = this.markerClusterer_.getMaxZoom();
 
-    if (mz && zoom > mz) {
+    if (zoom > mz) {
         // The zoom is greater than our max zoom so show all the markers in cluster.
         for (var i = 0, marker; marker = this.markers_[i]; i++) {
             marker.setMap(this.map_);
@@ -1017,7 +1028,14 @@ Cluster.prototype.updateIcon = function () {
 *     'anchor': (Array) The anchor position of the label text.
 *     'textColor': (string) The text color.
 *     'textSize': (number) The text size.
+*     'textAlign' : (string) The text alignment to use, e.g.: 'center'
+*     'fontFamily' : (string) A CSS font-family string to use for the label.
+*     'fontWeight' : (string) A CSS font-weight string to use for the label.
 *     'backgroundPosition: (string) The background postition x, y.
+*     'offsetX': (number) The number of pixels to offset a cluster
+*                marker in the X axis, from being centered over its point.
+*     'offsetY': (number) The number of pixels to offset a cluster
+*                marker in the Y axis, from being centered over its point.
 * @param {number=} opt_padding Optional padding to apply to the cluster icon.
 * @constructor
 * @extends google.maps.OverlayView
@@ -1048,7 +1066,8 @@ ClusterIcon.prototype.triggerClusterClick = function () {
     // Trigger the clusterclick event.
     google.maps.event.trigger(markerClusterer, 'clusterclick', this.cluster_);
 
-    if (markerClusterer.isZoomOnClick()) {
+    if (markerClusterer.isZoomOnClick() &&
+      (this.map_.getZoom() != this.map_.maxZoom)) {
         // Zoom into the cluster.
         this.map_.fitBounds(this.cluster_.getBounds());
     }
@@ -1099,8 +1118,18 @@ ClusterIcon.prototype.getPosFromLatLng_ = function (latlng) {
 ClusterIcon.prototype.draw = function () {
     if (this.visible_) {
         var pos = this.getPosFromLatLng_(this.center_);
-        this.div_.style.top = pos.y + 'px';
-        this.div_.style.left = pos.x + 'px';
+        var left = pos.x;
+        var top = pos.y;
+
+        if (this.offsetX_) {
+            left += this.offsetX_;
+        }
+        if (this.offsetY_) {
+            top += this.offsetY_;
+        }
+
+        this.div_.style.top = top + 'px';
+        this.div_.style.left = left + 'px';
     }
 };
 
@@ -1182,7 +1211,12 @@ ClusterIcon.prototype.useStyle = function () {
     this.textColor_ = style['textColor'];
     this.anchor_ = style['anchor'];
     this.textSize_ = style['textSize'];
+    this.textAlign_ = style['textAlign'];
+    this.fontFamily_ = style['fontFamily'];
+    this.fontWeight_ = style['fontWeight'];
     this.backgroundPosition_ = style['backgroundPosition'];
+    this.offsetX_ = style['offsetX'];
+    this.offsetY_ = style['offsetY'];
 };
 
 
@@ -1213,6 +1247,9 @@ ClusterIcon.prototype.createCss = function (pos) {
         this.anchor_[0] < this.height_) {
             style.push('height:' + (this.height_ - this.anchor_[0]) +
           'px; padding-top:' + this.anchor_[0] + 'px;');
+        } else if (typeof this.anchor_[0] === 'number' && this.anchor_[0] < 0) {
+            style.push('height:' + (this.height_ + this.anchor_[0]) +
+          'px; padding-bottom:' + (0 - this.anchor_[0]) + 'px;');
         } else {
             style.push('height:' + this.height_ + 'px; line-height:' + this.height_ +
           'px;');
@@ -1221,6 +1258,9 @@ ClusterIcon.prototype.createCss = function (pos) {
         this.anchor_[1] < this.width_) {
             style.push('width:' + (this.width_ - this.anchor_[1]) +
           'px; padding-left:' + this.anchor_[1] + 'px;');
+        } else if (typeof this.anchor_[1] === 'number' && this.anchor_[1] < 0) {
+            style.push('width:' + (this.width_ + this.anchor_[1]) +
+          'px; padding-right:' + (0 - this.anchor_[1]) + 'px;');
         } else {
             style.push('width:' + this.width_ + 'px; text-align:center;');
         }
@@ -1231,10 +1271,27 @@ ClusterIcon.prototype.createCss = function (pos) {
 
     var txtColor = this.textColor_ ? this.textColor_ : 'black';
     var txtSize = this.textSize_ ? this.textSize_ : 11;
+    var fontFamily = this.fontFamily_ ? this.fontFamily_ : 'Arial,sans-serif';
+    var fontWeight = this.fontWeight_ ? this.fontWeight_ : 'bold';
 
-    style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
-      pos.x + 'px; color:' + txtColor + '; position:absolute; font-size:' +
-      txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold');
+    if (this.textAlign_) {
+        style.push('text-align: ' + this.textAlign_ + ';');
+    }
+
+    var left = pos.x;
+    var top = pos.y;
+
+    if (this.offsetX_) {
+        left += this.offsetX_;
+    }
+    if (this.offsetY_) {
+        top += this.offsetY_;
+    }
+
+    style.push('cursor:pointer; top:' + top + 'px; left:' +
+      left + 'px; color:' + txtColor + '; position:absolute; font-size:' +
+      txtSize + 'px; font-family:' + fontFamily + '; font-weight:' +
+      fontWeight + ';');
     return style.join('');
 };
 

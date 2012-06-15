@@ -37,13 +37,42 @@ namespace Worki.Web.Areas.Widget.Controllers
         }
 
         /// <summary>
+        /// GET Action result for unavailable finder
+        /// </summary>
+        /// <returns>view with iframe</returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult Error()
+        {
+            return View();
+        }
+
+        /// <summary>
         /// GET Action result for dispatch iframe to correct action
         /// </summary>
         /// <returns>view with iframe</returns>
         [AcceptVerbs(HttpVerbs.Get)]
         [PreserveQueryString(ToKeep = MiscHelpers.WidgetConstants.ParamToKeep)]
-        public virtual ActionResult Dispatch(string kind)
+        public virtual ActionResult Dispatch()
         {
+            var appId = Url.GetQueryParam(MiscHelpers.WidgetConstants.AppKey);
+            if (string.IsNullOrEmpty(appId))
+            {
+                _Logger.Error("Dispatch : appid null");
+                return RedirectToAction(MVC.Widget.Intermediate.Error());
+            }
+
+            var context = ModelFactory.GetUnitOfWork();
+            var mRepo = ModelFactory.GetRepository<IMemberRepository>(context);
+
+            var member = mRepo.Get(m => m.MemberMainData.ApiKey == appId);
+            if (member == null)
+            {
+                _Logger.Error("Dispatch : appid " + appId + " not found");
+                return RedirectToAction(MVC.Widget.Intermediate.Error());
+            }
+
+            var kind=Url.GetQueryParam(MiscHelpers.WidgetConstants.Kind);
+
             switch (kind)
             {
                 case MiscHelpers.WidgetConstants.KindDetail:

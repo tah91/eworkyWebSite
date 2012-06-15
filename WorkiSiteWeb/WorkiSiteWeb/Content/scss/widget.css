@@ -117,7 +117,7 @@ li {
 
 .result-info {
   height: 115px;
-  border-right: 1px dashed #CCC; }
+  border-right: 1px dashed #cccccc; }
 
 .result-features {
   position: absolute;
@@ -151,9 +151,13 @@ li {
   position: relative;
   height: 150px; }
 
+.detail-contact {
+  border-left: 1px dashed #cccccc;
+  padding-left: 10px; }
+
 .offer-item {
   height: 115px;
-  border-right: 1px dashed #CCC; }
+  border-right: 1px dashed #cccccc; }
 
 .offer-prices {
   height: 115px; }

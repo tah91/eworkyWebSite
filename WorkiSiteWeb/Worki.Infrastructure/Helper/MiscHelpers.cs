@@ -217,6 +217,7 @@ namespace Worki.Infrastructure.Helpers
             #region Data Keys
 
             public const string Theme = "theme";
+            public const string Kind = "kind";
             public const string AppKey = "app-key";
             public const string Type = "filter-type";
             public const string Country = "filter-country";

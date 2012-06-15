@@ -204,15 +204,15 @@ function WorkiMap(mapDivId, latitudeField, longitudeField) {
 
     SetCluster = function () {
         var styles = [{
-            url: '/Content/images/circle.png',
-            height: 25,
+            url: '/Content/images/iconeMapMedium.png',
             width: 25,
+            height: 41,
             textColor: 'white',
             textSize: 10
         }, {
-            url: '/Content/images/circleBig.png',
-            height: 35,
+            url: '/Content/images/iconeMapBig.png',
             width: 35,
+            height: 57,
             textColor: 'white',
             textSize: 12
         }];

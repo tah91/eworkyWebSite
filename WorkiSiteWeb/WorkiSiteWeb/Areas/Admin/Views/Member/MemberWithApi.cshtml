@@ -29,7 +29,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Worki.Resources.Views.Admin.AdminString.Name
+                        @Worki.Resources.Views.Admin.AdminString.ID
                     </th>
                     <th>
                         @Worki.Resources.Views.Admin.AdminString.EmailAddress
@@ -44,7 +44,7 @@
                 { 
                     <tr>
                         <td align="right">
-                            @item.GetFullDisplayName()
+                            @item.MemberMainData.ApiKey
                         </td>
                         <td align="right">
 							@Html.ActionLink(item.Email, MVC.Account.Public(item.MemberId)) 

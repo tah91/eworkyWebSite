@@ -144,7 +144,7 @@ li
 .result-info
 {
 	height: 115px;
-	border-right: 1px dashed #CCC;
+	border-right: 1px dashed $dashColor;
 }
 
 .result-features
@@ -201,10 +201,16 @@ li
 	height: 150px;
 }
 
+.detail-contact
+{
+	border-left: 1px dashed $dashColor;
+	padding-left: 10px;
+}
+
 .offer-item
 {
 	height:115px;
-	border-right: 1px dashed #CCC;
+	border-right: 1px dashed $dashColor;
 }
 
 .offer-prices
