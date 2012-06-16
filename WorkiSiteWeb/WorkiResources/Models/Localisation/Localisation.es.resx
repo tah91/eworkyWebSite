@@ -433,4 +433,16 @@
   <data name="SendMailToOwner" xml:space="preserve">
     <value>Mandar un mensaje de bienvenida a este espacio</value>
   </data>
+  <data name="Attorney" xml:space="preserve">
+    <value>Gabinete de abogados</value>
+  </data>
+  <data name="InAttorney" xml:space="preserve">
+    <value>en un gabinete de abogados</value>
+  </data>
+  <data name="InMedical" xml:space="preserve">
+    <value>en una consulta médica</value>
+  </data>
+  <data name="Medical" xml:space="preserve">
+    <value>Consulta médica</value>
+  </data>
 </root>
