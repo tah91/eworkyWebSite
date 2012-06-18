@@ -33,7 +33,7 @@
     };
     if(Request.IsAuthenticated && User.IsInRole(MiscHelpers.AdminConstants.AdminRole))
     {
-        LanguageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.German,  Link = Url.Action(MVC.Home.ChangeCulture("de")) })
+        LanguageSwitcher.Items.Add(new DropDownItem { DisplayName = Worki.Resources.Views.Home.HomeString.German, Link = Url.Action(MVC.Home.ChangeCulture("de")) });
     }
 }
 

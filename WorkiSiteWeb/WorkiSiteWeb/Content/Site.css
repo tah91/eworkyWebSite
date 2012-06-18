@@ -265,7 +265,7 @@ page width. Or, you can specify an exact pixel width. */
 
 .flags { background: url(images/flags.png) no-repeat top left; }
 
-.allemagne{ background-position: -12 0; width: 16px; height: 11px; } 
+.allemagne{ background-position: -12px 0; width: 16px; height: 11px; } 
 .espagne{ background-position: -78px 0; width: 16px; height: 11px; } 
 .etats-unis{ background-position: -144px 0; width: 16px; height: 11px; } 
 .france{ background-position: -210px 0; width: 16px; height: 11px; } 
