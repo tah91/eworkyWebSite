@@ -125,7 +125,7 @@
     });
 
     var mapSearch = null;
-    require(["@Url.VersionedContent(Links.Scripts.Utils_js)","@Url.VersionedContent(Links.Scripts.jquery_rateit_js)", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
+    require(["@Url.VersionedContent(Links.Scripts.Utils_js)","@Url.VersionedContent(Links.Scripts.jquery_rateit_js)", "@MiscHelpers.UrlConstants.jqueryui", "@Url.VersionedContent(Links.Scripts.WorkiMap_js)"], function () {
         require(["@Url.VersionedContent(Links.Scripts.WorkiSearchMap_js)"], function () {
             refreshResults = function (data) {
                 $("#searchResults").replaceWith(data.list);
@@ -143,7 +143,7 @@
             refreshResults);
 
             //map initialization
-            require(["@MiscHelpers.UrlConstants.jqueryui", "http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {
+            require(["http://maps.google.com/maps/api/js?sensor=true&region=FR&callback=initialize", "@Links.Scripts.map_markerclusterer_js"], function () {
 
             });
         });

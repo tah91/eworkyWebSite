@@ -56,7 +56,7 @@
         var map = this.map;
         var marker = this;
         $.ajax({
-            url: _ajaxSubmitUrl,
+            url: _markerLinkUrl,
             data: { "id": this.get("id") },
             success: function (data) {
                 window.location.href = data;

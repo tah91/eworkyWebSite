@@ -49,13 +49,13 @@
 
     var ajaxSubmit = true;
     //result view changed => no ajax
-    $('#resultByMap').click(function () {
+    $('#resultByMap').click(function (evt) {
         $('#Criteria_ResultView').val('@eResultView.Map');
         ajaxSubmit = false;
         $("#searchFormReset form").submit();
     });
 
-    $('#resultByList').click(function () {
+    $('#resultByList').click(function (evt) {
         $('#Criteria_ResultView').val('@eResultView.List');
         ajaxSubmit = false;
         $("#searchFormReset form").submit();

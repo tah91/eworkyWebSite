@@ -1095,7 +1095,6 @@
     <Content Include="Views\Shared\_InfoMessage.cshtml" />
     <Content Include="Views\Localisation\_SearchResults.cshtml" />
     <Content Include="Views\Localisation\_SearchPanel.cshtml" />
-    <Content Include="Views\Localisation\_SearchMap.cshtml" />
     <Content Include="Views\OAuth\Authorize.cshtml" />
     <Content Include="Views\Localisation\_SearchOrderSelector.cshtml" />
     <Content Include="Views\Shared\_LoaderBlock.cshtml" />
