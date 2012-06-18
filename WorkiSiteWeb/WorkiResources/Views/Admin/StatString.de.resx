@@ -189,4 +189,7 @@
   <data name="Wifi" xml:space="preserve">
     <value>Hot Spot</value>
   </data>
+  <data name="WorkingHotel" xml:space="preserve">
+    <value>Inkubator</value>
+  </data>
 </root>

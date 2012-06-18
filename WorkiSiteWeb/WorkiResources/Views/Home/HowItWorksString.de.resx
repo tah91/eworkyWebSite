@@ -299,4 +299,19 @@
     <value>An die Arbeit</value>
     <comment>Jm Modif L13</comment>
   </data>
+  <data name="HandleClientsTitle" xml:space="preserve">
+    <value>Kunden managen</value>
+  </data>
+  <data name="HandleSpace" xml:space="preserve">
+    <value>Managen Sie kostenlos Ihre Reservierungen, Ihre Plannungen, zusätzliche Services, Preise und Abonnements, {0}.</value>
+  </data>
+  <data name="ReferenceLink" xml:space="preserve">
+    <value>Eine Seite für Ihren Ort</value>
+  </data>
+  <data name="RegisterLink" xml:space="preserve">
+    <value>Registrieren Sie sich kostenlos</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
 </root>
